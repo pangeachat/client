@@ -29,9 +29,9 @@ class MyAnalyticsController extends BaseController {
     _pangeaController = pangeaController;
   }
 
-  // adds the listener that handles when to run automatic updates
-  // to analytics - either after a certain number of messages sent/
-  // received or after a certain amount of time without an update
+  /// adds the listener that handles when to run automatic updates
+  /// to analytics - either after a certain number of messages sent/
+  /// received or after a certain amount of time without an update
   Future<void> addEventsListener() async {
     final Client client = _pangeaController.matrixState.client;
 

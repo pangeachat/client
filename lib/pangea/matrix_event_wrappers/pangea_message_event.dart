@@ -445,10 +445,18 @@ class PangeaMessageEvent {
     return _representations!;
   }
 
-  RepresentationEvent? representationByLanguage(String langCode) =>
-      representations.firstWhereOrNull(
-        (element) => element.langCode == langCode,
-      );
+  RepresentationEvent? representationByLanguage(String langCode) {
+    // representations.firstWhereOrNull(
+    //     (element) => element.langCode == langCode,
+    //   );
+    for (final representation in representations) {
+      debugger(when: representation.text == "the message we're looking for");
+      if (representation.langCode == langCode) {
+        return representation;
+      }
+    }
+    return null;
+  }
 
   int translationIndex(String langCode) => representations.indexWhere(
         (element) => element.langCode == langCode,
