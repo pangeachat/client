@@ -1,5 +1,6 @@
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/new_group/new_group.dart';
+import 'package:fluffychat/pangea/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/pages/class_settings/p_class_widgets/room_capacity_button.dart';
 import 'package:fluffychat/pangea/widgets/class/add_space_toggles.dart';
 import 'package:fluffychat/pangea/widgets/conversation_bot/conversation_bot_settings.dart';
@@ -96,12 +97,38 @@ class NewGroupView extends StatelessWidget {
             //     ),
             //   ),
             // ),
-            RoomCapacityButton(
+            RoomCapacityListTile(
               key: controller.addCapacityKey,
             ),
-            ConversationBotSettings(
-              key: controller.addConversationBotKey,
-              activeSpaceId: controller.activeSpaceId,
+            ListTile(
+              title: Text(
+                L10n.of(context)!.convoBotSettingsTitle,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Text(L10n.of(context)!.convoBotSettingsDescription),
+              leading: CircleAvatar(
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                foregroundColor: Theme.of(context).textTheme.bodyLarge!.color,
+                child: const Icon(Icons.psychology_outlined),
+              ),
+              onTap: () {
+                showDialog<BotOptionsModel?>(
+                  context: context,
+                  builder: (context) => ConversationBotSettings(
+                    startOpen: true,
+                    activeSpaceId: controller.activeSpaceId,
+                  ),
+                ).then(
+                  (options) {
+                    if (options != null) {
+                      controller.botOptions = options;
+                    }
+                  },
+                );
+              },
             ),
             const Divider(height: 1),
             AddToSpaceToggles(

@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/pages/chat_details/user_summary_analytics_row.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -36,6 +37,12 @@ class ParticipantListItem extends StatelessWidget {
             user: user,
             outerContext: context,
           ),
+          // #Pangea
+          // analytics view takes up a significant amount of space
+          // the increased height makes the rest of the view visible
+          // without having to scroll down
+          maxHeight: MediaQuery.of(context).size.height * 0.75,
+          // Pangea#
         ),
         title: Row(
           children: <Widget>[
@@ -53,23 +60,18 @@ class ParticipantListItem extends StatelessWidget {
                 ),
                 margin: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
-                  // #Pangea
-                  // color: Theme.of(context).colorScheme.primaryContainer,
-                  color: Theme.of(context).secondaryHeaderColor,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                   borderRadius: BorderRadius.circular(8),
-                  // border: Border.all(
-                  //   color: Theme.of(context).colorScheme.primary,
-                  // ),
-                  // Pangea#
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
                 child: Text(
                   permissionBatch,
-                  // #Pangea
-                  // style: TextStyle(
-                  //   fontSize: 14,
-                  //   color: Theme.of(context).colorScheme.primary,
-                  // ),
-                  // Pangea#
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
                 ),
               ),
             membershipBatch == null
@@ -85,7 +87,10 @@ class ParticipantListItem extends StatelessWidget {
                   ),
           ],
         ),
-        subtitle: Text(user.id),
+        // #Pangea
+        // subtitle: Text(user.id),
+        subtitle: UserSummaryAnalyticsRow(userID: user.id),
+        // Pangea#
         leading: Avatar(
           mxContent: user.avatarUrl,
           name: user.calcDisplayname(),

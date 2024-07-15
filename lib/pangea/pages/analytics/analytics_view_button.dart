@@ -5,10 +5,16 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 class AnalyticsViewButton extends StatelessWidget {
   final BarChartViewSelection value;
   final void Function(BarChartViewSelection) onChange;
+  final List<BarChartViewSelection> enabledViews;
   const AnalyticsViewButton({
     super.key,
     required this.value,
     required this.onChange,
+    this.enabledViews = const [
+      BarChartViewSelection.messages,
+      BarChartViewSelection.vocab,
+      BarChartViewSelection.grammar,
+    ],
   });
 
   @override
@@ -23,7 +29,7 @@ class AnalyticsViewButton extends StatelessWidget {
         }
         onChange(view);
       },
-      itemBuilder: (BuildContext context) => BarChartViewSelection.values
+      itemBuilder: (BuildContext context) => enabledViews
           .map<PopupMenuEntry<BarChartViewSelection>>(
               (BarChartViewSelection view) {
         return PopupMenuItem<BarChartViewSelection>(

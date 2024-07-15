@@ -58,11 +58,11 @@ class AnalyticsSpaceListController extends State<AnalyticsSpaceList> {
     setState(() {});
   }
 
-  Future<void> setTargetLanguages() async {
+  void setTargetLanguages() {
     if (spaces.isEmpty) return;
     final Map<LanguageModel, int> langCounts = {};
     for (final Room space in spaces) {
-      final List<LanguageModel> targetLangs = await space.targetLanguages();
+      final List<LanguageModel> targetLangs = space.roomTargetLanguages();
       for (final LanguageModel lang in targetLangs) {
         langCounts[lang] ??= 0;
         langCounts[lang] = langCounts[lang]! + 1;

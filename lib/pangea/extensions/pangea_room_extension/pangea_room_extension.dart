@@ -4,10 +4,8 @@ import 'dart:developer';
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/constants/class_default_values.dart';
-import 'package:fluffychat/pangea/constants/language_constants.dart';
 import 'package:fluffychat/pangea/constants/model_keys.dart';
 import 'package:fluffychat/pangea/constants/pangea_room_types.dart';
-import 'package:fluffychat/pangea/controllers/language_list_controller.dart';
 import 'package:fluffychat/pangea/matrix_event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/models/analytics/analytics_event.dart';
 import 'package:fluffychat/pangea/models/analytics/constructs_event.dart';
@@ -138,8 +136,7 @@ extension PangeaRoom on Room {
 
   Event? get pangeaRoomRulesStateEvent => _pangeaRoomRulesStateEvent;
 
-  Future<List<LanguageModel>> targetLanguages() async =>
-      await _targetLanguages();
+  List<LanguageModel> roomTargetLanguages() => _roomTargetLanguages();
 
 // events
 
@@ -210,6 +207,8 @@ extension PangeaRoom on Room {
 // room_information
 
   Future<int> get numNonAdmins async => await _numNonAdmins;
+
+  List<User> get nonAdminsLocal => _nonAdminsLocal;
 
   DateTime? get creationTime => _creationTime;
 

@@ -26,7 +26,10 @@ class BarChartCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 14),
-            Expanded(
+            Container(
+              constraints: const BoxConstraints(
+                maxHeight: 300,
+              ),
               child: loadingData || barChart == null
                   ? const Center(
                       child: CircularProgressIndicator(),

@@ -73,6 +73,34 @@ extension GeneralInfoClientExtension on Client {
     return editEvents.slice(1).map((e) => e.eventId).toList();
   }
 
+  /// Returns a list of language models being learned by the users from a list of user ids.
+  /// The list may not be complete if the logged in user is not in some of the
+  /// user's analytics rooms. The list will be sorted by the number of
+  /// users who are learning each language.
+  List<LanguageModel> _targetLanguages({required List<String> userIDs}) {
+    final Map<LanguageModel, int> langCounts = {};
+    for (final Room room in rooms) {
+      if (!room.isAnalyticsRoom ||
+          room.creatorId == null ||
+          room.madeForLang == null) {
+        continue;
+      }
+
+      if (userIDs.contains(room.creatorId)) {
+        final lang = PangeaLanguage.byLangCode(room.madeForLang!);
+        langCounts[lang] ??= 0;
+        langCounts[lang] = langCounts[lang]! + 1;
+      }
+    }
+
+    // get a list of language models, sorted
+    // by the number of students who are learning that language
+    return langCounts.entries.map((entry) => entry.key).toList()
+      ..sort(
+        (a, b) => langCounts[b]!.compareTo(langCounts[a]!),
+      );
+  }
+
   String? _powerLevelName(int powerLevel, L10n l10n) => {
         0: l10n.user,
         50: l10n.moderator,

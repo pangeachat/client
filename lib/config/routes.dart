@@ -26,9 +26,7 @@ import 'package:fluffychat/pages/settings_notifications/settings_notifications.d
 import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/pages/settings_security/settings_security.dart';
 import 'package:fluffychat/pages/settings_style/settings_style.dart';
-import 'package:fluffychat/pangea/enum/bar_chart_view_enum.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
-import 'package:fluffychat/pangea/pages/analytics/student_analytics/student_analytics.dart';
 import 'package:fluffychat/pangea/pages/find_partner/find_partner.dart';
 import 'package:fluffychat/pangea/pages/p_user_age/p_user_age.dart';
 import 'package:fluffychat/pangea/pages/settings_learning/settings_learning.dart';
@@ -41,9 +39,6 @@ import 'package:fluffychat/widgets/log_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../pangea/pages/analytics/space_analytics/space_analytics.dart';
-import '../pangea/pages/analytics/space_list/space_list.dart';
 
 abstract class AppRoutes {
   static FutureOr<String?> loggedInRedirect(
@@ -165,38 +160,38 @@ abstract class AppRoutes {
           ),
           routes: [
             // #Pangea
-            GoRoute(
-              path: 'mylearning',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                const StudentAnalyticsPage(
-                  selectedView: BarChartViewSelection.messages,
-                ),
-              ),
-              redirect: loggedOutRedirect,
-            ),
-            GoRoute(
-              path: 'analytics',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                const AnalyticsSpaceList(),
-              ),
-              redirect: loggedOutRedirect,
-              routes: [
-                GoRoute(
-                  path: ':spaceid',
-                  pageBuilder: (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    const SpaceAnalyticsPage(
-                      selectedView: BarChartViewSelection.messages,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            // GoRoute(
+            //   path: 'mylearning',
+            //   pageBuilder: (context, state) => defaultPageBuilder(
+            //     context,
+            //     state,
+            //     const StudentAnalyticsPage(
+            //       selectedView: BarChartViewSelection.messages,
+            //     ),
+            //   ),
+            //   redirect: loggedOutRedirect,
+            // ),
+            // GoRoute(
+            //   path: 'analytics',
+            //   pageBuilder: (context, state) => defaultPageBuilder(
+            //     context,
+            //     state,
+            //     const AnalyticsSpaceList(),
+            //   ),
+            //   redirect: loggedOutRedirect,
+            //   routes: [
+            //     GoRoute(
+            //       path: ':spaceid',
+            //       pageBuilder: (context, state) => defaultPageBuilder(
+            //         context,
+            //         state,
+            //         const SpaceAnalyticsPage(
+            //           selectedView: BarChartViewSelection.messages,
+            //         ),
+            //       ),
+            //     ),
+            //   ],
+            // ),
             // Pangea#
             GoRoute(
               path: 'archive',

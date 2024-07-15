@@ -127,7 +127,7 @@ class ChatListItem extends StatelessWidget {
                         mxContent: room.avatar,
                         name: displayname,
                         //#Pangea
-                        littleIcon: room.roomTypeIcon,
+                        // littleIcon: room.roomTypeIcon,
                         // Pangea#
                         presenceUserId: directChatMatrixId,
                         presenceBackgroundColor: backgroundColor,

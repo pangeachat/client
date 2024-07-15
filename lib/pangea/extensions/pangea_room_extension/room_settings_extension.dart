@@ -40,10 +40,10 @@ extension RoomSettingsRoomExtension on Room {
 
   IconData? get _roomTypeIcon {
     if (membership == Membership.invite) return Icons.add;
-    if (isSpace) return Icons.school;
+    if (isSpace) return Icons.workspaces_outlined;
     if (isAnalyticsRoom) return Icons.analytics;
-    if (isDirectChat) return Icons.forum;
-    return Icons.group;
+    if (isDirectChat) return Icons.chat_outlined;
+    return Icons.chat_outlined;
   }
 
   Text _nameAndRoomTypeIcon([TextStyle? textStyle]) => Text.rich(

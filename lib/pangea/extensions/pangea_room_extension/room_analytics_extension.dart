@@ -2,7 +2,7 @@ part of "pangea_room_extension.dart";
 
 extension AnalyticsRoomExtension on Room {
   // Join analytics rooms in space
-  // Allows teachers to join analytics rooms without being invited
+  // Allows users to join analytics rooms without being invited
   Future<void> _joinAnalyticsRoomsInSpace() async {
     if (!isSpace) {
       debugPrint("joinAnalyticsRoomsInSpace called on non-space room");
@@ -14,32 +14,35 @@ extension AnalyticsRoomExtension on Room {
       return;
     }
 
-    // added delay because without it power levels don't load and user is not
-    // recognized as admin
-    await Future.delayed(const Duration(milliseconds: 500));
-    await postLoad();
+    // commenting this out for now so that other students can join analytics rooms
+    // a temporary solution until we are able to use the bot to get analytics
 
-    if (!isRoomAdmin) {
-      debugPrint("joinAnalyticsRoomsInSpace called by non-admin");
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "joinAnalyticsRoomsInSpace called by non-admin",
-        ),
-      );
-      return;
-    }
+    // // added delay because without it power levels don't load and user is not
+    // // recognized as admin
+    // await Future.delayed(const Duration(milliseconds: 500));
+    // await postLoad();
 
-    final spaceHierarchy = await client.getSpaceHierarchy(
-      id,
-      maxDepth: 1,
-    );
+    // if (!isRoomAdmin) {
+    //   debugPrint("joinAnalyticsRoomsInSpace called by non-admin");
+    //   Sentry.addBreadcrumb(
+    //     Breadcrumb(
+    //       message: "joinAnalyticsRoomsInSpace called by non-admin",
+    //     ),
+    //   );
+    //   return;
+    // }
 
-    final List<String> analyticsRoomIds = spaceHierarchy.rooms
-        .where(
-          (r) => r.roomType == PangeaRoomTypes.analytics,
-        )
-        .map((r) => r.roomId)
-        .toList();
+    await MatrixState.pangeaController.analytics.setLatestHierarchy(id);
+    final GetSpaceHierarchyResponse? spaceHierarchy =
+        MatrixState.pangeaController.analytics.getLatestSpaceHierarchy(id);
+
+    final List<String> analyticsRoomIds = spaceHierarchy?.rooms
+            .where(
+              (r) => r.roomType == PangeaRoomTypes.analytics,
+            )
+            .map((r) => r.roomId)
+            .toList() ??
+        [];
 
     for (final String roomID in analyticsRoomIds) {
       try {
@@ -84,10 +87,10 @@ extension AnalyticsRoomExtension on Room {
     }
   }
 
-  // Add analytics room to all spaces the user is a student in (1 analytics room to all spaces)
-  // So teachers can join them via space hierarchy
+  // Add analytics room to all spaces the user is in
+  // So other users can join them via space hierarchy
   // Will not always work, as there may be spaces where students don't have permission to add chats
-  // But allows teachers to join analytics rooms without being invited
+  // But allows users to join analytics rooms without being invited
   Future<void> _addAnalyticsRoomToSpaces() async {
     if (!isAnalyticsRoomOfUser(client.userID!)) {
       debugPrint("addAnalyticsRoomToSpaces called on non-analytics room");
@@ -99,7 +102,8 @@ extension AnalyticsRoomExtension on Room {
       return;
     }
 
-    for (final Room space in (await client.spaceImAStudentIn)) {
+    final List<Room> spaces = client.rooms.where((r) => r.isSpace).toList();
+    for (final Room space in spaces) {
       if (space.spaceChildren.any((sc) => sc.roomId == id)) continue;
       await space.addAnalyticsRoomToSpace(this);
     }

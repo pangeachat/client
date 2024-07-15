@@ -1,4 +1,5 @@
 import 'package:fluffychat/pangea/models/language_model.dart';
+import 'package:fluffychat/pangea/widgets/flag.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
@@ -32,18 +33,11 @@ class AnalyticsLanguageButton extends StatelessWidget {
           child: Text(lang.getDisplayName(context) ?? lang.langCode),
         );
       }).toList(),
-      child: TextButton.icon(
-        label: Text(
-          value.getDisplayName(context) ?? value.langCode,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onSurface,
-          ),
-        ),
-        icon: Icon(
-          Icons.language_outlined,
-          color: Theme.of(context).colorScheme.onSurface,
-        ),
+      child: TextButton(
         onPressed: null,
+        child: LanguageFlag(
+          language: value,
+        ),
       ),
     );
   }

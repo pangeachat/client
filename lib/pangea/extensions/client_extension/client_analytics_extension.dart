@@ -74,11 +74,13 @@ extension AnalyticsClientExtension on Client {
   }
 
   // Get all my analytics rooms
-  List<Room> get _allMyAnalyticsRooms => rooms
+  List<Room> _allUserAnalyticsRooms(String userId) => rooms
       .where(
-        (e) => e.isAnalyticsRoomOfUser(userID!),
+        (e) => e.isAnalyticsRoomOfUser(userId),
       )
       .toList();
+
+  List<Room> get _allMyAnalyticsRooms => _allUserAnalyticsRooms(userID!);
 
   // migration function to change analytics rooms' vsibility to public
   // so they will appear in the space hierarchy
@@ -166,5 +168,15 @@ extension AnalyticsClientExtension on Client {
       lastUpdatedMap[analyticsRoom.id] = lastUpdated;
     }
     return lastUpdatedMap;
+  }
+
+  bool _userAnalyticsAvailable({
+    required String userID,
+    String? langCode,
+  }) {
+    langCode ??=
+        MatrixState.pangeaController.analytics.currentAnalyticsLang.langCode;
+    final Room? analyticsRoom = _analyticsRoomLocal(langCode, userID);
+    return analyticsRoom != null;
   }
 }

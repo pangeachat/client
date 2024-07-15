@@ -1,4 +1,6 @@
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/pages/analytics/base_analytics.dart';
+import 'package:fluffychat/pangea/pages/chat_details/room_details_analytics.dart';
 import 'package:fluffychat/pangea/utils/bot_name.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
@@ -246,6 +248,20 @@ class UserBottomSheetView extends StatelessWidget {
                     ),
                   ],
                 ),
+                // #Pangea
+                if (userId != BotName.byEnvironment)
+                  Expanded(
+                    child: Container(
+                      constraints: const BoxConstraints(maxHeight: 400),
+                      child: SingleChildScrollView(
+                        child: AnalyticsDetailsDisplay(
+                          id: userId,
+                          type: AnalyticsEntryType.student,
+                        ),
+                      ),
+                    ),
+                  ),
+                // Pangea#
                 if (userId != client.userID)
                   Padding(
                     padding: const EdgeInsets.symmetric(

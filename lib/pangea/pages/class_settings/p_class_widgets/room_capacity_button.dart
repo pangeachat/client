@@ -6,24 +6,24 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:future_loading_dialog/future_loading_dialog.dart';
 import 'package:matrix/matrix.dart';
 
-class RoomCapacityButton extends StatefulWidget {
+class RoomCapacityListTile extends StatefulWidget {
   final Room? room;
   final ChatDetailsController? controller;
-  const RoomCapacityButton({
+  const RoomCapacityListTile({
     super.key,
     this.room,
     this.controller,
   });
 
   @override
-  RoomCapacityButtonState createState() => RoomCapacityButtonState();
+  RoomCapacityListTileState createState() => RoomCapacityListTileState();
 }
 
-class RoomCapacityButtonState extends State<RoomCapacityButton> {
+class RoomCapacityListTileState extends State<RoomCapacityListTile> {
   int? capacity;
   String? nonAdmins;
 
-  RoomCapacityButtonState({Key? key});
+  RoomCapacityListTileState({Key? key});
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class RoomCapacityButtonState extends State<RoomCapacityButton> {
   }
 
   @override
-  void didUpdateWidget(RoomCapacityButton oldWidget) {
+  void didUpdateWidget(RoomCapacityListTile oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.room != widget.room) {
       capacity = widget.room?.capacity;
@@ -78,13 +78,11 @@ class RoomCapacityButtonState extends State<RoomCapacityButton> {
             foregroundColor: iconColor,
             child: const Icon(Icons.reduce_capacity),
           ),
-          subtitle: Text(
-            (capacity == null)
-                ? L10n.of(context)!.capacityNotSet
-                : (nonAdmins != null)
-                    ? '$nonAdmins/$capacity'
-                    : '$capacity',
-          ),
+          subtitle: capacity != null
+              ? Text(
+                  (nonAdmins != null) ? '$nonAdmins/$capacity' : '$capacity',
+                )
+              : null,
           title: Text(
             L10n.of(context)!.roomCapacity,
             style: TextStyle(
@@ -92,6 +90,7 @@ class RoomCapacityButtonState extends State<RoomCapacityButton> {
               fontWeight: FontWeight.bold,
             ),
           ),
+          trailing: const Icon(Icons.edit),
         ),
       ],
     );

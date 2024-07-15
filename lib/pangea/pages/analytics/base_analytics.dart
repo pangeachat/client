@@ -47,7 +47,6 @@ class BaseAnalyticsPage extends StatefulWidget {
 class BaseAnalyticsController extends State<BaseAnalyticsPage> {
   final PangeaController pangeaController = MatrixState.pangeaController;
   AnalyticsSelected? selected;
-  String? currentLemma;
   ChartAnalyticsModel? chartData;
   StreamController refreshStream = StreamController.broadcast();
   BarChartViewSelection currentView = BarChartViewSelection.messages;
@@ -137,6 +136,7 @@ class BaseAnalyticsController extends State<BaseAnalyticsPage> {
   }
 
   Future<void> setChartData({forceUpdate = false}) async {
+    debugPrint("set chart data");
     final ChartAnalyticsModel newData = await fetchChartData(
       selected,
       forceUpdate: forceUpdate,
@@ -150,7 +150,6 @@ class BaseAnalyticsController extends State<BaseAnalyticsPage> {
   Future<void> toggleSelection(AnalyticsSelected selectedParam) async {
     setState(() {
       debugPrint("selectedParam.id is ${selectedParam.id}");
-      currentLemma = null;
       selected = isSelected(selectedParam.id) ? null : selectedParam;
     });
     await setChartData();
@@ -173,12 +172,6 @@ class BaseAnalyticsController extends State<BaseAnalyticsPage> {
   Future<void> toggleView(BarChartViewSelection view) async {
     currentView = view;
     await setChartData();
-    refreshStream.add(false);
-  }
-
-  void setCurrentLemma(String? lemma) {
-    currentLemma = lemma;
-    setState(() {});
     refreshStream.add(false);
   }
 

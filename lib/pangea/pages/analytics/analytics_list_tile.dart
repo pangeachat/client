@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:fluffychat/pangea/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension/pangea_room_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
@@ -101,7 +100,7 @@ class AnalyticsListTileState extends State<AnalyticsListTile> {
             : Avatar(
                 mxContent: widget.avatar,
                 name: widget.selected.displayName,
-                littleIcon: room?.roomTypeIcon,
+                // littleIcon: room?.roomTypeIcon,
               ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

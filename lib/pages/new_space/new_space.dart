@@ -37,8 +37,8 @@ class NewSpaceController extends State<NewSpace> {
   // commenting out language settings in spaces for now
   // final GlobalKey<LanguageSettingsState> languageSettingsKey =
   //     GlobalKey<LanguageSettingsState>();
-  final GlobalKey<RoomCapacityButtonState> addCapacityKey =
-      GlobalKey<RoomCapacityButtonState>();
+  final GlobalKey<RoomCapacityListTileState> addCapacityKey =
+      GlobalKey<RoomCapacityListTileState>();
 
   //Pangea#
   bool loading = false;

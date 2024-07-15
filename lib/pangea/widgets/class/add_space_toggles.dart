@@ -194,11 +194,11 @@ class AddToSpaceState extends State<AddToSpaceToggles> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          subtitle: Text(
-            widget.spaceMode || (room?.isSpace ?? false)
-                ? L10n.of(context)!.addSpaceToSpaceDesc
-                : L10n.of(context)!.addChatToSpaceDesc,
-          ),
+          // subtitle: Text(
+          //   widget.spaceMode || (room?.isSpace ?? false)
+          //       ? L10n.of(context)!.addSpaceToSpaceDesc
+          //       : L10n.of(context)!.addChatToSpaceDesc,
+          // ),
           leading: CircleAvatar(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             foregroundColor: Theme.of(context).textTheme.bodyLarge!.color,
@@ -213,53 +213,73 @@ class AddToSpaceState extends State<AddToSpaceToggles> {
             setState(() => isOpen = !isOpen);
           },
         ),
-        if (isOpen) ...[
-          const Divider(height: 1),
-          possibleParents.isNotEmpty
-              ? Column(
-                  children: [
-                    SwitchListTile.adaptive(
-                      title: Text(
-                        widget.spaceMode || (room?.isSpace ?? false)
-                            ? L10n.of(context)!.suggestToSpace
-                            : L10n.of(context)!.suggestToChat,
-                      ),
-                      secondary: Icon(
-                        isSuggested
-                            ? Icons.visibility_outlined
-                            : Icons.visibility_off_outlined,
-                      ),
-                      subtitle: Text(
-                        widget.spaceMode || (room?.isSpace ?? false)
-                            ? L10n.of(context)!.suggestToSpaceDesc
-                            : L10n.of(context)!.suggestToChatDesc,
-                      ),
-                      activeColor: AppConfig.activeToggleColor,
-                      value: isSuggested,
-                      onChanged: (bool add) => setSuggested(add),
-                    ),
-                    Divider(
-                      height: 0.5,
-                      color:
-                          Theme.of(context).colorScheme.secondary.withAlpha(25),
-                    ),
-                    ...possibleParents.mapIndexed(
-                      (index, _) => getAddToSpaceToggleItem(index),
-                    ),
-                  ],
-                )
-              : Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      L10n.of(context)!.inNoSpaces,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                      ),
+        if (isOpen)
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Column(
+              children: [
+                // const Divider(height: 1),
+                // move subTitle text to a ListTile that is only shown when isOpen
+                ListTile(
+                  subtitle: Text(
+                    widget.spaceMode || (room?.isSpace ?? false)
+                        ? L10n.of(context)!.addSpaceToSpaceDesc
+                        : L10n.of(context)!.addChatToSpaceDesc,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   ),
                 ),
-        ],
+                possibleParents.isNotEmpty
+                    ? Column(
+                        children: [
+                          SwitchListTile.adaptive(
+                            title: Text(
+                              widget.spaceMode || (room?.isSpace ?? false)
+                                  ? L10n.of(context)!.suggestToSpace
+                                  : L10n.of(context)!.suggestToChat,
+                            ),
+                            secondary: Icon(
+                              isSuggested
+                                  ? Icons.visibility_outlined
+                                  : Icons.visibility_off_outlined,
+                            ),
+                            subtitle: Text(
+                              widget.spaceMode || (room?.isSpace ?? false)
+                                  ? L10n.of(context)!.suggestToSpaceDesc
+                                  : L10n.of(context)!.suggestToChatDesc,
+                            ),
+                            activeColor: AppConfig.activeToggleColor,
+                            value: isSuggested,
+                            onChanged: (bool add) => setSuggested(add),
+                          ),
+                          Divider(
+                            height: 0.5,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .secondary
+                                .withAlpha(25),
+                          ),
+                          ...possibleParents.mapIndexed(
+                            (index, _) => getAddToSpaceToggleItem(index),
+                          ),
+                        ],
+                      )
+                    : Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            L10n.of(context)!.inNoSpaces,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.secondary,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ),
+                      ),
+              ],
+            ),
+          ),
       ],
     );
   }

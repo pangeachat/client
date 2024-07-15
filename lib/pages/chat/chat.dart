@@ -1703,6 +1703,14 @@ class ChatController extends State<ChatPageWithRoom>
                       ),
                     ),
                   ),
+                  // #Pangea
+                  // child: ChatDetails(
+                  //   roomId: roomId,
+                  //   embeddedCloseButton: IconButton(
+                  //     icon: const Icon(Icons.close),
+                  //     onPressed: toggleDisplayChatDetailsColumn,
+                  //   ),
+                  // ),
                   child: ChatDetails(
                     roomId: roomId,
                     embeddedCloseButton: IconButton(
@@ -1710,6 +1718,7 @@ class ChatController extends State<ChatPageWithRoom>
                       onPressed: toggleDisplayChatDetailsColumn,
                     ),
                   ),
+                  // Pangea#
                 );
               },
             ),

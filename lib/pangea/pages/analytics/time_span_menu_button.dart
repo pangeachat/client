@@ -24,8 +24,9 @@ class TimeSpanMenuButton extends StatelessWidget {
         }
         onChange(timeSpan);
       },
-      itemBuilder: (BuildContext context) =>
-          TimeSpan.values.map<PopupMenuEntry<TimeSpan>>((TimeSpan timeSpan) {
+      itemBuilder: (BuildContext context) => TimeSpan.values
+          .where((value) => value != TimeSpan.forever)
+          .map<PopupMenuEntry<TimeSpan>>((TimeSpan timeSpan) {
         return PopupMenuItem<TimeSpan>(
           value: timeSpan,
           child: Text(timeSpan.string(context)),

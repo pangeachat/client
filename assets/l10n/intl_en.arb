@@ -4105,6 +4105,28 @@
     "placeholders": {}
   },
   "changeAnalyticsView": "Change Analytics View",
+  "messagesSent": "Messages Sent",
+  "wordsUsed": "Words Used",
+  "errorTypes": "Error Types",
+  "level": "Level",
+  "chatAnalytics": "Chat Analytics",
+  "roomDetails": "Chat Details",
+  "spaceDetails": "Space Details",
+  "participants": "Participants",
+  "levelNumber": "Level {level}",
+  "@levelNumber": {
+    "type": "text",
+    "placeholders": {
+      "level": {}
+    }
+  },
+  "xpPoints": "{points} xp",
+  "@xpPoints": {
+    "type": "text",
+    "placeholders": {
+      "points": {}
+    }
+  },
   "l1TranslationBody": "Oops! It looks like this message wasn't sent in your target language. Messages not sent in your target language will not be translated.",
   "continueText": "Continue",
   "deleteSubscriptionWarningTitle": "You have an active subscription",

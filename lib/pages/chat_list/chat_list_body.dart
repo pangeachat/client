@@ -6,6 +6,7 @@ import 'package:fluffychat/pages/chat_list/space_view.dart';
 import 'package:fluffychat/pages/chat_list/utils/on_chat_tap.dart';
 import 'package:fluffychat/pages/user_bottom_sheet/user_bottom_sheet.dart';
 import 'package:fluffychat/pangea/widgets/chat_list/chat_list_body_text.dart';
+import 'package:fluffychat/pangea/widgets/chat_list/learning_progress_indicators.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -162,6 +163,9 @@ class ChatListViewBody extends StatelessWidget {
                           title: L10n.of(context)!.chats,
                           icon: const Icon(Icons.forum_outlined),
                         ),
+                      // #Pangea
+                      const LearningProgressIndicators(),
+                      // Pangea#
                       if (client.prevBatch != null &&
                           rooms.isEmpty &&
                           !controller.isSearchMode) ...[

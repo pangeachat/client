@@ -92,32 +92,12 @@ extension SpaceRoomExtension on Room {
     return null;
   }
 
-  Future<List<LanguageModel>> _targetLanguages() async {
-    await requestParticipants();
-    final students = _students;
-
-    final Map<LanguageModel, int> langCounts = {};
-    final List<Room> allRooms = client.rooms;
-    for (final User student in students) {
-      for (final Room room in allRooms) {
-        if (!room.isAnalyticsRoomOfUser(student.id)) continue;
-        final String? langCode = room.madeForLang;
-        if (langCode == null ||
-            langCode.isEmpty ||
-            langCode == LanguageKeys.unknownLanguage) {
-          continue;
-        }
-        final LanguageModel lang = PangeaLanguage.byLangCode(langCode);
-        langCounts[lang] ??= 0;
-        langCounts[lang] = langCounts[lang]! + 1;
-      }
-    }
-    // get a list of language models, sorted
-    // by the number of students who are learning that language
-    return langCounts.entries.map((entry) => entry.key).toList()
-      ..sort(
-        (a, b) => langCounts[b]!.compareTo(langCounts[a]!),
-      );
+  List<LanguageModel> _roomTargetLanguages() {
+    final List<String> participantIds = getParticipants()
+        .where((user) => user.id != BotName.byEnvironment)
+        .map((user) => user.id)
+        .toList();
+    return client.targetLanguages(userIDs: participantIds);
   }
 
   // DateTime? get _languageSettingsUpdatedAt {

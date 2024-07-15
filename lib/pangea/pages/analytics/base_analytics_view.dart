@@ -32,13 +32,13 @@ class BaseAnalyticsView extends StatelessWidget {
         );
       case BarChartViewSelection.grammar:
         return ConstructList(
+          id: controller.widget.defaultSelected.id,
+          type: controller.widget.defaultSelected.type,
           constructType: ConstructTypeEnum.grammar,
-          defaultSelected: controller.widget.defaultSelected,
-          selected: controller.selected,
-          controller: controller,
           pangeaController: controller.pangeaController,
-          refreshStream: controller.refreshStream,
         );
+      default:
+        return const SizedBox.shrink();
     }
   }
 
@@ -100,6 +100,10 @@ class BaseAnalyticsView extends StatelessWidget {
                 AnalyticsViewButton(
                   value: controller.currentView,
                   onChange: controller.toggleView,
+                  enabledViews: const [
+                    BarChartViewSelection.messages,
+                    BarChartViewSelection.grammar,
+                  ],
                 ),
                 AnalyticsLanguageButton(
                   value: controller
@@ -112,10 +116,7 @@ class BaseAnalyticsView extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Expanded(
-              flex: 1,
-              child: chartView(context),
-            ),
+            chartView(context),
             Expanded(
               flex: 1,
               child: DefaultTabController(

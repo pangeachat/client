@@ -80,6 +80,8 @@ android {
         pickFirst 'lib/armeabi-v7a/libc++_shared.so'
         pickFirst 'lib/arm64-v8a/libc++_shared.so'
     }
+
+    ndkVersion "25.1.8937393"
 }
 
 flutter {

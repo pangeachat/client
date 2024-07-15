@@ -1,6 +1,14 @@
 part of "pangea_room_extension.dart";
 
 extension RoomInformationRoomExtension on Room {
+  List<User> get _nonAdminsLocal => getParticipants()
+      .where(
+        (e) =>
+            e.powerLevel < ClassDefaultValues.powerLevelOfAdmin &&
+            e.id != BotName.byEnvironment,
+      )
+      .toList();
+
   Future<int> get _numNonAdmins async {
     return (await requestParticipants())
         .where(

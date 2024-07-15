@@ -57,14 +57,14 @@ class MyAnalyticsController {
   /// If analytics haven't been updated in the last day, update them
   Future<DateTime?> _refreshAnalyticsIfOutdated() async {
     DateTime? lastUpdated = await _pangeaController.analytics
-        .myAnalyticsLastUpdated(PangeaEventTypes.summaryAnalytics);
+        .userAnalyticsLastUpdated(PangeaEventTypes.summaryAnalytics);
     final DateTime yesterday = DateTime.now().subtract(_timeSinceUpdate);
 
     if (lastUpdated?.isBefore(yesterday) ?? true) {
       debugPrint("analytics out-of-date, updating");
       await updateAnalytics();
       lastUpdated = await _pangeaController.analytics
-          .myAnalyticsLastUpdated(PangeaEventTypes.summaryAnalytics);
+          .userAnalyticsLastUpdated(PangeaEventTypes.summaryAnalytics);
     }
     return lastUpdated;
   }

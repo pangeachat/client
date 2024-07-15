@@ -6,7 +6,7 @@ import 'package:fluffychat/pangea/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/enum/construct_type_enum.dart';
 import 'package:fluffychat/pangea/matrix_event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/matrix_event_wrappers/pangea_representation_event.dart';
-import 'package:fluffychat/pangea/models/analytics/constructs_event.dart';
+import 'package:fluffychat/pangea/models/analytics/construct_list_model.dart';
 import 'package:fluffychat/pangea/models/analytics/constructs_model.dart';
 import 'package:fluffychat/pangea/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/pages/analytics/base_analytics.dart';
@@ -20,20 +20,16 @@ import 'package:matrix/matrix.dart';
 
 class ConstructList extends StatefulWidget {
   final ConstructTypeEnum constructType;
-  final AnalyticsSelected defaultSelected;
-  final AnalyticsSelected? selected;
-  final BaseAnalyticsController controller;
+  final String id;
+  final AnalyticsEntryType type;
   final PangeaController pangeaController;
-  final StreamController refreshStream;
 
   const ConstructList({
     super.key,
+    required this.id,
+    required this.type,
     required this.constructType,
-    required this.defaultSelected,
-    required this.controller,
     required this.pangeaController,
-    required this.refreshStream,
-    this.selected,
   });
 
   @override
@@ -53,11 +49,10 @@ class ConstructListState extends State<ConstructList> {
         : Column(
             children: [
               ConstructListView(
-                controller: widget.controller,
+                id: widget.id,
+                type: widget.type,
+                constructType: widget.constructType,
                 pangeaController: widget.pangeaController,
-                defaultSelected: widget.defaultSelected,
-                selected: widget.selected,
-                refreshStream: widget.refreshStream,
               ),
             ],
           );
@@ -74,19 +69,17 @@ class ConstructListState extends State<ConstructList> {
 //    subtitle = total uses, equal to construct.content.uses.length
 // list has a fixed height of 400 and is scrollable
 class ConstructListView extends StatefulWidget {
-  final BaseAnalyticsController controller;
+  final String id;
+  final AnalyticsEntryType type;
+  final ConstructTypeEnum constructType;
   final PangeaController pangeaController;
-  final AnalyticsSelected defaultSelected;
-  final AnalyticsSelected? selected;
-  final StreamController refreshStream;
 
   const ConstructListView({
     super.key,
-    required this.controller,
+    required this.id,
+    required this.type,
+    required this.constructType,
     required this.pangeaController,
-    required this.defaultSelected,
-    required this.refreshStream,
-    this.selected,
   });
 
   @override
@@ -94,58 +87,71 @@ class ConstructListView extends StatefulWidget {
 }
 
 class ConstructListViewState extends State<ConstructListView> {
-  final ConstructTypeEnum constructType = ConstructTypeEnum.grammar;
   final Map<String, Timeline> _timelinesCache = {};
   final Map<String, PangeaMessageEvent> _msgEventCache = {};
   final List<PangeaMessageEvent> _msgEvents = [];
   bool fetchingConstructs = true;
   bool fetchingUses = false;
-  StreamSubscription? refreshSubscription;
+  String? currentLemma;
+  StreamSubscription? stateSub;
+  ConstructListModel? constructsModel;
 
   @override
   void initState() {
     super.initState();
-    widget.pangeaController.analytics
-        .getConstructs(
-          constructType: constructType,
-          removeIT: true,
-          defaultSelected: widget.defaultSelected,
-          selected: widget.selected,
-          forceUpdate: true,
-        )
-        .whenComplete(() => setState(() => fetchingConstructs = false))
-        .then((value) => setState(() => _constructs = value));
-
-    refreshSubscription = widget.refreshStream.stream.listen((forceUpdate) {
-      // postframe callback to let widget rebuild with the new selected parameter
-      // before sending selected to getConstructs function
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        widget.pangeaController.analytics
-            .getConstructs(
-              constructType: constructType,
-              removeIT: true,
-              defaultSelected: widget.defaultSelected,
-              selected: widget.selected,
-              forceUpdate: true,
-            )
-            .then(
-              (value) => setState(() {
-                _constructs = value;
-              }),
-            );
-      });
+    updateConstructs();
+    stateSub = widget.pangeaController.analytics.stateStream.listen((_) {
+      updateConstructs();
     });
   }
 
   @override
+  void didUpdateWidget(covariant ConstructListView oldWidget) {
+    if (oldWidget.constructType != widget.constructType) {
+      updateConstructs();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   void dispose() {
-    refreshSubscription?.cancel();
+    stateSub?.cancel();
     super.dispose();
   }
 
+  void updateConstructs() {
+    setState(() => fetchingConstructs = true);
+    // postframe callback to let widget rebuild with the new selected parameter
+    // before sending selected to getConstructs function
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.pangeaController.analytics
+          .getConstructsById(
+        constructType: widget.constructType,
+        id: widget.id,
+        type: widget.type,
+      )
+          .then(
+        (value) {
+          if (mounted) {
+            setState(() {
+              constructsModel = ConstructListModel(
+                type: widget.constructType,
+                constructEvents: value ?? [],
+              );
+            });
+          }
+        },
+      ).whenComplete(() {
+        if (mounted) {
+          setState(() => fetchingConstructs = false);
+        }
+      });
+    });
+  }
+
   int get lemmaIndex =>
-      constructs?.indexWhere(
-        (element) => element.lemma == widget.controller.currentLemma,
+      constructsModel?.constructs.indexWhere(
+        (element) => element.lemma == currentLemma,
       ) ??
       -1;
 
@@ -217,48 +223,9 @@ class ConstructListViewState extends State<ConstructListView> {
     }
   }
 
-  List<ConstructAnalyticsEvent>? _constructs;
-
-  List<ConstructUses>? get constructs {
-    if (_constructs == null) {
-      return null;
-    }
-
-    final List<OneConstructUse> filtered = List.from(_constructs!)
-        .map((event) => event.content.uses)
-        .expand((uses) => uses)
-        .cast<OneConstructUse>()
-        .where((use) => use.constructType == constructType)
-        .toList();
-
-    final Map<String, List<OneConstructUse>> lemmaToUses = {};
-    for (final use in filtered) {
-      if (use.lemma == null) continue;
-      lemmaToUses[use.lemma!] ??= [];
-      lemmaToUses[use.lemma!]!.add(use);
-    }
-
-    final constructUses = lemmaToUses.entries
-        .map(
-          (entry) => ConstructUses(
-            lemma: entry.key,
-            uses: entry.value,
-            constructType: constructType,
-          ),
-        )
-        .toList();
-
-    constructUses.sort((a, b) {
-      final comp = b.uses.length.compareTo(a.uses.length);
-      if (comp != 0) return comp;
-      return a.lemma.compareTo(b.lemma);
-    });
-
-    return constructUses;
-  }
-
-  ConstructUses? get currentConstruct => constructs?.firstWhereOrNull(
-        (element) => element.lemma == widget.controller.currentLemma,
+  ConstructUses? get currentConstruct =>
+      constructsModel?.constructs.firstWhereOrNull(
+        (element) => element.lemma == currentLemma,
       );
 
   // given the current lemma and list of message events, return a list of
@@ -266,7 +233,7 @@ class ConstructListViewState extends State<ConstructListView> {
   // this is because some message events may have has more than one PangeaMatch of a
   // given lemma type.
   List<MessageEventMatch> getMessageEventMatches() {
-    if (widget.controller.currentLemma == null) return [];
+    if (currentLemma == null) return [];
     final List<MessageEventMatch> allMsgErrorSteps = [];
 
     for (final msgEvent in _msgEvents) {
@@ -277,7 +244,7 @@ class ConstructListViewState extends State<ConstructListView> {
       }
       // get all the pangea matches in that message which have that lemma
       final List<PangeaMatch>? msgErrorSteps = msgEvent.errorSteps(
-        widget.controller.currentLemma!,
+        currentLemma!,
       );
       if (msgErrorSteps == null) continue;
 
@@ -294,45 +261,56 @@ class ConstructListViewState extends State<ConstructListView> {
   }
 
   Future<void> showConstructMessagesDialog() async {
+    if (widget.constructType != ConstructTypeEnum.grammar) {
+      return; // only show for grammar constructs
+    }
+
     await showDialog<ConstructMessagesDialog>(
       context: context,
       builder: (c) => ConstructMessagesDialog(controller: this),
     );
   }
 
+  void setCurrentLemma(String? lemma) {
+    setState(() => currentLemma = lemma);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (fetchingConstructs || fetchingUses) {
-      return const Expanded(
-        child: Center(child: CircularProgressIndicator()),
+      return Container(
+        constraints: const BoxConstraints(maxHeight: 400),
+        child: const Center(child: CircularProgressIndicator()),
       );
     }
 
-    if (constructs?.isEmpty ?? true) {
-      return Expanded(
+    if (constructsModel?.constructs.isEmpty ?? true) {
+      return Container(
+        constraints: const BoxConstraints(maxHeight: 400),
         child: Center(child: Text(L10n.of(context)!.noDataFound)),
       );
     }
 
-    return Expanded(
-      child: ListView.builder(
-        itemCount: constructs!.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(
-              constructs![index].lemma,
+    return Column(
+      children: constructsModel!.constructs
+          .map(
+            (construct) => ListTile(
+              title: Text(
+                construct.lemma,
+              ),
+              subtitle: Text(
+                '${L10n.of(context)!.total} ${construct.uses.length}',
+              ),
+              onTap: widget.constructType == ConstructTypeEnum.grammar
+                  ? () async {
+                      final String lemma = construct.lemma;
+                      setCurrentLemma(lemma);
+                      fetchUses().then((_) => showConstructMessagesDialog());
+                    }
+                  : null,
             ),
-            subtitle: Text(
-              '${L10n.of(context)!.total} ${constructs![index].uses.length}',
-            ),
-            onTap: () async {
-              final String lemma = constructs![index].lemma;
-              widget.controller.setCurrentLemma(lemma);
-              fetchUses().then((_) => showConstructMessagesDialog());
-            },
-          );
-        },
-      ),
+          )
+          .toList(),
     );
   }
 }
@@ -346,20 +324,22 @@ class ConstructMessagesDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.widget.controller.currentLemma == null ||
-        controller.constructs == null ||
+    if (controller.currentLemma == null ||
+        controller.constructsModel == null ||
         controller.lemmaIndex < 0 ||
-        controller.lemmaIndex >= controller.constructs!.length) {
+        controller.lemmaIndex >=
+            controller.constructsModel!.constructs.length) {
       return const AlertDialog(content: CircularProgressIndicator.adaptive());
     }
 
     final msgEventMatches = controller.getMessageEventMatches();
 
-    final noData = controller.constructs![controller.lemmaIndex].uses.length >
+    final noData = controller
+            .constructsModel!.constructs[controller.lemmaIndex].uses.length >
         controller._msgEvents.length;
 
     return AlertDialog(
-      title: Center(child: Text(controller.widget.controller.currentLemma!)),
+      title: Center(child: Text(controller.currentLemma!)),
       content: SizedBox(
         height: noData ? 90 : 250,
         width: noData ? 200 : 400,
@@ -380,7 +360,7 @@ class ConstructMessagesDialog extends StatelessWidget {
                       children: [
                         ConstructMessage(
                           msgEvent: event.msgEvent,
-                          lemma: controller.widget.controller.currentLemma!,
+                          lemma: controller.currentLemma!,
                           errorMessage: event.lemmaMatch,
                         ),
                         if (index < msgEventMatches.length - 1)

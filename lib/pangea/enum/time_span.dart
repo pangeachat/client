@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import '../models/analytics/chart_analytics_model.dart';
 
-enum TimeSpan { day, week, month, sixmonths, year }
+enum TimeSpan { day, week, month, sixmonths, year, forever }
 
 extension TimeSpanFunctions on TimeSpan {
   String string(BuildContext context) {
@@ -35,6 +35,8 @@ extension TimeSpanFunctions on TimeSpan {
         return 6;
       case TimeSpan.year:
         return 12;
+      default:
+        return 0;
     }
   }
 
@@ -48,6 +50,8 @@ extension TimeSpanFunctions on TimeSpan {
       case TimeSpan.year:
       case TimeSpan.sixmonths:
         return Duration(days: index * 32);
+      default:
+        return Duration.zero;
     }
   }
 
@@ -65,6 +69,8 @@ extension TimeSpanFunctions on TimeSpan {
         return DateTime.now().subtract(Duration(days: numberOfIntervals * 30));
       case TimeSpan.year:
         return DateTime.now().subtract(const Duration(days: 365));
+      case TimeSpan.forever:
+        return DateTime(2020);
     }
   }
 
@@ -79,6 +85,8 @@ extension TimeSpanFunctions on TimeSpan {
       case TimeSpan.sixmonths:
       case TimeSpan.year:
         return date.month.toString();
+      default:
+        return "Invalid time span";
     }
   }
 

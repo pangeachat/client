@@ -68,18 +68,20 @@ class SpaceAnalyticsV2Controller extends State<SpaceAnalyticsPage> {
       await spaceRoom?.requestParticipants();
 
       if (spaceRoom != null) {
-        final response = await Matrix.of(context).client.getSpaceHierarchy(
-              spaceRoom!.id,
-            );
+        students = spaceRoom!.students;
 
         // set the latest fetched full hierarchy in message analytics controller
         // we want to avoid calling this endpoint again and again, so whenever the
         // data is made available, set it in the controller
-        MatrixState.pangeaController.analytics
-            .setLatestHierarchy(_spaceRoom!.id, response);
+        await MatrixState.pangeaController.analytics
+            .setLatestHierarchy(_spaceRoom!.id);
+        final resp = MatrixState.pangeaController.analytics
+            .getLatestSpaceHierarchy(_spaceRoom!.id);
+        if (resp == null) {
+          return;
+        }
 
-        students = spaceRoom!.students;
-        chats = response.rooms
+        chats = resp.rooms
             .where(
               (room) =>
                   room.roomId != spaceRoom!.id &&
@@ -98,10 +100,10 @@ class SpaceAnalyticsV2Controller extends State<SpaceAnalyticsPage> {
     }
   }
 
-  Future<void> setTargetLanguages() async {
+  void setTargetLanguages() {
     // get a list of language models, sorted by the
     // number of students who are learning that language
-    targetLanguages = await spaceRoom?.targetLanguages() ?? [];
+    targetLanguages = spaceRoom?.roomTargetLanguages() ?? [];
     setState(() {});
   }
 

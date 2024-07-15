@@ -126,13 +126,11 @@ class ChartAnalyticsModel {
     }
 
     for (final msg in unique.values) {
+      totals.increment(msg);
+      lastMessage = msg.time;
       final String key = timeSpan.getMapKey(msg.time);
-      if (intervals[key] == null) {
-        debugger(when: kDebugMode);
-      } else {
+      if (intervals[key] != null) {
         intervals[key]!.totals.increment(msg);
-        totals.increment(msg);
-        lastMessage = msg.time;
       }
     }
     timeSeries = intervals.values.toList().reversed.toList();
