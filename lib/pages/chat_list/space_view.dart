@@ -20,6 +20,7 @@ import 'package:future_loading_dialog/future_loading_dialog.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
+import 'package:fluffychat/pangea/utils/error_handler.dart';
 
 import '../../utils/localized_exception_extension.dart';
 import '../../widgets/matrix.dart';
@@ -516,6 +517,18 @@ class _SpaceViewState extends State<SpaceView> {
     final bool isAnalyticsRoom = sc.roomType == PangeaRoomTypes.analytics;
     final bool isMember = [Membership.join, Membership.invite]
         .contains(Matrix.of(context).client.getRoomById(sc.roomId)?.membership);
+    // Log if the room is null
+    if (Matrix.of(context).client.getRoomById(sc.roomId) == null) {
+      ErrorHandler.logError(
+        e: PangeaWarningError('Room is null in includeSpaceChild'),
+        s: StackTrace.current,
+        m: 'Room null in includeSpaceChild',
+        data: {
+          'roomId': sc.roomId,
+          'isMember': isMember,
+        },
+      );
+    }
     final bool isSuggested = matchingSpaceChildren.any(
       (matchingSpaceChild) =>
           matchingSpaceChild.roomId == sc.roomId &&
