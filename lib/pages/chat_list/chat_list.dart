@@ -945,7 +945,6 @@ class ChatListController extends State<ChatList>
       GoogleAnalytics.analyticsUserUpdate(client.userID);
       pangeaController.startChatWithBotIfNotPresent();
       await pangeaController.subscriptionController.initialize();
-      await pangeaController.myAnalytics.initialize();
       pangeaController.afterSyncAndFirstLoginInitialization(context);
       await pangeaController.inviteBotToExistingSpaces();
       await pangeaController.setPangeaPushRules();
