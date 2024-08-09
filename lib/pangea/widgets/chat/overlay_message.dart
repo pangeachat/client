@@ -4,6 +4,7 @@ import 'package:fluffychat/pangea/enum/use_type.dart';
 import 'package:fluffychat/pangea/matrix_event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/widgets/chat/message_toolbar.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
@@ -11,8 +12,6 @@ import '../../../config/app_config.dart';
 
 class OverlayMessage extends StatelessWidget {
   final Event event;
-  final Event? nextEvent;
-  final Event? previousEvent;
   final bool selected;
   final Timeline timeline;
   // final LanguageModel? selectedDisplayLang;
@@ -21,16 +20,16 @@ class OverlayMessage extends StatelessWidget {
   final bool ownMessage;
   final ToolbarDisplayController toolbarController;
   final double? width;
+  final bool showDown;
 
   const OverlayMessage(
     this.event, {
-    this.nextEvent,
-    this.previousEvent,
     this.selected = false,
     required this.timeline,
     required this.immersionMode,
     required this.ownMessage,
     required this.toolbarController,
+    required this.showDown,
     this.width,
     super.key,
   });
@@ -42,45 +41,20 @@ class OverlayMessage extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    var color = Theme.of(context).colorScheme.surfaceContainerHighest;
+    var color = Theme.of(context).colorScheme.surfaceContainer;
     final isLight = Theme.of(context).brightness == Brightness.light;
-    var lightness = isLight ? .05 : .85;
+    var lightness = isLight ? .05 : .2;
     final textColor = ownMessage
         ? Theme.of(context).colorScheme.onPrimary
         : Theme.of(context).colorScheme.onSurface;
 
     const hardCorner = Radius.circular(4);
-
-    final displayTime = event.type == EventTypes.RoomCreate ||
-        nextEvent == null ||
-        !event.originServerTs.sameEnvironment(nextEvent!.originServerTs);
-
-    final nextEventSameSender = nextEvent != null &&
-        {
-          EventTypes.Message,
-          EventTypes.Sticker,
-          EventTypes.Encrypted,
-        }.contains(nextEvent!.type) &&
-        nextEvent!.senderId == event.senderId &&
-        !displayTime;
-
-    final previousEventSameSender = previousEvent != null &&
-        {
-          EventTypes.Message,
-          EventTypes.Sticker,
-          EventTypes.Encrypted,
-        }.contains(previousEvent!.type) &&
-        previousEvent!.senderId == event.senderId &&
-        previousEvent!.originServerTs.sameEnvironment(event.originServerTs);
-
     const roundedCorner = Radius.circular(AppConfig.borderRadius);
     final borderRadius = BorderRadius.only(
-      topLeft: !ownMessage && nextEventSameSender ? hardCorner : roundedCorner,
-      topRight: ownMessage && nextEventSameSender ? hardCorner : roundedCorner,
-      bottomLeft:
-          !ownMessage && previousEventSameSender ? hardCorner : roundedCorner,
-      bottomRight:
-          ownMessage && previousEventSameSender ? hardCorner : roundedCorner,
+      topLeft: !showDown && !ownMessage ? hardCorner : roundedCorner,
+      topRight: !showDown && ownMessage ? hardCorner : roundedCorner,
+      bottomLeft: showDown && !ownMessage ? hardCorner : roundedCorner,
+      bottomRight: showDown && ownMessage ? hardCorner : roundedCorner,
     );
 
     final noBubble = {
@@ -101,16 +75,25 @@ class OverlayMessage extends StatelessWidget {
     // Make overlay a little darker/lighter than the message
     color = Color.fromARGB(
       color.alpha,
-      isLight
+      isLight || !ownMessage
           ? (color.red + lightness * (255 - color.red)).round()
           : (color.red * lightness).round(),
-      isLight
+      isLight || !ownMessage
           ? (color.green + lightness * (255 - color.green)).round()
           : (color.green * lightness).round(),
-      isLight
+      isLight || !ownMessage
           ? (color.blue + lightness * (255 - color.blue)).round()
           : (color.blue * lightness).round(),
     );
+
+    final double maxHeight = (MediaQuery.of(context).size.height -
+                (PlatformInfos.isWeb
+                    ? 225
+                    : PlatformInfos.isIOS
+                        ? 256
+                        : 198)) /
+            2 -
+        30;
 
     final pangeaMessageEvent = PangeaMessageEvent(
       event: event,
@@ -118,7 +101,7 @@ class OverlayMessage extends StatelessWidget {
       ownMessage: ownMessage,
     );
 
-    return Flexible(
+    return SingleChildScrollView(
       child: Material(
         color: noBubble ? Colors.transparent : color,
         clipBehavior: Clip.antiAlias,
@@ -139,6 +122,7 @@ class OverlayMessage extends StatelessWidget {
                 ),
           constraints: BoxConstraints(
             maxWidth: width ?? FluffyThemes.columnWidth * 1.25,
+            maxHeight: maxHeight,
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

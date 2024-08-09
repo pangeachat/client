@@ -5,22 +5,21 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/enum/message_mode_enum.dart';
 import 'package:fluffychat/pangea/matrix_event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/utils/error_handler.dart';
 import 'package:fluffychat/pangea/utils/overlay.dart';
 import 'package:fluffychat/pangea/widgets/chat/message_audio_card.dart';
+import 'package:fluffychat/pangea/widgets/chat/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/widgets/chat/message_speech_to_text_card.dart';
 import 'package:fluffychat/pangea/widgets/chat/message_text_selection.dart';
 import 'package:fluffychat/pangea/widgets/chat/message_translation_card.dart';
 import 'package:fluffychat/pangea/widgets/chat/message_unsubscribed_card.dart';
-import 'package:fluffychat/pangea/widgets/chat/overlay_message.dart';
 import 'package:fluffychat/pangea/widgets/igc/word_data_card.dart';
 import 'package:fluffychat/pangea/widgets/practice_activity/practice_activity_card.dart';
 import 'package:fluffychat/pangea/widgets/user_settings/p_language_dialog.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
 class ToolbarDisplayController {
@@ -47,6 +46,11 @@ class ToolbarDisplayController {
     this.previousEvent,
   });
 
+  void closeToolbar() {
+    controller.clearSelectedEvents();
+    MatrixState.pAnyState.closeAllOverlays();
+  }
+
   void setToolbar() {
     toolbar ??= MessageToolbar(
       textSelection: MessageTextSelection(),
@@ -60,84 +64,18 @@ class ToolbarDisplayController {
 
   void showToolbar(BuildContext context, {MessageMode? mode}) {
     // Close keyboard, if open
-    FocusManager.instance.primaryFocus?.unfocus();
-    bool toolbarUp = true;
-    if (highlighted) return;
-    if (controller.selectMode) {
-      controller.clearSelectedEvents();
+    if (controller.inputFocus.hasFocus) {
+      FocusManager.instance.primaryFocus?.unfocus();
+      return;
     }
+    // Close emoji picker, if open
+    controller.showEmojiPicker = false;
+    if (highlighted) return;
     if (!MatrixState.pangeaController.languageController.languagesSet) {
       pLanguageDialog(context, () {});
       return;
     }
     focusNode.requestFocus();
-
-    final LayerLinkAndKey layerLinkAndKey =
-        MatrixState.pAnyState.layerLinkAndKey(targetId);
-    final targetRenderBox =
-        layerLinkAndKey.key.currentContext?.findRenderObject();
-    if (targetRenderBox != null) {
-      final Size transformTargetSize = (targetRenderBox as RenderBox).size;
-      messageWidth = transformTargetSize.width;
-      final Offset targetOffset = (targetRenderBox).localToGlobal(Offset.zero);
-
-      // If there is enough space above, procede as normal
-      // Else if there is enough space below, show toolbar underneath
-      if (targetOffset.dy < 320) {
-        final spaceBeneath = MediaQuery.of(context).size.height -
-            (targetOffset.dy + transformTargetSize.height);
-        // If toolbar is open, opening toolbar beneath without scrolling can cause issues
-        // if (spaceBeneath >= 320) {
-        //   toolbarUp = false;
-        // }
-
-        // See if it's possible to scroll up to make space
-        if (controller.scrollController.offset - targetOffset.dy + 320 >=
-                controller.scrollController.position.minScrollExtent &&
-            controller.scrollController.offset - targetOffset.dy + 320 <=
-                controller.scrollController.position.maxScrollExtent) {
-          controller.scrollController.animateTo(
-            controller.scrollController.offset - targetOffset.dy + 320,
-            duration: FluffyThemes.animationDuration,
-            curve: FluffyThemes.animationCurve,
-          );
-        }
-
-        // See if it's possible to scroll down to make space
-        else if (controller.scrollController.offset + spaceBeneath - 320 >=
-                controller.scrollController.position.minScrollExtent &&
-            controller.scrollController.offset + spaceBeneath - 320 <=
-                controller.scrollController.position.maxScrollExtent) {
-          controller.scrollController.animateTo(
-            controller.scrollController.offset + spaceBeneath - 320,
-            duration: FluffyThemes.animationDuration,
-            curve: FluffyThemes.animationCurve,
-          );
-          toolbarUp = false;
-        }
-
-        // If message is too big and can't scroll either way
-        // Scroll up as much as possible, and show toolbar above
-        else {
-          controller.scrollController.animateTo(
-            controller.scrollController.position.minScrollExtent,
-            duration: FluffyThemes.animationDuration,
-            curve: FluffyThemes.animationCurve,
-          );
-        }
-      }
-    }
-
-    final Widget overlayMessage = OverlayMessage(
-      pangeaMessageEvent.event,
-      timeline: pangeaMessageEvent.timeline,
-      immersionMode: immersionMode,
-      ownMessage: pangeaMessageEvent.ownMessage,
-      toolbarController: this,
-      width: messageWidth,
-      nextEvent: nextEvent,
-      previousEvent: previousEvent,
-    );
 
     // I'm not sure why I put this here, but it causes the toolbar
     // not to open immediately after clicking (user has to scroll or move their cursor)
@@ -146,16 +84,15 @@ class ToolbarDisplayController {
     Widget overlayEntry;
     if (toolbar == null) return;
     try {
-      overlayEntry = Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: pangeaMessageEvent.ownMessage
-            ? CrossAxisAlignment.end
-            : CrossAxisAlignment.start,
-        children: [
-          toolbarUp ? toolbar! : overlayMessage,
-          const SizedBox(height: 6),
-          toolbarUp ? overlayMessage : toolbar!,
-        ],
+      overlayEntry = MessageSelectionOverlay(
+        controller: controller,
+        closeToolbar: closeToolbar,
+        toolbar: toolbar!,
+        pangeaMessageEvent: pangeaMessageEvent,
+        immersionMode: immersionMode,
+        ownMessage: pangeaMessageEvent.ownMessage,
+        targetId: targetId,
+        toolbarController: this,
       );
     } catch (err) {
       debugger(when: kDebugMode);
@@ -167,24 +104,16 @@ class ToolbarDisplayController {
       context: context,
       child: overlayEntry,
       transformTargetId: targetId,
-      targetAnchor: pangeaMessageEvent.ownMessage
-          ? toolbarUp
-              ? Alignment.bottomRight
-              : Alignment.topRight
-          : toolbarUp
-              ? Alignment.bottomLeft
-              : Alignment.topLeft,
-      followerAnchor: pangeaMessageEvent.ownMessage
-          ? toolbarUp
-              ? Alignment.bottomRight
-              : Alignment.topRight
-          : toolbarUp
-              ? Alignment.bottomLeft
-              : Alignment.topLeft,
-      backgroundColor: const Color.fromRGBO(0, 0, 0, 1).withAlpha(100),
+      targetAnchor: Alignment.center,
+      followerAnchor: Alignment.center,
+      backgroundColor: const Color.fromRGBO(0, 0, 0, 1).withAlpha(200),
       closePrevOverlay:
           MatrixState.pangeaController.subscriptionController.isSubscribed,
+      position: OverlayEnum.centered,
+      onDismiss: controller.clearSelectedEvents,
     );
+
+    controller.onSelectMessage(pangeaMessageEvent.event);
 
     if (MatrixState.pAnyState.entries.isNotEmpty) {
       overlayId = MatrixState.pAnyState.entries.last.hashCode.toString();
@@ -196,7 +125,6 @@ class ToolbarDisplayController {
         () => toolbarModeStream.add(mode),
       );
     }
-    // });
   }
 
   bool get highlighted {
@@ -361,11 +289,6 @@ class MessageToolbarState extends State<MessageToolbar> {
 
   void spellCheck() {}
 
-  void showMore() {
-    MatrixState.pAnyState.closeOverlay();
-    widget.controller.onSelectMessage(widget.pangeaMessageEvent.event);
-  }
-
   @override
   void initState() {
     super.initState();
@@ -413,6 +336,15 @@ class MessageToolbarState extends State<MessageToolbar> {
 
   @override
   Widget build(BuildContext context) {
+    final double maxHeight = (MediaQuery.of(context).size.height -
+                (PlatformInfos.isWeb
+                    ? 211
+                    : PlatformInfos.isIOS
+                        ? 256
+                        : 198)) /
+            2 +
+        30;
+
     return Material(
       type: MaterialType.transparency,
       child: Container(
@@ -427,18 +359,18 @@ class MessageToolbarState extends State<MessageToolbar> {
             Radius.circular(25),
           ),
         ),
-        constraints: const BoxConstraints(
-          maxWidth: 300,
-          minWidth: 300,
-          maxHeight: 300,
+        constraints: BoxConstraints(
+          maxWidth: 290,
+          minWidth: 290,
+          maxHeight: maxHeight,
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              constraints: const BoxConstraints(
-                minWidth: 300,
-                maxHeight: 228,
+              constraints: BoxConstraints(
+                minWidth: 290,
+                maxHeight: maxHeight - 72,
               ),
               child: SingleChildScrollView(
                 child: AnimatedSize(
@@ -458,40 +390,31 @@ class MessageToolbarState extends State<MessageToolbar> {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: MessageMode.values.map((mode) {
-                    if ([
-                          MessageMode.definition,
-                          MessageMode.textToSpeech,
-                          MessageMode.translation,
-                        ].contains(mode) &&
-                        widget.pangeaMessageEvent.isAudioMessage) {
-                      return const SizedBox.shrink();
-                    }
-                    if (mode == MessageMode.speechToText &&
-                        !widget.pangeaMessageEvent.isAudioMessage) {
-                      return const SizedBox.shrink();
-                    }
-                    return Tooltip(
-                      message: mode.tooltip(context),
-                      child: IconButton(
-                        icon: Icon(mode.icon),
-                        color: mode.iconColor(
-                          widget.pangeaMessageEvent,
-                          currentMode,
-                          context,
-                        ),
-                        onPressed: () => updateMode(mode),
-                      ),
-                    );
-                  }).toList() +
-                  [
-                    Tooltip(
-                      message: L10n.of(context)!.more,
-                      child: IconButton(
-                        icon: const Icon(Icons.add_reaction_outlined),
-                        onPressed: showMore,
-                      ),
+                if ([
+                      MessageMode.definition,
+                      MessageMode.textToSpeech,
+                      MessageMode.translation,
+                    ].contains(mode) &&
+                    widget.pangeaMessageEvent.isAudioMessage) {
+                  return const SizedBox.shrink();
+                }
+                if (mode == MessageMode.speechToText &&
+                    !widget.pangeaMessageEvent.isAudioMessage) {
+                  return const SizedBox.shrink();
+                }
+                return Tooltip(
+                  message: mode.tooltip(context),
+                  child: IconButton(
+                    icon: Icon(mode.icon),
+                    color: mode.iconColor(
+                      widget.pangeaMessageEvent,
+                      currentMode,
+                      context,
                     ),
-                  ],
+                    onPressed: () => updateMode(mode),
+                  ),
+                );
+              }).toList(),
             ),
           ],
         ),

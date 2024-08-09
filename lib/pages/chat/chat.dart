@@ -10,6 +10,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pages/chat/chat_emoji_picker.dart';
 import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/recording_dialog.dart';
@@ -23,6 +24,7 @@ import 'package:fluffychat/pangea/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/utils/error_handler.dart';
 import 'package:fluffychat/pangea/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/utils/overlay.dart';
 import 'package:fluffychat/pangea/utils/report_message.dart';
 import 'package:fluffychat/pangea/widgets/chat/message_toolbar.dart';
 import 'package:fluffychat/pangea/widgets/igc/pangea_text_controller.dart';
@@ -115,6 +117,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   late Choreographer choreographer = Choreographer(pangeaController, this);
   // Pangea#
+
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
 
   late Client sendingClient;
@@ -839,6 +842,10 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void hideEmojiPicker() {
+    // #Pangea
+    MatrixState.pAnyState.closeAllOverlays();
+    clearSelectedEvents();
+    // Pangea
     setState(() => showEmojiPicker = false);
   }
 
@@ -884,6 +891,9 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void copyEventsAction() {
+    // #Pangea
+    MatrixState.pAnyState.closeAllOverlays();
+    // Pangea#
     Clipboard.setData(ClipboardData(text: _getSelectedEventString()));
     setState(() {
       showEmojiPicker = false;
@@ -892,7 +902,13 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void reportEventAction() async {
+    // #Pangea
+    MatrixState.pAnyState.closeAllOverlays();
+    // Pangea#
     final event = selectedEvents.single;
+    // #Pangea
+    clearSelectedEvents();
+    // Pangea#
     final score = await showConfirmationDialog<int>(
       context: context,
       title: L10n.of(context)!.reportMessage,
@@ -982,6 +998,9 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void redactEventsAction() async {
+    // #Pangea
+    MatrixState.pAnyState.closeAllOverlays();
+    // Pangea#
     final reasonInput = selectedEvents.any((event) => event.status.isSent)
         ? await showTextInputDialog(
             context: context,
@@ -997,7 +1016,12 @@ class ChatController extends State<ChatPageWithRoom>
             cancelLabel: L10n.of(context)!.cancel,
           )
         : <String>[];
-    if (reasonInput == null) return;
+    if (reasonInput == null) {
+      // #Pangea
+      clearSelectedEvents();
+      // Pangea#
+      return;
+    }
     final reason = reasonInput.single.isEmpty ? null : reasonInput.single;
     for (final event in selectedEvents) {
       await showFutureLoadingDialog(
@@ -1072,6 +1096,9 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void forwardEventsAction() async {
+    // #Pangea
+    MatrixState.pAnyState.closeAllOverlays();
+    // Pangea#
     if (selectedEvents.length == 1) {
       Matrix.of(context).shareContent =
           selectedEvents.first.getDisplayEvent(timeline!).content;
@@ -1104,6 +1131,9 @@ class ChatController extends State<ChatPageWithRoom>
       replyEvent = replyTo ?? selectedEvents.first;
       selectedEvents.clear();
     });
+    // #Pangea
+    MatrixState.pAnyState.closeAllOverlays();
+    // Pangea
     inputFocus.requestFocus();
   }
 
@@ -1219,11 +1249,27 @@ class ChatController extends State<ChatPageWithRoom>
     _allReactionEvents = allReactionEvents;
     emojiPickerType = EmojiPickerType.reaction;
     setState(() => showEmojiPicker = true);
+    // #Pangea
+    OverlayUtil.showOverlay(
+      context: context,
+      child: ChatEmojiPicker(this),
+      transformTargetId: selectedEvents.first.eventId,
+      targetAnchor: Alignment.center,
+      followerAnchor: Alignment.center,
+      backgroundColor: const Color.fromRGBO(0, 0, 0, 1).withAlpha(100),
+      closePrevOverlay: false,
+      onDismiss: hideEmojiPicker,
+      position: OverlayEnum.bottom,
+    );
+    // Pangea#
   }
 
   void sendEmojiAction(String? emoji) async {
     final events = List<Event>.from(selectedEvents);
     setState(() => selectedEvents.clear());
+    // #Pangea
+    MatrixState.pAnyState.closeAllOverlays();
+    // Pangea#
     for (final event in events) {
       await room.sendReaction(
         event.eventId,
@@ -1469,8 +1515,17 @@ class ChatController extends State<ChatPageWithRoom>
   bool get isArchived =>
       {Membership.leave, Membership.ban}.contains(room.membership);
 
-  void showEventInfo([Event? event]) =>
-      (event ?? selectedEvents.single).showInfoDialog(context);
+  void showEventInfo([Event? event])
+  // #Pangea
+  // =>
+  {
+    MatrixState.pAnyState.closeAllOverlays();
+    // Pangea#
+    (event ?? selectedEvents.single).showInfoDialog(context);
+    // #Pangea
+    clearSelectedEvents();
+    // Pangea#
+  }
 
   void onPhoneButtonTap() async {
     // VoIP required Android SDK 21
