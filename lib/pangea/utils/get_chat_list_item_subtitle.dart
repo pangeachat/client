@@ -15,15 +15,6 @@ class GetChatListItemSubtitle {
     ModelKey.transcription,
   ];
 
-  bool moveBackInTimeline(Event event) =>
-      hideContentKeys.any(
-        (key) => event.content.tryGet(key) != null,
-      ) ||
-      event.type.startsWith("p.") ||
-      event.type.startsWith("pangea.") ||
-      event.type == EventTypes.SpaceChild ||
-      event.type == EventTypes.SpaceParent;
-
   Future<String> getSubtitle(
     L10n l10n,
     Event? event,
@@ -31,23 +22,6 @@ class GetChatListItemSubtitle {
   ) async {
     if (event == null) return l10n.emptyChat;
     try {
-      String? eventContextId = event.eventId;
-      if (!event.eventId.isValidMatrixId || event.eventId.sigil != '\$') {
-        eventContextId = null;
-      }
-
-      final Timeline timeline = event.room.timeline != null &&
-              event.room.timeline!.chunk.eventsMap.containsKey(eventContextId)
-          ? event.room.timeline!
-          : await event.room.getTimeline(eventContextId: eventContextId);
-
-      if (moveBackInTimeline(event)) {
-        event = timeline.events.firstWhereOrNull((e) => !moveBackInTimeline(e));
-        if (event == null) {
-          return l10n.emptyChat;
-        }
-      }
-
       if (!pangeaController.languageController.languagesSet ||
           event.redacted ||
           event.type != EventTypes.Message ||
@@ -64,6 +38,16 @@ class GetChatListItemSubtitle {
               event.room.directChatMatrixID != event.room.lastEvent?.senderId,
         );
       }
+
+      String? eventContextId = event.eventId;
+      if (!event.eventId.isValidMatrixId || event.eventId.sigil != '\$') {
+        eventContextId = null;
+      }
+
+      final Timeline timeline = event.room.timeline != null &&
+              event.room.timeline!.chunk.eventsMap.containsKey(eventContextId)
+          ? event.room.timeline!
+          : await event.room.getTimeline(eventContextId: eventContextId);
 
       final PangeaMessageEvent pangeaMessageEvent = PangeaMessageEvent(
         event: event,
@@ -93,7 +77,7 @@ class GetChatListItemSubtitle {
             ? i18n.you
             : event.room
                     .getParticipants()
-                    .firstWhereOrNull((u) => u.id != event!.room.client.userID)
+                    .firstWhereOrNull((u) => u.id != event.room.client.userID)
                     ?.calcDisplayname(i18n: i18n) ??
                 event.room.lastEvent!.senderId;
 
@@ -104,7 +88,7 @@ class GetChatListItemSubtitle {
     } catch (e, s) {
       // debugger(when: kDebugMode);
       ErrorHandler.logError(e: e, s: s);
-      return event?.body ?? l10n.emptyChat;
+      return event.body ?? l10n.emptyChat;
     }
   }
 }

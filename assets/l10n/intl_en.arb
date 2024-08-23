@@ -4017,7 +4017,7 @@
   "conversationBotTextAdventureZone_title": "Text Adventure",
   "conversationBotTextAdventureZone_instructionLabel": "Game Master Instructions",
   "conversationBotTextAdventureZone_instructionPlaceholder": "Set game master instructions",
-    "conversationBotCustomZone_instructionSystemPromptEmptyError": "Missing game master instructions",
+  "conversationBotCustomZone_instructionSystemPromptEmptyError": "Missing game master instructions",
   "studentAnalyticsNotAvailable": "Student data not currently available",
   "roomDataMissing": "Some data may be missing from rooms in which you are not a member.",
   "updatePhoneOS": "You may need to update your device's OS version.",
@@ -4121,5 +4121,6 @@
   "createSpace": "Create space",
   "createChat": "Create chat",
   "error520Title": "Please try again.",
-  "error520Desc": "Sorry, we could not understand your message..."
+  "error520Desc": "Sorry, we could not understand your message...",
+  "canceledSend": "Canceled Send"
 }
