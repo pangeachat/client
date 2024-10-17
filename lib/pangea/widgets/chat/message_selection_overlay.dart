@@ -182,8 +182,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   void onClickOverlayMessageToken(
     PangeaToken token,
   ) {
-    if ([MessageMode.practiceActivity, MessageMode.textToSpeech]
-        .contains(toolbarMode)) {
+    if ([
+      MessageMode.practiceActivity,
+      // MessageMode.textToSpeech
+    ].contains(toolbarMode)) {
       return;
     }
 
