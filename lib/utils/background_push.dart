@@ -21,9 +21,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:fluffychat/config/firebase_options.dart';
 import 'package:fluffychat/pangea/constants/language_constants.dart';
 import 'package:fluffychat/pangea/utils/error_handler.dart';
 import 'package:fluffychat/utils/push_helper.dart';
@@ -41,8 +41,6 @@ import '../config/app_config.dart';
 import '../config/setting_keys.dart';
 import '../widgets/matrix.dart';
 import 'platform_infos.dart';
-
-//import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
 
 class NoTokenException implements Exception {
   String get cause => 'Cannot get firebase token';
@@ -68,10 +66,6 @@ class BackgroundPush {
   final pendingTests = <String, Completer<void>>{};
 
   // final dynamic firebase = null; //FcmSharedIsolate();
-  // #Pangea
-  // uncommented to enable notifications on IOS
-  final FcmSharedIsolate? firebase = FcmSharedIsolate();
-  // Pangea#
 
   DateTime? lastReceivedPush;
 
@@ -81,29 +75,32 @@ class BackgroundPush {
     // #Pangea
     onLogin ??=
         client.onLoginStateChanged.stream.listen(handleLoginStateChanged);
+
+    // Firebase is already initialized in firebase_analytics.dart, so no need to init it here
+    FirebaseMessaging.instance.onTokenRefresh.listen(_newFcmToken);
+    FirebaseMessaging.onMessage.listen(firebaseMessagingForegroundHandler);
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+
+    // firebase?.setListeners(
+    //   onMessage: (message) => pushHelper(
+    //     PushNotification.fromJson(
+    //       Map<String, dynamic>.from(message['data'] ?? message),
+    //     ),
+    //     client: client,
+    //     l10n: l10n,
+    //     activeRoomId: matrix?.activeRoomId,
+    //     onSelectNotification: goToRoom,
+    //   ),
+    // );
+    // if (Platform.isAndroid) {
+    //   UnifiedPush.initialize(
+    //     onNewEndpoint: _newUpEndpoint,
+    //     onRegistrationFailed: _upUnregistered,
+    //     onUnregistered: _upUnregistered,
+    //     onMessage: _onUpMessage,
+    //   );
+    // }
     // Pangea#
-    firebase?.setListeners(
-      onMessage: (message) => pushHelper(
-        PushNotification.fromJson(
-          Map<String, dynamic>.from(message['data'] ?? message),
-        ),
-        client: client,
-        l10n: l10n,
-        activeRoomId: matrix?.activeRoomId,
-        onSelectNotification: goToRoom,
-      ),
-      // #Pangea
-      onNewToken: _newFcmToken,
-      // Pangea#
-    );
-    if (Platform.isAndroid) {
-      UnifiedPush.initialize(
-        onNewEndpoint: _newUpEndpoint,
-        onRegistrationFailed: _upUnregistered,
-        onUnregistered: _upUnregistered,
-        onMessage: _onUpMessage,
-      );
-    }
   }
 
   factory BackgroundPush.clientOnly(Client client) {
@@ -164,7 +161,11 @@ class BackgroundPush {
     bool useDeviceSpecificAppId = false,
   }) async {
     if (PlatformInfos.isIOS) {
-      await firebase?.requestPermission();
+      // #Pangea
+      // await firebase?.requestPermission();
+      debugPrint('Requesting permission');
+      await FirebaseMessaging.instance.requestPermission(provisional: true);
+      // Pangea#
     } else if (PlatformInfos.isAndroid) {
       _flutterLocalNotificationsPlugin
           .resolvePlatformSpecificImplementation<
@@ -453,13 +454,90 @@ class BackgroundPush {
 
   // #Pangea
   Future<String?> _getToken() async {
-    if (Platform.isAndroid) {
-      await Firebase.initializeApp(
-          // options: DefaultFirebaseOptions.currentPlatform,
-          );
-      return (await FirebaseMessaging.instance.getToken());
-    }
-    return await firebase?.getToken();
+    return await FirebaseMessaging.instance.getToken();
   }
-  // Pangea#
+
+  Future<void> firebaseMessagingForegroundHandler(RemoteMessage message) async {
+    try {
+      if (message.data.isEmpty ||
+          !message.data.containsKey('room_id') ||
+          message.data['room_id'] == null ||
+          message.data['room_id'].isEmpty) return;
+
+      final routeParts = FluffyChatApp
+          .router.routerDelegate.currentConfiguration.uri
+          .toString()
+          .split("/");
+      if (routeParts.isEmpty) {
+        showNotification(message);
+        return;
+      }
+
+      final msgRoomID = message.data['room_id'];
+      final isMsgInActiveRoom = msgRoomID == routeParts.last;
+      if (!isMsgInActiveRoom) {
+        showNotification(message);
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s);
+    }
+  }
 }
+
+@pragma('vm:entry-point')
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  try {
+    await Firebase.initializeApp(
+      name: 'background_firebase',
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+
+    if (message.data.isNotEmpty) {
+      showNotification(message);
+    }
+  } catch (e, s) {
+    ErrorHandler.logError(e: e, s: s);
+  }
+}
+
+Future<void> showNotification(RemoteMessage message) async {
+  try {
+    final sender = message.data['sender'];
+    final body = message.data['content_body'];
+    if (sender == null || sender.isEmpty || body == null || body.isEmpty) {
+      return;
+    }
+
+    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+
+    flutterLocalNotificationsPlugin.initialize(
+      const InitializationSettings(
+        android: AndroidInitializationSettings('notifications_icon'),
+        iOS: DarwinInitializationSettings(),
+      ),
+    );
+
+    const androidDetails = AndroidNotificationDetails(
+      AppConfig.pushNotificationsChannelId,
+      "Incoming messages",
+      importance: Importance.high,
+      priority: Priority.high,
+      largeIcon: DrawableResourceAndroidBitmap('notifications_icon'),
+    );
+
+    const iosDetails = DarwinNotificationDetails();
+    const notificationDetails =
+        NotificationDetails(android: androidDetails, iOS: iosDetails);
+
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      message.data['sender_display_name'] ?? sender,
+      body,
+      notificationDetails,
+    );
+  } catch (e, s) {
+    ErrorHandler.logError(e: e, s: s);
+  }
+}
+// Pangea#

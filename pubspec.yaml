@@ -114,8 +114,6 @@ dependencies:
   firebase_core: ^3.1.0
   firebase_messaging: ^15.0.1
   flutter_dotenv: ^5.1.0
-  fcm_shared_isolate:
-    path: pangea_packages/fcm_shared_isolate
   flutter_svg: ^2.0.10+1
   get_storage: ^2.1.1
   in_app_purchase: ^3.1.13
@@ -156,8 +154,8 @@ flutter:
     # #Pangea
     # uncomment this to enable mobile builds
     # causes error with github actions
-    # - .env
-    # - assets/.env
+    - .env
+    - assets/.env
     - assets/pangea/
     - assets/pangea/bot_faces/
     # Pangea#
