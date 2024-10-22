@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/config/environment.dart';
 import 'package:fluffychat/pangea/constants/local.key.dart';
 import 'package:fluffychat/pangea/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/controllers/pangea_controller.dart';
@@ -308,7 +309,10 @@ class SubscriptionController extends BaseController {
   }
 
   Future<String> getPaymentLink(String duration, {bool isPromo = false}) async {
-    final Requests req = Requests(baseUrl: PApiUrls.baseAPI);
+    final Requests req = Requests(
+      choreoApiKey: Environment.choreoApiKey,
+      accessToken: _pangeaController.userController.accessToken,
+    );
     final String reqUrl = Uri.encodeFull(
       "${PApiUrls.paymentLink}?pangea_user_id=${_pangeaController.matrixState.client.userID}&duration=$duration&redeem=$isPromo",
     );
@@ -321,31 +325,6 @@ class SubscriptionController extends BaseController {
       paymentLink += "?prefilled_email=${Uri.encodeComponent(email)}";
     }
     return paymentLink;
-  }
-
-  Future<bool> fetchSubscriptionStatus() async {
-    final Requests req = Requests(baseUrl: PApiUrls.baseAPI);
-    final String reqUrl = Uri.encodeFull(
-      "${PApiUrls.subscriptionExpiration}?pangea_user_id=${_pangeaController.matrixState.client.userID}",
-    );
-
-    DateTime? expiration;
-    try {
-      final Response res = await req.get(url: reqUrl);
-      final json = jsonDecode(res.body);
-      if (json["premium_expires_date"] != null) {
-        expiration = DateTime.parse(json["premium_expires_date"]);
-      }
-    } catch (err) {
-      ErrorHandler.logError(
-        e: "Failed to fetch subscripton status for user ${_pangeaController.matrixState.client.userID}",
-        s: StackTrace.current,
-      );
-    }
-    final bool subscribed =
-        expiration == null ? false : DateTime.now().isBefore(expiration);
-    GoogleAnalytics.updateUserSubscriptionStatus(subscribed);
-    return subscribed;
   }
 
   Future<void> redeemPromoCode(BuildContext context) async {

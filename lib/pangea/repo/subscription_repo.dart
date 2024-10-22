@@ -1,31 +1,32 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:http/http.dart' as http;
-
 import 'package:fluffychat/pangea/config/environment.dart';
 import 'package:fluffychat/pangea/controllers/subscription_controller.dart';
+import 'package:fluffychat/pangea/network/requests.dart';
 import 'package:fluffychat/pangea/utils/error_handler.dart';
 import 'package:fluffychat/pangea/utils/subscription_app_id.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 import '../network/urls.dart';
 
 class SubscriptionRepo {
-  static final Map<String, String> requestHeaders = {
-    'Content-type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': 'Bearer ${Environment.rcKey}',
-  };
-
   static Future<SubscriptionAppIds?> getAppIds() async {
     try {
-      final http.Response res = await http.get(
-        Uri.parse(PApiUrls.rcApps),
-        headers: SubscriptionRepo.requestHeaders,
+      final Requests req = Requests(
+        choreoApiKey: Environment.choreoApiKey,
+        accessToken: MatrixState.pangeaController.userController.accessToken,
       );
-      final json = jsonDecode(res.body);
-      return SubscriptionAppIds.fromJson(json);
+      final http.Response res = await req.get(
+        url: PApiUrls.rcAppsChoreo,
+      );
+
+      return SubscriptionAppIds.fromJson(
+        jsonDecode(res.body),
+      );
     } catch (err) {
       ErrorHandler.logError(
         m: "Failed to fetch app information for revenuecat API",
@@ -37,9 +38,12 @@ class SubscriptionRepo {
 
   static Future<List<SubscriptionDetails>?> getAllProducts() async {
     try {
-      final http.Response res = await http.get(
-        Uri.parse(PApiUrls.rcProducts),
-        headers: SubscriptionRepo.requestHeaders,
+      final Requests req = Requests(
+        choreoApiKey: Environment.choreoApiKey,
+        accessToken: MatrixState.pangeaController.userController.accessToken,
+      );
+      final http.Response res = await req.get(
+        url: PApiUrls.rcProductsChoreo,
       );
       final Map<String, dynamic> json = jsonDecode(res.body);
       final RCProductsResponseModel resp =
@@ -63,7 +67,7 @@ class SubscriptionRepo {
       'Accept': 'application/json',
       'Authorization': 'Bearer ${Environment.rcStripeKey}',
     };
-    final String url = "${PApiUrls.rcSubscribers}/$userId";
+    final String url = "${PApiUrls.rcSubscription}/$userId";
     final http.Response res = await http.get(
       Uri.parse(url),
       headers: stripeHeaders,
@@ -89,26 +93,18 @@ class RCProductsResponseModel {
     Map<String, dynamic> json,
   ) {
     final List<dynamic> offerings = json["items"] as List<dynamic>;
-    final offering = offerings.firstWhereOrNull(
-      Environment.isStaging
-          ? (offering) => !(offering['is_current'] as bool)
-          : (offering) => offering['is_current'] as bool,
-    );
-    final Map<String, dynamic> metadata = offering['metadata'];
-
-    final List<SubscriptionDetails> allProducts = [];
-    for (final packageDetails in offering['packages']['items']) {
-      final String packageId = packageDetails['id'];
-      final List<SubscriptionDetails> products =
-          RCProductsResponseModel.productsFromPackageDetails(
-        packageDetails,
-        packageId,
-        metadata,
-      );
-      allProducts.addAll(products);
-    }
-
-    return RCProductsResponseModel(allProducts: allProducts);
+    final res = offerings
+        .map(
+          (offering) => SubscriptionDetails(
+            price: offering['price'],
+            duration: offering['duration'],
+            id: offering['id'],
+            appId: offering['appId'],
+          ),
+        )
+        .toList()
+        .cast<SubscriptionDetails>();
+    return RCProductsResponseModel(allProducts: res);
   }
 
   static List<SubscriptionDetails> productsFromPackageDetails(
