@@ -39,8 +39,21 @@ class SubscriptionController extends BaseController {
     _pangeaController = pangeaController;
   }
 
+  // we want the user to be able to use the app for a day before showing the paywall at all
+  // this in response to users not even wanting to activate the free trial at the beginning
+  // and then never experiencing the language tools before they're turned off
+  bool get inPreTrialPeriod =>
+      _pangeaController.userController.profile.userSettings.createdAt != null &&
+      DateTime.now()
+              .difference(
+                _pangeaController
+                    .userController.profile.userSettings.createdAt!,
+              )
+              .inDays <
+          1;
+
   bool get isSubscribed =>
-      subscription != null &&
+      (inPreTrialPeriod || subscription != null) &&
       (subscription!.currentSubscriptionId != null ||
           subscription!.currentSubscription != null);
 
