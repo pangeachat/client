@@ -1,4 +1,5 @@
 import 'package:fluffychat/pangea/repo/full_text_translation_repo.dart';
+import 'package:fluffychat/pangea/repo/image_generation_controller.dart';
 import 'package:fluffychat/pangea/utils/error_handler.dart';
 import 'package:fluffychat/pangea/widgets/igc/why_button.dart';
 import 'package:flutter/material.dart';
@@ -33,16 +34,48 @@ class ITFeedbackCardController extends State<ITFeedbackCard> {
   Object? error;
   bool isLoadingFeedback = false;
   bool isTranslating = false;
+  bool isLoadingImage = false;
   ITFeedbackResponseModel? res;
   String? translatedFeedback;
+  String? imageUrl;
 
   Response get noLanguages => Response("", 405);
 
   @override
   void initState() {
-    if (!mounted) return;
-    //any setup?
     super.initState();
+    if (mounted) {
+      _fetchImage();
+    }
+  }
+
+  Future<void> _fetchImage() async {
+    setState(() {
+      isLoadingImage = true;
+    });
+    try {
+      final response = await ImageGenerationController.generateImage(
+        ImageRequestModel(
+          lemma: widget.req.chosenContinuance,
+          userL1: controller.languageController.userL1?.langCode ?? "en",
+          userL2: controller.languageController.userL2?.langCode ?? "de",
+          langCode: widget.req.sourceTextLang,
+          usePexels: true,
+        ),
+      );
+      setState(() {
+        imageUrl = response
+            .imageUrl; // Assuming `getImage` returns an object with a `url` field.
+      });
+    } catch (e) {
+      setState(() {
+        error = e;
+      });
+    } finally {
+      setState(() {
+        isLoadingImage = false;
+      });
+    }
   }
 
   Future<void> getFeedback() async {
@@ -131,10 +164,16 @@ class ITFeedbackCardView extends StatelessWidget {
               text: controller.widget.req.chosenContinuance,
               botExpression: BotExpression.nonGold,
             ),
-            // Text(
-            //   controller.widget.choiceFeedback,
-            //   style: BotStyle.text(context),
-            // ),
+            const SizedBox(height: 10),
+            if (controller.isLoadingImage)
+              const CircularProgressIndicator()
+            else if (controller.imageUrl != null)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(controller.imageUrl!),
+              )
+            else
+              const Text("No image available"),
             const SizedBox(height: 10),
             if (controller.res == null)
               WhyButton(
@@ -146,7 +185,6 @@ class ITFeedbackCardView extends StatelessWidget {
                 controller.res!.text,
                 style: BotStyle.text(context),
               ),
-            // if res is not null and feedback not in the userL1, show a button to translate the text
             if (controller.res != null &&
                 controller.translatedFeedback == null &&
                 controller.widget.req.feedbackLang !=
@@ -161,15 +199,14 @@ class ITFeedbackCardView extends StatelessWidget {
                 ],
               ),
             if (controller.translatedFeedback != null)
-              //add little line to separate the text from the translation
               Column(
                 children: [
                   const Divider(
                     color: AppConfig.primaryColor,
                     thickness: 2,
-                    height: 20, // Set the space around the divider
-                    indent: 20, // Set the starting space (left padding)
-                    endIndent: 20, // Set the ending space (right padding)
+                    height: 20,
+                    indent: 20,
+                    endIndent: 20,
                   ),
                   Text(
                     controller.translatedFeedback!,
@@ -184,7 +221,6 @@ class ITFeedbackCardView extends StatelessWidget {
   }
 }
 
-// button to translate the text
 class TranslateButton extends StatelessWidget {
   const TranslateButton({
     super.key,
@@ -205,7 +241,7 @@ class TranslateButton extends StatelessWidget {
         ),
       ),
       child: SizedBox(
-        width: 150, // set the width of the button contents here
+        width: 150,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -218,8 +254,6 @@ class TranslateButton extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 ),
               ),
-            // const SizedBox(width: 8),
-            // Text(L10n.of(context)!.translate),
           ],
         ),
       ),
