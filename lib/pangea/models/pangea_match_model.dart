@@ -84,6 +84,8 @@ class PangeaMatch {
         _statusKey: _statusEnumToString(status),
       };
 
+  // string get best correction
+
   String get matchContent {
     late int beginning;
     late int end;

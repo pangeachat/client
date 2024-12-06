@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:fluffychat/pangea/config/environment.dart';
 import 'package:fluffychat/pangea/controllers/language_detection_controller.dart';
@@ -152,4 +153,34 @@ class IGCRequestBody {
         ModelKey.prevMessages:
             jsonEncode(prevMessages.map((x) => x.toJson()).toList()),
       };
+
+  @override
+  bool operator ==(Object other) {
+    // TODO: implement ==
+    if (identical(this, other)) return true;
+
+    if (other is! IGCRequestBody) return false;
+
+    debugger();
+
+    return fullText.trim() == other.fullText.trim() &&
+        fullText == other.fullText &&
+        userL1 == other.userL1 &&
+        userL2 == other.userL2 &&
+        enableIT == other.enableIT &&
+        userId == other.userId &&
+        prevMessages.toString() == other.prevMessages.toString();
+  }
+
+  // hash code for caaching purposes
+  @override
+  int get hashCode => Object.hash(
+        fullText.trim(),
+        userL1,
+        userL2,
+        enableIT,
+        enableIGC,
+        userId,
+        prevMessages.toString(),
+      );
 }
