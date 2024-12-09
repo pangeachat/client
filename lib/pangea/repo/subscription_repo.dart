@@ -59,16 +59,12 @@ class SubscriptionRepo {
     String? userId,
     List<SubscriptionDetails>? allProducts,
   ) async {
-    final Map<String, String> stripeHeaders = {
-      'Content-type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': 'Bearer ${Environment.rcStripeKey}',
-    };
-    final String url = "${PApiUrls.rcSubscription}/$userId";
-    final http.Response res = await http.get(
-      Uri.parse(url),
-      headers: stripeHeaders,
+    final Requests req = Requests(
+      choreoApiKey: Environment.choreoApiKey,
+      accessToken: MatrixState.pangeaController.userController.accessToken,
     );
+    
+    final http.Response res = await req.get(url: PApiUrls.rcSubscription);
     final Map<String, dynamic> json = jsonDecode(res.body);
     final RCSubscriptionResponseModel resp =
         RCSubscriptionResponseModel.fromJson(
@@ -151,7 +147,7 @@ class RCSubscriptionResponseModel {
     final String currentSubscriptionId = activeEntitlements[0];
 
     final Map<String, dynamic> currentSubscriptionMetadata =
-        json['subscriber']['subscriptions'][currentSubscriptionId];
+        json['subscriptions'][currentSubscriptionId];
 
     final DateTime expirationDate = DateTime.parse(
       currentSubscriptionMetadata['expires_date'],
@@ -180,7 +176,7 @@ class RCSubscriptionResponseModel {
   }
 
   static List<String> getActiveEntitlements(Map<String, dynamic> json) {
-    return json['subscriber']['entitlements']
+    return json['entitlements']
         .entries
         .where(
           (MapEntry<String, dynamic> entitlement) => DateTime.parse(
@@ -196,7 +192,7 @@ class RCSubscriptionResponseModel {
   }
 
   static List<String> getAllEntitlements(Map<String, dynamic> json) {
-    return json['subscriber']['entitlements']
+    return json['entitlements']
         .entries
         .map(
           (MapEntry<String, dynamic> entitlement) =>

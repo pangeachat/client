@@ -62,12 +62,9 @@ class PApiUrls {
       "${PApiUrls.choreoEndpoint}/practice";
 
   ///-------------------------------- revenue cat --------------------------
-
-  static String rcApiV1 = "https://api.revenuecat.com/v1";
-
   static String rcAppsChoreo = "${PApiUrls.subscriptionEndpoint}/app_ids";
   static String rcProductsChoreo =
       "${PApiUrls.subscriptionEndpoint}/all_products";
 
-  static String rcSubscription = "$rcApiV1/subscribers";
+  static String rcSubscription = PApiUrls.subscriptionEndpoint;
 }
