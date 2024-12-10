@@ -24,8 +24,31 @@ class IgcController {
   Completer<IGCTextData> igcCompleter = Completer();
   late SpanDataController spanDataController;
 
+  // cache for IGC data and prev message
+  final Map<int, IGCTextData> _igcTextDataCache = {};
+  final Map<int, List<PreviousMessage>> _prevMessagesCache = {};
+
+  Timer? _igcCacheClearTimer;
+  Timer? _prevMessagesCacheClearTimer;
+
   IgcController(this.choreographer) {
     spanDataController = SpanDataController(choreographer);
+    _initializeCacheClearing();
+  }
+
+  void _initializeCacheClearing() {
+    const duration = Duration(minutes: 1);
+    _igcCacheClearTimer =
+        Timer.periodic(duration, (Timer t) => _igcTextDataCache.clear());
+    _prevMessagesCacheClearTimer =
+        Timer.periodic(duration, (Timer t) => _prevMessagesCache.clear());
+  }
+
+  // Clear cache method
+  void clearCache() {
+    _igcTextDataCache.clear();
+    _prevMessagesCache.clear();
+    debugPrint("Cache cleared after 1 minute.");
   }
 
   Future<void> getIGCTextData({
@@ -49,6 +72,12 @@ class IgcController {
         prevMessages: prevMessages(),
       );
 
+      // Check if cached data exists
+      if (_igcTextDataCache.containsKey(reqBody.hashCode)) {
+        igcTextData = _igcTextDataCache[reqBody.hashCode];
+        return;
+      }
+
       final IGCTextData igcTextDataResponse = await IgcRepo.getIGC(
         choreographer.accessToken,
         igcRequest: reqBody,
@@ -58,8 +87,19 @@ class IgcController {
       if (igcTextDataResponse.originalInput != choreographer.currentText) {
         return;
       }
+      // get ignored matches from the original igcTextData
+      // if the new matches are the same as the original match
+      // could possibly change the status of the new match
+      // thing is the same if the text we are trying to change is the smae
+      // as the new text we are trying to change (suggestion is the same)
+
+      // Check for duplicate or minor text changes that shouldn't trigger suggestions
+      // checks for duplicate input
 
       igcTextData = igcTextDataResponse;
+
+      // Cache the fetched data
+      _igcTextDataCache[reqBody.hashCode] = igcTextDataResponse;
 
       // TODO - for each new match,
       // check if existing igcTextData has one and only one match with the same error text and correction
@@ -134,6 +174,11 @@ class IgcController {
   /// Get the content of previous text and audio messages in chat.
   /// Passed to IGC request to add context.
   List<PreviousMessage> prevMessages({int numMessages = 5}) {
+    // Check cache
+    if (_prevMessagesCache.containsKey(numMessages)) {
+      return _prevMessagesCache[numMessages]!;
+    }
+
     final List<Event> events = choreographer.chatController.visibleEvents
         .where(
           (e) =>
@@ -158,7 +203,8 @@ class IgcController {
                 choreographer.l2LangCode,
               )
               ?.transcript
-              .text;
+              .text
+              .trim(); // trim whitespace
       if (content == null) continue;
       messages.add(
         PreviousMessage(
@@ -168,6 +214,8 @@ class IgcController {
         ),
       );
       if (messages.length >= numMessages) {
+        // Cache the results
+        _prevMessagesCache[numMessages] = messages;
         return messages;
       }
     }
@@ -189,6 +237,11 @@ class IgcController {
   clear() {
     igcTextData = null;
     spanDataController.clearCache();
+    spanDataController.dispose();
+
+    clearCache();
+    _igcCacheClearTimer?.cancel();
+    _prevMessagesCacheClearTimer?.cancel();
     // Not sure why this is here
     // MatrixState.pAnyState.closeOverlay();
   }
