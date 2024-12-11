@@ -12,8 +12,6 @@ import 'package:fluffychat/pangea/widgets/chat/message_translation_card.dart';
 import 'package:fluffychat/pangea/widgets/chat/message_unsubscribed_card.dart';
 import 'package:fluffychat/pangea/widgets/chat/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/pangea/widgets/chat/tts_controller.dart';
-import 'package:fluffychat/pangea/widgets/igc/card_error_widget.dart';
-import 'package:fluffychat/pangea/widgets/igc/word_data_card.dart';
 import 'package:fluffychat/pangea/widgets/message_display_card.dart';
 import 'package:fluffychat/pangea/widgets/practice_activity/practice_activity_card.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -37,7 +35,7 @@ class MessageToolbar extends StatelessWidget {
   TtsController get ttsController =>
       overLayController.widget.chatController.choreographer.tts;
 
-  Widget toolbarContent(BuildContext context) {
+  Widget? toolbarContent(BuildContext context) {
     final bool subscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed;
 
@@ -69,58 +67,6 @@ class MessageToolbar extends StatelessWidget {
         return MessageSpeechToTextCard(
           messageEvent: pangeaMessageEvent,
         );
-      case MessageMode.definition:
-        if (!overLayController.isSelection) {
-          return FutureBuilder(
-            //TODO - convert this to synchronous if possible
-            future: Future.value(
-              pangeaMessageEvent.messageDisplayRepresentation?.tokens,
-            ),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState != ConnectionState.done) {
-                return const ToolbarContentLoadingIndicator();
-              } else if (snapshot.hasError ||
-                  snapshot.data == null ||
-                  snapshot.data!.isEmpty) {
-                return const Padding(
-                  padding: EdgeInsets.all(8),
-                  child: CardErrorWidget(
-                    error: "No tokens available",
-                    maxWidth: AppConfig.toolbarMinWidth,
-                  ),
-                );
-              } else {
-                return MessageDisplayCard(
-                  displayText: L10n.of(context).selectToDefine,
-                );
-              }
-            },
-          );
-        } else {
-          try {
-            final selectedText = overLayController.targetText;
-
-            return WordDataCard(
-              word: selectedText,
-              wordLang: pangeaMessageEvent.messageDisplayLangCode,
-              fullText: pangeaMessageEvent.messageDisplayText,
-              fullTextLang: pangeaMessageEvent.messageDisplayLangCode,
-              hasInfo: true,
-              room: overLayController.widget.chatController.room,
-            );
-          } catch (e, s) {
-            debugger(when: kDebugMode);
-            ErrorHandler.logError(
-              e: "Error in WordDataCard",
-              s: s,
-              data: {
-                "word": overLayController.targetText,
-                "fullText": pangeaMessageEvent.messageDisplayText,
-              },
-            );
-            return const SizedBox();
-          }
-        }
       case MessageMode.practiceActivity:
         // If not in the target language show specific messsage
         if (!overLayController.messageInUserL2) {
@@ -128,6 +74,9 @@ class MessageToolbar extends StatelessWidget {
             displayText: L10n.of(context)
                 .messageNotInTargetLang, // Pass the display text,
           );
+        }
+        if (overLayController.selectedSpan == null) {
+          return null;
         }
         return PracticeActivityCard(
           pangeaMessageEvent: pangeaMessageEvent,
