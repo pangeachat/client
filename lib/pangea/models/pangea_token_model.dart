@@ -252,6 +252,13 @@ class PangeaToken {
   bool _isActivityProbablyLevelAppropriate(ActivityTypeEnum a) {
     switch (a) {
       case ActivityTypeEnum.wordMeaning:
+        debugPrint(
+          "vocabConstruct.points: ${vocabConstruct.points}, is content word: $isContentWord, can be defined: $canBeDefined, days since last used: ${daysSinceLastUseByType(ActivityTypeEnum.wordMeaning)}",
+        );
+        if (daysSinceLastUseByType(ActivityTypeEnum.wordMeaning) < 1) {
+          return false;
+        }
+
         if (isContentWord) {
           return vocabConstruct.points < 30;
         } else if (canBeDefined) {

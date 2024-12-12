@@ -61,7 +61,9 @@ class MessageAnalyticsEntry {
 
   late final bool _includeHiddenWordActivities;
 
-  late final List<TargetTokensAndActivityType> _activityQueue;
+  final List<TargetTokensAndActivityType> _activityQueue = [];
+
+  final int _maxQueueLength = 3;
 
   MessageAnalyticsEntry({
     required List<PangeaToken> tokens,
@@ -69,19 +71,52 @@ class MessageAnalyticsEntry {
   }) {
     _tokens = tokens;
     _includeHiddenWordActivities = includeHiddenWordActivities;
-    _activityQueue = setActivityQueue();
+    setActivityQueue();
+  }
+
+  void _pushQueue(TargetTokensAndActivityType entry) {
+    if (nextActivity?.activityType == ActivityTypeEnum.hiddenWordListening) {
+      if (entry.activityType == ActivityTypeEnum.hiddenWordListening) {
+        _activityQueue[0] = entry;
+      } else {
+        _activityQueue.insert(1, entry);
+      }
+    } else {
+      _activityQueue.insert(0, entry);
+    }
+
+    if (_activityQueue.length > _maxQueueLength) {
+      _activityQueue.removeRange(
+        _maxQueueLength,
+        _activityQueue.length,
+      );
+    }
+  }
+
+  void _popQueue() {
+    _activityQueue.removeAt(0);
+  }
+
+  void _filterQueue(ActivityTypeEnum activityType) {
+    _activityQueue.removeWhere((a) => a.activityType == activityType);
+  }
+
+  void _clearQueue() {
+    _activityQueue.clear();
   }
 
   TargetTokensAndActivityType? get nextActivity =>
       _activityQueue.isNotEmpty ? _activityQueue.first : null;
 
-  /// If there are more than 4 tokens that can be heard, we don't want to do word focus listening
-  /// Otherwise, we don't have enough distractors
-  bool get canDoWordFocusListening =>
-      _tokens.where((t) => t.canBeHeard).length > 4;
+  int get numActivities => _activityQueue.length;
+
+  // /// If there are more than 4 tokens that can be heard, we don't want to do word focus listening
+  // /// Otherwise, we don't have enough distractors
+  // bool get canDoWordFocusListening =>
+  //     _tokens.where((t) => t.canBeHeard).length > 4;
 
   /// On initialization, we pick which tokens to do activities on and what types of activities to do
-  List<TargetTokensAndActivityType> setActivityQueue() {
+  void setActivityQueue() {
     final List<TargetTokensAndActivityType> queue = [];
 
     // for each token in the message
@@ -95,7 +130,7 @@ class MessageAnalyticsEntry {
           // there have to be at least 4 tokens in the message that can be heard for word focus listening
           .where(
             (type) =>
-                canDoWordFocusListening ||
+                // canDoWordFocusListening ||
                 type != ActivityTypeEnum.wordFocusListening,
           )
           .toList();
@@ -113,64 +148,40 @@ class MessageAnalyticsEntry {
       );
     }
 
-    // sort the queue by the total xp of the tokens, lowest first
+    // sort the queue by the total xp of the tokens, heightest to lowest
     queue.sort(
-      (a, b) => a.tokens
+      (a, b) => b.tokens
           .map((t) => t.vocabConstruct.points)
-          .reduce((a, b) => a + b)
+          .reduce((aPoints1, aPoints2) => aPoints1 + aPoints2)
           .compareTo(
-            b.tokens
+            a.tokens
                 .map((t) => t.vocabConstruct.points)
-                .reduce((a, b) => a + b),
+                .reduce((bPoints1, bPoints2) => bPoints1 + bPoints2),
           ),
     );
+
+    for (final entry in queue) {
+      _pushQueue(entry);
+    }
 
     // if applicable, add a hidden word activity to the front of the queue
     final hiddenWordActivity = getHiddenWordActivity(queue.length);
     if (hiddenWordActivity != null) {
-      queue.insert(0, hiddenWordActivity);
+      _pushQueue(hiddenWordActivity);
     }
-
-    // limit to 3 activities
-    final limited = queue.take(3).toList();
-
-    // debugPrint("activities for ${PangeaToken.reconstructText(_tokens)}");
-    // for (final activity in limited) {
-    //   debugPrint("activity: ${activity.activityType}");
-    //   for (final token in activity.tokens) {
-    //     debugPrint("token: ${token.analyticsDebugPrint}");
-    //   }
-    // }
-
-    return limited;
   }
 
   /// Adds a word focus listening activity to the front of the queue
-  /// And limits to 3 activities
-  void addForWordMeaning(PangeaToken selectedToken) {
-    final int index = _activityQueue.isNotEmpty &&
-            _activityQueue.first.activityType ==
-                ActivityTypeEnum.hiddenWordListening
-        ? 1
-        : 0;
-
-    _activityQueue.insert(
-      index,
-      TargetTokensAndActivityType(
-        tokens: [selectedToken],
-        activityType: ActivityTypeEnum.wordMeaning,
-      ),
+  /// And limits to _maxQueueLength activities
+  void addTokenToActivityQueue(
+    PangeaToken token, {
+    ActivityTypeEnum type = ActivityTypeEnum.wordMeaning,
+  }) {
+    final entry = TargetTokensAndActivityType(
+      tokens: [token],
+      activityType: ActivityTypeEnum.wordMeaning,
     );
-    // remove down to three activities
-    if (_activityQueue.length > 3) {
-      _activityQueue.removeRange(3, _activityQueue.length);
-    }
-  }
-
-  int get numActivities => _activityQueue.length;
-
-  void clearActivityQueue() {
-    _activityQueue.clear();
+    _pushQueue(entry);
   }
 
   /// Returns a hidden word activity if there is a sequence of tokens that have hiddenWordListening in their eligibleActivityTypes
@@ -182,7 +193,7 @@ class MessageAnalyticsEntry {
 
     // we will only do hidden word listening 50% of the time
     // if there are no other activities to do, we will always do hidden word listening
-    if (numOtherActivities >= 3 && Random().nextDouble() < 0.5) {
+    if (numOtherActivities >= _maxQueueLength && Random().nextDouble() < 0.5) {
       return null;
     }
 
@@ -218,15 +229,11 @@ class MessageAnalyticsEntry {
     );
   }
 
-  void onActivityComplete(PracticeActivityModel completed) {
-    _activityQueue.removeWhere(
-      (a) => a.matchesActivity(completed),
-    );
-  }
+  void onActivityComplete() => _popQueue();
 
-  void revealAllTokens() {
-    _activityQueue.removeWhere((a) => a.activityType.hiddenType);
-  }
+  void exitPracticeFlow() => _clearQueue();
+
+  void revealAllTokens() => _filterQueue(ActivityTypeEnum.hiddenWordListening);
 
   bool isTokenInHiddenWordActivity(PangeaToken token) => _activityQueue.any(
         (activity) =>
