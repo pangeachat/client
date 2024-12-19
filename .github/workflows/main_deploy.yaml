@@ -8,6 +8,7 @@ on:
 
 env:
   WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
+  APPLE_APP_SITE_ASSOCIATION: ${{ vars.APPLE_APP_SITE_ASSOCIATION }}
   
 jobs:
   # switch-branch:
@@ -61,6 +62,9 @@ jobs:
           touch public/.env
           echo "$WEB_APP_ENV" >> public/.env
           cp public/.env public/assets/.env
+          mkdir -p public/.well-known
+          echo "$APPLE_APP_SITE_ASSOCIATION" >> public/.well-known/apple-app-site-association
+          cp public/.well-known/apple-app-site-association public/.well-known/apple-app-site-association
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
