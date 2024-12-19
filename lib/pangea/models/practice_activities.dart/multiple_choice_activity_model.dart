@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 
 class ActivityContent {
   final String question;
+
+  /// choices, including the correct answer
   final List<String> choices;
   final String answer;
   final RelevantSpanDisplayDetails? spanDisplayDetails;
