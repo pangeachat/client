@@ -650,4 +650,35 @@ class PangeaMessageEvent {
   /// Returns a list of [PracticeActivityEvent] for the user's active l2.
   List<PracticeActivityEvent> get practiceActivities =>
       l2Code == null ? [] : practiceActivitiesByLangCode(l2Code!);
+
+  //TODO probably move this to a context in which the event is defined
+  // Future<PracticeActivityModel?> getActivity({
+  //   required ActivityTypeEnum targetType,
+  //   required List<PangeaToken> targetTokens,
+  //   required ActivityQualityFeedback? feedback,
+  // }) async {
+  //   if (!MatrixState.pangeaController.languageController.languagesSet) {
+  //     debugger(when: kDebugMode);
+  //     //TODO make this standard error that goes to language setting page
+  //     throw Exception("Languages not set");
+  //   }
+
+  //   //TODO - verify there are no costs to making a new instance of this controller here
+  //   final res = await PracticeGenerationController().getPracticeActivity(
+  //     MessageActivityRequest(
+  //       userL1:
+  //           MatrixState.pangeaController.languageController.userL1!.langCode,
+  //       userL2:
+  //           MatrixState.pangeaController.languageController.userL2!.langCode,
+  //       messageText: messageDisplayText,
+  //       messageTokens: messageDisplayRepresentation!.tokens!,
+  //       activityQualityFeedback: feedback,
+  //       targetTokens: targetTokens,
+  //       targetType: ActivityTypeEnum.wordMeaning,
+  //     ),
+  //     this,
+  //   );
+
+  //   return res.activity;
+  // }
 }

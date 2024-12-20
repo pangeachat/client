@@ -1,14 +1,21 @@
 import 'dart:developer';
 
 import 'package:collection/collection.dart';
+import 'package:fluffychat/pangea/constants/language_constants.dart';
+import 'package:fluffychat/pangea/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/enum/activity_type_enum.dart';
 import 'package:fluffychat/pangea/enum/construct_type_enum.dart';
 import 'package:fluffychat/pangea/enum/construct_use_type_enum.dart';
+import 'package:fluffychat/pangea/extensions/client_extension/client_extension.dart';
 import 'package:fluffychat/pangea/models/analytics/construct_use_model.dart';
 import 'package:fluffychat/pangea/models/analytics/constructs_model.dart';
+import 'package:fluffychat/pangea/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/models/practice_activities.dart/practice_activity_model.dart';
+import 'package:fluffychat/pangea/repo/lemma_definition_repo.dart';
+import 'package:fluffychat/pangea/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/foundation.dart';
+import 'package:matrix/matrix.dart';
 
 import '../constants/model_keys.dart';
 import 'lemma.dart';
@@ -196,62 +203,94 @@ class PangeaToken {
     switch (a) {
       case ActivityTypeEnum.wordMeaning:
         return canBeDefined;
+      case ActivityTypeEnum.lemmaId:
+        return lemma.saveVocab;
+      case ActivityTypeEnum.emoji:
+        return true;
+      case ActivityTypeEnum.morphId:
+        return morph.isNotEmpty;
       case ActivityTypeEnum.wordFocusListening:
-        return false;
       case ActivityTypeEnum.hiddenWordListening:
         return canBeHeard;
     }
   }
 
-  bool _didActivity(ActivityTypeEnum a) {
+  bool _didActivity(
+    ActivityTypeEnum a, [
+    String? morphFeature,
+    String? morphTag,
+  ]) {
+    if ((morphFeature == null || morphTag == null) &&
+        a == ActivityTypeEnum.morphId) {
+      debugger(when: kDebugMode);
+      return true;
+    }
     switch (a) {
       case ActivityTypeEnum.wordMeaning:
-        return vocabConstruct.uses
-            .map((u) => u.useType)
-            .any((u) => a.associatedUseTypes.contains(u));
       case ActivityTypeEnum.wordFocusListening:
-        return vocabConstruct.uses
-            // TODO - double-check that form is going to be available here
-            // .where((u) =>
-            //     u.form?.toLowerCase() == text.content.toLowerCase(),)
-            .map((u) => u.useType)
-            .any((u) => a.associatedUseTypes.contains(u));
       case ActivityTypeEnum.hiddenWordListening:
+      case ActivityTypeEnum.lemmaId:
+      case ActivityTypeEnum.emoji:
         return vocabConstruct.uses
-            // TODO - double-check that form is going to be available here
-            // .where((u) =>
-            //     u.form?.toLowerCase() == text.content.toLowerCase(),)
             .map((u) => u.useType)
             .any((u) => a.associatedUseTypes.contains(u));
+      case ActivityTypeEnum.morphId:
+        return morph.entries
+            .map((e) => morphConstruct(morphFeature!, morphTag!).uses)
+            .expand((e) => e)
+            .any(
+              (u) =>
+                  a.associatedUseTypes.contains(u.useType) &&
+                  u.form == text.content,
+            );
     }
   }
 
-  bool _didActivitySuccessfully(ActivityTypeEnum a) {
+  bool _didActivitySuccessfully(
+    ActivityTypeEnum a, [
+    String? morphFeature,
+    String? morphTag,
+  ]) {
+    if ((morphFeature == null || morphTag == null) &&
+        a == ActivityTypeEnum.morphId) {
+      debugger(when: kDebugMode);
+      return true;
+    }
     switch (a) {
       case ActivityTypeEnum.wordMeaning:
-        return vocabConstruct.uses
-            .map((u) => u.useType)
-            .any((u) => u == ConstructUseTypeEnum.corPA);
       case ActivityTypeEnum.wordFocusListening:
-        return vocabConstruct.uses
-            // TODO - double-check that form is going to be available here
-            // .where((u) =>
-            //     u.form?.toLowerCase() == text.content.toLowerCase(),)
-            .map((u) => u.useType)
-            .any((u) => u == ConstructUseTypeEnum.corWL);
       case ActivityTypeEnum.hiddenWordListening:
+      case ActivityTypeEnum.lemmaId:
+      case ActivityTypeEnum.emoji:
         return vocabConstruct.uses
-            // TODO - double-check that form is going to be available here
-            // .where((u) =>
-            //     u.form?.toLowerCase() == text.content.toLowerCase(),)
             .map((u) => u.useType)
-            .any((u) => u == ConstructUseTypeEnum.corHWL);
+            .any((u) => u == a.correctUse);
+      // Note that it matters less if they did morphId in general, than if they did it with the particular feature
+      case ActivityTypeEnum.morphId:
+        if (morphFeature == null || morphTag == null) {
+          debugger(when: kDebugMode);
+          return false;
+        }
+        return morphConstruct(morphFeature, morphTag)
+            .uses
+            .any((u) => u.useType == a.correctUse && u.form == text.content);
     }
   }
 
-  bool _isActivityProbablyLevelAppropriate(ActivityTypeEnum a) {
+  bool _isActivityProbablyLevelAppropriate(
+    ActivityTypeEnum a, [
+    String? morphFeature,
+    String? morphTag,
+  ]) {
     switch (a) {
       case ActivityTypeEnum.wordMeaning:
+        debugPrint(
+          "token: ${text.content}, vocabConstruct.points: ${vocabConstruct.points}, is content word: $isContentWord, can be defined: $canBeDefined, days since last used: ${daysSinceLastUseByType(ActivityTypeEnum.wordMeaning)}",
+        );
+        if (daysSinceLastUseByType(ActivityTypeEnum.wordMeaning) < 1) {
+          return false;
+        }
+
         if (isContentWord) {
           return vocabConstruct.points < 30;
         } else if (canBeDefined) {
@@ -262,22 +301,71 @@ class PangeaToken {
       case ActivityTypeEnum.wordFocusListening:
         return !_didActivitySuccessfully(a) || daysSinceLastUseByType(a) > 30;
       case ActivityTypeEnum.hiddenWordListening:
-        return daysSinceLastUseByType(a) > 2;
+        return daysSinceLastUseByType(a) > 7;
+      case ActivityTypeEnum.lemmaId:
+        return daysSinceLastUseByType(a) > 7;
+      case ActivityTypeEnum.emoji:
+        return getEmoji() == null;
+      case ActivityTypeEnum.morphId:
+        if (morphFeature == null || morphTag == null) {
+          debugger(when: kDebugMode);
+          return false;
+        }
+        return daysSinceLastUseMorph(morphFeature, morphTag) > 1 &&
+            morphConstruct(morphFeature, morphTag).points < 5;
+    }
+  }
+
+  bool get shouldDoPosActivity => shouldDoMorphActivity("Pos");
+
+  bool shouldDoMorphActivity(String feature) => shouldDoActivity(
+        a: ActivityTypeEnum.morphId,
+        feature: feature,
+        tag: morph[feature],
+      );
+
+  Future<bool> canGenerateDistractors(
+    ActivityTypeEnum type, {
+    String? morphFeature,
+    String? morphTag,
+  }) async {
+    final constructListModel =
+        MatrixState.pangeaController.getAnalytics.constructListModel;
+    switch (type) {
+      case ActivityTypeEnum.lemmaId:
+        final distractors =
+            await constructListModel.lemmaActivityDistractors(this);
+        return distractors.isNotEmpty;
+      case ActivityTypeEnum.morphId:
+        final distractors = constructListModel.morphActivityDistractors(
+          morphFeature!,
+          morphTag!,
+        );
+        return distractors.isNotEmpty;
+      case ActivityTypeEnum.emoji:
+      case ActivityTypeEnum.wordFocusListening:
+      case ActivityTypeEnum.wordMeaning:
+      case ActivityTypeEnum.hiddenWordListening:
+        return true;
     }
   }
 
   // maybe for every 5 points of xp for a particular activity, increment the days between uses by 2
-  bool shouldDoActivity(ActivityTypeEnum a) =>
-      lemma.saveVocab &&
-      _isActivityBasicallyEligible(a) &&
-      _isActivityProbablyLevelAppropriate(a);
-
-  /// we try to guess if the user is click on a token specifically or clicking on a message in general
-  /// if we think the word might be new for the learner, then we'll assume they're clicking on the word
-  bool get shouldDoWordMeaningOnClick =>
-      lemma.saveVocab &&
-      canBeDefined &&
-      daysSinceLastUseByType(ActivityTypeEnum.wordMeaning) > 1;
+  bool shouldDoActivity({
+    required ActivityTypeEnum a,
+    required String? feature,
+    required String? tag,
+  }) {
+    debugPrint("show do activity: ${text.content}, $a");
+    debugPrint("save vocab: ${lemma.saveVocab}");
+    debugPrint("eligible: ${_isActivityBasicallyEligible(a)}");
+    debugPrint(
+      "level appropriate: ${_isActivityProbablyLevelAppropriate(a, feature, tag)}",
+    );
+    return lemma.saveVocab &&
+        _isActivityBasicallyEligible(a) &&
+        _isActivityProbablyLevelAppropriate(a, feature, tag);
+  }
 
   List<ActivityTypeEnum> get eligibleActivityTypes {
     final List<ActivityTypeEnum> eligibleActivityTypes = [];
@@ -287,7 +375,7 @@ class PangeaToken {
     }
 
     for (final type in ActivityTypeEnum.values) {
-      if (shouldDoActivity(type)) {
+      if (shouldDoActivity(a: type, feature: null, tag: null)) {
         eligibleActivityTypes.add(type);
       }
     }
@@ -295,20 +383,37 @@ class PangeaToken {
     return eligibleActivityTypes;
   }
 
-  ConstructUses get vocabConstruct {
-    final vocab = constructs.firstWhereOrNull(
-      (element) => element.id.type == ConstructTypeEnum.vocab,
-    );
-    if (vocab == null) {
-      return ConstructUses(
+  ConstructUses get vocabConstruct =>
+      MatrixState.pangeaController.getAnalytics.constructListModel
+          .getConstructUses(
+        ConstructIdentifier(
+          lemma: lemma.text,
+          type: ConstructTypeEnum.morph,
+          category: pos,
+        ),
+      ) ??
+      ConstructUses(
         lemma: lemma.text,
-        constructType: ConstructTypeEnum.vocab,
+        constructType: ConstructTypeEnum.morph,
         category: pos,
         uses: [],
       );
-    }
-    return vocab;
-  }
+
+  ConstructUses morphConstruct(String morphFeature, String morphTag) =>
+      MatrixState.pangeaController.getAnalytics.constructListModel
+          .getConstructUses(
+        ConstructIdentifier(
+          lemma: morphTag,
+          type: ConstructTypeEnum.morph,
+          category: morphFeature,
+        ),
+      ) ??
+      ConstructUses(
+        lemma: morphTag,
+        constructType: ConstructTypeEnum.morph,
+        category: morphFeature,
+        uses: [],
+      );
 
   int get xp {
     return constructs.fold<int>(
@@ -333,6 +438,12 @@ class PangeaToken {
   /// daysSinceLastUse by activity type
   int daysSinceLastUseByType(ActivityTypeEnum a) {
     final lastUsed = _lastUsedByActivityType(a);
+    if (lastUsed == null) return 1000;
+    return DateTime.now().difference(lastUsed).inDays;
+  }
+
+  int daysSinceLastUseMorph(String morphFeature, String morphTag) {
+    final lastUsed = morphConstruct(morphFeature, morphTag).lastUsed;
     if (lastUsed == null) return 1000;
     return DateTime.now().difference(lastUsed).inDays;
   }
@@ -374,46 +485,91 @@ class PangeaToken {
       'target_types': eligibleActivityTypes.map((e) => e.string).toList(),
     };
   }
-}
 
-class PangeaTokenText {
-  int offset;
-  String content;
-  int length;
+  Future<List<String>> getEmojiChoices() => LemmaDictionaryRepo.get(
+        LemmaDefinitionRequest(
+          lemma: lemma.text,
+          partOfSpeech: pos,
+          lemmaLang: MatrixState
+                  .pangeaController.languageController.userL2?.langCode ??
+              LanguageKeys.unknownLanguage,
+          userL1: MatrixState
+                  .pangeaController.languageController.userL1?.langCode ??
+              LanguageKeys.defaultLanguage,
+        ),
+      ).then((onValue) => onValue.emoji);
 
-  PangeaTokenText({
-    required this.offset,
-    required this.content,
-    required this.length,
-  });
+  ConstructIdentifier get vocabConstructID => ConstructIdentifier(
+        lemma: lemma.text,
+        type: ConstructTypeEnum.vocab,
+        category: pos,
+      );
 
-  factory PangeaTokenText.fromJson(Map<String, dynamic> json) {
-    debugger(when: kDebugMode && json[_offsetKey] == null);
-    return PangeaTokenText(
-      offset: json[_offsetKey],
-      content: json[_contentKey],
-      length: json[_lengthKey] ?? (json[_contentKey] as String).length,
-    );
-  }
+  Room? get analyticsRoom {
+    final String? l2 =
+        MatrixState.pangeaController.languageController.userL2?.langCode;
 
-  static const String _offsetKey = "offset";
-  static const String _contentKey = "content";
-  static const String _lengthKey = "length";
-
-  Map<String, dynamic> toJson() =>
-      {_offsetKey: offset, _contentKey: content, _lengthKey: length};
-
-  //override equals and hashcode
-  @override
-  bool operator ==(Object other) {
-    if (other is PangeaTokenText) {
-      return other.offset == offset &&
-          other.content == content &&
-          other.length == length;
+    if (l2 == null) {
+      debugger(when: kDebugMode);
+      return null;
     }
-    return false;
+
+    final Room? analyticsRoom =
+        MatrixState.pangeaController.matrixState.client.analyticsRoomLocal(l2);
+
+    if (analyticsRoom == null) {
+      debugger(when: kDebugMode);
+    }
+
+    return analyticsRoom;
   }
 
-  @override
-  int get hashCode => offset.hashCode ^ content.hashCode ^ length.hashCode;
+  /// [setEmoji] sets the emoji for the lemma
+  /// NOTE: assumes that the language of the lemma is the same as the user's current l2
+  Future<void> setEmoji(String emoji) async {
+    if (analyticsRoom == null) return;
+    try {
+      final client = MatrixState.pangeaController.matrixState.client;
+      final syncFuture = client.onRoomState.stream.firstWhere((event) {
+        return event.roomId == analyticsRoom!.id &&
+            event.state.type == PangeaEventTypes.userChosenEmoji;
+      });
+      client.setRoomStateWithKey(
+        analyticsRoom!.id,
+        PangeaEventTypes.userChosenEmoji,
+        vocabConstructID.string,
+        {ModelKey.emoji: emoji},
+      );
+      await syncFuture;
+    } catch (err, s) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(
+        e: err,
+        data: {
+          "construct": vocabConstructID.string,
+          "emoji": emoji,
+        },
+        s: s,
+      );
+    }
+  }
+
+  /// [getEmoji] gets the emoji for the lemma
+  /// NOTE: assumes that the language of the lemma is the same as the user's current l2
+  String? getEmoji() {
+    return analyticsRoom
+        ?.getState(PangeaEventTypes.userChosenEmoji, vocabConstructID.string)
+        ?.content
+        .tryGet<String>(ModelKey.emoji);
+  }
+
+  String get xpEmoji {
+    if (xp < 5) {
+      return "🌱";
+    } else if (xp < 10) {
+      return "🌿";
+    } else {
+      return "🌺";
+    }
+  }
 }

@@ -143,6 +143,16 @@ class ActivityRecordResponse {
         return score > 0
             ? ConstructUseTypeEnum.corWL
             : ConstructUseTypeEnum.incWL;
+      case ActivityTypeEnum.emoji:
+        return ConstructUseTypeEnum.em;
+      case ActivityTypeEnum.lemmaId:
+        return score > 0
+            ? ConstructUseTypeEnum.corL
+            : ConstructUseTypeEnum.incL;
+      case ActivityTypeEnum.morphId:
+        return score > 0
+            ? ConstructUseTypeEnum.corM
+            : ConstructUseTypeEnum.incM;
       case ActivityTypeEnum.hiddenWordListening:
         return score > 0
             ? ConstructUseTypeEnum.corHWL
