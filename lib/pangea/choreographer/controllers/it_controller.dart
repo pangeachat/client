@@ -175,7 +175,17 @@ class ITController {
     } catch (e, s) {
       debugger(when: kDebugMode);
       if (e is! http.Response) {
-        ErrorHandler.logError(e: e, s: s);
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {
+            "currentText": choreographer.currentText,
+            "sourceText": sourceText,
+            "completedITSteps": completedITSteps,
+            "currentITStep": currentITStep,
+            "nextITStep": nextITStep,
+          },
+        );
       }
       choreographer.errorService.setErrorAndLock(
         ChoreoError(type: ChoreoErrorType.unknown, raw: e),
@@ -193,6 +203,7 @@ class ITController {
           "sourceText": sourceText,
           "currentITStep": currentITStep,
           "nextITStep": nextITStep,
+          "continuances": goldRouteTracker.continuances,
         },
       );
       return;
@@ -220,7 +231,17 @@ class ITController {
     } catch (e, s) {
       debugger(when: kDebugMode);
       if (e is! http.Response) {
-        ErrorHandler.logError(e: e, s: s);
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {
+            "sourceText": sourceText,
+            "completedITSteps": completedITSteps,
+            "currentITStep": currentITStep,
+            "nextITStep": nextITStep,
+            "continuances": goldRouteTracker.continuances,
+          },
+        );
       }
       choreographer.errorService.setErrorAndLock(
         ChoreoError(type: ChoreoErrorType.unknown, raw: e),
@@ -246,7 +267,14 @@ class ITController {
     } catch (err, stack) {
       debugger(when: kDebugMode);
       if (err is! http.Response) {
-        ErrorHandler.logError(e: err, s: stack);
+        ErrorHandler.logError(
+          e: err,
+          s: stack,
+          data: {
+            "newSourceText": newSourceText,
+            "l1Lang": choreographer.l1LangCode,
+          },
+        );
       }
       choreographer.errorService.setErrorAndLock(
         ChoreoError(type: ChoreoErrorType.unknown, raw: err),

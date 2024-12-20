@@ -113,7 +113,7 @@ class WordDataCardController extends State<WordDataCard> {
       GoogleAnalytics.contextualRequest();
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: err, s: stack, data: req?.toJson());
+      ErrorHandler.logError(e: err, s: stack, data: req?.toJson() ?? {});
       definitionError = Exception("Error getting definition");
     } finally {
       if (mounted) setState(() => isLoadingContextualDefinition = false);
@@ -172,7 +172,13 @@ class WordDataCardView extends StatelessWidget {
       );
     }
     if (controller.activeL1 == null || controller.activeL2 == null) {
-      ErrorHandler.logError(m: "should not be here");
+      ErrorHandler.logError(
+        m: "should not be here",
+        data: {
+          "activeL1": controller.activeL1,
+          "activeL2": controller.activeL2,
+        },
+      );
       return CardErrorWidget(
         error: controller.noLanguages,
         maxWidth: AppConfig.toolbarMinWidth,

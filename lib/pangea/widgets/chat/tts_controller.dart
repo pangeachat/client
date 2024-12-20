@@ -77,7 +77,13 @@ class TtsController {
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: s);
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "languages": _availableLangCodes,
+        },
+      );
     } finally {
       debugPrint("availableLangCodes: $_availableLangCodes");
       final enableTTSSetting = userController.profile.toolSettings.enableTTS;
@@ -114,7 +120,13 @@ class TtsController {
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: s);
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "languages": _availableLangCodes,
+        },
+      );
     }
   }
 
@@ -135,7 +147,11 @@ class TtsController {
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: s);
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {},
+      );
     }
   }
 
@@ -219,7 +235,13 @@ class TtsController {
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: s);
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'text': text,
+        },
+      );
     }
   }
 

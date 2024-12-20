@@ -6,7 +6,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../constants/match_rule_ids.dart';
 import '../models/pangea_match_model.dart';
@@ -65,15 +64,22 @@ class MatchCopy {
       }
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "match",
-          data: {
-            "match": match.toJson(),
-          },
-        ),
+      // .logError method will send breadcrumbs of data field
+      // Sentry.addBreadcrumb(
+      //   Breadcrumb(
+      //     message: "match",
+      //     data: {
+      //       "match": match.toJson(),
+      //     },
+      //   ),
+      // );
+      ErrorHandler.logError(
+        e: err,
+        s: stack,
+        data: {
+          "match": match.toJson(),
+        },
       );
-      ErrorHandler.logError(e: err, s: stack);
       _setDefaults();
     }
   }
@@ -217,15 +223,22 @@ class MatchCopy {
       }
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "match",
-          data: {
-            "match": match.toJson(),
-          },
-        ),
+      // .logError method will send breadcrumbs of data field
+      // Sentry.addBreadcrumb(
+      //   Breadcrumb(
+      //     message: "match",
+      //     data: {
+      //       "match": match.toJson(),
+      //     },
+      //   ),
+      // );
+      ErrorHandler.logError(
+        e: err,
+        s: stack,
+        data: {
+          "match": match.toJson(),
+        },
       );
-      ErrorHandler.logError(e: err, s: stack);
       _setDefaults();
     }
   }
