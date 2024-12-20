@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/send_button.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/start_igc_button.dart';
 import 'package:fluffychat/pangea/constants/language_constants.dart';
@@ -337,11 +338,10 @@ class ChatInputRow extends StatelessWidget {
                           autofocus: !PlatformInfos.isMobile,
                           keyboardType: TextInputType.multiline,
                           // #Pangea
-                          // textInputAction: AppConfig.sendOnEnter == true &&
-                          //         PlatformInfos.isMobile
-                          //     ? TextInputAction.send
-                          //     : null,
-                          textInputAction: TextInputAction.send,
+                          textInputAction: AppConfig.sendOnEnter == true
+                              ? TextInputAction.send
+                              : null,
+                          // textInputAction: TextInputAction.send,
                           // onSubmitted: controller.onInputBarSubmitted,
                           onSubmitted: (String value) =>
                               controller.onInputBarSubmitted(value, context),

@@ -77,12 +77,12 @@ class Choreographer {
 
   void send(BuildContext context) {
     debugPrint("can send message: $canSendMessage");
-    if (!canSendMessage) {
-      if (igc.igcTextData != null && igc.igcTextData!.matches.isNotEmpty) {
-        igc.showFirstMatch(context);
-      }
+    // if (!canSendMessage) {
+    if (igc.igcTextData != null && igc.igcTextData!.matches.isNotEmpty) {
+      igc.showFirstMatch(context);
       return;
     }
+    // }
 
     if (pangeaController.subscriptionController.subscriptionStatus ==
         SubscriptionStatus.showPaywall) {
@@ -237,7 +237,7 @@ class Choreographer {
 
     if (editTypeIsKeyboard) {
       debounceTimer ??= Timer(
-        const Duration(milliseconds: 1500),
+        const Duration(milliseconds: 10000),
         () => getLanguageHelp(),
       );
     } else {
