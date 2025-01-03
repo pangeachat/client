@@ -59,13 +59,13 @@ class MessageToolbar extends StatelessWidget {
       case MessageMode.translation:
         return MessageTranslationCard(
           messageEvent: pangeaMessageEvent,
-          selection: overlayController.selectedSpan,
+          selection: overlayController.selectedSpan?.first,
         );
       case MessageMode.textToSpeech:
         return MessageAudioCard(
           messageEvent: pangeaMessageEvent,
           overlayController: overlayController,
-          selection: overlayController.selectedSpan,
+          selection: overlayController.selectedSpan?.first,
           tts: ttsController,
           setIsPlayingAudio: overlayController.setIsPlayingAudio,
         );

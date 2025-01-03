@@ -2,9 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/config/environment.dart';
 import 'package:fluffychat/pangea/constants/model_keys.dart';
 import 'package:fluffychat/pangea/controllers/pangea_controller.dart';
+import 'package:fluffychat/pangea/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/network/urls.dart';
 import 'package:http/http.dart';
@@ -75,6 +77,15 @@ class TTSToken {
 
   @override
   int get hashCode => startMS.hashCode ^ endMS.hashCode ^ text.hashCode;
+
+  /// Given a list of PangeaTokens, this method returns the
+  /// PangeaToken with matching length and offset, or null if not found
+  PangeaToken? matchingToken(List<PangeaToken> tokens) {
+    return tokens.firstWhereOrNull(
+      (token) =>
+          token.text.offset == text.offset && token.text.length == text.length,
+    );
+  }
 }
 
 class TextToSpeechRequest {
