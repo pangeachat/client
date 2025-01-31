@@ -1,11 +1,6 @@
 // stateful widget that displays morphological label and a shimmer effect while the text is loading
 // takes a token and morphological feature as input
 
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
-import 'package:fluffychat/pangea/analytics/constants/morph_categories_and_labels.dart';
 import 'package:fluffychat/pangea/analytics/enums/morph_categories_enum.dart';
 import 'package:fluffychat/pangea/analytics/utils/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -14,8 +9,11 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/morphs/morph_categories_and_labels.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class MorphologicalCenterWidget extends StatefulWidget {
   final PangeaToken token;
