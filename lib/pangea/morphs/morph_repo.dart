@@ -1,17 +1,16 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
+
 import '../common/network/requests.dart';
 
 class _APICallCacheItem {
@@ -84,26 +83,29 @@ class MorphsRepo {
       return defaultMorphMapping;
     }
 
+    // does not differ based on locale
+    final langCodeShort = languageCode.split("-")[0];
+
     // check if we have a cached morphs for this language code
-    final cachedJson = _morphsStorage.read(languageCode);
+    final cachedJson = _morphsStorage.read(langCodeShort);
     if (cachedJson != null) {
       return MorphsRepo.fromJson(cachedJson);
     }
 
     // check if we have a cached call for this language code
-    final _APICallCacheItem? cachedCall = shortTermCache[languageCode];
+    final _APICallCacheItem? cachedCall = shortTermCache[langCodeShort];
     if (cachedCall != null) {
       if (DateTime.now().difference(cachedCall.time).inMinutes <
           _cacheDurationMinutes) {
         return cachedCall.future;
       } else {
-        shortTermCache.remove(languageCode);
+        shortTermCache.remove(langCodeShort);
       }
     }
 
     // fetch the morphs but don't wait for it
-    final future = _fetch(languageCode);
-    shortTermCache[languageCode] = _APICallCacheItem(DateTime.now(), future);
+    final future = _fetch(langCodeShort);
+    shortTermCache[langCodeShort] = _APICallCacheItem(DateTime.now(), future);
     return future;
   }
 }

@@ -33,7 +33,11 @@ class PLanguageDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<LanguageModel> sortedLanguages = languages;
     final String systemLang = Localizations.localeOf(context).languageCode;
-    final List<String> languagePriority = [systemLang];
+
+    // if there is no initial language, the system language should be the first in the list
+    // otherwise, display in alphabetical order
+    final List<String> languagePriority =
+        initialLanguage == null ? [systemLang] : [];
 
     int sortLanguages(LanguageModel a, LanguageModel b) {
       final String aLang = a.langCode;
