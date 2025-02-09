@@ -1,10 +1,11 @@
 import 'dart:math';
 
-import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:flutter/material.dart';
+
 import 'package:http/http.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
+import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import '../../../widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
 import '../../common/controllers/pangea_controller.dart';
