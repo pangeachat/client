@@ -1,15 +1,15 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
+import 'package:fluffychat/pages/invitation_selection/invitation_selection_view.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pages/invitation_selection/invitation_selection_view.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import '../../utils/localized_exception_extension.dart';
 
 class InvitationSelection extends StatefulWidget {
@@ -171,12 +171,26 @@ class InvitationSelectionController extends State<InvitationSelection> {
     }
     currentSearchTerm = text;
     if (currentSearchTerm.isEmpty) return;
+    //#Pangea
+    String pangeaSearchText = text;
+    if (!pangeaSearchText.startsWith("@")) {
+      pangeaSearchText = "@$pangeaSearchText";
+    }
+    if (!pangeaSearchText.contains(":")) {
+      pangeaSearchText = "$pangeaSearchText:${Environment.homeServer}";
+    }
+    print(pangeaSearchText);
+    //#Pangea
     if (loading) return;
     setState(() => loading = true);
     final matrix = Matrix.of(context);
     SearchUserDirectoryResponse response;
     try {
-      response = await matrix.client.searchUserDirectory(text, limit: 10);
+      // response = await matrix.client.searchUserDirectory(text, limit: 10);
+      //#Pangea
+      response =
+          await matrix.client.searchUserDirectory(pangeaSearchText, limit: 10);
+      //#Pangea
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text((e).toLocalizedString(context))),
