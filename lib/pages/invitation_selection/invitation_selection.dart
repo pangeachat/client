@@ -179,7 +179,6 @@ class InvitationSelectionController extends State<InvitationSelection> {
     if (!pangeaSearchText.contains(":")) {
       pangeaSearchText = "$pangeaSearchText:${Environment.homeServer}";
     }
-    print(pangeaSearchText);
     //#Pangea
     if (loading) return;
     setState(() => loading = true);
