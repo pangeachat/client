@@ -729,6 +729,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$password(_) {
       return "Pasahitza";
     },
+    get$passwordForgotten() {
+      return "Pasahitza ahaztu dut";
+    },
     get$passwordHasBeenChanged() {
       return "Pasahitza aldatu da";
     },
@@ -4716,6 +4719,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_208", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "bO47Mn6nBY6Fo3k7aeRUNrPee7g=");
+})($__dart_deferred_initializers__, "botkGIs96JZLBEKmNdAEcM8Su/w=");
 ;
 //# sourceMappingURL=main.dart.js_208.part.js.map

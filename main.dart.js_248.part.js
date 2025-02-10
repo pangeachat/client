@@ -729,6 +729,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$password(_) {
       return "Wachtwoord";
     },
+    get$passwordForgotten() {
+      return "Wachtwoord vergeten";
+    },
     get$passwordHasBeenChanged() {
       return "Wachtwoord gewijzigd";
     },
@@ -4713,6 +4716,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_248", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "JGRC2NNG5MxeiPoTjgrPNz1q5N8=");
+})($__dart_deferred_initializers__, "ZlvDocgcFCA5k2RAkLskubj/dPM=");
 ;
 //# sourceMappingURL=main.dart.js_248.part.js.map

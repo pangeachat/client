@@ -729,6 +729,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$password(_) {
       return "Kata sandi";
     },
+    get$passwordForgotten() {
+      return "Lupa kata sandi";
+    },
     get$passwordHasBeenChanged() {
       return "Kata sandi telah diubah";
     },
@@ -4713,6 +4716,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_232", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "hVQy+9/eqHzje8exqx0F0GRQp2o=");
+})($__dart_deferred_initializers__, "Zm4YhFjX4RPOdir0l8lGKFVOANg=");
 ;
 //# sourceMappingURL=main.dart.js_232.part.js.map

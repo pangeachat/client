@@ -729,6 +729,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$password(_) {
       return "Salasana";
     },
+    get$passwordForgotten() {
+      return "Salasana unohtunut";
+    },
     get$passwordHasBeenChanged() {
       return "Salasana on vaihdettu";
     },
@@ -4713,6 +4716,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_211", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "4s2s35ewa3I1xBocku3vnJVPCZ8=");
+})($__dart_deferred_initializers__, "X3gdLMTEgFtlQvSxEKug9rzB0uc=");
 ;
 //# sourceMappingURL=main.dart.js_211.part.js.map

@@ -730,6 +730,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$password(_) {
       return "Contrasenya";
     },
+    get$passwordForgotten() {
+      return "Contrasenya oblidada";
+    },
     get$passwordHasBeenChanged() {
       return "La contrasenya ha canviat";
     },
@@ -4714,6 +4717,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_175", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "nQwUZc+TTXwhonquwtnjkmFU0mo=");
+})($__dart_deferred_initializers__, "TIG7iCbSxq0DS6GzK+gRGhf+N9s=");
 ;
 //# sourceMappingURL=main.dart.js_175.part.js.map

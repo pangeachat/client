@@ -730,6 +730,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$password(_) {
       return "Pasvorto";
     },
+    get$passwordForgotten() {
+      return "Forgesita pasvorto";
+    },
     get$passwordHasBeenChanged() {
       return "Pasvorto \u015dan\u011di\u011dis";
     },
@@ -4714,6 +4717,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_199", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "BTX3V/1nJEnzOicaben1KH4yY6A=");
+})($__dart_deferred_initializers__, "wIzgdECXVGxvUu6yJYwYWK9+ZsY=");
 ;
 //# sourceMappingURL=main.dart.js_199.part.js.map

@@ -729,6 +729,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$password(_) {
       return "Contrase\xf1a";
     },
+    get$passwordForgotten() {
+      return "Contrase\xf1a olvidada";
+    },
     get$passwordHasBeenChanged() {
       return "La contrase\xf1a ha sido cambiada";
     },
@@ -4713,6 +4716,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_201", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "vT73Vjt6/ZVOFYWKqCBgfztexyY=");
+})($__dart_deferred_initializers__, "BwCMYgerU/n9hRBD5V6iyiosGLI=");
 ;
 //# sourceMappingURL=main.dart.js_201.part.js.map

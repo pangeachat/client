@@ -729,6 +729,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$password(_) {
       return "Salas\xf5na";
     },
+    get$passwordForgotten() {
+      return "Salas\xf5na on ununenud";
+    },
     get$passwordHasBeenChanged() {
       return "Salas\xf5na on muudetud";
     },
@@ -4713,6 +4716,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_206", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "PD/K3MRB2Czsb6y0dizWteVGt7k=");
+})($__dart_deferred_initializers__, "yUZ/QhIjEPJ4Ds7RgrGiUmAnM/E=");
 ;
 //# sourceMappingURL=main.dart.js_206.part.js.map
