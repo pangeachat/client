@@ -52,7 +52,7 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
     // if there is no initial language, the system language should be the first in the list
     // otherwise, display in alphabetical order
     final List<String> languagePriority =
-        initialLanguage == null ? [systemLang] : [];
+        widget.initialLanguage == null ? [systemLang] : [];
 
     int sortLanguages(LanguageModel a, LanguageModel b) {
       final String aLang = a.langCode;
