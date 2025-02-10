@@ -3642,6 +3642,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVERBFORMinf() {
       return "Infinitivo";
     },
+    get$grammarCopyVERBFORMaux() {
+      return "Auxiliary";
+    },
     get$grammarCopyNUMFORMlong() {
       return "Largo";
     },
@@ -4065,11 +4068,50 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyPOSS() {
       return "Posesivo";
     },
+    get$grammarCopyASPECTimp() {
+      return "Aspecto imperfectivo";
+    },
+    get$grammarCopyCASEvoc() {
+      return "Vocativo";
+    },
+    get$grammarCopyCASEcom() {
+      return "Comitative";
+    },
+    get$grammarCopyCASEpar() {
+      return "Partitivo";
+    },
+    get$grammarCopyCASEadv() {
+      return "Adverbial";
+    },
+    get$grammarCopyCASEref() {
+      return "Referencial";
+    },
+    get$grammarCopyCASErel() {
+      return "Relativa";
+    },
+    get$grammarCopyCASEsub() {
+      return "Subesivo";
+    },
+    get$grammarCopyCASEsup() {
+      return "Superessive";
+    },
     get$grammarCopyCASEaccdat() {
       return "Acusativo-dativo";
     },
+    get$grammarCopyCASEpre() {
+      return "Preposicional";
+    },
+    get$grammarCopyCONJTYPEsub() {
+      return "Subordinaci\xf3n";
+    },
+    get$grammarCopyCONJTYPEcmp() {
+      return "Comparativa";
+    },
     get$grammarCopyDEFINITEind() {
       return "Indefinido";
+    },
+    get$grammarCopyMOODint() {
+      return "Modo interrogativo";
     },
     get$grammarCopyNOUNTYPEcomm() {
       return "Sustantivo com\xfan";
@@ -4082,6 +4124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$grammarCopyNUMBERPSORdual() {
       return "Doble del poseedor";
+    },
+    get$grammarCopyPOLARITYpos() {
+      return "Polaridad positiva";
     },
     get$grammarCopyPOSSyes() {
       return "Posesivo";
@@ -4121,6 +4166,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$grammarCopyTENSEimp() {
       return "Imperfect";
+    },
+    get$grammarCopyVERBFORMsup() {
+      return "SuApine";
+    },
+    get$grammarCopyVERBFORMadn() {
+      return "Adnominal";
+    },
+    get$grammarCopyVERBFORMlng() {
+      return "Largo";
+    },
+    get$grammarCopyVERBTYPEcaus() {
+      return "Verbo causativo";
+    },
+    get$grammarCopyVOICEcau() {
+      return "Causa";
+    },
+    get$grammarCopyVOICEdir() {
+      return "Directo";
+    },
+    get$grammarCopyVOICEinv() {
+      return "Inversa";
+    },
+    get$grammarCopyVOICErcp() {
+      return "Reciprocal";
     },
     get$enterPrompt() {
       return "Introduzca un mensaje del sistema";
@@ -4716,6 +4785,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_201", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "BwCMYgerU/n9hRBD5V6iyiosGLI=");
+})($__dart_deferred_initializers__, "HhfoPzhf8n+mZ/y7ooKwvW8Fx14=");
 ;
 //# sourceMappingURL=main.dart.js_201.part.js.map

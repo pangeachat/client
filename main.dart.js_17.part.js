@@ -3655,6 +3655,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVERBFORMinf() {
       return "Infinitive";
     },
+    get$grammarCopyVERBFORMaux() {
+      return "Auxiliary";
+    },
     get$grammarCopyNUMFORMlong() {
       return "Long";
     },
@@ -4078,11 +4081,50 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyPOSS() {
       return "Possessive";
     },
+    get$grammarCopyASPECTimp() {
+      return "Imperfective Aspect";
+    },
+    get$grammarCopyCASEvoc() {
+      return "Vocative";
+    },
+    get$grammarCopyCASEcom() {
+      return "Comitative";
+    },
+    get$grammarCopyCASEpar() {
+      return "Partitive";
+    },
+    get$grammarCopyCASEadv() {
+      return "Adverbial";
+    },
+    get$grammarCopyCASEref() {
+      return "Referential";
+    },
+    get$grammarCopyCASErel() {
+      return "Relative";
+    },
+    get$grammarCopyCASEsub() {
+      return "Subessive";
+    },
+    get$grammarCopyCASEsup() {
+      return "Superessive";
+    },
     get$grammarCopyCASEaccdat() {
       return "Accusative-Dative";
     },
+    get$grammarCopyCASEpre() {
+      return "Prepositional";
+    },
+    get$grammarCopyCONJTYPEsub() {
+      return "Subordinating";
+    },
+    get$grammarCopyCONJTYPEcmp() {
+      return "Comparative";
+    },
     get$grammarCopyDEFINITEind() {
       return "Indefinite";
+    },
+    get$grammarCopyMOODint() {
+      return "Interrogative Mood";
     },
     get$grammarCopyNOUNTYPEcomm() {
       return "Common Noun";
@@ -4095,6 +4137,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$grammarCopyNUMBERPSORdual() {
       return "Possessor's Dual";
+    },
+    get$grammarCopyPOLARITYpos() {
+      return "Positive Polarity";
     },
     get$grammarCopyPOSSyes() {
       return "Possessive";
@@ -4134,6 +4179,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$grammarCopyTENSEimp() {
       return "Imperfect";
+    },
+    get$grammarCopyVERBFORMsup() {
+      return "SuApine";
+    },
+    get$grammarCopyVERBFORMadn() {
+      return "Adnominal";
+    },
+    get$grammarCopyVERBFORMlng() {
+      return "Long";
+    },
+    get$grammarCopyVERBTYPEcaus() {
+      return "Causative Verb";
+    },
+    get$grammarCopyVOICEcau() {
+      return "Causative";
+    },
+    get$grammarCopyVOICEdir() {
+      return "Direct";
+    },
+    get$grammarCopyVOICEinv() {
+      return "Inverse";
+    },
+    get$grammarCopyVOICErcp() {
+      return "Reciprocal";
     },
     get$enterPrompt() {
       return "Please enter a system prompt";
@@ -6733,6 +6802,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_17", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "yRm0J90JgVIfXrAb36RqHI8C4V4=");
+})($__dart_deferred_initializers__, "a0jGZxIGICUZpwidWvNuzlalqDE=");
 ;
 //# sourceMappingURL=main.dart.js_17.part.js.map

@@ -3642,6 +3642,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVERBFORMinf() {
       return "\u0110\u1ed9ng t\u1eeb nguy\xean m\u1eabu";
     },
+    get$grammarCopyVERBFORMaux() {
+      return "Auxiliary";
+    },
     get$grammarCopyNUMFORMlong() {
       return "D\u1ea1ng ch\u1eef d\xe0i";
     },
@@ -4065,11 +4068,50 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyPOSS() {
       return "S\u1edf h\u1eefu";
     },
+    get$grammarCopyASPECTimp() {
+      return "Kh\xf4ng ho\xe0n th\xe0nh";
+    },
+    get$grammarCopyCASEvoc() {
+      return "C\xe1ch h\xf4 g\u1ecdi";
+    },
+    get$grammarCopyCASEcom() {
+      return "C\xe1ch \u0111i k\xe8m (comitative)";
+    },
+    get$grammarCopyCASEpar() {
+      return "C\xe1ch chia ph\u1ea7n (partitive)";
+    },
+    get$grammarCopyCASEadv() {
+      return "C\xe1ch tr\u1ea1ng t\u1eeb";
+    },
+    get$grammarCopyCASEref() {
+      return "C\xe1ch tham chi\u1ebfu";
+    },
+    get$grammarCopyCASErel() {
+      return "C\xe1ch quan h\u1ec7";
+    },
+    get$grammarCopyCASEsub() {
+      return "C\xe1ch d\u01b0\u1edbi (subessive)";
+    },
+    get$grammarCopyCASEsup() {
+      return "C\xe1ch tr\xean (superessive)";
+    },
     get$grammarCopyCASEaccdat() {
       return "C\xe1ch tr\u1ef1c ti\u1ebfp-gi\xe1n ti\u1ebfp";
     },
+    get$grammarCopyCASEpre() {
+      return "C\xe1ch gi\u1edbi t\u1eeb";
+    },
+    get$grammarCopyCONJTYPEsub() {
+      return "Ph\u1ee5 thu\u1ed9c";
+    },
+    get$grammarCopyCONJTYPEcmp() {
+      return "So s\xe1nh";
+    },
     get$grammarCopyDEFINITEind() {
       return "Kh\xf4ng x\xe1c \u0111\u1ecbnh";
+    },
+    get$grammarCopyMOODint() {
+      return "Nghi v\u1ea5n";
     },
     get$grammarCopyNOUNTYPEcomm() {
       return "Danh t\u1eeb chung";
@@ -4082,6 +4124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$grammarCopyNUMBERPSORdual() {
       return "Ch\u1ee7 s\u1edf h\u1eefu s\u1ed1 \u0111\xf4i";
+    },
+    get$grammarCopyPOLARITYpos() {
+      return "Kh\u1eb3ng \u0111\u1ecbnh";
     },
     get$grammarCopyPOSSyes() {
       return "C\xf3 s\u1edf h\u1eefu";
@@ -4121,6 +4166,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$grammarCopyTENSEimp() {
       return "Qu\xe1 kh\u1ee9 kh\xf4ng ho\xe0n th\xe0nh";
+    },
+    get$grammarCopyVERBFORMsup() {
+      return "SuApine";
+    },
+    get$grammarCopyVERBFORMadn() {
+      return "Adj. B\u1ed5 ngh\u0129a danh t\u1eeb";
+    },
+    get$grammarCopyVERBFORMlng() {
+      return "D\u1ea1ng d\xe0i";
+    },
+    get$grammarCopyVERBTYPEcaus() {
+      return "\u0110\u1ed9ng t\u1eeb sai khi\u1ebfn";
+    },
+    get$grammarCopyVOICEcau() {
+      return "Th\u1ec3 g\xe2y khi\u1ebfn";
+    },
+    get$grammarCopyVOICEdir() {
+      return "Th\u1ec3 tr\u1ef1c ti\u1ebfp";
+    },
+    get$grammarCopyVOICEinv() {
+      return "Th\u1ec3 ngh\u1ecbch \u0111\u1ea3o";
+    },
+    get$grammarCopyVOICErcp() {
+      return "Th\u1ec3 t\u01b0\u01a1ng h\u1ed7";
     },
     get$enterPrompt() {
       return "Vui l\xf2ng nh\u1eadp l\u1eddi g\u1ee3i \xfd (prompt)";
@@ -4719,6 +4788,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "F0PB/tXQAhVaWNublzJ8SmEg9Sg=");
+})($__dart_deferred_initializers__, "ydZIbaWysfJAcub8CR3YvroJxbY=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map
