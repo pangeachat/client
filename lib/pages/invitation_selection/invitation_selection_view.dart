@@ -40,9 +40,7 @@ class InvitationSelectionView extends StatelessWidget {
         // #Pangea
         // leading: const Center(child: BackButton()),
         leading: Center(
-          child: BackButton(
-            onPressed: () => context.go("/rooms/${controller.roomId}/details"),
-          ),
+          child: BackButton(),
         ),
 // Pangea#
         titleSpacing: 0,
