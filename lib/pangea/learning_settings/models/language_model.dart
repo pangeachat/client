@@ -68,6 +68,8 @@ class LanguageModel {
     return displayName;
   }
 
+  String get langCodeShort => langCode.split('-').first;
+
   @override
   bool operator ==(Object other) {
     if (other is LanguageModel) {

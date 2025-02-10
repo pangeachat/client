@@ -103,8 +103,8 @@ class PangeaRepresentation {
     ChoreoRecord? choreo,
   }) {
     final List<OneConstructUse> uses = [];
-    final l2 = MatrixState.pangeaController.languageController.activeL2Code();
-    if (langCode.split("-")[0] != l2?.split("-")[0]) return uses;
+    final l2 = MatrixState.pangeaController.languageController.userL2;
+    if (langCode.split("-")[0] != l2?.langCodeShort) return uses;
 
     // missing vital info so return
     if (event?.roomId == null && metadata?.roomId == null) {
