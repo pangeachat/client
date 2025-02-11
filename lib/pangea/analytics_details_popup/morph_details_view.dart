@@ -1,19 +1,14 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup_content.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_repo.dart';
-import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
-import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_response.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class MorphDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
@@ -41,26 +36,10 @@ class MorphDetailsView extends StatelessWidget {
         _morphFeature;
   }
 
-  /// Fetch the meaning of the morph
-  Future<String?> _getDefinition(BuildContext context) async {
-    final lang2 =
-        MatrixState.pangeaController.languageController.userL2?.langCode;
-    if (lang2 == null) {
-      debugPrint("No lang2, cannot retrieve definition");
-      return L10n.of(context).meaningNotFound;
-    }
-
-    final MorphInfoRequest lemmaDefReq = MorphInfoRequest(
-      morphFeature: _construct.category,
-      lemmaLang: lang2,
-      userL1:
-          MatrixState.pangeaController.languageController.userL1?.langCode ??
-              LanguageKeys.defaultLanguage,
-      morphTag: _construct.lemma,
-    );
-    final MorphInfoResponse res = await MorphInfoRepo.get(lemmaDefReq);
-    return res.meaning;
-  }
+  Future<String> _getDefinition(BuildContext context) => MorphInfoRepo.get(
+        feature: _construct.category,
+        tag: _construct.lemma,
+      ).then((value) => value ?? L10n.of(context).meaningNotFound);
 
   @override
   Widget build(BuildContext context) {
@@ -170,9 +149,7 @@ class MorphDetailsView extends StatelessWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                    const CircularProgressIndicator.adaptive(
-                      strokeWidth: 2,
-                    ),
+                    const TextLoadingShimmer(width: 100),
                   ],
                 );
               }
