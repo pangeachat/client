@@ -1035,8 +1035,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$writeAMessage() {
       return "\uba54\uc2dc\uc9c0 \uc791\uc131\u2026";
     },
-    writeAMessageFlag$2(l1flag, l2flag) {
-      return "Write a message in " + l1flag + " or " + l2flag;
+    writeAMessageLangCodes$2(l1, l2) {
+      return "Type in " + l1 + " or " + l2 + "...";
     },
     get$yes() {
       return "\ud655\uc778";
@@ -4206,6 +4206,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_243", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "5ZFC+3wslgLudUoUWTMBevwWTFI=");
+})($__dart_deferred_initializers__, "/iNWcjr/zn+XM9CKjDYzGvYhacc=");
 ;
 //# sourceMappingURL=main.dart.js_243.part.js.map

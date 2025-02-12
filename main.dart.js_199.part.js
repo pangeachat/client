@@ -1036,8 +1036,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$writeAMessage() {
       return "Skribi mesa\u011don\u2026";
     },
-    writeAMessageFlag$2(l1flag, l2flag) {
-      return "Write a message in " + l1flag + " or " + l2flag;
+    writeAMessageLangCodes$2(l1, l2) {
+      return "Type in " + l1 + " or " + l2 + "...";
     },
     get$yes() {
       return "Jes";
@@ -4207,6 +4207,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_199", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "B7NS3hCKfRNkcGhRm3l1iAR145I=");
+})($__dart_deferred_initializers__, "Zp9KBxC7K6FFQPcDTaNEZ1XtXOM=");
 ;
 //# sourceMappingURL=main.dart.js_199.part.js.map
