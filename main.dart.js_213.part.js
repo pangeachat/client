@@ -4738,7 +4738,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Must be an integer e.g. 1, 2, 3, ...";
     },
     noLemmasFound$1(xp) {
-      return "There are no vocabulary with more than " + xp + " XP. Keep practicing!";
+      return "There's no vocabulary with more than " + xp + " XP. Keep practicing!";
     },
     get$constructUsePvmDesc() {
       return "Produced in voice message";
@@ -4785,6 +4785,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_213", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "WEesyP6COwtvqRK9JIfcgeqZafM=");
+})($__dart_deferred_initializers__, "LMFixV7AyZq9Ify77TMFjXvAsQo=");
 ;
 //# sourceMappingURL=main.dart.js_213.part.js.map
