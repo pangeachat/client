@@ -2179,12 +2179,12 @@
     "placeholders": {}
   },
   "writeAMessage": "Write a message…",
-  "writeAMessageFlag": "Write a message in {l1flag} or {l2flag}",
-  "@writeAMessageFlag": {
+  "writeAMessageLangCodes": "Type in {l1} or {l2}...",
+  "@writeAMessageLangCodes": {
     "type": "text",
     "placeholders": {
-      "l1flag": {},
-      "l2flag": {}
+      "l1": {},
+      "l2": {}
     }
   },
   "yes": "Yes",
@@ -4794,7 +4794,7 @@
   "numberOfLearners": "Number of learners",
   "mustBeInteger": "Must be an integer e.g. 1, 2, 3, ...",
   "noBookmarkedActivities": "No bookmarked activities",
-  "noLemmasFound": "There are no vocabulary with more than {xp} XP. Keep practicing!",
+  "noLemmasFound": "There's no vocabulary with more than {xp} XP. Keep practicing!",
   "@noLemmasFound": {
     "type": "text",
     "placeholders": {

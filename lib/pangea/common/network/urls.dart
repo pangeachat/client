@@ -24,7 +24,7 @@ class PApiUrls {
   static String appVersion = "${PApiUrls.choreoEndpoint}/version";
 
   ///   ---------------------- Languages --------------------------------------
-  static String getLanguages = "${PApiUrls.choreoEndpoint}/languages";
+  static String getLanguages = "${PApiUrls.choreoEndpoint}/languages_v2";
 
   ///   ---------------------- Users --------------------------------------
   static String paymentLink = "${PApiUrls.subscriptionEndpoint}/payment_link";
@@ -65,6 +65,7 @@ class PApiUrls {
       "${PApiUrls.choreoEndpoint}/practice";
 
   static String lemmaDictionary = "${PApiUrls.choreoEndpoint}/lemma_definition";
+  static String morphDictionary = "${PApiUrls.choreoEndpoint}/morph_meaning";
 
   static String activityPlanGeneration =
       "${PApiUrls.choreoEndpoint}/activity_plan";
