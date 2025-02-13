@@ -1,6 +1,6 @@
 """
 Prerequiresite:
-- Ensure you have an up-to-date `needed-translations.txt` file should you wish to translate only the missing translation keys. To generate an updated `needed-translations.txt` file, run `flutter gen-l10n`. Generating the file is not necessary if you wish to translate all translation keys.
+- Ensure you have an up-to-date `needed-translations.txt` file should you wish to translate only the missing translation keys. To generate an updated `needed-translations.txt` file, run `flutter gen-l10n`
 - Ensure you have python `openai` package installed. If not, run `pip install openai`.
 - Ensure you have an OpenAI API key set in your environment variable `OPENAI_API_KEY`. If not, you can set it by running `export OPENAI_API_KEY=your-api-key` on MacOS/Linux.
 
@@ -55,9 +55,7 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
     )
 
     translations["@@locale"] = lang_code
-    translations["@@last_modified"] = str(
-        datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
-    )
+    translations["@@last_modified"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
 
     # Load existing data to preserve order.
     if path_to_translations.exists():
@@ -69,54 +67,53 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
     else:
         existing_data = OrderedDict()
 
-    # Merge: update values for keys that exist; append new keys to the bottom.
-    merged = OrderedDict()
-    for key in existing_data.keys():
-        if key in translations:
-            merged[key] = translations[key]
-    for key in translations:
-        if key not in merged:
-            merged[key] = translations[key]
-
-    # Reorder such that each translation key is immediately followed by its metadata key.
-    ordered_merged = OrderedDict()
-    # Track which keys have been added.
-    added = set()
-    for key in merged:
-        if key.startswith("@"):
-            continue
-        # Add the translation key.
-        ordered_merged[key] = merged[key]
-        added.add(key)
-        meta_key = f"@{key}"
-        if meta_key in merged:
-            ordered_merged[meta_key] = merged[meta_key]
-            added.add(meta_key)
-    # Append any keys not added (likely standalone metadata keys).
-    for key in merged:
-        if key not in added:
-            ordered_merged[key] = merged[key]
-
-    # Ensure @@locale and @@last_modified keys appear first.
+    # Build final_ordered ensuring the metadata immediately follows its translation.
     final_ordered = OrderedDict()
+    special_keys = ["@@locale", "@@last_modified"]
     final_ordered["@@locale"] = translations["@@locale"]
     final_ordered["@@last_modified"] = translations["@@last_modified"]
-    for key, value in ordered_merged.items():
-        if key not in ("@@locale", "@@last_modified"):
-            final_ordered[key] = value
+
+    keys_added = set()
+
+    # Use preserved order from existing file.
+    for key in existing_data:
+        if key in special_keys:
+            continue
+        if key in translations:
+            final_ordered[key] = translations[key]
+            keys_added.add(key)
+            meta_key = f"@{key}"
+            if meta_key in translations:
+                final_ordered[meta_key] = translations[meta_key]
+                keys_added.add(meta_key)
+
+    # Append new translation keys (and their metadata immediately after) not in existing data.
+    for key in translations:
+        if key in special_keys or key.startswith("@") or key in keys_added:
+            continue
+        final_ordered[key] = translations[key]
+        meta_key = f"@{key}"
+        if meta_key in translations:
+            final_ordered[meta_key] = translations[meta_key]
+            keys_added.add(meta_key)
+        keys_added.add(key)
+
+    # Append any leftover metadata keys.
+    for key in translations:
+        if key.startswith("@") and key not in keys_added:
+            final_ordered[key] = translations[key]
 
     with open(path_to_translations, "w") as f:
         f.write(json.dumps(final_ordered, indent=2, ensure_ascii=False))
 
 
-def reconcile_metadata(lang_code: str) -> None:
+def reconcile_metadata(lang_code: str, translation_keys: list[str]) -> None:
     """
     For each translation key, update its metadata (the key prefixed with '@') by merging
     any existing metadata with computed metadata. For basic translations, if no metadata exists,
     add it; otherwise, leave it as is.
     """
     translations = load_translations(lang_code)
-    translation_keys = [key for key in translations.keys() if not key.startswith("@")]
 
     for key in translation_keys:
         translation = translations[key]
@@ -175,73 +172,16 @@ def reconcile_metadata(lang_code: str) -> None:
     save_translations(lang_code, translations)
 
 
-def reconcile_invalid_metadata_type(lang_code: str) -> None:
-    """
-    There exists some translations with invalid metadata type.
-    This function will reconcile them by coercing invalid types to "text".
-    """
-    translations = load_translations(lang_code)
-
-    for key in translations.keys():
-        if key.startswith("@"):
-            metadata = translations[key]
-            if "type" not in metadata:
-                continue
-            assert isinstance(metadata["type"], str)
-            # Valid types are "text", "image", "css"
-            if metadata["type"] not in ["text", "image", "css"]:
-                # Default to text if invalid type
-                metadata["type"] = "text"
-                translations[key] = metadata
-
-    save_translations(lang_code, translations)
-
-
-def reconcile_empty_metadata(lang_code: str) -> None:
-    """
-    There exists some translations with empty metadata but with placeholders.
-    Emptyy metadata should not have placeholders.
-    This function will reconcile them by removing the placeholders and replace
-    it with an empty dictionary.
-    """
-    translations = load_translations(lang_code)
-
-    for key in translations.keys():
-        if key.startswith("@"):
-            translation_key = key[1:]
-            if translation_key not in translations:
-                continue
-            translation = translations[translation_key]
-            assert isinstance(translation, str)
-            if "{" in translation:
-                continue  # not a translation without placeholders
-            translations[key] = {
-                "type": "text",
-                "placeholders": {},
-            }
-
-    save_translations(lang_code, translations)
-
-
-def translate(
-    lang_code: str, lang_display_name: str, translate_all: bool = False
-) -> None:
+def translate(lang_code: str, lang_display_name: str) -> None:
     """
     Translate the needed translations from English to the target language.
-    If `translate_all` is set to True, all translation keys will be translated,
-    otherwise keys in `needed-translations.txt` will be translated.
     """
     import json
     import random
     from openai import OpenAI
 
-    if not translate_all:
-        needed_translations = load_needed_translations()
-        needed_translations = needed_translations.get(lang_code, [])
-    else:
-        needed_translations = [
-            k for k in load_translations("en").keys() if not k.startswith("@")
-        ]
+    needed_translations = load_needed_translations()
+    needed_translations = needed_translations.get(lang_code, [])
     english_translations_dict = load_translations("en")
     vietnamese_translations_dict = load_translations("vi")
 
@@ -341,49 +281,24 @@ def translate(
         print(f"Translated {progress + len(chunk)}/{len(needed_translations)}")
         progress += len(chunk)
 
+    # save translations
     current_translations = load_translations(lang_code)
     current_translations.update(new_translations)
     save_translations(lang_code, current_translations)
+
+    # reconcile metadata
+    reconcile_metadata(lang_code, needed_translations)
 
 
 """Example usage:
 python scripts/translate.py
 """
 if __name__ == "__main__":
-    import os
-
     lang_code = input("Enter the language code (e.g. vi, en): ").strip()
     lang_display_name = input(
         "Enter the language display name (e.g. Vietnamese, English): "
     )
-    translate_all = (
-        input(
-            "Do you want to translate all translation keys? The alternative is to translate all the keys in `needed-translations.txt`. (y/n): "
-        )
-        .strip()
-        .lower()
-        == "y"
+    translate(
+        lang_code=lang_code,
+        lang_display_name=lang_display_name,
     )
-    if os.environ.get("OPENAI_API_KEY") is None:
-        os.environ["OPENAI_API_KEY"] = input(
-            "It seems like you haven't set OPENAI_API_KEY environment variable. That's ok, you can enter it here: "
-        ).strip()
-
-    # Ensure English is reconciled before perfomirng translation since
-    # it is the base example language.
-    reconcile_metadata("en")
-    reconcile_invalid_metadata_type("en")
-    reconcile_empty_metadata("en")
-
-    # Translate the target language
-    if lang_code != "en":
-        translate(
-            lang_code=lang_code,
-            lang_display_name=lang_display_name,
-            translate_all=translate_all,
-        )
-
-        # Reconcile the target language
-        reconcile_metadata(lang_code)
-        reconcile_invalid_metadata_type(lang_code)
-        reconcile_empty_metadata(lang_code)
