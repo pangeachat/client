@@ -7,148 +7,148 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var A, C,
   B = {
-    L10nFil$() {
-      return new B.L10nFil(A.canonicalizedLocale("fil"));
+    L10nFi$() {
+      return new B.L10nFi(A.canonicalizedLocale("fi"));
     },
-    L10nFil: function L10nFil(t0) {
+    L10nFi: function L10nFi(t0) {
       this.localeName = t0;
     }
   };
   A = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[20], B);
-  B.L10nFil.prototype = {
+  B = hunkHelpers.updateHolder(holdersList[19], B);
+  B.L10nFi.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
     get$repeatPassword() {
-      return "Ulitin ang password";
+      return "Salasana uudelleen";
     },
     get$notAnImage() {
-      return "Hindi isang file na larawan.";
+      return "T\xe4m\xe4 ei ole kuvatiedosto.";
     },
     get$remove(_) {
-      return "Tanggalin";
+      return "Poista";
     },
     get$importNow() {
-      return "I-import ngayon";
+      return "Tuo nyt";
     },
     get$importEmojis() {
-      return "I-import ang mga Emoji";
+      return "Tuo emojit";
     },
     get$importFromZipFile() {
-      return "Mag-import mula sa .zip file";
+      return "Tuo .zip -tiedostosta";
     },
     get$exportEmotePack() {
-      return "I-export ang Emote pack bilang .zip";
+      return "Vie emotepaketti .zip-tiedostona";
     },
     get$replace(_) {
-      return "Palitan";
+      return "Korvaa";
     },
     aboutHomeserver$1(homeserver) {
       return "About " + homeserver;
     },
     get$accept(_) {
-      return "Tanggapin";
+      return "Hyv\xe4ksy";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d Tinanggap ni " + username + " ang imbitasyon";
+      return username + " hyv\xe4ksyi kutsun";
     },
     get$account() {
-      return "Account";
+      return "Tili";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 Na-activate ni " + username + " ang end to end encryption";
+      return "\ud83d\udd10 " + username + " otti k\xe4ytt\xf6\xf6n p\xe4\xe4st\xe4-p\xe4\xe4h\xe4n salauksen";
     },
     get$addEmail() {
-      return "Magdagdag ng email";
+      return "Lis\xe4\xe4 s\xe4hk\xf6postiosoite";
     },
     get$confirmMatrixId() {
-      return "Paki-kumpirma ang iyong Matrix ID para burahin ang iyong account.";
+      return "Kirjoita Matrix IDsi uudelleen poistaaksesi tunnuksesi.";
     },
     supposedMxid$1(mxid) {
-      return "Dapat ito ay " + mxid;
+      return "T\xe4m\xe4n pit\xe4isi olla " + mxid;
     },
     get$addToSpace() {
-      return "Idagdag sa space";
+      return "Lis\xe4\xe4 tilaan";
     },
     get$admin() {
-      return "Admin";
+      return "Yll\xe4pit\xe4j\xe4";
     },
     get$alias() {
-      return "alyas";
+      return "alias";
     },
     get$all() {
-      return "Lahat";
+      return "Kaikki";
     },
     get$commandHint_googly() {
-      return "Magpadala ng mga googly eye";
+      return "L\xe4het\xe4 askartelusilmi\xe4";
     },
     get$commandHint_cuddle() {
-      return "Magpadala ng yakap";
+      return "L\xe4het\xe4 kokovartaluhalaus";
     },
     get$commandHint_hug() {
-      return "Magpadala ng yakap";
+      return "L\xe4het\xe4 halaus";
     },
     googlyEyesContent$1(senderName) {
-      return "Nagpadala si " + senderName + " ng googly eyes";
+      return senderName + " l\xe4hett\xe4\xe4 askartelusilmi\xe4";
     },
     cuddleContent$1(senderName) {
-      return "Niyakap ka ni " + senderName;
+      return senderName + " kokovartalohalaa sinua";
     },
     hugContent$1(senderName) {
-      return "Niyakap ka ni " + senderName;
+      return senderName + " halaa sinua";
     },
     answeredTheCall$1(senderName) {
-      return "Sinagot ni " + senderName + " ang tawag";
+      return senderName + " vastasi puheluun";
     },
     get$anyoneCanJoin() {
-      return "Pwede sumali ang anumang tao";
+      return "Kuka tahansa voi liitty\xe4";
     },
     get$archive() {
-      return "Archive";
+      return "Arkisto";
     },
     get$areGuestsAllowedToJoin() {
-      return "Pwede ba sumali ang mga bisita";
+      return "Sallitaanko vieraiden liittyminen";
     },
     get$areYouSure() {
-      return "Sigurado ka?";
+      return "Oletko varma?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Sigurado kang gusto mong mag-log out?";
+      return "Haluatko varmasti kirjautua ulos?";
     },
     get$askSSSSSign() {
-      return "Para i-sign ang isa pang tao, pakilagay ang iyong secure store passphrase o recovery key.";
+      return "Voidaksesi allekirjoittaa toisen henkil\xf6n, sy\xf6t\xe4 turvavaraston salalause tai palautusavain.";
     },
     askVerificationRequest$1(username) {
-      return "Tanggapin ang hiling ng verification mula sa " + username + "?";
+      return "Hyv\xe4ksyt\xe4\xe4nk\xf6 t\xe4m\xe4 varmennuspyynt\xf6 k\xe4ytt\xe4j\xe4lt\xe4 " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Ang homeserver ay sinusuportahan ang sumusunod na uri ng login:\n" + serverVersions + "\nNgunit sinusuportahan lang ng app ang:\n" + supportedVersions;
+      return "T\xe4m\xe4 kotipalvelin tukee sis\xe4\xe4nkirjautumistapoja: \n" + serverVersions + ",\nmutta t\xe4m\xe4 sovellus tukee vain -tapoja: \n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Ipadala ang mga typing notification";
+      return "L\xe4het\xe4 kirjoitusilmoituksia";
     },
     get$swipeRightToLeftToReply() {
-      return "Swipe right to left to reply";
+      return "Vastaa pyyhk\xe4isem\xe4ll\xe4 oikealta vasemmalle";
     },
     get$sendOnEnter() {
-      return "Ipadala sa pagpindot ng enter";
+      return "L\xe4het\xe4 painamalla rivinvaihton\xe4pp\xe4int\xe4";
     },
     badServerVersionsException$4(serverVersions, supportedVersions, serverVerions, suportedVersions) {
-      return "Ang homeserver ay sinusuportahan ang mga Spec bersyon:\n" + serverVersions + "\nNgunit sinusuportahan lang ng app ang " + supportedVersions;
+      return "Kotipalvelin tukee Matrix Spec versio(it)a:\n" + serverVersions + ", mutta t\xe4m\xe4 sovellus tukee vain versio(it)a " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
       return A.S(chats) + " chats and " + A.S(participants) + " participants";
     },
     get$noMoreChatsFound() {
-      return "No more chats found...";
+      return "Lis\xe4\xe4 keskusteluja ei l\xf6ytynyt...";
     },
     get$noChatsFoundHere() {
       return "No chats found here yet. Start a new chat with someone by using the button below. \u2935\ufe0f";
     },
     get$unread() {
-      return "Unread";
+      return "Lukemattomat";
     },
     get$space() {
       return "Space";
@@ -157,364 +157,364 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Spaces";
     },
     get$banFromChat() {
-      return "Pagbawalan sa chat";
+      return "Anna porttikielto keskusteluun";
     },
     get$banned() {
-      return "Pinagbawalan";
+      return "Porttikiellossa";
     },
     bannedUser$2(username, targetName) {
-      return "Pinagbawalan ni " + username + " si " + targetName;
+      return username + " antoi porttikiellon k\xe4ytt\xe4j\xe4lle " + targetName;
     },
     get$blockDevice() {
-      return "I-block ang Device";
+      return "Est\xe4 laite";
     },
     get$blocked() {
-      return "Na-block";
+      return "Estetty";
     },
     get$botMessages() {
-      return "Mga mensahe ng bot";
+      return "Bottien l\xe4hett\xe4m\xe4t viestit";
     },
     get$cancel(_) {
-      return "Kanselahin";
+      return "Peruuta";
     },
     cantOpenUri$1(uri) {
-      return "Hindi mabuksan ang URI na " + uri;
+      return "URI-osoitetta " + uri + " ei voida avata";
     },
     get$changeDeviceName() {
-      return "Palitan ang pangalan ng device";
+      return "Vaihda laitteen nime\xe4";
     },
     changedTheChatAvatar$1(username) {
-      return "Pinalitan ni " + username + " ang avatar ng chat";
+      return username + " muutti keskustelun kuvaa";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return "Pinalitan ni " + username + " ang deskripsyon ng chat sa: '" + description + "'";
+      return username + " asetti keskustelun kuvaukseksi: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return "Pinalitan ni " + username + " ang pangalan ng chat sa: '" + chatname + "'";
+      return username + " asetti keskustelun nimeksi: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return "Pinalitan ni " + username + " ang mga pahintulot ng chat";
+      return username + " muutti keskustelun oikeuksia";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return "Pinalitan ni " + username + " ang kanilang displayname sa: '" + displayname + "'";
+      return username + " asetti n\xe4ytt\xf6nimekseen: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return "Pinalitan ni " + username + " ang mga tuntunin sa pag-access ng bisita";
+      return username + " muutti vierasp\xe4\xe4syn s\xe4\xe4nt\xf6j\xe4";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return "Pinalitan ni " + username + " ang mga tuntunin sa pag-access ng bisita sa: " + rules;
+      return username + " asetti vierasp\xe4\xe4syn s\xe4\xe4nn\xf6(i)ksi: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return "Pinalitan ni " + username + " ang kakayahan ng pagkikita ng history";
+      return username + " muutti historian n\xe4kyvyytt\xe4";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return "Pinalitan ni " + username + " ang kakayahan ng pagkikita ng history sa: " + rules;
+      return username + " asetti historian n\xe4kymiss\xe4\xe4nn\xf6ksi: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return "Pinalitan ni " + username + " ang mga tuntunin sa pagsali";
+      return username + " muutti liittymiss\xe4\xe4nt\xf6j\xe4";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return "Pinalitan ni " + username + " ang mga tuntunin sa pagsali sa: " + joinRules;
+      return username + " asetti liittymiss\xe4\xe4nn\xf6iksi: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return "Pinalitan ni " + username + " ang kanilang avatar";
+      return username + " vaihtoi profiilikuvaansa";
     },
     changedTheRoomAliases$1(username) {
-      return "Pinalitan ni " + username + " ang mga alias ng room";
+      return username + " muutti huoneen aliaksia";
     },
     changedTheRoomInvitationLink$1(username) {
-      return "Pinalitan ni " + username + " ang link ng imbitasyon";
+      return username + " muutti kutsulinkki\xe4";
     },
     get$changePassword() {
-      return "Palitan ang password";
+      return "Vaihda salasana";
     },
     get$changeTheme() {
-      return "Palitan ang iyong istilio";
+      return "Vaihda tyyli\xe4si";
     },
     get$changeTheNameOfTheGroup() {
-      return "Palitan ng pangalan ng grupo";
+      return "Vaihda ryhm\xe4n nime\xe4";
     },
     get$changeYourAvatar() {
-      return "Palitan ang iyong avatar";
+      return "Vaihda profiilikuvasi";
     },
     get$channelCorruptedDecryptError() {
-      return "Nasira ang encryption";
+      return "Salaus on korruptoitunut";
     },
     get$chat() {
-      return "Chat";
+      return "Keskustelu";
     },
     get$chatDetails() {
-      return "Mga detalye ng chat";
+      return "Keskustelun tiedot";
     },
     get$chats() {
-      return "Mga Chat";
+      return "Keskustelut";
     },
     get$chooseAStrongPassword() {
-      return "Pumili ng malakas na password";
+      return "Valitse vahva salasana";
     },
     get$clearArchive() {
-      return "I-clear ang archive";
+      return "Tyhjenn\xe4 arkisto";
     },
     get$close(_) {
-      return "Isara";
+      return "Sulje";
     },
     get$commandHint_markasdm() {
-      return "Markahan bilang direktang mensahe na room para sa ibinigay na Matrix ID";
+      return "Merkitse yksityiskeskusteluksi sy\xf6tetyn Matrix IDn kanssa";
     },
     get$commandHint_markasgroup() {
-      return "Markahan bilang grupo";
+      return "Merkitse ryhm\xe4ksi";
     },
     get$commandHint_ban() {
-      return "Pagbawalan ang ibinigay na user sa room na ito";
+      return "Anna sy\xf6tetylle k\xe4ytt\xe4j\xe4lle porttikielto t\xe4h\xe4n huoneeseen";
     },
     get$commandHint_clearcache() {
-      return "I-clear ang cache";
+      return "Tyhjenn\xe4 v\xe4limuisti";
     },
     get$commandHint_create() {
-      return "Gumawa ng walang lamang group chat\nGumamit ng --no-encryption para i-disable ang encryption";
+      return "Luo tyhj\xe4 ryhm\xe4keskustelu\nK\xe4yt\xe4 parametria --no-encryption poistaaksesi salauksen k\xe4yt\xf6st\xe4";
     },
     get$commandHint_discardsession() {
-      return "Iwaksi ang sesyon";
+      return "Hylk\xe4\xe4 istunto";
     },
     get$commandHint_dm() {
-      return "Magsimula ng direktong chat\nGumamit ng --no-encryptiom para i-disable ang encryption";
+      return "Aloita yksityiskeskustelu\nK\xe4yt\xe4 parametria --no-encryption poistaaksesi salauksen k\xe4yt\xf6st\xe4";
     },
     get$commandHint_html() {
-      return "Magpadala ng HTML-formatted na text";
+      return "L\xe4het\xe4 HTML-muotoiltua teksti\xe4";
     },
     get$commandHint_invite() {
-      return "Imbitahan ang ibinigay na user sa room na ito";
+      return "Kutsu sy\xf6tetty k\xe4ytt\xe4j\xe4 t\xe4h\xe4n huoneeseen";
     },
     get$commandHint_join() {
-      return "Sumali sa ibinigay na room";
+      return "Liity sy\xf6tettyyn huoneeseen";
     },
     get$commandHint_kick() {
-      return "Tanggalin ang ibinigay na user sa room na ito";
+      return "Poista sy\xf6tetty k\xe4ytt\xe4j\xe4 huoneesta";
     },
     get$commandHint_leave() {
-      return "Umalis sa room na ito";
+      return "Poistu t\xe4st\xe4 huoneesta";
     },
     get$commandHint_me() {
-      return "Ilarawan ang iyong sarili";
+      return "Kuvaile itse\xe4si";
     },
     get$commandHint_myroomavatar() {
-      return "Ilapat ang iyong larawan para sa room na ito (bilang mxc-uri)";
+      return "Aseta profiilikuvasi t\xe4h\xe4n huoneeseen (sy\xf6tt\xe4m\xe4ll\xe4 mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Ilapat ang iyong display name para sa room na ito";
+      return "Aseta n\xe4ytt\xf6nimesi vain t\xe4ss\xe4 huoneessa";
     },
     get$commandHint_op() {
-      return "Ilapat ang level ng lakas sa ibinigay na user (default: 50)";
+      return "Aseta k\xe4ytt\xe4j\xe4n voimataso (oletus: 50)";
     },
     get$commandHint_plain() {
-      return "Magpadala ng hindi na-format na text";
+      return "L\xe4het\xe4 muotoilematonta teksti\xe4";
     },
     get$commandHint_react() {
-      return "Magpadala ng reply bilang reaksyon";
+      return "L\xe4het\xe4 vastaus reaktiona";
     },
     get$commandHint_send() {
-      return "Magpadala ng text";
+      return "L\xe4het\xe4 teksti\xe4";
     },
     get$commandHint_unban() {
-      return "I-unban ang ibinigay na user sa room na ito";
+      return "Poista sy\xf6tetyn k\xe4ytt\xe4j\xe4n porttikielto t\xe4st\xe4 huoneesta";
     },
     get$commandInvalid() {
-      return "Hindi wastong command";
+      return "Ep\xe4kelvollinen komento";
     },
     commandMissing$1(command) {
-      return "Hindi isang command ang " + command + ".";
+      return command + " ei ole komento.";
     },
     get$compareEmojiMatch() {
-      return "Paki-kumpara ang mga emoji";
+      return "Vertaa hymi\xf6it\xe4";
     },
     get$compareNumbersMatch() {
-      return "Paki-kumpara ang mga numero";
+      return "Vertaa numeroita";
     },
     get$configureChat() {
-      return "I-configure ang chat";
+      return "M\xe4\xe4rit\xe4 keskustelu";
     },
     get$confirm(_) {
-      return "Kumpirmahin";
+      return "Vahvista";
     },
     get$containsDisplayName() {
-      return "Naglalaman ng display name";
+      return "Sis\xe4lt\xe4\xe4 n\xe4ytt\xf6nimen";
     },
     get$containsUserName() {
-      return "Naglalaman ng username";
+      return "Sis\xe4lt\xe4\xe4 k\xe4ytt\xe4j\xe4tunnuksen";
     },
     get$contentHasBeenReported() {
-      return "Inulat ang nilalaman sa mga pangangasiwa ng server";
+      return "Sis\xe4lt\xf6 on ilmoitettu palvelimen yll\xe4pit\xe4jille";
     },
     get$copiedToClipboard() {
-      return "Kinopya sa clipboard";
+      return "Kopioitu leikep\xf6yd\xe4lle";
     },
     get$copy(_) {
-      return "Kopyahin";
+      return "Kopioi";
     },
     couldNotDecryptMessage$1(error) {
-      return "Hindi ma-decrypt ang mensahe: " + error;
+      return "Viestin salausta ei voitu purkaa: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " mga kasali";
+      return A.S(count) + " osallistujaa";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac Ginawa ni " + username + " ang chat";
+      return username + " loi keskustelun";
     },
     get$createGroup() {
-      return "Gumawa ng grupo";
+      return "Luo ryhm\xe4";
     },
     get$currentlyActive() {
-      return "Kasalukuyang aktibo";
+      return "Aktiivinen nyt";
     },
     get$darkTheme() {
-      return "Madilim";
+      return "Tumma";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Ide-deactivate nito ang iyong user account. Hindi na ito maaaring bawiin! Sigurado ka?";
+      return "T\xe4m\xe4 poistaa tunnuksesi k\xe4yt\xf6st\xe4. T\xe4t\xe4 ei voi kumota! Oletko varma?";
     },
     get$defaultPermissionLevel() {
-      return "Default na antas ng pahintulot";
+      return "Uusien k\xe4ytt\xe4jien oikeuksien oletustaso";
     },
     get$$delete(_) {
-      return "Burahin";
+      return "Poista";
     },
     get$deleteAccount() {
-      return "Burahin ang account";
+      return "Poista tunnus";
     },
     get$deleteMessage() {
-      return "Burahin ang mensahe";
+      return "Poista viesti";
     },
     get$devices() {
-      return "Mga Device";
+      return "Laitteet";
     },
     get$directChats() {
-      return "Mga Direktang Chat";
+      return "Suorat keskustelut";
     },
     get$allRooms() {
-      return "Lahat ng Mga Group Chat";
+      return "Kaikki ryhm\xe4keskustelut";
     },
     get$displaynameHasBeenChanged() {
-      return "Pinalitan na ang display name";
+      return "N\xe4ytt\xf6nimi on vaihdettu";
     },
     get$downloadFile() {
-      return "I-download ang file";
+      return "Lataa tiedosto";
     },
     get$edit() {
-      return "I-edit";
+      return "Muokkaa";
     },
     get$editBlockedServers() {
-      return "I-edit ang mga naka-block na server";
+      return "Muokkaa estettyj\xe4 palvelimia";
     },
     get$chatPermissions() {
-      return "Mga pahintulot ng chat";
+      return "Keskustelun oikeudet";
     },
     get$editChatPermissions() {
       return "Edit chat permissions";
     },
     get$editDisplayname() {
-      return "I-edit ang display name";
+      return "Muokkaa n\xe4ytt\xf6nime\xe4";
     },
     get$editRoomAliases() {
-      return "I-edit ang mga alyas ng room";
+      return "Muokkaa huoneen aliaksia";
     },
     get$editRoomAvatar() {
-      return "I-edit ang avatar ng room";
+      return "Muokkaa huoneen profiilikuvaa";
     },
     get$emoteExists() {
-      return "Umiiral na ang emote!";
+      return "Emote on jo olemassa!";
     },
     get$emoteInvalid() {
-      return "Hindi wastong shortcode ng emote!";
+      return "Ep\xe4kelpo emote-lyhytkoodi";
     },
     get$emoteKeyboardNoRecents() {
-      return "Ang mga kamakailang ginamit na emote ay lalabas dito...";
+      return "Viimeaikoina k\xe4ytetyt emotet tulevat n\xe4kym\xe4\xe4n t\xe4\xe4ll\xe4...";
     },
     get$emotePacks() {
-      return "Mga emote pack para sa room";
+      return "Huoneen emote-paketit";
     },
     get$globalChatId() {
       return "Global chat ID";
     },
     get$accessAndVisibility() {
-      return "Pag-access at visibility";
+      return "P\xe4\xe4sy ja n\xe4kyvyys";
     },
     get$customEmojisAndStickers() {
-      return "Mga custom emoji at sticker";
+      return "Custom emojis and stickers";
     },
     get$emoteShortcode() {
-      return "Shortcode ng emoji";
+      return "Emote-lyhytkoodi";
     },
     get$emoteWarnNeedToPick() {
-      return "Kailangan mong pumili ng emote shortcode at isang larawan!";
+      return "Emote-lyhytkoodi ja kuva on valittava!";
     },
     get$emptyChat() {
-      return "Walang lamang chat";
+      return "Tyhj\xe4 keskustelu";
     },
     get$enableEmotesGlobally() {
-      return "I-enable ang emote pack globally";
+      return "Ota emote-paketti k\xe4ytt\xf6\xf6n kaikkialla";
     },
     get$enableEncryption() {
-      return "I-enable ang encryption";
+      return "Ota salaus k\xe4ytt\xf6\xf6n";
     },
     get$encrypted() {
-      return "Naka-encrypt";
+      return "Salattu";
     },
     get$encryptionNotEnabled() {
-      return "Hindi naka-enable ang encryption";
+      return "Salaus ei ole k\xe4yt\xf6ss\xe4";
     },
     endedTheCall$1(senderName) {
-      return "Tinapos ni " + senderName + " ang tawag";
+      return senderName + " p\xe4\xe4tti puhelun";
     },
     get$enterAnEmailAddress() {
-      return "Maglagay ng email address";
+      return "Sy\xf6t\xe4 s\xe4hk\xf6posti-osoite";
     },
     errorObtainingLocation$1(error) {
-      return "Hindi makuha ang lokasyon: " + error;
+      return "Virhe paikannuksessa: " + error;
     },
     get$extremeOffensive() {
-      return "Lubhang nakakasakit";
+      return "Eritt\xe4in loukkaavaa";
     },
     get$fontSize(_) {
-      return "Laki ng font";
+      return "Fonttikoko";
     },
     get$forward(_) {
-      return "Forward";
+      return "Edelleenl\xe4het\xe4";
     },
     get$fromJoining() {
-      return "From joining";
+      return "Alkaen liittymisest\xe4";
     },
     get$fromTheInvitation() {
-      return "From the invitation";
+      return "Alkaen kutsumisesta";
     },
     get$goToTheNewRoom() {
-      return "Go to the new room";
+      return "Mene uuteen huoneeseen";
     },
     get$group() {
-      return "Chat";
+      return "Ryhm\xe4";
     },
     get$chatDescription() {
-      return "Chat description";
+      return "Keskustelun kuvaus";
     },
     get$groups() {
-      return "Chats";
+      return "Ryhm\xe4t";
     },
     groupWith$1(displayname) {
-      return "Chat with " + displayname;
+      return "Ryhm\xe4 seuralaisina " + displayname;
     },
     get$guestsAreForbidden() {
-      return "Guests are forbidden";
+      return "Vieraat on kielletty";
     },
     get$guestsCanJoin() {
-      return "Guests can join";
+      return "Vieraat voivat liitty\xe4";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " has withdrawn the invitation for " + targetName;
+      return username + " on perunnut k\xe4ytt\xe4j\xe4n " + targetName + " kutsun";
     },
     get$help() {
-      return "Help";
+      return "Apua";
     },
     get$hideRedactedMessages() {
       return "Hide redacted messages";
@@ -526,7 +526,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Hide invalid or unknown message formats";
     },
     get$howOffensiveIsThisContent() {
-      return "How offensive is this content?";
+      return "Kuinka loukkaavaa t\xe4m\xe4 sis\xe4lt\xf6 on?";
     },
     get$block() {
       return "block";
@@ -541,199 +541,199 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ignore username";
     },
     get$iHaveClickedOnLink() {
-      return "I have clicked on the link";
+      return "Olen klikannut linkki\xe4";
     },
     get$incorrectPassphraseOrKey() {
-      return "Incorrect passphrase or recovery key";
+      return "Virheellinen salasana tai palautusavain";
     },
     get$inoffensive() {
-      return "Slightly offensive";
+      return "Loukkaamatonta";
     },
     get$inviteContact() {
-      return "Invite contact";
+      return "Kutsu yhteystieto";
     },
     get$noChatDescriptionYet() {
-      return "No chat description created yet.";
+      return "Keskustelun kuvausta ei ole viel\xe4 luotu.";
     },
     get$tryAgain() {
-      return "Try again";
+      return "Yrit\xe4 uudelleen";
     },
     get$invited() {
-      return "Invited";
+      return "Kutsuttu";
     },
     get$redactMessageDescription() {
-      return "The message will be redacted for all participants in this conversation. This cannot be undone.";
+      return "Viesti poistetaan kaikilta keskustelun osallistujilta. T\xe4t\xe4 ei voida kumota.";
     },
     get$optionalRedactReason() {
-      return "(Optional) Reason for redacting this message...";
+      return "(Vapaaehtoinen) Syy t\xe4m\xe4n viestin poistamiselle...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " invited " + targetName;
+      return "\ud83d\udce9 " + username + " kutsui k\xe4ytt\xe4j\xe4n " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Invited users only";
+      return "Vain kutsutut k\xe4ytt\xe4j\xe4t";
     },
     get$inviteForMe() {
-      return "Invite for me";
+      return "Kutsu minua varten";
     },
     inviteText$2(username, link) {
-      return username + " invited you to FluffyChat.\n1. Visit fluffychat.im and install the app \n2. Sign up or sign in \n3. Open the invite link: \n " + link;
+      return username + " kutsui sinut FluffyChattiin.\n1. Viereaile sivulla: https://fluffychat.im ja asenna sovellus\n2. Rekister\xf6idy tai kirjaudu sis\xe4\xe4n\n3. Avaa kutsulinkki:\n" + link;
     },
     get$isTyping() {
-      return "is typing\u2026";
+      return "kirjoittaa\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " joined the chat";
+      return "\ud83d\udc4b " + username + " liittyi keskusteluun";
     },
     get$joinRoom() {
-      return "Join room";
+      return "Liity huoneeseen";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " kicked " + targetName;
+      return "\ud83d\udc5e " + username + " potki k\xe4ytt\xe4j\xe4n " + targetName;
     },
     get$kickFromChat() {
-      return "Kick from chat";
+      return "Potki keskustelusta";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Last active: " + localizedTimeShort;
+      return "Aktiivinen viimeksi: " + localizedTimeShort;
     },
     get$leave() {
-      return "Leave";
+      return "Poistu";
     },
     get$leftTheChat() {
-      return "Left the chat";
+      return "Poistui keskustelusta";
     },
     get$lightTheme() {
-      return "Light";
+      return "Vaalea";
     },
     loadCountMoreParticipants$1(count) {
-      return "Load " + count + " more participants";
+      return "Lataa viel\xe4 " + count + " osallistujaa";
     },
     get$dehydrate() {
-      return "Export session and wipe device";
+      return "Vie istunto ja tyhjenn\xe4 laite";
     },
     get$dehydrateWarning() {
-      return "This action cannot be undone. Ensure you safely store the backup file.";
+      return "T\xe4t\xe4 toimenpidett\xe4 ei voi kumota.\nVarmista varmuuskopiotiedoston turvallinen tallennus.";
     },
     get$dehydrateTor() {
-      return "TOR Users: Export session";
+      return "TOR-k\xe4ytt\xe4j\xe4t: vie istunto";
     },
     get$dehydrateTorLong() {
-      return "For TOR users, it is recommended to export the session before closing the window.";
+      return "Tor-k\xe4ytt\xe4jille suositellaan istunnon vienti\xe4 ennen ikkunan sulkemista.";
     },
     get$loadingPleaseWait() {
-      return "Loading\u2026 Please wait.";
+      return "Ladataan... Hetkinen.";
     },
     get$loadMore() {
-      return "Load more\u2026";
+      return "Lataa lis\xe4\xe4\u2026";
     },
     get$locationDisabledNotice() {
-      return "Location services are disabled. Please enable them to be able to share your location.";
+      return "Sijaintipalvelut ovat poissa k\xe4yt\xf6st\xe4. Otathan ne k\xe4ytt\xf6\xf6n jakaaksesi sijaintisi.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Location permission denied. Please grant them to be able to share your location.";
+      return "SIjaintioikeus on estetty. My\xf6nn\xe4th\xe4n sen jakaaksesi sijaintisi.";
     },
     get$logout() {
-      return "Logout";
+      return "Kirjaudu ulos";
     },
     get$memberChanges() {
-      return "Member changes";
+      return "J\xe4senmuutoksia";
     },
     get$mention() {
-      return "Mention";
+      return "Mainitse";
     },
     get$messages() {
-      return "Messages";
+      return "Viestit";
     },
     get$messagesStyle() {
-      return "Messages:";
+      return "Viestit:";
     },
     get$moderator() {
-      return "Moderator";
+      return "Valvoja";
     },
     get$newChat() {
-      return "New chat";
+      return "Uusi keskustelu";
     },
     get$newVerificationRequest() {
-      return "New verification request!";
+      return "Uusi varmennuspyynt\xf6!";
     },
     get$next(_) {
-      return "Next";
+      return "Seuraava";
     },
     get$no() {
-      return "No";
+      return "Ei";
     },
     get$noConnectionToTheServer() {
-      return "No connection to the server";
+      return "Ei yhteytt\xe4 palvelimeen";
     },
     get$noEmotesFound() {
-      return "No emotes found. \ud83d\ude15";
+      return "Emoteja ei l\xf6ytynyt. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Share invite link";
+      return "Jaa kutsulinkki";
     },
     get$noPasswordRecoveryDescription() {
-      return "You have not added a way to recover your password yet.";
+      return "Et ole viel\xe4 lis\xe4nnyt tapaa salasanasi palauttamiseksi.";
     },
     get$noPermission() {
-      return "No permission";
+      return "Ei lupaa";
     },
     get$noRoomsFound() {
-      return "No rooms found\u2026";
+      return "Huoneita ei l\xf6ytynyt\u2026";
     },
     get$notifications() {
-      return "Notifications";
+      return "Ilmoitukset";
     },
     get$notificationsEnabledForThisAccount() {
-      return "Notifications enabled for this account";
+      return "T\xe4m\xe4n tunnuksen ilmoitukset ovat k\xe4yt\xf6ss\xe4";
     },
     get$obtainingLocation() {
-      return "Obtaining location\u2026";
+      return "Paikannetaan sijantia\u2026";
     },
     get$offensive() {
-      return "Offensive";
+      return "Loukkaava";
     },
     get$ok() {
-      return "Ok";
+      return "ok";
     },
     get$oopsSomethingWentWrong() {
-      return "Oops, something went wrong\u2026";
+      return "Hups, jotakin meni pieleen\u2026";
     },
     get$oneClientLoggedOut() {
-      return "One of your clients has been logged out";
+      return "Yksi tunnuksistasi on kirjattu ulos";
     },
     get$addAccount() {
-      return "Add account";
+      return "Lis\xe4\xe4 tili";
     },
     get$enableMultiAccounts() {
-      return "(BETA) Enable multi accounts on this device";
+      return "(BETA) Ota k\xe4ytt\xf6\xf6n tuki usealle tilille t\xe4ll\xe4 laitteella";
     },
     get$openInMaps() {
-      return "Open in maps";
+      return "Avaa kartoissa";
     },
     get$link() {
-      return "Link";
+      return "Linkki";
     },
     get$serverRequiresEmail() {
-      return "This server needs to validate your email address for registration.";
+      return "T\xe4m\xe4n palvelimen t\xe4ytyy tarkistaa s\xe4hk\xf6posti-osoitteesi rekister\xf6itymist\xe4 varten.";
     },
     get$or() {
-      return "Or";
+      return "Tai";
     },
     get$participant() {
-      return "Participant";
+      return "Osallistuja";
     },
     get$passphraseOrKey() {
-      return "passphrase or recovery key";
+      return "salalause tai palautusavain";
     },
     get$password(_) {
-      return "Password";
+      return "Salasana";
     },
     get$passwordForgotten() {
-      return "Password forgotten";
+      return "Salasana unohtunut";
     },
     get$passwordHasBeenChanged() {
-      return "Password has been changed";
+      return "Salasana on vaihdettu";
     },
     get$overview() {
       return "Overview";
@@ -745,376 +745,376 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Password recovery settings";
     },
     get$passwordRecovery() {
-      return "Password recovery";
+      return "Salasanan palautus";
     },
     get$pickImage() {
-      return "Pick an image";
+      return "Valitse kuva";
     },
     get$pin() {
-      return "Pin";
+      return "Kiinnit\xe4";
     },
     get$pleaseChoose() {
-      return "Please choose";
+      return "Valitse";
     },
     get$pleaseClickOnLink() {
-      return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
+      return "Klikkaa linkki\xe4 s\xe4hk\xf6postissa ja sitten jatka.";
     },
     get$pleaseEnterYourPassword() {
-      return "Please enter your password";
+      return "Sy\xf6t\xe4 salasanasi";
     },
     get$pleaseEnterYourPin() {
-      return "Please enter your pin";
+      return "Sy\xf6t\xe4 PIN-koodisi";
     },
     get$pleaseEnterYourUsername() {
-      return "Please enter your username";
+      return "Sy\xf6t\xe4 k\xe4ytt\xe4j\xe4tunnuksesi";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Please follow the instructions on the website and tap on next.";
+      return "Seuraa ohjeita verkkosivulla ja paina seuraava.";
     },
     get$privacy() {
-      return "Privacy";
+      return "Yksityisyys";
     },
     get$reason(_) {
-      return "Reason";
+      return "Syy";
     },
     redactedBy$1(username) {
-      return "Redacted by " + username;
+      return "Poistanut " + username;
     },
     get$directChat() {
-      return "Direct chat";
+      return "Yksityiskeskustelu";
     },
     redactedByBecause$2(username, reason) {
-      return "Redacted by " + username + ' because: "' + reason + '"';
+      return "Poistanut " + username + ' syyst\xe4: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " redacted an event";
+      return username + " poisti tapahtuman";
     },
     get$redactMessage() {
-      return "Redact message";
+      return "Poista viesti";
     },
     get$reject() {
-      return "Reject";
+      return "Hylk\xe4\xe4";
     },
     rejectedTheInvitation$1(username) {
-      return username + " rejected the invitation";
+      return username + " hylk\xe4si kutsun";
     },
     get$removeAllOtherDevices() {
-      return "Remove all other devices";
+      return "Poista kaikki muut laitteet";
     },
     get$unbanFromChat() {
-      return "Unban from chat";
+      return "Poista porttikielto keskusteluun";
     },
     get$removeYourAvatar() {
-      return "Remove your avatar";
+      return "Poista profiilikuvasi";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Replace room with newer version";
+      return "Korvaa huone uudemmalla versiolla";
     },
     get$reply(_) {
-      return "Reply";
+      return "Vastaa";
     },
     get$reportMessage() {
-      return "Report message";
+      return "Ilmoita viesti";
     },
     get$roomHasBeenUpgraded() {
-      return "Room has been upgraded";
+      return "Huone on p\xe4ivitetty";
     },
     get$roomVersion() {
-      return "Room version";
+      return "Huoneen versio";
     },
     get$search(_) {
-      return "Search";
+      return "Hae";
     },
     get$security() {
-      return "Security";
+      return "Turvallisuus";
     },
     get$send(_) {
-      return "Send";
+      return "L\xe4het\xe4";
     },
     get$sendAMessage() {
-      return "Send a message";
+      return "L\xe4het\xe4 viesti";
     },
     get$sendAsText() {
-      return "Send as text";
+      return "L\xe4het\xe4 tekstin\xe4";
     },
     get$sendAudio() {
-      return "Send audio";
+      return "L\xe4het\xe4 \xe4\xe4niviesti";
     },
     get$sendFile() {
-      return "Send file";
+      return "L\xe4het\xe4 tiedosto";
     },
     get$sendImage() {
-      return "Send image";
+      return "L\xe4het\xe4 kuva";
     },
     sendImages$1(count) {
       return "Send " + count + " image";
     },
     get$sendMessages() {
-      return "Send messages";
+      return "L\xe4het\xe4 viestej\xe4";
     },
     get$sendVideo() {
-      return "Send video";
+      return "L\xe4het\xe4 video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " sent a file";
+      return "\ud83d\udcc1 " + username + " l\xe4hetti tiedoston";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " sent an audio";
+      return "\ud83c\udfa4 " + username + " l\xe4hetti \xe4\xe4niviestin";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " sent a picture";
+      return "\ud83d\uddbc\ufe0f " + username + " l\xe4hetti kuvan";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " sent a sticker";
+      return "\ud83d\ude0a " + username + " l\xe4hetti tarran";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " sent a video";
+      return "\ud83c\udfa5 " + username + " l\xe4hetti videon";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " sent call information";
+      return senderName + " l\xe4hetti puhelutiedot";
     },
     get$separateChatTypes() {
-      return "Separate Direct Chats and Groups";
+      return "Erota yksityiskeskustelut ryhmist\xe4";
     },
     get$setAsCanonicalAlias() {
-      return "Set as main alias";
+      return "Aseta p\xe4\xe4alias";
     },
     get$setChatDescription() {
-      return "Set chat description";
+      return "Asetti keskustelun kuvauksen";
     },
     get$setPermissionsLevel() {
-      return "Set permissions level";
+      return "Aseta oikeustasot";
     },
     get$settings() {
-      return "Settings";
+      return "Asetukset";
     },
     get$share(_) {
-      return "Share";
+      return "Jaa";
     },
     sharedTheLocation$1(username) {
-      return username + " shared their location";
+      return username + " jakoi sijaintinsa";
     },
     get$shareLocation() {
-      return "Share location";
+      return "Jaa sijainti";
     },
     get$presencesToggle() {
       return "Show status messages from other users";
     },
     get$skip(_) {
-      return "Skip";
+      return "Ohita";
     },
     get$sourceCode() {
-      return "Source code";
+      return "L\xe4hdekoodi";
     },
     get$spaceName() {
-      return "Name";
+      return "Tilan nimi";
     },
     startedACall$1(senderName) {
-      return senderName + " started a call";
+      return senderName + " aloitti puhelun";
     },
     get$status(_) {
-      return "Status";
+      return "Tila";
     },
     get$submit(_) {
-      return "Submit";
+      return "L\xe4het\xe4";
     },
     get$synchronizingPleaseWait() {
-      return "Synchronizing\u2026 Please wait.";
+      return "Synkronoidaan... Hetkinen.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
       return " Synchronizing\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "System";
+      return "J\xe4rjestelm\xe4";
     },
     get$theyDontMatch() {
-      return "They Don't Match";
+      return "Ne eiv\xe4t t\xe4sm\xe4\xe4";
     },
     get$theyMatch() {
-      return "They Match";
+      return "Ne t\xe4sm\xe4\xe4v\xe4t";
     },
     get$tooManyRequestsWarning() {
-      return "Too many requests. Please try again later!";
+      return "Liikaa pyynt\xf6j\xe4. Yrit\xe4 my\xf6hemmin uudelleen!";
     },
     get$tryToSendAgain() {
-      return "Try to send again";
+      return "Yrit\xe4 uudelleenl\xe4hett\xe4mist\xe4";
     },
     get$unavailable() {
-      return "Unavailable";
+      return "Ei saatavilla";
     },
     unbannedUser$2(username, targetName) {
-      return username + " unbanned " + targetName;
+      return username + " poisti k\xe4ytt\xe4j\xe4n " + targetName + " porttikiellon";
     },
     get$unblockDevice() {
-      return "Unblock Device";
+      return "Poista laitteen esto";
     },
     get$unknownDevice() {
-      return "Unknown device";
+      return "Tuntematon laite";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Unknown encryption algorithm";
+      return "Tuntematon salausalgoritmi";
     },
     unknownEvent$1(type) {
-      return "Unknown event '" + type + "'";
+      return "Tuntematon tapahtuma '" + type + "'";
     },
     get$unpin() {
-      return "Unpin";
+      return "Poista kiinnitys";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " and " + count + " others are typing\u2026";
+      return username + " ja " + count + " muuta kirjoittavat\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " and " + username2 + " are typing\u2026";
+      return username + " ja " + username2 + " kirjoittavat\u2026";
     },
     userIsTyping$1(username) {
-      return username + " is typing\u2026";
+      return username + " kirjoittaa\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " left the chat";
+      return "\ud83d\udeaa " + username + " poistui keskustelusta";
     },
     get$username(_) {
-      return "Username";
+      return "K\xe4ytt\xe4j\xe4tunnus";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " sent a " + type + " event";
+      return username + " l\xe4hetti " + type + "-tapahtuman";
     },
     get$unverified() {
-      return "Unverified";
+      return "Varmistamaton";
     },
     get$verified() {
-      return "Verified";
+      return "Varmistettu";
     },
     get$verifyStart() {
-      return "Start Verification";
+      return "Aloita varmennus";
     },
     get$verifySuccess() {
-      return "You successfully verified!";
+      return "Varmensit onnistuneesti!";
     },
     get$verifyTitle() {
-      return "Verifying other account";
+      return "Varmistetaan toista tunnusta";
     },
     get$visibilityOfTheChatHistory() {
-      return "Visibility of the chat history";
+      return "Keskusteluhistorian n\xe4kyvyys";
     },
     get$visibleForAllParticipants() {
-      return "Visible for all participants";
+      return "N\xe4kyy kaikille osallistujille";
     },
     get$visibleForEveryone() {
-      return "Visible for everyone";
+      return "N\xe4kyy kaikille";
     },
     get$voiceMessage() {
-      return "Voice message";
+      return "\xc4\xe4niviesti";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Waiting for partner to accept the request\u2026";
+      return "Odotetaan kumppanin varmistavan pyynn\xf6n\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Waiting for partner to accept the emoji\u2026";
+      return "Odotetaan kumppanin hyv\xe4ksyv\xe4n emojit\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Waiting for partner to accept the numbers\u2026";
+      return "Odotetaan kumppanin hyv\xe4ksyv\xe4n numerot\u2026";
     },
     get$warning() {
-      return "Warning!";
+      return "Varoitus!";
     },
     get$weSentYouAnEmail() {
-      return "We sent you an email";
+      return "L\xe4hetimme sinulle s\xe4hk\xf6postia";
     },
     get$whoCanPerformWhichAction() {
-      return "Who can perform which action";
+      return "Kuka voi suorittaa mink\xe4 toimenpiteen";
     },
     get$whoIsAllowedToJoinThisGroup() {
-      return "Who is allowed to join this chat";
+      return "Kenen on sallittua liitty\xe4 ryhm\xe4\xe4n";
     },
     get$whyDoYouWantToReportThis() {
-      return "Why do you want to report this?";
+      return "Miksi haluat ilmoittaa t\xe4m\xe4n?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "With these addresses you can recover your password.";
+      return "N\xe4ill\xe4 osoitteilla voit palauttaa salasanasi.";
     },
     get$writeAMessage() {
-      return "Write a message\u2026";
+      return "Kirjoita viesti\u2026";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
     },
     get$yes() {
-      return "Yes";
+      return "Kyll\xe4";
     },
     get$you() {
-      return "You";
+      return "Sin\xe4";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "You are no longer participating in this chat";
+      return "Et en\xe4\xe4 osallistu t\xe4h\xe4n keskusteluun";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "You have been banned from this chat";
+      return "Sinulle on annettu porttikielto t\xe4h\xe4n keskusteluun";
     },
     get$yourPublicKey() {
-      return "Your public key";
+      return "Julkinen avaimesi";
     },
     get$messageInfo() {
-      return "Message info";
+      return "Viestin tiedot";
     },
     get$time(_) {
-      return "Time";
+      return "Aika";
     },
     get$sender() {
-      return "Sender";
+      return "L\xe4hett\xe4j\xe4";
     },
     get$openGallery() {
-      return "Open gallery";
+      return "Avaa galleria";
     },
     get$removeFromSpace() {
-      return "Remove from space";
+      return "Poista tilasta";
     },
     videoWithSize$1(size) {
       return "Video (" + size + ")";
     },
     get$markAsRead() {
-      return "Mark as read";
+      return "Merkitse luetuksi";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " reacted with " + reaction;
+      return sender + " reagoi " + reaction;
     },
     get$pinMessage() {
-      return "Pin to room";
+      return "Kiinnit\xe4 huoneeseen";
     },
     get$confirmEventUnpin() {
-      return "Are you sure to permanently unpin the event?";
+      return "Haluatko varmasti irrottaa tapahtuman pysyv\xe4sti?";
     },
     get$emojis() {
-      return "Emojis";
+      return "Hymi\xf6t";
     },
     get$youRejectedTheInvitation() {
-      return "You rejected the invitation";
+      return "Kielt\xe4ydyit kutsusta";
     },
     get$youJoinedTheChat() {
-      return "You joined the chat";
+      return "Liityit keskusteluun";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d You accepted the invitation";
+      return "\ud83d\udc4d Hyv\xe4ksyit kutsun";
     },
     youBannedUser$1(user) {
-      return "You banned " + user;
+      return "Annoit porttikiellon k\xe4ytt\xe4j\xe4lle " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "You have withdrawn the invitation for " + user;
+      return "Olet perunut kutsun k\xe4ytt\xe4j\xe4lle " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 You have been invited by " + user;
+      return "\ud83d\udce9 " + user + " kutsui sinut";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 You invited " + user;
+      return "\ud83d\udce9 Kutsuit k\xe4ytt\xe4j\xe4n " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e You kicked " + user;
+      return "\ud83d\udc5e Potkit k\xe4ytt\xe4j\xe4n " + user + " keskustelusta";
     },
     youUnbannedUser$1(user) {
-      return "You unbanned " + user;
+      return "Poistit k\xe4ytt\xe4j\xe4n " + user + " porttikiellon";
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " has knocked";
+      return "\ud83d\udeaa " + user + " on koputtanut";
     },
     get$usersMustKnock() {
       return "Users must knock";
@@ -1129,70 +1129,70 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Knock";
     },
     get$users() {
-      return "Users";
+      return "K\xe4ytt\xe4j\xe4t";
     },
     countFiles$1(count) {
-      return count + " files";
+      return count + " tiedostoa";
     },
     get$user() {
-      return "User";
+      return "K\xe4ytt\xe4j\xe4";
     },
     get$custom() {
-      return "Custom";
+      return "Mukautettu";
     },
     get$noKeyForThisMessage() {
-      return "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.";
+      return "T\xe4m\xe4 voi tapahtua mik\xe4li viesti l\xe4hetettiin ennen sis\xe4\xe4nkirjautumistasi t\xe4lle laitteelle.\n\nOn my\xf6s mahdollista, ett\xe4 l\xe4hett\xe4j\xe4 on est\xe4nyt t\xe4m\xe4n laitteen tai jokin meni pieleen verkkoyhteyden kanssa.\n\nPystytk\xf6 lukemaan viestin toisella istunnolla? Siin\xe4 tapauksessa voit siirt\xe4\xe4 viestin silt\xe4! Mene Asetukset > Laitteet ja varmista, ett\xe4 laitteesi ovat varmistaneet toisensa. Seuraavankerran avatessasi huoneen ja molempien istuntojen ollessa etualalla, avaimet siirret\xe4\xe4n automaattisesti.\n\nHaluatko varmistaa ettet menet\xe4 avaimia uloskirjautuessa tai laitteita vaihtaessa? Varmista avainvarmuuskopion k\xe4yt\xf6ss\xe4olo asetuksista.";
     },
     get$newSpace() {
-      return "New space";
+      return "Uusi tila";
     },
     get$doNotShowAgain() {
-      return "Do not show again";
+      return "\xc4l\xe4 n\xe4yt\xe4 uudelleen";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Empty chat (was " + oldDisplayName + ")";
+      return "Tyhj\xe4 keskustelu (oli " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Reopen chat";
+      return "Avaa keskustelu uudelleen";
     },
     get$noBackupWarning() {
-      return "Don't forget your password!";
+      return "Varoitus! Ilman avainvarmuuskopion k\xe4ytt\xf6\xf6nottoa menet\xe4t p\xe4\xe4syn salattuihin viesteihisi. Suosittelemme ehdottomasti avainvarmuuskopion k\xe4ytt\xf6\xf6nottoa ennen uloskirjautumista.";
     },
     get$noOtherDevicesFound() {
-      return "No other devices found";
+      return "Muita laitteita ei l\xf6ytynyt";
     },
     fileIsTooBigForServer$1(max) {
-      return "Unable to send! The server only supports attachments up to " + max + ".";
+      return "Ei voi l\xe4hett\xe4\xe4! Palvelin tukee liitetiedostoja vain enint\xe4\xe4n " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Jump to last read message";
+      return "Hypp\xe4\xe4 viimeiseen luettuun viestiin";
     },
     get$readUpToHere() {
-      return "Read up to here";
+      return "Luettu t\xe4h\xe4n asti";
     },
     get$jump() {
-      return "Jump";
+      return "Hypp\xe4\xe4";
     },
     get$openLinkInBrowser() {
-      return "Open link in browser";
+      return "Avaa linkki selaimessa";
     },
     get$profileNotFound() {
-      return "The user could not be found on the server. Maybe there is a connection problem or the user doesn't exist.";
+      return "K\xe4ytt\xe4j\xe4\xe4 ei l\xf6ydy palvelimelta. T\xe4m\xe4 voi olla yhteysongelma tai k\xe4ytt\xe4j\xe4 ei ole olemassa.";
     },
     get$setColorTheme() {
-      return "Set color theme:";
+      return "Aseta v\xe4riteema:";
     },
     get$invite() {
-      return "Invite";
+      return "Kutsu";
     },
     get$invitePrivateChat() {
-      return "\ud83d\udce8 Invite private chat";
+      return "Kutsu yksityiskeskusteluun";
     },
     get$invalidInput() {
-      return "Invalid input!";
+      return "Virheellinen sy\xf6te!";
     },
     wrongPinEntered$1(seconds) {
-      return "Wrong pin entered! Try again in " + seconds + " seconds...";
+      return "V\xe4\xe4r\xe4 pin-koodi! Yrit\xe4 uudelleen " + seconds + " sekuntin kuluttua...";
     },
     get$allCorrect() {
       return "That's how I would say it! Nice!";
@@ -2383,13 +2383,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "No teachers found to report to";
     },
     get$pleaseEnterANumber() {
-      return "Please enter a number greater than 0";
+      return "Sy\xf6t\xe4 suurempi luku kuin 0";
     },
     get$archiveRoomDescription() {
-      return "The chat will be moved to the archive. Other users will be able to see that you have left the chat.";
+      return "Keskustelu siirret\xe4\xe4n arkistoon. Muut k\xe4ytt\xe4j\xe4t n\xe4kev\xe4t sinun poistuneen keskustelusta.";
     },
     get$roomUpgradeDescription() {
-      return "The chat will then be recreated with the new room version. All participants will be notified that they need to switch to the new chat. You can find out more about room versions at https://spec.matrix.org/latest/rooms/";
+      return "Keskustelu luodaan uudelleen uudella huoneversiolla. Kaikille osallistujille ilmoitetaan, ett\xe4 heid\xe4n tulee siirty\xe4 uuteen keskusteluun. Voit lukea lis\xe4\xe4 huoneversioista osoitteesta https://spec.matrix.org/latest/rooms/";
     },
     get$removeDevicesDescription() {
       return "You will be logged out of this device and will no longer be able to receive messages.";
@@ -2683,7 +2683,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Knock restricted";
     },
     get$createNewSpace() {
-      return "Bagong space";
+      return "Uusi tila";
     },
     get$practice() {
       return "Practice";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nFil, C.L10n);
+    _inherit(B.L10nFi, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFil":{"L10n":[]}}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFi":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_211", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "3x4pOVAUFaz760k936X5WqQ+p58=");
+})($__dart_deferred_initializers__, "tvtmyDy1aDgvwtYuZWBaFg+Kf8U=");
 ;
 //# sourceMappingURL=main.dart.js_211.part.js.map

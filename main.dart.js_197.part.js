@@ -7,137 +7,137 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var A,
   B = {
-    L10nEn$() {
-      return new B.L10nEn(A.canonicalizedLocale("en"));
+    L10nEl$() {
+      return new B.L10nEl(A.canonicalizedLocale("el"));
     },
-    L10nEn: function L10nEn(t0) {
+    L10nEl: function L10nEl(t0) {
       this.localeName = t0;
     }
   },
   C;
   A = holdersList[0];
-  B = hunkHelpers.updateHolder(holdersList[13], B);
+  B = hunkHelpers.updateHolder(holdersList[12], B);
   C = holdersList[51];
-  B.L10nEn.prototype = {
+  B.L10nEl.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
     get$repeatPassword() {
-      return "Repeat password";
+      return "\u0395\u03c0\u03b1\u03bd\u03ac\u03bb\u03b7\u03c8\u03b7 \u03ba\u03c9\u03b4\u03b9\u03ba\u03bf\u03cd \u03c0\u03c1\u03cc\u03c3\u03b2\u03b1\u03c3\u03b7\u03c2";
     },
     get$notAnImage() {
-      return "Not an image file.";
+      return "\u0394\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b1\u03c1\u03c7\u03b5\u03af\u03bf \u03b5\u03b9\u03ba\u03cc\u03bd\u03b1\u03c2.";
     },
     get$remove(_) {
-      return "Remove";
+      return "\u0391\u03c6\u03b1\u03b9\u03c1\u03ad\u03c3\u03c4\u03b5 \u03c4\u03bf";
     },
     get$importNow() {
-      return "Import now";
+      return "\u0395\u03b9\u03c3\u03b1\u03b3\u03c9\u03b3\u03ae \u03c4\u03ce\u03c1\u03b1";
     },
     get$importEmojis() {
-      return "Import Emojis";
+      return "\u0395\u03b9\u03c3\u03b1\u03b3\u03c9\u03b3\u03ae Emojis";
     },
     get$importFromZipFile() {
-      return "Import from .zip file";
+      return "\u0395\u03b9\u03c3\u03b1\u03b3\u03c9\u03b3\u03ae \u03b1\u03c0\u03cc \u03b1\u03c1\u03c7\u03b5\u03af\u03bf .zip";
     },
     get$exportEmotePack() {
-      return "Export Emote pack as .zip";
+      return "\u0395\u03be\u03b1\u03b3\u03c9\u03b3\u03ae \u03c0\u03b1\u03ba\u03ad\u03c4\u03bf\u03c5 Emote \u03c9\u03c2 .zip";
     },
     get$replace(_) {
-      return "Replace";
+      return "\u0391\u03bd\u03c4\u03b9\u03ba\u03b1\u03c4\u03b1\u03c3\u03c4\u03ae\u03c3\u03c4\u03b5 \u03c4\u03bf";
     },
     aboutHomeserver$1(homeserver) {
       return "About " + homeserver;
     },
     get$accept(_) {
-      return "Accept";
+      return "\u0391\u03c0\u03bf\u03b4\u03bf\u03c7\u03ae";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " accepted the invitation";
+      return "\ud83d\udc4d " + username + " \u03b1\u03c0\u03bf\u03b4\u03ad\u03c7\u03c4\u03b7\u03ba\u03b5 \u03c4\u03b7\u03bd \u03c0\u03c1\u03cc\u03c3\u03ba\u03bb\u03b7\u03c3\u03b7";
     },
     get$account() {
-      return "Account";
+      return "\u039b\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc\u03c2";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " activated end to end encryption";
+      return "\ud83d\udd10 " + username + " \u03b5\u03bd\u03b5\u03c1\u03b3\u03bf\u03c0\u03bf\u03af\u03b7\u03c3\u03b5 \u03ba\u03c1\u03c5\u03c0\u03c4\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7 \u03b1\u03c0\u03cc \u03ac\u03ba\u03c1\u03b7 \u03c3\u03b5 \u03ac\u03ba\u03c1\u03b7";
     },
     get$addEmail() {
-      return "Add email";
+      return "\u03a0\u03c1\u03bf\u03c3\u03b8\u03ae\u03ba\u03b7 email";
     },
     get$confirmMatrixId() {
-      return "Please confirm your Matrix ID in order to delete your account.";
+      return "\u03a0\u03b1\u03c1\u03b1\u03ba\u03b1\u03bb\u03bf\u03cd\u03bc\u03b5 \u03b5\u03c0\u03b9\u03b2\u03b5\u03b2\u03b1\u03b9\u03ce\u03c3\u03c4\u03b5 \u03c4\u03bf Matrix ID \u03c3\u03b1\u03c2 \u03b3\u03b9\u03b1 \u03bd\u03b1 \u03b4\u03b9\u03b1\u03b3\u03c1\u03ac\u03c8\u03b5\u03c4\u03b5 \u03c4\u03bf\u03bd \u03bb\u03bf\u03b3\u03b1\u03c1\u03b9\u03b1\u03c3\u03bc\u03cc \u03c3\u03b1\u03c2.";
     },
     supposedMxid$1(mxid) {
-      return "This should be " + mxid;
+      return "\u0391\u03c5\u03c4\u03cc \u03b8\u03b1 \u03c0\u03c1\u03ad\u03c0\u03b5\u03b9 \u03bd\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 " + mxid;
     },
     get$addToSpace() {
-      return "Add to space";
+      return "\u03a0\u03c1\u03bf\u03c3\u03b8\u03ae\u03ba\u03b7 \u03c3\u03c4\u03bf \u03c7\u03ce\u03c1\u03bf";
     },
     get$admin() {
-      return "Admin";
+      return "\u0394\u03b9\u03b1\u03c7\u03b5\u03b9\u03c1\u03b9\u03c3\u03c4\u03ae\u03c2";
     },
     get$alias() {
-      return "alias";
+      return "\u03c8\u03b5\u03c5\u03b4\u03ce\u03bd\u03c5\u03bc\u03bf";
     },
     get$all() {
-      return "All";
+      return "\u038c\u03bb\u03b1";
     },
     get$commandHint_googly() {
-      return "Send some googly eyes";
+      return "\u03a3\u03c4\u03b5\u03af\u03bb\u03c4\u03b5 \u03bc\u03b5\u03c1\u03b9\u03ba\u03ac \u03bc\u03ac\u03c4\u03b9\u03b1";
     },
     get$commandHint_cuddle() {
-      return "Send a cuddle";
+      return "\u03a3\u03c4\u03b5\u03af\u03bb\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b1\u03b3\u03ba\u03b1\u03bb\u03b9\u03ac";
     },
     get$commandHint_hug() {
-      return "Send a hug";
+      return "\u03a3\u03c4\u03b5\u03af\u03bb\u03c4\u03b5 \u03bc\u03b9\u03b1 \u03b1\u03b3\u03ba\u03b1\u03bb\u03b9\u03ac";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " sends you googly eyes";
+      return senderName + " \u03c3\u03b1\u03c2 \u03c3\u03c4\u03ad\u03bb\u03bd\u03b5\u03b9 googly eyes";
     },
     cuddleContent$1(senderName) {
-      return senderName + " cuddles you";
+      return senderName + " \u03c3\u03b5 \u03b1\u03b3\u03ba\u03b1\u03bb\u03b9\u03ac\u03b6\u03b5\u03b9";
     },
     hugContent$1(senderName) {
-      return senderName + " hugs you";
+      return senderName + " \u03c3\u03b5 \u03b1\u03b3\u03ba\u03b1\u03bb\u03b9\u03ac\u03b6\u03b5\u03b9";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " answered the call";
+      return senderName + " \u03b1\u03c0\u03ac\u03bd\u03c4\u03b7\u03c3\u03b5 \u03c3\u03c4\u03b7\u03bd \u03ba\u03bb\u03ae\u03c3\u03b7";
     },
     get$anyoneCanJoin() {
-      return "Anyone can join";
+      return "\u039f\u03c0\u03bf\u03b9\u03bf\u03c3\u03b4\u03ae\u03c0\u03bf\u03c4\u03b5 \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03b5\u03b9";
     },
     get$archive() {
-      return "Archive";
+      return "\u0391\u03c1\u03c7\u03b5\u03af\u03bf";
     },
     get$areGuestsAllowedToJoin() {
-      return "Are guest users allowed to join";
+      return "\u0395\u03c0\u03b9\u03c4\u03c1\u03ad\u03c0\u03b5\u03c4\u03b1\u03b9 \u03c3\u03c4\u03bf\u03c5\u03c2 \u03c6\u03b9\u03bb\u03bf\u03be\u03b5\u03bd\u03bf\u03cd\u03bc\u03b5\u03bd\u03bf\u03c5\u03c2 \u03c7\u03c1\u03ae\u03c3\u03c4\u03b5\u03c2 \u03bd\u03b1 \u03c3\u03c5\u03bc\u03bc\u03b5\u03c4\u03ac\u03c3\u03c7\u03bf\u03c5\u03bd";
     },
     get$areYouSure() {
-      return "Are you sure?";
+      return "\u0395\u03af\u03c3\u03b1\u03b9 \u03c3\u03af\u03b3\u03bf\u03c5\u03c1\u03bf\u03c2;";
     },
     get$areYouSureYouWantToLogout() {
-      return "Are you sure you want to log out?";
+      return "\u03a3\u03af\u03b3\u03bf\u03c5\u03c1\u03b1 \u03b8\u03ad\u03bb\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03b1\u03c0\u03bf\u03c3\u03c5\u03bd\u03b4\u03b5\u03b8\u03b5\u03af\u03c4\u03b5;";
     },
     get$askSSSSSign() {
-      return "To be able to sign the other person, please enter your secure store passphrase or recovery key.";
+      return "\u0393\u03b9\u03b1 \u03bd\u03b1 \u03bc\u03c0\u03bf\u03c1\u03ad\u03c3\u03b5\u03c4\u03b5 \u03bd\u03b1 \u03c5\u03c0\u03bf\u03b3\u03c1\u03ac\u03c8\u03b5\u03c4\u03b5 \u03c4\u03bf \u03ac\u03bb\u03bb\u03bf \u03ac\u03c4\u03bf\u03bc\u03bf, \u03c0\u03bb\u03b7\u03ba\u03c4\u03c1\u03bf\u03bb\u03bf\u03b3\u03ae\u03c3\u03c4\u03b5 \u03c4\u03b7 \u03c3\u03c5\u03bd\u03b8\u03b7\u03bc\u03b1\u03c4\u03b9\u03ba\u03ae \u03c6\u03c1\u03ac\u03c3\u03b7 \u03b1\u03c3\u03c6\u03b1\u03bb\u03bf\u03cd\u03c2 \u03b1\u03c0\u03bf\u03b8\u03ae\u03ba\u03b5\u03c5\u03c3\u03b7\u03c2 \u03ae \u03c4\u03bf \u03ba\u03bb\u03b5\u03b9\u03b4\u03af \u03b1\u03bd\u03ac\u03ba\u03c4\u03b7\u03c3\u03b7\u03c2.";
     },
     askVerificationRequest$1(username) {
-      return "Accept this verification request from " + username + "?";
+      return "\u0391\u03c0\u03bf\u03b4\u03bf\u03c7\u03ae \u03b1\u03c5\u03c4\u03bf\u03cd \u03c4\u03bf\u03c5 \u03b1\u03b9\u03c4\u03ae\u03bc\u03b1\u03c4\u03bf\u03c2 \u03b5\u03c0\u03b1\u03bb\u03ae\u03b8\u03b5\u03c5\u03c3\u03b7\u03c2 \u03b1\u03c0\u03cc " + username + ";";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "The homeserver supports the login types:\n" + serverVersions + "\nBut this app supports only:\n" + supportedVersions;
+      return "\u039f homeserver \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03b9 \u03c4\u03bf\u03c5\u03c2 \u03c4\u03cd\u03c0\u03bf\u03c5\u03c2 \u03c3\u03cd\u03bd\u03b4\u03b5\u03c3\u03b7\u03c2:\n" + serverVersions + "\n\u0391\u03bb\u03bb\u03ac \u03b1\u03c5\u03c4\u03ae \u03b7 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03b9 \u03bc\u03cc\u03bd\u03bf:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Send typing notifications";
+      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03b5\u03b9\u03b4\u03bf\u03c0\u03bf\u03b9\u03ae\u03c3\u03b5\u03c9\u03bd \u03b4\u03b1\u03ba\u03c4\u03c5\u03bb\u03bf\u03b3\u03c1\u03ac\u03c6\u03b7\u03c3\u03b7\u03c2";
     },
     get$swipeRightToLeftToReply() {
       return "Swipe right to left to reply";
     },
     get$sendOnEnter() {
-      return "Send on enter";
+      return "\u0391\u03c0\u03bf\u03c3\u03c4\u03bf\u03bb\u03ae \u03bc\u03b5 enter";
     },
     badServerVersionsException$4(serverVersions, supportedVersions, serverVerions, suportedVersions) {
-      return "The homeserver supports the Spec versions:\n" + serverVersions + "\nBut this app supports only " + supportedVersions;
+      return "\u039f homeserver \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03b9 \u03c4\u03b9\u03c2 \u03b5\u03ba\u03b4\u03cc\u03c3\u03b5\u03b9\u03c2 Spec:\n" + serverVersions + "\n\u0391\u03bb\u03bb\u03ac \u03b1\u03c5\u03c4\u03ae \u03b7 \u03b5\u03c6\u03b1\u03c1\u03bc\u03bf\u03b3\u03ae \u03c5\u03c0\u03bf\u03c3\u03c4\u03b7\u03c1\u03af\u03b6\u03b5\u03b9 \u03bc\u03cc\u03bd\u03bf \u03c4\u03b9\u03c2 " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
       return A.S(chats) + " chats and " + A.S(participants) + " participants";
@@ -158,28 +158,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Spaces";
     },
     get$banFromChat() {
-      return "Ban from chat";
+      return "\u0391\u03c0\u03b1\u03b3\u03cc\u03c1\u03b5\u03c5\u03c3\u03b7 \u03b1\u03c0\u03cc \u03c4\u03b7 \u03c3\u03c5\u03bd\u03bf\u03bc\u03b9\u03bb\u03af\u03b1";
     },
     get$banned() {
-      return "Banned";
+      return "\u0391\u03c0\u03b1\u03b3\u03bf\u03c1\u03b5\u03c5\u03bc\u03ad\u03bd\u03bf";
     },
     bannedUser$2(username, targetName) {
       return username + " banned " + targetName;
     },
     get$blockDevice() {
-      return "Block Device";
+      return "\u03a3\u03c5\u03c3\u03ba\u03b5\u03c5\u03ae \u03bc\u03c0\u03bb\u03bf\u03ba";
     },
     get$blocked() {
-      return "Blocked";
+      return "\u0391\u03c0\u03bf\u03ba\u03bb\u03b5\u03b9\u03c3\u03bc\u03ad\u03bd\u03bf";
     },
     get$botMessages() {
-      return "Bot messages";
+      return "\u039c\u03b7\u03bd\u03cd\u03bc\u03b1\u03c4\u03b1 bot";
     },
     get$cancel(_) {
-      return "Cancel";
+      return "\u0391\u03ba\u03cd\u03c1\u03c9\u03c3\u03b7";
     },
     cantOpenUri$1(uri) {
-      return "Can't open the URI " + uri;
+      return "\u0394\u03b5\u03bd \u03bc\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b1\u03bd\u03bf\u03af\u03be\u03b5\u03b9 \u03c4\u03bf URI " + uri;
     },
     get$changeDeviceName() {
       return "Change device name";
@@ -4199,14 +4199,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nEn, C.L10n);
+    _inherit(B.L10nEl, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEn":{"L10n":[]}}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEl":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_197", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "pprGPGoN5BOiKr6pr9oTX6KESaM=");
+})($__dart_deferred_initializers__, "H3sKL3sZ2PqQ3XA6y+3rmBEG3jM=");
 ;
 //# sourceMappingURL=main.dart.js_197.part.js.map
