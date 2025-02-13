@@ -59,7 +59,7 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
         datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     )
 
-    # Load the existing file to preserve key order if available.
+    # Load existing data to preserve order.
     if path_to_translations.exists():
         with open(path_to_translations, "r") as f:
             try:
@@ -78,60 +78,99 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
         if key not in merged:
             merged[key] = translations[key]
 
+    # Reorder such that each translation key is immediately followed by its metadata key.
+    ordered_merged = OrderedDict()
+    # Track which keys have been added.
+    added = set()
+    for key in merged:
+        if key.startswith("@"):
+            continue
+        # Add the translation key.
+        ordered_merged[key] = merged[key]
+        added.add(key)
+        meta_key = f"@{key}"
+        if meta_key in merged:
+            ordered_merged[meta_key] = merged[meta_key]
+            added.add(meta_key)
+    # Append any keys not added (likely standalone metadata keys).
+    for key in merged:
+        if key not in added:
+            ordered_merged[key] = merged[key]
+
+    # Ensure @@locale and @@last_modified keys appear first.
+    final_ordered = OrderedDict()
+    final_ordered["@@locale"] = translations["@@locale"]
+    final_ordered["@@last_modified"] = translations["@@last_modified"]
+    for key, value in ordered_merged.items():
+        if key not in ("@@locale", "@@last_modified"):
+            final_ordered[key] = value
+
     with open(path_to_translations, "w") as f:
-        f.write(json.dumps(merged, indent=2, ensure_ascii=False))
+        f.write(json.dumps(final_ordered, indent=2, ensure_ascii=False))
 
 
 def reconcile_metadata(lang_code: str) -> None:
     """
-    There are translations that are missing its metadata.
-    This function will add metadata to those translations.
+    For each translation key, update its metadata (the key prefixed with '@') by merging
+    any existing metadata with computed metadata. For basic translations, if no metadata exists,
+    add it; otherwise, leave it as is.
     """
-    import re
-
     translations = load_translations(lang_code)
+    translation_keys = [key for key in translations.keys() if not key.startswith("@")]
 
-    # Find translations keys
-    translation_keys = []
-    for key in translations.keys():
-        if not key.startswith("@"):
-            translation_keys.append(key)
-
-    # Add metadata to missing translations
     for key in translation_keys:
         translation = translations[key]
+        meta_key = f"@{key}"
+        existing_meta = translations.get(meta_key, {})
         assert isinstance(translation, str)
 
-        # Case 1: basic translations, no placeholders
+        # Case 1: Basic translations, no placeholders.
         if "{" not in translation:
-            translations[f"@{key}"] = {
-                "type": "text",
-                "placeholders": {"type": "text", "placeholders": {}},
-            }
+            if not existing_meta:
+                translations[meta_key] = {"type": "text", "placeholders": {}}
+            # if metadata exists, leave it as is.
 
-        # Case 2: translations with placeholders
+        # Case 2: Translations with placeholders (no pluralization).
         elif (
             "{" in translation
             and "plural," not in translation
             and "other{" not in translation
         ):
-            # Find placeholders
-            placeholders = {}
+            # Compute placeholders.
+            computed_placeholders = {}
             for placeholder in translation.split("{")[1:]:
                 placeholder_name = placeholder.split("}")[0]
-                placeholders[placeholder_name] = {"type": "String"}
-            translations[f"@{key}"] = {"type": "text", "placeholders": placeholders}
-        # Case 3: translations with pluralization
+                computed_placeholders[placeholder_name] = {"type": "String"}
+            if existing_meta:
+                # Merge computed placeholders into existing metadata.
+                existing_meta.setdefault("type", "text")
+                existing_meta["placeholders"] = computed_placeholders
+                translations[meta_key] = existing_meta
+            else:
+                translations[meta_key] = {
+                    "type": "text",
+                    "placeholders": computed_placeholders,
+                }
+
+        # Case 3: Translations with pluralization.
         elif (
             "{" in translation and "plural," in translation and "other{" in translation
         ):
-            # Extract all placeholders that appear before the plural part
+            # Extract placeholders appearing before the plural part.
             prefix = translation.split("plural,")[0].split("{")[1]
-            placeholders_list = prefix.split(",")
-            placeholders_list = [p.strip() for p in placeholders_list]
-            placeholders_list = [p for p in placeholders_list if p != ""]
-            placeholders = {ph: {} for ph in placeholders_list}
-            translations[f"@{key}"] = {"type": "text", "placeholders": placeholders}
+            placeholders_list = [
+                p.strip() for p in prefix.split(",") if p.strip() != ""
+            ]
+            computed_placeholders = {ph: {} for ph in placeholders_list}
+            if existing_meta:
+                existing_meta.setdefault("type", "text")
+                existing_meta["placeholders"] = computed_placeholders
+                translations[meta_key] = existing_meta
+            else:
+                translations[meta_key] = {
+                    "type": "text",
+                    "placeholders": computed_placeholders,
+                }
 
     save_translations(lang_code, translations)
 
@@ -176,7 +215,10 @@ def reconcile_empty_metadata(lang_code: str) -> None:
             assert isinstance(translation, str)
             if "{" in translation:
                 continue  # not a translation without placeholders
-            translations[key] = {}
+            translations[key] = {
+                "type": "text",
+                "placeholders": {},
+            }
 
     save_translations(lang_code, translations)
 
@@ -334,13 +376,14 @@ if __name__ == "__main__":
     reconcile_empty_metadata("en")
 
     # Translate the target language
-    translate(
-        lang_code=lang_code,
-        lang_display_name=lang_display_name,
-        translate_all=translate_all,
-    )
+    if lang_code != "en":
+        translate(
+            lang_code=lang_code,
+            lang_display_name=lang_display_name,
+            translate_all=translate_all,
+        )
 
-    # Reconcile the target language
-    reconcile_metadata(lang_code)
-    reconcile_invalid_metadata_type(lang_code)
-    reconcile_empty_metadata(lang_code)
+        # Reconcile the target language
+        reconcile_metadata(lang_code)
+        reconcile_invalid_metadata_type(lang_code)
+        reconcile_empty_metadata(lang_code)
