@@ -56,8 +56,6 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
     translations["@@last_modified"] = str(
         datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     )
-    # sort keys
-    translations = dict(sorted(translations.items(), key=lambda item: item[0]))
     with open(path_to_translations, "w") as f:
         f.write(json.dumps(translations, indent=2, ensure_ascii=False))
 
