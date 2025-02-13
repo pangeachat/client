@@ -137,7 +137,7 @@ def reconcile_metadata(lang_code: str, translation_keys: list[str]) -> None:
             computed_placeholders = {}
             for placeholder in translation.split("{")[1:]:
                 placeholder_name = placeholder.split("}")[0]
-                computed_placeholders[placeholder_name] = {"type": "String"}
+                computed_placeholders[placeholder_name] = {}
             if existing_meta:
                 # Merge computed placeholders into existing metadata.
                 existing_meta.setdefault("type", "text")
