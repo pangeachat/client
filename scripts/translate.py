@@ -104,7 +104,10 @@ def reconcile_metadata(lang_code: str) -> None:
 
         # Case 1: basic translations, no placeholders
         if "{" not in translation:
-            translations[f"@{key}"] = {"type": "text", "placeholders": {}}
+            translations[f"@{key}"] = {
+                "type": "text",
+                "placeholders": {"type": "text", "placeholders": {}},
+            }
 
         # Case 2: translations with placeholders
         elif (
@@ -307,20 +310,22 @@ python scripts/translate.py
 if __name__ == "__main__":
     import os
 
-    lang_code = input("Enter the language code (e.g. vi, en): ")
+    lang_code = input("Enter the language code (e.g. vi, en): ").strip()
     lang_display_name = input(
         "Enter the language display name (e.g. Vietnamese, English): "
     )
     translate_all = (
         input(
             "Do you want to translate all translation keys? The alternative is to translate all the keys in `needed-translations.txt`. (y/n): "
-        ).lower()
+        )
+        .strip()
+        .lower()
         == "y"
     )
     if os.environ.get("OPENAI_API_KEY") is None:
         os.environ["OPENAI_API_KEY"] = input(
             "It seems like you haven't set OPENAI_API_KEY environment variable. That's ok, you can enter it here: "
-        )
+        ).strip()
 
     # Ensure English is reconciled before perfomirng translation since
     # it is the base example language.
