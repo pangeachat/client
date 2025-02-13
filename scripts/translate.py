@@ -48,16 +48,38 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
     import json
     from pathlib import Path
     from datetime import datetime
+    from collections import OrderedDict
 
     path_to_translations = (
         Path(__file__).parent.parent / "assets" / "l10n" / f"intl_{lang_code}.arb"
     )
+
     translations["@@locale"] = lang_code
     translations["@@last_modified"] = str(
         datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     )
+
+    # Load the existing file to preserve key order if available.
+    if path_to_translations.exists():
+        with open(path_to_translations, "r") as f:
+            try:
+                existing_data = json.load(f, object_pairs_hook=OrderedDict)
+            except json.JSONDecodeError:
+                existing_data = OrderedDict()
+    else:
+        existing_data = OrderedDict()
+
+    # Merge: update values for keys that exist; append new keys to the bottom.
+    merged = OrderedDict()
+    for key in existing_data.keys():
+        if key in translations:
+            merged[key] = translations[key]
+    for key in translations:
+        if key not in merged:
+            merged[key] = translations[key]
+
     with open(path_to_translations, "w") as f:
-        f.write(json.dumps(translations, indent=2, ensure_ascii=False))
+        f.write(json.dumps(merged, indent=2, ensure_ascii=False))
 
 
 def reconcile_metadata(lang_code: str) -> None:
