@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/user/models/user_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class SettingsLearning extends StatefulWidget {
   const SettingsLearning({super.key});
@@ -26,6 +27,7 @@ class SettingsLearningController extends State<SettingsLearning> {
   final tts = TtsController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  String? languageMatchError;
 
   @override
   void initState() {
@@ -41,6 +43,23 @@ class SettingsLearningController extends State<SettingsLearning> {
   }
 
   Future<void> submit() async {
+    if (selectedSourceLanguage?.langCode == selectedTargetLanguage?.langCode) {
+      setState(() {
+        languageMatchError = L10n.of(context).noIdenticalLanguages;
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(L10n.of(context).noIdenticalLanguages),
+          backgroundColor: Theme.of(context).colorScheme.primary,
+        ),
+      );
+      return;
+    }
+    
+    setState(() {
+      languageMatchError = null;  // Clear error if languages don't match
+    });
+
     if (formKey.currentState!.validate()) {
       await showFutureLoadingDialog(
         context: context,
