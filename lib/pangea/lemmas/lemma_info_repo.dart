@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
+
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -7,8 +10,6 @@ import 'package:fluffychat/pangea/events/models/content_feedback.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
 
 class LemmaInfoRepo {
   static final GetStorage _lemmaStorage = GetStorage('lemma_storage');
