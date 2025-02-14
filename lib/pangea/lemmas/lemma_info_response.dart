@@ -15,6 +15,9 @@ class LemmaInfoResponse implements JsonSerializable {
     return LemmaInfoResponse(
       emoji: (json['emoji'] as List<dynamic>).map((e) => e as String).toList(),
       meaning: json['meaning'] as String,
+      expireAt: json['expireAt'] == null
+          ? null
+          : DateTime.parse(json['expireAt'] as String),
     );
   }
 
@@ -23,6 +26,7 @@ class LemmaInfoResponse implements JsonSerializable {
     return {
       'emoji': emoji,
       'meaning': meaning,
+      'expireAt': expireAt?.toIso8601String(),
     };
   }
 
