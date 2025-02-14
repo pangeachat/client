@@ -101,7 +101,8 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
             enabledBorder: widget.error != null
                 ? OutlineInputBorder(
                     borderRadius: BorderRadius.circular(36.0),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+                    borderSide:
+                        BorderSide(color: Theme.of(context).colorScheme.error),
                   )
                 : null,
             focusedBorder: widget.error != null
