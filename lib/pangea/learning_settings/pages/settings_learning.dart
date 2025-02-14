@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:country_picker/country_picker.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
@@ -12,7 +13,6 @@ import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/user/models/user_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class SettingsLearning extends StatefulWidget {
   const SettingsLearning({super.key});
@@ -55,9 +55,9 @@ class SettingsLearningController extends State<SettingsLearning> {
       );
       return;
     }
-    
+
     setState(() {
-      languageMatchError = null;  // Clear error if languages don't match
+      languageMatchError = null; // Clear error if languages don't match
     });
 
     if (formKey.currentState!.validate()) {
