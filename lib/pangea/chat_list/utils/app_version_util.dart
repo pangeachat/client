@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:get_storage/get_storage.dart';
+//import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:universal_html/html.dart' as html;
@@ -21,6 +21,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class AppVersionUtil {
   static Future<AppVersionResponse> _getAppVersion(
@@ -47,8 +48,6 @@ class AppVersionUtil {
     json = jsonDecode(res.body);
     return AppVersionResponse.fromJson(json);
   }
-
-  static final GetStorage _versionBox = GetStorage("version_storage");
 
   static Future<void> showAppVersionDialog(BuildContext context) async {
     final packageInfo = await PackageInfo.fromPlatform();
@@ -151,7 +150,7 @@ class AppVersionUtil {
     );
 
     if (!mandatoryUpdate && dialogResponse != OkCancelResult.ok) {
-      await _versionBox.write(
+      await Storage.versionBox.write(
         PLocalKey.showedUpdateDialog,
         DateTime.now().toIso8601String(),
       );
@@ -213,7 +212,7 @@ class AppVersionUtil {
   }
 
   static DateTime? get showedUpdateDialog {
-    final entry = _versionBox.read(PLocalKey.showedUpdateDialog);
+    final entry = Storage.versionBox.read(PLocalKey.showedUpdateDialog);
     if (entry == null) return null;
     try {
       return DateTime.parse(entry);

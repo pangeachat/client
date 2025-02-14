@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pages/login/login.dart';
+//import 'package:fluffychat/pages/login/login.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -18,6 +18,8 @@ import 'package:fluffychat/pangea/login/pages/user_settings_view.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 //import 'package:get_storage/get_storage.dart';
 
@@ -85,7 +87,7 @@ class UserSettingsState extends State<UserSettingsPage> {
   }
 
   bool get isSSOSignup {
-    final loginTypeEntry = LoginStorage.loginBox.read(PLocalKey.loginType);
+    final loginTypeEntry = Storage.loginBox.read(PLocalKey.loginType);
     return loginTypeEntry is String && loginTypeEntry == 'sso';
   }
 

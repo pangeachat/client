@@ -3,22 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
-import 'package:get_storage/get_storage.dart';
+//import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/homeserver_picker/homeserver_picker.dart';
-import 'package:fluffychat/pages/login/login.dart';
+//import 'package:fluffychat/pages/login/login.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-// This is just a class to let me make GetStorage static
-class SSOStorage {
-  static final GetStorage ssoBox = GetStorage("sso_storage");
-}
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+
 
 Future<void> pangeaSSOLoginAction(
   IdentityProvider provider,
@@ -70,6 +68,6 @@ Future<void> pangeaSSOLoginAction(
     initialDeviceDisplayName: PlatformInfos.clientName,
   );
 
-  LoginStorage.loginBox.write(PLocalKey.loginType, 'sso');
+  Storage.loginBox.write(PLocalKey.loginType, 'sso');
   GoogleAnalytics.login(provider.name!, loginRes.userId);
 }

@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:get_storage/get_storage.dart';
+//import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -28,6 +28,7 @@ import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 enum SubscriptionStatus {
   subscribed,
@@ -43,8 +44,6 @@ class SubscriptionController extends BaseController {
 
   final StreamController subscriptionStream = StreamController.broadcast();
   final StreamController trialActivationStream = StreamController.broadcast();
-
-  static final GetStorage subscriptionBox = GetStorage("subscription_storage");
 
   SubscriptionController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
@@ -126,9 +125,9 @@ class SubscriptionController extends BaseController {
         );
       } else {
         final bool? beganWebPayment =
-            subscriptionBox.read(PLocalKey.beganWebPayment);
+            Storage.subscriptionBox.read(PLocalKey.beganWebPayment);
         if (beganWebPayment ?? false) {
-          await subscriptionBox.remove(
+          await Storage.subscriptionBox.remove(
             PLocalKey.beganWebPayment,
           );
           if (isSubscribed) {
@@ -175,7 +174,7 @@ class SubscriptionController extends BaseController {
           selectedSubscription.duration!,
           isPromo: isPromo,
         );
-        await subscriptionBox.write(
+        await Storage.subscriptionBox.write(
           PLocalKey.beganWebPayment,
           true,
         );
@@ -276,7 +275,7 @@ class SubscriptionController extends BaseController {
           : SubscriptionStatus.dimissedPaywall;
 
   DateTime? get _lastDismissedPaywall {
-    final lastDismissed = subscriptionBox.read(
+    final lastDismissed = Storage.subscriptionBox.read(
       PLocalKey.dismissedPaywall,
     );
     if (lastDismissed == null) return null;
@@ -284,7 +283,7 @@ class SubscriptionController extends BaseController {
   }
 
   int? get _paywallBackoff {
-    final backoff = subscriptionBox.read(
+    final backoff = Storage.subscriptionBox.read(
       PLocalKey.paywallBackoff,
     );
     if (backoff == null) return null;
@@ -301,18 +300,18 @@ class SubscriptionController extends BaseController {
   }
 
   void dismissPaywall() async {
-    await subscriptionBox.write(
+    await Storage.subscriptionBox.write(
       PLocalKey.dismissedPaywall,
       DateTime.now().toString(),
     );
 
     if (_paywallBackoff == null) {
-      await subscriptionBox.write(
+      await Storage.subscriptionBox.write(
         PLocalKey.paywallBackoff,
         1,
       );
     } else {
-      await subscriptionBox.write(
+      await Storage.subscriptionBox.write(
         PLocalKey.paywallBackoff,
         _paywallBackoff! + 1,
       );

@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_shortcuts/flutter_shortcuts.dart';
-import 'package:get_storage/get_storage.dart';
+//import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
@@ -41,6 +41,8 @@ import '../../utils/url_launcher.dart';
 import '../../utils/voip/callkeep_manager.dart';
 import '../../widgets/fluffy_chat_app.dart';
 import '../../widgets/matrix.dart';
+
+import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
@@ -93,12 +95,6 @@ class ChatList extends StatefulWidget {
   @override
   ChatListController createState() => ChatListController();
 }
-
-// #Pangea
-class ChatStorage {
-  static final GetStorage chatBox = GetStorage("chat_list_storage");
-}
-// Pangea#
 
 class ChatListController extends State<ChatList>
     with TickerProviderStateMixin, RouteAware {
@@ -517,7 +513,7 @@ class ChatListController extends State<ChatList>
           );
 
           // #Pangea
-          final String? justInputtedCode = ChatStorage.chatBox.read(
+          final String? justInputtedCode = Storage.chatBox.read(
             PLocalKey.justInputtedCode,
           );
           // Pangea#

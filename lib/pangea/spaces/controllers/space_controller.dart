@@ -4,11 +4,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:get_storage/get_storage.dart';
+//import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pages/chat_list/chat_list.dart';
+//import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -18,6 +18,8 @@ import 'package:fluffychat/pangea/spaces/utils/join_with_link.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/controllers/base_controller.dart';
+//import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class ClassController extends BaseController {
   late PangeaController _pangeaController;
@@ -25,8 +27,6 @@ class ClassController extends BaseController {
   ClassController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
   }
-
-  static final GetStorage _classStorage = GetStorage('class_storage');
 
   void setActiveSpaceIdInChatListController(String? classId) {
     setState({"activeSpaceId": classId});
@@ -37,7 +37,7 @@ class ClassController extends BaseController {
       PLocalKey.cachedClassCodeToJoin,
     );
 
-    final String? alias = _classStorage.read(PLocalKey.cachedAliasToJoin);
+    final String? alias = Storage.classStorage.read(PLocalKey.cachedAliasToJoin);
 
     if (classCode != null) {
       await joinClasswithCode(
@@ -50,7 +50,7 @@ class ClassController extends BaseController {
       );
     } else if (alias != null) {
       await joinCachedRoomAlias(alias, context);
-      await _classStorage.remove(PLocalKey.cachedAliasToJoin);
+      await Storage.classStorage.remove(PLocalKey.cachedAliasToJoin);
     }
   }
 
@@ -65,7 +65,7 @@ class ClassController extends BaseController {
 
     final client = Matrix.of(context).client;
     if (!client.isLogged()) {
-      await _classStorage.write(PLocalKey.cachedAliasToJoin, alias);
+      await Storage.classStorage.write(PLocalKey.cachedAliasToJoin, alias);
       context.go("/home");
       return;
     }
@@ -140,7 +140,7 @@ class ClassController extends BaseController {
         }
 
         final chosenClassId = foundClasses.first;
-        await ChatStorage.chatBox.write(
+        await Storage.chatBox.write(
           PLocalKey.justInputtedCode,
           classCode,
         );

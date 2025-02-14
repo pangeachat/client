@@ -1,3 +1,5 @@
+import 'package:get_storage/get_storage.dart';
+
 class AnalyticsConstants {
   static const int xpPerLevel = 500;
   static const int vocabUseMaxXP = 30;
@@ -16,3 +18,10 @@ class AnalyticsConstants {
   static const vocabIconFileName = "Vocabulary_icon.png";
   static const morphIconFileName = "grammar_icon.png";
 }
+
+class AnalyticsStorage {
+  static final GetStorage analyticsBox = GetStorage("analytics_storage");
+}
+
+
+//import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';

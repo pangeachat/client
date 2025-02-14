@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
+//import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/activity_planner/list_request_schema.dart';
@@ -9,14 +9,15 @@ import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../common/network/requests.dart';
 
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+
 class ActivityModeListRepo {
-  static final GetStorage _modeListStorage = GetStorage('mode_list_storage');
 
   static void set(
     ActivitySettingRequestSchema request,
     List<ActivitySettingResponseSchema> response,
   ) {
-    _modeListStorage.write(
+    Storage.modeListStorage.write(
       request.storageKey,
       response.map((e) => e.toJson()).toList(),
     );
@@ -31,7 +32,7 @@ class ActivityModeListRepo {
   static Future<List<ActivitySettingResponseSchema>> get(
     ActivitySettingRequestSchema request,
   ) async {
-    final cachedJson = _modeListStorage.read(request.storageKey);
+    final cachedJson = Storage.modeListStorage.read(request.storageKey);
     if (cachedJson != null) {
       return ActivityModeListRepo.fromJson(cachedJson);
     }

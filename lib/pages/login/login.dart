@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:get_storage/get_storage.dart';
+//import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -18,16 +18,14 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../utils/platform_infos.dart';
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+
 
 class Login extends StatefulWidget {
   const Login({super.key});
 
   @override
   LoginController createState() => LoginController();
-}
-
-class LoginStorage {
-  static final GetStorage loginBox = GetStorage("login_storage");
 }
 
 class LoginController extends State<Login> {
@@ -203,7 +201,7 @@ class LoginController extends State<Login> {
         },
         // Pangea#
       );
-      LoginStorage.loginBox.write(PLocalKey.loginType, 'password');
+      Storage.loginBox.write(PLocalKey.loginType, 'password');
       // #Pangea
       GoogleAnalytics.login("pangea", loginRes.userId);
       // Pangea#

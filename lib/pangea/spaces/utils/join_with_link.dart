@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:get_storage/get_storage.dart';
+//import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -18,9 +18,6 @@ class JoinClassWithLink extends StatefulWidget {
   State<JoinClassWithLink> createState() => _JoinClassWithLinkState();
 }
 
-class LinkStorage {
-  static final GetStorage linkBox = GetStorage("link_storage");
-}
 
 //PTODO - show class info in field so they know they're joining the right class
 class _JoinClassWithLinkState extends State<JoinClassWithLink> {
@@ -45,7 +42,7 @@ class _JoinClassWithLinkState extends State<JoinClassWithLink> {
         );
         return;
       }
-      await LinkStorage.linkBox.write(
+      await Storage.linkBox.write(
         PLocalKey.cachedClassCodeToJoin,
         classCode,
       );
