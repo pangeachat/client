@@ -106,7 +106,7 @@ class ChatListController extends State<ChatList>
 
   StreamSubscription? _intentFileStreamSubscription;
 
-  StreamSubscription? _intentUriStreamSubscription;  
+  StreamSubscription? _intentUriStreamSubscription;
 
   ActiveFilter activeFilter = AppConfig.separateChatTypes
       ? ActiveFilter.messages

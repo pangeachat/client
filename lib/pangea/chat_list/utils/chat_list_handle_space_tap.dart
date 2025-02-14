@@ -105,7 +105,8 @@ void chatListHandleSpaceTap(
             (element) =>
                 element.isSpace && element.membership == Membership.join,
           );
-      final justInputtedCode = ChatStorage.chatBox.read(PLocalKey.justInputtedCode);
+      final justInputtedCode =
+          ChatStorage.chatBox.read(PLocalKey.justInputtedCode);
       if (rooms.any((s) => s.spaceChildren.any((c) => c.roomId == space.id))) {
         autoJoin(space);
       } else if (justInputtedCode != null &&
