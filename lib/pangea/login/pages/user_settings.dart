@@ -21,8 +21,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 //import 'package:get_storage/get_storage.dart';
 
-
-
 class UserSettingsPage extends StatefulWidget {
   const UserSettingsPage({super.key});
 
