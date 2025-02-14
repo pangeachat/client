@@ -1,8 +1,5 @@
 import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -10,22 +7,16 @@ import 'package:fluffychat/pangea/events/models/content_feedback.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class LemmaInfoRepo {
   static final GetStorage _lemmaStorage = GetStorage('lemma_storage');
-  static final GetStorage _lemmaStorageExpireAt =
-      GetStorage('lemma_storage_expire_at');
 
-  static void set(
-    LemmaInfoRequest request,
-    LemmaInfoResponse response, [
-    int ttlSeconds = 60, // 1 minute
-  ]) {
+  static void set(LemmaInfoRequest request, LemmaInfoResponse response) {
+    // set expireAt if not set
+    response.expireAt ??= DateTime.now().add(const Duration(minutes: 1));
     _lemmaStorage.write(request.storageKey, response.toJson());
-    _lemmaStorageExpireAt.write(
-      request.storageKey,
-      DateTime.now().millisecondsSinceEpoch + ttlSeconds * 1000,
-    );
   }
 
   static Future<LemmaInfoResponse> get(
@@ -33,27 +24,26 @@ class LemmaInfoRepo {
     String? feedback,
     bool useExpireAt = false,
   ]) async {
-    dynamic cachedJson;
-    if (useExpireAt) {
-      final expireAt = _lemmaStorageExpireAt.read(request.storageKey);
-      if (expireAt == null) {
-        cachedJson = null;
-      } else if (DateTime.now().millisecondsSinceEpoch > expireAt) {
-        cachedJson = null;
-      } else {
-        cachedJson = _lemmaStorage.read(request.storageKey);
-      }
-    } else {
-      cachedJson = _lemmaStorage.read(request.storageKey);
-    }
+    final cachedJson = _lemmaStorage.read(request.storageKey);
 
     final cached =
         cachedJson == null ? null : LemmaInfoResponse.fromJson(cachedJson);
 
     if (cached != null) {
       if (feedback == null) {
-        // in this case, we just return the cached response
-        return cached;
+        // at this point we have a cache without feedback
+        if (!useExpireAt) {
+          // return cache as is if we're not using expireAt
+          return cached;
+        } else if (cached.expireAt != null) {
+          if (DateTime.now().isBefore(cached.expireAt!)) {
+            // return cache as is if we're using expireAt and it's set but not expired
+            return cached;
+          }
+        }
+        // we intentionally do not handle the case of expired at not set because
+        // old caches won't have them set, and we want to trigger a new
+        // choreo call
       } else {
         // we're adding this within the service to avoid needing to have the widgets
         // save state including the bad response
