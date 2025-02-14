@@ -20,6 +20,7 @@ class PLanguageDropdown extends StatefulWidget {
   final String? error;
   final String? Function(LanguageModel?)? validator;
   final Color? backgroundColor;
+  final bool hasError;
 
   const PLanguageDropdown({
     super.key,
@@ -32,6 +33,7 @@ class PLanguageDropdown extends StatefulWidget {
     this.error,
     this.validator,
     this.backgroundColor,
+    this.hasError = false,
   });
 
   @override
@@ -91,7 +93,27 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                   isDropdown: true,
                 )
               : null,
-          decoration: InputDecoration(labelText: widget.decorationText),
+          decoration: InputDecoration(
+            labelText: widget.decorationText,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(36.0),
+            ),
+            enabledBorder: widget.error != null
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(36.0),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error),
+                  )
+                : null,
+            focusedBorder: widget.error != null
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(36.0),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 2,
+                    ),
+                  )
+                : null,
+          ),
           isExpanded: true,
           dropdownStyleData: DropdownStyleData(
             maxHeight: kIsWeb ? 500 : null,
