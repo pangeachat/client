@@ -94,17 +94,19 @@ class ChatList extends StatefulWidget {
   ChatListController createState() => ChatListController();
 }
 
+// #Pangea
+class ChatStorage {
+  static final GetStorage chatBox = GetStorage("chat_list_storage");
+}
+// Pangea#
+
 class ChatListController extends State<ChatList>
     with TickerProviderStateMixin, RouteAware {
   StreamSubscription? _intentDataStreamSubscription;
 
   StreamSubscription? _intentFileStreamSubscription;
 
-  StreamSubscription? _intentUriStreamSubscription;
-
-  // #Pangea
-  static final GetStorage chatBox = GetStorage("chat_list_storage");
-  // Pangea#
+  StreamSubscription? _intentUriStreamSubscription;  
 
   ActiveFilter activeFilter = AppConfig.separateChatTypes
       ? ActiveFilter.messages
@@ -515,7 +517,7 @@ class ChatListController extends State<ChatList>
           );
 
           // #Pangea
-          final String? justInputtedCode = chatBox.read(
+          final String? justInputtedCode = ChatStorage.chatBox.read(
             PLocalKey.justInputtedCode,
           );
           // Pangea#

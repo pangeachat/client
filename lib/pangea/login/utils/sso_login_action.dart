@@ -14,6 +14,8 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+import 'package:fluffychat/pages/login/login.dart';
+
 // This is just a class to let me make GetStorage static
 class SSOStorage {
   static final GetStorage ssoBox = GetStorage("sso_storage");
@@ -70,6 +72,6 @@ Future<void> pangeaSSOLoginAction(
     initialDeviceDisplayName: PlatformInfos.clientName,
   );
 
-  SSOStorage.ssoBox.write(PLocalKey.loginType, 'sso');
+  LoginStorage.loginBox.write(PLocalKey.loginType, 'sso');
   GoogleAnalytics.login(provider.name!, loginRes.userId);
 }

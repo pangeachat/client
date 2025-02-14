@@ -18,12 +18,14 @@ class JoinClassWithLink extends StatefulWidget {
   State<JoinClassWithLink> createState() => _JoinClassWithLinkState();
 }
 
+class LinkStorage {
+  static final GetStorage linkBox = GetStorage("link_storage");
+}
+
 //PTODO - show class info in field so they know they're joining the right class
 class _JoinClassWithLinkState extends State<JoinClassWithLink> {
   String? classCode;
   final PangeaController pangeaController = MatrixState.pangeaController;
-
-  static final GetStorage _linkBox = GetStorage("link_storage");
 
   @override
   void initState() {
@@ -43,7 +45,7 @@ class _JoinClassWithLinkState extends State<JoinClassWithLink> {
         );
         return;
       }
-      await _linkBox.write(
+      await LinkStorage.linkBox.write(
         PLocalKey.cachedClassCodeToJoin,
         classCode,
       );

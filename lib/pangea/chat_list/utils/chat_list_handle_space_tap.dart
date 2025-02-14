@@ -91,7 +91,7 @@ void chatListHandleSpaceTap(
     }
   }
 
-  final chatBox = ChatListController.chatBox;
+  //final chatBox = ChatStorage.chatBox;
 
   switch (space.membership) {
     case Membership.join:
@@ -105,7 +105,7 @@ void chatListHandleSpaceTap(
             (element) =>
                 element.isSpace && element.membership == Membership.join,
           );
-      final justInputtedCode = chatBox.read(PLocalKey.justInputtedCode);
+      final justInputtedCode = ChatStorage.chatBox.read(PLocalKey.justInputtedCode);
       if (rooms.any((s) => s.spaceChildren.any((c) => c.roomId == space.id))) {
         autoJoin(space);
       } else if (justInputtedCode != null &&

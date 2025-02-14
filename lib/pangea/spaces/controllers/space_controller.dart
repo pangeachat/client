@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:fluffychat/pangea/spaces/utils/join_with_link.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -17,6 +18,8 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/controllers/base_controller.dart';
 
+import 'package:fluffychat/pages/chat_list/chat_list.dart';
+
 class ClassController extends BaseController {
   late PangeaController _pangeaController;
 
@@ -31,7 +34,7 @@ class ClassController extends BaseController {
   }
 
   Future<void> joinCachedSpaceCode(BuildContext context) async {
-    final String? classCode = _classStorage.read(
+    final String? classCode = LinkStorage.linkBox.read(
       PLocalKey.cachedClassCodeToJoin,
     );
 
@@ -43,7 +46,7 @@ class ClassController extends BaseController {
         classCode,
       );
 
-      await _classStorage.remove(
+      await LinkStorage.linkBox.remove(
         PLocalKey.cachedClassCodeToJoin,
       );
     } else if (alias != null) {
@@ -138,7 +141,7 @@ class ClassController extends BaseController {
         }
 
         final chosenClassId = foundClasses.first;
-        await _classStorage.write(
+        await ChatStorage.chatBox.write(
           PLocalKey.justInputtedCode,
           classCode,
         );

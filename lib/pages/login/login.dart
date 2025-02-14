@@ -26,6 +26,10 @@ class Login extends StatefulWidget {
   LoginController createState() => LoginController();
 }
 
+class LoginStorage {
+  static final GetStorage loginBox = GetStorage("login_storage");
+}
+
 class LoginController extends State<Login> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -46,8 +50,6 @@ class LoginController extends State<Login> {
   // #Pangea
   final PangeaController pangeaController = MatrixState.pangeaController;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  static final GetStorage _loginBox = GetStorage("login_storage");
 
   bool get enabledSignIn =>
       !loadingSignIn &&
@@ -201,7 +203,7 @@ class LoginController extends State<Login> {
         },
         // Pangea#
       );
-      _loginBox.write(PLocalKey.loginType, 'password');
+      LoginStorage.loginBox.write(PLocalKey.loginType, 'password');
       // #Pangea
       GoogleAnalytics.login("pangea", loginRes.userId);
       // Pangea#

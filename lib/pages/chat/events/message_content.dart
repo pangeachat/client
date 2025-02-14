@@ -29,7 +29,7 @@ import 'message_download_content.dart';
 
 class MessageContent extends StatelessWidget {
   final Event event;
-  final Color textColor = Colors.red;
+  final Color textColor;
   final Color linkColor;
   final void Function(Event)? onInfoTab;
   final BorderRadius borderRadius;
@@ -51,7 +51,7 @@ class MessageContent extends StatelessWidget {
     this.onInfoTab,
     super.key,
     required this.timeline,
-    required textColor,
+    required this.textColor,
     // #Pangea
     this.pangeaMessageEvent,
     required this.immersionMode,
