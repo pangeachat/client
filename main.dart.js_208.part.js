@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_208", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nEu$() {
-      return new B.L10nEu(A.canonicalizedLocale("eu"));
+      return new A.L10nEu(B.canonicalizedLocale("eu"));
     },
     L10nEu: function L10nEu(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[17], B);
-  B.L10nEu.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[17], A);
+  A.L10nEu.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Zerbitzariak ondorengo ezaugarriak onartzen ditu:\n" + serverVersions + "\nBaina aplikazioak hauek onartzen ditu bakarrik: " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " txat eta " + A.S(participants) + " partaide";
+      return chats + " txat eta " + B.S(participants) + " partaide";
     },
     get$noMoreChatsFound() {
       return "Ez da beste txatik aurkitu...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ezin izan da mezua deszifratu: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " partaide";
+      return B.S(count) + " partaide";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + "(e)k txata sortu du";
@@ -4198,9 +4198,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nEu, C.L10n);
+    _inherit(A.L10nEu, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEu":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEu":{"L10n":[]}}'));
   var string$ = {
     _helbi: " helbidean. Errorearen mezua ondorengoa da: "
   };
@@ -4209,6 +4209,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_208", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "OaHogNDgMIZOrsgDPgYgnATx+aY=");
+})($__dart_deferred_initializers__, "1bzBrx/FjPSng2hSEp5WUhiWa28=");
 ;
 //# sourceMappingURL=main.dart.js_208.part.js.map

@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_211", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nFi$() {
-      return new B.L10nFi(A.canonicalizedLocale("fi"));
+      return new A.L10nFi(B.canonicalizedLocale("fi"));
     },
     L10nFi: function L10nFi(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[19], B);
-  B.L10nFi.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[19], A);
+  A.L10nFi.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kotipalvelin tukee Matrix Spec versio(it)a:\n" + serverVersions + ", mutta t\xe4m\xe4 sovellus tukee vain versio(it)a " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " chats and " + A.S(participants) + " participants";
+      return chats + " chats and " + B.S(participants) + " participants";
     },
     get$noMoreChatsFound() {
       return "Lis\xe4\xe4 keskusteluja ei l\xf6ytynyt...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Viestin salausta ei voitu purkaa: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " osallistujaa";
+      return B.S(count) + " osallistujaa";
     },
     createdTheChat$1(username) {
       return username + " loi keskustelun";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nFi, C.L10n);
+    _inherit(A.L10nFi, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFi":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFi":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_211", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "tvtmyDy1aDgvwtYuZWBaFg+Kf8U=");
+})($__dart_deferred_initializers__, "rt6e1hy75dQUvlWURJXqn+rcOhs=");
 ;
 //# sourceMappingURL=main.dart.js_211.part.js.map

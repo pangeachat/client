@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_213", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nFr$() {
-      return new B.L10nFr(A.canonicalizedLocale("fr"));
+      return new A.L10nFr(B.canonicalizedLocale("fr"));
     },
     L10nFr: function L10nFr(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[21], B);
-  B.L10nFr.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[21], A);
+  A.L10nFr.prototype = {
     get$alwaysUse24HourFormat() {
       return "true";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Le serveur d'accueil prend en charge les versions des sp\xe9cifications :\n" + serverVersions + "\nMais cette application ne prend en charge que " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " discussions et " + A.S(participants) + " participants";
+      return chats + " discussions et " + B.S(participants) + " participants";
     },
     get$noMoreChatsFound() {
       return "Aucune autre discussion trouv\xe9e...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Impossible de d\xe9chiffrer le message : " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " participant(s)";
+      return B.S(count) + " participant(s)";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " a cr\xe9\xe9 la discussion";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nFr, C.L10n);
+    _inherit(A.L10nFr, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFr":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nFr":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_213", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "RPcdlKUjS+AuHmXGXdp0wK/I0PI=");
+})($__dart_deferred_initializers__, "OXRmsQz3ePLn36H4lnSS/tEJN0A=");
 ;
 //# sourceMappingURL=main.dart.js_213.part.js.map

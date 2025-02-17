@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_216", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nGa$() {
-      return new B.L10nGa(A.canonicalizedLocale("ga"));
+      return new A.L10nGa(B.canonicalizedLocale("ga"));
     },
     L10nGa: function L10nGa(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[22], B);
-  B.L10nGa.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[22], A);
+  A.L10nGa.prototype = {
     get$alwaysUse24HourFormat() {
       return "br\xe9agach";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "T\xe1 na leaganacha sonra\xedochta seo ar f\xe1il faoin freastala\xed baile:\n" + serverVersions + "\nAch n\xedl ach na ceann seo ar f\xe1il faoin aip seo " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " comhr\xe1 agus " + A.S(participants) + " rannph\xe1irt\xed";
+      return chats + " comhr\xe1 agus " + B.S(participants) + " rannph\xe1irt\xed";
     },
     get$noMoreChatsFound() {
       return "N\xedor aims\xedodh a thuilleadh comhr\xe1ite...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "N\xedorbh fh\xe9idir teachtaireacht a dh\xedchripti\xfa: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " rannph\xe1irtithe";
+      return B.S(count) + " rannph\xe1irtithe";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac chruthaigh " + username + " an comhr\xe1";
@@ -4198,9 +4198,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nGa, C.L10n);
+    _inherit(A.L10nGa, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nGa":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nGa":{"L10n":[]}}'));
   var string$ = {
     Cuir_c: "Cuir cosc ar an \xfas\xe1ideoir \xe1irithe \xf3n seomra seo"
   };
@@ -4209,6 +4209,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_216", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "879zkihHAzWOCHvTsmp6XKsDmfQ=");
+})($__dart_deferred_initializers__, "zwWU9kWkhlE8MXNTa/R1m1nBIkQ=");
 ;
 //# sourceMappingURL=main.dart.js_216.part.js.map

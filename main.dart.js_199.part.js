@@ -5,20 +5,20 @@
   s[d][e].push({p: "main.dart.js_199", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A,
-  B = {
+  var B,
+  A = {
     L10nEo$() {
-      return new B.L10nEo(A.canonicalizedLocale("eo"));
+      return new A.L10nEo(B.canonicalizedLocale("eo"));
     },
     L10nEo: function L10nEo(t0) {
       this.localeName = t0;
     }
   },
   C;
-  A = holdersList[0];
-  B = hunkHelpers.updateHolder(holdersList[14], B);
+  B = holdersList[0];
+  A = hunkHelpers.updateHolder(holdersList[14], A);
   C = holdersList[51];
-  B.L10nEo.prototype = {
+  A.L10nEo.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -140,7 +140,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "La hejmservilo subtenas la jenajn version de la specifa\u0135o:\n" + serverVersions + "\nSed \u0109i tiu aplika\u0135o subtenas nur " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " chats and " + A.S(participants) + " participants";
+      return chats + " chats and " + B.S(participants) + " participants";
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
@@ -356,7 +356,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ne povis mal\u0109ifri mesa\u011don: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " partoprenantoj";
+      return B.S(count) + " partoprenantoj";
     },
     createdTheChat$1(username) {
       return username + " kreis la babilon";
@@ -4199,14 +4199,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nEo, C.L10n);
+    _inherit(A.L10nEo, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEo":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEo":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_199", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Zp9KBxC7K6FFQPcDTaNEZ1XtXOM=");
+})($__dart_deferred_initializers__, "ewFO9izf4yJveWZtrkJae5mX/3Y=");
 ;
 //# sourceMappingURL=main.dart.js_199.part.js.map

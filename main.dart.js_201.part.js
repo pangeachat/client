@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_201", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nEs$() {
-      return new B.L10nEs(A.canonicalizedLocale("es"));
+      return new A.L10nEs(B.canonicalizedLocale("es"));
     },
     L10nEs: function L10nEs(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[15], B);
-  B.L10nEs.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[15], A);
+  A.L10nEs.prototype = {
     get$alwaysUse24HourFormat() {
       return "Falso";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "El servidor soporta las siguientes versiones de la especificaci\xf3n:\n" + serverVersions + "\npero esta aplicaci\xf3n s\xf3lo soporta las versiones " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " chats y " + A.S(participants) + " participantes";
+      return chats + " chats y " + B.S(participants) + " participantes";
     },
     get$noMoreChatsFound() {
       return "No se encontraron m\xe1s chats...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "No se pudo descifrar el mensaje: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " participantes";
+      return B.S(count) + " participantes";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac" + username + " cre\xf3 el chat";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nEs, C.L10n);
+    _inherit(A.L10nEs, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEs":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEs":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_201", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "BCLBg4Rp022xy17F0AFOCPdff90=");
+})($__dart_deferred_initializers__, "yViFkkceTt5m2rH+Qz2oRN7om0g=");
 ;
 //# sourceMappingURL=main.dart.js_201.part.js.map

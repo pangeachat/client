@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_243", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nKo$() {
-      return new B.L10nKo(A.canonicalizedLocale("ko"));
+      return new A.L10nKo(B.canonicalizedLocale("ko"));
     },
     L10nKo: function L10nKo(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[34], B);
-  B.L10nKo.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[34], A);
+  A.L10nKo.prototype = {
     get$alwaysUse24HourFormat() {
       return "\uc544\ub2c8\uc694";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\uc774 \ud648\uc11c\ubc84\uac00 \uc9c0\uc6d0\ud558\ub294 Spec \ubc84\uc804:\n" + serverVersions + "\n\ud558\uc9c0\ub9cc \uc774 \uc571\uc740 " + supportedVersions + "\ub9cc \uc9c0\uc6d0\ud569\ub2c8\ub2e4";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " \ucc44\ud305\uacfc " + A.S(participants) + " \ucc38\uc5ec\uc790";
+      return chats + " \ucc44\ud305\uacfc " + B.S(participants) + " \ucc38\uc5ec\uc790";
     },
     get$noMoreChatsFound() {
       return "\ucc44\ud305\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\uba54\uc2dc\uc9c0 \ubcf5\ud638\ud654\ud560 \uc218 \uc5c6\uc74c: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " \ucc38\uc5ec\uc790";
+      return B.S(count) + " \ucc38\uc5ec\uc790";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + "\ub2d8\uc774 \ucc44\ud305\uc744 \uc0dd\uc131\ud568";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nKo, C.L10n);
+    _inherit(A.L10nKo, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nKo":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nKo":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_243", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "/iNWcjr/zn+XM9CKjDYzGvYhacc=");
+})($__dart_deferred_initializers__, "F8vFF1IwBT0XxqUpBUYyIGN1Y2s=");
 ;
 //# sourceMappingURL=main.dart.js_243.part.js.map

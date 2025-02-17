@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_206", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nEt$() {
-      return new B.L10nEt(A.canonicalizedLocale("et"));
+      return new A.L10nEt(B.canonicalizedLocale("et"));
     },
     L10nEt: function L10nEt(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[16], B);
-  B.L10nEt.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[16], A);
+  A.L10nEt.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "See koduserver toetab Matrixi spetsifikatsioonist j\xe4rgmisi versioone:\n" + serverVersions + "\nAga see rakendus toetab vaid j\xe4rgmisi versioone: " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " vestlust ja " + A.S(participants) + " osalejat";
+      return chats + " vestlust ja " + B.S(participants) + " osalejat";
     },
     get$noMoreChatsFound() {
       return "Rohkem vestlusi ei leidu...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "S\xf5numi dekr\xfcptimine ei \xf5nnestunud: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " osalejat";
+      return B.S(count) + " osalejat";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " algatas vestluse";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nEt, C.L10n);
+    _inherit(A.L10nEt, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEt":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEt":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_206", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "5Rq9+ucs72qGY1pa0PJY8oAlcsM=");
+})($__dart_deferred_initializers__, "f0TZrDnTedEsVS6Bkc2F29ncOXc=");
 ;
 //# sourceMappingURL=main.dart.js_206.part.js.map

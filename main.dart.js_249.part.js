@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Serwer obs\u0142uguje wersje Spec:\n" + serverVersions + "\nAle aplikacja obs\u0142uguje tylko " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(participants) + A.S(chats) + " czat\xf3w i " + A.S(participants) + " uczestnik\xf3w";
+      return A.S(participants) + chats + " czat\xf3w i " + A.S(participants) + " uczestnik\xf3w";
     },
     get$noMoreChatsFound() {
       return "Nie znaleziono wi\u0119cej czat\xf3w...";
@@ -4206,6 +4206,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_249", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ECs0E+4O6x6delRtJnCv57kiNpQ=");
+})($__dart_deferred_initializers__, "ox9KZgfpkMnqlNgE3374ISYDnWA=");
 ;
 //# sourceMappingURL=main.dart.js_249.part.js.map

@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_239", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nIt$() {
-      return new B.L10nIt(A.canonicalizedLocale("it"));
+      return new A.L10nIt(B.canonicalizedLocale("it"));
     },
     L10nIt: function L10nIt(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[31], B);
-  B.L10nIt.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[31], A);
+  A.L10nIt.prototype = {
     get$alwaysUse24HourFormat() {
       return "disattivato";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "L'homeserver supporta le versioni Spec:\n" + serverVersions + "\nMa questa applicazione supporta solo " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " chat e " + A.S(participants) + " partecipanti";
+      return chats + " chat e " + B.S(participants) + " partecipanti";
     },
     get$noMoreChatsFound() {
       return "Non sono state trovate altre chat...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Impossibile decriptare messaggio: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " partecipanti";
+      return B.S(count) + " partecipanti";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " ha creato la chat";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nIt, C.L10n);
+    _inherit(A.L10nIt, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nIt":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nIt":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_239", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "N3hTwyOwKyjIsnckD49O+Y6gZkg=");
+})($__dart_deferred_initializers__, "wSdXiwfonvXVAiSnejMyWYpa+1I=");
 ;
 //# sourceMappingURL=main.dart.js_239.part.js.map

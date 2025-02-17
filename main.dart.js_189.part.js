@@ -5,20 +5,20 @@
   s[d][e].push({p: "main.dart.js_189", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A,
-  B = {
+  var B,
+  A = {
     L10nDe$() {
-      return new B.L10nDe(A.canonicalizedLocale("de"));
+      return new A.L10nDe(B.canonicalizedLocale("de"));
     },
     L10nDe: function L10nDe(t0) {
       this.localeName = t0;
     }
   },
   C;
-  A = holdersList[0];
-  B = hunkHelpers.updateHolder(holdersList[11], B);
+  B = holdersList[0];
+  A = hunkHelpers.updateHolder(holdersList[11], A);
   C = holdersList[51];
-  B.L10nDe.prototype = {
+  A.L10nDe.prototype = {
     get$alwaysUse24HourFormat() {
       return "true";
     },
@@ -140,7 +140,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Der Homeserver unterst\xfctzt die Spec-Versionen:\n" + serverVersions + "\nAber diese App unterst\xfctzt nur:\n" + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " Chats und " + A.S(participants) + " Teilnehmer";
+      return chats + " Chats und " + B.S(participants) + " Teilnehmer";
     },
     get$noMoreChatsFound() {
       return "Keine weiteren Chats gefunden ...";
@@ -356,7 +356,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nachricht konnte nicht entschl\xfcsselt werden: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " Mitglieder";
+      return B.S(count) + " Mitglieder";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " hat den Chat erstellt";
@@ -4199,9 +4199,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nDe, C.L10n);
+    _inherit(A.L10nDe, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nDe":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nDe":{"L10n":[]}}'));
   var string$ = {
     Die_Ap: "Die App versucht nun, deine Sitzung aus der Sicherung wiederherzustellen. Bitte melde diesen Fehler an die Entwickler unter "
   };
@@ -4210,6 +4210,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_189", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "DcEdNDIAKDkNJ7wJlzqiGcxIp8I=");
+})($__dart_deferred_initializers__, "eBqtkwe7KYaiyjgHwP7M14iSsvE=");
 ;
 //# sourceMappingURL=main.dart.js_189.part.js.map

@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_264", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nVi$() {
-      return new B.L10nVi(A.canonicalizedLocale("vi"));
+      return new A.L10nVi(B.canonicalizedLocale("vi"));
     },
     L10nVi: function L10nVi(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[50], B);
-  B.L10nVi.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[50], A);
+  A.L10nVi.prototype = {
     get$alwaysUse24HourFormat() {
       return "Kh\xf4ng";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "M\xe1y ch\u1ee7 nh\xe0 h\u1ed7 tr\u1ee3 Spec phi\xean b\u1ea3n:\n" + serverVerions + "\nNh\u01b0ng \u1ee9ng d\u1ee5ng n\xe0y ch\u1ec9 h\u1ed7 tr\u1ee3 " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 " + A.S(participants) + " th\xe0nh vi\xean";
+      return chats + " cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 " + B.S(participants) + " th\xe0nh vi\xean";
     },
     get$noMoreChatsFound() {
       return "Kh\xf4ng c\xf2n cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0o...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kh\xf4ng th\u1ec3 gi\u1ea3i m\xe3 tin nh\u1eafn: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " th\xe0nh vi\xean";
+      return B.S(count) + " th\xe0nh vi\xean";
     },
     createdTheChat$1(username) {
       return username + " \u0111\xe3 t\u1ea1o cu\u1ed9c tr\xf2 chuy\u1ec7n";
@@ -4198,9 +4198,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nVi, C.L10n);
+    _inherit(A.L10nVi, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nVi":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nVi":{"L10n":[]}}'));
   var string$ = {
     Kh_ng_: "Kh\xf4ng th\u1ec3 \u0111\u1eb7t gi\u1edbi h\u1ea1n th\xe0nh vi\xean th\u1ea5p h\u01a1n s\u1ed1 th\xe0nh vi\xean kh\xf4ng ph\u1ea3i qu\u1ea3n tr\u1ecb hi\u1ec7n t\u1ea1i."
   };
@@ -4209,6 +4209,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "VvnbPm5jqNWQs+yoMtXFIQAy5lI=");
+})($__dart_deferred_initializers__, "Wy318IKkCtv3I/Bjn0JOrg1Nw+8=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map

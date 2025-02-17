@@ -5,20 +5,20 @@
   s[d][e].push({p: "main.dart.js_162", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A,
-  B = {
+  var B,
+  A = {
     L10nAr$() {
-      return new B.L10nAr(A.canonicalizedLocale("ar"));
+      return new A.L10nAr(B.canonicalizedLocale("ar"));
     },
     L10nAr: function L10nAr(t0) {
       this.localeName = t0;
     }
   },
   C;
-  A = holdersList[0];
-  B = hunkHelpers.updateHolder(holdersList[5], B);
+  B = holdersList[0];
+  A = hunkHelpers.updateHolder(holdersList[5], A);
   C = holdersList[51];
-  B.L10nAr.prototype = {
+  A.L10nAr.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -140,7 +140,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u064a\u062f\u0639\u0645 \u0627\u0644\u062e\u0627\u062f\u0645 \u0627\u0644\u0631\u0626\u064a\u0633\u064a \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645 \u0625\u0635\u062f\u0627\u0631\u0627\u062a \u0627\u0644\u0645\u0648\u0627\u0635\u0641\u0627\u062a:\n" + serverVersions + "\n\u0644\u0643\u0646 \u0647\u0630\u0627 \u0627\u0644\u062a\u0637\u0628\u064a\u0642 \u064a\u062f\u0639\u0645 \u0641\u0642\u0637:\n" + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " \u062f\u0631\u062f\u0634\u0627\u062a \u0648 " + A.S(participants) + " \u0645\u0634\u0627\u0631\u0643\u064a\u0646";
+      return chats + " \u062f\u0631\u062f\u0634\u0627\u062a \u0648 " + B.S(participants) + " \u0645\u0634\u0627\u0631\u0643\u064a\u0646";
     },
     get$noMoreChatsFound() {
       return "\u0644\u0645 \u064a\u062a\u0645 \u0627\u0644\u0639\u062b\u0648\u0631 \u0639\u0644\u0649 \u062f\u0631\u062f\u0634\u0627\u062a...";
@@ -356,7 +356,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u062a\u0639\u0630\u0631 \u0641\u0643 \u062a\u0634\u0641\u064a\u0631 \u0627\u0644\u0631\u0633\u0627\u0644\u0629: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " \u0645\u0646\u062a\u0633\u0628\u0627";
+      return B.S(count) + " \u0645\u0646\u062a\u0633\u0628\u0627";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac \u0623\u0646\u0634\u0623 " + username + " \u0627\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
@@ -4199,14 +4199,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nAr, C.L10n);
+    _inherit(A.L10nAr, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nAr":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nAr":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_162", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "b/dAYd9TRaCugyEoesIXwgOBp54=");
+})($__dart_deferred_initializers__, "XUz05eqKgVMYNunF9kSx76lyXA4=");
 ;
 //# sourceMappingURL=main.dart.js_162.part.js.map

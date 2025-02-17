@@ -152,7 +152,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "The homeserver supports the Spec versions:\n" + serverVersions + "\nBut this app supports only " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return B.S(chats) + " chats and " + B.S(participants) + " participants";
+      return chats + " chats and " + B.S(participants) + " participants";
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
@@ -6223,6 +6223,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_17", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "jgKa7ORX5OEUVMDqKf5skK3kDBM=");
+})($__dart_deferred_initializers__, "KOov62vjZ5kNAPi4RbPtxISAD8E=");
 ;
 //# sourceMappingURL=main.dart.js_17.part.js.map

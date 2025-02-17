@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_256", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nSl$() {
-      return new B.L10nSl(A.canonicalizedLocale("sl"));
+      return new A.L10nSl(B.canonicalizedLocale("sl"));
     },
     L10nSl: function L10nSl(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[43], B);
-  B.L10nSl.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[43], A);
+  A.L10nSl.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Doma\u010di stre\u017enik podpira razli\u010dice Spec:\n" + serverVersions + "\nToda ta aplikacija podpira samo " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " chats and " + A.S(participants) + " participants";
+      return chats + " chats and " + B.S(participants) + " participants";
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Sporo\u010dila ni bilo mogo\u010de de\u0161ifrirati: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " udele\u017eencev";
+      return B.S(count) + " udele\u017eencev";
     },
     createdTheChat$1(username) {
       return username + " je ustvaril klepet";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nSl, C.L10n);
+    _inherit(A.L10nSl, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nSl":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nSl":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_256", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "nC8u19ju0qSabpkQLCZQyN8lUd4=");
+})($__dart_deferred_initializers__, "hNjD0ZHXCIoyz2OcSZeLZt+Iguc=");
 ;
 //# sourceMappingURL=main.dart.js_256.part.js.map

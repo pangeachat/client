@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_222", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nHi$() {
-      return new B.L10nHi(A.canonicalizedLocale("hi"));
+      return new A.L10nHi(B.canonicalizedLocale("hi"));
     },
     L10nHi: function L10nHi(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[25], B);
-  B.L10nHi.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[25], A);
+  A.L10nHi.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "The homeserver supports the Spec versions:\n" + serverVersions + "\nBut this app supports only " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " chats and " + A.S(participants) + " participants";
+      return chats + " chats and " + B.S(participants) + " participants";
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Could not decrypt message: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " participants";
+      return B.S(count) + " participants";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " created the chat";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nHi, C.L10n);
+    _inherit(A.L10nHi, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHi":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHi":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_222", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "jRQ3m4F7YUeGzHayNLj4oLuOB08=");
+})($__dart_deferred_initializers__, "Pd1SbPCp5l9dFF+IYue2/GiSHmk=");
 ;
 //# sourceMappingURL=main.dart.js_222.part.js.map

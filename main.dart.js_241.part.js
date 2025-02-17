@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_241", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nJa$() {
-      return new B.L10nJa(A.canonicalizedLocale("ja"));
+      return new A.L10nJa(B.canonicalizedLocale("ja"));
     },
     L10nJa: function L10nJa(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[32], B);
-  B.L10nJa.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[32], A);
+  A.L10nJa.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u30db\u30fc\u30e0\u30b5\u30fc\u30d0\u30fc\u3067\u30b5\u30dd\u30fc\u30c8\u3055\u308c\u3066\u3044\u308b\u30d0\u30fc\u30b8\u30e7\u30f3\uff1a\n" + serverVersions + "\n\u30a2\u30d7\u30ea\u3067\u306f" + supportedVersions + "\u3057\u304b\u30b5\u30dd\u30fc\u30c8\u3055\u308c\u3066\u3044\u307e\u305b\u3093";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " chats and " + A.S(participants) + " participants";
+      return chats + " chats and " + B.S(participants) + " participants";
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u30e1\u30c3\u30bb\u30fc\u30b8\u3092\u89e3\u8aad\u3067\u304d\u307e\u305b\u3093\u3067\u3057\u305f: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + "\u540d\u306e\u53c2\u52a0\u8005";
+      return B.S(count) + "\u540d\u306e\u53c2\u52a0\u8005";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + "\u304c\u30c1\u30e3\u30c3\u30c8\u3092\u4f5c\u6210\u3057\u307e\u3057\u305f";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nJa, C.L10n);
+    _inherit(A.L10nJa, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nJa":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nJa":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_241", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "A/fOxILqW4FykQGkVSKdZjq7MVs=");
+})($__dart_deferred_initializers__, "VpQhCRRYqf0I0rAGeW0MTGpjotE=");
 ;
 //# sourceMappingURL=main.dart.js_241.part.js.map

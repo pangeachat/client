@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_250", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nRo$() {
-      return new B.L10nRo(A.canonicalizedLocale("ro"));
+      return new A.L10nRo(B.canonicalizedLocale("ro"));
     },
     L10nRo: function L10nRo(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[40], B);
-  B.L10nRo.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[40], A);
+  A.L10nRo.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Homeserver-ul suport\u0103 versiunele de Spec urm\u0103toare:\n" + serverVersions + "\nDar aceast\u0103 aplica\u021bie suport\u0103 numai " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " chats and " + A.S(participants) + " participants";
+      return chats + " chats and " + B.S(participants) + " participants";
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Dezcriptarea mesajului a e\u0219uat: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " participan\u021bi";
+      return B.S(count) + " participan\u021bi";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac" + username + " a creat chatul";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nRo, C.L10n);
+    _inherit(A.L10nRo, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nRo":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nRo":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_250", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "j2sejI7V5OEoO5rctbb9L6JsuI8=");
+})($__dart_deferred_initializers__, "WI0i4mMPbXUXjP5s33MK6IXzmvU=");
 ;
 //# sourceMappingURL=main.dart.js_250.part.js.map

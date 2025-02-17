@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_262", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nTr$() {
-      return new B.L10nTr(A.canonicalizedLocale("tr"));
+      return new A.L10nTr(B.canonicalizedLocale("tr"));
     },
     L10nTr: function L10nTr(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[48], B);
-  B.L10nTr.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[48], A);
+  A.L10nTr.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ana sunucu a\u015fa\u011f\u0131daki Spec s\xfcr\xfcmlerini destekliyor:\n" + serverVersions + "\nAncak bu uygulama yaln\u0131zca " + supportedVersions + " destekliyor";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " sohbet ve " + A.S(participants) + " kat\u0131l\u0131mc\u0131";
+      return chats + " sohbet ve " + B.S(participants) + " kat\u0131l\u0131mc\u0131";
     },
     get$noMoreChatsFound() {
       return "Ba\u015fka sohbet bulunamad\u0131...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mesaj\u0131n \u015fifresi \xe7\xf6z\xfclemedi: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " kat\u0131l\u0131mc\u0131";
+      return B.S(count) + " kat\u0131l\u0131mc\u0131";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " sohbeti olu\u015fturdu";
@@ -4198,9 +4198,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nTr, C.L10n);
+    _inherit(A.L10nTr, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nTr":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nTr":{"L10n":[]}}'));
   var string$ = {
     _adres: " adresinde geli\u015ftiricilere bildirin. Hata mesaj\u0131: "
   };
@@ -4209,6 +4209,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Z6NhJKNaX+lU30WV4foQLgIb5KE=");
+})($__dart_deferred_initializers__, "kUxR365Omeu8yBYoUtL3hq56GnA=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map

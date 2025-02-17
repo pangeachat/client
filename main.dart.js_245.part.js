@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_245", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nLv$() {
-      return new B.L10nLv(A.canonicalizedLocale("lv"));
+      return new A.L10nLv(B.canonicalizedLocale("lv"));
     },
     L10nLv: function L10nLv(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[36], B);
-  B.L10nLv.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[36], A);
+  A.L10nLv.prototype = {
     get$alwaysUse24HourFormat() {
       return "n\u0113";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "M\u0101jasserveris nodro\u0161ina specifik\u0101cijas versijas:\n" + serverVersions + "\nSavuk\u0101rt, lietotne atbalsta tikai " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " t\u0113rz\u0113\u0161anas un " + A.S(participants) + " dal\u012bbnieki";
+      return chats + " t\u0113rz\u0113\u0161anas un " + B.S(participants) + " dal\u012bbnieki";
     },
     get$noMoreChatsFound() {
       return "Vairs nav t\u0113rz\u0113\u0161anu...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nevar\u0113ja at\u0161ifr\u0113t zi\u0146u: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " dal\u012bbnieki";
+      return B.S(count) + " dal\u012bbnieki";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " izveidoja t\u0113rz\u0113\u0161anu";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nLv, C.L10n);
+    _inherit(A.L10nLv, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nLv":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nLv":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_245", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "WCukG3HW/lzfXznU8F++f72J/ME=");
+})($__dart_deferred_initializers__, "hEfWt5/V8J2QhgWhlZAT22K1geU=");
 ;
 //# sourceMappingURL=main.dart.js_245.part.js.map

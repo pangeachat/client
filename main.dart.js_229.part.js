@@ -5,19 +5,19 @@
   s[d][e].push({p: "main.dart.js_229", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
-  var A, C,
-  B = {
+  var B, C,
+  A = {
     L10nHu$() {
-      return new B.L10nHu(A.canonicalizedLocale("hu"));
+      return new A.L10nHu(B.canonicalizedLocale("hu"));
     },
     L10nHu: function L10nHu(t0) {
       this.localeName = t0;
     }
   };
-  A = holdersList[0];
+  B = holdersList[0];
   C = holdersList[51];
-  B = hunkHelpers.updateHolder(holdersList[27], B);
-  B.L10nHu.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[27], A);
+  A.L10nHu.prototype = {
     get$alwaysUse24HourFormat() {
       return "true";
     },
@@ -139,7 +139,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "A Matrix szerver ezeket a specifik\xe1ci\xf3 verzi\xf3kat t\xe1mogatja:\n" + serverVersions + "\nAzonban ez az app csak ezeket: " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return A.S(chats) + " cseveg\xe9sek \xe9s " + A.S(participants) + " r\xe9sztvev\u0151k";
+      return chats + " cseveg\xe9sek \xe9s " + B.S(participants) + " r\xe9sztvev\u0151k";
     },
     get$noMoreChatsFound() {
       return "Nincs t\xf6bb cseveg\xe9s...";
@@ -355,7 +355,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nem siker\xfclt visszafejteni az \xfczenetet: " + error;
     },
     countParticipants$1(count) {
-      return A.S(count) + " r\xe9sztvev\u0151";
+      return B.S(count) + " r\xe9sztvev\u0151";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " cseveg\xe9st hozott l\xe9tre";
@@ -4198,14 +4198,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(B.L10nHu, C.L10n);
+    _inherit(A.L10nHu, C.L10n);
   })();
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHu":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHu":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_229", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "sg8YJKem97KrpF4bq0+VBoceNBk=");
+})($__dart_deferred_initializers__, "xyA4053ya+0JiB98EyBSWabhESs=");
 ;
 //# sourceMappingURL=main.dart.js_229.part.js.map

@@ -146,7 +146,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u4e3b\u670d\u52a1\u5668\u652f\u6301\u7684 Spec \u7248\u672c\uff1a\n" + serverVersions + "\n\u4f46\u6b64\u5e94\u7528\u4ec5\u652f\u6301 " + supportedVersions + " \u7248\u672c";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return B.S(chats) + " \u4e2a\u804a\u5929\u548c " + B.S(participants) + " \u540d\u53c2\u4e0e\u8005";
+      return chats + " \u4e2a\u804a\u5929\u548c " + B.S(participants) + " \u540d\u53c2\u4e0e\u8005";
     },
     get$noMoreChatsFound() {
       return "\u627e\u4e0d\u5230\u66f4\u591a\u804a\u5929\u2026";
@@ -4321,7 +4321,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u76ee\u524d\u4f3a\u670d\u5668\u652f\u63f4\u7684\u5354\u8b70\u7248\u672c\uff1a\n" + serverVersions + "\n\u4f46\u672c\u61c9\u7528\u7a0b\u5f0f\u50c5\u652f\u63f4 " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return B.S(chats) + " \u500b\u804a\u5929\u5ba4\u548c " + B.S(participants) + " \u4f4d\u53c3\u8207\u8005";
+      return chats + " \u500b\u804a\u5929\u5ba4\u548c " + B.S(participants) + " \u4f4d\u53c3\u8207\u8005";
     },
     get$noMoreChatsFound() {
       return "\u6c92\u6709\u66f4\u591a\u804a\u5929\u5ba4\u4e86...";
@@ -5560,6 +5560,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "vuSLqVqTd8MX8JCc2bMNd45eXdE=");
+})($__dart_deferred_initializers__, "G+0yTWTh44tpfCNoEI2dpcn1EUQ=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
