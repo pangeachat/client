@@ -23,13 +23,14 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
+      - name: Get Version from pubspec.yaml
+        run: echo "VERSION=$(grep '^version:' pubspec.yaml | cut -d ' ' -f2 | tr -d '\r')" >> $GITHUB_ENV
       - name: Create GitHub Release
         id: create_release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ github.ref_name }}  # Use the pushed tag as the release version
-          name: Release ${{ github.ref_name }}
+          name: Release v${{ env.VERSION }}
+          tag: ${{ env.VERSION }}
           draft: false
           prerelease: false
           generateReleaseNotes: true
@@ -148,8 +149,8 @@ jobs:
   build_linux:
     strategy:
       matrix:
-        arch: [ x64, arm64 ]
-    runs-on: ${{ matrix.arch == 'arm64' && 'self-hosted' || 'ubuntu-latest'}}
+        arch: [ x64 ]
+    runs-on: ubuntu-latest
     needs: create_release
     steps:
       - uses: actions/checkout@v4
