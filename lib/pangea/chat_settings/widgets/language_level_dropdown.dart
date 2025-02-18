@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -55,7 +55,8 @@ class LanguageLevelDropdown extends StatelessWidget {
         maxHeight: kIsWeb ? 500 : null,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(14),
-          color: backgroundColor ?? Theme.of(context).colorScheme.surfaceContainerHigh,
+          color: backgroundColor ??
+              Theme.of(context).colorScheme.surfaceContainerHigh,
         ),
       ),
     );
