@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2021-08-14 12:41:09.781172",
+  "@@last_modified": "2025-02-18 09:52:37.743912",
   "about": "Giới thiệu",
   "@about": {
     "type": "text",
@@ -2605,5 +2605,19 @@
   "accountInformation": "Thông tin tài khoản",
   "addGroupDescription": "Thêm mô tả cho cuộc trò chuyện",
   "addNewFriend": "Thêm bạn mới",
-  "alreadyHaveAnAccount": "Bạn đã có tài khoản"
+  "alreadyHaveAnAccount": "Bạn đã có tài khoản",
+  "writeAMessageLangCodes": "Gõ bằng {l1} hoặc {l2}...",
+  "grammarCopyVERBFORMaux": "Trợ động từ",
+  "@@locale": "vi",
+  "@writeAMessageLangCodes": {
+    "type": "text",
+    "placeholders": {
+      "l1": {},
+      "l2": {}
+    }
+  },
+  "@grammarCopyVERBFORMaux": {
+    "type": "text",
+    "placeholders": {}
+  }
 }

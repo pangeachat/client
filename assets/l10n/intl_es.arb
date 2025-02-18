@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2021-08-14 12:41:10.097243",
+  "@@last_modified": "2025-02-18 09:50:40.240993",
   "about": "Acerca de",
   "@about": {
     "type": "text",
@@ -4393,9 +4393,9 @@
   "successfullySubscribed": "Se ha suscrito correctamente.",
   "clickToManageSubscription": "Haga clic aquí para gestionar su suscripción.",
   "emptyInviteWarning": "Añade este chat a una clase o intercambio para invitar a otros usuarios.",
-  "block": "bloque",
+  "block": "Bloquear",
   "blockedUsers": "Usuarios bloqueados",
-  "blockListDescription": "Puedes bloquear a los usuarios que te molesten. No podrás recibir mensajes ni invitaciones a salas de los usuarios de tu lista personal de bloqueados.",
+  "blockListDescription": "Puedes bloquear usuarios que te estén molestando. No podrás recibir mensajes ni invitaciones de chat de los usuarios de tu lista de bloqueo.",
   "blockUsername": "Ignorar nombre de usuario",
   "nothingFound": "No se ha encontrado nada...",
   "wrongRecoveryKey": "Lo siento... esta no parece ser la clave de recuperación correcta.",
@@ -4578,17 +4578,17 @@
   "tooltipInstructionsMobileBody": "Mantenga pulsados los elementos para ver la información sobre herramientas.",
   "tooltipInstructionsBrowserBody": "Pase el ratón sobre los elementos para ver información sobre herramientas.",
   "buildTranslation": "Construye tu traducción a partir de las opciones anteriores",
-  "appLockDescription": "Bloquea la aplicación cuando no la uses con un código pin",
-  "swipeRightToLeftToReply": "Desliza el dedo de derecha a izquierda para responder",
-  "globalChatId": "ID global del chat",
+  "appLockDescription": "Bloquear la aplicación cuando no se use con código pin",
+  "swipeRightToLeftToReply": "Desliza a la izquierda para responder",
+  "globalChatId": "ID de chat Global",
   "accessAndVisibility": "Acceso y visibilidad",
-  "accessAndVisibilityDescription": "Quién puede participar en este chat y cómo se puede descubrir el chat.",
+  "accessAndVisibilityDescription": "A quién se le permite unirse a este chat y cómo se puede descubrir el chat.",
   "calls": "Llamadas",
-  "customEmojisAndStickers": "Emojis y pegatinas personalizados",
-  "customEmojisAndStickersBody": "Añade o comparte emojis o stickers personalizados que podrás utilizar en cualquier chat.",
-  "hideRedactedMessages": "Ocultar mensajes redactados",
-  "hideRedactedMessagesBody": "Si alguien borra un mensaje, éste ya no será visible en el chat.",
-  "hideInvalidOrUnknownMessageFormats": "Ocultar formatos de mensaje no válidos o desconocidos",
+  "customEmojisAndStickers": "Emojis y stickers personalizados",
+  "customEmojisAndStickersBody": "Agrega o comparte emojis y stickers personalizados que se pueden utilizar en cualquier chat.",
+  "hideRedactedMessages": "Esconde mensajes eliminados",
+  "hideRedactedMessagesBody": "Si alguien elimina un mensaje, este mensaje ya no será visible en el chat.",
+  "hideInvalidOrUnknownMessageFormats": "Esconde formatos de mensajes inválidos o desconocidos",
   "hideMemberChangesInPublicChats": "Ocultar los cambios de los miembros en los chats públicos",
   "hideMemberChangesInPublicChatsBody": "No mostrar en la línea de tiempo del chat si alguien se une o abandona un chat público para mejorar la legibilidad.",
   "overview": "Visión general",
@@ -4712,19 +4712,16 @@
   },
   "commandHint_googly": "Enviar unos ojos saltones",
   "reportContentIssue": "Problema de contenido",
-  "alwaysUse24HourFormat": "falso",
-  "@commandHint_googly": {},
-  "noChatsFoundHere": "No se han encontrado chats. Inicia un nuevo chat usando el botón de abajo. ⤵️",
+  "alwaysUse24HourFormat": "Falso",
+  "noChatsFoundHere": "Aún no se encontraron chats aquí. Inicia un nuevo chat con alguien usando el botón de abajo. ⤵️",
   "@noChatsFoundHere": {},
-  "joinedChats": "Chats Unidos",
+  "joinedChats": "Chats unidos",
   "@joinedChats": {},
   "space": "Espacio",
   "@space": {},
   "spaces": "Espacios",
   "@spaces": {},
-  "block": "Bloquear",
   "@block": {},
-  "blockListDescription": "Puedes bloquear usuarios que te estén molestando. No podrás recibir mensajes ni invitaciones de chat de los usuarios de tu lista de bloqueo.",
   "@blockListDescription": {},
   "aboutHomeserver": "Acerca de {homeserver}",
   "@aboutHomeserver": {
@@ -4733,37 +4730,23 @@
       "homeserver": {}
     }
   },
-  "unread": "No leídos",
+  "unread": "No leído",
   "@unread": {},
-  "swipeRightToLeftToReply": "Desliza a la izquierda para responder",
   "@swipeRightToLeftToReply": {},
-  "hideRedactedMessagesBody": "Si alguien elimina un mensaje, este mensaje ya no será visible en el chat.",
   "@hideRedactedMessagesBody": {},
-  "hideInvalidOrUnknownMessageFormats": "Esconde formatos de mensajes inválidos o desconocidos",
   "@hideInvalidOrUnknownMessageFormats": {},
-  "hideRedactedMessages": "Esconde mensajes eliminados",
   "@hideRedactedMessages": {},
-  "appLockDescription": "Bloquear la aplicación cuando no se use con código pin",
   "@appLockDescription": {},
-  "alwaysUse24HourFormat": "Falso",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
   },
-  "accessAndVisibility": "Acceso y visibilidad",
   "@accessAndVisibility": {},
-  "globalChatId": "ID de chat Global",
   "@globalChatId": {},
-  "accessAndVisibilityDescription": "A quién se le permite unirse a este chat y cómo se puede descubrir el chat.",
   "@accessAndVisibilityDescription": {},
-  "calls": "Llamadas",
   "@calls": {},
-  "customEmojisAndStickers": "Emojis y stickers personalizados",
   "@customEmojisAndStickers": {},
-  "customEmojisAndStickersBody": "Agrega o comparte emojis y stickers personalizados que se pueden utilizar en cualquier chat.",
   "@customEmojisAndStickersBody": {},
-  "blockedUsers": "Usuarios bloqueados",
   "@blockedUsers": {},
-  "blockUsername": "Ignorar nombre de usuario",
   "@blockUsername": {},
   "noMoreChatsFound": "No se encontraron más chats...",
   "@noMoreChatsFound": {},
@@ -4775,12 +4758,6 @@
       "participants": {}
     }
   },
-  "noMoreChatsFound": "No se encontraron más chats...",
-  "noChatsFoundHere": "Aún no se encontraron chats aquí. Inicia un nuevo chat con alguien usando el botón de abajo. ⤵️",
-  "joinedChats": "Chats unidos",
-  "unread": "No leído",
-  "space": "Espacio",
-  "spaces": "Espacios",
   "enterASpacepName": "Ingresa un nombre",
   "invitedBy": "📩 Invitado por {user}",
   "@invitedBy": {
@@ -5324,5 +5301,1102 @@
   "invitePeopleChatSubtitle": "Invitar a usuarios o administradores a este chat",
   "invitePeopleSpaceSubtitle": "Invitar a usuarios o administradores a este espacio",
   "noCapacityLimit": "Sin límite de capacidad",
-  "downloadGroupText": "Descargar texto del grupo"
+  "downloadGroupText": "Descargar texto del grupo",
+  "sendImages": "Enviar {count} imagen",
+  "synchronizingPleaseWaitCounter": " Sincronizando… ({percentage}%)",
+  "writeAMessageLangCodes": "Escribe en {l1} o {l2}...",
+  "archiveRoomDescription": "El chat será movido al archivo. Otros usuarios podrán ver que has salido del chat.",
+  "botConfigNoPermissionTitle": "Sin permiso",
+  "botConfigNoPermissionMessage": "Contacta al administrador de la sala para cambiar la configuración del bot",
+  "changeContent": "¡Oh no! La IA puede facilitar experiencias de aprendizaje personalizadas pero... también alucina. ¿Qué debería ser?",
+  "grammarCopyVERBFORMaux": "Auxiliar",
+  "levelShort": "NIVEL {level}",
+  "spaceDescription": "Descripción del espacio",
+  "addSpaceDescription": "Agregar una descripción del espacio",
+  "notificationsOn": "Notificaciones activadas",
+  "notificationsOff": "Notificaciones desactivadas",
+  "spaceCanBeFoundViaSearch": "El espacio se puede encontrar a través de la búsqueda",
+  "chatCanBeFoundViaSearch": "El chat se puede encontrar a través de la búsqueda",
+  "calculatingFileSize": "Calculando el tamaño del archivo...",
+  "prepareSendingAttachment": "Preparando el envío del archivo adjunto...",
+  "sendingAttachment": "Enviando archivo adjunto...",
+  "generatingVideoThumbnail": "Generando miniatura de video...",
+  "compressVideo": "Comprimir video...",
+  "sendingAttachmentCountOfCount": "Enviando archivo adjunto {index} de {length}...",
+  "serverLimitReached": "¡Límite del servidor alcanzado! Esperando {seconds} segundos...",
+  "oneOfYourDevicesIsNotVerified": "Uno de tus dispositivos no está verificado",
+  "noticeChatBackupDeviceVerification": "Nota: Cuando conectes todos tus dispositivos a la copia de seguridad del chat, se verificarán automáticamente.",
+  "requireCodeToJoin": "Requiere código para unirse",
+  "canFindInSearch": "Se puede encontrar en la búsqueda",
+  "addSubspaceWarning": "Una vez que agregues esto, no aparecerá en los resultados de búsqueda pública y será visible para todos los miembros del espacio principal.",
+  "nestedSpaceError": "Los espacios no deben ser añadidos como hijos de otros espacios",
+  "addChatToSpace": "Agregar chat",
+  "blur": "Desenfoque:",
+  "opacity": "Opacidad:",
+  "setWallpaper": "Establecer fondo de pantalla",
+  "manageAccount": "Gestionar cuenta",
+  "noContactInformationProvided": "El servidor no proporciona ninguna información de contacto válida",
+  "contactServerAdmin": "Contactar al administrador del servidor",
+  "contactServerSecurity": "Contactar a la seguridad del servidor",
+  "supportPage": "Página de soporte",
+  "serverInformation": "Información del servidor:",
+  "name": "Nombre",
+  "version": "Versión",
+  "website": "Sitio web",
+  "compress": "Comprimir",
+  "boldText": "Texto en negrita",
+  "italicText": "Texto en cursiva",
+  "strikeThrough": "Tachado",
+  "pleaseFillOut": "Por favor complete",
+  "invalidUrl": "URL inválido",
+  "addLink": "Agregar enlace",
+  "unableToJoinChat": "No se puede unir al chat. Tal vez la otra parte ya ha cerrado la conversación.",
+  "createChatAndInviteUsers": "Crear chat e invitar usuarios",
+  "updatedNewSpaceDescription": "Los espacios te permiten consolidar tus chats y construir comunidades privadas o públicas.",
+  "joinWithCode": "Unirse con código",
+  "enterCodeToJoin": "Ingrese el código para unirse",
+  "mandatoryUpdateRequired": "Actualización obligatoria requerida",
+  "mandatoryUpdateRequiredDesc": "Se requiere una nueva versión de la aplicación para continuar. Por favor actualice ahora para proceder.",
+  "updateAvailableDesc": "Una nueva versión de la aplicación está disponible. ¡Actualice ahora para obtener las últimas funciones y mejoras!",
+  "updateLater": "Más tarde",
+  "constructUseWaDesc": "Usado sin ayuda",
+  "constructUseGaDesc": "Error gramatical",
+  "constructUseUnkDesc": "Desconocido",
+  "constructUseCorITDesc": "Correcto en la traducción",
+  "constructUseIgnITDesc": "Ignorado en la traducción",
+  "constructUseIncITDesc": "Incorrecto en la traducción",
+  "constructUseIgnIGCDesc": "Ignorado en la corrección gramatical",
+  "constructUseCorIGCDesc": "Correcto en la corrección gramatical",
+  "constructUseIncIGCDesc": "Incorrecto en la corrección gramatical",
+  "constructUseCorPADesc": "Correcto en la actividad de significado de palabras",
+  "constructUseIgnPADesc": "Ignorado en la actividad de significado de palabras",
+  "constructUseIncPADesc": "Incorrecto en la actividad de significado de palabras",
+  "constructUseCorWLDesc": "Correcto en la actividad de escucha de palabras",
+  "constructUseIncWLDesc": "Incorrecto en la actividad de escucha de palabras",
+  "constructUseIngWLDesc": "Ignorado en la actividad de escucha de palabras",
+  "constructUseCorHWLDesc": "Correcto en la actividad de palabras ocultas",
+  "constructUseIncHWLDesc": "Incorrecto en la actividad de palabras ocultas",
+  "constructUseIgnHWLDesc": "Ignorado en la actividad de palabras ocultas",
+  "constructUseCorLDesc": "Correcto en la actividad de lema",
+  "constructUseIncLDesc": "Incorrecto en la actividad de lema",
+  "constructUseIgnLDesc": "Ignorado en la actividad de lema",
+  "constructUseCorMDesc": "Correcto en la actividad gramatical",
+  "constructUseIncMDesc": "Incorrecto en la actividad gramatical",
+  "constructUseIgnMDesc": "Ignorado en la actividad de gramática",
+  "constructUseEmojiDesc": "Correcto en la actividad de emoji",
+  "constructUseNanDesc": "No aplicable",
+  "xpIntoLevel": "{currentXP} / {maxXP} XP",
+  "signInWithUsername": "Iniciar sesión con nombre de usuario y contraseña",
+  "registrationEmailMessage": "Por favor verifica tu correo electrónico con un enlace enviado allí. En algunos casos, el correo puede tardar hasta 5 minutos en llegar. También verifica tu carpeta de spam.",
+  "enableTTSToolName": "Texto a voz habilitado",
+  "enableTTSToolDescription": "Permitir que la aplicación genere salida de texto a voz para partes del texto en tu idioma objetivo",
+  "couldNotFindTTS": "No pudimos encontrar un motor de texto a voz para tu idioma objetivo actual.",
+  "ttsInstructionsHyperlink": "Haz clic aquí para ver las instrucciones para descargar una nueva voz en tu dispositivo.",
+  "currentVersion": "Versión actual",
+  "latestVersion": "Última versión",
+  "createAnAccount": "Crear una cuenta",
+  "signIn": "Iniciar sesión",
+  "signUpWithEmail": "Registrarse con correo electrónico",
+  "signUpWithGoogle": "Registrarse con Google",
+  "signUpWithApple": "Registrarse con Apple",
+  "yourUsername": "Tu nombre de usuario",
+  "yourEmail": "Tu correo electrónico",
+  "pleaseEnterAnEmail": "Por favor ingresa una dirección de correo electrónico",
+  "signInWithGoogle": "Iniciar sesión con Google",
+  "signInWithApple": "Iniciar sesión con Apple",
+  "chooseYourAvatar": "Elige tu avatar",
+  "iWantToLearn": "Quiero aprender",
+  "pleaseAgreeToTOS": "Por favor, acepta los Términos y Condiciones",
+  "pleaseEnterEmail": "Por favor, introduce una dirección de correo electrónico válida.",
+  "pleaseSelectALanguage": "Por favor, selecciona un idioma",
+  "myBaseLanguage": "Mi idioma base",
+  "clickWordsInstructions": "Haz clic en una palabra o en los botones de abajo para aprender más",
+  "chooseBestDefinition": "¿Qué significa esta palabra?",
+  "meaningSectionHeader": "Significado:",
+  "formSectionHeader": "Formas utilizadas en los chats:",
+  "noEmojiSelectedTooltip": "No se ha seleccionado ningún emoji",
+  "writingExercisesTooltip": "Actividades de escritura",
+  "listeningExercisesTooltip": "Actividades de escucha",
+  "readingExercisesTooltip": "Actividades de lectura",
+  "meaningNotFound": "No se pudo encontrar el significado.",
+  "formsNotFound": "No se pudieron encontrar las formas.",
+  "chooseBaseForm": "Elige la forma base",
+  "notTheCodeError": "¡Lo siento, ese no es el código!",
+  "totalXP": "XP Total",
+  "numLemmas": "Número total de lemas",
+  "listOfLemmas": "Lista de lemas",
+  "numLemmasUsedCorrectly": "Número de lemas utilizados correctamente al menos una vez",
+  "listLemmasUsedCorrectly": "Lista de lemas utilizados correctamente al menos una vez",
+  "numLemmasUsedIncorrectly": "Número de lemas utilizados correctamente 0 veces",
+  "listLemmasUsedIncorrectly": "Número de lemas utilizados correctamente 0 veces",
+  "numLemmasSmallXP": "Número de lemas con 0 - 30 XP",
+  "numLemmasMediumXP": "Número de lemas con 31 - 200 XP",
+  "numLemmasLargeXP": "Número de lemas con > 200 XP",
+  "listLemmasSmallXP": "Lista de lemas con 0 - 30 XP",
+  "listLemmasMediumXP": "Lista de lemas con 31 - 200 XP",
+  "listLemmasLargeXP": "Lista de lemas con > 200 XP",
+  "numGrammarConcepts": "Número de conceptos gramaticales",
+  "listGrammarConcepts": "Conceptos gramaticales",
+  "listGrammarConceptsUsedCorrectly": "Conceptos gramaticales utilizados correctamente en mensajes originales al menos el 80% del tiempo",
+  "listGrammarConceptsUsedIncorrectly": "Conceptos gramaticales utilizados correctamente en mensajes originales menos del 80% del tiempo",
+  "listGrammarConceptsUseCorrectlySystemGenerated": "Conceptos gramaticales elegidos correctamente de sugerencias generadas por el sistema al menos el 80% del tiempo",
+  "listGrammarConceptsUseIncorrectlySystemGenerated": "Conceptos gramaticales elegidos correctamente de sugerencias generadas por el sistema menos del 80% del tiempo",
+  "listGrammarConceptsSmallXP": "Conceptos gramaticales con 0-50 xp",
+  "listGrammarConceptsMediumXP": "Conceptos gramaticales con 51-200 xp",
+  "listGrammarConceptsLargeXP": "Conceptos gramaticales 201-500 xp",
+  "listGrammarConceptsHugeXP": "Conceptos gramaticales >500 xp",
+  "numMessagesSent": "Número de mensajes enviados",
+  "numWordsTyped": "Número de palabras escritas en mensajes originales",
+  "numCorrectChoices": "Número de palabras correctas elegidas de sugerencias generadas por el sistema",
+  "numIncorrectChoices": "Número de palabras incorrectas elegidas de sugerencias generadas por el sistema",
+  "downloadSpaceAnalytics": "Descargar análisis de espacio",
+  "commaSeparatedFile": "CSV",
+  "excelFile": "Excel",
+  "fileType": "Tipo de archivo",
+  "download": "Descargar",
+  "analyticsNotAvailable": "Análisis de usuario no disponible",
+  "downloading": "Descargando...",
+  "failedFetchUserAnalytics": "Error al descargar el análisis de usuario",
+  "downloadComplete": "¡Descarga completa!",
+  "whatIsTheMorphTag": "¿Cuál es el {morphologicalFeature} de '{wordForm}'?",
+  "dataAvailable": "Disponibilidad de datos",
+  "lemmasNeverUsedCorrectly": "Número de lemas utilizados correctamente 0 veces",
+  "available": "Disponible",
+  "accessingMemberAnalytics": "Accediendo a la analítica de miembros...",
+  "pangeaBotIsFallible": "¡El Bot de Pangea también comete errores!",
+  "whatIsMeaning": "¿Qué significa '{lemma}'?",
+  "pickAnEmoji": "¿Cuál es tu emoji favorito para '{lemma}'?",
+  "lemmaMeaningInstructionsBody": "Arriba está el significado del lema. Haz doble clic para editar.",
+  "doubleClickToEdit": "Haz doble clic para editar.",
+  "removeFeature": "Eliminar {feature}",
+  "notInClass": "¡No estás en una clase!",
+  "noClassCode": "¡No hay código de clase!",
+  "otherPartyNotLoggedIn": "¡La otra parte no ha iniciado sesión y, por lo tanto, no puede recibir mensajes!",
+  "chooseCorrectLabel": "Elige la etiqueta correcta.",
+  "levelPopupTitle": "¡Felicidades por alcanzar\nel Nivel {level}!",
+  "activityPlannerTitle": "Planificador de Actividades",
+  "topicLabel": "Tema",
+  "topicPlaceholder": "Elige un tema...",
+  "modeLabel": "Modo",
+  "modePlaceholder": "Elige un modo...",
+  "learningObjectiveLabel": "Objetivo de Aprendizaje",
+  "learningObjectivePlaceholder": "Elige un objetivo de aprendizaje...",
+  "mediaLabel": "Medios que los aprendices deben compartir",
+  "languageOfInstructionsLabel": "Idioma de las instrucciones de la actividad",
+  "targetLanguageLabel": "Idioma objetivo",
+  "cefrLevelLabel": "Nivel CEFR",
+  "generateActivitiesButton": "Generar Actividades",
+  "launchActivityButton": "Iniciar Actividad",
+  "image": "Imagen",
+  "video": "Video",
+  "nan": "No aplicable",
+  "activityPlannerOverviewInstructionsBody": "Elige un tema, modo, objetivo de aprendizaje y genera una actividad para el chat!",
+  "completeActivitiesToUnlock": "Completa las actividades de palabras resaltadas para desbloquear",
+  "myBookmarkedActivities": "Mis Actividades Marcadas",
+  "noBookmarkedActivities": "No hay actividades marcadas",
+  "activityTitle": "Título de la Actividad",
+  "addVocabulary": "Agregar Vocabulario",
+  "instructions": "Instrucciones",
+  "bookmark": "Marcar esta actividad",
+  "numberOfLearners": "Número de aprendices",
+  "mustBeInteger": "Debe ser un número entero, por ejemplo, 1, 2, 3, ...",
+  "noLemmasFound": "No hay vocabulario con más de {xp} XP. ¡Sigue practicando!",
+  "constructUsePvmDesc": "Producido en mensaje de voz",
+  "lockedMorphFeature": "Esperando a ser desbloqueado",
+  "leaveSpaceDescription": "El espacio se moverá al archivo. Otros usuarios podrán ver que has salido del chat.",
+  "appWantsToUseForLogin": "Usar '{server}' para iniciar sesión",
+  "appWantsToUseForLoginDescription": "Por la presente, permites que la aplicación y el sitio web compartan información sobre ti.",
+  "open": "Abrir",
+  "waitingForServer": "Esperando al servidor...",
+  "appIntroduction": "FluffyChat te permite chatear con tus amigos a través de diferentes mensajeros. Aprende más en https://matrix.org o simplemente toca *Continuar*.",
+  "whatIsLemma": "¿Qué es el lema?",
+  "constructUseCorMmDesc": "Significado correcto del mensaje",
+  "constructUseIncMmDesc": "Significado incorrecto del mensaje",
+  "constructUseIgnMmDesc": "Significado del mensaje ignorado",
+  "clickForMeaningActivity": "Haz clic aquí para un Desafío de Significado",
+  "meaning": "Significado",
+  "@sendImages": {
+    "type": "text",
+    "placeholders": {
+      "count": {}
+    }
+  },
+  "@synchronizingPleaseWaitCounter": {
+    "type": "text",
+    "placeholders": {
+      "percentage": {}
+    }
+  },
+  "@writeAMessageLangCodes": {
+    "type": "text",
+    "placeholders": {
+      "l1": {},
+      "l2": {}
+    }
+  },
+  "@archiveRoomDescription": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@botConfigNoPermissionTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@botConfigNoPermissionMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@changeContent": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@grammarCopyVERBFORMaux": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@levelShort": {
+    "type": "text",
+    "placeholders": {
+      "level": {}
+    }
+  },
+  "@spaceDescription": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@addSpaceDescription": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@notificationsOn": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@notificationsOff": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@spaceCanBeFoundViaSearch": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@chatCanBeFoundViaSearch": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@calculatingFileSize": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@prepareSendingAttachment": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@sendingAttachment": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@generatingVideoThumbnail": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@compressVideo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@sendingAttachmentCountOfCount": {
+    "type": "text",
+    "placeholders": {
+      "index": {},
+      "length": {}
+    }
+  },
+  "@serverLimitReached": {
+    "type": "text",
+    "placeholders": {
+      "seconds": {}
+    }
+  },
+  "@oneOfYourDevicesIsNotVerified": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@noticeChatBackupDeviceVerification": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@requireCodeToJoin": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@canFindInSearch": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@addSubspaceWarning": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@nestedSpaceError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@addChatToSpace": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@blur": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@opacity": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@setWallpaper": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@manageAccount": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@noContactInformationProvided": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@contactServerAdmin": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@contactServerSecurity": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@supportPage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@serverInformation": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@name": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@version": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@website": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@compress": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@boldText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@italicText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@strikeThrough": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@pleaseFillOut": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@invalidUrl": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@addLink": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@unableToJoinChat": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@createChatAndInviteUsers": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@updatedNewSpaceDescription": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@joinWithCode": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@enterCodeToJoin": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@mandatoryUpdateRequired": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@mandatoryUpdateRequiredDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@updateAvailableDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@updateLater": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseWaDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseGaDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseUnkDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseCorITDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIgnITDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIncITDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIgnIGCDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseCorIGCDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIncIGCDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseCorPADesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIgnPADesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIncPADesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseCorWLDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIncWLDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIngWLDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseCorHWLDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIncHWLDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIgnHWLDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseCorLDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIncLDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIgnLDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseCorMDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIncMDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIgnMDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseEmojiDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseNanDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@xpIntoLevel": {
+    "type": "text",
+    "placeholders": {
+      "currentXP": {},
+      "maxXP": {}
+    }
+  },
+  "@signInWithUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@registrationEmailMessage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@enableTTSToolName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@enableTTSToolDescription": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@couldNotFindTTS": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@ttsInstructionsHyperlink": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@currentVersion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@latestVersion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@createAnAccount": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@signIn": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@signUpWithEmail": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@signUpWithGoogle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@signUpWithApple": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@yourUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@yourEmail": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@pleaseEnterAnEmail": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@signInWithGoogle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@signInWithApple": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@chooseYourAvatar": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@iWantToLearn": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@pleaseAgreeToTOS": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@pleaseEnterEmail": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@pleaseSelectALanguage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@myBaseLanguage": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@clickWordsInstructions": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@chooseBestDefinition": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@meaningSectionHeader": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@formSectionHeader": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@noEmojiSelectedTooltip": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@writingExercisesTooltip": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listeningExercisesTooltip": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@readingExercisesTooltip": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@meaningNotFound": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@formsNotFound": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@chooseBaseForm": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@notTheCodeError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@totalXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numLemmas": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listOfLemmas": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numLemmasUsedCorrectly": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listLemmasUsedCorrectly": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numLemmasUsedIncorrectly": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listLemmasUsedIncorrectly": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numLemmasSmallXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numLemmasMediumXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numLemmasLargeXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listLemmasSmallXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listLemmasMediumXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listLemmasLargeXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numGrammarConcepts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listGrammarConcepts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listGrammarConceptsUsedCorrectly": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listGrammarConceptsUsedIncorrectly": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listGrammarConceptsUseCorrectlySystemGenerated": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listGrammarConceptsUseIncorrectlySystemGenerated": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listGrammarConceptsSmallXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listGrammarConceptsMediumXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listGrammarConceptsLargeXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@listGrammarConceptsHugeXP": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numMessagesSent": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numWordsTyped": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numCorrectChoices": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numIncorrectChoices": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@downloadSpaceAnalytics": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@commaSeparatedFile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@excelFile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@fileType": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@download": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@analyticsNotAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@downloading": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@failedFetchUserAnalytics": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@downloadComplete": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@whatIsTheMorphTag": {
+    "type": "text",
+    "placeholders": {
+      "morphologicalFeature": {},
+      "wordForm": {}
+    }
+  },
+  "@dataAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@lemmasNeverUsedCorrectly": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@available": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@accessingMemberAnalytics": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@pangeaBotIsFallible": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@whatIsMeaning": {
+    "type": "text",
+    "placeholders": {
+      "lemma": {}
+    }
+  },
+  "@pickAnEmoji": {
+    "type": "text",
+    "placeholders": {
+      "lemma": {}
+    }
+  },
+  "@lemmaMeaningInstructionsBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@doubleClickToEdit": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@removeFeature": {
+    "type": "text",
+    "placeholders": {
+      "feature": {}
+    }
+  },
+  "@notInClass": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@noClassCode": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@otherPartyNotLoggedIn": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@chooseCorrectLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@levelPopupTitle": {
+    "type": "text",
+    "placeholders": {
+      "level": {}
+    }
+  },
+  "@activityPlannerTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@topicLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@topicPlaceholder": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@modeLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@modePlaceholder": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@learningObjectiveLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@learningObjectivePlaceholder": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@mediaLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@languageOfInstructionsLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@targetLanguageLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@cefrLevelLabel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@generateActivitiesButton": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@launchActivityButton": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@image": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@video": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@nan": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@activityPlannerOverviewInstructionsBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@completeActivitiesToUnlock": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@myBookmarkedActivities": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@noBookmarkedActivities": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@activityTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@addVocabulary": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@instructions": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@bookmark": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@numberOfLearners": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@mustBeInteger": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@noLemmasFound": {
+    "type": "text",
+    "placeholders": {
+      "xp": {}
+    }
+  },
+  "@constructUsePvmDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@lockedMorphFeature": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@leaveSpaceDescription": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@appWantsToUseForLogin": {
+    "type": "text",
+    "placeholders": {
+      "server": {}
+    }
+  },
+  "@appWantsToUseForLoginDescription": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@open": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@waitingForServer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@appIntroduction": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@whatIsLemma": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseCorMmDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIncMmDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@constructUseIgnMmDesc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@clickForMeaningActivity": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "@meaning": {
+    "type": "text",
+    "placeholders": {}
+  }
 }

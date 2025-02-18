@@ -46,9 +46,9 @@ def load_translations(lang_code: str) -> dict[str, str]:
 
 def save_translations(lang_code: str, translations: dict[str, str]) -> None:
     import json
-    from pathlib import Path
-    from datetime import datetime
     from collections import OrderedDict
+    from datetime import datetime
+    from pathlib import Path
 
     path_to_translations = (
         Path(__file__).parent.parent / "assets" / "l10n" / f"intl_{lang_code}.arb"
@@ -57,7 +57,7 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
     translations["@@locale"] = lang_code
     translations["@@last_modified"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
 
-    # Load existing data to preserve order.
+    # Load existing data to preserve order if exists.
     if path_to_translations.exists():
         with open(path_to_translations, "r") as f:
             try:
@@ -67,44 +67,15 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
     else:
         existing_data = OrderedDict()
 
-    # Build final_ordered ensuring the metadata immediately follows its translation.
-    final_ordered = OrderedDict()
-    special_keys = ["@@locale", "@@last_modified"]
-    final_ordered["@@locale"] = translations["@@locale"]
-    final_ordered["@@last_modified"] = translations["@@last_modified"]
-
-    keys_added = set()
-
-    # Use preserved order from existing file.
-    for key in existing_data:
-        if key in special_keys:
-            continue
-        if key in translations:
-            final_ordered[key] = translations[key]
-            keys_added.add(key)
-            meta_key = f"@{key}"
-            if meta_key in translations:
-                final_ordered[meta_key] = translations[meta_key]
-                keys_added.add(meta_key)
-
-    # Append new translation keys (and their metadata immediately after) not in existing data.
-    for key in translations:
-        if key in special_keys or key.startswith("@") or key in keys_added:
-            continue
-        final_ordered[key] = translations[key]
-        meta_key = f"@{key}"
-        if meta_key in translations:
-            final_ordered[meta_key] = translations[meta_key]
-            keys_added.add(meta_key)
-        keys_added.add(key)
-
-    # Append any leftover metadata keys.
-    for key in translations:
-        if key.startswith("@") and key not in keys_added:
-            final_ordered[key] = translations[key]
+    # Update existing keys and append new keys (preserving existing order).
+    for key, value in translations.items():
+        if key in existing_data:
+            existing_data[key] = value  # update value; order remains unchanged
+        else:
+            existing_data[key] = value  # new key appended at the end
 
     with open(path_to_translations, "w") as f:
-        f.write(json.dumps(final_ordered, indent=2, ensure_ascii=False))
+        f.write(json.dumps(existing_data, indent=2, ensure_ascii=False))
 
 
 def reconcile_metadata(lang_code: str, translation_keys: list[str]) -> None:
@@ -178,6 +149,7 @@ def translate(lang_code: str, lang_display_name: str) -> None:
     """
     import json
     import random
+
     from openai import OpenAI
 
     needed_translations = load_needed_translations()
