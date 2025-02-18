@@ -14,6 +14,7 @@ import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:uni_links/uni_links.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
@@ -110,6 +111,12 @@ class ChatListController extends State<ChatList>
 
   void setActiveSpace(String spaceId) async {
     await Matrix.of(context).client.getRoomById(spaceId)!.postLoad();
+
+    // #Pangea
+    if (FluffyThemes.isColumnMode(context)) {
+      context.push("/rooms/$spaceId/details");
+    }
+    // Pangea#
 
     setState(() {
       _activeSpaceId = spaceId;
