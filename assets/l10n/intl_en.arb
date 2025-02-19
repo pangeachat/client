@@ -387,7 +387,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "changeTheNameOfTheGroup": "Change the name of the chat",
+  "changeTheNameOfTheGroup": "Change the name of the group",
   "@changeTheNameOfTheGroup": {
     "type": "text",
     "placeholders": {}
@@ -569,7 +569,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "connect": "Start",
+  "connect": "Connect",
   "@connect": {
     "type": "text",
     "placeholders": {}
@@ -589,7 +589,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "contentHasBeenReported": "The content has been reported",
+  "contentHasBeenReported": "The content has been reported to the server admins",
   "@contentHasBeenReported": {
     "type": "text",
     "placeholders": {}
@@ -927,14 +927,14 @@
     "type": "text",
     "placeholders": {}
   },
-  "group": "Chat",
+  "group": "Group",
   "@group": {
     "type": "text",
     "placeholders": {}
   },
   "chatDescription": "Chat description",
   "chatDescriptionHasBeenChanged": "Chat description changed",
-  "groupIsPublic": "Chat is public",
+  "groupIsPublic": "Group is public",
   "groupDescription": "Chat description",
   "@groupDescription": {
     "type": "text",
@@ -949,12 +949,12 @@
     "type": "text",
     "placeholders": {}
   },
-  "groups": "Chats",
+  "groups": "Groups",
   "@groups": {
     "type": "text",
     "placeholders": {}
   },
-  "groupWith": "Chat with {displayname}",
+  "groupWith": "Group with {displayname}",
   "@groupWith": {
     "type": "text",
     "placeholders": {
@@ -1030,7 +1030,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "block": "block",
+  "block": "Block",
   "blockedUsers": "Blocked users",
   "blockListDescription": "You can block users who are disturbing you. You won't be able to receive any messages or room invites from the users on your personal block list.",
   "blockUsername": "Ignore username",
@@ -1044,7 +1044,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "inoffensive": "Slightly offensive",
+  "inoffensive": "Inoffensive",
   "@inoffensive": {
     "type": "text",
     "placeholders": {}
@@ -1505,7 +1505,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "pleaseClickOnLink": "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.",
+  "pleaseClickOnLink": "Please click on the link in the email and then proceed.",
   "@pleaseClickOnLink": {
     "type": "text",
     "placeholders": {}
@@ -1885,7 +1885,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "spaceName": "Name",
+  "spaceName": "Space name",
   "@spaceName": {
     "type": "text",
     "placeholders": {}
@@ -2158,7 +2158,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "whoIsAllowedToJoinThisGroup": "Who is allowed to join this chat",
+  "whoIsAllowedToJoinThisGroup": "Who is allowed to join this group",
   "@whoIsAllowedToJoinThisGroup": {
     "type": "text",
     "placeholders": {}
@@ -2434,7 +2434,7 @@
   "@whyIsThisMessageEncrypted": {},
   "noKeyForThisMessage": "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.",
   "@noKeyForThisMessage": {},
-  "newGroup": "New chat",
+  "newGroup": "New group",
   "@newGroup": {},
   "newSpace": "New space",
   "@newSpace": {},
@@ -2467,7 +2467,7 @@
   "sorryThatsNotPossible": "Sorry... that is not possible",
   "deviceKeys": "Device keys:",
   "reopenChat": "Reopen chat",
-  "noBackupWarning": "Don't forget your password!",
+  "noBackupWarning": "Warning! Without enabling chat backup, you will lose access to your encrypted messages. It is highly recommended to enable the chat backup first before logging out.",
   "noOtherDevicesFound": "No other devices found",
   "@noOtherDevicesFound": {},
   "fileIsTooBigForServer": "Unable to send! The server only supports attachments up to {max}.",
@@ -3033,12 +3033,12 @@
     "type": "text",
     "placeholders": {}
   },
-  "publicProfileTitle": "Public Profile",
+  "publicProfileTitle": "Allow my profile to be found in search",
   "@publicProfileTitle": {
     "type": "text",
     "placeholders": {}
   },
-  "publicProfileDesc": "Your profile must be public in order to search or be found as a conversation partner.",
+  "publicProfileDesc": "By turning on, you enable other users to find your profile in the global search bar and send requests to chat. At this point, you can choose to accept or deny the request.",
   "@publicProfileDesc": {
     "type": "text",
     "placeholders": {}
@@ -3114,7 +3114,7 @@
     "placeholders": {}
   },
   "toggleToolSettingsDescription": "Here you can toggle your individual language tool settings.",
-  "connectedToStaging": "You are connected to the staging server.",
+  "connectedToStaging": "Connected to Staging",
   "@connectedToStaging": {
     "type": "text",
     "placeholders": {}
@@ -4126,7 +4126,6 @@
   "versionNotFound": "Version Not Found",
   "fetchingVersion": "Fetching version...",
   "versionFetchError": "Error fetching version",
-  "connectedToStaging": "Connected to Staging",
   "versionText": "Version: {version}+{buildNumber}",
   "@versionText": {
     "description": "Text displaying the app version and build number.",
@@ -4500,7 +4499,6 @@
   "grammarCopyPRONTYPEart": "Article",
   "grammarCopyPRONTYPEind": "Indefinite",
   "grammarCopyPRONTYPEintrel": "Interrogative-Relative",
-  "grammarCopyPRONTYPEint": "Interrogative",
   "grammarCopyPUNCTSIDEfin": "Final Punctuation",
   "grammarCopyPUNCTTYPEperi": "Period",
   "grammarCopyREFLEXyes": "Reflexive",
@@ -4570,7 +4568,6 @@
   "addSubspaceWarning": "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.",
   "nestedSpaceError": "Spaces should not be added as children of other spaces",
   "addChatToSpace": "Add chat",
-  "continueText": "Continue",
   "welcomeText": "Hey Hey 👋 This is FluffyChat. You can sign in to any homeserver, which is compatible with https://matrix.org. And then chat with anyone. It's a huge decentralized messaging network!",
   "blur": "Blur:",
   "opacity": "Opacity:",
@@ -4661,10 +4658,8 @@
   "pleaseEnterEmail": "Please enter a valid email address.",
   "pleaseSelectALanguage": "Please select a language",
   "myBaseLanguage": "My base language",
-  "publicProfileTitle": "Allow my profile to be found in search",
-  "publicProfileDesc": "By turning on, you enable other users to find your profile in the global search bar and send requests to chat. At this point, you can choose to accept or deny the request.",
   "clickWordsInstructions": "Click on a word or the buttons below to learn more",
-  "chooseBestDefinition": "Choose the best definition",
+  "chooseBestDefinition": "What does this word mean?",
   "meaningSectionHeader": "Meaning:",
   "formSectionHeader": "Forms used in chats:",
   "noEmojiSelectedTooltip": "No emoji selected",
@@ -4673,10 +4668,8 @@
   "readingExercisesTooltip": "Reading activities",
   "meaningNotFound": "Meaning could not be found.",
   "formsNotFound": "Forms could not be found.",
-  "chooseBestDefinition": "What does this word mean?",
   "chooseBaseForm": "Choose the base form",
   "notTheCodeError": "Sorry, that's not the code!",
-  "previous": "Previous",
   "totalXP": "Total XP",
   "numLemmas": "Total number of lemmas",
   "listOfLemmas": "List of lemmas",
@@ -4724,7 +4717,6 @@
   "dataAvailable": "Data availability",
   "lemmasNeverUsedCorrectly": "Number of lemmas used correctly 0 times",
   "available": "Available",
-  "unavailable": "Unavailable",
   "accessingMemberAnalytics": "Accessing member analytics...",
   "pangeaBotIsFallible": "Pangea Bot makes mistakes too!",
   "whatIsMeaning": "What does '{lemma}' mean?",
@@ -4754,9 +4746,8 @@
   },
   "notInClass": "Not in a class!",
   "noClassCode": "No class code!",
-  "previous": "Previous",
   "otherPartyNotLoggedIn": "The other party is currently not logged in and therefore cannot receive messages!",
-  "chooseCorrectLabel": "Choose the correct label",
+  "chooseCorrectLabel": "Choose the correct label.",
   "levelPopupTitle": "Congratulations on reaching\nLevel {level}",
   "@levelPopupTitle": {
     "type": "text",
@@ -4764,7 +4755,6 @@
       "level": {}
     }
   },
-  "chooseCorrectLabel": "Choose the correct label.",
   "activityPlannerTitle": "Activity Planner",
   "topicLabel": "Topic",
   "topicPlaceholder": "Choose a topic...",
@@ -4780,20 +4770,17 @@
   "launchActivityButton": "Launch Activity",
   "image": "Image",
   "video": "Video",
-  "voiceMessage": "Voice message",
   "nan": "Not applicable",
   "activityPlannerOverviewInstructionsBody": "Choose a topic, mode, learning objective and generate an activity for the chat!",
   "completeActivitiesToUnlock": "Complete the highlighted word activities to unlock",
   "myBookmarkedActivities": "My Bookmarked Activities",
   "noBookmarkedActivities": "No bookmarked activities",
-  "noBookmarkedActivities": "When you bookmark activities, they will appear here. Bookmarked activities can be re-used across spaces and chats.",
   "activityTitle": "Activity Title",
   "addVocabulary": "Add Vocabulary",
   "instructions": "Instructions",
   "bookmark": "Bookmark this activity",
   "numberOfLearners": "Number of learners",
   "mustBeInteger": "Must be an integer e.g. 1, 2, 3, ...",
-  "noBookmarkedActivities": "No bookmarked activities",
   "noLemmasFound": "There's no vocabulary with more than {xp} XP. Keep practicing!",
   "@noLemmasFound": {
     "type": "text",
@@ -4804,7 +4791,6 @@
   "constructUsePvmDesc": "Produced in voice message",
   "lockedMorphFeature": "Waiting to be unlocked",
   "leaveSpaceDescription": "The space will be moved to the archive. Other users will be able to see that you have left the chat.",
-  "otherPartyNotLoggedIn": "The other party is currently not logged in and therefore cannot receive messages!",
   "appWantsToUseForLogin": "Use '{server}' to log in",
   "@appWantsToUseForLogin": {
     "type": "text",
@@ -4821,5 +4807,28 @@
   "constructUseIncMmDesc": "Incorrect message meaning",
   "constructUseIgnMmDesc": "Ignored message meaning",
   "clickForMeaningActivity": "Click here for a Meaning Challenge",
-  "meaning": "Meaning"
+  "meaning": "Meaning",
+  "chatWith": "Group with {displayname}",
+  "@chatWith": {
+    "type": "text",
+    "placeholders": {
+      "displayname": {}
+    }
+  },
+  "slightlyOffensive": "Slightly offensive",
+  "@slightlyOffensive": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "clickOnEmailLink": "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.",
+  "@clickOnEmailLink": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "whoIsAllowedToJoinThisChat": "Who is allowed to join this chat",
+  "@whoIsAllowedToJoinThisChat": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dontForgetPassword": "Don't forget your password!"
 }

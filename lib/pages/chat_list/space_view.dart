@@ -602,7 +602,10 @@ class _SpaceViewState extends State<SpaceView> {
               true
           ? FloatingActionButton.extended(
               onPressed: _addChatOrSubspace,
-              label: Text(L10n.of(context).group),
+              // #Pangea
+              // label: Text(L10n.of(context).group),
+              label: Text(L10n.of(context).chat),
+              // Pangea#
               icon: const Icon(Icons.group_add_outlined),
             )
           : null,
