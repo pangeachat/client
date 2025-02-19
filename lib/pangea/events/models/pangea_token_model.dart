@@ -1,10 +1,6 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
@@ -23,6 +19,9 @@ import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/repo/lemma_activity_generator.dart';
 import 'package:fluffychat/pangea/toolbar/repo/lemma_meaning_activity_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:matrix/matrix.dart';
+
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
 
@@ -351,6 +350,14 @@ class PangeaToken {
       case ActivityTypeEnum.wordMeaning:
         if (daysSinceLastUseByType(ActivityTypeEnum.wordMeaning) < 7 ||
             daysSinceLastUseByType(ActivityTypeEnum.messageMeaning) < 7) {
+          return false;
+        }
+
+        // if last used less than 1 day ago, return false
+        // this is largely to account for cases of sending a message with some
+        // error that gets you negative points for it
+        if (vocabConstruct.lastUsed != null &&
+            DateTime.now().difference(vocabConstruct.lastUsed!).inDays < 1) {
           return false;
         }
 
