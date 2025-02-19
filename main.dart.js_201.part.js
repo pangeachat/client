@@ -7,1567 +7,1846 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nEs$() {
-      return new A.L10nEs(B.canonicalizedLocale("es"));
+    L10nEt$() {
+      return new A.L10nEt(B.canonicalizedLocale("et"));
     },
-    L10nEs: function L10nEs(t0) {
+    L10nEt: function L10nEt(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[51];
-  A = hunkHelpers.updateHolder(holdersList[15], A);
-  A.L10nEs.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[16], A);
+  A.L10nEt.prototype = {
     get$alwaysUse24HourFormat() {
-      return "Falso";
+      return "false";
     },
     get$repeatPassword() {
-      return "Repita la contrase\xf1a";
+      return "Korda salas\xf5na";
     },
     get$notAnImage() {
-      return "No es un archivo de imagen.";
+      return "See pole pildifail.";
     },
     get$remove(_) {
-      return "Eliminar";
+      return "Eemalda";
     },
     get$importNow() {
-      return "Importar ahora";
+      return "Impordi kohe";
     },
     get$importEmojis() {
-      return "Importar emojis";
+      return "Impordi emojid";
     },
     get$importFromZipFile() {
-      return "Importar desde archivo .zip";
+      return "Impordi zip-failist";
     },
     get$exportEmotePack() {
-      return "Exportar Emote pack como .zip";
+      return "Ekspordi emotikonide pakk zip-failina";
     },
     get$replace(_) {
-      return "Reemplazar";
+      return "Asenda";
     },
     aboutHomeserver$1(homeserver) {
-      return "Acerca de " + homeserver;
+      return "Koduserveri teave: " + homeserver;
     },
     get$accept(_) {
-      return "Aceptar";
+      return "N\xf5ustu";
     },
     acceptedTheInvitation$1(username) {
-      return username + " acept\xf3 la invitaci\xf3n";
+      return "\ud83d\udc4d " + username + " v\xf5ttis kutse vastu";
     },
     get$account() {
-      return "Cuenta";
+      return "Kasutajakonto";
     },
     activatedEndToEndEncryption$1(username) {
-      return username + " activ\xf3 el cifrado de extremo a extremo";
+      return "\ud83d\udd10" + username + " v\xf5ttis kasutusele l\xe4biva kr\xfcptimise";
     },
     get$addEmail() {
-      return "A\xf1adir direcci\xf3n de correo";
+      return "Lisa e-posti aadress";
     },
     get$confirmMatrixId() {
-      return "Por favor confirma tu Matrix ID para borrar tu cuenta.";
+      return "Konto kustutamiseks palun kinnitage oma Matrix'i ID.";
     },
     supposedMxid$1(mxid) {
-      return "Esto deber\xeda ser " + mxid;
+      return "See peaks olema " + mxid;
     },
     get$addToSpace() {
-      return "Agregar al espacio";
+      return "Lisa kogukonda";
     },
     get$admin() {
-      return "Administrador";
+      return "Peakasutaja";
     },
     get$alias() {
       return "alias";
     },
     get$all() {
-      return "Todo";
+      return "K\xf5ik";
     },
     get$commandHint_googly() {
-      return "Enviar unos ojos saltones";
+      return "Saada \xfched otsivad silmad";
     },
     get$commandHint_cuddle() {
-      return "Mandar una caranto\xf1a";
+      return "Saada \xfcks kaisutus";
     },
     get$commandHint_hug() {
-      return "Mandar un abrazo";
+      return "Saada \xfcks kallistus";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " te manda ojos saltones";
+      return senderName + " saatis sulle otsivad silmad";
     },
     cuddleContent$1(senderName) {
-      return senderName + " se acurruca contigo";
+      return senderName + " kaisutab sind";
     },
     hugContent$1(senderName) {
-      return senderName + " te abraza";
+      return senderName + " kallistab sind";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " respondi\xf3 a la llamada";
+      return senderName + " vastas k\xf5nele";
     },
     get$anyoneCanJoin() {
-      return "Cualquiera puede unirse";
+      return "K\xf5ik v\xf5ivad liituda";
     },
     get$archive() {
-      return "Archivo";
+      return "Arhiiv";
     },
     get$areGuestsAllowedToJoin() {
-      return "\xbfPueden unirse los usuarios visitantes?";
+      return "Kas k\xfclalised v\xf5ivad liituda";
     },
     get$areYouSure() {
-      return "\xbfEst\xe1s seguro?";
+      return "Kas sa oled kindel?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\xbfConfirma que quiere cerrar sesi\xf3n?";
+      return "Kas sa oled kindel, et soovid v\xe4lja logida?";
     },
     get$askSSSSSign() {
-      return "Para poder confirmar a la otra persona, ingrese su contrase\xf1a de almacenamiento segura o la clave de recuperaci\xf3n.";
+      return "Selleks, et teist osapoolt identifitseerivat allkirja anda, palun sisesta oma turvahoidla paroolifraas v\xf5i taastev\xf5ti.";
     },
     askVerificationRequest$1(username) {
-      return "\xbfAceptar esta solicitud de verificaci\xf3n de " + username + "?";
+      return "Kas v\xf5tad vastu selle verifitseerimispalve kasutajalt " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "El servidor soporta los siguientes mecanismos para autenticaci\xf3n:\n" + serverVersions + "\npero esta aplicaci\xf3n s\xf3lo soporta:\n" + supportedVersions;
+      return "See koduserver toetab Matrixi v\xf5rku sisselogimiseks:\n" + serverVersions + "\nAga see rakendus toetab vaid j\xe4rgmisi v\xf5imalusi:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Enviar notificaciones de mecanograf\xeda";
+      return "Saada kirjutamise teavitusi";
     },
     get$swipeRightToLeftToReply() {
-      return "Desliza a la izquierda para responder";
+      return "Vastamiseks viipa paremalt vasakule";
     },
     get$sendOnEnter() {
-      return "Enviar con enter";
+      return "Saada s\xf5num sisestusklahvi vajutusel";
     },
     badServerVersionsException$4(serverVersions, supportedVersions, serverVerions, suportedVersions) {
-      return "El servidor soporta las siguientes versiones de la especificaci\xf3n:\n" + serverVersions + "\npero esta aplicaci\xf3n s\xf3lo soporta las versiones " + supportedVersions;
+      return "See koduserver toetab Matrixi spetsifikatsioonist j\xe4rgmisi versioone:\n" + serverVersions + "\nAga see rakendus toetab vaid j\xe4rgmisi versioone: " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return chats + " chats y " + B.S(participants) + " participantes";
+      return "" + chats + " vestlust ja " + participants + " osalejat";
     },
     get$noMoreChatsFound() {
-      return "No se encontraron m\xe1s chats...";
+      return "Rohkem vestlusi ei leidu...";
     },
     get$noChatsFoundHere() {
-      return "A\xfan no se encontraron chats aqu\xed. Inicia un nuevo chat con alguien usando el bot\xf3n de abajo. \u2935\ufe0f";
+      return "Siin ei leidu veel \xfchtegi vestlust. Alusta uut vestlust kl\xf5psides allpool asuvat nuppu. \u2935\ufe0f";
     },
     get$unread() {
-      return "No le\xeddo";
+      return "Lugemata";
     },
     get$space() {
-      return "Espacio";
+      return "Kogukond";
     },
     get$spaces() {
-      return "Espacios";
+      return "Kogukonnad";
     },
     get$banFromChat() {
-      return "Vetar del chat";
+      return "Keela ligip\xe4\xe4s vestlusele";
     },
     get$banned() {
-      return "Vetado";
+      return "Ligip\xe4\xe4s vestlusele on keelatud";
     },
     bannedUser$2(username, targetName) {
-      return username + " vet\xf3 a " + targetName;
+      return username + " keelas ligip\xe4\xe4su kasutajale " + targetName;
     },
     get$blockDevice() {
-      return "Bloquear dispositivo";
+      return "Blokeeri seade";
     },
     get$blocked() {
-      return "Bloqueado";
+      return "Blokeeritud";
     },
     get$botMessages() {
-      return "Mensajes de bot";
+      return "Robotite s\xf5numid";
     },
     get$cancel(_) {
-      return "Cancelar";
+      return "Katkesta";
     },
     cantOpenUri$1(uri) {
-      return "No puedo abrir el URI " + uri;
+      return uri + " aadressi avamine ei \xf5nnestu";
     },
     get$changeDeviceName() {
-      return "Cambiar el nombre del dispositivo";
+      return "Muuda seadme nime";
     },
     changedTheChatAvatar$1(username) {
-      return username + " cambi\xf3 el icono del chat";
+      return username + " muutis vestluse tunnuspilti";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " cambi\xf3 la descripci\xf3n del chat a: '" + description + "'";
+      return username + " muutis vestluse uueks kirjelduseks '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " cambi\xf3 el nombre del chat a: '" + chatname + "'";
+      return username + " muutis oma uueks vestlusnimeks '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " cambi\xf3 los permisos del chat";
+      return username + " muutis vestlusega seotud \xf5igusi";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " cambi\xf3 su nombre visible a: " + displayname;
+      return username + " muutis oma uueks kuvatavaks nimeks: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " cambi\xf3 las reglas de acceso de visitantes";
+      return username + " muutis k\xfclaliste ligip\xe4\xe4sureegleid";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " cambi\xf3 las reglas de acceso de visitantes a: " + rules;
+      return username + " muutis k\xfclaliste ligip\xe4\xe4sureegleid j\xe4rgnevalt: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " cambi\xf3 la visibilidad del historial";
+      return username + " muutis s\xf5numite ajaloo n\xe4htavust";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " cambi\xf3 la visibilidad del historial a: " + rules;
+      return username + " muutis s\xf5numite ajaloo n\xe4htavust j\xe4rgnevalt: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " cambi\xf3 las reglas de ingreso";
+      return username + " muutis liitumise reegleid";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " cambi\xf3 las reglas de ingreso a " + joinRules;
+      return username + " muutis liitumise reegleid j\xe4rgnevalt: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " cambi\xf3 su imagen de perfil";
+      return username + " muutis oma tunnuspilti";
     },
     changedTheRoomAliases$1(username) {
-      return username + " cambi\xf3 el alias de la sala";
+      return username + " muutis jututoa aliast";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " cambi\xf3 el enlace de invitaci\xf3n";
+      return username + " muutis kutse linki";
     },
     get$changePassword() {
-      return "Cambiar la contrase\xf1a";
+      return "Muuda salas\xf5na";
     },
     get$changeTheme() {
-      return "Cambia tu estilo";
-    },
-    get$changeTheNameOfTheGroup() {
-      return "Cambiar el nombre del grupo";
+      return "Muuda oma stiili";
     },
     get$changeYourAvatar() {
-      return "Cambiar tu avatar";
+      return "Muuda oma tunnuspilti";
     },
     get$channelCorruptedDecryptError() {
-      return "El cifrado se ha corrompido";
+      return "Kasutatud kr\xfcptimine on vigane";
     },
     get$chat() {
-      return "Chat";
+      return "Vestlus";
     },
     get$chatDetails() {
-      return "Detalles del chat";
+      return "Vestluse teave";
     },
     get$chats() {
-      return "Conversaciones";
+      return "Vestlused";
     },
     get$chooseAStrongPassword() {
-      return "Elija una contrase\xf1a segura";
+      return "Vali korralik salas\xf5na";
     },
     get$clearArchive() {
-      return "Borrar archivo";
+      return "Kustuta arhiiv";
     },
     get$close(_) {
-      return "Cerrar";
+      return "Sulge";
     },
     get$commandHint_markasdm() {
-      return "Marcar como sala de mensajes directos para el ID de Matrix";
+      return "M\xe4rgi otsevestusluseks antud Matrixi ID jaoks";
     },
     get$commandHint_markasgroup() {
-      return "Marcar como grupal";
+      return "M\xe4rgi vestlusr\xfchmaks";
     },
     get$commandHint_ban() {
-      return "Prohibir al usuario dado en esta sala";
+      return "Sea sellele kasutajale antud jututoas suhtluskeeld";
     },
     get$commandHint_clearcache() {
-      return "Limpiar cache";
+      return "T\xfchjenda vahem\xe4lu";
     },
     get$commandHint_create() {
-      return "Crear un chat grupal vac\xedo\nUse --no-encryption para deshabilitar el cifrado";
+      return "Loo t\xfchi vestlusr\xfchm\nKr\xfcptimise keelamiseks kasuta --no-encryption v\xf5tit";
     },
     get$commandHint_discardsession() {
-      return "Descartar sesi\xf3n";
+      return "Loobu sessioonist";
     },
     get$commandHint_dm() {
-      return "Iniciar un chat directo\nUse --no-encryption para deshabilitar el cifrado";
+      return "Alusta otsevestlust\nKr\xfcptimise keelamiseks kasuta --no-encryption v\xf5tit";
     },
     get$commandHint_html() {
-      return "Enviar texto con formato HTML";
+      return "Saada HTML-vormingus tekst";
     },
     get$commandHint_invite() {
-      return "Invitar al usuario indicado a esta sala";
+      return "Kutsu see kasutaja antud jututuppa";
     },
     get$commandHint_join() {
-      return "\xdanete a la sala indicada";
+      return "Liitu selle jututoaga";
     },
     get$commandHint_kick() {
-      return "Eliminar el usuario indicado de esta sala";
+      return "Eemalda antud kasutaja sellest jututoast";
     },
     get$commandHint_leave() {
-      return "Deja esta sala";
+      return "Lahku sellest jututoast";
     },
     get$commandHint_me() {
-      return "Descr\xedbete";
+      return "Kirjelda ennast";
     },
     get$commandHint_myroomavatar() {
-      return "Selecciona tu foto para esta sala (by mxc-uri)";
+      return "M\xe4\xe4ra selles jututoas oma tunnuspilt (mxc-uri vahendusel)";
     },
     get$commandHint_myroomnick() {
-      return "Establece tu nombre para mostrar para esta sala";
+      return "M\xe4\xe4ra selles jututoas oma kuvatav nimi";
     },
     get$commandHint_op() {
-      return "Establece el nivel de potencia del usuario dado (default: 50)";
+      return "Seadista selle kasutaja \xf5igusi (vaikimisi: 50)";
     },
     get$commandHint_plain() {
-      return "Enviar texto sin formato";
+      return "Saada vormindamata tekst";
     },
     get$commandHint_react() {
-      return "Enviar respuesta como reacci\xf3n";
+      return "Saada vastus reaktsioonina";
     },
     get$commandHint_send() {
-      return "Enviar texto";
+      return "Saada s\xf5num";
     },
     get$commandHint_unban() {
-      return "Des banear al usuario dado en esta sala";
+      return "Eemalda sellelt kasutajalt antud jututoas suhtluskeeld";
     },
     get$commandInvalid() {
-      return "Comando inv\xe1lido";
+      return "Vigane k\xe4sk";
     },
     commandMissing$1(command) {
-      return command + " no es un comando.";
+      return command + " ei ole k\xe4sk.";
     },
     get$compareEmojiMatch() {
-      return "Por favor compare los emojis";
+      return "Palun v\xf5rdle emotikone";
     },
     get$compareNumbersMatch() {
-      return "Por favor compare los n\xfameros";
+      return "Palun v\xf5rdle numbreid";
     },
     get$configureChat() {
-      return "Configurar chat";
+      return "Seadista vestlust";
     },
     get$confirm(_) {
-      return "Confirmar";
+      return "Kinnita";
     },
     get$containsDisplayName() {
-      return "Contiene nombre para mostrar";
+      return "Sisaldab kuvatavat nime";
     },
     get$containsUserName() {
-      return "Contiene nombre de usuario";
+      return "Sisaldab kasutajanime";
     },
     get$contentHasBeenReported() {
-      return "El contenido ha sido reportado a los administradores del servidor";
+      return "Saatsime selle sisu kohta teate koduserveri haldajate";
     },
     get$copiedToClipboard() {
-      return "Copiado al portapapeles";
+      return "Kopeerisin l\xf5ikelauale";
     },
     get$copy(_) {
-      return "Copiar";
+      return "Kopeeri";
     },
     couldNotDecryptMessage$1(error) {
-      return "No se pudo descifrar el mensaje: " + error;
+      return "S\xf5numi dekr\xfcptimine ei \xf5nnestunud: " + error;
     },
     countParticipants$1(count) {
-      return B.S(count) + " participantes";
+      return "" + count + " osalejat";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac" + username + " cre\xf3 el chat";
+      return "\ud83d\udcac " + username + " algatas vestluse";
     },
     get$createGroup() {
-      return "";
+      return "Loo vestlusr\xfchm";
+    },
+    get$createNewSpace() {
+      return "Uus kogukond";
     },
     get$currentlyActive() {
-      return "Actualmente activo";
+      return "Hetkel aktiivne";
     },
     get$darkTheme() {
-      return "Oscuro";
+      return "Tume";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Se desactivar\xe1 su cuenta de usuario. \xa1La operaci\xf3n no se puede cancelar! \xbfEst\xe1 seguro?";
+      return "J\xe4rgnevaga eemaldatakse sinu konto kasutusest. Seda tegevust ei saa tagasi p\xf6\xf6rata! Kas sa ikka oled kindel?";
     },
     get$defaultPermissionLevel() {
-      return "Nivel de permiso predeterminado para nuevo usuarios";
+      return "Vaikimisi \xf5igused uutele kasutajatele";
     },
     get$$delete(_) {
-      return "Eliminar";
+      return "Kustuta";
     },
     get$deleteAccount() {
-      return "Cancelar cuenta";
+      return "Kustuta kasutajakonto";
     },
     get$deleteMessage() {
-      return "Eliminar mensaje";
+      return "Kustuta s\xf5num";
     },
     get$devices() {
-      return "Dispositivos";
+      return "Seadmed";
     },
     get$directChats() {
-      return "Chat directo";
+      return "Otsevestlused";
     },
     get$allRooms() {
-      return "Todos los chats grupales";
+      return "K\xf5ik vestlusr\xfchmad";
     },
     get$displaynameHasBeenChanged() {
-      return "El nombre visible ha cambiado";
+      return "Kuvatav nimi on muudetud";
     },
     get$downloadFile() {
-      return "Descargar archivo";
+      return "Laadi fail alla";
     },
     get$edit() {
-      return "Editar";
+      return "Muuda";
     },
     get$editBlockedServers() {
-      return "Editar servidores bloqueado";
+      return "Muuda blokeeritud serverite loendit";
     },
     get$chatPermissions() {
-      return "Permisos del chat";
-    },
-    get$editChatPermissions() {
-      return "Editar permisos de chat";
+      return "Vestluse \xf5igused";
     },
     get$editDisplayname() {
-      return "Editar nombre visible";
+      return "Muuda kuvatavat nime";
     },
     get$editRoomAliases() {
-      return "Editar alias de la sala";
+      return "Muuda jututoa aliast";
     },
     get$editRoomAvatar() {
-      return "Editar avatar de sala";
+      return "Muuda jututoa tunnuspilti";
     },
     get$emoteExists() {
-      return "\xa1El emote ya existe!";
+      return "Selline emotsioonitegevus on juba olemas!";
     },
     get$emoteInvalid() {
-      return "\xa1El atajo del emote es inv\xe1lido!";
+      return "Vigane emotsioonitegevuse l\xfchikood!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Los emotes usados recientemente aparecer\xe1n aqu\xed...";
+      return "Hiljuti kasutatud emotikonid kuvame siin...";
     },
     get$emotePacks() {
-      return "Paquetes de emoticonos para la habitaci\xf3n";
+      return "Emotsioonitegevuste pakid jututoa jaoks";
     },
     get$globalChatId() {
-      return "ID de chat Global";
+      return "\xdcldine vestluse tunnus";
     },
     get$accessAndVisibility() {
-      return "Acceso y visibilidad";
+      return "Ligip\xe4\xe4setavus ja n\xe4htavus";
     },
     get$customEmojisAndStickers() {
-      return "Emojis y stickers personalizados";
+      return "Kohandatud emotikonid ja kleepsud";
     },
     get$emoteShortcode() {
-      return "Atajo de emote";
+      return "Emotsioonitegevuse l\xfchikood";
     },
     get$emoteWarnNeedToPick() {
-      return "\xa1Debes elegir un atajo de emote y una imagen!";
+      return "Sa pead valima emotsioonitegevuse l\xfchikoodi ja pildi!";
     },
     get$emptyChat() {
-      return "Chat vac\xedo";
+      return "Vestlust pole olnud";
     },
     get$enableEmotesGlobally() {
-      return "Habilitar paquete de emoticonos a nivel general";
+      return "V\xf5ta emotsioonitegevuste pakid l\xe4bivalt kasutusele";
     },
     get$enableEncryption() {
-      return "Habilitar la encriptaci\xf3n";
+      return "Kasuta kr\xfcptimist";
     },
     get$encrypted() {
-      return "Encriptado";
+      return "Kr\xfcptitud";
     },
     get$encryptionNotEnabled() {
-      return "El cifrado no est\xe1 habilitado";
+      return "Kr\xfcptimine ei ole kasutusel";
     },
     endedTheCall$1(senderName) {
-      return senderName + " termin\xf3 la llamada";
+      return senderName + " l\xf5petas k\xf5ne";
     },
     get$enterAnEmailAddress() {
-      return "Introducir una direcci\xf3n de correo electr\xf3nico";
+      return "Sisesta e-posti aadress";
     },
     errorObtainingLocation$1(error) {
-      return "Error al obtener la ubicaci\xf3n: " + error;
+      return "Viga asukoha tuvastamisel: " + error;
     },
     get$extremeOffensive() {
-      return "Extremadamente ofensivo";
+      return "\xc4\xe4rmiselt solvav";
     },
     get$fontSize(_) {
-      return "Tama\xf1o de fuente";
+      return "Fondi suurus";
     },
     get$forward(_) {
-      return "Reenviar";
+      return "Edasta";
     },
     get$fromJoining() {
-      return "Desde que se uni\xf3";
+      return "Alates liitumise hetkest";
     },
     get$fromTheInvitation() {
-      return "Desde la invitaci\xf3n";
+      return "Kutse saamisest";
     },
     get$goToTheNewRoom() {
-      return "Ir a la nueva sala";
-    },
-    get$group() {
-      return "Grupo";
+      return "Hakka kasutama uut jututuba";
     },
     get$chatDescription() {
-      return "Descripci\xf3n del chat";
+      return "Vestluse kirjeldus";
     },
     get$groups() {
-      return "Grupos";
-    },
-    groupWith$1(displayname) {
-      return "Grupo con " + displayname;
+      return "Vestlusr\xfchmad";
     },
     get$guestsAreForbidden() {
-      return "Los visitantes est\xe1n prohibidos";
+      return "K\xfclalised ei ole lubatud";
     },
     get$guestsCanJoin() {
-      return "Los visitantes pueden unirse";
+      return "K\xfclalised v\xf5ivad liituda";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " ha retirado la invitaci\xf3n para " + targetName;
+      return username + " on v\xf5tnud tagasi " + targetName + " kutse";
     },
     get$help() {
-      return "Ayuda";
+      return "Abiteave";
     },
     get$hideRedactedMessages() {
-      return "Esconde mensajes eliminados";
+      return "Peida muudetud s\xf5numid";
     },
     get$hideRedactedMessagesBody() {
-      return "Si alguien elimina un mensaje, este mensaje ya no ser\xe1 visible en el chat.";
+      return "Kui keegi muudab s\xf5numit, siis teda enam ei kuvataks vestluses.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Esconde formatos de mensajes inv\xe1lidos o desconocidos";
+      return "Peida vigase v\xf5i tundmatu vorminguga s\xf5numid";
     },
     get$howOffensiveIsThisContent() {
-      return "\xbfCu\xe1n ofensivo es este contenido?";
+      return "Kui solvav see sisu on?";
     },
     get$block() {
-      return "Bloquear";
+      return "Blokeeri";
     },
     get$blockedUsers() {
-      return "Usuarios bloqueados";
+      return "Blokeeritud kasutajad";
     },
     get$blockListDescription() {
-      return "Puedes bloquear usuarios que te est\xe9n molestando. No podr\xe1s recibir mensajes ni invitaciones de chat de los usuarios de tu lista de bloqueo.";
+      return "Sul on v\xf5imalik blokeerida neid kasutajaid, kes sind segavad. Oma isiklikku blokerimisloendisse lisatud kasutajad ei saa sulle saata s\xf5numeid ega kutseid.";
     },
     get$blockUsername() {
-      return "Ignorar nombre de usuario";
+      return "Eira kasutajanime";
     },
     get$iHaveClickedOnLink() {
-      return "He hecho clic en el enlace";
+      return "Ma olen kl\xf5psinud saadetud linki";
     },
     get$incorrectPassphraseOrKey() {
-      return "Frase de contrase\xf1a o clave de recuperaci\xf3n incorrecta";
-    },
-    get$inoffensive() {
-      return "Inofensivo";
+      return "Vigane paroolifraas v\xf5i taastev\xf5ti";
     },
     get$inviteContact() {
-      return "Invitar contacto";
+      return "Kutsu s\xf5pru ja tuttavaid";
     },
     get$noChatDescriptionYet() {
-      return "No se ha creado una descripci\xf3n del chat a\xfan.";
+      return "Vestluse kirjeldus on puudu.";
     },
     get$tryAgain() {
-      return "Int\xe9ntelo de nuevo";
+      return "Proovi uuesti";
     },
     get$invited() {
-      return "Invitado";
+      return "Kutsutud";
     },
     get$redactMessageDescription() {
-      return "El mensaje ser\xe1 censurado para todas las personas participantes en la conversaci\xf3n. Esto no se puede deshacer.";
+      return "S\xf5numi muudatus kehtib k\xf5ikidele vestluses osalejatele. Seda muudatust ei saa tagasi p\xf6\xf6rata.";
     },
     get$optionalRedactReason() {
-      return "(Opcional) Motivo para censurar este mensaje...";
+      return "(Kui soovid lisada) S\xf5numi muutmise p\xf5hjus...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9" + username + " invit\xf3 a " + targetName;
+      return "\ud83d\udce9 " + username + " saatis kutse kasutajale " + targetName;
     },
     get$invitedUsersOnly() {
-      return "S\xf3lo usuarios invitados";
+      return "Ainult kutsutud kasutajatele";
     },
     get$inviteForMe() {
-      return "Invitar por m\xed";
+      return "Kutse minu jaoks";
     },
     inviteText$2(username, link) {
-      return username + " te invit\xf3 a FluffyChat.\n1.Visita fluffychat.im e instala la app\n2. Reg\xedstrate o inicia sesi\xf3n\n3. Abre el enlace de invitaci\xf3n:\n" + link;
+      return username + " kutsus sind kasutama Matrix'i-p\xf5hist suhtlusrakendust FluffyChat. \n1. Ava fluffychat.im ja paigalda FluffyChat'i rakendus \n2. Liitu kasutajaks v\xf5i logi sisse olemasoleva Matrix'i kasutajakontoga\n3. Ava kutse link: \n " + link;
     },
     get$isTyping() {
-      return "est\xe1 escribiendo\u2026";
+      return "kirjutab\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b" + username + " se uni\xf3 al chat";
+      return "\ud83d\udc4b " + username + " liitus vestlusega";
     },
     get$joinRoom() {
-      return "Unirse a la sala";
+      return "Liitu jututoaga";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e" + username + " ech\xf3 a " + targetName;
+      return "\ud83d\udc5e " + username + " m\xfcksas kasutaja " + targetName + " v\xe4lja";
     },
     get$kickFromChat() {
-      return "Echar del chat";
+      return "M\xfcksa vestlusest v\xe4lja";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "\xdaltima vez activo: " + localizedTimeShort;
+      return "Viimati n\xe4htud: " + localizedTimeShort;
     },
     get$leave() {
-      return "Abandonar";
+      return "Lahku";
     },
     get$leftTheChat() {
-      return "Abandon\xf3 el chat";
+      return "Lahkus vestlusest";
     },
     get$lightTheme() {
-      return "Claro";
+      return "Hele";
     },
     loadCountMoreParticipants$1(count) {
-      return "Mostrar " + count + " participantes m\xe1s";
+      return "Lisa veel " + count + " osalejat";
     },
     get$dehydrate() {
-      return "Exportar sesi\xf3n y limpiar dispositivo";
+      return "Ekspordi sessiooni teave ja kustuta nutiseadmest rakenduse andmed";
     },
     get$dehydrateWarning() {
-      return "Esta acci\xf3n no se puede deshacer. Aseg\xfarese de que ha almacenado de forma segura el fichero de copia de seguridad.";
+      return "Seda tegevust ei saa tagasi p\xf6\xf6rata. Palun kontrolli, et sa oled varukoopia turvaliselt salvestanud.";
     },
     get$dehydrateTor() {
-      return "TOR: Exportar sesi\xf3n";
+      return "TOR'i kasutajad: Ekspordi sessioon";
     },
     get$dehydrateTorLong() {
-      return "Si est\xe1 usando TOR, es recomendable exportar la sesi\xf3n antes de cerrar la ventana.";
+      return "Kui oled TOR'i v\xf5rgu kasutaja, siis enne akna sulgemist palun ekspordi viimase sessiooni andmed.";
     },
     get$loadingPleaseWait() {
-      return "Cargando\u2026 Por favor espere.";
+      return "Laadin andmeid\u2026 Palun oota.";
     },
     get$loadMore() {
-      return "Mostrar m\xe1s\u2026";
+      return "Laadi veel\u2026";
     },
     get$locationDisabledNotice() {
-      return "Los servicios de ubicaci\xf3n est\xe1n deshabilitado. Habilite para poder compartir su ubicaci\xf3n.";
+      return "Asukohateenused on seadmes v\xe4ljal\xfclitatud. Asukoha jagamiseks palun l\xfclita nad sisse.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Permiso de ubicaci\xf3n denegado. Conc\xe9deles que puedan compartir tu ubicaci\xf3n.";
+      return "Puudub luba asukohateenuste kasutamiseks. Asukoha jagamiseks palun anna rakendusele vastavad \xf5igused.";
     },
     get$logout() {
-      return "Cerrar sesi\xf3n";
+      return "Logi v\xe4lja";
     },
     get$memberChanges() {
-      return "Cambios de miembros";
+      return "Muudatused liikmeskonnas";
     },
     get$mention() {
-      return "Mencionar";
+      return "M\xe4rgi \xe4ra";
     },
     get$messages() {
-      return "Mensajes";
+      return "S\xf5numid";
     },
     get$messagesStyle() {
-      return "Mensajes:";
+      return "S\xf5numid:";
     },
     get$moderator() {
-      return "Moderador";
+      return "Moderaator";
     },
     get$newChat() {
-      return "Nuevo chat";
+      return "Uus vestlus";
     },
     get$newVerificationRequest() {
-      return "\xa1Nueva solicitud de verificaci\xf3n!";
+      return "Uus verifitseerimisp\xe4ring!";
     },
     get$next(_) {
-      return "Siguiente";
+      return "Edasi";
     },
     get$no() {
-      return "No";
+      return "Ei";
     },
     get$noConnectionToTheServer() {
-      return "Sin conexi\xf3n al servidor";
+      return "Puudub \xfchendus koduserveriga";
     },
     get$noEmotesFound() {
-      return "Ning\xfan emote encontrado. \ud83d\ude15";
+      return "\xdchtegi emotsioonitegevust ei leidunud. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Compartir enlace de invitaci\xf3n";
+      return "Jaga kutse linki";
     },
     get$noPasswordRecoveryDescription() {
-      return "A\xfan no ha agregado una forma de recuperar su contrase\xf1a.";
+      return "Sa pole veel lisanud v\xf5imalust salas\xf5na taastamiseks.";
     },
     get$noPermission() {
-      return "Sin autorizaci\xf3n";
+      return "\xd5igused puuduvad";
     },
     get$noRoomsFound() {
-      return "Ninguna sala encontrada\u2026";
+      return "Jututubasid ei leidunud\u2026";
     },
     get$notifications() {
-      return "Notificaciones";
+      return "Teavitused";
     },
     get$notificationsEnabledForThisAccount() {
-      return "Notificaciones habilitadas para esta cuenta";
+      return "Teavitused on sellel kontol kasutusel";
     },
     get$obtainingLocation() {
-      return "Obteniendo ubicaci\xf3n\u2026";
+      return "Tuvastan asukohta\u2026";
     },
     get$offensive() {
-      return "Ofensiva";
+      return "Solvav";
     },
     get$ok() {
-      return "Ok";
+      return "Sobib";
     },
     get$oopsSomethingWentWrong() {
-      return "Ups, algo sali\xf3 mal\u2026";
+      return "Hopsti! Midagi l\xe4ks n\xfc\xfcd viltu\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Se ha cerrado en la sesi\xf3n de uno de sus clientes";
+      return "\xdcks sinu klientrakendustest on Matrix'i v\xf5rgust v\xe4lja loginud";
     },
     get$addAccount() {
-      return "A\xf1adir cuenta";
+      return "Lisa kasutajakonto";
     },
     get$enableMultiAccounts() {
-      return "(BETA) habilite varias cuenta en este dispositivo";
+      return "(KATSELINE) Pruugi selles seadmes mitut Matrix'i kasutajakontot";
     },
     get$openInMaps() {
-      return "Abrir en maps";
+      return "Ava kaardirakendusega";
     },
     get$link() {
       return "Link";
     },
     get$serverRequiresEmail() {
-      return "Este servidor necesita validar su direcci\xf3n de correo electr\xf3nico para registrarse.";
+      return "See koduserver eeldab registreerimisel kasutatava e-postiaadressi kinnitamist.";
     },
     get$or() {
-      return "O";
+      return "v\xf5i";
     },
     get$participant() {
-      return "Participante";
+      return "Osaleja";
     },
     get$passphraseOrKey() {
-      return "contrase\xf1a o clave de recuperaci\xf3n";
+      return "paroolifraas v\xf5i taastev\xf5ti";
     },
     get$password(_) {
-      return "Contrase\xf1a";
+      return "Salas\xf5na";
     },
     get$passwordForgotten() {
-      return "Contrase\xf1a olvidada";
+      return "Salas\xf5na on ununenud";
     },
     get$passwordHasBeenChanged() {
-      return "La contrase\xf1a ha sido cambiada";
+      return "Salas\xf5na on muudetud";
     },
     get$overview() {
-      return "Visi\xf3n general";
+      return "\xdclevaade";
     },
     get$notifyMeFor() {
-      return "Notificarme para";
+      return "Teavita mind kui";
     },
     get$passwordRecoverySettings() {
-      return "Configuraci\xf3n de recuperaci\xf3n de contrase\xf1a";
+      return "Salas\xf5na taastamise seadistused";
     },
     get$passwordRecovery() {
-      return "Recuperaci\xf3n de contrase\xf1a";
+      return "Salas\xf5na taastamine";
     },
     get$pickImage() {
-      return "Elegir imagen";
+      return "Vali pilt";
     },
     get$pin() {
-      return "Pin";
+      return "Klammerda";
     },
     get$pleaseChoose() {
-      return "Por favor elija";
-    },
-    get$pleaseClickOnLink() {
-      return "Haga clic en el enlace del correo electr\xf3nico y luego contin\xfae.";
+      return "Palun vali";
     },
     get$pleaseEnterYourPassword() {
-      return "Por favor ingrese su contrase\xf1a";
+      return "Palun sisesta oma salas\xf5na";
     },
     get$pleaseEnterYourPin() {
-      return "Por favor ingrese su PIN";
+      return "Palun sisesta oma PIN-kood";
     },
     get$pleaseEnterYourUsername() {
-      return "Por favor ingrese su nombre de usuario";
+      return "Palun sisesta oma kasutajanimi";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return 'Por favor, siga las instrucciones del sitio web y presione "siguiente".';
+      return "Palun j\xe4rgi veebilehel olevaid juhiseid ja kl\xf5psi nuppu Edasi.";
     },
     get$privacy() {
-      return "Privacidad";
+      return "Privaatsus";
     },
     get$reason(_) {
-      return "Raz\xf3n";
+      return "P\xf5hjus";
     },
     redactedBy$1(username) {
-      return "Censurado por " + username;
+      return "Muutja: " + username;
     },
     get$directChat() {
-      return "Chat directo";
+      return "Otsevestlus";
     },
     redactedByBecause$2(username, reason) {
-      return "Censurado por " + username + ' porque: "' + reason + '"';
+      return "Muutja " + username + " m\xe4rkis p\xf5hjuseks: \u201e" + reason + "\u201c";
     },
     redactedAnEvent$1(username) {
-      return username + " censur\xf3 un suceso";
+      return username + " muutis s\xfcndmust";
     },
     get$redactMessage() {
-      return "Censurar mensaje";
+      return "Muuda s\xf5numit";
     },
     get$reject() {
-      return "Rechazar";
+      return "L\xfckka tagasi";
     },
     rejectedTheInvitation$1(username) {
-      return username + " rechaz\xf3 la invitaci\xf3n";
+      return username + " l\xfckkas kutse tagasi";
     },
     get$removeAllOtherDevices() {
-      return "Eliminar todos los otros dispositivos";
+      return "Eemalda k\xf5ik muud seadmed";
     },
     get$unbanFromChat() {
-      return "Eliminar la expulsi\xf3n";
+      return "Eemalda suhtluskeeld";
     },
     get$removeYourAvatar() {
-      return "Quitar tu avatar";
+      return "Kustuta oma tunnuspilt";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Reemplazar habitaci\xf3n con una versi\xf3n m\xe1s nueva";
+      return "Asenda jututoa senine versioon uuega";
     },
     get$reply(_) {
-      return "Responder";
+      return "Vasta";
     },
     get$reportMessage() {
-      return "Reportar mensaje";
+      return "Teata s\xf5numist";
     },
     get$roomHasBeenUpgraded() {
-      return "La sala ha subido de categor\xeda";
+      return "Jututoa vesrioon on uuendatud";
     },
     get$roomVersion() {
-      return "Versi\xf3n de sala";
+      return "Jututoa versioon";
     },
     get$search(_) {
-      return "Buscar";
+      return "Otsi";
     },
     get$security() {
-      return "Seguridad";
+      return "Turvalisus";
     },
     get$send(_) {
-      return "Enviar";
+      return "Saada";
     },
     get$sendAMessage() {
-      return "Enviar un mensaje";
+      return "Saada s\xf5num";
     },
     get$sendAsText() {
-      return "Enviar como texto";
+      return "Saada tekstis\xf5numina";
     },
     get$sendAudio() {
-      return "Enviar audio";
+      return "Saada helifail";
     },
     get$sendFile() {
-      return "Enviar un archivo";
+      return "Saada fail";
     },
     get$sendImage() {
-      return "Enviar una imagen";
+      return "Saada pilt";
     },
     sendImages$1(count) {
-      return "Send " + count + " image";
+      return "Saada " + count + " pilti";
     },
     get$sendMessages() {
-      return "Enviar mensajes";
+      return "Saada s\xf5numeid";
     },
     get$sendVideo() {
-      return "Enviar video";
+      return "Saada videofail";
     },
     sentAFile$1(username) {
-      return username + " envi\xf3 un archivo";
+      return "\ud83d\udcc1 " + username + " saatis faili";
     },
     sentAnAudio$1(username) {
-      return username + " envi\xf3 un audio";
+      return "\ud83c\udfa4 " + username + " saatis helifaili";
     },
     sentAPicture$1(username) {
-      return username + " envi\xf3 una imagen";
+      return "\ud83d\uddbc\ufe0f " + username + " saatis pildi";
     },
     sentASticker$1(username) {
-      return username + " envi\xf3 un sticker";
+      return "\ud83d\ude0a " + username + " saatis kleepsu";
     },
     sentAVideo$1(username) {
-      return username + " envi\xf3 un video";
+      return "\ud83c\udfa5 " + username + " saatis video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " envi\xf3 informaci\xf3n de la llamada";
+      return senderName + " saatis teavet k\xf5ne kohta";
     },
     get$separateChatTypes() {
-      return "Separar chats directos de grupos";
+      return "Eraldi vestlused ja jututoad";
     },
     get$setAsCanonicalAlias() {
-      return "Fijar alias principal";
+      return "M\xe4\xe4ra p\xf5hinimeks";
     },
     get$setChatDescription() {
-      return "Establecer descripci\xf3n del chat";
+      return "Lisa vestluse kirjeldus";
     },
     get$setPermissionsLevel() {
-      return "Establecer nivel de permisos";
+      return "Seadista \xf5igusi";
     },
     get$settings() {
-      return "Ajustes";
+      return "Seadistused";
     },
     get$share(_) {
-      return "Compartir";
+      return "Jaga";
     },
     sharedTheLocation$1(username) {
-      return username + " comparti\xf3 la ubicaci\xf3n";
+      return username + " jagas oma asukohta";
     },
     get$shareLocation() {
-      return "Compartir ubicaci\xf3n";
+      return "Jaga asukohta";
     },
     get$presencesToggle() {
-      return "Mostrar mensajes de estado de otros usuarios";
+      return "N\xe4ita teiste kasutajate olekuteateid";
     },
     get$skip(_) {
-      return "Omitir";
+      return "J\xe4ta vahele";
     },
     get$sourceCode() {
-      return "C\xf3digo fuente";
+      return "L\xe4htekood";
     },
     get$spaceName() {
-      return "Nombre del espacio";
+      return "Kogukonna nimi";
     },
     startedACall$1(senderName) {
-      return senderName + " comenz\xf3 una llamada";
+      return senderName + " alustas k\xf5net";
     },
     get$status(_) {
-      return "Estado";
+      return "Olek";
     },
     get$submit(_) {
-      return "Enviar";
+      return "Saada";
     },
     get$synchronizingPleaseWait() {
-      return "Sincronizando... por favor espere.";
+      return "S\xfcnkroniseerin andmeid\u2026 Palun oota.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Synchronizing\u2026 (" + percentage + "%)";
+      return " S\xfcnkroniseerime\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Sistema";
+      return "S\xfcsteem";
     },
     get$theyDontMatch() {
-      return "No coinciden";
+      return "Nad ei klapi omavahel";
     },
     get$theyMatch() {
-      return "Coinciden";
+      return "Nad klapivad omavahel";
     },
     get$tooManyRequestsWarning() {
-      return "Demasiadas solicitudes. \xa1Por favor int\xe9ntelo m\xe1s tarde!";
+      return "Liiga palju p\xe4ringuid. Palun proovi hiljem uuesti!";
     },
     get$tryToSendAgain() {
-      return "Intentar enviar nuevamente";
+      return "Proovi uuesti saata";
     },
     get$unavailable() {
-      return "Indisponible";
+      return "Eemal";
     },
     unbannedUser$2(username, targetName) {
-      return username + " admiti\xf3 a " + targetName + " nuevamente";
+      return username + " eemaldas ligip\xe4\xe4sukeelu kasutajalt " + targetName;
     },
     get$unblockDevice() {
-      return "Desbloquear dispositivo";
+      return "Eemalda seadmelt blokeering";
     },
     get$unknownDevice() {
-      return "Dispositivo desconocido";
+      return "Tundmatu seade";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Algoritmo de cifrado desconocido";
+      return "Tundmatu kr\xfcptoalgoritm";
     },
     unknownEvent$1(type) {
-      return "Evento desconocido '" + type + "'";
+      return "Tundmatu s\xfcndmuse t\xfc\xfcp '" + type + "'";
     },
     get$unpin() {
-      return "Despinchar";
-    },
-    userAndOthersAreTyping$2(username, count) {
-      return username + " y " + count + " m\xe1s est\xe1n escribiendo\u2026";
+      return "Eemalda klammerdus";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " y " + username2 + " est\xe1n escribiendo\u2026";
+      return username + " ja " + username2 + " kirjutavad\u2026";
     },
     userIsTyping$1(username) {
-      return username + " est\xe1 escribiendo\u2026";
+      return username + " kirjutab\u2026";
     },
     userLeftTheChat$1(username) {
-      return username + " abandon\xf3 el chat";
+      return "\ud83d\udeaa" + username + " lahkus vestlusest";
     },
     get$username(_) {
-      return "Nombre de usuario";
+      return "Kasutajanimi";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " envi\xf3 un evento " + type;
+      return username + " saatis " + type + " s\xfcndmuse";
     },
     get$unverified() {
-      return "No verificado";
+      return "Verifitseerimata";
     },
     get$verified() {
-      return "Verificado";
+      return "Verifitseeritud";
     },
     get$verifyStart() {
-      return "Comenzar verificaci\xf3n";
+      return "Alusta verifitseerimist";
     },
     get$verifySuccess() {
-      return "\xa1Has verificado exitosamente!";
+      return "Sinu verifitseerimine \xf5nnestus!";
     },
     get$verifyTitle() {
-      return "Verificando la otra cuenta";
+      return "Verifitseerin teist kasutajakontot";
     },
     get$visibilityOfTheChatHistory() {
-      return "Visibilidad del historial del chat";
+      return "Vestluse ajaloo n\xe4htavus";
     },
     get$visibleForAllParticipants() {
-      return "Visible para todos los participantes";
+      return "N\xe4htav k\xf5ikidele osalejatele";
     },
     get$visibleForEveryone() {
-      return "Visible para todo el mundo";
+      return "N\xe4htav k\xf5ikidele";
     },
     get$voiceMessage() {
-      return "Mensaje de voz";
+      return "H\xe4\xe4ls\xf5num";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Esperando a que el socio acepte la solicitud\u2026";
+      return "Ootan, et teine osapool n\xf5ustuks p\xe4ringuga\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Esperando a que el socio acepte los emojis\u2026";
+      return "Ootan teise osapoole kinnitust, et tegemist on samade emojidega\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Esperando a que el socio acepte los n\xfameros\u2026";
+      return "Ootan teise osapoole kinnitust, et tegemist on samade numbritega\u2026";
     },
     get$warning() {
-      return "\xa1Advertencia!";
+      return "Hoiatus!";
     },
     get$weSentYouAnEmail() {
-      return "Te enviamos un correo electr\xf3nico";
+      return "Me saatsime sulle e-kirja";
     },
     get$whoCanPerformWhichAction() {
-      return "Qui\xe9n puede realizar qu\xe9 acci\xf3n";
-    },
-    get$whoIsAllowedToJoinThisGroup() {
-      return "Qui\xe9n tiene permitido unirse al grupo";
+      return "Erinevatele kasutajatele lubatud toimingud";
     },
     get$whyDoYouWantToReportThis() {
-      return "\xbfPor qu\xe9 quieres denunciar esto?";
+      return "Miks sa soovid sellest teatada?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Con esta direcci\xf3n puede recuperar su contrase\xf1a.";
+      return "Nende e-posti aadresside abil saad taastada oma salas\xf5na.";
     },
     get$writeAMessage() {
-      return "Escribe un mensaje\u2026";
-    },
-    writeAMessageLangCodes$2(l1, l2) {
-      return "Type in " + l1 + " or " + l2 + "...";
+      return "Kirjuta \xfcks s\xf5num\u2026";
     },
     get$yes() {
-      return "S\xed";
+      return "Jah";
     },
     get$you() {
-      return "T\xfa";
+      return "Sina";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Ya no est\xe1s participando en este chat";
+      return "Sa enam ei osale selles vestluses";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Has sido vetado de este chat";
+      return "Sinule on selles vestluses seatud suhtluskeeld";
     },
     get$yourPublicKey() {
-      return "Tu clave p\xfablica";
+      return "Sinu avalik v\xf5ti";
     },
     get$messageInfo() {
-      return "Informaci\xf3n del mensaje";
+      return "S\xf5numi teave";
     },
     get$time(_) {
-      return "Tiempo";
+      return "Kellaaeg";
     },
     get$sender() {
-      return "Remitente";
+      return "Saatja";
     },
     get$openGallery() {
-      return "Abrir galer\xeda";
+      return "Ava galerii";
     },
     get$removeFromSpace() {
-      return "Retirar del espacio";
+      return "Eemalda kogukonnast";
     },
     videoWithSize$1(size) {
       return "Video (" + size + ")";
     },
     get$markAsRead() {
-      return "Marcar como le\xeddo";
+      return "M\xe4rgi loetuks";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " reaccion\xf3 con " + reaction;
+      return sender + " reageeris nii " + reaction;
     },
     get$pinMessage() {
-      return "Anclar a la sala";
+      return "Klammerda s\xf5num jututuppa";
     },
     get$confirmEventUnpin() {
-      return "\xbfSeguro que quiere desfijar permanentemente el evento?";
+      return "Kas sa oled kindel, et tahad klammerdatud s\xfcndmuse eemaldada?";
     },
     get$emojis() {
-      return "Emojis";
+      return "Emotikonid";
     },
     get$youRejectedTheInvitation() {
-      return "Rechazaste la invitaci\xf3n";
+      return "Sa l\xfckkasid kutse tagasi";
     },
     get$youJoinedTheChat() {
-      return "Usted se ha unido al chat";
+      return "Sa liitusid vestlusega";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Aceptaste la invitaci\xf3n";
+      return "\ud83d\udc4d Sa v\xf5tsid kutse vastu";
     },
     youBannedUser$1(user) {
-      return "Usted prohibi\xf3 el acceso a " + user;
+      return "Sa seadsid suhtluskeelu kasutajale " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Usted retir\xf3 la invitaci\xf3n a " + user;
+      return "Sa oled t\xfchistanud kutse kasutajale " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Has sido invitado por " + user;
+      return "\ud83d\udce9 " + user + " saatis sulle kutse";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Usted invit\xf3 a " + user;
+      return "\ud83d\udce9 Sa saatsid kutse kasutajale " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Usted expuls\xf3 a " + user;
+      return "\ud83d\udc5e Sa m\xfcksasid kasutaja " + user + " v\xe4lja";
     },
     youUnbannedUser$1(user) {
-      return "Usted volvi\xf3 a permitir el acceso a " + user;
+      return "Sa eemaldasid suhtluskeelu kasutajalt " + user;
     },
     hasKnocked$1(user) {
-      return "";
+      return "\ud83d\udeaa" + user + " on jututoa uksele koputanud";
     },
     get$usersMustKnock() {
-      return "Los usuarios deben golpear";
+      return "Kasutajad peavad uksele koputama";
     },
     get$noOneCanJoin() {
-      return "";
+      return "Mitte keegi ei saa liituda";
     },
     userWouldLikeToChangeTheChat$1(user) {
-      return user + " desea unirse al chat.";
+      return user + " soovib liituda vestlusega.";
     },
     get$knock() {
-      return "Knock";
+      return "Koputa uksele";
     },
     get$users() {
-      return "Usuarios";
+      return "Kasutajad";
     },
     countFiles$1(count) {
-      return count + " archivos";
+      return "" + count + " faili";
     },
     get$user() {
-      return "Usuario";
+      return "Kasutaja";
     },
     get$custom() {
-      return "Personalizado";
+      return "Kohandatud";
     },
     get$noKeyForThisMessage() {
-      return "";
+      return "See v\xf5ib juhtuda, kui s\xf5num oli saadetud enne, kui siin seadmes oma kontoga sisse logisid.\n\nSamuti v\xf5ib juhtuda siis, kui saatja on lugemises selles seadmes blokeerinud v\xf5i on tekkinud t\xf5rkeid veebi\xfchenduses.\n\nAga m\xf5nes teises seadmes saad seda s\xf5numit lugeda? Siis sa v\xf5id s\xf5numi sealt \xfcle t\xf5sta. Ava Seadistused -> Seadmed ning kontrolli, et k\xf5ik sinu seadmed on omavahel verifitseeritud. Kui avad selle vestluse v\xf5i jututoa ning m\xf5lemad sessioonid on avatud, siis vajalikud kr\xfcptov\xf5tmed saadetakse automaatset.\n\nKas sa soovid v\xe4ltida kr\xfcptov\xf5tmete kadumist v\xe4ljalogimisel ja seadmete vahetusel? Siis palun kontrolli, et seadistuses on kr\xfcptov\xf5tmete varundus sisse l\xfclitatud.";
     },
     get$newSpace() {
-      return "Nueva clase";
+      return "Uus kogukond";
     },
     get$doNotShowAgain() {
-      return "No mostrar de nuevo";
+      return "\xc4ra n\xe4ita uuesti";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Chat vac\xedo (era " + oldDisplayName + ")";
+      return "S\xf5numiteta vestlus (vana nimega " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "";
-    },
-    get$noBackupWarning() {
-      return "";
+      return "Alusta vestlust uuesti";
     },
     get$noOtherDevicesFound() {
-      return "";
+      return "Muid seadmeid ei leidu";
     },
     fileIsTooBigForServer$1(max) {
-      return "";
+      return "Saatmine ei \xf5nnestu! Serveri vaid kuni " + max + " suurusega manuseid.";
     },
     get$jumpToLastReadMessage() {
-      return "";
+      return "Liigu viimase loetud s\xf5numini";
     },
     get$readUpToHere() {
-      return "";
+      return "Siiamaani on loetud";
     },
     get$jump() {
-      return "";
+      return "H\xfcppa";
     },
     get$openLinkInBrowser() {
-      return "";
+      return "Ava link veebibrauseris";
     },
     get$profileNotFound() {
-      return "";
+      return "Sellist kasutajat serveris ei leidu. Tegemist v\xf5ib olla kas v\xf5rgu\xfchenduse probleemiga v\xf5i sellist kasutajat t\xf5esti pole olemas.";
     },
     get$setColorTheme() {
-      return "";
+      return "Vali v\xe4rviteema:";
     },
     get$invite() {
-      return "";
+      return "Kutsu";
     },
     get$invitePrivateChat() {
-      return "";
+      return "\ud83d\udce8 Kutsu omavahelisele vestlusele";
     },
     get$invalidInput() {
-      return "";
+      return "Vigane sisend!";
     },
     wrongPinEntered$1(seconds) {
-      return "";
+      return "Sisestasid vale PIN-koodi! Proovi uuesti " + seconds + " sekundi p\xe4rast...";
+    },
+    get$pleaseEnterANumber() {
+      return "Palun sisesta 0'st suurem number";
+    },
+    get$archiveRoomDescription() {
+      return "Selle vestluse t\xf5stame n\xfc\xfcd arhiivi. Muud osalejad n\xe4evad, et sa oled vestlusest lahkunud.";
+    },
+    get$roomUpgradeDescription() {
+      return "See vestlus luuakse n\xfc\xfcd uuesti jututoa uue versioonina. K\xf5ik senised osalejad saavad teate, et nad peavad liituma uue vestlusega. Jututubade versioonide kohta leiad teavet https://spec.matrix.org/latest/rooms/ lehelt";
+    },
+    get$removeDevicesDescription() {
+      return "Sind logitakse sellest seadmest v\xe4lja ja sa enam ei saa s\xf5numeid.";
+    },
+    get$banUserDescription() {
+      return "Sellele kasutajale on n\xfc\xfcd selles jututoas seatud suhtluskeeld ning ta ei saa vestluses osaleda seni, kuni suhtluskeeld pole eemaldatud.";
+    },
+    get$unbanUserDescription() {
+      return "Uuesti proovimisel saab see kasutaja n\xfc\xfcd vestlusega liituda.";
+    },
+    get$kickUserDescription() {
+      return "See kasutaja on n\xfc\xfcd jutuoast v\xe4lja m\xfcksatud, kuid talle pole seatud suhtluskeeldu. Avaliku jututoa puhul saab ta alati uuesti liituda.";
+    },
+    get$makeAdminDescription() {
+      return "Kui annad sellele kasutajale peakasutaja \xf5igused, siis kuna tal on sinuga samad \xf5igused, sa ei saa seda toimingut enam tagasi p\xf6\xf6rata.";
+    },
+    get$yourGlobalUserIdIs() {
+      return "Sinu \xfcldine kasutajatunnus on: ";
+    },
+    noUsersFoundWithQuery$1(query) {
+      return "P\xe4ringuga \u201e" + query + "\u201c ei leidunud kahkus \xfchtegi kasutajat. Palun kontrolli, et p\xe4ringus poleks vigu.";
+    },
+    get$knocking() {
+      return "Koputus uksele";
+    },
+    chatCanBeDiscoveredViaSearchOnServer$1(server) {
+      return "Vestluse v\xf5i jututoa saad leida otsingust serveris " + server;
+    },
+    get$searchChatsRooms() {
+      return "Otsi #vestlusi, @kasutajaid...";
+    },
+    get$nothingFound() {
+      return "Ei leidnud mitte midagi...";
+    },
+    get$wrongRecoveryKey() {
+      return "Vabandust..., see ei tundu olema korrektne taastev\xf5ti.";
+    },
+    get$startConversation() {
+      return "Alusta vestlust";
+    },
+    get$commandHint_sendraw() {
+      return "Saada json oma algup\xe4rasel kujul";
+    },
+    get$searchForUsers() {
+      return "Otsi kasutajat @kasutajanimi ...";
+    },
+    get$pleaseEnterYourCurrentPassword() {
+      return "Palun sisesta oma praegune salas\xf5na";
+    },
+    get$newPassword() {
+      return "Uus salas\xf5na";
+    },
+    get$pleaseChooseAStrongPassword() {
+      return "Palun sisesta korralik salas\xf5na";
+    },
+    get$passwordsDoNotMatch() {
+      return "Salas\xf5nad ei klapi omavahel";
+    },
+    get$passwordIsWrong() {
+      return "Sinu sisestatud salas\xf5na on vale";
+    },
+    get$publicChatAddresses() {
+      return "Vestluse avalik aadress";
+    },
+    get$createNewAddress() {
+      return "Loo uus aadress";
+    },
+    get$joinSpace() {
+      return "Liitu kogukonnaga";
+    },
+    get$publicSpaces() {
+      return "Avalikud kogukonnad";
+    },
+    get$decline() {
+      return "Keeldu";
+    },
+    get$thisDevice() {
+      return "See seade:";
+    },
+    get$initAppError() {
+      return "Rakenduse k\xe4ivitamisel tekkis viga";
+    },
+    get$userRole() {
+      return "Kasutaja roll";
+    },
+    searchIn$1(chat) {
+      return "Otsi vestlusest \u201e" + chat + "\u201c...";
+    },
+    get$searchMore() {
+      return "Otsi veel...";
+    },
+    get$gallery() {
+      return "Galerii";
+    },
+    get$files(_) {
+      return "Failid";
+    },
+    sessionLostBody$2(url, error) {
+      return "Sinu sessioon on kadunud. Palun teata sellest veast arendajatele siin: " + url + " m\xe4rkides veateate: " + error;
+    },
+    restoreSessionBody$2(url, error) {
+      return "N\xfc\xfcd \xfcritab rakendus taastada sinu sessiooni varukoopiast. Palun teata sellest veast arendajatele siin: " + url + " m\xe4rkides veateate: " + error;
+    },
+    get$sendReadReceipts() {
+      return "Saada lugemisteatisi";
+    },
+    get$sendTypingNotificationsDescription() {
+      return "Muud vestluses osalejad saavad n\xe4ha, kui sa oled uut s\xf5numit kirjutamas.";
+    },
+    get$sendReadReceiptsDescription() {
+      return "Muud vestluses osalejad n\xe4evad, kas oled s\xf5numit lugenud.";
+    },
+    get$verifyOtherDevice() {
+      return "\ud83d\udd10 Verifitseeri oma muu seade";
+    },
+    get$verifyOtherDeviceDescription() {
+      return "Kui sa oled oma muu seadme verifitseerinud, siis need seadmed v\xf5ivad vahetada kr\xfcptov\xf5tmeid ning see parandab \xfcldist turvalisust. \ud83d\udcaa Kui alustad verifitseerimist, siis sinu m\xf5lemas seadmes tekib rakenduses h\xfcpikaken. Seal kuvatakse emotikonide v\xf5i numbrite jada, mida pead omavahel v\xf5rdlema. On oluline, et m\xf5lemad seadmed on verifitseerimise alustamisel sinu k\xf5rval. \ud83e\udd33";
+    },
+    acceptedKeyVerification$1(sender) {
+      return sender + " n\xf5ustus kr\xfcptov\xf5tmete verifitseerimisega";
+    },
+    canceledKeyVerification$1(sender) {
+      return sender + " katkestas kr\xfcptov\xf5tmete verifitseerimise";
+    },
+    completedKeyVerification$1(sender) {
+      return sender + " sai valmis kr\xfcptov\xf5tmete verifitseerimise";
+    },
+    isReadyForKeyVerification$1(sender) {
+      return sender + " on valmis kr\xfcptov\xf5tmete verifitseerimiseks";
+    },
+    requestedKeyVerification$1(sender) {
+      return sender + " palus kr\xfcptov\xf5tmete verifitseerimist";
+    },
+    startedKeyVerification$1(sender) {
+      return sender + " alustas kr\xfcptov\xf5tmete verifitseerimist";
+    },
+    get$stickers() {
+      return "Kleepsud";
+    },
+    get$discover() {
+      return "Otsi ja leia";
+    },
+    get$commandHint_ignore() {
+      return "Eira seda Matrixi kasutajatunnust";
+    },
+    get$commandHint_unignore() {
+      return "L\xf5peta selle Matrixi kasutajatunnuse eiramine";
+    },
+    thereAreCountUsersBlocked$1(count) {
+      return "Hetkel on " + count + " blokeeritud kasutajat.";
+    },
+    get$restricted() {
+      return "Piiratud";
+    },
+    get$knockRestricted() {
+      return "Koputa piiratud ligip\xe4\xe4suga jututoa uksele";
+    },
+    goToSpace$1(space) {
+      return "Ava kogukond: " + space;
+    },
+    get$markAsUnread() {
+      return "M\xe4rgi mitteloetuks";
+    },
+    userLevel$1(level) {
+      return "" + level + " - kasutaja";
+    },
+    moderatorLevel$1(level) {
+      return "" + level + " - moderaator";
+    },
+    adminLevel$1(level) {
+      return "" + level + " - peakasutaja";
+    },
+    get$changeGeneralChatSettings() {
+      return "Muuda vestluse \xfcldiseid seadistusi";
+    },
+    get$inviteOtherUsers() {
+      return "Kutsu teisi osalejaid sellesse vestlusesse";
+    },
+    get$changeTheChatPermissions() {
+      return "Muuda vestluse \xf5igusi";
+    },
+    get$changeTheVisibilityOfChatHistory() {
+      return "Muuda vestluse ajaloo n\xe4htavust";
+    },
+    get$changeTheCanonicalRoomAlias() {
+      return "Muuda vestluse p\xf5hilist avalikult n\xe4htavat aadressi";
+    },
+    get$sendRoomNotifications() {
+      return "Saada @jututuba teavitusi";
+    },
+    get$changeTheDescriptionOfTheGroup() {
+      return "Muuda vestluse kirjeldust";
+    },
+    get$chatPermissionsDescription() {
+      return "M\xe4\xe4ra erinevatele kasutajatele selles vestluses vajalikud \xf5igused. T\xfc\xfcpiliselt on need 0, 50 ja 100 (vastavalt kasutajad, moderaatorid ja peakasutajad), kuid igasugused vahepealsed variatsioonid on ka v\xf5imalikud.";
+    },
+    updateInstalled$1(version) {
+      return "\ud83c\udf89 Versiooniuuendus " + version + " on paigaldatud!";
+    },
+    get$sendCanceled() {
+      return "Saatmine on katkestatud";
+    },
+    get$doesNotSeemToBeAValidHomeserver() {
+      return "Ei tundu olema \xfchilduv koduserver. Kas v\xf5rguaadress on ikka \xf5ige?";
+    },
+    get$calculatingFileSize() {
+      return "Arvutame faili suurust...";
+    },
+    get$prepareSendingAttachment() {
+      return "Valmistume manuse saatmiseks...";
+    },
+    get$sendingAttachment() {
+      return "Saadame manust...";
+    },
+    sendingAttachmentCountOfCount$2(index, $length) {
+      return "Saadame manust: " + index + " pikkusega " + $length + "...";
+    },
+    serverLimitReached$1(seconds) {
+      return "Serveri poolt lubatud \xfclempiir on k\xe4es. Ootame " + seconds + " sekundit...";
+    },
+    get$noticeChatBackupDeviceVerification() {
+      return "M\xe4rkus: kui liidad k\xf5ik oma seadmed vestluste varundamisega, siis on nad sellega ka automaatselt verifitseeritud.";
+    },
+    get$continueText() {
+      return "J\xe4tka";
+    },
+    get$blur(_) {
+      return "H\xe4gusus:";
+    },
+    get$opacity(_) {
+      return "L\xe4bipaistmatus:";
+    },
+    get$setWallpaper() {
+      return "M\xe4\xe4ra taustapildiks";
+    },
+    get$noContactInformationProvided() {
+      return "Server ei jaga asjakohast kontaktteavet";
+    },
+    get$contactServerAdmin() {
+      return "V\xf5ta \xfchendust serveri haldajaga";
+    },
+    get$contactServerSecurity() {
+      return "V\xf5ta \xfchendust serveri andmeturbe eest vastutajaga";
+    },
+    get$supportPage() {
+      return "Kasutajatugi";
+    },
+    get$serverInformation() {
+      return "Serveri teave:";
+    },
+    get$name(_) {
+      return "Nimi";
+    },
+    get$version(_) {
+      return "Versioon";
+    },
+    get$compress() {
+      return "Paki kokku";
+    },
+    get$boldText() {
+      return "Paks kiri";
+    },
+    get$italicText() {
+      return "Kaldkiri";
+    },
+    get$strikeThrough() {
+      return "L\xe4bikriipsutatud kiri";
+    },
+    get$pleaseFillOut() {
+      return "Palun t\xe4ida";
+    },
+    get$invalidUrl() {
+      return "Vigane v\xf5rguaadress";
+    },
+    get$addLink() {
+      return "Lisa link";
+    },
+    get$unableToJoinChat() {
+      return "Vestlusega liitumine ei \xf5nnestu. V\xf5ib-olla on teine osapool juba vestluse sulgenud.";
+    },
+    get$previous() {
+      return "Eelmine";
+    },
+    get$otherPartyNotLoggedIn() {
+      return "Vestluse teine osapool pole hetkel v\xf5rku loginud ega seega saa neid s\xf5numeid kohe k\xe4tte!";
+    },
+    get$open(_) {
+      return "Ava";
+    },
+    get$waitingForServer() {
+      return "Ootame serveri vastust...";
+    },
+    get$editChatPermissions() {
+      return "Edit chat permissions";
+    },
+    writeAMessageLangCodes$2(l1, l2) {
+      return "Type in " + l1 + " or " + l2 + "...";
     },
     get$allCorrect() {
-      return "\xa1As\xed es como lo dir\xeda yo! \xa1Muy bien!";
+      return "That's how I would say it! Nice!";
     },
     get$newWayAllGood() {
-      return "Yo no lo habr\xeda dicho as\xed, \xa1pero est\xe1 bien!";
+      return "That's not how I would have said it but it looks good!";
     },
     get$othersAreBetter() {
-      return "Hm, creo que deber\xedas decirlo de esta manera.";
+      return "Hm, there might be a better way to say that.";
     },
     get$holdForInfo() {
-      return "Use clic largo para ver informaci\xf3n de la palabra.";
+      return "Click and hold for word info.";
     },
     get$greenFeedback() {
-      return "\xa1Eso es lo que yo dir\xeda!";
+      return "That's what I would put!";
     },
     get$yellowFeedback() {
-      return "Hm, \xa1probablemente pueda hacer que eso funcione! Para usar esta palabra, simplemente haga clic en ella nuevamente.";
+      return "Hm, you can try that and see if it works! To use this word, just click it again.";
     },
     get$redFeedback() {
-      return "No creo que sea correcto, \xa1pero puede intentarlo!";
+      return "I don't think that's right...";
     },
     get$itInstructionsTitle() {
-      return "\xa1Le puedo ayudar a traduccir!";
+      return "I can help you translate!";
     },
     get$itInstructionsBody() {
-      return "Puede oprimir con clic largo las opciones para m\xe1s informaci\xf3n.";
+      return "You can click and hold choices for word info.";
     },
     get$gaTooltip() {
-      return "Uso de L2 con asistencia gramatical";
+      return "L2 use with grammar assistance";
     },
     get$taTooltip() {
-      return "Uso de L2 con asistencia de traducci\xf3n";
+      return "L2 use with translation assistance";
     },
     get$unTooltip() {
-      return "Otra";
+      return "Other";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Asistencia de traducci\xf3n";
+      return "Interactive Translator";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Asistencia gramatical";
+      return "Interactive Grammar Checker";
     },
     get$interactiveTranslatorRequired() {
-      return "Requerido";
+      return "Required";
     },
     get$multiLingualSpace() {
-      return "Espacio multiling\xfce";
+      return "Multilingual Space";
     },
     get$waTooltip() {
-      return "Uso de L2 sin asistencia";
+      return "L2 use without assistance";
     },
     get$addStudents() {
-      return "Agregar estudiantes";
+      return "Invite users by link or code";
     },
     get$copyClassLink() {
-      return "Copiar enlace de invitaci\xf3n";
+      return "Copy invite link";
     },
     get$copyClassLinkDesc() {
-      return "Al hacer clic en este enlace, los usuarios acceder\xe1n a la aplicaci\xf3n, se abrir\xe1n una cuenta y se unir\xe1n autom\xe1ticamente a este espacio.";
+      return "Clicking this link will take users to the app, direct them to make an account and they will automatically join this space.";
     },
     get$copyClassCode() {
-      return "Copiar c\xf3digo de invitaci\xf3n";
+      return "Copy invite code";
     },
     get$inviteStudentByUserName() {
-      return "Invitar a estudiantes por usuario";
+      return "Invite users by username";
     },
     get$selectLanguageLevel() {
-      return "Seleccione nivel de lengua";
+      return "Select language level";
     },
     get$noIdenticalLanguages() {
-      return "Por favor, elija diferentes idiomas base e idiomas de aprender.";
+      return "Please choose different base and target languages";
     },
     get$iWantALanguagePartnerFrom() {
-      return "Es de:";
+      return "Is from:";
     },
     get$worldWide() {
-      return "En todo el mundo";
+      return "Worldwide";
     },
     get$noResults() {
-      return "\xa1No hay resultados! Intente ampliar su b\xfasqueda.";
+      return "No results! Try broadening your search.";
     },
     get$iWantAConversationPartner() {
-      return "Quiero un compa\xf1ero de conversaci\xf3n qui\xe9n";
+      return "I want a conversation partner who";
     },
     get$iWantALanguagePartnerWhoSpeaks() {
-      return "Habla:";
+      return "Speaks:";
     },
     get$iWantALanguagePartnerWhoIsLearning() {
-      return "Est\xe1 aprendiendo:";
+      return "Is learning:";
     },
     get$joinWithClassCode() {
-      return "\xdanete a una clase o a un intercambio";
+      return "Join space";
     },
     get$joinWithClassCodeHint() {
-      return "Introduzca el c\xf3digo de invitaci\xf3n";
+      return "Enter invite code";
     },
     get$unableToFindClass() {
-      return "No hay espacio con ese c\xf3digo. Por favor int\xe9ntalo de nuevo.";
+      return "There's no space with that code. Please try again.";
     },
     get$languageLevelPreA1() {
-      return "Principiante absoluto (Pre A1)";
+      return "True Beginner (Pre A1)";
     },
     get$languageLevelA1() {
-      return "Principiante elemental (A1)";
+      return "Beginner (A1)";
     },
     get$languageLevelA2() {
-      return "Principiante b\xe1sico (A2)";
+      return "Elementary (A2)";
     },
     get$languageLevelB1() {
-      return "Intermedio (B1)";
+      return "Intermediate (B1)";
     },
     get$languageLevelB2() {
-      return "Intermedio alto (B2)";
+      return "Upper Intermediate (B2)";
     },
     get$languageLevelC1() {
-      return "Avanzado (C1)";
+      return "Advanced (C1)";
     },
     get$languageLevelC2() {
-      return "Maestr\xeda (C2)";
+      return "Mastery (C2)";
     },
     get$changeTheNameOfTheClass() {
-      return "Cambiar el nombre";
+      return "Change the name";
     },
     get$changeTheNameOfTheChat() {
-      return "Cambiar el nombre del chat";
+      return "Change the name of the chat";
     },
     get$sorryNoResults() {
-      return "\xa1Discupla! No hay resultados.";
+      return "Sorry, no results.";
     },
     get$ignoreInThisText() {
-      return "Ignorar para este mensaje.";
+      return "Ignore";
     },
     get$helpMeTranslate() {
-      return "\xa1S\xed!";
+      return "Yes!";
     },
     get$needsItShortMessage() {
-      return "\xa1Pruebe la traducci\xf3n interactiva!";
+      return "Out of target";
     },
     needsItMessage$1(targetLanguage) {
-      return "Espera, \xa1ese no es " + targetLanguage + "! \xbfNecesitas ayuda para traducir?";
+      return "Wait, that's not " + targetLanguage + "! Do you need help translating?";
     },
     get$tokenTranslationTitle() {
-      return "Una palabra est\xe1 en su idioma base.";
+      return "A word is in your base language.";
     },
     get$spanTranslationDesc() {
-      return "Vea posibles traducciones abajo.";
+      return "See possible translations below.";
     },
     get$spanTranslationTitle() {
-      return "Algunas palabras est\xe1n en su idioma base.";
+      return "Some words are in your base language.";
     },
     get$l1SpanAndGrammarTitle() {
-      return "Fuera del idioma de destino";
+      return "Outside target language";
     },
     get$l1SpanAndGrammarDesc() {
-      return "Esto podr\xeda estar en su idioma base o podr\xeda ser un error gramatical.";
+      return "This could in your base language or it could be a grammar error.";
     },
     get$countryInformation() {
-      return "Informaci\xf3n de pa\xeds";
+      return "My country";
     },
     get$targetLanguage() {
-      return "Idioma a aprender";
+      return "Target Language";
     },
     get$updateLanguage() {
-      return "Cambiar mis idiomas";
+      return "My languages";
     },
     get$whatLanguageYouWantToLearn() {
-      return "\xbfQu\xe9 idioma quiere aprender?";
+      return "What language do you want to learn?";
     },
     get$whatIsYourBaseLanguage() {
-      return "\xbfCu\xe1l es su idioma base? \n\n Actualmente, la traducci\xf3n interactiva solo est\xe1 disponible cuando su idioma base es ingl\xe9s y espa\xf1ol. La asistencia gramatical est\xe1 disponible para todos los idiomas base.";
+      return "What is your base language?";
     },
     get$saveChanges() {
-      return "Guardar";
+      return "Save changes";
     },
     get$publicProfileTitle() {
-      return "Perfil p\xfablico";
+      return "Allow my profile to be found in search";
     },
     get$publicProfileDesc() {
-      return "Al activarlo, permite que otros usuarios encuentren su perfil en la barra de b\xfasqueda global y env\xeden solicitudes para chatear. En este punto, puede optar por aceptar o rechazar la solicitud.";
+      return "By turning on, you enable other users to find your profile in the global search bar and send requests to chat. At this point, you can choose to accept or deny the request.";
     },
     get$errorDisableIT() {
-      return "La asistencia de traducci\xf3n est\xe1 deshabilitada.";
+      return "Translation assistance is turned off.";
     },
     get$errorDisableIGC() {
-      return "La asistencia gramatical est\xe1 deshabilitada.";
+      return "Grammar assistance is turned off.";
     },
     get$errorDisableLanguageAssistance() {
-      return "La asistencia tanto de traducci\xf3n como de gram\xe1tica est\xe1 deshabilitada.";
+      return "Translation assistance and grammar assistance are turned off.";
     },
     get$errorDisableITUserDesc() {
-      return "Haga clic aqu\xed para actualizar la configuraci\xf3n de asistencia de traducci\xf3n.";
+      return "Click here to update translation assistance settings";
     },
     get$errorDisableIGCUserDesc() {
-      return "Haga clic aqu\xed para actualizar la configuraci\xf3n de asistencia gramatical.";
+      return "Click here to update grammar assistance settings";
     },
     get$errorDisableLanguageAssistanceUserDesc() {
-      return "Haga clic aqu\xed para actualizar la asistencia de traducci\xf3n y de gram\xe1tica.";
+      return "Click here to update translation assistance and grammar assistance settings";
     },
     get$errorDisableITClassDesc() {
-      return "La ayuda a la traducci\xf3n est\xe1 desactivada para el espacio en el que se encuentra este chat.";
+      return "Translation assistance is turned off for the space that this chat is in.";
     },
     get$errorDisableIGCClassDesc() {
-      return "La asistencia gramatical est\xe1 desactivada para el espacio en el que se encuentra este chat.";
+      return "Grammar assistance is turned off for the space that this chat is in.";
     },
     get$error405Title() {
-      return "Idiomas no seleccionados.";
+      return "Languages not set";
     },
     get$error405Desc() {
-      return "Por favor, seleccione sus idiomas en Ajustes de cuenta > Ajustes de aprendizaje.";
+      return "Please set your languages in Main Menu > Learning Settings.";
     },
     get$iAgreeToThe() {
-      return "Acepto los ";
+      return "I agree to the ";
     },
     get$termsAndConditions() {
-      return "T\xe9rminos y condiciones";
+      return "Terms and Conditions";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " y certifico que tengo al menos 16 a\xf1os.";
+      return " and certify I am at least 16 years of age.";
     },
     get$error502504Title() {
-      return "\xa1Vaya! Hay muchos estudiantes conectados.";
+      return "Wow, there are a lot of students online!";
     },
     get$error502504Desc() {
-      return "Las herramientas de assistencia gramatical y de traducci\xf3n pueden ser lentas o no estar disponibles mientras los bots de Pangea se ponen al d\xeda.";
+      return "Translation and grammar tools may be slow or unavailable while the Pangea bots catch up.";
     },
     get$error404Title() {
-      return "\xa1Error de traducci\xf3n!";
+      return "Translation error!";
     },
     get$error404Desc() {
-      return "Pangea Bot no est\xe1 seguro de c\xf3mo traducir eso.";
+      return "Pangea Bot isn't sure how to translate that...";
     },
     get$errorPleaseRefresh() {
-      return "\xa1Algo sali\xf3 mal! El error ha sido registrado y lo estamos investigando. Mientras tanto, actualice la p\xe1gina y vuelva a intentarlo. Si el error persiste, h\xe1ganoslo saber en support@pangea.chat.";
+      return "We're looking into it! Please reload and try again.";
     },
     get$connectedToStaging() {
-      return "Conectado al entorno de pruebas";
+      return "Connected to Staging";
     },
     get$learningSettings() {
-      return "Ajustes de aprendizaje";
+      return "Learning settings";
     },
     get$almostPerfect() {
-      return "\xa1Eso parece correcto! Esto es lo que yo hubiera dicho.";
+      return "That seems right! Here's what I would have said.";
     },
     get$prettyGood() {
-      return "\xa1Bastante bien! Esto es lo que yo hubiera dicho.";
+      return "Pretty good! Here's what I would have said.";
     },
     get$letMeThink() {
-      return "Hmm, \xa1vamos a ver c\xf3mo le fue!";
+      return "Hmm, let's see how you did!";
     },
     get$clickMessageTitle() {
-      return "\xbfNecesitas ayuda?";
+      return "Need help?";
     },
     get$clickMessageBody() {
-      return "Haz clic en un mensaje para herramientas de idioma como traducci\xf3n, reproducci\xf3n y m\xe1s!";
+      return "Click a message for language tools like translation, play back and more!";
     },
     get$allDone() {
-      return "\xa1Listo!";
+      return "All done!";
     },
     get$vocab() {
-      return "Vocabulario";
+      return "Vocabulary";
     },
     get$subscribe(_) {
-      return "Subscr\xedbase";
+      return "Subscribe";
     },
     get$getAccess() {
-      return "Activar herramientas";
+      return "Subscribe now!";
     },
     get$subscriptionDesc() {
-      return "\xa1Enviar y recibir mensajes es gratis! Suscr\xedbase para aceder a la traducci\xf3n interactiva, la revisi\xf3n gramatical y el an\xe1lisis de aprendizaje.";
+      return "Messaging is free! Subscribe to unlock interactive translation, grammar checking and learning analytics.";
     },
     get$subscriptionManagement() {
-      return "Manejar subscripci\xf3n";
+      return "Subscription Management";
     },
     get$currentSubscription() {
-      return "Subscripci\xf3n actual";
+      return "Current Subscription";
     },
     get$cancelSubscription() {
-      return "Cancelar su subscripci\xf3n";
+      return "Cancel your subscription";
     },
     get$selectYourPlan() {
-      return "Escoja su plan";
+      return "Select Your Plan";
     },
     get$subsciptionPlatformTooltip() {
-      return "Inicie sesi\xf3n en su dispositivo original para administrar su plan de suscripci\xf3n.";
+      return "Please login to your original device to manage your subscription plan";
     },
     get$subscriptionManagementUnavailable() {
-      return "Gesti\xf3n de suscripciones no disponible";
+      return "Subscription management not available";
     },
     get$paymentMethod() {
-      return "M\xe9todo de pago";
+      return "Payment Method";
     },
     get$paymentHistory() {
-      return "Historial de pago";
+      return "Payment History";
     },
     get$emptyChatDownloadWarning() {
-      return "No se puede descargar el chat vac\xedo";
+      return "Cannot download empty chat";
     },
     get$toggleImmersionMode() {
-      return "Modo de inmersi\xf3n";
+      return "Immersion Mode";
     },
     get$toggleImmersionModeDesc() {
-      return "Cuando est\xe1 habilitado, todos los mensajes se muestran en su idioma de destino. Esta configuraci\xf3n es m\xe1s \xfatil en intercambios de idiomas.";
+      return "When enabled, all messages are displayed in your target language. This setting is most useful in language exchanges.";
     },
     get$itToggleDescription() {
-      return "Esta herramienta de aprendizaje identificar\xe1 palabras en su idioma base y lo ayudar\xe1 a traducirlas a su idioma a aprender. Aunque es raro, la AI puede cometer errores de traducci\xf3n de vez en cuando.";
+      return "This language learning tool will identify words in your base language and help you translate them to your target language. Though rare, the AI can make translation errors.";
     },
     get$igcToggleDescription() {
-      return "Esta herramienta de aprendizaje identificar\xe1 errores comunes de ortograf\xeda, gram\xe1tica y puntuaci\xf3n en su mensaje y sugerir\xe1 correcciones. Aunque es raro, la AI puede cometer errores de correcci\xf3n de vez en cuando.";
+      return "This language learning tool will identify common spelling, grammar and punctuation errors in your message and suggest corrections. Though rare, the AI can make correction errors.";
     },
     get$alreadyInClass() {
-      return "Ya est\xe1s en este espacio.";
+      return "You are already in this space.";
     },
     get$originalMessage() {
-      return "Mensaje original";
+      return "Original Message";
     },
     get$sentMessage() {
-      return "Mensaje enviado";
+      return "Sent Message";
     },
     get$useType() {
-      return "Tipo de Uso";
+      return "Use Type";
     },
     get$notAvailable() {
-      return "No disponible";
+      return "Not Available";
     },
     get$taAndGaTooltip() {
-      return "Uso de la L2 con ayuda de traducci\xf3n y asistencia gramatical.";
+      return "L2 use with translation assistance and grammar assistance";
     },
     get$definitionsToolName() {
-      return "Definiciones";
+      return "Word Definitions";
     },
     get$definitionsToolDescription() {
-      return "Cuando est\xe1 habilitado, se puede hacer clic en las palabras subrayadas en azul para obtener definiciones. Haga clic en los mensajes para acceder a las definiciones.";
+      return "When enabled, words underlined in blue can be clicked for definitions. Click messages to access definitions.";
     },
     get$welcomeBack() {
-      return "\xa1Bienvenido de nuevo! Si form\xf3 parte del piloto 2023-2024, p\xf3ngase en contacto con nosotros para obtener su suscripci\xf3n especial de piloto. Si es usted un profesor que ha adquirido (o cuya instituci\xf3n ha adquirido) licencias para su clase, p\xf3ngase en contacto con nosotros para obtener su suscripci\xf3n de profesor.";
+      return "Welcome back! If you were part of the 2023-2024 pilot, please contact us for your special pilot subscription. If you are a teacher who has (or whose institution has) purchased licenses for your class, contact us for your teacher subscription.";
     },
     get$downloadTxtFile() {
-      return "Descargar archivo de texto";
+      return "Download Text File";
     },
     get$downloadCSVFile() {
-      return "Descargar archivo CSV";
+      return "Download CSV File";
     },
     get$promotionalSubscriptionDesc() {
-      return "Su suscripci\xf3n actual es promocional. Env\xede un mensaje a support@pangea.chat para cambiar su suscripci\xf3n.";
+      return "You currently have a lifetime promotional subscription. Message support@pangea.chat for help changing your subscription.";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Suscripci\xf3n adquirida a trav\xe9s de";
+      return "Subscription purchased through " + purchasePlatform;
     },
     get$oneWeekTrial() {
-      return "Una semana de prueba";
+      return "One Week Trial";
     },
     get$downloadXLSXFile() {
-      return "Descargar archivo Excel";
+      return "Download Excel File";
     },
     get$unkDisplayName() {
-      return "unknown";
+      return "Unknown";
     },
     get$wwCountryDisplayName() {
-      return "Mundial";
+      return "World Wide";
     },
     get$afCountryDisplayName() {
-      return "Afganist\xe1n";
+      return "Afghanistan";
     },
     get$axCountryDisplayName() {
-      return "Islas \xc5land";
+      return "Aland Islands";
     },
     get$alCountryDisplayName() {
       return "Albania";
     },
     get$dzCountryDisplayName() {
-      return "Argelia";
+      return "Algeria";
     },
     get$asCountryDisplayName() {
-      return "Samoa Americana";
+      return "American Samoa";
     },
     get$adCountryDisplayName() {
       return "Andorra";
@@ -1576,10 +1855,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Angola";
     },
     get$aiCountryDisplayName() {
-      return "Anguila";
+      return "Anguilla";
     },
     get$agCountryDisplayName() {
-      return "Antigua y Barbuda";
+      return "Antigua and Barbuda";
     },
     get$arCountryDisplayName() {
       return "Argentina";
@@ -1591,7 +1870,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aruba";
     },
     get$acCountryDisplayName() {
-      return "Isla de la Ascensi\xf3n";
+      return "Ascension Island";
     },
     get$auCountryDisplayName() {
       return "Australia";
@@ -1600,58 +1879,58 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Austria";
     },
     get$azCountryDisplayName() {
-      return "Azerbaiy\xe1n";
+      return "Azerbaijan";
     },
     get$bsCountryDisplayName() {
       return "Bahamas";
     },
     get$bhCountryDisplayName() {
-      return "Bar\xe9in";
+      return "Bahrain";
     },
     get$bdCountryDisplayName() {
-      return "Banglad\xe9s";
+      return "Bangladesh";
     },
     get$bbCountryDisplayName() {
       return "Barbados";
     },
     get$byCountryDisplayName() {
-      return "Bielorrusia";
+      return "Belarus";
     },
     get$beCountryDisplayName() {
-      return "B\xe9lgica";
+      return "Belgium";
     },
     get$bzCountryDisplayName() {
-      return "Belice";
+      return "Belize";
     },
     get$bjCountryDisplayName() {
-      return "Ben\xedn";
+      return "Benin";
     },
     get$bmCountryDisplayName() {
-      return "Bermudas";
+      return "Bermuda";
     },
     get$btCountryDisplayName() {
-      return "But\xe1n";
+      return "Bhutan";
     },
     get$boCountryDisplayName() {
       return "Bolivia";
     },
     get$baCountryDisplayName() {
-      return "Bosnia y Herzegovina";
+      return "Bosnia and Herzegovina";
     },
     get$bwCountryDisplayName() {
-      return "Botsuana";
+      return "Botswana";
     },
     get$brCountryDisplayName() {
-      return "Brasil";
+      return "Brazil";
     },
     get$ioCountryDisplayName() {
-      return "Territorio Brit\xe1nico del Oc\xe9ano \xcdndico";
+      return "British Indian Ocean Territory";
     },
     get$vgCountryDisplayName() {
-      return "Islas V\xedrgenes Brit\xe1nicas";
+      return "British Virgin Islands";
     },
     get$bnCountryDisplayName() {
-      return "Brun\xe9i";
+      return "Brunei";
     },
     get$bgCountryDisplayName() {
       return "Bulgaria";
@@ -1663,25 +1942,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Burundi";
     },
     get$khCountryDisplayName() {
-      return "Camboya";
+      return "Cambodia";
     },
     get$cmCountryDisplayName() {
-      return "Camer\xfan";
+      return "Cameroon";
     },
     get$caCountryDisplayName() {
-      return "Canad\xe1";
+      return "Canada";
     },
     get$cvCountryDisplayName() {
-      return "Cabo Verde";
+      return "Cape Verde";
     },
     get$bqCountryDisplayName() {
-      return "Pa\xedses Bajos Caribe\xf1os";
+      return "Caribbean Netherlands";
     },
     get$kyCountryDisplayName() {
-      return "Islas Caim\xe1n";
+      return "Cayman Islands";
     },
     get$cfCountryDisplayName() {
-      return "Rep\xfablica Centroafricana";
+      return "Central African Republic";
     },
     get$tdCountryDisplayName() {
       return "Chad";
@@ -1693,73 +1972,73 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "China";
     },
     get$cxCountryDisplayName() {
-      return "Isla de Navidad";
+      return "Christmas Island";
     },
     get$ccCountryDisplayName() {
-      return "Islas Cocos (Keeling)";
+      return "Cocos [Keeling] Islands";
     },
     get$coCountryDisplayName() {
       return "Colombia";
     },
     get$kmCountryDisplayName() {
-      return "Comoras";
+      return "Comoros";
     },
     get$cdCountryDisplayName() {
-      return "Rep\xfablica Democr\xe1tica del Congo";
+      return "Democratic Republic Congo";
     },
     get$cgCountryDisplayName() {
-      return "Rep\xfablica del Congo";
+      return "Republic of Congo";
     },
     get$ckCountryDisplayName() {
-      return "Islas Cook";
+      return "Cook Islands";
     },
     get$crCountryDisplayName() {
       return "Costa Rica";
     },
     get$ciCountryDisplayName() {
-      return "Costa de Marfil";
+      return "C\xf4te d'Ivoire";
     },
     get$hrCountryDisplayName() {
-      return "Croacia";
+      return "Croatia";
     },
     get$cuCountryDisplayName() {
       return "Cuba";
     },
     get$cwCountryDisplayName() {
-      return "Curazao";
+      return "Cura\xe7ao";
     },
     get$cyCountryDisplayName() {
-      return "Chipre";
+      return "Cyprus";
     },
     get$czCountryDisplayName() {
-      return "Rep\xfablica Checa";
+      return "Czech Republic";
     },
     get$dkCountryDisplayName() {
-      return "Dinamarca";
+      return "Denmark";
     },
     get$djCountryDisplayName() {
-      return "Yibuti";
+      return "Djibouti";
     },
     get$dmCountryDisplayName() {
       return "Dominica";
     },
     get$doCountryDisplayName() {
-      return "Rep\xfablica Dominicana";
+      return "Dominican Republic";
     },
     get$tlCountryDisplayName() {
-      return "Timor Oriental";
+      return "East Timor";
     },
     get$ecCountryDisplayName() {
       return "Ecuador";
     },
     get$egCountryDisplayName() {
-      return "Egipto";
+      return "Egypt";
     },
     get$svCountryDisplayName() {
       return "El Salvador";
     },
     get$gqCountryDisplayName() {
-      return "Guinea Ecuatorial";
+      return "Equatorial Guinea";
     },
     get$erCountryDisplayName() {
       return "Eritrea";
@@ -1768,34 +2047,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Estonia";
     },
     get$szCountryDisplayName() {
-      return "Esuatini";
+      return "Eswatini";
     },
     get$etCountryDisplayName() {
-      return "Etiop\xeda";
+      return "Ethiopia";
     },
     get$fkCountryDisplayName() {
-      return "Islas Malvinas";
+      return "Falkland Islands";
     },
     get$foCountryDisplayName() {
-      return "Islas Feroe";
+      return "Faroe Islands";
     },
     get$fjCountryDisplayName() {
-      return "Fiyi";
+      return "Fiji";
     },
     get$fiCountryDisplayName() {
-      return "Finlandia";
+      return "Finland";
     },
     get$frCountryDisplayName() {
-      return "Francia";
+      return "France";
     },
     get$gfCountryDisplayName() {
-      return "Guayana Francesa";
+      return "French Guiana";
     },
     get$pfCountryDisplayName() {
-      return "Polinesia Francesa";
+      return "French Polynesia";
     },
     get$gaCountryDisplayName() {
-      return "Gab\xf3n";
+      return "Gabon";
     },
     get$gmCountryDisplayName() {
       return "Gambia";
@@ -1804,7 +2083,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Georgia";
     },
     get$deCountryDisplayName() {
-      return "Alemania";
+      return "Germany";
     },
     get$ghCountryDisplayName() {
       return "Ghana";
@@ -1813,16 +2092,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Gibraltar";
     },
     get$grCountryDisplayName() {
-      return "Grecia";
+      return "Greece";
     },
     get$glCountryDisplayName() {
-      return "Groenlandia";
+      return "Greenland";
     },
     get$gdCountryDisplayName() {
-      return "Granada";
+      return "Grenada";
     },
     get$gpCountryDisplayName() {
-      return "Guadalupe";
+      return "Guadeloupe";
     },
     get$guCountryDisplayName() {
       return "Guam";
@@ -1843,10 +2122,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Guyana";
     },
     get$htCountryDisplayName() {
-      return "Hait\xed";
+      return "Haiti";
     },
     get$hmCountryDisplayName() {
-      return "Islas Heard y McDonald";
+      return "Heard Island and McDonald Islands";
     },
     get$hnCountryDisplayName() {
       return "Honduras";
@@ -1855,10 +2134,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Hong Kong";
     },
     get$huCountryDisplayName() {
-      return "Hungr\xeda";
+      return "Hungary";
     },
     get$isCountryDisplayName() {
-      return "Islandia";
+      return "Iceland";
     },
     get$inCountryDisplayName() {
       return "India";
@@ -1867,40 +2146,40 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Indonesia";
     },
     get$irCountryDisplayName() {
-      return "Ir\xe1n";
+      return "Iran";
     },
     get$iqCountryDisplayName() {
-      return "Irak";
+      return "Iraq";
     },
     get$ieCountryDisplayName() {
-      return "Irlanda";
+      return "Ireland";
     },
     get$imCountryDisplayName() {
-      return "Isla de Man";
+      return "Isle of Man";
     },
     get$ilCountryDisplayName() {
       return "Israel";
     },
     get$itCountryDisplayName() {
-      return "Italia";
+      return "Italy";
     },
     get$jmCountryDisplayName() {
       return "Jamaica";
     },
     get$jpCountryDisplayName() {
-      return "Jap\xf3n";
+      return "Japan";
     },
     get$jeCountryDisplayName() {
       return "Jersey";
     },
     get$joCountryDisplayName() {
-      return "Jordania";
+      return "Jordan";
     },
     get$kzCountryDisplayName() {
-      return "Kazajist\xe1n";
+      return "Kazakhstan";
     },
     get$keCountryDisplayName() {
-      return "Kenia";
+      return "Kenya";
     },
     get$kiCountryDisplayName() {
       return "Kiribati";
@@ -1912,37 +2191,37 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kuwait";
     },
     get$kgCountryDisplayName() {
-      return "Kirguist\xe1n";
+      return "Kyrgyzstan";
     },
     get$laCountryDisplayName() {
       return "Laos";
     },
     get$lvCountryDisplayName() {
-      return "Letonia";
+      return "Latvia";
     },
     get$lbCountryDisplayName() {
-      return "L\xedbano";
+      return "Lebanon";
     },
     get$lsCountryDisplayName() {
-      return "Lesoto";
+      return "Lesotho";
     },
     get$lrCountryDisplayName() {
       return "Liberia";
     },
     get$lyCountryDisplayName() {
-      return "Libia";
+      return "Libya";
     },
     get$liCountryDisplayName() {
       return "Liechtenstein";
     },
     get$ltCountryDisplayName() {
-      return "Lituania";
+      return "Lithuania";
     },
     get$luCountryDisplayName() {
-      return "Luxemburgo";
+      return "Luxembourg";
     },
     get$moCountryDisplayName() {
-      return "Macao";
+      return "Macau";
     },
     get$mkCountryDisplayName() {
       return "Macedonia";
@@ -1951,46 +2230,46 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Madagascar";
     },
     get$mwCountryDisplayName() {
-      return "Malaui";
+      return "Malawi";
     },
     get$myCountryDisplayName() {
-      return "Malasia";
+      return "Malaysia";
     },
     get$mvCountryDisplayName() {
-      return "Maldivas";
+      return "Maldives";
     },
     get$mlCountryDisplayName() {
-      return "Mal\xed";
+      return "Mali";
     },
     get$mtCountryDisplayName() {
       return "Malta";
     },
     get$mhCountryDisplayName() {
-      return "Islas Marshall";
+      return "Marshall Islands";
     },
     get$mqCountryDisplayName() {
-      return "Martinica";
+      return "Martinique";
     },
     get$mrCountryDisplayName() {
       return "Mauritania";
     },
     get$muCountryDisplayName() {
-      return "Mauricio";
+      return "Mauritius";
     },
     get$ytCountryDisplayName() {
       return "Mayotte";
     },
     get$mxCountryDisplayName() {
-      return "M\xe9xico";
+      return "Mexico";
     },
     get$fmCountryDisplayName() {
       return "Micronesia";
     },
     get$mdCountryDisplayName() {
-      return "Moldavia";
+      return "Moldova";
     },
     get$mcCountryDisplayName() {
-      return "M\xf3naco";
+      return "Monaco";
     },
     get$mnCountryDisplayName() {
       return "Mongolia";
@@ -2002,13 +2281,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Montserrat";
     },
     get$maCountryDisplayName() {
-      return "Marruecos";
+      return "Morocco";
     },
     get$mzCountryDisplayName() {
       return "Mozambique";
     },
     get$mmCountryDisplayName() {
-      return "Myanmar (Birmania)";
+      return "Myanmar (Burma)";
     },
     get$naCountryDisplayName() {
       return "Namibia";
@@ -2020,19 +2299,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nepal";
     },
     get$nlCountryDisplayName() {
-      return "Pa\xedses Bajos";
+      return "Netherlands";
     },
     get$ncCountryDisplayName() {
-      return "Nueva Caledonia";
+      return "New Caledonia";
     },
     get$nzCountryDisplayName() {
-      return "Nueva Zelanda";
+      return "New Zealand";
     },
     get$niCountryDisplayName() {
       return "Nicaragua";
     },
     get$neCountryDisplayName() {
-      return "N\xedger";
+      return "Niger";
     },
     get$ngCountryDisplayName() {
       return "Nigeria";
@@ -2041,46 +2320,46 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Niue";
     },
     get$nfCountryDisplayName() {
-      return "Isla Norfolk";
+      return "Norfolk Island";
     },
     get$kpCountryDisplayName() {
-      return "Corea del Norte";
+      return "North Korea";
     },
     get$mpCountryDisplayName() {
-      return "Islas Marianas del Norte";
+      return "Northern Mariana Islands";
     },
     get$noCountryDisplayName() {
-      return "Noruega";
+      return "Norway";
     },
     get$omCountryDisplayName() {
-      return "Om\xe1n";
+      return "Oman";
     },
     get$pkCountryDisplayName() {
-      return "Pakist\xe1n";
+      return "Pakistan";
     },
     get$pwCountryDisplayName() {
-      return "Palaos";
+      return "Palau";
     },
     get$psCountryDisplayName() {
-      return "Territorios Palestinos";
+      return "Palestinian Territories";
     },
     get$paCountryDisplayName() {
-      return "Panam\xe1";
+      return "Panama";
     },
     get$pgCountryDisplayName() {
-      return "Pap\xfaa Nueva Guinea";
+      return "Papua New Guinea";
     },
     get$pyCountryDisplayName() {
       return "Paraguay";
     },
     get$peCountryDisplayName() {
-      return "Per\xfa";
+      return "Peru";
     },
     get$phCountryDisplayName() {
-      return "Filipinas";
+      return "Philippines";
     },
     get$plCountryDisplayName() {
-      return "Polonia";
+      return "Poland";
     },
     get$ptCountryDisplayName() {
       return "Portugal";
@@ -2089,40 +2368,40 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Puerto Rico";
     },
     get$qaCountryDisplayName() {
-      return "Catar";
+      return "Qatar";
     },
     get$reCountryDisplayName() {
-      return "Reuni\xf3n";
+      return "R\xe9union";
     },
     get$roCountryDisplayName() {
-      return "Ruman\xeda";
+      return "Romania";
     },
     get$ruCountryDisplayName() {
-      return "Rusia";
+      return "Russia";
     },
     get$rwCountryDisplayName() {
-      return "Ruanda";
+      return "Rwanda";
     },
     get$blCountryDisplayName() {
-      return "San Bartolom\xe9";
+      return "Saint Barth\xe9lemy";
     },
     get$shCountryDisplayName() {
-      return "Santa Elena";
+      return "Saint Helena";
     },
     get$knCountryDisplayName() {
-      return "San Crist\xf3bal y Nieves";
+      return "St. Kitts";
     },
     get$lcCountryDisplayName() {
-      return "Santa Luc\xeda";
+      return "St. Lucia";
     },
     get$mfCountryDisplayName() {
-      return "San Mart\xedn";
+      return "Saint Martin";
     },
     get$pmCountryDisplayName() {
-      return "San Pedro y Miquel\xf3n";
+      return "Saint Pierre and Miquelon";
     },
     get$vcCountryDisplayName() {
-      return "San Vicente y las Granadinas";
+      return "St. Vincent";
     },
     get$wsCountryDisplayName() {
       return "Samoa";
@@ -2131,10 +2410,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "San Marino";
     },
     get$stCountryDisplayName() {
-      return "Santo Tom\xe9 y Pr\xedncipe";
+      return "S\xe3o Tom\xe9 and Pr\xedncipe";
     },
     get$saCountryDisplayName() {
-      return "Arabia Saudita";
+      return "Saudi Arabia";
     },
     get$snCountryDisplayName() {
       return "Senegal";
@@ -2146,73 +2425,73 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Seychelles";
     },
     get$slCountryDisplayName() {
-      return "Sierra Leona";
+      return "Sierra Leone";
     },
     get$sgCountryDisplayName() {
-      return "Singapur";
+      return "Singapore";
     },
     get$sxCountryDisplayName() {
-      return "San Mart\xedn";
+      return "Sint Maarten";
     },
     get$skCountryDisplayName() {
-      return "Eslovaquia";
+      return "Slovakia";
     },
     get$siCountryDisplayName() {
-      return "Eslovenia";
+      return "Slovenia";
     },
     get$sbCountryDisplayName() {
-      return "Islas Salom\xf3n";
+      return "Solomon Islands";
     },
     get$soCountryDisplayName() {
       return "Somalia";
     },
     get$zaCountryDisplayName() {
-      return "Sud\xe1frica";
+      return "South Africa";
     },
     get$gsCountryDisplayName() {
-      return "Islas Georgia del Sur y Sandwich del Sur";
+      return "South Georgia and the South Sandwich Islands";
     },
     get$krCountryDisplayName() {
-      return "Corea del Sur";
+      return "South Korea";
     },
     get$ssCountryDisplayName() {
-      return "Sud\xe1n del Sur";
+      return "South Sudan";
     },
     get$esCountryDisplayName() {
-      return "Espa\xf1a";
+      return "Spain";
     },
     get$lkCountryDisplayName() {
       return "Sri Lanka";
     },
     get$sdCountryDisplayName() {
-      return "Sud\xe1n";
+      return "Sudan";
     },
     get$srCountryDisplayName() {
-      return "Surinam";
+      return "Suriname";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard y Jan Mayen";
+      return "Svalbard and Jan Mayen";
     },
     get$seCountryDisplayName() {
-      return "Suecia";
+      return "Sweden";
     },
     get$chCountryDisplayName() {
-      return "Suiza";
+      return "Switzerland";
     },
     get$syCountryDisplayName() {
-      return "Siria";
+      return "Syria";
     },
     get$twCountryDisplayName() {
-      return "Taiw\xe1n";
+      return "Taiwan";
     },
     get$tjCountryDisplayName() {
-      return "Tayikist\xe1n";
+      return "Tajikistan";
     },
     get$tzCountryDisplayName() {
       return "Tanzania";
     },
     get$thCountryDisplayName() {
-      return "Tailandia";
+      return "Thailand";
     },
     get$tgCountryDisplayName() {
       return "Togo";
@@ -2224,52 +2503,52 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tonga";
     },
     get$ttCountryDisplayName() {
-      return "Trinidad y Tobago";
+      return "Trinidad/Tobago";
     },
     get$tnCountryDisplayName() {
-      return "T\xfanez";
+      return "Tunisia";
     },
     get$trCountryDisplayName() {
-      return "Turqu\xeda";
+      return "Turkey";
     },
     get$tmCountryDisplayName() {
-      return "Turkmenist\xe1n";
+      return "Turkmenistan";
     },
     get$tcCountryDisplayName() {
-      return "Islas Turcas y Caicos";
+      return "Turks and Caicos Islands";
     },
     get$tvCountryDisplayName() {
       return "Tuvalu";
     },
     get$viCountryDisplayName() {
-      return "Islas V\xedrgenes de los Estados Unidos";
+      return "U.S. Virgin Islands";
     },
     get$ugCountryDisplayName() {
       return "Uganda";
     },
     get$uaCountryDisplayName() {
-      return "Ucrania";
+      return "Ukraine";
     },
     get$aeCountryDisplayName() {
-      return "Emiratos \xc1rabes Unidos";
+      return "United Arab Emirates";
     },
     get$gbCountryDisplayName() {
-      return "Reino Unido";
+      return "United Kingdom";
     },
     get$usCountryDisplayName() {
-      return "Estados Unidos";
+      return "United States";
     },
     get$uyCountryDisplayName() {
       return "Uruguay";
     },
     get$uzCountryDisplayName() {
-      return "Uzbekist\xe1n";
+      return "Uzbekistan";
     },
     get$vuCountryDisplayName() {
       return "Vanuatu";
     },
     get$vaCountryDisplayName() {
-      return "Ciudad del Vaticano";
+      return "Vatican City";
     },
     get$veCountryDisplayName() {
       return "Venezuela";
@@ -2278,10 +2557,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Vietnam";
     },
     get$wfCountryDisplayName() {
-      return "Wallis y Futuna";
+      return "Wallis and Futuna";
     },
     get$ehCountryDisplayName() {
-      return "Sahara Occidental";
+      return "Western Sahara";
     },
     get$yeCountryDisplayName() {
       return "Yemen";
@@ -2290,319 +2569,163 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Zambia";
     },
     get$zwCountryDisplayName() {
-      return "Zimbabue";
+      return "Zimbabwe";
     },
     get$pay() {
-      return "Pagar";
+      return "Pay";
     },
     get$copyClassCodeDesc() {
-      return "Los estudiantes que ya est\xe1n en la aplicaci\xf3n pueden 'Unirse a una clase o a un intercambio' a trav\xe9s del men\xfa principal.";
+      return "Users who are already in the app can 'Join space' via the main menu.";
     },
     invitedToSpace$2(space, user) {
-      return user + " te ha invitado a unirte a un espacio: \xa1" + space + "! \xbfDeseas aceptar?";
+      return user + " has invited you to join a space: " + space + "! Do you wish to accept?";
     },
     get$declinedInvitation() {
-      return "Invitaci\xf3n rechazada";
+      return "Declined invitation";
     },
     get$acceptedInvitation() {
-      return "Invitaci\xf3n aceptada";
+      return "Accepted invitation";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 \xa1Est\xe1s invitado!";
+      return "\ud83d\udce9 You're invited!";
     },
     invitedToChat$2($name, user) {
-      return user + " te ha invitado a unirte a un chat: \xa1" + $name + "! \xbfDeseas aceptar?";
+      return user + " has invited you to join a chat: " + $name + "! Do you wish to accept?";
     },
     get$monthlySubscription() {
-      return "Mensualmente";
+      return "Monthly";
     },
     get$yearlySubscription() {
-      return "Anualmente";
+      return "Yearly";
     },
     get$defaultSubscription() {
-      return "Suscripci\xf3n al chat de Pangea";
+      return "Pangea Chat Subscription";
     },
     get$freeTrial() {
-      return "Prueba gratuita";
+      return "Free Trial";
     },
     get$noDataFound() {
-      return "No se han encontrado datos";
+      return "No data found";
     },
     promoSubscriptionExpirationDesc$1(expiration) {
-      return "Su suscripci\xf3n actual es promocional y expira el " + expiration + ". Env\xede un mensaje a support@pangea.chat para cambiar su suscripci\xf3n.";
+      return "Your current subscription is promotional and expires on " + expiration + ". Message support@pangea.chat for help changing your subscription.";
     },
     get$blurMeansTranslateTitle() {
-      return "\xbfPor qu\xe9 est\xe1 borroso el mensaje?";
+      return "Why is the message blurred?";
     },
     get$blurMeansTranslateBody() {
-      return "Mientras el Modo Inmersi\xf3n est\xe9 activado, los mensajes que se env\xeden en tu idioma base aparecer\xe1n borrosos mientras Pangea Bot los traduce a tu idioma de destino. El Modo Inmersi\xf3n puede activarse en los ajustes individuales y espaciales.";
+      return "While Immersion Mode is on, messages that are sent in your base language will be blurred while Pangea Bot translates them to your target language. Immersion Mode can be toggled in individual and space settings.";
     },
     get$someErrorTitle() {
-      return "Hm, algo no est\xe1 bien";
+      return "Hm, something's not right";
     },
     get$someErrorBody() {
-      return "Podr\xeda ser un error o algo en tu lenguaje base.";
+      return "It could be an error or something in your base language.";
     },
     get$bestCorrectionFeedback() {
-      return "\xa1Correcto!";
+      return "That's correct!";
     },
     get$distractorFeedback() {
-      return "Eso no es del todo correcto.";
+      return "That's not quite right.";
     },
     get$bestAnswerFeedback() {
-      return "\xa1Correcto!";
+      return "That's correct!";
     },
     get$definitionDefaultPrompt() {
-      return "\xbfQu\xe9 significa esta palabra?";
+      return "What does this word mean?";
     },
     get$practiceDefaultPrompt() {
-      return "\xbfCu\xe1l es la mejor respuesta?";
+      return "What is the best answer?";
     },
     get$correctionDefaultPrompt() {
-      return "\xbfCu\xe1l es el mejor reemplazo?";
+      return "What is the best replacement?";
     },
     get$why() {
-      return "\xbfPor qu\xe9?";
+      return "Why?";
     },
     get$definition() {
-      return "Definici\xf3n";
+      return "Definition";
     },
     get$exampleSentence() {
-      return "Ejemplo de frase";
+      return "Example Sentence";
     },
     get$reportToTeacher() {
-      return "\xbfA qui\xe9n desea informar de este mensaje?";
+      return "Who do you want to report this message to?";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " ha informado de un mensaje de " + reportedUserId + " en el chat " + roomName + ".";
+      return reportingUserId + " has reported a message from " + reportedUserId + " in the chat " + roomName;
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Mensaje: " + reportedMessage + "\nMotivo: " + reason;
+      return "Message: " + reportedMessage + "\nReason: " + reason;
     },
     get$noTeachersFound() {
-      return "No se han encontrado profesores a los que informar";
-    },
-    get$pleaseEnterANumber() {
-      return "";
-    },
-    get$archiveRoomDescription() {
-      return "The chat will be moved to the archive. Other users will be able to see that you have left the chat.";
-    },
-    get$roomUpgradeDescription() {
-      return "";
-    },
-    get$removeDevicesDescription() {
-      return "";
-    },
-    get$banUserDescription() {
-      return "";
-    },
-    get$unbanUserDescription() {
-      return "";
-    },
-    get$kickUserDescription() {
-      return "";
-    },
-    get$makeAdminDescription() {
-      return "";
-    },
-    get$yourGlobalUserIdIs() {
-      return "Tu ID de usuario global es:";
-    },
-    noUsersFoundWithQuery$1(query) {
-      return 'Lamentablemente no se ha encontrado ning\xfan usuario con "' + query + '". Por favor, compruebe si ha cometido un error tipogr\xe1fico.';
-    },
-    get$knocking() {
-      return "Golpeando";
-    },
-    chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "El chat puede descubrirse mediante la b\xfasqueda en " + server + ".";
-    },
-    get$searchChatsRooms() {
-      return "Busca #chats, @users...";
+      return "No teachers found to report to";
     },
     trialExpiration$1(expiration) {
-      return "Su prueba gratuita caduca el " + expiration + ".";
+      return "Your free trial expires on " + expiration;
     },
     get$freeTrialDesc() {
-      return "Los nuevos usuarios reciben una semana de prueba gratuita de Pangea Chat";
+      return "New users recieve a one week free trial of Pangea Chat";
     },
     get$activateTrial() {
-      return "Activar prueba gratuita";
+      return "Free 7-Day Trial";
     },
     get$successfullySubscribed() {
-      return "Se ha suscrito correctamente.";
+      return "You have successfully subscribed!";
     },
     get$clickToManageSubscription() {
-      return "Haga clic aqu\xed para gestionar su suscripci\xf3n.";
-    },
-    get$nothingFound() {
-      return "No se ha encontrado nada...";
-    },
-    get$wrongRecoveryKey() {
-      return "Lo siento... esta no parece ser la clave de recuperaci\xf3n correcta.";
-    },
-    get$startConversation() {
-      return "Iniciar conversaci\xf3n";
-    },
-    get$commandHint_sendraw() {
-      return "Enviar json sin procesar";
-    },
-    get$searchForUsers() {
-      return "Buscar @usuarios...";
-    },
-    get$pleaseEnterYourCurrentPassword() {
-      return "Introduzca su contrase\xf1a actual";
-    },
-    get$newPassword() {
-      return "Nueva contrase\xf1a";
-    },
-    get$pleaseChooseAStrongPassword() {
-      return "Elija una contrase\xf1a segura";
-    },
-    get$passwordsDoNotMatch() {
-      return "\xa1Las contrase\xf1as no coinciden!";
-    },
-    get$passwordIsWrong() {
-      return "La contrase\xf1a introducida es incorrecta";
-    },
-    get$publicChatAddresses() {
-      return "Direcciones de chat p\xfablicas";
-    },
-    get$createNewAddress() {
-      return "Crear una nueva direcci\xf3n";
-    },
-    get$joinSpace() {
-      return "Unirse al espacio";
-    },
-    get$publicSpaces() {
-      return "Espacios p\xfablicos";
-    },
-    get$decline() {
-      return "Disminuci\xf3n";
-    },
-    get$thisDevice() {
-      return "Este aparato:";
-    },
-    get$initAppError() {
-      return "Se ha producido un error al iniciar la aplicaci\xf3n";
-    },
-    get$userRole() {
-      return "Funci\xf3n del usuario";
-    },
-    searchIn$1(chat) {
-      return 'Buscar en el chat "' + chat + '"...';
-    },
-    get$searchMore() {
-      return "Buscar m\xe1s...";
-    },
-    get$gallery() {
-      return "Galer\xeda";
-    },
-    get$files(_) {
-      return "Archivos";
-    },
-    sessionLostBody$2(url, error) {
-      return "Su sesi\xf3n se ha perdido. Por favor, informe de este error a los desarrolladores en " + url + ". El mensaje de error es: " + error;
-    },
-    restoreSessionBody$2(url, error) {
-      return "La aplicaci\xf3n intenta ahora restaurar tu sesi\xf3n desde la copia de seguridad. Por favor, informa de este error a los desarrolladores en " + url + ". El mensaje de error es: " + error;
+      return "Click here to manage your subscription.";
     },
     get$signUp() {
-      return "Registrarse";
+      return "Sign up";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Por favor elegir al menos " + min + " car\xe1cteres";
+      return "Please choose at least " + min + " characters.";
     },
     get$pleaseEnterValidEmail() {
-      return "Por favor ingrese un correo electr\xf3nico v\xe1lido.";
+      return "Please enter a valid email address.";
     },
     get$pleaseChooseAUsername() {
-      return "Por favor, elija un nombre de usuario";
-    },
-    get$sendReadReceipts() {
-      return "Enviar recibos de lectura";
-    },
-    get$sendTypingNotificationsDescription() {
-      return "Los dem\xe1s participantes en un chat pueden ver cu\xe1ndo est\xe1s escribiendo un nuevo mensaje.";
-    },
-    get$sendReadReceiptsDescription() {
-      return "Los dem\xe1s participantes en un chat pueden ver cu\xe1ndo has le\xeddo un mensaje.";
-    },
-    get$verifyOtherDevice() {
-      return "\ud83d\udd10 Verificar otro dispositivo";
-    },
-    get$verifyOtherDeviceDescription() {
-      return "Cuando verificas otro dispositivo, esos dispositivos pueden intercambiar claves, aumentando tu seguridad general. \ud83d\udcaa Cuando inicies una verificaci\xf3n, aparecer\xe1 una ventana emergente en la app de ambos dispositivos. All\xed ver\xe1s entonces una serie de emojis o n\xfameros que tienes que comparar entre s\xed. Lo mejor es que tengas ambos dispositivos a mano antes de iniciar la verificaci\xf3n. \ud83e\udd33";
-    },
-    acceptedKeyVerification$1(sender) {
-      return sender + " verificaci\xf3n de clave aceptada";
-    },
-    canceledKeyVerification$1(sender) {
-      return sender + " cancel\xf3 la verificaci\xf3n de claves";
-    },
-    completedKeyVerification$1(sender) {
-      return sender + " verificaci\xf3n de claves completada";
-    },
-    isReadyForKeyVerification$1(sender) {
-      return sender + " est\xe1 listo para la verificaci\xf3n de claves";
-    },
-    requestedKeyVerification$1(sender) {
-      return sender + " solicit\xf3 verificaci\xf3n de claves";
-    },
-    startedKeyVerification$1(sender) {
-      return sender + " ha iniciado la verificaci\xf3n de claves";
+      return "Please choose a username";
     },
     get$trialPeriodExpired() {
-      return "Su periodo de prueba ha expirado";
+      return "Your trial period has expired";
     },
     get$subscribedToUnlockTools() {
-      return "\xa1Suscr\xedbete para desbloquear la traducci\xf3n interactiva y la verificaci\xf3n gramatical, la reproducci\xf3n de audio, las actividades de pr\xe1ctica personalizadas y la anal\xedtica de aprendizaje!";
+      return "Subscribe to unlock interactive translation and grammar checking, audio playback, personalized practice activities, and learning analytics!";
     },
     get$translationTooltip() {
-      return "Traducir";
+      return "Translate";
     },
     get$audioTooltip() {
-      return "Reproducir audio";
+      return "Play Audio";
     },
     get$speechToTextTooltip() {
-      return "Transcripci\xf3n";
+      return "Transcript";
     },
     get$kickBotWarning() {
-      return "Patear Pangea Bot eliminar\xe1 el bot de conversaci\xf3n de este chat.";
-    },
-    get$stickers() {
-      return "Pegatinas";
-    },
-    get$discover() {
-      return "Descubrir";
-    },
-    get$commandHint_ignore() {
-      return "Ignorar el ID de matriz dado";
-    },
-    get$commandHint_unignore() {
-      return "Designorar el ID de matriz dado";
+      return "Kicking Pangea Bot will remove the conversation bot from this chat.";
     },
     get$conversationBotModeSelectDescription() {
-      return "Modo bot";
+      return "Chat activity";
     },
     get$conversationBotModeSelectOption_discussion() {
-      return "Debate";
+      return "Discussion";
     },
     get$conversationBotModeSelectOption_custom() {
-      return "A medida";
+      return "Custom";
     },
     get$conversationBotDiscussionZone_discussionTopicPlaceholder() {
-      return "Establecer tema de debate";
+      return "Set discussion topic";
     },
     get$conversationBotDiscussionZone_discussionKeywordsPlaceholder() {
-      return "Establecer palabras clave de debate";
+      return "Set discussion keywords";
     },
     get$conversationBotCustomZone_customSystemPromptPlaceholder() {
-      return "Establecer mensaje del sistema personalizado";
+      return "Set custom system prompt";
     },
     get$botConfig() {
-      return "Configuraci\xf3n de bots y actividades";
+      return "Bot and activity settings";
     },
     get$botConfigNoPermissionTitle() {
       return "No permission";
@@ -2611,310 +2734,244 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Contact room admin to change bot configuration";
     },
     get$conversationBotStatus() {
-      return "Estado del Bot";
+      return "Invite bot";
     },
     get$updatePhoneOS() {
-      return "Puede que necesites actualizar la versi\xf3n del sistema operativo de tu dispositivo.";
+      return "You may need to update your device's OS version.";
     },
     get$wordsPerMinute() {
-      return "Palabras por minuto";
+      return "Words per minute";
     },
     get$autoIGCToolName() {
-      return "Ejecutar autom\xe1ticamente la asistencia ling\xfc\xedstica";
+      return "Run language assistance automatically";
     },
     get$autoIGCToolDescription() {
-      return "Ejecutar autom\xe1ticamente la asistencia ling\xfc\xedstica despu\xe9s de escribir mensajes";
+      return "Automatically run language assistance after typing messages";
     },
     get$tooltipInstructionsTitle() {
-      return "\xbfNo sabes para qu\xe9 sirve?";
+      return "Not sure what that does?";
     },
     get$tooltipInstructionsBrowserBody() {
-      return "Pase el rat\xf3n sobre los elementos para ver informaci\xf3n sobre herramientas.";
+      return "Hover over items to view tooltips.";
     },
     get$chatCapacity() {
-      return "Capacidad de chat";
+      return "Chat capacity";
     },
     get$spaceCapacity() {
-      return "Capacidad espacial";
+      return "Space capacity";
     },
     get$roomFull() {
-      return "Esta sala ya est\xe1 al l\xedmite de su capacidad.";
+      return "This room is already at capacity.";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Capacidad de chat modificada";
+      return "Chat capacity changed";
     },
     get$spaceCapacityHasBeenChanged() {
-      return "Capacidad espacial modificada";
+      return "Space capacity changed";
     },
     get$chatCapacitySetTooLow() {
-      return "La capacidad del chat no se puede establecer por debajo del n\xfamero actual de no administradores.";
+      return "Chat capacity cannot be set below the current number of non-admins.";
     },
     get$spaceCapacitySetTooLow() {
-      return "La capacidad de espacio no puede fijarse por debajo del n\xfamero actual de no administradores.";
+      return "Space capacity cannot be set below the current number of non-admins.";
     },
     get$chatCapacityExplanation() {
-      return "La capacidad del chat limita el n\xfamero de usuarios no administradores permitidos en un chat.";
+      return "Chat capacity limits the number of non-admins allowed in a chat.";
     },
     get$spaceCapacityExplanation() {
-      return "La capacidad del espacio limita el n\xfamero de no administradores permitidos en un espacio.";
+      return "Space capacity limits the number of non-admins allowed in a space.";
     },
     get$chatExceedsCapacity() {
-      return "Este chat supera su capacidad.";
+      return "This chat exceeds its capacity.";
     },
     get$spaceExceedsCapacity() {
-      return "Este espacio supera su capacidad.";
+      return "This space exceeds its capacity.";
     },
     get$tooManyRequest() {
-      return "Demasiadas solicitudes, por favor int\xe9ntelo m\xe1s tarde.";
+      return "Too many request, please try again later.";
     },
     get$enterNumber() {
-      return "Introduzca un valor num\xe9rico entero.";
+      return "Please enter a whole number value.";
     },
     get$buildTranslation() {
-      return "Construye tu traducci\xf3n a partir de las opciones anteriores";
-    },
-    thereAreCountUsersBlocked$1(count) {
-      return "Ahora mismo hay " + count + " usuarios bloqueados.";
-    },
-    get$restricted() {
-      return "Restringido";
-    },
-    get$knockRestricted() {
-      return "Golpe restringido";
-    },
-    get$createNewSpace() {
-      return "Crear una sala de intercambio";
+      return "Build your translation from the choices above";
     },
     get$practice() {
-      return "Pr\xe1ctica";
+      return "Practice";
     },
     get$speechToTextBody() {
-      return "Para los mensajes de voz, puedes ver una transcripci\xf3n y la puntuaci\xf3n de palabras por minuto del orador.";
-    },
-    get$previous() {
-      return "Anterior";
+      return "For voice messages, you can see a transcript as well as the speaker's Words Per Minute score.";
     },
     get$versionNotFound() {
-      return "Versi\xf3n no encontrada";
+      return "Version Not Found";
     },
     get$fetchingVersion() {
-      return "Obteniendo versi\xf3n...";
+      return "Fetching version...";
     },
     get$versionFetchError() {
-      return "Error al obtener la versi\xf3n";
+      return "Error fetching version";
     },
     versionText$2(version, buildNumber) {
-      return "Versi\xf3n: " + version + "+" + buildNumber;
+      return "Version: " + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Los mensajes en tu idioma base no ser\xe1n traducidos.";
-    },
-    get$continueText() {
-      return "Continuar";
+      return "Messages in your base language will not be translated.";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "YTienes una suscripci\xf3n activa";
+      return "You have an active subscription";
     },
     get$deleteSubscriptionWarningBody() {
-      return "Eliminar tu cuenta no cancelar\xe1 autom\xe1ticamente tu suscripci\xf3n.";
+      return "Deleting your account will not automatically cancel your subscription.";
     },
     get$manageSubscription() {
-      return "Gestionar Suscripci\xf3n";
+      return "Manage Subscription";
     },
     get$createChat() {
-      return "Crear chat";
+      return "Create chat";
     },
     get$error520Title() {
-      return "Por favor, intenta de nuevo.";
+      return "Please try again.";
     },
     get$error520Desc() {
-      return "Lo sentimos, no pudimos entender tu mensaje...";
+      return "Sorry, we could not understand your message...";
     },
     get$level(_) {
-      return "Nivel";
+      return "Level";
     },
     get$translationChoicesBody() {
-      return "Haz clic y mant\xe9n presionada una opci\xf3n para una pista.";
-    },
-    get$sendCanceled() {
-      return "Env\xedo cancelado";
-    },
-    goToSpace$1(space) {
-      return "Ir al espacio: " + space;
-    },
-    get$markAsUnread() {
-      return "Marcar como no le\xeddo";
-    },
-    userLevel$1(level) {
-      return "" + level + " - Usuario";
-    },
-    moderatorLevel$1(level) {
-      return "" + level + " - Moderador";
-    },
-    adminLevel$1(level) {
-      return "" + level + " - Administrador";
-    },
-    get$changeGeneralChatSettings() {
-      return "Cambiar la configuraci\xf3n general del chat.";
-    },
-    get$inviteOtherUsers() {
-      return "Invitar a otros usuarios a este chat";
-    },
-    get$changeTheChatPermissions() {
-      return "Cambiar los permisos del chat";
-    },
-    get$changeTheVisibilityOfChatHistory() {
-      return "Cambiar la visibilidad del historial de chat";
-    },
-    get$changeTheCanonicalRoomAlias() {
-      return "Cambiar la direcci\xf3n del chat p\xfablico principal.";
-    },
-    get$sendRoomNotifications() {
-      return "Enviar una notificaci\xf3n a @room";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Cambiar la descripci\xf3n del chat";
-    },
-    get$chatPermissionsDescription() {
-      return "Define qu\xe9 nivel de poder es necesario para ciertas acciones en este chat. Los niveles de poder 0, 50 y 100 suelen representar a usuarios, moderadores y administradores, pero cualquier graduaci\xf3n es posible.";
-    },
-    updateInstalled$1(version) {
-      return "\ud83c\udf89 \xa1Actualizaci\xf3n " + version + " instalada!";
-    },
-    get$doesNotSeemToBeAValidHomeserver() {
-      return "No parece ser un homeserver compatible. \xbfURL incorrecta?";
+      return "Click and hold an option for a hint.";
     },
     get$grammar() {
-      return "Gram\xe1tica";
+      return "Grammar";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "El contacto ha sido invitado al chat";
+      return "Contact has been invited to the chat";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 Invitar al chat";
+      return "\ud83d\udce8 Invite chat";
     },
     get$chatName() {
-      return "Nombre del chat";
+      return "Chat name";
     },
     get$clickTheWordAgainToDeselect() {
       return "Click the selected word to deselect it.";
     },
     get$l2SupportNa() {
-      return "Haz clic en la palabra seleccionada para deseleccionarla";
+      return "Not Available";
     },
     get$l2SupportAlpha() {
-      return "Alfa";
+      return "Alpha";
     },
     get$l2SupportBeta() {
       return "Beta";
     },
     get$l2SupportFull() {
-      return "Lleno";
+      return "Full";
     },
     get$missingVoiceTitle() {
-      return "La voz que falta";
+      return "Missing voice";
     },
     get$voiceNotAvailable() {
-      return "Parece que no tienes una voz instalada para este idioma.";
+      return "You don't have a voice installed for this language.";
     },
     get$playAudio() {
-      return "Jugar";
+      return "Play";
     },
     get$stop(_) {
       return "Stop";
     },
     get$grammarCopyPOSsconj() {
-      return "Conjunci\xf3n subordinante";
+      return "Subordinating Conjunction";
     },
     get$grammarCopyPOSnum() {
-      return "N\xfamero";
+      return "Number";
     },
     get$grammarCopyPOSverb() {
-      return "Verbo";
+      return "Verb";
     },
     get$grammarCopyPOSaffix() {
-      return "Coloque";
+      return "Affix";
     },
     get$grammarCopyPOSpart() {
-      return "Part\xedculas";
+      return "Particle";
     },
     get$grammarCopyPOSadj() {
-      return "Adjetivo";
+      return "Adjective";
     },
     get$grammarCopyPOScconj() {
-      return "Conjunci\xf3n de coordinaci\xf3n";
+      return "Coordinating Conjunction";
     },
     get$grammarCopyPOSpunct() {
-      return "Puntuaci\xf3n";
+      return "Punctuation";
     },
     get$grammarCopyPOSadv() {
-      return "Adverbio";
+      return "Adverb";
     },
     get$grammarCopyPOSaux() {
-      return "Auxiliar";
+      return "Auxiliary";
     },
     get$grammarCopyPOSspace() {
-      return "Espacio";
+      return "Space";
     },
     get$grammarCopyPOSsym() {
-      return "S\xedmbolo";
+      return "Symbol";
     },
     get$grammarCopyPOSdet() {
-      return "Determinante";
+      return "Determiner";
     },
     get$grammarCopyPOSpron() {
-      return "Pronombre";
+      return "Pronoun";
     },
     get$grammarCopyPOSadp() {
-      return "Adposici\xf3n";
+      return "Adposition";
     },
     get$grammarCopyPOSpropn() {
-      return "Nombre propio";
+      return "Proper Noun";
     },
     get$grammarCopyPOSnoun() {
-      return "Sustantivo";
+      return "Noun";
     },
     get$grammarCopyPOSintj() {
-      return "Interjecci\xf3n";
+      return "Interjection";
     },
     get$grammarCopyPOSx() {
-      return "Otros";
+      return "Other";
     },
     get$grammarCopyGENDERfem() {
-      return "Femenino";
+      return "Feminine";
     },
     get$grammarCopyPERSON2() {
-      return "Segunda persona";
+      return "Second Person";
     },
     get$grammarCopyMOODimp() {
-      return "Imperativo";
+      return "Imperative";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Pregunta";
+      return "Question";
     },
     get$grammarCopyASPECTperf() {
-      return "Perfecto";
+      return "Perfect";
     },
     get$grammarCopyCASEaccnom() {
-      return "Acusativo, Nominativo";
+      return "Accusative, Nominative";
     },
     get$grammarCopyCASEobl() {
-      return "Oblicuo";
+      return "Oblique";
     },
     get$grammarCopyVOICEact() {
-      return "Activo";
+      return "Active";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Soporte";
+      return "Bracket";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Art\xedculo";
+      return "Article";
     },
     get$grammarCopyNUMBERsing() {
       return "Singular";
     },
     get$grammarCopyGENDERmasc() {
-      return "Hombre";
+      return "Masculine";
     },
     get$grammarCopyVERBTYPEmod() {
       return "Modal";
@@ -2923,70 +2980,70 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Adverbial";
     },
     get$grammarCopyTENSEperi() {
-      return "Perifr\xe1stico";
+      return "Periphrastic";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "D\xedgitos";
+      return "Digit";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "No procede";
+      return "Not Proper";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Cardenal";
+      return "Cardinal";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "Adecuado";
+      return "Proper";
     },
     get$grammarCopyPUNCTTYPEdash() {
       return "Dash";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "S\xed";
+      return "Yes";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Punto y coma";
+      return "Semicolon";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Coma";
+      return "Comma";
     },
     get$grammarCopyMOODcnd() {
-      return "Condicional";
+      return "Conditional";
     },
     get$grammarCopyCASEacc() {
-      return "Acusativo";
+      return "Accusative";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Partitivo";
+      return "Partitive";
     },
     get$grammarCopyTENSEpast() {
-      return "Anterior";
+      return "Past";
     },
     get$grammarCopyDEGREEsup() {
-      return "Superlativo";
+      return "Superlative";
     },
     get$grammarCopyPUNCTTYPEcolo() {
       return "Colon";
     },
     get$grammarCopyPERSON3() {
-      return "Tercera persona";
+      return "Third Person";
     },
     get$grammarCopyNUMBERplur() {
       return "Plural";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "Nombre propio";
+      return "Proper Noun";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Preguntas";
+      return "Interrogative";
     },
     get$grammarCopyPOLITEinfm() {
       return "Informal";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Tiempo";
+      return "Time";
     },
     get$grammarCopyPOLARITYneg() {
-      return "Negativo";
+      return "Negative";
     },
     get$grammarCopyNUMTYPEtot() {
       return "Total";
@@ -2995,64 +3052,64 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Adnominal";
     },
     get$grammarCopyASPECTprog() {
-      return "Progresiva";
+      return "Progressive";
     },
     get$grammarCopyMOODsub() {
-      return "Subjuntivo";
+      return "Subjunctive";
     },
     get$grammarCopyVERBFORMcomplementive() {
       return "Complementive";
     },
     get$grammarCopyCASEnom() {
-      return "Nominativo";
+      return "Nominative";
     },
     get$grammarCopyTENSEfut() {
-      return "Futuro";
+      return "Future";
     },
     get$grammarCopyCASEdat() {
-      return "Dativo";
+      return "Dative";
     },
     get$grammarCopyTENSEpres() {
-      return "Presente";
+      return "Present";
     },
     get$grammarCopyGENDERneut() {
-      return "Esterilizar";
+      return "Neuter";
     },
     get$grammarCopyPRONTYPErel() {
-      return "Relativa";
+      return "Relative";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Final";
+      return "Final Ending";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "Demostrativo";
+      return "Demonstrative";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Preposicional";
+      return "Prepositional";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Finito";
+      return "Finite";
     },
     get$grammarCopyDEGREEpos() {
-      return "Positivo";
+      return "Positive";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Presupuesto";
+      return "Quotation";
     },
     get$grammarCopyVERBFORMger() {
-      return "Redondo";
+      return "Gerund";
     },
     get$grammarCopyVOICEpass() {
-      return "Pasivo";
+      return "Passive";
     },
     get$grammarCopyCASEgen() {
-      return "Genitivo";
+      return "Genitive";
     },
     get$grammarCopyTENSEprs() {
-      return "Presente";
+      return "Present";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Definitivo";
+      return "Definite";
     },
     get$grammarCopyNUMTYPEord() {
       return "Ordinal";
@@ -3061,109 +3118,109 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Instrumental";
     },
     get$grammarCopyVERBFORMinf() {
-      return "Infinitivo";
+      return "Infinitive";
     },
     get$grammarCopyVERBFORMaux() {
       return "Auxiliary";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Largo";
+      return "Long";
     },
     get$grammarCopyCASEloc() {
-      return "Locativo";
+      return "Locative";
     },
     get$grammarCopyMOODind() {
-      return "Indicativo";
+      return "Indicative";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Comparativa";
+      return "Comparative";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Relativa";
+      return "Relative";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "Exclamativo";
+      return "Exclamative";
     },
     get$grammarCopyPERSON1() {
-      return "En primera persona";
+      return "First Person";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Inicial";
+      return "Initial";
     },
     get$grammarCopyGENDERperson() {
-      return "Persona";
+      return "Person";
     },
     get$grammarCopyFOREIGNyes() {
-      return "Extranjero";
+      return "Foreign";
     },
     get$grammarCopyVOICEvoice() {
-      return "Voz";
+      return "Voice";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Verbo";
+      return "Verb";
     },
     get$grammarCopyPOSSpass() {
-      return "Posesivo";
+      return "Possessive";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Preposicional";
+      return "Prepositional";
     },
     get$grammarCopyNUMTYPEnumType() {
       return "Numeral";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Sustantivo";
+      return "Noun";
     },
     get$grammarCopyREFLEXreflex() {
-      return "Reflexivo";
+      return "Reflexive";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "Pronombre";
+      return "Pronoun";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Puntuaci\xf3n Lado";
+      return "Punctuation Side";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Verbo";
+      return "Verb";
     },
     get$grammarCopyGENDERgender() {
-      return "G\xe9nero";
+      return "Gender";
     },
     get$grammarCopyMOODmood() {
-      return "Estado de \xe1nimo";
+      return "Mood";
     },
     get$grammarCopyASPECTaspect() {
-      return "Aspecto";
+      return "Aspect";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Puntuaci\xf3n";
+      return "Punctuation";
     },
     get$grammarCopyTENSEtense() {
       return "Tense";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Titulaci\xf3n";
+      return "Degree";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Cortes\xeda";
+      return "Politeness";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Adverbio";
+      return "Adverb";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "N\xfamero";
+      return "Number";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Conjunci\xf3n";
+      return "Conjunction";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Polaridad";
+      return "Polarity";
     },
     get$grammarCopyCASEcase() {
-      return "Caso";
+      return "Case";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Definitividad";
+      return "Definiteness";
     },
     get$grammarCopyNUMFORMnumForm() {
       return "Numeral";
@@ -3172,7 +3229,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Adnominal";
     },
     get$grammarCopyVOCvoc() {
-      return "Vocativo";
+      return "Vocative";
     },
     get$grammarCopyCMPLcmpl() {
       return "Complementizer";
@@ -3184,58 +3241,58 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Jussive";
     },
     get$grammarCopyGENDERcom() {
-      return "Com\xfan";
+      return "Common";
     },
     get$grammarCopyREFLEXrflx() {
-      return "Reflexivo";
+      return "Reflexive";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Partitivo";
+      return "Partitive";
     },
     get$grammarCopySPCspc() {
-      return "Espec\xedfico";
+      return "Specific";
     },
     get$grammarCopyTENSEpqp() {
       return "Pluperfect";
     },
     get$grammarCopyREFLEXref() {
-      return "Reflexivo";
+      return "Reflexive";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Corto";
+      return "Short";
     },
     get$grammarCopyNUMBERdual() {
-      return "Doble";
+      return "Dual";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Largo";
+      return "Long";
     },
     get$grammarCopyVOICEmid() {
-      return "Medio";
+      return "Middle";
     },
     get$grammarCopyINTRELintRel() {
-      return "Interrogativo, relativo";
+      return "Interrogative, Relative";
     },
     get$grammarCopyINTint() {
-      return "Preguntas";
+      return "Interrogative";
     },
     get$grammarCopyVOICEcaus() {
-      return "Causa";
+      return "Causative";
     },
     get$grammarCopyUnknown() {
-      return "Desconocido";
+      return "Unknown";
     },
     get$grammarCopyEVIDENTevident() {
-      return "Evidencialidad";
+      return "Evidentiality";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "N\xfamero del poseedor";
+      return "Possessor's Number";
     },
     get$grammarCopyASPECThab() {
       return "Habitual";
     },
     get$grammarCopyCASEabl() {
-      return "Ablativo";
+      return "Ablative";
     },
     get$grammarCopyCASEall() {
       return "Allative";
@@ -3244,19 +3301,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Essive";
     },
     get$grammarCopyCASEtra() {
-      return "Translativo";
+      return "Translative";
     },
     get$grammarCopyCASEequ() {
-      return "Ecuativo";
+      return "Equative";
     },
     get$grammarCopyCASEdis() {
-      return "Distributivo";
+      return "Distributive";
     },
     get$grammarCopyCASEabs() {
-      return "Absolutivo";
+      return "Absolutive";
     },
     get$grammarCopyCASEerg() {
-      return "Ergativa";
+      return "Ergative";
     },
     get$grammarCopyCASEcau() {
       return "Causal";
@@ -3268,322 +3325,322 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Temporal";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Coordinaci\xf3n";
+      return "Coordinating";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Construir el Estado";
+      return "Construct State";
     },
     get$grammarCopyDEGREEabs() {
-      return "Grado absoluto";
+      return "Absolute Degree";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Evidencialidad de los hechos";
+      return "Factual Evidentiality";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Evidencialidad no factual";
+      return "Non-factual Evidentiality";
     },
     get$grammarCopyMOODopt() {
-      return "Optativo";
+      return "Optative";
     },
     get$grammarCopyMOODadm() {
-      return "Admirable";
+      return "Admirative";
     },
     get$grammarCopyMOODdes() {
-      return "Desiderativo";
+      return "Desiderative";
     },
     get$grammarCopyMOODnec() {
-      return "Necesidades";
+      return "Necessitative";
     },
     get$grammarCopyMOODpot() {
-      return "Posible";
+      return "Potential";
     },
     get$grammarCopyMOODprp() {
-      return "Propositivo";
+      return "Propositive";
     },
     get$grammarCopyMOODqot() {
-      return "Cita";
+      return "Quotative";
     },
     get$grammarCopyNUMFORMword() {
-      return "Forma verbal";
+      return "Word Form";
     },
     get$grammarCopyNUMFORMroman() {
-      return "N\xfamero romano";
+      return "Roman Numeral";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Formulario de carta";
+      return "Letter Form";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Multiplicativo";
+      return "Multiplicative";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Fraccional";
+      return "Fractional";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "Establecer";
+      return "Set";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Gama";
+      return "Range";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Distributivo";
+      return "Distributive";
     },
     get$grammarCopyNUMBERtri() {
-      return "Ensayo";
+      return "Trial";
     },
     get$grammarCopyNUMBERpauc() {
       return "Paucal";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Gran Paucal";
+      return "Greater Paucal";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Mayor Plural";
+      return "Greater Plural";
     },
     get$grammarCopyNUMBERinv() {
-      return "Inversa";
+      return "Inverse";
     },
     get$grammarCopyPERSON0() {
-      return "Cero";
+      return "Zero";
     },
     get$grammarCopyPERSON4() {
-      return "Cuarto";
+      return "Fourth";
     },
     get$grammarCopyPOLITEform() {
       return "Formal";
     },
     get$grammarCopyPOLITEelev() {
-      return "Elevado";
+      return "Elevated";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Humilde";
+      return "Humble";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Enf\xe1tico";
+      return "Emphatic";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "Exclamativo";
+      return "Exclamative";
     },
     get$grammarCopyPRONTYPErcp() {
       return "Reciprocal";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Interrogativo-Relativo";
+      return "Interrogative-Relative";
     },
     get$grammarCopyTENSEaor() {
-      return "aoristo";
+      return "Aorist";
     },
     get$grammarCopyTENSEeps() {
-      return "Epist\xe9mica";
+      return "Epistemic";
     },
     get$grammarCopyTENSEprosp() {
-      return "Prospectiva";
+      return "Prospective";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Participio";
+      return "Participle";
     },
     get$grammarCopyVERBFORMconv() {
       return "Converb";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Sustantivo verbal";
+      return "Verbal Noun";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipasivo";
+      return "Antipassive";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Causa";
+      return "Causative";
     },
     get$grammarCopyVOICedir() {
-      return "Directo";
+      return "Direct";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Inversa";
+      return "Inverse";
     },
     get$grammarCopyVOICErcpVoice() {
       return "Reciprocal";
     },
     get$grammarCopyPOS() {
-      return "Parte de la oraci\xf3n";
+      return "Part of Speech";
     },
     get$grammarCopyGENDER() {
-      return "G\xe9nero";
+      return "Gender";
     },
     get$grammarCopyPERSON() {
-      return "Persona";
+      return "Person";
     },
     get$grammarCopyMOOD() {
-      return "Estado de \xe1nimo";
+      return "Mood";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Tipo de puntuaci\xf3n";
+      return "Punctuation Type";
     },
     get$grammarCopyASPECT() {
-      return "Aspecto";
+      return "Aspect";
     },
     get$grammarCopyCASE() {
-      return "Caso";
+      return "Case";
     },
     get$grammarCopyVOICE() {
-      return "Voz";
+      return "Voice";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Tipo de sustantivo";
+      return "Noun Type";
     },
     get$grammarCopyVERBTYPE() {
-      return "Tipo de verbo";
+      return "Verb Type";
     },
     get$grammarCopyADVTYPE() {
-      return "Tipo de adverbio";
+      return "Adverb Type";
     },
     get$grammarCopyNUMFORM() {
-      return "Forma num\xe9rica";
+      return "Numeral Form";
     },
     get$grammarCopyNUMTYPE() {
-      return "Tipo de n\xfamero";
+      return "Numeral Type";
     },
     get$grammarCopyNUMBER() {
-      return "N\xfamero";
+      return "Number";
     },
     get$grammarCopyDEFINITE() {
-      return "Definitividad";
+      return "Definiteness";
     },
     get$grammarCopyDEGREE() {
-      return "Titulaci\xf3n";
+      return "Degree";
     },
     get$grammarCopyEVIDENT() {
-      return "Evidencialidad";
+      return "Evidentiality";
     },
     get$grammarCopyFOREIGN() {
-      return "Extranjero";
+      return "Foreign";
     },
     get$grammarCopyPOLARITY() {
-      return "Polaridad";
+      return "Polarity";
     },
     get$grammarCopyPOLITE() {
-      return "Cortes\xeda";
+      return "Politeness";
     },
     get$grammarCopyPREPCASE() {
-      return "Caso preposicional";
+      return "Prepositional Case";
     },
     get$grammarCopyPRONTYPE() {
-      return "Tipo de pronombre";
+      return "Pronoun Type";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Puntuaci\xf3n Lado";
+      return "Punctuation Side";
     },
     get$grammarCopyREFLEX() {
-      return "Reflexivo";
+      return "Reflexive";
     },
     get$grammarCopyTENSE() {
       return "Tense";
     },
     get$grammarCopyVERBFORM() {
-      return "Forma verbal";
+      return "Verb Form";
     },
     get$grammarCopyCONJTYPE() {
-      return "Tipo de conjunci\xf3n";
+      return "Conjunction Type";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "N\xfamero del poseedor";
+      return "Possessor's Number";
     },
     get$grammarCopyPOSS() {
-      return "Posesivo";
+      return "Possessive";
     },
     get$grammarCopyASPECTimp() {
-      return "Aspecto imperfectivo";
+      return "Imperfective Aspect";
     },
     get$grammarCopyCASEvoc() {
-      return "Vocativo";
+      return "Vocative";
     },
     get$grammarCopyCASEcom() {
       return "Comitative";
     },
     get$grammarCopyCASEpar() {
-      return "Partitivo";
+      return "Partitive";
     },
     get$grammarCopyCASEadv() {
       return "Adverbial";
     },
     get$grammarCopyCASEref() {
-      return "Referencial";
+      return "Referential";
     },
     get$grammarCopyCASErel() {
-      return "Relativa";
+      return "Relative";
     },
     get$grammarCopyCASEsub() {
-      return "Subesivo";
+      return "Subessive";
     },
     get$grammarCopyCASEsup() {
       return "Superessive";
     },
     get$grammarCopyCASEaccdat() {
-      return "Acusativo-dativo";
+      return "Accusative-Dative";
     },
     get$grammarCopyCASEpre() {
-      return "Preposicional";
+      return "Prepositional";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Subordinaci\xf3n";
+      return "Subordinating";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Comparativa";
+      return "Comparative";
     },
     get$grammarCopyDEFINITEind() {
-      return "Indefinido";
+      return "Indefinite";
     },
     get$grammarCopyMOODint() {
-      return "Modo interrogativo";
+      return "Interrogative Mood";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Sustantivo com\xfan";
+      return "Common Noun";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Singular del poseedor";
+      return "Possessor's Singular";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Plural del poseedor";
+      return "Possessor's Plural";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Doble del poseedor";
+      return "Possessor's Dual";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Polaridad positiva";
+      return "Positive Polarity";
     },
     get$grammarCopyPOSSyes() {
-      return "Posesivo";
+      return "Possessive";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "No preposicional";
+      return "Non-prepositional";
     },
     get$grammarCopyPRONTYPEprs() {
       return "Personal";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Preguntas";
+      return "Interrogative";
     },
     get$grammarCopyPRONTYPEtot() {
       return "Total";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Negativo";
+      return "Negative";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Art\xedculo";
+      return "Article";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Indefinido";
+      return "Indefinite";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Interrogativo-Relativo";
+      return "Interrogative-Relative";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Puntuaci\xf3n final";
+      return "Final Punctuation";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Periodo";
+      return "Period";
     },
     get$grammarCopyREFLEXyes() {
-      return "Reflexivo";
+      return "Reflexive";
     },
     get$grammarCopyTENSEimp() {
       return "Imperfect";
@@ -3595,88 +3652,70 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Adnominal";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Largo";
+      return "Long";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Verbo causativo";
+      return "Causative Verb";
     },
     get$grammarCopyVOICEcau() {
-      return "Causa";
+      return "Causative";
     },
     get$grammarCopyVOICEdir() {
-      return "Directo";
+      return "Direct";
     },
     get$grammarCopyVOICEinv() {
-      return "Inversa";
+      return "Inverse";
     },
     get$grammarCopyVOICErcp() {
       return "Reciprocal";
     },
     get$enterPrompt() {
-      return "Introduzca un mensaje del sistema";
+      return "Please enter a system prompt";
     },
     get$selectBotLanguage() {
-      return "Selecciona el idioma del bot";
+      return "Select bot language";
     },
     get$chooseVoice() {
-      return "Elige una voz";
+      return "Choose a voice";
     },
     get$enterLanguageLevel() {
-      return "Introduzca un nivel de idioma";
+      return "Please enter a language level";
     },
     get$enterDiscussionTopic() {
-      return "Introduzca un tema de debate";
+      return "Please enter a discussion topic";
     },
     get$selectBotChatMode() {
-      return "Selecciona el modo de chat";
+      return "Select chat mode";
     },
     get$other() {
-      return "Otros";
+      return "Other";
     },
     levelShort$1(level) {
       return "LVL " + level;
     },
     get$botModeValidation() {
-      return "Seleccione un modo de chat";
+      return "Please select a chat mode";
     },
     get$clickBestOption() {
-      return "Elija las mejores opciones para traducir su mensaje";
+      return "Choose the best options to translate your message!";
     },
     get$unlockedLanguageTools() {
-      return "Has desbloqueado las herramientas ling\xfc\xedsticas para este mensaje. Pru\xe9balas haciendo clic a continuaci\xf3n.";
+      return "You\u2019ve unlocked the language tools for this message. Try them out by clicking below!";
     },
     get$botSettingsSubtitle() {
-      return "Invitar a un bot a moderar la actividad del chat";
+      return "Invite bot to moderate chat activity";
     },
     get$noCapacityLimit() {
-      return "Sin l\xedmite de capacidad";
+      return "No capacity limit";
     },
     get$downloadGroupText() {
-      return "Descargar texto del grupo";
+      return "Download group text";
     },
     get$notificationsOn() {
       return "Notifications on";
     },
     get$notificationsOff() {
       return "Notifications off";
-    },
-    get$calculatingFileSize() {
-      return "Calculating file size...";
-    },
-    get$prepareSendingAttachment() {
-      return "Prepare sending attachment...";
-    },
-    get$sendingAttachment() {
-      return "Sending attachment...";
-    },
-    sendingAttachmentCountOfCount$2(index, $length) {
-      return "Sending attachment " + index + " of " + $length + "...";
-    },
-    serverLimitReached$1(seconds) {
-      return "Server limit reached! Waiting " + seconds + " seconds...";
-    },
-    get$noticeChatBackupDeviceVerification() {
-      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
     },
     get$requireCodeToJoin() {
       return "Require code to join";
@@ -3689,60 +3728,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$nestedSpaceError() {
       return "Spaces should not be added as children of other spaces";
-    },
-    get$blur(_) {
-      return "Blur:";
-    },
-    get$opacity(_) {
-      return "Opacity:";
-    },
-    get$setWallpaper() {
-      return "Set wallpaper";
-    },
-    get$noContactInformationProvided() {
-      return "Server does not provide any valid contact information";
-    },
-    get$contactServerAdmin() {
-      return "Contact server admin";
-    },
-    get$contactServerSecurity() {
-      return "Contact server security";
-    },
-    get$supportPage() {
-      return "Support page";
-    },
-    get$serverInformation() {
-      return "Server information:";
-    },
-    get$name(_) {
-      return "Name";
-    },
-    get$version(_) {
-      return "Version";
-    },
-    get$compress() {
-      return "Compress";
-    },
-    get$boldText() {
-      return "Bold text";
-    },
-    get$italicText() {
-      return "Italic text";
-    },
-    get$strikeThrough() {
-      return "Strikethrough";
-    },
-    get$pleaseFillOut() {
-      return "Please fill out";
-    },
-    get$invalidUrl() {
-      return "Invalid url";
-    },
-    get$addLink() {
-      return "Add link";
-    },
-    get$unableToJoinChat() {
-      return "Unable to join chat. Maybe the other party has already closed the conversation.";
     },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
@@ -3760,7 +3745,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mandatory Update Required";
     },
     get$updateAvailable() {
-      return "Actualizaci\xf3n de FluffyChat disponible";
+      return "Update Available";
     },
     get$mandatoryUpdateRequiredDesc() {
       return "A new version of the app is required to continue. Please update now to proceed.";
@@ -3769,7 +3754,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "A new version of the app is available. Update now for the latest features and improvements!";
     },
     get$updateNow() {
-      return "Comenzar actualizaci\xf3n en segundo plano.";
+      return "Update Now";
     },
     get$updateLater() {
       return "Later";
@@ -3907,7 +3892,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "I want to learn";
     },
     get$letsStart() {
-      return "";
+      return "Let's start";
     },
     get$pleaseAgreeToTOS() {
       return "Please agree to the Terms and Conditions";
@@ -4074,9 +4059,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noClassCode() {
       return "No class code!";
     },
-    get$otherPartyNotLoggedIn() {
-      return "The other party is currently not logged in and therefore cannot receive messages!";
-    },
     get$chooseCorrectLabel() {
       return "Choose the correct label.";
     },
@@ -4167,12 +4149,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveSpaceDescription() {
       return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
     },
-    get$open(_) {
-      return "Open";
-    },
-    get$waitingForServer() {
-      return "Waiting for server...";
-    },
     get$whatIsLemma() {
       return "What is the lemma?";
     },
@@ -4191,6 +4167,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$meaning() {
       return "Meaning";
     },
+    chatWith$1(displayname) {
+      return "Group with " + displayname;
+    },
+    get$slightlyOffensive() {
+      return "Slightly offensive";
+    },
+    get$clickOnEmailLink() {
+      return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
+    },
+    get$whoIsAllowedToJoinThisChat() {
+      return "Who is allowed to join this chat";
+    },
+    get$dontForgetPassword() {
+      return "Don't forget your password!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4198,14 +4189,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nEs, C.L10n);
+    _inherit(A.L10nEt, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEs":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEt":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_201", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "yViFkkceTt5m2rH+Qz2oRN7om0g=");
+})($__dart_deferred_initializers__, "JzQecGV9hEVfTCFMuPJQvcdcnaI=");
 ;
 //# sourceMappingURL=main.dart.js_201.part.js.map

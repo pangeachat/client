@@ -7,31 +7,31 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nRo$() {
-      return new A.L10nRo(B.canonicalizedLocale("ro"));
+    L10nSk$() {
+      return new A.L10nSk(B.canonicalizedLocale("sk"));
     },
-    L10nRo: function L10nRo(t0) {
+    L10nSk: function L10nSk(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[51];
-  A = hunkHelpers.updateHolder(holdersList[40], A);
-  A.L10nRo.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[42], A);
+  A.L10nSk.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
     get$repeatPassword() {
-      return "Repeta\u021bi parola";
+      return "Zopakujte heslo";
     },
     get$notAnImage() {
       return "Not an image file.";
     },
     get$remove(_) {
-      return "Elimina\u021bi";
+      return "Odstr\xe1ni\u0165";
     },
     get$importNow() {
-      return "Import now";
+      return "Importova\u0165 teraz";
     },
     get$importEmojis() {
       return "Import Emojis";
@@ -49,82 +49,82 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "About " + homeserver;
     },
     get$accept(_) {
-      return "Accept";
+      return "Prija\u0165";
     },
     acceptedTheInvitation$1(username) {
-      return username + " a aceptat invita\u021bi";
+      return username + " prijali pozv\xe1nku";
     },
     get$account() {
-      return "Cont";
+      return "\xda\u010det";
     },
     activatedEndToEndEncryption$1(username) {
-      return username + " a activat criptarea end-to-end";
+      return username + " aktivovali koncov\xe9 \u0161ifrovanie";
     },
     get$addEmail() {
-      return "Ad\u0103uga\u021bi email";
+      return "Prida\u0165 email";
     },
     get$confirmMatrixId() {
-      return "V\u0103 rug\u0103m s\u0103 confirma\u021bi Matrix ID-ul vostru s\u0103 \u0219terge\u021bi contul vostru.";
+      return "Please confirm your Matrix ID in order to delete your account.";
     },
     supposedMxid$1(mxid) {
-      return "ID-ul ar trebuii s\u0103 fie " + mxid;
+      return "This should be " + mxid;
     },
     get$addToSpace() {
-      return "Ad\u0103uga\u021bi la spa\u021biu";
+      return "Prida\u0165 do priestoru";
     },
     get$admin() {
-      return "Administrator";
+      return "Administr\xe1tor";
     },
     get$alias() {
-      return "porecl\u0103";
+      return "alias";
     },
     get$all() {
-      return "Toate";
+      return "V\u0161etky";
     },
     get$commandHint_googly() {
-      return "Trimite\u021bi c\xe2\u021biva ochi googly";
+      return "Send some googly eyes";
     },
     get$commandHint_cuddle() {
-      return "Trimite\u021bi o \xeembr\u0103\u021bi\u0219are";
+      return "Send a cuddle";
     },
     get$commandHint_hug() {
-      return "Trimite\u021bi o \xeembr\u0103\u021bi\u0219are";
+      return "Send a hug";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " v-a trimis ochi googly";
+      return senderName + " sends you googly eyes";
     },
     cuddleContent$1(senderName) {
-      return senderName + " v\u0103 \xeembr\u0103\u021bi\u0219eaz\u0103";
+      return senderName + " cuddles you";
     },
     hugContent$1(senderName) {
-      return senderName + " v\u0103 \xeembr\u0103\u021bi\u0219eaz\u0103";
+      return senderName + " hugs you";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " a acceptat apelul";
+      return senderName + " prevzal hovor";
     },
     get$anyoneCanJoin() {
-      return "Oricine se poate al\u0103tura";
+      return "Ktoko\u013evek sa m\xf4\u017ee pripoji\u0165";
     },
     get$archive() {
-      return "Arhiv\u0103";
+      return "Archivova\u0165";
     },
     get$areGuestsAllowedToJoin() {
-      return 'Vizitatorii "guest" se pot al\u0103tura';
+      return "M\xf4\u017eu sa pripoji\u0165 hostia";
     },
     get$areYouSure() {
-      return "E\u0219ti sigur?";
+      return "Ste si ist\xed?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Sunte\u021bi sigur c\u0103 dori\u021bi s\u0103 v\u0103 deconecta\u021bi?";
+      return "Ste si ist\xed, \u017ee sa chcete odhl\xe1si\u0165?";
     },
     get$askSSSSSign() {
-      return "Pentru a putea conecta cealalt\u0103 persoan\u0103, te rog introdu parola sau cheia ta de recuperare.";
+      return 'Na overenie tejto osoby, pros\xedm zadajte pr\xedstupovu fr\xe1zu k "bezpe\u010d\xe9mu \xfalo\u017eisku" alebo "kl\xfa\u010d na obnovu".';
     },
     askVerificationRequest$1(username) {
-      return "Accep\u021bi cererea de verificare de la " + username + "?";
+      return "Akcepova\u0165 \u017eiados\u0165 o verifik\xe1ciu od " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Homeserver-ul suport\u0103 urm\u0103toarele feluri de login:\n" + serverVersions + "\nDar aceast\u0103 aplica\u021bie suport\u0103 numai:\n" + supportedVersions;
+      return "Server podporuje tieto typy prihl\xe1senia:\n" + serverVersions + "\nAle t\xe1to aplik\xe1cia podporuje iba:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
       return "Send typing notifications";
@@ -133,13 +133,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Swipe right to left to reply";
     },
     get$sendOnEnter() {
-      return "Trimite cu tasta enter";
+      return "Odosla\u0165 pri vstupe";
     },
     badServerVersionsException$4(serverVersions, supportedVersions, serverVerions, suportedVersions) {
-      return "Homeserver-ul suport\u0103 versiunele de Spec urm\u0103toare:\n" + serverVersions + "\nDar aceast\u0103 aplica\u021bie suport\u0103 numai " + supportedVersions;
+      return "Domovsk\xfd server podporuje verzie \u0161pecifik\xe1cie:\n" + serverVersions + "\nAle t\xe1to aplik\xe1cie podporuje iba " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return chats + " chats and " + B.S(participants) + " participants";
+      return "" + chats + " chats and " + participants + " participants";
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
@@ -157,283 +157,280 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Spaces";
     },
     get$banFromChat() {
-      return "Interzis din conversa\u021bie";
+      return "Zabanova\u0165 z chatu";
     },
     get$banned() {
-      return "Interzis";
+      return "Zabanovan\xfd";
     },
     bannedUser$2(username, targetName) {
-      return username + " a interzis pe " + targetName;
+      return username + " zabanoval " + targetName;
     },
     get$blockDevice() {
-      return "Blocheaz\u0103 dispozitiv";
+      return "Zak\xe1za\u0165 zariadenie";
     },
     get$blocked() {
-      return "Blocat";
+      return "Blocked";
     },
     get$botMessages() {
-      return "Mesaje Bot";
+      return "Bot messages";
     },
     get$cancel(_) {
-      return "Anuleaz\u0103";
+      return "Zru\u0161i\u0165";
     },
     cantOpenUri$1(uri) {
-      return "Nu se poate deschide URI-ul " + uri;
+      return "Nemo\u017eno otvori\u0165 identifik\xe1tor prostriedku " + uri;
     },
     get$changeDeviceName() {
-      return "Schimb\u0103 numele dispozitiv";
+      return "Zmeni\u0165 n\xe1zov zariadenia";
     },
     changedTheChatAvatar$1(username) {
-      return username + " a schimbat poza conversa\u021bi";
+      return username + " si zmenili sv\xf4j avatar";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " a schimbat descrierea grupului \xeen '" + description + "'";
+      return username + " zmenili popis chatu na: \u201e" + description + "\u201c";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " a schimbat porecla \xeen '" + chatname + "'";
+      return username + " zmenili meno chatu na: \u201e" + chatname + "\u201c";
     },
     changedTheChatPermissions$1(username) {
-      return username + " a schimbat permisiunile chatului";
+      return username + " zmenili nastavenie opr\xe1vnen\xed chatu";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " s-a schimbat displayname la: '" + displayname + "'";
+      return username + " si zmenili prez\xfdvku na: " + displayname;
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " a schimbat regulile pentru acesul musafirilor";
+      return username + " zmenili pr\xedstupov\xe9 pr\xe1va pre hos\u0165ov";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " a schimbat regulile pentru acesul musafirilor la: " + rules;
+      return username + " zmenili pr\xedstupov\xe9 pr\xe1va pro hos\u0165ov na: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " a schimbat vizibilitatea istoriei chatului";
+      return username + " zmenili nastavenie viditelnosti hist\xf3rie chatu";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " a schimbat vizibilitatea istoriei chatului la: " + rules;
+      return username + " zmenili nastavenie viditelnosti hist\xf3rie chatu na: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " a schimbat regulile de al\u0103turare";
+      return username + " zmenili nastavenie pravidiel pripojenia";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " a schimbat regulile de al\u0103turare la: " + joinRules;
+      return username + " zmenili nastavenie pravidiel pripojenia na: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " s-a schimbat avatarul";
+      return username + " si zmenili profilov\xfd obr\xe1zok";
     },
     changedTheRoomAliases$1(username) {
-      return username + " a schimbat pseudonimele camerei";
+      return username + " zmenili nastavenie aliasov chatu";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " a schimbat linkul de invita\u021bie";
+      return username + " zmenili odkaz k pozv\xe1nke do miestnosti";
     },
     get$changePassword() {
-      return "Schimba\u021bi parola";
+      return "Zmeni\u0165 heslo";
     },
     get$changeTheme() {
-      return "Schimba\u021bi tema aplica\u021biei";
-    },
-    get$changeTheNameOfTheGroup() {
-      return "Schimba\u021bi numele grupului";
+      return "Zmena \u0161t\xfdlu";
     },
     get$changeYourAvatar() {
-      return "Schimba\u021bi avatarul vostru";
+      return "Change your avatar";
     },
     get$channelCorruptedDecryptError() {
-      return "Criptarea a fost corupat\u0103";
+      return "\u0160ifrovanie bolo po\u0161koden\xe9";
     },
     get$chat() {
       return "Chat";
     },
     get$chatDetails() {
-      return "Detalii de chat";
+      return "Podrobnosti o chate";
     },
     get$chats() {
-      return "Chaturi";
+      return "\u010cety";
     },
     get$chooseAStrongPassword() {
-      return "Alege\u021bi o parol\u0103 robust\u0103";
+      return "Vyberte si siln\xe9 heslo";
     },
     get$clearArchive() {
-      return "\u0218terge\u021bi arhiva";
+      return "Clear archive";
     },
     get$close(_) {
-      return "\xcenchide\u021bi";
+      return "Zavrie\u0165";
     },
     get$commandHint_markasdm() {
-      return "Marca\u021bi ca camer\u0103 de mesaje directe";
+      return "Mark as direct message room for the giving Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "Marca\u021bi ca grup";
+      return "Mark as group";
     },
     get$commandHint_ban() {
-      return "Interzice\u021bi acesul utilizatorului ales din aceast\u0103 camer\u0103";
+      return "Ban the given user from this room";
     },
     get$commandHint_clearcache() {
-      return "\u0218terge\u021bi cache";
+      return "Clear cache";
     },
     get$commandHint_create() {
-      return "Crea\u021bi un grup de chat gol\nFolosi\u021bi --no-encryption s\u0103 dezactiva\u021bi criptare";
+      return "Create an empty group chat\nUse --no-encryption to disable encryption";
     },
     get$commandHint_discardsession() {
-      return "Renun\u021ba\u021bi sesiunea";
+      return "Discard session";
     },
     get$commandHint_dm() {
-      return "Porni\u021bi un chat direct\nFolosi\u021bi --no-encryption s\u0103 dezactiva\u021bi criptare";
+      return "Start a direct chat\nUse --no-encryption to disable encryption";
     },
     get$commandHint_html() {
-      return "Trimite\u021bi text format ca HTML";
+      return "Send HTML-formatted text";
     },
     get$commandHint_invite() {
-      return "Invita\u021bi utilizatorul ales la aceast\u0103 camer\u0103";
+      return "Invite the given user to this room";
     },
     get$commandHint_join() {
-      return "Al\u0103tura\u021bi-v\u0103 la camera ales\u0103";
+      return "Join the given room";
     },
     get$commandHint_kick() {
-      return "Da\u021bi afar\u0103 pe utilizatorul ales din aceast\u0103 camer\u0103";
+      return "Remove the given user from this room";
     },
     get$commandHint_leave() {
-      return "Renun\u021ba\u021bi la aceast\u0103 camer\u0103";
+      return "Leave this room";
     },
     get$commandHint_me() {
-      return "Descrie\u021bi-v\u0103";
+      return "Describe yourself";
     },
     get$commandHint_myroomavatar() {
-      return "Alege\u021bi un avatar pentru aceast\u0103 camer\u0103 (folo\u0219e\u0219te mxc-uri)";
+      return "Set your picture for this room (by mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Alege\u021bi un displayname pentru aceast\u0103 camer\u0103";
+      return "Set your display name for this room";
     },
     get$commandHint_op() {
-      return "Stabili\u021bi nivelul de putere a utilizatorul ales (implicit: 50)";
+      return "Set the given user's power level (default: 50)";
     },
     get$commandHint_plain() {
-      return "Trimite\u021bi text simplu/neformatat";
+      return "Send unformatted text";
     },
     get$commandHint_react() {
-      return "Trimite\u021bi r\u0103spuns ca reac\u021bie";
+      return "Send reply as a reaction";
     },
     get$commandHint_send() {
-      return "Trimite\u021bi text";
+      return "Send text";
     },
     get$commandHint_unban() {
-      return "Dezinterzice\u021bi utilizatorul ales din aceast\u0103 camer\u0103";
+      return "Unban the given user from this room";
     },
     get$commandInvalid() {
-      return "Comand\u0103 nevalibil\u0103";
+      return "Command invalid";
     },
     commandMissing$1(command) {
-      return command + " nu este o comand\u0103.";
+      return command + " is not a command.";
     },
     get$compareEmojiMatch() {
-      return "V\u0103 rug\u0103m s\u0103 compara\u021bi emoji-urile";
+      return "Porovnajte a uistite sa, \u017ee nasleduj\xface emotikony sa zhoduj\xfa na oboch zariadeniach:";
     },
     get$compareNumbersMatch() {
-      return "V\u0103 rug\u0103m s\u0103 compara\u021bi numerele";
+      return "Porovnajte a uistite sa, \u017ee nasleduj\xface \u010d\xedsla sa zhoduj\xfa na oboch zariadeniach:";
     },
     get$configureChat() {
-      return "Configura\u021bi chat";
+      return "Configure chat";
     },
     get$confirm(_) {
-      return "Confirma\u021bi";
+      return "Potvrdi\u0165";
     },
     get$containsDisplayName() {
-      return "Con\u021bine displayname";
+      return "Contains display name";
     },
     get$containsUserName() {
-      return "Con\u021bine nume de utilizator";
+      return "Contains username";
     },
     get$contentHasBeenReported() {
-      return "Con\u021binutul a fost reportat la administratori serverului";
+      return "The content has been reported to the server admins";
     },
     get$copiedToClipboard() {
-      return "Copiat \xeen clipboard";
+      return "Skop\xedrovan\xe9 do schr\xe1nky";
     },
     get$copy(_) {
-      return "Copia\u021bi";
+      return "Kop\xedrova\u0165";
     },
     couldNotDecryptMessage$1(error) {
-      return "Dezcriptarea mesajului a e\u0219uat: " + error;
+      return "Nebolo mo\u017en\xe9 de\u0161ifrova\u0165 spr\xe1vu: " + error;
     },
     countParticipants$1(count) {
-      return B.S(count) + " participan\u021bi";
+      return "" + count + " \xfa\u010dastn\xedkov";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac" + username + " a creat chatul";
+      return username + " zalo\u017eili chat";
     },
     get$createGroup() {
       return "Create group";
     },
+    get$createNewSpace() {
+      return "New space";
+    },
     get$currentlyActive() {
-      return "Activ acum";
+      return "Moment\xe1lne pr\xedtomn\xed";
     },
     get$darkTheme() {
-      return "\xcentunecat";
+      return "Tmav\xe1";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Aceast\u0103 ac\u021biune va dezactiva contul vostru. Nu poate fi anulat! Sunte\u021bi sigur?";
+      return "This will deactivate your user account. This can not be undone! Are you sure?";
     },
     get$defaultPermissionLevel() {
-      return "Nivel de permisiuni implicit\u0103";
+      return "Default permission level for new users";
     },
     get$$delete(_) {
-      return "\u0218terge\u021bi";
+      return "Odstr\xe1ni\u0165";
     },
     get$deleteAccount() {
-      return "\u0218terge\u021bi contul";
+      return "Delete account";
     },
     get$deleteMessage() {
-      return "\u0218terge\u021bi mesajul";
+      return "Odstr\xe1ni\u0165 spr\xe1vu";
     },
     get$devices() {
-      return "Dispozitive";
+      return "Zariadenia";
     },
     get$directChats() {
-      return "Chaturi directe";
+      return "Direct Chats";
     },
     get$allRooms() {
-      return "Toate chaturi de grup";
+      return "All Group Chats";
     },
     get$displaynameHasBeenChanged() {
-      return "Displayname a fost schimbat";
+      return "Prez\xfdvka bola zmenen\xe1";
     },
     get$downloadFile() {
-      return "Desc\u0103rca\u021bi fi\u0219ierul";
+      return "Stiahnu\u0165 s\xfabor";
     },
     get$edit() {
-      return "Edita\u021bi";
+      return "Edit";
     },
     get$editBlockedServers() {
-      return "Edita\u021bi servere blocate";
+      return "Edit blocked servers";
     },
     get$chatPermissions() {
       return "Chat permissions";
     },
-    get$editChatPermissions() {
-      return "Edit chat permissions";
-    },
     get$editDisplayname() {
-      return "Schimba\u021bi displayname";
+      return "Zmeni\u0165 prez\xfdvku";
     },
     get$editRoomAliases() {
-      return "Schimba\u021bi pseudonimele camerei";
+      return "Edit room aliases";
     },
     get$editRoomAvatar() {
-      return "Schimba\u021bi avatarul din camer\u0103";
+      return "Edit room avatar";
     },
     get$emoteExists() {
-      return "Emote deja exist\u0103!";
+      return "Emotikon u\u017e existuje!";
     },
     get$emoteInvalid() {
-      return "Shortcode de emote nevalibil!";
+      return "Nespr\xe1vn\xe9 ozna\u010denie emotikonu!";
     },
     get$emoteKeyboardNoRecents() {
       return "Recently-used emotes will appear here...";
     },
     get$emotePacks() {
-      return "Pachete de emoturi din camer\u0103";
+      return "Emote packs for room";
     },
     get$globalChatId() {
       return "Global chat ID";
@@ -445,76 +442,70 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Custom emojis and stickers";
     },
     get$emoteShortcode() {
-      return "Shortcode de emote";
+      return "K\xf3d emotikonu";
     },
     get$emoteWarnNeedToPick() {
-      return "Trebuie s\u0103 alege\u021bi shortcode pentru emote \u0219i o imagine!";
+      return "Mus\xedte zvoli\u0165 k\xf3d emotikonu a obr\xe1zok!";
     },
     get$emptyChat() {
-      return "Chat gol";
+      return "Pr\xe1zdny chat";
     },
     get$enableEmotesGlobally() {
-      return "Activa\u021bi pachet de emote global";
+      return "Enable emote pack globally";
     },
     get$enableEncryption() {
-      return "Activa\u021bi criptare";
+      return "Enable encryption";
     },
     get$encrypted() {
-      return "Criptat";
+      return "Encrypted";
     },
     get$encryptionNotEnabled() {
-      return "Criptare nu e activat\u0103";
+      return "\u0160ifrovanie nie je akt\xedvne";
     },
     endedTheCall$1(senderName) {
-      return senderName + " a terminat apelul";
+      return senderName + " ended the call";
     },
     get$enterAnEmailAddress() {
-      return "Introduce\u021bi o adres\u0103 email";
+      return "Enter an email address";
     },
     errorObtainingLocation$1(error) {
-      return "Ob\u021binerea loca\u021biei a e\u0219uat: " + error;
+      return "Error obtaining location: " + error;
     },
     get$extremeOffensive() {
-      return "De foarte mare ofens\u0103";
+      return "Extremely offensive";
     },
     get$fontSize(_) {
-      return "M\u0103rimea fontului";
+      return "Font size";
     },
     get$forward(_) {
-      return "\xcenainte";
+      return "Preposla\u0165";
     },
     get$fromJoining() {
-      return "De la al\u0103turare";
+      return "Od pripojenia";
     },
     get$fromTheInvitation() {
-      return "De la invita\u021bia";
+      return "Od pozvania";
     },
     get$goToTheNewRoom() {
-      return "Merge\u021bi la camera nou\u0103";
-    },
-    get$group() {
-      return "Grup";
+      return "Go to the new room";
     },
     get$chatDescription() {
       return "Chat description";
     },
     get$groups() {
-      return "Grupuri";
-    },
-    groupWith$1(displayname) {
-      return "Grup cu " + displayname;
+      return "Groups";
     },
     get$guestsAreForbidden() {
-      return "Musafiri sunt interzi\u0219i";
+      return "Hostia s\xfa zak\xe1zan\xed";
     },
     get$guestsCanJoin() {
-      return "Musafiri pot s\u0103 se al\u0103ture";
+      return "Hostia sa m\xf4\u017eu pripoji\u0165";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " a retras invita\u021bia pentru " + targetName;
+      return username + " vzal sp\xe4\u0165 pozv\xe1nku pre " + targetName;
     },
     get$help() {
-      return "Ajutor";
+      return "Pomoc";
     },
     get$hideRedactedMessages() {
       return "Hide redacted messages";
@@ -526,10 +517,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Hide invalid or unknown message formats";
     },
     get$howOffensiveIsThisContent() {
-      return "C\xe2t de ofensiv este acest con\u021binut?";
+      return "How offensive is this content?";
     },
     get$block() {
-      return "block";
+      return "Block";
     },
     get$blockedUsers() {
       return "Blocked users";
@@ -541,16 +532,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ignore username";
     },
     get$iHaveClickedOnLink() {
-      return "Am f\u0103cut click pe link";
+      return "I have clicked on the link";
     },
     get$incorrectPassphraseOrKey() {
-      return "Parol\u0103 sau cheie de recuperare incorect\u0103";
-    },
-    get$inoffensive() {
-      return "Inofensiv";
+      return "Nespr\xe1vna pr\xedstupov\xe1 fr\xe1za alebo k\u013e\xfa\u010d na obnovenie";
     },
     get$inviteContact() {
-      return "Invita\u021bi contact";
+      return "Pozva\u0165 kontakt";
     },
     get$noChatDescriptionYet() {
       return "No chat description created yet.";
@@ -559,7 +547,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Try again";
     },
     get$invited() {
-      return "Invitat";
+      return "Pozvanie";
     },
     get$redactMessageDescription() {
       return "The message will be redacted for all participants in this conversation. This cannot be undone.";
@@ -568,172 +556,172 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "(Optional) Reason for redacting this message...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9" + username + " a invitat " + targetName;
+      return username + " pozvali " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Numai utilizatori invita\u021bi";
+      return "Len pozvan\xed pou\u017e\xedvatelia";
     },
     get$inviteForMe() {
-      return "Invita\u021bi pentru mine";
+      return "Invite for me";
     },
     inviteText$2(username, link) {
-      return username + " v-a invitat la FluffyChat.\n1. Instala\u021bi FluffyChat: https://fluffychat.im\n2. \xcenregistra\u021bi-v\u0103 sau conecta\u021bi-v\u0103\n3. Deschide\u021bi invita\u021bia: " + link;
+      return username + " v\xe1s pozval na FluffyChat.\n1. Nain\u0161talujte si FluffyChat: https://fluffychat.im\n2. Zaregistrujte sa alebo sa prihl\xe1ste\n3. Otvorte odkaz na pozv\xe1nku: " + link;
     },
     get$isTyping() {
-      return "tasteaz\u0103\u2026";
+      return "p\xed\u0161e\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b" + username + " a intrat \xeen chat";
+      return username + " sa pripojili do chatu";
     },
     get$joinRoom() {
-      return "Al\u0103tura\u021bi la camer\u0103";
+      return "Pripoji\u0165 sa k miestnosti";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e" + username + " a dat afar\u0103 pe " + targetName;
+      return username + " vyhodili " + targetName;
     },
     get$kickFromChat() {
-      return "Da\u021bi afar\u0103 din chat";
+      return "Vyhodi\u0165 z chatu";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Ultima dat\u0103 activ: " + localizedTimeShort;
+      return "Naposledy pr\xedtomn\xed: " + localizedTimeShort;
     },
     get$leave() {
-      return "Renun\u021ba\u021bi";
+      return "Opusti\u0165";
     },
     get$leftTheChat() {
-      return "A plecat din chat";
+      return "Opustili chat";
     },
     get$lightTheme() {
-      return "Luminat";
+      return "Svetl\xe1";
     },
     loadCountMoreParticipants$1(count) {
-      return "\xcenc\u0103rca\u021bi \xeenc\u0103 mai " + count + " participan\u021bi";
+      return "Na\u010d\xedta\u0165 \u010fal\u0161\xedch " + count + " \xfa\u010dastn\xedkov";
     },
     get$dehydrate() {
-      return "Exporta\u021bi sesiunea \u0219i \u0219terge\u021bi dispozitivul";
+      return "Export session and wipe device";
     },
     get$dehydrateWarning() {
-      return "Aceast\u0103 actiune nu poate fi anulat\u0103. Asigura\u021bi-v\u0103 c\u0103 p\u0103stra\u021bi fi\u0219ierul backup.";
+      return "This action cannot be undone. Ensure you safely store the backup file.";
     },
     get$dehydrateTor() {
-      return "Utilizatori de TOR: Exporta\u021bi sesiunea";
+      return "TOR Users: Export session";
     },
     get$dehydrateTorLong() {
-      return "Pentru utilizatori de TOR, este recomandat s\u0103 exporta\u021bi sesiunea \xeenainte de a \xeenchide\u021bi fereastra.";
+      return "For TOR users, it is recommended to export the session before closing the window.";
     },
     get$loadingPleaseWait() {
-      return "\xcenc\u0103rc\xe2nd... V\u0103 rug\u0103m s\u0103 a\u0219tepta\u021bi.";
+      return "Na\u010d\xedtava sa\u2026 \u010cakajte pros\xedm.";
     },
     get$loadMore() {
-      return "\xcencarc\u0103 mai multe\u2026";
+      return "Na\u010d\xedta\u0165 viac\u2026";
     },
     get$locationDisabledNotice() {
-      return "Servicile de loca\u021bie sunt dezactivate. V\u0103 rug\u0103m s\u0103 le activa\u021bi s\u0103 \xeemp\u0103r\u021bi\u021bi loca\u021bia voastr\u0103.";
+      return "Location services are disabled. Please enable them to be able to share your location.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Permisiunea loca\u021biei blocat\u0103. V\u0103 rug\u0103m s\u0103 o dezbloca\u021bi s\u0103 \xeemp\u0103r\u021bi\u021bi loca\u021bia voastr\u0103.";
+      return "Location permission denied. Please grant them to be able to share your location.";
     },
     get$logout() {
-      return "Deconecta\u021bi-v\u0103";
+      return "Odhl\xe1si\u0165 sa";
     },
     get$memberChanges() {
-      return "Schimb\u0103ri de membri";
+      return "Member changes";
     },
     get$mention() {
-      return "Men\u021biona\u021bi";
+      return "Mention";
     },
     get$messages() {
-      return "Mesaje";
+      return "Messages";
     },
     get$messagesStyle() {
       return "Messages:";
     },
     get$moderator() {
-      return "Moderator";
+      return "Moder\xe1tor";
     },
     get$newChat() {
-      return "Chat nou";
+      return "New chat";
     },
     get$newVerificationRequest() {
-      return "Cerere de verificare nou\u0103!";
+      return "Nov\xe1 \u017eiados\u0165 o verifik\xe1ciu!";
     },
     get$next(_) {
-      return "Urm\u0103tor";
+      return "Next";
     },
     get$no() {
-      return "Nu";
+      return "No";
     },
     get$noConnectionToTheServer() {
-      return "F\u0103r\u0103 conexiune la server";
+      return "No connection to the server";
     },
     get$noEmotesFound() {
-      return "Nu s-a g\u0103sit nici un emote. \ud83d\ude15";
+      return "Nena\u0161li sa \u017eiadne emotikony. \ud83d\ude15";
     },
     get$shareInviteLink() {
       return "Share invite link";
     },
     get$noPasswordRecoveryDescription() {
-      return "Nu a\u021bi ad\u0103ugat \xeenc\u0103 nici un mod de recuperare pentru parola voastr\u0103.";
+      return "You have not added a way to recover your password yet.";
     },
     get$noPermission() {
-      return "F\u0103r\u0103 permisie";
+      return "Ch\xfdba povolenie";
     },
     get$noRoomsFound() {
-      return "Nici o camer\u0103 nu s-a g\u0103sit\u2026";
+      return "Nena\u0161li sa \u017eiadne miestnosti\u2026";
     },
     get$notifications() {
-      return "Notific\u0103ri";
+      return "Notifications";
     },
     get$notificationsEnabledForThisAccount() {
-      return "Notific\u0103ri activate pentru acest cont";
+      return "Notifications enabled for this account";
     },
     get$obtainingLocation() {
-      return "Ob\u021bin\xe2nd loca\u021bie\u2026";
+      return "Obtaining location\u2026";
     },
     get$offensive() {
-      return "Ofensiv";
+      return "Offensive";
     },
     get$ok() {
-      return "Ok";
+      return "ok";
     },
     get$oopsSomethingWentWrong() {
-      return "Ups, ceva a e\u0219uat\u2026";
+      return "Och! Nie\u010do sa pokazilo\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Unul dintre clien\u021bilor vo\u0219tri a fost deconectat";
+      return "One of your clients has been logged out";
     },
     get$addAccount() {
-      return "Ad\u0103uga\u021bi cont";
+      return "Add account";
     },
     get$enableMultiAccounts() {
-      return "(BETA) Activa\u021bi multiple conturi pe acest dispozitiv";
+      return "(BETA) Enable multi accounts on this device";
     },
     get$openInMaps() {
-      return "Deschide\u021bi pe hart\u0103";
+      return "Open in maps";
     },
     get$link() {
       return "Link";
     },
     get$serverRequiresEmail() {
-      return "Acest server trebuie s\u0103 valideze emailul vostru pentru \xeenregistrare.";
+      return "This server needs to validate your email address for registration.";
     },
     get$or() {
-      return "Sau";
+      return "Or";
     },
     get$participant() {
       return "Participant";
     },
     get$passphraseOrKey() {
-      return "fraz\u0103 de acces sau cheie de recuperare";
+      return "pr\xedstupov\xe1 fr\xe1za alebo k\u013e\xfa\u010d na obnovenie";
     },
     get$password(_) {
-      return "Parol\u0103";
+      return "Heslo";
     },
     get$passwordForgotten() {
-      return "Parola uitat\u0103";
+      return "Password forgotten";
     },
     get$passwordHasBeenChanged() {
-      return "Parola a fost schimbat\u0103";
+      return "Password has been changed";
     },
     get$overview() {
       return "Overview";
@@ -745,37 +733,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Password recovery settings";
     },
     get$passwordRecovery() {
-      return "Recuperare parolei";
+      return "Password recovery";
     },
     get$pickImage() {
-      return "Alege\u021bi o imagine";
+      return "Vybra\u0165 obr\xe1zok";
     },
     get$pin() {
-      return "Fixa\u021bi";
+      return "Pin";
     },
     get$pleaseChoose() {
-      return "V\u0103 rug\u0103m s\u0103 alege\u021bi";
-    },
-    get$pleaseClickOnLink() {
-      return "V\u0103 rug\u0103m s\u0103 deschide\u021bi linkul din email \u0219i apoi s\u0103 proceda\u021bi.";
+      return "Please choose";
     },
     get$pleaseEnterYourPassword() {
-      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi parola voastr\u0103";
+      return "Pros\xedm zadajte svoje heslo";
     },
     get$pleaseEnterYourPin() {
-      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi pinul vostru";
+      return "Please enter your pin";
     },
     get$pleaseEnterYourUsername() {
-      return "V\u0103 rug\u0103m s\u0103 introduce\u021bi username-ul vostru";
+      return "Zadajte svoje pou\u017e\xedvate\u013esk\xe9 meno";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "V\u0103 rug\u0103m s\u0103 urma\u021bi instruc\u021biunele pe website \u0219i apoi s\u0103 ap\u0103sa\u021bi pe urm\u0103tor.";
+      return "Please follow the instructions on the website and tap on next.";
     },
     get$privacy() {
-      return "Confiden\u021bialitate";
+      return "Privacy";
     },
     get$reason(_) {
-      return "Motiv";
+      return "Reason";
     },
     redactedBy$1(username) {
       return "Redacted by " + username;
@@ -787,331 +772,322 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Redacted by " + username + ' because: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " a redactat un eveniment";
+      return username + " odstr\xe1nili udalos\u0165";
     },
     get$redactMessage() {
-      return "Redacta\u021bi mesaj";
+      return "Redact message";
     },
     get$reject() {
-      return "Respinge\u021bi";
+      return "Odmietnu\u0165";
     },
     rejectedTheInvitation$1(username) {
-      return username + " a respins invita\u021bia";
+      return username + " odmietli pozv\xe1nku";
     },
     get$removeAllOtherDevices() {
-      return "Elimina\u021bi toate celelalte dispozitive";
+      return "Odstr\xe1\u0148i\u0165 v\u0161etky ostatn\xe9 zariadenia";
     },
     get$unbanFromChat() {
-      return "Revoca interzicerea din chat";
+      return "Odblokova\u0165";
     },
     get$removeYourAvatar() {
-      return "\u0218terge\u021bi avatarul";
+      return "Remove your avatar";
     },
     get$replaceRoomWithNewerVersion() {
-      return "\xcenlocui\u021bi camera cu versiune mai nou\u0103";
+      return "Replace room with newer version";
     },
     get$reply(_) {
-      return "R\u0103spunde\u021bi";
+      return "Odpoveda\u0165";
     },
     get$reportMessage() {
-      return "Raporta\u021bi mesajul";
+      return "Nahl\xe1si\u0165 spr\xe1vu";
     },
     get$roomHasBeenUpgraded() {
-      return "Camera a fost actualizat\u0103";
+      return "Miestnos\u0165 bola upgradeovan\xe1";
     },
     get$roomVersion() {
-      return "Versiunea camerei";
+      return "Verzia miestnosti";
     },
     get$search(_) {
-      return "C\u0103uta\u021bi";
+      return "H\u013eada\u0165";
     },
     get$security() {
-      return "Securitate";
+      return "Bezpe\u010dnos\u0165";
     },
     get$send(_) {
-      return "Trimite\u021bi";
+      return "Odosla\u0165";
     },
     get$sendAMessage() {
-      return "Trimite\u021bi un mesaj";
+      return "Odosla\u0165 spr\xe1vu";
     },
     get$sendAsText() {
-      return "Trimite\u021bi ca text";
+      return "Posla\u0165 ako text";
     },
     get$sendAudio() {
-      return "Trimite\u021bi audio";
+      return "Posla\u0165 zvuk";
     },
     get$sendFile() {
-      return "Trimite\u021bi fi\u0219ier";
+      return "Odosla\u0165 s\xfabor";
     },
     get$sendImage() {
-      return "Trimite\u021bi imagine";
+      return "Odosla\u0165 obr\xe1zok";
     },
     sendImages$1(count) {
       return "Send " + count + " image";
     },
     get$sendMessages() {
-      return "Trimite\u021bi mesaje";
+      return "Posla\u0165 spr\xe1vy";
     },
     get$sendVideo() {
-      return "Trimite\u021bi video";
+      return "Posla\u0165 video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1" + username + " a trimis un fi\u0219ier";
+      return username + " poslali s\xfabor";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4" + username + " a trimis audio";
+      return username + " poslali zvukov\xfa nahr\xe1vku";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " a trimis o poz\u0103";
+      return username + " poslali obr\xe1zok";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " a trimis un sticker";
+      return username + " poslali n\xe1lepku";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5" + username + " a trimis un video";
+      return username + " poslali video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " a trimis informa\u021bie de apel";
+      return senderName + " sent call information";
     },
     get$separateChatTypes() {
-      return "Afi\u0219a\u021bi chaturi directe \u0219i grupuri separat";
+      return "Separate Direct Chats and Groups";
     },
     get$setAsCanonicalAlias() {
-      return "Stabili\u021bi ca pseudonimul primar";
+      return "Set as main alias";
     },
     get$setChatDescription() {
       return "Set chat description";
     },
     get$setPermissionsLevel() {
-      return "Stabili\u021bi nivelul de permisii";
+      return "Nastavi\u0165 \xfarove\u0148 opr\xe1vnen\xed";
     },
     get$settings() {
-      return "Configur\u0103ri";
+      return "Nastavenia";
     },
     get$share(_) {
-      return "Partaja\u021bi";
+      return "Zdie\u013ea\u0165";
     },
     sharedTheLocation$1(username) {
-      return username + " sa partajat loca\u021bia";
+      return username + " zdie\u013ea lok\xe1ciu";
     },
     get$shareLocation() {
-      return "Partaja\u021bi loca\u021bia";
+      return "Share location";
     },
     get$presencesToggle() {
       return "Show status messages from other users";
     },
     get$skip(_) {
-      return "S\u0103ri\u021bi peste";
+      return "Presko\u010di\u0165";
     },
     get$sourceCode() {
-      return "Codul surs";
+      return "Zdrojov\xfd k\xf3d";
     },
     get$spaceName() {
-      return "Numele spa\u021biului";
+      return "Space name";
     },
     startedACall$1(senderName) {
-      return senderName + " a \xeenceput un apel";
+      return senderName + " started a call";
     },
     get$status(_) {
       return "Status";
     },
     get$submit(_) {
-      return "Trimite\u021bi";
+      return "Odosla\u0165";
     },
     get$synchronizingPleaseWait() {
-      return "Sincronizeaz\u0103... V\u0103 rug\u0103m s\u0103 a\u0219tepta\u021bi.";
+      return "Synchronizing\u2026 Please wait.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
       return " Synchronizing\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Sistem";
+      return "Syst\xe9mov\xe1 farba";
     },
     get$theyDontMatch() {
-      return "Nu sunt asem\u0103n\u0103tori";
+      return "Sa nezhoduj\xfa";
     },
     get$theyMatch() {
-      return "Sunt asem\u0103n\u0103tori";
+      return "Zhoduj\xfa sa";
     },
     get$tooManyRequestsWarning() {
-      return "Prea multe cereri. V\u0103 rug\u0103m s\u0103 \xeencerca\u021bi din nou mai t\u0103rziu!";
+      return "Too many requests. Please try again later!";
     },
     get$tryToSendAgain() {
-      return "\xcencerca\u021bi s\u0103 trimite\u021bi din nou";
+      return "Sk\xfasi\u0165 znova odosla\u0165";
     },
     get$unavailable() {
-      return "Nedisponibil";
+      return "Unavailable";
     },
     unbannedUser$2(username, targetName) {
-      return username + " a ridicat interzicerea lui " + targetName;
+      return username + " odbanovali " + targetName;
     },
     get$unblockDevice() {
-      return "Debloca dispozitiv";
+      return "Odblokova\u0165 zariadenie";
     },
     get$unknownDevice() {
-      return "Dispozitiv necunoscut";
+      return "Nezn\xe1me zariadenie";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Algoritm de criptare necunoscut";
+      return "Nezn\xe1my \u0161ifrovac\xed algoritmus";
     },
     unknownEvent$1(type) {
-      return "Evenimet necunoscut '" + type + "'";
+      return "Nezn\xe1ma udalos\u0165 \u201e" + type + "\u201c";
     },
     get$unpin() {
-      return "Anuleaz\u0103 fixarea";
-    },
-    userAndOthersAreTyping$2(username, count) {
-      return username + " \u0219i " + count + " al\u021bi tasteaz\u0103\u2026";
+      return "Unpin";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \u0219i " + username2 + " tasteaz\u0103\u2026";
+      return username + " a " + username2 + " p\xed\u0161u\u2026";
     },
     userIsTyping$1(username) {
-      return username + " tasteaz\u0103\u2026";
+      return username + " p\xed\u0161e\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa" + username + " a plecat din chat";
+      return username + " opustili chat";
     },
     get$username(_) {
-      return "Nume de utilizator";
+      return "U\u017e\xedvate\u013esk\xe9 meno";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " a trimis un eveniment " + type;
+      return username + " poslali udalos\u0165 " + type;
     },
     get$unverified() {
-      return "Neverificat";
+      return "Unverified";
     },
     get$verified() {
-      return "Verificat";
+      return "Verified";
     },
     get$verifyStart() {
-      return "\xcencepe\u021bi verificare";
+      return "Spusti\u0165 verifik\xe1ciu";
     },
     get$verifySuccess() {
-      return "A reu\u0219it verificarea!";
+      return "Verifik\xe1cia bola \xfaspe\u0161n\xe1!";
     },
     get$verifyTitle() {
-      return "Verific\xe2nd cel\u0103lalt cont";
+      return "Verifikujem proti\u013eahl\xfd \xfa\u010det";
     },
     get$visibilityOfTheChatHistory() {
-      return "Vizibilitatea istoria chatului";
+      return "Vidite\u013enos\u0165 hist\xf3rie chatu";
     },
     get$visibleForAllParticipants() {
-      return "Vizibil pentru to\u021bi participan\u021bi";
+      return "Vidite\u013en\xe9 pre v\u0161etk\xfdch \xfa\u010dastn\xedkov";
     },
     get$visibleForEveryone() {
-      return "Vizibil pentru to\u021bi";
+      return "Vidite\u013en\xe9 pre ka\u017ed\xe9ho";
     },
     get$voiceMessage() {
-      return "Mesaj vocal";
+      return "Hlasov\xe1 spr\xe1va";
     },
     get$waitingPartnerAcceptRequest() {
-      return "A\u0219tept\xe2nd pe partenerul s\u0103 accepte cererea\u2026";
+      return "\u010cak\xe1 sa, k\xfdm partner prijme po\u017eiadavku\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "A\u0219tept\xe2nd pe partenerul s\u0103 accepte emoji-ul\u2026";
+      return "\u010cak\xe1 sa, k\xfdm partner prijme emotikon\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "A\u0219tept\xe2nd pe partenerul s\u0103 accepte numerele\u2026";
+      return "\u010cak\xe1 sa na to, k\xfdm partner prijme \u010d\xedsla\u2026";
     },
     get$warning() {
-      return "Avertizment!";
+      return "Warning!";
     },
     get$weSentYouAnEmail() {
-      return "V-am trimis un email";
+      return "We sent you an email";
     },
     get$whoCanPerformWhichAction() {
-      return "Cine poate face care ac\u021biune";
-    },
-    get$whoIsAllowedToJoinThisGroup() {
-      return "Cine se poate al\u0103tura la acest grup";
+      return "Who can perform which action";
     },
     get$whyDoYouWantToReportThis() {
-      return "De ce dori\u021bi s\u0103 reporta\u021bi acest con\u021binut?";
+      return "Why do you want to report this?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Cu acestea adrese pute\u021bi s\u0103 v\u0103 recupera\u021bi parola.";
+      return "With these addresses you can recover your password.";
     },
     get$writeAMessage() {
-      return "Scrie\u021bi un mesaj\u2026";
-    },
-    writeAMessageLangCodes$2(l1, l2) {
-      return "Type in " + l1 + " or " + l2 + "...";
+      return "Nap\xedsa\u0165 spr\xe1vu\u2026";
     },
     get$yes() {
-      return "Da";
+      return "\xc1no";
     },
     get$you() {
-      return "Voi";
+      return "Vy";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Nu mai participa\u021bi \xeen acest chat";
+      return "U\u017e sa nez\xfa\u010dast\u0148ujete tohto chatu";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "A\u021bi fost interzis din acest chat";
+      return "M\xe1te zablokovan\xfd pr\xedstup k tomuto chatu";
     },
     get$yourPublicKey() {
-      return "Cheia voastr\u0103 public\u0103";
+      return "Your public key";
     },
     get$messageInfo() {
-      return "Info mesajului";
+      return "Message info";
     },
     get$time(_) {
-      return "Timp";
+      return "Time";
     },
     get$sender() {
-      return "Trimi\u021b\u0103tor";
+      return "Sender";
     },
     get$openGallery() {
-      return "Deschide\u021bi galeria";
+      return "Open gallery";
     },
     get$removeFromSpace() {
-      return "Elimina\u021bi din spa\u021biu";
+      return "Remove from space";
     },
     videoWithSize$1(size) {
       return "Video (" + size + ")";
     },
     get$markAsRead() {
-      return "Marca\u021bi ca citit";
+      return "Mark as read";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " a reac\u021bionat cu " + reaction;
+      return sender + " reacted with " + reaction;
     },
     get$pinMessage() {
-      return "Fixa\u021bi \xeen camer\u0103";
+      return "Pin to room";
     },
     get$confirmEventUnpin() {
-      return "Sunte\u021bi sigur c\u0103 dori\u021bi s\u0103 anula\u021bi permanent fixarea evenimentului?";
+      return "Are you sure to permanently unpin the event?";
     },
     get$emojis() {
-      return "Emoji-uri";
+      return "Emojis";
     },
     get$youRejectedTheInvitation() {
-      return "A\u021bi respins invita\u021bia";
+      return "You rejected the invitation";
     },
     get$youJoinedTheChat() {
-      return "Va-\u021bi al\u0103turat la chat";
+      return "You joined the chat";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4dA\u021bi acceptat invita\u021bia";
+      return "\ud83d\udc4d You accepted the invitation";
     },
     youBannedUser$1(user) {
-      return "A\u021bi interzis pe " + user;
+      return "You banned " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "A\u021bi retras invita\u021bia pentru " + user;
+      return "You have withdrawn the invitation for " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9A\u021bi fost invitat de " + user;
+      return "\ud83d\udce9 You have been invited by " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9A\u021bi invitat pe " + user;
+      return "\ud83d\udce9 You invited " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5eA\u021bi dat afar\u0103 pe " + user;
+      return "\ud83d\udc5e You kicked " + user;
     },
     youUnbannedUser$1(user) {
-      return "A\u021bi ridicat interzicerea lui " + user;
+      return "You unbanned " + user;
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " has knocked";
@@ -1129,52 +1105,49 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Knock";
     },
     get$users() {
-      return "Utilizatori";
+      return "Users";
     },
     countFiles$1(count) {
-      return count + " fi\u0219iere";
+      return "" + count + " files";
     },
     get$user() {
-      return "Utilizator";
+      return "User";
     },
     get$custom() {
-      return "Personalizat";
+      return "Custom";
     },
     get$noKeyForThisMessage() {
-      return "Aceast\u0103 chestie poate s\u0103 se \xeent\xe2mple c\xe2nd mesajul a fost trimis \xeenainte s\u0103 v\u0103 conecta\u021bi contul cu acest dispozitiv.\n\nO alt\u0103 explica\u021bie ar fi dac\u0103 trimi\u021b\u0103torul a blocat dispozitivul vostru sau ceva s-a \xeent\xe2mplat cu conexiunea la internet\n\nPute\u021bi s\u0103 citi\u021bi mesajul \xeen o alt\u0103 se\u0219iune? Atunci pute\u021bi s\u0103 transfera\u021bi mesajul de acolo! Merge\u021bi la Configur\u0103ri > Dispozitive \u0219i verifica\u021bi c\u0103 dispozitivele s-au verificat. C\xe2nd deschide\u021bi camera \xeen viitor \u0219i ambele se\u0219iune sunt \xeen foreground, cheile va fi transmise automat. \n\nDori\u021bi s\u0103 \xee\u021bi p\u0103stra\u021bi cheile c\xe2nd deconecta\u021bi sau schimba\u021bi dispozitive? Fi\u021bi aten\u021bi s\u0103 activa\u021bi backup de chat \xeen configur\u0103ri.";
+      return "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.";
     },
     get$newSpace() {
-      return "Spa\u021biu nou";
+      return "New space";
     },
     get$doNotShowAgain() {
-      return "Nu se mai apar\u0103 din nou";
+      return "Do not show again";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Chat gol (a fost " + oldDisplayName + ")";
+      return "Empty chat (was " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Deschide din nou chatul";
-    },
-    get$noBackupWarning() {
-      return "Avertisment! F\u0103r\u0103 s\u0103 activa\u021bi backup de chat, ve\u021bi pierde accesul la mesajele voastre criptate. E foarte recomandat s\u0103 activa\u021bi backup de chat \xeenainte s\u0103 v\u0103 deconecta\u021bi.";
+      return "Reopen chat";
     },
     get$noOtherDevicesFound() {
-      return "Nu s-a g\u0103sit alte dispozitive";
+      return "No other devices found";
     },
     fileIsTooBigForServer$1(max) {
-      return "Serverul reporteaz\u0103 c\u0103 fi\u0219ierul este prea mare s\u0103 fie trimis.";
+      return "Unable to send! The server only supports attachments up to " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "S\u0103ri\u021bi la ultimul citit mesaj";
+      return "Jump to last read message";
     },
     get$readUpToHere() {
-      return "Citit p\xe2n\u0103 aici";
+      return "Read up to here";
     },
     get$jump() {
-      return "S\u0103ri\u021bi";
+      return "Jump";
     },
     get$openLinkInBrowser() {
-      return "Deschide\u021bi linkul \xeen browser";
+      return "Open link in browser";
     },
     get$profileNotFound() {
       return "The user could not be found on the server. Maybe there is a connection problem or the user doesn't exist.";
@@ -1193,6 +1166,312 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     wrongPinEntered$1(seconds) {
       return "Wrong pin entered! Try again in " + seconds + " seconds...";
+    },
+    get$pleaseEnterANumber() {
+      return "Please enter a number greater than 0";
+    },
+    get$archiveRoomDescription() {
+      return "The chat will be moved to the archive. Other users will be able to see that you have left the chat.";
+    },
+    get$roomUpgradeDescription() {
+      return "The chat will then be recreated with the new room version. All participants will be notified that they need to switch to the new chat. You can find out more about room versions at https://spec.matrix.org/latest/rooms/";
+    },
+    get$removeDevicesDescription() {
+      return "You will be logged out of this device and will no longer be able to receive messages.";
+    },
+    get$banUserDescription() {
+      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
+    },
+    get$unbanUserDescription() {
+      return "The user will be able to enter the chat again if they try.";
+    },
+    get$kickUserDescription() {
+      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
+    },
+    get$makeAdminDescription() {
+      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
+    },
+    get$yourGlobalUserIdIs() {
+      return "Your global user-ID is: ";
+    },
+    noUsersFoundWithQuery$1(query) {
+      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
+    },
+    get$knocking() {
+      return "Knocking";
+    },
+    chatCanBeDiscoveredViaSearchOnServer$1(server) {
+      return "Chat can be discovered via the search on " + server;
+    },
+    get$searchChatsRooms() {
+      return "Search for #chats, @users...";
+    },
+    get$nothingFound() {
+      return "Nothing found...";
+    },
+    get$wrongRecoveryKey() {
+      return "Sorry... this does not seem to be the correct recovery key.";
+    },
+    get$startConversation() {
+      return "Start conversation";
+    },
+    get$commandHint_sendraw() {
+      return "Send raw json";
+    },
+    get$searchForUsers() {
+      return "Search for @users...";
+    },
+    get$pleaseEnterYourCurrentPassword() {
+      return "Please enter your current password";
+    },
+    get$newPassword() {
+      return "New password";
+    },
+    get$pleaseChooseAStrongPassword() {
+      return "Please choose a strong password";
+    },
+    get$passwordsDoNotMatch() {
+      return "Passwords do not match";
+    },
+    get$passwordIsWrong() {
+      return "Your entered password is wrong";
+    },
+    get$publicChatAddresses() {
+      return "Public chat addresses";
+    },
+    get$createNewAddress() {
+      return "Create new address";
+    },
+    get$joinSpace() {
+      return "Join space";
+    },
+    get$publicSpaces() {
+      return "Public spaces";
+    },
+    get$decline() {
+      return "Decline";
+    },
+    get$thisDevice() {
+      return "This device:";
+    },
+    get$initAppError() {
+      return "An error occured while init the app";
+    },
+    get$userRole() {
+      return "User role";
+    },
+    searchIn$1(chat) {
+      return 'Search in chat "' + chat + '"...';
+    },
+    get$searchMore() {
+      return "Search more...";
+    },
+    get$gallery() {
+      return "Gallery";
+    },
+    get$files(_) {
+      return "Files";
+    },
+    sessionLostBody$2(url, error) {
+      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
+    },
+    restoreSessionBody$2(url, error) {
+      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
+    },
+    get$sendReadReceipts() {
+      return "Send read receipts";
+    },
+    get$sendTypingNotificationsDescription() {
+      return "Other participants in a chat can see when you are typing a new message.";
+    },
+    get$sendReadReceiptsDescription() {
+      return "Other participants in a chat can see when you have read a message.";
+    },
+    get$verifyOtherDevice() {
+      return "\ud83d\udd10 Verify other device";
+    },
+    get$verifyOtherDeviceDescription() {
+      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
+    },
+    acceptedKeyVerification$1(sender) {
+      return sender + " accepted key verification";
+    },
+    canceledKeyVerification$1(sender) {
+      return sender + " canceled key verification";
+    },
+    completedKeyVerification$1(sender) {
+      return sender + " completed key verification";
+    },
+    isReadyForKeyVerification$1(sender) {
+      return sender + " is ready for key verification";
+    },
+    requestedKeyVerification$1(sender) {
+      return sender + " requested key verification";
+    },
+    startedKeyVerification$1(sender) {
+      return sender + " started key verification";
+    },
+    get$stickers() {
+      return "Stickers";
+    },
+    get$discover() {
+      return "Discover";
+    },
+    get$commandHint_ignore() {
+      return "Ignore the given matrix ID";
+    },
+    get$commandHint_unignore() {
+      return "Unignore the given matrix ID";
+    },
+    thereAreCountUsersBlocked$1(count) {
+      return "Right now there are " + count + " users blocked.";
+    },
+    get$restricted() {
+      return "Restricted";
+    },
+    get$knockRestricted() {
+      return "Knock restricted";
+    },
+    goToSpace$1(space) {
+      return "Go to space: " + space;
+    },
+    get$markAsUnread() {
+      return "Mark as unread";
+    },
+    userLevel$1(level) {
+      return "" + level + " - User";
+    },
+    moderatorLevel$1(level) {
+      return "" + level + " - Moderator";
+    },
+    adminLevel$1(level) {
+      return "" + level + " - Admin";
+    },
+    get$changeGeneralChatSettings() {
+      return "Change general chat settings";
+    },
+    get$inviteOtherUsers() {
+      return "Invite other users to this chat";
+    },
+    get$changeTheChatPermissions() {
+      return "Change the chat permissions";
+    },
+    get$changeTheVisibilityOfChatHistory() {
+      return "Change the visibility of the chat history";
+    },
+    get$changeTheCanonicalRoomAlias() {
+      return "Change the main public chat address";
+    },
+    get$sendRoomNotifications() {
+      return "Send a @room notifications";
+    },
+    get$changeTheDescriptionOfTheGroup() {
+      return "Change the description of the chat";
+    },
+    get$chatPermissionsDescription() {
+      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
+    },
+    updateInstalled$1(version) {
+      return "\ud83c\udf89 Update " + version + " installed!";
+    },
+    get$sendCanceled() {
+      return "Sending canceled";
+    },
+    get$doesNotSeemToBeAValidHomeserver() {
+      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
+    },
+    get$calculatingFileSize() {
+      return "Calculating file size...";
+    },
+    get$prepareSendingAttachment() {
+      return "Prepare sending attachment...";
+    },
+    get$sendingAttachment() {
+      return "Sending attachment...";
+    },
+    sendingAttachmentCountOfCount$2(index, $length) {
+      return "Sending attachment " + index + " of " + $length + "...";
+    },
+    serverLimitReached$1(seconds) {
+      return "Server limit reached! Waiting " + seconds + " seconds...";
+    },
+    get$noticeChatBackupDeviceVerification() {
+      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
+    },
+    get$continueText() {
+      return "Continue";
+    },
+    get$blur(_) {
+      return "Blur:";
+    },
+    get$opacity(_) {
+      return "Opacity:";
+    },
+    get$setWallpaper() {
+      return "Set wallpaper";
+    },
+    get$noContactInformationProvided() {
+      return "Server does not provide any valid contact information";
+    },
+    get$contactServerAdmin() {
+      return "Contact server admin";
+    },
+    get$contactServerSecurity() {
+      return "Contact server security";
+    },
+    get$supportPage() {
+      return "Support page";
+    },
+    get$serverInformation() {
+      return "Server information:";
+    },
+    get$name(_) {
+      return "Name";
+    },
+    get$version(_) {
+      return "Version";
+    },
+    get$compress() {
+      return "Compress";
+    },
+    get$boldText() {
+      return "Bold text";
+    },
+    get$italicText() {
+      return "Italic text";
+    },
+    get$strikeThrough() {
+      return "Strikethrough";
+    },
+    get$pleaseFillOut() {
+      return "Please fill out";
+    },
+    get$invalidUrl() {
+      return "Invalid url";
+    },
+    get$addLink() {
+      return "Add link";
+    },
+    get$unableToJoinChat() {
+      return "Unable to join chat. Maybe the other party has already closed the conversation.";
+    },
+    get$previous() {
+      return "Previous";
+    },
+    get$otherPartyNotLoggedIn() {
+      return "The other party is currently not logged in and therefore cannot receive messages!";
+    },
+    get$open(_) {
+      return "Open";
+    },
+    get$waitingForServer() {
+      return "Waiting for server...";
+    },
+    get$editChatPermissions() {
+      return "Edit chat permissions";
+    },
+    writeAMessageLangCodes$2(l1, l2) {
+      return "Type in " + l1 + " or " + l2 + "...";
     },
     get$allCorrect() {
       return "That's how I would say it! Nice!";
@@ -2382,45 +2661,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noTeachersFound() {
       return "No teachers found to report to";
     },
-    get$pleaseEnterANumber() {
-      return "Please enter a number greater than 0";
-    },
-    get$archiveRoomDescription() {
-      return "The chat will be moved to the archive. Other users will be able to see that you have left the chat.";
-    },
-    get$roomUpgradeDescription() {
-      return "The chat will then be recreated with the new room version. All participants will be notified that they need to switch to the new chat. You can find out more about room versions at https://spec.matrix.org/latest/rooms/";
-    },
-    get$removeDevicesDescription() {
-      return "You will be logged out of this device and will no longer be able to receive messages.";
-    },
-    get$banUserDescription() {
-      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
-    },
-    get$unbanUserDescription() {
-      return "The user will be able to enter the chat again if they try.";
-    },
-    get$kickUserDescription() {
-      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
-    },
-    get$makeAdminDescription() {
-      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
-    },
-    get$yourGlobalUserIdIs() {
-      return "Your global user-ID is: ";
-    },
-    noUsersFoundWithQuery$1(query) {
-      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
-    },
-    get$knocking() {
-      return "Knocking";
-    },
-    chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "Chat can be discovered via the search on " + server;
-    },
-    get$searchChatsRooms() {
-      return "Search for #chats, @users...";
-    },
     trialExpiration$1(expiration) {
       return "Your free trial expires on " + expiration;
     },
@@ -2436,78 +2676,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Click here to manage your subscription.";
     },
-    get$nothingFound() {
-      return "Nothing found...";
-    },
-    get$wrongRecoveryKey() {
-      return "Sorry... this does not seem to be the correct recovery key.";
-    },
-    get$startConversation() {
-      return "Start conversation";
-    },
-    get$commandHint_sendraw() {
-      return "Send raw json";
-    },
-    get$searchForUsers() {
-      return "Search for @users...";
-    },
-    get$pleaseEnterYourCurrentPassword() {
-      return "Please enter your current password";
-    },
-    get$newPassword() {
-      return "New password";
-    },
-    get$pleaseChooseAStrongPassword() {
-      return "Please choose a strong password";
-    },
-    get$passwordsDoNotMatch() {
-      return "Passwords do not match";
-    },
-    get$passwordIsWrong() {
-      return "Your entered password is wrong";
-    },
-    get$publicChatAddresses() {
-      return "Public chat addresses";
-    },
-    get$createNewAddress() {
-      return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
-    },
-    get$publicSpaces() {
-      return "Public spaces";
-    },
-    get$decline() {
-      return "Decline";
-    },
-    get$thisDevice() {
-      return "This device:";
-    },
-    get$initAppError() {
-      return "An error occured while init the app";
-    },
-    get$userRole() {
-      return "User role";
-    },
-    searchIn$1(chat) {
-      return 'Search in chat "' + chat + '"...';
-    },
-    get$searchMore() {
-      return "Search more...";
-    },
-    get$gallery() {
-      return "Gallery";
-    },
-    get$files(_) {
-      return "Files";
-    },
-    sessionLostBody$2(url, error) {
-      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
-    },
-    restoreSessionBody$2(url, error) {
-      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
-    },
     get$signUp() {
       return "Sign up";
     },
@@ -2519,39 +2687,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Please choose a username";
-    },
-    get$sendReadReceipts() {
-      return "Send read receipts";
-    },
-    get$sendTypingNotificationsDescription() {
-      return "Other participants in a chat can see when you are typing a new message.";
-    },
-    get$sendReadReceiptsDescription() {
-      return "Other participants in a chat can see when you have read a message.";
-    },
-    get$verifyOtherDevice() {
-      return "\ud83d\udd10 Verify other device";
-    },
-    get$verifyOtherDeviceDescription() {
-      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
-    },
-    acceptedKeyVerification$1(sender) {
-      return sender + " accepted key verification";
-    },
-    canceledKeyVerification$1(sender) {
-      return sender + " canceled key verification";
-    },
-    completedKeyVerification$1(sender) {
-      return sender + " completed key verification";
-    },
-    isReadyForKeyVerification$1(sender) {
-      return sender + " is ready for key verification";
-    },
-    requestedKeyVerification$1(sender) {
-      return sender + " requested key verification";
-    },
-    startedKeyVerification$1(sender) {
-      return sender + " started key verification";
     },
     get$trialPeriodExpired() {
       return "Your trial period has expired";
@@ -2570,18 +2705,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$kickBotWarning() {
       return "Kicking Pangea Bot will remove the conversation bot from this chat.";
-    },
-    get$stickers() {
-      return "Stickers";
-    },
-    get$discover() {
-      return "Discover";
-    },
-    get$commandHint_ignore() {
-      return "Ignore the given matrix ID";
-    },
-    get$commandHint_unignore() {
-      return "Unignore the given matrix ID";
     },
     get$conversationBotModeSelectDescription() {
       return "Chat activity";
@@ -2673,26 +2796,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$buildTranslation() {
       return "Build your translation from the choices above";
     },
-    thereAreCountUsersBlocked$1(count) {
-      return "Right now there are " + count + " users blocked.";
-    },
-    get$restricted() {
-      return "Restricted";
-    },
-    get$knockRestricted() {
-      return "Knock restricted";
-    },
-    get$createNewSpace() {
-      return "Spa\u021biu nou";
-    },
     get$practice() {
       return "Practice";
     },
     get$speechToTextBody() {
       return "For voice messages, you can see a transcript as well as the speaker's Words Per Minute score.";
-    },
-    get$previous() {
-      return "Previous";
     },
     get$versionNotFound() {
       return "Version Not Found";
@@ -2708,9 +2816,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$l1TranslationBody() {
       return "Messages in your base language will not be translated.";
-    },
-    get$continueText() {
-      return "Continue";
     },
     get$deleteSubscriptionWarningTitle() {
       return "You have an active subscription";
@@ -2735,54 +2840,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$translationChoicesBody() {
       return "Click and hold an option for a hint.";
-    },
-    get$sendCanceled() {
-      return "Sending canceled";
-    },
-    goToSpace$1(space) {
-      return "Go to space: " + space;
-    },
-    get$markAsUnread() {
-      return "Mark as unread";
-    },
-    userLevel$1(level) {
-      return "" + level + " - User";
-    },
-    moderatorLevel$1(level) {
-      return "" + level + " - Moderator";
-    },
-    adminLevel$1(level) {
-      return "" + level + " - Admin";
-    },
-    get$changeGeneralChatSettings() {
-      return "Change general chat settings";
-    },
-    get$inviteOtherUsers() {
-      return "Invite other users to this chat";
-    },
-    get$changeTheChatPermissions() {
-      return "Change the chat permissions";
-    },
-    get$changeTheVisibilityOfChatHistory() {
-      return "Change the visibility of the chat history";
-    },
-    get$changeTheCanonicalRoomAlias() {
-      return "Change the main public chat address";
-    },
-    get$sendRoomNotifications() {
-      return "Send a @room notifications";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Change the description of the chat";
-    },
-    get$chatPermissionsDescription() {
-      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
-    },
-    updateInstalled$1(version) {
-      return "\ud83c\udf89 Update " + version + " installed!";
-    },
-    get$doesNotSeemToBeAValidHomeserver() {
-      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
     },
     get$grammar() {
       return "Grammar";
@@ -3660,24 +3717,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "Notifications off";
     },
-    get$calculatingFileSize() {
-      return "Calculating file size...";
-    },
-    get$prepareSendingAttachment() {
-      return "Prepare sending attachment...";
-    },
-    get$sendingAttachment() {
-      return "Sending attachment...";
-    },
-    sendingAttachmentCountOfCount$2(index, $length) {
-      return "Sending attachment " + index + " of " + $length + "...";
-    },
-    serverLimitReached$1(seconds) {
-      return "Server limit reached! Waiting " + seconds + " seconds...";
-    },
-    get$noticeChatBackupDeviceVerification() {
-      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
-    },
     get$requireCodeToJoin() {
       return "Require code to join";
     },
@@ -3689,60 +3728,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$nestedSpaceError() {
       return "Spaces should not be added as children of other spaces";
-    },
-    get$blur(_) {
-      return "Blur:";
-    },
-    get$opacity(_) {
-      return "Opacity:";
-    },
-    get$setWallpaper() {
-      return "Set wallpaper";
-    },
-    get$noContactInformationProvided() {
-      return "Server does not provide any valid contact information";
-    },
-    get$contactServerAdmin() {
-      return "Contact server admin";
-    },
-    get$contactServerSecurity() {
-      return "Contact server security";
-    },
-    get$supportPage() {
-      return "Support page";
-    },
-    get$serverInformation() {
-      return "Server information:";
-    },
-    get$name(_) {
-      return "Name";
-    },
-    get$version(_) {
-      return "Version";
-    },
-    get$compress() {
-      return "Compress";
-    },
-    get$boldText() {
-      return "Bold text";
-    },
-    get$italicText() {
-      return "Italic text";
-    },
-    get$strikeThrough() {
-      return "Strikethrough";
-    },
-    get$pleaseFillOut() {
-      return "Please fill out";
-    },
-    get$invalidUrl() {
-      return "Invalid url";
-    },
-    get$addLink() {
-      return "Add link";
-    },
-    get$unableToJoinChat() {
-      return "Unable to join chat. Maybe the other party has already closed the conversation.";
     },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
@@ -4074,9 +4059,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noClassCode() {
       return "No class code!";
     },
-    get$otherPartyNotLoggedIn() {
-      return "The other party is currently not logged in and therefore cannot receive messages!";
-    },
     get$chooseCorrectLabel() {
       return "Choose the correct label.";
     },
@@ -4167,12 +4149,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveSpaceDescription() {
       return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
     },
-    get$open(_) {
-      return "Open";
-    },
-    get$waitingForServer() {
-      return "Waiting for server...";
-    },
     get$whatIsLemma() {
       return "What is the lemma?";
     },
@@ -4191,6 +4167,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$meaning() {
       return "Meaning";
     },
+    chatWith$1(displayname) {
+      return "Group with " + displayname;
+    },
+    get$slightlyOffensive() {
+      return "Slightly offensive";
+    },
+    get$clickOnEmailLink() {
+      return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
+    },
+    get$whoIsAllowedToJoinThisChat() {
+      return "Who is allowed to join this chat";
+    },
+    get$dontForgetPassword() {
+      return "Don't forget your password!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4198,14 +4189,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nRo, C.L10n);
+    _inherit(A.L10nSk, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nRo":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nSk":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_250", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "WI0i4mMPbXUXjP5s33MK6IXzmvU=");
+})($__dart_deferred_initializers__, "RsHEgEZUjCjObCoMNmtjxclTyHI=");
 ;
 //# sourceMappingURL=main.dart.js_250.part.js.map

@@ -152,7 +152,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "The homeserver supports the Spec versions:\n" + serverVersions + "\nBut this app supports only " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return chats + " chats and " + B.S(participants) + " participants";
+      return "" + chats + " chats and " + participants + " participants";
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
@@ -243,9 +243,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$changeTheme() {
       return "Change your style";
-    },
-    get$changeTheNameOfTheGroup() {
-      return "Change the name of the chat";
     },
     get$changeYourAvatar() {
       return "Change your avatar";
@@ -356,7 +353,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Contains username";
     },
     get$contentHasBeenReported() {
-      return "The content has been reported";
+      return "The content has been reported to the server admins";
     },
     get$copiedToClipboard() {
       return "Copiada para a \xe1rea de transfer\xeancia";
@@ -368,13 +365,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Could not decrypt message: " + error;
     },
     countParticipants$1(count) {
-      return B.S(count) + " participants";
+      return "" + count + " participants";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " created the chat";
     },
     get$createGroup() {
       return "Create group";
+    },
+    get$createNewSpace() {
+      return "New space";
     },
     get$currentlyActive() {
       return "Currently active";
@@ -423,9 +423,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$chatPermissions() {
       return "Chat permissions";
-    },
-    get$editChatPermissions() {
-      return "Edit chat permissions";
     },
     get$editDisplayname() {
       return "Edit displayname";
@@ -505,17 +502,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToTheNewRoom() {
       return "Go to the new room";
     },
-    get$group() {
-      return "Chat";
-    },
     get$chatDescription() {
       return "Chat description";
     },
     get$groups() {
-      return "Chats";
-    },
-    groupWith$1(displayname) {
-      return "Chat with " + displayname;
+      return "Groups";
     },
     get$guestsAreForbidden() {
       return "Guests are forbidden";
@@ -542,7 +533,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "How offensive is this content?";
     },
     get$block() {
-      return "block";
+      return "Block";
     },
     get$blockedUsers() {
       return "Blocked users";
@@ -558,9 +549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Incorrect passphrase or recovery key";
-    },
-    get$inoffensive() {
-      return "Slightly offensive";
     },
     get$inviteContact() {
       return "Invite contact";
@@ -769,9 +757,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseChoose() {
       return "Please choose";
     },
-    get$pleaseClickOnLink() {
-      return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
-    },
     get$pleaseEnterYourPassword() {
       return "Please enter your password";
     },
@@ -920,7 +905,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Source code";
     },
     get$spaceName() {
-      return "Name";
+      return "Space name";
     },
     startedACall$1(senderName) {
       return senderName + " started a call";
@@ -972,9 +957,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$unpin() {
       return "Unpin";
-    },
-    userAndOthersAreTyping$2(username, count) {
-      return username + " and " + count + " others are typing\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
       return username + " and " + username2 + " are typing\u2026";
@@ -1036,9 +1018,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$whoCanPerformWhichAction() {
       return "Who can perform which action";
     },
-    get$whoIsAllowedToJoinThisGroup() {
-      return "Who is allowed to join this chat";
-    },
     get$whyDoYouWantToReportThis() {
       return "Why do you want to report this?";
     },
@@ -1047,9 +1026,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$writeAMessage() {
       return "Write a message\u2026";
-    },
-    writeAMessageLangCodes$2(l1, l2) {
-      return "Type in " + l1 + " or " + l2 + "...";
     },
     get$yes() {
       return "Yes";
@@ -1145,7 +1121,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Utilizadores";
     },
     countFiles$1(count) {
-      return count + " files";
+      return "" + count + " files";
     },
     get$user() {
       return "User";
@@ -1167,9 +1143,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$reopenChat() {
       return "Reopen chat";
-    },
-    get$noBackupWarning() {
-      return "Don't forget your password!";
     },
     get$noOtherDevicesFound() {
       return "No other devices found";
@@ -1206,6 +1179,312 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     wrongPinEntered$1(seconds) {
       return "Wrong pin entered! Try again in " + seconds + " seconds...";
+    },
+    get$pleaseEnterANumber() {
+      return "Please enter a number greater than 0";
+    },
+    get$archiveRoomDescription() {
+      return "The chat will be moved to the archive. Other users will be able to see that you have left the chat.";
+    },
+    get$roomUpgradeDescription() {
+      return "The chat will then be recreated with the new room version. All participants will be notified that they need to switch to the new chat. You can find out more about room versions at https://spec.matrix.org/latest/rooms/";
+    },
+    get$removeDevicesDescription() {
+      return "You will be logged out of this device and will no longer be able to receive messages.";
+    },
+    get$banUserDescription() {
+      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
+    },
+    get$unbanUserDescription() {
+      return "The user will be able to enter the chat again if they try.";
+    },
+    get$kickUserDescription() {
+      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
+    },
+    get$makeAdminDescription() {
+      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
+    },
+    get$yourGlobalUserIdIs() {
+      return "Your global user-ID is: ";
+    },
+    noUsersFoundWithQuery$1(query) {
+      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
+    },
+    get$knocking() {
+      return "Knocking";
+    },
+    chatCanBeDiscoveredViaSearchOnServer$1(server) {
+      return "Chat can be discovered via the search on " + server;
+    },
+    get$searchChatsRooms() {
+      return "Search for #chats, @users...";
+    },
+    get$nothingFound() {
+      return "Nothing found...";
+    },
+    get$wrongRecoveryKey() {
+      return "Sorry... this does not seem to be the correct recovery key.";
+    },
+    get$startConversation() {
+      return "Start conversation";
+    },
+    get$commandHint_sendraw() {
+      return "Send raw json";
+    },
+    get$searchForUsers() {
+      return "Search for @users...";
+    },
+    get$pleaseEnterYourCurrentPassword() {
+      return "Please enter your current password";
+    },
+    get$newPassword() {
+      return "New password";
+    },
+    get$pleaseChooseAStrongPassword() {
+      return "Please choose a strong password";
+    },
+    get$passwordsDoNotMatch() {
+      return "Passwords do not match";
+    },
+    get$passwordIsWrong() {
+      return "Your entered password is wrong";
+    },
+    get$publicChatAddresses() {
+      return "Public chat addresses";
+    },
+    get$createNewAddress() {
+      return "Create new address";
+    },
+    get$joinSpace() {
+      return "Join space";
+    },
+    get$publicSpaces() {
+      return "Public spaces";
+    },
+    get$decline() {
+      return "Decline";
+    },
+    get$thisDevice() {
+      return "This device:";
+    },
+    get$initAppError() {
+      return "An error occured while init the app";
+    },
+    get$userRole() {
+      return "User role";
+    },
+    searchIn$1(chat) {
+      return 'Search in chat "' + chat + '"...';
+    },
+    get$searchMore() {
+      return "Search more...";
+    },
+    get$gallery() {
+      return "Gallery";
+    },
+    get$files(_) {
+      return "Files";
+    },
+    sessionLostBody$2(url, error) {
+      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
+    },
+    restoreSessionBody$2(url, error) {
+      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
+    },
+    get$sendReadReceipts() {
+      return "Send read receipts";
+    },
+    get$sendTypingNotificationsDescription() {
+      return "Other participants in a chat can see when you are typing a new message.";
+    },
+    get$sendReadReceiptsDescription() {
+      return "Other participants in a chat can see when you have read a message.";
+    },
+    get$verifyOtherDevice() {
+      return "\ud83d\udd10 Verify other device";
+    },
+    get$verifyOtherDeviceDescription() {
+      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
+    },
+    acceptedKeyVerification$1(sender) {
+      return sender + " accepted key verification";
+    },
+    canceledKeyVerification$1(sender) {
+      return sender + " canceled key verification";
+    },
+    completedKeyVerification$1(sender) {
+      return sender + " completed key verification";
+    },
+    isReadyForKeyVerification$1(sender) {
+      return sender + " is ready for key verification";
+    },
+    requestedKeyVerification$1(sender) {
+      return sender + " requested key verification";
+    },
+    startedKeyVerification$1(sender) {
+      return sender + " started key verification";
+    },
+    get$stickers() {
+      return "Stickers";
+    },
+    get$discover() {
+      return "Discover";
+    },
+    get$commandHint_ignore() {
+      return "Ignore the given matrix ID";
+    },
+    get$commandHint_unignore() {
+      return "Unignore the given matrix ID";
+    },
+    thereAreCountUsersBlocked$1(count) {
+      return "Right now there are " + count + " users blocked.";
+    },
+    get$restricted() {
+      return "Restricted";
+    },
+    get$knockRestricted() {
+      return "Knock restricted";
+    },
+    goToSpace$1(space) {
+      return "Go to space: " + space;
+    },
+    get$markAsUnread() {
+      return "Mark as unread";
+    },
+    userLevel$1(level) {
+      return "" + level + " - User";
+    },
+    moderatorLevel$1(level) {
+      return "" + level + " - Moderator";
+    },
+    adminLevel$1(level) {
+      return "" + level + " - Admin";
+    },
+    get$changeGeneralChatSettings() {
+      return "Change general chat settings";
+    },
+    get$inviteOtherUsers() {
+      return "Invite other users to this chat";
+    },
+    get$changeTheChatPermissions() {
+      return "Change the chat permissions";
+    },
+    get$changeTheVisibilityOfChatHistory() {
+      return "Change the visibility of the chat history";
+    },
+    get$changeTheCanonicalRoomAlias() {
+      return "Change the main public chat address";
+    },
+    get$sendRoomNotifications() {
+      return "Send a @room notifications";
+    },
+    get$changeTheDescriptionOfTheGroup() {
+      return "Change the description of the chat";
+    },
+    get$chatPermissionsDescription() {
+      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
+    },
+    updateInstalled$1(version) {
+      return "\ud83c\udf89 Update " + version + " installed!";
+    },
+    get$sendCanceled() {
+      return "Sending canceled";
+    },
+    get$doesNotSeemToBeAValidHomeserver() {
+      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
+    },
+    get$calculatingFileSize() {
+      return "Calculating file size...";
+    },
+    get$prepareSendingAttachment() {
+      return "Prepare sending attachment...";
+    },
+    get$sendingAttachment() {
+      return "Sending attachment...";
+    },
+    sendingAttachmentCountOfCount$2(index, $length) {
+      return "Sending attachment " + index + " of " + $length + "...";
+    },
+    serverLimitReached$1(seconds) {
+      return "Server limit reached! Waiting " + seconds + " seconds...";
+    },
+    get$noticeChatBackupDeviceVerification() {
+      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
+    },
+    get$continueText() {
+      return "Continue";
+    },
+    get$blur(_) {
+      return "Blur:";
+    },
+    get$opacity(_) {
+      return "Opacity:";
+    },
+    get$setWallpaper() {
+      return "Set wallpaper";
+    },
+    get$noContactInformationProvided() {
+      return "Server does not provide any valid contact information";
+    },
+    get$contactServerAdmin() {
+      return "Contact server admin";
+    },
+    get$contactServerSecurity() {
+      return "Contact server security";
+    },
+    get$supportPage() {
+      return "Support page";
+    },
+    get$serverInformation() {
+      return "Server information:";
+    },
+    get$name(_) {
+      return "Name";
+    },
+    get$version(_) {
+      return "Version";
+    },
+    get$compress() {
+      return "Compress";
+    },
+    get$boldText() {
+      return "Bold text";
+    },
+    get$italicText() {
+      return "Italic text";
+    },
+    get$strikeThrough() {
+      return "Strikethrough";
+    },
+    get$pleaseFillOut() {
+      return "Please fill out";
+    },
+    get$invalidUrl() {
+      return "Invalid url";
+    },
+    get$addLink() {
+      return "Add link";
+    },
+    get$unableToJoinChat() {
+      return "Unable to join chat. Maybe the other party has already closed the conversation.";
+    },
+    get$previous() {
+      return "Previous";
+    },
+    get$otherPartyNotLoggedIn() {
+      return "The other party is currently not logged in and therefore cannot receive messages!";
+    },
+    get$open(_) {
+      return "Open";
+    },
+    get$waitingForServer() {
+      return "Waiting for server...";
+    },
+    get$editChatPermissions() {
+      return "Edit chat permissions";
+    },
+    writeAMessageLangCodes$2(l1, l2) {
+      return "Type in " + l1 + " or " + l2 + "...";
     },
     get$allCorrect() {
       return "That's how I would say it! Nice!";
@@ -2395,45 +2674,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noTeachersFound() {
       return "No teachers found to report to";
     },
-    get$pleaseEnterANumber() {
-      return "Please enter a number greater than 0";
-    },
-    get$archiveRoomDescription() {
-      return "The chat will be moved to the archive. Other users will be able to see that you have left the chat.";
-    },
-    get$roomUpgradeDescription() {
-      return "The chat will then be recreated with the new room version. All participants will be notified that they need to switch to the new chat. You can find out more about room versions at https://spec.matrix.org/latest/rooms/";
-    },
-    get$removeDevicesDescription() {
-      return "You will be logged out of this device and will no longer be able to receive messages.";
-    },
-    get$banUserDescription() {
-      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
-    },
-    get$unbanUserDescription() {
-      return "The user will be able to enter the chat again if they try.";
-    },
-    get$kickUserDescription() {
-      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
-    },
-    get$makeAdminDescription() {
-      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
-    },
-    get$yourGlobalUserIdIs() {
-      return "Your global user-ID is: ";
-    },
-    noUsersFoundWithQuery$1(query) {
-      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
-    },
-    get$knocking() {
-      return "Knocking";
-    },
-    chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "Chat can be discovered via the search on " + server;
-    },
-    get$searchChatsRooms() {
-      return "Search for #chats, @users...";
-    },
     trialExpiration$1(expiration) {
       return "Your free trial expires on " + expiration;
     },
@@ -2449,78 +2689,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Click here to manage your subscription.";
     },
-    get$nothingFound() {
-      return "Nothing found...";
-    },
-    get$wrongRecoveryKey() {
-      return "Sorry... this does not seem to be the correct recovery key.";
-    },
-    get$startConversation() {
-      return "Start conversation";
-    },
-    get$commandHint_sendraw() {
-      return "Send raw json";
-    },
-    get$searchForUsers() {
-      return "Search for @users...";
-    },
-    get$pleaseEnterYourCurrentPassword() {
-      return "Please enter your current password";
-    },
-    get$newPassword() {
-      return "New password";
-    },
-    get$pleaseChooseAStrongPassword() {
-      return "Please choose a strong password";
-    },
-    get$passwordsDoNotMatch() {
-      return "Passwords do not match";
-    },
-    get$passwordIsWrong() {
-      return "Your entered password is wrong";
-    },
-    get$publicChatAddresses() {
-      return "Public chat addresses";
-    },
-    get$createNewAddress() {
-      return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
-    },
-    get$publicSpaces() {
-      return "Public spaces";
-    },
-    get$decline() {
-      return "Decline";
-    },
-    get$thisDevice() {
-      return "This device:";
-    },
-    get$initAppError() {
-      return "An error occured while init the app";
-    },
-    get$userRole() {
-      return "User role";
-    },
-    searchIn$1(chat) {
-      return 'Search in chat "' + chat + '"...';
-    },
-    get$searchMore() {
-      return "Search more...";
-    },
-    get$gallery() {
-      return "Gallery";
-    },
-    get$files(_) {
-      return "Files";
-    },
-    sessionLostBody$2(url, error) {
-      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
-    },
-    restoreSessionBody$2(url, error) {
-      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
-    },
     get$signUp() {
       return "Sign up";
     },
@@ -2532,39 +2700,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Please choose a username";
-    },
-    get$sendReadReceipts() {
-      return "Send read receipts";
-    },
-    get$sendTypingNotificationsDescription() {
-      return "Other participants in a chat can see when you are typing a new message.";
-    },
-    get$sendReadReceiptsDescription() {
-      return "Other participants in a chat can see when you have read a message.";
-    },
-    get$verifyOtherDevice() {
-      return "\ud83d\udd10 Verify other device";
-    },
-    get$verifyOtherDeviceDescription() {
-      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
-    },
-    acceptedKeyVerification$1(sender) {
-      return sender + " accepted key verification";
-    },
-    canceledKeyVerification$1(sender) {
-      return sender + " canceled key verification";
-    },
-    completedKeyVerification$1(sender) {
-      return sender + " completed key verification";
-    },
-    isReadyForKeyVerification$1(sender) {
-      return sender + " is ready for key verification";
-    },
-    requestedKeyVerification$1(sender) {
-      return sender + " requested key verification";
-    },
-    startedKeyVerification$1(sender) {
-      return sender + " started key verification";
     },
     get$trialPeriodExpired() {
       return "Your trial period has expired";
@@ -2583,18 +2718,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$kickBotWarning() {
       return "Kicking Pangea Bot will remove the conversation bot from this chat.";
-    },
-    get$stickers() {
-      return "Stickers";
-    },
-    get$discover() {
-      return "Discover";
-    },
-    get$commandHint_ignore() {
-      return "Ignore the given matrix ID";
-    },
-    get$commandHint_unignore() {
-      return "Unignore the given matrix ID";
     },
     get$conversationBotModeSelectDescription() {
       return "Chat activity";
@@ -2686,26 +2809,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$buildTranslation() {
       return "Build your translation from the choices above";
     },
-    thereAreCountUsersBlocked$1(count) {
-      return "Right now there are " + count + " users blocked.";
-    },
-    get$restricted() {
-      return "Restricted";
-    },
-    get$knockRestricted() {
-      return "Knock restricted";
-    },
-    get$createNewSpace() {
-      return "New space";
-    },
     get$practice() {
       return "Practice";
     },
     get$speechToTextBody() {
       return "For voice messages, you can see a transcript as well as the speaker's Words Per Minute score.";
-    },
-    get$previous() {
-      return "Previous";
     },
     get$versionNotFound() {
       return "Version Not Found";
@@ -2721,9 +2829,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$l1TranslationBody() {
       return "Messages in your base language will not be translated.";
-    },
-    get$continueText() {
-      return "Continue";
     },
     get$deleteSubscriptionWarningTitle() {
       return "You have an active subscription";
@@ -2748,54 +2853,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$translationChoicesBody() {
       return "Click and hold an option for a hint.";
-    },
-    get$sendCanceled() {
-      return "Sending canceled";
-    },
-    goToSpace$1(space) {
-      return "Go to space: " + space;
-    },
-    get$markAsUnread() {
-      return "Mark as unread";
-    },
-    userLevel$1(level) {
-      return "" + level + " - User";
-    },
-    moderatorLevel$1(level) {
-      return "" + level + " - Moderator";
-    },
-    adminLevel$1(level) {
-      return "" + level + " - Admin";
-    },
-    get$changeGeneralChatSettings() {
-      return "Change general chat settings";
-    },
-    get$inviteOtherUsers() {
-      return "Invite other users to this chat";
-    },
-    get$changeTheChatPermissions() {
-      return "Change the chat permissions";
-    },
-    get$changeTheVisibilityOfChatHistory() {
-      return "Change the visibility of the chat history";
-    },
-    get$changeTheCanonicalRoomAlias() {
-      return "Change the main public chat address";
-    },
-    get$sendRoomNotifications() {
-      return "Send a @room notifications";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Change the description of the chat";
-    },
-    get$chatPermissionsDescription() {
-      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
-    },
-    updateInstalled$1(version) {
-      return "\ud83c\udf89 Update " + version + " installed!";
-    },
-    get$doesNotSeemToBeAValidHomeserver() {
-      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
     },
     get$grammar() {
       return "Grammar";
@@ -3673,24 +3730,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "Notifications off";
     },
-    get$calculatingFileSize() {
-      return "Calculating file size...";
-    },
-    get$prepareSendingAttachment() {
-      return "Prepare sending attachment...";
-    },
-    get$sendingAttachment() {
-      return "Sending attachment...";
-    },
-    sendingAttachmentCountOfCount$2(index, $length) {
-      return "Sending attachment " + index + " of " + $length + "...";
-    },
-    serverLimitReached$1(seconds) {
-      return "Server limit reached! Waiting " + seconds + " seconds...";
-    },
-    get$noticeChatBackupDeviceVerification() {
-      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
-    },
     get$requireCodeToJoin() {
       return "Require code to join";
     },
@@ -3702,60 +3741,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$nestedSpaceError() {
       return "Spaces should not be added as children of other spaces";
-    },
-    get$blur(_) {
-      return "Blur:";
-    },
-    get$opacity(_) {
-      return "Opacity:";
-    },
-    get$setWallpaper() {
-      return "Set wallpaper";
-    },
-    get$noContactInformationProvided() {
-      return "Server does not provide any valid contact information";
-    },
-    get$contactServerAdmin() {
-      return "Contact server admin";
-    },
-    get$contactServerSecurity() {
-      return "Contact server security";
-    },
-    get$supportPage() {
-      return "Support page";
-    },
-    get$serverInformation() {
-      return "Server information:";
-    },
-    get$name(_) {
-      return "Name";
-    },
-    get$version(_) {
-      return "Version";
-    },
-    get$compress() {
-      return "Compress";
-    },
-    get$boldText() {
-      return "Bold text";
-    },
-    get$italicText() {
-      return "Italic text";
-    },
-    get$strikeThrough() {
-      return "Strikethrough";
-    },
-    get$pleaseFillOut() {
-      return "Please fill out";
-    },
-    get$invalidUrl() {
-      return "Invalid url";
-    },
-    get$addLink() {
-      return "Add link";
-    },
-    get$unableToJoinChat() {
-      return "Unable to join chat. Maybe the other party has already closed the conversation.";
     },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
@@ -4087,9 +4072,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noClassCode() {
       return "No class code!";
     },
-    get$otherPartyNotLoggedIn() {
-      return "The other party is currently not logged in and therefore cannot receive messages!";
-    },
     get$chooseCorrectLabel() {
       return "Choose the correct label.";
     },
@@ -4180,12 +4162,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveSpaceDescription() {
       return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
     },
-    get$open(_) {
-      return "Open";
-    },
-    get$waitingForServer() {
-      return "Waiting for server...";
-    },
     get$whatIsLemma() {
       return "What is the lemma?";
     },
@@ -4203,6 +4179,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaning() {
       return "Meaning";
+    },
+    chatWith$1(displayname) {
+      return "Group with " + displayname;
+    },
+    get$slightlyOffensive() {
+      return "Slightly offensive";
+    },
+    get$clickOnEmailLink() {
+      return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
+    },
+    get$whoIsAllowedToJoinThisChat() {
+      return "Who is allowed to join this chat";
+    },
+    get$dontForgetPassword() {
+      return "Don't forget your password!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4395,9 +4386,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeTheme() {
       return "Alterar o tema";
     },
-    get$changeTheNameOfTheGroup() {
-      return "Alterar o nome do grupo";
-    },
     get$changeYourAvatar() {
       return "Alterar seu avatar";
     },
@@ -4519,13 +4507,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "N\xe3o foi poss\xedvel decriptar a mensagem: " + error;
     },
     countParticipants$1(count) {
-      return B.S(count) + " participantes";
+      return "" + count + " participantes";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " criou a conversa";
     },
     get$createGroup() {
       return "Criar grupo";
+    },
+    get$createNewSpace() {
+      return "Novo espa\xe7o";
     },
     get$currentlyActive() {
       return "Ativo";
@@ -4653,17 +4644,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToTheNewRoom() {
       return "Ir para a sala nova";
     },
-    get$group() {
-      return "Grupo";
-    },
     get$chatDescription() {
       return "Descri\xe7\xe3o da conversa";
     },
     get$groups() {
       return "Grupos";
-    },
-    groupWith$1(displayname) {
-      return "Grupo com " + displayname;
     },
     get$guestsAreForbidden() {
       return "Convidados est\xe3o proibidos";
@@ -4706,9 +4691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Frase secreta ou chave de recupera\xe7\xe3o incorreta";
-    },
-    get$inoffensive() {
-      return "Inofensivo";
     },
     get$inviteContact() {
       return "Convidar contato";
@@ -4917,9 +4899,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseChoose() {
       return "Por favor, selecione";
     },
-    get$pleaseClickOnLink() {
-      return "Por favor, clique a liga\xe7\xe3o no e-mail para prosseguir.";
-    },
     get$pleaseEnterYourPassword() {
       return "Por favor, insira sua senha";
     },
@@ -5115,9 +5094,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unpin() {
       return "Desalfinetar";
     },
-    userAndOthersAreTyping$2(username, count) {
-      return username + " e mais " + count + " pessoas est\xe3o digitando\u2026";
-    },
     userAndUserAreTyping$2(username, username2) {
       return username + " e " + username2 + " est\xe3o digitando\u2026";
     },
@@ -5177,9 +5153,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$whoCanPerformWhichAction() {
       return "Quem pode desempenhar quais a\xe7\xf5es";
-    },
-    get$whoIsAllowedToJoinThisGroup() {
-      return "Quais pessoas s\xe3o permitidas participar deste grupo";
     },
     get$whyDoYouWantToReportThis() {
       return "Por que voc\xea quer denunciar isto?";
@@ -5284,7 +5257,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Usu\xe1rios";
     },
     countFiles$1(count) {
-      return count + " arquivos";
+      return "" + count + " arquivos";
     },
     get$user() {
       return "Usu\xe1rio";
@@ -5306,9 +5279,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$reopenChat() {
       return "Reabrir conversa";
-    },
-    get$noBackupWarning() {
-      return "Aten\xe7\xe3o! Sem habilitar o backup de conversa, voc\xea perder\xe1 acesso a suas mensagens encriptadas. \xc9 altamente recomend\xe1vel habilitar o backup antes de encerrar a sess\xe3o.";
     },
     get$noOtherDevicesFound() {
       return "Nenhum outro dispositivo encontrado";
@@ -5511,9 +5481,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockRestricted() {
       return "Bater na porta restrito";
     },
-    get$createNewSpace() {
-      return "Novo espa\xe7o";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5660,9 +5627,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeTheme() {
       return "Alterar o teu estilo";
     },
-    get$changeTheNameOfTheGroup() {
-      return "Alterar o nome do grupo";
-    },
     get$changeYourAvatar() {
       return "Alterar o teu avatar";
     },
@@ -5778,10 +5742,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "N\xe3o foi poss\xedvel desencriptar mensagem: " + error;
     },
     countParticipants$1(count) {
-      return B.S(count) + " participantes";
+      return "" + count + " participantes";
     },
     createdTheChat$1(username) {
       return username + " criou a conversa";
+    },
+    get$createNewSpace() {
+      return "Novo espa\xe7o";
     },
     get$currentlyActive() {
       return "Ativo(a) agora";
@@ -5885,14 +5852,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToTheNewRoom() {
       return "Ir para a nova sala";
     },
-    get$group() {
-      return "Grupo";
-    },
     get$groups() {
       return "Grupos";
-    },
-    groupWith$1(displayname) {
-      return "Grupo com " + displayname;
     },
     get$guestsAreForbidden() {
       return "S\xe3o proibidos visitantes";
@@ -5914,9 +5875,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Senha ou chave de recupera\xe7\xe3o incorretos";
-    },
-    get$inoffensive() {
-      return "Inofensivo";
     },
     get$inviteContact() {
       return "Convidar contacto";
@@ -6098,9 +6056,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseChoose() {
       return "Por favor, escolhe";
     },
-    get$pleaseClickOnLink() {
-      return "Por favor, clica na liga\xe7\xe3o no correio eletr\xf3nico e depois continua.";
-    },
     get$pleaseEnterYourPassword() {
       return "Por favor, insere a tua palavra-passe";
     },
@@ -6200,9 +6155,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     sentAVideo$1(username) {
       return username + " enviou um v\xeddeo";
     },
-    get$createNewSpace() {
-      return "Novo espa\xe7o";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -6223,6 +6175,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_17", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "KOov62vjZ5kNAPi4RbPtxISAD8E=");
+})($__dart_deferred_initializers__, "tSPQAj6IJ+AmLoZWpBjsAysAjzg=");
 ;
 //# sourceMappingURL=main.dart.js_17.part.js.map

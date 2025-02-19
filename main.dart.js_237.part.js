@@ -7,139 +7,139 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nIe$() {
-      return new A.L10nIe(B.canonicalizedLocale("ie"));
+    L10nKa$() {
+      return new A.L10nKa(B.canonicalizedLocale("ka"));
     },
-    L10nIe: function L10nIe(t0) {
+    L10nKa: function L10nKa(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[51];
-  A = hunkHelpers.updateHolder(holdersList[30], A);
-  A.L10nIe.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[33], A);
+  A.L10nKa.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
     get$repeatPassword() {
-      return "Repetir li contrasigne";
+      return "\u10d2\u10d0\u10d8\u10db\u10d4\u10dd\u10e0\u10d4\u10d7 \u10de\u10d0\u10e0\u10dd\u10da\u10d8";
     },
     get$notAnImage() {
-      return "Not an image file.";
+      return "\u10e4\u10d0\u10d8\u10da\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10e1\u10e3\u10e0\u10d0\u10d7\u10d8.";
     },
     get$remove(_) {
-      return "Remover";
+      return "\u10ec\u10d0\u10e8\u10da\u10d0";
     },
     get$importNow() {
-      return "Import now";
+      return "\u10d8\u10db\u10de\u10dd\u10e0\u10e2\u10d8";
     },
     get$importEmojis() {
-      return "Import Emojis";
+      return "\u10d4\u10db\u10dd\u10ef\u10d8\u10e1 \u10d8\u10db\u10de\u10dd\u10e0\u10e2\u10d8";
     },
     get$importFromZipFile() {
-      return "Import from .zip file";
+      return "\u10d8\u10db\u10de\u10dd\u10e0\u10e2\u10d8 .zip \u10e4\u10d0\u10d8\u10da\u10d8\u10d3\u10d0\u10dc";
     },
     get$exportEmotePack() {
-      return "Export Emote pack as .zip";
+      return "\u10d4\u10db\u10dd\u10ea\u10d8\u10d4\u10d1\u10d8\u10e1 .zip \u10e4\u10d0\u10d8\u10da\u10e8\u10d8 \u10d4\u10e5\u10e1\u10de\u10dd\u10e0\u10e2\u10d8";
     },
     get$replace(_) {
-      return "Replace";
+      return "\u10e9\u10d0\u10dc\u10d0\u10ea\u10d5\u10da\u10d4\u10d1\u10d0";
     },
     aboutHomeserver$1(homeserver) {
       return "About " + homeserver;
     },
     get$accept(_) {
-      return "Acceptar";
+      return "\u10d7\u10d0\u10dc\u10ee\u10db\u10dd\u10d1\u10d0";
     },
     acceptedTheInvitation$1(username) {
-      return username + " ha acceptat li invitation";
+      return "\ud83d\udc4d " + username + " \u10db\u10d8\u10d8\u10e6\u10dd \u10db\u10dd\u10ec\u10d5\u10d4\u10d5\u10d0";
     },
     get$account() {
-      return "Conto";
+      return "\u10d0\u10dc\u10d2\u10d0\u10e0\u10d8\u10e8\u10d8";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " activated end to end encryption";
+      return "\ud83d\udd10 " + username + " \u10d2\u10d0\u10d0\u10e5\u10e2\u10d8\u10e3\u10e0\u10d0 end to end \u10d3\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d0";
     },
     get$addEmail() {
-      return "Adjunter e-post";
+      return "\u10d4\u10da.\u10e4\u10dd\u10e1\u10e2\u10d8\u10e1 \u10d3\u10d0\u10db\u10d0\u10e2\u10d4\u10d1\u10d0";
     },
     get$confirmMatrixId() {
-      return "Ples confirmar vor Matrix ID por destructer vor conto.";
+      return "\u10d2\u10d7\u10ee\u10dd\u10d5\u10d7, \u10d3\u10d0\u10d0\u10d3\u10d0\u10e1\u10e2\u10e3\u10e0\u10dd\u10d7 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 Matrix ID \u10d0\u10dc\u10d2\u10d0\u10e0\u10d8\u10e8\u10d8\u10e1 \u10ec\u10d0\u10e8\u10da\u10d8\u10e1\u10d0\u10d7\u10d5\u10d8\u10e1.";
     },
     supposedMxid$1(mxid) {
-      return "To deve esser " + mxid;
+      return "\u10d4\u10e1 \u10e3\u10dc\u10d3\u10d0 \u10d8\u10e7\u10dd\u10e1 " + mxid;
     },
     get$addToSpace() {
-      return "Adjunter al spacie";
+      return "\u10e1\u10d8\u10d5\u10e0\u10ea\u10d4\u10e8\u10d8 \u10d3\u10d0\u10db\u10d0\u10e2\u10d4\u10d1\u10d0";
     },
     get$admin() {
-      return "Administrator";
+      return "\u10d0\u10d3\u10db\u10d8\u10dc\u10d8";
     },
     get$alias() {
-      return "pseudonim";
+      return "\u10db\u10d4\u10e2\u10e1\u10d0\u10ee\u10d4\u10da\u10d8";
     },
     get$all() {
-      return "Omni";
+      return "\u10e7\u10d5\u10d4\u10da\u10d0";
     },
     get$commandHint_googly() {
-      return "Send some googly eyes";
+      return "\u10d2\u10d0\u10db\u10dd\u10e8\u10e2\u10d4\u10e0\u10d8\u10da\u10d8 \u10d7\u10d5\u10d0\u10da\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_cuddle() {
-      return "Send a cuddle";
+      return "\u10e9\u10d0\u10ee\u10e3\u10e2\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_hug() {
-      return "Send a hug";
+      return "\u10db\u10d4\u10d2\u10dd\u10d1\u10e0\u10e3\u10da\u10d8 \u10e9\u10d0\u10ee\u10e3\u10e2\u10d5\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " sends you googly eyes";
+      return senderName + " \u10d2\u10d0\u10db\u10dd\u10e8\u10e2\u10d4\u10e0\u10d8\u10da \u10d7\u10d5\u10d0\u10da\u10d4\u10d1\u10e1 \u10d2\u10d8\u10d2\u10d6\u10d0\u10d5\u10dc\u10d8\u10e1";
     },
     cuddleContent$1(senderName) {
-      return senderName + " cuddles you";
+      return senderName + " \u10d2\u10d4\u10ee\u10e3\u10e2\u10d4\u10d1\u10d0";
     },
     hugContent$1(senderName) {
-      return senderName + " hugs you";
+      return senderName + " \u10db\u10d4\u10d2\u10dd\u10d1\u10e0\u10e3\u10da\u10d0\u10d3 \u10d2\u10d4\u10ee\u10e3\u10e2\u10d4\u10d1\u10d0";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " answered the call";
+      return senderName + " \u10e3\u10de\u10d0\u10e1\u10e3\u10ee\u10d0 \u10d6\u10d0\u10e0\u10e1";
     },
     get$anyoneCanJoin() {
-      return "Alqu\xed posse adherer se";
+      return "\u10e7\u10d5\u10d4\u10da\u10d0\u10e1 \u10e8\u10d4\u10e3\u10eb\u10da\u10d8\u10d0 \u10d2\u10d0\u10ec\u10d4\u10d5\u10e0\u10d8\u10d0\u10dc\u10d4\u10d1\u10d0";
     },
     get$archive() {
-      return "Archive";
+      return "\u10d0\u10e0\u10e5\u10d8\u10d5\u10d8";
     },
     get$areGuestsAllowedToJoin() {
-      return "Are guest users allowed to join";
+      return "\u10e8\u10d4\u10e3\u10eb\u10da\u10d8\u10d0\u10d7 \u10d7\u10e3 \u10d0\u10e0\u10d0 \u10e1\u10e2\u10e3\u10db\u10d0\u10e0 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d4\u10d1\u10e1 \u10d2\u10d0\u10ec\u10d4\u10d5\u10e0\u10d8\u10d0\u10dc\u10d4\u10d1\u10d0";
     },
     get$areYouSure() {
-      return "Esque vu es cert?";
+      return "\u10d3\u10d0\u10e0\u10ec\u10db\u10e3\u10dc\u10d4\u10d1\u10e3\u10da\u10d8 \u10ee\u10d0\u10e0\u10d7?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Esque vu vole cluder li session?";
+      return "\u10d3\u10d0\u10e0\u10ec\u10db\u10e3\u10dc\u10d4\u10d1\u10e3\u10da\u10d8 \u10ee\u10d0\u10e0\u10d7, \u10e0\u10dd\u10db \u10d2\u10d0\u10db\u10dd\u10e1\u10d5\u10da\u10d0 \u10d2\u10e1\u10e3\u10e0\u10d7?";
     },
     get$askSSSSSign() {
-      return "To be able to sign the other person, please enter your secure store passphrase or recovery key.";
+      return "\u10e1\u10ee\u10d5\u10d0 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1 \u10d3\u10d0\u10d3\u10d0\u10e1\u10e2\u10e3\u10e0\u10d4\u10d1\u10da\u10d0\u10d3, \u10d2\u10d7\u10ee\u10dd\u10d5\u10d7, \u10e9\u10d0\u10ec\u10d4\u10e0\u10dd\u10d7 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10d0\u10dc \u10e1\u10d0\u10d8\u10d3\u10e3\u10db\u10da\u10dd \u10e4\u10e0\u10d0\u10d6\u10d0, \u10d0\u10dc \u10d0\u10e6\u10d3\u10d2\u10d4\u10dc\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10e6\u10d4\u10d1\u10d8.";
     },
     askVerificationRequest$1(username) {
-      return "Esque acceptar ti demanda de verification de " + username + "?";
+      return "\u10db\u10d8\u10d8\u10e6\u10d4\u10d1\u10d7 " + username + " \u10d3\u10d0\u10d3\u10d0\u10e1\u10e2\u10e3\u10e0\u10d4\u10d1\u10d8\u10e1 \u10db\u10dd\u10d7\u10ee\u10dd\u10d5\u10dc\u10d0\u10e1?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Li hem-servitor supporta ti tipes de autentication:\n" + serverVersions + "\nMa ti-ci application supporta solmen:\n" + supportedVersions;
+      return "\u10d0\u10db \u10e1\u10d4\u10e0\u10d5\u10d4\u10e0\u10e1 \u10d0\u10e5\u10d5\u10e1 \u10e8\u10d4\u10e1\u10d5\u10da\u10d8\u10e1 \u10db\u10d4\u10d7\u10dd\u10d3\u10d4\u10d1\u10d8\u10e1 \u10db\u10ee\u10d0\u10e0\u10d3\u10d0\u10ed\u10d4\u10e0\u10d0:\n" + serverVersions + "\n\u10db\u10d0\u10d2\u10e0\u10d0\u10db \u10d0\u10db \u10d0\u10de\u10da\u10d8\u10d9\u10d0\u10ea\u10d8\u10d0\u10e1 \u10d0\u10e5\u10d5\u10e1 \u10db\u10ee\u10d0\u10e0\u10d3\u10d0\u10ed\u10d4\u10e0\u10d0 \u10db\u10ee\u10dd\u10da\u10dd\u10d3:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Send typing notifications";
+      return "\u10ec\u10d4\u10e0\u10d8\u10e1 \u10e8\u10d4\u10e2\u10e7\u10dd\u10d1\u10d8\u10dc\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$swipeRightToLeftToReply() {
       return "Swipe right to left to reply";
     },
     get$sendOnEnter() {
-      return "Inviar per Enter";
+      return "\u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0 enter-\u10d8\u10e1 \u10d3\u10d0\u10ed\u10d4\u10e0\u10d8\u10e1\u10d0\u10e1";
     },
     badServerVersionsException$4(serverVersions, supportedVersions, serverVerions, suportedVersions) {
-      return "Li hem-servitor supporta ti versiones de specification:\n" + serverVersions + "\nMa ti-ci application supporta solmen " + supportedVersions;
+      return "The homeserver supports the Spec versions:\n" + serverVersions + "\nBut this app supports only " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return chats + " chats and " + B.S(participants) + " participants";
+      return "" + chats + " chats and " + participants + " participants";
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
@@ -157,277 +157,274 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Spaces";
     },
     get$banFromChat() {
-      return "Bannir del conversation";
+      return "\u10e9\u10d0\u10e2\u10d8\u10d3\u10d0\u10dc \u10d2\u10d0\u10d2\u10d3\u10d4\u10d1\u10d0 \u10d3\u10d0 \u10d1\u10da\u10dd\u10d9\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     get$banned() {
-      return "Bannit";
+      return "\u10d3\u10d0\u10d1\u10da\u10dd\u10d9\u10d8\u10da\u10d8\u10d0";
     },
     bannedUser$2(username, targetName) {
-      return username + " ha bannit " + targetName;
+      return username + " \u10d3\u10d0\u10d1\u10da\u10dd\u10d9\u10d0 " + targetName;
     },
     get$blockDevice() {
-      return "Blocar li aparate";
+      return "\u10db\u10dd\u10ec\u10e7\u10dd\u10d1\u10d8\u10da\u10d4\u10d1\u10d8\u10e1 \u10d1\u10da\u10dd\u10d9\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     get$blocked() {
-      return "Blocat";
+      return "\u10d3\u10d0\u10d1\u10da\u10dd\u10d9\u10d8\u10da\u10d8\u10d0";
     },
     get$botMessages() {
-      return "Missages de robots";
+      return "\u10d1\u10dd\u10e2\u10d8\u10e1 \u10e8\u10d4\u10e2\u10e7\u10dd\u10d1\u10d8\u10dc\u10d4\u10d1\u10d4\u10d1\u10d8";
     },
     get$cancel(_) {
-      return "Anullar";
+      return "\u10d2\u10d0\u10e3\u10e5\u10db\u10d4\u10d1\u10d0";
     },
     cantOpenUri$1(uri) {
-      return "Ne successat aperter li adresse " + uri;
+      return "\u10d5\u10d4\u10e0 \u10d8\u10ee\u10e1\u10dc\u10d4\u10d1\u10d0 \u10d1\u10db\u10e3\u10da\u10d8 " + uri;
     },
     get$changeDeviceName() {
-      return "Cambiar li n\xf3mine de aparate";
+      return "\u10db\u10dd\u10ec\u10e7\u10dd\u10d1\u10d8\u10da\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10d3\u10d0\u10e0\u10e5\u10db\u10d4\u10d5\u10d0";
     },
     changedTheChatAvatar$1(username) {
-      return username + " changed the chat avatar";
+      return username + " \u10e9\u10d0\u10e2\u10d8\u10e1 \u10e4\u10dd\u10e2\u10dd \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " changed the chat description to: '" + description + "'";
+      return username + " \u10e9\u10d0\u10e2\u10d8\u10e1 \u10d0\u10ee\u10d0\u10da\u10d8 \u10d0\u10e6\u10ec\u10d4\u10e0\u10d8\u10da\u10dd\u10d1\u10d0 \u10d3\u10d0\u10d0\u10e7\u10d4\u10dc\u10d0: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " changed the chat name to: '" + chatname + "'";
+      return username + " \u10e9\u10d0\u10e2\u10d8 \u10d2\u10d0\u10d3\u10d0\u10d0\u10e0\u10e5\u10d5\u10d0: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " changed the chat permissions";
+      return username + " \u10e9\u10d0\u10e2\u10d8\u10e1 \u10e3\u10e4\u10da\u10d4\u10d1\u10d4\u10d1\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " changed their displayname to: '" + displayname + "'";
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10dc\u10d0\u10e9\u10d5\u10d4\u10dc\u10d4\u10d1\u10d8 \u10e1\u10d0\u10ee\u10d4\u10da\u10d8: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " changed the guest access rules";
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10e1\u10e2\u10e3\u10db\u10e0\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d5\u10d3\u10dd\u10db\u10d8\u10e1 \u10ec\u10d4\u10e1\u10d4\u10d1\u10d8";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " changed the guest access rules to: " + rules;
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10e1\u10e2\u10e3\u10db\u10e0\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d5\u10d3\u10dd\u10db\u10d8\u10e1 \u10ec\u10d4\u10e1\u10d4\u10d1\u10d8: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " changed the history visibility";
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10d8\u10e1\u10e2\u10dd\u10e0\u10d8\u10d8\u10e1 \u10ee\u10d8\u10da\u10d5\u10d0\u10d3\u10dd\u10d1\u10d0";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " changed the history visibility to: " + rules;
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10d8\u10e1\u10e2\u10dd\u10e0\u10d8\u10d8\u10e1 \u10ee\u10d8\u10da\u10d5\u10d0\u10d3\u10dd\u10d1\u10d0: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " changed the join rules";
+      return username + " \u10d2\u10d0\u10ec\u10d4\u10d5\u10e0\u10d8\u10d0\u10dc\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d4\u10e1\u10d4\u10d1\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " changed the join rules to: " + joinRules;
+      return username + " \u10d2\u10d0\u10ec\u10d4\u10d5\u10e0\u10d8\u10d0\u10dc\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d4\u10e1\u10d4\u10d1\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " changed their avatar";
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10de\u10e0\u10dd\u10e4\u10d8\u10da\u10d8\u10e1 \u10e4\u10dd\u10e2\u10dd";
     },
     changedTheRoomAliases$1(username) {
-      return username + " changed the room aliases";
+      return username + " \u10dd\u10d7\u10d0\u10ee\u10d8\u10e1 \u10db\u10d4\u10e2\u10e1\u10d0\u10ee\u10d4\u10da\u10d4\u10d1\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " changed the invitation link";
+      return username + " \u10db\u10dd\u10ec\u10d5\u10d4\u10d5\u10d8\u10e1 \u10d1\u10db\u10e3\u10da\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     get$changePassword() {
-      return "Cambiar li contrasigne";
+      return "\u10de\u10d0\u10e0\u10dd\u10da\u10d8\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$changeTheme() {
-      return "Cambiar li stil";
-    },
-    get$changeTheNameOfTheGroup() {
-      return "Change the name of the chat";
+      return "\u10e1\u10e2\u10d8\u10da\u10d8\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$changeYourAvatar() {
-      return "Cambiar vor avatar";
+      return "\u10de\u10e0\u10dd\u10e4\u10d8\u10da\u10d8\u10e1 \u10e4\u10dd\u10e2\u10dd\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$channelCorruptedDecryptError() {
-      return "The encryption has been corrupted";
+      return "\u10d3\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d0 \u10d3\u10d0\u10d6\u10d8\u10d0\u10dc\u10d3\u10d0";
     },
     get$chat() {
-      return "Conversation";
+      return "\u10e9\u10d0\u10e2\u10d8";
     },
     get$chatDetails() {
-      return "Detallies del conversation";
+      return "\u10e9\u10d0\u10e2\u10d8\u10e1 \u10d3\u10d4\u10e2\u10d0\u10da\u10d4\u10d1\u10d8";
     },
     get$chats() {
-      return "Conversationes";
+      return "\u10e9\u10d0\u10e2\u10d4\u10d1\u10d8";
     },
     get$chooseAStrongPassword() {
-      return "Choose a strong password";
+      return "\u10eb\u10da\u10d8\u10d4\u10e0\u10d8 \u10de\u10d0\u10e0\u10dd\u10da\u10d8 \u10d0\u10d0\u10e0\u10e9\u10d8\u10d4\u10d7";
     },
     get$clearArchive() {
-      return "Vacuar li archive";
+      return "\u10d0\u10e0\u10e5\u10d8\u10d5\u10d8\u10e1 \u10d2\u10d0\u10ec\u10db\u10d4\u10dc\u10d3\u10d0";
     },
     get$close(_) {
-      return "Cluder";
+      return "\u10d3\u10d0\u10ee\u10e3\u10e0\u10d5\u10d0";
     },
     get$commandHint_markasdm() {
       return "Mark as direct message room for the giving Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "Marcar quam gruppe";
+      return "\u10d0\u10e6\u10dc\u10d8\u10e8\u10d5\u10dc\u10d0, \u10e0\u10dd\u10d2\u10dd\u10e0\u10ea \u10ef\u10d2\u10e3\u10e4\u10d8\u10e1";
     },
     get$commandHint_ban() {
-      return "Ban the given user from this room";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1 \u10d1\u10da\u10dd\u10d9\u10d8\u10e0\u10d4\u10d1\u10d0 \u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10e8\u10d8";
     },
     get$commandHint_clearcache() {
-      return "Vacuar li cache";
+      return "\xad\u10e5\u10d4\u10e8\u10d8\u10e1 \u10d2\u10d0\u10ec\u10db\u10d4\u10dc\u10d3\u10d0";
     },
     get$commandHint_create() {
-      return "Create an empty group chat\nUse --no-encryption to disable encryption";
+      return "\u10ea\u10d0\u10e0\u10d8\u10d4\u10da\u10d8 \u10ef\u10d2\u10e3\u10e4\u10e3\u10e0\u10d8 \u10e9\u10d0\u10e2\u10d8\u10e1 \u10e8\u10d4\u10e5\u10db\u10dc\u10d0\n\u10d2\u10d0\u10db\u10dd\u10d8\u10e7\u10d4\u10dc\u10d4\u10d7 --no-encryption \u10d2\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10d7\u10d8\u10e8\u10d0\u10d3";
     },
     get$commandHint_discardsession() {
-      return "Discard session";
+      return "\u10e1\u10d4\u10e1\u10d8\u10d8\u10e1 \u10d2\u10d0\u10e3\u10e5\u10db\u10d4\u10d1\u10d0";
     },
     get$commandHint_dm() {
-      return "Start a direct chat\nUse --no-encryption to disable encryption";
+      return "\u10de\u10d8\u10e0\u10d3\u10d0\u10de\u10d8\u10e0\u10d8 \u10e9\u10d0\u10e2\u10d8\u10e1 \u10d3\u10d0\u10ec\u10e7\u10d4\u10d1\u10d0\n\u10d2\u10d0\u10db\u10dd\u10d8\u10e7\u10d4\u10dc\u10d4\u10d7 --no-encryption \u10d2\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10d7\u10d8\u10e8\u10d0\u10d3";
     },
     get$commandHint_html() {
-      return "Inviar contenete HTML";
+      return "HTML \u10e4\u10dd\u10e0\u10db\u10d0\u10e2\u10d8\u10e0\u10d4\u10d1\u10e3\u10da\u10d8 \u10e2\u10d4\u10e5\u10e1\u10e2\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_invite() {
-      return "Invite the given user to this room";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1 \u10db\u10dd\u10ec\u10d5\u10d4\u10d5\u10d0 \u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10e8\u10d8";
     },
     get$commandHint_join() {
-      return "Join the given room";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10dd\u10d7\u10d0\u10ee\u10e8\u10d8 \u10d2\u10d0\u10ec\u10d4\u10d5\u10e0\u10d8\u10d0\u10dc\u10d4\u10d1\u10d0";
     },
     get$commandHint_kick() {
-      return "Remove the given user from this room";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1 \u10ec\u10d0\u10e8\u10da\u10d0 \u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10d8\u10d3\u10d0\u10dc";
     },
     get$commandHint_leave() {
-      return "Forlassar ti chambre";
+      return "\u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10d8\u10d3\u10d0\u10dc \u10d2\u10d0\u10e1\u10d5\u10da\u10d0";
     },
     get$commandHint_me() {
-      return "Ples descrir vos";
+      return "\u10d0\u10e6\u10ec\u10d4\u10e0\u10d4\u10d7 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10d7\u10d0\u10d5\u10d8";
     },
     get$commandHint_myroomavatar() {
-      return "Set your picture for this room (by mxc-uri)";
+      return "\u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10e4\u10dd\u10e2\u10dd\u10e1 \u10d3\u10d0\u10e7\u10d4\u10dc\u10d4\u10d1\u10d0 \u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10d8\u10e1\u10d0\u10d7\u10d5\u10d8\u10e1(mxc-uri-\u10e1 \u10d3\u10d0\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10d8\u10d7)";
     },
     get$commandHint_myroomnick() {
-      return "Set your display name for this room";
+      return "\u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10d8\u10e1\u10d0\u10d7\u10d5\u10d8\u10e1 \u10dc\u10d0\u10e9\u10d5\u10d4\u10dc\u10d4\u10d1\u10d8 \u10e1\u10d0\u10ee\u10d4\u10da\u10d8\u10e1 \u10d3\u10d0\u10e7\u10d4\u10dc\u10d4\u10d1\u10d0";
     },
     get$commandHint_op() {
-      return "Set the given user's power level (default: 50)";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1\u10d0\u10d7\u10d5\u10d8\u10e1 \u10e3\u10e4\u10da\u10d4\u10d1\u10d4\u10d1\u10d8\u10e1 \u10d3\u10dd\u10dc\u10d8\u10e1 \u10d3\u10d0\u10e7\u10d4\u10dc\u10d4\u10d1\u10d0 (\u10e9\u10d5\u10d4\u10e3\u10da\u10d4\u10d1\u10e0\u10d8\u10d5: 50)";
     },
     get$commandHint_plain() {
-      return "Inviar textu sin formate";
+      return "\u10d0\u10e0\u10d0\u10e4\u10dd\u10e0\u10db\u10d0\u10e2\u10d8\u10e0\u10d4\u10d1\u10e3\u10da\u10d8 \u10e2\u10d4\u10e5\u10e1\u10e2\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_react() {
-      return "Send reply as a reaction";
+      return "\u10e0\u10d4\u10d0\u10e5\u10ea\u10d8\u10d8\u10e1 \u10e1\u10d0\u10ee\u10d8\u10d7 \u10de\u10d0\u10e1\u10e3\u10ee\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_send() {
-      return "Inviar li textu";
+      return "\u10e2\u10d4\u10e5\u10e1\u10e2\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_unban() {
-      return "Unban the given user from this room";
+      return "\u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10e8\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1\u10d2\u10d0\u10dc \u10d1\u10da\u10dd\u10d9\u10d8\u10e1 \u10db\u10dd\u10ee\u10e1\u10dc\u10d0";
     },
     get$commandInvalid() {
-      return "Comande es \xednvalid";
+      return "\u10d0\u10e0\u10d0\u10e1\u10ec\u10dd\u10e0\u10d8 \u10d1\u10e0\u10eb\u10d0\u10dc\u10d4\u10d1\u10d0";
     },
     commandMissing$1(command) {
-      return command + " is not a command.";
+      return command + " \u10d0\u10e0\u10d0\u10d0 \u10d1\u10e0\u10eb\u10d0\u10dc\u10d4\u10d1\u10d0.";
     },
     get$compareEmojiMatch() {
-      return "Please compare the emojis";
+      return "\u10d2\u10d7\u10ee\u10dd\u10d5\u10d7, \u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10dd\u10d7 \u10d4\u10e1 \u10d4\u10db\u10dd\u10ef\u10d8";
     },
     get$compareNumbersMatch() {
-      return "Please compare the numbers";
+      return "\u10d2\u10d7\u10ee\u10dd\u10d5\u10d7, \u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10dd\u10d7 \u10d4\u10e1 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d4\u10d1\u10d8";
     },
     get$configureChat() {
-      return "Configurar li conversation";
+      return "\u10e9\u10d0\u10e2\u10d8\u10e1 \u10d9\u10dd\u10dc\u10e4\u10d8\u10d2\u10e3\u10e0\u10d0\u10ea\u10d8\u10d0";
     },
     get$confirm(_) {
-      return "Confirmar";
+      return "\u10d3\u10d0\u10d3\u10d0\u10e1\u10e2\u10e3\u10e0\u10d4\u10d1\u10d0";
     },
     get$containsDisplayName() {
-      return "Contene li visibil n\xf3mine";
+      return "\u10dc\u10d0\u10e9\u10d5\u10d4\u10dc\u10d4\u10d1 \u10e1\u10d0\u10ee\u10d4\u10da\u10e1 \u10e8\u10d4\u10d8\u10ea\u10d0\u10d5\u10e1";
     },
     get$containsUserName() {
-      return "Contene li n\xf3mine";
+      return "\u10e8\u10d4\u10d8\u10ea\u10d0\u10d5\u10e1 \u10e1\u10d0\u10ee\u10d4\u10da\u10e1";
     },
     get$contentHasBeenReported() {
-      return "The content has been reported";
+      return "\u10d4\u10e1 \u10d9\u10dd\u10dc\u10e2\u10d4\u10dc\u10e2\u10d8 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d8\u10da \u10d8\u10e5\u10dc\u10d0 \u10e1\u10d4\u10e0\u10d5\u10d4\u10e0\u10d8\u10e1 \u10d0\u10d3\u10db\u10d8\u10dc\u10d8\u10e1\u10e2\u10e0\u10d0\u10e2\u10dd\u10e0\u10d4\u10d1\u10d7\u10d0\u10dc";
     },
     get$copiedToClipboard() {
-      return "Copiat al Paperiere";
+      return "\u10d9\u10dd\u10de\u10d8\u10e0\u10d4\u10d1\u10e3\u10da\u10d8\u10d0 \u10d1\u10e3\u10e4\u10d4\u10e0\u10e8\u10d8";
     },
     get$copy(_) {
-      return "Copiar";
+      return "\u10d9\u10dd\u10de\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     couldNotDecryptMessage$1(error) {
-      return "Could not decrypt message: " + error;
+      return "\u10e8\u10d4\u10e2\u10e7\u10dd\u10d1\u10d8\u10dc\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d8\u10e1 \u10e8\u10d4\u10ea\u10d3\u10dd\u10db\u10d0: " + error;
     },
     countParticipants$1(count) {
-      return B.S(count) + " participantes";
+      return "" + count + " \u10db\u10dd\u10dc\u10d0\u10ec\u10d8\u10da\u10d4";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " created the chat";
+      return "\ud83d\udcac " + username + " \u10e8\u10d4\u10e5\u10db\u10dc\u10d0 \u10e9\u10d0\u10e2\u10d8";
     },
     get$createGroup() {
-      return "Create group";
+      return "\u10ef\u10d2\u10e3\u10e4\u10d8\u10e1 \u10e8\u10d4\u10e5\u10db\u10dc\u10d0";
+    },
+    get$createNewSpace() {
+      return "\u10d0\u10ee\u10d0\u10da\u10d8 \u10e1\u10d8\u10d5\u10e0\u10ea\u10d4";
     },
     get$currentlyActive() {
-      return "Activ actualmen";
+      return "\u10d0\u10ee\u10da\u10d0 \u10d0\u10e5\u10e2\u10d8\u10e3\u10e0\u10d8\u10d0";
     },
     get$darkTheme() {
-      return "Obscur";
+      return "\u10d1\u10dc\u10d4\u10da\u10d8";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "This will deactivate your user account. This can not be undone! Are you sure?";
+      return "\u10d4\u10e1 \u10d2\u10d0\u10d0\u10e3\u10e5\u10db\u10d4\u10d1\u10e1 \u10d7\u10e5\u10d5\u10d4\u10dc\u10e1 \u10d0\u10dc\u10d2\u10d0\u10e0\u10d8\u10e8\u10e1. \u10d0\u10db\u10d8\u10e1 \u10d2\u10d0\u10e3\u10e5\u10db\u10d4\u10d1\u10d0 \u10e8\u10d4\u10e3\u10eb\u10da\u10d4\u10d1\u10d4\u10da\u10d8\u10d0. \u10d3\u10d0\u10e0\u10ec\u10db\u10e3\u10dc\u10d4\u10d1\u10e3\u10da\u10d8 \u10ee\u10d0\u10e0\u10d7?";
     },
     get$defaultPermissionLevel() {
-      return "Default permission level for new users";
+      return "\u10dc\u10d0\u10d2\u10e3\u10da\u10d8\u10e1\u10ee\u10db\u10d4\u10d5\u10d8 \u10e3\u10e4\u10da\u10d4\u10d1\u10d8\u10e1 \u10d3\u10dd\u10dc\u10d4";
     },
     get$$delete(_) {
-      return "Remover";
+      return "\u10ec\u10d0\u10e8\u10da\u10d0";
     },
     get$deleteAccount() {
-      return "Destructer li conto";
+      return "\u10d0\u10dc\u10d2\u10d0\u10e0\u10d8\u10e8\u10d8\u10e1 \u10ec\u10d0\u10e8\u10da\u10d0";
     },
     get$deleteMessage() {
-      return "Remover li missage";
+      return "\u10e8\u10d4\u10e2\u10e7\u10dd\u10d1\u10d8\u10dc\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d0\u10e8\u10da\u10d0";
     },
     get$devices() {
-      return "Aparates";
+      return "\u10db\u10dd\u10ec\u10e7\u10dd\u10d1\u10d8\u10da\u10d4\u10d1\u10d4\u10d1\u10d8";
     },
     get$directChats() {
-      return "Direct conversationes";
+      return "\u10de\u10d8\u10e0\u10d3\u10d0\u10de\u10d8\u10e0\u10d8 \u10e9\u10d0\u10e2\u10d4\u10d1\u10d8";
     },
     get$allRooms() {
-      return "All Group Chats";
+      return "\u10e7\u10d5\u10d4\u10da\u10d0 \u10ef\u10d2\u10e3\u10e4\u10e3\u10e0\u10d8 \u10e9\u10d0\u10e2\u10d4\u10d1\u10d8";
     },
     get$displaynameHasBeenChanged() {
-      return "Displayname has been changed";
+      return "\u10dc\u10d0\u10e9\u10d5\u10d4\u10dc\u10d4\u10d1\u10d8 \u10e1\u10d0\u10ee\u10d4\u10da\u10d8 \u10e8\u10d4\u10d8\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     get$downloadFile() {
-      return "Descargar li file";
+      return "\u10e4\u10d0\u10d8\u10da\u10d8\u10e1 \u10e9\u10d0\u10e2\u10d5\u10d8\u10e0\u10d7\u10d5\u10d0";
     },
     get$edit() {
-      return "Redacter";
+      return "\u10e0\u10d4\u10d3\u10d0\u10e5\u10e2\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     get$editBlockedServers() {
-      return "Modificar blocat servitores";
+      return "\u10d1\u10da\u10dd\u10d9\u10d8\u10e0\u10d4\u10d1\u10e3\u10da\u10d8 \u10e1\u10d4\u10e0\u10d5\u10d4\u10e0\u10d4\u10d1\u10d8\u10e1 \u10e0\u10d4\u10d3\u10d0\u10e5\u10e2\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     get$chatPermissions() {
-      return "Chat permissions";
-    },
-    get$editChatPermissions() {
-      return "Edit chat permissions";
+      return "\u10e9\u10d0\u10e2\u10d8\u10e1 \u10e3\u10e4\u10da\u10d4\u10d1\u10d4\u10d1\u10d8";
     },
     get$editDisplayname() {
-      return "Redacter li visibil n\xf3mine";
+      return "\u10dc\u10d0\u10e9\u10d5\u10d4\u10dc\u10d4\u10d1\u10d8 \u10e1\u10d0\u10ee\u10d4\u10da\u10d8\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$editRoomAliases() {
-      return "Modificar pseudonimos del chambre";
+      return "\u10dd\u10d7\u10d0\u10ee\u10d8\u10e1 \u10db\u10d4\u10e2\u10e1\u10d0\u10ee\u10d4\u10da\u10d4\u10d1\u10d8\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$editRoomAvatar() {
-      return "Modificar li avatar del chambre";
+      return "\u10dd\u10d7\u10d0\u10ee\u10d8\u10e1 \u10e4\u10dd\u10e2\u10dd\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$emoteExists() {
-      return "Emotion ja existe!";
+      return "\u10d4\u10e1 \u10d4\u10db\u10dd\u10ea\u10d8\u10d0 \u10e3\u10d9\u10d5\u10d4 \u10d0\u10e0\u10e1\u10d4\u10d1\u10dd\u10d1\u10e1!";
     },
     get$emoteInvalid() {
-      return "Invalid emote shortcode!";
+      return "\u10d4\u10db\u10dd\u10ea\u10d8\u10d8\u10e1 \u10d0\u10e0\u10d0\u10e1\u10ec\u10dd\u10e0\u10d8 \u10db\u10dd\u10d9\u10da\u10d4 \u10d9\u10dd\u10d3\u10d8!";
     },
     get$emoteKeyboardNoRecents() {
       return "Recently-used emotes will appear here...";
@@ -436,7 +433,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Emote packs for room";
     },
     get$globalChatId() {
-      return "Global chat ID";
+      return "\u10d2\u10da\u10dd\u10d1\u10d0\u10da\u10e3\u10e0\u10d8 \u10e9\u10d0\u10e2\u10d8\u10e1 ID";
     },
     get$accessAndVisibility() {
       return "Access and visibility";
@@ -445,22 +442,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Custom emojis and stickers";
     },
     get$emoteShortcode() {
-      return "Curt-code de emotion";
+      return "Emote shortcode";
     },
     get$emoteWarnNeedToPick() {
       return "You need to pick an emote shortcode and an image!";
     },
     get$emptyChat() {
-      return "Vacui conversation";
+      return "Empty chat";
     },
     get$enableEmotesGlobally() {
       return "Enable emote pack globally";
     },
     get$enableEncryption() {
-      return "Activar li ciffration";
+      return "Enable encryption";
     },
     get$encrypted() {
-      return "Ciffrat";
+      return "Encrypted";
     },
     get$encryptionNotEnabled() {
       return "Encryption is not enabled";
@@ -475,34 +472,28 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Error obtaining location: " + error;
     },
     get$extremeOffensive() {
-      return "Extremmen offensiv";
+      return "Extremely offensive";
     },
     get$fontSize(_) {
-      return "Dimension de fonde";
+      return "Font size";
     },
     get$forward(_) {
-      return "Avan";
+      return "Forward";
     },
     get$fromJoining() {
-      return "Pro adhesion";
+      return "From joining";
     },
     get$fromTheInvitation() {
-      return "Pro invitation";
+      return "From the invitation";
     },
     get$goToTheNewRoom() {
       return "Go to the new room";
-    },
-    get$group() {
-      return "Gruppe";
     },
     get$chatDescription() {
       return "Chat description";
     },
     get$groups() {
-      return "Gruppes";
-    },
-    groupWith$1(displayname) {
-      return "Gruppe con " + displayname;
+      return "Groups";
     },
     get$guestsAreForbidden() {
       return "Guests are forbidden";
@@ -514,7 +505,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return username + " has withdrawn the invitation for " + targetName;
     },
     get$help() {
-      return "Auxilie";
+      return "Help";
     },
     get$hideRedactedMessages() {
       return "Hide redacted messages";
@@ -529,7 +520,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "How offensive is this content?";
     },
     get$block() {
-      return "block";
+      return "Block";
     },
     get$blockedUsers() {
       return "Blocked users";
@@ -546,11 +537,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$incorrectPassphraseOrKey() {
       return "Incorrect passphrase or recovery key";
     },
-    get$inoffensive() {
-      return "\xcdnoffensiv";
-    },
     get$inviteContact() {
-      return "Invitar un contacte";
+      return "Invite contact";
     },
     get$noChatDescriptionYet() {
       return "No chat description created yet.";
@@ -559,7 +547,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Try again";
     },
     get$invited() {
-      return "Invitat";
+      return "Invited";
     },
     get$redactMessageDescription() {
       return "The message will be redacted for all participants in this conversation. This cannot be undone.";
@@ -568,25 +556,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "(Optional) Reason for redacting this message...";
     },
     invitedUser$2(username, targetName) {
-      return username + " invitat " + targetName;
+      return "\ud83d\udce9 " + username + " invited " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Solmen invitat usatores";
+      return "Invited users only";
     },
     get$inviteForMe() {
-      return "Invitationes por me";
+      return "Invite for me";
     },
     inviteText$2(username, link) {
       return username + " invited you to FluffyChat.\n1. Visit fluffychat.im and install the app \n2. Sign up or sign in \n3. Open the invite link: \n " + link;
     },
     get$isTyping() {
-      return "tippa\u2026";
+      return "is typing\u2026";
     },
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " joined the chat";
     },
     get$joinRoom() {
-      return "Adherer al chambre";
+      return "Join room";
     },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " kicked " + targetName;
@@ -595,16 +583,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kick from chat";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Ultim activit\xe9: " + localizedTimeShort;
+      return "Last active: " + localizedTimeShort;
     },
     get$leave() {
-      return "Forlassar";
+      return "Leave";
     },
     get$leftTheChat() {
-      return "Surtit ex li conversation";
+      return "Left the chat";
     },
     get$lightTheme() {
-      return "Lucid";
+      return "Light";
     },
     loadCountMoreParticipants$1(count) {
       return "Load " + count + " more participants";
@@ -622,10 +610,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "For TOR users, it is recommended to export the session before closing the window.";
     },
     get$loadingPleaseWait() {
-      return "Cargante... ples atender.";
+      return "Loading\u2026 Please wait.";
     },
     get$loadMore() {
-      return "Cargar plu\u2026";
+      return "Load more\u2026";
     },
     get$locationDisabledNotice() {
       return "Location services are disabled. Please enable them to be able to share your location.";
@@ -634,16 +622,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Location permission denied. Please grant them to be able to share your location.";
     },
     get$logout() {
-      return "Cluder li session";
+      return "Logout";
     },
     get$memberChanges() {
-      return "Cambios inter membres";
+      return "Member changes";
     },
     get$mention() {
-      return "Mentionar";
+      return "Mention";
     },
     get$messages() {
-      return "Missages";
+      return "Messages";
     },
     get$messagesStyle() {
       return "Messages:";
@@ -652,13 +640,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Moderator";
     },
     get$newChat() {
-      return "Crear un conversation";
+      return "New chat";
     },
     get$newVerificationRequest() {
-      return "Nov demanda de verification!";
+      return "New verification request!";
     },
     get$next(_) {
-      return "Sequent";
+      return "Next";
     },
     get$no() {
       return "No";
@@ -676,25 +664,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "You have not added a way to recover your password yet.";
     },
     get$noPermission() {
-      return "Sin permission";
+      return "No permission";
     },
     get$noRoomsFound() {
-      return "Null chambres trovat\u2026";
+      return "No rooms found\u2026";
     },
     get$notifications() {
-      return "Notificationes";
+      return "Notifications";
     },
     get$notificationsEnabledForThisAccount() {
       return "Notifications enabled for this account";
     },
     get$obtainingLocation() {
-      return "Obtenente li localisation\u2026";
+      return "Obtaining location\u2026";
     },
     get$offensive() {
-      return "Offensiv";
+      return "Offensive";
     },
     get$ok() {
-      return "OK";
+      return "Ok";
     },
     get$oopsSomethingWentWrong() {
       return "Oops, something went wrong\u2026";
@@ -703,34 +691,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "One of your clients has been logged out";
     },
     get$addAccount() {
-      return "Adjunter un conto";
+      return "Add account";
     },
     get$enableMultiAccounts() {
       return "(BETA) Enable multi accounts on this device";
     },
     get$openInMaps() {
-      return "Aperter in mappas";
+      return "Open in maps";
     },
     get$link() {
-      return "Ligament";
+      return "Link";
     },
     get$serverRequiresEmail() {
       return "This server needs to validate your email address for registration.";
     },
     get$or() {
-      return "O";
+      return "Or";
     },
     get$participant() {
-      return "Participante";
+      return "Participant";
     },
     get$passphraseOrKey() {
       return "passphrase or recovery key";
     },
     get$password(_) {
-      return "Contrasigne";
+      return "Password";
     },
     get$passwordForgotten() {
-      return "Li contrasigne esset obliviat";
+      return "Password forgotten";
     },
     get$passwordHasBeenChanged() {
       return "Password has been changed";
@@ -745,19 +733,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Password recovery settings";
     },
     get$passwordRecovery() {
-      return "Reganiar li contrasigne";
+      return "Password recovery";
     },
     get$pickImage() {
       return "Pick an image";
     },
     get$pin() {
-      return "Fixar";
+      return "Pin";
     },
     get$pleaseChoose() {
-      return "Ples selecter";
-    },
-    get$pleaseClickOnLink() {
-      return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
+      return "Please choose";
     },
     get$pleaseEnterYourPassword() {
       return "Please enter your password";
@@ -772,10 +757,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Please follow the instructions on the website and tap on next.";
     },
     get$privacy() {
-      return "Privatie";
+      return "Privacy";
     },
     get$reason(_) {
-      return "Cause";
+      return "Reason";
     },
     redactedBy$1(username) {
       return "Redacted by " + username;
@@ -790,10 +775,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return username + " redacted an event";
     },
     get$redactMessage() {
-      return "Redacter li missage";
+      return "Redact message";
     },
     get$reject() {
-      return "Refuser";
+      return "Reject";
     },
     rejectedTheInvitation$1(username) {
       return username + " rejected the invitation";
@@ -811,25 +796,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Replace room with newer version";
     },
     get$reply(_) {
-      return "Responder";
+      return "Reply";
     },
     get$reportMessage() {
-      return "Raportar li missage";
+      return "Report message";
     },
     get$roomHasBeenUpgraded() {
       return "Room has been upgraded";
     },
     get$roomVersion() {
-      return "Version del chambre";
+      return "Room version";
     },
     get$search(_) {
-      return "Sercha";
+      return "Search";
     },
     get$security() {
-      return "Securit\xe1";
+      return "Security";
     },
     get$send(_) {
-      return "Inviar";
+      return "Send";
     },
     get$sendAMessage() {
       return "Send a message";
@@ -838,22 +823,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Send as text";
     },
     get$sendAudio() {
-      return "Inviar audio";
+      return "Send audio";
     },
     get$sendFile() {
-      return "Inviar un file";
+      return "Send file";
     },
     get$sendImage() {
-      return "Inviar un image";
+      return "Send image";
     },
     sendImages$1(count) {
       return "Send " + count + " image";
     },
     get$sendMessages() {
-      return "Inviar missages";
+      return "Send messages";
     },
     get$sendVideo() {
-      return "Inviar video";
+      return "Send video";
     },
     sentAFile$1(username) {
       return "\ud83d\udcc1 " + username + " sent a file";
@@ -886,37 +871,37 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Set permissions level";
     },
     get$settings() {
-      return "Parametres";
+      return "Settings";
     },
     get$share(_) {
-      return "Partir";
+      return "Share";
     },
     sharedTheLocation$1(username) {
       return username + " shared their location";
     },
     get$shareLocation() {
-      return "Partir un localisation";
+      return "Share location";
     },
     get$presencesToggle() {
       return "Show status messages from other users";
     },
     get$skip(_) {
-      return "Omisser";
+      return "Skip";
     },
     get$sourceCode() {
-      return "Code de fonte";
+      return "Source code";
     },
     get$spaceName() {
-      return "N\xf3mine de spacie";
+      return "Space name";
     },
     startedACall$1(senderName) {
       return senderName + " started a call";
     },
     get$status(_) {
-      return "Statu";
+      return "Status";
     },
     get$submit(_) {
-      return "Inviar";
+      return "Submit";
     },
     get$synchronizingPleaseWait() {
       return "Synchronizing\u2026 Please wait.";
@@ -925,13 +910,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return " Synchronizing\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Del sistema";
+      return "System";
     },
     get$theyDontMatch() {
       return "They Don't Match";
     },
     get$theyMatch() {
-      return "Corresponde";
+      return "They Match";
     },
     get$tooManyRequestsWarning() {
       return "Too many requests. Please try again later!";
@@ -940,16 +925,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Try to send again";
     },
     get$unavailable() {
-      return "\xcdndisponibil";
+      return "Unavailable";
     },
     unbannedUser$2(username, targetName) {
       return username + " unbanned " + targetName;
     },
     get$unblockDevice() {
-      return "Deblocar li aparate";
+      return "Unblock Device";
     },
     get$unknownDevice() {
-      return "\xcdnconosset aparate";
+      return "Unknown device";
     },
     get$unknownEncryptionAlgorithm() {
       return "Unknown encryption algorithm";
@@ -958,10 +943,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Unknown event '" + type + "'";
     },
     get$unpin() {
-      return "Defixar";
-    },
-    userAndOthersAreTyping$2(username, count) {
-      return username + " and " + count + " others are typing\u2026";
+      return "Unpin";
     },
     userAndUserAreTyping$2(username, username2) {
       return username + " and " + username2 + " are typing\u2026";
@@ -973,19 +955,19 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\ud83d\udeaa " + username + " left the chat";
     },
     get$username(_) {
-      return "N\xf3mine de usator";
+      return "Username";
     },
     userSentUnknownEvent$2(username, type) {
       return username + " sent a " + type + " event";
     },
     get$unverified() {
-      return "\xcdnverificat";
+      return "Unverified";
     },
     get$verified() {
-      return "Verificat";
+      return "Verified";
     },
     get$verifyStart() {
-      return "Iniciar li verification";
+      return "Start Verification";
     },
     get$verifySuccess() {
       return "You successfully verified!";
@@ -1003,7 +985,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Visible for everyone";
     },
     get$voiceMessage() {
-      return "Voce-missage";
+      return "Voice message";
     },
     get$waitingPartnerAcceptRequest() {
       return "Waiting for partner to accept the request\u2026";
@@ -1015,16 +997,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Waiting for partner to accept the numbers\u2026";
     },
     get$warning() {
-      return "Avise!";
+      return "Warning!";
     },
     get$weSentYouAnEmail() {
       return "We sent you an email";
     },
     get$whoCanPerformWhichAction() {
       return "Who can perform which action";
-    },
-    get$whoIsAllowedToJoinThisGroup() {
-      return "Who is allowed to join this chat";
     },
     get$whyDoYouWantToReportThis() {
       return "Why do you want to report this?";
@@ -1035,14 +1014,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$writeAMessage() {
       return "Write a message\u2026";
     },
-    writeAMessageLangCodes$2(l1, l2) {
-      return "Type in " + l1 + " or " + l2 + "...";
-    },
     get$yes() {
       return "Yes";
     },
     get$you() {
-      return "Vu";
+      return "You";
     },
     get$youAreNoLongerParticipatingInThisChat() {
       return "You are no longer participating in this chat";
@@ -1054,16 +1030,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Your public key";
     },
     get$messageInfo() {
-      return "Information pri li missage";
+      return "Message info";
     },
     get$time(_) {
-      return "Hora";
+      return "Time";
     },
     get$sender() {
-      return "Autor";
+      return "Sender";
     },
     get$openGallery() {
-      return "Aperter li galerie";
+      return "Open gallery";
     },
     get$removeFromSpace() {
       return "Remove from space";
@@ -1084,7 +1060,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Are you sure to permanently unpin the event?";
     },
     get$emojis() {
-      return "Emoji";
+      return "Emojis";
     },
     get$youRejectedTheInvitation() {
       return "You rejected the invitation";
@@ -1129,22 +1105,22 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Knock";
     },
     get$users() {
-      return "Usatores";
+      return "Users";
     },
     countFiles$1(count) {
-      return count + " files";
+      return "" + count + " files";
     },
     get$user() {
-      return "Usator";
+      return "User";
     },
     get$custom() {
-      return "Personalisat";
+      return "Custom";
     },
     get$noKeyForThisMessage() {
       return "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.";
     },
     get$newSpace() {
-      return "Crear un spacie";
+      return "New space";
     },
     get$doNotShowAgain() {
       return "Do not show again";
@@ -1154,9 +1130,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$reopenChat() {
       return "Reopen chat";
-    },
-    get$noBackupWarning() {
-      return "Don't forget your password!";
     },
     get$noOtherDevicesFound() {
       return "No other devices found";
@@ -1193,6 +1166,312 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     wrongPinEntered$1(seconds) {
       return "Wrong pin entered! Try again in " + seconds + " seconds...";
+    },
+    get$pleaseEnterANumber() {
+      return "Please enter a number greater than 0";
+    },
+    get$archiveRoomDescription() {
+      return "The chat will be moved to the archive. Other users will be able to see that you have left the chat.";
+    },
+    get$roomUpgradeDescription() {
+      return "The chat will then be recreated with the new room version. All participants will be notified that they need to switch to the new chat. You can find out more about room versions at https://spec.matrix.org/latest/rooms/";
+    },
+    get$removeDevicesDescription() {
+      return "You will be logged out of this device and will no longer be able to receive messages.";
+    },
+    get$banUserDescription() {
+      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
+    },
+    get$unbanUserDescription() {
+      return "The user will be able to enter the chat again if they try.";
+    },
+    get$kickUserDescription() {
+      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
+    },
+    get$makeAdminDescription() {
+      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
+    },
+    get$yourGlobalUserIdIs() {
+      return "Your global user-ID is: ";
+    },
+    noUsersFoundWithQuery$1(query) {
+      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
+    },
+    get$knocking() {
+      return "Knocking";
+    },
+    chatCanBeDiscoveredViaSearchOnServer$1(server) {
+      return "Chat can be discovered via the search on " + server;
+    },
+    get$searchChatsRooms() {
+      return "Search for #chats, @users...";
+    },
+    get$nothingFound() {
+      return "Nothing found...";
+    },
+    get$wrongRecoveryKey() {
+      return "Sorry... this does not seem to be the correct recovery key.";
+    },
+    get$startConversation() {
+      return "Start conversation";
+    },
+    get$commandHint_sendraw() {
+      return "Send raw json";
+    },
+    get$searchForUsers() {
+      return "Search for @users...";
+    },
+    get$pleaseEnterYourCurrentPassword() {
+      return "Please enter your current password";
+    },
+    get$newPassword() {
+      return "New password";
+    },
+    get$pleaseChooseAStrongPassword() {
+      return "Please choose a strong password";
+    },
+    get$passwordsDoNotMatch() {
+      return "Passwords do not match";
+    },
+    get$passwordIsWrong() {
+      return "Your entered password is wrong";
+    },
+    get$publicChatAddresses() {
+      return "Public chat addresses";
+    },
+    get$createNewAddress() {
+      return "Create new address";
+    },
+    get$joinSpace() {
+      return "Join space";
+    },
+    get$publicSpaces() {
+      return "Public spaces";
+    },
+    get$decline() {
+      return "Decline";
+    },
+    get$thisDevice() {
+      return "This device:";
+    },
+    get$initAppError() {
+      return "An error occured while init the app";
+    },
+    get$userRole() {
+      return "User role";
+    },
+    searchIn$1(chat) {
+      return 'Search in chat "' + chat + '"...';
+    },
+    get$searchMore() {
+      return "Search more...";
+    },
+    get$gallery() {
+      return "Gallery";
+    },
+    get$files(_) {
+      return "Files";
+    },
+    sessionLostBody$2(url, error) {
+      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
+    },
+    restoreSessionBody$2(url, error) {
+      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
+    },
+    get$sendReadReceipts() {
+      return "Send read receipts";
+    },
+    get$sendTypingNotificationsDescription() {
+      return "Other participants in a chat can see when you are typing a new message.";
+    },
+    get$sendReadReceiptsDescription() {
+      return "Other participants in a chat can see when you have read a message.";
+    },
+    get$verifyOtherDevice() {
+      return "\ud83d\udd10 Verify other device";
+    },
+    get$verifyOtherDeviceDescription() {
+      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
+    },
+    acceptedKeyVerification$1(sender) {
+      return sender + " accepted key verification";
+    },
+    canceledKeyVerification$1(sender) {
+      return sender + " canceled key verification";
+    },
+    completedKeyVerification$1(sender) {
+      return sender + " completed key verification";
+    },
+    isReadyForKeyVerification$1(sender) {
+      return sender + " is ready for key verification";
+    },
+    requestedKeyVerification$1(sender) {
+      return sender + " requested key verification";
+    },
+    startedKeyVerification$1(sender) {
+      return sender + " started key verification";
+    },
+    get$stickers() {
+      return "Stickers";
+    },
+    get$discover() {
+      return "Discover";
+    },
+    get$commandHint_ignore() {
+      return "Ignore the given matrix ID";
+    },
+    get$commandHint_unignore() {
+      return "Unignore the given matrix ID";
+    },
+    thereAreCountUsersBlocked$1(count) {
+      return "Right now there are " + count + " users blocked.";
+    },
+    get$restricted() {
+      return "Restricted";
+    },
+    get$knockRestricted() {
+      return "Knock restricted";
+    },
+    goToSpace$1(space) {
+      return "Go to space: " + space;
+    },
+    get$markAsUnread() {
+      return "Mark as unread";
+    },
+    userLevel$1(level) {
+      return "" + level + " - User";
+    },
+    moderatorLevel$1(level) {
+      return "" + level + " - Moderator";
+    },
+    adminLevel$1(level) {
+      return "" + level + " - Admin";
+    },
+    get$changeGeneralChatSettings() {
+      return "Change general chat settings";
+    },
+    get$inviteOtherUsers() {
+      return "Invite other users to this chat";
+    },
+    get$changeTheChatPermissions() {
+      return "Change the chat permissions";
+    },
+    get$changeTheVisibilityOfChatHistory() {
+      return "Change the visibility of the chat history";
+    },
+    get$changeTheCanonicalRoomAlias() {
+      return "Change the main public chat address";
+    },
+    get$sendRoomNotifications() {
+      return "Send a @room notifications";
+    },
+    get$changeTheDescriptionOfTheGroup() {
+      return "Change the description of the chat";
+    },
+    get$chatPermissionsDescription() {
+      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
+    },
+    updateInstalled$1(version) {
+      return "\ud83c\udf89 Update " + version + " installed!";
+    },
+    get$sendCanceled() {
+      return "Sending canceled";
+    },
+    get$doesNotSeemToBeAValidHomeserver() {
+      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
+    },
+    get$calculatingFileSize() {
+      return "Calculating file size...";
+    },
+    get$prepareSendingAttachment() {
+      return "Prepare sending attachment...";
+    },
+    get$sendingAttachment() {
+      return "Sending attachment...";
+    },
+    sendingAttachmentCountOfCount$2(index, $length) {
+      return "Sending attachment " + index + " of " + $length + "...";
+    },
+    serverLimitReached$1(seconds) {
+      return "Server limit reached! Waiting " + seconds + " seconds...";
+    },
+    get$noticeChatBackupDeviceVerification() {
+      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
+    },
+    get$continueText() {
+      return "Continue";
+    },
+    get$blur(_) {
+      return "Blur:";
+    },
+    get$opacity(_) {
+      return "Opacity:";
+    },
+    get$setWallpaper() {
+      return "Set wallpaper";
+    },
+    get$noContactInformationProvided() {
+      return "Server does not provide any valid contact information";
+    },
+    get$contactServerAdmin() {
+      return "Contact server admin";
+    },
+    get$contactServerSecurity() {
+      return "Contact server security";
+    },
+    get$supportPage() {
+      return "Support page";
+    },
+    get$serverInformation() {
+      return "Server information:";
+    },
+    get$name(_) {
+      return "Name";
+    },
+    get$version(_) {
+      return "Version";
+    },
+    get$compress() {
+      return "Compress";
+    },
+    get$boldText() {
+      return "Bold text";
+    },
+    get$italicText() {
+      return "Italic text";
+    },
+    get$strikeThrough() {
+      return "Strikethrough";
+    },
+    get$pleaseFillOut() {
+      return "Please fill out";
+    },
+    get$invalidUrl() {
+      return "Invalid url";
+    },
+    get$addLink() {
+      return "Add link";
+    },
+    get$unableToJoinChat() {
+      return "Unable to join chat. Maybe the other party has already closed the conversation.";
+    },
+    get$previous() {
+      return "Previous";
+    },
+    get$otherPartyNotLoggedIn() {
+      return "The other party is currently not logged in and therefore cannot receive messages!";
+    },
+    get$open(_) {
+      return "Open";
+    },
+    get$waitingForServer() {
+      return "Waiting for server...";
+    },
+    get$editChatPermissions() {
+      return "Edit chat permissions";
+    },
+    writeAMessageLangCodes$2(l1, l2) {
+      return "Type in " + l1 + " or " + l2 + "...";
     },
     get$allCorrect() {
       return "That's how I would say it! Nice!";
@@ -2382,45 +2661,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noTeachersFound() {
       return "No teachers found to report to";
     },
-    get$pleaseEnterANumber() {
-      return "Please enter a number greater than 0";
-    },
-    get$archiveRoomDescription() {
-      return "The chat will be moved to the archive. Other users will be able to see that you have left the chat.";
-    },
-    get$roomUpgradeDescription() {
-      return "The chat will then be recreated with the new room version. All participants will be notified that they need to switch to the new chat. You can find out more about room versions at https://spec.matrix.org/latest/rooms/";
-    },
-    get$removeDevicesDescription() {
-      return "You will be logged out of this device and will no longer be able to receive messages.";
-    },
-    get$banUserDescription() {
-      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
-    },
-    get$unbanUserDescription() {
-      return "The user will be able to enter the chat again if they try.";
-    },
-    get$kickUserDescription() {
-      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
-    },
-    get$makeAdminDescription() {
-      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
-    },
-    get$yourGlobalUserIdIs() {
-      return "Your global user-ID is: ";
-    },
-    noUsersFoundWithQuery$1(query) {
-      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
-    },
-    get$knocking() {
-      return "Knocking";
-    },
-    chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "Chat can be discovered via the search on " + server;
-    },
-    get$searchChatsRooms() {
-      return "Search for #chats, @users...";
-    },
     trialExpiration$1(expiration) {
       return "Your free trial expires on " + expiration;
     },
@@ -2436,78 +2676,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Click here to manage your subscription.";
     },
-    get$nothingFound() {
-      return "Nothing found...";
-    },
-    get$wrongRecoveryKey() {
-      return "Sorry... this does not seem to be the correct recovery key.";
-    },
-    get$startConversation() {
-      return "Start conversation";
-    },
-    get$commandHint_sendraw() {
-      return "Send raw json";
-    },
-    get$searchForUsers() {
-      return "Search for @users...";
-    },
-    get$pleaseEnterYourCurrentPassword() {
-      return "Please enter your current password";
-    },
-    get$newPassword() {
-      return "New password";
-    },
-    get$pleaseChooseAStrongPassword() {
-      return "Please choose a strong password";
-    },
-    get$passwordsDoNotMatch() {
-      return "Passwords do not match";
-    },
-    get$passwordIsWrong() {
-      return "Your entered password is wrong";
-    },
-    get$publicChatAddresses() {
-      return "Public chat addresses";
-    },
-    get$createNewAddress() {
-      return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
-    },
-    get$publicSpaces() {
-      return "Public spaces";
-    },
-    get$decline() {
-      return "Decline";
-    },
-    get$thisDevice() {
-      return "This device:";
-    },
-    get$initAppError() {
-      return "An error occured while init the app";
-    },
-    get$userRole() {
-      return "User role";
-    },
-    searchIn$1(chat) {
-      return 'Search in chat "' + chat + '"...';
-    },
-    get$searchMore() {
-      return "Search more...";
-    },
-    get$gallery() {
-      return "Gallery";
-    },
-    get$files(_) {
-      return "Files";
-    },
-    sessionLostBody$2(url, error) {
-      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
-    },
-    restoreSessionBody$2(url, error) {
-      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
-    },
     get$signUp() {
       return "Sign up";
     },
@@ -2519,39 +2687,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Please choose a username";
-    },
-    get$sendReadReceipts() {
-      return "Send read receipts";
-    },
-    get$sendTypingNotificationsDescription() {
-      return "Other participants in a chat can see when you are typing a new message.";
-    },
-    get$sendReadReceiptsDescription() {
-      return "Other participants in a chat can see when you have read a message.";
-    },
-    get$verifyOtherDevice() {
-      return "\ud83d\udd10 Verify other device";
-    },
-    get$verifyOtherDeviceDescription() {
-      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
-    },
-    acceptedKeyVerification$1(sender) {
-      return sender + " accepted key verification";
-    },
-    canceledKeyVerification$1(sender) {
-      return sender + " canceled key verification";
-    },
-    completedKeyVerification$1(sender) {
-      return sender + " completed key verification";
-    },
-    isReadyForKeyVerification$1(sender) {
-      return sender + " is ready for key verification";
-    },
-    requestedKeyVerification$1(sender) {
-      return sender + " requested key verification";
-    },
-    startedKeyVerification$1(sender) {
-      return sender + " started key verification";
     },
     get$trialPeriodExpired() {
       return "Your trial period has expired";
@@ -2570,18 +2705,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$kickBotWarning() {
       return "Kicking Pangea Bot will remove the conversation bot from this chat.";
-    },
-    get$stickers() {
-      return "Stickers";
-    },
-    get$discover() {
-      return "Discover";
-    },
-    get$commandHint_ignore() {
-      return "Ignore the given matrix ID";
-    },
-    get$commandHint_unignore() {
-      return "Unignore the given matrix ID";
     },
     get$conversationBotModeSelectDescription() {
       return "Chat activity";
@@ -2673,26 +2796,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$buildTranslation() {
       return "Build your translation from the choices above";
     },
-    thereAreCountUsersBlocked$1(count) {
-      return "Right now there are " + count + " users blocked.";
-    },
-    get$restricted() {
-      return "Restricted";
-    },
-    get$knockRestricted() {
-      return "Knock restricted";
-    },
-    get$createNewSpace() {
-      return "Crear un spacie";
-    },
     get$practice() {
       return "Practice";
     },
     get$speechToTextBody() {
       return "For voice messages, you can see a transcript as well as the speaker's Words Per Minute score.";
-    },
-    get$previous() {
-      return "Previous";
     },
     get$versionNotFound() {
       return "Version Not Found";
@@ -2708,9 +2816,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$l1TranslationBody() {
       return "Messages in your base language will not be translated.";
-    },
-    get$continueText() {
-      return "Continue";
     },
     get$deleteSubscriptionWarningTitle() {
       return "You have an active subscription";
@@ -2735,54 +2840,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$translationChoicesBody() {
       return "Click and hold an option for a hint.";
-    },
-    get$sendCanceled() {
-      return "Sending canceled";
-    },
-    goToSpace$1(space) {
-      return "Go to space: " + space;
-    },
-    get$markAsUnread() {
-      return "Mark as unread";
-    },
-    userLevel$1(level) {
-      return "" + level + " - User";
-    },
-    moderatorLevel$1(level) {
-      return "" + level + " - Moderator";
-    },
-    adminLevel$1(level) {
-      return "" + level + " - Admin";
-    },
-    get$changeGeneralChatSettings() {
-      return "Change general chat settings";
-    },
-    get$inviteOtherUsers() {
-      return "Invite other users to this chat";
-    },
-    get$changeTheChatPermissions() {
-      return "Change the chat permissions";
-    },
-    get$changeTheVisibilityOfChatHistory() {
-      return "Change the visibility of the chat history";
-    },
-    get$changeTheCanonicalRoomAlias() {
-      return "Change the main public chat address";
-    },
-    get$sendRoomNotifications() {
-      return "Send a @room notifications";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Change the description of the chat";
-    },
-    get$chatPermissionsDescription() {
-      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
-    },
-    updateInstalled$1(version) {
-      return "\ud83c\udf89 Update " + version + " installed!";
-    },
-    get$doesNotSeemToBeAValidHomeserver() {
-      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
     },
     get$grammar() {
       return "Grammar";
@@ -3660,24 +3717,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "Notifications off";
     },
-    get$calculatingFileSize() {
-      return "Calculating file size...";
-    },
-    get$prepareSendingAttachment() {
-      return "Prepare sending attachment...";
-    },
-    get$sendingAttachment() {
-      return "Sending attachment...";
-    },
-    sendingAttachmentCountOfCount$2(index, $length) {
-      return "Sending attachment " + index + " of " + $length + "...";
-    },
-    serverLimitReached$1(seconds) {
-      return "Server limit reached! Waiting " + seconds + " seconds...";
-    },
-    get$noticeChatBackupDeviceVerification() {
-      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
-    },
     get$requireCodeToJoin() {
       return "Require code to join";
     },
@@ -3689,60 +3728,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$nestedSpaceError() {
       return "Spaces should not be added as children of other spaces";
-    },
-    get$blur(_) {
-      return "Blur:";
-    },
-    get$opacity(_) {
-      return "Opacity:";
-    },
-    get$setWallpaper() {
-      return "Set wallpaper";
-    },
-    get$noContactInformationProvided() {
-      return "Server does not provide any valid contact information";
-    },
-    get$contactServerAdmin() {
-      return "Contact server admin";
-    },
-    get$contactServerSecurity() {
-      return "Contact server security";
-    },
-    get$supportPage() {
-      return "Support page";
-    },
-    get$serverInformation() {
-      return "Server information:";
-    },
-    get$name(_) {
-      return "Name";
-    },
-    get$version(_) {
-      return "Version";
-    },
-    get$compress() {
-      return "Compress";
-    },
-    get$boldText() {
-      return "Bold text";
-    },
-    get$italicText() {
-      return "Italic text";
-    },
-    get$strikeThrough() {
-      return "Strikethrough";
-    },
-    get$pleaseFillOut() {
-      return "Please fill out";
-    },
-    get$invalidUrl() {
-      return "Invalid url";
-    },
-    get$addLink() {
-      return "Add link";
-    },
-    get$unableToJoinChat() {
-      return "Unable to join chat. Maybe the other party has already closed the conversation.";
     },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
@@ -4074,9 +4059,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noClassCode() {
       return "No class code!";
     },
-    get$otherPartyNotLoggedIn() {
-      return "The other party is currently not logged in and therefore cannot receive messages!";
-    },
     get$chooseCorrectLabel() {
       return "Choose the correct label.";
     },
@@ -4167,12 +4149,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveSpaceDescription() {
       return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
     },
-    get$open(_) {
-      return "Open";
-    },
-    get$waitingForServer() {
-      return "Waiting for server...";
-    },
     get$whatIsLemma() {
       return "What is the lemma?";
     },
@@ -4191,6 +4167,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$meaning() {
       return "Meaning";
     },
+    chatWith$1(displayname) {
+      return "Group with " + displayname;
+    },
+    get$slightlyOffensive() {
+      return "Slightly offensive";
+    },
+    get$clickOnEmailLink() {
+      return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
+    },
+    get$whoIsAllowedToJoinThisChat() {
+      return "Who is allowed to join this chat";
+    },
+    get$dontForgetPassword() {
+      return "Don't forget your password!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4198,14 +4189,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nIe, C.L10n);
+    _inherit(A.L10nKa, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nIe":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nKa":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_237", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "5sF3ABcc3Oh41AVsjAm4OiwtLzU=");
+})($__dart_deferred_initializers__, "ayxzowt+XsBxhW2PlqAXdCVHF/I=");
 ;
 //# sourceMappingURL=main.dart.js_237.part.js.map
