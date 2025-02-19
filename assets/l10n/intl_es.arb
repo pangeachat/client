@@ -3386,9 +3386,11 @@
   "monday": "Lunes",
   "moreEvents": "{count,plural, =1{1 evento más} other{{count} más eventos}}",
   "@moreEvents": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "count": {}
+      "count": {
+        "type": "String"
+      }
     }
   },
   "noCrossSignBootstrap": "Fluffychat actualmente no soporta la activación de Cross-Signing. Por favor, actívelo dentro de Riot.",
@@ -3397,9 +3399,11 @@
   "notSupportedInWeb": "No es compatible con la versión web",
   "numberSelected": "{number} seleccionado(s)",
   "@numberSelected": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "number": {}
+      "number": {
+        "type": "String"
+      }
     }
   },
   "onlineKeyBackupDisabled": "La copia de seguridad de la clave en línea está deshabilitada",
@@ -3418,18 +3422,26 @@
   "securityKeyLost": "¿Peridó su llave de seguridad?",
   "seenByUserAndCountOthers": "{count, plural, other{Visto por {username} y {count} más}}",
   "@seenByUserAndCountOthers": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "username": {},
-      "count": {}
+      "username": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      }
     }
   },
   "seenByUserAndUser": "Visto por {username} y {username2}",
   "@seenByUserAndUser": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "username": {},
-      "username2": {}
+      "username": {
+        "type": "String"
+      },
+      "username2": {
+        "type": "String"
+      }
     }
   },
   "sendBugReports": "Permitir el envió de informes de errores con sentry.io",
@@ -3446,21 +3458,31 @@
   "thursday": "Jueves",
   "timeOfDay": "{hours24}:{minutes}",
   "@timeOfDay": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "hours12": {},
-      "hours24": {},
-      "minutes": {},
-      "suffix": {}
+      "hours12": {
+        "type": "String"
+      },
+      "hours24": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "String"
+      },
+      "suffix": {
+        "type": "String"
+      }
     }
   },
   "tuesday": "Martes",
   "unknownSessionVerify": "Sesión desconocida, por favor verifíquela",
   "unreadMessages": "{unreadEvents, plural, =1{1 mensaje no leído} other{{unreadEvents} mensajes no leídos}}",
   "@unreadMessages": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "unreadEvents": {}
+      "unreadEvents": {
+        "type": "String"
+      }
     }
   },
   "useAmoledTheme": "¿Usar colores compatibles con AMOLED?",
@@ -3474,9 +3496,11 @@
   "yourOwnUsername": "Su nombre de usuario",
   "youWillBeConnectedTo": "Será conectado a {homeserver}",
   "@youWillBeConnectedTo": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "homeserver": {}
+      "homeserver": {
+        "type": "String"
+      }
     }
   },
   "zoomIn": "Acercar zoom",
@@ -3489,18 +3513,22 @@
   "clearText": "Borrar texto",
   "loginWith": "Iniciar sesión con {brand}",
   "@loginWith": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "brand": {}
+      "brand": {
+        "type": "String"
+      }
     }
   },
   "publicKey": "Clave pública",
   "noDescription": "Sin descripción",
   "savedFileAs": "Archivo guardado como {filename}",
   "@savedFileAs": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "filename": {}
+      "filename": {
+        "type": "String"
+      }
     }
   },
   "saveFileToFolder": "Guardar archivo en esta carpeta",
@@ -3528,9 +3556,11 @@
   "pleaseEnterValidEmail": "Por favor ingrese un correo electrónico válido.",
   "pleaseChooseAtLeastChars": "Por favor elegir al menos {min} carácteres",
   "@pleaseChooseAtLeastChars": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "min": {}
+      "min": {
+        "type": "String"
+      }
     }
   },
   "saveTheSecurityKeyNow": "Guardar la clave de seguridad ahora",
@@ -3646,9 +3676,11 @@
   "needsIGCShortMessage": "¡Pruebe el corrector gramatical interactivo!",
   "needsItMessage": "Espera, ¡ese no es {targetLanguage}! ¿Necesitas ayuda para traducir?",
   "@needsItMessage": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "targetLanguage": {}
+      "targetLanguage": {
+        "type": "String"
+      }
     }
   },
   "needsIgcMessage": "Este mensaje tiene un error gramatical.",
@@ -3723,10 +3755,14 @@
   "lessCommon": "¡Menos común!",
   "commonalityFeedback": "¡Su traducción parece estar terminada. ¡Escogió la elección más común {count} de {total} veces!",
   "@commonalityFeedback": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "count": {},
-      "total": {}
+      "count": {
+        "type": "String"
+      },
+      "total": {
+        "type": "String"
+      }
     }
   },
   "customInputFeedback": "¡Su traducción parece estar terminada! Creó su propia traducción.",
@@ -3783,10 +3819,14 @@
   "update": "Actualizar",
   "updateDesc": "Ahora puede actualizar esta aplicación de {localVersion} a {storeVersion}",
   "@updateDesc": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "storeVersion": {},
-      "localVersion": {}
+      "storeVersion": {
+        "type": "String"
+      },
+      "localVersion": {
+        "type": "String"
+      }
     }
   },
   "maybeLater": "Quizás más tarde",
@@ -3826,7 +3866,9 @@
   "@numberRoomMembers": {
     "type": "number",
     "placeholders": {
-      "number": {}
+      "number": {
+        "type": "String"
+      }
     }
   },
   "editWidgets": "",
@@ -3850,10 +3892,14 @@
   "todoListChangedError": "",
   "storyFrom": "Historia de {date}: \n{body}",
   "@storyFrom": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "date": {},
-      "body": {}
+      "date": {
+        "type": "String"
+      },
+      "body": {
+        "type": "String"
+      }
     }
   },
   "thisUserHasNotPostedAnythingYet": "Este usuario aún no ha publicado nada en su historia.",
@@ -4377,15 +4423,23 @@
   "youAddedToSpace": "Has añadido {child} a {space}",
   "@youAddedToSpace": {
     "placeholders": {
-      "child": {},
-      "space": {}
+      "child": {
+        "type": "String"
+      },
+      "space": {
+        "type": "String"
+      }
     }
   },
   "youRemovedFromSpace": "Has eliminado {child} de {space}",
   "@youRemovedFromSpace": {
     "placeholders": {
-      "child": {},
-      "space": {}
+      "child": {
+        "type": "String"
+      },
+      "space": {
+        "type": "String"
+      }
     }
   },
   "changeView": "Cambia de vista.",
@@ -4395,7 +4449,9 @@
   "promoSubscriptionExpirationDesc": "Su suscripción actual es promocional y expira el {expiration}. Envíe un mensaje a support@pangea.chat para cambiar su suscripción.",
   "@promoSubscriptionExpirationDesc": {
     "placeholders": {
-      "expiration": {}
+      "expiration": {
+        "type": "String"
+      }
     }
   },
   "emptyChatNameWarning": "Introduzca un nombre para este chat",
@@ -4432,25 +4488,37 @@
   "importZipFile": "Importar archivo .zip",
   "savedEmotePack": "¡Paquete de emoticonos guardado en {path}!",
   "@savedEmotePack": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "path": {}
+      "path": {
+        "type": "String"
+      }
     }
   },
   "reportToTeacher": "¿A quién desea informar de este mensaje?",
   "reportMessageTitle": "{reportingUserId} ha informado de un mensaje de {reportedUserId} en el chat {roomName}.",
   "@reportMessageTitle": {
     "placeholders": {
-      "reportingUserId": {},
-      "reportedUserId": {},
-      "roomName": {}
+      "reportingUserId": {
+        "type": "String"
+      },
+      "reportedUserId": {
+        "type": "String"
+      },
+      "roomName": {
+        "type": "String"
+      }
     }
   },
   "reportMessageBody": "Mensaje: {reportedMessage}\nMotivo: {reason}",
   "@reportMessageBody": {
     "placeholders": {
-      "reportedMessage": {},
-      "reason": {}
+      "reportedMessage": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
     }
   },
   "noTeachersFound": "No se han encontrado profesores a los que informar",
@@ -4462,7 +4530,9 @@
   "trialExpiration": "Su prueba gratuita caduca el {expiration}.",
   "@trialExpiration": {
     "placeholders": {
-      "expiration": {}
+      "expiration": {
+        "type": "String"
+      }
     }
   },
   "freeTrialDesc": "Los nuevos usuarios reciben una semana de prueba gratuita de Pangea Chat",
@@ -4497,9 +4567,11 @@
   "yourBirthdayPleaseShort": "Seleccione su grupo de edad",
   "certifyAge": "Certifico que soy mayor de {age} años",
   "@certifyAge": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "age": {}
+      "age": {
+        "type": "String"
+      }
     }
   },
   "selectToDefine": "Clic una palabra para definirla",
@@ -4561,8 +4633,12 @@
   "invitedToSpace": "{user} te ha invitado a unirte a un espacio: ¡{space}! ¿Deseas aceptar?",
   "@invitedToSpace": {
     "placeholders": {
-      "space": {},
-      "user": {}
+      "space": {
+        "type": "String"
+      },
+      "user": {
+        "type": "String"
+      }
     }
   },
   "emptySpaceNameWarning": "Introduzca un nombre para este espacio",
@@ -4583,7 +4659,7 @@
   "versionText": "Versión: {version}+{buildNumber}",
   "@versionText": {
     "description": "Texto que muestra la versión y el número de compilación de la aplicación.",
-    "type": "text",
+    "type": "String",
     "placeholders": {
       "version": {
         "type": "String",
@@ -4624,9 +4700,11 @@
   "speechToTextBody": "Para los mensajes de voz, puedes ver una transcripción y la puntuación de palabras por minuto del orador.",
   "languageButtonLabel": "Idioma: {currentLanguage}",
   "@languageButtonLabel": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "currentLanguage": {}
+      "currentLanguage": {
+        "type": "String"
+      }
     }
   },
   "changeAnalyticsView": "Cambiar Vista de Análisis",

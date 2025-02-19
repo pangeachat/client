@@ -3219,10 +3219,14 @@
   "optionalGroupName": "(Optional) Chat name",
   "writeAMessageLangCodes": "Type in {l1} or {l2}...",
   "@writeAMessageLangCodes": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "l1": {},
-      "l2": {}
+      "l1": {
+        "type": "String"
+      },
+      "l2": {
+        "type": "String"
+      }
     }
   },
   "requests": "Requests",
@@ -3343,9 +3347,11 @@
   "needsIGCShortMessage": "Try interactive grammar assistance!",
   "needsItMessage": "Wait, that's not {targetLanguage}! Do you need help translating?",
   "@needsItMessage": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "targetLanguage": {}
+      "targetLanguage": {
+        "type": "String"
+      }
     }
   },
   "needsIgcMessage": "This message has a grammar error.",
@@ -3437,10 +3443,14 @@
   "update": "Update",
   "updateDesc": "You can now update this app from {localVersion} to {storeVersion}",
   "@updateDesc": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "storeVersion": {},
-      "localVersion": {}
+      "storeVersion": {
+        "type": "String"
+      },
+      "localVersion": {
+        "type": "String"
+      }
     }
   },
   "maybeLater": "Maybe Later",
@@ -3477,7 +3487,9 @@
   "originalSubscriptionPlatform": "Subscription purchased through {purchasePlatform}",
   "@originalSubscriptionPlatform": {
     "placeholders": {
-      "purchasePlatform": {}
+      "purchasePlatform": {
+        "type": "String"
+      }
     }
   },
   "oneWeekTrial": "One Week Trial",
@@ -3931,8 +3943,12 @@
   "invitedToSpace": "{user} has invited you to join a space: {space}! Do you wish to accept?",
   "@invitedToSpace": {
     "placeholders": {
-      "space": {},
-      "user": {}
+      "space": {
+        "type": "String"
+      },
+      "user": {
+        "type": "String"
+      }
     }
   },
   "declinedInvitation": "Declined invitation",
@@ -3943,22 +3959,34 @@
   "youAddedToSpace": "You added {child} to {space}",
   "@youAddedToSpace": {
     "placeholders": {
-      "child": {},
-      "space": {}
+      "child": {
+        "type": "String"
+      },
+      "space": {
+        "type": "String"
+      }
     }
   },
   "youRemovedFromSpace": "You removed {child} from {space}",
   "@youRemovedFromSpace": {
     "placeholders": {
-      "child": {},
-      "space": {}
+      "child": {
+        "type": "String"
+      },
+      "space": {
+        "type": "String"
+      }
     }
   },
   "invitedToChat": "{user} has invited you to join a chat: {name}! Do you wish to accept?",
   "@invitedToChat": {
     "placeholders": {
-      "name": {},
-      "user": {}
+      "name": {
+        "type": "String"
+      },
+      "user": {
+        "type": "String"
+      }
     }
   },
   "monthlySubscription": "Monthly",
@@ -3971,7 +3999,9 @@
   "promoSubscriptionExpirationDesc": "Your current subscription is promotional and expires on {expiration}. Message support@pangea.chat for help changing your subscription.",
   "@promoSubscriptionExpirationDesc": {
     "placeholders": {
-      "expiration": {}
+      "expiration": {
+        "type": "String"
+      }
     }
   },
   "emptyChatNameWarning": "Please enter a name for this chat",
@@ -4005,16 +4035,26 @@
   "reportMessageTitle": "{reportingUserId} has reported a message from {reportedUserId} in the chat {roomName}",
   "@reportMessageTitle": {
     "placeholders": {
-      "reportingUserId": {},
-      "reportedUserId": {},
-      "roomName": {}
+      "reportingUserId": {
+        "type": "String"
+      },
+      "reportedUserId": {
+        "type": "String"
+      },
+      "roomName": {
+        "type": "String"
+      }
     }
   },
   "reportMessageBody": "Message: {reportedMessage}\nReason: {reason}",
   "@reportMessageBody": {
     "placeholders": {
-      "reportedMessage": {},
-      "reason": {}
+      "reportedMessage": {
+        "type": "String"
+      },
+      "reason": {
+        "type": "String"
+      }
     }
   },
   "noTeachersFound": "No teachers found to report to",
@@ -4023,7 +4063,9 @@
   "trialExpiration": "Your free trial expires on {expiration}",
   "@trialExpiration": {
     "placeholders": {
-      "expiration": {}
+      "expiration": {
+        "type": "String"
+      }
     }
   },
   "freeTrialDesc": "New users recieve a one week free trial of Pangea Chat",
@@ -4036,9 +4078,11 @@
   "signUp": "Sign up",
   "pleaseChooseAtLeastChars": "Please choose at least {min} characters.",
   "@pleaseChooseAtLeastChars": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "min": {}
+      "min": {
+        "type": "String"
+      }
     }
   },
   "noEmailWarning": "Please enter a valid email address. Otherwise you won't be able to reset your password. If you don't want to, tap again on the button to continue.",
@@ -4073,9 +4117,11 @@
   "speechToTextTooltip": "Transcript",
   "certifyAge": "I certify that I am over {age} years of age",
   "@certifyAge": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "age": {}
+      "age": {
+        "type": "String"
+      }
     }
   },
   "kickBotWarning": "Kicking Pangea Bot will remove the conversation bot from this chat.",
@@ -4174,7 +4220,7 @@
   "versionText": "Version: {version}+{buildNumber}",
   "@versionText": {
     "description": "Text displaying the app version and build number.",
-    "type": "text",
+    "type": "String",
     "placeholders": {
       "version": {
         "type": "String",
@@ -4188,9 +4234,11 @@
   },
   "languageButtonLabel": "Language: {currentLanguage}",
   "@languageButtonLabel": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "currentLanguage": {}
+      "currentLanguage": {
+        "type": "String"
+      }
     }
   },
   "interactiveTranslatorAutoPlaySliderHeader": "Autoplay translation",
@@ -4506,9 +4554,11 @@
   "other": "Other",
   "levelShort": "LVL {level}",
   "@levelShort": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "level": {}
+      "level": {
+        "type": "int"
+      }
     }
   },
   "botModeValidation": "Please select a chat mode",
@@ -4569,10 +4619,14 @@
   "constructUseNanDesc": "Not applicable",
   "xpIntoLevel": "{currentXP} / {maxXP} XP",
   "@xpIntoLevel": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "currentXP": {},
-      "maxXP": {}
+      "currentXP": {
+        "type": "int"
+      },
+      "maxXP": {
+        "type": "int"
+      }
     }
   },
   "signInWithUsername": "Sign in with username and password",
@@ -4650,10 +4704,14 @@
   "downloadComplete": "Download complete!",
   "whatIsTheMorphTag": "What is the {morphologicalFeature} of '{wordForm}'?",
   "@whatIsTheMorphTag": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "morphologicalFeature": {},
-      "wordForm": {}
+      "morphologicalFeature": {
+        "type": "String"
+      },
+      "wordForm": {
+        "type": "String"
+      }
     }
   },
   "dataAvailable": "Data availability",
@@ -4663,27 +4721,37 @@
   "pangeaBotIsFallible": "Pangea Bot makes mistakes too!",
   "whatIsMeaning": "What does '{lemma}' mean?",
   "@whatIsMeaning": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "lemma": {},
-      "partOfSpeech": {}
+      "lemma": {
+        "type": "String"
+      },
+      "partOfSpeech": {
+        "type": "String"
+      }
     }
   },
   "pickAnEmoji": "What's your favorite emoji for '{lemma}'?",
   "@pickAnEmoji": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "lemma": {},
-      "partOfSpeech": {}
+      "lemma": {
+        "type": "String"
+      },
+      "partOfSpeech": {
+        "type": "String"
+      }
     }
   },
   "lemmaMeaningInstructionsBody": "Above is the meaning of the lemma. Double-click to edit.",
   "doubleClickToEdit": "Double-click to edit.",
   "removeFeature": "Remove {feature}",
   "@removeFeature": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "feature": {}
+      "feature": {
+        "type": "String"
+      }
     }
   },
   "notInClass": "Not in a class!",
@@ -4691,9 +4759,11 @@
   "chooseCorrectLabel": "Choose the correct label.",
   "levelPopupTitle": "Congratulations on reaching\nLevel {level}",
   "@levelPopupTitle": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "level": {}
+      "level": {
+        "type": "int"
+      }
     }
   },
   "activityPlannerTitle": "Activity Planner",
@@ -4724,9 +4794,11 @@
   "mustBeInteger": "Must be an integer e.g. 1, 2, 3, ...",
   "noLemmasFound": "There's no vocabulary with more than {xp} XP. Keep practicing!",
   "@noLemmasFound": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "xp": {}
+      "xp": {
+        "type": "int"
+      }
     }
   },
   "constructUsePvmDesc": "Produced in voice message",
@@ -4740,9 +4812,11 @@
   "meaning": "Meaning",
   "chatWith": "Group with {displayname}",
   "@chatWith": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "displayname": {}
+      "displayname": {
+        "type": "String"
+      }
     }
   },
   "slightlyOffensive": "Slightly offensive",

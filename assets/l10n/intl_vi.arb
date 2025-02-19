@@ -736,16 +736,20 @@
   "commandHint_cuddle": "Gửi một cái âu yếm",
   "googlyEyesContent": "{senderName} gửi bạn cặp mắt theo dõi",
   "@googlyEyesContent": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "senderName": {}
+      "senderName": {
+        "type": "String"
+      }
     }
   },
   "cuddleContent": "{senderName} âu yếm bạn",
   "@cuddleContent": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "senderName": {}
+      "senderName": {
+        "type": "String"
+      }
     }
   },
   "askSSSSSign": "Để có thể ký cho người khác, vui lòng nhập mật khẩu kho lưu trữ an toàn hoặc khóa phục hồi của bạn.",
@@ -755,10 +759,14 @@
   "sendOnEnter": "Gửi khi nhấn Enter",
   "countChatsAndCountParticipants": "{chats} cuộc trò chuyện và {participants} thành viên",
   "@countChatsAndCountParticipants": {
-    "type": "text",
+    "type": "String",
     "placeholders": {
-      "chats": {},
-      "participants": {}
+      "chats": {
+        "type": "int"
+      },
+      "participants": {
+        "type": "int"
+      }
     }
   },
   "noMoreChatsFound": "Không còn cuộc trò chuyện nào...",
