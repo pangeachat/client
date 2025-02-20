@@ -4107,7 +4107,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$image(_) {
       return "Image";
     },
-    get$video(_) {
+    get$video() {
       return "Video";
     },
     get$nan() {
@@ -4197,6 +4197,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_216", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "TspaHWg6ndJ0WbCyWF8/HOt85lo=");
+})($__dart_deferred_initializers__, "qMQ3PsWhPZL6xl0kTEkVKuKa0h8=");
 ;
 //# sourceMappingURL=main.dart.js_216.part.js.map
