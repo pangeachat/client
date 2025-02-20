@@ -1,12 +1,13 @@
 import 'dart:developer';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import '../../events/constants/pangea_event_types.dart';
 import '../../learning_settings/constants/language_constants.dart';
 import '../../learning_settings/models/language_model.dart';
