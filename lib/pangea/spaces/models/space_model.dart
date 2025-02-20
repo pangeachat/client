@@ -255,7 +255,7 @@ extension SettingCopy on ToolSetting {
       case ToolSetting.enableTTS:
         return L10n.of(context).enableTTSToolName;
       case ToolSetting.enableAutocorrect:
-        return L10n.of(context).enableAutocorrect;
+        return L10n.of(context).enableAutocorrectToolName;
     }
   }
 
@@ -277,7 +277,7 @@ extension SettingCopy on ToolSetting {
       case ToolSetting.enableTTS:
         return L10n.of(context).enableTTSToolDescription;
       case ToolSetting.enableAutocorrect:
-        return L10n.of(context).enableAutocorrect;
+        return L10n.of(context).enableAutocorrectDescription;
     }
   }
 

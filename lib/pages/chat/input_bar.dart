@@ -418,8 +418,10 @@ class InputBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final useShortCuts = (AppConfig.sendOnEnter ?? !PlatformInfos.isMobile);
+    // #Pangea
     final enableAutocorrect = MatrixState
         .pangeaController.userController.profile.toolSettings.enableAutocorrect;
+    // Pangea#
     return Shortcuts(
       shortcuts: !useShortCuts
           ? {}
