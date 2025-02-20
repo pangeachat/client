@@ -4821,5 +4821,6 @@
   "constructUseIncMmDesc": "Incorrect message meaning",
   "constructUseIgnMmDesc": "Ignored message meaning",
   "clickForMeaningActivity": "Click here for a Meaning Challenge",
-  "meaning": "Meaning"
+  "meaning": "Meaning",
+  "enableAutocorrect": "Enable auto correct in the users base keyboard language"
 }
