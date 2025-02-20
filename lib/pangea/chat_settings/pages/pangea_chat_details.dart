@@ -287,7 +287,8 @@ class PangeaChatDetailsView extends StatelessWidget {
                                 Icons.person_add_outlined,
                               ),
                             ),
-                            onTap: () => context.go('/rooms/${room.id}/invite'),
+                            onTap: () =>
+                                context.push('/rooms/${room.id}/invite'),
                           ),
                         if (room.canInvite && !room.isDirectChat)
                           Divider(color: theme.dividerColor, height: 1),
@@ -432,7 +433,7 @@ class PangeaChatDetailsView extends StatelessWidget {
                         ListTile(
                           title: Text(
                             L10n.of(context).countParticipants(
-                              actualMembersCount.toString(),
+                              actualMembersCount,
                             ),
                             style: TextStyle(
                               color: theme.colorScheme.secondary,
@@ -447,7 +448,7 @@ class PangeaChatDetailsView extends StatelessWidget {
                       : ListTile(
                           title: Text(
                             L10n.of(context).loadCountMoreParticipants(
-                              (actualMembersCount - members.length).toString(),
+                              (actualMembersCount - members.length),
                             ),
                           ),
                           leading: CircleAvatar(

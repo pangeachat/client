@@ -1,5 +1,6 @@
 // Flutter imports:
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -18,6 +19,7 @@ class PLanguageDropdown extends StatefulWidget {
   final String decorationText;
   final String? error;
   final String? Function(LanguageModel?)? validator;
+  final Color? backgroundColor;
 
   const PLanguageDropdown({
     super.key,
@@ -29,6 +31,7 @@ class PLanguageDropdown extends StatefulWidget {
     this.isL2List = false,
     this.error,
     this.validator,
+    this.backgroundColor,
   });
 
   @override
@@ -48,7 +51,11 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
   Widget build(BuildContext context) {
     final List<LanguageModel> sortedLanguages = widget.languages;
     final String systemLang = Localizations.localeOf(context).languageCode;
-    final List<String> languagePriority = [systemLang, 'en', 'es'];
+
+    // if there is no initial language, the system language should be the first in the list
+    // otherwise, display in alphabetical order
+    final List<String> languagePriority =
+        widget.initialLanguage == null ? [systemLang] : [];
 
     int sortLanguages(LanguageModel a, LanguageModel b) {
       final String aLang = a.langCode;
@@ -76,7 +83,8 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DropdownButtonFormField2<LanguageModel>(
-          customButton: widget.initialLanguage != null
+          customButton: widget.initialLanguage != null &&
+                  sortedLanguages.contains(widget.initialLanguage)
               ? LanguageDropDownEntry(
                   languageModel: widget.initialLanguage!,
                   isL2List: widget.isL2List,
@@ -85,8 +93,13 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
               : null,
           decoration: InputDecoration(labelText: widget.decorationText),
           isExpanded: true,
-          dropdownStyleData: const DropdownStyleData(
-            maxHeight: 400,
+          dropdownStyleData: DropdownStyleData(
+            maxHeight: kIsWeb ? 500 : null,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14),
+              color: widget.backgroundColor ??
+                  Theme.of(context).colorScheme.surfaceContainerHigh,
+            ),
           ),
           items: [
             if (widget.showMultilingual)

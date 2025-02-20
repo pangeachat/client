@@ -103,11 +103,9 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
     ActivityQualityFeedback? activityFeedback,
   }) async {
     _error = null;
-    debugger(when: kDebugMode);
     if (!mounted ||
         !pangeaController.languageController.languagesSet ||
         widget.overlayController.messageAnalyticsEntry == null) {
-      debugger(when: kDebugMode);
       _updateFetchingActivity(false);
       return;
     }
@@ -153,7 +151,6 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   Future<PracticeActivityModel?> _fetchActivityModel({
     ActivityQualityFeedback? activityFeedback,
   }) async {
-    debugger(when: kDebugMode);
     debugPrint(
       "fetching activity model of type: ${widget.targetTokensAndActivityType.activityType}",
     );
@@ -203,7 +200,8 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
       userL1: MatrixState.pangeaController.languageController.userL1!.langCode,
       userL2: MatrixState.pangeaController.languageController.userL2!.langCode,
       messageText: widget.pangeaMessageEvent.messageDisplayText,
-      messageTokens: widget.overlayController.tokens!,
+      messageTokens:
+          widget.pangeaMessageEvent.messageDisplayRepresentation?.tokens ?? [],
       activityQualityFeedback: activityFeedback,
       targetTokens: tokens,
       targetType: type,
@@ -216,8 +214,6 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
       widget.pangeaMessageEvent,
       context,
     );
-
-    debugger(when: kDebugMode);
 
     if (activityResponse.activity == null) return null;
 

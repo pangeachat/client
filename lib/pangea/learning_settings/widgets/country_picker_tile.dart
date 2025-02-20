@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:country_picker/country_picker.dart';
@@ -30,26 +31,36 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
 
   @override
   Widget build(BuildContext context) {
+    final countries = CountryService().getAll();
     return DropdownButtonFormField2<Country>(
-      customButton: widget.learningController.country != null
+      customButton: widget.learningController.country != null &&
+              countries.any(
+                (country) =>
+                    country.name == widget.learningController.country!.name,
+              )
           ? CountryPickerTile(
               widget.learningController.country!,
               isDropdown: true,
             )
           : null,
+      isExpanded: true,
       decoration: InputDecoration(
         labelText: L10n.of(context).countryInformation,
       ),
-      dropdownStyleData: const DropdownStyleData(
-        maxHeight: 300,
+      dropdownStyleData: DropdownStyleData(
+        maxHeight: kIsWeb ? 500 : null,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(14),
+          color: Theme.of(context).colorScheme.surfaceContainerHigh,
+        ),
       ),
       items: [
-        ...CountryService().getAll().map(
-              (country) => DropdownMenuItem(
-                value: country,
-                child: CountryPickerTile(country),
-              ),
-            ),
+        ...countries.map(
+          (country) => DropdownMenuItem(
+            value: country,
+            child: CountryPickerTile(country),
+          ),
+        ),
       ],
       onChanged: widget.learningController.changeCountry,
       value: widget.learningController.country,
@@ -94,25 +105,28 @@ class CountryPickerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          CountryDisplayUtil.flagEmoji(country.name),
-          style: const TextStyle(fontSize: 25),
-        ),
-        const SizedBox(width: 10),
-        Expanded(
-          child: Text(
-            CountryDisplayUtil.countryDisplayName(
-                  country.name,
-                  context,
-                ) ??
-                '',
-            style: const TextStyle().copyWith(
-              color: Theme.of(context).textTheme.bodyLarge!.color,
-              fontSize: 14,
+        Row(
+          children: [
+            Text(
+              CountryDisplayUtil.flagEmoji(country.name),
+              style: const TextStyle(fontSize: 25),
             ),
-            overflow: TextOverflow.ellipsis,
-          ),
+            const SizedBox(width: 10),
+            Text(
+              CountryDisplayUtil.countryDisplayName(
+                    country.name,
+                    context,
+                  ) ??
+                  '',
+              style: const TextStyle().copyWith(
+                color: Theme.of(context).textTheme.bodyLarge!.color,
+                fontSize: 14,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
         ),
         if (isDropdown)
           Icon(

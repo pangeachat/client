@@ -25,14 +25,16 @@ class MessageTextUtil {
       final List<TokenPosition> tokenPositions = [];
       int globalIndex = 0;
 
-      for (final token
-          in pangeaMessageEvent.messageDisplayRepresentation!.tokens!) {
+      final tokens = pangeaMessageEvent.messageDisplayRepresentation!.tokens!;
+      int pointer = 0;
+      while (pointer < tokens.length) {
+        PangeaToken token = tokens[pointer];
         final start = token.start;
         final end = token.end;
 
         // Calculate the number of grapheme clusters up to the start and end positions
         final int startIndex = messageCharacters.take(start).length;
-        final int endIndex = messageCharacters.take(end).length;
+        int endIndex = messageCharacters.take(end).length;
 
         final hideContent =
             messageAnalyticsEntry?.isTokenInHiddenWordActivity(token) ?? false;
@@ -40,21 +42,50 @@ class MessageTextUtil {
         final hasHiddenContent =
             messageAnalyticsEntry?.hasHiddenWordActivity ?? false;
 
+        // if this is white space, add position without token
         if (globalIndex < startIndex) {
           tokenPositions.add(
             TokenPosition(
               start: globalIndex,
               end: startIndex,
+              tokenStart: globalIndex,
+              tokenEnd: startIndex,
               hideContent: false,
               selected: (isSelected?.call(token) ?? false) && !hasHiddenContent,
             ),
           );
         }
 
+        // group tokens with punctuation before and after so punctuation doesn't cause newline
+        int nextTokenPointer = pointer + 1;
+        while (nextTokenPointer < tokens.length) {
+          final nextToken = tokens[nextTokenPointer];
+          if (token.pos == 'PUNCT' && token.end == nextToken.start) {
+            token = nextToken;
+            nextTokenPointer++;
+            endIndex = messageCharacters.take(nextToken.end).length;
+            continue;
+          }
+          break;
+        }
+
+        while (nextTokenPointer < tokens.length) {
+          final nextToken = tokens[nextTokenPointer];
+
+          if (nextToken.pos == 'PUNCT' && token.end == nextToken.start) {
+            nextTokenPointer++;
+            endIndex = messageCharacters.take(nextToken.end).length;
+            continue;
+          }
+          break;
+        }
+
         tokenPositions.add(
           TokenPosition(
             start: startIndex,
             end: endIndex,
+            tokenStart: messageCharacters.take(token.start).length,
+            tokenEnd: messageCharacters.take(token.end).length,
             token: token,
             hideContent: hideContent,
             selected: (isSelected?.call(token) ?? false) &&
@@ -62,7 +93,10 @@ class MessageTextUtil {
                 !hasHiddenContent,
           ),
         );
+
         globalIndex = endIndex;
+        pointer = nextTokenPointer;
+        continue;
       }
 
       return tokenPositions;

@@ -80,12 +80,12 @@ class UserController extends BaseController {
     Profile Function(Profile) update, {
     waitForDataInSync = false,
   }) async {
-    final prevTargetLang = profile.userSettings.targetLanguage;
+    final prevTargetLang = _pangeaController.languageController.userL2;
 
     final Profile updatedProfile = update(profile);
     await updatedProfile.saveProfileData(waitForDataInSync: waitForDataInSync);
 
-    if (prevTargetLang != updatedProfile.userSettings.targetLanguage) {
+    if (prevTargetLang != _pangeaController.languageController.userL2) {
       setState({'prev_target_lang': prevTargetLang});
     }
   }
@@ -286,7 +286,7 @@ class UserController extends BaseController {
 
   /// Returns a boolean value indicating whether the user's profile is public.
   bool get isPublic {
-    return profile.userSettings.publicProfile;
+    return profile.userSettings.publicProfile ?? true;
   }
 
   /// Retrieves the user's email address.
