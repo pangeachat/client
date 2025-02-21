@@ -1,13 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
-import 'package:text_to_speech/text_to_speech.dart';
-
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_show_popup.dart';
@@ -15,6 +8,11 @@ import 'package:fluffychat/pangea/toolbar/widgets/missing_voice_button.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 class TtsController {
   String? get targetLanguage =>
@@ -91,18 +89,6 @@ class TtsController {
         s: s,
         data: {},
       );
-    } finally {
-      debugPrint("availableLangCodes: $_availableLangCodes");
-      final enableTTSSetting = userController.profile.toolSettings.enableTTS;
-      if (enableTTSSetting != isLanguageFullySupported) {
-        await userController.updateProfile(
-          (profile) {
-            profile.toolSettings.enableTTS = isLanguageFullySupported;
-            return profile;
-          },
-          waitForDataInSync: true,
-        );
-      }
     }
   }
 
@@ -162,47 +148,49 @@ class TtsController {
 
   Future<void> _showMissingVoicePopup(
     BuildContext context,
-    String eventID,
-  ) async {
-    await instructionsShowPopup(
-      context,
-      InstructionsEnum.missingVoice,
-      eventID,
-      showToggle: false,
-      customContent: const Padding(
-        padding: EdgeInsets.only(top: 12),
-        child: MissingVoiceButton(),
-      ),
-      forceShow: true,
-    );
-    return;
-  }
+    String targetID,
+  ) async =>
+      instructionsShowPopup(
+        context,
+        InstructionsEnum.missingVoice,
+        targetID,
+        showToggle: false,
+        customContent: const Padding(
+          padding: EdgeInsets.only(top: 12),
+          child: MissingVoiceButton(),
+        ),
+        forceShow: true,
+      );
+
+  Future<void> _showTTSDisabledPopup(
+    BuildContext context,
+    String targetID,
+  ) async =>
+      instructionsShowPopup(
+        context,
+        InstructionsEnum.ttsDisabled,
+        targetID,
+        showToggle: false,
+        forceShow: true,
+      );
 
   /// A safer version of speak, that handles the case of
   /// the language not being supported by the TTS engine
   Future<void> tryToSpeak(
     String text,
-    BuildContext context,
-    // TODO - make non-nullable again
-    String? eventID,
-  ) async {
-    if (!MatrixState
-        .pangeaController.userController.profile.toolSettings.enableTTS) {
-      return;
-    }
+    BuildContext context, {
+    // Target ID for where to show warning popup
+    String? targetID,
+  }) async {
+    final enableTTS = MatrixState
+        .pangeaController.userController.profile.toolSettings.enableTTS;
 
-    if (isLanguageFullySupported) {
+    if (_isL2FullySupported && enableTTS) {
       await _speak(text);
-    } else {
-      ErrorHandler.logError(
-        e: 'Language not supported by TTS engine',
-        data: {
-          'targetLanguage': targetLanguage,
-        },
-      );
-      if (eventID != null) {
-        await _showMissingVoicePopup(context, eventID);
-      }
+    } else if (!_isL2FullySupported && targetID != null) {
+      await _showMissingVoicePopup(context, targetID);
+    } else if (!enableTTS && targetID != null) {
+      await _showTTSDisabledPopup(context, targetID);
     }
   }
 
@@ -252,6 +240,8 @@ class TtsController {
     }
   }
 
-  bool get isLanguageFullySupported =>
-      _availableLangCodes.contains(targetLanguage);
+  bool get _isL2FullySupported => _availableLangCodes.contains(targetLanguage);
+
+  bool isLanguageSupported(String langCode) =>
+      _availableLangCodes.contains(langCode);
 }
