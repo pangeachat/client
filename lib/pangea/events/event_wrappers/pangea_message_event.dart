@@ -1,12 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
@@ -24,6 +19,10 @@ import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
+import 'package:flutter/foundation.dart';
+import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import '../../../widgets/matrix.dart';
 import '../../choreographer/enums/use_type.dart';
 import '../../common/utils/error_handler.dart';
@@ -597,31 +596,70 @@ class PangeaMessageEvent {
   //   return practiceActivities.any((activity) => !(activity.isComplete));
   // }
 
+  List<MapEntry<ActivityTypeEnum, PangeaToken>>
+      get eligibileTokenWithActivityType {
+    final List<MapEntry<ActivityTypeEnum, PangeaToken>> activities = [];
+
+    for (final PangeaToken token in eligibleTokens) {
+      // if
+      // a) the token is not eligible for analytics or
+      // b) they've used the token in any activity in the last day,
+      // then skip it
+      if (!token.lemma.saveVocab || token.daysSinceLastUse < 1) {
+        continue;
+      }
+
+      for (final activityType in [
+        ActivityTypeEnum.wordMeaning,
+        ActivityTypeEnum.wordFocusListening,
+        ActivityTypeEnum.hiddenWordListening,
+        ActivityTypeEnum.morphId,
+      ]) {
+        if (!token.isActivityBasicallyEligible(activityType)) {
+          continue;
+        }
+
+        final lastUseDays = token.daysSinceLastUseByType(activityType);
+        final delayConstant = activityType.delayConstant;
+        final points = token.vocabConstruct.points;
+
+        // as they build points with that type, give it less and less
+        if (lastUseDays > delayConstant * points) {
+          activities.add(MapEntry(activityType, token));
+          break;
+        }
+      }
+    }
+
+    return activities;
+  }
+
+  List<PangeaToken> get eligibleTokens =>
+      (messageDisplayRepresentation?.tokens ?? [])
+          .where((token) => token.lemma.saveVocab)
+          .toList();
+
   /// value from 0 to 1 indicating the proportion of activities completed
   double get proportionOfActivitiesCompleted {
-    if (messageDisplayRepresentation == null ||
-        messageDisplayRepresentation?.tokens == null) {
+    if (eligibleTokens.isEmpty || eligibileTokenWithActivityType.isEmpty) {
+      debugger(when: kDebugMode);
       return 1;
     }
 
-    final eligibleTokens = messageDisplayRepresentation!.tokens!.where(
-      (token) => token.isActivityBasicallyEligible(
-        ActivityTypeEnum.wordMeaning,
-      ),
-    );
+    if (eligibileTokenWithActivityType.length > eligibleTokens.length) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(
+        data: {
+          "event": _event.toJson(),
+          "tokens": eligibleTokens.length,
+          "activities": eligibileTokenWithActivityType.length,
+        },
+        m: "more activities than tokens",
+      );
+    }
 
-    if (eligibleTokens.isEmpty) return 1;
-
-    final alreadyDid = eligibleTokens.where(
-      (token) => !shouldDoActivity(
-        token: token,
-        a: ActivityTypeEnum.wordMeaning,
-        feature: null,
-        tag: null,
-      ),
-    );
-
-    return alreadyDid.length / eligibleTokens.length;
+    return (eligibleTokens.length - eligibileTokenWithActivityType.length) /
+        eligibleTokens.length;
   }
 
   String? get l2Code =>
@@ -749,5 +787,26 @@ class PangeaMessageEvent {
       feature: feature,
       tag: tag,
     );
+  }
+}
+
+extension on ActivityTypeEnum {
+  int get delayConstant {
+    switch (this) {
+      case ActivityTypeEnum.wordMeaning:
+        return 7;
+      case ActivityTypeEnum.wordFocusListening:
+        return 30;
+      case ActivityTypeEnum.hiddenWordListening:
+        return 7;
+      case ActivityTypeEnum.lemmaId:
+        return 7;
+      case ActivityTypeEnum.emoji:
+        return 7;
+      case ActivityTypeEnum.morphId:
+        return 1;
+      case ActivityTypeEnum.messageMeaning:
+        return 7;
+    }
   }
 }

@@ -246,18 +246,21 @@ class PangeaToken {
       return false;
     }
 
-    bool canGenerate = false;
-    if (a != ActivityTypeEnum.lemmaId) {
-      canGenerate = _canGenerateDistractors(
-        a,
-        morphFeature: morphFeature,
-        morphTag: morphTag,
-      );
-    }
+    // debugger(
+    //   when: kDebugMode &&
+    //       a == ActivityTypeEnum.morphId &&
+    //       (morphFeature == null || morphTag == null),
+    // );
+
+    // final bool canGenerate = _canGenerateDistractors(
+    //   a,
+    //   morphFeature: morphFeature,
+    //   morphTag: morphTag,
+    // );
 
     switch (a) {
       case ActivityTypeEnum.wordMeaning:
-        return canBeDefined && canGenerate;
+        return canBeDefined;
       case ActivityTypeEnum.lemmaId:
         return lemma.saveVocab &&
             text.content.toLowerCase() != lemma.text.toLowerCase();
@@ -265,8 +268,11 @@ class PangeaToken {
       case ActivityTypeEnum.messageMeaning:
         return true;
       case ActivityTypeEnum.morphId:
-        return morph.isNotEmpty && canGenerate;
+        return morph.isNotEmpty;
       case ActivityTypeEnum.wordFocusListening:
+        return canBeHeard &&
+            MatrixState.pangeaController.userController.profile.toolSettings
+                .wordFocusListening;
       case ActivityTypeEnum.hiddenWordListening:
         return canBeHeard;
     }
@@ -507,6 +513,18 @@ class PangeaToken {
     // return the most recent timestamp
     return correctUseTimestamps.reduce((a, b) => a.isAfter(b) ? a : b);
   }
+
+  /// get days since last use, any kind of use
+  int get daysSinceLastUse => constructs
+      .map((c) => c.uses)
+      .expand((e) => e)
+      .map((u) => u.timeStamp)
+      .map((t) => DateTime.now().difference(t).inDays)
+      .fold<int>(
+        1000,
+        (previousValue, element) =>
+            element < previousValue ? element : previousValue,
+      );
 
   /// daysSinceLastUse by activity type
   int daysSinceLastUseByType(ActivityTypeEnum a) {

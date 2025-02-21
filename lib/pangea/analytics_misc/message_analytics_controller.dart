@@ -1,13 +1,10 @@
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
+import 'package:flutter/foundation.dart';
 
 /// Picks which tokens to do activities on and what types of activities to do
 /// Caches result so that we don't have to recompute it
@@ -67,9 +64,7 @@ class TargetTokensAndActivityType {
 class MessageAnalyticsEntry {
   final DateTime createdAt = DateTime.now();
 
-  late final List<PangeaToken> _tokens;
-
-  late final bool _includeHiddenWordActivities;
+  final PangeaMessageEvent pangeaMessageEvent;
 
   late final PangeaMessageEvent _pangeaMessageEvent;
 
@@ -78,13 +73,8 @@ class MessageAnalyticsEntry {
   final int _maxQueueLength = 3;
 
   MessageAnalyticsEntry({
-    required List<PangeaToken> tokens,
-    required bool includeHiddenWordActivities,
-    required PangeaMessageEvent pangeaMessageEvent,
+    required this.pangeaMessageEvent,
   }) {
-    _tokens = tokens;
-    _includeHiddenWordActivities = includeHiddenWordActivities;
-    _pangeaMessageEvent = pangeaMessageEvent;
     setActivityQueue();
   }
 
@@ -150,7 +140,7 @@ class MessageAnalyticsEntry {
   /// And limits to _maxQueueLength activities
   void addMessageMeaningActivity() {
     final entry = TargetTokensAndActivityType(
-      tokens: _tokens,
+      tokens: pangeaMessageEvent.messageDisplayRepresentation!.tokens!,
       activityType: ActivityTypeEnum.messageMeaning,
     );
     _pushQueue(entry);
@@ -158,29 +148,14 @@ class MessageAnalyticsEntry {
 
   /// Returns a hidden word activity if there is a sequence of tokens that have hiddenWordListening in their eligibleActivityTypes
   TargetTokensAndActivityType? getHiddenWordActivity(int numOtherActivities) {
-    // don't do hidden word listening on own messages
-    if (!_includeHiddenWordActivities) {
-      return null;
-    }
-
-    // we will only do hidden word listening 30% of the time
-    // if there are no other activities to do, we will always do hidden word listening
-    if (Random().nextDouble() < 0.7) {
-      // @ggurdin - just want you to review this change. i'm not sure what numOtherActivities >= _maxQueueLength was doing
-      // if (numOtherActivities >= _maxQueueLength && Random().nextDouble() < 0.5) {
-      return null;
-    }
-
     // We will find the longest sequence of tokens that have hiddenWordListening in their eligibleActivityTypes
     final List<List<PangeaToken>> sequences = [];
     List<PangeaToken> currentSequence = [];
-    for (final token in _tokens) {
-      if (_pangeaMessageEvent.shouldDoActivity(
-        token: token,
-        a: ActivityTypeEnum.hiddenWordListening,
-        feature: null,
-        tag: null,
-      )) {
+    for (final entry in pangeaMessageEvent.eligibileTokenWithActivityType) {
+      final PangeaToken token = entry.value;
+      final ActivityTypeEnum activityType = entry.key;
+
+      if (activityType == ActivityTypeEnum.hiddenWordListening) {
         currentSequence.add(token);
       } else {
         if (currentSequence.isNotEmpty) {
@@ -242,26 +217,22 @@ class MessageAnalyticsController {
     }
   }
 
-  String _key(List<PangeaToken> tokens) => PangeaToken.reconstructText(tokens);
-
   MessageAnalyticsEntry? get(
-    List<PangeaToken> tokens,
     PangeaMessageEvent pangeaMessageEvent,
   ) {
-    final String key = _key(tokens);
+    if (pangeaMessageEvent.messageDisplayRepresentation?.tokens != null ||
+        !pangeaMessageEvent.messageDisplayLangIsL2 ||
+        pangeaMessageEvent.event.isRichMessage) {
+      return null;
+    }
+
+    final String key = pangeaMessageEvent.messageDisplayText;
 
     if (_cache.containsKey(key)) {
       return _cache[key];
     }
 
-    final bool includeHiddenWordActivities = !pangeaMessageEvent.ownMessage &&
-        pangeaMessageEvent.messageDisplayRepresentation?.tokens != null &&
-        pangeaMessageEvent.messageDisplayLangIsL2 &&
-        !pangeaMessageEvent.event.isRichMessage;
-
     _cache[key] = MessageAnalyticsEntry(
-      tokens: tokens,
-      includeHiddenWordActivities: includeHiddenWordActivities,
       pangeaMessageEvent: pangeaMessageEvent,
     );
 
