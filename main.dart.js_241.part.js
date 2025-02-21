@@ -4182,6 +4182,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$dontForgetPassword() {
       return "Don't forget your password!";
     },
+    get$enableAutocorrectToolName() {
+      return "Enable autocorrect";
+    },
+    get$enableAutocorrectDescription() {
+      return "Use your keyboard's built-in autocorrect when typing messages";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4197,6 +4203,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_241", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "AF4ceaB6MvLXH/sv99olt1kg8RU=");
+})($__dart_deferred_initializers__, "UGpnK6tMz75VQfK2PJBBkN05wGw=");
 ;
 //# sourceMappingURL=main.dart.js_241.part.js.map
