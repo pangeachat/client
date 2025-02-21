@@ -1732,7 +1732,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "All done!";
     },
     get$vocab() {
-      return "Vocabulary";
+      return "Vocab";
     },
     get$subscribe(_) {
       return "Subscribe";
@@ -4203,6 +4203,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_251", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "K8HzaDPOKQahHoVFBEccYZQ88Fw=");
+})($__dart_deferred_initializers__, "nJlWQbFgwal9bmS3exaYiN72Dic=");
 ;
 //# sourceMappingURL=main.dart.js_251.part.js.map
