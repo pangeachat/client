@@ -1,17 +1,14 @@
-import 'package:flutter/material.dart';
-
-import 'package:cached_network_image/cached_network_image.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_details_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_details_view.dart';
-import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class AnalyticsPopupWrapper extends StatefulWidget {
   const AnalyticsPopupWrapper({
@@ -65,48 +62,40 @@ class AnalyticsPopupWrapperState extends State<AnalyticsPopupWrapper> {
                 : () => setConstructZoom(null),
           ),
           actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 30.0,
-                width: 30.0,
-                child: InkWell(
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        '${AppConfig.assetsBaseURL}/${AnalyticsConstants.vocabIconFileName}',
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  ),
-                  onTap: () => setState(() {
-                    localView = ConstructTypeEnum.vocab;
-                    localConstructZoom = null;
-                  }),
+            TextButton.icon(
+              style: TextButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
+                backgroundColor: localView == ConstructTypeEnum.vocab
+                    ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                    : Theme.of(context).colorScheme.surface,
               ),
+              label: Text(L10n.of(context).vocab),
+              icon: const Icon(Symbols.dictionary),
+              onPressed: () => setState(() {
+                localView = ConstructTypeEnum.vocab;
+                localConstructZoom = null;
+              }),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 30.0,
-                width: 30.0,
-                child: InkWell(
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        '${AppConfig.assetsBaseURL}/${AnalyticsConstants.morphIconFileName}',
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  ),
-                  onTap: () => setState(() {
-                    localView = ConstructTypeEnum.morph;
-                    localConstructZoom = null;
-                  }),
+            const SizedBox(width: 4.0),
+            TextButton.icon(
+              style: TextButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
+                backgroundColor: localView == ConstructTypeEnum.morph
+                    ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                    : Theme.of(context).colorScheme.surface,
               ),
+              label: Text(L10n.of(context).grammar),
+              icon: const Icon(Symbols.toys_and_games),
+              onPressed: () => setState(() {
+                localView = ConstructTypeEnum.morph;
+                localConstructZoom = null;
+              }),
             ),
+            const SizedBox(width: 4.0),
           ],
         ),
         body: localView == ConstructTypeEnum.morph
