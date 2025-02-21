@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:country_picker/country_picker.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
@@ -26,6 +27,7 @@ class SettingsLearningController extends State<SettingsLearning> {
   final tts = TtsController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  String? languageMatchError;
 
   @override
   void initState() {
@@ -41,7 +43,23 @@ class SettingsLearningController extends State<SettingsLearning> {
   }
 
   Future<void> submit() async {
+    if (selectedSourceLanguage?.langCodeShort ==
+        selectedTargetLanguage?.langCodeShort) {
+      setState(() {
+        languageMatchError = L10n.of(context).noIdenticalLanguages;
+      });
+      return;
+    }
+
+    setState(() {
+      languageMatchError = null; // Clear error if languages don't match
+    });
+
     if (formKey.currentState!.validate()) {
+      if (!isTTSSupported) {
+        updateToolSetting(ToolSetting.enableTTS, false);
+      }
+
       await showFutureLoadingDialog(
         context: context,
         future: () async => pangeaController.userController.updateProfile(
@@ -62,6 +80,9 @@ class SettingsLearningController extends State<SettingsLearning> {
     }
     if (targetLanguage != null) {
       _profile.userSettings.targetLanguage = targetLanguage.langCode;
+      if (!_profile.toolSettings.enableTTS && isTTSSupported) {
+        updateToolSetting(ToolSetting.enableTTS, true);
+      }
     }
 
     if (mounted) setState(() {});
@@ -102,6 +123,9 @@ class SettingsLearningController extends State<SettingsLearning> {
       case ToolSetting.enableTTS:
         _profile.toolSettings.enableTTS = value;
         break;
+      case ToolSetting.enableAutocorrect:
+        _profile.toolSettings.enableAutocorrect = value;
+        break;
     }
     if (mounted) setState(() {});
   }
@@ -120,9 +144,17 @@ class SettingsLearningController extends State<SettingsLearning> {
       case ToolSetting.autoIGC:
         return toolSettings.autoIGC;
       case ToolSetting.enableTTS:
-        return toolSettings.enableTTS;
+        return _profile.userSettings.targetLanguage != null &&
+            tts.isLanguageSupported(_profile.userSettings.targetLanguage!) &&
+            toolSettings.enableTTS;
+      case ToolSetting.enableAutocorrect:
+        return toolSettings.enableAutocorrect;
     }
   }
+
+  bool get isTTSSupported =>
+      _profile.userSettings.targetLanguage != null &&
+      tts.isLanguageSupported(_profile.userSettings.targetLanguage!);
 
   LanguageModel? get selectedSourceLanguage {
     return userL1 ?? pangeaController.languageController.systemLanguage;

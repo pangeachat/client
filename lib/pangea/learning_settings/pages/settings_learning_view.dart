@@ -72,15 +72,10 @@ class SettingsLearningView extends StatelessWidget {
                                     .pLanguageStore.baseOptions,
                                 isL2List: false,
                                 decorationText: L10n.of(context).myBaseLanguage,
-                                validator: (lang) {
-                                  if (lang?.langCodeShort ==
-                                      controller.selectedTargetLanguage
-                                          ?.langCodeShort) {
-                                    return L10n.of(context)
-                                        .noIdenticalLanguages;
-                                  }
-                                  return null;
-                                },
+                                hasError: controller.languageMatchError != null,
+                                backgroundColor: Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHigh,
                               ),
                               PLanguageDropdown(
                                 onChange: (lang) =>
@@ -93,15 +88,10 @@ class SettingsLearningView extends StatelessWidget {
                                     .pLanguageStore.targetOptions,
                                 isL2List: true,
                                 decorationText: L10n.of(context).iWantToLearn,
-                                validator: (lang) {
-                                  if (lang?.langCodeShort ==
-                                      controller.selectedSourceLanguage
-                                          ?.langCodeShort) {
-                                    return L10n.of(context)
-                                        .noIdenticalLanguages;
-                                  }
-                                  return null;
-                                },
+                                error: controller.languageMatchError,
+                                backgroundColor: Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHigh,
                               ),
                               CountryPickerDropdown(controller),
                               LanguageLevelDropdown(
@@ -118,8 +108,7 @@ class SettingsLearningView extends StatelessWidget {
                                       title: toolSetting.toolName(context),
                                       subtitle: toolSetting ==
                                                   ToolSetting.enableTTS &&
-                                              !controller
-                                                  .tts.isLanguageFullySupported
+                                              !controller.isTTSSupported
                                           ? null
                                           : toolSetting
                                               .toolDescription(context),
@@ -130,54 +119,64 @@ class SettingsLearningView extends StatelessWidget {
                                       ),
                                       enabled:
                                           toolSetting == ToolSetting.enableTTS
-                                              ? controller
-                                                  .tts.isLanguageFullySupported
+                                              ? controller.isTTSSupported
                                               : true,
                                     ),
                                     if (toolSetting == ToolSetting.enableTTS &&
-                                        !controller
-                                            .tts.isLanguageFullySupported)
-                                      ListTile(
-                                        trailing: const Padding(
-                                          padding: EdgeInsets.symmetric(
-                                            horizontal: 16.0,
+                                        !controller.isTTSSupported)
+                                      Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                              right: 16.0,
+                                            ),
+                                            child: Icon(
+                                              Icons.info_outlined,
+                                              color: Theme.of(context)
+                                                  .disabledColor,
+                                            ),
                                           ),
-                                          child: Icon(Icons.info_outlined),
-                                        ),
-                                        subtitle: RichText(
-                                          text: TextSpan(
-                                            text: L10n.of(context)
-                                                .couldNotFindTTS,
-                                            style: DefaultTextStyle.of(context)
-                                                .style,
-                                            children: [
-                                              if (PlatformInfos.isWindows ||
-                                                  PlatformInfos.isAndroid)
-                                                TextSpan(
-                                                  text: L10n.of(context)
-                                                      .ttsInstructionsHyperlink,
-                                                  style: const TextStyle(
-                                                    color: Colors.blue,
-                                                    fontWeight: FontWeight.bold,
-                                                    decoration: TextDecoration
-                                                        .underline,
-                                                  ),
-                                                  recognizer:
-                                                      TapGestureRecognizer()
-                                                        ..onTap = () {
-                                                          launchUrlString(
-                                                            PlatformInfos
-                                                                    .isWindows
-                                                                ? AppConfig
-                                                                    .windowsTTSDownloadInstructions
-                                                                : AppConfig
-                                                                    .androidTTSDownloadInstructions,
-                                                          );
-                                                        },
+                                          Flexible(
+                                            child: RichText(
+                                              text: TextSpan(
+                                                text: L10n.of(context)
+                                                    .couldNotFindTTS,
+                                                style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .disabledColor,
                                                 ),
-                                            ],
+                                                children: [
+                                                  if (PlatformInfos.isWindows ||
+                                                      PlatformInfos.isAndroid)
+                                                    TextSpan(
+                                                      text: L10n.of(context)
+                                                          .ttsInstructionsHyperlink,
+                                                      style: const TextStyle(
+                                                        color: Colors.blue,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline,
+                                                      ),
+                                                      recognizer:
+                                                          TapGestureRecognizer()
+                                                            ..onTap = () {
+                                                              launchUrlString(
+                                                                PlatformInfos
+                                                                        .isWindows
+                                                                    ? AppConfig
+                                                                        .windowsTTSDownloadInstructions
+                                                                    : AppConfig
+                                                                        .androidTTSDownloadInstructions,
+                                                              );
+                                                            },
+                                                    ),
+                                                ],
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                        ],
                                       ),
                                   ],
                                 ),
