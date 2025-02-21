@@ -19,7 +19,6 @@ void chatListHandleSpaceTap(
   ChatListController controller,
   Room space,
 ) {
-  //final PangeaController pangeaController = MatrixState.pangeaController;
   void setActiveSpaceAndCloseChat() {
     controller.setActiveSpace(space.id);
 

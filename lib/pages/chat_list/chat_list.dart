@@ -43,6 +43,7 @@ import '../../widgets/matrix.dart';
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
 
+
 enum PopupMenuAction {
   settings,
   invite,
@@ -512,7 +513,6 @@ class ChatListController extends State<ChatList>
               MatrixState.pangeaController.classController.chatBox.read(
             PLocalKey.justInputtedCode,
           );
-          // Pangea#
           final newSpaceCode = space?.classCode(context);
           if (newSpaceCode == justInputtedCode) return;
 

@@ -42,8 +42,6 @@ class UserSettingsState extends State<UserSettingsPage> {
 
   bool isTncChecked = false;
 
-  //static final GetStorage _settingsBox = GetStorage("settings_storage");
-
   List<String> avatarPaths = const [
     "assets/pangea/Avatar_1.png",
     "assets/pangea/Avatar_2.png",

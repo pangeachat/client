@@ -16,7 +16,6 @@ class CustomizedSvg extends StatelessWidget {
   /// Icon to show in case of error
   final Widget errorIcon;
 
-  // Storage Initalization
   static final GetStorage _svgStorage = GetStorage('svg_cache');
   const CustomizedSvg({
     super.key,

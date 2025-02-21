@@ -12,8 +12,8 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaInfoRepo {
-  // Storage Initalization
   static final GetStorage _lemmaStorage = GetStorage('lemma_storage');
+
   static void set(LemmaInfoRequest request, LemmaInfoResponse response) {
     // set expireAt if not set
     response.expireAt ??= DateTime.now().add(const Duration(minutes: 1));

@@ -84,7 +84,6 @@ class SubscriptionController extends BaseController {
     await initialize();
   }
 
-  // Storage Initialization
   final GetStorage subscriptionBox = GetStorage("subscription_storage");
   Future<void> _initialize() async {
     try {

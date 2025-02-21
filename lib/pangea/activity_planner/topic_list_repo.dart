@@ -10,7 +10,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../common/network/requests.dart';
 
 class TopicListRepo {
-  // Storage Initalization
   static final GetStorage _topicListStorage = GetStorage('topic_list_storage');
 
   static void set(

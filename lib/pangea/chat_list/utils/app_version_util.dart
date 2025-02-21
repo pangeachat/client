@@ -23,7 +23,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AppVersionUtil {
-  // Storage Initialization
   static final GetStorage _versionBox = GetStorage("version_storage");
 
   static Future<AppVersionResponse> _getAppVersion(

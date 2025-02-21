@@ -23,13 +23,13 @@ class _APICallCacheItem {
 }
 
 class MorphsRepo {
+  // long-term storage of morphs
+  static final GetStorage _morphsStorage = GetStorage('morphs_storage');
+
   // to avoid multiple fetches for the same language code
   // by different parts of the app within a short time
   static final shortTermCache = <String, _APICallCacheItem>{};
   static const int _cacheDurationMinutes = 1;
-
-  // Storage Initalization
-  static final GetStorage _morphsStorage = GetStorage('morphs_storage');
 
   static void set(String languageCode, MorphFeaturesAndTags response) {
     _morphsStorage.write(

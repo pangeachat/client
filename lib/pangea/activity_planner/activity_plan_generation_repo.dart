@@ -11,7 +11,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../common/network/requests.dart';
 
 class ActivityPlanGenerationRepo {
-  // Storage Initalization
   static final GetStorage _activityPlanStorage =
       GetStorage('activity_plan_storage');
 

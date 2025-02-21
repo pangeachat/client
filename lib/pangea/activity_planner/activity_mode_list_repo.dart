@@ -10,7 +10,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../common/network/requests.dart';
 
 class ActivityModeListRepo {
-  // Storage Initalization
   static final GetStorage _modeListStorage = GetStorage('mode_list_storage');
 
   static void set(

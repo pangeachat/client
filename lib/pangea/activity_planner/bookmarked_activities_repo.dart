@@ -8,7 +8,6 @@ import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 class BookmarkedActivitiesRepo {
   static const Uuid _uuid = Uuid();
 
-  // Storage Initalization
   static final GetStorage _bookStorage = GetStorage('bookmarked_activities');
 
   /// save an activity to the list of bookmarked activities
