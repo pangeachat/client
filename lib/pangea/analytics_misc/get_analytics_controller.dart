@@ -21,13 +21,11 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 
-//import 'package:get_storage/get_storage.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
   // Storage initalization
   final GetStorage analyticsBox = GetStorage("analytics_storage");
-
   late PangeaController _pangeaController;
   late MessageAnalyticsController perMessage;
 

@@ -17,13 +17,6 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/controllers/base_controller.dart';
 
-//import 'package:get_storage/get_storage.dart';
-
-//import 'package:fluffychat/pages/chat_list/chat_list.dart';
-//import 'package:fluffychat/pangea/spaces/utils/join_with_link.dart';
-//import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
-//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-
 class ClassController extends BaseController {
   late PangeaController _pangeaController;
 

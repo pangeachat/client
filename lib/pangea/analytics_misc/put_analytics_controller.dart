@@ -17,8 +17,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-//import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
-
 enum AnalyticsUpdateType { server, local }
 
 /// handles the processing of analytics for
@@ -315,8 +313,6 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
             ),
           );
   }
-
-  //final analyticsBox = GetAnalyticsController.analyticsBox;
 
   /// Clears the local cache of recently sent constructs. Called before updating analytics
   void clearMessagesSinceUpdate({clearDrafts = false}) {

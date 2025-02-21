@@ -21,7 +21,6 @@ import '../models/user_model.dart';
 class UserController extends BaseController {
   // Storage Initialization
   final GetStorage loginBox = GetStorage("login_storage");
-
   late PangeaController _pangeaController;
   UserController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;

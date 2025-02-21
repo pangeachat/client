@@ -22,10 +22,6 @@ import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-//import 'package:get_storage/get_storage.dart';
-
-//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-
 class AppVersionUtil {
   // Storage Initialization
   static final GetStorage _versionBox = GetStorage("version_storage");

@@ -13,8 +13,6 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
 
-//import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-
 // ignore: curly_braces_in_flow_control_structures
 void chatListHandleSpaceTap(
   BuildContext context,
@@ -90,8 +88,6 @@ void chatListHandleSpaceTap(
       );
     }
   }
-
-  //final chatBox = ChatStorage.chatBox;
 
   switch (space.membership) {
     case Membership.join:

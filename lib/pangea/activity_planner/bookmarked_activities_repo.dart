@@ -5,8 +5,6 @@ import 'package:uuid/uuid.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 
-//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-
 class BookmarkedActivitiesRepo {
   static const Uuid _uuid = Uuid();
 

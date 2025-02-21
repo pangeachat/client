@@ -6,8 +6,6 @@ import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
-//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-
 class CustomizedSvg extends StatelessWidget {
   /// URL of the SVG file
   final String svgUrl;
@@ -20,7 +18,6 @@ class CustomizedSvg extends StatelessWidget {
 
   // Storage Initalization
   static final GetStorage _svgStorage = GetStorage('svg_cache');
-
   const CustomizedSvg({
     super.key,
     required this.svgUrl,

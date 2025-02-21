@@ -13,12 +13,6 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-//import 'package:get_storage/get_storage.dart';
-
-//import 'package:fluffychat/pages/login/login.dart';
-
-//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-
 Future<void> pangeaSSOLoginAction(
   IdentityProvider provider,
   Client client,

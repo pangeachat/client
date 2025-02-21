@@ -92,9 +92,6 @@ class AvailableSubscriptionsInfo {
   List<SubscriptionDetails> availableSubscriptions = [];
   SubscriptionAppIds? appIds;
   List<SubscriptionDetails>? allProducts;
-
-  //PangeaController get _pangeaController => MatrixState.pangeaController;
-
   final subscriptionBox =
       MatrixState.pangeaController.subscriptionController.subscriptionBox;
 

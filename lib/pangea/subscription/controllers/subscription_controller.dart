@@ -29,10 +29,6 @@ import 'package:fluffychat/pangea/subscription/widgets/subscription_paywall.dart
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
-//import 'package:get_storage/get_storage.dart';
-
-//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-
 enum SubscriptionStatus {
   subscribed,
   dimissedPaywall,
@@ -90,7 +86,6 @@ class SubscriptionController extends BaseController {
 
   // Storage Initialization
   final GetStorage subscriptionBox = GetStorage("subscription_storage");
-
   Future<void> _initialize() async {
     try {
       if (_userID == null) {
