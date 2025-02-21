@@ -38,7 +38,6 @@ class MessageTokenText extends StatelessWidget {
 
   MessageAnalyticsEntry? get messageAnalyticsEntry => _tokens != null
       ? MatrixState.pangeaController.getAnalytics.perMessage.get(
-          _tokens!,
           _pangeaMessageEvent,
         )
       : null;

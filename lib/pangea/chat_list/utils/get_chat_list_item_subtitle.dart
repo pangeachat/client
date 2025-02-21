@@ -89,7 +89,6 @@ class ChatListItemSubtitle extends StatelessWidget {
 
           final analyticsEntry = tokens != null
               ? MatrixState.pangeaController.getAnalytics.perMessage.get(
-                  tokens,
                   pangeaMessageEvent,
                 )
               : null;

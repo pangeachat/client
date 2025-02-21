@@ -234,6 +234,7 @@ enum ToolSetting {
   // translations,
   autoIGC,
   enableTTS,
+  wordFocusListening
 }
 
 extension SettingCopy on ToolSetting {
@@ -253,6 +254,8 @@ extension SettingCopy on ToolSetting {
         return L10n.of(context).autoIGCToolName;
       case ToolSetting.enableTTS:
         return L10n.of(context).enableTTSToolName;
+      case ToolSetting.wordFocusListening:
+        return "Do you want practice listening to individual words via TTS?";
     }
   }
 
@@ -273,6 +276,8 @@ extension SettingCopy on ToolSetting {
         return L10n.of(context).autoIGCToolDescription;
       case ToolSetting.enableTTS:
         return L10n.of(context).enableTTSToolDescription;
+      case ToolSetting.wordFocusListening:
+        return "Do you want to practice listening to individual words via TTS?";
     }
   }
 
@@ -285,6 +290,7 @@ extension SettingCopy on ToolSetting {
         return false;
       case ToolSetting.autoIGC:
       case ToolSetting.enableTTS:
+      case ToolSetting.wordFocusListening:
         return true;
     }
   }

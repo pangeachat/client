@@ -102,6 +102,9 @@ class SettingsLearningController extends State<SettingsLearning> {
       case ToolSetting.enableTTS:
         _profile.toolSettings.enableTTS = value;
         break;
+      case ToolSetting.wordFocusListening:
+        _profile.toolSettings.wordFocusListening = value;
+        break;
     }
     if (mounted) setState(() {});
   }
@@ -121,6 +124,8 @@ class SettingsLearningController extends State<SettingsLearning> {
         return toolSettings.autoIGC;
       case ToolSetting.enableTTS:
         return toolSettings.enableTTS;
+      case ToolSetting.wordFocusListening:
+        return toolSettings.wordFocusListening;
     }
   }
 

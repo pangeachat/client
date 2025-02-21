@@ -10,10 +10,10 @@ enum ActivityTypeEnum {
   wordMeaning,
   wordFocusListening,
   hiddenWordListening,
-  lemmaId,
   emoji,
   morphId,
-  messageMeaning, // TODO: Add to L10n
+  lemmaId,
+  messageMeaning,
 }
 
 extension ActivityTypeExtension on ActivityTypeEnum {
