@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-//import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -8,6 +7,9 @@ import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+//import 'package:get_storage/get_storage.dart';
+
 
 //if on home with classcode in url and not logged in, then save it soemhow and after llogin, join class automatically
 //if on home with classcode in url and logged in, then join class automatically
@@ -17,7 +19,6 @@ class JoinClassWithLink extends StatefulWidget {
   @override
   State<JoinClassWithLink> createState() => _JoinClassWithLinkState();
 }
-
 
 //PTODO - show class info in field so they know they're joining the right class
 class _JoinClassWithLinkState extends State<JoinClassWithLink> {

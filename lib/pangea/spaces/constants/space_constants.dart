@@ -6,9 +6,6 @@ class SpaceConstants {
   static const String classCode = 'classcode';
 }
 
-
-
-
 //final String? justInputtedCode = MatrixState.pangeaController.classController.chatBox.read(
 
 // import 'package:fluffychat/pangea/spaces/controllers/space_controller.dart';

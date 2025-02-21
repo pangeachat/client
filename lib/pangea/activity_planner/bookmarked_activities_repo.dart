@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:uuid/uuid.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+
 //import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class BookmarkedActivitiesRepo {
@@ -11,7 +12,6 @@ class BookmarkedActivitiesRepo {
 
   // Storage Initalization
   static final GetStorage _bookStorage = GetStorage('bookmarked_activities');
-
 
   /// save an activity to the list of bookmarked activities
   /// returns the activity with a bookmarkId
@@ -27,7 +27,8 @@ class BookmarkedActivitiesRepo {
     return activity;
   }
 
-  static Future<void> remove(String bookmarkId) => _bookStorage.remove(bookmarkId);
+  static Future<void> remove(String bookmarkId) =>
+      _bookStorage.remove(bookmarkId);
 
   static bool isBookmarked(ActivityPlanModel activity) {
     return activity.bookmarkId != null &&

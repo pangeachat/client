@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:matrix/matrix.dart' as matrix;
 
@@ -13,14 +14,11 @@ import 'package:fluffychat/pangea/learning_settings/constants/language_constants
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/user/models/profile_model.dart';
 import '../models/user_model.dart';
-import 'package:get_storage/get_storage.dart';
-
 
 //PLocalKey.loginType
 
 /// Controller that manages saving and reading of user/profile information
 class UserController extends BaseController {
-
   // Storage Initialization
   final GetStorage loginBox = GetStorage("login_storage");
 
@@ -294,7 +292,7 @@ class UserController extends BaseController {
 
   /// Returns a boolean value indicating whether the user's profile is public.
   bool get isPublic {
-    return profile.userSettings.publicProfile;
+    return profile.userSettings.publicProfile ?? true;
   }
 
   /// Retrieves the user's email address.

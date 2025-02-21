@@ -418,6 +418,10 @@ class InputBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final useShortCuts = (AppConfig.sendOnEnter ?? !PlatformInfos.isMobile);
+    // #Pangea
+    final enableAutocorrect = MatrixState
+        .pangeaController.userController.profile.toolSettings.enableAutocorrect;
+    // Pangea#
     return Shortcuts(
       shortcuts: !useShortCuts
           ? {}
@@ -486,12 +490,12 @@ class InputBar extends StatelessWidget {
           // show suggestions after 50ms idle time (default is 300)
           // #Pangea
           // builder: (context, controller, focusNode) => TextField(
-          builder: (context, _, focusNode) => SelectionArea(
-            child: TextField(
+          builder: (context, _, focusNode) {
+            return TextField(
               enableSuggestions: false,
               readOnly:
                   controller != null && controller!.choreographer.isRunningIT,
-              autocorrect: false,
+              autocorrect: enableAutocorrect,
               // controller: controller,
               controller: (controller
                           ?.choreographer.chatController.obscureText) ??
@@ -560,8 +564,8 @@ class InputBar extends StatelessWidget {
                 onChanged!(text);
               },
               textCapitalization: TextCapitalization.sentences,
-            ),
-          ),
+            );
+          },
           suggestionsCallback: getSuggestions,
           itemBuilder: (c, s) =>
               buildSuggestion(c, s, Matrix.of(context).client),

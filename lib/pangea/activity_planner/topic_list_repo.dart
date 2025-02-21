@@ -12,7 +12,6 @@ import '../common/network/requests.dart';
 //import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class TopicListRepo {
-
   // Storage Initalization
   static final GetStorage _topicListStorage = GetStorage('topic_list_storage');
 

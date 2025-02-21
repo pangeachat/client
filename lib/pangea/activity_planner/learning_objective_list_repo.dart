@@ -12,9 +12,9 @@ import '../common/network/requests.dart';
 //import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class LearningObjectiveListRepo {
-
   // Storage Initalization
-  static final GetStorage _objectiveListStorage = GetStorage('objective_list_storage');
+  static final GetStorage _objectiveListStorage =
+      GetStorage('objective_list_storage');
 
   static void set(
     ActivitySettingRequestSchema request,

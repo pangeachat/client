@@ -13,10 +13,9 @@ import '../common/network/requests.dart';
 //import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class ActivityPlanGenerationRepo {
-
   // Storage Initalization
-  static final GetStorage _activityPlanStorage = GetStorage('activity_plan_storage');
-
+  static final GetStorage _activityPlanStorage =
+      GetStorage('activity_plan_storage');
 
   static void set(ActivityPlanRequest request, ActivityPlanResponse response) {
     _activityPlanStorage.write(request.storageKey, response.toJson());

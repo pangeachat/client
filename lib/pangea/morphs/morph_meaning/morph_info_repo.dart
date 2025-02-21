@@ -23,12 +23,12 @@ class _APICallCacheItem {
 }
 
 class MorphInfoRepo {
-
   static final shortTermCache = <String, _APICallCacheItem>{};
   static const int _cacheDurationMinutes = 1;
 
   // Storage Initalization
-  static final GetStorage _morphMeaningStorage = GetStorage('morph_meaning_storage');
+  static final GetStorage _morphMeaningStorage =
+      GetStorage('morph_meaning_storage');
 
   static void set(MorphInfoRequest request, MorphInfoResponse response) {
     _morphMeaningStorage.write(request.storageKey, response.toJson());

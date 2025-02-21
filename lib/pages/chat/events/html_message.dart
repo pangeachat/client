@@ -253,7 +253,8 @@ class HtmlMessage extends StatelessWidget {
             ? isSelected!.call(token)
             : false;
 
-        final shouldDo = token?.shouldDoActivity(
+        final shouldDo = pangeaMessageEvent?.shouldDoActivity(
+              token: token,
               a: ActivityTypeEnum.wordMeaning,
               feature: null,
               tag: null,
@@ -579,9 +580,9 @@ class HtmlMessage extends StatelessWidget {
     return SelectionArea(
       child: GestureDetector(
         onTap: () {
-          if (!isOverlay) {
+          if (!isOverlay && pangeaMessageEvent != null) {
             controller.showToolbar(
-              event,
+              pangeaMessageEvent!.event,
               pangeaMessageEvent: pangeaMessageEvent,
               nextEvent: nextEvent,
               prevEvent: prevEvent,

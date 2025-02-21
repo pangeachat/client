@@ -176,7 +176,8 @@ class WordZoomWidgetState extends State<WordZoomWidget> {
   }
 
   bool _shouldShowActivity(WordZoomSelection selection) {
-    final shouldDo = widget.token.shouldDoActivity(
+    final shouldDo = widget.messageEvent.shouldDoActivity(
+      token: widget.token,
       a: selection.activityType,
       feature: _selectedMorphFeature,
       tag: _selectedMorphFeature == null
@@ -256,7 +257,7 @@ class WordZoomWidgetState extends State<WordZoomWidget> {
                             ],
                           ),
                         ),
-                        const SizedBox(width: 30),
+                        const SizedBox(width: 40),
                       ],
                     ),
                   ),
@@ -272,6 +273,7 @@ class WordZoomWidgetState extends State<WordZoomWidget> {
                       wordDetailsController: this,
                     ),
                   MorphologicalListWidget(
+                    pangeaMessageEvent: widget.messageEvent,
                     token: widget.token,
                     setMorphFeature: (feature) => _setSelectionType(
                       WordZoomSelection.morph,
