@@ -16,9 +16,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Need to test.
 class MessageTokenText extends StatelessWidget {
   final PangeaMessageEvent _pangeaMessageEvent;
-
-  final List<PangeaToken>? _tokens;
-
   final TextStyle _style;
 
   final bool Function(PangeaToken)? _isSelected;
@@ -34,8 +31,10 @@ class MessageTokenText extends StatelessWidget {
   })  : _onClick = onClick,
         _isSelected = isSelected,
         _style = style,
-        _tokens = tokens,
         _pangeaMessageEvent = pangeaMessageEvent;
+
+  List<PangeaToken>? get _tokens =>
+      _pangeaMessageEvent.messageDisplayRepresentation?.tokens;
 
   MessageAnalyticsEntry? get messageAnalyticsEntry => _tokens != null
       ? MatrixState.pangeaController.getAnalytics.perMessage.get(
@@ -44,6 +43,12 @@ class MessageTokenText extends StatelessWidget {
         )
       : null;
 
+  void callOnClick(TokenPosition tokenPosition) {
+    _onClick != null && tokenPosition.token != null
+        ? _onClick!(tokenPosition.token!)
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_tokens == null) {
@@ -51,12 +56,6 @@ class MessageTokenText extends StatelessWidget {
         _pangeaMessageEvent.messageDisplayText,
         style: _style,
       );
-    }
-
-    void callOnClick(TokenPosition tokenPosition) {
-      _onClick != null && tokenPosition.token != null
-          ? _onClick!(tokenPosition.token!)
-          : null;
     }
 
     return MessageTextWidget(
@@ -197,12 +196,12 @@ class MessageTextWidget extends StatelessWidget {
       text: TextSpan(
         children:
             tokenPositions.mapIndexed((int i, TokenPosition tokenPosition) {
-          final shouldDo = tokenPosition.token?.shouldDoActivity(
-                a: ActivityTypeEnum.wordMeaning,
-                feature: null,
-                tag: null,
-              ) ??
-              false;
+          final shouldDo = pangeaMessageEvent.shouldDoActivity(
+            token: tokenPosition.token,
+            a: ActivityTypeEnum.wordMeaning,
+            feature: null,
+            tag: null,
+          );
 
           final didMeaningActivity =
               tokenPosition.token?.didActivitySuccessfully(
@@ -238,17 +237,22 @@ class MessageTextWidget extends StatelessWidget {
               );
             }
 
-            // if the tokenPosition is a combination of the token and following punctuation
+            // if the tokenPosition is a combination of the token and preceding / following punctuation
             // split them so that only the token itself is highlighted when clicked
-            String firstSubstring = substring;
-            String secondSubstring = '';
+            String start = '';
+            String middle = '';
+            String end = '';
 
-            if (tokenPosition.end != tokenPosition.tokenEnd) {
-              final splitIndex = (tokenPosition.end - tokenPosition.start) -
-                  (tokenPosition.end - tokenPosition.tokenEnd);
-              firstSubstring = substring.substring(0, splitIndex);
-              secondSubstring = substring.substring(splitIndex);
-            }
+            final startSplitIndex =
+                tokenPosition.tokenStart - tokenPosition.start;
+            final endSplitIndex = tokenPosition.tokenEnd - tokenPosition.start;
+
+            start = substring.characters.take(startSplitIndex).toString();
+            end = substring.characters.skip(endSplitIndex).toString();
+            middle = substring.characters
+                .skip(startSplitIndex)
+                .take(endSplitIndex)
+                .toString();
 
             return WidgetSpan(
               child: MouseRegion(
@@ -260,8 +264,22 @@ class MessageTextWidget extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       children: [
+                        if (start.isNotEmpty)
+                          LinkifySpan(
+                            text: start,
+                            style: style,
+                            linkStyle: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? Theme.of(context).colorScheme.primary
+                                  : Theme.of(context).colorScheme.onPrimary,
+                            ),
+                            onOpen: (url) =>
+                                UrlLauncher(context, url.url).launchUrl(),
+                          ),
                         LinkifySpan(
-                          text: firstSubstring,
+                          text: middle,
                           style: style.merge(
                             TextStyle(
                               backgroundColor: backgroundColor,
@@ -277,9 +295,9 @@ class MessageTextWidget extends StatelessWidget {
                           onOpen: (url) =>
                               UrlLauncher(context, url.url).launchUrl(),
                         ),
-                        if (secondSubstring.isNotEmpty)
+                        if (end.isNotEmpty)
                           LinkifySpan(
-                            text: secondSubstring,
+                            text: end,
                             style: style,
                             linkStyle: TextStyle(
                               decoration: TextDecoration.underline,

@@ -309,9 +309,11 @@ class ChatListItem extends StatelessWidget {
                       child: room.isSpace && room.membership == Membership.join
                           ? Text(
                               L10n.of(context).countChatsAndCountParticipants(
-                                room.spaceChildren.length.toString(),
-                                (room.summary.mJoinedMemberCount ?? 1)
-                                    .toString(),
+                                // #Pangea
+                                // room.spaceChildren.length,
+                                room.spaceChildCount,
+                                // Pangea#
+                                (room.summary.mJoinedMemberCount ?? 1),
                               ),
                             )
                           : typingText.isNotEmpty

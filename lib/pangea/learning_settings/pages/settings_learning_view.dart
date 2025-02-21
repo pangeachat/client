@@ -1,9 +1,3 @@
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -16,6 +10,10 @@ import 'package:fluffychat/pangea/learning_settings/widgets/p_settings_switch_li
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsLearningView extends StatelessWidget {
   final SettingsLearningController controller;
@@ -72,12 +70,15 @@ class SettingsLearningView extends StatelessWidget {
                                     .pLanguageStore.baseOptions,
                                 isL2List: false,
                                 decorationText: L10n.of(context).myBaseLanguage,
-                                error: controller.languageMatchError != null
-                                    ? ''
-                                    : null,
-                                backgroundColor: Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHigh,
+                                validator: (lang) {
+                                  if (lang?.langCodeShort ==
+                                      controller.selectedTargetLanguage
+                                          ?.langCodeShort) {
+                                    return L10n.of(context)
+                                        .noIdenticalLanguages;
+                                  }
+                                  return null;
+                                },
                               ),
                               PLanguageDropdown(
                                 onChange: (lang) =>
@@ -90,10 +91,15 @@ class SettingsLearningView extends StatelessWidget {
                                     .pLanguageStore.targetOptions,
                                 isL2List: true,
                                 decorationText: L10n.of(context).iWantToLearn,
-                                error: controller.languageMatchError,
-                                backgroundColor: Theme.of(context)
-                                    .colorScheme
-                                    .surfaceContainerHigh,
+                                validator: (lang) {
+                                  if (lang?.langCodeShort ==
+                                      controller.selectedSourceLanguage
+                                          ?.langCodeShort) {
+                                    return L10n.of(context)
+                                        .noIdenticalLanguages;
+                                  }
+                                  return null;
+                                },
                               ),
                               CountryPickerDropdown(controller),
                               LanguageLevelDropdown(

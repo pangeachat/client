@@ -121,6 +121,9 @@ class SettingsLearningController extends State<SettingsLearning> {
       case ToolSetting.enableTTS:
         _profile.toolSettings.enableTTS = value;
         break;
+      case ToolSetting.enableAutocorrect:
+        _profile.toolSettings.enableAutocorrect = value;
+        break;
     }
     if (mounted) setState(() {});
   }
@@ -140,6 +143,8 @@ class SettingsLearningController extends State<SettingsLearning> {
         return toolSettings.autoIGC;
       case ToolSetting.enableTTS:
         return toolSettings.enableTTS;
+      case ToolSetting.enableAutocorrect:
+        return toolSettings.enableAutocorrect;
     }
   }
 
@@ -161,7 +166,7 @@ class SettingsLearningController extends State<SettingsLearning> {
       ? PangeaLanguage.byLangCode(_profile.userSettings.targetLanguage!)
       : null;
 
-  bool get publicProfile => _profile.userSettings.publicProfile;
+  bool get publicProfile => _profile.userSettings.publicProfile ?? true;
 
   LanguageLevelTypeEnum get cefrLevel => _profile.userSettings.cefrLevel;
 

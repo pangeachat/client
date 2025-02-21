@@ -38,10 +38,13 @@ class ProgressIndicatorBadge extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(
-                  width: 14,
-                  height: 14,
-                  child: Image.network(indicator.iconURL!),
+                Text(
+                  indicator.tooltip(context),
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: indicator.color(context),
+                  ),
                 ),
                 const SizedBox(width: 5),
                 !loading

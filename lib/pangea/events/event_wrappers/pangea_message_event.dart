@@ -10,9 +10,11 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
+import 'package:fluffychat/pangea/choreographer/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
@@ -507,6 +509,39 @@ class PangeaMessageEvent {
     );
   }
 
+  Future<String?> representationByDetectedLanguage() async {
+    final resp = await LanguageDetectionRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      request: LanguageDetectionRequest(
+        text: _latestEdit.body,
+        senderl1: l1Code,
+        senderl2: l2Code,
+      ),
+    );
+
+    final langCode = resp.detections.firstOrNull?.langCode;
+    if (langCode == null) return null;
+    if (langCode == originalSent?.langCode) {
+      return originalSent?.event?.eventId;
+    }
+
+    // clear representations cache so the new representation event can be added when next requested
+    _representations = null;
+
+    return MatrixState.pangeaController.messageData
+        .getPangeaRepresentationEvent(
+      req: FullTextTranslationRequestModel(
+        text: originalSent?.content.text ?? _latestEdit.body,
+        srcLang: originalSent?.langCode,
+        tgtLang: langCode,
+        userL2: l2Code ?? LanguageKeys.unknownLanguage,
+        userL1: l1Code ?? LanguageKeys.unknownLanguage,
+      ),
+      messageEvent: this,
+      originalSent: true,
+    );
+  }
+
   RepresentationEvent? get originalSent => representations
       .firstWhereOrNull((element) => element.content.originalSent);
 
@@ -578,7 +613,8 @@ class PangeaMessageEvent {
     if (eligibleTokens.isEmpty) return 1;
 
     final alreadyDid = eligibleTokens.where(
-      (token) => !token.shouldDoActivity(
+      (token) => !shouldDoActivity(
+        token: token,
         a: ActivityTypeEnum.wordMeaning,
         feature: null,
         tag: null,
@@ -697,4 +733,21 @@ class PangeaMessageEvent {
       l2Code == null ? [] : practiceActivitiesByLangCode(l2Code!);
 
   bool get shouldShowToolbar => !event.isActivityMessage;
+
+  bool shouldDoActivity({
+    required PangeaToken? token,
+    required ActivityTypeEnum a,
+    required String? feature,
+    required String? tag,
+  }) {
+    if (!messageDisplayLangIsL2 || token == null) {
+      return false;
+    }
+
+    return token.shouldDoActivity(
+      a: a,
+      feature: feature,
+      tag: tag,
+    );
+  }
 }

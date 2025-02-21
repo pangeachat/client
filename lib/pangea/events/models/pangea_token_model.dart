@@ -354,6 +354,14 @@ class PangeaToken {
           return false;
         }
 
+        // if last used less than 1 day ago, return false
+        // this is largely to account for cases of sending a message with some
+        // error that gets you negative points for it
+        if (vocabConstruct.lastUsed != null &&
+            DateTime.now().difference(vocabConstruct.lastUsed!).inDays < 1) {
+          return false;
+        }
+
         if (isContentWord) {
           return vocabConstruct.points < 1;
         } else if (canBeDefined) {
@@ -386,16 +394,6 @@ class PangeaToken {
         return daysSinceLastUseMorph(morphFeature, morphTag) > 1 &&
             morphConstruct(morphFeature, morphTag).points < 5;
     }
-  }
-
-  bool get shouldDoPosActivity => shouldDoMorphActivity("pos");
-
-  bool shouldDoMorphActivity(String feature) {
-    return shouldDoActivity(
-      a: ActivityTypeEnum.morphId,
-      feature: feature,
-      tag: getMorphTag(feature),
-    );
   }
 
   /// Safely get morph tag for a given feature without regard for case
@@ -461,22 +459,6 @@ class PangeaToken {
   }) {
     return isActivityBasicallyEligible(a, feature, tag) &&
         _isActivityProbablyLevelAppropriate(a, feature, tag);
-  }
-
-  List<ActivityTypeEnum> get eligibleActivityTypes {
-    final List<ActivityTypeEnum> eligibleActivityTypes = [];
-
-    if (!lemma.saveVocab) {
-      return eligibleActivityTypes;
-    }
-
-    for (final type in ActivityTypeEnum.values) {
-      if (shouldDoActivity(a: type, feature: null, tag: null)) {
-        eligibleActivityTypes.add(type);
-      }
-    }
-
-    return eligibleActivityTypes;
   }
 
   ConstructUses get vocabConstruct =>
@@ -576,14 +558,6 @@ class PangeaToken {
       .where((construct) => construct != null)
       .cast<ConstructUses>()
       .toList();
-
-  Map<String, dynamic> toServerChoiceTokenWithXP() {
-    return {
-      'token': toJson(),
-      'constructs_with_xp': constructs.map((e) => e.toJson()).toList(),
-      'target_types': eligibleActivityTypes.map((e) => e.string).toList(),
-    };
-  }
 
   Future<List<String>> getEmojiChoices() => LemmaInfoRepo.get(
         LemmaInfoRequest(
