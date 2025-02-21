@@ -47,12 +47,6 @@ class SettingsLearningController extends State<SettingsLearning> {
       setState(() {
         languageMatchError = L10n.of(context).noIdenticalLanguages;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(L10n.of(context).noIdenticalLanguages),
-          backgroundColor: Theme.of(context).colorScheme.primary,
-        ),
-      );
       return;
     }
 

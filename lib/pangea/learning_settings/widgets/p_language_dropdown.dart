@@ -173,21 +173,24 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
         ),
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: widget.error == null
-              ? const SizedBox.shrink()
-              : Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                    vertical: 5,
-                  ),
-                  child: Text(
-                    widget.error!,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.error,
-                      fontSize: 12,
+          child: SizedBox(
+            height: 26,
+            child: widget.error == null
+                ? null
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 5,
+                    ),
+                    child: Text(
+                      widget.error!,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.error,
+                        fontSize: 12,
+                      ),
                     ),
                   ),
-                ),
+          ),
         ),
       ],
     );
