@@ -10,7 +10,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 //import 'package:get_storage/get_storage.dart';
 
-
 //if on home with classcode in url and not logged in, then save it soemhow and after llogin, join class automatically
 //if on home with classcode in url and logged in, then join class automatically
 class JoinClassWithLink extends StatefulWidget {

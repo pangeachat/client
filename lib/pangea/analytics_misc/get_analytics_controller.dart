@@ -23,7 +23,6 @@ import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 
 //import 'package:get_storage/get_storage.dart';
 
-
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
   // Storage initalization
