@@ -61,26 +61,39 @@ class SettingsLearningView extends StatelessWidget {
                             spacing: 16.0,
                             children: [
                               PLanguageDropdown(
-                                onChange: (lang) => controller.setSelectedLanguage(
+                                onChange: (lang) =>
+                                    controller.setSelectedLanguage(
                                   sourceLanguage: lang,
                                 ),
-                                initialLanguage: controller.selectedSourceLanguage ?? LanguageModel.unknown,
-                                languages: MatrixState.pangeaController.pLanguageStore.baseOptions,
+                                initialLanguage:
+                                    controller.selectedSourceLanguage ??
+                                        LanguageModel.unknown,
+                                languages: MatrixState.pangeaController
+                                    .pLanguageStore.baseOptions,
                                 isL2List: false,
                                 decorationText: L10n.of(context).myBaseLanguage,
-                                error: controller.languageMatchError != null ? '' : null,
-                                backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
+                                error: controller.languageMatchError != null
+                                    ? ''
+                                    : null,
+                                backgroundColor: Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHigh,
                               ),
                               PLanguageDropdown(
-                                onChange: (lang) => controller.setSelectedLanguage(
+                                onChange: (lang) =>
+                                    controller.setSelectedLanguage(
                                   targetLanguage: lang,
                                 ),
-                                initialLanguage: controller.selectedTargetLanguage,
-                                languages: MatrixState.pangeaController.pLanguageStore.targetOptions,
+                                initialLanguage:
+                                    controller.selectedTargetLanguage,
+                                languages: MatrixState.pangeaController
+                                    .pLanguageStore.targetOptions,
                                 isL2List: true,
                                 decorationText: L10n.of(context).iWantToLearn,
                                 error: controller.languageMatchError,
-                                backgroundColor: Theme.of(context).colorScheme.surfaceContainerHigh,
+                                backgroundColor: Theme.of(context)
+                                    .colorScheme
+                                    .surfaceContainerHigh,
                               ),
                               CountryPickerDropdown(controller),
                               LanguageLevelDropdown(
