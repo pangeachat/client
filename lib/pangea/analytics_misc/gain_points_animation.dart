@@ -3,12 +3,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 class PointsGainedAnimation extends StatefulWidget {
   final Color? gainColor;
@@ -80,7 +81,8 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
     ).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: const Interval(0.4, 1.0, curve: Curves.easeOut),  // Starts fading 20% into the animation
+        curve: const Interval(0.4, 1.0,
+            curve: Curves.easeOut), // Starts fading 20% into the animation
       ),
     );
 
@@ -167,14 +169,14 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
     );
 
     final vocabWidget = Icon(
-      Symbols.dictionary,  
+      Symbols.dictionary,
       size: 24,
       color: textColor,
     );
 
     return SlideTransition(
       position: _offsetAnimation,
-      child: IgnorePointer(    
+      child: IgnorePointer(
         ignoring: _controller.isAnimating,
         child: Stack(
           children: List.generate(_addedPoints!.abs(), (index) {
