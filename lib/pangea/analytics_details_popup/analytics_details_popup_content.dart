@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -11,7 +12,6 @@ import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class AnalyticsDetailsViewContent extends StatelessWidget {
   final Widget title;
@@ -48,7 +48,8 @@ class AnalyticsDetailsViewContent extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: CachedNetworkImage(
-              imageUrl: "${AppConfig.assetsBaseURL}/${AnalyticsConstants.popupDividerFileName}",
+              imageUrl:
+                  "${AppConfig.assetsBaseURL}/${AnalyticsConstants.popupDividerFileName}",
               placeholder: (context, url) => const CircularProgressIndicator(),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),

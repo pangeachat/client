@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_details_view.dart';
@@ -10,7 +12,6 @@ import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class AnalyticsPopupWrapper extends StatefulWidget {
   const AnalyticsPopupWrapper({
@@ -71,10 +72,13 @@ class AnalyticsPopupWrapperState extends State<AnalyticsPopupWrapper> {
                 width: 30.0,
                 child: InkWell(
                   child: CachedNetworkImage(
-                    imageUrl: '${AppConfig.assetsBaseURL}/${AnalyticsConstants.vocabIconFileName}',
-                    placeholder: (context, url) => const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
-                    ),
+                    imageUrl:
+                        '${AppConfig.assetsBaseURL}/${AnalyticsConstants.vocabIconFileName}',
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                  ),
                   onTap: () => setState(() {
                     localView = ConstructTypeEnum.vocab;
                     localConstructZoom = null;
@@ -89,9 +93,12 @@ class AnalyticsPopupWrapperState extends State<AnalyticsPopupWrapper> {
                 width: 30.0,
                 child: InkWell(
                   child: CachedNetworkImage(
-                    imageUrl: '${AppConfig.assetsBaseURL}/${AnalyticsConstants.morphIconFileName}',
-                    placeholder: (context, url) => const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    imageUrl:
+                        '${AppConfig.assetsBaseURL}/${AnalyticsConstants.morphIconFileName}',
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                   onTap: () => setState(() {
                     localView = ConstructTypeEnum.morph;
