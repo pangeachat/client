@@ -42,7 +42,7 @@ class _JoinClassWithLinkState extends State<JoinClassWithLink> {
         );
         return;
       }
-      await Storage.linkBox.write(
+      await MatrixState.pangeaController.classController.linkBox.write(
         PLocalKey.cachedClassCodeToJoin,
         classCode,
       );

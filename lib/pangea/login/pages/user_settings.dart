@@ -19,8 +19,7 @@ import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-
+//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 //import 'package:get_storage/get_storage.dart';
 
 class UserSettingsPage extends StatefulWidget {
@@ -87,7 +86,7 @@ class UserSettingsState extends State<UserSettingsPage> {
   }
 
   bool get isSSOSignup {
-    final loginTypeEntry = Storage.loginBox.read(PLocalKey.loginType);
+    final loginTypeEntry = MatrixState.pangeaController.userController.loginBox.read(PLocalKey.loginType);
     return loginTypeEntry is String && loginTypeEntry == 'sso';
   }
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-//import 'package:get_storage/get_storage.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class CustomizedSvg extends StatelessWidget {
   /// URL of the SVG file
@@ -18,6 +18,10 @@ class CustomizedSvg extends StatelessWidget {
   /// Icon to show in case of error
   final Widget errorIcon;
 
+  // Storage Initalization
+  static final GetStorage _svgStorage = GetStorage('svg_cache');
+
+
   const CustomizedSvg({
     super.key,
     required this.svgUrl,
@@ -26,7 +30,7 @@ class CustomizedSvg extends StatelessWidget {
   });
 
   Future<String?> _fetchSvg() async {
-    final cachedSvgEntry = Storage.svgStorage.read(svgUrl);
+    final cachedSvgEntry = _svgStorage.read(svgUrl);
     if (cachedSvgEntry != null && cachedSvgEntry is Map<String, dynamic>) {
       final cachedSvg = cachedSvgEntry['svg'] as String?;
       final timestamp = cachedSvgEntry['timestamp'] as int?;
@@ -52,7 +56,7 @@ class CustomizedSvg extends StatelessWidget {
           "svgUrl": svgUrl,
         },
       );
-      await Storage.svgStorage.write(
+      await _svgStorage.write(
         svgUrl,
         {'timestamp': DateTime.now().millisecondsSinceEpoch},
       );
@@ -60,7 +64,7 @@ class CustomizedSvg extends StatelessWidget {
     }
 
     final String svgContent = response.body;
-    await Storage.svgStorage.write(svgUrl, {
+    await _svgStorage.write(svgUrl, {
       'svg': svgContent,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
     });

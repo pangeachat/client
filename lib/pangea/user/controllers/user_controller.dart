@@ -13,11 +13,17 @@ import 'package:fluffychat/pangea/learning_settings/constants/language_constants
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/user/models/profile_model.dart';
 import '../models/user_model.dart';
+import 'package:get_storage/get_storage.dart';
+
 
 //PLocalKey.loginType
 
 /// Controller that manages saving and reading of user/profile information
 class UserController extends BaseController {
+
+  // Storage Initialization
+  final GetStorage loginBox = GetStorage("login_storage");
+
   late PangeaController _pangeaController;
   UserController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;

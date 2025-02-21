@@ -21,9 +21,13 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AppVersionUtil {
+  // Storage Initialization
+  static final GetStorage _versionBox = GetStorage("version_storage");
+
   static Future<AppVersionResponse> _getAppVersion(
     String accessToken,
   ) async {
@@ -150,7 +154,7 @@ class AppVersionUtil {
     );
 
     if (!mandatoryUpdate && dialogResponse != OkCancelResult.ok) {
-      await Storage.versionBox.write(
+      await _versionBox.write(
         PLocalKey.showedUpdateDialog,
         DateTime.now().toIso8601String(),
       );
@@ -212,7 +216,7 @@ class AppVersionUtil {
   }
 
   static DateTime? get showedUpdateDialog {
-    final entry = Storage.versionBox.read(PLocalKey.showedUpdateDialog);
+    final entry = _versionBox.read(PLocalKey.showedUpdateDialog);
     if (entry == null) return null;
     try {
       return DateTime.parse(entry);

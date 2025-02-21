@@ -18,7 +18,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../utils/platform_infos.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 
 class Login extends StatefulWidget {
@@ -201,7 +201,7 @@ class LoginController extends State<Login> {
         },
         // Pangea#
       );
-      Storage.loginBox.write(PLocalKey.loginType, 'password');
+      MatrixState.pangeaController.userController.loginBox.write(PLocalKey.loginType, 'password');
       // #Pangea
       GoogleAnalytics.login("pangea", loginRes.userId);
       // Pangea#

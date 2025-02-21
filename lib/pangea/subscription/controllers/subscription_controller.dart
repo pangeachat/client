@@ -28,7 +28,9 @@ import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:get_storage/get_storage.dart';
+
 
 enum SubscriptionStatus {
   subscribed,
@@ -85,6 +87,9 @@ class SubscriptionController extends BaseController {
     await initialize();
   }
 
+  // Storage Initialization
+  final GetStorage subscriptionBox = GetStorage("subscription_storage");
+
   Future<void> _initialize() async {
     try {
       if (_userID == null) {
@@ -125,9 +130,9 @@ class SubscriptionController extends BaseController {
         );
       } else {
         final bool? beganWebPayment =
-            Storage.subscriptionBox.read(PLocalKey.beganWebPayment);
+            subscriptionBox.read(PLocalKey.beganWebPayment);
         if (beganWebPayment ?? false) {
-          await Storage.subscriptionBox.remove(
+          await subscriptionBox.remove(
             PLocalKey.beganWebPayment,
           );
           if (isSubscribed) {
@@ -174,7 +179,7 @@ class SubscriptionController extends BaseController {
           selectedSubscription.duration!,
           isPromo: isPromo,
         );
-        await Storage.subscriptionBox.write(
+        await subscriptionBox.write(
           PLocalKey.beganWebPayment,
           true,
         );
@@ -275,7 +280,7 @@ class SubscriptionController extends BaseController {
           : SubscriptionStatus.dimissedPaywall;
 
   DateTime? get _lastDismissedPaywall {
-    final lastDismissed = Storage.subscriptionBox.read(
+    final lastDismissed = subscriptionBox.read(
       PLocalKey.dismissedPaywall,
     );
     if (lastDismissed == null) return null;
@@ -283,7 +288,7 @@ class SubscriptionController extends BaseController {
   }
 
   int? get _paywallBackoff {
-    final backoff = Storage.subscriptionBox.read(
+    final backoff = subscriptionBox.read(
       PLocalKey.paywallBackoff,
     );
     if (backoff == null) return null;
@@ -300,18 +305,18 @@ class SubscriptionController extends BaseController {
   }
 
   void dismissPaywall() async {
-    await Storage.subscriptionBox.write(
+    await subscriptionBox.write(
       PLocalKey.dismissedPaywall,
       DateTime.now().toString(),
     );
 
     if (_paywallBackoff == null) {
-      await Storage.subscriptionBox.write(
+      await subscriptionBox.write(
         PLocalKey.paywallBackoff,
         1,
       );
     } else {
-      await Storage.subscriptionBox.write(
+      await subscriptionBox.write(
         PLocalKey.paywallBackoff,
         _paywallBackoff! + 1,
       );

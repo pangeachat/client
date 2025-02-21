@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
-//import 'package:get_storage/get_storage.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -14,7 +14,7 @@ import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_models.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../common/network/requests.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class _APICallCacheItem {
   final DateTime time;
@@ -30,8 +30,11 @@ class MorphsRepo {
   static final shortTermCache = <String, _APICallCacheItem>{};
   static const int _cacheDurationMinutes = 1;
 
+  // Storage Initalization
+  static final GetStorage _morphsStorage = GetStorage('morphs_storage');
+
   static void set(String languageCode, MorphFeaturesAndTags response) {
-    Storage.morphsStorage.write(
+    _morphsStorage.write(
       languageCode,
       response.toJson(),
     );
@@ -87,7 +90,7 @@ class MorphsRepo {
     final langCodeShort = language.langCodeShort;
 
     // check if we have a cached morphs for this language code
-    final cachedJson = Storage.morphsStorage.read(langCodeShort);
+    final cachedJson = _morphsStorage.read(langCodeShort);
     if (cachedJson != null) {
       return MorphsRepo.fromJson(cachedJson);
     }

@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
-//import 'package:get_storage/get_storage.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -15,19 +15,23 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../common/config/environment.dart';
 import '../common/network/requests.dart';
 
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class LemmaInfoRepo {
 
+  // Storage Initalization
+  static final GetStorage _lemmaStorage = GetStorage('lemma_storage');
+
+
   static void set(LemmaInfoRequest request, LemmaInfoResponse response) {
-    Storage.lemmaStorage.write(request.storageKey, response.toJson());
+    _lemmaStorage.write(request.storageKey, response.toJson());
   }
 
   static Future<LemmaInfoResponse> get(
     LemmaInfoRequest request, [
     String? feedback,
   ]) async {
-    final cachedJson = Storage.lemmaStorage.read(request.storageKey);
+    final cachedJson = _lemmaStorage.read(request.storageKey);
 
     if (cachedJson != null) {
       final cached = LemmaInfoResponse.fromJson(cachedJson);

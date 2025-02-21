@@ -15,7 +15,7 @@ import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 
 Future<void> pangeaSSOLoginAction(
@@ -68,6 +68,6 @@ Future<void> pangeaSSOLoginAction(
     initialDeviceDisplayName: PlatformInfos.clientName,
   );
 
-  Storage.loginBox.write(PLocalKey.loginType, 'sso');
+  MatrixState.pangeaController.userController.loginBox.write(PLocalKey.loginType, 'sso');
   GoogleAnalytics.login(provider.name!, loginRes.userId);
 }

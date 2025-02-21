@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-//import 'package:get_storage/get_storage.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -13,7 +13,7 @@ import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+//import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 
 class _APICallCacheItem {
   final DateTime time;
@@ -27,8 +27,11 @@ class MorphInfoRepo {
   static final shortTermCache = <String, _APICallCacheItem>{};
   static const int _cacheDurationMinutes = 1;
 
+  // Storage Initalization
+  static final GetStorage _morphMeaningStorage = GetStorage('morph_meaning_storage');
+
   static void set(MorphInfoRequest request, MorphInfoResponse response) {
-    Storage.morphMeaningStorage.write(request.storageKey, response.toJson());
+    _morphMeaningStorage.write(request.storageKey, response.toJson());
   }
 
   static Future<MorphInfoResponse> _fetch(MorphInfoRequest request) async {
@@ -59,7 +62,7 @@ class MorphInfoRepo {
     request.userL1 == request.userL1.split('-').first;
     request.userL2 == request.userL2.split('-').first;
 
-    final cachedJson = Storage.morphMeaningStorage.read(request.storageKey);
+    final cachedJson = _morphMeaningStorage.read(request.storageKey);
     if (cachedJson != null) {
       return MorphInfoResponse.fromJson(cachedJson);
     }

@@ -42,7 +42,6 @@ import '../../utils/voip/callkeep_manager.dart';
 import '../../widgets/fluffy_chat_app.dart';
 import '../../widgets/matrix.dart';
 
-import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
@@ -513,7 +512,7 @@ class ChatListController extends State<ChatList>
           );
 
           // #Pangea
-          final String? justInputtedCode = Storage.chatBox.read(
+          final String? justInputtedCode = MatrixState.pangeaController.classController.chatBox.read(
             PLocalKey.justInputtedCode,
           );
           // Pangea#
