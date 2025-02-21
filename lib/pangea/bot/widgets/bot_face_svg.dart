@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 enum BotExpression { gold, nonGold, addled, idle, surprised }
 
@@ -122,7 +123,11 @@ class BotFaceState extends State<BotFace> {
               artboard: _artboard!,
               fit: BoxFit.cover,
             )
-          : Image.network(svgURL),
+          : CachedNetworkImage(
+              imageUrl: svgURL,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
     );
   }
 }
