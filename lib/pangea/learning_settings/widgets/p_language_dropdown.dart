@@ -81,6 +81,8 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
 
     sortedLanguages.sort((a, b) => sortLanguages(a, b));
 
+    final bool hasError = widget.error != null || widget.hasError;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -98,14 +100,14 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(36.0),
             ),
-            enabledBorder: widget.error != null
+            enabledBorder: hasError
                 ? OutlineInputBorder(
                     borderRadius: BorderRadius.circular(36.0),
                     borderSide:
                         BorderSide(color: Theme.of(context).colorScheme.error),
                   )
                 : null,
-            focusedBorder: widget.error != null
+            focusedBorder: hasError
                 ? OutlineInputBorder(
                     borderRadius: BorderRadius.circular(36.0),
                     borderSide: BorderSide(
@@ -173,24 +175,21 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
         ),
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: SizedBox(
-            height: 26,
-            child: widget.error == null
-                ? null
-                : Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 5,
-                    ),
-                    child: Text(
-                      widget.error!,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
-                        fontSize: 12,
-                      ),
+          child: widget.error == null
+              ? const SizedBox.shrink()
+              : Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 5,
+                  ),
+                  child: Text(
+                    widget.error!,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                      fontSize: 12,
                     ),
                   ),
-          ),
+                ),
         ),
       ],
     );

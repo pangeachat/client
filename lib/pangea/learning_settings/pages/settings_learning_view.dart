@@ -72,9 +72,7 @@ class SettingsLearningView extends StatelessWidget {
                                     .pLanguageStore.baseOptions,
                                 isL2List: false,
                                 decorationText: L10n.of(context).myBaseLanguage,
-                                error: controller.languageMatchError != null
-                                    ? ''
-                                    : null,
+                                hasError: controller.languageMatchError != null,
                                 backgroundColor: Theme.of(context)
                                     .colorScheme
                                     .surfaceContainerHigh,

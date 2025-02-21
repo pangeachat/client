@@ -43,7 +43,8 @@ class SettingsLearningController extends State<SettingsLearning> {
   }
 
   Future<void> submit() async {
-    if (selectedSourceLanguage?.langCode == selectedTargetLanguage?.langCode) {
+    if (selectedSourceLanguage?.langCodeShort ==
+        selectedTargetLanguage?.langCodeShort) {
       setState(() {
         languageMatchError = L10n.of(context).noIdenticalLanguages;
       });
