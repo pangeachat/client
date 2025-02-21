@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class PointsGainedAnimation extends StatefulWidget {
   final Color? gainColor;
@@ -17,7 +18,7 @@ class PointsGainedAnimation extends StatefulWidget {
   const PointsGainedAnimation({
     super.key,
     required this.origin,
-    this.gainColor = AppConfig.gold,
+    this.gainColor = AppConfig.success,
     this.loseColor = Colors.red,
   });
 
@@ -33,6 +34,7 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
   final List<Animation<double>> _swayAnimation = [];
   final List<double> _randomSwayOffset = [];
   final List<Offset> _particleTrajectories = [];
+  late Animation<double> _bookFadeAnimation;
 
   StreamSubscription? _pointsSubscription;
   int? get _prevXP =>
@@ -68,6 +70,17 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
       CurvedAnimation(
         parent: _controller,
         curve: Curves.easeOut,
+      ),
+    );
+
+    // New fade animation for book that starts fading later
+    _bookFadeAnimation = Tween<double>(
+      begin: 1.0,
+      end: 0.0,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.4, 1.0, curve: Curves.easeOut),  // Starts fading 20% into the animation
       ),
     );
 
@@ -153,30 +166,51 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
       ),
     );
 
+    final vocabWidget = Icon(
+      Symbols.dictionary,  
+      size: 24,
+      color: textColor,
+    );
+
     return SlideTransition(
       position: _offsetAnimation,
-      child: FadeTransition(
-        opacity: _fadeAnimation,
-        child: IgnorePointer(
-          ignoring: _controller.isAnimating,
-          child: Stack(
-            children: List.generate(_addedPoints!.abs(), (index) {
-              return AnimatedBuilder(
-                animation: _controller,
-                builder: (context, child) {
-                  final progress = _controller.value;
-                  final trajectory = _particleTrajectories[index];
-                  return Transform.translate(
-                    offset: Offset(
-                      trajectory.dx * pow(progress, 2),
-                      trajectory.dy * pow(progress, 2),
-                    ),
-                    child: plusWidget,
-                  );
-                },
-              );
-            }),
-          ),
+      child: IgnorePointer(    
+        ignoring: _controller.isAnimating,
+        child: Stack(
+          children: List.generate(_addedPoints!.abs(), (index) {
+            return AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                final progress = _controller.value;
+                final trajectory = _particleTrajectories[index];
+                return Transform.translate(
+                  offset: Offset(
+                    trajectory.dx * pow(progress, 2),
+                    trajectory.dy * pow(progress, 2),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      FadeTransition(
+                        opacity: _fadeAnimation,
+                        child: Transform.translate(
+                          offset: Offset(
+                            trajectory.dx * (progress * 1.3),
+                            trajectory.dy * (progress * 1.3),
+                          ),
+                          child: plusWidget,
+                        ),
+                      ),
+                      FadeTransition(
+                        opacity: _bookFadeAnimation,
+                        child: vocabWidget,
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          }),
         ),
       ),
     );
