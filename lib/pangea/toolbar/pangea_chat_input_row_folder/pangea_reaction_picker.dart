@@ -21,6 +21,20 @@ class PangeaReactionsPicker extends StatelessWidget {
 
   PangeaToken? get token => overlayController?.selectedToken;
 
+  Iterable<Event> get allReactionEvents => controller.selectedEvents.first
+        .aggregatedEvents(
+          controller.timeline!,
+          RelationshipTypes.reaction,
+        )
+        .where(
+          (event) =>
+              event.senderId == event.room.client.userID &&
+              event.type == 'm.reaction',
+        );
+
+  // not used reactions
+  Iterable<Event> notUsed 
+
   @override
   Widget build(BuildContext context) {
     if (controller.showEmojiPicker) return const SizedBox.shrink();
@@ -33,16 +47,6 @@ class PangeaReactionsPicker extends StatelessWidget {
       return const SizedBox.shrink();
     }
     final emojis = List<String>.from(AppEmojis.emojis);
-    final allReactionEvents = controller.selectedEvents.first
-        .aggregatedEvents(
-          controller.timeline!,
-          RelationshipTypes.reaction,
-        )
-        .where(
-          (event) =>
-              event.senderId == event.room.client.userID &&
-              event.type == 'm.reaction',
-        );
 
     for (final event in allReactionEvents) {
       try {
