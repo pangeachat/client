@@ -1,26 +1,30 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class LemmaMeaningWidget extends StatefulWidget {
   final PangeaToken token;
   final String langCode;
+  final MessageOverlayController controller;
 
   const LemmaMeaningWidget({
     super.key,
     required this.token,
     required this.langCode,
+    required this.controller,
   });
 
   @override
@@ -75,6 +79,20 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.token.shouldDoActivity(
+      a: ActivityTypeEnum.wordMeaning,
+      feature: null,
+      tag: null,
+    )) {
+      return IconButton(
+        onPressed: () {
+          // TODO: it would be better to explicitly set to wordMeaningChoice here
+          widget.controller.updateToolbarMode(MessageMode.wordZoom);
+        },
+        icon: const Icon(Symbols.dictionary),
+      );
+    }
+
     return FutureBuilder<LemmaInfoResponse>(
       future: _lemmaMeaning(),
       builder: (context, snapshot) {

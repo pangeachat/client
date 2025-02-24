@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/morphs/morphological_list_item.dart';
+import 'package:flutter/material.dart';
 
 class ActivityMorph {
   final String morphFeature;
@@ -52,25 +51,28 @@ class MorphologicalListWidget extends StatelessWidget {
         return 1;
       }
 
-      if (a.revealed && !b.revealed) {
-        return -1;
-      } else if (!a.revealed && b.revealed) {
-        return 1;
-      }
+      // if (a.revealed && !b.revealed) {
+      //   return -1;
+      // } else if (!a.revealed && b.revealed) {
+      //   return 1;
+      // }
 
       return a.morphFeature.compareTo(b.morphFeature);
     });
 
-    final lastRevealedIndex =
-        activityMorphs.lastIndexWhere((morph) => morph.revealed);
+    // logic for hiding some morphs
+    // final lastRevealedIndex =
+    //     activityMorphs.lastIndexWhere((morph) => morph.revealed);
 
-    if (lastRevealedIndex == -1) {
-      return activityMorphs;
-    } else if (lastRevealedIndex >= (activityMorphs.length - 1)) {
-      return activityMorphs;
-    } else {
-      return activityMorphs.take(lastRevealedIndex + 2).toList();
-    }
+    // if (lastRevealedIndex == -1) {
+    //   return activityMorphs;
+    // } else if (lastRevealedIndex >= (activityMorphs.length - 1)) {
+    //   return activityMorphs;
+    // } else {
+    //   return activityMorphs.take(lastRevealedIndex + 2).toList();
+    // }
+
+    return activityMorphs;
   }
 
   @override

@@ -1,17 +1,17 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/morph_categories_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/models/message_activity_request.dart';
 import 'package:fluffychat/pangea/toolbar/models/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
 
 typedef MorphActivitySequence = Map<String, POSActivitySequence>;
 
@@ -78,6 +78,9 @@ class MorphActivityGenerator {
 
     final List<String> distractors =
         token.morphActivityDistractors(morphFeature, morphTag);
+
+    debugger(when: kDebugMode && distractors.length < 3);
+    final feature = MorphsRepo.cached;
 
     return MessageActivityResponse(
       activity: PracticeActivityModel(

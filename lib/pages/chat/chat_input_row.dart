@@ -3,7 +3,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/send_button.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/start_igc_button.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/toolbar/pangea_chat_input_row_folder/pangea_reaction_picker.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/reading_assistance_input_bar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -151,7 +151,7 @@ class ChatInputRow extends StatelessWidget {
                     //             ),
                     //           )
                     //     : const SizedBox.shrink(),
-                    PangeaReactionsPicker(
+                    ReadingAssistanceInputBar(
                       controller,
                       overlayController,
                     ),

@@ -1,6 +1,8 @@
-import 'package:collection/collection.dart';
+import 'dart:developer';
 
+import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:flutter/foundation.dart';
 
 class MorphFeature {
   final String feature;
@@ -53,11 +55,24 @@ class MorphFeaturesAndTags {
   }
 
   /// Returns the tags for a given feature
-  List<String> getAllTags(String feature) =>
-      features
-          .firstWhereOrNull((element) => element.feature == feature)
-          ?.tags ??
-      [];
+  List<String> getAllTags(String feature) {
+    final tags = features
+        .firstWhereOrNull(
+          (element) => element.feature.toLowerCase() == feature.toLowerCase(),
+        )
+        ?.tags;
+    if (tags == null) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(
+        m: "Morph construct category $feature not found in morph categories and labels",
+        data: {
+          "feature": feature,
+        },
+      );
+      return [];
+    }
+    return tags;
+  }
 
   /// Returns the display tags for a given feature
   /// i.e. minus punc, space, x, etc
