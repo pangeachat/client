@@ -2757,35 +2757,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatCapacity() {
       return "Gi\u1edbi h\u1ea1n th\xe0nh vi\xean tr\xf2 chuy\u1ec7n";
     },
-    get$spaceCapacity() {
-      return "Gi\u1edbi h\u1ea1n th\xe0nh vi\xean kh\xf4ng gian";
-    },
     get$roomFull() {
       return "Ph\xf2ng \u0111\xe3 \u0111\u1ea1t gi\u1edbi h\u1ea1n.";
     },
     get$chatCapacityHasBeenChanged() {
       return "Gi\u1edbi h\u1ea1n th\xe0nh vi\xean tr\xf2 chuy\u1ec7n \u0111\xe3 thay \u0111\u1ed5i";
     },
-    get$spaceCapacityHasBeenChanged() {
-      return "Gi\u1edbi h\u1ea1n th\xe0nh vi\xean kh\xf4ng gian \u0111\xe3 thay \u0111\u1ed5i";
-    },
     get$chatCapacitySetTooLow() {
-      return string$.Kh_ng_;
-    },
-    get$spaceCapacitySetTooLow() {
-      return string$.Kh_ng_;
+      return "Kh\xf4ng th\u1ec3 \u0111\u1eb7t gi\u1edbi h\u1ea1n th\xe0nh vi\xean th\u1ea5p h\u01a1n s\u1ed1 th\xe0nh vi\xean kh\xf4ng ph\u1ea3i qu\u1ea3n tr\u1ecb hi\u1ec7n t\u1ea1i.";
     },
     get$chatCapacityExplanation() {
       return "H\u1ea1n ch\u1ebf s\u1ed1 l\u01b0\u1ee3ng ng\u01b0\u1eddi d\xf9ng th\u01b0\u1eddng (kh\xf4ng ph\u1ea3i qu\u1ea3n tr\u1ecb vi\xean) c\xf3 th\u1ec3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n.";
-    },
-    get$spaceCapacityExplanation() {
-      return "H\u1ea1n ch\u1ebf s\u1ed1 l\u01b0\u1ee3ng ng\u01b0\u1eddi d\xf9ng th\u01b0\u1eddng (kh\xf4ng ph\u1ea3i qu\u1ea3n tr\u1ecb vi\xean) c\xf3 th\u1ec3 tham gia kh\xf4ng gian.";
-    },
-    get$chatExceedsCapacity() {
-      return "Cu\u1ed9c tr\xf2 chuy\u1ec7n v\u01b0\u1ee3t qu\xe1 gi\u1edbi h\u1ea1n th\xe0nh vi\xean.";
-    },
-    get$spaceExceedsCapacity() {
-      return "Kh\xf4ng gian v\u01b0\u1ee3t qu\xe1 gi\u1edbi h\u1ea1n th\xe0nh vi\xean.";
     },
     get$tooManyRequest() {
       return "Qu\xe1 nhi\u1ec1u y\xeau c\u1ea7u, vui l\xf2ng th\u1eed l\u1ea1i sau.";
@@ -4204,14 +4186,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     _inherit(A.L10nVi, C.L10n);
   })();
   B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nVi":{"L10n":[]}}'));
-  var string$ = {
-    Kh_ng_: "Kh\xf4ng th\u1ec3 \u0111\u1eb7t gi\u1edbi h\u1ea1n th\xe0nh vi\xean th\u1ea5p h\u01a1n s\u1ed1 th\xe0nh vi\xean kh\xf4ng ph\u1ea3i qu\u1ea3n tr\u1ecb hi\u1ec7n t\u1ea1i."
-  };
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "JfSoeeQReT2qZKeVPjPrbrPaeE8=");
+})($__dart_deferred_initializers__, "ZLfUe2EpzwXvwTheBOzI5MqOt9Q=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map

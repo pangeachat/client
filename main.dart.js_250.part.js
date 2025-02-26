@@ -2757,35 +2757,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatCapacity() {
       return "Chat capacity";
     },
-    get$spaceCapacity() {
-      return "Space capacity";
-    },
     get$roomFull() {
       return "This room is already at capacity.";
     },
     get$chatCapacityHasBeenChanged() {
       return "Chat capacity changed";
     },
-    get$spaceCapacityHasBeenChanged() {
-      return "Space capacity changed";
-    },
     get$chatCapacitySetTooLow() {
-      return "Chat capacity cannot be set below the current number of non-admins.";
-    },
-    get$spaceCapacitySetTooLow() {
-      return "Space capacity cannot be set below the current number of non-admins.";
+      return "Chat capacity cannot be set below the current number of members.";
     },
     get$chatCapacityExplanation() {
-      return "Chat capacity limits the number of non-admins allowed in a chat.";
-    },
-    get$spaceCapacityExplanation() {
-      return "Space capacity limits the number of non-admins allowed in a space.";
-    },
-    get$chatExceedsCapacity() {
-      return "This chat exceeds its capacity.";
-    },
-    get$spaceExceedsCapacity() {
-      return "This space exceeds its capacity.";
+      return "Chat capacity limits the number of members allowed in a chat.";
     },
     get$tooManyRequest() {
       return "Too many request, please try again later.";
@@ -4209,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_250", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "qVcsR2/WK+5PMDpgdO4vrx6047g=");
+})($__dart_deferred_initializers__, "tSrDU0EUW4y2gBdaFWA+WW4rMlQ=");
 ;
 //# sourceMappingURL=main.dart.js_250.part.js.map

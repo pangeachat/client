@@ -2758,35 +2758,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatCapacity() {
       return "Capacidad de chat";
     },
-    get$spaceCapacity() {
-      return "Capacidad espacial";
-    },
     get$roomFull() {
       return "Esta sala ya est\xe1 al l\xedmite de su capacidad.";
     },
     get$chatCapacityHasBeenChanged() {
       return "Capacidad de chat modificada";
     },
-    get$spaceCapacityHasBeenChanged() {
-      return "Capacidad espacial modificada";
-    },
     get$chatCapacitySetTooLow() {
       return "La capacidad del chat no se puede establecer por debajo del n\xfamero actual de no administradores.";
     },
-    get$spaceCapacitySetTooLow() {
-      return "La capacidad de espacio no puede fijarse por debajo del n\xfamero actual de no administradores.";
-    },
     get$chatCapacityExplanation() {
       return "La capacidad del chat limita el n\xfamero de usuarios no administradores permitidos en un chat.";
-    },
-    get$spaceCapacityExplanation() {
-      return "La capacidad del espacio limita el n\xfamero de no administradores permitidos en un espacio.";
-    },
-    get$chatExceedsCapacity() {
-      return "Este chat supera su capacidad.";
-    },
-    get$spaceExceedsCapacity() {
-      return "Este espacio supera su capacidad.";
     },
     get$tooManyRequest() {
       return "Demasiadas solicitudes, por favor int\xe9ntelo m\xe1s tarde.";
@@ -4210,6 +4192,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_196", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "4XNimUycKQYQr/yQ16V40Oa1T7w=");
+})($__dart_deferred_initializers__, "LPliIaILMBlPxssx5RqUGIf4uFM=");
 ;
 //# sourceMappingURL=main.dart.js_196.part.js.map
