@@ -341,6 +341,7 @@ class Choreographer {
     _textController.selection =
         TextSelection.collapsed(offset: _textController.text.length);
     giveInputFocus();
+    tts.stop();
   }
 
   Future<void> onReplacementSelect({
