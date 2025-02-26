@@ -62,7 +62,7 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
     if (_cachedResponse != null) {
       return _cachedResponse!;
     }
-    
+
     final response = await LemmaInfoRepo.get(_request);
     _cachedResponse = response;
     return response;
@@ -71,7 +71,7 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
   void _toggleEditMode(bool value) {
     setState(() {
       _editMode = value;
-      
+
       // Reset the flag when exiting edit mode
       if (!value) {
         _controllerInitialized = false;
@@ -81,32 +81,30 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
 
   Future<void> editLemmaMeaning(String userEdit) async {
     // Truncate to max characters if needed
-    final truncatedEdit = userEdit.length > _maxCharacters 
-        ? userEdit.substring(0, _maxCharacters) 
+    final truncatedEdit = userEdit.length > _maxCharacters
+        ? userEdit.substring(0, _maxCharacters)
         : userEdit;
-        
+
     final originalMeaning = await _lemmaMeaning();
 
     LemmaInfoRepo.set(
       _request,
       LemmaInfoResponse(emoji: originalMeaning.emoji, meaning: truncatedEdit),
     );
-    
+
     // Update the cached response
-    _cachedResponse = LemmaInfoResponse(
-      emoji: originalMeaning.emoji, 
-      meaning: truncatedEdit
-    );
+    _cachedResponse =
+        LemmaInfoResponse(emoji: originalMeaning.emoji, meaning: truncatedEdit);
 
     _toggleEditMode(false);
   }
 
   void _initializeController(String initialText) {
     if (!_controllerInitialized) {
-      final truncatedText = initialText.length > _maxCharacters 
-          ? initialText.substring(0, _maxCharacters) 
+      final truncatedText = initialText.length > _maxCharacters
+          ? initialText.substring(0, _maxCharacters)
           : initialText;
-          
+
       _controller.text = truncatedText;
       _controllerInitialized = true;
     }
@@ -114,7 +112,7 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
 
   Widget _buildEditView(LemmaInfoResponse data) {
     _initializeController(data.meaning);
-    
+
     return Expanded(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -153,11 +151,10 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
               ),
               const SizedBox(width: 10),
               ElevatedButton(
-                onPressed: () =>
-                    _controller.text != data.meaning &&
-                            _controller.text.isNotEmpty
-                        ? editLemmaMeaning(_controller.text)
-                        : null,
+                onPressed: () => _controller.text != data.meaning &&
+                        _controller.text.isNotEmpty
+                    ? editLemmaMeaning(_controller.text)
+                    : null,
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),

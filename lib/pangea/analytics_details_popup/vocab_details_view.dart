@@ -11,16 +11,17 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-//import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
-//import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
-//import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
-//import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+//import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+//import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
+//import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
+//import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 
 /// Displays information about selected lemma, and its usage
 class VocabDetailsView extends StatelessWidget {
@@ -70,7 +71,8 @@ class VocabDetailsView extends StatelessWidget {
 
   /// Get the language code for the current lemma
   String? _getLangCode(BuildContext context) {
-    final lang2 = MatrixState.pangeaController.languageController.userL2?.langCode;
+    final lang2 =
+        MatrixState.pangeaController.languageController.userL2?.langCode;
     if (lang2 == null) {
       debugPrint("No lang2, cannot retrieve definition");
       return null;
@@ -83,7 +85,7 @@ class VocabDetailsView extends StatelessWidget {
     final Color textColor = Theme.of(context).brightness != Brightness.light
         ? _construct.lemmaCategory.color
         : _construct.lemmaCategory.darkColor;
-        
+
     final langCode = _getLangCode(context);
 
     return AnalyticsDetailsViewContent(
@@ -150,31 +152,29 @@ class VocabDetailsView extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Align(
                 alignment: Alignment.topLeft,
-                child: langCode == null 
-                  ? Text(L10n.of(context).meaningNotFound)
-                  : Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          L10n.of(context).meaningSectionHeader,
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge
-                              ?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                        const SizedBox(width: 8),
-                        // Pass the lemma text and form correctly
-                        // The lemma text is in _construct.lemma
-                        // For the form, we use the same value since we don't have access to PangeaToken's form
-                        LemmaMeaningWidget(
-                          text: _construct.lemma,
-                          pos: _construct.category,
-                          langCode: langCode,
-                        ),
-                      ],
-                    ),
+                child: langCode == null
+                    ? Text(L10n.of(context).meaningNotFound)
+                    : Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            L10n.of(context).meaningSectionHeader,
+                            style:
+                                Theme.of(context).textTheme.bodyLarge?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                          ),
+                          const SizedBox(width: 8),
+                          // Pass the lemma text and form correctly
+                          // The lemma text is in _construct.lemma
+                          // For the form, we use the same value since we don't have access to PangeaToken's form
+                          LemmaMeaningWidget(
+                            text: _construct.lemma,
+                            pos: _construct.category,
+                            langCode: langCode,
+                          ),
+                        ],
+                      ),
               ),
             ),
             Padding(
