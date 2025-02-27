@@ -1471,7 +1471,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ch\u1ec9nh s\u1eeda quy\u1ec1n h\u1ea1n tr\xf2 chuy\u1ec7n";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "Type in " + l1 + " or " + l2 + "...";
+      return "G\xf5 b\u1eb1ng " + l1 + " ho\u1eb7c " + l2 + "...";
     },
     get$allCorrect() {
       return "\u0110\xf3 \u0111\xfang l\xe0 c\xe1ch t\xf4i n\xf3i! Hay qu\xe1!";
@@ -3103,7 +3103,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0110\u1ed9ng t\u1eeb nguy\xean m\u1eabu";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Auxiliary";
+      return "Tr\u1ee3 \u0111\u1ed9ng t\u1eeb";
     },
     get$grammarCopyNUMFORMlong() {
       return "D\u1ea1ng ch\u1eef d\xe0i";
@@ -4150,31 +4150,31 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ngh\u0129a";
     },
     chatWith$1(displayname) {
-      return "Group with " + displayname;
+      return "Nh\xf3m v\u1edbi " + displayname;
     },
     get$slightlyOffensive() {
-      return "Slightly offensive";
+      return "H\u01a1i x\xfac ph\u1ea1m";
     },
     get$clickOnEmailLink() {
-      return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
+      return "Vui l\xf2ng nh\u1ea5p v\xe0o li\xean k\u1ebft trong email v\xe0 sau \u0111\xf3 ti\u1ebfp t\u1ee5c. Trong m\u1ed9t s\u1ed1 tr\u01b0\u1eddng h\u1ee3p hi\u1ebfm hoi, email c\xf3 th\u1ec3 b\u1ecb g\u1eedi v\xe0o th\u01b0 r\xe1c ho\u1eb7c m\u1ea5t \u0111\u1ebfn 5 ph\xfat \u0111\u1ec3 \u0111\u1ebfn n\u01a1i.";
     },
     get$whoIsAllowedToJoinThisChat() {
-      return "Who is allowed to join this chat";
+      return "Ai \u0111\u01b0\u1ee3c ph\xe9p tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y";
     },
     get$dontForgetPassword() {
-      return "Don't forget your password!";
+      return "\u0110\u1eebng qu\xean m\u1eadt kh\u1ea9u c\u1ee7a b\u1ea1n!";
     },
     get$enableAutocorrectToolName() {
-      return "Enable autocorrect";
+      return "B\u1eadt t\u1ef1 \u0111\u1ed9ng s\u1eeda";
     },
     get$enableAutocorrectDescription() {
-      return "Use your keyboard's built-in autocorrect when typing messages";
+      return "S\u1eed d\u1ee5ng t\xednh n\u0103ng t\u1ef1 \u0111\u1ed9ng s\u1eeda t\xedch h\u1ee3p c\u1ee7a b\xe0n ph\xedm khi g\xf5 tin nh\u1eafn";
     },
     get$ttsDisbledTitle() {
-      return "Text-to-speech disabled";
+      return "T\xednh n\u0103ng chuy\u1ec3n v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i \u0111\xe3 b\u1ecb t\u1eaft";
     },
     get$ttsDisabledBody() {
-      return "You can enable text-to-speech in your learning settings";
+      return "B\u1ea1n c\xf3 th\u1ec3 b\u1eadt t\xednh n\u0103ng chuy\u1ec3n v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i trong c\xe0i \u0111\u1eb7t h\u1ecdc t\u1eadp c\u1ee7a b\u1ea1n";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4191,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ZLfUe2EpzwXvwTheBOzI5MqOt9Q=");
+})($__dart_deferred_initializers__, "3EYvCBCvMCsbljSx/LIqThprsQc=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map
