@@ -4176,6 +4176,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ttsDisabledBody() {
       return "You can enable text-to-speech in your learning settings";
     },
+    get$noSpaceDescriptionYet() {
+      return "No space description created yet.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4191,6 +4194,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_240", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "rZtXw6MWT3xITSjzeD7Bx2af/bg=");
+})($__dart_deferred_initializers__, "YSs93+3hArSSfzMp1EwnKPV2hZ0=");
 ;
 //# sourceMappingURL=main.dart.js_240.part.js.map

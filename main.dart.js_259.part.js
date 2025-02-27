@@ -4176,6 +4176,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ttsDisabledBody() {
       return "B\u1ea1n c\xf3 th\u1ec3 b\u1eadt t\xednh n\u0103ng chuy\u1ec3n v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i trong c\xe0i \u0111\u1eb7t h\u1ecdc t\u1eadp c\u1ee7a b\u1ea1n";
     },
+    get$noSpaceDescriptionYet() {
+      return "No space description created yet.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4191,6 +4194,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "3EYvCBCvMCsbljSx/LIqThprsQc=");
+})($__dart_deferred_initializers__, "Hz+SSStTT/5noXZrmfTSkoUXX3U=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map
