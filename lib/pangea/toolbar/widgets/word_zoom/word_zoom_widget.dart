@@ -80,13 +80,14 @@ class WordZoomWidget extends StatelessWidget {
                     langCode: messageEvent.messageDisplayLangCode,
                     controller: overlayController,
                   ),
-                  WordTextWithAudioButton(
-                    text: _selectedToken.text.content,
-                    ttsController: tts,
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      if (!_selectedToken.doesLemmaTextMatchTokenText)
+                        WordTextWithAudioButton(
+                          text: _selectedToken.text.content,
+                          ttsController: tts,
+                        ),
                       MorphologicalListWidget(
                         pangeaMessageEvent: messageEvent,
                         token: token,

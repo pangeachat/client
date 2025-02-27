@@ -162,28 +162,9 @@ class LemmaWidgetState extends State<LemmaWidget> {
         child: GestureDetector(
           onLongPress: () => _toggleEditMode(true),
           onDoubleTap: () => _toggleEditMode(true),
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                WordTextWithAudioButton(
-                  text: widget.token.lemma.text,
-                  ttsController: widget.tts,
-                ),
-                // const SizedBox(width: 6),
-                // SizedBox(
-                //   width: 20,
-                //   height: 20,
-                //   child: CustomizedSvg(
-                //     svgUrl: widget.token.lemmaXPCategory.svgURL,
-                //     colorReplacements: const {},
-                //     errorIcon: Text(widget.token.xpEmoji),
-                //   ),
-                // ),
-              ],
-            ),
+          child: WordTextWithAudioButton(
+            text: widget.token.lemma.text,
+            ttsController: widget.tts,
           ),
         ),
       ),

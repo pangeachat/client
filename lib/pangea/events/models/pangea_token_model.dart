@@ -728,4 +728,8 @@ class PangeaToken {
 
     return null;
   }
+
+  bool get doesLemmaTextMatchTokenText {
+    return lemma.text.toLowerCase() == text.content.toLowerCase();
+  }
 }

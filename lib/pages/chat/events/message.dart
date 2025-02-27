@@ -1,9 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix.dart';
-import 'package:swipe_to_action/swipe_to_action.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
@@ -11,13 +5,17 @@ import 'package:fluffychat/pangea/choreographer/enums/use_type.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_buttons.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix.dart';
+import 'package:swipe_to_action/swipe_to_action.dart';
+
 import '../../../config/app_config.dart';
 import 'message_content.dart';
 import 'message_reactions.dart';
@@ -700,14 +698,14 @@ class Message extends StatelessWidget {
                           ? MainAxisAlignment.end
                           : MainAxisAlignment.start,
                       children: [
-                        if (pangeaMessageEvent?.showMessageButtons ?? false)
-                          MessageButtons(
-                            event: event,
-                            controller: controller,
-                            pangeaMessageEvent: pangeaMessageEvent!,
-                            nextEvent: nextEvent,
-                            prevEvent: previousEvent,
-                          ),
+                        // if (pangeaMessageEvent?.showMessageButtons ?? false)
+                        //   MessageButtons(
+                        //     event: event,
+                        //     controller: controller,
+                        //     pangeaMessageEvent: pangeaMessageEvent!,
+                        //     nextEvent: nextEvent,
+                        //     prevEvent: previousEvent,
+                        //   ),
                         MessageReactions(event, timeline),
                       ],
                     ),
