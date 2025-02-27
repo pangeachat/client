@@ -67,6 +67,8 @@ class PApiUrls {
   static String lemmaDictionary = "${PApiUrls.choreoEndpoint}/lemma_definition";
   static String morphDictionary = "${PApiUrls.choreoEndpoint}/morph_meaning";
 
+  static String realtimeSessionAuth = "${PApiUrls.choreoEndpoint}/session_auth";
+
   static String activityPlanGeneration =
       "${PApiUrls.choreoEndpoint}/activity_plan";
   static String activityModeList = "${PApiUrls.choreoEndpoint}/modes";

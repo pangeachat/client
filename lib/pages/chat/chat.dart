@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -938,6 +939,10 @@ class ChatController extends State<ChatPageWithRoom>
           'duration': result.duration,
           'waveform': result.waveform,
         },
+        // #Pangea
+        //TODO: add results of transcription
+        ModelKey.botTranscription: result.sttModel?.toJson(),
+        // Pangea#
       },
       // #Pangea
       // ).catchError((e) {
