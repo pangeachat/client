@@ -1170,9 +1170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "0\ubcf4\ub2e4 \ud070 \uc22b\uc790\ub97c \uc785\ub825\ud558\uc138\uc694";
     },
-    get$archiveRoomDescription() {
-      return "\ucc44\ud305\uc774 \ubcf4\uad00\ud568\uc73c\ub85c \uc774\ub3d9\ud569\ub2c8\ub2e4. \ub2e4\ub978 \uc720\uc800\ub4e4\uc740 \ub2f9\uc2e0\uc774 \ub5a0\ub09c\ub2e4\ub294\uac83\uc744 \ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
-    },
     get$roomUpgradeDescription() {
       return "\ucc44\ud305\uc774 \uc0c8\ub85c\uc6b4 \ubc29 \ubc84\uc804\uc73c\ub85c \ub2e4\uc2dc \uc0dd\uc131\ub429\ub2c8\ub2e4. \ubaa8\ub4e0 \ucc38\uac00\uc790\ub294 \uc0c8\ub85c\uc6b4 \ucc44\ud305\uc73c\ub85c \uc804\ud658\ud574\uc57c\ud569\ub2c8\ub2e4. https://spec.matrix.org/latest/rooms/ \uc5d0\uc11c \ubc29 \ubc84\uc804\uc5d0 \ub300\ud574 \uc790\uc138\ud788 \uc54c\uc544\ubcfc \uc218 \uc788\uc2b5\ub2c8\ub2e4.";
     },
@@ -4123,7 +4120,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Produced in voice message";
     },
     get$leaveSpaceDescription() {
-      return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
+      return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
     },
     get$whatIsLemma() {
       return "What is the lemma?";
@@ -4176,6 +4173,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooLargeToSend() {
       return "This message is too large to send";
     },
+    get$leaveRoomDescription() {
+      return "You're about to leave this chat. Other users will see that you have left the chat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4191,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_238", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "E8xh1QPSmHyZ1HBG00r61XwuZcw=");
+})($__dart_deferred_initializers__, "h7tIUgQaRpYbc3EsKeITCjm5qB8=");
 ;
 //# sourceMappingURL=main.dart.js_238.part.js.map

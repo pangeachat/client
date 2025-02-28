@@ -1170,9 +1170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0447\u0438\u0441\u043b\u043e \u0431\u0456\u043b\u044c\u0448\u0435 \u043d\u0456\u0436 0";
     },
-    get$archiveRoomDescription() {
-      return "\u0411\u0435\u0441\u0456\u0434\u0443 \u0431\u0443\u0434\u0435 \u043f\u0435\u0440\u0435\u043c\u0456\u0449\u0435\u043d\u043e \u0434\u043e \u0430\u0440\u0445\u0456\u0432\u0443. \u0406\u043d\u0448\u0456 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0456 \u0437\u043c\u043e\u0436\u0443\u0442\u044c \u043f\u043e\u0431\u0430\u0447\u0438\u0442\u0438, \u0449\u043e \u0432\u0438 \u0432\u0438\u0439\u0448\u043b\u0438 \u0437 \u043d\u0435\u0457.";
-    },
     get$roomUpgradeDescription() {
       return "\u041f\u0456\u0441\u043b\u044f \u0446\u044c\u043e\u0433\u043e \u0431\u0435\u0441\u0456\u0434\u0443 \u0431\u0443\u0434\u0435 \u0432\u0456\u0434\u0442\u0432\u043e\u0440\u0435\u043d\u043e \u0437 \u043d\u043e\u0432\u043e\u044e \u0432\u0435\u0440\u0441\u0456\u0454\u044e \u043a\u0456\u043c\u043d\u0430\u0442\u0438. \u0423\u0441\u0456 \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0438 \u043e\u0442\u0440\u0438\u043c\u0430\u044e\u0442\u044c \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f, \u0449\u043e \u0457\u043c \u043f\u043e\u0442\u0440\u0456\u0431\u043d\u043e \u043f\u0435\u0440\u0435\u0439\u0442\u0438 \u0434\u043e \u043d\u043e\u0432\u043e\u0457 \u0431\u0435\u0441\u0456\u0434\u0438. \u0412\u0438 \u043c\u043e\u0436\u0435\u0442\u0435 \u0434\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e \u0432\u0435\u0440\u0441\u0456\u0457 \u043a\u0456\u043c\u043d\u0430\u0442 \u043d\u0430 https://spec.matrix.org/latest/rooms/";
     },
@@ -4123,7 +4120,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Produced in voice message";
     },
     get$leaveSpaceDescription() {
-      return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
+      return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
     },
     get$whatIsLemma() {
       return "What is the lemma?";
@@ -4176,6 +4173,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooLargeToSend() {
       return "This message is too large to send";
     },
+    get$leaveRoomDescription() {
+      return "You're about to leave this chat. Other users will see that you have left the chat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4191,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_258", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "VuGleAxT2u2CUVXyhfmX3mP456k=");
+})($__dart_deferred_initializers__, "Pw42oAWkoLScL0bX+mHEel6Y920=");
 ;
 //# sourceMappingURL=main.dart.js_258.part.js.map

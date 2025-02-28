@@ -1170,9 +1170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "Silakan masukkan angka lebih dari 0";
     },
-    get$archiveRoomDescription() {
-      return "Percakapan akan dipindahkan ke arsip. Pengguna lain akan melihat bahwa kamu telah meninggalkan percakapan.";
-    },
     get$roomUpgradeDescription() {
       return "Percakapannya akan dibuat ulang dengan versi ruangan yang baru. Semua anggota akan diberi tahu bahwa mereka harus ganti ke percakapan yang baru. Kamu bisa mempelajari lebih lanjut tentang versi ruangan di https://spec.matrix.org/latest/rooms/";
     },
@@ -4123,7 +4120,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Produced in voice message";
     },
     get$leaveSpaceDescription() {
-      return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
+      return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
     },
     get$whatIsLemma() {
       return "What is the lemma?";
@@ -4176,6 +4173,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooLargeToSend() {
       return "This message is too large to send";
     },
+    get$leaveRoomDescription() {
+      return "You're about to leave this chat. Other users will see that you have left the chat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4191,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_227", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "h4elcItvBy+bCGPoA0zYRepk0rw=");
+})($__dart_deferred_initializers__, "9GnUTffVhCf3jHeKsww7XWJ9wCI=");
 ;
 //# sourceMappingURL=main.dart.js_227.part.js.map

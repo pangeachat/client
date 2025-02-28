@@ -1171,9 +1171,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "Introdueix un n\xfamero major que 0";
     },
-    get$archiveRoomDescription() {
-      return "Aquest xat ser\xe0 arxivat. Els altres contactes del grup ho veuran com si haguessis abandonat el xat.";
-    },
     get$roomUpgradeDescription() {
       return "El xat ser\xe0 recreat amb una versi\xf3 de sala nova. Totis lis participants seran notificadis que han de canviar al nou xat. Pots llegir m\xe9s sobre les versions de sala a https://spec.matrix.org/latest/rooms/";
     },
@@ -4124,7 +4121,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Produced in voice message";
     },
     get$leaveSpaceDescription() {
-      return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
+      return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
     },
     get$whatIsLemma() {
       return "What is the lemma?";
@@ -4177,6 +4174,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooLargeToSend() {
       return "This message is too large to send";
     },
+    get$leaveRoomDescription() {
+      return "You're about to leave this chat. Other users will see that you have left the chat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4192,6 +4192,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_171", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "zA4wF01+oR0sazY4dtSSq9GNszY=");
+})($__dart_deferred_initializers__, "HRUSRAS1/4tBs53n+0IUhuVDxGw=");
 ;
 //# sourceMappingURL=main.dart.js_171.part.js.map

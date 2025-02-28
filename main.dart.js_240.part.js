@@ -1170,9 +1170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "L\u016bgums ievad\u012bt skaitli liel\u0101ku par 0";
     },
-    get$archiveRoomDescription() {
-      return "T\u0113rz\u0113\u0161ana tiks p\u0101rvietota uz arh\u012bvu. Citi lietot\u0101ji redz\u0113s, ka pameti t\u0113rz\u0113\u0161anu.";
-    },
     get$roomUpgradeDescription() {
       return "T\u0113rz\u0113\u0161ana tad tiks atk\u0101rtoti izveidota ar jauno istabas versiju. Visiem dal\u012bbniekiem tiks pazi\u0146ots, ka vi\u0146iem ir j\u0101p\u0101rsl\u0113dzas uz jauno t\u0113rz\u0113\u0161anu. Vair\u0101k par istabu versij\u0101m var atrast https://spec.matrix.org/latest/rooms/";
     },
@@ -4123,7 +4120,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Produced in voice message";
     },
     get$leaveSpaceDescription() {
-      return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
+      return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
     },
     get$whatIsLemma() {
       return "What is the lemma?";
@@ -4176,6 +4173,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooLargeToSend() {
       return "This message is too large to send";
     },
+    get$leaveRoomDescription() {
+      return "You're about to leave this chat. Other users will see that you have left the chat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4191,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_240", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "VTIwfCrpGm8VdQZaH1zXUnur2Hc=");
+})($__dart_deferred_initializers__, "TACavkMGDrDTYCg0UBe84BZxPa0=");
 ;
 //# sourceMappingURL=main.dart.js_240.part.js.map

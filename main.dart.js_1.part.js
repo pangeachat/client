@@ -1177,9 +1177,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "\u8bf7\u8f93\u5165\u5927\u4e8e 0 \u7684\u6570";
     },
-    get$archiveRoomDescription() {
-      return "\u804a\u5929\u5c06\u88ab\u79fb\u81f3\u5b58\u6863\u3002\u5176\u4ed6\u7528\u6237\u5c06\u80fd\u770b\u5230\u4f60\u5df2\u79bb\u5f00\u804a\u5929\u3002";
-    },
     get$roomUpgradeDescription() {
       return "\u5c06\u4f7f\u7528\u65b0\u7248\u804a\u5929\u5ba4\u6765\u91cd\u65b0\u521b\u5efa\u5f53\u524d\u804a\u5929\u5ba4\u3002\u6240\u6709\u53c2\u4e0e\u8005\u90fd\u4f1a\u6536\u5230\u901a\u77e5\u4ee5\u5207\u6362\u5230\u65b0\u7684\u804a\u5929\u5ba4\u3002\u6709\u5173\u804a\u5929\u5ba4\u7248\u672c\u7684\u66f4\u591a\u4fe1\u606f\uff0c\u8bf7\u8bbf\u95ee https://spec.matrix.org/latest/rooms/";
     },
@@ -4130,7 +4127,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Produced in voice message";
     },
     get$leaveSpaceDescription() {
-      return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
+      return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
     },
     get$whatIsLemma() {
       return "What is the lemma?";
@@ -4182,6 +4179,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tooLargeToSend() {
       return "This message is too large to send";
+    },
+    get$leaveRoomDescription() {
+      return "You're about to leave this chat. Other users will see that you have left the chat.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5328,9 +5328,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "\u8acb\u8f38\u5165\u5927\u65bc 0 \u7684\u6578\u5b57";
     },
-    get$archiveRoomDescription() {
-      return "\u804a\u5929\u5ba4\u5c07\u88ab\u79fb\u52d5\u5230\u5b58\u6a94\u4e2d\u3002\u5176\u4ed6\u4f7f\u7528\u8005\u5c07\u80fd\u770b\u5230\u60a8\u5df2\u96e2\u958b\u804a\u5929\u5ba4\u3002";
-    },
     get$roomUpgradeDescription() {
       return "\u5c07\u4f7f\u7528\u65b0\u7248\u672c\u804a\u5929\u5ba4\u4f86\u91cd\u65b0\u5efa\u7acb\u804a\u5929\u5ba4\u3002\u6240\u6709\u672c\u804a\u5929\u5ba4\u7684\u53c3\u8207\u8005\u90fd\u6703\u6536\u5230\u901a\u77e5\uff0c\u4ed6\u5011\u90fd\u9700\u8981\u63db\u5230\u65b0\u7684\u804a\u5929\u5ba4\u88e1\u3002\u82e5\u60a8\u60f3\u77e5\u9053\u6709\u95dc\u65b0\u7248\u672c\u7684\u66f4\u591a\u8cc7\u8a0a\uff0c\u8acb\u524d\u5f80 https://spec.matrix.org/latest/rooms/";
     },
@@ -5521,6 +5518,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "VmRIZ+En+c4yPxnwBhrqiBr7zYA=");
+})($__dart_deferred_initializers__, "lce9Hx5ne+pTj5q7XzDunqCJSQc=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

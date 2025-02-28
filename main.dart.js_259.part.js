@@ -1170,9 +1170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "H\xe3y nh\u1eadp s\u1ed1 l\u1edbn h\u01a1n 0";
     },
-    get$archiveRoomDescription() {
-      return "Cu\u1ed9c tr\xf2 chuy\u1ec7n s\u1ebd \u0111\u01b0\u1ee3c chuy\u1ec3n t\u1edbi m\u1ee5c l\u01b0u tr\u1eef. Ng\u01b0\u1eddi d\xf9ng kh\xe1c s\u1ebd th\u1ea5y \u0111\u01b0\u1ee3c b\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n.";
-    },
     get$roomUpgradeDescription() {
       return "Cu\u1ed9c tr\xf2 chuy\u1ec7n s\u1ebd \u0111\u01b0\u1ee3c t\u1ea1o l\u1ea1i v\u1edbi phi\xean b\u1ea3n ph\xf2ng m\u1edbi. T\u1ea5t c\u1ea3 nh\u1eefng ng\u01b0\u1eddi tham gia s\u1ebd \u0111\u01b0\u1ee3c th\xf4ng b\xe1o r\u1eb1ng h\u1ecd c\u1ea7n chuy\u1ec3n sang cu\u1ed9c tr\xf2 chuy\u1ec7n m\u1edbi. B\u1ea1n c\xf3 th\u1ec3 t\xecm hi\u1ec3u th\xeam v\u1ec1 c\xe1c phi\xean b\u1ea3n ph\xf2ng t\u1ea1i https://spec.matrix.org/latest/rooms/";
     },
@@ -4123,7 +4120,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0110\xe3 s\u1eed d\u1ee5ng trong tin nh\u1eafn tho\u1ea1i";
     },
     get$leaveSpaceDescription() {
-      return "Kh\xf4ng gian s\u1ebd \u0111\u01b0\u1ee3c chuy\u1ec3n v\xe0o l\u01b0u tr\u1eef. Ng\u01b0\u1eddi kh\xe1c v\u1eabn th\u1ea5y b\u1ea1n r\u1eddi kh\xf4ng gian.";
+      return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
     },
     get$whatIsLemma() {
       return "D\u1ea1ng g\u1ed1c c\u1ee7a t\u1eeb l\xe0 g\xec?";
@@ -4176,6 +4173,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooLargeToSend() {
       return "This message is too large to send";
     },
+    get$leaveRoomDescription() {
+      return "You're about to leave this chat. Other users will see that you have left the chat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4191,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "PJIQ2m1ypVFi5DbV6O1ebpk840I=");
+})($__dart_deferred_initializers__, "MrAAARH1Bu5xJ2c17cywZqpHsNU=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map

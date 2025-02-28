@@ -1170,9 +1170,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "Veuillez saisir un nombre sup\xe9rieur \xe0 0";
     },
-    get$archiveRoomDescription() {
-      return "La discussion sera d\xe9plac\xe9e dans les archives. Les autres utilisateurs/trices pourront voir que vous avez quitt\xe9 la discussion.";
-    },
     get$roomUpgradeDescription() {
       return "La discussion sera alors recr\xe9\xe9 avec la nouvelle version de salon. Tous les participants seront inform\xe9s qu'ils doivent passer \xe0 la nouvelle discussion. Pour en savoir plus sur les versions des salons, consultez le site https://spec.matrix.org/latest/rooms/";
     },
@@ -4123,7 +4120,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Produced in voice message";
     },
     get$leaveSpaceDescription() {
-      return "The space will be moved to the archive. Other users will be able to see that you have left the chat.";
+      return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
     },
     get$whatIsLemma() {
       return "What is the lemma?";
@@ -4176,6 +4173,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooLargeToSend() {
       return "This message is too large to send";
     },
+    get$leaveRoomDescription() {
+      return "You're about to leave this chat. Other users will see that you have left the chat.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4191,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_208", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ZZMBv4QN8bAEdnV52+lZsqdWgfQ=");
+})($__dart_deferred_initializers__, "RYUMXsG0X9NUZdxexHism21TrnQ=");
 ;
 //# sourceMappingURL=main.dart.js_208.part.js.map
