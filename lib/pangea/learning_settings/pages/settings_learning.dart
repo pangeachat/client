@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:country_picker/country_picker.dart';
@@ -42,6 +44,57 @@ class SettingsLearningController extends State<SettingsLearning> {
     super.dispose();
   }
 
+  // compare settings in _profile with the settings in the userController
+  // if they are different, return true, else return false
+  bool get haveSettingsBeenChanged {
+    for (final setting in _profile.userSettings.toJson().entries) {
+      if (setting.value !=
+          pangeaController.userController.profile.userSettings.toJson()[
+              setting.key]) {
+        return true;
+      }
+    }
+    for (final setting in _profile.toolSettings.toJson().entries) {
+      if (setting.value !=
+          pangeaController.userController.profile.toolSettings.toJson()[
+              setting.key]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // if the settings have been changed, show a dialog the user wants to exit without saving
+  // if the settings have not been changed, just close the settings page
+  void onSettingsClose(){
+    if (haveSettingsBeenChanged) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: Text(L10n.of(context).exitWithoutSaving),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text(L10n.of(context).leave),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              child: Text(L10n.of(context).saveChanges),
+            ),
+          ],
+        ),
+      ).then((value) {
+        if (value == true) {
+          submit();
+        } else {
+          Navigator.of(context).pop();
+        }
+      });
+    } else {
+      Navigator.of(context).pop();
+    }
+  }
+
   Future<void> submit() async {
     if (selectedSourceLanguage?.langCodeShort ==
         selectedTargetLanguage?.langCodeShort) {
@@ -55,10 +108,12 @@ class SettingsLearningController extends State<SettingsLearning> {
       languageMatchError = null; // Clear error if languages don't match
     });
 
-    if (formKey.currentState!.validate()) {
-      if (!isTTSSupported) {
+    if (!isTTSSupported) {
         updateToolSetting(ToolSetting.enableTTS, false);
       }
+
+    if (formKey.currentState!.validate()) {
+      
 
       await showFutureLoadingDialog(
         context: context,

@@ -4828,5 +4828,6 @@
   "ttsDisbledTitle": "Text-to-speech disabled",
   "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
   "noSpaceDescriptionYet": "No space description created yet.",
-  "tooLargeToSend": "This message is too large to send"
+  "tooLargeToSend": "This message is too large to send",
+  "exitWithoutSaving": "Are you sure you want to leave without saving?"
 } 
