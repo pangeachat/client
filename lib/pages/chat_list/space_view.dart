@@ -12,6 +12,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
+import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/widgets/add_room_dialog.dart';
@@ -405,14 +406,18 @@ class _SpaceViewState extends State<SpaceView> {
               ? CreateRoomPreset.publicChat
               : CreateRoomPreset.privateChat,
           visibility: response.visibility,
-          initialState: response.roomDescription.isNotEmpty
-              ? [
-                  StateEvent(
-                    type: EventTypes.RoomTopic,
-                    content: {'topic': response.roomDescription},
-                  ),
-                ]
-              : null,
+          initialState: [
+            if (response.roomDescription.isNotEmpty)
+              StateEvent(
+                type: EventTypes.RoomTopic,
+                content: {'topic': response.roomDescription},
+              ),
+            StateEvent(
+              type: EventTypes.RoomPowerLevels,
+              stateKey: '',
+              content: defaultPowerLevels,
+            ),
+          ],
           enableEncryption: false,
           // Pangea#
         );
