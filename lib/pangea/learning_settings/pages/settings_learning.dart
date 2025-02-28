@@ -49,15 +49,15 @@ class SettingsLearningController extends State<SettingsLearning> {
   bool get haveSettingsBeenChanged {
     for (final setting in _profile.userSettings.toJson().entries) {
       if (setting.value !=
-          pangeaController.userController.profile.userSettings.toJson()[
-              setting.key]) {
+          pangeaController.userController.profile.userSettings
+              .toJson()[setting.key]) {
         return true;
       }
     }
     for (final setting in _profile.toolSettings.toJson().entries) {
       if (setting.value !=
-          pangeaController.userController.profile.toolSettings.toJson()[
-              setting.key]) {
+          pangeaController.userController.profile.toolSettings
+              .toJson()[setting.key]) {
         return true;
       }
     }
@@ -66,7 +66,7 @@ class SettingsLearningController extends State<SettingsLearning> {
 
   // if the settings have been changed, show a dialog the user wants to exit without saving
   // if the settings have not been changed, just close the settings page
-  void onSettingsClose(){
+  void onSettingsClose() {
     if (haveSettingsBeenChanged) {
       showDialog(
         context: context,
@@ -109,12 +109,10 @@ class SettingsLearningController extends State<SettingsLearning> {
     });
 
     if (!isTTSSupported) {
-        updateToolSetting(ToolSetting.enableTTS, false);
-      }
+      updateToolSetting(ToolSetting.enableTTS, false);
+    }
 
     if (formKey.currentState!.validate()) {
-      
-
       await showFutureLoadingDialog(
         context: context,
         future: () async => pangeaController.userController.updateProfile(
