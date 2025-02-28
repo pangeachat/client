@@ -4776,7 +4776,7 @@
   "mediaLabel": "Media learners should share",
   "languageOfInstructionsLabel": "Language of activity instructions",
   "targetLanguageLabel": "Target language",
-  "cefrLevelLabel": "CEFR Level",
+  "cefrLevelLabel": "CEFR level",
   "generateActivitiesButton": "Generate Activities",
   "launchActivityButton": "Launch Activity",
   "image": "Image",
@@ -4828,5 +4828,6 @@
   "ttsDisbledTitle": "Text-to-speech disabled",
   "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
   "noSpaceDescriptionYet": "No space description created yet.",
-  "tooLargeToSend": "This message is too large to send"
+  "tooLargeToSend": "This message is too large to send",
+  "displayName": "Display name"
 } 
