@@ -70,9 +70,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addEmail() {
       return "\u6dfb\u52a0\u7535\u5b50\u90ae\u4ef6";
     },
-    get$confirmMatrixId() {
-      return "\u8bf7\u786e\u8ba4\u4f60\u7684 Matrix ID \u4ee5\u5220\u9664\u8d26\u6237\u3002";
-    },
     supposedMxid$1(mxid) {
       return "\u5e94\u4e3a " + mxid;
     },
@@ -4183,6 +4180,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveRoomDescription() {
       return "You're about to leave this chat. Other users will see that you have left the chat.";
     },
+    get$confirmUserId() {
+      return "Please confirm your Pangea Chat username in order to delete your account.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4229,9 +4229,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$addEmail() {
       return "\u65b0\u589e\u96fb\u5b50\u90f5\u4ef6";
-    },
-    get$confirmMatrixId() {
-      return "\u5982\u9700\u522a\u9664\u4f60\u7684\u5e33\u6236\uff0c\u8acb\u78ba\u8a8d\u4f60\u7684 Matrix ID\u3002";
     },
     supposedMxid$1(mxid) {
       return "\u6b64\u8655\u61c9\u7232 " + mxid;
@@ -5518,6 +5515,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "lce9Hx5ne+pTj5q7XzDunqCJSQc=");
+})($__dart_deferred_initializers__, "1RRjmahZGx2Zl4CsUKT57+K7DC0=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
