@@ -2580,12 +2580,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     invitedToSpace$2(space, user) {
       return user + " has invited you to join a space: " + space + "! Do you wish to accept?";
     },
-    get$declinedInvitation() {
-      return "Declined invitation";
-    },
-    get$acceptedInvitation() {
-      return "Accepted invitation";
-    },
     get$youreInvited() {
       return "\ud83d\udce9 You're invited!";
     },
@@ -4197,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_251", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "8Y74VUOYgcpN+OYyGnpfQyqjgiA=");
+})($__dart_deferred_initializers__, "fXFNPrXQFFhAVM9AIsf3bhOCtL4=");
 ;
 //# sourceMappingURL=main.dart.js_251.part.js.map

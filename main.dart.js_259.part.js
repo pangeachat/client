@@ -2580,12 +2580,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     invitedToSpace$2(space, user) {
       return user + " \u0111\xe3 m\u1eddi b\u1ea1n tham gia kh\xf4ng gian: " + space + "! B\u1ea1n c\xf3 ch\u1ea5p nh\u1eadn kh\xf4ng?";
     },
-    get$declinedInvitation() {
-      return "\u0110\xe3 t\u1eeb ch\u1ed1i l\u1eddi m\u1eddi";
-    },
-    get$acceptedInvitation() {
-      return "\u0110\xe3 ch\u1ea5p nh\u1eadn l\u1eddi m\u1eddi";
-    },
     get$youreInvited() {
       return "\ud83d\udce9 B\u1ea1n \u0111\u01b0\u1ee3c m\u1eddi!";
     },
@@ -4197,6 +4191,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "SUgQHl9NMNVa78OSK7Xb4JXeGHo=");
+})($__dart_deferred_initializers__, "PJIQ2m1ypVFi5DbV6O1ebpk840I=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map
