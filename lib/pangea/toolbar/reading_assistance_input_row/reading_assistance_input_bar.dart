@@ -3,7 +3,7 @@ import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.da
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/reading_assistance_input_bar_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
 import 'package:flutter/material.dart';
@@ -14,16 +14,6 @@ class ReadingAssistanceInputBar extends StatelessWidget {
   final ChatController controller;
   final MessageOverlayController? overlayController;
 
-  ReadingAssistanceModeEnum get mode {
-    // this surprisingly happens
-    // it seems the controller is not yet initialized
-    if (overlayController == null) {
-      return ReadingAssistanceModeEnum.messageEmojiChoice;
-    }
-
-    return overlayController!.inputBarMode;
-  }
-
   const ReadingAssistanceInputBar(
     this.controller,
     this.overlayController, {
@@ -32,12 +22,44 @@ class ReadingAssistanceInputBar extends StatelessWidget {
 
   PangeaToken? get token => overlayController?.selectedToken;
 
+  PracticeActivityCard practiceActivityCard(ActivityTypeEnum a) =>
+      PracticeActivityCard(
+        pangeaMessageEvent: overlayController!.pangeaMessageEvent!,
+        targetTokensAndActivityType: TargetTokensAndActivityType(
+          tokens: [token!],
+          activityType: a,
+        ),
+        overlayController: overlayController!,
+        morphFeature: a == ActivityTypeEnum.morphId
+            ? overlayController?.selectedMorphFeature ??
+                overlayController
+                    ?.selectedToken?.nextMorphFeatureEligibleForActivity ??
+                "pos"
+            : null,
+        location: AnalyticsUpdateOrigin.inputBar,
+      );
+
   Widget barContent(BuildContext context) {
-    switch (mode) {
+    if (token == null) {
+      return MessageEmojiChoiceRow(
+        tokens: overlayController
+                ?.pangeaMessageEvent?.messageDisplayRepresentation?.tokens ??
+            [],
+        controller: controller,
+        overlayController: overlayController,
+      );
+    }
+
+    switch (overlayController!.toolbarMode) {
       // message meaning will not use the input bar (for now at least)
       // maybe we move some choices there later
-      case ReadingAssistanceModeEnum.messageMeaning:
-      case ReadingAssistanceModeEnum.messageEmojiChoice:
+      case MessageMode.messageMeaning:
+      case MessageMode.messageTranslation:
+      case MessageMode.messageTextToSpeech:
+      case MessageMode.messageSpeechToText:
+      case MessageMode.practiceActivity:
+      case MessageMode.wordZoom:
+      case MessageMode.noneSelected:
         return MessageEmojiChoiceRow(
           tokens: overlayController
                   ?.pangeaMessageEvent?.messageDisplayRepresentation?.tokens ??
@@ -45,41 +67,21 @@ class ReadingAssistanceInputBar extends StatelessWidget {
           controller: controller,
           overlayController: overlayController,
         );
-      case ReadingAssistanceModeEnum.wordEmojiChoice:
-        return PracticeActivityCard(
-          pangeaMessageEvent: overlayController!.pangeaMessageEvent!,
-          targetTokensAndActivityType: TargetTokensAndActivityType(
-            tokens: [token!],
-            activityType: ActivityTypeEnum.emoji,
-          ),
-          overlayController: overlayController!,
-          location: AnalyticsUpdateOrigin.inputBar,
-        );
-      case ReadingAssistanceModeEnum.wordMeaningChoice:
-        return PracticeActivityCard(
-          pangeaMessageEvent: overlayController!.pangeaMessageEvent!,
-          targetTokensAndActivityType: TargetTokensAndActivityType(
-            tokens: [token!],
-            activityType: ActivityTypeEnum.wordMeaning,
-          ),
-          overlayController: overlayController!,
-          location: AnalyticsUpdateOrigin.inputBar,
-        );
-      case ReadingAssistanceModeEnum.morph:
-        return PracticeActivityCard(
-          pangeaMessageEvent: overlayController!.pangeaMessageEvent!,
-          targetTokensAndActivityType: TargetTokensAndActivityType(
-            tokens: [token!],
-            activityType: ActivityTypeEnum.wordMeaning,
-          ),
-          overlayController: overlayController!,
-          location: AnalyticsUpdateOrigin.inputBar,
-        );
+
+      case MessageMode.wordEmoji:
+        return practiceActivityCard(ActivityTypeEnum.emoji);
+
+      case MessageMode.wordMeaning:
+        return practiceActivityCard(ActivityTypeEnum.wordMeaning);
+
+      case MessageMode.wordMorph:
+        return practiceActivityCard(ActivityTypeEnum.morphId);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    // @ggurdin when does this happen?
     if (controller.showEmojiPicker) return const SizedBox.shrink();
 
     final display = controller.editEvent == null &&

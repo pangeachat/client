@@ -17,7 +17,7 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/reading_assistance_input_bar_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/repo/lemma_activity_generator.dart';
 import 'package:fluffychat/pangea/toolbar/repo/lemma_meaning_activity_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -377,8 +377,9 @@ class PangeaToken {
           debugger(when: kDebugMode);
           return false;
         }
-        return _daysSinceLastUsedMorphForm(morphFeature, morphTag) >
-            2 * morphConstruct(morphFeature, morphTag).points;
+        // return _daysSinceLastUsedMorphForm(morphFeature, morphTag) >
+        //     2 * morphConstruct(morphFeature, morphTag).points;
+        return _daysSinceLastUsedMorphForm(morphFeature, morphTag) > 1;
     }
   }
 
@@ -684,10 +685,10 @@ class PangeaToken {
   }
 
   /// initial default input mode for a token
-  ReadingAssistanceModeEnum get modeOfNextActivity {
+  MessageMode get modeForToken {
     if (getEmoji() == null) {
-      print("should do wordEmojiChoice activity");
-      return ReadingAssistanceModeEnum.wordEmojiChoice;
+      debugPrint("should do wordEmojiChoice activity  for ${text.content}");
+      return MessageMode.wordEmoji;
     }
 
     if (shouldDoActivity(
@@ -695,12 +696,19 @@ class PangeaToken {
       feature: null,
       tag: null,
     )) {
-      print("should do wordMeaning activity");
-      return ReadingAssistanceModeEnum.wordMeaningChoice;
+      debugPrint("should do wordMeaning activity for ${text.content}");
+      return MessageMode.wordMeaning;
     }
 
-    print("should do no activity");
-    return ReadingAssistanceModeEnum.messageEmojiChoice;
+    debugPrint("should do no activity");
+    final String? morph = nextMorphFeatureEligibleForActivity;
+    if (morph != null) {
+      debugPrint("should do morph activity for ${text.content}");
+      return MessageMode.wordMorph;
+    }
+
+    debugPrint("should do no activity for ${text.content}");
+    return MessageMode.wordZoom;
   }
 
   /// cycle through morphs to get the next one where should do morph activity is true

@@ -70,8 +70,6 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   PangeaController get pangeaController => MatrixState.pangeaController;
   String? _error;
 
-  String? activityQuestion;
-
   @override
   void initState() {
     super.initState();

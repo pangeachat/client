@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/toolbar/models/multiple_choice_activity_model.
 import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 typedef MorphActivitySequence = Map<String, POSActivitySequence>;
 
@@ -95,11 +96,15 @@ class MorphActivityGenerator {
         langCode: req.userL2,
         activityType: ActivityTypeEnum.morphId,
         content: ActivityContent(
-          question: getMorphologicalCategoryCopy(
-                morphFeature,
-                MatrixState.pangeaController.matrixState.context,
-              ) ??
-              morphFeature,
+          question: MatrixState.pangeaController.matrixState.context.mounted
+              ? L10n.of(MatrixState.pangeaController.matrixState.context)
+                  .whatIsTheMorphTag(
+                  getMorphologicalCategoryCopy(morphFeature,
+                          MatrixState.pangeaController.matrixState.context) ??
+                      morphFeature,
+                  token.text.content,
+                )
+              : morphFeature,
           choices: distractors + [morphTag],
           answers: [morphTag],
           spanDisplayDetails: null,

@@ -1,15 +1,13 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_meaning_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class ToolbarButtonAndProgressRow extends StatelessWidget {
   final Event event;
@@ -80,22 +78,24 @@ class ToolbarButtonAndProgressRow extends StatelessWidget {
                 overlayController: overlayController,
               ),
               SizedBox(
-                width: MessageMode.textToSpeech.pointOnBar * totalRowWidth -
-                    buttonSize,
+                width:
+                    MessageMode.messageTextToSpeech.pointOnBar * totalRowWidth -
+                        buttonSize,
               ),
               ToolbarButton(
-                mode: MessageMode.textToSpeech,
+                mode: MessageMode.messageTextToSpeech,
                 overlayController: overlayController,
                 buttonSize: buttonSize,
               ),
               SizedBox(
-                width: MessageMode.translation.pointOnBar * totalRowWidth -
-                    MessageMode.textToSpeech.pointOnBar * totalRowWidth -
+                width: MessageMode.messageTranslation.pointOnBar *
+                        totalRowWidth -
+                    MessageMode.messageTextToSpeech.pointOnBar * totalRowWidth -
                     buttonSize -
                     buttonSize,
               ),
               ToolbarButton(
-                mode: MessageMode.translation,
+                mode: MessageMode.messageTranslation,
                 overlayController: overlayController,
                 buttonSize: buttonSize,
               ),

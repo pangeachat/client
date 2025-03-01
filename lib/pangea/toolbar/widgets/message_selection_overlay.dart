@@ -12,7 +12,6 @@ import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/reading_assistance_input_bar_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/foundation.dart';
@@ -53,8 +52,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// Variables
   /////////////////////////////////////
   MessageMode toolbarMode = MessageMode.noneSelected;
-  ReadingAssistanceModeEnum inputBarMode =
-      ReadingAssistanceModeEnum.messageEmojiChoice;
 
   /// If doing a morphological activity, this is the selected morph feature.
   String? selectedMorphFeature;
@@ -71,8 +68,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   Completer<void>? _activityLock;
 
   final bool _hideCenterContent = false;
-
-  final _defaultMode = ReadingAssistanceModeEnum.messageEmojiChoice;
 
   /// The text that the toolbar should target
   /// If there is no selectedSpan, then the whole message is the target
@@ -139,7 +134,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   Future<void> _setInitialToolbarMode() async {
     if (pangeaMessageEvent?.isAudioMessage ?? false) {
-      updateToolbarMode(MessageMode.textToSpeech);
+      updateToolbarMode(MessageMode.messageTextToSpeech);
       return;
     }
 
@@ -151,7 +146,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     if (selectedToken != null) {
-      updateToolbarMode(MessageMode.wordZoom);
+      updateToolbarMode(selectedToken!.modeForToken);
       return;
     }
 
@@ -227,27 +222,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
   }
 
-  Future<void> updateInputBarMode(
-    ReadingAssistanceModeEnum mode, {
-    String? feature,
-  }) async {
-    inputBarMode = mode;
-
-    if (ReadingAssistanceModeEnum.morph == mode) {
-      if (feature != null) {
-        selectedMorphFeature == feature;
-      } else {
-        selectedMorphFeature =
-            selectedToken?.nextMorphFeatureEligibleForActivity;
-      }
-    }
-
-    // // wait for savor the joy animation to finish before changing the selection type
-    if (_activityLock != null) await _activityLock!.future;
-
-    if (mounted) setState(() {});
-  }
-
   void _updateSelectedSpan(PangeaTokenText selectedSpan) {
     if (selectedSpan == _selectedSpan) {
       _selectedSpan = null;
@@ -266,30 +240,43 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     // if a token is selected, then the toolbar should be in wordZoom mode
-    if (toolbarMode != MessageMode.wordZoom) {
+    final nextModeForToken = selectedToken!.modeForToken;
+    if (toolbarMode != nextModeForToken) {
       debugPrint("_updateSelectedSpan: setting toolbarMode to wordZoom");
-      updateToolbarMode(MessageMode.wordZoom);
+      updateToolbarMode(nextModeForToken);
     }
-
-    updateInputBarMode(selectedToken!.modeOfNextActivity);
 
     setState(() {});
   }
 
-  void updateToolbarMode(MessageMode mode) {
-    if (selectedToken != null && mode == MessageMode.wordZoom) {
-      // in this case, we should set to default input for the token
-      updateInputBarMode(selectedToken!.modeOfNextActivity);
-    }
+  void updateToolbarMode(MessageMode mode, [String? feature]) {
     setState(() {
-      // only practiceActivity and wordZoom make sense with selectedSpan
-      if (![MessageMode.practiceActivity, MessageMode.wordZoom]
-          .contains(mode)) {
-        debugPrint("updateToolbarMode: $mode - clearing selectedSpan");
-        _selectedSpan = null;
+      if (MessageMode.wordMorph == mode) {
+        debugger(when: kDebugMode && selectedToken == null);
+        selectedMorphFeature = feature ??
+            selectedToken?.nextMorphFeatureEligibleForActivity ??
+            "pos";
+      } else {
+        selectedMorphFeature = null;
       }
-      if (mode != MessageMode.textToSpeech) {
+
+      // only practiceActivity and wordZoom make sense with selectedSpan
+      // if (![MessageMode.practiceActivity, MessageMode.wordZoom, MessageMode.wordEmoji, MessageMode.wordMeaning, MessageMode.wordMorph].contains(mode)) {
+      //     .contains(mode)) {
+      //   debugPrint("updateToolbarMode: $mode - clearing selectedSpan");
+      //   _selectedSpan = null;
+      // }
+      if (mode != MessageMode.messageTextToSpeech) {
         _highlightedTokens = null;
+      }
+      if (toolbarMode == mode) {
+        if (selectedToken == null) {
+          toolbarMode = MessageMode.noneSelected;
+          selectedMorphFeature = null;
+        } else {
+          toolbarMode = MessageMode.wordZoom;
+        }
+        return;
       }
       toolbarMode = mode;
     });
@@ -399,11 +386,12 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// and check if the toolbar should be unlocked
   void onActivityFinish(ActivityTypeEnum activityType) {
     messageAnalyticsEntry!.onActivityComplete();
-    if (activityType == ActivityTypeEnum.messageMeaning) {
-      updateToolbarMode(MessageMode.wordZoom);
+
+    if (selectedToken == null) {
+      updateToolbarMode(MessageMode.noneSelected);
     }
 
-    updateToolbarMode(MessageMode.wordZoom);
+    updateToolbarMode(selectedToken!.modeForToken);
 
     if (!mounted) return;
     setState(() {});

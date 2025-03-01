@@ -4,17 +4,14 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pages/chat/events/message_reactions.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/overlay_footer.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/overlay_message.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_and_progress_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
@@ -358,30 +355,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   Widget build(BuildContext context) {
     if (_messageSize == null) return const SizedBox.shrink();
 
-    final positionedOverlayMessage = AnimatedBuilder(
-      animation: _overlayPositionAnimation ?? _animationController,
-      builder: (context, child) {
-        return Positioned(
-          left: _messageLeftOffset,
-          right: _messageRightOffset,
-          bottom: _overlayPositionAnimation?.value ?? _totalToolbarBottomOffset,
-          child: ToolbarOverlay(
-            messageHeight: _messageHeight,
-            messageWidth: _messageSize!.width,
-            maxWidth: _messageMaxWidth,
-            event: widget.event,
-            pangeaMessageEvent: widget.pangeaMessageEvent,
-            nextEvent: widget.nextEvent,
-            prevEvent: widget.prevEvent,
-            overlayController: widget.overlayController,
-            chatController: widget.chatController,
-            hasReactions: _hasReactions,
-            shouldShowToolbarButtons: showToolbarButtons,
-          ),
-        );
-      },
-    );
-
     return Padding(
       padding: EdgeInsets.only(
         left: _horizontalPadding,
@@ -389,7 +362,41 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       ),
       child: Stack(
         children: [
-          positionedOverlayMessage,
+          AnimatedBuilder(
+            animation: _overlayPositionAnimation ?? _animationController,
+            builder: (context, child) {
+              return Positioned(
+                // subtract width of
+                left: _messageLeftOffset,
+                right: _messageRightOffset,
+                bottom: _overlayPositionAnimation?.value ??
+                    _totalToolbarBottomOffset,
+                child: Row(
+                  children: [
+                    // fixed height and width container
+                    SizedBox(
+                      height: _messageHeight,
+                      width: _messageSize!.width,
+                    ),
+
+                    OverlayCenterContent(
+                      messageHeight: _messageHeight,
+                      messageWidth: _messageSize!.width,
+                      maxWidth: _messageMaxWidth,
+                      event: widget.event,
+                      pangeaMessageEvent: widget.pangeaMessageEvent,
+                      nextEvent: widget.nextEvent,
+                      prevEvent: widget.prevEvent,
+                      overlayController: widget.overlayController,
+                      chatController: widget.chatController,
+                      hasReactions: _hasReactions,
+                      shouldShowToolbarButtons: showToolbarButtons,
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Row(
@@ -424,94 +431,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ToolbarOverlay extends StatelessWidget {
-  final double messageHeight;
-  final double messageWidth;
-  final double maxWidth;
-
-  final Event event;
-  final Event? nextEvent;
-  final Event? prevEvent;
-
-  final bool hasReactions;
-  final bool shouldShowToolbarButtons;
-
-  final PangeaMessageEvent? pangeaMessageEvent;
-  final MessageOverlayController overlayController;
-  final ChatController chatController;
-
-  const ToolbarOverlay({
-    super.key,
-    required this.messageHeight,
-    required this.messageWidth,
-    required this.maxWidth,
-    required this.event,
-    required this.overlayController,
-    required this.chatController,
-    required this.hasReactions,
-    required this.shouldShowToolbarButtons,
-    this.pangeaMessageEvent,
-    this.nextEvent,
-    this.prevEvent,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints(maxWidth: maxWidth),
-      child: Material(
-        type: MaterialType.transparency,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: event.senderId == event.room.client.userID
-              ? CrossAxisAlignment.end
-              : CrossAxisAlignment.start,
-          children: [
-            if (pangeaMessageEvent != null &&
-                pangeaMessageEvent!.shouldShowToolbar)
-              MessageToolbar(
-                pangeaMessageEvent: pangeaMessageEvent!,
-                overlayController: overlayController,
-              ),
-            const SizedBox(height: AppConfig.toolbarSpacing),
-            SizedBox(
-              height: messageHeight,
-              child: OverlayMessage(
-                event,
-                pangeaMessageEvent: pangeaMessageEvent,
-                immersionMode: chatController.choreographer.immersionMode,
-                controller: chatController,
-                overlayController: overlayController,
-                nextEvent: nextEvent,
-                prevEvent: prevEvent,
-                timeline: chatController.timeline!,
-                messageWidth: messageWidth,
-                messageHeight: messageHeight,
-              ),
-            ),
-            if (hasReactions)
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: SizedBox(
-                  height: 20,
-                  child: MessageReactions(
-                    event,
-                    chatController.timeline!,
-                  ),
-                ),
-              ),
-            if (shouldShowToolbarButtons)
-              ToolbarButtonAndProgressRow(
-                event: event,
-                overlayController: overlayController,
-              ),
-          ],
-        ),
       ),
     );
   }

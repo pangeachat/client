@@ -1,13 +1,12 @@
 import 'dart:developer';
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/models/message_activity_request.dart';
 import 'package:fluffychat/pangea/toolbar/models/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
+import 'package:flutter/foundation.dart';
 
 class EmojiActivityGenerator {
   Future<MessageActivityResponse> get(
@@ -33,7 +32,8 @@ class EmojiActivityGenerator {
         tgtConstructs: [token.vocabConstructID],
         langCode: req.userL2,
         content: ActivityContent(
-          question: "",
+          // TODO: add to L10n
+          question: "Pick the emoji that best represents the word",
           choices: emojis,
           answers: emojis,
           spanDisplayDetails: null,

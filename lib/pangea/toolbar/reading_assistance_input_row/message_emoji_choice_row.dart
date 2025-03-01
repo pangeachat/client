@@ -67,7 +67,7 @@ class MessageEmojiChoiceRow extends StatelessWidget {
           onTap: () => alreadyInReactions(emoji)
               ? redactReaction(context, emoji)
               : controller.sendEmojiAction(emoji),
-          isSelected: alreadyInReactions(emoji),
+          isSelected: false,
         ),
       )
       .toList();
@@ -76,9 +76,10 @@ class MessageEmojiChoiceRow extends StatelessWidget {
       tokens!.where((token) => token.lemma.saveVocab).map((token) {
         if (!token.lemma.saveVocab) {
           return EmojiChoiceItem(
+            topContent: token.text.content,
             content: token.text.content,
             onTap: () => overlayController!.onClickOverlayMessageToken(token),
-            isSelected: false,
+            isSelected: overlayController?.isTokenSelected(token) ?? false,
           );
         }
 
@@ -88,17 +89,19 @@ class MessageEmojiChoiceRow extends StatelessWidget {
           return Opacity(
             opacity: 0.1,
             child: EmojiChoiceItem(
+              topContent: token.text.content,
               content: token.xpEmoji,
               onTap: () => overlayController!.onClickOverlayMessageToken(token),
-              isSelected: false,
+              isSelected: overlayController?.isTokenSelected(token) ?? false,
             ),
           );
         }
 
         return EmojiChoiceItem(
+          topContent: token.text.content,
           content: emoji,
           onTap: () => overlayController!.onClickOverlayMessageToken(token),
-          isSelected: false,
+          isSelected: overlayController?.isTokenSelected(token) ?? false,
         );
       }).toList();
 

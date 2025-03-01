@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 abstract class AppConfig {
   // #Pangea
@@ -24,7 +22,7 @@ abstract class AppConfig {
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;
   static const double toolbarMaxHeight = 300.0;
-  static const double toolbarMinHeight = 175.0;
+  static const double toolbarMinHeight = 120.0;
   static const double toolbarMinWidth = 350.0;
   static const double toolbarButtonsHeight = 50.0;
   static const double defaultHeaderHeight = 56.0;

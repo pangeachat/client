@@ -1,7 +1,5 @@
 import 'dart:convert';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
+import 'dart:developer';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -10,13 +8,16 @@ import 'package:fluffychat/pangea/events/models/content_feedback.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class LemmaInfoRepo {
   static final GetStorage _lemmaStorage = GetStorage('lemma_storage');
 
   static void set(LemmaInfoRequest request, LemmaInfoResponse response) {
     // set expireAt if not set
-    response.expireAt ??= DateTime.now().add(const Duration(minutes: 1));
+    response.expireAt ??= DateTime.now().add(const Duration(days: 100));
     _lemmaStorage.write(request.storageKey, response.toJson());
   }
 
@@ -25,6 +26,7 @@ class LemmaInfoRepo {
     String? feedback,
     bool useExpireAt = false,
   ]) async {
+    debugger(when: kDebugMode);
     final cachedJson = _lemmaStorage.read(request.storageKey);
 
     final cached =

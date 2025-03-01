@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/chat_input_row.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:flutter/material.dart';
 
 class OverlayFooter extends StatelessWidget {
   final ChatController controller;
@@ -22,7 +21,7 @@ class OverlayFooter extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.only(
-        bottom: bottomSheetPadding + 16,
+        bottom: bottomSheetPadding,
         left: bottomSheetPadding,
         right: bottomSheetPadding,
       ),

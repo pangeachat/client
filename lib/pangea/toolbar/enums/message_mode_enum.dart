@@ -5,13 +5,17 @@ import 'package:material_symbols_icons/symbols.dart';
 enum MessageMode {
   practiceActivity,
 
-  textToSpeech,
-  translation,
-  speechToText,
-
   wordZoom,
+  wordEmoji,
+  wordMeaning,
+  wordMorph,
+  // wordZoomTextToSpeech,
+  // wordZoomSpeechToText,
 
   messageMeaning,
+  messageTextToSpeech,
+  messageSpeechToText,
+  messageTranslation,
 
   // message not selected
   noneSelected,
@@ -20,30 +24,35 @@ enum MessageMode {
 extension MessageModeExtension on MessageMode {
   IconData get icon {
     switch (this) {
-      case MessageMode.translation:
+      case MessageMode.messageTranslation:
         return Icons.g_translate;
-      case MessageMode.textToSpeech:
+      case MessageMode.messageTextToSpeech:
         return Symbols.text_to_speech;
-      case MessageMode.speechToText:
+      case MessageMode.messageSpeechToText:
         return Symbols.speech_to_text;
       case MessageMode.practiceActivity:
         return Symbols.fitness_center;
       case MessageMode.wordZoom:
+      case MessageMode.wordMeaning:
         return Symbols.dictionary;
       case MessageMode.noneSelected:
         return Icons.error;
       case MessageMode.messageMeaning:
         return Icons.star;
+      case MessageMode.wordEmoji:
+        return Icons.emoji_emotions;
+      case MessageMode.wordMorph:
+        return Symbols.toys_and_games;
     }
   }
 
   String title(BuildContext context) {
     switch (this) {
-      case MessageMode.translation:
+      case MessageMode.messageTranslation:
         return L10n.of(context).translations;
-      case MessageMode.textToSpeech:
+      case MessageMode.messageTextToSpeech:
         return L10n.of(context).messageAudio;
-      case MessageMode.speechToText:
+      case MessageMode.messageSpeechToText:
         return L10n.of(context).speechToTextTooltip;
       case MessageMode.practiceActivity:
         return L10n.of(context).practice;
@@ -53,16 +62,23 @@ extension MessageModeExtension on MessageMode {
         return '';
       case MessageMode.messageMeaning:
         return L10n.of(context).meaning;
+      //TODO: add L10n
+      case MessageMode.wordEmoji:
+        return "Emoji";
+      case MessageMode.wordMorph:
+        return "Morph";
+      case MessageMode.wordMeaning:
+        return "Meaning";
     }
   }
 
   String tooltip(BuildContext context) {
     switch (this) {
-      case MessageMode.translation:
+      case MessageMode.messageTranslation:
         return L10n.of(context).translationTooltip;
-      case MessageMode.textToSpeech:
+      case MessageMode.messageTextToSpeech:
         return L10n.of(context).audioTooltip;
-      case MessageMode.speechToText:
+      case MessageMode.messageSpeechToText:
         return L10n.of(context).speechToTextTooltip;
       case MessageMode.practiceActivity:
         return L10n.of(context).practice;
@@ -72,6 +88,13 @@ extension MessageModeExtension on MessageMode {
         return '';
       case MessageMode.messageMeaning:
         return L10n.of(context).meaning;
+      //TODO: add L10n
+      case MessageMode.wordEmoji:
+        return "Emoji";
+      case MessageMode.wordMorph:
+        return "Morph";
+      case MessageMode.wordMeaning:
+        return "Meaning";
     }
   }
 
@@ -79,14 +102,17 @@ extension MessageModeExtension on MessageMode {
     switch (this) {
       case MessageMode.practiceActivity:
         return 0;
-      case MessageMode.textToSpeech:
+      case MessageMode.messageTextToSpeech:
         return 0.33;
-      case MessageMode.translation:
+      case MessageMode.messageTranslation:
         return 1;
-      case MessageMode.speechToText:
+      case MessageMode.messageSpeechToText:
       case MessageMode.wordZoom:
       case MessageMode.noneSelected:
       case MessageMode.messageMeaning:
+      case MessageMode.wordEmoji:
+      case MessageMode.wordMorph:
+      case MessageMode.wordMeaning:
         return 0;
     }
   }
@@ -98,14 +124,17 @@ extension MessageModeExtension on MessageMode {
     if (totallyDone) return true;
 
     switch (this) {
-      case MessageMode.translation:
-      case MessageMode.textToSpeech:
+      case MessageMode.messageTranslation:
+      case MessageMode.messageTextToSpeech:
         return proportionOfActivitiesCompleted >= pointOnBar;
-      case MessageMode.speechToText:
+      case MessageMode.messageSpeechToText:
       case MessageMode.practiceActivity:
-      case MessageMode.wordZoom:
-      case MessageMode.noneSelected:
       case MessageMode.messageMeaning:
+      case MessageMode.wordZoom:
+      case MessageMode.wordEmoji:
+      case MessageMode.wordMorph:
+      case MessageMode.wordMeaning:
+      case MessageMode.noneSelected:
         return true;
     }
   }

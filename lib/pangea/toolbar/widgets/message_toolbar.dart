@@ -21,11 +21,11 @@ import 'package:matrix/matrix_api_lite/model/message_types.dart';
 
 const double minCardHeight = 70;
 
-class MessageToolbar extends StatelessWidget {
+class ReadingAssistanceContentCard extends StatelessWidget {
   final PangeaMessageEvent pangeaMessageEvent;
   final MessageOverlayController overlayController;
 
-  const MessageToolbar({
+  const ReadingAssistanceContentCard({
     super.key,
     required this.pangeaMessageEvent,
     required this.overlayController,
@@ -71,12 +71,12 @@ class MessageToolbar extends StatelessWidget {
     }
 
     switch (overlayController.toolbarMode) {
-      case MessageMode.translation:
+      case MessageMode.messageTranslation:
         return MessageTranslationCard(
           messageEvent: pangeaMessageEvent,
           selection: overlayController.selectedSpan,
         );
-      case MessageMode.textToSpeech:
+      case MessageMode.messageTextToSpeech:
         return MessageAudioCard(
           messageEvent: pangeaMessageEvent,
           overlayController: overlayController,
@@ -84,7 +84,7 @@ class MessageToolbar extends StatelessWidget {
           tts: ttsController,
           setIsPlayingAudio: overlayController.setIsPlayingAudio,
         );
-      case MessageMode.speechToText:
+      case MessageMode.messageSpeechToText:
         return MessageSpeechToTextCard(
           messageEvent: pangeaMessageEvent,
         );
@@ -100,6 +100,9 @@ class MessageToolbar extends StatelessWidget {
         return MessageMeaningCard(controller: overlayController);
       case MessageMode.practiceActivity:
       case MessageMode.wordZoom:
+      case MessageMode.wordEmoji:
+      case MessageMode.wordMorph:
+      case MessageMode.wordMeaning:
         if (overlayController.selectedToken == null) {
           return Padding(
             padding: const EdgeInsets.all(16),

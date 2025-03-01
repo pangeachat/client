@@ -2,13 +2,12 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/reading_assistance_input_bar_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/emoji_practice_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_text_with_audio_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_widget.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/morphs/morphological_center_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/morphs/morphological_list_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +27,7 @@ class WordZoomWidget extends StatelessWidget {
 
   PangeaToken get _selectedToken => overlayController.selectedToken!;
 
-  ReadingAssistanceModeEnum get _mode => overlayController.inputBarMode;
+  MessageMode get _mode => overlayController.toolbarMode;
 
   String? get _selectedMorphFeature => overlayController.selectedMorphFeature;
 
@@ -48,32 +47,36 @@ class WordZoomWidget extends StatelessWidget {
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 minHeight: AppConfig.toolbarMinHeight,
+                minWidth: double.infinity,
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  LemmaWidget(
-                    token: _selectedToken,
-                    pangeaMessageEvent: messageEvent,
-                    // onEdit: () => _setHideCenterContent(true),
-                    onEdit: () {
-                      debugPrint("what are we doing edits with?");
-                    },
-                    onEditDone: () {
-                      debugPrint("what are we doing edits with?");
-                      onEditDone();
-                    },
-                    tts: tts,
-                  ),
-                  EmojiPracticeButton(
-                    token: _selectedToken,
-                    onPressed: () => overlayController.updateInputBarMode(
-                      ReadingAssistanceModeEnum.wordEmojiChoice,
-                    ),
-                    isSelected:
-                        _mode == ReadingAssistanceModeEnum.wordEmojiChoice,
+                  Row(
+                    children: [
+                      EmojiPracticeButton(
+                        token: _selectedToken,
+                        onPressed: () => overlayController.updateToolbarMode(
+                          MessageMode.wordEmoji,
+                        ),
+                        isSelected: _mode == MessageMode.wordEmoji,
+                      ),
+                      LemmaWidget(
+                        token: _selectedToken,
+                        pangeaMessageEvent: messageEvent,
+                        // onEdit: () => _setHideCenterContent(true),
+                        onEdit: () {
+                          debugPrint("what are we doing edits with?");
+                        },
+                        onEditDone: () {
+                          debugPrint("what are we doing edits with?");
+                          onEditDone();
+                        },
+                        tts: tts,
+                      ),
+                    ],
                   ),
                   LemmaMeaningWidget(
                     token: token,
@@ -81,7 +84,7 @@ class WordZoomWidget extends StatelessWidget {
                     controller: overlayController,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       if (!_selectedToken.doesLemmaTextMatchTokenText)
                         WordTextWithAudioButton(
@@ -92,22 +95,22 @@ class WordZoomWidget extends StatelessWidget {
                         pangeaMessageEvent: messageEvent,
                         token: token,
                         setMorphFeature: (feature) =>
-                            overlayController.updateInputBarMode(
-                          ReadingAssistanceModeEnum.morph,
-                          feature: feature,
+                            overlayController.updateToolbarMode(
+                          MessageMode.wordMorph,
+                          feature,
                         ),
                         selectedMorphFeature: _selectedMorphFeature,
                       ),
                     ],
                   ),
-                  if (_selectedMorphFeature != null)
-                    MorphologicalCenterWidget(
-                      token: token,
-                      morphFeature: _selectedMorphFeature!,
-                      pangeaMessageEvent: messageEvent,
-                      overlayController: overlayController,
-                      onEditDone: onEditDone,
-                    ),
+                  // if (_selectedMorphFeature != null)
+                  //   MorphologicalCenterWidget(
+                  //     token: token,
+                  //     morphFeature: _selectedMorphFeature!,
+                  //     pangeaMessageEvent: messageEvent,
+                  //     overlayController: overlayController,
+                  //     onEditDone: onEditDone,
+                  //   ),
                 ],
               ),
             ),

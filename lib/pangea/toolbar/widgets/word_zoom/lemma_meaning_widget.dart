@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_zoom_activity_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -84,12 +85,13 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
       feature: null,
       tag: null,
     )) {
-      return IconButton(
+      return WordZoomActivityButton(
+        icon: const Icon(Symbols.dictionary),
+        isSelected: widget.controller.toolbarMode == MessageMode.wordMeaning,
         onPressed: () {
           // TODO: it would be better to explicitly set to wordMeaningChoice here
-          widget.controller.updateToolbarMode(MessageMode.wordZoom);
+          widget.controller.updateToolbarMode(MessageMode.wordMeaning);
         },
-        icon: const Icon(Symbols.dictionary),
       );
     }
 
