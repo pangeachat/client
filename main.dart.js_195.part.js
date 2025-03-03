@@ -352,9 +352,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participantes";
     },
-    get$create(_) {
-      return "Crear";
-    },
     createdTheChat$1(username) {
       return "\ud83d\udcac" + username + " cre\xf3 el chat";
     },
@@ -489,6 +486,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$goToTheNewRoom() {
       return "Ir a la nueva sala";
+    },
+    get$chatDescription() {
+      return "Descripci\xf3n del chat";
     },
     get$groups() {
       return "Grupos";
@@ -4192,6 +4192,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_195", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "K78Teb3fdF+91w8yzf8lfZ6x+9o=");
+})($__dart_deferred_initializers__, "3sGrlfE52k2VuelLDi99aEI44G4=");
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map

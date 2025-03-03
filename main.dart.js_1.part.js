@@ -358,9 +358,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " \u540d\u53c2\u4e0e\u8005";
     },
-    get$create(_) {
-      return "\u521b\u5efa";
-    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " \u521b\u5efa\u4e86\u804a\u5929";
     },
@@ -495,6 +492,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$goToTheNewRoom() {
       return "\u524d\u5f80\u65b0\u7684\u804a\u5929\u5ba4";
+    },
+    get$chatDescription() {
+      return "\u804a\u5929\u63cf\u8ff0";
     },
     get$groups() {
       return "\u7fa4\u7ec4";
@@ -4515,9 +4515,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " \u500b\u53c3\u8207\u8005";
     },
-    get$create(_) {
-      return "\u5efa\u7acb";
-    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " \u5efa\u7acb\u4e86\u804a\u5929\u5ba4";
     },
@@ -4652,6 +4649,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$goToTheNewRoom() {
       return "\u524d\u5f80\u65b0\u804a\u5929\u5ba4";
+    },
+    get$chatDescription() {
+      return "\u804a\u5929\u5ba4\u63cf\u8ff0";
     },
     get$groups() {
       return "\u7fa4\u7d44";
@@ -5515,6 +5515,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "qKHVnRPJTRS4wfvtgcC0SNpatl0=");
+})($__dart_deferred_initializers__, "1RRjmahZGx2Zl4CsUKT57+K7DC0=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
