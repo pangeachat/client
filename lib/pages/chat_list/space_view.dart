@@ -375,21 +375,28 @@ class _SpaceViewState extends State<SpaceView> {
         await activeSpace.postLoad();
 
         if (roomType == AddRoomType.subspace) {
-          roomId = await client.createSpace(
-            name: names,
-            visibility: activeSpace.joinRules == JoinRules.public
-                ? sdk.Visibility.public
-                : sdk.Visibility.private,
-          );
+          // #Pangea
+          // roomId = await client.createSpace(
+          //   name: names,
+          //   visibility: activeSpace.joinRules == JoinRules.public
+          //       ? sdk.Visibility.public
+          //       : sdk.Visibility.private,
+          // );
+          // Pangea#
         } else {
           roomId = await client.createGroupChat(
             groupName: names,
-            preset: activeSpace.joinRules == JoinRules.public
-                ? CreateRoomPreset.publicChat
-                : CreateRoomPreset.privateChat,
-            visibility: activeSpace.joinRules == JoinRules.public
-                ? sdk.Visibility.public
-                : sdk.Visibility.private,
+            // #Pangea
+            // preset: activeSpace.joinRules == JoinRules.public
+            //     ? CreateRoomPreset.publicChat
+            //     : CreateRoomPreset.privateChat,
+            // visibility: activeSpace.joinRules == JoinRules.public
+            //     ? sdk.Visibility.public
+            //     : sdk.Visibility.private,
+            preset: sdk.CreateRoomPreset.publicChat,
+            visibility: sdk.Visibility.private,
+            enableEncryption: false,
+            // Pangea#
           );
         }
         await activeSpace.setSpaceChild(roomId);
