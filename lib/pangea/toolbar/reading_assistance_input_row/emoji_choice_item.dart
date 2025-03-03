@@ -5,6 +5,7 @@ class EmojiChoiceItem extends StatelessWidget {
   const EmojiChoiceItem({
     super.key,
     this.topContent,
+    this.textSize = 24,
     required this.content,
     required this.onTap,
     required this.isSelected,
@@ -14,6 +15,7 @@ class EmojiChoiceItem extends StatelessWidget {
   final String content;
   final void Function() onTap;
   final bool isSelected;
+  final double textSize;
 
   @override
   Widget build(BuildContext context) {
@@ -34,16 +36,16 @@ class EmojiChoiceItem extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              Text(
-                content,
-                style: const TextStyle(fontSize: 24),
-              ),
               if (topContent != null)
                 Text(
                   // "hey",
                   topContent!,
-                  style: const TextStyle(fontSize: 24),
+                  style: TextStyle(fontSize: textSize),
                 ),
+              Text(
+                content,
+                style: TextStyle(fontSize: textSize),
+              ),
             ],
           ),
         ),

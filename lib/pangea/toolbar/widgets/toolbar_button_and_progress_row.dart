@@ -12,10 +12,12 @@ import 'package:matrix/matrix.dart';
 class ToolbarButtonAndProgressRow extends StatelessWidget {
   final Event event;
   final MessageOverlayController overlayController;
+  final bool shouldShowToolbarButtons;
 
   const ToolbarButtonAndProgressRow({
     required this.event,
     required this.overlayController,
+    required this.shouldShowToolbarButtons,
     super.key,
   });
 
@@ -24,11 +26,10 @@ class ToolbarButtonAndProgressRow extends StatelessWidget {
 
   static const double iconWidth = 36.0;
   static const double buttonSize = 40.0;
-  static const double totalRowWidth = 250.0;
 
   @override
   Widget build(BuildContext context) {
-    if (event.messageType == MessageTypes.Audio) {
+    if (event.messageType == MessageTypes.Audio || !shouldShowToolbarButtons) {
       return const SizedBox();
     }
 
@@ -36,31 +37,28 @@ class ToolbarButtonAndProgressRow extends StatelessWidget {
       return const SizedBox();
     }
 
-    return SizedBox(
-      width: totalRowWidth,
-      height: AppConfig.toolbarButtonsHeight,
+    return Container(
+      height: AppConfig.toolbarButtonAndProgressColumnHeight,
+      width: AppConfig.toolbarButtonsColumnWidth,
+      decoration: BoxDecoration(
+        color: MessageModeExtension.barAndLockedButtonColor(context),
+        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+      ),
+      // margin: const EdgeInsets.symmetric(horizontal: iconWidth / 2),
       child: Stack(
         alignment: Alignment.center,
         children: [
           Stack(
             children: [
-              Container(
-                width: totalRowWidth,
-                height: 12,
-                decoration: BoxDecoration(
-                  color: MessageModeExtension.barAndLockedButtonColor(context),
-                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                ),
-                margin: const EdgeInsets.symmetric(horizontal: iconWidth / 2),
-              ),
               AnimatedContainer(
                 duration: FluffyThemes.animationDuration,
-                height: 12,
-                width: overlayController.isPracticeComplete
-                    ? totalRowWidth
+                width: AppConfig.toolbarButtonsColumnWidth,
+                height: overlayController.isPracticeComplete
+                    ? AppConfig.toolbarButtonAndProgressColumnHeight
                     : min(
-                        totalRowWidth,
-                        totalRowWidth * proportionOfActivitiesCompleted!,
+                        AppConfig.toolbarButtonAndProgressColumnHeight,
+                        AppConfig.toolbarButtonAndProgressColumnHeight *
+                            proportionOfActivitiesCompleted!,
                       ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(AppConfig.borderRadius),
@@ -70,17 +68,16 @@ class ToolbarButtonAndProgressRow extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
             children: [
               MessageMeaningButton(
                 buttonSize: buttonSize,
                 overlayController: overlayController,
               ),
               SizedBox(
-                width:
-                    MessageMode.messageTextToSpeech.pointOnBar * totalRowWidth -
-                        buttonSize,
+                height: MessageMode.messageTextToSpeech.pointOnBar *
+                        AppConfig.toolbarButtonAndProgressColumnHeight -
+                    buttonSize,
               ),
               ToolbarButton(
                 mode: MessageMode.messageTextToSpeech,
@@ -88,9 +85,10 @@ class ToolbarButtonAndProgressRow extends StatelessWidget {
                 buttonSize: buttonSize,
               ),
               SizedBox(
-                width: MessageMode.messageTranslation.pointOnBar *
-                        totalRowWidth -
-                    MessageMode.messageTextToSpeech.pointOnBar * totalRowWidth -
+                height: MessageMode.messageTranslation.pointOnBar *
+                        AppConfig.toolbarButtonAndProgressColumnHeight -
+                    MessageMode.messageTextToSpeech.pointOnBar *
+                        AppConfig.toolbarButtonAndProgressColumnHeight -
                     buttonSize -
                     buttonSize,
               ),

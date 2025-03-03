@@ -77,6 +77,7 @@ class ChatInputRow extends StatelessWidget {
 
     return Column(
       children: [
+        // if (!controller.selectMode) WritingAssistanceInputRow(controller),
         CompositedTransformTarget(
           link: controller.choreographer.inputLayerLinkAndKey.link,
           child: Row(

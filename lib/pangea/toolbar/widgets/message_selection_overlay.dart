@@ -249,38 +249,74 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     setState(() {});
   }
 
-  void updateToolbarMode(MessageMode mode, [String? feature]) {
-    setState(() {
-      if (MessageMode.wordMorph == mode) {
-        debugger(when: kDebugMode && selectedToken == null);
-        selectedMorphFeature = feature ??
-            selectedToken?.nextMorphFeatureEligibleForActivity ??
-            "pos";
-      } else {
-        selectedMorphFeature = null;
-      }
+  void updateToolbarMode(MessageMode mode, [String? feature]) => setState(() {
+        debugger(
+          when: kDebugMode &&
+              selectedToken == null &&
+              [
+                MessageMode.wordMorph,
+                MessageMode.wordZoom,
+                MessageMode.wordEmoji,
+                MessageMode.wordZoom,
+              ].contains(mode),
+        );
 
-      // only practiceActivity and wordZoom make sense with selectedSpan
-      // if (![MessageMode.practiceActivity, MessageMode.wordZoom, MessageMode.wordEmoji, MessageMode.wordMeaning, MessageMode.wordMorph].contains(mode)) {
-      //     .contains(mode)) {
-      //   debugPrint("updateToolbarMode: $mode - clearing selectedSpan");
-      //   _selectedSpan = null;
-      // }
-      if (mode != MessageMode.messageTextToSpeech) {
-        _highlightedTokens = null;
-      }
-      if (toolbarMode == mode) {
-        if (selectedToken == null) {
-          toolbarMode = MessageMode.noneSelected;
-          selectedMorphFeature = null;
+        if (toolbarMode == mode) {
+          if (selectedToken == null) {
+            toolbarMode = MessageMode.noneSelected;
+            selectedMorphFeature = null;
+          } else {
+            toolbarMode = MessageMode.wordZoom;
+          }
         } else {
-          toolbarMode = MessageMode.wordZoom;
+          switch (mode) {
+            case MessageMode.noneSelected:
+              selectedMorphFeature = null;
+              break;
+            case MessageMode.wordMorph:
+              selectedMorphFeature =
+                  feature ?? selectedToken?.nextMorphFeatureEligibleForActivity;
+              if (selectedMorphFeature == null) {
+                updateToolbarMode(MessageMode.wordZoom);
+                return;
+              }
+              break;
+            case MessageMode.wordZoom:
+              selectedMorphFeature = null;
+              break;
+            case MessageMode.wordEmoji:
+              selectedMorphFeature = null;
+              break;
+            case MessageMode.wordMeaning:
+              selectedMorphFeature = null;
+              break;
+            case MessageMode.practiceActivity:
+              if (messageAnalyticsEntry?.nextActivity?.activityType ==
+                  ActivityTypeEnum.hiddenWordListening) {
+                _lockActivity();
+              }
+              break;
+            case MessageMode.messageTextToSpeech:
+              if (isPlayingAudio) {
+                //TODO stop audio
+              } else {
+                // Play audio
+              }
+              break;
+            case MessageMode.messageSpeechToText:
+              break;
+            case MessageMode.messageTranslation:
+              break;
+            case MessageMode.messageMeaning:
+              break;
+          }
+
+          toolbarMode = mode;
+          if (mode != MessageMode.messageTextToSpeech) {
+            _highlightedTokens = null;
+          }
         }
-        return;
-      }
-      toolbarMode = mode;
-    });
-  }
+      });
 
   /////////////////////////////////////
   /// Getters

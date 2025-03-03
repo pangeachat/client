@@ -5,7 +5,6 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_message.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_and_progress_row.dart';
 import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
@@ -84,11 +83,6 @@ class OverlayCenterContent extends StatelessWidget {
                     chatController.timeline!,
                   ),
                 ),
-              ),
-            if (shouldShowToolbarButtons)
-              ToolbarButtonAndProgressRow(
-                event: event,
-                overlayController: overlayController,
               ),
           ],
         ),

@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class WordTextWithAudioButton extends StatefulWidget {
   final String text;
@@ -24,9 +23,13 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
   @override
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
-      link: MatrixState.pAnyState.layerLinkAndKey('text-audio-button').link,
+      link: MatrixState.pAnyState
+          .layerLinkAndKey('text-audio-button ${widget.text}')
+          .link,
       child: MouseRegion(
-        key: MatrixState.pAnyState.layerLinkAndKey('text-audio-button').key,
+        key: MatrixState.pAnyState
+            .layerLinkAndKey('text-audio-button ${widget.text}')
+            .key,
         cursor: SystemMouseCursors.click,
         onEnter: (event) => setState(() {}),
         onExit: (event) => setState(() {}),

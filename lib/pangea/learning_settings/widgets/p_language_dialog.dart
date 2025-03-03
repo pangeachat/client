@@ -1,16 +1,15 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/language_list_util.dart';
+import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'p_language_dropdown.dart';
@@ -37,8 +36,8 @@ Future<void> pLanguageDialog(
     selectedTargetLanguage = userL2;
   } else {
     selectedTargetLanguage = selectedSourceLanguage?.langCode != 'en'
-        ? PangeaLanguage.byLangCode('en')!
-        : PangeaLanguage.byLangCode('es')!;
+        ? PLanguageStore.byLangCode('en')!
+        : PLanguageStore.byLangCode('es')!;
   }
 
   return showDialog(

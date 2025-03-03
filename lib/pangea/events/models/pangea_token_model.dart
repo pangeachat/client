@@ -22,7 +22,6 @@ import 'package:fluffychat/pangea/toolbar/repo/lemma_activity_generator.dart';
 import 'package:fluffychat/pangea/toolbar/repo/lemma_meaning_activity_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/foundation.dart';
-import 'package:matrix/matrix.dart';
 
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
@@ -636,27 +635,9 @@ class PangeaToken {
 
   /// [getEmoji] gets the emoji for the lemma
   /// NOTE: assumes that the language of the lemma is the same as the user's current l2
-  String? getEmoji() {
-    final analyticsRoom =
-        MatrixState.pangeaController.matrixState.client.analyticsRoomLocal();
-    return analyticsRoom
-        ?.getState(PangeaEventTypes.userChosenEmoji, vocabConstructID.string)
-        ?.content
-        .tryGet<String>(ModelKey.emoji);
-  }
+  String? getEmoji() => vocabConstructID.userSetEmoji;
 
-  String get xpEmoji {
-    if (vocabConstruct.points < 30) {
-      // bean emoji
-      return "🫛";
-    } else if (vocabConstruct.points < 100) {
-      // sprout emoji
-      return "🌱";
-    } else {
-      // flower emoji
-      return "🌺";
-    }
-  }
+  String get xpEmoji => vocabConstruct.xpEmoji;
 
   ConstructLevelEnum get lemmaXPCategory {
     if (vocabConstruct.points >= AnalyticsConstants.xpForFlower) {

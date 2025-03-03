@@ -24,7 +24,8 @@ abstract class AppConfig {
   static const double toolbarMaxHeight = 300.0;
   static const double toolbarMinHeight = 120.0;
   static const double toolbarMinWidth = 350.0;
-  static const double toolbarButtonsHeight = 50.0;
+  static const double toolbarButtonsColumnWidth = 50.0;
+  static const double toolbarButtonAndProgressColumnHeight = 300.0;
   static const double defaultHeaderHeight = 56.0;
   static const double defaultFooterHeight = 48.0;
   static const double toolbarSpacing = 8.0;

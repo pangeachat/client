@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
@@ -12,6 +13,7 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/overlay_f
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_and_progress_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
@@ -197,21 +199,23 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     return _mediaQuery!.size.height - _messageOffset!.dy - _messageHeight;
   }
 
-  double? get _messageLeftOffset {
+  double get _messageLeftOffset {
     if (_messageOffset == null ||
         widget.event.senderId == widget.event.room.client.userID) {
-      return null;
+      // TODO: figure out the standard offset for other messages
+      // ie what's the size of the avatar + padding block
+      return 50;
     }
 
     return _messageOffset!.dx - _columnWidth - _horizontalPadding;
   }
 
-  double? get _messageRightOffset {
+  double get _messageRightOffset {
     if (_messageOffset == null ||
         _mediaQuery == null ||
         _messageSize == null ||
         widget.event.senderId != widget.event.room.client.userID) {
-      return null;
+      return 0;
     }
 
     return _mediaQuery!.size.width -
@@ -254,7 +258,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       widget.pangeaMessageEvent!.event.messageType == MessageTypes.Text;
 
   double get _toolbarButtonsHeight =>
-      showToolbarButtons ? AppConfig.toolbarButtonsHeight : 0;
+      showToolbarButtons ? AppConfig.toolbarButtonsColumnWidth : 0;
 
   bool get _hasReactions {
     final reactionsEvents = widget.event.aggregatedEvents(
@@ -367,18 +371,22 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
             builder: (context, child) {
               return Positioned(
                 // subtract width of
-                left: _messageLeftOffset,
+                left: min(
+                  _messageLeftOffset - AppConfig.toolbarButtonsColumnWidth,
+                  0,
+                ),
                 right: _messageRightOffset,
                 bottom: _overlayPositionAnimation?.value ??
                     _totalToolbarBottomOffset,
                 child: Row(
                   children: [
                     // fixed height and width container
-                    SizedBox(
-                      height: _messageHeight,
-                      width: _messageSize!.width,
-                    ),
 
+                    ToolbarButtonAndProgressRow(
+                      event: widget.event,
+                      overlayController: widget.overlayController,
+                      shouldShowToolbarButtons: showToolbarButtons,
+                    ),
                     OverlayCenterContent(
                       messageHeight: _messageHeight,
                       messageWidth: _messageSize!.width,

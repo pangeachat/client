@@ -1,11 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_list_view.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_mode_list_repo.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
@@ -19,9 +14,12 @@ import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/language_list_util.dart';
+import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix.dart';
 
 enum _PageMode {
   settings,
@@ -281,7 +279,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                           () => _selectedLanguageOfInstructions = val.langCode,
                         ),
                         initialLanguage: _selectedLanguageOfInstructions != null
-                            ? PangeaLanguage.byLangCode(
+                            ? PLanguageStore.byLangCode(
                                 _selectedLanguageOfInstructions!,
                               )
                             : MatrixState
@@ -298,7 +296,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                           () => _selectedTargetLanguage = val.langCode,
                         ),
                         initialLanguage: _selectedTargetLanguage != null
-                            ? PangeaLanguage.byLangCode(
+                            ? PLanguageStore.byLangCode(
                                 _selectedTargetLanguage!,
                               )
                             : MatrixState

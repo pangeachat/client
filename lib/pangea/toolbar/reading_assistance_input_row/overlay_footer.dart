@@ -17,6 +17,7 @@ class OverlayFooter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //@ggurdin can we change this mobile padding to 0? seems a some extrea space on mobile
     final bottomSheetPadding = FluffyThemes.isColumnMode(context) ? 16.0 : 8.0;
 
     return Container(
