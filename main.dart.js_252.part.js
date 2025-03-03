@@ -2,1452 +2,1452 @@
 ((s, d, e) => {
   s[d] = s[d] || {};
   s[d][e] = s[d][e] || [];
-  s[d][e].push({p: "main.dart.js_233", e: "beginPart"});
+  s[d][e].push({p: "main.dart.js_252", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nIt$() {
-      return new A.L10nIt(B.canonicalizedLocale("it"));
+    L10nSr$() {
+      return new A.L10nSr(B.canonicalizedLocale("sr"));
     },
-    L10nIt: function L10nIt(t0) {
+    L10nSr: function L10nSr(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[51];
-  A = hunkHelpers.updateHolder(holdersList[31], A);
-  A.L10nIt.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[44], A);
+  A.L10nSr.prototype = {
     get$alwaysUse24HourFormat() {
-      return "disattivato";
+      return "false";
     },
     get$repeatPassword() {
-      return "Ripeti password";
+      return "Repeat password";
     },
     get$notAnImage() {
-      return "Non \xe8 un file immagine.";
+      return "Not an image file.";
     },
     get$remove(_) {
-      return "Rimuovi";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438";
     },
     get$importNow() {
-      return "Importa ora";
+      return "Import now";
     },
     get$importEmojis() {
-      return "Importa Emoji";
+      return "Import Emojis";
     },
     get$importFromZipFile() {
-      return "Importa da file .zip";
+      return "Import from .zip file";
     },
     get$exportEmotePack() {
-      return "Esporta pack di Emote come .zip";
+      return "Export Emote pack as .zip";
     },
     get$replace(_) {
-      return "Sostituisci";
+      return "Replace";
     },
     aboutHomeserver$1(homeserver) {
-      return "Informazioni su " + homeserver;
+      return "About " + homeserver;
     },
     get$accept(_) {
-      return "Accetta";
+      return "\u041f\u0440\u0438\u0445\u0432\u0430\u0442\u0438";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " ha accettato l'invito";
+      return username + " \u043f\u0440\u0438\u0445\u0432\u0430\u0442\u0430 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0443";
     },
     get$account() {
-      return "Account";
+      return "\u041d\u0430\u043b\u043e\u0433";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " ha abilitato la crittografia end to end";
+      return username + " \u0443\u043a\u0459\u0443\u0447\u0438 \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0435 \u0441 \u043a\u0440\u0430\u0458\u0430 \u043d\u0430 \u043a\u0440\u0430\u0458";
     },
     get$addEmail() {
-      return "Aggiungi e-mail";
+      return "\u0414\u043e\u0434\u0430\u0458 \u0435-\u0430\u0434\u0440\u0435\u0441\u0443";
     },
     supposedMxid$1(mxid) {
-      return "Dovrebbe essere " + mxid;
+      return "This should be " + mxid;
     },
     get$addToSpace() {
-      return "Aggiungi a uno spazio";
+      return "Add to space";
     },
     get$admin() {
-      return "Amministratore";
+      return "\u0410\u0434\u043c\u0438\u043d";
     },
     get$alias() {
-      return "alias";
+      return "\u0430\u043b\u0438\u0458\u0430\u0441";
     },
     get$all() {
-      return "Tutto";
+      return "\u0421\u0432\u0438";
     },
     get$commandHint_googly() {
-      return "Invia degli occhi finti";
+      return "Send some googly eyes";
     },
     get$commandHint_cuddle() {
-      return "Invia una coccola";
+      return "Send a cuddle";
     },
     get$commandHint_hug() {
-      return "Invia un abbraccio";
+      return "Send a hug";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " ti ha inviato degli occhi finti";
+      return senderName + " sends you googly eyes";
     },
     cuddleContent$1(senderName) {
-      return senderName + " ti coccola";
+      return senderName + " cuddles you";
     },
     hugContent$1(senderName) {
-      return senderName + " ti abbraccia";
+      return senderName + " hugs you";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " ha risposto alla chiamata";
+      return senderName + " \u043e\u0434\u0433\u043e\u0432\u043e\u0440\u0438 \u043d\u0430 \u043f\u043e\u0437\u0438\u0432";
     },
     get$anyoneCanJoin() {
-      return "Tutti possono partecipare";
+      return "\u0441\u0432\u0430\u043a\u043e \u043c\u043e\u0436\u0435 \u0434\u0430 \u0441\u0435 \u043f\u0440\u0438\u0434\u0440\u0443\u0436\u0438";
     },
     get$archive() {
-      return "Archivia";
+      return "\u0410\u0440\u0445\u0438\u0432\u0430";
     },
     get$areGuestsAllowedToJoin() {
-      return "Gli utenti ospiti possono partecipare";
+      return "\u0414\u0430 \u043b\u0438 \u0458\u0435 \u0433\u043e\u0441\u0442\u0438\u043c\u0430 \u0434\u043e\u0437\u0432\u043e\u0459\u0435\u043d \u043f\u0440\u0438\u0441\u0442\u0443\u043f";
     },
     get$areYouSure() {
-      return "Sei sicuro/a?";
+      return "\u0421\u0438\u0433\u0443\u0440\u043d\u0438 \u0441\u0442\u0435?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Sei sicuro/a di voler uscire?";
+      return "\u0417\u0430\u0438\u0441\u0442\u0430 \u0436\u0435\u043b\u0438\u0442\u0435 \u0434\u0430 \u0441\u0435 \u043e\u0434\u0458\u0430\u0432\u0438\u0442\u0435?";
     },
     get$askSSSSSign() {
-      return "Per far accedere l'altra persona, per favore inserisci la tua frase segreta o chiave di recupero.";
+      return "\u0414\u0430 \u0431\u0438\u0441\u0442\u0435 \u043c\u043e\u0433\u043b\u0438 \u0434\u0430 \u043f\u0440\u0438\u0458\u0430\u0432\u0438\u0442\u0435 \u0434\u0440\u0443\u0433\u0443 \u043e\u0441\u043e\u0431\u0443, \u0443\u043d\u0435\u0441\u0438\u0442\u0435 \u0441\u0432\u043e\u0458\u0443 \u0431\u0435\u0437\u0431\u0435\u0434\u043d\u043e\u0441\u043d\u0443 \u0444\u0440\u0430\u0437\u0443 \u0438\u043b\u0438 \u043a\u0459\u0443\u0447 \u043e\u043f\u043e\u0440\u0430\u0432\u043a\u0430.";
     },
     askVerificationRequest$1(username) {
-      return "Accettare questa richiesta di verifica da " + username + "?";
+      return "\u041f\u0440\u0438\u0445\u0432\u0430\u0442\u0430\u0442\u0435 \u043b\u0438 \u0437\u0430\u0445\u0442\u0435\u0432 \u0437\u0430 \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0458\u0443 \u043e\u0434 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "L'homeserver supporta i tipi di accesso:\n" + serverVersions + "\nMa questa applicazione supporta solo:\n" + supportedVersions;
+      return "\u0414\u043e\u043c\u0430\u045b\u0438 \u0441\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0434\u0440\u0436\u0430\u0432\u0430 \u043d\u0430\u0447\u0438\u043d\u0435 \u043f\u0440\u0438\u0458\u0430\u0432\u0435:\n" + serverVersions + "\n\u0430\u043b\u0438 \u043e\u0432\u0430 \u0430\u043f\u043b\u0438\u043a\u0430\u0446\u0438\u0458\u0430 \u043f\u043e\u0434\u0440\u0436\u0430\u0432\u0430 \u0441\u0430\u043c\u043e:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Invia notifiche di scrittura";
+      return "Send typing notifications";
     },
     get$swipeRightToLeftToReply() {
-      return "Scorri da destra a sinistra per rispondere";
+      return "Swipe right to left to reply";
     },
     get$sendOnEnter() {
-      return "Invia quando premi Invio";
+      return "Send on enter";
     },
     badServerVersionsException$4(serverVersions, supportedVersions, serverVerions, suportedVersions) {
-      return "L'homeserver supporta le versioni Spec:\n" + serverVersions + "\nMa questa applicazione supporta solo " + supportedVersions;
+      return "\u0414\u043e\u043c\u0430\u045b\u0438 \u0441\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0434\u0440\u0436\u0430\u0432\u0430 \u0432\u0435\u0440\u0437\u0438\u0458\u0435:\n" + serverVersions + "\n\u0430\u043b\u0438 \u043e\u0432\u0430 \u0430\u043f\u043b\u0438\u043a\u0430\u0446\u0438\u0458\u0430 \u043f\u043e\u0434\u0440\u0436\u0430\u0432\u0430 \u0441\u0430\u043c\u043e " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " chat e " + participants + " partecipanti";
+      return "" + chats + " chats and " + participants + " participants";
     },
     get$noMoreChatsFound() {
-      return "Non sono state trovate altre chat...";
+      return "No more chats found...";
     },
     get$noChatsFoundHere() {
-      return "Nessuna chat trovata. Inizia una nuova chat con qualcuno usando il pulsante qui sotto. \u2935\ufe0f";
+      return "No chats found here yet. Start a new chat with someone by using the button below. \u2935\ufe0f";
     },
     get$unread() {
-      return "Non letti";
+      return "Unread";
     },
     get$space() {
-      return "Spazio";
+      return "Space";
     },
     get$spaces() {
-      return "Spazi";
+      return "Spaces";
     },
     get$banFromChat() {
-      return "Bandisci dalla chat";
+      return "\u0417\u0430\u0431\u0440\u0430\u043d\u0438 \u0443 \u045b\u0430\u0441\u043a\u0430\u045a\u0443";
     },
     get$banned() {
-      return "Bandito";
+      return "\u0417\u0430\u0431\u0440\u0430\u045a\u0435\u043d";
     },
     bannedUser$2(username, targetName) {
-      return username + " ha bandito " + targetName;
+      return username + " \u0437\u0430\u0431\u0440\u0430\u043d\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$blockDevice() {
-      return "Blocca dispositivo";
+      return "\u0411\u043b\u043e\u043a\u0438\u0440\u0430\u0458 \u0443\u0440\u0435\u0452\u0430\u0458";
     },
     get$blocked() {
-      return "Bloccato";
+      return "\u0411\u043b\u043e\u043a\u0438\u0440\u0430\u043d";
     },
     get$botMessages() {
-      return "Messaggi bot";
+      return "\u041f\u043e\u0440\u0443\u043a\u0435 \u0411\u043e\u0442\u0430";
     },
     get$cancel(_) {
-      return "Annulla";
+      return "\u041e\u0442\u043a\u0430\u0436\u0438";
     },
     cantOpenUri$1(uri) {
-      return "Impossibile aprire l'URI " + uri;
+      return "Can't open the URI " + uri;
     },
     get$changeDeviceName() {
-      return "Cambia nome dispositivo";
+      return "\u041f\u0440\u043e\u043c\u0435\u043d\u0438 \u043d\u0430\u0437\u0438\u0432 \u0443\u0440\u0435\u0452\u0430\u0458\u0430";
     },
     changedTheChatAvatar$1(username) {
-      return username + " ha cambiato l'avatar della discussione";
+      return username + " \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u0430\u0432\u0430\u0442\u0430\u0440 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " ha cambiato la descrizione della chat in: \xab" + description + "\xbb";
+      return username + " \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u043e\u043f\u0438\u0441 \u045b\u0430\u0441\u043a\u0430\u045a\u0430 \u0443: \u201e" + description + "\u201c";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " ha cambiato il nome della discussione in: \xab" + chatname + "\xbb";
+      return username + " \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u043d\u0430\u0437\u0438\u0432 \u045b\u0430\u0441\u043a\u0430\u045a\u0430 \u0443: \u201e" + chatname + "\u201c";
     },
     changedTheChatPermissions$1(username) {
-      return username + " ha cambiato i permessi della chat";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0434\u043e\u0437\u0432\u043e\u043b\u0435 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " ha cambiato nome in: '" + displayname + "'";
+      return username + " \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u043f\u0440\u0438\u043a\u0430\u0437\u043d\u043e \u0438\u043c\u0435 \u043d\u0430: \u201e" + displayname + "\u201c";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " ha cambiato le regole di accesso per ospiti";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0437\u0430 \u043f\u0440\u0438\u0441\u0442\u0443\u043f \u0433\u043e\u0441\u0442\u0438\u0458\u0443";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " ha cambiato le regole di accesso per ospiti con: " + rules;
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0437\u0430 \u043f\u0440\u0438\u0441\u0442\u0443\u043f \u0433\u043e\u0441\u0442\u0438\u0458\u0443 \u043d\u0430: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " ha cambiato la visibilit\xe0 della cronologia";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0432\u0438\u0434\u0459\u0438\u0432\u043e\u0441\u0442 \u0438\u0441\u0442\u043e\u0440\u0438\u0458\u0435";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " ha cambiato la visibilit\xe0 della cronologia in: " + rules;
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0432\u0438\u0434\u0459\u0438\u0432\u043e\u0441\u0442 \u0438\u0441\u0442\u043e\u0440\u0438\u0458\u0435 \u043d\u0430: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " ha cambiato le regole per unirsi";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0430\u045a\u0430";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " ha cambiato le regole per unirsi in: " + joinRules;
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0430\u045a\u0430 \u043d\u0430: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " ha cambiato il suo avatar";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0441\u0432\u043e\u0458 \u0430\u0432\u0430\u0442\u0430\u0440";
     },
     changedTheRoomAliases$1(username) {
-      return username + " ha cambiato il nome delle stanze";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0430\u043b\u0438\u0458\u0430\u0441 \u0441\u043e\u0431\u0435";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " ha cambiato il link di invito";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0432\u0435\u0437\u0443 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0435";
     },
     get$changePassword() {
-      return "Cambia la password";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438 \u043b\u043e\u0437\u0438\u043d\u043a\u0443";
     },
     get$changeTheme() {
-      return "Cambia il tuo stile";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u0435 \u0438\u0437\u0433\u043b\u0435\u0434";
     },
     get$changeYourAvatar() {
-      return "Cambia il tuo avatar";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u0435 \u0441\u0432\u043e\u0458 \u0430\u0432\u0430\u0442\u0430\u0440";
     },
     get$channelCorruptedDecryptError() {
-      return "La crittografia \xe8 corrotta";
+      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0435 \u0458\u0435 \u043f\u043e\u043a\u0432\u0430\u0440\u0435\u043d\u043e";
     },
     get$chat() {
-      return "Chat";
+      return "\u040b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$chatDetails() {
-      return "Dettagli chat";
+      return "\u0414\u0435\u0442\u0430\u0459\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     get$chats() {
-      return "Discussioni";
+      return "\u040b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     get$chooseAStrongPassword() {
-      return "Scegli una password complessa";
+      return "\u0418\u0437\u0430\u0431\u0435\u0440\u0438\u0442\u0435 \u0458\u0430\u043a\u0443 \u043b\u043e\u0437\u0438\u043d\u043a\u0443";
     },
     get$clearArchive() {
-      return "Cancella archivio";
+      return "\u041e\u0447\u0438\u0441\u0442\u0438 \u0430\u0440\u0445\u0438\u0432\u0443";
     },
     get$close(_) {
-      return "Chiudi";
+      return "\u0417\u0430\u0442\u0432\u043e\u0440\u0438";
     },
     get$commandHint_markasdm() {
-      return "Contrassegna questo Matrix ID come stanza di messaggi diretti";
+      return "Mark as direct message room for the giving Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "Segna come gruppo";
+      return "Mark as group";
     },
     get$commandHint_ban() {
-      return "Banna l'utente specificato da questa stanza";
+      return "\u0411\u043b\u043e\u043a\u0438\u0440\u0430\u0458 \u0437\u0430\u0434\u0430\u0442\u043e\u0433 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 \u0437\u0430 \u043e\u0432\u0443 \u0441\u043e\u0431\u0443";
     },
     get$commandHint_clearcache() {
-      return "Pulisci cache";
+      return "Clear cache";
     },
     get$commandHint_create() {
-      return "Crea una chat di gruppo vuota\nUtilizza --no-encryption per disattivare la criptazione";
+      return "Create an empty group chat\nUse --no-encryption to disable encryption";
     },
     get$commandHint_discardsession() {
-      return "Scarta sessione";
+      return "Discard session";
     },
     get$commandHint_dm() {
-      return "Avvia una chat diretta\nUsa --no-encryption per disabilitare la crittografia";
+      return "Start a direct chat\nUse --no-encryption to disable encryption";
     },
     get$commandHint_html() {
-      return "Invia testo formattato in HTML";
+      return "\u0428\u0430\u0459\u0438 \u0425\u0422\u041c\u041b \u043e\u0431\u043b\u0438\u043a\u043e\u0432\u0430\u043d \u0442\u0435\u043a\u0441\u0442";
     },
     get$commandHint_invite() {
-      return "Invia l utente fornito in questa stanza";
+      return "\u041f\u043e\u0437\u043e\u0432\u0438 \u0437\u0430\u0434\u0430\u0442\u043e\u0433 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 \u0443 \u0441\u043e\u0431\u0443";
     },
     get$commandHint_join() {
-      return "Unisciti alla stanza fornita";
+      return "\u041f\u0440\u0438\u0434\u0440\u0443\u0436\u0438 \u0441\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e\u0458 \u0441\u043e\u0431\u0438";
     },
     get$commandHint_kick() {
-      return "Rimuovi l'utente fornito da questa stanza";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438 \u0437\u0430\u0434\u0430\u0442\u043e\u0433 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 \u0438\u0437 \u0441\u043e\u0431\u0435";
     },
     get$commandHint_leave() {
-      return "Abbandona questa stanza";
+      return "\u041d\u0430\u043f\u0443\u0441\u0442\u0438 \u043e\u0432\u0443 \u0441\u043e\u0431\u0443";
     },
     get$commandHint_me() {
-      return "Descriviti";
+      return "\u041e\u043f\u0438\u0448\u0438\u0442\u0435 \u0441\u0435\u0431\u0435";
     },
     get$commandHint_myroomavatar() {
-      return "Importa la foto profilo per questa stanza ( mxc-uri)";
+      return "Set your picture for this room (by mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Imposta il nome visualizzato per questa stanza";
+      return "\u041f\u043e\u0441\u0442\u0430\u0432\u0459\u0430 \u0432\u0430\u0448 \u043d\u0430\u0434\u0438\u043c\u0430\u043a \u0437\u0430 \u043e\u0432\u0443 \u0441\u043e\u0431\u0443";
     },
     get$commandHint_op() {
-      return "Imposta il livello di privilegi dell'utente specificato (predefinito: 50)";
+      return "\u041f\u043e\u0434\u0435\u0441\u0438 \u043d\u0438\u0432\u043e \u0437\u0430\u0434\u0430\u0442\u043e\u0433 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 (\u043f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u043d\u043e: 50)";
     },
     get$commandHint_plain() {
-      return "Invia testo non formattato";
+      return "\u0428\u0430\u0459\u0438 \u043d\u0435\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0440\u0430\u043d \u0442\u0435\u043a\u0441\u0442";
     },
     get$commandHint_react() {
-      return "Rispondi con una reazione";
+      return "\u0428\u0430\u0459\u0438 \u043e\u0434\u0433\u043e\u0432\u043e\u0440 \u043a\u0430\u043e \u0440\u0435\u0430\u043a\u0446\u0438\u0458\u0443";
     },
     get$commandHint_send() {
-      return "Invia testo";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0442\u0435\u043a\u0441\u0442";
     },
     get$commandHint_unban() {
-      return "Sbanna l'utente fornito da questa stanza";
+      return "\u0421\u043a\u0438\u043d\u0438 \u0437\u0430\u0431\u0440\u0430\u043d\u0443 \u0437\u0430\u0434\u0430\u0442\u043e\u043c \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0443 \u0437\u0430 \u043e\u0432\u0443 \u0441\u043e\u0431\u0443";
     },
     get$commandInvalid() {
-      return "Comando non valido";
+      return "Command invalid";
     },
     commandMissing$1(command) {
-      return command + " non \xe8 un comando.";
+      return command + " is not a command.";
     },
     get$compareEmojiMatch() {
-      return "Per favore confronta gli emoji";
+      return "\u0423\u043f\u043e\u0440\u0435\u0434\u0438\u0442\u0435 \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u0435 \u0434\u0430 \u0441\u0443 \u0435\u043c\u043e\u045f\u0438\u0458\u0438 \u0438\u0434\u0435\u043d\u0442\u0438\u0447\u043d\u0438 \u043a\u0430\u043e \u043d\u0430 \u0434\u0440\u0443\u0433\u043e\u043c \u0443\u0440\u0435\u0452\u0430\u0458\u0443:";
     },
     get$compareNumbersMatch() {
-      return "Per favore confronta i numeri";
+      return "\u0423\u043f\u043e\u0440\u0435\u0434\u0438\u0442\u0435 \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u0435 \u0434\u0430 \u0441\u0443 \u0441\u043b\u0435\u0434\u0435\u045b\u0438 \u0431\u0440\u043e\u0458\u0435\u0432\u0438 \u0438\u0434\u0435\u043d\u0442\u0438\u0447\u043d\u0438 \u043a\u0430\u043e \u043d\u0430 \u0434\u0440\u0443\u0433\u043e\u043c \u0443\u0440\u0435\u0452\u0430\u0458\u0443:";
     },
     get$configureChat() {
-      return "Configura la discussione";
+      return "\u041f\u043e\u0434\u0435\u0448\u0430\u0432\u0430\u045a\u0435 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     get$confirm(_) {
-      return "Conferma";
+      return "\u041f\u043e\u0442\u0432\u0440\u0434\u0438";
     },
     get$containsDisplayName() {
-      return "Contiene nome visibile";
+      return "\u0421\u0430\u0434\u0440\u0436\u0438 \u043f\u0440\u0438\u043a\u0430\u0437\u043d\u043e \u0438\u043c\u0435";
     },
     get$containsUserName() {
-      return "Contiene nome utente";
+      return "\u0421\u0430\u0434\u0440\u0436\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u0447\u043a\u043e \u0438\u043c\u0435";
     },
     get$contentHasBeenReported() {
-      return "Il contenuto \xe8 stato segnalato agli amministratori del server";
+      return "\u0421\u0430\u0434\u0440\u0436\u0430\u0458 \u0458\u0435 \u043f\u0440\u0438\u0458\u0430\u0432\u0459\u0435\u043d \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0438\u043c\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
     },
     get$copiedToClipboard() {
-      return "Copiato negli Appunti";
+      return "\u041a\u043e\u043f\u0438\u0440\u0430\u043d\u043e \u0443 \u043a\u043b\u0438\u043f\u0431\u043e\u0440\u0434";
     },
     get$copy(_) {
-      return "Copia";
+      return "\u041a\u043e\u043f\u0438\u0440\u0430\u0458";
     },
     couldNotDecryptMessage$1(error) {
-      return "Impossibile decriptare messaggio: " + error;
+      return "\u041d\u0435 \u043c\u043e\u0433\u0443 \u0434\u0430 \u0434\u0435\u0448\u0438\u0444\u0440\u0443\u0458\u0435\u043c \u043f\u043e\u0440\u0443\u043a\u0443: " + error;
     },
     countParticipants$1(count) {
-      return "" + count + " partecipanti";
+      return "\u0443\u0447\u0435\u0441\u043d\u0438\u043a\u0430: " + count;
+    },
+    get$create(_) {
+      return "\u041d\u0430\u043f\u0440\u0430\u0432\u0438";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " ha creato la chat";
+      return username + " \u043d\u0430\u043f\u0440\u0430\u0432\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$createGroup() {
-      return "Crea gruppo";
+      return "Create group";
     },
     get$createNewSpace() {
-      return "Nuovo spazio";
+      return "New space";
     },
     get$currentlyActive() {
-      return "Attualmente attivo";
+      return "\u0422\u0440\u0435\u043d\u0443\u0442\u043d\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u043e";
     },
     get$darkTheme() {
-      return "Scuro";
+      return "\u0442\u0430\u043c\u043d\u0438";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Disabiliter\xe0 il tuo account. Non puoi tornare indietro! Sei sicuro/a?";
+      return "\u041e\u0432\u043e \u045b\u0435 \u0434\u0435\u0430\u043a\u0442\u0438\u0432\u0438\u0440\u0430\u0442\u0438 \u0432\u0430\u0448 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u0447\u043a\u0438 \u043d\u0430\u043b\u043e\u0433. \u041d\u0435 \u043c\u043e\u0436\u0435 \u0441\u0435 \u043f\u043e\u0432\u0440\u0430\u0442\u0438\u0442\u0438! \u0421\u0438\u0433\u0443\u0440\u043d\u0438 \u0441\u0442\u0435?";
     },
     get$defaultPermissionLevel() {
-      return "Livello di autorizzazione predefinito per i nuovi utenti";
+      return "\u041f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u043d\u0438 \u043d\u0438\u0432\u043e \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0430";
     },
     get$$delete(_) {
-      return "Cancella";
+      return "\u041e\u0431\u0440\u0438\u0448\u0438";
     },
     get$deleteAccount() {
-      return "Elimina l'account";
+      return "\u041e\u0431\u0440\u0438\u0448\u0438 \u043d\u0430\u043b\u043e\u0433";
     },
     get$deleteMessage() {
-      return "Elimina il messaggio";
+      return "\u0411\u0440\u0438\u0441\u0430\u045a\u0435 \u043f\u043e\u0440\u0443\u043a\u0435";
     },
     get$devices() {
-      return "Dispositivi";
+      return "\u0423\u0440\u0435\u0452\u0430\u0458\u0438";
     },
     get$directChats() {
-      return "Chat dirette";
+      return "\u0414\u0438\u0440\u0435\u043a\u0442\u043d\u0430 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     get$allRooms() {
-      return "Tutte le chat di gruppo";
+      return "All Group Chats";
     },
     get$displaynameHasBeenChanged() {
-      return "Il nominativo \xe8 stato cambiato";
+      return "\u0418\u043c\u0435 \u0437\u0430 \u043f\u0440\u0438\u043a\u0430\u0437 \u0458\u0435 \u0438\u0437\u043c\u0435\u045a\u0435\u043d\u043e";
     },
     get$downloadFile() {
-      return "Scarica il file";
+      return "\u041f\u0440\u0435\u0443\u0437\u043c\u0438 \u0444\u0430\u0458\u043b";
     },
     get$edit() {
-      return "Modifica";
+      return "\u0423\u0440\u0435\u0434\u0438";
     },
     get$editBlockedServers() {
-      return "Modifica i server bloccati";
+      return "\u0423\u0440\u0435\u0434\u0438 \u0431\u043b\u043e\u043a\u0438\u0440\u0430\u043d\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u0435";
     },
     get$chatPermissions() {
-      return "Permessi della chat";
+      return "Chat permissions";
     },
     get$editDisplayname() {
-      return "Modifica il nominativo";
+      return "\u0423\u0440\u0435\u0434\u0438 \u0438\u043c\u0435 \u0437\u0430 \u043f\u0440\u0438\u043a\u0430\u0437";
     },
     get$editRoomAliases() {
-      return "Modifica gli alias della stanza";
+      return "\u0423\u0440\u0435\u0434\u0438 \u0430\u043b\u0438\u0458\u0430\u0441\u0435 \u0441\u043e\u0431\u0435";
     },
     get$editRoomAvatar() {
-      return "Modifica l'avatar della stanza";
+      return "\u0423\u0440\u0435\u0452\u0443\u0458\u0435 \u0430\u0432\u0430\u0442\u0430\u0440 \u0441\u043e\u0431\u0435";
     },
     get$emoteExists() {
-      return "L'emote gi\xe0 esiste!";
+      return "\u0415\u043c\u043e\u0442\u0438 \u0432\u0435\u045b \u043f\u043e\u0441\u0442\u043e\u0458\u0438!";
     },
     get$emoteInvalid() {
-      return "Shortcode emote invalido!";
+      return "\u041d\u0435\u0438\u0441\u043f\u0440\u0430\u0432\u043d\u0430 \u0441\u043a\u0440\u0430\u045b\u0435\u043d\u0438\u0446\u0430 \u0437\u0430 \u0435\u043c\u043e\u0442\u0438!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Le emoticon recentemente usate appariranno qui...";
+      return "Recently-used emotes will appear here...";
     },
     get$emotePacks() {
-      return "Pacchetti emotes della stanza";
+      return "\u041f\u0430\u043a\u0435\u0442\u0438 \u0435\u043c\u043e\u0442\u0438\u0458\u0430 \u0437\u0430 \u0441\u043e\u0431\u0443";
     },
     get$globalChatId() {
-      return "ID chat globale";
+      return "Global chat ID";
     },
     get$accessAndVisibility() {
-      return "Accesso e visibilit\xe0";
+      return "Access and visibility";
     },
     get$customEmojisAndStickers() {
-      return "Emoji e adesivi personalizzati";
+      return "Custom emojis and stickers";
     },
     get$emoteShortcode() {
-      return "Scorciatoia emote";
+      return "\u0441\u043a\u0440\u0430\u045b\u0435\u043d\u0438\u0446\u0430";
     },
     get$emoteWarnNeedToPick() {
-      return "Devi scegliere una scorciatoia emote e aggiungere un immagine!";
+      return "\u041c\u043e\u0440\u0430\u0442\u0435 \u0434\u0430 \u0438\u0437\u0430\u0431\u0435\u0440\u0435\u0442\u0435 \u0441\u043a\u0440\u0430\u045b\u0435\u043d\u0438\u0446\u0443 \u0438 \u0441\u043b\u0438\u043a\u0443 \u0437\u0430 \u0435\u043c\u043e\u0442\u0438!";
     },
     get$emptyChat() {
-      return "Discussione vuota";
+      return "\u043f\u0440\u0430\u0437\u043d\u043e \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$enableEmotesGlobally() {
-      return "Abilita i pacchetti emotes globalmente";
+      return "\u0413\u043b\u043e\u0431\u0430\u043b\u043d\u043e \u0443\u043a\u0459\u0443\u0447\u0438 \u043f\u0430\u043a\u0435\u0442 \u0435\u043c\u043e\u0442\u0438\u0458\u0430";
     },
     get$enableEncryption() {
-      return "Abilita la crittografia";
+      return "\u0423\u043a\u0459\u0443\u0447\u0443\u0458\u0435 \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0435";
     },
     get$encrypted() {
-      return "Crittografato";
+      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043e";
     },
     get$encryptionNotEnabled() {
-      return "Crittografia non abilitata";
+      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0435 \u043d\u0438\u0458\u0435 \u0443\u043a\u0459\u0443\u0447\u0435\u043d\u043e";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \xe8 entrato in chiamata";
+      return senderName + " \u0437\u0430\u0432\u0440\u0448\u0438 \u043f\u043e\u0437\u0438\u0432";
     },
     get$enterAnEmailAddress() {
-      return "Inserisci un indirizzo e-mail";
+      return "\u0423\u043d\u0435\u0441\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441\u0443 \u0435-\u043f\u043e\u0448\u0442\u0435";
     },
     errorObtainingLocation$1(error) {
-      return "Errore cercando di ottenere la posizione: " + error;
+      return "Error obtaining location: " + error;
     },
     get$extremeOffensive() {
-      return "Estremamente offensivo";
+      return "\u0415\u043a\u0441\u0442\u0440\u0435\u043c\u043d\u043e \u0443\u0432\u0440\u0435\u0434\u0459\u0438\u0432";
     },
     get$fontSize(_) {
-      return "Dimensione carattere";
+      return "\u0412\u0435\u043b\u0438\u0447\u0438\u043d\u0430 \u0444\u043e\u043d\u0442\u0430";
     },
     get$forward(_) {
-      return "Inoltra";
+      return "\u041d\u0430\u043f\u0440\u0435\u0434";
     },
     get$fromJoining() {
-      return "Dall'adesione";
+      return "\u043e\u0434 \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0430\u045a\u0430";
     },
     get$fromTheInvitation() {
-      return "Dall'invito";
+      return "\u043e\u0434 \u043f\u043e\u0437\u0438\u0432\u0430\u045a\u0430";
     },
     get$goToTheNewRoom() {
-      return "Vai nella nuova stanza";
-    },
-    get$chatDescription() {
-      return "Descrizione della chat";
+      return "\u0418\u0434\u0438 \u0443 \u043d\u043e\u0432\u0443 \u0441\u043e\u0431\u0443";
     },
     get$groups() {
-      return "Gruppi";
+      return "\u0413\u0440\u0443\u043f\u0435";
     },
     get$guestsAreForbidden() {
-      return "Gli ospiti sono vietati";
+      return "\u0433\u043e\u0441\u0442\u0438 \u0441\u0443 \u0437\u0430\u0431\u0440\u0430\u045a\u0435\u043d\u0438";
     },
     get$guestsCanJoin() {
-      return "Gli ospiti possono partecipare";
+      return "\u0433\u043e\u0441\u0442\u0438 \u043c\u043e\u0433\u0443 \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0438\u0442\u0438";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " ha ritirato l'invito per " + targetName;
+      return username + " \u043f\u043e\u043d\u0438\u0448\u0442\u0438 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0443 \u0437\u0430 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$help() {
-      return "Aiuto";
+      return "\u041f\u043e\u043c\u043e\u045b";
     },
     get$hideRedactedMessages() {
-      return "Mostra i messaggi rimossi";
+      return "Hide redacted messages";
     },
     get$hideRedactedMessagesBody() {
-      return "Se qualcuno rimuove un messaggio, il messaggio non sar\xe0 pi\xf9 visibile nella chat.";
+      return "If someone redacts a message, this message won't be visible in the chat anymore.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Nascondi formati di messaggi non validi o sconosciuti";
+      return "Hide invalid or unknown message formats";
     },
     get$howOffensiveIsThisContent() {
-      return "Quanto \xe8 offensivo questo contenuto?";
+      return "\u041a\u043e\u043b\u0438\u043a\u043e \u0458\u0435 \u0443\u0432\u0440\u0435\u0434\u0459\u0438\u0432 \u043e\u0432\u0430\u0458 \u0441\u0430\u0434\u0440\u0436\u0430\u0458?";
     },
     get$block() {
-      return "Blocca";
+      return "Block";
     },
     get$blockedUsers() {
-      return "Utenti bloccati";
+      return "Blocked users";
     },
     get$blockListDescription() {
-      return "Puoi bloccare gli utenti che ti disturbano. Non sarai pi\xf9 in grado di ricevere messaggi o inviti alle stanze dalle persone che hai bloccato.";
+      return "You can block users who are disturbing you. You won't be able to receive any messages or room invites from the users on your personal block list.";
     },
     get$blockUsername() {
-      return "Nome utente da ignorare";
+      return "Ignore username";
     },
     get$iHaveClickedOnLink() {
-      return "Ho cliccato sul collegamento";
+      return "\u041a\u043b\u0438\u043a\u043d\u0443\u043e \u0441\u0430\u043c \u043d\u0430 \u0432\u0435\u0437\u0443";
     },
     get$incorrectPassphraseOrKey() {
-      return "Frase segrata o chiave di ripristino errate";
+      return "\u041d\u0435\u0438\u0441\u043f\u0440\u0430\u0432\u043d\u0430 \u0444\u0440\u0430\u0437\u0430 \u0438\u043b\u0438 \u043a\u0459\u0443\u0447 \u043e\u043f\u043e\u0440\u0430\u0432\u043a\u0430";
     },
     get$inviteContact() {
-      return "Invita contatto";
+      return "\u041f\u043e\u0437\u0438\u0432\u0430\u045a\u0435 \u043e\u0441\u043e\u0431\u0430";
     },
     get$noChatDescriptionYet() {
-      return "La descrizione della chat non \xe8 ancora stata creata.";
+      return "No chat description created yet.";
     },
     get$tryAgain() {
-      return "Riprova";
+      return "Try again";
     },
     get$invited() {
-      return "Invitato/a";
+      return "\u041f\u043e\u0437\u0432\u0430\u043d";
     },
     get$redactMessageDescription() {
-      return "Questo messaggio sar\xe0 rimosso per tutti i partecipanti di questa conversazione. Questa operazione non pu\xf2 essere annullata.";
+      return "The message will be redacted for all participants in this conversation. This cannot be undone.";
     },
     get$optionalRedactReason() {
-      return "(Opzionale) Ragione per rimuovere questo messaggio...";
+      return "(Optional) Reason for redacting this message...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " ha invitato " + targetName;
+      return username + " \u043f\u043e\u0437\u0432\u0430 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Solo utenti invitati";
+      return "\u0441\u0430\u043c\u043e \u043f\u043e\u0437\u0432\u0430\u043d\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u0446\u0438";
     },
     get$inviteForMe() {
-      return "Invita per me";
+      return "\u041f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0435 \u0437\u0430 \u043c\u0435\u043d\u0435";
     },
     inviteText$2(username, link) {
-      return username + " ti ha invitato/a a FluffyChat.\n1. Visita fluffychat.im e installa l'applicazione\n2. Iscriviti o accedi\n3. Apri il collegamento di invito: \n " + link;
+      return username + " \u0432\u0430\u0441 \u043f\u043e\u0437\u0438\u0432\u0430 \u0443 FluffyChat. \n1. \u0418\u043d\u0441\u0442\u0430\u043b\u0438\u0440\u0430\u0458\u0442\u0435 FluffyChat: https://fluffychat.im \n2. \u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0443\u0458\u0442\u0435 \u0441\u0435 \u0438\u043b\u0438 \u043f\u0440\u0438\u0458\u0430\u0432\u0438\u0442\u0435 \n3. \u041e\u0442\u0432\u043e\u0440\u0438\u0442\u0435 \u0432\u0435\u0437\u0443 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0435: " + link;
     },
     get$isTyping() {
-      return "sta scrivendo\u2026";
+      return "\u043a\u0443\u0446\u0430\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " si \xe8 unito/a alla chat";
+      return username + " \u0441\u0435 \u043f\u0440\u0438\u0434\u0440\u0443\u0436\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0443";
     },
     get$joinRoom() {
-      return "Unisciti alla stanza";
+      return "\u041f\u0440\u0438\u0434\u0440\u0443\u0436\u0438 \u0441\u0435 \u0441\u043e\u0431\u0438";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " ha espulso " + targetName;
+      return username + " \u0438\u0437\u0431\u0430\u0446\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$kickFromChat() {
-      return "Espelli dalla chat";
+      return "\u0418\u0437\u0431\u0430\u0446\u0438 \u0438\u0437 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Ultima attivit\xe0: " + localizedTimeShort;
+      return "\u041f\u043e\u0441\u043b\u0435\u0434\u045a\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442: " + localizedTimeShort;
     },
     get$leave() {
-      return "Abbandona";
+      return "\u041d\u0430\u043f\u0443\u0441\u0442\u0438";
     },
     get$leftTheChat() {
-      return "Ha abbandonato la chat";
+      return "\u041d\u0430\u043f\u0443\u0441\u0442\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$lightTheme() {
-      return "Chiaro";
+      return "\u0441\u0432\u0435\u0442\u043b\u0438";
     },
     loadCountMoreParticipants$1(count) {
-      return "Carica altri " + count + " partecipanti";
+      return "\u0423\u0447\u0438\u0442\u0430\u0458 \u0458\u043e\u0448 " + count + " \u0443\u0447\u0435\u0441\u043d\u0438\u043a\u0430";
     },
     get$dehydrate() {
-      return "Esporta la sessione e cancella il dispositivo";
+      return "Export session and wipe device";
     },
     get$dehydrateWarning() {
-      return "Questa azione non pu\xf2 essere annullata. Assicurarsi di aver salvato il file di backup.";
+      return "This action cannot be undone. Ensure you safely store the backup file.";
     },
     get$dehydrateTor() {
-      return "Utenti TOR: Esporta la sessione";
+      return "TOR Users: Export session";
     },
     get$dehydrateTorLong() {
-      return "Per gli utenti TOR, \xe8 raccomandato esportare la sessione prima di chiudere la finestra.";
+      return "For TOR users, it is recommended to export the session before closing the window.";
     },
     get$loadingPleaseWait() {
-      return "Caricamento\u2026 Attendere prego.";
+      return "\u0423\u0447\u0438\u0442\u0430\u0432\u0430\u043c\u2026 \u0421\u0430\u0447\u0435\u043a\u0430\u0458\u0442\u0435.";
     },
     get$loadMore() {
-      return "Carica di pi\xf9\u2026";
+      return "\u0423\u0447\u0438\u0442\u0430\u0458 \u0458\u043e\u0448\u2026";
     },
     get$locationDisabledNotice() {
-      return "I servizi di localizzazione sono disabilitati. Per favore abilitali per poter condividere la tua posizione.";
+      return "Location services are disabled. Please enable them to be able to share your location.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Permesso per accedere alla posizione negato. Per favore concedilo per essere in grado di condividere la tua posizione.";
+      return "Location permission denied. Please grant them to be able to share your location.";
     },
     get$logout() {
-      return "Esci";
+      return "\u041e\u0434\u0458\u0430\u0432\u0430";
     },
     get$memberChanges() {
-      return "Cambiamenti di membri";
+      return "\u0418\u0437\u043c\u0435\u043d\u0435 \u0447\u043b\u0430\u043d\u043e\u0432\u0430";
     },
     get$mention() {
-      return "Menzione";
+      return "\u0421\u043f\u043e\u043c\u0435\u043d\u0438";
     },
     get$messages() {
-      return "Messaggi";
+      return "\u041f\u043e\u0440\u0443\u043a\u0435";
     },
     get$messagesStyle() {
-      return "Messaggi:";
+      return "Messages:";
     },
     get$moderator() {
-      return "Moderatore";
+      return "\u041c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440";
     },
     get$newChat() {
-      return "Nuova discussione";
+      return "\u041d\u043e\u0432\u043e \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$newVerificationRequest() {
-      return "Nuova richiesta di verifica!";
+      return "\u041d\u043e\u0432\u0438 \u0437\u0430\u0445\u0442\u0435\u0432 \u0437\u0430 \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0458\u0443!";
     },
     get$next(_) {
-      return "Avanti";
+      return "\u0421\u043b\u0435\u0434\u0435\u045b\u0435";
     },
     get$no() {
-      return "No";
+      return "\u041d\u0435";
     },
     get$noConnectionToTheServer() {
-      return "Nessuna connessione al server";
+      return "\u041d\u0435\u043c\u0430 \u0432\u0435\u0437\u0435 \u0441\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u043c";
     },
     get$noEmotesFound() {
-      return "Nessun emote trovato. \ud83d\ude15";
+      return "\u041d\u0435\u043c\u0430 \u0435\u043c\u043e\u0442\u0438\u0458\u0430. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Condividi link d'invito";
+      return "Share invite link";
     },
     get$noPasswordRecoveryDescription() {
-      return "Non hai ancora aggiunto un modo per recuperare la tua password.";
+      return "\u0408\u043e\u0448 \u043d\u0438\u0441\u0442\u0435 \u043e\u0434\u0440\u0435\u0434\u0438\u043b\u0438 \u043d\u0430\u0447\u0438\u043d \u0437\u0430 \u043e\u043f\u043e\u0440\u0430\u0432\u0430\u043a \u043b\u043e\u0437\u0438\u043d\u043a\u0435.";
     },
     get$noPermission() {
-      return "Nessuna autorizzazione";
+      return "\u041d\u0435\u043c\u0430 \u0434\u043e\u0437\u0432\u043e\u043b\u0430";
     },
     get$noRoomsFound() {
-      return "Nessuna stanza trovata\u2026";
+      return "\u041d\u0438\u0441\u0430\u043c \u043d\u0430\u0448\u0430\u043e \u0441\u043e\u0431\u0435\u2026";
     },
     get$notifications() {
-      return "Notifiche";
+      return "\u041e\u0431\u0430\u0432\u0435\u0448\u0442\u0435\u045a\u0430";
     },
     get$notificationsEnabledForThisAccount() {
-      return "Notifiche abilitate per questo account";
+      return "\u041e\u0431\u0430\u0432\u0435\u0448\u0442\u0435\u045a\u0430 \u0443\u043a\u0459\u0443\u0447\u0435\u043d\u0430 \u0437\u0430 \u043e\u0432\u0430\u0458 \u043d\u0430\u043b\u043e\u0433";
     },
     get$obtainingLocation() {
-      return "Ottengo la posizione\u2026";
+      return "Obtaining location\u2026";
     },
     get$offensive() {
-      return "Offensivo";
+      return "\u0423\u0432\u0440\u0435\u0434\u0459\u0438\u0432";
     },
     get$ok() {
-      return "Ok";
+      return "\u0443 \u0440\u0435\u0434\u0443";
     },
     get$oopsSomethingWentWrong() {
-      return "Ops, qualcosa \xe8 andato storto\u2026";
+      return "\u041d\u0435\u0448\u0442\u043e \u0458\u0435 \u043f\u043e\u0448\u043b\u043e \u043d\u0430\u043e\u043f\u0430\u043a\u043e\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Uno dei tuoi client \xe8 stato disconnesso";
+      return "One of your clients has been logged out";
     },
     get$addAccount() {
-      return "Aggiungi account";
+      return "Add account";
     },
     get$enableMultiAccounts() {
-      return "(BETA) Abilita account multipli su questo dispositivo";
+      return "(BETA) Enable multi accounts on this device";
     },
     get$openInMaps() {
-      return "Apri in maps";
+      return "Open in maps";
     },
     get$link() {
       return "Link";
     },
     get$serverRequiresEmail() {
-      return "Questo server ha bisogno di validare la tua email per la registrazione.";
+      return "This server needs to validate your email address for registration.";
     },
     get$or() {
-      return "O";
+      return "\u0438\u043b\u0438";
     },
     get$participant() {
-      return "Partecipante";
+      return "\u0423\u0447\u0435\u0441\u043d\u0438\u043a";
     },
     get$passphraseOrKey() {
-      return "frase segreta o chiave di recupero";
+      return "\u0444\u0440\u0430\u0437\u0430 \u0438\u043b\u0438 \u043a\u0459\u0443\u0447 \u043e\u043f\u043e\u0440\u0430\u0432\u043a\u0430";
     },
     get$password(_) {
-      return "Password";
+      return "\u041b\u043e\u0437\u0438\u043d\u043a\u0430";
     },
     get$passwordForgotten() {
-      return "Password dimenticata";
+      return "\u0417\u0430\u0431\u043e\u0440\u0430\u0432\u0459\u0435\u043d\u0430 \u043b\u043e\u0437\u0438\u043d\u043a\u0430";
     },
     get$passwordHasBeenChanged() {
-      return "La password \xe8 stata cambiata";
+      return "\u041b\u043e\u0437\u0438\u043d\u043a\u0430 \u0458\u0435 \u043f\u0440\u043e\u043c\u0435\u045a\u0435\u043d\u0430";
     },
     get$overview() {
-      return "Panoramica";
+      return "Overview";
     },
     get$notifyMeFor() {
-      return "Avvisami per";
+      return "Notify me for";
     },
     get$passwordRecoverySettings() {
-      return "Impostazioni di recupero password";
+      return "Password recovery settings";
     },
     get$passwordRecovery() {
-      return "Recupero della password";
+      return "\u041e\u043f\u043e\u0440\u0430\u0432\u0430\u043a \u043b\u043e\u0437\u0438\u043d\u043a\u0435";
     },
     get$pickImage() {
-      return "Scegli un'immagine";
+      return "\u0418\u0437\u0431\u043e\u0440 \u0441\u043b\u0438\u043a\u0435";
     },
     get$pin() {
-      return "Fissa";
+      return "\u0417\u0430\u043a\u0430\u0447\u0438";
     },
     get$pleaseChoose() {
-      return "Si prega di scegliere";
+      return "\u0418\u0437\u0430\u0431\u0435\u0440\u0438\u0442\u0435";
     },
     get$pleaseEnterYourPassword() {
-      return "Inserisci la tua password";
+      return "\u0423\u043d\u0435\u0441\u0438\u0442\u0435 \u0441\u0432\u043e\u0458\u0443 \u043b\u043e\u0437\u0438\u043d\u043a\u0443";
     },
     get$pleaseEnterYourPin() {
-      return "Per favore inserisci il tuo PIN";
+      return "\u0423\u043d\u0435\u0441\u0438\u0442\u0435 \u0441\u0432\u043e\u0458 \u043f\u0438\u043d";
     },
     get$pleaseEnterYourUsername() {
-      return "Inserisci il tuo nome utente";
+      return "\u0423\u043d\u0435\u0441\u0438\u0442\u0435 \u0441\u0432\u043e\u0458\u0435 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u0447\u043a\u043e \u0438\u043c\u0435";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Segui le istruzioni sul sito web e tocca Avanti.";
+      return "\u0418\u0441\u043f\u0440\u0430\u0442\u0438\u0442\u0435 \u0443\u043f\u0443\u0442\u0441\u0442\u0432\u0430 \u043d\u0430 \u0432\u0435\u0431 \u0441\u0430\u0458\u0442\u0443 \u0438 \u0442\u0430\u043f\u043d\u0438\u0442\u0435 \u043d\u0430 \u201e\u0421\u043b\u0435\u0434\u0435\u045b\u0435\u201c.";
     },
     get$privacy() {
-      return "Privacy";
+      return "\u041f\u0440\u0438\u0432\u0430\u0442\u043d\u043e\u0441\u0442";
     },
     get$reason(_) {
-      return "Motivo";
+      return "\u0420\u0430\u0437\u043b\u043e\u0433";
     },
     redactedBy$1(username) {
-      return "Rimosso da " + username;
+      return "Redacted by " + username;
     },
     get$directChat() {
-      return "Chat diretta";
+      return "Direct chat";
     },
     redactedByBecause$2(username, reason) {
-      return "Rimosso da " + username + ' per: "' + reason + '"';
+      return "Redacted by " + username + ' because: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " ha eliminato un evento";
+      return username + " \u0440\u0435\u0434\u0438\u0433\u043e\u0432\u0430 \u0434\u043e\u0433\u0430\u0452\u0430\u0458";
     },
     get$redactMessage() {
-      return "Elimina un messaggio";
+      return "\u0420\u0435\u0434\u0438\u0433\u0443\u0458 \u043f\u043e\u0440\u0443\u043a\u0443";
     },
     get$reject() {
-      return "Rifiuta";
+      return "\u041e\u0434\u0431\u0438\u0458";
     },
     rejectedTheInvitation$1(username) {
-      return username + " ha rifiutato l'invito";
+      return username + " \u043e\u0434\u0431\u0438 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0443";
     },
     get$removeAllOtherDevices() {
-      return "Rimuovi tutti gli altri dispositivi";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438 \u0441\u0432\u0435 \u043e\u0441\u0442\u0430\u043b\u0435 \u0443\u0440\u0435\u0452\u0430\u0458\u0435";
     },
     get$unbanFromChat() {
-      return "Rimuovi il ban dalla chat";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438 \u0438\u0437\u0433\u043d\u0430\u043d\u0441\u0442\u0432\u043e";
     },
     get$removeYourAvatar() {
-      return "Rimuovi il tuo avatar";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438\u0442\u0435 \u0441\u0432\u043e\u0458 \u0430\u0432\u0430\u0442\u0430\u0440";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Sostituisci la stanza con la versione pi\xf9 recente";
+      return "\u0417\u0430\u043c\u0435\u043d\u0438 \u0441\u043e\u0431\u0443 \u043d\u043e\u0432\u0438\u0458\u043e\u043c \u0432\u0435\u0440\u0437\u0438\u0458\u043e\u043c";
     },
     get$reply(_) {
-      return "Rispondi";
+      return "\u041e\u0434\u0433\u043e\u0432\u043e\u0440\u0438";
     },
     get$reportMessage() {
-      return "Segnala il messaggio";
+      return "\u041f\u0440\u0438\u0458\u0430\u0432\u0438 \u043f\u043e\u0440\u0443\u043a\u0443";
     },
     get$roomHasBeenUpgraded() {
-      return "La stanza \xe8 stata aggiornata";
+      return "\u0421\u043e\u0431\u0430 \u0458\u0435 \u043d\u0430\u0434\u043e\u0433\u0440\u0430\u0452\u0435\u043d\u0430";
     },
     get$roomVersion() {
-      return "Versione della stanza";
+      return "\u0412\u0435\u0440\u0437\u0438\u0458\u0430 \u0441\u043e\u0431\u0435";
     },
     get$search(_) {
-      return "Cerca";
+      return "\u041f\u0440\u0435\u0442\u0440\u0430\u0436\u0438";
     },
     get$security() {
-      return "Sicurezza";
+      return "\u0411\u0435\u0437\u0431\u0435\u0434\u043d\u043e\u0441\u0442";
     },
     get$send(_) {
-      return "Invia";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438";
     },
     get$sendAMessage() {
-      return "Invia un messaggio";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u043f\u043e\u0440\u0443\u043a\u0443";
     },
     get$sendAsText() {
-      return "Invia come testo";
+      return "Send as text";
     },
     get$sendAudio() {
-      return "Invia un file audio";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0430\u0443\u0434\u0438\u043e";
     },
     get$sendFile() {
-      return "Invia un file";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0444\u0430\u0458\u043b";
     },
     get$sendImage() {
-      return "Invia un'immagine";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0441\u043b\u0438\u043a\u0443";
     },
     sendImages$1(count) {
-      return "Invia " + count + " immagine";
+      return "Send " + count + " image";
     },
     get$sendMessages() {
-      return "Invia messaggi";
+      return "\u0421\u043b\u0430\u045a\u0435 \u043f\u043e\u0440\u0443\u043a\u0430";
     },
     get$sendVideo() {
-      return "Invia un video";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0432\u0438\u0434\u0435\u043e";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " ha inviato un file";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u0444\u0430\u0458\u043b";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " ha inviato un file audio";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u0430\u0443\u0434\u0438\u043e";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " ha inviato un'immagine";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u0441\u043b\u0438\u043a\u0443";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " ha inviato un adesivo";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u043d\u0430\u043b\u0435\u043f\u043d\u0438\u0446\u0443";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " ha inviato un video";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u0432\u0438\u0434\u0435\u043e";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " ha inviato informazioni sulla chiamata";
+      return senderName + " \u043f\u043e\u0441\u043b\u0430 \u043f\u043e\u0434\u0430\u0442\u043a\u0435 \u043e \u043f\u043e\u0437\u0438\u0432\u0443";
     },
     get$separateChatTypes() {
-      return "Separare le chat dirette e i gruppi";
+      return "Separate Direct Chats and Groups";
     },
     get$setAsCanonicalAlias() {
-      return "Imposta come alias principale";
+      return "\u041f\u043e\u0441\u0442\u0430\u0432\u0438 \u043a\u0430\u043e \u0433\u043b\u0430\u0432\u043d\u0438 \u0430\u043b\u0438\u0458\u0430\u0441";
     },
     get$setChatDescription() {
-      return "Imposta la descrizione della chat";
+      return "Set chat description";
     },
     get$setPermissionsLevel() {
-      return "Imposta il livello di autorizzazione";
+      return "\u041e\u0434\u0440\u0435\u0434\u0438 \u043d\u0438\u0432\u043e \u0434\u043e\u0437\u0432\u043e\u043b\u0435";
     },
     get$settings() {
-      return "Impostazioni";
+      return "\u041f\u043e\u0441\u0442\u0430\u0432\u043a\u0435";
     },
     get$share(_) {
-      return "Condividi";
+      return "\u041f\u043e\u0434\u0435\u043b\u0438";
     },
     sharedTheLocation$1(username) {
-      return username + " ha condiviso la sua posizione";
+      return username + " \u043f\u043e\u0434\u0435\u043b\u0438 \u043b\u043e\u043a\u0430\u0446\u0438\u0458\u0443";
     },
     get$shareLocation() {
-      return "Condividi posizione";
+      return "Share location";
     },
     get$presencesToggle() {
-      return "Mostra i messaggi di stato di altri utenti";
+      return "Show status messages from other users";
     },
     get$skip(_) {
-      return "Ignora";
+      return "\u041f\u0440\u0435\u0441\u043a\u043e\u0447\u0438";
     },
     get$sourceCode() {
-      return "Codice sorgente";
+      return "\u0418\u0437\u0432\u043e\u0440\u043d\u0438 \u043a\u043e\u0434";
     },
     get$spaceName() {
-      return "Nome dello spazio";
+      return "Space name";
     },
     startedACall$1(senderName) {
-      return senderName + " ha iniziato una chiamata";
+      return senderName + " \u0437\u0430\u043f\u043e\u0447\u0435 \u043f\u043e\u0437\u0438\u0432";
     },
     get$status(_) {
-      return "Stato";
+      return "\u0421\u0442\u0430\u045a\u0435";
     },
     get$submit(_) {
-      return "Invia";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438";
     },
     get$synchronizingPleaseWait() {
-      return "Sincronizzazione... Attendere prego.";
+      return "Synchronizing\u2026 Please wait.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
       return " Synchronizing\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Sistema";
+      return "\u0441\u0438\u0441\u0442\u0435\u043c\u0441\u043a\u0438";
     },
     get$theyDontMatch() {
-      return "Non corrispondono";
+      return "\u041d\u0435 \u043f\u043e\u043a\u043b\u0430\u043f\u0430\u0458\u0443 \u0441\u0435";
     },
     get$theyMatch() {
-      return "Corrispondono";
+      return "\u041f\u043e\u043a\u043b\u0430\u043f\u0430\u0458\u0443 \u0441\u0435";
     },
     get$tooManyRequestsWarning() {
-      return "Troppe richieste. Per favore riprova pi\xf9 tardi!";
+      return "\u041f\u0440\u0435\u0432\u0438\u0448\u0435 \u0443\u043f\u0438\u0442\u0430. \u041f\u043e\u043a\u0443\u0448\u0430\u0458\u0442\u0435 \u043a\u0430\u0441\u043d\u0438\u0458\u0435!";
     },
     get$tryToSendAgain() {
-      return "Prova a inviare di nuovo";
+      return "\u041f\u043e\u043a\u0443\u0448\u0430\u0458 \u0441\u043b\u0430\u045a\u0435 \u043f\u043e\u043d\u043e\u0432\u043e";
     },
     get$unavailable() {
-      return "Non disponibile";
+      return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e";
     },
     unbannedUser$2(username, targetName) {
-      return username + " ha rimosso il bando di " + targetName;
+      return username + " \u043e\u0434\u0431\u043b\u043e\u043a\u0438\u0440\u0430 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$unblockDevice() {
-      return "Sblocca il dispositivo";
+      return "\u041e\u0434\u0431\u043b\u043e\u043a\u0438\u0440\u0430\u0458 \u0443\u0440\u0435\u0452\u0430\u0458";
     },
     get$unknownDevice() {
-      return "Dispositivo sconosciuto";
+      return "\u041d\u0435\u043f\u043e\u0437\u043d\u0430\u0442 \u0443\u0440\u0435\u0452\u0430\u0458";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Algoritmo di crittografia sconosciuto";
+      return "\u041d\u0435\u043f\u043e\u0437\u043d\u0430\u0442 \u0430\u043b\u0433\u043e\u0440\u0438\u0442\u0430\u043c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0430";
     },
     unknownEvent$1(type) {
-      return "Evento sconosciuto \xab" + type + "\xbb";
+      return "\u041d\u0435\u043f\u043e\u0437\u043d\u0430\u0442 \u0434\u043e\u0433\u0430\u0452\u0430\u0458 \u201e" + type + "\u201c";
     },
     get$unpin() {
-      return "Rimuovi";
+      return "\u041e\u0442\u043a\u0430\u0447\u0438";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " e " + username2 + " stanno scrivendo\u2026";
+      return username + " \u0438 " + username2 + " \u043a\u0443\u0446\u0430\u0458\u0443\u2026";
     },
     userIsTyping$1(username) {
-      return username + " sta scrivendo\u2026";
+      return username + " \u043a\u0443\u0446\u0430\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " ha abbandonato la chat";
+      return username + " \u043d\u0430\u043f\u0443\u0441\u0442\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$username(_) {
-      return "Nome utente";
+      return "\u041a\u043e\u0440\u0438\u0441\u043d\u0438\u0447\u043a\u043e \u0438\u043c\u0435";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " ha inviato un evento " + type;
+      return username + " \u043f\u043e\u0441\u043b\u0430 " + type + " \u0434\u043e\u0433\u0430\u0452\u0430\u0458";
     },
     get$unverified() {
-      return "Non verificato";
+      return "Unverified";
     },
     get$verified() {
-      return "Verificato";
+      return "\u041e\u0432\u0435\u0440\u0435\u043d";
     },
     get$verifyStart() {
-      return "Avvia la verifica";
+      return "\u041f\u043e\u043a\u0440\u0435\u043d\u0438 \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0458\u0443";
     },
     get$verifySuccess() {
-      return "Hai verificato con successo!";
+      return "\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u0442\u0435 \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u043e\u0432\u0430\u043b\u0438!";
     },
     get$verifyTitle() {
-      return "Verifica dell'altro account";
+      return "\u0412\u0435\u0440\u0438\u0444\u0438\u043a\u0443\u0458\u0435\u043c \u0434\u0440\u0443\u0433\u0438 \u043d\u0430\u043b\u043e\u0433";
     },
     get$visibilityOfTheChatHistory() {
-      return "Visibilit\xe0 della cronologia della discussione";
+      return "\u041e\u0434\u0440\u0435\u0434\u0438 \u0432\u0438\u0434\u0459\u0438\u0432\u043e\u0441\u0442 \u0438\u0441\u0442\u043e\u0440\u0438\u0458\u0435";
     },
     get$visibleForAllParticipants() {
-      return "Visibile a tutti i partecipanti";
+      return "\u0432\u0438\u0434\u0459\u0438\u0432\u043e \u0441\u0432\u0438\u043c \u0443\u0447\u0435\u0441\u043d\u0438\u0446\u0438\u043c\u0430";
     },
     get$visibleForEveryone() {
-      return "Visibile a tutti";
+      return "\u0432\u0438\u0434\u0459\u0438\u0432\u043e \u0441\u0432\u0438\u043c\u0430";
     },
     get$voiceMessage() {
-      return "Messaggio vocale";
+      return "\u0413\u043b\u0430\u0441\u043e\u0432\u043d\u0430 \u043f\u043e\u0440\u0443\u043a\u0430";
     },
     get$waitingPartnerAcceptRequest() {
-      return "In attesa che il partner accetti la richiesta\u2026";
+      return "\u0427\u0435\u043a\u0430\u043c \u0434\u0430 \u0441\u0430\u0433\u043e\u0432\u043e\u0440\u043d\u0438\u043a \u043f\u0440\u0438\u0445\u0432\u0430\u0442\u0438 \u0437\u0430\u0445\u0442\u0435\u0432\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "In attesa che il partner accetti l'emoji\u2026";
+      return "\u0427\u0435\u043a\u0430\u043c \u0434\u0430 \u0441\u0430\u0433\u043e\u0432\u043e\u0440\u043d\u0438\u043a \u043f\u0440\u0438\u0445\u0432\u0430\u0442\u0438 \u0435\u043c\u043e\u045f\u0438\u0458\u0435\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "In attesa che il partner accetti i numeri\u2026";
+      return "\u0427\u0435\u043a\u0430\u043c \u0434\u0430 \u0441\u0430\u0433\u043e\u0432\u043e\u0440\u043d\u0438\u043a \u043f\u0440\u0438\u0445\u0432\u0430\u0442\u0438 \u0431\u0440\u043e\u0458\u0435\u0432\u0435\u2026";
     },
     get$warning() {
-      return "Attenzione!";
+      return "\u0423\u043f\u043e\u0437\u043e\u0440\u0435\u045a\u0435!";
     },
     get$weSentYouAnEmail() {
-      return "Ti abbiamo inviato un'e-mail";
+      return "\u041f\u043e\u0441\u043b\u0430\u043b\u0438 \u0441\u043c\u043e \u0432\u0430\u043c \u0435-\u043f\u043e\u0448\u0442\u0443";
     },
     get$whoCanPerformWhichAction() {
-      return "Chi pu\xf2 eseguire quale azione";
+      return "\u043a\u043e \u043c\u043e\u0436\u0435 \u0448\u0442\u0430 \u0434\u0430 \u0440\u0430\u0434\u0438";
     },
     get$whyDoYouWantToReportThis() {
-      return "Perch\xe9 vuoi segnalarlo?";
+      return "\u0417\u0430\u0448\u0442\u043e \u0436\u0435\u043b\u0438\u0442\u0435 \u043e\u0432\u043e \u0434\u0430 \u043f\u0440\u0438\u0458\u0430\u0432\u0438\u0442\u0435?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Con questi indirizzi puoi recuperare la tua password se necessario.";
+      return "\u0421\u0430 \u043e\u0432\u0438\u043c \u0430\u0434\u0440\u0435\u0441\u0430\u043c\u0430 \u043c\u043e\u0436\u0435\u0442\u0435 \u043e\u043f\u043e\u0440\u0430\u0432\u0438\u0442\u0438 \u0441\u0432\u043e\u0458\u0443 \u043b\u043e\u0437\u0438\u043d\u043a\u0443.";
     },
     get$writeAMessage() {
-      return "Scrivi un messaggio\u2026";
+      return "\u043d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u043f\u043e\u0440\u0443\u043a\u0443\u2026";
     },
     get$yes() {
-      return "S\xec";
+      return "\u0414\u0430";
     },
     get$you() {
-      return "Tu";
+      return "\u0412\u0438";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Non stai pi\xf9 partecipando a questa chat";
+      return "\u0412\u0438\u0448\u0435 \u043d\u0435 \u0443\u0447\u0435\u0441\u0442\u0432\u0443\u0458\u0435\u0442\u0435 \u0443 \u043e\u0432\u043e\u043c \u045b\u0430\u0441\u043a\u0430\u045a\u0443";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Sei stato/a bandito/a da questa chat";
+      return "\u0417\u0430\u0431\u0440\u0430\u045a\u0435\u043d\u043e \u0432\u0430\u043c \u0458\u0435 \u043e\u0432\u043e \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$yourPublicKey() {
-      return "La tua chiave pubblica";
+      return "\u0412\u0430\u0448 \u0458\u0430\u0432\u043d\u0438 \u043a\u0459\u0443\u0447";
     },
     get$messageInfo() {
-      return "Informazioni del messaggio";
+      return "Message info";
     },
     get$time(_) {
-      return "Tempo";
+      return "Time";
     },
     get$sender() {
-      return "Mittente";
+      return "Sender";
     },
     get$openGallery() {
-      return "Apri la galleria";
+      return "Open gallery";
     },
     get$removeFromSpace() {
-      return "Rimuovi dallo spazio";
+      return "Remove from space";
     },
     videoWithSize$1(size) {
       return "Video (" + size + ")";
     },
     get$markAsRead() {
-      return "Segna come letto";
+      return "Mark as read";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " ha reagito con " + reaction;
+      return sender + " reacted with " + reaction;
     },
     get$pinMessage() {
-      return "Fissa alla stanza";
+      return "Pin to room";
     },
     get$confirmEventUnpin() {
-      return "Sei sicuro di voler permanentemente sfissare l'evento?";
+      return "Are you sure to permanently unpin the event?";
     },
     get$emojis() {
-      return "Emoji";
+      return "Emojis";
     },
     get$youRejectedTheInvitation() {
-      return "Hai rifiutato l'invito";
+      return "You rejected the invitation";
     },
     get$youJoinedTheChat() {
-      return "Sei entrato/a nella chat";
+      return "You joined the chat";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Hai accettato l'invito";
+      return "\ud83d\udc4d You accepted the invitation";
     },
     youBannedUser$1(user) {
-      return "Hai bannato " + user;
+      return "You banned " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Hai revocato l'invito per " + user;
+      return "You have withdrawn the invitation for " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Sei stato invitato/a da " + user;
+      return "\ud83d\udce9 You have been invited by " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Hai invitato " + user;
+      return "\ud83d\udce9 You invited " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Hai rimosso " + user;
+      return "\ud83d\udc5e You kicked " + user;
     },
     youUnbannedUser$1(user) {
-      return "Hai sbannato " + user;
+      return "You unbanned " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " ha bussato";
+      return "\ud83d\udeaa " + user + " has knocked";
     },
     get$usersMustKnock() {
-      return "Gli utenti devono bussare";
+      return "Users must knock";
     },
     get$noOneCanJoin() {
-      return "Nessuno pu\xf2 unirsi";
+      return "No one can join";
     },
     userWouldLikeToChangeTheChat$1(user) {
-      return user + " vorrebbe unirsi alla chat.";
+      return user + " would like to join the chat.";
     },
     get$knock() {
-      return "Bussa";
+      return "Knock";
     },
     get$users() {
-      return "Utenti";
+      return "Users";
     },
     countFiles$1(count) {
-      return "" + count + " file";
+      return "" + count + " files";
     },
     get$user() {
-      return "Utente";
+      return "User";
     },
     get$custom() {
-      return "Personalizzato";
+      return "Custom";
     },
     get$noKeyForThisMessage() {
-      return "Questo pu\xf2 accadere se il messaggio \xe8 stato inviato prima che hai fatto l'accesso in questo dispositivo.\n\n\xc8 anche possibile che il mittente abbia bloccato il tuo dispositivo o che qualcosa sia andato storto con la tua connessione ad internet.\n\nSei in grado di leggere il messaggio su altre sessioni? Allora puoi trasferire il messaggio da l\xec! Vai su Impostazioni > Dispositivi e verifica che i tuoi dispositivi siano verificati l'un l'altro. Quando aprirai la stanza la prossima volta ed entrambe le sessioni sono in primo piano, le chiavi saranno trasmesse automaticamente.\n\nNon vuoi perdere le chiavi quando ti disconnetti o cambi dispositivo? Assicurati di aver attivato il backup delle chat nelle impostazioni.";
+      return "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.";
     },
     get$newSpace() {
-      return "Nuovo spazio";
+      return "New space";
     },
     get$doNotShowAgain() {
-      return "Non mostrare pi\xf9";
+      return "Do not show again";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Chat vuota (era " + oldDisplayName + ")";
+      return "Empty chat (was " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Riapri la chat";
+      return "Reopen chat";
     },
     get$noOtherDevicesFound() {
-      return "Nessun altro dispositivo trovato";
+      return "No other devices found";
     },
     fileIsTooBigForServer$1(max) {
-      return "Impossibile inviare! Il server supporta solo allegati fino a " + max + ".";
+      return "Unable to send! The server only supports attachments up to " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Salta all'ultimo messaggio letto";
+      return "Jump to last read message";
     },
     get$readUpToHere() {
-      return "Letto fino a qui";
+      return "Read up to here";
     },
     get$jump() {
-      return "Salta";
+      return "Jump";
     },
     get$openLinkInBrowser() {
-      return "Apri il collegamento nel browser";
+      return "Open link in browser";
     },
     get$profileNotFound() {
-      return "Impossibile trovare l'utente sul server. Forse c'\xe8 un problema di connessione oppure l'utente non esiste.";
+      return "The user could not be found on the server. Maybe there is a connection problem or the user doesn't exist.";
     },
     get$setColorTheme() {
-      return "Imposta tema colore:";
+      return "Set color theme:";
     },
     get$invite() {
-      return "Invitare";
+      return "Invite";
     },
     get$invitePrivateChat() {
-      return "\ud83d\udce8 Invita a una chat privata";
+      return "\ud83d\udce8 Invite private chat";
     },
     get$invalidInput() {
-      return "Contenuto non valido!";
+      return "Invalid input!";
     },
     wrongPinEntered$1(seconds) {
-      return "\xc8 stato inserito il pin sbagliato! Riprova tra " + seconds + " secondi...";
+      return "Wrong pin entered! Try again in " + seconds + " seconds...";
     },
     get$pleaseEnterANumber() {
-      return "Per favore inserisci un numero maggiore di 0";
+      return "Please enter a number greater than 0";
     },
     get$roomUpgradeDescription() {
-      return "Questa chat sar\xe0 ricreata con la nuova versione della stanza. Tutti i partecipanti saranno avvertiti che devono passare alla nuova chat. Puoi leggere di pi\xf9 riguardo le versioni delle stanze su https://spec.matrix.org/latest/rooms/";
+      return "The chat will then be recreated with the new room version. All participants will be notified that they need to switch to the new chat. You can find out more about room versions at https://spec.matrix.org/latest/rooms/";
     },
     get$removeDevicesDescription() {
-      return "Sarai disconnesso da questo dispositivo e non potrai pi\xf9 ricevere messaggi.";
+      return "You will be logged out of this device and will no longer be able to receive messages.";
     },
     get$banUserDescription() {
-      return "L'utente sar\xe0 bannato dalla chat e non sar\xe0 in grado di rientrare finch\xe9 non verr\xe0 sbannato.";
+      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
     },
     get$unbanUserDescription() {
-      return "L'utente potr\xe0 rientrare nella chat.";
+      return "The user will be able to enter the chat again if they try.";
     },
     get$kickUserDescription() {
-      return "L'utente \xe8 stato rimosso, ma non bannato. Nelle chat pubbliche, l'utente potr\xe0 rientrare quando vuole.";
+      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
     },
     get$makeAdminDescription() {
-      return "Una volta che fai questo utente amministratore, potresti non essere in grado di rimuoverlo, in quanto avr\xe0 i tuoi stessi privilegi.";
+      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
     },
     get$yourGlobalUserIdIs() {
-      return "Il tuo ID dell'utente globale \xe8: ";
+      return "Your global user-ID is: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Sfortunatamente non \xe8 stato trovato nessun utente con "' + query + '". Per favore controlla se hai fatto un errore di battitura.';
+      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
     },
     get$knocking() {
-      return "Bussare";
+      return "Knocking";
     },
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "La chat pu\xf2 essere trovata tramite la ricerca su " + server;
+      return "Chat can be discovered via the search on " + server;
     },
     get$searchChatsRooms() {
-      return "Cerca per #chat, @utenti...";
+      return "Search for #chats, @users...";
     },
     get$nothingFound() {
-      return "Non \xe8 stato trovato nulla...";
+      return "Nothing found...";
     },
     get$wrongRecoveryKey() {
-      return "Mi dispiace... questa non sembra essere la chiave di recupero corretta.";
+      return "Sorry... this does not seem to be the correct recovery key.";
     },
     get$startConversation() {
-      return "Inizia una conversazione";
+      return "Start conversation";
     },
     get$commandHint_sendraw() {
-      return "Manda un json grezzo";
+      return "Send raw json";
     },
     get$searchForUsers() {
-      return "Cerca @utenti...";
+      return "Search for @users...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Per favore inserisci la tua password attuale";
+      return "Please enter your current password";
     },
     get$newPassword() {
-      return "Nuova password";
+      return "New password";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Per favore scegli una password forte";
+      return "Please choose a strong password";
     },
     get$passwordsDoNotMatch() {
-      return "Le password non corrispondono";
+      return "Passwords do not match";
     },
     get$passwordIsWrong() {
-      return "La password inserita \xe8 sbagliata";
+      return "Your entered password is wrong";
     },
     get$publicChatAddresses() {
-      return "Indirizzi di chat pubblici";
+      return "Public chat addresses";
     },
     get$createNewAddress() {
-      return "Crea un nuovo indirizzo";
+      return "Create new address";
     },
     get$joinSpace() {
-      return "Unisciti allo spazio";
+      return "Join space";
     },
     get$publicSpaces() {
-      return "Spazio pubblico";
+      return "Public spaces";
     },
     get$decline() {
-      return "Declina";
+      return "Decline";
     },
     get$thisDevice() {
-      return "Questo dispositivo:";
+      return "This device:";
     },
     get$initAppError() {
-      return "Si \xe8 verificato un errore durante l'inizializzazione dell'app";
+      return "An error occured while init the app";
     },
     get$userRole() {
-      return "Ruolo utente";
+      return "User role";
     },
     searchIn$1(chat) {
-      return 'Cerca nella chat "' + chat + '"...';
+      return 'Search in chat "' + chat + '"...';
     },
     get$searchMore() {
-      return "Cerca di pi\xf9...";
+      return "Search more...";
     },
     get$gallery() {
-      return "Galleria";
+      return "Gallery";
     },
     get$files(_) {
-      return "File";
+      return "Files";
     },
     sessionLostBody$2(url, error) {
-      return "La tua sessione \xe8 andata persa. Segnala questo errore agli sviluppatori all'indirizzo " + url + ". Il messaggio di errore \xe8: " + error;
+      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "L'app ora tenta di ripristinare la sessione dal backup. Segnala questo errore agli sviluppatori all'indirizzo " + url + ". Il messaggio di errore \xe8: " + error;
+      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
     },
     get$sendReadReceipts() {
-      return "Invia ricevute di lettura";
+      return "Send read receipts";
     },
     get$sendTypingNotificationsDescription() {
-      return "Gli altri partecipanti alla chat possono vedere quando stai scrivendo un nuovo messaggio.";
+      return "Other participants in a chat can see when you are typing a new message.";
     },
     get$sendReadReceiptsDescription() {
-      return "Gli altri partecipanti alla chat possono vedere quando hai letto un messaggio.";
+      return "Other participants in a chat can see when you have read a message.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Verifica altro dispositivo";
+      return "\ud83d\udd10 Verify other device";
     },
     get$verifyOtherDeviceDescription() {
-      return "Quando verifichi un altro dispositivo, questi dispositivi possono scambiarsi le chiavi, aumentando la tua sicurezza complessiva. \ud83d\udcaa Quando inizi una verifica, apparir\xe0 un popup nell'app su entrambi i dispositivi. L\xec vedrai una serie di emoji o numeri che dovrai confrontare tra loro. \xc8 meglio avere entrambi i dispositivi a portata di mano prima di iniziare la verifica. \ud83e\udd33";
+      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " ha accettato la verifica della chiave";
+      return sender + " accepted key verification";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " ha annullato la verifica della chiave";
+      return sender + " canceled key verification";
     },
     completedKeyVerification$1(sender) {
-      return sender + " ha completato la verifica della chiave";
+      return sender + " completed key verification";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " \xe8 pronto per la verifica della chiave";
+      return sender + " is ready for key verification";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " ha richiesto la verifica della chiave";
+      return sender + " requested key verification";
     },
     startedKeyVerification$1(sender) {
-      return sender + " ha avviato la verifica della chiave";
+      return sender + " started key verification";
     },
     get$stickers() {
-      return "Adesivi";
+      return "Stickers";
     },
     get$discover() {
-      return "Scopri";
+      return "Discover";
     },
     get$commandHint_ignore() {
-      return "Ignora il Matrix ID fornito";
+      return "Ignore the given matrix ID";
     },
     get$commandHint_unignore() {
-      return "Ignora il Matrix ID specificato";
+      return "Unignore the given matrix ID";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Al momento ci sono " + count + " utenti bloccati.";
+      return "Right now there are " + count + " users blocked.";
     },
     get$restricted() {
-      return "Limitato";
+      return "Restricted";
     },
     get$knockRestricted() {
-      return "Limitato al bussare";
+      return "Knock restricted";
     },
     goToSpace$1(space) {
-      return "Vai allo spazio: " + space;
+      return "Go to space: " + space;
     },
     get$markAsUnread() {
-      return "Contrassegna come non letto";
+      return "Mark as unread";
     },
     userLevel$1(level) {
-      return "" + level + " - Utente";
+      return "" + level + " - User";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderatore";
+      return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - Amministratore";
+      return "" + level + " - Admin";
     },
     get$changeGeneralChatSettings() {
-      return "Modifica le impostazioni generali della chat";
+      return "Change general chat settings";
     },
     get$inviteOtherUsers() {
-      return "Invita altri utenti a questa chat";
+      return "Invite other users to this chat";
     },
     get$changeTheChatPermissions() {
-      return "Cambia i permessi della chat";
+      return "Change the chat permissions";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Cambia la visibilit\xe0 della cronologia chat";
+      return "Change the visibility of the chat history";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Cambia l'indirizzo principale della chat pubblica";
+      return "Change the main public chat address";
     },
     get$sendRoomNotifications() {
-      return "Invia notifiche alla @stanza";
+      return "Send a @room notifications";
     },
     get$changeTheDescriptionOfTheGroup() {
-      return "Cambia la descrizione della chat";
+      return "Change the description of the chat";
     },
     get$chatPermissionsDescription() {
-      return "Definisci quale livello di privilegi \xe8 necessario per determinate azioni in questa chat. I livelli di privilegi 0, 50 e 100 rappresentano solitamente utenti, moderatori e amministratori, ma qualsiasi valore intermedio \xe8 possibile.";
+      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 Aggiornamento " + version + " installato!";
+      return "\ud83c\udf89 Update " + version + " installed!";
     },
     get$sendCanceled() {
-      return "Invio annullato";
+      return "Sending canceled";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Non sembra essere un homeserver compatibile. URL sbagliato?";
+      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
     },
     get$calculatingFileSize() {
-      return "Calcolo della dimensione del file...";
+      return "Calculating file size...";
     },
     get$prepareSendingAttachment() {
-      return "Preparazione per l'invio dell'allegato...";
+      return "Prepare sending attachment...";
     },
     get$sendingAttachment() {
-      return "Invio allegato...";
+      return "Sending attachment...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Invio dell'allegato " + index + " di " + $length + "...";
+      return "Sending attachment " + index + " of " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Limite server raggiunto! Attendere " + seconds + " secondi...";
+      return "Server limit reached! Waiting " + seconds + " seconds...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Nota: quando colleghi tutti i tuoi dispositivi al backup della chat, vengono verificati automaticamente.";
+      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
     },
     get$continueText() {
-      return "Continua";
+      return "Continue";
     },
     get$blur(_) {
-      return "Sfocatura:";
+      return "Blur:";
     },
     get$opacity(_) {
-      return "Opacit\xe0:";
+      return "Opacity:";
     },
     get$setWallpaper() {
-      return "Imposta sfondo";
+      return "Set wallpaper";
     },
     get$noContactInformationProvided() {
-      return "Il server non fornisce alcuna informazione di contatto valida";
+      return "Server does not provide any valid contact information";
     },
     get$contactServerAdmin() {
-      return "Contatta l'amministratore del server";
+      return "Contact server admin";
     },
     get$contactServerSecurity() {
-      return "Contatta la sicurezza del server";
+      return "Contact server security";
     },
     get$supportPage() {
-      return "Pagina di supporto";
+      return "Support page";
     },
     get$serverInformation() {
-      return "Informazioni sul server:";
+      return "Server information:";
     },
     get$name(_) {
-      return "Nome";
+      return "Name";
     },
     get$version(_) {
-      return "Versione";
+      return "Version";
     },
     get$compress() {
-      return "Comprimere";
+      return "Compress";
     },
     get$boldText() {
-      return "Testo in grassetto";
+      return "Bold text";
     },
     get$italicText() {
-      return "Testo in corsivo";
+      return "Italic text";
     },
     get$strikeThrough() {
-      return "Barrato";
+      return "Strikethrough";
     },
     get$pleaseFillOut() {
-      return "Si prega di compilare";
+      return "Please fill out";
     },
     get$invalidUrl() {
-      return "URL non valido";
+      return "Invalid url";
     },
     get$addLink() {
-      return "Aggiungi collegamento";
+      return "Add link";
     },
     get$unableToJoinChat() {
-      return "Impossibile partecipare alla chat. Forse l'altra parte ha gi\xe0 chiuso la conversazione.";
+      return "Unable to join chat. Maybe the other party has already closed the conversation.";
     },
     get$previous() {
       return "Previous";
@@ -4183,14 +4183,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nIt, C.L10n);
+    _inherit(A.L10nSr, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nIt":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nSr":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
-  d.eventLog.push({p: "main.dart.js_233", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Xb+LmV6WDJWNj/TQUVxV+W/23Qg=");
+  d.eventLog.push({p: "main.dart.js_252", e: "endPart", h: h});
+})($__dart_deferred_initializers__, "3x7lNB2mAg53Pai8eRH8rSw7vuQ=");
 ;
-//# sourceMappingURL=main.dart.js_233.part.js.map
+//# sourceMappingURL=main.dart.js_252.part.js.map

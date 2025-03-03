@@ -364,6 +364,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participants";
     },
+    get$create(_) {
+      return "Create";
+    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " created the chat";
     },
@@ -498,9 +501,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$goToTheNewRoom() {
       return "Go to the new room";
-    },
-    get$chatDescription() {
-      return "Chat description";
     },
     get$groups() {
       return "Groups";
@@ -4500,6 +4500,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participantes";
     },
+    get$create(_) {
+      return "Criar";
+    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " criou a conversa";
     },
@@ -4634,9 +4637,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$goToTheNewRoom() {
       return "Ir para a sala nova";
-    },
-    get$chatDescription() {
-      return "Descri\xe7\xe3o da conversa";
     },
     get$groups() {
       return "Grupos";
@@ -5732,6 +5732,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participantes";
     },
+    get$create(_) {
+      return "Criar";
+    },
     createdTheChat$1(username) {
       return username + " criou a conversa";
     },
@@ -6163,6 +6166,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_17", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "2q9OON6KTgEkp5zSFUbZg/V39Mc=");
+})($__dart_deferred_initializers__, "dscP9v9i2DhBX7FBiPuKUOHa41c=");
 ;
 //# sourceMappingURL=main.dart.js_17.part.js.map
