@@ -1,9 +1,9 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-
+import 'package:app_settings/app_settings.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -16,10 +16,92 @@ import 'package:fluffychat/pangea/learning_settings/widgets/p_settings_switch_li
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'dart:io'; 
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html; 
+
 
 class SettingsLearningView extends StatelessWidget {
   final SettingsLearningController controller;
   const SettingsLearningView(this.controller, {super.key});
+
+  void _showKeyboardSettingsDialog(BuildContext context) {
+    String description;
+    String buttonText;
+    VoidCallback buttonAction;
+
+    if (kIsWeb) {
+      // Detect platform using userAgent for web
+      final userAgent = html.window.navigator.userAgent.toLowerCase();
+      if (userAgent.contains('mac') || userAgent.contains('iphone') || userAgent.contains('ipad')) {
+        description = L10n.of(context).enableAutocorrectPopUpDescription;
+        buttonText = 'Settings';
+        buttonAction = () {
+          AppSettings.openAppSettings();
+        };
+      } else if (userAgent.contains('android') || userAgent.contains('windows')) {
+        description = L10n.of(context).downloadGboardDescription;
+        buttonText = 'Download Gboard';
+        buttonAction = () {
+          launchUrlString('https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin');
+        };
+      } else {
+        description = ''; // Default
+        buttonText = 'OK';
+        buttonAction = () {
+          Navigator.of(context).pop();
+        };
+      }
+    } else {
+      if (Platform.isIOS || Platform.isMacOS) {
+        description = L10n.of(context).enableAutocorrectPopUpDescription;
+        buttonText = 'Settings';
+        buttonAction = () {
+          AppSettings.openAppSettings();
+        };
+      } else if (Platform.isAndroid || Platform.isWindows) {
+        description = L10n.of(context).downloadGboardDescription;
+        buttonText = 'Download Gboard';
+        buttonAction = () {
+          launchUrlString('https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin');
+        };
+      } else {
+        description = 'unfortunately your platform is not currently supported for this feature. Stay tuned for further development!'; // Default
+        buttonText = 'OK';
+        buttonAction = () {
+          Navigator.of(context).pop();
+        };
+      }
+    }
+
+    showAdaptiveDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(L10n.of(context).enableAutocorrectWarning),
+          content: Text(description),
+          actions: [
+            TextButton(
+              child: Text(L10n.of(context).cancel),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text(buttonText),
+              onPressed: buttonAction,
+            ),
+            TextButton(
+              child: const Text('Already Enabled'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +180,49 @@ class SettingsLearningView extends StatelessWidget {
                                 initialLevel: controller.cefrLevel,
                                 onChanged: controller.setCefrLevel,
                               ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.white54,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    ProfileSettingsSwitchListTile.adaptive(
+                                      defaultValue: controller
+                                          .getToolSetting(ToolSetting.autoIGC), 
+                                      title: ToolSetting.autoIGC.toolName(context),
+                                      subtitle: ToolSetting.autoIGC.toolDescription(context),
+                                      onChange: (bool value) =>
+                                          controller.updateToolSetting(
+                                        ToolSetting.autoIGC,
+                                        value,
+                                      ),
+                                      enabled: true,
+                                    ),
+                                    ProfileSettingsSwitchListTile.adaptive(
+                                      defaultValue: controller
+                                          .getToolSetting(ToolSetting.enableAutocorrect), 
+                                      title: ToolSetting.enableAutocorrect.toolName(context),
+                                      subtitle: ToolSetting.enableAutocorrect.toolDescription(context),
+                                      onChange: (bool value) {
+                                        controller.updateToolSetting(
+                                          ToolSetting.enableAutocorrect,
+                                          value,
+                                        );
+                                        if (value) {
+                                          _showKeyboardSettingsDialog(context);
+                                        }
+                                      },
+                                      enabled: true,
+                                    ),
+                                  ],
+                                ),
+                              ),
                               for (final toolSetting in ToolSetting.values
-                                  .where((tool) => tool.isAvailableSetting))
+                                  .where((tool) => tool.isAvailableSetting && tool != ToolSetting.autoIGC && tool != ToolSetting.enableAutocorrect))
                                 Column(
                                   children: [
                                     ProfileSettingsSwitchListTile.adaptive(
