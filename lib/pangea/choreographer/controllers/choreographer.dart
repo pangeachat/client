@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/choreographer/controllers/igc_controller.dart'
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
+import 'package:fluffychat/pangea/choreographer/utils/input_paste_listener.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
@@ -62,6 +63,11 @@ class Choreographer {
   }
   _initialize() {
     _textController = PangeaTextController(choreographer: this);
+    InputPasteListener(
+      _textController,
+      // TODO, do something on paste
+      () {},
+    );
     itController = ITController(this);
     igc = IgcController(this);
     errorService = ErrorService(this);
