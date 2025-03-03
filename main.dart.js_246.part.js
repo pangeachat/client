@@ -2,1452 +2,1452 @@
 ((s, d, e) => {
   s[d] = s[d] || {};
   s[d][e] = s[d][e] || [];
-  s[d][e].push({p: "main.dart.js_223", e: "beginPart"});
+  s[d][e].push({p: "main.dart.js_246", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nHu$() {
-      return new A.L10nHu(B.canonicalizedLocale("hu"));
+    L10nRu$() {
+      return new A.L10nRu(B.canonicalizedLocale("ru"));
     },
-    L10nHu: function L10nHu(t0) {
+    L10nRu: function L10nRu(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[51];
-  A = hunkHelpers.updateHolder(holdersList[27], A);
-  A.L10nHu.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[41], A);
+  A.L10nRu.prototype = {
     get$alwaysUse24HourFormat() {
-      return "true";
+      return "\u043d\u0435\u0442";
     },
     get$repeatPassword() {
-      return "Jelsz\xf3 megism\xe9tl\xe9se";
+      return "\u041f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u0430\u0440\u043e\u043b\u044c";
     },
     get$notAnImage() {
-      return "Nem k\xe9p f\xe1jl.";
+      return "\u042d\u0442\u043e \u043d\u0435 \u043a\u0430\u0440\u0442\u0438\u043d\u043a\u0430.";
     },
     get$remove(_) {
-      return "Elt\xe1vol\xedt\xe1s";
+      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c";
     },
     get$importNow() {
-      return "Import\xe1l\xe1s most";
+      return "\u0418\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0435\u0439\u0447\u0430\u0441";
     },
     get$importEmojis() {
-      return "Emojik import\xe1l\xe1sa";
+      return "\u0418\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u044d\u043c\u043e\u0434\u0437\u0438";
     },
     get$importFromZipFile() {
-      return "Import\xe1l\xe1s zip f\xe1jlb\xf3l";
+      return "\u0418\u043c\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0438\u0437 ZIP-\u0444\u0430\u0439\u043b\u0430";
     },
     get$exportEmotePack() {
-      return "Emojik export\xe1l\xe1sa zip-be";
+      return "\u042d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043d\u0430\u0431\u043e\u0440 \u044d\u043c\u043e\u0434\u0437\u0438 \u043a\u0430\u043a ZIP";
     },
     get$replace(_) {
-      return "Kicser\xe9l";
+      return "\u0417\u0430\u043c\u0435\u043d\u0438\u0442\u044c";
     },
     aboutHomeserver$1(homeserver) {
-      return "About " + homeserver;
+      return "\u041e \u0441\u0435\u0440\u0432\u0435\u0440\u0435 " + homeserver;
     },
     get$accept(_) {
-      return "Elfogad\xe1s";
+      return "\u041f\u0440\u0438\u043d\u044f\u0442\u044c";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " elfogadta a megh\xedv\xe1st";
+      return "\ud83d\udc4d " + username + " \u043f\u0440\u0438\u043d\u044f\u043b(\u0430) \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435";
     },
     get$account() {
-      return "Fi\xf3k";
+      return "\u0423\u0447\u0451\u0442\u043d\u0430\u044f \u0437\u0430\u043f\u0438\u0441\u044c";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " aktiv\xe1lta a v\xe9gpontok k\xf6z\xf6tti titkos\xedt\xe1st";
+      return "\ud83d\udd10 " + username + " \u0430\u043a\u0442\u0438\u0432\u0438\u0440\u043e\u0432\u0430\u043b(\u0430) \u0441\u043a\u0432\u043e\u0437\u043d\u043e\u0435 \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435";
     },
     get$addEmail() {
-      return "E-mail-c\xedm hozz\xe1ad\xe1sa";
+      return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u0443\u044e \u043f\u043e\u0447\u0442\u0443";
     },
     supposedMxid$1(mxid) {
-      return mxid + "-nek kell lennie";
+      return "\u042d\u0442\u043e \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c " + mxid;
     },
     get$addToSpace() {
-      return "Hozz\xe1ad\xe1s t\xe9rhez";
+      return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432 \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u043e";
     },
     get$admin() {
-      return "Admin";
+      return "\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440";
     },
     get$alias() {
-      return "\xe1ln\xe9v";
+      return "\u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0438\u043c";
     },
     get$all() {
-      return "\xd6sszes";
+      return "\u0412\u0441\u0435";
     },
     get$commandHint_googly() {
-      return "G\xfcl\xfcszemek k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0432\u044b\u043f\u0443\u0447\u0435\u043d\u043d\u044b\u0435 \u0433\u043b\u0430\u0437\u0430";
     },
     get$commandHint_cuddle() {
-      return "\xd6sszeb\xfaj\xe1s k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0443\u043b\u044b\u0431\u043a\u0443";
     },
     get$commandHint_hug() {
-      return "\xd6lel\xe9s k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043e\u0431\u043d\u0438\u043c\u0430\u0448\u043a\u0438";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " g\xfcl\xfcszemeket k\xfcld";
+      return senderName + " \u0432\u044b\u043f\u0443\u0447\u0438\u043b \u0433\u043b\u0430\u0437\u0430";
     },
     cuddleContent$1(senderName) {
-      return senderName + " hozz\xe1d b\xfajik";
+      return senderName + " \u0443\u043b\u044b\u0431\u043d\u0443\u043b\u0441\u044f(-\u0430\u0441\u044c) \u0412\u0430\u043c";
     },
     hugContent$1(senderName) {
-      return senderName + " meg\xf6lelt";
+      return senderName + " \u043e\u0431\u043d\u044f\u043b(\u0430) \u0412\u0430\u0441";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " felvette a h\xedv\xe1st";
+      return senderName + " \u043e\u0442\u0432\u0435\u0442\u0438\u043b(\u0430) \u043d\u0430 \u0437\u0432\u043e\u043d\u043e\u043a";
     },
     get$anyoneCanJoin() {
-      return "B\xe1rki csatlakozhat";
+      return "\u041a\u0430\u0436\u0434\u044b\u0439 \u043c\u043e\u0436\u0435\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f";
     },
     get$archive() {
-      return "Arch\xedvum";
+      return "\u0410\u0440\u0445\u0438\u0432";
     },
     get$areGuestsAllowedToJoin() {
-      return "Csatlakozhatnak-e vend\xe9gek";
+      return "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u043e \u043b\u0438 \u0433\u043e\u0441\u0442\u044f\u043c \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u044f\u0442\u044c\u0441\u044f";
     },
     get$areYouSure() {
-      return "Biztos benne?";
+      return "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Biztosan kijelentkezik?";
+      return "\u0412\u044b \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u0432\u044b\u0439\u0442\u0438?";
     },
     get$askSSSSSign() {
-      return "A m\xe1sik f\xe9l igazol\xe1s\xe1hoz meg kell adni a biztons\xe1gos t\xe1rol\xf3 jelmondat\xe1t vagy a vissza\xe1ll\xedt\xe1si kulcsot.";
+      return "\u0414\u043b\u044f \u043f\u043e\u0434\u043f\u0438\u0441\u0438 \u043a\u043b\u044e\u0447\u0430 \u0434\u0440\u0443\u0433\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f, \u043f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448\u0443 \u043f\u0430\u0440\u043e\u043b\u044c\u043d\u0443\u044e \u0444\u0440\u0430\u0437\u0443 \u0438\u043b\u0438 \u043a\u043b\u044e\u0447 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f.";
     },
     askVerificationRequest$1(username) {
-      return "Elfogadja " + username + " hiteles\xedt\xe9si k\xe9relm\xe9t?";
+      return "\u041f\u0440\u0438\u043d\u044f\u0442\u044c \u044d\u0442\u043e\u0442 \u0437\u0430\u043f\u0440\u043e\u0441 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044f \u043e\u0442 " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "A kiszolg\xe1l\xf3 a k\xf6vetkez\u0151 bejelentkez\xe9seket t\xe1mogatja:\n" + serverVersions + "\nDe ez az alkalmaz\xe1st csak ezeket t\xe1mogatja:\n" + supportedVersions;
+      return "\u0414\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u0441\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0435 \u0442\u0438\u043f\u044b \u0432\u0445\u043e\u0434\u0430 \u0432 \u0441\u0438\u0441\u0442\u0435\u043c\u0443:\n" + serverVersions + "\n\u041d\u043e \u044d\u0442\u043e \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0442\u043e\u043b\u044c\u043a\u043e:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "G\xe9pel\xe9si inf\xf3 megjelen\xedt\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u043e \u043d\u0430\u0431\u043e\u0440\u0435 \u0442\u0435\u043a\u0441\u0442\u0430";
     },
     get$swipeRightToLeftToReply() {
-      return "H\xfazza balra a v\xe1laszol\xe1shoz";
+      return "\u0414\u043b\u044f \u043e\u0442\u0432\u0435\u0442\u0430 \u043f\u0440\u043e\u0432\u0435\u0434\u0438\u0442\u0435 \u0441 \u043f\u0440\u0430\u0432\u0430 \u043d\u0430 \u043b\u0435\u0432\u043e";
     },
     get$sendOnEnter() {
-      return "K\xfcld\xe9s Enterrel";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c \u043f\u043e Enter";
     },
     badServerVersionsException$4(serverVersions, supportedVersions, serverVerions, suportedVersions) {
-      return "A Matrix szerver ezeket a specifik\xe1ci\xf3 verzi\xf3kat t\xe1mogatja:\n" + serverVersions + "\nAzonban ez az app csak ezeket: " + supportedVersions;
+      return "\u0414\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u0441\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0435 \u0432\u0435\u0440\u0441\u0438\u0438 \u0441\u043f\u0435\u0446\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0438:\n" + serverVersions + "\n\u041d\u043e \u044d\u0442\u043e \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0442\u043e\u043b\u044c\u043a\u043e " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " cseveg\xe9sek \xe9s " + participants + " r\xe9sztvev\u0151k";
+      return "" + chats + " \u0447\u0430\u0442\u043e\u0432 \u0438 " + participants + " \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432";
     },
     get$noMoreChatsFound() {
-      return "Nincs t\xf6bb cseveg\xe9s...";
+      return "\u0411\u043e\u043b\u044c\u0448\u0435 \u0447\u0430\u0442\u043e\u0432 \u043d\u0435 \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u043e...";
     },
     get$noChatsFoundHere() {
-      return "Itt m\xe9g nincs cseveg\xe9s. Kezdjen \xfajat valakivel a lentebbi gombbal. \u2935\ufe0f";
+      return "\u041d\u0435 \u0431\u044b\u043b\u043e \u043d\u0430\u0439\u0434\u0435\u043d\u043e \u043d\u0438 \u043e\u0434\u043d\u043e\u0433\u043e \u0447\u0430\u0442\u0430. \u041d\u0430\u0447\u0430\u0442\u044c \u0441 \u043a\u0435\u043c-\u043d\u0438\u0431\u0443\u0434\u044c \u043d\u043e\u0432\u044b\u0439 \u0447\u0430\u0442 \u043c\u043e\u0436\u043d\u043e, \u043d\u0430\u0436\u0430\u0432 \u043a\u043d\u043e\u043f\u043a\u0443 \u043d\u0438\u0436\u0435. \u2935\ufe0f";
     },
     get$unread() {
-      return "Olvasatlan";
+      return "\u041d\u0435\u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u044b\u0435";
     },
     get$space() {
-      return "T\xe9r";
+      return "\u041f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u043e";
     },
     get$spaces() {
-      return "Terek";
+      return "\u041f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0430";
     },
     get$banFromChat() {
-      return "Kitilt\xe1s cseveg\xe9sb\u0151l";
+      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0447\u0430\u0442\u0435";
     },
     get$banned() {
-      return "Kitiltva";
+      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d(\u0430)";
     },
     bannedUser$2(username, targetName) {
-      return username + " kitiltotta: " + targetName;
+      return username + " \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b(\u0430) " + targetName;
     },
     get$blockDevice() {
-      return "Eszk\xf6z blokkol\xe1sa";
+      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e";
     },
     get$blocked() {
-      return "Blokkolva";
+      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043e";
     },
     get$botMessages() {
-      return "Bot \xfczenetek";
+      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0431\u043e\u0442\u043e\u0432";
     },
     get$cancel(_) {
-      return "M\xe9gse";
+      return "\u041e\u0442\u043c\u0435\u043d\u0430";
     },
     cantOpenUri$1(uri) {
-      return "Nem siker\xfclt az URI megnyit\xe1sa: " + uri;
+      return "\u041d\u0435 \u0443\u0434\u0430\u0435\u0442\u0441\u044f \u043e\u0442\u043a\u0440\u044b\u0442\u044c URI " + uri;
     },
     get$changeDeviceName() {
-      return "Eszk\xf6zn\xe9v m\xf3dos\xedt\xe1sa";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0438\u043c\u044f \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
     },
     changedTheChatAvatar$1(username) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9si profilk\xe9p\xe9t";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0430\u0432\u0430\u0442\u0430\u0440 \u0447\u0430\u0442\u0430";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9s le\xedr\xe1s\xe1t erre: '" + description + "'";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430 \u043d\u0430: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9s nev\xe9t erre: '" + chatname + "'";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0438\u043c\u044f \u0447\u0430\u0442\u0430 \u043d\u0430: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9si enged\xe9lyeket";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043a \u0447\u0430\u0442\u0443";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " m\xf3dos\xedtotta a megjelen\xedtett nev\xe9t erre: '" + displayname + "'";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f \u043d\u0430: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyokat";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0433\u043e\u0441\u0442\u0435\u0432\u043e\u0433\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0430";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyait erre: " + rules;
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0433\u043e\u0441\u0442\u0435\u0432\u043e\u0433\u043e \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043d\u0430: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0432\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c \u0438\u0441\u0442\u043e\u0440\u0438\u0438";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t erre: " + rules;
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0432\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c \u0438\u0441\u0442\u043e\u0440\u0438\u0438 \u043d\u0430: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " m\xf3dos\xedtott a csatlakoz\xe1si szab\xe1lyokat";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " m\xf3dos\xedtotta a csatlakoz\xe1si szab\xe1lyokat erre: " + joinRules;
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f \u043d\u0430: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " m\xf3dos\xedtotta a profilk\xe9p\xe9t";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0430\u0432\u0430\u0442\u0430\u0440";
     },
     changedTheRoomAliases$1(username) {
-      return username + " m\xf3dos\xedtotta a szoba \xe1lneveit";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0438\u043c\u044b \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " m\xf3dos\xedtotta a megh\xedv\xf3 hivatkoz\xe1st";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438\u043b(\u0430) \u0441\u0441\u044b\u043b\u043a\u0443 \u0434\u043b\u044f \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044f";
     },
     get$changePassword() {
-      return "Jelsz\xf3 m\xf3dos\xedt\xe1sa";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u0430\u0440\u043e\u043b\u044c";
     },
     get$changeTheme() {
-      return "St\xedlus m\xf3dos\xedt\xe1sa";
+      return "\u041f\u0435\u0440\u0441\u043e\u043d\u0430\u043b\u0438\u0437\u0430\u0446\u0438\u044f";
     },
     get$changeYourAvatar() {
-      return "Profilk\xe9p m\xf3dos\xedt\xe1sa";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0441\u0432\u043e\u0439 \u0430\u0432\u0430\u0442\u0430\u0440";
     },
     get$channelCorruptedDecryptError() {
-      return "A titkos\xedt\xe1s megs\xe9r\xfclt";
+      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0431\u044b\u043b\u043e \u043f\u043e\u0432\u0440\u0435\u0436\u0434\u0435\u043d\u043e";
     },
     get$chat() {
-      return "Cseveg\xe9s";
+      return "\u0427\u0430\u0442";
     },
     get$chatDetails() {
-      return "Cseveg\xe9s r\xe9szletei";
+      return "\u0414\u0435\u0442\u0430\u043b\u0438 \u0447\u0430\u0442\u0430";
     },
     get$chats() {
-      return "Cseveg\xe9sek";
+      return "\u0427\u0430\u0442\u044b";
     },
     get$chooseAStrongPassword() {
-      return "V\xe1lasszon egy er\u0151s jelsz\xf3t";
+      return "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043d\u0430\u0434\u0451\u0436\u043d\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
     },
     get$clearArchive() {
-      return "Arch\xedvum t\xf6rl\xe9se";
+      return "\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u044c \u0430\u0440\u0445\u0438\u0432";
     },
     get$close(_) {
-      return "Bez\xe1r\xe1s";
+      return "\u0417\u0430\u043a\u0440\u044b\u0442\u044c";
     },
     get$commandHint_markasdm() {
-      return "Szoba megjel\xf6l\xe9se mint k\xf6zvetlen cseveg\u0151 szoba az adott Matrix ID-n\xe9l";
+      return "\u041f\u043e\u043c\u0435\u0442\u0438\u0442\u044c \u043a\u0430\u043a \u043a\u043e\u043c\u043d\u0430\u0442\u0443 \u043b\u0438\u0447\u043d\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439";
     },
     get$commandHint_markasgroup() {
-      return "Csoportnak jel\xf6l\xe9s";
+      return "\u041f\u043e\u043c\u0435\u0442\u0438\u0442\u044c \u043a\u0430\u043a \u0433\u0440\u0443\u043f\u043f\u0443";
     },
     get$commandHint_ban() {
-      return "Felhaszn\xe1l\xf3 kitilt\xe1sa ebb\u0151l a szob\xe1b\xf3l";
+      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0432 \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u0435";
     },
     get$commandHint_clearcache() {
-      return "Gyors\xedt\xf3t\xe1r t\xf6rl\xe9se";
+      return "\u041e\u0447\u0438\u0441\u0442\u0438\u0442\u044c \u043a\u044d\u0448";
     },
     get$commandHint_create() {
-      return "Egy \xfcres cseveg\u0151 csoport l\xe9trehoz\xe1sa\nA --no-encryption kapcsol\xf3val titkos\xedtatlan szoba hozhat\xf3 l\xe9tre";
+      return "\u0421\u043e\u0437\u0434\u0430\u0439\u0442\u0435 \u043f\u0443\u0441\u0442\u043e\u0439 \u0433\u0440\u0443\u043f\u043f\u043e\u0432\u043e\u0439 \u0447\u0430\u0442\n\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 --no-encryption, \u0447\u0442\u043e\u0431\u044b \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435";
     },
     get$commandHint_discardsession() {
-      return "Munkamenet elvet\xe9se";
+      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0441\u0435\u0430\u043d\u0441";
     },
     get$commandHint_dm() {
-      return "K\xf6zvetlen cseveg\xe9s ind\xedt\xe1sa\nA --no-encryption kapcsol\xf3val titkos\xedtatlan besz\xe9lget\xe9st hozhat l\xe9tre";
+      return "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043b\u0438\u0447\u043d\u044b\u0439 \u0447\u0430\u0442\n\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 --no-encryption, \u0447\u0442\u043e\u0431\u044b \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435";
     },
     get$commandHint_html() {
-      return "HTML form\xe1zott \xfczenet k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0442\u0435\u043a\u0441\u0442 \u0444\u043e\u0440\u043c\u0430\u0442\u0430 HTML";
     },
     get$commandHint_invite() {
-      return "Adott felhaszn\xe1l\xf3 megh\xedv\xe1sa ebbe a szob\xe1ba";
+      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0432 \u044d\u0442\u0443 \u043a\u043e\u043c\u043d\u0430\u0442\u0443";
     },
     get$commandHint_join() {
-      return "Csatlakoz\xe1s a megadott szob\xe1hoz";
+      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u0434\u0430\u043d\u043d\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u0435";
     },
     get$commandHint_kick() {
-      return "A megadott felhaszn\xe1l\xf3 kir\xfag\xe1sa a szob\xe1b\xf3l";
+      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0438\u0437 \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
     },
     get$commandHint_leave() {
-      return "Szoba elhagy\xe1sa";
+      return "\u041f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u044d\u0442\u0443 \u043a\u043e\u043c\u043d\u0430\u0442\u0443";
     },
     get$commandHint_me() {
-      return "Jellemezd magad";
+      return "\u041e\u043f\u0438\u0448\u0438\u0442\u0435 \u0441\u0435\u0431\u044f";
     },
     get$commandHint_myroomavatar() {
-      return "Az ebben a szob\xe1ban megjelen\xedtett profilk\xe9ped megv\xe1ltoztat\xe1sa (mxc URI haszn\xe1lat\xe1val)";
+      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u044e \u0434\u043b\u044f \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u044b (\u0430\u0432\u0442\u043e\u0440: mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Az ebben a szob\xe1ban megjelen\xedtett neved megv\xe1ltoztat\xe1sa";
+      return "\u0417\u0430\u0434\u0430\u0439\u0442\u0435 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f \u0434\u043b\u044f \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
     },
     get$commandHint_op() {
-      return "Az adott felhaszn\xe1l\xf3 hozz\xe1f\xe9r\xe9si szintj\xe9nek megad\xe1sa (alap\xe9rtelmezett: 50)";
+      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u043f\u0440\u0430\u0432 \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f (\u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e: 50)";
     },
     get$commandHint_plain() {
-      return "Form\xe1zatlan sz\xf6veg k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043d\u0435\u043e\u0442\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0439 \u0442\u0435\u043a\u0441\u0442";
     },
     get$commandHint_react() {
-      return "V\xe1lasz k\xfcld\xe9se reakci\xf3k\xe9nt";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043e\u0442\u0432\u0435\u0442 \u043a\u0430\u043a \u0440\u0435\u0430\u043a\u0446\u0438\u044e";
     },
     get$commandHint_send() {
-      return "Sz\xf6veg k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0442\u0435\u043a\u0441\u0442";
     },
     get$commandHint_unban() {
-      return "Adott felhaszn\xe1l\xf3 kitilt\xe1s\xe1nak felold\xe1sa a szob\xe1hoz";
+      return "\u0420\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0432 \u044d\u0442\u043e\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u0435";
     },
     get$commandInvalid() {
-      return "\xc9rv\xe9nytelen parancs";
+      return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u0430\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u0430";
     },
     commandMissing$1(command) {
-      return command + " nem egy parancs.";
+      return command + " \u043d\u0435 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043a\u043e\u043c\u0430\u043d\u0434\u043e\u0439.";
     },
     get$compareEmojiMatch() {
-      return "Hasonl\xedtsa \xf6ssze az emojikat";
+      return "\u0421\u0440\u0430\u0432\u043d\u0438\u0442\u0435 \u044d\u043c\u043e\u0434\u0437\u0438";
     },
     get$compareNumbersMatch() {
-      return "K\xe9rem hasonl\xedtsa \xf6ssze a sz\xe1mokat";
+      return "\u0421\u0440\u0430\u0432\u043d\u0438\u0442\u0435 \u0447\u0438\u0441\u043b\u0430";
     },
     get$configureChat() {
-      return "Cseveg\xe9s konfigur\xe1l\xe1sa";
+      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0438\u0442\u044c \u0447\u0430\u0442";
     },
     get$confirm(_) {
-      return "Meger\u0151s\xedt\xe9s";
+      return "\u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c";
     },
     get$containsDisplayName() {
-      return "Tartalmazza a megjelen\xedtett nevet";
+      return "\u0421\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f";
     },
     get$containsUserName() {
-      return "Tartalmazza a felhaszn\xe1l\xf3nevet";
+      return "\u0421\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
     },
     get$contentHasBeenReported() {
-      return "A tartalom jelentve lett a szerver \xfczemeltet\u0151inek";
+      return "\u041e \u043a\u043e\u043d\u0442\u0435\u043d\u0442\u0435 \u0431\u044b\u043b\u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u043e \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430\u043c \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
     },
     get$copiedToClipboard() {
-      return "V\xe1g\xf3lapra m\xe1solva";
+      return "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440 \u043e\u0431\u043c\u0435\u043d\u0430";
     },
     get$copy(_) {
-      return "M\xe1sol\xe1s";
+      return "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c";
     },
     couldNotDecryptMessage$1(error) {
-      return "Nem siker\xfclt visszafejteni az \xfczenetet: " + error;
+      return "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u0440\u0430\u0441\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435: " + error;
     },
     countParticipants$1(count) {
-      return "" + count + " r\xe9sztvev\u0151";
+      return "" + count + " \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0430(\u043e\u0432)";
+    },
+    get$create(_) {
+      return "\u0421\u043e\u0437\u0434\u0430\u0442\u044c";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " cseveg\xe9st hozott l\xe9tre";
+      return "\ud83d\udcac " + username + " \u0441\u043e\u0437\u0434\u0430\u043b(\u0430) \u0447\u0430\u0442";
     },
     get$createGroup() {
-      return "Csoport l\xe9trehoz\xe1sa";
+      return "\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u0433\u0440\u0443\u043f\u043f\u0443";
     },
     get$createNewSpace() {
-      return "\xdaj t\xe9r";
+      return "\u041d\u043e\u0432\u043e\u0435 \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u043e";
     },
     get$currentlyActive() {
-      return "Jelenleg akt\xedv";
+      return "\u0412 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0430\u043a\u0442\u0438\u0432\u0435\u043d(\u0430)";
     },
     get$darkTheme() {
-      return "S\xf6t\xe9t";
+      return "\u0422\u0451\u043c\u043d\u0430\u044f";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
-      return date + ", " + timeOfDay;
+      return timeOfDay + ", " + date;
     },
     get$deactivateAccountWarning() {
-      return "Ez deaktiv\xe1lja a felhaszn\xe1l\xf3i fi\xf3kj\xe1t. Ez nem vonhat\xf3 vissza! Biztos benne?";
+      return "\u042d\u0442\u043e \u0434\u0435\u0430\u043a\u0442\u0438\u0432\u0438\u0440\u0443\u0435\u0442 \u0432\u0430\u0448\u0443 \u0443\u0447\u0451\u0442\u043d\u0443\u044e \u0437\u0430\u043f\u0438\u0441\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f. \u0414\u0430\u043d\u043d\u043e\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u043e! \u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b?";
     },
     get$defaultPermissionLevel() {
-      return "Alap\xe9rtelmezett hozz\xe1f\xe9r\xe9si szint \xfaj felhaszn\xe1l\xf3knak";
+      return "\u0423\u0440\u043e\u0432\u0435\u043d\u044c \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0439 \u043f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u0434\u043b\u044f \u043d\u043e\u0432\u044b\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439";
     },
     get$$delete(_) {
-      return "T\xf6rl\xe9s";
+      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c";
     },
     get$deleteAccount() {
-      return "Fi\xf3k t\xf6rl\xe9se";
+      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0430\u043a\u043a\u0430\u0443\u043d\u0442";
     },
     get$deleteMessage() {
-      return "\xdczenet t\xf6rl\xe9se";
+      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
     },
     get$devices() {
-      return "Eszk\xf6z\xf6k";
+      return "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
     },
     get$directChats() {
-      return "K\xf6zvetlen cseveg\xe9sek";
+      return "\u041b\u0438\u0447\u043d\u044b\u0435 \u0447\u0430\u0442\u044b";
     },
     get$allRooms() {
-      return "Minden csoport cseveg\xe9s";
+      return "\u0412\u0441\u0435 \u0433\u0440\u0443\u043f\u043f\u044b";
     },
     get$displaynameHasBeenChanged() {
-      return "Megjelen\xedt\xe9si n\xe9v megv\xe1ltozott";
+      return "\u041e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f \u0431\u044b\u043b\u043e \u0438\u0437\u043c\u0435\u043d\u0435\u043d\u043e";
     },
     get$downloadFile() {
-      return "F\xe1jl let\xf6lt\xe9se";
+      return "\u0421\u043a\u0430\u0447\u0430\u0442\u044c \u0444\u0430\u0439\u043b";
     },
     get$edit() {
-      return "Szerkeszt";
+      return "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c";
     },
     get$editBlockedServers() {
-      return "Blokkolt szerverek szerkeszt\xe9se";
+      return "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u044b";
     },
     get$chatPermissions() {
-      return "Cseveg\xe9s enged\xe9lyek";
+      return "\u041f\u0440\u0430\u0432\u0430 \u0432 \u0447\u0430\u0442\u0435";
     },
     get$editDisplayname() {
-      return "Megjelen\xedt\xe9si n\xe9v szerkeszt\xe9se";
+      return "\u041e\u0442\u043e\u0431\u0440\u0430\u0436\u0430\u0435\u043c\u043e\u0435 \u0438\u043c\u044f";
     },
     get$editRoomAliases() {
-      return "Szoba \xe1lnevek szerkeszt\xe9se";
+      return "\u0420\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0438\u043c\u044b \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
     },
     get$editRoomAvatar() {
-      return "Szoba profilk\xe9p\xe9nek szerkeszt\xe9se";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0430\u0432\u0430\u0442\u0430\u0440 \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
     },
     get$emoteExists() {
-      return "A hangulatjel m\xe1r l\xe9tezik!";
+      return "\u042d\u043c\u043e\u0434\u0437\u0438 \u0443\u0436\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442!";
     },
     get$emoteInvalid() {
-      return "\xc9rv\xe9nytelen emoji r\xf6vidk\xf3d!";
+      return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u044b\u0439 \u043a\u043e\u0434 \u044d\u043c\u043e\u0434\u0437\u0438!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Nemr\xe9g haszn\xe1lt emojik fognak itt megjelenni...";
+      return "\u041d\u0435\u0434\u0430\u0432\u043d\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u044d\u043c\u043e\u0434\u0437\u0438 \u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u0437\u0434\u0435\u0441\u044c...";
     },
     get$emotePacks() {
-      return "Emoji csomagok a szob\xe1hoz";
+      return "\u041d\u0430\u0431\u043e\u0440\u044b \u044d\u043c\u043e\u0434\u0437\u0438 \u0434\u043b\u044f \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
     },
     get$globalChatId() {
-      return "Glob\xe1lis cseveg\u0151 azonos\xedt\xf3";
+      return "ID \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e\u0433\u043e \u0447\u0430\u0442\u0430";
     },
     get$accessAndVisibility() {
-      return "Hozz\xe1f\xe9r\xe9s \xe9s l\xe1that\xf3s\xe1g";
+      return "\u0414\u043e\u0441\u0442\u0443\u043f\u043d\u043e\u0441\u0442\u044c \u0438 \u0432\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c";
     },
     get$customEmojisAndStickers() {
-      return "Egyedi emotikonok \xe9s matric\xe1k";
+      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0435 \u044d\u043c\u043e\u0434\u0437\u0438 \u0438 \u0441\u0442\u0438\u043a\u0435\u0440\u044b";
     },
     get$emoteShortcode() {
-      return "Emoji r\xf6vidk\xf3d";
+      return "\u041a\u043e\u0434 \u044d\u043c\u043e\u0434\u0437\u0438";
     },
     get$emoteWarnNeedToPick() {
-      return "Az emojihoz egy k\xe9pet \xe9s egy r\xf6vidk\xf3dot kell v\xe1lasztani!";
+      return "\u0412\u0430\u043c \u043d\u0443\u0436\u043d\u043e \u0437\u0430\u0434\u0430\u0442\u044c \u043a\u043e\u0434 \u044d\u043c\u043e\u0434\u0437\u0438 \u0438 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435!";
     },
     get$emptyChat() {
-      return "\xdcres cseveg\xe9s";
+      return "\u041f\u0443\u0441\u0442\u043e\u0439 \u0447\u0430\u0442";
     },
     get$enableEmotesGlobally() {
-      return "Emoji csomag enged\xe9lyez\xe9se glob\xe1lisan";
+      return "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043d\u0430\u0431\u043e\u0440 \u044d\u043c\u043e\u0434\u0437\u0438 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e";
     },
     get$enableEncryption() {
-      return "Titkos\xedt\xe1s enged\xe9lyez\xe9se";
+      return "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435";
     },
     get$encrypted() {
-      return "Titkos\xedtott";
+      return "\u0417\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043e";
     },
     get$encryptionNotEnabled() {
-      return "Titkos\xedt\xe1s nincs enged\xe9lyezve";
+      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u043d\u0435 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u043e";
     },
     endedTheCall$1(senderName) {
-      return senderName + " befejezte a h\xedv\xe1st";
+      return senderName + " \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043b(\u0430) \u0437\u0432\u043e\u043d\u043e\u043a";
     },
     get$enterAnEmailAddress() {
-      return "Adjon meg egy email c\xedmet";
+      return "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u044b";
     },
     errorObtainingLocation$1(error) {
-      return "Hiba a tart\xf3zkod\xe1si hely meghat\xe1roz\xe1sa k\xf6zben: " + error;
+      return "\u041e\u0448\u0438\u0431\u043a\u0430 \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f: " + error;
     },
     get$extremeOffensive() {
-      return "Rendk\xedv\xfcl s\xe9rt\u0151";
+      return "\u041a\u0440\u0430\u0439\u043d\u0435 \u043e\u0441\u043a\u043e\u0440\u0431\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
     },
     get$fontSize(_) {
-      return "Bet\u0171m\xe9ret";
+      return "\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0440\u0438\u0444\u0442\u0430";
     },
     get$forward(_) {
-      return "Tov\xe1bb\xedt\xe1s";
+      return "\u041f\u0435\u0440\u0435\u0441\u043b\u0430\u0442\u044c";
     },
     get$fromJoining() {
-      return "Csatlakoz\xe1s \xf3ta";
+      return "\u0421 \u043c\u043e\u043c\u0435\u043d\u0442\u0430 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f";
     },
     get$fromTheInvitation() {
-      return "Megh\xedv\xe1s \xf3ta";
+      return "\u0421 \u043c\u043e\u043c\u0435\u043d\u0442\u0430 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044f";
     },
     get$goToTheNewRoom() {
-      return "\xdaj szoba megnyit\xe1sa";
-    },
-    get$chatDescription() {
-      return "Cseveg\xe9s le\xedr\xe1s";
+      return "\u0412 \u043d\u043e\u0432\u0443\u044e \u043a\u043e\u043c\u043d\u0430\u0442\u0443";
     },
     get$groups() {
-      return "Csoportok";
+      return "\u0413\u0440\u0443\u043f\u043f\u044b";
     },
     get$guestsAreForbidden() {
-      return "Nem lehetnek vend\xe9gek";
+      return "\u0413\u043e\u0441\u0442\u0438 \u043d\u0435 \u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f";
     },
     get$guestsCanJoin() {
-      return "Csatlakozhatnak vend\xe9gek";
+      return "\u0413\u043e\u0441\u0442\u0438 \u043c\u043e\u0433\u0443\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " visszavonta " + targetName + " megh\xedv\xe1s\xe1t";
+      return username + " \u043e\u0442\u043e\u0437\u0432\u0430\u043b(\u0430) \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435 \u0434\u043b\u044f " + targetName;
     },
     get$help() {
-      return "S\xfag\xf3";
+      return "\u041f\u043e\u043c\u043e\u0449\u044c";
     },
     get$hideRedactedMessages() {
-      return "Szerkesztett \xfczenetek elrejt\xe9se";
+      return "\u0421\u043a\u0440\u044b\u0442\u044c \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
     },
     get$hideRedactedMessagesBody() {
-      return "Ha valaki szerkeszti az \xfczenet\xe9t, ez az \xfczenet nem jelenik meg a cseveg\xe9s sor\xe1n.";
+      return "\u0415\u0441\u043b\u0438 \u043a\u0442\u043e-\u0442\u043e \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u0443\u0435\u0442 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435, \u043e\u043d\u043e \u0431\u0443\u0434\u0435\u0442 \u0441\u043a\u0440\u044b\u0442\u043e \u0432 \u0447\u0430\u0442\u0435.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\xc9rv\xe9nytelen vagy ismeretlen \xfczenetform\xe1tum elrejt\xe9se";
+      return "\u0421\u043a\u0440\u044b\u0442\u044c \u043d\u0435\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0435 \u0438\u043b\u0438 \u043d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0435 \u0444\u043e\u0440\u043c\u0430\u0442\u044b \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
     },
     get$howOffensiveIsThisContent() {
-      return "Mennyire s\xe9rt\u0151 ez a tartalom?";
+      return "\u041d\u0430\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u043e\u0441\u043a\u043e\u0440\u0431\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u043c \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u044d\u0442\u043e\u0442 \u043a\u043e\u043d\u0442\u0435\u043d\u0442?";
     },
     get$block() {
-      return "Blokkol\xe1s";
+      return "\u0417\u0430\u0433\u043b\u0443\u0448\u0438\u0442\u044c";
     },
     get$blockedUsers() {
-      return "Blokkolt felhaszn\xe1l\xf3k";
+      return "\u0417\u0430\u0433\u043b\u0443\u0448\u0451\u043d\u043d\u044b\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438";
     },
     get$blockListDescription() {
-      return "Az \xd6nt zavar\xf3 felhaszn\xe1l\xf3kat blokkolhatja. A blokkolt list\xe1n tal\xe1lhat\xf3 felhaszn\xe1l\xf3kt\xf3l nem tud fogadni \xfczenetet vagy szoba megh\xedv\xe1st.";
+      return "\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0433\u043b\u0443\u0448\u0438\u0442\u044c \u0442\u0440\u0435\u0432\u043e\u0436\u0430\u0449\u0438\u0445 \u0432\u0430\u0441 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439. \u0412\u044b \u043d\u0435 \u0431\u0443\u0434\u0435\u0442\u0435 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0438\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044f \u0432 \u043a\u043e\u043c\u043d\u0430\u0442\u0443 \u043e\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0438\u0437 \u0432\u0430\u0448\u0435\u0433\u043e \u043b\u0438\u0447\u043d\u043e\u0433\u043e \u0447\u0451\u0440\u043d\u043e\u0433\u043e \u0441\u043f\u0438\u0441\u043a\u0430.";
     },
     get$blockUsername() {
-      return "Felhaszn\xe1l\xf3n\xe9v mell\u0151z\xe9se";
+      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
     },
     get$iHaveClickedOnLink() {
-      return "R\xe1kattintottam a linkre";
+      return "\u042f \u043f\u0435\u0440\u0435\u0448\u0451\u043b \u043f\u043e \u0441\u0441\u044b\u043b\u043a\u0435";
     },
     get$incorrectPassphraseOrKey() {
-      return "Hib\xe1s jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
+      return "\u041d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c \u0438\u043b\u0438 \u043a\u043b\u044e\u0447 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f";
     },
     get$inviteContact() {
-      return "Ismer\u0151s megh\xedv\xe1sa";
+      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u043a\u043e\u043d\u0442\u0430\u043a\u0442";
     },
     get$noChatDescriptionYet() {
-      return "M\xe9g nincs cseveg\u0151 szoba le\xedr\xe1s.";
+      return "\u041e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430 \u043d\u0435 \u0441\u043e\u0437\u0434\u0430\u043d\u043e.";
     },
     get$tryAgain() {
-      return "Pr\xf3b\xe1lja \xfajra";
+      return "\u041f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443";
     },
     get$invited() {
-      return "Megh\xedvott";
+      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0448\u0451\u043d";
     },
     get$redactMessageDescription() {
-      return "A t\xe1rsalg\xe1sban \xf6sszes r\xe9sztvev\u0151je sz\xe1m\xe1ra m\xf3dos\xedt\xe1sra ker\xfcl az \xfczenet. Ez nem visszavonhat\xf3.";
+      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0431\u0443\u0434\u0435\u0442 \u043e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432. \u042d\u0442\u043e \u043d\u0435\u043e\u0431\u0440\u0430\u0442\u0438\u043c\u043e.";
     },
     get$optionalRedactReason() {
-      return "(Tetsz\u0151leges) A szerkeszt\xe9s oka...";
+      return "(\u041d\u0435\u043e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e) \u041f\u0440\u0438\u0447\u0438\u043d\u0430 \u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044f...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " megh\xedvta " + targetName + "-t";
+      return "\ud83d\udce9 " + username + " \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u043b(\u0430) " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Csak megh\xedvott felhaszn\xe1l\xf3k";
+      return "\u0422\u043e\u043b\u044c\u043a\u043e \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0451\u043d\u043d\u044b\u043c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f\u043c";
     },
     get$inviteForMe() {
-      return "Megh\xedv\xe1s nekem";
+      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435 \u0434\u043b\u044f \u043c\u0435\u043d\u044f";
     },
     inviteText$2(username, link) {
-      return username + " megh\xedvott a FluffyChat-be.\n1. Keresse fel a fluffychat.im oldalt, \xe9s telep\xedtse az alkalmaz\xe1st \n2. Regisztr\xe1ljon vagy jelentkezzen be \n3. Nyissa meg a megh\xedv\xf3 linket: \n " + link;
+      return username + " \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u043b(\u0430) \u0432\u0430\u0441 \u0432 FluffyChat. \n1. \u041f\u043e\u0441\u0435\u0442\u0438\u0442\u0435 https://fluffychat.im \u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \n2. \u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u0443\u0439\u0442\u0435\u0441\u044c \u0438\u043b\u0438 \u0432\u043e\u0439\u0434\u0438\u0442\u0435 \n3. \u041e\u0442\u043a\u0440\u043e\u0439\u0442\u0435 \u0441\u0441\u044b\u043b\u043a\u0443 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044f: \n " + link;
     },
     get$isTyping() {
-      return "g\xe9pel\u2026";
+      return "\u043f\u0435\u0447\u0430\u0442\u0430\u0435\u0442\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " csatlakozott a cseveg\xe9shez";
+      return "\ud83d\udc4b " + username + " \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0441\u044f(\u0430\u0441\u044c) \u043a \u0447\u0430\u0442\u0443";
     },
     get$joinRoom() {
-      return "Csatlakoz\xe1s a szob\xe1hoz";
+      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u043a\u043e\u043c\u043d\u0430\u0442\u0435";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " kir\xfagta " + targetName + "-t";
+      return "\ud83d\udc5e " + username + " \u0432\u044b\u0433\u043d\u0430\u043b(\u0430) " + targetName;
     },
     get$kickFromChat() {
-      return "Kir\xfag\xe1s a cseveg\xe9sb\u0151l";
+      return "\u0412\u044b\u0433\u043d\u0430\u0442\u044c \u0438\u0437 \u0447\u0430\u0442\u0430";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Utolj\xe1ra akt\xedv: " + localizedTimeShort;
+      return "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043f\u043e\u0441\u0435\u0449\u0435\u043d\u0438\u0435: " + localizedTimeShort;
     },
     get$leave() {
-      return "Elhagy\xe1s";
+      return "\u041f\u043e\u043a\u0438\u043d\u0443\u0442\u044c";
     },
     get$leftTheChat() {
-      return "Elhagyta a cseveg\xe9st";
+      return "\u041f\u043e\u043a\u0438\u043d\u0443\u0442\u044c \u0447\u0430\u0442";
     },
     get$lightTheme() {
-      return "Vil\xe1gos";
+      return "\u0421\u0432\u0435\u0442\u043b\u0430\u044f";
     },
     loadCountMoreParticipants$1(count) {
-      return "Tov\xe1bbi " + count + " r\xe9sztvev\u0151 bet\xf6lt\xe9se";
+      return "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0435\u0449\u0435 " + count + " \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0430(\u043e\u0432)";
     },
     get$dehydrate() {
-      return "Munkamenet export\xe1l\xe1sa \xe9s az eszk\xf6z t\xf6rl\xe9se";
+      return "\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u0441\u0435\u0430\u043d\u0441\u0430 \u0438 \u043e\u0447\u0438\u0441\u0442\u043a\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
     },
     get$dehydrateWarning() {
-      return "Ez nem visszavonhat\xf3. Bizonyosodjon meg r\xf3la, hogy biztons\xe1gos helyen t\xe1rolja a mentett f\xe1jlt.";
+      return "\u042d\u0442\u043e \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u043e. \u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0432\u044b \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u043b\u0438 \u0444\u0430\u0439\u043b \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0439 \u043a\u043e\u043f\u0438\u0438.";
     },
     get$dehydrateTor() {
-      return "TOR felhaszn\xe1l\xf3k: munkamenet export\xe1l\xe1sa";
+      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438 TOR: \u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u0441\u0435\u0430\u043d\u0441\u0430";
     },
     get$dehydrateTorLong() {
-      return "TOR felhaszn\xe1l\xf3knak aj\xe1nlott a munkamenet export\xe1l\xe1sa az ablak bez\xe1r\xe1sa el\u0151tt.";
+      return "\u0414\u043b\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 TOR \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u0442\u0441\u044f \u044d\u043a\u0441\u043f\u043e\u0440\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u0435\u0441\u0441\u0438\u044e \u043f\u0435\u0440\u0435\u0434 \u0437\u0430\u043a\u0440\u044b\u0442\u0438\u0435\u043c \u043e\u043a\u043d\u0430.";
     },
     get$loadingPleaseWait() {
-      return "Bet\xf6lt\xe9s\u2026 K\xe9rem, v\xe1rjon.";
+      return "\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430... \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435.";
     },
     get$loadMore() {
-      return "Tov\xe1bbiak bet\xf6lt\xe9se\u2026";
+      return "\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0431\u043e\u043b\u044c\u0448\u0435\u2026";
     },
     get$locationDisabledNotice() {
-      return "A helymeghat\xe1roz\xe1s ki van kapcsolva. K\xe9rem, kapcsolja be, hogy meg tudja osztani helyzet\xe9t.";
+      return "\u0421\u043b\u0443\u0436\u0431\u044b \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u043e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u044b. \u0412\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u0438\u0445, \u0447\u0442\u043e\u0431\u044b \u0438\u043c\u0435\u0442\u044c \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c \u043e\u0431\u043c\u0435\u043d\u0438\u0432\u0430\u0442\u044c\u0441\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0435\u0439 \u043e \u0441\u0432\u043e\u0435\u043c \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0438.";
     },
     get$locationPermissionDeniedNotice() {
-      return "A helymeghat\xe1roz\xe1s nem enged\xe9lyezett az alkalmaz\xe1s sz\xe1m\xe1ra. K\xe9rem enged\xe9lyezze, hogy meg tudja osztani helyzet\xe9t.";
+      return "\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u043d\u0430 \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u043e. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u044d\u0442\u043e \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435, \u0447\u0442\u043e\u0431\u044b \u0438\u043c\u0435\u0442\u044c \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0441\u0442\u044c \u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u0441\u0432\u043e\u0438\u043c \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435\u043c.";
     },
     get$logout() {
-      return "Kijelentkez\xe9s";
+      return "\u0412\u044b\u0439\u0442\u0438";
     },
     get$memberChanges() {
-      return "Tags\xe1gi v\xe1ltoz\xe1sok";
+      return "\u0418\u0437\u043c\u0435\u043d\u0435\u043d\u0438\u044f \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432";
     },
     get$mention() {
-      return "Megeml\xedt\xe9s";
+      return "\u0423\u043f\u043e\u043c\u044f\u043d\u0443\u0442\u044c";
     },
     get$messages() {
-      return "\xdczenetek";
+      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
     },
     get$messagesStyle() {
-      return "\xdczenetek:";
+      return "\u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f:";
     },
     get$moderator() {
-      return "Moder\xe1tor";
+      return "\u041c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440";
     },
     get$newChat() {
-      return "\xdaj cseveg\xe9s";
+      return "\u041d\u043e\u0432\u044b\u0439 \u0447\u0430\u0442";
     },
     get$newVerificationRequest() {
-      return "\xdaj hiteles\xedt\xe9si k\xe9relem!";
+      return "\u041d\u043e\u0432\u044b\u0439 \u0437\u0430\u043f\u0440\u043e\u0441 \u043d\u0430 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435!";
     },
     get$next(_) {
-      return "K\xf6vetkez\u0151";
+      return "\u0414\u0430\u043b\u0435\u0435";
     },
     get$no() {
-      return "Nem";
+      return "\u041d\u0435\u0442";
     },
     get$noConnectionToTheServer() {
-      return "Nem el\xe9rhet\u0151 a szerver";
+      return "\u041d\u0435\u0442 \u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f \u0441 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u043c";
     },
     get$noEmotesFound() {
-      return "Emojik nem el\xe9rhet\u0151ek. \ud83d\ude15";
+      return "\u042d\u043c\u043e\u0434\u0437\u0438 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Megh\xedv\xf3 link megoszt\xe1sa";
+      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435\u043c";
     },
     get$noPasswordRecoveryDescription() {
-      return "M\xe9g nem adott meg semmilyen m\xf3dot a jelszava vissza\xe1ll\xedt\xe1s\xe1ra.";
+      return "\u0412\u044b \u0435\u0449\u0451 \u043d\u0435 \u0434\u043e\u0431\u0430\u0432\u0438\u043b\u0438 \u0441\u043f\u043e\u0441\u043e\u0431 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u0430\u0440\u043e\u043b\u044f.";
     },
     get$noPermission() {
-      return "Nincs enged\xe9ly";
+      return "\u041d\u0435\u0442 \u043f\u0440\u0430\u0432 \u0434\u043e\u0441\u0442\u0443\u043f\u0430";
     },
     get$noRoomsFound() {
-      return "Nem tal\xe1lhat\xf3ak szob\xe1k\u2026";
+      return "\u041a\u043e\u043c\u043d\u0430\u0442\u044b \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b\u2026";
     },
     get$notifications() {
-      return "\xc9rtes\xedt\xe9sek";
+      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f";
     },
     get$notificationsEnabledForThisAccount() {
-      return "\xc9rtes\xedt\xe9sek bekapcsol\xe1sa ebben a fi\xf3kban";
+      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u044b \u0434\u043b\u044f \u044d\u0442\u043e\u0439 \u0443\u0447\u0451\u0442\u043d\u043e\u0439 \u0437\u0430\u043f\u0438\u0441\u0438";
     },
     get$obtainingLocation() {
-      return "Tart\xf3zkod\xe1si hely lek\xe9r\xe9se\u2026";
+      return "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f\u2026";
     },
     get$offensive() {
-      return "S\xe9rt\u0151";
+      return "\u041e\u0441\u043a\u043e\u0440\u0431\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0439";
     },
     get$ok() {
-      return "Rendben";
+      return "\u041e\u043a";
     },
     get$oopsSomethingWentWrong() {
-      return "Hopp\xe1, valami hiba l\xe9pett fel\u2026";
+      return "\u041e\u0439, \u0447\u0442\u043e-\u0442\u043e \u043f\u043e\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Az egyik kliense kijelentkezett";
+      return "\u041e\u0434\u0438\u043d \u0438\u0437 \u0432\u0430\u0448\u0438\u0445 \u043a\u043b\u0438\u0435\u043d\u0442\u043e\u0432 \u0432\u044b\u0448\u0435\u043b";
     },
     get$addAccount() {
-      return "Fi\xf3k hozz\xe1ad\xe1sa";
+      return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0443\u0447\u0435\u0442\u043d\u0443\u044e \u0437\u0430\u043f\u0438\u0441\u044c";
     },
     get$enableMultiAccounts() {
-      return "(B\xc9TA) T\xf6bb fi\xf3k bekapcsol\xe1sa az eszk\xf6z\xf6n";
+      return "(\u0411\u0415\u0422\u0410) \u0412\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u043d\u0435\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0443\u0447\u0435\u0442\u043d\u044b\u0445 \u0437\u0430\u043f\u0438\u0441\u0435\u0439 \u043d\u0430 \u044d\u0442\u043e\u043c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435";
     },
     get$openInMaps() {
-      return "Megnyit\xe1s t\xe9rk\xe9pen";
+      return "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u043d\u0430 \u043a\u0430\u0440\u0442\u0430\u0445";
     },
     get$link() {
-      return "Hivatkoz\xe1s";
+      return "\u0421\u0441\u044b\u043b\u043a\u0430";
     },
     get$serverRequiresEmail() {
-      return "Ehhez a szerverhez sz\xfcks\xe9ges az email c\xedm\xe9nek visszaigazol\xe1sa.";
+      return "\u042d\u0442\u043e\u0442 \u0441\u0435\u0440\u0432\u0435\u0440 \u0434\u043e\u043b\u0436\u0435\u043d \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0432\u0430\u0448 \u0430\u0434\u0440\u0435\u0441 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u043f\u043e\u0447\u0442\u044b \u0434\u043b\u044f \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438.";
     },
     get$or() {
-      return "Vagy";
+      return "\u0418\u043b\u0438";
     },
     get$participant() {
-      return "R\xe9sztvev\u0151";
+      return "\u0423\u0447\u0430\u0441\u0442\u043d\u0438\u043a";
     },
     get$passphraseOrKey() {
-      return "jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
+      return "\u043f\u0430\u0440\u043e\u043b\u044c \u0438\u043b\u0438 \u043a\u043b\u044e\u0447 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f";
     },
     get$password(_) {
-      return "Jelsz\xf3";
+      return "\u041f\u0430\u0440\u043e\u043b\u044c";
     },
     get$passwordForgotten() {
-      return "Elfelejtett jelsz\xf3";
+      return "\u0417\u0430\u0431\u044b\u043b\u0438 \u043f\u0430\u0440\u043e\u043b\u044c";
     },
     get$passwordHasBeenChanged() {
-      return "A jelsz\xf3 m\xf3dos\xedt\xe1sra ker\xfclt";
+      return "\u041f\u0430\u0440\u043e\u043b\u044c \u0431\u044b\u043b \u0438\u0437\u043c\u0435\u043d\u0451\u043d";
     },
     get$overview() {
-      return "\xc1ttekint\xe9s";
+      return "\u041e\u0431\u0437\u043e\u0440";
     },
     get$notifyMeFor() {
-      return "\xc9rtes\xedtsen engem";
+      return "\u0423\u0432\u0435\u0434\u043e\u043c\u043b\u044f\u0442\u044c \u043c\u0435\u043d\u044f \u043e";
     },
     get$passwordRecoverySettings() {
-      return "Jelsz\xf3-helyre\xe1ll\xedt\xe1si be\xe1ll\xedt\xe1sok";
+      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u043f\u0430\u0440\u043e\u043b\u044f";
     },
     get$passwordRecovery() {
-      return "Jelsz\xf3 vissza\xe1ll\xedt\xe1s";
+      return "\u0412\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u0430\u0440\u043e\u043b\u044f";
     },
     get$pickImage() {
-      return "K\xe9p v\xe1laszt\xe1sa";
+      return "\u0412\u044b\u0431\u0440\u0430\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435";
     },
     get$pin() {
-      return "R\xf6gz\xedt\xe9s";
+      return "\u0417\u0430\u043a\u0440\u0435\u043f\u0438\u0442\u044c";
     },
     get$pleaseChoose() {
-      return "K\xe9rj\xfck v\xe1lasszon";
+      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u044b\u0431\u0435\u0440\u0438\u0442\u0435";
     },
     get$pleaseEnterYourPassword() {
-      return "K\xe9rem adja meg jelszav\xe1t";
+      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0432\u0430\u0448 \u043f\u0430\u0440\u043e\u043b\u044c";
     },
     get$pleaseEnterYourPin() {
-      return "\xcdrja be PIN k\xf3dj\xe1t";
+      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0432\u043e\u0439 \u043f\u0438\u043d-\u043a\u043e\u0434";
     },
     get$pleaseEnterYourUsername() {
-      return "Adja meg a felhaszn\xe1l\xf3nev\xe9t";
+      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0438\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "K\xe9rem k\xf6vesse az instrukci\xf3kat az oldalon, \xe9s nyomjon a tov\xe1bb gombra.";
+      return "\u0421\u043b\u0435\u0434\u0443\u0439\u0442\u0435 \u0438\u043d\u0441\u0442\u0440\u0443\u043a\u0446\u0438\u044f\u043c \u043d\u0430 \u0432\u0435\u0431-\u0441\u0430\u0439\u0442\u0435 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \xab\u0414\u0430\u043b\u0435\u0435\xbb.";
     },
     get$privacy() {
-      return "Adatv\xe9delem";
+      return "\u041a\u043e\u043d\u0444\u0438\u0434\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c";
     },
     get$reason(_) {
-      return "Indok";
+      return "\u041f\u0440\u0438\u0447\u0438\u043d\u0430";
     },
     redactedBy$1(username) {
-      return username + " \xe1ltal szerkesztve";
+      return username + " \u043e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043b \u044d\u0442\u043e \u0441\u043e\u0431\u044b\u0442\u0438\u0435";
     },
     get$directChat() {
-      return "K\xf6zvetlen cseveg\xe9s";
+      return "\u041b\u0438\u0447\u043d\u044b\u0439 \u0447\u0430\u0442";
     },
     redactedByBecause$2(username, reason) {
-      return username + ' \xe1ltal szerkesztve, mivel: "' + reason + '"';
+      return username + ' \u043e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043b \u044d\u0442\u043e \u0441\u043e\u0431\u044b\u0442\u0438\u0435. \u041f\u0440\u0438\u0447\u0438\u043d\u0430: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " visszavont egy esem\xe9nyt";
+      return username + " \u043e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u043b(\u0430) \u0441\u043e\u0431\u044b\u0442\u0438\u0435";
     },
     get$redactMessage() {
-      return "\xdczenet visszavon\xe1sa";
+      return "\u041e\u0442\u0440\u0435\u0434\u0430\u043a\u0442\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
     },
     get$reject() {
-      return "Elutas\xedt";
+      return "\u041e\u0442\u043a\u0430\u0437\u0430\u0442\u044c";
     },
     rejectedTheInvitation$1(username) {
-      return username + " elutas\xedtotta a megh\xedv\xe1st";
+      return username + " \u043e\u0442\u043a\u043b\u043e\u043d\u0438\u043b(\u0430) \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435";
     },
     get$removeAllOtherDevices() {
-      return "Minden m\xe1s eszk\xf6z elt\xe1vol\xedt\xe1sa";
+      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0432\u0441\u0435 \u0434\u0440\u0443\u0433\u0438\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430";
     },
     get$unbanFromChat() {
-      return "Cseveg\xe9s kitilt\xe1s felold\xe1sa";
+      return "\u0420\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0447\u0430\u0442\u0435";
     },
     get$removeYourAvatar() {
-      return "Profilk\xe9p t\xf6rl\xe9se";
+      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0441\u0432\u043e\u0439 \u0430\u0432\u0430\u0442\u0430\u0440";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Szoba cser\xe9l\xe9se egy \xfajabb verzi\xf3ra";
+      return "\u0417\u0430\u043c\u0435\u043d\u0438\u0442\u044c \u043a\u043e\u043c\u043d\u0430\u0442\u0443 \u0431\u043e\u043b\u0435\u0435 \u043d\u043e\u0432\u043e\u0439 \u0432\u0435\u0440\u0441\u0438\u0435\u0439";
     },
     get$reply(_) {
-      return "V\xe1lasz";
+      return "\u041e\u0442\u0432\u0435\u0442\u0438\u0442\u044c";
     },
     get$reportMessage() {
-      return "\xdczenet jelent\xe9se";
+      return "\u0421\u043e\u043e\u0431\u0449\u0438\u0442\u044c \u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438";
     },
     get$roomHasBeenUpgraded() {
-      return "A szoba friss\xedtve lett";
+      return "\u041a\u043e\u043c\u043d\u0430\u0442\u0430 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0430";
     },
     get$roomVersion() {
-      return "Szoba verzi\xf3";
+      return "\u0412\u0435\u0440\u0441\u0438\u044f \u043a\u043e\u043c\u043d\u0430\u0442\u044b";
     },
     get$search(_) {
-      return "Keres\xe9s";
+      return "\u041f\u043e\u0438\u0441\u043a";
     },
     get$security() {
-      return "Biztons\xe1g";
+      return "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c";
     },
     get$send(_) {
-      return "K\xfcld\xe9s";
+      return "\u041f\u0440\u0438\u0441\u043b\u0430\u0442\u044c";
     },
     get$sendAMessage() {
-      return "\xdczenet k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
     },
     get$sendAsText() {
-      return "Sz\xf6vegk\xe9nt k\xfcld\xe9s";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u043a\u0430\u043a \u0442\u0435\u043a\u0441\u0442";
     },
     get$sendAudio() {
-      return "Hang\xfczenet k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0430\u0443\u0434\u0438\u043e";
     },
     get$sendFile() {
-      return "F\xe1jl k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0444\u0430\u0439\u043b";
     },
     get$sendImage() {
-      return "K\xe9p k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435";
     },
     sendImages$1(count) {
-      return "Send " + count + " image";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c " + count + " \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439";
     },
     get$sendMessages() {
-      return "\xdczenetek k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f";
     },
     get$sendVideo() {
-      return "Vide\xf3 k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0432\u0438\u0434\u0435\u043e";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " k\xfcld\xf6tt egy f\xe1jlt";
+      return "\ud83d\udcc1 " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0444\u0430\u0439\u043b";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " hang\xfczenetet k\xfcld\xf6tt";
+      return "\ud83c\udfa4 " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0430\u0443\u0434\u0438\u043e";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " k\xe9p\xfczenetet k\xfcld\xf6tt";
+      return "\ud83d\uddbc\ufe0f " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " matric\xe1t k\xfcld\xf6tt";
+      return "\ud83d\ude0a " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0441\u0442\u0438\u043a\u0435\u0440";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " vide\xf3t k\xfcld\xf6tt";
+      return "\ud83c\udfa5 " + username + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0432\u0438\u0434\u0435\u043e";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " h\xedv\xe1sinform\xe1ci\xf3t k\xfcld\xf6tt";
+      return senderName + " \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044e \u043e \u0437\u0432\u043e\u043d\u043a\u0435";
     },
     get$separateChatTypes() {
-      return "Csoportok \xe9s k\xf6zvetlen \xfczenetek elk\xfcl\xf6n\xedt\xe9se";
+      return "\u0420\u0430\u0437\u0434\u0435\u043b\u044f\u0442\u044c \u043b\u0438\u0447\u043d\u044b\u0435 \u0447\u0430\u0442\u044b \u0438 \u0433\u0440\u0443\u043f\u043f\u044b";
     },
     get$setAsCanonicalAlias() {
-      return "Be\xe1ll\xedt\xe1s mint alap\xe9rtelmezett \xe1ln\xe9v";
+      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u043a\u0430\u043a \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u043f\u0441\u0435\u0432\u0434\u043e\u043d\u0438\u043c";
     },
     get$setChatDescription() {
-      return "Cseveg\xe9s le\xedr\xe1s be\xe1ll\xedt\xe1sa";
+      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430";
     },
     get$setPermissionsLevel() {
-      return "Jogok be\xe1ll\xedt\xe1sa";
+      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0439";
     },
     get$settings() {
-      return "Be\xe1ll\xedt\xe1sok";
+      return "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438";
     },
     get$share(_) {
-      return "Megoszt\xe1s";
+      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f";
     },
     sharedTheLocation$1(username) {
-      return username + " megosztotta a poz\xedci\xf3j\xe1t";
+      return username + " \u043f\u043e\u0434\u0435\u043b\u0438\u043b\u0441\u044f(\u0430\u0441\u044c) \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435\u043c";
     },
     get$shareLocation() {
-      return "Poz\xedci\xf3 megoszt\xe1sa";
+      return "\u041f\u043e\u0434\u0435\u043b\u0438\u0442\u044c\u0441\u044f \u043c\u0435\u0441\u0442\u043e\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435\u043c";
     },
     get$presencesToggle() {
-      return "M\xe1sok st\xe1tusz \xfczenet\xe9nek megjelen\xedt\xe9se";
+      return "\u041f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0432 \u0441\u0442\u0430\u0442\u0443\u0441\u0430\u0445 \u0434\u0440\u0443\u0433\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439";
     },
     get$skip(_) {
-      return "Kihagy\xe1s";
+      return "\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c";
     },
     get$sourceCode() {
-      return "Forr\xe1sk\xf3d";
+      return "\u0418\u0441\u0445\u043e\u0434\u043d\u044b\u0439 \u043a\u043e\u0434";
     },
     get$spaceName() {
-      return "T\xe9r neve";
+      return "\u041d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0430";
     },
     startedACall$1(senderName) {
-      return senderName + " h\xedv\xe1st ind\xedtott";
+      return senderName + " \u043d\u0430\u0447\u0430\u043b(\u0430) \u0437\u0432\u043e\u043d\u043e\u043a";
     },
     get$status(_) {
-      return "St\xe1tusz";
+      return "\u0421\u0442\u0430\u0442\u0443\u0441";
     },
     get$submit(_) {
-      return "Bek\xfcld\xe9s";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c";
     },
     get$synchronizingPleaseWait() {
-      return "Szinkroniz\xe1l\xe1s...k\xe9rem v\xe1rjon.";
+      return "\u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0438\u0437\u0430\u0446\u0438\u044f\u2026 \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
       return " Synchronizing\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Rendszer";
+      return "\u0421\u0438\u0441\u0442\u0435\u043c\u043d\u0430\u044f";
     },
     get$theyDontMatch() {
-      return "Nem egyeznek";
+      return "\u041e\u043d\u0438 \u043d\u0435 \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u044e\u0442";
     },
     get$theyMatch() {
-      return "Egyeznek";
+      return "\u041e\u043d\u0438 \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u044e\u0442";
     },
     get$tooManyRequestsWarning() {
-      return "T\xfal sok egyidej\u0171 k\xe9relem. K\xe9rem pr\xf3b\xe1lja meg k\xe9s\u0151bb!";
+      return "\u0421\u043b\u0438\u0448\u043a\u043e\u043c \u043c\u043d\u043e\u0433\u043e \u0437\u0430\u043f\u0440\u043e\u0441\u043e\u0432. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443 \u043f\u043e\u0437\u0436\u0435!";
     },
     get$tryToSendAgain() {
-      return "\xdajrak\xfcld\xe9s megpr\xf3b\xe1l\xe1sa";
+      return "\u041f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0435\u0449\u0451 \u0440\u0430\u0437";
     },
     get$unavailable() {
-      return "Nem el\xe9rhet\u0151";
+      return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d";
     },
     unbannedUser$2(username, targetName) {
-      return username + " feloldotta " + targetName + " kitilt\xe1s\xe1t";
+      return username + " \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b(\u0430) " + targetName;
     },
     get$unblockDevice() {
-      return "Eszk\xf6z blokkol\xe1s\xe1nak megsz\xfcntet\xe9se";
+      return "\u0420\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e";
     },
     get$unknownDevice() {
-      return "Ismeretlen eszk\xf6z";
+      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Ismeretlen titkos\xedt\xe1si algoritmus";
+      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b\u0439 \u0430\u043b\u0433\u043e\u0440\u0438\u0442\u043c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u0438\u044f";
     },
     unknownEvent$1(type) {
-      return "Ismeretlen esem\xe9ny: '" + type + "'";
+      return "\u041d\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043d\u043e\u0435 \u0441\u043e\u0431\u044b\u0442\u0438\u0435 '" + type + "'";
     },
     get$unpin() {
-      return "R\xf6gz\xedt\xe9s megsz\xfcntet\xe9se";
+      return "\u041e\u0442\u043a\u0440\u0435\u043f\u0438\u0442\u044c";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \xe9s " + username2 + " g\xe9pel\u2026";
+      return username + " \u0438 " + username2 + " \u043f\u0435\u0447\u0430\u0442\u0430\u044e\u0442\u2026";
     },
     userIsTyping$1(username) {
-      return username + " g\xe9pel\u2026";
+      return username + " \u043f\u0435\u0447\u0430\u0442\u0430\u0435\u0442\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " elhagyta a cseveg\xe9st";
+      return "\ud83d\udeaa " + username + " \u043f\u043e\u043a\u0438\u043d\u0443\u043b(\u0430) \u0447\u0430\u0442";
     },
     get$username(_) {
-      return "Felhaszn\xe1l\xf3n\xe9v";
+      return "\u0418\u043c\u044f \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " " + type + " esem\xe9nyt k\xfcld\xf6tt";
+      return username + ' \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b(\u0430) \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0442\u0438\u043f\u0430 "' + type + '"';
     },
     get$unverified() {
-      return "Nem visszaigazolt";
+      return "\u041d\u0435 \u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043e";
     },
     get$verified() {
-      return "Visszaigazolt";
+      return "\u041f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u043e";
     },
     get$verifyStart() {
-      return "Hiteles\xedt\xe9s megkezd\xe9se";
+      return "\u041d\u0430\u0447\u0430\u0442\u044c \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0443";
     },
     get$verifySuccess() {
-      return "Sikeres hiteles\xedt\xe9s!";
+      return "\u0412\u044b \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u043f\u0440\u043e\u0432\u0435\u0440\u0435\u043d\u044b!";
     },
     get$verifyTitle() {
-      return "M\xe1sik fi\xf3k hiteles\xedt\xe9se";
+      return "\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0434\u0440\u0443\u0433\u043e\u0439 \u0443\u0447\u0451\u0442\u043d\u043e\u0439 \u0437\u0430\u043f\u0438\u0441\u0438";
     },
     get$visibilityOfTheChatHistory() {
-      return "Cseveg\xe9si el\u0151zm\xe9ny l\xe1that\xf3s\xe1ga";
+      return "\u0412\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c \u0438\u0441\u0442\u043e\u0440\u0438\u0438 \u0447\u0430\u0442\u0430";
     },
     get$visibleForAllParticipants() {
-      return "Minden r\xe9sztvev\u0151 sz\xe1m\xe1ra l\xe1that\xf3";
+      return "\u0412\u0438\u0434\u0438\u043c\u0430 \u0434\u043b\u044f \u0432\u0441\u0435\u0445 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u043e\u0432";
     },
     get$visibleForEveryone() {
-      return "B\xe1rki sz\xe1m\xe1ra l\xe1that\xf3";
+      return "\u0412\u0438\u0434\u043d\u0430 \u0432\u0441\u0435\u043c";
     },
     get$voiceMessage() {
-      return "Hang\xfczenet";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0433\u043e\u043b\u043e\u0441\u043e\u0432\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
     },
     get$waitingPartnerAcceptRequest() {
-      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a k\xe9r\xe9st\u2026";
+      return "\u0416\u0434\u0443, \u043a\u043e\u0433\u0434\u0430 \u043f\u0430\u0440\u0442\u043d\u0435\u0440 \u043f\u0440\u0438\u043c\u0435\u0442 \u0437\u0430\u043f\u0440\u043ec\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja az emojit\u2026";
+      return "\u0416\u0434\u0443, \u043a\u043e\u0433\u0434\u0430 \u043f\u0430\u0440\u0442\u043d\u0435\u0440 \u043f\u0440\u0438\u043c\u0435\u0442 \u044d\u043c\u043e\u0434\u0437\u0438\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a sz\xe1mokat\u2026";
+      return "\u0412 \u043e\u0436\u0438\u0434\u0430\u043d\u0438\u0438 \u043f\u0430\u0440\u0442\u043d\u0451\u0440\u0430, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u0438\u043d\u044f\u0442\u044c \u0447\u0438\u0441\u043b\u0430\u2026";
     },
     get$warning() {
-      return "Figyelmeztet\xe9s!";
+      return "\u041f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435!";
     },
     get$weSentYouAnEmail() {
-      return "K\xfcldt\xfcnk \xd6nnek egy emailt";
+      return "\u041c\u044b \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u043b\u0438 \u0432\u0430\u043c \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0435 \u043f\u0438\u0441\u044c\u043c\u043e";
     },
     get$whoCanPerformWhichAction() {
-      return "Ki milyen m\u0171veletet v\xe9gezhet";
+      return "\u041a\u0442\u043e \u0438 \u043a\u0430\u043a\u043e\u0435 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0435 \u043c\u043e\u0436\u0435\u0442 \u0432\u044b\u043f\u043e\u043b\u043d\u044f\u0442\u044c";
     },
     get$whyDoYouWantToReportThis() {
-      return "Mi\xe9rt k\xedv\xe1nja ezt bejelenteni?";
+      return "\u041f\u043e\u0447\u0435\u043c\u0443 \u0432\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u0441\u043e\u043e\u0431\u0449\u0438\u0442\u044c \u043e\u0431 \u044d\u0442\u043e\u043c?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Ezekkel a c\xedmekkel vissza tudja \xe1ll\xedtani a jelszav\xe1t.";
+      return "\u041f\u043e \u044d\u0442\u0438\u043c \u0430\u0434\u0440\u0435\u0441\u0430\u043c \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u0432\u043e\u0439 \u043f\u0430\u0440\u043e\u043b\u044c.";
     },
     get$writeAMessage() {
-      return "\xcdrjon egy \xfczenetet\u2026";
+      return "\u041d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435\u2026";
     },
     get$yes() {
-      return "Igen";
+      return "\u0414\u0430";
     },
     get$you() {
-      return "\xd6n";
+      return "\u0412\u044b";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Imm\xe1ron nem vesz r\xe9szt ebben a cseveg\xe9sben";
+      return "\u0412\u044b \u0431\u043e\u043b\u044c\u0448\u0435 \u043d\u0435 \u0443\u0447\u0430\u0441\u0442\u0432\u0443\u0435\u0442\u0435 \u0432 \u044d\u0442\u043e\u043c \u0447\u0430\u0442\u0435";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Kitiltott\xe1k ebb\u0151l a cseveg\xe9sb\u0151l";
+      return "\u0412\u044b \u0431\u044b\u043b\u0438 \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u044b \u0432 \u044d\u0442\u043e\u043c \u0447\u0430\u0442\u0435";
     },
     get$yourPublicKey() {
-      return "A publikus kulcsa";
+      return "\u0412\u0430\u0448 \u043e\u0442\u043a\u0440\u044b\u0442\u044b\u0439 \u043a\u043b\u044e\u0447";
     },
     get$messageInfo() {
-      return "\xdczenet inform\xe1ci\xf3";
+      return "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0438";
     },
     get$time(_) {
-      return "Id\u0151";
+      return "\u0412\u0440\u0435\u043c\u044f";
     },
     get$sender() {
-      return "K\xfcld\u0151";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c";
     },
     get$openGallery() {
-      return "Gal\xe9ria megnyit\xe1sa";
+      return "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0433\u0430\u043b\u0435\u0440\u0435\u044e";
     },
     get$removeFromSpace() {
-      return "Elt\xe1vol\xedt\xe1s a t\xe9rr\u0151l";
+      return "\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0438\u0437 \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0430";
     },
     videoWithSize$1(size) {
-      return "Vide\xf3 (" + size + ")";
+      return "\u0412\u0438\u0434\u0435\u043e (" + size + ")";
     },
     get$markAsRead() {
-      return "Olvasottk\xe9nt megjel\xf6l\xe9s";
+      return "\u041e\u0442\u043c\u0435\u0442\u0438\u0442\u044c \u043a\u0430\u043a \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0435";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " a k\xf6vetkez\u0151t reag\xe1lta: " + reaction;
+      return sender + " \u0440\u0435\u0430\u0433\u0438\u0440\u0443\u0435\u0442 \u0441 " + reaction;
     },
     get$pinMessage() {
-      return "Kit\u0171z\xe9s a szob\xe1ban";
+      return "\u041f\u0440\u0438\u043a\u0440\u0435\u043f\u0438\u0442\u044c \u043a \u043a\u043e\u043c\u043d\u0430\u0442\u0435";
     },
     get$confirmEventUnpin() {
-      return "Biztosan v\xe9gleg le akarja venni a kit\u0171z\xf6tt esem\xe9nyt?";
+      return "\u0412\u044b \u0443\u0432\u0435\u0440\u0435\u043d\u044b, \u0447\u0442\u043e \u0445\u043e\u0442\u0438\u0442\u0435 \u043d\u0430\u0432\u0441\u0435\u0433\u0434\u0430 \u043e\u0442\u043a\u0440\u0435\u043f\u0438\u0442\u044c \u0441\u043e\u0431\u044b\u0442\u0438\u0435?";
     },
     get$emojis() {
-      return "Emojik";
+      return "\u042d\u043c\u043e\u0434\u0437\u0438";
     },
     get$youRejectedTheInvitation() {
-      return "Visszautas\xedtotta a megh\xedv\xe1st";
+      return "\u0412\u044b \u043e\u0442\u043a\u043b\u043e\u043d\u0438\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435";
     },
     get$youJoinedTheChat() {
-      return "Becsatlakozott a cseveg\xe9sbe";
+      return "\u0412\u044b \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u043b\u0438\u0441\u044c \u043a \u0447\u0430\u0442\u0443";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Elfogadta a megh\xedv\xe1st";
+      return "\ud83d\udc4d \u0412\u044b \u043f\u0440\u0438\u043d\u044f\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435";
     },
     youBannedUser$1(user) {
-      return "Letitotta " + user + "-t";
+      return "\u0412\u044b \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b\u0438 " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Visszavonta a megh\xedv\xe1st " + user + "-t\xf3l";
+      return "\u0412\u044b \u043e\u0442\u043e\u0437\u0432\u0430\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u0435 \u0434\u043b\u044f " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Megh\xedv\xe1st kapott " + user + "-t\xf3l";
+      return "\ud83d\udce9 \u0412\u044b \u0431\u044b\u043b\u0438 \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u044b " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Megh\xedvta " + user + "-t";
+      return "\ud83d\udce9 \u0412\u044b \u043f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u043b\u0438 " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Kir\xfagta " + user + "-t";
+      return "\ud83d\udc5e \u0412\u044b \u0432\u044b\u0433\u043d\u0430\u043b\u0438 " + user;
     },
     youUnbannedUser$1(user) {
-      return "Levette a letilt\xe1st " + user + "-r\u0151l";
+      return "\u0412\u044b \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b\u0438 " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " bekopogott";
+      return "\ud83d\udeaa " + user + " \u043f\u043e\u0441\u0442\u0443\u0447\u0430\u043b\u0441\u044f";
     },
     get$usersMustKnock() {
-      return "A felhaszn\xe1l\xf3knak be kell kopogniuk";
+      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438 \u0434\u043e\u043b\u0436\u043d\u044b \u043f\u043e\u0441\u0442\u0443\u0447\u0430\u0442\u044c\u0441\u044f";
     },
     get$noOneCanJoin() {
-      return "Senki sem csatlakozhat";
+      return "\u041d\u0438\u043a\u0442\u043e \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f";
     },
     userWouldLikeToChangeTheChat$1(user) {
-      return user + " szeretne csatlakozni a cseveg\xe9shez.";
+      return user + " \u0436\u0435\u043b\u0430\u0435\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u0447\u0430\u0442\u0443.";
     },
     get$knock() {
-      return "Kopog\xe1s";
+      return "\u041f\u043e\u0441\u0442\u0443\u0447\u0430\u0442\u044c\u0441\u044f";
     },
     get$users() {
-      return "Felhaszn\xe1l\xf3k";
+      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438";
     },
     countFiles$1(count) {
-      return "" + count + " f\xe1jl";
+      return "" + count + " \u0444\u0430\u0439\u043b\u043e\u0432";
     },
     get$user() {
-      return "Felhaszn\xe1l\xf3";
+      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c";
     },
     get$custom() {
-      return "Egy\xe9ni";
+      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u043e\u0435";
     },
     get$noKeyForThisMessage() {
-      return "Akkor fordulhat el\u0151, ha az \xfczenet az eszk\xf6zre val\xf3 bejelentkez\xe9s el\u0151tt ker\xfclt k\xfcld\xe9sre.\n\nAz is elk\xe9pzelhet\u0151, hogy a k\xfcld\u0151 blokkolta az eszk\xf6z\xe9t, vagy valami probl\xe9ma l\xe9pett fel az internet kapcsolatban.\n\nM\xe1s helyen l\xe1tja az \xfczenetet? Akkor \xe1t tudja m\xe1solni ide is! Menjen a Be\xe1ll\xedt\xe1sok > Eszk\xf6z\xf6k r\xe9szbe, \xe9s gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy az eszk\xf6zei meger\u0151s\xedtett\xe9k egym\xe1st. Legk\xf6zelebb amikor ezt a szob\xe1t megnyitja, \xe9s mind a k\xe9t kliens az el\u0151t\xe9rben van, akkor szikroniz\xe1l\xf3dni fognak.\n\nNem akarja elvesz\xedteni a kulcsokat amikor kijelentkezik, vagy eszk\xf6zt cser\xe9l? Gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy bekapcsolta a chat ment\xe9st a be\xe1ll\xedt\xe1sokban.";
+      return "\u042d\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u043f\u0440\u043e\u0438\u0437\u043e\u0439\u0442\u0438, \u0435\u0441\u043b\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0431\u044b\u043b\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u043e \u0434\u043e \u0442\u043e\u0433\u043e, \u043a\u0430\u043a \u0432\u044b \u0432\u043e\u0448\u043b\u0438 \u0432 \u0441\u0432\u043e\u044e \u0443\u0447\u0435\u0442\u043d\u0443\u044e \u0437\u0430\u043f\u0438\u0441\u044c \u043d\u0430 \u0434\u0430\u043d\u043d\u043e\u043c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435.\n\n\u0422\u0430\u043a\u0436\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0447\u0442\u043e \u043e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u0435\u043b\u044c \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043b \u0432\u0430\u0448\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0438\u043b\u0438 \u0447\u0442\u043e-\u0442\u043e \u043f\u043e\u0448\u043b\u043e \u043d\u0435 \u0442\u0430\u043a \u0441 \u0438\u043d\u0442\u0435\u0440\u043d\u0435\u0442-\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u0435\u043c.\n\n\u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043d\u0430 \u0434\u0440\u0443\u0433\u043e\u0439 \u0441\u0435\u0441\u0441\u0438\u0438? \u0422\u043e\u0433\u0434\u0430 \u0432\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u043f\u0435\u0440\u0435\u043d\u0435\u0441\u0442\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u0441 \u043d\u0435\u0451! \u041f\u0435\u0440\u0435\u0439\u0434\u0438\u0442\u0435 \u0432 \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 > \u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u0438 \u0443\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0432\u0430\u0448\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u043b\u0438 \u0434\u0440\u0443\u0433 \u0434\u0440\u0443\u0433\u0430. \u041a\u043e\u0433\u0434\u0430 \u0432\u044b \u043e\u0442\u043a\u0440\u043e\u0435\u0442\u0435 \u043a\u043e\u043c\u043d\u0430\u0442\u0443 \u0432 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0439 \u0440\u0430\u0437 \u0438 \u043e\u0431\u0435 \u0441\u0435\u0441\u0441\u0438\u0438 \u0431\u0443\u0434\u0443\u0442 \u043e\u0442\u043a\u0440\u044b\u0442\u044b, \u043a\u043b\u044e\u0447\u0438 \u0431\u0443\u0434\u0443\u0442 \u043f\u0435\u0440\u0435\u0434\u0430\u043d\u044b \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438.\n\n\u0412\u044b \u043d\u0435 \u0445\u043e\u0442\u0438\u0442\u0435 \u043f\u043e\u0442\u0435\u0440\u044f\u0442\u044c \u043a\u043b\u044e\u0447\u0438 \u043f\u0440\u0438 \u0432\u044b\u0445\u043e\u0434\u0435 \u0438\u0437 \u0441\u0438\u0441\u0442\u0435\u043c\u044b \u0438\u043b\u0438 \u043f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432? \u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0432\u044b \u0432\u043a\u043b\u044e\u0447\u0438\u043b\u0438 \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0435 \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430 \u0432 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0430\u0445.";
     },
     get$newSpace() {
-      return "\xdaj t\xe9r";
+      return "\u041d\u043e\u0432\u043e\u0435 \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u043e";
     },
     get$doNotShowAgain() {
-      return "Ne mutassa \xfajra";
+      return "\u041d\u0435 \u043f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0442\u044c \u0441\u043d\u043e\u0432\u0430";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\xdcres cseveg\xe9s (kor\xe1bban " + oldDisplayName + ")";
+      return "\u041f\u0443\u0441\u0442\u043e\u0439 \u0447\u0430\u0442 (\u0431\u044b\u043b " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Cseveg\xe9s \xfajranyit\xe1sa";
+      return "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0447\u0430\u0442 \u0437\u0430\u043d\u043e\u0432\u043e";
     },
     get$noOtherDevicesFound() {
-      return "Nem tal\xe1lhat\xf3 m\xe1s eszk\xf6z";
+      return "\u0414\u0440\u0443\u0433\u0438\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u044b";
     },
     fileIsTooBigForServer$1(max) {
-      return "A szerver sz\xe1m\xe1ra t\xfal nagy a f\xe1jl a k\xfcld\xe9shez.";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u043d\u0435 \u0443\u0434\u0430\u043b\u0430\u0441\u044c! \u0421\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0440\u0430\u0437\u043c\u0435\u0440\u043e\u043c \u0434\u043e " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Az utolj\xe1ra olvasott \xfczenethez ugr\xe1s";
+      return "\u041f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0435 \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435";
     },
     get$readUpToHere() {
-      return "Ezid\xe1ig elolvasva";
+      return "\u041d\u0435\u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0435";
     },
     get$jump() {
-      return "Ugr\xe1s";
+      return "\u041f\u0435\u0440\u0435\u0439\u0442\u0438";
     },
     get$openLinkInBrowser() {
-      return "Hivatkoz\xe1s megnyit\xe1sa b\xf6ng\xe9sz\u0151ben";
+      return "\u041e\u0442\u043a\u0440\u044b\u0442\u044c \u0441\u0441\u044b\u043b\u043a\u0443 \u0432 \u0431\u0440\u0430\u0443\u0437\u0435\u0440\u0435";
     },
     get$profileNotFound() {
-      return "A felhaszn\xe1l\xf3 nem tal\xe1lhat\xf3 a szerveren. Lehets\xe9ges, hogy csatlakoz\xe1si probl\xe9m\xe1k ad\xf3dtak, vagy nem l\xe9tezik a felhaszn\xe1l\xf3.";
+      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d \u043d\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0435. \u042d\u0442\u043e \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u043e\u0439 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u044f \u0438\u043b\u0438 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043d\u0435 \u0441\u0443\u0449\u0435\u0441\u0442\u0432\u0443\u0435\u0442.";
     },
     get$setColorTheme() {
-      return "Sz\xedn t\xe9ma be\xe1ll\xedt\xe1sa:";
+      return "\u0426\u0432\u0435\u0442\u043e\u0432\u0430\u044f \u0442\u0435\u043c\u0430:";
     },
     get$invite() {
-      return "Megh\xedv\xe1s";
+      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c";
     },
     get$invitePrivateChat() {
-      return "\ud83d\udce8 Megh\xedv\xf3 cseveg\xe9shez";
+      return "\ud83d\udce8 \u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u0432 \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u044b\u0439 \u0447\u0430\u0442";
     },
     get$invalidInput() {
-      return "Hib\xe1s bevitel!";
+      return "\u041d\u0435\u0434\u043e\u043f\u0443\u0441\u0442\u0438\u043c\u044b\u0439 \u0432\u0432\u043e\u0434!";
     },
     wrongPinEntered$1(seconds) {
-      return "Hib\xe1s pink\xf3d ker\xfclt be\xedr\xe1sra. Pr\xf3b\xe1lja \xfajra " + seconds + " mp m\xfalva...";
+      return "\u0412\u0432\u0435\u0434\u0451\u043d \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u043f\u0438\u043d-\u043a\u043e\u0434! \u041f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443 \u0447\u0435\u0440\u0435\u0437 " + seconds + " \u0441\u0435\u043a\u0443\u043d\u0434...";
     },
     get$pleaseEnterANumber() {
-      return "Adjon meg egy 0-n\xe1l nagyobb sz\xe1mot";
+      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430 \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0447\u0438\u0441\u043b\u043e \u0431\u043e\u043b\u044c\u0448\u0435 0";
     },
     get$roomUpgradeDescription() {
-      return "A cseveg\xe9s \xfajra elk\xe9sz\xfcl az \xfaj verzi\xf3val. Minden r\xe9sztvev\u0151 \xe9rtes\xedt\xe9st kap, hogy \xe1t kell \xe1llniuk az \xfaj cseveg\xe9sre. Tov\xe1bbi inform\xe1ci\xf3k\xe9rt a szoba verzi\xf3kr\xf3l l\xe1togasson el a https://spec.matrix.org/latest/rooms/ c\xedmre";
+      return "\u0417\u0430\u0442\u0435\u043c \u0447\u0430\u0442 \u0431\u0443\u0434\u0435\u0442 \u0432\u043e\u0441\u0441\u043e\u0437\u0434\u0430\u043d \u0441 \u043d\u043e\u0432\u043e\u0439 \u0432\u0435\u0440\u0441\u0438\u0435\u0439 \u043a\u043e\u043c\u043d\u0430\u0442\u044b. \u0412\u0441\u0435 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0438 \u0431\u0443\u0434\u0443\u0442 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u044b \u043e \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e\u0441\u0442\u0438 \u043f\u0435\u0440\u0435\u0439\u0442\u0438 \u0432 \u043d\u043e\u0432\u044b\u0439 \u0447\u0430\u0442. \u0412\u044b \u043c\u043e\u0436\u0435\u0442\u0435 \u0443\u0437\u043d\u0430\u0442\u044c \u0431\u043e\u043b\u044c\u0448\u0435 \u043e \u0432\u0435\u0440\u0441\u0438\u044f\u0445 \u043a\u043e\u043c\u043d\u0430\u0442 \u043d\u0430 https://spec.matrix.org/latest/rooms/";
     },
     get$removeDevicesDescription() {
-      return "Ki fog jelentkezni a k\xe9sz\xfcl\xe9kr\u0151l, \xe9s t\xf6bbi nem fog tudni fogadni \xfczeneteket.";
+      return "\u0412\u044b \u0432\u044b\u0439\u0434\u0435\u0442\u0435 \u0441 \u044d\u0442\u043e\u0433\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u0438 \u0431\u043e\u043b\u044c\u0448\u0435 \u043d\u0435 \u0431\u0443\u0434\u0435\u0442\u0435 \u043f\u043e\u043b\u0443\u0447\u0430\u0442\u044c \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f.";
     },
     get$banUserDescription() {
-      return "A felhaszn\xe1l\xf3 kitilt\xe1sra ker\xfcl a cseveg\xe9sb\u0151l, \xe9s nem fog tudni visszaj\xf6nni eg\xe9szen a kitilt\xe1s felold\xe1s\xe1ig.";
+      return "\u0417\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u0432 \u0447\u0430\u0442\u0435 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0438 \u043d\u0435 \u0441\u043c\u043e\u0433\u0443\u0442 \u043f\u0435\u0440\u0435\u0437\u0430\u0439\u0442\u0438 \u0432 \u0447\u0430\u0442, \u043f\u043e\u043a\u0430 \u043e\u043d\u0438 \u043d\u0435 \u0431\u0443\u0434\u0443\u0442 \u0440\u0430\u0437\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b.";
     },
     get$unbanUserDescription() {
-      return "A felhaszn\xe1l\xf3 vissza tud j\xf6nni a cseveg\xe9sbe ha akar.";
+      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0441\u043c\u043e\u0436\u0435\u0442 \u043f\u0440\u0438 \u0436\u0435\u043b\u0430\u043d\u0438\u0438 \u0437\u0430\u0439\u0442\u0438 \u0432 \u0447\u0430\u0442 \u0441\u043d\u043e\u0432\u0430.";
     },
     get$kickUserDescription() {
-      return "A felhaszn\xe1l\xf3 kir\xfag\xe1sra ker\xfclt a cseveg\xe9sb\u0151l, de nincs kitiltva. Publikus cseveg\xe9s eset\xe9n a felhaszn\xe1l\xf3 b\xe1rmikor visszat\xe9rhet.";
+      return "\u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u0431\u0443\u0434\u0435\u0442 \u0438\u0437\u0433\u043d\u0430\u043d \u0438\u0437 \u0447\u0430\u0442\u0430, \u043d\u043e \u043d\u0435 \u0431\u0443\u0434\u0435\u0442 \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d. \u0412 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0445 \u0447\u0430\u0442\u0430\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u043c\u043e\u0436\u0435\u0442 \u043f\u0435\u0440\u0435\u0437\u0430\u0439\u0442\u0438 \u043a\u043e\u0433\u0434\u0430 \u0443\u0433\u043e\u0434\u043d\u043e.";
     },
     get$makeAdminDescription() {
-      return "Miut\xe1n a felhaszn\xe1l\xf3b\xf3l admin lesz, nem fogja tudni visszavonni d\xf6nt\xe9s\xe9t, mivel azonos jogosults\xe1gi szinttel fognak rendelkezni.";
+      return "\u041a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u0432\u044b \u043d\u0430\u0437\u043d\u0430\u0447\u0438\u0442\u0435 \u044d\u0442\u043e\u0433\u043e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u043e\u043c, \u0432\u044b \u043d\u0435 \u0441\u043c\u043e\u0436\u0435\u0442\u0435 \u044d\u0442\u043e\u0433\u043e \u043e\u0442\u043c\u0435\u043d\u0438\u0442\u044c, \u0442\u0430\u043a \u043a\u0430\u043a \u0438\u0445 \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u0438 \u0432\u0430\u0448\u0438 \u0431\u0443\u0434\u0443\u0442 \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u044b.";
     },
     get$yourGlobalUserIdIs() {
-      return "A glob\xe1lis felhaszn\xe1l\xf3-ID-je: ";
+      return "\u0412\u0430\u0448 \u0433\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u044b\u0439 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 - ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '"' + query + '" n\xe9ven nem tal\xe1lhat\xf3 felhaszn\xe1l\xf3. Ellen\u0151rizze nincs e el\xedr\xe1s.';
+      return '\u041a \u0441\u043e\u0436\u0430\u043b\u0435\u043d\u0438\u044e \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0441 \u0438\u043c\u0435\u043d\u0435\u043c "' + query + '" \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e. \u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u0432\u044b \u043d\u0435 \u0441\u043e\u0432\u0435\u0440\u0448\u0438\u043b\u0438 \u043e\u043f\u0435\u0447\u0430\u0442\u043a\u0443.';
     },
     get$knocking() {
-      return "Bekopog\xe1s";
+      return "\u0421\u0442\u0443\u0447\u0430\u0442\u044c\u0441\u044f";
     },
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "Cseveg\xe9s felfedezhet\u0151 a " + server + " szerveren t\xf6rt\xe9n\u0151 keres\xe9ssel";
+      return "\u0427\u0430\u0442 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d \u0447\u0435\u0440\u0435\u0437 \u043f\u043e\u0438\u0441\u043a \u0432 " + server;
     },
     get$searchChatsRooms() {
-      return "Keressen #cseveg\xe9seket, @felhaszn\xe1l\xf3kat...";
+      return "\u041f\u043e\u0438\u0441\u043a #\u0447\u0430\u0442\u043e\u0432, @\u043b\u044e\u0434\u0435\u0439...";
     },
     get$nothingFound() {
-      return "Nincs tal\xe1lat...";
+      return "\u041d\u0438\u0447\u0435\u0433\u043e \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e...";
     },
     get$wrongRecoveryKey() {
-      return "Sajnos, \xfagy t\u0171nik hib\xe1san adta meg a vissza\xe1ll\xedt\xe1si kulcsot.";
+      return "\u041f\u0440\u043e\u0441\u0442\u0438\u0442\u0435... \u0441\u0443\u0434\u044f \u043f\u043e \u0432\u0441\u0435\u043c\u0443 \u044d\u0442\u043e \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u043a\u043b\u044e\u0447 \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f.";
     },
     get$startConversation() {
-      return "Besz\xe9lget\xe9s ind\xedt\xe1sa";
+      return "\u041d\u0430\u0447\u0430\u0442\u044c \u043e\u0431\u0449\u0435\u043d\u0438\u0435";
     },
     get$commandHint_sendraw() {
-      return "Tiszta json k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u044b\u0440\u043e\u0439 json";
     },
     get$searchForUsers() {
-      return "Keressen @felhaszn\xe1l\xf3kat...";
+      return "\u041f\u043e\u0438\u0441\u043a @\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "K\xe9rem adja meg jelenlegi jelszav\xe1t";
+      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0432\u0432\u0435\u0434\u0438\u0442\u0435 \u0441\u0432\u043e\u0439 \u0442\u0435\u043a\u0443\u0449\u0438\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
     },
     get$newPassword() {
-      return "\xdaj jelsz\xf3";
+      return "\u041d\u043e\u0432\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
     },
     get$pleaseChooseAStrongPassword() {
-      return "K\xe9rem v\xe1lasszon egy er\u0151s jelsz\xf3t";
+      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u043f\u043e\u0434\u0431\u0435\u0440\u0438\u0442\u0435 \u0441\u0438\u043b\u044c\u043d\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
     },
     get$passwordsDoNotMatch() {
-      return "A jelszavak nem egyeznek";
+      return "\u041f\u0430\u0440\u043e\u043b\u0438 \u043d\u0435 \u0441\u043e\u0432\u043f\u0430\u0434\u0430\u044e\u0442";
     },
     get$passwordIsWrong() {
-      return "A be\xedrt jelszava hib\xe1s";
+      return "\u0412\u044b \u0432\u0432\u0435\u043b\u0438 \u043d\u0435\u0432\u0435\u0440\u043d\u044b\u0439 \u043f\u0430\u0440\u043e\u043b\u044c";
     },
     get$publicChatAddresses() {
-      return "Nyilv\xe1nos cseveg\xe9s c\xedmek";
+      return "\u0410\u0434\u0440\u0435\u0441\u044b \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u043e\u0433\u043e \u0447\u0430\u0442\u0430";
     },
     get$createNewAddress() {
-      return "\xdaj c\xedm l\xe9trehoz\xe1sa";
+      return "\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u043e\u0432\u044b\u0439 \u0430\u0434\u0440\u0435\u0441";
     },
     get$joinSpace() {
-      return "Csatlakoz\xe1s a t\xe9rre";
+      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0443";
     },
     get$publicSpaces() {
-      return "Nyilv\xe1nos terek";
+      return "\u041f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0435 \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0430";
     },
     get$decline() {
-      return "Elutas\xedt\xe1s";
+      return "\u041e\u0442\u043a\u043b\u043e\u043d\u0438\u0442\u044c";
     },
     get$thisDevice() {
-      return "Ez az eszk\xf6z:";
+      return "\u0414\u0430\u043d\u043d\u043e\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e:";
     },
     get$initAppError() {
-      return "Hiba l\xe9pett fel az app ind\xedt\xe1sa sor\xe1n";
+      return "\u041f\u0440\u043e\u0438\u0437\u043e\u0448\u043b\u0430 \u043e\u0448\u0438\u0431\u043a\u0430 \u043f\u0440\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0435 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f";
     },
     get$userRole() {
-      return "Felhaszn\xe1l\xf3i szerep";
+      return "\u0420\u043e\u043b\u044c \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f";
     },
     searchIn$1(chat) {
-      return 'Keres\xe9s a cseveg\xe9sben "' + chat + '"...';
+      return '\u041f\u043e\u0438\u0441\u043a \u0432 \u0447\u0430\u0442\u0435 "' + chat + '"...';
     },
     get$searchMore() {
-      return "Tov\xe1bbi keres\xe9s...";
+      return "\u041d\u0430\u0439\u0442\u0438 \u0435\u0449\u0435...";
     },
     get$gallery() {
-      return "Gal\xe9ria";
+      return "\u0413\u0430\u043b\u0435\u0440\u0435\u044f";
     },
     get$files(_) {
-      return "F\xe1jlok";
+      return "\u0424\u0430\u0439\u043b\u044b";
     },
     sessionLostBody$2(url, error) {
-      return "A munkamenete elvesz\u0151d\xf6tt. K\xe9rem jelentse ezt a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
+      return "\u0412\u0430\u0448 \u0441\u0435\u0430\u043d\u0441 \u0443\u0442\u0435\u0440\u044f\u043d. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0441\u043e\u043e\u0431\u0449\u0438\u0442\u0435 \u043e\u0431 \u044d\u0442\u043e\u0439 \u043e\u0448\u0438\u0431\u043a\u0435 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430\u043c \u043f\u043e \u0430\u0434\u0440\u0435\u0441\u0443 " + url + ". \u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043e\u0431 \u043e\u0448\u0438\u0431\u043a\u0435: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Megpr\xf3b\xe1lkozunk vissza\xe1ll\xedtani a munkamenet\xe9t egy kor\xe1bbi ment\xe9sb\u0151l. K\xe9rem jelezze a hib\xe1t a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
+      return "\u041f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u043f\u044b\u0442\u0430\u0435\u0442\u0441\u044f \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0441\u0435\u0430\u043d\u0441 \u0438\u0437 \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u0439 \u043a\u043e\u043f\u0438\u0438. \u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0441\u043e\u043e\u0431\u0449\u0438\u0442\u0435 \u043e\u0431 \u044d\u0442\u043e\u0439 \u043e\u0448\u0438\u0431\u043a\u0435 \u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u0447\u0438\u043a\u0430\u043c \u043f\u043e \u0430\u0434\u0440\u0435\u0441\u0443 " + url + ". \u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435 \u043e\u0431 \u043e\u0448\u0438\u0431\u043a\u0435: " + error;
     },
     get$sendReadReceipts() {
-      return "Olvas\xe1si igazol\xe1s k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u043a\u0432\u0438\u0442\u0430\u043d\u0446\u0438\u0439 \u043e \u043f\u0440\u043e\u0447\u0442\u0435\u043d\u0438\u0438";
     },
     get$sendTypingNotificationsDescription() {
-      return "A cseveg\xe9s t\xf6bbi tagja l\xe1tja amikor g\xe9pel.";
+      return "\u0414\u0440\u0443\u0433\u0438\u0435 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0438 \u0447\u0430\u0442\u0430 \u043c\u043e\u0433\u0443\u0442 \u0432\u0438\u0434\u0435\u0442\u044c, \u043a\u043e\u0433\u0434\u0430 \u0432\u044b \u043d\u0430\u0431\u0438\u0440\u0430\u0435\u0442\u0435 \u043d\u043e\u0432\u043e\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435.";
     },
     get$sendReadReceiptsDescription() {
-      return "A cseveg\xe9s t\xf6bbi tagja l\xe1tja melyik \xfczenetet l\xe1tta.";
+      return "\u0414\u0440\u0443\u0433\u0438\u0435 \u0443\u0447\u0430\u0441\u0442\u043d\u0438\u043a\u0438 \u0447\u0430\u0442\u0430 \u043c\u043e\u0433\u0443\u0442 \u0432\u0438\u0434\u0435\u0442\u044c, \u043a\u043e\u0433\u0434\u0430 \u0432\u044b \u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043b\u0438 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0435.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 M\xe1s eszk\xf6z meger\u0151s\xedt\xe9se";
+      return "\ud83d\udd10 \u041f\u043e\u0434\u0442\u0432\u0435\u0440\u0434\u0438\u0442\u044c \u0434\u0440\u0443\u0433\u043e\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e";
     },
     get$verifyOtherDeviceDescription() {
-      return "Amikor egy m\xe1sik eszk\xf6zt er\u0151s\xedt meg, az eszk\xf6z\xf6k kulcsokat cser\xe9lnek egym\xe1s k\xf6z\xf6tt, ez\xe1ltal n\xf6velve az \xf6sszbiztons\xe1got. \ud83d\udcaa Amikor megkezd\u0151dik a folyamat, mind a k\xe9t eszk\xf6z\xf6n megjelenik egy felugr\xf3 \xfczenet. Emojik \xe9s sz\xe1mok sorozata fog megjelenni, amit \xf6ssze tud hasonl\xedtani a k\xe9t eszk\xf6z\xf6n. \xc9rdemes teh\xe1t mind a k\xe9t eszk\xf6zt a k\xf6zelben tartani. \ud83e\udd33";
+      return "\u041f\u0440\u0438 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0438 \u0434\u0440\u0443\u0433\u043e\u0433\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u044d\u0442\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043c\u043e\u0433\u0443\u0442 \u043e\u0431\u043c\u0435\u043d\u0438\u0432\u0430\u0442\u044c\u0441\u044f \u043a\u043b\u044e\u0447\u0430\u043c\u0438, \u043f\u043e\u0432\u044b\u0448\u0430\u044f \u043e\u0431\u0449\u0443\u044e \u0431\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c. \ud83d\udcaa \u041f\u0440\u0438 \u0437\u0430\u043f\u0443\u0441\u043a\u0435 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044f \u0432 \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u0438 \u043d\u0430 \u043e\u0431\u043e\u0438\u0445 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430\u0445 \u043f\u043e\u044f\u0432\u0438\u0442\u0441\u044f \u0432\u0441\u043f\u043b\u044b\u0432\u0430\u044e\u0449\u0435\u0435 \u043e\u043a\u043d\u043e. \u0422\u0430\u043c \u0432\u044b \u0443\u0432\u0438\u0434\u0438\u0442\u0435 \u0440\u044f\u0434 \u0447\u0438\u0441\u0435\u043b \u0438\u043b\u0438 \u044d\u043c\u043e\u0434\u0437\u0438, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0432\u044b \u0434\u043e\u043b\u0436\u043d\u044b \u0441\u0440\u0430\u0432\u043d\u0438\u0442\u044c \u0434\u0440\u0443\u0433 \u0441 \u0434\u0440\u0443\u0433\u043e\u043c. \u041b\u0443\u0447\u0448\u0435 \u0438\u043c\u0435\u0442\u044c \u043e\u0431\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043f\u043e\u0434 \u0440\u0443\u043a\u043e\u0439 \u043f\u0435\u0440\u0435\u0434 \u043d\u0430\u0447\u0430\u043b\u043e\u043c \u043f\u0440\u043e\u0432\u0435\u0440\u043a\u0438. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " elfogadta a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " \u043f\u0440\u0438\u043d\u044f\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " nem fogadta el a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " \u043e\u0442\u043a\u043b\u043e\u043d\u0438\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
     },
     completedKeyVerification$1(sender) {
-      return sender + " befejezte a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " k\xe9szen \xe1ll a kulcs meger\u0151s\xedt\xe9sre";
+      return sender + " \u0433\u043e\u0442\u043e\u0432(\u0430) \u043a \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u044e \u043a\u043b\u044e\u0447\u0435\u0439";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " kulcs meger\u0151s\xedt\xe9st k\xe9r";
+      return sender + " \u0437\u0430\u043f\u0440\u043e\u0441\u0438\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
     },
     startedKeyVerification$1(sender) {
-      return sender + " elkezdte a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " \u043d\u0430\u0447\u0430\u043b(\u0430) \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u0438\u0435 \u043a\u043b\u044e\u0447\u0435\u0439";
     },
     get$stickers() {
-      return "Matrica";
+      return "\u0421\u0442\u0438\u043a\u0435\u0440\u044b";
     },
     get$discover() {
-      return "Felfedez\xe9s";
+      return "\u0418\u0441\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u044c";
     },
     get$commandHint_ignore() {
-      return "Adott matrix ID figyelmen k\xedv\xfcl hagy\xe1sa";
+      return "\u0418\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0439 matrix ID";
     },
     get$commandHint_unignore() {
-      return "Adott matrix ID figyelembe v\xe9tele";
+      return "\u041d\u0435 \u0438\u0433\u043d\u043e\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0434\u0430\u043d\u043d\u044b\u0439 matrix ID";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Jelenleg " + count + " felhaszn\xe1l\xf3 van letiltva.";
+      return "\u0421\u0435\u0439\u0447\u0430\u0441 \u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d\u043e " + count + " \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439.";
     },
     get$restricted() {
-      return "Korl\xe1tozott";
+      return "\u0417\u0430\u043f\u0440\u0435\u0449\u0435\u043d\u043e";
     },
     get$knockRestricted() {
-      return "Kopog\xe1s korl\xe1tozva";
+      return "\u0421\u0442\u0443\u043a \u0437\u0430\u043f\u0440\u0435\u0449\u0435\u043d";
     },
     goToSpace$1(space) {
-      return "Menj a t\xe9rre: " + space;
+      return "\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043a \u043f\u0440\u043e\u0441\u0442\u0440\u0430\u043d\u0441\u0442\u0432\u0443: " + space;
     },
     get$markAsUnread() {
-      return "Olvasatlannak jel\xf6l\xe9s";
+      return "\u041e\u0442\u043c\u0435\u0442\u0438\u0442\u044c \u043a\u0430\u043a \u043d\u0435\u043f\u0440\u043e\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0435";
     },
     userLevel$1(level) {
-      return "" + level + " - Felhaszn\xe1l\xf3";
+      return "" + level + " - \u041f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moder\xe1tor";
+      return "" + level + " - \u041c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440";
     },
     adminLevel$1(level) {
-      return "" + level + " - Rendszergazda";
+      return "" + level + " - \u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440";
     },
     get$changeGeneralChatSettings() {
-      return "\xc1ltal\xe1nos cseveg\xe9s be\xe1ll\xedt\xe1sok m\xf3dos\xedt\xe1sa";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043e\u0431\u0449\u0438\u0435 \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0447\u0430\u0442\u0430";
     },
     get$inviteOtherUsers() {
-      return "M\xe1s felhaszn\xe1l\xf3k megh\xedv\xe1sa a cseveg\xe9sbe";
+      return "\u041f\u0440\u0438\u0433\u043b\u0430\u0441\u0438\u0442\u044c \u0434\u0440\u0443\u0433\u0438\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0432 \u044d\u0442\u043e\u0442 \u0447\u0430\u0442";
     },
     get$changeTheChatPermissions() {
-      return "Cseveg\xe9s enged\xe9lyek v\xe1ltoztat\xe1sa";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043f\u0440\u0430\u0432\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043a \u0447\u0430\u0442\u0443";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Cseveg\xe9si el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1nak v\xe1ltoztat\xe1sa";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u0432\u0438\u0434\u0438\u043c\u043e\u0441\u0442\u044c \u0438\u0441\u0442\u043e\u0440\u0438\u0438 \u0447\u0430\u0442\u0430";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Cseveg\xe9s f\u0151, nyilv\xe1nos c\xedm\xe9nek v\xe1ltoztat\xe1sa";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0439 \u043e\u0431\u0449\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0439 \u0430\u0434\u0440\u0435\u0441 \u0447\u0430\u0442\u0430";
     },
     get$sendRoomNotifications() {
-      return "@room \xe9rtes\xedt\xe9s k\xfcld\xe9se";
+      return "\u0423\u043f\u043e\u043c\u0438\u043d\u0430\u0442\u044c @room";
     },
     get$changeTheDescriptionOfTheGroup() {
-      return "Cseveg\xe9s le\xedr\xe1s\xe1nak v\xe1ltoztat\xe1sa";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u044c \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430";
     },
     get$chatPermissionsDescription() {
-      return "Adja meg milyen er\u0151ss\xe9gi szint kell egyes cseveg\xe9si akci\xf3khoz. A 0, 50 \xe9s 100-as szintek \xe1ltal\xe1ban felhaszn\xe1l\xf3kat, moder\xe1torokat \xe9s rendszergazd\xe1kat jel\xf6lnek de b\xe1rmilyen szintez\xe9s lehets\xe9ges.";
+      return "\u0417\u0430\u0434\u0430\u0439\u0442\u0435 \u0443\u0440\u043e\u0432\u0435\u043d\u044c \u0432\u043b\u0430\u0441\u0442\u0438, \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u044b\u0439 \u0434\u043b\u044f \u0441\u043e\u0432\u0435\u0440\u0448\u0435\u043d\u0438\u044f \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0451\u043d\u043d\u044b\u0445 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u0439 \u0432 \u044d\u0442\u043e\u043c \u0447\u0430\u0442\u0435. \u0423\u0440\u043e\u0432\u043d\u0438 \u0432\u043b\u0430\u0441\u0442\u0438 0, 50 \u0438 100 \u043e\u0431\u044b\u0447\u043d\u043e \u043e\u0437\u043d\u0430\u0447\u0430\u044e\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439, \u043c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440\u043e\u0432 \u0438 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u043e\u0432 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e, \u043d\u043e \u043b\u044e\u0431\u0430\u044f \u0433\u0440\u0430\u0434\u0430\u0446\u0438\u044f \u0442\u0430\u043a\u0436\u0435 \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u0430.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 " + version + " verzi\xf3j\xfa fejleszt\xe9s telep\xedtve!";
+      return "\ud83c\udf89 \u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 " + version + " \u0443\u0441\u043f\u0435\u0448\u043d\u043e \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e!";
     },
     get$sendCanceled() {
-      return "Visszavon\xe1s k\xfcld\xe9se";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u043e\u0442\u043c\u0435\u043d\u0435\u043d\u0430";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Nem t\u0171nik kompatibilisnak a M\xe1trix-kiszolg\xe1l\xf3val. Helytelen URL?";
+      return "\u042d\u0442\u043e\u0442 \u0434\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u0441\u0435\u0440\u0432\u0435\u0440 \u0432\u044b\u0433\u043b\u044f\u0434\u0438\u0442 \u043d\u0435\u0441\u043e\u0432\u043c\u0435\u0441\u0442\u0438\u043c\u044b\u043c. \u041d\u0435\u0442 \u043b\u0438 \u0432 \u0441\u0441\u044b\u043b\u043a\u0435 \u043e\u043f\u0435\u0447\u0430\u0442\u043e\u043a?";
     },
     get$calculatingFileSize() {
-      return "Calculating file size...";
+      return "\u0412\u044b\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u0435 \u0440\u0430\u0437\u043c\u0435\u0440\u0430 \u0444\u0430\u0439\u043b\u0430...";
     },
     get$prepareSendingAttachment() {
-      return "Prepare sending attachment...";
+      return "\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043a \u043e\u0442\u043f\u0440\u0430\u0432\u043a\u0435 \u0432\u043b\u043e\u0436\u0435\u043d\u0438\u044f...";
     },
     get$sendingAttachment() {
-      return "Sending attachment...";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043a\u0430 \u0432\u043b\u043e\u0436\u0435\u043d\u0438\u044f...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Sending attachment " + index + " of " + $length + "...";
+      return "\u041e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u044e... " + index + " " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Server limit reached! Waiting " + seconds + " seconds...";
+      return "\u041e\u0433\u0440\u0430\u043d\u0438\u0447\u0435\u043d\u0438\u044f \u0441\u0435\u0440\u0432\u0435\u0440\u0430. \u041e\u0436\u0438\u0434\u0430\u0439\u0442\u0435" + seconds + " \u0441\u0435\u043a\u0443\u043d\u0434...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
+      return "\u041f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435: \u0415\u0441\u043b\u0438 \u0432\u044b \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u0432\u0441\u0435 \u0441\u0432\u043e\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 \u043a \u0440\u0435\u0437\u0435\u0440\u0432\u043d\u043e\u043c\u0443 \u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u0438\u044e \u0447\u0430\u0442\u043e\u0432, \u0442\u043e \u043e\u043d\u0438 \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438 \u0441\u0442\u0430\u043d\u0443\u0442 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0451\u043d\u043d\u044b\u043c\u0438.";
     },
     get$continueText() {
-      return "Continue";
+      return "\u041f\u0440\u043e\u0434\u043e\u043b\u0436\u0438\u0442\u044c";
     },
     get$blur(_) {
-      return "Blur:";
+      return "\u0420\u0430\u0437\u043c\u044b\u0442\u0438\u0435:";
     },
     get$opacity(_) {
-      return "Opacity:";
+      return "\u041f\u0440\u043e\u0437\u0440\u0430\u0447\u043d\u043e\u0441\u0442\u044c:";
     },
     get$setWallpaper() {
-      return "Set wallpaper";
+      return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u043e\u0431\u043e\u0438";
     },
     get$noContactInformationProvided() {
-      return "Server does not provide any valid contact information";
+      return "\u0421\u0435\u0440\u0432\u0435\u0440 \u043d\u0435 \u043f\u0440\u0435\u0434\u043e\u0441\u0442\u0430\u0432\u043b\u044f\u0435\u0442 \u043d\u0438\u043a\u0430\u043a\u043e\u0439 \u043f\u0440\u0430\u0432\u0434\u0438\u0432\u043e\u0439 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u043d\u043e\u0439 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438";
     },
     get$contactServerAdmin() {
-      return "Contact server admin";
+      return "\u0410\u0434\u043c\u0438\u043d \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
     },
     get$contactServerSecurity() {
-      return "Contact server security";
+      return "\u0411\u0435\u0437\u043e\u043f\u0430\u0441\u043d\u043e\u0441\u0442\u044c \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u043e\u0432 \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
     },
     get$supportPage() {
-      return "Support page";
+      return "\u041f\u043e\u0434\u0434\u0435\u0440\u0436\u043a\u0430";
     },
     get$serverInformation() {
-      return "Server information:";
+      return "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f \u043e \u0441\u0435\u0440\u0432\u0435\u0440\u0435:";
     },
     get$name(_) {
-      return "Name";
+      return "\u0418\u043c\u044f";
     },
     get$version(_) {
-      return "Version";
+      return "\u0412\u0435\u0440\u0441\u0438\u044f";
     },
     get$compress() {
-      return "Compress";
+      return "\u0421\u0436\u0430\u0442\u0438\u0435";
     },
     get$boldText() {
-      return "Bold text";
+      return "\u0416\u0438\u0440\u043d\u044b\u0439 \u0448\u0440\u0438\u0444\u0442";
     },
     get$italicText() {
-      return "Italic text";
+      return "Italic";
     },
     get$strikeThrough() {
-      return "Strikethrough";
+      return "\u041f\u0435\u0440\u0435\u0447\u0451\u0440\u043a\u043d\u0443\u0442\u044b\u0439";
     },
     get$pleaseFillOut() {
-      return "Please fill out";
+      return "\u041f\u043e\u0436\u0430\u043b\u0443\u0439\u0441\u0442\u0430, \u0437\u0430\u043f\u043e\u043b\u043d\u0438\u0442\u0435";
     },
     get$invalidUrl() {
-      return "Invalid url";
+      return "\u041d\u0435 \u0432\u0435\u0440\u043d\u044b\u0439 URL";
     },
     get$addLink() {
-      return "Add link";
+      return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0441\u0441\u044b\u043b\u043a\u0443";
     },
     get$unableToJoinChat() {
-      return "Unable to join chat. Maybe the other party has already closed the conversation.";
+      return "\u041d\u0435\u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u0447\u0430\u0442\u0443. \u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u0434\u0440\u0443\u0433\u0430\u044f \u0441\u0442\u043e\u0440\u043e\u043d\u0430 \u0443\u0436\u0435 \u0437\u0430\u043a\u043e\u043d\u0447\u0438\u043b\u0430 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440.";
     },
     get$previous() {
       return "Previous";
@@ -4183,14 +4183,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nHu, C.L10n);
+    _inherit(A.L10nRu, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHu":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nRu":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
-  d.eventLog.push({p: "main.dart.js_223", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "cwOTsnswupo9h4uaqWFwKAp9Bgs=");
+  d.eventLog.push({p: "main.dart.js_246", e: "endPart", h: h});
+})($__dart_deferred_initializers__, "A9rRtTsK+pgYri/LbbfzSGefzyw=");
 ;
-//# sourceMappingURL=main.dart.js_223.part.js.map
+//# sourceMappingURL=main.dart.js_246.part.js.map

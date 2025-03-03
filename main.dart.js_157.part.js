@@ -352,6 +352,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " \u0645\u0646\u062a\u0633\u0628\u0627";
     },
+    get$create(_) {
+      return "\u0623\u0646\u0634\u0626";
+    },
     createdTheChat$1(username) {
       return "\ud83d\udcac \u0623\u0646\u0634\u0623 " + username + " \u0627\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
     },
@@ -486,9 +489,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$goToTheNewRoom() {
       return "\u0627\u0646\u062a\u0642\u0644 \u0644\u0644\u063a\u0631\u0641\u0629 \u0627\u0644\u062c\u062f\u064a\u062f\u0629";
-    },
-    get$chatDescription() {
-      return "\u0648\u0635\u0641 \u0627\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
     },
     get$groups() {
       return "\u0627\u0644\u0645\u062c\u0645\u0648\u0639\u0627\u062a";
@@ -4192,6 +4192,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_157", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "4ufRAou8IS1HkgGO7QhdxpCR1T4=");
+})($__dart_deferred_initializers__, "du0wm/G7XdtG0XCSu/y070xp1MQ=");
 ;
 //# sourceMappingURL=main.dart.js_157.part.js.map
