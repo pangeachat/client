@@ -206,6 +206,7 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
   @override
   Widget build(BuildContext context) {
     final PracticeActivityModel practiceActivity = widget.currentActivity;
+    final question = practiceActivity.content.question;
 
     // if (ActivityTypeEnum.emoji == practiceActivity.activityType) {
     //   return WordEmojiChoiceRow(
@@ -219,13 +220,16 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          practiceActivity.content.question,
-          style: AppConfig.messageTextStyle(
-            widget.event,
-            Theme.of(context).colorScheme.primary,
-          ).merge(const TextStyle(fontStyle: FontStyle.italic)),
-        ),
+        if (question.isNotEmpty)
+          Text(
+            question,
+            textAlign: TextAlign.center,
+            style: AppConfig.messageTextStyle(
+              widget.event,
+              Theme.of(context).colorScheme.primary,
+            ).merge(const TextStyle(fontStyle: FontStyle.italic)),
+          ),
+        if (question.isNotEmpty) const SizedBox(height: 8.0),
         const SizedBox(height: 8),
         if (practiceActivity.activityType ==
             ActivityTypeEnum.wordFocusListening)
