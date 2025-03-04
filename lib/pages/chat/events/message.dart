@@ -51,6 +51,7 @@ class Message extends StatelessWidget {
   final MessageOverlayController? overlayController;
   final bool isButton;
   // Pangea#
+  final List<Color> colors;
 
   const Message(
     this.event, {
@@ -76,6 +77,7 @@ class Message extends StatelessWidget {
     this.overlayController,
     this.isButton = false,
     // Pangea#
+    required this.colors,
     super.key,
   });
 
@@ -159,17 +161,13 @@ class Message extends StatelessWidget {
         previousEvent!.senderId == event.senderId &&
         previousEvent!.originServerTs.sameEnvironment(event.originServerTs);
 
+    // #Pangea
+    // final textColor =
+    //     ownMessage ? theme.onBubbleColor : theme.colorScheme.onSurface;
     final textColor = ownMessage
-        ?
-        // #Pangea
-        // theme.brightness == Brightness.light
-        //     ? theme.colorScheme.onPrimary
-        //     : theme.colorScheme.onPrimaryContainer
-        ThemeData.dark().colorScheme.onPrimary
-        // Pangea#
+        ? ThemeData.dark().colorScheme.onPrimary
         : theme.colorScheme.onSurface;
 
-    // #Pangea
     // final linkColor = ownMessage
     //     ? theme.brightness == Brightness.light
     //         ? theme.colorScheme.primaryFixed
@@ -214,12 +212,11 @@ class Message extends StatelessWidget {
     }.contains(event.messageType);
 
     if (ownMessage) {
+      // #Pangea
+      // color =
+      //     displayEvent.status.isError ? Colors.redAccent : theme.bubbleColor;
       color = displayEvent.status.isError
           ? Colors.redAccent
-          // #Pangea
-          // : theme.brightness == Brightness.light
-          //     ? theme.colorScheme.primary
-          //     : theme.colorScheme.primaryContainer;
           : Color.alphaBlend(
               Colors.white.withAlpha(180),
               ThemeData.dark().colorScheme.primary,
@@ -433,7 +430,7 @@ class Message extends StatelessWidget {
                                           borderRadius: borderRadius,
                                         ),
                                         clipBehavior: Clip.antiAlias,
-                                        // #Pangea                                       // #Pangea
+                                        // #Pangea
                                         child: CompositedTransformTarget(
                                           link: overlayController != null
                                               ? LayerLinkAndKey('overlay_msg')
@@ -445,14 +442,7 @@ class Message extends StatelessWidget {
                                                   .link,
                                           // Pangea#
                                           child: BubbleBackground(
-                                            colors: [
-                                              theme.brightness ==
-                                                      Brightness.light
-                                                  ? theme.colorScheme.tertiary
-                                                  : theme.colorScheme
-                                                      .tertiaryContainer,
-                                              color,
-                                            ],
+                                            colors: colors,
                                             ignore: noBubble || !ownMessage,
                                             scrollController: scrollController,
                                             child: Container(
