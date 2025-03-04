@@ -83,7 +83,7 @@
                <action android:name="android.intent.action.VIEW" />
                <category android:name="android.intent.category.DEFAULT" />
                <category android:name="android.intent.category.BROWSABLE" />
-               <data android:scheme="com.talktolearn.chat" android:host="chat" />
+               <data android:scheme="im.fluffychat" android:host="chat" />
             </intent-filter>
 
             <!-- App can receive shared text -->
