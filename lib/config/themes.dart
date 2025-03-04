@@ -126,12 +126,9 @@ abstract class FluffyThemes {
           ),
         ),
       ),
-      snackBarTheme: isColumnMode
-          ? const SnackBarThemeData(
-              behavior: SnackBarBehavior.floating,
-              width: FluffyThemes.columnWidth * 1.5,
-            )
-          : const SnackBarThemeData(behavior: SnackBarBehavior.floating),
+      snackBarTheme: const SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: colorScheme.secondaryContainer,
