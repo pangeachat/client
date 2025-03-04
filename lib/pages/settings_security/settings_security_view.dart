@@ -90,6 +90,42 @@ class SettingsSecurityView extends StatelessWidget {
                   Divider(color: theme.dividerColor),
                   ListTile(
                     title: Text(
+                      L10n.of(context).shareKeysWith,
+                      style: TextStyle(
+                        color: theme.colorScheme.secondary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(L10n.of(context).shareKeysWithDescription),
+                  ),
+                  // TODO MERGE replace this after updating the SDK
+                  // ListTile(
+                  //   title: Material(
+                  //     borderRadius:
+                  //         BorderRadius.circular(AppConfig.borderRadius / 2),
+                  //     color: theme.colorScheme.onInverseSurface,
+                  //     child: DropdownButton<ShareKeysWith>(
+                  //       isExpanded: true,
+                  //       padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  //       borderRadius:
+                  //           BorderRadius.circular(AppConfig.borderRadius / 2),
+                  //       underline: const SizedBox.shrink(),
+                  //       value: Matrix.of(context).client.shareKeysWith,
+                  //       items: ShareKeysWith.values
+                  //           .map(
+                  //             (share) => DropdownMenuItem(
+                  //               value: share,
+                  //               child: Text(share.localized(L10n.of(context))),
+                  //             ),
+                  //           )
+                  //           .toList(),
+                  //       onChanged: controller.changeShareKeysWith,
+                  //     ),
+                  //   ),
+                  // ),
+                  Divider(color: theme.dividerColor),
+                  ListTile(
+                    title: Text(
                       L10n.of(context).account,
                       style: TextStyle(
                         color: theme.colorScheme.secondary,
@@ -142,3 +178,19 @@ class SettingsSecurityView extends StatelessWidget {
     );
   }
 }
+
+// TODO MERGE replace this after updating the SDK
+// extension on ShareKeysWith {
+//   String localized(L10n l10n) {
+//     switch (this) {
+//       case ShareKeysWith.all:
+//         return l10n.allDevices;
+//       case ShareKeysWith.crossVerifiedIfEnabled:
+//         return l10n.crossVerifiedDevicesIfEnabled;
+//       case ShareKeysWith.crossVerified:
+//         return l10n.crossVerifiedDevices;
+//       case ShareKeysWith.directlyVerifiedOnly:
+//         return l10n.verifiedDevicesOnly;
+//     }
+//   }
+// }

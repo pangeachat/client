@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/utils/custom_http_client.dart';
@@ -43,7 +44,8 @@ abstract class ClientManager {
       clientNames.add(PlatformInfos.clientName);
       await store.setStringList(clientNamespace, clientNames.toList());
     }
-    final clients = clientNames.map(createClient).toList();
+    final clients =
+        clientNames.map((name) => createClient(name, store)).toList();
     if (initialize) {
       await Future.wait(
         clients.map(
@@ -99,7 +101,9 @@ abstract class ClientManager {
       ? const NativeImplementationsDummy()
       : NativeImplementationsIsolate(compute);
 
-  static Client createClient(String clientName) {
+  static Client createClient(String clientName, SharedPreferences store) {
+    final shareKeysWith = store.getString(SettingKeys.shareKeysWith) ?? 'all';
+
     return Client(
       clientName,
       httpClient:
@@ -136,6 +140,10 @@ abstract class ClientManager {
       customImageResizer: PlatformInfos.isMobile ? customImageResizer : null,
       defaultNetworkRequestTimeout: const Duration(minutes: 30),
       enableDehydratedDevices: true,
+      // TODO MERGE replace this after updating the SDK
+      // shareKeysWith: ShareKeysWith.values
+      //         .singleWhereOrNull((share) => share.name == shareKeysWith) ??
+      //     ShareKeysWith.all,
       // #Pangea
       syncFilter: Filter(
         room: RoomFilter(

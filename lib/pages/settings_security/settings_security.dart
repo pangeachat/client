@@ -135,6 +135,17 @@ class SettingsSecurityController extends State<SettingsSecurity> {
 
   Future<void> dehydrateAction() => Matrix.of(context).dehydrateAction(context);
 
+  // TODO MERGE replace this after updating the SDK
+  // void changeShareKeysWith(ShareKeysWith? shareKeysWith) async {
+  //   if (shareKeysWith == null) return;
+  //   Matrix.of(context).store.setString(
+  //         SettingKeys.shareKeysWith,
+  //         shareKeysWith.name,
+  //       );
+  //   Matrix.of(context).client.shareKeysWith = shareKeysWith;
+  //   setState(() {});
+  // }
+
   @override
   Widget build(BuildContext context) => SettingsSecurityView(this);
 }
