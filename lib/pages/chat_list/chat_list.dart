@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,6 @@ import '../../widgets/matrix.dart';
 
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
-
 
 enum PopupMenuAction {
   settings,
@@ -419,6 +419,7 @@ class ChatListController extends State<ChatList>
       builder: (context) => ShareScaffoldDialog(
         items: files.map(
           (file) {
+            inspect(file);
             if ({
               SharedMediaType.text,
               SharedMediaType.url,
