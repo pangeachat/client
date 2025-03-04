@@ -79,10 +79,12 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
                             color: theme.colorScheme.onPrimaryContainer,
                           ),
                         )
-                  : Container(
-                      margin: const EdgeInsets.all(12),
-                      width: 8,
-                      height: 8,
+                  : Icon(
+                      status.icon,
+                      color: status.error != null
+                          ? theme.colorScheme.error
+                          : theme.colorScheme.onPrimaryContainer,
+                      size: 18,
                     ),
               suffixIcon: controller.isSearchMode && globalSearch
                   ? controller.isSearching
@@ -113,24 +115,16 @@ class ChatListHeader extends StatelessWidget implements PreferredSizeWidget {
                             maxLines: 2,
                           ),
                         )
+                  // #Pangea
+                  // : SizedBox(
+                  //     width: 0,
+                  //     child: ClientChooserButton(controller),
+                  //   ),
                   : const SizedBox(
                       width: 0,
-                      // #Pangea
-                      // child: ClientChooserButton(controller),
                       child: ClientChooserButton(),
-                      // Pangea#
                     ),
-              child: Center(
-                child: CircularProgressIndicator.adaptive(
-                  strokeWidth: 2,
-                  value: status.progress,
-                  valueColor: status.error != null
-                      ? AlwaysStoppedAnimation<Color>(
-                          theme.colorScheme.error,
-                        )
-                      : null,
-                ),
-              ),
+              // Pangea#
             ),
           );
         },
