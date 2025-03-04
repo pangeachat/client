@@ -6,7 +6,7 @@
 
 * Download VSCode if you do not already have it installed. This is the preferred IDE for development with Pangea Chat.
 * Download flutter on your device using this guide: https://docs.flutter.dev/get-started/install
-* Test to make sure that flutter is properly installed by running “flutter –version”
+* Test to make sure that flutter is properly installed by running “flutter --version”
     * You may need to add flutter to your path manually. Instructions can be found here: https://docs.flutter.dev/get-started/install/macos/mobile-ios?tab=download#add-flutter-to-your-path
 * Ensure that Google Chrome is installed
 * Install the latest version of XCode
@@ -25,9 +25,9 @@
 * To run on Android:
     * Download Android File Transfer here: ​​https://www.android.com/filetransfer/
 * To run the app from VSCode terminal:
-    * On web, run `flutter run -d chrome –hot`
+    * On web, run `flutter run -d chrome --hot`
     * Or as a web server (Usage with WSL or remote connect) `flutter run --release -d web-server -web-port=3000`
-    * On mobile device or simulator, run `flutter run –hot -d <DEVICE_NAME>`
+    * On mobile device or simulator, run `flutter run --hot -d <DEVICE_NAME>`
 
 # Special thanks
 
