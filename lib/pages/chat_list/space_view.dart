@@ -294,15 +294,14 @@ class _SpaceViewState extends State<SpaceView> {
         break;
       case SpaceActions.leave:
         final confirmed = await showOkCancelAlertDialog(
-          useRootNavigator: false,
           context: context,
           title: L10n.of(context).areYouSure,
-          okLabel: L10n.of(context).ok,
-          cancelLabel: L10n.of(context).cancel,
           // #Pangea
           // message: L10n.of(context).archiveRoomDescription,
           message: L10n.of(context).leaveSpaceDescription,
           // Pangea#
+          okLabel: L10n.of(context).leave,
+          cancelLabel: L10n.of(context).cancel,
           isDestructive: true,
         );
         if (!mounted) return;
