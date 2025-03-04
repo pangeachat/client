@@ -131,8 +131,6 @@ class ChatEventList extends StatelessWidget {
                     // #Pangea
                     WidgetsBinding.instance
                         .addPostFrameCallback((_) => controller.requestHistory);
-                    // WidgetsBinding.instance
-                    //     .addPostFrameCallback(controller.requestHistory);
                     return Column(
                       children: [
                         const SizedBox(height: AppConfig.toolbarMaxHeight),
@@ -144,6 +142,8 @@ class ChatEventList extends StatelessWidget {
                         ),
                       ],
                     );
+                    // WidgetsBinding.instance
+                    //     .addPostFrameCallback(controller.requestHistory);
                     // return Center(
                     //   child: IconButton(
                     //     onPressed: controller.requestHistory,
@@ -161,6 +161,7 @@ class ChatEventList extends StatelessWidget {
             }
             i--;
 
+            // The message at this index:
             final event = events[i];
             final animateIn = animateInEventIndex != null &&
                 timeline.events.length > animateInEventIndex &&
@@ -227,6 +228,7 @@ class ChatEventList extends StatelessWidget {
                               i + 1 < events.length ? events[i + 1] : null,
                           previousEvent: i > 0 ? events[i - 1] : null,
                           wallpaperMode: hasWallpaper,
+                          scrollController: controller.scrollController,
                         ),
             );
           },

@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -42,6 +44,7 @@ class Message extends StatelessWidget {
   final bool animateIn;
   final void Function()? resetAnimateIn;
   final bool wallpaperMode;
+  final ScrollController scrollController;
   // #Pangea
   final bool immersionMode;
   final ChatController controller;
@@ -66,6 +69,7 @@ class Message extends StatelessWidget {
     this.animateIn = false,
     this.resetAnimateIn,
     this.wallpaperMode = false,
+    required this.scrollController,
     // #Pangea
     required this.immersionMode,
     required this.controller,
@@ -429,7 +433,7 @@ class Message extends StatelessWidget {
                                           borderRadius: borderRadius,
                                         ),
                                         clipBehavior: Clip.antiAlias,
-                                        // #Pangea
+                                        // #Pangea                                       // #Pangea
                                         child: CompositedTransformTarget(
                                           link: overlayController != null
                                               ? LayerLinkAndKey('overlay_msg')
@@ -439,182 +443,207 @@ class Message extends StatelessWidget {
                                                     event.eventId,
                                                   )
                                                   .link,
-                                          child: Container(
-                                            key: overlayController != null
-                                                ? LayerLinkAndKey('overlay_msg')
-                                                    .key
-                                                : MatrixState.pAnyState
-                                                    .layerLinkAndKey(
-                                                      event.eventId,
-                                                    )
-                                                    .key,
-                                            // Pangea#
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                AppConfig.borderRadius,
+                                          // Pangea#
+                                          child: BubbleBackground(
+                                            colors: [
+                                              theme.brightness ==
+                                                      Brightness.light
+                                                  ? theme.colorScheme.tertiary
+                                                  : theme.colorScheme
+                                                      .tertiaryContainer,
+                                              color,
+                                            ],
+                                            ignore: noBubble || !ownMessage,
+                                            scrollController: scrollController,
+                                            child: Container(
+                                              // #Pangea
+                                              key: overlayController != null
+                                                  ? LayerLinkAndKey(
+                                                      'overlay_msg',
+                                                    ).key
+                                                  : MatrixState.pAnyState
+                                                      .layerLinkAndKey(
+                                                        event.eventId,
+                                                      )
+                                                      .key,
+                                              // Pangea#
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                  AppConfig.borderRadius,
+                                                ),
                                               ),
-                                            ),
-                                            padding: noBubble || noPadding
-                                                ? EdgeInsets.zero
-                                                : const EdgeInsets.symmetric(
-                                                    horizontal: 16,
-                                                    vertical: 8,
-                                                  ),
-                                            constraints: const BoxConstraints(
-                                              maxWidth:
-                                                  FluffyThemes.columnWidth *
-                                                      1.5,
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                if (event.relationshipType ==
-                                                    RelationshipTypes.reply)
-                                                  FutureBuilder<Event?>(
-                                                    future: event.getReplyEvent(
-                                                      timeline,
+                                              padding: noBubble || noPadding
+                                                  ? EdgeInsets.zero
+                                                  : const EdgeInsets.symmetric(
+                                                      horizontal: 16,
+                                                      vertical: 8,
                                                     ),
-                                                    builder: (
-                                                      BuildContext context,
-                                                      snapshot,
-                                                    ) {
-                                                      final replyEvent =
-                                                          snapshot.hasData
-                                                              ? snapshot.data!
-                                                              : Event(
-                                                                  eventId: event
-                                                                      .relationshipEventId!,
-                                                                  content: {
-                                                                    'msgtype':
-                                                                        'm.text',
-                                                                    'body':
-                                                                        '...',
-                                                                  },
-                                                                  senderId: event
-                                                                      .senderId,
-                                                                  type:
-                                                                      'm.room.message',
-                                                                  room: event
-                                                                      .room,
-                                                                  status:
-                                                                      EventStatus
-                                                                          .sent,
-                                                                  originServerTs:
-                                                                      DateTime
-                                                                          .now(),
-                                                                );
-                                                      return Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .only(
-                                                          bottom: 4.0,
-                                                        ),
-                                                        child: InkWell(
-                                                          borderRadius:
-                                                              ReplyContent
-                                                                  .borderRadius,
-                                                          onTap: () =>
-                                                              scrollToEventId(
-                                                            replyEvent.eventId,
+                                              constraints: const BoxConstraints(
+                                                maxWidth:
+                                                    FluffyThemes.columnWidth *
+                                                        1.5,
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: <Widget>[
+                                                  if (event.relationshipType ==
+                                                      RelationshipTypes.reply)
+                                                    FutureBuilder<Event?>(
+                                                      future:
+                                                          event.getReplyEvent(
+                                                        timeline,
+                                                      ),
+                                                      builder: (
+                                                        BuildContext context,
+                                                        snapshot,
+                                                      ) {
+                                                        final replyEvent =
+                                                            snapshot.hasData
+                                                                ? snapshot.data!
+                                                                : Event(
+                                                                    eventId: event
+                                                                        .relationshipEventId!,
+                                                                    content: {
+                                                                      'msgtype':
+                                                                          'm.text',
+                                                                      'body':
+                                                                          '...',
+                                                                    },
+                                                                    senderId: event
+                                                                        .senderId,
+                                                                    type:
+                                                                        'm.room.message',
+                                                                    room: event
+                                                                        .room,
+                                                                    status:
+                                                                        EventStatus
+                                                                            .sent,
+                                                                    originServerTs:
+                                                                        DateTime
+                                                                            .now(),
+                                                                  );
+                                                        return Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                            bottom: 4.0,
                                                           ),
-                                                          child: AbsorbPointer(
-                                                            child: ReplyContent(
-                                                              replyEvent,
-                                                              ownMessage:
-                                                                  ownMessage,
-                                                              timeline:
-                                                                  timeline,
+                                                          child: InkWell(
+                                                            borderRadius:
+                                                                ReplyContent
+                                                                    .borderRadius,
+                                                            onTap: () =>
+                                                                scrollToEventId(
+                                                              replyEvent
+                                                                  .eventId,
+                                                            ),
+                                                            child:
+                                                                AbsorbPointer(
+                                                              child:
+                                                                  ReplyContent(
+                                                                replyEvent,
+                                                                ownMessage:
+                                                                    ownMessage,
+                                                                timeline:
+                                                                    timeline,
+                                                              ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ),
-                                                MessageContent(
-                                                  displayEvent,
-                                                  textColor: textColor,
-                                                  linkColor: linkColor,
-                                                  onInfoTab: onInfoTab,
-                                                  borderRadius: borderRadius,
-                                                  timeline: timeline,
-                                                  // #Pangea
-                                                  pangeaMessageEvent:
-                                                      pangeaMessageEvent,
-                                                  immersionMode: immersionMode,
-                                                  overlayController:
-                                                      overlayController,
-                                                  controller: controller,
-                                                  nextEvent: nextEvent,
-                                                  prevEvent: previousEvent,
-                                                  // Pangea#
-                                                ),
-                                                if (event.hasAggregatedEvents(
-                                                          timeline,
-                                                          RelationshipTypes
-                                                              .edit,
-                                                        )
-                                                        // #Pangea
-                                                        ||
-                                                        (pangeaMessageEvent
-                                                                ?.showUseType ??
-                                                            false)
-                                                    // Pangea#
-                                                    )
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                      top: 4.0,
+                                                        );
+                                                      },
                                                     ),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      children: [
-                                                        // #Pangea
-                                                        if (pangeaMessageEvent
-                                                                ?.showUseType ??
-                                                            false) ...[
-                                                          pangeaMessageEvent!
-                                                              .msgUseType
-                                                              .iconView(
-                                                            context,
-                                                            textColor
-                                                                .withAlpha(164),
-                                                          ),
-                                                          const SizedBox(
-                                                            width: 4,
-                                                          ),
-                                                        ],
-                                                        if (event
-                                                            .hasAggregatedEvents(
-                                                          timeline,
-                                                          RelationshipTypes
-                                                              .edit,
-                                                        )) ...[
-                                                          // Pangea#
-                                                          Icon(
-                                                            Icons.edit_outlined,
-                                                            color: textColor
-                                                                .withAlpha(164),
-                                                            size: 14,
-                                                          ),
-                                                          Text(
-                                                            ' - ${displayEvent.originServerTs.localizedTimeShort(context)}',
-                                                            style: TextStyle(
+                                                  MessageContent(
+                                                    displayEvent,
+                                                    textColor: textColor,
+                                                    linkColor: linkColor,
+                                                    onInfoTab: onInfoTab,
+                                                    borderRadius: borderRadius,
+                                                    timeline: timeline,
+                                                    // #Pangea
+                                                    pangeaMessageEvent:
+                                                        pangeaMessageEvent,
+                                                    immersionMode:
+                                                        immersionMode,
+                                                    overlayController:
+                                                        overlayController,
+                                                    controller: controller,
+                                                    nextEvent: nextEvent,
+                                                    prevEvent: previousEvent,
+                                                    // Pangea#
+                                                  ),
+                                                  if (event.hasAggregatedEvents(
+                                                            timeline,
+                                                            RelationshipTypes
+                                                                .edit,
+                                                          )
+                                                          // #Pangea
+                                                          ||
+                                                          (pangeaMessageEvent
+                                                                  ?.showUseType ??
+                                                              false)
+                                                      // Pangea#
+                                                      )
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                        top: 4.0,
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        children: [
+                                                          // #Pangea
+                                                          if (pangeaMessageEvent
+                                                                  ?.showUseType ??
+                                                              false) ...[
+                                                            pangeaMessageEvent!
+                                                                .msgUseType
+                                                                .iconView(
+                                                              context,
+                                                              textColor
+                                                                  .withAlpha(
+                                                                164,
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                              width: 4,
+                                                            ),
+                                                          ],
+                                                          if (event
+                                                              .hasAggregatedEvents(
+                                                            timeline,
+                                                            RelationshipTypes
+                                                                .edit,
+                                                          )) ...[
+                                                            // Pangea#
+                                                            Icon(
+                                                              Icons
+                                                                  .edit_outlined,
                                                               color: textColor
                                                                   .withAlpha(
                                                                 164,
                                                               ),
-                                                              fontSize: 12,
+                                                              size: 14,
                                                             ),
-                                                          ),
+                                                            Text(
+                                                              ' - ${displayEvent.originServerTs.localizedTimeShort(context)}',
+                                                              style: TextStyle(
+                                                                color: textColor
+                                                                    .withAlpha(
+                                                                  164,
+                                                                ),
+                                                                fontSize: 12,
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ],
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -796,5 +825,74 @@ class Message extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class BubbleBackground extends StatelessWidget {
+  const BubbleBackground({
+    super.key,
+    required this.scrollController,
+    required this.colors,
+    required this.ignore,
+    required this.child,
+  });
+
+  final ScrollController scrollController;
+  final List<Color> colors;
+  final bool ignore;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    if (ignore) return child;
+    return CustomPaint(
+      painter: BubblePainter(
+        repaint: scrollController,
+        colors: colors,
+        context: context,
+      ),
+      child: child,
+    );
+  }
+}
+
+class BubblePainter extends CustomPainter {
+  BubblePainter({
+    required this.context,
+    required this.colors,
+    required super.repaint,
+  });
+
+  final BuildContext context;
+  final List<Color> colors;
+  ScrollableState? _scrollable;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final scrollable = _scrollable ??= Scrollable.of(context);
+    final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
+    final scrollableRect = Offset.zero & scrollableBox.size;
+    final bubbleBox = context.findRenderObject() as RenderBox;
+
+    final origin =
+        bubbleBox.localToGlobal(Offset.zero, ancestor: scrollableBox);
+    final paint = Paint()
+      ..shader = ui.Gradient.linear(
+        scrollableRect.topCenter,
+        scrollableRect.bottomCenter,
+        colors,
+        [0.0, 1.0],
+        TileMode.clamp,
+        Matrix4.translationValues(-origin.dx, -origin.dy, 0.0).storage,
+      );
+    canvas.drawRect(Offset.zero & size, paint);
+  }
+
+  @override
+  bool shouldRepaint(BubblePainter oldDelegate) {
+    final scrollable = Scrollable.of(context);
+    final oldScrollable = _scrollable;
+    _scrollable = scrollable;
+    return scrollable.position != oldScrollable?.position;
   }
 }
