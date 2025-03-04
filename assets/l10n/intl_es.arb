@@ -5154,5 +5154,8 @@
   "invitePeopleChatSubtitle": "Invitar a usuarios o administradores a este chat",
   "invitePeopleSpaceSubtitle": "Invitar a usuarios o administradores a este espacio",
   "noCapacityLimit": "Sin límite de capacidad",
-  "downloadGroupText": "Descargar texto del grupo"
+  "downloadGroupText": "Descargar texto del grupo",
+  "enableAutocorrectPopUpDescription": "Agregue el teclado de su idioma de destino yendo a:\n  \u2022 Ajustes\n  \u2022 General\n  \u2022 Teclado\n  \u2022 Teclados\n  \u2022 Agregar nuevo teclado\n\nUna vez seleccionado el idioma, puede hacer clic en el pequeño ícono del globo terráqueo en la parte inferior izquierda de su teclado para activar el teclado recién instalado.",
+  "downloadGboardDescription": "Descargue Gboard desde Google Play Store para habilitar la corrección automática y otras funciones del teclado:\n  \u2022 Descargar Gboard\n  \u2022 Abrir aplicación\n  \u2022 Idiomas\n  \u2022 Agregar teclado\n  \u2022 Seleccionar idioma\n  \u2022 Seleccionar tipo de teclado\n  \u2022 Hecho\nUna vez seleccionado el idioma, puede hacer clic en el pequeño ícono del globo terráqueo en la parte inferior izquierda de su teclado para activar el teclado recién instalado.",
+  "enableAutocorrectWarning": "¡Atención! Es necesario añadir el teclado del idioma de destino"
 }
