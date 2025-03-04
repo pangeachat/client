@@ -4176,6 +4176,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirmUserId() {
       return "Please confirm your Pangea Chat username in order to delete your account.";
     },
+    paidSubscriptionStarts$1(startDate) {
+      return "Starting " + startDate;
+    },
+    get$cancelInSubscriptionSettings() {
+      return "\u2022 Cancel at any time in subscription settings";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4191,6 +4197,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_239", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "PfG2cB/Yio+fr+0hLx2l03B3Fqg=");
+})($__dart_deferred_initializers__, "10tiqratH31OCBpQCTMvqwxYDoo=");
 ;
 //# sourceMappingURL=main.dart.js_239.part.js.map
