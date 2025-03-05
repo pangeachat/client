@@ -3712,18 +3712,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enterCodeToJoin() {
       return "Ingrese el c\xf3digo para unirse";
     },
-    get$mandatoryUpdateRequired() {
-      return "Actualizaci\xf3n obligatoria requerida";
-    },
-    get$updateAvailable() {
-      return "Actualizaci\xf3n de FluffyChat disponible";
-    },
-    get$mandatoryUpdateRequiredDesc() {
-      return "Se requiere una nueva versi\xf3n de la aplicaci\xf3n para continuar. Actualice ahora para proceder.";
-    },
-    get$updateAvailableDesc() {
-      return "Una nueva versi\xf3n de la aplicaci\xf3n est\xe1 disponible. \xa1Actualice ahora para obtener las \xfaltimas funciones y mejoras!";
-    },
     get$updateNow() {
       return "Comenzar actualizaci\xf3n en segundo plano.";
     },
@@ -3822,12 +3810,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$ttsInstructionsHyperlink() {
       return "Haz clic aqu\xed para ver las instrucciones para descargar una nueva voz en tu dispositivo.";
-    },
-    get$currentVersion() {
-      return "Versi\xf3n actual";
-    },
-    get$latestVersion() {
-      return "\xdaltima versi\xf3n";
     },
     get$createAnAccount() {
       return "Crear una cuenta";
@@ -4195,6 +4177,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autocorrectNotAvailable() {
       return "Desafortunadamente, tu plataforma no es compatible actualmente con esta funci\xf3n. \xa1Mantente atento a futuros desarrollos!";
     },
+    get$pleaseUpdateApp() {
+      return "Please update the app to continue.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4210,6 +4195,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_195", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "NIxF4pxQAlcZ+z3OLrarG78YtnI=");
+})($__dart_deferred_initializers__, "mNZ4D1ZZbWQ7T6JeOXr/8gK7zYU=");
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map

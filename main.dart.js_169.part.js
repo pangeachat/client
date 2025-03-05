@@ -3712,18 +3712,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enterCodeToJoin() {
       return "Enter code to join";
     },
-    get$mandatoryUpdateRequired() {
-      return "Mandatory Update Required";
-    },
-    get$updateAvailable() {
-      return "Update Available";
-    },
-    get$mandatoryUpdateRequiredDesc() {
-      return "A new version of the app is required to continue. Please update now to proceed.";
-    },
-    get$updateAvailableDesc() {
-      return "A new version of the app is available. Update now for the latest features and improvements!";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -3822,12 +3810,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$ttsInstructionsHyperlink() {
       return "Click here to view instructions for downloading a new voice on your device.";
-    },
-    get$currentVersion() {
-      return "Current Version";
-    },
-    get$latestVersion() {
-      return "Latest Version";
     },
     get$createAnAccount() {
       return "Create an account";
@@ -4195,6 +4177,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autocorrectNotAvailable() {
       return "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!";
     },
+    get$pleaseUpdateApp() {
+      return "Please update the app to continue.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4210,6 +4195,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_169", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "7JfAw/mUQtrYSkpXkSpCcZ9uiM8=");
+})($__dart_deferred_initializers__, "oH3o7buCmd9pVDaXd7eLfrE/fNA=");
 ;
 //# sourceMappingURL=main.dart.js_169.part.js.map

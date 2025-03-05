@@ -3711,18 +3711,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enterCodeToJoin() {
       return "Nh\u1eadp m\xe3 \u0111\u1ec3 tham gia";
     },
-    get$mandatoryUpdateRequired() {
-      return "Y\xeau c\u1ea7u c\u1eadp nh\u1eadt b\u1eaft bu\u1ed9c";
-    },
-    get$updateAvailable() {
-      return "C\xf3 b\u1ea3n c\u1eadp nh\u1eadt";
-    },
-    get$mandatoryUpdateRequiredDesc() {
-      return "B\u1ea1n c\u1ea7n c\u1eadp nh\u1eadt phi\xean b\u1ea3n m\u1edbi \u0111\u1ec3 ti\u1ebfp t\u1ee5c. Vui l\xf2ng c\u1eadp nh\u1eadt ngay.";
-    },
-    get$updateAvailableDesc() {
-      return "C\xf3 phi\xean b\u1ea3n m\u1edbi c\u1ee7a \u1ee9ng d\u1ee5ng. C\u1eadp nh\u1eadt ngay \u0111\u1ec3 c\xf3 tr\u1ea3i nghi\u1ec7m t\u1ed1t nh\u1ea5t!";
-    },
     get$updateNow() {
       return "C\u1eadp nh\u1eadt ngay";
     },
@@ -3821,12 +3809,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$ttsInstructionsHyperlink() {
       return "Nh\u1ea5n v\xe0o \u0111\xe2y \u0111\u1ec3 xem c\xe1ch t\u1ea3i gi\u1ecdng \u0111\u1ecdc m\u1edbi tr\xean thi\u1ebft b\u1ecb.";
-    },
-    get$currentVersion() {
-      return "Phi\xean b\u1ea3n hi\u1ec7n t\u1ea1i";
-    },
-    get$latestVersion() {
-      return "Phi\xean b\u1ea3n m\u1edbi nh\u1ea5t";
     },
     get$createAnAccount() {
       return "T\u1ea1o t\xe0i kho\u1ea3n";
@@ -4194,6 +4176,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autocorrectNotAvailable() {
       return "R\u1ea5t ti\u1ebfc, n\u1ec1n t\u1ea3ng c\u1ee7a b\u1ea1n hi\u1ec7n kh\xf4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 cho t\xednh n\u0103ng n\xe0y. H\xe3y theo d\xf5i \u0111\u1ec3 bi\u1ebft th\xeam th\xf4ng tin ph\xe1t tri\u1ec3n!";
     },
+    get$pleaseUpdateApp() {
+      return "Please update the app to continue.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4209,6 +4194,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "EmvVyh1a1hjcKBG6NEfpk42N7rQ=");
+})($__dart_deferred_initializers__, "JMh8BBHCMHYeZj8FWb9DUS8CvO4=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map
