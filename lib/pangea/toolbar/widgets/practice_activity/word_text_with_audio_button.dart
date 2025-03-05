@@ -6,11 +6,13 @@ import 'package:flutter/material.dart';
 class WordTextWithAudioButton extends StatefulWidget {
   final String text;
   final TtsController ttsController;
+  final double? textSize;
 
   const WordTextWithAudioButton({
     super.key,
     required this.text,
     required this.ttsController,
+    this.textSize,
   });
 
   @override
@@ -19,6 +21,8 @@ class WordTextWithAudioButton extends StatefulWidget {
 
 class WordAudioButtonState extends State<WordTextWithAudioButton> {
   bool _isPlaying = false;
+
+  double get textSize => widget.textSize ?? Theme.of(context).textTheme.titleLarge?.fontSize ?? 16;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +88,7 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
                               ? Theme.of(context).colorScheme.secondary
                               : null,
                           fontSize:
-                              Theme.of(context).textTheme.titleLarge?.fontSize,
+                              textSize,
                         ),
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -92,7 +96,7 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
                 const SizedBox(width: 4),
                 Icon(
                   _isPlaying ? Icons.play_arrow : Icons.play_arrow_outlined,
-                  size: Theme.of(context).textTheme.titleLarge?.fontSize,
+                  size: textSize,
                 ),
               ],
             ),

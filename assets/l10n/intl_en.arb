@@ -4563,7 +4563,7 @@
   },
   "botModeValidation": "Please select a chat mode",
   "clickBestOption": "Choose the best options to translate your message!",
-  "unlockedLanguageTools": "You’ve unlocked the language tools for this message. Try them out by clicking below!",
+  "completeActivitiesToUnlock": "Complete word activities to unlock audio and translation!",
   "botSettingsSubtitle": "Invite bot to moderate chat activity",
   "invitePeople": "Invite users",
   "invitePeopleChatSubtitle": "Invite users or admins to this chat",

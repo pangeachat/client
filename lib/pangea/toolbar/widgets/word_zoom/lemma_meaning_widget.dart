@@ -86,13 +86,13 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
       tag: null,
     )) {
       return WordZoomActivityButton(
-        icon: const Icon(Symbols.dictionary),
-        isSelected: widget.controller.toolbarMode == MessageMode.wordMeaning,
-        onPressed: () {
-          // TODO: it would be better to explicitly set to wordMeaningChoice here
-          widget.controller.updateToolbarMode(MessageMode.wordMeaning);
-        },
-      );
+          icon: const Icon(Symbols.dictionary),
+          isSelected: widget.controller.toolbarMode == MessageMode.wordMeaning,
+          onPressed: () {
+            // TODO: it would be better to explicitly set to wordMeaningChoice here
+            widget.controller.updateToolbarMode(MessageMode.wordMeaning);
+          },
+        );
     }
 
     return FutureBuilder<LemmaInfoResponse>(
@@ -179,6 +179,7 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
               child: Text(
                 snapshot.data!.meaning,
                 textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
           ),

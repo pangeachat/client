@@ -10,9 +10,10 @@ import 'package:flutter/material.dart';
 
 import 'message_emoji_choice_row.dart';
 
+const double readingAssistanceInputBarHeight = 150;
 class ReadingAssistanceInputBar extends StatelessWidget {
   final ChatController controller;
-  final MessageOverlayController? overlayController;
+  final MessageOverlayController overlayController;
 
   const ReadingAssistanceInputBar(
     this.controller,
@@ -20,37 +21,37 @@ class ReadingAssistanceInputBar extends StatelessWidget {
     super.key,
   });
 
-  PangeaToken? get token => overlayController?.selectedToken;
+  PangeaToken? get token => overlayController.selectedToken;
 
   PracticeActivityCard practiceActivityCard(ActivityTypeEnum a) =>
       PracticeActivityCard(
-        pangeaMessageEvent: overlayController!.pangeaMessageEvent!,
+        pangeaMessageEvent: overlayController.pangeaMessageEvent!,
         targetTokensAndActivityType: TargetTokensAndActivityType(
           tokens: [token!],
           activityType: a,
         ),
-        overlayController: overlayController!,
+        overlayController: overlayController,
         morphFeature: a == ActivityTypeEnum.morphId
-            ? overlayController?.selectedMorphFeature ??
+            ? overlayController.selectedMorphFeature ??
                 overlayController
-                    ?.selectedToken?.nextMorphFeatureEligibleForActivity ??
+                    .selectedToken?.nextMorphFeatureEligibleForActivity ??
                 "pos"
             : null,
         location: AnalyticsUpdateOrigin.inputBar,
       );
 
   Widget barContent(BuildContext context) {
-    if (token == null) {
+    if (token == null || !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ?? false)) {
       return MessageEmojiChoiceRow(
         tokens: overlayController
-                ?.pangeaMessageEvent?.messageDisplayRepresentation?.tokens ??
+                .pangeaMessageEvent?.messageDisplayRepresentation?.tokens ??
             [],
         controller: controller,
         overlayController: overlayController,
       );
     }
 
-    switch (overlayController!.toolbarMode) {
+    switch (overlayController.toolbarMode) {
       // message meaning will not use the input bar (for now at least)
       // maybe we move some choices there later
       case MessageMode.messageMeaning:
@@ -62,7 +63,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
       case MessageMode.noneSelected:
         return MessageEmojiChoiceRow(
           tokens: overlayController
-                  ?.pangeaMessageEvent?.messageDisplayRepresentation?.tokens ??
+                  .pangeaMessageEvent?.messageDisplayRepresentation?.tokens ??
               [],
           controller: controller,
           overlayController: overlayController,
@@ -94,18 +95,18 @@ class ReadingAssistanceInputBar extends StatelessWidget {
     }
 
     return Flexible(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        // @ggurdin - redundant no?
-        children: [
-          Flexible(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: barContent(context),
-            ),
+      child: Container(
+        height: readingAssistanceInputBarHeight,
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(8.0),
           ),
-        ],
+        ),
+        alignment: Alignment.center,
+        child: barContent(context),
       ),
     );
+
   }
 }

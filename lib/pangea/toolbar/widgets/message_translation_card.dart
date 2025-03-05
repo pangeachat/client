@@ -14,12 +14,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class MessageTranslationCard extends StatefulWidget {
   final PangeaMessageEvent messageEvent;
-  final PangeaTokenText? selection;
 
   const MessageTranslationCard({
     super.key,
     required this.messageEvent,
-    required this.selection,
   });
 
   @override
@@ -28,7 +26,6 @@ class MessageTranslationCard extends StatefulWidget {
 
 class MessageTranslationCardState extends State<MessageTranslationCard> {
   PangeaRepresentation? repEvent;
-  String? selectionTranslation;
   bool _fetchingTranslation = false;
 
   @override
@@ -36,15 +33,6 @@ class MessageTranslationCardState extends State<MessageTranslationCard> {
     debugPrint('MessageTranslationCard initState');
     super.initState();
     loadTranslation();
-  }
-
-  @override
-  void didUpdateWidget(covariant MessageTranslationCard oldWidget) {
-    if (oldWidget.selection != widget.selection) {
-      debugPrint('selection changed');
-      loadTranslation();
-    }
-    super.didUpdateWidget(oldWidget);
   }
 
   Future<void> fetchRepresentationText() async {
@@ -63,42 +51,13 @@ class MessageTranslationCardState extends State<MessageTranslationCard> {
     }
   }
 
-  Future<void> fetchSelectedTextTranslation() async {
-    if (!mounted) return;
-
-    final pangeaController = MatrixState.pangeaController;
-
-    if (!pangeaController.languageController.languagesSet) {
-      selectionTranslation = widget.messageEvent.messageDisplayText;
-      return;
-    }
-
-    final FullTextTranslationResponseModel res =
-        await FullTextTranslationRepo.translate(
-      accessToken: pangeaController.userController.accessToken,
-      request: FullTextTranslationRequestModel(
-        text: widget.messageEvent.messageDisplayText,
-        srcLang: widget.messageEvent.messageDisplayLangCode,
-        tgtLang: l1Code!,
-        offset: widget.selection?.offset,
-        length: widget.selection?.length,
-        userL1: l1Code!,
-        userL2: l2Code!,
-      ),
-    );
-
-    selectionTranslation = res.translations.first;
-  }
-
   Future<void> loadTranslation() async {
     if (!mounted) return;
 
     setState(() => _fetchingTranslation = true);
 
     try {
-      await (widget.selection != null
-          ? fetchSelectedTextTranslation()
-          : fetchRepresentationText());
+      await fetchRepresentationText();
     } catch (err) {
       ErrorHandler.logError(
         e: err,
@@ -122,27 +81,23 @@ class MessageTranslationCardState extends State<MessageTranslationCard> {
   bool get notGoingToTranslate {
     final bool isWrittenInL1 =
         l1Code != null && widget.messageEvent.originalSent?.langCode == l1Code;
-    final bool isTextIdentical = selectionTranslation != null &&
-        widget.messageEvent.originalSent?.text == selectionTranslation;
 
-    return (isWrittenInL1 || isTextIdentical);
+
+    return isWrittenInL1;
   }
 
   @override
   Widget build(BuildContext context) {
     debugPrint('MessageTranslationCard build');
     if (!_fetchingTranslation &&
-        repEvent == null &&
-        selectionTranslation == null) {
+        repEvent == null) {
       return const CardErrorWidget(
         error: "No translation found",
         maxWidth: AppConfig.toolbarMinWidth,
       );
     }
 
-    final loadingTranslation =
-        (widget.selection != null && selectionTranslation == null) ||
-            (widget.selection == null && repEvent == null);
+    final loadingTranslation =repEvent == null;
 
     if (_fetchingTranslation || loadingTranslation) {
       return const ToolbarContentLoadingIndicator();
@@ -161,36 +116,20 @@ class MessageTranslationCardState extends State<MessageTranslationCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                widget.selection != null
-                    ? selectionTranslation!
-                    : repEvent!.text,
+                repEvent!.text,
                 style: AppConfig.messageTextStyle(
                   widget.messageEvent.event,
                   Theme.of(context).colorScheme.primary,
                 ),
                 textAlign: TextAlign.center,
               ),
-              if (notGoingToTranslate &&
-                  widget.selection == null &&
-                  !InstructionsEnum.l1Translation.isToggledOff)
+              if (notGoingToTranslate && !InstructionsEnum.l1Translation.isToggledOff)
                 const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Expanded(
                       child: InstructionsInlineTooltip(
                         instructionsEnum: InstructionsEnum.l1Translation,
-                      ),
-                    ),
-                  ],
-                ),
-              if (widget.selection != null &&
-                  !InstructionsEnum.clickAgainToDeselect.isToggledOff)
-                const Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      child: InstructionsInlineTooltip(
-                        instructionsEnum: InstructionsEnum.clickAgainToDeselect,
                       ),
                     ),
                   ],

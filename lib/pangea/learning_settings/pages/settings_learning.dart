@@ -130,7 +130,7 @@ class SettingsLearningController extends State<SettingsLearning> {
 
   LanguageModel? get _targetLanguage =>
       _profile.userSettings.targetLanguage != null
-          ? PangeaLanguage.byLangCode(_profile.userSettings.targetLanguage!)
+          ? PLanguageStore.byLangCode(_profile.userSettings.targetLanguage!)
           : null;
 
   bool getToolSetting(ToolSetting toolSetting) {

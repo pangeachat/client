@@ -43,6 +43,8 @@ class WordEmojiChoiceRow extends StatelessWidget {
               isSelected: selectedChoiceIndex != null
                   ? selectedChoiceIndex == index
                   : activity.targetTokens?.first.getEmoji() == emoji,
+              onDoubleTap: null,
+              onLongPress: null,
             ),
           )
           .toList(),

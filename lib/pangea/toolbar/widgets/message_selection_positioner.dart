@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/overlay_footer.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/reading_assistance_input_bar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
@@ -52,6 +53,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   Animation<double>? _overlayPositionAnimation;
 
   StreamSubscription? _reactionSubscription;
+
+  /// if the message height is too tall to fit with the tools, adjust the message height
   double? _adjustedMessageHeight;
 
   @override
@@ -84,6 +87,69 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     ).listen((_) => setState(() {}));
   }
 
+    @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_mediaQuery == null) {
+      return;
+    }
+
+    final bool hasHeaderOverflow =
+        _remainingTopSpace < AppConfig.toolbarSpacing;
+    final bool hasFooterOverflow =
+        _remainingBottomSpace < AppConfig.toolbarSpacing;
+
+    if (!hasHeaderOverflow && !hasFooterOverflow || _mediaQuery == null) {
+      return;
+    }
+
+    double adjustedBottomOffset = _totalToolbarBottomOffset;
+    double scrollOffset = 0;
+
+    // if the message height is too tall to fit, adjust the message height
+    if (_totalVerticalSpace! < _maxTotalToolbarHeight) {
+      _adjustedMessageHeight = _totalVerticalSpace! -
+          // one for within the toolbar itself, one for the top, and one for the bottom
+          ((AppConfig.toolbarSpacing * 3) +
+              _reactionsHeight +
+              _toolbarButtonsHeight +
+              AppConfig.toolbarMaxHeight);
+    }
+
+    // if the overlay could have header overflow if the message wasn't shifted, we want to shift
+    // it down so the bottom to give it enough space.
+    if (hasHeaderOverflow) {
+      // what is the distance between the current top offset of the toolbar and the desired top offset?
+      final double currentTopOffset =
+          _messageTopOffset - AppConfig.toolbarMaxHeight;
+      final double neededShift =
+          (_headerHeight - currentTopOffset) + AppConfig.toolbarSpacing;
+      adjustedBottomOffset = _totalToolbarBottomOffset - neededShift;
+    } else if (hasFooterOverflow) {
+      adjustedBottomOffset = _footerHeight + AppConfig.toolbarSpacing;
+    }
+
+    scrollOffset = adjustedBottomOffset - _totalToolbarBottomOffset;
+
+    _overlayPositionAnimation = Tween<double>(
+      begin: _totalToolbarBottomOffset,
+      end: adjustedBottomOffset,
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: FluffyThemes.animationCurve,
+      ),
+    );
+
+    widget.chatController.scrollController.animateTo(
+      widget.chatController.scrollController.offset - scrollOffset,
+      duration:
+          const Duration(milliseconds: AppConfig.overlayAnimationDuration),
+      curve: FluffyThemes.animationCurve,
+    );
+    _animationController.forward();
+  }
+
   @override
   void dispose() {
     _animationController.dispose();
@@ -91,9 +157,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     super.dispose();
   }
 
-  dynamic _runWithLogging(
+  T _runWithLogging<T>(
     Function runner,
     String errorMessage,
+    T defaultValue,
   ) {
     try {
       return runner();
@@ -105,7 +172,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
           "eventID": widget.event.eventId,
         },
       );
-      return null;
+      return defaultValue;
     }
   }
 
@@ -117,9 +184,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   // screen size
 
-  MediaQueryData? get _mediaQuery => _runWithLogging(
+  MediaQueryData? get _mediaQuery => _runWithLogging<MediaQueryData?>(
         () => MediaQuery.of(context),
         "Error getting media query",
+        null,
       );
 
   double get _columnWidth => FluffyThemes.isColumnMode(context)
@@ -128,26 +196,32 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   // message size
 
-  RenderBox? get _messageRenderBox => _runWithLogging(
+  RenderBox? get _messageRenderBox => _runWithLogging<RenderBox?>(
         () => MatrixState.pAnyState.getRenderBox(
           widget.event.eventId,
         ),
         "Error getting message render box",
+        null,
       );
 
-  Size? get _messageSize {
+  Size get _defaultMessageSize => const Size(FluffyThemes.columnWidth/2, 100);
+  Size get _messageSize {
     if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
-      return null;
+      return _defaultMessageSize;
     }
 
     return _runWithLogging(
       () => _messageRenderBox?.size,
       "Error getting message size",
+      _defaultMessageSize,
     );
   }
 
   double get _messageHeight =>
-      _adjustedMessageHeight ?? _messageSize?.height ?? 0;
+      _adjustedMessageHeight ?? _messageSize.height;
+
+  //TODO: figure out where the 16 and 8 come from and use references instead of hard-coded values
+  static const _messageDefaultLeftMargin = Avatar.defaultSize + 16 + 8;
 
   double get _messageMaxWidth {
     final double messageMargin =
@@ -172,57 +246,33 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   // message offset
 
-  Offset? get _messageOffset {
+  static const Offset _defaultMessageOffset = Offset(_messageDefaultLeftMargin, 300);
+  Offset get _messageOffset {
     if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
-      return null;
+      return _defaultMessageOffset;
     }
-
     return _runWithLogging(
       () => _messageRenderBox?.localToGlobal(Offset.zero),
       "Error getting message offset",
+      _defaultMessageOffset,
     );
   }
 
-  double? get _messageTopOffset {
-    if (_messageOffset == null) {
-      return null;
-    }
-
-    return _messageOffset!.dy -
+  double get _messageTopOffset => _messageOffset.dy -
         (_mediaQuery?.padding.top ?? 0) +
         (_mediaQuery?.viewPadding.top ?? 0);
-  }
 
-  double? get _messageBottomOffset {
-    if (_messageOffset == null || _messageSize == null || _mediaQuery == null) {
-      return null;
-    }
+  double get _messageBottomOffset =>  _mediaQuery!.size.height - _messageOffset.dy - _messageHeight;
 
-    return _mediaQuery!.size.height - _messageOffset!.dy - _messageHeight;
-  }
-
-  double get _messageLeftOffset {
-    if (_messageOffset == null ||
-        widget.event.senderId == widget.event.room.client.userID) {
-      // TODO: figure out the standard offset for other messages
-      // ie what's the size of the avatar + padding block
-      return 50;
-    }
-
-    return _messageOffset!.dx - _columnWidth - _horizontalPadding;
-  }
+  double get _messageLeftOffset => _messageOffset.dx - _columnWidth - _horizontalPadding;
 
   double get _messageRightOffset {
-    if (_messageOffset == null ||
-        _mediaQuery == null ||
-        _messageSize == null ||
-        widget.event.senderId != widget.event.room.client.userID) {
+    if (_mediaQuery == null || widget.event.senderId != widget.event.room.client.userID) {
       return 0;
     }
-
     return _mediaQuery!.size.width -
-        _messageOffset!.dx -
-        _messageSize!.width -
+        _messageOffset.dx -
+        _messageSize.width -
         _horizontalPadding;
   }
 
@@ -238,8 +288,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double get _footerHeight {
-    return AppConfig.defaultFooterHeight +
-        16 +
+    return ((widget.overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ?? false) ? readingAssistanceInputBarHeight : AppConfig.defaultFooterHeight) +
         (FluffyThemes.isColumnMode(context) ? 16.0 : 8.0) +
         (_mediaQuery?.padding.bottom ?? 0);
   }
@@ -248,7 +297,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     if (_mediaQuery == null) {
       return null;
     }
-
     return _mediaQuery!.size.height - _headerHeight - _footerHeight;
   }
 
@@ -280,11 +328,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       AppConfig.toolbarMaxHeight;
 
   double get _totalToolbarTopOffset =>
-      (_messageTopOffset ?? 0) -
+      _messageTopOffset -
       (AppConfig.toolbarSpacing + AppConfig.toolbarMaxHeight);
 
   double get _totalToolbarBottomOffset =>
-      (_messageBottomOffset ?? 0) - (_toolbarButtonsHeight + _reactionsHeight);
+      _messageBottomOffset - _reactionsHeight;
 
   /// The remaining space between the top of the screen and the top of the toolbar.
   /// Negative if the toolbar is overflowing the top of the screen.
@@ -295,71 +343,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   double get _remainingBottomSpace => _totalToolbarBottomOffset - _footerHeight;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_messageSize == null || _messageOffset == null || _mediaQuery == null) {
-      return;
-    }
-
-    final bool hasHeaderOverflow =
-        _remainingTopSpace < AppConfig.toolbarSpacing;
-    final bool hasFooterOverflow =
-        _remainingBottomSpace < AppConfig.toolbarSpacing;
-
-    if (!hasHeaderOverflow && !hasFooterOverflow || _mediaQuery == null) {
-      return;
-    }
-
-    double adjustedBottomOffset = _totalToolbarBottomOffset;
-    double scrollOffset = 0;
-
-    // if the message height is too tall to fit, adjust the message height
-    if (_totalVerticalSpace! < _maxTotalToolbarHeight) {
-      _adjustedMessageHeight = _totalVerticalSpace! -
-          // one for within the toolbar itself, one for the top, and one for the bottom
-          ((AppConfig.toolbarSpacing * 3) +
-              _reactionsHeight +
-              _toolbarButtonsHeight +
-              AppConfig.toolbarMaxHeight);
-    }
-
-    // if the overlay could have header overflow if the message wasn't shifted, we want to shift
-    // it down so the bottom to give it enough space.
-    if (hasHeaderOverflow) {
-      // what is the distance between the current top offset of the toolbar and the desired top offset?
-      final double currentTopOffset =
-          (_messageTopOffset ?? 0) - AppConfig.toolbarMaxHeight;
-      final double neededShift =
-          (_headerHeight - currentTopOffset) + AppConfig.toolbarSpacing;
-      adjustedBottomOffset = _totalToolbarBottomOffset - neededShift;
-    } else if (hasFooterOverflow) {
-      adjustedBottomOffset = _footerHeight + AppConfig.toolbarSpacing;
-    }
-
-    scrollOffset = adjustedBottomOffset - _totalToolbarBottomOffset;
-
-    _overlayPositionAnimation = Tween<double>(
-      begin: _totalToolbarBottomOffset,
-      end: adjustedBottomOffset,
-    ).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: FluffyThemes.animationCurve,
-      ),
-    );
-
-    widget.chatController.scrollController.animateTo(
-      widget.chatController.scrollController.offset - scrollOffset,
-      duration:
-          const Duration(milliseconds: AppConfig.overlayAnimationDuration),
-      curve: FluffyThemes.animationCurve,
-    );
-    _animationController.forward();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    if (_messageSize == null) return const SizedBox.shrink();
+    if (_messageRenderBox == null || _mediaQuery == null) return const SizedBox.shrink();
 
     return Padding(
       padding: EdgeInsets.only(
@@ -373,25 +358,30 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
             builder: (context, child) {
               return Positioned(
                 // subtract width of
-                left: min(
-                  _messageLeftOffset - AppConfig.toolbarButtonsColumnWidth,
+                left: widget.event.senderId != widget.event.room.client.userID ? max(_messageLeftOffset - AppConfig.toolbarButtonsColumnWidth,
                   0,
-                ),
-                right: _messageRightOffset,
+                ) : null,
+                right: widget.event.senderId == widget.event.room.client.userID ? _messageRightOffset : _messageRightOffset,
                 bottom: _overlayPositionAnimation?.value ??
                     _totalToolbarBottomOffset,
                 child: Row(
+                  mainAxisAlignment: widget.event.senderId == widget.event.room.client.userID
+              ? MainAxisAlignment.end
+              : MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     // fixed height and width container
 
-                    ToolbarButtonAndProgressRow(
+                    ToolbarButtonAndProgressColumn(
                       event: widget.event,
                       overlayController: widget.overlayController,
                       shouldShowToolbarButtons: showToolbarButtons,
+                      width: AppConfig.toolbarButtonsColumnWidth,
+                      height: _messageHeight + AppConfig.toolbarMinHeight,
                     ),
                     OverlayCenterContent(
                       messageHeight: _messageHeight,
-                      messageWidth: _messageSize!.width,
+                      messageWidth: _messageSize.width,
                       maxWidth: _messageMaxWidth,
                       event: widget.event,
                       pangeaMessageEvent: widget.pangeaMessageEvent,

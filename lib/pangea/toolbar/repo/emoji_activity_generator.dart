@@ -33,7 +33,7 @@ class EmojiActivityGenerator {
         langCode: req.userL2,
         content: ActivityContent(
           // TODO: add to L10n
-          question: "Pick the emoji that best represents the word",
+          question: "Pick an emoji for ${token.lemma.text}",
           choices: emojis,
           answers: emojis,
           spanDisplayDetails: null,

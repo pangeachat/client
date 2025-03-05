@@ -74,7 +74,6 @@ class ReadingAssistanceContentCard extends StatelessWidget {
       case MessageMode.messageTranslation:
         return MessageTranslationCard(
           messageEvent: pangeaMessageEvent,
-          selection: overlayController.selectedSpan,
         );
       case MessageMode.messageTextToSpeech:
         return MessageAudioCard(
@@ -90,7 +89,7 @@ class ReadingAssistanceContentCard extends StatelessWidget {
         );
       case MessageMode.noneSelected:
         return Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(8),
           child: Text(
             L10n.of(context).clickWordsInstructions,
             textAlign: TextAlign.center,

@@ -103,13 +103,14 @@ extension MessageModeExtension on MessageMode {
       case MessageMode.practiceActivity:
         return 0;
       case MessageMode.messageTextToSpeech:
-        return 0.33;
+        return 0.3;
       case MessageMode.messageTranslation:
+        return 0.6;
+      case MessageMode.messageMeaning:
         return 1;
       case MessageMode.messageSpeechToText:
       case MessageMode.wordZoom:
       case MessageMode.noneSelected:
-      case MessageMode.messageMeaning:
       case MessageMode.wordEmoji:
       case MessageMode.wordMorph:
       case MessageMode.wordMeaning:

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:math';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -180,7 +181,7 @@ class ChoiceItem extends StatelessWidget {
             margin: const EdgeInsets.all(2),
             padding: EdgeInsets.zero,
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(10)),
+              borderRadius: const BorderRadius.all(Radius.circular(AppConfig.borderRadius)),
               border: Border.all(
                 color: isSelected
                     ? entry.value.color ?? theme.colorScheme.primary
@@ -195,18 +196,15 @@ class ChoiceItem extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: 7),
                 ),
                 //if index is selected, then give the background a slight primary color
-                backgroundColor: entry.value.color != null
-                    ? WidgetStateProperty.all<Color>(
-                        entry.value.color!.withAlpha(50),
-                      )
-                    // : theme.colorScheme.primaryFixed,
-                    : null,
+                backgroundColor: WidgetStateProperty.all<Color>(
+                        entry.value.color?.withAlpha(50) ?? theme.colorScheme.primary.withAlpha(10),
+                      ),
                 textStyle: WidgetStateProperty.all(
                   BotStyle.text(context),
                 ),
                 shape: WidgetStateProperty.all(
                   RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                   ),
                 ),
               ),
@@ -220,7 +218,9 @@ class ChoiceItem extends StatelessWidget {
                 getDisplayCopy != null
                     ? getDisplayCopy!(entry.value.text)
                     : entry.value.text,
-                style: BotStyle.text(context),
+                style: BotStyle.text(context).copyWith(
+                  fontSize: Theme.of(context).textTheme.titleMedium?.fontSize ?? 24,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),

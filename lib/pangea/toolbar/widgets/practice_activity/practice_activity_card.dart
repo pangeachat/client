@@ -366,14 +366,14 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
           ),
         ],
         // Flag button in the top right corner
-        // Positioned(
-        //   top: 0,
-        //   right: 0,
-        //   child: ContentIssueButton(
-        //     isActive: currentActivity != null,
-        //     submitFeedback: submitFeedback,
-        //   ),
-        // ),
+        Positioned(
+          top: 0,
+          right: 0,
+          child: ContentIssueButton(
+            isActive: currentActivity != null,
+            submitFeedback: submitFeedback,
+          ),
+        ),
       ],
     );
   }

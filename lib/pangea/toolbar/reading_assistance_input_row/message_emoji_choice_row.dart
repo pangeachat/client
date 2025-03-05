@@ -11,7 +11,7 @@ import 'package:matrix/matrix.dart';
 class MessageEmojiChoiceRow extends StatelessWidget {
   final List<PangeaToken>? tokens;
   final ChatController controller;
-  final MessageOverlayController? overlayController;
+  final MessageOverlayController overlayController;
 
   const MessageEmojiChoiceRow({
     super.key,
@@ -60,6 +60,14 @@ class MessageEmojiChoiceRow extends StatelessWidget {
     return false;
   }
 
+  void onDoubleTapOrLongPress(BuildContext context, String emoji) {
+    if (alreadyInReactions(emoji)) {
+      redactReaction(context, emoji);
+    } else {
+      controller.sendEmojiAction(emoji);
+    }
+  }
+
   List<Widget> standardEmojiChoices(BuildContext context) => AppEmojis.emojis
       .map(
         (emoji) => EmojiChoiceItem(
@@ -68,49 +76,60 @@ class MessageEmojiChoiceRow extends StatelessWidget {
               ? redactReaction(context, emoji)
               : controller.sendEmojiAction(emoji),
           isSelected: false,
+          onDoubleTap: () => onDoubleTapOrLongPress(context, emoji),
+          onLongPress: () => onDoubleTapOrLongPress(context, emoji),
         ),
       )
       .toList();
 
-  List<Widget> get perTokenEmoji =>
+  List<Widget> perTokenEmoji(BuildContext context) =>
       tokens!.where((token) => token.lemma.saveVocab).map((token) {
         if (!token.lemma.saveVocab) {
           return EmojiChoiceItem(
-            topContent: token.text.content,
             content: token.text.content,
-            onTap: () => overlayController!.onClickOverlayMessageToken(token),
-            isSelected: overlayController?.isTokenSelected(token) ?? false,
+            onTap: () => {},
+            isSelected: overlayController.isTokenSelected(token),
+            onDoubleTap: null,
+            onLongPress: null,
           );
         }
 
         final emoji = token.getEmoji();
 
         if (emoji == null) {
-          return Opacity(
-            opacity: 0.1,
-            child: EmojiChoiceItem(
-              topContent: token.text.content,
-              content: token.xpEmoji,
-              onTap: () => overlayController!.onClickOverlayMessageToken(token),
-              isSelected: overlayController?.isTokenSelected(token) ?? false,
-            ),
-          );
+          return EmojiChoiceItem(
+              topContent: token.xpEmoji,
+              content: token.text.content,
+              onTap: () => overlayController.onClickOverlayMessageToken(token),
+              onDoubleTap: null,
+              onLongPress: null,
+              isSelected: overlayController.isTokenSelected(token),
+              contentOpacity: 0.1,
+            );
         }
 
         return EmojiChoiceItem(
-          topContent: token.text.content,
-          content: emoji,
-          onTap: () => overlayController!.onClickOverlayMessageToken(token),
-          isSelected: overlayController?.isTokenSelected(token) ?? false,
+          topContent: emoji,
+          content: token.text.content,
+          onTap: () => overlayController.onClickOverlayMessageToken(token),
+                        onDoubleTap: () => onDoubleTapOrLongPress(context, emoji),
+              onLongPress: () => onDoubleTapOrLongPress(context, emoji),
+          isSelected: overlayController.isTokenSelected(token),
         );
       }).toList();
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: tokens == null || tokens!.isEmpty
-          ? standardEmojiChoices(context)
-          : perTokenEmoji,
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        // spacing: 8.0, // Adjust spacing between items
+        runSpacing: 0.0, // Adjust spacing between rows
+        children: tokens == null || tokens!.isEmpty || !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ?? false)
+            ? standardEmojiChoices(context)
+            : perTokenEmoji(context),
+      ),
     );
   }
 }

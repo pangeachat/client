@@ -79,21 +79,21 @@ class VocabRepo {
     }
   }
 
-  static Future<VocabResponse> getAllCandidateVocab(VocabRequest request) {
-    // Pull from previously used words if list is non-empty
-    // Otherwise, pull from a set of starter words for each language
-    final vocab = MatrixState.pangeaController.getAnalytics.constructListModel
-        .constructList(type: ConstructTypeEnum.vocab);
+  /// Preference previously used words if list is non-empty
+  /// Otherwise, pull from a set of starter words for each language
+  static Future<VocabResponse> getAllCandidateVocab(VocabRequest request) async {
 
-    if (vocab.isEmpty) {
-      debugger(when: kDebugMode);
-      return VocabRepo.get(request);
-    } else {
-      debugPrint("using user analytics data");
-      return Future.value(
-        VocabResponse(vocab: vocab.map((use) => use.id).toList()),
-      );
-    }
+    final List<ConstructIdentifier> myVocab = MatrixState.pangeaController.getAnalytics.constructListModel
+        .constructList(type: ConstructTypeEnum.vocab).map((use) => use.id).toList();
+
+    final List<ConstructIdentifier> vocabBank = (await VocabRepo.get(request)).vocab;
+
+    final List<ConstructIdentifier> all = [...myVocab, ...vocabBank];
+
+    final deduped = all.toSet().toList();
+
+    return VocabResponse(vocab: deduped);
+  
   }
 
   Future<VocabResponse> getSemanticallySimilarWords(
@@ -103,14 +103,20 @@ class VocabRepo {
     // Either from
     final candidates = (await VocabRepo.getAllCandidateVocab(request)).vocab;
 
+    // we filter out words that do not share the same part of speech as the token
+    // TODO: semantic similarity is not implemented yet
     final sharingPos = candidates
         .where(
           (element) =>
               request.token == null || element.category == request.token?.pos,
         )
         .toList();
+    
+    // we prefer to return words that share the same part of speech as the token
+    // but if there are no words that share the same part of speech, we return all words
+    final similarWords = sharingPos.isEmpty ? candidates : sharingPos;
 
-    return VocabResponse(vocab: sharingPos);
+    return VocabResponse(vocab: similarWords);
   }
 
   Future<VocabResponse> getSementicallyDisimiliarWords(
@@ -127,7 +133,9 @@ class VocabRepo {
         )
         .toList();
 
-    return VocabResponse(vocab: sharingPos);
+    final disSimilarWords = sharingPos.isEmpty ? candidates : sharingPos;
+
+    return VocabResponse(vocab: disSimilarWords);
   }
 
   VocabResponse getWordPredictor(VocabRequest request) {

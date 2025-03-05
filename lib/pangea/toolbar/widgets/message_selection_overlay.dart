@@ -285,8 +285,16 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           if (selectedToken == null) {
             toolbarMode = MessageMode.noneSelected;
             selectedMorphFeature = null;
-          } else {
+          } else if (mode != MessageMode.wordMorph) {
+            debugPrint('toolbarMode == mode: setting toolbarMode to wordZoom');
             toolbarMode = MessageMode.wordZoom;
+          } else {
+            if (selectedMorphFeature != feature) {
+            selectedMorphFeature = feature;
+            } else {
+              selectedMorphFeature = null;
+              toolbarMode = MessageMode.wordZoom;
+            }
           }
         } else {
           switch (mode) {
@@ -324,10 +332,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
               }
               break;
             case MessageMode.messageSpeechToText:
+              _selectedSpan = null;
               break;
             case MessageMode.messageTranslation:
+              _selectedSpan = null;
               break;
             case MessageMode.messageMeaning:
+              _selectedSpan = null;
               break;
           }
 

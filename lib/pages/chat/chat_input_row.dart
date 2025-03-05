@@ -5,6 +5,7 @@ import 'package:fluffychat/pangea/choreographer/widgets/start_igc_button.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/reading_assistance_input_bar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/writing_assistance/writing_assistance_input_row.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:flutter/foundation.dart';
@@ -152,10 +153,15 @@ class ChatInputRow extends StatelessWidget {
                     //             ),
                     //           )
                     //     : const SizedBox.shrink(),
-                    ReadingAssistanceInputBar(
+                    if (controller.selectedEvents.first
+                            .getDisplayEvent(controller.timeline!)
+                            .status
+                            .isSent && !controller.selectedEvents
+                        .every((event) => event.status == EventStatus.error))
+                    overlayController != null ? ReadingAssistanceInputBar(
                       controller,
-                      overlayController,
-                    ),
+                      overlayController!,
+                    ) : const SizedBox(height: height),
                     if (controller.selectedEvents.length == 1 &&
                         !controller.selectedEvents.first
                             .getDisplayEvent(controller.timeline!)

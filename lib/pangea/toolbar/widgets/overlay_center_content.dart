@@ -46,7 +46,7 @@ class OverlayCenterContent extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: event.senderId == event.room.client.userID
               ? CrossAxisAlignment.end
               : CrossAxisAlignment.start,

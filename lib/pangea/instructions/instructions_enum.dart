@@ -19,7 +19,7 @@ enum InstructionsEnum {
   clickAgainToDeselect,
   missingVoice,
   clickBestOption,
-  unlockedLanguageTools,
+  completeActivitiesToUnlock,
   lemmaMeaning,
   activityPlannerOverview,
   ttsDisabled,
@@ -46,7 +46,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.l1Translation:
       case InstructionsEnum.translationChoices:
       case InstructionsEnum.clickBestOption:
-      case InstructionsEnum.unlockedLanguageTools:
+      case InstructionsEnum.completeActivitiesToUnlock:
       case InstructionsEnum.lemmaMeaning:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
@@ -84,8 +84,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.voiceNotAvailable;
       case InstructionsEnum.clickBestOption:
         return l10n.clickBestOption;
-      case InstructionsEnum.unlockedLanguageTools:
-        return l10n.unlockedLanguageTools;
+      case InstructionsEnum.completeActivitiesToUnlock:
+        return l10n.completeActivitiesToUnlock;
       case InstructionsEnum.lemmaMeaning:
         return l10n.lemmaMeaningInstructionsBody;
       case InstructionsEnum.activityPlannerOverview:
