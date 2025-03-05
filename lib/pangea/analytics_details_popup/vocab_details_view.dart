@@ -65,23 +65,14 @@ class VocabDetailsView extends StatelessWidget {
   }
 
   /// Get the language code for the current lemma
-  String? _getLangCode(BuildContext context) {
-    final lang2 =
-        MatrixState.pangeaController.languageController.userL2?.langCode;
-    if (lang2 == null) {
-      debugPrint("No lang2, cannot retrieve definition");
-      return null;
-    }
-    return lang2;
-  }
+  String? get _userL2 =>
+      MatrixState.pangeaController.languageController.userL2?.langCode;
 
   @override
   Widget build(BuildContext context) {
     final Color textColor = Theme.of(context).brightness != Brightness.light
         ? _construct.lemmaCategory.color
         : _construct.lemmaCategory.darkColor;
-
-    final langCode = _getLangCode(context);
 
     return AnalyticsDetailsViewContent(
       title: Row(
@@ -147,7 +138,7 @@ class VocabDetailsView extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Align(
                 alignment: Alignment.topLeft,
-                child: langCode == null
+                child: _userL2 == null
                     ? Text(L10n.of(context).meaningNotFound)
                     : Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,7 +157,7 @@ class VocabDetailsView extends StatelessWidget {
                           LemmaMeaningWidget(
                             text: _construct.lemma,
                             pos: _construct.category,
-                            langCode: langCode,
+                            langCode: _userL2!,
                             style: Theme.of(context).textTheme.bodyLarge,
                           ),
                         ],
