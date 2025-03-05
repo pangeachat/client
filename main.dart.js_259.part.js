@@ -4170,6 +4170,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooLargeToSend() {
       return "This message is too large to send";
     },
+    get$displayName(_) {
+      return "Display name";
+    },
     get$leaveRoomDescription() {
       return "You're about to leave this chat. Other users will see that you have left the chat.";
     },
@@ -4197,6 +4200,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "7OkupykDPYcdMbBkiSum6AAMifk=");
+})($__dart_deferred_initializers__, "Kb8t9BIX6vCiQBsxRF5WULHmGeQ=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map

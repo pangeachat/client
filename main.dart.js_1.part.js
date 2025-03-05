@@ -4073,7 +4073,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Target language";
     },
     get$cefrLevelLabel() {
-      return "CEFR Level";
+      return "CEFR level";
     },
     get$generateActivitiesButton() {
       return "Generate Activities";
@@ -4176,6 +4176,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tooLargeToSend() {
       return "This message is too large to send";
+    },
+    get$displayName(_) {
+      return "Display name";
     },
     get$leaveRoomDescription() {
       return "You're about to leave this chat. Other users will see that you have left the chat.";
@@ -5521,6 +5524,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "qcdGMgyt6C0FXReO9QwbWYQlL1Q=");
+})($__dart_deferred_initializers__, "PQZkV5YUK4Rlucpuom8fLwXC084=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
