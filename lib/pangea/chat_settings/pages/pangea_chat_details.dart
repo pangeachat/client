@@ -417,10 +417,10 @@ class PangeaChatDetailsView extends StatelessWidget {
                               cancelLabel: L10n.of(context).no,
                               message: room.isSpace
                                   ? L10n.of(context).leaveSpaceDescription
-                                  : L10n.of(context).archiveRoomDescription,
+                                  : L10n.of(context).leaveRoomDescription,
                               isDestructive: true,
                             );
-                            if (confirmed == OkCancelResult.cancel) return;
+                            if (confirmed != OkCancelResult.ok) return;
                             final resp = await showFutureLoadingDialog(
                               context: context,
                               future:

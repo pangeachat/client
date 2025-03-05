@@ -2,11 +2,13 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/new_group/new_group_view.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -106,6 +108,10 @@ class NewGroupController extends State<NewGroup> {
     // if a timeout happened, don't redirect to the chat
     if (error != null) return;
     // Pangea#
+    MatrixState.pangeaController.classController
+        .setActiveFilterInChatListController(
+      AppConfig.separateChatTypes ? ActiveFilter.groups : ActiveFilter.allChats,
+    );
     context.go('/rooms/$roomId/invite');
   }
 
@@ -202,6 +208,12 @@ class NewGroupController extends State<NewGroup> {
     final client = Matrix.of(context).client;
 
     try {
+      if (nameController.text.trim().isEmpty &&
+          createGroupType == CreateGroupType.space) {
+        setState(() => error = L10n.of(context).pleaseFillOut);
+        return;
+      }
+
       setState(() {
         loading = true;
         error = null;
