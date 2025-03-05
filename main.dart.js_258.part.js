@@ -4167,11 +4167,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noSpaceDescriptionYet() {
       return "No space description created yet.";
     },
-    get$enableAutocorrectWarning() {
-      return "Warning! Requires adding your target language keyboard";
-    },
     get$tooLargeToSend() {
       return "This message is too large to send";
+    },
+    get$exitWithoutSaving() {
+      return "Are you sure you want to leave without saving?";
+    },
+    get$enableAutocorrectWarning() {
+      return "Warning! Requires adding your target language keyboard";
     },
     get$displayName(_) {
       return "Display name";
@@ -4206,6 +4209,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_258", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "m5PG397vm7PIslldELT7z3DGLzY=");
+})($__dart_deferred_initializers__, "XXDZlgZgc5pWTm7oO8SjNqzE0/g=");
 ;
 //# sourceMappingURL=main.dart.js_258.part.js.map
