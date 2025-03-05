@@ -9,7 +9,7 @@ import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/emoji_choice_item.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice_item.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_bank_repo.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_request.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_response.dart';
@@ -84,7 +84,7 @@ class WritingAssistanceInputRowState extends State<WritingAssistanceInputRow> {
         child: Row(
           children: suggestions
               .map(
-                (suggestion) => EmojiChoiceItem(
+                (suggestion) => MessageEmojiChoiceItem(
                   topContent: suggestion.userSetEmoji ??
                       MatrixState
                           .pangeaController.getAnalytics.constructListModel
@@ -100,6 +100,7 @@ class WritingAssistanceInputRowState extends State<WritingAssistanceInputRow> {
                   },
                   isSelected: false,
                   textSize: 16,
+                  token: null,
                 ),
               )
               .toList(),

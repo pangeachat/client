@@ -1,8 +1,10 @@
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:flutter/material.dart';
 
-class EmojiChoiceItem extends StatefulWidget {
-  const EmojiChoiceItem({
+class MessageEmojiChoiceItem extends StatefulWidget {
+  const MessageEmojiChoiceItem({
     super.key,
     this.topContent,
     this.textSize = 20,
@@ -12,6 +14,7 @@ class EmojiChoiceItem extends StatefulWidget {
     this.onLongPress,
     required this.isSelected,
     this.contentOpacity = 1.0,
+    required this.token,
   });
 
   final String? topContent;
@@ -22,12 +25,13 @@ class EmojiChoiceItem extends StatefulWidget {
   final bool isSelected;
   final double textSize;
   final double contentOpacity;
+  final PangeaToken? token;
 
   @override
-  _EmojiChoiceItemState createState() => _EmojiChoiceItemState();
+  _MessageEmojiChoiceItemState createState() => _MessageEmojiChoiceItemState();
 }
 
-class _EmojiChoiceItemState extends State<EmojiChoiceItem> {
+class _MessageEmojiChoiceItemState extends State<MessageEmojiChoiceItem> {
   bool _isHovered = false;
 
   @override
@@ -49,7 +53,9 @@ class _EmojiChoiceItemState extends State<EmojiChoiceItem> {
                     ? AppConfig.primaryColor.withAlpha((0.2 * 255).toInt())
                     : _isHovered
                         ? AppConfig.primaryColor.withAlpha((0.1 * 255).toInt())
-                        : Colors.transparent,
+                        : widget.token?.shouldDoActivity(a: ActivityTypeEnum.wordMeaning, feature: null, tag: null) ?? false
+                            ? AppConfig.success.withAlpha((0.1 * 255).toInt())
+                            : Colors.transparent,
                 borderRadius: BorderRadius.circular(AppConfig.borderRadius),
               ),
               child: Container(

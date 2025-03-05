@@ -23,6 +23,7 @@ enum InstructionsEnum {
   lemmaMeaning,
   activityPlannerOverview,
   ttsDisabled,
+  chooseEmoji,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -40,6 +41,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.missingVoiceTitle;
       case InstructionsEnum.ttsDisabled:
         return l10n.ttsDisbledTitle;
+      case InstructionsEnum.chooseEmoji:
       case InstructionsEnum.activityPlannerOverview:
       case InstructionsEnum.clickAgainToDeselect:
       case InstructionsEnum.speechToText:
@@ -90,6 +92,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.lemmaMeaningInstructionsBody;
       case InstructionsEnum.activityPlannerOverview:
         return l10n.activityPlannerOverviewInstructionsBody;
+      case InstructionsEnum.chooseEmoji:
+        return "Which emoji might help you remember this word? You can change it later and there's no right or wrong answer! 😀";
       case InstructionsEnum.ttsDisabled:
         return l10n.ttsDisabledBody;
     }

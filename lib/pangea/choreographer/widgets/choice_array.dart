@@ -14,6 +14,8 @@ import 'it_shimmer.dart';
 
 typedef ChoiceCallback = void Function(String value, int index);
 
+const int choiceArrayAnimationDuration = 300;
+
 class ChoicesArray extends StatefulWidget {
   final bool isLoading;
   final List<Choice>? choices;
@@ -42,6 +44,8 @@ class ChoicesArray extends StatefulWidget {
   /// select choices once the correct choice has been selected
   final bool enableMultiSelect;
 
+  final double fontSize;
+
   const ChoicesArray({
     super.key,
     required this.isLoading,
@@ -57,6 +61,7 @@ class ChoicesArray extends StatefulWidget {
     this.getDisplayCopy,
     this.id,
     this.enableMultiSelect = false,
+    this.fontSize = 24,
   });
 
   @override
@@ -118,6 +123,7 @@ class ChoicesArrayState extends State<ChoicesArray> {
                     isSelected: widget.selectedChoiceIndex == index,
                     id: widget.id,
                     getDisplayCopy: widget.getDisplayCopy,
+                    fontSize: widget.fontSize,
                   ),
                 )
                 .toList(),
@@ -130,6 +136,7 @@ class Choice {
     this.color,
     required this.text,
     this.isGold = false,
+
   });
 
   final Color? color;
@@ -150,6 +157,7 @@ class ChoiceItem extends StatelessWidget {
     required this.disableInteraction,
     required this.id,
     this.getDisplayCopy,
+    this.fontSize,
   });
 
   final MapEntry<int, Choice> entry;
@@ -162,6 +170,8 @@ class ChoiceItem extends StatelessWidget {
   final VoidCallback disableInteraction;
   final String? id;
   final String Function(String)? getDisplayCopy;
+
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
@@ -193,7 +203,7 @@ class ChoiceItem extends StatelessWidget {
             child: TextButton(
               style: ButtonStyle(
                 padding: WidgetStateProperty.all(
-                  const EdgeInsets.symmetric(horizontal: 7),
+                  const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 ),
                 //if index is selected, then give the background a slight primary color
                 backgroundColor: WidgetStateProperty.all<Color>(
@@ -219,7 +229,7 @@ class ChoiceItem extends StatelessWidget {
                     ? getDisplayCopy!(entry.value.text)
                     : entry.value.text,
                 style: BotStyle.text(context).copyWith(
-                  fontSize: Theme.of(context).textTheme.titleMedium?.fontSize ?? 24,
+                  fontSize: fontSize,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -267,7 +277,7 @@ class ChoiceAnimationWidgetState extends State<ChoiceAnimationWidget>
     super.initState();
 
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: choiceArrayAnimationDuration),
       vsync: this,
     );
 

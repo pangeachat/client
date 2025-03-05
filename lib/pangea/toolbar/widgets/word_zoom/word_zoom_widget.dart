@@ -50,32 +50,30 @@ class WordZoomWidget extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.stretch,
           // spacing: 4.0,
           children: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  EmojiPracticeButton(
-                    token: _selectedToken,
-                    onPressed: () => overlayController.updateToolbarMode(
-                      MessageMode.wordEmoji,
-                    ),
-                    isSelected: _mode == MessageMode.wordEmoji,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                EmojiPracticeButton(
+                  token: _selectedToken,
+                  onPressed: () => overlayController.updateToolbarMode(
+                    MessageMode.wordEmoji,
                   ),
-                  LemmaWidget(
-                    token: _selectedToken,
-                    pangeaMessageEvent: messageEvent,
-                    // onEdit: () => _setHideCenterContent(true),
-                    onEdit: () {
-                      debugPrint("what are we doing edits with?");
-                    },
-                    onEditDone: () {
-                      debugPrint("what are we doing edits with?");
-                      onEditDone();
-                    },
-                    tts: tts,
-                  ),
-                ],
-              ),
+                  isSelected: _mode == MessageMode.wordEmoji,
+                ),
+                LemmaWidget(
+                  token: _selectedToken,
+                  pangeaMessageEvent: messageEvent,
+                  // onEdit: () => _setHideCenterContent(true),
+                  onEdit: () {
+                    debugPrint("what are we doing edits with?");
+                  },
+                  onEditDone: () {
+                    debugPrint("what are we doing edits with?");
+                    onEditDone();
+                  },
+                  tts: tts,
+                ),
+              ],
             ),
             // const SizedBox(
             //   height: 4.0,

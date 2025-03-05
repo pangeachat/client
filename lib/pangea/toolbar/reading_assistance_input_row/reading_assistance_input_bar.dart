@@ -4,11 +4,12 @@ import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/word_emoji_choice.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
 import 'package:flutter/material.dart';
 
-import 'message_emoji_choice_row.dart';
+import 'message_emoji_choice.dart';
 
 const double readingAssistanceInputBarHeight = 150;
 class ReadingAssistanceInputBar extends StatelessWidget {
@@ -42,7 +43,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
 
   Widget barContent(BuildContext context) {
     if (token == null || !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ?? false)) {
-      return MessageEmojiChoiceRow(
+      return MessageEmojiChoice(
         tokens: overlayController
                 .pangeaMessageEvent?.messageDisplayRepresentation?.tokens ??
             [],
@@ -61,7 +62,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
       case MessageMode.practiceActivity:
       case MessageMode.wordZoom:
       case MessageMode.noneSelected:
-        return MessageEmojiChoiceRow(
+        return MessageEmojiChoice(
           tokens: overlayController
                   .pangeaMessageEvent?.messageDisplayRepresentation?.tokens ??
               [],
@@ -70,7 +71,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
         );
 
       case MessageMode.wordEmoji:
-        return practiceActivityCard(ActivityTypeEnum.emoji);
+        return WordEmojiChoice(overlayController: overlayController, token: overlayController.selectedToken!,);
 
       case MessageMode.wordMeaning:
         return practiceActivityCard(ActivityTypeEnum.wordMeaning);

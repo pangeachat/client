@@ -100,60 +100,58 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
       builder: (context, snapshot) {
         if (_editMode) {
           _controller.text = snapshot.data?.meaning ?? "";
-          return Expanded(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(_lemma, widget.token.pos)}",
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontStyle: FontStyle.italic),
-                ),
-                const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: TextField(
-                    minLines: 1,
-                    maxLines: 3,
-                    controller: _controller,
-                    decoration: InputDecoration(
-                      hintText: snapshot.data!.meaning,
-                    ),
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(_lemma, widget.token.pos)}",
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontStyle: FontStyle.italic),
+              ),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: TextField(
+                  minLines: 1,
+                  maxLines: 3,
+                  controller: _controller,
+                  decoration: InputDecoration(
+                    hintText: snapshot.data!.meaning,
                   ),
                 ),
-                const SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () => _toggleEditMode(false),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+              ),
+              const SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => _toggleEditMode(false),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: Text(L10n.of(context).cancel),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                     ),
-                    const SizedBox(width: 10),
-                    ElevatedButton(
-                      onPressed: () =>
-                          _controller.text != snapshot.data!.meaning &&
-                                  _controller.text.isNotEmpty
-                              ? editLemmaMeaning(_controller.text)
-                              : null,
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(L10n.of(context).cancel),
+                  ),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () =>
+                        _controller.text != snapshot.data!.meaning &&
+                                _controller.text.isNotEmpty
+                            ? editLemmaMeaning(_controller.text)
+                            : null,
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
                       ),
-                      child: Text(L10n.of(context).saveChanges),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
                     ),
-                  ],
-                ),
-              ],
-            ),
+                    child: Text(L10n.of(context).saveChanges),
+                  ),
+                ],
+              ),
+            ],
           );
         }
 

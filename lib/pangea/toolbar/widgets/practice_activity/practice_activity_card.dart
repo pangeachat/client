@@ -37,11 +37,6 @@ class PracticeActivityCard extends StatefulWidget {
 
   final String? morphFeature;
 
-  //TODO - modifications
-  // 1) Future<PracticeActivityEvent> and Future<PracticeActivityModel> as parameters
-  // 2) onFinish callback as parameter
-  // 3) take out logic fetching activity
-
   const PracticeActivityCard({
     super.key,
     required this.pangeaMessageEvent,
@@ -260,14 +255,6 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
         return;
       }
 
-      // widget.wordDetailsController?.onActivityFinish(
-      //   savorTheJoyDuration: _savorTheJoyDuration,
-      // );
-
-      pangeaController.activityRecordController.completeActivity(
-        widget.pangeaMessageEvent.eventId,
-      );
-
       await _savorTheJoy();
 
       // wait for savor the joy before popping from the activity queue
@@ -366,14 +353,14 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
           ),
         ],
         // Flag button in the top right corner
-        Positioned(
-          top: 0,
-          right: 0,
-          child: ContentIssueButton(
-            isActive: currentActivity != null,
-            submitFeedback: submitFeedback,
-          ),
-        ),
+        // Positioned(
+        //   top: 0,
+        //   right: 0,
+        //   child: ContentIssueButton(
+        //     isActive: currentActivity != null,
+        //     submitFeedback: submitFeedback,
+        //   ),
+        // ),
       ],
     );
   }
