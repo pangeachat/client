@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +17,14 @@ class LemmaMeaningWidget extends StatefulWidget {
   final String pos;
   final String text;
   final String langCode;
+  final TextStyle? style;
 
   const LemmaMeaningWidget({
     super.key,
     required this.pos,
     required this.text,
     required this.langCode,
+    this.style,
   });
 
   @override
@@ -31,9 +34,8 @@ class LemmaMeaningWidget extends StatefulWidget {
 class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
   bool _editMode = false;
   late TextEditingController _controller;
-  static const int _maxCharacters = 140;
+  static const int maxCharacters = 140;
   LemmaInfoResponse? _cachedResponse;
-  bool _controllerInitialized = false;
 
   String get _lemma => widget.text;
 
@@ -68,21 +70,12 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
     return response;
   }
 
-  void _toggleEditMode(bool value) {
-    setState(() {
-      _editMode = value;
-
-      // Reset the flag when exiting edit mode
-      if (!value) {
-        _controllerInitialized = false;
-      }
-    });
-  }
+  void _toggleEditMode(bool value) => setState(() => _editMode = value);
 
   Future<void> editLemmaMeaning(String userEdit) async {
     // Truncate to max characters if needed
-    final truncatedEdit = userEdit.length > _maxCharacters
-        ? userEdit.substring(0, _maxCharacters)
+    final truncatedEdit = userEdit.length > maxCharacters
+        ? userEdit.substring(0, maxCharacters)
         : userEdit;
 
     final originalMeaning = await _lemmaMeaning();
@@ -99,74 +92,10 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
     _toggleEditMode(false);
   }
 
-  void _initializeController(String initialText) {
-    if (!_controllerInitialized) {
-      final truncatedText = initialText.length > _maxCharacters
-          ? initialText.substring(0, _maxCharacters)
-          : initialText;
-
-      _controller.text = truncatedText;
-      _controllerInitialized = true;
-    }
-  }
-
-  Widget _buildEditView(LemmaInfoResponse data) {
-    _initializeController(data.meaning);
-
-    return Expanded(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(_lemma, widget.pos)}",
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontStyle: FontStyle.italic),
-          ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextField(
-              minLines: 1,
-              maxLines: 3,
-              maxLength: _maxCharacters,
-              controller: _controller,
-              decoration: InputDecoration(
-                hintText: data.meaning,
-              ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ElevatedButton(
-                onPressed: () => _toggleEditMode(false),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                ),
-                child: Text(L10n.of(context).cancel),
-              ),
-              const SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () => _controller.text != data.meaning &&
-                        _controller.text.isNotEmpty
-                    ? editLemmaMeaning(_controller.text)
-                    : null,
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                ),
-                child: Text(L10n.of(context).saveChanges),
-              ),
-            ],
-          ),
-        ],
-      ),
+  void _setMeaningText(String initialText) {
+    _controller.text = initialText.substring(
+      0,
+      min(initialText.length, maxCharacters),
     );
   }
 
@@ -175,6 +104,21 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
     return FutureBuilder<LemmaInfoResponse>(
       future: _lemmaMeaning(),
       builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          _setMeaningText(snapshot.data!.meaning);
+        }
+
+        if (_editMode) {
+          return LemmaEditView(
+            lemma: _lemma,
+            pos: widget.pos,
+            meaning: snapshot.data?.meaning ?? "",
+            controller: _controller,
+            toggleEditMode: _toggleEditMode,
+            editLemmaMeaning: editLemmaMeaning,
+          );
+        }
+
         if (snapshot.connectionState != ConnectionState.done) {
           return const TextLoadingShimmer();
         }
@@ -184,11 +128,8 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
           return Text(
             snapshot.error.toString(),
             textAlign: TextAlign.center,
+            style: widget.style,
           );
-        }
-
-        if (_editMode) {
-          return _buildEditView(snapshot.data!);
         }
 
         return Flexible(
@@ -201,11 +142,90 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
               child: Text(
                 snapshot.data!.meaning,
                 textAlign: TextAlign.center,
+                style: widget.style,
               ),
             ),
           ),
         );
       },
+    );
+  }
+}
+
+class LemmaEditView extends StatelessWidget {
+  final String lemma;
+  final String pos;
+  final String meaning;
+  final TextEditingController controller;
+  final void Function(bool) toggleEditMode;
+  final void Function(String) editLemmaMeaning;
+
+  const LemmaEditView({
+    required this.lemma,
+    required this.pos,
+    required this.meaning,
+    required this.controller,
+    required this.toggleEditMode,
+    required this.editLemmaMeaning,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(lemma, pos)}",
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontStyle: FontStyle.italic),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextField(
+              minLines: 1,
+              maxLines: 3,
+              maxLength: LemmaMeaningWidgetState.maxCharacters,
+              controller: controller,
+              // decoration: InputDecoration(
+              //   hintText: data.meaning,
+              // ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () => toggleEditMode(false),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                ),
+                child: Text(L10n.of(context).cancel),
+              ),
+              const SizedBox(width: 10),
+              ElevatedButton(
+                onPressed: () =>
+                    controller.text != meaning && controller.text.isNotEmpty
+                        ? editLemmaMeaning(controller.text)
+                        : null,
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                ),
+                child: Text(L10n.of(context).saveChanges),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

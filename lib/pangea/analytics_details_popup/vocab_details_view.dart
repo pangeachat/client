@@ -18,11 +18,6 @@ import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_b
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-//import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-//import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
-//import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
-//import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
-
 /// Displays information about selected lemma, and its usage
 class VocabDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
@@ -172,6 +167,7 @@ class VocabDetailsView extends StatelessWidget {
                             text: _construct.lemma,
                             pos: _construct.category,
                             langCode: langCode,
+                            style: Theme.of(context).textTheme.bodyLarge,
                           ),
                         ],
                       ),
