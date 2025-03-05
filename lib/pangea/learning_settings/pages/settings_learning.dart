@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 import 'package:country_picker/country_picker.dart';
