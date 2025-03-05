@@ -4828,8 +4828,12 @@
   "ttsDisbledTitle": "Text-to-speech disabled",
   "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
   "noSpaceDescriptionYet": "No space description created yet.",
-  "enableAutocorrectPopUpDescription": "Add your target language keyboard by going to:\n  \u2022 Settings\n  \u2022 General\n  \u2022 Keyboard\n  \u2022 Keyboards\n  \u2022 Add New Keyboard\n\nOnce the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
-  "downloadGboardDescription": "Download Gboard from the Google Play Store to enable autocorrect and other keyboard features:\n  \u2022 Download Gboard\n  \u2022 Open app\n  \u2022 Languages\n  \u2022 Add keyboard\n  \u2022 Select Language\n  \u2022 Select keyboard type\n  \u2022 Done\nOnce the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
+  "enableAutocorrectPopupTitle": "Add your target language keyboard by going to:",
+  "enableAutocorrectPopupSteps": "  \u2022 Settings\n  \u2022 General\n  \u2022 Keyboard\n  \u2022 Keyboards\n  \u2022 Add New Keyboard",
+  "enableAutocorrectPopupDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
+  "downloadGboardTitle": "Download Gboard from the Google Play Store to enable autocorrect and other keyboard features:",
+  "downloadGboardSteps": " \u2022 Download Gboard\n  \u2022 Open app\n  \u2022 Languages\n  \u2022 Add keyboard\n  \u2022 Select Language\n  \u2022 Select keyboard type\n  \u2022 Done",
+  "downloadGboardDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
   "enableAutocorrectWarning": "Warning! Requires adding your target language keyboard",
   "tooLargeToSend": "This message is too large to send",
   "displayName": "Display name",
@@ -4855,5 +4859,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "downloadGboard": "Download Gboard",
+  "autocorrectNotAvailable": "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!"
 } 

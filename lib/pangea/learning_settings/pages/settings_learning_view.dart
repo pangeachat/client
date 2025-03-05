@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -27,71 +26,61 @@ class SettingsLearningView extends StatelessWidget {
   const SettingsLearningView(this.controller, {super.key});
 
   void _showKeyboardSettingsDialog(BuildContext context) {
-    String description;
+    String title;
+    String? steps;
+    String? description;
     String buttonText;
     VoidCallback buttonAction;
 
     if (kIsWeb) {
-      // Detect platform using userAgent for web
-      final userAgent = html.window.navigator.userAgent.toLowerCase();
-      if (userAgent.contains('mac') ||
-          userAgent.contains('iphone') ||
-          userAgent.contains('ipad')) {
-        description = L10n.of(context).enableAutocorrectPopUpDescription;
-        buttonText = 'Settings';
-        buttonAction = () {
-          AppSettings.openAppSettings();
-        };
-      } else if (userAgent.contains('android') ||
-          userAgent.contains('windows')) {
-        description = L10n.of(context).downloadGboardDescription;
-        buttonText = 'Download Gboard';
-        buttonAction = () {
-          launchUrlString(
-            'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin',
-          );
-        };
-      } else {
-        description = ''; // Default
-        buttonText = 'OK';
-        buttonAction = () {
-          Navigator.of(context).pop();
-        };
-      }
+      title = L10n.of(context).autocorrectNotAvailable; // Default
+      buttonText = 'OK';
+      buttonAction = () {
+        Navigator.of(context).pop();
+      };
+    } else if (Platform.isIOS) {
+      title = L10n.of(context).enableAutocorrectPopupTitle;
+      steps = L10n.of(context).enableAutocorrectPopupSteps;
+      description = L10n.of(context).enableAutocorrectPopupDescription;
+      buttonText = L10n.of(context).settings;
+      buttonAction = () {
+        AppSettings.openAppSettings();
+      };
     } else {
-      if (Platform.isIOS || Platform.isMacOS) {
-        description = L10n.of(context).enableAutocorrectPopUpDescription;
-        buttonText = 'Settings';
-        buttonAction = () {
-          AppSettings.openAppSettings();
-        };
-      } else if (Platform.isAndroid || Platform.isWindows) {
-        description = L10n.of(context).downloadGboardDescription;
-        buttonText = 'Download Gboard';
-        buttonAction = () {
-          launchUrlString(
-            'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin',
-          );
-        };
-      } else {
-        description =
-            'unfortunately your platform is not currently supported for this feature. Stay tuned for further development!'; // Default
-        buttonText = 'OK';
-        buttonAction = () {
-          Navigator.of(context).pop();
-        };
-      }
+      title = L10n.of(context).downloadGboardTitle;
+      steps = L10n.of(context).downloadGboardSteps;
+      description = L10n.of(context).downloadGboardDescription;
+      buttonText = L10n.of(context).downloadGboard;
+      buttonAction = () {
+        launchUrlString(
+          'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin',
+        );
+      };
     }
 
     showAdaptiveDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
+        return AlertDialog.adaptive(
           title: Text(L10n.of(context).enableAutocorrectWarning),
-          content: Text(description),
+          content: SingleChildScrollView(
+            child: Column(
+              spacing: 8.0,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(title),
+                if (steps != null)
+                  Text(
+                    steps,
+                    textAlign: TextAlign.start,
+                  ),
+                if (description != null) Text(description),
+              ],
+            ),
+          ),
           actions: [
             TextButton(
-              child: Text(L10n.of(context).cancel),
+              child: Text(L10n.of(context).close),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -99,12 +88,6 @@ class SettingsLearningView extends StatelessWidget {
             TextButton(
               onPressed: buttonAction,
               child: Text(buttonText),
-            ),
-            TextButton(
-              child: const Text('Already Enabled'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
             ),
           ],
         );
