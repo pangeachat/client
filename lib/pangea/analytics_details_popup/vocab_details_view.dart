@@ -140,8 +140,7 @@ class VocabDetailsView extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: _userL2 == null
                     ? Text(L10n.of(context).meaningNotFound)
-                    : Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    : Wrap(
                         children: [
                           Text(
                             L10n.of(context).meaningSectionHeader,
@@ -168,22 +167,19 @@ class VocabDetailsView extends StatelessWidget {
               padding: const EdgeInsets.all(5.0),
               child: Align(
                 alignment: Alignment.topLeft,
-                child: RichText(
-                  text: TextSpan(
-                    style: Theme.of(context).textTheme.bodyLarge,
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: L10n.of(context).formSectionHeader,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(
-                        text:
-                            "  ${_formString ?? L10n.of(context).formsNotFound}",
-                      ),
-                    ],
-                  ),
+                child: Row(
+                  children: [
+                    Text(
+                      L10n.of(context).formSectionHeader,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
+                    Text(
+                      "  ${_formString ?? L10n.of(context).formsNotFound}",
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                  ],
                 ),
               ),
             ),
