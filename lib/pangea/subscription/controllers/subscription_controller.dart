@@ -149,7 +149,7 @@ class SubscriptionController extends BaseController {
     }
   }
 
-  void submitSubscriptionChange(
+  Future<void> submitSubscriptionChange(
     SubscriptionDetails? selectedSubscription,
     BuildContext context, {
     bool isPromo = false,
@@ -187,11 +187,13 @@ class SubscriptionController extends BaseController {
         return;
       }
       if (selectedSubscription.package == null) {
+        final offerings = await Purchases.getOfferings();
         ErrorHandler.logError(
           m: "Tried to subscribe to SubscriptionDetails with Null revenuecat Package",
           s: StackTrace.current,
           data: {
             "selectedSubscription": selectedSubscription.toJson(),
+            "offerings": offerings.toJson(),
           },
         );
         return;
@@ -387,6 +389,7 @@ class SubscriptionDetails {
   final String id;
   SubscriptionPeriodType periodType;
   Package? package;
+  String? localizedPrice;
 
   SubscriptionDetails({
     required this.price,
@@ -402,7 +405,7 @@ class SubscriptionDetails {
 
   String displayPrice(BuildContext context) => isTrial || price <= 0
       ? L10n.of(context).freeTrial
-      : "\$${price.toStringAsFixed(2)}";
+      : localizedPrice ?? "\$${price.toStringAsFixed(2)}";
 
   String displayName(BuildContext context) {
     if (isTrial) {

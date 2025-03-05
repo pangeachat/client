@@ -54,6 +54,7 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
       final SubscriptionDetails updated =
           availableSubscriptionInfo.allProducts![productIndex];
       updated.package = package;
+      updated.localizedPrice = package.storeProduct.priceString;
       availableSubscriptionInfo.allProducts![productIndex] = updated;
     }
   }
