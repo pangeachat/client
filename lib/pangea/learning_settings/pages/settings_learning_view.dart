@@ -1,12 +1,12 @@
-import 'dart:html' as html;
 import 'dart:io';
 
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_settings/app_settings.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -21,8 +21,6 @@ import 'package:fluffychat/pangea/learning_settings/widgets/p_settings_switch_li
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-
-// ignore: avoid_web_libraries_in_flutter
 
 class SettingsLearningView extends StatelessWidget {
   final SettingsLearningController controller;
@@ -50,7 +48,8 @@ class SettingsLearningView extends StatelessWidget {
         buttonText = 'Download Gboard';
         buttonAction = () {
           launchUrlString(
-              'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin');
+            'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin',
+          );
         };
       } else {
         description = ''; // Default
@@ -71,7 +70,8 @@ class SettingsLearningView extends StatelessWidget {
         buttonText = 'Download Gboard';
         buttonAction = () {
           launchUrlString(
-              'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin');
+            'https://play.google.com/store/apps/details?id=com.google.android.inputmethod.latin',
+          );
         };
       } else {
         description =
@@ -97,8 +97,8 @@ class SettingsLearningView extends StatelessWidget {
               },
             ),
             TextButton(
-              child: Text(buttonText),
               onPressed: buttonAction,
+              child: Text(buttonText),
             ),
             TextButton(
               child: const Text('Already Enabled'),
@@ -215,7 +215,8 @@ class SettingsLearningView extends StatelessWidget {
                                     ),
                                     ProfileSettingsSwitchListTile.adaptive(
                                       defaultValue: controller.getToolSetting(
-                                          ToolSetting.enableAutocorrect),
+                                        ToolSetting.enableAutocorrect,
+                                      ),
                                       title: ToolSetting.enableAutocorrect
                                           .toolName(context),
                                       subtitle: ToolSetting.enableAutocorrect
@@ -234,11 +235,13 @@ class SettingsLearningView extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              for (final toolSetting in ToolSetting.values
-                                  .where((tool) =>
-                                      tool.isAvailableSetting &&
-                                      tool != ToolSetting.autoIGC &&
-                                      tool != ToolSetting.enableAutocorrect))
+                              for (final toolSetting
+                                  in ToolSetting.values.where(
+                                (tool) =>
+                                    tool.isAvailableSetting &&
+                                    tool != ToolSetting.autoIGC &&
+                                    tool != ToolSetting.enableAutocorrect,
+                              ))
                                 Column(
                                   children: [
                                     ProfileSettingsSwitchListTile.adaptive(
