@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pages/login/login.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 
@@ -97,9 +97,11 @@ extension PangeaPasswordForgotten on LoginController {
                               useRootNavigator: false,
                               context: context,
                               title: L10n.of(context).weSentYouAnEmail,
-                              message: L10n.of(context).pleaseClickOnLink,
+                              // #Pangea
+                              // message: L10n.of(context).pleaseClickOnLink,
+                              message: L10n.of(context).clickOnEmailLink,
+                              // Pangea#
                               okLabel: L10n.of(context).iHaveClickedOnLink,
-                              fullyCapitalizedForMaterial: false,
                             );
                             if (ok != OkCancelResult.ok) return;
                             final data = <String, dynamic>{

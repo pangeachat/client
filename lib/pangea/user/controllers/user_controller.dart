@@ -1,38 +1,50 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:matrix/matrix.dart' as matrix;
 
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/learning_settings/utils/language_list_util.dart';
+import 'package:fluffychat/pangea/user/models/profile_model.dart';
 import '../models/user_model.dart';
 
 /// Controller that manages saving and reading of user/profile information
 class UserController extends BaseController {
+  final GetStorage loginBox = GetStorage("login_storage");
   late PangeaController _pangeaController;
   UserController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
   }
 
+  matrix.Client get client => _pangeaController.matrixState.client;
+
   /// Convenience function that returns the user ID currently stored in the client.
-  String? get userId => _pangeaController.matrixState.client.userID;
+  String? get userId => client.userID;
 
   /// Cached version of the user profile, so it doesn't have
   /// to be read in from client's account data each time it is accessed.
   Profile? _cachedProfile;
+
+  PublicProfileModel? publicProfile;
 
   /// Listens for account updates and updates the cached profile
   StreamSubscription? _profileListener;
 
   /// Listen for updates to account data in syncs and update the cached profile
   void addProfileListener() {
-    _profileListener ??= _pangeaController.matrixState.client.onSync.stream
+    _profileListener ??= client.onSync.stream
         .where((sync) => sync.accountData != null)
         .listen((sync) {
-      final Profile? fromAccountData = Profile.fromAccountData();
+      final profileData = client.accountData[ModelKey.userProfile]?.content;
+      final Profile? fromAccountData = Profile.fromAccountData(profileData);
       if (fromAccountData != null) {
         _cachedProfile = fromAccountData;
       }
@@ -47,12 +59,15 @@ class UserController extends BaseController {
     if (_cachedProfile != null) return _cachedProfile!;
 
     /// if account data is empty, return an empty profile
-    if (_pangeaController.matrixState.client.accountData.isEmpty) {
+    if (client.accountData.isEmpty) {
       return Profile.emptyProfile;
     }
 
     /// try to get the account data in the up-to-date format
-    final Profile? fromAccountData = Profile.fromAccountData();
+    final Profile? fromAccountData = Profile.fromAccountData(
+      client.accountData[ModelKey.userProfile]?.content,
+    );
+
     if (fromAccountData != null) {
       _cachedProfile = fromAccountData;
       return fromAccountData;
@@ -68,24 +83,14 @@ class UserController extends BaseController {
     Profile Function(Profile) update, {
     waitForDataInSync = false,
   }) async {
-    final prevTargetLang = profile.userSettings.targetLanguage;
+    final prevTargetLang = _pangeaController.languageController.userL2;
 
     final Profile updatedProfile = update(profile);
     await updatedProfile.saveProfileData(waitForDataInSync: waitForDataInSync);
 
-    if (prevTargetLang != updatedProfile.userSettings.targetLanguage) {
+    if (prevTargetLang != _pangeaController.languageController.userL2) {
       setState({'prev_target_lang': prevTargetLang});
     }
-  }
-
-  /// Creates a new profile for the user with the given date of birth.
-  Future<void> createProfile({DateTime? dob}) async {
-    final userSettings = UserSettings(
-      dateOfBirth: dob,
-      createdAt: DateTime.now(),
-    );
-    final newProfile = Profile(userSettings: userSettings);
-    await newProfile.saveProfileData(waitForDataInSync: true);
   }
 
   /// A completer for the profile model of a user.
@@ -109,6 +114,13 @@ class UserController extends BaseController {
     try {
       await _initialize();
       addProfileListener();
+      if (profile.userSettings.targetLanguage != null &&
+          profile.userSettings.targetLanguage!.isNotEmpty &&
+          _pangeaController.languageController.userL2 == null) {
+        // update the language list and send an update to refresh analytics summary
+        await PangeaLanguage.initialize(forceRefresh: true);
+        setState(null);
+      }
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
@@ -116,7 +128,9 @@ class UserController extends BaseController {
         data: {},
       );
     } finally {
-      _profileCompleter!.complete();
+      if (!_profileCompleter!.isCompleted) {
+        _profileCompleter!.complete();
+      }
     }
 
     return _profileCompleter!.future;
@@ -127,25 +141,86 @@ class UserController extends BaseController {
   Future<void> _initialize() async {
     // wait for account data to load
     // as long as it's not null, then this we've already migrated the profile
-    if (_pangeaController.matrixState.client.prevBatch == null) {
-      await _pangeaController.matrixState.client.onSync.stream.first;
+    if (client.prevBatch == null) {
+      await client.onSync.stream.first;
     }
+
+    if (client.userID == null) return;
+    try {
+      final resp = await client.getUserProfile(client.userID!);
+      publicProfile = PublicProfileModel.fromJson(resp.additionalProperties);
+    } catch (e) {
+      // getting a 404 error for some users without pre-existing profile
+      // still want to set other properties, so catch this error
+      publicProfile = PublicProfileModel();
+    }
+
+    // Do not await. This function pulls level from analytics,
+    // so it waits for analytics to finish initializing. Analytics waits for user controller to
+    // finish initializing, so this would cause a deadlock.
+    if (publicProfile!.isEmpty) {
+      _pangeaController.getAnalytics.initCompleter.future
+          .timeout(const Duration(seconds: 10))
+          .then((_) {
+        updatePublicProfile(
+          level: _pangeaController.getAnalytics.constructListModel.level,
+        );
+      });
+    }
+  }
+
+  void clear() {
+    _profileCompleter = null;
+    _cachedProfile = null;
   }
 
   /// Reinitializes the user's profile
   /// This method should be called whenever the user's login status changes
   Future<void> reinitialize() async {
-    _profileCompleter = null;
-    _cachedProfile = null;
+    clear();
     await initialize();
   }
+
+  Future<void> updatePublicProfile({
+    LanguageModel? targetLanguage,
+    int? level,
+  }) async {
+    targetLanguage ??= _pangeaController.languageController.userL2;
+    if (targetLanguage == null || publicProfile == null) return;
+
+    if (publicProfile!.targetLanguage == targetLanguage &&
+        publicProfile!.languageAnalytics?[targetLanguage]?.level == level) {
+      return;
+    }
+
+    publicProfile!.targetLanguage = targetLanguage;
+    if (level != null) {
+      publicProfile!.setLevel(targetLanguage, level);
+    }
+
+    await _savePublicProfile();
+  }
+
+  Future<void> addXPOffset(int offset) async {
+    final targetLanguage = _pangeaController.languageController.userL2;
+    if (targetLanguage == null || publicProfile == null) return;
+
+    publicProfile!.addXPOffset(targetLanguage, offset);
+    await _savePublicProfile();
+  }
+
+  Future<void> _savePublicProfile() async => client.setUserProfile(
+        client.userID!,
+        PangeaEventTypes.profileAnalytics,
+        publicProfile!.toJson(),
+      );
 
   /// Returns a boolean value indicating whether a new JWT (JSON Web Token) is needed.
   bool needNewJWT(String token) => Jwt.isExpired(token);
 
   /// Retrieves matrix access token.
   String get accessToken {
-    final token = _pangeaController.matrixState.client.accessToken;
+    final token = client.accessToken;
     if (token == null) {
       throw ("Trying to get accessToken with null token. User is not logged in.");
     }
@@ -225,7 +300,7 @@ class UserController extends BaseController {
 
   /// Returns a boolean value indicating whether the user's profile is public.
   bool get isPublic {
-    return profile.userSettings.publicProfile;
+    return profile.userSettings.publicProfile ?? true;
   }
 
   /// Retrieves the user's email address.
@@ -242,11 +317,27 @@ class UserController extends BaseController {
   ///     is found.
   Future<String?> get userEmail async {
     final List<matrix.ThirdPartyIdentifier>? identifiers =
-        await _pangeaController.matrixState.client.getAccount3PIDs();
+        await client.getAccount3PIDs();
     final matrix.ThirdPartyIdentifier? email = identifiers?.firstWhereOrNull(
       (identifier) =>
           identifier.medium == matrix.ThirdPartyIdentifierMedium.email,
     );
     return email?.address;
+  }
+
+  Future<PublicProfileModel> getPublicProfile(String userId) async {
+    try {
+      final resp = await client.getUserProfile(userId);
+      return PublicProfileModel.fromJson(resp.additionalProperties);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          userId: userId,
+        },
+      );
+      return PublicProfileModel();
+    }
   }
 }

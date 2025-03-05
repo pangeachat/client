@@ -80,8 +80,8 @@ class UserSettingsState extends State<UserSettingsPage> {
   }
 
   bool get isSSOSignup {
-    final loginTypeEntry =
-        _pangeaController.pStoreService.read(PLocalKey.loginType);
+    final loginTypeEntry = MatrixState.pangeaController.userController.loginBox
+        .read(PLocalKey.loginType);
     return loginTypeEntry is String && loginTypeEntry == 'sso';
   }
 
@@ -214,6 +214,10 @@ class UserSettingsState extends State<UserSettingsPage> {
             return profile;
           },
           waitForDataInSync: true,
+        ),
+        _pangeaController.userController.updatePublicProfile(
+          targetLanguage: selectedTargetLanguage,
+          level: 1,
         ),
       ];
       await Future.wait(updateFuture).timeout(

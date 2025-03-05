@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import 'package:fluffychat/pangea/analytics/enums/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics/models/construct_use_model.dart';
-import 'package:fluffychat/pangea/analytics/repo/lemma_info_repo.dart';
-import 'package:fluffychat/pangea/analytics/repo/lemma_info_request.dart';
-import 'package:fluffychat/pangea/analytics/repo/lemma_info_response.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/models/message_activity_request.dart';
 import 'package:fluffychat/pangea/toolbar/models/multiple_choice_activity_model.dart';
@@ -37,7 +38,7 @@ class LemmaMeaningActivityGenerator {
       userL1: req.userL1,
     );
 
-    final res = await LemmaInfoRepo.get(lemmaDefReq);
+    final res = await LemmaInfoRepo.get(lemmaDefReq, null, true);
 
     final choices = await getDistractorMeanings(lemmaDefReq, 3);
 
@@ -69,8 +70,11 @@ class LemmaMeaningActivityGenerator {
             .constructList(type: ConstructTypeEnum.vocab)
             .where(
               (c) =>
-                  c.lemma.toLowerCase() != lemma.toLowerCase() &&
-                  c.category.toLowerCase() == pos.toLowerCase(),
+                  c.lemma.isNotEmpty && // must not be empty strings
+                  c.lemma.toLowerCase() !=
+                      lemma.toLowerCase() && // must not be the lemma itself
+                  c.category.toLowerCase() ==
+                      pos.toLowerCase(), // must be same part of speech
             )
             .toList();
 

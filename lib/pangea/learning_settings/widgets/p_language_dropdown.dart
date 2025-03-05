@@ -1,5 +1,6 @@
 // Flutter imports:
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -17,6 +18,9 @@ class PLanguageDropdown extends StatefulWidget {
   final bool isL2List;
   final String decorationText;
   final String? error;
+  final String? Function(LanguageModel?)? validator;
+  final Color? backgroundColor;
+  final bool hasError;
 
   const PLanguageDropdown({
     super.key,
@@ -27,18 +31,33 @@ class PLanguageDropdown extends StatefulWidget {
     required this.decorationText,
     this.isL2List = false,
     this.error,
+    this.validator,
+    this.backgroundColor,
+    this.hasError = false,
   });
 
   @override
-  State<PLanguageDropdown> createState() => _PLanguageDropdownState();
+  PLanguageDropdownState createState() => PLanguageDropdownState();
 }
 
-class _PLanguageDropdownState extends State<PLanguageDropdown> {
+class PLanguageDropdownState extends State<PLanguageDropdown> {
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<LanguageModel> sortedLanguages = widget.languages;
     final String systemLang = Localizations.localeOf(context).languageCode;
-    final List<String> languagePriority = [systemLang, 'en', 'es'];
+
+    // if there is no initial language, the system language should be the first in the list
+    // otherwise, display in alphabetical order
+    final List<String> languagePriority =
+        widget.initialLanguage == null ? [systemLang] : [];
 
     int sortLanguages(LanguageModel a, LanguageModel b) {
       final String aLang = a.langCode;
@@ -62,12 +81,51 @@ class _PLanguageDropdownState extends State<PLanguageDropdown> {
 
     sortedLanguages.sort((a, b) => sortLanguages(a, b));
 
+    final bool hasError = widget.error != null || widget.hasError;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         DropdownButtonFormField2<LanguageModel>(
-          decoration: InputDecoration(labelText: widget.decorationText),
+          customButton: widget.initialLanguage != null &&
+                  sortedLanguages.contains(widget.initialLanguage)
+              ? LanguageDropDownEntry(
+                  languageModel: widget.initialLanguage!,
+                  isL2List: widget.isL2List,
+                  isDropdown: true,
+                )
+              : null,
+          decoration: InputDecoration(
+            labelText: widget.decorationText,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(36.0),
+            ),
+            enabledBorder: hasError
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(36.0),
+                    borderSide:
+                        BorderSide(color: Theme.of(context).colorScheme.error),
+                  )
+                : null,
+            focusedBorder: hasError
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(36.0),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 2,
+                    ),
+                  )
+                : null,
+          ),
           isExpanded: true,
+          dropdownStyleData: DropdownStyleData(
+            maxHeight: kIsWeb ? 500 : null,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(14),
+              color: widget.backgroundColor ??
+                  Theme.of(context).colorScheme.surfaceContainerHigh,
+            ),
+          ),
           items: [
             if (widget.showMultilingual)
               DropdownMenuItem(
@@ -89,6 +147,31 @@ class _PLanguageDropdownState extends State<PLanguageDropdown> {
           ],
           onChanged: (value) => widget.onChange(value!),
           value: widget.initialLanguage,
+          validator: (value) => widget.validator?.call(value),
+          dropdownSearchData: DropdownSearchData(
+            searchController: _searchController,
+            searchInnerWidgetHeight: 50,
+            searchInnerWidget: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+              child: TextField(
+                autofocus: true,
+                controller: _searchController,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.search),
+                ),
+              ),
+            ),
+            searchMatchFn: (item, searchValue) {
+              final displayName = item.value?.displayName.toLowerCase();
+              if (displayName == null) return false;
+
+              final search = searchValue.toLowerCase();
+              return displayName.startsWith(search);
+            },
+          ),
+          onMenuStateChange: (isOpen) {
+            if (!isOpen) _searchController.clear();
+          },
         ),
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
@@ -116,40 +199,46 @@ class _PLanguageDropdownState extends State<PLanguageDropdown> {
 class LanguageDropDownEntry extends StatelessWidget {
   final LanguageModel languageModel;
   final bool isL2List;
+  final bool isDropdown;
+
   const LanguageDropDownEntry({
     super.key,
     required this.languageModel,
     required this.isL2List,
+    this.isDropdown = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 12),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          LanguageFlag(
-            language: languageModel,
-          ),
-          const SizedBox(width: 10),
-          Flexible(
-            child: Text(
-              languageModel.getDisplayName(context) ?? "",
-              style: const TextStyle().copyWith(
-                color: Theme.of(context).textTheme.bodyLarge!.color,
-                fontSize: 14,
+    return Row(
+      children: [
+        LanguageFlag(
+          language: languageModel,
+        ),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Row(
+            children: [
+              Text(
+                languageModel.getDisplayName(context) ?? "",
+                style: const TextStyle().copyWith(
+                  color: Theme.of(context).textTheme.bodyLarge!.color,
+                  fontSize: 14,
+                ),
+                overflow: TextOverflow.ellipsis,
               ),
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-            ),
+              const SizedBox(width: 10),
+              if (isL2List && languageModel.l2Support != L2SupportEnum.full)
+                languageModel.l2Support.toBadge(context),
+            ],
           ),
-          const SizedBox(width: 10),
-          if (isL2List && languageModel.l2Support != L2SupportEnum.full)
-            languageModel.l2Support.toBadge(context),
-        ],
-      ),
+        ),
+        if (isDropdown)
+          Icon(
+            Icons.arrow_drop_down,
+            color: Theme.of(context).colorScheme.onSurfaceVariant,
+          ),
+      ],
     );
   }
 }

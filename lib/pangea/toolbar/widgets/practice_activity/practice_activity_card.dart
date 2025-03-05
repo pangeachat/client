@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/pangea/analytics/controllers/message_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics/controllers/put_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics/enums/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics/models/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics/widgets/gain_points.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
+import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/card_error_widget.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -106,7 +106,6 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
     if (!mounted ||
         !pangeaController.languageController.languagesSet ||
         widget.overlayController.messageAnalyticsEntry == null) {
-      debugger(when: kDebugMode);
       _updateFetchingActivity(false);
       return;
     }
@@ -201,7 +200,8 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
       userL1: MatrixState.pangeaController.languageController.userL1!.langCode,
       userL2: MatrixState.pangeaController.languageController.userL2!.langCode,
       messageText: widget.pangeaMessageEvent.messageDisplayText,
-      messageTokens: widget.overlayController.tokens!,
+      messageTokens:
+          widget.pangeaMessageEvent.messageDisplayRepresentation?.tokens ?? [],
       activityQualityFeedback: activityFeedback,
       targetTokens: tokens,
       targetType: type,
@@ -274,7 +274,8 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
 
       // wait for savor the joy before popping from the activity queue
       // to keep the completed activity on screen for a moment
-      widget.overlayController.onActivityFinish();
+      widget.overlayController.onActivityFinish(currentActivity!.activityType);
+      widget.overlayController.widget.chatController.choreographer.tts.stop();
     } catch (e, s) {
       _onError();
       debugger(when: kDebugMode);
@@ -309,6 +310,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
       case ActivityTypeEnum.lemmaId:
       case ActivityTypeEnum.emoji:
       case ActivityTypeEnum.morphId:
+      case ActivityTypeEnum.messageMeaning:
         final selectedChoice =
             currentActivity?.activityType == ActivityTypeEnum.emoji &&
                     (currentActivity?.targetTokens?.isNotEmpty ?? false)
@@ -330,6 +332,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   @override
   Widget build(BuildContext context) {
     if (_error != null) {
+      debugger(when: kDebugMode);
       return CardErrorWidget(
         error: _error!,
         maxWidth: 500,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:badges/badges.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
@@ -17,8 +18,8 @@ import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/public_room_bottom_sheet.dart';
+import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../../config/themes.dart';
-import '../../widgets/connection_status_header.dart';
 import '../../widgets/matrix.dart';
 
 class ChatListViewBody extends StatelessWidget {
@@ -152,7 +153,6 @@ class ChatListViewBody extends StatelessWidget {
                     //     ),
                     //   ),
                     // Pangea#
-                    const ConnectionStatusHeader(),
                     AnimatedContainer(
                       height: controller.isTorBrowser ? 64 : 0,
                       duration: FluffyThemes.animationDuration,
@@ -171,15 +171,24 @@ class ChatListViewBody extends StatelessWidget {
                       ),
                     ),
                     if (client.rooms.isNotEmpty && !controller.isSearchMode)
-                      SizedBox(
-                        height: 64,
-                        child: ListView(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12.0,
-                            vertical: 16.0,
-                          ),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
+                      // #Pangea
+                      // SizedBox(
+                      //   height: 64,
+                      //   child: ListView(
+                      //     padding: const EdgeInsets.symmetric(
+                      //       horizontal: 12.0,
+                      //       vertical: 16.0,
+                      //     ),
+                      //     shrinkWrap: true,
+                      //     scrollDirection: Axis.horizontal,
+                      SingleChildScrollView(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12.0,
+                          vertical: 16.0,
+                        ),
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          // Pangea#
                           children: [
                             if (AppConfig.separateChatTypes)
                               ActiveFilter.messages
@@ -187,8 +196,12 @@ class ChatListViewBody extends StatelessWidget {
                               ActiveFilter.allChats,
                             ActiveFilter.groups,
                             ActiveFilter.unread,
-                            if (spaceDelegateCandidates.isNotEmpty &&
+                            // #Pangea
+                            // if (spaceDelegateCandidates.isNotEmpty &&
+                            //     !controller.widget.displayNavigationRail)
+                            if (spaces.isNotEmpty &&
                                 !controller.widget.displayNavigationRail)
+                              // Pangea#
                               ActiveFilter.spaces,
                           ]
                               .map(
@@ -207,34 +220,46 @@ class ChatListViewBody extends StatelessWidget {
                                         ),
                                         onTap: () =>
                                             controller.setActiveFilter(filter),
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 12,
-                                            vertical: 6,
+                                        // #Pangea
+                                        child: UnreadRoomsBadge(
+                                          filter: (_) =>
+                                              filter == ActiveFilter.unread,
+                                          badgePosition: BadgePosition.topEnd(
+                                            top: -12,
+                                            end: -6,
                                           ),
-                                          decoration: BoxDecoration(
-                                            color: filter ==
-                                                    controller.activeFilter
-                                                ? theme.colorScheme.primary
-                                                : theme.colorScheme
-                                                    .secondaryContainer,
-                                            borderRadius: BorderRadius.circular(
-                                              AppConfig.borderRadius,
+                                          // Pangea#
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 12,
+                                              vertical: 6,
                                             ),
-                                          ),
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            filter.toLocalizedString(context),
-                                            style: TextStyle(
-                                              fontWeight: filter ==
-                                                      controller.activeFilter
-                                                  ? FontWeight.bold
-                                                  : FontWeight.normal,
+                                            decoration: BoxDecoration(
                                               color: filter ==
                                                       controller.activeFilter
-                                                  ? theme.colorScheme.onPrimary
+                                                  ? theme.colorScheme.primary
                                                   : theme.colorScheme
-                                                      .onSecondaryContainer,
+                                                      .secondaryContainer,
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                AppConfig.borderRadius,
+                                              ),
+                                            ),
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              filter.toLocalizedString(context),
+                                              style: TextStyle(
+                                                fontWeight: filter ==
+                                                        controller.activeFilter
+                                                    ? FontWeight.bold
+                                                    : FontWeight.normal,
+                                                color: filter ==
+                                                        controller.activeFilter
+                                                    ? theme
+                                                        .colorScheme.onPrimary
+                                                    : theme.colorScheme
+                                                        .onSecondaryContainer,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -396,7 +421,10 @@ class PublicRoomsHorizontalListState extends State<PublicRoomsHorizontalList> {
                 itemBuilder: (context, i) => _SearchItem(
                   title: publicRooms[i].name ??
                       publicRooms[i].canonicalAlias?.localpart ??
-                      L10n.of(context).group,
+                      // #Pangea
+                      // L10n.of(context).group,
+                      L10n.of(context).chat,
+                  // Pangea#
                   avatar: publicRooms[i].avatarUrl,
                   onPressed: () => showAdaptiveBottomSheet(
                     context: context,

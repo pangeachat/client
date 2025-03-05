@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -68,6 +68,10 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
     final client = Matrix.of(outerContext).client;
     final chunk = this.chunk;
     final knock = chunk?.joinRule == 'knock';
+    // #Pangea
+    final wasInRoom =
+        chunk?.roomId != null && client.getRoomById(chunk!.roomId) != null;
+    // Pangea#
     final result = await showFutureLoadingDialog<String>(
       context: context,
       future: () async {
@@ -84,18 +88,15 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
         if (!knock && client.getRoomById(roomId) == null) {
           await client.waitForRoomInSync(roomId);
         }
-        // #Pangea
-        final room = client.getRoomById(roomId);
-        if (room != null && (await room.leaveIfFull())) {
-          throw L10n.of(context).roomFull;
-        }
-        // Pangea#
         return roomId;
       },
     );
-    if (knock) {
-      return;
-    }
+    // #Pangea
+    // if (knock) {
+    //   return;
+    // }
+    if (knock && !wasInRoom) return;
+    // Pangea#
     if (result.error == null) {
       Navigator.of(context).pop<bool>(true);
       // don't open the room if the joined room is a space
@@ -103,6 +104,11 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
           !client.getRoomById(result.result!)!.isSpace) {
         outerContext.go('/rooms/${result.result!}');
       }
+      // #Pangea
+      else {
+        outerContext.push('/rooms/${result.result!}/details');
+      }
+      // Pangea#
       return;
     }
   }
@@ -135,28 +141,34 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
             chunk?.name ?? roomAlias ?? chunk?.roomId ?? 'Unknown',
             overflow: TextOverflow.fade,
           ),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_downward_outlined),
-            onPressed: Navigator.of(context, rootNavigator: false).pop,
-            tooltip: L10n.of(context).close,
+          leading: Center(
+            child: CloseButton(
+              onPressed: Navigator.of(context, rootNavigator: false).pop,
+            ),
           ),
-          // #Pangea
-          // actions: [
-          //   Padding(
-          //     padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          //     child: IconButton(
-          //       icon: Icon(Icons.adaptive.share_outlined),
-          //       onPressed: () => FluffyShare.share(
-          //         // #Pangea
-          //         // 'https://matrix.to/#/${roomAlias ?? chunk?.roomId}',
-          //         '${Environment.frontendURL}/#/rooms/${chunk?.roomId}',
-          //         // Pangea#
-          //         context,
-          //       ),
-          //     ),
-          //   ),
-          // ],
-          // Pangea#
+          actions: roomAlias == null
+              ? null
+              : [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: IconButton(
+                      icon: const Icon(Icons.qr_code_rounded),
+                      // #Pangea
+                      // onPressed: () => showQrCodeViewer(
+                      //   context,
+                      //   roomAlias,
+                      // ),
+                      onPressed: () {
+                        FluffyShare.share(
+                          "${Environment.frontendURL}/#/join_with_alias?alias=${Uri.encodeComponent(roomAlias)}",
+                          context,
+                        );
+                        Navigator.of(context).pop();
+                      },
+                      // Pangea#
+                    ),
+                  ),
+                ],
         ),
         body: FutureBuilder<PublicRoomsChunk>(
           future: _search(),
@@ -201,6 +213,7 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                             ),
                             style: TextButton.styleFrom(
                               foregroundColor: theme.colorScheme.onSurface,
+                              iconColor: theme.colorScheme.onSurface,
                             ),
                             label: Text(
                               roomLink ?? '...',
@@ -216,6 +229,7 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                             ),
                             style: TextButton.styleFrom(
                               foregroundColor: theme.colorScheme.onSurface,
+                              iconColor: theme.colorScheme.onSurface,
                             ),
                             label: Text(
                               L10n.of(context).countParticipants(

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/chat_list/utils/get_chat_list_item_subtitle.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/room_status_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import '../../config/themes.dart';
@@ -51,13 +52,21 @@ class ChatListItem extends StatelessWidget {
         title: L10n.of(context).areYouSure,
         okLabel: L10n.of(context).leave,
         cancelLabel: L10n.of(context).cancel,
-        message: L10n.of(context).archiveRoomDescription,
-        isDestructiveAction: true,
+        // #Pangea
+        // message: L10n.of(context).archiveRoomDescription,
+        message: room.isSpace
+            ? L10n.of(context).leaveSpaceDescription
+            : L10n.of(context).leaveRoomDescription,
+        // Pangea#
+        isDestructive: true,
       );
       if (confirmed != OkCancelResult.ok) return false;
       final leaveResult = await showFutureLoadingDialog(
         context: context,
-        future: () => room.leave(),
+        // #Pangea
+        // future: () => room.leave(),
+        future: () => room.isSpace ? room.leaveSpace() : room.leave(),
+        // Pangea#
       );
       return leaveResult.isValue;
     }
@@ -300,9 +309,11 @@ class ChatListItem extends StatelessWidget {
                       child: room.isSpace && room.membership == Membership.join
                           ? Text(
                               L10n.of(context).countChatsAndCountParticipants(
-                                room.spaceChildren.length.toString(),
-                                (room.summary.mJoinedMemberCount ?? 1)
-                                    .toString(),
+                                // #Pangea
+                                // room.spaceChildren.length,
+                                room.spaceChildCount,
+                                // Pangea#
+                                (room.summary.mJoinedMemberCount ?? 1),
                               ),
                             )
                           : typingText.isNotEmpty
@@ -330,7 +341,7 @@ class ChatListItem extends StatelessWidget {
                                   // Pangea#
                                   : FutureBuilder(
                                       key: ValueKey(
-                                        '${lastEvent?.eventId}_${lastEvent?.type}',
+                                        '${lastEvent?.eventId}_${lastEvent?.type}_${lastEvent?.redacted}',
                                       ),
                                       future: needLastEventSender
                                           ? lastEvent.calcLocalizedBody(

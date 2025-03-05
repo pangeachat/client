@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:rive/rive.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -31,7 +32,7 @@ class BotFaceState extends State<BotFace> {
   Artboard? _artboard;
   StateMachineController? _controller;
   final Random _random = Random();
-  final String svgURL = "${AppConfig.svgAssetsBaseURL}/bot_face_neutral.png";
+  final String svgURL = "${AppConfig.assetsBaseURL}/bot_face_neutral.png";
 
   @override
   void initState() {
@@ -122,7 +123,11 @@ class BotFaceState extends State<BotFace> {
               artboard: _artboard!,
               fit: BoxFit.cover,
             )
-          : Image.network(svgURL),
+          : CachedNetworkImage(
+              imageUrl: svgURL,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
     );
   }
 }

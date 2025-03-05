@@ -16,6 +16,7 @@ class CustomizedSvg extends StatelessWidget {
   /// Icon to show in case of error
   final Widget errorIcon;
 
+  static final GetStorage _svgStorage = GetStorage('svg_cache');
   const CustomizedSvg({
     super.key,
     required this.svgUrl,
@@ -23,12 +24,22 @@ class CustomizedSvg extends StatelessWidget {
     this.errorIcon = const Icon(Icons.error_outline),
   });
 
-  static final GetStorage _svgStorage = GetStorage('svg_cache');
-
-  Future<String> _fetchSvg() async {
-    final cachedSvg = _svgStorage.read(svgUrl);
-    if (cachedSvg != null) {
-      return cachedSvg;
+  Future<String?> _fetchSvg() async {
+    final cachedSvgEntry = _svgStorage.read(svgUrl);
+    if (cachedSvgEntry != null && cachedSvgEntry is Map<String, dynamic>) {
+      final cachedSvg = cachedSvgEntry['svg'] as String?;
+      final timestamp = cachedSvgEntry['timestamp'] as int?;
+      if (cachedSvg != null) {
+        return cachedSvg;
+      }
+      // if timestamp is younger than 1 day, return null
+      if (timestamp != null &&
+          DateTime.now()
+                  .difference(DateTime.fromMillisecondsSinceEpoch(timestamp))
+                  .inDays <
+              1) {
+        return null;
+      }
     }
 
     final response = await http.get(Uri.parse(svgUrl));
@@ -40,35 +51,63 @@ class CustomizedSvg extends StatelessWidget {
           "svgUrl": svgUrl,
         },
       );
+      await _svgStorage.write(
+        svgUrl,
+        {'timestamp': DateTime.now().millisecondsSinceEpoch},
+      );
       throw e;
     }
 
     final String svgContent = response.body;
-    await _svgStorage.write(svgUrl, svgContent);
+    await _svgStorage.write(svgUrl, {
+      'svg': svgContent,
+      'timestamp': DateTime.now().millisecondsSinceEpoch,
+    });
 
     return svgContent;
   }
 
-  Future<String> _getModifiedSvg() async {
+  Future<String?> _getModifiedSvg() async {
     final svgContent = await _fetchSvg();
-    String modifiedSvg = svgContent;
-    // find the white and replace with black
-    // or find black and replace with white
-    modifiedSvg = modifiedSvg.replaceAll("fill=\"none\"", '');
+    final String? modifiedSvg = svgContent;
+    if (modifiedSvg == null) {
+      return null;
+    }
+
+    return _modifySVG(modifiedSvg);
+  }
+
+  String _modifySVG(String svgContent) {
+    String modifiedSvg = svgContent.replaceAll("fill=\"none\"", '');
     for (final entry in colorReplacements.entries) {
       modifiedSvg = modifiedSvg.replaceAll(entry.key, entry.value);
     }
     return modifiedSvg;
   }
 
+  String? _getSvgFromCache() {
+    final cachedSvgEntry = _svgStorage.read(svgUrl);
+    if (cachedSvgEntry != null &&
+        cachedSvgEntry is Map<String, dynamic> &&
+        cachedSvgEntry['svg'] is String) {
+      return _modifySVG(cachedSvgEntry['svg'] as String);
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<String>(
+    final cached = _getSvgFromCache();
+    if (cached != null) {
+      return SvgPicture.string(cached);
+    }
+
+    return FutureBuilder<String?>(
       future: _getModifiedSvg(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
-        } else if (snapshot.hasError) {
+        } else if (snapshot.hasError || snapshot.data == null) {
           return errorIcon;
         } else if (snapshot.hasData) {
           return SvgPicture.string(snapshot.data!);

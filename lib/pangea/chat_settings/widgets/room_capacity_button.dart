@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class RoomCapacityButton extends StatefulWidget {
-  final Room? room;
+  final Room room;
   final ChatDetailsController? controller;
-  final bool spaceMode;
 
   const RoomCapacityButton({
     super.key,
-    this.room,
+    required this.room,
     this.controller,
-    this.spaceMode = false,
   });
 
   @override
@@ -25,56 +23,10 @@ class RoomCapacityButton extends StatefulWidget {
 }
 
 class RoomCapacityButtonState extends State<RoomCapacityButton> {
-  int? capacity;
-  String? nonAdmins;
+  int? get capacity => widget.room.capacity;
+  int get memberCount => widget.room.summary.mJoinedMemberCount ?? 1;
 
   RoomCapacityButtonState({Key? key});
-
-  @override
-  void initState() {
-    super.initState();
-    capacity = widget.room?.capacity;
-    widget.room?.numNonAdmins.then(
-      (value) => setState(() {
-        nonAdmins = value.toString();
-        overCapacity();
-      }),
-    );
-  }
-
-  @override
-  void didUpdateWidget(RoomCapacityButton oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.room != widget.room) {
-      capacity = widget.room?.capacity;
-      widget.room?.numNonAdmins.then(
-        (value) => setState(() {
-          nonAdmins = value.toString();
-          overCapacity();
-        }),
-      );
-    }
-  }
-
-  Future<void> overCapacity() async {
-    if ((widget.room?.isRoomAdmin ?? false) &&
-        capacity != null &&
-        nonAdmins != null &&
-        int.parse(nonAdmins!) > capacity!) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            spaceMode
-                ? L10n.of(context).chatExceedsCapacity
-                : L10n.of(context).spaceExceedsCapacity,
-          ),
-        ),
-      );
-    }
-  }
-
-  bool get spaceMode =>
-      (widget.room != null && widget.room!.isSpace) || widget.spaceMode;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +34,7 @@ class RoomCapacityButtonState extends State<RoomCapacityButton> {
     return Column(
       children: [
         ListTile(
-          onTap: (widget.room?.isRoomAdmin ?? true) ? setRoomCapacity : null,
+          onTap: setRoomCapacity,
           leading: CircleAvatar(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             foregroundColor: iconColor,
@@ -91,14 +43,10 @@ class RoomCapacityButtonState extends State<RoomCapacityButton> {
           trailing: Text(
             (capacity == null)
                 ? L10n.of(context).noCapacityLimit
-                : (nonAdmins != null)
-                    ? '$nonAdmins/$capacity'
-                    : '$capacity',
+                : '$memberCount/$capacity',
           ),
           title: Text(
-            spaceMode
-                ? L10n.of(context).spaceCapacity
-                : L10n.of(context).chatCapacity,
+            L10n.of(context).chatCapacity,
             style: TextStyle(
               color: Theme.of(context).colorScheme.secondary,
               fontWeight: FontWeight.bold,
@@ -109,66 +57,41 @@ class RoomCapacityButtonState extends State<RoomCapacityButton> {
     );
   }
 
-  Future<void> setCapacity(int newCapacity) async {
-    capacity = newCapacity;
-  }
-
   Future<void> setRoomCapacity() async {
     final input = await showTextInputDialog(
       context: context,
-      title: spaceMode
-          ? L10n.of(context).spaceCapacity
-          : L10n.of(context).chatCapacity,
-      message: spaceMode
-          ? L10n.of(context).spaceCapacityExplanation
-          : L10n.of(context).chatCapacityExplanation,
+      title: L10n.of(context).chatCapacity,
+      message: L10n.of(context).chatCapacityExplanation,
       okLabel: L10n.of(context).ok,
       cancelLabel: L10n.of(context).cancel,
-      textFields: [
-        DialogTextField(
-          initialText: ((capacity != null) ? '$capacity' : ''),
-          keyboardType: TextInputType.number,
-          maxLength: 3,
-          validator: (value) {
-            if (value == null ||
-                value.isEmpty ||
-                int.tryParse(value) == null ||
-                int.parse(value) < 0) {
-              return L10n.of(context).enterNumber;
-            }
-            if (nonAdmins != null && int.parse(value) < int.parse(nonAdmins!)) {
-              return spaceMode
-                  ? L10n.of(context).spaceCapacitySetTooLow
-                  : L10n.of(context).chatCapacitySetTooLow;
-            }
-            return null;
-          },
-        ),
-      ],
+      initialText: ((capacity != null) ? '$capacity' : ''),
+      keyboardType: TextInputType.number,
+      maxLength: 3,
+      validator: (value) {
+        if (value.isEmpty ||
+            int.tryParse(value) == null ||
+            int.parse(value) < 0) {
+          return L10n.of(context).enterNumber;
+        }
+        if (int.parse(value) < memberCount) {
+          return L10n.of(context).chatCapacitySetTooLow;
+        }
+        return null;
+      },
     );
-    if (input == null ||
-        input.first == "" ||
-        int.tryParse(input.first) == null) {
+    if (input == null || input.isEmpty || int.tryParse(input) == null) {
       return;
     }
 
-    final newCapacity = int.parse(input.first);
+    final newCapacity = int.parse(input);
     final success = await showFutureLoadingDialog(
       context: context,
-      future: () => ((widget.room != null)
-          ? (widget.room!.updateRoomCapacity(
-              capacity = newCapacity,
-            ))
-          : setCapacity(newCapacity)),
+      future: () => widget.room.updateRoomCapacity(newCapacity),
     );
     if (success.error == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(
-            spaceMode
-                ? L10n.of(context).spaceCapacityHasBeenChanged
-                : L10n.of(context).chatCapacityHasBeenChanged,
-          ),
+          content: Text(L10n.of(context).chatCapacityHasBeenChanged),
         ),
       );
       setState(() {});

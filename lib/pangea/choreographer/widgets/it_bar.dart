@@ -4,9 +4,9 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/analytics/controllers/put_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics/enums/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics/widgets/gain_points.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
+import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/it_controller.dart';
@@ -362,6 +362,7 @@ class ITChoices extends StatelessWidget {
       maxWidth: 300,
       borderColor: borderColor,
       transformTargetId: controller.choreographer.itBarTransformTargetKey,
+      isScrollable: choiceFeedback == null,
     );
   }
 
@@ -408,6 +409,7 @@ class ITChoices extends StatelessWidget {
         );
       }
       return ChoicesArray(
+        id: controller.currentITStep.hashCode.toString(),
         isLoading: controller.isLoading ||
             controller.choreographer.isFetching ||
             controller.currentITStep == null,

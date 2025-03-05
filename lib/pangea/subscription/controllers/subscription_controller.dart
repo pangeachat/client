@@ -3,10 +3,10 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -83,6 +83,7 @@ class SubscriptionController extends BaseController {
     await initialize();
   }
 
+  final GetStorage subscriptionBox = GetStorage("subscription_storage");
   Future<void> _initialize() async {
     try {
       if (_userID == null) {
@@ -122,11 +123,10 @@ class SubscriptionController extends BaseController {
           },
         );
       } else {
-        final bool? beganWebPayment = _pangeaController.pStoreService.read(
-          PLocalKey.beganWebPayment,
-        );
+        final bool? beganWebPayment =
+            subscriptionBox.read(PLocalKey.beganWebPayment);
         if (beganWebPayment ?? false) {
-          await _pangeaController.pStoreService.delete(
+          await subscriptionBox.remove(
             PLocalKey.beganWebPayment,
           );
           if (isSubscribed) {
@@ -147,7 +147,7 @@ class SubscriptionController extends BaseController {
     }
   }
 
-  void submitSubscriptionChange(
+  Future<void> submitSubscriptionChange(
     SubscriptionDetails? selectedSubscription,
     BuildContext context, {
     bool isPromo = false,
@@ -173,7 +173,7 @@ class SubscriptionController extends BaseController {
           selectedSubscription.duration!,
           isPromo: isPromo,
         );
-        await _pangeaController.pStoreService.save(
+        await subscriptionBox.write(
           PLocalKey.beganWebPayment,
           true,
         );
@@ -185,39 +185,24 @@ class SubscriptionController extends BaseController {
         return;
       }
       if (selectedSubscription.package == null) {
+        final offerings = await Purchases.getOfferings();
         ErrorHandler.logError(
           m: "Tried to subscribe to SubscriptionDetails with Null revenuecat Package",
           s: StackTrace.current,
           data: {
             "selectedSubscription": selectedSubscription.toJson(),
+            "offerings": offerings.toJson(),
           },
         );
         return;
       }
-      try {
-        GoogleAnalytics.beginPurchaseSubscription(
-          selectedSubscription,
-          context,
-        );
-        await Purchases.purchasePackage(selectedSubscription.package!);
-        GoogleAnalytics.updateUserSubscriptionStatus(true);
-      } catch (err) {
-        final errCode = PurchasesErrorHelper.getErrorCode(
-          err as PlatformException,
-        );
-        if (errCode == PurchasesErrorCode.purchaseCancelledError) {
-          debugPrint("User cancelled purchase");
-          return;
-        }
-        ErrorHandler.logError(
-          m: "Failed to purchase revenuecat package for user $_userID with error code $errCode",
-          s: StackTrace.current,
-          data: {
-            "selectedSubscription": selectedSubscription.toJson(),
-          },
-        );
-        return;
-      }
+
+      GoogleAnalytics.beginPurchaseSubscription(
+        selectedSubscription,
+        context,
+      );
+      await Purchases.purchasePackage(selectedSubscription.package!);
+      GoogleAnalytics.updateUserSubscriptionStatus(true);
     }
   }
 
@@ -274,7 +259,7 @@ class SubscriptionController extends BaseController {
           : SubscriptionStatus.dimissedPaywall;
 
   DateTime? get _lastDismissedPaywall {
-    final lastDismissed = _pangeaController.pStoreService.read(
+    final lastDismissed = subscriptionBox.read(
       PLocalKey.dismissedPaywall,
     );
     if (lastDismissed == null) return null;
@@ -282,7 +267,7 @@ class SubscriptionController extends BaseController {
   }
 
   int? get _paywallBackoff {
-    final backoff = _pangeaController.pStoreService.read(
+    final backoff = subscriptionBox.read(
       PLocalKey.paywallBackoff,
     );
     if (backoff == null) return null;
@@ -299,18 +284,18 @@ class SubscriptionController extends BaseController {
   }
 
   void dismissPaywall() async {
-    await _pangeaController.pStoreService.save(
+    await subscriptionBox.write(
       PLocalKey.dismissedPaywall,
       DateTime.now().toString(),
     );
 
     if (_paywallBackoff == null) {
-      await _pangeaController.pStoreService.save(
+      await subscriptionBox.write(
         PLocalKey.paywallBackoff,
         1,
       );
     } else {
-      await _pangeaController.pStoreService.save(
+      await subscriptionBox.write(
         PLocalKey.paywallBackoff,
         _paywallBackoff! + 1,
       );
@@ -402,6 +387,7 @@ class SubscriptionDetails {
   final String id;
   SubscriptionPeriodType periodType;
   Package? package;
+  String? localizedPrice;
 
   SubscriptionDetails({
     required this.price,
@@ -417,7 +403,7 @@ class SubscriptionDetails {
 
   String displayPrice(BuildContext context) => isTrial || price <= 0
       ? L10n.of(context).freeTrial
-      : "\$${price.toStringAsFixed(2)}";
+      : localizedPrice ?? "\$${price.toStringAsFixed(2)}";
 
   String displayName(BuildContext context) {
     if (isTrial) {

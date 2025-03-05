@@ -8,8 +8,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/pangea/analytics/controllers/get_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics/controllers/put_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/bot_mode.dart';
 import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
@@ -34,7 +34,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../../../config/app_config.dart';
 import '../../choreographer/controllers/it_feedback_controller.dart';
 import '../utils/firebase_analytics.dart';
-import '../utils/p_store.dart';
 
 class PangeaController {
   ///pangeaControllers
@@ -56,7 +55,6 @@ class PangeaController {
   late PracticeActivityRecordController activityRecordController;
 
   ///store Services
-  late PStore pStoreService;
   final pLanguageStore = PangeaLanguage();
 
   StreamSubscription? _languageStream;
@@ -94,7 +92,6 @@ class PangeaController {
 
   /// Initialize controllers
   _addRefInObjects() {
-    pStoreService = PStore(pangeaController: this);
     userController = UserController(this);
     languageController = LanguageController(this);
     classController = ClassController(this);
@@ -158,14 +155,15 @@ class PangeaController {
       case LoginState.loggedOut:
       case LoginState.softLoggedOut:
         // Reset cached analytics data
-        MatrixState.pangeaController.putAnalytics.dispose();
-        MatrixState.pangeaController.getAnalytics.dispose();
+        putAnalytics.dispose();
+        getAnalytics.dispose();
+        userController.clear();
         _languageStream?.cancel();
         break;
       case LoginState.loggedIn:
         // Initialize analytics data
-        MatrixState.pangeaController.putAnalytics.initialize();
-        MatrixState.pangeaController.getAnalytics.initialize();
+        putAnalytics.initialize();
+        getAnalytics.initialize();
         break;
     }
     if (state != LoginState.loggedIn) {
@@ -186,7 +184,7 @@ class PangeaController {
     putAnalytics.dispose();
     getAnalytics.dispose();
     putAnalytics.initialize();
-    getAnalytics.initialize();
+    await getAnalytics.initialize();
   }
 
   void startChatWithBotIfNotPresent() {

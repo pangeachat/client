@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:animations/animations.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -12,6 +11,7 @@ import 'package:fluffychat/pangea/choreographer/widgets/start_igc_button.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/pangea_reaction_picker.dart';
+import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import '../../config/themes.dart';
 import 'chat.dart';
@@ -38,6 +38,20 @@ class ChatInputRow extends StatelessWidget {
         controller.emojiPickerType == EmojiPickerType.reaction) {
       return const SizedBox.shrink();
     }
+
+    if (!controller.room.otherPartyCanReceiveMessages) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Text(
+            L10n.of(context).otherPartyNotLoggedIn,
+            style: theme.textTheme.bodySmall,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
+    }
+
     // #Pangea
     // const height = 48.0;
     const height = AppConfig.defaultFooterHeight;
@@ -55,13 +69,9 @@ class ChatInputRow extends StatelessWidget {
               activel2 != null &&
               activel1.langCode != LanguageKeys.unknownLanguage &&
               activel2.langCode != LanguageKeys.unknownLanguage
-          ? L10n.of(context).writeAMessageFlag(
-              activel1.languageEmoji ??
-                  activel1.getDisplayName(context) ??
-                  activel1.langCode,
-              activel2.languageEmoji ??
-                  activel2.getDisplayName(context) ??
-                  activel2.langCode,
+          ? L10n.of(context).writeAMessageLangCodes(
+              activel1.langCodeShort.toUpperCase(),
+              activel2.langCodeShort.toUpperCase(),
             )
           : L10n.of(context).writeAMessage;
     }
@@ -96,7 +106,7 @@ class ChatInputRow extends StatelessWidget {
                             ],
                           ),
                         ),
-                      )
+                      ),
                     // #Pangea
                     // else
                     //   SizedBox(
@@ -111,53 +121,41 @@ class ChatInputRow extends StatelessWidget {
                     //       ),
                     //     ),
                     //   ),
-                    else
-                      // Pangea#
-                      controller.selectedEvents.length == 1
-                          ?
-                          // #Pangea
-                          // controller.selectedEvents.first
-                          //         .getDisplayEvent(controller.timeline!)
-                          //         .status
-                          //         .isSent
-                          //     ?
-                          // Pangea#
-                          SizedBox(
-                              height: height,
-                              child: TextButton(
-                                onPressed: controller.replyAction,
-                                child: Row(
-                                  children: <Widget>[
-                                    // #Pangea
-                                    // Text(L10n.of(context)!.reply),
-                                    // const Icon(Icons.keyboard_arrow_right),
-                                    const Icon(Symbols.reply),
-                                    const SizedBox(width: 6),
-                                    Text(L10n.of(context).reply),
-                                    // Pangea#
-                                  ],
-                                ),
-                              ),
-                            )
-                          // #Pangea
-                          // : SizedBox(
-                          //     height: height,
-                          //     child: TextButton(
-                          //       onPressed: controller.sendAgainAction,
-                          //       child: Row(
-                          //         children: <Widget>[
-                          //           Text(L10n.of(context).tryToSendAgain),
-                          //           const SizedBox(width: 4),
-                          //           const Icon(Icons.send_outlined,
-                          //               size: 16),
-                          //         ],
-                          //       ),
-                          //     ),
-                          //   )
-                          // Pangea#
-                          : const SizedBox.shrink(),
-                    // #Pangea
-                    PangeaReactionsPicker(controller, overlayController),
+                    // controller.selectedEvents.length == 1
+                    //     ? controller.selectedEvents.first
+                    //             .getDisplayEvent(controller.timeline!)
+                    //             .status
+                    //             .isSent
+                    //         ? SizedBox(
+                    //             height: height,
+                    //             child: TextButton(
+                    //               onPressed: controller.replyAction,
+                    //               child: Row(
+                    //                 children: <Widget>[
+                    //                   Text(L10n.of(context).reply),
+                    //                   const Icon(Icons.keyboard_arrow_right),
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           )
+                    //         : SizedBox(
+                    //             height: height,
+                    //             child: TextButton(
+                    //               onPressed: controller.sendAgainAction,
+                    //               child: Row(
+                    //                 children: <Widget>[
+                    //                   Text(L10n.of(context).tryToSendAgain),
+                    //                   const SizedBox(width: 4),
+                    //                   const Icon(Icons.send_outlined, size: 16),
+                    //                 ],
+                    //               ),
+                    //             ),
+                    //           )
+                    //     : const SizedBox.shrink(),
+                    PangeaReactionsPicker(
+                      controller,
+                      overlayController,
+                    ),
                     if (controller.selectedEvents.length == 1 &&
                         !controller.selectedEvents.first
                             .getDisplayEvent(controller.timeline!)
@@ -194,44 +192,31 @@ class ChatInputRow extends StatelessWidget {
                         onSelected: controller.onAddPopupMenuButtonSelected,
                         itemBuilder: (BuildContext context) =>
                             <PopupMenuEntry<String>>[
-                          //#Pangea
-                          if (controller.pangeaController.permissionsController
-                              .canShareFile(controller.roomId))
-                            //Pangea#
-                            PopupMenuItem<String>(
-                              value: 'file',
-                              child: ListTile(
-                                leading: const CircleAvatar(
-                                  backgroundColor: Colors.green,
-                                  foregroundColor: Colors.white,
-                                  child: Icon(Icons.attachment_outlined),
-                                ),
-                                title: Text(L10n.of(context).sendFile),
-                                contentPadding: const EdgeInsets.all(0),
+                          PopupMenuItem<String>(
+                            value: 'file',
+                            child: ListTile(
+                              leading: const CircleAvatar(
+                                backgroundColor: Colors.green,
+                                foregroundColor: Colors.white,
+                                child: Icon(Icons.attachment_outlined),
                               ),
+                              title: Text(L10n.of(context).sendFile),
+                              contentPadding: const EdgeInsets.all(0),
                             ),
-                          //#Pangea
-                          if (controller.pangeaController.permissionsController
-                              .canSharePhoto(controller.roomId))
-                            //Pangea#
-                            PopupMenuItem<String>(
-                              value: 'image',
-                              child: ListTile(
-                                leading: const CircleAvatar(
-                                  backgroundColor: Colors.blue,
-                                  foregroundColor: Colors.white,
-                                  child: Icon(Icons.image_outlined),
-                                ),
-                                title: Text(L10n.of(context).sendImage),
-                                contentPadding: const EdgeInsets.all(0),
+                          ),
+                          PopupMenuItem<String>(
+                            value: 'image',
+                            child: ListTile(
+                              leading: const CircleAvatar(
+                                backgroundColor: Colors.blue,
+                                foregroundColor: Colors.white,
+                                child: Icon(Icons.image_outlined),
                               ),
+                              title: Text(L10n.of(context).sendImage),
+                              contentPadding: const EdgeInsets.all(0),
                             ),
-                          //#Pangea
-                          // if (PlatformInfos.isMobile)
-                          if (PlatformInfos.isMobile &&
-                              controller.pangeaController.permissionsController
-                                  .canSharePhoto(controller.roomId))
-                            //Pangea#
+                          ),
+                          if (PlatformInfos.isMobile)
                             PopupMenuItem<String>(
                               value: 'camera',
                               child: ListTile(
@@ -244,12 +229,7 @@ class ChatInputRow extends StatelessWidget {
                                 contentPadding: const EdgeInsets.all(0),
                               ),
                             ),
-                          //#Pangea
-                          // if (PlatformInfos.isMobile)
-                          if (PlatformInfos.isMobile &&
-                              controller.pangeaController.permissionsController
-                                  .canShareVideo(controller.roomId))
-                            //Pangea#
+                          if (PlatformInfos.isMobile)
                             PopupMenuItem<String>(
                               value: 'camera-video',
                               child: ListTile(
@@ -262,12 +242,7 @@ class ChatInputRow extends StatelessWidget {
                                 contentPadding: const EdgeInsets.all(0),
                               ),
                             ),
-                          //#Pangea
-                          // if (PlatformInfos.isMobile)
-                          if (PlatformInfos.isMobile &&
-                              controller.pangeaController.permissionsController
-                                  .canShareLocation(controller.roomId))
-                            //Pangea#
+                          if (PlatformInfos.isMobile)
                             PopupMenuItem<String>(
                               value: 'location',
                               child: ListTile(
@@ -319,7 +294,7 @@ class ChatInputRow extends StatelessWidget {
                             ),
                           )
                         // #Pangea
-                        : const SizedBox(width: 10),
+                        : const SizedBox.shrink(),
                     // if (Matrix.of(context).isMultiAccount &&
                     //     Matrix.of(context).hasComplexBundles &&
                     //     Matrix.of(context).currentBundle!.length > 1)
@@ -465,9 +440,6 @@ class ChatInputRow extends StatelessWidget {
 //                         mxContent: snapshot.data?.avatarUrl,
 //                         name: snapshot.data?.displayName ??
 //                             client.userID!.localpart,
-//                         // #Pangea
-//                         presenceUserId: client.userID!,
-//                         // Pangea#
 //                         size: 20,
 //                       ),
 //                       title: Text(snapshot.data?.displayName ?? client.userID!),
@@ -481,9 +453,6 @@ class ChatInputRow extends StatelessWidget {
 //             mxContent: snapshot.data?.avatarUrl,
 //             name: snapshot.data?.displayName ??
 //                 Matrix.of(context).client.userID!.localpart,
-//             // #Pangea
-//             presenceUserId: Matrix.of(context).client.userID!,
-//             // Pangea#
 //             size: 20,
 //           ),
 //         ),

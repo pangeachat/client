@@ -69,18 +69,6 @@ class MessageAudioCardState extends State<MessageAudioCard> {
     super.didUpdateWidget(oldWidget);
   }
 
-  Future<void> playSelectionAudio() async {
-    if (widget.selection == null) return;
-    final PangeaTokenText selection = widget.selection!;
-    final tokenText = selection.content;
-
-    await widget.tts.tryToSpeak(
-      tokenText,
-      context,
-      widget.messageEvent.eventId,
-    );
-  }
-
   void setSectionStartAndEnd(int? start, int? end) => mounted
       ? setState(() {
           sectionStartMS = start;
@@ -201,7 +189,14 @@ class MessageAudioCardState extends State<MessageAudioCard> {
                       fontSize:
                           AppConfig.messageFontSize * AppConfig.fontSizeFactor,
                       padding: 0,
+                      isOverlay: true,
+                      chatController:
+                          widget.overlayController.widget.chatController,
                       overlayController: widget.overlayController,
+                      linkColor:
+                          Theme.of(context).brightness == Brightness.light
+                              ? Theme.of(context).colorScheme.primary
+                              : Theme.of(context).colorScheme.onPrimary,
                     )
                   : const CardErrorWidget(
                       error: "Null audio file in message_audio_card",

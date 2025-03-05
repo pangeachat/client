@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -7,11 +9,14 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/analytics/controllers/message_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
@@ -24,22 +29,22 @@ class MessageSelectionOverlay extends StatefulWidget {
   final Event _event;
   final Event? _nextEvent;
   final Event? _prevEvent;
-  final PangeaMessageEvent? _pangeaMessageEvent;
   final PangeaToken? _initialSelectedToken;
+  final Timeline _timeline;
 
   const MessageSelectionOverlay({
     required this.chatController,
     required Event event,
-    required PangeaMessageEvent? pangeaMessageEvent,
     required PangeaToken? initialSelectedToken,
     required Event? nextEvent,
     required Event? prevEvent,
+    required Timeline timeline,
     super.key,
   })  : _initialSelectedToken = initialSelectedToken,
-        _pangeaMessageEvent = pangeaMessageEvent,
         _nextEvent = nextEvent,
         _prevEvent = prevEvent,
-        _event = event;
+        _event = event,
+        _timeline = timeline;
 
   @override
   MessageOverlayController createState() => MessageOverlayController();
@@ -50,11 +55,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   MessageMode toolbarMode = MessageMode.noneSelected;
   PangeaTokenText? _selectedSpan;
   List<PangeaTokenText>? _highlightedTokens;
-
-  List<PangeaToken>? tokens;
   bool initialized = false;
 
-  PangeaMessageEvent? get pangeaMessageEvent => widget._pangeaMessageEvent;
+  PangeaMessageEvent? get pangeaMessageEvent => PangeaMessageEvent(
+        event: widget._event,
+        timeline: widget._timeline,
+        ownMessage: widget._event.room.client.userID == widget._event.senderId,
+      );
 
   bool isPlayingAudio = false;
 
@@ -94,7 +101,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   @override
   void initState() {
     super.initState();
-    _initializeTokensAndMode();
+    initializeTokensAndMode();
   }
 
   void _updateSelectedSpan(PangeaTokenText selectedSpan) {
@@ -104,7 +111,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       widget.chatController.choreographer.tts.tryToSpeak(
         selectedSpan.content,
         context,
-        widget._pangeaMessageEvent?.eventId,
+        targetID: null,
       );
     }
 
@@ -137,20 +144,61 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   MessageAnalyticsEntry? get messageAnalyticsEntry =>
-      pangeaMessageEvent != null && tokens != null
+      pangeaMessageEvent?.messageDisplayRepresentation?.tokens != null
           ? MatrixState.pangeaController.getAnalytics.perMessage.get(
-              tokens!,
+              pangeaMessageEvent!.messageDisplayRepresentation!.tokens!,
               pangeaMessageEvent!,
             )
           : null;
 
-  Future<void> _initializeTokensAndMode() async {
+  Future<RepresentationEvent?> _fetchNewRepEvent() async {
+    final RepresentationEvent? repEvent =
+        pangeaMessageEvent?.messageDisplayRepresentation;
+
+    if (repEvent != null) return repEvent;
+    final eventID =
+        await pangeaMessageEvent?.representationByDetectedLanguage();
+
+    if (eventID == null) return null;
+    final event = await widget._event.room.getEventById(eventID);
+    if (event == null) return null;
+    return RepresentationEvent(
+      timeline: pangeaMessageEvent!.timeline,
+      parentMessageEvent: pangeaMessageEvent!.event,
+      event: event,
+    );
+  }
+
+  Future<void> initializeTokensAndMode() async {
     try {
-      final repEvent = pangeaMessageEvent?.messageDisplayRepresentation;
-      if (repEvent != null) {
-        tokens = await repEvent.tokensGlobal(
+      RepresentationEvent? repEvent =
+          pangeaMessageEvent?.messageDisplayRepresentation;
+      repEvent ??= await _fetchNewRepEvent();
+
+      if (repEvent?.event != null) {
+        await repEvent!.sendTokensEvent(
+          repEvent.event!.eventId,
+          widget._event.room,
+          MatrixState.pangeaController.languageController.userL1!.langCode,
+          MatrixState.pangeaController.languageController.userL2!.langCode,
+        );
+      }
+      // If repEvent is originalSent but it's missing tokens, then fetch tokens.
+      // An edge case, but has happened with some bot message.
+      else if (repEvent != null &&
+          repEvent.tokens == null &&
+          repEvent.content.originalSent) {
+        final tokens = await repEvent.tokensGlobal(
           pangeaMessageEvent!.senderId,
-          pangeaMessageEvent!.originServerTs,
+          pangeaMessageEvent!.event.originServerTs,
+        );
+        await pangeaMessageEvent!.room.pangeaSendTextEvent(
+          pangeaMessageEvent!.messageDisplayText,
+          editEventId: pangeaMessageEvent!.eventId,
+          originalSent: pangeaMessageEvent!.originalSent?.content,
+          originalWritten: pangeaMessageEvent!.originalWritten?.content,
+          tokensSent: PangeaMessageTokens(tokens: tokens),
+          choreo: pangeaMessageEvent!.originalSent?.choreo,
         );
       }
     } catch (e, s) {
@@ -169,12 +217,28 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
   }
 
+  void onRequestForMeaningChallenge() {
+    if (messageAnalyticsEntry == null) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(
+        e: "MessageAnalyticsEntry is null in onRequestForMeaningChallenge",
+        data: {},
+      );
+      return;
+    }
+    messageAnalyticsEntry!.addMessageMeaningActivity();
+
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
   bool get messageInUserL2 =>
       pangeaMessageEvent?.messageDisplayLangCode ==
       MatrixState.pangeaController.languageController.userL2?.langCode;
 
   Future<void> _setInitialToolbarMode() async {
-    if (widget._pangeaMessageEvent?.isAudioMessage ?? false) {
+    if (pangeaMessageEvent?.isAudioMessage ?? false) {
       toolbarMode = MessageMode.speechToText;
       return setState(() {});
     }
@@ -236,8 +300,12 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// When an activity is completed, we need to update the state
   /// and check if the toolbar should be unlocked
-  void onActivityFinish() {
+  void onActivityFinish(ActivityTypeEnum activityType) {
     messageAnalyticsEntry!.onActivityComplete();
+    if (activityType == ActivityTypeEnum.messageMeaning) {
+      updateToolbarMode(MessageMode.wordZoom);
+    }
+
     if (!mounted) return;
     setState(() {});
   }
@@ -269,11 +337,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// If there is a selectedSpan, then the target is the selected text
   String get targetText {
     if (_selectedSpan == null || pangeaMessageEvent == null) {
-      return widget._pangeaMessageEvent?.messageDisplayText ??
-          widget._event.body;
+      return pangeaMessageEvent?.messageDisplayText ?? widget._event.body;
     }
 
-    return widget._pangeaMessageEvent!.messageDisplayText.substring(
+    return pangeaMessageEvent!.messageDisplayText.substring(
       _selectedSpan!.offset,
       _selectedSpan!.offset + _selectedSpan!.length,
     );
@@ -306,7 +373,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     );
   }
 
-  PangeaToken? get selectedToken => tokens?.firstWhereOrNull(isTokenSelected);
+  PangeaToken? get selectedToken =>
+      pangeaMessageEvent?.messageDisplayRepresentation?.tokens
+          ?.firstWhereOrNull(isTokenSelected);
 
   /// Whether the overlay is currently displaying a selection
   bool get isSelection => _selectedSpan != null || _highlightedTokens != null;

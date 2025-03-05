@@ -19,6 +19,7 @@ import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/learning_settings/utils/language_list_util.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -276,10 +277,15 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                       PLanguageDropdown(
                         languages: MatrixState
                             .pangeaController.pLanguageStore.baseOptions,
-                        onChange: (val) =>
-                            _selectedLanguageOfInstructions = val.langCode,
-                        initialLanguage: MatrixState
-                            .pangeaController.languageController.userL1,
+                        onChange: (val) => setState(
+                          () => _selectedLanguageOfInstructions = val.langCode,
+                        ),
+                        initialLanguage: _selectedLanguageOfInstructions != null
+                            ? PangeaLanguage.byLangCode(
+                                _selectedLanguageOfInstructions!,
+                              )
+                            : MatrixState
+                                .pangeaController.languageController.userL1,
                         isL2List: false,
                         decorationText:
                             L10n.of(context).languageOfInstructionsLabel,
@@ -288,10 +294,15 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                       PLanguageDropdown(
                         languages: MatrixState
                             .pangeaController.pLanguageStore.targetOptions,
-                        onChange: (val) =>
-                            _selectedTargetLanguage = val.langCode,
-                        initialLanguage: MatrixState
-                            .pangeaController.languageController.userL2,
+                        onChange: (val) => setState(
+                          () => _selectedTargetLanguage = val.langCode,
+                        ),
+                        initialLanguage: _selectedTargetLanguage != null
+                            ? PangeaLanguage.byLangCode(
+                                _selectedTargetLanguage!,
+                              )
+                            : MatrixState
+                                .pangeaController.languageController.userL2,
                         decorationText: L10n.of(context).targetLanguageLabel,
                         isL2List: true,
                       ),
@@ -300,7 +311,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                         decoration: InputDecoration(
                           labelText: l10n.numberOfLearners,
                         ),
-                        keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.done,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return l10n.mustBeInteger;
@@ -314,6 +325,13 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                         onChanged: (val) =>
                             _selectedNumberOfParticipants = int.tryParse(val),
                         initialValue: _selectedNumberOfParticipants?.toString(),
+                        onTapOutside: (_) =>
+                            FocusManager.instance.primaryFocus?.unfocus(),
+                        onFieldSubmitted: (_) {
+                          if (_formKey.currentState?.validate() ?? false) {
+                            _generateActivities();
+                          }
+                        },
                       ),
                       const SizedBox(height: 24),
                       ElevatedButton(

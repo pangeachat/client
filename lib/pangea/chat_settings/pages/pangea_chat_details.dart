@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
@@ -21,6 +20,8 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -37,20 +38,20 @@ class PangeaChatDetailsView extends StatelessWidget {
         Matrix.of(context).client.getRoomById(controller.roomId!);
     if (room == null) return;
 
-    final type = await showConfirmationDialog(
+    final type = await showModalActionPopup(
       context: context,
       title: L10n.of(context).downloadGroupText,
       actions: [
-        AlertDialogAction(
-          key: DownloadType.csv,
+        AdaptiveModalAction(
+          value: DownloadType.csv,
           label: L10n.of(context).downloadCSVFile,
         ),
-        AlertDialogAction(
-          key: DownloadType.txt,
+        AdaptiveModalAction(
+          value: DownloadType.txt,
           label: L10n.of(context).downloadTxtFile,
         ),
-        AlertDialogAction(
-          key: DownloadType.xlsx,
+        AdaptiveModalAction(
+          value: DownloadType.xlsx,
           label: L10n.of(context).downloadXLSXFile,
         ),
       ],
@@ -238,7 +239,9 @@ class PangeaChatDetailsView extends StatelessWidget {
                               ),
                               child: SelectableLinkify(
                                 text: room.topic.isEmpty
-                                    ? L10n.of(context).noChatDescriptionYet
+                                    ? room.isSpace
+                                        ? L10n.of(context).noSpaceDescriptionYet
+                                        : L10n.of(context).noChatDescriptionYet
                                     : room.topic,
                                 options: const LinkifyOptions(humanize: false),
                                 linkStyle: const TextStyle(
@@ -286,7 +289,8 @@ class PangeaChatDetailsView extends StatelessWidget {
                                 Icons.person_add_outlined,
                               ),
                             ),
-                            onTap: () => context.go('/rooms/${room.id}/invite'),
+                            onTap: () =>
+                                context.push('/rooms/${room.id}/invite'),
                           ),
                         if (room.canInvite && !room.isDirectChat)
                           Divider(color: theme.dividerColor, height: 1),
@@ -334,10 +338,11 @@ class PangeaChatDetailsView extends StatelessWidget {
                             room.isSpace &&
                             room.spaceParents.isEmpty)
                           Divider(color: theme.dividerColor, height: 1),
-                        RoomCapacityButton(
-                          room: room,
-                          controller: controller,
-                        ),
+                        if (!room.isSpace)
+                          RoomCapacityButton(
+                            room: room,
+                            controller: controller,
+                          ),
                         if (room.isSpace && room.isRoomAdmin && kIsWeb)
                           DownloadAnalyticsButton(space: room),
                         Divider(color: theme.dividerColor, height: 1),
@@ -404,49 +409,26 @@ class PangeaChatDetailsView extends StatelessWidget {
                             ),
                           ),
                           onTap: () async {
-                            var confirmed = OkCancelResult.ok;
-                            var shouldGo = false;
-                            // If user is only admin, room will be archived
-                            final onlyAdmin = await room.isOnlyAdmin();
-                            // archiveSpace has its own popup; only show if not space
-                            if (!room.isSpace) {
-                              confirmed = await showOkCancelAlertDialog(
-                                useRootNavigator: false,
-                                context: context,
-                                title: L10n.of(context).areYouSure,
-                                okLabel: L10n.of(context).ok,
-                                cancelLabel: L10n.of(context).cancel,
-                                message: onlyAdmin
-                                    ? L10n.of(context).onlyAdminDescription
-                                    : L10n.of(context).leaveRoomDescription,
-                              );
-                            }
-                            if (confirmed == OkCancelResult.ok) {
-                              if (room.isSpace) {
-                                shouldGo = onlyAdmin
-                                    ? await room.archiveSpace(
-                                        context,
-                                        Matrix.of(context).client,
-                                        onlyAdmin: true,
-                                      )
-                                    : await room.leaveSpace(
-                                        context,
-                                        Matrix.of(context).client,
-                                      );
-                              } else {
-                                final success = await showFutureLoadingDialog(
-                                  context: context,
-                                  future: () async {
-                                    onlyAdmin
-                                        ? await room.archive()
-                                        : await room.leave();
-                                  },
-                                );
-                                shouldGo = (success.error == null);
-                              }
-                              if (shouldGo) {
-                                context.go('/rooms');
-                              }
+                            final confirmed = await showOkCancelAlertDialog(
+                              useRootNavigator: false,
+                              context: context,
+                              title: L10n.of(context).areYouSure,
+                              okLabel: L10n.of(context).leave,
+                              cancelLabel: L10n.of(context).no,
+                              message: room.isSpace
+                                  ? L10n.of(context).leaveSpaceDescription
+                                  : L10n.of(context).leaveRoomDescription,
+                              isDestructive: true,
+                            );
+                            if (confirmed != OkCancelResult.ok) return;
+                            final resp = await showFutureLoadingDialog(
+                              context: context,
+                              future:
+                                  room.isSpace ? room.leaveSpace : room.leave,
+                            );
+                            if (!resp.isError) {
+                              MatrixState.pangeaController.classController
+                                  .setActiveSpaceIdInChatListController(null);
                             }
                           },
                         ),
@@ -454,7 +436,7 @@ class PangeaChatDetailsView extends StatelessWidget {
                         ListTile(
                           title: Text(
                             L10n.of(context).countParticipants(
-                              actualMembersCount.toString(),
+                              actualMembersCount,
                             ),
                             style: TextStyle(
                               color: theme.colorScheme.secondary,
@@ -469,7 +451,7 @@ class PangeaChatDetailsView extends StatelessWidget {
                       : ListTile(
                           title: Text(
                             L10n.of(context).loadCountMoreParticipants(
-                              (actualMembersCount - members.length).toString(),
+                              (actualMembersCount - members.length),
                             ),
                           ),
                           leading: CircleAvatar(

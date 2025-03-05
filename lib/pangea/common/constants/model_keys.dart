@@ -15,7 +15,7 @@ class ModelKey {
   static const String userInterests = 'interests';
   static const String l2LanguageKey = 'target_language';
   static const String l1LanguageKey = 'source_language';
-  static const String publicProfile = 'public';
+  static const String publicProfile = 'public_profile';
   static const String userId = 'user_id';
   static const String toolSettings = 'tool_settings';
   static const String userSettings = 'user_settings';
@@ -92,6 +92,7 @@ class ModelKey {
   /// something built in to matrix? should talk about this
   static const String messageTags = "p.tag";
   static const String messageTagMorphEdit = "morph_edit";
+  static const String messageTagLemmaEdit = "lemma_edit";
   static const String messageTagActivityPlan = "activity_plan";
 
   static const String baseDefinition = "base_definition";
@@ -151,4 +152,8 @@ class ModelKey {
   static const String latestBuildNumber = "latest_build_number";
   static const String mandatoryUpdate = "mandatory_update";
   static const String emoji = "emoji";
+
+  static const String analytics = "analytics";
+  static const String level = "level";
+  static const String xpOffset = "xp_offset";
 }

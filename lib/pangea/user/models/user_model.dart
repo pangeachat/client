@@ -12,10 +12,10 @@ import '../../learning_settings/models/language_model.dart';
 class UserSettings {
   DateTime? dateOfBirth;
   DateTime? createdAt;
-  bool autoPlayMessages;
+  bool? autoPlayMessages;
   // bool itAutoPlay;
   bool activatedFreeTrial;
-  bool publicProfile;
+  bool? publicProfile;
   String? targetLanguage;
   String? sourceLanguage;
   String? country;
@@ -25,10 +25,10 @@ class UserSettings {
   UserSettings({
     this.dateOfBirth,
     this.createdAt,
-    this.autoPlayMessages = false,
+    this.autoPlayMessages,
     // this.itAutoPlay = true,
     this.activatedFreeTrial = false,
-    this.publicProfile = false,
+    this.publicProfile,
     this.targetLanguage,
     this.sourceLanguage,
     this.country,
@@ -43,10 +43,10 @@ class UserSettings {
         createdAt: json[ModelKey.userCreatedAt] != null
             ? DateTime.parse(json[ModelKey.userCreatedAt])
             : null,
-        autoPlayMessages: json[ModelKey.autoPlayMessages] ?? false,
+        autoPlayMessages: json[ModelKey.autoPlayMessages],
         // itAutoPlay: json[ModelKey.itAutoPlay] ?? true,
         activatedFreeTrial: json[ModelKey.activatedTrialKey] ?? false,
-        publicProfile: json[ModelKey.publicProfile] ?? false,
+        publicProfile: json[ModelKey.publicProfile],
         targetLanguage: json[ModelKey.l2LanguageKey],
         sourceLanguage: json[ModelKey.l1LanguageKey],
         country: json[ModelKey.userCountry],
@@ -128,6 +128,21 @@ class UserSettings {
           as String?,
     );
   }
+
+  UserSettings copy() {
+    return UserSettings(
+      dateOfBirth: dateOfBirth,
+      createdAt: createdAt,
+      autoPlayMessages: autoPlayMessages,
+      activatedFreeTrial: activatedFreeTrial,
+      publicProfile: publicProfile,
+      targetLanguage: targetLanguage,
+      sourceLanguage: sourceLanguage,
+      country: country,
+      hasJoinedHelpSpace: hasJoinedHelpSpace,
+      cefrLevel: cefrLevel,
+    );
+  }
 }
 
 /// The user's language tool settings.
@@ -138,6 +153,7 @@ class UserToolSettings {
   bool definitions;
   bool autoIGC;
   bool enableTTS;
+  bool enableAutocorrect;
 
   UserToolSettings({
     this.interactiveTranslator = true,
@@ -146,6 +162,7 @@ class UserToolSettings {
     this.definitions = true,
     this.autoIGC = true,
     this.enableTTS = true,
+    this.enableAutocorrect = false,
   });
 
   factory UserToolSettings.fromJson(Map<String, dynamic> json) =>
@@ -158,6 +175,7 @@ class UserToolSettings {
         definitions: json[ToolSetting.definitions.toString()] ?? true,
         autoIGC: json[ToolSetting.autoIGC.toString()] ?? true,
         enableTTS: json[ToolSetting.enableTTS.toString()] ?? true,
+        enableAutocorrect: json["enableAutocorrect"] ?? false,
       );
 
   Map<String, dynamic> toJson() {
@@ -168,6 +186,7 @@ class UserToolSettings {
     data[ToolSetting.definitions.toString()] = definitions;
     data[ToolSetting.autoIGC.toString()] = autoIGC;
     data[ToolSetting.enableTTS.toString()] = enableTTS;
+    data["enableAutocorrect"] = enableAutocorrect;
     return data;
   }
 
@@ -194,6 +213,18 @@ class UserToolSettings {
           true,
     );
   }
+
+  UserToolSettings copy() {
+    return UserToolSettings(
+      interactiveTranslator: interactiveTranslator,
+      interactiveGrammar: interactiveGrammar,
+      immersionMode: immersionMode,
+      definitions: definitions,
+      autoIGC: autoIGC,
+      enableTTS: enableTTS,
+      enableAutocorrect: enableAutocorrect,
+    );
+  }
 }
 
 /// A wrapper around the matrix account data for the user profile.
@@ -213,9 +244,7 @@ class Profile {
   }
 
   /// Load an instance of profile from the client's account data.
-  static Profile? fromAccountData() {
-    final profileData = MatrixState.pangeaController.matrixState.client
-        .accountData[ModelKey.userProfile]?.content;
+  static Profile? fromAccountData(Map<String, Object?>? profileData) {
     if (profileData == null) return null;
 
     final userSettingsContent = profileData[ModelKey.userSettings];
@@ -307,6 +336,14 @@ class Profile {
       instructionSettings: InstructionSettings(),
     );
   }
+
+  Profile copy() {
+    return Profile(
+      userSettings: userSettings.copy(),
+      toolSettings: toolSettings.copy(),
+      instructionSettings: instructionSettings.copy(),
+    );
+  }
 }
 
 /// Model of data from pangea chat server. Not used anymore, in favor of matrix account data.
@@ -319,7 +356,7 @@ class PangeaProfile {
   String? sourceLanguage;
 
   String? country;
-  bool publicProfile;
+  bool? publicProfile;
 
   PangeaProfile({
     required this.createdAt,
@@ -328,7 +365,7 @@ class PangeaProfile {
     this.targetLanguage,
     this.sourceLanguage,
     this.country,
-    this.publicProfile = false,
+    this.publicProfile,
   });
 
   factory PangeaProfile.fromJson(Map<String, dynamic> json) {
@@ -345,7 +382,7 @@ class PangeaProfile {
       dateOfBirth: json[ModelKey.userDateOfBirth],
       targetLanguage: l2,
       sourceLanguage: l1,
-      publicProfile: json[ModelKey.publicProfile] ?? false,
+      publicProfile: json[ModelKey.publicProfile],
       country: json[ModelKey.userCountry],
     );
   }

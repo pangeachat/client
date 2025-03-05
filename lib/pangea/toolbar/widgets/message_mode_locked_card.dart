@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 
 class MessageModeLockedCard extends StatelessWidget {
-  const MessageModeLockedCard({super.key});
+  final MessageOverlayController controller;
+
+  const MessageModeLockedCard({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {

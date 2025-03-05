@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -20,7 +17,6 @@ void chatListHandleSpaceTap(
   ChatListController controller,
   Room space,
 ) {
-  final PangeaController pangeaController = MatrixState.pangeaController;
   void setActiveSpaceAndCloseChat() {
     controller.setActiveSpace(space.id);
 
@@ -37,57 +33,9 @@ void chatListHandleSpaceTap(
       context: context,
       future: () async {
         await space.join();
-        if (await space.leaveIfFull()) {
-          throw L10n.of(context).roomFull;
-        }
         setActiveSpaceAndCloseChat();
       },
     );
-  }
-
-  //show alert dialog prompting user to accept invite or reject
-  //if accepted, setActiveSpaceAndCloseChat()
-  //if rejected, leave space
-  // use standard alert diolog, not cupertino
-  Future<void> showAlertDialog(BuildContext context) async {
-    final acceptInvite = await showOkCancelAlertDialog(
-      context: context,
-      title: L10n.of(context).youreInvited,
-      message: space.isSpace
-          ? L10n.of(context)
-              .invitedToSpace(space.name, space.creatorId ?? "???")
-          : L10n.of(context)
-              .invitedToChat(space.name, space.creatorId ?? "???"),
-      okLabel: L10n.of(context).accept,
-      cancelLabel: L10n.of(context).decline,
-    );
-
-    if (acceptInvite == OkCancelResult.ok) {
-      await showFutureLoadingDialog(
-        context: context,
-        future: () async {
-          await space.join();
-          if (await space.leaveIfFull()) {
-            throw L10n.of(context).roomFull;
-          }
-          setActiveSpaceAndCloseChat();
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(L10n.of(context).acceptedInvitation),
-              duration: const Duration(seconds: 3),
-            ),
-          );
-        },
-      );
-    } else {
-      await space.leave();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(L10n.of(context).declinedInvitation),
-          duration: const Duration(seconds: 3),
-        ),
-      );
-    }
   }
 
   switch (space.membership) {
@@ -102,15 +50,16 @@ void chatListHandleSpaceTap(
             (element) =>
                 element.isSpace && element.membership == Membership.join,
           );
-      final justInputtedCode = pangeaController.pStoreService
-          .read(PLocalKey.justInputtedCode, isAccountData: false);
+      final justInputtedCode = MatrixState
+          .pangeaController.classController.chatBox
+          .read(PLocalKey.justInputtedCode);
       if (rooms.any((s) => s.spaceChildren.any((c) => c.roomId == space.id))) {
         autoJoin(space);
       } else if (justInputtedCode != null &&
           justInputtedCode == space.classCode(context)) {
         // do nothing
       } else {
-        showAlertDialog(context);
+        controller.showInviteDialog(space);
       }
       break;
     case Membership.leave:

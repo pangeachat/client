@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:adaptive_dialog/adaptive_dialog.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -13,6 +11,7 @@ import 'package:fluffychat/pangea/subscription/controllers/subscription_controll
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription_view.dart';
 import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionManagement extends StatefulWidget {
@@ -26,9 +25,12 @@ class SubscriptionManagement extends StatefulWidget {
 class SubscriptionManagementController extends State<SubscriptionManagement> {
   final SubscriptionController subscriptionController =
       MatrixState.pangeaController.subscriptionController;
+
   SubscriptionDetails? selectedSubscription;
-  late StreamSubscription _settingsSubscription;
   StreamSubscription? _subscriptionStatusStream;
+  bool loading = false;
+
+  late StreamSubscription _settingsSubscription;
 
   @override
   void initState() {
@@ -100,23 +102,26 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
         .currentSubscriptionInfo!.currentPlatformMatchesPurchasePlatform;
   }
 
-  void submitChange({bool isPromo = false}) {
-    try {
-      subscriptionController.submitSubscriptionChange(
-        selectedSubscription,
+  Future<void> submitChange(
+    SubscriptionDetails subscription, {
+    bool isPromo = false,
+  }) async {
+    setState(() => loading = true);
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async => subscriptionController.submitSubscriptionChange(
+        subscription,
         context,
         isPromo: isPromo,
-      );
-      setState(() {
-        selectedSubscription = null;
-      });
-    } catch (err) {
-      showOkAlertDialog(
-        context: context,
-        title: L10n.of(context).oopsSomethingWentWrong,
-        message: L10n.of(context).errorPleaseRefresh,
-        okLabel: L10n.of(context).close,
-      );
+      ),
+      onError: (error, s) {
+        setState(() => loading = false);
+        return null;
+      },
+    );
+
+    if (mounted && loading) {
+      setState(() => loading = false);
     }
   }
 
@@ -168,6 +173,10 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
   }
 
   void selectSubscription(SubscriptionDetails? subscription) {
+    if (selectedSubscription == subscription) {
+      setState(() => selectedSubscription = null);
+      return;
+    }
     setState(() => selectedSubscription = subscription);
   }
 

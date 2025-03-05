@@ -1,55 +1,7 @@
 part of "pangea_room_extension.dart";
 
 extension ChildrenAndParentsRoomExtension on Room {
-  //note this only will return rooms that the user has joined or been invited to
-  List<Room> get _joinedChildren {
-    if (!isSpace) return [];
-    return spaceChildren
-        .where((child) => child.roomId != null)
-        .map(
-          (child) => client.getRoomById(child.roomId!),
-        )
-        .where((child) => child != null)
-        .cast<Room>()
-        .where(
-          (child) => child.membership == Membership.join,
-        )
-        .toList();
-  }
-
-  Future<List<Room>> _getChildRooms() async {
-    final List<Room> children = [];
-    for (final child in spaceChildren) {
-      if (child.roomId == null) continue;
-      final Room? room = client.getRoomById(child.roomId!);
-      if (room != null) {
-        children.add(room);
-      }
-    }
-    return children;
-  }
-
-  //resolve somehow if multiple rooms have the state?
-  //check logic
-  Room? _firstParentWithState(String stateType) {
-    if (![PangeaEventTypes.languageSettings, PangeaEventTypes.rules]
-        .contains(stateType)) {
-      return null;
-    }
-
-    for (final parent in pangeaSpaceParents) {
-      if (parent.getState(stateType) != null) {
-        return parent;
-      }
-    }
-    for (final parent in pangeaSpaceParents) {
-      final parentFirstRoom = parent.firstParentWithState(stateType);
-      if (parentFirstRoom != null) return parentFirstRoom;
-    }
-    return null;
-  }
-
-  List<Room> get _pangeaSpaceParents => client.rooms
+  List<Room> get pangeaSpaceParents => client.rooms
       .where(
         (r) => r.isSpace,
       )
@@ -63,7 +15,7 @@ extension ChildrenAndParentsRoomExtension on Room {
   /// Wrapper around call to setSpaceChild with added functionality
   /// to prevent adding one room to multiple spaces, and resets the
   /// subspace's JoinRules and Visibility to defaults.
-  Future<void> _pangeaSetSpaceChild(
+  Future<void> pangeaSetSpaceChild(
     String roomId, {
     bool? suggested,
   }) async {
@@ -73,7 +25,8 @@ extension ChildrenAndParentsRoomExtension on Room {
       throw NestedSpaceError();
     }
 
-    final List<Room> spaceParents = child.pangeaSpaceParents;
+    final List<Room> spaceParents =
+        ChildrenAndParentsRoomExtension(child).pangeaSpaceParents;
     for (final Room parent in spaceParents) {
       try {
         await parent.removeSpaceChild(roomId);
@@ -110,7 +63,7 @@ extension ChildrenAndParentsRoomExtension on Room {
   }
 
   /// A map of child suggestion status for a space.
-  Map<String, bool> get _spaceChildSuggestionStatus {
+  Map<String, bool> get spaceChildSuggestionStatus {
     if (!isSpace) return {};
     final Map<String, bool> suggestionStatus = {};
     for (final child in spaceChildren) {
@@ -118,6 +71,15 @@ extension ChildrenAndParentsRoomExtension on Room {
     }
     return suggestionStatus;
   }
+
+  /// The number of child rooms to display for a given space.
+  int get spaceChildCount => client.rooms
+      .where(
+        (r) => spaceChildren.any(
+          (child) => r.id == child.roomId && !r.isAnalyticsRoom,
+        ),
+      )
+      .length;
 }
 
 class NestedSpaceError extends Error {

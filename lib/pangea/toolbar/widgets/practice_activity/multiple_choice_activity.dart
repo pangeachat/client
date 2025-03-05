@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics/controllers/put_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics/utils/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
@@ -208,25 +208,28 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
   @override
   Widget build(BuildContext context) {
     final PracticeActivityModel practiceActivity = widget.currentActivity;
+    final question = practiceActivity.content.question;
 
     final content = Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          practiceActivity.content.question,
-          style: AppConfig.messageTextStyle(
-            widget.event,
-            Theme.of(context).colorScheme.primary,
-          ).merge(const TextStyle(fontStyle: FontStyle.italic)),
-        ),
+        if (question.isNotEmpty)
+          Text(
+            question,
+            textAlign: TextAlign.center,
+            style: AppConfig.messageTextStyle(
+              widget.event,
+              Theme.of(context).colorScheme.primary,
+            ).merge(const TextStyle(fontStyle: FontStyle.italic)),
+          ),
+        if (question.isNotEmpty) const SizedBox(height: 8.0),
         const SizedBox(height: 8),
         if (practiceActivity.activityType ==
             ActivityTypeEnum.wordFocusListening)
           WordAudioButton(
             text: practiceActivity.content.answers.first,
             ttsController: tts,
-            eventID: widget.event.eventId,
           ),
         if (practiceActivity.activityType ==
             ActivityTypeEnum.hiddenWordListening)
@@ -256,7 +259,9 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
       ],
     );
 
-    return practiceActivity.activityType == ActivityTypeEnum.hiddenWordListening
+    return practiceActivity.activityType ==
+                ActivityTypeEnum.hiddenWordListening ||
+            practiceActivity.activityType == ActivityTypeEnum.messageMeaning
         ? ConstrainedBox(
             constraints: const BoxConstraints(
               // see https://github.com/pangeachat/client/issues/1422

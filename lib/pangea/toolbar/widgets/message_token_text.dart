@@ -1,23 +1,21 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics/controllers/message_analytics_controller.dart';
+import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/utils/message_text_util.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Question - does this need to be stateful or does this work?
 /// Need to test.
 class MessageTokenText extends StatelessWidget {
   final PangeaMessageEvent _pangeaMessageEvent;
-
-  final List<PangeaToken>? _tokens;
-
   final TextStyle _style;
 
   final bool Function(PangeaToken)? _isSelected;
@@ -33,8 +31,10 @@ class MessageTokenText extends StatelessWidget {
   })  : _onClick = onClick,
         _isSelected = isSelected,
         _style = style,
-        _tokens = tokens,
         _pangeaMessageEvent = pangeaMessageEvent;
+
+  List<PangeaToken>? get _tokens =>
+      _pangeaMessageEvent.messageDisplayRepresentation?.tokens;
 
   MessageAnalyticsEntry? get messageAnalyticsEntry => _tokens != null
       ? MatrixState.pangeaController.getAnalytics.perMessage.get(
@@ -43,6 +43,12 @@ class MessageTokenText extends StatelessWidget {
         )
       : null;
 
+  void callOnClick(TokenPosition tokenPosition) {
+    _onClick != null && tokenPosition.token != null
+        ? _onClick!(tokenPosition.token!)
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_tokens == null) {
@@ -50,12 +56,6 @@ class MessageTokenText extends StatelessWidget {
         _pangeaMessageEvent.messageDisplayText,
         style: _style,
       );
-    }
-
-    void callOnClick(TokenPosition tokenPosition) {
-      _onClick != null && tokenPosition.token != null
-          ? _onClick!(tokenPosition.token!)
-          : null;
     }
 
     return MessageTextWidget(
@@ -69,8 +69,18 @@ class MessageTokenText extends StatelessWidget {
 }
 
 class TokenPosition {
+  /// Start index of the full substring in the message
   final int start;
+
+  /// End index of the full substring in the message
   final int end;
+
+  /// Start index of the token in the message
+  final int tokenStart;
+
+  /// End index of the token in the message
+  final int tokenEnd;
+
   final bool selected;
   final bool hideContent;
   final PangeaToken? token;
@@ -78,6 +88,8 @@ class TokenPosition {
   const TokenPosition({
     required this.start,
     required this.end,
+    required this.tokenStart,
+    required this.tokenEnd,
     required this.hideContent,
     required this.selected,
     this.token,
@@ -103,6 +115,8 @@ class HiddenText extends StatelessWidget {
 
     final textWidth = textPainter.size.width;
     final textHeight = textPainter.size.height;
+
+    textPainter.dispose();
 
     return SizedBox(
       height: textHeight,
@@ -171,7 +185,18 @@ class MessageTextWidget extends StatelessWidget {
       );
     }
 
-    final hasHiddenTokens = tokenPositions.any((t) => t.hideContent);
+    final hideTokenHighlights = messageAnalyticsEntry != null &&
+        (messageAnalyticsEntry!.hasHiddenWordActivity ||
+            messageAnalyticsEntry!.hasMessageMeaningActivity);
+
+    final theme = Theme.of(context);
+    final ownMessage =
+        pangeaMessageEvent.senderId == Matrix.of(context).client.userID;
+    final linkColor = theme.brightness == Brightness.light
+        ? theme.colorScheme.primary
+        : ownMessage
+            ? theme.colorScheme.onPrimary
+            : theme.colorScheme.onSurface;
 
     return RichText(
       softWrap: softWrap ?? true,
@@ -180,12 +205,12 @@ class MessageTextWidget extends StatelessWidget {
       text: TextSpan(
         children:
             tokenPositions.mapIndexed((int i, TokenPosition tokenPosition) {
-          final shouldDo = tokenPosition.token?.shouldDoActivity(
-                a: ActivityTypeEnum.wordMeaning,
-                feature: null,
-                tag: null,
-              ) ??
-              false;
+          final shouldDo = pangeaMessageEvent.shouldDoActivity(
+            token: tokenPosition.token,
+            a: ActivityTypeEnum.wordMeaning,
+            feature: null,
+            tag: null,
+          );
 
           final didMeaningActivity =
               tokenPosition.token?.didActivitySuccessfully(
@@ -199,7 +224,7 @@ class MessageTextWidget extends StatelessWidget {
               .toString();
 
           Color backgroundColor = Colors.transparent;
-          if (!hasHiddenTokens) {
+          if (!hideTokenHighlights) {
             if (tokenPosition.selected) {
               backgroundColor = AppConfig.primaryColor.withAlpha(80);
             } else if (isSelected != null && shouldDo) {
@@ -220,14 +245,73 @@ class MessageTextWidget extends StatelessWidget {
                 ),
               );
             }
-            return TextSpan(
-              recognizer: TapGestureRecognizer()
-                ..onTap =
-                    onClick != null ? () => onClick?.call(tokenPosition) : null,
-              text: substring,
-              style: style.merge(
-                TextStyle(
-                  backgroundColor: backgroundColor,
+
+            // if the tokenPosition is a combination of the token and preceding / following punctuation
+            // split them so that only the token itself is highlighted when clicked
+            String start = '';
+            String middle = '';
+            String end = '';
+
+            final startSplitIndex =
+                tokenPosition.tokenStart - tokenPosition.start;
+            final endSplitIndex = tokenPosition.tokenEnd - tokenPosition.start;
+
+            start = substring.characters.take(startSplitIndex).toString();
+            end = substring.characters.skip(endSplitIndex).toString();
+            middle = substring.characters
+                .skip(startSplitIndex)
+                .take(endSplitIndex)
+                .toString();
+
+            return WidgetSpan(
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: GestureDetector(
+                  onTap: onClick != null
+                      ? () => onClick?.call(tokenPosition)
+                      : null,
+                  child: RichText(
+                    text: TextSpan(
+                      children: [
+                        if (start.isNotEmpty)
+                          LinkifySpan(
+                            text: start,
+                            style: style,
+                            linkStyle: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: linkColor,
+                            ),
+                            onOpen: (url) =>
+                                UrlLauncher(context, url.url).launchUrl(),
+                          ),
+                        LinkifySpan(
+                          text: middle,
+                          style: style.merge(
+                            TextStyle(
+                              backgroundColor: backgroundColor,
+                            ),
+                          ),
+                          linkStyle: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: linkColor,
+                          ),
+                          onOpen: (url) =>
+                              UrlLauncher(context, url.url).launchUrl(),
+                        ),
+                        if (end.isNotEmpty)
+                          LinkifySpan(
+                            text: end,
+                            style: style,
+                            linkStyle: TextStyle(
+                              decoration: TextDecoration.underline,
+                              color: linkColor,
+                            ),
+                            onOpen: (url) =>
+                                UrlLauncher(context, url.url).launchUrl(),
+                          ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
             );
@@ -244,9 +328,15 @@ class MessageTextWidget extends StatelessWidget {
                 ),
               );
             }
-            return TextSpan(
+            return LinkifySpan(
               text: substring,
               style: style,
+              options: const LinkifyOptions(humanize: false),
+              linkStyle: TextStyle(
+                decoration: TextDecoration.underline,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
             );
           }
         }).toList(),

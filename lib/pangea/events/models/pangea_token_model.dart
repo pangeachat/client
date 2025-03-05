@@ -5,26 +5,26 @@ import 'package:flutter/foundation.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/analytics/constants/analytics_constants.dart';
-import 'package:fluffychat/pangea/analytics/enums/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics/enums/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics/enums/lemma_category_enum.dart';
-import 'package:fluffychat/pangea/analytics/extensions/client_analytics_extension.dart';
-import 'package:fluffychat/pangea/analytics/models/construct_use_model.dart';
-import 'package:fluffychat/pangea/analytics/models/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics/repo/lemma_info_repo.dart';
-import 'package:fluffychat/pangea/analytics/repo/lemma_info_request.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
 import 'package:fluffychat/pangea/toolbar/repo/lemma_activity_generator.dart';
 import 'package:fluffychat/pangea/toolbar/repo/lemma_meaning_activity_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../analytics/models/lemma.dart';
 import '../../common/constants/model_keys.dart';
+import '../../lemmas/lemma.dart';
 
 class PangeaToken {
   PangeaTokenText text;
@@ -213,6 +213,30 @@ class PangeaToken {
     );
   }
 
+  List<OneConstructUse> allUses(
+    ConstructUseTypeEnum type,
+    ConstructUseMetaData metadata,
+  ) {
+    final List<OneConstructUse> uses = [];
+    if (!lemma.saveVocab) return uses;
+
+    uses.add(toVocabUse(type, metadata));
+    for (final morphFeature in morph.keys) {
+      uses.add(
+        OneConstructUse(
+          useType: type,
+          lemma: morph[morphFeature],
+          form: text.content,
+          constructType: ConstructTypeEnum.morph,
+          metadata: metadata,
+          category: morphFeature,
+        ),
+      );
+    }
+
+    return uses;
+  }
+
   bool isActivityBasicallyEligible(
     ActivityTypeEnum a, [
     String? morphFeature,
@@ -238,6 +262,7 @@ class PangeaToken {
         return lemma.saveVocab &&
             text.content.toLowerCase() != lemma.text.toLowerCase();
       case ActivityTypeEnum.emoji:
+      case ActivityTypeEnum.messageMeaning:
         return true;
       case ActivityTypeEnum.morphId:
         return morph.isNotEmpty && canGenerate;
@@ -299,6 +324,7 @@ class PangeaToken {
             .any((u) => u == a.correctUse);
       // Note that it matters less if they did morphId in general, than if they did it with the particular feature
       case ActivityTypeEnum.morphId:
+        // TODO: investigate if we take out condition "|| morphTag == null", will we get the expected number of morph activities?
         if (morphFeature == null || morphTag == null) {
           debugger(when: kDebugMode);
           return false;
@@ -306,6 +332,13 @@ class PangeaToken {
         return morphConstruct(morphFeature, morphTag)
             .uses
             .any((u) => u.useType == a.correctUse && u.form == text.content);
+      case ActivityTypeEnum.messageMeaning:
+        debugger(when: kDebugMode);
+        ErrorHandler.logError(
+          m: "should not call didActivitySuccessfully for ActivityTypeEnum.messageMeaning",
+          data: toJson(),
+        );
+        return true;
     }
   }
 
@@ -316,14 +349,23 @@ class PangeaToken {
   ]) {
     switch (a) {
       case ActivityTypeEnum.wordMeaning:
-        if (daysSinceLastUseByType(ActivityTypeEnum.wordMeaning) < 7) {
+        if (daysSinceLastUseByType(ActivityTypeEnum.wordMeaning) < 7 ||
+            daysSinceLastUseByType(ActivityTypeEnum.messageMeaning) < 7) {
+          return false;
+        }
+
+        // if last used less than 1 day ago, return false
+        // this is largely to account for cases of sending a message with some
+        // error that gets you negative points for it
+        if (vocabConstruct.lastUsed != null &&
+            DateTime.now().difference(vocabConstruct.lastUsed!).inDays < 1) {
           return false;
         }
 
         if (isContentWord) {
-          return vocabConstruct.points < 3;
+          return vocabConstruct.points < 1;
         } else if (canBeDefined) {
-          return vocabConstruct.points < 2;
+          return vocabConstruct.points < 1;
         } else {
           return false;
         }
@@ -342,6 +384,7 @@ class PangeaToken {
       // return _didActivitySuccessfully(ActivityTypeEnum.wordMeaning) &&
       //     daysSinceLastUseByType(a) > 7;
       case ActivityTypeEnum.emoji:
+      case ActivityTypeEnum.messageMeaning:
         return true;
       case ActivityTypeEnum.morphId:
         if (morphFeature == null || morphTag == null) {
@@ -351,16 +394,6 @@ class PangeaToken {
         return daysSinceLastUseMorph(morphFeature, morphTag) > 1 &&
             morphConstruct(morphFeature, morphTag).points < 5;
     }
-  }
-
-  bool get shouldDoPosActivity => shouldDoMorphActivity("pos");
-
-  bool shouldDoMorphActivity(String feature) {
-    return shouldDoActivity(
-      a: ActivityTypeEnum.morphId,
-      feature: feature,
-      tag: getMorphTag(feature),
-    );
   }
 
   /// Safely get morph tag for a given feature without regard for case
@@ -407,6 +440,7 @@ class PangeaToken {
       case ActivityTypeEnum.emoji:
       case ActivityTypeEnum.wordFocusListening:
       case ActivityTypeEnum.hiddenWordListening:
+      case ActivityTypeEnum.messageMeaning:
         return true;
     }
   }
@@ -425,22 +459,6 @@ class PangeaToken {
   }) {
     return isActivityBasicallyEligible(a, feature, tag) &&
         _isActivityProbablyLevelAppropriate(a, feature, tag);
-  }
-
-  List<ActivityTypeEnum> get eligibleActivityTypes {
-    final List<ActivityTypeEnum> eligibleActivityTypes = [];
-
-    if (!lemma.saveVocab) {
-      return eligibleActivityTypes;
-    }
-
-    for (final type in ActivityTypeEnum.values) {
-      if (shouldDoActivity(a: type, feature: null, tag: null)) {
-        eligibleActivityTypes.add(type);
-      }
-    }
-
-    return eligibleActivityTypes;
   }
 
   ConstructUses get vocabConstruct =>
@@ -541,14 +559,6 @@ class PangeaToken {
       .cast<ConstructUses>()
       .toList();
 
-  Map<String, dynamic> toServerChoiceTokenWithXP() {
-    return {
-      'token': toJson(),
-      'constructs_with_xp': constructs.map((e) => e.toJson()).toList(),
-      'target_types': eligibleActivityTypes.map((e) => e.string).toList(),
-    };
-  }
-
   Future<List<String>> getEmojiChoices() => LemmaInfoRepo.get(
         LemmaInfoRequest(
           lemma: lemma.text,
@@ -624,13 +634,13 @@ class PangeaToken {
     }
   }
 
-  LemmaCategoryEnum get lemmaXPCategory {
+  ConstructLevelEnum get lemmaXPCategory {
     if (vocabConstruct.points >= AnalyticsConstants.xpForFlower) {
-      return LemmaCategoryEnum.flowers;
+      return ConstructLevelEnum.flowers;
     } else if (vocabConstruct.points >= AnalyticsConstants.xpForGreens) {
-      return LemmaCategoryEnum.greens;
+      return ConstructLevelEnum.greens;
     } else {
-      return LemmaCategoryEnum.seeds;
+      return ConstructLevelEnum.seeds;
     }
   }
 

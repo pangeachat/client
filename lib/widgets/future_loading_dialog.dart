@@ -6,7 +6,7 @@ import 'package:async/async.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/widgets/adaptive_dialog_action.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 
 /// Displays a loading dialog which reacts to the given [future]. The dialog
 /// will be dismissed and the value will be returned when the future completes.
@@ -20,6 +20,10 @@ Future<Result<T>> showFutureLoadingDialog<T>({
   bool barrierDismissible = false,
   bool delay = true,
   ExceptionContext? exceptionContext,
+  // #Pangea
+  String? Function(Object, StackTrace?)? onError,
+  VoidCallback? onDismiss,
+  // Pangea#
 }) async {
   final futureExec = future();
   final resultFuture = ResultFuture(futureExec);
@@ -37,21 +41,36 @@ Future<Result<T>> showFutureLoadingDialog<T>({
     }
   }
 
-  final result = await showAdaptiveDialog<Result<T>>(
-    context: context,
-    barrierDismissible: barrierDismissible,
-    builder: (BuildContext context) => LoadingDialog<T>(
-      future: futureExec,
-      title: title,
-      backLabel: backLabel,
-      exceptionContext: exceptionContext,
-    ),
+  // #Pangea
+  if (context.mounted) {
+    // Pangea#
+    final result = await showAdaptiveDialog<Result<T>>(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      builder: (BuildContext context) => LoadingDialog<T>(
+        future: futureExec,
+        title: title,
+        backLabel: backLabel,
+        exceptionContext: exceptionContext,
+        // #Pangea
+        onError: onError,
+        onDismiss: onDismiss,
+        // Pangea#
+      ),
+    );
+    return result ??
+        Result.error(
+          Exception('FutureDialog canceled'),
+          StackTrace.current,
+        );
+  }
+
+  // #Pangea
+  return Result.error(
+    Exception('FutureDialog canceled'),
+    StackTrace.current,
   );
-  return result ??
-      Result.error(
-        Exception('FutureDialog canceled'),
-        StackTrace.current,
-      );
+  // Pangea#
 }
 
 class LoadingDialog<T> extends StatefulWidget {
@@ -59,6 +78,10 @@ class LoadingDialog<T> extends StatefulWidget {
   final String? backLabel;
   final Future<T> future;
   final ExceptionContext? exceptionContext;
+  // #Pangea
+  final String? Function(Object, StackTrace?)? onError;
+  final VoidCallback? onDismiss;
+  // Pangea#
 
   const LoadingDialog({
     super.key,
@@ -66,6 +89,10 @@ class LoadingDialog<T> extends StatefulWidget {
     this.title,
     this.backLabel,
     this.exceptionContext,
+    // #Pangea
+    this.onError,
+    this.onDismiss,
+    // Pangea#
   });
   @override
   LoadingDialogState<T> createState() => LoadingDialogState<T>();
@@ -79,11 +106,26 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
   void initState() {
     super.initState();
     widget.future.then(
-      (result) => Navigator.of(context).pop<Result<T>>(Result.value(result)),
-      onError: (e, s) => setState(() {
-        exception = e;
-        stackTrace = s;
-      }),
+      // #Pangea
+      // (result) => Navigator.of(context).pop<Result<T>>(Result.value(result)),
+      // onError: (e, s) => setState(() {
+      //   exception = e;
+      //   stackTrace = s;
+      // }),
+      (result) {
+        if (mounted && Navigator.of(context).canPop()) {
+          Navigator.of(context).pop<Result<T>>(Result.value(result));
+        }
+      },
+      onError: (e, s) {
+        if (mounted) {
+          setState(() {
+            exception = widget.onError?.call(e, s) ?? e;
+            stackTrace = s;
+          });
+        }
+      },
+      // Pangea#
     );
   }
 
@@ -123,7 +165,20 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
         ),
       ),
       actions: exception == null
-          ? null
+          // #Pangea
+          // ? null
+          ? widget.onDismiss != null
+              ? [
+                  AdaptiveDialogAction(
+                    onPressed: () {
+                      widget.onDismiss!();
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(L10n.of(context).cancel),
+                  ),
+                ]
+              : null
+          // Pangea#
           : [
               AdaptiveDialogAction(
                 onPressed: () => Navigator.of(context).pop<Result<T>>(

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_shortcuts/flutter_shortcuts.dart';
+import 'package:flutter_shortcuts_new/flutter_shortcuts_new.dart';
 import 'package:matrix/matrix.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,7 +16,6 @@ import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
-import 'package:fluffychat/utils/voip/callkeep_manager.dart';
 
 Future<void> pushHelper(
   PushNotification notification, {
@@ -121,9 +120,7 @@ Future<void> _tryPushHelper(
     client.backgroundSync = true;
   }
 
-  if (event.type == EventTypes.CallInvite) {
-    CallKeepManager().initialize();
-  } else if (event.type == EventTypes.CallHangup) {
+  if (event.type == EventTypes.CallHangup) {
     client.backgroundSync = false;
   }
 
@@ -201,6 +198,7 @@ Future<void> _tryPushHelper(
 
   final id = notification.roomId.hashCode;
 
+  final senderName = event.senderFromMemoryOrFallback.calcDisplayname();
   // Show notification
 
   final newMessage = Message(
@@ -209,7 +207,7 @@ Future<void> _tryPushHelper(
     Person(
       bot: event.messageType == MessageTypes.Notice,
       key: event.senderId,
-      name: event.senderFromMemoryOrFallback.calcDisplayname(),
+      name: senderName,
       icon: senderAvatarFile == null
           ? null
           : ByteArrayAndroidIcon(senderAvatarFile),
@@ -226,7 +224,10 @@ Future<void> _tryPushHelper(
 
   final notificationGroupId =
       event.room.isDirectChat ? 'directChats' : 'groupChats';
-  final groupName = event.room.isDirectChat ? l10n.directChats : l10n.groups;
+  // #Pangea
+  // final groupName = event.room.isDirectChat ? l10n.directChats : l10n.groups;
+  final groupName = event.room.isDirectChat ? l10n.directChats : l10n.chats;
+  // Pangea#
 
   final messageRooms = AndroidNotificationChannelGroup(
     notificationGroupId,
@@ -256,14 +257,14 @@ Future<void> _tryPushHelper(
     styleInformation: messagingStyleInformation ??
         MessagingStyleInformation(
           Person(
-            name: event.senderFromMemoryOrFallback.calcDisplayname(),
+            name: senderName,
             icon: roomAvatarFile == null
                 ? null
                 : ByteArrayAndroidIcon(roomAvatarFile),
             key: event.roomId,
             important: event.room.isFavourite,
           ),
-          conversationTitle: roomName,
+          conversationTitle: event.room.isDirectChat ? null : roomName,
           groupConversation: !event.room.isDirectChat,
           messages: [newMessage],
         ),

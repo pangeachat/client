@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
 
-import 'package:fluffychat/pangea/analytics/enums/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics/enums/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 
 enum ActivityTypeEnum {
   wordMeaning,
@@ -12,7 +12,8 @@ enum ActivityTypeEnum {
   hiddenWordListening,
   lemmaId,
   emoji,
-  morphId
+  morphId,
+  messageMeaning, // TODO: Add to L10n
 }
 
 extension ActivityTypeExtension on ActivityTypeEnum {
@@ -30,6 +31,8 @@ extension ActivityTypeExtension on ActivityTypeEnum {
         return 'emoji';
       case ActivityTypeEnum.morphId:
         return 'morph_id';
+      case ActivityTypeEnum.messageMeaning:
+        return 'message_meaning'; // TODO: Add to L10n
     }
   }
 
@@ -40,6 +43,7 @@ extension ActivityTypeExtension on ActivityTypeEnum {
       case ActivityTypeEnum.lemmaId:
       case ActivityTypeEnum.emoji:
       case ActivityTypeEnum.morphId:
+      case ActivityTypeEnum.messageMeaning:
         return false;
       case ActivityTypeEnum.hiddenWordListening:
         return true;
@@ -52,6 +56,7 @@ extension ActivityTypeExtension on ActivityTypeEnum {
       case ActivityTypeEnum.lemmaId:
       case ActivityTypeEnum.emoji:
       case ActivityTypeEnum.morphId:
+      case ActivityTypeEnum.messageMeaning:
         return false;
       case ActivityTypeEnum.wordFocusListening:
       case ActivityTypeEnum.hiddenWordListening:
@@ -82,6 +87,8 @@ extension ActivityTypeExtension on ActivityTypeEnum {
         return ActivityTypeEnum.emoji;
       case 'morph_id':
         return ActivityTypeEnum.morphId;
+      case 'message_meaning':
+        return ActivityTypeEnum.messageMeaning; // TODO: Add to L10n
       default:
         throw Exception('Unknown activity type: $split');
     }
@@ -121,6 +128,12 @@ extension ActivityTypeExtension on ActivityTypeEnum {
           ConstructUseTypeEnum.incM,
           ConstructUseTypeEnum.ignM,
         ];
+      case ActivityTypeEnum.messageMeaning:
+        return [
+          ConstructUseTypeEnum.corMM,
+          ConstructUseTypeEnum.incMM,
+          ConstructUseTypeEnum.ignMM,
+        ]; // TODO: Add to L10n
     }
   }
 
@@ -138,6 +151,8 @@ extension ActivityTypeExtension on ActivityTypeEnum {
         return ConstructUseTypeEnum.em;
       case ActivityTypeEnum.morphId:
         return ConstructUseTypeEnum.corM;
+      case ActivityTypeEnum.messageMeaning:
+        return ConstructUseTypeEnum.corMM;
     }
   }
 
@@ -149,6 +164,7 @@ extension ActivityTypeExtension on ActivityTypeEnum {
       case ActivityTypeEnum.hiddenWordListening:
       case ActivityTypeEnum.lemmaId:
       case ActivityTypeEnum.emoji:
+      case ActivityTypeEnum.messageMeaning:
         return (id) => id.type == ConstructTypeEnum.vocab;
       case ActivityTypeEnum.morphId:
         return (id) => id.type == ConstructTypeEnum.morph;
@@ -168,6 +184,8 @@ extension ActivityTypeExtension on ActivityTypeEnum {
         return Icons.emoji_emotions;
       case ActivityTypeEnum.morphId:
         return Icons.format_shapes;
+      case ActivityTypeEnum.messageMeaning:
+        return Icons.star; // TODO: Add to L10n
     }
   }
 }

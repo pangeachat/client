@@ -1,175 +1,43 @@
 part of "pangea_room_extension.dart";
 
 extension EventsRoomExtension on Room {
-  Future<bool> _leaveIfFull() async {
-    if (!isRoomAdmin &&
-        (_capacity != null) &&
-        (await _numNonAdmins) > (_capacity!)) {
-      if (!isSpace) {
-        markUnread(false);
-      }
-      await leave();
-      return true;
+  Future<void> leaveSpace() async {
+    if (!isSpace) {
+      debugPrint("room is not a space!");
+      return;
     }
-    return false;
-  }
 
-  Future<void> _archive() async {
-    final students = (await requestParticipants())
-        .where(
-          (e) =>
-              e.id != client.userID &&
-              e.powerLevel < SpaceConstants.powerLevelOfAdmin &&
-              e.id != BotName.byEnvironment,
-        )
-        .toList();
+    for (final child in spaceChildren) {
+      if (child.roomId == null) continue;
+      final Room? room = client.getRoomById(child.roomId!);
+      if (room == null || room.isAnalyticsRoom) continue;
+      try {
+        await room.leave();
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {
+            'roomID': room.id,
+          },
+        );
+      }
+    }
+
     try {
-      for (final student in students) {
-        await kick(student.id);
-      }
-      if (!isSpace && membership == Membership.join && isUnread) {
-        await markUnread(false);
-      }
       await leave();
-    } catch (err, s) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(e: err, s: s, data: toJson());
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'roomID': id,
+        },
+      );
     }
   }
 
-  Future<bool> _archiveSpace(
-    BuildContext context,
-    Client client, {
-    bool onlyAdmin = false,
-  }) async {
-    final confirmed = await showOkCancelAlertDialog(
-          useRootNavigator: false,
-          context: context,
-          title: L10n.of(context).areYouSure,
-          okLabel: L10n.of(context).yes,
-          cancelLabel: L10n.of(context).cancel,
-          message: onlyAdmin
-              ? L10n.of(context).onlyAdminDescription
-              : L10n.of(context).archiveSpaceDescription,
-        ) ==
-        OkCancelResult.ok;
-    if (!confirmed) return false;
-    final success = await showFutureLoadingDialog(
-      context: context,
-      future: () async {
-        final List<Room> children = await getChildRooms();
-        for (final Room child in children) {
-          if (!child.isAnalyticsRoom && !child.isArchived) {
-            if (child.membership != Membership.join) {
-              child.join;
-            }
-            if (child.isSpace) {
-              await child.archiveSubspace();
-            } else {
-              await child.archive();
-            }
-          }
-        }
-        await _archive();
-      },
-    );
-    MatrixState.pangeaController.classController
-        .setActiveSpaceIdInChatListController(
-      null,
-    );
-    return success.error == null;
-  }
-
-  Future<void> _archiveSubspace() async {
-    final List<Room> children = await getChildRooms();
-    for (final Room child in children) {
-      if (!child.isAnalyticsRoom && !child.isArchived) {
-        if (child.membership != Membership.join) {
-          child.join;
-        }
-        if (child.isSpace) {
-          await child.archiveSubspace();
-        } else {
-          await child.archive();
-        }
-      }
-    }
-    await _archive();
-  }
-
-  Future<bool> _leaveSpace(BuildContext context, Client client) async {
-    final confirmed = await showOkCancelAlertDialog(
-          useRootNavigator: false,
-          context: context,
-          title: L10n.of(context).areYouSure,
-          okLabel: L10n.of(context).yes,
-          cancelLabel: L10n.of(context).cancel,
-          message: L10n.of(context).leaveSpaceDescription,
-        ) ==
-        OkCancelResult.ok;
-    if (!confirmed) return false;
-    final success = await showFutureLoadingDialog(
-      context: context,
-      future: () async {
-        try {
-          final List<Room> children = await getChildRooms();
-          for (final Room child in children) {
-            if (!child.isAnalyticsRoom && !child.isArchived) {
-              if (!child.isSpace &&
-                  child.membership == Membership.join &&
-                  child.isUnread) {
-                await child.markUnread(false);
-              }
-              if (child.isSpace) {
-                await child.leaveSubspace();
-              } else {
-                await child.leave();
-              }
-            }
-          }
-          await leave();
-        } catch (err, stack) {
-          debugger(when: kDebugMode);
-          ErrorHandler.logError(
-            e: err,
-            s: stack,
-            data: {
-              "powerLevel": client.userID != null
-                  ? getPowerLevelByUserId(client.userID!)
-                  : null,
-            },
-          );
-          rethrow;
-        }
-      },
-    );
-    MatrixState.pangeaController.classController
-        .setActiveSpaceIdInChatListController(
-      null,
-    );
-    return success.error == null;
-  }
-
-  Future<void> _leaveSubspace() async {
-    final List<Room> children = await getChildRooms();
-    for (final Room child in children) {
-      if (!child.isAnalyticsRoom && !child.isArchived) {
-        if (!child.isSpace &&
-            child.membership == Membership.join &&
-            child.isUnread) {
-          await child.markUnread(false);
-        }
-        if (child.isSpace) {
-          await child.leaveSubspace();
-        } else {
-          await child.leave();
-        }
-      }
-    }
-    await leave();
-  }
-
-  Future<Event?> _sendPangeaEvent({
+  Future<Event?> sendPangeaEvent({
     required Map<String, dynamic> content,
     required String parentEventId,
     required String type,
@@ -221,16 +89,11 @@ extension EventsRoomExtension on Room {
     }
   }
 
-  String _sendFakeMessage({
-    required String text,
+  Map<String, dynamic> _getEventContent(
+    Map<String, dynamic> content,
     Event? inReplyTo,
     String? editEventId,
-  }) {
-    final content = <String, dynamic>{
-      'msgtype': MessageTypes.Text,
-      'body': text,
-    };
-
+  ) {
     final html = markdown(
       content['body'],
       getEmotePacks: () => getImagePacksFlat(ImagePackUsage.emoticon),
@@ -242,9 +105,6 @@ extension EventsRoomExtension on Room {
       content['format'] = 'org.matrix.custom.html';
       content['formatted_body'] = html;
     }
-
-    // Create new transaction id
-    final messageID = client.generateUniqueTransactionId();
 
     if (inReplyTo != null) {
       var replyText = '<${inReplyTo.senderId}> ${inReplyTo.body}';
@@ -295,6 +155,23 @@ extension EventsRoomExtension on Room {
       }
     }
 
+    return content;
+  }
+
+  String sendFakeMessage({
+    required String text,
+    Event? inReplyTo,
+    String? editEventId,
+  }) {
+    // Create new transaction id
+    final messageID = client.generateUniqueTransactionId();
+
+    final baseContent = <String, dynamic>{
+      'msgtype': MessageTypes.Text,
+      'body': text,
+    };
+
+    final content = _getEventContent(baseContent, inReplyTo, editEventId);
     final Event event = Event(
       content: content,
       type: EventTypes.Message,
@@ -309,7 +186,7 @@ extension EventsRoomExtension on Room {
     return messageID;
   }
 
-  Future<String?> _pangeaSendTextEvent(
+  Future<String?> pangeaSendTextEvent(
     String message, {
     String? txid,
     Event? inReplyTo,
@@ -370,6 +247,15 @@ extension EventsRoomExtension on Room {
         event['formatted_body'] = html;
       }
     }
+
+    final fullBody = _getEventContent(event, inReplyTo, editEventId);
+    final jsonString = jsonEncode(fullBody);
+    final jsonSizeInBytes = utf8.encode(jsonString).length;
+    const maxBodySize = 60000;
+    if (jsonSizeInBytes > maxBodySize) {
+      return Future.error(EventTooLarge(maxBodySize, jsonSizeInBytes));
+    }
+
     return sendEvent(
       event,
       txid: txid,
