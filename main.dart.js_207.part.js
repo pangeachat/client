@@ -2731,10 +2731,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Words per minute";
     },
     get$autoIGCToolName() {
-      return "Run language assistance automatically";
+      return "Run Pangea writing assistance automatically";
     },
     get$autoIGCToolDescription() {
-      return "Automatically run language assistance after typing messages";
+      return "Automatically run Pangea Chat grammar and translation writing assistance before sending my message.";
     },
     get$tooltipInstructionsTitle() {
       return "Not sure what that does?";
@@ -3814,7 +3814,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Enabled text-to-speech";
     },
     get$enableTTSToolDescription() {
-      return "Allow the app to generate text-to-speech output for portions of text in your target language";
+      return "Allow the app to generate text-to-speech output for portions of text in your target language.";
     },
     get$couldNotFindTTS() {
       return "We couldn't find a text-to-speech engine for your current target language. ";
@@ -4153,10 +4153,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Don't forget your password!";
     },
     get$enableAutocorrectToolName() {
-      return "Enable autocorrect";
+      return "Enable device autocorrect";
     },
     get$enableAutocorrectDescription() {
-      return "Use your keyboard's built-in autocorrect when typing messages";
+      return "If your device supports the language your learning, you can enable device autocorrect to fix common errors as you type.";
     },
     get$ttsDisbledTitle() {
       return "Text-to-speech disabled";
@@ -4166,6 +4166,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noSpaceDescriptionYet() {
       return "No space description created yet.";
+    },
+    get$enableAutocorrectWarning() {
+      return "Warning! Requires adding your target language keyboard";
     },
     get$tooLargeToSend() {
       return "This message is too large to send";
@@ -4185,6 +4188,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$cancelInSubscriptionSettings() {
       return "\u2022 Cancel at any time in subscription settings";
     },
+    get$autocorrectNotAvailable() {
+      return "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4200,6 +4206,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_207", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "378FJyDHF1jHLZHv0mTBoV0YmGc=");
+})($__dart_deferred_initializers__, "3MZ3VY0A6lt/t1OpFDql94kiJXg=");
 ;
 //# sourceMappingURL=main.dart.js_207.part.js.map

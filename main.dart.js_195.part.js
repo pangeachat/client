@@ -3815,7 +3815,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Enabled text-to-speech";
     },
     get$enableTTSToolDescription() {
-      return "Allow the app to generate text-to-speech output for portions of text in your target language";
+      return "Allow the app to generate text-to-speech output for portions of text in your target language.";
     },
     get$couldNotFindTTS() {
       return "We couldn't find a text-to-speech engine for your current target language. ";
@@ -4154,10 +4154,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Don't forget your password!";
     },
     get$enableAutocorrectToolName() {
-      return "Enable autocorrect";
+      return "Enable device autocorrect";
     },
     get$enableAutocorrectDescription() {
-      return "Use your keyboard's built-in autocorrect when typing messages";
+      return "If your device supports the language your learning, you can enable device autocorrect to fix common errors as you type.";
     },
     get$ttsDisbledTitle() {
       return "Text-to-speech disabled";
@@ -4167,6 +4167,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noSpaceDescriptionYet() {
       return "No space description created yet.";
+    },
+    get$enableAutocorrectWarning() {
+      return "\xa1Atenci\xf3n! Es necesario a\xf1adir el teclado del idioma de destino";
     },
     get$tooLargeToSend() {
       return "This message is too large to send";
@@ -4186,6 +4189,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$cancelInSubscriptionSettings() {
       return "\u2022 Cancel at any time in subscription settings";
     },
+    get$autocorrectNotAvailable() {
+      return "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4201,6 +4207,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_195", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "l6geRQViFgWjMqSgaFcjoavwQzE=");
+})($__dart_deferred_initializers__, "VD1qWvcsYhq32i7fwp05x+/yTYg=");
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map
