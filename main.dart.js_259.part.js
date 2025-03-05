@@ -4117,7 +4117,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0110\xe3 s\u1eed d\u1ee5ng trong tin nh\u1eafn tho\u1ea1i";
     },
     get$leaveSpaceDescription() {
-      return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
+      return "B\u1eb1ng c\xe1ch r\u1eddi kh\u1ecfi kh\xf4ng gian, b\u1ea1n s\u1ebd r\u1eddi t\u1ea5t c\u1ea3 c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n b\xean trong n\xf3. Nh\u1eefng ng\u01b0\u1eddi d\xf9ng kh\xe1c s\u1ebd th\u1ea5y r\u1eb1ng b\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi kh\xf4ng gian.";
     },
     get$whatIsLemma() {
       return "D\u1ea1ng g\u1ed1c c\u1ee7a t\u1eeb l\xe0 g\xec?";
@@ -4165,34 +4165,34 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "B\u1ea1n c\xf3 th\u1ec3 b\u1eadt t\xednh n\u0103ng chuy\u1ec3n v\u0103n b\u1ea3n th\xe0nh gi\u1ecdng n\xf3i trong c\xe0i \u0111\u1eb7t h\u1ecdc t\u1eadp c\u1ee7a b\u1ea1n";
     },
     get$noSpaceDescriptionYet() {
-      return "No space description created yet.";
+      return "Ch\u01b0a t\u1ea1o m\xf4 t\u1ea3 kh\xf4ng gian n\xe0o.";
     },
     get$tooLargeToSend() {
-      return "This message is too large to send";
+      return "Tin nh\u1eafn n\xe0y qu\xe1 l\u1edbn \u0111\u1ec3 g\u1eedi";
     },
     get$exitWithoutSaving() {
-      return "Are you sure you want to leave without saving?";
+      return "B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn mu\u1ed1n r\u1eddi \u0111i m\xe0 kh\xf4ng l\u01b0u kh\xf4ng?";
     },
     get$enableAutocorrectWarning() {
-      return "Warning! Requires adding your target language keyboard";
+      return "C\u1ea3nh b\xe1o! C\u1ea7n th\xeam b\xe0n ph\xedm ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n";
     },
     get$displayName(_) {
-      return "Display name";
+      return "T\xean hi\u1ec3n th\u1ecb";
     },
     get$leaveRoomDescription() {
-      return "You're about to leave this chat. Other users will see that you have left the chat.";
+      return "B\u1ea1n s\u1eafp r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y. Nh\u1eefng ng\u01b0\u1eddi d\xf9ng kh\xe1c s\u1ebd th\u1ea5y r\u1eb1ng b\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n.";
     },
     get$confirmUserId() {
-      return "Please confirm your Pangea Chat username in order to delete your account.";
+      return "Vui l\xf2ng x\xe1c nh\u1eadn t\xean ng\u01b0\u1eddi d\xf9ng Pangea Chat c\u1ee7a b\u1ea1n \u0111\u1ec3 x\xf3a t\xe0i kho\u1ea3n.";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "Starting " + startDate;
+      return "B\u1eaft \u0111\u1ea7u t\u1eeb " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 Cancel at any time in subscription settings";
+      return "\u2022 H\u1ee7y b\u1ea5t c\u1ee9 l\xfac n\xe0o trong c\xe0i \u0111\u1eb7t \u0111\u0103ng k\xfd";
     },
     get$autocorrectNotAvailable() {
-      return "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!";
+      return "R\u1ea5t ti\u1ebfc, n\u1ec1n t\u1ea3ng c\u1ee7a b\u1ea1n hi\u1ec7n kh\xf4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 cho t\xednh n\u0103ng n\xe0y. H\xe3y theo d\xf5i \u0111\u1ec3 bi\u1ebft th\xeam th\xf4ng tin ph\xe1t tri\u1ec3n!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4209,6 +4209,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Z+BnVrWKqiUcrW9+2yfVyD5POdk=");
+})($__dart_deferred_initializers__, "EmvVyh1a1hjcKBG6NEfpk42N7rQ=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map
