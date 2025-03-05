@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:matrix/matrix.dart' as matrix;
 
@@ -12,12 +11,12 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/learning_settings/utils/language_list_util.dart';
 import 'package:fluffychat/pangea/user/models/profile_model.dart';
 import '../models/user_model.dart';
 
 /// Controller that manages saving and reading of user/profile information
 class UserController extends BaseController {
-  final GetStorage loginBox = GetStorage("login_storage");
   late PangeaController _pangeaController;
   UserController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
@@ -113,6 +112,13 @@ class UserController extends BaseController {
     try {
       await _initialize();
       addProfileListener();
+      if (profile.userSettings.targetLanguage != null &&
+          profile.userSettings.targetLanguage!.isNotEmpty &&
+          _pangeaController.languageController.userL2 == null) {
+        // update the language list and send an update to refresh analytics summary
+        await PangeaLanguage.initialize(forceRefresh: true);
+        setState(null);
+      }
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
@@ -161,11 +167,15 @@ class UserController extends BaseController {
     }
   }
 
+  void clear() {
+    _profileCompleter = null;
+    _cachedProfile = null;
+  }
+
   /// Reinitializes the user's profile
   /// This method should be called whenever the user's login status changes
   Future<void> reinitialize() async {
-    _profileCompleter = null;
-    _cachedProfile = null;
+    clear();
     await initialize();
   }
 

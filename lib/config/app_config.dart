@@ -61,6 +61,7 @@ abstract class AppConfig {
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
   static const Color error = Colors.red;
   static const int overlayAnimationDuration = 250;
+  static const int roomCreationTimeoutSeconds = 15;
   // static String _privacyUrl =
   //     'https://gitlab.com/famedly/fluffychat/-/blob/main/PRIVACY.md';
   static String _privacyUrl = "https://www.pangeachat.com/privacy";
@@ -107,7 +108,10 @@ abstract class AppConfig {
   static bool hideRedactedEvents = false;
   static bool hideUnknownEvents = true;
   static bool hideUnimportantStateEvents = true;
-  static bool separateChatTypes = false;
+  // #Pangea
+  // static bool separateChatTypes = false;
+  static bool separateChatTypes = true;
+  // Pangea#
   static bool autoplayImages = true;
   static bool sendTypingNotifications = true;
   static bool sendPublicReadReceipts = true;

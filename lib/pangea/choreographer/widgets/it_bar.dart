@@ -174,6 +174,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                               onPressed: () => showDialog(
                                 context: context,
                                 builder: (c) => const SettingsLearning(),
+                                barrierDismissible: false,
                               ),
                             ),
                           ),
@@ -409,6 +410,7 @@ class ITChoices extends StatelessWidget {
         );
       }
       return ChoicesArray(
+        id: controller.currentITStep.hashCode.toString(),
         isLoading: controller.isLoading ||
             controller.choreographer.isFetching ||
             controller.currentITStep == null,

@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -148,7 +147,7 @@ class SubscriptionController extends BaseController {
     }
   }
 
-  void submitSubscriptionChange(
+  Future<void> submitSubscriptionChange(
     SubscriptionDetails? selectedSubscription,
     BuildContext context, {
     bool isPromo = false,
@@ -186,39 +185,24 @@ class SubscriptionController extends BaseController {
         return;
       }
       if (selectedSubscription.package == null) {
+        final offerings = await Purchases.getOfferings();
         ErrorHandler.logError(
           m: "Tried to subscribe to SubscriptionDetails with Null revenuecat Package",
           s: StackTrace.current,
           data: {
             "selectedSubscription": selectedSubscription.toJson(),
+            "offerings": offerings.toJson(),
           },
         );
         return;
       }
-      try {
-        GoogleAnalytics.beginPurchaseSubscription(
-          selectedSubscription,
-          context,
-        );
-        await Purchases.purchasePackage(selectedSubscription.package!);
-        GoogleAnalytics.updateUserSubscriptionStatus(true);
-      } catch (err) {
-        final errCode = PurchasesErrorHelper.getErrorCode(
-          err as PlatformException,
-        );
-        if (errCode == PurchasesErrorCode.purchaseCancelledError) {
-          debugPrint("User cancelled purchase");
-          return;
-        }
-        ErrorHandler.logError(
-          m: "Failed to purchase revenuecat package for user $_userID with error code $errCode",
-          s: StackTrace.current,
-          data: {
-            "selectedSubscription": selectedSubscription.toJson(),
-          },
-        );
-        return;
-      }
+
+      GoogleAnalytics.beginPurchaseSubscription(
+        selectedSubscription,
+        context,
+      );
+      await Purchases.purchasePackage(selectedSubscription.package!);
+      GoogleAnalytics.updateUserSubscriptionStatus(true);
     }
   }
 
@@ -403,6 +387,7 @@ class SubscriptionDetails {
   final String id;
   SubscriptionPeriodType periodType;
   Package? package;
+  String? localizedPrice;
 
   SubscriptionDetails({
     required this.price,
@@ -418,7 +403,7 @@ class SubscriptionDetails {
 
   String displayPrice(BuildContext context) => isTrial || price <= 0
       ? L10n.of(context).freeTrial
-      : "\$${price.toStringAsFixed(2)}";
+      : localizedPrice ?? "\$${price.toStringAsFixed(2)}";
 
   String displayName(BuildContext context) {
     if (isTrial) {

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pages/chat_list/client_chooser_button.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
@@ -37,6 +38,8 @@ class LearningProgressIndicatorsState
   bool _loading = true;
 
   StreamSubscription<AnalyticsStreamUpdate>? _analyticsSubscription;
+  StreamSubscription? _languageSubscription;
+  Profile? _profile;
 
   @override
   void initState() {
@@ -50,12 +53,26 @@ class LearningProgressIndicatorsState
     _analyticsSubscription = MatrixState
         .pangeaController.getAnalytics.analyticsStream.stream
         .listen(updateData);
+
+    // rebuild when target language changes
+    _languageSubscription =
+        MatrixState.pangeaController.userController.stateStream.listen((_) {
+      if (mounted) setState(() {});
+    });
+
+    final client = MatrixState.pangeaController.matrixState.client;
+    if (client.userID == null) return;
+    client.getProfileFromUserId(client.userID!).then((profile) {
+      if (mounted) setState(() => _profile = profile);
+    });
   }
 
   @override
   void dispose() {
     _analyticsSubscription?.cancel();
     _analyticsSubscription = null;
+    _languageSubscription?.cancel();
+    _languageSubscription = null;
     super.dispose();
   }
 
@@ -83,6 +100,9 @@ class LearningProgressIndicatorsState
 
     final userL2 = MatrixState.pangeaController.languageController.userL2;
 
+    final mxid = Matrix.of(context).client.userID ?? L10n.of(context).user;
+    final displayname = _profile?.displayName ?? mxid.localpart ?? mxid;
+
     return Row(
       children: [
         const ClientChooserButton(),
@@ -91,44 +111,48 @@ class LearningProgressIndicatorsState
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                Matrix.of(context).client.userID ?? L10n.of(context).user,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontSize: 12,
-                ),
-              ),
-              const SizedBox(height: 6),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                spacing: 6.0,
                 children: [
+                  Text(
+                    displayname,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
                   LearningSettingsButton(
                     onTap: () => showDialog(
                       context: context,
                       builder: (c) => const SettingsLearning(),
+                      barrierDismissible: false,
                     ),
                     l2: userL2?.langCode.toUpperCase(),
                   ),
-                  Row(
-                    children: ConstructTypeEnum.values
-                        .map(
-                          (c) => ProgressIndicatorBadge(
-                            points: uniqueLemmas(c.indicator),
-                            loading: _loading,
-                            onTap: () {
-                              showDialog<AnalyticsPopupWrapper>(
-                                context: context,
-                                builder: (context) => AnalyticsPopupWrapper(
-                                  view: c,
-                                ),
-                              );
-                            },
-                            indicator: c.indicator,
-                          ),
-                        )
-                        .toList(),
-                  ),
                 ],
+              ),
+              const SizedBox(height: 6),
+              Row(
+                spacing: 6.0,
+                children: ConstructTypeEnum.values
+                    .map(
+                      (c) => ProgressIndicatorBadge(
+                        points: uniqueLemmas(c.indicator),
+                        loading: _loading,
+                        onTap: () {
+                          showDialog<AnalyticsPopupWrapper>(
+                            context: context,
+                            builder: (context) => AnalyticsPopupWrapper(
+                              view: c,
+                            ),
+                          );
+                        },
+                        indicator: c.indicator,
+                      ),
+                    )
+                    .toList(),
               ),
               const SizedBox(height: 6),
               MouseRegion(
