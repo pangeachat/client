@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -69,6 +68,10 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
     final client = Matrix.of(outerContext).client;
     final chunk = this.chunk;
     final knock = chunk?.joinRule == 'knock';
+    // #Pangea
+    final wasInRoom =
+        chunk?.roomId != null && client.getRoomById(chunk!.roomId) != null;
+    // Pangea#
     final result = await showFutureLoadingDialog<String>(
       context: context,
       future: () async {
@@ -85,18 +88,15 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
         if (!knock && client.getRoomById(roomId) == null) {
           await client.waitForRoomInSync(roomId);
         }
-        // #Pangea
-        final room = client.getRoomById(roomId);
-        if (room != null && (await room.leaveIfFull())) {
-          throw L10n.of(context).roomFull;
-        }
-        // Pangea#
         return roomId;
       },
     );
-    if (knock) {
-      return;
-    }
+    // #Pangea
+    // if (knock) {
+    //   return;
+    // }
+    if (knock && !wasInRoom) return;
+    // Pangea#
     if (result.error == null) {
       Navigator.of(context).pop<bool>(true);
       // don't open the room if the joined room is a space
