@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/learning_settings/utils/language_list_util.dar
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/user/models/user_model.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -66,23 +67,13 @@ class SettingsLearningController extends State<SettingsLearning> {
   // if the settings have not been changed, just close the settings page
   void onSettingsClose() {
     if (haveSettingsBeenChanged) {
-      showDialog(
+      showOkCancelAlertDialog(
+        title: L10n.of(context).exitWithoutSaving,
+        okLabel: L10n.of(context).submit,
+        cancelLabel: L10n.of(context).leave,
         context: context,
-        builder: (context) => AlertDialog(
-          content: Text(L10n.of(context).exitWithoutSaving),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(L10n.of(context).leave),
-            ),
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              child: Text(L10n.of(context).saveChanges),
-            ),
-          ],
-        ),
       ).then((value) {
-        if (value == true) {
+        if (value == OkCancelResult.ok) {
           submit();
         } else {
           Navigator.of(context).pop();
