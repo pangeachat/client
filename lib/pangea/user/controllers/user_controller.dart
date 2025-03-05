@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:matrix/matrix.dart' as matrix;
 
@@ -18,7 +17,6 @@ import '../models/user_model.dart';
 
 /// Controller that manages saving and reading of user/profile information
 class UserController extends BaseController {
-  final GetStorage loginBox = GetStorage("login_storage");
   late PangeaController _pangeaController;
   UserController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
@@ -94,22 +92,18 @@ class UserController extends BaseController {
   }
 
   /// A completer for the profile model of a user.
-  Completer<void>? _profileCompleter;
+  Completer<void> initCompleter = Completer<void>();
+  bool _initializing = false;
 
   /// Initializes the user's profile. Runs a function to wait for account data to load,
   /// read account data into profile, and migrate any missing info from the pangea profile.
   /// Finally, it adds a listen to update the profile data when new account data comes in.
   Future<void> initialize() async {
-    if (_profileCompleter?.isCompleted ?? false) {
-      return _profileCompleter!.future;
+    if (_initializing || initCompleter.isCompleted) {
+      return initCompleter.future;
     }
 
-    if (_profileCompleter != null) {
-      await _profileCompleter!.future;
-      return _profileCompleter!.future;
-    }
-
-    _profileCompleter = Completer<void>();
+    _initializing = true;
 
     try {
       await _initialize();
@@ -128,12 +122,13 @@ class UserController extends BaseController {
         data: {},
       );
     } finally {
-      if (!_profileCompleter!.isCompleted) {
-        _profileCompleter!.complete();
+      if (!initCompleter.isCompleted) {
+        initCompleter.complete();
       }
+      _initializing = false;
     }
 
-    return _profileCompleter!.future;
+    return initCompleter.future;
   }
 
   /// Initializes the user's profile by waiting for account data to load, reading in account
@@ -170,7 +165,8 @@ class UserController extends BaseController {
   }
 
   void clear() {
-    _profileCompleter = null;
+    _initializing = false;
+    initCompleter = Completer<void>();
     _cachedProfile = null;
   }
 

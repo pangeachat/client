@@ -93,6 +93,8 @@ class SubscriptionController extends BaseController {
         return;
       }
 
+      await _pangeaController.userController.initCompleter.future;
+
       availableSubscriptionInfo = AvailableSubscriptionsInfo();
       await availableSubscriptionInfo!.setAvailableSubscriptions();
 
@@ -387,6 +389,7 @@ class SubscriptionDetails {
   final String id;
   SubscriptionPeriodType periodType;
   Package? package;
+  String? localizedPrice;
 
   SubscriptionDetails({
     required this.price,
@@ -402,7 +405,7 @@ class SubscriptionDetails {
 
   String displayPrice(BuildContext context) => isTrial || price <= 0
       ? L10n.of(context).freeTrial
-      : "\$${price.toStringAsFixed(2)}";
+      : localizedPrice ?? "\$${price.toStringAsFixed(2)}";
 
   String displayName(BuildContext context) {
     if (isTrial) {
