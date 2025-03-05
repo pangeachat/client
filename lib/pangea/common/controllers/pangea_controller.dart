@@ -157,6 +157,7 @@ class PangeaController {
         // Reset cached analytics data
         putAnalytics.dispose();
         getAnalytics.dispose();
+        userController.clear();
         _languageStream?.cancel();
         break;
       case LoginState.loggedIn:
@@ -197,7 +198,7 @@ class PangeaController {
 
       final List<Room> botDMs = [];
       for (final room in matrixState.client.rooms) {
-        if (room.isBotDM) {
+        if (await room.isBotDM) {
           botDMs.add(room);
         }
       }

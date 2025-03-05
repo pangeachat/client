@@ -4776,7 +4776,7 @@
   "mediaLabel": "Media learners should share",
   "languageOfInstructionsLabel": "Language of activity instructions",
   "targetLanguageLabel": "Target language",
-  "cefrLevelLabel": "CEFR Level",
+  "cefrLevelLabel": "CEFR level",
   "generateActivitiesButton": "Generate Activities",
   "launchActivityButton": "Launch Activity",
   "image": "Image",
@@ -4803,7 +4803,7 @@
   },
   "constructUsePvmDesc": "Produced in voice message",
   "lockedMorphFeature": "Waiting to be unlocked",
-  "leaveSpaceDescription": "The space will be moved to the archive. Other users will be able to see that you have left the chat.",
+  "leaveSpaceDescription": "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.",
   "whatIsLemma": "What is the lemma?",
   "constructUseCorMmDesc": "Correct message meaning",
   "constructUseIncMmDesc": "Incorrect message meaning",
@@ -4830,5 +4830,30 @@
   "noSpaceDescriptionYet": "No space description created yet.",
   "enableAutocorrectPopUpDescription": "Add your target language keyboard by going to:\n  \u2022 Settings\n  \u2022 General\n  \u2022 Keyboard\n  \u2022 Keyboards\n  \u2022 Add New Keyboard\n\nOnce the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
   "downloadGboardDescription": "Download Gboard from the Google Play Store to enable autocorrect and other keyboard features:\n  \u2022 Download Gboard\n  \u2022 Open app\n  \u2022 Languages\n  \u2022 Add keyboard\n  \u2022 Select Language\n  \u2022 Select keyboard type\n  \u2022 Done\nOnce the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
-  "enableAutocorrectWarning": "Warning! Requires adding your target language keyboard"
+  "enableAutocorrectWarning": "Warning! Requires adding your target language keyboard",
+  "tooLargeToSend": "This message is too large to send",
+  "displayName": "Display name",
+  "leaveRoomDescription": "You're about to leave this chat. Other users will see that you have left the chat.",
+  "confirmUserId": "Please confirm your Pangea Chat username in order to delete your account.",
+  "startingToday": "Starting today",
+  "oneWeekFreeTrial": "One week free trial",
+  "paidSubscriptionStarts": "Starting {startDate}",
+  "@paidSubscriptionStarts": {
+    "type": "String",
+    "placeholders": {
+      "startDate": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelInSubscriptionSettings": "• Cancel at any time in subscription settings",
+  "cancelToAvoidCharges": "• Cancel before {trialEnds} to avoid charges",
+    "@cancelToAvoidCharges": {
+    "type": "String",
+    "placeholders": {
+      "trialEnds": {
+        "type": "String"
+      }
+    }
+  }
 } 

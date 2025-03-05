@@ -30,6 +30,7 @@ import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
+import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
@@ -611,6 +612,7 @@ class ChatController extends State<ChatPageWithRoom>
     clearSelectedEvents();
     MatrixState.pAnyState.closeOverlay();
     showToolbarStream.close();
+    stopAudioStream.close();
     hideTextController.dispose();
     _levelSubscription?.cancel();
     //Pangea#
@@ -792,17 +794,25 @@ class ChatController extends State<ChatPageWithRoom>
           return;
         }
       },
-      onError: (err, stack) => ErrorHandler.logError(
+    ).catchError((err, s) {
+      if (err is EventTooLarge) {
+        showAdaptiveDialog(
+          context: context,
+          builder: (context) => const EventTooLargeDialog(),
+        );
+        return;
+      }
+      ErrorHandler.logError(
         e: err,
-        s: stack,
+        s: s,
         data: {
           'roomId': roomId,
           'text': sendController.text,
           'inReplyTo': replyEvent?.eventId,
           'editEventId': editEvent?.eventId,
         },
-      ),
-    );
+      );
+    });
     // Pangea#
     sendController.value = TextEditingValue(
       text: pendingText,
@@ -1762,6 +1772,8 @@ class ChatController extends State<ChatPageWithRoom>
   final StreamController<String> showToolbarStream =
       StreamController.broadcast();
 
+  final StreamController<void> stopAudioStream = StreamController.broadcast();
+
   void showToolbar(
     Event event, {
     PangeaMessageEvent? pangeaMessageEvent,
@@ -1817,6 +1829,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (!kIsWeb) {
       HapticFeedback.mediumImpact();
     }
+
+    stopAudioStream.add(null);
 
     Future.delayed(
         Duration(milliseconds: buttonEventID == event.eventId ? 200 : 0), () {
