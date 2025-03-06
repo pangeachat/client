@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
@@ -38,8 +37,6 @@ class UserSettingsState extends State<UserSettingsPage> {
   Uint8List? avatar;
   String? _selectedFilePath;
 
-  bool isTncChecked = false;
-
   List<String> avatarPaths = const [
     "assets/pangea/Avatar_1.png",
     "assets/pangea/Avatar_2.png",
@@ -65,6 +62,9 @@ class UserSettingsState extends State<UserSettingsPage> {
     super.initState();
     selectedTargetLanguage = _pangeaController.languageController.userL2;
     selectedAvatarPath = avatarPaths.first;
+    displayNameController.text = Matrix.of(context).client.userID?.localpart ??
+        Matrix.of(context).client.userID ??
+        "";
   }
 
   @override
@@ -75,19 +75,6 @@ class UserSettingsState extends State<UserSettingsPage> {
     profileCreationError = null;
     tncError = null;
     super.dispose();
-  }
-
-  bool get isSSOSignup {
-    final loginTypeEntry = MatrixState.pangeaController.userController.loginBox
-        .read(PLocalKey.loginType);
-    return loginTypeEntry is String && loginTypeEntry == 'sso';
-  }
-
-  void setTncChecked(bool? value) {
-    setState(() {
-      isTncChecked = value ?? false;
-      tncError = null;
-    });
   }
 
   void setSelectedTargetLanguage(LanguageModel? language) {
@@ -181,13 +168,6 @@ class UserSettingsState extends State<UserSettingsPage> {
     if (selectedTargetLanguage == null) {
       setState(() {
         selectedLanguageError = L10n.of(context).pleaseSelectALanguage;
-      });
-      return;
-    }
-
-    if (isSSOSignup && !isTncChecked) {
-      setState(() {
-        tncError = L10n.of(context).pleaseAgreeToTOS;
       });
       return;
     }

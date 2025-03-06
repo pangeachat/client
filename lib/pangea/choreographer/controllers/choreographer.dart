@@ -6,7 +6,11 @@ import 'package:fluffychat/pangea/choreographer/controllers/alternative_translat
 import 'package:fluffychat/pangea/choreographer/controllers/igc_controller.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
+import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
+import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/utils/input_paste_listener.dart';
+import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
@@ -16,6 +20,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
@@ -24,10 +29,6 @@ import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../../../widgets/matrix.dart';
-import '../../learning_settings/models/language_model.dart';
-import '../models/choreo_record.dart';
-import '../models/pangea_match_model.dart';
-import '../widgets/igc/pangea_text_controller.dart';
 import 'error_service.dart';
 import 'it_controller.dart';
 
@@ -41,7 +42,7 @@ class Choreographer {
   late IgcController igc;
   late AlternativeTranslator altTranslator;
   late ErrorService errorService;
-  final tts = TtsController();
+  late TtsController tts;
 
   bool isFetching = false;
   int _timesClicked = 0;
@@ -60,7 +61,13 @@ class Choreographer {
     _initialize();
   }
   _initialize() {
+    tts = TtsController(chatController: chatController);
     _textController = PangeaTextController(choreographer: this);
+    InputPasteListener(
+      _textController,
+      // TODO, do something on paste
+      () => debugPrint("on paste"),
+    );
     itController = ITController(this);
     igc = IgcController(this);
     errorService = ErrorService(this);
@@ -187,7 +194,10 @@ class Choreographer {
     );
 
     final PangeaMessageTokens? tokensSent = igc.igcTextData?.tokens != null
-        ? PangeaMessageTokens(tokens: igc.igcTextData!.tokens)
+        ? PangeaMessageTokens(
+            tokens: igc.igcTextData!.tokens,
+            detections: igc.igcTextData!.detections.detections,
+          )
         : null;
 
     chatController.send(
