@@ -108,7 +108,7 @@ class VocabRepo {
     final sharingPos = candidates
         .where(
           (element) =>
-              request.token == null || element.category == request.token?.pos,
+              request.token == null || (element.category.toLowerCase() == request.token?.pos.toLowerCase() && element.lemma != request.token?.lemma.text),
         )
         .toList();
     
@@ -129,7 +129,7 @@ class VocabRepo {
     final sharingPos = candidates
         .where(
           (element) =>
-              request.token == null || element.category != request.token?.pos,
+              request.token == null || (element.category.toLowerCase() != request.token?.pos.toLowerCase() && element.lemma != request.token?.lemma.text),
         )
         .toList();
 
@@ -1106,6 +1106,40 @@ class VocabRepo {
           ),
           ConstructIdentifier(
             lemma: "dobar",
+            category: "ADJ",
+            type: ConstructTypeEnum.vocab,
+          ),
+        ],
+      ),
+      "vi": VocabResponse(
+        vocab: [
+          ConstructIdentifier(
+            lemma: "xin chào",
+            category: "INTJ",
+            type: ConstructTypeEnum.vocab,
+          ),
+          ConstructIdentifier(
+            lemma: "tạm biệt",
+            category: "INTJ",
+            type: ConstructTypeEnum.vocab,
+          ),
+          ConstructIdentifier(
+            lemma: "buổi chiều",
+            category: "NOUN",
+            type: ConstructTypeEnum.vocab,
+          ),
+          ConstructIdentifier(
+            lemma: "buổi tối",
+            category: "NOUN",
+            type: ConstructTypeEnum.vocab,
+          ),
+          ConstructIdentifier(
+            lemma: "ngày",
+            category: "NOUN",
+            type: ConstructTypeEnum.vocab,
+          ),
+          ConstructIdentifier(
+            lemma: "tốt",
             category: "ADJ",
             type: ConstructTypeEnum.vocab,
           ),

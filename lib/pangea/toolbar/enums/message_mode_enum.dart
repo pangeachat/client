@@ -1,3 +1,4 @@
+import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:material_symbols_icons/symbols.dart';
@@ -103,9 +104,9 @@ extension MessageModeExtension on MessageMode {
       case MessageMode.practiceActivity:
         return 0;
       case MessageMode.messageTextToSpeech:
-        return 0.3;
+        return 0.35;
       case MessageMode.messageTranslation:
-        return 0.6;
+        return 0.64;
       case MessageMode.messageMeaning:
         return 1;
       case MessageMode.messageSpeechToText:
@@ -122,14 +123,14 @@ extension MessageModeExtension on MessageMode {
     double proportionOfActivitiesCompleted,
     bool totallyDone,
   ) {
-    if (totallyDone) return true;
 
     switch (this) {
       case MessageMode.messageTranslation:
       case MessageMode.messageTextToSpeech:
-        return proportionOfActivitiesCompleted >= pointOnBar;
-      case MessageMode.messageSpeechToText:
+        return proportionOfActivitiesCompleted >= pointOnBar || totallyDone;
       case MessageMode.practiceActivity:
+        return !totallyDone;
+      case MessageMode.messageSpeechToText:
       case MessageMode.messageMeaning:
       case MessageMode.wordZoom:
       case MessageMode.wordEmoji:
@@ -148,13 +149,17 @@ extension MessageModeExtension on MessageMode {
     double proportionOfActivitiesUnlocked,
     bool totallyDone,
   ) {
+    if(this == MessageMode.practiceActivity && totallyDone) {
+      return AppConfig.gold;
+    }
+    
     //locked
     if (!isUnlocked(proportionOfActivitiesUnlocked, totallyDone)) {
       return barAndLockedButtonColor(context);
     }
 
     //unlocked and active
-    if (this == currentMode) return Theme.of(context).colorScheme.primary;
+    if (this == currentMode) return totallyDone ? AppConfig.gold : AppConfig.primaryColorLight;
 
     //unlocked and inactive
     return Theme.of(context).colorScheme.primaryContainer;

@@ -377,7 +377,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                       overlayController: widget.overlayController,
                       shouldShowToolbarButtons: showToolbarButtons,
                       width: AppConfig.toolbarButtonsColumnWidth,
-                      height: _messageHeight + AppConfig.toolbarMinHeight,
+                      height: 100 + AppConfig.toolbarMinHeight,
                     ),
                     OverlayCenterContent(
                       messageHeight: _messageHeight,

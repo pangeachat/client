@@ -16,6 +16,12 @@ typedef ChoiceCallback = void Function(String value, int index);
 
 const int choiceArrayAnimationDuration = 300;
 
+enum OverflowMode {
+  wrap,
+  horizontalScroll,
+  verticalScroll,
+}
+
 class ChoicesArray extends StatefulWidget {
   final bool isLoading;
   final List<Choice>? choices;
@@ -44,7 +50,9 @@ class ChoicesArray extends StatefulWidget {
   /// select choices once the correct choice has been selected
   final bool enableMultiSelect;
 
-  final double fontSize;
+  final double? fontSize;
+
+  final OverflowMode overflowMode;
 
   const ChoicesArray({
     super.key,
@@ -61,7 +69,8 @@ class ChoicesArray extends StatefulWidget {
     this.getDisplayCopy,
     this.id,
     this.enableMultiSelect = false,
-    this.fontSize = 24,
+    this.fontSize,
+    this.overflowMode = OverflowMode.wrap,
   });
 
   @override
@@ -91,12 +100,8 @@ class ChoicesArrayState extends State<ChoicesArray> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    return widget.isLoading &&
-            (widget.choices == null || widget.choices!.length <= 1)
-        ? ItShimmer(originalSpan: widget.originalSpan)
-        : Wrap(
-            alignment: WrapAlignment.center,
-            children: widget.choices!
+
+    final choices = widget.choices!
                 .mapIndexed(
                   (index, entry) => ChoiceItem(
                     theme: theme,
@@ -126,8 +131,32 @@ class ChoicesArrayState extends State<ChoicesArray> {
                     fontSize: widget.fontSize,
                   ),
                 )
-                .toList(),
-          );
+                .toList();
+
+    return widget.isLoading &&
+            (widget.choices == null || widget.choices!.length <= 1)
+        ? ItShimmer(originalSpan: widget.originalSpan, fontSize: widget.fontSize ?? Theme.of(context).textTheme.bodyMedium?.fontSize ?? 16)
+        : widget.overflowMode == OverflowMode.wrap
+            ? Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 4.0,
+                children: choices,
+              )
+            : widget.overflowMode == OverflowMode.horizontalScroll
+                ? SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: choices,
+                    ),
+                  )
+                : SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: choices,
+                    ),
+                  );
   }
 }
 

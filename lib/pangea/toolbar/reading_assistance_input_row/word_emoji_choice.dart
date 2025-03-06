@@ -67,7 +67,7 @@ class _WordEmojiChoiceState extends State<WordEmojiChoice> {
             form: widget.token.text.content,
           )
         ],
-        origin: AnalyticsUpdateOrigin.practiceActivity,
+        origin: AnalyticsUpdateOrigin.wordZoom,
       ),
     );
 
@@ -75,6 +75,14 @@ class _WordEmojiChoiceState extends State<WordEmojiChoice> {
 
     await Future.delayed(
         const Duration(milliseconds: choiceArrayAnimationDuration));
+
+      // @ggurdin putting this here because I'm not sure if it needs to be used
+      // it is used in the multiple choice activity
+      // final streamFuture = MatrixState
+      //     .pangeaController.getAnalytics.analyticsStream.stream.first;
+      // streamFuture.then((_) {
+      //   widget.practiceCardController.onActivityFinish();
+      // });
 
     widget.overlayController.onActivityFinish(ActivityTypeEnum.emoji);
 
@@ -84,48 +92,51 @@ class _WordEmojiChoiceState extends State<WordEmojiChoice> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          FutureBuilder(
-            future: widget.token.getEmojiChoices(),
-            builder: (context, snapshot) {
-              if (snapshot.hasError) {
-                return Text(L10n.of(context).oopsSomethingWentWrong);
-              }
-
-              if (snapshot.connectionState == ConnectionState.waiting ||
-                  snapshot.data == null) {
-                return const ItShimmer(originalSpan: "😀");
-              }
-
-              return ChoicesArray(
-                isLoading: snapshot.connectionState == ConnectionState.waiting,
-                choices: snapshot.data!
-                    .map((emoji) => Choice(
-                          color: localSelected == emoji
-                              ? AppConfig.primaryColor
-                              : Colors.transparent,
-                          text: emoji,
-                          isGold: localSelected == emoji,
-                        ))
-                    .toList(),
-                onPressed: (emoji, index) => onChoice(context, emoji),
-                originalSpan: "😀",
-                uniqueKeyForLayerLink: (int index) => "emojiChoice$index",
-                selectedChoiceIndex: snapshot.data!
-                    .indexWhere((element) => element == widget.token.getEmoji()),
-                tts: null,
-                fontSize: 30,
-                enableMultiSelect: true,
-                isActive: true,
-              );
-            },
-          ),
-          const InstructionsInlineTooltip(
-              instructionsEnum: InstructionsEnum.chooseEmoji),
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            FutureBuilder(
+              future: widget.token.getEmojiChoices(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text(L10n.of(context).oopsSomethingWentWrong);
+                }
+        
+                if (snapshot.connectionState == ConnectionState.waiting ||
+                    snapshot.data == null) {
+                  return const ItShimmer(originalSpan: "😀", fontSize: 26);
+                }
+        
+                return ChoicesArray(
+                  isLoading: snapshot.connectionState == ConnectionState.waiting,
+                  choices: snapshot.data!
+                      .map((emoji) => Choice(
+                            color: localSelected == emoji
+                                ? AppConfig.primaryColor
+                                : Colors.transparent,
+                            text: emoji,
+                            isGold: localSelected == emoji,
+                          ))
+                      .toList(),
+                  onPressed: (emoji, index) => onChoice(context, emoji),
+                  originalSpan: "😀",
+                  uniqueKeyForLayerLink: (int index) => "emojiChoice$index",
+                  selectedChoiceIndex: snapshot.data!
+                      .indexWhere((element) => element == widget.token.getEmoji()),
+                  tts: null,
+                  fontSize: 26,
+                  enableMultiSelect: true,
+                  isActive: true,
+                  overflowMode: OverflowMode.horizontalScroll,
+                );
+              },
+            ),
+            const InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.chooseEmoji),
+          ],
+        ),
       ),
     );
   }

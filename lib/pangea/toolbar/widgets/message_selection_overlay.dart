@@ -242,13 +242,16 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
   }
 
-  void _updateSelectedSpan(PangeaTokenText selectedSpan) {
-    if (selectedSpan == _selectedSpan) {
+  /// Update to [selectedSpan]
+  /// [forceMode] is used to force a specific mode
+  void _updateSelectedSpan(PangeaTokenText selectedSpan, [MessageMode? forceMode]) {
+    if (forceMode == null && selectedSpan == _selectedSpan) {
       _selectedSpan = null;
       updateToolbarMode(MessageMode.noneSelected);
       setState(() {});
       return;
     }
+
     _selectedSpan = selectedSpan;
 
     if (!(messageAnalyticsEntry?.hasHiddenWordActivity ?? false)) {
@@ -259,8 +262,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       );
     }
 
-    // if a token is selected, then the toolbar should be in wordZoom mode
-    final nextModeForToken = selectedToken!.modeForToken;
+    
+    final nextModeForToken = forceMode ?? selectedToken!.modeForToken;
     if (toolbarMode != nextModeForToken) {
       debugPrint("_updateSelectedSpan: setting toolbarMode to wordZoom");
       updateToolbarMode(nextModeForToken);
@@ -381,6 +384,45 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       MatrixState.pangeaController.languageController.userL2?.langCode;
 
   ///////////////////////////////////
+  /// User action handlers
+  /////////////////////////////////////
+  void onRequestForMeaningChallenge() {
+    if (messageAnalyticsEntry == null) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(
+        e: "MessageAnalyticsEntry is null in onRequestForMeaningChallenge",
+        data: {},
+      );
+      return;
+    }
+    messageAnalyticsEntry!.addMessageMeaningActivity();
+
+    if (mounted) {
+      setState(() {});
+    }
+  }
+
+  void onNextActivityRequest() {
+    if (pangeaMessageEvent?.messageDisplayRepresentation?.tokens == null) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(
+        e: "Tokens are null in onNextActivityRequest",
+        data: {},
+      );
+      return;
+    }
+
+    for (final token in pangeaMessageEvent!.messageDisplayRepresentation!.tokens!.where((t) => t.lemma.saveVocab)) {
+      final MessageMode nextActivityMode = token.modeForToken;
+      if (nextActivityMode != MessageMode.wordZoom) {
+        _selectedSpan = token.text;
+        _updateSelectedSpan(token.text, nextActivityMode);
+        return;
+      }
+    }
+  }
+
+  ///////////////////////////////////
   /// Functions
   /////////////////////////////////////
 
@@ -431,22 +473,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       parentMessageEvent: pangeaMessageEvent!.event,
       event: event,
     );
-  }
-
-  void onRequestForMeaningChallenge() {
-    if (messageAnalyticsEntry == null) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: "MessageAnalyticsEntry is null in onRequestForMeaningChallenge",
-        data: {},
-      );
-      return;
-    }
-    messageAnalyticsEntry!.addMessageMeaningActivity();
-
-    if (mounted) {
-      setState(() {});
-    }
   }
 
   /// When an activity is completed, we need to update the state

@@ -443,6 +443,7 @@ enum AnalyticsUpdateOrigin {
   sendMessage,
   practiceActivity,
   inputBar,
+  wordZoom,
 }
 
 class AnalyticsUpdate {

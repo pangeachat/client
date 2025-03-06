@@ -1,3 +1,6 @@
+import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
+import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
+import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -24,20 +27,6 @@ class MorphDetailsView extends StatelessWidget {
   String get _morphFeature => constructId.category;
   String get _morphTag => constructId.lemma;
 
-  String _categoryCopy(
-    BuildContext context,
-  ) {
-    if (_morphFeature.toLowerCase() == "other") {
-      return L10n.of(context).other;
-    }
-
-    return ConstructTypeEnum.morph.getDisplayCopy(
-          _morphFeature,
-          context,
-        ) ??
-        _morphFeature;
-  }
-
   Future<String> _getDefinition(BuildContext context) => MorphInfoRepo.get(
         feature: _construct.category,
         tag: _construct.lemma,
@@ -50,47 +39,8 @@ class MorphDetailsView extends StatelessWidget {
         : _construct.lemmaCategory.darkColor;
 
     return AnalyticsDetailsViewContent(
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: 32.0,
-            height: 32.0,
-            child: MorphIcon(
-              morphFeature: _morphFeature,
-              morphTag: _morphTag,
-            ),
-          ),
-          const SizedBox(width: 10.0),
-          Text(
-            getGrammarCopy(
-                  category: _morphFeature,
-                  lemma: _morphTag,
-                  context: context,
-                ) ??
-                _morphTag,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-        ],
-      ),
-      subtitle: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            width: 24.0,
-            height: 24.0,
-            child: MorphIcon(morphFeature: _morphFeature, morphTag: null),
-          ),
-          const SizedBox(width: 10.0),
-          Text(
-            _categoryCopy(context),
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: textColor,
-                ),
-          ),
-        ],
-      ),
+      title: MorphFeatureDisplay(morphFeature: _morphFeature, morphTag: _morphTag),
+      subtitle: MorphTagDisplay(morphFeature: _morphFeature, textColor: textColor),
       headerContent: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Align(
@@ -159,15 +109,7 @@ class MorphDetailsView extends StatelessWidget {
           ),
         ),
       ),
-      xpIcon: CircleAvatar(
-        radius: 16.0,
-        backgroundColor: _construct.lemmaCategory.color,
-        child: const Icon(
-          Icons.star,
-          color: Colors.white,
-          size: 20.0,
-        ),
-      ),
+      xpIcon: ConstructXpWidget(id: constructId),
       constructId: constructId,
     );
   }

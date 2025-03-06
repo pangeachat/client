@@ -27,7 +27,7 @@ class WordZoomActivityButton extends StatelessWidget {
       style: IconButton.styleFrom(
         backgroundColor: isSelected
             ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.25)
-            : null,
+            : Colors.transparent,
       ),
     );
 

@@ -91,6 +91,7 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                 child: ToolbarButton(
                 mode: MessageMode.messageTranslation,
                 overlayController: overlayController,
+                onPressed: overlayController.updateToolbarMode,
                 buttonSize: buttonSize,
               ),
               ),
@@ -99,6 +100,16 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                 child: ToolbarButton(
                 mode: MessageMode.messageTextToSpeech,
                 overlayController: overlayController,
+                onPressed: overlayController.updateToolbarMode,
+                buttonSize: buttonSize,
+              ),
+              ),
+              Positioned(
+                bottom: height * MessageMode.practiceActivity.pointOnBar,
+                child: ToolbarButton(
+                mode: MessageMode.practiceActivity,
+                overlayController: overlayController,
+                onPressed: (mode) => overlayController.onNextActivityRequest(),
                 buttonSize: buttonSize,
               ),
               ),
