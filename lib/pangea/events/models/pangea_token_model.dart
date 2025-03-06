@@ -18,8 +18,6 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/repo/lemma_activity_generator.dart';
-import 'package:fluffychat/pangea/toolbar/repo/lemma_meaning_activity_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/foundation.dart';
 
@@ -237,7 +235,6 @@ class PangeaToken {
     return uses;
   }
 
-  
   bool isActivityBasicallyEligible(
     ActivityTypeEnum a, [
     String? morphFeature,
@@ -264,37 +261,38 @@ class PangeaToken {
     }
   }
 
-  bool _didActivity(
-    ActivityTypeEnum a, [
-    String? morphFeature,
-    String? morphTag,
-  ]) {
-    if ((morphFeature == null || morphTag == null) &&
-        a == ActivityTypeEnum.morphId) {
-      debugger(when: kDebugMode);
-      return true;
-    }
-    switch (a) {
-      case ActivityTypeEnum.wordMeaning:
-      case ActivityTypeEnum.wordFocusListening:
-      case ActivityTypeEnum.hiddenWordListening:
-      case ActivityTypeEnum.lemmaId:
-      case ActivityTypeEnum.emoji:
-      case ActivityTypeEnum.messageMeaning:
-        return vocabConstruct.uses
-            .map((u) => u.useType)
-            .any((u) => a.associatedUseTypes.contains(u));
-      case ActivityTypeEnum.morphId:
-        return morph.entries
-            .map((e) => morphConstruct(morphFeature!, morphTag!).uses)
-            .expand((e) => e)
-            .any(
-              (u) =>
-                  a.associatedUseTypes.contains(u.useType) &&
-                  u.form == text.content,
-            );
-    }
-  }
+  // bool _didActivity(
+  //   ActivityTypeEnum a, [
+  //   String? morphFeature,
+  //   String? morphTag,
+  // ]) {
+  //   if ((morphFeature == null || morphTag == null) &&
+  //       a == ActivityTypeEnum.morphId) {
+  //     debugger(when: kDebugMode);
+  //     return true;
+  //   }
+
+  //   switch (a) {
+  //     case ActivityTypeEnum.wordMeaning:
+  //     case ActivityTypeEnum.wordFocusListening:
+  //     case ActivityTypeEnum.hiddenWordListening:
+  //     case ActivityTypeEnum.lemmaId:
+  //     case ActivityTypeEnum.emoji:
+  //     case ActivityTypeEnum.messageMeaning:
+  //       return vocabConstruct.uses
+  //           .map((u) => u.useType)
+  //           .any((u) => a.associatedUseTypes.contains(u));
+  //     case ActivityTypeEnum.morphId:
+  //       return morph.entries
+  //           .map((e) => morphConstruct(morphFeature!, morphTag!).uses)
+  //           .expand((e) => e)
+  //           .any(
+  //             (u) =>
+  //                 a.associatedUseTypes.contains(u.useType) &&
+  //                 u.form == text.content,
+  //           );
+  //   }
+  // }
 
   bool didActivitySuccessfully(
     ActivityTypeEnum a, [
@@ -633,7 +631,11 @@ class PangeaToken {
       return MessageMode.wordEmoji;
     }
 
-    if (shouldDoActivity(a: ActivityTypeEnum.wordMeaning, feature: null, tag: null)) {
+    if (shouldDoActivity(
+      a: ActivityTypeEnum.wordMeaning,
+      feature: null,
+      tag: null,
+    )) {
       return MessageMode.wordMeaning;
     }
 
@@ -686,5 +688,4 @@ class PangeaToken {
     });
     return morphEntries;
   }
-
 }

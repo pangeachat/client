@@ -3,11 +3,9 @@ import 'dart:math';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_meaning_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:matrix/matrix.dart';
 
 class ToolbarButtonAndProgressColumn extends StatelessWidget {
@@ -31,12 +29,16 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
 
   static const double iconWidth = 36.0;
   static const double buttonSize = 40.0;
-  static const barMargin = EdgeInsets.symmetric(horizontal: iconWidth / 2, vertical: buttonSize / 2);
+  static const barMargin =
+      EdgeInsets.symmetric(horizontal: iconWidth / 2, vertical: buttonSize / 2);
 
   @override
   Widget build(BuildContext context) {
-    if (event.messageType == MessageTypes.Audio || !shouldShowToolbarButtons || !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ?? false)) {
-      return SizedBox(height: height,width: width);
+    if (event.messageType == MessageTypes.Audio ||
+        !shouldShowToolbarButtons ||
+        !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ??
+            false)) {
+      return SizedBox(height: height, width: width);
     }
 
     return SizedBox(
@@ -64,8 +66,7 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                     ? height
                     : min(
                         height,
-                        height *
-                            proportionOfActivitiesCompleted!,
+                        height * proportionOfActivitiesCompleted!,
                       ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(AppConfig.borderRadius),
@@ -74,44 +75,56 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                 margin: barMargin,
               ),
               Positioned(
-                bottom: height * MessageMode.messageMeaning.pointOnBar - buttonSize,
+                bottom:
+                    height * MessageMode.messageMeaning.pointOnBar - buttonSize,
                 child: Container(
-            decoration: BoxDecoration(
-              color: overlayController.isPracticeComplete ? AppConfig.gold : MessageModeExtension.barAndLockedButtonColor(context),
-              shape: BoxShape.circle,
-            ),
-            height: buttonSize,
-            width: buttonSize,
-            alignment: Alignment.center,
-            child: Icon(Icons.star_rounded, color: overlayController.isPracticeComplete ? Colors.white : Theme.of(context).colorScheme.onSurface, size: 30,),
-          ),
+                  decoration: BoxDecoration(
+                    color: overlayController.isPracticeComplete
+                        ? AppConfig.gold
+                        : MessageModeExtension.barAndLockedButtonColor(context),
+                    shape: BoxShape.circle,
+                  ),
+                  height: buttonSize,
+                  width: buttonSize,
+                  alignment: Alignment.center,
+                  child: Icon(
+                    Icons.star_rounded,
+                    color: overlayController.isPracticeComplete
+                        ? Colors.white
+                        : Theme.of(context).colorScheme.onSurface,
+                    size: 30,
+                  ),
+                ),
               ),
               Positioned(
-                bottom: height * MessageMode.messageTranslation.pointOnBar - buttonSize / 2,
+                bottom: height * MessageMode.messageTranslation.pointOnBar -
+                    buttonSize / 2,
                 child: ToolbarButton(
-                mode: MessageMode.messageTranslation,
-                overlayController: overlayController,
-                onPressed: overlayController.updateToolbarMode,
-                buttonSize: buttonSize,
-              ),
+                  mode: MessageMode.messageTranslation,
+                  overlayController: overlayController,
+                  onPressed: overlayController.updateToolbarMode,
+                  buttonSize: buttonSize,
+                ),
               ),
               Positioned(
-                bottom: height * MessageMode.messageTextToSpeech.pointOnBar - buttonSize / 2,
+                bottom: height * MessageMode.messageTextToSpeech.pointOnBar -
+                    buttonSize / 2,
                 child: ToolbarButton(
-                mode: MessageMode.messageTextToSpeech,
-                overlayController: overlayController,
-                onPressed: overlayController.updateToolbarMode,
-                buttonSize: buttonSize,
-              ),
+                  mode: MessageMode.messageTextToSpeech,
+                  overlayController: overlayController,
+                  onPressed: overlayController.updateToolbarMode,
+                  buttonSize: buttonSize,
+                ),
               ),
               Positioned(
                 bottom: height * MessageMode.practiceActivity.pointOnBar,
                 child: ToolbarButton(
-                mode: MessageMode.practiceActivity,
-                overlayController: overlayController,
-                onPressed: (mode) => overlayController.onNextActivityRequest(),
-                buttonSize: buttonSize,
-              ),
+                  mode: MessageMode.practiceActivity,
+                  overlayController: overlayController,
+                  onPressed: (mode) =>
+                      overlayController.onNextActivityRequest(),
+                  buttonSize: buttonSize,
+                ),
               ),
             ],
           ),

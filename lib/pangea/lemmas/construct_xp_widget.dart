@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
@@ -75,8 +73,7 @@ class ConstructXpWidgetState extends State<ConstructXpWidget>
     _sub = stream.listen((_) {
       if (constructUse?.lemmaCategory != constructLemmaCategory) {
         setState(() {
-          constructLemmaCategory =
-              constructUse?.lemmaCategory;
+          constructLemmaCategory = constructUse?.lemmaCategory;
           didChange = true;
           _controller.reset();
           _controller.forward();
@@ -89,21 +86,21 @@ class ConstructXpWidgetState extends State<ConstructXpWidget>
       MatrixState.pangeaController.getAnalytics.constructListModel
           .getConstructUses(widget.id);
 
-  Stream<AnalyticsStreamUpdate> get stream => MatrixState.pangeaController.getAnalytics.analyticsStream.stream;
+  Stream<AnalyticsStreamUpdate> get stream =>
+      MatrixState.pangeaController.getAnalytics.analyticsStream.stream;
 
   Widget get svg => CustomizedSvg(
-                  key: ValueKey(constructLemmaCategory),
-                  svgUrl: constructLemmaCategory?.svgURL ??
-                      ConstructLevelEnum.seeds.svgURL,
-                  colorReplacements: const {},
-                  errorIcon: Text(
-                    constructLemmaCategory?.emoji ??
-                        ConstructLevelEnum.seeds.svgURL,
-                    style: const TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                );
+        key: ValueKey(constructLemmaCategory),
+        svgUrl:
+            constructLemmaCategory?.svgURL ?? ConstructLevelEnum.seeds.svgURL,
+        colorReplacements: const {},
+        errorIcon: Text(
+          constructLemmaCategory?.emoji ?? ConstructLevelEnum.seeds.svgURL,
+          style: const TextStyle(
+            fontSize: 20,
+          ),
+        ),
+      );
 
   @override
   void dispose() {

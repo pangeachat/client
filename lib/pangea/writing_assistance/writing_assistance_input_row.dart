@@ -36,9 +36,6 @@ class WritingAssistanceInputRowState extends State<WritingAssistanceInputRow> {
 
   Choreographer get choreographer => widget.controller.choreographer;
 
-  // @ggurdin - this feels like a bad pattern
-  // i think choreographer should be put into the state of a widget
-  // that switches out naturally after a message is sent
   @override
   void initState() {
     // Rebuild the widget each time there's an update from choreo

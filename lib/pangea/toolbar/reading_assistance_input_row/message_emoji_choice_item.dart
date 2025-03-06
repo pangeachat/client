@@ -28,10 +28,10 @@ class MessageEmojiChoiceItem extends StatefulWidget {
   final PangeaToken? token;
 
   @override
-  _MessageEmojiChoiceItemState createState() => _MessageEmojiChoiceItemState();
+  MessageEmojiChoiceItemState createState() => MessageEmojiChoiceItemState();
 }
 
-class _MessageEmojiChoiceItemState extends State<MessageEmojiChoiceItem> {
+class MessageEmojiChoiceItemState extends State<MessageEmojiChoiceItem> {
   bool _isHovered = false;
 
   @override
@@ -53,7 +53,12 @@ class _MessageEmojiChoiceItemState extends State<MessageEmojiChoiceItem> {
                     ? AppConfig.primaryColor.withAlpha((0.2 * 255).toInt())
                     : _isHovered
                         ? AppConfig.primaryColor.withAlpha((0.1 * 255).toInt())
-                        : widget.token?.shouldDoActivity(a: ActivityTypeEnum.wordMeaning, feature: null, tag: null) ?? false
+                        : widget.token?.shouldDoActivity(
+                                  a: ActivityTypeEnum.wordMeaning,
+                                  feature: null,
+                                  tag: null,
+                                ) ??
+                                false
                             ? AppConfig.success.withAlpha((0.1 * 255).toInt())
                             : Colors.transparent,
                 borderRadius: BorderRadius.circular(AppConfig.borderRadius),

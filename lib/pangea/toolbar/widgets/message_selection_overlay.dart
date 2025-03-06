@@ -69,7 +69,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// causes shouldDoActivity to be false. This is a workaround.)
   Completer<void>? _activityLock;
 
-  final bool _hideCenterContent = false;
+  // final bool _hideCenterContent = false;
 
   /// The text that the toolbar should target
   /// If there is no selectedSpan, then the whole message is the target
@@ -244,7 +244,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// Update to [selectedSpan]
   /// [forceMode] is used to force a specific mode
-  void _updateSelectedSpan(PangeaTokenText selectedSpan, [MessageMode? forceMode]) {
+  void _updateSelectedSpan(
+    PangeaTokenText selectedSpan, [
+    MessageMode? forceMode,
+  ]) {
     if (forceMode == null && selectedSpan == _selectedSpan) {
       _selectedSpan = null;
       updateToolbarMode(MessageMode.noneSelected);
@@ -262,7 +265,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       );
     }
 
-    
     final nextModeForToken = forceMode ?? selectedToken!.modeForToken;
     if (toolbarMode != nextModeForToken) {
       debugPrint("_updateSelectedSpan: setting toolbarMode to wordZoom");
@@ -293,7 +295,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
             toolbarMode = MessageMode.wordZoom;
           } else {
             if (selectedMorphFeature != feature) {
-            selectedMorphFeature = feature;
+              selectedMorphFeature = feature;
             } else {
               selectedMorphFeature = null;
               toolbarMode = MessageMode.wordZoom;
@@ -412,7 +414,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       return;
     }
 
-    for (final token in pangeaMessageEvent!.messageDisplayRepresentation!.tokens!.where((t) => t.lemma.saveVocab)) {
+    for (final token in pangeaMessageEvent!
+        .messageDisplayRepresentation!.tokens!
+        .where((t) => t.lemma.saveVocab)) {
       final MessageMode nextActivityMode = token.modeForToken;
       if (nextActivityMode != MessageMode.wordZoom) {
         _selectedSpan = token.text;
@@ -426,6 +430,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// Functions
   /////////////////////////////////////
 
+  ///@ggurdin - is this still needed?
   void _lockActivity() {
     if (mounted) setState(() => _activityLock = Completer());
   }
@@ -478,6 +483,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// When an activity is completed, we need to update the state
   /// and check if the toolbar should be unlocked
   void onActivityFinish(ActivityTypeEnum activityType) {
+    if (activityType == ActivityTypeEnum.hiddenWordListening) {
+      _unlockActivity();
+    }
+
     messageAnalyticsEntry!.onActivityComplete();
 
     if (selectedToken == null) {

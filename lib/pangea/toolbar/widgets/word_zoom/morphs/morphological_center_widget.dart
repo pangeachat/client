@@ -5,24 +5,22 @@ import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popu
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
-import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
-import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class MorphFocusWidget extends StatefulWidget {
   final PangeaToken token;
@@ -42,8 +40,7 @@ class MorphFocusWidget extends StatefulWidget {
   });
 
   @override
-  MorphFocusWidgetState createState() =>
-      MorphFocusWidgetState();
+  MorphFocusWidgetState createState() => MorphFocusWidgetState();
 }
 
 class MorphFocusWidgetState extends State<MorphFocusWidget> {
@@ -164,10 +161,10 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-                    MorphFeatureDisplay(
-                      morphFeature: widget.morphFeature,
-                      morphTag: selectedMorphTag,
-                    ),
+            MorphFeatureDisplay(
+              morphFeature: widget.morphFeature,
+              morphTag: selectedMorphTag,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -178,29 +175,28 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
                   child: GestureDetector(
                     onLongPress: enterEditMode,
                     onDoubleTap: enterEditMode,
-                    child: 
-                        MorphTagDisplay(
-                          morphFeature: widget.morphFeature,
-                          textColor: id.constructUses.lemmaCategory.color,
-                        ),
+                    child: MorphTagDisplay(
+                      morphFeature: widget.morphFeature,
+                      textColor: id.constructUses.lemmaCategory.color,
                     ),
                   ),
-            const SizedBox(width: 6),
-                            ConstructXpWidget(
-              id: id,
-              onTap: () => showDialog<AnalyticsPopupWrapper>(
-                context: context,
-                builder: (context) => AnalyticsPopupWrapper(
-                  constructZoom: id,
-                  view: ConstructTypeEnum.morph,
                 ),
-              ),
-            ),
+                const SizedBox(width: 6),
+                ConstructXpWidget(
+                  id: id,
+                  onTap: () => showDialog<AnalyticsPopupWrapper>(
+                    context: context,
+                    builder: (context) => AnalyticsPopupWrapper(
+                      constructZoom: id,
+                      view: ConstructTypeEnum.morph,
+                    ),
+                  ),
+                ),
               ],
             ),
           ],
-            ),
-        );
+        ),
+      );
     }
 
     return Expanded(
@@ -227,13 +223,12 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
                     child: FutureBuilder(
                       future: MorphsRepo.get(),
                       builder: (context, snapshot) {
-                        final allMorphTagsForEdit =
-                            snapshot.data?.getDisplayTags(widget.morphFeature) ??
-                                defaultMorphMapping
-                                    .getDisplayTags(widget.morphFeature);
+                        final allMorphTagsForEdit = snapshot.data
+                                ?.getDisplayTags(widget.morphFeature) ??
+                            defaultMorphMapping
+                                .getDisplayTags(widget.morphFeature);
 
-                        return snapshot.connectionState ==
-                                ConnectionState.done
+                        return snapshot.connectionState == ConnectionState.done
                             ? Wrap(
                                 alignment: WrapAlignment.center,
                                 children: allMorphTagsForEdit.map((tag) {
@@ -294,7 +289,8 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
                                 }).toList(),
                               )
                             : const Center(
-                                child: CircularProgressIndicator());
+                                child: CircularProgressIndicator(),
+                              );
                       },
                     ),
                   ),
@@ -335,7 +331,8 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
                               (token) {
                                 token.morph[widget.morphFeature] =
                                     selectedMorphTag;
-                                if (widget.morphFeature.toLowerCase() == 'pos') {
+                                if (widget.morphFeature.toLowerCase() ==
+                                    'pos') {
                                   token.pos = selectedMorphTag;
                                 }
                                 return token;

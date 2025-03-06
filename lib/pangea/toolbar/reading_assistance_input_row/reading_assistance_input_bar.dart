@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'message_emoji_choice.dart';
 
 const double readingAssistanceInputBarHeight = 150;
+
 class ReadingAssistanceInputBar extends StatelessWidget {
   final ChatController controller;
   final MessageOverlayController overlayController;
@@ -29,26 +30,35 @@ class ReadingAssistanceInputBar extends StatelessWidget {
 
   PangeaToken? get token => overlayController.selectedToken;
 
-  PracticeActivityCard getPracticeActivityCard(ActivityTypeEnum a, [String? morphFeature]) {
+  PracticeActivityCard getPracticeActivityCard(
+    ActivityTypeEnum a, [
+    String? morphFeature,
+  ]) {
     if (a == ActivityTypeEnum.morphId && morphFeature == null) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(m:"morphFeature null with activityType of morphId in getPracticeActivityCard", s: StackTrace.current, data: token?.toJson() ?? {},);
+      ErrorHandler.logError(
+        m: "morphFeature null with activityType of morphId in getPracticeActivityCard",
+        s: StackTrace.current,
+        data: token?.toJson() ?? {},
+      );
       morphFeature = "pos";
     }
-      return PracticeActivityCard(
-        pangeaMessageEvent: overlayController.pangeaMessageEvent!,
-        targetTokensAndActivityType: TargetTokensAndActivityType(
-          tokens: [token!],
-          activityType: a,
-        ),
-        overlayController: overlayController,
-        morphFeature: morphFeature,
-        location: AnalyticsUpdateOrigin.inputBar,
-      );
+    return PracticeActivityCard(
+      pangeaMessageEvent: overlayController.pangeaMessageEvent!,
+      targetTokensAndActivityType: TargetTokensAndActivityType(
+        tokens: [token!],
+        activityType: a,
+      ),
+      overlayController: overlayController,
+      morphFeature: morphFeature,
+      location: AnalyticsUpdateOrigin.inputBar,
+    );
   }
 
   Widget barContent(BuildContext context) {
-    if (token == null || !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ?? false)) {
+    if (token == null ||
+        !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ??
+            false)) {
       return MessageEmojiChoice(
         tokens: overlayController
                 .pangeaMessageEvent?.messageDisplayRepresentation?.tokens ??
@@ -77,38 +87,65 @@ class ReadingAssistanceInputBar extends StatelessWidget {
         );
 
       case MessageMode.wordEmoji:
-        return WordEmojiChoice(overlayController: overlayController, token: overlayController.selectedToken!,);
+        return WordEmojiChoice(
+          overlayController: overlayController,
+          token: overlayController.selectedToken!,
+        );
 
       case MessageMode.wordMeaning:
         return getPracticeActivityCard(ActivityTypeEnum.wordMeaning);
 
       case MessageMode.wordMorph:
         if (overlayController.selectedMorphFeature != null) {
-          if (!token!.shouldDoActivity(a: ActivityTypeEnum.morphId, feature: overlayController.selectedMorphFeature, tag: token!.getMorphTag(overlayController.selectedMorphFeature!))){
-            return MorphFocusWidget(token: token!, morphFeature: overlayController.selectedMorphFeature!, pangeaMessageEvent: overlayController.pangeaMessageEvent!, overlayController: overlayController, onEditDone: () => overlayController.initializeTokensAndMode(),);
+          if (!token!.shouldDoActivity(
+            a: ActivityTypeEnum.morphId,
+            feature: overlayController.selectedMorphFeature,
+            tag: token!.getMorphTag(overlayController.selectedMorphFeature!),
+          )) {
+            return MorphFocusWidget(
+              token: token!,
+              morphFeature: overlayController.selectedMorphFeature!,
+              pangeaMessageEvent: overlayController.pangeaMessageEvent!,
+              overlayController: overlayController,
+              onEditDone: () => overlayController.initializeTokensAndMode(),
+            );
           } else {
-            return getPracticeActivityCard(ActivityTypeEnum.morphId, overlayController.selectedMorphFeature);
+            return getPracticeActivityCard(
+              ActivityTypeEnum.morphId,
+              overlayController.selectedMorphFeature,
+            );
           }
         } else {
           /// we're not supposed to be here actually
           debugger(when: kDebugMode);
-          ErrorHandler.logError(m: "selectedMorphFeature is null in wordMorph mode", s: StackTrace.current, data: token?.toJson() ?? {},);
+          ErrorHandler.logError(
+            m: "selectedMorphFeature is null in wordMorph mode",
+            s: StackTrace.current,
+            data: token?.toJson() ?? {},
+          );
           final String? nextFeature = overlayController
-                    .selectedToken?.nextMorphFeatureEligibleForActivity;
-          if(nextFeature != null) {
-            return getPracticeActivityCard(ActivityTypeEnum.morphId, nextFeature);
+              .selectedToken?.nextMorphFeatureEligibleForActivity;
+          if (nextFeature != null) {
+            return getPracticeActivityCard(
+              ActivityTypeEnum.morphId,
+              nextFeature,
+            );
           } else {
             // morph center widget with feature = "pos"
-            return MorphFocusWidget(token: token!, morphFeature: "pos", pangeaMessageEvent: overlayController.pangeaMessageEvent!, overlayController: overlayController, onEditDone: () => overlayController.initializeTokensAndMode(),);
+            return MorphFocusWidget(
+              token: token!,
+              morphFeature: "pos",
+              pangeaMessageEvent: overlayController.pangeaMessageEvent!,
+              overlayController: overlayController,
+              onEditDone: () => overlayController.initializeTokensAndMode(),
+            );
           }
         }
     }
-
   }
 
   @override
   Widget build(BuildContext context) {
-    // @ggurdin when does this happen?
     if (controller.showEmojiPicker) return const SizedBox.shrink();
 
     final display = controller.editEvent == null &&
@@ -133,6 +170,5 @@ class ReadingAssistanceInputBar extends StatelessWidget {
         child: barContent(context),
       ),
     );
-
   }
 }

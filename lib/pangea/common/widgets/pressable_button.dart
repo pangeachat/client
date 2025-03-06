@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import 'package:fluffychat/pangea/common/utils/play_click_sound.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:fluffychat/pangea/common/utils/play_click_sound.dart';
 
 class PressableButton extends StatefulWidget {
   final BorderRadius borderRadius;
@@ -83,7 +82,7 @@ class PressableButtonState extends State<PressableButton>
     }
   }
 
-  bool get _isLightMode => Theme.of(context).brightness == Brightness.light;
+  // bool get _isLightMode => Theme.of(context).brightness == Brightness.light;
 
   void _onTapDown(TapDownDetails? details) {
     if (_depressed) return;

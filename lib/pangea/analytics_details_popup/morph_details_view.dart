@@ -1,19 +1,14 @@
-import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
-import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
-import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup_content.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
-import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
-import 'package:fluffychat/pangea/morphs/morph_icon.dart';
+import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
+import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_repo.dart';
+import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class MorphDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
@@ -39,8 +34,10 @@ class MorphDetailsView extends StatelessWidget {
         : _construct.lemmaCategory.darkColor;
 
     return AnalyticsDetailsViewContent(
-      title: MorphFeatureDisplay(morphFeature: _morphFeature, morphTag: _morphTag),
-      subtitle: MorphTagDisplay(morphFeature: _morphFeature, textColor: textColor),
+      title:
+          MorphFeatureDisplay(morphFeature: _morphFeature, morphTag: _morphTag),
+      subtitle:
+          MorphTagDisplay(morphFeature: _morphFeature, textColor: textColor),
       headerContent: Padding(
         padding: const EdgeInsets.all(25.0),
         child: Align(

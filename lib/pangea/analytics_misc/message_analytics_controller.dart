@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -160,52 +158,51 @@ class MessageAnalyticsEntry {
     return null;
 
     // don't do hidden word listening on own messages
-    if (!_includeHiddenWordActivities) {
-      return null;
-    }
+    // if (!_includeHiddenWordActivities) {
+    //   return null;
+    // }
 
-    // we will only do hidden word listening 30% of the time
-    // if there are no other activities to do, we will always do hidden word listening
-    if (Random().nextDouble() < 0.7) {
-      // @ggurdin - just want you to review this change. i'm not sure what numOtherActivities >= _maxQueueLength was doing
-      // if (numOtherActivities >= _maxQueueLength && Random().nextDouble() < 0.5) {
-      return null;
-    }
+    // // we will only do hidden word listening 30% of the time
+    // // if there are no other activities to do, we will always do hidden word listening
+    // if (Random().nextDouble() < 0.7) {
+    //   // if (numOtherActivities >= _maxQueueLength && Random().nextDouble() < 0.5) {
+    //   return null;
+    // }
 
-    // We will find the longest sequence of tokens that have hiddenWordListening in their eligibleActivityTypes
-    final List<List<PangeaToken>> sequences = [];
-    List<PangeaToken> currentSequence = [];
-    for (final token in _tokens) {
-      if (_pangeaMessageEvent.shouldDoActivity(
-        token: token,
-        a: ActivityTypeEnum.hiddenWordListening,
-        feature: null,
-        tag: null,
-      )) {
-        currentSequence.add(token);
-      } else {
-        if (currentSequence.isNotEmpty) {
-          sequences.add(currentSequence);
-          currentSequence = [];
-        }
-      }
-    }
+    // // We will find the longest sequence of tokens that have hiddenWordListening in their eligibleActivityTypes
+    // final List<List<PangeaToken>> sequences = [];
+    // List<PangeaToken> currentSequence = [];
+    // for (final token in _tokens) {
+    //   if (_pangeaMessageEvent.shouldDoActivity(
+    //     token: token,
+    //     a: ActivityTypeEnum.hiddenWordListening,
+    //     feature: null,
+    //     tag: null,
+    //   )) {
+    //     currentSequence.add(token);
+    //   } else {
+    //     if (currentSequence.isNotEmpty) {
+    //       sequences.add(currentSequence);
+    //       currentSequence = [];
+    //     }
+    //   }
+    // }
 
-    if (sequences.isEmpty) {
-      return null;
-    }
+    // if (sequences.isEmpty) {
+    //   return null;
+    // }
 
-    final longestSequence = sequences.reduce(
-      (a, b) => a.length > b.length ? a : b,
-    );
+    // final longestSequence = sequences.reduce(
+    //   (a, b) => a.length > b.length ? a : b,
+    // );
 
-    // Truncate the sequence to a maximum of 2 words
-    final truncatedSequence = longestSequence.take(2).toList();
+    // // Truncate the sequence to a maximum of 2 words
+    // final truncatedSequence = longestSequence.take(2).toList();
 
-    return TargetTokensAndActivityType(
-      tokens: truncatedSequence,
-      activityType: ActivityTypeEnum.hiddenWordListening,
-    );
+    // return TargetTokensAndActivityType(
+    //   tokens: truncatedSequence,
+    //   activityType: ActivityTypeEnum.hiddenWordListening,
+    // );
   }
 
   void onActivityComplete() => _popQueue();

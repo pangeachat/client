@@ -1,16 +1,13 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/card_error_widget.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class MessageTranslationCard extends StatefulWidget {
   final PangeaMessageEvent messageEvent;
@@ -82,22 +79,20 @@ class MessageTranslationCardState extends State<MessageTranslationCard> {
     final bool isWrittenInL1 =
         l1Code != null && widget.messageEvent.originalSent?.langCode == l1Code;
 
-
     return isWrittenInL1;
   }
 
   @override
   Widget build(BuildContext context) {
     debugPrint('MessageTranslationCard build');
-    if (!_fetchingTranslation &&
-        repEvent == null) {
+    if (!_fetchingTranslation && repEvent == null) {
       return const CardErrorWidget(
         error: "No translation found",
         maxWidth: AppConfig.toolbarMinWidth,
       );
     }
 
-    final loadingTranslation =repEvent == null;
+    final loadingTranslation = repEvent == null;
 
     if (_fetchingTranslation || loadingTranslation) {
       return const ToolbarContentLoadingIndicator();
@@ -123,7 +118,8 @@ class MessageTranslationCardState extends State<MessageTranslationCard> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              if (notGoingToTranslate && !InstructionsEnum.l1Translation.isToggledOff)
+              if (notGoingToTranslate &&
+                  !InstructionsEnum.l1Translation.isToggledOff)
                 const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
