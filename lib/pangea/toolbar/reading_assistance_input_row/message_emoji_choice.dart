@@ -5,6 +5,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_emojis.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
+import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
@@ -102,7 +104,11 @@ class MessageEmojiChoice extends StatelessWidget {
 
         if (emoji == null) {
           return MessageEmojiChoiceItem(
-            topContent: token.xpEmoji,
+            topContent: CustomizedSvg(
+              svgUrl: token.vocabConstruct.constructLevel.svgURL,
+              colorReplacements: const {},
+              errorIcon: Text(token.xpEmoji),
+            ),
             content: token.text.content,
             onTap: () => overlayController.onClickOverlayMessageToken(token),
             onDoubleTap: null,
@@ -114,7 +120,10 @@ class MessageEmojiChoice extends StatelessWidget {
         }
 
         return MessageEmojiChoiceItem(
-          topContent: emoji,
+          topContent: Text(
+            emoji,
+            style: const TextStyle(fontSize: 24),
+          ),
           content: token.text.content,
           onTap: () => overlayController.onClickOverlayMessageToken(token),
           onDoubleTap: () => onDoubleTapOrLongPress(context, emoji),

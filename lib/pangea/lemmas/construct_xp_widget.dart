@@ -91,7 +91,6 @@ class ConstructXpWidgetState extends State<ConstructXpWidget>
       MatrixState.pangeaController.getAnalytics.analyticsStream.stream;
 
   Widget get svg => CustomizedSvg(
-        key: ValueKey(constructLemmaCategory),
         svgUrl:
             constructLemmaCategory?.svgURL ?? ConstructLevelEnum.seeds.svgURL,
         colorReplacements: const {},

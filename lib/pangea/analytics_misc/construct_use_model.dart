@@ -89,4 +89,14 @@ class ConstructUses {
       return AnalyticsConstants.emojiForFlower;
     }
   }
+
+  ConstructLevelEnum get constructLevel {
+    if (points < 30) {
+      return ConstructLevelEnum.seeds;
+    } else if (points < 100) {
+      return ConstructLevelEnum.greens;
+    } else {
+      return ConstructLevelEnum.flowers;
+    }
+  }
 }

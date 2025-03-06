@@ -18,7 +18,7 @@ class MessageEmojiChoiceItem extends StatefulWidget {
     required this.token,
   });
 
-  final String? topContent;
+  final Widget? topContent;
   final String content;
   final void Function() onTap;
   final void Function()? onDoubleTap;
@@ -72,10 +72,7 @@ class MessageEmojiChoiceItemState extends State<MessageEmojiChoiceItem> {
                     if (widget.topContent != null)
                       Opacity(
                         opacity: widget.contentOpacity,
-                        child: Text(
-                          widget.topContent!,
-                          style: TextStyle(fontSize: widget.textSize + 4),
-                        ),
+                        child: widget.topContent,
                       ),
                     Text(
                       widget.content,

@@ -84,12 +84,15 @@ class WritingAssistanceInputRowState extends State<WritingAssistanceInputRow> {
           children: suggestions
               .map(
                 (suggestion) => MessageEmojiChoiceItem(
-                  topContent: suggestion.userSetEmoji ??
-                      MatrixState
-                          .pangeaController.getAnalytics.constructListModel
-                          .getConstructUses(suggestion)
-                          ?.xpEmoji ??
-                      AnalyticsConstants.emojiForSeed,
+                  topContent: Text(
+                    suggestion.userSetEmoji ??
+                        MatrixState
+                            .pangeaController.getAnalytics.constructListModel
+                            .getConstructUses(suggestion)
+                            ?.xpEmoji ??
+                        AnalyticsConstants.emojiForSeed,
+                    style: const TextStyle(fontSize: 24),
+                  ),
                   content: suggestion.lemma,
                   onTap: () {
                     choreographer.onPredictorSelect(suggestion.lemma);

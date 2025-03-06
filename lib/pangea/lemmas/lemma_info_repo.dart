@@ -1,7 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
@@ -28,7 +25,6 @@ class LemmaInfoRepo {
     String? feedback,
     bool useExpireAt = false,
   ]) async {
-    debugger(when: kDebugMode);
     final cachedJson = _lemmaStorage.read(request.storageKey);
 
     final cached =
