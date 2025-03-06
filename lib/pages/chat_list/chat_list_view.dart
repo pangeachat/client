@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
+import 'package:fluffychat/pangea/chat_list/widgets/chat_list_view_body_wrapper.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
-import 'chat_list_body.dart';
 
 class ChatListView extends StatelessWidget {
   final ChatListController controller;
@@ -48,18 +48,24 @@ class ChatListView extends StatelessWidget {
               excludeFromSemantics: true,
               behavior: HitTestBehavior.translucent,
               child: Scaffold(
-                body: ChatListViewBody(controller),
-                floatingActionButton: !controller.isSearchMode &&
-                        controller.activeSpaceId == null
-                    ? FloatingActionButton.extended(
-                        onPressed: () => context.go('/rooms/newprivatechat'),
-                        icon: const Icon(Icons.add_outlined),
-                        label: Text(
-                          L10n.of(context).chat,
-                          overflow: TextOverflow.fade,
-                        ),
-                      )
-                    : const SizedBox.shrink(),
+                // #Pangea
+                // body: ChatListViewBody(controller),
+                body: ChatListViewBodyWrapper(controller: controller),
+                // Pangea#
+                floatingActionButton:
+                    !controller.isSearchMode && controller.activeSpaceId == null
+                        ? FloatingActionButton.extended(
+                            // #Pangea
+                            // onPressed: () => context.go('/rooms/newprivatechat'),
+                            onPressed: () => context.go('/rooms/newgroup'),
+                            // Pangea#
+                            icon: const Icon(Icons.add_outlined),
+                            label: Text(
+                              L10n.of(context).chat,
+                              overflow: TextOverflow.fade,
+                            ),
+                          )
+                        : const SizedBox.shrink(),
               ),
             ),
           ),
