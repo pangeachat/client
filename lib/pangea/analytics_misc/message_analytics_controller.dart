@@ -67,10 +67,6 @@ class MessageAnalyticsEntry {
 
   late final List<PangeaToken> _tokens;
 
-  late final bool _includeHiddenWordActivities;
-
-  late final PangeaMessageEvent _pangeaMessageEvent;
-
   final List<TargetTokensAndActivityType> _activityQueue = [];
 
   final int _maxQueueLength = 3;
@@ -81,8 +77,6 @@ class MessageAnalyticsEntry {
     required PangeaMessageEvent pangeaMessageEvent,
   }) {
     _tokens = tokens;
-    _includeHiddenWordActivities = includeHiddenWordActivities;
-    _pangeaMessageEvent = pangeaMessageEvent;
     setActivityQueue();
   }
 
