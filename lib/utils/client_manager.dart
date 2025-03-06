@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:collection/collection.dart';
 import 'package:desktop_notifications/desktop_notifications.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -140,11 +141,10 @@ abstract class ClientManager {
       customImageResizer: PlatformInfos.isMobile ? customImageResizer : null,
       defaultNetworkRequestTimeout: const Duration(minutes: 30),
       enableDehydratedDevices: true,
-      // TODO MERGE replace this after updating the SDK
-      // shareKeysWith: ShareKeysWith.values
-      //         .singleWhereOrNull((share) => share.name == shareKeysWith) ??
-      //     ShareKeysWith.all,
-      // convertLinebreaksInFormatting: false,
+      shareKeysWith: ShareKeysWith.values
+              .singleWhereOrNull((share) => share.name == shareKeysWith) ??
+          ShareKeysWith.all,
+      convertLinebreaksInFormatting: false,
       // #Pangea
       syncFilter: Filter(
         room: RoomFilter(
