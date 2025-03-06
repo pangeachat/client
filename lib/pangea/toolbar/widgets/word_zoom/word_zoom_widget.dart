@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -15,7 +17,6 @@ import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_text_wi
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/morphs/morphological_list_item.dart';
-import 'package:flutter/material.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaToken token;
@@ -51,10 +52,10 @@ class WordZoomWidget extends StatelessWidget {
         alignment: Alignment.topCenter,
         children: [
           const Positioned(
-          child: PointsGainedAnimation(
-            origin: AnalyticsUpdateOrigin.wordZoom,
+            child: PointsGainedAnimation(
+              origin: AnalyticsUpdateOrigin.wordZoom,
+            ),
           ),
-        ),
           SingleChildScrollView(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -91,15 +92,15 @@ class WordZoomWidget extends StatelessWidget {
                         tts: tts,
                       ),
                       ConstructXpWidget(
-                        id: token.vocabConstructID, 
+                        id: token.vocabConstructID,
                         onTap: () => showDialog<AnalyticsPopupWrapper>(
-                                  context: context,
-                                  builder: (context) => AnalyticsPopupWrapper(
-                                    constructZoom: token.vocabConstructID,
-                                    view: ConstructTypeEnum.vocab,
-                                  ),
-                                ),
+                          context: context,
+                          builder: (context) => AnalyticsPopupWrapper(
+                            constructZoom: token.vocabConstructID,
+                            view: ConstructTypeEnum.vocab,
+                          ),
                         ),
+                      ),
                     ],
                   ),
                 ),
@@ -124,28 +125,32 @@ class WordZoomWidget extends StatelessWidget {
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                  if (!_selectedToken.doesLemmaTextMatchTokenText)
-                    WordTextWithAudioButton(
-                    text: _selectedToken.text.content,
-                    ttsController: tts,
-                    textSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+                    if (!_selectedToken.doesLemmaTextMatchTokenText)
+                      WordTextWithAudioButton(
+                        text: _selectedToken.text.content,
+                        ttsController: tts,
+                        textSize:
+                            Theme.of(context).textTheme.titleMedium?.fontSize,
+                      ),
+                    ..._selectedToken.sortedMorphs.map(
+                      (featureTagPair) => MorphologicalListItem(
+                        onPressed: (feature) =>
+                            overlayController.updateToolbarMode(
+                          MessageMode.wordMorph,
+                          feature,
+                        ),
+                        morphFeature: featureTagPair.key,
+                        morphTag: featureTagPair.value,
+                        isUnlocked: !overlayController.pangeaMessageEvent!
+                            .shouldDoActivity(
+                          token: token,
+                          a: ActivityTypeEnum.morphId,
+                          feature: featureTagPair.key,
+                          tag: featureTagPair.value,
+                        ),
+                        isSelected: _selectedMorphFeature == featureTagPair.key,
+                      ),
                     ),
-                  ..._selectedToken.sortedMorphs.map((featureTagPair) => MorphologicalListItem(
-                      onPressed: (feature) =>
-                      overlayController.updateToolbarMode(
-                    MessageMode.wordMorph,
-                    feature,
-                    ),
-                morphFeature: featureTagPair.key,
-                morphTag: featureTagPair.value,
-                isUnlocked: !overlayController.pangeaMessageEvent!.shouldDoActivity(
-                  token: token,
-                  a: ActivityTypeEnum.morphId,
-                  feature: featureTagPair.key,
-                  tag: featureTagPair.value,
-                ),
-                isSelected: _selectedMorphFeature == featureTagPair.key,
-                ),),
                   ],
                 ),
                 // if (_selectedMorphFeature != null)

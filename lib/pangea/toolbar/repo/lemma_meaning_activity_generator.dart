@@ -120,5 +120,4 @@ class LemmaMeaningActivityGenerator {
 
     return distractorDefs.toList();
   }
-
 }

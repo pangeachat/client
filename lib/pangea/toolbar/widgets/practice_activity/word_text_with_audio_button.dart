@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class WordTextWithAudioButton extends StatefulWidget {
   final String text;
@@ -22,7 +23,8 @@ class WordTextWithAudioButton extends StatefulWidget {
 class WordAudioButtonState extends State<WordTextWithAudioButton> {
   bool _isPlaying = false;
 
-  double get textSize => widget.textSize ?? Theme.of(context).textTheme.titleLarge?.fontSize ?? 16;
+  double get textSize =>
+      widget.textSize ?? Theme.of(context).textTheme.titleLarge?.fontSize ?? 16;
 
   @override
   Widget build(BuildContext context) {
@@ -87,8 +89,7 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
                           color: _isPlaying
                               ? Theme.of(context).colorScheme.secondary
                               : null,
-                          fontSize:
-                              textSize,
+                          fontSize: textSize,
                         ),
                     overflow: TextOverflow.ellipsis,
                   ),

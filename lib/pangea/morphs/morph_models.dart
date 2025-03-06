@@ -1,8 +1,10 @@
 import 'dart:developer';
 
-import 'package:collection/collection.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:flutter/foundation.dart';
+
+import 'package:collection/collection.dart';
+
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class MorphFeature {
   final String feature;

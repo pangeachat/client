@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
-import 'package:flutter/material.dart';
 
 class MessageEmojiChoiceItem extends StatefulWidget {
   const MessageEmojiChoiceItem({

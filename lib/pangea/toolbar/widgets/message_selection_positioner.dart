@@ -1,6 +1,10 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -17,8 +21,6 @@ import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_and_progress_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 /// Controls positioning of the message overlay.
 class MessageSelectionPositioner extends StatefulWidget {
@@ -87,7 +89,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     ).listen((_) => setState(() {}));
   }
 
-    @override
+  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (_mediaQuery == null) {
@@ -204,7 +206,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         null,
       );
 
-  Size get _defaultMessageSize => const Size(FluffyThemes.columnWidth/2, 100);
+  Size get _defaultMessageSize => const Size(FluffyThemes.columnWidth / 2, 100);
   Size get _messageSize {
     if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
       return _defaultMessageSize;
@@ -217,8 +219,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     );
   }
 
-  double get _messageHeight =>
-      _adjustedMessageHeight ?? _messageSize.height;
+  double get _messageHeight => _adjustedMessageHeight ?? _messageSize.height;
 
   //TODO: figure out where the 16 and 8 come from and use references instead of hard-coded values
   static const _messageDefaultLeftMargin = Avatar.defaultSize + 16 + 8;
@@ -246,7 +247,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   // message offset
 
-  static const Offset _defaultMessageOffset = Offset(_messageDefaultLeftMargin, 300);
+  static const Offset _defaultMessageOffset =
+      Offset(_messageDefaultLeftMargin, 300);
   Offset get _messageOffset {
     if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
       return _defaultMessageOffset;
@@ -258,16 +260,20 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     );
   }
 
-  double get _messageTopOffset => _messageOffset.dy -
-        (_mediaQuery?.padding.top ?? 0) +
-        (_mediaQuery?.viewPadding.top ?? 0);
+  double get _messageTopOffset =>
+      _messageOffset.dy -
+      (_mediaQuery?.padding.top ?? 0) +
+      (_mediaQuery?.viewPadding.top ?? 0);
 
-  double get _messageBottomOffset =>  _mediaQuery!.size.height - _messageOffset.dy - _messageHeight;
+  double get _messageBottomOffset =>
+      _mediaQuery!.size.height - _messageOffset.dy - _messageHeight;
 
-  double get _messageLeftOffset => _messageOffset.dx - _columnWidth - _horizontalPadding;
+  double get _messageLeftOffset =>
+      _messageOffset.dx - _columnWidth - _horizontalPadding;
 
   double get _messageRightOffset {
-    if (_mediaQuery == null || widget.event.senderId != widget.event.room.client.userID) {
+    if (_mediaQuery == null ||
+        widget.event.senderId != widget.event.room.client.userID) {
       return 0;
     }
     return _mediaQuery!.size.width -
@@ -288,7 +294,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double get _footerHeight {
-    return ((widget.overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ?? false) ? readingAssistanceInputBarHeight : AppConfig.defaultFooterHeight) +
+    return ((widget.overlayController.pangeaMessageEvent
+                    ?.messageDisplayLangIsL2 ??
+                false)
+            ? readingAssistanceInputBarHeight
+            : AppConfig.defaultFooterHeight) +
         (FluffyThemes.isColumnMode(context) ? 16.0 : 8.0) +
         (_mediaQuery?.padding.bottom ?? 0);
   }
@@ -344,7 +354,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   @override
   Widget build(BuildContext context) {
-    if (_messageRenderBox == null || _mediaQuery == null) return const SizedBox.shrink();
+    if (_messageRenderBox == null || _mediaQuery == null)
+      return const SizedBox.shrink();
 
     return Padding(
       padding: EdgeInsets.only(
@@ -358,17 +369,24 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
             builder: (context, child) {
               return Positioned(
                 // subtract width of
-                left: widget.event.senderId != widget.event.room.client.userID ? max(_messageLeftOffset - AppConfig.toolbarButtonsColumnWidth,
-                  0,
-                ) : null,
-                right: widget.event.senderId == widget.event.room.client.userID ? _messageRightOffset : _messageRightOffset,
+                left: widget.event.senderId != widget.event.room.client.userID
+                    ? max(
+                        _messageLeftOffset -
+                            AppConfig.toolbarButtonsColumnWidth,
+                        0,
+                      )
+                    : null,
+                right: widget.event.senderId == widget.event.room.client.userID
+                    ? _messageRightOffset
+                    : _messageRightOffset,
                 bottom: _overlayPositionAnimation?.value ??
                     _totalToolbarBottomOffset,
                 child: Row(
-                  mainAxisAlignment: widget.event.senderId == widget.event.room.client.userID
-              ? MainAxisAlignment.end
-              : MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment:
+                      widget.event.senderId == widget.event.room.client.userID
+                          ? MainAxisAlignment.end
+                          : MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     // fixed height and width container
 

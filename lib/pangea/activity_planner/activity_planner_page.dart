@@ -1,6 +1,11 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pangea/activity_planner/activity_list_view.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_mode_list_repo.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
@@ -17,9 +22,6 @@ import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_en
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix.dart';
 
 enum _PageMode {
   settings,
