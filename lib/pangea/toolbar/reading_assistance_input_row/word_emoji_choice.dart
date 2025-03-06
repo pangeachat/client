@@ -70,14 +70,6 @@ class WordEmojiChoiceState extends State<WordEmojiChoice> {
       const Duration(milliseconds: choiceArrayAnimationDuration),
     );
 
-    // @ggurdin putting this here because I'm not sure if it needs to be used
-    // it is used in the multiple choice activity
-    // final streamFuture = MatrixState
-    //     .pangeaController.getAnalytics.analyticsStream.stream.first;
-    // streamFuture.then((_) {
-    //   widget.practiceCardController.onActivityFinish();
-    // });
-
     widget.overlayController.onActivityFinish(ActivityTypeEnum.emoji);
 
     setState(() => {});

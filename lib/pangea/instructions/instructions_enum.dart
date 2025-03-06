@@ -93,7 +93,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.activityPlannerOverview:
         return l10n.activityPlannerOverviewInstructionsBody;
       case InstructionsEnum.chooseEmoji:
-        return "Pick an emoji for the word! There's no wrong answer and you can switch anytime! 😀";
+        return l10n.chooseEmojiInstructionsBody;
       case InstructionsEnum.ttsDisabled:
         return l10n.ttsDisabledBody;
     }

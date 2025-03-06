@@ -127,7 +127,7 @@ class PracticeGenerationController {
     // some activities we'll get from the server and others we'll generate locally
     switch (req.targetType) {
       case ActivityTypeEnum.emoji:
-        return _emoji.get(req);
+        return _emoji.get(req, context);
       case ActivityTypeEnum.lemmaId:
         return _lemma.get(req, context);
       case ActivityTypeEnum.morphId:

@@ -712,14 +712,6 @@ class Message extends StatelessWidget {
                           ? MainAxisAlignment.end
                           : MainAxisAlignment.start,
                       children: [
-                        // if (pangeaMessageEvent?.showMessageButtons ?? false)
-                        //   MessageButtons(
-                        //     event: event,
-                        //     controller: controller,
-                        //     pangeaMessageEvent: pangeaMessageEvent!,
-                        //     nextEvent: nextEvent,
-                        //     prevEvent: previousEvent,
-                        //   ),
                         MessageReactions(event, timeline),
                       ],
                     ),

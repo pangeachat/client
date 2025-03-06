@@ -4861,5 +4861,15 @@
   },
   "downloadGboard": "Download Gboard",
   "autocorrectNotAvailable": "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!",
-  "pleaseUpdateApp": "Please update the app to continue."
+  "pleaseUpdateApp": "Please update the app to continue.",
+  "chooseEmojiInstructionsBody": "Pick an emoji for the word! There's no wrong answer and you can switch anytime! 😀",
+  "pickAnEmojiFor": "Pick an emoji for ${lemma}",
+  "@pickAnEmojiFor": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
+  }
 } 

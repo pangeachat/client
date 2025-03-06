@@ -357,7 +357,7 @@ class Choreographer {
     // TODO - probably give it a different type of edit type
     _textController.setSystemText(
       "${_textController.text} $text",
-      EditType.keyboard,
+      EditType.other,
     );
     giveInputFocus();
   }
