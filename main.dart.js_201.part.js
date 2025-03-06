@@ -3807,8 +3807,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickBestOption() {
       return "Elija las mejores opciones para traducir su mensaje";
     },
-    get$unlockedLanguageTools() {
-      return "Has desbloqueado las herramientas ling\xfc\xedsticas para este mensaje. Pru\xe9balas haciendo clic a continuaci\xf3n.";
+    get$completeActivitiesToUnlock() {
+      return "Completa las actividades de palabras resaltadas para desbloquear";
     },
     get$botSettingsSubtitle() {
       return "Invitar a un bot a moderar la actividad del chat";
@@ -4206,9 +4206,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityPlannerOverviewInstructionsBody() {
       return "\xa1Elige un tema, modo, objetivo de aprendizaje y genera una actividad para el chat!";
     },
-    get$completeActivitiesToUnlock() {
-      return "Completa las actividades de palabras resaltadas para desbloquear";
-    },
     get$myBookmarkedActivities() {
       return "Mis Actividades Marcadas";
     },
@@ -4317,6 +4314,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseUpdateApp() {
       return "Please update the app to continue.";
     },
+    get$chooseEmojiInstructionsBody() {
+      return "Pick an emoji for the word! There's no wrong answer and you can switch anytime! \ud83d\ude00";
+    },
+    pickAnEmojiFor$1(lemma) {
+      return "Pick an emoji for $" + lemma;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4332,6 +4335,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_201", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "2gbYS294nI+jtWu3TF0FfcrDD/Y=");
+})($__dart_deferred_initializers__, "SFGtZ7+zSaLLd8BR8FhA3rbGx6Y=");
 ;
 //# sourceMappingURL=main.dart.js_201.part.js.map
