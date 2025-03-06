@@ -50,6 +50,7 @@ dependencies:
   flutter_new_badger: ^1.1.1
   flutter_olm: 2.0.0
   flutter_openssl_crypto: ^0.3.0
+  flutter_ringtone_player: ^4.0.0+2
   flutter_secure_storage: ^9.2.3
   flutter_shortcuts_new: ^2.0.0
   flutter_typeahead: ^5.2.0
@@ -76,7 +77,8 @@ dependencies:
   # matrix: ^0.38.0
   # Pangea#
   mime: ^1.0.6
-  native_imaging: ^0.2.0
+  native_imaging:
+    git: https://github.com/famedly/dart_native_imaging.git
   opus_caf_converter_dart: ^1.0.1
   package_info_plus: ^8.1.1
   pasteboard: ^0.2.0

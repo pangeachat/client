@@ -895,6 +895,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.20"
+  flutter_ringtone_player:
+    dependency: "direct main"
+    description:
+      name: flutter_ringtone_player
+      sha256: ae4a2caab2cfd14902f3ee5fe0307c454b396f0077fa34700238d6c4bd99cfec
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0+4"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -1567,10 +1575,11 @@ packages:
   native_imaging:
     dependency: "direct main"
     description:
-      name: native_imaging
-      sha256: "93573afdcab070011d78a40fc1f69b61967f1f8485d2b81a7a2ee585a85f4c04"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "456a407bca749051be230566612cb0decd38cbd6"
+      url: "https://github.com/famedly/dart_native_imaging.git"
+    source: git
     version: "0.2.0"
   nested:
     dependency: transitive
