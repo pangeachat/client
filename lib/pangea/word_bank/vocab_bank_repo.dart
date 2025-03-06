@@ -1,6 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -13,9 +18,6 @@ import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart'
 import 'package:fluffychat/pangea/word_bank/vocab_request.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
 
 class VocabRepo {
   static final GetStorage _lemmaStorage = GetStorage('vocab_storage');
@@ -81,19 +83,22 @@ class VocabRepo {
 
   /// Preference previously used words if list is non-empty
   /// Otherwise, pull from a set of starter words for each language
-  static Future<VocabResponse> getAllCandidateVocab(VocabRequest request) async {
+  static Future<VocabResponse> getAllCandidateVocab(
+      VocabRequest request) async {
+    final List<ConstructIdentifier> myVocab = MatrixState
+        .pangeaController.getAnalytics.constructListModel
+        .constructList(type: ConstructTypeEnum.vocab)
+        .map((use) => use.id)
+        .toList();
 
-    final List<ConstructIdentifier> myVocab = MatrixState.pangeaController.getAnalytics.constructListModel
-        .constructList(type: ConstructTypeEnum.vocab).map((use) => use.id).toList();
-
-    final List<ConstructIdentifier> vocabBank = (await VocabRepo.get(request)).vocab;
+    final List<ConstructIdentifier> vocabBank =
+        (await VocabRepo.get(request)).vocab;
 
     final List<ConstructIdentifier> all = [...myVocab, ...vocabBank];
 
     final deduped = all.toSet().toList();
 
     return VocabResponse(vocab: deduped);
-  
   }
 
   Future<VocabResponse> getSemanticallySimilarWords(
@@ -108,10 +113,13 @@ class VocabRepo {
     final sharingPos = candidates
         .where(
           (element) =>
-              request.token == null || (element.category.toLowerCase() == request.token?.pos.toLowerCase() && element.lemma != request.token?.lemma.text),
+              request.token == null ||
+              (element.category.toLowerCase() ==
+                      request.token?.pos.toLowerCase() &&
+                  element.lemma != request.token?.lemma.text),
         )
         .toList();
-    
+
     // we prefer to return words that share the same part of speech as the token
     // but if there are no words that share the same part of speech, we return all words
     final similarWords = sharingPos.isEmpty ? candidates : sharingPos;
@@ -129,7 +137,10 @@ class VocabRepo {
     final sharingPos = candidates
         .where(
           (element) =>
-              request.token == null || (element.category.toLowerCase() != request.token?.pos.toLowerCase() && element.lemma != request.token?.lemma.text),
+              request.token == null ||
+              (element.category.toLowerCase() !=
+                      request.token?.pos.toLowerCase() &&
+                  element.lemma != request.token?.lemma.text),
         )
         .toList();
 

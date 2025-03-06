@@ -1,7 +1,10 @@
 // presents choices from vocab_bank_repo
 // displays them as emoji choices
 // once selection, these words are inserted into the input bar
+
 import 'dart:async';
+
+import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -14,7 +17,6 @@ import 'package:fluffychat/pangea/word_bank/vocab_bank_repo.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_request.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class WritingAssistanceInputRow extends StatefulWidget {
   final ChatController controller;

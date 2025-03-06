@@ -1,13 +1,13 @@
 import 'dart:developer';
 import 'dart:math';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import '../../bot/utils/bot_style.dart';
 import 'it_shimmer.dart';
@@ -102,40 +102,44 @@ class ChoicesArrayState extends State<ChoicesArray> {
     final ThemeData theme = Theme.of(context);
 
     final choices = widget.choices!
-                .mapIndexed(
-                  (index, entry) => ChoiceItem(
-                    theme: theme,
-                    onLongPress: widget.isActive ? widget.onLongPress : null,
-                    onPressed: widget.isActive
-                        ? (String value, int index) {
-                            widget.onPressed(value, index);
-                            // TODO - what to pass here as eventID?
-                            if (widget.enableAudio && widget.tts != null) {
-                              widget.tts?.tryToSpeak(
-                                value,
-                                context,
-                                targetID: null,
-                              );
-                            }
-                          }
-                        : (String value, int index) {
-                            debugger(when: kDebugMode);
-                          },
-                    entry: MapEntry(index, entry),
-                    interactionDisabled: interactionDisabled,
-                    enableInteraction: enableInteractions,
-                    disableInteraction: disableInteraction,
-                    isSelected: widget.selectedChoiceIndex == index,
-                    id: widget.id,
-                    getDisplayCopy: widget.getDisplayCopy,
-                    fontSize: widget.fontSize,
-                  ),
-                )
-                .toList();
+        .mapIndexed(
+          (index, entry) => ChoiceItem(
+            theme: theme,
+            onLongPress: widget.isActive ? widget.onLongPress : null,
+            onPressed: widget.isActive
+                ? (String value, int index) {
+                    widget.onPressed(value, index);
+                    // TODO - what to pass here as eventID?
+                    if (widget.enableAudio && widget.tts != null) {
+                      widget.tts?.tryToSpeak(
+                        value,
+                        context,
+                        targetID: null,
+                      );
+                    }
+                  }
+                : (String value, int index) {
+                    debugger(when: kDebugMode);
+                  },
+            entry: MapEntry(index, entry),
+            interactionDisabled: interactionDisabled,
+            enableInteraction: enableInteractions,
+            disableInteraction: disableInteraction,
+            isSelected: widget.selectedChoiceIndex == index,
+            id: widget.id,
+            getDisplayCopy: widget.getDisplayCopy,
+            fontSize: widget.fontSize,
+          ),
+        )
+        .toList();
 
     return widget.isLoading &&
             (widget.choices == null || widget.choices!.length <= 1)
-        ? ItShimmer(originalSpan: widget.originalSpan, fontSize: widget.fontSize ?? Theme.of(context).textTheme.bodyMedium?.fontSize ?? 16)
+        ? ItShimmer(
+            originalSpan: widget.originalSpan,
+            fontSize: widget.fontSize ??
+                Theme.of(context).textTheme.bodyMedium?.fontSize ??
+                16)
         : widget.overflowMode == OverflowMode.wrap
             ? Wrap(
                 alignment: WrapAlignment.center,
@@ -165,7 +169,6 @@ class Choice {
     this.color,
     required this.text,
     this.isGold = false,
-
   });
 
   final Color? color;
@@ -220,7 +223,8 @@ class ChoiceItem extends StatelessWidget {
             margin: const EdgeInsets.all(2),
             padding: EdgeInsets.zero,
             decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(Radius.circular(AppConfig.borderRadius)),
+              borderRadius: const BorderRadius.all(
+                  Radius.circular(AppConfig.borderRadius)),
               border: Border.all(
                 color: isSelected
                     ? entry.value.color ?? theme.colorScheme.primary
@@ -236,8 +240,9 @@ class ChoiceItem extends StatelessWidget {
                 ),
                 //if index is selected, then give the background a slight primary color
                 backgroundColor: WidgetStateProperty.all<Color>(
-                        entry.value.color?.withAlpha(50) ?? theme.colorScheme.primary.withAlpha(10),
-                      ),
+                  entry.value.color?.withAlpha(50) ??
+                      theme.colorScheme.primary.withAlpha(10),
+                ),
                 textStyle: WidgetStateProperty.all(
                   BotStyle.text(context),
                 ),

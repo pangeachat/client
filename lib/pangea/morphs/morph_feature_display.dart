@@ -1,13 +1,15 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
-import 'package:flutter/material.dart';
 
 class MorphFeatureDisplay extends StatelessWidget {
   const MorphFeatureDisplay({
     super.key,
     required String morphFeature,
     required String morphTag,
-  }) : _morphFeature = morphFeature, _morphTag = morphTag;
+  })  : _morphFeature = morphFeature,
+        _morphTag = morphTag;
 
   final String _morphFeature;
   final String _morphTag;

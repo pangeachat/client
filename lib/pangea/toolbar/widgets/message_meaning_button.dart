@@ -18,7 +18,6 @@ class MessageMeaningButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return AnimatedCrossFade(
       crossFadeState: overlayController.isPracticeComplete
           ? CrossFadeState.showSecond

@@ -1,7 +1,9 @@
-import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:material_symbols_icons/symbols.dart';
+
+import 'package:fluffychat/config/app_config.dart';
 
 enum MessageMode {
   practiceActivity,
@@ -123,7 +125,6 @@ extension MessageModeExtension on MessageMode {
     double proportionOfActivitiesCompleted,
     bool totallyDone,
   ) {
-
     switch (this) {
       case MessageMode.messageTranslation:
       case MessageMode.messageTextToSpeech:
@@ -149,17 +150,18 @@ extension MessageModeExtension on MessageMode {
     double proportionOfActivitiesUnlocked,
     bool totallyDone,
   ) {
-    if(this == MessageMode.practiceActivity && totallyDone) {
+    if (this == MessageMode.practiceActivity && totallyDone) {
       return AppConfig.gold;
     }
-    
+
     //locked
     if (!isUnlocked(proportionOfActivitiesUnlocked, totallyDone)) {
       return barAndLockedButtonColor(context);
     }
 
     //unlocked and active
-    if (this == currentMode) return totallyDone ? AppConfig.gold : AppConfig.primaryColorLight;
+    if (this == currentMode)
+      return totallyDone ? AppConfig.gold : AppConfig.primaryColorLight;
 
     //unlocked and inactive
     return Theme.of(context).colorScheme.primaryContainer;

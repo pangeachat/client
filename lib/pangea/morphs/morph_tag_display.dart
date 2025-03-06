@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class MorphTagDisplay extends StatelessWidget {
   const MorphTagDisplay({
@@ -26,11 +28,13 @@ class MorphTagDisplay extends StatelessWidget {
         ),
         const SizedBox(width: 10.0),
         Text(
-          _morphFeature.toLowerCase() == "other" ? L10n.of(context).other : ConstructTypeEnum.morph.getDisplayCopy(
-        _morphFeature,
-        context,
-      ) ??
-      _morphFeature,
+          _morphFeature.toLowerCase() == "other"
+              ? L10n.of(context).other
+              : ConstructTypeEnum.morph.getDisplayCopy(
+                    _morphFeature,
+                    context,
+                  ) ??
+                  _morphFeature,
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 color: textColor,
               ),
