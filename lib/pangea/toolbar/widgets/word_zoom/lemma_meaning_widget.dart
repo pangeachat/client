@@ -22,6 +22,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 class LemmaMeaningWidget extends StatefulWidget {
   final ConstructUses constructUse;
   final String langCode;
+  final TextStyle? style;
+  final InlineSpan? leading;
 
   /// These are not present if this widget is used outside the chat
   /// (e.g. in the vocab details view)
@@ -35,6 +37,8 @@ class LemmaMeaningWidget extends StatefulWidget {
     required this.langCode,
     required this.controller,
     required this.token,
+    this.style,
+    this.leading,
   });
 
   @override
@@ -184,10 +188,15 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
             child: GestureDetector(
               onLongPress: () => _toggleEditMode(true),
               onDoubleTap: () => _toggleEditMode(true),
-              child: Text(
-                snapshot.data!.meaning,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
+              child: RichText(
+                text: TextSpan(
+                  style: widget.style,
+                  children: [
+                    if (widget.leading != null) widget.leading!,
+                    if (widget.leading != null) const TextSpan(text: '  '),
+                    TextSpan(text: snapshot.data!.meaning),
+                  ],
+                ),
               ),
             ),
           ),

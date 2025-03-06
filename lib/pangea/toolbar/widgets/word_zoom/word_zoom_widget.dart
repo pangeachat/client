@@ -106,9 +106,6 @@ class WordZoomWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                // const SizedBox(
-                //   height: 4.0,
-                // ),
                 Container(
                   constraints: const BoxConstraints(
                     minHeight: 50,
@@ -121,6 +118,7 @@ class WordZoomWidget extends StatelessWidget {
                         LanguageKeys.defaultLanguage,
                     token: overlayController.selectedToken!,
                     controller: overlayController,
+                    style: DefaultTextStyle.of(context).style,
                   ),
                 ),
                 const SizedBox(

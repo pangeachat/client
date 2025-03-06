@@ -140,21 +140,18 @@ class VocabDetailsView extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: _userL2 == null
                     ? Text(L10n.of(context).meaningNotFound)
-                    : Row(
-                        children: [
-                          Text(
-                            L10n.of(context).meaningSectionHeader,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+                    : LemmaMeaningWidget(
+                        constructUse: _construct,
+                        langCode: _userL2!,
+                        controller: null,
+                        token: null,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                        leading: TextSpan(
+                          text: L10n.of(context).meaningSectionHeader,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
                           ),
-                          LemmaMeaningWidget(
-                            constructUse: _construct,
-                            langCode: _userL2!,
-                            controller: null,
-                            token: null,
-                          ),
-                        ],
+                        ),
                       ),
               ),
             ),
