@@ -1,11 +1,6 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
+import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
@@ -17,17 +12,27 @@ import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_zoom_activity_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class LemmaMeaningWidget extends StatefulWidget {
-  final PangeaToken token;
+  final ConstructUses constructUse;
   final String langCode;
-  final MessageOverlayController controller;
+
+  /// These are not present if this widget is used outside the chat
+  /// (e.g. in the vocab details view)
+  /// we're going to punt on letting the user assign the meaning in the vocab details view
+  final MessageOverlayController? controller;
+  final PangeaToken? token;
 
   const LemmaMeaningWidget({
     super.key,
-    required this.token,
+    required this.constructUse,
     required this.langCode,
     required this.controller,
+    required this.token,
   });
 
   @override
@@ -38,9 +43,7 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
   bool _editMode = false;
   late TextEditingController _controller;
 
-  String get _lemma => widget.token.lemma.text.isNotEmpty
-      ? widget.token.lemma.text
-      : widget.token.lemma.form;
+  String get _lemma => widget.constructUse.lemma;
 
   @override
   void initState() {
@@ -56,7 +59,7 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
 
   LemmaInfoRequest get _request => LemmaInfoRequest(
         lemma: _lemma,
-        partOfSpeech: widget.token.pos,
+        partOfSpeech: widget.constructUse.category,
 
         /// This assumes that the user's L2 is the language of the lemma
         lemmaLang: widget.langCode,
@@ -82,18 +85,21 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.token.shouldDoActivity(
-      a: ActivityTypeEnum.wordMeaning,
-      feature: null,
-      tag: null,
-    )) {
+    if (widget.token != null &&
+        widget.token!.shouldDoActivity(
+          a: ActivityTypeEnum.wordMeaning,
+          feature: null,
+          tag: null,
+        )) {
       return WordZoomActivityButton(
         icon: const Icon(Symbols.dictionary),
-        isSelected: widget.controller.toolbarMode == MessageMode.wordMeaning,
-        onPressed: () {
-          // TODO: it would be better to explicitly set to wordMeaningChoice here
-          widget.controller.updateToolbarMode(MessageMode.wordMeaning);
-        },
+        isSelected: widget.controller?.toolbarMode == MessageMode.wordMeaning,
+        onPressed: widget.controller != null
+            ? () {
+                // TODO: it would be better to explicitly set to wordMeaningChoice here
+                widget.controller!.updateToolbarMode(MessageMode.wordMeaning);
+              }
+            : () => {},
       );
     }
 
@@ -106,7 +112,7 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(_lemma, widget.token.pos)}",
+                "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(_lemma, widget.constructUse.category)}",
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontStyle: FontStyle.italic),
               ),

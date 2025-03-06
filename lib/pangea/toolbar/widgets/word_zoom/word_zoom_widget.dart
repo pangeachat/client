@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -7,6 +5,7 @@ import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
@@ -17,6 +16,8 @@ import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_text_wi
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/morphs/morphological_list_item.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaToken token;
@@ -113,8 +114,11 @@ class WordZoomWidget extends StatelessWidget {
                   ),
                   alignment: Alignment.center,
                   child: LemmaMeaningWidget(
-                    token: token,
-                    langCode: messageEvent.messageDisplayLangCode,
+                    constructUse: token.vocabConstructID.constructUses,
+                    langCode: MatrixState.pangeaController.languageController
+                            .userL2?.langCodeShort ??
+                        LanguageKeys.defaultLanguage,
+                    token: overlayController.selectedToken!,
                     controller: overlayController,
                   ),
                 ),

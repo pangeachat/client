@@ -1,14 +1,13 @@
 import 'dart:developer';
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+
 import '../../bot/utils/bot_style.dart';
 import 'it_shimmer.dart';
 
@@ -139,7 +138,8 @@ class ChoicesArrayState extends State<ChoicesArray> {
             originalSpan: widget.originalSpan,
             fontSize: widget.fontSize ??
                 Theme.of(context).textTheme.bodyMedium?.fontSize ??
-                16)
+                16,
+          )
         : widget.overflowMode == OverflowMode.wrap
             ? Wrap(
                 alignment: WrapAlignment.center,
@@ -224,7 +224,8 @@ class ChoiceItem extends StatelessWidget {
             padding: EdgeInsets.zero,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(
-                  Radius.circular(AppConfig.borderRadius)),
+                Radius.circular(AppConfig.borderRadius),
+              ),
               border: Border.all(
                 color: isSelected
                     ? entry.value.color ?? theme.colorScheme.primary

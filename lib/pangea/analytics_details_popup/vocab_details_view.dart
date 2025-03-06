@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup_content.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
@@ -17,6 +12,9 @@ import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 /// Displays information about selected lemma, and its usage
 class VocabDetailsView extends StatelessWidget {
@@ -140,17 +138,21 @@ class VocabDetailsView extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: _userL2 == null
                     ? Text(L10n.of(context).meaningNotFound)
-                    : LemmaMeaningWidget(
-                        text: _construct.lemma,
-                        pos: _construct.category,
-                        langCode: _userL2!,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        leading: TextSpan(
-                          text: L10n.of(context).meaningSectionHeader,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+                    : Row(
+                        children: [
+                          Text(
+                            L10n.of(context).meaningSectionHeader,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
+                          LemmaMeaningWidget(
+                            constructUse: _construct,
+                            langCode: _userL2!,
+                            controller: null,
+                            token: null,
+                          ),
+                        ],
                       ),
               ),
             ),
