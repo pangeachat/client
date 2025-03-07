@@ -4,7 +4,6 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   audioplayers_linux
-  desktop_webview_window
   dynamic_color
   emoji_picker_flutter
   file_selector_linux
@@ -12,6 +11,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   flutter_webrtc
   gtk
   handy_window
+  open_file_linux
   pasteboard
   record_linux
   sentry_flutter

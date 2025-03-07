@@ -90,6 +90,10 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
         }
         return roomId;
       },
+      // #Pangea
+      onSuccess: wasInRoom ? null : () => L10n.of(context).knockSpaceSuccess,
+      delay: false,
+      // Pangea#
     );
     // #Pangea
     // if (knock) {
@@ -345,9 +349,9 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                   ListTile(
                     subtitle: SelectableLinkify(
                       text: profile!.topic!,
-                      linkStyle: const TextStyle(
-                        color: Colors.blueAccent,
-                        decorationColor: Colors.blueAccent,
+                      linkStyle: TextStyle(
+                        color: theme.colorScheme.primary,
+                        decorationColor: theme.colorScheme.primary,
                       ),
                       style: TextStyle(
                         fontSize: 14,

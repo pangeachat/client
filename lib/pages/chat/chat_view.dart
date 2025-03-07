@@ -114,7 +114,8 @@ class ChatView extends StatelessWidget {
     }
     // } else if (!controller.room.isArchived) {
     //   return [
-    //     if (Matrix.of(context).voipPlugin != null &&
+    //     if (AppConfig.experimentalVoip &&
+    //         Matrix.of(context).voipPlugin != null &&
     //         controller.room.isDirectChat)
     //       IconButton(
     //         onPressed: controller.onPhoneButtonTap,
@@ -131,7 +132,6 @@ class ChatView extends StatelessWidget {
         icon: const Icon(Icons.search_outlined),
         tooltip: L10n.of(context).search,
         onPressed: () {
-          controller.stopAudioStream.add(null);
           context.go('/rooms/${controller.room.id}/search');
         },
       ),
@@ -140,7 +140,6 @@ class ChatView extends StatelessWidget {
         icon: const Icon(Icons.settings_outlined),
         tooltip: L10n.of(context).chatDetails,
         onPressed: () {
-          controller.stopAudioStream.add(null);
           if (GoRouterState.of(context).uri.path.endsWith('/details')) {
             context.go('/rooms/${controller.room.id}');
           } else {
@@ -201,28 +200,31 @@ class ChatView extends StatelessWidget {
                 actionsIconTheme: IconThemeData(
                   color: controller.selectedEvents.isEmpty
                       ? null
-                      : theme.colorScheme.primary,
+                      : theme.colorScheme.tertiary,
                 ),
+                automaticallyImplyLeading: false,
                 leading: controller.selectMode
                     ? IconButton(
                         icon: const Icon(Icons.close),
                         onPressed: controller.clearSelectedEvents,
                         tooltip: L10n.of(context).close,
-                        color: theme.colorScheme.primary,
+                        color: theme.colorScheme.tertiary,
                       )
-                    : StreamBuilder<Object>(
-                        stream: Matrix.of(context)
-                            .client
-                            .onSync
-                            .stream
-                            .where((syncUpdate) => syncUpdate.hasRoomUpdate),
-                        builder: (context, _) => UnreadRoomsBadge(
-                          filter: (r) => r.id != controller.roomId,
-                          badgePosition: BadgePosition.topEnd(end: 8, top: 4),
-                          child: const Center(child: BackButton()),
-                        ),
-                      ),
-                titleSpacing: 0,
+                    : FluffyThemes.isColumnMode(context)
+                        ? null
+                        : StreamBuilder<Object>(
+                            stream:
+                                Matrix.of(context).client.onSync.stream.where(
+                                      (syncUpdate) => syncUpdate.hasRoomUpdate,
+                                    ),
+                            builder: (context, _) => UnreadRoomsBadge(
+                              filter: (r) => r.id != controller.roomId,
+                              badgePosition:
+                                  BadgePosition.topEnd(end: 8, top: 4),
+                              child: const Center(child: BackButton()),
+                            ),
+                          ),
+                titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
                 title: ChatAppBarTitle(controller),
                 actions: _appBarActions(context),
                 bottom: PreferredSize(

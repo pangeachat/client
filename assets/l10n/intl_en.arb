@@ -2453,6 +2453,10 @@
       }
     }
   },
+  "nextAccount": "Next account",
+  "@nextAccount": {},
+  "previousAccount": "Previous account",
+  "@previousAccount": {},
   "addWidget": "Add widget",
   "@addWidget": {},
   "widgetVideo": "Video",
@@ -2569,6 +2573,8 @@
       }
     }
   },
+  "noPublicLinkHasBeenCreatedYet": "No public link has been created yet",
+  "@noPublicLinkHasBeenCreatedYet": {},
   "knock": "Knock",
   "@knock": {},
   "users": "Users",
@@ -2607,6 +2613,14 @@
   "@callingPermissions": {},
   "callingAccount": "Calling account",
   "@callingAccount": {},
+  "callingAccountDetails": "Allows FluffyChat to use the native android dialer app.",
+  "@callingAccountDetails": {},
+  "appearOnTop": "Appear on top",
+  "@appearOnTop": {},
+  "appearOnTopDetails": "Allows the app to appear on top (not needed if you already have Fluffychat setup as a calling account)",
+  "@appearOnTopDetails": {},
+  "otherCallingPermissions": "Microphone, camera and other FluffyChat permissions",
+  "@otherCallingPermissions": {},
   "whyIsThisMessageEncrypted": "Why is this message unreadable?",
   "@whyIsThisMessageEncrypted": {},
   "noKeyForThisMessage": "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.",
@@ -2615,8 +2629,21 @@
   "@newGroup": {},
   "newSpace": "New space",
   "@newSpace": {},
+  "enterSpace": "Enter space",
+  "@enterSpace": {},
+  "enterRoom": "Enter room",
+  "@enterRoom": {},
   "allSpaces": "All spaces",
   "@allSpaces": {},
+  "numChats": "{number} chats",
+  "@numChats": {
+    "type": "number",
+    "placeholders": {
+      "number": {
+        "type": "String"
+      }
+    }
+  },
   "hideUnimportantStateEvents": "Hide unimportant state events",
   "@hideUnimportantStateEvents": {},
   "hidePresences": "Hide Status List?",
@@ -2678,6 +2705,10 @@
   "@reportErrorDescription": {},
   "report": "report",
   "@report": {},
+  "signInWithPassword": "Sign in with password",
+  "@signInWithPassword": {},
+  "pleaseTryAgainLaterOrChooseDifferentServer": "Please try again later or choose a different server.",
+  "@pleaseTryAgainLaterOrChooseDifferentServer": {},
   "signInWith": "Sign in with {provider}",
   "@signInWith": {
     "type": "String",
@@ -2788,6 +2819,8 @@
   "@passwordsDoNotMatch": {},
   "passwordIsWrong": "Your entered password is wrong",
   "@passwordIsWrong": {},
+  "publicLink": "Public link",
+  "@publicLink": {},
   "publicChatAddresses": "Public chat addresses",
   "@publicChatAddresses": {},
   "createNewAddress": "Create new address",
@@ -2808,6 +2841,15 @@
   "@initAppError": {},
   "userRole": "User role",
   "@userRole": {},
+  "minimumPowerLevel": "{level} is the minimum power level.",
+  "@minimumPowerLevel": {
+    "type": "String",
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
   "searchIn": "Search in chat \"{chat}\"...",
   "@searchIn": {
     "type": "String",
@@ -2855,6 +2897,15 @@
         "type": "String"
       },
       "error": {
+        "type": "String"
+      }
+    }
+  },
+  "forwardMessageTo": "Forward message to {roomName}?",
+  "@forwardMessageTo": {
+    "type": "String",
+    "placeholders": {
+      "roomName": {
         "type": "String"
       }
     }
@@ -3088,9 +3139,78 @@
   "open": "Open",
   "waitingForServer": "Waiting for server...",
   "appIntroduction": "FluffyChat lets you chat with your friends across different messengers. Learn more at https://matrix.org or just tap *Continue*.",
+  "newChatRequest": "📩 New chat request",
+  "contentNotificationSettings": "Content notification settings",
+  "generalNotificationSettings": "General notification settings",
+  "roomNotificationSettings": "Room notification settings",
+  "userSpecificNotificationSettings": "User specific notification settings",
+  "otherNotificationSettings": "Other notification settings",
+  "notificationRuleContainsUserName": "Contains User Name",
+  "notificationRuleContainsUserNameDescription": "Notifies the user when a message contains their username.",
+  "notificationRuleMaster": "Mute all notifications",
+  "notificationRuleMasterDescription": "Overrides all other rules and disables all notifications.",
+  "notificationRuleSuppressNotices": "Suppress Automated Messages",
+  "notificationRuleSuppressNoticesDescription": "Suppresses notifications from automated clients like bots.",
+  "notificationRuleInviteForMe": "Invite for Me",
+  "notificationRuleInviteForMeDescription": "Notifies the user when they are invited to a room.",
+  "notificationRuleMemberEvent": "Member Event",
+  "notificationRuleMemberEventDescription": "Suppresses notifications for membership events.",
+  "notificationRuleIsUserMention": "User Mention",
+  "notificationRuleIsUserMentionDescription": "Notifies the user when they are directly mentioned in a message.",
+  "notificationRuleContainsDisplayName": "Contains Display Name",
+  "notificationRuleContainsDisplayNameDescription": "Notifies the user when a message contains their display name.",
+  "notificationRuleIsRoomMention": "Room Mention",
+  "notificationRuleIsRoomMentionDescription": "Notifies the user when there is a room mention.",
+  "notificationRuleRoomnotif": "Room Notification",
+  "notificationRuleRoomnotifDescription": "Notifies the user when a message contains '@room'.",
+  "notificationRuleTombstone": "Tombstone",
+  "notificationRuleTombstoneDescription": "Notifies the user about room deactivation messages.",
+  "notificationRuleReaction": "Reaction",
+  "notificationRuleReactionDescription": "Suppresses notifications for reactions.",
+  "notificationRuleRoomServerAcl": "Room Server ACL",
+  "notificationRuleRoomServerAclDescription": "Suppresses notifications for room server access control lists (ACL).",
+  "notificationRuleSuppressEdits": "Suppress Edits",
+  "notificationRuleSuppressEditsDescription": "Suppresses notifications for edited messages.",
+  "notificationRuleCall": "Call",
+  "notificationRuleCallDescription": "Notifies the user about calls.",
+  "notificationRuleEncryptedRoomOneToOne": "Encrypted Room One-to-One",
+  "notificationRuleEncryptedRoomOneToOneDescription": "Notifies the user about messages in encrypted one-to-one rooms.",
+  "notificationRuleRoomOneToOne": "Room One-to-One",
+  "notificationRuleRoomOneToOneDescription": "Notifies the user about messages in one-to-one rooms.",
+  "notificationRuleMessage": "Message",
+  "notificationRuleMessageDescription": "Notifies the user about general messages.",
+  "notificationRuleEncrypted": "Encrypted",
+  "notificationRuleEncryptedDescription": "Notifies the user about messages in encrypted rooms.",
+  "notificationRuleJitsi": "Jitsi",
+  "notificationRuleJitsiDescription": "Notifies the user about Jitsi widget events.",
+  "notificationRuleServerAcl": "Suppress Server ACL Events",
+  "notificationRuleServerAclDescription": "Suppresses notifications for Server ACL events.",
+  "unknownPushRule": "Unknown push rule '{rule}'",
+  "@unknownPushRule": {
+    "type": "String",
+    "placeholders": {
+      "rule": {
+        "type": "String"
+      }
+    }
+  },
   "deletePushRuleCanNotBeUndone": "If you delete this notification setting, this can not be undone.",
   "more": "More",
+  "shareKeysWith": "Share keys with...",
+  "shareKeysWithDescription": "Which devices should be trusted so that they can read along your messages in encrypted chats?",
   "allDevices": "All devices",
+  "crossVerifiedDevicesIfEnabled": "Cross verified devices if enabled",
+  "crossVerifiedDevices": "Cross verified devices",
+  "verifiedDevicesOnly": "Verified devices only",
+  "takeAPhoto": "Take a photo",
+  "recordAVideo": "Record a video",
+  "optionalMessage": "(Optional) message...",
+  "notSupportedOnThisDevice": "Not supported on this device",
+  "accountInformation": "Account information",
+  "addGroupDescription": "Add a chat description",
+  "addNewFriend": "Add new friend",
+  "alreadyHaveAnAccount": "Already have an account?",
+  "createNewGroup": "Create a new chat",
   "editChatPermissions": "Edit chat permissions",
   "ignore": "Block",
   "ignoredUsers": "Blocked users",
@@ -3264,7 +3384,6 @@
   "paymentMethod": "Payment Method",
   "paymentHistory": "Payment History",
   "emptyChatDownloadWarning": "Cannot download empty chat",
-  "appUpdateAvailable": "Update Available",
   "update": "Update",
   "updateDesc": "You can now update this app from {localVersion} to {storeVersion}",
   "@updateDesc": {
@@ -3999,8 +4118,8 @@
   "roomDataMissing": "Some data may be missing from rooms in which you are not a member.",
   "updatePhoneOS": "You may need to update your device's OS version.",
   "wordsPerMinute": "Words per minute",
-  "autoIGCToolName": "Run language assistance automatically",
-  "autoIGCToolDescription": "Automatically run language assistance after typing messages",
+  "autoIGCToolName": "Run Pangea writing assistance automatically",
+  "autoIGCToolDescription": "Automatically run Pangea Chat grammar and translation writing assistance before sending my message.",
   "runGrammarCorrection": "Check message",
   "grammarCorrectionFailed": "Issues to address",
   "grammarCorrectionComplete": "Looks good!",
@@ -4388,7 +4507,7 @@
   },
   "botModeValidation": "Please select a chat mode",
   "clickBestOption": "Choose the best options to translate your message!",
-  "unlockedLanguageTools": "You’ve unlocked the language tools for this message. Try them out by clicking below!",
+  "completeActivitiesToUnlock": "Complete word activities to unlock audio and translation!",
   "botSettingsSubtitle": "Invite bot to moderate chat activity",
   "invitePeople": "Invite users",
   "noCapacityLimit": "No capacity limit",
@@ -4408,10 +4527,6 @@
   "updatedNewSpaceDescription": "Spaces allow you to consolidate your chats and build private or public communities.",
   "joinWithCode": "Join with code",
   "enterCodeToJoin": "Enter code to join",
-  "mandatoryUpdateRequired": "Mandatory Update Required",
-  "updateAvailable": "Update Available",
-  "mandatoryUpdateRequiredDesc": "A new version of the app is required to continue. Please update now to proceed.",
-  "updateAvailableDesc": "A new version of the app is available. Update now for the latest features and improvements!",
   "updateNow": "Update Now",
   "updateLater": "Later",
   "constructUseWaDesc": "Used without help",
@@ -4455,11 +4570,9 @@
   "signInWithUsername": "Sign in with username and password",
   "registrationEmailMessage": "Please verify your email with a link sent there. In some cases, the email takes up to 5 minutes to arrive. Please also check your spam folder.",
   "enableTTSToolName": "Enabled text-to-speech",
-  "enableTTSToolDescription": "Allow the app to generate text-to-speech output for portions of text in your target language",
+  "enableTTSToolDescription": "Allow the app to generate text-to-speech output for portions of text in your target language.",
   "couldNotFindTTS": "We couldn't find a text-to-speech engine for your current target language. ",
   "ttsInstructionsHyperlink": "Click here to view instructions for downloading a new voice on your device.",
-  "currentVersion": "Current Version",
-  "latestVersion": "Latest Version",
   "createAnAccount": "Create an account",
   "signIn": "Sign in",
   "signUpWithEmail": "Sign up with Email",
@@ -4591,7 +4704,7 @@
   "mediaLabel": "Media learners should share",
   "languageOfInstructionsLabel": "Language of activity instructions",
   "targetLanguageLabel": "Target language",
-  "cefrLevelLabel": "CEFR Level",
+  "cefrLevelLabel": "CEFR level",
   "generateActivitiesButton": "Generate Activities",
   "launchActivityButton": "Launch Activity",
   "image": "Image",
@@ -4638,12 +4751,22 @@
   "clickOnEmailLink": "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.",
   "whoIsAllowedToJoinThisChat": "Who is allowed to join this chat",
   "dontForgetPassword": "Don't forget your password!",
-  "enableAutocorrectToolName": "Enable autocorrect",
-  "enableAutocorrectDescription": "Use your keyboard's built-in autocorrect when typing messages",
+  "enableAutocorrectToolName": "Enable device autocorrect",
+  "enableAutocorrectDescription": "If your device supports the language your learning, you can enable device autocorrect to fix common errors as you type.",
   "ttsDisbledTitle": "Text-to-speech disabled",
   "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
   "noSpaceDescriptionYet": "No space description created yet.",
   "tooLargeToSend": "This message is too large to send",
+  "exitWithoutSaving": "Are you sure you want to leave without saving?",
+  "enableAutocorrectPopupTitle": "Add your target language keyboard by going to:",
+  "enableAutocorrectPopupSteps": "  \u2022 Settings\n  \u2022 General\n  \u2022 Keyboard\n  \u2022 Keyboards\n  \u2022 Add New Keyboard",
+  "enableAutocorrectPopupDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
+  "downloadGboardTitle": "Download Gboard from the Google Play Store to enable autocorrect and other keyboard features:",
+  "downloadGboardSteps": " \u2022 Download Gboard\n  \u2022 Open app\n  \u2022 Languages\n  \u2022 Add keyboard\n  \u2022 Select Language\n  \u2022 Select keyboard type\n  \u2022 Done",
+  "downloadGboardDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
+  "enableAutocorrectWarning": "Warning! Requires adding your target language keyboard",
+  "tooLargeToSend": "This message is too large to send",
+  "displayName": "Display name",
   "leaveRoomDescription": "You're about to leave this chat. Other users will see that you have left the chat.",
   "confirmUserId": "Please confirm your Pangea Chat username in order to delete your account.",
   "startingToday": "Starting today",
@@ -4666,5 +4789,21 @@
         "type": "String"
       }
     }
-  }
+  },
+  "downloadGboard": "Download Gboard",
+  "autocorrectNotAvailable": "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!",
+  "pleaseUpdateApp": "Please update the app to continue.",
+  "chooseEmojiInstructionsBody": "Pick an emoji for the word! There's no wrong answer and you can switch anytime! 😀",
+  "pickAnEmojiFor": "Pick an emoji for ${lemma}",
+  "@pickAnEmojiFor": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
+  },
+  "knockSpaceSuccess": "You have requested to join this space! An admin will respond to your request when they receive it 😀",
+  "joinByCode": "Join by code",
+  "createASpace": "Create a space"
 } 

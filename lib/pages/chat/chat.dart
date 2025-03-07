@@ -32,6 +32,7 @@ import 'package:fluffychat/pangea/analytics_misc/level_up.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -128,6 +129,7 @@ class ChatController extends State<ChatPageWithRoom>
   final PangeaController pangeaController = MatrixState.pangeaController;
   late Choreographer choreographer = Choreographer(pangeaController, this);
   StreamSubscription? _levelSubscription;
+  late GoRouter _router;
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
 
@@ -269,7 +271,10 @@ class ChatController extends State<ChatPageWithRoom>
     final prefs = await SharedPreferences.getInstance();
     final draft = prefs.getString('draft_$roomId');
     if (draft != null && draft.isNotEmpty) {
-      sendController.text = draft;
+      // #Pangea
+      // sendController.text = draft;
+      sendController.setSystemText(draft, EditType.other);
+      // Pangea#
     }
   }
 
@@ -521,6 +526,9 @@ class ChatController extends State<ChatPageWithRoom>
     if (state == AppLifecycleState.paused) {
       clearSelectedEvents();
     }
+    if (state == AppLifecycleState.hidden) {
+      stopAudioStream.add(null);
+    }
     // Pangea#
     if (state != AppLifecycleState.resumed) return;
     setReadMarker();
@@ -615,11 +623,21 @@ class ChatController extends State<ChatPageWithRoom>
     stopAudioStream.close();
     hideTextController.dispose();
     _levelSubscription?.cancel();
+    _router.routeInformationProvider.removeListener(_onRouteChanged);
     //Pangea#
     super.dispose();
   }
 
   // #Pangea
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _router = GoRouter.of(context);
+    _router.routeInformationProvider.addListener(_onRouteChanged);
+  }
+
+  void _onRouteChanged() => stopAudioStream.add(null);
+
   // TextEditingController sendController = TextEditingController();
   PangeaTextController get sendController => choreographer.textController;
 
@@ -820,7 +838,10 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     setState(() {
-      sendController.text = pendingText;
+      // #Pangea
+      // sendController.text = pendingText;
+      sendController.setSystemText(pendingText, EditType.other);
+      // Pangea#
       _inputTextIsEmpty = pendingText.isEmpty;
       replyEvent = null;
       editEvent = null;
@@ -907,6 +928,9 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void voiceMessageAction() async {
+    // #Pangea
+    stopAudioStream.add(null);
+    // Pangea#
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     if (PlatformInfos.isAndroid) {
       final info = await DeviceInfoPlugin().androidInfo;
@@ -1591,9 +1615,8 @@ class ChatController extends State<ChatPageWithRoom>
   //#Pangea
   void onAddPopupMenuButtonSelected(String? choice) {
     // void onAddPopupMenuButtonSelected(String choice) {
-    if (choice == null) {
-      debugger(when: kDebugMode);
-    }
+    debugger(when: kDebugMode && choice == null);
+
     //Pangea#
     if (choice == 'file') {
       sendFileAction();
@@ -1755,7 +1778,10 @@ class ChatController extends State<ChatPageWithRoom>
 
   void cancelReplyEventAction() => setState(() {
         if (editEvent != null) {
-          sendController.text = pendingText;
+          // #Pangea
+          // sendController.text = pendingText;
+          sendController.setSystemText(pendingText, EditType.other);
+          // Pangea#
           pendingText = '';
         }
         replyEvent = null;
@@ -1782,6 +1808,8 @@ class ChatController extends State<ChatPageWithRoom>
     Event? nextEvent,
     Event? prevEvent,
   }) {
+    if (event.redacted) return;
+
     // Close keyboard, if open
     if (inputFocus.hasFocus && PlatformInfos.isMobile) {
       inputFocus.unfocus();

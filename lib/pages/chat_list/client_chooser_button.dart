@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
-import 'package:fluffychat/pangea/spaces/utils/space_code.dart';
 import 'package:fluffychat/pangea/user/utils/p_logout.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -38,16 +37,6 @@ class ClientChooserButton extends StatelessWidget {
     // Pangea#
     return <PopupMenuEntry<Object>>[
       // #Pangea
-      PopupMenuItem(
-        value: SettingsAction.joinWithClassCode,
-        child: Row(
-          children: [
-            const Icon(Icons.join_full_outlined),
-            const SizedBox(width: 18),
-            Expanded(child: Text(L10n.of(context).joinWithClassCode)),
-          ],
-        ),
-      ),
       // PopupMenuItem(
       //   value: SettingsAction.newGroup,
       //   child: Row(
@@ -291,12 +280,7 @@ class ClientChooserButton extends StatelessWidget {
           showDialog(
             context: context,
             builder: (c) => const SettingsLearning(),
-          );
-          break;
-        case SettingsAction.joinWithClassCode:
-          SpaceCodeUtil.joinWithSpaceCodeDialog(
-            context,
-            MatrixState.pangeaController,
+            barrierDismissible: false,
           );
           break;
         case SettingsAction.logout:
@@ -318,7 +302,6 @@ enum SettingsAction {
   settings,
   // #Pangea
   // archive,
-  joinWithClassCode,
   learning,
   logout,
   // Pangea#

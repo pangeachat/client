@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -113,21 +112,24 @@ class HtmlMessage extends StatelessWidget {
   /// We add line breaks before these tags:
   static const Set<String> blockHtmlTags = {
     'p',
+    'ul',
+    'ol',
+    'pre',
+    'div',
+    'table',
+    'details',
+    'blockquote',
+  };
+
+  /// We add line breaks before these tags:
+  static const Set<String> fullLineHtmlTag = {
     'h1',
     'h2',
     'h3',
     'h4',
     'h5',
     'h6',
-    'ul',
-    'ol',
     'li',
-    'pre',
-    'br',
-    'div',
-    'table',
-    'blockquote',
-    'details',
   };
 
   // #Pangea
@@ -202,17 +204,24 @@ class HtmlMessage extends StatelessWidget {
     dom.NodeList nodes,
     BuildContext context, {
     int depth = 1,
-  }) =>
-      [
-        for (var i = 0; i < nodes.length; i++) ...[
-          if (i > 0 &&
-              nodes[i] is dom.Element &&
-              blockHtmlTags.contains((nodes[i] as dom.Element).localName))
-            const TextSpan(text: '\n'), // Add linebreak
-          // Actually render the node child:
-          _renderHtml(nodes[i], context, depth: depth + 1),
+  }) {
+    final onlyElements = nodes.whereType<dom.Element>().toList();
+    return [
+      for (var i = 0; i < nodes.length; i++) ...[
+        // Actually render the node child:
+        _renderHtml(nodes[i], context, depth: depth + 1),
+        // Add linebreaks between blocks:
+        if (nodes[i] is dom.Element &&
+            onlyElements.indexOf(nodes[i] as dom.Element) <
+                onlyElements.length - 1) ...[
+          if (blockHtmlTags.contains((nodes[i] as dom.Element).localName))
+            const TextSpan(text: '\n\n'),
+          if (fullLineHtmlTag.contains((nodes[i] as dom.Element).localName))
+            const TextSpan(text: '\n'),
         ],
-      ];
+      ],
+    ];
+  }
 
   /// Transforms a Node to an InlineSpan.
   InlineSpan _renderHtml(
@@ -275,18 +284,35 @@ class HtmlMessage extends StatelessWidget {
               : AppConfig.gold.withAlpha(60);
         }
 
-        return TextSpan(
-          recognizer: TapGestureRecognizer()
-            ..onTap = onClick != null && token != null
-                ? () => onClick?.call(token)
-                : null,
-          text: node.innerHtml,
-          style: AppConfig.messageTextStyle(
-            pangeaMessageEvent!.event,
-            textColor,
-          ).merge(TextStyle(backgroundColor: backgroundColor)),
+        return WidgetSpan(
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: onClick != null && token != null
+                  ? () => onClick?.call(token)
+                  : null,
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    LinkifySpan(
+                      text: node.innerHtml,
+                      style: AppConfig.messageTextStyle(
+                        pangeaMessageEvent!.event,
+                        textColor,
+                      ).merge(TextStyle(backgroundColor: backgroundColor)),
+                      linkStyle: linkStyle,
+                      onOpen: (url) =>
+                          UrlLauncher(context, url.url).launchUrl(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
         );
       // Pangea#
+      case 'br':
+        return const TextSpan(text: '\n');
       case 'a':
         final href = node.attributes['href'];
         if (href == null) continue block;
@@ -423,7 +449,10 @@ class HtmlMessage extends StatelessWidget {
                   horizontal: 8,
                   vertical: isInline ? 0 : 8,
                 ),
-                textStyle: TextStyle(fontSize: fontSize),
+                textStyle: TextStyle(
+                  fontSize: fontSize,
+                  fontFamily: 'UbuntuMono',
+                ),
               ),
             ),
           ),

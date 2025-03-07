@@ -9,11 +9,14 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
+import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -294,15 +297,14 @@ class _SpaceViewState extends State<SpaceView> {
         break;
       case SpaceActions.leave:
         final confirmed = await showOkCancelAlertDialog(
-          useRootNavigator: false,
           context: context,
           title: L10n.of(context).areYouSure,
-          okLabel: L10n.of(context).ok,
-          cancelLabel: L10n.of(context).cancel,
           // #Pangea
           // message: L10n.of(context).archiveRoomDescription,
           message: L10n.of(context).leaveSpaceDescription,
           // Pangea#
+          okLabel: L10n.of(context).leave,
+          cancelLabel: L10n.of(context).cancel,
           isDestructive: true,
         );
         if (!mounted) return;
@@ -396,6 +398,13 @@ class _SpaceViewState extends State<SpaceView> {
             preset: sdk.CreateRoomPreset.publicChat,
             visibility: sdk.Visibility.private,
             enableEncryption: false,
+            initialState: [
+              StateEvent(
+                type: EventTypes.RoomPowerLevels,
+                stateKey: '',
+                content: defaultPowerLevels(Matrix.of(context).client.userID!),
+              ),
+            ],
             // Pangea#
           );
         }
@@ -502,12 +511,15 @@ class _SpaceViewState extends State<SpaceView> {
         room?.getLocalizedDisplayname() ?? L10n.of(context).nothingFound;
     return Scaffold(
       appBar: AppBar(
-        leading: Center(
-          child: CloseButton(
-            onPressed: widget.onBack,
-          ),
-        ),
-        titleSpacing: 0,
+        leading: FluffyThemes.isColumnMode(context)
+            ? null
+            : Center(
+                child: CloseButton(
+                  onPressed: widget.onBack,
+                ),
+              ),
+        automaticallyImplyLeading: false,
+        titleSpacing: FluffyThemes.isColumnMode(context) ? null : 0,
         title: ListTile(
           contentPadding: EdgeInsets.zero,
           leading: Avatar(
@@ -516,6 +528,7 @@ class _SpaceViewState extends State<SpaceView> {
             // #Pangea
             presenceUserId: room?.directChatMatrixID,
             // Pangea#
+            border: BorderSide(width: 1, color: theme.dividerColor),
             borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2),
           ),
           title: Text(
@@ -705,6 +718,9 @@ class _SpaceViewState extends State<SpaceView> {
                         );
                       },
                     ),
+                    // #Pangea
+                    KnockingUsersIndicator(room: room),
+                    // Pangea#
                     SliverList.builder(
                       itemCount: joinedRooms.length,
                       itemBuilder: (context, i) {

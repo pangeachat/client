@@ -9,8 +9,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/send_button.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/start_igc_button.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/reading_assistance_input_bar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/pangea_reaction_picker.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import '../../config/themes.dart';
@@ -38,6 +38,7 @@ class ChatInputRow extends StatelessWidget {
         controller.emojiPickerType == EmojiPickerType.reaction) {
       return const SizedBox.shrink();
     }
+    const height = 48.0;
 
     if (!controller.room.otherPartyCanReceiveMessages) {
       return Center(
@@ -53,9 +54,6 @@ class ChatInputRow extends StatelessWidget {
     }
 
     // #Pangea
-    // const height = 48.0;
-    const height = AppConfig.defaultFooterHeight;
-
     final activel1 =
         controller.pangeaController.languageController.activeL1Model();
     final activel2 =
@@ -78,6 +76,7 @@ class ChatInputRow extends StatelessWidget {
 
     return Column(
       children: [
+        // if (!controller.selectMode) WritingAssistanceInputRow(controller),
         CompositedTransformTarget(
           link: controller.choreographer.inputLayerLinkAndKey.link,
           child: Row(
@@ -109,18 +108,18 @@ class ChatInputRow extends StatelessWidget {
                       ),
                     // #Pangea
                     // else
-                    //   SizedBox(
-                    //     height: height,
-                    //     child: TextButton(
-                    //       onPressed: controller.forwardEventsAction,
-                    //       child: Row(
-                    //         children: <Widget>[
-                    //           const Icon(Icons.keyboard_arrow_left_outlined),
-                    //           Text(L10n.of(context).forward),
-                    //         ],
-                    //       ),
+                    // SizedBox(
+                    //   height: height,
+                    //   child: TextButton(
+                    //     onPressed: controller.forwardEventsAction,
+                    //     child: Row(
+                    //       children: <Widget>[
+                    //         const Icon(Icons.keyboard_arrow_left_outlined),
+                    //         Text(L10n.of(context).forward),
+                    //       ],
                     //     ),
                     //   ),
+                    // ),
                     // controller.selectedEvents.length == 1
                     //     ? controller.selectedEvents.first
                     //             .getDisplayEvent(controller.timeline!)
@@ -152,10 +151,19 @@ class ChatInputRow extends StatelessWidget {
                     //             ),
                     //           )
                     //     : const SizedBox.shrink(),
-                    PangeaReactionsPicker(
-                      controller,
-                      overlayController,
-                    ),
+                    if (controller.selectedEvents.first
+                            .getDisplayEvent(controller.timeline!)
+                            .status
+                            .isSent &&
+                        !controller.selectedEvents.every(
+                          (event) => event.status == EventStatus.error,
+                        ))
+                      overlayController != null
+                          ? ReadingAssistanceInputBar(
+                              controller,
+                              overlayController!,
+                            )
+                          : const SizedBox(height: height),
                     if (controller.selectedEvents.length == 1 &&
                         !controller.selectedEvents.first
                             .getDisplayEvent(controller.timeline!)
@@ -374,8 +382,8 @@ class ChatInputRow extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(height),
                               ),
-                              backgroundColor: theme.colorScheme.primary,
-                              foregroundColor: theme.colorScheme.onPrimary,
+                              backgroundColor: theme.bubbleColor,
+                              foregroundColor: theme.onBubbleColor,
                               child: const Icon(Icons.mic_none_outlined),
                             )
                           // #Pangea

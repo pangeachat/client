@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -11,7 +13,6 @@ import 'package:fluffychat/pangea/choreographer/enums/use_type.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_buttons.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
@@ -42,12 +43,14 @@ class Message extends StatelessWidget {
   final bool animateIn;
   final void Function()? resetAnimateIn;
   final bool wallpaperMode;
+  final ScrollController scrollController;
   // #Pangea
   final bool immersionMode;
   final ChatController controller;
   final MessageOverlayController? overlayController;
   final bool isButton;
   // Pangea#
+  final List<Color> colors;
 
   const Message(
     this.event, {
@@ -66,12 +69,14 @@ class Message extends StatelessWidget {
     this.animateIn = false,
     this.resetAnimateIn,
     this.wallpaperMode = false,
+    required this.scrollController,
     // #Pangea
     required this.immersionMode,
     required this.controller,
     this.overlayController,
     this.isButton = false,
     // Pangea#
+    required this.colors,
     super.key,
   });
 
@@ -155,17 +160,13 @@ class Message extends StatelessWidget {
         previousEvent!.senderId == event.senderId &&
         previousEvent!.originServerTs.sameEnvironment(event.originServerTs);
 
+    // #Pangea
+    // final textColor =
+    //     ownMessage ? theme.onBubbleColor : theme.colorScheme.onSurface;
     final textColor = ownMessage
-        ?
-        // #Pangea
-        // theme.brightness == Brightness.light
-        //     ? theme.colorScheme.onPrimary
-        //     : theme.colorScheme.onPrimaryContainer
-        ThemeData.dark().colorScheme.onPrimary
-        // Pangea#
+        ? ThemeData.dark().colorScheme.onPrimary
         : theme.colorScheme.onSurface;
 
-    // #Pangea
     // final linkColor = ownMessage
     //     ? theme.brightness == Brightness.light
     //         ? theme.colorScheme.primaryFixed
@@ -210,12 +211,11 @@ class Message extends StatelessWidget {
     }.contains(event.messageType);
 
     if (ownMessage) {
+      // #Pangea
+      // color =
+      //     displayEvent.status.isError ? Colors.redAccent : theme.bubbleColor;
       color = displayEvent.status.isError
           ? Colors.redAccent
-          // #Pangea
-          // : theme.brightness == Brightness.light
-          //     ? theme.colorScheme.primary
-          //     : theme.colorScheme.primaryContainer;
           : Color.alphaBlend(
               Colors.white.withAlpha(180),
               ThemeData.dark().colorScheme.primary,
@@ -439,10 +439,17 @@ class Message extends StatelessWidget {
                                                     event.eventId,
                                                   )
                                                   .link,
+                                          // child: BubbleBackground(
+                                          //   colors: colors,
+                                          //   ignore: noBubble || !ownMessage,
+                                          //   scrollController: scrollController,
+                                          // Pangea#
                                           child: Container(
+                                            // #Pangea
                                             key: overlayController != null
-                                                ? LayerLinkAndKey('overlay_msg')
-                                                    .key
+                                                ? LayerLinkAndKey(
+                                                    'overlay_msg',
+                                                  ).key
                                                 : MatrixState.pAnyState
                                                     .layerLinkAndKey(
                                                       event.eventId,
@@ -580,8 +587,9 @@ class Message extends StatelessWidget {
                                                               .msgUseType
                                                               .iconView(
                                                             context,
-                                                            textColor
-                                                                .withAlpha(164),
+                                                            textColor.withAlpha(
+                                                              164,
+                                                            ),
                                                           ),
                                                           const SizedBox(
                                                             width: 4,
@@ -597,7 +605,9 @@ class Message extends StatelessWidget {
                                                           Icon(
                                                             Icons.edit_outlined,
                                                             color: textColor
-                                                                .withAlpha(164),
+                                                                .withAlpha(
+                                                              164,
+                                                            ),
                                                             size: 14,
                                                           ),
                                                           Text(
@@ -702,14 +712,6 @@ class Message extends StatelessWidget {
                           ? MainAxisAlignment.end
                           : MainAxisAlignment.start,
                       children: [
-                        if (pangeaMessageEvent?.showMessageButtons ?? false)
-                          MessageButtons(
-                            event: event,
-                            controller: controller,
-                            pangeaMessageEvent: pangeaMessageEvent!,
-                            nextEvent: nextEvent,
-                            prevEvent: previousEvent,
-                          ),
                         MessageReactions(event, timeline),
                       ],
                     ),
@@ -796,5 +798,74 @@ class Message extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class BubbleBackground extends StatelessWidget {
+  const BubbleBackground({
+    super.key,
+    required this.scrollController,
+    required this.colors,
+    required this.ignore,
+    required this.child,
+  });
+
+  final ScrollController scrollController;
+  final List<Color> colors;
+  final bool ignore;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    if (ignore) return child;
+    return CustomPaint(
+      painter: BubblePainter(
+        repaint: scrollController,
+        colors: colors,
+        context: context,
+      ),
+      child: child,
+    );
+  }
+}
+
+class BubblePainter extends CustomPainter {
+  BubblePainter({
+    required this.context,
+    required this.colors,
+    required super.repaint,
+  });
+
+  final BuildContext context;
+  final List<Color> colors;
+  ScrollableState? _scrollable;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final scrollable = _scrollable ??= Scrollable.of(context);
+    final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
+    final scrollableRect = Offset.zero & scrollableBox.size;
+    final bubbleBox = context.findRenderObject() as RenderBox;
+
+    final origin =
+        bubbleBox.localToGlobal(Offset.zero, ancestor: scrollableBox);
+    final paint = Paint()
+      ..shader = ui.Gradient.linear(
+        scrollableRect.topCenter,
+        scrollableRect.bottomCenter,
+        colors,
+        [0.0, 1.0],
+        TileMode.clamp,
+        Matrix4.translationValues(-origin.dx, -origin.dy, 0.0).storage,
+      );
+    canvas.drawRect(Offset.zero & size, paint);
+  }
+
+  @override
+  bool shouldRepaint(BubblePainter oldDelegate) {
+    final scrollable = Scrollable.of(context);
+    final oldScrollable = _scrollable;
+    _scrollable = scrollable;
+    return scrollable.position != oldScrollable?.position;
   }
 }

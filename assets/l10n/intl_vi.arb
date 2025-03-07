@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-02-27 09:51:45.710355",
+  "@@last_modified": "2025-03-05 13:01:52.197829",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -1940,7 +1940,6 @@
   "paymentMethod": "Phương thức thanh toán",
   "paymentHistory": "Lịch sử thanh toán",
   "emptyChatDownloadWarning": "Không thể tải xuống cuộc trò chuyện trống",
-  "appUpdateAvailable": "Có bản cập nhật",
   "update": "Cập nhật",
   "updateDesc": "Bạn có thể cập nhật ứng dụng từ phiên bản {localVersion} lên {storeVersion}",
   "@updateDesc": {
@@ -3305,7 +3304,7 @@
   },
   "botModeValidation": "Vui lòng chọn một chế độ trò chuyện",
   "clickBestOption": "Chọn phương án tốt nhất để dịch tin nhắn của bạn!",
-  "unlockedLanguageTools": "Bạn đã mở khóa công cụ ngôn ngữ cho tin nhắn này. Hãy thử bằng cách nhấn nút bên dưới!",
+  "completeActivitiesToUnlock": "Hoàn thành các hoạt động từ vựng để mở khóa phần âm thanh và bản dịch!",
   "botSettingsSubtitle": "Mời bot kiểm duyệt hoặc khởi tạo hoạt động trò chuyện",
   "invitePeople": "Mời người dùng",
   "invitePeopleChatSubtitle": "Mời người dùng hoặc quản trị viên đến cuộc trò chuyện này",
@@ -3376,10 +3375,6 @@
   "updatedNewSpaceDescription": "Không gian giúp bạn quản lý nhiều cuộc trò chuyện và xây dựng cộng đồng riêng hoặc công khai.",
   "joinWithCode": "Tham gia bằng mã",
   "enterCodeToJoin": "Nhập mã để tham gia",
-  "mandatoryUpdateRequired": "Yêu cầu cập nhật bắt buộc",
-  "updateAvailable": "Có bản cập nhật",
-  "mandatoryUpdateRequiredDesc": "Bạn cần cập nhật phiên bản mới để tiếp tục. Vui lòng cập nhật ngay.",
-  "updateAvailableDesc": "Có phiên bản mới của ứng dụng. Cập nhật ngay để có trải nghiệm tốt nhất!",
   "updateNow": "Cập nhật ngay",
   "updateLater": "Để sau",
   "constructUseWaDesc": "Dùng không cần trợ giúp",
@@ -3426,8 +3421,6 @@
   "enableTTSToolDescription": "Cho phép ứng dụng tạo âm thanh đọc văn bản của ngôn ngữ đích",
   "couldNotFindTTS": "Không tìm được công cụ đọc văn bản cho ngôn ngữ đích. ",
   "ttsInstructionsHyperlink": "Nhấn vào đây để xem cách tải giọng đọc mới trên thiết bị.",
-  "currentVersion": "Phiên bản hiện tại",
-  "latestVersion": "Phiên bản mới nhất",
   "createAnAccount": "Tạo tài khoản",
   "signIn": "Đăng nhập",
   "signUpWithEmail": "Đăng ký bằng Email",
@@ -3709,5 +3702,42 @@
   "enableAutocorrectToolName": "Bật tự động sửa",
   "enableAutocorrectDescription": "Sử dụng tính năng tự động sửa tích hợp của bàn phím khi gõ tin nhắn",
   "ttsDisbledTitle": "Tính năng chuyển văn bản thành giọng nói đã bị tắt",
-  "ttsDisabledBody": "Bạn có thể bật tính năng chuyển văn bản thành giọng nói trong cài đặt học tập của bạn"
+  "ttsDisabledBody": "Bạn có thể bật tính năng chuyển văn bản thành giọng nói trong cài đặt học tập của bạn",
+  "leaveSpaceDescription": "Bằng cách rời khỏi không gian, bạn sẽ rời tất cả các cuộc trò chuyện bên trong nó. Những người dùng khác sẽ thấy rằng bạn đã rời khỏi không gian.",
+  "noSpaceDescriptionYet": "Chưa tạo mô tả không gian nào.",
+  "tooLargeToSend": "Tin nhắn này quá lớn để gửi",
+  "exitWithoutSaving": "Bạn có chắc chắn muốn rời đi mà không lưu không?",
+  "enableAutocorrectPopupTitle": "Thêm bàn phím ngôn ngữ mục tiêu của bạn bằng cách vào:",
+  "enableAutocorrectPopupSteps": "  • Cài đặt\n  • Chung\n  • Bàn phím\n  • Bàn phím\n  • Thêm bàn phím mới",
+  "enableAutocorrectPopupDescription": "Khi ngôn ngữ được chọn, bạn có thể nhấp vào biểu tượng quả địa cầu nhỏ ở góc dưới bên trái của bàn phím để kích hoạt bàn phím mới được cài đặt.",
+  "downloadGboardTitle": "Tải Gboard từ Google Play Store để kích hoạt tính năng tự động sửa và các tính năng bàn phím khác:",
+  "downloadGboardSteps": " • Tải Gboard\n  • Mở ứng dụng\n  • Ngôn ngữ\n  • Thêm bàn phím\n  • Chọn ngôn ngữ\n  • Chọn loại bàn phím\n  • Xong",
+  "downloadGboardDescription": "Khi ngôn ngữ được chọn, bạn có thể nhấp vào biểu tượng quả địa cầu nhỏ ở góc dưới bên trái của bàn phím để kích hoạt bàn phím mới được cài đặt.",
+  "enableAutocorrectWarning": "Cảnh báo! Cần thêm bàn phím ngôn ngữ mục tiêu của bạn",
+  "displayName": "Tên hiển thị",
+  "leaveRoomDescription": "Bạn sắp rời khỏi cuộc trò chuyện này. Những người dùng khác sẽ thấy rằng bạn đã rời khỏi cuộc trò chuyện.",
+  "confirmUserId": "Vui lòng xác nhận tên người dùng Pangea Chat của bạn để xóa tài khoản.",
+  "startingToday": "Bắt đầu từ hôm nay",
+  "oneWeekFreeTrial": "Thử nghiệm miễn phí một tuần",
+  "paidSubscriptionStarts": "Bắt đầu từ {startDate}",
+  "@paidSubscriptionStarts": {
+    "type": "String",
+    "placeholders": {
+      "startDate": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelInSubscriptionSettings": "• Hủy bất cứ lúc nào trong cài đặt đăng ký",
+  "cancelToAvoidCharges": "• Hủy trước {trialEnds} để tránh bị tính phí",
+  "@cancelToAvoidCharges": {
+    "type": "String",
+    "placeholders": {
+      "trialEnds": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadGboard": "Tải Gboard",
+  "autocorrectNotAvailable": "Rất tiếc, nền tảng của bạn hiện không được hỗ trợ cho tính năng này. Hãy theo dõi để biết thêm thông tin phát triển!"
 }
