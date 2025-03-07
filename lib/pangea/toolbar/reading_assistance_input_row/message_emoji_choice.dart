@@ -1,16 +1,13 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_emojis.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
-import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class MessageEmojiChoice extends StatelessWidget {
   final List<PangeaToken>? tokens;
@@ -104,11 +101,7 @@ class MessageEmojiChoice extends StatelessWidget {
 
         if (emoji == null) {
           return MessageEmojiChoiceItem(
-            topContent: CustomizedSvg(
-              svgUrl: token.vocabConstruct.constructLevel.svgURL,
-              colorReplacements: const {},
-              errorIcon: Text(token.xpEmoji),
-            ),
+            topContent: token.vocabConstruct.constructLevel.icon,
             content: token.text.content,
             onTap: () => overlayController.onClickOverlayMessageToken(token),
             onDoubleTap: null,

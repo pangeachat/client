@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_icon.dart';
+import 'package:flutter/material.dart';
 
 enum ConstructLevelEnum {
   flowers,
@@ -79,4 +79,7 @@ extension ConstructLevelEnumExt on ConstructLevelEnum {
         return 0;
     }
   }
+
+  ConstructLevelIcon get icon =>
+      ConstructLevelIcon(constructLemmaCategory: this);
 }

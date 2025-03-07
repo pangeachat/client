@@ -1,16 +1,12 @@
 // stateful widget that displays morphological label and a shimmer effect while the text is loading
 // takes a token and morphological feature as input
 
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
@@ -23,6 +19,8 @@ import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class MorphFocusWidget extends StatefulWidget {
   final PangeaToken token;
