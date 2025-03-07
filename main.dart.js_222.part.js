@@ -4323,6 +4323,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockSpaceSuccess() {
       return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
     },
+    get$joinByCode() {
+      return "Join by code";
+    },
+    get$createASpace() {
+      return "Create a space";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4338,6 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_222", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "wuOXIPFBM+260G6ouAfhPTvyCxo=");
+})($__dart_deferred_initializers__, "JYRyqe4pCltyuamS3b3LDpRGW/c=");
 ;
 //# sourceMappingURL=main.dart.js_222.part.js.map
