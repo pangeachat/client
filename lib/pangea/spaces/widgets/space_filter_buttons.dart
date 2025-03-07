@@ -31,7 +31,7 @@ class SpaceFilterButtons extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(
-                    Icons.workspaces_outlined,
+                    Icons.join_right_outlined,
                     color: theme.colorScheme.onPrimary,
                   ),
                   Text(

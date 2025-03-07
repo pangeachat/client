@@ -89,7 +89,7 @@ class SpacesNavigationRail extends StatelessWidget {
                             SpaceCodeUtil.joinWithSpaceCodeDialog(context),
                         icon: const Padding(
                           padding: EdgeInsets.all(8.0),
-                          child: Icon(Icons.workspaces_outline),
+                          child: Icon(Icons.join_right_outlined),
                         ),
                         toolTip: L10n.of(context).joinByCode,
                       );
