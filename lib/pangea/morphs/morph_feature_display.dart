@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
-import 'package:flutter/material.dart';
 
 class MorphFeatureDisplay extends StatelessWidget {
   const MorphFeatureDisplay({
