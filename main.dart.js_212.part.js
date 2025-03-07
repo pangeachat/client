@@ -4320,6 +4320,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     pickAnEmojiFor$1(lemma) {
       return "Pick an emoji for $" + lemma;
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4335,6 +4338,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_212", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "w0bhQEJvtxHQR2xAJSRK/8YGk5U=");
+})($__dart_deferred_initializers__, "qIW/RML1t+U5ptF7e2KUIXUBjio=");
 ;
 //# sourceMappingURL=main.dart.js_212.part.js.map
