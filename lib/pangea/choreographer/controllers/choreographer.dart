@@ -505,14 +505,17 @@ class Choreographer {
   }
 
   void onSelectAlternativeTranslation(String translation) {
-    // PTODO - add some kind of record of this
-    // choreoRecord.addRecord(_textController.text, match);
-
+    // Record this translation attempt
+    altTranslator.recordTranslationAttempt(translation);
+    
     _textController.setSystemText(
       translation,
       EditType.alternativeTranslation,
     );
-    altTranslator.clear();
+    
+    // Don't wipe out tracking data
+    altTranslator.clear(clearTracking: false);
+    
     altTranslator.translationFeedbackKey = FeedbackKey.allDone;
     altTranslator.showTranslationFeedback = true;
     giveInputFocus();
@@ -539,8 +542,10 @@ class Choreographer {
     choreoRecord = ChoreoRecord.newRecord;
     itController.clear();
     igc.dispose();
-    //@ggurdin - why is this commented out?
-    // errorService.clear();
+    
+    // Do a full clear of the altTranslator including tracking data
+    altTranslator.clear(clearTracking: true);
+    
     _resetDebounceTimer();
   }
 
