@@ -18,10 +18,11 @@ class AlternativeTranslator {
   FeedbackKey? translationFeedbackKey;
   List<String> translations = [];
   SimilartyResponseModel? similarityResponse;
-  
+
   // Add tracking for first-try correct attempts
   List<bool> firstTryCorrectFlags = [];
-  Set<String> attemptedTranslations = {}; // Track which translations have been attempted
+  Set<String> attemptedTranslations =
+      {}; // Track which translations have been attempted
 
   AlternativeTranslator(this.choreographer);
 
@@ -33,33 +34,36 @@ class AlternativeTranslator {
     translationFeedbackKey = null;
     translations = [];
     similarityResponse = null;
-    
+
     // Only clear tracking data if explicitly requested
     if (clearTracking) {
       firstTryCorrectFlags = [];
       attemptedTranslations = {};
     }
   }
-  
+
   // Method to record a translation attempt
   void recordTranslationAttempt(String translation) {
     if (translations.isEmpty) return; // Safety check
-    
+
     // Check if this is a correct translation (matches the first one)
-    bool isCorrect = translation.toLowerCase() == translations.first.toLowerCase();
-    
+    bool isCorrect =
+        translation.toLowerCase() == translations.first.toLowerCase();
+
     // Only record first attempts for each translation
     if (!attemptedTranslations.contains(translation)) {
       attemptedTranslations.add(translation);
       firstTryCorrectFlags.add(isCorrect);
     }
   }
-  
+
   // Get percentage of correct first attempts
   int getFirstTryCorrectPercentage() {
-    if (firstTryCorrectFlags.isEmpty) return 100; // Default to 100% if no attempts
-    
-    int correctCount = firstTryCorrectFlags.where((isCorrect) => isCorrect).length;
+    if (firstTryCorrectFlags.isEmpty)
+      return 100; // Default to 100% if no attempts
+
+    int correctCount =
+        firstTryCorrectFlags.where((isCorrect) => isCorrect).length;
     return ((correctCount / firstTryCorrectFlags.length) * 100).round();
   }
 
@@ -128,7 +132,7 @@ class AlternativeTranslator {
       );
 
       showAlternativeTranslations = true;
-      
+
       // Set feedback based on first-try percentage
       int correctPercentage = getFirstTryCorrectPercentage();
       if (correctPercentage > 90) {
@@ -136,7 +140,6 @@ class AlternativeTranslator {
       } else {
         translationFeedbackKey = FeedbackKey.othersAreBetter;
       }
-      
     } catch (err, stack) {
       if (err is! http.Response) {
         ErrorHandler.logError(
@@ -163,7 +166,7 @@ class AlternativeTranslator {
   String translationFeedback(BuildContext context) {
     int correctPercentage = getFirstTryCorrectPercentage();
     String displayScore = correctPercentage.toString();
-    
+
     switch (translationFeedbackKey) {
       case FeedbackKey.allCorrect:
         return "Match: $displayScore%\n${L10n.of(context).allCorrect}";

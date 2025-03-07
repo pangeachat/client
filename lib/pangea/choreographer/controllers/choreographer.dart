@@ -507,15 +507,15 @@ class Choreographer {
   void onSelectAlternativeTranslation(String translation) {
     // Record this translation attempt
     altTranslator.recordTranslationAttempt(translation);
-    
+
     _textController.setSystemText(
       translation,
       EditType.alternativeTranslation,
     );
-    
+
     // Don't wipe out tracking data
     altTranslator.clear(clearTracking: false);
-    
+
     altTranslator.translationFeedbackKey = FeedbackKey.allDone;
     altTranslator.showTranslationFeedback = true;
     giveInputFocus();
@@ -542,10 +542,10 @@ class Choreographer {
     choreoRecord = ChoreoRecord.newRecord;
     itController.clear();
     igc.dispose();
-    
+
     // Do a full clear of the altTranslator including tracking data
     altTranslator.clear(clearTracking: true);
-    
+
     _resetDebounceTimer();
   }
 
