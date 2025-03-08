@@ -1,10 +1,8 @@
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class CustomizedSvg extends StatelessWidget {
   /// URL of the SVG file
@@ -16,12 +14,24 @@ class CustomizedSvg extends StatelessWidget {
   /// Icon to show in case of error
   final Widget errorIcon;
 
+  /// Width of the SVG
+  /// Default is 24
+  /// If you want to keep the aspect ratio, set only the height
+  final double? width;
+
+  /// Height of the SVG
+  /// Default is 24
+  /// If you want to keep the aspect ratio, set only the width
+  final double? height;
+
   static final GetStorage _svgStorage = GetStorage('svg_cache');
   const CustomizedSvg({
     super.key,
     required this.svgUrl,
     required this.colorReplacements,
     this.errorIcon = const Icon(Icons.error_outline),
+    this.width = 24,
+    this.height = 24,
   });
 
   Future<String?> _fetchSvg() async {
@@ -110,7 +120,11 @@ class CustomizedSvg extends StatelessWidget {
         } else if (snapshot.hasError || snapshot.data == null) {
           return errorIcon;
         } else if (snapshot.hasData) {
-          return SvgPicture.string(snapshot.data!);
+          return SvgPicture.string(
+            snapshot.data!,
+            width: width,
+            height: height,
+          );
         } else {
           return const SizedBox.shrink();
         }

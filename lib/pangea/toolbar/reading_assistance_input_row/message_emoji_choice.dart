@@ -3,6 +3,7 @@ import 'package:fluffychat/config/app_emojis.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -79,13 +80,18 @@ class MessageEmojiChoice extends StatelessWidget {
           isSelected: false,
           onDoubleTap: () => onDoubleTapOrLongPress(context, emoji),
           onLongPress: () => onDoubleTapOrLongPress(context, emoji),
-          token: null,
+          greenHighlight: false,
         ),
       )
       .toList();
 
   List<Widget> perTokenEmoji(BuildContext context) =>
       tokens!.where((token) => token.lemma.saveVocab).map((token) {
+        final bool greenHighlight = token.shouldDoActivity(
+          a: ActivityTypeEnum.wordMeaning,
+          feature: null,
+          tag: null,
+        );
         if (!token.lemma.saveVocab) {
           return MessageEmojiChoiceItem(
             content: token.text.content,
@@ -93,7 +99,7 @@ class MessageEmojiChoice extends StatelessWidget {
             isSelected: overlayController.isTokenSelected(token),
             onDoubleTap: null,
             onLongPress: null,
-            token: token,
+            greenHighlight: greenHighlight,
           );
         }
 
@@ -101,14 +107,14 @@ class MessageEmojiChoice extends StatelessWidget {
 
         if (emoji == null) {
           return MessageEmojiChoiceItem(
-            topContent: token.vocabConstruct.constructLevel.icon,
+            topContent: token.vocabConstruct.constructLevel.icon(),
             content: token.text.content,
             onTap: () => overlayController.onClickOverlayMessageToken(token),
             onDoubleTap: null,
             onLongPress: null,
             isSelected: overlayController.isTokenSelected(token),
             contentOpacity: 0.1,
-            token: token,
+            greenHighlight: greenHighlight,
           );
         }
 
@@ -122,7 +128,7 @@ class MessageEmojiChoice extends StatelessWidget {
           onDoubleTap: () => onDoubleTapOrLongPress(context, emoji),
           onLongPress: () => onDoubleTapOrLongPress(context, emoji),
           isSelected: overlayController.isTokenSelected(token),
-          token: token,
+          greenHighlight: greenHighlight,
         );
       }).toList();
 

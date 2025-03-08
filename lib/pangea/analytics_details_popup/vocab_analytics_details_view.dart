@@ -175,7 +175,7 @@ class VocabDetailsView extends StatelessWidget {
           ],
         ),
       ),
-      xpIcon: _construct.lemmaCategory.icon,
+      xpIcon: _construct.lemmaCategory.icon(12),
       constructId: constructId,
     );
   }

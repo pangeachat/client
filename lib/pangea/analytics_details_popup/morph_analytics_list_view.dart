@@ -5,6 +5,8 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/user/client_extension.dart';
@@ -12,11 +14,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-class MorphAnalyticsView extends StatelessWidget {
+class MorphAnalyticsListView extends StatelessWidget {
   final void Function(ConstructIdentifier) onConstructZoom;
   final AnalyticsPopupWrapperState controller;
 
-  const MorphAnalyticsView({
+  const MorphAnalyticsListView({
     required this.onConstructZoom,
     required this.controller,
     super.key,
@@ -25,23 +27,35 @@ class MorphAnalyticsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
-      child: ListView.builder(
-        key: const PageStorageKey<String>('morph-analytics'),
-        itemCount: controller.features.length,
-        itemBuilder: (context, index) {
-          final feature = controller.features[index];
-          return feature.displayTags.isNotEmpty
-              ? MorphFeatureBox(
-                  morphFeature: feature.feature,
-                  allTags: controller.morphs
-                      .getDisplayTags(feature.feature)
-                      .map((tag) => tag.toLowerCase())
-                      .toSet(),
-                  onConstructZoom: onConstructZoom,
-                )
-              : const SizedBox.shrink();
-        },
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // spacing: 16.0,
+        children: [
+          // Add your text widget here
+          const InstructionsInlineTooltip(
+            instructionsEnum: InstructionsEnum.morphAnalyticsList,
+          ),
+          Expanded(
+            child: ListView.builder(
+              key: const PageStorageKey<String>('morph-analytics'),
+              itemCount: controller.features.length,
+              itemBuilder: (context, index) {
+                final feature = controller.features[index];
+                return feature.displayTags.isNotEmpty
+                    ? MorphFeatureBox(
+                        morphFeature: feature.feature,
+                        allTags: controller.morphs
+                            .getDisplayTags(feature.feature)
+                            .map((tag) => tag.toLowerCase())
+                            .toSet(),
+                        onConstructZoom: onConstructZoom,
+                      )
+                    : const SizedBox.shrink();
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

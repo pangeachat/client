@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
@@ -9,22 +5,26 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/it_shimmer.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class WordEmojiChoice extends StatefulWidget {
   const WordEmojiChoice({
     super.key,
-    required this.overlayController,
-    required this.token,
+    required this.constructID,
+    required this.onEmojiChosen,
+    this.roomId,
+    this.eventId,
   });
 
-  final MessageOverlayController overlayController;
-  final PangeaToken token;
+  final ConstructIdentifier constructID;
+  final String? roomId;
+  final String? eventId;
+  final void Function() onEmojiChosen;
 
   @override
   WordEmojiChoiceState createState() => WordEmojiChoiceState();
@@ -36,41 +36,46 @@ class WordEmojiChoiceState extends State<WordEmojiChoice> {
   @override
   void initState() {
     super.initState();
-    localSelected = widget.token.getEmoji();
+    localSelected = widget.constructID.userSetEmoji;
   }
 
   Future<void> onChoice(BuildContext context, emoji) async {
     setState(() => localSelected = emoji);
 
-    MatrixState.pangeaController.putAnalytics.setState(
-      AnalyticsStream(
-        eventId: widget.overlayController.pangeaMessageEvent!.eventId,
-        roomId: widget.overlayController.pangeaMessageEvent!.room.id,
-        constructs: [
-          OneConstructUse(
-            useType: ConstructUseTypeEnum.em,
-            lemma: widget.token.text.content,
-            constructType: ConstructTypeEnum.vocab,
-            metadata: ConstructUseMetaData(
-              roomId: widget.overlayController.pangeaMessageEvent!.room.id,
-              timeStamp: DateTime.now(),
-              eventId: widget.overlayController.pangeaMessageEvent!.eventId,
+    // @ggurdin - how can we give points here without eventId and roomId?
+    if (widget.eventId != null && widget.roomId != null) {
+      MatrixState.pangeaController.putAnalytics.setState(
+        AnalyticsStream(
+          //@ggurdin what happens i
+          eventId: widget.eventId!,
+          roomId: widget.roomId!,
+          constructs: [
+            OneConstructUse(
+              useType: ConstructUseTypeEnum.em,
+              lemma: widget.constructID.lemma,
+              constructType: ConstructTypeEnum.vocab,
+              metadata: ConstructUseMetaData(
+                roomId: widget.roomId!,
+                timeStamp: DateTime.now(),
+                eventId: widget.eventId,
+              ),
+              category: widget.constructID.category,
+              // this is also a bit odd, normally we would use token.text.content
+              form: emoji,
             ),
-            category: widget.token.pos,
-            form: widget.token.text.content,
-          ),
-        ],
-        origin: AnalyticsUpdateOrigin.wordZoom,
-      ),
-    );
+          ],
+          origin: AnalyticsUpdateOrigin.wordZoom,
+        ),
+      );
+    }
 
-    await widget.token.setEmoji(emoji);
+    await widget.constructID.setEmoji(emoji);
 
     await Future.delayed(
       const Duration(milliseconds: choiceArrayAnimationDuration),
     );
 
-    widget.overlayController.onActivityFinish(ActivityTypeEnum.emoji);
+    widget.onEmojiChosen();
 
     setState(() => {});
   }
@@ -84,7 +89,7 @@ class WordEmojiChoiceState extends State<WordEmojiChoice> {
           mainAxisSize: MainAxisSize.max,
           children: [
             FutureBuilder(
-              future: widget.token.getEmojiChoices(),
+              future: widget.constructID.getEmojiChoices(),
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Text(L10n.of(context).oopsSomethingWentWrong);
@@ -113,7 +118,7 @@ class WordEmojiChoiceState extends State<WordEmojiChoice> {
                   originalSpan: "😀",
                   uniqueKeyForLayerLink: (int index) => "emojiChoice$index",
                   selectedChoiceIndex: snapshot.data!.indexWhere(
-                    (element) => element == widget.token.getEmoji(),
+                    (element) => element == widget.constructID.userSetEmoji,
                   ),
                   tts: null,
                   fontSize: 26,

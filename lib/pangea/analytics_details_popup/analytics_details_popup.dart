@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_view.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_list_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/morph_details_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_details_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_view.dart';
@@ -133,7 +133,7 @@ class AnalyticsPopupWrapperState extends State<AnalyticsPopupWrapper> {
         ),
         body: localView == ConstructTypeEnum.morph
             ? localConstructZoom == null
-                ? MorphAnalyticsView(
+                ? MorphAnalyticsListView(
                     onConstructZoom: _setConstructZoom,
                     controller: this,
                   )

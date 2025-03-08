@@ -1,6 +1,6 @@
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
-import 'package:fluffychat/pangea/constructs/construct_level_icon.dart';
+import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 import 'package:flutter/material.dart';
 
 enum ConstructLevelEnum {
@@ -80,6 +80,16 @@ extension ConstructLevelEnumExt on ConstructLevelEnum {
     }
   }
 
-  ConstructLevelIcon get icon =>
-      ConstructLevelIcon(constructLemmaCategory: this);
+  Widget icon([double? size]) => CustomizedSvg(
+        svgUrl: svgURL,
+        colorReplacements: const {},
+        errorIcon: Text(
+          emoji,
+          style: TextStyle(
+            fontSize: size ?? 24,
+          ),
+        ),
+        width: size,
+        height: size,
+      );
 }

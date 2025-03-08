@@ -4851,7 +4851,7 @@
   },
   "cancelInSubscriptionSettings": "• Cancel at any time in subscription settings",
   "cancelToAvoidCharges": "• Cancel before {trialEnds} to avoid charges",
-    "@cancelToAvoidCharges": {
+  "@cancelToAvoidCharges": {
     "type": "String",
     "placeholders": {
       "trialEnds": {
@@ -4871,5 +4871,7 @@
         "type": "String"
       }
     }
-  }
-} 
+  },
+  "analyticsVocabListBody": "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.",
+  "morphAnalyticsListBody": "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details."
+}

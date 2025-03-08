@@ -101,7 +101,7 @@ class WritingAssistanceInputRowState extends State<WritingAssistanceInputRow> {
                   },
                   isSelected: false,
                   textSize: 16,
-                  token: null,
+                  greenHighlight: false,
                 ),
               )
               .toList(),

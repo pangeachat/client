@@ -4,7 +4,6 @@ import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
-import 'package:fluffychat/pangea/constructs/construct_level_icon.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 
@@ -89,8 +88,7 @@ class ConstructXpWidgetState extends State<ConstructXpWidget>
   Stream<AnalyticsStreamUpdate> get stream =>
       MatrixState.pangeaController.getAnalytics.analyticsStream.stream;
 
-  Widget get svg =>
-      ConstructLevelIcon(constructLemmaCategory: constructLemmaCategory);
+  Widget get svg => constructLemmaCategory?.icon() ?? const SizedBox();
 
   @override
   void dispose() {
