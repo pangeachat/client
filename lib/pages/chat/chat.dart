@@ -941,7 +941,7 @@ class ChatController extends State<ChatPageWithRoom>
         },
         // #Pangea
         //TODO: add results of transcription
-        ModelKey.botTranscription: result.sttModel?.toJson(),
+        // ModelKey.botTranscription: result.sttModel?.toJson(),
         // Pangea#
       },
       // #Pangea

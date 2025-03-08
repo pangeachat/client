@@ -133,6 +133,8 @@ dependencies:
   text_to_speech: ^0.2.3
   flutter_tts: ^4.2.0
   dart_levenshtein: ^1.0.1
+  web_socket_channel: ^3.0.2
+  flutter_sound: ^9.25.1
   # Pangea#
 
 dev_dependencies:

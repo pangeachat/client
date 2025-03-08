@@ -5,14 +5,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:flutter_sound/flutter_sound.dart';
 import 'package:path/path.dart' as path_lib;
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/toolbar/utils/update_version_dialog.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/pangea/transcription/transcription_repo.dart';
 import 'events/audio_player.dart';
 
 class RecordingDialog extends StatefulWidget {
@@ -33,12 +36,16 @@ class RecordingDialogState extends State<RecordingDialog> {
   final _audioRecorder = AudioRecorder();
   final List<double> amplitudeTimeline = [];
 
+  FlutterSoundRecorder? _audioRecorderStream;
+  WebSocketChannel? realtimeTranscriptionChannel;
+
   String? fileName;
 
   static const int bitRate = 64000;
   // #Pangea
   // static const int samplingRate = 44100;
   static const int samplingRate = 22050;
+  static const int samplingRateTranscription = 16000;
   // Pangea#
 
   Future<void> startRecording() async {
@@ -70,22 +77,33 @@ class RecordingDialogState extends State<RecordingDialog> {
       await WakelockPlus.enable();
 
       // #Pangea
+      const audioConfig = RecordConfig(
+        bitRate: bitRate,
+        sampleRate: samplingRate,
+        numChannels: 1,
+        autoGain: true,
+        echoCancel: true,
+        noiseSuppress: true,
+        encoder: codec,
+      );
+      final streamBytes = StreamController<Uint8List>();
+      _audioRecorderStream = await FlutterSoundRecorder().openRecorder();
+      final audioRecorderStartFuture = _audioRecorderStream!.startRecorder(
+        toStream: streamBytes.sink,
+        codec: Codec.pcm16,
+        numChannels: 1,
+        sampleRate: samplingRateTranscription,
+        bitRate: samplingRateTranscription,
+      );
       final isNotError = await showUpdateVersionDialog(
-        future: () =>
-            // Pangea#
-
-            _audioRecorder.start(
-          const RecordConfig(
-            bitRate: bitRate,
-            sampleRate: samplingRate,
-            numChannels: 1,
-            autoGain: true,
-            echoCancel: true,
-            noiseSuppress: true,
-            encoder: codec,
+        // Pangea#
+        future: () => Future.wait([
+          audioRecorderStartFuture,
+          _audioRecorder.start(
+            audioConfig,
+            path: path ?? '',
           ),
-          path: path ?? '',
-        ),
+        ]),
         // #Pangea
         context: context,
       );
@@ -107,6 +125,14 @@ class RecordingDialogState extends State<RecordingDialog> {
           _duration += const Duration(milliseconds: 100);
         });
       });
+
+      // init websocket with transcription API
+      realtimeTranscriptionChannel =
+          await TranscriptionRepo.connectTranscriptionChannel();
+      realtimeTranscriptionChannel!.sink
+          .addStream(streamBytes.stream)
+          .then((_) {})
+          .catchError((error) {});
     } catch (_) {
       setState(() => error = true);
       rethrow;
@@ -124,12 +150,20 @@ class RecordingDialogState extends State<RecordingDialog> {
     WakelockPlus.disable();
     _recorderSubscription?.cancel();
     _audioRecorder.stop();
+    if (_audioRecorderStream != null) {
+      _audioRecorderStream!.closeRecorder();
+      _audioRecorderStream = null;
+    }
     super.dispose();
   }
 
   void _stopAndSend() async {
     _recorderSubscription?.cancel();
     final path = await _audioRecorder.stop();
+    if (_audioRecorderStream != null) {
+      await _audioRecorderStream!.stopRecorder();
+    }
+    await realtimeTranscriptionChannel!.sink.close();
 
     if (path == null) throw ('Recording failed!');
     const waveCount = AudioPlayerWidget.wavesCount;
@@ -159,44 +193,63 @@ class RecordingDialogState extends State<RecordingDialog> {
         '${_duration.inMinutes.toString().padLeft(2, '0')}:${(_duration.inSeconds % 60).toString().padLeft(2, '0')}';
     final content = error
         ? Text(L10n.of(context).oopsSomethingWentWrong)
-        : Row(
+        : Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: 16,
-                height: 16,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32),
-                  color: Colors.red,
-                ),
+              Row(
+                children: [
+                  Container(
+                    width: 16,
+                    height: 16,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(32),
+                      color: Colors.red,
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: amplitudeTimeline.reversed
+                          .take(26)
+                          .toList()
+                          .reversed
+                          .map(
+                            (amplitude) => Container(
+                              margin: const EdgeInsets.only(left: 2),
+                              width: 4,
+                              decoration: BoxDecoration(
+                                color: theme.colorScheme.primary,
+                                borderRadius: BorderRadius.circular(
+                                    AppConfig.borderRadius),
+                              ),
+                              height: maxDecibalWidth * (amplitude / 100),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  SizedBox(
+                    width: 48,
+                    child: Text(time),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: amplitudeTimeline.reversed
-                      .take(26)
-                      .toList()
-                      .reversed
-                      .map(
-                        (amplitude) => Container(
-                          margin: const EdgeInsets.only(left: 2),
-                          width: 4,
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.primary,
-                            borderRadius:
-                                BorderRadius.circular(AppConfig.borderRadius),
-                          ),
-                          height: maxDecibalWidth * (amplitude / 100),
+              realtimeTranscriptionChannel != null
+                  ? Row(
+                      children: [
+                        StreamBuilder(
+                          stream: realtimeTranscriptionChannel!.stream,
+                          builder: (context, snapshot) {
+                            return Text(
+                              snapshot.hasData ? '${snapshot.data}' : '',
+                            );
+                          },
                         ),
-                      )
-                      .toList(),
-                ),
-              ),
-              const SizedBox(width: 8),
-              SizedBox(
-                width: 48,
-                child: Text(time),
-              ),
+                      ],
+                    )
+                  : const Row(),
             ],
           );
     if (PlatformInfos.isCupertinoStyle) {

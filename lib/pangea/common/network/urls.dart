@@ -67,8 +67,6 @@ class PApiUrls {
   static String lemmaDictionary = "${PApiUrls.choreoEndpoint}/lemma_definition";
   static String morphDictionary = "${PApiUrls.choreoEndpoint}/morph_meaning";
 
-  static String realtimeSessionAuth = "${PApiUrls.choreoEndpoint}/session_auth";
-
   static String activityPlanGeneration =
       "${PApiUrls.choreoEndpoint}/activity_plan";
   static String activityModeList = "${PApiUrls.choreoEndpoint}/modes";
@@ -76,6 +74,9 @@ class PApiUrls {
   static String topicList = "${PApiUrls.choreoEndpoint}/topics";
 
   static String morphFeaturesAndTags = "${PApiUrls.choreoEndpoint}/morphs";
+
+  static String realtimeTranscriptionSession =
+      "${PApiUrls.choreoEndpoint}/realtime_transcription_session";
 
   ///-------------------------------- revenue cat --------------------------
   static String rcAppsChoreo = "${PApiUrls.subscriptionEndpoint}/app_ids";
