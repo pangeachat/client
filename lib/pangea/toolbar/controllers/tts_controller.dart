@@ -2,15 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
-import 'package:just_audio/just_audio.dart';
-import 'package:matrix/matrix_api_lite/utils/logs.dart';
-import 'package:text_to_speech/text_to_speech.dart';
-
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -21,6 +13,12 @@ import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
+import 'package:just_audio/just_audio.dart';
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 class TtsController extends ChangeNotifier {
   final ChatController? chatController;
@@ -49,9 +47,9 @@ class TtsController extends ChangeNotifier {
     return PlatformInfos.isWindows;
   }
 
-  bool _hasLoadedTextToSpeech = false;
-  bool get hasLoadedTextToSpeech => _hasLoadedTextToSpeech;
-  set hasLoadedTextToSpeech(bool value) {
+  bool? _hasLoadedTextToSpeech;
+  bool? get hasLoadedTextToSpeech => _hasLoadedTextToSpeech;
+  set hasLoadedTextToSpeech(bool? value) {
     if (_hasLoadedTextToSpeech != value) {
       _hasLoadedTextToSpeech = value;
       notifyListeners();
@@ -269,6 +267,7 @@ class TtsController extends ChangeNotifier {
   }
 
   Future<void> _speakFromChoreo(String text) async {
+    print('speaking from choreo');
     try {
       hasLoadedTextToSpeech = false;
       final ttsRes = await chatController?.pangeaController.textToSpeech.get(
