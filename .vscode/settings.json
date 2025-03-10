@@ -5,6 +5,5 @@
         "source.organizeImports": "explicit",
         "source.sortMembers": "never"
     },
-    "editor.formatOnSave": true,
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "editor.formatOnSave": true
 }
