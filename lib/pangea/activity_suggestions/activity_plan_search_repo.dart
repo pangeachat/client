@@ -1,14 +1,13 @@
 import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_response.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class ActivitySearchRepo {
   static final GetStorage _activityPlanStorage =
