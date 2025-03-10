@@ -3942,12 +3942,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableTTSToolDescription() {
       return "Permitir que la aplicaci\xf3n genere salida de texto a voz para partes del texto en tu idioma objetivo.";
     },
-    get$couldNotFindTTS() {
-      return "No pudimos encontrar un motor de texto a voz para tu idioma objetivo actual.";
-    },
-    get$ttsInstructionsHyperlink() {
-      return "Haz clic aqu\xed para ver las instrucciones para descargar una nueva voz en tu dispositivo.";
-    },
     get$createAnAccount() {
       return "Crear una cuenta";
     },
@@ -4344,6 +4338,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_201", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "9FIewsmY4G2sLIY9n0KAsvqsAYU=");
+})($__dart_deferred_initializers__, "o2f8GVOI/KHqLjYpGBv8u+uXU7s=");
 ;
 //# sourceMappingURL=main.dart.js_201.part.js.map

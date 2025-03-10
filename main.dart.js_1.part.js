@@ -3949,12 +3949,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableTTSToolDescription() {
       return "Allow the app to generate text-to-speech output for portions of text in your target language.";
     },
-    get$couldNotFindTTS() {
-      return "We couldn't find a text-to-speech engine for your current target language. ";
-    },
-    get$ttsInstructionsHyperlink() {
-      return "Click here to view instructions for downloading a new voice on your device.";
-    },
     get$createAnAccount() {
       return "Create an account";
     },
@@ -5641,6 +5635,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "90MQuzyrPrRl/wYcDa7UFwNLsQU=");
+})($__dart_deferred_initializers__, "roZ++pvxRsHnrgB6cDnxZk0gVJQ=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
