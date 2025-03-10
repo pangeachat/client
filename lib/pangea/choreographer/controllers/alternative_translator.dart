@@ -141,17 +141,7 @@ class AlternativeTranslator {
   }
 
   String translationFeedback(BuildContext context) {
-    final totalClickedContinuances = choreographer.itController.completedITSteps
-        .map((step) => step.continuances.where((c) => c.wasClicked).length)
-        .fold(0, (prev, curr) => prev + curr);
-
-    final correctPercentage = (choreographer.itController.completedITSteps
-                .where((step) => step.isCorrect)
-                .length /
-            totalClickedContinuances) *
-        100;
-
-    final String displayScore = correctPercentage.toString();
+    final String displayScore = _percentCorrectChoices.toStringAsFixed(0);
 
     switch (translationFeedbackKey) {
       case FeedbackKey.allCorrect:
@@ -159,10 +149,10 @@ class AlternativeTranslator {
       case FeedbackKey.newWayAllGood:
         return "Match: $displayScore%\n${L10n.of(context).newWayAllGood}";
       case FeedbackKey.othersAreBetter:
-        if (correctPercentage > 90) {
+        if (_percentCorrectChoices > 90) {
           return "Match: $displayScore%\n${L10n.of(context).almostPerfect}";
         }
-        if (correctPercentage > 80) {
+        if (_percentCorrectChoices > 80) {
           return "Match: $displayScore%\n${L10n.of(context).prettyGood}";
         }
         return "Match: $displayScore%\n${L10n.of(context).othersAreBetter}";
