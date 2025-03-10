@@ -19,8 +19,6 @@ class AlternativeTranslator {
   List<String> translations = [];
   SimilartyResponseModel? similarityResponse;
 
-  // Add tracking for first-try correct attempts
-
   AlternativeTranslator(this.choreographer);
 
   void clear() {

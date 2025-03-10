@@ -509,10 +509,7 @@ class Choreographer {
       translation,
       EditType.alternativeTranslation,
     );
-
-    // Don't wipe out tracking data
     altTranslator.clear();
-
     altTranslator.translationFeedbackKey = FeedbackKey.allDone;
     altTranslator.showTranslationFeedback = true;
     giveInputFocus();
