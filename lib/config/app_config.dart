@@ -23,14 +23,16 @@ abstract class AppConfig {
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;
-  static const double toolbarMaxHeight = 300.0;
+  static const double toolbarMaxHeight = 175.0;
   static const double toolbarMinHeight = 140.0;
   static const double toolbarMinWidth = 350.0;
   static const double toolbarButtonsColumnWidth = 50.0;
   static const double toolbarButtonAndProgressColumnHeight = 200.0;
   static const double defaultHeaderHeight = 56.0;
-  static const double defaultFooterHeight = 48.0;
+  static const double readingAssistanceInputBarHeight = 150;
   static const double toolbarSpacing = 8.0;
+  static const double toolbarIconSize = 24.0;
+  static const double toolbarButtonsColumnHeight = 240;
   static TextStyle messageTextStyle(
     Event? event,
     Color textColor,

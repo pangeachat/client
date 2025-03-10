@@ -1,6 +1,11 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -13,9 +18,6 @@ import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart'
 import 'package:fluffychat/pangea/word_bank/vocab_request.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
 
 class VocabRepo {
   static final GetStorage _lemmaStorage = GetStorage('vocab_storage');

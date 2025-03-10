@@ -1,8 +1,10 @@
 // shows n rows of activity suggestions vertically, where n is the number of rows
 // as the user tries to scroll horizontally to the right, the client will fetch more activity suggestions
+
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_plan_search_repo.dart';
-import 'package:flutter/material.dart';
 
 class ActivitySuggestionsArea extends StatefulWidget {
   const ActivitySuggestionsArea({super.key});
