@@ -1,16 +1,16 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/utils/message_text_util.dart';
+import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 
 /// Question - does this need to be stateful or does this work?
 /// Need to test.
@@ -20,6 +20,7 @@ class MessageTokenText extends StatelessWidget {
 
   final bool Function(PangeaToken)? _isSelected;
   final void Function(PangeaToken)? _onClick;
+  final MessageMode? _messageMode;
 
   const MessageTokenText({
     super.key,
@@ -28,10 +29,12 @@ class MessageTokenText extends StatelessWidget {
     required TextStyle style,
     required void Function(PangeaToken)? onClick,
     bool Function(PangeaToken)? isSelected,
+    MessageMode? messageMode,
   })  : _onClick = onClick,
         _isSelected = isSelected,
         _style = style,
-        _pangeaMessageEvent = pangeaMessageEvent;
+        _pangeaMessageEvent = pangeaMessageEvent,
+        _messageMode = null;
 
   List<PangeaToken>? get _tokens =>
       _pangeaMessageEvent.messageDisplayRepresentation?.tokens;
@@ -64,6 +67,7 @@ class MessageTokenText extends StatelessWidget {
       messageAnalyticsEntry: messageAnalyticsEntry,
       isSelected: _isSelected,
       onClick: callOnClick,
+      messageMode: _messageMode,
     );
   }
 }
@@ -151,6 +155,7 @@ class MessageTextWidget extends StatelessWidget {
   final bool? softWrap;
   final int? maxLines;
   final TextOverflow? overflow;
+  final MessageMode? messageMode;
 
   const MessageTextWidget({
     super.key,
@@ -162,6 +167,7 @@ class MessageTextWidget extends StatelessWidget {
     this.softWrap,
     this.maxLines,
     this.overflow,
+    this.messageMode,
   });
 
   @override
@@ -253,43 +259,29 @@ class MessageTextWidget extends StatelessWidget {
                 .toString();
 
             return WidgetSpan(
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: onClick != null
-                      ? () => onClick?.call(tokenPosition)
-                      : null,
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        if (start.isNotEmpty)
-                          LinkifySpan(
-                            text: start,
-                            style: style,
-                            linkStyle: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: linkColor,
-                            ),
-                            onOpen: (url) =>
-                                UrlLauncher(context, url.url).launchUrl(),
-                          ),
-                        tokenPosition.hideContent
-                            ? WidgetSpan(
-                                alignment: PlaceholderAlignment.middle,
-                                child: GestureDetector(
-                                  onTap: onClick != null
-                                      ? () => onClick?.call(tokenPosition)
-                                      : null,
-                                  child: HiddenText(text: middle, style: style),
-                                ),
-                              )
-                            : LinkifySpan(
-                                text: middle,
-                                style: style.merge(
-                                  TextStyle(
-                                    backgroundColor: backgroundColor,
-                                  ),
-                                ),
+              child: Column(
+                children: [
+                  MessageTokenButton(
+                    content: Text(
+                      tokenPosition.token!.vocabConstructID.userSetEmoji ?? "?",
+                    ),
+                    isVisible:
+                        messageMode == null, // Set this based on your logic
+                    // isVisible: true,
+                  ),
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      onTap: onClick != null
+                          ? () => onClick?.call(tokenPosition)
+                          : null,
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            if (start.isNotEmpty)
+                              LinkifySpan(
+                                text: start,
+                                style: style,
                                 linkStyle: TextStyle(
                                   decoration: TextDecoration.underline,
                                   color: linkColor,
@@ -297,21 +289,51 @@ class MessageTextWidget extends StatelessWidget {
                                 onOpen: (url) =>
                                     UrlLauncher(context, url.url).launchUrl(),
                               ),
-                        if (end.isNotEmpty)
-                          LinkifySpan(
-                            text: end,
-                            style: style,
-                            linkStyle: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: linkColor,
-                            ),
-                            onOpen: (url) =>
-                                UrlLauncher(context, url.url).launchUrl(),
-                          ),
-                      ],
+                            tokenPosition.hideContent
+                                ? WidgetSpan(
+                                    alignment: PlaceholderAlignment.middle,
+                                    child: GestureDetector(
+                                      onTap: onClick != null
+                                          ? () => onClick?.call(tokenPosition)
+                                          : null,
+                                      child: HiddenText(
+                                        text: middle,
+                                        style: style,
+                                      ),
+                                    ),
+                                  )
+                                : LinkifySpan(
+                                    text: middle,
+                                    style: style.merge(
+                                      TextStyle(
+                                        backgroundColor: backgroundColor,
+                                      ),
+                                    ),
+                                    linkStyle: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: linkColor,
+                                    ),
+                                    onOpen: (url) =>
+                                        UrlLauncher(context, url.url)
+                                            .launchUrl(),
+                                  ),
+                            if (end.isNotEmpty)
+                              LinkifySpan(
+                                text: end,
+                                style: style,
+                                linkStyle: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: linkColor,
+                                ),
+                                onOpen: (url) =>
+                                    UrlLauncher(context, url.url).launchUrl(),
+                              ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             );
           } else {
