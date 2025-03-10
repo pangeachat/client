@@ -4303,13 +4303,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "R\u1ea5t ti\u1ebfc, n\u1ec1n t\u1ea3ng c\u1ee7a b\u1ea1n hi\u1ec7n kh\xf4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 cho t\xednh n\u0103ng n\xe0y. H\xe3y theo d\xf5i \u0111\u1ec3 bi\u1ebft th\xeam th\xf4ng tin ph\xe1t tri\u1ec3n!";
     },
     get$pleaseUpdateApp() {
-      return "Please update the app to continue.";
+      return "Vui l\xf2ng c\u1eadp nh\u1eadt \u1ee9ng d\u1ee5ng \u0111\u1ec3 ti\u1ebfp t\u1ee5c.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Pick an emoji for the word! There's no wrong answer and you can switch anytime! \ud83d\ude00";
+      return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho t\u1eeb n\xe0y! Kh\xf4ng c\xf3 c\xe2u tr\u1ea3 l\u1eddi sai v\xe0 b\u1ea1n c\xf3 th\u1ec3 chuy\u1ec3n \u0111\u1ed5i b\u1ea5t c\u1ee9 l\xfac n\xe0o! \ud83d\ude04";
     },
     pickAnEmojiFor$1(lemma) {
-      return "Pick an emoji for $" + lemma;
+      return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho $" + lemma;
     },
     get$analyticsVocabListBody() {
       return "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.";
@@ -4318,13 +4318,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
     get$knockSpaceSuccess() {
-      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+      return "B\u1ea1n \u0111\xe3 y\xeau c\u1ea7u tham gia kh\xf4ng gian n\xe0y! M\u1ed9t qu\u1ea3n tr\u1ecb vi\xean s\u1ebd ph\u1ea3n h\u1ed3i y\xeau c\u1ea7u c\u1ee7a b\u1ea1n khi h\u1ecd nh\u1eadn \u0111\u01b0\u1ee3c n\xf3 \ud83d\ude04";
     },
     get$joinByCode() {
-      return "Join by code";
+      return "Tham gia b\u1eb1ng m\xe3";
     },
     get$createASpace() {
-      return "Create a space";
+      return "T\u1ea1o m\u1ed9t kh\xf4ng gian";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4341,6 +4341,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "krM55aPwe4XmlcasV6cvG9C3ouA=");
+})($__dart_deferred_initializers__, "q20DJOlPMrxZFPZ4p6Gji0htVnU=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map
