@@ -31,6 +31,22 @@ class AlternativeTranslator {
     similarityResponse = null;
   }
 
+  double get _percentCorrectChoices {
+    final totalClickedContinuances = choreographer.itController.completedITSteps
+        .map((step) => step.continuances.where((c) => c.wasClicked).length)
+        .fold(0, (prev, curr) => prev + curr);
+
+    if (totalClickedContinuances == 0) {
+      return 0;
+    }
+
+    return (choreographer.itController.completedITSteps
+                .where((step) => step.isCorrect)
+                .length /
+            totalClickedContinuances) *
+        100;
+  }
+
   Future<void> setTranslationFeedback() async {
     try {
       choreographer.startLoading();
@@ -41,7 +57,14 @@ class AlternativeTranslator {
       userTranslation = choreographer.currentText;
 
       if (choreographer.itController.allCorrect) {
-        translationFeedbackKey = FeedbackKey.allCorrect;
+        // Even if all correct by the end, we still use first-try percentage for feedback
+        if (_percentCorrectChoices == 100) {
+          translationFeedbackKey = FeedbackKey.allCorrect;
+        } else if (_percentCorrectChoices > 90) {
+          translationFeedbackKey = FeedbackKey.newWayAllGood;
+        } else {
+          translationFeedbackKey = FeedbackKey.othersAreBetter;
+        }
         return;
       }
 
@@ -63,15 +86,18 @@ class AlternativeTranslator {
       if (results.deepL != null || goldRouteTranslation != null) {
         translations.insert(0, (results.deepL ?? goldRouteTranslation)!);
       }
-      // final List<String> altAndUser = [...results.translations];
-      // if (results.deepL != null) {
-      //   altAndUser.add(results.deepL!);
-      // }
-      // altAndUser.add(userTranslation);
 
       if (userTranslation?.toLowerCase() ==
           results.bestTranslation.toLowerCase()) {
-        translationFeedbackKey = FeedbackKey.allCorrect;
+        // This is for the case where the user's final translation is correct
+        // We still use first-try percentage for feedback
+        if (_percentCorrectChoices == 100) {
+          translationFeedbackKey = FeedbackKey.allCorrect;
+        } else if (_percentCorrectChoices > 90) {
+          translationFeedbackKey = FeedbackKey.newWayAllGood;
+        } else {
+          translationFeedbackKey = FeedbackKey.othersAreBetter;
+        }
         return;
       }
 
@@ -83,19 +109,14 @@ class AlternativeTranslator {
         ),
       );
 
-      // if (similarityResponse!
-      //     .userTranslationIsSameAsBotTranslation(userTranslation!)) {
-      //   translationFeedbackKey = FeedbackKey.allCorrect;
-      //   return;
-      // }
-
-      // if (similarityResponse!
-      //     .userTranslationIsDifferentButBetter(userTranslation!)) {
-      //   translationFeedbackKey = FeedbackKey.newWayAllGood;
-      //   return;
-      // }
       showAlternativeTranslations = true;
-      translationFeedbackKey = FeedbackKey.othersAreBetter;
+
+      // Set feedback based on first-try percentage
+      if (_percentCorrectChoices > 90) {
+        translationFeedbackKey = FeedbackKey.newWayAllGood;
+      } else {
+        translationFeedbackKey = FeedbackKey.othersAreBetter;
+      }
     } catch (err, stack) {
       if (err is! http.Response) {
         ErrorHandler.logError(
@@ -120,29 +141,21 @@ class AlternativeTranslator {
   }
 
   String translationFeedback(BuildContext context) {
+    final String displayScore = _percentCorrectChoices.toStringAsFixed(0);
+
     switch (translationFeedbackKey) {
       case FeedbackKey.allCorrect:
-        return "Match: 100%\n${L10n.of(context).allCorrect}";
+        return "Match: $displayScore%\n${L10n.of(context).allCorrect}";
       case FeedbackKey.newWayAllGood:
-        return "Match: 100%\n${L10n.of(context).newWayAllGood}";
+        return "Match: $displayScore%\n${L10n.of(context).newWayAllGood}";
       case FeedbackKey.othersAreBetter:
-        final num userScore =
-            (similarityResponse!.userScore(userTranslation!) * 100).round();
-        final String displayScore = userScore.toString();
-        if (userScore > 90) {
+        if (_percentCorrectChoices > 90) {
           return "Match: $displayScore%\n${L10n.of(context).almostPerfect}";
         }
-        if (userScore > 80) {
+        if (_percentCorrectChoices > 80) {
           return "Match: $displayScore%\n${L10n.of(context).prettyGood}";
         }
         return "Match: $displayScore%\n${L10n.of(context).othersAreBetter}";
-      // case FeedbackKey.commonalityFeedback:
-      //     final int count = controller.completedITSteps
-      //   .where((element) => element.isCorrect)
-      //   .toList()
-      //   .length;
-      // final int total = controller.completedITSteps.length;
-      //     return L10n.of(context).commonalityFeedback(count,total);
       case FeedbackKey.loadingPleaseWait:
         return L10n.of(context).letMeThink;
       case FeedbackKey.allDone:

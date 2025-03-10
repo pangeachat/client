@@ -505,9 +505,6 @@ class Choreographer {
   }
 
   void onSelectAlternativeTranslation(String translation) {
-    // PTODO - add some kind of record of this
-    // choreoRecord.addRecord(_textController.text, match);
-
     _textController.setSystemText(
       translation,
       EditType.alternativeTranslation,
@@ -539,8 +536,6 @@ class Choreographer {
     choreoRecord = ChoreoRecord.newRecord;
     itController.clear();
     igc.dispose();
-    //@ggurdin - why is this commented out?
-    // errorService.clear();
     _resetDebounceTimer();
   }
 
