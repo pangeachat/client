@@ -4221,9 +4221,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$mustBeInteger() {
       return "Ph\u1ea3i l\xe0 s\u1ed1 nguy\xean, v\xed d\u1ee5: 1, 2, 3...";
     },
-    noLemmasFound$1(xp) {
-      return "Ch\u01b0a c\xf3 t\u1eeb v\u1ef1ng v\u1edbi h\u01a1n " + xp + " XP. H\xe3y luy\u1ec7n t\u1eadp th\xeam!";
-    },
     get$constructUsePvmDesc() {
       return "\u0110\xe3 s\u1eed d\u1ee5ng trong tin nh\u1eafn tho\u1ea1i";
     },
@@ -4314,6 +4311,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     pickAnEmojiFor$1(lemma) {
       return "Pick an emoji for $" + lemma;
     },
+    get$analyticsVocabListBody() {
+      return "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.";
+    },
+    get$morphAnalyticsListBody() {
+      return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
+    },
     get$knockSpaceSuccess() {
       return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
     },
@@ -4338,6 +4341,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "fXwTxaZEtK0JshkJ8HVBSStBZzM=");
+})($__dart_deferred_initializers__, "krM55aPwe4XmlcasV6cvG9C3ouA=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map
