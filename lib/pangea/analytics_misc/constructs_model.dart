@@ -97,7 +97,7 @@ class OneConstructUse {
     this.id,
   }) : _category = category ?? "other";
 
-  String get chatId => metadata.roomId;
+  String? get chatId => metadata.roomId;
   String get msgId => metadata.eventId!;
   DateTime get timeStamp => metadata.timeStamp;
 
@@ -177,7 +177,8 @@ class OneConstructUse {
   }
 
   Room? getRoom(Client client) {
-    return client.getRoomById(metadata.roomId);
+    if (metadata.roomId == null) return null;
+    return client.getRoomById(metadata.roomId!);
   }
 
   Future<Event?> getEvent(Client client) async {
@@ -197,7 +198,7 @@ class OneConstructUse {
 
 class ConstructUseMetaData {
   String? eventId;
-  String roomId;
+  String? roomId;
   DateTime timeStamp;
 
   ConstructUseMetaData({

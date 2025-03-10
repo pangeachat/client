@@ -49,8 +49,9 @@ class LemmaUseExampleMessages extends StatelessWidget {
         continue;
       }
 
+      if (use.metadata.roomId == null) continue;
       final Room? room = MatrixState.pangeaController.matrixState.client
-          .getRoomById(use.metadata.roomId);
+          .getRoomById(use.metadata.roomId!);
       if (room == null) continue;
 
       Timeline? timeline = room.timeline;

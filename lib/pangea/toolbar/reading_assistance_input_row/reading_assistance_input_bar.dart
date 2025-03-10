@@ -87,6 +87,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
 
       case MessageMode.wordEmoji:
         return WordEmojiChoice(
+          form: overlayController.selectedToken!.text.content,
           onEmojiChosen: () =>
               overlayController.onActivityFinish(ActivityTypeEnum.emoji),
           constructID: overlayController.selectedToken!.vocabConstructID,

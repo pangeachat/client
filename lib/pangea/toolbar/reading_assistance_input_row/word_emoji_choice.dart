@@ -19,11 +19,13 @@ class WordEmojiChoice extends StatefulWidget {
     super.key,
     required this.constructID,
     required this.onEmojiChosen,
+    required this.form,
     this.roomId,
     this.eventId,
   });
 
   final ConstructIdentifier constructID;
+  final String form;
   final String? roomId;
   final String? eventId;
   final void Function() onEmojiChosen;
@@ -44,32 +46,27 @@ class WordEmojiChoiceState extends State<WordEmojiChoice> {
   Future<void> onChoice(BuildContext context, emoji) async {
     setState(() => localSelected = emoji);
 
-    // @ggurdin - how can we give points here without eventId and roomId?
-    if (widget.eventId != null && widget.roomId != null) {
-      MatrixState.pangeaController.putAnalytics.setState(
-        AnalyticsStream(
-          //@ggurdin what happens i
-          eventId: widget.eventId!,
-          roomId: widget.roomId!,
-          constructs: [
-            OneConstructUse(
-              useType: ConstructUseTypeEnum.em,
-              lemma: widget.constructID.lemma,
-              constructType: ConstructTypeEnum.vocab,
-              metadata: ConstructUseMetaData(
-                roomId: widget.roomId!,
-                timeStamp: DateTime.now(),
-                eventId: widget.eventId,
-              ),
-              category: widget.constructID.category,
-              // this is also a bit odd, normally we would use token.text.content
-              form: emoji,
+    MatrixState.pangeaController.putAnalytics.setState(
+      AnalyticsStream(
+        eventId: widget.eventId,
+        roomId: widget.roomId,
+        constructs: [
+          OneConstructUse(
+            useType: ConstructUseTypeEnum.em,
+            lemma: widget.constructID.lemma,
+            constructType: ConstructTypeEnum.vocab,
+            metadata: ConstructUseMetaData(
+              roomId: widget.roomId,
+              timeStamp: DateTime.now(),
+              eventId: widget.eventId,
             ),
-          ],
-          origin: AnalyticsUpdateOrigin.wordZoom,
-        ),
-      );
-    }
+            category: widget.constructID.category,
+            form: widget.form,
+          ),
+        ],
+        origin: AnalyticsUpdateOrigin.wordZoom,
+      ),
+    );
 
     await widget.constructID.setEmoji(emoji);
 
