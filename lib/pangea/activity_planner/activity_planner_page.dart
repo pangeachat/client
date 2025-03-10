@@ -1,11 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_list_view.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_mode_list_repo.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
@@ -14,6 +9,7 @@ import 'package:fluffychat/pangea/activity_planner/list_request_schema.dart';
 import 'package:fluffychat/pangea/activity_planner/media_enum.dart';
 import 'package:fluffychat/pangea/activity_planner/suggestion_form_field.dart';
 import 'package:fluffychat/pangea/activity_planner/topic_list_repo.dart';
+import 'package:fluffychat/pangea/activity_suggestions/activity_plan_search_repo.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
@@ -22,6 +18,9 @@ import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_en
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix.dart';
 
 enum _PageMode {
   settings,
@@ -67,6 +66,24 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
         MatrixState.pangeaController.languageController.userL2?.langCode;
     _selectedCefrLevel = LanguageLevelTypeEnum.a1;
     _selectedNumberOfParticipants = max(room?.getParticipants().length ?? 1, 1);
+
+    final cached = ActivitySearchRepo.get(
+      ActivityPlanRequest(
+        topic: "",
+        mode: "",
+        objective: "",
+        media: MediaEnum.nan,
+        cefrLevel: LanguageLevelTypeEnum.preA1,
+        languageOfInstructions: "en",
+        targetLanguage: "es",
+        numberOfParticipants: 5,
+      ),
+    ).then((value) {
+      debugPrint("got cached activities ${value.toString()}");
+      for (final activity in value.activityPlans) {
+        print(activity.toJson().toString());
+      }
+    });
   }
 
   final _topicController = TextEditingController();

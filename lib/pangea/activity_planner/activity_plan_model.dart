@@ -6,6 +6,10 @@ class ActivityPlanModel {
   final String learningObjective;
   final String instructions;
   final List<Vocab> vocab;
+
+  final String? imageUrl;
+  final String? imageEventId;
+
   String? bookmarkId;
 
   ActivityPlanModel({
@@ -14,6 +18,8 @@ class ActivityPlanModel {
     required this.learningObjective,
     required this.instructions,
     required this.vocab,
+    this.imageUrl,
+    this.imageEventId,
     this.bookmarkId,
   });
 
@@ -27,6 +33,8 @@ class ActivityPlanModel {
         json['vocab'].map((vocab) => Vocab.fromJson(vocab)),
       ),
       bookmarkId: json['bookmark_id'],
+      imageUrl: json['image_url'],
+      imageEventId: json['image_event_id'],
     );
   }
 
@@ -38,6 +46,8 @@ class ActivityPlanModel {
       'instructions': instructions,
       'vocab': vocab.map((vocab) => vocab.toJson()).toList(),
       'bookmark_id': bookmarkId,
+      'image_url': imageUrl,
+      'image_event_id': imageEventId,
     };
   }
 
