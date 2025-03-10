@@ -18,7 +18,6 @@ import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_show_popup.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/missing_voice_button.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -63,6 +62,7 @@ class TtsController extends ChangeNotifier {
   Future<void> dispose() async {
     await _tts.stop();
     await _languageSubscription?.cancel();
+    super.dispose();
   }
 
   void _onError(dynamic message) {
@@ -162,22 +162,6 @@ class TtsController extends ChangeNotifier {
       );
     }
   }
-
-  Future<void> _showMissingVoicePopup(
-    BuildContext context,
-    String targetID,
-  ) async =>
-      instructionsShowPopup(
-        context,
-        InstructionsEnum.missingVoice,
-        targetID,
-        showToggle: false,
-        customContent: const Padding(
-          padding: EdgeInsets.only(top: 12),
-          child: MissingVoiceButton(),
-        ),
-        forceShow: true,
-      );
 
   Future<void> _showTTSDisabledPopup(
     BuildContext context,
