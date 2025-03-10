@@ -20,13 +20,10 @@ class AlternativeTranslator {
   SimilartyResponseModel? similarityResponse;
 
   // Add tracking for first-try correct attempts
-  List<bool> firstTryCorrectFlags = [];
-  Set<String> attemptedTranslations =
-      {}; // Track which translations have been attempted
 
   AlternativeTranslator(this.choreographer);
 
-  void clear({bool clearTracking = false}) {
+  void clear() {
     userTranslation = null;
     showAlternativeTranslations = false;
     loadingAlternativeTranslations = false;
@@ -34,37 +31,22 @@ class AlternativeTranslator {
     translationFeedbackKey = null;
     translations = [];
     similarityResponse = null;
-
-    // Only clear tracking data if explicitly requested
-    if (clearTracking) {
-      firstTryCorrectFlags = [];
-      attemptedTranslations = {};
-    }
   }
 
-  // Method to record a translation attempt
-  void recordTranslationAttempt(String translation) {
-    if (translations.isEmpty) return; // Safety check
+  double get _percentCorrectChoices {
+    final totalClickedContinuances = choreographer.itController.completedITSteps
+        .map((step) => step.continuances.where((c) => c.wasClicked).length)
+        .fold(0, (prev, curr) => prev + curr);
 
-    // Check if this is a correct translation (matches the first one)
-    bool isCorrect =
-        translation.toLowerCase() == translations.first.toLowerCase();
-
-    // Only record first attempts for each translation
-    if (!attemptedTranslations.contains(translation)) {
-      attemptedTranslations.add(translation);
-      firstTryCorrectFlags.add(isCorrect);
+    if (totalClickedContinuances == 0) {
+      return 0;
     }
-  }
 
-  // Get percentage of correct first attempts
-  int getFirstTryCorrectPercentage() {
-    if (firstTryCorrectFlags.isEmpty)
-      return 100; // Default to 100% if no attempts
-
-    int correctCount =
-        firstTryCorrectFlags.where((isCorrect) => isCorrect).length;
-    return ((correctCount / firstTryCorrectFlags.length) * 100).round();
+    return (choreographer.itController.completedITSteps
+                .where((step) => step.isCorrect)
+                .length /
+            totalClickedContinuances) *
+        100;
   }
 
   Future<void> setTranslationFeedback() async {
@@ -78,10 +60,9 @@ class AlternativeTranslator {
 
       if (choreographer.itController.allCorrect) {
         // Even if all correct by the end, we still use first-try percentage for feedback
-        int correctPercentage = getFirstTryCorrectPercentage();
-        if (correctPercentage == 100) {
+        if (_percentCorrectChoices == 100) {
           translationFeedbackKey = FeedbackKey.allCorrect;
-        } else if (correctPercentage > 90) {
+        } else if (_percentCorrectChoices > 90) {
           translationFeedbackKey = FeedbackKey.newWayAllGood;
         } else {
           translationFeedbackKey = FeedbackKey.othersAreBetter;
@@ -112,10 +93,9 @@ class AlternativeTranslator {
           results.bestTranslation.toLowerCase()) {
         // This is for the case where the user's final translation is correct
         // We still use first-try percentage for feedback
-        int correctPercentage = getFirstTryCorrectPercentage();
-        if (correctPercentage == 100) {
+        if (_percentCorrectChoices == 100) {
           translationFeedbackKey = FeedbackKey.allCorrect;
-        } else if (correctPercentage > 90) {
+        } else if (_percentCorrectChoices > 90) {
           translationFeedbackKey = FeedbackKey.newWayAllGood;
         } else {
           translationFeedbackKey = FeedbackKey.othersAreBetter;
@@ -134,8 +114,7 @@ class AlternativeTranslator {
       showAlternativeTranslations = true;
 
       // Set feedback based on first-try percentage
-      int correctPercentage = getFirstTryCorrectPercentage();
-      if (correctPercentage > 90) {
+      if (_percentCorrectChoices > 90) {
         translationFeedbackKey = FeedbackKey.newWayAllGood;
       } else {
         translationFeedbackKey = FeedbackKey.othersAreBetter;
@@ -164,8 +143,17 @@ class AlternativeTranslator {
   }
 
   String translationFeedback(BuildContext context) {
-    int correctPercentage = getFirstTryCorrectPercentage();
-    String displayScore = correctPercentage.toString();
+    final totalClickedContinuances = choreographer.itController.completedITSteps
+        .map((step) => step.continuances.where((c) => c.wasClicked).length)
+        .fold(0, (prev, curr) => prev + curr);
+
+    final correctPercentage = (choreographer.itController.completedITSteps
+                .where((step) => step.isCorrect)
+                .length /
+            totalClickedContinuances) *
+        100;
+
+    final String displayScore = correctPercentage.toString();
 
     switch (translationFeedbackKey) {
       case FeedbackKey.allCorrect:
