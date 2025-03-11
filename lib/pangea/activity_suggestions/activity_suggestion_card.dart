@@ -58,7 +58,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                 children: [
                   Container(
                     height: 100,
-                    width: 250,
+                    width: width,
                     decoration: BoxDecoration(
                       image: activity.imageURL != null
                           ? DecorationImage(
@@ -77,7 +77,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                         top: 16.0,
                         left: 12.0,
                         right: 12.0,
-                        bottom: 16.0,
+                        bottom: 12.0,
                       ),
                       child: controller.isEditing && _isSelected
                           ? ActivitySuggestionEditCard(

@@ -74,7 +74,7 @@ class ActivitySuggestionCardContent extends StatelessWidget {
                             horizontal: 8.0,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.blue.withAlpha(50),
+                            color: theme.colorScheme.primary.withAlpha(50),
                             borderRadius: BorderRadius.circular(24.0),
                           ),
                           child: Text(
@@ -106,7 +106,7 @@ class ActivitySuggestionCardContent extends StatelessWidget {
                             horizontal: 8.0,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.blue.withAlpha(50),
+                            color: theme.colorScheme.primary.withAlpha(50),
                             borderRadius: BorderRadius.circular(24.0),
                           ),
                           child: Text(

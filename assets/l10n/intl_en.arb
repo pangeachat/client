@@ -4810,5 +4810,6 @@
   "createASpace": "Create a space",
   "inviteAndLaunch": "Invite and launch",
   "createOwnChat": "Create your own chat",
-  "pleaseEnterInt": "Please enter a number"
+  "pleaseEnterInt": "Please enter a number",
+  "home": "Home"
 } 

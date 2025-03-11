@@ -167,7 +167,7 @@ class ActivitySuggestionEditCardState
                             horizontal: 8.0,
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.blue.withAlpha(50),
+                            color: theme.colorScheme.primary.withAlpha(50),
                             borderRadius: BorderRadius.circular(24.0),
                           ),
                           child: MouseRegion(
@@ -229,13 +229,9 @@ class ActivitySuggestionEditCardState
           Row(
             spacing: 6.0,
             children: [
-              IconButton(
-                padding: const EdgeInsets.all(0.0),
-                constraints:
-                    const BoxConstraints(), // override default min size of 48px
-                iconSize: 16.0,
-                icon: const Icon(Icons.save_outlined),
-                onPressed: () {
+              GestureDetector(
+                child: const Icon(Icons.save_outlined, size: 16.0),
+                onTap: () {
                   if (!_formKey.currentState!.validate()) {
                     return;
                   }
@@ -243,13 +239,9 @@ class ActivitySuggestionEditCardState
                   widget.controller.setEditting(false);
                 },
               ),
-              IconButton(
-                padding: const EdgeInsets.all(0.0),
-                constraints:
-                    const BoxConstraints(), // override default min size of 48px
-                iconSize: 16.0,
-                icon: const Icon(Icons.close_outlined),
-                onPressed: () => widget.controller.setEditting(false),
+              GestureDetector(
+                child: const Icon(Icons.close_outlined, size: 16.0),
+                onTap: () => widget.controller.setEditting(false),
               ),
               Expanded(
                 child: ElevatedButton(

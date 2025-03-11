@@ -60,11 +60,10 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
   final double cardWidth = 250.0;
 
   void _scrollToItem(int index) {
-    final screenWidth = _scrollController.position.viewportDimension;
-    final dimension =
-        FluffyThemes.isColumnMode(context) ? cardHeight : cardWidth;
-    final scrollOffset =
-        index * dimension - (screenWidth / 2) + (dimension / 2);
+    final viewportDimension = _scrollController.position.viewportDimension;
+    final double scrollOffset = FluffyThemes.isColumnMode(context)
+        ? index * cardWidth - (viewportDimension / 2) + (cardWidth / 2)
+        : (index + 1) * (cardHeight + 8.0);
 
     final maxScrollExtent = _scrollController.position.maxScrollExtent;
     final safeOffset = scrollOffset.clamp(0.0, maxScrollExtent);
@@ -75,12 +74,6 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
 
     _scrollController.animateTo(
       safeOffset,
-      duration: FluffyThemes.animationDuration,
-      curve: FluffyThemes.animationCurve,
-    );
-
-    _scrollController.animateTo(
-      scrollOffset,
       duration: FluffyThemes.animationDuration,
       curve: FluffyThemes.animationCurve,
     );
@@ -216,8 +209,6 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
             activity: activity,
             controller: this,
             onPressed: () {
-              _scrollToItem(i + 1);
-
               if (isEditing && selectedActivity == activity) {
                 setEditting(false);
               } else if (selectedActivity == activity) {
@@ -225,6 +216,10 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
               } else {
                 setSelectedActivity(activity);
               }
+
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                _scrollToItem(i);
+              });
             },
             width: cardWidth,
             height: cardHeight,
@@ -241,26 +236,22 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       ),
     );
 
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          alignment: Alignment.topCenter,
-          padding: const EdgeInsets.all(16.0),
-          child: FluffyThemes.isColumnMode(context)
-              ? ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: cards.length,
-                  itemBuilder: (context, index) => cards[index],
-                  controller: _scrollController,
-                )
-              : SingleChildScrollView(
-                  controller: _scrollController,
-                  child: Wrap(
-                    children: cards,
-                  ),
-                ),
-        ),
-      ),
+    return Container(
+      alignment: Alignment.topCenter,
+      padding: const EdgeInsets.all(16.0),
+      child: FluffyThemes.isColumnMode(context)
+          ? ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: cards.length,
+              itemBuilder: (context, index) => cards[index],
+              controller: _scrollController,
+            )
+          : SingleChildScrollView(
+              controller: _scrollController,
+              child: Wrap(
+                children: cards,
+              ),
+            ),
     );
   }
 }
