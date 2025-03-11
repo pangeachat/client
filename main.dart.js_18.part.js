@@ -676,12 +676,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$oneClientLoggedOut() {
       return "One of your clients has been logged out";
     },
-    get$addAccount() {
-      return "Add account";
-    },
-    get$enableMultiAccounts() {
-      return "(BETA) Enable multi accounts on this device";
-    },
     get$openInMaps() {
       return "Open in maps";
     },
@@ -4977,12 +4971,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$oneClientLoggedOut() {
       return "Um dos seus clientes foi desvinculado";
     },
-    get$addAccount() {
-      return "Adicionar conta";
-    },
-    get$enableMultiAccounts() {
-      return "(BETA) Habilitar m\xfaltiplas contas neste dispositivo";
-    },
     get$openInMaps() {
       return "Abrir no mapas";
     },
@@ -6119,12 +6107,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$oneClientLoggedOut() {
       return "Um dos teus clientes terminou sess\xe3o";
     },
-    get$addAccount() {
-      return "Adicionar conta";
-    },
-    get$enableMultiAccounts() {
-      return "(BETA) Ativar m\xfaltiplas contas neste dispositivo";
-    },
     get$openInMaps() {
       return "Abrir nos mapas";
     },
@@ -6283,6 +6265,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "khIpjL3kx1/fNHrDq1S+bjlUAmU=");
+})($__dart_deferred_initializers__, "BUvyaIDYTqrYSWXGek2aSNCgRw8=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map

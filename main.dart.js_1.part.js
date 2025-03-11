@@ -670,12 +670,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$oneClientLoggedOut() {
       return "\u4f60\u7684\u4e00\u4e2a\u5ba2\u6237\u7aef\u5df2\u767b\u51fa";
     },
-    get$addAccount() {
-      return "\u6dfb\u52a0\u8d26\u6237";
-    },
-    get$enableMultiAccounts() {
-      return "\uff08\u6d4b\u8bd5\u529f\u80fd\uff09\u5728\u6b64\u8bbe\u5907\u4e0a\u6dfb\u52a0\u591a\u4e2a\u8d26\u6237";
-    },
     get$openInMaps() {
       return "\u5728\u5730\u56fe\u4e2d\u6253\u5f00";
     },
@@ -4992,12 +4986,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$oneClientLoggedOut() {
       return "\u60a8\u7684\u4e00\u500b\u5ba2\u6236\u7aef\u5df2\u767b\u51fa";
     },
-    get$addAccount() {
-      return "\u65b0\u589e\u5e33\u865f";
-    },
-    get$enableMultiAccounts() {
-      return "\uff08\u5be6\u9a57\u6027\u529f\u80fd\uff09\u5728\u6b64\u88dd\u7f6e\u4e0a\u555f\u7528\u591a\u500b\u5e33\u865f";
-    },
     get$openInMaps() {
       return "\u5728\u5730\u5716\u4e2d\u6253\u958b";
     },
@@ -5653,6 +5641,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "7+t8KVxcU+RZhJ4GD1yTsRZ616s=");
+})($__dart_deferred_initializers__, "gJutHWIDHOdzfgr3Dxp4z/1WVNs=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
