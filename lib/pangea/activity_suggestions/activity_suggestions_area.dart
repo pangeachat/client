@@ -56,8 +56,9 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
   final List<ActivityPlanModel> _activityItems = [];
   final ScrollController _scrollController = ScrollController();
 
-  final double cardHeight = 275.0;
-  final double cardWidth = 250.0;
+  final double cardHeight = 235.0;
+  final double cardPadding = 8.0;
+  double get cardWidth => FluffyThemes.isColumnMode(context) ? 225.0 : 160.0;
 
   void _scrollToItem(int index) {
     final viewportDimension = _scrollController.position.viewportDimension;
@@ -223,6 +224,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
             },
             width: cardWidth,
             height: cardHeight,
+            padding: cardPadding,
           );
         })
         .cast<Widget>()
@@ -233,25 +235,22 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       CreateChatCard(
         width: cardWidth,
         height: cardHeight,
+        padding: cardPadding,
       ),
     );
 
     return Container(
       alignment: Alignment.topCenter,
-      padding: const EdgeInsets.all(16.0),
-      child: FluffyThemes.isColumnMode(context)
-          ? ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: cards.length,
-              itemBuilder: (context, index) => cards[index],
-              controller: _scrollController,
-            )
-          : SingleChildScrollView(
-              controller: _scrollController,
-              child: Wrap(
-                children: cards,
-              ),
-            ),
+      padding: EdgeInsets.symmetric(
+        vertical: 16.0,
+        horizontal: FluffyThemes.isColumnMode(context) ? 16.0 : 0.0,
+      ),
+      child: SingleChildScrollView(
+        controller: _scrollController,
+        child: Wrap(
+          children: cards,
+        ),
+      ),
     );
   }
 }

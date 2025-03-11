@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/themes.dart';
+
 class FullWidthDialog extends StatelessWidget {
   final Widget dialogContent;
   final double maxWidth;
@@ -31,6 +33,8 @@ class FullWidthDialog extends StatelessWidget {
       ),
     );
 
-    return kIsWeb ? Dialog(child: content) : Dialog.fullscreen(child: content);
+    return FluffyThemes.isColumnMode(context)
+        ? Dialog(child: content)
+        : Dialog.fullscreen(child: content);
   }
 }
