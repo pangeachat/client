@@ -1,22 +1,34 @@
 // shows n rows of activity suggestions vertically, where n is the number of rows
 // as the user tries to scroll horizontally to the right, the client will fetch more activity suggestions
 
-import 'dart:math';
+import 'dart:developer';
 
-import 'package:dynamic_color/dynamic_color.dart';
-import 'package:fluffychat/pages/settings_style/settings_style.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_mode_list_repo.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+import 'package:matrix/matrix.dart' as sdk;
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
-import 'package:fluffychat/pangea/activity_planner/learning_objective_list_repo.dart';
-import 'package:fluffychat/pangea/activity_planner/list_request_schema.dart';
 import 'package:fluffychat/pangea/activity_planner/media_enum.dart';
-import 'package:fluffychat/pangea/activity_planner/topic_list_repo.dart';
+import 'package:fluffychat/pangea/activity_suggestions/activity_plan_search_repo.dart';
+import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
+import 'package:fluffychat/pangea/activity_suggestions/create_chat_card.dart';
+import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
-import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:fluffychat/utils/file_selector.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class ActivitySuggestionsArea extends StatefulWidget {
   const ActivitySuggestionsArea({super.key});
@@ -29,128 +41,226 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
   @override
   void initState() {
     super.initState();
-    _setActivitiesList();
+    _setActivityItems();
   }
 
-  ActivitySettingRequestSchema get req => ActivitySettingRequestSchema(
-        langCode:
-            MatrixState.pangeaController.languageController.userL2?.langCode ??
-                LanguageKeys.defaultLanguage,
-      );
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
 
-  List<ActivitySettingResponseSchema> _topicItems = [];
-  List<ActivitySettingResponseSchema> _modeItems = [];
-  List<ActivitySettingResponseSchema> _objectiveItems = [];
+  ActivityPlanModel? selectedActivity;
+  bool isEditing = false;
+  Uint8List? avatar;
+  final List<ActivityPlanModel> _activityItems = [];
+  final ScrollController _scrollController = ScrollController();
 
-  Future<void> _setActivitiesList() async {
-    _topicItems = await TopicListRepo.get(req);
-    _modeItems = await ActivityModeListRepo.get(req);
-    _objectiveItems = await LearningObjectiveListRepo.get(req);
+  final double cardHeight = 275.0;
+  final double cardWidth = 250.0;
+
+  void _scrollToItem(int index) {
+    final screenWidth = _scrollController.position.viewportDimension;
+    final dimension =
+        FluffyThemes.isColumnMode(context) ? cardHeight : cardWidth;
+    final scrollOffset =
+        index * dimension - (screenWidth / 2) + (dimension / 2);
+
+    final maxScrollExtent = _scrollController.position.maxScrollExtent;
+    final safeOffset = scrollOffset.clamp(0.0, maxScrollExtent);
+
+    if (safeOffset == _scrollController.offset) {
+      return;
+    }
+
+    _scrollController.animateTo(
+      safeOffset,
+      duration: FluffyThemes.animationDuration,
+      curve: FluffyThemes.animationCurve,
+    );
+
+    _scrollController.animateTo(
+      scrollOffset,
+      duration: FluffyThemes.animationDuration,
+      curve: FluffyThemes.animationCurve,
+    );
+  }
+
+  Future<void> _setActivityItems() async {
+    final ActivityPlanRequest request = ActivityPlanRequest(
+      topic: "",
+      mode: "",
+      objective: "",
+      media: MediaEnum.nan,
+      cefrLevel: LanguageLevelTypeEnum.a1,
+      languageOfInstructions: LanguageKeys.defaultLanguage,
+      targetLanguage:
+          MatrixState.pangeaController.languageController.userL2?.langCode ??
+              LanguageKeys.defaultLanguage,
+      numberOfParticipants: 3,
+      count: 5,
+    );
+    final resp = await ActivitySearchRepo.get(request);
+    _activityItems.addAll(resp.activityPlans);
+    setState(() {});
+  }
+
+  void setSelectedActivity(ActivityPlanModel? activity) {
+    selectedActivity = activity;
+    isEditing = false;
     if (mounted) setState(() {});
   }
 
-  List<ActivityPlanModel> get _activityItems {
-    int numActivities = min(_topicItems.length, _modeItems.length);
-    numActivities = min(numActivities, _objectiveItems.length);
-    return List.generate(numActivities, (index) {
-      return ActivityPlanModel(
-        req: ActivityPlanRequest(
-          topic: _topicItems[index].name,
-          mode: _modeItems[index].name,
-          objective: _objectiveItems[index].name,
-          media: MediaEnum.nan,
-          cefrLevel: LanguageLevelTypeEnum.a1,
-          languageOfInstructions: LanguageKeys.defaultLanguage,
-          targetLanguage: LanguageKeys.defaultLanguage,
-          numberOfParticipants: 1,
-        ),
-        title: _topicItems[index].name,
-        learningObjective: _objectiveItems[index].name,
-        instructions: _modeItems[index].name,
-        vocab: [],
-      );
+  void setEditting(bool editting) {
+    if (selectedActivity == null) return;
+    isEditing = editting;
+    if (mounted) setState(() {});
+  }
+
+  void selectPhoto() async {
+    final photo = await selectFiles(
+      context,
+      type: FileSelectorType.images,
+      allowMultiple: false,
+    );
+    final bytes = await photo.singleOrNull?.readAsBytes();
+
+    setState(() {
+      avatar = bytes;
     });
+  }
+
+  void updateActivity(
+    ActivityPlanModel Function(ActivityPlanModel) update,
+  ) {
+    if (selectedActivity == null) return;
+    update(selectedActivity!);
+    if (mounted) setState(() {});
+  }
+
+  Future<String?> _getAvatarURL(ActivityPlanModel activity) async {
+    if (activity.imageURL == null && avatar == null) return null;
+    try {
+      if (avatar == null) {
+        final Response response = await http.get(Uri.parse(activity.imageURL!));
+        avatar = response.bodyBytes;
+      }
+      return (await Matrix.of(context).client.uploadContent(avatar!))
+          .toString();
+    } catch (err, s) {
+      ErrorHandler.logError(
+        e: err,
+        s: s,
+        data: {
+          "imageURL": activity.imageURL,
+        },
+      );
+    }
+    return null;
+  }
+
+  Future<void> onLaunch(ActivityPlanModel activity) async {
+    final client = Matrix.of(context).client;
+
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        final avatarURL = await _getAvatarURL(activity);
+        final roomId = await client.createGroupChat(
+          preset: CreateRoomPreset.publicChat,
+          visibility: sdk.Visibility.private,
+          groupName: activity.title,
+          initialState: [
+            if (avatarURL != null)
+              StateEvent(
+                type: EventTypes.RoomAvatar,
+                content: {'url': avatarURL.toString()},
+              ),
+            StateEvent(
+              type: EventTypes.RoomPowerLevels,
+              stateKey: '',
+              content: defaultPowerLevels(client.userID!),
+            ),
+          ],
+          enableEncryption: false,
+        );
+
+        Room? room = Matrix.of(context).client.getRoomById(roomId);
+        if (room == null) {
+          await client.waitForRoomInSync(roomId);
+          room = Matrix.of(context).client.getRoomById(roomId);
+          if (room == null) return;
+        }
+
+        final eventId = await room.pangeaSendTextEvent(
+          activity.markdown,
+          messageTag: ModelKey.messageTagActivityPlan,
+        );
+
+        if (eventId == null) {
+          debugger(when: kDebugMode);
+          return;
+        }
+
+        await room.setPinnedEvents([eventId]);
+        context.go("/rooms/$roomId/invite");
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final List<Widget> cards = _activityItems
+        .mapIndexed((i, activity) {
+          return ActivitySuggestionCard(
+            activity: activity,
+            controller: this,
+            onPressed: () {
+              _scrollToItem(i + 1);
+
+              if (isEditing && selectedActivity == activity) {
+                setEditting(false);
+              } else if (selectedActivity == activity) {
+                setSelectedActivity(null);
+              } else {
+                setSelectedActivity(activity);
+              }
+            },
+            width: cardWidth,
+            height: cardHeight,
+          );
+        })
+        .cast<Widget>()
+        .toList();
+
+    cards.insert(
+      0,
+      CreateChatCard(
+        width: cardWidth,
+        height: cardHeight,
+      ),
+    );
+
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(L10n.of(context).chat),
-      //   automaticallyImplyLeading: !FluffyThemes.isColumnMode(context),
-      //   centerTitle: FluffyThemes.isColumnMode(context),
-      // ),
-      body: MaxWidthBody(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            DynamicColorBuilder(
-              builder: (light, dark) {
-                final systemColor =
-                    Theme.of(context).brightness == Brightness.light
-                        ? light?.primary
-                        : dark?.primary;
-                final colors =
-                    List<Color?>.from(SettingsStyleController.customColors);
-                if (systemColor == null) {
-                  colors.remove(null);
-                }
-                return GridView.builder(
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 64,
+      body: SafeArea(
+        child: Container(
+          alignment: Alignment.topCenter,
+          padding: const EdgeInsets.all(16.0),
+          child: FluffyThemes.isColumnMode(context)
+              ? ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: cards.length,
+                  itemBuilder: (context, index) => cards[index],
+                  controller: _scrollController,
+                )
+              : SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Wrap(
+                    children: cards,
                   ),
-                  itemCount: colors.length,
-                  itemBuilder: (context, i) {
-                    final color = colors[i];
-                    return Container(
-                      decoration: const BoxDecoration(color: Colors.green),
-                      width: 50,
-                      height: 50,
-                    );
-                  },
-                );
-              },
-            ),
-          ],
+                ),
         ),
       ),
-      // body: MaxWidthBody(
-      //   // child: Container(
-      //   //   decoration: const BoxDecoration(color: Colors.green),
-      //   //   height: 50,
-      //   //   width: 50,
-      //   // ),
-      //   child: Column(
-      //     children: [
-      //       Expanded(
-      //         child: GridView.builder(
-      //           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-      //             maxCrossAxisExtent: 128,
-      //           ),
-      //           itemBuilder: (context, i) {
-      //             return ActivitySuggestionCard(
-      //               activity: _activityItems[i],
-      //             );
-      //           },
-      //         ),
-      //       ),
-      //     ],
-      //   ),
-      // ),
     );
-    // return ListView.builder(
-    //   scrollDirection: Axis.vertical,
-    //   itemCount: 5,
-    //   itemBuilder: (context, index) {
-    //     return Container(
-    //       height: 100,
-    //       width: 100,
-    //       color: Colors.blue,
-    //       margin: const EdgeInsets.all(10),
-    //     );
-    //   },
-    // );
   }
 }
