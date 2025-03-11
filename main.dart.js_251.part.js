@@ -1845,6 +1845,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$learningSettings() {
       return "Learning settings";
     },
+    get$classRoster() {
+      return "Participants";
+    },
     get$almostPerfect() {
       return "That seems right! Here's what I would have said.";
     },
@@ -4210,7 +4213,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Activity Title";
     },
     get$addVocabulary() {
-      return "Add Vocabulary";
+      return "Add vocabulary";
     },
     get$instructions() {
       return "Instructions";
@@ -4326,6 +4329,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createASpace() {
       return "Create a space";
     },
+    get$inviteAndLaunch() {
+      return "Invite and launch";
+    },
+    get$createOwnChat() {
+      return "Create your own chat";
+    },
+    get$pleaseEnterInt() {
+      return "Please enter a number";
+    },
+    get$home() {
+      return "Home";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4341,6 +4356,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_251", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "nP/tXbdFZ3Dfr9Gho9xL69wIlSg=");
+})($__dart_deferred_initializers__, "FWftEi3eJJ2KYGooyETF+SkL6fI=");
 ;
 //# sourceMappingURL=main.dart.js_251.part.js.map

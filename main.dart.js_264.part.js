@@ -1845,6 +1845,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$learningSettings() {
       return "C\xe0i \u0111\u1eb7t h\u1ecdc t\u1eadp";
     },
+    get$classRoster() {
+      return "Danh s\xe1ch th\xe0nh vi\xean";
+    },
     get$almostPerfect() {
       return "C\xf3 v\u1ebb \u0111\xfang! \u0110\xe2y l\xe0 c\xe1ch t\xf4i s\u1ebd n\xf3i.";
     },
@@ -4326,6 +4329,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createASpace() {
       return "T\u1ea1o m\u1ed9t kh\xf4ng gian";
     },
+    get$inviteAndLaunch() {
+      return "Invite and launch";
+    },
+    get$createOwnChat() {
+      return "Create your own chat";
+    },
+    get$pleaseEnterInt() {
+      return "Please enter a number";
+    },
+    get$home() {
+      return "Home";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4341,6 +4356,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "q20DJOlPMrxZFPZ4p6Gji0htVnU=");
+})($__dart_deferred_initializers__, "KNqvtdBYIDFnk2trBJXp9twBI3M=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map
