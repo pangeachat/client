@@ -269,7 +269,6 @@ class TtsController extends ChangeNotifier {
   }
 
   Future<void> _speakFromChoreo(String text) async {
-    print('speaking from choreo');
     try {
       hasLoadedTextToSpeech = false;
       final ttsRes = await chatController?.pangeaController.textToSpeech.get(
