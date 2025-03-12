@@ -1,12 +1,10 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 enum InstructionsEnum {
   itInstructions,
@@ -20,10 +18,12 @@ enum InstructionsEnum {
   missingVoice,
   clickBestOption,
   completeActivitiesToUnlock,
-  lemmaMeaning,
+  chooseLemmaMeaning,
   activityPlannerOverview,
   ttsDisabled,
   chooseEmoji,
+  chooseWordAudio,
+  chooseMorphs,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -41,6 +41,7 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.missingVoiceTitle;
       case InstructionsEnum.ttsDisabled:
         return l10n.ttsDisbledTitle;
+      case InstructionsEnum.chooseWordAudio:
       case InstructionsEnum.chooseEmoji:
       case InstructionsEnum.activityPlannerOverview:
       case InstructionsEnum.clickAgainToDeselect:
@@ -49,7 +50,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.translationChoices:
       case InstructionsEnum.clickBestOption:
       case InstructionsEnum.completeActivitiesToUnlock:
-      case InstructionsEnum.lemmaMeaning:
+      case InstructionsEnum.chooseLemmaMeaning:
+      case InstructionsEnum.chooseMorphs:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -88,14 +90,18 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.clickBestOption;
       case InstructionsEnum.completeActivitiesToUnlock:
         return l10n.completeActivitiesToUnlock;
-      case InstructionsEnum.lemmaMeaning:
-        return l10n.lemmaMeaningInstructionsBody;
+      case InstructionsEnum.chooseLemmaMeaning:
+        return l10n.chooseLemmaMeaningInstructionsBody;
       case InstructionsEnum.activityPlannerOverview:
         return l10n.activityPlannerOverviewInstructionsBody;
       case InstructionsEnum.chooseEmoji:
         return l10n.chooseEmojiInstructionsBody;
       case InstructionsEnum.ttsDisabled:
         return l10n.ttsDisabledBody;
+      case InstructionsEnum.chooseWordAudio:
+        return l10n.chooseWordAudioInstructionsBody;
+      case InstructionsEnum.chooseMorphs:
+        return l10n.chooseMorphsInstructionsBody;
     }
   }
 

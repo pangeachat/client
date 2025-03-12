@@ -1,25 +1,17 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
-import 'package:fluffychat/config/app_emojis.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
-import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class MessageEmojiChoice extends StatelessWidget {
-  final List<PangeaToken>? tokens;
   final ChatController controller;
   final MessageOverlayController overlayController;
 
   const MessageEmojiChoice({
     super.key,
-    required this.tokens,
     required this.controller,
     required this.overlayController,
   });
@@ -72,82 +64,36 @@ class MessageEmojiChoice extends StatelessWidget {
     }
   }
 
-  List<Widget> standardEmojiChoices(BuildContext context) => AppEmojis.emojis
-      .map(
-        (emoji) => MessageEmojiChoiceItem(
-          content: emoji,
-          onTap: () => alreadyInReactions(emoji)
-              ? redactReaction(context, emoji)
-              : controller.sendEmojiAction(emoji),
-          isSelected: false,
-          onDoubleTap: () => onDoubleTapOrLongPress(context, emoji),
-          onLongPress: () => onDoubleTapOrLongPress(context, emoji),
-          token: null,
-        ),
-      )
-      .toList();
-
-  List<Widget> perTokenEmoji(BuildContext context) =>
-      tokens!.where((token) => token.lemma.saveVocab).map((token) {
-        if (!token.lemma.saveVocab) {
-          return MessageEmojiChoiceItem(
-            content: token.text.content,
-            onTap: () => {},
-            isSelected: overlayController.isTokenSelected(token),
-            onDoubleTap: null,
-            onLongPress: null,
-            token: token,
-          );
-        }
-
-        final emoji = token.getEmoji();
-
-        if (emoji == null) {
-          return MessageEmojiChoiceItem(
-            topContent: CustomizedSvg(
-              svgUrl: token.vocabConstruct.constructLevel.svgURL,
-              colorReplacements: const {},
-              errorIcon: Text(token.xpEmoji),
-            ),
-            content: token.text.content,
-            onTap: () => overlayController.onClickOverlayMessageToken(token),
-            onDoubleTap: null,
-            onLongPress: null,
-            isSelected: overlayController.isTokenSelected(token),
-            contentOpacity: 0.1,
-            token: token,
-          );
-        }
-
-        return MessageEmojiChoiceItem(
-          topContent: Text(
-            emoji,
-            style: const TextStyle(fontSize: 24),
-          ),
-          content: token.text.content,
-          onTap: () => overlayController.onClickOverlayMessageToken(token),
-          onDoubleTap: () => onDoubleTapOrLongPress(context, emoji),
-          onLongPress: () => onDoubleTapOrLongPress(context, emoji),
-          isSelected: overlayController.isTokenSelected(token),
-          token: token,
-        );
-      }).toList();
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Wrap(
-        alignment: WrapAlignment.center,
-        // spacing: 8.0, // Adjust spacing between items
-        runSpacing: 0.0, // Adjust spacing between rows
-        children: tokens == null ||
-                tokens!.isEmpty ||
-                !(overlayController
-                        .pangeaMessageEvent?.messageDisplayLangIsL2 ??
-                    false)
-            ? standardEmojiChoices(context)
-            : perTokenEmoji(context),
+      child: Column(
+        children: [
+          Text(
+            "${overlayController.messageEmojisForDisplay.length} emojis left to sort",
+          ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 2.0, // Adjust spacing between items
+            runSpacing: 0.0, // Adjust spacing between rows
+            children: overlayController.messageEmojisForDisplay
+                .map(
+                  (emoji) => MessageEmojiChoiceItem(
+                    textSize: 26,
+                    content: emoji,
+                    onTap: () =>
+                        overlayController.onMessageEmojiChoiceSelect(emoji),
+                    isSelected:
+                        overlayController.selectedEmojis.contains(emoji),
+                    onDoubleTap: () => {},
+                    onLongPress: () => {},
+                    token: null,
+                  ),
+                )
+                .toList(),
+          ),
+        ],
       ),
     );
   }

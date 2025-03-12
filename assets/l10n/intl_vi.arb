@@ -3527,7 +3527,6 @@
       }
     }
   },
-  "lemmaMeaningInstructionsBody": "Ở trên là nghĩa của mục từ. Nhấp đúp để chỉnh sửa.",
   "doubleClickToEdit": "Nhấp đúp để chỉnh sửa.",
   "removeFeature": "Xóa {feature}",
   "@removeFeature": {

@@ -1,17 +1,11 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-
 import 'package:app_settings/app_settings.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
+import 'package:fluffychat/pangea/instructions/reset_instructions_list_tile.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/country_picker_tile.dart';
@@ -20,6 +14,11 @@ import 'package:fluffychat/pangea/learning_settings/widgets/p_settings_switch_li
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class SettingsLearningView extends StatelessWidget {
   final SettingsLearningController controller;
@@ -317,6 +316,7 @@ class SettingsLearningView extends StatelessWidget {
                                 activeColor: AppConfig.activeToggleColor,
                                 contentPadding: EdgeInsets.zero,
                               ),
+                              ResetInstructionsListTile(controller: controller),
                             ],
                           ),
                         ),

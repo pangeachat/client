@@ -1,15 +1,14 @@
 import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
-import 'package:fluffychat/pangea/events/models/content_feedback.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class LemmaInfoRepo {
   static final GetStorage _lemmaStorage = GetStorage('lemma_storage');
@@ -23,35 +22,32 @@ class LemmaInfoRepo {
   static Future<LemmaInfoResponse> get(
     LemmaInfoRequest request, [
     String? feedback,
-    bool useExpireAt = false,
   ]) async {
+    // if the user has either emojis or meaning in the past, use those first
+    final UserSetLemmaInfo? userSetLemmaInfo = request.cId.userLemmaInfo;
+    if (userSetLemmaInfo?.emojis != null && userSetLemmaInfo?.meaning != null) {
+      return LemmaInfoResponse(
+        emoji: userSetLemmaInfo!.emojis!,
+        meaning: userSetLemmaInfo.meaning!,
+        expireAt: DateTime.now().add(const Duration(days: 100)),
+      );
+    }
+
     final cachedJson = _lemmaStorage.read(request.storageKey);
 
     final cached =
         cachedJson == null ? null : LemmaInfoResponse.fromJson(cachedJson);
 
     if (cached != null) {
-      if (feedback == null) {
-        // at this point we have a cache without feedback
-        if (!useExpireAt) {
-          // return cache as is if we're not using expireAt
-          return cached;
-        } else if (cached.expireAt != null) {
-          if (DateTime.now().isBefore(cached.expireAt!)) {
-            // return cache as is if we're using expireAt and it's set but not expired
-            return cached;
-          }
-        }
-        // we intentionally do not handle the case of expired at not set because
-        // old caches won't have them set, and we want to trigger a new
-        // choreo call
-      } else {
-        // we're adding this within the service to avoid needing to have the widgets
-        // save state including the bad response
-        request.feedback = ContentFeedback(
-          cached,
-          feedback,
+      if (DateTime.now().isBefore(cached.expireAt!)) {
+        // return cache as is if we're using expireAt and it's set but not expired
+        return LemmaInfoResponse(
+          emoji: userSetLemmaInfo?.emojis ?? cached.emoji,
+          meaning: userSetLemmaInfo?.meaning ?? cached.meaning,
         );
+      } else {
+        // if it's expired, remove it
+        _lemmaStorage.remove(request.storageKey);
       }
     }
 
@@ -70,6 +66,9 @@ class LemmaInfoRepo {
 
     set(request, response);
 
-    return response;
+    return LemmaInfoResponse(
+      emoji: userSetLemmaInfo?.emojis ?? response.emoji,
+      meaning: userSetLemmaInfo?.meaning ?? response.meaning,
+    );
   }
 }

@@ -1,14 +1,10 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup_content.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
+import 'package:fluffychat/pangea/emojis/emoji_stack.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
@@ -17,6 +13,9 @@ import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 /// Displays information about selected lemma, and its usage
 class VocabDetailsView extends StatelessWidget {
@@ -29,7 +28,7 @@ class VocabDetailsView extends StatelessWidget {
 
   ConstructUses get _construct => constructId.constructUses;
 
-  String? get _emoji => PangeaToken(
+  List<String> get _emoji => PangeaToken(
         text: PangeaTokenText(
           offset: 0,
           content: _construct.lemma,
@@ -80,7 +79,7 @@ class VocabDetailsView extends StatelessWidget {
         children: [
           SizedBox(
             width: 42,
-            child: _emoji == null
+            child: _emoji.isEmpty
                 ? Tooltip(
                     message: L10n.of(context).noEmojiSelectedTooltip,
                     child: Icon(
@@ -89,7 +88,7 @@ class VocabDetailsView extends StatelessWidget {
                       color: textColor.withValues(alpha: 0.7),
                     ),
                   )
-                : Text(_emoji!),
+                : EmojiStack(emoji: _emoji),
           ),
           const SizedBox(width: 10.0),
           Text(

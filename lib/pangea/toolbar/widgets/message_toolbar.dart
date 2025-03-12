@@ -1,15 +1,9 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix_api_lite/model/message_types.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_meaning_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_mode_locked_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
@@ -20,6 +14,9 @@ import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_act
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix_api_lite/model/message_types.dart';
 
 const double minCardHeight = 70;
 
@@ -77,14 +74,6 @@ class ReadingAssistanceContentCard extends StatelessWidget {
         return MessageTranslationCard(
           messageEvent: pangeaMessageEvent,
         );
-      case MessageMode.messageTextToSpeech:
-        return MessageAudioCard(
-          messageEvent: pangeaMessageEvent,
-          overlayController: overlayController,
-          selection: overlayController.selectedSpan,
-          tts: ttsController,
-          setIsPlayingAudio: overlayController.setIsPlayingAudio,
-        );
       case MessageMode.messageSpeechToText:
         return MessageSpeechToTextCard(
           messageEvent: pangeaMessageEvent,
@@ -104,6 +93,7 @@ class ReadingAssistanceContentCard extends StatelessWidget {
       case MessageMode.wordEmoji:
       case MessageMode.wordMorph:
       case MessageMode.wordMeaning:
+      case MessageMode.messageTextToSpeech:
         if (overlayController.selectedToken == null) {
           return Padding(
             padding: const EdgeInsets.all(16),

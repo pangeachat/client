@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message_reactions.dart';
@@ -9,6 +5,8 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_message.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class OverlayCenterContent extends StatelessWidget {
   final double messageHeight;

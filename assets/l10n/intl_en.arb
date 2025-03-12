@@ -4590,7 +4590,7 @@
   "pleaseEnterEmail": "Please enter a valid email address.",
   "pleaseSelectALanguage": "Please select a language",
   "myBaseLanguage": "My base language",
-  "clickWordsInstructions": "Click on a word or the buttons below to learn more",
+  "clickWordsInstructions": "🕵️ Click any word for details. 🧐",
   "chooseBestDefinition": "What does this word mean?",
   "meaningSectionHeader": "Meaning:",
   "formSectionHeader": "Forms used in chats:",
@@ -4671,7 +4671,7 @@
       }
     }
   },
-  "lemmaMeaningInstructionsBody": "Above is the meaning of the lemma. Double-click to edit.",
+  "chooseLemmaMeaningInstructionsBody": "Match the meanings with the words in the message to unlock the message translation!",
   "doubleClickToEdit": "Double-click to edit.",
   "removeFeature": "Remove {feature}",
   "@removeFeature": {
@@ -4782,7 +4782,7 @@
   },
   "cancelInSubscriptionSettings": "• Cancel at any time in subscription settings",
   "cancelToAvoidCharges": "• Cancel before {trialEnds} to avoid charges",
-    "@cancelToAvoidCharges": {
+  "@cancelToAvoidCharges": {
     "type": "String",
     "placeholders": {
       "trialEnds": {
@@ -4793,7 +4793,7 @@
   "downloadGboard": "Download Gboard",
   "autocorrectNotAvailable": "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!",
   "pleaseUpdateApp": "Please update the app to continue.",
-  "chooseEmojiInstructionsBody": "Pick an emoji for the word! There's no wrong answer and you can switch anytime! 😀",
+  "chooseEmojiInstructionsBody": "Pangea Bot has generated 4-5 emojis for each unique vocab word in the message. Select emojis then select a word to guess which ones the bot generated for each. Don't worry! No points off for disagreeing. 😅",
   "pickAnEmojiFor": "Pick an emoji for ${lemma}",
   "@pickAnEmojiFor": {
     "type": "String",
@@ -4805,5 +4805,7 @@
   },
   "knockSpaceSuccess": "You have requested to join this space! An admin will respond to your request when they receive it 😀",
   "joinByCode": "Join by code",
-  "createASpace": "Create a space"
-} 
+  "createASpace": "Create a space",
+  "chooseWordAudioInstructionsBody": "Match the audios with the words in the message. You can listen to the full message audio for a hint!",
+  "chooseMorphsInstructionsBody": "Match the grammar tags with the words in the message. Click and hold an option for a hint!"
+}

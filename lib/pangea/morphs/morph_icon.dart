@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 import 'package:fluffychat/pangea/morphs/get_icon_for_morph_feature.dart';
 import 'package:fluffychat/pangea/morphs/get_svg_link.dart';
 import 'package:fluffychat/utils/color_value.dart';
+import 'package:flutter/material.dart';
 
 class MorphIcon extends StatelessWidget {
   const MorphIcon({
@@ -17,6 +16,8 @@ class MorphIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // debugPrint("MorphIcon: morphFeature: $morphFeature, morphTag: $morphTag");
+
     final ThemeData theme = Theme.of(context);
 
     return CustomizedSvg(

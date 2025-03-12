@@ -1,10 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -13,13 +9,17 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/overlay_footer.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_and_progress_row.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_column.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 /// Controls positioning of the message overlay.
 class MessageSelectionPositioner extends StatefulWidget {
@@ -86,6 +86,15 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         );
       },
     ).listen((_) => setState(() {}));
+  }
+
+  @override
+  void didUpdateWidget(MessageSelectionPositioner oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.overlayController.toolbarMode !=
+        widget.overlayController.toolbarMode) {
+      setState(() {});
+    }
   }
 
   @override
@@ -389,7 +398,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                   children: [
                     // fixed height and width container
 
-                    ToolbarButtonAndProgressColumn(
+                    ToolbarButtonColumn(
                       event: widget.event,
                       overlayController: widget.overlayController,
                       shouldShowToolbarButtons: showToolbarButtons,
@@ -444,6 +453,16 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
               children: [
                 SizedBox(height: _mediaQuery?.padding.top ?? 0),
                 OverlayHeader(controller: widget.chatController),
+                Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 400,
+                  ),
+                  child: InstructionsInlineTooltip(
+                    instructionsEnum:
+                        widget.overlayController.toolbarMode.instructionsEnum,
+                    bold: true,
+                  ),
+                ),
               ],
             ),
           ),

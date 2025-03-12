@@ -147,6 +147,11 @@ class MessageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (event.body.contains("Claro")) {
+      debugPrint(
+        "MessageContent: build with overlay? ${overlayController != null}",
+      );
+    }
     final fontSize = AppConfig.messageFontSize * AppConfig.fontSizeFactor;
     final buttonTextColor = textColor;
     switch (event.type) {
@@ -376,6 +381,12 @@ class MessageContent extends StatelessWidget {
                 onClick: onClick,
                 isSelected: overlayController != null ? isSelected : null,
                 messageMode: overlayController?.toolbarMode,
+                isHighlighted: (PangeaToken token) =>
+                    overlayController?.toolbarMode != null
+                        ? token.shouldDoActivityByMessageMode(
+                            overlayController!.toolbarMode,
+                          )
+                        : false,
               );
             }
 

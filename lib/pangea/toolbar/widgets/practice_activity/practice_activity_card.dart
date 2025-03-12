@@ -1,11 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
@@ -16,6 +12,7 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
 import 'package:fluffychat/pangea/toolbar/models/message_activity_request.dart';
 import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
@@ -26,6 +23,8 @@ import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/multiple_cho
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 /// The wrapper for practice activity content.
 /// Handles the activities associated with a message,
@@ -298,18 +297,19 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
       case ActivityTypeEnum.emoji:
       case ActivityTypeEnum.morphId:
       case ActivityTypeEnum.messageMeaning:
-        final selectedChoice =
-            currentActivity?.activityType == ActivityTypeEnum.emoji &&
-                    (currentActivity?.targetTokens?.isNotEmpty ?? false)
-                ? currentActivity?.targetTokens?.first.getEmoji()
-                : null;
+        // final selectedChoice =
+        //     currentActivity?.activityType == ActivityTypeEnum.emoji &&
+        //             (currentActivity?.targetTokens?.isNotEmpty ?? false)
+        //         ? currentActivity?.targetTokens?.first.getEmoji()
+        //         : null;
         return MultipleChoiceActivity(
           practiceCardController: this,
           currentActivity: currentActivity!,
           event: widget.pangeaMessageEvent.event,
           onError: _onError,
           overlayController: widget.overlayController,
-          initialSelectedChoice: selectedChoice,
+          // initialSelectedChoice: selectedChoice,
+          initialSelectedChoice: null,
           clearResponsesOnUpdate:
               currentActivity?.activityType == ActivityTypeEnum.emoji,
         );
@@ -354,6 +354,15 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
                 : null,
           ),
         ],
+        Positioned(
+          left: 0,
+          top: 0,
+          child: IconButton(
+            onPressed: () => widget.overlayController
+                .updateToolbarMode(MessageMode.wordEmoji),
+            icon: const Icon(Icons.lightbulb),
+          ),
+        ),
         // Flag button in the top right corner
         // Positioned(
         //   top: 0,

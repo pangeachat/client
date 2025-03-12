@@ -4,8 +4,6 @@ import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.da
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/utils/message_text_util.dart';
-import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -14,12 +12,15 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 
 /// Question - does this need to be stateful or does this work?
 /// Need to test.
+///
+
 class MessageTokenText extends StatelessWidget {
   final PangeaMessageEvent _pangeaMessageEvent;
   final TextStyle _style;
 
   final bool Function(PangeaToken)? _isSelected;
   final void Function(PangeaToken)? _onClick;
+  final bool Function(PangeaToken)? _isHighlighted;
   final MessageMode? _messageMode;
 
   const MessageTokenText({
@@ -29,12 +30,14 @@ class MessageTokenText extends StatelessWidget {
     required TextStyle style,
     required void Function(PangeaToken)? onClick,
     bool Function(PangeaToken)? isSelected,
+    bool Function(PangeaToken)? isHighlighted,
     MessageMode? messageMode,
   })  : _onClick = onClick,
         _isSelected = isSelected,
         _style = style,
         _pangeaMessageEvent = pangeaMessageEvent,
-        _messageMode = null;
+        _messageMode = null,
+        _isHighlighted = isHighlighted;
 
   List<PangeaToken>? get _tokens =>
       _pangeaMessageEvent.messageDisplayRepresentation?.tokens;
@@ -68,36 +71,9 @@ class MessageTokenText extends StatelessWidget {
       isSelected: _isSelected,
       onClick: callOnClick,
       messageMode: _messageMode,
+      isHighlighted: _isHighlighted,
     );
   }
-}
-
-class TokenPosition {
-  /// Start index of the full substring in the message
-  final int start;
-
-  /// End index of the full substring in the message
-  final int end;
-
-  /// Start index of the token in the message
-  final int tokenStart;
-
-  /// End index of the token in the message
-  final int tokenEnd;
-
-  final bool selected;
-  final bool hideContent;
-  final PangeaToken? token;
-
-  const TokenPosition({
-    required this.start,
-    required this.end,
-    required this.tokenStart,
-    required this.tokenEnd,
-    required this.hideContent,
-    required this.selected,
-    this.token,
-  });
 }
 
 class HiddenText extends StatelessWidget {
@@ -151,6 +127,7 @@ class MessageTextWidget extends StatelessWidget {
   final MessageAnalyticsEntry? messageAnalyticsEntry;
   final bool Function(PangeaToken)? isSelected;
   final void Function(TokenPosition tokenPosition)? onClick;
+  final bool Function(PangeaToken)? isHighlighted;
 
   final bool? softWrap;
   final int? maxLines;
@@ -168,6 +145,7 @@ class MessageTextWidget extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.messageMode,
+    this.isHighlighted,
   });
 
   @override
@@ -179,6 +157,7 @@ class MessageTextWidget extends StatelessWidget {
       pangeaMessageEvent,
       messageAnalyticsEntry: messageAnalyticsEntry,
       isSelected: isSelected,
+      isHighlighted: isHighlighted,
     );
 
     if (tokenPositions == null) {
@@ -211,19 +190,6 @@ class MessageTextWidget extends StatelessWidget {
       text: TextSpan(
         children:
             tokenPositions.mapIndexed((int i, TokenPosition tokenPosition) {
-          final shouldDo = pangeaMessageEvent.shouldDoActivity(
-            token: tokenPosition.token,
-            a: ActivityTypeEnum.wordMeaning,
-            feature: null,
-            tag: null,
-          );
-
-          final didMeaningActivity =
-              tokenPosition.token?.didActivitySuccessfully(
-                    ActivityTypeEnum.wordMeaning,
-                  ) ??
-                  true;
-
           final substring = messageCharacters
               .skip(tokenPosition.start)
               .take(tokenPosition.end - tokenPosition.start)
@@ -233,10 +199,8 @@ class MessageTextWidget extends StatelessWidget {
           if (!hideTokenHighlights) {
             if (tokenPosition.selected) {
               backgroundColor = AppConfig.primaryColor.withAlpha(80);
-            } else if (isSelected != null && shouldDo) {
-              backgroundColor = !didMeaningActivity
-                  ? AppConfig.success.withAlpha(60)
-                  : AppConfig.gold.withAlpha(60);
+            } else if (tokenPosition.isHighlighted) {
+              backgroundColor = AppConfig.success.withAlpha(60);
             }
           }
 
@@ -261,14 +225,14 @@ class MessageTextWidget extends StatelessWidget {
             return WidgetSpan(
               child: Column(
                 children: [
-                  MessageTokenButton(
-                    content: Text(
-                      tokenPosition.token!.vocabConstructID.userSetEmoji ?? "?",
-                    ),
-                    isVisible:
-                        messageMode == null, // Set this based on your logic
-                    // isVisible: true,
-                  ),
+                  if (messageMode != null) const Text("?"),
+                  // MessageTokenButton(
+                  //   content: const Text(
+                  //     "?",
+                  //   ),
+                  //   isVisible:
+                  //       messageMode != null, // Set this based on your logic
+                  // ),
                   MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(

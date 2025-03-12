@@ -4,19 +4,18 @@
 
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
+import 'package:fluffychat/pangea/emojis/emoji_stack.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice_item.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_bank_repo.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_request.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class WritingAssistanceInputRow extends StatefulWidget {
   final ChatController controller;
@@ -84,13 +83,14 @@ class WritingAssistanceInputRowState extends State<WritingAssistanceInputRow> {
           children: suggestions
               .map(
                 (suggestion) => MessageEmojiChoiceItem(
-                  topContent: Text(
-                    suggestion.userSetEmoji ??
-                        MatrixState
-                            .pangeaController.getAnalytics.constructListModel
-                            .getConstructUses(suggestion)
-                            ?.xpEmoji ??
-                        AnalyticsConstants.emojiForSeed,
+                  topContent: EmojiStack(
+                    emoji: suggestion.userSetEmoji,
+                    // suggestion.userSetEmoji ??
+                    //     MatrixState
+                    //         .pangeaController.getAnalytics.constructListModel
+                    //         .getConstructUses(suggestion)
+                    //         ?.xpEmoji ??
+                    //     AnalyticsConstants.emojiForSeed,
                     style: const TextStyle(fontSize: 24),
                   ),
                   content: suggestion.lemma,

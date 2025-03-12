@@ -1,14 +1,12 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class ToolbarButtonAndProgressColumn extends StatelessWidget {
   final Event event;
@@ -77,8 +75,9 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                 margin: barMargin,
               ),
               Positioned(
-                bottom:
-                    height * MessageMode.messageMeaning.pointOnBar - buttonSize,
+                bottom: height * MessageMode.noneSelected.pointOnBar -
+                    buttonSize / 2 -
+                    barMargin.vertical / 2,
                 child: Container(
                   decoration: BoxDecoration(
                     color: overlayController.isPracticeComplete
@@ -99,10 +98,20 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: height * MessageMode.messageTranslation.pointOnBar -
+                bottom:
+                    height * MessageMode.wordMorph.pointOnBar - buttonSize / 2,
+                child: ToolbarButton(
+                  mode: MessageMode.wordMorph,
+                  overlayController: overlayController,
+                  onPressed: overlayController.updateToolbarMode,
+                  buttonSize: buttonSize,
+                ),
+              ),
+              Positioned(
+                bottom: height * MessageMode.wordMeaning.pointOnBar -
                     buttonSize / 2,
                 child: ToolbarButton(
-                  mode: MessageMode.messageTranslation,
+                  mode: MessageMode.wordMeaning,
                   overlayController: overlayController,
                   onPressed: overlayController.updateToolbarMode,
                   buttonSize: buttonSize,
@@ -119,12 +128,11 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: height * MessageMode.practiceActivity.pointOnBar,
+                bottom: height * MessageMode.wordEmoji.pointOnBar,
                 child: ToolbarButton(
-                  mode: MessageMode.practiceActivity,
+                  mode: MessageMode.wordEmoji,
                   overlayController: overlayController,
-                  onPressed: (mode) =>
-                      overlayController.onNextActivityRequest(),
+                  onPressed: overlayController.updateToolbarMode,
                   buttonSize: buttonSize,
                 ),
               ),

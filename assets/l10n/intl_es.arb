@@ -5334,7 +5334,6 @@
       }
     }
   },
-  "lemmaMeaningInstructionsBody": "Arriba está el significado del lema. Haz doble clic para editar.",
   "doubleClickToEdit": "Haz doble clic para editar.",
   "removeFeature": "Eliminar {feature}",
   "@removeFeature": {

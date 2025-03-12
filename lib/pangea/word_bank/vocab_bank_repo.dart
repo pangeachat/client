@@ -1,11 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -18,6 +13,9 @@ import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart'
 import 'package:fluffychat/pangea/word_bank/vocab_request.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class VocabRepo {
   static final GetStorage _lemmaStorage = GetStorage('vocab_storage');
@@ -102,7 +100,7 @@ class VocabRepo {
     return VocabResponse(vocab: deduped);
   }
 
-  Future<VocabResponse> getSemanticallySimilarWords(
+  static Future<VocabResponse> getSemanticallySimilarWords(
     VocabRequest request,
   ) async {
     // Pull from a list of semantically similar words
@@ -114,10 +112,8 @@ class VocabRepo {
     final sharingPos = candidates
         .where(
           (element) =>
-              request.token == null ||
-              (element.category.toLowerCase() ==
-                      request.token?.pos.toLowerCase() &&
-                  element.lemma != request.token?.lemma.text),
+              (element.category.toLowerCase() == request.pos?.toLowerCase() &&
+                  element.lemma.toLowerCase() != request.lemma?.toLowerCase()),
         )
         .toList();
 
@@ -138,10 +134,8 @@ class VocabRepo {
     final sharingPos = candidates
         .where(
           (element) =>
-              request.token == null ||
-              (element.category.toLowerCase() !=
-                      request.token?.pos.toLowerCase() &&
-                  element.lemma != request.token?.lemma.text),
+              element.category.toLowerCase() != request.pos?.toLowerCase() &&
+              element.lemma.toLowerCase() != request.lemma?.toLowerCase(),
         )
         .toList();
 
@@ -170,6 +164,7 @@ class VocabRepo {
         ? PLanguageStore.byLangCode(LanguageKeys.defaultLanguage)
         : MatrixState.pangeaController.languageController.userL2!;
 
+    //TODO - move this to the server and fill out all our languages
     final Map<String, VocabResponse> placeholder = {
       "es": VocabResponse(
         vocab: [
