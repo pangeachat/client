@@ -4321,7 +4321,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Join by code";
     },
     get$inviteAndLaunch() {
-      return "Invite and launch";
+      return "Launch and invite";
     },
     get$createOwnChat() {
       return "Create your own chat";
@@ -4350,6 +4350,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_217", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "pZLh7lCQM5LAMPKZxd6X1ruuQ0E=");
+})($__dart_deferred_initializers__, "nMXlLUyn+nn9gNr5TvZ3R2rCMHk=");
 ;
 //# sourceMappingURL=main.dart.js_217.part.js.map
