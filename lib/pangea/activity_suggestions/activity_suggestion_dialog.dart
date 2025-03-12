@@ -220,7 +220,6 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                               ? MemoryImage(_avatar!)
                               : NetworkImage(widget.activity.imageURL!)
                                   as ImageProvider<Object>,
-                          fit: BoxFit.cover,
                         )
                       : null,
                   borderRadius: BorderRadius.circular(24.0),
