@@ -4715,7 +4715,7 @@
   "myBookmarkedActivities": "My Bookmarked Activities",
   "noBookmarkedActivities": "No bookmarked activities",
   "activityTitle": "Activity Title",
-  "addVocabulary": "Add Vocabulary",
+  "addVocabulary": "Add vocabulary",
   "instructions": "Instructions",
   "bookmark": "Bookmark this activity",
   "numberOfLearners": "Number of learners",
@@ -4803,9 +4803,16 @@
       }
     }
   },
+  "analyticsVocabListBody": "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.",
+  "morphAnalyticsListBody": "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.",
   "knockSpaceSuccess": "You have requested to join this space! An admin will respond to your request when they receive it 😀",
   "joinByCode": "Join by code",
   "createASpace": "Create a space",
   "chooseWordAudioInstructionsBody": "Match the audios with the words in the message. You can listen to the full message audio for a hint!",
-  "chooseMorphsInstructionsBody": "Match the grammar tags with the words in the message. Click and hold an option for a hint!"
-}
+  "chooseMorphsInstructionsBody": "Match the grammar tags with the words in the message. Click and hold an option for a hint!",
+  "inviteAndLaunch": "Launch and invite",
+  "createOwnChat": "Create your own chat",
+  "pleaseEnterInt": "Please enter a number",
+  "home": "Home",
+  "join": "Join"
+} 

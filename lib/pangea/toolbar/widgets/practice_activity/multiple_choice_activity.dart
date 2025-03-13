@@ -1,5 +1,10 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_array.dart';
@@ -14,9 +19,6 @@ import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 /// The multiple choice activity view
 class MultipleChoiceActivity extends StatefulWidget {
@@ -212,7 +214,6 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
             ActivityTypeEnum.wordFocusListening)
           WordAudioButton(
             text: practiceActivity.content.answers.first,
-            ttsController: tts,
           ),
         if (practiceActivity.activityType ==
             ActivityTypeEnum.hiddenWordListening)
@@ -241,25 +242,18 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
       ],
     );
 
-    return practiceActivity.activityType ==
-                ActivityTypeEnum.hiddenWordListening ||
-            practiceActivity.activityType == ActivityTypeEnum.messageMeaning
-        ? ConstrainedBox(
-            constraints: const BoxConstraints(
-              // see https://github.com/pangeachat/client/issues/1422
-              maxWidth: AppConfig.toolbarMinWidth,
-              maxHeight: AppConfig.toolbarMaxHeight,
-            ),
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: content,
-              ),
-            ),
-          )
-        : Padding(
-            padding: const EdgeInsets.all(8),
-            child: content,
-          );
+    return ConstrainedBox(
+      constraints: const BoxConstraints(
+        // see https://github.com/pangeachat/client/issues/1422
+        maxWidth: AppConfig.toolbarMinWidth,
+        maxHeight: AppConfig.toolbarMaxHeight,
+      ),
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: content,
+        ),
+      ),
+    );
   }
 }

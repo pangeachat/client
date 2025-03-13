@@ -1,10 +1,12 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 enum InstructionsEnum {
   itInstructions,
@@ -24,6 +26,8 @@ enum InstructionsEnum {
   chooseEmoji,
   chooseWordAudio,
   chooseMorphs,
+  analyticsVocabList,
+  morphAnalyticsList,
 }
 
 extension InstructionsEnumExtension on InstructionsEnum {
@@ -52,6 +56,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.completeActivitiesToUnlock:
       case InstructionsEnum.chooseLemmaMeaning:
       case InstructionsEnum.chooseMorphs:
+      case InstructionsEnum.analyticsVocabList:
+      case InstructionsEnum.morphAnalyticsList:
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
@@ -102,6 +108,10 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.chooseWordAudioInstructionsBody;
       case InstructionsEnum.chooseMorphs:
         return l10n.chooseMorphsInstructionsBody;
+      case InstructionsEnum.analyticsVocabList:
+        return l10n.analyticsVocabListBody;
+      case InstructionsEnum.morphAnalyticsList:
+        return l10n.morphAnalyticsListBody;
     }
   }
 

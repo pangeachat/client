@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_morph_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:flutter/material.dart';
 
 class MessageMorphChoice extends StatelessWidget {
   final MessageOverlayController overlayController;

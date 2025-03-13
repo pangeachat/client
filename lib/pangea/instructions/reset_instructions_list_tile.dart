@@ -1,5 +1,6 @@
-import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:flutter/material.dart';
+
+import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 
 class ResetInstructionsListTile extends StatelessWidget {
   const ResetInstructionsListTile({

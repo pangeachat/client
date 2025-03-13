@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
@@ -211,7 +211,6 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Column(
-          spacing: 4.0,
           children: [
             Text(
               "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).chooseCorrectLabel}",
@@ -219,13 +218,13 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
               style: const TextStyle(fontStyle: FontStyle.italic),
             ),
             Container(
-              constraints: const BoxConstraints(maxHeight: 70),
+              constraints: const BoxConstraints(maxHeight: 50),
               child: Scrollbar(
                 controller: _scrollController,
                 thumbVisibility: true,
                 child: SingleChildScrollView(
                   controller: _scrollController,
-                  scrollDirection: Axis.vertical,
+                  scrollDirection: Axis.horizontal,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: FutureBuilder(
@@ -237,8 +236,7 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
                                 .getDisplayTags(widget.morphFeature);
 
                         return snapshot.connectionState == ConnectionState.done
-                            ? Wrap(
-                                alignment: WrapAlignment.center,
+                            ? Row(
                                 children: allMorphTagsForEdit.map((tag) {
                                   return Container(
                                     margin: const EdgeInsets.all(2),

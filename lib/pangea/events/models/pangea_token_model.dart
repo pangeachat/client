@@ -1,14 +1,17 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
@@ -18,8 +21,6 @@ import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
 
@@ -468,20 +469,6 @@ class PangeaToken {
   int daysSinceLastUseByType(ActivityTypeEnum a) {
     final lastUsed = _lastUsedByActivityType(a);
     if (lastUsed == null) return 1000;
-    return DateTime.now().difference(lastUsed).inDays;
-  }
-
-  int _daysSinceLastUsedMorphForm(String morphFeature, String morphTag) {
-    final uses = morphConstruct(morphFeature, morphTag)
-        .uses
-        .where((u) => u.form == text.content)
-        .map((u) => u.timeStamp)
-        .toList();
-
-    if (uses.isEmpty) return 1000;
-
-    final lastUsed = uses.reduce((a, b) => a.isAfter(b) ? a : b);
-
     return DateTime.now().difference(lastUsed).inDays;
   }
 

@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
@@ -14,8 +17,6 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_m
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_morph_choice.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class ReadingAssistanceInputBar extends StatelessWidget {
   final ChatController controller;

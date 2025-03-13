@@ -1,12 +1,14 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 class ToolbarButtonAndProgressColumn extends StatelessWidget {
   final Event event;

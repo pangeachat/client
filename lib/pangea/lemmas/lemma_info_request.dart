@@ -1,5 +1,5 @@
-import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/content_feedback.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 

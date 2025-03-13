@@ -1,4 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:country_picker/country_picker.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/instructions/instruction_settings.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
@@ -11,8 +15,6 @@ import 'package:fluffychat/pangea/user/models/user_model.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class SettingsLearning extends StatefulWidget {
   const SettingsLearning({super.key});
@@ -206,7 +208,6 @@ class SettingsLearningController extends State<SettingsLearning> {
       case ToolSetting.enableTTS:
         return _profile.userSettings.targetLanguage != null &&
             _targetLanguage != null &&
-            tts.isLanguageSupported(_targetLanguage!) &&
             toolSettings.enableTTS;
       case ToolSetting.enableAutocorrect:
         return toolSettings.enableAutocorrect;
@@ -214,9 +215,7 @@ class SettingsLearningController extends State<SettingsLearning> {
   }
 
   bool get isTTSSupported =>
-      _profile.userSettings.targetLanguage != null &&
-      _targetLanguage != null &&
-      tts.isLanguageSupported(_targetLanguage!);
+      _profile.userSettings.targetLanguage != null && _targetLanguage != null;
 
   LanguageModel? get selectedSourceLanguage {
     return userL1 ?? pangeaController.languageController.systemLanguage;

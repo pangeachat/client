@@ -11,10 +11,10 @@ class MessageTokenButton extends StatefulWidget {
   });
 
   @override
-  _MessageTokenButtonState createState() => _MessageTokenButtonState();
+  MessageTokenButtonState createState() => MessageTokenButtonState();
 }
 
-class _MessageTokenButtonState extends State<MessageTokenButton> {
+class MessageTokenButtonState extends State<MessageTokenButton> {
   @override
   void didUpdateWidget(covariant MessageTokenButton oldWidget) {
     debugPrint("MessageTokenButton didUpdateWidget");

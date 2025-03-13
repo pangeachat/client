@@ -1,8 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_audio_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:flutter/material.dart';
 
 class MessageAudioChoice extends StatelessWidget {
   final MessageOverlayController overlayController;

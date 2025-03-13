@@ -1,6 +1,7 @@
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:flutter/material.dart';
+
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 
 class MessageMorphChoiceItem extends StatefulWidget {
   const MessageMorphChoiceItem({

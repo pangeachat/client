@@ -1,9 +1,14 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -11,6 +16,7 @@ import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.da
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -23,10 +29,6 @@ import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:matrix/matrix.dart';
 
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)
 class MessageSelectionOverlay extends StatefulWidget {
@@ -79,12 +81,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   List<PangeaTokenText>? _highlightedTokens;
   bool initialized = false;
   bool isPlayingAudio = false;
-
-  /// If non-null and not complete, the activity will be shown regardless of shouldDoActivity.
-  /// Used to show the practice activity card's savor the joy animation.
-  /// (Analytics sending triggers the point gain animation, do also
-  /// causes shouldDoActivity to be false. This is a workaround.)
-  Completer<void>? _activityLock;
 
   /////////////////////////////////////
   /// Lifecycle
@@ -608,18 +604,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// Functions
   /////////////////////////////////////
 
-  ///@ggurdin - is this still needed?
-  void _lockActivity() {
-    if (mounted) setState(() => _activityLock = Completer());
-  }
-
-  void _unlockActivity() {
-    if (_activityLock == null) return;
-    _activityLock!.complete();
-    _activityLock = null;
-    if (mounted) setState(() {});
-  }
-
   /// If sentence TTS is playing a word, highlight that word in message overlay
   void highlightCurrentText(int currentPosition, List<TTSToken> ttsTokens) {
     final List<TTSToken> textToSelect = [];
@@ -661,10 +645,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// When an activity is completed, we need to update the state
   /// and check if the toolbar should be unlocked
   void onActivityFinish(ActivityTypeEnum activityType) {
-    if (activityType == ActivityTypeEnum.hiddenWordListening) {
-      _unlockActivity();
-    }
-
     messageAnalyticsEntry!.onActivityComplete();
 
     if (selectedToken == null) {

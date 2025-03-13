@@ -1,14 +1,16 @@
 import 'dart:developer';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/models/message_activity_request.dart';
 import 'package:fluffychat/pangea/toolbar/models/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class EmojiActivityGenerator {
   Future<MessageActivityResponse> get(
@@ -20,12 +22,16 @@ class EmojiActivityGenerator {
     final PangeaToken token = req.targetTokens.first;
 
     final List<String> emojis = await token.getEmojiChoices();
-    final List<String> tokenEmoji = token.getEmoji();
+    final List<String> tokenEmojis = token.getEmoji();
     //TODO : fix this or delete the file
-    if (tokenEmoji.isNotEmpty && emojis.contains(tokenEmoji)) {
+    if (tokenEmojis.isNotEmpty) {
       final Random random = Random();
-      final int randomIndex = random.nextInt(emojis.length);
-      emojis[randomIndex] = tokenEmoji.first;
+      for (final emoji in tokenEmojis) {
+        final emojiIndex = emojis.indexOf(emoji);
+        if (emojiIndex != -1) continue;
+        final int randomIndex = random.nextInt(emojis.length);
+        emojis[randomIndex] = emoji;
+      }
     }
 
     // TODO - modify MultipleChoiceActivity flow to allow no correct answer
