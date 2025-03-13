@@ -1,24 +1,22 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/emojis/emoji_stack.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_emoji_row.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_text_with_audio_button.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/morphs/morphological_list_item.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaToken token;
@@ -62,18 +60,12 @@ class WordZoomWidget extends StatelessWidget {
               children: [
                 Container(
                   constraints: const BoxConstraints(
-                    minHeight: 50,
+                    minHeight: 40,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // EmojiPracticeButton(
-                      //   token: _selectedToken,
-                      //   onPressed: () => overlayController.updateToolbarMode(
-                      //     MessageMode.wordEmoji,
-                      //   ),
-                      //   isSelected: _mode == MessageMode.wordEmoji,
-                      // ),
                       //@ggurdin - might need to play with size to properly center
                       const SizedBox(width: 40),
                       LemmaWidget(
@@ -88,6 +80,7 @@ class WordZoomWidget extends StatelessWidget {
                           onEditDone();
                         },
                         tts: tts,
+                        messageMode: overlayController.toolbarMode,
                       ),
                       ConstructXpWidget(
                         id: token.vocabConstructID,
@@ -102,9 +95,34 @@ class WordZoomWidget extends StatelessWidget {
                     ],
                   ),
                 ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      constraints: const BoxConstraints(
+                        minHeight: 40,
+                      ),
+                      alignment: Alignment.center,
+                      child: LemmaEmojiRow(
+                        cId: _selectedToken.vocabConstructID,
+                        onTap: () => overlayController.updateToolbarMode(
+                          MessageMode.wordEmoji,
+                        ),
+                        isSelected: overlayController.toolbarMode ==
+                            MessageMode.wordEmoji,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
                 Container(
                   constraints: const BoxConstraints(
-                    minHeight: 50,
+                    minHeight: 40,
                   ),
                   alignment: Alignment.center,
                   child: Wrap(
@@ -113,17 +131,6 @@ class WordZoomWidget extends StatelessWidget {
                     crossAxisAlignment: WrapCrossAlignment.center,
                     spacing: 8,
                     children: [
-                      EmojiStack(
-                        // first half of the emojis
-                        emoji: _selectedToken.vocabConstructID.userSetEmoji
-                            .take(
-                              _selectedToken
-                                      .vocabConstructID.userSetEmoji.length ~/
-                                  2,
-                            )
-                            .toList(),
-                        style: DefaultTextStyle.of(context).style,
-                      ),
                       LemmaMeaningWidget(
                         constructUse: token.vocabConstructID.constructUses,
                         langCode: MatrixState.pangeaController
@@ -131,58 +138,37 @@ class WordZoomWidget extends StatelessWidget {
                             LanguageKeys.defaultLanguage,
                         token: overlayController.selectedToken!,
                         controller: overlayController,
-                        style: DefaultTextStyle.of(context).style,
-                      ),
-                      EmojiStack(
-                        emoji: _selectedToken.vocabConstructID.userSetEmoji
-                            .skip(
-                              _selectedToken
-                                      .vocabConstructID.userSetEmoji.length ~/
-                                  2,
-                            )
-                            .toList(),
-                        style: DefaultTextStyle.of(context).style,
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(
-                  height: 16.0,
+                  height: 8.0,
                 ),
                 Wrap(
                   alignment: WrapAlignment.center,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                    if (!_selectedToken.doesLemmaTextMatchTokenText)
-                      WordTextWithAudioButton(
-                        text: _selectedToken.text.content,
-                        textSize:
-                            Theme.of(context).textTheme.titleMedium?.fontSize,
+                    if (!_selectedToken.doesLemmaTextMatchTokenText) ...[
+                      Text(
+                        _selectedToken.text.content,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                        overflow: TextOverflow.ellipsis,
                       ),
+                      WordAudioButton(
+                        text: _selectedToken.text.content,
+                        isSelected: MessageMode.messageTextToSpeech ==
+                            overlayController.toolbarMode,
+                        baseOpacity: 0.4,
+                      ),
+                    ],
                     ..._selectedToken.sortedMorphs.map(
                       (featureTagPair) => MorphologicalListItem(
-                        onPressed: (feature) =>
-                            showDialog<AnalyticsPopupWrapper>(
-                          context: context,
-                          builder: (context) => AnalyticsPopupWrapper(
-                            constructZoom: ConstructIdentifier(
-                              lemma: feature,
-                              type: ConstructTypeEnum.morph,
-                              category: _selectedToken.getMorphTag(feature),
-                            ),
-                            view: ConstructTypeEnum.vocab,
-                          ),
-                        ),
                         morphFeature: featureTagPair.key,
                         morphTag: featureTagPair.value,
-                        isUnlocked: !overlayController.pangeaMessageEvent!
-                            .shouldDoActivity(
-                          token: token,
-                          a: ActivityTypeEnum.morphId,
-                          feature: featureTagPair.key,
-                          tag: featureTagPair.value,
-                        ),
-                        isSelected: false,
+                        wordForm: token.text.content,
+                        overlayController: overlayController,
                       ),
                     ),
                   ],

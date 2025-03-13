@@ -64,17 +64,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   MessageMode toolbarMode = MessageMode.wordEmoji;
 
   Map<String, LemmaInfoResponse>? messageLemmaInfos;
+
   List<String> messageEmojisForDisplay = [];
-  List<String> selectedEmojis = [];
-
   List<String> messageMeaningsForDisplay = [];
-  String? selectedMeanings;
-
   List<String> messageWordFormsForDisplay = [];
-  String? selectedWordAudioSurfaceForm;
-
   List<ConstructIdentifier> messageMorphTagsForDisplay = [];
-  List<ConstructIdentifier> selectedMorphTags = [];
+
+  List<int> selectedChoices = [];
 
   PangeaTokenText? _selectedSpan;
   List<PangeaTokenText>? _highlightedTokens;
@@ -302,24 +298,11 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// Update to [selectedSpan]
   /// [forceMode] is used to force a specific mode
   void _updateSelectedSpan(PangeaTokenText selectedSpan) {
-    // if (forceMode == null && selectedSpan == _selectedSpan) {
-    //   _selectedSpan = null;
-    //   updateToolbarMode(MessageMode.noneSelected);
-    //   setState(() {});
-    //   return;
-    // }
-    // debugger(
-    //   when: kDebugMode,
-    // );
-    _selectedSpan = selectedSpan;
-
-    // @ggurdin - is this for sure gone?
-    // final nextModeForToken = forceMode ?? selectedToken!.modeForToken;
-    // if (toolbarMode != nextModeForToken) {
-    //   debugPrint("_updateSelectedSpan: setting toolbarMode to wordZoom");
-    //   updateToolbarMode(nextModeForToken);
-    // }
-
+    if (selectedSpan == _selectedSpan) {
+      _selectedSpan = null;
+    } else {
+      _selectedSpan = selectedSpan;
+    }
     setState(() {});
   }
 
@@ -327,60 +310,19 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         toolbarMode = mode;
       });
 
-  void onMessageEmojiChoiceSelect(String emoji) {
-    if (selectedEmojis.contains(emoji)) {
-      selectedEmojis.remove(emoji);
+  void onChoiceSelect(int choiceIndex) {
+    if (selectedChoices.contains(choiceIndex) ||
+        MessageMode.wordEmoji != toolbarMode) {
+      selectedChoices.remove(choiceIndex);
     } else {
-      selectedEmojis.add(emoji);
+      selectedChoices.add(choiceIndex);
     }
 
     setState(() {});
   }
 
   void clearSelectedEmoji() {
-    selectedEmojis.clear();
-    setState(() {});
-  }
-
-  void onMessageMeaningChoiceSelect(String meaning) {
-    if (selectedMeanings == meaning) {
-      selectedMeanings = null;
-    } else {
-      selectedMeanings = meaning;
-    }
-    setState(() {});
-  }
-
-  void clearSelectedMeaning() {
-    selectedMeanings = null;
-    setState(() {});
-  }
-
-  void onWordAudioChoiceSelect(String form) {
-    if (selectedWordAudioSurfaceForm == form) {
-      selectedWordAudioSurfaceForm = null;
-    } else {
-      selectedWordAudioSurfaceForm = form;
-    }
-    setState(() {});
-  }
-
-  void clearSelectedWordAudioSurfaceForm() {
-    selectedWordAudioSurfaceForm = null;
-    setState(() {});
-  }
-
-  void onMorphChoiceSelect(ConstructIdentifier morphTag) {
-    if (selectedMorphTags.contains(morphTag)) {
-      selectedMorphTags.remove(morphTag);
-    } else {
-      selectedMorphTags.add(morphTag);
-    }
-    setState(() {});
-  }
-
-  void clearMorphTags() {
-    selectedMorphTags = [];
+    selectedChoices.clear();
     setState(() {});
   }
 
@@ -676,36 +618,40 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       targetID: null,
     );
 
-    switch (toolbarMode) {
-      case MessageMode.wordEmoji:
-        if (token.lemma.saveVocab && selectedEmojis.isNotEmpty) {
+    if (selectedChoices.isNotEmpty && token.lemma.saveVocab) {
+      switch (toolbarMode) {
+        case MessageMode.wordEmoji:
+          final List<String> selectedEmojis = selectedChoices
+              .map((index) => messageEmojisForDisplay[index])
+              .toList();
           onTokenSelectionWithSelectedEmojis(token, selectedEmojis);
-        }
-        break;
-      case MessageMode.wordMeaning:
-        if (token.lemma.saveVocab && selectedMeanings != null) {
-          onTokenSelectionWithSelectedMeaning(token, selectedMeanings!);
-        }
-        break;
-      case MessageMode.messageTextToSpeech:
-        if (token.lemma.saveVocab && selectedWordAudioSurfaceForm != null) {
+          break;
+        case MessageMode.wordMeaning:
+          final String selectedMeaning =
+              messageMeaningsForDisplay[selectedChoices.first];
+          onTokenSelectionWithSelectedMeaning(token, selectedMeaning);
+          break;
+        case MessageMode.messageTextToSpeech:
+          final String selectedWordAudioSurfaceForm =
+              messageWordFormsForDisplay[selectedChoices.first];
           onTokenSelectionWithSelectedAudio(
             token,
-            selectedWordAudioSurfaceForm!,
+            selectedWordAudioSurfaceForm,
           );
-        }
-      case MessageMode.wordZoom:
-        if (token.lemma.saveVocab) {}
-        break;
-      case MessageMode.wordMorph:
-        if (token.lemma.saveVocab) {}
-        break;
-      case MessageMode.practiceActivity:
-      case MessageMode.messageMeaning:
-      case MessageMode.messageSpeechToText:
-      case MessageMode.messageTranslation:
-      case MessageMode.noneSelected:
-        break;
+        case MessageMode.wordZoom:
+          if (token.lemma.saveVocab) {}
+          break;
+        case MessageMode.wordMorph:
+          if (token.lemma.saveVocab) {}
+          break;
+        case MessageMode.practiceActivity:
+        case MessageMode.messageMeaning:
+        case MessageMode.messageSpeechToText:
+        case MessageMode.messageTranslation:
+        case MessageMode.noneSelected:
+          break;
+      }
+      selectedChoices.clear();
     }
 
     _updateSelectedSpan(token.text);

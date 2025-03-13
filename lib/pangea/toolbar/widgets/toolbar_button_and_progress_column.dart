@@ -99,45 +99,6 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                bottom:
-                    height * MessageMode.wordMorph.pointOnBar - buttonSize / 2,
-                child: ToolbarButton(
-                  mode: MessageMode.wordMorph,
-                  overlayController: overlayController,
-                  onPressed: overlayController.updateToolbarMode,
-                  buttonSize: buttonSize,
-                ),
-              ),
-              Positioned(
-                bottom: height * MessageMode.wordMeaning.pointOnBar -
-                    buttonSize / 2,
-                child: ToolbarButton(
-                  mode: MessageMode.wordMeaning,
-                  overlayController: overlayController,
-                  onPressed: overlayController.updateToolbarMode,
-                  buttonSize: buttonSize,
-                ),
-              ),
-              Positioned(
-                bottom: height * MessageMode.messageTextToSpeech.pointOnBar -
-                    buttonSize / 2,
-                child: ToolbarButton(
-                  mode: MessageMode.messageTextToSpeech,
-                  overlayController: overlayController,
-                  onPressed: overlayController.updateToolbarMode,
-                  buttonSize: buttonSize,
-                ),
-              ),
-              Positioned(
-                bottom: height * MessageMode.wordEmoji.pointOnBar,
-                child: ToolbarButton(
-                  mode: MessageMode.wordEmoji,
-                  overlayController: overlayController,
-                  onPressed: overlayController.updateToolbarMode,
-                  buttonSize: buttonSize,
-                ),
-              ),
             ],
           ),
         ],

@@ -13,7 +13,12 @@ class LemmaInfoResponse implements JsonSerializable {
 
   factory LemmaInfoResponse.fromJson(Map<String, dynamic> json) {
     return LemmaInfoResponse(
-      emoji: (json['emoji'] as List<dynamic>).map((e) => e as String).toList(),
+      // NOTE: This is a workaround for the fact that the server sometimes sends more than 3 emojis
+      emoji: (json['emoji'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList()
+          .take(3)
+          .toList(),
       meaning: json['meaning'] as String,
       expireAt: json['expireAt'] == null
           ? null
