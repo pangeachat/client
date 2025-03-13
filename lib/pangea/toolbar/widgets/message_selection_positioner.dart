@@ -1,10 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -21,6 +17,8 @@ import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 /// Controls positioning of the message overlay.
 class MessageSelectionPositioner extends StatefulWidget {
@@ -53,6 +51,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   Animation<Offset>? _overlayOffsetAnimation;
+  Animation<Size>? _messageSizeAnimation;
+  // Animation<double>? _contentSizeAnimation;
 
   StreamSubscription? _reactionSubscription;
 
@@ -60,6 +60,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   double? _adjustedMessageHeight;
 
   Offset? _centeredToolbarOffset;
+  Size? _centeredToolbarSize;
   bool _finishedAnimation = false;
 
   @override
@@ -69,6 +70,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       vsync: this,
       duration: const Duration(
         milliseconds: AppConfig.overlayAnimationDuration,
+        // seconds: 3,
       ),
     );
 
@@ -114,15 +116,33 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     super.dispose();
   }
 
-  void _setCenteredToolbarOffset(Offset offset) {
+  void _setCenteredToolbarOffset(RenderBox renderBox) {
+    if (_finishedAnimation) return;
+    Offset offset = renderBox.localToGlobal(Offset.zero);
     offset = Offset(
       offset.dx - _columnWidth - _horizontalPadding,
       offset.dy,
     );
 
     _centeredToolbarOffset = offset;
-
     setState(() {});
+
+    if (_centeredToolbarSize != null) {
+      _startAnimation();
+    }
+  }
+
+  void _setCenteredMessageSize(RenderBox renderBox) {
+    if (_finishedAnimation) return;
+    _centeredToolbarSize = renderBox.size;
+    setState(() {});
+
+    if (_centeredToolbarOffset != null) {
+      _startAnimation();
+    }
+  }
+
+  void _startAnimation() {
     if (_mediaQuery == null) {
       return;
     }
@@ -150,6 +170,30 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         curve: FluffyThemes.animationCurve,
       ),
     );
+
+    _messageSizeAnimation = Tween<Size>(
+      begin: Size(
+        _messageSize.width,
+        _messageHeight,
+      ),
+      end: _centeredToolbarSize,
+    ).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: FluffyThemes.animationCurve,
+      ),
+    );
+
+    // _contentSizeAnimation = Tween<double>(
+    //   begin: 0,
+    //   end: 1,
+    // ).animate(
+    //   CurvedAnimation(
+    //     parent: _animationController,
+    //     curve: FluffyThemes.animationCurve,
+    //   ),
+    // );
+
     _animationController.forward().then((_) {
       _finishedAnimation = true;
       if (mounted) setState(() {});
@@ -325,7 +369,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   double get _maxTotalToolbarHeight => _maxTotalCenterHeight;
 
   double get _totalToolbarBottomOffset =>
-      _messageBottomOffset - _reactionsHeight;
+      _messageBottomOffset - _reactionsHeight - 50.0;
 
   bool get _ownMessage =>
       widget.event.senderId == widget.event.room.client.userID;
@@ -346,7 +390,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         children: [
           Opacity(
             opacity: _finishedAnimation ? 1.0 : 0.0,
-            child: MeasureOffset(
+            child: MeasureRenderBox(
               onChange: _setCenteredToolbarOffset,
               child: FullToolbarContents(
                 event: widget.event,
@@ -360,6 +404,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                 prevEvent: widget.prevEvent,
                 showToolbarButtons: showToolbarButtons,
                 hasReactions: _hasReactions,
+                onChangeSize: _setCenteredMessageSize,
+                isVisible: false,
               ),
             ),
           ),
@@ -390,6 +436,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                     prevEvent: widget.prevEvent,
                     showToolbarButtons: showToolbarButtons,
                     hasReactions: _hasReactions,
+                    sizeAnimation: _messageSizeAnimation,
+                    // contentSizeAnimation: _contentSizeAnimation,
+                    onChangeSize: (_) {},
+                    isVisible: true,
                   ),
                 );
               },

@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_column.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class FullToolbarContents extends StatelessWidget {
   final Event event;
@@ -20,7 +18,12 @@ class FullToolbarContents extends StatelessWidget {
   final bool hasReactions;
   final double messageHeight;
   final double messageWidth;
+  final Animation<Size>? sizeAnimation;
+  // final Animation<double>? contentSizeAnimation;
+  final void Function(RenderBox) onChangeSize;
+
   final double toolbarMaxWidth;
+  final bool isVisible;
 
   const FullToolbarContents({
     required this.event,
@@ -34,6 +37,10 @@ class FullToolbarContents extends StatelessWidget {
     required this.prevEvent,
     required this.showToolbarButtons,
     required this.hasReactions,
+    required this.onChangeSize,
+    this.sizeAnimation,
+    // this.contentSizeAnimation,
+    this.isVisible = true,
     super.key,
   });
 
@@ -48,6 +55,7 @@ class FullToolbarContents extends StatelessWidget {
         OverlayCenterContent(
           messageHeight: messageHeight,
           messageWidth: messageWidth,
+          onChangeSize: onChangeSize,
           maxWidth: toolbarMaxWidth,
           event: event,
           pangeaMessageEvent: pangeaMessageEvent,
@@ -57,6 +65,9 @@ class FullToolbarContents extends StatelessWidget {
           chatController: chatController,
           hasReactions: hasReactions,
           shouldShowToolbarButtons: showToolbarButtons,
+          sizeAnimation: sizeAnimation,
+          isVisible: isVisible,
+          // contentSizeAnimation: contentSizeAnimation,
         ),
         ToolbarButtonRow(
           event: event,
@@ -68,26 +79,35 @@ class FullToolbarContents extends StatelessWidget {
   }
 }
 
-class MeasureOffset extends StatefulWidget {
+class MeasureRenderBox extends StatefulWidget {
   final Widget child;
-  final ValueChanged<Offset> onChange;
+  final ValueChanged<RenderBox> onChange;
 
-  const MeasureOffset({super.key, required this.child, required this.onChange});
+  const MeasureRenderBox({
+    super.key,
+    required this.child,
+    required this.onChange,
+  });
 
   @override
-  MeasureOffsetState createState() => MeasureOffsetState();
+  MeasureRenderBoxState createState() => MeasureRenderBoxState();
 }
 
-class MeasureOffsetState extends State<MeasureOffset> {
+class MeasureRenderBoxState extends State<MeasureRenderBox> {
   Offset? _lastOffset;
+  Size? _lastSize;
 
   void _updateOffset() {
     final renderBox = context.findRenderObject() as RenderBox?;
     if (renderBox != null) {
       final offset = renderBox.localToGlobal(Offset.zero);
-      if (_lastOffset == null || _lastOffset != offset) {
+      if (_lastOffset == null ||
+          _lastOffset != offset ||
+          _lastSize == null ||
+          _lastSize != renderBox.size) {
         _lastOffset = offset;
-        widget.onChange(offset);
+        _lastSize = renderBox.size;
+        widget.onChange(renderBox);
         setState(() {});
       }
     }

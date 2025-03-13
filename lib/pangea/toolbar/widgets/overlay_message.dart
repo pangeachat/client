@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message_content.dart';
@@ -11,6 +7,9 @@ import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart'
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 // @ggurdin be great to explain the need/function of a widget like this
 class OverlayMessage extends StatelessWidget {
@@ -22,8 +21,13 @@ class OverlayMessage extends StatelessWidget {
   final Event? prevEvent;
   final Timeline timeline;
   final bool immersionMode;
+
+  final Animation<Size>? sizeAnimation;
+  // final Animation<double>? contentSizeAnimation;
   final double messageWidth;
   final double messageHeight;
+
+  final bool enforceDimensions;
 
   const OverlayMessage(
     this.event, {
@@ -36,6 +40,9 @@ class OverlayMessage extends StatelessWidget {
     this.pangeaMessageEvent,
     this.nextEvent,
     this.prevEvent,
+    this.sizeAnimation,
+    // this.contentSizeAnimation,
+    this.enforceDimensions = true,
     super.key,
   });
 
@@ -112,127 +119,144 @@ class OverlayMessage extends StatelessWidget {
             ? ThemeData.dark().colorScheme.onPrimary
             : theme.colorScheme.onSurface;
 
+    final content = SingleChildScrollView(
+      dragStartBehavior: DragStartBehavior.down,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(
+            AppConfig.borderRadius,
+          ),
+        ),
+        padding: noBubble || noPadding
+            ? EdgeInsets.zero
+            : const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
+        width: sizeAnimation == null && enforceDimensions ? messageWidth : null,
+        height:
+            sizeAnimation == null && enforceDimensions ? messageHeight : null,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            if (event.relationshipType == RelationshipTypes.reply)
+              FutureBuilder<Event?>(
+                future: event.getReplyEvent(
+                  timeline,
+                ),
+                builder: (
+                  BuildContext context,
+                  snapshot,
+                ) {
+                  final replyEvent = snapshot.hasData
+                      ? snapshot.data!
+                      : Event(
+                          eventId: event.relationshipEventId!,
+                          content: {
+                            'msgtype': 'm.text',
+                            'body': '...',
+                          },
+                          senderId: event.senderId,
+                          type: 'm.room.message',
+                          room: event.room,
+                          status: EventStatus.sent,
+                          originServerTs: DateTime.now(),
+                        );
+                  return Padding(
+                    padding: const EdgeInsets.only(
+                      bottom: 4.0,
+                    ),
+                    child: InkWell(
+                      borderRadius: ReplyContent.borderRadius,
+                      onTap: () => controller.scrollToEventId(
+                        replyEvent.eventId,
+                      ),
+                      child: AbsorbPointer(
+                        child: ReplyContent(
+                          replyEvent,
+                          ownMessage: ownMessage,
+                          timeline: timeline,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            MessageContent(
+              event.getDisplayEvent(timeline),
+              textColor: textColor,
+              pangeaMessageEvent: pangeaMessageEvent,
+              immersionMode: immersionMode,
+              overlayController: overlayController,
+              controller: controller,
+              nextEvent: nextEvent,
+              prevEvent: prevEvent,
+              borderRadius: borderRadius,
+              timeline: timeline,
+              linkColor: theme.brightness == Brightness.light
+                  ? theme.colorScheme.primary
+                  : ownMessage
+                      ? theme.colorScheme.onPrimary
+                      : theme.colorScheme.onSurface,
+              // contentSizeAnimation: contentSizeAnimation,
+            ),
+            if (event.hasAggregatedEvents(
+              timeline,
+              RelationshipTypes.edit,
+            ))
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: 4.0,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (event.hasAggregatedEvents(
+                      timeline,
+                      RelationshipTypes.edit,
+                    )) ...[
+                      Icon(
+                        Icons.edit_outlined,
+                        color: textColor.withAlpha(164),
+                        size: 14,
+                      ),
+                      Text(
+                        ' - ${displayEvent.originServerTs.localizedTimeShort(context)}',
+                        style: TextStyle(
+                          color: textColor.withAlpha(
+                            164,
+                          ),
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+
     return Material(
       color: color,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: borderRadius,
       ),
-      child: SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(
-              AppConfig.borderRadius,
-            ),
-          ),
-          padding: noBubble || noPadding
-              ? EdgeInsets.zero
-              : const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 8,
-                ),
-          width: messageWidth,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              if (event.relationshipType == RelationshipTypes.reply)
-                FutureBuilder<Event?>(
-                  future: event.getReplyEvent(
-                    timeline,
-                  ),
-                  builder: (
-                    BuildContext context,
-                    snapshot,
-                  ) {
-                    final replyEvent = snapshot.hasData
-                        ? snapshot.data!
-                        : Event(
-                            eventId: event.relationshipEventId!,
-                            content: {
-                              'msgtype': 'm.text',
-                              'body': '...',
-                            },
-                            senderId: event.senderId,
-                            type: 'm.room.message',
-                            room: event.room,
-                            status: EventStatus.sent,
-                            originServerTs: DateTime.now(),
-                          );
-                    return Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 4.0,
-                      ),
-                      child: InkWell(
-                        borderRadius: ReplyContent.borderRadius,
-                        onTap: () => controller.scrollToEventId(
-                          replyEvent.eventId,
-                        ),
-                        child: AbsorbPointer(
-                          child: ReplyContent(
-                            replyEvent,
-                            ownMessage: ownMessage,
-                            timeline: timeline,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              MessageContent(
-                event.getDisplayEvent(timeline),
-                textColor: textColor,
-                pangeaMessageEvent: pangeaMessageEvent,
-                immersionMode: immersionMode,
-                overlayController: overlayController,
-                controller: controller,
-                nextEvent: nextEvent,
-                prevEvent: prevEvent,
-                borderRadius: borderRadius,
-                timeline: timeline,
-                linkColor: theme.brightness == Brightness.light
-                    ? theme.colorScheme.primary
-                    : ownMessage
-                        ? theme.colorScheme.onPrimary
-                        : theme.colorScheme.onSurface,
-              ),
-              if (event.hasAggregatedEvents(
-                timeline,
-                RelationshipTypes.edit,
-              ))
-                Padding(
-                  padding: const EdgeInsets.only(
-                    top: 4.0,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (event.hasAggregatedEvents(
-                        timeline,
-                        RelationshipTypes.edit,
-                      )) ...[
-                        Icon(
-                          Icons.edit_outlined,
-                          color: textColor.withAlpha(164),
-                          size: 14,
-                        ),
-                        Text(
-                          ' - ${displayEvent.originServerTs.localizedTimeShort(context)}',
-                          style: TextStyle(
-                            color: textColor.withAlpha(
-                              164,
-                            ),
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ),
+      child: sizeAnimation != null
+          ? AnimatedBuilder(
+              animation: sizeAnimation!,
+              builder: (context, child) {
+                return SizedBox(
+                  height: sizeAnimation!.value.height,
+                  width: sizeAnimation!.value.width,
+                  child: content,
+                );
+              },
+            )
+          : content,
     );
   }
 }

@@ -1,16 +1,15 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/utils/message_text_util.dart';
+import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 
 /// Question - does this need to be stateful or does this work?
 /// Need to test.
@@ -25,6 +24,8 @@ class MessageTokenText extends StatelessWidget {
   final bool Function(PangeaToken)? _isHighlighted;
   final MessageMode? _messageMode;
 
+  // final Animation<double>? _contentSizeAnimation;
+
   const MessageTokenText({
     super.key,
     required PangeaMessageEvent pangeaMessageEvent,
@@ -34,12 +35,14 @@ class MessageTokenText extends StatelessWidget {
     bool Function(PangeaToken)? isSelected,
     bool Function(PangeaToken)? isHighlighted,
     MessageMode? messageMode,
+    // Animation<double>? contentSizeAnimation,
   })  : _onClick = onClick,
         _isSelected = isSelected,
         _style = style,
         _pangeaMessageEvent = pangeaMessageEvent,
-        _messageMode = null,
+        _messageMode = messageMode,
         _isHighlighted = isHighlighted;
+  // _contentSizeAnimation = contentSizeAnimation;
 
   List<PangeaToken>? get _tokens =>
       _pangeaMessageEvent.messageDisplayRepresentation?.tokens;
@@ -74,6 +77,7 @@ class MessageTokenText extends StatelessWidget {
       onClick: callOnClick,
       messageMode: _messageMode,
       isHighlighted: _isHighlighted,
+      // contentSizeAnimation: _contentSizeAnimation,
     );
   }
 }
@@ -136,6 +140,8 @@ class MessageTextWidget extends StatelessWidget {
   final TextOverflow? overflow;
   final MessageMode? messageMode;
 
+  final Animation<double>? contentSizeAnimation;
+
   const MessageTextWidget({
     super.key,
     required this.pangeaMessageEvent,
@@ -148,6 +154,7 @@ class MessageTextWidget extends StatelessWidget {
     this.overflow,
     this.messageMode,
     this.isHighlighted,
+    this.contentSizeAnimation,
   });
 
   @override
@@ -231,14 +238,17 @@ class MessageTextWidget extends StatelessWidget {
             return WidgetSpan(
               child: Column(
                 children: [
-                  if (messageMode != null) const Text("?"),
-                  // MessageTokenButton(
-                  //   content: const Text(
-                  //     "?",
-                  //   ),
-                  //   isVisible:
-                  //       messageMode != null, // Set this based on your logic
-                  // ),
+                  // if (messageMode != null) const Text("?"),
+                  const MessageTokenButton(
+                    content: Text(
+                      "?",
+                    ),
+                    isVisible: false,
+                    // isVisible: messageMode != null,
+                    // contentSizeAnimation: contentSizeAnimation,
+                    // isVisible:
+                    //     messageMode != null, // Set this based on your logic
+                  ),
                   MouseRegion(
                     cursor: SystemMouseCursors.click,
                     child: GestureDetector(

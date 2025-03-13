@@ -1,14 +1,13 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message_reactions.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/full_toolbar_contents.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_message.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class OverlayCenterContent extends StatelessWidget {
   final double messageHeight;
@@ -26,6 +25,12 @@ class OverlayCenterContent extends StatelessWidget {
   final MessageOverlayController overlayController;
   final ChatController chatController;
 
+  final Animation<Size>? sizeAnimation;
+  // final Animation<double>? contentSizeAnimation;
+  final void Function(RenderBox) onChangeSize;
+
+  final bool isVisible;
+
   const OverlayCenterContent({
     super.key,
     required this.messageHeight,
@@ -39,6 +44,10 @@ class OverlayCenterContent extends StatelessWidget {
     this.pangeaMessageEvent,
     this.nextEvent,
     this.prevEvent,
+    this.sizeAnimation,
+    // this.contentSizeAnimation,
+    this.isVisible = true,
+    required this.onChangeSize,
   });
 
   @override
@@ -49,9 +58,9 @@ class OverlayCenterContent extends StatelessWidget {
         type: MaterialType.transparency,
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: event.senderId == event.room.client.userID
-              ? CrossAxisAlignment.end
-              : CrossAxisAlignment.start,
+          // crossAxisAlignment: event.senderId == event.room.client.userID
+          //     ? CrossAxisAlignment.end
+          //     : CrossAxisAlignment.start,
           children: [
             if (pangeaMessageEvent != null &&
                 pangeaMessageEvent!.shouldShowToolbar)
@@ -60,8 +69,8 @@ class OverlayCenterContent extends StatelessWidget {
                 overlayController: overlayController,
               ),
             const SizedBox(height: AppConfig.toolbarSpacing),
-            SizedBox(
-              height: messageHeight,
+            MeasureRenderBox(
+              onChange: onChangeSize,
               child: OverlayMessage(
                 event,
                 pangeaMessageEvent: pangeaMessageEvent,
@@ -71,8 +80,11 @@ class OverlayCenterContent extends StatelessWidget {
                 nextEvent: nextEvent,
                 prevEvent: prevEvent,
                 timeline: chatController.timeline!,
+                sizeAnimation: sizeAnimation,
                 messageWidth: messageWidth,
                 messageHeight: messageHeight,
+                enforceDimensions: isVisible,
+                // contentSizeAnimation: contentSizeAnimation,
               ),
             ),
             if (hasReactions)
