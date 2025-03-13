@@ -6,19 +6,15 @@ import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
 
-class ToolbarButtonColumn extends StatelessWidget {
+class ToolbarButtonRow extends StatelessWidget {
   final Event event;
   final MessageOverlayController overlayController;
   final bool shouldShowToolbarButtons;
-  final double height;
-  final double width;
 
-  const ToolbarButtonColumn({
+  const ToolbarButtonRow({
     required this.event,
     required this.overlayController,
     required this.shouldShowToolbarButtons,
-    required this.height,
-    required this.width,
     super.key,
   });
 
@@ -33,16 +29,16 @@ class ToolbarButtonColumn extends StatelessWidget {
         !shouldShowToolbarButtons ||
         !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ??
             false)) {
-      return SizedBox(height: height, width: width);
+      return const SizedBox(
+        height: 50.0,
+      );
     }
 
-    return Container(
-      height: height,
-      width: width,
-      alignment: Alignment.bottomCenter,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+    return SizedBox(
+      height: 50.0,
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
         spacing: 4.0,
         children: [
           ToolbarButton(
