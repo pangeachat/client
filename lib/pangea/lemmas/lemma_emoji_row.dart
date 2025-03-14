@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_zoom_activity_button.dart';
-import 'package:flutter/material.dart';
 
 class LemmaEmojiRow extends StatelessWidget {
   final ConstructIdentifier cId;
