@@ -17,7 +17,6 @@ class MessageTokenButton extends StatefulWidget {
 class MessageTokenButtonState extends State<MessageTokenButton> {
   @override
   void didUpdateWidget(covariant MessageTokenButton oldWidget) {
-    debugPrint("MessageTokenButton didUpdateWidget");
     if (oldWidget.isVisible != widget.isVisible) {
       setState(() {});
     }
@@ -33,7 +32,6 @@ class MessageTokenButtonState extends State<MessageTokenButton> {
     );
   }
 }
-
 
 // import 'package:flutter/material.dart';
 
@@ -85,4 +83,3 @@ class MessageTokenButtonState extends State<MessageTokenButton> {
 //     );
 //   }
 // }
-

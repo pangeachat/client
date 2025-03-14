@@ -25,11 +25,13 @@ const double minCardHeight = 70;
 class ReadingAssistanceContentCard extends StatelessWidget {
   final PangeaMessageEvent pangeaMessageEvent;
   final MessageOverlayController overlayController;
+  final Duration animationDuration;
 
   const ReadingAssistanceContentCard({
     super.key,
     required this.pangeaMessageEvent,
     required this.overlayController,
+    this.animationDuration = FluffyThemes.animationDuration,
   });
 
   TtsController get ttsController =>
@@ -141,7 +143,7 @@ class ReadingAssistanceContentCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AnimatedSize(
-              duration: FluffyThemes.animationDuration,
+              duration: animationDuration,
               child: toolbarContent(context),
             ),
           ],
