@@ -31,6 +31,32 @@ class AlternativeTranslator {
     similarityResponse = null;
   }
 
+  // Calculate the percentage of correct choices
+  double get _percentCorrectChoices {
+    // Get the core counts from ITController
+    final correctChoices = choreographer.itController.correctChoices;
+    final incorrectChoices = choreographer.itController.incorrectChoices;
+    final wildcardChoices = choreographer.itController.wildcardChoices;
+    final customChoices = choreographer.itController.customChoices;
+
+    debugPrint(
+        "PERCENT DEBUG: Correct: $correctChoices, Incorrect: $incorrectChoices, Wildcard: $wildcardChoices, Custom: $customChoices");
+
+    // Total number of choices made (both correct and incorrect)
+    final totalChoices =
+        correctChoices + incorrectChoices + wildcardChoices + customChoices;
+
+    if (totalChoices == 0) {
+      return 0;
+    }
+
+    // Calculate percentage based on correct choices as a portion of total choices
+    final percentage = (correctChoices / totalChoices) * 100;
+    debugPrint("PERCENT DEBUG: Final percentage: $percentage%");
+
+    return percentage;
+  }
+
   Future<void> setTranslationFeedback() async {
     try {
       choreographer.startLoading();
@@ -40,9 +66,17 @@ class AlternativeTranslator {
 
       userTranslation = choreographer.currentText;
 
-      if (choreographer.itController.allCorrect) {
+      // Calculate percentage based on correct/total choices ratio
+      final double percentCorrect = _percentCorrectChoices;
+      debugPrint("FEEDBACK: Calculated percentage correct: $percentCorrect%");
+
+      // Set feedback based on percentage
+      if (percentCorrect == 100) {
         translationFeedbackKey = FeedbackKey.allCorrect;
-        return;
+      } else if (percentCorrect > 90) {
+        translationFeedbackKey = FeedbackKey.newWayAllGood;
+      } else {
+        translationFeedbackKey = FeedbackKey.othersAreBetter;
       }
 
       final String? goldRouteTranslation =
@@ -59,43 +93,24 @@ class AlternativeTranslator {
           deepL: goldRouteTranslation == null,
         ),
       );
+
       translations = results.translations;
       if (results.deepL != null || goldRouteTranslation != null) {
         translations.insert(0, (results.deepL ?? goldRouteTranslation)!);
       }
-      // final List<String> altAndUser = [...results.translations];
-      // if (results.deepL != null) {
-      //   altAndUser.add(results.deepL!);
-      // }
-      // altAndUser.add(userTranslation);
 
-      if (userTranslation?.toLowerCase() ==
+      if (userTranslation?.toLowerCase() !=
           results.bestTranslation.toLowerCase()) {
-        translationFeedbackKey = FeedbackKey.allCorrect;
-        return;
+        similarityResponse = await SimilarityRepo.get(
+          accessToken: choreographer.accessToken,
+          request: SimilarityRequestModel(
+            benchmark: results.bestTranslation,
+            toCompare: [userTranslation!],
+          ),
+        );
+
+        showAlternativeTranslations = true;
       }
-
-      similarityResponse = await SimilarityRepo.get(
-        accessToken: choreographer.accessToken,
-        request: SimilarityRequestModel(
-          benchmark: results.bestTranslation,
-          toCompare: [userTranslation!],
-        ),
-      );
-
-      // if (similarityResponse!
-      //     .userTranslationIsSameAsBotTranslation(userTranslation!)) {
-      //   translationFeedbackKey = FeedbackKey.allCorrect;
-      //   return;
-      // }
-
-      // if (similarityResponse!
-      //     .userTranslationIsDifferentButBetter(userTranslation!)) {
-      //   translationFeedbackKey = FeedbackKey.newWayAllGood;
-      //   return;
-      // }
-      showAlternativeTranslations = true;
-      translationFeedbackKey = FeedbackKey.othersAreBetter;
     } catch (err, stack) {
       if (err is! http.Response) {
         ErrorHandler.logError(
@@ -120,29 +135,22 @@ class AlternativeTranslator {
   }
 
   String translationFeedback(BuildContext context) {
+    final String displayScore = _percentCorrectChoices.toStringAsFixed(0);
+
+    // Use original feedback messages
     switch (translationFeedbackKey) {
       case FeedbackKey.allCorrect:
-        return "Match: 100%\n${L10n.of(context).allCorrect}";
+        return "Match: $displayScore%\n${L10n.of(context).allCorrect}";
       case FeedbackKey.newWayAllGood:
-        return "Match: 100%\n${L10n.of(context).newWayAllGood}";
+        return "Match: $displayScore%\n${L10n.of(context).newWayAllGood}";
       case FeedbackKey.othersAreBetter:
-        final num userScore =
-            (similarityResponse!.userScore(userTranslation!) * 100).round();
-        final String displayScore = userScore.toString();
-        if (userScore > 90) {
+        if (_percentCorrectChoices > 90) {
           return "Match: $displayScore%\n${L10n.of(context).almostPerfect}";
         }
-        if (userScore > 80) {
+        if (_percentCorrectChoices > 80) {
           return "Match: $displayScore%\n${L10n.of(context).prettyGood}";
         }
         return "Match: $displayScore%\n${L10n.of(context).othersAreBetter}";
-      // case FeedbackKey.commonalityFeedback:
-      //     final int count = controller.completedITSteps
-      //   .where((element) => element.isCorrect)
-      //   .toList()
-      //   .length;
-      // final int total = controller.completedITSteps.length;
-      //     return L10n.of(context).commonalityFeedback(count,total);
       case FeedbackKey.loadingPleaseWait:
         return L10n.of(context).letMeThink;
       case FeedbackKey.allDone:
