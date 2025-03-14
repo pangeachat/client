@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -60,26 +61,15 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
     );
   }
 
-  void _scrollLeft() {
+  void _scrollToNextItem(AxisDirection direction) {
     final currentOffset = _scrollController.offset;
     final scrollAmount =
         FluffyThemes.isColumnMode(context) ? cardWidth : cardHeight;
 
     _scrollController.animateTo(
-      (currentOffset - scrollAmount)
-          .clamp(0.0, _scrollController.position.maxScrollExtent),
-      duration: FluffyThemes.animationDuration,
-      curve: FluffyThemes.animationCurve,
-    );
-  }
-
-  void _scrollRight() {
-    final currentOffset = _scrollController.offset;
-    final scrollAmount =
-        FluffyThemes.isColumnMode(context) ? cardWidth : cardHeight;
-
-    _scrollController.animateTo(
-      (currentOffset + scrollAmount)
+      (direction == AxisDirection.left
+              ? currentOffset - scrollAmount
+              : currentOffset + scrollAmount)
           .clamp(0.0, _scrollController.position.maxScrollExtent),
       duration: FluffyThemes.animationDuration,
       curve: FluffyThemes.animationCurve,
@@ -155,7 +145,8 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                 // Main content
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 45.0), // Space for buttons
+                    horizontal: 45.0,
+                  ), // Space for buttons
                   child: ListView(
                     controller: _scrollController,
                     scrollDirection: Axis.horizontal,
@@ -177,7 +168,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     ),
                     child: IconButton(
                       icon: const Icon(Icons.chevron_left),
-                      onPressed: () => _scrollLeft(),
+                      onPressed: () => _scrollToNextItem(AxisDirection.left),
                       iconSize: 24.0,
                       padding: const EdgeInsets.all(8.0),
                       constraints: const BoxConstraints(),
@@ -198,7 +189,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     ),
                     child: IconButton(
                       icon: const Icon(Icons.chevron_right),
-                      onPressed: () => _scrollRight(),
+                      onPressed: () => _scrollToNextItem(AxisDirection.right),
                       iconSize: 24.0,
                       padding: const EdgeInsets.all(8.0),
                       constraints: const BoxConstraints(),
@@ -219,7 +210,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     ),
                     child: IconButton(
                       icon: const Icon(Icons.add_comment, color: Colors.white),
-                      tooltip: 'Create New Chat',
+                      tooltip: L10n.of(context).createOwnChat,
                       onPressed: () => context.go('/rooms/newgroup'),
                       iconSize: 24.0,
                       padding: const EdgeInsets.all(8.0),
