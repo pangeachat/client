@@ -38,20 +38,22 @@ class AlternativeTranslator {
     final incorrectChoices = choreographer.itController.incorrectChoices;
     final wildcardChoices = choreographer.itController.wildcardChoices;
     final customChoices = choreographer.itController.customChoices;
-    
-    debugPrint("PERCENT DEBUG: Correct: $correctChoices, Incorrect: $incorrectChoices, Wildcard: $wildcardChoices, Custom: $customChoices");
-    
+
+    debugPrint(
+        "PERCENT DEBUG: Correct: $correctChoices, Incorrect: $incorrectChoices, Wildcard: $wildcardChoices, Custom: $customChoices");
+
     // Total number of choices made (both correct and incorrect)
-    final totalChoices = correctChoices + incorrectChoices + wildcardChoices + customChoices;
-    
+    final totalChoices =
+        correctChoices + incorrectChoices + wildcardChoices + customChoices;
+
     if (totalChoices == 0) {
       return 0;
     }
-    
+
     // Calculate percentage based on correct choices as a portion of total choices
     final percentage = (correctChoices / totalChoices) * 100;
     debugPrint("PERCENT DEBUG: Final percentage: $percentage%");
-    
+
     return percentage;
   }
 
@@ -63,7 +65,7 @@ class AlternativeTranslator {
       showTranslationFeedback = true;
 
       userTranslation = choreographer.currentText;
-      
+
       // Calculate percentage based on correct/total choices ratio
       final double percentCorrect = _percentCorrectChoices;
       debugPrint("FEEDBACK: Calculated percentage correct: $percentCorrect%");
@@ -91,7 +93,7 @@ class AlternativeTranslator {
           deepL: goldRouteTranslation == null,
         ),
       );
-      
+
       translations = results.translations;
       if (results.deepL != null || goldRouteTranslation != null) {
         translations.insert(0, (results.deepL ?? goldRouteTranslation)!);
@@ -134,7 +136,7 @@ class AlternativeTranslator {
 
   String translationFeedback(BuildContext context) {
     final String displayScore = _percentCorrectChoices.toStringAsFixed(0);
-    
+
     // Use original feedback messages
     switch (translationFeedbackKey) {
       case FeedbackKey.allCorrect:
