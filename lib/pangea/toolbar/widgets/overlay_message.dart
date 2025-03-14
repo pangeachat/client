@@ -25,11 +25,11 @@ class OverlayMessage extends StatelessWidget {
   final bool immersionMode;
 
   final Animation<Size>? sizeAnimation;
-  // final Animation<double>? contentSizeAnimation;
   final double messageWidth;
   final double messageHeight;
 
   final bool enforceDimensions;
+  final bool isAnimating;
 
   const OverlayMessage(
     this.event, {
@@ -43,7 +43,7 @@ class OverlayMessage extends StatelessWidget {
     this.nextEvent,
     this.prevEvent,
     this.sizeAnimation,
-    // this.contentSizeAnimation,
+    this.isAnimating = false,
     this.enforceDimensions = true,
     super.key,
   });
@@ -201,7 +201,7 @@ class OverlayMessage extends StatelessWidget {
                   : ownMessage
                       ? theme.colorScheme.onPrimary
                       : theme.colorScheme.onSurface,
-              // contentSizeAnimation: contentSizeAnimation,
+              isAnimating: isAnimating,
             ),
             if (event.hasAggregatedEvents(
               timeline,

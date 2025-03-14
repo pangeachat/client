@@ -17,7 +17,6 @@ import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart'
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/overlay_footer.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_column.dart';
@@ -55,7 +54,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   Animation<Offset>? _overlayOffsetAnimation;
-  Animation<Offset>? _contentOffsetAnimation;
   Animation<Offset>? _buttonsOffsetAnimation;
   Animation<Size>? _messageSizeAnimation;
 
@@ -67,10 +65,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   Offset? _centeredMessageOffset;
   Size? _centeredMessageSize;
   final Completer _centeredMessageCompleter = Completer();
-
-  Offset? _centeredContentOffset;
-  Size? _centeredContentSize;
-  final Completer _centeredContentCompleter = Completer();
 
   Offset? _centeredButtonsOffset;
   Size? _centeredButtonsSize;
@@ -111,7 +105,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     Future.wait([
       _centeredMessageCompleter.future,
-      _centeredContentCompleter.future,
       _centeredButtonsCompleter.future,
     ]).then((_) => _startAnimation());
   }
@@ -152,21 +145,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
   }
 
-  void _setCenteredContentSize(RenderBox renderBox) {
-    if (_finishedAnimation) return;
-    _centeredContentSize = renderBox.size;
-    final offset = renderBox.localToGlobal(Offset.zero);
-    _centeredContentOffset = Offset(
-      offset.dx - _columnWidth - _horizontalPadding - 2.0,
-      offset.dy,
-    );
-    setState(() {});
-
-    if (!_centeredContentCompleter.isCompleted) {
-      _centeredContentCompleter.complete();
-    }
-  }
-
   void _setCenteredButtonsSize(RenderBox renderBox) {
     if (_finishedAnimation) return;
     _centeredButtonsSize = renderBox.size;
@@ -204,19 +182,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       ),
       // For own messages, dx is the right offset. For other's messages, dx is the left offset.
       end: _centeredMessageOffset,
-    ).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: FluffyThemes.animationCurve,
-      ),
-    );
-
-    _contentOffsetAnimation = Tween<Offset>(
-      begin: Offset(
-        _centeredContentSize!.width * -1,
-        _totalToolbarBottomOffset,
-      ),
-      end: _centeredContentOffset,
     ).animate(
       CurvedAnimation(
         parent: _animationController,
@@ -471,7 +436,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
               showToolbarButtons: showToolbarButtons,
               hasReactions: _hasReactions,
               onChangeMessageSize: _setCenteredMessageSize,
-              onChangeContentSize: _setCenteredContentSize,
               onChangeButtonsSize: _setCenteredButtonsSize,
               isVisible: false,
               contentAnimationDuration: !_finishedAnimation
@@ -509,23 +473,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                     sizeAnimation: _messageSizeAnimation,
                     isVisible: true,
                     showContent: false,
-                  ),
-                );
-              },
-            ),
-          if (!_finishedAnimation && _contentOffsetAnimation != null)
-            AnimatedBuilder(
-              animation: _contentOffsetAnimation!,
-              builder: (context, child) {
-                return Positioned(
-                  left:
-                      _ownMessage ? null : (_contentOffsetAnimation?.value)!.dx,
-                  right:
-                      _ownMessage ? (_contentOffsetAnimation?.value)!.dx : null,
-                  top: _centeredContentOffset?.dy,
-                  child: ReadingAssistanceContentCard(
-                    pangeaMessageEvent: widget.pangeaMessageEvent!,
-                    overlayController: widget.overlayController,
                   ),
                 );
               },

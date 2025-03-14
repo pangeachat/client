@@ -8,6 +8,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
@@ -16,6 +17,7 @@ import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.da
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
@@ -28,6 +30,7 @@ import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)
@@ -300,11 +303,36 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// Update to [selectedSpan]
   /// [forceMode] is used to force a specific mode
   void _updateSelectedSpan(PangeaTokenText selectedSpan) {
+    if (selectedToken != null) {
+      MatrixState.pAnyState.disposeByWidgetKey(
+        selectedToken!.text.uniqueKey,
+      );
+    }
+
     if (selectedSpan == _selectedSpan) {
       _selectedSpan = null;
     } else {
       _selectedSpan = selectedSpan;
     }
+
+    if (selectedToken != null) {
+      final entry = ReadingAssistanceContentCard(
+        pangeaMessageEvent: pangeaMessageEvent!,
+        overlayController: this,
+      );
+      OverlayUtil.showPositionedCard(
+        context: context,
+        cardToShow: entry,
+        transformTargetId: selectedToken!.text.uniqueKey,
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        addBorder: false,
+        overlayKey: selectedToken!.text.uniqueKey,
+        maxHeight: AppConfig.toolbarMaxHeight,
+        maxWidth: AppConfig.toolbarMinWidth,
+      );
+    }
+
     setState(() {});
   }
 

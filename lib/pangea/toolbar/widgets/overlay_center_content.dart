@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message_reactions.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/measure_render_box.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_message.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_column.dart';
 
@@ -75,18 +73,6 @@ class OverlayCenterContent extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (showContent &&
-                    pangeaMessageEvent != null &&
-                    pangeaMessageEvent!.shouldShowToolbar)
-                  MeasureRenderBox(
-                    onChange: onChangeContentSize,
-                    child: ReadingAssistanceContentCard(
-                      pangeaMessageEvent: pangeaMessageEvent!,
-                      overlayController: overlayController,
-                      animationDuration: contentAnimationDuration,
-                    ),
-                  ),
-                const SizedBox(height: AppConfig.toolbarSpacing),
                 MeasureRenderBox(
                   onChange: onChangeMessageSize,
                   child: OverlayMessage(
@@ -102,6 +88,7 @@ class OverlayCenterContent extends StatelessWidget {
                     messageWidth: messageWidth,
                     messageHeight: messageHeight,
                     enforceDimensions: isVisible,
+                    isAnimating: isVisible,
                   ),
                 ),
                 if (hasReactions)

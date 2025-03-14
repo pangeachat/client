@@ -5,11 +5,13 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
+import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/utils/message_text_util.dart';
 import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -25,6 +27,7 @@ class MessageTokenText extends StatelessWidget {
   final void Function(PangeaToken)? _onClick;
   final bool Function(PangeaToken)? _isHighlighted;
   final MessageMode? _messageMode;
+  final MessageOverlayController? _overlayController;
 
   // final Animation<double>? _contentSizeAnimation;
 
@@ -37,13 +40,15 @@ class MessageTokenText extends StatelessWidget {
     bool Function(PangeaToken)? isSelected,
     bool Function(PangeaToken)? isHighlighted,
     MessageMode? messageMode,
+    MessageOverlayController? overlayController,
     // Animation<double>? contentSizeAnimation,
   })  : _onClick = onClick,
         _isSelected = isSelected,
         _style = style,
         _pangeaMessageEvent = pangeaMessageEvent,
         _messageMode = messageMode,
-        _isHighlighted = isHighlighted;
+        _isHighlighted = isHighlighted,
+        _overlayController = overlayController;
   // _contentSizeAnimation = contentSizeAnimation;
 
   List<PangeaToken>? get _tokens =>
@@ -79,6 +84,7 @@ class MessageTokenText extends StatelessWidget {
       onClick: callOnClick,
       messageMode: _messageMode,
       isHighlighted: _isHighlighted,
+      overlayController: _overlayController,
       // contentSizeAnimation: _contentSizeAnimation,
     );
   }
@@ -143,6 +149,7 @@ class MessageTextWidget extends StatelessWidget {
   final MessageMode? messageMode;
 
   final Animation<double>? contentSizeAnimation;
+  final MessageOverlayController? overlayController;
 
   const MessageTextWidget({
     super.key,
@@ -157,6 +164,7 @@ class MessageTextWidget extends StatelessWidget {
     this.messageMode,
     this.isHighlighted,
     this.contentSizeAnimation,
+    this.overlayController,
   });
 
   @override
@@ -237,81 +245,96 @@ class MessageTextWidget extends StatelessWidget {
                 .take(endSplitIndex - startSplitIndex)
                 .toString();
 
+            final token = tokenPosition.token!;
+
             return WidgetSpan(
-              child: Column(
-                children: [
-                  const MessageTokenButton(
-                    content: Text(
-                      "?",
+              child: CompositedTransformTarget(
+                link: overlayController == null
+                    ? LayerLinkAndKey(token.hashCode.toString()).link
+                    : MatrixState.pAnyState
+                        .layerLinkAndKey(token.text.uniqueKey)
+                        .link,
+                child: Column(
+                  key: overlayController == null
+                      ? LayerLinkAndKey(token.hashCode.toString()).key
+                      : MatrixState.pAnyState
+                          .layerLinkAndKey(token.text.uniqueKey)
+                          .key,
+                  children: [
+                    const MessageTokenButton(
+                      content: Text(
+                        "?",
+                      ),
+                      isVisible: false,
+                      // isVisible: messageMode != null,
                     ),
-                    isVisible: false,
-                    // isVisible: messageMode != null,
-                  ),
-                  MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      onTap: onClick != null
-                          ? () => onClick?.call(tokenPosition)
-                          : null,
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            if (start.isNotEmpty)
-                              LinkifySpan(
-                                text: start,
-                                style: style,
-                                linkStyle: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  color: linkColor,
-                                ),
-                                onOpen: (url) =>
-                                    UrlLauncher(context, url.url).launchUrl(),
-                              ),
-                            tokenPosition.hideContent
-                                ? WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle,
-                                    child: GestureDetector(
-                                      onTap: onClick != null
-                                          ? () => onClick?.call(tokenPosition)
-                                          : null,
-                                      child: HiddenText(
-                                        text: middle,
-                                        style: style,
-                                      ),
-                                    ),
-                                  )
-                                : LinkifySpan(
-                                    text: middle,
-                                    style: style.merge(
-                                      TextStyle(
-                                        backgroundColor: backgroundColor,
-                                      ),
-                                    ),
-                                    linkStyle: TextStyle(
-                                      decoration: TextDecoration.underline,
-                                      color: linkColor,
-                                    ),
-                                    onOpen: (url) =>
-                                        UrlLauncher(context, url.url)
-                                            .launchUrl(),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: onClick != null
+                            ? () => onClick?.call(tokenPosition)
+                            : null,
+                        child: RichText(
+                          text: TextSpan(
+                            children: [
+                              if (start.isNotEmpty)
+                                LinkifySpan(
+                                  text: start,
+                                  style: style,
+                                  linkStyle: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: linkColor,
                                   ),
-                            if (end.isNotEmpty)
-                              LinkifySpan(
-                                text: end,
-                                style: style,
-                                linkStyle: TextStyle(
-                                  decoration: TextDecoration.underline,
-                                  color: linkColor,
+                                  onOpen: (url) =>
+                                      UrlLauncher(context, url.url).launchUrl(),
                                 ),
-                                onOpen: (url) =>
-                                    UrlLauncher(context, url.url).launchUrl(),
-                              ),
-                          ],
+                              tokenPosition.hideContent
+                                  ? WidgetSpan(
+                                      alignment: PlaceholderAlignment.middle,
+                                      child: GestureDetector(
+                                        onTap: onClick != null
+                                            ? () => onClick?.call(tokenPosition)
+                                            : null,
+                                        child: HiddenText(
+                                          text: middle,
+                                          style: style,
+                                        ),
+                                      ),
+                                    )
+                                  : LinkifySpan(
+                                      text: middle,
+                                      style: style.merge(
+                                        TextStyle(
+                                          backgroundColor: backgroundColor,
+                                        ),
+                                      ),
+                                      linkStyle: TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        color: linkColor,
+                                      ),
+                                      onOpen: (url) =>
+                                          UrlLauncher(context, url.url)
+                                              .launchUrl(),
+                                    ),
+                              if (end.isNotEmpty)
+                                LinkifySpan(
+                                  text: end,
+                                  style: style,
+                                  linkStyle: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: linkColor,
+                                  ),
+                                  onOpen: (url) =>
+                                      UrlLauncher(context, url.url).launchUrl(),
+                                ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           } else {
