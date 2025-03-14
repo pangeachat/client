@@ -1,15 +1,12 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class ErrorCopy {
   final String title;
@@ -48,7 +45,8 @@ class LanguagePermissionsButtons extends StatelessWidget {
           if (copy.description != null)
             TextSpan(
               text: copy.description,
-              style: const TextStyle(color: AppConfig.primaryColor),
+              style:
+                  TextStyle(color: Theme.of(context).colorScheme.primary),
               recognizer: TapGestureRecognizer()
                 ..onTap = () {
                   showDialog(

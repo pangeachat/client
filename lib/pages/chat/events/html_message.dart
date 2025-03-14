@@ -1,13 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_highlighter/flutter_highlighter.dart';
-import 'package:flutter_highlighter/themes/shades-of-purple.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:html/dom.dart' as dom;
-import 'package:html/parser.dart' as parser;
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -15,6 +6,14 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_highlighter/flutter_highlighter.dart';
+import 'package:flutter_highlighter/themes/shades-of-purple.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:html/dom.dart' as dom;
+import 'package:html/parser.dart' as parser;
+import 'package:matrix/matrix.dart';
+
 import '../../../utils/url_launcher.dart';
 
 class HtmlMessage extends StatelessWidget {
@@ -277,7 +276,7 @@ class HtmlMessage extends StatelessWidget {
 
         Color backgroundColor = Colors.transparent;
         if (selected) {
-          backgroundColor = AppConfig.primaryColor.withAlpha(80);
+          backgroundColor = Theme.of(context).colorScheme.primary.withAlpha(80);
         } else if (isSelected != null && shouldDo) {
           backgroundColor = !didMeaningActivity
               ? AppConfig.success.withAlpha(60)

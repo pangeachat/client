@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -13,6 +8,8 @@ import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class WordEmojiChoice extends StatefulWidget {
   const WordEmojiChoice({
@@ -104,7 +101,7 @@ class WordEmojiChoiceState extends State<WordEmojiChoice> {
                     .map(
                       (emoji) => Choice(
                         color: localSelected == emoji
-                            ? AppConfig.primaryColor
+                            ? Theme.of(context).colorScheme.primary
                             : Colors.transparent,
                         text: emoji,
                         isGold: localSelected == emoji,

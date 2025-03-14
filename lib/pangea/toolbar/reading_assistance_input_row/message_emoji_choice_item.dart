@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
+import 'package:flutter/material.dart';
 
 class MessageEmojiChoiceItem extends StatefulWidget {
   const MessageEmojiChoiceItem({
@@ -49,9 +48,15 @@ class MessageEmojiChoiceItemState extends State<MessageEmojiChoiceItem> {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 color: widget.isSelected
-                    ? AppConfig.primaryColor.withAlpha((0.2 * 255).toInt())
+                    ? Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withAlpha((0.2 * 255).toInt())
                     : _isHovered
-                        ? AppConfig.primaryColor.withAlpha((0.1 * 255).toInt())
+                        ? Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withAlpha((0.1 * 255).toInt())
                         : widget.greenHighlight
                             ? AppConfig.success.withAlpha((0.1 * 255).toInt())
                             : Colors.transparent,
