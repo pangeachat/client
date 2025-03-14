@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
-import 'package:flutter/material.dart';
 
 enum ConstructLevelEnum {
   flowers,
@@ -14,7 +15,10 @@ extension ConstructLevelEnumExt on ConstructLevelEnum {
     switch (this) {
       case ConstructLevelEnum.flowers:
         return Color.lerp(
-                Theme.of(context).colorScheme.primary, Colors.white, 0.6,) ??
+              Theme.of(context).colorScheme.primary,
+              Colors.white,
+              0.6,
+            ) ??
             Theme.of(context).colorScheme.primary;
       case ConstructLevelEnum.greens:
         return Color.lerp(AppConfig.success, Colors.white, 0.6) ??
@@ -28,7 +32,10 @@ extension ConstructLevelEnumExt on ConstructLevelEnum {
     switch (this) {
       case ConstructLevelEnum.flowers:
         return Color.lerp(
-                Theme.of(context).colorScheme.primary, Colors.white, 0.3,) ??
+              Theme.of(context).colorScheme.primary,
+              Colors.white,
+              0.3,
+            ) ??
             Theme.of(context).colorScheme.primary;
       case ConstructLevelEnum.greens:
         return Color.lerp(AppConfig.success, Colors.black, 0.3) ??
