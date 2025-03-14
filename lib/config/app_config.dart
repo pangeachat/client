@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 abstract class AppConfig {
   // #Pangea
@@ -23,8 +21,8 @@ abstract class AppConfig {
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;
-  static const double toolbarMaxHeight = 175.0;
-  static const double toolbarMinHeight = 140.0;
+  static const double toolbarMaxHeight = 210.0;
+  static const double toolbarMinHeight = 200.0;
   static const double toolbarMinWidth = 350.0;
   static const double defaultHeaderHeight = 56.0;
   static const double readingAssistanceInputBarHeight = 185;

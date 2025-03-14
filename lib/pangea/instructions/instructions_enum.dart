@@ -1,12 +1,10 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 enum InstructionsEnum {
   itInstructions,
@@ -69,6 +67,21 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return "";
     }
   }
+
+  // IconData? get icon {
+  //   switch (this) {
+  //     case InstructionsEnum.itInstructions:
+  //       return Icons.translate;
+  //     case InstructionsEnum.clickMessage:
+  //       return Icons.touch_app;
+  //     case InstructionsEnum.blurMeansTranslate:
+  //       return Icons.blur_on;
+  //     case InstructionsEnum.tooltipInstructions:
+  //       return Icons.help;
+  //     case InstructionsEnum.missingVoice:
+  //       return Icons.mic_off;
+  //   }
+  // }
 
   String body(L10n l10n) {
     switch (this) {

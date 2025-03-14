@@ -1,10 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class WordTextWithAudioButton extends StatefulWidget {
   final String text;
@@ -113,7 +112,7 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
                     widget.text,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: _isPlaying
-                              ? Theme.of(context).colorScheme.secondary
+                              ? Theme.of(context).colorScheme.primary
                               : null,
                           fontSize: textSize,
                         ),
@@ -136,8 +135,11 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
                   )
                 else
                   Icon(
-                    _isPlaying ? Icons.play_arrow : Icons.play_arrow_outlined,
+                    _isPlaying ? Icons.hearing : Icons.pause_outlined,
                     size: textSize,
+                    color: _isPlaying
+                        ? Theme.of(context).colorScheme.primary
+                        : null,
                   ),
               ],
             ),

@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-
+import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_morph_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:flutter/material.dart';
 
 class MessageMorphChoice extends StatelessWidget {
   final MessageOverlayController overlayController;
@@ -28,12 +28,12 @@ class MessageMorphChoice extends StatelessWidget {
           const SizedBox(height: 8.0),
           Wrap(
             children: overlayController.messageMorphTagsForDisplay
-                .map(
-                  (cId) => MessageMorphChoiceItem(
+                .mapIndexed(
+                  (index, cId) => MessageMorphChoiceItem(
                     cId: cId,
-                    onTap: () => overlayController.onMorphChoiceSelect(cId),
+                    onTap: () => overlayController.onChoiceSelect(index),
                     isSelected:
-                        overlayController.selectedMorphTags.contains(cId),
+                        overlayController.selectedChoices.contains(index),
                     isGold: overlayController.selectedToken?.morphConstructIds
                         .contains(cId),
                   ),

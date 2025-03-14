@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 enum MessageMode {
   practiceActivity,
@@ -45,7 +43,7 @@ extension MessageModeExtension on MessageMode {
       case MessageMode.messageMeaning:
         return Icons.star;
       case MessageMode.wordEmoji:
-        return Icons.emoji_emotions;
+        return Icons.add_reaction_outlined;
       case MessageMode.wordMorph:
         return Symbols.toys_and_games;
     }
@@ -82,7 +80,7 @@ extension MessageModeExtension on MessageMode {
       case MessageMode.messageTranslation:
         return L10n.of(context).translationTooltip;
       case MessageMode.messageTextToSpeech:
-        return L10n.of(context).audioTooltip;
+        return L10n.of(context).listen;
       case MessageMode.messageSpeechToText:
         return L10n.of(context).speechToTextTooltip;
       case MessageMode.practiceActivity:

@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-
+import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_audio_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:flutter/material.dart';
 
 class MessageAudioChoice extends StatelessWidget {
   final MessageOverlayController overlayController;
@@ -14,6 +14,10 @@ class MessageAudioChoice extends StatelessWidget {
     required this.overlayController,
     required this.pangeaMessageEvent,
   });
+
+  int selectedIndex(String choice) =>
+      overlayController.messageWordFormsForDisplay
+          .indexWhere((element) => element == choice);
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +38,16 @@ class MessageAudioChoice extends StatelessWidget {
           const SizedBox(height: 8.0),
           Wrap(
             children: overlayController.messageWordFormsForDisplay
-                .map(
-                  (wordForm) => MessageAudioChoiceItem(
+                .mapIndexed(
+                  (index, wordForm) => MessageAudioChoiceItem(
                     wordForm: wordForm,
                     isGold: overlayController.selectedToken != null
                         ? overlayController.selectedToken!.text.content ==
                             wordForm
                         : null,
-                    onTap: () =>
-                        overlayController.onWordAudioChoiceSelect(wordForm),
-                    isSelected: overlayController.selectedWordAudioSurfaceForm
-                            ?.toLowerCase() ==
-                        wordForm.toLowerCase(),
+                    onTap: () => overlayController.onChoiceSelect(index),
+                    isSelected:
+                        overlayController.selectedChoices.contains(index),
                     ttsController: overlayController
                         .widget.chatController.choreographer.tts,
                   ),

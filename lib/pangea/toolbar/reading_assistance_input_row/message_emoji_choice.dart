@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class MessageEmojiChoice extends StatelessWidget {
   final ChatController controller;
@@ -78,16 +76,15 @@ class MessageEmojiChoice extends StatelessWidget {
           Wrap(
             alignment: WrapAlignment.center,
             spacing: 2.0, // Adjust spacing between items
-            runSpacing: 0.0, // Adjust spacing between rows
+            runSpacing: 2.0, // Adjust spacing between rows
             children: overlayController.messageEmojisForDisplay
-                .map(
-                  (emoji) => MessageEmojiChoiceItem(
+                .mapIndexed(
+                  (int index, String emoji) => MessageEmojiChoiceItem(
                     textSize: 26,
                     content: emoji,
-                    onTap: () =>
-                        overlayController.onMessageEmojiChoiceSelect(emoji),
+                    onTap: () => overlayController.onChoiceSelect(index),
                     isSelected:
-                        overlayController.selectedEmojis.contains(emoji),
+                        overlayController.selectedChoices.contains(index),
                     onDoubleTap: () => {},
                     onLongPress: () => {},
                     token: null,
