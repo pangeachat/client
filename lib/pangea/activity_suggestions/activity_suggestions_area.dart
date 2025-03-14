@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
@@ -17,9 +19,9 @@ import 'package:fluffychat/pangea/learning_settings/constants/language_constants
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+
 class ActivitySuggestionsArea extends StatefulWidget {
   const ActivitySuggestionsArea({super.key});
-
   @override
   ActivitySuggestionsAreaState createState() => ActivitySuggestionsAreaState();
 }
@@ -39,7 +41,6 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
 
   final List<ActivityPlanModel> _activityItems = [];
   final ScrollController _scrollController = ScrollController();
-
   final double cardHeight = 235.0;
   final double cardPadding = 8.0;
   double get cardWidth => FluffyThemes.isColumnMode(context) ? 225.0 : 160.0;
@@ -49,16 +50,35 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
     final double scrollOffset = FluffyThemes.isColumnMode(context)
         ? index * cardWidth - (viewportDimension / 2) + (cardWidth / 2)
         : (index + 1) * (cardHeight + 8.0);
-
     final maxScrollExtent = _scrollController.position.maxScrollExtent;
     final safeOffset = scrollOffset.clamp(0.0, maxScrollExtent);
-
     if (safeOffset == _scrollController.offset) {
       return;
     }
-
     _scrollController.animateTo(
       safeOffset,
+      duration: FluffyThemes.animationDuration,
+      curve: FluffyThemes.animationCurve,
+    );
+  }
+
+  void _scrollLeft() {
+    final currentOffset = _scrollController.offset;
+    final scrollAmount = FluffyThemes.isColumnMode(context) ? cardWidth : cardHeight;
+    
+    _scrollController.animateTo(
+      (currentOffset - scrollAmount).clamp(0.0, _scrollController.position.maxScrollExtent),
+      duration: FluffyThemes.animationDuration,
+      curve: FluffyThemes.animationCurve,
+    );
+  }
+
+  void _scrollRight() {
+    final currentOffset = _scrollController.offset;
+    final scrollAmount = FluffyThemes.isColumnMode(context) ? cardWidth : cardHeight;
+    
+    _scrollController.animateTo(
+      (currentOffset + scrollAmount).clamp(0.0, _scrollController.position.maxScrollExtent),
       duration: FluffyThemes.animationDuration,
       curve: FluffyThemes.animationCurve,
     );
@@ -123,15 +143,87 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         vertical: 16.0,
         horizontal: FluffyThemes.isColumnMode(context) ? 16.0 : 0.0,
       ),
+      height: FluffyThemes.isColumnMode(context) ? cardHeight + 2 * cardPadding + 16.0 : null,
       child: FluffyThemes.isColumnMode(context)
-          ? ListView(
-              controller: _scrollController,
-              scrollDirection: Axis.horizontal,
-              children: cards,
+          ? Stack(
+              alignment: Alignment.center,
+              children: [
+                // Main content
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 45.0), // Space for buttons
+                  child: ListView(
+                    controller: _scrollController,
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    children: cards,
+                  ),
+                ),
+                
+                // Left button
+                Positioned(
+                  left: 0,
+                  top: cardHeight / 2 - 20.0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor.withAlpha((0.8 * 255).toInt()),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.chevron_left),
+                      onPressed: () => _scrollLeft(),
+                      iconSize: 24.0,
+                      padding: const EdgeInsets.all(8.0),
+                      constraints: const BoxConstraints(),
+                    ),
+                  ),
+                ),
+                
+                // Right button
+                Positioned(
+                  right: 0,
+                  top: cardHeight / 2 - 20.0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).cardColor.withAlpha((0.8 * 255).toInt()),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.chevron_right),
+                      onPressed: () => _scrollRight(),
+                      iconSize: 24.0,
+                      padding: const EdgeInsets.all(8.0),
+                      constraints: const BoxConstraints(),
+                    ),
+                  ),
+                ),
+                
+                // Create Chat button
+                Positioned(
+                  right: 0,
+                  top: cardHeight / 2 + 30.0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor.withAlpha((0.9 * 255).toInt()),
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.add_comment, color: Colors.white),
+                      tooltip: 'Create New Chat',
+                      onPressed: () => context.go('/rooms/newgroup'),
+                      iconSize: 24.0,
+                      padding: const EdgeInsets.all(8.0),
+                      constraints: const BoxConstraints(),
+                    ),
+                  ),
+                ),
+              ],
             )
+
           : SingleChildScrollView(
               controller: _scrollController,
               child: Wrap(
+                spacing: 8.0,
+                runSpacing: 8.0,
                 children: cards,
               ),
             ),
