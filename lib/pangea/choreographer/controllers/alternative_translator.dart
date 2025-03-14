@@ -31,20 +31,28 @@ class AlternativeTranslator {
     similarityResponse = null;
   }
 
+  // Calculate the percentage of correct choices
   double get _percentCorrectChoices {
-    final totalClickedContinuances = choreographer.itController.completedITSteps
-        .map((step) => step.continuances.where((c) => c.wasClicked).length)
-        .fold(0, (prev, curr) => prev + curr);
-
-    if (totalClickedContinuances == 0) {
+    // Get the core counts from ITController
+    final correctChoices = choreographer.itController.correctChoices;
+    final incorrectChoices = choreographer.itController.incorrectChoices;
+    final wildcardChoices = choreographer.itController.wildcardChoices;
+    final customChoices = choreographer.itController.customChoices;
+    
+    debugPrint("PERCENT DEBUG: Correct: $correctChoices, Incorrect: $incorrectChoices, Wildcard: $wildcardChoices, Custom: $customChoices");
+    
+    // Total number of choices made (both correct and incorrect)
+    final totalChoices = correctChoices + incorrectChoices + wildcardChoices + customChoices;
+    
+    if (totalChoices == 0) {
       return 0;
     }
-
-    return (choreographer.itController.completedITSteps
-                .where((step) => step.isCorrect)
-                .length /
-            totalClickedContinuances) *
-        100;
+    
+    // Calculate percentage based on correct choices as a portion of total choices
+    final percentage = (correctChoices / totalChoices) * 100;
+    debugPrint("PERCENT DEBUG: Final percentage: $percentage%");
+    
+    return percentage;
   }
 
   Future<void> setTranslationFeedback() async {
@@ -55,17 +63,18 @@ class AlternativeTranslator {
       showTranslationFeedback = true;
 
       userTranslation = choreographer.currentText;
+      
+      // Calculate percentage based on correct/total choices ratio
+      final double percentCorrect = _percentCorrectChoices;
+      debugPrint("FEEDBACK: Calculated percentage correct: $percentCorrect%");
 
-      if (choreographer.itController.allCorrect) {
-        // Even if all correct by the end, we still use first-try percentage for feedback
-        if (_percentCorrectChoices == 100) {
-          translationFeedbackKey = FeedbackKey.allCorrect;
-        } else if (_percentCorrectChoices > 90) {
-          translationFeedbackKey = FeedbackKey.newWayAllGood;
-        } else {
-          translationFeedbackKey = FeedbackKey.othersAreBetter;
-        }
-        return;
+      // Set feedback based on percentage
+      if (percentCorrect == 100) {
+        translationFeedbackKey = FeedbackKey.allCorrect;
+      } else if (percentCorrect > 90) {
+        translationFeedbackKey = FeedbackKey.newWayAllGood;
+      } else {
+        translationFeedbackKey = FeedbackKey.othersAreBetter;
       }
 
       final String? goldRouteTranslation =
@@ -82,40 +91,23 @@ class AlternativeTranslator {
           deepL: goldRouteTranslation == null,
         ),
       );
+      
       translations = results.translations;
       if (results.deepL != null || goldRouteTranslation != null) {
         translations.insert(0, (results.deepL ?? goldRouteTranslation)!);
       }
 
-      if (userTranslation?.toLowerCase() ==
+      if (userTranslation?.toLowerCase() !=
           results.bestTranslation.toLowerCase()) {
-        // This is for the case where the user's final translation is correct
-        // We still use first-try percentage for feedback
-        if (_percentCorrectChoices == 100) {
-          translationFeedbackKey = FeedbackKey.allCorrect;
-        } else if (_percentCorrectChoices > 90) {
-          translationFeedbackKey = FeedbackKey.newWayAllGood;
-        } else {
-          translationFeedbackKey = FeedbackKey.othersAreBetter;
-        }
-        return;
-      }
+        similarityResponse = await SimilarityRepo.get(
+          accessToken: choreographer.accessToken,
+          request: SimilarityRequestModel(
+            benchmark: results.bestTranslation,
+            toCompare: [userTranslation!],
+          ),
+        );
 
-      similarityResponse = await SimilarityRepo.get(
-        accessToken: choreographer.accessToken,
-        request: SimilarityRequestModel(
-          benchmark: results.bestTranslation,
-          toCompare: [userTranslation!],
-        ),
-      );
-
-      showAlternativeTranslations = true;
-
-      // Set feedback based on first-try percentage
-      if (_percentCorrectChoices > 90) {
-        translationFeedbackKey = FeedbackKey.newWayAllGood;
-      } else {
-        translationFeedbackKey = FeedbackKey.othersAreBetter;
+        showAlternativeTranslations = true;
       }
     } catch (err, stack) {
       if (err is! http.Response) {
@@ -142,7 +134,8 @@ class AlternativeTranslator {
 
   String translationFeedback(BuildContext context) {
     final String displayScore = _percentCorrectChoices.toStringAsFixed(0);
-
+    
+    // Use original feedback messages
     switch (translationFeedbackKey) {
       case FeedbackKey.allCorrect:
         return "Match: $displayScore%\n${L10n.of(context).allCorrect}";
