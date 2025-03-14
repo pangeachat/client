@@ -188,7 +188,7 @@ class MessageSpeechToTextCardState extends State<MessageSpeechToTextCard> {
           if (widget.messageEvent.senderId == Matrix.of(context).client.userID)
             Column(
               children: [
-                const SizedBox(height: 16),
+                const SizedBox(height: 6),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -212,6 +212,7 @@ class MessageSpeechToTextCardState extends State<MessageSpeechToTextCard> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Expanded(
+                      flex: 1,
                       child: InstructionsInlineTooltip(
                         instructionsEnum: InstructionsEnum.speechToText,
                       ),
