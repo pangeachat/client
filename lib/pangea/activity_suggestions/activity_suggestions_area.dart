@@ -123,18 +123,12 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         vertical: 16.0,
         horizontal: FluffyThemes.isColumnMode(context) ? 16.0 : 0.0,
       ),
-      child: FluffyThemes.isColumnMode(context)
-          ? ListView(
-              controller: _scrollController,
-              scrollDirection: Axis.horizontal,
-              children: cards,
-            )
-          : SingleChildScrollView(
-              controller: _scrollController,
-              child: Wrap(
-                children: cards,
-              ),
-            ),
+      child: SingleChildScrollView(
+        controller: _scrollController,
+        child: Wrap(
+          children: cards,
+        ),
+      ),
     );
   }
 }
