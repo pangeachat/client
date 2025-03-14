@@ -4,7 +4,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -18,7 +17,6 @@ import 'package:fluffychat/pangea/activity_suggestions/create_chat_card.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-
 
 class ActivitySuggestionsArea extends StatefulWidget {
   const ActivitySuggestionsArea({super.key});
@@ -64,10 +62,12 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
 
   void _scrollLeft() {
     final currentOffset = _scrollController.offset;
-    final scrollAmount = FluffyThemes.isColumnMode(context) ? cardWidth : cardHeight;
-    
+    final scrollAmount =
+        FluffyThemes.isColumnMode(context) ? cardWidth : cardHeight;
+
     _scrollController.animateTo(
-      (currentOffset - scrollAmount).clamp(0.0, _scrollController.position.maxScrollExtent),
+      (currentOffset - scrollAmount)
+          .clamp(0.0, _scrollController.position.maxScrollExtent),
       duration: FluffyThemes.animationDuration,
       curve: FluffyThemes.animationCurve,
     );
@@ -75,10 +75,12 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
 
   void _scrollRight() {
     final currentOffset = _scrollController.offset;
-    final scrollAmount = FluffyThemes.isColumnMode(context) ? cardWidth : cardHeight;
-    
+    final scrollAmount =
+        FluffyThemes.isColumnMode(context) ? cardWidth : cardHeight;
+
     _scrollController.animateTo(
-      (currentOffset + scrollAmount).clamp(0.0, _scrollController.position.maxScrollExtent),
+      (currentOffset + scrollAmount)
+          .clamp(0.0, _scrollController.position.maxScrollExtent),
       duration: FluffyThemes.animationDuration,
       curve: FluffyThemes.animationCurve,
     );
@@ -143,14 +145,17 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         vertical: 16.0,
         horizontal: FluffyThemes.isColumnMode(context) ? 16.0 : 0.0,
       ),
-      height: FluffyThemes.isColumnMode(context) ? cardHeight + 2 * cardPadding + 16.0 : null,
+      height: FluffyThemes.isColumnMode(context)
+          ? cardHeight + 2 * cardPadding + 16.0
+          : null,
       child: FluffyThemes.isColumnMode(context)
           ? Stack(
               alignment: Alignment.center,
               children: [
                 // Main content
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 45.0), // Space for buttons
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 45.0), // Space for buttons
                   child: ListView(
                     controller: _scrollController,
                     scrollDirection: Axis.horizontal,
@@ -158,14 +163,16 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     children: cards,
                   ),
                 ),
-                
+
                 // Left button
                 Positioned(
                   left: 0,
                   top: cardHeight / 2 - 20.0,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor.withAlpha((0.8 * 255).toInt()),
+                      color: Theme.of(context)
+                          .cardColor
+                          .withAlpha((0.8 * 255).toInt()),
                       borderRadius: BorderRadius.circular(25),
                     ),
                     child: IconButton(
@@ -177,14 +184,16 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     ),
                   ),
                 ),
-                
+
                 // Right button
                 Positioned(
                   right: 0,
                   top: cardHeight / 2 - 20.0,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor.withAlpha((0.8 * 255).toInt()),
+                      color: Theme.of(context)
+                          .cardColor
+                          .withAlpha((0.8 * 255).toInt()),
                       borderRadius: BorderRadius.circular(25),
                     ),
                     child: IconButton(
@@ -196,14 +205,16 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     ),
                   ),
                 ),
-                
+
                 // Create Chat button
                 Positioned(
                   right: 0,
                   top: cardHeight / 2 + 30.0,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withAlpha((0.9 * 255).toInt()),
+                      color: Theme.of(context)
+                          .primaryColor
+                          .withAlpha((0.9 * 255).toInt()),
                       borderRadius: BorderRadius.circular(25),
                     ),
                     child: IconButton(
@@ -218,7 +229,6 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                 ),
               ],
             )
-
           : SingleChildScrollView(
               controller: _scrollController,
               child: Wrap(
