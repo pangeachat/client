@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
@@ -17,7 +19,8 @@ class VocabAnalyticsListView extends StatelessWidget {
   List<ConstructUses> get vocab => MatrixState
       .pangeaController.getAnalytics.constructListModel
       .constructList(type: ConstructTypeEnum.vocab)
-    ..sort((a, b) => a.lemma.toLowerCase().compareTo(b.lemma.toLowerCase()));
+      .where((use) => use.lemma.isNotEmpty)
+      .sorted((a, b) => a.lemma.toLowerCase().compareTo(b.lemma.toLowerCase()));
 
   const VocabAnalyticsListView({
     super.key,
@@ -26,44 +29,50 @@ class VocabAnalyticsListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          const InstructionsInlineTooltip(
-            instructionsEnum: InstructionsEnum.analyticsVocabList,
+    return Column(
+      children: [
+        const InstructionsInlineTooltip(
+          instructionsEnum: InstructionsEnum.analyticsVocabList,
+        ),
+        Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Row(
+            spacing: 48.0,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: ConstructLevelEnum.values.reversed
+                .map((constructLevelCategory) {
+              final int count = vocab
+                  .where((e) => e.lemmaCategory == constructLevelCategory)
+                  .length;
+              return Badge(
+                label: Text(count.toString()),
+                child: constructLevelCategory.icon(24),
+              );
+            }).toList(),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 50,
-              children: ConstructLevelEnum.values.reversed
-                  .map((constructLevelCategory) {
-                final int count = vocab
-                    .where((e) => e.lemmaCategory == constructLevelCategory)
-                    .length;
-
-                return Badge(
-                  label: Text(count.toString()),
-                  child: constructLevelCategory.icon(24),
+        ),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 100.0,
+                mainAxisExtent: 100.0,
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 8.0,
+              ),
+              itemCount: vocab.length,
+              itemBuilder: (context, index) {
+                final vocabItem = vocab[index];
+                return VocabAnalyticsListTile(
+                  onTap: () => onConstructZoom(vocabItem.id),
+                  constructUse: vocabItem,
                 );
-              }).toList(),
+              },
             ),
           ),
-          Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            runAlignment: WrapAlignment.start,
-            children: vocab
-                .map(
-                  (vocab) => VocabAnalyticsListTile(
-                    onTap: () => onConstructZoom(vocab.id),
-                    constructUse: vocab,
-                  ),
-                )
-                .toList(),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
