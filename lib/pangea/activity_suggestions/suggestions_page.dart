@@ -67,7 +67,7 @@ class SuggestionsPage extends StatelessWidget {
                   child: LearningProgressIndicators(),
                 ),
               const SizedBox(height: 16.0),
-              const Expanded(
+              const Flexible(
                 child: ActivitySuggestionsArea(),
               ),
             ],
