@@ -21,15 +21,12 @@ class ToolbarButton extends StatelessWidget {
 
   Color color(BuildContext context) => mode.iconButtonColor(
         context,
-        overlayController.toolbarMode,
-        overlayController.pangeaMessageEvent!.proportionOfActivitiesCompleted,
-        overlayController.isPracticeComplete,
+        overlayController,
       );
 
-  bool get enabled => mode.isUnlocked(
-        overlayController.pangeaMessageEvent!.proportionOfActivitiesCompleted,
-        overlayController.isPracticeComplete,
-      );
+  bool get enabled => mode == MessageMode.messageTranslation
+      ? overlayController.isTranslationUnlocked
+      : true;
 
   @override
   Widget build(BuildContext context) {

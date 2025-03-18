@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/learning_settings/constants/language_constants
 import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_emoji_row.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
@@ -164,6 +165,11 @@ class WordZoomWidget extends StatelessWidget {
                         isSelected: MessageMode.messageTextToSpeech ==
                             overlayController.toolbarMode,
                         baseOpacity: 0.4,
+                        isDisabled: _selectedToken.shouldDoActivity(
+                          a: ActivityTypeEnum.wordFocusListening,
+                          feature: null,
+                          tag: null,
+                        ),
                       ),
                     ],
                     ..._selectedToken.sortedMorphs.map(

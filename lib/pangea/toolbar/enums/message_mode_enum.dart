@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -11,6 +6,9 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 enum MessageMode {
   practiceActivity,
@@ -120,9 +118,9 @@ extension MessageModeExtension on MessageMode {
         return InstructionsEnum.chooseWordAudio;
       case MessageMode.wordEmoji:
         return InstructionsEnum.chooseEmoji;
-      case MessageMode.messageTranslation:
       case MessageMode.noneSelected:
         return InstructionsEnum.readingAssistanceOverview;
+      case MessageMode.messageTranslation:
       case MessageMode.messageMeaning:
       case MessageMode.wordZoom:
       case MessageMode.practiceActivity:
@@ -153,14 +151,12 @@ extension MessageModeExtension on MessageMode {
   }
 
   bool isUnlocked(
-    double proportionOfActivitiesCompleted,
-    bool totallyDone,
+    MessageOverlayController overlayController,
   ) {
     switch (this) {
       case MessageMode.messageTranslation:
-        return proportionOfActivitiesCompleted >= pointOnBar || totallyDone;
+        return overlayController.isTranslationUnlocked;
       case MessageMode.practiceActivity:
-        return !totallyDone;
       case MessageMode.messageTextToSpeech:
       case MessageMode.messageSpeechToText:
       case MessageMode.messageMeaning:
@@ -175,28 +171,40 @@ extension MessageModeExtension on MessageMode {
 
   bool get showButton => this != MessageMode.practiceActivity;
 
+  bool isModeDone(MessageOverlayController overlayController) {
+    switch (this) {
+      case MessageMode.messageTranslation:
+        return overlayController.isTotallyDone;
+      case MessageMode.messageTextToSpeech:
+        return overlayController.isListeningDone;
+      case MessageMode.wordEmoji:
+        return overlayController.isEmojiDone;
+      case MessageMode.wordMorph:
+        return overlayController.isMorphDone;
+      case MessageMode.wordMeaning:
+        return overlayController.isMeaningDone;
+      default:
+        return false;
+    }
+  }
+
   Color iconButtonColor(
     BuildContext context,
-    MessageMode currentMode,
-    double proportionOfActivitiesUnlocked,
-    bool totallyDone,
+    MessageOverlayController overlayController,
   ) {
-    if (this == MessageMode.practiceActivity && totallyDone) {
+    if (overlayController.isTotallyDone) {
       return AppConfig.gold;
     }
 
     //locked
-    if (!isUnlocked(proportionOfActivitiesUnlocked, totallyDone)) {
+    if (!isUnlocked(overlayController)) {
       return barAndLockedButtonColor(context);
     }
 
-    //unlocked and active
-    if (this == currentMode) {
-      return totallyDone ? AppConfig.gold : AppConfig.primaryColorLight;
-    }
-
-    //unlocked and inactive
-    return Theme.of(context).colorScheme.primaryContainer;
+    //unlocked
+    return isModeDone(overlayController)
+        ? AppConfig.gold
+        : Theme.of(context).colorScheme.primaryContainer;
   }
 
   static Color barAndLockedButtonColor(BuildContext context) {

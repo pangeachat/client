@@ -4671,7 +4671,7 @@
       }
     }
   },
-  "chooseLemmaMeaningInstructionsBody": "Match the meanings with the words in the message to unlock the message translation!",
+  "chooseLemmaMeaningInstructionsBody": "Match the meanings below with the underlined words in the message.",
   "doubleClickToEdit": "Double-click to edit.",
   "removeFeature": "Remove {feature}",
   "@removeFeature": {

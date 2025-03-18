@@ -344,9 +344,6 @@ class PangeaToken {
         return true;
       case ActivityTypeEnum.morphId:
         if (morphFeature == null || morphTag == null) {
-          debugPrint(
-            "in _isActivityProbablyLevelAppropriate for morphId with null feature or tag",
-          );
           return morphsThatShouldBePracticed.isNotEmpty;
         }
         return ConstructIdentifier(

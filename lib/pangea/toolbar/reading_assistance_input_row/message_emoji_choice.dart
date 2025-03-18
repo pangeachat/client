@@ -1,14 +1,19 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice_item.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 const int totalEmojiChoicesToDisplay = 7;
+
+const Size emojiButtonSize = Size(60, 60);
+BoxDecoration emojiButtonDecoration = BoxDecoration(
+  color: Colors.transparent,
+  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+);
 
 class MessageEmojiChoice extends StatelessWidget {
   final ChatController controller;
@@ -70,6 +75,10 @@ class MessageEmojiChoice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (overlayController.messageLemmaInfos == null) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
@@ -77,6 +86,13 @@ class MessageEmojiChoice extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
+          if (overlayController.messageEmojisForDisplay.isEmpty)
+            Center(
+              child: Text(
+                'All placed',
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            ),
           Wrap(
             alignment: WrapAlignment.center,
             spacing: 2.0, // Adjust spacing between items
@@ -92,9 +108,11 @@ class MessageEmojiChoice extends StatelessWidget {
                 final isSelected =
                     overlayController.selectedChoices.contains(index);
 
-                return MessageEmojiChoiceItem(
-                  textSize: 26,
-                  content: emoji,
+                return MessageChoiceItem(
+                  content: Text(
+                    emoji,
+                    style: const TextStyle(fontSize: 26),
+                  ),
                   contentOpacity:
                       alreadyChosenForLemma && !isSelected ? 0.1 : 1,
                   onTap: () => !alreadyChosenForLemma
@@ -108,7 +126,6 @@ class MessageEmojiChoice extends StatelessWidget {
                       .contains(emoji),
                   onDoubleTap: () => {},
                   onLongPress: () => {},
-                  token: null,
                 );
               },
             ).toList(),

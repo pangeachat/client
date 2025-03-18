@@ -1,13 +1,11 @@
-import 'dart:math';
-
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/utils/shrinkable_text.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:flutter/material.dart';
 
 const double tokenButtonHeight = 40.0;
 const double tokenButtonDefaultFontSize = 10;
@@ -92,33 +90,56 @@ class MessageTokenButtonState extends State<MessageTokenButton>
   Widget get content {
     switch (widget.overlayController!.toolbarMode) {
       case MessageMode.wordEmoji:
-        if (widget.token.text.content.length == 1) {
-          return Text(
-            widget.token.vocabConstructID.userSetEmoji.firstOrNull ?? '',
-            style: emojiStyle,
-          );
-        }
-        return Stack(
-          alignment: Alignment.center,
-          children: widget.token.vocabConstructID.userSetEmoji
-              .take(maxEmojisPerLemma)
-              .mapIndexed(
-                (index, emoji) => Positioned(
-                  left: min(
-                    index /
-                        widget.token.vocabConstructID.userSetEmoji.length *
-                        totalAvailableWidth,
-                    index * emojiSize,
-                  ),
-                  child: Text(
-                    emoji,
-                    style: emojiStyle,
-                  ),
-                ),
-              )
-              .toList()
-              .reversed
-              .toList(),
+        // if (widget.token.text.content.length == 1 || maxEmojisPerLemma == 1) {
+        return ShrinkableText(
+          text: widget.token.vocabConstructID.userSetEmoji.firstOrNull ?? '',
+          maxWidth: totalAvailableWidth,
+          style: emojiStyle,
+        );
+      // }
+      // return Stack(
+      //   alignment: Alignment.center,
+      //   children: widget.token.vocabConstructID.userSetEmoji
+      //       .take(maxEmojisPerLemma)
+      //       .mapIndexed(
+      //         (index, emoji) => Positioned(
+      //           left: min(
+      //             index /
+      //                 widget.token.vocabConstructID.userSetEmoji.length *
+      //                 totalAvailableWidth,
+      //             index * emojiSize,
+      //           ),
+      //           child: Text(
+      //             emoji,
+      //             style: emojiStyle,
+      //           ),
+      //         ),
+      //       )
+      //       .toList()
+      //       .reversed
+      //       .toList(),
+      // );
+      case MessageMode.wordMeaning:
+        return Opacity(
+          opacity: widget.token.shouldDoActivity(
+            a: ActivityTypeEnum.wordMeaning,
+            feature: null,
+            tag: null,
+          )
+              ? 0.6
+              : 0,
+          child: Icon(MessageMode.wordMeaning.icon),
+        );
+      case MessageMode.messageTextToSpeech:
+        return Opacity(
+          opacity: widget.token.shouldDoActivity(
+            a: ActivityTypeEnum.wordFocusListening,
+            feature: null,
+            tag: null,
+          )
+              ? 0.6
+              : 0,
+          child: Icon(MessageMode.messageTextToSpeech.icon),
         );
       default:
         return const SizedBox(height: tokenButtonHeight);

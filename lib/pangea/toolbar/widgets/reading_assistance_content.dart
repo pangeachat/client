@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix_api_lite/model/message_types.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
@@ -16,10 +11,13 @@ import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_act
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix_api_lite/model/message_types.dart';
 
 const double minCardHeight = 70;
 
-class ReadingAssistanceContent extends StatelessWidget {
+class ReadingAssistanceContent extends StatefulWidget {
   final PangeaMessageEvent pangeaMessageEvent;
   final MessageOverlayController overlayController;
   final Duration animationDuration;
@@ -31,8 +29,14 @@ class ReadingAssistanceContent extends StatelessWidget {
     this.animationDuration = FluffyThemes.animationDuration,
   });
 
+  @override
+  ReadingAssistanceContentState createState() =>
+      ReadingAssistanceContentState();
+}
+
+class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
   TtsController get ttsController =>
-      overlayController.widget.chatController.choreographer.tts;
+      widget.overlayController.widget.chatController.choreographer.tts;
 
   Widget? toolbarContent(BuildContext context) {
     final bool subscribed =
@@ -40,44 +44,44 @@ class ReadingAssistanceContent extends StatelessWidget {
 
     if (!subscribed) {
       return MessageUnsubscribedCard(
-        controller: overlayController,
+        controller: widget.overlayController,
       );
     }
 
-    if ((overlayController.messageAnalyticsEntry?.hasHiddenWordActivity ??
+    if ((widget.overlayController.messageAnalyticsEntry
+                ?.hasHiddenWordActivity ??
             false) ||
-        (overlayController.messageAnalyticsEntry?.hasMessageMeaningActivity ??
+        (widget.overlayController.messageAnalyticsEntry
+                ?.hasMessageMeaningActivity ??
             false)) {
       return PracticeActivityCard(
-        pangeaMessageEvent: pangeaMessageEvent,
-        overlayController: overlayController,
+        pangeaMessageEvent: widget.pangeaMessageEvent,
+        overlayController: widget.overlayController,
         targetTokensAndActivityType:
-            overlayController.messageAnalyticsEntry!.nextActivity!,
+            widget.overlayController.messageAnalyticsEntry!.nextActivity!,
         location: AnalyticsUpdateOrigin.practiceActivity,
       );
     }
 
-    if (!overlayController.initialized) {
+    if (!widget.overlayController.initialized) {
       return const ToolbarContentLoadingIndicator();
     }
 
-    final unlocked = overlayController.toolbarMode.isUnlocked(
-      overlayController.pangeaMessageEvent!.proportionOfActivitiesCompleted,
-      overlayController.isPracticeComplete,
-    );
+    final unlocked = widget.overlayController.toolbarMode
+        .isUnlocked(widget.overlayController);
 
     if (!unlocked) {
-      return MessageModeLockedCard(controller: overlayController);
+      return MessageModeLockedCard(controller: widget.overlayController);
     }
 
-    switch (overlayController.toolbarMode) {
+    switch (widget.overlayController.toolbarMode) {
       case MessageMode.messageTranslation:
       // return MessageTranslationCard(
-      //   messageEvent: pangeaMessageEvent,
+      //   messageEvent: widget.pangeaMessageEvent,
       // );
       case MessageMode.messageSpeechToText:
       // return MessageSpeechToTextCard(
-      //   messageEvent: pangeaMessageEvent,
+      //   messageEvent: widget.pangeaMessageEvent,
       // );
       case MessageMode.noneSelected:
       // return Padding(
@@ -88,18 +92,18 @@ class ReadingAssistanceContent extends StatelessWidget {
       //   ),
       // );
       case MessageMode.messageMeaning:
-      // return MessageMeaningCard(controller: overlayController);
+      // return MessageMeaningCard(controller: widget.overlayController);
       case MessageMode.messageTextToSpeech:
       // return MessageAudioCard(
-      //     messageEvent: overlayController.pangeaMessageEvent!,
-      //     overlayController: overlayController,
-      //     setIsPlayingAudio: overlayController.setIsPlayingAudio);
+      //     messageEvent: widget.overlayController.pangeaMessageEvent!,
+      //     overlayController: widget.overlayController,
+      //     setIsPlayingAudio: widget.overlayController.setIsPlayingAudio);
       case MessageMode.practiceActivity:
       case MessageMode.wordZoom:
       case MessageMode.wordEmoji:
       case MessageMode.wordMorph:
       case MessageMode.wordMeaning:
-        if (overlayController.selectedToken == null) {
+        if (widget.overlayController.selectedToken == null) {
           return Padding(
             padding: const EdgeInsets.all(16),
             child: Text(
@@ -109,10 +113,10 @@ class ReadingAssistanceContent extends StatelessWidget {
           );
         }
         return WordZoomWidget(
-          token: overlayController.selectedToken!,
-          messageEvent: overlayController.pangeaMessageEvent!,
+          token: widget.overlayController.selectedToken!,
+          messageEvent: widget.overlayController.pangeaMessageEvent!,
           tts: ttsController,
-          overlayController: overlayController,
+          overlayController: widget.overlayController,
         );
     }
   }
@@ -120,7 +124,7 @@ class ReadingAssistanceContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (![MessageTypes.Text, MessageTypes.Audio].contains(
-      pangeaMessageEvent.event.messageType,
+      widget.pangeaMessageEvent.event.messageType,
     )) {
       return const SizedBox();
     }
@@ -144,7 +148,7 @@ class ReadingAssistanceContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AnimatedSize(
-              duration: animationDuration,
+              duration: widget.animationDuration,
               child: toolbarContent(context),
             ),
           ],

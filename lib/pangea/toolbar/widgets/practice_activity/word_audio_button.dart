@@ -11,6 +11,7 @@ class WordAudioButton extends StatefulWidget {
   final double size;
   final bool isSelected;
   final double baseOpacity;
+  final bool isDisabled;
 
   const WordAudioButton({
     super.key,
@@ -18,6 +19,7 @@ class WordAudioButton extends StatefulWidget {
     this.size = 24,
     this.isSelected = false,
     this.baseOpacity = 1,
+    this.isDisabled = false,
   });
 
   @override
@@ -30,7 +32,8 @@ class WordAudioButtonState extends State<WordAudioButton> {
 
   @override
   void didUpdateWidget(covariant WordAudioButton oldWidget) {
-    if (oldWidget.isSelected != widget.isSelected) {
+    if (oldWidget.isSelected != widget.isSelected ||
+        oldWidget.isDisabled != widget.isDisabled) {
       setState(() {});
     }
     super.didUpdateWidget(oldWidget);
@@ -63,6 +66,9 @@ class WordAudioButtonState extends State<WordAudioButton> {
               _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
           iconSize: widget.size,
           onPressed: () async {
+            if (widget.isDisabled) {
+              return;
+            }
             if (_isPlaying) {
               await tts.stop();
               if (mounted) {
