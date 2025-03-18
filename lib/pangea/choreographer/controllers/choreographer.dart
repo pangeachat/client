@@ -348,7 +348,14 @@ class Choreographer {
     }
   }
 
+  final List<bool> answerChoices = [];
+   
   void onITChoiceSelect(ITStep step) {
+    if (step.chosen != null) {
+      answerChoices.add(step.continuances[step.chosen!].wasClicked);
+      debugPrint('ANSWER CHOICES: $answerChoices');
+    }
+    
     choreoRecord.addRecord(_textController.text, step: step);
     _textController.setSystemText(
       _textController.text + step.continuances[step.chosen!].text,

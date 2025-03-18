@@ -315,9 +315,11 @@ class ITController {
   //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
+
     final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
 
     completedITSteps.add(itStep);
+    debugPrint('TEST: $itStep');
 
     showChoiceFeedback = true;
 
