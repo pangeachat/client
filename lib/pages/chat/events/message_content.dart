@@ -385,8 +385,8 @@ class MessageContent extends StatelessWidget {
                             overlayController!.toolbarMode,
                           )
                         : false,
-                overlayController:
-                    isTransitionAnimation ? null : overlayController,
+                overlayController: overlayController,
+                isTransitionAnimation: isTransitionAnimation,
               );
             }
 

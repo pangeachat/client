@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
@@ -44,7 +45,10 @@ class MessageTokenButtonState extends State<MessageTokenButton>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(
+        milliseconds: AppConfig.overlayAnimationDuration,
+        // seconds: 5,
+      ),
     );
 
     _heightAnimation = Tween<double>(
@@ -124,7 +128,7 @@ class MessageTokenButtonState extends State<MessageTokenButton>
   @override
   Widget build(BuildContext context) {
     if (!widget.animate) {
-      widget.overlayController != null
+      return widget.overlayController != null
           ? Container(
               height: tokenButtonHeight,
               padding: const EdgeInsets.only(top: 10.0),

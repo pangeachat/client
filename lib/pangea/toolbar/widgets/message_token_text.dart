@@ -28,6 +28,7 @@ class MessageTokenText extends StatelessWidget {
   final bool Function(PangeaToken)? _isHighlighted;
   final MessageMode? _messageMode;
   final MessageOverlayController? _overlayController;
+  final bool _isTransitionAnimation;
 
   const MessageTokenText({
     super.key,
@@ -39,13 +40,15 @@ class MessageTokenText extends StatelessWidget {
     bool Function(PangeaToken)? isHighlighted,
     MessageMode? messageMode,
     MessageOverlayController? overlayController,
+    bool isTransitionAnimation = false,
   })  : _onClick = onClick,
         _isSelected = isSelected,
         _style = style,
         _pangeaMessageEvent = pangeaMessageEvent,
         _messageMode = messageMode,
         _isHighlighted = isHighlighted,
-        _overlayController = overlayController;
+        _overlayController = overlayController,
+        _isTransitionAnimation = isTransitionAnimation;
 
   List<PangeaToken>? get _tokens =>
       _pangeaMessageEvent.messageDisplayRepresentation?.tokens;
@@ -81,6 +84,7 @@ class MessageTokenText extends StatelessWidget {
       messageMode: _messageMode,
       isHighlighted: _isHighlighted,
       overlayController: _overlayController,
+      isTransitionAnimation: _isTransitionAnimation,
     );
   }
 }
@@ -145,6 +149,7 @@ class MessageTextWidget extends StatelessWidget {
 
   final Animation<double>? contentSizeAnimation;
   final MessageOverlayController? overlayController;
+  final bool isTransitionAnimation;
 
   const MessageTextWidget({
     super.key,
@@ -160,6 +165,7 @@ class MessageTextWidget extends StatelessWidget {
     this.isHighlighted,
     this.contentSizeAnimation,
     this.overlayController,
+    this.isTransitionAnimation = false,
   });
 
   /// for some reason, this isn't the same as tokenTextWidth
@@ -260,14 +266,14 @@ class MessageTextWidget extends StatelessWidget {
 
             return WidgetSpan(
               child: CompositedTransformTarget(
-                link: overlayController == null
+                link: overlayController == null || isTransitionAnimation
                     ? LayerLinkAndKey(token.hashCode.toString()).link
                     : MatrixState.pAnyState
                         .layerLinkAndKey(token.text.uniqueKey)
                         .link,
                 child: Column(
-                  key: overlayController == null
-                      ? LayerLinkAndKey(token.hashCode.toString()).key
+                  key: overlayController == null || isTransitionAnimation
+                      ? null
                       : MatrixState.pAnyState
                           .layerLinkAndKey(token.text.uniqueKey)
                           .key,
@@ -277,6 +283,7 @@ class MessageTextWidget extends StatelessWidget {
                       overlayController: overlayController,
                       textStyle: style,
                       width: tokenWidth,
+                      animate: isTransitionAnimation,
                     ),
                     MouseRegion(
                       cursor: SystemMouseCursors.click,
@@ -348,7 +355,10 @@ class MessageTextWidget extends StatelessWidget {
                       duration: const Duration(
                         milliseconds: AppConfig.overlayAnimationDuration,
                       ),
-                      height: overlayController != null ? 4 : 0,
+                      height:
+                          overlayController != null && !isTransitionAnimation
+                              ? 4
+                              : 0,
                       width: tokenWidth,
                       child: Container(
                         color: backgroundColor(tokenPosition),
