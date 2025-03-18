@@ -425,7 +425,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         alignment: Alignment.center,
         children: [
           Opacity(
-            opacity: _finishedAnimation ? 1.0 : 0.5,
+            opacity: _finishedAnimation ? 1.0 : 0.0,
             child: OverlayCenterContent(
               event: widget.event,
               messageHeight: _messageHeight,
@@ -440,10 +440,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
               hasReactions: _hasReactions,
               onChangeMessageSize: _setCenteredMessageSize,
               onChangeButtonsSize: _setCenteredButtonsSize,
-              isVisible: false,
-              contentAnimationDuration: !_finishedAnimation
-                  ? const Duration(milliseconds: 0)
-                  : FluffyThemes.animationDuration,
+              isTransitionAnimation: false,
             ),
           ),
           if (!_finishedAnimation)
@@ -474,8 +471,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                     showToolbarButtons: showToolbarButtons,
                     hasReactions: _hasReactions,
                     sizeAnimation: _messageSizeAnimation,
-                    isVisible: true,
-                    showContent: false,
+                    isTransitionAnimation: true,
                   ),
                 );
               },

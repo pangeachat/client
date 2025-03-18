@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message_reactions.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -30,11 +29,8 @@ class OverlayCenterContent extends StatelessWidget {
   final double toolbarMaxWidth;
 
   final bool showToolbarButtons;
-  final bool showContent;
   final bool hasReactions;
-  final bool isVisible;
-
-  final Duration contentAnimationDuration;
+  final bool isTransitionAnimation;
 
   const OverlayCenterContent({
     required this.event,
@@ -52,9 +48,7 @@ class OverlayCenterContent extends StatelessWidget {
     this.onChangeContentSize,
     this.onChangeButtonsSize,
     this.sizeAnimation,
-    this.isVisible = true,
-    this.showContent = true,
-    this.contentAnimationDuration = FluffyThemes.animationDuration,
+    this.isTransitionAnimation = false,
     super.key,
   });
 
@@ -86,10 +80,16 @@ class OverlayCenterContent extends StatelessWidget {
                     prevEvent: prevEvent,
                     timeline: chatController.timeline!,
                     sizeAnimation: sizeAnimation,
-                    messageWidth: messageWidth,
-                    messageHeight: messageHeight,
-                    enforceDimensions: isVisible,
-                    isAnimating: isVisible,
+                    // there's a split seconds between when the transition animation starts and
+                    // when the sizeAnimation is set when the original dimensions need to be enforced
+                    messageWidth: sizeAnimation == null && isTransitionAnimation
+                        ? messageWidth
+                        : null,
+                    messageHeight:
+                        sizeAnimation == null && isTransitionAnimation
+                            ? messageHeight
+                            : null,
+                    isTransitionAnimation: isTransitionAnimation,
                   ),
                 ),
                 if (hasReactions)
@@ -107,7 +107,7 @@ class OverlayCenterContent extends StatelessWidget {
             ),
           ),
         ),
-        if (showContent)
+        if (!isTransitionAnimation)
           MeasureRenderBox(
             onChange: onChangeButtonsSize,
             child: ToolbarButtonRow(

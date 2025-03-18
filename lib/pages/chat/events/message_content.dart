@@ -41,7 +41,7 @@ class MessageContent extends StatelessWidget {
   final ChatController controller;
   final Event? nextEvent;
   final Event? prevEvent;
-  final bool isAnimating;
+  final bool isTransitionAnimation;
   // Pangea#
   final Timeline timeline;
 
@@ -58,7 +58,7 @@ class MessageContent extends StatelessWidget {
     required this.controller,
     this.nextEvent,
     this.prevEvent,
-    this.isAnimating = false,
+    this.isTransitionAnimation = false,
     // Pangea#
     required this.linkColor,
     required this.borderRadius,
@@ -385,8 +385,8 @@ class MessageContent extends StatelessWidget {
                             overlayController!.toolbarMode,
                           )
                         : false,
-                overlayController: isAnimating ? null : overlayController,
-                // contentSizeAnimation: contentSizeAnimation,
+                overlayController:
+                    isTransitionAnimation ? null : overlayController,
               );
             }
 
