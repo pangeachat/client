@@ -1,11 +1,6 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
@@ -18,9 +13,14 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
+import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
+import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class ConstructIdentifier {
   final String lemma;
@@ -210,8 +210,7 @@ class ConstructIdentifier {
       );
 
   bool get isContentWord =>
-      ["NOUN", "VERB", "ADJ", "ADV"].contains(category) &&
-      type == ConstructTypeEnum.vocab;
+      PartOfSpeechEnumExtensions.fromString(category)?.isContentWord ?? false;
 
   /// [form] should be passed if available and is required for morphId
   bool isActivityProbablyLevelAppropriate(ActivityTypeEnum a, String? form) {
@@ -225,7 +224,7 @@ class ConstructIdentifier {
 
         return true;
       case ActivityTypeEnum.emoji:
-        return userSetEmoji.isEmpty;
+        return userSetEmoji.length < maxEmojisPerLemma;
       case ActivityTypeEnum.morphId:
         if (form == null) {
           debugger(when: kDebugMode);
@@ -251,7 +250,16 @@ class ConstructIdentifier {
 
         return DateTime.now().difference(lastUsed).inDays >
             1 * constructUses.points;
+      case ActivityTypeEnum.wordFocusListening:
+        final pos = PartOfSpeechEnumExtensions.fromString(lemma) ??
+            PartOfSpeechEnumExtensions.fromString(category);
 
+        if (pos == null) {
+          debugger(when: kDebugMode);
+          return false;
+        }
+
+        return pos.canBeHeard;
       default:
         debugger(when: kDebugMode);
         ErrorHandler.logError(

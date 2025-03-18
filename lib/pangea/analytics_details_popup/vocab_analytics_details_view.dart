@@ -1,7 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup_content.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -13,6 +9,8 @@ import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_b
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_text_with_audio_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 /// Displays information about selected lemma, and its usage
 class VocabDetailsView extends StatelessWidget {
@@ -79,7 +77,11 @@ class VocabDetailsView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                LemmaEmojiRow(cId: constructId, onTap: () => {}),
+                LemmaEmojiRow(
+                  cId: constructId,
+                  onTap: () => {},
+                  removeCallback: null,
+                ),
               ],
             ),
             Align(

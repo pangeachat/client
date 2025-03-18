@@ -4507,7 +4507,7 @@
   },
   "botModeValidation": "Please select a chat mode",
   "clickBestOption": "Choose the best options to translate your message!",
-  "completeActivitiesToUnlock": "Complete word activities to unlock audio and translation!",
+  "completeActivitiesToUnlock": "Complete one of the activities (emoji, meaning, listening OR grammar) to unlock the translation!",
   "botSettingsSubtitle": "Invite bot to moderate chat activity",
   "invitePeople": "Invite users",
   "noCapacityLimit": "No capacity limit",
@@ -4711,7 +4711,6 @@
   "video": "Video",
   "nan": "Not applicable",
   "activityPlannerOverviewInstructionsBody": "Choose a topic, mode, learning objective and generate an activity for the chat!",
-  "completeActivitiesToUnlock": "Complete the highlighted word activities to unlock",
   "myBookmarkedActivities": "My Bookmarked Activities",
   "noBookmarkedActivities": "No bookmarked activities",
   "activityTitle": "Activity Title",
@@ -4793,7 +4792,7 @@
   "downloadGboard": "Download Gboard",
   "autocorrectNotAvailable": "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!",
   "pleaseUpdateApp": "Please update the app to continue.",
-  "chooseEmojiInstructionsBody": "Pangea Bot has generated 4-5 emojis for each unique vocab word in the message. Select emojis then select a word to guess which ones the bot generated for each. Don't worry! No points off for disagreeing. 😅",
+  "chooseEmojiInstructionsBody": "Match emojis with the words they best represent. Don't worry! No points off for disagreeing. 😅",
   "pickAnEmojiFor": "Pick an emoji for ${lemma}",
   "@pickAnEmojiFor": {
     "type": "String",
@@ -4814,5 +4813,6 @@
   "createOwnChat": "Create your own chat",
   "pleaseEnterInt": "Please enter a number",
   "home": "Home",
-  "join": "Join"
-} 
+  "join": "Join",
+  "readingAssistanceOverviewBody": "Here you can access mini-games on visualizing vocab, practice listening, meaning, and grammar concepts. Earn 10 XP to unlock the full message translation!"
+}

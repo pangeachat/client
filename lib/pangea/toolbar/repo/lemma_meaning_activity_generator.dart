@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
@@ -14,6 +12,7 @@ import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_bank_repo.dart';
 import 'package:fluffychat/pangea/word_bank/vocab_request.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class LemmaMeaningActivityGenerator {
   Future<MessageActivityResponse> get(
@@ -35,7 +34,7 @@ class LemmaMeaningActivityGenerator {
       userL1: req.userL1,
     );
 
-    final res = await LemmaInfoRepo.get(lemmaDefReq, null);
+    final res = await LemmaInfoRepo.get(lemmaDefReq);
 
     final choices = await getDistractorMeanings(lemmaDefReq, 3);
 

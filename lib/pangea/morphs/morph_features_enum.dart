@@ -1,13 +1,11 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-
-enum MorphologicalCategories {
+enum MorphFeaturesEnum {
   Pos,
   AdvType,
   Aspect,
@@ -39,15 +37,15 @@ enum MorphologicalCategories {
   Voice,
 }
 
-extension MorphologicalCategoriesExtension on MorphologicalCategories {
+extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
   /// Convert enum to string
   String toShortString() {
     return toString().split('.').last.toLowerCase();
   }
 
   /// Convert string to enum
-  static MorphologicalCategories? fromString(String category) {
-    final morph = MorphologicalCategories.values.firstWhereOrNull(
+  static MorphFeaturesEnum? fromString(String category) {
+    final morph = MorphFeaturesEnum.values.firstWhereOrNull(
       (e) =>
           e.toShortString() ==
           category.toLowerCase().replaceAll(RegExp(r'[,\[\]]'), ''),
@@ -64,65 +62,100 @@ extension MorphologicalCategoriesExtension on MorphologicalCategories {
 
   String getDisplayCopy(BuildContext context) {
     switch (this) {
-      case MorphologicalCategories.Pos:
+      case MorphFeaturesEnum.Pos:
         return L10n.of(context).grammarCopyPOS;
-      case MorphologicalCategories.AdvType:
+      case MorphFeaturesEnum.AdvType:
         return L10n.of(context).grammarCopyADVTYPE;
-      case MorphologicalCategories.Aspect:
+      case MorphFeaturesEnum.Aspect:
         return L10n.of(context).grammarCopyASPECT;
-      case MorphologicalCategories.Case:
+      case MorphFeaturesEnum.Case:
         return L10n.of(context).grammarCopyCASE;
-      case MorphologicalCategories.ConjType:
+      case MorphFeaturesEnum.ConjType:
         return L10n.of(context).grammarCopyCONJTYPE;
-      case MorphologicalCategories.Definite:
+      case MorphFeaturesEnum.Definite:
         return L10n.of(context).grammarCopyDEFINITE;
-      case MorphologicalCategories.Degree:
+      case MorphFeaturesEnum.Degree:
         return L10n.of(context).grammarCopyDEGREE;
-      case MorphologicalCategories.Evident:
+      case MorphFeaturesEnum.Evident:
         return L10n.of(context).grammarCopyEVIDENT;
-      case MorphologicalCategories.Foreign:
+      case MorphFeaturesEnum.Foreign:
         return L10n.of(context).grammarCopyFOREIGN;
-      case MorphologicalCategories.Gender:
+      case MorphFeaturesEnum.Gender:
         return L10n.of(context).grammarCopyGENDER;
-      case MorphologicalCategories.Mood:
+      case MorphFeaturesEnum.Mood:
         return L10n.of(context).grammarCopyMOOD;
-      case MorphologicalCategories.NounType:
+      case MorphFeaturesEnum.NounType:
         return L10n.of(context).grammarCopyNOUNTYPE;
-      case MorphologicalCategories.NumForm:
+      case MorphFeaturesEnum.NumForm:
         return L10n.of(context).grammarCopyNUMFORM;
-      case MorphologicalCategories.NumType:
+      case MorphFeaturesEnum.NumType:
         return L10n.of(context).grammarCopyNUMTYPE;
-      case MorphologicalCategories.Number:
+      case MorphFeaturesEnum.Number:
         return L10n.of(context).grammarCopyNUMBER;
-      case MorphologicalCategories.NumberPsor:
+      case MorphFeaturesEnum.NumberPsor:
         return L10n.of(context).grammarCopyNUMBERPSOR;
-      case MorphologicalCategories.Person:
+      case MorphFeaturesEnum.Person:
         return L10n.of(context).grammarCopyPERSON;
-      case MorphologicalCategories.Polarity:
+      case MorphFeaturesEnum.Polarity:
         return L10n.of(context).grammarCopyPOLARITY;
-      case MorphologicalCategories.Polite:
+      case MorphFeaturesEnum.Polite:
         return L10n.of(context).grammarCopyPOLITE;
-      case MorphologicalCategories.Poss:
+      case MorphFeaturesEnum.Poss:
         return L10n.of(context).grammarCopyPOSS;
-      case MorphologicalCategories.PrepCase:
+      case MorphFeaturesEnum.PrepCase:
         return L10n.of(context).grammarCopyPREPCASE;
-      case MorphologicalCategories.PronType:
+      case MorphFeaturesEnum.PronType:
         return L10n.of(context).grammarCopyPRONTYPE;
-      case MorphologicalCategories.PunctSide:
+      case MorphFeaturesEnum.PunctSide:
         return L10n.of(context).grammarCopyPUNCTSIDE;
-      case MorphologicalCategories.PunctType:
+      case MorphFeaturesEnum.PunctType:
         return L10n.of(context).grammarCopyPUNCTTYPE;
-      case MorphologicalCategories.Reflex:
+      case MorphFeaturesEnum.Reflex:
         return L10n.of(context).grammarCopyREFLEX;
-      case MorphologicalCategories.Tense:
+      case MorphFeaturesEnum.Tense:
         return L10n.of(context).grammarCopyTENSE;
-      case MorphologicalCategories.VerbForm:
+      case MorphFeaturesEnum.VerbForm:
         return L10n.of(context).grammarCopyVERBFORM;
-      case MorphologicalCategories.VerbType:
+      case MorphFeaturesEnum.VerbType:
         return L10n.of(context).grammarCopyVERBTYPE;
-      case MorphologicalCategories.Voice:
+      case MorphFeaturesEnum.Voice:
         return L10n.of(context).grammarCopyVOICE;
     }
+  }
+
+  /// the subset of morphological categories that are important to practice for learning the language
+  /// by order of importance
+  List<MorphFeaturesEnum> get eligibleForPractice => [
+        MorphFeaturesEnum.Pos,
+        MorphFeaturesEnum.Tense,
+        MorphFeaturesEnum.VerbForm,
+        MorphFeaturesEnum.VerbType,
+        MorphFeaturesEnum.Voice,
+        MorphFeaturesEnum.AdvType,
+        MorphFeaturesEnum.Aspect,
+        MorphFeaturesEnum.Case,
+        MorphFeaturesEnum.ConjType,
+        MorphFeaturesEnum.Definite,
+        MorphFeaturesEnum.Degree,
+        MorphFeaturesEnum.Evident,
+        MorphFeaturesEnum.Gender,
+        MorphFeaturesEnum.Mood,
+        MorphFeaturesEnum.NounType,
+        MorphFeaturesEnum.NumForm,
+        MorphFeaturesEnum.NumType,
+        MorphFeaturesEnum.Number,
+        MorphFeaturesEnum.NumberPsor,
+        MorphFeaturesEnum.Person,
+        MorphFeaturesEnum.Polarity,
+        MorphFeaturesEnum.Polite,
+        MorphFeaturesEnum.Poss,
+        MorphFeaturesEnum.PrepCase,
+        MorphFeaturesEnum.PronType,
+        MorphFeaturesEnum.Reflex,
+      ];
+
+  bool get isEligibleForPractice {
+    return eligibleForPractice.contains(this);
   }
 }
 
@@ -130,8 +163,8 @@ String? getMorphologicalCategoryCopy(
   String categoryName,
   BuildContext context,
 ) {
-  final MorphologicalCategories? category =
-      MorphologicalCategoriesExtension.fromString(categoryName);
+  final MorphFeaturesEnum? category =
+      MorphFeaturesEnumExtension.fromString(categoryName);
 
   if (category == null) {
     return null;

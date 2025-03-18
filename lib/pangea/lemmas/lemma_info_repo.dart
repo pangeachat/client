@@ -1,15 +1,18 @@
 import 'dart:convert';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
+import 'dart:developer';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
+import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class LemmaInfoRepo {
   static final GetStorage _lemmaStorage = GetStorage('lemma_storage');
@@ -20,20 +23,7 @@ class LemmaInfoRepo {
     _lemmaStorage.write(request.storageKey, response.toJson());
   }
 
-  static Future<LemmaInfoResponse> get(
-    LemmaInfoRequest request, [
-    String? feedback,
-  ]) async {
-    // if the user has either emojis or meaning in the past, use those first
-    final UserSetLemmaInfo? userSetLemmaInfo = request.cId.userLemmaInfo;
-    if (userSetLemmaInfo?.emojis != null && userSetLemmaInfo?.meaning != null) {
-      return LemmaInfoResponse(
-        emoji: userSetLemmaInfo!.emojis!,
-        meaning: userSetLemmaInfo.meaning!,
-        expireAt: DateTime.now().add(const Duration(days: 100)),
-      );
-    }
-
+  static Future<LemmaInfoResponse> _fetch(LemmaInfoRequest request) async {
     final cachedJson = _lemmaStorage.read(request.storageKey);
 
     final cached =
@@ -42,10 +32,7 @@ class LemmaInfoRepo {
     if (cached != null) {
       if (DateTime.now().isBefore(cached.expireAt!)) {
         // return cache as is if we're using expireAt and it's set but not expired
-        return LemmaInfoResponse(
-          emoji: userSetLemmaInfo?.emojis ?? cached.emoji,
-          meaning: userSetLemmaInfo?.meaning ?? cached.meaning,
-        );
+        return cached;
       } else {
         // if it's expired, remove it
         _lemmaStorage.remove(request.storageKey);
@@ -67,9 +54,43 @@ class LemmaInfoRepo {
 
     set(request, response);
 
-    return LemmaInfoResponse(
-      emoji: userSetLemmaInfo?.emojis ?? response.emoji,
-      meaning: userSetLemmaInfo?.meaning ?? response.meaning,
-    );
+    return response;
+  }
+
+  /// Get lemma info, prefering user set data over fetched data
+  static Future<LemmaInfoResponse> get(LemmaInfoRequest request) async {
+    try {
+      // if the user has either emojis or meaning in the past, use those first
+      final UserSetLemmaInfo? userSetLemmaInfo = request.cId.userLemmaInfo;
+
+      final List<String> emojis = userSetLemmaInfo?.emojis ?? [];
+      String? meaning = userSetLemmaInfo?.meaning;
+
+      // if the user has not set these, fetch from the server
+      if (emojis.length < maxEmojisPerLemma || meaning == null) {
+        final LemmaInfoResponse fetched = await _fetch(request);
+
+        while (emojis.length < maxEmojisPerLemma && fetched.emoji.isNotEmpty) {
+          final maybeToAdd = fetched.emoji.removeAt(0);
+          if (!emojis.contains(maybeToAdd)) {
+            emojis.add(maybeToAdd);
+          }
+        }
+        meaning ??= fetched.meaning;
+      } else {
+        print(
+          'using user set data for ${request.lemma} ${userSetLemmaInfo?.toJson()}',
+        );
+      }
+
+      return LemmaInfoResponse(
+        emoji: emojis,
+        meaning: meaning,
+      );
+    } catch (e) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(e: e, data: request.toJson());
+      rethrow;
+    }
   }
 }

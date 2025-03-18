@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
@@ -14,6 +10,8 @@ import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 
 /// Question - does this need to be stateful or does this work?
 /// Need to test.
@@ -167,6 +165,33 @@ class MessageTextWidget extends StatelessWidget {
     this.overlayController,
   });
 
+  /// for some reason, this isn't the same as tokenTextWidth
+  double tokenTextWidthForContainer(PangeaToken token) {
+    final textPainter = TextPainter(
+      text: TextSpan(text: token.text.content, style: style),
+      maxLines: 1,
+      textDirection: TextDirection.ltr,
+    )..layout();
+    return textPainter.width;
+  }
+
+  Color backgroundColor(TokenPosition tokenPosition) {
+    final hideTokenHighlights = messageAnalyticsEntry != null &&
+        (messageAnalyticsEntry!.hasHiddenWordActivity ||
+            messageAnalyticsEntry!.hasMessageMeaningActivity);
+
+    Color backgroundColor = Colors.transparent;
+
+    if (!hideTokenHighlights) {
+      if (tokenPosition.selected) {
+        backgroundColor = AppConfig.primaryColor;
+      } else if (tokenPosition.isHighlighted) {
+        backgroundColor = AppConfig.success.withAlpha(80);
+      }
+    }
+    return backgroundColor;
+  }
+
   @override
   Widget build(BuildContext context) {
     final Characters messageCharacters =
@@ -189,10 +214,6 @@ class MessageTextWidget extends StatelessWidget {
       );
     }
 
-    final hideTokenHighlights = messageAnalyticsEntry != null &&
-        (messageAnalyticsEntry!.hasHiddenWordActivity ||
-            messageAnalyticsEntry!.hasMessageMeaningActivity);
-
     final theme = Theme.of(context);
     final ownMessage =
         pangeaMessageEvent.senderId == Matrix.of(context).client.userID;
@@ -213,15 +234,6 @@ class MessageTextWidget extends StatelessWidget {
               .skip(tokenPosition.start)
               .take(tokenPosition.end - tokenPosition.start)
               .toString();
-
-          Color backgroundColor = Colors.transparent;
-          if (!hideTokenHighlights) {
-            if (tokenPosition.selected) {
-              backgroundColor = AppConfig.primaryColor.withAlpha(80);
-            } else if (tokenPosition.isHighlighted) {
-              backgroundColor = AppConfig.success.withAlpha(60);
-            }
-          }
 
           if (tokenPosition.token?.pos == 'SPACE') {
             return const TextSpan(text: '\n');
@@ -247,6 +259,8 @@ class MessageTextWidget extends StatelessWidget {
 
             final token = tokenPosition.token!;
 
+            final tokenWidth = tokenTextWidthForContainer(token);
+
             return WidgetSpan(
               child: CompositedTransformTarget(
                 link: overlayController == null
@@ -261,12 +275,11 @@ class MessageTextWidget extends StatelessWidget {
                           .layerLinkAndKey(token.text.uniqueKey)
                           .key,
                   children: [
-                    const MessageTokenButton(
-                      content: Text(
-                        "?",
-                      ),
-                      isVisible: false,
-                      // isVisible: messageMode != null,
+                    MessageTokenButton(
+                      token: token,
+                      overlayController: overlayController,
+                      textStyle: style,
+                      width: tokenWidth,
                     ),
                     MouseRegion(
                       cursor: SystemMouseCursors.click,
@@ -304,11 +317,12 @@ class MessageTextWidget extends StatelessWidget {
                                     )
                                   : LinkifySpan(
                                       text: middle,
-                                      style: style.merge(
-                                        TextStyle(
-                                          backgroundColor: backgroundColor,
-                                        ),
-                                      ),
+                                      // style: style.merge(
+                                      //   TextStyle(
+                                      //     backgroundColor: backgroundColor(tokenPosition)
+                                      //   ),
+                                      // ),
+                                      style: style,
                                       linkStyle: TextStyle(
                                         decoration: TextDecoration.underline,
                                         color: linkColor,
@@ -331,6 +345,16 @@ class MessageTextWidget extends StatelessWidget {
                             ],
                           ),
                         ),
+                      ),
+                    ),
+                    AnimatedContainer(
+                      duration: const Duration(
+                        milliseconds: AppConfig.overlayAnimationDuration,
+                      ),
+                      height: overlayController != null ? 4 : 0,
+                      width: tokenWidth,
+                      child: Container(
+                        color: backgroundColor(tokenPosition),
                       ),
                     ),
                   ],

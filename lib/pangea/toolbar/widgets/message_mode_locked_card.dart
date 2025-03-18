@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:flutter/material.dart';
 
 class MessageModeLockedCard extends StatelessWidget {
   final MessageOverlayController controller;
@@ -33,6 +32,7 @@ class MessageModeLockedCard extends StatelessWidget {
               const SizedBox(height: 8),
               const InstructionsInlineTooltip(
                 instructionsEnum: InstructionsEnum.completeActivitiesToUnlock,
+                bold: true,
               ),
             ],
           ],

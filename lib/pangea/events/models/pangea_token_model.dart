@@ -1,9 +1,6 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
@@ -18,9 +15,12 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
+import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+
 import '../../common/constants/model_keys.dart';
 import '../../lemmas/lemma.dart';
 
@@ -163,37 +163,10 @@ class PangeaToken {
       "content: ${text.content} isContentWord: $isContentWord total_xp:$xp vocab_construct_xp: ${vocabConstruct.points} daysSincelastUseInWordMeaning ${daysSinceLastUseByType(ActivityTypeEnum.wordMeaning)}";
 
   bool get canBeDefined =>
-      [
-        "ADJ",
-        "ADP",
-        "ADV",
-        "AUX",
-        "CCONJ",
-        "DET",
-        "INTJ",
-        "NOUN",
-        "NUM",
-        "PRON",
-        "SCONJ",
-        "VERB",
-      ].contains(pos) &&
-      lemma.saveVocab;
+      PartOfSpeechEnumExtensions.fromString(pos)?.canBeDefined ?? false;
 
   bool get canBeHeard =>
-      [
-        "ADJ",
-        "ADV",
-        "AUX",
-        "DET",
-        "INTJ",
-        "NOUN",
-        "NUM",
-        "PRON",
-        "PROPN",
-        "SCONJ",
-        "VERB",
-      ].contains(pos) &&
-      lemma.saveVocab;
+      PartOfSpeechEnumExtensions.fromString(pos)?.canBeHeard ?? false;
 
   /// Given a [type] and [metadata], returns a [OneConstructUse] for this lemma
   OneConstructUse toVocabUse(
@@ -633,6 +606,8 @@ class PangeaToken {
         : false;
   }
 
+  List<ConstructIdentifier> get allConstructIds => _constructIDs;
+
   List<ConstructIdentifier> get morphConstructIds => morph.entries
       .map(
         (e) => ConstructIdentifier(
@@ -651,4 +626,15 @@ class PangeaToken {
         ),
       )
       .toList();
+
+  bool hasMorph(ConstructIdentifier cId) {
+    if (cId.category == "pos") {
+      return morph["pos"].toString().toLowerCase() == cId.lemma.toLowerCase();
+    }
+    return morph.entries.any(
+      (e) =>
+          e.key.toLowerCase() == cId.lemma.toLowerCase() &&
+          e.value.toString().toLowerCase() == cId.category.toLowerCase(),
+    );
+  }
 }

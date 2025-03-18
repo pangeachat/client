@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class ToolbarButtonRow extends StatelessWidget {
   final Event event;
@@ -34,39 +32,53 @@ class ToolbarButtonRow extends StatelessWidget {
       );
     }
 
-    return SizedBox(
-      height: 50.0,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        spacing: 4.0,
-        children: [
-          ToolbarButton(
-            mode: MessageMode.wordMorph,
-            overlayController: overlayController,
-            onPressed: overlayController.updateToolbarMode,
-            buttonSize: buttonSize,
-          ),
-          ToolbarButton(
-            mode: MessageMode.wordMeaning,
-            overlayController: overlayController,
-            onPressed: overlayController.updateToolbarMode,
-            buttonSize: buttonSize,
-          ),
-          ToolbarButton(
-            mode: MessageMode.messageTextToSpeech,
-            overlayController: overlayController,
-            onPressed: overlayController.updateToolbarMode,
-            buttonSize: buttonSize,
-          ),
-          ToolbarButton(
-            mode: MessageMode.wordEmoji,
-            overlayController: overlayController,
-            onPressed: overlayController.updateToolbarMode,
-            buttonSize: buttonSize,
-          ),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ToolbarButton(
+              mode: MessageMode.messageTranslation,
+              overlayController: overlayController,
+              onPressed: overlayController.updateToolbarMode,
+              buttonSize: buttonSize,
+            ),
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          spacing: 4.0,
+          children: [
+            ToolbarButton(
+              mode: MessageMode.wordMorph,
+              overlayController: overlayController,
+              onPressed: overlayController.updateToolbarMode,
+              buttonSize: buttonSize,
+            ),
+            ToolbarButton(
+              mode: MessageMode.wordMeaning,
+              overlayController: overlayController,
+              onPressed: overlayController.updateToolbarMode,
+              buttonSize: buttonSize,
+            ),
+            ToolbarButton(
+              mode: MessageMode.messageTextToSpeech,
+              overlayController: overlayController,
+              onPressed: overlayController.updateToolbarMode,
+              buttonSize: buttonSize,
+            ),
+            ToolbarButton(
+              mode: MessageMode.wordEmoji,
+              overlayController: overlayController,
+              onPressed: overlayController.updateToolbarMode,
+              buttonSize: buttonSize,
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

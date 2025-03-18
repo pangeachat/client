@@ -1,26 +1,21 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class ToolbarButtonAndProgressColumn extends StatelessWidget {
   final Event event;
   final MessageOverlayController overlayController;
-  final bool shouldShowToolbarButtons;
   final double height;
   final double width;
 
   const ToolbarButtonAndProgressColumn({
     required this.event,
     required this.overlayController,
-    required this.shouldShowToolbarButtons,
     required this.height,
     required this.width,
     super.key,
@@ -37,7 +32,6 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (event.messageType == MessageTypes.Audio ||
-        !shouldShowToolbarButtons ||
         !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ??
             false)) {
       return SizedBox(height: height, width: width);

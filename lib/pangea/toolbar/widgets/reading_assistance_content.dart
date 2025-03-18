@@ -1,33 +1,28 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix_api_lite/model/message_types.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_meaning_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_mode_locked_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_speech_to_text_card.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_translation_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_unsubscribed_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix_api_lite/model/message_types.dart';
 
 const double minCardHeight = 70;
 
-class ReadingAssistanceContentCard extends StatelessWidget {
+class ReadingAssistanceContent extends StatelessWidget {
   final PangeaMessageEvent pangeaMessageEvent;
   final MessageOverlayController overlayController;
   final Duration animationDuration;
 
-  const ReadingAssistanceContentCard({
+  const ReadingAssistanceContent({
     super.key,
     required this.pangeaMessageEvent,
     required this.overlayController,
@@ -75,29 +70,33 @@ class ReadingAssistanceContentCard extends StatelessWidget {
 
     switch (overlayController.toolbarMode) {
       case MessageMode.messageTranslation:
-        return MessageTranslationCard(
-          messageEvent: pangeaMessageEvent,
-        );
+      // return MessageTranslationCard(
+      //   messageEvent: pangeaMessageEvent,
+      // );
       case MessageMode.messageSpeechToText:
-        return MessageSpeechToTextCard(
-          messageEvent: pangeaMessageEvent,
-        );
+      // return MessageSpeechToTextCard(
+      //   messageEvent: pangeaMessageEvent,
+      // );
       case MessageMode.noneSelected:
-        return Padding(
-          padding: const EdgeInsets.all(8),
-          child: Text(
-            L10n.of(context).clickWordsInstructions,
-            textAlign: TextAlign.center,
-          ),
-        );
+      // return Padding(
+      //   padding: const EdgeInsets.all(8),
+      //   child: Text(
+      //     L10n.of(context).clickWordsInstructions,
+      //     textAlign: TextAlign.center,
+      //   ),
+      // );
       case MessageMode.messageMeaning:
-        return MessageMeaningCard(controller: overlayController);
+      // return MessageMeaningCard(controller: overlayController);
+      case MessageMode.messageTextToSpeech:
+      // return MessageAudioCard(
+      //     messageEvent: overlayController.pangeaMessageEvent!,
+      //     overlayController: overlayController,
+      //     setIsPlayingAudio: overlayController.setIsPlayingAudio);
       case MessageMode.practiceActivity:
       case MessageMode.wordZoom:
       case MessageMode.wordEmoji:
       case MessageMode.wordMorph:
       case MessageMode.wordMeaning:
-      case MessageMode.messageTextToSpeech:
         if (overlayController.selectedToken == null) {
           return Padding(
             padding: const EdgeInsets.all(16),

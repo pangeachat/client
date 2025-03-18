@@ -1,4 +1,5 @@
 import 'package:fluffychat/pangea/events/models/content_feedback.dart';
+import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
 
 class LemmaInfoResponse implements JsonSerializable {
   final List<String> emoji;
@@ -17,7 +18,7 @@ class LemmaInfoResponse implements JsonSerializable {
       emoji: (json['emoji'] as List<dynamic>)
           .map((e) => e as String)
           .toList()
-          .take(3)
+          .take(maxEmojisPerLemma)
           .toList(),
       meaning: json['meaning'] as String,
       expireAt: json['expireAt'] == null

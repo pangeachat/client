@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/get_icon_for_morph_feature.dart';
 import 'package:fluffychat/pangea/morphs/get_svg_link.dart';
-import 'package:fluffychat/pangea/morphs/morph_categories_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/utils/color_value.dart';
 
 class MorphIcon extends StatelessWidget {

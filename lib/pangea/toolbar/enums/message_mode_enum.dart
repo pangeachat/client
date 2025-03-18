@@ -1,11 +1,14 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
+import 'package:collection/collection.dart';
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 enum MessageMode {
   practiceActivity,
@@ -32,14 +35,14 @@ extension MessageModeExtension on MessageMode {
       case MessageMode.messageTranslation:
         return Icons.translate;
       case MessageMode.messageTextToSpeech:
-        return Icons.hearing;
+        return Icons.volume_up;
       case MessageMode.messageSpeechToText:
         return Symbols.speech_to_text;
       case MessageMode.practiceActivity:
         return Symbols.fitness_center;
       case MessageMode.wordZoom:
       case MessageMode.wordMeaning:
-        return Symbols.translate;
+        return Symbols.dictionary;
       case MessageMode.noneSelected:
         return Icons.error;
       case MessageMode.messageMeaning:
@@ -71,7 +74,7 @@ extension MessageModeExtension on MessageMode {
       case MessageMode.wordEmoji:
         return "Emoji";
       case MessageMode.wordMorph:
-        return "Morph";
+        return "Grammar";
       case MessageMode.wordMeaning:
         return "Meaning";
     }
@@ -97,30 +100,31 @@ extension MessageModeExtension on MessageMode {
       case MessageMode.wordEmoji:
         return "Emoji";
       case MessageMode.wordMorph:
-        return "Morph";
+        return "Grammar";
       case MessageMode.wordMeaning:
         return "Meaning";
     }
   }
 
-  InstructionsEnum get instructionsEnum {
+  InstructionsEnum? get instructionsEnum {
     switch (this) {
       case MessageMode.wordMorph:
         return InstructionsEnum.chooseMorphs;
       case MessageMode.messageSpeechToText:
         return InstructionsEnum.speechToText;
-      case MessageMode.messageTranslation:
       case MessageMode.wordMeaning:
         return InstructionsEnum.chooseLemmaMeaning;
       case MessageMode.messageTextToSpeech:
         return InstructionsEnum.chooseWordAudio;
       case MessageMode.wordEmoji:
         return InstructionsEnum.chooseEmoji;
+      case MessageMode.messageTranslation:
       case MessageMode.noneSelected:
+        return InstructionsEnum.readingAssistanceOverview;
       case MessageMode.messageMeaning:
       case MessageMode.wordZoom:
       case MessageMode.practiceActivity:
-        return InstructionsEnum.clickMessage;
+        return null;
     }
   }
 
@@ -152,10 +156,10 @@ extension MessageModeExtension on MessageMode {
   ) {
     switch (this) {
       case MessageMode.messageTranslation:
-      case MessageMode.messageTextToSpeech:
         return proportionOfActivitiesCompleted >= pointOnBar || totallyDone;
       case MessageMode.practiceActivity:
         return !totallyDone;
+      case MessageMode.messageTextToSpeech:
       case MessageMode.messageSpeechToText:
       case MessageMode.messageMeaning:
       case MessageMode.wordZoom:
@@ -221,4 +225,149 @@ extension MessageModeExtension on MessageMode {
         return null;
     }
   }
+
+  /// returns a nullable string of the current level of the message
+  /// if string is null, then user has completed all levels
+  /// should be resolvable into a part of speech or morph feature using fromString
+  /// of the respective enum, PartOfSpeechEnum or MorphFeatureEnum
+  String? currentChoiceMode(
+    MessageOverlayController overlayController,
+    PangeaMessageEvent pangeaMessage,
+  ) {
+    switch (this) {
+      case MessageMode.wordMeaning:
+      case MessageMode.messageTextToSpeech:
+      case MessageMode.wordEmoji:
+        // get the pos with some tokens left to practice, from most to least important for learning
+        return pangeaMessage.messageDisplayRepresentation!
+            .posSetToPractice(associatedActivityType!)
+            .firstWhereOrNull(
+              (pos) => pangeaMessage.messageDisplayRepresentation!.tokens!.any(
+                (t) => t.vocabConstructID.isActivityProbablyLevelAppropriate(
+                  associatedActivityType!,
+                  t.text.content,
+                ),
+              ),
+            )
+            ?.name;
+
+      case MessageMode.wordMorph:
+        // get the morph feature with some tokens left to practice, from most to least important for learning
+        return pangeaMessage
+            .messageDisplayRepresentation!.morphFeatureSetToPractice
+            .firstWhereOrNull(
+              (feature) =>
+                  pangeaMessage.messageDisplayRepresentation!.tokens!.any((t) {
+                final String? morphTag = t.getMorphTag(feature.name);
+
+                if (morphTag == null) {
+                  return false;
+                }
+
+                return ConstructIdentifier(
+                  lemma: morphTag,
+                  type: ConstructTypeEnum.morph,
+                  category: feature.name,
+                ).isActivityProbablyLevelAppropriate(
+                  associatedActivityType!,
+                  t.text.content,
+                );
+              }),
+            )
+            ?.name;
+
+      case MessageMode.noneSelected:
+      case MessageMode.messageMeaning:
+      case MessageMode.messageTranslation:
+      case MessageMode.wordZoom:
+      case MessageMode.messageSpeechToText:
+      case MessageMode.practiceActivity:
+        return null;
+    }
+
+    // final feature = MorphFeaturesEnumExtension.fromString(overlayController);
+
+    // if (feature != null) {
+    //   for (int i; i < pangeaMessage.messageDisplayRepresentation!.morphFeatureSetToPractice.length; i++) {
+    //     if (pangeaMessage.messageDisplayRepresentation?.tagsByFeature(feature).isNotEmpty ?? false) {
+    //       return i;
+    //     }
+    //   }
+
+    //   for (final feature in pangeaMessage.messageDisplayRepresentation?.tagsByFeature(feature)) ?? []) {
+    //     if (pangeaMessage.messageDisplayRepresentation?.tagsByFeature(feature).isNotEmpty ?? false) {
+    //       return feature.index;
+    //     }
+    //   }
+    // }
+  }
+
+  // List<MessageModeChoiceLevelWidget> messageModeChoiceLevel(
+  //   MessageOverlayController overlayController,
+  //   PangeaMessageEvent pangeaMessage,
+  // ) {
+  //   switch (this) {
+  //     case MessageMode.wordMorph:
+  //       final morphFeatureSet = pangeaMessage
+  //           .messageDisplayRepresentation?.morphFeatureSetToPractice;
+
+  //       if (morphFeatureSet == null) {
+  //         debugger(when: kDebugMode);
+  //         return [];
+  //       }
+
+  //       // sort by the list of priority of parts of speech, defined by their order in the enum
+  //       morphFeatureSet.toList().sort((a, b) => a.index.compareTo(b.index));
+
+  //       debugPrint(
+  //         "morphFeatureSet: ${morphFeatureSet.map((e) => e.name).toList()}",
+  //       );
+  //       return morphFeatureSet
+  //           .map(
+  //             (feature) => MessageModeChoiceLevelWidget(
+  //               overlayController: overlayController,
+  //               pangeaMessageEvent: pangeaMessage,
+  //               morphFeature: feature,
+  //             ),
+  //           )
+  //           .toList();
+  //     case MessageMode.noneSelected:
+  //     case MessageMode.messageMeaning:
+  //     case MessageMode.messageTranslation:
+  //     case MessageMode.messageTextToSpeech:
+  //     case MessageMode.messageSpeechToText:
+  //     case MessageMode.practiceActivity:
+  //     case MessageMode.wordZoom:
+  //     case MessageMode.wordMeaning:
+  //     case MessageMode.wordEmoji:
+  //       if (associatedActivityType == null) {
+  //         debugger(when: kDebugMode);
+  //         return [];
+  //       }
+  //       final posSet = pangeaMessage.messageDisplayRepresentation
+  //           ?.posSetToPractice(associatedActivityType!);
+
+  //       if (posSet == null) {
+  //         debugger(when: kDebugMode);
+  //         return [];
+  //       }
+
+  //       // sort by the list of priority of parts of speech, defined by their order in the enum
+  //       posSet.toList().sort((a, b) => a.index.compareTo(b.index));
+
+  //       debugPrint("posSet: ${posSet.map((e) => e.name).toList()}");
+
+  //       final widgets = posSet
+  //           .map(
+  //             (pos) => MessageModeChoiceLevelWidget(
+  //               partOfSpeech: pos,
+  //               overlayController: overlayController,
+  //               pangeaMessageEvent: pangeaMessage,
+  //             ),
+  //           )
+  //           .toList();
+
+  //       return widgets;
+  //   }
+  // }
 }

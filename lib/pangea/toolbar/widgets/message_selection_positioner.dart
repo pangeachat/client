@@ -1,10 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -22,6 +18,8 @@ import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_column.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 /// Controls positioning of the message overlay.
 class MessageSelectionPositioner extends StatefulWidget {
@@ -501,6 +499,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      // ToolbarButtonRow(
+                      //   event: widget.overlayController.pangeaMessageEvent!.event,
+                      //   overlayController: widget.overlayController,
+                      //   shouldShowToolbarButtons: showToolbarButtons,
+                      // ),
                       OverlayFooter(
                         controller: widget.chatController,
                         overlayController: widget.overlayController,
@@ -522,16 +525,18 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
               children: [
                 SizedBox(height: _mediaQuery?.padding.top ?? 0),
                 OverlayHeader(controller: widget.chatController),
-                Container(
-                  constraints: const BoxConstraints(
-                    maxWidth: 400,
-                  ),
-                  child: InstructionsInlineTooltip(
-                    instructionsEnum:
-                        widget.overlayController.toolbarMode.instructionsEnum,
-                    bold: true,
-                  ),
-                ),
+                widget.overlayController.toolbarMode.instructionsEnum != null
+                    ? Container(
+                        constraints: const BoxConstraints(
+                          maxWidth: 400,
+                        ),
+                        child: InstructionsInlineTooltip(
+                          instructionsEnum: widget
+                              .overlayController.toolbarMode.instructionsEnum!,
+                          bold: true,
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ],
             ),
           ),

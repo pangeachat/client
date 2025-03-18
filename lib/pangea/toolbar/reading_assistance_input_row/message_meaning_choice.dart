@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_translation_card.dart';
+import 'package:flutter/material.dart';
 
 class MessageMeaningChoice extends StatelessWidget {
   final MessageOverlayController overlayController;
@@ -26,10 +24,6 @@ class MessageMeaningChoice extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           const SizedBox(height: 8.0),
-          Text(
-            "${overlayController.messageMeaningsForDisplay.length} meanings left to match",
-          ),
-          const SizedBox(height: 8.0),
           overlayController.messageMeaningsForDisplay.isNotEmpty ||
                   overlayController.messageLemmaInfos == null
               ? ChoicesArray(
@@ -45,7 +39,7 @@ class MessageMeaningChoice extends StatelessWidget {
                           // TODO: probably move to overlayController
                           isGold: overlayController
                                   .messageLemmaInfos?[overlayController
-                                      .selectedToken?.vocabConstructID.string]
+                                      .selectedToken?.vocabConstructID]
                                   ?.meaning
                                   .toLowerCase() ==
                               choice.toLowerCase(),
@@ -59,9 +53,7 @@ class MessageMeaningChoice extends StatelessWidget {
                       overlayController.selectedToken?.lemma.text ?? "",
                   uniqueKeyForLayerLink: (int index) => "emojiChoice$index",
                   selectedChoiceIndex:
-                      overlayController.selectedChoices.isNotEmpty
-                          ? overlayController.selectedChoices.first
-                          : null,
+                      overlayController.selectedChoices.firstOrNull,
                   tts: null,
                   fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize ??
                       AppConfig.messageFontSize + 2,
