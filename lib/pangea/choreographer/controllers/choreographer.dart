@@ -55,8 +55,10 @@ class Choreographer {
   // last checked by IGC or translation
   String? _lastChecked;
   ChoreoMode choreoMode = ChoreoMode.igc;
-  final StreamController stateListener = StreamController.broadcast();
-  StreamSubscription? trialStream;
+
+  final StreamController stateStream = StreamController.broadcast();
+  StreamSubscription? _trialStream;
+  StreamSubscription? _languageStream;
 
   Choreographer(this.pangeaController, this.chatController) {
     _initialize();
@@ -74,12 +76,20 @@ class Choreographer {
     errorService = ErrorService(this);
     altTranslator = AlternativeTranslator(this);
     _textController.addListener(_onChangeListener);
-    trialStream = pangeaController
+    _trialStream = pangeaController
         .subscriptionController.trialActivationStream.stream
         .listen((_) => _onChangeListener);
+    _languageStream =
+        pangeaController.userController.stateStream.listen((update) {
+      if (update is Map<String, dynamic> &&
+          update['prev_target_lang'] is LanguageModel) {
+        clear();
+      }
 
-    tts.setupTTS();
-
+      // refresh on any profile update, to account
+      // for changes like enabling autocorrect
+      setState();
+    });
     clear();
   }
 
@@ -100,11 +110,12 @@ class Choreographer {
       return;
     }
 
-    if (!pangeaController.subscriptionController.isSubscribed) {
+    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
+    if (isSubscribed != null && !isSubscribed) {
       // don't want to run IGC if user isn't subscribed, so either
       // show the paywall if applicable or just send the message
       final status = pangeaController.subscriptionController.subscriptionStatus;
-      status == SubscriptionStatus.showPaywall
+      status == SubscriptionStatus.shouldShowPaywall
           ? OverlayUtil.showPositionedCard(
               context: context,
               cardToShow: PaywallCard(
@@ -557,7 +568,9 @@ class Choreographer {
 
   dispose() {
     _textController.dispose();
-    trialStream?.cancel();
+    _trialStream?.cancel();
+    _languageStream?.cancel();
+    stateStream.close();
     tts.dispose();
   }
 
@@ -614,8 +627,8 @@ class Choreographer {
   bool get editTypeIsKeyboard => EditType.keyboard == _textController.editType;
 
   setState() {
-    if (!stateListener.isClosed) {
-      stateListener.add(0);
+    if (!stateStream.isClosed) {
+      stateStream.add(0);
     }
   }
 
@@ -678,7 +691,8 @@ class Choreographer {
       );
 
   AssistanceState get assistanceState {
-    if (!pangeaController.subscriptionController.isSubscribed) {
+    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
+    if (isSubscribed != null && !isSubscribed) {
       return AssistanceState.noSub;
     }
 

@@ -226,12 +226,17 @@ class MessageTextWidget extends StatelessWidget {
           Color backgroundColor = Colors.transparent;
           if (!hideTokenHighlights) {
             if (tokenPosition.selected) {
-              backgroundColor = AppConfig.primaryColor.withAlpha(80);
+              backgroundColor =
+                  Theme.of(context).colorScheme.primary.withAlpha(80);
             } else if (isSelected != null && shouldDo) {
               backgroundColor = !didMeaningActivity
                   ? AppConfig.success.withAlpha(60)
                   : AppConfig.gold.withAlpha(60);
             }
+          }
+
+          if (tokenPosition.token?.pos == 'SPACE') {
+            return const TextSpan(text: '\n');
           }
 
           if (tokenPosition.token != null) {
@@ -280,7 +285,10 @@ class MessageTextWidget extends StatelessWidget {
                                   onTap: onClick != null
                                       ? () => onClick?.call(tokenPosition)
                                       : null,
-                                  child: HiddenText(text: middle, style: style),
+                                  child: HiddenText(
+                                    text: middle,
+                                    style: style,
+                                  ),
                                 ),
                               )
                             : LinkifySpan(

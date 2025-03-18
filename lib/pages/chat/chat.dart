@@ -526,7 +526,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (state == AppLifecycleState.paused) {
       clearSelectedEvents();
     }
-    if (state == AppLifecycleState.hidden) {
+    if (state == AppLifecycleState.hidden && !stopAudioStream.isClosed) {
       stopAudioStream.add(null);
     }
     // Pangea#
@@ -615,7 +615,7 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.removeListener(_inputFocusListener);
     onFocusSub?.cancel();
     //#Pangea
-    choreographer.stateListener.close();
+    choreographer.stateStream.close();
     choreographer.dispose();
     clearSelectedEvents();
     MatrixState.pAnyState.closeOverlay();
@@ -878,7 +878,10 @@ class ChatController extends State<ChatPageWithRoom>
     final files = await selectFiles(
       context,
       allowMultiple: true,
-      type: FileSelectorType.images,
+      // #Pangea
+      // type: FileSelectorType.images,
+      type: FileSelectorType.media,
+      // Pangea#
     );
     if (files.isEmpty) return;
 
@@ -1867,8 +1870,6 @@ class ChatController extends State<ChatPageWithRoom>
         child: overlayEntry!,
         transformTargetId: "",
         backgroundColor: Colors.black,
-        closePrevOverlay:
-            MatrixState.pangeaController.subscriptionController.isSubscribed,
         position: OverlayPositionEnum.centered,
         onDismiss: clearSelectedEvents,
         blurBackground: true,
