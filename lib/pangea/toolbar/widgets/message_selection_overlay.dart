@@ -1,7 +1,13 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -27,10 +33,6 @@ import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/reading_assistance_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:matrix/matrix.dart';
 
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)
 class MessageSelectionOverlay extends StatefulWidget {
@@ -96,9 +98,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   Future<void> initializeTokensAndMode() async {
     debugger();
-    print("this heck");
+    debugPrint("this heck");
     try {
-      print("what");
+      debugPrint("what");
       RepresentationEvent? repEvent =
           pangeaMessageEvent?.messageDisplayRepresentation;
       repEvent ??= await _fetchNewRepEvent();
@@ -186,14 +188,14 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       messageEmojisForDisplay = [];
       debugPrint("messageLemmaInfos: ${messageLemmaInfos!.length}");
       for (final entry in messageLemmaInfos!.entries) {
-        print("entry: ${entry.key.lemma} ${entry.value.emoji}");
+        debugPrint("entry: ${entry.key.lemma} ${entry.value.emoji}");
         for (final emoji in entry.value.emoji) {
           if (!entry.key.userSetEmoji.contains(emoji)) {
             messageEmojisForDisplay.add(emoji);
           }
         }
       }
-      print("messageEmojisForDisplay: ${messageEmojisForDisplay.length}");
+      debugPrint("messageEmojisForDisplay: ${messageEmojisForDisplay.length}");
       messageEmojisForDisplay.shuffle();
 
       // messageEmojisForDisplay = vocabConstructIdsByModeLevel

@@ -1,4 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
@@ -10,8 +14,6 @@ import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 
 /// Question - does this need to be stateful or does this work?
 /// Need to test.
@@ -27,6 +29,11 @@ class MessageTokenText extends StatelessWidget {
   final MessageMode? _messageMode;
   final MessageOverlayController? _overlayController;
 
+  /// Whether or not this is the centered content, the size of which helps determine the toolbar animation.
+  /// If it is, then the button's animation is disabled so that the size of the message bubble on mount is accurate.
+  /// If null, then it's the original message bubble.
+  final bool? isCenteredContent;
+
   // final Animation<double>? _contentSizeAnimation;
 
   const MessageTokenText({
@@ -39,6 +46,7 @@ class MessageTokenText extends StatelessWidget {
     bool Function(PangeaToken)? isHighlighted,
     MessageMode? messageMode,
     MessageOverlayController? overlayController,
+    this.isCenteredContent,
     // Animation<double>? contentSizeAnimation,
   })  : _onClick = onClick,
         _isSelected = isSelected,
@@ -83,6 +91,7 @@ class MessageTokenText extends StatelessWidget {
       messageMode: _messageMode,
       isHighlighted: _isHighlighted,
       overlayController: _overlayController,
+      isCenteredContent: isCenteredContent,
       // contentSizeAnimation: _contentSizeAnimation,
     );
   }
@@ -149,6 +158,8 @@ class MessageTextWidget extends StatelessWidget {
   final Animation<double>? contentSizeAnimation;
   final MessageOverlayController? overlayController;
 
+  final bool? isCenteredContent;
+
   const MessageTextWidget({
     super.key,
     required this.pangeaMessageEvent,
@@ -163,6 +174,7 @@ class MessageTextWidget extends StatelessWidget {
     this.isHighlighted,
     this.contentSizeAnimation,
     this.overlayController,
+    this.isCenteredContent,
   });
 
   /// for some reason, this isn't the same as tokenTextWidth
@@ -263,13 +275,17 @@ class MessageTextWidget extends StatelessWidget {
 
             return WidgetSpan(
               child: CompositedTransformTarget(
-                link: overlayController == null
+                link: overlayController == null ||
+                        isCenteredContent == null ||
+                        !isCenteredContent!
                     ? LayerLinkAndKey(token.hashCode.toString()).link
                     : MatrixState.pAnyState
                         .layerLinkAndKey(token.text.uniqueKey)
                         .link,
                 child: Column(
-                  key: overlayController == null
+                  key: overlayController == null ||
+                          isCenteredContent == null ||
+                          !isCenteredContent!
                       ? LayerLinkAndKey(token.hashCode.toString()).key
                       : MatrixState.pAnyState
                           .layerLinkAndKey(token.text.uniqueKey)

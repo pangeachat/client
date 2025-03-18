@@ -1,6 +1,10 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -18,8 +22,6 @@ import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_column.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 /// Controls positioning of the message overlay.
 class MessageSelectionPositioner extends StatefulWidget {
@@ -77,7 +79,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       vsync: this,
       duration: const Duration(
         milliseconds: AppConfig.overlayAnimationDuration,
-        // seconds: 1,
+        // seconds: 5,
       ),
     );
 
@@ -134,7 +136,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     final offset = renderBox.localToGlobal(Offset.zero);
     _centeredMessageOffset = Offset(
       offset.dx - _columnWidth - _horizontalPadding - 2.0,
-      _mediaQuery!.size.height - offset.dy - renderBox.size.height,
+      _mediaQuery!.size.height -
+          offset.dy -
+          renderBox.size.height -
+          _reactionsHeight,
     );
     setState(() {});
 
@@ -420,7 +425,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         alignment: Alignment.center,
         children: [
           Opacity(
-            opacity: _finishedAnimation ? 1.0 : 0.0,
+            opacity: _finishedAnimation ? 1.0 : 0.5,
             child: OverlayCenterContent(
               event: widget.event,
               messageHeight: _messageHeight,

@@ -1,5 +1,8 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
@@ -16,8 +19,6 @@ import 'package:fluffychat/pangea/toolbar/widgets/message_mode_locked_card.dart'
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_translation_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class ReadingAssistanceInputBar extends StatelessWidget {
   final ChatController controller;
@@ -83,8 +84,9 @@ class ReadingAssistanceInputBar extends StatelessWidget {
           );
         } else {
           return Container(
-              constraints: const BoxConstraints.expand(),
-              child: MessageModeLockedCard(controller: overlayController));
+            constraints: const BoxConstraints.expand(),
+            child: MessageModeLockedCard(controller: overlayController),
+          );
         }
 
       case MessageMode.messageMeaning:

@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:flutter/material.dart';
 
 const Size emojiButtonSize = Size(60, 60);
 BoxDecoration emojiButtonDecoration = BoxDecoration(

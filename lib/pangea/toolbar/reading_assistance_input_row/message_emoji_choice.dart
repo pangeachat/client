@@ -1,10 +1,12 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 const int totalEmojiChoicesToDisplay = 7;
 

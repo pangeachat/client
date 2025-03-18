@@ -1,10 +1,11 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class MessageAudioChoiceItem extends StatefulWidget {
   const MessageAudioChoiceItem({
