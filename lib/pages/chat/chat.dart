@@ -4,22 +4,9 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:collection/collection.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:matrix/matrix.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:universal_html/html.dart' as html;
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -63,6 +50,18 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:matrix/matrix.dart';
+import 'package:scroll_to_index/scroll_to_index.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:universal_html/html.dart' as html;
+
 import '../../utils/account_bundles.dart';
 import '../../utils/localized_exception_extension.dart';
 import 'send_file_dialog.dart';
@@ -365,18 +364,29 @@ class ChatController extends State<ChatPageWithRoom>
 
     _levelSubscription = pangeaController.getAnalytics.stateStream
         .where(
-          (update) =>
-              update is Map<String, dynamic> && update['level_up'] != null,
-        )
+      (update) => update is Map<String, dynamic> && update['level_up'] != null,
+    )
+        // .listen(
+        //   (update) => Future.delayed(
+        //     const Duration(milliseconds: 500),
+        //     () => LevelUpUtil.showLevelUpDialog(
+        //       update['level_up'],
+        //       context,
+        //     ),
+        //   ),
+        // )
         .listen(
-          (update) => Future.delayed(
-            const Duration(milliseconds: 500),
-            () => LevelUpUtil.showLevelUpDialog(
-              update['level_up'],
-              context,
-            ),
-          ),
+      // remove delay now that GetAnalyticsController._onLevelUp
+      // is async is should take roughly 500ms to make requests anyway
+      (update) {
+        LevelUpUtil.showLevelUpDialog(
+          update['level_up'],
+          update['analytics_room_id'],
+          update["construct_summary_state_event_id"],
+          context,
         );
+      },
+    );
     // Pangea#
     _tryLoadTimeline();
     if (kIsWeb) {

@@ -4813,5 +4813,15 @@
   "pleaseEnterInt": "Please enter a number",
   "home": "Home",
   "join": "Join",
-  "learnByTexting": "Learn by texting"
-} 
+  "learnByTexting": "Learn by texting",
+  "levelSummaryTrigger": "View summary",
+  "levelSummaryPopupTitle": "Level {level} Summary",
+  "@levelSummaryPopupTitle": {
+    "type": "String",
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  }
+}
