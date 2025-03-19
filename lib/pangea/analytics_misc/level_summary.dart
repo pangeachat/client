@@ -1,8 +1,10 @@
-import 'package:fluffychat/pangea/constructs/construct_repo.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/pangea/constructs/construct_repo.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelSummaryDialog extends StatelessWidget {
   final int level;
