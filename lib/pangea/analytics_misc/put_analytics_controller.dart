@@ -1,9 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
@@ -16,6 +12,8 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:matrix/matrix.dart';
 
 enum AnalyticsUpdateType { server, local }
 
@@ -304,18 +302,6 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
       sendLocalAnalyticsToAnalyticsRoom();
       return;
     }
-
-    final int newLevel =
-        _pangeaController.getAnalytics.constructListModel.level;
-    newLevel > prevLevel
-        ? sendLocalAnalyticsToAnalyticsRoom()
-        : analyticsUpdateStream.add(
-            AnalyticsUpdate(
-              AnalyticsUpdateType.local,
-              newConstructs,
-              origin: origin,
-            ),
-          );
   }
 
   /// Clears the local cache of recently sent constructs. Called before updating analytics
