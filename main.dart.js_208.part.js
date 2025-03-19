@@ -1665,9 +1665,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteStudentByUserName() {
       return "Invite users by username";
     },
-    get$selectLanguageLevel() {
-      return "Select language level";
-    },
     get$noIdenticalLanguages() {
       return "Please choose different base and target languages";
     },
@@ -3777,12 +3774,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enterPrompt() {
       return "Please enter a system prompt";
     },
-    get$selectBotLanguage() {
-      return "Select bot language";
-    },
-    get$chooseVoice() {
-      return "Choose a voice";
-    },
     get$enterLanguageLevel() {
       return "Please enter a language level";
     },
@@ -4356,6 +4347,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_208", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "at1kR25OLamK3ID0hWGRK5iclIk=");
+})($__dart_deferred_initializers__, "0SMsgAJlZMfIX/HT06sYPjVrjlA=");
 ;
 //# sourceMappingURL=main.dart.js_208.part.js.map

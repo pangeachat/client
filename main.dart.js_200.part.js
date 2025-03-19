@@ -1665,9 +1665,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteStudentByUserName() {
       return "Invitar a estudiantes por usuario";
     },
-    get$selectLanguageLevel() {
-      return "Seleccione nivel de lengua";
-    },
     get$noIdenticalLanguages() {
       return "Por favor, elija diferentes idiomas base e idiomas de aprender.";
     },
@@ -3777,12 +3774,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enterPrompt() {
       return "Introduzca un mensaje del sistema";
     },
-    get$selectBotLanguage() {
-      return "Selecciona el idioma del bot";
-    },
-    get$chooseVoice() {
-      return "Elige una voz";
-    },
     get$enterLanguageLevel() {
       return "Introduzca un nivel de idioma";
     },
@@ -4353,6 +4344,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "9f4qyPdfcvUpSA2uK37zwpgJtWk=");
+})($__dart_deferred_initializers__, "bYDNdKPs968FPJqm3zMsCvfZqeo=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map
