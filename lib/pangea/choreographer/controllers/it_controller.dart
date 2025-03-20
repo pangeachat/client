@@ -53,7 +53,7 @@ class ITController {
     nextITStep = null;
     goldRouteTracker = GoldRouteTracker.defaultTracker;
     payLoadIds = [];
-    
+
     attemptTracker.clear();
     visitedSteps.clear();
 
@@ -315,19 +315,18 @@ class ITController {
   //           )
   //         : null;
 
-
   Map<int, bool> attemptTracker = {};
   Set<int> visitedSteps = {};
 
-  //maybe we store IT data in the same format? make a specific kind of match?  
+  //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
 
     // Check if this answer is correct
-    final bool isCorrect = currentITStep!.continuances[chosenIndex].gold || 
-                          currentITStep!.continuances[chosenIndex].level == ChoreoConstants.levelThresholdForGreen;
-    
-    
+    final bool isCorrect = currentITStep!.continuances[chosenIndex].gold ||
+        currentITStep!.continuances[chosenIndex].level ==
+            ChoreoConstants.levelThresholdForGreen;
+
     // Only proceed if the answer was correct
     if (isCorrect) {
       final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
@@ -368,15 +367,15 @@ class ITController {
     if (attemptTracker.isEmpty) {
       return 0;
     }
-    
-    final int correctFirstAttempts = attemptTracker.values.where((correct) => correct).length;
+
+    final int correctFirstAttempts =
+        attemptTracker.values.where((correct) => correct).length;
     final int totalSteps = attemptTracker.length;
-        
+
     final double percentage = (correctFirstAttempts / totalSteps) * 100;
-    
+
     return percentage;
   }
-
 
   String get uniqueKeyForLayerLink => "itChoices${choreographer.roomId}";
 

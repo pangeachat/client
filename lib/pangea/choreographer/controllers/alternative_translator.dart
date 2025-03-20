@@ -5,9 +5,10 @@ import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
-//import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../repo/similarity_repo.dart';
+
+//import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 
 class AlternativeTranslator {
   final Choreographer choreographer;
@@ -38,10 +39,10 @@ class AlternativeTranslator {
     for (final entry in attemptTracker.entries) {
       if (entry.value) correctFirstAttempts++;
     }
-    
+
     final int totalSteps = attemptTracker.length;
     final double percentage = (correctFirstAttempts / totalSteps) * 100;
-        
+
     return percentage;
   }
 
@@ -65,8 +66,6 @@ class AlternativeTranslator {
       } else {
         translationFeedbackKey = FeedbackKey.othersAreBetter;
       }
-      
-
     } catch (err, stack) {
       if (err is! http.Response) {
         ErrorHandler.logError(

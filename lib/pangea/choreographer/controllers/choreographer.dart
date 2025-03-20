@@ -354,7 +354,7 @@ class Choreographer {
     _timesClicked = 0;
     isFetching = false;
     choreoRecord = ChoreoRecord.newRecord;
-    itController.clear(); 
+    itController.clear();
     igc.dispose();
     _resetDebounceTimer();
 
@@ -363,9 +363,8 @@ class Choreographer {
     itController.attemptTracker = savedTracker;
   }
 
-
   void onITChoiceSelect(ITStep step) {
-   choreoRecord.addRecord(_textController.text, step: step);
+    choreoRecord.addRecord(_textController.text, step: step);
     _textController.setSystemText(
       _textController.text + step.continuances[step.chosen!].text,
       step.continuances[step.chosen!].gold

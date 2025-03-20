@@ -368,17 +368,18 @@ class ITChoices extends StatelessWidget {
   }
 
   void selectContinuance(int index, BuildContext context) {
-    final Continuance continuance = controller.currentITStep!.continuances[index];
-    
+    final Continuance continuance =
+        controller.currentITStep!.continuances[index];
+
     final int currentStepIndex = controller.completedITSteps.length;
-    
+
     final bool isCorrectChoice = (continuance.level == 1);
-   
+
     // Record first attempt for this step if not already recorded
     if (!controller.attemptTracker.containsKey(currentStepIndex)) {
       controller.attemptTracker[currentStepIndex] = isCorrectChoice;
     }
-    
+
     if (continuance.level == 1) {
       Future.delayed(
         const Duration(milliseconds: 500),
@@ -392,18 +393,18 @@ class ITChoices extends StatelessWidget {
         continuance.feedbackText(context),
       );
     }
-    
+
     if (!continuance.wasClicked) {
       controller.choreographer.pangeaController.putAnalytics.addDraftUses(
         continuance.tokens,
         controller.choreographer.roomId,
         continuance.level > 1
-          ? ConstructUseTypeEnum.incIt
-          : ConstructUseTypeEnum.corIt,
+            ? ConstructUseTypeEnum.incIt
+            : ConstructUseTypeEnum.corIt,
         AnalyticsUpdateOrigin.it,
       );
     }
-    
+
     continuance.wasClicked = true;
     controller.choreographer.setState();
   }
