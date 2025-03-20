@@ -53,6 +53,9 @@ class ITController {
     nextITStep = null;
     goldRouteTracker = GoldRouteTracker.defaultTracker;
     payLoadIds = [];
+    
+    attemptTracker.clear();
+    visitedSteps.clear();
 
     choreographer.altTranslator.clear();
     choreographer.choreoMode = ChoreoMode.igc;
@@ -312,45 +315,68 @@ class ITController {
   //           )
   //         : null;
 
-  //maybe we store IT data in the same format? make a specific kind of match?
+
+  Map<int, bool> attemptTracker = {};
+  Set<int> visitedSteps = {};
+
+  //maybe we store IT data in the same format? make a specific kind of match?  
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
 
-    final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
+    // Check if this answer is correct
+    final bool isCorrect = currentITStep!.continuances[chosenIndex].gold || 
+                          currentITStep!.continuances[chosenIndex].level == ChoreoConstants.levelThresholdForGreen;
+    
+    
+    // Only proceed if the answer was correct
+    if (isCorrect) {
+      final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
+      completedITSteps.add(itStep);
 
-    completedITSteps.add(itStep);
-    debugPrint('TEST: $itStep');
+      showChoiceFeedback = true;
 
-    showChoiceFeedback = true;
+      final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
+          .where((e) => !e.wasClicked)
+          .map((e) => e.tokens)
+          .expand((e) => e)
+          .toList();
 
-    // Get a list of the choices that the user did not click
-    final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
-        .where((e) => !e.wasClicked)
-        .map((e) => e.tokens)
-        .expand((e) => e)
-        .toList();
+      choreographer.pangeaController.putAnalytics.addDraftUses(
+        ignoredTokens ?? [],
+        choreographer.roomId,
+        ConstructUseTypeEnum.ignIt,
+        AnalyticsUpdateOrigin.it,
+      );
 
-    // Save those choices' tokens to local construct analytics as ignored tokens
-    choreographer.pangeaController.putAnalytics.addDraftUses(
-      ignoredTokens ?? [],
-      choreographer.roomId,
-      ConstructUseTypeEnum.ignIt,
-      AnalyticsUpdateOrigin.it,
-    );
+      Future.delayed(
+        const Duration(
+          milliseconds: ChoreoConstants.millisecondsToDisplayFeedback,
+        ),
+        () {
+          showChoiceFeedback = false;
+          choreographer.setState();
+        },
+      );
 
-    Future.delayed(
-      const Duration(
-        milliseconds: ChoreoConstants.millisecondsToDisplayFeedback,
-      ),
-      () {
-        showChoiceFeedback = false;
-        choreographer.setState();
-      },
-    );
-
-    choreographer.onITChoiceSelect(itStep);
-    choreographer.setState();
+      choreographer.onITChoiceSelect(itStep);
+    } else {
+      choreographer.setState();
+    }
   }
+
+  double getFirstAttemptPercentage() {
+    if (attemptTracker.isEmpty) {
+      return 0;
+    }
+    
+    final int correctFirstAttempts = attemptTracker.values.where((correct) => correct).length;
+    final int totalSteps = attemptTracker.length;
+        
+    final double percentage = (correctFirstAttempts / totalSteps) * 100;
+    
+    return percentage;
+  }
+
 
   String get uniqueKeyForLayerLink => "itChoices${choreographer.roomId}";
 

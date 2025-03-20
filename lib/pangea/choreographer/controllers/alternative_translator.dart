@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
+//import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../repo/similarity_repo.dart';
 
@@ -31,29 +31,17 @@ class AlternativeTranslator {
     similarityResponse = null;
   }
 
-  // Calculate the percentage of correct choices
   double get _percentCorrectChoices {
-    // Get the core counts from ITController
-    final correctChoices = choreographer.itController.correctChoices;
-    final incorrectChoices = choreographer.itController.incorrectChoices;
-    final wildcardChoices = choreographer.itController.wildcardChoices;
-    final customChoices = choreographer.itController.customChoices;
+    final attemptTracker = choreographer.itController.attemptTracker;
 
-    debugPrint(
-        "PERCENT DEBUG: Correct: $correctChoices, Incorrect: $incorrectChoices, Wildcard: $wildcardChoices, Custom: $customChoices");
-
-    // Total number of choices made (both correct and incorrect)
-    final totalChoices =
-        correctChoices + incorrectChoices + wildcardChoices + customChoices;
-
-    if (totalChoices == 0) {
-      return 0;
+    int correctFirstAttempts = 0;
+    for (final entry in attemptTracker.entries) {
+      if (entry.value) correctFirstAttempts++;
     }
-
-    // Calculate percentage based on correct choices as a portion of total choices
-    final percentage = (correctChoices / totalChoices) * 100;
-    debugPrint("PERCENT DEBUG: Final percentage: $percentage%");
-
+    
+    final int totalSteps = attemptTracker.length;
+    final double percentage = (correctFirstAttempts / totalSteps) * 100;
+        
     return percentage;
   }
 
@@ -68,49 +56,17 @@ class AlternativeTranslator {
 
       // Calculate percentage based on correct/total choices ratio
       final double percentCorrect = _percentCorrectChoices;
-      debugPrint("FEEDBACK: Calculated percentage correct: $percentCorrect%");
 
       // Set feedback based on percentage
       if (percentCorrect == 100) {
         translationFeedbackKey = FeedbackKey.allCorrect;
-      } else if (percentCorrect > 90) {
+      } else if (percentCorrect > 91) {
         translationFeedbackKey = FeedbackKey.newWayAllGood;
       } else {
         translationFeedbackKey = FeedbackKey.othersAreBetter;
       }
+      
 
-      final String? goldRouteTranslation =
-          choreographer.itController.goldRouteTracker.fullTranslation;
-
-      final FullTextTranslationResponseModel results =
-          await FullTextTranslationRepo.translate(
-        accessToken: choreographer.accessToken,
-        request: FullTextTranslationRequestModel(
-          text: choreographer.itController.sourceText!,
-          tgtLang: choreographer.l2LangCode!,
-          userL2: choreographer.l2LangCode!,
-          userL1: choreographer.l1LangCode!,
-          deepL: goldRouteTranslation == null,
-        ),
-      );
-
-      translations = results.translations;
-      if (results.deepL != null || goldRouteTranslation != null) {
-        translations.insert(0, (results.deepL ?? goldRouteTranslation)!);
-      }
-
-      if (userTranslation?.toLowerCase() !=
-          results.bestTranslation.toLowerCase()) {
-        similarityResponse = await SimilarityRepo.get(
-          accessToken: choreographer.accessToken,
-          request: SimilarityRequestModel(
-            benchmark: results.bestTranslation,
-            toCompare: [userTranslation!],
-          ),
-        );
-
-        showAlternativeTranslations = true;
-      }
     } catch (err, stack) {
       if (err is! http.Response) {
         ErrorHandler.logError(
@@ -147,7 +103,7 @@ class AlternativeTranslator {
         if (_percentCorrectChoices > 90) {
           return "Match: $displayScore%\n${L10n.of(context).almostPerfect}";
         }
-        if (_percentCorrectChoices > 80) {
+        if (_percentCorrectChoices > 70) {
           return "Match: $displayScore%\n${L10n.of(context).prettyGood}";
         }
         return "Match: $displayScore%\n${L10n.of(context).othersAreBetter}";

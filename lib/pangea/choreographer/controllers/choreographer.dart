@@ -348,15 +348,24 @@ class Choreographer {
     }
   }
 
-  final List<bool> answerChoices = [];
+  void clear() {
+    choreoMode = ChoreoMode.igc;
+    _lastChecked = null;
+    _timesClicked = 0;
+    isFetching = false;
+    choreoRecord = ChoreoRecord.newRecord;
+    itController.clear(); 
+    igc.dispose();
+    _resetDebounceTimer();
+
+    final savedTracker = Map<int, bool>.from(itController.attemptTracker);
+    itController.clear();
+    itController.attemptTracker = savedTracker;
+  }
+
 
   void onITChoiceSelect(ITStep step) {
-    if (step.chosen != null) {
-      answerChoices.add(step.continuances[step.chosen!].wasClicked);
-      debugPrint('ANSWER CHOICES: $answerChoices');
-    }
-
-    choreoRecord.addRecord(_textController.text, step: step);
+   choreoRecord.addRecord(_textController.text, step: step);
     _textController.setSystemText(
       _textController.text + step.continuances[step.chosen!].text,
       step.continuances[step.chosen!].gold
@@ -545,17 +554,6 @@ class Choreographer {
   PangeaTextController get textController => _textController;
 
   String get accessToken => pangeaController.userController.accessToken;
-
-  clear() {
-    choreoMode = ChoreoMode.igc;
-    _lastChecked = null;
-    _timesClicked = 0;
-    isFetching = false;
-    choreoRecord = ChoreoRecord.newRecord;
-    itController.clear();
-    igc.dispose();
-    _resetDebounceTimer();
-  }
 
   void onMatchError({int? cursorOffset}) {
     if (cursorOffset == null) {
