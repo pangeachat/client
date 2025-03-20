@@ -1,12 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -22,6 +16,10 @@ import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
@@ -380,8 +378,29 @@ class GetAnalyticsController extends BaseController {
         if (score >= diffXP) break;
       }
 
+      // extract construct use message bodies for analytics
+      List<String?>? constructUseMessageContentBodies = [];
+      for (final use in constructUseOfCurrentLevel) {
+        try {
+          final useMessage = await use.getEvent(_client);
+          final useMessageBody = useMessage?.content["body"];
+          if (useMessageBody is String) {
+            constructUseMessageContentBodies.add(useMessageBody);
+          } else {
+            constructUseMessageContentBodies.add(null);
+          }
+        } catch (e) {
+          constructUseMessageContentBodies.add(null);
+        }
+      }
+      if (constructUseMessageContentBodies.length !=
+          constructUseOfCurrentLevel.length) {
+        constructUseMessageContentBodies = null;
+      }
+
       final request = ConstructSummaryRequest(
         constructs: constructUseOfCurrentLevel,
+        constructUseMessageContentBodies: constructUseMessageContentBodies,
         language: _l2!.langCodeShort,
         upperLevel: upperLevel,
         lowerLevel: lowerLevel,

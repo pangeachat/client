@@ -1,12 +1,11 @@
 import 'dart:convert';
 
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:http/http.dart';
 
 class ConstructSummary {
   final int upperLevel;
@@ -42,12 +41,14 @@ class ConstructSummary {
 
 class ConstructSummaryRequest {
   final List<OneConstructUse> constructs;
+  final List<String?>? constructUseMessageContentBodies;
   final String language;
   final int upperLevel;
   final int lowerLevel;
 
   ConstructSummaryRequest({
     required this.constructs,
+    this.constructUseMessageContentBodies,
     required this.language,
     required this.upperLevel,
     required this.lowerLevel,
@@ -56,6 +57,7 @@ class ConstructSummaryRequest {
   Map<String, dynamic> toJson() {
     return {
       'constructs': constructs.map((construct) => construct.toJson()).toList(),
+      'construct_use_message_content_bodies': constructUseMessageContentBodies,
       'language': language,
       'upper_level': upperLevel,
       'lower_level': lowerLevel,
@@ -67,6 +69,8 @@ class ConstructSummaryRequest {
       constructs: (json['constructs'] as List)
           .map((construct) => OneConstructUse.fromJson(construct))
           .toList(),
+      constructUseMessageContentBodies:
+          List<String>.from(json['construct_use_message_content_bodies']),
       language: json['language'],
       upperLevel: json['upper_level'],
       lowerLevel: json['lower_level'],
