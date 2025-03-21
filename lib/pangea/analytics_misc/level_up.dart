@@ -1,14 +1,14 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
+import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:http/http.dart' as http;
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'level_summary.dart';
 
 class LevelUpUtil {
@@ -16,6 +16,7 @@ class LevelUpUtil {
     int level,
     String? analyticsRoomId,
     String? summaryStateEventId,
+    ConstructSummary? constructSummary,
     BuildContext context,
   ) {
     final player = AudioPlayer();
@@ -31,6 +32,7 @@ class LevelUpUtil {
         level: level,
         analyticsRoomId: analyticsRoomId,
         summaryStateEventId: summaryStateEventId,
+        constructSummary: constructSummary,
       ),
     ).then((_) => player.dispose());
   }
@@ -41,12 +43,14 @@ class LevelUpAnimation extends StatefulWidget {
   final String? analyticsRoomId;
   final String? summary;
   final String? summaryStateEventId;
+  final ConstructSummary? constructSummary;
 
   const LevelUpAnimation({
     required this.level,
     required this.analyticsRoomId,
     this.summary,
     this.summaryStateEventId,
+    this.constructSummary,
     super.key,
   });
 
@@ -137,6 +141,7 @@ class LevelUpAnimationState extends State<LevelUpAnimation> {
                             level: widget.level,
                             analyticsRoomId: widget.analyticsRoomId!,
                             summaryStateEventId: widget.summaryStateEventId!,
+                            constructSummary: widget.constructSummary,
                           ),
                         );
                       },

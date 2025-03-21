@@ -1,12 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -22,6 +16,10 @@ import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
@@ -165,14 +163,15 @@ class GetAnalyticsController extends BaseController {
       analyticsStream.add(AnalyticsStreamUpdate(origin: origin));
 
   Future<void> _onLevelUp(final int lowerLevel, final int upperLevel) async {
-    final stateEventId = await _generateLevelUpAnalyticsAndSaveToStateEvent(
+    final result = await _generateLevelUpAnalyticsAndSaveToStateEvent(
       lowerLevel,
       upperLevel,
     );
     setState({
       'level_up': constructListModel.level,
       'analytics_room_id': _client.analyticsRoomLocal(_l2!)?.id,
-      "construct_summary_state_event_id": stateEventId,
+      "construct_summary_state_event_id": result?.stateEventId,
+      "construct_summary": result?.summary,
     });
   }
 
@@ -359,7 +358,8 @@ class GetAnalyticsController extends BaseController {
     _cache.add(entry);
   }
 
-  Future<String?> _generateLevelUpAnalyticsAndSaveToStateEvent(
+  Future<GenerateConstructSummaryResult?>
+      _generateLevelUpAnalyticsAndSaveToStateEvent(
     final int lowerLevel,
     final int upperLevel,
   ) async {
@@ -412,17 +412,16 @@ class GetAnalyticsController extends BaseController {
       summary = response.summary;
     } catch (e) {
       debugPrint("Error generating level up analytics: $e");
-      Sentry.captureException(e);
+      ErrorHandler.logError(e: e, data: {'e': e});
       return null;
     }
     String stateEventId;
     try {
       final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
       if (analyticsRoom == null) {
-        Sentry.captureException(
-          Exception(
-            "Analytics room not found for user",
-          ),
+        ErrorHandler.logError(
+          e: e,
+          data: {'e': e, 'message': "Analytics room not found for user"},
         );
         return null;
       }
@@ -434,10 +433,13 @@ class GetAnalyticsController extends BaseController {
       );
     } catch (e) {
       debugPrint("Error saving construct summary room: $e");
-      Sentry.captureException(e);
+      ErrorHandler.logError(e: e, data: {'e': e});
       return null;
     }
-    return stateEventId;
+    return GenerateConstructSummaryResult(
+      stateEventId: stateEventId,
+      summary: summary,
+    );
   }
 }
 
