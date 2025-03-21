@@ -5,9 +5,10 @@ import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../repo/similarity_repo.dart';
+
+//import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 
 class AlternativeTranslator {
   final Choreographer choreographer;
@@ -31,6 +32,20 @@ class AlternativeTranslator {
     similarityResponse = null;
   }
 
+  double get _percentCorrectChoices {
+    final attemptTracker = choreographer.itController.attemptTracker;
+
+    int correctFirstAttempts = 0;
+    for (final entry in attemptTracker.entries) {
+      if (entry.value) correctFirstAttempts++;
+    }
+
+    final int totalSteps = attemptTracker.length;
+    final double percentage = (correctFirstAttempts / totalSteps) * 100;
+
+    return percentage;
+  }
+
   Future<void> setTranslationFeedback() async {
     try {
       choreographer.startLoading();
@@ -40,62 +55,17 @@ class AlternativeTranslator {
 
       userTranslation = choreographer.currentText;
 
-      if (choreographer.itController.allCorrect) {
+      // Calculate percentage based on correct/total choices ratio
+      final double percentCorrect = _percentCorrectChoices;
+
+      // Set feedback based on percentage
+      if (percentCorrect == 100) {
         translationFeedbackKey = FeedbackKey.allCorrect;
-        return;
+      } else if (percentCorrect > 91) {
+        translationFeedbackKey = FeedbackKey.newWayAllGood;
+      } else {
+        translationFeedbackKey = FeedbackKey.othersAreBetter;
       }
-
-      final String? goldRouteTranslation =
-          choreographer.itController.goldRouteTracker.fullTranslation;
-
-      final FullTextTranslationResponseModel results =
-          await FullTextTranslationRepo.translate(
-        accessToken: choreographer.accessToken,
-        request: FullTextTranslationRequestModel(
-          text: choreographer.itController.sourceText!,
-          tgtLang: choreographer.l2LangCode!,
-          userL2: choreographer.l2LangCode!,
-          userL1: choreographer.l1LangCode!,
-          deepL: goldRouteTranslation == null,
-        ),
-      );
-      translations = results.translations;
-      if (results.deepL != null || goldRouteTranslation != null) {
-        translations.insert(0, (results.deepL ?? goldRouteTranslation)!);
-      }
-      // final List<String> altAndUser = [...results.translations];
-      // if (results.deepL != null) {
-      //   altAndUser.add(results.deepL!);
-      // }
-      // altAndUser.add(userTranslation);
-
-      if (userTranslation?.toLowerCase() ==
-          results.bestTranslation.toLowerCase()) {
-        translationFeedbackKey = FeedbackKey.allCorrect;
-        return;
-      }
-
-      similarityResponse = await SimilarityRepo.get(
-        accessToken: choreographer.accessToken,
-        request: SimilarityRequestModel(
-          benchmark: results.bestTranslation,
-          toCompare: [userTranslation!],
-        ),
-      );
-
-      // if (similarityResponse!
-      //     .userTranslationIsSameAsBotTranslation(userTranslation!)) {
-      //   translationFeedbackKey = FeedbackKey.allCorrect;
-      //   return;
-      // }
-
-      // if (similarityResponse!
-      //     .userTranslationIsDifferentButBetter(userTranslation!)) {
-      //   translationFeedbackKey = FeedbackKey.newWayAllGood;
-      //   return;
-      // }
-      showAlternativeTranslations = true;
-      translationFeedbackKey = FeedbackKey.othersAreBetter;
     } catch (err, stack) {
       if (err is! http.Response) {
         ErrorHandler.logError(
@@ -120,29 +90,22 @@ class AlternativeTranslator {
   }
 
   String translationFeedback(BuildContext context) {
+    final String displayScore = _percentCorrectChoices.toStringAsFixed(0);
+
+    // Use original feedback messages
     switch (translationFeedbackKey) {
       case FeedbackKey.allCorrect:
-        return "Match: 100%\n${L10n.of(context).allCorrect}";
+        return "Match: $displayScore%\n${L10n.of(context).allCorrect}";
       case FeedbackKey.newWayAllGood:
-        return "Match: 100%\n${L10n.of(context).newWayAllGood}";
+        return "Match: $displayScore%\n${L10n.of(context).newWayAllGood}";
       case FeedbackKey.othersAreBetter:
-        final num userScore =
-            (similarityResponse!.userScore(userTranslation!) * 100).round();
-        final String displayScore = userScore.toString();
-        if (userScore > 90) {
+        if (_percentCorrectChoices > 90) {
           return "Match: $displayScore%\n${L10n.of(context).almostPerfect}";
         }
-        if (userScore > 80) {
+        if (_percentCorrectChoices > 70) {
           return "Match: $displayScore%\n${L10n.of(context).prettyGood}";
         }
         return "Match: $displayScore%\n${L10n.of(context).othersAreBetter}";
-      // case FeedbackKey.commonalityFeedback:
-      //     final int count = controller.completedITSteps
-      //   .where((element) => element.isCorrect)
-      //   .toList()
-      //   .length;
-      // final int total = controller.completedITSteps.length;
-      //     return L10n.of(context).commonalityFeedback(count,total);
       case FeedbackKey.loadingPleaseWait:
         return L10n.of(context).letMeThink;
       case FeedbackKey.allDone:
