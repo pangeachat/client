@@ -175,10 +175,10 @@ class ConstructListModel {
     if (totalXP < 0) {
       totalXP = 0;
     }
-    level = calculateXpForLevel(totalXP);
+    level = calculateLevelWithXp(totalXP);
   }
 
-  int calculateXpForLevel(int totalXP) {
+  int calculateLevelWithXp(int totalXP) {
     // [D] is the "compression factor". It determines how quickly
     /// or slowly the level grows relative to XP
     const double D = 2500;
@@ -196,6 +196,27 @@ class ConstructListModel {
       );
       return 1;
     }
+  }
+
+  int calculateXpWithLevel(int level) {
+    // [D] is the same "compression factor" as in calculateLevelWithXp.
+    const double D = 2500.0;
+
+    // If level <= 1, XP should be 0 or negative by this math.
+    // In practice, you might clamp it to 0:
+    if (level <= 1) {
+      return 0;
+    }
+
+    // Convert level to double for the math
+    final double lc = level.toDouble();
+
+    // XP from the inverse formula:
+    final double xpDouble = (D / 8.0) * (2.0 * pow(lc - 1.0, 2.0) - 1.0);
+
+    // Floor or clamp to ensure non-negative.
+    final int xp = xpDouble.floor();
+    return (xp < 0) ? 0 : xp;
   }
 
   // TODO; make this non-nullable, returning empty if not found

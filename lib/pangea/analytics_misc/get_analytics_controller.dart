@@ -51,12 +51,13 @@ class GetAnalyticsController extends BaseController {
 
   // the minimum XP required for a given level
   int get _minXPForLevel {
-    return constructListModel.calculateXpForLevel(constructListModel.level);
+    return constructListModel.calculateXpWithLevel(constructListModel.level);
   }
 
   // the minimum XP required for the next level
   int get _minXPForNextLevel {
-    return constructListModel.calculateXpForLevel(constructListModel.level + 1);
+    return constructListModel
+        .calculateXpWithLevel(constructListModel.level + 1);
   }
 
   int get minXPForNextLevel => _minXPForNextLevel;
@@ -179,7 +180,7 @@ class GetAnalyticsController extends BaseController {
   }
 
   Future<void> _onLevelDown(final int lowerLevel, final int upperLevel) async {
-    final offset = constructListModel.calculateXpForLevel(lowerLevel) -
+    final offset = constructListModel.calculateXpWithLevel(lowerLevel) -
         constructListModel.totalXP;
     await _pangeaController.userController.addXPOffset(offset);
     constructListModel.updateConstructs(
@@ -373,8 +374,8 @@ class GetAnalyticsController extends BaseController {
     // generate level up analytics as a construct summary
     ConstructSummary summary;
     try {
-      final int maxXP = constructListModel.calculateXpForLevel(upperLevel);
-      final int minXP = constructListModel.calculateXpForLevel(lowerLevel);
+      final int maxXP = constructListModel.calculateXpWithLevel(upperLevel);
+      final int minXP = constructListModel.calculateXpWithLevel(lowerLevel);
       int diffXP = maxXP - minXP;
       if (diffXP < 0) diffXP = 0;
 
