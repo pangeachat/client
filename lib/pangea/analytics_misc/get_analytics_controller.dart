@@ -1,12 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -22,6 +16,10 @@ import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
@@ -52,21 +50,15 @@ class GetAnalyticsController extends BaseController {
 
   // the minimum XP required for a given level
   int get _minXPForLevel {
-    return _calculateMinXpForLevel(constructListModel.level);
+    return constructListModel.calculateXpForLevel(constructListModel.level);
   }
 
   // the minimum XP required for the next level
   int get _minXPForNextLevel {
-    return _calculateMinXpForLevel(constructListModel.level + 1);
+    return constructListModel.calculateXpForLevel(constructListModel.level + 1);
   }
 
   int get minXPForNextLevel => _minXPForNextLevel;
-
-  /// Calculates the minimum XP required for a specific level.
-  int _calculateMinXpForLevel(int level) {
-    if (level == 1) return 0; // Ensure level 1 starts at 0 XP
-    return ((100 / 8) * (2 * pow(level - 1, 2))).floor();
-  }
 
   // the progress within the current level as a percentage (0.0 to 1.0)
   double get levelProgress {
@@ -178,8 +170,8 @@ class GetAnalyticsController extends BaseController {
   }
 
   Future<void> _onLevelDown(final int lowerLevel, final int upperLevel) async {
-    final offset =
-        _calculateMinXpForLevel(lowerLevel) - constructListModel.totalXP;
+    final offset = constructListModel.calculateXpForLevel(lowerLevel) -
+        constructListModel.totalXP;
     await _pangeaController.userController.addXPOffset(offset);
     constructListModel.updateConstructs(
       [],
@@ -368,8 +360,8 @@ class GetAnalyticsController extends BaseController {
     // generate level up analytics as a construct summary
     ConstructSummary summary;
     try {
-      final int maxXP = _calculateMinXpForLevel(upperLevel);
-      final int minXP = _calculateMinXpForLevel(lowerLevel);
+      final int maxXP = constructListModel.calculateXpForLevel(upperLevel);
+      final int minXP = constructListModel.calculateXpForLevel(lowerLevel);
       int diffXP = maxXP - minXP;
       if (diffXP < 0) diffXP = 0;
 
