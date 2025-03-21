@@ -4329,6 +4329,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$learnByTexting() {
       return "Learn by texting";
     },
+    get$levelSummaryTrigger() {
+      return "\u0110\u1ecdc b\xe1o c\xe1o";
+    },
+    levelSummaryPopupTitle$1(level) {
+      return "T\xf3m t\u1eaft c\u1ea5p " + level;
+    },
     get$startChatting() {
       return "Start chatting";
     },
@@ -4356,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "nqiGdcD2YOJ5ay1EDaY4Bpao9ks=");
+})($__dart_deferred_initializers__, "wwS92fCqiO4S0zOvz7J+mmtNRYg=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
