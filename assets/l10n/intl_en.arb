@@ -4807,12 +4807,12 @@
   "knockSpaceSuccess": "You have requested to join this space! An admin will respond to your request when they receive it 😀",
   "joinByCode": "Join by code",
   "createASpace": "Create a space",
-  "chooseWordAudioInstructionsBody": "Match the audios with the words in the message. You can listen to the full message audio for a hint!",
+  "chooseWordAudioInstructionsBody": "Listen to the full message then match the word audios to the right blanks!",
   "chooseMorphsInstructionsBody": "Match the grammar tags with the words in the message. Click and hold an option for a hint!",
   "inviteAndLaunch": "Launch and invite",
   "createOwnChat": "Create your own chat",
   "pleaseEnterInt": "Please enter a number",
   "home": "Home",
   "join": "Join",
-  "readingAssistanceOverviewBody": "Here you can access mini-games on visualizing vocab, practice listening, meaning, and grammar concepts. Earn 10 XP to unlock the full message translation!"
+  "readingAssistanceOverviewBody": "Click the buttons below for mini-games on visualizing vocab, practice listening, meaning, and grammar concepts. Click any word for details."
 }

@@ -1,24 +1,21 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/target_tokens_and_activity_type.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_audio_choice.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_emoji_choice.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_meaning_choice.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_match_activity.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_morph_choice.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_mode_locked_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_translation_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class ReadingAssistanceInputBar extends StatelessWidget {
   final ChatController controller;
@@ -64,18 +61,13 @@ class ReadingAssistanceInputBar extends StatelessWidget {
       case MessageMode.messageSpeechToText:
       case MessageMode.practiceActivity:
       case MessageMode.wordZoom:
-      case MessageMode.wordEmoji:
       case MessageMode.noneSelected:
-        return MessageEmojiChoice(
-          controller: controller,
-          overlayController: overlayController,
-        );
-
-      case MessageMode.messageTextToSpeech:
-        return MessageAudioChoice(
-          overlayController: overlayController,
-          pangeaMessageEvent: overlayController.pangeaMessageEvent!,
-        );
+        //TODO: show all emojis for the lemmas and allow sending normal reactions
+        return const SizedBox.shrink();
+      // return MessageEmojiChoice(
+      //   controller: controller,
+      //   overlayController: overlayController,
+      // );
 
       case MessageMode.messageTranslation:
         if (overlayController.isTranslationUnlocked) {
@@ -83,21 +75,19 @@ class ReadingAssistanceInputBar extends StatelessWidget {
             messageEvent: overlayController.pangeaMessageEvent!,
           );
         } else {
-          return Container(
-            constraints: const BoxConstraints.expand(),
-            child: MessageModeLockedCard(controller: overlayController),
-          );
+          return MessageModeLockedCard(controller: overlayController);
         }
 
+      case MessageMode.wordEmoji:
       case MessageMode.messageMeaning:
       case MessageMode.wordMeaning:
-        return MessageMeaningChoice(
+      case MessageMode.listening:
+        return MessageMatchActivity(
           overlayController: overlayController,
-          pangeaMessageEvent: overlayController.pangeaMessageEvent!,
         );
 
       case MessageMode.wordMorph:
-        return MessageMorphChoice(
+        return MessageMorphInputBarContent(
           overlayController: overlayController,
           pangeaMessageEvent: overlayController.pangeaMessageEvent!,
         );
@@ -120,6 +110,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
     return Expanded(
       child: Container(
         height: AppConfig.readingAssistanceInputBarHeight,
+        padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: const BorderRadius.all(
@@ -127,19 +118,8 @@ class ReadingAssistanceInputBar extends StatelessWidget {
           ),
         ),
         alignment: Alignment.center,
-        child: Column(
-          children: [
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: overlayController.toolbarMode
-            //       .messageModeChoiceLevel(
-            //         overlayController,
-            //         overlayController.pangeaMessageEvent!,
-            //       )
-            //       .toList(),
-            // ),
-            Expanded(child: barContent(context)),
-          ],
+        child: SingleChildScrollView(
+          child: barContent(context),
         ),
       ),
     );

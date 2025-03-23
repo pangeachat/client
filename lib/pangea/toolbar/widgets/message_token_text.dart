@@ -1,19 +1,17 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/utils/message_text_util.dart';
 import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
+import 'package:fluffychat/pangea/practice_activities/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 
 /// Question - does this need to be stateful or does this work?
 /// Need to test.
@@ -54,7 +52,7 @@ class MessageTokenText extends StatelessWidget {
       _pangeaMessageEvent.messageDisplayRepresentation?.tokens;
 
   MessageAnalyticsEntry? get messageAnalyticsEntry => _tokens != null
-      ? MatrixState.pangeaController.getAnalytics.perMessage.get(
+      ? MessageAnalyticsController.get(
           _tokens!,
           _pangeaMessageEvent,
         )
@@ -77,7 +75,7 @@ class MessageTokenText extends StatelessWidget {
 
     return MessageTextWidget(
       pangeaMessageEvent: _pangeaMessageEvent,
-      style: _style,
+      existingStyle: _style,
       messageAnalyticsEntry: messageAnalyticsEntry,
       isSelected: _isSelected,
       onClick: callOnClick,
@@ -136,7 +134,7 @@ class HiddenText extends StatelessWidget {
 
 class MessageTextWidget extends StatelessWidget {
   final PangeaMessageEvent pangeaMessageEvent;
-  final TextStyle style;
+  final TextStyle existingStyle;
   final MessageAnalyticsEntry? messageAnalyticsEntry;
   final bool Function(PangeaToken)? isSelected;
   final void Function(TokenPosition tokenPosition)? onClick;
@@ -154,7 +152,7 @@ class MessageTextWidget extends StatelessWidget {
   const MessageTextWidget({
     super.key,
     required this.pangeaMessageEvent,
-    required this.style,
+    required this.existingStyle,
     this.messageAnalyticsEntry,
     this.isSelected,
     this.onClick,
@@ -167,6 +165,12 @@ class MessageTextWidget extends StatelessWidget {
     this.overlayController,
     this.isTransitionAnimation = false,
   });
+
+  TextStyle get style => overlayController != null
+      ? existingStyle.copyWith(
+          fontSize: 22,
+        )
+      : existingStyle;
 
   /// for some reason, this isn't the same as tokenTextWidth
   double tokenTextWidthForContainer(PangeaToken token) {
@@ -188,9 +192,10 @@ class MessageTextWidget extends StatelessWidget {
     if (!hideTokenHighlights) {
       if (tokenPosition.selected) {
         backgroundColor = AppConfig.primaryColor;
-      } else if (tokenPosition.isHighlighted) {
-        backgroundColor = AppConfig.success.withAlpha(80);
       }
+      // else if (tokenPosition.isHighlighted) {
+      //   backgroundColor = AppConfig.success.withAlpha(80);
+      // }
     }
     return backgroundColor;
   }
@@ -284,6 +289,16 @@ class MessageTextWidget extends StatelessWidget {
                       textStyle: style,
                       width: tokenWidth,
                       animate: isTransitionAnimation,
+                      activity: overlayController
+                                  ?.toolbarMode.associatedActivityType !=
+                              null
+                          ? overlayController?.messageAnalyticsEntry
+                              ?.activities(
+                                overlayController!
+                                    .toolbarMode.associatedActivityType!,
+                              )
+                              .firstWhereOrNull((a) => a.tokens.contains(token))
+                          : null,
                     ),
                     MouseRegion(
                       cursor: SystemMouseCursors.click,

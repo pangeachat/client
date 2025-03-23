@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class ToolbarButtonRow extends StatelessWidget {
   final Event event;
@@ -68,7 +66,7 @@ class ToolbarButtonRow extends StatelessWidget {
               buttonSize: buttonSize,
             ),
             ToolbarButton(
-              mode: MessageMode.messageTextToSpeech,
+              mode: MessageMode.listening,
               overlayController: overlayController,
               onPressed: overlayController.updateToolbarMode,
               buttonSize: buttonSize,

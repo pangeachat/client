@@ -1,11 +1,10 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 enum MorphFeaturesEnum {
   Pos,
@@ -37,6 +36,7 @@ enum MorphFeaturesEnum {
   VerbForm,
   VerbType,
   Voice,
+  Unknown,
 }
 
 extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
@@ -46,7 +46,7 @@ extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
   }
 
   /// Convert string to enum
-  static MorphFeaturesEnum? fromString(String category) {
+  static MorphFeaturesEnum fromString(String category) {
     final morph = MorphFeaturesEnum.values.firstWhereOrNull(
       (e) =>
           e.toShortString() ==
@@ -58,6 +58,7 @@ extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
         s: StackTrace.current,
         data: {"category": category},
       );
+      return MorphFeaturesEnum.Unknown;
     }
     return morph;
   }
@@ -122,12 +123,14 @@ extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
         return L10n.of(context).grammarCopyVERBTYPE;
       case MorphFeaturesEnum.Voice:
         return L10n.of(context).grammarCopyVOICE;
+      case MorphFeaturesEnum.Unknown:
+        return L10n.of(context).grammarCopyUNKNOWN;
     }
   }
 
   /// the subset of morphological categories that are important to practice for learning the language
   /// by order of importance
-  List<MorphFeaturesEnum> get eligibleForPractice => [
+  static List<MorphFeaturesEnum> get eligibleForPractice => [
         MorphFeaturesEnum.Pos,
         MorphFeaturesEnum.Tense,
         MorphFeaturesEnum.VerbForm,
@@ -159,17 +162,63 @@ extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
   bool get isEligibleForPractice {
     return eligibleForPractice.contains(this);
   }
+
+  IconData get fallbackIcon {
+    switch (this) {
+      case MorphFeaturesEnum.Number:
+        // google material 123 icon
+        return Icons.format_list_numbered;
+      case MorphFeaturesEnum.Gender:
+        return Icons.wc;
+      case MorphFeaturesEnum.Tense:
+        return Icons.access_time;
+      case MorphFeaturesEnum.Mood:
+        return Icons.mood;
+      case MorphFeaturesEnum.Person:
+        return Icons.person;
+      case MorphFeaturesEnum.Case:
+        return Icons.format_list_bulleted;
+      case MorphFeaturesEnum.Degree:
+        return Icons.trending_up;
+      case MorphFeaturesEnum.VerbForm:
+        return Icons.text_format;
+      case MorphFeaturesEnum.Voice:
+        return Icons.record_voice_over;
+      case MorphFeaturesEnum.Aspect:
+        return Icons.aspect_ratio;
+      case MorphFeaturesEnum.PronType:
+        return Icons.text_fields;
+      case MorphFeaturesEnum.NumType:
+        return Icons.format_list_numbered;
+      case MorphFeaturesEnum.Poss:
+        return Icons.account_balance;
+      case MorphFeaturesEnum.Reflex:
+        return Icons.refresh;
+      case MorphFeaturesEnum.Foreign:
+        return Icons.language;
+      case MorphFeaturesEnum.NounType:
+        return Symbols.abc;
+      case MorphFeaturesEnum.Pos:
+        return Symbols.toys_and_games;
+      case MorphFeaturesEnum.Polarity:
+        return Icons.swap_vert;
+      case MorphFeaturesEnum.Definite:
+        return Icons.check_circle_outline;
+      case MorphFeaturesEnum.PrepCase:
+        return Icons.location_on_outlined;
+      case MorphFeaturesEnum.ConjType:
+        return Icons.compare_arrows;
+      default:
+        return Icons.help_outline;
+    }
+  }
 }
 
 String? getMorphologicalCategoryCopy(
   String categoryName,
   BuildContext context,
 ) {
-  final MorphFeaturesEnum? category =
+  final MorphFeaturesEnum category =
       MorphFeaturesEnumExtension.fromString(categoryName);
-
-  if (category == null) {
-    return null;
-  }
   return category.getDisplayCopy(context);
 }

@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class InstructionsInlineTooltip extends StatefulWidget {
   final InstructionsEnum instructionsEnum;
@@ -104,7 +102,8 @@ class InstructionsInlineTooltipState extends State<InstructionsInlineTooltip>
                   child: Center(
                     child: Text(
                       widget.instructionsEnum.body(L10n.of(context)),
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.titleLarge ??
+                          Theme.of(context).textTheme.bodyLarge,
                       textAlign: TextAlign.center,
                     ),
                   ),

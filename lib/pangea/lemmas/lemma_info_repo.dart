@@ -32,9 +32,9 @@ class LemmaInfoRepo {
     if (cached != null) {
       if (DateTime.now().isBefore(cached.expireAt!)) {
         // return cache as is if we're using expireAt and it's set but not expired
-        debugPrint(
-          'using cached data for ${request.lemma} ${cached.toJson()}',
-        );
+        // debugPrint(
+        //   'using cached data for ${request.lemma} ${cached.toJson()}',
+        // );
         return cached;
       } else {
         // if it's expired, remove it
@@ -57,9 +57,9 @@ class LemmaInfoRepo {
 
     set(request, response);
 
-    debugPrint(
-      'fetched data for ${request.lemma} ${response.toJson()}',
-    );
+    // debugPrint(
+    //   'fetched data for ${request.lemma} ${response.toJson()}',
+    // );
 
     return response;
   }
@@ -85,9 +85,9 @@ class LemmaInfoRepo {
         }
         meaning ??= fetched.meaning;
       } else {
-        debugPrint(
-          'using user set data for ${request.lemma} ${userSetLemmaInfo?.toJson()}',
-        );
+        // debugPrint(
+        //   'using user set data for ${request.lemma} ${userSetLemmaInfo?.toJson()}',
+        // );
       }
 
       return LemmaInfoResponse(

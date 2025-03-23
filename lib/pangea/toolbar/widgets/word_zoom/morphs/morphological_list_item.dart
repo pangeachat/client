@@ -1,39 +1,37 @@
-import 'package:flutter/material.dart';
-
-import 'package:material_symbols_icons/symbols.dart';
-
-import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_zoom_activity_button.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class MorphologicalListItem extends StatelessWidget {
-  final String morphFeature;
-  final String morphTag;
-  final String wordForm;
+  final MorphFeaturesEnum morphFeature;
+  final PangeaToken token;
   final MessageOverlayController overlayController;
 
   const MorphologicalListItem({
     required this.morphFeature,
-    required this.morphTag,
+    required this.token,
     required this.overlayController,
-    required this.wordForm,
     super.key,
   });
 
-  bool get shouldDoActivity => ConstructIdentifier(
-        lemma: morphTag,
-        type: ConstructTypeEnum.morph,
-        category: morphFeature,
-      ).isActivityProbablyLevelAppropriate(ActivityTypeEnum.morphId, wordForm);
+  bool get shouldDoActivity =>
+      overlayController.messageAnalyticsEntry?.hasActivity(
+        ActivityTypeEnum.morphId,
+        token,
+        morphFeature,
+      ) ==
+      true;
 
   bool get isSelected => overlayController.toolbarMode == MessageMode.wordMorph;
+
+  String get morphTag => token.getMorphTag(morphFeature.name) ?? "X";
 
   @override
   Widget build(BuildContext context) {
@@ -43,28 +41,27 @@ class MorphologicalListItem extends StatelessWidget {
       child: WordZoomActivityButton(
         icon: shouldDoActivity
             ? const Icon(Symbols.toys_and_games)
-            : MorphIcon(morphFeature: morphFeature, morphTag: morphTag),
+            : MorphIcon(
+                morphFeature: morphFeature,
+                morphTag: token.getMorphTag(morphFeature.name),
+                size: const Size(24, 24),
+              ),
         isSelected: isSelected,
-        onPressed: shouldDoActivity
-            ? () => overlayController.updateToolbarMode(MessageMode.wordMorph)
-            : () => (feature) => showDialog<AnalyticsPopupWrapper>(
-                  context: context,
-                  builder: (context) => AnalyticsPopupWrapper(
-                    constructZoom: ConstructIdentifier(
-                      lemma: morphTag,
-                      type: ConstructTypeEnum.morph,
-                      category: feature,
-                    ),
-                    view: ConstructTypeEnum.vocab,
-                  ),
-                ),
+        // onPressed: shouldDoActivity
+        //     ? () => overlayController.updateToolbarMode(MessageMode.wordMorph)
+        //     : () => (feature) => showDialog<AnalyticsPopupWrapper>(
+        //           context: context,
+        //           builder: (context) => AnalyticsPopupWrapper(
+        //             constructZoom: token.morphIdByFeature(feature),
+        //             view: ConstructTypeEnum.vocab,
+        //           ),
+        //         ),
+        onPressed: () =>
+            overlayController.onMorphActivitySelect(token, morphFeature),
         tooltip: shouldDoActivity
-            ? getMorphologicalCategoryCopy(
-                morphFeature,
-                context,
-              )
+            ? morphFeature.getDisplayCopy(context)
             : getGrammarCopy(
-                category: morphFeature,
+                category: morphFeature.name,
                 lemma: morphTag,
                 context: context,
               ),

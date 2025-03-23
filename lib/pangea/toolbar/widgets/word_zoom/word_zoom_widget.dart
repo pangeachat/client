@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -10,8 +8,8 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_emoji_row.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
@@ -19,6 +17,7 @@ import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_widget
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_widget.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/morphs/morphological_list_item.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaToken token;
@@ -69,7 +68,10 @@ class WordZoomWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //@ggurdin - might need to play with size to properly center
-                      const SizedBox(width: 40),
+                      IconButton(
+                          onPressed: () => overlayController
+                              .onClickOverlayMessageToken(token),
+                          icon: const Icon(Icons.close)),
                       LemmaWidget(
                         token: _selectedToken,
                         pangeaMessageEvent: messageEvent,
@@ -82,7 +84,7 @@ class WordZoomWidget extends StatelessWidget {
                           onEditDone();
                         },
                         tts: tts,
-                        messageMode: overlayController.toolbarMode,
+                        overlayController: overlayController,
                       ),
                       ConstructXpWidget(
                         id: token.vocabConstructID,
@@ -115,8 +117,7 @@ class WordZoomWidget extends StatelessWidget {
                         ),
                         isSelected: overlayController.toolbarMode ==
                             MessageMode.wordEmoji,
-                        removeCallback: () => overlayController
-                            .updateReadingAssistanceInputBarChoices(),
+                        removeCallback: () => overlayController.setState(() {}),
                       ),
                     ),
                   ],
@@ -162,21 +163,29 @@ class WordZoomWidget extends StatelessWidget {
                       ),
                       WordAudioButton(
                         text: _selectedToken.text.content,
-                        isSelected: MessageMode.messageTextToSpeech ==
+                        isSelected: MessageMode.listening ==
                             overlayController.toolbarMode,
                         baseOpacity: 0.4,
-                        isDisabled: _selectedToken.shouldDoActivity(
-                          a: ActivityTypeEnum.wordFocusListening,
-                          feature: null,
-                          tag: null,
-                        ),
+                        callbackOverride: overlayController
+                                    .messageAnalyticsEntry
+                                    ?.hasActivity(
+                                  MessageMode.listening.associatedActivityType!,
+                                  _selectedToken,
+                                ) ==
+                                true
+                            ? () => overlayController
+                                .updateToolbarMode(MessageMode.listening)
+                            : null,
                       ),
                     ],
-                    ..._selectedToken.sortedMorphs.map(
-                      (featureTagPair) => MorphologicalListItem(
-                        morphFeature: featureTagPair.key,
-                        morphTag: featureTagPair.value,
-                        wordForm: token.text.content,
+                    ..._selectedToken
+                        .morphsBasicallyEligibleForPracticeByPriority
+                        .map(
+                      (cId) => MorphologicalListItem(
+                        morphFeature: MorphFeaturesEnumExtension.fromString(
+                          cId.category,
+                        ),
+                        token: _selectedToken,
                         overlayController: overlayController,
                       ),
                     ),

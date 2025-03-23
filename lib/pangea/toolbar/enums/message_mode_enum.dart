@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -21,7 +21,7 @@ enum MessageMode {
   // wordZoomSpeechToText,
 
   messageMeaning,
-  messageTextToSpeech,
+  listening,
   messageSpeechToText,
   messageTranslation,
 
@@ -34,7 +34,7 @@ extension MessageModeExtension on MessageMode {
     switch (this) {
       case MessageMode.messageTranslation:
         return Icons.translate;
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
         return Icons.volume_up;
       case MessageMode.messageSpeechToText:
         return Symbols.speech_to_text;
@@ -58,7 +58,7 @@ extension MessageModeExtension on MessageMode {
     switch (this) {
       case MessageMode.messageTranslation:
         return L10n.of(context).translations;
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
         return L10n.of(context).messageAudio;
       case MessageMode.messageSpeechToText:
         return L10n.of(context).speechToTextTooltip;
@@ -84,7 +84,7 @@ extension MessageModeExtension on MessageMode {
     switch (this) {
       case MessageMode.messageTranslation:
         return L10n.of(context).translationTooltip;
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
         return L10n.of(context).listen;
       case MessageMode.messageSpeechToText:
         return L10n.of(context).speechToTextTooltip;
@@ -114,7 +114,7 @@ extension MessageModeExtension on MessageMode {
         return InstructionsEnum.speechToText;
       case MessageMode.wordMeaning:
         return InstructionsEnum.chooseLemmaMeaning;
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
         return InstructionsEnum.chooseWordAudio;
       case MessageMode.wordEmoji:
         return InstructionsEnum.chooseEmoji;
@@ -138,7 +138,7 @@ extension MessageModeExtension on MessageMode {
         return 0.7;
       case MessageMode.wordMeaning:
         return 0.5;
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
         return 0.3;
       case MessageMode.messageTranslation:
       case MessageMode.messageSpeechToText:
@@ -157,7 +157,7 @@ extension MessageModeExtension on MessageMode {
       case MessageMode.messageTranslation:
         return overlayController.isTranslationUnlocked;
       case MessageMode.practiceActivity:
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
       case MessageMode.messageSpeechToText:
       case MessageMode.messageMeaning:
       case MessageMode.wordZoom:
@@ -175,7 +175,7 @@ extension MessageModeExtension on MessageMode {
     switch (this) {
       case MessageMode.messageTranslation:
         return overlayController.isTotallyDone;
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
         return overlayController.isListeningDone;
       case MessageMode.wordEmoji:
         return overlayController.isEmojiDone;
@@ -217,7 +217,7 @@ extension MessageModeExtension on MessageMode {
     switch (this) {
       case MessageMode.wordMeaning:
         return ActivityTypeEnum.wordMeaning;
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
         return ActivityTypeEnum.wordFocusListening;
 
       case MessageMode.wordEmoji:
@@ -246,7 +246,7 @@ extension MessageModeExtension on MessageMode {
   ) {
     switch (this) {
       case MessageMode.wordMeaning:
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
       case MessageMode.wordEmoji:
         // get the pos with some tokens left to practice, from most to least important for learning
         return pangeaMessage.messageDisplayRepresentation!

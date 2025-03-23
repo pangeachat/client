@@ -5,8 +5,8 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +18,7 @@ class LemmaWidget extends StatefulWidget {
   final VoidCallback onEdit;
   final VoidCallback onEditDone;
   final TtsController tts;
-  final MessageMode? messageMode;
+  final MessageOverlayController? overlayController;
 
   const LemmaWidget({
     super.key,
@@ -27,7 +27,7 @@ class LemmaWidget extends StatefulWidget {
     required this.onEdit,
     required this.onEditDone,
     required this.tts,
-    required this.messageMode,
+    required this.overlayController,
   });
 
   @override
@@ -183,13 +183,18 @@ class LemmaWidgetState extends State<LemmaWidget> {
             widget.token.text.content.toLowerCase())
           WordAudioButton(
             text: widget.token.text.content,
-            isSelected: MessageMode.messageTextToSpeech == widget.messageMode,
+            isSelected:
+                MessageMode.listening == widget.overlayController?.toolbarMode,
             baseOpacity: 0.4,
-            isDisabled: widget.token.shouldDoActivity(
-              a: ActivityTypeEnum.wordFocusListening,
-              feature: null,
-              tag: null,
-            ),
+            callbackOverride:
+                widget.overlayController?.messageAnalyticsEntry?.hasActivity(
+                          MessageMode.listening.associatedActivityType!,
+                          widget.token,
+                        ) ==
+                        true
+                    ? () => widget.overlayController
+                        ?.updateToolbarMode(MessageMode.listening)
+                    : null,
           ),
       ],
     );

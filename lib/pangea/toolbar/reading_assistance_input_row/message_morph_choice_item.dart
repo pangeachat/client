@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_icon.dart';
+import 'package:flutter/material.dart';
 
 class MessageMorphChoiceItem extends StatefulWidget {
   const MessageMorphChoiceItem({
@@ -53,23 +55,47 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-        onTap: onTap,
+    return InkWell(
+      onHover: (isHovered) => setState(() => _isHovered = isHovered),
+      borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+      onTap: onTap,
+      child: IntrinsicWidth(
         child: Container(
           alignment: Alignment.center,
-          height: 40,
-          width: 40,
           decoration: BoxDecoration(
             color: _color,
-            borderRadius: BorderRadius.circular(100),
+            borderRadius: BorderRadius.circular(AppConfig.borderRadius),
           ),
-          child: Container(
-            padding: const EdgeInsets.all(8.0),
-            child: widget.cId.visual,
+          padding: const EdgeInsets.symmetric(
+            vertical: 8.0,
+            horizontal: 12.0,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 8.0,
+            children: [
+              SizedBox(
+                width: 40,
+                height: 40,
+                child: MorphIcon(
+                  morphFeature: MorphFeaturesEnumExtension.fromString(
+                    widget.cId.category,
+                  ),
+                  morphTag: widget.cId.lemma,
+                  size: const Size(40, 40),
+                ),
+              ),
+              Text(
+                getGrammarCopy(
+                      category: widget.cId.category,
+                      lemma: widget.cId.lemma,
+                      context: context,
+                    ) ??
+                    widget.cId.lemma,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ],
           ),
         ),
       ),

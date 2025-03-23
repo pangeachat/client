@@ -7,11 +7,10 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/choice_array.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
@@ -20,10 +19,12 @@ import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
-import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/match_feedback_model.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/reading_assistance_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -69,19 +70,19 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   Map<ConstructIdentifier, LemmaInfoResponse>? messageLemmaInfos;
 
-  List<String> messageEmojisForDisplay = [];
-  List<String> messageMeaningsForDisplay = [];
-  List<String> messageWordFormsForDisplay = [];
-  List<ConstructIdentifier> messageMorphTagsForDisplay = [];
-
-  List<int> selectedChoices = [];
-
+  MorphFeaturesEnum? selectedMorph;
+  ConstructForm? selectedChoice;
   PangeaTokenText? _selectedSpan;
+
   List<PangeaTokenText>? _highlightedTokens;
   bool initialized = false;
   bool isPlayingAudio = false;
 
-  bool isTimeToSavorJoy = false;
+  /// temporary stores of which matches have been made and
+  /// whether correct or not. allows user to quickly match
+  /// choices while we're still displaying feedback for previous
+  /// choices
+  final List<MatchFeedback> feedbackStates = [];
 
   final GlobalKey<ReadingAssistanceContentState> wordZoomKey = GlobalKey();
 
@@ -136,7 +137,22 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           choreo: pangeaMessageEvent!.originalSent?.choreo,
         );
       }
-      await updateReadingAssistanceInputBarChoices();
+
+      // Get all the lemma infos
+      final messageVocabConstructIds = pangeaMessageEvent!
+          .messageDisplayRepresentation!.tokensToSave
+          .map((e) => e.vocabConstructID)
+          .toList();
+      final List<Future<LemmaInfoResponse>> lemmaInfoFutures =
+          messageVocabConstructIds
+              .map((token) => token.getLemmaInfo())
+              .toList();
+      final List<LemmaInfoResponse> lemmaInfos =
+          await Future.wait(lemmaInfoFutures);
+      messageLemmaInfos = Map.fromIterables(
+        messageVocabConstructIds,
+        lemmaInfos,
+      );
     } catch (e, s) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
@@ -154,120 +170,22 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
   }
 
-  Future<void> updateReadingAssistanceInputBarChoices() async {
-    try {
-      if (pangeaMessageEvent?.messageDisplayRepresentation?.tokens == null ||
-          !(pangeaMessageEvent?.messageDisplayLangIsL2 ?? false)) {
-        debugger(when: kDebugMode);
-        return;
-      }
-
-      ////Get all the infos
-      final messageVocabConstructIds = pangeaMessageEvent!
-          .messageDisplayRepresentation!.tokensToSave
-          .map((e) => e.vocabConstructID)
-          .toList();
-
-      final List<Future<LemmaInfoResponse>> lemmaInfoFutures =
-          messageVocabConstructIds
-              .map((token) => token.getLemmaInfo())
-              .toList();
-
-      final List<LemmaInfoResponse> lemmaInfos =
-          await Future.wait(lemmaInfoFutures);
-
-      messageLemmaInfos = Map.fromIterables(
-        messageVocabConstructIds,
-        lemmaInfos,
-      );
-
-      /// emojis
-      messageEmojisForDisplay = [];
-      for (final entry in messageLemmaInfos!.entries) {
-        debugPrint("entry: ${entry.key.lemma} ${entry.value.emoji}");
-        for (final emoji in entry.value.emoji) {
-          if (!entry.key.userSetEmoji.contains(emoji)) {
-            messageEmojisForDisplay.add(emoji);
-          }
-        }
-      }
-      messageEmojisForDisplay.shuffle();
-
-      /// meanings
-      messageMeaningsForDisplay =
-          pangeaMessageEvent!.messageDisplayRepresentation!.tokensToSave
-              .where(
-                (t) => t.shouldDoActivity(
-                  a: ActivityTypeEnum.wordMeaning,
-                  feature: null,
-                  tag: null,
-                ),
-              )
-              .map((t) => messageLemmaInfos![t.vocabConstructID]!.meaning)
-              .toList()
-            ..shuffle();
-
-      /// word forms
-      messageWordFormsForDisplay =
-          pangeaMessageEvent!.messageDisplayRepresentation!.tokensToSave
-              .where(
-                (token) => token.shouldDoActivity(
-                  a: ActivityTypeEnum.wordFocusListening,
-                  feature: null,
-                  tag: null,
-                ),
-              )
-              .map((token) => token.text.content)
-              .toList()
-            ..shuffle();
-
-      /// morph tags
-      messageMorphTagsForDisplay =
-          pangeaMessageEvent!.messageDisplayRepresentation!.tokensToSave
-              .map((token) => token.morphsThatShouldBePracticed)
-              .expand((e) => e)
-              // .where(
-              //   (cId) => cId.lemma.toLowerCase() == modeLevel?.toLowerCase(),
-              // )
-              .toList()
-            ..shuffle();
-
-      selectedChoices.clear();
-
-      debugger(when: kDebugMode);
-
-      setState(() {});
-    } catch (e, s) {
-      debugPrint("error but not stopping: $e");
-
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        data: {
-          "message": pangeaMessageEvent?.event.toJson(),
-        },
-        e: e,
-        s: s,
-      );
-    }
-  }
-
   Future<void> _setInitialToolbarMode() async {
     if (pangeaMessageEvent?.isAudioMessage ?? false) {
-      updateToolbarMode(MessageMode.messageTextToSpeech);
+      updateToolbarMode(MessageMode.listening);
       return;
     }
 
     // 1) if we have a hidden word activity, then we should start with that
-    if (messageAnalyticsEntry?.nextActivity?.activityType ==
-        ActivityTypeEnum.hiddenWordListening) {
+    if (messageAnalyticsEntry?.hasHiddenWordActivity ?? false) {
       updateToolbarMode(MessageMode.practiceActivity);
       return;
     }
 
-    if (selectedToken != null) {
-      updateToolbarMode(selectedToken!.modeForToken);
-      return;
-    }
+    // if (selectedToken != null) {
+    //   updateToolbarMode(selectedToken!.modeForToken);
+    //   return;
+    // }
 
     // Note: this setting is now hidden so this will always be false
     // leaving this here in case we want to bring it back
@@ -288,18 +206,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     // should not already be involved in a hidden word activity
-    final isInHiddenWordActivity =
-        messageAnalyticsEntry!.isTokenInHiddenWordActivity(
-      widget._initialSelectedToken!,
-    );
+    // final isInHiddenWordActivity =
+    //     messageAnalyticsEntry!.isTokenInHiddenWordActivity(
+    //   widget._initialSelectedToken!,
+    // );
 
-    // whether the activity should generally be involved in an activity
-    final selected =
-        !isInHiddenWordActivity ? widget._initialSelectedToken : null;
-
-    if (selected != null) {
-      _updateSelectedSpan(selected.text);
+    // // whether the activity should generally be involved in an activity
+    if (messageAnalyticsEntry?.hasHiddenWordActivity == true) {
+      return;
     }
+
+    _updateSelectedSpan(widget._initialSelectedToken!.text);
   }
 
   /////////////////////////////////////
@@ -350,190 +267,86 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
   }
 
-  /// Update to [selectedSpan]
-  /// [forceMode] is used to force a specific mode
-  void _updateSelectedSpan(PangeaTokenText selectedSpan) {
+  /// Update [selectedSpan]
+  void _updateSelectedSpan(PangeaTokenText selectedSpan, [bool force = false]) {
+    // close overlay of previous token
     if (selectedToken != null) {
       MatrixState.pAnyState.disposeByWidgetKey(
         selectedToken!.text.uniqueKey,
       );
     }
 
-    if (selectedSpan == _selectedSpan) {
+    if (selectedSpan == _selectedSpan && !force) {
       _selectedSpan = null;
     } else {
       _selectedSpan = selectedSpan;
     }
 
-    // if (selectedToken != null &&
-    //     toolbarMode != MessageMode.messageTextToSpeech) {
-    final entry = ReadingAssistanceContent(
-      key: wordZoomKey,
-      pangeaMessageEvent: pangeaMessageEvent!,
-      overlayController: this,
-    );
-    OverlayUtil.showPositionedCard(
-      context: context,
-      cardToShow: entry,
-      transformTargetId: selectedToken!.text.uniqueKey,
-      closePrevOverlay: false,
-      backDropToDismiss: false,
-      addBorder: false,
-      overlayKey: selectedToken!.text.uniqueKey,
-      maxHeight: AppConfig.toolbarMaxHeight,
-      maxWidth: AppConfig.toolbarMinWidth,
-    );
-    // }
+    if (selectedToken != null) {
+      final entry = ReadingAssistanceContent(
+        key: wordZoomKey,
+        pangeaMessageEvent: pangeaMessageEvent!,
+        overlayController: this,
+      );
+      OverlayUtil.showPositionedCard(
+        context: context,
+        cardToShow: entry,
+        transformTargetId: selectedToken!.text.uniqueKey,
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        addBorder: false,
+        overlayKey: selectedToken!.text.uniqueKey,
+        maxHeight: AppConfig.toolbarMaxHeight,
+        maxWidth: AppConfig.toolbarMinWidth,
+      );
+    }
 
     setState(() {});
   }
 
   void updateToolbarMode(MessageMode mode) => setState(() {
-        selectedChoices.clear();
+        selectedChoice = null;
         toolbarMode = mode;
       });
 
-  void onChoiceSelect(int choiceIndex) {
-    if (selectedSpan != null) {
-      _updateSelectedSpan(selectedSpan!);
-    }
-
-    debugPrint("Selected choice: $choiceIndex");
-    if (selectedChoices.contains(choiceIndex)) {
-      selectedChoices.remove(choiceIndex);
+  void onChoiceSelect(ConstructForm choice, [bool force = false]) {
+    if (selectedChoice == choice && !force) {
+      selectedChoice = null;
     } else {
-      selectedChoices = [choiceIndex];
+      selectedChoice = choice;
     }
-    // if (selectedToken != null) {
-    // switch (toolbarMode) {
-    //   case MessageMode.wordEmoji:
-    //     debugPrint("Selected emoji: ${messageEmojisForDisplay[choiceIndex]}");
-    //     onTokenSelectionWithSelectedEmojis(
-    //       selectedToken!,
-    //       selectedChoices,
-    //     );
-    //     break;
-    //   case MessageMode.wordMeaning:
-    //     onTokenSelectionWithSelectedMeaning(
-    //       selectedToken!,
-    //       messageMeaningsForDisplay[selectedChoices.first],
-    //     );
-    //     break;
-    //   case MessageMode.messageTextToSpeech:
-    //     onTokenSelectionWithSelectedAudio(
-    //       selectedToken!,
-    //       messageWordFormsForDisplay[selectedChoices.first],
-    //     );
-    //     break;
-    //   case MessageMode.wordMorph:
-    //     onTokenSelectionWithSelectedMorphs(
-    //       selectedToken!,
-    //       selectedChoices
-    //           .map((index) => messageMorphTagsForDisplay[index])
-    //           .toList(),
-    //     );
-    //     break;
-    //   default:
-    //     debugger(when: kDebugMode);
-    //     break;
-    // }
-    // }
 
     setState(() {});
   }
 
-  void clearSelectedEmoji() {
-    selectedChoices.clear();
-    setState(() {});
+  void onMorphActivitySelect(PangeaToken token, MorphFeaturesEnum morph) {
+    if (toolbarMode != MessageMode.wordMorph) {
+      updateToolbarMode(MessageMode.wordMorph);
+    }
+    selectedMorph = morph;
+    _updateSelectedSpan(token.text, true);
   }
 
-  // void onChoiceLevelSelection(String choiceLevel) {
-  //   modeLevel = choiceLevel;
-
-  //   _updateReadingAssistanceInputBarChoices();
-
-  //   debugPrint("modeLevel is now: $modeLevel");
-  //   setState(() {});
-  // }
-
-  Future<void> onTokenSelectionWithSelectedMeaning(
+  // only used for word meaning, emoji, and word focus listening atm
+  Future<void> onMatchAttempt(
     PangeaToken token,
-    String meaning,
+    ConstructForm choice,
   ) async {
-    final bool isCorrect =
-        messageLemmaInfos![token.vocabConstructID]!.meaning.toLowerCase() ==
-            meaning.toLowerCase();
+    final ActivityTypeEnum activityType = toolbarMode.associatedActivityType!;
 
-    MatrixState.pangeaController.putAnalytics.setState(
-      AnalyticsStream(
-        eventId: pangeaMessageEvent!.eventId,
-        roomId: pangeaMessageEvent!.room.id,
-        constructs: [
-          OneConstructUse(
-            useType: isCorrect
-                ? ConstructUseTypeEnum.corPA
-                : ConstructUseTypeEnum.incPA,
-            lemma: token.vocabConstructID.lemma,
-            constructType: ConstructTypeEnum.vocab,
-            metadata: ConstructUseMetaData(
-              roomId: pangeaMessageEvent!.room.id,
-              timeStamp: DateTime.now(),
-              eventId: pangeaMessageEvent!.eventId,
-            ),
-            category: token.vocabConstructID.category,
-            form: token.text.content,
-          ),
-        ],
-        origin: AnalyticsUpdateOrigin.wordZoom,
-      ),
-    );
+    final bool isCorrect = token.vocabConstructID == choice.cId;
 
-    setState(() => {});
+    final ConstructUseTypeEnum? useType =
+        isCorrect ? activityType.correctUse : activityType.incorrectUse;
 
-    if (isCorrect) {
-      token.vocabConstructID
-          .setUserLemmaInfo(
-            UserSetLemmaInfo(
-              meaning: meaning,
-            ),
-          )
-          .then((_) => setState(() {}));
-    }
-
-    await Future.delayed(
-      const Duration(milliseconds: choiceArrayAnimationDuration),
-    );
-
-    if (isCorrect) {
-      // this removes just one of the options
-      // important because sometimes meanings are the same for different words
-      for (final messageMeaning in messageMeaningsForDisplay) {
-        if (messageMeaning.toLowerCase() == meaning.toLowerCase()) {
-          messageMeaningsForDisplay.remove(messageMeaning);
-          break;
-        }
-      }
-    }
-
-    selectedChoices.clear();
-
-    setState(() => {});
-  }
-
-  Future<void> onTokenSelectionWithSelectedMorphs(
-    PangeaToken token,
-    List<ConstructIdentifier> selectedMorphs,
-  ) async {
-    for (final morph in selectedMorphs) {
+    if (useType != null) {
       MatrixState.pangeaController.putAnalytics.setState(
         AnalyticsStream(
           eventId: pangeaMessageEvent!.eventId,
           roomId: pangeaMessageEvent!.room.id,
           constructs: [
             OneConstructUse(
-              useType: token.hasMorph(morph)
-                  ? ConstructUseTypeEnum.corM
-                  : ConstructUseTypeEnum.incM,
+              useType: useType,
               lemma: token.vocabConstructID.lemma,
               constructType: ConstructTypeEnum.vocab,
               metadata: ConstructUseMetaData(
@@ -550,136 +363,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       );
     }
 
-    setState(() => {});
+    feedbackStates.add(MatchFeedback(form: choice, isCorrect: isCorrect));
 
-    await Future.delayed(
-      const Duration(milliseconds: choiceArrayAnimationDuration),
-    );
-
-    // this removes just one of the options
-    // important because sometimes meanings are the same for different words
-    for (final selectedMorph in selectedMorphs) {
-      for (final displayMorphs in messageMorphTagsForDisplay) {
-        if (displayMorphs == selectedMorph) {
-          messageMorphTagsForDisplay.remove(displayMorphs);
-          break;
-        }
-      }
-    }
-
-    selectedChoices.clear();
-
-    setState(() => {});
-  }
-
-  Future<void> onTokenSelectionWithSelectedEmojis(
-    PangeaToken token,
-    List<int> emojisIndices,
-  ) async {
-    final List<int> correctPlacements = emojisIndices
-        .where(
-          (selectedEmoji) => messageLemmaInfos![token.vocabConstructID]!
-              .emoji
-              .contains(messageEmojisForDisplay[selectedEmoji]),
-        )
-        .toList();
-
-    correctPlacements.map(
-      (emoji) => MatrixState.pangeaController.putAnalytics.setState(
-        AnalyticsStream(
-          eventId: pangeaMessageEvent!.eventId,
-          roomId: pangeaMessageEvent!.room.id,
-          constructs: [
-            OneConstructUse(
-              useType: ConstructUseTypeEnum.em,
-              lemma: token.vocabConstructID.lemma,
-              constructType: ConstructTypeEnum.vocab,
-              metadata: ConstructUseMetaData(
-                roomId: pangeaMessageEvent!.room.id,
-                timeStamp: DateTime.now(),
-                eventId: pangeaMessageEvent!.eventId,
-              ),
-              category: token.vocabConstructID.category,
-              form: token.text.content,
-            ),
-          ],
-          origin: AnalyticsUpdateOrigin.wordZoom,
-        ),
-      ),
-    );
-
-    token.vocabConstructID
-        .setUserLemmaInfo(
-          UserSetLemmaInfo(
-            emojis: token.vocabConstructID.userSetEmoji +
-                correctPlacements
-                    .map((emoji) => messageEmojisForDisplay[emoji])
-                    .toList(),
-          ),
-        )
-        .then((_) => setState(() {}));
-
-    // find the correct place for the incorrect selections and place them
-    if (messageLemmaInfos != null) {
-      for (final emojiIndex in emojisIndices
-          .where((index) => !correctPlacements.contains(index))) {
-        final emoji = messageEmojisForDisplay[emojiIndex];
-        for (final lemma in messageLemmaInfos!.entries) {
-          if (lemma.value.emoji.contains(emoji) &&
-              !lemma.key.userSetEmoji.contains(emoji)) {
-            lemma.key
-                .setUserLemmaInfo(
-                  UserSetLemmaInfo(
-                    emojis: lemma.key.userSetEmoji +
-                        [messageEmojisForDisplay[emojiIndex]],
-                  ),
-                )
-                .then((onValue) => setState(() {}));
-            break;
-          } else {
-            debugger(when: kDebugMode);
-            continue;
-          }
-        }
-      }
-    } else {
-      debugger(when: kDebugMode);
-    }
-
-    selectedChoices.clear();
-
-    setState(() => {});
-  }
-
-  Future<void> onTokenSelectionWithSelectedAudio(
-    PangeaToken token,
-    String selectedAudioSurfaceForm,
-  ) async {
-    final bool isCorrect = token.text.content == selectedAudioSurfaceForm;
-
-    MatrixState.pangeaController.putAnalytics.setState(
-      AnalyticsStream(
-        eventId: pangeaMessageEvent!.eventId,
-        roomId: pangeaMessageEvent!.room.id,
-        constructs: [
-          OneConstructUse(
-            useType: isCorrect
-                ? ConstructUseTypeEnum.corWL
-                : ConstructUseTypeEnum.incWL,
-            lemma: token.vocabConstructID.lemma,
-            constructType: ConstructTypeEnum.vocab,
-            metadata: ConstructUseMetaData(
-              roomId: pangeaMessageEvent!.room.id,
-              timeStamp: DateTime.now(),
-              eventId: pangeaMessageEvent!.eventId,
-            ),
-            category: token.vocabConstructID.category,
-            form: token.text.content,
-          ),
-        ],
-        origin: AnalyticsUpdateOrigin.wordZoom,
-      ),
-    );
+    selectedChoice = null;
 
     setState(() => {});
 
@@ -688,11 +374,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     );
 
     if (isCorrect) {
-      messageWordFormsForDisplay
-          .removeWhere((form) => form == selectedAudioSurfaceForm);
+      messageAnalyticsEntry?.onActivityComplete(activityType, token);
     }
 
-    selectedChoices.clear();
+    feedbackStates.removeWhere((e) => e.form == choice);
 
     setState(() => {});
   }
@@ -721,19 +406,22 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   //         .every((token) => token.vocabConstructID.userSetEmoji.isNotEmpty) ??
   //     false;
 
-  bool get isEmojiDone => messageEmojisForDisplay.isEmpty;
+  bool get isEmojiDone =>
+      messageAnalyticsEntry?.activities(ActivityTypeEnum.emoji).isEmpty == true;
 
   bool get isMeaningDone =>
-      (messageLemmaInfos?.isNotEmpty ?? false) &&
-      messageMeaningsForDisplay.isEmpty;
+      messageAnalyticsEntry?.activities(ActivityTypeEnum.wordMeaning).isEmpty ==
+      true;
 
   bool get isListeningDone =>
-      (messageLemmaInfos?.isNotEmpty ?? false) &&
-      messageWordFormsForDisplay.isEmpty;
+      messageAnalyticsEntry
+          ?.activities(ActivityTypeEnum.wordFocusListening)
+          .isEmpty ==
+      true;
 
   bool get isMorphDone =>
-      (messageLemmaInfos?.isNotEmpty ?? false) &&
-      messageMorphTagsForDisplay.isEmpty;
+      messageAnalyticsEntry?.activities(ActivityTypeEnum.morphId).isEmpty ==
+      true;
 
   /// you have to complete one of the mode mini-games to unlock translation
   bool get isTranslationUnlocked =>
@@ -749,7 +437,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   MessageAnalyticsEntry? get messageAnalyticsEntry =>
       pangeaMessageEvent?.messageDisplayRepresentation?.tokens != null
-          ? MatrixState.pangeaController.getAnalytics.perMessage.get(
+          ? MessageAnalyticsController.get(
               pangeaMessageEvent!.messageDisplayRepresentation!.tokens!,
               pangeaMessageEvent!,
             )
@@ -853,14 +541,14 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// When an activity is completed, we need to update the state
   /// and check if the toolbar should be unlocked
-  void onActivityFinish(ActivityTypeEnum activityType) {
-    messageAnalyticsEntry!.onActivityComplete();
+  void onActivityFinish(ActivityTypeEnum activityType, PangeaToken? token) {
+    messageAnalyticsEntry!.onActivityComplete(activityType, null);
 
     if (selectedToken == null) {
       updateToolbarMode(MessageMode.noneSelected);
     }
 
-    updateToolbarMode(selectedToken!.modeForToken);
+    // updateToolbarMode(selectedToken!.modeForToken);
 
     if (!mounted) return;
     setState(() {});
@@ -881,7 +569,11 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     /// we don't want to associate the audio with the text in this mode
-    if (toolbarMode != MessageMode.messageTextToSpeech) {
+    if (messageAnalyticsEntry?.hasActivity(
+          ActivityTypeEnum.wordFocusListening,
+          token,
+        ) ==
+        false) {
       widget.chatController.choreographer.tts.tryToSpeak(
         token.text.content,
         context,
@@ -889,41 +581,27 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       );
     }
 
-    if (selectedChoices.isNotEmpty && token.lemma.saveVocab) {
-      switch (toolbarMode) {
-        case MessageMode.wordEmoji:
-          onTokenSelectionWithSelectedEmojis(token, selectedChoices);
-          break;
-        case MessageMode.wordMeaning:
-          final String selectedMeaning =
-              messageMeaningsForDisplay[selectedChoices.first];
-          onTokenSelectionWithSelectedMeaning(token, selectedMeaning);
-          break;
-        case MessageMode.messageTextToSpeech:
-          final String selectedWordAudioSurfaceForm =
-              messageWordFormsForDisplay[selectedChoices.first];
-          onTokenSelectionWithSelectedAudio(
-            token,
-            selectedWordAudioSurfaceForm,
-          );
-        case MessageMode.wordZoom:
-          if (token.lemma.saveVocab) {}
-          break;
-        case MessageMode.wordMorph:
-          if (token.lemma.saveVocab) {}
-          break;
-        case MessageMode.practiceActivity:
-        case MessageMode.messageMeaning:
-        case MessageMode.messageSpeechToText:
-        case MessageMode.messageTranslation:
-        case MessageMode.noneSelected:
-          break;
-      }
-      selectedChoices.clear();
-
-      setState(() {});
-    }
     _updateSelectedSpan(token.text);
+  }
+
+  void onDragTargetClick(PangeaToken token) {
+    if (toolbarMode.associatedActivityType == null) {
+      debugger(when: kDebugMode);
+      return;
+    }
+
+    // supporting highlighting of the target then a click on an option is possible
+    // however, a user might want to click an option to hear the audio then
+    // accidentally submit. for this reason, holding off on supporting that flow
+    // to see if it feels needed
+    if (selectedChoice == null) {
+      return;
+    }
+
+    onMatchAttempt(
+      token,
+      selectedChoice!,
+    );
   }
 
   /// Whether the given token is currently selected or highlighted

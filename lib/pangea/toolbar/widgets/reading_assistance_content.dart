@@ -2,9 +2,9 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_mode_locked_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_unsubscribed_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
@@ -48,17 +48,27 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
       );
     }
 
-    if ((widget.overlayController.messageAnalyticsEntry
-                ?.hasHiddenWordActivity ??
-            false) ||
-        (widget.overlayController.messageAnalyticsEntry
-                ?.hasMessageMeaningActivity ??
-            false)) {
+    if (widget.overlayController.messageAnalyticsEntry?.hasHiddenWordActivity ??
+        false) {
       return PracticeActivityCard(
         pangeaMessageEvent: widget.pangeaMessageEvent,
         overlayController: widget.overlayController,
-        targetTokensAndActivityType:
-            widget.overlayController.messageAnalyticsEntry!.nextActivity!,
+        targetTokensAndActivityType: widget
+            .overlayController.messageAnalyticsEntry!
+            .nextActivity(ActivityTypeEnum.hiddenWordListening)!,
+        location: AnalyticsUpdateOrigin.practiceActivity,
+      );
+    }
+
+    if (widget.overlayController.messageAnalyticsEntry
+            ?.hasMessageMeaningActivity ??
+        false) {
+      return PracticeActivityCard(
+        pangeaMessageEvent: widget.pangeaMessageEvent,
+        overlayController: widget.overlayController,
+        targetTokensAndActivityType: widget
+            .overlayController.messageAnalyticsEntry!
+            .nextActivity(ActivityTypeEnum.messageMeaning)!,
         location: AnalyticsUpdateOrigin.practiceActivity,
       );
     }
@@ -67,12 +77,12 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
       return const ToolbarContentLoadingIndicator();
     }
 
-    final unlocked = widget.overlayController.toolbarMode
-        .isUnlocked(widget.overlayController);
+    // final unlocked = widget.overlayController.toolbarMode
+    //     .isUnlocked(widget.overlayController);
 
-    if (!unlocked) {
-      return MessageModeLockedCard(controller: widget.overlayController);
-    }
+    // if (!unlocked) {
+    //   return MessageModeLockedCard(controller: widget.overlayController);
+    // }
 
     switch (widget.overlayController.toolbarMode) {
       case MessageMode.messageTranslation:
@@ -93,7 +103,7 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
       // );
       case MessageMode.messageMeaning:
       // return MessageMeaningCard(controller: widget.overlayController);
-      case MessageMode.messageTextToSpeech:
+      case MessageMode.listening:
       // return MessageAudioCard(
       //     messageEvent: widget.overlayController.pangeaMessageEvent!,
       //     overlayController: widget.overlayController,
