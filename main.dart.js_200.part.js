@@ -2808,17 +2808,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseChooseAUsername() {
       return "Por favor, elija un nombre de usuario";
     },
+    get$listen() {
+      return "Listas";
+    },
     get$trialPeriodExpired() {
       return "Su periodo de prueba ha expirado";
+    },
+    get$translations() {
+      return "traducci\xf3nes";
+    },
+    get$messageAudio() {
+      return "mensaje de audio";
     },
     get$subscribedToUnlockTools() {
       return "\xa1Suscr\xedbete para desbloquear la traducci\xf3n interactiva y la verificaci\xf3n gramatical, la reproducci\xf3n de audio, las actividades de pr\xe1ctica personalizadas y la anal\xedtica de aprendizaje!";
     },
     get$translationTooltip() {
       return "Traducir";
-    },
-    get$audioTooltip() {
-      return "Reproducir audio";
     },
     get$speechToTextTooltip() {
       return "Transcripci\xf3n";
@@ -2858,9 +2864,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$updatePhoneOS() {
       return "Puede que necesites actualizar la versi\xf3n del sistema operativo de tu dispositivo.";
-    },
-    get$wordsPerMinute() {
-      return "Palabras por minuto";
     },
     get$autoIGCToolName() {
       return "Ejecutar autom\xe1ticamente la asistencia ling\xfc\xedstica";
@@ -3642,6 +3645,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyCONJTYPE() {
       return "Tipo de conjunci\xf3n";
     },
+    get$grammarCopyUNKNOWN() {
+      return "Desconocido";
+    },
     get$grammarCopyNUMBERPSOR() {
       return "N\xfamero del poseedor";
     },
@@ -3783,9 +3789,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectBotChatMode() {
       return "Selecciona el modo de chat";
     },
-    get$other() {
-      return "Otros";
-    },
     levelShort$1(level) {
       return "NIV " + level;
     },
@@ -3796,7 +3799,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Elija las mejores opciones para traducir su mensaje";
     },
     get$completeActivitiesToUnlock() {
-      return "Completa las actividades de palabras resaltadas para desbloquear";
+      return "Complete one of the activities (emoji, meaning, listening OR grammar) to unlock the translation!";
     },
     get$botSettingsSubtitle() {
       return "Invitar a un bot a moderar la actividad del chat";
@@ -3987,9 +3990,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$formSectionHeader() {
       return "Formas utilizadas en los chats:";
     },
-    get$noEmojiSelectedTooltip() {
-      return "No se ha seleccionado ning\xfan emoji";
-    },
     get$writingExercisesTooltip() {
       return "Actividades de escritura";
     },
@@ -4001,9 +4001,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "No se pudo encontrar el significado.";
-    },
-    get$formsNotFound() {
-      return "No se pudieron encontrar las formas.";
     },
     get$chooseBaseForm() {
       return "Elige la forma base";
@@ -4119,8 +4116,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     pickAnEmoji$2(lemma, partOfSpeech) {
       return "\xbfCu\xe1l es tu emoji favorito para '" + lemma + "'?";
     },
-    get$lemmaMeaningInstructionsBody() {
-      return "Arriba est\xe1 el significado del lema. Haz doble clic para editar.";
+    get$chooseLemmaMeaningInstructionsBody() {
+      return "Match the meanings below with the underlined words in the message.";
     },
     get$doubleClickToEdit() {
       return "Haz doble clic para editar.";
@@ -4227,9 +4224,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$constructUseIgnMmDesc() {
       return "Significado del mensaje ignorado";
     },
-    get$clickForMeaningActivity() {
-      return "Haz clic aqu\xed para un Desaf\xedo de Significado";
-    },
     get$meaning() {
       return "Significado";
     },
@@ -4294,7 +4288,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Please update the app to continue.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Pick an emoji for the word! There's no wrong answer and you can switch anytime! \ud83d\ude00";
+      return "Match emojis with the words they best represent. Don't worry! No points off for disagreeing. \ud83d\ude05";
     },
     pickAnEmojiFor$1(lemma) {
       return "Pick an emoji for $" + lemma;
@@ -4311,6 +4305,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinByCode() {
       return "Join by code";
     },
+    get$chooseWordAudioInstructionsBody() {
+      return "Listen to the full message then match the word audios to the right blanks!";
+    },
+    get$chooseMorphsInstructionsBody() {
+      return "Match the grammar tags with the words in the message. Click and hold an option for a hint!";
+    },
     get$inviteAndLaunch() {
       return "Launch and invite";
     },
@@ -4325,6 +4325,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$join(_) {
       return "Join";
+    },
+    get$readingAssistanceOverviewBody() {
+      return "Click the buttons below for mini-games on visualizing vocab, practice listening, meaning, and grammar concepts. Click any word for details.";
     },
     get$learnByTexting() {
       return "Learn by texting";
@@ -4365,6 +4368,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "3vMHUb9Gz+7xO3qy7OvuyQhczlU=");
+})($__dart_deferred_initializers__, "GHdrQppr9CHwFV/xSA80VIAe448=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

@@ -2808,17 +2808,23 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseChooseAUsername() {
       return "Vui l\xf2ng ch\u1ecdn t\xean ng\u01b0\u1eddi d\xf9ng";
     },
+    get$listen() {
+      return "Nghe";
+    },
     get$trialPeriodExpired() {
       return "Th\u1eddi gian d\xf9ng th\u1eed \u0111\xe3 h\u1ebft h\u1ea1n";
+    },
+    get$translations() {
+      return "b\u1ea3n d\u1ecbch";
+    },
+    get$messageAudio() {
+      return "\xe2m thanh tin nh\u1eafn";
     },
     get$subscribedToUnlockTools() {
       return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a d\u1ecbch t\u01b0\u01a1ng t\xe1c, ki\u1ec3m tra ng\u1eef ph\xe1p, \xe2m thanh, ho\u1ea1t \u0111\u1ed9ng v\xe0 ph\xe2n t\xedch h\u1ecdc t\u1eadp!";
     },
     get$translationTooltip() {
       return "D\u1ecbch";
-    },
-    get$audioTooltip() {
-      return "Ph\xe1t \xe2m thanh";
     },
     get$speechToTextTooltip() {
       return "Chuy\u1ec3n gi\u1ecdng n\xf3i th\xe0nh v\u0103n b\u1ea3n";
@@ -2858,9 +2864,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$updatePhoneOS() {
       return "B\u1ea1n c\xf3 th\u1ec3 c\u1ea7n n\xe2ng c\u1ea5p phi\xean b\u1ea3n h\u1ec7 \u0111i\u1ec1u h\xe0nh.";
-    },
-    get$wordsPerMinute() {
-      return "T\u1eeb m\u1ed7i ph\xfat";
     },
     get$autoIGCToolName() {
       return "T\u1ef1 \u0111\u1ed9ng ch\u1ea1y h\u1ed7 tr\u1ee3 ng\xf4n ng\u1eef";
@@ -3642,6 +3645,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyCONJTYPE() {
       return "Lo\u1ea1i li\xean t\u1eeb";
     },
+    get$grammarCopyUNKNOWN() {
+      return "Kh\xf4ng r\xf5";
+    },
     get$grammarCopyNUMBERPSOR() {
       return "S\u1ed1 l\u01b0\u1ee3ng ch\u1ee7 s\u1edf h\u1eefu";
     },
@@ -3783,9 +3789,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectBotChatMode() {
       return "Ch\u1ecdn ch\u1ebf \u0111\u1ed9 tr\xf2 chuy\u1ec7n c\u1ee7a bot";
     },
-    get$other() {
-      return "Kh\xe1c";
-    },
     levelShort$1(level) {
       return "LVL " + level;
     },
@@ -3796,7 +3799,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ch\u1ecdn ph\u01b0\u01a1ng \xe1n t\u1ed1t nh\u1ea5t \u0111\u1ec3 d\u1ecbch tin nh\u1eafn c\u1ee7a b\u1ea1n!";
     },
     get$completeActivitiesToUnlock() {
-      return "Ho\xe0n th\xe0nh c\xe1c ho\u1ea1t \u0111\u1ed9ng t\u1eeb v\u1ef1ng \u0111\u01b0\u1ee3c \u0111\xe1nh d\u1ea5u \u0111\u1ec3 m\u1edf kh\xf3a";
+      return "Complete one of the activities (emoji, meaning, listening OR grammar) to unlock the translation!";
     },
     get$botSettingsSubtitle() {
       return "M\u1eddi bot ki\u1ec3m duy\u1ec7t ho\u1eb7c kh\u1edfi t\u1ea1o ho\u1ea1t \u0111\u1ed9ng tr\xf2 chuy\u1ec7n";
@@ -3987,9 +3990,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$formSectionHeader() {
       return "C\xe1c d\u1ea1ng t\u1eeb \u0111\xe3 d\xf9ng trong tr\xf2 chuy\u1ec7n:";
     },
-    get$noEmojiSelectedTooltip() {
-      return "Ch\u01b0a ch\u1ecdn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac n\xe0o";
-    },
     get$writingExercisesTooltip() {
       return "B\xe0i t\u1eadp vi\u1ebft";
     },
@@ -4001,9 +4001,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$meaningNotFound() {
       return "Kh\xf4ng t\xecm th\u1ea5y ngh\u0129a c\u1ee7a t\u1eeb.";
-    },
-    get$formsNotFound() {
-      return "Kh\xf4ng t\xecm th\u1ea5y d\u1ea1ng t\u1eeb.";
     },
     get$chooseBaseForm() {
       return "Ch\u1ecdn d\u1ea1ng g\u1ed1c";
@@ -4119,8 +4116,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     pickAnEmoji$2(lemma, partOfSpeech) {
       return "B\u1ea1n ch\u1ecdn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac n\xe0o cho '" + lemma + "'?";
     },
-    get$lemmaMeaningInstructionsBody() {
-      return "\u1ede tr\xean l\xe0 ngh\u0129a c\u1ee7a m\u1ee5c t\u1eeb. Nh\u1ea5p \u0111\xfap \u0111\u1ec3 ch\u1ec9nh s\u1eeda.";
+    get$chooseLemmaMeaningInstructionsBody() {
+      return "Match the meanings below with the underlined words in the message.";
     },
     get$doubleClickToEdit() {
       return "Nh\u1ea5p \u0111\xfap \u0111\u1ec3 ch\u1ec9nh s\u1eeda.";
@@ -4227,9 +4224,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$constructUseIgnMmDesc() {
       return "B\u1ecf qua trong \xfd ngh\u0129a tin nh\u1eafn";
     },
-    get$clickForMeaningActivity() {
-      return "Nh\u1ea5n \u0111\xe2y \u0111\u1ec3 l\xe0m B\xe0i t\u1eadp \xdd Ngh\u0129a";
-    },
     get$meaning() {
       return "Ngh\u0129a";
     },
@@ -4311,6 +4305,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinByCode() {
       return "Tham gia b\u1eb1ng m\xe3";
     },
+    get$chooseWordAudioInstructionsBody() {
+      return "Listen to the full message then match the word audios to the right blanks!";
+    },
+    get$chooseMorphsInstructionsBody() {
+      return "Match the grammar tags with the words in the message. Click and hold an option for a hint!";
+    },
     get$inviteAndLaunch() {
       return "Launch and invite";
     },
@@ -4325,6 +4325,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$join(_) {
       return "Join";
+    },
+    get$readingAssistanceOverviewBody() {
+      return "Click the buttons below for mini-games on visualizing vocab, practice listening, meaning, and grammar concepts. Click any word for details.";
     },
     get$learnByTexting() {
       return "Learn by texting";
@@ -4365,6 +4368,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ung3XNSF9aV8CWvk8G+VrJIUfc0=");
+})($__dart_deferred_initializers__, "8mVEy5JC9H5K0t+d47LXAlTVYzw=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
