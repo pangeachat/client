@@ -19,7 +19,6 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/overlay_f
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_column.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -54,7 +53,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   Animation<Offset>? _overlayOffsetAnimation;
-  Animation<Offset>? _buttonsOffsetAnimation;
   Animation<Size>? _messageSizeAnimation;
 
   StreamSubscription? _reactionSubscription;
@@ -65,10 +63,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   Offset? _centeredMessageOffset;
   Size? _centeredMessageSize;
   final Completer _centeredMessageCompleter = Completer();
-
-  Offset? _centeredButtonsOffset;
-  Size? _centeredButtonsSize;
-  final Completer _centeredButtonsCompleter = Completer();
 
   bool _finishedAnimation = false;
 
@@ -105,7 +99,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     Future.wait([
       _centeredMessageCompleter.future,
-      _centeredButtonsCompleter.future,
     ]).then((_) => _startAnimation());
   }
 
@@ -148,21 +141,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
   }
 
-  void _setCenteredButtonsSize(RenderBox renderBox) {
-    if (_finishedAnimation) return;
-    _centeredButtonsSize = renderBox.size;
-    final offset = renderBox.localToGlobal(Offset.zero);
-    _centeredButtonsOffset = Offset(
-      offset.dx - _columnWidth - _horizontalPadding - 2.0,
-      offset.dy,
-    );
-    setState(() {});
-
-    if (!_centeredButtonsCompleter.isCompleted) {
-      _centeredButtonsCompleter.complete();
-    }
-  }
-
   void _startAnimation() {
     if (_mediaQuery == null) {
       return;
@@ -192,21 +170,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       ),
     );
 
-    _buttonsOffsetAnimation = Tween<Offset>(
-      begin: Offset(
-        _ownMessage
-            ? (_centeredButtonsSize!.width * -1)
-            : _centeredButtonsSize!.width + _mediaQuery!.size.width,
-        _totalToolbarBottomOffset,
-      ),
-      end: _centeredButtonsOffset,
-    ).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: FluffyThemes.animationCurve,
-      ),
-    );
-
     _messageSizeAnimation = Tween<Size>(
       begin: Size(
         _messageSize.width,
@@ -219,16 +182,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         curve: FluffyThemes.animationCurve,
       ),
     );
-
-    // _contentSizeAnimation = Tween<double>(
-    //   begin: 0,
-    //   end: 1,
-    // ).animate(
-    //   CurvedAnimation(
-    //     parent: _animationController,
-    //     curve: FluffyThemes.animationCurve,
-    //   ),
-    // );
 
     _animationController.forward().then((_) {
       _finishedAnimation = true;
@@ -439,7 +392,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
               showToolbarButtons: showToolbarButtons,
               hasReactions: _hasReactions,
               onChangeMessageSize: _setCenteredMessageSize,
-              onChangeButtonsSize: _setCenteredButtonsSize,
               isTransitionAnimation: false,
             ),
           ),
@@ -472,21 +424,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                     hasReactions: _hasReactions,
                     sizeAnimation: _messageSizeAnimation,
                     isTransitionAnimation: true,
-                  ),
-                );
-              },
-            ),
-          if (!_finishedAnimation && _buttonsOffsetAnimation != null)
-            AnimatedBuilder(
-              animation: _buttonsOffsetAnimation!,
-              builder: (context, child) {
-                return Positioned(
-                  left: (_buttonsOffsetAnimation?.value)!.dx,
-                  top: _centeredButtonsOffset?.dy,
-                  child: ToolbarButtonRow(
-                    event: widget.event,
-                    overlayController: widget.overlayController,
-                    shouldShowToolbarButtons: showToolbarButtons,
                   ),
                 );
               },

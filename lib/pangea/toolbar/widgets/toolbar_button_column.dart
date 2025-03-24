@@ -7,12 +7,10 @@ import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
 
 class ToolbarButtonRow extends StatelessWidget {
-  final Event event;
   final MessageOverlayController overlayController;
   final bool shouldShowToolbarButtons;
 
   const ToolbarButtonRow({
-    required this.event,
     required this.overlayController,
     required this.shouldShowToolbarButtons,
     super.key,
@@ -25,63 +23,65 @@ class ToolbarButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (event.messageType == MessageTypes.Audio ||
+    if (overlayController.event.messageType == MessageTypes.Audio ||
         !shouldShowToolbarButtons ||
         !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ??
             false)) {
       return const SizedBox(
-        height: 50.0,
+        height: 100.0,
       );
     }
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ToolbarButton(
-              mode: MessageMode.messageTranslation,
-              overlayController: overlayController,
-              onPressed: overlayController.updateToolbarMode,
-              buttonSize: buttonSize,
-            ),
-          ],
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          spacing: 4.0,
-          children: [
-            ToolbarButton(
-              mode: MessageMode.wordMorph,
-              overlayController: overlayController,
-              onPressed: overlayController.updateToolbarMode,
-              buttonSize: buttonSize,
-            ),
-            ToolbarButton(
-              mode: MessageMode.wordMeaning,
-              overlayController: overlayController,
-              onPressed: overlayController.updateToolbarMode,
-              buttonSize: buttonSize,
-            ),
-            ToolbarButton(
-              mode: MessageMode.listening,
-              overlayController: overlayController,
-              onPressed: overlayController.updateToolbarMode,
-              buttonSize: buttonSize,
-            ),
-            ToolbarButton(
-              mode: MessageMode.wordEmoji,
-              overlayController: overlayController,
-              onPressed: overlayController.updateToolbarMode,
-              buttonSize: buttonSize,
-            ),
-          ],
-        ),
-      ],
+    return SizedBox(
+      height: 100.0,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ToolbarButton(
+                mode: MessageMode.messageTranslation,
+                overlayController: overlayController,
+                onPressed: overlayController.updateToolbarMode,
+                buttonSize: buttonSize,
+              ),
+            ],
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            spacing: 4.0,
+            children: [
+              ToolbarButton(
+                mode: MessageMode.wordMorph,
+                overlayController: overlayController,
+                onPressed: overlayController.updateToolbarMode,
+                buttonSize: buttonSize,
+              ),
+              ToolbarButton(
+                mode: MessageMode.wordMeaning,
+                overlayController: overlayController,
+                onPressed: overlayController.updateToolbarMode,
+                buttonSize: buttonSize,
+              ),
+              ToolbarButton(
+                mode: MessageMode.listening,
+                overlayController: overlayController,
+                onPressed: overlayController.updateToolbarMode,
+                buttonSize: buttonSize,
+              ),
+              ToolbarButton(
+                mode: MessageMode.wordEmoji,
+                overlayController: overlayController,
+                onPressed: overlayController.updateToolbarMode,
+                buttonSize: buttonSize,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
