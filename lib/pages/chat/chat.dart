@@ -1193,7 +1193,10 @@ class ChatController extends State<ChatPageWithRoom>
       for (final event in selectedEvents) {
         await event.cancelSend();
       }
-      setState(selectedEvents.clear);
+      // #Pangea
+      // setState(selectedEvents.clear);
+      clearSelectedEvents();
+      // Pangea#
     } catch (e, s) {
       ErrorReporter(
         context,
@@ -1328,6 +1331,9 @@ class ChatController extends State<ChatPageWithRoom>
     }
     // Pangea#
     final event = selectedEvents.first;
+    // #Pangea
+    clearSelectedEvents();
+    // Pangea#
     if (event.status.isError) {
       event.sendAgain();
     }
@@ -1833,7 +1839,7 @@ class ChatController extends State<ChatPageWithRoom>
     Event? nextEvent,
     Event? prevEvent,
   }) {
-    if (event.redacted) return;
+    if (event.redacted || event.status == EventStatus.sending) return;
 
     // Close keyboard, if open
     if (inputFocus.hasFocus && PlatformInfos.isMobile) {
