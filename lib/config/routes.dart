@@ -30,10 +30,10 @@ import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/pages/settings_security/settings_security.dart';
 import 'package:fluffychat/pages/settings_style/settings_style.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_page.dart';
-import 'package:fluffychat/pangea/activity_suggestions/activity_suggestions_area.dart';
 import 'package:fluffychat/pangea/activity_suggestions/suggestions_page.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
 import 'package:fluffychat/pangea/layouts/bottom_nav_layout.dart';
+import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/login/pages/user_settings.dart';
@@ -198,7 +198,7 @@ abstract class AppRoutes {
             FluffyThemes.isColumnMode(context)
                 // #Pangea
                 // ? const EmptyPage()
-                ? const ActivitySuggestionsArea()
+                ? const SuggestionsPage()
                 // Pangea#
                 : ChatList(
                     activeChat: state.pathParameters['roomid'],
@@ -353,7 +353,7 @@ abstract class AppRoutes {
                     FluffyThemes.isColumnMode(context)
                         // #Pangea
                         // ? const EmptyPage()
-                        ? const ActivitySuggestionsArea()
+                        ? const SuggestionsPage()
                         // Pangea#
                         : const Settings(),
                   ),
@@ -493,6 +493,17 @@ abstract class AppRoutes {
                       ],
                     ),
                     // #Pangea
+                    GoRoute(
+                      path: 'learning',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const SettingsLearning(
+                          isDialog: false,
+                        ),
+                      ),
+                      redirect: loggedOutRedirect,
+                    ),
                     GoRoute(
                       path: 'subscription',
                       pageBuilder: (context, state) => defaultPageBuilder(
@@ -681,11 +692,14 @@ abstract class AppRoutes {
     GoRouterState state,
     Widget child,
   ) =>
-      FluffyThemes.isColumnMode(context)
-          ? noTransitionPageBuilder(context, state, child)
-          : MaterialPage(
-              key: state.pageKey,
-              restorationId: state.pageKey.value,
-              child: child,
-            );
+      // #Pangea
+      noTransitionPageBuilder(context, state, child);
+  // FluffyThemes.isColumnMode(context)
+  //     ? noTransitionPageBuilder(context, state, child)
+  //     : MaterialPage(
+  //         key: state.pageKey,
+  //         restorationId: state.pageKey.value,
+  //         child: child,
+  //       );
+  // Pangea#
 }

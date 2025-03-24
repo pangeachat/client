@@ -65,7 +65,7 @@ class ErrorHandler {
       // Custom handling for PangeaWarningError
       debugPrint("PangeaWarningError: ${e.message}");
     } else {
-      if (m != null) debugPrint("error message: $m");
+      debugPrint("error message: ${m ?? e}");
     }
 
     Sentry.addBreadcrumb(Breadcrumb(data: data));

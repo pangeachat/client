@@ -277,7 +277,7 @@ class HtmlMessage extends StatelessWidget {
 
         Color backgroundColor = Colors.transparent;
         if (selected) {
-          backgroundColor = AppConfig.primaryColor.withAlpha(80);
+          backgroundColor = Theme.of(context).colorScheme.primary.withAlpha(80);
         } else if (isSelected != null && shouldDo) {
           backgroundColor = !didMeaningActivity
               ? AppConfig.success.withAlpha(60)
@@ -609,9 +609,9 @@ class HtmlMessage extends StatelessWidget {
     return SelectionArea(
       child: GestureDetector(
         onTap: () {
-          if (!isOverlay && pangeaMessageEvent != null) {
+          if (!isOverlay) {
             controller.showToolbar(
-              pangeaMessageEvent!.event,
+              pangeaMessageEvent?.event ?? event,
               pangeaMessageEvent: pangeaMessageEvent,
               nextEvent: nextEvent,
               prevEvent: prevEvent,

@@ -38,7 +38,9 @@ class VocabAnalyticsListTileState extends State<VocabAnalyticsListTile> {
           padding: EdgeInsets.all(padding),
           decoration: BoxDecoration(
             color: _isHovered
-                ? widget.constructUse.constructLevel.color.withAlpha(30)
+                ? widget.constructUse.constructLevel
+                    .color(context)
+                    .withAlpha(20)
                 : Colors.transparent,
             borderRadius: BorderRadius.circular(AppConfig.borderRadius),
           ),
@@ -58,7 +60,7 @@ class VocabAnalyticsListTileState extends State<VocabAnalyticsListTile> {
                             fontSize: 22,
                           ),
                         )
-                      : widget.constructUse.constructLevel.icon(40),
+                      : widget.constructUse.constructLevel.icon(36.0),
                 ),
               ),
               Container(
@@ -70,7 +72,9 @@ class VocabAnalyticsListTileState extends State<VocabAnalyticsListTile> {
                   maxWidth: maxWidth - padding * 2,
                   style: TextStyle(
                     fontSize: 16,
-                    color: widget.constructUse.constructLevel.color,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? widget.constructUse.constructLevel.darkColor(context)
+                        : widget.constructUse.constructLevel.color(context),
                   ),
                 ),
               ),

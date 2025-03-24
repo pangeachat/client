@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/activity_planner/media_enum.dart';
 import 'package:fluffychat/pangea/activity_planner/suggestion_form_field.dart';
 import 'package:fluffychat/pangea/activity_planner/topic_list_repo.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
+import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
@@ -90,7 +91,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
   Future<List<ActivitySettingResponseSchema>> get _topicItems =>
       TopicListRepo.get(req);
 
-  Future<List<ActivitySettingResponseSchema>> get _modeItems =>
+  Future<List<ActivitySettingResponseSchema>> get modeItems =>
       ActivityModeListRepo.get(req);
 
   Future<List<ActivitySettingResponseSchema>> get _objectiveItems =>
@@ -112,7 +113,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
   }
 
   Future<String> _randomMode() async {
-    final modes = await _modeItems;
+    final modes = await modeItems;
     return (modes..shuffle()).first.name;
   }
 
@@ -197,6 +198,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                       cefrLevel: _selectedCefrLevel!,
                       numberOfParticipants: _selectedNumberOfParticipants!,
                     ),
+              controller: this,
             )
           : Center(
               child: ConstrainedBox(
@@ -233,7 +235,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                                 ),
                                 const SizedBox(height: 24),
                                 SuggestionFormField(
-                                  suggestions: _modeItems,
+                                  suggestions: modeItems,
                                   validator: _validateNotNull,
                                   label: l10n.modeLabel,
                                   placeholder: l10n.modePlaceholder,
@@ -255,23 +257,42 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                       ),
                       const SizedBox(height: 24),
                       DropdownButtonFormField2<MediaEnum>(
+                        customButton: CustomDropdownTextButton(
+                          text: _selectedMedia.toDisplayCopyUsingL10n(context),
+                        ),
+                        menuItemStyleData: const MenuItemStyleData(
+                          padding: EdgeInsets.zero, // Remove default padding
+                        ),
                         decoration: InputDecoration(labelText: l10n.mediaLabel),
+                        isExpanded: true,
+                        dropdownStyleData: DropdownStyleData(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .surfaceContainerHigh,
+                          ),
+                        ),
                         items: MediaEnum.values
                             .map(
                               (e) => DropdownMenuItem(
                                 value: e,
-                                child: Text(e.toDisplayCopyUsingL10n(context)),
+                                child: DropdownTextButton(
+                                  text: e.toDisplayCopyUsingL10n(context),
+                                  isSelected: _selectedMedia == e,
+                                ),
                               ),
                             )
                             .toList(),
-                        onChanged: (val) =>
-                            _selectedMedia = val ?? MediaEnum.nan,
+                        onChanged: (val) {
+                          setState(() => _selectedMedia = val ?? MediaEnum.nan);
+                        },
                         value: _selectedMedia,
                       ),
                       const SizedBox(height: 24),
                       LanguageLevelDropdown(
                         initialLevel: _selectedCefrLevel,
-                        onChanged: (val) => _selectedCefrLevel = val,
+                        onChanged: (val) =>
+                            setState(() => _selectedCefrLevel = val),
                       ),
                       const SizedBox(height: 24),
                       PLanguageDropdown(

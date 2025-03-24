@@ -30,6 +30,7 @@ import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
+import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
@@ -365,18 +366,39 @@ class ChatController extends State<ChatPageWithRoom>
 
     _levelSubscription = pangeaController.getAnalytics.stateStream
         .where(
-          (update) =>
-              update is Map<String, dynamic> && update['level_up'] != null,
-        )
+      (update) =>
+          update is Map<String, dynamic> &&
+          (update['level_up'] != null || update['unlocked_constructs'] != null),
+    )
+        // .listen(
+        //   (update) => Future.delayed(
+        //     const Duration(milliseconds: 500),
+        //     () => LevelUpUtil.showLevelUpDialog(
+        //       update['level_up'],
+        //       context,
+        //     ),
+        //   ),
+        // )
         .listen(
-          (update) => Future.delayed(
-            const Duration(milliseconds: 500),
-            () => LevelUpUtil.showLevelUpDialog(
-              update['level_up'],
-              context,
-            ),
-          ),
-        );
+      // remove delay now that GetAnalyticsController._onLevelUp
+      // is async is should take roughly 500ms to make requests anyway
+      (update) {
+        if (update['level_up'] != null) {
+          LevelUpUtil.showLevelUpDialog(
+            update['level_up'],
+            update['analytics_room_id'],
+            update["construct_summary_state_event_id"],
+            update['construct_summary'],
+            context,
+          );
+        } else if (update['unlocked_constructs'] != null) {
+          showUnlockedMorphsSnackbar(
+            update['unlocked_constructs'],
+            context,
+          );
+        }
+      },
+    );
     // Pangea#
     _tryLoadTimeline();
     if (kIsWeb) {
@@ -526,7 +548,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (state == AppLifecycleState.paused) {
       clearSelectedEvents();
     }
-    if (state == AppLifecycleState.hidden) {
+    if (state == AppLifecycleState.hidden && !stopAudioStream.isClosed) {
       stopAudioStream.add(null);
     }
     // Pangea#
@@ -615,7 +637,7 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.removeListener(_inputFocusListener);
     onFocusSub?.cancel();
     //#Pangea
-    choreographer.stateListener.close();
+    choreographer.stateStream.close();
     choreographer.dispose();
     clearSelectedEvents();
     MatrixState.pAnyState.closeOverlay();
@@ -1870,8 +1892,6 @@ class ChatController extends State<ChatPageWithRoom>
         child: overlayEntry!,
         transformTargetId: "",
         backgroundColor: Colors.black,
-        closePrevOverlay:
-            MatrixState.pangeaController.subscriptionController.isSubscribed,
         position: OverlayPositionEnum.centered,
         onDismiss: clearSelectedEvents,
         blurBackground: true,

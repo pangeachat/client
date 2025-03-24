@@ -9,6 +9,8 @@ class PangeaEventTypes {
   static const summaryAnalytics = "pangea.summaryAnalytics";
   static const construct = "pangea.construct";
   static const userSetLemmaInfo = "p.user_lemma_info";
+  static const constructSummary = "pangea.construct_summary";
+  static const userChosenEmoji = "p.emoji";
 
   static const translation = "pangea.translation";
   static const tokens = "pangea.tokens";

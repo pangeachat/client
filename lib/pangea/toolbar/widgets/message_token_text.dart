@@ -243,6 +243,21 @@ class MessageTextWidget extends StatelessWidget {
               .take(tokenPosition.end - tokenPosition.start)
               .toString();
 
+<<<<<<< HEAD
+=======
+          Color backgroundColor = Colors.transparent;
+          if (!hideTokenHighlights) {
+            if (tokenPosition.selected) {
+              backgroundColor =
+                  Theme.of(context).colorScheme.primary.withAlpha(80);
+            } else if (isSelected != null && shouldDo) {
+              backgroundColor = !didMeaningActivity
+                  ? AppConfig.success.withAlpha(60)
+                  : AppConfig.gold.withAlpha(60);
+            }
+          }
+
+>>>>>>> main
           if (tokenPosition.token?.pos == 'SPACE') {
             return const TextSpan(text: '\n');
           }

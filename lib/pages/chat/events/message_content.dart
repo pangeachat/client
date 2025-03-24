@@ -4,6 +4,7 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/video_player.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_rich_text.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
@@ -260,7 +261,7 @@ class MessageContent extends StatelessWidget {
                 nextEvent: nextEvent,
                 prevEvent: prevEvent,
                 isSelected: overlayController != null ? isSelected : null,
-                onClick: onClick,
+                onClick: event.isActivityMessage ? null : onClick,
                 // Pangea#
                 fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
                 linkStyle: TextStyle(

@@ -4814,5 +4814,21 @@
   "pleaseEnterInt": "Please enter a number",
   "home": "Home",
   "join": "Join",
-  "readingAssistanceOverviewBody": "Click the buttons below for mini-games on visualizing vocab, practice listening, meaning, and grammar concepts. Click any word for details."
+  "readingAssistanceOverviewBody": "Click the buttons below for mini-games on visualizing vocab, practice listening, meaning, and grammar concepts. Click any word for details.",
+  "learnByTexting": "Learn by texting",
+  "levelSummaryTrigger": "View summary",
+  "levelSummaryPopupTitle": "Level {level} Summary",
+  "@levelSummaryPopupTitle": {
+    "type": "String",
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "startChatting": "Start chatting",
+  "referFriends": "Refer friends",
+  "referFriendDialogTitle": "Invite a friend to your conversation",
+  "referFriendDialogDesc": "Do you have a friend who is excited to learn a new language with you? Then copy and send this invitation link to join and start chatting with you today.",
+  "youUnlocked": "You've unlocked"
 }

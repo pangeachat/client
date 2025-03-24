@@ -88,7 +88,7 @@ class MorphFeatureBox extends StatelessWidget {
         border: Border.all(
           color: Theme.of(context).brightness == Brightness.dark
               ? AppConfig.primaryColorLight
-              : AppConfig.primaryColor,
+              : Theme.of(context).colorScheme.primary,
           width: 2,
         ),
       ),
@@ -144,7 +144,7 @@ class MorphFeatureBox extends StatelessWidget {
                             morphFeature: morphFeature,
                             morphTag: morphTag,
                             constructAnalytics: analytics,
-                            onTap: analytics.points > 0
+                            onTap: analytics.points > 10
                                 ? () => onConstructZoom(id)
                                 : null,
                           );
@@ -185,26 +185,27 @@ class MorphTagChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final unlocked = constructAnalytics.points > 10;
 
     return InkWell(
       borderRadius: BorderRadius.circular(AppConfig.borderRadius),
       onTap: onTap,
       child: Opacity(
-        opacity: constructAnalytics.points > 0 ? 1.0 : 0.3,
+        opacity: unlocked ? 1.0 : 0.3,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-            gradient: constructAnalytics.points > 0
+            borderRadius: BorderRadius.circular(32.0),
+            gradient: unlocked
                 ? LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                     colors: <Color>[
                       Colors.transparent,
-                      constructAnalytics.lemmaCategory.color,
+                      constructAnalytics.lemmaCategory.color(context),
                     ],
                   )
                 : null,
-            color: constructAnalytics.points > 0 ? null : theme.disabledColor,
+            color: unlocked ? null : theme.disabledColor,
           ),
           padding: const EdgeInsets.symmetric(
             vertical: 4.0,
@@ -217,8 +218,7 @@ class MorphTagChip extends StatelessWidget {
               SizedBox(
                 width: 28.0,
                 height: 28.0,
-                child: constructAnalytics.points > 0 ||
-                        Matrix.of(context).client.isSupportAccount
+                child: unlocked || Matrix.of(context).client.isSupportAccount
                     ? MorphIcon(
                         morphFeature: feature,
                         morphTag: morphTag,

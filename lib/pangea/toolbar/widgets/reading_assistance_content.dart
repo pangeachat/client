@@ -39,10 +39,10 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
       widget.overlayController.widget.chatController.choreographer.tts;
 
   Widget? toolbarContent(BuildContext context) {
-    final bool subscribed =
+    final bool? subscribed =
         MatrixState.pangeaController.subscriptionController.isSubscribed;
 
-    if (!subscribed) {
+    if (subscribed != null && !subscribed) {
       return MessageUnsubscribedCard(
         controller: widget.overlayController,
       );
