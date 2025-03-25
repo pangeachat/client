@@ -275,7 +275,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     if (_centeredMessageHasOverflow) {
       return Size(
         _centeredMessageSize!.width,
-        _centerSpace!,
+        _centerSpace! - (AppConfig.toolbarSpacing * 2),
       );
     }
     return _centeredMessageSize;
@@ -285,7 +285,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     if (_centeredMessageHasOverflow) {
       return Offset(
         _centeredMessageOffset!.dx,
-        _footerHeight,
+        _footerHeight + AppConfig.toolbarSpacing,
       );
     }
     return _centeredMessageOffset;
@@ -424,7 +424,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                 ),
               ),
               const Expanded(
-                flex: 2,
+                flex: 3,
                 child: SizedBox.shrink(),
               ),
               Opacity(
