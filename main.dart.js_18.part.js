@@ -4130,7 +4130,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "What's your favorite emoji for '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Match the meanings below with the underlined words in the message.";
+      return "Match the meanings to the words in the message!";
     },
     get$doubleClickToEdit() {
       return "Double-click to edit.";
@@ -4224,9 +4224,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$leaveSpaceDescription() {
       return "By leaving the space, you will leave all of the chats within it. Other users will see that you have left the space.";
-    },
-    get$whatIsLemma() {
-      return "What is the lemma?";
     },
     get$constructUseCorMmDesc() {
       return "Correct message meaning";
@@ -4322,7 +4319,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Listen to the full message then match the word audios to the right blanks!";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Match the grammar tags with the words in the message. Click and hold an option for a hint!";
+      return "Click the puzzle pieces for grammar questions!";
     },
     get$inviteAndLaunch() {
       return "Launch and invite";
@@ -4365,6 +4362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$youUnlocked() {
       return "You've unlocked";
+    },
+    get$selectForGrammar() {
+      return "Select a grammar icon for activities and details.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6283,6 +6283,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "sx3WMbXYldwvqJsmdoGC+5QOgSw=");
+})($__dart_deferred_initializers__, "3xFFXGuHU7NXfsTnF+iRqGNzVAk=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map

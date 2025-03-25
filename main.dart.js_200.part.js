@@ -4117,7 +4117,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\xbfCu\xe1l es tu emoji favorito para '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Match the meanings below with the underlined words in the message.";
+      return "Match the meanings to the words in the message!";
     },
     get$doubleClickToEdit() {
       return "Haz doble clic para editar.";
@@ -4211,9 +4211,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$leaveSpaceDescription() {
       return "Al salir del espacio, dejar\xe1s todos los chats dentro de \xe9l. Otros usuarios ver\xe1n que has salido del espacio.";
-    },
-    get$whatIsLemma() {
-      return "\xbfQu\xe9 es el lema?";
     },
     get$constructUseCorMmDesc() {
       return "Significado correcto del mensaje";
@@ -4309,7 +4306,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Listen to the full message then match the word audios to the right blanks!";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Match the grammar tags with the words in the message. Click and hold an option for a hint!";
+      return "Click the puzzle pieces for grammar questions!";
     },
     get$inviteAndLaunch() {
       return "Launch and invite";
@@ -4353,6 +4350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youUnlocked() {
       return "You've unlocked";
     },
+    get$selectForGrammar() {
+      return "Select a grammar icon for activities and details.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4368,6 +4368,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "GHdrQppr9CHwFV/xSA80VIAe448=");
+})($__dart_deferred_initializers__, "X6Gox3bC+yCvZSR9LwgDHKCc1Qw=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

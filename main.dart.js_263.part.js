@@ -4117,7 +4117,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "B\u1ea1n ch\u1ecdn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac n\xe0o cho '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Match the meanings below with the underlined words in the message.";
+      return "Match the meanings to the words in the message!";
     },
     get$doubleClickToEdit() {
       return "Nh\u1ea5p \u0111\xfap \u0111\u1ec3 ch\u1ec9nh s\u1eeda.";
@@ -4211,9 +4211,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$leaveSpaceDescription() {
       return "B\u1eb1ng c\xe1ch r\u1eddi kh\u1ecfi kh\xf4ng gian, b\u1ea1n s\u1ebd r\u1eddi t\u1ea5t c\u1ea3 c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n b\xean trong n\xf3. Nh\u1eefng ng\u01b0\u1eddi d\xf9ng kh\xe1c s\u1ebd th\u1ea5y r\u1eb1ng b\u1ea1n \u0111\xe3 r\u1eddi kh\u1ecfi kh\xf4ng gian.";
-    },
-    get$whatIsLemma() {
-      return "D\u1ea1ng g\u1ed1c c\u1ee7a t\u1eeb l\xe0 g\xec?";
     },
     get$constructUseCorMmDesc() {
       return "\u0110\xfang trong \xfd ngh\u0129a tin nh\u1eafn";
@@ -4309,7 +4306,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Listen to the full message then match the word audios to the right blanks!";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Match the grammar tags with the words in the message. Click and hold an option for a hint!";
+      return "Click the puzzle pieces for grammar questions!";
     },
     get$inviteAndLaunch() {
       return "Launch and invite";
@@ -4353,6 +4350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youUnlocked() {
       return "You've unlocked";
     },
+    get$selectForGrammar() {
+      return "Select a grammar icon for activities and details.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4368,6 +4368,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "8mVEy5JC9H5K0t+d47LXAlTVYzw=");
+})($__dart_deferred_initializers__, "gPYH8MApVVDBIMN4wsM1Mm3Ln3o=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
