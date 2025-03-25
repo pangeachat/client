@@ -4830,5 +4830,7 @@
   "referFriends": "Refer friends",
   "referFriendDialogTitle": "Invite a friend to your conversation",
   "referFriendDialogDesc": "Do you have a friend who is excited to learn a new language with you? Then copy and send this invitation link to join and start chatting with you today.",
-  "youUnlocked": "You've unlocked"
+  "youUnlocked": "You've unlocked",
+  "resetInstructionTooltipsTitle": "Reset instruction tooltips",
+  "resetInstructionTooltipsDesc": "Click to show instruction tooltips like for a brand new user."
 }

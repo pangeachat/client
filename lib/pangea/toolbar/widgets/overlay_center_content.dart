@@ -21,13 +21,15 @@ class OverlayCenterContent extends StatelessWidget {
   final Animation<Size>? sizeAnimation;
   final void Function(RenderBox)? onChangeMessageSize;
 
-  final double messageHeight;
-  final double messageWidth;
+  final double? messageHeight;
+  final double? messageWidth;
   final double toolbarMaxWidth;
 
   final bool showToolbarButtons;
   final bool hasReactions;
+
   final bool isTransitionAnimation;
+  final bool transitionAnimationFinished;
 
   const OverlayCenterContent({
     required this.event,
@@ -44,6 +46,7 @@ class OverlayCenterContent extends StatelessWidget {
     this.onChangeMessageSize,
     this.sizeAnimation,
     this.isTransitionAnimation = false,
+    this.transitionAnimationFinished = false,
     super.key,
   });
 
@@ -73,12 +76,16 @@ class OverlayCenterContent extends StatelessWidget {
                 sizeAnimation: sizeAnimation,
                 // there's a split seconds between when the transition animation starts and
                 // when the sizeAnimation is set when the original dimensions need to be enforced
-                messageWidth: sizeAnimation == null && isTransitionAnimation
-                    ? messageWidth
-                    : null,
-                messageHeight: sizeAnimation == null && isTransitionAnimation
-                    ? messageHeight
-                    : null,
+                messageWidth:
+                    (sizeAnimation == null && isTransitionAnimation) ||
+                            transitionAnimationFinished
+                        ? messageWidth
+                        : null,
+                messageHeight:
+                    (sizeAnimation == null && isTransitionAnimation) ||
+                            transitionAnimationFinished
+                        ? messageHeight
+                        : null,
                 isTransitionAnimation: isTransitionAnimation,
               ),
             ),

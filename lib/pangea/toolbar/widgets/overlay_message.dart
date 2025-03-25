@@ -119,22 +119,22 @@ class OverlayMessage extends StatelessWidget {
             ? ThemeData.dark().colorScheme.onPrimary
             : theme.colorScheme.onSurface;
 
-    final content = SingleChildScrollView(
-      dragStartBehavior: DragStartBehavior.down,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-            AppConfig.borderRadius,
-          ),
+    final content = Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          AppConfig.borderRadius,
         ),
-        padding: noBubble || noPadding
-            ? EdgeInsets.zero
-            : const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
-        width: messageWidth,
-        height: messageHeight,
+      ),
+      padding: noBubble || noPadding
+          ? EdgeInsets.zero
+          : const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
+      width: messageWidth,
+      height: messageHeight,
+      child: SingleChildScrollView(
+        dragStartBehavior: DragStartBehavior.down,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,

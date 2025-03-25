@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
@@ -28,12 +29,12 @@ class ToolbarButtonRow extends StatelessWidget {
         !(overlayController.pangeaMessageEvent?.messageDisplayLangIsL2 ??
             false)) {
       return const SizedBox(
-        height: 100.0,
+        height: AppConfig.toolbarButtonsHeight,
       );
     }
 
     return SizedBox(
-      height: 100.0,
+      height: AppConfig.toolbarButtonsHeight,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
