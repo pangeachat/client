@@ -1,10 +1,9 @@
 import 'dart:async';
 
+import 'package:fluffychat/pangea/common/utils/play_click_sound.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:fluffychat/pangea/common/utils/play_click_sound.dart';
 
 class PressableButton extends StatefulWidget {
   final BorderRadius borderRadius;

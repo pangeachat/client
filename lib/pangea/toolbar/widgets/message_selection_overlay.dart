@@ -1,13 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -34,6 +28,10 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/match_fee
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/reading_assistance_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:matrix/matrix.dart';
 
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)
 class MessageSelectionOverlay extends StatefulWidget {
@@ -377,6 +375,20 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
     if (isCorrect) {
       messageAnalyticsEntry?.onActivityComplete(activityType, token);
+
+      if (activityType == ActivityTypeEnum.emoji &&
+          !token.vocabConstructID.userSetEmoji.contains(choice.form)) {
+        final allEmojis = token.vocabConstructID.userSetEmoji + [choice.form];
+        token.setEmoji(allEmojis).then((_) async {
+          setState(() {});
+        });
+      }
+
+      if (activityType == ActivityTypeEnum.wordMeaning) {
+        token.setMeaning(choice.form).then((_) async {
+          setState(() {});
+        });
+      }
     }
 
     feedbackStates.removeWhere((e) => e.form == choice);

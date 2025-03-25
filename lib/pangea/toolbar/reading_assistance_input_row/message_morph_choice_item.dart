@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
+import 'package:flutter/material.dart';
 
 class MessageMorphChoiceItem extends StatefulWidget {
   const MessageMorphChoiceItem({
@@ -85,6 +84,7 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
                   ),
                   morphTag: widget.cId.lemma,
                   size: const Size(40, 40),
+                  showTooltip: false,
                 ),
               ),
               Text(

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
@@ -10,6 +7,7 @@ import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 /// Displays vocab analytics, sorted into categories
 /// (flowers, greens, and seeds) by points
@@ -98,7 +96,7 @@ class VocabAnalyticsListViewState extends State<VocabAnalyticsListView> {
               padding: const EdgeInsets.all(8.0),
               child: Badge(
                 label: Text(count.toString()),
-                child: constructLevelCategory.icon(24),
+                child: constructLevelCategory.icon(40),
               ),
             ),
           );
@@ -125,50 +123,54 @@ class VocabAnalyticsListViewState extends State<VocabAnalyticsListView> {
             curve: Curves.easeInOut,
             padding:
                 EdgeInsets.symmetric(horizontal: _isSearching ? 8.0 : 24.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 225.0),
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    transitionBuilder: (child, animation) => FadeTransition(
-                      opacity: animation,
-                      child: child,
-                    ),
-                    child: _isSearching
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            key: const ValueKey('search'),
-                            children: [
-                              Expanded(
-                                child: TextField(
-                                  autofocus: true,
-                                  controller: _searchController,
-                                  decoration: const InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(
-                                      vertical: 6.0,
-                                      horizontal: 12.0,
+            child: Container(
+              height: 60,
+              alignment: Alignment.center,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 225.0),
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      transitionBuilder: (child, animation) => FadeTransition(
+                        opacity: animation,
+                        child: child,
+                      ),
+                      child: _isSearching
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              key: const ValueKey('search'),
+                              children: [
+                                Expanded(
+                                  child: TextField(
+                                    autofocus: true,
+                                    controller: _searchController,
+                                    decoration: const InputDecoration(
+                                      contentPadding: EdgeInsets.symmetric(
+                                        vertical: 6.0,
+                                        horizontal: 12.0,
+                                      ),
+                                      isDense: true,
+                                      border: OutlineInputBorder(),
                                     ),
-                                    isDense: true,
-                                    border: OutlineInputBorder(),
                                   ),
                                 ),
-                              ),
-                              IconButton(
-                                icon: const Icon(Icons.close),
-                                onPressed: _toggleSearching,
-                              ),
-                            ],
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            key: const ValueKey('filters'),
-                            children: filters,
-                          ),
+                                IconButton(
+                                  icon: const Icon(Icons.close),
+                                  onPressed: _toggleSearching,
+                                ),
+                              ],
+                            )
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              key: const ValueKey('filters'),
+                              children: filters,
+                            ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
