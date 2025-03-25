@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class ToolbarButtonRow extends StatelessWidget {
   final MessageOverlayController overlayController;
@@ -55,29 +53,49 @@ class ToolbarButtonRow extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             spacing: 4.0,
             children: [
-              ToolbarButton(
-                mode: MessageMode.wordMorph,
-                overlayController: overlayController,
-                onPressed: overlayController.updateToolbarMode,
-                buttonSize: buttonSize,
+              Container(
+                width: buttonSize + 4,
+                height: buttonSize + 4,
+                alignment: Alignment.center,
+                child: ToolbarButton(
+                  mode: MessageMode.wordMorph,
+                  overlayController: overlayController,
+                  onPressed: overlayController.updateToolbarMode,
+                  buttonSize: buttonSize,
+                ),
               ),
-              ToolbarButton(
-                mode: MessageMode.wordMeaning,
-                overlayController: overlayController,
-                onPressed: overlayController.updateToolbarMode,
-                buttonSize: buttonSize,
+              Container(
+                width: buttonSize + 4,
+                height: buttonSize + 4,
+                alignment: Alignment.center,
+                child: ToolbarButton(
+                  mode: MessageMode.wordMeaning,
+                  overlayController: overlayController,
+                  onPressed: overlayController.updateToolbarMode,
+                  buttonSize: buttonSize,
+                ),
               ),
-              ToolbarButton(
-                mode: MessageMode.listening,
-                overlayController: overlayController,
-                onPressed: overlayController.updateToolbarMode,
-                buttonSize: buttonSize,
+              Container(
+                width: buttonSize + 4,
+                height: buttonSize + 4,
+                alignment: Alignment.center,
+                child: ToolbarButton(
+                  mode: MessageMode.listening,
+                  overlayController: overlayController,
+                  onPressed: overlayController.updateToolbarMode,
+                  buttonSize: buttonSize,
+                ),
               ),
-              ToolbarButton(
-                mode: MessageMode.wordEmoji,
-                overlayController: overlayController,
-                onPressed: overlayController.updateToolbarMode,
-                buttonSize: buttonSize,
+              Container(
+                width: buttonSize + 4,
+                height: buttonSize + 4,
+                alignment: Alignment.center,
+                child: ToolbarButton(
+                  mode: MessageMode.wordEmoji,
+                  overlayController: overlayController,
+                  onPressed: overlayController.updateToolbarMode,
+                  buttonSize: buttonSize,
+                ),
               ),
             ],
           ),
