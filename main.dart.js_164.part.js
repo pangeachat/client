@@ -4351,6 +4351,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$youUnlocked() {
       return "You've unlocked";
     },
+    get$resetInstructionTooltipsTitle() {
+      return "Reset instruction tooltips";
+    },
+    get$resetInstructionTooltipsDesc() {
+      return "Click to show instruction tooltips like for a brand new user.";
+    },
     get$selectForGrammar() {
       return "Select a grammar icon for activities and details.";
     },
@@ -4369,6 +4375,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_164", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "LlQ8XPDkkBJuw2UxdvbaM67d4+M=");
+})($__dart_deferred_initializers__, "67fjfkAAr2xgU8C3h3TjxeFKsm0=");
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map
