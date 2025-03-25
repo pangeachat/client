@@ -23,7 +23,8 @@ class OverlayCenterContent extends StatelessWidget {
 
   final double? messageHeight;
   final double? messageWidth;
-  final double toolbarMaxWidth;
+  final double maxWidth;
+  final double maxHeight;
 
   final bool showToolbarButtons;
   final bool hasReactions;
@@ -35,7 +36,8 @@ class OverlayCenterContent extends StatelessWidget {
     required this.event,
     required this.messageHeight,
     required this.messageWidth,
-    required this.toolbarMaxWidth,
+    required this.maxWidth,
+    required this.maxHeight,
     required this.overlayController,
     required this.chatController,
     required this.pangeaMessageEvent,
@@ -53,7 +55,7 @@ class OverlayCenterContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxWidth: toolbarMaxWidth),
+      constraints: BoxConstraints(maxWidth: maxWidth),
       child: Material(
         type: MaterialType.transparency,
         child: Column(
@@ -76,16 +78,13 @@ class OverlayCenterContent extends StatelessWidget {
                 sizeAnimation: sizeAnimation,
                 // there's a split seconds between when the transition animation starts and
                 // when the sizeAnimation is set when the original dimensions need to be enforced
-                messageWidth:
-                    (sizeAnimation == null && isTransitionAnimation) ||
-                            transitionAnimationFinished
-                        ? messageWidth
-                        : null,
-                messageHeight:
-                    (sizeAnimation == null && isTransitionAnimation) ||
-                            transitionAnimationFinished
-                        ? messageHeight
-                        : null,
+                messageWidth: (sizeAnimation == null && isTransitionAnimation)
+                    ? messageWidth
+                    : null,
+                messageHeight: (sizeAnimation == null && isTransitionAnimation)
+                    ? messageHeight
+                    : null,
+                maxHeight: maxHeight,
                 isTransitionAnimation: isTransitionAnimation,
               ),
             ),
