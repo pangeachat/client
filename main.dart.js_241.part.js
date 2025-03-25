@@ -4324,7 +4324,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Join";
     },
     get$readingAssistanceOverviewBody() {
-      return "Click the buttons below for mini-games on visualizing vocab, practice listening, meaning, and grammar concepts. Click any word for details.";
+      return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
     },
     get$learnByTexting() {
       return "Learn by texting";
@@ -4374,6 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_241", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "/PEeg6j29lSqlfNW3WcNK4ZUtvA=");
+})($__dart_deferred_initializers__, "xv7V59xlCJow6ZhoDYYZgvPMmI4=");
 ;
 //# sourceMappingURL=main.dart.js_241.part.js.map
