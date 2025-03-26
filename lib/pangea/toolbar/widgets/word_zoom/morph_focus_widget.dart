@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
+import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -19,6 +20,7 @@ import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_feature_display.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
@@ -54,17 +56,18 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
   final ScrollController _scrollController = ScrollController();
 
   void resetMorphTag() => setState(
-        () => selectedMorphTag = widget.token.morph[widget.morphFeature]!,
+        () => selectedMorphTag =
+            widget.token.getMorphTag(widget.morphFeature) ?? "X",
       );
 
   @override
   void didUpdateWidget(MorphFocusWidget oldWidget) {
-    super.didUpdateWidget(oldWidget);
     if (widget.token != oldWidget.token ||
         widget.morphFeature != oldWidget.morphFeature) {
       resetMorphTag();
       setState(() => editMode = false);
     }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -164,15 +167,15 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
   @override
   Widget build(BuildContext context) {
     if (!editMode) {
-      return Expanded(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            MorphFeatureDisplay(
-              morphFeature: widget.morphFeature,
-              morphTag: selectedMorphTag,
-            ),
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 8.0,
+        children: [
+          MorphFeatureDisplay(
+            morphFeature: widget.morphFeature,
+          ),
+          if (widget.token.getMorphTag(widget.morphFeature) != null) ...[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -184,7 +187,11 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
                     onLongPress: enterEditMode,
                     onDoubleTap: enterEditMode,
                     child: MorphTagDisplay(
-                      morphFeature: widget.morphFeature,
+                      morphFeature: MorphFeaturesEnumExtension.fromString(
+                        widget.morphFeature,
+                      ),
+                      morphTag: widget.token.getMorphTag(widget.morphFeature) ??
+                          L10n.of(context).nan,
                       textColor: Theme.of(context).brightness ==
                               Brightness.light
                           ? id.constructUses.lemmaCategory.darkColor(context)
@@ -205,155 +212,139 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
                 ),
               ],
             ),
-          ],
-        ),
+            MorphMeaningWidget(
+              feature: widget.morphFeature,
+              tag: widget.token.getMorphTag(widget.morphFeature)!,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ] else
+            Text(L10n.of(context).nan),
+        ],
       );
     }
 
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Column(
-          children: [
-            Text(
-              "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).chooseCorrectLabel}",
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontStyle: FontStyle.italic),
-            ),
-            Container(
-              constraints: const BoxConstraints(maxHeight: 50),
-              child: Scrollbar(
-                controller: _scrollController,
-                thumbVisibility: true,
-                child: SingleChildScrollView(
-                  controller: _scrollController,
-                  scrollDirection: Axis.horizontal,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 4),
-                    child: FutureBuilder(
-                      future: MorphsRepo.get(),
-                      builder: (context, snapshot) {
-                        final allMorphTagsForEdit = snapshot.data
-                                ?.getDisplayTags(widget.morphFeature) ??
-                            defaultMorphMapping
-                                .getDisplayTags(widget.morphFeature);
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: Column(
+        children: [
+          Text(
+            "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).chooseCorrectLabel}",
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontStyle: FontStyle.italic),
+          ),
+          FutureBuilder(
+            future: MorphsRepo.get(),
+            builder: (context, snapshot) {
+              final allMorphTagsForEdit =
+                  snapshot.data?.getDisplayTags(widget.morphFeature) ??
+                      defaultMorphMapping.getDisplayTags(widget.morphFeature);
 
-                        return snapshot.connectionState == ConnectionState.done
-                            ? Row(
-                                children: allMorphTagsForEdit.map((tag) {
-                                  return Container(
-                                    margin: const EdgeInsets.all(2),
-                                    padding: EdgeInsets.zero,
-                                    decoration: BoxDecoration(
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(10),
-                                      ),
-                                      border: Border.all(
-                                        color: selectedMorphTag == tag
-                                            ? Theme.of(context)
-                                                .colorScheme
-                                                .primary
-                                            : Colors.transparent,
-                                        style: BorderStyle.solid,
-                                        width: 2.0,
-                                      ),
-                                    ),
-                                    child: TextButton(
-                                      style: ButtonStyle(
-                                        padding: WidgetStateProperty.all(
-                                          const EdgeInsets.symmetric(
-                                            horizontal: 7,
-                                          ),
-                                        ),
-                                        backgroundColor:
-                                            WidgetStateProperty.all<Color>(
-                                          selectedMorphTag == tag
-                                              ? Theme.of(context)
-                                                  .colorScheme
-                                                  .primary
-                                                  .withAlpha(50)
-                                              : Colors.transparent,
-                                        ),
-                                        shape: WidgetStateProperty.all(
-                                          RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                        ),
-                                      ),
-                                      onPressed: () {
-                                        setState(() => selectedMorphTag = tag);
-                                      },
-                                      child: Text(
-                                        getGrammarCopy(
-                                              category: widget.morphFeature,
-                                              lemma: tag,
-                                              context: context,
-                                            ) ??
-                                            tag,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  );
-                                }).toList(),
-                              )
-                            : const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                      },
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const CircularProgressIndicator();
+              }
+
+              return Wrap(
+                children: allMorphTagsForEdit.map((tag) {
+                  return Container(
+                    margin: const EdgeInsets.all(2),
+                    padding: EdgeInsets.zero,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                      border: Border.all(
+                        color: selectedMorphTag == tag
+                            ? Theme.of(context).colorScheme.primary
+                            : Colors.transparent,
+                        style: BorderStyle.solid,
+                        width: 2.0,
+                      ),
                     ),
-                  ),
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              spacing: 10,
-              children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      editMode = false;
-                    });
-                  },
-                  child: Text(L10n.of(context).cancel),
-                ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                  ),
-                  onPressed: selectedMorphTag ==
-                          widget.token.morph[widget.morphFeature]
-                      ? null
-                      : () => showFutureLoadingDialog(
-                            context: context,
-                            future: () => saveChanges(
-                              (token) {
-                                token.morph[widget.morphFeature] =
-                                    selectedMorphTag;
-                                if (widget.morphFeature.toLowerCase() ==
-                                    'pos') {
-                                  token.pos = selectedMorphTag;
-                                }
-                                return token;
-                              },
-                            ),
+                    child: TextButton(
+                      style: ButtonStyle(
+                        padding: WidgetStateProperty.all(
+                          const EdgeInsets.symmetric(
+                            horizontal: 7,
                           ),
-                  child: Text(L10n.of(context).saveChanges),
+                        ),
+                        backgroundColor: WidgetStateProperty.all<Color>(
+                          selectedMorphTag == tag
+                              ? Theme.of(context)
+                                  .colorScheme
+                                  .primary
+                                  .withAlpha(50)
+                              : Colors.transparent,
+                        ),
+                        shape: WidgetStateProperty.all(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(() => selectedMorphTag = tag);
+                      },
+                      child: Text(
+                        getGrammarCopy(
+                              category: widget.morphFeature,
+                              lemma: tag,
+                              context: context,
+                            ) ??
+                            tag,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                }).toList(),
+              );
+            },
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            spacing: 10,
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                 ),
-              ],
-            ),
-          ],
-        ),
+                onPressed: () {
+                  setState(() {
+                    editMode = false;
+                  });
+                },
+                child: Text(L10n.of(context).cancel),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                ),
+                onPressed: selectedMorphTag ==
+                        widget.token.morph[widget.morphFeature]
+                    ? null
+                    : () => showFutureLoadingDialog(
+                          context: context,
+                          future: () => saveChanges(
+                            (token) {
+                              token.morph[widget.morphFeature] =
+                                  selectedMorphTag;
+                              if (widget.morphFeature.toLowerCase() == 'pos') {
+                                token.pos = selectedMorphTag;
+                              }
+                              return token;
+                            },
+                          ),
+                        ),
+                child: Text(L10n.of(context).saveChanges),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

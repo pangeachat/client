@@ -8,6 +8,7 @@ class PangeaEventTypes {
   // static const studentAnalyticsSummary = "pangea.usranalytics";
   static const summaryAnalytics = "pangea.summaryAnalytics";
   static const construct = "pangea.construct";
+  static const userSetLemmaInfo = "p.user_lemma_info";
   static const constructSummary = "pangea.construct_summary";
   static const userChosenEmoji = "p.emoji";
 
@@ -22,6 +23,8 @@ class PangeaEventTypes {
   static const audio = "p.audio";
   static const botOptions = "pangea.bot_options";
   static const capacity = "pangea.capacity";
+
+  static const activityPlan = "pangea.activity_plan";
 
   static const userAge = "pangea.user_age";
 

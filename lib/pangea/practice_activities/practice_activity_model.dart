@@ -10,10 +10,10 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/morphs/morph_categories_enum.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_display_instructions_enum.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/models/multiple_choice_activity_model.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_display_instructions_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
 
 class CandidateMessage {
   final String msgId;

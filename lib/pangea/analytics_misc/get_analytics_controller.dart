@@ -12,7 +12,6 @@ import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
@@ -23,6 +22,7 @@ import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/practice_activities/message_analytics_controller.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
@@ -42,10 +42,6 @@ class GetAnalyticsController extends BaseController {
 
   GetAnalyticsController(PangeaController pangeaController) {
     _pangeaController = pangeaController;
-
-    perMessage = MessageAnalyticsController(
-      this,
-    );
   }
 
   LanguageModel? get _l2 => _pangeaController.languageController.userL2;
@@ -108,7 +104,7 @@ class GetAnalyticsController extends BaseController {
         data: {},
       );
     } finally {
-      _updateAnalyticsStream();
+      _updateAnalyticsStream(points: 0);
       if (!initCompleter.isCompleted) initCompleter.complete();
       _initializing = false;
     }
@@ -153,7 +149,13 @@ class GetAnalyticsController extends BaseController {
     if (newUnlockedMorphs.isNotEmpty) {
       _onUnlockMorphLemmas(newUnlockedMorphs);
     }
-    _updateAnalyticsStream(origin: analyticsUpdate.origin);
+    _updateAnalyticsStream(
+      points: analyticsUpdate.newConstructs.fold<int>(
+        0,
+        (previousValue, element) => previousValue + element.pointValue,
+      ),
+      targetID: analyticsUpdate.targetID,
+    );
     // Update public profile each time that new analytics are added.
     // If the level hasn't changed, this will not send an update to the server.
     // Do this on all updates (not just on level updates) to account for cases
@@ -164,9 +166,15 @@ class GetAnalyticsController extends BaseController {
   }
 
   void _updateAnalyticsStream({
-    AnalyticsUpdateOrigin? origin,
+    required int points,
+    String? targetID,
   }) =>
-      analyticsStream.add(AnalyticsStreamUpdate(origin: origin));
+      analyticsStream.add(
+        AnalyticsStreamUpdate(
+          points: points,
+          targetID: targetID,
+        ),
+      );
 
   Future<void> _onLevelUp(final int lowerLevel, final int upperLevel) async {
     final result = await _generateLevelUpAnalyticsAndSaveToStateEvent(
@@ -483,9 +491,11 @@ class AnalyticsCacheEntry {
 }
 
 class AnalyticsStreamUpdate {
-  final AnalyticsUpdateOrigin? origin;
+  final int points;
+  final String? targetID;
 
   AnalyticsStreamUpdate({
-    this.origin,
+    required this.points,
+    this.targetID,
   });
 }

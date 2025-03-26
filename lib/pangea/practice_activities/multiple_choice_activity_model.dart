@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 
 class ActivityContent {
   final String question;

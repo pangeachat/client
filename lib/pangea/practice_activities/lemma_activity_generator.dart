@@ -7,10 +7,10 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/models/message_activity_request.dart';
-import 'package:fluffychat/pangea/toolbar/models/multiple_choice_activity_model.dart';
-import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
+import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaActivityGenerator {
