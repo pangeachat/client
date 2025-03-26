@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-const int choiceArrayAnimationDuration = 300;
+const int choiceArrayAnimationDuration = 500;
 
 class ChoiceAnimationWidget extends StatefulWidget {
   final bool isSelected;
@@ -54,7 +54,16 @@ class ChoiceAnimationWidgetState extends State<ChoiceAnimationWidget>
   }
 
   Animation<double> get _animation => widget.isCorrect
-      ? Tween<double>(begin: 1.0, end: 1.2).animate(_controller)
+      ? TweenSequence<double>([
+          TweenSequenceItem<double>(
+            tween: Tween<double>(begin: 1.0, end: 1.2),
+            weight: 1.0,
+          ),
+          TweenSequenceItem<double>(
+            tween: Tween<double>(begin: 1.2, end: 1.0),
+            weight: 1.0,
+          ),
+        ]).animate(_controller)
       : TweenSequence<double>([
           TweenSequenceItem<double>(
             tween: Tween<double>(begin: 0, end: -8 * pi / 180),
