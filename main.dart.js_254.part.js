@@ -4359,6 +4359,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectForGrammar() {
       return "Select a grammar icon for activities and details.";
     },
+    get$newChatActivityTitle() {
+      return "Add a fun activity";
+    },
+    get$newChatActivityDesc() {
+      return "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!";
+    },
+    get$exploreMore() {
+      return "Explore more";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4374,6 +4383,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_254", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ERv11XKj7Yi34HntNOj6iatAW+o=");
+})($__dart_deferred_initializers__, "cHVWrzMeZ4gYJTBeEF3x9NZaBTE=");
 ;
 //# sourceMappingURL=main.dart.js_254.part.js.map
