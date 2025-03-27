@@ -59,58 +59,61 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
         pageMode: pageMode,
         setPageMode: _setPageMode,
       ),
-      body: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 800.0),
-        child: Column(
-          children: [
-            if ([PageMode.featuredActivities, PageMode.savedActivities]
-                .contains(pageMode))
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: SegmentedButton<PageMode>(
-                      selected: {pageMode},
-                      onSelectionChanged: (modes) => _setPageMode(modes.first),
-                      segments: [
-                        ButtonSegment(
-                          value: PageMode.featuredActivities,
-                          label: Text(L10n.of(context).featuredActivities),
-                        ),
-                        ButtonSegment(
-                          value: PageMode.savedActivities,
-                          label: Text(L10n.of(context).yourBookmarks),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 800.0),
+          child: Column(
+            children: [
+              if ([PageMode.featuredActivities, PageMode.savedActivities]
+                  .contains(pageMode))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: SegmentedButton<PageMode>(
+                        selected: {pageMode},
+                        onSelectionChanged: (modes) =>
+                            _setPageMode(modes.first),
+                        segments: [
+                          ButtonSegment(
+                            value: PageMode.featuredActivities,
+                            label: Text(L10n.of(context).featuredActivities),
+                          ),
+                          ButtonSegment(
+                            value: PageMode.savedActivities,
+                            label: Text(L10n.of(context).yourBookmarks),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              body,
+              if (!FluffyThemes.isColumnMode(context))
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ElevatedButton(
+                    onPressed: () => context.go("/rooms/planner"),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 0.0,
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          L10n.of(context).makeYourOwn,
+                          style: Theme.of(context).textTheme.bodyMedium,
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-            body,
-            if (!FluffyThemes.isColumnMode(context))
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: ElevatedButton(
-                  onPressed: () => context.go("/rooms/planner"),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 0.0,
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        L10n.of(context).makeYourOwn,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
-                  ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );
