@@ -178,6 +178,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       clipBehavior: Clip.hardEdge,
+                      alignment: Alignment.center,
                       child: widget.avatarURL != null || _avatar != null
                           ? ClipRRect(
                               child: _avatar == null
@@ -189,8 +190,11 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                           child: CircularProgressIndicator(),
                                         );
                                       },
-                                      errorWidget: (context, url, error) =>
-                                          const SizedBox(),
+                                      errorWidget: (context, url, error) {
+                                        return const Padding(
+                                          padding: EdgeInsets.all(28.0),
+                                        );
+                                      },
                                     )
                                   : Image.memory(
                                       _avatar!,
@@ -198,7 +202,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                     ),
                             )
                           : const Padding(
-                              padding: EdgeInsets.all(16.0),
+                              padding: EdgeInsets.all(28.0),
                             ),
                     ),
                     Positioned(
