@@ -2724,9 +2724,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$freeTrial() {
       return "D\xf9ng th\u1eed mi\u1ec5n ph\xed";
     },
-    get$noDataFound() {
-      return "Kh\xf4ng t\xecm th\u1ea5y d\u1eef li\u1ec7u";
-    },
     promoSubscriptionExpirationDesc$1(expiration) {
       return "G\xf3i khuy\u1ebfn m\xe3i h\u1ebft h\u1ea1n v\xe0o " + expiration + ". N\u1ebfu c\u1ea7n tr\u1ee3 gi\xfap, h\xe3y li\xean h\u1ec7 support@pangea.chat.";
     },
@@ -4155,9 +4152,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$learningObjectivePlaceholder() {
       return "Ch\u1ecdn m\u1ed9t m\u1ee5c ti\xeau h\u1ecdc t\u1eadp...";
     },
-    get$mediaLabel() {
-      return "Lo\u1ea1i n\u1ed9i dung ng\u01b0\u1eddi h\u1ecdc n\xean chia s\u1ebb";
-    },
     get$languageOfInstructionsLabel() {
       return "Ng\xf4n ng\u1eef h\u01b0\u1edbng d\u1eabn ho\u1ea1t \u0111\u1ed9ng";
     },
@@ -4172,12 +4166,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$launchActivityButton() {
       return "Kh\u1edfi ch\u1ea1y ho\u1ea1t \u0111\u1ed9ng";
-    },
-    get$image(_) {
-      return "H\xecnh \u1ea3nh";
-    },
-    get$video() {
-      return "Video";
     },
     get$nan() {
       return "Kh\xf4ng \xe1p d\u1ee5ng";
@@ -4368,6 +4356,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$exploreMore() {
       return "Explore more";
     },
+    get$randomize() {
+      return "Randomize";
+    },
+    get$clear(_) {
+      return "Clear";
+    },
+    get$makeYourOwnActivity() {
+      return "Make your own activity";
+    },
+    get$makeYourOwn() {
+      return "Make your own";
+    },
+    get$featuredActivities() {
+      return "Featured activities";
+    },
+    get$yourBookmarks() {
+      return "Your bookmarks";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4383,6 +4389,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "/6EEL1SgH6vC8yPCAzNpvF/vF/s=");
+})($__dart_deferred_initializers__, "imBJrfbCYNS6aF1aKWWJ34fTz6M=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map

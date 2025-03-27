@@ -2725,9 +2725,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$freeTrial() {
       return "Free Trial";
     },
-    get$noDataFound() {
-      return "No data found";
-    },
     promoSubscriptionExpirationDesc$1(expiration) {
       return "Your current subscription is promotional and expires on " + expiration + ". Message support@pangea.chat for help changing your subscription.";
     },
@@ -4156,9 +4153,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$learningObjectivePlaceholder() {
       return "Choose a learning objective...";
     },
-    get$mediaLabel() {
-      return "Media learners should share";
-    },
     get$languageOfInstructionsLabel() {
       return "Language of activity instructions";
     },
@@ -4173,12 +4167,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$launchActivityButton() {
       return "Launch Activity";
-    },
-    get$image(_) {
-      return "Image";
-    },
-    get$video() {
-      return "Video";
     },
     get$nan() {
       return "Not applicable";
@@ -4369,6 +4357,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$exploreMore() {
       return "Explore more";
     },
+    get$randomize() {
+      return "Randomize";
+    },
+    get$clear(_) {
+      return "Clear";
+    },
+    get$makeYourOwnActivity() {
+      return "Make your own activity";
+    },
+    get$makeYourOwn() {
+      return "Make your own";
+    },
+    get$featuredActivities() {
+      return "Featured activities";
+    },
+    get$yourBookmarks() {
+      return "Your bookmarks";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4387,6 +4393,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_189", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "CDAuZdM4eHPWQcXBYUv2xX3Ln+o=");
+})($__dart_deferred_initializers__, "18OKBXxMlvG+5gysOlejIoEQpcs=");
 ;
 //# sourceMappingURL=main.dart.js_189.part.js.map
