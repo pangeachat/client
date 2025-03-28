@@ -4324,9 +4324,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     levelSummaryPopupTitle$1(level) {
       return "Level " + level + " Summary";
     },
-    get$startChatting() {
-      return "Start chatting";
-    },
     get$referFriends() {
       return "Refer friends";
     },
@@ -4352,10 +4349,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Add a fun activity";
     },
     get$newChatActivityDesc() {
-      return "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!";
-    },
-    get$exploreMore() {
-      return "Explore more";
+      return "Choose one of the activities below to add to your chat or skip this step and create an activity later.";
     },
     get$randomize() {
       return "Randomize";
@@ -4366,14 +4360,20 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$makeYourOwnActivity() {
       return "Make your own activity";
     },
-    get$makeYourOwn() {
-      return "Make your own";
-    },
     get$featuredActivities() {
       return "Featured activities";
     },
     get$yourBookmarks() {
       return "Your bookmarks";
+    },
+    get$goToChat() {
+      return "Go to chat";
+    },
+    get$save(_) {
+      return "Save";
+    },
+    get$selectActivity() {
+      return "Select activity";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4390,6 +4390,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_183", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "3SkLuMQ29zf3MHmfeijPZi+cSRs=");
+})($__dart_deferred_initializers__, "JJ631J0KXZkiKir5RiHM5fePhLE=");
 ;
 //# sourceMappingURL=main.dart.js_183.part.js.map
