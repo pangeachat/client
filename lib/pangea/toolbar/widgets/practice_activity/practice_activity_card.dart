@@ -8,19 +8,18 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
-import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/card_error_widget.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_activity_record_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_repo.dart';
+import 'package:fluffychat/pangea/practice_activities/target_tokens_and_activity_type.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
-import 'package:fluffychat/pangea/toolbar/models/message_activity_request.dart';
-import 'package:fluffychat/pangea/toolbar/models/practice_activity_model.dart';
-import 'package:fluffychat/pangea/toolbar/models/practice_activity_record_model.dart';
-import 'package:fluffychat/pangea/toolbar/repo/practice_repo.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/multiple_choice_activity.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
@@ -35,7 +34,6 @@ class PracticeActivityCard extends StatefulWidget {
   final TargetTokensAndActivityType targetTokensAndActivityType;
   final MessageOverlayController overlayController;
   final WordZoomWidget? wordDetailsController;
-  final AnalyticsUpdateOrigin location;
 
   final String? morphFeature;
 
@@ -46,7 +44,6 @@ class PracticeActivityCard extends StatefulWidget {
     required this.overlayController,
     this.morphFeature,
     this.wordDetailsController,
-    required this.location,
   });
 
   @override
@@ -261,7 +258,8 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
 
       // wait for savor the joy before popping from the activity queue
       // to keep the completed activity on screen for a moment
-      widget.overlayController.onActivityFinish(currentActivity!.activityType);
+      widget.overlayController
+          .onActivityFinish(currentActivity!.activityType, null);
       widget.overlayController.widget.chatController.choreographer.tts.stop();
     } catch (e, s) {
       _onError();
@@ -298,18 +296,19 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
       case ActivityTypeEnum.emoji:
       case ActivityTypeEnum.morphId:
       case ActivityTypeEnum.messageMeaning:
-        final selectedChoice =
-            currentActivity?.activityType == ActivityTypeEnum.emoji &&
-                    (currentActivity?.targetTokens?.isNotEmpty ?? false)
-                ? currentActivity?.targetTokens?.first.getEmoji()
-                : null;
+        // final selectedChoice =
+        //     currentActivity?.activityType == ActivityTypeEnum.emoji &&
+        //             (currentActivity?.targetTokens?.isNotEmpty ?? false)
+        //         ? currentActivity?.targetTokens?.first.getEmoji()
+        //         : null;
         return MultipleChoiceActivity(
           practiceCardController: this,
           currentActivity: currentActivity!,
           event: widget.pangeaMessageEvent.event,
           onError: _onError,
           overlayController: widget.overlayController,
-          initialSelectedChoice: selectedChoice,
+          // initialSelectedChoice: selectedChoice,
+          initialSelectedChoice: null,
           clearResponsesOnUpdate:
               currentActivity?.activityType == ActivityTypeEnum.emoji,
         );
@@ -338,12 +337,6 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Main content
-        Positioned(
-          child: PointsGainedAnimation(
-            origin: widget.location,
-          ),
-        ),
         if (activityWidget != null) activityWidget!,
         // Conditionally show the darkening and progress indicator based on the loading state
         if (!savoringTheJoy && fetchingActivity) ...[
@@ -354,6 +347,15 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
                 : null,
           ),
         ],
+        Positioned(
+          left: 0,
+          top: 0,
+          child: IconButton(
+            onPressed: () => widget.overlayController
+                .updateToolbarMode(MessageMode.wordEmoji),
+            icon: const Icon(Icons.lightbulb),
+          ),
+        ),
         // Flag button in the top right corner
         // Positioned(
         //   top: 0,

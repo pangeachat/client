@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class ActivityPlanModel {
   final ActivityPlanRequest req;
@@ -9,7 +10,6 @@ class ActivityPlanModel {
   String instructions;
   List<Vocab> vocab;
   String? imageURL;
-  String? bookmarkId;
 
   ActivityPlanModel({
     required this.req,
@@ -18,32 +18,30 @@ class ActivityPlanModel {
     required this.instructions,
     required this.vocab,
     this.imageURL,
-    this.bookmarkId,
   });
 
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
     return ActivityPlanModel(
-      req: ActivityPlanRequest.fromJson(json['req']),
-      title: json['title'],
-      learningObjective: json['learning_objective'],
-      instructions: json['instructions'],
+      req: ActivityPlanRequest.fromJson(json[ModelKey.activityPlanRequest]),
+      title: json[ModelKey.activityPlanTitle],
+      learningObjective: json[ModelKey.activityPlanLearningObjective],
+      instructions: json[ModelKey.activityPlanInstructions],
       vocab: List<Vocab>.from(
-        json['vocab'].map((vocab) => Vocab.fromJson(vocab)),
+        json[ModelKey.activityPlanVocab].map((vocab) => Vocab.fromJson(vocab)),
       ),
-      bookmarkId: json['bookmark_id'],
-      imageURL: json['image_url'],
+      imageURL: json[ModelKey.activityPlanImageURL],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'req': req.toJson(),
-      'title': title,
-      'learning_objective': learningObjective,
-      'instructions': instructions,
-      'vocab': vocab.map((vocab) => vocab.toJson()).toList(),
-      'bookmark_id': bookmarkId,
-      'image_url': imageURL,
+      ModelKey.activityPlanRequest: req.toJson(),
+      ModelKey.activityPlanTitle: title,
+      ModelKey.activityPlanLearningObjective: learningObjective,
+      ModelKey.activityPlanInstructions: instructions,
+      ModelKey.activityPlanVocab: vocab.map((vocab) => vocab.toJson()).toList(),
+      ModelKey.activityPlanBookmarkId: bookmarkId,
+      ModelKey.activityPlanImageURL: imageURL,
     };
   }
 
@@ -66,10 +64,6 @@ class ActivityPlanModel {
     return markdown;
   }
 
-  bool get isBookmarked {
-    return bookmarkId != null;
-  }
-
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -89,8 +83,15 @@ class ActivityPlanModel {
       title.hashCode ^
       learningObjective.hashCode ^
       instructions.hashCode ^
-      Object.hashAll(vocab) ^
-      bookmarkId.hashCode;
+      Object.hashAll(vocab);
+
+  String get bookmarkId {
+    return (title.hashCode ^
+            learningObjective.hashCode ^
+            instructions.hashCode ^
+            Object.hashAll(vocab))
+        .toString();
+  }
 }
 
 class Vocab {

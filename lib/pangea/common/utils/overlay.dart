@@ -32,6 +32,7 @@ class OverlayUtil {
     String? overlayKey,
     Alignment? targetAnchor,
     Alignment? followerAnchor,
+    bool ignorePointer = false,
   }) {
     try {
       if (closePrevOverlay) {
@@ -42,34 +43,37 @@ class OverlayUtil {
         builder: (context) => AnimatedContainer(
           duration: FluffyThemes.animationDuration,
           curve: FluffyThemes.animationCurve,
-          child: Stack(
-            children: [
-              if (backDropToDismiss)
-                TransparentBackdrop(
-                  backgroundColor: backgroundColor,
-                  onDismiss: onDismiss,
-                  blurBackground: blurBackground,
+          child: IgnorePointer(
+            ignoring: ignorePointer,
+            child: Stack(
+              children: [
+                if (backDropToDismiss)
+                  TransparentBackdrop(
+                    backgroundColor: backgroundColor,
+                    onDismiss: onDismiss,
+                    blurBackground: blurBackground,
+                  ),
+                Positioned(
+                  top: (position == OverlayPositionEnum.centered) ? 0 : null,
+                  right: (position == OverlayPositionEnum.centered) ? 0 : null,
+                  left: (position == OverlayPositionEnum.centered) ? 0 : null,
+                  bottom: (position == OverlayPositionEnum.centered) ? 0 : null,
+                  child: (position != OverlayPositionEnum.transform)
+                      ? child
+                      : CompositedTransformFollower(
+                          targetAnchor: targetAnchor ?? Alignment.topCenter,
+                          followerAnchor:
+                              followerAnchor ?? Alignment.bottomCenter,
+                          link: MatrixState.pAnyState
+                              .layerLinkAndKey(transformTargetId)
+                              .link,
+                          showWhenUnlinked: false,
+                          offset: offset ?? Offset.zero,
+                          child: child,
+                        ),
                 ),
-              Positioned(
-                top: (position == OverlayPositionEnum.centered) ? 0 : null,
-                right: (position == OverlayPositionEnum.centered) ? 0 : null,
-                left: (position == OverlayPositionEnum.centered) ? 0 : null,
-                bottom: (position == OverlayPositionEnum.centered) ? 0 : null,
-                child: (position != OverlayPositionEnum.transform)
-                    ? child
-                    : CompositedTransformFollower(
-                        targetAnchor: targetAnchor ?? Alignment.topCenter,
-                        followerAnchor:
-                            followerAnchor ?? Alignment.bottomCenter,
-                        link: MatrixState.pAnyState
-                            .layerLinkAndKey(transformTargetId)
-                            .link,
-                        showWhenUnlinked: false,
-                        offset: offset ?? Offset.zero,
-                        child: child,
-                      ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       );
@@ -77,7 +81,6 @@ class OverlayUtil {
       MatrixState.pAnyState.openOverlay(
         entry,
         context,
-        closePrevOverlay: closePrevOverlay,
         overlayKey: overlayKey,
       );
     } catch (err, stack) {
@@ -101,6 +104,7 @@ class OverlayUtil {
     bool closePrevOverlay = true,
     String? overlayKey,
     bool isScrollable = true,
+    bool addBorder = true,
   }) {
     try {
       final LayerLinkAndKey layerLinkAndKey =
@@ -119,17 +123,21 @@ class OverlayUtil {
         final Offset transformTargetOffset =
             (targetRenderBox).localToGlobal(Offset.zero);
         final Size transformTargetSize = targetRenderBox.size;
-        final horizontalMidpoint =
-            transformTargetOffset.dx + (transformTargetSize.width / 2);
+
+        final columnWidth = FluffyThemes.isColumnMode(context)
+            ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
+            : 0;
+
+        final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
+            (transformTargetSize.width / 2);
 
         final verticalMidpoint =
             transformTargetOffset.dy + (transformTargetSize.height / 2);
-        debugPrint("vertical midpoint $verticalMidpoint");
 
         final halfMaxWidth = maxWidth / 2;
         final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 0;
         final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
-            MediaQuery.of(context).size.width;
+            (MediaQuery.of(context).size.width - columnWidth);
         hasTopOverflow = (verticalMidpoint - maxHeight) < 0;
 
         double xOffset = 0;
@@ -138,24 +146,26 @@ class OverlayUtil {
         if (hasLeftOverflow) {
           xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
         } else if (hasRightOverflow) {
-          xOffset = MediaQuery.of(context).size.width -
+          xOffset = (MediaQuery.of(context).size.width - columnWidth) -
               (horizontalMidpoint + halfMaxWidth + 10);
         }
         offset = Offset(xOffset, 0);
       }
 
-      final Widget child = Material(
-        borderOnForeground: false,
-        color: Colors.transparent,
-        clipBehavior: Clip.antiAlias,
-        child: OverlayContainer(
-          cardToShow: cardToShow,
-          borderColor: borderColor,
-          maxHeight: maxHeight,
-          maxWidth: maxWidth,
-          isScrollable: isScrollable,
-        ),
-      );
+      final Widget child = addBorder
+          ? Material(
+              borderOnForeground: false,
+              color: Colors.transparent,
+              clipBehavior: Clip.antiAlias,
+              child: OverlayContainer(
+                cardToShow: cardToShow,
+                borderColor: borderColor,
+                maxHeight: maxHeight,
+                maxWidth: maxWidth,
+                isScrollable: isScrollable,
+              ),
+            )
+          : cardToShow;
 
       showOverlay(
         context: context,

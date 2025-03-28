@@ -12,7 +12,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import '../../../utils/url_launcher.dart';
@@ -270,6 +270,7 @@ class HtmlMessage extends StatelessWidget {
             ) ??
             false;
 
+        // @ggurdin: probably changing this, not sure when it shows up
         final didMeaningActivity = token?.didActivitySuccessfully(
               ActivityTypeEnum.wordMeaning,
             ) ??

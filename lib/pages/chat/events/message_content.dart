@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_rich_text.dar
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_token_text.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar_selection_area.dart';
@@ -42,6 +43,7 @@ class MessageContent extends StatelessWidget {
   final ChatController controller;
   final Event? nextEvent;
   final Event? prevEvent;
+  final bool isTransitionAnimation;
   // Pangea#
   final Timeline timeline;
 
@@ -58,6 +60,7 @@ class MessageContent extends StatelessWidget {
     required this.controller,
     this.nextEvent,
     this.prevEvent,
+    this.isTransitionAnimation = false,
     // Pangea#
     required this.linkColor,
     required this.borderRadius,
@@ -377,6 +380,18 @@ class MessageContent extends StatelessWidget {
                 style: messageTextStyle,
                 onClick: onClick,
                 isSelected: overlayController != null ? isSelected : null,
+                messageMode: overlayController?.toolbarMode,
+                isHighlighted: (PangeaToken token) =>
+                    overlayController?.toolbarMode.associatedActivityType !=
+                        null &&
+                    overlayController?.messageAnalyticsEntry?.hasActivity(
+                          overlayController!
+                              .toolbarMode.associatedActivityType!,
+                          token,
+                        ) ==
+                        true,
+                overlayController: overlayController,
+                isTransitionAnimation: isTransitionAnimation,
               );
             }
 

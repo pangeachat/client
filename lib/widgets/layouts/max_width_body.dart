@@ -8,12 +8,20 @@ class MaxWidthBody extends StatelessWidget {
   final double maxWidth;
   final bool withScrolling;
   final EdgeInsets? innerPadding;
+  // #Pangea
+  final bool showBorder;
+  final EdgeInsets? padding;
+  // Pangea#
 
   const MaxWidthBody({
     required this.child,
     this.maxWidth = 600,
     this.withScrolling = true,
     this.innerPadding,
+    // #Pangea
+    this.showBorder = true,
+    this.padding,
+    // Pangea#
     super.key,
   });
   @override
@@ -28,7 +36,10 @@ class MaxWidthBody extends StatelessWidget {
               ? child
               : Container(
                   alignment: Alignment.topCenter,
-                  padding: const EdgeInsets.all(32),
+                  // #Pangea
+                  // padding: const EdgeInsets.all(32),
+                  padding: padding ?? const EdgeInsets.all(32),
+                  // Pangea#
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(
                       maxWidth: FluffyThemes.columnWidth * 1.5,
@@ -38,7 +49,12 @@ class MaxWidthBody extends StatelessWidget {
                         borderRadius:
                             BorderRadius.circular(AppConfig.borderRadius),
                         side: BorderSide(
-                          color: theme.dividerColor,
+                          // #Pangea
+                          // color: theme.dividerColor,
+                          color: showBorder
+                              ? theme.dividerColor
+                              : Colors.transparent,
+                          // Pangea#
                         ),
                       ),
                       clipBehavior: Clip.hardEdge,
