@@ -113,6 +113,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
           width: cardWidth,
           height: cardHeight,
           padding: cardPadding,
+          roomID: widget.room?.id,
         ),
       );
     }
