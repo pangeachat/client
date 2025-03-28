@@ -4370,7 +4370,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Featured activities";
     },
     get$yourBookmarks() {
-      return "Your bookmarks";
+      return "My bookmarks";
     },
     get$goToChat() {
       return "Go to chat";
@@ -5680,6 +5680,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Xfz1uIfchL1gvw6uJRdHKnYKOm0=");
+})($__dart_deferred_initializers__, "DzaM8GtJCckBmS234giim0PXqZs=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
