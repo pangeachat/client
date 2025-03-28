@@ -53,6 +53,9 @@ class ITController {
     goldRouteTracker = GoldRouteTracker.defaultTracker;
     payLoadIds = [];
 
+    attemptTracker.clear();
+    visitedSteps.clear();
+
     choreographer.altTranslator.clear();
     choreographer.choreoMode = ChoreoMode.igc;
     choreographer.setState();
@@ -311,41 +314,66 @@ class ITController {
   //           )
   //         : null;
 
+  Map<int, bool> attemptTracker = {};
+  Set<int> visitedSteps = {};
+
   //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
-    final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
 
-    completedITSteps.add(itStep);
+    // Check if this answer is correct
+    final bool isCorrect = currentITStep!.continuances[chosenIndex].gold ||
+        currentITStep!.continuances[chosenIndex].level ==
+            ChoreoConstants.levelThresholdForGreen;
 
-    showChoiceFeedback = true;
+    // Only proceed if the answer was correct
+    if (isCorrect) {
+      final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
+      completedITSteps.add(itStep);
 
-    // Get a list of the choices that the user did not click
-    final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
-        .where((e) => !e.wasClicked)
-        .map((e) => e.tokens)
-        .expand((e) => e)
-        .toList();
+      showChoiceFeedback = true;
 
-    // Save those choices' tokens to local construct analytics as ignored tokens
-    choreographer.pangeaController.putAnalytics.addDraftUses(
-      ignoredTokens ?? [],
-      choreographer.roomId,
-      ConstructUseTypeEnum.ignIt,
-    );
+      final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
+          .where((e) => !e.wasClicked)
+          .map((e) => e.tokens)
+          .expand((e) => e)
+          .toList();
 
-    Future.delayed(
-      const Duration(
-        milliseconds: ChoreoConstants.millisecondsToDisplayFeedback,
-      ),
-      () {
-        showChoiceFeedback = false;
-        choreographer.setState();
-      },
-    );
+      // Save those choices' tokens to local construct analytics as ignored tokens
+      choreographer.pangeaController.putAnalytics.addDraftUses(
+        ignoredTokens ?? [],
+        choreographer.roomId,
+        ConstructUseTypeEnum.ignIt,
+      );
 
-    choreographer.onITChoiceSelect(itStep);
-    choreographer.setState();
+      Future.delayed(
+        const Duration(
+          milliseconds: ChoreoConstants.millisecondsToDisplayFeedback,
+        ),
+        () {
+          showChoiceFeedback = false;
+          choreographer.setState();
+        },
+      );
+
+      choreographer.onITChoiceSelect(itStep);
+    } else {
+      choreographer.setState();
+    }
+  }
+
+  double getFirstAttemptPercentage() {
+    if (attemptTracker.isEmpty) {
+      return 0;
+    }
+
+    final int correctFirstAttempts =
+        attemptTracker.values.where((correct) => correct).length;
+    final int totalSteps = attemptTracker.length;
+
+    final double percentage = (correctFirstAttempts / totalSteps) * 100;
+
+    return percentage;
   }
 
   String get uniqueKeyForLayerLink => "itChoices${choreographer.roomId}";
