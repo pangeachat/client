@@ -747,7 +747,8 @@ class PangeaMessageEvent {
   bool get shouldShowToolbar =>
       !event.isActivityMessage &&
       !event.redacted &&
-      event.status == EventStatus.sent;
+      event.status != EventStatus.sending &&
+      event.status != EventStatus.error;
 
   bool shouldDoActivity({
     required PangeaToken? token,
