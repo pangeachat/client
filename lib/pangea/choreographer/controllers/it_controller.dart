@@ -339,12 +339,12 @@ class ITController {
           .expand((e) => e)
           .toList();
 
-    // Save those choices' tokens to local construct analytics as ignored tokens
-    choreographer.pangeaController.putAnalytics.addDraftUses(
-      ignoredTokens ?? [],
-      choreographer.roomId,
-      ConstructUseTypeEnum.ignIt,
-    );
+      // Save those choices' tokens to local construct analytics as ignored tokens
+      choreographer.pangeaController.putAnalytics.addDraftUses(
+        ignoredTokens ?? [],
+        choreographer.roomId,
+        ConstructUseTypeEnum.ignIt,
+      );
 
       Future.delayed(
         const Duration(
