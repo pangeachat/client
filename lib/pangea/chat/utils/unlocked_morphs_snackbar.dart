@@ -8,6 +8,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 
 void showUnlockedMorphsSnackbar(
@@ -37,6 +38,7 @@ void showUnlockedMorphsSnackbar(
           child: Wrap(
             spacing: 16.0,
             alignment: WrapAlignment.center,
+            crossAxisAlignment: WrapCrossAlignment.center,
             children: [
               Text(
                 L10n.of(context).youUnlocked,
@@ -63,7 +65,9 @@ void showUnlockedMorphsSnackbar(
                     ),
                   ),
                   MorphIcon(
-                    morphFeature: construct.category,
+                    morphFeature: MorphFeaturesEnumExtension.fromString(
+                      construct.category,
+                    ),
                     morphTag: construct.lemma,
                   ),
                 ],

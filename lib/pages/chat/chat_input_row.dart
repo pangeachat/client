@@ -242,8 +242,8 @@ class ChatInputRow extends StatelessWidget {
                             : null,
                     // #Pangea
                     // onSubmitted: controller.onInputBarSubmitted,
-                    onSubmitted: (v) =>
-                        controller.onInputBarSubmitted(v, context),
+                    onSubmitted: (value) =>
+                        controller.onInputBarSubmitted(value, context),
                     // Pangea#
                     onSubmitImage: controller.sendImageFromClipBoard,
                     focusNode: controller.inputFocus,

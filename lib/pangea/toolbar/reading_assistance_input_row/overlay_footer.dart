@@ -5,14 +5,17 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/chat/widgets/pangea_chat_input_row.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_column.dart';
 
 class OverlayFooter extends StatelessWidget {
   final ChatController controller;
   final MessageOverlayController overlayController;
+  final bool showToolbarButtons;
 
   const OverlayFooter({
     required this.controller,
     required this.overlayController,
+    required this.showToolbarButtons,
     super.key,
   });
 
@@ -33,6 +36,8 @@ class OverlayFooter extends StatelessWidget {
       alignment: Alignment.center,
       child: Column(
         children: [
+          if (showToolbarButtons)
+            ToolbarButtonRow(overlayController: overlayController),
           Material(
             clipBehavior: Clip.hardEdge,
             color: Theme.of(context).colorScheme.surfaceContainerHighest,

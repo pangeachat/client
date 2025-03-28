@@ -28,6 +28,7 @@ import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/recording_dialog.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
@@ -129,8 +130,10 @@ class ChatController extends State<ChatPageWithRoom>
   // #Pangea
   final PangeaController pangeaController = MatrixState.pangeaController;
   late Choreographer choreographer = Choreographer(pangeaController, this);
-  StreamSubscription? _levelSubscription;
   late GoRouter _router;
+
+  StreamSubscription? _levelSubscription;
+  StreamSubscription? _analyticsSubscription;
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
 
@@ -399,6 +402,25 @@ class ChatController extends State<ChatPageWithRoom>
         }
       },
     );
+
+    _analyticsSubscription =
+        pangeaController.getAnalytics.analyticsStream.stream.listen((update) {
+      if (update.targetID == null) return;
+      OverlayUtil.showOverlay(
+        overlayKey: update.targetID,
+        followerAnchor: Alignment.bottomCenter,
+        targetAnchor: Alignment.bottomCenter,
+        context: context,
+        child: PointsGainedAnimation(
+          points: update.points,
+          targetID: update.targetID!,
+        ),
+        transformTargetId: update.targetID ?? "",
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        ignorePointer: true,
+      );
+    });
     // Pangea#
     _tryLoadTimeline();
     if (kIsWeb) {
@@ -639,12 +661,12 @@ class ChatController extends State<ChatPageWithRoom>
     //#Pangea
     choreographer.stateStream.close();
     choreographer.dispose();
-    clearSelectedEvents();
     MatrixState.pAnyState.closeOverlay();
     showToolbarStream.close();
     stopAudioStream.close();
     hideTextController.dispose();
     _levelSubscription?.cancel();
+    _analyticsSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     //Pangea#
     super.dispose();
@@ -798,6 +820,7 @@ class ChatController extends State<ChatPageWithRoom>
           pangeaController.putAnalytics.setState(
             AnalyticsStream(
               eventId: msgEventId,
+              targetID: msgEventId,
               roomId: room.id,
               constructs: [
                 ...originalSent.vocabAndMorphUses(
@@ -806,7 +829,6 @@ class ChatController extends State<ChatPageWithRoom>
                   metadata: metadata,
                 ),
               ],
-              origin: AnalyticsUpdateOrigin.sendMessage,
             ),
           );
         }

@@ -3,6 +3,9 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
@@ -11,12 +14,25 @@ import 'package:fluffychat/pangea/activity_suggestions/activity_plan_search_repo
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_dialog.dart';
 import 'package:fluffychat/pangea/activity_suggestions/create_chat_card.dart';
+import 'package:fluffychat/pangea/activity_suggestions/make_activity_card.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivitySuggestionsArea extends StatefulWidget {
-  const ActivitySuggestionsArea({super.key});
+  final Axis? scrollDirection;
+  final bool showCreateChatCard;
+  final bool showMakeActivityCard;
+
+  final Room? room;
+
+  const ActivitySuggestionsArea({
+    super.key,
+    this.scrollDirection,
+    this.showCreateChatCard = true,
+    this.showMakeActivityCard = true,
+    this.room,
+  });
   @override
   ActivitySuggestionsAreaState createState() => ActivitySuggestionsAreaState();
 }
@@ -38,7 +54,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
 
   final List<ActivityPlanModel> _activityItems = [];
   final ScrollController _scrollController = ScrollController();
-  final double cardHeight = 235.0;
+  final double cardHeight = 250.0;
   double get cardPadding => _isColumnMode ? 8.0 : 0.0;
   double get cardWidth => _isColumnMode ? 225.0 : 150.0;
 
@@ -73,6 +89,8 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                 builder: (context) {
                   return ActivitySuggestionDialog(
                     activity: activity,
+                    buttonText: L10n.of(context).inviteAndLaunch,
+                    room: widget.room,
                   );
                 },
               );
@@ -80,21 +98,41 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
             width: cardWidth,
             height: cardHeight,
             padding: cardPadding,
+            onChange: () {
+              if (mounted) setState(() {});
+            },
           );
         })
         .cast<Widget>()
         .toList();
 
-    cards.insert(
-      0,
-      CreateChatCard(
-        width: cardWidth,
-        height: cardHeight,
-        padding: cardPadding,
-      ),
-    );
+    if (widget.showMakeActivityCard) {
+      cards.insert(
+        0,
+        MakeActivityCard(
+          width: cardWidth,
+          height: cardHeight,
+          padding: cardPadding,
+          roomID: widget.room?.id,
+        ),
+      );
+    }
 
-    return _isColumnMode
+    if (widget.showCreateChatCard) {
+      cards.insert(
+        0,
+        CreateChatCard(
+          width: cardWidth,
+          height: cardHeight,
+          padding: cardPadding,
+        ),
+      );
+    }
+
+    final scrollDirection = widget.scrollDirection ??
+        (_isColumnMode ? Axis.horizontal : Axis.vertical);
+
+    return scrollDirection == Axis.horizontal
         ? ConstrainedBox(
             constraints: BoxConstraints(maxHeight: cardHeight + 36.0),
             child: Scrollbar(

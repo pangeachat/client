@@ -1,18 +1,26 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card_row.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
   final ActivityPlanModel activity;
-  final VoidCallback onPressed;
+  final Uint8List? image;
+  final VoidCallback? onPressed;
 
   final double width;
   final double height;
   final double padding;
+  final bool selected;
+
+  final VoidCallback onChange;
 
   const ActivitySuggestionCard({
     super.key,
@@ -21,18 +29,32 @@ class ActivitySuggestionCard extends StatelessWidget {
     required this.width,
     required this.height,
     required this.padding,
+    required this.onChange,
+    this.selected = false,
+    this.image,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isBookmarked = BookmarkedActivitiesRepo.isBookmarked(activity);
+
     return Padding(
       padding: EdgeInsets.all(padding),
       child: PressableButton(
+        depressed: selected || onPressed == null,
         onPressed: onPressed,
         borderRadius: BorderRadius.circular(24.0),
         color: theme.colorScheme.primary,
-        child: SizedBox(
+        child: Container(
+          decoration: BoxDecoration(
+            border: selected
+                ? Border.all(
+                    color: theme.colorScheme.primary,
+                  )
+                : null,
+            borderRadius: BorderRadius.circular(24.0),
+          ),
           height: height,
           width: width,
           child: Stack(
@@ -52,12 +74,24 @@ class ActivitySuggestionCard extends StatelessWidget {
                     height: 100,
                     width: width,
                     decoration: BoxDecoration(
-                      image: activity.imageURL != null
-                          ? DecorationImage(
-                              image: NetworkImage(activity.imageURL!),
-                            )
-                          : null,
                       borderRadius: BorderRadius.circular(24.0),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(24.0),
+                      child: image != null
+                          ? Image.memory(image!)
+                          : activity.imageURL != null
+                              ? CachedNetworkImage(
+                                  imageUrl: activity.imageURL!,
+                                  placeholder: (context, url) => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  errorWidget: (context, url, error) => Icon(
+                                    Icons.error,
+                                    color: theme.colorScheme.error,
+                                  ),
+                                )
+                              : null,
                     ),
                   ),
                   Expanded(
@@ -79,7 +113,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
-                              maxLines: 1,
+                              maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -130,6 +164,23 @@ class ActivitySuggestionCard extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              Positioned(
+                top: 4.0,
+                right: 4.0,
+                child: IconButton(
+                  icon: Icon(
+                    isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                  ),
+                  onPressed: onPressed != null
+                      ? () => isBookmarked
+                          ? BookmarkedActivitiesRepo.remove(activity.bookmarkId)
+                              .then((_) => onChange())
+                          : BookmarkedActivitiesRepo.save(activity)
+                              .then((_) => onChange())
+                      : null,
+                  iconSize: 24.0,
+                ),
               ),
             ],
           ),
