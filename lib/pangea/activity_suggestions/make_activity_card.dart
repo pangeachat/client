@@ -55,7 +55,7 @@ class MakeActivityCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  L10n.of(context).makeYourOwn,
+                  L10n.of(context).makeYourOwnActivity,
                   style: theme.textTheme.bodyLarge
                       ?.copyWith(color: theme.colorScheme.secondary),
                   textAlign: TextAlign.center,

@@ -199,7 +199,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
           filename: _filename,
         );
 
-        context.go("/rooms/$roomId");
+        context.go("/rooms/$roomId/invite");
       },
     );
   }
