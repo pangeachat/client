@@ -1,4 +1,3 @@
-import 'package:fluffychat/pangea/choreographer/widgets/choice_animation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -6,6 +5,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
+import 'package:fluffychat/pangea/choreographer/widgets/choice_animation.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../repo/similarity_repo.dart';
 
@@ -19,7 +19,7 @@ class AlternativeTranslator {
   List<String> translations = [];
   SimilartyResponseModel? similarityResponse;
   AlternativeTranslator(this.choreographer);
-  
+
   void clear() {
     userTranslation = null;
     showAlternativeTranslations = false;
@@ -29,7 +29,7 @@ class AlternativeTranslator {
     translations = [];
     similarityResponse = null;
   }
-  
+
   double get _percentCorrectChoices {
     final attemptTracker = choreographer.itController.attemptTracker;
     int correctFirstAttempts = 0;
@@ -40,7 +40,7 @@ class AlternativeTranslator {
     final double percentage = (correctFirstAttempts / totalSteps) * 100;
     return percentage;
   }
-  
+
   int get starRating {
     final double percent = _percentCorrectChoices;
     if (percent == 100) return 5;
@@ -50,7 +50,7 @@ class AlternativeTranslator {
     if (percent > 0) return 1;
     return 0;
   }
-  
+
   Future<void> setTranslationFeedback() async {
     try {
       choreographer.startLoading();
@@ -67,7 +67,7 @@ class AlternativeTranslator {
         translationFeedbackKey = FeedbackKey.newWayAllGood;
       } else {
         translationFeedbackKey = FeedbackKey.othersAreBetter;
-      } 
+      }
     } catch (err, stack) {
       if (err is! http.Response) {
         ErrorHandler.logError(
@@ -90,7 +90,7 @@ class AlternativeTranslator {
       choreographer.stopLoading();
     }
   }
-  
+
   String translationFeedback(BuildContext context) {
     try {
       // Count vocabulary words and grammar constructs
@@ -99,13 +99,12 @@ class AlternativeTranslator {
 
       // Build the feedback message with icons
       if (vocabCount > 0 || grammarCount > 0) {
-
         String message = "";
-        
+
         if (vocabCount > 0) {
           message = "Vocab +$vocabCount";
         }
-        
+
         if (grammarCount > 0) {
           // If there was already vocabulary, add spacing
           if (message.isNotEmpty) {
@@ -114,10 +113,10 @@ class AlternativeTranslator {
             message = "Grammar +$grammarCount";
           }
         }
-        
+
         return message;
       }
-      
+
       // Fall back to performance-based feedback
       return getDefaultFeedback(context);
     } catch (e, stack) {
@@ -127,20 +126,20 @@ class AlternativeTranslator {
         s: stack,
         data: {"currentText": choreographer.currentText},
       );
-      
+
       return getDefaultFeedback(context);
     }
   }
-  
+
   Widget buildStarRating(BuildContext context) {
     final int stars = starRating;
-    
+
     return SizedBox(
       height: 35,
       child: FillingStars(rating: stars),
     );
   }
-  
+
   Widget translationFeedbackWidget(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -160,14 +159,14 @@ class AlternativeTranslator {
     // Get completed steps from the IT controller
     final completedSteps = choreographer.itController.completedITSteps;
     if (completedSteps.isEmpty) return 0;
-    
+
     final Set<String> uniqueLemmas = {};
-    
+
     // Go through each completed step
     for (final step in completedSteps) {
       if (step.chosen != null && step.continuances.isNotEmpty) {
         final continuance = step.continuances[step.chosen!];
-        
+
         // If it's a correct choice (level 1)
         if (continuance.level == 1 || continuance.gold) {
           for (final token in continuance.tokens) {
@@ -179,7 +178,7 @@ class AlternativeTranslator {
         }
       }
     }
-    
+
     return uniqueLemmas.length;
   }
 
@@ -187,33 +186,33 @@ class AlternativeTranslator {
     // Get completed steps from the IT controller
     final completedSteps = choreographer.itController.completedITSteps;
     if (completedSteps.isEmpty) return 0;
-    
+
     final Set<String> uniqueGrammarFeatures = {};
     final Set<String> uniquePOSCategories = {};
-    
+
     // Go through each completed step
     for (final step in completedSteps) {
       if (step.chosen != null && step.continuances.isNotEmpty) {
         final continuance = step.continuances[step.chosen!];
-        
+
         // If it's a correct choice (level 1 or gold)
         if (continuance.level == 1 || continuance.gold) {
           for (final token in continuance.tokens) {
-            if (!['DET', 'PUNCT', 'SYM', 'X', 'PART', 'ADP'].contains(token.pos)) {
+            if (!['DET', 'PUNCT', 'SYM', 'X', 'PART', 'ADP']
+                .contains(token.pos)) {
               uniquePOSCategories.add(token.pos);
             }
-            
+
             token.morph.forEach((feature, value) {
-              if (feature != 'POS' && 
-                  feature != 'pos' && 
-                  value != null && 
+              if (feature != 'POS' &&
+                  feature != 'pos' &&
+                  value != null &&
                   value.toString().isNotEmpty &&
                   value.toString() != 'X' &&
                   !feature.contains('_') &&
                   !feature.contains('id') &&
                   feature != 'translit' &&
                   feature != 'orig') {
-                
                 uniqueGrammarFeatures.add("$feature:$value");
               }
             });
@@ -221,7 +220,7 @@ class AlternativeTranslator {
         }
       }
     }
-    
+
     return uniquePOSCategories.length + uniqueGrammarFeatures.length;
   }
 
@@ -251,26 +250,29 @@ class AlternativeTranslator {
 
 class FillingStars extends StatefulWidget {
   final int rating;
-  
+
   const FillingStars({
     Key? key,
     required this.rating,
   }) : super(key: key);
-  
+
   @override
   State<FillingStars> createState() => _FillingStarsState();
 }
 
 class _FillingStarsState extends State<FillingStars> {
   final List<bool> _isFilledList = List.filled(5, false);
-  
+
   @override
   void initState() {
     super.initState();
-    
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       for (int i = 0; i < widget.rating; i++) {
-        Future.delayed(Duration(milliseconds: choiceArrayAnimationDuration + i * choiceArrayAnimationDuration), () {
+        Future.delayed(
+            Duration(
+                milliseconds: choiceArrayAnimationDuration +
+                    i * choiceArrayAnimationDuration), () {
           if (mounted) {
             setState(() {
               _isFilledList[i] = true;
@@ -280,7 +282,7 @@ class _FillingStarsState extends State<FillingStars> {
       }
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -298,7 +300,9 @@ class _FillingStarsState extends State<FillingStars> {
           child: Icon(
             _isFilledList[index] ? Icons.star_rounded : Icons.star_rounded,
             key: ValueKey<bool>(_isFilledList[index]),
-            color: _isFilledList[index] ? Colors.amber : const Color.fromARGB(255, 37, 37, 37),
+            color: _isFilledList[index]
+                ? Colors.amber
+                : const Color.fromARGB(255, 37, 37, 37),
             size: 35,
           ),
         );

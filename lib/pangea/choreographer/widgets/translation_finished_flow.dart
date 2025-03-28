@@ -1,7 +1,8 @@
-import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:flutter/material.dart';
+
 import 'package:material_symbols_icons/symbols.dart';
 
+import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import '../../bot/utils/bot_style.dart';
 import '../../common/utils/error_handler.dart';
 import '../controllers/it_controller.dart';
@@ -10,33 +11,38 @@ import 'choice_array.dart';
 class TranslationFeedback extends StatelessWidget {
   final ITController controller;
   const TranslationFeedback({super.key, required this.controller});
-  
+
   @override
   Widget build(BuildContext context) {
     try {
-      final int vocabCount = controller.choreographer.altTranslator.countVocabularyWordsFromSteps();
-      final int grammarCount = controller.choreographer.altTranslator.countGrammarConstructsFromSteps();
-      final feedbackText = controller.choreographer.altTranslator.getDefaultFeedback(context);
-      
+      final int vocabCount = controller.choreographer.altTranslator
+          .countVocabularyWordsFromSteps();
+      final int grammarCount = controller.choreographer.altTranslator
+          .countGrammarConstructsFromSteps();
+      final feedbackText =
+          controller.choreographer.altTranslator.getDefaultFeedback(context);
+
       return ConstrainedBox(
         constraints: const BoxConstraints(
-          minHeight: 150, 
+          minHeight: 150,
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (controller.choreographer.altTranslator.showTranslationFeedback)
+              if (controller
+                  .choreographer.altTranslator.showTranslationFeedback)
                 Column(
                   children: [
                     // Star rating
                     SizedBox(
-                      height: 40, 
-                      child: controller.choreographer.altTranslator.buildStarRating(context),
+                      height: 40,
+                      child: controller.choreographer.altTranslator
+                          .buildStarRating(context),
                     ),
                     const SizedBox(height: 8),
-                    
+
                     if (vocabCount > 0 || grammarCount > 0)
                       Row(
                         mainAxisSize: MainAxisSize.min,
@@ -45,14 +51,16 @@ class TranslationFeedback extends StatelessWidget {
                           if (vocabCount > 0) ...[
                             Icon(
                               Symbols.dictionary,
-                              color: ProgressIndicatorEnum.wordsUsed.color(context),
+                              color: ProgressIndicatorEnum.wordsUsed
+                                  .color(context),
                               size: 24,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               "+$vocabCount",
                               style: TextStyle(
-                                color: ProgressIndicatorEnum.wordsUsed.color(context),
+                                color: ProgressIndicatorEnum.wordsUsed
+                                    .color(context),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -62,14 +70,16 @@ class TranslationFeedback extends StatelessWidget {
                           if (grammarCount > 0) ...[
                             Icon(
                               Symbols.toys_and_games,
-                              color: ProgressIndicatorEnum.morphsUsed.color(context),
+                              color: ProgressIndicatorEnum.morphsUsed
+                                  .color(context),
                               size: 24,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               "+$grammarCount",
                               style: TextStyle(
-                                color: ProgressIndicatorEnum.morphsUsed.color(context),
+                                color: ProgressIndicatorEnum.morphsUsed
+                                    .color(context),
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -88,7 +98,8 @@ class TranslationFeedback extends StatelessWidget {
                   ],
                 ),
               const SizedBox(height: 6),
-              if (controller.choreographer.altTranslator.showAlternativeTranslations)
+              if (controller
+                  .choreographer.altTranslator.showAlternativeTranslations)
                 AlternativeTranslations(controller: controller),
             ],
           ),
@@ -101,7 +112,7 @@ class TranslationFeedback extends StatelessWidget {
         s: stack,
         data: {},
       );
-      
+
       // Fallback to a simple message if anything goes wrong
       return const Center(child: Text("Nice job!"));
     }
