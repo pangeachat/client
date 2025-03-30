@@ -4110,9 +4110,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     whatIsMeaning$2(lemma, partOfSpeech) {
       return "T\u1eeb '" + lemma + "' c\xf3 ngh\u0129a l\xe0 g\xec?";
     },
-    pickAnEmoji$2(lemma, partOfSpeech) {
-      return "B\u1ea1n ch\u1ecdn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac n\xe0o cho '" + lemma + "'?";
-    },
     get$chooseLemmaMeaningInstructionsBody() {
       return "Match the meanings to the words in the message!";
     },
@@ -4348,7 +4345,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Add a fun activity";
     },
     get$newChatActivityDesc() {
-      return "Choose one of the activities below to add to your chat or skip this step and create an activity later.";
+      return "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!";
     },
     get$randomize() {
       return "Randomize";
@@ -4374,6 +4371,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectActivity() {
       return "Select activity";
     },
+    get$wordFocusListeningMultipleChoice() {
+      return "Which audio matches the word?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4389,6 +4389,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "8JEf1oxSHZcsH+dfmgO6Gy7k3KY=");
+})($__dart_deferred_initializers__, "sO5lszjasxV4fI58RyQSRqPrz7M=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map

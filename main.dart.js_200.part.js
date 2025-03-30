@@ -4110,9 +4110,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     whatIsMeaning$2(lemma, partOfSpeech) {
       return "\xbfQu\xe9 significa '" + lemma + "'?";
     },
-    pickAnEmoji$2(lemma, partOfSpeech) {
-      return "\xbfCu\xe1l es tu emoji favorito para '" + lemma + "'?";
-    },
     get$chooseLemmaMeaningInstructionsBody() {
       return "Match the meanings to the words in the message!";
     },
@@ -4348,7 +4345,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Add a fun activity";
     },
     get$newChatActivityDesc() {
-      return "Choose one of the activities below to add to your chat or skip this step and create an activity later.";
+      return "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!";
     },
     get$randomize() {
       return "Randomize";
@@ -4374,6 +4371,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectActivity() {
       return "Select activity";
     },
+    get$wordFocusListeningMultipleChoice() {
+      return "Which audio matches the word?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4389,6 +4389,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ifxhDncoSdhOW8lcABwB/7CloVY=");
+})($__dart_deferred_initializers__, "jUdi7SzS0n748akDtsdXkCLiH6A=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map
