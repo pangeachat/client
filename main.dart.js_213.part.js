@@ -4314,9 +4314,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$readingAssistanceOverviewBody() {
       return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
     },
-    get$learnByTexting() {
-      return "Learn by texting";
-    },
     get$levelSummaryTrigger() {
       return "View summary";
     },
@@ -4377,6 +4374,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$wordFocusListeningMultipleChoice() {
       return "Which audio matches the word?";
     },
+    get$createActivity() {
+      return "Create activity";
+    },
+    get$startChat() {
+      return "Start a chat";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4392,6 +4395,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_213", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Vfz3MnQnRNpWNbGllIisHMcUsnA=");
+})($__dart_deferred_initializers__, "7EcmNIvxYX8VBL8FSctkDlP88H4=");
 ;
 //# sourceMappingURL=main.dart.js_213.part.js.map
