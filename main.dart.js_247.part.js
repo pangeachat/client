@@ -4345,7 +4345,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Select a grammar icon for activities and details.";
     },
     get$newChatActivityTitle() {
-      return "Add a fun activity";
+      return "Add a fun activity?";
     },
     get$newChatActivityDesc() {
       return "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!";
@@ -4392,6 +4392,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_247", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "DY3n/FtNcqG8H4GwhvzcLB0EaxM=");
+})($__dart_deferred_initializers__, "GHvoliZfz6JYP7oOJkrFUoDKZq8=");
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map
