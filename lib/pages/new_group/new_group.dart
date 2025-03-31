@@ -79,6 +79,10 @@ class NewGroupController extends State<NewGroup> {
       selectedActivity = activity;
       selectedActivityImage = image;
       selectedActivityImageFilename = imageFilename;
+      if (avatar == null) {
+        avatar = image;
+        avatarUrl = null;
+      }
     });
   }
 
