@@ -41,6 +41,9 @@ class NewGroupController extends State<NewGroup> {
   Uint8List? selectedActivityImage;
   String? selectedActivityImageFilename;
 
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final FocusNode focusNode = FocusNode();
+
   bool requiredCodeToJoin = false;
   // bool publicGroup = false;
   // Pangea#
@@ -83,6 +86,13 @@ class NewGroupController extends State<NewGroup> {
   void initState() {
     super.initState();
     nameController.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    focusNode.dispose();
+    super.dispose();
   }
   // Pangea#
 
@@ -253,10 +263,14 @@ class NewGroupController extends State<NewGroup> {
 
     try {
       // #Pangea
-      // if (nameController.text.trim().isEmpty &&
-      //     createGroupType == CreateGroupType.space) {
-      if (nameController.text.trim().isEmpty) {
-        // Pangea#
+      if (!formKey.currentState!.validate()) {
+        focusNode.requestFocus();
+        return;
+      }
+      // Pangea#
+
+      if (nameController.text.trim().isEmpty &&
+          createGroupType == CreateGroupType.space) {
         setState(() => error = L10n.of(context).pleaseFillOut);
         return;
       }
