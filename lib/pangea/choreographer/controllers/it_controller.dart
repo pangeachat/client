@@ -53,9 +53,6 @@ class ITController {
     goldRouteTracker = GoldRouteTracker.defaultTracker;
     payLoadIds = [];
 
-    attemptTracker.clear();
-    visitedSteps.clear();
-
     choreographer.altTranslator.clear();
     choreographer.choreoMode = ChoreoMode.igc;
     choreographer.setState();
@@ -300,23 +297,6 @@ class ITController {
     );
   }
 
-  // MessageServiceModel? messageServiceModelWithMessageId() =>
-  //     usedInteractiveTranslation
-  //         ? MessageServiceModel(
-  //             classId: choreographer.classId,
-  //             roomId: choreographer.roomId,
-  //             message: choreographer.currentText,
-  //             messageId: null,
-  //             payloadIds: payLoadIds,
-  //             userId: choreographer.userId!,
-  //             l1Lang: sourceLangCode,
-  //             l2Lang: targetLangCode,
-  //           )
-  //         : null;
-
-  Map<int, bool> attemptTracker = {};
-  Set<int> visitedSteps = {};
-
   //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
@@ -360,20 +340,6 @@ class ITController {
     } else {
       choreographer.setState();
     }
-  }
-
-  double getFirstAttemptPercentage() {
-    if (attemptTracker.isEmpty) {
-      return 0;
-    }
-
-    final int correctFirstAttempts =
-        attemptTracker.values.where((correct) => correct).length;
-    final int totalSteps = attemptTracker.length;
-
-    final double percentage = (correctFirstAttempts / totalSteps) * 100;
-
-    return percentage;
   }
 
   String get uniqueKeyForLayerLink => "itChoices${choreographer.roomId}";

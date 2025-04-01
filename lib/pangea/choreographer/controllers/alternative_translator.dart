@@ -1,3 +1,6 @@
+import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart'
+    show ChoreoConstants;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -31,12 +34,17 @@ class AlternativeTranslator {
   }
 
   double get _percentCorrectChoices {
-    final attemptTracker = choreographer.itController.attemptTracker;
-    int correctFirstAttempts = 0;
-    for (final entry in attemptTracker.entries) {
-      if (entry.value) correctFirstAttempts++;
-    }
-    final int totalSteps = attemptTracker.length;
+    final totalSteps = choreographer.choreoRecord.itSteps.length;
+    if (totalSteps == 0) return 0.0;
+    final int correctFirstAttempts = choreographer.itController.completedITSteps
+        .where(
+          (step) => !step.continuances.any(
+            (c) =>
+                c.level != ChoreoConstants.levelThresholdForGreen &&
+                c.wasClicked,
+          ),
+        )
+        .length;
     final double percentage = (correctFirstAttempts / totalSteps) * 100;
     return percentage;
   }
@@ -204,15 +212,8 @@ class AlternativeTranslator {
             }
 
             token.morph.forEach((feature, value) {
-              if (feature != 'POS' &&
-                  feature != 'pos' &&
-                  value != null &&
-                  value.toString().isNotEmpty &&
-                  value.toString() != 'X' &&
-                  !feature.contains('_') &&
-                  !feature.contains('id') &&
-                  feature != 'translit' &&
-                  feature != 'orig') {
+              if (feature.name.toUpperCase() != 'POS' &&
+                  value.toString().isNotEmpty) {
                 uniqueGrammarFeatures.add("$feature:$value");
               }
             });
@@ -252,9 +253,9 @@ class FillingStars extends StatefulWidget {
   final int rating;
 
   const FillingStars({
-    Key? key,
+    super.key,
     required this.rating,
-  }) : super(key: key);
+  });
 
   @override
   State<FillingStars> createState() => _FillingStarsState();
@@ -271,8 +272,9 @@ class _FillingStarsState extends State<FillingStars> {
       for (int i = 0; i < widget.rating; i++) {
         Future.delayed(
             Duration(
-                milliseconds: choiceArrayAnimationDuration +
-                    i * choiceArrayAnimationDuration), () {
+              milliseconds: choiceArrayAnimationDuration +
+                  i * choiceArrayAnimationDuration,
+            ), () {
           if (mounted) {
             setState(() {
               _isFilledList[i] = true;

@@ -348,21 +348,6 @@ class Choreographer {
     }
   }
 
-  void clear() {
-    choreoMode = ChoreoMode.igc;
-    _lastChecked = null;
-    _timesClicked = 0;
-    isFetching = false;
-    choreoRecord = ChoreoRecord.newRecord;
-    itController.clear();
-    igc.dispose();
-    _resetDebounceTimer();
-
-    final savedTracker = Map<int, bool>.from(itController.attemptTracker);
-    itController.clear();
-    itController.attemptTracker = savedTracker;
-  }
-
   void onITChoiceSelect(ITStep step) {
     choreoRecord.addRecord(_textController.text, step: step);
     _textController.setSystemText(
@@ -531,6 +516,9 @@ class Choreographer {
   }
 
   void onSelectAlternativeTranslation(String translation) {
+    // PTODO - add some kind of record of this
+    // choreoRecord.addRecord(_textController.text, match);
+
     _textController.setSystemText(
       translation,
       EditType.alternativeTranslation,
@@ -553,6 +541,19 @@ class Choreographer {
   PangeaTextController get textController => _textController;
 
   String get accessToken => pangeaController.userController.accessToken;
+
+  clear() {
+    choreoMode = ChoreoMode.igc;
+    _lastChecked = null;
+    _timesClicked = 0;
+    isFetching = false;
+    choreoRecord = ChoreoRecord.newRecord;
+    itController.clear();
+    igc.dispose();
+    //@ggurdin - why is this commented out?
+    // errorService.clear();
+    _resetDebounceTimer();
+  }
 
   void onMatchError({int? cursorOffset}) {
     if (cursorOffset == null) {
