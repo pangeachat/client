@@ -519,6 +519,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$incorrectPassphraseOrKey() {
       return "\u0639\u0628\u0627\u0631\u062a \u0639\u0628\u0648\u0631 \u06cc\u0627 \u06a9\u0644\u06cc\u062f \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0627\u0634\u062a\u0628\u0627\u0647 \u0627\u0633\u062a";
     },
+    get$inoffensive() {
+      return "\u0628\u06cc \u0636\u0631\u0631";
+    },
     get$inviteContact() {
       return "\u062f\u0639\u0648\u062a \u0627\u0632 \u0645\u062e\u0627\u0637\u0628";
     },
@@ -4215,9 +4218,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatWith$1(displayname) {
       return "Group with " + displayname;
     },
-    get$slightlyOffensive() {
-      return "Slightly offensive";
-    },
     get$clickOnEmailLink() {
       return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
     },
@@ -4398,6 +4398,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_210", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ncf8pjTYrhgwmeR0MNYDc9q+rig=");
+})($__dart_deferred_initializers__, "1Zn15Mmh1L3VFeHRxhBN0Mp0oUo=");
 ;
 //# sourceMappingURL=main.dart.js_210.part.js.map
