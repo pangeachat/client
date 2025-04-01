@@ -1602,15 +1602,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Escribe en " + l1 + " o " + l2 + "...";
     },
-    get$allCorrect() {
-      return "\xa1As\xed es como lo dir\xeda yo! \xa1Muy bien!";
-    },
-    get$newWayAllGood() {
-      return "Yo no lo habr\xeda dicho as\xed, \xa1pero est\xe1 bien!";
-    },
-    get$othersAreBetter() {
-      return "Hm, creo que deber\xedas decirlo de esta manera.";
-    },
     get$holdForInfo() {
       return "Use clic largo para ver informaci\xf3n de la palabra.";
     },
@@ -1841,12 +1832,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$classRoster() {
       return "Participantes";
-    },
-    get$almostPerfect() {
-      return "\xa1Eso parece correcto! Esto es lo que yo hubiera dicho.";
-    },
-    get$prettyGood() {
-      return "\xa1Bastante bien! Esto es lo que yo hubiera dicho.";
     },
     get$letMeThink() {
       return "Hmm, \xa1vamos a ver c\xf3mo le fue!";
@@ -4386,6 +4371,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Translation problem";
     },
+    get$perfectTranslation() {
+      return "Perfect translation!";
+    },
+    get$greatJobTranslation() {
+      return "Great job with this translation!";
+    },
+    get$goodJobTranslation() {
+      return "Good work on this translation.";
+    },
+    get$makingProgress() {
+      return "You're making progress!";
+    },
+    get$keepPracticing() {
+      return "Keep practicing!";
+    },
+    get$niceJob() {
+      return "Nice job!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4401,6 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Ifm3anlwFvaWhMFgtipj+w/mqxc=");
+})($__dart_deferred_initializers__, "w+I+1e2I4HxTz+hNqvanFgdu04c=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

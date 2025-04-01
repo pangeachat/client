@@ -1603,15 +1603,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
     },
-    get$allCorrect() {
-      return "That's how I would say it! Nice!";
-    },
-    get$newWayAllGood() {
-      return "That's not how I would have said it but it looks good!";
-    },
-    get$othersAreBetter() {
-      return "Hm, there might be a better way to say that.";
-    },
     get$holdForInfo() {
       return "Click and hold for word info.";
     },
@@ -1842,12 +1833,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$classRoster() {
       return "Participants";
-    },
-    get$almostPerfect() {
-      return "That seems right! Here's what I would have said.";
-    },
-    get$prettyGood() {
-      return "Pretty good! Here's what I would have said.";
     },
     get$letMeThink() {
       return "Hmm, let's see how you did!";
@@ -4387,6 +4372,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Translation problem";
     },
+    get$perfectTranslation() {
+      return "Perfect translation!";
+    },
+    get$greatJobTranslation() {
+      return "Great job with this translation!";
+    },
+    get$goodJobTranslation() {
+      return "Good work on this translation.";
+    },
+    get$makingProgress() {
+      return "You're making progress!";
+    },
+    get$keepPracticing() {
+      return "Keep practicing!";
+    },
+    get$niceJob() {
+      return "Nice job!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4405,6 +4408,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_189", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "KfaeOSzXYayTAi/tnlvRTScU4uc=");
+})($__dart_deferred_initializers__, "qGcFRatdsquWRcZGRwdkvmXUA1g=");
 ;
 //# sourceMappingURL=main.dart.js_189.part.js.map

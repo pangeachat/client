@@ -1602,15 +1602,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     writeAMessageLangCodes$2(l1, l2) {
       return "G\xf5 b\u1eb1ng " + l1 + " ho\u1eb7c " + l2 + "...";
     },
-    get$allCorrect() {
-      return "\u0110\xf3 \u0111\xfang l\xe0 c\xe1ch t\xf4i n\xf3i! Hay qu\xe1!";
-    },
-    get$newWayAllGood() {
-      return "Kh\xf4ng \u0111\xfang ki\u1ec3u t\xf4i, nh\u01b0ng c\u0169ng \u1ed5n!";
-    },
-    get$othersAreBetter() {
-      return "C\xf3 th\u1ec3 c\xf3 c\xe1ch di\u1ec5n \u0111\u1ea1t hay h\u01a1n.";
-    },
     get$holdForInfo() {
       return "Nh\u1ea5n gi\u1eef \u0111\u1ec3 bi\u1ebft th\xf4ng tin.";
     },
@@ -1841,12 +1832,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$classRoster() {
       return "Danh s\xe1ch th\xe0nh vi\xean";
-    },
-    get$almostPerfect() {
-      return "C\xf3 v\u1ebb \u0111\xfang! \u0110\xe2y l\xe0 c\xe1ch t\xf4i s\u1ebd n\xf3i.";
-    },
-    get$prettyGood() {
-      return "Kh\xe1 \u1ed5n! \u0110\xe2y l\xe0 c\xe1ch t\xf4i s\u1ebd n\xf3i.";
     },
     get$letMeThink() {
       return "Hmm, \u0111\u1ec3 xem b\u1ea1n l\xe0m th\u1ebf n\xe0o!";
@@ -4386,6 +4371,24 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Translation problem";
     },
+    get$perfectTranslation() {
+      return "Perfect translation!";
+    },
+    get$greatJobTranslation() {
+      return "Great job with this translation!";
+    },
+    get$goodJobTranslation() {
+      return "Good work on this translation.";
+    },
+    get$makingProgress() {
+      return "You're making progress!";
+    },
+    get$keepPracticing() {
+      return "Keep practicing!";
+    },
+    get$niceJob() {
+      return "Nice job!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4401,6 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "mSRWhPXuM0nVBl4gTDmrgJdIO+M=");
+})($__dart_deferred_initializers__, "AEPZR61jye6Avhax1l96RfxjV0Y=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
