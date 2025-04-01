@@ -3792,6 +3792,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectBotChatMode() {
       return "Ch\u1ecdn ch\u1ebf \u0111\u1ed9 tr\xf2 chuy\u1ec7n c\u1ee7a bot";
     },
+    get$other() {
+      return "Kh\xe1c";
+    },
     levelShort$1(level) {
       return "LVL " + level;
     },
@@ -4380,6 +4383,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$startChat() {
       return "Start a chat";
     },
+    get$translationProblem() {
+      return "Translation problem";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4395,6 +4401,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "kfDwGVvWMlbh48tTmHPSem9AYBQ=");
+})($__dart_deferred_initializers__, "mSRWhPXuM0nVBl4gTDmrgJdIO+M=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
