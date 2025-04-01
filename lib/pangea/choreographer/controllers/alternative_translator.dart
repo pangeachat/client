@@ -7,6 +7,7 @@ import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart'
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import '../repo/similarity_repo.dart';
 
 class AlternativeTranslator {
@@ -96,128 +97,50 @@ class AlternativeTranslator {
     }
   }
 
-  String translationFeedback(BuildContext context) {
-    try {
-      // Count vocabulary words and grammar constructs
-      final int vocabCount = countVocabularyWordsFromSteps();
-      final int grammarCount = countGrammarConstructsFromSteps();
+  List<PangeaToken> get _selectedTokens => choreographer.choreoRecord.itSteps
+      .where((step) => step.chosenContinuance != null)
+      .map(
+        (step) => step.chosenContinuance!.tokens.where(
+          (token) => token.lemma.saveVocab,
+        ),
+      )
+      .expand((element) => element)
+      .toList();
 
-      // Build the feedback message with icons
-      if (vocabCount > 0 || grammarCount > 0) {
-        String message = "";
+  int countVocabularyWordsFromSteps() =>
+      _selectedTokens.map((t) => t.lemma.text.toLowerCase()).toSet().length;
 
-        if (vocabCount > 0) {
-          message = "Vocab +$vocabCount";
-        }
-
-        if (grammarCount > 0) {
-          // If there was already vocabulary, add spacing
-          if (message.isNotEmpty) {
-            message += "   Grammar +$grammarCount";
-          } else {
-            message = "Grammar +$grammarCount";
-          }
-        }
-
-        return message;
-      }
-
-      // Fall back to performance-based feedback
-      return getDefaultFeedback(context);
-    } catch (e, stack) {
-      debugPrint("Error in feedback: $e");
-      ErrorHandler.logError(
-        e: e,
-        s: stack,
-        data: {"currentText": choreographer.currentText},
-      );
-
-      return getDefaultFeedback(context);
-    }
-  }
-
-  int countVocabularyWordsFromSteps() {
-    // Get completed steps from the IT controller
-    final completedSteps = choreographer.itController.completedITSteps;
-    if (completedSteps.isEmpty) return 0;
-
-    final Set<String> uniqueLemmas = {};
-
-    // Go through each completed step
-    for (final step in completedSteps) {
-      if (step.chosen != null && step.continuances.isNotEmpty) {
-        final continuance = step.continuances[step.chosen!];
-
-        // If it's a correct choice (level 1)
-        if (continuance.level == 1 || continuance.gold) {
-          for (final token in continuance.tokens) {
-            // Only count tokens that are marked as save_vocab
-            if (token.lemma.saveVocab) {
-              uniqueLemmas.add(token.lemma.text);
-            }
-          }
-        }
-      }
-    }
-
-    return uniqueLemmas.length;
-  }
-
-  int countGrammarConstructsFromSteps() {
-    // Get completed steps from the IT controller
-    final completedSteps = choreographer.itController.completedITSteps;
-    if (completedSteps.isEmpty) return 0;
-
-    final Set<String> uniqueGrammarFeatures = {};
-    final Set<String> uniquePOSCategories = {};
-
-    // Go through each completed step
-    for (final step in completedSteps) {
-      if (step.chosen != null && step.continuances.isNotEmpty) {
-        final continuance = step.continuances[step.chosen!];
-
-        // If it's a correct choice (level 1 or gold)
-        if (continuance.level == 1 || continuance.gold) {
-          for (final token in continuance.tokens) {
-            if (!['DET', 'PUNCT', 'SYM', 'X', 'PART', 'ADP']
-                .contains(token.pos)) {
-              uniquePOSCategories.add(token.pos);
-            }
-
-            token.morph.forEach((feature, value) {
-              if (feature.name.toUpperCase() != 'POS' &&
-                  value.toString().isNotEmpty) {
-                uniqueGrammarFeatures.add("$feature:$value");
-              }
-            });
-          }
-        }
-      }
-    }
-
-    return uniquePOSCategories.length + uniqueGrammarFeatures.length;
-  }
+  int countGrammarConstructsFromSteps() => _selectedTokens
+      .map(
+        (t) => t.morph.entries.map(
+          (m) => "${m.key}:${m.value}".toLowerCase(),
+        ),
+      )
+      .expand((m) => m)
+      .toSet()
+      .length;
 
   String getDefaultFeedback(BuildContext context) {
+    final l10n = L10n.of(context);
     switch (translationFeedbackKey) {
       case FeedbackKey.allCorrect:
-        return "Perfect translation!";
+        return l10n.perfectTranslation;
       case FeedbackKey.newWayAllGood:
-        return "Great job with this translation!";
+        return l10n.greatJobTranslation;
       case FeedbackKey.othersAreBetter:
         if (_percentCorrectChoices >= 60) {
-          return "Good work on this translation.";
+          return l10n.goodJobTranslation;
         }
         if (_percentCorrectChoices >= 40) {
-          return "You're making progress!";
+          return l10n.makingProgress;
         }
-        return "Keep practicing!";
+        return l10n.keepPracticing;
       case FeedbackKey.loadingPleaseWait:
-        return L10n.of(context).letMeThink;
+        return l10n.letMeThink;
       case FeedbackKey.allDone:
-        return L10n.of(context).allDone;
+        return l10n.allDone;
       default:
-        return L10n.of(context).loadingPleaseWait;
+        return l10n.loadingPleaseWait;
     }
   }
 }

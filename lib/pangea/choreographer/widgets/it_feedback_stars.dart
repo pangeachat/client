@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_animation.dart';
 
 class FillingStars extends StatefulWidget {
@@ -20,22 +21,18 @@ class _FillingStarsState extends State<FillingStars> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _animate());
+  }
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      for (int i = 0; i < widget.rating; i++) {
-        Future.delayed(
-            Duration(
-              milliseconds: choiceArrayAnimationDuration +
-                  i * choiceArrayAnimationDuration,
-            ), () {
-          if (mounted) {
-            setState(() {
-              _isFilledList[i] = true;
-            });
-          }
-        });
-      }
-    });
+  Future<void> _animate() async {
+    for (int i = 0; i < widget.rating; i++) {
+      await Future.delayed(
+          const Duration(milliseconds: choiceArrayAnimationDuration), () {
+        if (mounted) {
+          setState(() => _isFilledList[i] = true);
+        }
+      });
+    }
   }
 
   @override
@@ -56,9 +53,9 @@ class _FillingStarsState extends State<FillingStars> {
             _isFilledList[index] ? Icons.star_rounded : Icons.star_rounded,
             key: ValueKey<bool>(_isFilledList[index]),
             color: _isFilledList[index]
-                ? Colors.amber
-                : const Color.fromARGB(255, 37, 37, 37),
-            size: 35,
+                ? AppConfig.gold
+                : Theme.of(context).cardColor.withAlpha(180),
+            size: 32.0,
           ),
         );
       }),
