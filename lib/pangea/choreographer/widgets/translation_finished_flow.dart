@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/alternative_translator.dart';
+import 'package:fluffychat/pangea/choreographer/widgets/it_feedback_stars.dart';
 import '../../bot/utils/bot_style.dart';
 import '../../common/utils/error_handler.dart';
 import '../controllers/it_controller.dart';
@@ -15,13 +15,11 @@ class TranslationFeedback extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final altTranslator = controller.choreographer.altTranslator;
     try {
-      final int vocabCount = controller.choreographer.altTranslator
-          .countVocabularyWordsFromSteps();
-      final int grammarCount = controller.choreographer.altTranslator
-          .countGrammarConstructsFromSteps();
-      final feedbackText =
-          controller.choreographer.altTranslator.getDefaultFeedback(context);
+      final int vocabCount = altTranslator.countVocabularyWordsFromSteps();
+      final int grammarCount = altTranslator.countGrammarConstructsFromSteps();
+      final feedbackText = altTranslator.getDefaultFeedback(context);
 
       return ConstrainedBox(
         constraints: const BoxConstraints(
@@ -32,16 +30,12 @@ class TranslationFeedback extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (controller
-                  .choreographer.altTranslator.showTranslationFeedback)
+              if (altTranslator.showTranslationFeedback)
                 Column(
                   children: [
                     SizedBox(
                       height: 40,
-                      child: FillingStars(
-                        rating:
-                            controller.choreographer.altTranslator.starRating,
-                      ),
+                      child: FillingStars(rating: altTranslator.starRating),
                     ),
                     const SizedBox(height: 8),
                     if (vocabCount > 0 || grammarCount > 0)
@@ -99,8 +93,7 @@ class TranslationFeedback extends StatelessWidget {
                   ],
                 ),
               const SizedBox(height: 6),
-              if (controller
-                  .choreographer.altTranslator.showAlternativeTranslations)
+              if (altTranslator.showAlternativeTranslations)
                 AlternativeTranslations(controller: controller),
             ],
           ),
