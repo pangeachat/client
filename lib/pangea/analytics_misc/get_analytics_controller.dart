@@ -22,13 +22,13 @@ import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/practice_activities/message_analytics_controller.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
   final GetStorage analyticsBox = GetStorage("analytics_storage");
   late PangeaController _pangeaController;
-  late MessageAnalyticsController perMessage;
+  late PracticeSelectionRepo perMessage;
 
   final List<AnalyticsCacheEntry> _cache = [];
   StreamSubscription<AnalyticsUpdate>? _analyticsUpdateSubscription;
@@ -49,21 +49,16 @@ class GetAnalyticsController extends BaseController {
 
   // the minimum XP required for a given level
   int get _minXPForLevel {
-    return _calculateMinXpForLevel(constructListModel.level);
+    return constructListModel.calculateXpWithLevel(constructListModel.level);
   }
 
   // the minimum XP required for the next level
   int get _minXPForNextLevel {
-    return _calculateMinXpForLevel(constructListModel.level + 1);
+    return constructListModel
+        .calculateXpWithLevel(constructListModel.level + 1);
   }
 
   int get minXPForNextLevel => _minXPForNextLevel;
-
-  /// Calculates the minimum XP required for a specific level.
-  int _calculateMinXpForLevel(int level) {
-    if (level == 1) return 0; // Ensure level 1 starts at 0 XP
-    return ((100 / 8) * (2 * pow(level - 1, 2))).floor();
-  }
 
   // the progress within the current level as a percentage (0.0 to 1.0)
   double get levelProgress {
@@ -146,7 +141,9 @@ class GetAnalyticsController extends BaseController {
       await _getConstructs(forceUpdate: true);
     }
     if (oldLevel < constructListModel.level) {
-      await _onLevelUp(oldLevel, constructListModel.level);
+      // do not await this - it's not necessary for this to finish
+      // before the function completes and it blocks the UI
+      _onLevelUp(oldLevel, constructListModel.level);
     }
     if (oldLevel > constructListModel.level) {
       await _onLevelDown(constructListModel.level, oldLevel);
@@ -182,21 +179,21 @@ class GetAnalyticsController extends BaseController {
       );
 
   Future<void> _onLevelUp(final int lowerLevel, final int upperLevel) async {
-    final result = await _generateLevelUpAnalyticsAndSaveToStateEvent(
-      lowerLevel,
-      upperLevel,
-    );
+    // final result = await _generateLevelUpAnalyticsAndSaveToStateEvent(
+    //   lowerLevel,
+    //   upperLevel,
+    // );
     setState({
       'level_up': constructListModel.level,
-      'analytics_room_id': _client.analyticsRoomLocal(_l2!)?.id,
-      "construct_summary_state_event_id": result?.stateEventId,
-      "construct_summary": result?.summary,
+      // 'analytics_room_id': _client.analyticsRoomLocal(_l2!)?.id,
+      // "construct_summary_state_event_id": result?.stateEventId,
+      // "construct_summary": result?.summary,
     });
   }
 
   Future<void> _onLevelDown(final int lowerLevel, final int upperLevel) async {
-    final offset =
-        _calculateMinXpForLevel(lowerLevel) - constructListModel.totalXP;
+    final offset = constructListModel.calculateXpWithLevel(lowerLevel) -
+        constructListModel.totalXP;
     await _pangeaController.userController.addXPOffset(offset);
     constructListModel.updateConstructs(
       [],
@@ -389,8 +386,8 @@ class GetAnalyticsController extends BaseController {
     // generate level up analytics as a construct summary
     ConstructSummary summary;
     try {
-      final int maxXP = _calculateMinXpForLevel(upperLevel);
-      final int minXP = _calculateMinXpForLevel(lowerLevel);
+      final int maxXP = constructListModel.calculateXpWithLevel(upperLevel);
+      final int minXP = constructListModel.calculateXpWithLevel(lowerLevel);
       int diffXP = maxXP - minXP;
       if (diffXP < 0) diffXP = 0;
 

@@ -22,6 +22,7 @@ import 'package:fluffychat/pangea/practice_activities/lemma_meaning_activity_gen
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/morph_activity_generator.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_activities/word_focus_listening_generator.dart';
 import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -38,7 +39,7 @@ class _RequestCacheItem {
 }
 
 /// Controller for handling activity completions.
-class PracticeGenerationController {
+class PracticeRepo {
   static final Map<int, _RequestCacheItem> _cache = {};
   Timer? _cacheClearTimer;
 
@@ -47,9 +48,10 @@ class PracticeGenerationController {
   final _morph = MorphActivityGenerator();
   final _emoji = EmojiActivityGenerator();
   final _lemma = LemmaActivityGenerator();
+  final _wordFoocusListening = WordFocusListeningGenerator();
   final _wordMeaning = LemmaMeaningActivityGenerator();
 
-  PracticeGenerationController() {
+  PracticeRepo() {
     _pangeaController = MatrixState.pangeaController;
     _initializeCacheClearing();
   }
@@ -137,6 +139,7 @@ class PracticeGenerationController {
         return _wordMeaning.get(req);
       case ActivityTypeEnum.messageMeaning:
       case ActivityTypeEnum.wordFocusListening:
+        return _wordFoocusListening.get(req, context);
       case ActivityTypeEnum.hiddenWordListening:
         return _fetchFromServer(
           accessToken: accessToken,
@@ -145,9 +148,10 @@ class PracticeGenerationController {
     }
   }
 
+  /// [event] is optional and used for saving the activity event to Matrix
   Future<PracticeActivityModelResponse> getPracticeActivity(
     MessageActivityRequest req,
-    PangeaMessageEvent event,
+    PangeaMessageEvent? event,
     BuildContext context,
   ) async {
     final int cacheKey = req.hashCode;
@@ -161,15 +165,19 @@ class PracticeGenerationController {
       req: req,
       context: context,
     );
-    res.activity.content.choices.sort((a, b) => a.length.compareTo(b.length));
+
+    // this improves the UI by generally packing wrapped choices more tightly
+    res.activity.multipleChoiceContent?.choices
+        .sort((a, b) => a.length.compareTo(b.length));
 
     // TODO resolve some wierdness here whereby the activity can be null but then... it's not
     final eventCompleter = Completer<PracticeActivityEvent?>();
 
-    debugPrint('Activity generated: ${res.activity.toJson()}');
-    _sendAndPackageEvent(res.activity, event).then((event) {
-      eventCompleter.complete(event);
-    });
+    if (event != null) {
+      _sendAndPackageEvent(res.activity, event).then((event) {
+        eventCompleter.complete(event);
+      });
+    }
 
     final responseModel = PracticeActivityModelResponse(
       activity: res.activity,

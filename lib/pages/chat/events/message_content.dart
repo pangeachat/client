@@ -372,7 +372,8 @@ class MessageContent extends StatelessWidget {
               );
             }
 
-            if (pangeaMessageEvent != null) {
+            if (pangeaMessageEvent != null &&
+                pangeaMessageEvent!.shouldShowToolbar) {
               return MessageTokenText(
                 pangeaMessageEvent: pangeaMessageEvent!,
                 tokens:
@@ -384,7 +385,7 @@ class MessageContent extends StatelessWidget {
                 isHighlighted: (PangeaToken token) =>
                     overlayController?.toolbarMode.associatedActivityType !=
                         null &&
-                    overlayController?.messageAnalyticsEntry?.hasActivity(
+                    overlayController?.practiceSelection?.hasActivity(
                           overlayController!
                               .toolbarMode.associatedActivityType!,
                           token,

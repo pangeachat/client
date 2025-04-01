@@ -4833,7 +4833,7 @@
   "resetInstructionTooltipsTitle": "Reset instruction tooltips",
   "resetInstructionTooltipsDesc": "Click to show instruction tooltips like for a brand new user.",
   "selectForGrammar": "Select a grammar icon for activities and details.",
-  "newChatActivityTitle": "Add a fun activity",
+  "newChatActivityTitle": "Add a fun activity?",
   "newChatActivityDesc": "Choose one of the activities below to add to your chat or skip this step and create an activity later.",
   "exploreMore": "Explore more",
   "randomize": "Randomize",
@@ -4843,5 +4843,11 @@
   "yourBookmarks": "My bookmarks",
   "goToChat": "Go to chat",
   "save": "Save",
-  "selectActivity": "Select activity"
+  "selectActivity": "Select activity",
+  "newChatActivityDesc": "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!",
+  "exploreMore": "Explore more",
+  "wordFocusListeningMultipleChoice": "Which audio matches the word?",
+  "createActivity": "Create activity",
+  "startChat": "Start a chat",
+  "translationProblem": "Translation problem"
 }

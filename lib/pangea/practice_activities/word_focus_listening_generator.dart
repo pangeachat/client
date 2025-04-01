@@ -1,39 +1,73 @@
-import 'dart:developer';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/message_activity_request.dart';
 import 'package:fluffychat/pangea/practice_activities/multiple_choice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_match.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class LemmaActivityGenerator {
+class WordFocusListeningGenerator {
   Future<MessageActivityResponse> get(
     MessageActivityRequest req,
     BuildContext context,
   ) async {
-    debugger(when: kDebugMode && req.targetTokens.length != 1);
+    if (req.targetTokens.length == 1) {
+      return _multipleChoiceActivity(req, context);
+    } else {
+      return _matchActivity(req, context);
+    }
+  }
 
+  Future<MessageActivityResponse> _multipleChoiceActivity(
+    MessageActivityRequest req,
+    BuildContext context,
+  ) async {
     final token = req.targetTokens.first;
     final List<String> choices = await lemmaActivityDistractors(token);
 
-    // TODO - modify MultipleChoiceActivity flow to allow no correct answer
     return MessageActivityResponse(
       activity: PracticeActivityModel(
-        activityType: ActivityTypeEnum.lemmaId,
+        activityType: ActivityTypeEnum.wordFocusListening,
         targetTokens: [token],
         langCode: req.userL2,
         multipleChoiceContent: MultipleChoiceActivity(
-          question: L10n.of(context).chooseBaseForm,
+          question: L10n.of(context).wordFocusListeningMultipleChoice,
           choices: choices,
           answers: [token.lemma.text],
           spanDisplayDetails: null,
+        ),
+      ),
+    );
+  }
+
+  Future<MessageActivityResponse> _matchActivity(
+    MessageActivityRequest req,
+    BuildContext context,
+  ) async {
+    return MessageActivityResponse(
+      activity: PracticeActivityModel(
+        activityType: ActivityTypeEnum.wordFocusListening,
+        targetTokens: req.targetTokens,
+        langCode: req.userL2,
+        matchContent: PracticeMatchActivity(
+          matchInfo: Map.fromEntries(
+            req.targetTokens.map(
+              (token) => MapEntry(
+                ConstructForm(
+                  cId: token.vocabConstructID,
+                  form: token.text.content,
+                ),
+                [token.text.content],
+              ),
+            ),
+          ),
         ),
       ),
     );

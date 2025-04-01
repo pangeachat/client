@@ -101,7 +101,6 @@ class MessageTranslationCardState extends State<MessageTranslationCard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
       children: [
         Text(
           repEvent!.text,

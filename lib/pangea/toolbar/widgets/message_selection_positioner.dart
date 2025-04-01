@@ -11,7 +11,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
@@ -299,8 +298,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   static const _messageDefaultLeftMargin = Avatar.defaultSize + 16 + 8;
 
   double get _toolbarMaxWidth {
-    final double messageMargin =
-        widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
+    const double messageMargin = 16.0;
+    // widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
     final bool showingDetails = widget.chatController.displayChatDetailsColumn;
     final double totalMaxWidth = (FluffyThemes.columnWidth * 2.5) -
         (showingDetails ? FluffyThemes.columnWidth : 0) -
@@ -408,6 +407,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       return const SizedBox.shrink();
     }
 
+    widget.overlayController.maxWidth = _toolbarMaxWidth;
+
     return Padding(
       padding: EdgeInsets.only(
         left: _horizontalPadding,
@@ -439,7 +440,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                   messageWidth: null,
                   // messageHeight: _adjustedCenteredMessageSize?.height,
                   // messageWidth: _adjustedCenteredMessageSize?.width,
-                  maxWidth: _toolbarMaxWidth,
+                  maxWidth: widget.overlayController.maxWidth,
                   overlayController: widget.overlayController,
                   chatController: widget.chatController,
                   pangeaMessageEvent: widget.pangeaMessageEvent,
@@ -505,7 +506,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                     event: widget.event,
                     messageHeight: _originalMessageHeight,
                     messageWidth: _messageSize.width,
-                    maxWidth: _toolbarMaxWidth,
+                    maxWidth: widget.overlayController.maxWidth,
                     overlayController: widget.overlayController,
                     chatController: widget.chatController,
                     pangeaMessageEvent: widget.pangeaMessageEvent,
@@ -557,7 +558,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
               child: Container(
                 constraints: BoxConstraints(
                   minWidth: 200.0,
-                  maxWidth: _toolbarMaxWidth,
+                  maxWidth: widget.overlayController.maxWidth,
                 ),
                 child: InstructionsInlineTooltip(
                   instructionsEnum:

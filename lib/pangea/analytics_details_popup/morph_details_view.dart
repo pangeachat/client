@@ -19,7 +19,8 @@ class MorphDetailsView extends StatelessWidget {
   });
 
   ConstructUses get _construct => constructId.constructUses;
-  String get _morphFeature => constructId.category;
+  MorphFeaturesEnum get _morphFeature =>
+      MorphFeaturesEnumExtension.fromString(constructId.category);
   String get _morphTag => constructId.lemma;
 
   @override
@@ -31,7 +32,7 @@ class MorphDetailsView extends StatelessWidget {
     return AnalyticsDetailsViewContent(
       subtitle: MorphFeatureDisplay(morphFeature: _morphFeature),
       title: MorphTagDisplay(
-        morphFeature: MorphFeaturesEnumExtension.fromString(_morphFeature),
+        morphFeature: _morphFeature,
         morphTag: _morphTag,
         textColor: textColor,
       ),
