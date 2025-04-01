@@ -297,49 +297,55 @@ class ITController {
     );
   }
 
+  // MessageServiceModel? messageServiceModelWithMessageId() =>
+  //     usedInteractiveTranslation
+  //         ? MessageServiceModel(
+  //             classId: choreographer.classId,
+  //             roomId: choreographer.roomId,
+  //             message: choreographer.currentText,
+  //             messageId: null,
+  //             payloadIds: payLoadIds,
+  //             userId: choreographer.userId!,
+  //             l1Lang: sourceLangCode,
+  //             l2Lang: targetLangCode,
+  //           )
+  //         : null;
+
   //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
+    final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
 
-    // Check if this answer is correct
-    final bool isCorrect = currentITStep!.continuances[chosenIndex].gold ||
-        currentITStep!.continuances[chosenIndex].level ==
-            ChoreoConstants.levelThresholdForGreen;
+    completedITSteps.add(itStep);
 
-    // Only proceed if the answer was correct
-    if (isCorrect) {
-      final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
-      completedITSteps.add(itStep);
+    showChoiceFeedback = true;
 
-      showChoiceFeedback = true;
+    // Get a list of the choices that the user did not click
+    final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
+        .where((e) => !e.wasClicked)
+        .map((e) => e.tokens)
+        .expand((e) => e)
+        .toList();
 
-      final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
-          .where((e) => !e.wasClicked)
-          .map((e) => e.tokens)
-          .expand((e) => e)
-          .toList();
+    // Save those choices' tokens to local construct analytics as ignored tokens
+    choreographer.pangeaController.putAnalytics.addDraftUses(
+      ignoredTokens ?? [],
+      choreographer.roomId,
+      ConstructUseTypeEnum.ignIt,
+    );
 
-      // Save those choices' tokens to local construct analytics as ignored tokens
-      choreographer.pangeaController.putAnalytics.addDraftUses(
-        ignoredTokens ?? [],
-        choreographer.roomId,
-        ConstructUseTypeEnum.ignIt,
-      );
+    Future.delayed(
+      const Duration(
+        milliseconds: ChoreoConstants.millisecondsToDisplayFeedback,
+      ),
+      () {
+        showChoiceFeedback = false;
+        choreographer.setState();
+      },
+    );
 
-      Future.delayed(
-        const Duration(
-          milliseconds: ChoreoConstants.millisecondsToDisplayFeedback,
-        ),
-        () {
-          showChoiceFeedback = false;
-          choreographer.setState();
-        },
-      );
-
-      choreographer.onITChoiceSelect(itStep);
-    } else {
-      choreographer.setState();
-    }
+    choreographer.onITChoiceSelect(itStep);
+    choreographer.setState();
   }
 
   String get uniqueKeyForLayerLink => "itChoices${choreographer.roomId}";
