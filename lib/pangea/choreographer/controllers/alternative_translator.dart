@@ -139,30 +139,6 @@ class AlternativeTranslator {
     }
   }
 
-  Widget buildStarRating(BuildContext context) {
-    final int stars = starRating;
-
-    return SizedBox(
-      height: 35,
-      child: FillingStars(rating: stars),
-    );
-  }
-
-  Widget translationFeedbackWidget(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        buildStarRating(context),
-        const SizedBox(height: 8),
-        Text(
-          translationFeedback(context),
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyMedium,
-        ),
-      ],
-    );
-  }
-
   int countVocabularyWordsFromSteps() {
     // Get completed steps from the IT controller
     final completedSteps = choreographer.itController.completedITSteps;

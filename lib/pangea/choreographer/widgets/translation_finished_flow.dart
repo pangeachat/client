@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/alternative_translator.dart';
 import '../../bot/utils/bot_style.dart';
 import '../../common/utils/error_handler.dart';
 import '../controllers/it_controller.dart';
@@ -35,14 +36,14 @@ class TranslationFeedback extends StatelessWidget {
                   .choreographer.altTranslator.showTranslationFeedback)
                 Column(
                   children: [
-                    // Star rating
                     SizedBox(
                       height: 40,
-                      child: controller.choreographer.altTranslator
-                          .buildStarRating(context),
+                      child: FillingStars(
+                        rating:
+                            controller.choreographer.altTranslator.starRating,
+                      ),
                     ),
                     const SizedBox(height: 8),
-
                     if (vocabCount > 0 || grammarCount > 0)
                       Row(
                         mainAxisSize: MainAxisSize.min,

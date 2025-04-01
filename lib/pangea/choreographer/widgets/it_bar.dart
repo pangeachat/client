@@ -362,7 +362,6 @@ class ITChoices extends StatelessWidget {
   void selectContinuance(int index, BuildContext context) {
     final Continuance continuance =
         controller.currentITStep!.continuances[index];
-
     if (continuance.level == 1) {
       Future.delayed(
         const Duration(milliseconds: 500),
@@ -376,7 +375,6 @@ class ITChoices extends StatelessWidget {
         continuance.feedbackText(context),
       );
     }
-
     if (!continuance.wasClicked) {
       controller.choreographer.pangeaController.putAnalytics.addDraftUses(
         continuance.tokens,
@@ -388,8 +386,7 @@ class ITChoices extends StatelessWidget {
             "${continuance.text.trim()}${controller.currentITStep.hashCode.toString()}",
       );
     }
-
-    continuance.wasClicked = true;
+    controller.currentITStep!.continuances[index].wasClicked = true;
     controller.choreographer.setState();
   }
 
