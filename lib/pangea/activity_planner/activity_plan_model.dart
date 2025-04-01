@@ -18,8 +18,8 @@ class ActivityPlanModel {
     required this.learningObjective,
     required this.instructions,
     required this.vocab,
-    this.imageURL,
     this.bookmarkId,
+    this.imageURL,
   });
 
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
@@ -31,8 +31,8 @@ class ActivityPlanModel {
       vocab: List<Vocab>.from(
         json[ModelKey.activityPlanVocab].map((vocab) => Vocab.fromJson(vocab)),
       ),
-      bookmarkId: json[ModelKey.activityPlanBookmarkId],
       imageURL: json[ModelKey.activityPlanImageURL],
+      bookmarkId: json[ModelKey.activityPlanBookmarkId],
     );
   }
 
@@ -43,8 +43,8 @@ class ActivityPlanModel {
       ModelKey.activityPlanLearningObjective: learningObjective,
       ModelKey.activityPlanInstructions: instructions,
       ModelKey.activityPlanVocab: vocab.map((vocab) => vocab.toJson()).toList(),
-      ModelKey.activityPlanBookmarkId: bookmarkId,
       ModelKey.activityPlanImageURL: imageURL,
+      ModelKey.activityPlanBookmarkId: bookmarkId,
     };
   }
 
@@ -67,10 +67,6 @@ class ActivityPlanModel {
     return markdown;
   }
 
-  bool get isBookmarked {
-    return bookmarkId != null;
-  }
-
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -81,6 +77,7 @@ class ActivityPlanModel {
         other.learningObjective == learningObjective &&
         other.instructions == instructions &&
         listEquals(other.vocab, vocab) &&
+        other.imageURL == imageURL &&
         other.bookmarkId == bookmarkId;
   }
 
@@ -91,6 +88,7 @@ class ActivityPlanModel {
       learningObjective.hashCode ^
       instructions.hashCode ^
       Object.hashAll(vocab) ^
+      imageURL.hashCode ^
       bookmarkId.hashCode;
 }
 

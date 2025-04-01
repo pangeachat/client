@@ -215,12 +215,3 @@ extension MorphFeaturesEnumExtension on MorphFeaturesEnum {
     }
   }
 }
-
-String? getMorphologicalCategoryCopy(
-  String categoryName,
-  BuildContext context,
-) {
-  final MorphFeaturesEnum category =
-      MorphFeaturesEnumExtension.fromString(categoryName);
-  return category.getDisplayCopy(context);
-}

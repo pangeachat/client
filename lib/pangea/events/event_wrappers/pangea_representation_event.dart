@@ -300,7 +300,7 @@ class RepresentationEvent {
         if (feature == MorphFeaturesEnum.Pos) {
           return true;
         }
-        return tokens?.any((token) => token.morph.containsKey(feature.name)) ??
+        return tokens?.any((token) => token.morph.containsKey(feature)) ??
             false;
       }).toSet();
 
@@ -318,8 +318,8 @@ class RepresentationEvent {
 
   List<String> tagsByFeature(MorphFeaturesEnum feature) {
     return tokens
-            ?.where((t) => t.morph.containsKey(feature.name))
-            .map((t) => t.morph[feature.name])
+            ?.where((t) => t.morph.containsKey(feature))
+            .map((t) => t.morph[feature])
             .cast<String>()
             .toList() ??
         [];

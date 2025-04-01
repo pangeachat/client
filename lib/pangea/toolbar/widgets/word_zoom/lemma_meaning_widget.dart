@@ -120,8 +120,8 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
   @override
   Widget build(BuildContext context) {
     if (widget.token != null &&
-        widget.controller?.messageAnalyticsEntry != null &&
-        widget.controller!.messageAnalyticsEntry!
+        widget.controller?.practiceSelection != null &&
+        widget.controller!.practiceSelection!
             .hasActivity(ActivityTypeEnum.wordMeaning, widget.token!)) {
       return WordZoomActivityButton(
         icon: const Icon(Symbols.dictionary),
@@ -225,7 +225,8 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
                   ),
                   children: [
                     if (widget.leading != null) widget.leading!,
-                    if (widget.leading != null) const TextSpan(text: '  '),
+                    if (widget.leading != null)
+                      const WidgetSpan(child: SizedBox(width: 6.0)),
                     TextSpan(
                       text: _lemmaInfo?.meaning,
                     ),

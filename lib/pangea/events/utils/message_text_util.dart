@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/practice_activities/message_analytics_entry.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
 
 class TokenPosition {
   /// Start index of the full substring in the message
@@ -38,7 +38,7 @@ class TokenPosition {
 class MessageTextUtil {
   static List<TokenPosition>? getTokenPositions(
     PangeaMessageEvent pangeaMessageEvent, {
-    MessageAnalyticsEntry? messageAnalyticsEntry,
+    PracticeSelection? messageAnalyticsEntry,
     bool Function(PangeaToken)? isSelected,
     bool Function(PangeaToken)? isHighlighted,
   }) {

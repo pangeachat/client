@@ -271,7 +271,7 @@ extension MessageModeExtension on MessageMode {
             .firstWhereOrNull(
               (feature) =>
                   pangeaMessage.messageDisplayRepresentation!.tokens!.any((t) {
-                final String? morphTag = t.getMorphTag(feature.name);
+                final String? morphTag = t.getMorphTag(feature);
 
                 if (morphTag == null) {
                   return false;

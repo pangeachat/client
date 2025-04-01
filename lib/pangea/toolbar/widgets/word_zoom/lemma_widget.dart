@@ -190,7 +190,7 @@ class LemmaWidgetState extends State<LemmaWidget> {
                 MessageMode.listening == widget.overlayController?.toolbarMode,
             baseOpacity: 0.4,
             callbackOverride:
-                widget.overlayController?.messageAnalyticsEntry?.hasActivity(
+                widget.overlayController?.practiceSelection?.hasActivity(
                           MessageMode.listening.associatedActivityType!,
                           widget.token,
                         ) ==
@@ -198,6 +198,7 @@ class LemmaWidgetState extends State<LemmaWidget> {
                     ? () => widget.overlayController
                         ?.updateToolbarMode(MessageMode.listening)
                     : null,
+            uniqueID: "lemma-content-${widget.token.text.content}",
           ),
       ],
     );

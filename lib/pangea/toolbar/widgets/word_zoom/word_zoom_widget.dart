@@ -38,7 +38,7 @@ class WordZoomWidget extends StatelessWidget {
   void onEditDone() => overlayController.initializeTokensAndMode();
 
   bool get hasEmojiActivity =>
-      overlayController.messageAnalyticsEntry?.hasActivity(
+      overlayController.practiceSelection?.hasActivity(
         ActivityTypeEnum.emoji,
         _selectedToken,
       ) ==
@@ -171,7 +171,7 @@ class WordZoomWidget extends StatelessWidget {
                         MessageMode.listening == overlayController.toolbarMode,
                     baseOpacity: 0.4,
                     callbackOverride:
-                        overlayController.messageAnalyticsEntry?.hasActivity(
+                        overlayController.practiceSelection?.hasActivity(
                                   MessageMode.listening.associatedActivityType!,
                                   _selectedToken,
                                 ) ==
@@ -179,6 +179,7 @@ class WordZoomWidget extends StatelessWidget {
                             ? () => overlayController
                                 .updateToolbarMode(MessageMode.listening)
                             : null,
+                    uniqueID: "word-zoom-audio-${_selectedToken.text.content}",
                   ),
                 ],
                 ..._selectedToken.morphsBasicallyEligibleForPracticeByPriority

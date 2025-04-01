@@ -193,23 +193,23 @@ extension ConstructUseTypeExtension on ConstructUseTypeEnum {
   int get pointValue {
     switch (this) {
       case ConstructUseTypeEnum.corPA:
+      case ConstructUseTypeEnum.corWL:
+      case ConstructUseTypeEnum.corM:
         return 5;
 
       case ConstructUseTypeEnum.pvm:
         return 4;
 
       case ConstructUseTypeEnum.wa:
-      case ConstructUseTypeEnum.corWL:
       case ConstructUseTypeEnum.corHWL:
+      case ConstructUseTypeEnum.em:
         return 3;
 
       case ConstructUseTypeEnum.corIGC:
       case ConstructUseTypeEnum.corL:
-      case ConstructUseTypeEnum.corM:
         return 2;
 
       case ConstructUseTypeEnum.corIt:
-      case ConstructUseTypeEnum.em:
       case ConstructUseTypeEnum.corMM:
         return 1;
 

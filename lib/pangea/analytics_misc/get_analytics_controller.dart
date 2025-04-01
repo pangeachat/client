@@ -22,13 +22,13 @@ import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/practice_activities/message_analytics_controller.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
   final GetStorage analyticsBox = GetStorage("analytics_storage");
   late PangeaController _pangeaController;
-  late MessageAnalyticsController perMessage;
+  late PracticeSelectionRepo perMessage;
 
   final List<AnalyticsCacheEntry> _cache = [];
   StreamSubscription<AnalyticsUpdate>? _analyticsUpdateSubscription;
@@ -141,7 +141,9 @@ class GetAnalyticsController extends BaseController {
       await _getConstructs(forceUpdate: true);
     }
     if (oldLevel < constructListModel.level) {
-      await _onLevelUp(oldLevel, constructListModel.level);
+      // do not await this - it's not necessary for this to finish
+      // before the function completes and it blocks the UI
+      _onLevelUp(oldLevel, constructListModel.level);
     }
     if (oldLevel > constructListModel.level) {
       await _onLevelDown(constructListModel.level, oldLevel);

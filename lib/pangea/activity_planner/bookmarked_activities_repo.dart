@@ -1,22 +1,21 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:get_storage/get_storage.dart';
-import 'package:uuid/uuid.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 
 class BookmarkedActivitiesRepo {
-  static const Uuid _uuid = Uuid();
-
   static final GetStorage _bookStorage = GetStorage('bookmarked_activities');
 
   /// save an activity to the list of bookmarked activities
   /// returns the activity with a bookmarkId
-  static Future<ActivityPlanModel> save(ActivityPlanModel activity) async {
-    activity.bookmarkId ??= _uuid.v4();
-
+  static Future<ActivityPlanModel> save(
+    ActivityPlanModel activity,
+    String bookmarkID,
+  ) async {
+    activity.bookmarkId = bookmarkID;
     await _bookStorage.write(
-      activity.bookmarkId!,
+      bookmarkID,
       activity.toJson(),
     );
 

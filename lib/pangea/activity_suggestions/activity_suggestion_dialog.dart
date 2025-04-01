@@ -3,14 +3,15 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
-import 'package:matrix/matrix_api_lite/generated/model.dart' as sdk;
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
@@ -21,11 +22,31 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/mxc_image.dart';
 
 class ActivitySuggestionDialog extends StatefulWidget {
   final ActivityPlanModel activity;
+  final String buttonText;
+  final Room? room;
+
+  final Function(
+    ActivityPlanModel,
+    Uint8List?,
+    String?,
+  )? onLaunch;
+
+  final Future<void> Function(
+    ActivityPlanModel,
+    Uint8List?,
+    String?,
+  )? onEdit;
+
   const ActivitySuggestionDialog({
     required this.activity,
+    required this.buttonText,
+    this.onLaunch,
+    this.onEdit,
+    this.room,
     super.key,
   });
 
@@ -36,9 +57,8 @@ class ActivitySuggestionDialog extends StatefulWidget {
 
 class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
   bool _isEditing = false;
-
   Uint8List? _avatar;
-  String? _avatarURL;
+  String? _filename;
 
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _instructionsController = TextEditingController();
@@ -62,6 +82,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
     _participantsController.text =
         widget.activity.req.numberOfParticipants.toString();
     _vocab.addAll(widget.activity.vocab);
+    _setAvatarByURL();
   }
 
   @override
@@ -86,20 +107,25 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
       allowMultiple: false,
     );
     final bytes = await photo.singleOrNull?.readAsBytes();
-    if (mounted) setState(() => _avatar = bytes);
+    if (mounted) {
+      setState(() {
+        _avatar = bytes;
+        _filename = photo.singleOrNull?.name;
+      });
+    }
   }
 
-  Future<void> _setAvatarURL() async {
-    if (widget.activity.imageURL == null && _avatar == null) return;
+  Future<void> _setAvatarByURL() async {
+    if (widget.activity.imageURL == null) return;
     try {
       if (_avatar == null) {
         final Response response =
             await http.get(Uri.parse(widget.activity.imageURL!));
         _avatar = response.bodyBytes;
+        _filename = Uri.encodeComponent(
+          Uri.parse(widget.activity.imageURL!).pathSegments.last,
+        );
       }
-      final resp = await Matrix.of(context).client.uploadContent(_avatar!);
-      if (mounted) setState(() => _avatarURL = resp.toString());
-      widget.activity.imageURL = _avatarURL;
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
@@ -113,7 +139,8 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
 
   void _clearEdits() {
     _avatar = null;
-    _avatarURL = null;
+    _filename = null;
+    _setAvatarByURL();
     _vocab.clear();
     _vocab.addAll(widget.activity.vocab);
     if (mounted) setState(() {});
@@ -145,47 +172,65 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
     if (mounted) setState(() {});
   }
 
-  Future<void> _launch() async {
+  Future<void> _launchActivity() async {
+    if (widget.room != null) {
+      await widget.room!.sendActivityPlan(
+        widget.activity,
+        avatar: _avatar,
+        filename: _filename,
+      );
+      context.go("/rooms/${widget.room!.id}/invite");
+      return;
+    }
+
     final client = Matrix.of(context).client;
-
-    final resp = await showFutureLoadingDialog(
-      context: context,
-      future: () async {
-        await _setAvatarURL();
-        final roomId = await client.createGroupChat(
-          preset: CreateRoomPreset.publicChat,
-          visibility: sdk.Visibility.private,
-          groupName: widget.activity.title,
-          initialState: [
-            if (_avatarURL != null)
-              StateEvent(
-                type: EventTypes.RoomAvatar,
-                content: {'url': _avatarURL.toString()},
-              ),
-            StateEvent(
-              type: EventTypes.RoomPowerLevels,
-              stateKey: '',
-              content: defaultPowerLevels(client.userID!),
-            ),
-          ],
-          enableEncryption: false,
-        );
-
-        Room? room = Matrix.of(context).client.getRoomById(roomId);
-        if (room == null) {
-          await client.waitForRoomInSync(roomId);
-          room = Matrix.of(context).client.getRoomById(roomId);
-          if (room == null) return;
-        }
-
-        await room.sendActivityPlan(widget.activity);
-        context.go("/rooms/$roomId/invite");
-      },
+    final roomId = await client.createGroupChat(
+      preset: CreateRoomPreset.publicChat,
+      visibility: sdk.Visibility.private,
+      groupName: widget.activity.title,
+      initialState: [
+        StateEvent(
+          type: EventTypes.RoomPowerLevels,
+          stateKey: '',
+          content: defaultPowerLevels(client.userID!),
+        ),
+      ],
+      enableEncryption: false,
     );
 
-    if (!resp.isError) {
-      Navigator.of(context).pop();
+    Room? room = Matrix.of(context).client.getRoomById(roomId);
+    if (room == null) {
+      await client.waitForRoomInSync(roomId);
+      room = Matrix.of(context).client.getRoomById(roomId);
+      if (room == null) return;
     }
+
+    await room.sendActivityPlan(
+      widget.activity,
+      avatar: _avatar,
+      filename: _filename,
+    );
+    context.go("/rooms/$roomId/invite");
+  }
+
+  Future<void> _saveEdits() async {
+    if (!_formKey.currentState!.validate()) return;
+    await _updateTextFields();
+    _setEditing(false);
+    if (widget.onEdit != null) {
+      await widget.onEdit!(
+        widget.activity,
+        _avatar,
+        _filename,
+      );
+    }
+  }
+
+  double get width {
+    if (FluffyThemes.isColumnMode(context)) {
+      return 400.0;
+    }
+    return MediaQuery.of(context).size.width;
   }
 
   @override
@@ -203,15 +248,31 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
               Container(
                 height: 200,
                 decoration: BoxDecoration(
-                  image: widget.activity.imageURL != null || _avatar != null
-                      ? DecorationImage(
-                          image: _avatar != null
-                              ? MemoryImage(_avatar!)
-                              : NetworkImage(widget.activity.imageURL!)
-                                  as ImageProvider<Object>,
-                        )
-                      : null,
                   borderRadius: BorderRadius.circular(24.0),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(24.0),
+                  child: _avatar != null
+                      ? Image.memory(_avatar!)
+                      : widget.activity.imageURL != null
+                          ? widget.activity.imageURL!.startsWith("mxc")
+                              ? MxcImage(
+                                  uri: Uri.parse(widget.activity.imageURL!),
+                                  width: width,
+                                  height: 200,
+                                  cacheKey: widget.activity.bookmarkId,
+                                )
+                              : CachedNetworkImage(
+                                  imageUrl: widget.activity.imageURL!,
+                                  placeholder: (context, url) => const Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                  errorWidget: (context, url, error) => Icon(
+                                    Icons.error,
+                                    color: theme.colorScheme.error,
+                                  ),
+                                )
+                          : null,
                 ),
               ),
               Flexible(
@@ -447,48 +508,72 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                   children: [
                     if (_isEditing)
                       GestureDetector(
-                        child: const Icon(Icons.save_outlined, size: 16.0),
-                        onTap: () {
-                          if (!_formKey.currentState!.validate()) {
-                            return;
-                          }
-                          _updateTextFields();
-                          _setEditing(false);
-                        },
-                      ),
-                    if (_isEditing)
-                      GestureDetector(
                         child: const Icon(Icons.close_outlined, size: 16.0),
                         onTap: () {
                           _clearEdits();
                           _setEditing(false);
                         },
                       ),
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (!_formKey.currentState!.validate()) {
-                            return;
-                          }
-                          _updateTextFields();
-                          _launch();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: Size.zero,
-                          padding: const EdgeInsets.all(6.0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12.0),
+                    if (_isEditing && widget.onEdit != null)
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: _saveEdits,
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size.zero,
+                            padding: const EdgeInsets.all(6.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            backgroundColor: theme.colorScheme.primary,
+                            foregroundColor: theme.colorScheme.onPrimary,
                           ),
-                          backgroundColor: theme.colorScheme.primary,
-                          foregroundColor: theme.colorScheme.onPrimary,
+                          child: Text(
+                            L10n.of(context).save,
+                            style: theme.textTheme.bodyLarge
+                                ?.copyWith(color: theme.colorScheme.onPrimary),
+                          ),
                         ),
-                        child: Text(
-                          L10n.of(context).inviteAndLaunch,
-                          style: theme.textTheme.bodyLarge
-                              ?.copyWith(color: theme.colorScheme.onPrimary),
+                      )
+                    else
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            if (!_formKey.currentState!.validate()) {
+                              return;
+                            }
+                            final resp = await showFutureLoadingDialog(
+                              context: context,
+                              future: () async {
+                                if (widget.onLaunch != null) {
+                                  return widget.onLaunch?.call(
+                                    widget.activity,
+                                    _avatar,
+                                    _filename,
+                                  );
+                                }
+                                return _launchActivity();
+                              },
+                            );
+
+                            if (resp.isError) return;
+                            Navigator.of(context).pop();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size.zero,
+                            padding: const EdgeInsets.all(6.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            backgroundColor: theme.colorScheme.primary,
+                            foregroundColor: theme.colorScheme.onPrimary,
+                          ),
+                          child: Text(
+                            widget.buttonText,
+                            style: theme.textTheme.bodyLarge
+                                ?.copyWith(color: theme.colorScheme.onPrimary),
+                          ),
                         ),
                       ),
-                    ),
                     if (!_isEditing)
                       IconButton.filled(
                         style: IconButton.styleFrom(
@@ -538,11 +623,9 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
       duration: FluffyThemes.animationDuration,
       child: ConstrainedBox(
         constraints: FluffyThemes.isColumnMode(context)
-            ? const BoxConstraints(
-                maxWidth: 400.0,
-              )
+            ? BoxConstraints(maxWidth: width)
             : BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
+                maxWidth: width,
                 maxHeight: MediaQuery.of(context).size.height,
               ),
         child: ClipRRect(

@@ -11,7 +11,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
@@ -103,7 +102,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     Future.wait([
       _centeredMessageCompleter.future,
-      _tooltipCompleter.future,
+      if (showToolbarButtons) _tooltipCompleter.future,
     ]).then((_) => _startAnimation());
   }
 
@@ -299,8 +298,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   static const _messageDefaultLeftMargin = Avatar.defaultSize + 16 + 8;
 
   double get _toolbarMaxWidth {
-    final double messageMargin =
-        widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
+    const double messageMargin = 16.0;
+    // widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
     final bool showingDetails = widget.chatController.displayChatDetailsColumn;
     final double totalMaxWidth = (FluffyThemes.columnWidth * 2.5) -
         (showingDetails ? FluffyThemes.columnWidth : 0) -
@@ -386,7 +385,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   bool get showToolbarButtons =>
       widget.pangeaMessageEvent != null &&
       widget.pangeaMessageEvent!.shouldShowToolbar &&
-      widget.pangeaMessageEvent!.event.messageType == MessageTypes.Text;
+      widget.pangeaMessageEvent!.event.messageType == MessageTypes.Text &&
+      widget.pangeaMessageEvent!.messageDisplayLangIsL2;
 
   bool get _hasReactions {
     final reactionsEvents = widget.event.aggregatedEvents(
@@ -406,6 +406,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     if (_messageRenderBox == null || _mediaQuery == null) {
       return const SizedBox.shrink();
     }
+
+    widget.overlayController.maxWidth = _toolbarMaxWidth;
 
     return Padding(
       padding: EdgeInsets.only(
@@ -438,13 +440,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                   messageWidth: null,
                   // messageHeight: _adjustedCenteredMessageSize?.height,
                   // messageWidth: _adjustedCenteredMessageSize?.width,
-                  maxWidth: _toolbarMaxWidth,
+                  maxWidth: widget.overlayController.maxWidth,
                   overlayController: widget.overlayController,
                   chatController: widget.chatController,
                   pangeaMessageEvent: widget.pangeaMessageEvent,
                   nextEvent: widget.nextEvent,
                   prevEvent: widget.prevEvent,
-                  showToolbarButtons: showToolbarButtons,
                   hasReactions: _hasReactions,
                   onChangeMessageSize: _setCenteredMessageSize,
                   isTransitionAnimation: false,
@@ -471,6 +472,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                           child: OverlayFooter(
                             controller: widget.chatController,
                             overlayController: widget.overlayController,
+                            showToolbarButtons: showToolbarButtons,
                           ),
                         ),
                         SizedBox(height: _mediaQuery?.padding.bottom ?? 0),
@@ -504,13 +506,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                     event: widget.event,
                     messageHeight: _originalMessageHeight,
                     messageWidth: _messageSize.width,
-                    maxWidth: _toolbarMaxWidth,
+                    maxWidth: widget.overlayController.maxWidth,
                     overlayController: widget.overlayController,
                     chatController: widget.chatController,
                     pangeaMessageEvent: widget.pangeaMessageEvent,
                     nextEvent: widget.nextEvent,
                     prevEvent: widget.prevEvent,
-                    showToolbarButtons: showToolbarButtons,
                     hasReactions: _hasReactions,
                     sizeAnimation: _messageSizeAnimation,
                     isTransitionAnimation: true,
@@ -523,28 +524,31 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                 );
               },
             ),
-          Positioned(
-            top: 0,
-            child: MeasureRenderBox(
-              onChange: _setTooltipSize,
-              child: Opacity(
-                opacity: 0.0,
-                child: Container(
-                  constraints: const BoxConstraints(
-                    minWidth: 200.0,
-                    maxWidth: 400.0,
-                  ),
-                  child: InstructionsInlineTooltip(
-                    instructionsEnum:
-                        widget.overlayController.toolbarMode.instructionsEnum ??
+          if (showToolbarButtons)
+            Positioned(
+              top: 0,
+              child: IgnorePointer(
+                child: MeasureRenderBox(
+                  onChange: _setTooltipSize,
+                  child: Opacity(
+                    opacity: 0.0,
+                    child: Container(
+                      constraints: BoxConstraints(
+                        minWidth: 200.0,
+                        maxWidth: _toolbarMaxWidth,
+                      ),
+                      child: InstructionsInlineTooltip(
+                        instructionsEnum: widget.overlayController.toolbarMode
+                                .instructionsEnum ??
                             InstructionsEnum.readingAssistanceOverview,
-                    bold: true,
+                        bold: true,
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          if (_centeredMessageTopOffset != null && _finishedAnimation)
+          if (_centeredMessageTopOffset != null && _tooltipSize != null)
             Positioned(
               top: max(
                 ((_headerHeight + _centeredMessageTopOffset!) / 2) -
@@ -554,7 +558,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
               child: Container(
                 constraints: BoxConstraints(
                   minWidth: 200.0,
-                  maxWidth: _toolbarMaxWidth,
+                  maxWidth: widget.overlayController.maxWidth,
                 ),
                 child: InstructionsInlineTooltip(
                   instructionsEnum:

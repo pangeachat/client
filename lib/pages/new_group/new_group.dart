@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/new_group/new_group_view.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -36,6 +37,13 @@ class NewGroupController extends State<NewGroup> {
   TextEditingController nameController = TextEditingController();
 
   // #Pangea
+  ActivityPlanModel? selectedActivity;
+  Uint8List? selectedActivityImage;
+  String? selectedActivityImageFilename;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final FocusNode focusNode = FocusNode();
+
   bool requiredCodeToJoin = false;
   // bool publicGroup = false;
   // Pangea#
@@ -61,6 +69,35 @@ class NewGroupController extends State<NewGroup> {
   // void setPublicGroup(bool b) =>
   //     setState(() => publicGroup = groupCanBeFound = b);
   void setRequireCode(bool b) => setState(() => requiredCodeToJoin = b);
+
+  void setSelectedActivity(
+    ActivityPlanModel? activity,
+    Uint8List? image,
+    String? imageFilename,
+  ) {
+    setState(() {
+      selectedActivity = activity;
+      selectedActivityImage = image;
+      selectedActivityImageFilename = imageFilename;
+      if (avatar == null) {
+        avatar = image;
+        avatarUrl = null;
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    nameController.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
   // Pangea#
 
   void setGroupCanBeFound(bool b) => setState(() => groupCanBeFound = b);
@@ -113,6 +150,19 @@ class NewGroupController extends State<NewGroup> {
         );
     if (!mounted) return;
     // #Pangea
+    if (selectedActivity != null) {
+      Room? room = Matrix.of(context).client.getRoomById(roomId);
+      if (room == null) {
+        await Matrix.of(context).client.waitForRoomInSync(roomId);
+        room = Matrix.of(context).client.getRoomById(roomId);
+      }
+      if (room == null) return;
+      await room.sendActivityPlan(
+        selectedActivity!,
+        avatar: selectedActivityImage,
+        filename: selectedActivityImageFilename,
+      );
+    }
     // if a timeout happened, don't redirect to the chat
     if (error != null) return;
     // Pangea#
@@ -216,6 +266,13 @@ class NewGroupController extends State<NewGroup> {
     final client = Matrix.of(context).client;
 
     try {
+      // #Pangea
+      if (!formKey.currentState!.validate()) {
+        focusNode.requestFocus();
+        return;
+      }
+      // Pangea#
+
       if (nameController.text.trim().isEmpty &&
           createGroupType == CreateGroupType.space) {
         setState(() => error = L10n.of(context).pleaseFillOut);

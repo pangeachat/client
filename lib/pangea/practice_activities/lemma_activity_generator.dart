@@ -28,9 +28,8 @@ class LemmaActivityGenerator {
       activity: PracticeActivityModel(
         activityType: ActivityTypeEnum.lemmaId,
         targetTokens: [token],
-        tgtConstructs: [token.vocabConstructID],
         langCode: req.userL2,
-        content: ActivityContent(
+        multipleChoiceContent: MultipleChoiceActivity(
           question: L10n.of(context).chooseBaseForm,
           choices: choices,
           answers: [token.lemma.text],

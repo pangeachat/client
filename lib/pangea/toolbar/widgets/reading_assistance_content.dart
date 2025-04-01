@@ -49,25 +49,22 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
       );
     }
 
-    if (widget.overlayController.messageAnalyticsEntry?.hasHiddenWordActivity ??
+    if (widget.overlayController.practiceSelection?.hasHiddenWordActivity ??
         false) {
       return PracticeActivityCard(
         pangeaMessageEvent: widget.pangeaMessageEvent,
         overlayController: widget.overlayController,
-        targetTokensAndActivityType: widget
-            .overlayController.messageAnalyticsEntry!
+        targetTokensAndActivityType: widget.overlayController.practiceSelection!
             .nextActivity(ActivityTypeEnum.hiddenWordListening)!,
       );
     }
 
-    if (widget.overlayController.messageAnalyticsEntry
-            ?.hasMessageMeaningActivity ??
+    if (widget.overlayController.practiceSelection?.hasMessageMeaningActivity ??
         false) {
       return PracticeActivityCard(
         pangeaMessageEvent: widget.pangeaMessageEvent,
         overlayController: widget.overlayController,
-        targetTokensAndActivityType: widget
-            .overlayController.messageAnalyticsEntry!
+        targetTokensAndActivityType: widget.overlayController.practiceSelection!
             .nextActivity(ActivityTypeEnum.messageMeaning)!,
       );
     }

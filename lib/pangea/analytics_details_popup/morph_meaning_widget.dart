@@ -8,10 +8,11 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_repo.dart';
 
 class MorphMeaningWidget extends StatefulWidget {
-  final String feature;
+  final MorphFeaturesEnum feature;
   final String tag;
   final TextStyle? style;
   final InlineSpan? leading;
@@ -66,9 +67,7 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
     } catch (e) {
       _error = e.toString();
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
@@ -150,12 +149,16 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
               onLongPress: () => _toggleEditMode(true),
               onDoubleTap: () => _toggleEditMode(true),
               child: RichText(
+                textAlign:
+                    widget.leading == null ? TextAlign.center : TextAlign.start,
                 text: TextSpan(
                   style: widget.style,
                   children: [
                     if (widget.leading != null) widget.leading!,
                     if (widget.leading != null) const TextSpan(text: '  '),
-                    TextSpan(text: _cachedResponse!),
+                    TextSpan(
+                      text: _cachedResponse ?? L10n.of(context).meaningNotFound,
+                    ),
                   ],
                 ),
               ),
@@ -168,7 +171,7 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
 }
 
 class MorphEditView extends StatelessWidget {
-  final String morphFeature;
+  final MorphFeaturesEnum morphFeature;
   final String morphTag;
   final String meaning;
   final TextEditingController controller;
@@ -193,7 +196,7 @@ class MorphEditView extends StatelessWidget {
         Text(
           "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(
             getGrammarCopy(
-                  category: morphFeature,
+                  category: morphFeature.name,
                   lemma: morphTag,
                   context: context,
                 ) ??

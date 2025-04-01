@@ -29,10 +29,10 @@ class MorphAnalyticsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        // spacing: 16.0,
+        spacing: 16.0,
         children: [
           // Add your text widget here
           const InstructionsInlineTooltip(
@@ -84,7 +84,6 @@ class MorphFeatureBox extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(16.0),
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),
         border: Border.all(
@@ -144,9 +143,7 @@ class MorphFeatureBox extends StatelessWidget {
                             morphFeature: morphFeature,
                             morphTag: morphTag,
                             constructAnalytics: analytics,
-                            onTap: analytics.points > 10
-                                ? () => onConstructZoom(id)
-                                : null,
+                            onTap: () => onConstructZoom(id),
                           );
                         },
                       )
@@ -185,7 +182,7 @@ class MorphTagChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final unlocked = constructAnalytics.points > 10;
+    final unlocked = constructAnalytics.points > 0;
 
     return InkWell(
       borderRadius: BorderRadius.circular(AppConfig.borderRadius),

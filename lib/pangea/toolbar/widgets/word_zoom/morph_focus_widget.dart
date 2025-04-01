@@ -28,7 +28,7 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class MorphFocusWidget extends StatefulWidget {
   final PangeaToken token;
-  final String morphFeature;
+  final MorphFeaturesEnum morphFeature;
   final PangeaMessageEvent pangeaMessageEvent;
   final MessageOverlayController overlayController;
 
@@ -53,27 +53,33 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
   /// the morphological tag that the user has selected in edit mode
   String selectedMorphTag = "";
 
+  List<String> morphFeatures = [];
+
   final ScrollController _scrollController = ScrollController();
 
-  void resetMorphTag() => setState(
-        () => selectedMorphTag =
-            widget.token.getMorphTag(widget.morphFeature) ?? "X",
-      );
-
-  @override
-  void didUpdateWidget(MorphFocusWidget oldWidget) {
-    if (widget.token != oldWidget.token ||
-        widget.morphFeature != oldWidget.morphFeature) {
-      resetMorphTag();
-      setState(() => editMode = false);
-    }
-    super.didUpdateWidget(oldWidget);
+  void resetMorphTag() {
+    setState(
+      () => selectedMorphTag =
+          widget.token.getMorphTag(widget.morphFeature) ?? "X",
+    );
   }
 
   @override
   void initState() {
     super.initState();
     resetMorphTag();
+    _setAvailableMorphs();
+  }
+
+  @override
+  void didUpdateWidget(MorphFocusWidget oldWidget) {
+    if (widget.token != oldWidget.token ||
+        widget.morphFeature != oldWidget.morphFeature) {
+      resetMorphTag();
+      _setAvailableMorphs();
+      setState(() => editMode = false);
+    }
+    super.didUpdateWidget(oldWidget);
   }
 
   @override
@@ -89,6 +95,21 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
   }
 
   PangeaMessageEvent get pm => widget.pangeaMessageEvent;
+
+  Future<void> _setAvailableMorphs() async {
+    try {
+      final resp = await MorphsRepo.get();
+      morphFeatures = resp.getDisplayTags(
+        widget.morphFeature.name,
+      );
+    } catch (e) {
+      morphFeatures = defaultMorphMapping.getDisplayTags(
+        widget.morphFeature.name,
+      );
+    } finally {
+      if (mounted) setState(() {});
+    }
+  }
 
   /// confirm the changes made by the user
   /// this will send a new message to the server
@@ -160,7 +181,7 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
     return ConstructIdentifier(
       lemma: selectedMorphTag,
       type: ConstructTypeEnum.morph,
-      category: widget.morphFeature,
+      category: widget.morphFeature.name,
     );
   }
 
@@ -187,9 +208,7 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
                     onLongPress: enterEditMode,
                     onDoubleTap: enterEditMode,
                     child: MorphTagDisplay(
-                      morphFeature: MorphFeaturesEnumExtension.fromString(
-                        widget.morphFeature,
-                      ),
+                      morphFeature: widget.morphFeature,
                       morphTag: widget.token.getMorphTag(widget.morphFeature) ??
                           L10n.of(context).nan,
                       textColor: Theme.of(context).brightness ==
@@ -232,73 +251,63 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
             textAlign: TextAlign.center,
             style: const TextStyle(fontStyle: FontStyle.italic),
           ),
-          FutureBuilder(
-            future: MorphsRepo.get(),
-            builder: (context, snapshot) {
-              final allMorphTagsForEdit =
-                  snapshot.data?.getDisplayTags(widget.morphFeature) ??
-                      defaultMorphMapping.getDisplayTags(widget.morphFeature);
-
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              }
-
-              return Wrap(
-                children: allMorphTagsForEdit.map((tag) {
-                  return Container(
-                    margin: const EdgeInsets.all(2),
-                    padding: EdgeInsets.zero,
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(10),
+          if (morphFeatures.isEmpty)
+            const CircularProgressIndicator()
+          else
+            Wrap(
+              children: morphFeatures.map((tag) {
+                return Container(
+                  margin: const EdgeInsets.all(2),
+                  padding: EdgeInsets.zero,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    border: Border.all(
+                      color: selectedMorphTag == tag
+                          ? Theme.of(context).colorScheme.primary
+                          : Colors.transparent,
+                      style: BorderStyle.solid,
+                      width: 2.0,
+                    ),
+                  ),
+                  child: TextButton(
+                    style: ButtonStyle(
+                      padding: WidgetStateProperty.all(
+                        const EdgeInsets.symmetric(
+                          horizontal: 7,
+                        ),
                       ),
-                      border: Border.all(
-                        color: selectedMorphTag == tag
-                            ? Theme.of(context).colorScheme.primary
+                      backgroundColor: WidgetStateProperty.all<Color>(
+                        selectedMorphTag == tag
+                            ? Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withAlpha(50)
                             : Colors.transparent,
-                        style: BorderStyle.solid,
-                        width: 2.0,
+                      ),
+                      shape: WidgetStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
                       ),
                     ),
-                    child: TextButton(
-                      style: ButtonStyle(
-                        padding: WidgetStateProperty.all(
-                          const EdgeInsets.symmetric(
-                            horizontal: 7,
-                          ),
-                        ),
-                        backgroundColor: WidgetStateProperty.all<Color>(
-                          selectedMorphTag == tag
-                              ? Theme.of(context)
-                                  .colorScheme
-                                  .primary
-                                  .withAlpha(50)
-                              : Colors.transparent,
-                        ),
-                        shape: WidgetStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        setState(() => selectedMorphTag = tag);
-                      },
-                      child: Text(
-                        getGrammarCopy(
-                              category: widget.morphFeature,
-                              lemma: tag,
-                              context: context,
-                            ) ??
-                            tag,
-                        textAlign: TextAlign.center,
-                      ),
+                    onPressed: () {
+                      setState(() => selectedMorphTag = tag);
+                    },
+                    child: Text(
+                      getGrammarCopy(
+                            category: widget.morphFeature.name,
+                            lemma: tag,
+                            context: context,
+                          ) ??
+                          tag,
+                      textAlign: TextAlign.center,
                     ),
-                  );
-                }).toList(),
-              );
-            },
-          ),
+                  ),
+                );
+              }).toList(),
+            ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             spacing: 10,
@@ -324,22 +333,23 @@ class MorphFocusWidgetState extends State<MorphFocusWidget> {
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                 ),
-                onPressed: selectedMorphTag ==
-                        widget.token.morph[widget.morphFeature]
-                    ? null
-                    : () => showFutureLoadingDialog(
-                          context: context,
-                          future: () => saveChanges(
-                            (token) {
-                              token.morph[widget.morphFeature] =
-                                  selectedMorphTag;
-                              if (widget.morphFeature.toLowerCase() == 'pos') {
-                                token.pos = selectedMorphTag;
-                              }
-                              return token;
-                            },
-                          ),
-                        ),
+                onPressed:
+                    selectedMorphTag == widget.token.morph[widget.morphFeature]
+                        ? null
+                        : () => showFutureLoadingDialog(
+                              context: context,
+                              future: () => saveChanges(
+                                (token) {
+                                  token.morph[widget.morphFeature] =
+                                      selectedMorphTag;
+                                  if (widget.morphFeature.name.toLowerCase() ==
+                                      'pos') {
+                                    token.pos = selectedMorphTag;
+                                  }
+                                  return token;
+                                },
+                              ),
+                            ),
                 child: Text(L10n.of(context).saveChanges),
               ),
             ],
