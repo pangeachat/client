@@ -2817,24 +2817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$kickBotWarning() {
       return "\u0110\xe1 Pangea Bot s\u1ebd x\xf3a bot h\u1ed9i tho\u1ea1i kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y.";
     },
-    get$conversationBotModeSelectDescription() {
-      return "Ho\u1ea1t \u0111\u1ed9ng tr\xf2 chuy\u1ec7n";
-    },
-    get$conversationBotModeSelectOption_discussion() {
-      return "Th\u1ea3o lu\u1eadn";
-    },
-    get$conversationBotModeSelectOption_custom() {
-      return "T\xf9y ch\u1ec9nh";
-    },
-    get$conversationBotDiscussionZone_discussionTopicPlaceholder() {
-      return "\u0110\u1eb7t ch\u1ee7 \u0111\u1ec1 th\u1ea3o lu\u1eadn";
-    },
-    get$conversationBotDiscussionZone_discussionKeywordsPlaceholder() {
-      return "\u0110\u1eb7t t\u1eeb kh\xf3a th\u1ea3o lu\u1eadn";
-    },
-    get$conversationBotCustomZone_customSystemPromptPlaceholder() {
-      return "Nh\u1eadp prompt h\u1ec7 th\u1ed1ng t\xf9y ch\u1ec9nh";
-    },
     get$botConfig() {
       return "C\u1ea5u h\xecnh bot v\xe0 ho\u1ea1t \u0111\u1ed9ng";
     },
@@ -3765,26 +3747,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVOICErcp() {
       return "Th\u1ec3 t\u01b0\u01a1ng h\u1ed7";
     },
-    get$enterPrompt() {
-      return "Vui l\xf2ng nh\u1eadp l\u1eddi g\u1ee3i \xfd (prompt)";
-    },
     get$enterLanguageLevel() {
       return "Vui l\xf2ng nh\u1eadp tr\xecnh \u0111\u1ed9 ng\xf4n ng\u1eef";
-    },
-    get$enterDiscussionTopic() {
-      return "Vui l\xf2ng nh\u1eadp ch\u1ee7 \u0111\u1ec1 th\u1ea3o lu\u1eadn";
-    },
-    get$selectBotChatMode() {
-      return "Ch\u1ecdn ch\u1ebf \u0111\u1ed9 tr\xf2 chuy\u1ec7n c\u1ee7a bot";
     },
     get$other() {
       return "Kh\xe1c";
     },
     levelShort$1(level) {
       return "LVL " + level;
-    },
-    get$botModeValidation() {
-      return "Vui l\xf2ng ch\u1ecdn m\u1ed9t ch\u1ebf \u0111\u1ed9 tr\xf2 chuy\u1ec7n";
     },
     get$clickBestOption() {
       return "Ch\u1ecdn ph\u01b0\u01a1ng \xe1n t\u1ed1t nh\u1ea5t \u0111\u1ec3 d\u1ecbch tin nh\u1eafn c\u1ee7a b\u1ea1n!";
@@ -4407,6 +4377,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+hKEyx5jfj2+MtJSAv/hn/7dXzQ=");
+})($__dart_deferred_initializers__, "BtDWUfSdZ9ls76casBmHGtLA+r8=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map

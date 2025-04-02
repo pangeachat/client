@@ -2817,24 +2817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$kickBotWarning() {
       return "Patear Pangea Bot eliminar\xe1 el bot de conversaci\xf3n de este chat.";
     },
-    get$conversationBotModeSelectDescription() {
-      return "Modo bot";
-    },
-    get$conversationBotModeSelectOption_discussion() {
-      return "Debate";
-    },
-    get$conversationBotModeSelectOption_custom() {
-      return "A medida";
-    },
-    get$conversationBotDiscussionZone_discussionTopicPlaceholder() {
-      return "Establecer tema de debate";
-    },
-    get$conversationBotDiscussionZone_discussionKeywordsPlaceholder() {
-      return "Establecer palabras clave de debate";
-    },
-    get$conversationBotCustomZone_customSystemPromptPlaceholder() {
-      return "Establecer mensaje del sistema personalizado";
-    },
     get$botConfig() {
       return "Configuraci\xf3n de bots y actividades";
     },
@@ -3765,26 +3747,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVOICErcp() {
       return "Reciprocal";
     },
-    get$enterPrompt() {
-      return "Introduzca un mensaje del sistema";
-    },
     get$enterLanguageLevel() {
       return "Introduzca un nivel de idioma";
-    },
-    get$enterDiscussionTopic() {
-      return "Introduzca un tema de debate";
-    },
-    get$selectBotChatMode() {
-      return "Selecciona el modo de chat";
     },
     get$other() {
       return "Otros";
     },
     levelShort$1(level) {
       return "NIV " + level;
-    },
-    get$botModeValidation() {
-      return "Seleccione un modo de chat";
     },
     get$clickBestOption() {
       return "Elija las mejores opciones para traducir su mensaje";
@@ -4407,6 +4377,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "AzyuEnfnKxZo+OZ3+1Q6nefo5Xo=");
+})($__dart_deferred_initializers__, "2YIjIrnjjlpi4krIGZt4B4rycR8=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

@@ -2817,24 +2817,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$kickBotWarning() {
       return "Kicking Pangea Bot will remove the conversation bot from this chat.";
     },
-    get$conversationBotModeSelectDescription() {
-      return "Chat activity";
-    },
-    get$conversationBotModeSelectOption_discussion() {
-      return "Discussion";
-    },
-    get$conversationBotModeSelectOption_custom() {
-      return "Custom";
-    },
-    get$conversationBotDiscussionZone_discussionTopicPlaceholder() {
-      return "Set discussion topic";
-    },
-    get$conversationBotDiscussionZone_discussionKeywordsPlaceholder() {
-      return "Set discussion keywords";
-    },
-    get$conversationBotCustomZone_customSystemPromptPlaceholder() {
-      return "Set custom system prompt";
-    },
     get$botConfig() {
       return "Bot and activity settings";
     },
@@ -3765,26 +3747,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVOICErcp() {
       return "Reciprocal";
     },
-    get$enterPrompt() {
-      return "Please enter a system prompt";
-    },
     get$enterLanguageLevel() {
       return "Please enter a language level";
-    },
-    get$enterDiscussionTopic() {
-      return "Please enter a discussion topic";
-    },
-    get$selectBotChatMode() {
-      return "Select chat mode";
     },
     get$other() {
       return "Other";
     },
     levelShort$1(level) {
       return "LVL " + level;
-    },
-    get$botModeValidation() {
-      return "Please select a chat mode";
     },
     get$clickBestOption() {
       return "Choose the best options to translate your message!";
@@ -4407,6 +4377,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_244", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "P2+aap6oBYagNPUkCBsYfmSekuY=");
+})($__dart_deferred_initializers__, "os39GCp3s8p/X8DaBdBQ6L4/KCs=");
 ;
 //# sourceMappingURL=main.dart.js_244.part.js.map
