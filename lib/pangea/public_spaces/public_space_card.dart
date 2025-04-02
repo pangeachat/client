@@ -56,19 +56,19 @@ class PublicSpaceCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
-                  height: height - 16.0,
-                  width: height - 16.0,
+                  height: height,
+                  width: height,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24.0),
                   ),
-                  margin: const EdgeInsets.all(8.0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24.0),
                     child: space.avatarUrl != null
                         ? MxcImage(
                             uri: space.avatarUrl!,
-                            width: width - 16.0,
-                            height: width - 16.0,
+                            width: width,
+                            height: width,
+                            fit: BoxFit.cover,
                           )
                         : const SizedBox(),
                   ),
@@ -134,7 +134,7 @@ class PublicSpaceCard extends StatelessWidget {
                               style: theme.textTheme.bodySmall,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.start,
-                              maxLines: 4,
+                              maxLines: 5,
                             ),
                           ),
                       ],
