@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'it_step.dart';
 
 /// this class lives within a [PangeaIGCEvent]
@@ -16,9 +17,9 @@ class ChoreoRecord {
   /// there is not a 1-to-1 map from steps to matches
   List<ChoreoRecordStep> choreoSteps;
 
-  // String current;
-
   List<PangeaMatch> openMatches;
+
+  final Set<PangeaToken> pastedTokens = {};
 
   ChoreoRecord({
     required this.choreoSteps,

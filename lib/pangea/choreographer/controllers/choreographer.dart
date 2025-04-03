@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/repo/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/utils/input_paste_listener.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
@@ -66,11 +67,7 @@ class Choreographer {
   _initialize() {
     tts = TtsController(chatController: chatController);
     _textController = PangeaTextController(choreographer: this);
-    InputPasteListener(
-      _textController,
-      // TODO, do something on paste
-      () => debugPrint("on paste"),
-    );
+    InputPasteListener(_textController, onPaste);
     itController = ITController(this);
     igc = IgcController(this);
     errorService = ErrorService(this);
@@ -569,6 +566,24 @@ class Choreographer {
 
     setState();
     giveInputFocus();
+  }
+
+  Future<void> onPaste(value) async {
+    final IGCRequestBody reqBody = IGCRequestBody(
+      fullText: value,
+      userId: pangeaController.userController.userId!,
+      userL1: l1LangCode!,
+      userL2: l2LangCode!,
+      enableIGC: igcEnabled,
+      enableIT: itEnabled,
+      prevMessages: [],
+    );
+    final resp = await IgcRepo.getIGC(
+      accessToken,
+      igcRequest: reqBody,
+    );
+    final tokens = resp.tokens.where((t) => t.lemma.saveVocab).toList();
+    choreoRecord.pastedTokens.addAll(tokens);
   }
 
   dispose() {
