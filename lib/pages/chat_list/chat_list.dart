@@ -485,6 +485,17 @@ class ChatListController extends State<ChatList>
 
   @override
   void initState() {
+    // #Pangea
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final params = GoRouterState.of(context).uri.queryParameters;
+      if (!params.containsKey("filter") || params['filter'] != 'groups') return;
+      setActiveFilter(
+        AppConfig.separateChatTypes
+            ? ActiveFilter.groups
+            : ActiveFilter.allChats,
+      );
+    });
+    // Pangea#
     _initReceiveSharingIntent();
 
     scrollController.addListener(_onScroll);
