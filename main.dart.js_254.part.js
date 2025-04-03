@@ -4362,6 +4362,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$emptyChatWarningTitle() {
+      return "Chat is empty";
+    },
+    get$emptyChatWarningDesc() {
+      return "You haven't invited anyone to your chat. Go to Chat settings to invite your contacts or the Bot. You can also do this later.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4377,6 +4383,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_254", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "SSXMkDkS2FXW4XRaYSJ4boVxpXI=");
+})($__dart_deferred_initializers__, "c9liQyv6NoW2JFu5b6RMfZemJ0M=");
 ;
 //# sourceMappingURL=main.dart.js_254.part.js.map
