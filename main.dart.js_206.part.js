@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " liitus vestlusega";
     },
-    get$joinRoom() {
-      return "Liitu jututoaga";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " m\xfcksas kasutaja " + targetName + " v\xe4lja";
     },
@@ -1071,9 +1068,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + " soovib liituda vestlusega.";
     },
-    get$knock() {
-      return "Koputa uksele";
-    },
     get$users() {
       return "Kasutajad";
     },
@@ -1205,9 +1199,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Loo uus aadress";
-    },
-    get$joinSpace() {
-      return "Liitu kogukonnaga";
     },
     get$publicSpaces() {
       return "Avalikud kogukonnad";
@@ -3795,12 +3786,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4362,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4383,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_206", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "cB0W8QAuFpwQY7ycMD5O0KZWAtE=");
+})($__dart_deferred_initializers__, "eaVYuOW5O+Q53Mhu8v6eobpNd8E=");
 ;
 //# sourceMappingURL=main.dart.js_206.part.js.map

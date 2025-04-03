@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u0628\u0647 \u06af\u067e \u067e\u06cc\u0648\u0633\u062a";
     },
-    get$joinRoom() {
-      return "\u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u0627\u062a\u0627\u0642";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " " + targetName + " \u0631\u0627 \u0628\u06cc\u0631\u0648\u0646 \u06a9\u0631\u062f";
     },
@@ -1071,9 +1068,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + " would like to join the chat.";
     },
-    get$knock() {
-      return "Knock";
-    },
     get$users() {
       return "\u06a9\u0627\u0631\u0628\u0631\u0647\u0627";
     },
@@ -1205,9 +1199,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
     },
     get$publicSpaces() {
       return "Public spaces";
@@ -3795,12 +3786,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4362,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4386,6 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_210", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "TgHVj4DrugArND4OBzz0+HkLyA0=");
+})($__dart_deferred_initializers__, "LOkDa+Blep7+p7agLbn94dGH3NU=");
 ;
 //# sourceMappingURL=main.dart.js_210.part.js.map

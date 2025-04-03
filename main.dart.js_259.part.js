@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
     },
-    get$joinRoom() {
-      return "\u0b85\u0bb1\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " " + targetName + " \u0b90 \u0b89\u0ba4\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
     },
@@ -1071,9 +1068,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + " \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bbe\u0bb0\u0bcd.";
     },
-    get$knock() {
-      return "\u0ba4\u0b9f\u0bcd\u0b9f\u0bb5\u0bc1\u0bae\u0bcd";
-    },
     get$users() {
       return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
     },
@@ -1205,9 +1199,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf\u0baf\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
-    },
-    get$joinSpace() {
-      return "\u0bb5\u0bbf\u0ba3\u0bcd\u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
     },
     get$publicSpaces() {
       return "\u0baa\u0bca\u0ba4\u0bc1 \u0b87\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
@@ -3795,12 +3786,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4362,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4386,6 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "i9m/PW698gD1dE2Ty2kQoUdDTWs=");
+})($__dart_deferred_initializers__, "Tvcoc1jaNnFXRDMjcG96fuptCY8=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map

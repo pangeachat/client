@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u304c\u30c1\u30e3\u30c3\u30c8\u306b\u53c2\u52a0\u3057\u307e\u3057\u305f";
     },
-    get$joinRoom() {
-      return "\u90e8\u5c4b\u306b\u53c2\u52a0";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u306f " + targetName + " \u3092\u30ad\u30c3\u30af\u3057\u307e\u3057\u305f";
     },
@@ -1071,9 +1068,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + " would like to join the chat.";
     },
-    get$knock() {
-      return "Knock";
-    },
     get$users() {
       return "\u30e6\u30fc\u30b6\u30fc";
     },
@@ -1205,9 +1199,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
     },
     get$publicSpaces() {
       return "Public spaces";
@@ -3795,12 +3786,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4362,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4383,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_240", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "2g6+f6gVCW+ehkFIbTA/cNKwGLs=");
+})($__dart_deferred_initializers__, "B/B7+Eruby8nvRB9JzknqC0SEp8=");
 ;
 //# sourceMappingURL=main.dart.js_240.part.js.map

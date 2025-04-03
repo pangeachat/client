@@ -568,9 +568,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " joined the chat";
     },
-    get$joinRoom() {
-      return "Join room";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " kicked " + targetName;
     },
@@ -1084,9 +1081,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + " would like to join the chat.";
     },
-    get$knock() {
-      return "Knock";
-    },
     get$users() {
       return "Utilizadores";
     },
@@ -1218,9 +1212,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
     },
     get$publicSpaces() {
       return "Public spaces";
@@ -3808,12 +3799,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4375,6 +4360,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4896,9 +4884,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " entrou na conversa";
     },
-    get$joinRoom() {
-      return "Entrar na sala";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " enxotou " + targetName;
     },
@@ -5406,9 +5391,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + " gostaria de entrar no chat.";
     },
-    get$knock() {
-      return "Bater na porta";
-    },
     get$users() {
       return "Usu\xe1rios";
     },
@@ -5540,9 +5522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Criar um novo endere\xe7o";
-    },
-    get$joinSpace() {
-      return "Ingressar no espa\xe7o";
     },
     get$publicSpaces() {
       return "Espa\xe7os p\xfablicos";
@@ -6041,9 +6020,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return username + " entrou na conversa";
     },
-    get$joinRoom() {
-      return "Entrar na sala";
-    },
     kicked$2(username, targetName) {
       return username + " expulsou " + targetName;
     },
@@ -6304,6 +6280,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "NCQFUvDZziEtkbwh4O213M5n7/o=");
+})($__dart_deferred_initializers__, "Dp0HztCcsZY5qxV5Kf7JPwlT3/w=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map

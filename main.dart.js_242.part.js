@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + "\ub2d8\uc774 \ucc44\ud305\uc5d0 \ucc38\uac00\ud568";
     },
-    get$joinRoom() {
-      return "\ubc29 \ucc38\uac00\ud558\uae30";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc744 \ucd94\ubc29\ud568";
     },
@@ -1071,9 +1068,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + "\ub2d8\uc774 \ucc38\uac00\ub97c \ud76c\ub9dd\ud569\ub2c8\ub2e4.";
     },
-    get$knock() {
-      return "\ucc38\uac00 \uc694\uccad";
-    },
     get$users() {
       return "\uc720\uc800";
     },
@@ -1205,9 +1199,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "\uc0c8 \uc8fc\uc18c \ub9cc\ub4e4\uae30";
-    },
-    get$joinSpace() {
-      return "\uc2a4\ud398\uc774\uc2a4 \ucc38\uac00";
     },
     get$publicSpaces() {
       return "\uacf5\uac1c \uc2a4\ud398\uc774\uc2a4\ub4e4";
@@ -3795,12 +3786,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4362,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4383,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_242", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "5AEU1J6gXkQTuNZhuhdkPyTcmRk=");
+})($__dart_deferred_initializers__, "/KEGgqb7fk5XutQkGLX4rRHtppY=");
 ;
 //# sourceMappingURL=main.dart.js_242.part.js.map

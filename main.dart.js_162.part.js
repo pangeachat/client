@@ -556,9 +556,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b \u0627\u0646\u0636\u0645 " + username + " \u0625\u0644\u0649 \u0627\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
     },
-    get$joinRoom() {
-      return "\u0627\u0646\u0636\u0645 \u0644\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u0631\u0643\u0644 " + targetName;
     },
@@ -1072,9 +1069,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + " \u064a\u0631\u063a\u0628 \u0641\u064a \u0627\u0644\u0627\u0646\u0636\u0645\u0627\u0645 \u0625\u0644\u0649 \u0627\u0644\u0645\u062d\u0627\u062f\u062b\u0629.";
     },
-    get$knock() {
-      return "\u062f\u0642";
-    },
     get$users() {
       return "\u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645\u0648\u0646";
     },
@@ -1206,9 +1200,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "\u0625\u0646\u0634\u0627\u0621 \u0639\u0646\u0648\u0627\u0646 \u062c\u062f\u064a\u062f";
-    },
-    get$joinSpace() {
-      return "\u0627\u0646\u0636\u0645 \u0625\u0644\u0649 \u0627\u0644\u0645\u0633\u0627\u062d\u0629";
     },
     get$publicSpaces() {
       return "\u0645\u0633\u0627\u062d\u0629 \u0639\u0627\u0645\u0629";
@@ -3796,12 +3787,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4363,6 +4348,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4384,6 +4372,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_162", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "SCK8C6XROQnIiI4mmoO/7czHuuM=");
+})($__dart_deferred_initializers__, "pSe7VLzR+VpsLtjs/7AB+aJ1Hco=");
 ;
 //# sourceMappingURL=main.dart.js_162.part.js.map

@@ -556,9 +556,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return username + " ali\u011dis al la babilo";
     },
-    get$joinRoom() {
-      return "Ali\u011di al \u0109ambro";
-    },
     kicked$2(username, targetName) {
       return username + " forpelis uzanton " + targetName;
     },
@@ -1072,9 +1069,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + " would like to join the chat.";
     },
-    get$knock() {
-      return "Knock";
-    },
     get$users() {
       return "Users";
     },
@@ -1206,9 +1200,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
     },
     get$publicSpaces() {
       return "Public spaces";
@@ -3796,12 +3787,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4363,6 +4348,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4384,6 +4372,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_198", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+vMWPYjHDFNm0gdyaP5A2qaYBPA=");
+})($__dart_deferred_initializers__, "7hbkz55+t63CIZVUiybcx5Uq6q8=");
 ;
 //# sourceMappingURL=main.dart.js_198.part.js.map

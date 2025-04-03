@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u0111\xe3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
-    get$joinRoom() {
-      return "Tham gia ph\xf2ng";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u0111\xe3 \u0111\xe1 " + targetName;
     },
@@ -1071,9 +1068,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return user + " mu\u1ed1n tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n.";
     },
-    get$knock() {
-      return "G\xf5 y\xeau c\u1ea7u";
-    },
     get$users() {
       return "Ng\u01b0\u1eddi d\xf9ng";
     },
@@ -1205,9 +1199,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "T\u1ea1o \u0111\u1ecba ch\u1ec9 m\u1edbi";
-    },
-    get$joinSpace() {
-      return "Tham gia kh\xf4ng gian";
     },
     get$publicSpaces() {
       return "Kh\xf4ng gian c\xf4ng khai";
@@ -3795,12 +3786,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kh\xf4ng gian gi\xfap b\u1ea1n qu\u1ea3n l\xfd nhi\u1ec1u cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 x\xe2y d\u1ef1ng c\u1ed9ng \u0111\u1ed3ng ri\xeang ho\u1eb7c c\xf4ng khai.";
     },
-    get$joinWithCode() {
-      return "Tham gia b\u1eb1ng m\xe3";
-    },
-    get$enterCodeToJoin() {
-      return "Nh\u1eadp m\xe3 \u0111\u1ec3 tham gia";
-    },
     get$updateNow() {
       return "C\u1eadp nh\u1eadt ngay";
     },
@@ -4362,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4383,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "2tFXDJOcpi3xQ5SoesbrVAZeRyc=");
+})($__dart_deferred_initializers__, "k1gh1+mdNKuRPzGPAhwbCDIs8Uw=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map

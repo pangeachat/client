@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "Th\xe1inig \ud83d\udc4b " + username + " isteach sa chomhr\xe1";
     },
-    get$joinRoom() {
-      return "T\xe9igh isteach sa seomra";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e chice\xe1il " + username + " " + targetName;
     },
@@ -1071,9 +1068,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheChat$1(user) {
       return "Ba mhaith le " + user + " p\xe1irt a ghlacadh sa chomhr\xe1.";
     },
-    get$knock() {
-      return "Cnoc Mhuire";
-    },
     get$users() {
       return "\xdas\xe1ideoir\xed";
     },
@@ -1205,9 +1199,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Cruthaigh seoladh nua";
-    },
-    get$joinSpace() {
-      return "Glac p\xe1irt sa sp\xe1s";
     },
     get$publicSpaces() {
       return "Sp\xe1sanna poibl\xed";
@@ -3795,12 +3786,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4362,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpacesTitle() {
       return "Learning communities";
     },
+    get$askToJoin() {
+      return "Ask to join";
+    },
     get$emptyChatWarningTitle() {
       return "Chat is empty";
     },
@@ -4386,6 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_216", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "jYUUL79h6Bgc9fVMRu2uzf/WOUA=");
+})($__dart_deferred_initializers__, "VRzT9QVzxsIs4l+FtvV3Ee0gwH8=");
 ;
 //# sourceMappingURL=main.dart.js_216.part.js.map
