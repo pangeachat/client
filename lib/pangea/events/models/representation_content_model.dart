@@ -121,13 +121,13 @@ class PangeaRepresentation {
     // for each token, record whether selected in ga, ta, or wa
     List<PangeaToken> tokensToSave =
         tokens.where((token) => token.lemma.saveVocab).toList();
-    if (choreo != null && choreo.pastedTokens.isNotEmpty) {
+    if (choreo != null && choreo.pastedStrings.isNotEmpty) {
       tokensToSave = tokensToSave
           .where(
-            (token) => !choreo.pastedTokens.any(
-              (pastedToken) =>
-                  pastedToken.text.content.toLowerCase() ==
-                  token.text.content.toLowerCase(),
+            (token) => !choreo.pastedStrings.any(
+              (pasted) => pasted
+                  .toLowerCase()
+                  .contains(token.text.content.toLowerCase()),
             ),
           )
           .toList();

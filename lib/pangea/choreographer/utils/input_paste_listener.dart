@@ -14,10 +14,9 @@ class InputPasteListener {
     this.onPaste,
   ) {
     controller.addListener(() {
-      if (controller.editType != EditType.keyboard) return;
       final difference =
           controller.text.characters.length - _currentText.characters.length;
-      if (difference > 1) {
+      if (difference > 1 && controller.editType == EditType.keyboard) {
         onPaste(
           controller.text.characters
               .getRange(
