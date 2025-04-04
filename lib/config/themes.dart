@@ -80,7 +80,6 @@ abstract class FluffyThemes {
       // #Pangea
       // causes memory leak on iOS
       // textTheme: fallbackTextTheme,
-      // textTheme: scaleTextTheme(Theme.of(context).textTheme, MediaQuery.of(context).size),
       // Pangea#
       dividerColor: brightness == Brightness.dark
           ? colorScheme.surfaceContainerHighest

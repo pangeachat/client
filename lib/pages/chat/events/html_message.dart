@@ -603,6 +603,7 @@ class HtmlMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // #Pangea
+    // return Text.rich(
     dom.Node parsed = parser.parse(html).body ?? dom.Element.html('');
     if (tokens != null) {
       parsed = _tokenizeHtml(parsed, html, List.from(tokens!));
@@ -619,8 +620,8 @@ class HtmlMessage extends StatelessWidget {
             );
           }
         },
-        // Pangea#
         child: Text.rich(
+          // Pangea#
           _renderHtml(
             // #Pangea
             // parser.parse(html).body ?? dom.Element.html(''),

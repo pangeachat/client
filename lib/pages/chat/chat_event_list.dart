@@ -119,6 +119,7 @@ class ChatEventList extends StatelessWidget {
             // Request history button or progress indicator:
             if (i == events.length + 1) {
               if (timeline.isRequestingHistory) {
+                // #Pangea
                 // return const Center(
                 //   child: CircularProgressIndicator.adaptive(strokeWidth: 2),
                 // );

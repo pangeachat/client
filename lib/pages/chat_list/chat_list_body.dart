@@ -401,6 +401,7 @@ class PublicRoomsHorizontalListState extends State<PublicRoomsHorizontalList> {
           ? null
           :
           // #Pangea
+          // ListView.builder(
           Scrollbar(
               thumbVisibility: true,
               controller: _scrollController,

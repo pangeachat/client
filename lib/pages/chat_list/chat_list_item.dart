@@ -421,7 +421,7 @@ class ChatListItem extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: room.highlightCount > 0 ||
                                 room.membership == Membership.invite
-                            ? theme.colorScheme.onError
+                            ? theme.colorScheme.error
                             : hasNotifications || room.markedUnread
                                 ? theme.colorScheme.primary
                                 : theme.colorScheme.primaryContainer,

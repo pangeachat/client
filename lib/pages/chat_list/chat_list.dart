@@ -43,6 +43,7 @@ import '../../widgets/matrix.dart';
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
 
+
 enum PopupMenuAction {
   settings,
   invite,
@@ -218,24 +219,21 @@ class ChatListController extends State<ChatList>
         return (room) => !room.isAnalyticsRoom;
       // Pangea#
       case ActiveFilter.messages:
+        // #Pangea
+        // return (room) => !room.isSpace && room.isDirectChat;
         return (room) =>
-            !room.isSpace &&
-            room.isDirectChat // #Pangea
-            &&
-            !room.isAnalyticsRoom;
+            !room.isSpace && room.isDirectChat && !room.isAnalyticsRoom;
       // Pangea#
       case ActiveFilter.groups:
+        // #Pangea
+        // return (room) => !room.isSpace && !room.isDirectChat;
         return (room) =>
-            !room.isSpace &&
-            !room.isDirectChat // #Pangea
-            &&
-            !room.isAnalyticsRoom;
+            !room.isSpace && !room.isDirectChat && !room.isAnalyticsRoom;
       // Pangea#
       case ActiveFilter.unread:
-        return (room) =>
-            room.isUnreadOrInvited // #Pangea
-            &&
-            !room.isAnalyticsRoom;
+        // #Pangea
+        // return (room) => room.isUnreadOrInvited;
+        return (room) => room.isUnreadOrInvited && !room.isAnalyticsRoom;
       // Pangea#
       case ActiveFilter.spaces:
         return (room) => room.isSpace;

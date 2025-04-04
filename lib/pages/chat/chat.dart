@@ -1214,12 +1214,13 @@ class ChatController extends State<ChatPageWithRoom>
             // Pangea#
           )
         : null;
+    // #Pangea
+    // if (reasonInput == null) return;
     if (reasonInput == null) {
-      // #Pangea
       clearSelectedEvents();
-      // Pangea#
       return;
     }
+    // Pangea#
     final reason = reasonInput.isEmpty ? null : reasonInput;
     for (final event in selectedEvents) {
       await showFutureLoadingDialog(

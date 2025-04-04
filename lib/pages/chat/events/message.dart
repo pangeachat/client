@@ -582,9 +582,7 @@ class Message extends StatelessWidget {
                                                           Icon(
                                                             Icons.edit_outlined,
                                                             color: textColor
-                                                                .withAlpha(
-                                                              164,
-                                                            ),
+                                                                .withAlpha(164),
                                                             size: 14,
                                                           ),
                                                           Text(

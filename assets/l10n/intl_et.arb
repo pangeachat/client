@@ -3333,13 +3333,5 @@
   "crossVerifiedDevices": "Risttunnustatud seadmeid",
   "@crossVerifiedDevices": {},
   "verifiedDevicesOnly": "Vaid verifitseeritud seadmeid",
-  "@verifiedDevicesOnly": {},
-  "recordAVideo": "Salvesta video",
-  "@recordAVideo": {},
-  "takeAPhoto": "Pildista",
-  "@takeAPhoto": {},
-  "optionalMessage": "Sõnum (kui soovid lisada)...",
-  "@optionalMessage": {},
-  "notSupportedOnThisDevice": "See pole antud seadmes toetatud",
-  "@notSupportedOnThisDevice": {}
+  "@verifiedDevicesOnly": {}
 }

@@ -25,10 +25,7 @@ import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum AddRoomType {
-  chat,
-  subspace,
-}
+enum AddRoomType { chat, subspace }
 
 class SpaceView extends StatefulWidget {
   final String spaceId;
@@ -279,7 +276,10 @@ class _SpaceViewState extends State<SpaceView> {
     );
     if (mounted && joined == true) {
       setState(() {
+        // #Pangea
+        // _discoveredChildren.remove(item);
         _discoveredChildren?.remove(item);
+        // Pangea#
       });
     }
   }
@@ -721,7 +721,10 @@ class _SpaceViewState extends State<SpaceView> {
                       },
                     ),
                     SliverList.builder(
+                      // #Pangea
+                      // itemCount: _discoveredChildren.length + 2,
                       itemCount: (_discoveredChildren?.length ?? 0) + 2,
+                      // Pangea#
                       itemBuilder: (context, i) {
                         if (i == 0) {
                           return SearchTitle(
@@ -730,7 +733,10 @@ class _SpaceViewState extends State<SpaceView> {
                           );
                         }
                         i--;
+                        // #Pangea
+                        // if (i == _discoveredChildren.length) {
                         if (i == (_discoveredChildren?.length ?? 0)) {
+                          // Pangea#
                           if (_noMoreRooms) {
                             return Padding(
                               padding: const EdgeInsets.all(12.0),
@@ -748,7 +754,10 @@ class _SpaceViewState extends State<SpaceView> {
                               vertical: 2.0,
                             ),
                             child: TextButton(
+                              // #Pangea
+                              // onPressed: _isLoading ? null : _loadHierarchy,
                               onPressed: _isLoading ? null : loadHierarchy,
+                              // Pangea#
                               child: _isLoading
                                   ? LinearProgressIndicator(
                                       borderRadius: BorderRadius.circular(
@@ -759,7 +768,10 @@ class _SpaceViewState extends State<SpaceView> {
                             ),
                           );
                         }
+                        // #Pangea
+                        // final item = _discoveredChildren[i];
                         final item = _discoveredChildren![i];
+                        // Pangea#
                         final displayname = item.name ??
                             item.canonicalAlias ??
                             L10n.of(context).emptyChat;
