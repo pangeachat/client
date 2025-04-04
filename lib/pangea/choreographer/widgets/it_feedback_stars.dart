@@ -9,7 +9,7 @@ class FillingStars extends StatefulWidget {
     super.key,
     required this.rating,
   });
-  
+
   @override
   State<FillingStars> createState() => _FillingStarsState();
 }
@@ -17,7 +17,7 @@ class FillingStars extends StatefulWidget {
 class _FillingStarsState extends State<FillingStars> {
   late List<bool> _isFilledList;
   int _lastRating = 0;
-  
+
   @override
   void initState() {
     super.initState();
@@ -29,7 +29,7 @@ class _FillingStarsState extends State<FillingStars> {
       _animate();
     });
   }
-  
+
   @override
   void didUpdateWidget(FillingStars oldWidget) {
     super.didUpdateWidget(oldWidget);
@@ -43,30 +43,28 @@ class _FillingStarsState extends State<FillingStars> {
       _animate();
     }
   }
-  
+
   Future<void> _animate() async {
     // Only animate unfilled stars up to the target rating
     for (int i = 0; i < widget.rating; i++) {
-      if (!_isFilledList[i]) { 
+      if (!_isFilledList[i]) {
         await Future.delayed(
-          const Duration(milliseconds: choiceArrayAnimationDuration), 
-          () {
-            if (mounted) {
-              setState(() => _isFilledList[i] = true);
-            }
+            const Duration(milliseconds: choiceArrayAnimationDuration), () {
+          if (mounted) {
+            setState(() => _isFilledList[i] = true);
           }
-        );
+        });
       }
     }
-    
+
     // Also handle the case where rating decreases by unfilling stars
     for (int i = widget.rating; i < 5; i++) {
-      if (_isFilledList[i]) {  
+      if (_isFilledList[i]) {
         setState(() => _isFilledList[i] = false);
       }
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Row(

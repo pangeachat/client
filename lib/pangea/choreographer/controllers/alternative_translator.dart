@@ -1,16 +1,16 @@
 import 'dart:math';
 
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../repo/similarity_repo.dart';
 
 class AlternativeTranslator {
@@ -22,11 +22,11 @@ class AlternativeTranslator {
   FeedbackKey? translationFeedbackKey;
   List<String> translations = [];
   SimilartyResponseModel? similarityResponse;
-  
+
   // Counts for tracking newly learned items
   int _vocabCountBefore = 0;
   int _grammarCountBefore = 0;
-  
+
   AlternativeTranslator(this.choreographer);
 
   void clear() {
@@ -39,26 +39,28 @@ class AlternativeTranslator {
     similarityResponse = null;
   }
 
-  // Whatever was changed before for stars and counts was inaccurate and did not work, 
+  // Whatever was changed before for stars and counts was inaccurate and did not work,
   // this is a new implemention for the counts. Be careful changing this again, please check the accuracy!
 
   // Capture counts before translation starts
   void captureCountsBefore() {
-    final constructListModel = MatrixState.pangeaController.getAnalytics.constructListModel;
-    
-    final allVocabConstructs = constructListModel.constructList(type: ConstructTypeEnum.vocab);
-    final allMorphConstructs = constructListModel.constructList(type: ConstructTypeEnum.morph);
-    
+    final constructListModel =
+        MatrixState.pangeaController.getAnalytics.constructListModel;
+
+    final allVocabConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.vocab);
+    final allMorphConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.morph);
+
     _vocabCountBefore = allVocabConstructs.length;
     _grammarCountBefore = allMorphConstructs.length;
-
   }
 
   // Calculate percentage of choices that were correct on first attempt
   double get percentCorrectChoices {
     final totalSteps = choreographer.choreoRecord.itSteps.length;
     if (totalSteps == 0) return 0.0;
-    
+
     // Count steps where there were no wrong clicks
     final int correctFirstAttempts = choreographer.itController.completedITSteps
         .where(
@@ -69,7 +71,7 @@ class AlternativeTranslator {
           ),
         )
         .length;
-    
+
     final double percentage = (correctFirstAttempts / totalSteps) * 100;
     return percentage;
   }
@@ -78,27 +80,29 @@ class AlternativeTranslator {
   double get actualFirstAttemptPercentage {
     final steps = choreographer.itController.completedITSteps;
     if (steps.isEmpty) return 0.0;
-    
+
     // For each step, determine if the chosen continuance was the first and only click
     int correctFirstAttempts = 0;
-    
+
     for (int i = 0; i < steps.length; i++) {
       final step = steps[i];
-      
+
       // Count all clicked continuances in this step
-      final clickedContinuances = step.continuances.where((c) => c.wasClicked).toList();
-      
+      final clickedContinuances =
+          step.continuances.where((c) => c.wasClicked).toList();
+
       // If there's exactly one clicked continuance and it's the chosen one,
       // and it's correct (green or gold), this is a correct first attempt
       if (step.chosen != null &&
-          clickedContinuances.length == 1 && 
+          clickedContinuances.length == 1 &&
           clickedContinuances.first == step.continuances[step.chosen!] &&
-          (step.chosenContinuance!.level == ChoreoConstants.levelThresholdForGreen || 
-           step.chosenContinuance!.gold)) {
+          (step.chosenContinuance!.level ==
+                  ChoreoConstants.levelThresholdForGreen ||
+              step.chosenContinuance!.gold)) {
         correctFirstAttempts++;
       }
     }
-    
+
     final percentage = (correctFirstAttempts / steps.length) * 100;
     return percentage;
   }
@@ -106,7 +110,7 @@ class AlternativeTranslator {
   // Use the accurate calculation for star rating
   int get fixedStarRating {
     final double percent = actualFirstAttemptPercentage;
-    
+
     if (percent >= 99.9) return 5;
     if (percent >= 80) return 4;
     if (percent >= 60) return 3;
@@ -117,23 +121,27 @@ class AlternativeTranslator {
 
   // Count new vocabulary words by comparing before and after
   int countVocabularyWordsFromSteps() {
-    final constructListModel = MatrixState.pangeaController.getAnalytics.constructListModel;
-    final allVocabConstructs = constructListModel.constructList(type: ConstructTypeEnum.vocab);
+    final constructListModel =
+        MatrixState.pangeaController.getAnalytics.constructListModel;
+    final allVocabConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.vocab);
     final vocabCountAfter = allVocabConstructs.length;
-    
+
     final newVocabCount = max(0, vocabCountAfter - _vocabCountBefore);
-    
+
     return newVocabCount;
   }
-  
+
   // Count new grammar constructs by comparing before and after
   int countGrammarConstructsFromSteps() {
-    final constructListModel = MatrixState.pangeaController.getAnalytics.constructListModel;
-    final allMorphConstructs = constructListModel.constructList(type: ConstructTypeEnum.morph);
+    final constructListModel =
+        MatrixState.pangeaController.getAnalytics.constructListModel;
+    final allMorphConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.morph);
     final grammarCountAfter = allMorphConstructs.length;
-    
+
     final newGrammarCount = max(0, grammarCountAfter - _grammarCountBefore);
-    
+
     return newGrammarCount;
   }
 

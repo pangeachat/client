@@ -27,84 +27,81 @@ class TranslationFeedback extends StatefulWidget {
   State<TranslationFeedback> createState() => _TranslationFeedbackState();
 }
 
-class _TranslationFeedbackState extends State<TranslationFeedback> with TickerProviderStateMixin {
+class _TranslationFeedbackState extends State<TranslationFeedback>
+    with TickerProviderStateMixin {
   late final int starRating;
   late final int vocabCount;
   late final int grammarCount;
-  
+
   // Animation controllers for each component
   late AnimationController _starsController;
   late AnimationController _vocabController;
   late AnimationController _grammarController;
-  
+
   // Animations for opacity and scale
   late Animation<double> _starsOpacity;
   late Animation<double> _starsScale;
   late Animation<double> _vocabOpacity;
   late Animation<double> _grammarOpacity;
-  
+
   // Constants for animation timing
   static const vocabDelay = Duration(milliseconds: 800);
   static const grammarDelay = Duration(milliseconds: 1400);
-  
+
   // Duration for each individual animation
   static const elementAnimDuration = Duration(milliseconds: 800);
-  
+
   @override
   void initState() {
     super.initState();
     vocabCount = widget.vocabCount;
     grammarCount = widget.grammarCount;
-    
+
     final altTranslator = widget.controller.choreographer.altTranslator;
     starRating = altTranslator.fixedStarRating;
-    
+
     // Initialize animation controllers
     _starsController = AnimationController(
       vsync: this,
       duration: elementAnimDuration,
     );
-    
+
     _vocabController = AnimationController(
       vsync: this,
       duration: elementAnimDuration,
     );
-    
+
     _grammarController = AnimationController(
       vsync: this,
       duration: elementAnimDuration,
     );
-    
+
     // Define animations
     _starsOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _starsController, curve: Curves.easeInOut)
-    );
-    
+        CurvedAnimation(parent: _starsController, curve: Curves.easeInOut));
+
     _starsScale = Tween<double>(begin: 0.5, end: 1.0).animate(
-      CurvedAnimation(parent: _starsController, curve: Curves.elasticOut)
-    );
-    
+        CurvedAnimation(parent: _starsController, curve: Curves.elasticOut));
+
     _vocabOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _vocabController, curve: Curves.easeInOut)
-    );
-    
+        CurvedAnimation(parent: _vocabController, curve: Curves.easeInOut));
+
     _grammarOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _grammarController, curve: Curves.easeInOut)
-    );
-    
+        CurvedAnimation(parent: _grammarController, curve: Curves.easeInOut));
+
     // Start animations with appropriate delays
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         // Start stars animation immediately
         _starsController.forward();
-        
+
         // Start vocab animation after delay if there's vocab to show
         if (vocabCount > 0) {
           Future.delayed(vocabDelay, () {
             if (mounted) _vocabController.forward();
           });
         }
-        
+
         // Start grammar animation after delay if there's grammar to show
         if (grammarCount > 0) {
           Future.delayed(grammarDelay, () {
@@ -114,7 +111,7 @@ class _TranslationFeedbackState extends State<TranslationFeedback> with TickerPr
       }
     });
   }
-  
+
   @override
   void dispose() {
     _starsController.dispose();
@@ -145,7 +142,7 @@ class _TranslationFeedbackState extends State<TranslationFeedback> with TickerPr
               );
             },
           ),
-          
+
           if (vocabCount > 0 || grammarCount > 0)
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -160,13 +157,15 @@ class _TranslationFeedbackState extends State<TranslationFeedback> with TickerPr
                         return Opacity(
                           opacity: _vocabOpacity.value,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Icon(
                                   Symbols.dictionary,
-                                  color: ProgressIndicatorEnum.wordsUsed.color(context),
+                                  color: ProgressIndicatorEnum.wordsUsed
+                                      .color(context),
                                   size: 24,
                                 ),
                                 const SizedBox(width: 4.0),
@@ -176,7 +175,8 @@ class _TranslationFeedbackState extends State<TranslationFeedback> with TickerPr
                                   // Only start counter animation when opacity animation is complete
                                   startAnimation: _vocabOpacity.value > 0.9,
                                   style: TextStyle(
-                                    color: ProgressIndicatorEnum.wordsUsed.color(context),
+                                    color: ProgressIndicatorEnum.wordsUsed
+                                        .color(context),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -193,13 +193,15 @@ class _TranslationFeedbackState extends State<TranslationFeedback> with TickerPr
                         return Opacity(
                           opacity: _grammarOpacity.value,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Icon(
                                   Symbols.toys_and_games,
-                                  color: ProgressIndicatorEnum.morphsUsed.color(context),
+                                  color: ProgressIndicatorEnum.morphsUsed
+                                      .color(context),
                                   size: 24,
                                 ),
                                 const SizedBox(width: 4.0),
@@ -209,7 +211,8 @@ class _TranslationFeedbackState extends State<TranslationFeedback> with TickerPr
                                   // Only start counter animation when opacity animation is complete
                                   startAnimation: _grammarOpacity.value > 0.9,
                                   style: TextStyle(
-                                    color: ProgressIndicatorEnum.morphsUsed.color(context),
+                                    color: ProgressIndicatorEnum.morphsUsed
+                                        .color(context),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -239,7 +242,7 @@ class _TranslationFeedbackState extends State<TranslationFeedback> with TickerPr
                 );
               },
             ),
-          
+
           const SizedBox(height: 8.0),
         ],
       );
@@ -276,7 +279,8 @@ class AnimatedCounter extends StatefulWidget {
   State<AnimatedCounter> createState() => _AnimatedCounterState();
 }
 
-class _AnimatedCounterState extends State<AnimatedCounter> with SingleTickerProviderStateMixin {
+class _AnimatedCounterState extends State<AnimatedCounter>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<int> _animation;
   bool _hasAnimated = false;
@@ -311,13 +315,13 @@ class _AnimatedCounterState extends State<AnimatedCounter> with SingleTickerProv
   @override
   void didUpdateWidget(AnimatedCounter oldWidget) {
     super.didUpdateWidget(oldWidget);
-    
+
     // Start animation when startAnimation changes to true
     if (!oldWidget.startAnimation && widget.startAnimation && !_hasAnimated) {
       _controller.forward();
       _hasAnimated = true;
     }
-    
+
     if (oldWidget.endValue != widget.endValue) {
       if (_hasAnimated) {
         _animation = IntTween(
@@ -327,7 +331,7 @@ class _AnimatedCounterState extends State<AnimatedCounter> with SingleTickerProv
           parent: _controller,
           curve: Curves.easeOutCubic,
         ));
-        
+
         _controller.forward(from: 0.0);
       } else if (widget.startAnimation) {
         _animation = IntTween(
@@ -337,7 +341,7 @@ class _AnimatedCounterState extends State<AnimatedCounter> with SingleTickerProv
           parent: _controller,
           curve: Curves.easeOutCubic,
         ));
-        
+
         _controller.forward();
         _hasAnimated = true;
       }

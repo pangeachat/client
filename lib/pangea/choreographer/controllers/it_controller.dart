@@ -66,7 +66,7 @@ class ITController {
       _isOpen = true;
     });
     _itStartData = itStartData;
-    
+
     choreographer.altTranslator.captureCountsBefore();
   }
 
@@ -316,7 +316,7 @@ class ITController {
   //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
-    
+
     // Mark only the selected continuance as clicked
     for (int i = 0; i < currentITStep!.continuances.length; i++) {
       // Only set the selected one to clicked
@@ -324,30 +324,31 @@ class ITController {
         currentITStep!.continuances[i].wasClicked = true;
       }
     }
-    
+
     // Create a new step that copies continuances but maintains wasClicked flags
     final itStep = ITStep(
-      List.from(currentITStep!.continuances), // Create a new list but maintain objects
+      List.from(currentITStep!
+          .continuances), // Create a new list but maintain objects
       chosen: chosenIndex,
     );
-    
+
     completedITSteps.add(itStep);
     showChoiceFeedback = true;
-    
+
     // Get a list of the choices that the user did not click
     final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
         .where((e) => !e.wasClicked)
         .map((e) => e.tokens)
         .expand((e) => e)
         .toList();
-    
+
     // Save those choices' tokens to local construct analytics as ignored tokens
     choreographer.pangeaController.putAnalytics.addDraftUses(
       ignoredTokens ?? [],
       choreographer.roomId,
       ConstructUseTypeEnum.ignIt,
     );
-    
+
     Future.delayed(
       const Duration(
         milliseconds: ChoreoConstants.millisecondsToDisplayFeedback,
@@ -357,11 +358,10 @@ class ITController {
         choreographer.setState();
       },
     );
-    
+
     choreographer.onITChoiceSelect(itStep);
     choreographer.setState();
   }
-
 
   String get uniqueKeyForLayerLink => "itChoices${choreographer.roomId}";
 
@@ -473,7 +473,7 @@ class CurrentITStep {
   late String? translationId;
   late int payloadId;
 
- // This needs to be added to the CurrentITStep constructor in the CurrentITStep class
+  // This needs to be added to the CurrentITStep constructor in the CurrentITStep class
   CurrentITStep({
     required String sourceText,
     required String currentText,
@@ -495,23 +495,23 @@ class CurrentITStep {
         currentText: currentText,
         sourceText: sourceText,
       );
-      
+
       // CRITICAL: Create fresh continuances with wasClicked=false for all new options
-      final freshContinuances = responseModel.continuances.map((c) => 
-        Continuance(
-          probability: c.probability,
-          level: c.level,
-          text: c.text,
-          description: c.description,
-          indexSavedByServer: c.indexSavedByServer,
-          wasClicked: false, // Always start with wasClicked=false
-          inDictionary: c.inDictionary,
-          hasInfo: c.hasInfo,
-          gold: c.gold,
-          tokens: c.tokens,
-        )
-      ).toList();
-      
+      final freshContinuances = responseModel.continuances
+          .map((c) => Continuance(
+                probability: c.probability,
+                level: c.level,
+                text: c.text,
+                description: c.description,
+                indexSavedByServer: c.indexSavedByServer,
+                wasClicked: false, // Always start with wasClicked=false
+                inDictionary: c.inDictionary,
+                hasInfo: c.hasInfo,
+                gold: c.gold,
+                tokens: c.tokens,
+              ))
+          .toList();
+
       if (goldCont != null) {
         // Create a fresh gold continuance too
         final freshGoldCont = Continuance(
@@ -526,10 +526,11 @@ class CurrentITStep {
           gold: true,
           tokens: goldCont.tokens,
         );
-        
+
         continuances = [
           ...freshContinuances
-              .where((c) => c.text.toLowerCase() != freshGoldCont.text.toLowerCase())
+              .where((c) =>
+                  c.text.toLowerCase() != freshGoldCont.text.toLowerCase())
               .map((e) {
             // We only want one green choice and for that to be our gold
             if (e.level == ChoreoConstants.levelThresholdForGreen) {
