@@ -1,6 +1,8 @@
 // shows n rows of activity suggestions vertically, where n is the number of rows
 // as the user tries to scroll horizontally to the right, the client will fetch more activity suggestions
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -39,15 +41,29 @@ class ActivitySuggestionsArea extends StatefulWidget {
 }
 
 class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
+  StreamSubscription? _languageStream;
+
   @override
   void initState() {
     super.initState();
     _setActivityItems();
+
+    _languageStream ??= MatrixState.pangeaController.userController.stateStream
+        .listen((update) {
+      if (update is Map<String, dynamic> &&
+          (update.containsKey('prev_base_lang') ||
+              update.containsKey('prev_target_lang'))) {
+        WidgetsBinding.instance.addPostFrameCallback(
+          (_) => _setActivityItems(),
+        );
+      }
+    });
   }
 
   @override
   void dispose() {
     _scrollController.dispose();
+    _languageStream?.cancel();
     super.dispose();
   }
 
@@ -59,18 +75,28 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
   double get cardHeight => _isColumnMode ? 325.0 : 250.0;
   double get cardWidth => _isColumnMode ? 225.0 : 150.0;
 
+  String get instructionLanguage =>
+      MatrixState.pangeaController.languageController.userL1?.langCode ??
+      LanguageKeys.defaultLanguage;
+  String get targetLanguage =>
+      MatrixState.pangeaController.languageController.userL2?.langCode ??
+      LanguageKeys.defaultLanguage;
+
   Future<void> _setActivityItems() async {
     try {
+      setState(() {
+        _activityItems.clear();
+        _loading = true;
+      });
+
       final ActivityPlanRequest request = ActivityPlanRequest(
         topic: "",
         mode: "",
         objective: "",
         media: MediaEnum.nan,
         cefrLevel: LanguageLevelTypeEnum.a1,
-        languageOfInstructions: LanguageKeys.defaultLanguage,
-        targetLanguage:
-            MatrixState.pangeaController.languageController.userL2?.langCode ??
-                LanguageKeys.defaultLanguage,
+        languageOfInstructions: instructionLanguage,
+        targetLanguage: targetLanguage,
         numberOfParticipants: 3,
         count: 5,
       );
@@ -149,88 +175,91 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              Row(
-                spacing: 8.0,
-                children: [
-                  InkWell(
-                    customBorder: const CircleBorder(),
-                    onTap: () => context.go('/homepage/newgroup'),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(36.0),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 6.0,
-                        horizontal: 10.0,
-                      ),
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CustomizedSvg(
-                            svgUrl:
-                                "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.plusIconPath}",
-                            colorReplacements: {
-                              "#CDBEF9": colorToHex(
-                                Theme.of(context).colorScheme.secondary,
-                              ),
-                            },
-                            height: 16.0,
-                            width: 16.0,
-                          ),
-                          Text(
-                            isColumnMode
-                                ? L10n.of(context).createOwnChat
-                                : L10n.of(context).chat,
-                            style: theme.textTheme.titleSmall?.copyWith(
-                              fontWeight: FontWeight.bold,
+              Material(
+                type: MaterialType.transparency,
+                child: Row(
+                  spacing: 8.0,
+                  children: [
+                    InkWell(
+                      customBorder: const CircleBorder(),
+                      onTap: () => context.go('/homepage/newgroup'),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.surfaceContainerHighest,
+                          borderRadius: BorderRadius.circular(36.0),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 6.0,
+                          horizontal: 10.0,
+                        ),
+                        child: Row(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            CustomizedSvg(
+                              svgUrl:
+                                  "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.plusIconPath}",
+                              colorReplacements: {
+                                "#CDBEF9": colorToHex(
+                                  Theme.of(context).colorScheme.secondary,
+                                ),
+                              },
+                              height: 16.0,
+                              width: 16.0,
                             ),
-                          ),
-                        ],
+                            Text(
+                              isColumnMode
+                                  ? L10n.of(context).createOwnChat
+                                  : L10n.of(context).chat,
+                              style: theme.textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  InkWell(
-                    customBorder: const CircleBorder(),
-                    onTap: () => context.go('/homepage/planner'),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(36.0),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 6.0,
-                        horizontal: 10.0,
-                      ),
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          CustomizedSvg(
-                            svgUrl:
-                                "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.crayonIconPath}",
-                            colorReplacements: {
-                              "#CDBEF9": colorToHex(
-                                Theme.of(context).colorScheme.secondary,
-                              ),
-                            },
-                            height: 16.0,
-                            width: 16.0,
-                          ),
-                          Text(
-                            isColumnMode
-                                ? L10n.of(context).makeYourOwnActivity
-                                : L10n.of(context).createActivity,
-                            style: theme.textTheme.titleSmall?.copyWith(
-                              fontWeight: FontWeight.bold,
+                    InkWell(
+                      customBorder: const CircleBorder(),
+                      onTap: () => context.go('/homepage/planner'),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.surfaceContainerHighest,
+                          borderRadius: BorderRadius.circular(36.0),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 6.0,
+                          horizontal: 10.0,
+                        ),
+                        child: Row(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            CustomizedSvg(
+                              svgUrl:
+                                  "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.crayonIconPath}",
+                              colorReplacements: {
+                                "#CDBEF9": colorToHex(
+                                  Theme.of(context).colorScheme.secondary,
+                                ),
+                              },
+                              height: 16.0,
+                              width: 16.0,
                             ),
-                          ),
-                        ],
+                            Text(
+                              isColumnMode
+                                  ? L10n.of(context).makeYourOwnActivity
+                                  : L10n.of(context).createActivity,
+                              style: theme.textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
