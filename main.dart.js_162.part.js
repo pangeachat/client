@@ -343,9 +343,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " \u0645\u0646\u062a\u0633\u0628\u0627";
     },
-    get$create(_) {
-      return "\u0623\u0646\u0634\u0626";
-    },
     createdTheChat$1(username) {
       return "\ud83d\udcac \u0623\u0646\u0634\u0623 " + username + " \u0627\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
     },
@@ -705,9 +702,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pin() {
       return "\u062b\u0628\u0650\u0651\u062a";
-    },
-    get$pleaseChoose() {
-      return "\u0627\u062e\u062a\u0631 \u0631\u062c\u0627\u0621";
     },
     get$pleaseEnterYourPassword() {
       return "\u0623\u062f\u062e\u0644 \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631";
@@ -2893,9 +2887,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$manageSubscription() {
       return "Manage Subscription";
     },
-    get$createChat() {
-      return "Create chat";
-    },
     get$error520Title() {
       return "Please try again.";
     },
@@ -4372,6 +4363,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_162", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "pSe7VLzR+VpsLtjs/7AB+aJ1Hco=");
+})($__dart_deferred_initializers__, "rWorXbp46T6Rmg0civNRhvAl5KY=");
 ;
 //# sourceMappingURL=main.dart.js_162.part.js.map

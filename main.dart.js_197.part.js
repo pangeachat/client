@@ -343,9 +343,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participants";
     },
-    get$create(_) {
-      return "Create";
-    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " created the chat";
     },
@@ -705,9 +702,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pin() {
       return "Pin";
-    },
-    get$pleaseChoose() {
-      return "Please choose";
     },
     get$pleaseEnterYourPassword() {
       return "Please enter your password";
@@ -2893,9 +2887,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$manageSubscription() {
       return "Manage Subscription";
     },
-    get$createChat() {
-      return "Create chat";
-    },
     get$error520Title() {
       return "Please try again.";
     },
@@ -4372,6 +4363,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_197", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "PDUtQVjODhRIpIDH+D4Ri1PQZG0=");
+})($__dart_deferred_initializers__, "72FohkpLks0/Y4sMxmAS5UshP5c=");
 ;
 //# sourceMappingURL=main.dart.js_197.part.js.map

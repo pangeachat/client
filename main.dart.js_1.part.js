@@ -349,9 +349,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " \u540d\u53c2\u4e0e\u8005";
     },
-    get$create(_) {
-      return "\u521b\u5efa";
-    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " \u521b\u5efa\u4e86\u804a\u5929";
     },
@@ -711,9 +708,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pin() {
       return "\u7f6e\u9876";
-    },
-    get$pleaseChoose() {
-      return "\u8bf7\u9009\u62e9";
     },
     get$pleaseEnterYourPassword() {
       return "\u8bf7\u8f93\u5165\u4f60\u7684\u5bc6\u7801";
@@ -2899,9 +2893,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$manageSubscription() {
       return "Manage Subscription";
     },
-    get$createChat() {
-      return "Create chat";
-    },
     get$error520Title() {
       return "Please try again.";
     },
@@ -4686,9 +4677,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " \u500b\u53c3\u8207\u8005";
     },
-    get$create(_) {
-      return "\u5efa\u7acb";
-    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " \u5efa\u7acb\u4e86\u804a\u5929\u5ba4";
     },
@@ -5048,9 +5036,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pin() {
       return "\u91d8\u9078";
-    },
-    get$pleaseChoose() {
-      return "\u8acb\u9078\u64c7";
     },
     get$pleaseEnterYourPassword() {
       return "\u8acb\u8f38\u5165\u60a8\u7684\u5bc6\u78bc";
@@ -5656,6 +5641,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "dGPFiFFQLqG0ShxtJpbRJE5aq/w=");
+})($__dart_deferred_initializers__, "mPwUfP1Sm/BJB5+sgvXEFKoRu2E=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

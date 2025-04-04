@@ -2,1590 +2,1584 @@
 ((s, d, e) => {
   s[d] = s[d] || {};
   s[d][e] = s[d][e] || [];
-  s[d][e].push({p: "main.dart.js_238", e: "beginPart"});
+  s[d][e].push({p: "main.dart.js_231", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nIt$() {
-      return new A.L10nIt(B.canonicalizedLocale("it"));
+    L10nId$() {
+      return new A.L10nId(B.canonicalizedLocale("id"));
     },
-    L10nIt: function L10nIt(t0) {
+    L10nId: function L10nId(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[51];
-  A = hunkHelpers.updateHolder(holdersList[31], A);
-  A.L10nIt.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[29], A);
+  A.L10nId.prototype = {
     get$alwaysUse24HourFormat() {
-      return "disattivato";
+      return "tidak";
     },
     get$repeatPassword() {
-      return "Ripeti password";
+      return "Ulangi kata sandi";
     },
     get$notAnImage() {
-      return "Non \xe8 un file immagine.";
+      return "Bukan berkas gambar.";
     },
     get$remove(_) {
-      return "Rimuovi";
+      return "Hapus";
     },
     get$importNow() {
-      return "Importa ora";
+      return "Impor sekarang";
     },
     get$importEmojis() {
-      return "Importa Emoji";
+      return "Impor Emoji";
     },
     get$importFromZipFile() {
-      return "Importa da file .zip";
+      return "Impor dari berkas .zip";
     },
     get$exportEmotePack() {
-      return "Esporta pack di Emote come .zip";
+      return "Ekspor paket Emote sebagai .zip";
     },
     get$replace(_) {
-      return "Sostituisci";
+      return "Ganti";
     },
     aboutHomeserver$1(homeserver) {
-      return "Informazioni su " + homeserver;
+      return "Tentang " + homeserver;
     },
     get$accept(_) {
-      return "Accetta";
+      return "Terima";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " ha accettato l'invito";
+      return "\ud83d\udc4d " + username + " menerima undangannya";
     },
     get$account() {
-      return "Account";
+      return "Akun";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " ha abilitato la crittografia end to end";
+      return "\ud83d\udd10 " + username + " mengaktifkan enkripsi ujung ke ujung";
     },
     get$addEmail() {
-      return "Aggiungi e-mail";
+      return "Tambah email";
     },
     supposedMxid$1(mxid) {
-      return "Dovrebbe essere " + mxid;
+      return "Ini seharusnya " + mxid;
     },
     get$addToSpace() {
-      return "Aggiungi a uno spazio";
+      return "Tambah ke space";
     },
     get$admin() {
-      return "Amministratore";
+      return "Admin";
     },
     get$alias() {
       return "alias";
     },
     get$all() {
-      return "Tutto";
+      return "Semua";
     },
     get$commandHint_googly() {
-      return "Invia degli occhi finti";
+      return "Kirim mata googly";
     },
     get$commandHint_cuddle() {
-      return "Invia una coccola";
+      return "Kirim berpelukan";
     },
     get$commandHint_hug() {
-      return "Invia un abbraccio";
+      return "Kirim pelukan";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " ti ha inviato degli occhi finti";
+      return senderName + " mengirim mata googly";
     },
     cuddleContent$1(senderName) {
-      return senderName + " ti coccola";
+      return senderName + " berpelukan dengan kamu";
     },
     hugContent$1(senderName) {
-      return senderName + " ti abbraccia";
+      return senderName + " memeluk kamu";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " ha risposto alla chiamata";
+      return senderName + " menjawab panggilan";
     },
     get$anyoneCanJoin() {
-      return "Tutti possono partecipare";
+      return "Siapa saja dapat bergabung";
     },
     get$archive() {
-      return "Archivia";
+      return "Arsip";
     },
     get$areGuestsAllowedToJoin() {
-      return "Gli utenti ospiti possono partecipare";
+      return "Apakah pengguna tamu diizinkan untuk bergabung";
     },
     get$areYouSure() {
-      return "Sei sicuro/a?";
+      return "Apakah kamu yakin?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Sei sicuro/a di voler uscire?";
+      return "Apakah kamu yakin ingin keluar?";
     },
     get$askSSSSSign() {
-      return "Per far accedere l'altra persona, per favore inserisci la tua frase segreta o chiave di recupero.";
+      return "Untuk dapat menandatangani orang lain, silakan masukkan frasa sandi atau kunci pemulihan penyimpanan aman kamu.";
     },
     askVerificationRequest$1(username) {
-      return "Accettare questa richiesta di verifica da " + username + "?";
+      return "Terima permintaan verifikasi dari " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "L'homeserver supporta i tipi di accesso:\n" + serverVersions + "\nMa questa applicazione supporta solo:\n" + supportedVersions;
+      return "Homeserver ini mendukung tipe masuk ini:\n" + serverVersions + "\nTetapi aplikasi ini mendukung:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Invia notifiche di scrittura";
+      return "Kirim notifikasi pengetikan";
     },
     get$swipeRightToLeftToReply() {
-      return "Scorri da destra a sinistra per rispondere";
+      return "Usap dari kanan ke kiri untuk membalas";
     },
     get$sendOnEnter() {
-      return "Invia quando premi Invio";
+      return "Kirim dengan enter";
     },
     badServerVersionsException$4(serverVersions, supportedVersions, serverVerions, suportedVersions) {
-      return "L'homeserver supporta le versioni Spec:\n" + serverVersions + "\nMa questa applicazione supporta solo " + supportedVersions;
+      return "Homeserver ini mendukung versi Spec ini:\n" + serverVersions + "\nTetapi aplikasi ini hanya mendukung " + supportedVersions;
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " chat e " + participants + " partecipanti";
+      return "" + chats + " chat dan " + participants + " anggota";
     },
     get$noMoreChatsFound() {
-      return "Non sono state trovate altre chat...";
+      return "Tidak ada chat lagi yang ditemukan...";
     },
     get$noChatsFoundHere() {
-      return "Nessuna chat trovata. Inizia una nuova chat con qualcuno usando il pulsante qui sotto. \u2935\ufe0f";
+      return "Belum ada chat di sini. Mulai chat baru dengan seseorang menggunakan tombol di bawah. \u2935\ufe0f";
     },
     get$unread() {
-      return "Non letti";
+      return "Tidak dibaca";
     },
     get$space() {
-      return "Spazio";
+      return "Space";
     },
     get$spaces() {
-      return "Spazi";
+      return "Space";
     },
     get$banFromChat() {
-      return "Bandisci dalla chat";
+      return "Cekal dari obrolan";
     },
     get$banned() {
-      return "Bandito";
+      return "Dicekal";
     },
     bannedUser$2(username, targetName) {
-      return username + " ha bandito " + targetName;
+      return username + " mencekal " + targetName;
     },
     get$blockDevice() {
-      return "Blocca dispositivo";
+      return "Blokir Perangkat";
     },
     get$blocked() {
-      return "Bloccato";
+      return "Diblokir";
     },
     get$cancel(_) {
-      return "Annulla";
+      return "Batal";
     },
     cantOpenUri$1(uri) {
-      return "Impossibile aprire l'URI " + uri;
+      return "Tidak bisa membuka URI ini " + uri;
     },
     get$changeDeviceName() {
-      return "Cambia nome dispositivo";
+      return "Ganti nama perangkat";
     },
     changedTheChatAvatar$1(username) {
-      return username + " ha cambiato l'avatar della discussione";
+      return username + " mengubah avatar obrolan";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " ha cambiato la descrizione della chat in: \xab" + description + "\xbb";
+      return username + " mengubah deskripsi obrolan ke: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " ha cambiato il nome della discussione in: \xab" + chatname + "\xbb";
+      return username + " mengubah nama obrolan ke: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " ha cambiato i permessi della chat";
+      return username + " mengubah izin obrolan";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " ha cambiato nome in: '" + displayname + "'";
+      return username + " mengubah nama tampilan ke: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " ha cambiato le regole di accesso per ospiti";
+      return username + " mengubah aturan akses tamu";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " ha cambiato le regole di accesso per ospiti con: " + rules;
+      return username + " mengubah aturan akses tamu ke: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " ha cambiato la visibilit\xe0 della cronologia";
+      return username + " mengubah visibilitas sejarah";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " ha cambiato la visibilit\xe0 della cronologia in: " + rules;
+      return username + " mengubah visibilitas sejarah ke: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " ha cambiato le regole per unirsi";
+      return username + " mengubah aturan bergabung";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " ha cambiato le regole per unirsi in: " + joinRules;
+      return username + " mengubah aturan bergabung ke: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " ha cambiato il suo avatar";
+      return username + " mengubah avatarnya";
     },
     changedTheRoomAliases$1(username) {
-      return username + " ha cambiato il nome delle stanze";
+      return username + " mengubah alias ruangan";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " ha cambiato il link di invito";
+      return username + " mengubah tautan undangan";
     },
     get$changePassword() {
-      return "Cambia la password";
+      return "Ubah kata sandi";
     },
     get$changeTheme() {
-      return "Cambia il tuo stile";
+      return "Ubah tema";
     },
     get$changeYourAvatar() {
-      return "Cambia il tuo avatar";
+      return "Ubah avatarmu";
     },
     get$channelCorruptedDecryptError() {
-      return "La crittografia \xe8 corrotta";
+      return "Enkripsi telah rusak";
     },
     get$chat() {
-      return "Chat";
+      return "Obrolan";
     },
     get$chatDetails() {
-      return "Dettagli chat";
+      return "Detail obrolan";
     },
     get$chats() {
-      return "Discussioni";
+      return "Obrolan";
     },
     get$chooseAStrongPassword() {
-      return "Scegli una password complessa";
+      return "Pilih kata sandi yang kuat";
     },
     get$clearArchive() {
-      return "Cancella archivio";
+      return "Bersihkan arsip";
     },
     get$close(_) {
-      return "Chiudi";
+      return "Tutup";
     },
     get$commandHint_markasdm() {
-      return "Contrassegna questo Matrix ID come stanza di messaggi diretti";
+      return "Tandai sebagai ruangan pesan langsung untuk ID Matrix yang ditentukan";
     },
     get$commandHint_markasgroup() {
-      return "Segna come gruppo";
+      return "Tandai sebagai grup";
     },
     get$commandHint_ban() {
-      return "Banna l'utente specificato da questa stanza";
+      return "Cekal pengguna yang dicantumkan dari ruangan ini";
     },
     get$commandHint_clearcache() {
-      return "Pulisci cache";
+      return "Bersihkan tembolok";
     },
     get$commandHint_create() {
-      return "Crea una chat di gruppo vuota\nUtilizza --no-encryption per disattivare la criptazione";
+      return "Buat sebuah grup obrolan kosong\nGunakan --no-encryption untuk menonaktifkan enkripsi";
     },
     get$commandHint_discardsession() {
-      return "Scarta sessione";
+      return "Buang sesi";
     },
     get$commandHint_dm() {
-      return "Avvia una chat diretta\nUsa --no-encryption per disabilitare la crittografia";
+      return "Mulai sebuah obrolan langsung\nGunakan --no-encryption untuk menonaktifkan enkripsi";
     },
     get$commandHint_html() {
-      return "Invia testo formattato in HTML";
+      return "Kirim teks yang diformat dengan HTML";
     },
     get$commandHint_invite() {
-      return "Invia l utente fornito in questa stanza";
+      return "Undang pengguna yang dicantum ke ruangan ini";
     },
     get$commandHint_join() {
-      return "Unisciti alla stanza fornita";
+      return "Gabung ke ruangan yang dicantum";
     },
     get$commandHint_kick() {
-      return "Rimuovi l'utente fornito da questa stanza";
+      return "Keluarkan pengguna yang dicantum dari ruangan ini";
     },
     get$commandHint_leave() {
-      return "Abbandona questa stanza";
+      return "Tinggalkan ruangan ini";
     },
     get$commandHint_me() {
-      return "Descriviti";
+      return "Jelaskan dirimu";
     },
     get$commandHint_myroomavatar() {
-      return "Importa la foto profilo per questa stanza ( mxc-uri)";
+      return "Tetapkan gambarmu untuk ruangan ini (oleh uri-mxc)";
     },
     get$commandHint_myroomnick() {
-      return "Imposta il nome visualizzato per questa stanza";
+      return "Tetapkan nama tampilanmu untuk ruangan ini";
     },
     get$commandHint_op() {
-      return "Imposta il livello di privilegi dell'utente specificato (predefinito: 50)";
+      return "Tetapkan tingkat kekuatan pengguna yang dicantum (default: 50)";
     },
     get$commandHint_plain() {
-      return "Invia testo non formattato";
+      return "Kirim teks yang tidak diformat";
     },
     get$commandHint_react() {
-      return "Rispondi con una reazione";
+      return "Kirim balasan sebagai reaksi";
     },
     get$commandHint_send() {
-      return "Invia testo";
+      return "Kirim teks";
     },
     get$commandHint_unban() {
-      return "Sbanna l'utente fornito da questa stanza";
+      return "Hilangkan cekalan untuk pengguna yang dicantumkan dari ruangan ini";
     },
     get$commandInvalid() {
-      return "Comando non valido";
+      return "Perintah tidak valid";
     },
     commandMissing$1(command) {
-      return command + " non \xe8 un comando.";
+      return command + " bukan sebuah perintah.";
     },
     get$compareEmojiMatch() {
-      return "Per favore confronta gli emoji";
+      return "Bandingkan emoji";
     },
     get$compareNumbersMatch() {
-      return "Per favore confronta i numeri";
+      return "Bandingkan angka";
     },
     get$configureChat() {
-      return "Configura la discussione";
+      return "Konfigurasi obrolan";
     },
     get$confirm(_) {
-      return "Conferma";
+      return "Konfirmasi";
     },
     get$contentHasBeenReported() {
-      return "Il contenuto \xe8 stato segnalato agli amministratori del server";
+      return "Konten telah dilaporkan ke admin server";
     },
     get$copiedToClipboard() {
-      return "Copiato negli Appunti";
+      return "Disalin ke papan klip";
     },
     get$copy(_) {
-      return "Copia";
+      return "Salin";
     },
     couldNotDecryptMessage$1(error) {
-      return "Impossibile decriptare messaggio: " + error;
+      return "Tidak dapat mendekripsikan pesan: " + error;
     },
     countParticipants$1(count) {
-      return "" + count + " partecipanti";
-    },
-    get$create(_) {
-      return "Crea";
+      return "" + count + " anggota";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " ha creato la chat";
+      return "\ud83d\udcac " + username + " membuat obrolan ini";
     },
     get$createGroup() {
-      return "Crea gruppo";
+      return "Buat grup";
     },
     get$createNewSpace() {
-      return "Nuovo spazio";
+      return "Space baru";
     },
     get$currentlyActive() {
-      return "Attualmente attivo";
+      return "Aktif";
     },
     get$darkTheme() {
-      return "Scuro";
+      return "Gelap";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
-      return date + ", " + timeOfDay;
+      return timeOfDay + ", " + date;
     },
     get$deactivateAccountWarning() {
-      return "Disabiliter\xe0 il tuo account. Non puoi tornare indietro! Sei sicuro/a?";
+      return "Ini akan menonaktifkan akun penggunamu. Ini tidak bisa dibatalkan! Apakah kamu yakin?";
     },
     get$defaultPermissionLevel() {
-      return "Livello di autorizzazione predefinito per i nuovi utenti";
+      return "Level izin bawaan untuk pengguna baru";
     },
     get$$delete(_) {
-      return "Cancella";
+      return "Hapus";
     },
     get$deleteAccount() {
-      return "Elimina l'account";
+      return "Hapus akun";
     },
     get$deleteMessage() {
-      return "Elimina il messaggio";
+      return "Hapus pesan";
     },
     get$devices() {
-      return "Dispositivi";
+      return "Perangkat";
     },
     get$displaynameHasBeenChanged() {
-      return "Il nominativo \xe8 stato cambiato";
+      return "Nama tampilan telah diubah";
     },
     get$downloadFile() {
-      return "Scarica il file";
+      return "Unduh berkas";
     },
     get$edit() {
-      return "Modifica";
+      return "Sunting";
     },
     get$editBlockedServers() {
-      return "Modifica i server bloccati";
+      return "Edit server yang diblokir";
     },
     get$chatPermissions() {
-      return "Permessi della chat";
+      return "Perizinan obrolan";
     },
     get$editDisplayname() {
-      return "Modifica il nominativo";
+      return "Edit nama tampilan";
     },
     get$editRoomAliases() {
-      return "Modifica gli alias della stanza";
+      return "Edit alias ruangan";
     },
     get$editRoomAvatar() {
-      return "Modifica l'avatar della stanza";
+      return "Edit avatar ruangan";
     },
     get$emoteExists() {
-      return "L'emote gi\xe0 esiste!";
+      return "Emote sudah ada!";
     },
     get$emoteInvalid() {
-      return "Shortcode emote invalido!";
+      return "Shortcode emote tidak valid!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Le emoticon recentemente usate appariranno qui...";
+      return "Emote yang telah digunakan akan muncul di sini...";
     },
     get$emotePacks() {
-      return "Pacchetti emotes della stanza";
+      return "Paket emote untuk ruangan";
     },
     get$globalChatId() {
-      return "ID chat globale";
+      return "ID obrolan global";
     },
     get$accessAndVisibility() {
-      return "Accesso e visibilit\xe0";
+      return "Akses dan keterlihatan";
     },
     get$customEmojisAndStickers() {
-      return "Emoji e adesivi personalizzati";
+      return "Emoji dan stiker kustom";
     },
     get$emoteShortcode() {
-      return "Scorciatoia emote";
+      return "Shortcode emote";
     },
     get$emoteWarnNeedToPick() {
-      return "Devi scegliere una scorciatoia emote e aggiungere un immagine!";
+      return "Kamu harus memilih shortcode emote dan gambar!";
     },
     get$emptyChat() {
-      return "Discussione vuota";
+      return "Chat kosong";
     },
     get$enableEmotesGlobally() {
-      return "Abilita i pacchetti emotes globalmente";
+      return "Aktifkan paket emote secara global";
     },
     get$enableEncryption() {
-      return "Abilita la crittografia";
+      return "Aktifkan enkripsi";
     },
     get$encrypted() {
-      return "Crittografato";
+      return "Terenkripsi";
     },
     get$encryptionNotEnabled() {
-      return "Crittografia non abilitata";
+      return "Enkripsi tidak diaktifkan";
     },
     endedTheCall$1(senderName) {
-      return senderName + " \xe8 entrato in chiamata";
+      return senderName + " mengakhiri panggilan";
     },
     get$enterAnEmailAddress() {
-      return "Inserisci un indirizzo e-mail";
+      return "Masukkan alamat email";
     },
     errorObtainingLocation$1(error) {
-      return "Errore cercando di ottenere la posizione: " + error;
+      return "Gagal mendapat lokasi: " + error;
     },
     get$extremeOffensive() {
-      return "Estremamente offensivo";
+      return "Sangat menyinggung";
     },
     get$fontSize(_) {
-      return "Dimensione carattere";
+      return "Ukuran font";
     },
     get$forward(_) {
-      return "Inoltra";
+      return "Teruskan";
     },
     get$fromJoining() {
-      return "Dall'adesione";
+      return "Dari bergabung";
     },
     get$fromTheInvitation() {
-      return "Dall'invito";
+      return "Dari undangan";
     },
     get$goToTheNewRoom() {
-      return "Vai nella nuova stanza";
+      return "Pergi ke ruangan yang baru";
     },
     get$groups() {
-      return "Gruppi";
+      return "Grup";
     },
     get$guestsAreForbidden() {
-      return "Gli ospiti sono vietati";
+      return "Tamu dilarang";
     },
     get$guestsCanJoin() {
-      return "Gli ospiti possono partecipare";
+      return "Tamu bisa bergabung";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " ha ritirato l'invito per " + targetName;
+      return username + " telah mencabut undangan untuk " + targetName;
     },
     get$help() {
-      return "Aiuto";
+      return "Bantuan";
     },
     get$hideRedactedMessages() {
-      return "Mostra i messaggi rimossi";
+      return "Sembunyikan pesan yang dihapus";
     },
     get$hideRedactedMessagesBody() {
-      return "Se qualcuno rimuove un messaggio, il messaggio non sar\xe0 pi\xf9 visibile nella chat.";
+      return "Jika seseorang menghapus pesan, pesannya tidak akan terlihat lagi dalam obrolan.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Nascondi formati di messaggi non validi o sconosciuti";
+      return "Sembunyikan format pesan yang tidak valid atau tidak diketahui";
     },
     get$howOffensiveIsThisContent() {
-      return "Quanto \xe8 offensivo questo contenuto?";
+      return "Seberapa menyinggungnya konten ini?";
     },
     get$block() {
-      return "Blocca";
+      return "Blokir";
     },
     get$blockedUsers() {
-      return "Utenti bloccati";
+      return "Pengguna yang terblokir";
     },
     get$blockListDescription() {
-      return "Puoi bloccare gli utenti che ti disturbano. Non sarai pi\xf9 in grado di ricevere messaggi o inviti alle stanze dalle persone che hai bloccato.";
+      return "Kamu bisa memblokir pengguna yang sedang menganggumu. Kamu tidak akan mendapatkan pesan atau undangan ruangan dari pengguna dalam daftar blokiran pribadimu.";
     },
     get$blockUsername() {
-      return "Nome utente da ignorare";
+      return "Abaikan nama pengguna";
     },
     get$iHaveClickedOnLink() {
-      return "Ho cliccato sul collegamento";
+      return "Saya sudah klik tautannya";
     },
     get$incorrectPassphraseOrKey() {
-      return "Frase segrata o chiave di ripristino errate";
+      return "Frasa sandi atau kunci pemulihan yang salah";
     },
     get$inoffensive() {
-      return "Inoffensivo";
+      return "Tidak menyinggung";
     },
     get$inviteContact() {
-      return "Invita contatto";
+      return "Undang kontak";
     },
     get$noChatDescriptionYet() {
-      return "La descrizione della chat non \xe8 ancora stata creata.";
+      return "Deskripsi obrolan belum dibuat.";
     },
     get$tryAgain() {
-      return "Riprova";
+      return "Coba ulang";
     },
     get$invited() {
-      return "Invitato/a";
+      return "Diundang";
     },
     get$redactMessageDescription() {
-      return "Questo messaggio sar\xe0 rimosso per tutti i partecipanti di questa conversazione. Questa operazione non pu\xf2 essere annullata.";
+      return "Pesan akan dihilangkan untuk semua anggota dalam percakapan ini. Ini tidak dapat diurungkan.";
     },
     get$optionalRedactReason() {
-      return "(Opzionale) Ragione per rimuovere questo messaggio...";
+      return "(Opsional) Alasan menghilangkan pesan ini...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " ha invitato " + targetName;
+      return "\ud83d\udce9 " + username + " mengundang " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Solo utenti invitati";
+      return "Pengguna yang diundang saja";
     },
     inviteText$2(username, link) {
-      return username + " ti ha invitato/a a FluffyChat.\n1. Visita fluffychat.im e installa l'applicazione\n2. Iscriviti o accedi\n3. Apri il collegamento di invito: \n " + link;
+      return username + " mengundang kamu ke FluffyChat. \n1. Kunjungi fluffychat.im dan instal aplikasi\n2. Daftar atau masuk \n3. Buka tautan undangan: \n " + link;
     },
     get$isTyping() {
-      return "sta scrivendo\u2026";
+      return "sedang mengetik\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " si \xe8 unito/a alla chat";
+      return "\ud83d\udc4b " + username + " telah bergabung dengan obrolan";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " ha espulso " + targetName;
+      return "\ud83d\udc5e " + username + " mengeluarkan " + targetName;
     },
     get$kickFromChat() {
-      return "Espelli dalla chat";
+      return "Keluarkan dari obrolan";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Ultima attivit\xe0: " + localizedTimeShort;
+      return "Terakhir aktif: " + localizedTimeShort;
     },
     get$leave() {
-      return "Abbandona";
+      return "Tinggalkan";
     },
     get$leftTheChat() {
-      return "Ha abbandonato la chat";
+      return "Keluar dari obrolan";
     },
     get$lightTheme() {
-      return "Chiaro";
+      return "Terang";
     },
     loadCountMoreParticipants$1(count) {
-      return "Carica altri " + count + " partecipanti";
+      return "Muat " + count + " anggota";
     },
     get$dehydrate() {
-      return "Esporta la sessione e cancella il dispositivo";
+      return "Ekspor sesi dan bersihkan perangkat";
     },
     get$dehydrateWarning() {
-      return "Questa azione non pu\xf2 essere annullata. Assicurarsi di aver salvato il file di backup.";
+      return "Tindakan ini tidak dapat diurungkan. Pastikan kamu telah menyimpan file cadangan dengan aman.";
     },
     get$dehydrateTor() {
-      return "Utenti TOR: Esporta la sessione";
+      return "Pengguna Tor: Ekspor sesi";
     },
     get$dehydrateTorLong() {
-      return "Per gli utenti TOR, \xe8 raccomandato esportare la sessione prima di chiudere la finestra.";
+      return "Pengguna Tor disarankan untuk mengekspor sesi sebelum menutup jendela.";
     },
     get$loadingPleaseWait() {
-      return "Caricamento\u2026 Attendere prego.";
+      return "Memuat\u2026 Mohon tunggu.";
     },
     get$loadMore() {
-      return "Carica di pi\xf9\u2026";
+      return "Muat lebih banyak\u2026";
     },
     get$locationDisabledNotice() {
-      return "I servizi di localizzazione sono disabilitati. Per favore abilitali per poter condividere la tua posizione.";
+      return "Layanan lokasi dinonaktifkan. Mohon diaktifkan untuk bisa membagikan lokasimu.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Permesso per accedere alla posizione negato. Per favore concedilo per essere in grado di condividere la tua posizione.";
+      return "Izin lokasi ditolak. Mohon memberikan izin untuk bisa membagikan lokasimu.";
     },
     get$logout() {
-      return "Esci";
+      return "Keluar";
     },
     get$mention() {
-      return "Menzione";
+      return "Sebutkan";
     },
     get$messages() {
-      return "Messaggi";
+      return "Pesan";
     },
     get$messagesStyle() {
-      return "Messaggi:";
+      return "Pesan:";
     },
     get$moderator() {
-      return "Moderatore";
+      return "Moderator";
     },
     get$newChat() {
-      return "Nuova discussione";
+      return "Chat baru";
     },
     get$newVerificationRequest() {
-      return "Nuova richiesta di verifica!";
+      return "Permintaan verifikasi baru!";
     },
     get$next(_) {
-      return "Avanti";
+      return "Lanjut";
     },
     get$no() {
-      return "No";
+      return "Tidak";
     },
     get$noConnectionToTheServer() {
-      return "Nessuna connessione al server";
+      return "Tidak ada koneksi ke server";
     },
     get$noEmotesFound() {
-      return "Nessun emote trovato. \ud83d\ude15";
+      return "Tidak ada emote yang ditemukan. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Condividi link d'invito";
+      return "Bagikan tautan undangan";
     },
     get$noPasswordRecoveryDescription() {
-      return "Non hai ancora aggiunto un modo per recuperare la tua password.";
+      return "Kamu belum menambahkan cara untuk memulihkan kata sandimu.";
     },
     get$noPermission() {
-      return "Nessuna autorizzazione";
+      return "Tidak ada izin";
     },
     get$noRoomsFound() {
-      return "Nessuna stanza trovata\u2026";
+      return "Tidak ada ruangan yang ditemukan\u2026";
     },
     get$notifications() {
-      return "Notifiche";
+      return "Notifikasi";
     },
     get$obtainingLocation() {
-      return "Ottengo la posizione\u2026";
+      return "Mendapatkan lokasi\u2026";
     },
     get$offensive() {
-      return "Offensivo";
+      return "Menyinggung";
     },
     get$ok() {
       return "Ok";
     },
     get$oopsSomethingWentWrong() {
-      return "Ops, qualcosa \xe8 andato storto\u2026";
+      return "Ups, ada yang salah\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Uno dei tuoi client \xe8 stato disconnesso";
+      return "Salah satu klienmu telah keluar";
     },
     get$openInMaps() {
-      return "Apri in maps";
+      return "Buka di peta";
     },
     get$link() {
-      return "Link";
+      return "Tautan";
     },
     get$serverRequiresEmail() {
-      return "Questo server ha bisogno di validare la tua email per la registrazione.";
+      return "Server ini harus memvalidasi alamat email kamu untuk registrasi.";
     },
     get$or() {
-      return "O";
+      return "Atau";
     },
     get$participant() {
-      return "Partecipante";
+      return "Peserta";
     },
     get$passphraseOrKey() {
-      return "frase segreta o chiave di recupero";
+      return "frasa sandi atau kunci pemulihan";
     },
     get$password(_) {
-      return "Password";
+      return "Kata sandi";
     },
     get$passwordForgotten() {
-      return "Password dimenticata";
+      return "Lupa kata sandi";
     },
     get$passwordHasBeenChanged() {
-      return "La password \xe8 stata cambiata";
+      return "Kata sandi telah diubah";
     },
     get$overview() {
-      return "Panoramica";
+      return "Ikhtisar";
     },
     get$passwordRecoverySettings() {
-      return "Impostazioni di recupero password";
+      return "Pengaturan pemulihan kata sandi";
     },
     get$passwordRecovery() {
-      return "Recupero della password";
+      return "Pemulihan kata sandi";
     },
     get$pickImage() {
-      return "Scegli un'immagine";
+      return "Pilih gambar";
     },
     get$pin() {
-      return "Fissa";
-    },
-    get$pleaseChoose() {
-      return "Si prega di scegliere";
+      return "Pin";
     },
     get$pleaseEnterYourPassword() {
-      return "Inserisci la tua password";
+      return "Mohon masukkan kata sandimu";
     },
     get$pleaseEnterYourPin() {
-      return "Per favore inserisci il tuo PIN";
+      return "Masukkan pin";
     },
     get$pleaseEnterYourUsername() {
-      return "Inserisci il tuo nome utente";
+      return "Mohon masukkan nama penggunamu";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Segui le istruzioni sul sito web e tocca Avanti.";
+      return "Mohon ikuti petunjuk di situs web dan tekan lanjut.";
     },
     get$privacy() {
-      return "Privacy";
+      return "Privasi";
     },
     get$reason(_) {
-      return "Motivo";
+      return "Alasan";
     },
     redactedBy$1(username) {
-      return "Rimosso da " + username;
+      return "Dihilangkan oleh " + username;
     },
     get$directChat() {
-      return "Chat diretta";
+      return "Chat langsung";
     },
     redactedByBecause$2(username, reason) {
-      return "Rimosso da " + username + ' per: "' + reason + '"';
+      return "Dihilangkan oleh " + username + ' karena: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " ha eliminato un evento";
+      return username + " menghapus sebuah peristiwa";
     },
     get$redactMessage() {
-      return "Elimina un messaggio";
+      return "Hapus pesan";
     },
     get$reject() {
-      return "Rifiuta";
+      return "Tolak";
     },
     rejectedTheInvitation$1(username) {
-      return username + " ha rifiutato l'invito";
+      return username + " menolak undangannya";
     },
     get$removeAllOtherDevices() {
-      return "Rimuovi tutti gli altri dispositivi";
+      return "Hapus semua perangkat lain";
     },
     get$unbanFromChat() {
-      return "Rimuovi il ban dalla chat";
+      return "Hilangkan cekalan dari obrolan";
     },
     get$removeYourAvatar() {
-      return "Rimuovi il tuo avatar";
+      return "Hapus avatarmu";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Sostituisci la stanza con la versione pi\xf9 recente";
+      return "Menggantikan ruangan dengan versi baru";
     },
     get$reply(_) {
-      return "Rispondi";
+      return "Balas";
     },
     get$reportMessage() {
-      return "Segnala il messaggio";
+      return "Laporkan pesan";
     },
     get$roomHasBeenUpgraded() {
-      return "La stanza \xe8 stata aggiornata";
+      return "Ruangan telah ditingkatkan";
     },
     get$roomVersion() {
-      return "Versione della stanza";
+      return "Versi ruangan";
     },
     get$search(_) {
-      return "Cerca";
+      return "Cari";
     },
     get$security() {
-      return "Sicurezza";
+      return "Keamanan";
     },
     get$send(_) {
-      return "Invia";
+      return "Kirim";
     },
     get$sendAMessage() {
-      return "Invia un messaggio";
+      return "Kirim pesan";
     },
     get$sendAsText() {
-      return "Invia come testo";
+      return "Kirim sebagai teks";
     },
     get$sendAudio() {
-      return "Invia un file audio";
+      return "Kirim suara";
     },
     get$sendFile() {
-      return "Invia un file";
+      return "Kirim file";
     },
     get$sendImage() {
-      return "Invia un'immagine";
+      return "Kirim gambar";
     },
     sendImages$1(count) {
-      return "Invia " + count + " immagine";
+      return "Kirim " + count + " gambar";
     },
     get$sendMessages() {
-      return "Invia messaggi";
+      return "Kirim pesan";
     },
     get$sendVideo() {
-      return "Invia un video";
+      return "Kirim video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " ha inviato un file";
+      return "\ud83d\udcc1 " + username + " mengirim file";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " ha inviato un file audio";
+      return "\ud83c\udfa4 " + username + " mengirim suara";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " ha inviato un'immagine";
+      return "\ud83d\uddbc\ufe0f " + username + " mengirim gambar";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " ha inviato un adesivo";
+      return "\ud83d\ude0a " + username + " mengirim stiker";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " ha inviato un video";
+      return "\ud83c\udfa5 " + username + " mengirim video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " ha inviato informazioni sulla chiamata";
+      return senderName + " mengirim informasi panggilan";
     },
     get$separateChatTypes() {
-      return "Separare le chat dirette e i gruppi";
+      return "Pisahkan Pesan Langsung dan Grup";
     },
     get$setAsCanonicalAlias() {
-      return "Imposta come alias principale";
+      return "Atur sebagai alias utama";
     },
     get$setChatDescription() {
-      return "Imposta la descrizione della chat";
+      return "Lihat deskripsi obrolan";
     },
     get$setPermissionsLevel() {
-      return "Imposta il livello di autorizzazione";
+      return "Tetapkan level izin";
     },
     get$settings() {
-      return "Impostazioni";
+      return "Pengaturan";
     },
     get$share(_) {
-      return "Condividi";
+      return "Bagikan";
     },
     sharedTheLocation$1(username) {
-      return username + " ha condiviso la sua posizione";
+      return username + " membagikan lokasinya";
     },
     get$shareLocation() {
-      return "Condividi posizione";
+      return "Bagikan lokasi";
     },
     get$presencesToggle() {
-      return "Mostra i messaggi di stato di altri utenti";
+      return "Tampilkan pesan status dari pengguna lain";
     },
     get$skip(_) {
-      return "Ignora";
+      return "Lewat";
     },
     get$sourceCode() {
-      return "Codice sorgente";
+      return "Kode sumber";
     },
     get$spaceName() {
-      return "Nome dello spazio";
+      return "Nama space";
     },
     startedACall$1(senderName) {
-      return senderName + " ha iniziato una chiamata";
+      return senderName + " memulai panggilan";
     },
     get$status(_) {
-      return "Stato";
+      return "Status";
     },
     get$submit(_) {
-      return "Invia";
+      return "Kirim";
     },
     get$synchronizingPleaseWait() {
-      return "Sincronizzazione... Attendere prego.";
+      return "Menyinkronkan... Mohon tunggu.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Synchronizing\u2026 (" + percentage + "%)";
+      return " Sinkronisasi\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Sistema";
+      return "Sistem";
     },
     get$theyDontMatch() {
-      return "Non corrispondono";
+      return "Tidak Cocok";
     },
     get$theyMatch() {
-      return "Corrispondono";
+      return "Cocok";
     },
     get$tooManyRequestsWarning() {
-      return "Troppe richieste. Per favore riprova pi\xf9 tardi!";
+      return "Terlalu banyak permintaan. Coba lagi nanti!";
     },
     get$tryToSendAgain() {
-      return "Prova a inviare di nuovo";
+      return "Coba kirim lagi";
     },
     get$unavailable() {
-      return "Non disponibile";
+      return "Tidak tersedia";
     },
     unbannedUser$2(username, targetName) {
-      return username + " ha rimosso il bando di " + targetName;
+      return username + " menghilangkan cekalan " + targetName;
     },
     get$unblockDevice() {
-      return "Sblocca il dispositivo";
+      return "Hilangkan Pemblokiran Perangkat";
     },
     get$unknownDevice() {
-      return "Dispositivo sconosciuto";
+      return "Perangkat tidak dikenal";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Algoritmo di crittografia sconosciuto";
+      return "Algoritma enkripsi tidak dikenal";
     },
     unknownEvent$1(type) {
-      return "Evento sconosciuto \xab" + type + "\xbb";
+      return "Peristiwa tidak dikenal '" + type + "'";
     },
     get$unpin() {
-      return "Rimuovi";
+      return "Lepaskan pin";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " e " + count + " altri stanno scrivendo\u2026";
+      return username + " dan " + count + " lainnya sedang mengetik\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " e " + username2 + " stanno scrivendo\u2026";
+      return username + " dan " + username2 + " sedang mengetik\u2026";
     },
     userIsTyping$1(username) {
-      return username + " sta scrivendo\u2026";
+      return username + " sedang mengetik\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " ha abbandonato la chat";
+      return "\ud83d\udeaa " + username + " keluar dari obrolan";
     },
     get$username(_) {
-      return "Nome utente";
+      return "Nama Pengguna";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " ha inviato un evento " + type;
+      return username + " mengirim peristiwa " + type;
     },
     get$unverified() {
-      return "Non verificato";
+      return "Tidak terverifikasi";
     },
     get$verified() {
-      return "Verificato";
+      return "Terverifikasi";
     },
     get$verifyStart() {
-      return "Avvia la verifica";
+      return "Mulai Verifikasi";
     },
     get$verifySuccess() {
-      return "Hai verificato con successo!";
+      return "Kamu berhasil memverifikasi!";
     },
     get$verifyTitle() {
-      return "Verifica dell'altro account";
+      return "Memverifikasi akun lain";
     },
     get$visibilityOfTheChatHistory() {
-      return "Visibilit\xe0 della cronologia della discussione";
+      return "Visibilitas sejarah obrolan";
     },
     get$visibleForAllParticipants() {
-      return "Visibile a tutti i partecipanti";
+      return "Terlihat untuk semua anggota";
     },
     get$visibleForEveryone() {
-      return "Visibile a tutti";
+      return "Terlihat untuk semua orang";
     },
     get$voiceMessage() {
-      return "Messaggio vocale";
+      return "Pesan suara";
     },
     get$waitingPartnerAcceptRequest() {
-      return "In attesa che il partner accetti la richiesta\u2026";
+      return "Menunggu pengguna untuk menerima permintaan\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "In attesa che il partner accetti l'emoji\u2026";
+      return "Menunggu pengguna untuk menerima emoji\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "In attesa che il partner accetti i numeri\u2026";
+      return "Menunggu pengguna untuk menerima angka\u2026";
     },
     get$warning() {
-      return "Attenzione!";
+      return "Peringatan!";
     },
     get$weSentYouAnEmail() {
-      return "Ti abbiamo inviato un'e-mail";
+      return "Kami mengirim kamu sebuah email";
     },
     get$whoCanPerformWhichAction() {
-      return "Chi pu\xf2 eseguire quale azione";
+      return "Siapa yang dapat melakukan tindakan apa";
     },
     get$whyDoYouWantToReportThis() {
-      return "Perch\xe9 vuoi segnalarlo?";
+      return "Kenapa kamu ingin melaporkannya?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Con questi indirizzi puoi recuperare la tua password se necessario.";
+      return "Dengan alamat ini kamu bisa memulihkan kata sandimu.";
     },
     get$writeAMessage() {
-      return "Scrivi un messaggio\u2026";
+      return "Tulis pesan\u2026";
     },
     get$yes() {
-      return "S\xec";
+      return "Ya";
     },
     get$you() {
-      return "Tu";
+      return "Kamu";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Non stai pi\xf9 partecipando a questa chat";
+      return "Kamu tidak berpartisipasi lagi di obrolan ini";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Sei stato/a bandito/a da questa chat";
+      return "Kamu telah dicekal dari obrolan ini";
     },
     get$yourPublicKey() {
-      return "La tua chiave pubblica";
+      return "Kunci publikmu";
     },
     get$messageInfo() {
-      return "Informazioni del messaggio";
+      return "Informasi pesan";
     },
     get$time(_) {
-      return "Tempo";
+      return "Waktu";
     },
     get$sender() {
-      return "Mittente";
+      return "Pengirim";
     },
     get$openGallery() {
-      return "Apri la galleria";
+      return "Buka galeri";
     },
     get$removeFromSpace() {
-      return "Rimuovi dallo spazio";
+      return "Hilangkan dari space";
     },
     videoWithSize$1(size) {
       return "Video (" + size + ")";
     },
     get$markAsRead() {
-      return "Segna come letto";
+      return "Tandai sebagai dibaca";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " ha reagito con " + reaction;
+      return sender + " bereaksi dengan " + reaction;
     },
     get$pinMessage() {
-      return "Fissa alla stanza";
+      return "Sematkan ke ruangan";
     },
     get$confirmEventUnpin() {
-      return "Sei sicuro di voler permanentemente sfissare l'evento?";
+      return "Apakah kamu yakin untuk melepaskan pin peristiwa ini secara permanen?";
     },
     get$emojis() {
       return "Emoji";
     },
     get$youRejectedTheInvitation() {
-      return "Hai rifiutato l'invito";
+      return "Kamu menolak undangannya";
     },
     get$youJoinedTheChat() {
-      return "Sei entrato/a nella chat";
+      return "Kamu bergabung ke obrolan";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Hai accettato l'invito";
+      return "\ud83d\udc4d Kamu menerima undangannya";
     },
     youBannedUser$1(user) {
-      return "Hai bannato " + user;
+      return "Kamu mencekal " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Hai revocato l'invito per " + user;
+      return "Kamu telah membatalkan undangan untuk " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Sei stato invitato/a da " + user;
+      return "\ud83d\udce9 Kamu telah diundang oleh " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Hai invitato " + user;
+      return "\ud83d\udce9 Kamu mengundang " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Hai rimosso " + user;
+      return "\ud83d\udc5e Kamu mengeluarkan " + user;
     },
     youUnbannedUser$1(user) {
-      return "Hai sbannato " + user;
+      return "Kamu membatalkan cekalan " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " ha bussato";
+      return "\ud83d\udeaa " + user + " telah dikeluarkan";
     },
     get$usersMustKnock() {
-      return "Gli utenti devono bussare";
+      return "Pengguna harus mengetuk";
     },
     get$noOneCanJoin() {
-      return "Nessuno pu\xf2 unirsi";
+      return "Tidak ada siapa pun yang dapat bergabung";
     },
     userWouldLikeToChangeTheChat$1(user) {
-      return user + " vorrebbe unirsi alla chat.";
+      return user + " ingin bergabung dengan obrolan.";
     },
     get$users() {
-      return "Utenti";
+      return "Pengguna";
     },
     countFiles$1(count) {
       return "" + count + " file";
     },
     get$user() {
-      return "Utente";
+      return "Pengguna";
     },
     get$custom() {
-      return "Personalizzato";
+      return "Kustom";
     },
     get$noKeyForThisMessage() {
-      return "Questo pu\xf2 accadere se il messaggio \xe8 stato inviato prima che hai fatto l'accesso in questo dispositivo.\n\n\xc8 anche possibile che il mittente abbia bloccato il tuo dispositivo o che qualcosa sia andato storto con la tua connessione ad internet.\n\nSei in grado di leggere il messaggio su altre sessioni? Allora puoi trasferire il messaggio da l\xec! Vai su Impostazioni > Dispositivi e verifica che i tuoi dispositivi siano verificati l'un l'altro. Quando aprirai la stanza la prossima volta ed entrambe le sessioni sono in primo piano, le chiavi saranno trasmesse automaticamente.\n\nNon vuoi perdere le chiavi quando ti disconnetti o cambi dispositivo? Assicurati di aver attivato il backup delle chat nelle impostazioni.";
+      return "Hal ini bisa terjadi jika pesan dikirim sebelum kamu masuk ke akunmu di perangkat ini.\n\nMungkin juga pengirim telah memblokir perangkatmu atau ada yang tidak beres dengan koneksi internet.\n\nApakah kamu bisa membaca pesan pada sesi lain? Maka kamu bisa mentransfer pesan dari sesi tersebut! Buka Pengaturan > Perangkat dan pastikan bahwa perangkat Anda telah ditandatangani secara silang. Ketika kamu membuka ruangan di lain waktu dan kedua sesi berada di latar depan, kunci akan ditransmisikan secara otomatis.\n\nApakah kamu tidak mau kehilangan kunci saat keluar atau berpindah perangkat? Pastikan bahwa kamu telah mengaktifkan cadangan obrolan dalam pengaturan.";
     },
     get$newSpace() {
-      return "Nuovo spazio";
+      return "Space baru";
     },
     get$doNotShowAgain() {
-      return "Non mostrare pi\xf9";
+      return "Jangan tampilkan lagi";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Chat vuota (era " + oldDisplayName + ")";
+      return "Obrolan kosong (sebelumnya " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Riapri la chat";
+      return "Buka obrolan lagi";
     },
     get$noOtherDevicesFound() {
-      return "Nessun altro dispositivo trovato";
+      return "Tidak ada perangkat lain yang ditemukan";
     },
     fileIsTooBigForServer$1(max) {
-      return "Impossibile inviare! Il server supporta solo allegati fino a " + max + ".";
+      return "Tidak dapat mengirim! Server hanya mendukung lampiran sampai dengan " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Salta all'ultimo messaggio letto";
+      return "Pergi ke pesan terakhir dibaca";
     },
     get$readUpToHere() {
-      return "Letto fino a qui";
+      return "Baca sampai sini";
     },
     get$jump() {
-      return "Salta";
+      return "Lompat";
     },
     get$openLinkInBrowser() {
-      return "Apri il collegamento nel browser";
+      return "Buka tautan dalam peramban";
     },
     get$profileNotFound() {
-      return "Impossibile trovare l'utente sul server. Forse c'\xe8 un problema di connessione oppure l'utente non esiste.";
+      return "Pengguna ini tidak dapat ditemukan di server. Mungkin ada masalah koneksi atau penggunanya tidak ada.";
     },
     get$setColorTheme() {
-      return "Imposta tema colore:";
+      return "Atur tema warna:";
     },
     get$invite() {
-      return "Invitare";
+      return "Undang";
     },
     get$invalidInput() {
-      return "Contenuto non valido!";
+      return "Masukan tidak valid!";
     },
     wrongPinEntered$1(seconds) {
-      return "\xc8 stato inserito il pin sbagliato! Riprova tra " + seconds + " secondi...";
+      return "PIN yang dimasukkan salah! Coba lagi dalam " + seconds + " detik...";
     },
     get$pleaseEnterANumber() {
-      return "Per favore inserisci un numero maggiore di 0";
+      return "Silakan masukkan angka lebih dari 0";
     },
     get$roomUpgradeDescription() {
-      return "Questa chat sar\xe0 ricreata con la nuova versione della stanza. Tutti i partecipanti saranno avvertiti che devono passare alla nuova chat. Puoi leggere di pi\xf9 riguardo le versioni delle stanze su https://spec.matrix.org/latest/rooms/";
+      return "Percakapannya akan dibuat ulang dengan versi ruangan yang baru. Semua anggota akan diberi tahu bahwa mereka harus ganti ke percakapan yang baru. Kamu bisa mempelajari lebih lanjut tentang versi ruangan di https://spec.matrix.org/latest/rooms/";
     },
     get$removeDevicesDescription() {
-      return "Sarai disconnesso da questo dispositivo e non potrai pi\xf9 ricevere messaggi.";
+      return "Kamu akan dikeluarkan dari perangkat ini dan tidak akan dapat menerima pesan lagi.";
     },
     get$banUserDescription() {
-      return "L'utente sar\xe0 bannato dalla chat e non sar\xe0 in grado di rientrare finch\xe9 non verr\xe0 sbannato.";
+      return "Pengguna akan dicekal dari percakapan dan tidak akan dapat memasuki percakapan lagi sampai dibatalkan cekalannya.";
     },
     get$unbanUserDescription() {
-      return "L'utente potr\xe0 rientrare nella chat.";
+      return "Pengguna akan dapat memasuki percakapannya lagi jika dicoba.";
     },
     get$kickUserDescription() {
-      return "L'utente \xe8 stato rimosso, ma non bannato. Nelle chat pubbliche, l'utente potr\xe0 rientrare quando vuole.";
+      return "Pengguna ini dikeluarkan dari percakapan tetapi tidak dicekal. Dalam percakapan publik, penggunanya dapat bergabung ulang kapan pun.";
     },
     get$makeAdminDescription() {
-      return "Una volta che fai questo utente amministratore, potresti non essere in grado di rimuoverlo, in quanto avr\xe0 i tuoi stessi privilegi.";
+      return "Setelah kamu membuat pengguna ini admin, kamu tidak akan dapat mengurungkan ini karena penggunanya akan memiliki perizinan yang sama seperti kamu.";
     },
     get$yourGlobalUserIdIs() {
-      return "Il tuo ID dell'utente globale \xe8: ";
+      return "ID pengguna globalmu adalah: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Sfortunatamente non \xe8 stato trovato nessun utente con "' + query + '". Per favore controlla se hai fatto un errore di battitura.';
+      return 'Sayangnya tidak ada pengguna yang dapat ditemukan dengan "' + query + '". Silakan periksa jika ada tipo.';
     },
     get$knocking() {
-      return "Bussare";
+      return "Mengetuk";
     },
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "La chat pu\xf2 essere trovata tramite la ricerca su " + server;
+      return "Obrolan dapat ditemukan melalui pencarian di " + server;
     },
     get$searchChatsRooms() {
-      return "Cerca per #chat, @utenti...";
+      return "Cari #percakapan, @pengguna...";
     },
     get$nothingFound() {
-      return "Non \xe8 stato trovato nulla...";
+      return "Tidak ada yang ditemukan...";
     },
     get$wrongRecoveryKey() {
-      return "Mi dispiace... questa non sembra essere la chiave di recupero corretta.";
+      return "Maaf... ini sepertinya bukan kunci pemulihan yang benar.";
     },
     get$startConversation() {
-      return "Inizia una conversazione";
+      return "Mulai percakapan";
     },
     get$commandHint_sendraw() {
-      return "Manda un json grezzo";
+      return "Kirim JSON mentah";
     },
     get$searchForUsers() {
-      return "Cerca @utenti...";
+      return "Cari @pengguna...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Per favore inserisci la tua password attuale";
+      return "Silakan masukkan kata sandimu saat ini";
     },
     get$newPassword() {
-      return "Nuova password";
+      return "Kata sandi baru";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Per favore scegli una password forte";
+      return "Silakan pilih kata sandi yang kuat";
     },
     get$passwordsDoNotMatch() {
-      return "Le password non corrispondono";
+      return "Kata sandi tidak cocok";
     },
     get$passwordIsWrong() {
-      return "La password inserita \xe8 sbagliata";
+      return "Kata sandi yang kamu masukkan salah";
     },
     get$publicChatAddresses() {
-      return "Indirizzi di chat pubblici";
+      return "Alamat obrolan umum";
     },
     get$createNewAddress() {
-      return "Crea un nuovo indirizzo";
+      return "Buat alamat baru";
     },
     get$publicSpaces() {
-      return "Spazio pubblico";
+      return "Space publik";
     },
     get$decline() {
-      return "Declina";
+      return "Tolak";
     },
     get$thisDevice() {
-      return "Questo dispositivo:";
+      return "Perangkat ini:";
     },
     get$initAppError() {
-      return "Si \xe8 verificato un errore durante l'inizializzazione dell'app";
+      return "Terjadi kesalahan saat init aplikasi";
     },
     get$userRole() {
-      return "Ruolo utente";
+      return "Peran pengguna";
     },
     searchIn$1(chat) {
-      return 'Cerca nella chat "' + chat + '"...';
+      return 'Cari dalam obrolan "' + chat + '"...';
     },
     get$searchMore() {
-      return "Cerca di pi\xf9...";
+      return "Cari lebih banyak...";
     },
     get$gallery() {
-      return "Galleria";
+      return "Galeri";
     },
     get$files(_) {
-      return "File";
+      return "Berkas";
     },
     sessionLostBody$2(url, error) {
-      return "La tua sessione \xe8 andata persa. Segnala questo errore agli sviluppatori all'indirizzo " + url + ". Il messaggio di errore \xe8: " + error;
+      return "Sesimu hilang. Silakan laporkan kesalahan ini kepada pengembang di " + url + ". Pesan kesalahannya adalah: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "L'app ora tenta di ripristinare la sessione dal backup. Segnala questo errore agli sviluppatori all'indirizzo " + url + ". Il messaggio di errore \xe8: " + error;
+      return "Aplikasi sekarang mencoba memulihkan sesimu dari cadangan. Silakan laporkan kesalahan ini kepada pengembang di " + url + ". Pesan kesalahannya adalah: " + error;
     },
     get$sendReadReceipts() {
-      return "Invia ricevute di lettura";
+      return "Kirim laporan dibaca";
     },
     get$sendTypingNotificationsDescription() {
-      return "Gli altri partecipanti alla chat possono vedere quando stai scrivendo un nuovo messaggio.";
+      return "Anggota lain dalam percakapan dapat melihat ketika kamu sedang mengetik sebuah pesan baru.";
     },
     get$sendReadReceiptsDescription() {
-      return "Gli altri partecipanti alla chat possono vedere quando hai letto un messaggio.";
+      return "Anggota lain dalam percakapan dapat melihat ketika kamu membaca sebuah pesan.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Verifica altro dispositivo";
+      return "\ud83d\udd10 Verifikasi perangkat lain";
     },
     get$verifyOtherDeviceDescription() {
-      return "Quando verifichi un altro dispositivo, questi dispositivi possono scambiarsi le chiavi, aumentando la tua sicurezza complessiva. \ud83d\udcaa Quando inizi una verifica, apparir\xe0 un popup nell'app su entrambi i dispositivi. L\xec vedrai una serie di emoji o numeri che dovrai confrontare tra loro. \xc8 meglio avere entrambi i dispositivi a portata di mano prima di iniziare la verifica. \ud83e\udd33";
+      return "Saat kamu memverifikasi perangkat lain, perangkat tersebut dapat bertukar kunci, sehingga meningkatkan keamananmu secara keseluruhan. \ud83d\udcaa Saat Anda memulai verifikasi, sebuah pemberitahuan akan muncul di aplikasi pada kedua perangkat. Di situ kemudian akan melihat serangkaian emoji atau angka yang harus dibandingkan satu sama lain. Sebaiknya siapkan kedua perangkat sebelum kamu memulai verifikasi. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " ha accettato la verifica della chiave";
+      return sender + " menerima verifikasi kunci";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " ha annullato la verifica della chiave";
+      return sender + " membatalkan verifikasi kunci";
     },
     completedKeyVerification$1(sender) {
-      return sender + " ha completato la verifica della chiave";
+      return sender + " menyelesaikan verifikasi kunci";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " \xe8 pronto per la verifica della chiave";
+      return sender + " siap untuk verifikasi kunci";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " ha richiesto la verifica della chiave";
+      return sender + " meminta verifikasi kunci";
     },
     startedKeyVerification$1(sender) {
-      return sender + " ha avviato la verifica della chiave";
+      return sender + " memulai verifikasi kunci";
     },
     get$stickers() {
-      return "Adesivi";
+      return "Stiker";
     },
     get$discover() {
-      return "Scopri";
+      return "Jelajahi";
     },
     get$commandHint_ignore() {
-      return "Ignora il Matrix ID fornito";
+      return "Abaikan ID Matrix yang diberikan";
     },
     get$commandHint_unignore() {
-      return "Ignora il Matrix ID specificato";
+      return "Batalkan pengabaian ID Matrix yang diberikan";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Al momento ci sono " + count + " utenti bloccati.";
+      return "Saat ini ada " + count + " pengguna yang diblokir.";
     },
     get$restricted() {
-      return "Limitato";
+      return "Dibatasi";
     },
     get$knockRestricted() {
-      return "Limitato al bussare";
+      return "Ketukan dibatasi";
     },
     goToSpace$1(space) {
-      return "Vai allo spazio: " + space;
+      return "Pergi ke space: " + space;
     },
     get$markAsUnread() {
-      return "Contrassegna come non letto";
+      return "Tandai sebagai belum dibaca";
     },
     userLevel$1(level) {
-      return "" + level + " - Utente";
+      return "" + level + " - Pengguna";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderatore";
+      return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - Amministratore";
+      return "" + level + " - Admin";
     },
     get$changeGeneralChatSettings() {
-      return "Modifica le impostazioni generali della chat";
+      return "Ubah pengaturan chat umum";
     },
     get$inviteOtherUsers() {
-      return "Invita altri utenti a questa chat";
+      return "Undang pengguna lain ke chat ini";
     },
     get$changeTheChatPermissions() {
-      return "Cambia i permessi della chat";
+      return "Ubah perizinan chat";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Cambia la visibilit\xe0 della cronologia chat";
+      return "Ubah keterlihatan riwayat chat";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Cambia l'indirizzo principale della chat pubblica";
+      return "Ubah alamat chat publik utama";
     },
     get$sendRoomNotifications() {
-      return "Invia notifiche alla @stanza";
+      return "Kirim notifikasi @room";
     },
     get$changeTheDescriptionOfTheGroup() {
-      return "Cambia la descrizione della chat";
+      return "Ubah deskripsi chat";
     },
     get$chatPermissionsDescription() {
-      return "Definisci quale livello di privilegi \xe8 necessario per determinate azioni in questa chat. I livelli di privilegi 0, 50 e 100 rappresentano solitamente utenti, moderatori e amministratori, ma qualsiasi valore intermedio \xe8 possibile.";
+      return "Tentukan tingkat kekuasaan yang diperlukan untuk tindakan tertentu dalam chat ini. Tingkat kekuasaan 0, 50 dan 100 biasanya mewakili pengguna, moderator dan admin, tetapi gradasi apa pun dimungkinkan.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 Aggiornamento " + version + " installato!";
+      return "\ud83c\udf89 Pembaruan " + version + " terpasang!";
     },
     get$sendCanceled() {
-      return "Invio annullato";
+      return "Pengiriman dibatalkan";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Non sembra essere un homeserver compatibile. URL sbagliato?";
+      return "Sepertinya bukan homeserver yang kompatibel. URL salah?";
     },
     get$calculatingFileSize() {
-      return "Calcolo della dimensione del file...";
+      return "Menghitung ukuran berkas...";
     },
     get$prepareSendingAttachment() {
-      return "Preparazione per l'invio dell'allegato...";
+      return "Menyiapkan pengiriman lampiran...";
     },
     get$sendingAttachment() {
-      return "Invio allegato...";
+      return "Mengirim lampiran...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Invio dell'allegato " + index + " di " + $length + "...";
+      return "Mengirim lampiran " + index + " dari " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Limite server raggiunto! Attendere " + seconds + " secondi...";
+      return "Batasan server tercapai! Menunggu " + seconds + " detik...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Nota: quando colleghi tutti i tuoi dispositivi al backup della chat, vengono verificati automaticamente.";
+      return "Catatan: Ketika Anda menghubungkan semua perangkat Anda ke cadangan chat, mereka akan diverifikasi secara otomatis.";
     },
     get$continueText() {
-      return "Continua";
+      return "Lanjutkan";
     },
     get$blur(_) {
-      return "Sfocatura:";
+      return "Buram:";
     },
     get$opacity(_) {
-      return "Opacit\xe0:";
+      return "Opasitas:";
     },
     get$setWallpaper() {
-      return "Imposta sfondo";
+      return "Atur later belakang";
     },
     get$noContactInformationProvided() {
-      return "Il server non fornisce alcuna informazione di contatto valida";
+      return "Server tidak menyediakan informasi kontak valid apa pun";
     },
     get$contactServerAdmin() {
-      return "Contatta l'amministratore del server";
+      return "Hubungi admin server";
     },
     get$contactServerSecurity() {
-      return "Contatta la sicurezza del server";
+      return "Hubungi keamanan server";
     },
     get$supportPage() {
-      return "Pagina di supporto";
+      return "Laman dukungan";
     },
     get$serverInformation() {
-      return "Informazioni sul server:";
+      return "Informasi server:";
     },
     get$name(_) {
-      return "Nome";
+      return "Nama";
     },
     get$version(_) {
-      return "Versione";
+      return "Versi";
     },
     get$compress() {
-      return "Comprimere";
+      return "Kompres";
     },
     get$boldText() {
-      return "Testo in grassetto";
+      return "Teks tebal";
     },
     get$italicText() {
-      return "Testo in corsivo";
+      return "Teks miring";
     },
     get$strikeThrough() {
-      return "Barrato";
+      return "Coret";
     },
     get$pleaseFillOut() {
-      return "Si prega di compilare";
+      return "Silakan isi";
     },
     get$invalidUrl() {
-      return "URL non valido";
+      return "URL tidak valid";
     },
     get$addLink() {
-      return "Aggiungi collegamento";
+      return "Tambahkan tautan";
     },
     get$unableToJoinChat() {
-      return "Impossibile partecipare alla chat. Forse l'altra parte ha gi\xe0 chiuso la conversazione.";
+      return "Tidak dapat bergabung dalam chat. Mungkin pihak lain telah menutup percakapan.";
     },
     get$previous() {
-      return "Previous";
+      return "Sebelumnya";
     },
     get$otherPartyNotLoggedIn() {
-      return "The other party is currently not logged in and therefore cannot receive messages!";
+      return "Pihak lain belum masuk dan tidak dapat menerima pesan!";
     },
     get$open(_) {
-      return "Open";
+      return "Buka";
     },
     get$waitingForServer() {
-      return "Waiting for server...";
+      return "Menunggu server...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 New chat request";
+      return "\ud83d\udce9 Permintaan pesan baru";
     },
     get$contentNotificationSettings() {
-      return "Content notification settings";
+      return "Pengaturan notifikasi konten";
     },
     get$generalNotificationSettings() {
-      return "General notification settings";
+      return "Pengaturan notifikasi umum";
     },
     get$roomNotificationSettings() {
-      return "Room notification settings";
+      return "Pengaturan notifikasi ruangan";
     },
     get$userSpecificNotificationSettings() {
-      return "User specific notification settings";
+      return "Pengaturan notifikasi spesifik pengguna";
     },
     get$otherNotificationSettings() {
-      return "Other notification settings";
+      return "Pengaturan notifikasi lainnya";
     },
     get$notificationRuleContainsUserName() {
-      return "Contains User Name";
+      return "Berisi Nama Pengguna";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Notifies the user when a message contains their username.";
+      return "Memberi tahu pengguna ketika pesan memiliki nama penggunanya.";
     },
     get$notificationRuleMaster() {
-      return "Mute all notifications";
+      return "Bisukan semua notifikasi";
     },
     get$notificationRuleMasterDescription() {
-      return "Overrides all other rules and disables all notifications.";
+      return "Menimpa peraturan lainnya dan menonaktifkan semua notifikasi.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Suppress Automated Messages";
+      return "Dimakan Pesan Terautomasi";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Suppresses notifications from automated clients like bots.";
+      return "Mendiamkan notifikasi dari klien terautomasi seperti bot.";
     },
     get$notificationRuleInviteForMe() {
-      return "Invite for Me";
+      return "Undang untuk Aku";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Notifies the user when they are invited to a room.";
+      return "Memberi tahu pengguna ketika diundang ke ruangan.";
     },
     get$notificationRuleMemberEvent() {
-      return "Member Event";
+      return "Peristiwa Anggota";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Suppresses notifications for membership events.";
+      return "Mendiamkan notifikasi peristiwa keanggotaan.";
     },
     get$notificationRuleIsUserMention() {
-      return "User Mention";
+      return "Sebutan Pengguna";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Notifies the user when they are directly mentioned in a message.";
+      return "Memberi tahu pengguna ketika disebut secara langsung dalam pesan.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Contains Display Name";
+      return "Berisi Nama Tampilan";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Notifies the user when a message contains their display name.";
+      return "Memberi tahu pengguna ketika pesan berisi nama tampilannya.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Room Mention";
+      return "Sebutan Ruangan";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Notifies the user when there is a room mention.";
+      return "Memberi tahu pengguna ketika ada sebutan ruangan.";
     },
     get$notificationRuleRoomnotif() {
-      return "Room Notification";
+      return "Notifikasi Ruangan";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Notifies the user when a message contains '@room'.";
+      return "Memberi tahu pengguna ketika pesan berisi '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "Tombstone";
+      return "Nisan";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Notifies the user about room deactivation messages.";
+      return "Memberi tahu pengguna tentang pesan deaktivasi ruangan.";
     },
     get$notificationRuleReaction() {
-      return "Reaction";
+      return "Reaksi";
     },
     get$notificationRuleReactionDescription() {
-      return "Suppresses notifications for reactions.";
+      return "Mendiamkan notifikasi reaksi.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Room Server ACL";
+      return "ACL Server Ruangan";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Suppresses notifications for room server access control lists (ACL).";
+      return "Mendiamkan notifikasi daftar kontrol akses server ruangan (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Suppress Edits";
+      return "Diamkan Penyuntingan";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Suppresses notifications for edited messages.";
+      return "Mendiamkan notifikasi pesan tersunting.";
     },
     get$notificationRuleCall() {
-      return "Call";
+      return "Panggilan";
     },
     get$notificationRuleCallDescription() {
-      return "Notifies the user about calls.";
+      return "Memberi tahu pengguna tentang panggilan.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Encrypted Room One-to-One";
+      return "Ruangan Terenkripsi Satu ke Satu";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Notifies the user about messages in encrypted one-to-one rooms.";
+      return string$.Member;
     },
     get$notificationRuleRoomOneToOne() {
-      return "Room One-to-One";
+      return "Ruangan Satu ke Satu";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Notifies the user about messages in one-to-one rooms.";
+      return string$.Member;
     },
     get$notificationRuleMessage() {
-      return "Message";
+      return "Pesan";
     },
     get$notificationRuleMessageDescription() {
-      return "Notifies the user about general messages.";
+      return "Memberi tahu pengguna tentang pesan umum.";
     },
     get$notificationRuleEncrypted() {
-      return "Encrypted";
+      return "Terenkripsi";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Notifies the user about messages in encrypted rooms.";
+      return "Memberi tahu pengguna tentang pesan dalam ruangan terenkripsi.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Notifies the user about Jitsi widget events.";
+      return "Memberi tahu pengguna tentang peristiwa widget Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "Suppress Server ACL Events";
+      return "Diamkan Peristiwa ACL Server";
     },
     get$notificationRuleServerAclDescription() {
-      return "Suppresses notifications for Server ACL events.";
+      return "Mendiamkan notifikasi peristiwa ACL server.";
     },
     unknownPushRule$1(rule) {
-      return "Unknown push rule '" + rule + "'";
+      return "Aturan dorongan '" + rule + "' tidak diketahui";
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "If you delete this notification setting, this can not be undone.";
+      return "Jika kamu menghapus pengaturan notifikasi ini, maka tidak dapat diurungkan.";
     },
     get$more() {
-      return "More";
+      return "Tambahan";
     },
     get$shareKeysWith() {
-      return "Share keys with...";
+      return "Bagikan kunci dengan...";
     },
     get$shareKeysWithDescription() {
-      return "Which devices should be trusted so that they can read along your messages in encrypted chats?";
+      return "Perangkat apa saja yang dipercayai supaya mereka bisa membaca bersama dengan pesanmu dalam obrolan terenkripsi?";
     },
     get$allDevices() {
-      return "All devices";
+      return "Semua perangkat";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Cross verified devices if enabled";
+      return "Verifikasi silang perangkat jika diaktifkan";
     },
     get$crossVerifiedDevices() {
-      return "Cross verified devices";
+      return "Perangkat terverifikasi silang";
     },
     get$verifiedDevicesOnly() {
-      return "Verified devices only";
+      return "Perangkat terverifikasi saja";
     },
     get$editChatPermissions() {
       return "Edit chat permissions";
@@ -2891,9 +2885,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$manageSubscription() {
       return "Manage Subscription";
-    },
-    get$createChat() {
-      return "Create chat";
     },
     get$error520Title() {
       return "Please try again.";
@@ -4363,14 +4354,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nIt, C.L10n);
+    _inherit(A.L10nId, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nIt":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nId":{"L10n":[]}}'));
+  var string$ = {
+    Member: "Memberi tahu pengguna tentang pesan dalam ruangan satu ke satu."
+  };
 };
 ;
 ((d, h) => {
   d[h] = d.current;
-  d.eventLog.push({p: "main.dart.js_238", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "47M9nPmWnXvAi6o8x7AAn8TiJ8s=");
+  d.eventLog.push({p: "main.dart.js_231", e: "endPart", h: h});
+})($__dart_deferred_initializers__, "wEFGFU8fbgNqi07xLJ4j06CB+TM=");
 ;
-//# sourceMappingURL=main.dart.js_238.part.js.map
+//# sourceMappingURL=main.dart.js_231.part.js.map

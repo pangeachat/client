@@ -355,9 +355,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participants";
     },
-    get$create(_) {
-      return "Create";
-    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " created the chat";
     },
@@ -717,9 +714,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pin() {
       return "Pin";
-    },
-    get$pleaseChoose() {
-      return "Please choose";
     },
     get$pleaseEnterYourPassword() {
       return "Please enter your password";
@@ -2905,9 +2899,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$manageSubscription() {
       return "Manage Subscription";
     },
-    get$createChat() {
-      return "Create chat";
-    },
     get$error520Title() {
       return "Please try again.";
     },
@@ -4671,9 +4662,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participantes";
     },
-    get$create(_) {
-      return "Criar";
-    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " criou a conversa";
     },
@@ -5033,9 +5021,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pin() {
       return "Alfinetar";
-    },
-    get$pleaseChoose() {
-      return "Por favor, selecione";
     },
     get$pleaseEnterYourPassword() {
       return "Por favor, insira sua senha";
@@ -5864,9 +5849,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participantes";
     },
-    get$create(_) {
-      return "Criar";
-    },
     createdTheChat$1(username) {
       return username + " criou a conversa";
     },
@@ -6158,9 +6140,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pin() {
       return "Afixar";
     },
-    get$pleaseChoose() {
-      return "Por favor, escolhe";
-    },
     get$pleaseEnterYourPassword() {
       return "Por favor, insere a tua palavra-passe";
     },
@@ -6280,6 +6259,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Dp0HztCcsZY5qxV5Kf7JPwlT3/w=");
+})($__dart_deferred_initializers__, "GHytQm/dietd8v6O/2NK1QAOUbo=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map
