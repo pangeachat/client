@@ -456,9 +456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$extremeOffensive() {
       return "Itin \u012f\u017eeid\u017eiantis";
     },
-    get$fontSize(_) {
-      return "\u0160rifto dydis";
-    },
     get$forward(_) {
       return "Toliau";
     },
@@ -4362,6 +4359,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_242", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "CQkKDDEY2OqfR4XjXEqr3WHw3m0=");
+})($__dart_deferred_initializers__, "CJTQVJdk9f+bI1miklNUhQ7TT0g=");
 ;
 //# sourceMappingURL=main.dart.js_242.part.js.map

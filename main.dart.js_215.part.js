@@ -456,9 +456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$extremeOffensive() {
       return "F\xedor-maslach";
     },
-    get$fontSize(_) {
-      return "M\xe9id cl\xf3";
-    },
     get$forward(_) {
       return "Seol ar aghaidh";
     },
@@ -4365,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_215", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "wZGqSdjh0UsC8XiNoGlHfvfRL1Y=");
+})($__dart_deferred_initializers__, "vNokgKSVNXEhmBm5tfyMpuWjTCg=");
 ;
 //# sourceMappingURL=main.dart.js_215.part.js.map

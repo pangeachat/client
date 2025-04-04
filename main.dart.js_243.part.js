@@ -456,9 +456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$extremeOffensive() {
       return "\u012apa\u0161i aizskaro\u0161s";
     },
-    get$fontSize(_) {
-      return "Fonta izm\u0113rs";
-    },
     get$forward(_) {
       return "P\u0101rs\u016bt\u012bt";
     },
@@ -4362,6 +4359,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_243", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "oMtKXvcUufeqjY0THe5l+4N4nmk=");
+})($__dart_deferred_initializers__, "joQdM49WqzWrQUyoRtBQrr0+Yyk=");
 ;
 //# sourceMappingURL=main.dart.js_243.part.js.map

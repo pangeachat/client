@@ -456,9 +456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$extremeOffensive() {
       return "C\u1ef1c k\u1ef3 x\xfac ph\u1ea1m";
     },
-    get$fontSize(_) {
-      return "K\xedch th\u01b0\u1edbc ph\xf4ng ch\u1eef";
-    },
     get$forward(_) {
       return "Chuy\u1ec3n ti\u1ebfp";
     },
@@ -4362,6 +4359,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "UALZg4hjs23yJUwj9lDX5xcI9gA=");
+})($__dart_deferred_initializers__, "zrMaLQEQTraQ+U/OaPuP56B87JY=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map
