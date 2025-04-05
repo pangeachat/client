@@ -4048,7 +4048,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "T\u1eeb '" + lemma + "' c\xf3 ngh\u0129a l\xe0 g\xec?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Match the meanings to the words in the message!";
+      return "Match meanings with the words in the message!";
     },
     get$doubleClickToEdit() {
       return "Nh\u1ea5p \u0111\xfap \u0111\u1ec3 ch\u1ec9nh s\u1eeda.";
@@ -4222,7 +4222,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Tham gia b\u1eb1ng m\xe3";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Listen to the full message then match the word audios to the right blanks!";
+      return "Listen to the complete message. Then match the audios with the words.";
     },
     get$chooseMorphsInstructionsBody() {
       return "Click the puzzle pieces for grammar questions!";
@@ -4359,6 +4359,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "zrMaLQEQTraQ+U/OaPuP56B87JY=");
+})($__dart_deferred_initializers__, "cr/uiGzEoE408RHxfq16xTxryQg=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map

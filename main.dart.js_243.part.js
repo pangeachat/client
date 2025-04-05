@@ -4048,7 +4048,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "What does '" + lemma + "' mean?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Match the meanings to the words in the message!";
+      return "Match meanings with the words in the message!";
     },
     get$doubleClickToEdit() {
       return "Double-click to edit.";
@@ -4222,7 +4222,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Join by code";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Listen to the full message then match the word audios to the right blanks!";
+      return "Listen to the complete message. Then match the audios with the words.";
     },
     get$chooseMorphsInstructionsBody() {
       return "Click the puzzle pieces for grammar questions!";
@@ -4359,6 +4359,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_243", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "joQdM49WqzWrQUyoRtBQrr0+Yyk=");
+})($__dart_deferred_initializers__, "pMnhl4z19zDBccarZd9CEBjHXWA=");
 ;
 //# sourceMappingURL=main.dart.js_243.part.js.map
