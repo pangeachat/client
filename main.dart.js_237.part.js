@@ -630,6 +630,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$shareInviteLink() {
       return "Condividi link d'invito";
     },
+    get$none() {
+      return "Nessuno";
+    },
     get$noPasswordRecoveryDescription() {
       return "Non hai ancora aggiunto un modo per recuperare la tua password.";
     },
@@ -4359,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_237", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "HTSDarkXVwzdymqc6k1DuAUjvyI=");
+})($__dart_deferred_initializers__, "CuqpSzxsXOIxPT1uEgJjctbWQEI=");
 ;
 //# sourceMappingURL=main.dart.js_237.part.js.map

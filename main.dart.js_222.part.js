@@ -630,6 +630,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$shareInviteLink() {
       return "Dijeli poveznicu za poziv";
     },
+    get$none() {
+      return "Ni\u0161ta";
+    },
     get$noPasswordRecoveryDescription() {
       return "Jo\u0161 nisi dodao/la na\u010din za obnavljanje lozinke.";
     },
@@ -4359,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_222", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "uMNAGnGr6TZ6XPG8/u1ufcC8tN8=");
+})($__dart_deferred_initializers__, "oCacYaFeJOZU/QGbc7fc6Th6OBI=");
 ;
 //# sourceMappingURL=main.dart.js_222.part.js.map

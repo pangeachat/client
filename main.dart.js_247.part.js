@@ -631,6 +631,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$shareInviteLink() {
       return "Udost\u0119pnij link z zaproszeniem";
     },
+    get$none() {
+      return "Brak";
+    },
     get$noPasswordRecoveryDescription() {
       return "Nie doda\u0142e\u015b/-a\u015b jeszcze sposobu odzyskiwania swojego has\u0142a.";
     },
@@ -4360,6 +4363,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_247", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "DrKmL7TqVLBLTdQEKdzDlxETNoQ=");
+})($__dart_deferred_initializers__, "skk2nEosTsrz4SOdHRUqtb3UrK8=");
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map

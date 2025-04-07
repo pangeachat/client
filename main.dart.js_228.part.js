@@ -630,6 +630,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$shareInviteLink() {
       return "Megh\xedv\xf3 link megoszt\xe1sa";
     },
+    get$none() {
+      return "Nincs";
+    },
     get$noPasswordRecoveryDescription() {
       return "M\xe9g nem adott meg semmilyen m\xf3dot a jelszava vissza\xe1ll\xedt\xe1s\xe1ra.";
     },
@@ -4359,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_228", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ncxuTfvR+HkbFKniVahp/DYYus4=");
+})($__dart_deferred_initializers__, "MpXibMesIP5B6WckfVDb0K8tqMY=");
 ;
 //# sourceMappingURL=main.dart.js_228.part.js.map

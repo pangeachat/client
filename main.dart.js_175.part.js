@@ -631,6 +631,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$shareInviteLink() {
       return "Comparteix un enlla\xe7 d'invitaci\xf3";
     },
+    get$none() {
+      return "Cap";
+    },
     get$noPasswordRecoveryDescription() {
       return "Encara no heu afegit cap m\xe8tode per a poder recuperar la contrasenya.";
     },
@@ -4360,6 +4363,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_175", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "d9+PFwpqEjNGaDwFWp4td6t151c=");
+})($__dart_deferred_initializers__, "izCv92DcQQ+UKkJUJleMdjAyUB4=");
 ;
 //# sourceMappingURL=main.dart.js_175.part.js.map
