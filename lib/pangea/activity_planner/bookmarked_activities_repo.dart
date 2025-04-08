@@ -32,7 +32,9 @@ class BookmarkedActivitiesRepo {
         _bookStorage.read(activity.bookmarkId!) != null;
   }
 
-  static List<ActivityPlanModel> get() {
+  static Future<List<ActivityPlanModel>> get() async {
+    // getValues returns null initially. Calling initStorage prevents that
+    await _bookStorage.initStorage;
     final list = _bookStorage.getValues();
 
     if (list == null) return [];
