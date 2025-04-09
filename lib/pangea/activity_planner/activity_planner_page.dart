@@ -23,7 +23,7 @@ import 'package:fluffychat/pangea/learning_settings/utils/language_list_util.dar
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum _PageMode {
+enum PageMode {
   settings,
   generatedActivities,
   savedActivities,
@@ -41,7 +41,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
   final _formKey = GlobalKey<FormState>();
 
   /// Index of the content to display
-  _PageMode _pageMode = _PageMode.settings;
+  PageMode _pageMode = PageMode.settings;
 
   MediaEnum _selectedMedia = MediaEnum.nan;
   String? _selectedLanguageOfInstructions;
@@ -97,7 +97,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
       LearningObjectiveListRepo.get(req);
 
   Future<void> _generateActivities() async {
-    _pageMode = _PageMode.generatedActivities;
+    _pageMode = PageMode.generatedActivities;
     setState(() {});
   }
 
@@ -141,16 +141,16 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
     final l10n = L10n.of(context);
     return Scaffold(
       appBar: AppBar(
-        leading: _pageMode == _PageMode.settings
+        leading: _pageMode == PageMode.settings
             ? IconButton(
                 icon: const Icon(Icons.close),
                 onPressed: () => Navigator.of(context).pop(),
               )
             : IconButton(
-                onPressed: () => setState(() => _pageMode = _PageMode.settings),
+                onPressed: () => setState(() => _pageMode = PageMode.settings),
                 icon: const Icon(Icons.arrow_back),
               ),
-        title: _pageMode == _PageMode.savedActivities
+        title: _pageMode == PageMode.savedActivities
             ? Center(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -176,16 +176,16 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
             message: l10n.myBookmarkedActivities,
             child: IconButton(
               onPressed: () =>
-                  setState(() => _pageMode = _PageMode.savedActivities),
+                  setState(() => _pageMode = PageMode.savedActivities),
               icon: const Icon(Icons.bookmarks),
             ),
           ),
         ],
       ),
-      body: _pageMode != _PageMode.settings
+      body: _pageMode != PageMode.settings
           ? ActivityListView(
               room: room,
-              activityPlanRequest: _PageMode.savedActivities == _pageMode
+              activityPlanRequest: PageMode.savedActivities == _pageMode
                   ? null
                   : ActivityPlanRequest(
                       topic: _topicController.text,
@@ -197,6 +197,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                       cefrLevel: _selectedCefrLevel!,
                       numberOfParticipants: _selectedNumberOfParticipants!,
                     ),
+              pageMode: _pageMode,
             )
           : Center(
               child: ConstrainedBox(

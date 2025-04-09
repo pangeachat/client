@@ -10,6 +10,7 @@ import 'package:fluffychat/pangea/activity_planner/activity_plan_generation_repo
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_response.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_planner_page.dart';
 import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -19,14 +20,14 @@ import 'activity_plan_card.dart';
 
 class ActivityListView extends StatefulWidget {
   final Room? room;
-
-  /// if null, show saved activities
   final ActivityPlanRequest? activityPlanRequest;
+  final PageMode pageMode;
 
   const ActivityListView({
     super.key,
     required this.room,
     required this.activityPlanRequest,
+    required this.pageMode,
   });
 
   @override
@@ -35,8 +36,7 @@ class ActivityListView extends StatefulWidget {
 
 class ActivityListViewState extends State<ActivityListView> {
   List<ActivityPlanModel>? _activities;
-  List<ActivityPlanModel> get _bookmarkedActivities =>
-      BookmarkedActivitiesRepo.get();
+  List<ActivityPlanModel> _bookmarkedActivities = [];
 
   bool _isLoading = true;
   Object? _error;
@@ -60,6 +60,8 @@ class ActivityListViewState extends State<ActivityListView> {
         );
         _activities = resp.activityPlans;
       }
+
+      _bookmarkedActivities = await BookmarkedActivitiesRepo.get();
     } catch (e, s) {
       _error = e;
       ErrorHandler.logError(
@@ -95,7 +97,9 @@ class ActivityListViewState extends State<ActivityListView> {
   Future<void> _onLaunch(int index) => showFutureLoadingDialog(
         context: context,
         future: () async {
-          final activity = _activities![index];
+          final activity = widget.pageMode == PageMode.savedActivities
+              ? _bookmarkedActivities[index]
+              : _activities![index];
 
           final eventId = await widget.room?.pangeaSendTextEvent(
             activity.markdown,
@@ -108,7 +112,11 @@ class ActivityListViewState extends State<ActivityListView> {
             return;
           }
 
-          await widget.room?.setPinnedEvents([eventId]);
+          try {
+            await widget.room?.setPinnedEvents([eventId]);
+          } catch (e) {
+            debugPrint("user doesn't have permission to pin events");
+          }
 
           Navigator.of(context).pop();
         },
