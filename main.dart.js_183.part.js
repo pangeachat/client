@@ -1882,9 +1882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$igcToggleDescription() {
       return "This language learning tool will identify common spelling, grammar and punctuation errors in your message and suggest corrections. Though rare, the AI can make correction errors.";
     },
-    get$alreadyInClass() {
-      return "You are already in this space.";
-    },
     get$originalMessage() {
       return "Original Message";
     },
@@ -4363,6 +4360,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_183", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "YAKCWgCkT4vNm50kO6LjLRKC9Pw=");
+})($__dart_deferred_initializers__, "a8w54tn8IPz6AYtl5diXnzucEhY=");
 ;
 //# sourceMappingURL=main.dart.js_183.part.js.map
