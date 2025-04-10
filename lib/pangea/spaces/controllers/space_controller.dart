@@ -1,6 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -8,12 +15,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-
 import '../../bot/widgets/bot_face_svg.dart';
 import '../../common/controllers/base_controller.dart';
 
@@ -78,7 +79,7 @@ class ClassController extends BaseController {
     Room? room = client.getRoomByAlias(alias) ?? client.getRoomById(alias);
     if (room != null) {
       room.isSpace
-          ? context.push("/rooms/${room.id}/details")
+          ? setActiveSpaceIdInChatListController(room.id)
           : context.go("/rooms/${room.id}");
       return;
     }
@@ -95,7 +96,7 @@ class ClassController extends BaseController {
     }
 
     room.isSpace
-        ? context.push("/rooms/${room.id}/details")
+        ? setActiveSpaceIdInChatListController(room.id)
         : context.go("/rooms/${room.id}");
   }
 
@@ -137,8 +138,8 @@ class ClassController extends BaseController {
             );
 
         if (alreadyJoined.isNotEmpty || inFoundClass) {
-          context.push("/rooms/${alreadyJoined.first}/details");
-          throw L10n.of(context).alreadyInClass;
+          setActiveSpaceIdInChatListController(alreadyJoined.first);
+          return null;
         }
 
         if (foundClasses.isEmpty) {
@@ -176,6 +177,19 @@ class ClassController extends BaseController {
       }
 
       context.push("/rooms/${room.id}/details");
+      // Sometimes, the invite event comes through after the join event and
+      // replaces it, so membership gets out of sync. In this case,
+      // load the true value from the server.
+      // Related github issue: https://github.com/pangeachat/client/issues/2098
+      if (room.membership !=
+          room
+              .getParticipants()
+              .firstWhereOrNull((u) => u.id == room?.client.userID)
+              ?.membership) {
+        await room.requestParticipants();
+      }
+
+      setActiveSpaceIdInChatListController(spaceID.result!);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,

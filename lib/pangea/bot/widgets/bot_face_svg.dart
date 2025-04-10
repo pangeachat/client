@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fluffychat/config/app_config.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:rive/rive.dart';
+
+import 'package:fluffychat/config/app_config.dart';
 
 enum BotExpression { gold, nonGold, addled, idle, surprised }
 
