@@ -206,13 +206,15 @@ class ClassController extends BaseController {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  "Are you like me?",
+                  // "Are you like me?",
+                  L10n.of(context).areYouLikeMe,
                   style: Theme.of(context).textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "Too many attempts made. Please try again in 5 minutes.",
+                  // "Too many attempts made. Please try again in 5 minutes.",
+                  L10n.of(context).tryAgainLater,
                   style: Theme.of(context).textTheme.bodyMedium,
                   textAlign: TextAlign.center,
                 ),
