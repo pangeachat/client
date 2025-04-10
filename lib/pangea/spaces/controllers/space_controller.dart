@@ -79,7 +79,7 @@ class ClassController extends BaseController {
     Room? room = client.getRoomByAlias(alias) ?? client.getRoomById(alias);
     if (room != null) {
       room.isSpace
-          ? context.push("/rooms/${room.id}/details")
+          ? setActiveSpaceIdInChatListController(room.id)
           : context.go("/rooms/${room.id}");
       return;
     }
@@ -96,7 +96,7 @@ class ClassController extends BaseController {
     }
 
     room.isSpace
-        ? context.push("/rooms/${room.id}/details")
+        ? setActiveSpaceIdInChatListController(room.id)
         : context.go("/rooms/${room.id}");
   }
 
@@ -138,8 +138,8 @@ class ClassController extends BaseController {
             );
 
         if (alreadyJoined.isNotEmpty || inFoundClass) {
-          context.push("/rooms/${alreadyJoined.first}/details");
-          throw L10n.of(context).alreadyInClass;
+          setActiveSpaceIdInChatListController(alreadyJoined.first);
+          return null;
         }
 
         if (foundClasses.isEmpty) {
@@ -177,6 +177,19 @@ class ClassController extends BaseController {
       }
 
       context.push("/rooms/${room.id}/details");
+      // Sometimes, the invite event comes through after the join event and
+      // replaces it, so membership gets out of sync. In this case,
+      // load the true value from the server.
+      // Related github issue: https://github.com/pangeachat/client/issues/2098
+      if (room.membership !=
+          room
+              .getParticipants()
+              .firstWhereOrNull((u) => u.id == room?.client.userID)
+              ?.membership) {
+        await room.requestParticipants();
+      }
+
+      setActiveSpaceIdInChatListController(spaceID.result!);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
