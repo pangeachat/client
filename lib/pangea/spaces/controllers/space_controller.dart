@@ -1,14 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
-import 'package:collection/collection.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -16,12 +8,19 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+
+import '../../bot/widgets/bot_face_svg.dart';
 import '../../common/controllers/base_controller.dart';
 
 class ClassController extends BaseController {
   late PangeaController _pangeaController;
 
-  //Storage Initialization
+  // Storage Initialization
   final GetStorage chatBox = GetStorage("chat_list_storage");
   final GetStorage linkBox = GetStorage("link_storage");
   static final GetStorage _classStorage = GetStorage('class_storage');
@@ -121,7 +120,8 @@ class ClassController extends BaseController {
         );
 
         if (knockResponse.statusCode == 429) {
-          throw L10n.of(context).tooManyRequest;
+          await _showTooManyRequestsPopup(context);
+          return null;
         }
         if (knockResponse.statusCode != 200) {
           throw notFoundError ?? L10n.of(context).unableToFindClass;
@@ -175,18 +175,6 @@ class ClassController extends BaseController {
         await room.client.waitForRoomInSync(room.id, join: true);
       }
 
-      // Sometimes, the invite event comes through after the join event and
-      // replaces it, so membership gets out of sync. In this case,
-      // load the true value from the server.
-      // Related github issue: https://github.com/pangeachat/client/issues/2098
-      if (room.membership !=
-          room
-              .getParticipants()
-              .firstWhereOrNull((u) => u.id == room?.client.userID)
-              ?.membership) {
-        await room.requestParticipants();
-      }
-
       context.push("/rooms/${room.id}/details");
     } catch (e, s) {
       ErrorHandler.logError(
@@ -197,12 +185,49 @@ class ClassController extends BaseController {
         },
       );
     }
+  }
 
-    // P-EPIC
-    // prereq - server needs ability to invite to private room. how?
-    // does server api have ability with admin token?
-    // is application service needed?
-    // BE - check class code and if class code is correct, invite student to room
-    // FE - look for invite from room and automatically accept
+  Future<void> _showTooManyRequestsPopup(BuildContext context) async {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const BotFace(
+                  width: 100,
+                  expression: BotExpression.idle,
+                ),
+                const SizedBox(height: 16),
+                Text(
+                  "Are you like me?",
+                  style: Theme.of(context).textTheme.titleLarge,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  "Too many attempts made. Please try again in 5 minutes.",
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text("Close"),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
