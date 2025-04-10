@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_token_text.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar_selection_area.dart';
@@ -44,6 +45,7 @@ class MessageContent extends StatelessWidget {
   final Event? nextEvent;
   final Event? prevEvent;
   final bool isTransitionAnimation;
+  final ReadingAssistanceMode? readingAssistanceMode;
   // Pangea#
   final Timeline timeline;
 
@@ -61,6 +63,7 @@ class MessageContent extends StatelessWidget {
     this.nextEvent,
     this.prevEvent,
     this.isTransitionAnimation = false,
+    this.readingAssistanceMode,
     // Pangea#
     required this.linkColor,
     required this.borderRadius,
@@ -394,6 +397,7 @@ class MessageContent extends StatelessWidget {
                         true,
                 overlayController: overlayController,
                 isTransitionAnimation: isTransitionAnimation,
+                readingAssistanceMode: readingAssistanceMode,
               );
             }
 
