@@ -2100,7 +2100,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "tooManyRequestsWarning": "Too many requests. Please try again later! TEST 123",
+  "tooManyRequestsWarning": "Too many requests. Please try again later!",
   "@tooManyRequestsWarning": {
     "type": "String",
     "placeholders": {}

@@ -177,7 +177,6 @@ class ClassController extends BaseController {
         await room.client.waitForRoomInSync(room.id, join: true);
       }
 
-      context.push("/rooms/${room.id}/details");
       // Sometimes, the invite event comes through after the join event and
       // replaces it, so membership gets out of sync. In this case,
       // load the true value from the server.
