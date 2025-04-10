@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/utils/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -107,8 +108,6 @@ class MessageTextWidget extends StatelessWidget {
   final bool isMessage;
   final ReadingAssistanceMode? readingAssistanceMode;
 
-  static final Map<String, double> _tokensWidthCache = {};
-
   const MessageTextWidget({
     super.key,
     required this.pangeaMessageEvent,
@@ -126,91 +125,16 @@ class MessageTextWidget extends StatelessWidget {
     this.readingAssistanceMode,
   });
 
-  bool get _showCenterStyling {
-    if (!isMessage || overlayController == null) return false;
-    if (!isTransitionAnimation) return true;
-    return readingAssistanceMode == ReadingAssistanceMode.transitionMode;
-  }
-
-  double? _fontSize(BuildContext context) => _showCenterStyling
-      ? overlayController != null && overlayController!.maxWidth > 600
-          ? Theme.of(context).textTheme.titleLarge?.fontSize
-          : Theme.of(context).textTheme.bodyLarge?.fontSize
-      : null;
-
-  TextStyle style(
-    BuildContext context, {
-    Color? color,
-  }) =>
-      existingStyle.copyWith(
-        fontSize: _fontSize(context),
-        decoration: TextDecoration.underline,
-        decorationThickness: 4,
-        decorationColor: color ?? Colors.white.withAlpha(0),
-      );
-
-  /// for some reason, this isn't the same as tokenTextWidth
-  double tokenTextWidthForContainer(BuildContext context, PangeaToken token) {
-    final tokenSizeKey = "${token.text.content}-${_fontSize(context)}";
-    if (_tokensWidthCache.containsKey(tokenSizeKey)) {
-      return _tokensWidthCache[tokenSizeKey]!;
-    }
-
-    final textPainter = TextPainter(
-      text: TextSpan(
-        text: token.text.content,
-        style: style(context),
-      ),
-      maxLines: 1,
-      textDirection: TextDirection.ltr,
-    )..layout();
-    final width = textPainter.width;
-    textPainter.dispose();
-
-    _tokensWidthCache[tokenSizeKey] = width;
-    return width;
-  }
-
-  Color backgroundColor(BuildContext context, TokenPosition tokenPosition) {
-    final hideTokenHighlights = messageAnalyticsEntry != null &&
-        (messageAnalyticsEntry!.hasHiddenWordActivity ||
-            messageAnalyticsEntry!.hasMessageMeaningActivity);
-
-    Color backgroundColor = Colors.white.withAlpha(0);
-
-    if (!hideTokenHighlights) {
-      if (tokenPosition.selected) {
-        backgroundColor = Theme.of(context).colorScheme.primary;
-      }
-      // else if (tokenPosition.isHighlighted) {
-      //   backgroundColor = AppConfig.success.withAlpha(80);
-      // }
-    }
-    return backgroundColor;
-  }
-
-  // Only one token on the screen can have the token's unique key at a time.
-  // When readingAssistanceMode is not null, there are two messages - the centered message and the transition message.
-  // When in word mode, the key goes to the transition message.
-  // If actively transitioning, neither gets the keys.
-  // If in message mode, the key goes to the centered message (isTransitionAnimation == false).
-  bool get _assignTokenKey {
-    if (readingAssistanceMode == null) {
-      return false;
-    }
-
-    switch (readingAssistanceMode!) {
-      case ReadingAssistanceMode.tokenMode:
-        return isTransitionAnimation;
-      case ReadingAssistanceMode.transitionMode:
-        return false;
-      case ReadingAssistanceMode.messageMode:
-        return !isTransitionAnimation;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    final renderer = TokenRenderingUtil(
+      pangeaMessageEvent: pangeaMessageEvent,
+      readingAssistanceMode: readingAssistanceMode,
+      existingStyle: existingStyle,
+      overlayController: overlayController,
+      isTransitionAnimation: isTransitionAnimation,
+    );
+
     final Characters messageCharacters =
         pangeaMessageEvent.messageDisplayText.characters;
 
@@ -224,7 +148,7 @@ class MessageTextWidget extends StatelessWidget {
     if (tokenPositions == null) {
       return Text(
         pangeaMessageEvent.messageDisplayText,
-        style: style(context),
+        style: renderer.style(context),
         softWrap: softWrap,
         maxLines: maxLines,
         overflow: overflow,
@@ -276,27 +200,30 @@ class MessageTextWidget extends StatelessWidget {
 
             final token = tokenPosition.token!;
 
-            final tokenWidth = tokenTextWidthForContainer(context, token);
+            final tokenWidth = renderer.tokenTextWidthForContainer(
+              context,
+              token.text.content,
+            );
 
             return WidgetSpan(
               child: CompositedTransformTarget(
-                link: _assignTokenKey
+                link: renderer.assignTokenKey
                     ? MatrixState.pAnyState
                         .layerLinkAndKey(token.text.uniqueKey)
                         .link
                     : LayerLinkAndKey(token.hashCode.toString()).link,
                 child: Column(
-                  key: _assignTokenKey
+                  key: renderer.assignTokenKey
                       ? MatrixState.pAnyState
                           .layerLinkAndKey(token.text.uniqueKey)
                           .key
                       : null,
                   children: [
-                    if (_showCenterStyling)
+                    if (renderer.showCenterStyling)
                       MessageTokenButton(
                         token: token,
                         overlayController: overlayController,
-                        textStyle: style(context),
+                        textStyle: renderer.style(context),
                         width: tokenWidth,
                         animate: isTransitionAnimation,
                         practiceTarget: overlayController
@@ -325,11 +252,11 @@ class MessageTextWidget extends StatelessWidget {
                               if (start.isNotEmpty)
                                 LinkifySpan(
                                   text: start,
-                                  style: style(
+                                  style: renderer.style(
                                     context,
-                                    color: backgroundColor(
+                                    color: renderer.backgroundColor(
                                       context,
-                                      tokenPosition,
+                                      tokenPosition.selected,
                                     ),
                                   ),
                                   linkStyle: TextStyle(
@@ -355,11 +282,11 @@ class MessageTextWidget extends StatelessWidget {
                               //     :
                               LinkifySpan(
                                 text: middle,
-                                style: style(
+                                style: renderer.style(
                                   context,
-                                  color: backgroundColor(
+                                  color: renderer.backgroundColor(
                                     context,
-                                    tokenPosition,
+                                    tokenPosition.selected,
                                   ),
                                 ),
                                 linkStyle: TextStyle(
@@ -372,11 +299,11 @@ class MessageTextWidget extends StatelessWidget {
                               if (end.isNotEmpty)
                                 LinkifySpan(
                                   text: end,
-                                  style: style(
+                                  style: renderer.style(
                                     context,
-                                    color: backgroundColor(
+                                    color: renderer.backgroundColor(
                                       context,
-                                      tokenPosition,
+                                      tokenPosition.selected,
                                     ),
                                   ),
                                   linkStyle: TextStyle(
@@ -425,7 +352,7 @@ class MessageTextWidget extends StatelessWidget {
             // }
             return LinkifySpan(
               text: substring,
-              style: style(context),
+              style: renderer.style(context),
               options: const LinkifyOptions(humanize: false),
               linkStyle: TextStyle(
                 decoration: TextDecoration.underline,

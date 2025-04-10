@@ -259,13 +259,15 @@ class MessageContent extends StatelessWidget {
                 room: event.room,
                 // #Pangea
                 event: event,
-                isOverlay: overlayController != null,
+                overlayController: overlayController,
                 controller: controller,
                 pangeaMessageEvent: pangeaMessageEvent,
                 nextEvent: nextEvent,
                 prevEvent: prevEvent,
                 isSelected: overlayController != null ? isSelected : null,
                 onClick: event.isActivityMessage ? null : onClick,
+                isTransitionAnimation: isTransitionAnimation,
+                readingAssistanceMode: readingAssistanceMode,
                 // Pangea#
                 fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
                 linkStyle: TextStyle(
