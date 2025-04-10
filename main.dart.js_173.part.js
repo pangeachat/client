@@ -2845,9 +2845,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatCapacityExplanation() {
       return "Chat capacity limits the number of members allowed in a chat.";
     },
-    get$tooManyRequest() {
-      return "Too many request, please try again later.";
-    },
     get$enterNumber() {
       return "Please enter a whole number value.";
     },
@@ -4345,6 +4342,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyChatWarningDesc() {
       return "You haven't invited anyone to your chat. Go to Chat settings to invite your contacts or the Bot. You can also do this later.";
     },
+    get$areYouLikeMe() {
+      return "Are you like me?";
+    },
+    get$tryAgainLater() {
+      return "Too many attempts made. Please try again in 5 minutes.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4360,6 +4363,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_173", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "MJvbOwhcYbl28uMD+J/+ZPKwrNs=");
+})($__dart_deferred_initializers__, "HgFpZP1z2/07S28EuvpEVFz09IY=");
 ;
 //# sourceMappingURL=main.dart.js_173.part.js.map

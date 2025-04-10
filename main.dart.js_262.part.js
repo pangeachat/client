@@ -2844,9 +2844,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatCapacityExplanation() {
       return "H\u1ea1n ch\u1ebf s\u1ed1 l\u01b0\u1ee3ng ng\u01b0\u1eddi d\xf9ng th\u01b0\u1eddng (kh\xf4ng ph\u1ea3i qu\u1ea3n tr\u1ecb vi\xean) c\xf3 th\u1ec3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n.";
     },
-    get$tooManyRequest() {
-      return "Qu\xe1 nhi\u1ec1u y\xeau c\u1ea7u, vui l\xf2ng th\u1eed l\u1ea1i sau.";
-    },
     get$enterNumber() {
       return "Vui l\xf2ng nh\u1eadp m\u1ed9t s\u1ed1 nguy\xean l\u1edbn h\u01a1n 0.";
     },
@@ -4344,6 +4341,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$emptyChatWarningDesc() {
       return "You haven't invited anyone to your chat. Go to Chat settings to invite your contacts or the Bot. You can also do this later.";
     },
+    get$areYouLikeMe() {
+      return "Are you like me?";
+    },
+    get$tryAgainLater() {
+      return "Too many attempts made. Please try again in 5 minutes.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4359,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "cu8dUexl7hmg90QPwQ84wAH+smI=");
+})($__dart_deferred_initializers__, "7BuZ45iDdLbrDlH1ZwjYix4nlrU=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map
