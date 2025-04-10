@@ -1,12 +1,11 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/new_group/new_group.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_carousel.dart';
+import 'package:fluffychat/pangea/spaces/utils/space_code.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class NewGroupView extends StatelessWidget {
   final NewGroupController controller;
@@ -38,6 +37,19 @@ class NewGroupView extends StatelessWidget {
               : L10n.of(context).newChat,
           // Pangea#
         ),
+        actions: [
+          TextButton(
+            onPressed: controller.loading
+                ? null
+                : () => SpaceCodeUtil.joinWithSpaceCodeDialog(context),
+            child: Text(
+              L10n.of(context).joinByCode,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+          ),
+        ],
       ),
       body: MaxWidthBody(
         // #Pangea
