@@ -1,13 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:http/http.dart' as http;
 
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../repo/similarity_repo.dart';
 
 class AlternativeTranslator {
@@ -19,7 +22,12 @@ class AlternativeTranslator {
   FeedbackKey? translationFeedbackKey;
   List<String> translations = [];
   SimilartyResponseModel? similarityResponse;
+
   AlternativeTranslator(this.choreographer);
+
+  // Counts for tracking newly learned items
+  int _vocabCountBefore = 0;
+  int _grammarCountBefore = 0;
 
   void clear() {
     userTranslation = null;
@@ -29,6 +37,19 @@ class AlternativeTranslator {
     translationFeedbackKey = null;
     translations = [];
     similarityResponse = null;
+  }
+
+  void captureCountsBefore() {
+    final constructListModel =
+        MatrixState.pangeaController.getAnalytics.constructListModel;
+
+    final allVocabConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.vocab);
+    final allMorphConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.morph);
+
+    _vocabCountBefore = allVocabConstructs.length;
+    _grammarCountBefore = allMorphConstructs.length;
   }
 
   double get _percentCorrectChoices {
@@ -97,28 +118,29 @@ class AlternativeTranslator {
     }
   }
 
-  List<PangeaToken> get _selectedTokens => choreographer.choreoRecord.itSteps
-      .where((step) => step.chosenContinuance != null)
-      .map(
-        (step) => step.chosenContinuance!.tokens.where(
-          (token) => token.lemma.saveVocab,
-        ),
-      )
-      .expand((element) => element)
-      .toList();
+  int countVocabularyWordsFromSteps() {
+    final constructListModel =
+        MatrixState.pangeaController.getAnalytics.constructListModel;
+    final allVocabConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.vocab);
+    final vocabCountAfter = allVocabConstructs.length;
 
-  int countVocabularyWordsFromSteps() =>
-      _selectedTokens.map((t) => t.lemma.text.toLowerCase()).toSet().length;
+    final newVocabCount = max(0, vocabCountAfter - _vocabCountBefore);
 
-  int countGrammarConstructsFromSteps() => _selectedTokens
-      .map(
-        (t) => t.morph.entries.map(
-          (m) => "${m.key}:${m.value}".toLowerCase(),
-        ),
-      )
-      .expand((m) => m)
-      .toSet()
-      .length;
+    return newVocabCount;
+  }
+
+  int countGrammarConstructsFromSteps() {
+    final constructListModel =
+        MatrixState.pangeaController.getAnalytics.constructListModel;
+    final allMorphConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.morph);
+    final grammarCountAfter = allMorphConstructs.length;
+
+    final newGrammarCount = max(0, grammarCountAfter - _grammarCountBefore);
+
+    return newGrammarCount;
+  }
 
   String getDefaultFeedback(BuildContext context) {
     final l10n = L10n.of(context);
