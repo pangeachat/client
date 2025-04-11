@@ -235,8 +235,10 @@ class PangeaPublicRoomBottomSheetState
                                         enabledBorder: InputBorder.none,
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
-                                        hintText: "Enter the Space Code",                                  
-                                        contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                                        hintText: "Enter the Space Code",
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 16.0),
                                         hintStyle: TextStyle(
                                           color: Theme.of(context).hintColor,
                                         ),
