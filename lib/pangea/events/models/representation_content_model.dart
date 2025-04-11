@@ -1,5 +1,3 @@
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
@@ -8,6 +6,7 @@ import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:matrix/matrix.dart';
 
 /// this class is contained within a [RepresentationEvent]
 /// this event is the child of a [EventTypes.Message]
@@ -119,19 +118,20 @@ class PangeaRepresentation {
     );
 
     // for each token, record whether selected in ga, ta, or wa
-    List<PangeaToken> tokensToSave =
+    final List<PangeaToken> tokensToSave =
         tokens.where((token) => token.lemma.saveVocab).toList();
-    if (choreo != null && choreo.pastedStrings.isNotEmpty) {
-      tokensToSave = tokensToSave
-          .where(
-            (token) => !choreo.pastedStrings.any(
-              (pasted) => pasted
-                  .toLowerCase()
-                  .contains(token.text.content.toLowerCase()),
-            ),
-          )
-          .toList();
-    }
+    // comment out to allow quick score for debug
+    // if (choreo != null && choreo.pastedStrings.isNotEmpty) {
+    //   tokensToSave = tokensToSave
+    //       .where(
+    //         (token) => !choreo.pastedStrings.any(
+    //           (pasted) => pasted
+    //               .toLowerCase()
+    //               .contains(token.text.content.toLowerCase()),
+    //         ),
+    //       )
+    //       .toList();
+    // }
     for (final token in tokensToSave) {
       uses.addAll(
         _getUsesForToken(

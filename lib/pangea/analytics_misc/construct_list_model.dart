@@ -202,7 +202,7 @@ class ConstructListModel {
 
   int calculateXpWithLevel(int level) {
     // [D] is the same "compression factor" as in calculateLevelWithXp.
-    const double D = 2500.0;
+    const double D = 1500.0;
 
     // If level <= 1, XP should be 0 or negative by this math.
     // In practice, you might clamp it to 0:
