@@ -68,18 +68,7 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
         parent: _controller!,
         curve: Curves.easeIn,
       ),
-    );
-
-    // New fade animation for book that starts fading later
-    _bookFadeAnimation = Tween<double>(
-      begin: 1.0,
-      end: 0.0,
-    ).animate(
-      CurvedAnimation(
-        parent: _controller!,
-        curve: Curves.easeIn,
-      ),
-    );
+    );  
 
     _showPointsGained();
   }
