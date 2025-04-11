@@ -5,19 +5,14 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/qr_code_viewer.dart';
 
-// #Pangea
-// class PublicRoomBottomSheet extends StatelessWidget {
-class PublicRoomBottomSheet extends StatefulWidget {
-  // Pangea#
+class PublicRoomBottomSheet extends StatelessWidget {
   final String? roomAlias;
   final BuildContext outerContext;
   final PublicRoomsChunk? chunk;
@@ -32,38 +27,6 @@ class PublicRoomBottomSheet extends StatefulWidget {
   }) {
     assert(roomAlias != null || chunk != null);
   }
-
-  // #Pangea
-  @override
-  State<StatefulWidget> createState() => PublicRoomBottomSheetState();
-}
-
-class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
-  BuildContext get outerContext => widget.outerContext;
-  String? get roomAlias => widget.roomAlias;
-  PublicRoomsChunk? get chunk => widget.chunk;
-  List<String>? get via => widget.via;
-
-  final TextEditingController _codeController = TextEditingController();
-
-  @override
-  void dispose() {
-    _codeController.dispose();
-    super.dispose();
-  }
-
-  Future<void> _joinWithCode(String code) async {
-    await MatrixState.pangeaController.classController.joinClasswithCode(
-      context,
-      _codeController.text,
-      notFoundError: L10n.of(context).notTheCodeError,
-    );
-  }
-
-  bool get _isRoomMember =>
-      chunk != null &&
-      Matrix.of(outerContext).client.getRoomById(chunk!.roomId) != null;
-  // Pangea#
 
   void _joinRoom(BuildContext context) async {
     final client = Matrix.of(outerContext).client;
@@ -85,12 +48,6 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
         if (!knock && client.getRoomById(roomId) == null) {
           await client.waitForRoomInSync(roomId);
         }
-        // #Pangea
-        final room = client.getRoomById(roomId);
-        if (room != null && (await room.leaveIfFull())) {
-          throw L10n.of(context).roomFull;
-        }
-        // Pangea#
         return roomId;
       },
     );
@@ -104,11 +61,6 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
           !client.getRoomById(result.result!)!.isSpace) {
         outerContext.go('/rooms/${result.result!}');
       }
-      // #Pangea
-      else {
-        outerContext.push('/rooms/${result.result!}/details');
-      }
-      // Pangea#
       return;
     }
   }
@@ -153,19 +105,10 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: IconButton(
                       icon: const Icon(Icons.qr_code_rounded),
-                      // #Pangea
-                      // onPressed: () => showQrCodeViewer(
-                      //   context,
-                      //   roomAlias,
-                      // ),
-                      onPressed: () {
-                        FluffyShare.share(
-                          "${Environment.frontendURL}/#/join_with_alias?alias=${Uri.encodeComponent(roomAlias)}",
-                          context,
-                        );
-                        Navigator.of(context).pop();
-                      },
-                      // Pangea#
+                      onPressed: () => showQrCodeViewer(
+                        context,
+                        roomAlias,
+                      ),
                     ),
                   ),
                 ],
@@ -244,84 +187,6 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                     ),
                   ],
                 ),
-                // #Pangea
-                if (!_isRoomMember &&
-                    chunk?.roomType == 'm.space' &&
-                    chunk?.joinRule != 'public')
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: TextField(
-                      controller: _codeController,
-                      onSubmitted: (value) => _joinWithCode(value).then(
-                        (value) => Navigator.of(context).pop(),
-                      ),
-                      minLines: 1,
-                      maxLines: 1,
-                      decoration: InputDecoration(
-                        hintText: L10n.of(context).enterCodeToJoin,
-                      ),
-                    ),
-                  ),
-                if (!_isRoomMember &&
-                    chunk?.roomType == 'm.space' &&
-                    chunk?.joinRule != 'public')
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 8,
-                    ),
-                    child: ElevatedButton.icon(
-                      onPressed: () => _joinWithCode(_codeController.text).then(
-                        (_) => Navigator.of(context).pop(),
-                      ),
-                      label: Text(L10n.of(context).joinWithCode),
-                      icon: const Icon(Icons.navigate_next),
-                    ),
-                  ),
-                if (!_isRoomMember &&
-                    chunk?.roomType == 'm.space' &&
-                    chunk?.joinRule != 'public')
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Divider(
-                            color: theme.colorScheme.surfaceContainerHighest,
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 4,
-                            vertical: 16.0,
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius / 3,
-                            ),
-                            color: theme.colorScheme.surface.withAlpha(128),
-                          ),
-                          child: Text(
-                            L10n.of(context).or,
-                            style: TextStyle(
-                              fontSize: AppConfig.fontSizeFactor *
-                                  AppConfig.messageFontSize,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Divider(
-                            color: theme.colorScheme.surfaceContainerHighest,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                // Pangea#
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: ElevatedButton.icon(
@@ -345,9 +210,9 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                   ListTile(
                     subtitle: SelectableLinkify(
                       text: profile!.topic!,
-                      linkStyle: const TextStyle(
-                        color: Colors.blueAccent,
-                        decorationColor: Colors.blueAccent,
+                      linkStyle: TextStyle(
+                        color: theme.colorScheme.primary,
+                        decorationColor: theme.colorScheme.primary,
                       ),
                       style: TextStyle(
                         fontSize: 14,

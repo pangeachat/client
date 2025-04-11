@@ -10,16 +10,20 @@ import 'package:matrix/src/utils/markdown.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/choreographer/event_wrappers/pangea_choreo_event.dart';
+import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
+import 'package:fluffychat/pangea/choreographer/models/language_detection_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
-import '../../../widgets/matrix.dart';
-import '../../choreographer/models/choreo_record.dart';
-import '../../common/utils/error_handler.dart';
-import '../../learning_settings/constants/language_constants.dart';
-import '../constants/pangea_event_types.dart';
-import '../models/representation_content_model.dart';
+import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class RepresentationEvent {
   Event? _event;
@@ -66,6 +70,8 @@ class RepresentationEvent {
   bool get botAuthored =>
       content.originalSent == false && content.originalWritten == false;
 
+  List<LanguageDetection>? get detections => _tokens?.detections;
+
   List<PangeaToken>? get tokens {
     if (_tokens != null) return _tokens!.tokens;
 
@@ -88,27 +94,44 @@ class RepresentationEvent {
 
     if (tokenEvents.length > 1) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        m: 'should not have more than one tokenEvent per representation ${_event?.eventId}',
-        s: StackTrace.current,
-        data: {
-          "eventID": _event?.eventId,
-          "content": tokenEvents.map((e) => e.content).toString(),
-          "type": tokenEvents.map((e) => e.type).toString(),
-        },
+      Sentry.addBreadcrumb(
+        Breadcrumb(
+          message:
+              'should not have more than one tokenEvent per representation ${_event?.eventId}',
+          data: {
+            "eventID": _event?.eventId,
+            "content": tokenEvents.map((e) => e.content).toString(),
+            "type": tokenEvents.map((e) => e.type).toString(),
+          },
+        ),
       );
     }
 
-    final PangeaMessageTokens storedTokens =
-        tokenEvents.first.getPangeaContent<PangeaMessageTokens>();
+    PangeaMessageTokens? storedTokens;
+    for (final tokenEvent in tokenEvents) {
+      final tokenPangeaEvent =
+          tokenEvent.getPangeaContent<PangeaMessageTokens>();
+      if (PangeaToken.reconstructText(tokenPangeaEvent.tokens) != text) {
+        Sentry.addBreadcrumb(
+          Breadcrumb(
+            message: 'Stored tokens do not match text for representation',
+            data: {
+              'text': text,
+              'tokens': tokenPangeaEvent.tokens,
+            },
+          ),
+        );
+        continue;
+      }
+      storedTokens = tokenPangeaEvent;
+      break;
+    }
 
-    if (PangeaToken.reconstructText(storedTokens.tokens) != text) {
+    if (storedTokens == null) {
       ErrorHandler.logError(
-        m: 'Stored tokens do not match text for representation',
-        s: StackTrace.current,
+        e: "No tokens found for representation",
         data: {
-          'text': text,
-          'tokens': storedTokens.tokens,
+          "event": _event?.toJson(),
         },
       );
       return null;
@@ -262,5 +285,43 @@ class RepresentationEvent {
       }
     }
     return null;
+  }
+
+  List<PangeaToken> get tokensToSave =>
+      tokens?.where((token) => token.lemma.saveVocab).toList() ?? [];
+
+  // List<ConstructIdentifier> get allTokenMorphsToConstructIdentifiers => tokens?.map((t) => t.morphConstructIds).toList() ??
+  //     [];
+
+  /// get allTokenMorphsToConstructIdentifiers
+  Set<MorphFeaturesEnum> get morphFeatureSetToPractice =>
+      MorphFeaturesEnum.values.where((feature) {
+        // pos is always included
+        if (feature == MorphFeaturesEnum.Pos) {
+          return true;
+        }
+        return tokens?.any((token) => token.morph.containsKey(feature)) ??
+            false;
+      }).toSet();
+
+  Set<PartOfSpeechEnum> posSetToPractice(ActivityTypeEnum a) =>
+      PartOfSpeechEnum.values.where((pos) {
+        // some pos are not eligible for practice at all
+        if (!pos.eligibleForPractice(a)) {
+          return false;
+        }
+        return tokens?.any(
+              (token) => token.pos.toLowerCase() == pos.name.toLowerCase(),
+            ) ??
+            false;
+      }).toSet();
+
+  List<String> tagsByFeature(MorphFeaturesEnum feature) {
+    return tokens
+            ?.where((t) => t.morph.containsKey(feature))
+            .map((t) => t.morph[feature])
+            .cast<String>()
+            .toList() ??
+        [];
   }
 }

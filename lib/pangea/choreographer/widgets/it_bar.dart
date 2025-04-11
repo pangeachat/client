@@ -5,8 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/it_controller.dart';
@@ -46,7 +44,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
     super.initState();
 
     // Rebuild the widget each time there's an update from choreo.
-    _choreoSub = widget.choreographer.stateListener.stream.listen((_) {
+    _choreoSub = widget.choreographer.stateStream.stream.listen((_) {
       if (itController.willOpen != wasOpen) {
         itController.willOpen ? _controller.forward() : _controller.reverse();
       }
@@ -103,18 +101,26 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
       axisAlignment: -1.0,
       child: CompositedTransformTarget(
         link: widget.choreographer.itBarLinkAndKey.link,
-        child: Container(
-          key: widget.choreographer.itBarLinkAndKey.key,
-          decoration: BoxDecoration(
-            color: Theme.of(context).brightness == Brightness.light
-                ? Colors.white
-                : Colors.black,
-          ),
-          padding: const EdgeInsets.fromLTRB(0, 3, 3, 3),
-          child: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              SingleChildScrollView(
+        child: Column(
+          spacing: 8.0,
+          children: [
+            if (showITInstructionsTooltip)
+              const InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.clickBestOption,
+                animate: false,
+              ),
+            if (showTranslationsChoicesTooltip)
+              const InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.translationChoices,
+                animate: false,
+              ),
+            Container(
+              key: widget.choreographer.itBarLinkAndKey.key,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.surfaceContainer,
+              ),
+              padding: const EdgeInsets.fromLTRB(0, 3, 3, 3),
+              child: SingleChildScrollView(
                 child: Column(
                   children: [
                     Row(
@@ -174,6 +180,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                               onPressed: () => showDialog(
                                 context: context,
                                 builder: (c) => const SettingsLearning(),
+                                barrierDismissible: false,
                               ),
                             ),
                           ),
@@ -204,14 +211,6 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                             : const LinearProgressIndicator(),
                       ),
                     const SizedBox(height: 8.0),
-                    if (showITInstructionsTooltip)
-                      const InstructionsInlineTooltip(
-                        instructionsEnum: InstructionsEnum.clickBestOption,
-                      ),
-                    if (showTranslationsChoicesTooltip)
-                      const InstructionsInlineTooltip(
-                        instructionsEnum: InstructionsEnum.translationChoices,
-                      ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 4.0),
                       constraints: const BoxConstraints(minHeight: 80),
@@ -231,6 +230,15 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                                   : itController.isTranslationDone
                                       ? TranslationFeedback(
                                           controller: itController,
+                                          vocabCount: itController
+                                              .choreographer.altTranslator
+                                              .countVocabularyWordsFromSteps(),
+                                          grammarCount: itController
+                                              .choreographer.altTranslator
+                                              .countGrammarConstructsFromSteps(),
+                                          feedbackText: itController
+                                              .choreographer.altTranslator
+                                              .getDefaultFeedback(context),
                                         )
                                       : ITChoices(controller: itController),
                         ),
@@ -239,14 +247,8 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                   ],
                 ),
               ),
-              const Positioned(
-                top: 60,
-                child: PointsGainedAnimation(
-                  origin: AnalyticsUpdateOrigin.it,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -389,7 +391,8 @@ class ITChoices extends StatelessWidget {
         continuance.level > 1
             ? ConstructUseTypeEnum.incIt
             : ConstructUseTypeEnum.corIt,
-        AnalyticsUpdateOrigin.it,
+        targetID:
+            "${continuance.text.trim()}${controller.currentITStep.hashCode.toString()}",
       );
     }
     controller.currentITStep!.continuances[index].wasClicked = true;
@@ -409,6 +412,7 @@ class ITChoices extends StatelessWidget {
         );
       }
       return ChoicesArray(
+        id: controller.currentITStep.hashCode.toString(),
         isLoading: controller.isLoading ||
             controller.choreographer.isFetching ||
             controller.currentITStep == null,
@@ -428,7 +432,6 @@ class ITChoices extends StatelessWidget {
         }).toList(),
         onPressed: (value, index) => selectContinuance(index, context),
         onLongPress: (value, index) => showCard(context, index),
-        uniqueKeyForLayerLink: (int index) => "itChoices$index",
         selectedChoiceIndex: null,
         tts: controller.choreographer.tts,
       );

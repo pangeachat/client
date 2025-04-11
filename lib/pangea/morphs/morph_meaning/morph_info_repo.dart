@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
@@ -9,6 +10,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_request.dart';
 import 'package:fluffychat/pangea/morphs/morph_meaning/morph_info_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -80,7 +82,7 @@ class MorphInfoRepo {
   }
 
   static Future<String?> get({
-    required String feature,
+    required MorphFeaturesEnum feature,
     required String tag,
   }) async {
     final res = await _get(
@@ -93,7 +95,40 @@ class MorphInfoRepo {
                 LanguageKeys.defaultLanguage,
       ),
     );
+    debugger(when: kDebugMode);
+    final morph = res.getFeatureByCode(feature.name);
 
-    return res.getFeatureByCode(feature)?.getTagByCode(tag)?.l1Description;
+    final data = morph?.getTagByCode(tag);
+
+    return data?.l1Description;
+  }
+
+  static Future<void> setMorphDefinition({
+    required MorphFeaturesEnum feature,
+    required String tag,
+    required String defintion,
+  }) async {
+    final userL1 =
+        MatrixState.pangeaController.languageController.userL1?.langCode ??
+            LanguageKeys.defaultLanguage;
+    final userL2 =
+        MatrixState.pangeaController.languageController.userL2?.langCode ??
+            LanguageKeys.defaultLanguage;
+    final userL1Short = userL1.split('-').first;
+    final userL2Short = userL2.split('-').first;
+    final cachedJson = _morphMeaningStorage.read(userL1Short + userL2Short);
+
+    MorphInfoResponse? resp = MorphInfoResponse(
+      userL1: userL1,
+      userL2: userL2,
+      features: [],
+    );
+
+    if (cachedJson is Map<String, dynamic>) {
+      resp = MorphInfoResponse.fromJson(cachedJson);
+    }
+
+    resp.setMorphDefinition(feature.name, tag, defintion);
+    await _morphMeaningStorage.write(userL1Short + userL2Short, resp.toJson());
   }
 }

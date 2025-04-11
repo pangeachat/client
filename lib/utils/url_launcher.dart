@@ -9,12 +9,11 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/user_bottom_sheet/user_bottom_sheet.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/public_spaces/pangea_public_room_bottom_sheet.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/public_room_bottom_sheet.dart';
 import 'platform_infos.dart';
 
 class UrlLauncher {
@@ -185,7 +184,10 @@ class UrlLauncher {
       } else {
         await showAdaptiveBottomSheet(
           context: context,
-          builder: (c) => PublicRoomBottomSheet(
+          // #Pangea
+          // builder: (c) => PublicRoomBottomSheet(
+          builder: (c) => PangeaPublicRoomBottomSheet(
+            // Pangea#
             roomAlias: identityParts.primaryIdentifier,
             outerContext: context,
           ),
@@ -206,19 +208,6 @@ class UrlLauncher {
               serverName: servers.isNotEmpty ? servers.toList() : null,
             ),
           );
-          // #Pangea
-          // if (response.error != null) return;
-          if (response.error != null ||
-              (room != null && (await room.leaveIfFull()))) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                duration: const Duration(seconds: 10),
-                content: Text(L10n.of(context).roomFull),
-              ),
-            );
-            return;
-          }
-          // Pangea#
           // wait for two seconds so that it probably came down /sync
           await showFutureLoadingDialog(
             context: context,

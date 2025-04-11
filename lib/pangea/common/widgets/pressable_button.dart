@@ -17,18 +17,18 @@ class PressableButton extends StatefulWidget {
   final Stream? triggerAnimation;
   final bool playSound;
 
-  final bool? isShadow;
+  final double colorFactor;
 
   const PressableButton({
     required this.borderRadius,
     required this.child,
     required this.onPressed,
     required this.color,
-    this.buttonHeight = 5,
+    this.buttonHeight = 4,
     this.depressed = false,
     this.triggerAnimation,
-    this.isShadow,
     this.playSound = false,
+    this.colorFactor = 0.3,
     super.key,
   });
 
@@ -83,8 +83,7 @@ class PressableButtonState extends State<PressableButton>
     }
   }
 
-  bool get _isShadow =>
-      widget.isShadow ?? Theme.of(context).brightness == Brightness.light;
+  // bool get _isLightMode => Theme.of(context).brightness == Brightness.light;
 
   void _onTapDown(TapDownDetails? details) {
     if (_depressed) return;
@@ -145,33 +144,44 @@ class PressableButtonState extends State<PressableButton>
         child: AnimatedBuilder(
           animation: _tweenAnimation,
           builder: (context, child) {
-            return Column(
+            return Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(height: _tweenAnimation.value),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.alphaBlend(
-                      _isShadow
-                          ? Colors.black.withAlpha(65)
-                          : Colors.white.withAlpha(65),
-                      widget.color,
-                    ),
-                    borderRadius: widget.borderRadius,
+                Flexible(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(height: _tweenAnimation.value),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Color.alphaBlend(
+                            Colors.black.withAlpha(
+                              (255 * widget.colorFactor).round(),
+                            ),
+                            widget.color,
+                          ),
+                          borderRadius: widget.borderRadius,
+                        ),
+                        padding: EdgeInsets.only(
+                          bottom: !_depressed
+                              ? widget.buttonHeight - _tweenAnimation.value
+                              : 0,
+                          right: !_depressed
+                              ? (widget.buttonHeight - _tweenAnimation.value) /
+                                  2
+                              : 0,
+                        ),
+                        child: child,
+                      ),
+                    ],
                   ),
-                  padding: EdgeInsets.only(
-                    bottom: !_depressed
-                        ? widget.buttonHeight - _tweenAnimation.value
-                        : 0,
-                  ),
-                  child: child,
                 ),
+                SizedBox(height: _tweenAnimation.value / 2),
               ],
             );
           },
           child: Container(
             decoration: BoxDecoration(
-              color: widget.color,
               borderRadius: widget.borderRadius,
             ),
             child: widget.child,

@@ -3,23 +3,34 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
+import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/utils/message_text_util.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
+import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/utils/token_rendering_util.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Question - does this need to be stateful or does this work?
 /// Need to test.
+///
+
 class MessageTokenText extends StatelessWidget {
   final PangeaMessageEvent _pangeaMessageEvent;
   final TextStyle _style;
 
   final bool Function(PangeaToken)? _isSelected;
   final void Function(PangeaToken)? _onClick;
+  final bool Function(PangeaToken)? _isHighlighted;
+  final MessageOverlayController? _overlayController;
+  final bool _isTransitionAnimation;
+  final ReadingAssistanceMode? readingAssistanceMode;
 
   const MessageTokenText({
     super.key,
@@ -28,18 +39,26 @@ class MessageTokenText extends StatelessWidget {
     required TextStyle style,
     required void Function(PangeaToken)? onClick,
     bool Function(PangeaToken)? isSelected,
+    bool Function(PangeaToken)? isHighlighted,
+    MessageMode? messageMode,
+    MessageOverlayController? overlayController,
+    bool isTransitionAnimation = false,
+    this.readingAssistanceMode,
   })  : _onClick = onClick,
         _isSelected = isSelected,
         _style = style,
-        _pangeaMessageEvent = pangeaMessageEvent;
+        _pangeaMessageEvent = pangeaMessageEvent,
+        _isHighlighted = isHighlighted,
+        _overlayController = overlayController,
+        _isTransitionAnimation = isTransitionAnimation;
 
   List<PangeaToken>? get _tokens =>
       _pangeaMessageEvent.messageDisplayRepresentation?.tokens;
 
-  MessageAnalyticsEntry? get messageAnalyticsEntry => _tokens != null
-      ? MatrixState.pangeaController.getAnalytics.perMessage.get(
+  PracticeSelection? get messageAnalyticsEntry => _tokens != null
+      ? PracticeSelectionRepo.get(
+          _pangeaMessageEvent.messageDisplayLangCode,
           _tokens!,
-          _pangeaMessageEvent,
         )
       : null;
 
@@ -60,112 +79,62 @@ class MessageTokenText extends StatelessWidget {
 
     return MessageTextWidget(
       pangeaMessageEvent: _pangeaMessageEvent,
-      style: _style,
+      existingStyle: _style,
       messageAnalyticsEntry: messageAnalyticsEntry,
       isSelected: _isSelected,
       onClick: callOnClick,
-    );
-  }
-}
-
-class TokenPosition {
-  /// Start index of the full substring in the message
-  final int start;
-
-  /// End index of the full substring in the message
-  final int end;
-
-  /// Start index of the token in the message
-  final int tokenStart;
-
-  /// End index of the token in the message
-  final int tokenEnd;
-
-  final bool selected;
-  final bool hideContent;
-  final PangeaToken? token;
-
-  const TokenPosition({
-    required this.start,
-    required this.end,
-    required this.tokenStart,
-    required this.tokenEnd,
-    required this.hideContent,
-    required this.selected,
-    this.token,
-  });
-}
-
-class HiddenText extends StatelessWidget {
-  final String text;
-  final TextStyle style;
-
-  const HiddenText({
-    super.key,
-    required this.text,
-    required this.style,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final TextPainter textPainter = TextPainter(
-      text: TextSpan(text: text, style: style),
-      textDirection: TextDirection.ltr,
-    )..layout();
-
-    final textWidth = textPainter.size.width;
-    final textHeight = textPainter.size.height;
-
-    textPainter.dispose();
-
-    return SizedBox(
-      height: textHeight,
-      child: Stack(
-        children: [
-          Container(
-            width: textWidth,
-            height: textHeight,
-            color: Colors.transparent,
-          ),
-          Positioned(
-            bottom: 0,
-            child: Container(
-              width: textWidth,
-              height: 1,
-              color: style.color,
-            ),
-          ),
-        ],
-      ),
+      isHighlighted: _isHighlighted,
+      overlayController: _overlayController,
+      isTransitionAnimation: _isTransitionAnimation,
+      readingAssistanceMode: readingAssistanceMode,
     );
   }
 }
 
 class MessageTextWidget extends StatelessWidget {
   final PangeaMessageEvent pangeaMessageEvent;
-  final TextStyle style;
-  final MessageAnalyticsEntry? messageAnalyticsEntry;
+  final TextStyle existingStyle;
+  final PracticeSelection? messageAnalyticsEntry;
   final bool Function(PangeaToken)? isSelected;
   final void Function(TokenPosition tokenPosition)? onClick;
+  final bool Function(PangeaToken)? isHighlighted;
 
   final bool? softWrap;
   final int? maxLines;
   final TextOverflow? overflow;
 
+  final MessageOverlayController? overlayController;
+  final bool isTransitionAnimation;
+  final bool isMessage;
+  final ReadingAssistanceMode? readingAssistanceMode;
+
   const MessageTextWidget({
     super.key,
     required this.pangeaMessageEvent,
-    required this.style,
+    required this.existingStyle,
     this.messageAnalyticsEntry,
     this.isSelected,
     this.onClick,
     this.softWrap,
     this.maxLines,
     this.overflow,
+    this.isHighlighted,
+    this.overlayController,
+    this.isTransitionAnimation = false,
+    this.isMessage = true,
+    this.readingAssistanceMode,
   });
 
   @override
   Widget build(BuildContext context) {
+    final renderer = TokenRenderingUtil(
+      pangeaMessageEvent: pangeaMessageEvent,
+      readingAssistanceMode: readingAssistanceMode,
+      existingStyle: existingStyle,
+      overlayController: overlayController,
+      isTransitionAnimation: isTransitionAnimation,
+    );
+
     final Characters messageCharacters =
         pangeaMessageEvent.messageDisplayText.characters;
 
@@ -173,70 +142,45 @@ class MessageTextWidget extends StatelessWidget {
       pangeaMessageEvent,
       messageAnalyticsEntry: messageAnalyticsEntry,
       isSelected: isSelected,
+      isHighlighted: isHighlighted,
     );
 
     if (tokenPositions == null) {
       return Text(
         pangeaMessageEvent.messageDisplayText,
-        style: style,
+        style: renderer.style(context),
         softWrap: softWrap,
         maxLines: maxLines,
         overflow: overflow,
       );
     }
 
-    final hideTokenHighlights = messageAnalyticsEntry != null &&
-        (messageAnalyticsEntry!.hasHiddenWordActivity ||
-            messageAnalyticsEntry!.hasMessageMeaningActivity);
+    final theme = Theme.of(context);
+    final ownMessage =
+        pangeaMessageEvent.senderId == Matrix.of(context).client.userID;
+    final linkColor = theme.brightness == Brightness.light
+        ? theme.colorScheme.primary
+        : ownMessage
+            ? theme.colorScheme.onPrimary
+            : theme.colorScheme.onSurface;
 
-    return RichText(
+    return Text.rich(
       softWrap: softWrap ?? true,
       maxLines: maxLines,
       overflow: overflow ?? TextOverflow.clip,
-      text: TextSpan(
+      TextSpan(
         children:
             tokenPositions.mapIndexed((int i, TokenPosition tokenPosition) {
-          final shouldDo = pangeaMessageEvent.shouldDoActivity(
-            token: tokenPosition.token,
-            a: ActivityTypeEnum.wordMeaning,
-            feature: null,
-            tag: null,
-          );
-
-          final didMeaningActivity =
-              tokenPosition.token?.didActivitySuccessfully(
-                    ActivityTypeEnum.wordMeaning,
-                  ) ??
-                  true;
-
           final substring = messageCharacters
               .skip(tokenPosition.start)
               .take(tokenPosition.end - tokenPosition.start)
               .toString();
 
-          Color backgroundColor = Colors.transparent;
-          if (!hideTokenHighlights) {
-            if (tokenPosition.selected) {
-              backgroundColor = AppConfig.primaryColor.withAlpha(80);
-            } else if (isSelected != null && shouldDo) {
-              backgroundColor = !didMeaningActivity
-                  ? AppConfig.success.withAlpha(60)
-                  : AppConfig.gold.withAlpha(60);
-            }
+          if (tokenPosition.token?.pos == 'SPACE') {
+            return const TextSpan(text: '\n');
           }
 
           if (tokenPosition.token != null) {
-            if (tokenPosition.hideContent) {
-              return WidgetSpan(
-                child: GestureDetector(
-                  onTap: onClick != null
-                      ? () => onClick?.call(tokenPosition)
-                      : null,
-                  child: HiddenText(text: substring, style: style),
-                ),
-              );
-            }
-
             // if the tokenPosition is a combination of the token and preceding / following punctuation
             // split them so that only the token itself is highlighted when clicked
             String start = '';
@@ -251,86 +195,164 @@ class MessageTextWidget extends StatelessWidget {
             end = substring.characters.skip(endSplitIndex).toString();
             middle = substring.characters
                 .skip(startSplitIndex)
-                .take(endSplitIndex)
+                .take(endSplitIndex - startSplitIndex)
                 .toString();
 
+            final token = tokenPosition.token!;
+
+            final tokenWidth = renderer.tokenTextWidthForContainer(
+              context,
+              token.text.content,
+            );
+
             return WidgetSpan(
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  onTap: onClick != null
-                      ? () => onClick?.call(tokenPosition)
+              child: CompositedTransformTarget(
+                link: renderer.assignTokenKey
+                    ? MatrixState.pAnyState
+                        .layerLinkAndKey(token.text.uniqueKey)
+                        .link
+                    : LayerLinkAndKey(token.hashCode.toString()).link,
+                child: Column(
+                  key: renderer.assignTokenKey
+                      ? MatrixState.pAnyState
+                          .layerLinkAndKey(token.text.uniqueKey)
+                          .key
                       : null,
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        if (start.isNotEmpty)
-                          LinkifySpan(
-                            text: start,
-                            style: style,
-                            linkStyle: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Theme.of(context).brightness ==
-                                      Brightness.light
-                                  ? Theme.of(context).colorScheme.primary
-                                  : Theme.of(context).colorScheme.onPrimary,
-                            ),
-                            onOpen: (url) =>
-                                UrlLauncher(context, url.url).launchUrl(),
+                  children: [
+                    if (renderer.showCenterStyling)
+                      MessageTokenButton(
+                        token: token,
+                        overlayController: overlayController,
+                        textStyle: renderer.style(context),
+                        width: tokenWidth,
+                        animate: isTransitionAnimation,
+                        practiceTarget: overlayController
+                                    ?.toolbarMode.associatedActivityType !=
+                                null
+                            ? overlayController?.practiceSelection
+                                ?.activities(
+                                  overlayController!
+                                      .toolbarMode.associatedActivityType!,
+                                )
+                                .firstWhereOrNull(
+                                  (a) => a.tokens.contains(token),
+                                )
+                            : null,
+                      ),
+                    MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: onClick != null
+                            ? () => onClick?.call(tokenPosition)
+                            : null,
+                        child: Text.rich(
+                          TextSpan(
+                            children: [
+                              if (start.isNotEmpty)
+                                LinkifySpan(
+                                  text: start,
+                                  style: renderer.style(
+                                    context,
+                                    color: renderer.backgroundColor(
+                                      context,
+                                      tokenPosition.selected,
+                                    ),
+                                  ),
+                                  linkStyle: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: linkColor,
+                                  ),
+                                  onOpen: (url) =>
+                                      UrlLauncher(context, url.url).launchUrl(),
+                                ),
+                              // tokenPosition.hideContent
+                              //     ? WidgetSpan(
+                              //         alignment: PlaceholderAlignment.middle,
+                              //         child: GestureDetector(
+                              //           onTap: onClick != null
+                              //               ? () => onClick?.call(tokenPosition)
+                              //               : null,
+                              //           child: HiddenText(
+                              //             text: middle,
+                              //             style: style(context),
+                              //           ),
+                              //         ),
+                              //       )
+                              //     :
+                              LinkifySpan(
+                                text: middle,
+                                style: renderer.style(
+                                  context,
+                                  color: renderer.backgroundColor(
+                                    context,
+                                    tokenPosition.selected,
+                                  ),
+                                ),
+                                linkStyle: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  color: linkColor,
+                                ),
+                                onOpen: (url) =>
+                                    UrlLauncher(context, url.url).launchUrl(),
+                              ),
+                              if (end.isNotEmpty)
+                                LinkifySpan(
+                                  text: end,
+                                  style: renderer.style(
+                                    context,
+                                    color: renderer.backgroundColor(
+                                      context,
+                                      tokenPosition.selected,
+                                    ),
+                                  ),
+                                  linkStyle: TextStyle(
+                                    decoration: TextDecoration.underline,
+                                    color: linkColor,
+                                  ),
+                                  onOpen: (url) =>
+                                      UrlLauncher(context, url.url).launchUrl(),
+                                ),
+                            ],
                           ),
-                        LinkifySpan(
-                          text: middle,
-                          style: style.merge(
-                            TextStyle(
-                              backgroundColor: backgroundColor,
-                            ),
-                          ),
-                          linkStyle: TextStyle(
-                            decoration: TextDecoration.underline,
-                            color:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Theme.of(context).colorScheme.onPrimary,
-                          ),
-                          onOpen: (url) =>
-                              UrlLauncher(context, url.url).launchUrl(),
                         ),
-                        if (end.isNotEmpty)
-                          LinkifySpan(
-                            text: end,
-                            style: style,
-                            linkStyle: TextStyle(
-                              decoration: TextDecoration.underline,
-                              color: Theme.of(context).brightness ==
-                                      Brightness.light
-                                  ? Theme.of(context).colorScheme.primary
-                                  : Theme.of(context).colorScheme.onPrimary,
-                            ),
-                            onOpen: (url) =>
-                                UrlLauncher(context, url.url).launchUrl(),
-                          ),
-                      ],
+                      ),
                     ),
-                  ),
+                    // AnimatedContainer(
+                    //   duration: const Duration(
+                    //     milliseconds: AppConfig.overlayAnimationDuration,
+                    //   ),
+                    //   height: overlayController != null && isTransitionAnimation
+                    //       ? 4
+                    //       : 0,
+                    //   width: tokenWidth,
+                    //   child: Container(
+                    //     color: backgroundColor(context, tokenPosition),
+                    //   ),
+                    // ),
+                  ],
                 ),
               ),
             );
           } else {
-            if ((i > 0 || i < tokenPositions.length - 1) &&
-                tokenPositions[i + 1].hideContent &&
-                tokenPositions[i - 1].hideContent) {
-              return WidgetSpan(
-                child: GestureDetector(
-                  onTap: onClick != null
-                      ? () => onClick?.call(tokenPosition)
-                      : null,
-                  child: HiddenText(text: substring, style: style),
-                ),
-              );
-            }
+            // if ((i > 0 || i < tokenPositions.length - 1) &&
+            //     tokenPositions[i + 1].hideContent &&
+            //     tokenPositions[i - 1].hideContent) {
+            //   return WidgetSpan(
+            //     child: GestureDetector(
+            //       onTap: onClick != null
+            //           ? () => onClick?.call(tokenPosition)
+            //           : null,
+            //       child: HiddenText(
+            //         text: substring,
+            //         style: style(context),
+            //       ),
+            //     ),
+            //   );
+            // }
             return LinkifySpan(
               text: substring,
-              style: style,
+              style: renderer.style(context),
               options: const LinkifyOptions(humanize: false),
               linkStyle: TextStyle(
                 decoration: TextDecoration.underline,
@@ -344,3 +366,48 @@ class MessageTextWidget extends StatelessWidget {
     );
   }
 }
+
+// class HiddenText extends StatelessWidget {
+//   final String text;
+//   final TextStyle style;
+
+//   const HiddenText({
+//     super.key,
+//     required this.text,
+//     required this.style,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final TextPainter textPainter = TextPainter(
+//       text: TextSpan(text: text, style: style),
+//       textDirection: TextDirection.ltr,
+//     )..layout();
+
+//     final textWidth = textPainter.size.width;
+//     final textHeight = textPainter.size.height;
+
+//     textPainter.dispose();
+
+//     return SizedBox(
+//       height: textHeight,
+//       child: Stack(
+//         children: [
+//           Container(
+//             width: textWidth,
+//             height: textHeight,
+//             color: Colors.transparent,
+//           ),
+//           Positioned(
+//             bottom: 0,
+//             child: Container(
+//               width: textWidth,
+//               height: 1,
+//               color: style.color,
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

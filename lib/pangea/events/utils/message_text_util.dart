@@ -1,20 +1,73 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_token_text.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
+
+class TokenPosition {
+  /// Start index of the full substring in the message
+  final int start;
+
+  /// End index of the full substring in the message
+  final int end;
+
+  /// Start index of the token in the message
+  final int tokenStart;
+
+  /// End index of the token in the message
+  final int tokenEnd;
+
+  final bool hideContent;
+  final PangeaToken? token;
+  final bool isHighlighted;
+  final bool selected;
+
+  const TokenPosition({
+    required this.start,
+    required this.end,
+    required this.tokenStart,
+    required this.tokenEnd,
+    required this.hideContent,
+    required this.selected,
+    required this.isHighlighted,
+    this.token,
+  });
+}
 
 class MessageTextUtil {
+  static final Map<String, List<TokenPosition>> _tokenPositionsCache = {};
+
   static List<TokenPosition>? getTokenPositions(
     PangeaMessageEvent pangeaMessageEvent, {
-    MessageAnalyticsEntry? messageAnalyticsEntry,
+    PracticeSelection? messageAnalyticsEntry,
     bool Function(PangeaToken)? isSelected,
+    bool Function(PangeaToken)? isHighlighted,
   }) {
     try {
       if (pangeaMessageEvent.messageDisplayRepresentation?.tokens == null) {
         return null;
+      }
+
+      if (_tokenPositionsCache.containsKey(pangeaMessageEvent.eventId)) {
+        return _tokenPositionsCache[pangeaMessageEvent.eventId]!
+            .map(
+              (t) => TokenPosition(
+                start: t.start,
+                end: t.end,
+                tokenStart: t.tokenStart,
+                tokenEnd: t.tokenEnd,
+                hideContent: t.hideContent,
+                selected: t.token != null
+                    ? isSelected?.call(t.token!) ?? false
+                    : false,
+                isHighlighted: t.token != null
+                    ? isHighlighted?.call(t.token!) ?? false
+                    : false,
+                token: t.token,
+              ),
+            )
+            .toList();
       }
 
       // Convert the entire message into a list of characters
@@ -36,9 +89,6 @@ class MessageTextUtil {
         final int startIndex = messageCharacters.take(start).length;
         int endIndex = messageCharacters.take(end).length;
 
-        final hideContent =
-            messageAnalyticsEntry?.isTokenInHiddenWordActivity(token) ?? false;
-
         final hasHiddenContent =
             messageAnalyticsEntry?.hasHiddenWordActivity ?? false;
 
@@ -52,6 +102,7 @@ class MessageTextUtil {
               tokenEnd: startIndex,
               hideContent: false,
               selected: (isSelected?.call(token) ?? false) && !hasHiddenContent,
+              isHighlighted: isHighlighted?.call(token) ?? false,
             ),
           );
         }
@@ -80,6 +131,9 @@ class MessageTextUtil {
           break;
         }
 
+        final hideContent =
+            messageAnalyticsEntry?.isTokenInHiddenWordActivity(token) ?? false;
+
         tokenPositions.add(
           TokenPosition(
             start: startIndex,
@@ -91,6 +145,7 @@ class MessageTextUtil {
             selected: (isSelected?.call(token) ?? false) &&
                 !hideContent &&
                 !hasHiddenContent,
+            isHighlighted: isHighlighted?.call(token) ?? false,
           ),
         );
 
@@ -99,6 +154,7 @@ class MessageTextUtil {
         continue;
       }
 
+      _tokenPositionsCache[pangeaMessageEvent.eventId] = tokenPositions;
       return tokenPositions;
     } catch (err, s) {
       ErrorHandler.logError(

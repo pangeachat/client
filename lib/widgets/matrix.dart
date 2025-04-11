@@ -168,6 +168,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
     final candidate = _loginClientCandidate ??= ClientManager.createClient(
       '${AppConfig.applicationName}-${DateTime.now().millisecondsSinceEpoch}',
+      store,
     )..onLoginStateChanged
           .stream
           .where((l) => l == LoginState.loggedIn)
@@ -435,9 +436,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   void initSettings() {
-    AppConfig.fontSizeFactor =
-        double.tryParse(store.getString(SettingKeys.fontSizeFactor) ?? '') ??
-            AppConfig.fontSizeFactor;
+    // #Pangea
+    // AppConfig.fontSizeFactor =
+    //     double.tryParse(store.getString(SettingKeys.fontSizeFactor) ?? '') ??
+    //         AppConfig.fontSizeFactor;
+    // Pangea#
 
     AppConfig.renderHtml =
         store.getBool(SettingKeys.renderHtml) ?? AppConfig.renderHtml;

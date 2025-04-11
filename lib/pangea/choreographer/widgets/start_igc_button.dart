@@ -35,7 +35,7 @@ class StartIGCButtonState extends State<StartIGCButton>
       vsync: this,
       duration: const Duration(seconds: 2),
     );
-    _choreoListener = widget.controller.choreographer.stateListener.stream
+    _choreoListener = widget.controller.choreographer.stateStream.stream
         .listen(_updateSpinnerState);
     super.initState();
   }
@@ -67,6 +67,11 @@ class StartIGCButtonState extends State<StartIGCButton>
     }
   }
 
+  bool get _enableFeedback {
+    return assistanceState != AssistanceState.fetching &&
+        assistanceState != AssistanceState.complete;
+  }
+
   Future<void> _onTap() async {
     switch (assistanceState) {
       case AssistanceState.noSub:
@@ -85,6 +90,7 @@ class StartIGCButtonState extends State<StartIGCButton>
         showDialog(
           context: context,
           builder: (c) => const SettingsLearning(),
+          barrierDismissible: false,
         );
         return;
       case AssistanceState.notFetched:
@@ -107,12 +113,16 @@ class StartIGCButtonState extends State<StartIGCButton>
   Widget build(BuildContext context) {
     return SizedBox(
       child: InkWell(
-        onTap: _onTap,
+        enableFeedback: _enableFeedback,
+        onTap: _enableFeedback ? _onTap : null,
         customBorder: const CircleBorder(),
-        onLongPress: () => showDialog(
-          context: context,
-          builder: (c) => const SettingsLearning(),
-        ),
+        onLongPress: _enableFeedback
+            ? () => showDialog(
+                  context: context,
+                  builder: (c) => const SettingsLearning(),
+                  barrierDismissible: false,
+                )
+            : null,
         child: Stack(
           alignment: Alignment.center,
           children: [

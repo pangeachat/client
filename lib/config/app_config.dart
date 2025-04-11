@@ -23,13 +23,26 @@ abstract class AppConfig {
   static const double messageFontSize = 16.0;
   static const bool allowOtherHomeservers = true;
   static const bool enableRegistration = true;
-  static const double toolbarMaxHeight = 300.0;
-  static const double toolbarMinHeight = 175.0;
+  static const double toolbarMaxHeight = 250.0;
+  static const double toolbarMinHeight = 200.0;
   static const double toolbarMinWidth = 350.0;
-  static const double toolbarButtonsHeight = 50.0;
   static const double defaultHeaderHeight = 56.0;
-  static const double defaultFooterHeight = 48.0;
+  static const double toolbarButtonsHeight = 50.0;
   static const double toolbarSpacing = 8.0;
+  static const double toolbarIconSize = 24.0;
+  static const double readingAssistanceInputBarHeight = 140.0;
+  static const double reactionsPickerHeight = 48.0;
+  static const double chatInputRowOverlayPadding = 8.0;
+  static const double tokenModeInputBarHeight = reactionsPickerHeight +
+      toolbarButtonsHeight +
+      (chatInputRowOverlayPadding * 2) +
+      toolbarSpacing;
+  static const double messageModeInputBarHeight =
+      readingAssistanceInputBarHeight +
+          toolbarButtonsHeight +
+          (chatInputRowOverlayPadding * 2) +
+          toolbarSpacing;
+
   static TextStyle messageTextStyle(
     Event? event,
     Color textColor,
@@ -53,14 +66,18 @@ abstract class AppConfig {
   // static const Color primaryColorLight = Color(0xFFCCBDEA);
   static const Color primaryColor = Color(0xFF8560E0);
   static const Color primaryColorLight = Color(0xFFDBC9FF);
-  static const Color secondaryColor = Color(0xFF41a2bc);
+  // static const Color secondaryColor = Color(0xFF41a2bc);
+  static const Color secondaryColor = Color.fromARGB(255, 253, 191, 1);
   static const Color activeToggleColor = Color(0xFF33D057);
   static const Color success = Color(0xFF33D057);
   static const Color warning = Color.fromARGB(255, 210, 124, 12);
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
+  static const Color silver = Color.fromARGB(255, 192, 192, 192);
+  static const Color bronze = Color.fromARGB(255, 205, 127, 50);
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
   static const Color error = Colors.red;
   static const int overlayAnimationDuration = 250;
+  static const int roomCreationTimeoutSeconds = 15;
   // static String _privacyUrl =
   //     'https://gitlab.com/famedly/fluffychat/-/blob/main/PRIVACY.md';
   static String _privacyUrl = "https://www.pangeachat.com/privacy";
@@ -107,7 +124,10 @@ abstract class AppConfig {
   static bool hideRedactedEvents = false;
   static bool hideUnknownEvents = true;
   static bool hideUnimportantStateEvents = true;
-  static bool separateChatTypes = false;
+  // #Pangea
+  // static bool separateChatTypes = false;
+  static bool separateChatTypes = true;
+  // Pangea#
   static bool autoplayImages = true;
   static bool sendTypingNotifications = true;
   static bool sendPublicReadReceipts = true;
@@ -161,7 +181,6 @@ abstract class AppConfig {
       "https://buy.stripe.com/test_bIY6ssd8z5Uz8ec8ww";
   static String iosPromoCode =
       "https://apps.apple.com/redeem?ctx=offercodes&id=1445118630&code=";
-  static String trialSubscriptionId = "pangea_new_user_trial";
   static String androidUpdateURL =
       "https://play.google.com/store/apps/details?id=com.talktolearn.chat";
   static String iosUpdateURL = "itms-apps://itunes.apple.com/app/id1445118630";
@@ -172,6 +191,9 @@ abstract class AppConfig {
       "https://support.google.com/accessibility/android/answer/6006983?hl=en";
   static String assetsBaseURL =
       "https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com";
+
+  static String trialSubscriptionId = "pangea_new_user_trial";
+  static String errorSubscriptionId = "pangea_subscription_error";
   // Pangea#
 
   static void loadFromJson(Map<String, dynamic> json) {

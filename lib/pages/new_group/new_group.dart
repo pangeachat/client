@@ -2,12 +2,16 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/new_group/new_group_view.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -18,8 +22,14 @@ import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class NewGroup extends StatefulWidget {
+  // #Pangea
+  final String? spaceId;
+  // Pangea#
   final CreateGroupType createGroupType;
   const NewGroup({
+    // #Pangea
+    this.spaceId,
+    // Pangea#
     this.createGroupType = CreateGroupType.group,
     super.key,
   });
@@ -32,6 +42,13 @@ class NewGroupController extends State<NewGroup> {
   TextEditingController nameController = TextEditingController();
 
   // #Pangea
+  ActivityPlanModel? selectedActivity;
+  Uint8List? selectedActivityImage;
+  String? selectedActivityImageFilename;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final FocusNode focusNode = FocusNode();
+
   bool requiredCodeToJoin = false;
   // bool publicGroup = false;
   // Pangea#
@@ -57,6 +74,35 @@ class NewGroupController extends State<NewGroup> {
   // void setPublicGroup(bool b) =>
   //     setState(() => publicGroup = groupCanBeFound = b);
   void setRequireCode(bool b) => setState(() => requiredCodeToJoin = b);
+
+  void setSelectedActivity(
+    ActivityPlanModel? activity,
+    Uint8List? image,
+    String? imageFilename,
+  ) {
+    setState(() {
+      selectedActivity = activity;
+      selectedActivityImage = image;
+      selectedActivityImageFilename = imageFilename;
+      if (avatar == null) {
+        avatar = image;
+        avatarUrl = null;
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    nameController.addListener(() => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    focusNode.dispose();
+    super.dispose();
+  }
   // Pangea#
 
   void setGroupCanBeFound(bool b) => setState(() => groupCanBeFound = b);
@@ -95,13 +141,58 @@ class NewGroupController extends State<NewGroup> {
                 type: sdk.EventTypes.RoomAvatar,
                 content: {'url': avatarUrl.toString()},
               ),
+            // #Pangea
+            StateEvent(
+              type: EventTypes.RoomPowerLevels,
+              stateKey: '',
+              content: defaultPowerLevels(Matrix.of(context).client.userID!),
+            ),
+            // Pangea#
           ],
           // #Pangea
           enableEncryption: false,
           // Pangea#
         );
     if (!mounted) return;
-    context.go('/rooms/$roomId/invite');
+    // #Pangea
+    final client = Matrix.of(context).client;
+    Room? room = client.getRoomById(roomId);
+    if (room == null) {
+      await client.waitForRoomInSync(roomId);
+      room = client.getRoomById(roomId);
+    }
+    if (room == null) return;
+
+    if (widget.spaceId != null) {
+      try {
+        final space = client.getRoomById(widget.spaceId!);
+        await space?.pangeaSetSpaceChild(room.id);
+      } catch (err) {
+        ErrorHandler.logError(
+          e: "Failed to add room to space",
+          data: {"spaceId": widget.spaceId, "error": err},
+        );
+      }
+    }
+
+    if (selectedActivity != null) {
+      try {
+        await room.sendActivityPlan(
+          selectedActivity!,
+          avatar: selectedActivityImage,
+          filename: selectedActivityImageFilename,
+        );
+      } catch (err) {
+        ErrorHandler.logError(
+          e: "Failed to send activity plan",
+          data: {"roomId": roomId, "error": err},
+        );
+      }
+    }
+    // if a timeout happened, don't redirect to the chat
+    if (error != null) return;
+    // Pangea#
+    context.go('/rooms/$roomId/invite?filter=groups');
   }
 
   Future<void> _createSpace() async {
@@ -155,6 +246,9 @@ class NewGroupController extends State<NewGroup> {
         data: {"spaceId": spaceId, "error": err},
       );
     }
+
+    // if a timeout happened, don't redirect to the space
+    if (error != null) return;
     MatrixState.pangeaController.classController
         .setActiveSpaceIdInChatListController(spaceId);
     // Pangea#
@@ -194,6 +288,19 @@ class NewGroupController extends State<NewGroup> {
     final client = Matrix.of(context).client;
 
     try {
+      // #Pangea
+      if (!formKey.currentState!.validate()) {
+        focusNode.requestFocus();
+        return;
+      }
+      // Pangea#
+
+      if (nameController.text.trim().isEmpty &&
+          createGroupType == CreateGroupType.space) {
+        setState(() => error = L10n.of(context).pleaseFillOut);
+        return;
+      }
+
       setState(() {
         loading = true;
         error = null;
@@ -206,9 +313,23 @@ class NewGroupController extends State<NewGroup> {
 
       switch (createGroupType) {
         case CreateGroupType.group:
-          await _createGroup();
+          // #Pangea
+          // await _createGroup();
+          await _createGroup().timeout(
+            const Duration(
+              seconds: AppConfig.roomCreationTimeoutSeconds,
+            ),
+          );
+        // Pangea#
         case CreateGroupType.space:
-          await _createSpace();
+          // #Pangea
+          // await _createSpace();
+          await _createSpace().timeout(
+            const Duration(
+              seconds: AppConfig.roomCreationTimeoutSeconds,
+            ),
+          );
+        // Pangea#
       }
     } catch (e, s) {
       sdk.Logs().d('Unable to create group', e, s);

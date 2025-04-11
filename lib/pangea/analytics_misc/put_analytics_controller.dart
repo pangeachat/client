@@ -119,12 +119,15 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   /// the data locally and reset the update timer
   /// Decide whether to update the analytics room
   void _onNewAnalyticsData(AnalyticsStream data) {
-    final List<OneConstructUse> constructs = _getDraftUses(data.roomId);
+    final String? eventID = data.eventId;
+    final String? roomID = data.roomId;
+
+    List<OneConstructUse> constructs = [];
+    if (roomID != null) {
+      constructs = _getDraftUses(roomID);
+    }
 
     constructs.addAll(data.constructs);
-
-    final String eventID = data.eventId;
-    final String roomID = data.roomId;
 
     if (kDebugMode) {
       for (final use in constructs) {
@@ -138,10 +141,10 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
 
     _addLocalMessage(eventID, constructs).then(
       (_) {
-        _clearDraftUses(roomID);
+        if (roomID != null) _clearDraftUses(roomID);
         _decideWhetherToUpdateAnalyticsRoom(
           level,
-          data.origin,
+          data.targetID,
           data.constructs,
         );
       },
@@ -161,9 +164,9 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   void addDraftUses(
     List<PangeaToken> tokens,
     String roomID,
-    ConstructUseTypeEnum useType,
-    AnalyticsUpdateOrigin origin,
-  ) {
+    ConstructUseTypeEnum useType, {
+    String? targetID,
+  }) {
     final metadata = ConstructUseMetaData(
       roomId: roomID,
       timeStamp: DateTime.now(),
@@ -227,7 +230,11 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
     // so copy it here to that the list of new uses is accurate
     final List<OneConstructUse> newUses = List.from(uses);
     _addLocalMessage('draft$roomID', uses).then(
-      (_) => _decideWhetherToUpdateAnalyticsRoom(level, origin, newUses),
+      (_) => _decideWhetherToUpdateAnalyticsRoom(
+        level,
+        targetID,
+        newUses,
+      ),
     );
   }
 
@@ -245,7 +252,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   /// Add a list of construct uses for a new message to the local
   /// cache of recently sent messages
   Future<void> _addLocalMessage(
-    String cacheKey,
+    String? cacheKey,
     List<OneConstructUse> constructs,
   ) async {
     try {
@@ -254,7 +261,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
 
       // if this is not a draft message, add the eventId to the metadata
       // if it's missing (it will be missing for draft constructs)
-      if (!cacheKey.startsWith('draft')) {
+      if (cacheKey != null && !cacheKey.startsWith('draft')) {
         constructs = constructs.map((construct) {
           if (construct.metadata.eventId != null) return construct;
           construct.metadata.eventId = cacheKey;
@@ -262,6 +269,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
         }).toList();
       }
 
+      cacheKey ??= Object.hashAll(constructs).toString();
       currentCache[cacheKey] = constructs;
 
       await _setMessagesSinceUpdate(currentCache);
@@ -283,7 +291,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   /// Otherwise, add a local update to the alert stream.
   void _decideWhetherToUpdateAnalyticsRoom(
     int prevLevel,
-    AnalyticsUpdateOrigin? origin,
+    String? targetID,
     List<OneConstructUse> newConstructs,
   ) {
     // cancel the last timer that was set on message event and
@@ -300,18 +308,13 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
       sendLocalAnalyticsToAnalyticsRoom();
       return;
     }
-
-    final int newLevel =
-        _pangeaController.getAnalytics.constructListModel.level;
-    newLevel > prevLevel
-        ? sendLocalAnalyticsToAnalyticsRoom()
-        : analyticsUpdateStream.add(
-            AnalyticsUpdate(
-              AnalyticsUpdateType.local,
-              newConstructs,
-              origin: origin,
-            ),
-          );
+    analyticsUpdateStream.add(
+      AnalyticsUpdate(
+        AnalyticsUpdateType.local,
+        newConstructs,
+        targetID: targetID,
+      ),
+    );
   }
 
   /// Clears the local cache of recently sent constructs. Called before updating analytics
@@ -425,9 +428,9 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
 }
 
 class AnalyticsStream {
-  final String eventId;
-  final String roomId;
-  final AnalyticsUpdateOrigin? origin;
+  final String? eventId;
+  final String? roomId;
+  final String? targetID;
 
   final List<OneConstructUse> constructs;
 
@@ -435,27 +438,20 @@ class AnalyticsStream {
     required this.eventId,
     required this.roomId,
     required this.constructs,
-    this.origin,
+    this.targetID,
   });
-}
-
-enum AnalyticsUpdateOrigin {
-  it,
-  igc,
-  sendMessage,
-  practiceActivity,
 }
 
 class AnalyticsUpdate {
   final AnalyticsUpdateType type;
-  final AnalyticsUpdateOrigin? origin;
   final List<OneConstructUse> newConstructs;
   final bool isLogout;
+  final String? targetID;
 
   AnalyticsUpdate(
     this.type,
     this.newConstructs, {
     this.isLogout = false,
-    this.origin,
+    this.targetID,
   });
 }

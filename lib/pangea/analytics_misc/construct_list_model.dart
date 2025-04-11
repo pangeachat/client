@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_identifier.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 
 /// A wrapper around a list of [OneConstructUse]s, used to simplify
@@ -35,6 +35,22 @@ class ConstructListModel {
 
   /// A list of unique grammar lemmas
   List<String> grammarLemmasList = [];
+
+  List<ConstructIdentifier> get unlockedGrammarLemmas {
+    final morphs = constructList(type: ConstructTypeEnum.morph);
+    final List<ConstructIdentifier> unlocked = [];
+    for (final morph in grammarLemmasList) {
+      final matches = morphs.where((m) => m.lemma == morph);
+      final totalPoints = matches.fold<int>(
+        0,
+        (total, match) => total + match.points,
+      );
+      if (totalPoints > 25) {
+        unlocked.add(matches.first.id);
+      }
+    }
+    return unlocked;
+  }
 
   /// Analytics data consumed by widgets. Updated each time new analytics come in.
   int prevXP = 0;
@@ -161,23 +177,48 @@ class ConstructListModel {
     if (totalXP < 0) {
       totalXP = 0;
     }
+    level = calculateLevelWithXp(totalXP);
+  }
 
-    // Don't call .floor() if NaN or Infinity
-    // https://pangea-chat.sentry.io/issues/6052871310
-    final double levelCalculation = 1 + sqrt((1 + 8 * totalXP / 100) / 2);
-    if (!levelCalculation.isNaN && levelCalculation.isFinite) {
-      level = levelCalculation.floor();
+  int calculateLevelWithXp(int totalXP) {
+    // [D] is the "compression factor". It determines how quickly
+    /// or slowly the level grows relative to XP
+    const double D = 2500;
+    final doubleScore = (1 + sqrt((1 + (8.0 * totalXP / D)) / 2.0));
+    if (!doubleScore.isNaN && doubleScore.isFinite) {
+      return doubleScore.floor();
     } else {
-      level = 1;
       ErrorHandler.logError(
         e: "Calculated level in Nan or Infinity",
         data: {
           "totalXP": totalXP,
           "prevXP": prevXP,
-          "level": levelCalculation,
+          "level": doubleScore,
         },
       );
+      return 1;
     }
+  }
+
+  int calculateXpWithLevel(int level) {
+    // [D] is the same "compression factor" as in calculateLevelWithXp.
+    const double D = 2500.0;
+
+    // If level <= 1, XP should be 0 or negative by this math.
+    // In practice, you might clamp it to 0:
+    if (level <= 1) {
+      return 0;
+    }
+
+    // Convert level to double for the math
+    final double lc = level.toDouble();
+
+    // XP from the inverse formula:
+    final double xpDouble = (D / 8.0) * (2.0 * pow(lc - 1.0, 2.0) - 1.0);
+
+    // Floor or clamp to ensure non-negative.
+    final int xp = xpDouble.floor();
+    return (xp < 0) ? 0 : xp;
   }
 
   // TODO; make this non-nullable, returning empty if not found

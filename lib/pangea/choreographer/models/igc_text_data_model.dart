@@ -11,12 +11,12 @@ import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_card_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/choreographer/repo/language_detection_repo.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import '../../common/constants/model_keys.dart';
 
 // import 'package:language_tool/language_tool.dart';
 
@@ -102,13 +102,35 @@ class IGCTextData {
       originalInput = matches.first.match.fullText;
     }
 
+    final defaultDetections = LanguageDetectionResponse(
+      detections: [
+        LanguageDetection(langCode: content.langCode, confidence: 1),
+      ],
+      fullText: content.text,
+    );
+
+    LanguageDetectionResponse detections = defaultDetections;
+    if (event.detections != null) {
+      try {
+        detections = LanguageDetectionResponse.fromJson({
+          "detections": event.detections,
+          "full_text": content.text,
+        });
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          m: "Error parsing detections in IGCTextData.fromRepresentationEvent",
+          data: {
+            "detections": event.detections,
+            "full_text": content.text,
+          },
+        );
+      }
+    }
+
     return IGCTextData(
-      detections: LanguageDetectionResponse(
-        detections: [
-          LanguageDetection(langCode: content.langCode, confidence: 1),
-        ],
-        fullText: content.text,
-      ),
+      detections: detections,
       originalInput: originalInput,
       fullTextCorrection: content.text,
       tokens: tokens,
@@ -143,11 +165,6 @@ class IGCTextData {
   String get detectedLanguage {
     return detections.detections.firstOrNull?.langCode ??
         LanguageKeys.unknownLanguage;
-    // if (!(enableIGC && enableIT) || matches.isNotEmpty) {
-    //   return detections.highestValidatedDetection().langCode;
-    // } else {
-    //   return detections.highestConfidenceDetection.langCode;
-    // }
   }
 
   // reconstruct fullText based on accepted match
@@ -175,11 +192,11 @@ class IGCTextData {
 
     final SpanChoice replacement = pangeaMatch.match.choices![choiceIndex];
 
-    originalInput = originalInput.replaceRange(
-      pangeaMatch.match.offset,
-      pangeaMatch.match.offset + pangeaMatch.match.length,
-      replacement.value,
-    );
+    final newStart = originalInput.characters.take(pangeaMatch.match.offset);
+    final newEnd = originalInput.characters
+        .skip(pangeaMatch.match.offset + pangeaMatch.match.length);
+    final fullText = newStart + replacement.value.characters + newEnd;
+    originalInput = fullText.toString();
 
     int startIndex;
     int endIndex;

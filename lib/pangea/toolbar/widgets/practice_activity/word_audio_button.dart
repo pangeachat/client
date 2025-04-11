@@ -8,14 +8,22 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class WordAudioButton extends StatefulWidget {
   final String text;
-  final TtsController ttsController;
   final double size;
+  final bool isSelected;
+  final double baseOpacity;
+  final String uniqueID;
+
+  /// If defined, this callback will be called instead of the default one
+  final void Function()? callbackOverride;
 
   const WordAudioButton({
     super.key,
     required this.text,
-    required this.ttsController,
+    required this.uniqueID,
     this.size = 24,
+    this.isSelected = false,
+    this.baseOpacity = 1,
+    this.callbackOverride,
   });
 
   @override
@@ -23,52 +31,77 @@ class WordAudioButton extends StatefulWidget {
 }
 
 class WordAudioButtonState extends State<WordAudioButton> {
+  final TtsController tts = TtsController();
   bool _isPlaying = false;
+
+  @override
+  void didUpdateWidget(covariant WordAudioButton oldWidget) {
+    if (oldWidget.isSelected != widget.isSelected ||
+        oldWidget.callbackOverride != widget.callbackOverride) {
+      setState(() {});
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    tts.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
-      link: MatrixState.pAnyState.layerLinkAndKey('word-audio-button').link,
-      child: IconButton(
-        key: MatrixState.pAnyState.layerLinkAndKey('word-audio-button').key,
-        icon: const Icon(Icons.play_arrow_outlined),
-        isSelected: _isPlaying,
-        selectedIcon: const Icon(Icons.pause_outlined),
-        color: _isPlaying ? Colors.white : null,
-        tooltip:
-            _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
-        iconSize: widget.size,
-        onPressed: () async {
-          if (_isPlaying) {
-            await widget.ttsController.stop();
-            if (mounted) {
-              setState(() => _isPlaying = false);
-            }
-          } else {
-            if (mounted) {
-              setState(() => _isPlaying = true);
-            }
-            try {
-              await widget.ttsController.tryToSpeak(
-                widget.text,
-                context,
-                targetID: 'word-audio-button',
-              );
-            } catch (e, s) {
-              ErrorHandler.logError(
-                e: e,
-                s: s,
-                data: {
-                  "text": widget.text,
-                },
-              );
-            } finally {
-              if (mounted) {
-                setState(() => _isPlaying = false);
-              }
-            }
-          }
-        }, // Disable button if language isn't supported
+      link: MatrixState.pAnyState
+          .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
+          .link,
+      child: Opacity(
+        opacity: !widget.isSelected ? widget.baseOpacity : 1,
+        child: IconButton(
+          key: MatrixState.pAnyState
+              .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
+              .key,
+          icon: const Icon(Icons.volume_up),
+          isSelected: _isPlaying,
+          selectedIcon: const Icon(Icons.pause_outlined),
+          color:
+              widget.isSelected ? Theme.of(context).colorScheme.primary : null,
+          tooltip:
+              _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
+          iconSize: widget.size,
+          onPressed: widget.callbackOverride ??
+              () async {
+                if (_isPlaying) {
+                  await tts.stop();
+                  if (mounted) {
+                    setState(() => _isPlaying = false);
+                  }
+                } else {
+                  if (mounted) {
+                    setState(() => _isPlaying = true);
+                  }
+                  try {
+                    await tts.tryToSpeak(
+                      widget.text,
+                      context,
+                      targetID: 'word-audio-button-${widget.uniqueID}',
+                    );
+                  } catch (e, s) {
+                    ErrorHandler.logError(
+                      e: e,
+                      s: s,
+                      data: {
+                        "text": widget.text,
+                      },
+                    );
+                  } finally {
+                    if (mounted) {
+                      setState(() => _isPlaying = false);
+                    }
+                  }
+                }
+              }, // Disable button if language isn't supported
+        ),
       ),
     );
   }

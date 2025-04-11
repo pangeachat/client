@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class WordZoomActivityButton extends StatelessWidget {
@@ -20,15 +19,28 @@ class WordZoomActivityButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget buttonContent = IconButton(
-      onPressed: onPressed,
-      icon: icon,
-      iconSize: 24,
-      color: isSelected ? Theme.of(context).colorScheme.primary : null,
-      style: IconButton.styleFrom(
-        backgroundColor: isSelected
-            ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.25)
-            : null,
+    Widget buttonContent = AnimatedSize(
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.easeInOut,
+      child: IconButton(
+        onPressed: onPressed,
+        icon: AnimatedBuilder(
+          animation: Listenable.merge([ValueNotifier(isSelected)]),
+          builder: (context, child) {
+            return Transform.scale(
+              scale: isSelected ? 1.25 : 1.0,
+              child: icon,
+            );
+          },
+        ),
+        iconSize: 24, // Keep this constant as scaling handles the size change
+        color: isSelected ? Theme.of(context).colorScheme.primary : null,
+        visualDensity: VisualDensity.compact,
+        // style: IconButton.styleFrom(
+        //   backgroundColor: isSelected
+        //       ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.25)
+        //       : Colors.transparent,
+        // ),
       ),
     );
 
@@ -46,22 +58,6 @@ class WordZoomActivityButton extends StatelessWidget {
       );
     }
 
-    return Badge(
-      offset: kIsWeb ? null : const Offset(-1, 1),
-      isLabelVisible: isSelected,
-      label: SizedBox(
-        height: 10,
-        width: 10,
-        child: IconButton(
-          onPressed: onPressed,
-          icon: const Icon(Icons.close, size: 10),
-          padding: const EdgeInsets.all(0.0),
-        ),
-      ),
-      backgroundColor:
-          Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
-      padding: const EdgeInsets.all(0),
-      child: buttonContent,
-    );
+    return buttonContent;
   }
 }

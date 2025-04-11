@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -6,12 +8,16 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class WordTextWithAudioButton extends StatefulWidget {
   final String text;
-  final TtsController ttsController;
+  final String uniqueID;
+  final TextStyle? style;
+  final double? iconSize;
 
   const WordTextWithAudioButton({
     super.key,
     required this.text,
-    required this.ttsController,
+    required this.uniqueID,
+    this.style,
+    this.iconSize,
   });
 
   @override
@@ -19,21 +25,51 @@ class WordTextWithAudioButton extends StatefulWidget {
 }
 
 class WordAudioButtonState extends State<WordTextWithAudioButton> {
+  // initialize as null because we don't know if we need to load
+  // audio from choreo yet. This shall remain null if user device support
+  // text to speech
+  final bool? _isLoadingAudio = null;
+  final TtsController tts = TtsController();
+
   bool _isPlaying = false;
+  bool _isLoading = false;
+  StreamSubscription? _loadingChoreoSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadingChoreoSubscription = tts.loadingChoreoStream.stream.listen((val) {
+      if (mounted) setState(() => _isLoading = val);
+    });
+  }
+
+  @override
+  void dispose() {
+    _loadingChoreoSubscription?.cancel();
+    tts.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
-      link: MatrixState.pAnyState.layerLinkAndKey('text-audio-button').link,
+      link: MatrixState.pAnyState
+          .layerLinkAndKey('text-audio-button-${widget.uniqueID}')
+          .link,
       child: MouseRegion(
-        key: MatrixState.pAnyState.layerLinkAndKey('text-audio-button').key,
+        key: MatrixState.pAnyState
+            .layerLinkAndKey('text-audio-button-${widget.uniqueID}')
+            .key,
         cursor: SystemMouseCursors.click,
         onEnter: (event) => setState(() {}),
         onExit: (event) => setState(() {}),
         child: GestureDetector(
           onTap: () async {
+            if (_isLoadingAudio == true) {
+              return;
+            }
             if (_isPlaying) {
-              await widget.ttsController.stop();
+              await tts.stop();
               if (mounted) {
                 setState(() => _isPlaying = false);
               }
@@ -42,10 +78,10 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
                 setState(() => _isPlaying = true);
               }
               try {
-                await widget.ttsController.tryToSpeak(
+                await tts.tryToSpeak(
                   widget.text,
                   context,
-                  targetID: 'text-audio-button',
+                  targetID: 'text-audio-button-${widget.uniqueID}',
                 );
               } catch (e, s) {
                 ErrorHandler.logError(
@@ -62,37 +98,34 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
               }
             }
           },
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 180),
-                  child: Text(
-                    widget.text,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: _isPlaying
-                              ? Theme.of(context).colorScheme.secondary
-                              : null,
-                          fontSize:
-                              Theme.of(context).textTheme.titleLarge?.fontSize,
-                        ),
-                    overflow: TextOverflow.ellipsis,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 8.0,
+            children: [
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 180),
+                child: Text(
+                  widget.text,
+                  style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              if (_isLoading)
+                const SizedBox(
+                  width: 16,
+                  height: 16,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 3,
                   ),
-                ),
-                const SizedBox(width: 4),
+                )
+              else
                 Icon(
-                  _isPlaying ? Icons.play_arrow : Icons.play_arrow_outlined,
-                  size: Theme.of(context).textTheme.titleLarge?.fontSize,
+                  _isPlaying ? Icons.pause_outlined : Icons.volume_up,
+                  color:
+                      _isPlaying ? Theme.of(context).colorScheme.primary : null,
+                  size: widget.iconSize,
                 ),
-              ],
-            ),
+            ],
           ),
         ),
       ),

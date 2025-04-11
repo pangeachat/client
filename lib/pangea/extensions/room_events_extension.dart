@@ -1,24 +1,16 @@
 part of "pangea_room_extension.dart";
 
 extension EventsRoomExtension on Room {
-  Future<bool> leaveIfFull() async {
-    if (!isRoomAdmin &&
-        (capacity != null) &&
-        (await numNonAdmins) > (capacity!)) {
-      if (!isSpace) {
-        markUnread(false);
-      }
-      await leave();
-      return true;
-    }
-    return false;
-  }
-
   Future<void> leaveSpace() async {
+    if (!isSpace) {
+      debugPrint("room is not a space!");
+      return;
+    }
+
     for (final child in spaceChildren) {
       if (child.roomId == null) continue;
       final Room? room = client.getRoomById(child.roomId!);
-      if (room == null) continue;
+      if (room == null || room.isAnalyticsRoom) continue;
       try {
         await room.leave();
       } catch (e, s) {
@@ -97,16 +89,11 @@ extension EventsRoomExtension on Room {
     }
   }
 
-  String sendFakeMessage({
-    required String text,
+  Map<String, dynamic> _getEventContent(
+    Map<String, dynamic> content,
     Event? inReplyTo,
     String? editEventId,
-  }) {
-    final content = <String, dynamic>{
-      'msgtype': MessageTypes.Text,
-      'body': text,
-    };
-
+  ) {
     final html = markdown(
       content['body'],
       getEmotePacks: () => getImagePacksFlat(ImagePackUsage.emoticon),
@@ -118,9 +105,6 @@ extension EventsRoomExtension on Room {
       content['format'] = 'org.matrix.custom.html';
       content['formatted_body'] = html;
     }
-
-    // Create new transaction id
-    final messageID = client.generateUniqueTransactionId();
 
     if (inReplyTo != null) {
       var replyText = '<${inReplyTo.senderId}> ${inReplyTo.body}';
@@ -171,6 +155,23 @@ extension EventsRoomExtension on Room {
       }
     }
 
+    return content;
+  }
+
+  String sendFakeMessage({
+    required String text,
+    Event? inReplyTo,
+    String? editEventId,
+  }) {
+    // Create new transaction id
+    final messageID = client.generateUniqueTransactionId();
+
+    final baseContent = <String, dynamic>{
+      'msgtype': MessageTypes.Text,
+      'body': text,
+    };
+
+    final content = _getEventContent(baseContent, inReplyTo, editEventId);
     final Event event = Event(
       content: content,
       type: EventTypes.Message,
@@ -246,6 +247,15 @@ extension EventsRoomExtension on Room {
         event['formatted_body'] = html;
       }
     }
+
+    final fullBody = _getEventContent(Map.from(event), inReplyTo, editEventId);
+    final jsonString = jsonEncode(fullBody);
+    final jsonSizeInBytes = utf8.encode(jsonString).length;
+    const maxBodySize = 60000;
+    if (jsonSizeInBytes > maxBodySize) {
+      return Future.error(EventTooLarge(maxBodySize, jsonSizeInBytes));
+    }
+
     return sendEvent(
       event,
       txid: txid,
@@ -254,6 +264,56 @@ extension EventsRoomExtension on Room {
       threadRootEventId: threadRootEventId,
       threadLastEventId: threadLastEventId,
     );
+  }
+
+  Future<void> sendActivityPlan(
+    ActivityPlanModel activity, {
+    Uint8List? avatar,
+    String? avatarURL,
+    String? filename,
+  }) async {
+    Uint8List? bytes = avatar;
+    if (avatarURL != null && bytes == null) {
+      final resp = await http
+          .get(Uri.parse(avatarURL))
+          .timeout(const Duration(seconds: 5));
+      bytes = resp.bodyBytes;
+    }
+
+    MatrixFile? file;
+    if (filename != null && bytes != null) {
+      file = MatrixFile(
+        bytes: bytes,
+        name: filename,
+      );
+    }
+    final eventId = await pangeaSendTextEvent(
+      activity.markdown,
+      messageTag: ModelKey.messageTagActivityPlan,
+    );
+
+    if (file != null) {
+      await sendFileEvent(
+        file,
+        shrinkImageMaxDimension: 1600,
+        extraContent: {
+          ModelKey.messageTags: ModelKey.messageTagActivityPlan,
+        },
+      );
+    }
+
+    if (canSendDefaultStates) {
+      await client.setRoomStateWithKey(
+        id,
+        PangeaEventTypes.activityPlan,
+        "",
+        activity.toJson(),
+      );
+
+      if (eventId != null) {
+        await setPinnedEvents([eventId]);
+      }
+    }
   }
 
   /// Get a list of events in the room that are of type [PangeaEventTypes.construct]

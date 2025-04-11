@@ -239,7 +239,9 @@ class PangeaChatDetailsView extends StatelessWidget {
                               ),
                               child: SelectableLinkify(
                                 text: room.topic.isEmpty
-                                    ? L10n.of(context).noChatDescriptionYet
+                                    ? room.isSpace
+                                        ? L10n.of(context).noSpaceDescriptionYet
+                                        : L10n.of(context).noChatDescriptionYet
                                     : room.topic,
                                 options: const LinkifyOptions(humanize: false),
                                 linkStyle: const TextStyle(
@@ -336,10 +338,11 @@ class PangeaChatDetailsView extends StatelessWidget {
                             room.isSpace &&
                             room.spaceParents.isEmpty)
                           Divider(color: theme.dividerColor, height: 1),
-                        RoomCapacityButton(
-                          room: room,
-                          controller: controller,
-                        ),
+                        if (!room.isSpace && !room.isDirectChat)
+                          RoomCapacityButton(
+                            room: room,
+                            controller: controller,
+                          ),
                         if (room.isSpace && room.isRoomAdmin && kIsWeb)
                           DownloadAnalyticsButton(space: room),
                         Divider(color: theme.dividerColor, height: 1),
@@ -414,10 +417,10 @@ class PangeaChatDetailsView extends StatelessWidget {
                               cancelLabel: L10n.of(context).no,
                               message: room.isSpace
                                   ? L10n.of(context).leaveSpaceDescription
-                                  : L10n.of(context).archiveRoomDescription,
+                                  : L10n.of(context).leaveRoomDescription,
                               isDestructive: true,
                             );
-                            if (confirmed == OkCancelResult.cancel) return;
+                            if (confirmed != OkCancelResult.ok) return;
                             final resp = await showFutureLoadingDialog(
                               context: context,
                               future:

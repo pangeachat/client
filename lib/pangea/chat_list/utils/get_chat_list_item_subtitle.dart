@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_token_text.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../../utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -23,7 +25,8 @@ class ChatListItemSubtitle extends StatelessWidget {
     return MatrixState.pangeaController.languageController.languagesSet &&
         !event.redacted &&
         event.type == EventTypes.Message &&
-        event.messageType == MessageTypes.Text;
+        event.messageType == MessageTypes.Text &&
+        !(AppConfig.renderHtml && !event.redacted && event.isRichMessage);
   }
 
   Future<MessageEventAndTokens> _getPangeaMessageEvent(
@@ -88,21 +91,22 @@ class ChatListItemSubtitle extends StatelessWidget {
           final tokens = messageEventAndTokens.tokens;
 
           final analyticsEntry = tokens != null
-              ? MatrixState.pangeaController.getAnalytics.perMessage.get(
+              ? PracticeSelectionRepo.get(
+                  messageEventAndTokens.event.messageDisplayLangCode,
                   tokens,
-                  pangeaMessageEvent,
                 )
               : null;
 
           return MessageTextWidget(
             pangeaMessageEvent: pangeaMessageEvent,
-            style: style,
+            existingStyle: style,
             messageAnalyticsEntry: analyticsEntry,
             isSelected: null,
             onClick: null,
             softWrap: false,
             maxLines: pangeaMessageEvent.room.notificationCount >= 1 ? 2 : 1,
             overflow: TextOverflow.ellipsis,
+            isMessage: false,
           );
         }
 

@@ -44,7 +44,6 @@ class FullWidthButtonState extends State<FullWidthButton> {
               onPressed: widget.onPressed,
               borderRadius: BorderRadius.circular(36),
               color: Theme.of(context).colorScheme.primary,
-              isShadow: true,
               child: Container(
                 // internal padding
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -121,7 +120,9 @@ class FullWidthTextField extends StatelessWidget {
   final bool? showErrorText;
   final String? errorText;
   final Function(String)? onSubmitted;
-  final InputDecoration? decoration;
+  final String? labelText;
+  final List<String>? autofillHints;
+  final bool autoFocus;
 
   const FullWidthTextField({
     required this.hintText,
@@ -134,7 +135,9 @@ class FullWidthTextField extends StatelessWidget {
     this.errorText,
     this.showErrorText,
     this.onSubmitted,
-    this.decoration,
+    this.labelText,
+    this.autofillHints,
+    this.autoFocus = false,
     super.key,
   });
 
@@ -149,7 +152,10 @@ class FullWidthTextField extends StatelessWidget {
         autocorrect: autocorrect,
         textInputAction: textInputAction,
         keyboardType: keyboardType,
+        autofillHints: autofillHints,
+        autofocus: autoFocus,
         decoration: InputDecoration(
+          labelText: labelText,
           hintText: hintText,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(36.0),

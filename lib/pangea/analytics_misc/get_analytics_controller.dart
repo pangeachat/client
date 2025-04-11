@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 
@@ -12,20 +11,21 @@ import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_event.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
-import 'package:fluffychat/pangea/analytics_misc/message_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
   final GetStorage analyticsBox = GetStorage("analytics_storage");
   late PangeaController _pangeaController;
-  late MessageAnalyticsController perMessage;
+  late PracticeSelectionRepo perMessage;
 
   final List<AnalyticsCacheEntry> _cache = [];
   StreamSubscription<AnalyticsUpdate>? _analyticsUpdateSubscription;
@@ -39,10 +39,6 @@ class GetAnalyticsController extends BaseController {
 
   GetAnalyticsController(PangeaController pangeaController) {
     _pangeaController = pangeaController;
-
-    perMessage = MessageAnalyticsController(
-      this,
-    );
   }
 
   LanguageModel? get _l2 => _pangeaController.languageController.userL2;
@@ -50,21 +46,16 @@ class GetAnalyticsController extends BaseController {
 
   // the minimum XP required for a given level
   int get _minXPForLevel {
-    return _calculateMinXpForLevel(constructListModel.level);
+    return constructListModel.calculateXpWithLevel(constructListModel.level);
   }
 
   // the minimum XP required for the next level
   int get _minXPForNextLevel {
-    return _calculateMinXpForLevel(constructListModel.level + 1);
+    return constructListModel
+        .calculateXpWithLevel(constructListModel.level + 1);
   }
 
   int get minXPForNextLevel => _minXPForNextLevel;
-
-  /// Calculates the minimum XP required for a specific level.
-  int _calculateMinXpForLevel(int level) {
-    if (level == 1) return 0; // Ensure level 1 starts at 0 XP
-    return ((100 / 8) * (2 * pow(level - 1, 2))).floor();
-  }
 
   // the progress within the current level as a percentage (0.0 to 1.0)
   double get levelProgress {
@@ -110,7 +101,7 @@ class GetAnalyticsController extends BaseController {
         data: {},
       );
     } finally {
-      _updateAnalyticsStream();
+      _updateAnalyticsStream(points: 0);
       if (!initCompleter.isCompleted) initCompleter.complete();
       _initializing = false;
     }
@@ -137,36 +128,78 @@ class GetAnalyticsController extends BaseController {
 
     final offset =
         _pangeaController.userController.publicProfile?.xpOffset ?? 0;
+    final prevUnlockedMorphs = constructListModel.unlockedGrammarLemmas.toSet();
     constructListModel.updateConstructs(analyticsUpdate.newConstructs, offset);
+    final newUnlockedMorphs = constructListModel.unlockedGrammarLemmas
+        .toSet()
+        .difference(prevUnlockedMorphs);
+
     if (analyticsUpdate.type == AnalyticsUpdateType.server) {
       await _getConstructs(forceUpdate: true);
     }
-    if (oldLevel < constructListModel.level) _onLevelUp();
-    if (oldLevel > constructListModel.level) await _onLevelDown(oldLevel);
-    _updateAnalyticsStream(origin: analyticsUpdate.origin);
-  }
-
-  void _updateAnalyticsStream({
-    AnalyticsUpdateOrigin? origin,
-  }) =>
-      analyticsStream.add(AnalyticsStreamUpdate(origin: origin));
-
-  void _onLevelUp() {
+    if (oldLevel < constructListModel.level) {
+      // do not await this - it's not necessary for this to finish
+      // before the function completes and it blocks the UI
+      _onLevelUp(oldLevel, constructListModel.level);
+    }
+    if (oldLevel > constructListModel.level) {
+      await _onLevelDown(constructListModel.level, oldLevel);
+    }
+    if (newUnlockedMorphs.isNotEmpty) {
+      _onUnlockMorphLemmas(newUnlockedMorphs);
+    }
+    _updateAnalyticsStream(
+      points: analyticsUpdate.newConstructs.fold<int>(
+        0,
+        (previousValue, element) => previousValue + element.pointValue,
+      ),
+      targetID: analyticsUpdate.targetID,
+    );
+    // Update public profile each time that new analytics are added.
+    // If the level hasn't changed, this will not send an update to the server.
+    // Do this on all updates (not just on level updates) to account for cases
+    // of target language updates being missed (https://github.com/pangeachat/client/issues/2006)
     _pangeaController.userController.updatePublicProfile(
       level: constructListModel.level,
     );
-
-    setState({'level_up': constructListModel.level});
   }
 
-  Future<void> _onLevelDown(final prevLevel) async {
-    final offset =
-        _calculateMinXpForLevel(prevLevel) - constructListModel.totalXP;
+  void _updateAnalyticsStream({
+    required int points,
+    String? targetID,
+  }) =>
+      analyticsStream.add(
+        AnalyticsStreamUpdate(
+          points: points,
+          targetID: targetID,
+        ),
+      );
+
+  Future<void> _onLevelUp(final int lowerLevel, final int upperLevel) async {
+    // final result = await _generateLevelUpAnalyticsAndSaveToStateEvent(
+    //   lowerLevel,
+    //   upperLevel,
+    // );
+    setState({
+      'level_up': constructListModel.level,
+      // 'analytics_room_id': _client.analyticsRoomLocal(_l2!)?.id,
+      // "construct_summary_state_event_id": result?.stateEventId,
+      // "construct_summary": result?.summary,
+    });
+  }
+
+  Future<void> _onLevelDown(final int lowerLevel, final int upperLevel) async {
+    final offset = constructListModel.calculateXpWithLevel(lowerLevel) -
+        constructListModel.totalXP;
     await _pangeaController.userController.addXPOffset(offset);
     constructListModel.updateConstructs(
       [],
       _pangeaController.userController.publicProfile!.xpOffset!,
     );
+  }
+
+  void _onUnlockMorphLemmas(Set<ConstructIdentifier> unlocked) {
+    setState({'unlocked_constructs': unlocked});
   }
 
   /// A local cache of eventIds and construct uses for messages sent since the last update.
@@ -341,6 +374,90 @@ class GetAnalyticsController extends BaseController {
     );
     _cache.add(entry);
   }
+
+//   Future<GenerateConstructSummaryResult?>
+//       _generateLevelUpAnalyticsAndSaveToStateEvent(
+//     final int lowerLevel,
+//     final int upperLevel,
+//   ) async {
+//     // generate level up analytics as a construct summary
+//     ConstructSummary summary;
+//     try {
+//       final int maxXP = constructListModel.calculateXpWithLevel(upperLevel);
+//       final int minXP = constructListModel.calculateXpWithLevel(lowerLevel);
+//       int diffXP = maxXP - minXP;
+//       if (diffXP < 0) diffXP = 0;
+
+//       // compute construct use of current level
+//       final List<OneConstructUse> constructUseOfCurrentLevel = [];
+//       int score = 0;
+//       for (final use in constructListModel.uses) {
+//         constructUseOfCurrentLevel.add(use);
+//         score += use.pointValue;
+//         if (score >= diffXP) break;
+//       }
+
+//       // extract construct use message bodies for analytics
+//       List<String?>? constructUseMessageContentBodies = [];
+//       for (final use in constructUseOfCurrentLevel) {
+//         try {
+//           final useMessage = await use.getEvent(_client);
+//           final useMessageBody = useMessage?.content["body"];
+//           if (useMessageBody is String) {
+//             constructUseMessageContentBodies.add(useMessageBody);
+//           } else {
+//             constructUseMessageContentBodies.add(null);
+//           }
+//         } catch (e) {
+//           constructUseMessageContentBodies.add(null);
+//         }
+//       }
+//       if (constructUseMessageContentBodies.length !=
+//           constructUseOfCurrentLevel.length) {
+//         constructUseMessageContentBodies = null;
+//       }
+
+//       final request = ConstructSummaryRequest(
+//         constructs: constructUseOfCurrentLevel,
+//         constructUseMessageContentBodies: constructUseMessageContentBodies,
+//         language: _l2!.langCodeShort,
+//         upperLevel: upperLevel,
+//         lowerLevel: lowerLevel,
+//       );
+
+//       final response = await ConstructRepo.generateConstructSummary(request);
+//       summary = response.summary;
+//     } catch (e) {
+//       debugPrint("Error generating level up analytics: $e");
+//       ErrorHandler.logError(e: e, data: {'e': e});
+//       return null;
+//     }
+//     String stateEventId;
+//     try {
+//       final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
+//       if (analyticsRoom == null) {
+//         ErrorHandler.logError(
+//           e: e,
+//           data: {'e': e, 'message': "Analytics room not found for user"},
+//         );
+//         return null;
+//       }
+//       stateEventId = await _client.setRoomStateWithKey(
+//         analyticsRoom.id,
+//         PangeaEventTypes.constructSummary,
+//         '',
+//         summary.toJson(),
+//       );
+//     } catch (e) {
+//       debugPrint("Error saving construct summary room: $e");
+//       ErrorHandler.logError(e: e, data: {'e': e});
+//       return null;
+//     }
+//     return GenerateConstructSummaryResult(
+//       stateEventId: stateEventId,
+//       summary: summary,
+//     );
+//   }
 }
 
 class AnalyticsCacheEntry {
@@ -373,9 +490,11 @@ class AnalyticsCacheEntry {
 }
 
 class AnalyticsStreamUpdate {
-  final AnalyticsUpdateOrigin? origin;
+  final int points;
+  final String? targetID;
 
   AnalyticsStreamUpdate({
-    this.origin,
+    required this.points,
+    this.targetID,
   });
 }

@@ -3,8 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 Future<Room> getReportsDM(User teacher, Room space) async {
@@ -18,10 +23,70 @@ Future<Room> getReportsDM(User teacher, Room space) async {
   return space.client.getRoomById(roomId)!;
 }
 
-Future<void> reportMessage(
+void reportEvent(
+  Event event,
+  ChatController controller,
+  BuildContext context,
+) async {
+  final score = await showModalActionPopup<int>(
+    context: context,
+    title: L10n.of(context).reportMessage,
+    message: L10n.of(context).whyDoYouWantToReportThis,
+    cancelLabel: L10n.of(context).cancel,
+    actions: [
+      AdaptiveModalAction(
+        value: 1,
+        label: L10n.of(context).offensive,
+      ),
+      AdaptiveModalAction(
+        value: 2,
+        label: L10n.of(context).translationProblem,
+      ),
+      AdaptiveModalAction(
+        value: 3,
+        label: L10n.of(context).other,
+      ),
+    ],
+  );
+  if (score == null) return;
+
+  final reason = await showTextInputDialog(
+    context: context,
+    title: L10n.of(context).whyDoYouWantToReportThis,
+    okLabel: L10n.of(context).ok,
+    cancelLabel: L10n.of(context).cancel,
+    hintText: L10n.of(context).reason,
+    autoSubmit: true,
+  );
+
+  if (score == 1) {
+    await reportOffensiveMessage(
+      context,
+      event.room.id,
+      reason,
+      event.senderId,
+      event.content['body'].toString(),
+    );
+    controller.clearSelectedEvents();
+    return;
+  }
+
+  ErrorHandler.logError(
+    e: "User reported message",
+    data: {
+      "content": event.content['body'],
+      "eventID": event.eventId,
+      "roomID": event.room.id,
+      "userID": event.senderId,
+      "reason": reason,
+    },
+  );
+}
+
+Future<void> reportOffensiveMessage(
   BuildContext context,
   String roomId,
-  String reason,
+  String? reason,
   String reportedUserId,
   String reportedMessage,
 ) async {
@@ -30,57 +95,66 @@ Future<void> reportMessage(
     throw ("Null room with id $roomId in reportMessage");
   }
 
-  final List<SpaceTeacher> teachers =
-      await getReportTeachers(context, reportedInRoom);
-  if (teachers.isEmpty) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          L10n.of(context).noTeachersFound,
-        ),
-      ),
-    );
+  final resp = await showFutureLoadingDialog<List<SpaceTeacher>>(
+    context: context,
+    future: () async {
+      final List<SpaceTeacher> teachers =
+          await getReportTeachers(context, reportedInRoom);
+      if (teachers.isEmpty) {
+        throw L10n.of(context).noTeachersFound;
+      }
+      return teachers;
+    },
+  );
+
+  if (resp.isError || resp.result == null || resp.result!.isEmpty) {
     return;
   }
 
   final List<SpaceTeacher>? selectedTeachers = await showDialog(
     context: context,
     useRootNavigator: false,
-    builder: (BuildContext context) => TeacherSelectDialog(teachers: teachers),
+    builder: (BuildContext context) =>
+        TeacherSelectDialog(teachers: resp.result!),
   );
 
   if (selectedTeachers == null || selectedTeachers.isEmpty) {
     return;
   }
 
-  final List<Room> reportDMs = [];
-  for (final SpaceTeacher teacher in selectedTeachers) {
-    final Room reportDM = await getReportsDM(
-      teacher.teacher,
-      teacher.space,
-    );
-    reportDMs.add(reportDM);
-  }
+  await showFutureLoadingDialog(
+    context: context,
+    future: () async {
+      final List<Room> reportDMs = [];
+      for (final SpaceTeacher teacher in selectedTeachers) {
+        final Room reportDM = await getReportsDM(
+          teacher.teacher,
+          teacher.space,
+        );
+        reportDMs.add(reportDM);
+      }
 
-  final String reportingUserId = Matrix.of(context).client.userID ?? "";
-  final String roomName = reportedInRoom.getLocalizedDisplayname();
-  final String messageTitle = L10n.of(context).reportMessageTitle(
-    reportingUserId,
-    reportedUserId,
-    roomName,
+      final String reportingUserId = Matrix.of(context).client.userID ?? "";
+      final String roomName = reportedInRoom.getLocalizedDisplayname();
+      final String messageTitle = L10n.of(context).reportMessageTitle(
+        reportingUserId,
+        reportedUserId,
+        roomName,
+      );
+      final String messageBody = L10n.of(context).reportMessageBody(
+        reportedMessage,
+        reason ?? L10n.of(context).none,
+      );
+      final String message = "$messageTitle\n\n$messageBody";
+      for (final Room reportDM in reportDMs) {
+        final event = <String, dynamic>{
+          'msgtype': PangeaEventTypes.report,
+          'body': message,
+        };
+        await reportDM.sendEvent(event);
+      }
+    },
   );
-  final String messageBody = L10n.of(context).reportMessageBody(
-    reportedMessage,
-    reason,
-  );
-  final String message = "$messageTitle\n\n$messageBody";
-  for (final Room reportDM in reportDMs) {
-    final event = <String, dynamic>{
-      'msgtype': PangeaEventTypes.report,
-      'body': message,
-    };
-    await reportDM.sendEvent(event);
-  }
 }
 
 Future<List<SpaceTeacher>> getReportTeachers(

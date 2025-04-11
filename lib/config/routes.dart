@@ -29,8 +29,12 @@ import 'package:fluffychat/pages/settings_notifications/settings_notifications.d
 import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/pages/settings_security/settings_security.dart';
 import 'package:fluffychat/pages/settings_style/settings_style.dart';
+import 'package:fluffychat/pangea/activity_generator/activity_generator.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_page.dart';
+import 'package:fluffychat/pangea/activity_suggestions/suggestions_page.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
+import 'package:fluffychat/pangea/layouts/bottom_nav_layout.dart';
+import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/login/pages/user_settings.dart';
@@ -38,7 +42,6 @@ import 'package:fluffychat/pangea/spaces/utils/join_with_alias.dart';
 import 'package:fluffychat/pangea/spaces/utils/join_with_link.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/pangea/user/pages/find_partner.dart';
-import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
 import 'package:fluffychat/widgets/log_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -137,17 +140,13 @@ abstract class AppRoutes {
     ),
     GoRoute(
       path: '/join_with_alias',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        const JoinWithAlias(),
-      ),
-      redirect: (context, state) {
-        if (Matrix.of(context).client.isLogged()) {
-          return '/rooms/join_with_alias?alias=${state.uri.queryParameters['alias']}';
-        }
-        return null;
-      },
+      pageBuilder: (context, state) => Matrix.of(context).client.isLogged()
+          ? chatListShellRouteBuilder(context, state, const JoinWithAlias())
+          : defaultPageBuilder(
+              context,
+              state,
+              const JoinWithAlias(),
+            ),
     ),
     GoRoute(
       path: '/user_age',
@@ -158,16 +157,43 @@ abstract class AppRoutes {
       ),
       redirect: loggedOutRedirect,
     ),
+    ShellRoute(
+      pageBuilder: chatListShellRouteBuilder,
+      routes: [
+        GoRoute(
+          path: '/homepage',
+          redirect: loggedOutRedirect,
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const SuggestionsPage(),
+          ),
+          routes: [
+            ...newRoomRoutes,
+            GoRoute(
+              path: '/planner',
+              redirect: loggedOutRedirect,
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const ActivityGenerator(),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
     // Pangea#
     ShellRoute(
-      pageBuilder: (context, state, child) => defaultPageBuilder(
+      // Never use a transition on the shell route. Changing the PageBuilder
+      // here based on a MediaQuery causes the child to briefly be rendered
+      // twice with the same GlobalKey, blowing up the rendering.
+      pageBuilder: (context, state, child) => noTransitionPageBuilder(
         context,
         state,
         FluffyThemes.isColumnMode(context) &&
                 state.fullPath?.startsWith('/rooms/settings') == false
             ? TwoColumnLayout(
-                displayNavigationRail:
-                    state.path?.startsWith('/rooms/settings') != true,
                 mainView: ChatList(
                   activeChat: state.pathParameters['roomid'],
                   displayNavigationRail:
@@ -175,7 +201,15 @@ abstract class AppRoutes {
                 ),
                 sideView: child,
               )
-            : child,
+            // #Pangea
+            // : child,
+            : FluffyThemes.isColumnMode(context) ||
+                    (state.fullPath?.split("/").reversed.elementAt(1) ==
+                            'rooms' &&
+                        state.pathParameters['roomid'] != null)
+                ? child
+                : BottomNavLayout(mainView: child),
+        // Pangea#
       ),
       routes: [
         GoRoute(
@@ -185,54 +219,15 @@ abstract class AppRoutes {
             context,
             state,
             FluffyThemes.isColumnMode(context)
-                ? const EmptyPage()
+                // #Pangea
+                // ? const EmptyPage()
+                ? const SuggestionsPage()
+                // Pangea#
                 : ChatList(
                     activeChat: state.pathParameters['roomid'],
                   ),
           ),
           routes: [
-            // #Pangea
-            // GoRoute(
-            //   path: 'mylearning',
-            //   pageBuilder: (context, state) => defaultPageBuilder(
-            //     context,
-            //     state,
-            //     const StudentAnalyticsPage(
-            //       selectedView: BarChartViewSelection.messages,
-            //     ),
-            //   ),
-            //   redirect: loggedOutRedirect,
-            // ),
-            // GoRoute(
-            //   path: 'analytics',
-            //   pageBuilder: (context, state) => defaultPageBuilder(
-            //     context,
-            //     state,
-            //     const AnalyticsSpaceList(),
-            //   ),
-            //   redirect: loggedOutRedirect,
-            //   routes: [
-            //     GoRoute(
-            //       path: ':spaceid',
-            //       pageBuilder: (context, state) => defaultPageBuilder(
-            //         context,
-            //         state,
-            //         const SpaceAnalyticsPage(
-            //           selectedView: BarChartViewSelection.messages,
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            GoRoute(
-              path: '/join_with_alias',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                const JoinWithAlias(),
-              ),
-            ),
-            // Pangea#
             GoRoute(
               path: 'archive',
               pageBuilder: (context, state) => defaultPageBuilder(
@@ -266,10 +261,7 @@ abstract class AppRoutes {
               redirect: loggedOutRedirect,
             ),
             GoRoute(
-              // #Pangea
-              // path: 'newgroup',
               path: 'newgroup',
-              // Pangea#
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
@@ -277,17 +269,17 @@ abstract class AppRoutes {
               ),
               redirect: loggedOutRedirect,
               // #Pangea
-              // routes: [
-              //   GoRoute(
-              //     path: ':spaceid',
-              //     pageBuilder: (context, state) => defaultPageBuilder(
-              //       context,
-              //       state,
-              //       const NewGroup(),
-              //     ),
-              //     redirect: loggedOutRedirect,
-              //   ),
-              // ],
+              routes: [
+                GoRoute(
+                  path: ':spaceid',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    NewGroup(spaceId: state.pathParameters['spaceid']!),
+                  ),
+                  redirect: loggedOutRedirect,
+                ),
+              ],
               // Pangea#
             ),
             GoRoute(
@@ -316,9 +308,8 @@ abstract class AppRoutes {
                 state,
                 FluffyThemes.isColumnMode(context)
                     ? TwoColumnLayout(
-                        mainView: const Settings(),
+                        mainView: Settings(key: state.pageKey),
                         sideView: child,
-                        displayNavigationRail: false,
                       )
                     : child,
               ),
@@ -329,7 +320,10 @@ abstract class AppRoutes {
                     context,
                     state,
                     FluffyThemes.isColumnMode(context)
-                        ? const EmptyPage()
+                        // #Pangea
+                        // ? const EmptyPage()
+                        ? const SuggestionsPage()
+                        // Pangea#
                         : const Settings(),
                   ),
                   routes: [
@@ -469,6 +463,17 @@ abstract class AppRoutes {
                     ),
                     // #Pangea
                     GoRoute(
+                      path: 'learning',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const SettingsLearning(
+                          isDialog: false,
+                        ),
+                      ),
+                      redirect: loggedOutRedirect,
+                    ),
+                    GoRoute(
                       path: 'subscription',
                       pageBuilder: (context, state) => defaultPageBuilder(
                         context,
@@ -528,6 +533,19 @@ abstract class AppRoutes {
                     ),
                   ),
                   redirect: loggedOutRedirect,
+                  routes: [
+                    GoRoute(
+                      path: '/generator',
+                      redirect: loggedOutRedirect,
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        ActivityGenerator(
+                          roomID: state.pathParameters['roomid']!,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 // GoRoute(
                 //   path: 'encryption',
@@ -640,20 +658,79 @@ abstract class AppRoutes {
     ),
   ];
 
+  static Page noTransitionPageBuilder(
+    BuildContext context,
+    GoRouterState state,
+    Widget child,
+  ) =>
+      NoTransitionPage(
+        key: state.pageKey,
+        restorationId: state.pageKey.value,
+        child: child,
+      );
+
   static Page defaultPageBuilder(
     BuildContext context,
     GoRouterState state,
     Widget child,
   ) =>
-      FluffyThemes.isColumnMode(context)
-          ? NoTransitionPage(
-              key: state.pageKey,
-              restorationId: state.pageKey.value,
-              child: child,
-            )
-          : MaterialPage(
-              key: state.pageKey,
-              restorationId: state.pageKey.value,
-              child: child,
-            );
+      // #Pangea
+      noTransitionPageBuilder(context, state, child);
+  // FluffyThemes.isColumnMode(context)
+  //     ? noTransitionPageBuilder(context, state, child)
+  //     : MaterialPage(
+  //         key: state.pageKey,
+  //         restorationId: state.pageKey.value,
+  //         child: child,
+  //       );
+  // Pangea#
+
+  // #Pangea
+  static List<RouteBase> get newRoomRoutes => [
+        GoRoute(
+          path: 'newgroup',
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const NewGroup(),
+          ),
+          redirect: loggedOutRedirect,
+        ),
+        GoRoute(
+          path: 'newspace',
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const NewGroup(createGroupType: CreateGroupType.space),
+          ),
+          redirect: loggedOutRedirect,
+        ),
+      ];
+
+  static Page chatListShellRouteBuilder(
+    context,
+    state,
+    child,
+  ) =>
+      noTransitionPageBuilder(
+        context,
+        state,
+        FluffyThemes.isColumnMode(context) &&
+                state.fullPath?.startsWith('/rooms/settings') == false
+            ? TwoColumnLayout(
+                mainView: ChatList(
+                  activeChat: state.pathParameters['roomid'],
+                  displayNavigationRail:
+                      state.path?.startsWith('/rooms/settings') != true,
+                ),
+                sideView: child,
+              )
+            : FluffyThemes.isColumnMode(context) ||
+                    (state.fullPath?.split("/").reversed.elementAt(1) ==
+                            'rooms' &&
+                        state.pathParameters['roomid'] != null)
+                ? child
+                : BottomNavLayout(mainView: child),
+      );
+  // Pangea#
 }

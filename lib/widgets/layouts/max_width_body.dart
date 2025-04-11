@@ -8,12 +8,20 @@ class MaxWidthBody extends StatelessWidget {
   final double maxWidth;
   final bool withScrolling;
   final EdgeInsets? innerPadding;
+  // #Pangea
+  final bool showBorder;
+  final EdgeInsets? padding;
+  // Pangea#
 
   const MaxWidthBody({
     required this.child,
     this.maxWidth = 600,
     this.withScrolling = true,
     this.innerPadding,
+    // #Pangea
+    this.showBorder = true,
+    this.padding,
+    // Pangea#
     super.key,
   });
   @override
@@ -28,18 +36,32 @@ class MaxWidthBody extends StatelessWidget {
               ? child
               : Container(
                   alignment: Alignment.topCenter,
-                  padding: const EdgeInsets.all(32),
+                  // #Pangea
+                  // padding: const EdgeInsets.all(32),
+                  padding: padding ?? const EdgeInsets.all(32),
+                  // Pangea#
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(
                       maxWidth: FluffyThemes.columnWidth * 1.5,
                     ),
                     child: Material(
-                      elevation: theme.appBarTheme.scrolledUnderElevation ?? 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(AppConfig.borderRadius),
+                        side: BorderSide(
+                          // #Pangea
+                          // color: theme.dividerColor,
+                          color: showBorder
+                              ? theme.dividerColor
+                              : Colors.transparent,
+                          // Pangea#
+                        ),
+                      ),
                       clipBehavior: Clip.hardEdge,
-                      borderRadius:
-                          BorderRadius.circular(AppConfig.borderRadius),
-                      shadowColor: theme.appBarTheme.shadowColor,
-                      child: child,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: child,
+                      ),
                     ),
                   ),
                 );

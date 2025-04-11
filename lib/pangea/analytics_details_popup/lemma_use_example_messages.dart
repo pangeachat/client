@@ -6,11 +6,11 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_level_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
+import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -49,8 +49,9 @@ class LemmaUseExampleMessages extends StatelessWidget {
         continue;
       }
 
+      if (use.metadata.roomId == null) continue;
       final Room? room = MatrixState.pangeaController.matrixState.client
-          .getRoomById(use.metadata.roomId);
+          .getRoomById(use.metadata.roomId!);
       if (room == null) continue;
 
       Timeline? timeline = room.timeline;
@@ -105,7 +106,7 @@ class LemmaUseExampleMessages extends StatelessWidget {
               children: snapshot.data!.map((example) {
                 return Container(
                   decoration: BoxDecoration(
-                    color: construct.lemmaCategory.color,
+                    color: construct.lemmaCategory.color(context),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   padding: const EdgeInsets.symmetric(

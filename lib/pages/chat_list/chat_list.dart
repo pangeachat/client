@@ -131,23 +131,61 @@ class ChatListController extends State<ChatList>
     });
     context.go("/rooms");
   }
+
+  /// show alert dialog prompting user to accept invite or reject invite
+  Future<void> showInviteDialog(Room room) async {
+    final acceptInvite = await showOkCancelAlertDialog(
+      context: context,
+      title: L10n.of(context).youreInvited,
+      message: room.isSpace
+          ? L10n.of(context).invitedToSpace(room.name, room.creatorId ?? "???")
+          : L10n.of(context).invitedToChat(room.name, room.creatorId ?? "???"),
+      okLabel: L10n.of(context).accept,
+      cancelLabel: L10n.of(context).decline,
+    );
+
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        if (acceptInvite == OkCancelResult.ok) {
+          await room.join();
+          if (room.isSpace) {
+            setActiveSpace(room.id);
+            context.go(
+              FluffyThemes.isColumnMode(context)
+                  ? "/rooms/${room.id}/details"
+                  : "/rooms",
+            );
+            return;
+          }
+          context.go("/rooms/${room.id}");
+          return;
+        }
+        await room.leave();
+      },
+    );
+  }
   // Pangea#
 
   void onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
-      final joinResult = await showFutureLoadingDialog(
-        context: context,
-        future: () async {
-          final waitForRoom = room.client.waitForRoomInSync(
-            room.id,
-            join: true,
-          );
-          await room.join();
-          await waitForRoom;
-        },
-        exceptionContext: ExceptionContext.joinRoom,
-      );
-      if (joinResult.error != null) return;
+      // #Pangea
+      await showInviteDialog(room);
+      return;
+      // final joinResult = await showFutureLoadingDialog(
+      //   context: context,
+      //   future: () async {
+      //     final waitForRoom = room.client.waitForRoomInSync(
+      //       room.id,
+      //       join: true,
+      //     );
+      //     await room.join();
+      //     await waitForRoom;
+      //   },
+      //   exceptionContext: ExceptionContext.joinRoom,
+      // );
+      // if (joinResult.error != null) return;
+      // Pangea#
     }
 
     if (room.membership == Membership.ban) {
@@ -441,6 +479,7 @@ class ChatListController extends State<ChatList>
   StreamSubscription? _invitedSpaceSubscription;
   StreamSubscription? _subscriptionStatusStream;
   StreamSubscription? _spaceChildSubscription;
+  StreamSubscription? _roomCapacitySubscription;
   final Set<String> hasUpdates = {};
   //Pangea#
 
@@ -473,13 +512,15 @@ class ChatListController extends State<ChatList>
     //#Pangea
     classStream = MatrixState.pangeaController.classController.stateStream
         .listen((event) {
-      if (mounted) {
-        event["activeSpaceId"] != null
-            ? setActiveSpace(event["activeSpaceId"])
-            : clearActiveSpace();
-        if (event["activeSpaceId"] != null) {
-          context.push("/rooms/${event["activeSpaceId"]}/details");
+      if (!mounted || event is! Map<String, dynamic>) return;
+      if (event.containsKey("activeSpaceId")) {
+        final setSpaceID = event["activeSpaceId"];
+        setSpaceID != null ? setActiveSpace(setSpaceID) : clearActiveSpace();
+        if (setSpaceID != null) {
+          context.push("/rooms/$setSpaceID/details");
         }
+      } else if (event.containsKey("activeFilter")) {
+        setActiveFilter(event["activeFilter"]);
       }
     });
 
@@ -559,10 +600,64 @@ class ChatListController extends State<ChatList>
     }).listen((update) {
       hasUpdates.add(update.roomId);
     });
-    //Pangea#
+
+    // listen for room join events and leave room if over capacity
+    _roomCapacitySubscription ??= client.onSync.stream
+        .where((u) => u.rooms?.join != null)
+        .listen((update) async {
+      final roomUpdates = update.rooms!.join!.entries;
+      for (final entry in roomUpdates) {
+        final roomID = entry.key;
+        final roomUpdate = entry.value;
+        if (roomUpdate.timeline?.events == null) continue;
+        final events = roomUpdate.timeline!.events;
+        final memberEvents = events!.where(
+          (event) =>
+              event.type == EventTypes.RoomMember &&
+              event.senderId == client.userID,
+        );
+        if (memberEvents.isEmpty) continue;
+        final room = client.getRoomById(roomID);
+        if (room == null ||
+            room.isSpace ||
+            room.isAnalyticsRoom ||
+            room.capacity == null ||
+            (room.summary.mJoinedMemberCount ?? 1) <= room.capacity!) {
+          continue;
+        }
+
+        await showFutureLoadingDialog(
+          context: context,
+          future: () async {
+            await room.leave();
+            if (GoRouterState.of(context).uri.toString().contains(roomID)) {
+              context.go("/rooms");
+            }
+            throw L10n.of(context).roomFull;
+          },
+        );
+      }
+    });
+    // Pangea#
 
     super.initState();
   }
+
+  // #Pangea
+  @override
+  void didUpdateWidget(ChatList oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final params = GoRouterState.of(context).uri.queryParameters;
+      if (!params.containsKey("filter") || params['filter'] != 'groups') return;
+      setActiveFilter(
+        AppConfig.separateChatTypes
+            ? ActiveFilter.groups
+            : ActiveFilter.allChats,
+      );
+    });
+  }
+  // Pangea#
 
   @override
   void dispose() {
@@ -574,6 +669,7 @@ class ChatListController extends State<ChatList>
     _invitedSpaceSubscription?.cancel();
     _subscriptionStatusStream?.cancel();
     _spaceChildSubscription?.cancel();
+    _roomCapacitySubscription?.cancel();
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
@@ -848,21 +944,27 @@ class ChatListController extends State<ChatList>
           // message: L10n.of(context).archiveRoomDescription,
           message: room.isSpace
               ? L10n.of(context).leaveSpaceDescription
-              : L10n.of(context).archiveRoomDescription,
+              : L10n.of(context).leaveRoomDescription,
           // Pangea#
           okLabel: L10n.of(context).leave,
           cancelLabel: L10n.of(context).cancel,
           isDestructive: true,
         );
-        if (confirmed == OkCancelResult.cancel) return;
+        // #Pangea
+        // if (confirmed == OkCancelResult.cancel) return;
+        if (confirmed != OkCancelResult.ok) return;
+        // Pangea#
         if (!mounted) return;
 
         // #Pangea
         // await showFutureLoadingDialog(context: context, future: room.leave);
-        await showFutureLoadingDialog(
+        final resp = await showFutureLoadingDialog(
           context: context,
           future: room.isSpace ? room.leaveSpace : room.leave,
         );
+        if (mounted && !resp.isError) {
+          context.go("/rooms");
+        }
         // Pangea#
 
         return;

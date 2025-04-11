@@ -8,7 +8,6 @@ import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
@@ -33,7 +32,7 @@ class ITController {
   String? sourceText;
   List<ITStep> completedITSteps = [];
   CurrentITStep? currentITStep;
-  CurrentITStep? nextITStep;
+  Completer<CurrentITStep?>? nextITStep;
   GoldRouteTracker goldRouteTracker = GoldRouteTracker.defaultTracker;
   List<int> payLoadIds = [];
 
@@ -72,8 +71,10 @@ class ITController {
   void closeIT() {
     // if the user hasn't gone through any IT steps, reset the text
     if (completedITSteps.isEmpty && sourceText != null) {
-      choreographer.textController.editType = EditType.itDismissed;
-      choreographer.textController.text = sourceText!;
+      choreographer.textController.setSystemText(
+        sourceText!,
+        EditType.itDismissed,
+      );
     }
     clear();
     dismissed = true;
@@ -132,18 +133,11 @@ class ITController {
         );
       }
 
+      currentITStep = null;
+
+      // During first IT step, next step will not be set
       if (nextITStep == null) {
-        currentITStep = null;
-
         final ITResponseModel res = await _customInputTranslation(currentText);
-        // final ITResponseModel res = await (useCustomInput ||
-        //         currentText.isEmpty ||
-        //         translationId == null ||
-        //         completedITSteps.last.chosenContinuance?.indexSavedByServer ==
-        //             null
-        //     ? _customInputTranslation(currentText)
-        //     : _systemChoiceTranslation(translationId));
-
         if (sourceText == null) return;
 
         if (res.goldContinuances != null && res.goldContinuances!.isNotEmpty) {
@@ -162,15 +156,17 @@ class ITController {
 
         _addPayloadId(res);
       } else {
-        currentITStep = nextITStep;
-        nextITStep = null;
+        currentITStep = await nextITStep!.future;
       }
 
       if (isTranslationDone) {
+        nextITStep = null;
         choreographer.altTranslator.setTranslationFeedback();
         choreographer.getLanguageHelp(onlyTokensAndLanguageDetection: true);
       } else {
-        getNextTranslationData();
+        nextITStep = Completer<CurrentITStep?>();
+        final nextStep = await getNextTranslationData();
+        nextITStep?.complete(nextStep);
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
@@ -193,7 +189,7 @@ class ITController {
     }
   }
 
-  Future<void> getNextTranslationData() async {
+  Future<CurrentITStep?> getNextTranslationData() async {
     if (sourceText == null) {
       ErrorHandler.logError(
         e: Exception("sourceText is null in getNextTranslationData"),
@@ -203,28 +199,28 @@ class ITController {
           "continuances": goldRouteTracker.continuances.map((e) => e.toJson()),
         },
       );
-      return;
+      return null;
+    }
+
+    if (completedITSteps.length >= goldRouteTracker.continuances.length) {
+      return null;
     }
 
     try {
-      if (completedITSteps.length < goldRouteTracker.continuances.length) {
-        final String currentText = choreographer.currentText;
-        final String nextText =
-            goldRouteTracker.continuances[completedITSteps.length].text;
+      final String currentText = choreographer.currentText;
+      final String nextText =
+          goldRouteTracker.continuances[completedITSteps.length].text;
 
-        final ITResponseModel res =
-            await _customInputTranslation(currentText + nextText);
-        if (sourceText == null) return;
+      final ITResponseModel res =
+          await _customInputTranslation(currentText + nextText);
+      if (sourceText == null) return null;
 
-        nextITStep = CurrentITStep(
-          sourceText: sourceText!,
-          currentText: nextText,
-          responseModel: res,
-          storedGoldContinuances: goldRouteTracker.continuances,
-        );
-      } else {
-        nextITStep = null;
-      }
+      return CurrentITStep(
+        sourceText: sourceText!,
+        currentText: nextText,
+        responseModel: res,
+        storedGoldContinuances: goldRouteTracker.continuances,
+      );
     } catch (e, s) {
       debugger(when: kDebugMode);
       if (e is! http.Response) {
@@ -245,6 +241,7 @@ class ITController {
     } finally {
       choreographer.stopLoading();
     }
+    return null;
   }
 
   Future<void> onEditSourceTextSubmit(String newSourceText) async {
@@ -277,7 +274,10 @@ class ITController {
       );
     } finally {
       choreographer.stopLoading();
-      choreographer.textController.text = "";
+      choreographer.textController.setSystemText(
+        "",
+        EditType.other,
+      );
     }
   }
 
@@ -332,7 +332,6 @@ class ITController {
       ignoredTokens ?? [],
       choreographer.roomId,
       ConstructUseTypeEnum.ignIt,
-      AnalyticsUpdateOrigin.it,
     );
 
     Future.delayed(

@@ -49,6 +49,8 @@ extension RoomSettingsRoomExtension on Room {
   }
 
   Text nameAndRoomTypeIcon([TextStyle? textStyle]) => Text.rich(
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
         style: textStyle,
         TextSpan(
           children: [
@@ -67,5 +69,24 @@ extension RoomSettingsRoomExtension on Room {
     final stateEvent = getState(PangeaEventTypes.botOptions);
     if (stateEvent == null) return null;
     return BotOptionsModel.fromJson(stateEvent.content);
+  }
+
+  ActivityPlanModel? get activityPlan {
+    final stateEvent = getState(PangeaEventTypes.activityPlan);
+    if (stateEvent == null) return null;
+
+    try {
+      return ActivityPlanModel.fromJson(stateEvent.content);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "roomID": id,
+          "stateEvent": stateEvent.content,
+        },
+      );
+      return null;
+    }
   }
 }

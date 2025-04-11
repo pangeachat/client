@@ -16,13 +16,25 @@ class ActivityPlanPageLaunchIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.room.isBotDM) {
+    if (!controller.room.canSendDefaultStates) {
       return const SizedBox();
     }
-    return IconButton(
-      icon: const Icon(Icons.event_note_outlined),
-      tooltip: L10n.of(context).activityPlannerTitle,
-      onPressed: () => context.go('/rooms/${controller.room.id}/planner'),
+
+    return FutureBuilder<bool>(
+      future: controller.room.isBotDM,
+      builder: (BuildContext context, snapshot) {
+        final isBotDM = snapshot.data;
+        if (isBotDM == true || isBotDM == null) {
+          return const SizedBox();
+        }
+        return IconButton(
+          icon: const Icon(Icons.event_note_outlined),
+          tooltip: L10n.of(context).activityPlannerTitle,
+          onPressed: () {
+            context.go('/rooms/${controller.room.id}/planner');
+          },
+        );
+      },
     );
   }
 }

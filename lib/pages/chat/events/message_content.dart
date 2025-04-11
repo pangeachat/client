@@ -10,7 +10,10 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/video_player.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_rich_text.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_token_text.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar_selection_area.dart';
@@ -41,6 +44,8 @@ class MessageContent extends StatelessWidget {
   final ChatController controller;
   final Event? nextEvent;
   final Event? prevEvent;
+  final bool isTransitionAnimation;
+  final ReadingAssistanceMode? readingAssistanceMode;
   // Pangea#
   final Timeline timeline;
 
@@ -57,6 +62,8 @@ class MessageContent extends StatelessWidget {
     required this.controller,
     this.nextEvent,
     this.prevEvent,
+    this.isTransitionAnimation = false,
+    this.readingAssistanceMode,
     // Pangea#
     required this.linkColor,
     required this.borderRadius,
@@ -252,13 +259,15 @@ class MessageContent extends StatelessWidget {
                 room: event.room,
                 // #Pangea
                 event: event,
-                isOverlay: overlayController != null,
+                overlayController: overlayController,
                 controller: controller,
                 pangeaMessageEvent: pangeaMessageEvent,
                 nextEvent: nextEvent,
                 prevEvent: prevEvent,
                 isSelected: overlayController != null ? isSelected : null,
-                onClick: onClick,
+                onClick: event.isActivityMessage ? null : onClick,
+                isTransitionAnimation: isTransitionAnimation,
+                readingAssistanceMode: readingAssistanceMode,
                 // Pangea#
                 fontSize: AppConfig.fontSizeFactor * AppConfig.messageFontSize,
                 linkStyle: TextStyle(
@@ -368,7 +377,8 @@ class MessageContent extends StatelessWidget {
               );
             }
 
-            if (pangeaMessageEvent != null) {
+            if (pangeaMessageEvent != null &&
+                pangeaMessageEvent!.shouldShowToolbar) {
               return MessageTokenText(
                 pangeaMessageEvent: pangeaMessageEvent!,
                 tokens:
@@ -376,6 +386,20 @@ class MessageContent extends StatelessWidget {
                 style: messageTextStyle,
                 onClick: onClick,
                 isSelected: overlayController != null ? isSelected : null,
+                messageMode: overlayController?.toolbarMode,
+                isHighlighted: (PangeaToken token) =>
+                    overlayController?.toolbarMode.associatedActivityType !=
+                        null &&
+                    overlayController?.practiceSelection
+                            ?.hasActiveActivityByToken(
+                          overlayController!
+                              .toolbarMode.associatedActivityType!,
+                          token,
+                        ) ==
+                        true,
+                overlayController: overlayController,
+                isTransitionAnimation: isTransitionAnimation,
+                readingAssistanceMode: readingAssistanceMode,
               );
             }
 

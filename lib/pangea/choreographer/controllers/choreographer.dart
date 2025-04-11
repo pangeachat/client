@@ -11,7 +11,11 @@ import 'package:fluffychat/pangea/choreographer/controllers/alternative_translat
 import 'package:fluffychat/pangea/choreographer/controllers/igc_controller.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
+import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
+import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/utils/input_paste_listener.dart';
+import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
@@ -21,14 +25,11 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import '../../../widgets/matrix.dart';
-import '../../learning_settings/models/language_model.dart';
-import '../models/choreo_record.dart';
-import '../models/pangea_match_model.dart';
-import '../widgets/igc/pangea_text_controller.dart';
 import 'error_service.dart';
 import 'it_controller.dart';
 
@@ -42,7 +43,7 @@ class Choreographer {
   late IgcController igc;
   late AlternativeTranslator altTranslator;
   late ErrorService errorService;
-  final tts = TtsController();
+  late TtsController tts;
 
   bool isFetching = false;
   int _timesClicked = 0;
@@ -54,25 +55,37 @@ class Choreographer {
   // last checked by IGC or translation
   String? _lastChecked;
   ChoreoMode choreoMode = ChoreoMode.igc;
-  final StreamController stateListener = StreamController.broadcast();
-  StreamSubscription? trialStream;
+
+  final StreamController stateStream = StreamController.broadcast();
+  StreamSubscription? _trialStream;
+  StreamSubscription? _languageStream;
 
   Choreographer(this.pangeaController, this.chatController) {
     _initialize();
   }
   _initialize() {
+    tts = TtsController(chatController: chatController);
     _textController = PangeaTextController(choreographer: this);
+    InputPasteListener(_textController, onPaste);
     itController = ITController(this);
     igc = IgcController(this);
     errorService = ErrorService(this);
     altTranslator = AlternativeTranslator(this);
     _textController.addListener(_onChangeListener);
-    trialStream = pangeaController
+    _trialStream = pangeaController
         .subscriptionController.trialActivationStream.stream
         .listen((_) => _onChangeListener);
+    _languageStream =
+        pangeaController.userController.stateStream.listen((update) {
+      if (update is Map<String, dynamic> &&
+          update['prev_target_lang'] is LanguageModel) {
+        clear();
+      }
 
-    tts.setupTTS();
-
+      // refresh on any profile update, to account
+      // for changes like enabling autocorrect
+      setState();
+    });
     clear();
   }
 
@@ -93,11 +106,12 @@ class Choreographer {
       return;
     }
 
-    if (!pangeaController.subscriptionController.isSubscribed) {
+    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
+    if (isSubscribed != null && !isSubscribed) {
       // don't want to run IGC if user isn't subscribed, so either
       // show the paywall if applicable or just send the message
       final status = pangeaController.subscriptionController.subscriptionStatus;
-      status == SubscriptionStatus.showPaywall
+      status == SubscriptionStatus.shouldShowPaywall
           ? OverlayUtil.showPositionedCard(
               context: context,
               cardToShow: PaywallCard(
@@ -188,7 +202,10 @@ class Choreographer {
     );
 
     final PangeaMessageTokens? tokensSent = igc.igcTextData?.tokens != null
-        ? PangeaMessageTokens(tokens: igc.igcTextData!.tokens)
+        ? PangeaMessageTokens(
+            tokens: igc.igcTextData!.tokens,
+            detections: igc.igcTextData!.detections.detections,
+          )
         : null;
 
     chatController.send(
@@ -337,6 +354,18 @@ class Choreographer {
     );
     _textController.selection =
         TextSelection.collapsed(offset: _textController.text.length);
+    giveInputFocus();
+  }
+
+  void onPredictorSelect(String text) {
+    //TODO - add some kind of record of this
+    // choreoRecord.addRecord(_textController.text, step: step);
+
+    // TODO - probably give it a different type of edit type
+    _textController.setSystemText(
+      "${_textController.text} $text",
+      EditType.other,
+    );
     giveInputFocus();
   }
 
@@ -538,9 +567,15 @@ class Choreographer {
     giveInputFocus();
   }
 
+  Future<void> onPaste(value) async {
+    choreoRecord.pastedStrings.add(value);
+  }
+
   dispose() {
     _textController.dispose();
-    trialStream?.cancel();
+    _trialStream?.cancel();
+    _languageStream?.cancel();
+    stateStream.close();
     tts.dispose();
   }
 
@@ -597,8 +632,8 @@ class Choreographer {
   bool get editTypeIsKeyboard => EditType.keyboard == _textController.editType;
 
   setState() {
-    if (!stateListener.isClosed) {
-      stateListener.add(0);
+    if (!stateStream.isClosed) {
+      stateStream.add(0);
     }
   }
 
@@ -661,7 +696,8 @@ class Choreographer {
       );
 
   AssistanceState get assistanceState {
-    if (!pangeaController.subscriptionController.isSubscribed) {
+    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
+    if (isSubscribed != null && !isSubscribed) {
       return AssistanceState.noSub;
     }
 

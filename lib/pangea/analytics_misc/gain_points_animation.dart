@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -6,21 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
-import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PointsGainedAnimation extends StatefulWidget {
-  final Color? gainColor;
-  final Color? loseColor;
-  final AnalyticsUpdateOrigin origin;
+  final int points;
+  final String targetID;
 
   const PointsGainedAnimation({
     super.key,
-    required this.origin,
-    this.gainColor = AppConfig.success,
-    this.loseColor = Colors.red,
+    required this.points,
+    required this.targetID,
   });
 
   @override
@@ -29,37 +24,38 @@ class PointsGainedAnimation extends StatefulWidget {
 
 class PointsGainedAnimationState extends State<PointsGainedAnimation>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<Offset> _offsetAnimation;
-  late Animation<double> _fadeAnimation;
-  final List<Animation<double>> _swayAnimation = [];
-  final List<double> _randomSwayOffset = [];
-  final List<Offset> _particleTrajectories = [];
-  late Animation<double> _bookFadeAnimation;
+  final Color? gainColor = AppConfig.gold;
+  final Color? loseColor = Colors.red;
 
-  StreamSubscription? _pointsSubscription;
-  int? get _prevXP =>
-      MatrixState.pangeaController.getAnalytics.constructListModel.prevXP;
-  int? get _currentXP =>
-      MatrixState.pangeaController.getAnalytics.constructListModel.totalXP;
-  int? _addedPoints;
+  AnimationController? _controller;
+  Animation<double>? _offsetAnimation;
+  Animation<double>? _fadeAnimation;
+  final List<Animation<double>> _swayAnimation = [];
+  final List<Offset> _initialVelocities = [];
 
   final Random _random = Random();
+
+  static const double _particleSpeed = 50; // Base speed for particles.
+  static const double gravity = 15; // Gravity constant for the animation.
+  static const int duration =
+      2000; // Duration of the animation in milliseconds.
 
   @override
   void initState() {
     super.initState();
+    if (widget.points == 0) return;
+
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: duration),
       vsync: this,
     );
 
-    _offsetAnimation = Tween<Offset>(
-      begin: const Offset(0.0, 0),
-      end: const Offset(0.0, -3),
+    _offsetAnimation = Tween<double>(
+      begin: 0.0,
+      end: 3.0,
     ).animate(
       CurvedAnimation(
-        parent: _controller,
+        parent: _controller!,
         curve: Curves.easeOut,
       ),
     );
@@ -69,8 +65,8 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
       end: 0.0,
     ).animate(
       CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeOut,
+        parent: _controller!,
+        curve: Curves.easeIn,
       ),
     );
 
@@ -80,84 +76,85 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
       end: 0.0,
     ).animate(
       CurvedAnimation(
-        parent: _controller,
-        curve: const Interval(0.4, 1.0,
-            curve: Curves.easeOut), // Starts fading 20% into the animation
+        parent: _controller!,
+        curve: Curves.easeIn,
       ),
     );
 
-    _pointsSubscription = MatrixState
-        .pangeaController.getAnalytics.analyticsStream.stream
-        .listen(_showPointsGained);
+    _showPointsGained();
   }
 
   void initParticleTrajectories() {
-    _particleTrajectories.clear();
-    for (int i = 0; i < (_addedPoints?.abs() ?? 0); i++) {
-      final angle = _random.nextDouble() * (pi / 2) +
-          pi / 4; // Random angle in the V-shaped range.
-      const baseSpeed = 20; // Initial base speed.
-      const exponentialFactor = 30; // Factor for exponential growth.
-      final speedMultiplier = _random.nextDouble(); // Random speed multiplier.
-      final speed = baseSpeed *
-          pow(exponentialFactor, speedMultiplier); // Exponential speed.
-      _particleTrajectories
-          .add(Offset(speed * cos(angle), -speed * sin(angle)));
+    _initialVelocities.clear();
+    for (int i = 0; i < widget.points.abs(); i++) {
+      final angle =
+          (i - widget.points.abs() / 2) / widget.points.abs() * (pi / 3) +
+              (_random.nextDouble() - 0.5) * pi / 6 +
+              pi / 2;
+      final speedMultiplier =
+          0.75 + _random.nextDouble() / 4; // Random speed multiplier.
+      final speed = _particleSpeed *
+          speedMultiplier *
+          (widget.points > 0 ? 2 : 1); // Exponential speed.
+      _initialVelocities.add(Offset(speed * cos(angle), -speed * sin(angle)));
     }
   }
 
   void initSwayAnimations() {
+    if (_controller == null) return;
     _swayAnimation.clear();
-    _randomSwayOffset.clear();
     initParticleTrajectories();
 
-    for (int i = 0; i < (_addedPoints ?? 0); i++) {
+    for (int i = 0; i < widget.points; i++) {
       _swayAnimation.add(
         Tween<double>(
           begin: 0.0,
           end: 2 * pi,
         ).animate(
           CurvedAnimation(
-            parent: _controller,
+            parent: _controller!,
             curve: Curves.linear,
           ),
         ),
       );
-      _randomSwayOffset.add(_random.nextDouble() * 2 * pi);
     }
   }
 
   @override
   void dispose() {
-    _controller.dispose();
-    _pointsSubscription?.cancel();
+    _controller?.dispose();
     super.dispose();
   }
 
-  void _showPointsGained(AnalyticsStreamUpdate update) {
-    if (update.origin != widget.origin) return;
-    setState(() => _addedPoints = (_currentXP ?? 0) - (_prevXP ?? 0));
-    if (_prevXP != _currentXP) {
-      initSwayAnimations();
-      _controller.reset();
-      _controller.forward();
-    }
+  void _showPointsGained() {
+    initSwayAnimations();
+    _controller?.reset();
+    _controller?.forward().then(
+      (_) {
+        if (!mounted) return;
+        MatrixState.pAnyState.closeOverlay(widget.targetID);
+      },
+    );
   }
-
-  bool get animate =>
-      _currentXP != null &&
-      _prevXP != null &&
-      _addedPoints != null &&
-      _prevXP! != _currentXP!;
 
   @override
   Widget build(BuildContext context) {
-    if (!animate) return const SizedBox();
+    if (widget.points == 0 ||
+        _controller == null ||
+        _fadeAnimation == null ||
+        _offsetAnimation == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          MatrixState.pAnyState.closeOverlay(widget.targetID);
+        }
+      });
+      return const SizedBox();
+    }
 
-    final textColor = _addedPoints! > 0 ? widget.gainColor : widget.loseColor;
+    final textColor = widget.points > 0 ? gainColor : loseColor;
 
     final plusWidget = Text(
-      _addedPoints! > 0 ? "+" : "-",
+      widget.points > 0 ? "+" : "-",
       style: BotStyle.text(
         context,
         big: true,
@@ -174,45 +171,30 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
       color: textColor,
     );
 
-    return SlideTransition(
-      position: _offsetAnimation,
-      child: IgnorePointer(
-        ignoring: _controller.isAnimating,
-        child: Stack(
-          children: List.generate(_addedPoints!.abs(), (index) {
-            return AnimatedBuilder(
-              animation: _controller,
-              builder: (context, child) {
-                final progress = _controller.value;
-                final trajectory = _particleTrajectories[index];
-                return Transform.translate(
-                  offset: Offset(
-                    trajectory.dx * pow(progress, 2),
-                    trajectory.dy * pow(progress, 2),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      FadeTransition(
-                        opacity: _fadeAnimation,
-                        child: Transform.translate(
-                          offset: Offset(
-                            trajectory.dx * (progress * 1.3),
-                            trajectory.dy * (progress * 1.3),
-                          ),
-                          child: plusWidget,
-                        ),
-                      ),
-                      FadeTransition(
-                        opacity: _bookFadeAnimation,
-                        child: vocabWidget,
-                      ),
-                    ],
-                  ),
-                );
-              },
-            );
-          }),
+    return Material(
+      type: MaterialType.transparency,
+      child: FadeTransition(
+        opacity: _fadeAnimation!,
+        child: IgnorePointer(
+          ignoring: _controller!.isAnimating,
+          child: Stack(
+            children: List.generate(widget.points.abs(), (index) {
+              return AnimatedBuilder(
+                animation: _controller!,
+                builder: (context, child) {
+                  final progress = _offsetAnimation!.value;
+                  final trajectory = _initialVelocities[index];
+                  return Transform.translate(
+                    offset: Offset(
+                      trajectory.dx * progress,
+                      trajectory.dy * progress + gravity * pow(progress, 2),
+                    ),
+                    child: plusWidget,
+                  );
+                },
+              );
+            }),
+          ),
         ),
       ),
     );

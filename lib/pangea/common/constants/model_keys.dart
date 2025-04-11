@@ -53,6 +53,7 @@ class ModelKey {
   static const String fullText = "full_text";
   static const String fullTextLang = "full_text_lang";
   static const String tokens = "tokens";
+  static const String allDetections = "all_detections";
   static const String srcLang = "src_lang";
   static const String tgtLang = "tgt_lang";
   static const String word = "word";
@@ -88,8 +89,6 @@ class ModelKey {
   /// This will help us know to omit the message from notifications,
   /// bot responses, etc. It will also help use find the message if
   /// we want to gather user edits for LLM fine-tuning.
-  /// @ggurdin: Maybe this not the way to do this and we should be using
-  /// something built in to matrix? should talk about this
   static const String messageTags = "p.tag";
   static const String messageTagMorphEdit = "morph_edit";
   static const String messageTagLemmaEdit = "lemma_edit";
@@ -152,8 +151,30 @@ class ModelKey {
   static const String latestBuildNumber = "latest_build_number";
   static const String mandatoryUpdate = "mandatory_update";
   static const String emoji = "emoji";
+  static const String emojiList = "emoji_list";
 
   static const String analytics = "analytics";
   static const String level = "level";
   static const String xpOffset = "xp_offset";
+
+  // activity plan
+  static const String activityPlanRequest = "req";
+  static const String activityPlanTitle = "title";
+  static const String activityPlanLearningObjective = "learning_objective";
+  static const String activityPlanInstructions = "instructions";
+  static const String activityPlanVocab = "vocab";
+  static const String activityPlanImageURL = "image_url";
+  static const String activityPlanBookmarkId = "bookmark_id";
+
+  static const String activityRequestTopic = "topic";
+  static const String activityRequestMode = "mode";
+  static const String activityRequestObjective = "objective";
+  static const String activityRequestMedia = "media";
+  static const String activityRequestCefrLevel = "activity_cefr_level";
+  static const String activityRequestLanguageOfInstructions =
+      "language_of_instructions";
+  static const String activityRequestTargetLanguage = "target_language";
+  static const String activityRequestCount = "count";
+  static const String activityRequestNumberOfParticipants =
+      "number_of_participants";
 }

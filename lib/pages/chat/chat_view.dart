@@ -114,7 +114,8 @@ class ChatView extends StatelessWidget {
     }
     // } else if (!controller.room.isArchived) {
     //   return [
-    //     if (Matrix.of(context).voipPlugin != null &&
+    //     if (AppConfig.experimentalVoip &&
+    //         Matrix.of(context).voipPlugin != null &&
     //         controller.room.isDirectChat)
     //       IconButton(
     //         onPressed: controller.onPhoneButtonTap,
@@ -199,28 +200,31 @@ class ChatView extends StatelessWidget {
                 actionsIconTheme: IconThemeData(
                   color: controller.selectedEvents.isEmpty
                       ? null
-                      : theme.colorScheme.primary,
+                      : theme.colorScheme.tertiary,
                 ),
+                automaticallyImplyLeading: false,
                 leading: controller.selectMode
                     ? IconButton(
                         icon: const Icon(Icons.close),
                         onPressed: controller.clearSelectedEvents,
                         tooltip: L10n.of(context).close,
-                        color: theme.colorScheme.primary,
+                        color: theme.colorScheme.tertiary,
                       )
-                    : StreamBuilder<Object>(
-                        stream: Matrix.of(context)
-                            .client
-                            .onSync
-                            .stream
-                            .where((syncUpdate) => syncUpdate.hasRoomUpdate),
-                        builder: (context, _) => UnreadRoomsBadge(
-                          filter: (r) => r.id != controller.roomId,
-                          badgePosition: BadgePosition.topEnd(end: 8, top: 4),
-                          child: const Center(child: BackButton()),
-                        ),
-                      ),
-                titleSpacing: 0,
+                    : FluffyThemes.isColumnMode(context)
+                        ? null
+                        : StreamBuilder<Object>(
+                            stream:
+                                Matrix.of(context).client.onSync.stream.where(
+                                      (syncUpdate) => syncUpdate.hasRoomUpdate,
+                                    ),
+                            builder: (context, _) => UnreadRoomsBadge(
+                              filter: (r) => r.id != controller.roomId,
+                              badgePosition:
+                                  BadgePosition.topEnd(end: 8, top: 4),
+                              child: const Center(child: BackButton()),
+                            ),
+                          ),
+                titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
                 title: ChatAppBarTitle(controller),
                 actions: _appBarActions(context),
                 bottom: PreferredSize(
@@ -398,31 +402,33 @@ class ChatView extends StatelessWidget {
                               ),
                             // #Pangea
                             // Keep messages above minimum input bar height
-                            SizedBox(height: controller.inputBarHeight),
+                            if (!controller.room.isAbandonedDMRoom)
+                              SizedBox(height: controller.inputBarHeight),
                             // Pangea#
                           ],
                         ),
                         // #Pangea
                         ChatViewBackground(controller.choreographer),
-                        Positioned(
-                          left: 0,
-                          right: 0,
-                          bottom: 16,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              ChatInputBarHeader(
-                                controller: controller,
-                                padding: bottomSheetPadding,
-                              ),
-                              ChatInputBar(
-                                controller: controller,
-                                padding: bottomSheetPadding,
-                              ),
-                            ],
+                        if (!controller.room.isAbandonedDMRoom)
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 16,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                ChatInputBarHeader(
+                                  controller: controller,
+                                  padding: bottomSheetPadding,
+                                ),
+                                ChatInputBar(
+                                  controller: controller,
+                                  padding: bottomSheetPadding,
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
                         // Pangea#
                       ],
                     ),

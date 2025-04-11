@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2021-08-14 12:41:09.781172",
+  "@@last_modified": "2025-03-10 10:26:28.474786",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -1940,7 +1940,6 @@
   "paymentMethod": "Phương thức thanh toán",
   "paymentHistory": "Lịch sử thanh toán",
   "emptyChatDownloadWarning": "Không thể tải xuống cuộc trò chuyện trống",
-  "appUpdateAvailable": "Có bản cập nhật",
   "update": "Cập nhật",
   "updateDesc": "Bạn có thể cập nhật ứng dụng từ phiên bản {localVersion} lên {storeVersion}",
   "@updateDesc": {
@@ -3305,7 +3304,6 @@
   },
   "botModeValidation": "Vui lòng chọn một chế độ trò chuyện",
   "clickBestOption": "Chọn phương án tốt nhất để dịch tin nhắn của bạn!",
-  "unlockedLanguageTools": "Bạn đã mở khóa công cụ ngôn ngữ cho tin nhắn này. Hãy thử bằng cách nhấn nút bên dưới!",
   "botSettingsSubtitle": "Mời bot kiểm duyệt hoặc khởi tạo hoạt động trò chuyện",
   "invitePeople": "Mời người dùng",
   "invitePeopleChatSubtitle": "Mời người dùng hoặc quản trị viên đến cuộc trò chuyện này",
@@ -3376,10 +3374,6 @@
   "updatedNewSpaceDescription": "Không gian giúp bạn quản lý nhiều cuộc trò chuyện và xây dựng cộng đồng riêng hoặc công khai.",
   "joinWithCode": "Tham gia bằng mã",
   "enterCodeToJoin": "Nhập mã để tham gia",
-  "mandatoryUpdateRequired": "Yêu cầu cập nhật bắt buộc",
-  "updateAvailable": "Có bản cập nhật",
-  "mandatoryUpdateRequiredDesc": "Bạn cần cập nhật phiên bản mới để tiếp tục. Vui lòng cập nhật ngay.",
-  "updateAvailableDesc": "Có phiên bản mới của ứng dụng. Cập nhật ngay để có trải nghiệm tốt nhất!",
   "updateNow": "Cập nhật ngay",
   "updateLater": "Để sau",
   "constructUseWaDesc": "Dùng không cần trợ giúp",
@@ -3426,8 +3420,6 @@
   "enableTTSToolDescription": "Cho phép ứng dụng tạo âm thanh đọc văn bản của ngôn ngữ đích",
   "couldNotFindTTS": "Không tìm được công cụ đọc văn bản cho ngôn ngữ đích. ",
   "ttsInstructionsHyperlink": "Nhấn vào đây để xem cách tải giọng đọc mới trên thiết bị.",
-  "currentVersion": "Phiên bản hiện tại",
-  "latestVersion": "Phiên bản mới nhất",
   "createAnAccount": "Tạo tài khoản",
   "signIn": "Đăng nhập",
   "signUpWithEmail": "Đăng ký bằng Email",
@@ -3534,7 +3526,6 @@
       }
     }
   },
-  "lemmaMeaningInstructionsBody": "Ở trên là nghĩa của mục từ. Nhấp đúp để chỉnh sửa.",
   "doubleClickToEdit": "Nhấp đúp để chỉnh sửa.",
   "removeFeature": "Xóa {feature}",
   "@removeFeature": {
@@ -3575,7 +3566,6 @@
   "video": "Video",
   "nan": "Không áp dụng",
   "activityPlannerOverviewInstructionsBody": "Chọn chủ đề, chế độ, mục tiêu học tập và tạo hoạt động cho cuộc trò chuyện!",
-  "completeActivitiesToUnlock": "Hoàn thành các hoạt động từ vựng được đánh dấu để mở khóa",
   "myBookmarkedActivities": "Hoạt động đã đánh dấu",
   "noBookmarkedActivities": "Chưa có hoạt động nào được đánh dấu",
   "activityTitle": "Tiêu đề hoạt động",
@@ -3595,7 +3585,6 @@
   },
   "constructUsePvmDesc": "Đã sử dụng trong tin nhắn thoại",
   "lockedMorphFeature": "Đang đợi mở khóa",
-  "leaveSpaceDescription": "Không gian sẽ được chuyển vào lưu trữ. Người khác vẫn thấy bạn rời không gian.",
   "appWantsToUseForLogin": "Dùng '{server}' để đăng nhập",
   "@appWantsToUseForLogin": {
     "type": "String",
@@ -3618,5 +3607,199 @@
   "accountInformation": "Thông tin tài khoản",
   "addGroupDescription": "Thêm mô tả cho cuộc trò chuyện",
   "addNewFriend": "Thêm bạn mới",
-  "alreadyHaveAnAccount": "Bạn đã có tài khoản"
+  "alreadyHaveAnAccount": "Bạn đã có tài khoản",
+  "newChatRequest": "📩 Yêu cầu trò chuyện mới",
+  "contentNotificationSettings": "Cài đặt thông báo nội dung",
+  "generalNotificationSettings": "Cài đặt thông báo chung",
+  "roomNotificationSettings": "Cài đặt thông báo phòng",
+  "userSpecificNotificationSettings": "Cài đặt thông báo theo người dùng",
+  "otherNotificationSettings": "Cài đặt thông báo khác",
+  "notificationRuleContainsUserName": "Chứa tên người dùng",
+  "notificationRuleContainsUserNameDescription": "Thông báo cho người dùng khi một tin nhắn chứa tên người dùng của họ.",
+  "notificationRuleMaster": "Tắt tất cả thông báo",
+  "notificationRuleMasterDescription": "Ghi đè tất cả các quy tắc khác và tắt tất cả thông báo.",
+  "notificationRuleSuppressNotices": "Tắt thông báo tự động",
+  "notificationRuleSuppressNoticesDescription": "Tắt thông báo từ các khách hàng tự động như bot.",
+  "notificationRuleInviteForMe": "Mời cho tôi",
+  "notificationRuleInviteForMeDescription": "Thông báo cho người dùng khi họ được mời vào một phòng.",
+  "notificationRuleMemberEvent": "Sự kiện thành viên",
+  "notificationRuleMemberEventDescription": "Tắt thông báo cho các sự kiện thành viên.",
+  "notificationRuleIsUserMention": "Đề cập người dùng",
+  "notificationRuleIsUserMentionDescription": "Thông báo cho người dùng khi họ được đề cập trực tiếp trong một tin nhắn.",
+  "notificationRuleContainsDisplayName": "Chứa tên hiển thị",
+  "notificationRuleContainsDisplayNameDescription": "Thông báo cho người dùng khi một tin nhắn chứa tên hiển thị của họ.",
+  "notificationRuleIsRoomMention": "Đề cập phòng",
+  "notificationRuleIsRoomMentionDescription": "Thông báo cho người dùng khi có đề cập đến phòng.",
+  "notificationRuleRoomnotif": "Thông báo phòng",
+  "notificationRuleRoomnotifDescription": "Thông báo cho người dùng khi một tin nhắn chứa '@room'.",
+  "notificationRuleTombstone": "Tombstone",
+  "notificationRuleTombstoneDescription": "Thông báo cho người dùng về các tin nhắn vô hiệu hóa phòng.",
+  "notificationRuleReaction": "Phản ứng",
+  "notificationRuleReactionDescription": "Ngăn chặn thông báo cho các phản ứng.",
+  "notificationRuleRoomServerAcl": "Danh sách kiểm soát truy cập máy chủ phòng",
+  "notificationRuleRoomServerAclDescription": "Ngăn chặn thông báo cho danh sách kiểm soát truy cập máy chủ phòng (ACL).",
+  "notificationRuleSuppressEdits": "Ngăn chặn chỉnh sửa",
+  "notificationRuleSuppressEditsDescription": "Ngăn chặn thông báo cho các tin nhắn đã chỉnh sửa.",
+  "notificationRuleCall": "Cuộc gọi",
+  "notificationRuleCallDescription": "Thông báo cho người dùng về các cuộc gọi.",
+  "notificationRuleEncryptedRoomOneToOne": "Phòng mã hóa một-một",
+  "notificationRuleEncryptedRoomOneToOneDescription": "Thông báo cho người dùng về các tin nhắn trong các phòng mã hóa một-một.",
+  "notificationRuleRoomOneToOne": "Phòng một-một",
+  "notificationRuleRoomOneToOneDescription": "Thông báo cho người dùng về các tin nhắn trong các phòng một-một.",
+  "notificationRuleMessage": "Tin nhắn",
+  "notificationRuleMessageDescription": "Thông báo cho người dùng về các tin nhắn chung.",
+  "notificationRuleEncrypted": "Mã hóa",
+  "notificationRuleEncryptedDescription": "Thông báo cho người dùng về các tin nhắn trong các phòng mã hóa.",
+  "notificationRuleJitsi": "Jitsi",
+  "notificationRuleJitsiDescription": "Thông báo cho người dùng về các sự kiện của widget Jitsi.",
+  "notificationRuleServerAcl": "Ngăn chặn sự kiện Server ACL",
+  "notificationRuleServerAclDescription": "Ngăn chặn thông báo cho các sự kiện Server ACL.",
+  "unknownPushRule": "Quy tắc đẩy không xác định '{rule}'",
+  "@unknownPushRule": {
+    "type": "String",
+    "placeholders": {
+      "rule": {
+        "type": "String"
+      }
+    }
+  },
+  "deletePushRuleCanNotBeUndone": "Nếu bạn xóa cài đặt thông báo này, điều này sẽ không thể hoàn tác.",
+  "shareKeysWith": "Chia sẻ khóa với...",
+  "shareKeysWithDescription": "Thiết bị nào nên được tin cậy để có thể đọc các tin nhắn của bạn trong các cuộc trò chuyện mã hóa?",
+  "allDevices": "Tất cả các thiết bị",
+  "crossVerifiedDevicesIfEnabled": "Thiết bị đã xác minh chéo nếu được kích hoạt",
+  "crossVerifiedDevices": "Thiết bị đã xác minh chéo",
+  "verifiedDevicesOnly": "Chỉ thiết bị đã xác minh",
+  "writeAMessageLangCodes": "Gõ bằng {l1} hoặc {l2}...",
+  "@writeAMessageLangCodes": {
+    "type": "String",
+    "placeholders": {
+      "l1": {
+        "type": "String"
+      },
+      "l2": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarCopyVERBFORMaux": "Trợ động từ",
+  "chatWith": "Nhóm với {displayname}",
+  "@chatWith": {
+    "type": "String",
+    "placeholders": {
+      "displayname": {
+        "type": "String"
+      }
+    }
+  },
+  "slightlyOffensive": "Hơi xúc phạm",
+  "clickOnEmailLink": "Vui lòng nhấp vào liên kết trong email và sau đó tiếp tục. Trong một số trường hợp hiếm hoi, email có thể bị gửi vào thư rác hoặc mất đến 5 phút để đến nơi.",
+  "whoIsAllowedToJoinThisChat": "Ai được phép tham gia cuộc trò chuyện này",
+  "dontForgetPassword": "Đừng quên mật khẩu của bạn!",
+  "enableAutocorrectToolName": "Bật tự động sửa",
+  "enableAutocorrectDescription": "Sử dụng tính năng tự động sửa tích hợp của bàn phím khi gõ tin nhắn",
+  "ttsDisbledTitle": "Tính năng chuyển văn bản thành giọng nói đã bị tắt",
+  "ttsDisabledBody": "Bạn có thể bật tính năng chuyển văn bản thành giọng nói trong cài đặt học tập của bạn",
+  "leaveSpaceDescription": "Bằng cách rời khỏi không gian, bạn sẽ rời tất cả các cuộc trò chuyện bên trong nó. Những người dùng khác sẽ thấy rằng bạn đã rời khỏi không gian.",
+  "noSpaceDescriptionYet": "Chưa tạo mô tả không gian nào.",
+  "tooLargeToSend": "Tin nhắn này quá lớn để gửi",
+  "exitWithoutSaving": "Bạn có chắc chắn muốn rời đi mà không lưu không?",
+  "enableAutocorrectPopupTitle": "Thêm bàn phím ngôn ngữ mục tiêu của bạn bằng cách vào:",
+  "enableAutocorrectPopupSteps": "  • Cài đặt\n  • Chung\n  • Bàn phím\n  • Bàn phím\n  • Thêm bàn phím mới",
+  "enableAutocorrectPopupDescription": "Khi ngôn ngữ được chọn, bạn có thể nhấp vào biểu tượng quả địa cầu nhỏ ở góc dưới bên trái của bàn phím để kích hoạt bàn phím mới được cài đặt.",
+  "downloadGboardTitle": "Tải Gboard từ Google Play Store để kích hoạt tính năng tự động sửa và các tính năng bàn phím khác:",
+  "downloadGboardSteps": " • Tải Gboard\n  • Mở ứng dụng\n  • Ngôn ngữ\n  • Thêm bàn phím\n  • Chọn ngôn ngữ\n  • Chọn loại bàn phím\n  • Xong",
+  "downloadGboardDescription": "Khi ngôn ngữ được chọn, bạn có thể nhấp vào biểu tượng quả địa cầu nhỏ ở góc dưới bên trái của bàn phím để kích hoạt bàn phím mới được cài đặt.",
+  "enableAutocorrectWarning": "Cảnh báo! Cần thêm bàn phím ngôn ngữ mục tiêu của bạn",
+  "displayName": "Tên hiển thị",
+  "leaveRoomDescription": "Bạn sắp rời khỏi cuộc trò chuyện này. Những người dùng khác sẽ thấy rằng bạn đã rời khỏi cuộc trò chuyện.",
+  "confirmUserId": "Vui lòng xác nhận tên người dùng Pangea Chat của bạn để xóa tài khoản.",
+  "startingToday": "Bắt đầu từ hôm nay",
+  "oneWeekFreeTrial": "Thử nghiệm miễn phí một tuần",
+  "paidSubscriptionStarts": "Bắt đầu từ {startDate}",
+  "@paidSubscriptionStarts": {
+    "type": "String",
+    "placeholders": {
+      "startDate": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelInSubscriptionSettings": "• Hủy bất cứ lúc nào trong cài đặt đăng ký",
+  "cancelToAvoidCharges": "• Hủy trước {trialEnds} để tránh bị tính phí",
+  "@cancelToAvoidCharges": {
+    "type": "String",
+    "placeholders": {
+      "trialEnds": {
+        "type": "String"
+      }
+    }
+  },
+  "downloadGboard": "Tải Gboard",
+  "autocorrectNotAvailable": "Rất tiếc, nền tảng của bạn hiện không được hỗ trợ cho tính năng này. Hãy theo dõi để biết thêm thông tin phát triển!",
+  "takeAPhoto": "Chụp một bức ảnh",
+  "recordAVideo": "Ghi lại một video",
+  "optionalMessage": "(Tùy chọn) tin nhắn...",
+  "notSupportedOnThisDevice": "Không được hỗ trợ trên thiết bị này",
+  "pleaseUpdateApp": "Vui lòng cập nhật ứng dụng để tiếp tục.",
+  "chooseEmojiInstructionsBody": "Chọn một biểu tượng cảm xúc cho từ này! Không có câu trả lời sai và bạn có thể chuyển đổi bất cứ lúc nào! 😄",
+  "pickAnEmojiFor": "Chọn một biểu tượng cảm xúc cho ${lemma}",
+  "knockSpaceSuccess": "Bạn đã yêu cầu tham gia không gian này! Một quản trị viên sẽ phản hồi yêu cầu của bạn khi họ nhận được nó 😄",
+  "joinByCode": "Tham gia bằng mã",
+  "createASpace": "Tạo một không gian",
+  "@@locale": "vi",
+  "@takeAPhoto": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@recordAVideo": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@optionalMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@notSupportedOnThisDevice": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pleaseUpdateApp": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@chooseEmojiInstructionsBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pickAnEmojiFor": {
+    "type": "String",
+    "placeholders": {
+      "lemma": {
+        "type": "String"
+      }
+    }
+  },
+  "@knockSpaceSuccess": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinByCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@createASpace": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "levelSummaryTrigger": "Đọc báo cáo",
+  "levelSummaryPopupTitle": "Tóm tắt cấp {level}",
+  "@levelSummaryPopupTitle": {
+    "type": "String",
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  }
 }

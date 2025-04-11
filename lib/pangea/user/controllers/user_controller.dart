@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:matrix/matrix.dart' as matrix;
 
@@ -12,12 +11,12 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/user/models/profile_model.dart';
 import '../models/user_model.dart';
 
 /// Controller that manages saving and reading of user/profile information
 class UserController extends BaseController {
-  final GetStorage loginBox = GetStorage("login_storage");
   late PangeaController _pangeaController;
   UserController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
@@ -83,36 +82,50 @@ class UserController extends BaseController {
     waitForDataInSync = false,
   }) async {
     final prevTargetLang = _pangeaController.languageController.userL2;
+    final prevBaseLang = _pangeaController.languageController.userL1;
 
     final Profile updatedProfile = update(profile);
     await updatedProfile.saveProfileData(waitForDataInSync: waitForDataInSync);
 
+    Map<String, dynamic>? profileUpdate;
+
     if (prevTargetLang != _pangeaController.languageController.userL2) {
-      setState({'prev_target_lang': prevTargetLang});
+      profileUpdate ??= {};
+      profileUpdate['prev_target_lang'] = prevTargetLang;
     }
+
+    if (prevBaseLang != _pangeaController.languageController.userL1) {
+      profileUpdate ??= {};
+      profileUpdate['prev_base_lang'] = prevBaseLang;
+    }
+
+    setState(profileUpdate);
   }
 
   /// A completer for the profile model of a user.
-  Completer<void>? _profileCompleter;
+  Completer<void> initCompleter = Completer<void>();
+  bool _initializing = false;
 
   /// Initializes the user's profile. Runs a function to wait for account data to load,
   /// read account data into profile, and migrate any missing info from the pangea profile.
   /// Finally, it adds a listen to update the profile data when new account data comes in.
   Future<void> initialize() async {
-    if (_profileCompleter?.isCompleted ?? false) {
-      return _profileCompleter!.future;
+    if (_initializing || initCompleter.isCompleted) {
+      return initCompleter.future;
     }
 
-    if (_profileCompleter != null) {
-      await _profileCompleter!.future;
-      return _profileCompleter!.future;
-    }
-
-    _profileCompleter = Completer<void>();
+    _initializing = true;
 
     try {
       await _initialize();
       addProfileListener();
+      if (profile.userSettings.targetLanguage != null &&
+          profile.userSettings.targetLanguage!.isNotEmpty &&
+          _pangeaController.languageController.userL2 == null) {
+        // update the language list and send an update to refresh analytics summary
+        await PLanguageStore.initialize(forceRefresh: true);
+        setState(null);
+      }
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
@@ -120,12 +133,13 @@ class UserController extends BaseController {
         data: {},
       );
     } finally {
-      if (!_profileCompleter!.isCompleted) {
-        _profileCompleter!.complete();
+      if (!initCompleter.isCompleted) {
+        initCompleter.complete();
       }
+      _initializing = false;
     }
 
-    return _profileCompleter!.future;
+    return initCompleter.future;
   }
 
   /// Initializes the user's profile by waiting for account data to load, reading in account
@@ -161,17 +175,22 @@ class UserController extends BaseController {
     }
   }
 
+  void clear() {
+    _initializing = false;
+    initCompleter = Completer<void>();
+    _cachedProfile = null;
+  }
+
   /// Reinitializes the user's profile
   /// This method should be called whenever the user's login status changes
   Future<void> reinitialize() async {
-    _profileCompleter = null;
-    _cachedProfile = null;
+    clear();
     await initialize();
   }
 
   Future<void> updatePublicProfile({
+    required int level,
     LanguageModel? targetLanguage,
-    int? level,
   }) async {
     targetLanguage ??= _pangeaController.languageController.userL2;
     if (targetLanguage == null || publicProfile == null) return;
@@ -182,10 +201,7 @@ class UserController extends BaseController {
     }
 
     publicProfile!.targetLanguage = targetLanguage;
-    if (level != null) {
-      publicProfile!.setLevel(targetLanguage, level);
-    }
-
+    publicProfile!.setLevel(targetLanguage, level);
     await _savePublicProfile();
   }
 

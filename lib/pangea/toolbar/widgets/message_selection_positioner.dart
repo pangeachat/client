@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -8,17 +10,18 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pages/chat/events/message_reactions.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
+import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
+import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/overlay_footer.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/measure_render_box.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_toolbar.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/overlay_footer.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/overlay_message.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button_and_progress_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -52,18 +55,37 @@ class MessageSelectionPositioner extends StatefulWidget {
 class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
-  Animation<double>? _overlayPositionAnimation;
+
+  Offset? _centeredMessageOffset;
+  Size? _centeredMessageSize;
+
+  Size? _tooltipSize;
+
+  final Completer _centeredMessageCompleter = Completer();
+  final Completer _tooltipCompleter = Completer();
+
+  MessageMode _currentMode = MessageMode.noneSelected;
+  ReadingAssistanceMode? _readingAssistanceMode;
+
+  Animation<Offset>? _overlayOffsetAnimation;
+  Animation<Size>? _messageSizeAnimation;
+  Animation<double>? _blurAnimation;
+  Offset? _currentOffset;
 
   StreamSubscription? _reactionSubscription;
-  double? _adjustedMessageHeight;
+
+  final _animationDuration = const Duration(
+    milliseconds: AppConfig.overlayAnimationDuration,
+    // seconds: 5,
+  );
 
   @override
   void initState() {
     super.initState();
+    _currentMode = widget.overlayController.toolbarMode;
     _animationController = AnimationController(
       vsync: this,
-      duration:
-          const Duration(milliseconds: AppConfig.overlayAnimationDuration),
+      duration: _animationDuration,
     );
 
     _reactionSubscription =
@@ -85,6 +107,45 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         );
       },
     ).listen((_) => setState(() {}));
+
+    _blurAnimation = Tween<double>(begin: 0.0, end: 2.5).animate(
+      CurvedAnimation(
+        parent: _animationController,
+        curve: FluffyThemes.animationCurve,
+      ),
+    );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await _centeredMessageCompleter.future;
+      if (!mounted) return;
+
+      _animationController.forward(from: 0);
+
+      setState(() {
+        _currentOffset = Offset(
+          _ownMessage ? _messageRightOffset : _messageLeftOffset,
+          _originalMessageBottomOffset - _reactionsHeight,
+        );
+      });
+
+      _setReadingAssistanceMode(
+        widget.initialSelectedToken == null
+            ? ReadingAssistanceMode.messageMode
+            : ReadingAssistanceMode.tokenMode,
+      );
+    });
+  }
+
+  @override
+  void didUpdateWidget(MessageSelectionPositioner oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final mode = widget.overlayController.toolbarMode;
+    if (mode != _currentMode) {
+      if (_currentMode == MessageMode.noneSelected) {
+        _setReadingAssistanceMode(ReadingAssistanceMode.messageMode);
+      }
+      setState(() => _currentMode = mode);
+    }
   }
 
   @override
@@ -94,9 +155,104 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     super.dispose();
   }
 
-  dynamic _runWithLogging(
+  void _setCenteredMessageSize(RenderBox renderBox) {
+    _centeredMessageSize = renderBox.size;
+    final offset = renderBox.localToGlobal(Offset.zero);
+    _centeredMessageOffset = Offset(
+      offset.dx - _columnWidth - _horizontalPadding - 2.0,
+      _mediaQuery!.size.height -
+          offset.dy -
+          renderBox.size.height -
+          _reactionsHeight +
+          ((AppConfig.messageModeInputBarHeight -
+                  AppConfig.tokenModeInputBarHeight) *
+              0.75),
+    );
+    setState(() {});
+
+    if (!_centeredMessageCompleter.isCompleted) {
+      _centeredMessageCompleter.complete();
+    }
+  }
+
+  void _setTooltipSize(RenderBox renderBox) {
+    setState(() {
+      _tooltipSize = renderBox.size;
+    });
+
+    if (!_tooltipCompleter.isCompleted) {
+      _tooltipCompleter.complete();
+    }
+  }
+
+  Future<void> _setReadingAssistanceMode(ReadingAssistanceMode mode) async {
+    if (mode == _readingAssistanceMode) {
+      return;
+    }
+
+    await _centeredMessageCompleter.future;
+
+    if (mode == ReadingAssistanceMode.messageMode) {
+      setState(
+        () => _readingAssistanceMode = ReadingAssistanceMode.transitionMode,
+      );
+    } else if (mode == ReadingAssistanceMode.tokenMode) {
+      setState(
+        () => _readingAssistanceMode = ReadingAssistanceMode.tokenMode,
+      );
+    }
+
+    if (mode == ReadingAssistanceMode.tokenMode) {
+      _overlayOffsetAnimation = Tween<Offset>(
+        begin: _currentOffset,
+        end: _adjustedOriginalMessageOffset,
+      ).animate(
+        CurvedAnimation(
+          parent: _animationController,
+          curve: FluffyThemes.animationCurve,
+        ),
+      )..addListener(() {
+          if (mounted) {
+            setState(() => _currentOffset = _overlayOffsetAnimation?.value);
+          }
+        });
+    } else if (mode == ReadingAssistanceMode.messageMode) {
+      _overlayOffsetAnimation = Tween<Offset>(
+        begin: _currentOffset,
+        end: _centeredMessageOffset!,
+      ).animate(
+        CurvedAnimation(
+          parent: _animationController,
+          curve: FluffyThemes.animationCurve,
+        ),
+      )..addListener(() {
+          if (mounted) {
+            setState(() => _currentOffset = _overlayOffsetAnimation?.value);
+          }
+        });
+
+      _messageSizeAnimation = Tween<Size>(
+        begin: Size(
+          _originalMessageSize.width,
+          _originalMessageSize.height,
+        ),
+        end: _adjustedCenteredMessageSize,
+      ).animate(
+        CurvedAnimation(
+          parent: _animationController,
+          curve: FluffyThemes.animationCurve,
+        ),
+      );
+    }
+
+    await _animationController.forward(from: 0);
+    if (mounted) setState(() => _readingAssistanceMode = mode);
+  }
+
+  T _runWithLogging<T>(
     Function runner,
     String errorMessage,
+    T defaultValue,
   ) {
     try {
       return runner();
@@ -108,11 +264,17 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
           "eventID": widget.event.eventId,
         },
       );
-      return null;
+      return defaultValue;
     }
   }
 
-  bool get showDetails =>
+  double get _inputBarSize =>
+      _readingAssistanceMode == ReadingAssistanceMode.messageMode ||
+              _readingAssistanceMode == ReadingAssistanceMode.transitionMode
+          ? AppConfig.messageModeInputBarHeight
+          : AppConfig.tokenModeInputBarHeight;
+
+  bool get _showDetails =>
       (Matrix.of(context).store.getBool(SettingKeys.displayChatDetailsColumn) ??
           false) &&
       FluffyThemes.isThreeColumnMode(context) &&
@@ -120,43 +282,29 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   // screen size
 
-  MediaQueryData? get _mediaQuery => _runWithLogging(
+  MediaQueryData? get _mediaQuery => _runWithLogging<MediaQueryData?>(
         () => MediaQuery.of(context),
         "Error getting media query",
+        null,
       );
 
   double get _columnWidth => FluffyThemes.isColumnMode(context)
       ? (FluffyThemes.columnWidth + FluffyThemes.navRailWidth)
       : 0;
 
-  // message size
-
-  RenderBox? get _messageRenderBox => _runWithLogging(
-        () => MatrixState.pAnyState.getRenderBox(
-          widget.event.eventId,
-        ),
-        "Error getting message render box",
-      );
-
-  Size? get _messageSize {
-    if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
-      return null;
-    }
-
-    return _runWithLogging(
-      () => _messageRenderBox?.size,
-      "Error getting message size",
-    );
+  /// Available vertical space not taken up by the header and footer
+  double? get _verticalSpace {
+    if (_mediaQuery == null) return null;
+    return _mediaQuery!.size.height - _headerHeight - _footerHeight;
   }
 
-  double get _messageHeight =>
-      _adjustedMessageHeight ?? _messageSize?.height ?? 0;
-
-  double get _messageMaxWidth {
-    final double messageMargin =
-        widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
-    final double totalMaxWidth =
-        (FluffyThemes.columnWidth * 2.5) - messageMargin;
+  double get _toolbarMaxWidth {
+    const double messageMargin = 16.0;
+    // widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
+    final bool showingDetails = widget.chatController.displayChatDetailsColumn;
+    final double totalMaxWidth = (FluffyThemes.columnWidth * 2.5) -
+        (showingDetails ? FluffyThemes.columnWidth : 0) -
+        messageMargin;
     double? maxWidth;
 
     if (_mediaQuery != null) {
@@ -171,57 +319,152 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     return maxWidth;
   }
 
-  // message offset
+  // original message size and offset
 
-  Offset? get _messageOffset {
+  RenderBox? get _messageRenderBox => _runWithLogging<RenderBox?>(
+        () => MatrixState.pAnyState.getRenderBox(
+          widget.event.eventId,
+        ),
+        "Error getting message render box",
+        null,
+      );
+
+  Size get _defaultMessageSize => const Size(FluffyThemes.columnWidth / 2, 100);
+
+  /// The size of the message in the chat list (as opposed to the expanded size in the center overlay)
+  Size get _originalMessageSize {
     if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
-      return null;
+      return _defaultMessageSize;
     }
 
     return _runWithLogging(
-      () => _messageRenderBox?.localToGlobal(Offset.zero),
-      "Error getting message offset",
+      () => _messageRenderBox?.size,
+      "Error getting message size",
+      _defaultMessageSize,
     );
   }
 
-  double? get _messageTopOffset {
-    if (_messageOffset == null) {
-      return null;
+  static const _messageDefaultLeftMargin = Avatar.defaultSize + 16 + 8;
+
+  // Centered message size and offset
+
+  bool get _centeredMessageHasOverflow {
+    if (_verticalSpace == null ||
+        _centeredMessageSize == null ||
+        _centeredMessageOffset == null) {
+      return false;
     }
 
-    return _messageOffset!.dy -
-        (_mediaQuery?.padding.top ?? 0) +
-        (_mediaQuery?.viewPadding.top ?? 0);
+    final finalMessageHeight = _centeredMessageSize!.height + _reactionsHeight;
+    return finalMessageHeight > _verticalSpace!;
   }
 
-  double? get _messageBottomOffset {
-    if (_messageOffset == null || _messageSize == null || _mediaQuery == null) {
-      return null;
+  /// Size of the centered overlay message adjusted for overflow
+  Size? get _adjustedCenteredMessageSize {
+    if (_centeredMessageHasOverflow) {
+      return Size(
+        _centeredMessageSize!.width,
+        _verticalSpace! - (AppConfig.toolbarSpacing * 2),
+      );
     }
-
-    return _mediaQuery!.size.height - _messageOffset!.dy - _messageHeight;
+    return _centeredMessageSize;
   }
 
-  double? get _messageLeftOffset {
-    if (_messageOffset == null ||
-        widget.event.senderId == widget.event.room.client.userID) {
-      return null;
+  Offset? get _adjustedCenteredMessageOffset {
+    if (_centeredMessageHasOverflow) {
+      return Offset(
+        _centeredMessageOffset!.dx,
+        _footerHeight + AppConfig.toolbarSpacing,
+      );
     }
-
-    return _messageOffset!.dx - _columnWidth - _horizontalPadding;
+    return _centeredMessageOffset;
   }
 
-  double? get _messageRightOffset {
-    if (_messageOffset == null ||
-        _mediaQuery == null ||
-        _messageSize == null ||
-        widget.event.senderId != widget.event.room.client.userID) {
-      return null;
+  // message offset
+
+  static const Offset _defaultMessageOffset =
+      Offset(_messageDefaultLeftMargin, 300);
+
+  Offset get _originalMessageOffset {
+    if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
+      return _defaultMessageOffset;
+    }
+    return _runWithLogging(
+      () => _messageRenderBox?.localToGlobal(Offset.zero),
+      "Error getting message offset",
+      _defaultMessageOffset,
+    );
+  }
+
+  Offset get _adjustedOriginalMessageOffset {
+    if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
+      return _defaultMessageOffset;
     }
 
+    final topOffset = _originalMessageOffset.dy;
+    final bottomOffset = _originalMessageBottomOffset;
+    final hasHeaderOverflow =
+        topOffset < (_headerHeight + AppConfig.toolbarSpacing);
+    final hasFooterOverflow =
+        bottomOffset < (_footerHeight + AppConfig.toolbarSpacing);
+
+    if (!hasHeaderOverflow && !hasFooterOverflow) {
+      return Offset(
+        _ownMessage ? _messageRightOffset : _messageLeftOffset,
+        _originalMessageBottomOffset - _reactionsHeight,
+      );
+    }
+
+    if (hasHeaderOverflow) {
+      final difference = topOffset - (_headerHeight + AppConfig.toolbarSpacing);
+      return Offset(
+        _ownMessage ? _messageRightOffset : _messageLeftOffset,
+        _mediaQuery!.size.height -
+            _originalMessageOffset.dy +
+            difference -
+            _originalMessageSize.height,
+      );
+    } else {
+      final difference =
+          bottomOffset - (_footerHeight + AppConfig.toolbarSpacing);
+      return Offset(
+        _ownMessage ? _messageRightOffset : _messageLeftOffset,
+        _mediaQuery!.size.height -
+            (_originalMessageOffset.dy + difference) -
+            _originalMessageSize.height,
+      );
+    }
+  }
+
+  double get _originalMessageBottomOffset =>
+      _mediaQuery!.size.height -
+      _originalMessageOffset.dy -
+      _originalMessageSize.height;
+
+  double? get _centeredMessageTopOffset {
+    if (_mediaQuery == null ||
+        _adjustedCenteredMessageOffset == null ||
+        _adjustedCenteredMessageSize == null) {
+      return null;
+    }
+    return _mediaQuery!.size.height -
+        _adjustedCenteredMessageOffset!.dy -
+        _adjustedCenteredMessageSize!.height -
+        _reactionsHeight;
+  }
+
+  double get _messageLeftOffset => max(
+        _originalMessageOffset.dx - _columnWidth - _horizontalPadding,
+        0,
+      );
+
+  double get _messageRightOffset {
+    if (_mediaQuery == null || !_ownMessage) {
+      return 0;
+    }
     return _mediaQuery!.size.width -
-        _messageOffset!.dx -
-        _messageSize!.width -
+        _originalMessageOffset.dx -
+        _originalMessageSize.width -
         _horizontalPadding;
   }
 
@@ -237,29 +480,15 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double get _footerHeight {
-    return AppConfig.defaultFooterHeight +
-        16 +
-        (FluffyThemes.isColumnMode(context) ? 16.0 : 8.0) +
-        (_mediaQuery?.padding.bottom ?? 0);
-  }
-
-  double? get _totalVerticalSpace {
-    if (_mediaQuery == null) {
-      return null;
-    }
-
-    return _mediaQuery!.size.height - _headerHeight - _footerHeight;
+    return _inputBarSize + (_mediaQuery?.padding.bottom ?? 0);
   }
 
   // measurement for items in the toolbar
 
   bool get showToolbarButtons =>
-      widget.pangeaMessageEvent != null &&
-      widget.pangeaMessageEvent!.shouldShowToolbar &&
-      widget.pangeaMessageEvent!.event.messageType == MessageTypes.Text;
-
-  double get _toolbarButtonsHeight =>
-      showToolbarButtons ? AppConfig.toolbarButtonsHeight : 0;
+      (widget.pangeaMessageEvent?.shouldShowToolbar ?? false) &&
+      widget.pangeaMessageEvent?.event.messageType == MessageTypes.Text &&
+      (widget.pangeaMessageEvent?.messageDisplayLangIsL2 ?? false);
 
   bool get _hasReactions {
     final reactionsEvents = widget.event.aggregatedEvents(
@@ -271,250 +500,226 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   double get _reactionsHeight => _hasReactions ? 28 : 0;
 
-  double get _maxTotalToolbarHeight =>
-      _toolbarButtonsHeight +
-      _reactionsHeight +
-      _messageHeight +
-      AppConfig.toolbarSpacing +
-      AppConfig.toolbarMaxHeight;
+  bool get _ownMessage =>
+      widget.event.senderId == widget.event.room.client.userID;
 
-  double get _totalToolbarTopOffset =>
-      (_messageTopOffset ?? 0) -
-      (AppConfig.toolbarSpacing + AppConfig.toolbarMaxHeight);
-
-  double get _totalToolbarBottomOffset =>
-      (_messageBottomOffset ?? 0) - (_toolbarButtonsHeight + _reactionsHeight);
-
-  /// The remaining space between the top of the screen and the top of the toolbar.
-  /// Negative if the toolbar is overflowing the top of the screen.
-  double get _remainingTopSpace => _totalToolbarTopOffset - _headerHeight;
-
-  /// The remaining space between the bottom of the screen and the bottom of the toolbar.
-  /// Negative if the toolbar is overflowing the bottom of the screen.
-  double get _remainingBottomSpace => _totalToolbarBottomOffset - _footerHeight;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_messageSize == null || _messageOffset == null || _mediaQuery == null) {
-      return;
+  double get _readingAssistanceModeOpacity {
+    switch (_readingAssistanceMode) {
+      case ReadingAssistanceMode.messageMode:
+      case ReadingAssistanceMode.transitionMode:
+        return 0.8;
+      case ReadingAssistanceMode.tokenMode:
+      case null:
+        return 0.4;
     }
-
-    final bool hasHeaderOverflow =
-        _remainingTopSpace < AppConfig.toolbarSpacing;
-    final bool hasFooterOverflow =
-        _remainingBottomSpace < AppConfig.toolbarSpacing;
-
-    if (!hasHeaderOverflow && !hasFooterOverflow || _mediaQuery == null) {
-      return;
-    }
-
-    double adjustedBottomOffset = _totalToolbarBottomOffset;
-    double scrollOffset = 0;
-
-    // if the message height is too tall to fit, adjust the message height
-    if (_totalVerticalSpace! < _maxTotalToolbarHeight) {
-      _adjustedMessageHeight = _totalVerticalSpace! -
-          // one for within the toolbar itself, one for the top, and one for the bottom
-          ((AppConfig.toolbarSpacing * 3) +
-              _reactionsHeight +
-              _toolbarButtonsHeight +
-              AppConfig.toolbarMaxHeight);
-    }
-
-    // if the overlay could have header overflow if the message wasn't shifted, we want to shift
-    // it down so the bottom to give it enough space.
-    if (hasHeaderOverflow) {
-      // what is the distance between the current top offset of the toolbar and the desired top offset?
-      final double currentTopOffset =
-          (_messageTopOffset ?? 0) - AppConfig.toolbarMaxHeight;
-      final double neededShift =
-          (_headerHeight - currentTopOffset) + AppConfig.toolbarSpacing;
-      adjustedBottomOffset = _totalToolbarBottomOffset - neededShift;
-    } else if (hasFooterOverflow) {
-      adjustedBottomOffset = _footerHeight + AppConfig.toolbarSpacing;
-    }
-
-    scrollOffset = adjustedBottomOffset - _totalToolbarBottomOffset;
-
-    _overlayPositionAnimation = Tween<double>(
-      begin: _totalToolbarBottomOffset,
-      end: adjustedBottomOffset,
-    ).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: FluffyThemes.animationCurve,
-      ),
-    );
-
-    widget.chatController.scrollController.animateTo(
-      widget.chatController.scrollController.offset - scrollOffset,
-      duration:
-          const Duration(milliseconds: AppConfig.overlayAnimationDuration),
-      curve: FluffyThemes.animationCurve,
-    );
-    _animationController.forward();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_messageSize == null) return const SizedBox.shrink();
+    if (_messageRenderBox == null || _mediaQuery == null) {
+      return const SizedBox.shrink();
+    }
 
-    final positionedOverlayMessage = AnimatedBuilder(
-      animation: _overlayPositionAnimation ?? _animationController,
-      builder: (context, child) {
-        return Positioned(
-          left: _messageLeftOffset,
-          right: _messageRightOffset,
-          bottom: _overlayPositionAnimation?.value ?? _totalToolbarBottomOffset,
-          child: ToolbarOverlay(
-            messageHeight: _messageHeight,
-            messageWidth: _messageSize!.width,
-            maxWidth: _messageMaxWidth,
-            event: widget.event,
-            pangeaMessageEvent: widget.pangeaMessageEvent,
-            nextEvent: widget.nextEvent,
-            prevEvent: widget.prevEvent,
-            overlayController: widget.overlayController,
-            chatController: widget.chatController,
-            hasReactions: _hasReactions,
-            shouldShowToolbarButtons: showToolbarButtons,
+    widget.overlayController.maxWidth = _toolbarMaxWidth;
+
+    return Stack(
+      children: [
+        if (_blurAnimation != null)
+          IgnorePointer(
+            child: AnimatedOpacity(
+              duration: _animationDuration,
+              opacity: _readingAssistanceModeOpacity,
+              child: Positioned.fill(
+                child: DecoratedBox(
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                  ),
+                  child: AnimatedBuilder(
+                    animation: _blurAnimation!,
+                    builder: (context, _) {
+                      return BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: _blurAnimation!.value,
+                          sigmaY: _blurAnimation!.value,
+                        ),
+                        child: Container(
+                          height: double.infinity,
+                          width: double.infinity,
+                          color: Colors.transparent,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ),
           ),
-        );
-      },
-    );
-
-    return Padding(
-      padding: EdgeInsets.only(
-        left: _horizontalPadding,
-        right: _horizontalPadding,
-      ),
-      child: Stack(
-        children: [
-          positionedOverlayMessage,
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: Column(
+        Padding(
+          padding: EdgeInsets.only(
+            left: _horizontalPadding,
+            right: _horizontalPadding,
+          ),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Column(
+                children: [
+                  Material(
+                    type: MaterialType.transparency,
+                    child: Column(
+                      children: [
+                        SizedBox(height: _mediaQuery?.padding.top ?? 0),
+                        OverlayHeader(controller: widget.chatController),
+                      ],
+                    ),
+                  ),
+                  const Expanded(
+                    flex: 3,
+                    child: SizedBox.shrink(),
+                  ),
+                  Opacity(
+                    opacity: _readingAssistanceMode ==
+                            ReadingAssistanceMode.messageMode
+                        ? 1.0
+                        : 0.0,
+                    child: OverlayCenterContent(
+                      event: widget.event,
+                      messageHeight: null,
+                      messageWidth: null,
+                      maxWidth: widget.overlayController.maxWidth,
+                      overlayController: widget.overlayController,
+                      chatController: widget.chatController,
+                      pangeaMessageEvent: widget.pangeaMessageEvent,
+                      nextEvent: widget.nextEvent,
+                      prevEvent: widget.prevEvent,
+                      hasReactions: _hasReactions,
+                      onChangeMessageSize: _setCenteredMessageSize,
+                      isTransitionAnimation: false,
+                      maxHeight: _mediaQuery!.size.height -
+                          _headerHeight -
+                          _footerHeight -
+                          AppConfig.toolbarSpacing * 2,
+                      readingAssistanceMode: _readingAssistanceMode,
+                    ),
+                  ),
+                  const Expanded(
+                    flex: 1,
+                    child: SizedBox.shrink(),
+                  ),
+                  Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      OverlayFooter(
-                        controller: widget.chatController,
-                        overlayController: widget.overlayController,
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            OverlayFooter(
+                              controller: widget.chatController,
+                              overlayController: widget.overlayController,
+                              showToolbarButtons: showToolbarButtons,
+                              readingAssistanceMode: _readingAssistanceMode,
+                            ),
+                            SizedBox(height: _mediaQuery?.padding.bottom ?? 0),
+                          ],
+                        ),
                       ),
-                      SizedBox(height: _mediaQuery?.padding.bottom ?? 0),
+                      if (_showDetails)
+                        const SizedBox(
+                          width: FluffyThemes.columnWidth,
+                        ),
                     ],
                   ),
+                ],
+              ),
+              if (_readingAssistanceMode != ReadingAssistanceMode.messageMode)
+                AnimatedBuilder(
+                  animation: _overlayOffsetAnimation ?? _animationController,
+                  builder: (context, child) {
+                    return Positioned(
+                      left: _ownMessage
+                          ? null
+                          : (_overlayOffsetAnimation?.value)?.dx ??
+                              _messageLeftOffset,
+                      right: _ownMessage
+                          ? (_overlayOffsetAnimation?.value)?.dx ??
+                              _messageRightOffset
+                          : null,
+                      bottom: (_overlayOffsetAnimation?.value)?.dy ??
+                          _originalMessageBottomOffset - _reactionsHeight,
+                      child: OverlayCenterContent(
+                        event: widget.event,
+                        messageHeight: _originalMessageSize.height,
+                        messageWidth: _originalMessageSize.width,
+                        maxWidth: widget.overlayController.maxWidth,
+                        overlayController: widget.overlayController,
+                        chatController: widget.chatController,
+                        pangeaMessageEvent: widget.pangeaMessageEvent,
+                        nextEvent: widget.nextEvent,
+                        prevEvent: widget.prevEvent,
+                        hasReactions: _hasReactions,
+                        sizeAnimation: _messageSizeAnimation,
+                        isTransitionAnimation: true,
+                        maxHeight: _mediaQuery!.size.height -
+                            _headerHeight -
+                            _footerHeight -
+                            AppConfig.toolbarSpacing * 2,
+                        readingAssistanceMode: _readingAssistanceMode,
+                      ),
+                    );
+                  },
                 ),
-                if (showDetails)
-                  const SizedBox(
-                    width: FluffyThemes.columnWidth,
-                  ),
-              ],
-            ),
-          ),
-          Material(
-            type: MaterialType.transparency,
-            child: Column(
-              children: [
-                SizedBox(height: _mediaQuery?.padding.top ?? 0),
-                OverlayHeader(controller: widget.chatController),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ToolbarOverlay extends StatelessWidget {
-  final double messageHeight;
-  final double messageWidth;
-  final double maxWidth;
-
-  final Event event;
-  final Event? nextEvent;
-  final Event? prevEvent;
-
-  final bool hasReactions;
-  final bool shouldShowToolbarButtons;
-
-  final PangeaMessageEvent? pangeaMessageEvent;
-  final MessageOverlayController overlayController;
-  final ChatController chatController;
-
-  const ToolbarOverlay({
-    super.key,
-    required this.messageHeight,
-    required this.messageWidth,
-    required this.maxWidth,
-    required this.event,
-    required this.overlayController,
-    required this.chatController,
-    required this.hasReactions,
-    required this.shouldShowToolbarButtons,
-    this.pangeaMessageEvent,
-    this.nextEvent,
-    this.prevEvent,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints(maxWidth: maxWidth),
-      child: Material(
-        type: MaterialType.transparency,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: event.senderId == event.room.client.userID
-              ? CrossAxisAlignment.end
-              : CrossAxisAlignment.start,
-          children: [
-            if (pangeaMessageEvent != null &&
-                pangeaMessageEvent!.shouldShowToolbar)
-              MessageToolbar(
-                pangeaMessageEvent: pangeaMessageEvent!,
-                overlayController: overlayController,
-              ),
-            const SizedBox(height: AppConfig.toolbarSpacing),
-            SizedBox(
-              height: messageHeight,
-              child: OverlayMessage(
-                event,
-                pangeaMessageEvent: pangeaMessageEvent,
-                immersionMode: chatController.choreographer.immersionMode,
-                controller: chatController,
-                overlayController: overlayController,
-                nextEvent: nextEvent,
-                prevEvent: prevEvent,
-                timeline: chatController.timeline!,
-                messageWidth: messageWidth,
-                messageHeight: messageHeight,
-              ),
-            ),
-            if (hasReactions)
-              Padding(
-                padding: const EdgeInsets.all(4),
-                child: SizedBox(
-                  height: 20,
-                  child: MessageReactions(
-                    event,
-                    chatController.timeline!,
+              if (showToolbarButtons)
+                Positioned(
+                  top: 0,
+                  child: IgnorePointer(
+                    child: MeasureRenderBox(
+                      onChange: _setTooltipSize,
+                      child: Opacity(
+                        opacity: 0.0,
+                        child: Container(
+                          constraints: BoxConstraints(
+                            minWidth: 200.0,
+                            maxWidth: _toolbarMaxWidth,
+                          ),
+                          child: InstructionsInlineTooltip(
+                            instructionsEnum: widget.overlayController
+                                    .toolbarMode.instructionsEnum ??
+                                InstructionsEnum.readingAssistanceOverview,
+                            bold: true,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-            if (shouldShowToolbarButtons)
-              ToolbarButtonAndProgressRow(
-                event: event,
-                overlayController: overlayController,
-              ),
-          ],
+              if (_centeredMessageTopOffset != null &&
+                  _tooltipSize != null &&
+                  widget.overlayController.toolbarMode !=
+                      MessageMode.noneSelected &&
+                  widget.overlayController.selectedToken == null)
+                Positioned(
+                  top: max(
+                    ((_headerHeight + _centeredMessageTopOffset!) / 2) -
+                        (_tooltipSize!.height / 2),
+                    _headerHeight,
+                  ),
+                  child: Container(
+                    constraints: BoxConstraints(
+                      minWidth: 200.0,
+                      maxWidth: widget.overlayController.maxWidth,
+                    ),
+                    child: InstructionsInlineTooltip(
+                      instructionsEnum: widget
+                              .overlayController.toolbarMode.instructionsEnum ??
+                          InstructionsEnum.readingAssistanceOverview,
+                      bold: true,
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }

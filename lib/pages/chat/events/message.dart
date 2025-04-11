@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -8,11 +10,8 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
 import 'package:fluffychat/pangea/choreographer/enums/use_type.dart';
-import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_buttons.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/string_color.dart';
@@ -42,12 +41,13 @@ class Message extends StatelessWidget {
   final bool animateIn;
   final void Function()? resetAnimateIn;
   final bool wallpaperMode;
+  final ScrollController scrollController;
   // #Pangea
   final bool immersionMode;
   final ChatController controller;
-  final MessageOverlayController? overlayController;
   final bool isButton;
   // Pangea#
+  final List<Color> colors;
 
   const Message(
     this.event, {
@@ -66,19 +66,20 @@ class Message extends StatelessWidget {
     this.animateIn = false,
     this.resetAnimateIn,
     this.wallpaperMode = false,
+    required this.scrollController,
     // #Pangea
     required this.immersionMode,
     required this.controller,
-    this.overlayController,
     this.isButton = false,
     // Pangea#
+    required this.colors,
     super.key,
   });
 
   // #Pangea
   void showToolbar(PangeaMessageEvent? pangeaMessageEvent) {
     // if overlayController is not null, the message is already in overlay mode
-    if (pangeaMessageEvent != null && overlayController == null) {
+    if (pangeaMessageEvent != null) {
       controller.showToolbar(
         event,
         pangeaMessageEvent: pangeaMessageEvent,
@@ -155,17 +156,13 @@ class Message extends StatelessWidget {
         previousEvent!.senderId == event.senderId &&
         previousEvent!.originServerTs.sameEnvironment(event.originServerTs);
 
+    // #Pangea
+    // final textColor =
+    //     ownMessage ? theme.onBubbleColor : theme.colorScheme.onSurface;
     final textColor = ownMessage
-        ?
-        // #Pangea
-        // theme.brightness == Brightness.light
-        //     ? theme.colorScheme.onPrimary
-        //     : theme.colorScheme.onPrimaryContainer
-        ThemeData.dark().colorScheme.onPrimary
-        // Pangea#
+        ? ThemeData.dark().colorScheme.onPrimary
         : theme.colorScheme.onSurface;
 
-    // #Pangea
     // final linkColor = ownMessage
     //     ? theme.brightness == Brightness.light
     //         ? theme.colorScheme.primaryFixed
@@ -173,7 +170,9 @@ class Message extends StatelessWidget {
     //     : theme.colorScheme.primary;
     final linkColor = theme.brightness == Brightness.light
         ? theme.colorScheme.primary
-        : theme.colorScheme.onPrimary;
+        : ownMessage
+            ? theme.colorScheme.onPrimary
+            : theme.colorScheme.onSurface;
     // Pangea#
 
     final rowMainAxisAlignment =
@@ -208,12 +207,11 @@ class Message extends StatelessWidget {
     }.contains(event.messageType);
 
     if (ownMessage) {
+      // #Pangea
+      // color =
+      //     displayEvent.status.isError ? Colors.redAccent : theme.bubbleColor;
       color = displayEvent.status.isError
           ? Colors.redAccent
-          // #Pangea
-          // : theme.brightness == Brightness.light
-          //     ? theme.colorScheme.primary
-          //     : theme.colorScheme.primaryContainer;
           : Color.alphaBlend(
               Colors.white.withAlpha(180),
               ThemeData.dark().colorScheme.primary,
@@ -251,12 +249,8 @@ class Message extends StatelessWidget {
                       right: 0,
                       child: InkWell(
                         // #Pangea
-                        onTap: () => overlayController == null
-                            ? showToolbar(pangeaMessageEvent)
-                            : controller.clearSelectedEvents(),
-                        onLongPress: () => overlayController == null
-                            ? showToolbar(pangeaMessageEvent)
-                            : controller.clearSelectedEvents(),
+                        onTap: () => showToolbar(pangeaMessageEvent),
+                        onLongPress: () => showToolbar(pangeaMessageEvent),
                         // onTap: () => onSelect(event),
                         // onLongPress: () => onSelect(event),
                         // Pangea#
@@ -288,9 +282,7 @@ class Message extends StatelessWidget {
                         //     ),
                         //   )
                         // else if (nextEventSameSender || ownMessage)
-                        if (nextEventSameSender ||
-                            ownMessage ||
-                            overlayController != null)
+                        if (nextEventSameSender || ownMessage)
                           // Pangea#
                           SizedBox(
                             width: Avatar.defaultSize,
@@ -330,11 +322,7 @@ class Message extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              // #Pangea
-                              // if (!nextEventSameSender)
-                              if (!nextEventSameSender &&
-                                  overlayController == null)
-                                // Pangea#
+                              if (!nextEventSameSender)
                                 Padding(
                                   padding: const EdgeInsets.only(
                                     left: 8.0,
@@ -429,23 +417,23 @@ class Message extends StatelessWidget {
                                         clipBehavior: Clip.antiAlias,
                                         // #Pangea
                                         child: CompositedTransformTarget(
-                                          link: overlayController != null
-                                              ? LayerLinkAndKey('overlay_msg')
-                                                  .link
-                                              : MatrixState.pAnyState
-                                                  .layerLinkAndKey(
-                                                    event.eventId,
-                                                  )
-                                                  .link,
+                                          link: MatrixState.pAnyState
+                                              .layerLinkAndKey(
+                                                event.eventId,
+                                              )
+                                              .link,
+                                          // child: BubbleBackground(
+                                          //   colors: colors,
+                                          //   ignore: noBubble || !ownMessage,
+                                          //   scrollController: scrollController,
+                                          // Pangea#
                                           child: Container(
-                                            key: overlayController != null
-                                                ? LayerLinkAndKey('overlay_msg')
-                                                    .key
-                                                : MatrixState.pAnyState
-                                                    .layerLinkAndKey(
-                                                      event.eventId,
-                                                    )
-                                                    .key,
+                                            // #Pangea
+                                            key: MatrixState.pAnyState
+                                                .layerLinkAndKey(
+                                                  event.eventId,
+                                                )
+                                                .key,
                                             // Pangea#
                                             decoration: BoxDecoration(
                                               borderRadius:
@@ -542,8 +530,6 @@ class Message extends StatelessWidget {
                                                   pangeaMessageEvent:
                                                       pangeaMessageEvent,
                                                   immersionMode: immersionMode,
-                                                  overlayController:
-                                                      overlayController,
                                                   controller: controller,
                                                   nextEvent: nextEvent,
                                                   prevEvent: previousEvent,
@@ -578,8 +564,9 @@ class Message extends StatelessWidget {
                                                               .msgUseType
                                                               .iconView(
                                                             context,
-                                                            textColor
-                                                                .withAlpha(164),
+                                                            textColor.withAlpha(
+                                                              164,
+                                                            ),
                                                           ),
                                                           const SizedBox(
                                                             width: 4,
@@ -595,7 +582,9 @@ class Message extends StatelessWidget {
                                                           Icon(
                                                             Icons.edit_outlined,
                                                             color: textColor
-                                                                .withAlpha(164),
+                                                                .withAlpha(
+                                                              164,
+                                                            ),
                                                             size: 14,
                                                           ),
                                                           Text(
@@ -636,11 +625,10 @@ class Message extends StatelessWidget {
         event.hasAggregatedEvents(timeline, RelationshipTypes.reaction);
     // #Pangea
     // if (showReceiptsRow || displayTime || selected || displayReadMarker) {
-    if (overlayController == null &&
-        (showReceiptsRow ||
-            displayTime ||
-            displayReadMarker ||
-            (pangeaMessageEvent?.showMessageButtons ?? false))) {
+    if (showReceiptsRow ||
+        displayTime ||
+        displayReadMarker ||
+        (pangeaMessageEvent?.showMessageButtons ?? false)) {
       // Pangea#
       container = Column(
         mainAxisSize: MainAxisSize.min,
@@ -682,9 +670,8 @@ class Message extends StatelessWidget {
             duration: FluffyThemes.animationDuration,
             curve: FluffyThemes.animationCurve,
             // #Pangea
-            child: overlayController != null ||
-                    (!showReceiptsRow &&
-                        !(pangeaMessageEvent?.showMessageButtons ?? false))
+            child: !showReceiptsRow &&
+                    !(pangeaMessageEvent?.showMessageButtons ?? false)
                 // child: !showReceiptsRow
                 // Pangea#
                 ? const SizedBox.shrink()
@@ -700,14 +687,6 @@ class Message extends StatelessWidget {
                           ? MainAxisAlignment.end
                           : MainAxisAlignment.start,
                       children: [
-                        if (pangeaMessageEvent?.showMessageButtons ?? false)
-                          MessageButtons(
-                            event: event,
-                            controller: controller,
-                            pangeaMessageEvent: pangeaMessageEvent!,
-                            nextEvent: nextEvent,
-                            prevEvent: previousEvent,
-                          ),
                         MessageReactions(event, timeline),
                       ],
                     ),
@@ -780,19 +759,80 @@ class Message extends StatelessWidget {
             left: 8.0,
             right: 8.0,
             top: nextEventSameSender ? 1.0 : 4.0,
-            bottom:
-                // #Pangea
-                overlayController != null
-                    ? 0
-                    :
-                    // Pangea#
-                    previousEventSameSender
-                        ? 1.0
-                        : 4.0,
+            bottom: previousEventSameSender ? 1.0 : 4.0,
           ),
           child: container,
         ),
       ),
     );
+  }
+}
+
+class BubbleBackground extends StatelessWidget {
+  const BubbleBackground({
+    super.key,
+    required this.scrollController,
+    required this.colors,
+    required this.ignore,
+    required this.child,
+  });
+
+  final ScrollController scrollController;
+  final List<Color> colors;
+  final bool ignore;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    if (ignore) return child;
+    return CustomPaint(
+      painter: BubblePainter(
+        repaint: scrollController,
+        colors: colors,
+        context: context,
+      ),
+      child: child,
+    );
+  }
+}
+
+class BubblePainter extends CustomPainter {
+  BubblePainter({
+    required this.context,
+    required this.colors,
+    required super.repaint,
+  });
+
+  final BuildContext context;
+  final List<Color> colors;
+  ScrollableState? _scrollable;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final scrollable = _scrollable ??= Scrollable.of(context);
+    final scrollableBox = scrollable.context.findRenderObject() as RenderBox;
+    final scrollableRect = Offset.zero & scrollableBox.size;
+    final bubbleBox = context.findRenderObject() as RenderBox;
+
+    final origin =
+        bubbleBox.localToGlobal(Offset.zero, ancestor: scrollableBox);
+    final paint = Paint()
+      ..shader = ui.Gradient.linear(
+        scrollableRect.topCenter,
+        scrollableRect.bottomCenter,
+        colors,
+        [0.0, 1.0],
+        TileMode.clamp,
+        Matrix4.translationValues(-origin.dx, -origin.dy, 0.0).storage,
+      );
+    canvas.drawRect(Offset.zero & size, paint);
+  }
+
+  @override
+  bool shouldRepaint(BubblePainter oldDelegate) {
+    final scrollable = Scrollable.of(context);
+    final oldScrollable = _scrollable;
+    _scrollable = scrollable;
+    return scrollable.position != oldScrollable?.position;
   }
 }

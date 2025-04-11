@@ -17,9 +17,10 @@ import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart'
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
-import 'package:fluffychat/pangea/toolbar/enums/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
@@ -510,14 +511,26 @@ class PangeaMessageEvent {
   }
 
   Future<String?> representationByDetectedLanguage() async {
-    final resp = await LanguageDetectionRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      request: LanguageDetectionRequest(
-        text: _latestEdit.body,
-        senderl1: l1Code,
-        senderl2: l2Code,
-      ),
-    );
+    LanguageDetectionResponse? resp;
+    try {
+      resp = await LanguageDetectionRepo.get(
+        MatrixState.pangeaController.userController.accessToken,
+        request: LanguageDetectionRequest(
+          text: _latestEdit.body,
+          senderl1: l1Code,
+          senderl2: l2Code,
+        ),
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "event": _event.toJson(),
+        },
+      );
+      return null;
+    }
 
     final langCode = resp.detections.firstOrNull?.langCode;
     if (langCode == null) return null;
@@ -732,12 +745,16 @@ class PangeaMessageEvent {
   List<PracticeActivityEvent> get practiceActivities =>
       l2Code == null ? [] : practiceActivitiesByLangCode(l2Code!);
 
-  bool get shouldShowToolbar => !event.isActivityMessage;
+  bool get shouldShowToolbar =>
+      !event.isActivityMessage &&
+      !event.redacted &&
+      event.status != EventStatus.sending &&
+      event.status != EventStatus.error;
 
   bool shouldDoActivity({
     required PangeaToken? token,
     required ActivityTypeEnum a,
-    required String? feature,
+    required MorphFeaturesEnum? feature,
     required String? tag,
   }) {
     if (!messageDisplayLangIsL2 || token == null) {

@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
@@ -30,9 +29,10 @@ import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 enum SubscriptionStatus {
+  loading,
   subscribed,
   dimissedPaywall,
-  showPaywall,
+  shouldShowPaywall,
 }
 
 class SubscriptionController extends BaseController {
@@ -51,7 +51,9 @@ class SubscriptionController extends BaseController {
   UserController get _userController => _pangeaController.userController;
   String? get _userID => _pangeaController.matrixState.client.userID;
 
-  bool get isSubscribed {
+  bool? get isSubscribed {
+    if (!initCompleter.isCompleted) return null;
+
     final bool hasSubscription =
         currentSubscriptionInfo?.currentSubscriptionId != null;
 
@@ -64,22 +66,22 @@ class SubscriptionController extends BaseController {
   }
 
   bool _isInitializing = false;
-  Completer<void> initialized = Completer<void>();
+  Completer<void> initCompleter = Completer<void>();
 
   Future<void> initialize() async {
-    if (initialized.isCompleted) return;
+    if (initCompleter.isCompleted) return;
     if (_isInitializing) {
-      await initialized.future;
+      await initCompleter.future;
       return;
     }
     _isInitializing = true;
     await _initialize();
     _isInitializing = false;
-    initialized.complete();
+    initCompleter.complete();
   }
 
   Future<void> reinitialize() async {
-    initialized = Completer<void>();
+    initCompleter = Completer<void>();
     _isInitializing = false;
     await initialize();
   }
@@ -93,6 +95,8 @@ class SubscriptionController extends BaseController {
         );
         return;
       }
+
+      await _pangeaController.userController.initCompleter.future;
 
       availableSubscriptionInfo = AvailableSubscriptionsInfo();
       await availableSubscriptionInfo!.setAvailableSubscriptions();
@@ -116,9 +120,11 @@ class SubscriptionController extends BaseController {
       if (!kIsWeb) {
         Purchases.addCustomerInfoUpdateListener(
           (CustomerInfo info) async {
-            final bool wasSubscribed = isSubscribed;
+            final bool? wasSubscribed = isSubscribed;
             await updateCustomerInfo();
-            if (!wasSubscribed && isSubscribed) {
+            if (wasSubscribed != null &&
+                !wasSubscribed &&
+                (isSubscribed != null && isSubscribed!)) {
               subscriptionStream.add(true);
             }
           },
@@ -130,7 +136,7 @@ class SubscriptionController extends BaseController {
           await subscriptionBox.remove(
             PLocalKey.beganWebPayment,
           );
-          if (isSubscribed) {
+          if (isSubscribed != null && isSubscribed!) {
             subscriptionStream.add(true);
           }
         }
@@ -142,13 +148,15 @@ class SubscriptionController extends BaseController {
         e: e,
         s: s,
         data: {
-          "availableSubscriptionInfo": availableSubscriptionInfo?.toJson(),
+          "availableSubscriptionInfo": availableSubscriptionInfo?.toJson(
+            validate: false,
+          ),
         },
       );
     }
   }
 
-  void submitSubscriptionChange(
+  Future<void> submitSubscriptionChange(
     SubscriptionDetails? selectedSubscription,
     BuildContext context, {
     bool isPromo = false,
@@ -186,39 +194,24 @@ class SubscriptionController extends BaseController {
         return;
       }
       if (selectedSubscription.package == null) {
+        final offerings = await Purchases.getOfferings();
         ErrorHandler.logError(
           m: "Tried to subscribe to SubscriptionDetails with Null revenuecat Package",
           s: StackTrace.current,
           data: {
             "selectedSubscription": selectedSubscription.toJson(),
+            "offerings": offerings.toJson(),
           },
         );
         return;
       }
-      try {
-        GoogleAnalytics.beginPurchaseSubscription(
-          selectedSubscription,
-          context,
-        );
-        await Purchases.purchasePackage(selectedSubscription.package!);
-        GoogleAnalytics.updateUserSubscriptionStatus(true);
-      } catch (err) {
-        final errCode = PurchasesErrorHelper.getErrorCode(
-          err as PlatformException,
-        );
-        if (errCode == PurchasesErrorCode.purchaseCancelledError) {
-          debugPrint("User cancelled purchase");
-          return;
-        }
-        ErrorHandler.logError(
-          m: "Failed to purchase revenuecat package for user $_userID with error code $errCode",
-          s: StackTrace.current,
-          data: {
-            "selectedSubscription": selectedSubscription.toJson(),
-          },
-        );
-        return;
-      }
+
+      GoogleAnalytics.beginPurchaseSubscription(
+        selectedSubscription,
+        context,
+      );
+      await Purchases.purchasePackage(selectedSubscription.package!);
+      GoogleAnalytics.updateUserSubscriptionStatus(true);
     }
   }
 
@@ -259,7 +252,7 @@ class SubscriptionController extends BaseController {
   }
 
   Future<void> updateCustomerInfo() async {
-    if (!initialized.isCompleted) {
+    if (!initCompleter.isCompleted) {
       await initialize();
     }
     await currentSubscriptionInfo!.setCurrentSubscription();
@@ -268,11 +261,17 @@ class SubscriptionController extends BaseController {
 
   /// if the user is subscribed, returns subscribed
   /// if the user has dismissed the paywall, returns dismissed
-  SubscriptionStatus get subscriptionStatus => isSubscribed
-      ? SubscriptionStatus.subscribed
-      : _shouldShowPaywall
-          ? SubscriptionStatus.showPaywall
-          : SubscriptionStatus.dimissedPaywall;
+  SubscriptionStatus get subscriptionStatus {
+    if (isSubscribed == null) {
+      return SubscriptionStatus.loading;
+    }
+
+    return isSubscribed!
+        ? SubscriptionStatus.subscribed
+        : _shouldShowPaywall
+            ? SubscriptionStatus.shouldShowPaywall
+            : SubscriptionStatus.dimissedPaywall;
+  }
 
   DateTime? get _lastDismissedPaywall {
     final lastDismissed = subscriptionBox.read(
@@ -292,8 +291,9 @@ class SubscriptionController extends BaseController {
 
   /// whether or not the paywall should be shown
   bool get _shouldShowPaywall {
-    return initialized.isCompleted &&
-        !isSubscribed &&
+    return initCompleter.isCompleted &&
+        isSubscribed != null &&
+        !isSubscribed! &&
         (_lastDismissedPaywall == null ||
             DateTime.now().difference(_lastDismissedPaywall!).inHours >
                 (1 * (_paywallBackoff ?? 1)));
@@ -320,13 +320,13 @@ class SubscriptionController extends BaseController {
 
   Future<void> showPaywall(BuildContext context) async {
     try {
-      if (!initialized.isCompleted) {
+      if (!initCompleter.isCompleted) {
         await initialize();
       }
       if (availableSubscriptionInfo?.availableSubscriptions.isEmpty ?? true) {
         return;
       }
-      if (isSubscribed) return;
+      if (isSubscribed == null || isSubscribed!) return;
       await showModalBottomSheet(
         isScrollControlled: true,
         useRootNavigator: !PlatformInfos.isMobile,
@@ -349,7 +349,9 @@ class SubscriptionController extends BaseController {
         e: e,
         s: s,
         data: {
-          "availableSubscriptionInfo": availableSubscriptionInfo?.toJson(),
+          "availableSubscriptionInfo": availableSubscriptionInfo?.toJson(
+            validate: false,
+          ),
         },
       );
     }
@@ -403,6 +405,7 @@ class SubscriptionDetails {
   final String id;
   SubscriptionPeriodType periodType;
   Package? package;
+  String? localizedPrice;
 
   SubscriptionDetails({
     required this.price,
@@ -418,7 +421,7 @@ class SubscriptionDetails {
 
   String displayPrice(BuildContext context) => isTrial || price <= 0
       ? L10n.of(context).freeTrial
-      : "\$${price.toStringAsFixed(2)}";
+      : localizedPrice ?? "\$${price.toStringAsFixed(2)}";
 
   String displayName(BuildContext context) {
     if (isTrial) {

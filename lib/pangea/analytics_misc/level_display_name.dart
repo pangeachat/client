@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/user/models/profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -38,6 +39,10 @@ class LevelDisplayNameState extends State<LevelDisplayName> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.userId == BotName.byEnvironment) {
+      return const SizedBox();
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 8.0,
@@ -55,7 +60,7 @@ class LevelDisplayNameState extends State<LevelDisplayName> {
               children: [
                 if (_profile?.targetLanguage != null)
                   Text(
-                    _profile!.targetLanguage!.langCode.toUpperCase(),
+                    _profile!.targetLanguage!.langCodeShort.toUpperCase(),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).colorScheme.primary,

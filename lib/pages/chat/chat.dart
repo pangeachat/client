@@ -28,9 +28,13 @@ import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/recording_dialog.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
+import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
+import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -41,8 +45,8 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
-import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/instructions/empty_chat_popup.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dialog.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
@@ -126,7 +130,10 @@ class ChatController extends State<ChatPageWithRoom>
   // #Pangea
   final PangeaController pangeaController = MatrixState.pangeaController;
   late Choreographer choreographer = Choreographer(pangeaController, this);
+  late GoRouter _router;
+
   StreamSubscription? _levelSubscription;
+  StreamSubscription? _analyticsSubscription;
   // Pangea#
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
 
@@ -268,7 +275,10 @@ class ChatController extends State<ChatPageWithRoom>
     final prefs = await SharedPreferences.getInstance();
     final draft = prefs.getString('draft_$roomId');
     if (draft != null && draft.isNotEmpty) {
-      sendController.text = draft;
+      // #Pangea
+      // sendController.text = draft;
+      sendController.setSystemText(draft, EditType.other);
+      // Pangea#
     }
   }
 
@@ -359,18 +369,58 @@ class ChatController extends State<ChatPageWithRoom>
 
     _levelSubscription = pangeaController.getAnalytics.stateStream
         .where(
-          (update) =>
-              update is Map<String, dynamic> && update['level_up'] != null,
-        )
+      (update) =>
+          update is Map<String, dynamic> &&
+          (update['level_up'] != null || update['unlocked_constructs'] != null),
+    )
+        // .listen(
+        //   (update) => Future.delayed(
+        //     const Duration(milliseconds: 500),
+        //     () => LevelUpUtil.showLevelUpDialog(
+        //       update['level_up'],
+        //       context,
+        //     ),
+        //   ),
+        // )
         .listen(
-          (update) => Future.delayed(
-            const Duration(milliseconds: 500),
-            () => LevelUpUtil.showLevelUpDialog(
-              update['level_up'],
-              context,
-            ),
-          ),
-        );
+      // remove delay now that GetAnalyticsController._onLevelUp
+      // is async is should take roughly 500ms to make requests anyway
+      (update) {
+        if (update['level_up'] != null) {
+          LevelUpUtil.showLevelUpDialog(
+            update['level_up'],
+            update['analytics_room_id'],
+            update["construct_summary_state_event_id"],
+            update['construct_summary'],
+            context,
+          );
+        } else if (update['unlocked_constructs'] != null) {
+          ConstructNotificationUtil.addUnlockedConstruct(
+            List.from(update['unlocked_constructs']),
+            context,
+          );
+        }
+      },
+    );
+
+    _analyticsSubscription =
+        pangeaController.getAnalytics.analyticsStream.stream.listen((update) {
+      if (update.targetID == null) return;
+      OverlayUtil.showOverlay(
+        overlayKey: update.targetID,
+        followerAnchor: Alignment.bottomCenter,
+        targetAnchor: Alignment.bottomCenter,
+        context: context,
+        child: PointsGainedAnimation(
+          points: update.points,
+          targetID: update.targetID!,
+        ),
+        transformTargetId: update.targetID ?? "",
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        ignorePointer: true,
+      );
+    });
     // Pangea#
     _tryLoadTimeline();
     if (kIsWeb) {
@@ -520,6 +570,9 @@ class ChatController extends State<ChatPageWithRoom>
     if (state == AppLifecycleState.paused) {
       clearSelectedEvents();
     }
+    if (state == AppLifecycleState.hidden && !stopAudioStream.isClosed) {
+      stopAudioStream.add(null);
+    }
     // Pangea#
     if (state != AppLifecycleState.resumed) return;
     setReadMarker();
@@ -606,18 +659,29 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.removeListener(_inputFocusListener);
     onFocusSub?.cancel();
     //#Pangea
-    choreographer.stateListener.close();
+    choreographer.stateStream.close();
     choreographer.dispose();
-    clearSelectedEvents();
     MatrixState.pAnyState.closeOverlay();
     showToolbarStream.close();
+    stopAudioStream.close();
     hideTextController.dispose();
     _levelSubscription?.cancel();
+    _analyticsSubscription?.cancel();
+    _router.routeInformationProvider.removeListener(_onRouteChanged);
     //Pangea#
     super.dispose();
   }
 
   // #Pangea
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _router = GoRouter.of(context);
+    _router.routeInformationProvider.addListener(_onRouteChanged);
+  }
+
+  void _onRouteChanged() => stopAudioStream.add(null);
+
   // TextEditingController sendController = TextEditingController();
   PangeaTextController get sendController => choreographer.textController;
 
@@ -756,6 +820,7 @@ class ChatController extends State<ChatPageWithRoom>
           pangeaController.putAnalytics.setState(
             AnalyticsStream(
               eventId: msgEventId,
+              targetID: msgEventId,
               roomId: room.id,
               constructs: [
                 ...originalSent.vocabAndMorphUses(
@@ -764,7 +829,6 @@ class ChatController extends State<ChatPageWithRoom>
                   metadata: metadata,
                 ),
               ],
-              origin: AnalyticsUpdateOrigin.sendMessage,
             ),
           );
         }
@@ -792,17 +856,25 @@ class ChatController extends State<ChatPageWithRoom>
           return;
         }
       },
-      onError: (err, stack) => ErrorHandler.logError(
+    ).catchError((err, s) {
+      if (err is EventTooLarge) {
+        showAdaptiveDialog(
+          context: context,
+          builder: (context) => const EventTooLargeDialog(),
+        );
+        return;
+      }
+      ErrorHandler.logError(
         e: err,
-        s: stack,
+        s: s,
         data: {
           'roomId': roomId,
           'text': sendController.text,
           'inReplyTo': replyEvent?.eventId,
           'editEventId': editEvent?.eventId,
         },
-      ),
-    );
+      );
+    });
     // Pangea#
     sendController.value = TextEditingValue(
       text: pendingText,
@@ -810,7 +882,10 @@ class ChatController extends State<ChatPageWithRoom>
     );
 
     setState(() {
-      sendController.text = pendingText;
+      // #Pangea
+      // sendController.text = pendingText;
+      sendController.setSystemText(pendingText, EditType.other);
+      // Pangea#
       _inputTextIsEmpty = pendingText.isEmpty;
       replyEvent = null;
       editEvent = null;
@@ -847,7 +922,10 @@ class ChatController extends State<ChatPageWithRoom>
     final files = await selectFiles(
       context,
       allowMultiple: true,
-      type: FileSelectorType.images,
+      // #Pangea
+      // type: FileSelectorType.images,
+      type: FileSelectorType.media,
+      // Pangea#
     );
     if (files.isEmpty) return;
 
@@ -897,6 +975,9 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void voiceMessageAction() async {
+    // #Pangea
+    stopAudioStream.add(null);
+    // Pangea#
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     if (PlatformInfos.isAndroid) {
       final info = await DeviceInfoPlugin().androidInfo;
@@ -1038,9 +1119,6 @@ class ChatController extends State<ChatPageWithRoom>
 
   void reportEventAction() async {
     final event = selectedEvents.single;
-    // #Pangea
-    clearSelectedEvents();
-    // Pangea#
     final score = await showModalActionPopup<int>(
       context: context,
       title: L10n.of(context).reportMessage,
@@ -1057,10 +1135,7 @@ class ChatController extends State<ChatPageWithRoom>
         ),
         AdaptiveModalAction(
           value: 0,
-          // #Pangea
-          // label: L10n.of(context).inoffensive,
-          label: L10n.of(context).slightlyOffensive,
-          // Pangea#
+          label: L10n.of(context).inoffensive,
         ),
       ],
     );
@@ -1071,50 +1146,18 @@ class ChatController extends State<ChatPageWithRoom>
       okLabel: L10n.of(context).ok,
       cancelLabel: L10n.of(context).cancel,
       hintText: L10n.of(context).reason,
-      // #Pangea
-      autoSubmit: true,
-      // Pangea#
     );
     if (reason == null || reason.isEmpty) return;
-    // #Pangea
-    try {
-      await reportMessage(
-        context,
-        roomId,
-        reason,
-        event.senderId,
-        event.content['body'].toString(),
-      );
-    } catch (err) {
-      ErrorHandler.logError(
-        e: err,
-        s: StackTrace.current,
-        data: {
-          'roomId': roomId,
-          'reason': reason,
-          'senderId': event.senderId,
-          'content': event.content['body'].toString(),
-        },
-      );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            L10n.of(context).oopsSomethingWentWrong,
+    final result = await showFutureLoadingDialog(
+      context: context,
+      future: () => Matrix.of(context).client.reportEvent(
+            event.roomId!,
+            event.eventId,
+            reason: reason,
+            score: score,
           ),
-        ),
-      );
-    }
-    // final result = await showFutureLoadingDialog(
-    //   context: context,
-    //   future: () => Matrix.of(context).client.reportEvent(
-    //         event.roomId!,
-    //         event.eventId,
-    //         reason: reason,
-    //         score: score,
-    //       ),
-    // );
-    // if (result.error != null) return;
-    // Pangea#
+    );
+    if (result.error != null) return;
     setState(() {
       showEmojiPicker = false;
       selectedEvents.clear();
@@ -1134,7 +1177,10 @@ class ChatController extends State<ChatPageWithRoom>
       for (final event in selectedEvents) {
         await event.cancelSend();
       }
-      setState(selectedEvents.clear);
+      // #Pangea
+      // setState(selectedEvents.clear);
+      clearSelectedEvents();
+      // Pangea#
     } catch (e, s) {
       ErrorReporter(
         context,
@@ -1269,6 +1315,9 @@ class ChatController extends State<ChatPageWithRoom>
     }
     // Pangea#
     final event = selectedEvents.first;
+    // #Pangea
+    clearSelectedEvents();
+    // Pangea#
     if (event.status.isError) {
       event.sendAgain();
     }
@@ -1581,9 +1630,8 @@ class ChatController extends State<ChatPageWithRoom>
   //#Pangea
   void onAddPopupMenuButtonSelected(String? choice) {
     // void onAddPopupMenuButtonSelected(String choice) {
-    if (choice == null) {
-      debugger(when: kDebugMode);
-    }
+    debugger(when: kDebugMode && choice == null);
+
     //Pangea#
     if (choice == 'file') {
       sendFileAction();
@@ -1745,7 +1793,10 @@ class ChatController extends State<ChatPageWithRoom>
 
   void cancelReplyEventAction() => setState(() {
         if (editEvent != null) {
-          sendController.text = pendingText;
+          // #Pangea
+          // sendController.text = pendingText;
+          sendController.setSystemText(pendingText, EditType.other);
+          // Pangea#
           pendingText = '';
         }
         replyEvent = null;
@@ -1762,6 +1813,8 @@ class ChatController extends State<ChatPageWithRoom>
   final StreamController<String> showToolbarStream =
       StreamController.broadcast();
 
+  final StreamController<void> stopAudioStream = StreamController.broadcast();
+
   void showToolbar(
     Event event, {
     PangeaMessageEvent? pangeaMessageEvent,
@@ -1770,6 +1823,8 @@ class ChatController extends State<ChatPageWithRoom>
     Event? nextEvent,
     Event? prevEvent,
   }) {
+    if (event.redacted || event.status == EventStatus.sending) return;
+
     // Close keyboard, if open
     if (inputFocus.hasFocus && PlatformInfos.isMobile) {
       inputFocus.unfocus();
@@ -1818,15 +1873,14 @@ class ChatController extends State<ChatPageWithRoom>
       HapticFeedback.mediumImpact();
     }
 
+    stopAudioStream.add(null);
+
     Future.delayed(
         Duration(milliseconds: buttonEventID == event.eventId ? 200 : 0), () {
       OverlayUtil.showOverlay(
         context: context,
         child: overlayEntry!,
         transformTargetId: "",
-        backgroundColor: Colors.black,
-        closePrevOverlay:
-            MatrixState.pangeaController.subscriptionController.isSubscribed,
         position: OverlayPositionEnum.centered,
         onDismiss: clearSelectedEvents,
         blurBackground: true,
@@ -1841,6 +1895,15 @@ class ChatController extends State<ChatPageWithRoom>
   void updateInputBarHeight(double height) {
     if (mounted && height != inputBarHeight) {
       setState(() => inputBarHeight = height);
+    }
+  }
+
+  bool get displayChatDetailsColumn {
+    try {
+      return _displayChatDetailsColumn.value;
+    } catch (e) {
+      // if not set, default to false
+      return false;
     }
   }
   // Pangea#
@@ -1860,6 +1923,13 @@ class ChatController extends State<ChatPageWithRoom>
     final theme = Theme.of(context);
     return Row(
       children: [
+        // #Pangea
+        EmptyChatPopup(
+          room: room,
+          transformTargetId:
+              choreographer.inputLayerLinkAndKey.transformTargetId,
+        ),
+        // Pangea#
         Expanded(
           child: ChatView(this),
         ),
