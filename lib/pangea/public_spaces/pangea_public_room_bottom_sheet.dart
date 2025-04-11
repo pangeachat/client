@@ -235,10 +235,12 @@ class PangeaPublicRoomBottomSheetState
                                         enabledBorder: InputBorder.none,
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
-                                        hintText: "Enter the Space Code",
+                                        hintText:
+                                            L10n.of(context).enterSpaceCode,
                                         contentPadding:
                                             const EdgeInsets.symmetric(
-                                                horizontal: 16.0),
+                                          horizontal: 16.0,
+                                        ),
                                         hintStyle: TextStyle(
                                           color: Theme.of(context).hintColor,
                                         ),
@@ -296,17 +298,17 @@ class PangeaPublicRoomBottomSheetState
                                   );
                                   Navigator.of(context).pop();
                                 },
-                                child: const Row(
+                                child: Row(
                                   spacing: 8.0,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.share_outlined,
                                       size: 20.0,
                                     ),
                                     Flexible(
                                       child: Text(
-                                        "Share link to space",
+                                        L10n.of(context).shareSpaceLink,
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
@@ -338,17 +340,17 @@ class PangeaPublicRoomBottomSheetState
                                   );
                                   Navigator.of(context).pop();
                                 },
-                                child: const Row(
+                                child: Row(
                                   spacing: 8.0,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.share_outlined,
                                       size: 20.0,
                                     ),
                                     Flexible(
                                       child: Text(
-                                        "Share link to space",
+                                        L10n.of(context).shareSpaceLink,
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
