@@ -68,7 +68,7 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
         parent: _controller!,
         curve: Curves.easeIn,
       ),
-    );  
+    );
 
     _showPointsGained();
   }
