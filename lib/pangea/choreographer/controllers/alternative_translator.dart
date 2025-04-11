@@ -23,11 +23,11 @@ class AlternativeTranslator {
   List<String> translations = [];
   SimilartyResponseModel? similarityResponse;
 
-  // Counts for tracking newly learned items
+  AlternativeTranslator(this.choreographer);
+
+   // Counts for tracking newly learned items
   int _vocabCountBefore = 0;
   int _grammarCountBefore = 0;
-
-  AlternativeTranslator(this.choreographer);
 
   void clear() {
     userTranslation = null;
@@ -39,10 +39,6 @@ class AlternativeTranslator {
     similarityResponse = null;
   }
 
-  // Whatever was changed before for stars and counts was inaccurate and did not work,
-  // this is a new implemention for the counts. Be careful changing this again, please check the accuracy!
-
-  // Capture counts before translation starts
   void captureCountsBefore() {
     final constructListModel =
         MatrixState.pangeaController.getAnalytics.constructListModel;
@@ -56,12 +52,9 @@ class AlternativeTranslator {
     _grammarCountBefore = allMorphConstructs.length;
   }
 
-  // Calculate percentage of choices that were correct on first attempt
-  double get percentCorrectChoices {
+  double get _percentCorrectChoices {
     final totalSteps = choreographer.choreoRecord.itSteps.length;
     if (totalSteps == 0) return 0.0;
-
-    // Count steps where there were no wrong clicks
     final int correctFirstAttempts = choreographer.itController.completedITSteps
         .where(
           (step) => !step.continuances.any(
@@ -71,47 +64,13 @@ class AlternativeTranslator {
           ),
         )
         .length;
-
     final double percentage = (correctFirstAttempts / totalSteps) * 100;
     return percentage;
   }
 
-  // More accurate calculation for first-attempt accuracy
-  double get actualFirstAttemptPercentage {
-    final steps = choreographer.itController.completedITSteps;
-    if (steps.isEmpty) return 0.0;
-
-    // For each step, determine if the chosen continuance was the first and only click
-    int correctFirstAttempts = 0;
-
-    for (int i = 0; i < steps.length; i++) {
-      final step = steps[i];
-
-      // Count all clicked continuances in this step
-      final clickedContinuances =
-          step.continuances.where((c) => c.wasClicked).toList();
-
-      // If there's exactly one clicked continuance and it's the chosen one,
-      // and it's correct (green or gold), this is a correct first attempt
-      if (step.chosen != null &&
-          clickedContinuances.length == 1 &&
-          clickedContinuances.first == step.continuances[step.chosen!] &&
-          (step.chosenContinuance!.level ==
-                  ChoreoConstants.levelThresholdForGreen ||
-              step.chosenContinuance!.gold)) {
-        correctFirstAttempts++;
-      }
-    }
-
-    final percentage = (correctFirstAttempts / steps.length) * 100;
-    return percentage;
-  }
-
-  // Use the accurate calculation for star rating
-  int get fixedStarRating {
-    final double percent = actualFirstAttemptPercentage;
-
-    if (percent >= 99.9) return 5;
+  int get starRating {
+    final double percent = _percentCorrectChoices;
+    if (percent == 100) return 5;
     if (percent >= 80) return 4;
     if (percent >= 60) return 3;
     if (percent >= 40) return 2;
@@ -119,33 +78,6 @@ class AlternativeTranslator {
     return 0;
   }
 
-  // Count new vocabulary words by comparing before and after
-  int countVocabularyWordsFromSteps() {
-    final constructListModel =
-        MatrixState.pangeaController.getAnalytics.constructListModel;
-    final allVocabConstructs =
-        constructListModel.constructList(type: ConstructTypeEnum.vocab);
-    final vocabCountAfter = allVocabConstructs.length;
-
-    final newVocabCount = max(0, vocabCountAfter - _vocabCountBefore);
-
-    return newVocabCount;
-  }
-
-  // Count new grammar constructs by comparing before and after
-  int countGrammarConstructsFromSteps() {
-    final constructListModel =
-        MatrixState.pangeaController.getAnalytics.constructListModel;
-    final allMorphConstructs =
-        constructListModel.constructList(type: ConstructTypeEnum.morph);
-    final grammarCountAfter = allMorphConstructs.length;
-
-    final newGrammarCount = max(0, grammarCountAfter - _grammarCountBefore);
-
-    return newGrammarCount;
-  }
-
-  // Set feedback based on performance
   Future<void> setTranslationFeedback() async {
     try {
       choreographer.startLoading();
@@ -153,11 +85,10 @@ class AlternativeTranslator {
       showTranslationFeedback = true;
       userTranslation = choreographer.currentText;
 
-      // Use the actual first attempt percentage for feedback
-      final double percentCorrect = actualFirstAttemptPercentage;
+      final double percentCorrect = _percentCorrectChoices;
 
       // Set feedback based on percentage
-      if (percentCorrect >= 99.9) {
+      if (percentCorrect == 100) {
         translationFeedbackKey = FeedbackKey.allCorrect;
       } else if (percentCorrect >= 80) {
         translationFeedbackKey = FeedbackKey.newWayAllGood;
@@ -187,7 +118,30 @@ class AlternativeTranslator {
     }
   }
 
-  // Get the appropriate feedback text
+  int countVocabularyWordsFromSteps() {
+    final constructListModel =
+        MatrixState.pangeaController.getAnalytics.constructListModel;
+    final allVocabConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.vocab);
+    final vocabCountAfter = allVocabConstructs.length;
+
+    final newVocabCount = max(0, vocabCountAfter - _vocabCountBefore);
+
+    return newVocabCount;
+  }
+
+  int countGrammarConstructsFromSteps() {
+    final constructListModel =
+        MatrixState.pangeaController.getAnalytics.constructListModel;
+    final allMorphConstructs =
+        constructListModel.constructList(type: ConstructTypeEnum.morph);
+    final grammarCountAfter = allMorphConstructs.length;
+
+    final newGrammarCount = max(0, grammarCountAfter - _grammarCountBefore);
+
+    return newGrammarCount;
+  }
+
   String getDefaultFeedback(BuildContext context) {
     final l10n = L10n.of(context);
     switch (translationFeedbackKey) {
@@ -196,11 +150,10 @@ class AlternativeTranslator {
       case FeedbackKey.newWayAllGood:
         return l10n.greatJobTranslation;
       case FeedbackKey.othersAreBetter:
-        final percent = actualFirstAttemptPercentage;
-        if (percent >= 60) {
+        if (_percentCorrectChoices >= 60) {
           return l10n.goodJobTranslation;
         }
-        if (percent >= 40) {
+        if (_percentCorrectChoices >= 40) {
           return l10n.makingProgress;
         }
         return l10n.keepPracticing;

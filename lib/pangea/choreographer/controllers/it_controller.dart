@@ -66,8 +66,8 @@ class ITController {
       _isOpen = true;
     });
     _itStartData = itStartData;
-
     choreographer.altTranslator.captureCountsBefore();
+
   }
 
   void closeIT() {
@@ -328,7 +328,7 @@ class ITController {
     // Create a new step that copies continuances but maintains wasClicked flags
     final itStep = ITStep(
       List.from(currentITStep!
-          .continuances), // Create a new list but maintain objects
+          .continuances,), // Create a new list but maintain objects
       chosen: chosenIndex,
     );
 
@@ -509,7 +509,7 @@ class CurrentITStep {
                 hasInfo: c.hasInfo,
                 gold: c.gold,
                 tokens: c.tokens,
-              ))
+              ),)
           .toList();
 
       if (goldCont != null) {
@@ -530,7 +530,7 @@ class CurrentITStep {
         continuances = [
           ...freshContinuances
               .where((c) =>
-                  c.text.toLowerCase() != freshGoldCont.text.toLowerCase())
+                  c.text.toLowerCase() != freshGoldCont.text.toLowerCase(),)
               .map((e) {
             // We only want one green choice and for that to be our gold
             if (e.level == ChoreoConstants.levelThresholdForGreen) {

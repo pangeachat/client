@@ -58,7 +58,7 @@ class _TranslationFeedbackState extends State<TranslationFeedback>
     grammarCount = widget.grammarCount;
 
     final altTranslator = widget.controller.choreographer.altTranslator;
-    starRating = altTranslator.fixedStarRating;
+    starRating = altTranslator.starRating;
 
     // Initialize animation controllers
     _starsController = AnimationController(
