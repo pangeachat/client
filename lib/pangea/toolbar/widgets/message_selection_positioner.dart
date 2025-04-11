@@ -152,7 +152,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       _mediaQuery!.size.height -
           offset.dy -
           renderBox.size.height -
-          _reactionsHeight,
+          _reactionsHeight +
+          ((AppConfig.messageModeInputBarHeight -
+                  AppConfig.tokenModeInputBarHeight) *
+              0.75),
     );
     setState(() {});
 
@@ -254,9 +257,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
   }
 
-  final double _inputBarSize = AppConfig.readingAssistanceInputBarHeight +
-      AppConfig.toolbarButtonsHeight +
-      20.0;
+  double get _inputBarSize =>
+      _readingAssistanceMode == ReadingAssistanceMode.messageMode ||
+              _readingAssistanceMode == ReadingAssistanceMode.transitionMode
+          ? AppConfig.messageModeInputBarHeight
+          : AppConfig.tokenModeInputBarHeight;
 
   bool get _showDetails =>
       (Matrix.of(context).store.getBool(SettingKeys.displayChatDetailsColumn) ??
@@ -558,6 +563,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                           controller: widget.chatController,
                           overlayController: widget.overlayController,
                           showToolbarButtons: showToolbarButtons,
+                          readingAssistanceMode: _readingAssistanceMode,
                         ),
                         SizedBox(height: _mediaQuery?.padding.bottom ?? 0),
                       ],
