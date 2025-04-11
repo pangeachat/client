@@ -25,7 +25,7 @@ class AlternativeTranslator {
 
   AlternativeTranslator(this.choreographer);
 
-   // Counts for tracking newly learned items
+  // Counts for tracking newly learned items
   int _vocabCountBefore = 0;
   int _grammarCountBefore = 0;
 
