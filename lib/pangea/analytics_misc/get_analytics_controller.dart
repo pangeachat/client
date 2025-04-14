@@ -398,6 +398,34 @@ class GetAnalyticsController extends BaseController {
     _cache.add(entry);
   }
 
+  Future<String> _saveConstructSummaryResponseToStateEvent(
+    final ConstructSummary summary,
+  ) async {
+    final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
+    final stateEventId = await _client.setRoomStateWithKey(
+      analyticsRoom!.id,
+      PangeaEventTypes.constructSummary,
+      '',
+      summary.toJson(),
+    );
+    return stateEventId;
+  }
+
+  Future<ConstructSummary?> getConstructSummaryFromStateEvent() async {
+    try {
+      final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
+      if (analyticsRoom == null) return null;
+      final state =
+          analyticsRoom.getState(PangeaEventTypes.constructSummary, '');
+      if (state == null) return null;
+      return ConstructSummary.fromJson(state.content);
+    } catch (e) {
+      debugPrint("Error getting construct summary room: $e");
+      ErrorHandler.logError(e: e, data: {'e': e});
+      return null;
+    }
+  }
+
   Future<GenerateConstructSummaryResult?>
       _generateLevelUpAnalyticsAndSaveToStateEvent(
     final int lowerLevel,
@@ -464,11 +492,8 @@ class GetAnalyticsController extends BaseController {
         );
         return null;
       }
-      stateEventId = await _client.setRoomStateWithKey(
-        analyticsRoom.id,
-        PangeaEventTypes.constructSummary,
-        '',
-        summary.toJson(),
+      stateEventId = await _saveConstructSummaryResponseToStateEvent(
+        summary,
       );
     } catch (e) {
       debugPrint("Error saving construct summary room: $e");
