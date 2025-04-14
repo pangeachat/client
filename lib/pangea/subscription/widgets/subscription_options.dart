@@ -1,12 +1,10 @@
 // Flutter imports:
 
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class SubscriptionOptions extends StatelessWidget {
   final PangeaController pangeaController;
@@ -29,7 +27,6 @@ class SubscriptionOptions extends StatelessWidget {
                   SubscriptionDetails(
                     price: 0,
                     id: "",
-                    periodType: SubscriptionPeriodType.trial,
                   ),
                   context,
                 ),

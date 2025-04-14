@@ -1,9 +1,6 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
-import 'package:jwt_decode/jwt_decode.dart';
-import 'package:matrix/matrix.dart' as matrix;
-
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -13,6 +10,9 @@ import 'package:fluffychat/pangea/learning_settings/constants/language_constants
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/user/models/profile_model.dart';
+import 'package:jwt_decode/jwt_decode.dart';
+import 'package:matrix/matrix.dart' as matrix;
+
 import '../models/user_model.dart';
 
 /// Controller that manages saving and reading of user/profile information
@@ -264,14 +264,25 @@ class UserController extends BaseController {
   }
 
   /// Returns a boolean value indicating whether the user is currently in the trial window.
-  bool inTrialWindow({int trialDays = 7}) {
-    final DateTime? createdAt = profile.userSettings.createdAt;
-    if (createdAt == null) {
-      return false;
+  bool inTrialWindow() {
+    final subs = _pangeaController
+        .subscriptionController.currentSubscriptionInfo?.history;
+    final available =
+        _pangeaController.subscriptionController.availableSubscriptionInfo;
+    if (subs != null && available != null) {
+      // For all previous subscriptions
+      for (final sub in subs.entries) {
+        // Check available subscriptions
+        for (final availableSubscription in available.availableSubscriptions) {
+          // If we had a trial, before, dont allow again
+          if (availableSubscription.id == sub.key &&
+              availableSubscription.isTrial) {
+            return false;
+          }
+        }
+      }
     }
-    return createdAt.isAfter(
-      DateTime.now().subtract(Duration(days: trialDays)),
-    );
+    return true;
   }
 
   /// Checks if the user's languages are set.

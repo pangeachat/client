@@ -1,13 +1,11 @@
 // Flutter imports:
 
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:intl/intl.dart';
-
 import 'package:fluffychat/pangea/subscription/pages/change_subscription.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:intl/intl.dart';
 
 class SettingsSubscriptionView extends StatelessWidget {
   final SubscriptionManagementController controller;
@@ -75,8 +73,7 @@ class SettingsSubscriptionView extends StatelessWidget {
                 ManagementNotAvailableWarning(
                   controller: controller,
                 ),
-              if (isSubscribed != null && !isSubscribed ||
-                  controller.isNewUserTrial)
+              if (isSubscribed != null && !isSubscribed)
                 ChangeSubscription(controller: controller),
               if (controller.showManagementOptions) ...managementButtons,
             ],
@@ -102,9 +99,11 @@ class ManagementNotAvailableWarning extends StatelessWidget {
 
     String getWarningText() {
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
-      if (controller.isNewUserTrial) {
+      if (currentSubscriptionInfo != null &&
+          currentSubscriptionInfo.currentSubscriptionId ==
+              "rc_promo_testentitlement_custom") {
         return L10n.of(context).trialExpiration(
-          formatter.format(currentSubscriptionInfo!.expirationDate!),
+          formatter.format(currentSubscriptionInfo.expirationDate!),
         );
       }
       if (controller.currentSubscriptionAvailable) {

@@ -1,10 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
-import 'package:go_router/go_router.dart';
-import 'package:url_launcher/url_launcher_string.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
@@ -13,6 +8,9 @@ import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class SubscriptionManagement extends StatefulWidget {
   const SubscriptionManagement({super.key});
@@ -79,9 +77,6 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
           .currentSubscriptionInfo?.currentSubscriptionIsPromotional ??
       false;
 
-  bool get isNewUserTrial =>
-      subscriptionController.currentSubscriptionInfo?.isNewUserTrial ?? false;
-
   String get currentSubscriptionTitle =>
       subscriptionController.currentSubscriptionInfo?.currentSubscription
           ?.displayName(context) ??
@@ -93,7 +88,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
       "";
 
   bool get showManagementOptions {
-    if (!currentSubscriptionAvailable || isNewUserTrial) {
+    if (!currentSubscriptionAvailable) {
       return false;
     }
     if (subscriptionController.currentSubscriptionInfo!.purchasedOnWeb) {
@@ -183,8 +178,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
 
   bool isCurrentSubscription(SubscriptionDetails subscription) =>
       subscriptionController.currentSubscriptionInfo?.currentSubscription ==
-          subscription ||
-      isNewUserTrial && subscription.isTrial;
+      subscription;
 
   @override
   Widget build(BuildContext context) => SettingsSubscriptionView(this);

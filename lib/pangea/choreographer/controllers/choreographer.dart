@@ -1,11 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/alternative_translator.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/igc_controller.dart';
@@ -29,6 +24,10 @@ import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import '../../../widgets/matrix.dart';
 import 'error_service.dart';
 import 'it_controller.dart';
@@ -57,7 +56,6 @@ class Choreographer {
   ChoreoMode choreoMode = ChoreoMode.igc;
 
   final StreamController stateStream = StreamController.broadcast();
-  StreamSubscription? _trialStream;
   StreamSubscription? _languageStream;
 
   Choreographer(this.pangeaController, this.chatController) {
@@ -72,9 +70,6 @@ class Choreographer {
     errorService = ErrorService(this);
     altTranslator = AlternativeTranslator(this);
     _textController.addListener(_onChangeListener);
-    _trialStream = pangeaController
-        .subscriptionController.trialActivationStream.stream
-        .listen((_) => _onChangeListener);
     _languageStream =
         pangeaController.userController.stateStream.listen((update) {
       if (update is Map<String, dynamic> &&
@@ -573,7 +568,6 @@ class Choreographer {
 
   dispose() {
     _textController.dispose();
-    _trialStream?.cancel();
     _languageStream?.cancel();
     stateStream.close();
     tts.dispose();

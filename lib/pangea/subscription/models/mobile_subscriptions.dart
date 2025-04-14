@@ -1,20 +1,19 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-
-import 'package:purchases_flutter/purchases_flutter.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/models/base_subscription_info.dart';
+import 'package:flutter/material.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
   MobileSubscriptionInfo({
     required super.userID,
     required super.availableSubscriptionInfo,
+    required super.history,
   });
 
   @override
@@ -94,9 +93,6 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
       );
     } else if (activeEntitlements.isEmpty) {
       debugPrint("User has no active entitlements");
-      if (!isNewUserTrial) {
-        resetSubscription();
-      }
       return;
     }
 
@@ -107,7 +103,7 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
         : null;
 
     if (activeEntitlement.periodType == PeriodType.trial) {
-      currentSubscription?.makeTrial();
+      // We dont use actual trials as it would require adding a CC on devices
     }
     if (currentSubscriptionId != null && currentSubscription == null) {
       Sentry.addBreadcrumb(
