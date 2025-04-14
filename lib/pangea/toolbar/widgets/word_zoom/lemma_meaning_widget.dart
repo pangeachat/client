@@ -221,6 +221,8 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
               onLongPress: () => _toggleEditMode(true),
               onDoubleTap: () => _toggleEditMode(true),
               child: RichText(
+                textAlign:
+                    widget.leading == null ? TextAlign.center : TextAlign.start,
                 text: TextSpan(
                   style: widget.style?.copyWith(
                     color: widget.controller?.toolbarMode ==

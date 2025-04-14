@@ -41,7 +41,8 @@ class PracticeSelection {
   List<PangeaToken> get tokens => _tokens;
 
   bool get eligibleForPractice =>
-      _tokens.any((t) => t.lemma.saveVocab) && langCode == _userL2;
+      _tokens.any((t) => t.lemma.saveVocab) &&
+      langCode.split("-")[0] == _userL2.split("-")[0];
 
   String get messageText => PangeaToken.reconstructText(tokens);
 
@@ -111,6 +112,16 @@ class PracticeSelection {
   // bool get canDoWordFocusListening =>
   //     _tokens.where((t) => t.canBeHeard).length > 4;
 
+  bool tokenIsIncludedInActivityOfAnyType(
+    PangeaToken t,
+  ) {
+    return _activityQueue.entries.any(
+      (perActivityQueue) => perActivityQueue.value.any(
+        (entry) => entry.tokens.contains(t),
+      ),
+    );
+  }
+
   List<PracticeTarget> buildActivity(ActivityTypeEnum activityType) {
     if (!eligibleForPractice) {
       return [];
@@ -118,10 +129,16 @@ class PracticeSelection {
 
     final List<PangeaToken> tokens =
         _tokens.where((t) => t.lemma.saveVocab).sorted(
-              (a, b) => b.activityPriorityScore(activityType, null).compareTo(
-                    a.activityPriorityScore(activityType, null),
-                  ),
-            );
+      (a, b) {
+        final bScore = b.activityPriorityScore(activityType, null) *
+            (tokenIsIncludedInActivityOfAnyType(b) ? 1.1 : 1);
+
+        final aScore = a.activityPriorityScore(activityType, null) *
+            (tokenIsIncludedInActivityOfAnyType(a) ? 1.1 : 1);
+
+        return bScore.compareTo(aScore);
+      },
+    );
 
     return [
       PracticeTarget(
@@ -149,17 +166,21 @@ class PracticeSelection {
         );
       },
     ).sorted(
-      (a, b) => b.tokens.first
-          .activityPriorityScore(
-            ActivityTypeEnum.morphId,
-            b.morphFeature!,
-          )
-          .compareTo(
-            a.tokens.first.activityPriorityScore(
+      (a, b) {
+        final bScore = b.tokens.first.activityPriorityScore(
+              ActivityTypeEnum.morphId,
+              b.morphFeature!,
+            ) *
+            (tokenIsIncludedInActivityOfAnyType(b.tokens.first) ? 1.1 : 1);
+
+        final aScore = a.tokens.first.activityPriorityScore(
               ActivityTypeEnum.morphId,
               a.morphFeature!,
-            ),
-          ),
+            ) *
+            (tokenIsIncludedInActivityOfAnyType(a.tokens.first) ? 1.1 : 1);
+
+        return bScore.compareTo(aScore);
+      },
     );
     //pick from the top 5, only including one per token
     final List<PracticeTarget> finalSelection = [];

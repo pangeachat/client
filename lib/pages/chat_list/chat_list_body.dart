@@ -430,6 +430,11 @@ class PublicRoomsHorizontalListState extends State<PublicRoomsHorizontalList> {
                       chunk: publicRooms[i],
                     ),
                   ),
+                  // #Pangea
+                  radius: BorderRadius.circular(
+                    AppConfig.borderRadius / 2,
+                  ),
+                  // Pangea#
                 ),
               ),
             ),
@@ -441,11 +446,17 @@ class _SearchItem extends StatelessWidget {
   final String title;
   final Uri? avatar;
   final void Function() onPressed;
+  // #Pangea
+  final BorderRadius? radius;
+  // Pangea#
 
   const _SearchItem({
     required this.title,
     this.avatar,
     required this.onPressed,
+    // #Pangea
+    this.radius,
+    // Pangea#
   });
 
   @override
@@ -460,6 +471,9 @@ class _SearchItem extends StatelessWidget {
               Avatar(
                 mxContent: avatar,
                 name: title,
+                // #Pangea
+                borderRadius: radius,
+                // Pangea#
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),

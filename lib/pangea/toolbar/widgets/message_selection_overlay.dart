@@ -142,16 +142,22 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           .messageDisplayRepresentation!.tokensToSave
           .map((e) => e.vocabConstructID)
           .toList();
+
       final List<Future<LemmaInfoResponse>> lemmaInfoFutures =
           messageVocabConstructIds
               .map((token) => token.getLemmaInfo())
               .toList();
-      final List<LemmaInfoResponse> lemmaInfos =
-          await Future.wait(lemmaInfoFutures);
-      messageLemmaInfos = Map.fromIterables(
-        messageVocabConstructIds,
-        lemmaInfos,
-      );
+
+      Future.wait(lemmaInfoFutures).then((resp) {
+        if (mounted) {
+          setState(
+            () => messageLemmaInfos = Map.fromIterables(
+              messageVocabConstructIds,
+              resp,
+            ),
+          );
+        }
+      });
     } catch (e, s) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
@@ -199,7 +205,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// Decides whether an _initialSelectedToken should be used
   /// for a first practice activity on the word meaning
-  void _initializeSelectedToken() {
+  Future<void> _initializeSelectedToken() async {
     // if there is no initial selected token, then we don't need to do anything
     if (widget._initialSelectedToken == null || practiceSelection == null) {
       return;
@@ -217,6 +223,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     _updateSelectedSpan(widget._initialSelectedToken!.text);
+
+    int retries = 0;
+    while (retries < 5 &&
+        selectedToken != null &&
+        !MatrixState.pAnyState.isOverlayOpen(
+          selectedToken!.text.uniqueKey,
+        )) {
+      await Future.delayed(const Duration(milliseconds: 100));
+      _showReadingAssistanceContent();
+      retries++;
+    }
   }
 
   /////////////////////////////////////
@@ -285,28 +302,38 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       _selectedSpan = selectedSpan;
     }
 
-    if (selectedToken != null) {
-      final entry = ReadingAssistanceContent(
-        key: wordZoomKey,
-        pangeaMessageEvent: pangeaMessageEvent!,
-        overlayController: this,
-      );
-      if (mounted) {
-        OverlayUtil.showPositionedCard(
-          context: context,
-          cardToShow: entry,
-          transformTargetId: selectedToken!.text.uniqueKey,
-          closePrevOverlay: false,
-          backDropToDismiss: false,
-          addBorder: false,
-          overlayKey: selectedToken!.text.uniqueKey,
-          maxHeight: AppConfig.toolbarMaxHeight,
-          maxWidth: AppConfig.toolbarMinWidth,
-        );
-      }
+    if (mounted) setState(() {});
+    Future.delayed(const Duration(milliseconds: 10), () {
+      _showReadingAssistanceContent();
+    });
+  }
+
+  void _showReadingAssistanceContent() {
+    if (selectedToken == null) return;
+    if (MatrixState.pAnyState.isOverlayOpen(
+      selectedToken!.text.uniqueKey,
+    )) {
+      return;
     }
 
-    if (mounted) setState(() {});
+    final entry = ReadingAssistanceContent(
+      key: wordZoomKey,
+      pangeaMessageEvent: pangeaMessageEvent!,
+      overlayController: this,
+    );
+    if (mounted) {
+      OverlayUtil.showPositionedCard(
+        context: context,
+        cardToShow: entry,
+        transformTargetId: selectedToken!.text.uniqueKey,
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        addBorder: false,
+        overlayKey: selectedToken!.text.uniqueKey,
+        maxHeight: AppConfig.toolbarMaxHeight,
+        maxWidth: AppConfig.toolbarMinWidth,
+      );
+    }
   }
 
   void updateToolbarMode(MessageMode mode) => setState(() {
@@ -423,8 +450,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           : null;
 
   bool get messageInUserL2 =>
-      pangeaMessageEvent?.messageDisplayLangCode ==
-      MatrixState.pangeaController.languageController.userL2?.langCode;
+      pangeaMessageEvent?.messageDisplayLangCode.split("-")[0] ==
+      MatrixState.pangeaController.languageController.userL2?.langCodeShort;
 
   PangeaToken? get selectedToken =>
       pangeaMessageEvent?.messageDisplayRepresentation?.tokens

@@ -59,8 +59,7 @@ class ActivityGeneratorView extends StatelessWidget {
             onEdit: (updatedActivity) =>
                 controller.onEdit(index, updatedActivity),
             onChange: controller.update,
-            avatarURL: controller.avatarURL,
-            initialFilename: controller.filename,
+            initialImageURL: controller.filename,
           );
         },
       );
