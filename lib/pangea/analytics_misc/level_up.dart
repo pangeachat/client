@@ -1,12 +1,14 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 import 'package:audioplayers/audioplayers.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class LevelUpUtil {
   static void showLevelUpDialog(
