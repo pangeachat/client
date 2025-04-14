@@ -77,6 +77,8 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
     }
   }
 
+  final DateTime _cacheClearDate = DateTime(2025, 4, 13);
+
   Future<void> _loadSvg() async {
     try {
       final cached = _getSvgFromCache();
@@ -117,16 +119,12 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
     if (cachedSvgEntry != null && cachedSvgEntry is Map<String, dynamic>) {
       final cachedSvg = cachedSvgEntry['svg'] as String?;
       final timestamp = cachedSvgEntry['timestamp'] as int?;
-      if (cachedSvg != null) {
+
+      if (cachedSvg != null &&
+          timestamp != null &&
+          DateTime.fromMillisecondsSinceEpoch(timestamp)
+              .isAfter(_cacheClearDate)) {
         return cachedSvg;
-      }
-      // if timestamp is younger than 1 day, return null
-      if (timestamp != null &&
-          DateTime.now()
-                  .difference(DateTime.fromMillisecondsSinceEpoch(timestamp))
-                  .inDays <
-              1) {
-        return null;
       }
     }
 
@@ -167,7 +165,10 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
     final cachedSvgEntry = CustomizedSvg._svgStorage.read(widget.svgUrl);
     if (cachedSvgEntry != null &&
         cachedSvgEntry is Map<String, dynamic> &&
-        cachedSvgEntry['svg'] is String) {
+        cachedSvgEntry['svg'] is String &&
+        cachedSvgEntry['timestamp'] is int &&
+        DateTime.fromMillisecondsSinceEpoch(cachedSvgEntry['timestamp'])
+            .isAfter(_cacheClearDate)) {
       return _modifySVG(cachedSvgEntry['svg'] as String);
     }
     return null;
