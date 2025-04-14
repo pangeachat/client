@@ -46,9 +46,17 @@ enum AppSettings<T> {
   audioRecordingNoiseSuppress<bool>('audioRecordingNoiseSuppress', true),
   audioRecordingBitRate<int>('audioRecordingBitRate', 64000),
   // #Pangea
-  // audioRecordingSamplingRate<int>('audioRecordingSamplingRate', 44100);
-  audioRecordingSamplingRate<int>('audioRecordingSamplingRate', 22050);
+  // audioRecordingSamplingRate<int>('audioRecordingSamplingRate', 44100),
+  audioRecordingSamplingRate<int>('audioRecordingSamplingRate', 22050),
   // Pangea#
+  pushNotificationsGatewayUrl<String>(
+    'pushNotificationsGatewayUrl',
+    'https://push.fluffychat.im/_matrix/push/v1/notify',
+  ),
+  pushNotificationsPusherFormat<String>(
+    'pushNotificationsPusherFormat',
+    'event_id_only',
+  );
 
   final String key;
   final T defaultValue;
@@ -58,6 +66,7 @@ enum AppSettings<T> {
 
 extension AppSettingsBoolExtension on AppSettings<bool> {
   bool getItem(SharedPreferences store) => store.getBool(key) ?? defaultValue;
+
   Future<void> setItem(SharedPreferences store, bool value) =>
       store.setBool(key, value);
 }
@@ -65,12 +74,14 @@ extension AppSettingsBoolExtension on AppSettings<bool> {
 extension AppSettingsStringExtension on AppSettings<String> {
   String getItem(SharedPreferences store) =>
       store.getString(key) ?? defaultValue;
+
   Future<void> setItem(SharedPreferences store, String value) =>
       store.setString(key, value);
 }
 
 extension AppSettingsIntExtension on AppSettings<int> {
   int getItem(SharedPreferences store) => store.getInt(key) ?? defaultValue;
+
   Future<void> setItem(SharedPreferences store, int value) =>
       store.setInt(key, value);
 }
@@ -78,6 +89,7 @@ extension AppSettingsIntExtension on AppSettings<int> {
 extension AppSettingsDoubleExtension on AppSettings<double> {
   double getItem(SharedPreferences store) =>
       store.getDouble(key) ?? defaultValue;
+
   Future<void> setItem(SharedPreferences store, double value) =>
       store.setDouble(key, value);
 }

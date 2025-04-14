@@ -11,6 +11,7 @@ abstract class AppConfig {
   // #Pangea
   static String get applicationName => _applicationName;
   static String? _applicationWelcomeMessage;
+
   static String? get applicationWelcomeMessage => _applicationWelcomeMessage;
   // #Pangea
   // static String _defaultHomeserver = 'matrix.org';
