@@ -78,16 +78,20 @@ class _TranslationFeedbackState extends State<TranslationFeedback>
 
     // Define animations
     _starsOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: _starsController, curve: Curves.easeInOut));
+      CurvedAnimation(parent: _starsController, curve: Curves.easeInOut),
+    );
 
     _starsScale = Tween<double>(begin: 0.5, end: 1.0).animate(
-        CurvedAnimation(parent: _starsController, curve: Curves.elasticOut));
+      CurvedAnimation(parent: _starsController, curve: Curves.elasticOut),
+    );
 
     _vocabOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: _vocabController, curve: Curves.easeInOut));
+      CurvedAnimation(parent: _vocabController, curve: Curves.easeInOut),
+    );
 
     _grammarOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(parent: _grammarController, curve: Curves.easeInOut));
+      CurvedAnimation(parent: _grammarController, curve: Curves.easeInOut),
+    );
 
     // Start animations with appropriate delays
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -267,13 +271,13 @@ class AnimatedCounter extends StatefulWidget {
   final bool startAnimation;
 
   const AnimatedCounter({
-    Key? key,
+    super.key,
     required this.endValue,
     this.style,
     this.duration = const Duration(milliseconds: 1500),
     this.prefix = "+ ",
     this.startAnimation = true,
-  }) : super(key: key);
+  });
 
   @override
   State<AnimatedCounter> createState() => _AnimatedCounterState();
@@ -296,10 +300,12 @@ class _AnimatedCounterState extends State<AnimatedCounter>
     _animation = IntTween(
       begin: 0,
       end: widget.endValue,
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeOutCubic,
-    ));
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeOutCubic,
+      ),
+    );
 
     // Only start animation if startAnimation is true
     if (widget.startAnimation) {
@@ -327,20 +333,24 @@ class _AnimatedCounterState extends State<AnimatedCounter>
         _animation = IntTween(
           begin: _animation.value,
           end: widget.endValue,
-        ).animate(CurvedAnimation(
-          parent: _controller,
-          curve: Curves.easeOutCubic,
-        ));
+        ).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: Curves.easeOutCubic,
+          ),
+        );
 
         _controller.forward(from: 0.0);
       } else if (widget.startAnimation) {
         _animation = IntTween(
           begin: 0,
           end: widget.endValue,
-        ).animate(CurvedAnimation(
-          parent: _controller,
-          curve: Curves.easeOutCubic,
-        ));
+        ).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: Curves.easeOutCubic,
+          ),
+        );
 
         _controller.forward();
         _hasAnimated = true;

@@ -66,7 +66,6 @@ class ITController {
       _isOpen = true;
     });
     _itStartData = itStartData;
-    choreographer.altTranslator.captureCountsBefore();
   }
 
   void closeIT() {
@@ -315,24 +314,10 @@ class ITController {
   //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
-
-    // Mark only the selected continuance as clicked
-    for (int i = 0; i < currentITStep!.continuances.length; i++) {
-      // Only set the selected one to clicked
-      if (i == chosenIndex) {
-        currentITStep!.continuances[i].wasClicked = true;
-      }
-    }
-
-    // Create a new step that copies continuances but maintains wasClicked flags
-    final itStep = ITStep(
-      List.from(
-        currentITStep!.continuances,
-      ), // Create a new list but maintain objects
-      chosen: chosenIndex,
-    );
+    final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
 
     completedITSteps.add(itStep);
+
     showChoiceFeedback = true;
 
     // Get a list of the choices that the user did not click
@@ -473,7 +458,6 @@ class CurrentITStep {
   late String? translationId;
   late int payloadId;
 
-  // This needs to be added to the CurrentITStep constructor in the CurrentITStep class
   CurrentITStep({
     required String sourceText,
     required String currentText,
@@ -495,57 +479,22 @@ class CurrentITStep {
         currentText: currentText,
         sourceText: sourceText,
       );
-
-      // CRITICAL: Create fresh continuances with wasClicked=false for all new options
-      final freshContinuances = responseModel.continuances
-          .map(
-            (c) => Continuance(
-              probability: c.probability,
-              level: c.level,
-              text: c.text,
-              description: c.description,
-              indexSavedByServer: c.indexSavedByServer,
-              wasClicked: false, // Always start with wasClicked=false
-              inDictionary: c.inDictionary,
-              hasInfo: c.hasInfo,
-              gold: c.gold,
-              tokens: c.tokens,
-            ),
-          )
-          .toList();
-
       if (goldCont != null) {
-        // Create a fresh gold continuance too
-        final freshGoldCont = Continuance(
-          probability: goldCont.probability,
-          level: goldCont.level,
-          text: goldCont.text,
-          description: goldCont.description,
-          indexSavedByServer: goldCont.indexSavedByServer,
-          wasClicked: false, // Always start with wasClicked=false
-          inDictionary: goldCont.inDictionary,
-          hasInfo: goldCont.hasInfo,
-          gold: true,
-          tokens: goldCont.tokens,
-        );
-
         continuances = [
-          ...freshContinuances
-              .where(
-            (c) => c.text.toLowerCase() != freshGoldCont.text.toLowerCase(),
-          )
+          ...responseModel.continuances
+              .where((c) => c.text.toLowerCase() != goldCont.text.toLowerCase())
               .map((e) {
-            // We only want one green choice and for that to be our gold
+            //we only want one green choice and for that to be our gold
             if (e.level == ChoreoConstants.levelThresholdForGreen) {
               e.level = ChoreoConstants.levelThresholdForYellow;
             }
             return e;
           }),
-          freshGoldCont,
+          goldCont,
         ];
         continuances.shuffle();
       } else {
-        continuances = freshContinuances;
+        continuances = responseModel.continuances;
       }
     }
   }
