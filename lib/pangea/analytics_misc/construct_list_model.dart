@@ -1,9 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
@@ -11,6 +8,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:flutter/material.dart';
 
 /// A wrapper around a list of [OneConstructUse]s, used to simplify
 /// the process of filtering / sorting / displaying the events.
@@ -46,6 +44,28 @@ class ConstructListModel {
         (total, match) => total + match.points,
       );
       if (totalPoints > 25) {
+        unlocked.add(matches.first.id);
+      }
+    }
+    return unlocked;
+  }
+
+  List<ConstructIdentifier> unlockedLemmas(
+    ConstructTypeEnum type, {
+    int threshold = 0,
+  }) {
+    final constructs = constructList(type: type);
+    final List<ConstructIdentifier> unlocked = [];
+    final constructsList =
+        type == ConstructTypeEnum.vocab ? vocabLemmasList : grammarLemmasList;
+
+    for (final lemma in constructsList) {
+      final matches = constructs.where((m) => m.lemma == lemma);
+      final totalPoints = matches.fold<int>(
+        0,
+        (total, match) => total + match.points,
+      );
+      if (totalPoints > threshold) {
         unlocked.add(matches.first.id);
       }
     }
