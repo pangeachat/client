@@ -3206,6 +3206,7 @@
   "recordAVideo": "Record a video",
   "optionalMessage": "(Optional) message...",
   "notSupportedOnThisDevice": "Not supported on this device",
+  "enterNewChat": "Enter new chat",
   "accountInformation": "Account information",
   "addGroupDescription": "Add a chat description",
   "addNewFriend": "Add new friend",
