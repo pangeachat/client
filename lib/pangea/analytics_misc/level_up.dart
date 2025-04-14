@@ -5,14 +5,12 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 
 class LevelUpUtil {
   static void showLevelUpDialog(
     int level,
     String? analyticsRoomId,
-    String? summaryStateEventId,
     ConstructSummary? constructSummary,
     BuildContext context,
   ) {
@@ -25,6 +23,7 @@ class LevelUpUtil {
     final OverlayEntry overlayEntry = OverlayEntry(
       builder: (context) => LevelUpBanner(
         level: level,
+        constructSummary: constructSummary,
       ),
     );
 
@@ -39,9 +38,11 @@ class LevelUpUtil {
 
 class LevelUpBanner extends StatefulWidget {
   final int level;
+  final ConstructSummary? constructSummary;
 
   const LevelUpBanner({
     required this.level,
+    this.constructSummary,
     super.key,
   });
 
@@ -54,27 +55,6 @@ class _LevelUpBannerState extends State<LevelUpBanner>
   late AnimationController _controller;
   late Animation<Offset> _slideAnimation;
   bool _showDetails = false; // Track whether the details banner is visible
-  String? _constructSummaryText;
-
-  Future<void> _fetchConstructSummary() async {
-    try {
-      // Pass the required PangeaController instance to the constructor
-      // final controller = GetAnalyticsController(pangeaController);
-      final constructSummary = await MatrixState.pangeaController.getAnalytics
-          .getConstructSummaryFromStateEvent();
-      debugPrint(
-        "Construct Summary: ${constructSummary?.textSummary}",
-      ); // Debug print
-      if (constructSummary != null) {
-        setState(() {
-          _constructSummaryText =
-              constructSummary.textSummary; // Use the correct property
-        });
-      }
-    } catch (e) {
-      debugPrint("Error fetching construct summary: $e");
-    }
-  }
 
   @override
   void initState() {
@@ -93,8 +73,6 @@ class _LevelUpBannerState extends State<LevelUpBanner>
         curve: Curves.easeOut,
       ),
     );
-
-    _fetchConstructSummary();
 
     _controller.forward();
   }
@@ -394,28 +372,25 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                 height: 24,
                               ), // Add spacing between bot and text box
                               // Text Box
-                              Container(
-                                padding: const EdgeInsets.all(12),
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .secondaryContainer,
-                                  borderRadius: BorderRadius.circular(8),
+                              if (widget.constructSummary?.textSummary != null)
+                                Container(
+                                  padding: const EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondaryContainer,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    widget.constructSummary!.textSummary,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
-                                child: Text(
-                                  (_constructSummaryText != null
-                                      ? Text(
-                                          _constructSummaryText!,
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        )
-                                      : const SizedBox.shrink()) as String,
-                                ),
-                              ),
                               const SizedBox(
                                 height: 24,
                               ), // Add spacing between text box and button

@@ -206,8 +206,7 @@ class GetAnalyticsController extends BaseController {
     setState({
       'level_up': constructListModel.level,
       'analytics_room_id': _client.analyticsRoomLocal(_l2!)?.id,
-      "construct_summary_state_event_id": result?.stateEventId,
-      "construct_summary": result?.summary,
+      "construct_summary": result,
     });
   }
 
@@ -426,8 +425,7 @@ class GetAnalyticsController extends BaseController {
     }
   }
 
-  Future<GenerateConstructSummaryResult?>
-      _generateLevelUpAnalyticsAndSaveToStateEvent(
+  Future<ConstructSummary?> _generateLevelUpAnalyticsAndSaveToStateEvent(
     final int lowerLevel,
     final int upperLevel,
   ) async {
@@ -483,7 +481,6 @@ class GetAnalyticsController extends BaseController {
       ErrorHandler.logError(e: e, data: {'e': e});
       return null;
     }
-    String stateEventId;
     try {
       final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
       if (analyticsRoom == null) {
@@ -492,7 +489,9 @@ class GetAnalyticsController extends BaseController {
         );
         return null;
       }
-      stateEventId = await _saveConstructSummaryResponseToStateEvent(
+
+      // don't await this, just return the original response
+      _saveConstructSummaryResponseToStateEvent(
         summary,
       );
     } catch (e) {
@@ -500,10 +499,7 @@ class GetAnalyticsController extends BaseController {
       ErrorHandler.logError(e: e, data: {'e': e});
       return null;
     }
-    return GenerateConstructSummaryResult(
-      stateEventId: stateEventId,
-      summary: summary,
-    );
+    return summary;
   }
 }
 
