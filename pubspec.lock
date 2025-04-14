@@ -948,10 +948,11 @@ packages:
   flutter_typeahead:
     dependency: "direct main"
     description:
-      name: flutter_typeahead
-      sha256: d64712c65db240b1057559b952398ebb6e498077baeebf9b0731dade62438a6d
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: main
+      resolved-ref: "3e209e67aa6e780cba61ced06cf49d2babbbcaa4"
+      url: "https://github.com/famedly/flutter_typeahead.git"
+    source: git
     version: "5.2.0"
   flutter_web_auth_2:
     dependency: "direct main"
