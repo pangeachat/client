@@ -90,7 +90,7 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
         return;
       }
 
-      final modifiedSvg = await _getModifiedSvg();
+      final modifiedSvg = await _fetchSvg();
       setState(() {
         _svgContent = modifiedSvg;
         _isLoading = false;
@@ -106,28 +106,7 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
     }
   }
 
-  Future<String?> _getModifiedSvg() async {
-    final svgContent = await _fetchSvg();
-    if (svgContent == null) {
-      return null;
-    }
-    return _modifySVG(svgContent);
-  }
-
   Future<String?> _fetchSvg() async {
-    final cachedSvgEntry = CustomizedSvg._svgStorage.read(widget.svgUrl);
-    if (cachedSvgEntry != null && cachedSvgEntry is Map<String, dynamic>) {
-      final cachedSvg = cachedSvgEntry['svg'] as String?;
-      final timestamp = cachedSvgEntry['timestamp'] as int?;
-
-      if (cachedSvg != null &&
-          timestamp != null &&
-          DateTime.fromMillisecondsSinceEpoch(timestamp)
-              .isAfter(_cacheClearDate)) {
-        return cachedSvg;
-      }
-    }
-
     final response = await http.get(Uri.parse(widget.svgUrl));
     if (response.statusCode != 200) {
       final e = Exception('Failed to load SVG: ${response.statusCode}');
@@ -150,7 +129,7 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
       'timestamp': DateTime.now().millisecondsSinceEpoch,
     });
 
-    return svgContent;
+    return _modifySVG(svgContent);
   }
 
   String _modifySVG(String svgContent) {
