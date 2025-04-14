@@ -70,6 +70,7 @@ class HtmlMessage extends StatelessWidget {
   static const Set<String> allowedHtmlTags = {
     'font',
     'del',
+    's',
     'h1',
     'h2',
     'h3',
@@ -619,6 +620,7 @@ class HtmlMessage extends StatelessWidget {
             'strong' => const TextStyle(fontWeight: FontWeight.bold),
             'em' || 'i' => const TextStyle(fontStyle: FontStyle.italic),
             'del' ||
+            's' ||
             'strikethrough' =>
               const TextStyle(decoration: TextDecoration.lineThrough),
             'u' => const TextStyle(decoration: TextDecoration.underline),
