@@ -893,8 +893,12 @@ class ChatController extends State<ChatPageWithRoom>
     });
   }
 
-  void sendFileAction() async {
-    final files = await selectFiles(context, allowMultiple: true);
+  void sendFileAction({FileSelectorType type = FileSelectorType.any}) async {
+    final files = await selectFiles(
+      context,
+      allowMultiple: true,
+      type: type,
+    );
     if (files.isEmpty) return;
     await showAdaptiveDialog(
       context: context,
@@ -912,27 +916,6 @@ class ChatController extends State<ChatPageWithRoom>
       context: context,
       builder: (c) => SendFileDialog(
         files: [XFile.fromData(image)],
-        room: room,
-        outerContext: context,
-      ),
-    );
-  }
-
-  void sendImageAction() async {
-    final files = await selectFiles(
-      context,
-      allowMultiple: true,
-      // #Pangea
-      // type: FileSelectorType.images,
-      type: FileSelectorType.media,
-      // Pangea#
-    );
-    if (files.isEmpty) return;
-
-    await showAdaptiveDialog(
-      context: context,
-      builder: (c) => SendFileDialog(
-        files: files,
         room: room,
         outerContext: context,
       ),
@@ -1638,7 +1621,10 @@ class ChatController extends State<ChatPageWithRoom>
       sendFileAction();
     }
     if (choice == 'image') {
-      sendImageAction();
+      sendFileAction(type: FileSelectorType.images);
+    }
+    if (choice == 'video') {
+      sendFileAction(type: FileSelectorType.videos);
     }
     if (choice == 'camera') {
       openCameraAction();

@@ -3333,5 +3333,13 @@
   "crossVerifiedDevicesIfEnabled": "交叉验证设备（如启用）",
   "@crossVerifiedDevicesIfEnabled": {},
   "verifiedDevicesOnly": "仅已验证设备",
-  "@verifiedDevicesOnly": {}
+  "@verifiedDevicesOnly": {},
+  "optionalMessage": "（可选）消息…",
+  "@optionalMessage": {},
+  "takeAPhoto": "拍照",
+  "@takeAPhoto": {},
+  "recordAVideo": "录像",
+  "@recordAVideo": {},
+  "notSupportedOnThisDevice": "此设备上不受支持",
+  "@notSupportedOnThisDevice": {}
 }
