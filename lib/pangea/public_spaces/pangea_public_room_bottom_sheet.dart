@@ -7,9 +7,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:fluffychat/widgets/mxc_image.dart';
 
 class PangeaPublicRoomBottomSheet extends StatefulWidget {
   final String? roomAlias;
@@ -171,14 +171,11 @@ class PangeaPublicRoomBottomSheetState
                   Row(
                     spacing: 16.0,
                     children: [
-                      ClipRRect(
+                      Avatar(
+                        mxContent: chunk?.avatarUrl,
+                        name: chunk?.name,
+                        size: 160.0,
                         borderRadius: BorderRadius.circular(24.0),
-                        child: MxcImage(
-                          uri: chunk?.avatarUrl,
-                          width: 160.0,
-                          height: 160.0,
-                          fit: BoxFit.cover,
-                        ),
                       ),
                       Expanded(
                         child: SizedBox(
@@ -188,6 +185,7 @@ class PangeaPublicRoomBottomSheetState
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Row(
+                                spacing: 8.0,
                                 children: [
                                   const Icon(Icons.group),
                                   Text(
@@ -229,12 +227,21 @@ class PangeaPublicRoomBottomSheetState
                                   Expanded(
                                     child: TextField(
                                       controller: _codeController,
-                                      decoration: const InputDecoration(
+                                      decoration: InputDecoration(
                                         border: InputBorder.none,
                                         focusedBorder: InputBorder.none,
                                         enabledBorder: InputBorder.none,
                                         errorBorder: InputBorder.none,
                                         disabledBorder: InputBorder.none,
+                                        hintText:
+                                            L10n.of(context).enterSpaceCode,
+                                        contentPadding:
+                                            const EdgeInsets.symmetric(
+                                          horizontal: 16.0,
+                                        ),
+                                        hintStyle: TextStyle(
+                                          color: Theme.of(context).hintColor,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -294,12 +301,12 @@ class PangeaPublicRoomBottomSheetState
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     const Icon(
-                                      Icons.copy_outlined,
+                                      Icons.share_outlined,
                                       size: 20.0,
                                     ),
                                     Flexible(
                                       child: Text(
-                                        roomAlias,
+                                        L10n.of(context).shareSpaceLink,
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
@@ -336,12 +343,12 @@ class PangeaPublicRoomBottomSheetState
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     const Icon(
-                                      Icons.copy_outlined,
+                                      Icons.share_outlined,
                                       size: 20.0,
                                     ),
                                     Flexible(
                                       child: Text(
-                                        roomAlias,
+                                        L10n.of(context).shareSpaceLink,
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                     ),
