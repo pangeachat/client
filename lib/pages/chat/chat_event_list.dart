@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix_api_lite/model/event_types.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -9,18 +9,17 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message.dart';
 import 'package:fluffychat/pages/chat/seen_by_row.dart';
 import 'package:fluffychat/pages/chat/typing_indicators.dart';
-import 'package:fluffychat/pages/user_bottom_sheet/user_bottom_sheet.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_message.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_show_popup.dart';
 import 'package:fluffychat/utils/account_config.dart';
-import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class ChatEventList extends StatelessWidget {
   final ChatController controller;
+
   const ChatEventList({
     super.key,
     required this.controller,
@@ -206,15 +205,8 @@ class ChatEventList extends StatelessWidget {
                           onInfoTab: (_) => {},
                           // onInfoTab: controller.showEventInfo,
                           // Pangea#
-                          onAvatarTab: (Event event) => showAdaptiveBottomSheet(
-                            context: context,
-                            builder: (c) => UserBottomSheet(
-                              user: event.senderFromMemoryOrFallback,
-                              outerContext: context,
-                              onMention: () => controller.sendController.text +=
-                                  '${event.senderFromMemoryOrFallback.mention} ',
-                            ),
-                          ),
+                          onMention: () => controller.sendController.text +=
+                              '${event.senderFromMemoryOrFallback.mention} ',
                           highlightMarker:
                               controller.scrollToEventIdMarker == event.eventId,
                           // #Pangea

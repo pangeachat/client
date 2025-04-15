@@ -37,6 +37,8 @@ class ChatDetailsView extends StatelessWidget {
       );
     }
 
+    final directChatMatrixID = room.directChatMatrixID;
+
     return StreamBuilder(
       stream: room.client.onRoomState.stream
           .where((update) => update.roomId == room.id),
@@ -57,7 +59,7 @@ class ChatDetailsView extends StatelessWidget {
                 const Center(child: BackButton()),
             elevation: theme.appBarTheme.elevation,
             actions: <Widget>[
-              if (room.canonicalAlias.isNotEmpty) ...[
+              if (room.canonicalAlias.isNotEmpty)
                 IconButton(
                   tooltip: L10n.of(context).share,
                   icon: const Icon(Icons.qr_code_rounded),
@@ -65,8 +67,16 @@ class ChatDetailsView extends StatelessWidget {
                     context,
                     room.canonicalAlias,
                   ),
+                )
+              else if (directChatMatrixID != null)
+                IconButton(
+                  tooltip: L10n.of(context).share,
+                  icon: const Icon(Icons.qr_code_rounded),
+                  onPressed: () => showQrCodeViewer(
+                    context,
+                    directChatMatrixID,
+                  ),
                 ),
-              ],
               if (controller.widget.embeddedCloseButton == null)
                 ChatSettingsPopupMenu(room, false),
             ],
