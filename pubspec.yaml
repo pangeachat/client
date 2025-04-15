@@ -108,7 +108,7 @@ dependencies:
   webrtc_interface: ^1.0.13
   # #Pangea
   android_intent_plus: ^5.2.0
-  app_settings: ^4.1.0
+  app_settings: ^6.1.1
   audioplayers: ^6.1.0
   cached_network_image: ^3.4.1
   characters: ^1.2.0
@@ -132,7 +132,8 @@ dependencies:
   sentry_flutter: ^8.13.2
   shimmer: ^3.0.0
   rive: 0.11.11
-  text_to_speech: ^0.2.3
+  text_to_speech:
+    git: https://github.com/pangeachat/text_to_speech.git
   flutter_tts: ^4.2.0
   # Pangea#
 
