@@ -59,6 +59,7 @@ class Choreographer {
   final StreamController stateStream = StreamController.broadcast();
   StreamSubscription? _trialStream;
   StreamSubscription? _languageStream;
+  late AssistanceState _currentAssistanceState;
 
   Choreographer(this.pangeaController, this.chatController) {
     _initialize();
@@ -86,6 +87,7 @@ class Choreographer {
       // for changes like enabling autocorrect
       setState();
     });
+    _currentAssistanceState = assistanceState;
     clear();
   }
 
@@ -248,6 +250,12 @@ class Choreographer {
 
   /// Handles any changes to the text input
   _onChangeListener() {
+    // Rebuild the IGC button if the state has changed.
+    // This accounts for user typing after initial IGC has completed
+    if (_currentAssistanceState != assistanceState) {
+      setState();
+    }
+
     if (_noChange) {
       return;
     }
@@ -662,6 +670,7 @@ class Choreographer {
     if (!stateStream.isClosed) {
       stateStream.add(0);
     }
+    _currentAssistanceState = assistanceState;
   }
 
   LayerLinkAndKey get itBarLinkAndKey =>
