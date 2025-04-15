@@ -16,22 +16,27 @@ Future<int?> showPermissionChooser(
     context: context,
     builder: (context) => AlertDialog.adaptive(
       title: Text(L10n.of(context).chatPermissions),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 12.0,
-        children: [
-          Text(L10n.of(context).setPermissionsLevelDescription),
-          ValueListenableBuilder(
-            valueListenable: error,
-            builder: (context, errorText, _) => DialogTextField(
-              controller: controller,
-              hintText: currentLevel.toString(),
-              keyboardType: TextInputType.number,
-              labelText: L10n.of(context).custom,
-              errorText: errorText,
-            ),
+      content: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 256),
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 12.0,
+            children: [
+              Text(L10n.of(context).setPermissionsLevelDescription),
+              ValueListenableBuilder(
+                valueListenable: error,
+                builder: (context, errorText, _) => DialogTextField(
+                  controller: controller,
+                  hintText: currentLevel.toString(),
+                  keyboardType: TextInputType.number,
+                  labelText: L10n.of(context).custom,
+                  errorText: errorText,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
       actions: [
         AdaptiveDialogAction(

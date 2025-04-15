@@ -33,71 +33,69 @@ class ParticipantListItem extends StatelessWidget {
 
     return Opacity(
       opacity: user.membership == Membership.join ? 1 : 0.5,
-      child: MemberActionsPopupMenuButton(
-        user: user,
-        child: ListTile(
-          title: Row(
-            children: <Widget>[
-              Expanded(
+      child: ListTile(
+        onTap: () => showMemberActionsPopupMenu(context: context, user: user),
+        title: Row(
+          children: <Widget>[
+            Expanded(
+              child: Text(
+                user.calcDisplayname(),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            if (permissionBatch.isNotEmpty)
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 6,
+                ),
+                decoration: BoxDecoration(
+                  color: user.powerLevel >= 100
+                      ? theme.colorScheme.tertiary
+                      : theme.colorScheme.tertiaryContainer,
+                  borderRadius: BorderRadius.circular(
+                    AppConfig.borderRadius,
+                  ),
+                ),
                 child: Text(
-                  user.calcDisplayname(),
-                  overflow: TextOverflow.ellipsis,
+                  permissionBatch,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    color: user.powerLevel >= 100
+                        ? theme.colorScheme.onTertiary
+                        : theme.colorScheme.onTertiaryContainer,
+                  ),
                 ),
               ),
-              // #Pangea
-              LevelDisplayName(userId: user.id),
-              // Pangea#
-              if (permissionBatch.isNotEmpty)
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 6,
-                  ),
-                  decoration: BoxDecoration(
-                    color: user.powerLevel >= 100
-                        ? theme.colorScheme.tertiary
-                        : theme.colorScheme.tertiaryContainer,
-                    borderRadius: BorderRadius.circular(
-                      AppConfig.borderRadius,
+            // #Pangea
+            LevelDisplayName(userId: user.id),
+            // Pangea#
+            membershipBatch == null
+                ? const SizedBox.shrink()
+                : Container(
+                    padding: const EdgeInsets.all(4),
+                    margin: const EdgeInsets.symmetric(horizontal: 8),
+                    decoration: BoxDecoration(
+                      color: theme.secondaryHeaderColor,
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                  ),
-                  child: Text(
-                    permissionBatch,
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: user.powerLevel >= 100
-                          ? theme.colorScheme.onTertiary
-                          : theme.colorScheme.onTertiaryContainer,
-                    ),
-                  ),
-                ),
-              membershipBatch == null
-                  ? const SizedBox.shrink()
-                  : Container(
-                      padding: const EdgeInsets.all(4),
-                      margin: const EdgeInsets.symmetric(horizontal: 8),
-                      decoration: BoxDecoration(
-                        color: theme.secondaryHeaderColor,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Center(
-                        child: Text(
-                          membershipBatch,
-                          style: theme.textTheme.labelSmall,
-                        ),
+                    child: Center(
+                      child: Text(
+                        membershipBatch,
+                        style: theme.textTheme.labelSmall,
                       ),
                     ),
-            ],
-          ),
-          subtitle: Text(
-            user.id,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          leading: Avatar(
-            mxContent: user.avatarUrl,
-            name: user.calcDisplayname(),
-            presenceUserId: user.stateKey,
-          ),
+                  ),
+          ],
+        ),
+        subtitle: Text(
+          user.id,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+        leading: Avatar(
+          mxContent: user.avatarUrl,
+          name: user.calcDisplayname(),
+          presenceUserId: user.stateKey,
         ),
       ),
     );

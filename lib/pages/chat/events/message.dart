@@ -308,16 +308,17 @@ class Message extends StatelessWidget {
                             builder: (context, snapshot) {
                               final user = snapshot.data ??
                                   event.senderFromMemoryOrFallback;
-                              return MemberActionsPopupMenuButton(
-                                onMention: onMention,
-                                user: user,
-                                child: Avatar(
-                                  mxContent: user.avatarUrl,
-                                  name: user.calcDisplayname(),
-                                  presenceUserId: user.stateKey,
-                                  presenceBackgroundColor:
-                                      wallpaperMode ? Colors.transparent : null,
+                              return Avatar(
+                                mxContent: user.avatarUrl,
+                                name: user.calcDisplayname(),
+                                onTap: () => showMemberActionsPopupMenu(
+                                  context: context,
+                                  user: user,
+                                  onMention: onMention,
                                 ),
+                                presenceUserId: user.stateKey,
+                                presenceBackgroundColor:
+                                    wallpaperMode ? Colors.transparent : null,
                               );
                             },
                           ),
