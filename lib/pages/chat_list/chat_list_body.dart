@@ -11,11 +11,11 @@ import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/dummy_chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
 import 'package:fluffychat/pages/chat_list/space_view.dart';
-import 'package:fluffychat/pages/user_bottom_sheet/user_bottom_sheet.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/pangea_chat_list_header.dart';
 import 'package:fluffychat/pangea/public_spaces/pangea_public_room_bottom_sheet.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
@@ -132,12 +132,9 @@ class ChatListViewBody extends StatelessWidget {
                         //                   .results[i].userId.localpart ??
                         //               L10n.of(context).unknownDevice,
                         //       avatar: userSearchResult.results[i].avatarUrl,
-                        //       onPressed: () => showAdaptiveBottomSheet(
+                        //       onPressed: () => UserDialog.show(
                         //         context: context,
-                        //         builder: (c) => UserBottomSheet(
-                        //           profile: userSearchResult.results[i],
-                        //           outerContext: context,
-                        //         ),
+                        //         profile: userSearchResult.results[i],
                         //       ),
                         //     ),
                         //   ),
@@ -528,12 +525,9 @@ class UserSearchResultsListState extends State<UserSearchResultsList> {
               widget.userSearchResult.results[i].userId.localpart ??
               L10n.of(context).unknownDevice,
           avatar: widget.userSearchResult.results[i].avatarUrl,
-          onPressed: () => showAdaptiveBottomSheet(
+          onPressed: () => UserDialog.show(
             context: context,
-            builder: (c) => UserBottomSheet(
-              profile: widget.userSearchResult.results[i],
-              outerContext: context,
-            ),
+            profile: widget.userSearchResult.results[i],
           ),
         ),
       ),

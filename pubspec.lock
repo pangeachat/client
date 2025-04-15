@@ -2829,10 +2829,10 @@ packages:
     dependency: "direct main"
     description:
       name: webrtc_interface
-      sha256: "10fc6dc0ac16f909f5e434c18902415211d759313c87261f1e4ec5b4f6a04c26"
+      sha256: e92afec11152a9ccb5c9f35482754edd99696e886ab6acaf90c06dd2d09f09eb
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.1"
+    version: "1.2.2+hotfix.1"
   win32:
     dependency: "direct overridden"
     description:
