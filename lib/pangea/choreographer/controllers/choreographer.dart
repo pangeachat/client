@@ -453,6 +453,33 @@ class Choreographer {
     }
   }
 
+  void acceptNormalizationMatches() {
+    for (int i = 0; i < igc.igcTextData!.matches.length; i++) {
+      final isNormalizationError =
+          igc.spanDataController.isNormalizationError(i);
+
+      if (!isNormalizationError) continue;
+      final match = igc.igcTextData!.matches[i];
+
+      choreoRecord.addRecord(
+        _textController.text,
+        match: match.copyWith..status = PangeaMatchStatus.automatic,
+      );
+
+      igc.igcTextData!.acceptReplacement(
+        i,
+        match.match.choices!.indexWhere(
+          (c) => c.isBestCorrection,
+        ),
+      );
+
+      _textController.setSystemText(
+        igc.igcTextData!.originalInput,
+        EditType.igc,
+      );
+    }
+  }
+
   void onIgnoreMatch({required int cursorOffset}) {
     try {
       if (igc.igcTextData == null) {
