@@ -74,8 +74,8 @@ class PracticeTarget {
   Map<String, dynamic> toJson() {
     return {
       'tokens': tokens.map((e) => e.toJson()).toList(),
-      'activityType': activityType.index,
-      'morphFeature': morphFeature?.index,
+      'activityType': activityType.name,
+      'morphFeature': morphFeature?.name,
       'userL2': userL2,
     };
   }

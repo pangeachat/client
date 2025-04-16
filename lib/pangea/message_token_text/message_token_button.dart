@@ -11,6 +11,9 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/message_token_text/dotted_border_painter.dart';
+import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
+import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
+import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_target.dart';
@@ -182,6 +185,10 @@ class MessageTokenButtonState extends State<MessageTokenButton>
   }
 
   bool get isActivityCompleteForToken {
+    if (activity == null) {
+      return false;
+    }
+
     if (activity?.activityType == ActivityTypeEnum.morphId) {
       return (activity?.record.completeResponses ?? 0) > 0;
     }
@@ -209,6 +216,31 @@ class MessageTokenButtonState extends State<MessageTokenButton>
       if (MessageMode.wordEmoji == widget.overlayController?.toolbarMode) {
         return SizedBox(height: height, child: emojiView);
       }
+      if (MessageMode.wordMorph == widget.overlayController?.toolbarMode &&
+          activity?.morphFeature != null) {
+        final morphFeature = activity!.morphFeature!;
+        final morphTag = widget.token.morphIdByFeature(morphFeature);
+        if (morphTag != null) {
+          return Tooltip(
+            message: getGrammarCopy(
+              category: morphFeature.toShortString(),
+              lemma: morphTag.lemma,
+              context: context,
+            ),
+            child: SizedBox(
+              width: widget.width,
+              height: height,
+              child: Center(
+                child: MorphIcon(
+                  morphFeature: morphFeature,
+                  morphTag: morphTag.lemma,
+                  size: const Size(24.0, 24.0),
+                ),
+              ),
+            ),
+          );
+        }
+      }
       return SizedBox(height: height);
     }
 
@@ -216,6 +248,7 @@ class MessageTokenButtonState extends State<MessageTokenButton>
       if (activity?.morphFeature == null) {
         return SizedBox(height: height);
       }
+
       final bool isSelected =
           (widget.overlayController?.selectedMorph?.token == widget.token &&
                   widget.overlayController?.selectedMorph?.morph ==
