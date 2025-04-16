@@ -1788,9 +1788,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$error405Desc() {
       return "Vui l\xf2ng thi\u1ebft l\u1eadp ng\xf4n ng\u1eef c\u1ee7a b\u1ea1n trong Menu ch\xednh > C\xe0i \u0111\u1eb7t H\u1ecdc t\u1eadp.";
     },
-    get$iAgreeToThe() {
-      return "T\xf4i \u0111\u1ed3ng \xfd v\u1edbi ";
-    },
     get$termsAndConditions() {
       return "\u0110i\u1ec1u kho\u1ea3n v\xe0 \u0110i\u1ec1u ki\u1ec7n";
     },
@@ -3903,9 +3900,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$letsStart() {
       return "B\u1eaft \u0111\u1ea7u";
     },
-    get$pleaseAgreeToTOS() {
-      return "Vui l\xf2ng \u0111\u1ed3ng \xfd v\u1edbi \u0110i\u1ec1u kho\u1ea3n v\xe0 \u0110i\u1ec1u ki\u1ec7n";
-    },
     get$pleaseEnterEmail() {
       return "Vui l\xf2ng nh\u1eadp \u0111\u1ecba ch\u1ec9 email h\u1ee3p l\u1ec7.";
     },
@@ -4356,6 +4350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$shareSpaceLink() {
       return "Share link to space";
     },
+    get$byUsingPangeaChat() {
+      return "By using Pangea Chat, I agree to the ";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4368,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "2x/FS1QkzP16NFDopZx7BFbcTg4=");
+})($__dart_deferred_initializers__, "ZDphBI1QofVlZIU7GKrg4uL7Il0=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map

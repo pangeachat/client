@@ -1801,9 +1801,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$error405Desc() {
       return "Please set your languages in Main Menu > Learning Settings.";
     },
-    get$iAgreeToThe() {
-      return "I agree to the ";
-    },
     get$termsAndConditions() {
       return "Terms and Conditions";
     },
@@ -3916,9 +3913,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$letsStart() {
       return "Let's start";
     },
-    get$pleaseAgreeToTOS() {
-      return "Please agree to the Terms and Conditions";
-    },
     get$pleaseEnterEmail() {
       return "Please enter a valid email address.";
     },
@@ -4368,6 +4362,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareSpaceLink() {
       return "Share link to space";
+    },
+    get$byUsingPangeaChat() {
+      return "By using Pangea Chat, I agree to the ";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6274,6 +6271,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "dAuEka77GgeBktLhYPH3e0WlobA=");
+})($__dart_deferred_initializers__, "q90yMUk/RZrNCBIvTOjbB+BGFBw=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map
