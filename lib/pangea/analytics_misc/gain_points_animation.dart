@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -150,6 +152,12 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
           color: textColor,
         ),
       ),
+    );
+
+    final vocabWidget = Icon(
+      Symbols.dictionary,
+      size: 24,
+      color: textColor,
     );
 
     return Material(
