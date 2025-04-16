@@ -114,6 +114,13 @@ class PracticeTarget {
       );
       return false;
     }
+
+    if (activityType == ActivityTypeEnum.morphId) {
+      return record.responses.any(
+        (res) => res.cId == token.morphIdByFeature(morph!) && res.isCorrect,
+      );
+    }
+
     return record.responses.any(
       (res) => res.cId == token.vocabConstructID && res.isCorrect,
     );
