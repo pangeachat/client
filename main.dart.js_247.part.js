@@ -457,6 +457,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$extremeOffensive() {
       return "Bardzo obra\u017aliwe";
     },
+    get$fontSize(_) {
+      return "Rozmiar fontu";
+    },
     get$forward(_) {
       return "Przeka\u017c";
     },
@@ -4369,6 +4372,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_247", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "KDTJFvKt3xI4AqNNH2ettS3aIg4=");
+})($__dart_deferred_initializers__, "IRdQGEu0njJ/chavTb7702IQOe8=");
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map

@@ -456,6 +456,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$extremeOffensive() {
       return "Estremamente offensivo";
     },
+    get$fontSize(_) {
+      return "Dimensione carattere";
+    },
     get$forward(_) {
       return "Inoltra";
     },
@@ -4368,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_237", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "vegHq4RdiYAnI/iq8njz0nb7t/E=");
+})($__dart_deferred_initializers__, "to7UaalxfeQw5G2NoB2EQmaUcZM=");
 ;
 //# sourceMappingURL=main.dart.js_237.part.js.map

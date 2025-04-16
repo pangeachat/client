@@ -456,6 +456,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$extremeOffensive() {
       return "\u0628\u0647 \u0634\u062f\u062a \u062a\u0648\u0647\u06cc\u0646 \u0622\u0645\u06cc\u0632";
     },
+    get$fontSize(_) {
+      return "\u0627\u0646\u062f\u0627\u0632\u0647 \u0642\u0644\u0645";
+    },
     get$forward(_) {
       return "\u0627\u0631\u0633\u0627\u0644";
     },
@@ -4371,6 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_209", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "9eD6RB9XcHg8SVJO+Y+TEWCv2ao=");
+})($__dart_deferred_initializers__, "ulPQuVHLcdvBcX/afEVX9EG+UgY=");
 ;
 //# sourceMappingURL=main.dart.js_209.part.js.map

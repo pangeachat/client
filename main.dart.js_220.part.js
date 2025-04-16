@@ -456,6 +456,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$extremeOffensive() {
       return "\u05e4\u05d5\u05d2\u05e2\u05e0\u05d9 \u05d1\u05d9\u05d5\u05ea\u05e8";
     },
+    get$fontSize(_) {
+      return "\u05d2\u05d5\u05d3\u05dc \u05d2\u05d5\u05e4\u05df";
+    },
     get$forward(_) {
       return "\u05d4\u05e2\u05d1\u05e8";
     },
@@ -4368,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_220", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "D3h7e6HvSf68lMul5ci2ba4cWYI=");
+})($__dart_deferred_initializers__, "fHYEIiOqTKe8ZcX3k3ZFOP4U1Pg=");
 ;
 //# sourceMappingURL=main.dart.js_220.part.js.map

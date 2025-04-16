@@ -456,6 +456,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$extremeOffensive() {
       return "Lubhang nakakasakit";
     },
+    get$fontSize(_) {
+      return "Laki ng font";
+    },
     get$forward(_) {
       return "Forward";
     },
@@ -4368,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_211", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "7glqCAEPbuLNGU+UhVcIPEfi7KM=");
+})($__dart_deferred_initializers__, "hF3HIMyKLzOf6qiyseT+YGpAxjE=");
 ;
 //# sourceMappingURL=main.dart.js_211.part.js.map
