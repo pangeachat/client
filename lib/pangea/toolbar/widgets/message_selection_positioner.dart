@@ -408,12 +408,17 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     if (hasHeaderOverflow) {
       final difference = topOffset - (_headerHeight + AppConfig.toolbarSpacing);
+      double newBottomOffset = _mediaQuery!.size.height -
+          _originalMessageOffset.dy +
+          difference -
+          _originalMessageSize.height;
+      if (newBottomOffset < _footerHeight + AppConfig.toolbarSpacing) {
+        newBottomOffset = _footerHeight + AppConfig.toolbarSpacing;
+      }
+
       return Offset(
         _ownMessage ? _messageRightOffset : _messageLeftOffset,
-        _mediaQuery!.size.height -
-            _originalMessageOffset.dy +
-            difference -
-            _originalMessageSize.height,
+        newBottomOffset,
       );
     } else {
       final difference =
