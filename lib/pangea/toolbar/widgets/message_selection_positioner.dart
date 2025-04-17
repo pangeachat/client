@@ -145,6 +145,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   void _setCenteredMessageSize(RenderBox renderBox) {
+    if (_centeredMessageCompleter.isCompleted) return;
+
     _centeredMessageSize = renderBox.size;
     final offset = renderBox.localToGlobal(Offset.zero);
     _centeredMessageOffset = Offset(
