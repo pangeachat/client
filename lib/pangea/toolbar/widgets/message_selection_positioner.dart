@@ -144,6 +144,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   void _setCenteredMessageSize(RenderBox renderBox) {
+    if (_centeredMessageCompleter.isCompleted) return;
+
     _centeredMessageSize = renderBox.size;
     final offset = renderBox.localToGlobal(Offset.zero);
     _centeredMessageOffset = Offset(
@@ -411,12 +413,17 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     if (hasHeaderOverflow) {
       final difference = topOffset - (_headerHeight + AppConfig.toolbarSpacing);
+      double newBottomOffset = _mediaQuery!.size.height -
+          _originalMessageOffset.dy +
+          difference -
+          _originalMessageSize.height;
+      if (newBottomOffset < _footerHeight + AppConfig.toolbarSpacing) {
+        newBottomOffset = _footerHeight + AppConfig.toolbarSpacing;
+      }
+
       return Offset(
         _ownMessage ? _messageRightOffset : _messageLeftOffset,
-        _mediaQuery!.size.height -
-            _originalMessageOffset.dy +
-            difference -
-            _originalMessageSize.height,
+        newBottomOffset,
       );
     } else {
       final difference =
