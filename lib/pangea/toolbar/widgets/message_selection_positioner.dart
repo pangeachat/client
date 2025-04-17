@@ -1,10 +1,6 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -23,6 +19,8 @@ import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_header.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 /// Controls positioning of the message overlay.
 class MessageSelectionPositioner extends StatefulWidget {
@@ -64,7 +62,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   final Completer _tooltipCompleter = Completer();
 
   MessageMode _currentMode = MessageMode.noneSelected;
-  ReadingAssistanceMode? _readingAssistanceMode;
 
   Animation<Offset>? _overlayOffsetAnimation;
   Animation<Size>? _messageSizeAnimation;
@@ -183,11 +180,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     if (mode == ReadingAssistanceMode.messageMode) {
       setState(
-        () => _readingAssistanceMode = ReadingAssistanceMode.transitionMode,
+        () => widget.overlayController.readingAssistanceMode =
+            ReadingAssistanceMode.transitionMode,
       );
     } else if (mode == ReadingAssistanceMode.tokenMode) {
       setState(
-        () => _readingAssistanceMode = ReadingAssistanceMode.tokenMode,
+        () => widget.overlayController.readingAssistanceMode =
+            ReadingAssistanceMode.tokenMode,
       );
     }
 
@@ -235,7 +234,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
 
     await _animationController.forward(from: 0);
-    if (mounted) setState(() => _readingAssistanceMode = mode);
+    if (mounted)
+      setState(() => widget.overlayController.readingAssistanceMode = mode);
   }
 
   T _runWithLogging<T>(
@@ -256,6 +256,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       return defaultValue;
     }
   }
+
+  ReadingAssistanceMode? get _readingAssistanceMode =>
+      widget.overlayController.readingAssistanceMode;
 
   double get _inputBarSize =>
       _readingAssistanceMode == ReadingAssistanceMode.messageMode ||
