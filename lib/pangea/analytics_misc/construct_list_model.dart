@@ -58,6 +58,28 @@ class ConstructListModel {
     return unlocked;
   }
 
+  List<ConstructIdentifier> unlockedLemmas(
+    ConstructTypeEnum type, {
+    int threshold = 0,
+  }) {
+    final constructs = constructList(type: type);
+    final List<ConstructIdentifier> unlocked = [];
+    final constructsList =
+        type == ConstructTypeEnum.vocab ? vocabLemmasList : grammarLemmasList;
+
+    for (final lemma in constructsList) {
+      final matches = constructs.where((m) => m.lemma == lemma);
+      final totalPoints = matches.fold<int>(
+        0,
+        (total, match) => total + match.points,
+      );
+      if (totalPoints > threshold) {
+        unlocked.add(matches.first.id);
+      }
+    }
+    return unlocked;
+  }
+
   /// Analytics data consumed by widgets. Updated each time new analytics come in.
   int prevXP = 0;
   int totalXP = 0;

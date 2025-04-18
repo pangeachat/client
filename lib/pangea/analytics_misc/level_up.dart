@@ -1,161 +1,512 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:http/http.dart' as http;
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
-import 'level_summary.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class LevelUpUtil {
-  static void showLevelUpDialog(
+  static Future<void> showLevelUpDialog(
     int level,
     String? analyticsRoomId,
-    String? summaryStateEventId,
     ConstructSummary? constructSummary,
     BuildContext context,
-  ) {
+  ) async {
     final player = AudioPlayer();
+
+    final snackbarRegex = RegExp(r'_snackbar$');
+
+    while (MatrixState.pAnyState.activeOverlays
+        .any((overlayId) => snackbarRegex.hasMatch(overlayId))) {
+      await Future.delayed(const Duration(milliseconds: 100));
+    }
+
     player.play(
       UrlSource(
         "${AppConfig.assetsBaseURL}/${AnalyticsConstants.levelUpAudioFileName}",
       ),
     );
 
-    showDialog(
-      context: context,
-      builder: (context) => LevelUpAnimation(
+    final ValueNotifier<bool> showDetailsClicked = ValueNotifier(false);
+
+    late final OverlayEntry overlayEntry;
+    overlayEntry = OverlayEntry(
+      builder: (context) => LevelUpBanner(
         level: level,
-        analyticsRoomId: analyticsRoomId,
-        summaryStateEventId: summaryStateEventId,
         constructSummary: constructSummary,
+        onDetailsClicked: () {
+          showDetailsClicked.value = true;
+        },
+        onOverlayExit: () {
+          overlayEntry.remove();
+          player.dispose();
+        },
       ),
-    ).then((_) => player.dispose());
+    );
+
+    Overlay.of(context).insert(overlayEntry);
+
+    Future.delayed(const Duration(seconds: 5), () {
+      if (!showDetailsClicked.value) {
+        overlayEntry.remove();
+        player.dispose();
+      }
+    });
   }
 }
 
-class LevelUpAnimation extends StatefulWidget {
+class LevelUpBanner extends StatefulWidget {
   final int level;
-  final String? analyticsRoomId;
-  final String? summary;
-  final String? summaryStateEventId;
   final ConstructSummary? constructSummary;
+  final VoidCallback onDetailsClicked;
+  final VoidCallback onOverlayExit;
 
-  const LevelUpAnimation({
+  const LevelUpBanner({
     required this.level,
-    required this.analyticsRoomId,
-    this.summary,
-    this.summaryStateEventId,
     this.constructSummary,
+    required this.onDetailsClicked,
+    required this.onOverlayExit,
     super.key,
   });
 
   @override
-  LevelUpAnimationState createState() => LevelUpAnimationState();
+  _LevelUpBannerState createState() => _LevelUpBannerState();
 }
 
-class LevelUpAnimationState extends State<LevelUpAnimation> {
-  Uint8List? bytes;
-  final imageURL =
-      "${AppConfig.assetsBaseURL}/${AnalyticsConstants.levelUpImageFileName}";
+class _LevelUpBannerState extends State<LevelUpBanner>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _slideAnimation;
+  bool _showDetails = false;
 
   @override
   void initState() {
     super.initState();
-    _loadImageData().catchError((e) {
-      if (mounted) Navigator.of(context).pop();
-    });
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    _slideAnimation = Tween<Offset>(
+      begin: const Offset(0, -1),
+      end: Offset.zero,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeOut,
+      ),
+    );
+
+    _controller.forward();
   }
 
   @override
   void dispose() {
+    _controller.dispose();
     super.dispose();
-  }
-
-  Future<void> _loadImageData() async {
-    final resp =
-        await http.get(Uri.parse(imageURL)).timeout(const Duration(seconds: 5));
-    if (resp.statusCode != 200) return;
-    if (mounted) {
-      setState(() => bytes = resp.bodyBytes);
-    }
   }
 
   @override
   Widget build(BuildContext context) {
-    if (bytes == null) {
-      return const SizedBox();
-    }
-
-    return Dialog(
-      backgroundColor: Colors.transparent,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          // Banner image
-          Image.memory(
-            bytes!,
-            height: kIsWeb ? 350 : 250,
-            width: double.infinity,
-            fit: BoxFit.cover,
+    return Stack(
+      children: [
+        if (_showDetails)
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                _showDetails = false;
+              });
+              widget.onOverlayExit();
+            },
+            child: Container(
+              color: Colors.black.withOpacity(0.5),
+            ),
           ),
-          // Overlay: centered title and close button
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  top: kIsWeb ? 200 : 100,
-                ), // Added hardcoded padding above the text
-                child: Text(
-                  L10n.of(context).levelPopupTitle(widget.level),
-                  style: const TextStyle(
-                    fontSize: kIsWeb ? 40 : 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+        SlideTransition(
+          position: _slideAnimation,
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.5,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: Text(L10n.of(context).close),
+                  margin: const EdgeInsets.only(top: 16),
+                  decoration: BoxDecoration(
+                    color: widget.level > 10
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(context).colorScheme.secondaryContainer,
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  if (widget.summaryStateEventId != null &&
-                      widget.analyticsRoomId != null)
-                    const SizedBox(width: 16),
-                  if (widget.summaryStateEventId != null &&
-                      widget.analyticsRoomId != null)
-                    // Show summary button
-                    ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => LevelSummaryDialog(
-                            level: widget.level,
-                            analyticsRoomId: widget.analyticsRoomId!,
-                            summaryStateEventId: widget.summaryStateEventId!,
-                            constructSummary: widget.constructSummary,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 24,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                const TextSpan(
+                                  text: "Congratulations on reaching ",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
+                                const TextSpan(
+                                  text: "Level ",
+                                  style: TextStyle(
+                                    color: AppConfig.gold,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "${widget.level}",
+                                  style: const TextStyle(
+                                    color: AppConfig.gold,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 0.5,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        );
-                      },
-                      child: Text(L10n.of(context).levelSummaryTrigger),
-                    ),
-                ],
-              ),
-            ],
+                          const SizedBox(width: 8),
+                          Image.asset(
+                            'assets/Star.png',
+                            height: 24,
+                            width: 24,
+                          ),
+                        ],
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            _showDetails = !_showDetails;
+                          });
+                          widget.onDetailsClicked();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Theme.of(context)
+                              .colorScheme
+                              .surfaceContainerHighest,
+                        ),
+                        child: Row(
+                          children: [
+                            const Text(
+                              "See details ",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Container(
+                              decoration: const BoxDecoration(
+                                color: AppConfig.gold,
+                                shape: BoxShape.circle,
+                              ),
+                              padding: const EdgeInsets.all(
+                                4.0,
+                              ),
+                              child: const Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                size: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                AnimatedSize(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                  child: _showDetails
+                      ? Container(
+                          constraints: BoxConstraints(
+                            maxWidth: MediaQuery.of(context).size.width * 0.5,
+                          ),
+                          margin: const EdgeInsets.only(
+                            top: 16,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          padding: const EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Table(
+                                columnWidths: const {
+                                  0: IntrinsicColumnWidth(),
+                                  1: FlexColumnWidth(),
+                                  2: IntrinsicColumnWidth(),
+                                },
+                                defaultVerticalAlignment:
+                                    TableCellVerticalAlignment.middle,
+                                children: [
+                                  TableRow(
+                                    children: [
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Icon(
+                                          Symbols.dictionary,
+                                          size: 25,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Text(
+                                          "Writing Practice",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                        ),
+                                        child: Text(
+                                          "+${widget.constructSummary?.writingConstructScore ?? 0} XP",
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Icon(
+                                          Symbols.toys_and_games,
+                                          size: 25,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Text(
+                                          "Reading Practice",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                        ),
+                                        child: Text(
+                                          "+${widget.constructSummary?.readingConstructScore ?? 0} XP",
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Icon(
+                                          Symbols.edit_square,
+                                          size: 25,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Text(
+                                          "Listening Practice",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                        ),
+                                        child: Text(
+                                          "+${widget.constructSummary?.hearingConstructScore ?? 0} XP",
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Icon(
+                                          Symbols.text_to_speech,
+                                          size: 25,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Text(
+                                          "Speaking Practice",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                        ),
+                                        child: Text(
+                                          "+${widget.constructSummary?.speakingConstructScore ?? 0} XP",
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+
+                              const SizedBox(
+                                height: 24,
+                              ),
+                              // Dino svg, removed because of hardcoded text in image
+                              // Column(
+                              //   children: [
+                              //     SvgPicture.asset(
+                              //       'assets/pangea/DinoBot-Congratulate.svg',
+                              //       width: 200,
+                              //       height: 200,
+                              //     ),
+                              //   ],
+                              // ),
+                              const SizedBox(
+                                height: 24,
+                              ),
+                              if (widget.constructSummary?.textSummary != null)
+                                Container(
+                                  padding: const EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .secondaryContainer,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    widget.constructSummary!.textSummary,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              const SizedBox(
+                                height: 24,
+                              ),
+                              // Share button, currently no functionality
+                              // ElevatedButton(
+                              //   onPressed: () {
+                              //     // Add share functionality
+                              //   },
+                              //   style: ElevatedButton.styleFrom(
+                              //     backgroundColor: Colors.white,
+                              //     foregroundColor: Colors.black,
+                              //     padding: const EdgeInsets.symmetric(
+                              //       vertical: 12,
+                              //       horizontal: 24,
+                              //     ),
+                              //     shape: RoundedRectangleBorder(
+                              //       borderRadius: BorderRadius.circular(8),
+                              //     ),
+                              //   ),
+                              //   child: const Row(
+                              //     mainAxisSize: MainAxisSize
+                              //         .min,
+                              //     children: [
+                              //       Text(
+                              //         "Share with Friends",
+                              //         style: TextStyle(
+                              //           fontSize: 16,
+                              //           fontWeight: FontWeight.bold,
+                              //         ),
+                              //       ),
+                              //       SizedBox(
+                              //         width: 8,
+                              //       ),
+                              //       Icon(
+                              //         Icons.ios_share,
+                              //         size: 20,
+                              //       ),
+                              //     ],
+                              //   ),
+                              // ),
+                            ],
+                          ),
+                        )
+                      : const SizedBox.shrink(),
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
