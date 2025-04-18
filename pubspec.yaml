@@ -71,7 +71,7 @@ dependencies:
   matrix:
     git:
       url: https://github.com/pangeachat/matrix-dart-sdk.git # repo
-      ref: main # branch
+      ref: disable-space-hierarchy-cache # branch
   # matrix: ^0.37.0
   # Pangea#
   mime: ^1.0.6
