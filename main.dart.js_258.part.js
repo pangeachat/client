@@ -4254,9 +4254,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$referFriendDialogDesc() {
       return "Do you have a friend who is excited to learn a new language with you? Then copy and send this invitation link to join and start chatting with you today.";
     },
-    get$youUnlocked() {
-      return "You've unlocked";
-    },
     get$resetInstructionTooltipsTitle() {
       return "Reset instruction tooltips";
     },
@@ -4353,6 +4350,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$byUsingPangeaChat() {
       return "By using Pangea Chat, I agree to the ";
     },
+    get$details(_) {
+      return "Details";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_258", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "QY3PqFYiaXxFXDC3pTsHNKAokUc=");
+})($__dart_deferred_initializers__, "9Rw2xYB5k8FPyHDn+0mVz1Iwtwk=");
 ;
 //# sourceMappingURL=main.dart.js_258.part.js.map
