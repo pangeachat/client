@@ -157,11 +157,11 @@ class GetAnalyticsController extends BaseController {
     if (analyticsUpdate.type == AnalyticsUpdateType.server) {
       await _getConstructs(forceUpdate: true);
     }
-    if (oldLevel < constructListModel.level) {
-      // do not await this - it's not necessary for this to finish
-      // before the function completes and it blocks the UI
-      _onLevelUp(oldLevel, constructListModel.level);
-    }
+    // if (oldLevel < constructListModel.level) {
+    // do not await this - it's not necessary for this to finish
+    // before the function completes and it blocks the UI
+    _onLevelUp(oldLevel, constructListModel.level);
+    // }
     if (oldLevel > constructListModel.level) {
       await _onLevelDown(constructListModel.level, oldLevel);
     }

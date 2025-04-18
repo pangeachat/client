@@ -12,20 +12,20 @@ class ConstructSummary {
   final int lowerLevel;
   final String language;
   final String textSummary;
-  final int vocabConstructScore;
-  final int grammarConstructScore;
   final int writingConstructScore;
-  final int listeningConstructScore;
+  final int readingConstructScore;
+  final int hearingConstructScore;
+  final int speakingConstructScore;
 
   ConstructSummary({
     required this.upperLevel,
     required this.lowerLevel,
     required this.language,
     required this.textSummary,
-    required this.vocabConstructScore,
-    required this.grammarConstructScore,
     required this.writingConstructScore,
-    required this.listeningConstructScore,
+    required this.readingConstructScore,
+    required this.hearingConstructScore,
+    required this.speakingConstructScore,
   });
 
   Map<String, dynamic> toJson() {
@@ -34,10 +34,10 @@ class ConstructSummary {
       'lower_level': lowerLevel,
       'language': language,
       'text_summary': textSummary,
-      'vocab_construct_score': vocabConstructScore,
-      'grammar_construct_score': grammarConstructScore,
       'writing_construct_score': writingConstructScore,
-      'listening_construct_score': listeningConstructScore,
+      'reading_construct_score': readingConstructScore,
+      'hearing_construct_score': hearingConstructScore,
+      'speaking_construct_score': speakingConstructScore,
     };
   }
 
@@ -47,10 +47,10 @@ class ConstructSummary {
       lowerLevel: json['lower_level'],
       language: json['language'],
       textSummary: json['text_summary'],
-      vocabConstructScore: json['vocab_construct_score'],
-      grammarConstructScore: json['grammar_construct_score'],
       writingConstructScore: json['writing_construct_score'],
-      listeningConstructScore: json['listening_construct_score'],
+      readingConstructScore: json['reading_construct_score'],
+      hearingConstructScore: json['hearing_construct_score'],
+      speakingConstructScore: json['speaking_construct_score'],
     );
   }
 }
