@@ -158,136 +158,120 @@ class ConstructNotificationOverlayState
                   if (details.delta.dy < -10) _close();
                 },
                 onTap: _showDetails,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 16.0,
-                          horizontal: 4.0,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.surface,
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSurface
-                                  .withAlpha(50),
-                            ),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16.0,
+                    horizontal: 4.0,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.surface,
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onSurface
+                            .withAlpha(50),
+                      ),
+                    ),
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(AppConfig.borderRadius),
+                      bottomRight: Radius.circular(AppConfig.borderRadius),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: constraints.maxWidth >= 600 ? 120.0 : 65.0,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: isColumnMode ? 16.0 : 8.0,
                           ),
-                          borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(AppConfig.borderRadius),
-                            bottomRight:
-                                Radius.circular(AppConfig.borderRadius),
-                          ),
-                        ),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: constraints.maxWidth >= 600 ? 120.0 : 65.0,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: isColumnMode ? 16.0 : 8.0,
+                          child: Wrap(
+                            spacing: 16.0,
+                            alignment: WrapAlignment.center,
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              Text(
+                                widget.copy ?? widget.construct.lemma,
+                                style: TextStyle(
+                                  fontSize: FluffyThemes.isColumnMode(context)
+                                      ? 32.0
+                                      : 16.0,
+                                  color: AppConfig.gold,
+                                  fontWeight: FontWeight.bold,
                                 ),
-                                child: Wrap(
-                                  spacing: 16.0,
-                                  alignment: WrapAlignment.center,
-                                  crossAxisAlignment: WrapCrossAlignment.center,
-                                  children: [
-                                    Flexible(
-                                      child: Text(
-                                        widget.copy ?? widget.construct.lemma,
-                                        style: TextStyle(
-                                          fontSize:
-                                              FluffyThemes.isColumnMode(context)
-                                                  ? 32.0
-                                                  : 16.0,
-                                          color: AppConfig.gold,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                    MorphIcon(
-                                      size: isColumnMode
-                                          ? null
-                                          : const Size(24.0, 24.0),
-                                      morphFeature:
-                                          MorphFeaturesEnumExtension.fromString(
-                                        widget.construct.category,
-                                      ),
-                                      morphTag: widget.construct.lemma,
-                                    ),
-                                  ],
-                                ),
+                                overflow: TextOverflow.ellipsis,
                               ),
-                            ),
-                            Row(
+                              MorphIcon(
+                                size: isColumnMode
+                                    ? null
+                                    : const Size(24.0, 24.0),
+                                morphFeature:
+                                    MorphFeaturesEnumExtension.fromString(
+                                  widget.construct.category,
+                                ),
+                                morphTag: widget.construct.lemma,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: constraints.maxWidth >= 600 ? 120.0 : 65.0,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                SizedBox(
-                                  width: constraints.maxWidth >= 600
-                                      ? 120.0
-                                      : 65.0,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Tooltip(
-                                        message: L10n.of(context).details,
-                                        child: constraints.maxWidth >= 600
-                                            ? ElevatedButton(
-                                                style: IconButton.styleFrom(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                    vertical: 4.0,
-                                                    horizontal: 16.0,
-                                                  ),
-                                                ),
-                                                onPressed: _showDetails,
-                                                child: Text(
-                                                  L10n.of(context).details,
-                                                ),
-                                              )
-                                            : IconButton(
-                                                icon: const Icon(
-                                                  Icons.info_outline,
-                                                ),
-                                                style: IconButton.styleFrom(
-                                                  padding:
-                                                      const EdgeInsets.all(4.0),
-                                                ),
-                                                onPressed: _showDetails,
-                                                constraints:
-                                                    const BoxConstraints(),
-                                              ),
-                                      ),
-                                      Tooltip(
-                                        message: L10n.of(context).close,
-                                        child: IconButton(
+                                Tooltip(
+                                  message: L10n.of(context).details,
+                                  child: constraints.maxWidth >= 600
+                                      ? ElevatedButton(
+                                          style: IconButton.styleFrom(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 4.0,
+                                              horizontal: 16.0,
+                                            ),
+                                          ),
+                                          onPressed: _showDetails,
+                                          child: Text(
+                                            L10n.of(context).details,
+                                          ),
+                                        )
+                                      : IconButton(
                                           icon: const Icon(
-                                            Icons.close,
+                                            Icons.info_outline,
                                           ),
                                           style: IconButton.styleFrom(
                                             padding: const EdgeInsets.all(4.0),
                                           ),
-                                          onPressed: _close,
+                                          onPressed: _showDetails,
                                           constraints: const BoxConstraints(),
                                         ),
-                                      ),
-                                    ],
+                                ),
+                                Tooltip(
+                                  message: L10n.of(context).close,
+                                  child: IconButton(
+                                    icon: const Icon(
+                                      Icons.close,
+                                    ),
+                                    style: IconButton.styleFrom(
+                                      padding: const EdgeInsets.all(4.0),
+                                    ),
+                                    onPressed: _close,
+                                    constraints: const BoxConstraints(),
                                   ),
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },
