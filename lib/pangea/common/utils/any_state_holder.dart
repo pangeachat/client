@@ -1,9 +1,7 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:flutter/material.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class OverlayListEntry {
   final OverlayEntry entry;
@@ -18,6 +16,7 @@ class OverlayListEntry {
 }
 
 class PangeaAnyState {
+  final Set<String> activeOverlays = {};
   final Map<String, LayerLinkAndKey> _layerLinkAndKeys = {};
   List<OverlayListEntry> entries = [];
 
@@ -56,6 +55,11 @@ class PangeaAnyState {
         canPop: canPop,
       ),
     );
+
+    if (overlayKey != null) {
+      activeOverlays.add(overlayKey);
+    }
+
     Overlay.of(context).insert(entry);
   }
 
@@ -79,12 +83,17 @@ class PangeaAnyState {
         );
       }
       entries.remove(entry);
+
+      if (overlayKey != null) {
+        activeOverlays.remove(overlayKey);
+      }
     }
   }
 
   void closeAllOverlays() {
     final shouldRemove = entries.where((element) => element.canPop).toList();
     if (shouldRemove.isEmpty) return;
+
     for (int i = 0; i < shouldRemove.length; i++) {
       try {
         shouldRemove[i].entry.remove();
@@ -97,6 +106,11 @@ class PangeaAnyState {
           },
         );
       }
+
+      if (shouldRemove[i].key != null) {
+        activeOverlays.remove(shouldRemove[i].key);
+      }
+
       entries.remove(shouldRemove[i]);
     }
   }

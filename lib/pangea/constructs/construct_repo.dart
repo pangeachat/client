@@ -1,24 +1,31 @@
 import 'dart:convert';
 
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:http/http.dart';
 
 class ConstructSummary {
   final int upperLevel;
   final int lowerLevel;
   final String language;
   final String textSummary;
+  final int vocabConstructScore;
+  final int grammarConstructScore;
+  final int writingConstructScore;
+  final int listeningConstructScore;
 
   ConstructSummary({
     required this.upperLevel,
     required this.lowerLevel,
     required this.language,
     required this.textSummary,
+    required this.vocabConstructScore,
+    required this.grammarConstructScore,
+    required this.writingConstructScore,
+    required this.listeningConstructScore,
   });
 
   Map<String, dynamic> toJson() {
@@ -27,6 +34,10 @@ class ConstructSummary {
       'lower_level': lowerLevel,
       'language': language,
       'text_summary': textSummary,
+      'vocab_construct_score': vocabConstructScore,
+      'grammar_construct_score': grammarConstructScore,
+      'writing_construct_score': writingConstructScore,
+      'listening_construct_score': listeningConstructScore,
     };
   }
 
@@ -36,6 +47,10 @@ class ConstructSummary {
       lowerLevel: json['lower_level'],
       language: json['language'],
       textSummary: json['text_summary'],
+      vocabConstructScore: json['vocab_construct_score'],
+      grammarConstructScore: json['grammar_construct_score'],
+      writingConstructScore: json['writing_construct_score'],
+      listeningConstructScore: json['listening_construct_score'],
     );
   }
 }

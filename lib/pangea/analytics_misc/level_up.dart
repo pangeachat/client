@@ -1,39 +1,59 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:audioplayers/audioplayers.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class LevelUpUtil {
-  static void showLevelUpDialog(
+  static Future<void> showLevelUpDialog(
     int level,
     String? analyticsRoomId,
     ConstructSummary? constructSummary,
     BuildContext context,
-  ) {
+  ) async {
     final player = AudioPlayer();
+
+    final snackbarRegex = RegExp(r'_snackbar$');
+
+    while (MatrixState.pAnyState.activeOverlays
+        .any((overlayId) => snackbarRegex.hasMatch(overlayId))) {
+      await Future.delayed(const Duration(milliseconds: 100));
+    }
+
     player.play(
       UrlSource(
         "${AppConfig.assetsBaseURL}/${AnalyticsConstants.levelUpAudioFileName}",
       ),
     );
-    final OverlayEntry overlayEntry = OverlayEntry(
+
+    final ValueNotifier<bool> showDetailsClicked = ValueNotifier(false);
+
+    late final OverlayEntry overlayEntry;
+    overlayEntry = OverlayEntry(
       builder: (context) => LevelUpBanner(
         level: level,
         constructSummary: constructSummary,
+        onDetailsClicked: () {
+          showDetailsClicked.value = true;
+        },
+        onOverlayExit: () {
+          overlayEntry.remove();
+          player.dispose();
+        },
       ),
     );
 
     Overlay.of(context).insert(overlayEntry);
 
-    Future.delayed(const Duration(seconds: 10), () {
-      overlayEntry.remove();
-      player.dispose();
+    Future.delayed(const Duration(seconds: 5), () {
+      if (!showDetailsClicked.value) {
+        overlayEntry.remove();
+        player.dispose();
+      }
     });
   }
 }
@@ -41,10 +61,14 @@ class LevelUpUtil {
 class LevelUpBanner extends StatefulWidget {
   final int level;
   final ConstructSummary? constructSummary;
+  final VoidCallback onDetailsClicked;
+  final VoidCallback onOverlayExit;
 
   const LevelUpBanner({
     required this.level,
     this.constructSummary,
+    required this.onDetailsClicked,
+    required this.onOverlayExit,
     super.key,
   });
 
@@ -56,7 +80,7 @@ class _LevelUpBannerState extends State<LevelUpBanner>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _slideAnimation;
-  bool _showDetails = false; // Track whether the details banner is visible
+  bool _showDetails = false;
 
   @override
   void initState() {
@@ -89,16 +113,16 @@ class _LevelUpBannerState extends State<LevelUpBanner>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // Darkened overlay
         if (_showDetails)
           GestureDetector(
             onTap: () {
               setState(() {
-                _showDetails = false; // Close details when overlay is tapped
+                _showDetails = false;
               });
+              widget.onOverlayExit();
             },
             child: Container(
-              color: Colors.black.withOpacity(0.5), // Semi-transparent overlay
+              color: Colors.black.withOpacity(0.5),
             ),
           ),
         SlideTransition(
@@ -108,7 +132,6 @@ class _LevelUpBannerState extends State<LevelUpBanner>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Main banner
                 Container(
                   constraints: BoxConstraints(
                     maxWidth: MediaQuery.of(context).size.width * 0.5,
@@ -137,25 +160,25 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w900,
+                                    fontWeight: FontWeight.bold,
                                     letterSpacing: 0.5,
                                   ),
                                 ),
                                 const TextSpan(
                                   text: "Level ",
                                   style: TextStyle(
-                                    color: Colors.yellow,
+                                    color: AppConfig.gold,
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w900,
+                                    fontWeight: FontWeight.bold,
                                     letterSpacing: 0.5,
                                   ),
                                 ),
                                 TextSpan(
                                   text: "${widget.level}",
                                   style: const TextStyle(
-                                    color: Colors.yellow,
+                                    color: AppConfig.gold,
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w900,
+                                    fontWeight: FontWeight.bold,
                                     letterSpacing: 0.5,
                                   ),
                                 ),
@@ -164,17 +187,18 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                           ),
                           const SizedBox(width: 8),
                           Image.asset(
-                            'assets/Star.png', // Path to the star image
-                            height: 24, // Adjust height to match text size
-                            width: 24, // Adjust width to match text size
+                            'assets/Star.png',
+                            height: 24,
+                            width: 24,
                           ),
                         ],
                       ),
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            _showDetails = !_showDetails; // Toggle details
+                            _showDetails = !_showDetails;
                           });
+                          widget.onDetailsClicked();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -182,10 +206,29 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                               .colorScheme
                               .surfaceContainerHighest,
                         ),
-                        child: const Row(
+                        child: Row(
                           children: [
-                            Text("See details"),
-                            Icon(Icons.arrow_downward),
+                            const Text(
+                              "See details ",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Container(
+                              decoration: const BoxDecoration(
+                                color: AppConfig.gold,
+                                shape: BoxShape.circle,
+                              ),
+                              padding: const EdgeInsets.all(
+                                4.0,
+                              ),
+                              child: const Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                                size: 20,
+                                color: Colors.white,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -202,178 +245,199 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                           ),
                           margin: const EdgeInsets.only(
                             top: 16,
-                          ), // Add margin at the top
+                          ),
                           decoration: BoxDecoration(
-                            color:
-                                Colors.black, // Set background color to black
+                            color: Colors.black,
                             borderRadius: BorderRadius.circular(8),
                           ),
                           padding: const EdgeInsets.all(16),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              // Stats Table
                               Table(
                                 columnWidths: const {
-                                  0: IntrinsicColumnWidth(), // Emoji column
-                                  1: FlexColumnWidth(), // Text column
-                                  2: IntrinsicColumnWidth(), // XP column
+                                  0: IntrinsicColumnWidth(),
+                                  1: FlexColumnWidth(),
+                                  2: IntrinsicColumnWidth(),
                                 },
                                 defaultVerticalAlignment:
                                     TableCellVerticalAlignment.middle,
-                                children: const [
-                                  TableRow(
-                                    children: [
-                                      Text(
-                                        "📖", // Book emoji for Vocabulary
-                                        style: TextStyle(fontSize: 18),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "Vocabulary Practice",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "+150 XP",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      Text(
-                                        "🧩", // Puzzle piece emoji for Grammar
-                                        style: TextStyle(fontSize: 18),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "Grammar Practice",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "+50 XP",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      Text(
-                                        "📝", // Paper with pencil emoji for Writing Practice
-                                        style: TextStyle(fontSize: 18),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "Writing Practice",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "+80 XP",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      Text(
-                                        "📄🔊", // Paper with writing and speaker emoji for Listening Practice
-                                        style: TextStyle(fontSize: 18),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "Listening Practice",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Text(
-                                        "+10 XP",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 24,
-                              ), // Add spacing between stats and bot face
-                              // Bot Face and Speech Bubble
-                              Column(
                                 children: [
-                                  const BotFace(
-                                    width: 100,
-                                    expression: BotExpression
-                                        .idle, // Use a happy expression
-                                  ),
-                                  const SizedBox(
-                                    height: 8,
-                                  ), // Add spacing between bot and bubble
-                                  Container(
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(8),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.black.withOpacity(0.2),
-                                          blurRadius: 4,
-                                          offset: const Offset(2, 2),
+                                  TableRow(
+                                    children: [
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Icon(
+                                          Symbols.dictionary,
+                                          size: 25,
                                         ),
-                                      ],
-                                    ),
-                                    child: const Text(
-                                      "Congratulations!",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
                                       ),
-                                    ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Text(
+                                          "Vocabulary Practice",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                        ),
+                                        child: Text(
+                                          "+${widget.constructSummary?.vocabConstructScore ?? 0} XP",
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Icon(
+                                          Symbols.toys_and_games,
+                                          size: 25,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Text(
+                                          "Grammar Practice",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                        ),
+                                        child: Text(
+                                          "+${widget.constructSummary?.grammarConstructScore ?? 0} XP",
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Icon(
+                                          Symbols.edit_square,
+                                          size: 25,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Text(
+                                          "Writing Practice",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                        ),
+                                        child: Text(
+                                          "+${widget.constructSummary?.writingConstructScore ?? 0} XP",
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  TableRow(
+                                    children: [
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Icon(
+                                          Symbols.text_to_speech,
+                                          size: 25,
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        child: Text(
+                                          "Listening Practice",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0,
+                                        ),
+                                        child: Text(
+                                          "+${widget.constructSummary?.listeningConstructScore ?? 0} XP",
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
+
                               const SizedBox(
                                 height: 24,
-                              ), // Add spacing between bot and text box
-                              // Text Box
+                              ),
+                              // Dino svg, removed because of hardcoded text in image
+                              // Column(
+                              //   children: [
+                              //     SvgPicture.asset(
+                              //       'assets/pangea/DinoBot-Congratulate.svg',
+                              //       width: 200,
+                              //       height: 200,
+                              //     ),
+                              //   ],
+                              // ),
+                              const SizedBox(
+                                height: 24,
+                              ),
                               if (widget.constructSummary?.textSummary != null)
                                 Container(
                                   padding: const EdgeInsets.all(12),
@@ -395,34 +459,44 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                 ),
                               const SizedBox(
                                 height: 24,
-                              ), // Add spacing between text box and button
-                              // Share with Friends Button
-                              ElevatedButton.icon(
-                                onPressed: () {
-                                  // Add share functionality here
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      Colors.white, // White button background
-                                  foregroundColor:
-                                      Colors.black, // Black text and icon
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 12,
-                                    horizontal: 24,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                                icon: const Icon(Icons.share), // Share icon
-                                label: const Text(
-                                  "Share with Friends",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
                               ),
+                              // Share button, currently no functionality
+                              // ElevatedButton(
+                              //   onPressed: () {
+                              //     // Add share functionality
+                              //   },
+                              //   style: ElevatedButton.styleFrom(
+                              //     backgroundColor: Colors.white,
+                              //     foregroundColor: Colors.black,
+                              //     padding: const EdgeInsets.symmetric(
+                              //       vertical: 12,
+                              //       horizontal: 24,
+                              //     ),
+                              //     shape: RoundedRectangleBorder(
+                              //       borderRadius: BorderRadius.circular(8),
+                              //     ),
+                              //   ),
+                              //   child: const Row(
+                              //     mainAxisSize: MainAxisSize
+                              //         .min,
+                              //     children: [
+                              //       Text(
+                              //         "Share with Friends",
+                              //         style: TextStyle(
+                              //           fontSize: 16,
+                              //           fontWeight: FontWeight.bold,
+                              //         ),
+                              //       ),
+                              //       SizedBox(
+                              //         width: 8,
+                              //       ),
+                              //       Icon(
+                              //         Icons.ios_share,
+                              //         size: 20,
+                              //       ),
+                              //     ],
+                              //   ),
+                              // ),
                             ],
                           ),
                         )
