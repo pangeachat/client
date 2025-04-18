@@ -1,7 +1,12 @@
 import 'dart:developer';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -15,9 +20,6 @@ import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/morph_selection.dart';
 import 'package:fluffychat/pangea/toolbar/utils/shrinkable_text.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 const double tokenButtonHeight = 40.0;
 const double tokenButtonDefaultFontSize = 10;
@@ -187,6 +189,11 @@ class MessageTokenButtonState extends State<MessageTokenButton>
 
   bool get _isEmpty {
     final mode = widget.overlayController?.toolbarMode;
+    if (MessageMode.wordEmoji == mode &&
+        widget.token.vocabConstructID.userSetEmoji.firstOrNull != null) {
+      return false;
+    }
+
     return _activity == null ||
         (_isActivityCompleteOrNullForToken &&
             ![MessageMode.wordEmoji, MessageMode.wordMorph].contains(mode)) ||
@@ -297,11 +304,7 @@ class MessageTokenButtonContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (activity == null) {
-      return SizedBox(height: height);
-    }
-
-    if (isActivityCompleteOrNullForToken) {
+    if (isActivityCompleteOrNullForToken || activity == null) {
       if (MessageMode.wordEmoji == messageMode) {
         return SizedBox(
           height: height,
@@ -312,7 +315,7 @@ class MessageTokenButtonContent extends StatelessWidget {
           ),
         );
       }
-      if (MessageMode.wordMorph == messageMode) {
+      if (MessageMode.wordMorph == messageMode && activity != null) {
         final morphFeature = activity!.morphFeature!;
         final morphTag = token.morphIdByFeature(morphFeature);
         if (morphTag != null) {

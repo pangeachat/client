@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
+import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_animation.dart';
 import 'package:fluffychat/pangea/constructs/construct_form.dart';
@@ -66,6 +67,13 @@ class MessageMorphInputBarContentState
       setState(() {});
     }
     super.didUpdateWidget(oldWidget);
+  }
+
+  String? get _correctChoice {
+    return widget.activity.multipleChoiceContent?.choices
+        .firstWhereOrNull((choice) {
+      return widget.activity.practiceTarget.wasCorrectChoice(choice) == true;
+    });
   }
 
   @override
@@ -151,12 +159,11 @@ class MessageMorphInputBarContentState
             },
           ).toList(),
         ),
-        // SizedBox(
-        //   height: 50,
-        //   child: selectedTag != null
-        //       ? MorphMeaningWidget(feature: morph, tag: selectedTag!)
-        //       : null,
-        // ),
+        if (_correctChoice != null)
+          MorphMeaningWidget(
+            feature: morph,
+            tag: _correctChoice!,
+          ),
       ],
     );
   }
