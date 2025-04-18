@@ -1520,7 +1520,7 @@ packages:
     description:
       path: "."
       ref: disable-space-hierarchy-cache
-      resolved-ref: 00f2555cf82d89905ce7a6736d59563173f03214
+      resolved-ref: "00f2555cf82d89905ce7a6736d59563173f03214"
       url: "https://github.com/pangeachat/matrix-dart-sdk.git"
     source: git
     version: "0.37.0"
