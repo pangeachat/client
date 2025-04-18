@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
-
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -16,6 +12,8 @@ import 'package:fluffychat/pangea/toolbar/utils/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
 
 /// Question - does this need to be stateful or does this work?
 /// Need to test.
@@ -226,7 +224,7 @@ class MessageTextWidget extends StatelessWidget {
                         textStyle: renderer.style(context),
                         width: tokenWidth,
                         animateIn: isTransitionAnimation,
-                        practiceTarget: overlayController
+                        practiceTargetForToken: overlayController
                                     ?.toolbarMode.associatedActivityType !=
                                 null
                             ? overlayController?.practiceSelection
