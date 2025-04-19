@@ -15,6 +15,7 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
   MobileSubscriptionInfo({
     required super.userID,
     required super.availableSubscriptionInfo,
+    required super.history,
   });
 
   @override
@@ -94,9 +95,6 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
       );
     } else if (activeEntitlements.isEmpty) {
       debugPrint("User has no active entitlements");
-      if (!isNewUserTrial) {
-        resetSubscription();
-      }
       return;
     }
 
@@ -107,7 +105,7 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
         : null;
 
     if (activeEntitlement.periodType == PeriodType.trial) {
-      currentSubscription?.makeTrial();
+      // We dont use actual trials as it would require adding a CC on devices
     }
     if (currentSubscriptionId != null && currentSubscription == null) {
       Sentry.addBreadcrumb(

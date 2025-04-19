@@ -29,7 +29,6 @@ class SubscriptionOptions extends StatelessWidget {
                   SubscriptionDetails(
                     price: 0,
                     id: "",
-                    periodType: SubscriptionPeriodType.trial,
                   ),
                   context,
                 ),

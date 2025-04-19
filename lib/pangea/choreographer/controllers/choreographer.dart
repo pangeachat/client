@@ -57,7 +57,6 @@ class Choreographer {
   ChoreoMode choreoMode = ChoreoMode.igc;
 
   final StreamController stateStream = StreamController.broadcast();
-  StreamSubscription? _trialStream;
   StreamSubscription? _languageStream;
   late AssistanceState _currentAssistanceState;
 
@@ -73,9 +72,6 @@ class Choreographer {
     errorService = ErrorService(this);
     altTranslator = AlternativeTranslator(this);
     _textController.addListener(_onChangeListener);
-    _trialStream = pangeaController
-        .subscriptionController.trialActivationStream.stream
-        .listen((_) => _onChangeListener);
     _languageStream =
         pangeaController.userController.stateStream.listen((update) {
       if (update is Map<String, dynamic> &&
@@ -608,7 +604,6 @@ class Choreographer {
 
   dispose() {
     _textController.dispose();
-    _trialStream?.cancel();
     _languageStream?.cancel();
     stateStream.close();
     tts.dispose();

@@ -75,8 +75,7 @@ class SettingsSubscriptionView extends StatelessWidget {
                 ManagementNotAvailableWarning(
                   controller: controller,
                 ),
-              if (isSubscribed != null && !isSubscribed ||
-                  controller.isNewUserTrial)
+              if (isSubscribed != null && !isSubscribed)
                 ChangeSubscription(controller: controller),
               if (controller.showManagementOptions) ...managementButtons,
             ],
@@ -102,9 +101,11 @@ class ManagementNotAvailableWarning extends StatelessWidget {
 
     String getWarningText() {
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
-      if (controller.isNewUserTrial) {
+      if (currentSubscriptionInfo != null &&
+          currentSubscriptionInfo.currentSubscriptionId ==
+              "rc_promo_testentitlement_custom") {
         return L10n.of(context).trialExpiration(
-          formatter.format(currentSubscriptionInfo!.expirationDate!),
+          formatter.format(currentSubscriptionInfo.expirationDate!),
         );
       }
       if (controller.currentSubscriptionAvailable) {

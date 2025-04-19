@@ -79,9 +79,6 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
           .currentSubscriptionInfo?.currentSubscriptionIsPromotional ??
       false;
 
-  bool get isNewUserTrial =>
-      subscriptionController.currentSubscriptionInfo?.isNewUserTrial ?? false;
-
   String get currentSubscriptionTitle =>
       subscriptionController.currentSubscriptionInfo?.currentSubscription
           ?.displayName(context) ??
@@ -93,7 +90,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
       "";
 
   bool get showManagementOptions {
-    if (!currentSubscriptionAvailable || isNewUserTrial) {
+    if (!currentSubscriptionAvailable) {
       return false;
     }
     if (subscriptionController.currentSubscriptionInfo!.purchasedOnWeb) {
@@ -183,8 +180,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
 
   bool isCurrentSubscription(SubscriptionDetails subscription) =>
       subscriptionController.currentSubscriptionInfo?.currentSubscription ==
-          subscription ||
-      isNewUserTrial && subscription.isTrial;
+      subscription;
 
   @override
   Widget build(BuildContext context) => SettingsSubscriptionView(this);
