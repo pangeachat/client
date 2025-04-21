@@ -1,7 +1,8 @@
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/subscription/models/base_subscription_info.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_repo.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class WebSubscriptionInfo extends CurrentSubscriptionInfo {
   WebSubscriptionInfo({
