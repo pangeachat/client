@@ -73,10 +73,26 @@ class MessageMorphInputBarContentState
     });
   }
 
+  TextStyle? textStyle(BuildContext context) => overlay.maxWidth > 600
+      ? Theme.of(context).textTheme.bodyLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+          )
+      : Theme.of(context).textTheme.bodyMedium?.copyWith(
+            fontWeight: FontWeight.bold,
+          );
+
   @override
   Widget build(BuildContext context) {
-    final iconSize = overlay.maxWidth > 600 ? 28.0 : 20.0;
-    final spacing = overlay.maxWidth > 600 ? 16.0 : 8.0;
+    final iconSize = overlay.maxWidth > 600
+        ? 28.0
+        : overlay.maxWidth > 600
+            ? 24.0
+            : 16.0;
+    final spacing = overlay.maxWidth > 600
+        ? 16.0
+        : overlay.maxWidth > 600
+            ? 8.0
+            : 4.0;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -99,13 +115,7 @@ class MessageMorphInputBarContentState
                   morph.getDisplayCopy(context),
                   token.text.content,
                 ),
-                style: overlay.maxWidth > 600
-                    ? Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        )
-                    : Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
+                style: textStyle(context),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -157,13 +167,17 @@ class MessageMorphInputBarContentState
           ).toList(),
         ),
         Container(
-          constraints: const BoxConstraints(
-            minHeight: 20,
+          constraints: BoxConstraints(
+            minHeight: overlay.maxWidth > 600 ? 20 : 34,
           ),
+          alignment: Alignment.center,
           child: selectedTag != null
               ? MorphMeaningWidget(
                   feature: morph,
                   tag: selectedTag!,
+                  style: overlay.maxWidth > 600
+                      ? Theme.of(context).textTheme.bodyLarge
+                      : Theme.of(context).textTheme.bodySmall,
                 )
               : const SizedBox.shrink(),
         ),
