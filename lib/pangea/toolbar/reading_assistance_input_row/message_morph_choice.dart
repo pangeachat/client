@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/pangea/analytics_details_popup/morph_meaning_widget.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_animation.dart';
@@ -16,6 +12,8 @@ import 'package:fluffychat/pangea/practice_activities/practice_activity_model.da
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/message_morph_choice_item.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 // this widget will handle the content of the input bar when mode == MessageMode.wordMorph
 
@@ -63,7 +61,6 @@ class MessageMorphInputBarContentState
   void didUpdateWidget(covariant MessageMorphInputBarContent oldWidget) {
     if (morph != oldWidget.overlayController.selectedMorph?.morph ||
         token != oldWidget.overlayController.selectedToken) {
-      selectedTag = null;
       setState(() {});
     }
     super.didUpdateWidget(oldWidget);
@@ -78,11 +75,11 @@ class MessageMorphInputBarContentState
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = overlay.maxWidth > 600 ? 30.0 : 24.0;
+    final iconSize = overlay.maxWidth > 600 ? 28.0 : 20.0;
     final spacing = overlay.maxWidth > 600 ? 16.0 : 8.0;
 
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       mainAxisSize: MainAxisSize.max,
       spacing: spacing,
       children: [
@@ -159,11 +156,17 @@ class MessageMorphInputBarContentState
             },
           ).toList(),
         ),
-        if (_correctChoice != null)
-          MorphMeaningWidget(
-            feature: morph,
-            tag: _correctChoice!,
+        Container(
+          constraints: const BoxConstraints(
+            minHeight: 20,
           ),
+          child: selectedTag != null
+              ? MorphMeaningWidget(
+                  feature: morph,
+                  tag: selectedTag!,
+                )
+              : const SizedBox.shrink(),
+        ),
       ],
     );
   }
