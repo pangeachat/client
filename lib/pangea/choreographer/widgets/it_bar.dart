@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
@@ -15,6 +16,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/utils/overlay.dart';
 import '../controllers/it_feedback_controller.dart';
 import '../models/it_response_model.dart';
@@ -232,10 +234,14 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                                           controller: itController,
                                           vocabCount: itController
                                               .choreographer.altTranslator
-                                              .countVocabularyWordsFromSteps(),
+                                              .countNewConstructs(
+                                            ConstructTypeEnum.vocab,
+                                          ),
                                           grammarCount: itController
                                               .choreographer.altTranslator
-                                              .countGrammarConstructsFromSteps(),
+                                              .countNewConstructs(
+                                            ConstructTypeEnum.morph,
+                                          ),
                                           feedbackText: itController
                                               .choreographer.altTranslator
                                               .getDefaultFeedback(context),
@@ -329,6 +335,7 @@ class ITChoices extends StatelessWidget {
     }
 
     controller.choreographer.chatController.inputFocus.unfocus();
+    MatrixState.pAnyState.closeOverlay("it_feedback_card");
     OverlayUtil.showPositionedCard(
       context: context,
       cardToShow: choiceFeedback == null
@@ -365,10 +372,13 @@ class ITChoices extends StatelessWidget {
       borderColor: borderColor,
       transformTargetId: controller.choreographer.itBarTransformTargetKey,
       isScrollable: choiceFeedback == null,
+      overlayKey: "it_feedback_card",
+      ignorePointer: true,
     );
   }
 
   void selectContinuance(int index, BuildContext context) {
+    MatrixState.pAnyState.closeOverlay("it_feedback_card");
     final Continuance continuance =
         controller.currentITStep!.continuances[index];
     if (continuance.level == 1) {

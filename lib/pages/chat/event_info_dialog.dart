@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
@@ -69,7 +70,26 @@ class EventInfoDialog extends StatelessWidget {
             title: Text('${L10n.of(context).status}:'),
             subtitle: Text(event.status.name),
           ),
-          ListTile(title: Text('${L10n.of(context).sourceCode}:')),
+          ListTile(
+            title: Text('${L10n.of(context).sourceCode}:'),
+            //#Pangea
+            trailing: IconButton(
+              icon: const Icon(Icons.copy),
+              onPressed: () {
+                Clipboard.setData(
+                  ClipboardData(
+                    text: prettyJson(event),
+                  ),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(L10n.of(context).copiedToClipboard),
+                  ),
+                );
+              },
+            ),
+          ),
+          //Pangea#
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Material(

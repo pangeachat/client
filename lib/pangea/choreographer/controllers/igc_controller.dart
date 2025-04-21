@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
 import '../../common/utils/overlay.dart';
 import '../models/span_card_model.dart';
@@ -172,6 +173,7 @@ class IgcController {
       }
 
       igcTextData!.matches = confirmedMatches;
+      choreographer.acceptNormalizationMatches();
 
       // TODO - for each new match,
       // check if existing igcTextData has one and only one match with the same error text and correction
@@ -242,7 +244,9 @@ class IgcController {
     }
 
     choreographer.chatController.inputFocus.unfocus();
+    MatrixState.pAnyState.closeAllOverlays(RegExp(r'span_card_overlay_\d+'));
     OverlayUtil.showPositionedCard(
+      overlayKey: "span_card_overlay_$firstMatchIndex",
       context: context,
       cardToShow: SpanCard(
         scm: SpanCardModel(
@@ -264,6 +268,8 @@ class IgcController {
       maxHeight: match.isITStart ? 260 : 350,
       maxWidth: 350,
       transformTargetId: choreographer.inputTransformTargetKey,
+      onDismiss: () => choreographer.setState(),
+      ignorePointer: true,
     );
   }
 

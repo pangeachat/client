@@ -64,7 +64,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   final Completer _tooltipCompleter = Completer();
 
   MessageMode _currentMode = MessageMode.noneSelected;
-  ReadingAssistanceMode? _readingAssistanceMode;
 
   Animation<Offset>? _overlayOffsetAnimation;
   Animation<Size>? _messageSizeAnimation;
@@ -145,6 +144,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   void _setCenteredMessageSize(RenderBox renderBox) {
+    if (_centeredMessageCompleter.isCompleted) return;
+
     _centeredMessageSize = renderBox.size;
     final offset = renderBox.localToGlobal(Offset.zero);
     _centeredMessageOffset = Offset(
@@ -183,11 +184,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     if (mode == ReadingAssistanceMode.messageMode) {
       setState(
-        () => _readingAssistanceMode = ReadingAssistanceMode.transitionMode,
+        () => widget.overlayController.readingAssistanceMode =
+            ReadingAssistanceMode.transitionMode,
       );
     } else if (mode == ReadingAssistanceMode.tokenMode) {
       setState(
-        () => _readingAssistanceMode = ReadingAssistanceMode.tokenMode,
+        () => widget.overlayController.readingAssistanceMode =
+            ReadingAssistanceMode.tokenMode,
       );
     }
 
@@ -235,7 +238,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
 
     await _animationController.forward(from: 0);
-    if (mounted) setState(() => _readingAssistanceMode = mode);
+    if (mounted) {
+      setState(() => widget.overlayController.readingAssistanceMode = mode);
+    }
   }
 
   T _runWithLogging<T>(
@@ -256,6 +261,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       return defaultValue;
     }
   }
+
+  ReadingAssistanceMode? get _readingAssistanceMode =>
+      widget.overlayController.readingAssistanceMode;
 
   double get _inputBarSize =>
       _readingAssistanceMode == ReadingAssistanceMode.messageMode ||
@@ -406,12 +414,17 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     if (hasHeaderOverflow) {
       final difference = topOffset - (_headerHeight + AppConfig.toolbarSpacing);
+      double newBottomOffset = _mediaQuery!.size.height -
+          _originalMessageOffset.dy +
+          difference -
+          _originalMessageSize.height;
+      if (newBottomOffset < _footerHeight + AppConfig.toolbarSpacing) {
+        newBottomOffset = _footerHeight + AppConfig.toolbarSpacing;
+      }
+
       return Offset(
         _ownMessage ? _messageRightOffset : _messageLeftOffset,
-        _mediaQuery!.size.height -
-            _originalMessageOffset.dy +
-            difference -
-            _originalMessageSize.height,
+        newBottomOffset,
       );
     } else {
       final difference =

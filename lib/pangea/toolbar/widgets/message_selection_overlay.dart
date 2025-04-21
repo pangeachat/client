@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/morph_selection.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/reading_assistance_content.dart';
@@ -86,6 +88,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   bool isPlayingAudio = false;
 
   final GlobalKey<ReadingAssistanceContentState> wordZoomKey = GlobalKey();
+
+  ReadingAssistanceMode? readingAssistanceMode; // default mode
 
   double maxWidth = AppConfig.toolbarMinWidth;
 
@@ -222,7 +226,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       return;
     }
 
-    _updateSelectedSpan(widget._initialSelectedToken!.text);
+    updateSelectedSpan(widget._initialSelectedToken!.text);
 
     int retries = 0;
     while (retries < 5 &&
@@ -285,14 +289,14 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   /// Update [selectedSpan]
-  void _updateSelectedSpan(PangeaTokenText selectedSpan, [bool force = false]) {
+  void updateSelectedSpan(PangeaTokenText selectedSpan, [bool force = false]) {
     if (selectedMorph != null) {
       selectedMorph = null;
     }
     // close overlay of previous token
     if (selectedToken != null) {
       MatrixState.pAnyState.closeOverlay(
-        selectedToken!.text.uniqueKey,
+        "${selectedToken!.text.uniqueKey}_toolbar",
       );
     }
 
@@ -329,9 +333,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         closePrevOverlay: false,
         backDropToDismiss: false,
         addBorder: false,
-        overlayKey: selectedToken!.text.uniqueKey,
+        overlayKey: "${selectedToken!.text.uniqueKey}_toolbar",
         maxHeight: AppConfig.toolbarMaxHeight,
-        maxWidth: AppConfig.toolbarMinWidth,
+        maxWidth: min(AppConfig.toolbarMinWidth, maxWidth),
       );
     }
   }
@@ -341,7 +345,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
         // close overlay of any selected token
         if (_selectedSpan != null) {
-          _updateSelectedSpan(_selectedSpan!);
+          updateSelectedSpan(_selectedSpan!);
         }
 
         toolbarMode = mode;
@@ -369,7 +373,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
   }
 
-  void onChoiceSelect(PracticeChoice choice, [bool force = false]) {
+  void onChoiceSelect(PracticeChoice? choice, [bool force = false]) {
     if (selectedChoice == choice && !force) {
       selectedChoice = null;
     } else {
@@ -383,7 +387,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     toolbarMode = MessageMode.wordMorph;
     // // close overlay of previous token
     if (_selectedSpan != null && _selectedSpan != newMorph.token.text) {
-      _updateSelectedSpan(_selectedSpan!);
+      updateSelectedSpan(_selectedSpan!);
     }
     selectedMorph = newMorph;
     setState(() {});
@@ -401,6 +405,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   bool get showToolbarButtons =>
       pangeaMessageEvent != null &&
       pangeaMessageEvent!.event.messageType == MessageTypes.Text;
+
+  bool get hideWordCardContent =>
+      readingAssistanceMode == ReadingAssistanceMode.messageMode;
 
   bool get isPracticeComplete => isTranslationUnlocked;
 
@@ -543,7 +550,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       );
     }
 
-    _updateSelectedSpan(token.text);
+    updateSelectedSpan(token.text);
   }
 
   /// Whether the given token is currently selected or highlighted

@@ -4,11 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/language_detection_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
-import 'package:fluffychat/pangea/choreographer/models/span_card_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/choreographer/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -17,6 +16,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_ev
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 // import 'package:language_tool/language_tool.dart';
 
@@ -359,17 +359,34 @@ class IGCTextData {
     );
   }
 
+  int? get _openMatchIndex {
+    final RegExp pattern = RegExp(r'span_card_overlay_\d+');
+    final String? matchingKeys =
+        MatrixState.pAnyState.getMatchingOverlayKeys(pattern).firstOrNull;
+    if (matchingKeys == null) return null;
+    final int? index = int.tryParse(matchingKeys.split("_").last);
+    if (index == null ||
+        matches.length <= index ||
+        matches[index].status != PangeaMatchStatus.open) {
+      return null;
+    }
+
+    return index;
+  }
+
   //PTODO - handle multitoken spans
   /// Returns a list of [TextSpan]s used to display the text in the input field
   /// with the appropriate styling for each error match.
   List<TextSpan> constructTokenSpan({
-    required BuildContext context,
+    ChoreoRecordStep? choreoStep,
     TextStyle? defaultStyle,
-    required SpanCardModel? spanCardModel,
-    required bool handleClick,
-    required String transformTargetId,
-    required Room room,
   }) {
+    final stepMatch = choreoStep?.acceptedOrIgnoredMatch;
+    final List<PangeaMatch> textSpanMatches = List.from(matches);
+    if (stepMatch != null && stepMatch.status == PangeaMatchStatus.automatic) {
+      textSpanMatches.add(stepMatch);
+    }
+
     final List<TextSpan> items = [];
 
     if (loading) {
@@ -381,7 +398,8 @@ class IGCTextData {
       ];
     }
 
-    final List<List<int>> matchRanges = matches
+    textSpanMatches.sort((a, b) => a.match.offset.compareTo(b.match.offset));
+    final List<List<int>> matchRanges = textSpanMatches
         .map(
           (match) => [
             match.match.offset,
@@ -403,12 +421,16 @@ class IGCTextData {
       if (inMatch) {
         // if the pointer is in a match, then add that match to items
         // and then move the pointer to the end of the match range
-        final PangeaMatch match = matches[matchIndex];
+        final PangeaMatch match = textSpanMatches[matchIndex];
         items.add(
           getSpanItem(
             start: match.match.offset,
             end: match.match.offset + match.match.length,
-            style: match.textStyle(defaultStyle),
+            style: match.textStyle(
+              matchIndex,
+              _openMatchIndex,
+              defaultStyle,
+            ),
           ),
         );
 

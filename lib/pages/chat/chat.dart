@@ -46,7 +46,6 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/instructions/empty_chat_popup.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dialog.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
@@ -407,7 +406,7 @@ class ChatController extends State<ChatPageWithRoom>
         pangeaController.getAnalytics.analyticsStream.stream.listen((update) {
       if (update.targetID == null) return;
       OverlayUtil.showOverlay(
-        overlayKey: update.targetID,
+        overlayKey: "${update.targetID ?? ""}_points",
         followerAnchor: Alignment.bottomCenter,
         targetAnchor: Alignment.bottomCenter,
         context: context,
@@ -661,7 +660,7 @@ class ChatController extends State<ChatPageWithRoom>
     //#Pangea
     choreographer.stateStream.close();
     choreographer.dispose();
-    MatrixState.pAnyState.closeOverlay();
+    MatrixState.pAnyState.closeAllOverlays();
     showToolbarStream.close();
     stopAudioStream.close();
     hideTextController.dispose();
@@ -680,7 +679,10 @@ class ChatController extends State<ChatPageWithRoom>
     _router.routeInformationProvider.addListener(_onRouteChanged);
   }
 
-  void _onRouteChanged() => stopAudioStream.add(null);
+  void _onRouteChanged() {
+    stopAudioStream.add(null);
+    MatrixState.pAnyState.closeAllOverlays();
+  }
 
   // TextEditingController sendController = TextEditingController();
   PangeaTextController get sendController => choreographer.textController;
@@ -1923,13 +1925,6 @@ class ChatController extends State<ChatPageWithRoom>
     final theme = Theme.of(context);
     return Row(
       children: [
-        // #Pangea
-        EmptyChatPopup(
-          room: room,
-          transformTargetId:
-              choreographer.inputLayerLinkAndKey.transformTargetId,
-        ),
-        // Pangea#
         Expanded(
           child: ChatView(this),
         ),
