@@ -6,6 +6,7 @@ import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 class LevelUpUtil {
@@ -425,16 +426,16 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                               const SizedBox(
                                 height: 24,
                               ),
-                              // Dino svg, removed because of hardcoded text in image
-                              // Column(
-                              //   children: [
-                              //     SvgPicture.asset(
-                              //       'assets/pangea/DinoBot-Congratulate.svg',
-                              //       width: 200,
-                              //       height: 200,
-                              //     ),
-                              //   ],
-                              // ),
+                              Column(
+                                children: [
+                                  SvgPicture.asset(
+                                    // 'assets/pangea/DinoBot-Congratulate.svg',
+                                    'assets/pangea/DinoBot-Congratulate-2.svg',
+                                    width: 200,
+                                    height: 200,
+                                  ),
+                                ],
+                              ),
                               const SizedBox(
                                 height: 24,
                               ),
