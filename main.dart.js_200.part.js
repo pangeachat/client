@@ -3736,7 +3736,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Elija las mejores opciones para traducir su mensaje";
     },
     get$completeActivitiesToUnlock() {
-      return "Complete one of the activities (emoji, meaning, listening OR grammar) to unlock the translation!";
+      return "Complete at least one activity to unlock the translation!";
     },
     get$botSettingsSubtitle() {
       return "Invitar a un bot a moderar la actividad del chat";
@@ -4368,6 +4368,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ef6V2+WTa1motY1LCpXkuifY30Y=");
+})($__dart_deferred_initializers__, "GWo9/BNkoImVObCJiD03dLF7dQ4=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

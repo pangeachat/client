@@ -3736,7 +3736,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ch\u1ecdn ph\u01b0\u01a1ng \xe1n t\u1ed1t nh\u1ea5t \u0111\u1ec3 d\u1ecbch tin nh\u1eafn c\u1ee7a b\u1ea1n!";
     },
     get$completeActivitiesToUnlock() {
-      return "Complete one of the activities (emoji, meaning, listening OR grammar) to unlock the translation!";
+      return "Complete at least one activity to unlock the translation!";
     },
     get$botSettingsSubtitle() {
       return "M\u1eddi bot ki\u1ec3m duy\u1ec7t ho\u1eb7c kh\u1edfi t\u1ea1o ho\u1ea1t \u0111\u1ed9ng tr\xf2 chuy\u1ec7n";
@@ -4368,6 +4368,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "9FlngiPrjmEadw4kV0mmVK0nt1Y=");
+})($__dart_deferred_initializers__, "IYktNX3je0oHhWy4xlX9Ho/3PkQ=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map
