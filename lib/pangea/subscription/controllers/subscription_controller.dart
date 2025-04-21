@@ -216,7 +216,11 @@ class SubscriptionController extends BaseController {
   }
 
   Future<void> activateNewUserTrial() async {
-    await SubscriptionRepo.activateFreeTrial();
+    if (await SubscriptionRepo.activateFreeTrial()) {
+      await updateCustomerInfo();
+    } else {
+      // We already log this inside the activate free trial method
+    }
   }
 
   Future<void> updateCustomerInfo() async {

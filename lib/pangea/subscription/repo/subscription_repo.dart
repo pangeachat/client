@@ -60,7 +60,7 @@ class SubscriptionRepo {
     }
   }
 
-  static Future<List<SubscriptionDetails>?> activateFreeTrial() async {
+  static Future<bool> activateFreeTrial() async {
     try {
       final Requests req = Requests(
         choreoApiKey: Environment.choreoApiKey,
@@ -69,17 +69,23 @@ class SubscriptionRepo {
       final http.Response res = await req.get(
         url: PApiUrls.rcProductsTrial,
       );
-      final Map<String, dynamic> json = jsonDecode(res.body);
-      final RCProductsResponseModel resp =
-          RCProductsResponseModel.fromJson(json);
-      return resp.allProducts;
+
+      if (res.statusCode != 201) {
+        ErrorHandler.logError(
+          e: res.body,
+          data: {},
+        );
+        return false;
+      } else {
+        return true;
+      }
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
         s: s,
         data: {},
       );
-      return null;
+      return false;
     }
   }
 

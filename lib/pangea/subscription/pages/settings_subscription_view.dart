@@ -99,13 +99,6 @@ class ManagementNotAvailableWarning extends StatelessWidget {
 
     String getWarningText() {
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
-      if (currentSubscriptionInfo != null &&
-          currentSubscriptionInfo.currentSubscriptionId ==
-              "rc_promo_testentitlement_custom") {
-        return L10n.of(context).trialExpiration(
-          formatter.format(currentSubscriptionInfo.expirationDate!),
-        );
-      }
       if (controller.currentSubscriptionAvailable) {
         String warningText = L10n.of(context).subsciptionPlatformTooltip;
         if (controller.purchasePlatformDisplayName != null) {

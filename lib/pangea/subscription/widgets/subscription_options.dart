@@ -23,13 +23,7 @@ class SubscriptionOptions extends StatelessWidget {
           ? [
               SubscriptionCard(
                 onTap: () => pangeaController.subscriptionController
-                    .submitSubscriptionChange(
-                  SubscriptionDetails(
-                    price: 0,
-                    id: "",
-                  ),
-                  context,
-                ),
+                    .activateNewUserTrial(),
                 title: L10n.of(context).freeTrial,
                 description: L10n.of(context).freeTrialDesc,
                 buttonText: L10n.of(context).activateTrial,
