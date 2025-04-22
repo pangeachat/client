@@ -4,44 +4,35 @@ class WordZoomActivityButton extends StatelessWidget {
   final Widget icon;
   final bool isSelected;
   final VoidCallback onPressed;
-
+  final VoidCallback? onDoubleTap;
+  final VoidCallback? onLongPress;
   final String? tooltip;
   final double? opacity;
+  final bool isEnabled;
 
   const WordZoomActivityButton({
     required this.icon,
     required this.isSelected,
     required this.onPressed,
+    this.onDoubleTap,
+    this.onLongPress,
     this.tooltip,
     this.opacity,
     super.key,
+    this.isEnabled = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    Widget buttonContent = AnimatedSize(
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeInOut,
-      child: IconButton(
-        onPressed: onPressed,
-        icon: AnimatedBuilder(
-          animation: Listenable.merge([ValueNotifier(isSelected)]),
-          builder: (context, child) {
-            return Transform.scale(
-              scale: isSelected ? 1.25 : 1.0,
-              child: icon,
-            );
-          },
-        ),
-        iconSize: 24, // Keep this constant as scaling handles the size change
-        color: isSelected ? Theme.of(context).colorScheme.primary : null,
-        visualDensity: VisualDensity.compact,
-        // style: IconButton.styleFrom(
-        //   backgroundColor: isSelected
-        //       ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.25)
-        //       : Colors.transparent,
-        // ),
+    Widget buttonContent = IconButton(
+      icon: Transform.scale(
+        scale: isSelected ? 1.25 : 1.0,
+        child: icon,
       ),
+      onPressed: null, // Disable IconButton's onPressed
+      iconSize: 24,
+      color: isSelected ? Theme.of(context).colorScheme.primary : null,
+      visualDensity: VisualDensity.compact,
     );
 
     if (opacity != null) {
@@ -58,6 +49,11 @@ class WordZoomActivityButton extends StatelessWidget {
       );
     }
 
-    return buttonContent;
+    return GestureDetector(
+      onTap: onPressed,
+      onDoubleTap: onDoubleTap,
+      onLongPress: onLongPress,
+      child: buttonContent,
+    );
   }
 }
