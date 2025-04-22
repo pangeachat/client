@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class PracticeMatchItem extends StatefulWidget {
   const PracticeMatchItem({
@@ -62,11 +63,16 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
         setState(() => _isPlaying = true);
       }
       try {
-        await tts.tryToSpeak(
-          widget.audioContent!,
-          context,
-          targetID: 'word-audio-button',
-        );
+        final l2 =
+            MatrixState.pangeaController.languageController.activeL2Code();
+        if (l2 != null) {
+          await tts.tryToSpeak(
+            widget.audioContent!,
+            context,
+            targetID: 'word-audio-button',
+            langCode: l2,
+          );
+        }
       } catch (e, s) {
         debugger(when: kDebugMode);
         ErrorHandler.logError(
