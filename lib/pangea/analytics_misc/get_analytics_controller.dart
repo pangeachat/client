@@ -171,7 +171,7 @@ class GetAnalyticsController extends BaseController {
     _updateAnalyticsStream(
       points: analyticsUpdate.newConstructs.fold<int>(
         0,
-        (previousValue, element) => previousValue + element.pointValue,
+        (previousValue, element) => previousValue + element.xp,
       ),
       targetID: analyticsUpdate.targetID,
       newConstructs: [...newUnlockedMorphs, ...newUnlockedVocab],
