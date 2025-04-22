@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/choreographer/utils/input_paste_listener.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
@@ -24,6 +25,7 @@ import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
+import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
@@ -154,59 +156,43 @@ class Choreographer {
               )
             : null;
 
-    // we've got a rather elaborate method of updating tokens after matches are accepted
-    // so we need to check if the reconstructed text matches the current text
-    // if not, let's get the tokens again and log an error
-    if (igc.igcTextData?.tokens != null &&
-        PangeaToken.reconstructText(igc.igcTextData!.tokens).trim() !=
-            currentText.trim()) {
-      if (kDebugMode) {
-        PangeaToken.reconstructText(
-          igc.igcTextData!.tokens,
-          debugWalkThrough: true,
-        );
-      }
-      ErrorHandler.logError(
-        m: "reconstructed text not working",
-        s: StackTrace.current,
-        data: {
-          "igcTextData": igc.igcTextData?.toJson(),
-          "choreoRecord": choreoRecord.toJson(),
-        },
-      );
-
-      await igc.getIGCTextData(onlyTokensAndLanguageDetection: true);
-    }
-
-    // TODO - why does both it and igc need to be enabled for choreo to be applicable?
-    // final ChoreoRecord? applicableChoreo =
-    //     isITandIGCEnabled && igc.igcTextData != null ? choreoRecord : null;
-
-    // if tokens OR language detection are not available, we should get them
-    // notes
-    // 1) we probably need to move this to after we clear the input field
-    // or the user could experience some lag here.
-    // 2)  that this call is being made after we've determined if we have an applicable choreo in order to
-    // say whether correction was run on the message. we may eventually want
-    // to edit the useType after
-    if ((l2Lang != null && l1Lang != null) &&
-        (igc.igcTextData?.tokens == null ||
-            igc.igcTextData?.detectedLanguage == null)) {
-      await igc.getIGCTextData(onlyTokensAndLanguageDetection: true);
-    }
+    final detectionResp = await LanguageDetectionRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      request: LanguageDetectionRequest(
+        text: currentText,
+        senderl1: l1LangCode,
+        senderl2: l2LangCode,
+      ),
+    );
+    final detections = detectionResp.detections;
+    final detectedLanguage =
+        detections.firstOrNull?.langCode ?? LanguageKeys.unknownLanguage;
 
     final PangeaRepresentation originalSent = PangeaRepresentation(
-      langCode:
-          igc.igcTextData?.detectedLanguage ?? LanguageKeys.unknownLanguage,
+      langCode: detectedLanguage,
       text: currentText,
       originalSent: true,
       originalWritten: originalWritten == null,
     );
 
-    final PangeaMessageTokens? tokensSent = igc.igcTextData?.tokens != null
+    List<PangeaToken>? res;
+    if (l1LangCode != null && l2LangCode != null) {
+      res = await pangeaController.messageData.getTokens(
+        repEventId: null,
+        room: chatController.room,
+        req: TokensRequestModel(
+          fullText: currentText,
+          langCode: detectedLanguage,
+          senderL1: l1LangCode!,
+          senderL2: l2LangCode!,
+        ),
+      );
+    }
+
+    final PangeaMessageTokens? tokensSent = res != null
         ? PangeaMessageTokens(
-            tokens: igc.igcTextData!.tokens,
-            detections: igc.igcTextData!.detections.detections,
+            tokens: res,
+            detections: detections,
           )
         : null;
 
@@ -235,7 +221,7 @@ class Choreographer {
     }
     choreoMode = ChoreoMode.it;
     itController.initializeIT(
-      ITStartData(_textController.text, igc.igcTextData?.detectedLanguage),
+      ITStartData(_textController.text, null),
     );
     itMatch.status = PangeaMatchStatus.accepted;
 

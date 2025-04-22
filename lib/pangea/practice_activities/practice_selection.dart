@@ -44,8 +44,6 @@ class PracticeSelection {
       _tokens.any((t) => t.lemma.saveVocab) &&
       langCode.split("-")[0] == _userL2.split("-")[0];
 
-  String get messageText => PangeaToken.reconstructText(tokens);
-
   Map<String, dynamic> toJson() => {
         'createdAt': createdAt.toIso8601String(),
         'lang_code': langCode,
