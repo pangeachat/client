@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/it_controller.dart';
@@ -395,15 +394,16 @@ class ITChoices extends StatelessWidget {
       );
     }
     if (!continuance.wasClicked) {
-      controller.choreographer.pangeaController.putAnalytics.addDraftUses(
-        continuance.tokens,
-        controller.choreographer.roomId,
-        continuance.level > 1
-            ? ConstructUseTypeEnum.incIt
-            : ConstructUseTypeEnum.corIt,
-        targetID:
-            "${continuance.text.trim()}${controller.currentITStep.hashCode.toString()}",
-      );
+      // TOKENS TODO - replace these tokens
+      // controller.choreographer.pangeaController.putAnalytics.addDraftUses(
+      //   continuance.tokens,
+      //   controller.choreographer.roomId,
+      //   continuance.level > 1
+      //       ? ConstructUseTypeEnum.incIt
+      //       : ConstructUseTypeEnum.corIt,
+      //   targetID:
+      //       "${continuance.text.trim()}${controller.currentITStep.hashCode.toString()}",
+      // );
     }
     controller.currentITStep!.continuances[index].wasClicked = true;
     controller.choreographer.setState();

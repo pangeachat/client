@@ -7,12 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../models/custom_input_translation_model.dart';
 import '../models/it_response_model.dart';
@@ -323,19 +321,20 @@ class ITController {
 
     showChoiceFeedback = true;
 
-    // Get a list of the choices that the user did not click
-    final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
-        .where((e) => !e.wasClicked)
-        .map((e) => e.tokens)
-        .expand((e) => e)
-        .toList();
+    // TOKENS TODO - replace these tokens
+    // // Get a list of the choices that the user did not click
+    // final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
+    //     .where((e) => !e.wasClicked)
+    //     .map((e) => e.tokens)
+    //     .expand((e) => e)
+    //     .toList();
 
-    // Save those choices' tokens to local construct analytics as ignored tokens
-    choreographer.pangeaController.putAnalytics.addDraftUses(
-      ignoredTokens ?? [],
-      choreographer.roomId,
-      ConstructUseTypeEnum.ignIt,
-    );
+    // // Save those choices' tokens to local construct analytics as ignored tokens
+    // choreographer.pangeaController.putAnalytics.addDraftUses(
+    //   ignoredTokens ?? [],
+    //   choreographer.roomId,
+    //   ConstructUseTypeEnum.ignIt,
+    // );
 
     Future.delayed(
       const Duration(

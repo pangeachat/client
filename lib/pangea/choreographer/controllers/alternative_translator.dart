@@ -4,14 +4,10 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import '../repo/similarity_repo.dart';
 
 class AlternativeTranslator {
@@ -102,85 +98,87 @@ class AlternativeTranslator {
     }
   }
 
-  List<OneConstructUse> get _itStepConstructs {
-    final metadata = ConstructUseMetaData(
-      roomId: choreographer.roomId,
-      timeStamp: DateTime.now(),
-    );
+  // List<OneConstructUse> get _itStepConstructs {
+  //   final metadata = ConstructUseMetaData(
+  //     roomId: choreographer.roomId,
+  //     timeStamp: DateTime.now(),
+  //   );
 
-    final List<OneConstructUse> constructs = [];
-    for (final step in choreographer.choreoRecord.itSteps) {
-      for (final continuance in step.continuances) {
-        final ConstructUseTypeEnum useType = continuance.wasClicked &&
-                continuance.level == ChoreoConstants.levelThresholdForGreen
-            ? ConstructUseTypeEnum.corIt
-            : continuance.wasClicked
-                ? ConstructUseTypeEnum.incIt
-                : ConstructUseTypeEnum.ignIt;
+  //   final List<OneConstructUse> constructs = [];
+  //   for (final step in choreographer.choreoRecord.itSteps) {
+  //     for (final continuance in step.continuances) {
+  //       final ConstructUseTypeEnum useType = continuance.wasClicked &&
+  //               continuance.level == ChoreoConstants.levelThresholdForGreen
+  //           ? ConstructUseTypeEnum.corIt
+  //           : continuance.wasClicked
+  //               ? ConstructUseTypeEnum.incIt
+  //               : ConstructUseTypeEnum.ignIt;
 
-        final tokens = continuance.tokens.where((t) => t.lemma.saveVocab);
-        constructs.addAll(
-          tokens.map(
-            (token) => OneConstructUse(
-              useType: useType,
-              lemma: token.lemma.text,
-              constructType: ConstructTypeEnum.vocab,
-              metadata: metadata,
-              category: token.pos,
-              form: token.text.content,
-            ),
-          ),
-        );
-        for (final token in tokens) {
-          constructs.add(
-            OneConstructUse(
-              useType: useType,
-              lemma: token.pos,
-              form: token.text.content,
-              category: "POS",
-              constructType: ConstructTypeEnum.morph,
-              metadata: metadata,
-            ),
-          );
-          for (final entry in token.morph.entries) {
-            constructs.add(
-              OneConstructUse(
-                useType: useType,
-                lemma: entry.value,
-                form: token.text.content,
-                category: entry.key,
-                constructType: ConstructTypeEnum.morph,
-                metadata: metadata,
-              ),
-            );
-          }
-        }
-      }
-    }
-    return constructs;
-  }
+  //       final tokens = continuance.tokens.where((t) => t.lemma.saveVocab);
+  //       constructs.addAll(
+  //         tokens.map(
+  //           (token) => OneConstructUse(
+  //             useType: useType,
+  //             lemma: token.lemma.text,
+  //             constructType: ConstructTypeEnum.vocab,
+  //             metadata: metadata,
+  //             category: token.pos,
+  //             form: token.text.content,
+  //           ),
+  //         ),
+  //       );
+  //       for (final token in tokens) {
+  //         constructs.add(
+  //           OneConstructUse(
+  //             useType: useType,
+  //             lemma: token.pos,
+  //             form: token.text.content,
+  //             category: "POS",
+  //             constructType: ConstructTypeEnum.morph,
+  //             metadata: metadata,
+  //           ),
+  //         );
+  //         for (final entry in token.morph.entries) {
+  //           constructs.add(
+  //             OneConstructUse(
+  //               useType: useType,
+  //               lemma: entry.value,
+  //               form: token.text.content,
+  //               category: entry.key,
+  //               constructType: ConstructTypeEnum.morph,
+  //               metadata: metadata,
+  //             ),
+  //           );
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return constructs;
+  // }
 
   int countNewConstructs(ConstructTypeEnum type) {
-    final vocabUses = _itStepConstructs.where((c) => c.constructType == type);
-    final Map<ConstructIdentifier, int> constructPoints = {};
-    for (final use in vocabUses) {
-      constructPoints[use.identifier] ??= 0;
-      constructPoints[use.identifier] =
-          constructPoints[use.identifier]! + use.pointValue;
-    }
+    // TOKENS TODO - replace these tokens
+    // final vocabUses = _itStepConstructs.where((c) => c.constructType == type);
+    // final Map<ConstructIdentifier, int> constructPoints = {};
+    // for (final use in vocabUses) {
+    //   constructPoints[use.identifier] ??= 0;
+    //   constructPoints[use.identifier] =
+    //       constructPoints[use.identifier]! + use.pointValue;
+    // }
 
-    final constructListModel =
-        MatrixState.pangeaController.getAnalytics.constructListModel;
+    // final constructListModel =
+    //     MatrixState.pangeaController.getAnalytics.constructListModel;
 
-    int newConstructCount = 0;
-    for (final entry in constructPoints.entries) {
-      final construct = constructListModel.getConstructUses(entry.key);
-      if (construct?.points == entry.value) {
-        newConstructCount++;
-      }
-    }
+    // int newConstructCount = 0;
+    // for (final entry in constructPoints.entries) {
+    //   final construct = constructListModel.getConstructUses(entry.key);
+    //   if (construct?.points == entry.value) {
+    //     newConstructCount++;
+    //   }
+    // }
 
-    return newConstructCount;
+    // return newConstructCount;
+    return 0;
   }
 
   String getDefaultFeedback(BuildContext context) {
