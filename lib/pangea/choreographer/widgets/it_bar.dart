@@ -393,18 +393,6 @@ class ITChoices extends StatelessWidget {
         continuance.feedbackText(context),
       );
     }
-    if (!continuance.wasClicked) {
-      // TOKENS TODO - replace these tokens
-      // controller.choreographer.pangeaController.putAnalytics.addDraftUses(
-      //   continuance.tokens,
-      //   controller.choreographer.roomId,
-      //   continuance.level > 1
-      //       ? ConstructUseTypeEnum.incIt
-      //       : ConstructUseTypeEnum.corIt,
-      //   targetID:
-      //       "${continuance.text.trim()}${controller.currentITStep.hashCode.toString()}",
-      // );
-    }
     controller.currentITStep!.continuances[index].wasClicked = true;
     controller.choreographer.setState();
   }

@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -163,10 +162,9 @@ class ITController {
       if (isTranslationDone) {
         nextITStep = null;
         choreographer.altTranslator.setTranslationFeedback();
-        choreographer.getLanguageHelp(onlyTokensAndLanguageDetection: true);
       } else {
         nextITStep = Completer<CurrentITStep?>();
-        final nextStep = await getNextTranslationData();
+        final nextStep = await _getNextTranslationData();
         nextITStep?.complete(nextStep);
       }
     } catch (e, s) {
@@ -190,7 +188,7 @@ class ITController {
     }
   }
 
-  Future<CurrentITStep?> getNextTranslationData() async {
+  Future<CurrentITStep?> _getNextTranslationData() async {
     if (sourceText == null) {
       ErrorHandler.logError(
         e: Exception("sourceText is null in getNextTranslationData"),
@@ -298,20 +296,6 @@ class ITController {
     );
   }
 
-  // MessageServiceModel? messageServiceModelWithMessageId() =>
-  //     usedInteractiveTranslation
-  //         ? MessageServiceModel(
-  //             classId: choreographer.classId,
-  //             roomId: choreographer.roomId,
-  //             message: choreographer.currentText,
-  //             messageId: null,
-  //             payloadIds: payLoadIds,
-  //             userId: choreographer.userId!,
-  //             l1Lang: sourceLangCode,
-  //             l2Lang: targetLangCode,
-  //           )
-  //         : null;
-
   //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
@@ -320,21 +304,6 @@ class ITController {
     completedITSteps.add(itStep);
 
     showChoiceFeedback = true;
-
-    // TOKENS TODO - replace these tokens
-    // // Get a list of the choices that the user did not click
-    // final List<PangeaToken>? ignoredTokens = currentITStep?.continuances
-    //     .where((e) => !e.wasClicked)
-    //     .map((e) => e.tokens)
-    //     .expand((e) => e)
-    //     .toList();
-
-    // // Save those choices' tokens to local construct analytics as ignored tokens
-    // choreographer.pangeaController.putAnalytics.addDraftUses(
-    //   ignoredTokens ?? [],
-    //   choreographer.roomId,
-    //   ConstructUseTypeEnum.ignIt,
-    // );
 
     Future.delayed(
       const Duration(
@@ -356,8 +325,6 @@ class ITController {
     payLoadIds.add(res.payloadId);
   }
 
-  bool get usedInteractiveTranslation => sourceText != null;
-
   bool get isTranslationDone => currentITStep != null && currentITStep!.isFinal;
 
   bool get isOpen => _isOpen;
@@ -370,41 +337,12 @@ class ITController {
 
   bool get isLoading => choreographer.isFetching;
 
-  String latestChoiceFeedback(BuildContext context) =>
-      completedITSteps.isNotEmpty
-          ? completedITSteps.last.choiceFeedback(context)
-          : "";
-
-  // String translationFeedback(BuildContext context) =>
-  //     completedITSteps.isNotEmpty
-  //         ? completedITSteps.last.translationFeedback(context)
-  //         : "";
-
-  bool get showAlternativeTranslationsOption => completedITSteps.isNotEmpty
-      ? completedITSteps.last.showAlternativeTranslationOption &&
-          sourceText != null
-      : false;
-
-  setIsEditingSourceText(bool value) {
+  void setIsEditingSourceText(bool value) {
     _isEditingSourceText = value;
     choreographer.setState();
   }
 
   bool get isEditingSourceText => _isEditingSourceText;
-
-  int get correctChoices =>
-      completedITSteps.where((element) => element.isCorrect).length;
-
-  int get wildcardChoices =>
-      completedITSteps.where((element) => element.isYellow).length;
-
-  int get incorrectChoices =>
-      completedITSteps.where((element) => element.isWrong).length;
-
-  int get customChoices =>
-      completedITSteps.where((element) => element.isCustom).length;
-
-  bool get allCorrect => completedITSteps.every((element) => element.isCorrect);
 }
 
 class ITStartData {

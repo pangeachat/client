@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -194,9 +197,9 @@ class PangeaRepresentation {
               PangeaMatchStatus.accepted) {
         uses.addAll(
           token.allUses(
-            ConstructUseTypeEnum.ignIGC,
+            ConstructUseTypeEnum.ga,
             metadata,
-            ConstructUseTypeEnum.ignIGC.pointValue,
+            0,
           ),
         );
         continue;
@@ -206,14 +209,27 @@ class PangeaRepresentation {
         final selectedChoices = tokenStep.itStep!.continuances
             .where((choice) => choice.wasClicked)
             .length;
-        if (selectedChoices == 0) continue;
+        if (selectedChoices == 0) {
+          ErrorHandler.logError(
+            e: "No selected choices for IT step",
+            data: {
+              "token": token.text.content,
+              "step": tokenStep.toJson(),
+            },
+          );
+          continue;
+        }
 
-        final xp = ConstructUseTypeEnum.corIt.pointValue +
-            (ConstructUseTypeEnum.incIt.pointValue * (selectedChoices - 1));
+        final corITPoints = ConstructUseTypeEnum.corIt.pointValue;
+        final incITPoints = ConstructUseTypeEnum.incIt.pointValue;
+        final xp = max(
+          0,
+          corITPoints + (incITPoints * (selectedChoices - 1)),
+        );
 
         uses.addAll(
           token.allUses(
-            ConstructUseTypeEnum.corIt,
+            ConstructUseTypeEnum.ta,
             metadata,
             xp,
           ),
@@ -222,24 +238,29 @@ class PangeaRepresentation {
         final selectedChoices = tokenStep.acceptedOrIgnoredMatch!.match.choices!
             .where((choice) => choice.selected)
             .length;
-        if (selectedChoices == 0) continue;
+        if (selectedChoices == 0) {
+          ErrorHandler.logError(
+            e: "No selected choices for IGC step",
+            data: {
+              "token": token.text.content,
+              "step": tokenStep.toJson(),
+            },
+          );
+          continue;
+        }
 
-        final xp = ConstructUseTypeEnum.corIGC.pointValue +
-            (ConstructUseTypeEnum.incIGC.pointValue * (selectedChoices - 1));
-
-        uses.addAll(
-          token.allUses(
-            ConstructUseTypeEnum.corIGC,
-            metadata,
-            xp,
-          ),
+        final corIGCPoints = ConstructUseTypeEnum.corIGC.pointValue;
+        final incIGCPoints = ConstructUseTypeEnum.incIGC.pointValue;
+        final xp = max(
+          0,
+          corIGCPoints + (incIGCPoints * (selectedChoices - 1)),
         );
 
         uses.addAll(
           token.allUses(
             ConstructUseTypeEnum.ga,
             metadata,
-            ConstructUseTypeEnum.ga.pointValue,
+            xp,
           ),
         );
       }

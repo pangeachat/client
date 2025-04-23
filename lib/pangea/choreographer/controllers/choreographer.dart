@@ -146,6 +146,7 @@ class Choreographer {
       return;
     }
 
+    chatController.sendFakeMessage();
     final PangeaRepresentation? originalWritten =
         choreoRecord.includedIT && itController.sourceText != null
             ? PangeaRepresentation(
@@ -270,9 +271,7 @@ class Choreographer {
         () => getLanguageHelp(),
       );
     } else {
-      getLanguageHelp(
-        onlyTokensAndLanguageDetection: ChoreoMode.it == choreoMode,
-      );
+      getLanguageHelp();
     }
 
     //Note: we don't set the keyboard type on each keyboard stroke so this is how we default to
@@ -286,7 +285,6 @@ class Choreographer {
   /// or if autoIGC is not enabled and the user has not manually requested it.
   /// [onlyTokensAndLanguageDetection] will
   Future<void> getLanguageHelp({
-    bool onlyTokensAndLanguageDetection = false,
     bool manual = false,
   }) async {
     try {
@@ -306,17 +304,13 @@ class Choreographer {
 
       // if getting language assistance after finishing IT,
       // reset the itController
-      if (choreoMode == ChoreoMode.it &&
-          itController.isTranslationDone &&
-          !onlyTokensAndLanguageDetection) {
+      if (choreoMode == ChoreoMode.it && itController.isTranslationDone) {
         itController.clear();
       }
 
       await (isRunningIT
           ? itController.getTranslationData(_useCustomInput)
-          : igc.getIGCTextData(
-              onlyTokensAndLanguageDetection: onlyTokensAndLanguageDetection,
-            ));
+          : igc.getIGCTextData());
     } catch (err, stack) {
       ErrorHandler.logError(
         e: err,
@@ -329,7 +323,6 @@ class Choreographer {
           "itEnabled": itEnabled,
           "isAutoIGCEnabled": isAutoIGCEnabled,
           "isTranslationDone": itController.isTranslationDone,
-          "onlyTokensAndLanguageDetection": onlyTokensAndLanguageDetection,
           "useCustomInput": _useCustomInput,
         },
       );

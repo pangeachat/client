@@ -72,32 +72,21 @@ class IgcController {
     });
   }
 
-  Future<void> getIGCTextData({
-    required bool onlyTokensAndLanguageDetection,
-  }) async {
+  Future<void> getIGCTextData() async {
     try {
       if (choreographer.currentText.isEmpty) return clear();
-
-      // if tokenizing on message send, tokenization might take a while
-      // so add a fake event to the timeline to visually indicate that the message is being sent
-      if (onlyTokensAndLanguageDetection &&
-          choreographer.choreoMode != ChoreoMode.it) {
-        choreographer.chatController.sendFakeMessage();
-      }
-
       debugPrint('getIGCTextData called with ${choreographer.currentText}');
-      debugPrint(
-        'getIGCTextData called with tokensOnly = $onlyTokensAndLanguageDetection',
-      );
 
       final IGCRequestBody reqBody = IGCRequestBody(
         fullText: choreographer.currentText,
         userId: choreographer.pangeaController.userController.userId!,
         userL1: choreographer.l1LangCode!,
         userL2: choreographer.l2LangCode!,
-        enableIGC: choreographer.igcEnabled && !onlyTokensAndLanguageDetection,
-        enableIT: choreographer.itEnabled && !onlyTokensAndLanguageDetection,
-        prevMessages: prevMessages(),
+        enableIGC: choreographer.igcEnabled &&
+            choreographer.choreoMode != ChoreoMode.it,
+        enableIT: choreographer.itEnabled &&
+            choreographer.choreoMode != ChoreoMode.it,
+        prevMessages: _prevMessages(),
       );
 
       if (_cacheClearTimer == null || !_cacheClearTimer!.isActive) {
@@ -170,7 +159,6 @@ class IgcController {
         e: err,
         s: stack,
         data: {
-          "onlyTokensAndLanguageDetection": onlyTokensAndLanguageDetection,
           "currentText": choreographer.currentText,
           "userL1": choreographer.l1LangCode,
           "userL2": choreographer.l2LangCode,
@@ -245,7 +233,7 @@ class IgcController {
 
   /// Get the content of previous text and audio messages in chat.
   /// Passed to IGC request to add context.
-  List<PreviousMessage> prevMessages({int numMessages = 5}) {
+  List<PreviousMessage> _prevMessages({int numMessages = 5}) {
     final List<Event> events = choreographer.chatController.visibleEvents
         .where(
           (e) =>

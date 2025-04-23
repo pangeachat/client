@@ -11,7 +11,6 @@ import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -143,13 +142,6 @@ class IGCTextData {
     }
   }
 
-  void removeMatchByOffset(int offset) {
-    final int index = getTopMatchIndexForOffset(offset);
-    if (index != -1) {
-      matches.removeAt(index);
-    }
-  }
-
   List<int> matchIndicesByOffset(int offset) {
     final List<int> matchesForOffset = [];
     for (final (index, match) in matches.indexed) {
@@ -169,12 +161,6 @@ class IGCTextData {
     });
     if (matchIndex == -1) return -1;
     return matchesForToken[matchIndex];
-  }
-
-  PangeaMatch? getTopMatchForToken(PangeaToken token) {
-    final int topMatchIndex = getTopMatchIndexForOffset(token.text.offset);
-    if (topMatchIndex == -1) return null;
-    return matches[topMatchIndex];
   }
 
   static TextStyle underlineStyle(Color color) => TextStyle(

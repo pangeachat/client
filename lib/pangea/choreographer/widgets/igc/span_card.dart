@@ -151,19 +151,6 @@ class SpanCardState extends State<SpanCard> {
   Future<void> onChoiceSelect(int index) async {
     selectedChoiceIndex = index;
     if (selectedChoice != null) {
-      if (!selectedChoice!.selected) {
-        // TOKENS TODO - replace these tokens
-        // MatrixState.pangeaController.putAnalytics.addDraftUses(
-        //   selectedChoice!.tokens,
-        //   widget.roomId,
-        //   selectedChoice!.isBestCorrection
-        //       ? ConstructUseTypeEnum.corIGC
-        //       : ConstructUseTypeEnum.incIGC,
-        //   targetID:
-        //       "${selectedChoice!.value}${widget.scm.pangeaMatch?.hashCode.toString()}",
-        // );
-      }
-
       selectedChoice!.timestamp = DateTime.now();
       selectedChoice!.selected = true;
       setState(
@@ -174,29 +161,7 @@ class SpanCardState extends State<SpanCard> {
     }
   }
 
-  /// Returns the list of distractor choices that are not selected
-  List<SpanChoice>? get ignoredMatches => widget.scm.pangeaMatch?.match.choices
-      ?.where((choice) => choice.isDistractor && !choice.selected)
-      .toList();
-
-  /// Returns the list of tokens from choices that are not selected
-  // List<PangeaToken>? get ignoredTokens => ignoredMatches
-  //     ?.expand((choice) => choice.tokens)
-  //     .toList()
-  //     .cast<PangeaToken>();
-
-  // /// Adds the ignored tokens to locally cached analytics
-  // void addIgnoredTokenUses() {
-  //   MatrixState.pangeaController.putAnalytics.addDraftUses(
-  //     ignoredTokens ?? [],
-  //     widget.roomId,
-  //     ConstructUseTypeEnum.ignIGC,
-  //   );
-  // }
-
   Future<void> onReplaceSelected() async {
-    // TOKENS TODO - replace these tokens
-    // addIgnoredTokenUses();
     await widget.scm.onReplacementSelect(
       matchIndex: widget.scm.matchIndex,
       choiceIndex: selectedChoiceIndex!,
@@ -205,9 +170,6 @@ class SpanCardState extends State<SpanCard> {
   }
 
   void onIgnoreMatch() {
-    // TOKENS TODO - replace these tokens
-    // addIgnoredTokenUses();
-
     Future.delayed(
       Duration.zero,
       () {
