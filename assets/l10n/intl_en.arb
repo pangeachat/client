@@ -4530,7 +4530,8 @@
   "updateNow": "Update Now",
   "updateLater": "Later",
   "constructUseWaDesc": "Used without help",
-  "constructUseGaDesc": "Grammar mistake",
+  "constructUseGaDesc": "Grammar assistance",
+  "constructUseTaDesc": "Translation assistance",
   "constructUseUnkDesc": "Unknown",
   "constructUseCorITDesc": "Correct in translation",
   "constructUseIgnITDesc": "Ignored in translation",
@@ -4873,4 +4874,6 @@
   "languageLevelB2Desc": "I can understand the mains ideas of complex texts and interact with a degree of fluency and spontaneity.",
   "languageLevelC1Desc": "I can express ideas fluently and spontaneously without much struggle and understand a wide range of demanding texts.",
   "languageLevelC2Desc": "I can understand virtually everything heard or read and express myself fluently and precisely."
+  "newVocab": "New vocab",
+  "newGrammar": "New grammar concepts"
 }
