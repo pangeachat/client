@@ -39,10 +39,11 @@ class WordZoomWidget extends StatelessWidget {
 
   bool get hasEmojiActivity =>
       overlayController.practiceSelection?.hasActiveActivityByToken(
-        ActivityTypeEnum.emoji,
-        _selectedToken,
-      ) ==
-      true;
+            ActivityTypeEnum.emoji,
+            _selectedToken,
+          ) ==
+          true &&
+      overlayController.hideWordCardContent;
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +114,8 @@ class WordZoomWidget extends StatelessWidget {
                   alignment: Alignment.center,
                   child: LemmaEmojiRow(
                     cId: _selectedToken.vocabConstructID,
-                    onTapOverride: hasEmojiActivity
+                    onTapOverride: overlayController.hideWordCardContent &&
+                            hasEmojiActivity
                         ? () => overlayController.updateToolbarMode(
                               MessageMode.wordEmoji,
                             )
@@ -170,16 +172,20 @@ class WordZoomWidget extends StatelessWidget {
                     isSelected:
                         MessageMode.listening == overlayController.toolbarMode,
                     baseOpacity: 0.4,
-                    callbackOverride: overlayController.practiceSelection
-                                ?.hasActiveActivityByToken(
-                              MessageMode.listening.associatedActivityType!,
-                              _selectedToken,
-                            ) ==
-                            true
+                    callbackOverride: overlayController.hideWordCardContent &&
+                            overlayController.practiceSelection
+                                    ?.hasActiveActivityByToken(
+                                  MessageMode.listening.associatedActivityType!,
+                                  _selectedToken,
+                                ) ==
+                                true &&
+                            overlayController.hideWordCardContent
                         ? () => overlayController
                             .updateToolbarMode(MessageMode.listening)
                         : null,
                     uniqueID: "word-zoom-audio-${_selectedToken.text.content}",
+                    langCode: overlayController
+                        .pangeaMessageEvent?.messageDisplayLangCode,
                   ),
                 ],
                 ..._selectedToken.morphsBasicallyEligibleForPracticeByPriority

@@ -92,8 +92,15 @@ class PangeaAnyState {
     }
   }
 
-  void closeAllOverlays() {
-    final shouldRemove = entries.where((element) => element.canPop).toList();
+  void closeAllOverlays([RegExp? regex]) {
+    List<OverlayListEntry> shouldRemove =
+        entries.where((element) => element.canPop).toList();
+    if (regex != null) {
+      shouldRemove = shouldRemove
+          .where((element) => element.key != null)
+          .where((element) => regex.hasMatch(element.key!))
+          .toList();
+    }
     if (shouldRemove.isEmpty) return;
 
     for (int i = 0; i < shouldRemove.length; i++) {
@@ -119,6 +126,19 @@ class PangeaAnyState {
 
   RenderBox? getRenderBox(String key) =>
       layerLinkAndKey(key).key.currentContext?.findRenderObject() as RenderBox?;
+
+  bool isOverlayOpen(String overlayKey) {
+    return entries.any((element) => element.key == overlayKey);
+  }
+
+  List<String> getMatchingOverlayKeys(RegExp regex) {
+    return entries
+        .where((e) => e.key != null)
+        .where((element) => regex.hasMatch(element.key!))
+        .map((e) => e.key)
+        .whereType<String>()
+        .toList();
+  }
 }
 
 class LayerLinkAndKey {

@@ -269,6 +269,7 @@ class WordMatchContent extends StatelessWidget {
             botExpression: controller.error == null
                 ? controller.currentExpression
                 : BotExpression.addled,
+            onClose: () => controller.widget.scm.choreographer.setState(),
           ),
           Scrollbar(
             controller: scrollController,
@@ -309,6 +310,8 @@ class WordMatchContent extends StatelessWidget {
                       tts: controller.tts,
                       id: controller.widget.scm.pangeaMatch!.hashCode
                           .toString(),
+                      langCode: MatrixState.pangeaController.languageController
+                          .activeL2Code(),
                     ),
                   const SizedBox(height: 12),
                   PromptAndFeedback(controller: controller),

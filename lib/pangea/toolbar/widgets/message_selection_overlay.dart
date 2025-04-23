@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/morph_selection.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/reading_assistance_content.dart';
@@ -87,6 +89,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   final GlobalKey<ReadingAssistanceContentState> wordZoomKey = GlobalKey();
 
+  ReadingAssistanceMode? readingAssistanceMode; // default mode
+
   double maxWidth = AppConfig.toolbarMinWidth;
 
   /////////////////////////////////////
@@ -142,16 +146,22 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           .messageDisplayRepresentation!.tokensToSave
           .map((e) => e.vocabConstructID)
           .toList();
+
       final List<Future<LemmaInfoResponse>> lemmaInfoFutures =
           messageVocabConstructIds
               .map((token) => token.getLemmaInfo())
               .toList();
-      final List<LemmaInfoResponse> lemmaInfos =
-          await Future.wait(lemmaInfoFutures);
-      messageLemmaInfos = Map.fromIterables(
-        messageVocabConstructIds,
-        lemmaInfos,
-      );
+
+      Future.wait(lemmaInfoFutures).then((resp) {
+        if (mounted) {
+          setState(
+            () => messageLemmaInfos = Map.fromIterables(
+              messageVocabConstructIds,
+              resp,
+            ),
+          );
+        }
+      });
     } catch (e, s) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
@@ -199,7 +209,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// Decides whether an _initialSelectedToken should be used
   /// for a first practice activity on the word meaning
-  void _initializeSelectedToken() {
+  Future<void> _initializeSelectedToken() async {
     // if there is no initial selected token, then we don't need to do anything
     if (widget._initialSelectedToken == null || practiceSelection == null) {
       return;
@@ -216,7 +226,18 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       return;
     }
 
-    _updateSelectedSpan(widget._initialSelectedToken!.text);
+    updateSelectedSpan(widget._initialSelectedToken!.text);
+
+    int retries = 0;
+    while (retries < 5 &&
+        selectedToken != null &&
+        !MatrixState.pAnyState.isOverlayOpen(
+          selectedToken!.text.uniqueKey,
+        )) {
+      await Future.delayed(const Duration(milliseconds: 100));
+      _showReadingAssistanceContent();
+      retries++;
+    }
   }
 
   /////////////////////////////////////
@@ -268,14 +289,14 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   /// Update [selectedSpan]
-  void _updateSelectedSpan(PangeaTokenText selectedSpan, [bool force = false]) {
+  void updateSelectedSpan(PangeaTokenText selectedSpan, [bool force = false]) {
     if (selectedMorph != null) {
       selectedMorph = null;
     }
     // close overlay of previous token
     if (selectedToken != null) {
       MatrixState.pAnyState.closeOverlay(
-        selectedToken!.text.uniqueKey,
+        "${selectedToken!.text.uniqueKey}_toolbar",
       );
     }
 
@@ -285,28 +306,38 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       _selectedSpan = selectedSpan;
     }
 
-    if (selectedToken != null) {
-      final entry = ReadingAssistanceContent(
-        key: wordZoomKey,
-        pangeaMessageEvent: pangeaMessageEvent!,
-        overlayController: this,
-      );
-      if (mounted) {
-        OverlayUtil.showPositionedCard(
-          context: context,
-          cardToShow: entry,
-          transformTargetId: selectedToken!.text.uniqueKey,
-          closePrevOverlay: false,
-          backDropToDismiss: false,
-          addBorder: false,
-          overlayKey: selectedToken!.text.uniqueKey,
-          maxHeight: AppConfig.toolbarMaxHeight,
-          maxWidth: AppConfig.toolbarMinWidth,
-        );
-      }
+    if (mounted) setState(() {});
+    Future.delayed(const Duration(milliseconds: 10), () {
+      _showReadingAssistanceContent();
+    });
+  }
+
+  void _showReadingAssistanceContent() {
+    if (selectedToken == null) return;
+    if (MatrixState.pAnyState.isOverlayOpen(
+      selectedToken!.text.uniqueKey,
+    )) {
+      return;
     }
 
-    if (mounted) setState(() {});
+    final entry = ReadingAssistanceContent(
+      key: wordZoomKey,
+      pangeaMessageEvent: pangeaMessageEvent!,
+      overlayController: this,
+    );
+    if (mounted) {
+      OverlayUtil.showPositionedCard(
+        context: context,
+        cardToShow: entry,
+        transformTargetId: selectedToken!.text.uniqueKey,
+        closePrevOverlay: false,
+        backDropToDismiss: false,
+        addBorder: false,
+        overlayKey: "${selectedToken!.text.uniqueKey}_toolbar",
+        maxHeight: AppConfig.toolbarMaxHeight,
+        maxWidth: min(AppConfig.toolbarMinWidth, maxWidth),
+      );
+    }
   }
 
   void updateToolbarMode(MessageMode mode) => setState(() {
@@ -314,7 +345,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
         // close overlay of any selected token
         if (_selectedSpan != null) {
-          _updateSelectedSpan(_selectedSpan!);
+          updateSelectedSpan(_selectedSpan!);
         }
 
         toolbarMode = mode;
@@ -342,7 +373,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
   }
 
-  void onChoiceSelect(PracticeChoice choice, [bool force = false]) {
+  void onChoiceSelect(PracticeChoice? choice, [bool force = false]) {
     if (selectedChoice == choice && !force) {
       selectedChoice = null;
     } else {
@@ -356,7 +387,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     toolbarMode = MessageMode.wordMorph;
     // // close overlay of previous token
     if (_selectedSpan != null && _selectedSpan != newMorph.token.text) {
-      _updateSelectedSpan(_selectedSpan!);
+      updateSelectedSpan(_selectedSpan!);
     }
     selectedMorph = newMorph;
     setState(() {});
@@ -374,6 +405,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   bool get showToolbarButtons =>
       pangeaMessageEvent != null &&
       pangeaMessageEvent!.event.messageType == MessageTypes.Text;
+
+  bool get hideWordCardContent =>
+      readingAssistanceMode == ReadingAssistanceMode.messageMode;
 
   bool get isPracticeComplete => isTranslationUnlocked;
 
@@ -503,20 +537,22 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     /// we don't want to associate the audio with the text in this mode
-    if (practiceSelection?.hasActiveActivityByToken(
-          ActivityTypeEnum.wordFocusListening,
-          token,
-        ) ==
-        false) {
+    if (pangeaMessageEvent?.messageDisplayLangCode != null &&
+            practiceSelection?.hasActiveActivityByToken(
+                  ActivityTypeEnum.wordFocusListening,
+                  token,
+                ) ==
+                false ||
+        !hideWordCardContent) {
       widget.chatController.choreographer.tts.tryToSpeak(
         token.text.content,
         context,
         targetID: null,
-        langCode: pangeaMessageEvent?.messageDisplayLangCode,
+        langCode: pangeaMessageEvent!.messageDisplayLangCode,
       );
     }
 
-    _updateSelectedSpan(token.text);
+    updateSelectedSpan(token.text);
   }
 
   /// Whether the given token is currently selected or highlighted

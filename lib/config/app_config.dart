@@ -27,10 +27,21 @@ abstract class AppConfig {
   static const double toolbarMinHeight = 200.0;
   static const double toolbarMinWidth = 350.0;
   static const double defaultHeaderHeight = 56.0;
-  static const double readingAssistanceInputBarHeight = 170;
   static const double toolbarButtonsHeight = 50.0;
   static const double toolbarSpacing = 8.0;
   static const double toolbarIconSize = 24.0;
+  static const double readingAssistanceInputBarHeight = 140.0;
+  static const double reactionsPickerHeight = 48.0;
+  static const double chatInputRowOverlayPadding = 8.0;
+  static const double tokenModeInputBarHeight = reactionsPickerHeight +
+      toolbarButtonsHeight +
+      (chatInputRowOverlayPadding * 2) +
+      toolbarSpacing;
+  static const double messageModeInputBarHeight =
+      readingAssistanceInputBarHeight +
+          toolbarButtonsHeight +
+          (chatInputRowOverlayPadding * 2) +
+          toolbarSpacing;
 
   static TextStyle messageTextStyle(
     Event? event,
