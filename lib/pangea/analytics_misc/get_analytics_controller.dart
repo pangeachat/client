@@ -398,6 +398,29 @@ class GetAnalyticsController extends BaseController {
     _cache.add(entry);
   }
 
+  int newConstructCount(
+    List<OneConstructUse> newConstructs,
+    ConstructTypeEnum type,
+  ) {
+    final uses = newConstructs.where((c) => c.constructType == type);
+    final Map<ConstructIdentifier, int> constructPoints = {};
+    for (final use in uses) {
+      constructPoints[use.identifier] ??= 0;
+      constructPoints[use.identifier] =
+          constructPoints[use.identifier]! + use.xp;
+    }
+
+    int newConstructCount = 0;
+    for (final entry in constructPoints.entries) {
+      final construct = constructListModel.getConstructUses(entry.key);
+      if (construct == null || construct.points == entry.value) {
+        newConstructCount++;
+      }
+    }
+
+    return newConstructCount;
+  }
+
 //   Future<GenerateConstructSummaryResult?>
 //       _generateLevelUpAnalyticsAndSaveToStateEvent(
 //     final int lowerLevel,

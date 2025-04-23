@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/alternative_translator.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/igc_controller.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
@@ -43,7 +42,6 @@ class Choreographer {
   late PangeaTextController _textController;
   late ITController itController;
   late IgcController igc;
-  late AlternativeTranslator altTranslator;
   late ErrorService errorService;
   late TtsController tts;
 
@@ -73,7 +71,6 @@ class Choreographer {
     itController = ITController(this);
     igc = IgcController(this);
     errorService = ErrorService(this);
-    altTranslator = AlternativeTranslator(this);
     _textController.addListener(_onChangeListener);
     _trialStream = pangeaController
         .subscriptionController.trialActivationStream.stream
@@ -344,18 +341,6 @@ class Choreographer {
     giveInputFocus();
   }
 
-  void onPredictorSelect(String text) {
-    //TODO - add some kind of record of this
-    // choreoRecord.addRecord(_textController.text, step: step);
-
-    // TODO - probably give it a different type of edit type
-    _textController.setSystemText(
-      "${_textController.text} $text",
-      EditType.other,
-    );
-    giveInputFocus();
-  }
-
   Future<void> onReplacementSelect({
     required int matchIndex,
     required int choiceIndex,
@@ -525,21 +510,6 @@ class Choreographer {
     }
   }
 
-  void onSelectAlternativeTranslation(String translation) {
-    // PTODO - add some kind of record of this
-    // choreoRecord.addRecord(_textController.text, match);
-
-    _textController.setSystemText(
-      translation,
-      EditType.alternativeTranslation,
-    );
-    altTranslator.clear();
-    altTranslator.translationFeedbackKey = FeedbackKey.allDone;
-    altTranslator.showTranslationFeedback = true;
-    giveInputFocus();
-    setState();
-  }
-
   void giveInputFocus() {
     Future.delayed(Duration.zero, () {
       chatController.inputFocus.requestFocus();
@@ -563,22 +533,6 @@ class Choreographer {
     //@ggurdin - why is this commented out?
     // errorService.clear();
     _resetDebounceTimer();
-  }
-
-  void onMatchError({int? cursorOffset}) {
-    if (cursorOffset == null) {
-      igc.igcTextData?.matches.clear();
-    } else {
-      final int? matchIndex = igc.igcTextData?.getTopMatchIndexForOffset(
-        cursorOffset,
-      );
-      matchIndex == -1 || matchIndex == null
-          ? igc.igcTextData?.matches.clear()
-          : igc.igcTextData?.matches.removeAt(matchIndex);
-    }
-
-    setState();
-    giveInputFocus();
   }
 
   Future<void> onPaste(value) async {
@@ -677,30 +631,9 @@ class Choreographer {
         chatController.room,
       );
 
-  // bool get itAutoPlayEnabled {
-  //   return pangeaController.userController.profile.userSettings.itAutoPlay;
-  // }
-
-  bool get definitionsEnabled =>
-      pangeaController.permissionsController.isToolEnabled(
-        ToolSetting.definitions,
-        chatController.room,
-      );
-
   bool get immersionMode =>
       pangeaController.permissionsController.isToolEnabled(
         ToolSetting.immersionMode,
-        chatController.room,
-      );
-
-  // bool get translationEnabled =>
-  //     pangeaController.permissionsController.isToolEnabled(
-  //       ToolSetting.translations,
-  //       chatController.room,
-  //     );
-
-  bool get isITandIGCEnabled =>
-      pangeaController.permissionsController.isWritingAssistanceEnabled(
         chatController.room,
       );
 

@@ -4,13 +4,11 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/it_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/it_bar_buttons.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/it_feedback_card.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/translation_finished_flow.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
@@ -229,22 +227,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                                       controller: itController,
                                     )
                                   : itController.isTranslationDone
-                                      ? TranslationFeedback(
-                                          controller: itController,
-                                          vocabCount: itController
-                                              .choreographer.altTranslator
-                                              .countNewConstructs(
-                                            ConstructTypeEnum.vocab,
-                                          ),
-                                          grammarCount: itController
-                                              .choreographer.altTranslator
-                                              .countNewConstructs(
-                                            ConstructTypeEnum.morph,
-                                          ),
-                                          feedbackText: itController
-                                              .choreographer.altTranslator
-                                              .getDefaultFeedback(context),
-                                        )
+                                      ? const SizedBox()
                                       : ITChoices(controller: itController),
                         ),
                       ),

@@ -53,7 +53,6 @@ class ITController {
     goldRouteTracker = GoldRouteTracker.defaultTracker;
     payLoadIds = [];
 
-    choreographer.altTranslator.clear();
     choreographer.choreoMode = ChoreoMode.igc;
     choreographer.setState();
   }
@@ -161,7 +160,7 @@ class ITController {
 
       if (isTranslationDone) {
         nextITStep = null;
-        choreographer.altTranslator.setTranslationFeedback();
+        closeIT();
       } else {
         nextITStep = Completer<CurrentITStep?>();
         final nextStep = await _getNextTranslationData();

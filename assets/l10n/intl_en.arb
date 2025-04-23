@@ -4866,5 +4866,7 @@
   "enterSpaceCode": "Enter the Space Code",
   "shareSpaceLink": "Share link to space",
   "byUsingPangeaChat": "By using Pangea Chat, I agree to the ",
-  "details": "Details"
+  "details": "Details",
+  "newVocab": "New vocab",
+  "newGrammar": "New grammar concepts"
 }
