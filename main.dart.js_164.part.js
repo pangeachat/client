@@ -4333,6 +4333,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$details(_) {
       return "Details";
     },
+    get$languageLevelPreA1Desc() {
+      return "I have never learned or used the language.";
+    },
+    get$languageLevelA1Desc() {
+      return "I can understand and use some familiar everyday expressions and very basic phrases.";
+    },
+    get$languageLevelA2Desc() {
+      return "I can understand sentences and frequently used expressions related to areas of immediate relevance";
+    },
+    get$languageLevelB1Desc() {
+      return "I can deal with most familiar situations and can produce simple connected text on familiar topics.";
+    },
+    get$languageLevelB2Desc() {
+      return "I can understand the mains ideas of complex texts and interact with a degree of fluency and spontaneity.";
+    },
+    get$languageLevelC1Desc() {
+      return "I can express ideas fluently and spontaneously without much struggle and understand a wide range of demanding texts.";
+    },
+    get$languageLevelC2Desc() {
+      return "I can understand virtually everything heard or read and express myself fluently and precisely.";
+    },
     get$newVocab() {
       return "New vocab";
     },
@@ -4354,6 +4375,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_164", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "lpZaZZ+8Sz6Y0zIp923NL9N9BQg=");
+})($__dart_deferred_initializers__, "1VNf+gjRAaesjhPvn1ndleYcOo8=");
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map
