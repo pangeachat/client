@@ -16,14 +16,13 @@ class MorphologicalListItem extends StatelessWidget {
   final MorphFeaturesEnum morphFeature;
   final PangeaToken token;
   final MessageOverlayController overlayController;
-  final bool editMode = false;
-  final VoidCallback isEnabled;
+  final VoidCallback editMorph;
 
   const MorphologicalListItem({
     required this.morphFeature,
     required this.token,
     required this.overlayController,
-    required this.isEnabled,
+    required this.editMorph,
     super.key,
   });
 
@@ -58,6 +57,16 @@ class MorphologicalListItem extends StatelessWidget {
         isSelected: isSelected,
         onPressed: () => overlayController
             .onMorphActivitySelect(MorphSelection(token, morphFeature)),
+        onLongPress: () {
+          overlayController
+              .onMorphActivitySelect(MorphSelection(token, morphFeature));
+          editMorph();
+        },
+        onDoubleTap: () {
+          overlayController
+              .onMorphActivitySelect(MorphSelection(token, morphFeature));
+          editMorph();
+        },
         tooltip: shouldDoActivity
             ? morphFeature.getDisplayCopy(context)
             : getGrammarCopy(
@@ -66,14 +75,6 @@ class MorphologicalListItem extends StatelessWidget {
                 context: context,
               ),
         opacity: isSelected ? 1 : 0.7,
-        onLongPress: () {
-          isEnabled();
-          debugPrint("Long press triggered: Entering edit mode");
-        },
-        onDoubleTap: () {
-          isEnabled();
-          debugPrint("Double press triggered: Entering edit mode");
-        },
       ),
     );
   }
