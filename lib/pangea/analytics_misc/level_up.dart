@@ -6,7 +6,6 @@ import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 class LevelUpUtil {
@@ -267,16 +266,20 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                   TableRow(
                                     children: [
                                       const Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
+                                        ),
                                         child: Icon(
                                           Symbols.dictionary,
                                           size: 25,
                                         ),
                                       ),
                                       const Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
+                                        ),
                                         child: Text(
                                           "Writing Practice",
                                           style: TextStyle(
@@ -289,7 +292,8 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                          vertical: 8.0,
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
                                         ),
                                         child: Text(
                                           "+${widget.constructSummary?.writingConstructScore ?? 0} XP",
@@ -306,16 +310,20 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                   TableRow(
                                     children: [
                                       const Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
+                                        ),
                                         child: Icon(
                                           Symbols.toys_and_games,
                                           size: 25,
                                         ),
                                       ),
                                       const Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
+                                        ),
                                         child: Text(
                                           "Reading Practice",
                                           style: TextStyle(
@@ -328,7 +336,8 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                          vertical: 8.0,
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
                                         ),
                                         child: Text(
                                           "+${widget.constructSummary?.readingConstructScore ?? 0} XP",
@@ -345,16 +354,20 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                   TableRow(
                                     children: [
                                       const Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
+                                        ),
                                         child: Icon(
                                           Symbols.edit_square,
                                           size: 25,
                                         ),
                                       ),
                                       const Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
+                                        ),
                                         child: Text(
                                           "Listening Practice",
                                           style: TextStyle(
@@ -367,7 +380,8 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                          vertical: 8.0,
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
                                         ),
                                         child: Text(
                                           "+${widget.constructSummary?.hearingConstructScore ?? 0} XP",
@@ -384,16 +398,20 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                   TableRow(
                                     children: [
                                       const Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
+                                        ),
                                         child: Icon(
                                           Symbols.text_to_speech,
                                           size: 25,
                                         ),
                                       ),
                                       const Padding(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 8.0),
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
+                                        ),
                                         child: Text(
                                           "Speaking Practice",
                                           style: TextStyle(
@@ -406,7 +424,8 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
-                                          vertical: 8.0,
+                                          vertical: 9.0,
+                                          horizontal: 18.0,
                                         ),
                                         child: Text(
                                           "+${widget.constructSummary?.speakingConstructScore ?? 0} XP",
@@ -428,11 +447,10 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                               ),
                               Column(
                                 children: [
-                                  SvgPicture.asset(
-                                    // 'assets/pangea/DinoBot-Congratulate.svg',
-                                    'assets/pangea/DinoBot-Congratulate-2.svg',
-                                    width: 200,
-                                    height: 200,
+                                  Image.asset(
+                                    'assets/pangea/DinoBot-Congratulate.png',
+                                    width: 300,
+                                    height: 300,
                                   ),
                                 ],
                               ),
@@ -495,7 +513,7 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                               //         Icons.ios_share,
                               //         size: 20,
                               //       ),
-                              //     ],
+                              //     ),
                               //   ),
                               // ),
                             ],
