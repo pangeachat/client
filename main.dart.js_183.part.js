@@ -1819,17 +1819,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$classRoster() {
       return "Participants";
     },
-    get$letMeThink() {
-      return "Hmm, let's see how you did!";
-    },
     get$clickMessageTitle() {
       return "Need help?";
     },
     get$clickMessageBody() {
       return "Click a message for language tools like translation, play back and more!";
-    },
-    get$allDone() {
-      return "All done!";
     },
     get$vocab() {
       return "Vocab";
@@ -3782,7 +3776,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Used without help";
     },
     get$constructUseGaDesc() {
-      return "Grammar mistake";
+      return "Grammar assistance";
+    },
+    get$constructUseTaDesc() {
+      return "Translation assistance";
     },
     get$constructUseUnkDesc() {
       return "Unknown";
@@ -4306,24 +4303,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Translation problem";
     },
-    get$perfectTranslation() {
-      return "Perfect translation!";
-    },
-    get$greatJobTranslation() {
-      return "Great job with this translation!";
-    },
-    get$goodJobTranslation() {
-      return "Good work on this translation.";
-    },
-    get$makingProgress() {
-      return "You're making progress!";
-    },
-    get$keepPracticing() {
-      return "Keep practicing!";
-    },
-    get$niceJob() {
-      return "Nice job!";
-    },
     get$publicSpacesTitle() {
       return "Learning communities";
     },
@@ -4354,6 +4333,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$details(_) {
       return "Details";
     },
+    get$newVocab() {
+      return "New vocab";
+    },
+    get$newGrammar() {
+      return "New grammar concepts";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4369,6 +4354,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_183", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "g1BzYuKsLsZpI0/w8BZfDUo+rlA=");
+})($__dart_deferred_initializers__, "65M0C7zvxMDO2Q4h+AnQTKkkA9U=");
 ;
 //# sourceMappingURL=main.dart.js_183.part.js.map

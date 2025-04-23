@@ -1818,17 +1818,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$classRoster() {
       return "Danh s\xe1ch th\xe0nh vi\xean";
     },
-    get$letMeThink() {
-      return "Hmm, \u0111\u1ec3 xem b\u1ea1n l\xe0m th\u1ebf n\xe0o!";
-    },
     get$clickMessageTitle() {
       return "C\u1ea7n tr\u1ee3 gi\xfap?";
     },
     get$clickMessageBody() {
       return "Nh\u1ea5n v\xe0o tin nh\u1eafn \u0111\u1ec3 truy c\u1eadp c\xe1c c\xf4ng c\u1ee5 ng\xf4n ng\u1eef nh\u01b0 d\u1ecbch, nghe l\u1ea1i v\xe0 h\u01a1n th\u1ebf n\u1eefa!";
-    },
-    get$allDone() {
-      return "Ho\xe0n t\u1ea5t!";
     },
     get$vocab() {
       return "T\u1eeb v\u1ef1ng";
@@ -3781,7 +3775,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "D\xf9ng kh\xf4ng c\u1ea7n tr\u1ee3 gi\xfap";
     },
     get$constructUseGaDesc() {
-      return "C\xf3 l\u1ed7i ng\u1eef ph\xe1p";
+      return "Grammar assistance";
+    },
+    get$constructUseTaDesc() {
+      return "Translation assistance";
     },
     get$constructUseUnkDesc() {
       return "Kh\xf4ng x\xe1c \u0111\u1ecbnh";
@@ -4305,24 +4302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Translation problem";
     },
-    get$perfectTranslation() {
-      return "Perfect translation!";
-    },
-    get$greatJobTranslation() {
-      return "Great job with this translation!";
-    },
-    get$goodJobTranslation() {
-      return "Good work on this translation.";
-    },
-    get$makingProgress() {
-      return "You're making progress!";
-    },
-    get$keepPracticing() {
-      return "Keep practicing!";
-    },
-    get$niceJob() {
-      return "Nice job!";
-    },
     get$publicSpacesTitle() {
       return "Learning communities";
     },
@@ -4353,6 +4332,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$details(_) {
       return "Details";
     },
+    get$newVocab() {
+      return "New vocab";
+    },
+    get$newGrammar() {
+      return "New grammar concepts";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4368,6 +4353,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "IYktNX3je0oHhWy4xlX9Ho/3PkQ=");
+})($__dart_deferred_initializers__, "V2/MKAf73NrQ6dkHUIDRo+ceq38=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map
