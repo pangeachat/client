@@ -1,6 +1,8 @@
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+
+import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 
 class LanguageLevelTextPicker {
   static String languageLevelText(
