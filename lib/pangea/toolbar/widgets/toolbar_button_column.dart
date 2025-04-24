@@ -14,8 +14,6 @@ class ToolbarButtonRow extends StatelessWidget {
 
   static const double iconWidth = 36.0;
   static const double buttonSize = 40.0;
-  static const barMargin =
-      EdgeInsets.symmetric(horizontal: iconWidth / 2, vertical: buttonSize / 2);
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +83,7 @@ class ToolbarButtonRow extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 4.0),
       ],
     );
   }
