@@ -1331,9 +1331,10 @@ class ChatController extends State<ChatPageWithRoom>
       ),
     );
     if (!mounted) return;
-    setState(() {
-      selectedEvents = List.from(selectedEvents); // Retain selected events
-    });
+    // #Pangea
+    // see https://github.com/pangeachat/client/issues/2536
+    // setState(() => selectedEvents.clear());
+    // Pangea#
   }
 
   void sendAgainAction() {
