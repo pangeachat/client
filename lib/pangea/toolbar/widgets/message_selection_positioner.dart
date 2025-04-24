@@ -676,6 +676,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                           if (showSelectionButtons)
                             SelectModeButtons(
                               overlayController: widget.overlayController,
+                              lauchPractice: () {
+                                _setReadingAssistanceMode(
+                                  ReadingAssistanceMode.practiceMode,
+                                );
+                                widget.overlayController
+                                    .updateSelectedSpan(null);
+                              },
                             ),
                         ],
                       ),
