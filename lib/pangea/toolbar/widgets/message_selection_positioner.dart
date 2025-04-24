@@ -120,9 +120,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       });
 
       _setReadingAssistanceMode(
-        widget.initialSelectedToken == null
-            ? ReadingAssistanceMode.practiceMode
-            : ReadingAssistanceMode.selectMode,
+        ReadingAssistanceMode.selectMode,
       );
     });
   }
@@ -132,9 +130,6 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     super.didUpdateWidget(oldWidget);
     final mode = widget.overlayController.toolbarMode;
     if (mode != _currentMode) {
-      if (_currentMode == MessageMode.noneSelected) {
-        _setReadingAssistanceMode(ReadingAssistanceMode.practiceMode);
-      }
       setState(() => _currentMode = mode);
     }
   }
@@ -501,9 +496,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       ReadingAssistanceMode.selectMode;
 
   double get _selectionButtonsHeight {
-    return widget.overlayController.selectedToken != null
-        ? AppConfig.toolbarButtonsHeight
-        : 0;
+    return AppConfig.toolbarButtonsHeight;
   }
 
   bool get _hasReactions {

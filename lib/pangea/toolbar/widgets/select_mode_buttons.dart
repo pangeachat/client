@@ -65,7 +65,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool _isLoadingAudio = false;
   PangeaAudioFile? _audioFile;
+
   StreamSubscription? _onPlayerStateChanged;
+  StreamSubscription? _onAudioPositionChanged;
 
   bool _isLoadingTranslation = false;
   PangeaRepresentation? _repEvent;
@@ -80,12 +82,21 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       }
       setState(() {});
     });
+    _onAudioPositionChanged ??= _audioPlayer.positionStream.listen((state) {
+      if (_audioFile != null) {
+        widget.overlayController.highlightCurrentText(
+          state.inMilliseconds,
+          _audioFile!.tokens,
+        );
+      }
+    });
   }
 
   @override
   void dispose() {
     _audioPlayer.dispose();
     _onPlayerStateChanged?.cancel();
+    _onAudioPositionChanged?.cancel();
     super.dispose();
   }
 
@@ -98,16 +109,19 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       MatrixState.pangeaController.languageController.activeL2Code();
 
   Future<void> _updateMode(SelectMode mode) async {
-    if (_selectedMode == SelectMode.translate && mode != SelectMode.translate) {
+    widget.overlayController.updateSelectedSpan(null);
+
+    if (_selectedMode == SelectMode.translate) {
       widget.overlayController.setShowTranslation(false, null);
       await Future.delayed(FluffyThemes.animationDuration);
     }
 
-    setState(() {
-      _selectedMode = mode;
-    });
+    setState(
+      () => _selectedMode =
+          _selectedMode == mode && mode != SelectMode.audio ? null : mode,
+    );
 
-    if (mode == SelectMode.audio) {
+    if (_selectedMode == SelectMode.audio) {
       _playAudio();
       return;
     } else {
@@ -115,12 +129,12 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       _audioPlayer.seek(null);
     }
 
-    if (mode == SelectMode.practice) {
+    if (_selectedMode == SelectMode.practice) {
       widget.lauchPractice();
       return;
     }
 
-    if (mode == SelectMode.translate) {
+    if (_selectedMode == SelectMode.translate) {
       await _loadTranslation();
       if (_repEvent == null) return;
       widget.overlayController.setShowTranslation(
