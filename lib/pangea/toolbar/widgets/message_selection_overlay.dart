@@ -407,7 +407,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       pangeaMessageEvent!.event.messageType == MessageTypes.Text;
 
   bool get hideWordCardContent =>
-      readingAssistanceMode == ReadingAssistanceMode.messageMode;
+      readingAssistanceMode == ReadingAssistanceMode.practiceMode;
 
   bool get isPracticeComplete => isTranslationUnlocked;
 
