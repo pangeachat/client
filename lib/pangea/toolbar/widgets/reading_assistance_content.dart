@@ -7,15 +7,8 @@ import 'package:matrix/matrix_api_lite/model/message_types.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/morphs/default_morph_mapping.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
-import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
@@ -24,7 +17,6 @@ import 'package:fluffychat/pangea/toolbar/widgets/message_unsubscribed_card.dart
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 const double minCardHeight = 70;
@@ -48,122 +40,9 @@ class ReadingAssistanceContent extends StatefulWidget {
 
 class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
   MorphFeaturesEnum? _selectedEditMorphFeature;
-  List<String>? _availableMorphTags;
-  String? _selectedMorphTag;
 
   TtsController get ttsController =>
       widget.overlayController.widget.chatController.choreographer.tts;
-
-  String? get _assignedMorphTag {
-    return _selectedEditMorphFeature != null
-        ? widget
-            .overlayController.selectedToken?.morph[_selectedEditMorphFeature]
-        : null;
-  }
-
-  void _selectEditMorphFeature(MorphFeaturesEnum? morphFeature) {
-    setState(
-      () {
-        _selectedEditMorphFeature = morphFeature;
-        _selectedMorphTag = _assignedMorphTag;
-      },
-    );
-
-    if (morphFeature != null) {
-      _setAvailableMorphs(morphFeature);
-    } else {
-      setState(() => _availableMorphTags = null);
-    }
-  }
-
-  Future<void> _setAvailableMorphs(MorphFeaturesEnum feature) async {
-    try {
-      final resp = await MorphsRepo.get();
-      _availableMorphTags = resp.getDisplayTags(
-        feature.name,
-      );
-    } catch (e) {
-      _availableMorphTags = defaultMorphMapping.getDisplayTags(
-        feature.name,
-      );
-    } finally {
-      if (mounted) setState(() {});
-    }
-  }
-
-  void _saveChanges() {
-    showFutureLoadingDialog(
-      context: context,
-      future: () => _sendEditedMessage(
-        (token) {
-          token.morph[_selectedEditMorphFeature!] = _selectedMorphTag!;
-          if (_selectedEditMorphFeature?.name.toLowerCase() == 'pos') {
-            token.pos = _selectedMorphTag!;
-          }
-          return token;
-        },
-      ),
-    );
-  }
-
-  Future<void> _sendEditedMessage(
-    PangeaToken Function(PangeaToken token) changeCallback,
-  ) async {
-    try {
-      final pm = widget.pangeaMessageEvent;
-      final existingTokens = pm.originalSent!.tokens!
-          .map((token) => PangeaToken.fromJson(token.toJson()))
-          .toList();
-
-      final tokenIndex = existingTokens.indexWhere(
-        (token) =>
-            token.text.offset ==
-            widget.overlayController.selectedToken?.text.offset,
-      );
-      if (tokenIndex == -1) {
-        throw Exception("Token not found in message");
-      }
-      existingTokens[tokenIndex] = changeCallback(existingTokens[tokenIndex]);
-
-      await pm.room.pangeaSendTextEvent(
-        pm.messageDisplayText,
-        editEventId: pm.eventId,
-        originalSent: pm.originalSent?.content,
-        originalWritten: pm.originalWritten?.content,
-        tokensSent: PangeaMessageTokens(
-          tokens: existingTokens,
-          detections: pm.originalSent?.detections,
-        ),
-        tokensWritten: pm.originalWritten?.tokens != null
-            ? PangeaMessageTokens(
-                tokens: pm.originalWritten!.tokens!,
-                detections: pm.originalWritten?.detections,
-              )
-            : null,
-        choreo: pm.originalSent?.choreo,
-        messageTag: ModelKey.messageTagMorphEdit,
-      );
-
-      _selectEditMorphFeature(null);
-      widget.overlayController.setState(() {});
-    } catch (e) {
-      ErrorHandler.logError(
-        e: e,
-        data: {
-          "selectedMorphTag": _selectedMorphTag,
-          "morphFeature": _selectedEditMorphFeature,
-          "pangeaMessageEvent": widget.pangeaMessageEvent.event.content,
-        },
-      );
-    }
-  }
-
-  bool get _canSaveChanges =>
-      _selectedMorphTag ==
-          widget.overlayController.selectedToken
-              ?.morph[_selectedEditMorphFeature] &&
-      _selectedEditMorphFeature != null &&
-      _selectedMorphTag != null;
 
   Widget? toolbarContent(BuildContext context) {
     final bool? subscribed =
@@ -249,17 +128,8 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
           messageEvent: widget.overlayController.pangeaMessageEvent!,
           tts: ttsController,
           overlayController: widget.overlayController,
-          editMorph: _selectEditMorphFeature,
+          editMorph: (m) => setState(() => _selectedEditMorphFeature = m),
           selectedEditMorphFeature: _selectedEditMorphFeature,
-          selectedMorphTag: _selectedMorphTag,
-          morphFeatures: _availableMorphTags,
-          onMorphTagSelected: (String? tag) {
-            setState(() => _selectedMorphTag = tag);
-          },
-          onMorphFeatureSelected: (MorphFeaturesEnum? feature) {
-            setState(() => _selectedEditMorphFeature = feature);
-          },
-          saveChanges: _canSaveChanges ? null : _saveChanges,
         );
     }
   }
