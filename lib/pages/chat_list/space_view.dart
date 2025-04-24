@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -19,7 +20,6 @@ import 'package:fluffychat/pangea/public_spaces/pangea_public_room_bottom_sheet.
 import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -493,24 +493,18 @@ class _SpaceViewState extends State<SpaceView> {
     final displayname =
         room?.getLocalizedDisplayname() ?? L10n.of(context).nothingFound;
     return Scaffold(
-      appBar:
-          // #Pangea
-          PreferredSize(
+      // #Pangea
+      // appBar: AppBar(
+      appBar: PreferredSize(
         preferredSize: Size.fromHeight(
-          // Android value still needs to be adjusted for accurate spacing
-          PlatformInfos.isMobile
-              ? PlatformInfos.isIOS
-                  ? 56
-                  : 56
-              : 72,
+          kIsWeb ? 72.0 : (kToolbarHeight + MediaQuery.of(context).padding.top),
         ),
         child: GestureDetector(
           onTap: () {
             _onSpaceAction(SpaceActions.settings);
           },
-          child:
-              // Pangea#
-              AppBar(
+          child: AppBar(
+            // Pangea#
             leading: FluffyThemes.isColumnMode(context)
                 ? null
                 : Center(
