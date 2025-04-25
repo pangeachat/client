@@ -61,7 +61,7 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
   @override
   Widget build(BuildContext context) {
     final color = _color;
-    final iconSize = FluffyThemes.isColumnMode(context) ? 32.0 : 24.0;
+    final iconSize = FluffyThemes.isColumnMode(context) ? 24.0 : 16.0;
     final style = FluffyThemes.isColumnMode(context)
         ? Theme.of(context).textTheme.bodyLarge
         : Theme.of(context).textTheme.bodySmall;
@@ -76,8 +76,9 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
             color: color,
             borderRadius: BorderRadius.circular(AppConfig.borderRadius),
             border: Border.all(
-              color:
-                  widget.isSelected || _isHovered ? color : Colors.transparent,
+              color: widget.isSelected || _isHovered
+                  ? color.withAlpha(255)
+                  : Colors.transparent,
               width: 2.0,
             ),
           ),

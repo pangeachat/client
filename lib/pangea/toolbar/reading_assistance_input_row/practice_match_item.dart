@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class PracticeMatchItem extends StatefulWidget {
   const PracticeMatchItem({
@@ -20,7 +21,6 @@ class PracticeMatchItem extends StatefulWidget {
     required this.isSelected,
     this.audioContent,
     required this.overlayController,
-    required this.fixedSize,
   });
 
   final Widget content;
@@ -28,7 +28,6 @@ class PracticeMatchItem extends StatefulWidget {
   final PracticeChoice constructForm;
   final String? audioContent;
   final MessageOverlayController overlayController;
-  final double? fixedSize;
   final bool? isCorrect;
   final bool isSelected;
 
@@ -62,11 +61,16 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
         setState(() => _isPlaying = true);
       }
       try {
-        await tts.tryToSpeak(
-          widget.audioContent!,
-          context,
-          targetID: 'word-audio-button',
-        );
+        final l2 =
+            MatrixState.pangeaController.languageController.activeL2Code();
+        if (l2 != null) {
+          await tts.tryToSpeak(
+            widget.audioContent!,
+            context: context,
+            targetID: 'word-audio-button',
+            langCode: l2,
+          );
+        }
       } catch (e, s) {
         debugger(when: kDebugMode);
         ErrorHandler.logError(
@@ -119,25 +123,24 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
     final content = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          height: widget.fixedSize,
-          width: widget.fixedSize,
-          alignment: Alignment.center,
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: color(context).withAlpha((0.4 * 255).toInt()),
-            borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-            border: isSelected
-                ? Border.all(
-                    color: color(context),
-                    width: 2,
-                  )
-                : Border.all(
-                    color: Colors.transparent,
-                    width: 2,
-                  ),
+        Flexible(
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: color(context).withAlpha((0.4 * 255).toInt()),
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              border: isSelected
+                  ? Border.all(
+                      color: color(context).withAlpha(255),
+                      width: 2,
+                    )
+                  : Border.all(
+                      color: Colors.transparent,
+                      width: 2,
+                    ),
+            ),
+            child: widget.content,
           ),
-          child: widget.content,
         ),
       ],
     );
