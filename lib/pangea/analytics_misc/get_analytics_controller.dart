@@ -173,7 +173,7 @@ class GetAnalyticsController extends BaseController {
     _updateAnalyticsStream(
       points: analyticsUpdate.newConstructs.fold<int>(
         0,
-        (previousValue, element) => previousValue + element.pointValue,
+        (previousValue, element) => previousValue + element.xp,
       ),
       targetID: analyticsUpdate.targetID,
       newConstructs: [...newUnlockedMorphs, ...newUnlockedVocab],
@@ -412,6 +412,42 @@ class GetAnalyticsController extends BaseController {
     return stateEventId;
   }
 
+  int newConstructCount(
+    List<OneConstructUse> newConstructs,
+    ConstructTypeEnum type,
+  ) {
+    final uses = newConstructs.where((c) => c.constructType == type);
+    final Map<ConstructIdentifier, int> constructPoints = {};
+    for (final use in uses) {
+      constructPoints[use.identifier] ??= 0;
+      constructPoints[use.identifier] =
+          constructPoints[use.identifier]! + use.xp;
+    }
+
+    int newConstructCount = 0;
+    for (final entry in constructPoints.entries) {
+      final construct = constructListModel.getConstructUses(entry.key);
+      if (construct == null || construct.points == entry.value) {
+        newConstructCount++;
+      }
+    }
+
+    return newConstructCount;
+  }
+
+//   Future<GenerateConstructSummaryResult?>
+//       _generateLevelUpAnalyticsAndSaveToStateEvent(
+//     final int lowerLevel,
+//     final int upperLevel,
+//   ) async {
+//     // generate level up analytics as a construct summary
+//     ConstructSummary summary;
+//     try {
+//       final int maxXP = constructListModel.calculateXpWithLevel(upperLevel);
+//       final int minXP = constructListModel.calculateXpWithLevel(lowerLevel);
+//       int diffXP = maxXP - minXP;
+//       if (diffXP < 0) diffXP = 0;
+
   Future<ConstructSummary?> getConstructSummaryFromStateEvent() async {
     try {
       final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
@@ -444,7 +480,7 @@ class GetAnalyticsController extends BaseController {
       int score = 0;
       for (final use in constructListModel.uses) {
         constructUseOfCurrentLevel.add(use);
-        score += use.pointValue;
+        score += use.xp;
         if (score >= diffXP) break;
       }
 

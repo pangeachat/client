@@ -3,12 +3,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+
+class LevelUpConstants {
+  static const String starFileName = "star.png";
+  static const String dinoLevelUPFileName = "DinoBot-Congratulate-2.svg";
+}
 
 class LevelUpUtil {
   static Future<void> showLevelUpDialog(
@@ -75,10 +81,10 @@ class LevelUpBanner extends StatefulWidget {
   });
 
   @override
-  _LevelUpBannerState createState() => _LevelUpBannerState();
+  LevelUpBannerState createState() => LevelUpBannerState();
 }
 
-class _LevelUpBannerState extends State<LevelUpBanner>
+class LevelUpBannerState extends State<LevelUpBanner>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _slideAnimation;
@@ -124,7 +130,7 @@ class _LevelUpBannerState extends State<LevelUpBanner>
               widget.onOverlayExit();
             },
             child: Container(
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.black.withAlpha(180),
             ),
           ),
         SlideTransition(
@@ -188,8 +194,9 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                             ),
                           ),
                           const SizedBox(width: 8),
-                          Image.asset(
-                            'assets/Star.png',
+                          CachedNetworkImage(
+                            imageUrl:
+                                "${AppConfig.assetsBaseURL}/${LevelUpConstants.starFileName}",
                             height: 24,
                             width: 24,
                           ),
@@ -447,14 +454,11 @@ class _LevelUpBannerState extends State<LevelUpBanner>
                               const SizedBox(
                                 height: 24,
                               ),
-                              Column(
-                                children: [
-                                  Image.asset(
-                                    'assets/pangea/DinoBot-Congratulate.png',
-                                    width: 300,
-                                    height: 300,
-                                  ),
-                                ],
+                              CachedNetworkImage(
+                                imageUrl:
+                                    "${AppConfig.assetsBaseURL}/${LevelUpConstants.dinoLevelUPFileName}",
+                                width: 300,
+                                height: 300,
                               ),
                               const SizedBox(
                                 height: 24,
