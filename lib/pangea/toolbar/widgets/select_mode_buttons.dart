@@ -292,6 +292,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                 color: Theme.of(context).colorScheme.primaryContainer,
                 onPressed: () => _updateMode(mode),
                 playSound: true,
+                colorFactor: Theme.of(context).brightness == Brightness.light
+                    ? 0.55
+                    : 0.3,
                 child: Container(
                   height: buttonSize,
                   width: buttonSize,
