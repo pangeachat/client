@@ -36,28 +36,6 @@ class ConstructListModel {
   /// A list of unique grammar lemmas
   List<String> grammarLemmasList = [];
 
-  List<ConstructIdentifier> getUnlockedLemmas(
-    ConstructTypeEnum type, {
-    int threshold = 0,
-  }) {
-    final constructs = constructList(type: type);
-    final List<ConstructIdentifier> unlocked = [];
-    final constructsList =
-        type == ConstructTypeEnum.vocab ? vocabLemmasList : grammarLemmasList;
-
-    for (final lemma in constructsList) {
-      final matches = constructs.where((m) => m.lemma == lemma);
-      final totalPoints = matches.fold<int>(
-        0,
-        (total, match) => total + match.points,
-      );
-      if (totalPoints > threshold) {
-        unlocked.add(matches.first.id);
-      }
-    }
-    return unlocked;
-  }
-
   List<ConstructIdentifier> unlockedLemmas(
     ConstructTypeEnum type, {
     int threshold = 0,

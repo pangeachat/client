@@ -41,7 +41,6 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
   @override
   void initState() {
     super.initState();
-    debugPrint("TARGET ID IS: ${widget.targetID}");
     if (widget.points == 0) return;
 
     _controller = AnimationController(

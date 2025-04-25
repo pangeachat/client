@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:material_symbols_icons/symbols.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
+import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelUpConstants {
   static const String starFileName = "star.png";
-  static const String dinoLevelUPFileName = "DinoBot-Congratulate-2.svg";
+  static const String dinoLevelUPFileName = "DinoBot-Congratulate.png";
 }
 
 class LevelUpUtil {
@@ -117,6 +118,21 @@ class LevelUpBannerState extends State<LevelUpBanner>
     super.dispose();
   }
 
+  int _skillsPoints(LearningSkillsEnum skill) {
+    switch (skill) {
+      case LearningSkillsEnum.writing:
+        return widget.constructSummary?.writingConstructScore ?? 0;
+      case LearningSkillsEnum.reading:
+        return widget.constructSummary?.readingConstructScore ?? 0;
+      case LearningSkillsEnum.speaking:
+        return widget.constructSummary?.speakingConstructScore ?? 0;
+      case LearningSkillsEnum.hearing:
+        return widget.constructSummary?.hearingConstructScore ?? 0;
+      default:
+        return 0;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -143,6 +159,7 @@ class LevelUpBannerState extends State<LevelUpBanner>
                 Container(
                   constraints: BoxConstraints(
                     maxWidth: MediaQuery.of(context).size.width * 0.5,
+                    maxHeight: MediaQuery.of(context).size.height * 0.75,
                   ),
                   margin: const EdgeInsets.only(top: 16),
                   decoration: BoxDecoration(
@@ -158,49 +175,46 @@ class LevelUpBannerState extends State<LevelUpBanner>
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                const TextSpan(
-                                  text: "Congratulations on reaching ",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 0.5,
-                                  ),
-                                ),
-                                const TextSpan(
-                                  text: "Level ",
-                                  style: TextStyle(
-                                    color: AppConfig.gold,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 0.5,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: "${widget.level}",
-                                  style: const TextStyle(
-                                    color: AppConfig.gold,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                    letterSpacing: 0.5,
-                                  ),
-                                ),
-                              ],
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: L10n.of(context).congratulationsOnReaching,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.5,
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          CachedNetworkImage(
-                            imageUrl:
-                                "${AppConfig.assetsBaseURL}/${LevelUpConstants.starFileName}",
-                            height: 24,
-                            width: 24,
-                          ),
-                        ],
+                            TextSpan(
+                              text: L10n.of(context).level,
+                              style: const TextStyle(
+                                color: AppConfig.gold,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                            TextSpan(
+                              text: "${widget.level} ",
+                              style: const TextStyle(
+                                color: AppConfig.gold,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                            WidgetSpan(
+                              child: CachedNetworkImage(
+                                imageUrl:
+                                    "${AppConfig.assetsBaseURL}/${LevelUpConstants.starFileName}",
+                                height: 24,
+                                width: 24,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       ElevatedButton(
                         onPressed: () {
@@ -217,9 +231,9 @@ class LevelUpBannerState extends State<LevelUpBanner>
                         ),
                         child: Row(
                           children: [
-                            const Text(
-                              "See details ",
-                              style: TextStyle(
+                            Text(
+                              "${L10n.of(context).seeDetails} ",
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -251,6 +265,8 @@ class LevelUpBannerState extends State<LevelUpBanner>
                       ? Container(
                           constraints: BoxConstraints(
                             maxWidth: MediaQuery.of(context).size.width * 0.5,
+                            maxHeight:
+                                MediaQuery.of(context).size.height * 0.75,
                           ),
                           margin: const EdgeInsets.only(
                             top: 16,
@@ -260,269 +276,138 @@ class LevelUpBannerState extends State<LevelUpBanner>
                             borderRadius: BorderRadius.circular(8),
                           ),
                           padding: const EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Table(
-                                columnWidths: const {
-                                  0: IntrinsicColumnWidth(),
-                                  1: FlexColumnWidth(),
-                                  2: IntrinsicColumnWidth(),
-                                },
-                                defaultVerticalAlignment:
-                                    TableCellVerticalAlignment.middle,
-                                children: [
-                                  TableRow(
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Icon(
-                                          Symbols.dictionary,
-                                          size: 25,
-                                        ),
-                                      ),
-                                      const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Text(
-                                          "Writing Practice",
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              spacing: 24.0,
+                              children: [
+                                Table(
+                                  columnWidths: const {
+                                    0: IntrinsicColumnWidth(),
+                                    1: FlexColumnWidth(),
+                                    2: IntrinsicColumnWidth(),
+                                  },
+                                  defaultVerticalAlignment:
+                                      TableCellVerticalAlignment.middle,
+                                  children: [
+                                    ...LearningSkillsEnum.values
+                                        .where((v) => v.isVisible)
+                                        .map((skill) {
+                                      return TableRow(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 9.0,
+                                              horizontal: 18.0,
+                                            ),
+                                            child: Icon(
+                                              skill.icon,
+                                              size: 25,
+                                            ),
                                           ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Text(
-                                          "+${widget.constructSummary?.writingConstructScore ?? 0} XP",
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 9.0,
+                                              horizontal: 18.0,
+                                            ),
+                                            child: Text(
+                                              skill.tooltip(context),
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
                                           ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Icon(
-                                          Symbols.toys_and_games,
-                                          size: 25,
-                                        ),
-                                      ),
-                                      const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Text(
-                                          "Reading Practice",
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 9.0,
+                                              horizontal: 18.0,
+                                            ),
+                                            child: Text(
+                                              "+${_skillsPoints(skill)} XP",
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                            ),
                                           ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Text(
-                                          "+${widget.constructSummary?.readingConstructScore ?? 0} XP",
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Icon(
-                                          Symbols.edit_square,
-                                          size: 25,
-                                        ),
-                                      ),
-                                      const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Text(
-                                          "Listening Practice",
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Text(
-                                          "+${widget.constructSummary?.hearingConstructScore ?? 0} XP",
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  TableRow(
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Icon(
-                                          Symbols.text_to_speech,
-                                          size: 25,
-                                        ),
-                                      ),
-                                      const Padding(
-                                        padding: EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Text(
-                                          "Speaking Practice",
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 9.0,
-                                          horizontal: 18.0,
-                                        ),
-                                        child: Text(
-                                          "+${widget.constructSummary?.speakingConstructScore ?? 0} XP",
-                                          style: const TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-
-                              const SizedBox(
-                                height: 24,
-                              ),
-                              CachedNetworkImage(
-                                imageUrl:
-                                    "${AppConfig.assetsBaseURL}/${LevelUpConstants.dinoLevelUPFileName}",
-                                width: 300,
-                                height: 300,
-                              ),
-                              const SizedBox(
-                                height: 24,
-                              ),
-                              if (widget.constructSummary?.textSummary != null)
-                                Container(
-                                  padding: const EdgeInsets.all(12),
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .secondaryContainer,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Text(
-                                    widget.constructSummary!.textSummary,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
+                                        ],
+                                      );
+                                    }),
+                                  ],
                                 ),
-                              const SizedBox(
-                                height: 24,
-                              ),
-                              // Share button, currently no functionality
-                              // ElevatedButton(
-                              //   onPressed: () {
-                              //     // Add share functionality
-                              //   },
-                              //   style: ElevatedButton.styleFrom(
-                              //     backgroundColor: Colors.white,
-                              //     foregroundColor: Colors.black,
-                              //     padding: const EdgeInsets.symmetric(
-                              //       vertical: 12,
-                              //       horizontal: 24,
-                              //     ),
-                              //     shape: RoundedRectangleBorder(
-                              //       borderRadius: BorderRadius.circular(8),
-                              //     ),
-                              //   ),
-                              //   child: const Row(
-                              //     mainAxisSize: MainAxisSize
-                              //         .min,
-                              //     children: [
-                              //       Text(
-                              //         "Share with Friends",
-                              //         style: TextStyle(
-                              //           fontSize: 16,
-                              //           fontWeight: FontWeight.bold,
-                              //         ),
-                              //       ),
-                              //       SizedBox(
-                              //         width: 8,
-                              //       ),
-                              //       Icon(
-                              //         Icons.ios_share,
-                              //         size: 20,
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
-                            ],
+                                CachedNetworkImage(
+                                  imageUrl:
+                                      "${AppConfig.assetsBaseURL}/${LevelUpConstants.dinoLevelUPFileName}",
+                                  width: 400,
+                                  fit: BoxFit.cover,
+                                ),
+                                if (widget.constructSummary?.textSummary !=
+                                    null)
+                                  Container(
+                                    padding: const EdgeInsets.all(12),
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondaryContainer,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Text(
+                                      widget.constructSummary!.textSummary,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                const SizedBox(
+                                  height: 24,
+                                ),
+                                // Share button, currently no functionality
+                                // ElevatedButton(
+                                //   onPressed: () {
+                                //     // Add share functionality
+                                //   },
+                                //   style: ElevatedButton.styleFrom(
+                                //     backgroundColor: Colors.white,
+                                //     foregroundColor: Colors.black,
+                                //     padding: const EdgeInsets.symmetric(
+                                //       vertical: 12,
+                                //       horizontal: 24,
+                                //     ),
+                                //     shape: RoundedRectangleBorder(
+                                //       borderRadius: BorderRadius.circular(8),
+                                //     ),
+                                //   ),
+                                //   child: const Row(
+                                //     mainAxisSize: MainAxisSize
+                                //         .min,
+                                //     children: [
+                                //       Text(
+                                //         "Share with Friends",
+                                //         style: TextStyle(
+                                //           fontSize: 16,
+                                //           fontWeight: FontWeight.bold,
+                                //         ),
+                                //       ),
+                                //       SizedBox(
+                                //         width: 8,
+                                //       ),
+                                //       Icon(
+                                //         Icons.ios_share,
+                                //         size: 20,
+                                //       ),
+                                //     ),
+                                //   ),
+                                // ),
+                              ],
+                            ),
                           ),
                         )
                       : const SizedBox.shrink(),
