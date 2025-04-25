@@ -188,7 +188,7 @@ class LevelUpBannerState extends State<LevelUpBanner>
                               ),
                             ),
                             TextSpan(
-                              text: L10n.of(context).level,
+                              text: "${L10n.of(context).level} ",
                               style: const TextStyle(
                                 color: AppConfig.gold,
                                 fontSize: 18,
