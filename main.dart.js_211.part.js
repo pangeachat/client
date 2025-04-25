@@ -4092,9 +4092,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$launchActivityButton() {
       return "Launch Activity";
     },
-    get$nan() {
-      return "Not applicable";
-    },
     get$activityPlannerOverviewInstructionsBody() {
       return "Choose a topic, mode, learning objective and generate an activity for the chat!";
     },
@@ -4374,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_211", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Be9dfOaVQSPop2D7ZClYOEqJvvo=");
+})($__dart_deferred_initializers__, "fKKrS37QI2fXbp+fExgjgsMtNqE=");
 ;
 //# sourceMappingURL=main.dart.js_211.part.js.map
