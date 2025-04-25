@@ -268,29 +268,15 @@ class UserController extends BaseController {
   }
 
   /// Returns a boolean value indicating whether the user is currently in the trial window.
-  bool inTrialWindow() {
-    final subs = _pangeaController
-        .subscriptionController.currentSubscriptionInfo?.history;
-    final available =
-        _pangeaController.subscriptionController.availableSubscriptionInfo;
-    if (subs != null && available != null) {
-      // For all previous subscriptions
-      for (final sub in subs.entries) {
-        // Check available subscriptions
-        for (final availableSubscription in available.availableSubscriptions) {
-          // If we had a trial, before, dont allow again
-          if (availableSubscription.id == sub.key &&
-              availableSubscription.isTrial) {
-            return false;
-          }
-        }
-      }
-    } else {
-      // Were not loaded yet
+  bool inTrialWindow({int trialDays = 7}) {
+    final DateTime? createdAt = profile.userSettings.createdAt;
+    if (createdAt == null) {
       return false;
     }
 
-    return true;
+    return createdAt.isAfter(
+      DateTime.now().subtract(Duration(days: trialDays)),
+    );
   }
 
   /// Checks if the user's languages are set.

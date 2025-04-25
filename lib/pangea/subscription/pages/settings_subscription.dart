@@ -71,6 +71,12 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
       subscriptionController.currentSubscriptionInfo?.currentSubscription !=
           null;
 
+  bool get currentSubscriptionIsTrial =>
+      currentSubscriptionAvailable &&
+      (subscriptionController
+              .currentSubscriptionInfo?.currentSubscription?.isTrial ??
+          false);
+
   String? get purchasePlatformDisplayName => subscriptionController
       .currentSubscriptionInfo?.purchasePlatformDisplayName;
 

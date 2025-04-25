@@ -114,6 +114,11 @@ class SubscriptionController extends BaseController {
       await currentSubscriptionInfo!.configure();
       await currentSubscriptionInfo!.setCurrentSubscription();
 
+      if (currentSubscriptionInfo!.currentSubscriptionId == null &&
+          _pangeaController.userController.inTrialWindow()) {
+        await activateNewUserTrial();
+      }
+
       if (!kIsWeb) {
         Purchases.addCustomerInfoUpdateListener(
           (CustomerInfo info) async {
@@ -150,6 +155,25 @@ class SubscriptionController extends BaseController {
           ),
         },
       );
+
+      if (currentSubscriptionInfo?.currentSubscriptionId == null) {
+        currentSubscriptionInfo ??= kIsWeb
+            ? WebSubscriptionInfo(
+                userID: _userID!,
+                availableSubscriptionInfo:
+                    availableSubscriptionInfo ?? AvailableSubscriptionsInfo(),
+                history: {},
+              )
+            : MobileSubscriptionInfo(
+                userID: _userID!,
+                availableSubscriptionInfo:
+                    availableSubscriptionInfo ?? AvailableSubscriptionsInfo(),
+                history: {},
+              );
+
+        currentSubscriptionInfo!.currentSubscriptionId =
+            AppConfig.errorSubscriptionId;
+      }
     }
   }
 
@@ -220,8 +244,6 @@ class SubscriptionController extends BaseController {
   Future<void> activateNewUserTrial() async {
     if (await SubscriptionRepo.activateFreeTrial()) {
       await updateCustomerInfo();
-    } else {
-      // We already log this inside the activate free trial method
     }
   }
 
@@ -229,7 +251,7 @@ class SubscriptionController extends BaseController {
     if (!initCompleter.isCompleted) {
       await initialize();
     }
-    await currentSubscriptionInfo!.setCurrentSubscription();
+    await currentSubscriptionInfo?.setCurrentSubscription();
     setState(null);
   }
 

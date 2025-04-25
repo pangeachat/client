@@ -101,6 +101,12 @@ class ManagementNotAvailableWarning extends StatelessWidget {
 
     String getWarningText() {
       final DateFormat formatter = DateFormat('yyyy-MM-dd');
+      if (controller.currentSubscriptionIsTrial) {
+        return L10n.of(context).trialExpiration(
+          formatter.format(currentSubscriptionInfo!.expirationDate!),
+        );
+      }
+
       if (controller.currentSubscriptionAvailable) {
         String warningText = L10n.of(context).subsciptionPlatformTooltip;
         if (controller.purchasePlatformDisplayName != null) {
@@ -109,6 +115,7 @@ class ManagementNotAvailableWarning extends StatelessWidget {
         }
         return warningText;
       }
+
       if (controller.currentSubscriptionIsPromotional) {
         if (currentSubscriptionInfo?.isLifetimeSubscription ?? false) {
           return L10n.of(context).promotionalSubscriptionDesc;
@@ -117,6 +124,7 @@ class ManagementNotAvailableWarning extends StatelessWidget {
           formatter.format(currentSubscriptionInfo!.expirationDate!),
         );
       }
+
       return L10n.of(context).subscriptionManagementUnavailable;
     }
 
