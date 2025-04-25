@@ -167,7 +167,6 @@ flutter:
     # - .env
     # - assets/.env
     - assets/pangea/
-    - assets/pangea/DinoBot-Congratulate.png
     - assets/pangea/bot_faces/
     # Pangea#
     - assets/sounds/
