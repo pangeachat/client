@@ -2808,9 +2808,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatePhoneOS() {
       return "You may need to update your device's OS version.";
     },
-    get$wordsPerMinute() {
-      return "Words per minute";
-    },
     get$autoIGCToolName() {
       return "Run Pangea writing assistance automatically";
     },
@@ -4371,6 +4368,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_249", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "4tdBwrS94eCmyxluiemjEAtA8p0=");
+})($__dart_deferred_initializers__, "7c0hGt0ZOmoMVtrxaSJs1t5Tk0s=");
 ;
 //# sourceMappingURL=main.dart.js_249.part.js.map

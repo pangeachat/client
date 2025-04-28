@@ -2808,9 +2808,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatePhoneOS() {
       return "B\u1ea1n c\xf3 th\u1ec3 c\u1ea7n n\xe2ng c\u1ea5p phi\xean b\u1ea3n h\u1ec7 \u0111i\u1ec1u h\xe0nh.";
     },
-    get$wordsPerMinute() {
-      return "T\u1eeb m\u1ed7i ph\xfat";
-    },
     get$autoIGCToolName() {
       return "T\u1ef1 \u0111\u1ed9ng ch\u1ea1y h\u1ed7 tr\u1ee3 ng\xf4n ng\u1eef";
     },
@@ -4371,6 +4368,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "9ha/jRR2HP4Z+7USqmcVY++Whvo=");
+})($__dart_deferred_initializers__, "JvOgVZisJfsX7kWEAq12BUNehCo=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map
