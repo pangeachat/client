@@ -1,16 +1,14 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
 import 'package:fluffychat/pangea/constructs/construct_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class LevelUpConstants {
   static const String starFileName = "star.png";
@@ -291,7 +289,10 @@ class LevelUpBannerState extends State<LevelUpBanner>
                                       TableCellVerticalAlignment.middle,
                                   children: [
                                     ...LearningSkillsEnum.values
-                                        .where((v) => v.isVisible)
+                                        .where(
+                                      (v) =>
+                                          v.isVisible && _skillsPoints(v) > -1,
+                                    )
                                         .map((skill) {
                                       return TableRow(
                                         children: [
@@ -326,7 +327,7 @@ class LevelUpBannerState extends State<LevelUpBanner>
                                               horizontal: 18.0,
                                             ),
                                             child: Text(
-                                              "+${_skillsPoints(skill)} XP",
+                                              "+ ${_skillsPoints(skill)} XP",
                                               style: const TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.w600,
