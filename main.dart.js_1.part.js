@@ -3920,13 +3920,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Forms used in chats:";
     },
     get$writingExercisesTooltip() {
-      return "Writing activities";
+      return "Writing practice";
     },
     get$listeningExercisesTooltip() {
-      return "Listening activities";
+      return "Listening practice";
     },
     get$readingExercisesTooltip() {
-      return "Reading activities";
+      return "Reading practice";
     },
     get$meaningNotFound() {
       return "Meaning could not be found.";
@@ -4056,9 +4056,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$chooseCorrectLabel() {
       return "Choose the correct label.";
-    },
-    levelPopupTitle$1(level) {
-      return "Congratulations on reaching\nLevel " + level;
     },
     get$activityPlannerTitle() {
       return "Activity Planner";
@@ -4237,12 +4234,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$readingAssistanceOverviewBody() {
       return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
     },
-    get$levelSummaryTrigger() {
-      return "View summary";
-    },
-    levelSummaryPopupTitle$1(level) {
-      return "Level " + level + " Summary";
-    },
     get$referFriends() {
       return "Refer friends";
     },
@@ -4359,6 +4350,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newGrammar() {
       return "New grammar concepts";
+    },
+    get$congratulationsOnReaching() {
+      return "Congratulations on reaching ";
+    },
+    get$seeDetails() {
+      return "See Details";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5650,6 +5647,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "bSJr3/Dt4ggiJOdl0vsWh6sFR/8=");
+})($__dart_deferred_initializers__, "vAoHFUYDUdAMCXCRZydIVjZw5p4=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

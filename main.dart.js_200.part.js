@@ -4050,9 +4050,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseCorrectLabel() {
       return "Elige la etiqueta correcta.";
     },
-    levelPopupTitle$1(level) {
-      return "\xa1Felicidades por alcanzar\nel Nivel " + level + "!";
-    },
     get$activityPlannerTitle() {
       return "Planificador de Actividades";
     },
@@ -4230,12 +4227,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$readingAssistanceOverviewBody() {
       return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
     },
-    get$levelSummaryTrigger() {
-      return "View summary";
-    },
-    levelSummaryPopupTitle$1(level) {
-      return "Level " + level + " Summary";
-    },
     get$referFriends() {
       return "Refer friends";
     },
@@ -4353,6 +4344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "New grammar concepts";
     },
+    get$congratulationsOnReaching() {
+      return "Congratulations on reaching ";
+    },
+    get$seeDetails() {
+      return "See Details";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4368,6 +4365,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "TavKzoWL/I/LO6v3pA+MGpPv++I=");
+})($__dart_deferred_initializers__, "KrjGNJulo/FMB5h+K9caqR85gZ8=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

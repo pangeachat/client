@@ -4050,9 +4050,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseCorrectLabel() {
       return "Ch\u1ecdn nh\xe3n \u0111\xfang.";
     },
-    levelPopupTitle$1(level) {
-      return "Ch\xfac m\u1eebng, b\u1ea1n \u0111\xe3 \u0111\u1ea1t c\u1ea5p " + level;
-    },
     get$activityPlannerTitle() {
       return "Tr\xecnh l\u1eadp ho\u1ea1t \u0111\u1ed9ng";
     },
@@ -4230,12 +4227,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$readingAssistanceOverviewBody() {
       return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
     },
-    get$levelSummaryTrigger() {
-      return "\u0110\u1ecdc b\xe1o c\xe1o";
-    },
-    levelSummaryPopupTitle$1(level) {
-      return "T\xf3m t\u1eaft c\u1ea5p " + level;
-    },
     get$referFriends() {
       return "Refer friends";
     },
@@ -4353,6 +4344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "New grammar concepts";
     },
+    get$congratulationsOnReaching() {
+      return "Congratulations on reaching ";
+    },
+    get$seeDetails() {
+      return "See Details";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4368,6 +4365,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "JvOgVZisJfsX7kWEAq12BUNehCo=");
+})($__dart_deferred_initializers__, "oam11U/NM+qWvpN4OzLazptbgq8=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map
