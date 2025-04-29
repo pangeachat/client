@@ -18,6 +18,8 @@ class PangeaSpacePage extends StatefulWidget {
 }
 
 class PangeaSpacePageState extends State<PangeaSpacePage> {
+  bool expanded = true;
+
   final TextEditingController searchController = TextEditingController();
   final FocusNode searchFocusNode = FocusNode();
 
@@ -48,6 +50,12 @@ class PangeaSpacePageState extends State<PangeaSpacePage> {
       searchController.clear();
     });
     if (unfocus) searchFocusNode.unfocus();
+  }
+
+  void toggleExpanded() {
+    setState(() {
+      expanded = !expanded;
+    });
   }
 
   @override

@@ -46,24 +46,27 @@ class PangeaSpacePageView extends StatelessWidget {
         controller.searchController.text.isEmpty &&
         filteredParticipants.isNotEmpty;
 
-    final Widget leaderboardHeader = Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Color.lerp(AppConfig.gold, Colors.black, 0.3),
-      ),
-      padding: const EdgeInsets.all(8.0),
-      child: Text(
+    final Widget leaderboardHeader = ListTile(
+      tileColor: Color.lerp(AppConfig.gold, Colors.black, 0.3),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+      visualDensity: const VisualDensity(vertical: -4.0),
+      title: Text(
         L10n.of(context).leaderboard,
-        style: theme.textTheme.headlineMedium?.copyWith(
-          fontWeight: FontWeight.bold,
-        ),
+        style: Theme.of(context).textTheme.headlineSmall,
       ),
+      trailing: Icon(
+        controller.expanded
+            ? Icons.keyboard_arrow_down_outlined
+            : Icons.keyboard_arrow_right_outlined,
+      ),
+      onTap: controller.toggleExpanded,
     );
 
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             elevation: theme.appBarTheme.elevation,
             backgroundColor: theme.appBarTheme.backgroundColor,
             actions: [
@@ -124,27 +127,52 @@ class PangeaSpacePageView extends StatelessWidget {
                                     style: const TextStyle(fontSize: 18),
                                   ),
                                 ),
-                                TextButton.icon(
-                                  onPressed: () => context.push(
-                                    '/rooms/${room.id}/details/members',
-                                  ),
-                                  icon: const Icon(
-                                    Icons.group_outlined,
-                                    size: 14,
-                                  ),
-                                  style: TextButton.styleFrom(
-                                    foregroundColor:
-                                        theme.colorScheme.secondary,
-                                  ),
-                                  label: Text(
-                                    L10n.of(context).countParticipants(
-                                      (room.summary.mInvitedMemberCount ?? 0) +
-                                          (room.summary.mJoinedMemberCount ??
-                                              0),
+                                Row(
+                                  spacing: 8.0,
+                                  children: [
+                                    TextButton.icon(
+                                      onPressed: () => context.push(
+                                        '/rooms/${room.id}/details/members',
+                                      ),
+                                      icon: const Icon(
+                                        Icons.group_outlined,
+                                        size: 14,
+                                      ),
+                                      style: TextButton.styleFrom(
+                                        foregroundColor:
+                                            theme.colorScheme.secondary,
+                                      ),
+                                      label: Text(
+                                        L10n.of(context).countParticipants(
+                                          (room.summary.mInvitedMemberCount ??
+                                                  0) +
+                                              (room.summary
+                                                      .mJoinedMemberCount ??
+                                                  0),
+                                        ),
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                    TextButton.icon(
+                                      onPressed: () => context.push(
+                                        '/rooms/${room.id}/details/invite',
+                                      ),
+                                      icon: const Icon(
+                                        Icons.group_add_outlined,
+                                        size: 14,
+                                      ),
+                                      style: TextButton.styleFrom(
+                                        foregroundColor:
+                                            theme.colorScheme.secondary,
+                                      ),
+                                      label: Text(
+                                        L10n.of(context).invite,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -183,7 +211,7 @@ class PangeaSpacePageView extends StatelessWidget {
                         ),
                       ),
                       if (constraints.maxWidth <= 800) leaderboardHeader,
-                      if (constraints.maxWidth <= 800)
+                      if (constraints.maxWidth <= 800 && controller.expanded)
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Row(
@@ -233,116 +261,135 @@ class PangeaSpacePageView extends StatelessWidget {
                     spacing: 16.0,
                     children: [
                       leaderboardHeader,
-                      LeaderboardMedals(
-                        isVisible: showMedals,
-                        participants: filteredParticipants,
-                        padding: EdgeInsets.only(
-                          top: showMedals ? 16.0 : 0,
-                          left: showMedals ? 42.0 : 0,
-                          right: showMedals ? 42.0 : 0,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 8.0,
-                                  ),
-                                  child: participantsLoader.loading
-                                      ? const CircularProgressIndicator
-                                          .adaptive()
-                                      : Text(
-                                          L10n.of(context).countParticipants(
-                                            participantsLoader
-                                                .participants.length,
+                      if (controller.expanded)
+                        Expanded(
+                          child: Column(
+                            children: [
+                              LeaderboardMedals(
+                                isVisible: showMedals,
+                                participants: filteredParticipants,
+                                padding: EdgeInsets.only(
+                                  top: showMedals ? 16.0 : 0,
+                                  left: showMedals ? 42.0 : 0,
+                                  right: showMedals ? 42.0 : 0,
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0,
+                                          ),
+                                          child: participantsLoader.loading
+                                              ? const CircularProgressIndicator
+                                                  .adaptive()
+                                              : Text(
+                                                  L10n.of(context)
+                                                      .countParticipants(
+                                                    participantsLoader
+                                                        .participants.length,
+                                                  ),
+                                                ),
+                                        ),
+                                        IconButton(
+                                          icon: const Icon(
+                                            Icons.group_add_outlined,
+                                          ),
+                                          iconSize: 20.0,
+                                          onPressed: () => context.push(
+                                            '/rooms/${room.id}/details/members',
                                           ),
                                         ),
-                                ),
-                                IconButton(
-                                  icon: const Icon(Icons.group_add_outlined),
-                                  iconSize: 20.0,
-                                  onPressed: () => context.push(
-                                    '/rooms/${room.id}/details/members',
-                                  ),
-                                ),
-                              ],
-                            ),
-                            TextField(
-                              controller: controller.searchController,
-                              focusNode: controller.searchFocusNode,
-                              textInputAction: TextInputAction.search,
-                              decoration: InputDecoration(
-                                filled: true,
-                                fillColor: theme.colorScheme.secondaryContainer,
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                  borderRadius: BorderRadius.circular(99),
-                                ),
-                                contentPadding: EdgeInsets.zero,
-                                hintText: L10n.of(context).search,
-                                hintStyle: TextStyle(
-                                  color: theme.colorScheme.onPrimaryContainer,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                                prefixIcon: controller
-                                        .searchController.text.isNotEmpty
-                                    ? IconButton(
-                                        tooltip: L10n.of(context).cancel,
-                                        icon: const Icon(Icons.close_outlined),
-                                        onPressed: controller.cancelSearch,
-                                        color: theme
-                                            .colorScheme.onPrimaryContainer,
-                                      )
-                                    : IconButton(
-                                        onPressed: controller.startSearch,
-                                        icon: Icon(
-                                          Icons.search_outlined,
+                                      ],
+                                    ),
+                                    TextField(
+                                      controller: controller.searchController,
+                                      focusNode: controller.searchFocusNode,
+                                      textInputAction: TextInputAction.search,
+                                      decoration: InputDecoration(
+                                        filled: true,
+                                        fillColor: theme
+                                            .colorScheme.secondaryContainer,
+                                        border: OutlineInputBorder(
+                                          borderSide: BorderSide.none,
+                                          borderRadius:
+                                              BorderRadius.circular(99),
+                                        ),
+                                        contentPadding: EdgeInsets.zero,
+                                        hintText: L10n.of(context).search,
+                                        hintStyle: TextStyle(
                                           color: theme
                                               .colorScheme.onPrimaryContainer,
+                                          fontWeight: FontWeight.normal,
                                         ),
+                                        prefixIcon: controller.searchController
+                                                .text.isNotEmpty
+                                            ? IconButton(
+                                                tooltip:
+                                                    L10n.of(context).cancel,
+                                                icon: const Icon(
+                                                  Icons.close_outlined,
+                                                ),
+                                                onPressed:
+                                                    controller.cancelSearch,
+                                                color: theme.colorScheme
+                                                    .onPrimaryContainer,
+                                              )
+                                            : IconButton(
+                                                onPressed:
+                                                    controller.startSearch,
+                                                icon: Icon(
+                                                  Icons.search_outlined,
+                                                  color: theme.colorScheme
+                                                      .onPrimaryContainer,
+                                                ),
+                                              ),
                                       ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        child: Builder(
-                          builder: (context) {
-                            if (participantsLoader.loading) {
-                              return const Column(
-                                children: [
-                                  CircularProgressIndicator.adaptive(),
-                                ],
-                              );
-                            }
-
-                            if (participantsLoader.error != null) {
-                              return Text(
-                                L10n.of(context).oopsSomethingWentWrong,
-                                style: TextStyle(
-                                  color: theme.colorScheme.error,
+                                    ),
+                                  ],
                                 ),
-                              );
-                            }
+                              ),
+                              Expanded(
+                                child: Builder(
+                                  builder: (context) {
+                                    if (participantsLoader.loading) {
+                                      return const Column(
+                                        children: [
+                                          CircularProgressIndicator.adaptive(),
+                                        ],
+                                      );
+                                    }
 
-                            return ListView.builder(
-                              itemCount: filteredParticipants.length,
-                              itemBuilder: (context, index) {
-                                return TrophyParticipantListItem(
-                                  index: index,
-                                  user: filteredParticipants[index],
-                                );
-                              },
-                            );
-                          },
+                                    if (participantsLoader.error != null) {
+                                      return Text(
+                                        L10n.of(context).oopsSomethingWentWrong,
+                                        style: TextStyle(
+                                          color: theme.colorScheme.error,
+                                        ),
+                                      );
+                                    }
+
+                                    return ListView.builder(
+                                      itemCount: filteredParticipants.length,
+                                      itemBuilder: (context, index) {
+                                        return TrophyParticipantListItem(
+                                          index: index,
+                                          user: filteredParticipants[index],
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
                     ],
                   ),
                 ),
