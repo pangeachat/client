@@ -112,7 +112,8 @@ class ChatListController extends State<ChatList>
 
     // #Pangea
     if (FluffyThemes.isColumnMode(context)) {
-      context.push("/rooms/$spaceId/details");
+      // context.push("/rooms/$spaceId/details");
+      context.go("/rooms/$spaceId");
     }
     // Pangea#
 
@@ -153,7 +154,8 @@ class ChatListController extends State<ChatList>
             setActiveSpace(room.id);
             context.go(
               FluffyThemes.isColumnMode(context)
-                  ? "/rooms/${room.id}/details"
+                  // ? "/rooms/${room.id}/details"
+                  ? "/rooms/${room.id}"
                   : "/rooms",
             );
             return;
@@ -517,7 +519,8 @@ class ChatListController extends State<ChatList>
         final setSpaceID = event["activeSpaceId"];
         setSpaceID != null ? setActiveSpace(setSpaceID) : clearActiveSpace();
         if (setSpaceID != null) {
-          context.push("/rooms/$setSpaceID/details");
+          // context.push("/rooms/$setSpaceID/details");
+          context.go("/rooms/$setSpaceID");
         }
       } else if (event.containsKey("activeFilter")) {
         setActiveFilter(event["activeFilter"]);
