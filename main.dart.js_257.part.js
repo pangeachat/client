@@ -4354,7 +4354,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "See Details";
     },
     get$choosePracticeMode() {
-      return "Choose a practice mode";
+      return "Click on one of the buttons above to start a practice activity";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4371,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_257", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "raaOvq/QskCTdu21O0u2fGZKhSE=");
+})($__dart_deferred_initializers__, "yNH7Uk3fUHqWm1s0HkMO65WHpUI=");
 ;
 //# sourceMappingURL=main.dart.js_257.part.js.map
