@@ -102,10 +102,7 @@ class ChoicesArrayState extends State<ChoicesArray> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
-    final sortedChoices = widget.choices!.toList()
-      ..sort((a, b) => a.text.length.compareTo(b.text.length));
-
-    final choices = sortedChoices
+    final choices = widget.choices!
         .mapIndexed(
           (index, entry) => ChoiceItem(
             theme: theme,

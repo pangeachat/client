@@ -70,9 +70,6 @@ class PracticeMatchActivity {
     choices.sort(
       (a, b) => a.choiceContent.length.compareTo(b.choiceContent.length),
     );
-    debugPrint(
-      'Sorted Choices Array: ${choices.map((c) => c.choiceContent).toList()}',
-    );
   }
 
   bool isCorrect(ConstructForm form, String value) {
