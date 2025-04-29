@@ -1824,6 +1824,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickMessageBody() {
       return "Nh\u1ea5n v\xe0o tin nh\u1eafn \u0111\u1ec3 truy c\u1eadp c\xe1c c\xf4ng c\u1ee5 ng\xf4n ng\u1eef nh\u01b0 d\u1ecbch, nghe l\u1ea1i v\xe0 h\u01a1n th\u1ebf n\u1eefa!";
     },
+    get$allDone() {
+      return "Ho\xe0n t\u1ea5t!";
+    },
     get$vocab() {
       return "T\u1eeb v\u1ef1ng";
     },
@@ -4350,6 +4353,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$seeDetails() {
       return "See Details";
     },
+    get$choosePracticeMode() {
+      return "Choose a practice mode";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4365,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "oam11U/NM+qWvpN4OzLazptbgq8=");
+})($__dart_deferred_initializers__, "fN5l7QVrLHY0LMXz7gdiMuj1Vc8=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map
