@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection.dart';
 
 class TokenPosition {
@@ -75,7 +76,7 @@ class MessageTextUtil {
           pangeaMessageEvent.messageDisplayText.characters;
 
       // When building token positions, use grapheme cluster indices
-      final List<TokenPosition> tokenPositions = [];
+      List<TokenPosition> tokenPositions = [];
       int globalIndex = 0;
 
       final tokens = pangeaMessageEvent.messageDisplayRepresentation!.tokens!;
@@ -152,6 +153,11 @@ class MessageTextUtil {
         globalIndex = endIndex;
         pointer = nextTokenPointer;
         continue;
+      }
+
+      if (PLanguageStore.rtlLanguageCodes
+          .contains(pangeaMessageEvent.messageDisplayLangCode)) {
+        tokenPositions = tokenPositions.reversed.toList();
       }
 
       _tokenPositionsCache[pangeaMessageEvent.eventId] = tokenPositions;

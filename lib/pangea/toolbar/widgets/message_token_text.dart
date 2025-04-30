@@ -247,6 +247,7 @@ class MessageTextWidget extends StatelessWidget {
                             ? () => onClick?.call(tokenPosition)
                             : null,
                         child: RichText(
+                          textDirection: pangeaMessageEvent.textDirection,
                           text: TextSpan(
                             children: [
                               if (start.isNotEmpty)
