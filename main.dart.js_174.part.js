@@ -2725,9 +2725,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$correctionDefaultPrompt() {
       return "What is the best replacement?";
     },
-    get$why() {
-      return "Why?";
-    },
     get$definition() {
       return "Definition";
     },
@@ -4372,6 +4369,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_174", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "gPUy0Q8w2pcC27/zLMyPjbXwb3Q=");
+})($__dart_deferred_initializers__, "kSvnT4u75RbDqHLtuYQO+TLSA6E=");
 ;
 //# sourceMappingURL=main.dart.js_174.part.js.map
