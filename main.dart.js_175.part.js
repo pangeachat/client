@@ -4354,6 +4354,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
     },
+    userWouldLikeToChangeTheSpace$1(user) {
+      return user + " would like to join the space.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4369,6 +4372,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_175", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "HiTZwWpZR87EUGd2f+Z5j9NbHWY=");
+})($__dart_deferred_initializers__, "Kqsk8j7em8sy4VOuXl0wGIbBsKs=");
 ;
 //# sourceMappingURL=main.dart.js_175.part.js.map
