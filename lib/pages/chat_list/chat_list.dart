@@ -215,7 +215,7 @@ class ChatListController extends State<ChatList>
       case ActiveFilter.allChats:
         // #Pangea
         // return (room) => true;
-        return (room) => !room.isAnalyticsRoom;
+        return (room) => !room.isAnalyticsRoom && !room.isSpace;
       // Pangea#
       case ActiveFilter.messages:
         return (room) =>
