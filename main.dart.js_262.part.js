@@ -747,9 +747,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$removeAllOtherDevices() {
       return "X\xf3a t\u1ea5t c\u1ea3 thi\u1ebft b\u1ecb kh\xe1c";
     },
-    get$unbanFromChat() {
-      return "B\u1ecf c\u1ea5m kh\u1ecfi tr\xf2 chuy\u1ec7n";
-    },
     get$removeYourAvatar() {
       return "G\u1ee1 \u1ea3nh \u0111\u1ea1i di\u1ec7n c\u1ee7a b\u1ea1n";
     },
@@ -4356,6 +4353,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheSpace$1(user) {
       return user + " would like to join the space.";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$unban() {
+      return "Unban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4377,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "03VtUvBQUI3iSlg6JMryXZn1TgI=");
+})($__dart_deferred_initializers__, "uatu3kvsmFBAZ8boDt5ki3phvKU=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map

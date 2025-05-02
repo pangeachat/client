@@ -748,9 +748,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$removeAllOtherDevices() {
       return "\u0623\u0632\u0650\u0644 \u0643\u0644 \u0627\u0644\u0623\u062c\u0647\u0632\u0629 \u0627\u0644\u0623\u062e\u0631\u0649";
     },
-    get$unbanFromChat() {
-      return "\u0641\u0643 \u062d\u062c\u0628\u0647 \u0645\u0646 \u0627\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
-    },
     get$removeYourAvatar() {
       return "\u0623\u0632\u0644 \u0627\u0644\u0635\u0648\u0631\u0629 \u0627\u0644\u0631\u0645\u0632\u064a\u0629";
     },
@@ -4357,6 +4354,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheSpace$1(user) {
       return user + " would like to join the space.";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$unban() {
+      return "Unban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4372,6 +4378,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_162", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "WmKsKIWSb7QQBlnxiAG65ajJxlk=");
+})($__dart_deferred_initializers__, "n8TB80qgg0HWn/nr20VItxvUfuI=");
 ;
 //# sourceMappingURL=main.dart.js_162.part.js.map

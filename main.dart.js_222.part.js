@@ -747,9 +747,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$removeAllOtherDevices() {
       return "Ukloni sve druge ure\u0111aje";
     },
-    get$unbanFromChat() {
-      return "Ponovo uklju\u010di u razgovor";
-    },
     get$removeYourAvatar() {
       return "Ukloni svoj avatar";
     },
@@ -4356,6 +4353,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheSpace$1(user) {
       return user + " would like to join the space.";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$unban() {
+      return "Unban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4377,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_222", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "tPXtXgPhjhjDPYFHAON5VdgF7Mo=");
+})($__dart_deferred_initializers__, "juN23Zf1ugkZoR50paolegUfhkM=");
 ;
 //# sourceMappingURL=main.dart.js_222.part.js.map

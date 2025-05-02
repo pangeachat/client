@@ -754,9 +754,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$removeAllOtherDevices() {
       return "\u79fb\u9664\u6240\u6709\u5176\u5b83\u8bbe\u5907";
     },
-    get$unbanFromChat() {
-      return "\u4ece\u804a\u5929\u4e2d\u89e3\u5c01";
-    },
     get$removeYourAvatar() {
       return "\u79fb\u9664\u4f60\u7684\u5934\u50cf";
     },
@@ -4363,6 +4360,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheSpace$1(user) {
       return user + " would like to join the space.";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$unban() {
+      return "Unban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5091,9 +5097,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$removeAllOtherDevices() {
       return "\u79fb\u9664\u6240\u6709\u5176\u4ed6\u88dd\u7f6e";
     },
-    get$unbanFromChat() {
-      return "\u89e3\u5c01\u804a\u5929\u5ba4";
-    },
     get$removeYourAvatar() {
       return "\u79fb\u9664\u60a8\u7684\u982d\u50cf";
     },
@@ -5653,6 +5656,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+oKT1kBiqAqbc3IGv70BS18x4GE=");
+})($__dart_deferred_initializers__, "umuApZHSSjSArr8c5YiVrH+zIH4=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

@@ -747,9 +747,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$removeAllOtherDevices() {
       return "Bain gach gl\xe9as eile";
     },
-    get$unbanFromChat() {
-      return "Cuir deireadh an cosc \xf3n gcomhr\xe1";
-    },
     get$removeYourAvatar() {
       return "Bain d'abhat\xe1r";
     },
@@ -4356,6 +4353,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheSpace$1(user) {
       return user + " would like to join the space.";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$unban() {
+      return "Unban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4374,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_215", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "k+iRt+NtRK6XwE3R9x8mRLPVs20=");
+})($__dart_deferred_initializers__, "0E5akzu9QTKIc/B7KeNj+ft9WSE=");
 ;
 //# sourceMappingURL=main.dart.js_215.part.js.map

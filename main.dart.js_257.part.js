@@ -747,9 +747,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$removeAllOtherDevices() {
       return "Ta bort alla andra enheter";
     },
-    get$unbanFromChat() {
-      return "Ta bort chatt-blockering";
-    },
     get$removeYourAvatar() {
       return "Ta bort din avatar";
     },
@@ -4356,6 +4353,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheSpace$1(user) {
       return user + " would like to join the space.";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$unban() {
+      return "Unban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4377,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_257", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "gSECyAEjCj+QZxrdYPtbTzKKt+8=");
+})($__dart_deferred_initializers__, "RogCItFHd0We0AKEDkE0gnqG70s=");
 ;
 //# sourceMappingURL=main.dart.js_257.part.js.map

@@ -747,9 +747,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$removeAllOtherDevices() {
       return "Poista kaikki muut laitteet";
     },
-    get$unbanFromChat() {
-      return "Poista porttikielto keskusteluun";
-    },
     get$removeYourAvatar() {
       return "Poista profiilikuvasi";
     },
@@ -4356,6 +4353,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     userWouldLikeToChangeTheSpace$1(user) {
       return user + " would like to join the space.";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$unban() {
+      return "Unban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4377,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_210", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "zz2ZcD+ebva0N+Ta7LAPb2k/G+o=");
+})($__dart_deferred_initializers__, "ijYiGqErVlpwmwHL+uC+3MCjE7A=");
 ;
 //# sourceMappingURL=main.dart.js_210.part.js.map
