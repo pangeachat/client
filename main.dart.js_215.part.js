@@ -4341,11 +4341,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "New grammar concepts";
     },
-    get$congratulationsOnReaching() {
-      return "Congratulations on reaching ";
-    },
-    get$seeDetails() {
-      return "See Details";
+    congratulationsOnReaching$1(level) {
+      return "You've reached Level " + level + "!";
     },
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
@@ -4380,6 +4377,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_215", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "0E5akzu9QTKIc/B7KeNj+ft9WSE=");
+})($__dart_deferred_initializers__, "VWh9qhGm3RM+UUl0GGWvkBA8FS8=");
 ;
 //# sourceMappingURL=main.dart.js_215.part.js.map
