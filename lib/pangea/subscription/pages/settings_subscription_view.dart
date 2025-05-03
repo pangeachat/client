@@ -1,13 +1,11 @@
 // Flutter imports:
 
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:intl/intl.dart';
-
 import 'package:fluffychat/pangea/subscription/pages/change_subscription.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:intl/intl.dart';
 
 class SettingsSubscriptionView extends StatelessWidget {
   final SubscriptionManagementController controller;
@@ -100,13 +98,16 @@ class ManagementNotAvailableWarning extends StatelessWidget {
         controller.subscriptionController.currentSubscriptionInfo;
 
     String getWarningText() {
-      final DateFormat formatter = DateFormat('yyyy-MM-dd');
-      if (controller.currentSubscriptionIsTrial) {
-        return L10n.of(context).trialExpiration(
+      if (controller.currentSubscriptionIsPromotional) {
+        if (currentSubscriptionInfo?.isLifetimeSubscription ?? false) {
+          return L10n.of(context).promotionalSubscriptionDesc;
+        }
+
+        final DateFormat formatter = DateFormat('yyyy-MM-dd');
+        return L10n.of(context).promoSubscriptionExpirationDesc(
           formatter.format(currentSubscriptionInfo!.expirationDate!),
         );
       }
-
       if (controller.currentSubscriptionAvailable) {
         String warningText = L10n.of(context).subsciptionPlatformTooltip;
         if (controller.purchasePlatformDisplayName != null) {
@@ -115,16 +116,6 @@ class ManagementNotAvailableWarning extends StatelessWidget {
         }
         return warningText;
       }
-
-      if (controller.currentSubscriptionIsPromotional) {
-        if (currentSubscriptionInfo?.isLifetimeSubscription ?? false) {
-          return L10n.of(context).promotionalSubscriptionDesc;
-        }
-        return L10n.of(context).promoSubscriptionExpirationDesc(
-          formatter.format(currentSubscriptionInfo!.expirationDate!),
-        );
-      }
-
       return L10n.of(context).subscriptionManagementUnavailable;
     }
 
