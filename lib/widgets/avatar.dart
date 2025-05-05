@@ -78,10 +78,11 @@ class Avatar extends StatelessWidget {
                       )
                     :
                     // Pangea#
+
                     noPic
                         ? Container(
                             decoration:
-                                BoxDecoration(color: name!.lightColorAvatar),
+                                BoxDecoration(color: name?.lightColorAvatar),
                             alignment: Alignment.center,
                             child: Text(
                               fallbackLetters,

@@ -12,9 +12,8 @@ import 'package:fluffychat/pages/chat_list/dummy_chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
 import 'package:fluffychat/pages/chat_list/space_view.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/pangea_chat_list_header.dart';
-import 'package:fluffychat/pangea/public_spaces/pangea_public_room_bottom_sheet.dart';
-import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
@@ -363,12 +362,15 @@ class PublicRoomsHorizontalListState extends State<PublicRoomsHorizontalList> {
       curve: FluffyThemes.animationCurve,
       child: publicRooms == null
           ? null
+          :
           // #Pangea
-          // : ListView.builder(
-          : Scrollbar(
+          Scrollbar(
               thumbVisibility: true,
               controller: _scrollController,
-              child: ListView.builder(
+              child:
+                  // Pangea#
+                  ListView.builder(
+                // #Pangea
                 controller: _scrollController,
                 // Pangea#
                 scrollDirection: Axis.horizontal,
@@ -381,15 +383,11 @@ class PublicRoomsHorizontalListState extends State<PublicRoomsHorizontalList> {
                       L10n.of(context).chat,
                   // Pangea#
                   avatar: publicRooms[i].avatarUrl,
-                  onPressed: () => showAdaptiveBottomSheet(
+                  onPressed: () => showAdaptiveDialog(
                     context: context,
-                    // #Pangea
-                    // builder: (c) => PublicRoomBottomSheet(
-                    builder: (c) => PangeaPublicRoomBottomSheet(
-                      // Pangea#
+                    builder: (c) => PublicRoomDialog(
                       roomAlias: publicRooms[i].canonicalAlias ??
                           publicRooms[i].roomId,
-                      outerContext: context,
                       chunk: publicRooms[i],
                     ),
                   ),
