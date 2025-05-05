@@ -2739,9 +2739,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noTeachersFound() {
       return "Kh\xf4ng t\xecm th\u1ea5y gi\xe1o vi\xean n\xe0o \u0111\u1ec3 b\xe1o c\xe1o";
     },
-    trialExpiration$1(expiration) {
-      return "B\u1ea3n d\xf9ng th\u1eed c\u1ee7a b\u1ea1n s\u1ebd h\u1ebft h\u1ea1n v\xe0o " + expiration;
-    },
     get$freeTrialDesc() {
       return "Ng\u01b0\u1eddi d\xf9ng m\u1edbi \u0111\u01b0\u1ee3c d\xf9ng th\u1eed Pangea Chat trong 1 tu\u1ea7n";
     },
@@ -4374,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "XMWCeBxcveE02TWXeap8odc7Yrk=");
+})($__dart_deferred_initializers__, "BCXCX8sY9CcJvVoi1TguaMfcv9A=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map

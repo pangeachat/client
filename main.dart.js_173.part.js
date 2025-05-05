@@ -2740,9 +2740,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noTeachersFound() {
       return "No teachers found to report to";
     },
-    trialExpiration$1(expiration) {
-      return "Your free trial expires on " + expiration;
-    },
     get$freeTrialDesc() {
       return "New users recieve a one week free trial of Pangea Chat";
     },
@@ -4375,6 +4372,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_173", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "JIYmFFIFTqO0puRaB2/jLfrxNVQ=");
+})($__dart_deferred_initializers__, "D40OtDyWGLjiinaLOOIz8W50qNg=");
 ;
 //# sourceMappingURL=main.dart.js_173.part.js.map
