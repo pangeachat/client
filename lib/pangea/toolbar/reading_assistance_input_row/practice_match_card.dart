@@ -3,6 +3,8 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/choice_animation.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
@@ -33,14 +35,11 @@ class MatchActivityCard extends StatelessWidget {
   ) {
     switch (activityType) {
       case ActivityTypeEnum.emoji:
-        return Text(
-          choice,
-          style: TextStyle(fontSize: fontSize),
-        );
       case ActivityTypeEnum.wordMeaning:
         return Text(
           choice,
           style: TextStyle(fontSize: fontSize),
+          textAlign: TextAlign.center,
         );
       case ActivityTypeEnum.wordFocusListening:
         return Icon(
@@ -89,6 +88,9 @@ class MatchActivityCard extends StatelessWidget {
                 isSelected: overlayController.selectedChoice == cf,
                 isCorrect: wasCorrect,
                 child: PracticeMatchItem(
+                  token: currentActivity.practiceTarget.tokens.firstWhereOrNull(
+                    (t) => t.vocabConstructID == cf.form.cId,
+                  ),
                   isSelected: overlayController.selectedChoice == cf,
                   isCorrect: wasCorrect,
                   constructForm: cf,
@@ -98,9 +100,6 @@ class MatchActivityCard extends StatelessWidget {
                           ? cf.choiceContent
                           : null,
                   overlayController: overlayController,
-                  fixedSize: activityType == ActivityTypeEnum.wordMeaning
-                      ? null
-                      : fontSize * 2.1,
                 ),
               );
             },

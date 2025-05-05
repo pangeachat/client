@@ -34,15 +34,14 @@ abstract class AppConfig {
   static const double readingAssistanceInputBarHeight = 140.0;
   static const double reactionsPickerHeight = 48.0;
   static const double chatInputRowOverlayPadding = 8.0;
-  static const double tokenModeInputBarHeight = reactionsPickerHeight +
-      toolbarButtonsHeight +
-      (chatInputRowOverlayPadding * 2) +
-      toolbarSpacing;
-  static const double messageModeInputBarHeight =
+  static const double selectModeInputBarHeight =
+      reactionsPickerHeight + (chatInputRowOverlayPadding * 2) + toolbarSpacing;
+  static const double practiceModeInputBarHeight =
       readingAssistanceInputBarHeight +
           toolbarButtonsHeight +
           (chatInputRowOverlayPadding * 2) +
           toolbarSpacing;
+  static const double audioTranscriptionMaxHeight = 150.0;
 
   static TextStyle messageTextStyle(
     Event? event,
@@ -125,10 +124,7 @@ abstract class AppConfig {
   static bool hideRedactedEvents = false;
   static bool hideUnknownEvents = true;
   static bool hideUnimportantStateEvents = true;
-  // #Pangea
-  // static bool separateChatTypes = false;
-  static bool separateChatTypes = true;
-  // Pangea#
+  static bool separateChatTypes = false;
   static bool autoplayImages = true;
   static bool sendTypingNotifications = true;
   static bool sendPublicReadReceipts = true;
@@ -190,7 +186,6 @@ abstract class AppConfig {
   static String assetsBaseURL =
       "https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com";
 
-  static String trialSubscriptionId = "pangea_new_user_trial";
   static String errorSubscriptionId = "pangea_subscription_error";
   // Pangea#
 

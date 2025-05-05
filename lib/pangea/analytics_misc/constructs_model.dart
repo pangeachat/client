@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -88,6 +90,8 @@ class OneConstructUse {
   String? id;
   ConstructUseMetaData metadata;
 
+  int xp;
+
   OneConstructUse({
     required this.useType,
     required this.lemma,
@@ -95,6 +99,7 @@ class OneConstructUse {
     required this.metadata,
     required category,
     required this.form,
+    required this.xp,
     this.id,
   }) {
     if (category is MorphFeaturesEnum) {
@@ -115,8 +120,10 @@ class OneConstructUse {
         ? ConstructTypeUtil.fromString(json['constructType'])
         : ConstructTypeEnum.vocab;
 
+    final useType = ConstructUseTypeUtil.fromString(json['useType']);
+
     return OneConstructUse(
-      useType: ConstructUseTypeUtil.fromString(json['useType']),
+      useType: useType,
       lemma: json['lemma'],
       form: json['form'],
       category: getCategory(json, constructType),
@@ -127,6 +134,7 @@ class OneConstructUse {
         roomId: json['chatId'],
         timeStamp: DateTime.parse(json['timeStamp']),
       ),
+      xp: json['xp'] ?? useType.pointValue,
     );
   }
 
@@ -140,6 +148,7 @@ class OneConstructUse {
         'constructType': constructType.string,
         'categories': category,
         'id': id,
+        'xp': xp,
       };
 
   String get category {
@@ -194,7 +203,10 @@ class OneConstructUse {
     return room.getEventById(metadata.eventId!);
   }
 
-  int get pointValue => useType.pointValue;
+  Color pointValueColor(BuildContext context) {
+    if (xp == 0) return Theme.of(context).colorScheme.primary;
+    return xp > 0 ? AppConfig.gold : Colors.red;
+  }
 
   ConstructIdentifier get identifier => ConstructIdentifier(
         lemma: lemma,

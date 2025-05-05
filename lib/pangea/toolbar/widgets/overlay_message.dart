@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_speech_to_text_card.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -123,6 +124,11 @@ class OverlayMessage extends StatelessWidget {
         : ownMessage
             ? ThemeData.dark().colorScheme.onPrimary
             : theme.colorScheme.onSurface;
+
+    final showTranslation = overlayController.showTranslation &&
+        overlayController.translationText != null;
+
+    final showTranscription = pangeaMessageEvent?.isAudioMessage == true;
 
     final content = Container(
       decoration: BoxDecoration(
@@ -253,18 +259,60 @@ class OverlayMessage extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: borderRadius,
       ),
-      child: sizeAnimation != null
-          ? AnimatedBuilder(
-              animation: sizeAnimation!,
-              builder: (context, child) {
-                return SizedBox(
-                  height: sizeAnimation!.value.height,
-                  width: sizeAnimation!.value.width,
-                  child: content,
-                );
-              },
-            )
-          : content,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: borderRadius,
+          color: color,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            sizeAnimation != null
+                ? AnimatedBuilder(
+                    animation: sizeAnimation!,
+                    builder: (context, child) {
+                      return SizedBox(
+                        height: sizeAnimation!.value.height,
+                        width: sizeAnimation!.value.width,
+                        child: content,
+                      );
+                    },
+                  )
+                : content,
+            if (showTranscription || showTranslation)
+              Container(
+                width: messageWidth,
+                constraints: const BoxConstraints(
+                  maxHeight: AppConfig.audioTranscriptionMaxHeight,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    12.0,
+                    20.0,
+                    12.0,
+                    12.0,
+                  ),
+                  child: SingleChildScrollView(
+                    child: showTranscription
+                        ? MessageSpeechToTextCard(
+                            messageEvent: pangeaMessageEvent!,
+                            textColor: textColor,
+                          )
+                        : Text(
+                            overlayController.translationText!,
+                            style: AppConfig.messageTextStyle(
+                              event,
+                              textColor,
+                            ).copyWith(
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }

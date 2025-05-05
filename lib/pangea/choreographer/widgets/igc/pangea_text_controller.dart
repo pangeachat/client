@@ -4,9 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/choreographer/models/igc_text_data_model.dart';
+import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../../../common/utils/overlay.dart';
 import '../../controllers/choreographer.dart';
 import '../../enums/edit_type.dart';
@@ -71,15 +73,6 @@ class PangeaTextController extends TextEditingController {
       return;
     }
 
-    int tokenIndex;
-    try {
-      tokenIndex = choreographer.igc.igcTextData!.tokenIndexByOffset(
-        selection.baseOffset,
-      );
-    } catch (_) {
-      return;
-    }
-
     final int matchIndex =
         choreographer.igc.igcTextData!.getTopMatchIndexForOffset(
       selection.baseOffset,
@@ -101,9 +94,7 @@ class PangeaTextController extends TextEditingController {
               matchIndex: matchIndex,
               onReplacementSelect: choreographer.onReplacementSelect,
               // may not need this
-              onSentenceRewrite: ((sentenceRewrite) async {
-                debugPrint("onSentenceRewrite $tokenIndex $sentenceRewrite");
-              }),
+              onSentenceRewrite: ((sentenceRewrite) async {}),
               onIgnore: () => choreographer.onIgnoreMatch(
                 cursorOffset: selection.baseOffset,
               ),
@@ -119,7 +110,9 @@ class PangeaTextController extends TextEditingController {
         : null;
 
     if (cardToShow != null) {
+      MatrixState.pAnyState.closeAllOverlays(RegExp(r'span_card_overlay_\d+'));
       OverlayUtil.showPositionedCard(
+        overlayKey: matchIndex != -1 ? "span_card_overlay_$matchIndex" : null,
         context: context,
         maxHeight: matchIndex != -1 &&
                 choreographer.igc.igcTextData!.matches[matchIndex].isITStart
@@ -128,6 +121,8 @@ class PangeaTextController extends TextEditingController {
         maxWidth: 350,
         cardToShow: cardToShow,
         transformTargetId: choreographer.inputTransformTargetKey,
+        onDismiss: () => choreographer.setState(),
+        ignorePointer: true,
       );
     }
   }
@@ -175,16 +170,19 @@ class PangeaTextController extends TextEditingController {
         return TextSpan(text: text, style: style);
       }
 
+      final choreoSteps = choreographer.choreoRecord.choreoSteps;
+
       return TextSpan(
         style: style,
         children: [
           ...choreographer.igc.igcTextData!.constructTokenSpan(
-            context: context,
+            choreoSteps: choreoSteps.isNotEmpty &&
+                    choreoSteps.last.acceptedOrIgnoredMatch?.status ==
+                        PangeaMatchStatus.automatic
+                ? choreoSteps
+                : [],
             defaultStyle: style,
-            spanCardModel: null,
-            handleClick: false,
-            transformTargetId: choreographer.inputTransformTargetKey,
-            room: choreographer.chatController.room,
+            onUndo: choreographer.onUndoReplacement,
           ),
           TextSpan(text: parts[1], style: style),
         ],

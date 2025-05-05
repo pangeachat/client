@@ -74,6 +74,7 @@ class MessageTokenText extends StatelessWidget {
       return Text(
         _pangeaMessageEvent.messageDisplayText,
         style: _style,
+        textScaler: TextScaler.noScaling,
       );
     }
 
@@ -108,6 +109,8 @@ class MessageTextWidget extends StatelessWidget {
   final bool isMessage;
   final ReadingAssistanceMode? readingAssistanceMode;
 
+  final TextScaler? textScaler;
+
   const MessageTextWidget({
     super.key,
     required this.pangeaMessageEvent,
@@ -123,6 +126,7 @@ class MessageTextWidget extends StatelessWidget {
     this.isTransitionAnimation = false,
     this.isMessage = true,
     this.readingAssistanceMode,
+    this.textScaler,
   });
 
   @override
@@ -152,6 +156,7 @@ class MessageTextWidget extends StatelessWidget {
         softWrap: softWrap,
         maxLines: maxLines,
         overflow: overflow,
+        textScaler: textScaler,
       );
     }
 
@@ -164,11 +169,12 @@ class MessageTextWidget extends StatelessWidget {
             ? theme.colorScheme.onPrimary
             : theme.colorScheme.onSurface;
 
-    return Text.rich(
+    return RichText(
       softWrap: softWrap ?? true,
       maxLines: maxLines,
       overflow: overflow ?? TextOverflow.clip,
-      TextSpan(
+      textScaler: textScaler ?? TextScaler.noScaling,
+      text: TextSpan(
         children:
             tokenPositions.mapIndexed((int i, TokenPosition tokenPosition) {
           final substring = messageCharacters
@@ -225,8 +231,8 @@ class MessageTextWidget extends StatelessWidget {
                         overlayController: overlayController,
                         textStyle: renderer.style(context),
                         width: tokenWidth,
-                        animate: isTransitionAnimation,
-                        practiceTarget: overlayController
+                        animateIn: isTransitionAnimation,
+                        practiceTargetForToken: overlayController
                                     ?.toolbarMode.associatedActivityType !=
                                 null
                             ? overlayController?.practiceSelection
@@ -246,8 +252,8 @@ class MessageTextWidget extends StatelessWidget {
                         onTap: onClick != null
                             ? () => onClick?.call(tokenPosition)
                             : null,
-                        child: Text.rich(
-                          TextSpan(
+                        child: RichText(
+                          text: TextSpan(
                             children: [
                               if (start.isNotEmpty)
                                 LinkifySpan(

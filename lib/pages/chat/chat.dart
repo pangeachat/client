@@ -27,6 +27,7 @@ import 'package:fluffychat/pages/chat/chat_view.dart';
 import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/recording_dialog.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up.dart';
@@ -36,6 +37,7 @@ import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
+import 'package:fluffychat/pangea/choreographer/widgets/igc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -46,7 +48,6 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/instructions/empty_chat_popup.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dialog.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
@@ -405,10 +406,8 @@ class ChatController extends State<ChatPageWithRoom>
       (update) {
         if (update['level_up'] != null) {
           LevelUpUtil.showLevelUpDialog(
-            update['level_up'],
-            update['analytics_room_id'],
-            update["construct_summary_state_event_id"],
-            update['construct_summary'],
+            update['upper_level'],
+            update['lower_level'],
             context,
           );
         } else if (update['unlocked_constructs'] != null) {
@@ -424,7 +423,7 @@ class ChatController extends State<ChatPageWithRoom>
         pangeaController.getAnalytics.analyticsStream.stream.listen((update) {
       if (update.targetID == null) return;
       OverlayUtil.showOverlay(
-        overlayKey: update.targetID,
+        overlayKey: "${update.targetID ?? ""}_points",
         followerAnchor: Alignment.bottomCenter,
         targetAnchor: Alignment.bottomCenter,
         context: context,
@@ -678,7 +677,7 @@ class ChatController extends State<ChatPageWithRoom>
     //#Pangea
     choreographer.stateStream.close();
     choreographer.dispose();
-    MatrixState.pAnyState.closeOverlay();
+    MatrixState.pAnyState.closeAllOverlays();
     showToolbarStream.close();
     stopAudioStream.close();
     hideTextController.dispose();
@@ -697,7 +696,10 @@ class ChatController extends State<ChatPageWithRoom>
     _router.routeInformationProvider.addListener(_onRouteChanged);
   }
 
-  void _onRouteChanged() => stopAudioStream.add(null);
+  void _onRouteChanged() {
+    stopAudioStream.add(null);
+    MatrixState.pAnyState.closeAllOverlays();
+  }
 
   // TextEditingController sendController = TextEditingController();
   PangeaTextController get sendController => choreographer.textController;
@@ -834,18 +836,46 @@ class ChatController extends State<ChatPageWithRoom>
         );
 
         if (msgEventId != null && originalSent != null && tokensSent != null) {
+          final List<OneConstructUse> constructs = [
+            ...originalSent.vocabAndMorphUses(
+              choreo: choreo,
+              tokens: tokensSent.tokens,
+              metadata: metadata,
+            ),
+          ];
+
+          final newGrammarConstructs =
+              pangeaController.getAnalytics.newConstructCount(
+            constructs,
+            ConstructTypeEnum.morph,
+          );
+
+          final newVocabConstructs =
+              pangeaController.getAnalytics.newConstructCount(
+            constructs,
+            ConstructTypeEnum.vocab,
+          );
+
+          OverlayUtil.showOverlay(
+            overlayKey: "msg_analytics_feedback_$msgEventId",
+            followerAnchor: Alignment.bottomRight,
+            targetAnchor: Alignment.topRight,
+            context: context,
+            child: MessageAnalyticsFeedback(
+              overlayId: "msg_analytics_feedback_$msgEventId",
+              newGrammarConstructs: newGrammarConstructs,
+              newVocabConstructs: newVocabConstructs,
+            ),
+            transformTargetId: msgEventId,
+            ignorePointer: true,
+          );
+
           pangeaController.putAnalytics.setState(
             AnalyticsStream(
               eventId: msgEventId,
               targetID: msgEventId,
               roomId: room.id,
-              constructs: [
-                ...originalSent.vocabAndMorphUses(
-                  choreo: choreo,
-                  tokens: tokensSent.tokens,
-                  metadata: metadata,
-                ),
-              ],
+              constructs: constructs,
             ),
           );
         }
@@ -874,6 +904,7 @@ class ChatController extends State<ChatPageWithRoom>
         }
       },
     ).catchError((err, s) {
+      clearFakeEvent();
       if (err is EventTooLarge) {
         showAdaptiveDialog(
           context: context,
@@ -1300,7 +1331,10 @@ class ChatController extends State<ChatPageWithRoom>
       ),
     );
     if (!mounted) return;
-    setState(() => selectedEvents.clear());
+    // #Pangea
+    // see https://github.com/pangeachat/client/issues/2536
+    // setState(() => selectedEvents.clear());
+    // Pangea#
   }
 
   void sendAgainAction() {
@@ -1915,13 +1949,6 @@ class ChatController extends State<ChatPageWithRoom>
     final theme = Theme.of(context);
     return Row(
       children: [
-        // #Pangea
-        EmptyChatPopup(
-          room: room,
-          transformTargetId:
-              choreographer.inputLayerLinkAndKey.transformTargetId,
-        ),
-        // Pangea#
         Expanded(
           child: ChatView(this),
         ),

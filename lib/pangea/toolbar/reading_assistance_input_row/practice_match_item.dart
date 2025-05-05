@@ -5,27 +5,29 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class PracticeMatchItem extends StatefulWidget {
   const PracticeMatchItem({
     super.key,
     required this.content,
+    required this.token,
     required this.constructForm,
     required this.isCorrect,
     required this.isSelected,
     this.audioContent,
     required this.overlayController,
-    required this.fixedSize,
   });
 
   final Widget content;
+  final PangeaToken? token;
   final PracticeChoice constructForm;
   final String? audioContent;
   final MessageOverlayController overlayController;
-  final double? fixedSize;
   final bool? isCorrect;
   final bool isSelected;
 
@@ -59,11 +61,16 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
         setState(() => _isPlaying = true);
       }
       try {
-        await tts.tryToSpeak(
-          widget.audioContent!,
-          context,
-          targetID: 'word-audio-button',
-        );
+        final l2 =
+            MatrixState.pangeaController.languageController.activeL2Code();
+        if (l2 != null) {
+          await tts.tryToSpeak(
+            widget.audioContent!,
+            context: context,
+            targetID: 'word-audio-button',
+            langCode: l2,
+          );
+        }
       } catch (e, s) {
         debugger(when: kDebugMode);
         ErrorHandler.logError(
@@ -104,43 +111,45 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
     }
   }
 
-  IntrinsicWidth content(BuildContext context) {
-    return IntrinsicWidth(
-      child: Container(
-        height: widget.fixedSize,
-        width: widget.fixedSize,
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(8),
-        decoration: BoxDecoration(
-          color: color(context).withAlpha((0.4 * 255).toInt()),
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          border: isSelected
-              ? Border.all(
-                  color: color(context),
-                  width: 2,
-                )
-              : Border.all(
-                  color: Colors.transparent,
-                  width: 2,
-                ),
-        ),
-        child: widget.content,
-      ),
-    );
-  }
-
   void onTap() {
     play();
-    widget.overlayController.onChoiceSelect(widget.constructForm);
+    isCorrect == null || !isCorrect! || widget.token == null
+        ? widget.overlayController.onChoiceSelect(widget.constructForm)
+        : widget.overlayController.updateSelectedSpan(widget.token!.text);
   }
 
   @override
   Widget build(BuildContext context) {
+    final content = Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Flexible(
+          child: Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: color(context).withAlpha((0.4 * 255).toInt()),
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              border: isSelected
+                  ? Border.all(
+                      color: color(context).withAlpha(255),
+                      width: 2,
+                    )
+                  : Border.all(
+                      color: Colors.transparent,
+                      width: 2,
+                    ),
+            ),
+            child: widget.content,
+          ),
+        ),
+      ],
+    );
+
     return LongPressDraggable<PracticeChoice>(
       data: widget.constructForm,
       feedback: Material(
         type: MaterialType.transparency,
-        child: content(context),
+        child: content,
       ),
       delay: const Duration(milliseconds: 50),
       onDragStarted: onTap,
@@ -148,7 +157,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
         onHover: (isHovered) => setState(() => _isHovered = isHovered),
         borderRadius: BorderRadius.circular(AppConfig.borderRadius),
         onTap: onTap,
-        child: content(context),
+        child: content,
       ),
     );
   }

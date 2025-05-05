@@ -4513,7 +4513,7 @@
   },
   "botModeValidation": "Please select a chat mode",
   "clickBestOption": "Choose the best options to translate your message!",
-  "completeActivitiesToUnlock": "Complete one of the activities (emoji, meaning, listening OR grammar) to unlock the translation!",
+  "completeActivitiesToUnlock": "Complete at least one activity to unlock the translation!",
   "botSettingsSubtitle": "Invite bot to moderate chat activity",
   "invitePeople": "Invite users",
   "noCapacityLimit": "No capacity limit",
@@ -4536,7 +4536,8 @@
   "updateNow": "Update Now",
   "updateLater": "Later",
   "constructUseWaDesc": "Used without help",
-  "constructUseGaDesc": "Grammar mistake",
+  "constructUseGaDesc": "Grammar assistance",
+  "constructUseTaDesc": "Translation assistance",
   "constructUseUnkDesc": "Unknown",
   "constructUseCorITDesc": "Correct in translation",
   "constructUseIgnITDesc": "Ignored in translation",
@@ -4601,9 +4602,9 @@
   "meaningSectionHeader": "Meaning:",
   "formSectionHeader": "Forms used in chats:",
   "noEmojiSelectedTooltip": "No emoji selected",
-  "writingExercisesTooltip": "Writing activities",
-  "listeningExercisesTooltip": "Listening activities",
-  "readingExercisesTooltip": "Reading activities",
+  "writingExercisesTooltip": "Writing practice",
+  "listeningExercisesTooltip": "Listening practice",
+  "readingExercisesTooltip": "Reading practice",
   "meaningNotFound": "Meaning could not be found.",
   "formsNotFound": "Forms could not be found.",
   "chooseBaseForm": "Choose the base form",
@@ -4869,5 +4870,37 @@
   "areYouLikeMe": "Are you like me?",
   "tryAgainLater": "Too many attempts made. Please try again in 5 minutes.",
   "enterSpaceCode": "Enter the Space Code",
-  "shareSpaceLink": "Share link to space"
+  "shareSpaceLink": "Share link to space",
+  "byUsingPangeaChat": "By using Pangea Chat, I agree to the ",
+  "details": "Details",
+  "languageLevelPreA1Desc": "I have never learned or used the language.",
+  "languageLevelA1Desc": "I can understand and use some familiar everyday expressions and very basic phrases.",
+  "languageLevelA2Desc": "I can understand sentences and frequently used expressions related to areas of immediate relevance",
+  "languageLevelB1Desc": "I can deal with most familiar situations and can produce simple connected text on familiar topics.",
+  "languageLevelB2Desc": "I can understand the mains ideas of complex texts and interact with a degree of fluency and spontaneity.",
+  "languageLevelC1Desc": "I can express ideas fluently and spontaneously without much struggle and understand a wide range of demanding texts.",
+  "languageLevelC2Desc": "I can understand virtually everything heard or read and express myself fluently and precisely.",
+  "newVocab": "New vocab",
+  "newGrammar": "New grammar concepts",
+  "congratulationsOnReaching": "You've reached Level {level}!",
+  "@congratulationsOnReaching": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "seeDetails": "See Details",
+  "choosePracticeMode": "Click on one of the buttons above to start a practice activity",
+  "userWouldLikeToChangeTheSpace": "{user} would like to join the space.",
+  "@userWouldLikeToChangeTheSpace": {
+    "placeholders": {
+      "user": {
+        "type": "String"
+      }
+    }
+  },
+  "ban": "Ban",
+  "unban": "Unban",
+  "kick": "Kick"
 }

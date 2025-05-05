@@ -100,7 +100,10 @@ class ChatListViewBody extends StatelessWidget {
                       // Pangea#
                       SearchTitle(
                         title: L10n.of(context).publicSpaces,
-                        icon: const Icon(Icons.workspaces_outlined),
+                        // #Pangea
+                        // icon: const Icon(Icons.workspaces_outlined),
+                        icon: const Icon(Icons.groups_outlined),
+                        // Pangea#
                       ),
                       PublicRoomsHorizontalList(publicRooms: publicSpaces),
                       SearchTitle(
@@ -192,7 +195,10 @@ class ChatListViewBody extends StatelessWidget {
                               ActiveFilter.messages
                             else
                               ActiveFilter.allChats,
-                            ActiveFilter.groups,
+                            // #Pangea
+                            if (AppConfig.separateChatTypes)
+                              ActiveFilter.groups,
+                            // Pangea#
                             ActiveFilter.unread,
                             // #Pangea
                             // if (spaceDelegateCandidates.isNotEmpty &&

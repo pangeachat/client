@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
@@ -12,6 +11,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class CurrentSubscriptionInfo {
   final String userID;
   final AvailableSubscriptionsInfo availableSubscriptionInfo;
+  final Map<String, RCSubscription>? history;
 
   DateTime? expirationDate;
   String? currentSubscriptionId;
@@ -19,6 +19,7 @@ class CurrentSubscriptionInfo {
   CurrentSubscriptionInfo({
     required this.userID,
     required this.availableSubscriptionInfo,
+    required this.history,
   });
 
   SubscriptionDetails? get currentSubscription {
@@ -32,15 +33,11 @@ class CurrentSubscriptionInfo {
 
   Future<void> configure() async {}
 
-  bool get isNewUserTrial =>
-      currentSubscriptionId == AppConfig.trialSubscriptionId;
-
   bool get currentSubscriptionIsPromotional =>
       currentSubscriptionId?.startsWith("rc_promo") ?? false;
 
   bool get isPaidSubscription =>
       (currentSubscription != null || currentSubscriptionId != null) &&
-      !isNewUserTrial &&
       !currentSubscriptionIsPromotional;
 
   bool get isLifetimeSubscription =>
@@ -67,23 +64,6 @@ class CurrentSubscriptionInfo {
           availableSubscriptionInfo.appIds?.currentAppId);
 
   void resetSubscription() => currentSubscriptionId = null;
-
-  void setTrial(DateTime expiration) {
-    expirationDate = expiration;
-    currentSubscriptionId = AppConfig.trialSubscriptionId;
-    if (currentSubscription == null &&
-        !availableSubscriptionInfo.availableSubscriptions
-            .any((sub) => sub.isTrial)) {
-      availableSubscriptionInfo.availableSubscriptions.add(
-        SubscriptionDetails(
-          price: 0,
-          id: AppConfig.trialSubscriptionId,
-          periodType: SubscriptionPeriodType.trial,
-        ),
-      );
-    }
-  }
-
   Future<void> setCurrentSubscription() async {}
 }
 
@@ -92,12 +72,15 @@ class AvailableSubscriptionsInfo {
   List<SubscriptionDetails> availableSubscriptions = [];
   SubscriptionAppIds? appIds;
   List<SubscriptionDetails>? allProducts;
+  DateTime? lastUpdated;
+
   final subscriptionBox =
       MatrixState.pangeaController.subscriptionController.subscriptionBox;
 
   AvailableSubscriptionsInfo({
     this.appIds,
     this.allProducts,
+    this.lastUpdated,
   });
 
   Future<void> setAvailableSubscriptions() async {
@@ -109,7 +92,10 @@ class AvailableSubscriptionsInfo {
     if (cachedInfo == null) await _cacheSubscriptionInfo();
 
     availableSubscriptions = (allProducts ?? [])
-        .where((product) => product.appId == appIds!.currentAppId)
+        .where(
+          (product) =>
+              product.appId == appIds!.currentAppId || product.appId == "trial",
+        )
         .sorted((a, b) => a.price.compareTo(b.price))
         .toList();
   }
@@ -142,7 +128,8 @@ class AvailableSubscriptionsInfo {
     }
 
     try {
-      return AvailableSubscriptionsInfo.fromJson(json);
+      final resp = AvailableSubscriptionsInfo.fromJson(json);
+      return resp.lastUpdated == null ? null : resp;
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -169,9 +156,13 @@ class AvailableSubscriptionsInfo {
         .map((product) => SubscriptionDetails.fromJson(product))
         .toList()
         .cast<SubscriptionDetails>();
+    final lastUpdated = json['last_updated'] != null
+        ? DateTime.tryParse(json['last_updated']!)
+        : null;
     return AvailableSubscriptionsInfo(
       appIds: appIds,
       allProducts: allProducts,
+      lastUpdated: lastUpdated,
     );
   }
 
@@ -184,6 +175,7 @@ class AvailableSubscriptionsInfo {
     data['app_ids'] = appIds?.toJson();
     data['all_products'] =
         allProducts?.map((product) => product.toJson()).toList();
+    data['last_updated'] = (lastUpdated ?? DateTime.now()).toIso8601String();
     return data;
   }
 }

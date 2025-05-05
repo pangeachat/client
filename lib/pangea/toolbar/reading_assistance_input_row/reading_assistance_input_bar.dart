@@ -6,12 +6,11 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/reactions_picker.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_mode_locked_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/message_speech_to_text_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_translation_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
-import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/morph_focus_widget.dart';
 
 const double minContentHeight = 120;
 
@@ -26,6 +25,11 @@ class ReadingAssistanceInputBar extends StatelessWidget {
   });
 
   Widget barContent(BuildContext context) {
+    if (overlayController.readingAssistanceMode !=
+        ReadingAssistanceMode.practiceMode) {
+      return ReactionsPicker(controller);
+    }
+
     Widget? content;
     final target =
         overlayController.toolbarMode.associatedActivityType != null &&
@@ -38,14 +42,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
             : null;
 
     if (overlayController.pangeaMessageEvent?.isAudioMessage == true) {
-      if (!['audio/wav', 'audio/x-wav']
-          .contains(overlayController.pangeaMessageEvent!.mimetype)) {
-        return ReactionsPicker(controller);
-      }
-
-      content = MessageSpeechToTextCard(
-        messageEvent: overlayController.pangeaMessageEvent!,
-      );
+      return ReactionsPicker(controller);
     } else {
       switch (overlayController.toolbarMode) {
         case MessageMode.messageSpeechToText:
@@ -54,7 +51,13 @@ class ReadingAssistanceInputBar extends StatelessWidget {
         case MessageMode.noneSelected:
         case MessageMode.messageMeaning:
           //TODO: show all emojis for the lemmas and allow sending normal reactions
-          return ReactionsPicker(controller);
+          content = Text(
+            L10n.of(context).choosePracticeMode,
+            style: Theme.of(context)
+                .textTheme
+                .bodyLarge
+                ?.copyWith(fontStyle: FontStyle.italic),
+          );
 
         case MessageMode.messageTranslation:
           if (overlayController.isTranslationUnlocked) {
@@ -75,7 +78,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
               overlayController: overlayController,
             );
           } else {
-            content = const Text("All done!");
+            content = Text(L10n.of(context).allDone);
           }
         case MessageMode.wordMorph:
           if (target != null) {
@@ -83,14 +86,6 @@ class ReadingAssistanceInputBar extends StatelessWidget {
               pangeaMessageEvent: overlayController.pangeaMessageEvent!,
               targetTokensAndActivityType: target,
               overlayController: overlayController,
-            );
-          } else if (overlayController.selectedMorph != null) {
-            content = MorphFocusWidget(
-              token: overlayController.selectedMorph!.token,
-              morphFeature: overlayController.selectedMorph!.morph,
-              pangeaMessageEvent: overlayController.pangeaMessageEvent!,
-              overlayController: overlayController,
-              onEditDone: () => overlayController.setState(() {}),
             );
           } else {
             content = Center(

@@ -9,7 +9,7 @@ import '../constants/match_rule_ids.dart';
 import 'igc_text_data_model.dart';
 import 'span_data.dart';
 
-enum PangeaMatchStatus { open, ignored, accepted, unknown }
+enum PangeaMatchStatus { open, ignored, accepted, automatic, unknown }
 
 class PangeaMatch {
   SpanData match;
@@ -112,6 +112,10 @@ class PangeaMatch {
       offset >= match.offset && offset < match.offset + match.length;
 
   Color get underlineColor {
+    if (status == PangeaMatchStatus.automatic) {
+      return const Color.fromARGB(187, 132, 96, 224);
+    }
+
     switch (match.rule?.id ?? "unknown") {
       case MatchRuleIds.interactiveTranslation:
         return const Color.fromARGB(187, 132, 96, 224);
@@ -123,9 +127,26 @@ class PangeaMatch {
     }
   }
 
-  TextStyle textStyle(TextStyle? existingStyle) =>
-      existingStyle?.merge(IGCTextData.underlineStyle(underlineColor)) ??
-      IGCTextData.underlineStyle(underlineColor);
+  TextStyle textStyle(
+    int matchIndex,
+    int? openMatchIndex,
+    TextStyle? existingStyle,
+  ) {
+    double opacityFactor = 1.0;
+    if (openMatchIndex != null && openMatchIndex != matchIndex) {
+      opacityFactor = 0.5;
+    }
+
+    final int alpha = (255 * opacityFactor).round();
+    return existingStyle?.merge(
+          IGCTextData.underlineStyle(
+            underlineColor.withAlpha(alpha),
+          ),
+        ) ??
+        IGCTextData.underlineStyle(
+          underlineColor.withAlpha(alpha),
+        );
+  }
 
   PangeaMatch get copyWith => PangeaMatch.fromJson(toJson());
 

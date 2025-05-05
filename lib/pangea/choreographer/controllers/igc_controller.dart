@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
 import '../../common/utils/overlay.dart';
 import '../models/span_card_model.dart';
@@ -71,32 +72,21 @@ class IgcController {
     });
   }
 
-  Future<void> getIGCTextData({
-    required bool onlyTokensAndLanguageDetection,
-  }) async {
+  Future<void> getIGCTextData() async {
     try {
       if (choreographer.currentText.isEmpty) return clear();
-
-      // if tokenizing on message send, tokenization might take a while
-      // so add a fake event to the timeline to visually indicate that the message is being sent
-      if (onlyTokensAndLanguageDetection &&
-          choreographer.choreoMode != ChoreoMode.it) {
-        choreographer.chatController.sendFakeMessage();
-      }
-
       debugPrint('getIGCTextData called with ${choreographer.currentText}');
-      debugPrint(
-        'getIGCTextData called with tokensOnly = $onlyTokensAndLanguageDetection',
-      );
 
       final IGCRequestBody reqBody = IGCRequestBody(
         fullText: choreographer.currentText,
         userId: choreographer.pangeaController.userController.userId!,
         userL1: choreographer.l1LangCode!,
         userL2: choreographer.l2LangCode!,
-        enableIGC: choreographer.igcEnabled && !onlyTokensAndLanguageDetection,
-        enableIT: choreographer.itEnabled && !onlyTokensAndLanguageDetection,
-        prevMessages: prevMessages(),
+        enableIGC: choreographer.igcEnabled &&
+            choreographer.choreoMode != ChoreoMode.it,
+        enableIT: choreographer.itEnabled &&
+            choreographer.choreoMode != ChoreoMode.it,
+        prevMessages: _prevMessages(),
       );
 
       if (_cacheClearTimer == null || !_cacheClearTimer!.isActive) {
@@ -141,37 +131,8 @@ class IgcController {
         }
       }
 
-      // If there are any matches that don't match up with token offsets,
-      // this indicates and choreographer bug. Remove them.
-      final tokens = igcTextData!.tokens;
-      final List<PangeaMatch> confirmedMatches = List.from(filteredMatches);
-      for (final match in filteredMatches) {
-        final substring = match.match.fullText.characters
-            .skip(match.match.offset)
-            .take(match.match.length);
-        final trimmed = substring.toString().trim().characters;
-        final matchOffset = (match.match.offset + match.match.length) -
-            (substring.length - trimmed.length);
-        final hasStartMatch = tokens.any(
-          (token) => token.text.offset == match.match.offset,
-        );
-        final hasEndMatch = tokens.any(
-          (token) => token.text.offset + token.text.length == matchOffset,
-        );
-        if (!hasStartMatch || !hasEndMatch) {
-          confirmedMatches.clear();
-          ErrorHandler.logError(
-            m: "Match offset and/or length do not tokens with matching offset and length. This is a choreographer bug.",
-            data: {
-              "match": match.toJson(),
-              "tokens": tokens.map((e) => e.toJson()).toList(),
-            },
-          );
-          break;
-        }
-      }
-
-      igcTextData!.matches = confirmedMatches;
+      igcTextData!.matches = filteredMatches;
+      choreographer.acceptNormalizationMatches();
 
       // TODO - for each new match,
       // check if existing igcTextData has one and only one match with the same error text and correction
@@ -198,7 +159,6 @@ class IgcController {
         e: err,
         s: stack,
         data: {
-          "onlyTokensAndLanguageDetection": onlyTokensAndLanguageDetection,
           "currentText": choreographer.currentText,
           "userL1": choreographer.l1LangCode,
           "userL2": choreographer.l2LangCode,
@@ -242,7 +202,9 @@ class IgcController {
     }
 
     choreographer.chatController.inputFocus.unfocus();
+    MatrixState.pAnyState.closeAllOverlays(RegExp(r'span_card_overlay_\d+'));
     OverlayUtil.showPositionedCard(
+      overlayKey: "span_card_overlay_$firstMatchIndex",
       context: context,
       cardToShow: SpanCard(
         scm: SpanCardModel(
@@ -264,12 +226,14 @@ class IgcController {
       maxHeight: match.isITStart ? 260 : 350,
       maxWidth: 350,
       transformTargetId: choreographer.inputTransformTargetKey,
+      onDismiss: () => choreographer.setState(),
+      ignorePointer: true,
     );
   }
 
   /// Get the content of previous text and audio messages in chat.
   /// Passed to IGC request to add context.
-  List<PreviousMessage> prevMessages({int numMessages = 5}) {
+  List<PreviousMessage> _prevMessages({int numMessages = 5}) {
     final List<Event> events = choreographer.chatController.visibleEvents
         .where(
           (e) =>

@@ -18,6 +18,7 @@ class OverlayListEntry {
 }
 
 class PangeaAnyState {
+  final Set<String> activeOverlays = {};
   final Map<String, LayerLinkAndKey> _layerLinkAndKeys = {};
   List<OverlayListEntry> entries = [];
 
@@ -56,6 +57,11 @@ class PangeaAnyState {
         canPop: canPop,
       ),
     );
+
+    if (overlayKey != null) {
+      activeOverlays.add(overlayKey);
+    }
+
     Overlay.of(context).insert(entry);
   }
 
@@ -79,12 +85,24 @@ class PangeaAnyState {
         );
       }
       entries.remove(entry);
+
+      if (overlayKey != null) {
+        activeOverlays.remove(overlayKey);
+      }
     }
   }
 
-  void closeAllOverlays() {
-    final shouldRemove = entries.where((element) => element.canPop).toList();
+  void closeAllOverlays([RegExp? regex]) {
+    List<OverlayListEntry> shouldRemove =
+        entries.where((element) => element.canPop).toList();
+    if (regex != null) {
+      shouldRemove = shouldRemove
+          .where((element) => element.key != null)
+          .where((element) => regex.hasMatch(element.key!))
+          .toList();
+    }
     if (shouldRemove.isEmpty) return;
+
     for (int i = 0; i < shouldRemove.length; i++) {
       try {
         shouldRemove[i].entry.remove();
@@ -97,6 +115,11 @@ class PangeaAnyState {
           },
         );
       }
+
+      if (shouldRemove[i].key != null) {
+        activeOverlays.remove(shouldRemove[i].key);
+      }
+
       entries.remove(shouldRemove[i]);
     }
   }
@@ -106,6 +129,15 @@ class PangeaAnyState {
 
   bool isOverlayOpen(String overlayKey) {
     return entries.any((element) => element.key == overlayKey);
+  }
+
+  List<String> getMatchingOverlayKeys(RegExp regex) {
+    return entries
+        .where((e) => e.key != null)
+        .where((element) => regex.hasMatch(element.key!))
+        .map((e) => e.key)
+        .whereType<String>()
+        .toList();
   }
 }
 

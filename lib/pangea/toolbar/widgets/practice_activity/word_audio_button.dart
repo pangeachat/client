@@ -12,6 +12,7 @@ class WordAudioButton extends StatefulWidget {
   final bool isSelected;
   final double baseOpacity;
   final String uniqueID;
+  final String? langCode;
 
   /// If defined, this callback will be called instead of the default one
   final void Function()? callbackOverride;
@@ -24,6 +25,7 @@ class WordAudioButton extends StatefulWidget {
     this.isSelected = false,
     this.baseOpacity = 1,
     this.callbackOverride,
+    this.langCode,
   });
 
   @override
@@ -56,7 +58,7 @@ class WordAudioButtonState extends State<WordAudioButton> {
           .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
           .link,
       child: Opacity(
-        opacity: !widget.isSelected ? widget.baseOpacity : 1,
+        opacity: widget.isSelected || _isPlaying ? 1 : widget.baseOpacity,
         child: IconButton(
           key: MatrixState.pAnyState
               .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
@@ -64,8 +66,9 @@ class WordAudioButtonState extends State<WordAudioButton> {
           icon: const Icon(Icons.volume_up),
           isSelected: _isPlaying,
           selectedIcon: const Icon(Icons.pause_outlined),
-          color:
-              widget.isSelected ? Theme.of(context).colorScheme.primary : null,
+          color: widget.isSelected || _isPlaying
+              ? Theme.of(context).colorScheme.primary
+              : null,
           tooltip:
               _isPlaying ? L10n.of(context).stop : L10n.of(context).playAudio,
           iconSize: widget.size,
@@ -81,11 +84,14 @@ class WordAudioButtonState extends State<WordAudioButton> {
                     setState(() => _isPlaying = true);
                   }
                   try {
-                    await tts.tryToSpeak(
-                      widget.text,
-                      context,
-                      targetID: 'word-audio-button-${widget.uniqueID}',
-                    );
+                    if (widget.langCode != null) {
+                      await tts.tryToSpeak(
+                        widget.text,
+                        context: context,
+                        targetID: 'word-audio-button-${widget.uniqueID}',
+                        langCode: widget.langCode!,
+                      );
+                    }
                   } catch (e, s) {
                     ErrorHandler.logError(
                       e: e,

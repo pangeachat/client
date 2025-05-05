@@ -35,14 +35,15 @@ class WordZoomWidget extends StatelessWidget {
 
   PangeaToken get _selectedToken => overlayController.selectedToken!;
 
-  void onEditDone() => overlayController.initializeTokensAndMode();
+  void _onEditDone() => overlayController.initializeTokensAndMode();
 
   bool get hasEmojiActivity =>
       overlayController.practiceSelection?.hasActiveActivityByToken(
-        ActivityTypeEnum.emoji,
-        _selectedToken,
-      ) ==
-      true;
+            ActivityTypeEnum.emoji,
+            _selectedToken,
+          ) ==
+          true &&
+      overlayController.hideWordCardContent;
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +69,14 @@ class WordZoomWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //@ggurdin - might need to play with size to properly center
-                  IconButton(
-                    onPressed: () =>
-                        overlayController.onClickOverlayMessageToken(token),
-                    icon: const Icon(Icons.close),
+                  SizedBox(
+                    width: 24.0,
+                    child: IconButton(
+                      onPressed: () => overlayController.updateSelectedSpan(
+                        token.text,
+                      ),
+                      icon: const Icon(Icons.close),
+                    ),
                   ),
                   LemmaWidget(
                     token: _selectedToken,
@@ -82,7 +87,7 @@ class WordZoomWidget extends StatelessWidget {
                     },
                     onEditDone: () {
                       debugPrint("what are we doing edits with?");
-                      onEditDone();
+                      _onEditDone();
                     },
                     tts: tts,
                     overlayController: overlayController,
@@ -113,7 +118,8 @@ class WordZoomWidget extends StatelessWidget {
                   alignment: Alignment.center,
                   child: LemmaEmojiRow(
                     cId: _selectedToken.vocabConstructID,
-                    onTapOverride: hasEmojiActivity
+                    onTapOverride: overlayController.hideWordCardContent &&
+                            hasEmojiActivity
                         ? () => overlayController.updateToolbarMode(
                               MessageMode.wordEmoji,
                             )
@@ -159,7 +165,7 @@ class WordZoomWidget extends StatelessWidget {
               alignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
-                if (!_selectedToken.doesLemmaTextMatchTokenText) ...[
+                ...[
                   Text(
                     _selectedToken.text.content,
                     style: Theme.of(context).textTheme.bodyLarge,
@@ -167,19 +173,10 @@ class WordZoomWidget extends StatelessWidget {
                   ),
                   WordAudioButton(
                     text: _selectedToken.text.content,
-                    isSelected:
-                        MessageMode.listening == overlayController.toolbarMode,
                     baseOpacity: 0.4,
-                    callbackOverride: overlayController.practiceSelection
-                                ?.hasActiveActivityByToken(
-                              MessageMode.listening.associatedActivityType!,
-                              _selectedToken,
-                            ) ==
-                            true
-                        ? () => overlayController
-                            .updateToolbarMode(MessageMode.listening)
-                        : null,
                     uniqueID: "word-zoom-audio-${_selectedToken.text.content}",
+                    langCode: overlayController
+                        .pangeaMessageEvent?.messageDisplayLangCode,
                   ),
                 ],
                 ..._selectedToken.morphsBasicallyEligibleForPracticeByPriority
@@ -194,14 +191,6 @@ class WordZoomWidget extends StatelessWidget {
                 ),
               ],
             ),
-            // if (_selectedMorphFeature != null)
-            //   MorphologicalCenterWidget(
-            //     token: token,
-            //     morphFeature: _selectedMorphFeature!,
-            //     pangeaMessageEvent: messageEvent,
-            //     overlayController: overlayController,
-            //     onEditDone: onEditDone,
-            //   ),
           ],
         ),
       ),

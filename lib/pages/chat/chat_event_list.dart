@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix_api_lite/model/event_types.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -12,8 +11,6 @@ import 'package:fluffychat/pages/chat/seen_by_row.dart';
 import 'package:fluffychat/pages/chat/typing_indicators.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_message.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
-import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
-import 'package:fluffychat/pangea/instructions/instructions_show_popup.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -54,24 +51,6 @@ class ChatEventList extends StatelessWidget {
 
     final hasWallpaper =
         controller.room.client.applicationAccountConfig.wallpaperUrl != null;
-
-    // #Pangea
-    // after the chat event list mounts, if the user hasn't yet seen this instruction
-    // card, attach it on top of the first shown message
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final msgEvents = events
-          .where(
-            (event) => event.type == EventTypes.Message,
-          )
-          .toList();
-      if (msgEvents.isEmpty) return;
-      instructionsShowPopup(
-        context,
-        InstructionsEnum.clickMessage,
-        msgEvents[0].eventId,
-      );
-    });
-    // Pangea#
 
     return SelectionArea(
       child: ListView.custom(

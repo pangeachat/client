@@ -40,16 +40,19 @@ class SettingsLearningController extends State<SettingsLearning> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String? languageMatchError;
 
+  final ScrollController scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
     _profile = pangeaController.userController.profile.copy();
-    tts.setupTTS().then((_) => setState(() {}));
+    tts.setAvailableLanguages().then((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     tts.dispose();
+    scrollController.dispose();
     super.dispose();
   }
 
@@ -100,6 +103,12 @@ class SettingsLearningController extends State<SettingsLearning> {
       setState(() {
         languageMatchError = L10n.of(context).noIdenticalLanguages;
       });
+
+      scrollController.animateTo(
+        0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
       return;
     }
 

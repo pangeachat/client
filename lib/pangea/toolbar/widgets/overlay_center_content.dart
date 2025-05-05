@@ -55,7 +55,7 @@ class OverlayCenterContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return IgnorePointer(
       ignoring: !isTransitionAnimation &&
-          readingAssistanceMode != ReadingAssistanceMode.messageMode,
+          readingAssistanceMode != ReadingAssistanceMode.practiceMode,
       child: Container(
         constraints: BoxConstraints(maxWidth: maxWidth),
         child: Material(

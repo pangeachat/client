@@ -215,7 +215,7 @@ class ChatListController extends State<ChatList>
       case ActiveFilter.allChats:
         // #Pangea
         // return (room) => true;
-        return (room) => !room.isAnalyticsRoom;
+        return (room) => !room.isAnalyticsRoom && !room.isSpace;
       // Pangea#
       case ActiveFilter.messages:
         // #Pangea
@@ -832,7 +832,10 @@ class ChatListController extends State<ChatList>
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.group_work_outlined),
+                  // #Pangea
+                  // const Icon(Icons.group_work_outlined),
+                  const Icon(Icons.groups_outlined),
+                  // Pangea#
                   const SizedBox(width: 12),
                   Text(L10n.of(context).addToSpace),
                 ],
