@@ -431,6 +431,7 @@ class MessageContent extends StatelessWidget {
                   MatrixLocals(L10n.of(context)),
                   hideReply: true,
                 ),
+                textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
                 // #Pangea
                 // style: TextStyle(
                 //   color: textColor,

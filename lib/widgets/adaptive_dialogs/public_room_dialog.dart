@@ -320,6 +320,8 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                   if (topic != null && topic.isNotEmpty)
                     SelectableLinkify(
                       text: topic,
+                      textScaleFactor:
+                          MediaQuery.textScalerOf(context).scale(1),
                       textAlign: TextAlign.center,
                       options: const LinkifyOptions(humanize: false),
                       linkStyle: TextStyle(
