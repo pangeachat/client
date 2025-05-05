@@ -515,7 +515,7 @@ class HtmlMessage extends StatelessWidget {
                 ),
                 textStyle: TextStyle(
                   fontSize: fontSize,
-                  fontFamily: 'UbuntuMono',
+                  fontFamily: 'RobotoMono',
                 ),
               ),
             ),

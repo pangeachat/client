@@ -14,6 +14,7 @@ import 'package:fluffychat/widgets/chat_settings_popup_menu.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../utils/url_launcher.dart';
+import '../../widgets/mxc_image_viewer.dart';
 import '../../widgets/qr_code_viewer.dart';
 
 class ChatDetailsView extends StatelessWidget {
@@ -38,6 +39,7 @@ class ChatDetailsView extends StatelessWidget {
     }
 
     final directChatMatrixID = room.directChatMatrixID;
+    final roomAvatar = room.avatar;
 
     return StreamBuilder(
       stream: room.client.onRoomState.stream
@@ -111,6 +113,13 @@ class ChatDetailsView extends StatelessWidget {
                                       presenceUserId: room.directChatMatrixID,
                                       // Pangea#
                                       size: Avatar.defaultSize * 2.5,
+                                      onTap: roomAvatar != null
+                                          ? () => showDialog(
+                                                context: context,
+                                                builder: (_) =>
+                                                    MxcImageViewer(roomAvatar),
+                                              )
+                                          : null,
                                     ),
                                   ),
                                   if (!room.isDirectChat &&
