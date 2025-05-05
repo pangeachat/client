@@ -17,7 +17,6 @@ import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../../config/themes.dart';
 import '../../widgets/matrix.dart';
@@ -172,16 +171,16 @@ class ChatListViewBody extends StatelessWidget {
                     ),
                     // #Pangea
                     // if (client.rooms.isNotEmpty && !controller.isSearchMode)
+                    //   SizedBox(
+                    //     height: 64,
+                    //     child: ListView(
+                    //       padding: const EdgeInsets.symmetric(
+                    //         horizontal: 12.0,
+                    //         vertical: 12.0,
+                    //       ),
+                    //       shrinkWrap: true,
+                    //       scrollDirection: Axis.horizontal,
                     if (!controller.isSearchMode)
-                      // SizedBox(
-                      //   height: 64,
-                      //   child: ListView(
-                      //     padding: const EdgeInsets.symmetric(
-                      //       horizontal: 12.0,
-                      //       vertical: 16.0,
-                      //     ),
-                      //     shrinkWrap: true,
-                      //     scrollDirection: Axis.horizontal,
                       SingleChildScrollView(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12.0,
@@ -208,64 +207,26 @@ class ChatListViewBody extends StatelessWidget {
                               ActiveFilter.spaces,
                           ]
                               .map(
-                                (filter) => Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 4),
-                                  child: HoverBuilder(
-                                    builder: (context, hovered) =>
-                                        AnimatedScale(
-                                      duration: FluffyThemes.animationDuration,
-                                      curve: FluffyThemes.animationCurve,
-                                      scale: hovered ? 1.1 : 1.0,
-                                      child: InkWell(
-                                        borderRadius: BorderRadius.circular(
-                                          AppConfig.borderRadius,
-                                        ),
-                                        onTap: () =>
-                                            controller.setActiveFilter(filter),
-                                        // #Pangea
-                                        child: UnreadRoomsBadge(
-                                          filter: (_) =>
-                                              filter == ActiveFilter.unread,
-                                          badgePosition: BadgePosition.topEnd(
-                                            top: -12,
-                                            end: -6,
-                                          ),
-                                          // Pangea#
-                                          child: Container(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 12,
-                                              vertical: 6,
-                                            ),
-                                            decoration: BoxDecoration(
-                                              color: filter ==
-                                                      controller.activeFilter
-                                                  ? theme.colorScheme.primary
-                                                  : theme.colorScheme
-                                                      .secondaryContainer,
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                AppConfig.borderRadius,
-                                              ),
-                                            ),
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              filter.toLocalizedString(context),
-                                              style: TextStyle(
-                                                fontWeight: filter ==
-                                                        controller.activeFilter
-                                                    ? FontWeight.w500
-                                                    : FontWeight.normal,
-                                                color: filter ==
-                                                        controller.activeFilter
-                                                    ? theme
-                                                        .colorScheme.onPrimary
-                                                    : theme.colorScheme
-                                                        .onSecondaryContainer,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
+                                // #Pangea
+                                // (filter) => Padding(
+                                (filter) => UnreadRoomsBadge(
+                                  filter: (_) => filter == ActiveFilter.unread,
+                                  badgePosition: BadgePosition.topEnd(
+                                    top: -12,
+                                    end: -6,
+                                  ),
+                                  child: Padding(
+                                    // Pangea#
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 4.0,
+                                    ),
+                                    child: FilterChip(
+                                      selected:
+                                          filter == controller.activeFilter,
+                                      onSelected: (_) =>
+                                          controller.setActiveFilter(filter),
+                                      label: Text(
+                                        filter.toLocalizedString(context),
                                       ),
                                     ),
                                   ),
@@ -402,10 +363,9 @@ class PublicRoomsHorizontalListState extends State<PublicRoomsHorizontalList> {
       curve: FluffyThemes.animationCurve,
       child: publicRooms == null
           ? null
-          :
           // #Pangea
-          // ListView.builder(
-          Scrollbar(
+          // : ListView.builder(
+          : Scrollbar(
               thumbVisibility: true,
               controller: _scrollController,
               child: ListView.builder(

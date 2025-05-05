@@ -4902,5 +4902,6 @@
   },
   "ban": "Ban",
   "unban": "Unban",
-  "kick": "Kick"
+  "kick": "Kick",
+  "approve": "Approve"
 }
