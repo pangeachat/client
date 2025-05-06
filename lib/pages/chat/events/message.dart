@@ -9,7 +9,6 @@ import 'package:swipe_to_action/swipe_to_action.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
-import 'package:fluffychat/pangea/choreographer/enums/use_type.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
@@ -557,11 +556,14 @@ class Message extends StatelessWidget {
                                                   Padding(
                                                     padding:
                                                         const EdgeInsets.only(
-                                                      top: 4.0,
+                                                      bottom: 8.0,
+                                                      left: 16.0,
+                                                      right: 16.0,
                                                     ),
                                                     child: Row(
                                                       mainAxisSize:
                                                           MainAxisSize.min,
+                                                      spacing: 4.0,
                                                       children: [
                                                         // #Pangea
                                                         if (pangeaMessageEvent
@@ -593,13 +595,16 @@ class Message extends StatelessWidget {
                                                             size: 14,
                                                           ),
                                                           Text(
-                                                            ' - ${displayEvent.originServerTs.localizedTimeShort(context)}',
+                                                            displayEvent
+                                                                .originServerTs
+                                                                .localizedTimeShort(
+                                                              context,
+                                                            ),
                                                             style: TextStyle(
                                                               color: textColor
                                                                   .withAlpha(
-                                                                164,
-                                                              ),
-                                                              fontSize: 12,
+                                                                      164),
+                                                              fontSize: 11,
                                                             ),
                                                           ),
                                                         ],
