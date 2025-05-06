@@ -8,7 +8,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/video_player.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_rich_text.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -379,44 +378,39 @@ class MessageContent extends StatelessWidget {
             // Pangea#
 
             // #Pangea
+
             final messageTextStyle =
                 AppConfig.messageTextStyle(event, textColor);
 
-            if (immersionMode && pangeaMessageEvent != null) {
-              return Flexible(
-                child: PangeaRichText(
-                  style: messageTextStyle,
-                  pangeaMessageEvent: pangeaMessageEvent!,
-                  immersionMode: immersionMode,
-                  isOverlay: overlayController != null,
-                  controller: controller,
-                ),
-              );
-            }
-
             if (pangeaMessageEvent != null &&
                 pangeaMessageEvent!.shouldShowToolbar) {
-              return MessageTokenText(
-                pangeaMessageEvent: pangeaMessageEvent!,
-                tokens:
-                    pangeaMessageEvent!.messageDisplayRepresentation?.tokens,
-                style: messageTextStyle,
-                onClick: onClick,
-                isSelected: overlayController != null ? isSelected : null,
-                messageMode: overlayController?.toolbarMode,
-                isHighlighted: (PangeaToken token) =>
-                    overlayController?.toolbarMode.associatedActivityType !=
-                        null &&
-                    overlayController?.practiceSelection
-                            ?.hasActiveActivityByToken(
-                          overlayController!
-                              .toolbarMode.associatedActivityType!,
-                          token,
-                        ) ==
-                        true,
-                overlayController: overlayController,
-                isTransitionAnimation: isTransitionAnimation,
-                readingAssistanceMode: readingAssistanceMode,
+              return Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 8,
+                ),
+                child: MessageTokenText(
+                  pangeaMessageEvent: pangeaMessageEvent!,
+                  tokens:
+                      pangeaMessageEvent!.messageDisplayRepresentation?.tokens,
+                  style: messageTextStyle,
+                  onClick: onClick,
+                  isSelected: overlayController != null ? isSelected : null,
+                  messageMode: overlayController?.toolbarMode,
+                  isHighlighted: (PangeaToken token) =>
+                      overlayController?.toolbarMode.associatedActivityType !=
+                          null &&
+                      overlayController?.practiceSelection
+                              ?.hasActiveActivityByToken(
+                            overlayController!
+                                .toolbarMode.associatedActivityType!,
+                            token,
+                          ) ==
+                          true,
+                  overlayController: overlayController,
+                  isTransitionAnimation: isTransitionAnimation,
+                  readingAssistanceMode: readingAssistanceMode,
+                ),
               );
             }
             // Pangea#
