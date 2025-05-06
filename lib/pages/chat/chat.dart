@@ -677,7 +677,7 @@ class ChatController extends State<ChatPageWithRoom>
     //#Pangea
     choreographer.stateStream.close();
     choreographer.dispose();
-    MatrixState.pAnyState.closeAllOverlays();
+    MatrixState.pAnyState.closeAllOverlays(force: true);
     showToolbarStream.close();
     stopAudioStream.close();
     hideTextController.dispose();
@@ -1832,7 +1832,10 @@ class ChatController extends State<ChatPageWithRoom>
   // #Pangea
   String? get buttonEventID => timeline!.events
       .firstWhereOrNull(
-        (event) => event.isVisibleInGui && event.senderId != room.client.userID,
+        (event) =>
+            event.isVisibleInGui &&
+            event.senderId != room.client.userID &&
+            !event.redacted,
       )
       ?.eventId;
 
@@ -1903,6 +1906,12 @@ class ChatController extends State<ChatPageWithRoom>
 
     Future.delayed(
         Duration(milliseconds: buttonEventID == event.eventId ? 200 : 0), () {
+      if (_router.state.path != ':roomid') {
+        // The user has navigated away from the chat,
+        // so we don't want to show the overlay.
+        return;
+      }
+
       OverlayUtil.showOverlay(
         context: context,
         child: overlayEntry!,

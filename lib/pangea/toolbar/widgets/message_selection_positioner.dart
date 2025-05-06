@@ -421,7 +421,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       double newBottomOffset = _mediaQuery!.size.height -
           _originalMessageOffset.dy +
           difference -
-          _originalMessageSize.height;
+          _originalMessageSize.height -
+          _selectionButtonsHeight;
 
       if (newBottomOffset < _footerHeight + AppConfig.toolbarSpacing) {
         newBottomOffset = _footerHeight + AppConfig.toolbarSpacing;
@@ -608,7 +609,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                             maxHeight: _mediaQuery!.size.height -
                                 _headerHeight -
                                 _footerHeight -
-                                AppConfig.toolbarSpacing * 2,
+                                AppConfig.toolbarSpacing * 2 -
+                                _selectionButtonsHeight,
                             readingAssistanceMode: _readingAssistanceMode,
                           ),
                         ),
@@ -681,7 +683,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                                   maxHeight: _mediaQuery!.size.height -
                                       _headerHeight -
                                       _footerHeight -
-                                      AppConfig.toolbarSpacing * 2,
+                                      AppConfig.toolbarSpacing * 2 -
+                                      _selectionButtonsHeight,
                                   readingAssistanceMode: _readingAssistanceMode,
                                 ),
                                 if (showSelectionButtons)

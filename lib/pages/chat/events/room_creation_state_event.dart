@@ -77,7 +77,7 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
                     name: roomName,
                     size: Avatar.defaultSize * 2,
                     // #Pangea
-                    presenceUserId: event.room.directChatMatrixID,
+                    userId: event.room.directChatMatrixID,
                     useRive: true,
                     // Pangea#
                   ),

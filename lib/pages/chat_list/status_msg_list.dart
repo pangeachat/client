@@ -153,7 +153,7 @@ class PresenceAvatar extends StatelessWidget {
                                 child: Avatar(
                                   name: displayName,
                                   // #Pangea
-                                  presenceUserId: profile?.userId,
+                                  userId: profile?.userId,
                                   // Pangea#
                                   mxContent: profile?.avatarUrl,
                                   size: avatarSize - 6,

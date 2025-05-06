@@ -90,7 +90,7 @@ class SettingsView extends StatelessWidget {
                                   mxContent: avatar,
                                   name: displayname,
                                   // #Pangea
-                                  presenceUserId: profile?.userId,
+                                  userId: profile?.userId,
                                   // Pangea#
                                   size: Avatar.defaultSize * 2.5,
                                   onTap: avatar != null
