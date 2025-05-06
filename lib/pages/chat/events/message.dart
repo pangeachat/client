@@ -9,6 +9,7 @@ import 'package:swipe_to_action/swipe_to_action.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
+import 'package:fluffychat/pangea/choreographer/enums/use_type.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
@@ -603,7 +604,8 @@ class Message extends StatelessWidget {
                                                             style: TextStyle(
                                                               color: textColor
                                                                   .withAlpha(
-                                                                      164),
+                                                                164,
+                                                              ),
                                                               fontSize: 11,
                                                             ),
                                                           ),
