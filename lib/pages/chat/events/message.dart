@@ -23,7 +23,6 @@ import 'message_content.dart';
 import 'message_reactions.dart';
 import 'reply_content.dart';
 import 'state_message.dart';
-import 'verification_request_content.dart';
 
 class Message extends StatelessWidget {
   final Event event;
@@ -43,12 +42,12 @@ class Message extends StatelessWidget {
   final void Function()? resetAnimateIn;
   final bool wallpaperMode;
   final ScrollController scrollController;
+  final List<Color> colors;
   // #Pangea
   final bool immersionMode;
   final ChatController controller;
   final bool isButton;
   // Pangea#
-  final List<Color> colors;
 
   const Message(
     this.event, {
@@ -68,12 +67,12 @@ class Message extends StatelessWidget {
     this.wallpaperMode = false,
     required this.onMention,
     required this.scrollController,
+    required this.colors,
     // #Pangea
     required this.immersionMode,
     required this.controller,
     this.isButton = false,
     // Pangea#
-    required this.colors,
     super.key,
   });
 
@@ -128,7 +127,7 @@ class Message extends StatelessWidget {
 
     if (event.type == EventTypes.Message &&
         event.messageType == EventTypes.KeyVerificationRequest) {
-      return VerificationRequestContent(event: event, timeline: timeline);
+      return StateMessage(event);
     }
 
     final client = Matrix.of(context).client;
@@ -202,10 +201,6 @@ class Message extends StatelessWidget {
             event.onlyEmotes &&
             event.numberEmotes > 0 &&
             event.numberEmotes <= 3);
-    final noPadding = {
-      MessageTypes.File,
-      MessageTypes.Audio,
-    }.contains(event.messageType);
 
     if (ownMessage) {
       // #Pangea
@@ -447,12 +442,6 @@ class Message extends StatelessWidget {
                                                 AppConfig.borderRadius,
                                               ),
                                             ),
-                                            padding: noBubble || noPadding
-                                                ? EdgeInsets.zero
-                                                : const EdgeInsets.symmetric(
-                                                    horizontal: 16,
-                                                    vertical: 8,
-                                                  ),
                                             constraints: const BoxConstraints(
                                               maxWidth:
                                                   FluffyThemes.columnWidth *
@@ -502,23 +491,35 @@ class Message extends StatelessWidget {
                                                         padding:
                                                             const EdgeInsets
                                                                 .only(
-                                                          bottom: 4.0,
+                                                          left: 16,
+                                                          right: 16,
+                                                          top: 8,
                                                         ),
-                                                        child: InkWell(
+                                                        child: Material(
+                                                          color: Colors
+                                                              .transparent,
                                                           borderRadius:
                                                               ReplyContent
                                                                   .borderRadius,
-                                                          onTap: () =>
-                                                              scrollToEventId(
-                                                            replyEvent.eventId,
-                                                          ),
-                                                          child: AbsorbPointer(
-                                                            child: ReplyContent(
-                                                              replyEvent,
-                                                              ownMessage:
-                                                                  ownMessage,
-                                                              timeline:
-                                                                  timeline,
+                                                          child: InkWell(
+                                                            borderRadius:
+                                                                ReplyContent
+                                                                    .borderRadius,
+                                                            onTap: () =>
+                                                                scrollToEventId(
+                                                              replyEvent
+                                                                  .eventId,
+                                                            ),
+                                                            child:
+                                                                AbsorbPointer(
+                                                              child:
+                                                                  ReplyContent(
+                                                                replyEvent,
+                                                                ownMessage:
+                                                                    ownMessage,
+                                                                timeline:
+                                                                    timeline,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),

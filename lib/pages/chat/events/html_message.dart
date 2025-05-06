@@ -467,7 +467,7 @@ class HtmlMessage extends StatelessWidget {
               border: Border(
                 left: BorderSide(
                   color: textColor,
-                  width: 3,
+                  width: 5,
                 ),
               ),
             ),
