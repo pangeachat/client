@@ -70,12 +70,13 @@ class ChatMembersController extends State<ChatMembersPage> {
           .client
           .getRoomById(widget.roomId)
           // #Pangea
-          // ?.requestParticipants(Membership.values);
+          // ?.requestParticipants(
+          //     [...Membership.values]..remove(Membership.leave));
           ?.requestParticipants(
             // without setting cache to true, each call to requestParticipants will
             // result in a new entry in the roomState stream, because the member roomState is not
             // stored in the database. This causes an infinite loop with the roomState listener.
-            Membership.values,
+            Membership.values..remove(Membership.leave),
             false,
             true,
             // Pangea#
