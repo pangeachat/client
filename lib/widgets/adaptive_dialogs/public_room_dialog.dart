@@ -63,9 +63,16 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                 via: via,
               );
 
-        if (!knock && client.getRoomById(roomId) == null) {
-          await client.waitForRoomInSync(roomId);
+        // #Pangea
+        // if (!knock && client.getRoomById(roomId) == null) {
+        //   await client.waitForRoomInSync(roomId);
+        // }
+        final room = client.getRoomById(roomId);
+        if (!knock && (room == null || room.membership != Membership.join)) {
+          await client.waitForRoomInSync(roomId, join: true);
         }
+        // Pangea#
+
         return roomId;
       },
     );
