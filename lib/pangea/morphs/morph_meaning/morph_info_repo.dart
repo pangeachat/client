@@ -22,8 +22,9 @@ class _APICallCacheItem {
 }
 
 class MorphInfoRepo {
-  static final GetStorage _morphMeaningStorage =
-      GetStorage('morph_meaning_storage');
+  static final GetStorage _morphMeaningStorage = GetStorage(
+    'morph_meaning_storage',
+  );
   static final shortTermCache = <String, _APICallCacheItem>{};
   static const int _cacheDurationMinutes = 1;
 
@@ -75,8 +76,10 @@ class MorphInfoRepo {
     }
 
     final future = _fetch(request);
-    shortTermCache[request.storageKey] =
-        _APICallCacheItem(DateTime.now(), future);
+    shortTermCache[request.storageKey] = _APICallCacheItem(
+      DateTime.now(),
+      future,
+    );
     return future;
   }
 
@@ -88,10 +91,10 @@ class MorphInfoRepo {
       MorphInfoRequest(
         userL1:
             MatrixState.pangeaController.languageController.userL1?.langCode ??
-                LanguageKeys.defaultLanguage,
+            LanguageKeys.defaultLanguage,
         userL2:
             MatrixState.pangeaController.languageController.userL2?.langCode ??
-                LanguageKeys.defaultLanguage,
+            LanguageKeys.defaultLanguage,
       ),
     );
     final morph = res.getFeatureByCode(feature.name);
@@ -108,10 +111,10 @@ class MorphInfoRepo {
   }) async {
     final userL1 =
         MatrixState.pangeaController.languageController.userL1?.langCode ??
-            LanguageKeys.defaultLanguage;
+        LanguageKeys.defaultLanguage;
     final userL2 =
         MatrixState.pangeaController.languageController.userL2?.langCode ??
-            LanguageKeys.defaultLanguage;
+        LanguageKeys.defaultLanguage;
     final userL1Short = userL1.split('-').first;
     final userL2Short = userL2.split('-').first;
     final cachedJson = _morphMeaningStorage.read(userL1Short + userL2Short);

@@ -12,10 +12,7 @@ import 'package:fluffychat/pangea/events/utils/report_message.dart';
 class OverlayHeader extends StatelessWidget {
   final ChatController controller;
 
-  const OverlayHeader({
-    required this.controller,
-    super.key,
-  });
+  const OverlayHeader({required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +25,8 @@ class OverlayHeader extends StatelessWidget {
           bottomLeft: Radius.circular(AppConfig.borderRadius),
           bottomRight: Radius.circular(AppConfig.borderRadius),
         ),
-        color: theme.appBarTheme.backgroundColor ??
+        color:
+            theme.appBarTheme.backgroundColor ??
             theme.colorScheme.surfaceContainerHighest,
       ),
       height: theme.appBarTheme.toolbarHeight ?? AppConfig.defaultHeaderHeight,
@@ -85,11 +83,7 @@ class OverlayHeader extends StatelessWidget {
               onPressed: () {
                 final event = controller.selectedEvents.first;
                 controller.clearSelectedEvents();
-                reportEvent(
-                  event,
-                  controller,
-                  controller.context,
-                );
+                reportEvent(event, controller, controller.context);
               },
               color: theme.colorScheme.primary,
             ),

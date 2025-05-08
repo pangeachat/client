@@ -14,9 +14,7 @@ import '../../common/network/requests.dart';
 
 class LanguageRepo {
   static Future<List<LanguageModel>> fetchLanguages() async {
-    final Requests req = Requests(
-      choreoApiKey: Environment.choreoApiKey,
-    );
+    final Requests req = Requests(choreoApiKey: Environment.choreoApiKey);
 
     List<dynamic> languageResp = [];
     try {
@@ -26,15 +24,16 @@ class LanguageRepo {
       languageResp = FallbackLanguage.languageList;
     }
 
-    final List<LanguageModel> langFlag = languageResp.map((e) {
-      try {
-        return LanguageModel.fromJson(e);
-      } catch (err, stack) {
-        debugger(when: kDebugMode);
-        ErrorHandler.logError(e: err, s: stack, data: e);
-        return LanguageModel.unknown;
-      }
-    }).toList();
+    final List<LanguageModel> langFlag =
+        languageResp.map((e) {
+          try {
+            return LanguageModel.fromJson(e);
+          } catch (err, stack) {
+            debugger(when: kDebugMode);
+            ErrorHandler.logError(e: err, s: stack, data: e);
+            return LanguageModel.unknown;
+          }
+        }).toList();
     return langFlag;
   }
 }

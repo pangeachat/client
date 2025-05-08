@@ -22,8 +22,13 @@ IconData _getIconFromName(String displayname) {
   }.any((s) => name.contains(s))) {
     return Icons.web_outlined;
   }
-  if ({'desktop', 'windows', 'macos', 'linux', 'ubuntu'}
-      .any((s) => name.contains(s))) {
+  if ({
+    'desktop',
+    'windows',
+    'macos',
+    'linux',
+    'ubuntu',
+  }.any((s) => name.contains(s))) {
     return Icons.desktop_mac_outlined;
   }
   return Icons.device_unknown_outlined;
@@ -37,9 +42,10 @@ extension DeviceExtension on Device {
 }
 
 extension DeviceKeysExtension on DeviceKeys {
-  String get displayname => (deviceDisplayName?.isNotEmpty ?? false)
-      ? deviceDisplayName!
-      : 'Unknown device';
+  String get displayname =>
+      (deviceDisplayName?.isNotEmpty ?? false)
+          ? deviceDisplayName!
+          : 'Unknown device';
 
   IconData get icon => _getIconFromName(displayname);
 }

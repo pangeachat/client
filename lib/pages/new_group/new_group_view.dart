@@ -41,14 +41,13 @@ class NewGroupView extends StatelessWidget {
         ),
         actions: [
           TextButton(
-            onPressed: controller.loading
-                ? null
-                : () => SpaceCodeUtil.joinWithSpaceCodeDialog(context),
+            onPressed:
+                controller.loading
+                    ? null
+                    : () => SpaceCodeUtil.joinWithSpaceCodeDialog(context),
             child: Text(
               L10n.of(context).joinByCode,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-              ),
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
             ),
           ),
         ],
@@ -56,11 +55,7 @@ class NewGroupView extends StatelessWidget {
       body: MaxWidthBody(
         // #Pangea
         showBorder: false,
-        padding: const EdgeInsets.only(
-          left: 32.0,
-          right: 32.0,
-          bottom: 32.0,
-        ),
+        padding: const EdgeInsets.only(left: 32.0, right: 32.0, bottom: 32.0),
         // Pangea#
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -91,17 +86,18 @@ class NewGroupView extends StatelessWidget {
               onTap: controller.loading ? null : controller.selectPhoto,
               child: CircleAvatar(
                 radius: Avatar.defaultSize,
-                child: avatar == null
-                    ? const Icon(Icons.add_a_photo_outlined)
-                    : ClipRRect(
-                        borderRadius: BorderRadius.circular(90),
-                        child: Image.memory(
-                          avatar,
-                          width: Avatar.defaultSize * 2,
-                          height: Avatar.defaultSize * 2,
-                          fit: BoxFit.cover,
+                child:
+                    avatar == null
+                        ? const Icon(Icons.add_a_photo_outlined)
+                        : ClipRRect(
+                          borderRadius: BorderRadius.circular(90),
+                          child: Image.memory(
+                            avatar,
+                            width: Avatar.defaultSize * 2,
+                            height: Avatar.defaultSize * 2,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
               ),
             ),
             const SizedBox(height: 32),
@@ -131,9 +127,11 @@ class NewGroupView extends StatelessWidget {
                   onFieldSubmitted: (value) {
                     controller.loading ? null : controller.submitAction();
                   },
-                  validator: (value) => value == null || value.isEmpty
-                      ? L10n.of(context).pleaseFillOut
-                      : null,
+                  validator:
+                      (value) =>
+                          value == null || value.isEmpty
+                              ? L10n.of(context).pleaseFillOut
+                              : null,
                   focusNode: controller.focusNode,
                   // Pangea#
                 ),
@@ -168,10 +166,10 @@ class NewGroupView extends StatelessWidget {
                 duration: FluffyThemes.animationDuration,
                 curve: FluffyThemes.animationCurve,
                 child:
-                    // #Pangea
-                    // controller.publicGroup ?
-                    // Pangea#
-                    SwitchListTile.adaptive(
+                // #Pangea
+                // controller.publicGroup ?
+                // Pangea#
+                SwitchListTile.adaptive(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 32),
                   secondary: const Icon(Icons.search_outlined),
                   // #Pangea
@@ -222,21 +220,24 @@ class NewGroupView extends StatelessWidget {
             AnimatedSize(
               duration: FluffyThemes.animationDuration,
               curve: FluffyThemes.animationCurve,
-              child: controller.createGroupType == CreateGroupType.space
-                  ? ListTile(
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 32),
-                      trailing: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Icon(Icons.info_outlined),
-                      ),
-                      // #Pangea
-                      // subtitle: Text(L10n.of(context).newSpaceDescription),
-                      subtitle:
-                          Text(L10n.of(context).updatedNewSpaceDescription),
-                      // Pangea#
-                    )
-                  : const SizedBox.shrink(),
+              child:
+                  controller.createGroupType == CreateGroupType.space
+                      ? ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 32,
+                        ),
+                        trailing: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Icon(Icons.info_outlined),
+                        ),
+                        // #Pangea
+                        // subtitle: Text(L10n.of(context).newSpaceDescription),
+                        subtitle: Text(
+                          L10n.of(context).updatedNewSpaceDescription,
+                        ),
+                        // Pangea#
+                      )
+                      : const SizedBox.shrink(),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -245,16 +246,17 @@ class NewGroupView extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed:
                       controller.loading ? null : controller.submitAction,
-                  child: controller.loading
-                      ? const LinearProgressIndicator()
-                      : Text(
-                          controller.createGroupType == CreateGroupType.space
-                              ? L10n.of(context).createNewSpace
-                              // #Pangea
-                              // : L10n.of(context).createGroupAndInviteUsers,
-                              : L10n.of(context).createChatAndInviteUsers,
-                          // Pangea#
-                        ),
+                  child:
+                      controller.loading
+                          ? const LinearProgressIndicator()
+                          : Text(
+                            controller.createGroupType == CreateGroupType.space
+                                ? L10n.of(context).createNewSpace
+                                // #Pangea
+                                // : L10n.of(context).createGroupAndInviteUsers,
+                                : L10n.of(context).createChatAndInviteUsers,
+                            // Pangea#
+                          ),
                 ),
               ),
             ),

@@ -13,10 +13,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class MessageTranslationCard extends StatefulWidget {
   final PangeaMessageEvent messageEvent;
 
-  const MessageTranslationCard({
-    super.key,
-    required this.messageEvent,
-  });
+  const MessageTranslationCard({super.key, required this.messageEvent});
 
   @override
   MessageTranslationCardState createState() => MessageTranslationCardState();
@@ -35,11 +32,7 @@ class MessageTranslationCardState extends State<MessageTranslationCard> {
   Future<void> fetchRepresentationText() async {
     if (l1Code == null) return;
 
-    repEvent = widget.messageEvent
-        .representationByLanguage(
-          l1Code!,
-        )
-        ?.content;
+    repEvent = widget.messageEvent.representationByLanguage(l1Code!)?.content;
 
     if (repEvent == null && mounted) {
       repEvent = await widget.messageEvent.representationByLanguageGlobal(
@@ -56,10 +49,7 @@ class MessageTranslationCardState extends State<MessageTranslationCard> {
     try {
       await fetchRepresentationText();
     } catch (err) {
-      ErrorHandler.logError(
-        e: err,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, data: {});
     }
 
     if (mounted) {

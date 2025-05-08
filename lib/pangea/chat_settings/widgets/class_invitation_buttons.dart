@@ -32,9 +32,7 @@ class ClassInvitationButtons extends StatelessWidget {
       leading: CircleAvatar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         foregroundColor: Theme.of(context).textTheme.bodyLarge!.color,
-        child: const Icon(
-          Icons.copy_outlined,
-        ),
+        child: const Icon(Icons.copy_outlined),
       ),
       onTap: () async {
         final String initialUrl =
@@ -60,9 +58,7 @@ class ClassInvitationButtons extends StatelessWidget {
       leading: CircleAvatar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         foregroundColor: Theme.of(context).textTheme.bodyLarge!.color,
-        child: const Icon(
-          Icons.copy,
-        ),
+        child: const Icon(Icons.copy),
       ),
       onTap: () async {
         //PTODO-Lala: Standarize toast

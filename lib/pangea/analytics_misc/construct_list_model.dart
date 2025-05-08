@@ -67,10 +67,7 @@ class ConstructListModel {
   int totalXP = 0;
   int level = 0;
 
-  ConstructListModel({
-    required List<OneConstructUse> uses,
-    int offset = 0,
-  }) {
+  ConstructListModel({required List<OneConstructUse> uses, int offset = 0}) {
     updateConstructs(uses, offset);
   }
 
@@ -92,9 +89,7 @@ class ConstructListModel {
       ErrorHandler.logError(
         e: "Failed to update analytics: $err",
         s: s,
-        data: {
-          "newUses": newUses.map((e) => e.toJson()),
-        },
+        data: {"newUses": newUses.map((e) => e.toJson())},
       );
     }
   }
@@ -114,7 +109,8 @@ class ConstructListModel {
   /// key = lemmma + constructType.string, value = ConstructUses
   void _updateConstructMap(final List<OneConstructUse> newUses) {
     for (final use in newUses) {
-      final currentUses = _constructMap[use.identifier.string] ??
+      final currentUses =
+          _constructMap[use.identifier.string] ??
           ConstructUses(
             uses: [],
             constructType: use.constructType,
@@ -167,18 +163,19 @@ class ConstructListModel {
   }
 
   void _updateMetrics(int offset) {
-    vocabLemmasList = constructList(type: ConstructTypeEnum.vocab)
-        .map((e) => e.lemma)
-        .toSet()
-        .toList();
+    vocabLemmasList =
+        constructList(
+          type: ConstructTypeEnum.vocab,
+        ).map((e) => e.lemma).toSet().toList();
 
-    grammarLemmasList = constructList(type: ConstructTypeEnum.morph)
-        .map((e) => e.lemma)
-        .toSet()
-        .toList();
+    grammarLemmasList =
+        constructList(
+          type: ConstructTypeEnum.morph,
+        ).map((e) => e.lemma).toSet().toList();
 
     prevXP = totalXP;
-    totalXP = (_constructList.fold<int>(
+    totalXP =
+        (_constructList.fold<int>(
           0,
           (total, construct) => total + construct.points,
         )) +
@@ -197,11 +194,7 @@ class ConstructListModel {
     } else {
       ErrorHandler.logError(
         e: "Calculated level in Nan or Infinity",
-        data: {
-          "totalXP": totalXP,
-          "prevXP": prevXP,
-          "level": doubleScore,
-        },
+        data: {"totalXP": totalXP, "prevXP": prevXP, "level": doubleScore},
       );
       return 1;
     }
@@ -256,50 +249,51 @@ class ConstructListModel {
     }).toList();
   }
 
-  List<ConstructUses> constructList({ConstructTypeEnum? type}) => _constructList
-      .where(
-        (constructUse) => type == null || constructUse.constructType == type,
-      )
-      .toList();
+  List<ConstructUses> constructList({ConstructTypeEnum? type}) =>
+      _constructList
+          .where(
+            (constructUse) =>
+                type == null || constructUse.constructType == type,
+          )
+          .toList();
 
   Map<String, List<ConstructUses>> categoriesToUses({ConstructTypeEnum? type}) {
     if (type == null) return _categoriesToUses;
     final entries = _categoriesToUses.entries.toList();
     return Map.fromEntries(
-      entries.map((entry) {
-        return MapEntry(
-          entry.key,
-          entry.value.where((use) => use.constructType == type).toList(),
-        );
-      }).where((entry) => entry.value.isNotEmpty),
+      entries
+          .map((entry) {
+            return MapEntry(
+              entry.key,
+              entry.value.where((use) => use.constructType == type).toList(),
+            );
+          })
+          .where((entry) => entry.value.isNotEmpty),
     );
   }
 
   // uses where points < AnalyticConstants.xpForGreens
-  List<ConstructUses> get seeds => _constructList
-      .where(
-        (use) => use.points < AnalyticsConstants.xpForGreens,
-      )
-      .toList();
+  List<ConstructUses> get seeds =>
+      _constructList
+          .where((use) => use.points < AnalyticsConstants.xpForGreens)
+          .toList();
 
-  List<ConstructUses> get greens => _constructList
-      .where(
-        (use) =>
-            use.points >= AnalyticsConstants.xpForGreens &&
-            use.points < AnalyticsConstants.xpForFlower,
-      )
-      .toList();
+  List<ConstructUses> get greens =>
+      _constructList
+          .where(
+            (use) =>
+                use.points >= AnalyticsConstants.xpForGreens &&
+                use.points < AnalyticsConstants.xpForFlower,
+          )
+          .toList();
 
-  List<ConstructUses> get flowers => _constructList
-      .where(
-        (use) => use.points >= AnalyticsConstants.xpForFlower,
-      )
-      .toList();
+  List<ConstructUses> get flowers =>
+      _constructList
+          .where((use) => use.points >= AnalyticsConstants.xpForFlower)
+          .toList();
   // Not storing this for now to reduce memory load
   // It's only used by downloads, so doesn't need to be accessible on the fly
-  Map<String, List<ConstructUses>> lemmasToUses({
-    ConstructTypeEnum? type,
-  }) {
+  Map<String, List<ConstructUses>> lemmasToUses({ConstructTypeEnum? type}) {
     final Map<String, List<ConstructUses>> lemmasToUses = {};
     final constructs = constructList(type: type);
     for (final ConstructUses use in constructs) {
@@ -343,7 +337,8 @@ class LemmasToUsesWrapper {
       final List<OneConstructUse> correctUses = [];
       final List<OneConstructUse> incorrectUses = [];
 
-      final lemma = getGrammarCopy(
+      final lemma =
+          getGrammarCopy(
             category: entry.value.first.category,
             lemma: entry.key,
             context: context,
@@ -418,8 +413,5 @@ class LemmasOverUnderList {
   final List<String> over;
   final List<String> under;
 
-  LemmasOverUnderList({
-    required this.over,
-    required this.under,
-  });
+  LemmasOverUnderList({required this.over, required this.under});
 }

@@ -89,8 +89,10 @@ class PangeaToken {
       endTokenIndex = tokens.length;
     }
 
-    final List<PangeaToken> subset =
-        tokens.sublist(startTokenIndex, endTokenIndex);
+    final List<PangeaToken> subset = tokens.sublist(
+      startTokenIndex,
+      endTokenIndex,
+    );
 
     if (subset.isEmpty) {
       debugger(when: kDebugMode);
@@ -103,7 +105,8 @@ class PangeaToken {
 
     String reconstruction = "";
     for (int i = 0; i < subset.length; i++) {
-      int whitespace = subset[i].text.offset -
+      int whitespace =
+          subset[i].text.offset -
           (i > 0 ? (subset[i - 1].text.offset + subset[i - 1].text.length) : 0);
 
       if (whitespace < 0) {
@@ -121,9 +124,7 @@ class PangeaToken {
       // previously sent tokens have lists of lemmas
       if (json is Iterable) {
         return json
-                .map<Lemma>(
-                  (e) => Lemma.fromJson(e as Map<String, dynamic>),
-                )
+                .map<Lemma>((e) => Lemma.fromJson(e as Map<String, dynamic>))
                 .toList()
                 .cast<Lemma>()
                 .firstOrNull ??
@@ -138,20 +139,22 @@ class PangeaToken {
   }
 
   factory PangeaToken.fromJson(Map<String, dynamic> json) {
-    final PangeaTokenText text =
-        PangeaTokenText.fromJson(json[_textKey] as Map<String, dynamic>);
+    final PangeaTokenText text = PangeaTokenText.fromJson(
+      json[_textKey] as Map<String, dynamic>,
+    );
     return PangeaToken(
       text: text,
       lemma: _getLemmas(text.content, json[_lemmaKey]),
       pos: json['pos'] ?? '',
-      morph: json['morph'] != null
-          ? (json['morph'] as Map<String, dynamic>).map(
-              (key, value) => MapEntry(
-                MorphFeaturesEnumExtension.fromString(key),
-                value as String,
-              ),
-            )
-          : {},
+      morph:
+          json['morph'] != null
+              ? (json['morph'] as Map<String, dynamic>).map(
+                (key, value) => MapEntry(
+                  MorphFeaturesEnumExtension.fromString(key),
+                  value as String,
+                ),
+              )
+              : {},
     );
   }
 
@@ -159,14 +162,12 @@ class PangeaToken {
   static const String _lemmaKey = ModelKey.lemma;
 
   Map<String, dynamic> toJson() => {
-        _textKey: text.toJson(),
-        _lemmaKey: [lemma.toJson()],
-        'pos': pos,
-        // store morph as a map of strings ie Map<feature.name,tag>
-        'morph': morph.map(
-          (key, value) => MapEntry(key.name, value),
-        ),
-      };
+    _textKey: text.toJson(),
+    _lemmaKey: [lemma.toJson()],
+    'pos': pos,
+    // store morph as a map of strings ie Map<feature.name,tag>
+    'morph': morph.map((key, value) => MapEntry(key.name, value)),
+  };
 
   /// alias for the offset
   int get start => text.offset;
@@ -314,8 +315,8 @@ class PangeaToken {
           return false;
         }
         return morphConstruct(morphFeature)?.uses.any(
-                  (u) => u.useType == a.correctUse && u.form == text.content,
-                ) ??
+              (u) => u.useType == a.correctUse && u.form == text.content,
+            ) ??
             false;
       case ActivityTypeEnum.messageMeaning:
         debugger(when: kDebugMode);
@@ -365,8 +366,9 @@ class PangeaToken {
         return true;
       case ActivityTypeEnum.morphId:
         return morphFeature != null
-            ? morphIdByFeature(morphFeature)
-                    ?.isActivityProbablyLevelAppropriate(a, text.content) ??
+            ? morphIdByFeature(
+                  morphFeature,
+                )?.isActivityProbablyLevelAppropriate(a, text.content) ??
                 false
             : false;
     }
@@ -392,9 +394,7 @@ class PangeaToken {
 
   ConstructUses get vocabConstruct =>
       MatrixState.pangeaController.getAnalytics.constructListModel
-          .getConstructUses(
-        vocabConstructID,
-      ) ??
+          .getConstructUses(vocabConstructID) ??
       ConstructUses(
         lemma: lemma.text,
         constructType: ConstructTypeEnum.vocab,
@@ -424,16 +424,18 @@ class PangeaToken {
       debugger(when: kDebugMode);
       return null;
     }
-    final ConstructIdentifier? cId = a == ActivityTypeEnum.morphId
-        ? morphIdByFeature(feature!)
-        : vocabConstructID;
+    final ConstructIdentifier? cId =
+        a == ActivityTypeEnum.morphId
+            ? morphIdByFeature(feature!)
+            : vocabConstructID;
 
     if (cId == null) return null;
 
-    final correctUseTimestamps = cId.constructUses.uses
-        .where((u) => u.form == text.content)
-        .map((u) => u.timeStamp)
-        .toList();
+    final correctUseTimestamps =
+        cId.constructUses.uses
+            .where((u) => u.form == text.content)
+            .map((u) => u.timeStamp)
+            .toList();
 
     if (correctUseTimestamps.isEmpty) return null;
 
@@ -470,33 +472,34 @@ class PangeaToken {
     return ids;
   }
 
-  List<ConstructUses> get constructs => _constructIDs
-      .map(
-        (id) => MatrixState.pangeaController.getAnalytics.constructListModel
-            .getConstructUses(id),
-      )
-      .where((construct) => construct != null)
-      .cast<ConstructUses>()
-      .toList();
+  List<ConstructUses> get constructs =>
+      _constructIDs
+          .map(
+            (id) => MatrixState.pangeaController.getAnalytics.constructListModel
+                .getConstructUses(id),
+          )
+          .where((construct) => construct != null)
+          .cast<ConstructUses>()
+          .toList();
 
   Future<List<String>> getEmojiChoices() => LemmaInfoRepo.get(
-        LemmaInfoRequest(
-          lemma: lemma.text,
-          partOfSpeech: pos,
-          lemmaLang: MatrixState
-                  .pangeaController.languageController.userL2?.langCode ??
-              LanguageKeys.unknownLanguage,
-          userL1: MatrixState
-                  .pangeaController.languageController.userL1?.langCode ??
-              LanguageKeys.defaultLanguage,
-        ),
-      ).then((onValue) => onValue.emoji);
+    LemmaInfoRequest(
+      lemma: lemma.text,
+      partOfSpeech: pos,
+      lemmaLang:
+          MatrixState.pangeaController.languageController.userL2?.langCode ??
+          LanguageKeys.unknownLanguage,
+      userL1:
+          MatrixState.pangeaController.languageController.userL1?.langCode ??
+          LanguageKeys.defaultLanguage,
+    ),
+  ).then((onValue) => onValue.emoji);
 
   ConstructIdentifier get vocabConstructID => ConstructIdentifier(
-        lemma: lemma.text,
-        type: ConstructTypeEnum.vocab,
-        category: pos,
-      );
+    lemma: lemma.text,
+    type: ConstructTypeEnum.vocab,
+    category: pos,
+  );
 
   ConstructForm get vocabForm =>
       ConstructForm(form: text.content, cId: vocabConstructID);
@@ -529,14 +532,17 @@ class PangeaToken {
     MorphFeaturesEnum morphFeature,
     String morphTag,
   ) {
-    final List<String> allTags =
-        MorphsRepo.cached.getDisplayTags(morphFeature.name);
+    final List<String> allTags = MorphsRepo.cached.getDisplayTags(
+      morphFeature.name,
+    );
 
-    final List<String> possibleDistractors = allTags
-        .where(
-          (tag) => tag.toLowerCase() != morphTag.toLowerCase() && tag != "X",
-        )
-        .toList();
+    final List<String> possibleDistractors =
+        allTags
+            .where(
+              (tag) =>
+                  tag.toLowerCase() != morphTag.toLowerCase() && tag != "X",
+            )
+            .toList();
 
     possibleDistractors.shuffle();
     return possibleDistractors.take(numberOfMorphDistractors).toList();
@@ -591,25 +597,28 @@ class PangeaToken {
     // debugPrint("should do activity for ${text.content} in $mode");
     return mode.associatedActivityType != null
         ? shouldDoActivity(
-            a: mode.associatedActivityType!,
-            feature: null,
-            tag: null,
-          )
+          a: mode.associatedActivityType!,
+          feature: null,
+          tag: null,
+        )
         : false;
   }
 
   List<ConstructIdentifier> get allConstructIds => _constructIDs;
 
   List<ConstructIdentifier> get morphsBasicallyEligibleForPracticeByPriority =>
-      MorphFeaturesEnumExtension.eligibleForPractice.where((f) {
-        return morph.containsKey(f);
-      }).map((f) {
-        return ConstructIdentifier(
-          lemma: getMorphTag(f)!,
-          type: ConstructTypeEnum.morph,
-          category: f.name,
-        );
-      }).toList();
+      MorphFeaturesEnumExtension.eligibleForPractice
+          .where((f) {
+            return morph.containsKey(f);
+          })
+          .map((f) {
+            return ConstructIdentifier(
+              lemma: getMorphTag(f)!,
+              type: ConstructTypeEnum.morph,
+              category: f.name,
+            );
+          })
+          .toList();
 
   bool hasMorph(ConstructIdentifier cId) {
     return morph.entries.any(

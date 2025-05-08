@@ -13,12 +13,7 @@ class ActivityPlannerSettingsSearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 8,
-        bottom: 4,
-        right: 8,
-        left: 8,
-      ),
+      padding: const EdgeInsets.only(top: 8, bottom: 4, right: 8, left: 8),
       child: TextFormField(
         controller: _objectiveSearchController,
         textInputAction: TextInputAction.search,
@@ -30,9 +25,7 @@ class ActivityPlannerSettingsSearchWidget extends StatelessWidget {
           ),
           hintText: L10n.of(context).search,
           icon: const Icon(Icons.search),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
         ),
       ),
     );

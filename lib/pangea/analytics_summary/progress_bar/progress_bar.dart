@@ -11,11 +11,7 @@ class ProgressBar extends StatefulWidget {
   final List<LevelBarDetails> levelBars;
   final double? height;
 
-  const ProgressBar({
-    super.key,
-    required this.levelBars,
-    this.height,
-  });
+  const ProgressBar({super.key, required this.levelBars, this.height});
 
   @override
   ProgressBarState createState() => ProgressBarState();
@@ -30,10 +26,10 @@ class ProgressBarState extends State<ProgressBar> {
   }
 
   get progressBarDetails => ProgressBarDetails(
-        totalWidth: width,
-        borderColor: Theme.of(context).colorScheme.primary.withAlpha(128),
-        height: widget.height ?? 14,
-      );
+    totalWidth: width,
+    borderColor: Theme.of(context).colorScheme.primary.withAlpha(128),
+    height: widget.height ?? 14,
+  );
 
   @override
   Widget build(BuildContext context) {

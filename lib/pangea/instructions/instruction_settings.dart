@@ -38,7 +38,7 @@ class InstructionSettings {
     for (final key in InstructionsEnum.values) {
       instructions[key.toString()] =
           (accountData[key.toString()]?.content[key.toString()] as bool?) ??
-              false;
+          false;
     }
     return InstructionSettings(instructions);
   }

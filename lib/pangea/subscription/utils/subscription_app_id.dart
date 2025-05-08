@@ -9,9 +9,10 @@ class SubscriptionAppIds {
 
   SubscriptionAppIds();
 
-  String? get currentAppId => kIsWeb
-      ? stripeId
-      : Platform.isAndroid
+  String? get currentAppId =>
+      kIsWeb
+          ? stripeId
+          : Platform.isAndroid
           ? androidId
           : appleId;
 
@@ -38,16 +39,13 @@ class SubscriptionAppIds {
   }
 }
 
-enum RCPlatform {
-  stripe,
-  android,
-  apple,
-}
+enum RCPlatform { stripe, android, apple }
 
 extension RCPlatformExtension on RCPlatform {
-  RCPlatform get currentPlatform => kIsWeb
-      ? RCPlatform.stripe
-      : Platform.isAndroid
+  RCPlatform get currentPlatform =>
+      kIsWeb
+          ? RCPlatform.stripe
+          : Platform.isAndroid
           ? RCPlatform.android
           : RCPlatform.apple;
 
@@ -55,7 +53,7 @@ extension RCPlatformExtension on RCPlatform {
     return currentPlatform == RCPlatform.stripe
         ? 'stripe'
         : currentPlatform == RCPlatform.android
-            ? 'play_store'
-            : 'app_store';
+        ? 'play_store'
+        : 'app_store';
   }
 }

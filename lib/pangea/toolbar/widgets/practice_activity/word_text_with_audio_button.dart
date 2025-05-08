@@ -53,13 +53,15 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
   @override
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
-      link: MatrixState.pAnyState
-          .layerLinkAndKey('text-audio-button-${widget.uniqueID}')
-          .link,
+      link:
+          MatrixState.pAnyState
+              .layerLinkAndKey('text-audio-button-${widget.uniqueID}')
+              .link,
       child: MouseRegion(
-        key: MatrixState.pAnyState
-            .layerLinkAndKey('text-audio-button-${widget.uniqueID}')
-            .key,
+        key:
+            MatrixState.pAnyState
+                .layerLinkAndKey('text-audio-button-${widget.uniqueID}')
+                .key,
         cursor: SystemMouseCursors.click,
         onEnter: (event) => setState(() {}),
         onExit: (event) => setState(() {}),
@@ -78,8 +80,9 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
                 setState(() => _isPlaying = true);
               }
               try {
-                final l2 = MatrixState.pangeaController.languageController
-                    .activeL2Code();
+                final l2 =
+                    MatrixState.pangeaController.languageController
+                        .activeL2Code();
                 if (l2 != null) {
                   await tts.tryToSpeak(
                     widget.text,
@@ -89,13 +92,7 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
                   );
                 }
               } catch (e, s) {
-                ErrorHandler.logError(
-                  e: e,
-                  s: s,
-                  data: {
-                    "text": widget.text,
-                  },
-                );
+                ErrorHandler.logError(e: e, s: s, data: {"text": widget.text});
               } finally {
                 if (mounted) {
                   setState(() => _isPlaying = false);
@@ -119,9 +116,7 @@ class WordAudioButtonState extends State<WordTextWithAudioButton> {
                 const SizedBox(
                   width: 16,
                   height: 16,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 3,
-                  ),
+                  child: CircularProgressIndicator(strokeWidth: 3),
                 )
               else
                 Icon(

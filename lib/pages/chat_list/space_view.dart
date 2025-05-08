@@ -79,9 +79,8 @@ class _SpaceViewState extends State<SpaceView> {
 
     loadHierarchy(hasUpdate: hasUpdate).then(
       // remove this space ID from the set of space IDs with updates
-      (_) => widget.controller.hasUpdates.remove(
-        widget.controller.activeSpaceId,
-      ),
+      (_) =>
+          widget.controller.hasUpdates.remove(widget.controller.activeSpaceId),
     );
 
     // Listen for changes to the activeSpace's hierarchy,
@@ -106,14 +105,15 @@ class _SpaceViewState extends State<SpaceView> {
       _noMoreRooms = false;
 
       loadHierarchy(hasUpdate: true).then(
-          // remove this space ID from the set of space IDs with updates
-          (_) {
-        if (widget.controller.hasUpdates.contains(widget.spaceId)) {
-          widget.controller.hasUpdates.remove(
-            widget.controller.activeSpaceId,
-          );
-        }
-      });
+        // remove this space ID from the set of space IDs with updates
+        (_) {
+          if (widget.controller.hasUpdates.contains(widget.spaceId)) {
+            widget.controller.hasUpdates.remove(
+              widget.controller.activeSpaceId,
+            );
+          }
+        },
+      );
     }
   }
 
@@ -136,8 +136,9 @@ class _SpaceViewState extends State<SpaceView> {
     } catch (e, s) {
       Logs().w('Unable to load hierarchy', e, s);
       if (!mounted) return;
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
     } finally {
       setState(() {
         _isLoading = false;
@@ -187,11 +188,11 @@ class _SpaceViewState extends State<SpaceView> {
 
       // make the call to the server
       final response = await Matrix.of(context).client.getSpaceHierarchy(
-            widget.spaceId,
-            maxDepth: 1,
-            from: currentNextBatch,
-            limit: 100,
-          );
+        widget.spaceId,
+        maxDepth: 1,
+        from: currentNextBatch,
+        limit: 100,
+      );
       callsToServer++;
 
       if (response.nextBatch == null) {
@@ -200,10 +201,7 @@ class _SpaceViewState extends State<SpaceView> {
 
       // if rooms have earlier been loaded for this space, add those
       // previously loaded rooms to the front of the response list
-      response.rooms.insertAll(
-        0,
-        currentHierarchy ?? [],
-      );
+      response.rooms.insertAll(0, currentHierarchy ?? []);
 
       // finally, set the response to the last response for this space
       // and set the current next batch token
@@ -261,14 +259,14 @@ class _SpaceViewState extends State<SpaceView> {
 
     final joined = await showAdaptiveDialog<bool>(
       context: context,
-      builder: (_) => PublicRoomDialog(
-        chunk: item,
-        via: space?.spaceChildren
-            .firstWhereOrNull(
-              (child) => child.roomId == item.roomId,
-            )
-            ?.via,
-      ),
+      builder:
+          (_) => PublicRoomDialog(
+            chunk: item,
+            via:
+                space?.spaceChildren
+                    .firstWhereOrNull((child) => child.roomId == item.roomId)
+                    ?.via,
+          ),
     );
     if (mounted && joined == true) {
       setState(() {
@@ -393,10 +391,7 @@ class _SpaceViewState extends State<SpaceView> {
   // Pangea#
 
   // #Pangea
-  bool includeSpaceChild(
-    Room space,
-    SpaceRoomsChunk hierarchyMember,
-  ) {
+  bool includeSpaceChild(Room space, SpaceRoomsChunk hierarchyMember) {
     if (!mounted) return false;
     final bool isAnalyticsRoom =
         hierarchyMember.roomType == PangeaRoomTypes.analytics;
@@ -440,21 +435,20 @@ class _SpaceViewState extends State<SpaceView> {
     final joinTimeline = update.rooms?.join?[widget.spaceId]?.timeline;
     final leaveTimeline = update.rooms?.leave?[widget.spaceId]?.timeline;
     if (joinTimeline == null && leaveTimeline == null) return false;
-    final bool hasJoinUpdate = joinTimeline?.events?.any(
+    final bool hasJoinUpdate =
+        joinTimeline?.events?.any(
           (event) => event.type == EventTypes.SpaceChild,
         ) ??
         false;
-    final bool hasLeaveUpdate = leaveTimeline?.events?.any(
+    final bool hasLeaveUpdate =
+        leaveTimeline?.events?.any(
           (event) => event.type == EventTypes.SpaceChild,
         ) ??
         false;
     return hasJoinUpdate || hasLeaveUpdate;
   }
 
-  int sortSpaceChildren(
-    SpaceRoomsChunk a,
-    SpaceRoomsChunk b,
-  ) {
+  int sortSpaceChildren(SpaceRoomsChunk a, SpaceRoomsChunk b) {
     final bool aIsSpace = a.roomType == 'm.space';
     final bool bIsSpace = b.roomType == 'm.space';
 
@@ -500,13 +494,10 @@ class _SpaceViewState extends State<SpaceView> {
           },
           child: AppBar(
             // Pangea#
-            leading: FluffyThemes.isColumnMode(context)
-                ? null
-                : Center(
-                    child: CloseButton(
-                      onPressed: widget.onBack,
-                    ),
-                  ),
+            leading:
+                FluffyThemes.isColumnMode(context)
+                    ? null
+                    : Center(child: CloseButton(onPressed: widget.onBack)),
             automaticallyImplyLeading: false,
             titleSpacing: FluffyThemes.isColumnMode(context) ? null : 0,
             title: ListTile(
@@ -525,344 +516,347 @@ class _SpaceViewState extends State<SpaceView> {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              subtitle: room == null
-                  ? null
-                  : Text(
-                      L10n.of(context).countChatsAndCountParticipants(
-                        // #Pangea
-                        // room.spaceChildren.length,
-                        room.spaceChildCount,
-                        // Pangea#
-                        room.summary.mJoinedMemberCount ?? 1,
+              subtitle:
+                  room == null
+                      ? null
+                      : Text(
+                        L10n.of(context).countChatsAndCountParticipants(
+                          // #Pangea
+                          // room.spaceChildren.length,
+                          room.spaceChildCount,
+                          // Pangea#
+                          room.summary.mJoinedMemberCount ?? 1,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
             ),
             actions: [
               PopupMenuButton<SpaceActions>(
                 onSelected: _onSpaceAction,
-                itemBuilder: (context) => [
-                  PopupMenuItem(
-                    value: SpaceActions.settings,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.settings_outlined),
-                        const SizedBox(width: 12),
-                        Text(L10n.of(context).settings),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: SpaceActions.invite,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.person_add_outlined),
-                        const SizedBox(width: 12),
-                        Text(L10n.of(context).invite),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: SpaceActions.leave,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.delete_outlined),
-                        const SizedBox(width: 12),
-                        Text(L10n.of(context).leave),
-                      ],
-                    ),
-                  ),
-                ],
+                itemBuilder:
+                    (context) => [
+                      PopupMenuItem(
+                        value: SpaceActions.settings,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.settings_outlined),
+                            const SizedBox(width: 12),
+                            Text(L10n.of(context).settings),
+                          ],
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: SpaceActions.invite,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.person_add_outlined),
+                            const SizedBox(width: 12),
+                            Text(L10n.of(context).invite),
+                          ],
+                        ),
+                      ),
+                      PopupMenuItem(
+                        value: SpaceActions.leave,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.delete_outlined),
+                            const SizedBox(width: 12),
+                            Text(L10n.of(context).leave),
+                          ],
+                        ),
+                      ),
+                    ],
               ),
             ],
           ),
         ),
       ),
-      floatingActionButton: room?.canChangeStateEvent(
-                EventTypes.SpaceChild,
-              ) ==
-              true
-          ? FloatingActionButton.extended(
-              // #Pangea
-              // onPressed: _addChatOrSubspace,
-              // label: Text(L10n.of(context).group),
-              onPressed: () => context.go("/rooms/newgroup/${widget.spaceId}"),
-              label: Text(L10n.of(context).chat),
-              // Pangea#
-              icon: const Icon(Icons.group_add_outlined),
-            )
-          : null,
-      body: room == null
-          ? const Center(
-              child: Icon(
-                Icons.search_outlined,
-                size: 80,
-              ),
-            )
-          : StreamBuilder(
-              stream: room.client.onSync.stream
-                  .where((s) => s.hasRoomUpdate)
-                  .rateLimit(const Duration(seconds: 1)),
-              builder: (context, snapshot) {
-                final childrenIds = room.spaceChildren
-                    .map((c) => c.roomId)
-                    .whereType<String>()
-                    .toSet();
+      floatingActionButton:
+          room?.canChangeStateEvent(EventTypes.SpaceChild) == true
+              ? FloatingActionButton.extended(
+                // #Pangea
+                // onPressed: _addChatOrSubspace,
+                // label: Text(L10n.of(context).group),
+                onPressed:
+                    () => context.go("/rooms/newgroup/${widget.spaceId}"),
+                label: Text(L10n.of(context).chat),
+                // Pangea#
+                icon: const Icon(Icons.group_add_outlined),
+              )
+              : null,
+      body:
+          room == null
+              ? const Center(child: Icon(Icons.search_outlined, size: 80))
+              : StreamBuilder(
+                stream: room.client.onSync.stream
+                    .where((s) => s.hasRoomUpdate)
+                    .rateLimit(const Duration(seconds: 1)),
+                builder: (context, snapshot) {
+                  final childrenIds =
+                      room.spaceChildren
+                          .map((c) => c.roomId)
+                          .whereType<String>()
+                          .toSet();
 
-                final joinedRooms = room.client.rooms
-                    .where((room) => childrenIds.remove(room.id))
-                    // #Pangea
-                    .where((room) => !room.isAnalyticsRoom)
-                    // Pangea#
-                    .toList();
+                  final joinedRooms =
+                      room.client.rooms
+                          .where((room) => childrenIds.remove(room.id))
+                          // #Pangea
+                          .where((room) => !room.isAnalyticsRoom)
+                          // Pangea#
+                          .toList();
 
-                final joinedParents = room.spaceParents
-                    .map((parent) {
-                      final roomId = parent.roomId;
-                      if (roomId == null) return null;
-                      return room.client.getRoomById(roomId);
-                    })
-                    .whereType<Room>()
-                    .toList();
-                final filter = _filterController.text.trim().toLowerCase();
-                return CustomScrollView(
-                  slivers: [
-                    SliverAppBar(
-                      floating: true,
-                      toolbarHeight: 72,
-                      scrolledUnderElevation: 0,
-                      backgroundColor: Colors.transparent,
-                      automaticallyImplyLeading: false,
-                      title: TextField(
-                        controller: _filterController,
-                        onChanged: (_) => setState(() {}),
-                        textInputAction: TextInputAction.search,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: theme.colorScheme.secondaryContainer,
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(99),
-                          ),
-                          contentPadding: EdgeInsets.zero,
-                          hintText: L10n.of(context).search,
-                          hintStyle: TextStyle(
-                            color: theme.colorScheme.onPrimaryContainer,
-                            fontWeight: FontWeight.normal,
-                          ),
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          prefixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.search_outlined,
+                  final joinedParents =
+                      room.spaceParents
+                          .map((parent) {
+                            final roomId = parent.roomId;
+                            if (roomId == null) return null;
+                            return room.client.getRoomById(roomId);
+                          })
+                          .whereType<Room>()
+                          .toList();
+                  final filter = _filterController.text.trim().toLowerCase();
+                  return CustomScrollView(
+                    slivers: [
+                      SliverAppBar(
+                        floating: true,
+                        toolbarHeight: 72,
+                        scrolledUnderElevation: 0,
+                        backgroundColor: Colors.transparent,
+                        automaticallyImplyLeading: false,
+                        title: TextField(
+                          controller: _filterController,
+                          onChanged: (_) => setState(() {}),
+                          textInputAction: TextInputAction.search,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: theme.colorScheme.secondaryContainer,
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(99),
+                            ),
+                            contentPadding: EdgeInsets.zero,
+                            hintText: L10n.of(context).search,
+                            hintStyle: TextStyle(
                               color: theme.colorScheme.onPrimaryContainer,
+                              fontWeight: FontWeight.normal,
+                            ),
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            prefixIcon: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.search_outlined,
+                                color: theme.colorScheme.onPrimaryContainer,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    SliverList.builder(
-                      itemCount: joinedParents.length,
-                      itemBuilder: (context, i) {
-                        final displayname =
-                            joinedParents[i].getLocalizedDisplayname();
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 1,
-                          ),
-                          child: Material(
-                            borderRadius:
-                                BorderRadius.circular(AppConfig.borderRadius),
-                            clipBehavior: Clip.hardEdge,
-                            child: ListTile(
-                              minVerticalPadding: 0,
-                              leading: Icon(
-                                Icons.adaptive.arrow_back_outlined,
-                                size: 16,
-                              ),
-                              title: Row(
-                                children: [
-                                  Avatar(
-                                    mxContent: joinedParents[i].avatar,
-                                    name: displayname,
-                                    // #Pangea
-                                    userId: joinedParents[i].directChatMatrixID,
-                                    // Pangea#
-                                    size: Avatar.defaultSize / 2,
-                                    borderRadius: BorderRadius.circular(
-                                      AppConfig.borderRadius / 4,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Expanded(child: Text(displayname)),
-                                ],
-                              ),
-                              onTap: () =>
-                                  widget.toParentSpace(joinedParents[i].id),
+                      SliverList.builder(
+                        itemCount: joinedParents.length,
+                        itemBuilder: (context, i) {
+                          final displayname =
+                              joinedParents[i].getLocalizedDisplayname();
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 1,
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                    // #Pangea
-                    KnockingUsersIndicator(room: room),
-                    // Pangea#
-                    SliverList.builder(
-                      itemCount: joinedRooms.length,
-                      itemBuilder: (context, i) {
-                        final joinedRoom = joinedRooms[i];
-                        return ChatListItem(
-                          joinedRoom,
-                          filter: filter,
-                          onTap: () => widget.onChatTab(joinedRoom),
-                          onLongPress: (context) => widget.onChatContext(
-                            joinedRoom,
-                            context,
-                          ),
-                          activeChat: widget.activeChat == joinedRoom.id,
-                        );
-                      },
-                    ),
-                    SliverList.builder(
-                      // #Pangea
-                      // itemCount: _discoveredChildren.length + 2,
-                      itemCount: (_discoveredChildren?.length ?? 0) + 2,
-                      // Pangea#
-                      itemBuilder: (context, i) {
-                        if (i == 0) {
-                          return SearchTitle(
-                            title: L10n.of(context).discover,
-                            icon: const Icon(Icons.explore_outlined),
-                          );
-                        }
-                        i--;
-                        // #Pangea
-                        // if (i == _discoveredChildren.length) {
-                        if (i == (_discoveredChildren?.length ?? 0)) {
-                          // Pangea#
-                          if (_noMoreRooms) {
-                            return Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Center(
-                                child: Text(
-                                  L10n.of(context).noMoreChatsFound,
-                                  style: const TextStyle(fontSize: 13),
+                            child: Material(
+                              borderRadius: BorderRadius.circular(
+                                AppConfig.borderRadius,
+                              ),
+                              clipBehavior: Clip.hardEdge,
+                              child: ListTile(
+                                minVerticalPadding: 0,
+                                leading: Icon(
+                                  Icons.adaptive.arrow_back_outlined,
+                                  size: 16,
                                 ),
+                                title: Row(
+                                  children: [
+                                    Avatar(
+                                      mxContent: joinedParents[i].avatar,
+                                      name: displayname,
+                                      // #Pangea
+                                      userId:
+                                          joinedParents[i].directChatMatrixID,
+                                      // Pangea#
+                                      size: Avatar.defaultSize / 2,
+                                      borderRadius: BorderRadius.circular(
+                                        AppConfig.borderRadius / 4,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    Expanded(child: Text(displayname)),
+                                  ],
+                                ),
+                                onTap:
+                                    () => widget.toParentSpace(
+                                      joinedParents[i].id,
+                                    ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                      // #Pangea
+                      KnockingUsersIndicator(room: room),
+                      // Pangea#
+                      SliverList.builder(
+                        itemCount: joinedRooms.length,
+                        itemBuilder: (context, i) {
+                          final joinedRoom = joinedRooms[i];
+                          return ChatListItem(
+                            joinedRoom,
+                            filter: filter,
+                            onTap: () => widget.onChatTab(joinedRoom),
+                            onLongPress:
+                                (context) =>
+                                    widget.onChatContext(joinedRoom, context),
+                            activeChat: widget.activeChat == joinedRoom.id,
+                          );
+                        },
+                      ),
+                      SliverList.builder(
+                        // #Pangea
+                        // itemCount: _discoveredChildren.length + 2,
+                        itemCount: (_discoveredChildren?.length ?? 0) + 2,
+                        // Pangea#
+                        itemBuilder: (context, i) {
+                          if (i == 0) {
+                            return SearchTitle(
+                              title: L10n.of(context).discover,
+                              icon: const Icon(Icons.explore_outlined),
+                            );
+                          }
+                          i--;
+                          // #Pangea
+                          // if (i == _discoveredChildren.length) {
+                          if (i == (_discoveredChildren?.length ?? 0)) {
+                            // Pangea#
+                            if (_noMoreRooms) {
+                              return Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Center(
+                                  child: Text(
+                                    L10n.of(context).noMoreChatsFound,
+                                    style: const TextStyle(fontSize: 13),
+                                  ),
+                                ),
+                              );
+                            }
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                                vertical: 2.0,
+                              ),
+                              child: TextButton(
+                                // #Pangea
+                                // onPressed: _isLoading ? null : _loadHierarchy,
+                                onPressed: _isLoading ? null : loadHierarchy,
+                                // Pangea#
+                                child:
+                                    _isLoading
+                                        ? LinearProgressIndicator(
+                                          borderRadius: BorderRadius.circular(
+                                            AppConfig.borderRadius,
+                                          ),
+                                        )
+                                        : Text(L10n.of(context).loadMore),
                               ),
                             );
                           }
+                          // #Pangea
+                          // final item = _discoveredChildren[i];
+                          final item = _discoveredChildren![i];
+                          // Pangea#
+                          final displayname =
+                              item.name ??
+                              item.canonicalAlias ??
+                              L10n.of(context).emptyChat;
+                          if (!displayname.toLowerCase().contains(filter)) {
+                            return const SizedBox.shrink();
+                          }
                           return Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 12.0,
-                              vertical: 2.0,
+                              horizontal: 8,
+                              vertical: 1,
                             ),
-                            child: TextButton(
-                              // #Pangea
-                              // onPressed: _isLoading ? null : _loadHierarchy,
-                              onPressed: _isLoading ? null : loadHierarchy,
-                              // Pangea#
-                              child: _isLoading
-                                  ? LinearProgressIndicator(
-                                      borderRadius: BorderRadius.circular(
-                                        AppConfig.borderRadius,
+                            child: Material(
+                              borderRadius: BorderRadius.circular(
+                                AppConfig.borderRadius,
+                              ),
+                              clipBehavior: Clip.hardEdge,
+                              child: ListTile(
+                                visualDensity: const VisualDensity(
+                                  vertical: -0.5,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 8,
+                                ),
+                                onTap: () => _joinChildRoom(item),
+                                leading: Avatar(
+                                  mxContent: item.avatarUrl,
+                                  name: displayname,
+                                  // #Pangea
+                                  userId:
+                                      Matrix.of(context).client
+                                          .getRoomById(item.roomId)
+                                          ?.directChatMatrixID,
+                                  // Pangea#
+                                  borderRadius:
+                                      item.roomType == 'm.space'
+                                          ? BorderRadius.circular(
+                                            AppConfig.borderRadius / 2,
+                                          )
+                                          : null,
+                                ),
+                                title: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        displayname,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                    )
-                                  : Text(L10n.of(context).loadMore),
+                                    ),
+                                    Text(
+                                      item.numJoinedMembers.toString(),
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        color:
+                                            theme.textTheme.bodyMedium!.color,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 4),
+                                    const Icon(Icons.people_outlined, size: 14),
+                                  ],
+                                ),
+                                subtitle: Text(
+                                  item.topic ??
+                                      L10n.of(context).countParticipants(
+                                        item.numJoinedMembers,
+                                      ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
                             ),
                           );
-                        }
-                        // #Pangea
-                        // final item = _discoveredChildren[i];
-                        final item = _discoveredChildren![i];
-                        // Pangea#
-                        final displayname = item.name ??
-                            item.canonicalAlias ??
-                            L10n.of(context).emptyChat;
-                        if (!displayname.toLowerCase().contains(filter)) {
-                          return const SizedBox.shrink();
-                        }
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 1,
-                          ),
-                          child: Material(
-                            borderRadius:
-                                BorderRadius.circular(AppConfig.borderRadius),
-                            clipBehavior: Clip.hardEdge,
-                            child: ListTile(
-                              visualDensity:
-                                  const VisualDensity(vertical: -0.5),
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
-                              onTap: () => _joinChildRoom(item),
-                              leading: Avatar(
-                                mxContent: item.avatarUrl,
-                                name: displayname,
-                                // #Pangea
-                                userId: Matrix.of(context)
-                                    .client
-                                    .getRoomById(item.roomId)
-                                    ?.directChatMatrixID,
-                                // Pangea#
-                                borderRadius: item.roomType == 'm.space'
-                                    ? BorderRadius.circular(
-                                        AppConfig.borderRadius / 2,
-                                      )
-                                    : null,
-                              ),
-                              title: Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      displayname,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Text(
-                                    item.numJoinedMembers.toString(),
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      color: theme.textTheme.bodyMedium!.color,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 4),
-                                  const Icon(
-                                    Icons.people_outlined,
-                                    size: 14,
-                                  ),
-                                ],
-                              ),
-                              subtitle: Text(
-                                item.topic ??
-                                    L10n.of(context).countParticipants(
-                                      item.numJoinedMembers,
-                                    ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    const SliverPadding(padding: EdgeInsets.only(top: 32)),
-                  ],
-                );
-              },
-            ),
+                        },
+                      ),
+                      const SliverPadding(padding: EdgeInsets.only(top: 32)),
+                    ],
+                  );
+                },
+              ),
     );
   }
 }
 
-enum SpaceActions {
-  settings,
-  invite,
-  leave,
-}
+enum SpaceActions { settings, invite, leave }

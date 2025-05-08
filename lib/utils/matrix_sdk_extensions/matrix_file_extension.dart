@@ -20,18 +20,18 @@ extension MatrixFileExtension on MatrixFile {
       return;
     }
 
-    final downloadPath = !PlatformInfos.isMobile
-        ? (await getSaveLocation(
-            suggestedName: name,
-            confirmButtonText: L10n.of(context).saveFile,
-          ))
-            ?.path
-        : await FilePicker.platform.saveFile(
-            dialogTitle: L10n.of(context).saveFile,
-            fileName: name,
-            type: filePickerFileType,
-            bytes: bytes,
-          );
+    final downloadPath =
+        !PlatformInfos.isMobile
+            ? (await getSaveLocation(
+              suggestedName: name,
+              confirmButtonText: L10n.of(context).saveFile,
+            ))?.path
+            : await FilePicker.platform.saveFile(
+              dialogTitle: L10n.of(context).saveFile,
+              fileName: name,
+              type: filePickerFileType,
+              bytes: bytes,
+            );
     if (downloadPath == null) return;
 
     if (PlatformInfos.isDesktop) {
@@ -44,9 +44,7 @@ extension MatrixFileExtension on MatrixFile {
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(
-          L10n.of(context).fileHasBeenSavedAt(downloadPath),
-        ),
+        content: Text(L10n.of(context).fileHasBeenSavedAt(downloadPath)),
       ),
     );
   }
@@ -60,13 +58,8 @@ extension MatrixFileExtension on MatrixFile {
 
   void _webDownload() {
     html.AnchorElement(
-      href: html.Url.createObjectUrlFromBlob(
-        html.Blob(
-          [bytes],
-          mimeType,
-        ),
-      ),
-    )
+        href: html.Url.createObjectUrlFromBlob(html.Blob([bytes], mimeType)),
+      )
       ..download = name
       ..click();
   }

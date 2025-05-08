@@ -147,11 +147,7 @@ class HtmlMessage extends StatelessWidget {
   List<PangeaToken>? get tokens =>
       pangeaMessageEvent?.messageDisplayRepresentation?.tokens;
 
-  PangeaToken? getToken(
-    String text,
-    int offset,
-    int length,
-  ) =>
+  PangeaToken? getToken(String text, int offset, int length) =>
       tokens?.firstWhereOrNull(
         (token) => token.text.offset == offset && token.text.length == length,
       );
@@ -176,10 +172,7 @@ class HtmlMessage extends StatelessWidget {
 
         int startIndex = tokenizedText.lastIndexOf('</token>');
         startIndex = startIndex == -1 ? 0 : startIndex + 8;
-        final int tokenIndex = tokenizedText.indexOf(
-          tokenText,
-          startIndex,
-        );
+        final int tokenIndex = tokenizedText.indexOf(tokenText, startIndex);
 
         // if the token is not found in the text, check if the token exist in the full HTML.
         // If not, remove the token and continue. If so, break to move on to the next node in the HTML.
@@ -235,11 +228,7 @@ class HtmlMessage extends StatelessWidget {
   }
 
   /// Transforms a Node to an InlineSpan.
-  InlineSpan _renderHtml(
-    dom.Node node,
-    BuildContext context, {
-    int depth = 1,
-  }) {
+  InlineSpan _renderHtml(dom.Node node, BuildContext context, {int depth = 1}) {
     // We must not render elements nested more than 100 elements deep:
     if (depth >= 100) return const TextSpan();
 
@@ -269,9 +258,10 @@ class HtmlMessage extends StatelessWidget {
           int.tryParse(node.attributes['length'] ?? '') ?? 0,
         );
 
-        final selected = token != null && isSelected != null
-            ? isSelected!.call(token)
-            : false;
+        final selected =
+            token != null && isSelected != null
+                ? isSelected!.call(token)
+                : false;
 
         final renderer = TokenRenderingUtil(
           pangeaMessageEvent: pangeaMessageEvent,
@@ -292,17 +282,19 @@ class HtmlMessage extends StatelessWidget {
         return WidgetSpan(
           alignment: PlaceholderAlignment.middle,
           child: CompositedTransformTarget(
-            link: token != null && renderer.assignTokenKey
-                ? MatrixState.pAnyState
-                    .layerLinkAndKey(token.text.uniqueKey)
-                    .link
-                : LayerLinkAndKey(token.hashCode.toString()).link,
+            link:
+                token != null && renderer.assignTokenKey
+                    ? MatrixState.pAnyState
+                        .layerLinkAndKey(token.text.uniqueKey)
+                        .link
+                    : LayerLinkAndKey(token.hashCode.toString()).link,
             child: Column(
-              key: token != null && renderer.assignTokenKey
-                  ? MatrixState.pAnyState
-                      .layerLinkAndKey(token.text.uniqueKey)
-                      .key
-                  : null,
+              key:
+                  token != null && renderer.assignTokenKey
+                      ? MatrixState.pAnyState
+                          .layerLinkAndKey(token.text.uniqueKey)
+                          .key
+                      : null,
               children: [
                 if (renderer.showCenterStyling && token != null)
                   MessageTokenButton(
@@ -310,10 +302,7 @@ class HtmlMessage extends StatelessWidget {
                     overlayController: overlayController,
                     textStyle: renderer.style(
                       context,
-                      color: renderer.backgroundColor(
-                        context,
-                        selected,
-                      ),
+                      color: renderer.backgroundColor(context, selected),
                     ),
                     width: tokenWidth,
                     animateIn: isTransitionAnimation,
@@ -323,7 +312,8 @@ class HtmlMessage extends StatelessWidget {
                             ? overlayController?.practiceSelection
                                 ?.activities(
                                   overlayController!
-                                      .toolbarMode.associatedActivityType!,
+                                      .toolbarMode
+                                      .associatedActivityType!,
                                 )
                                 .firstWhereOrNull(
                                   (a) => a.tokens.contains(token),
@@ -333,9 +323,10 @@ class HtmlMessage extends StatelessWidget {
                 MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: GestureDetector(
-                    onTap: onClick != null && token != null
-                        ? () => onClick?.call(token)
-                        : null,
+                    onTap:
+                        onClick != null && token != null
+                            ? () => onClick?.call(token)
+                            : null,
                     child: Text.rich(
                       textScaler: TextScaler.noScaling,
                       TextSpan(
@@ -350,8 +341,9 @@ class HtmlMessage extends StatelessWidget {
                               ),
                             ),
                             linkStyle: linkStyle,
-                            onOpen: (url) =>
-                                UrlLauncher(context, url.url).launchUrl(),
+                            onOpen:
+                                (url) =>
+                                    UrlLauncher(context, url.url).launchUrl(),
                           ),
                         ],
                       ),
@@ -368,9 +360,10 @@ class HtmlMessage extends StatelessWidget {
       case 'a':
         final href = node.attributes['href'];
         if (href == null) continue block;
-        final matrixId = node.attributes['href']
-            ?.parseIdentifierIntoParts()
-            ?.primaryIdentifier;
+        final matrixId =
+            node.attributes['href']
+                ?.parseIdentifierIntoParts()
+                ?.primaryIdentifier;
         if (matrixId != null) {
           if (matrixId.sigil == '@') {
             final user = room.unsafeGetUserFromMemoryOrFallback(matrixId);
@@ -387,9 +380,10 @@ class HtmlMessage extends StatelessWidget {
             );
           }
           if (matrixId.sigil == '#' || matrixId.sigil == '!') {
-            final room = matrixId.sigil == '!'
-                ? this.room.client.getRoomById(matrixId)
-                : this.room.client.getRoomByAlias(matrixId);
+            final room =
+                matrixId.sigil == '!'
+                    ? this.room.client.getRoomById(matrixId)
+                    : this.room.client.getRoomByAlias(matrixId);
             return WidgetSpan(
               child: MatrixPill(
                 name: room?.getLocalizedDisplayname() ?? matrixId,
@@ -448,11 +442,7 @@ class HtmlMessage extends StatelessWidget {
                       text:
                           '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
                     ),
-                  ..._renderWithLineBreaks(
-                    node.nodes,
-                    context,
-                    depth: depth,
-                  ),
+                  ..._renderWithLineBreaks(node.nodes, context, depth: depth),
                 ],
                 style: TextStyle(fontSize: fontSize, color: textColor),
               ),
@@ -464,12 +454,7 @@ class HtmlMessage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.only(left: 8.0),
             decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(
-                  color: textColor,
-                  width: 5,
-                ),
-              ),
+              border: Border(left: BorderSide(color: textColor, width: 5)),
             ),
             child: Text.rich(
               // #Pangea
@@ -500,7 +485,8 @@ class HtmlMessage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: HighlightView(
                 node.text,
-                language: node.className
+                language:
+                    node.className
                         .split(' ')
                         .singleWhereOrNull(
                           (className) => className.startsWith('language-'),
@@ -551,48 +537,48 @@ class HtmlMessage extends StatelessWidget {
         var obscure = true;
         return WidgetSpan(
           child: StatefulBuilder(
-            builder: (context, setState) => InkWell(
-              splashColor: Colors.transparent,
-              onTap: () => setState(() {
-                obscure = !obscure;
-              }),
-              child: Text.rich(
-                // #Pangea
-                textScaler: TextScaler.noScaling,
-                // Pangea#
-                TextSpan(
-                  children: [
-                    WidgetSpan(
-                      child: Icon(
-                        obscure ? Icons.arrow_right : Icons.arrow_drop_down,
-                        size: fontSize * 1.2,
-                        color: textColor,
-                      ),
+            builder:
+                (context, setState) => InkWell(
+                  splashColor: Colors.transparent,
+                  onTap:
+                      () => setState(() {
+                        obscure = !obscure;
+                      }),
+                  child: Text.rich(
+                    // #Pangea
+                    textScaler: TextScaler.noScaling,
+                    // Pangea#
+                    TextSpan(
+                      children: [
+                        WidgetSpan(
+                          child: Icon(
+                            obscure ? Icons.arrow_right : Icons.arrow_drop_down,
+                            size: fontSize * 1.2,
+                            color: textColor,
+                          ),
+                        ),
+                        if (obscure)
+                          ...node.nodes
+                              .where(
+                                (node) =>
+                                    node is dom.Element &&
+                                    node.localName == 'summary',
+                              )
+                              .map(
+                                (node) =>
+                                    _renderHtml(node, context, depth: depth),
+                              )
+                        else
+                          ..._renderWithLineBreaks(
+                            node.nodes,
+                            context,
+                            depth: depth,
+                          ),
+                      ],
                     ),
-                    if (obscure)
-                      ...node.nodes
-                          .where(
-                            (node) =>
-                                node is dom.Element &&
-                                node.localName == 'summary',
-                          )
-                          .map(
-                            (node) => _renderHtml(node, context, depth: depth),
-                          )
-                    else
-                      ..._renderWithLineBreaks(
-                        node.nodes,
-                        context,
-                        depth: depth,
-                      ),
-                  ],
+                    style: TextStyle(fontSize: fontSize, color: textColor),
+                  ),
                 ),
-                style: TextStyle(
-                  fontSize: fontSize,
-                  color: textColor,
-                ),
-              ),
-            ),
           ),
         );
       case 'span':
@@ -602,46 +588,44 @@ class HtmlMessage extends StatelessWidget {
         var obscure = true;
         return WidgetSpan(
           child: StatefulBuilder(
-            builder: (context, setState) => InkWell(
-              splashColor: Colors.transparent,
-              onTap: () => setState(() {
-                obscure = !obscure;
-              }),
-              child: Text.rich(
-                // #Pangea
-                textScaler: TextScaler.noScaling,
-                // Pangea#
-                TextSpan(
-                  children: _renderWithLineBreaks(
-                    node.nodes,
-                    context,
-                    depth: depth,
+            builder:
+                (context, setState) => InkWell(
+                  splashColor: Colors.transparent,
+                  onTap:
+                      () => setState(() {
+                        obscure = !obscure;
+                      }),
+                  child: Text.rich(
+                    // #Pangea
+                    textScaler: TextScaler.noScaling,
+                    // Pangea#
+                    TextSpan(
+                      children: _renderWithLineBreaks(
+                        node.nodes,
+                        context,
+                        depth: depth,
+                      ),
+                    ),
+                    style: TextStyle(
+                      fontSize: fontSize,
+                      color: textColor,
+                      backgroundColor: obscure ? textColor : null,
+                    ),
                   ),
                 ),
-                style: TextStyle(
-                  fontSize: fontSize,
-                  color: textColor,
-                  backgroundColor: obscure ? textColor : null,
-                ),
-              ),
-            ),
           ),
         );
       block:
       default:
         return TextSpan(
           style: switch (node.localName) {
-            'body' => TextStyle(
-                fontSize: fontSize,
-                color: textColor,
-              ),
+            'body' => TextStyle(fontSize: fontSize, color: textColor),
             'a' => linkStyle,
             'strong' => const TextStyle(fontWeight: FontWeight.bold),
             'em' || 'i' => const TextStyle(fontStyle: FontStyle.italic),
-            'del' ||
-            's' ||
-            'strikethrough' =>
-              const TextStyle(decoration: TextDecoration.lineThrough),
+            'del' || 's' || 'strikethrough' => const TextStyle(
+              decoration: TextDecoration.lineThrough,
+            ),
             'u' => const TextStyle(decoration: TextDecoration.underline),
             'h1' => TextStyle(fontSize: fontSize * 1.6, height: 2),
             'h2' => TextStyle(fontSize: fontSize * 1.5, height: 2),
@@ -650,22 +634,19 @@ class HtmlMessage extends StatelessWidget {
             'h5' => TextStyle(fontSize: fontSize * 1.2, height: 1.75),
             'h6' => TextStyle(fontSize: fontSize * 1.1, height: 1.5),
             'span' => TextStyle(
-                color: node.attributes['color']?.hexToColor ??
-                    node.attributes['data-mx-color']?.hexToColor ??
-                    textColor,
-                backgroundColor:
-                    node.attributes['data-mx-bg-color']?.hexToColor,
-              ),
-            'sup' =>
-              const TextStyle(fontFeatures: [FontFeature.superscripts()]),
+              color:
+                  node.attributes['color']?.hexToColor ??
+                  node.attributes['data-mx-color']?.hexToColor ??
+                  textColor,
+              backgroundColor: node.attributes['data-mx-bg-color']?.hexToColor,
+            ),
+            'sup' => const TextStyle(
+              fontFeatures: [FontFeature.superscripts()],
+            ),
             'sub' => const TextStyle(fontFeatures: [FontFeature.subscripts()]),
             _ => null,
           },
-          children: _renderWithLineBreaks(
-            node.nodes,
-            context,
-            depth: depth,
-          ),
+          children: _renderWithLineBreaks(node.nodes, context, depth: depth),
         );
     }
   }
@@ -700,10 +681,7 @@ class HtmlMessage extends StatelessWidget {
             // Pangea#
             context,
           ),
-          style: TextStyle(
-            fontSize: fontSize,
-            color: textColor,
-          ),
+          style: TextStyle(fontSize: fontSize, color: textColor),
         ),
       ),
     );
@@ -736,11 +714,7 @@ class MatrixPill extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Avatar(
-            mxContent: avatar,
-            name: name,
-            size: 16,
-          ),
+          Avatar(mxContent: avatar, name: name, size: 16),
           const SizedBox(width: 6),
           Text(
             name,

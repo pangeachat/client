@@ -61,8 +61,10 @@ class InputBar extends StatelessWidget {
         controller!.selection.baseOffset < 0) {
       return []; // no entries if there is selected text
     }
-    final searchText =
-        controller!.text.substring(0, controller!.selection.baseOffset);
+    final searchText = controller!.text.substring(
+      0,
+      controller!.selection.baseOffset,
+    );
     final ret = <Map<String, String?>>[];
     const maxResults = 30;
 
@@ -71,17 +73,15 @@ class InputBar extends StatelessWidget {
       final commandSearch = commandMatch[1]!.toLowerCase();
       for (final command in room.client.commands.keys) {
         if (command.contains(commandSearch)) {
-          ret.add({
-            'type': 'command',
-            'name': command,
-          });
+          ret.add({'type': 'command', 'name': command});
         }
 
         if (ret.length > maxResults) return ret;
       }
     }
-    final emojiMatch =
-        RegExp(r'(?:\s|^):(?:([-\w]+)~)?([-\w]+)$').firstMatch(searchText);
+    final emojiMatch = RegExp(
+      r'(?:\s|^):(?:([-\w]+)~)?([-\w]+)$',
+    ).firstMatch(searchText);
     if (emojiMatch != null) {
       final packSearch = emojiMatch[1];
       final emoteSearch = emojiMatch[2]!.toLowerCase();
@@ -127,12 +127,15 @@ class InputBar extends StatelessWidget {
         }
       }
       // aside of emote packs, also propose normal (tm) unicode emojis
-      final matchingUnicodeEmojis = Emoji.all()
-          .where(
-            (element) => [element.name, ...element.keywords]
-                .any((element) => element.toLowerCase().contains(emoteSearch)),
-          )
-          .toList();
+      final matchingUnicodeEmojis =
+          Emoji.all()
+              .where(
+                (element) => [
+                  element.name,
+                  ...element.keywords,
+                ].any((element) => element.toLowerCase().contains(emoteSearch)),
+              )
+              .toList();
       // sort by the index of the search term in the name in order to have
       // best matches first
       // (thanks for the hint by github.com/nextcloud/circles devs)
@@ -168,8 +171,9 @@ class InputBar extends StatelessWidget {
       for (final user in room.getParticipants()) {
         if ((user.displayName != null &&
                 (user.displayName!.toLowerCase().contains(userSearch) ||
-                    slugify(user.displayName!.toLowerCase())
-                        .contains(userSearch))) ||
+                    slugify(
+                      user.displayName!.toLowerCase(),
+                    ).contains(userSearch))) ||
             user.id.split(':')[0].toLowerCase().contains(userSearch)) {
           ret.add({
             'type': 'user',
@@ -281,9 +285,10 @@ class InputBar extends StatelessWidget {
             MxcImage(
               // ensure proper ordering ...
               key: ValueKey(suggestion['name']),
-              uri: suggestion['mxc'] is String
-                  ? Uri.parse(suggestion['mxc'] ?? '')
-                  : null,
+              uri:
+                  suggestion['mxc'] is String
+                      ? Uri.parse(suggestion['mxc'] ?? '')
+                      : null,
               width: size,
               height: size,
               isThumbnail: false,
@@ -295,16 +300,20 @@ class InputBar extends StatelessWidget {
                 alignment: Alignment.centerRight,
                 child: Opacity(
                   opacity: suggestion['pack_avatar_url'] != null ? 0.8 : 0.5,
-                  child: suggestion['pack_avatar_url'] != null
-                      ? Avatar(
-                          mxContent: Uri.tryParse(
-                            suggestion.tryGet<String>('pack_avatar_url') ?? '',
-                          ),
-                          name: suggestion.tryGet<String>('pack_display_name'),
-                          size: size * 0.9,
-                          client: client,
-                        )
-                      : Text(suggestion['pack_display_name']!),
+                  child:
+                      suggestion['pack_avatar_url'] != null
+                          ? Avatar(
+                            mxContent: Uri.tryParse(
+                              suggestion.tryGet<String>('pack_avatar_url') ??
+                                  '',
+                            ),
+                            name: suggestion.tryGet<String>(
+                              'pack_display_name',
+                            ),
+                            size: size * 0.9,
+                            client: client,
+                          )
+                          : Text(suggestion['pack_display_name']!),
                 ),
               ),
             ),
@@ -321,7 +330,8 @@ class InputBar extends StatelessWidget {
           children: <Widget>[
             Avatar(
               mxContent: url,
-              name: suggestion.tryGet<String>('displayname') ??
+              name:
+                  suggestion.tryGet<String>('displayname') ??
                   suggestion.tryGet<String>('mxid'),
               size: size,
               client: client,
@@ -344,12 +354,15 @@ class InputBar extends StatelessWidget {
   }
 
   void insertSuggestion(_, Map<String, String?> suggestion) {
-    final replaceText =
-        controller!.text.substring(0, controller!.selection.baseOffset);
+    final replaceText = controller!.text.substring(
+      0,
+      controller!.selection.baseOffset,
+    );
     var startText = '';
-    final afterText = replaceText == controller!.text
-        ? ''
-        : controller!.text.substring(controller!.selection.baseOffset + 1);
+    final afterText =
+        replaceText == controller!.text
+            ? ''
+            : controller!.text.substring(controller!.selection.baseOffset + 1);
     var insertText = '';
     if (suggestion['type'] == 'command') {
       insertText = '${suggestion['name']!} ';
@@ -419,8 +432,13 @@ class InputBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // #Pangea
-    final enableAutocorrect = MatrixState
-        .pangeaController.userController.profile.toolSettings.enableAutocorrect;
+    final enableAutocorrect =
+        MatrixState
+            .pangeaController
+            .userController
+            .profile
+            .toolSettings
+            .enableAutocorrect;
     // Pangea#
     return TypeAheadField<Map<String, String?>>(
       direction: VerticalDirection.up,
@@ -444,7 +462,8 @@ class InputBar extends StatelessWidget {
       builder: (context, _, focusNode) {
         final textField = TextField(
           enableSuggestions: enableAutocorrect,
-          readOnly: controller != null &&
+          readOnly:
+              controller != null &&
               (controller!.choreographer.isRunningIT ||
                   controller!.choreographer.chatController.obscureText),
           autocorrect: enableAutocorrect,
@@ -453,11 +472,7 @@ class InputBar extends StatelessWidget {
                   ? controller?.choreographer.chatController.hideTextController
                   : controller,
           focusNode: focusNode,
-          contextMenuBuilder: (c, e) => markdownContextBuilder(
-            c,
-            e,
-            _,
-          ),
+          contextMenuBuilder: (c, e) => markdownContextBuilder(c, e, _),
           contentInsertionConfiguration: ContentInsertionConfiguration(
             onContentInserted: (KeyboardInsertedContent content) {
               final data = content.data;
@@ -468,10 +483,7 @@ class InputBar extends StatelessWidget {
                 bytes: data,
                 name: content.uri.split('/').last,
               );
-              room.sendFileEvent(
-                file,
-                shrinkImageMaxDimension: 1600,
-              );
+              room.sendFileEvent(file, shrinkImageMaxDimension: 1600);
             },
           ),
           minLines: minLines,
@@ -490,14 +502,12 @@ class InputBar extends StatelessWidget {
             // it sets the types for the callback incorrectly
             onSubmitted!(text);
           },
-          style: controller?.exceededMaxLength ?? false
-              ? const TextStyle(color: Colors.red)
-              : null,
+          style:
+              controller?.exceededMaxLength ?? false
+                  ? const TextStyle(color: Colors.red)
+                  : null,
           onTap: () {
-            controller?.onInputTap(
-              context,
-              fNode: focusNode,
-            );
+            controller?.onInputTap(context, fNode: focusNode);
           },
           decoration: decoration!,
           onChanged: (text) {
@@ -518,8 +528,8 @@ class InputBar extends StatelessWidget {
                   text: hintText,
                   maxWidth: double.infinity,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: Theme.of(context).disabledColor,
-                      ),
+                    color: Theme.of(context).disabledColor,
+                  ),
                 ),
               ),
             kIsWeb ? SelectionArea(child: textField) : textField,
@@ -570,14 +580,16 @@ class InputBar extends StatelessWidget {
       // Pangea#
       suggestionsCallback: getSuggestions,
       itemBuilder: (c, s) => buildSuggestion(c, s, Matrix.of(context).client),
-      onSelected: (Map<String, String?> suggestion) =>
-          insertSuggestion(context, suggestion),
-      errorBuilder: (BuildContext context, Object? error) =>
-          const SizedBox.shrink(),
+      onSelected:
+          (Map<String, String?> suggestion) =>
+              insertSuggestion(context, suggestion),
+      errorBuilder:
+          (BuildContext context, Object? error) => const SizedBox.shrink(),
       loadingBuilder: (BuildContext context) => const SizedBox.shrink(),
       // fix loading briefly flickering a dark box
-      emptyBuilder: (BuildContext context) =>
-          const SizedBox.shrink(), // fix loading briefly showing no suggestions
+      emptyBuilder:
+          (BuildContext context) =>
+              const SizedBox.shrink(), // fix loading briefly showing no suggestions
     );
   }
 }

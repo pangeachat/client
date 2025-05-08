@@ -60,9 +60,7 @@ class WordZoomWidget extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              constraints: const BoxConstraints(
-                minHeight: 40,
-              ),
+              constraints: const BoxConstraints(minHeight: 40),
               color: Theme.of(context).colorScheme.surface,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,13 +71,11 @@ class WordZoomWidget extends StatelessWidget {
                     width: 24.0,
                     height: 24.0,
                     child: IconButton(
-                      onPressed: () => overlayController.updateSelectedSpan(
-                        token.text,
-                      ),
+                      onPressed:
+                          () =>
+                              overlayController.updateSelectedSpan(token.text),
                       icon: const Icon(Icons.close),
-                      style: IconButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                      ),
+                      style: IconButton.styleFrom(padding: EdgeInsets.zero),
                     ),
                   ),
                   LemmaWidget(
@@ -98,36 +94,35 @@ class WordZoomWidget extends StatelessWidget {
                   ),
                   ConstructXpWidget(
                     id: token.vocabConstructID,
-                    onTap: () => showDialog<AnalyticsPopupWrapper>(
-                      context: context,
-                      builder: (context) => AnalyticsPopupWrapper(
-                        constructZoom: token.vocabConstructID,
-                        view: ConstructTypeEnum.vocab,
-                      ),
-                    ),
+                    onTap:
+                        () => showDialog<AnalyticsPopupWrapper>(
+                          context: context,
+                          builder:
+                              (context) => AnalyticsPopupWrapper(
+                                constructZoom: token.vocabConstructID,
+                                view: ConstructTypeEnum.vocab,
+                              ),
+                        ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 8.0,
-            ),
+            const SizedBox(height: 8.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  constraints: const BoxConstraints(
-                    minHeight: 40,
-                  ),
+                  constraints: const BoxConstraints(minHeight: 40),
                   alignment: Alignment.center,
                   child: LemmaEmojiRow(
                     cId: _selectedToken.vocabConstructID,
-                    onTapOverride: overlayController.hideWordCardContent &&
-                            hasEmojiActivity
-                        ? () => overlayController.updateToolbarMode(
+                    onTapOverride:
+                        overlayController.hideWordCardContent &&
+                                hasEmojiActivity
+                            ? () => overlayController.updateToolbarMode(
                               MessageMode.wordEmoji,
                             )
-                        : null,
+                            : null,
                     isSelected:
                         overlayController.toolbarMode == MessageMode.wordEmoji,
                     emojiSetCallback: () => overlayController.setState(() {}),
@@ -136,13 +131,9 @@ class WordZoomWidget extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 8.0,
-            ),
+            const SizedBox(height: 8.0),
             Container(
-              constraints: const BoxConstraints(
-                minHeight: 40,
-              ),
+              constraints: const BoxConstraints(minHeight: 40),
               alignment: Alignment.center,
               child: Wrap(
                 alignment: WrapAlignment.center,
@@ -152,8 +143,12 @@ class WordZoomWidget extends StatelessWidget {
                 children: [
                   LemmaMeaningWidget(
                     constructUse: token.vocabConstructID.constructUses,
-                    langCode: MatrixState.pangeaController.languageController
-                            .userL2?.langCodeShort ??
+                    langCode:
+                        MatrixState
+                            .pangeaController
+                            .languageController
+                            .userL2
+                            ?.langCodeShort ??
                         LanguageKeys.defaultLanguage,
                     token: overlayController.selectedToken!,
                     controller: overlayController,
@@ -162,9 +157,7 @@ class WordZoomWidget extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
-              height: 8.0,
-            ),
+            const SizedBox(height: 8.0),
             Wrap(
               alignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
@@ -180,20 +173,22 @@ class WordZoomWidget extends StatelessWidget {
                     text: _selectedToken.text.content,
                     baseOpacity: 0.4,
                     uniqueID: "word-zoom-audio-${_selectedToken.text.content}",
-                    langCode: overlayController
-                        .pangeaMessageEvent?.messageDisplayLangCode,
+                    langCode:
+                        overlayController
+                            .pangeaMessageEvent
+                            ?.messageDisplayLangCode,
                   ),
                 ],
                 ..._selectedToken.morphsBasicallyEligibleForPracticeByPriority
                     .map(
-                  (cId) => MorphologicalListItem(
-                    morphFeature: MorphFeaturesEnumExtension.fromString(
-                      cId.category,
+                      (cId) => MorphologicalListItem(
+                        morphFeature: MorphFeaturesEnumExtension.fromString(
+                          cId.category,
+                        ),
+                        token: _selectedToken,
+                        overlayController: overlayController,
+                      ),
                     ),
-                    token: _selectedToken,
-                    overlayController: overlayController,
-                  ),
-                ),
               ],
             ),
           ],
