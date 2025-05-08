@@ -1,16 +1,6 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-import 'package:universal_html/html.dart' as html;
-
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/invitation_selection/invitation_selection.dart';
 import 'package:fluffychat/pages/user_bottom_sheet/user_bottom_sheet.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
@@ -21,9 +11,16 @@ import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
+import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+import 'package:universal_html/html.dart' as html;
 
 class InvitationSelectionView extends StatelessWidget {
   final InvitationSelectionController controller;
@@ -54,6 +51,36 @@ class InvitationSelectionView extends StatelessWidget {
         leading: const Center(child: BackButton()),
         titleSpacing: 0,
         title: Text(L10n.of(context).inviteContact),
+        // #Pangea
+        actions: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              0,
+              0,
+              7.0,
+              2.0,
+            ),
+            child: IconButton(
+              icon: const Icon(
+                Icons.ios_share_outlined,
+                size: 25.0,
+              ),
+              tooltip: L10n.of(context).shareInviteLink,
+              onPressed: () {
+                final String initialUrl =
+                    kIsWeb ? html.window.origin! : Environment.frontendURL;
+                final link =
+                    "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode(context)}";
+
+                FluffyShare.share(
+                  link,
+                  context,
+                );
+              },
+            ),
+          ),
+        ],
+        // Pangea#
       ),
       body: MaxWidthBody(
         innerPadding: const EdgeInsets.symmetric(vertical: 8),
@@ -62,100 +89,6 @@ class InvitationSelectionView extends StatelessWidget {
         // Pangea#
         child: Column(
           children: [
-            // #Pangea
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: InkWell(
-                customBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(99),
-                ),
-                onTap: () async {
-                  await Clipboard.setData(
-                    ClipboardData(text: room.classCode(context)),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12.0,
-                    horizontal: 16.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.secondaryContainer,
-                    borderRadius: BorderRadius.circular(99),
-                  ),
-                  child: Row(
-                    spacing: 16.0,
-                    children: [
-                      const Icon(
-                        Icons.copy_outlined,
-                        size: 20.0,
-                      ),
-                      Text(
-                        "${L10n.of(context).copyClassCode}: ${room.classCode(context)}",
-                        style: TextStyle(
-                          color: theme.colorScheme.onPrimaryContainer,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: 16.0,
-                left: 16.0,
-                right: 16.0,
-              ),
-              child: InkWell(
-                customBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(99),
-                ),
-                onTap: () async {
-                  final String initialUrl =
-                      kIsWeb ? html.window.origin! : Environment.frontendURL;
-                  final link =
-                      "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode(context)}";
-                  await Clipboard.setData(ClipboardData(text: link));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12.0,
-                    horizontal: 16.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.secondaryContainer,
-                    borderRadius: BorderRadius.circular(99),
-                  ),
-                  child: Row(
-                    spacing: 16.0,
-                    children: [
-                      const Icon(
-                        Icons.copy_outlined,
-                        size: 20.0,
-                      ),
-                      Text(
-                        L10n.of(context).copyClassLink,
-                        style: TextStyle(
-                          color: theme.colorScheme.onPrimaryContainer,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            // Pangea#
             Padding(
               // #Pangea
               // padding: const EdgeInsets.all(16.0),
@@ -321,11 +254,11 @@ class InvitationSelectionView extends StatelessWidget {
             // #Pangea
             if (!room.isSpace)
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 8.0,
                   right: 8.0,
                   top: 16.0,
-                  bottom: FluffyThemes.isColumnMode(context) ? 0 : 16.0,
+                  bottom: 16.0,
                 ),
                 child: Row(
                   spacing: 8.0,
