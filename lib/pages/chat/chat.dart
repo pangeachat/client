@@ -586,8 +586,8 @@ class ChatController extends State<ChatPageWithRoom>
     if (state == AppLifecycleState.paused) {
       clearSelectedEvents();
     }
-    if (state == AppLifecycleState.hidden && !stopAudioStream.isClosed) {
-      stopAudioStream.add(null);
+    if (state == AppLifecycleState.hidden && !stopMediaStream.isClosed) {
+      stopMediaStream.add(null);
     }
     // Pangea#
     if (state != AppLifecycleState.resumed) return;
@@ -679,7 +679,7 @@ class ChatController extends State<ChatPageWithRoom>
     choreographer.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
     showToolbarStream.close();
-    stopAudioStream.close();
+    stopMediaStream.close();
     hideTextController.dispose();
     _levelSubscription?.cancel();
     _analyticsSubscription?.cancel();
@@ -697,7 +697,7 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void _onRouteChanged() {
-    stopAudioStream.add(null);
+    stopMediaStream.add(null);
     MatrixState.pAnyState.closeAllOverlays();
   }
 
@@ -1007,7 +1007,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void voiceMessageAction() async {
     // #Pangea
-    stopAudioStream.add(null);
+    stopMediaStream.add(null);
     // Pangea#
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     if (PlatformInfos.isAndroid) {
@@ -1842,7 +1842,7 @@ class ChatController extends State<ChatPageWithRoom>
   final StreamController<String> showToolbarStream =
       StreamController.broadcast();
 
-  final StreamController<void> stopAudioStream = StreamController.broadcast();
+  final StreamController<void> stopMediaStream = StreamController.broadcast();
 
   void showToolbar(
     Event event, {
@@ -1902,7 +1902,7 @@ class ChatController extends State<ChatPageWithRoom>
       HapticFeedback.mediumImpact();
     }
 
-    stopAudioStream.add(null);
+    stopMediaStream.add(null);
 
     Future.delayed(
         Duration(milliseconds: buttonEventID == event.eventId ? 200 : 0), () {
