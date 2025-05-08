@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:material_symbols_icons/symbols.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart';
 
 class OverlayHeader extends StatelessWidget {
   final ChatController controller;
@@ -22,7 +20,7 @@ class OverlayHeader extends StatelessWidget {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(AppConfig.borderRadius),
@@ -55,6 +53,16 @@ class OverlayHeader extends StatelessWidget {
               tooltip: l10n.copy,
               onPressed: controller.copyEventsAction,
               color: theme.colorScheme.primary,
+            ),
+          if (controller.canSaveSelectedEvent)
+            // Use builder context to correctly position the share dialog on iPad
+            Builder(
+              builder: (context) => IconButton(
+                icon: Icon(Icons.adaptive.share),
+                tooltip: L10n.of(context).share,
+                onPressed: () => controller.saveSelectedEvent(context),
+                color: theme.colorScheme.primary,
+              ),
             ),
           if (controller.canPinSelectedEvents)
             IconButton(
