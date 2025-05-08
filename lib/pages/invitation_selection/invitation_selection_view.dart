@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/invitation_selection/invitation_selection.dart';
-import 'package:fluffychat/pages/user_bottom_sheet/user_bottom_sheet.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/refer_friends_dialog.dart';
@@ -10,7 +9,6 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
@@ -21,6 +19,8 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
+
+import '../../widgets/adaptive_dialogs/user_dialog.dart';
 
 class InvitationSelectionView extends StatelessWidget {
   final InvitationSelectionController controller;
@@ -388,13 +388,9 @@ class _InviteContactListTile extends StatelessWidget {
         mxContent: profile.avatarUrl,
         name: profile.displayName,
         presenceUserId: profile.userId,
-        onTap: () => showAdaptiveBottomSheet(
+        onTap: () => UserDialog.show(
           context: context,
-          builder: (c) => UserBottomSheet(
-            user: user,
-            profile: profile,
-            outerContext: context,
-          ),
+          profile: profile,
         ),
       ),
       title: Text(
