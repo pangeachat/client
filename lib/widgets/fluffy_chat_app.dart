@@ -40,9 +40,7 @@ class FluffyChatApp extends StatelessWidget {
   static final GoRouter router = GoRouter(
     routes: AppRoutes.routes,
     // #Pangea
-    observers: [
-      GoogleAnalytics.getAnalyticsObserver(),
-    ],
+    observers: [GoogleAnalytics.getAnalyticsObserver()],
     // Pangea#
     debugLogDiagnostics: true,
   );
@@ -50,37 +48,46 @@ class FluffyChatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ThemeBuilder(
-      builder: (context, themeMode, primaryColor) => MaterialApp.router(
-        title: AppConfig.applicationName,
-        themeMode: themeMode,
-        theme: FluffyThemes.buildTheme(context, Brightness.light, primaryColor),
-        darkTheme:
-            FluffyThemes.buildTheme(context, Brightness.dark, primaryColor),
-        scrollBehavior: CustomScrollBehavior(),
-        // #Pangea
-        // localizationsDelegates: L10n.localizationsDelegates,
-        localizationsDelegates: const [
-          L10n.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          CountryLocalizations.delegate,
-        ],
-        // Pangea#
-        supportedLocales: L10n.supportedLocales,
-        routerConfig: router,
-        builder: (context, child) => AppLockWidget(
-          pincode: pincode,
-          clients: clients,
-          // Need a navigator above the Matrix widget for
-          // displaying dialogs
-          child: Matrix(
-            clients: clients,
-            store: store,
-            child: testWidget ?? child,
+      builder:
+          (context, themeMode, primaryColor) => MaterialApp.router(
+            title: AppConfig.applicationName,
+            themeMode: themeMode,
+            theme: FluffyThemes.buildTheme(
+              context,
+              Brightness.light,
+              primaryColor,
+            ),
+            darkTheme: FluffyThemes.buildTheme(
+              context,
+              Brightness.dark,
+              primaryColor,
+            ),
+            scrollBehavior: CustomScrollBehavior(),
+            // #Pangea
+            // localizationsDelegates: L10n.localizationsDelegates,
+            localizationsDelegates: const [
+              L10n.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              CountryLocalizations.delegate,
+            ],
+            // Pangea#
+            supportedLocales: L10n.supportedLocales,
+            routerConfig: router,
+            builder:
+                (context, child) => AppLockWidget(
+                  pincode: pincode,
+                  clients: clients,
+                  // Need a navigator above the Matrix widget for
+                  // displaying dialogs
+                  child: Matrix(
+                    clients: clients,
+                    store: store,
+                    child: testWidget ?? child,
+                  ),
+                ),
           ),
-        ),
-      ),
     );
   }
 }

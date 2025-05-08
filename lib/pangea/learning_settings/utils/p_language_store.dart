@@ -48,9 +48,7 @@ class PLanguageStore {
       ErrorHandler.logError(
         e: err,
         s: stack,
-        data: {
-          "langList": _langList.map((e) => e.toJson()),
-        },
+        data: {"langList": _langList.map((e) => e.toJson())},
       );
     }
   }
@@ -86,8 +84,9 @@ class PLanguageStore {
   }
 
   static Future<List<LanguageModel>> _getCachedLanguages() async {
-    final Map<dynamic, dynamic>? languagesMap =
-        await MyShared.readJson(PrefKey.languagesKey);
+    final Map<dynamic, dynamic>? languagesMap = await MyShared.readJson(
+      PrefKey.languagesKey,
+    );
     if (languagesMap == null) {
       return [];
     }

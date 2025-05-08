@@ -16,13 +16,7 @@ class ActivitySuggestionCardRow extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
         spacing: 8.0,
-        children: [
-          Icon(
-            icon,
-            size: 16.0,
-          ),
-          Expanded(child: child),
-        ],
+        children: [Icon(icon, size: 16.0), Expanded(child: child)],
       ),
     );
   }

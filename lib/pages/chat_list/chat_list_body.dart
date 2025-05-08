@@ -37,8 +37,8 @@ class ChatListViewBody extends StatelessWidget {
         spaceId: activeSpace,
         onBack: controller.clearActiveSpace,
         onChatTab: (room) => controller.onChatTap(room),
-        onChatContext: (room, context) =>
-            controller.chatContextAction(room, context),
+        onChatContext:
+            (room, context) => controller.chatContextAction(room, context),
         activeChat: controller.activeChat,
         toParentSpace: controller.setActiveSpace,
         // #Pangea
@@ -61,16 +61,15 @@ class ChatListViewBody extends StatelessWidget {
     //     .where((room) => room.roomType != 'm.space')
     //     .toList();
     // Pangea#
-    final publicSpaces = controller.roomSearchResult?.chunk
-        .where((room) => room.roomType == 'm.space')
-        .toList();
+    final publicSpaces =
+        controller.roomSearchResult?.chunk
+            .where((room) => room.roomType == 'm.space')
+            .toList();
     final userSearchResult = controller.userSearchResult;
     const dummyChatCount = 4;
     final filter = controller.searchController.text.toLowerCase();
     return StreamBuilder(
-      key: ValueKey(
-        client.userID.toString(),
-      ),
+      key: ValueKey(client.userID.toString()),
       stream: client.onSync.stream
           .where((s) => s.hasRoomUpdate)
           .rateLimit(const Duration(seconds: 1)),
@@ -86,206 +85,204 @@ class ChatListViewBody extends StatelessWidget {
               PangeaChatListHeader(controller: controller),
               // Pangea#
               SliverList(
-                delegate: SliverChildListDelegate(
-                  [
-                    if (controller.isSearchMode) ...[
-                      // #Pangea
-                      // SearchTitle(
-                      //   title: L10n.of(context).publicRooms,
-                      //   icon: const Icon(Icons.explore_outlined),
-                      // ),
-                      // PublicRoomsHorizontalList(publicRooms: publicRooms),
-                      // Pangea#
-                      SearchTitle(
-                        title: L10n.of(context).publicSpaces,
-                        // #Pangea
-                        // icon: const Icon(Icons.workspaces_outlined),
-                        icon: const Icon(Icons.groups_outlined),
-                        // Pangea#
-                      ),
-                      PublicRoomsHorizontalList(publicRooms: publicSpaces),
-                      SearchTitle(
-                        title: L10n.of(context).users,
-                        icon: const Icon(Icons.group_outlined),
-                      ),
-                      AnimatedContainer(
-                        clipBehavior: Clip.hardEdge,
-                        decoration: const BoxDecoration(),
-                        height: userSearchResult == null ||
-                                userSearchResult.results.isEmpty
-                            ? 0
-                            : 106,
-                        duration: FluffyThemes.animationDuration,
-                        curve: FluffyThemes.animationCurve,
-                        child: userSearchResult == null
-                            ? null
-                            // #Pangea
-                            : UserSearchResultsList(
-                                userSearchResult: userSearchResult,
-                              ),
-                        // : ListView.builder(
-                        //     scrollDirection: Axis.horizontal,
-                        //     itemCount: userSearchResult.results.length,
-                        //     itemBuilder: (context, i) => _SearchItem(
-                        //       title:
-                        //           userSearchResult.results[i].displayName ??
-                        //               userSearchResult
-                        //                   .results[i].userId.localpart ??
-                        //               L10n.of(context).unknownDevice,
-                        //       avatar: userSearchResult.results[i].avatarUrl,
-                        //       onPressed: () => UserDialog.show(
-                        //         context: context,
-                        //         profile: userSearchResult.results[i],
-                        //       ),
-                        //     ),
-                        //   ),
-                        // Pangea#
-                      ),
-                    ],
+                delegate: SliverChildListDelegate([
+                  if (controller.isSearchMode) ...[
                     // #Pangea
-                    // if (!controller.isSearchMode && AppConfig.showPresences)
-                    //   GestureDetector(
-                    //     onLongPress: () => controller.dismissStatusList(),
-                    //     child: StatusMessageList(
-                    //       onStatusEdit: controller.setStatus,
-                    //     ),
-                    //   ),
+                    // SearchTitle(
+                    //   title: L10n.of(context).publicRooms,
+                    //   icon: const Icon(Icons.explore_outlined),
+                    // ),
+                    // PublicRoomsHorizontalList(publicRooms: publicRooms),
                     // Pangea#
+                    SearchTitle(
+                      title: L10n.of(context).publicSpaces,
+                      // #Pangea
+                      // icon: const Icon(Icons.workspaces_outlined),
+                      icon: const Icon(Icons.groups_outlined),
+                      // Pangea#
+                    ),
+                    PublicRoomsHorizontalList(publicRooms: publicSpaces),
+                    SearchTitle(
+                      title: L10n.of(context).users,
+                      icon: const Icon(Icons.group_outlined),
+                    ),
                     AnimatedContainer(
-                      height: controller.isTorBrowser ? 64 : 0,
-                      duration: FluffyThemes.animationDuration,
-                      curve: FluffyThemes.animationCurve,
                       clipBehavior: Clip.hardEdge,
                       decoration: const BoxDecoration(),
-                      child: Material(
-                        color: theme.colorScheme.surface,
-                        child: ListTile(
-                          leading: const Icon(Icons.vpn_key),
-                          title: Text(L10n.of(context).dehydrateTor),
-                          subtitle: Text(L10n.of(context).dehydrateTorLong),
-                          trailing: const Icon(Icons.chevron_right_outlined),
-                          onTap: controller.dehydrate,
-                        ),
+                      height:
+                          userSearchResult == null ||
+                                  userSearchResult.results.isEmpty
+                              ? 0
+                              : 106,
+                      duration: FluffyThemes.animationDuration,
+                      curve: FluffyThemes.animationCurve,
+                      child:
+                          userSearchResult == null
+                              ? null
+                              // #Pangea
+                              : UserSearchResultsList(
+                                userSearchResult: userSearchResult,
+                              ),
+                      // : ListView.builder(
+                      //     scrollDirection: Axis.horizontal,
+                      //     itemCount: userSearchResult.results.length,
+                      //     itemBuilder: (context, i) => _SearchItem(
+                      //       title:
+                      //           userSearchResult.results[i].displayName ??
+                      //               userSearchResult
+                      //                   .results[i].userId.localpart ??
+                      //               L10n.of(context).unknownDevice,
+                      //       avatar: userSearchResult.results[i].avatarUrl,
+                      //       onPressed: () => UserDialog.show(
+                      //         context: context,
+                      //         profile: userSearchResult.results[i],
+                      //       ),
+                      //     ),
+                      //   ),
+                      // Pangea#
+                    ),
+                  ],
+                  // #Pangea
+                  // if (!controller.isSearchMode && AppConfig.showPresences)
+                  //   GestureDetector(
+                  //     onLongPress: () => controller.dismissStatusList(),
+                  //     child: StatusMessageList(
+                  //       onStatusEdit: controller.setStatus,
+                  //     ),
+                  //   ),
+                  // Pangea#
+                  AnimatedContainer(
+                    height: controller.isTorBrowser ? 64 : 0,
+                    duration: FluffyThemes.animationDuration,
+                    curve: FluffyThemes.animationCurve,
+                    clipBehavior: Clip.hardEdge,
+                    decoration: const BoxDecoration(),
+                    child: Material(
+                      color: theme.colorScheme.surface,
+                      child: ListTile(
+                        leading: const Icon(Icons.vpn_key),
+                        title: Text(L10n.of(context).dehydrateTor),
+                        subtitle: Text(L10n.of(context).dehydrateTorLong),
+                        trailing: const Icon(Icons.chevron_right_outlined),
+                        onTap: controller.dehydrate,
                       ),
                     ),
-                    // #Pangea
-                    // if (client.rooms.isNotEmpty && !controller.isSearchMode)
-                    //   SizedBox(
-                    //     height: 64,
-                    //     child: ListView(
-                    //       padding: const EdgeInsets.symmetric(
-                    //         horizontal: 12.0,
-                    //         vertical: 12.0,
-                    //       ),
-                    //       shrinkWrap: true,
-                    //       scrollDirection: Axis.horizontal,
-                    if (!controller.isSearchMode)
-                      SingleChildScrollView(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0,
-                          vertical: 16.0,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          // Pangea#
-                          children: [
-                            if (AppConfig.separateChatTypes)
-                              ActiveFilter.messages
-                            else
-                              ActiveFilter.allChats,
-                            // #Pangea
-                            if (AppConfig.separateChatTypes)
-                              ActiveFilter.groups,
-                            // Pangea#
-                            ActiveFilter.unread,
-                            // #Pangea
-                            // if (spaceDelegateCandidates.isNotEmpty &&
-                            //     !controller.widget.displayNavigationRail)
-                            if (!controller.widget.displayNavigationRail)
-                              // Pangea#
-                              ActiveFilter.spaces,
-                          ]
-                              .map(
-                                // #Pangea
-                                // (filter) => Padding(
-                                (filter) => UnreadRoomsBadge(
-                                  filter: (_) => filter == ActiveFilter.unread,
-                                  badgePosition: BadgePosition.topEnd(
-                                    top: -12,
-                                    end: -6,
-                                  ),
-                                  child: Padding(
+                  ),
+                  // #Pangea
+                  // if (client.rooms.isNotEmpty && !controller.isSearchMode)
+                  //   SizedBox(
+                  //     height: 64,
+                  //     child: ListView(
+                  //       padding: const EdgeInsets.symmetric(
+                  //         horizontal: 12.0,
+                  //         vertical: 12.0,
+                  //       ),
+                  //       shrinkWrap: true,
+                  //       scrollDirection: Axis.horizontal,
+                  if (!controller.isSearchMode)
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 16.0,
+                      ),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        // Pangea#
+                        children:
+                            [
+                                  if (AppConfig.separateChatTypes)
+                                    ActiveFilter.messages
+                                  else
+                                    ActiveFilter.allChats,
+                                  // #Pangea
+                                  if (AppConfig.separateChatTypes)
+                                    ActiveFilter.groups,
+                                  // Pangea#
+                                  ActiveFilter.unread,
+                                  // #Pangea
+                                  // if (spaceDelegateCandidates.isNotEmpty &&
+                                  //     !controller.widget.displayNavigationRail)
+                                  if (!controller.widget.displayNavigationRail)
                                     // Pangea#
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 4.0,
+                                    ActiveFilter.spaces,
+                                ]
+                                .map(
+                                  // #Pangea
+                                  // (filter) => Padding(
+                                  (filter) => UnreadRoomsBadge(
+                                    filter:
+                                        (_) => filter == ActiveFilter.unread,
+                                    badgePosition: BadgePosition.topEnd(
+                                      top: -12,
+                                      end: -6,
                                     ),
-                                    child: FilterChip(
-                                      selected:
-                                          filter == controller.activeFilter,
-                                      onSelected: (_) =>
-                                          controller.setActiveFilter(filter),
-                                      label: Text(
-                                        filter.toLocalizedString(context),
+                                    child: Padding(
+                                      // Pangea#
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 4.0,
+                                      ),
+                                      child: FilterChip(
+                                        selected:
+                                            filter == controller.activeFilter,
+                                        onSelected:
+                                            (_) => controller.setActiveFilter(
+                                              filter,
+                                            ),
+                                        label: Text(
+                                          filter.toLocalizedString(context),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              )
-                              .toList(),
+                                )
+                                .toList(),
+                      ),
+                    ),
+                  if (controller.isSearchMode)
+                    SearchTitle(
+                      title: L10n.of(context).chats,
+                      icon: const Icon(Icons.forum_outlined),
+                    ),
+                  if (client.prevBatch != null &&
+                      rooms.isEmpty &&
+                      !controller.isSearchMode) ...[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            const Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                DummyChatListItem(opacity: 0.5, animate: false),
+                                DummyChatListItem(opacity: 0.3, animate: false),
+                              ],
+                            ),
+                            Icon(
+                              CupertinoIcons.chat_bubble_text_fill,
+                              size: 128,
+                              color: theme.colorScheme.secondary,
+                            ),
+                          ],
                         ),
-                      ),
-                    if (controller.isSearchMode)
-                      SearchTitle(
-                        title: L10n.of(context).chats,
-                        icon: const Icon(Icons.forum_outlined),
-                      ),
-                    if (client.prevBatch != null &&
-                        rooms.isEmpty &&
-                        !controller.isSearchMode) ...[
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              const Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  DummyChatListItem(
-                                    opacity: 0.5,
-                                    animate: false,
-                                  ),
-                                  DummyChatListItem(
-                                    opacity: 0.3,
-                                    animate: false,
-                                  ),
-                                ],
-                              ),
-                              Icon(
-                                CupertinoIcons.chat_bubble_text_fill,
-                                size: 128,
-                                color: theme.colorScheme.secondary,
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(
-                              client.rooms.isEmpty
-                                  ? L10n.of(context).noChatsFoundHere
-                                  : L10n.of(context).noMoreChatsFound,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: theme.colorScheme.secondary,
-                              ),
+                        Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(
+                            client.rooms.isEmpty
+                                ? L10n.of(context).noChatsFoundHere
+                                : L10n.of(context).noMoreChatsFound,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: theme.colorScheme.secondary,
                             ),
                           ),
-                        ],
-                      ),
-                    ],
+                        ),
+                      ],
+                    ),
                   ],
-                ),
+                ]),
               ),
               if (client.prevBatch == null)
                 SliverList(
@@ -309,8 +306,12 @@ class ChatListViewBody extends StatelessWidget {
                       key: Key('chat_list_item_${room.id}'),
                       filter: filter,
                       onTap: () => controller.onChatTap(room),
-                      onLongPress: (context) =>
-                          controller.chatContextAction(room, context, space),
+                      onLongPress:
+                          (context) => controller.chatContextAction(
+                            room,
+                            context,
+                            space,
+                          ),
                       activeChat: controller.activeChat == room.id,
                     );
                   },
@@ -327,10 +328,7 @@ class ChatListViewBody extends StatelessWidget {
 // class PublicRoomsHorizontalList extends StatelessWidget {
 class PublicRoomsHorizontalList extends StatefulWidget {
   // Pangea#
-  const PublicRoomsHorizontalList({
-    super.key,
-    required this.publicRooms,
-  });
+  const PublicRoomsHorizontalList({super.key, required this.publicRooms});
 
   final List<PublicRoomsChunk>? publicRooms;
 
@@ -360,45 +358,51 @@ class PublicRoomsHorizontalListState extends State<PublicRoomsHorizontalList> {
       height: publicRooms == null || publicRooms.isEmpty ? 0 : 106,
       duration: FluffyThemes.animationDuration,
       curve: FluffyThemes.animationCurve,
-      child: publicRooms == null
-          ? null
-          :
-          // #Pangea
-          Scrollbar(
-              thumbVisibility: true,
-              controller: _scrollController,
-              child:
-                  // Pangea#
-                  ListView.builder(
-                // #Pangea
+      child:
+          publicRooms == null
+              ? null
+              :
+              // #Pangea
+              Scrollbar(
+                thumbVisibility: true,
                 controller: _scrollController,
+                child:
                 // Pangea#
-                scrollDirection: Axis.horizontal,
-                itemCount: publicRooms.length,
-                itemBuilder: (context, i) => _SearchItem(
-                  title: publicRooms[i].name ??
-                      publicRooms[i].canonicalAlias?.localpart ??
-                      // #Pangea
-                      // L10n.of(context).group,
-                      L10n.of(context).chat,
-                  // Pangea#
-                  avatar: publicRooms[i].avatarUrl,
-                  onPressed: () => showAdaptiveDialog(
-                    context: context,
-                    builder: (c) => PublicRoomDialog(
-                      roomAlias: publicRooms[i].canonicalAlias ??
-                          publicRooms[i].roomId,
-                      chunk: publicRooms[i],
-                    ),
-                  ),
+                ListView.builder(
                   // #Pangea
-                  radius: BorderRadius.circular(
-                    AppConfig.borderRadius / 2,
-                  ),
+                  controller: _scrollController,
                   // Pangea#
+                  scrollDirection: Axis.horizontal,
+                  itemCount: publicRooms.length,
+                  itemBuilder:
+                      (context, i) => _SearchItem(
+                        title:
+                            publicRooms[i].name ??
+                            publicRooms[i].canonicalAlias?.localpart ??
+                            // #Pangea
+                            // L10n.of(context).group,
+                            L10n.of(context).chat,
+                        // Pangea#
+                        avatar: publicRooms[i].avatarUrl,
+                        onPressed:
+                            () => showAdaptiveDialog(
+                              context: context,
+                              builder:
+                                  (c) => PublicRoomDialog(
+                                    roomAlias:
+                                        publicRooms[i].canonicalAlias ??
+                                        publicRooms[i].roomId,
+                                    chunk: publicRooms[i],
+                                  ),
+                            ),
+                        // #Pangea
+                        radius: BorderRadius.circular(
+                          AppConfig.borderRadius / 2,
+                        ),
+                        // Pangea#
+                      ),
                 ),
               ),
-            ),
     );
   }
 }
@@ -422,45 +426,40 @@ class _SearchItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => InkWell(
-        onTap: onPressed,
-        child: SizedBox(
-          width: 84,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 8),
-              Avatar(
-                mxContent: avatar,
-                name: title,
-                // #Pangea
-                borderRadius: radius,
-                // Pangea#
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  title,
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-            ],
+    onTap: onPressed,
+    child: SizedBox(
+      width: 84,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(height: 8),
+          Avatar(
+            mxContent: avatar,
+            name: title,
+            // #Pangea
+            borderRadius: radius,
+            // Pangea#
           ),
-        ),
-      );
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              title,
+              maxLines: 2,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(fontSize: 12),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 // #Pangea
 class UserSearchResultsList extends StatefulWidget {
   final SearchUserDirectoryResponse userSearchResult;
-  const UserSearchResultsList({
-    required this.userSearchResult,
-    super.key,
-  });
+  const UserSearchResultsList({required this.userSearchResult, super.key});
 
   @override
   UserSearchResultsListState createState() => UserSearchResultsListState();
@@ -484,18 +483,22 @@ class UserSearchResultsListState extends State<UserSearchResultsList> {
         controller: _scrollController,
         scrollDirection: Axis.horizontal,
         itemCount: widget.userSearchResult.results.length,
-        itemBuilder: (context, i) => _SearchItem(
-          title: widget.userSearchResult.results[i].displayName ??
-              widget.userSearchResult.results[i].userId.localpart ??
-              L10n.of(context).unknownDevice,
-          avatar: widget.userSearchResult.results[i].avatarUrl,
-          onPressed: () => UserDialog.show(
-            context: context,
-            profile: widget.userSearchResult.results[i],
-          ),
-        ),
+        itemBuilder:
+            (context, i) => _SearchItem(
+              title:
+                  widget.userSearchResult.results[i].displayName ??
+                  widget.userSearchResult.results[i].userId.localpart ??
+                  L10n.of(context).unknownDevice,
+              avatar: widget.userSearchResult.results[i].avatarUrl,
+              onPressed:
+                  () => UserDialog.show(
+                    context: context,
+                    profile: widget.userSearchResult.results[i],
+                  ),
+            ),
       ),
     );
   }
 }
+
 // Pangea#

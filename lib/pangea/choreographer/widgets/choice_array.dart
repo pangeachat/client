@@ -15,11 +15,7 @@ import 'it_shimmer.dart';
 
 typedef ChoiceCallback = void Function(String value, int index);
 
-enum OverflowMode {
-  wrap,
-  horizontalScroll,
-  verticalScroll,
-}
+enum OverflowMode { wrap, horizontalScroll, verticalScroll }
 
 class ChoicesArray extends StatefulWidget {
   final bool isLoading;
@@ -102,78 +98,73 @@ class ChoicesArrayState extends State<ChoicesArray> {
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
-    final choices = widget.choices!
-        .mapIndexed(
-          (index, entry) => ChoiceItem(
-            theme: theme,
-            onLongPress: widget.isActive ? widget.onLongPress : null,
-            onPressed: widget.isActive
-                ? (String value, int index) {
-                    widget.onPressed(value, index);
-                    // TODO - what to pass here as eventID?
-                    if (widget.enableAudio &&
-                        widget.tts != null &&
-                        widget.langCode != null) {
-                      widget.tts?.tryToSpeak(
-                        value,
-                        targetID: null,
-                        langCode: widget.langCode!,
-                      );
-                    }
-                  }
-                : (String value, int index) {
-                    debugger(when: kDebugMode);
-                  },
-            entry: MapEntry(index, entry),
-            interactionDisabled: interactionDisabled,
-            enableInteraction: enableInteractions,
-            disableInteraction: disableInteraction,
-            isSelected: widget.selectedChoiceIndex == index,
-            id: widget.id,
-            getDisplayCopy: widget.getDisplayCopy,
-            fontSize: widget.fontSize,
-          ),
-        )
-        .toList();
+    final choices =
+        widget.choices!
+            .mapIndexed(
+              (index, entry) => ChoiceItem(
+                theme: theme,
+                onLongPress: widget.isActive ? widget.onLongPress : null,
+                onPressed:
+                    widget.isActive
+                        ? (String value, int index) {
+                          widget.onPressed(value, index);
+                          // TODO - what to pass here as eventID?
+                          if (widget.enableAudio &&
+                              widget.tts != null &&
+                              widget.langCode != null) {
+                            widget.tts?.tryToSpeak(
+                              value,
+                              targetID: null,
+                              langCode: widget.langCode!,
+                            );
+                          }
+                        }
+                        : (String value, int index) {
+                          debugger(when: kDebugMode);
+                        },
+                entry: MapEntry(index, entry),
+                interactionDisabled: interactionDisabled,
+                enableInteraction: enableInteractions,
+                disableInteraction: disableInteraction,
+                isSelected: widget.selectedChoiceIndex == index,
+                id: widget.id,
+                getDisplayCopy: widget.getDisplayCopy,
+                fontSize: widget.fontSize,
+              ),
+            )
+            .toList();
 
     return widget.isLoading &&
             (widget.choices == null || widget.choices!.length <= 1)
         ? ItShimmer(
-            originalSpan: widget.originalSpan,
-            fontSize: widget.fontSize ??
-                Theme.of(context).textTheme.bodyMedium?.fontSize ??
-                16,
-          )
+          originalSpan: widget.originalSpan,
+          fontSize:
+              widget.fontSize ??
+              Theme.of(context).textTheme.bodyMedium?.fontSize ??
+              16,
+        )
         : widget.overflowMode == OverflowMode.wrap
-            ? Wrap(
-                alignment: WrapAlignment.center,
-                spacing: 4.0,
-                children: choices,
-              )
-            : widget.overflowMode == OverflowMode.horizontalScroll
-                ? SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: choices,
-                    ),
-                  )
-                : SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: choices,
-                    ),
-                  );
+        ? Wrap(alignment: WrapAlignment.center, spacing: 4.0, children: choices)
+        : widget.overflowMode == OverflowMode.horizontalScroll
+        ? SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: choices,
+          ),
+        )
+        : SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: choices,
+          ),
+        );
   }
 }
 
 class Choice {
-  Choice({
-    this.color,
-    required this.text,
-    this.isGold = false,
-  });
+  Choice({this.color, required this.text, this.isGold = false});
 
   final Color? color;
   final String text;
@@ -214,19 +205,22 @@ class ChoiceItem extends StatelessWidget {
     try {
       return Tooltip(
         message: onLongPress != null ? L10n.of(context).holdForInfo : "",
-        waitDuration: onLongPress != null
-            ? const Duration(milliseconds: 500)
-            : const Duration(days: 1),
+        waitDuration:
+            onLongPress != null
+                ? const Duration(milliseconds: 500)
+                : const Duration(days: 1),
         child: CompositedTransformTarget(
-          link: MatrixState.pAnyState
-              .layerLinkAndKey("${entry.value.text}$id")
-              .link,
+          link:
+              MatrixState.pAnyState
+                  .layerLinkAndKey("${entry.value.text}$id")
+                  .link,
           child: ChoiceAnimationWidget(
             isSelected: isSelected,
             isCorrect: entry.value.isGold,
-            key: MatrixState.pAnyState
-                .layerLinkAndKey("${entry.value.text}$id")
-                .key,
+            key:
+                MatrixState.pAnyState
+                    .layerLinkAndKey("${entry.value.text}$id")
+                    .key,
             child: Container(
               margin: const EdgeInsets.all(2),
               padding: EdgeInsets.zero,
@@ -235,9 +229,10 @@ class ChoiceItem extends StatelessWidget {
                   Radius.circular(AppConfig.borderRadius),
                 ),
                 border: Border.all(
-                  color: isSelected
-                      ? entry.value.color ?? theme.colorScheme.primary
-                      : Colors.transparent,
+                  color:
+                      isSelected
+                          ? entry.value.color ?? theme.colorScheme.primary
+                          : Colors.transparent,
                   style: BorderStyle.solid,
                   width: 2.0,
                 ),
@@ -252,29 +247,28 @@ class ChoiceItem extends StatelessWidget {
                     entry.value.color?.withAlpha(50) ??
                         theme.colorScheme.primary.withAlpha(10),
                   ),
-                  textStyle: WidgetStateProperty.all(
-                    BotStyle.text(context),
-                  ),
+                  textStyle: WidgetStateProperty.all(BotStyle.text(context)),
                   shape: WidgetStateProperty.all(
                     RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(AppConfig.borderRadius),
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius,
+                      ),
                     ),
                   ),
                 ),
-                onLongPress: onLongPress != null && !interactionDisabled
-                    ? () => onLongPress!(entry.value.text, entry.key)
-                    : null,
-                onPressed: interactionDisabled
-                    ? null
-                    : () => onPressed(entry.value.text, entry.key),
+                onLongPress:
+                    onLongPress != null && !interactionDisabled
+                        ? () => onLongPress!(entry.value.text, entry.key)
+                        : null,
+                onPressed:
+                    interactionDisabled
+                        ? null
+                        : () => onPressed(entry.value.text, entry.key),
                 child: Text(
                   getDisplayCopy != null
                       ? getDisplayCopy!(entry.value.text)
                       : entry.value.text,
-                  style: BotStyle.text(context).copyWith(
-                    fontSize: fontSize,
-                  ),
+                  style: BotStyle.text(context).copyWith(fontSize: fontSize),
                   textAlign: TextAlign.center,
                 ),
               ),

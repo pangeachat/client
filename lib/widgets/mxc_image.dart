@@ -53,9 +53,10 @@ class _MxcImageState extends State<MxcImage> {
   static final Map<String, Uint8List> _imageDataCache = {};
   Uint8List? _imageDataNoCache;
 
-  Uint8List? get _imageData => widget.cacheKey == null
-      ? _imageDataNoCache
-      : _imageDataCache[widget.cacheKey];
+  Uint8List? get _imageData =>
+      widget.cacheKey == null
+          ? _imageDataNoCache
+          : _imageDataCache[widget.cacheKey];
 
   set _imageData(Uint8List? data) {
     if (data == null) return;
@@ -155,34 +156,34 @@ class _MxcImageState extends State<MxcImage> {
           hasData ? CrossFadeState.showSecond : CrossFadeState.showFirst,
       duration: const Duration(milliseconds: 128),
       firstChild: placeholder(context),
-      secondChild: hasData
-          ? Image.memory(
-              data,
-              width: widget.width,
-              height: widget.height,
-              fit: widget.fit,
-              filterQuality:
-                  widget.isThumbnail ? FilterQuality.low : FilterQuality.medium,
-              errorBuilder: (context, e, s) {
-                Logs().d('Unable to render mxc image', e, s);
-                return SizedBox(
-                  width: widget.width,
-                  height: widget.height,
-                  child: Material(
-                    color: Theme.of(context).colorScheme.surfaceContainer,
-                    child: Icon(
-                      Icons.broken_image_outlined,
-                      size: min(widget.height ?? 64, 64),
-                      color: Theme.of(context).colorScheme.onSurface,
+      secondChild:
+          hasData
+              ? Image.memory(
+                data,
+                width: widget.width,
+                height: widget.height,
+                fit: widget.fit,
+                filterQuality:
+                    widget.isThumbnail
+                        ? FilterQuality.low
+                        : FilterQuality.medium,
+                errorBuilder: (context, e, s) {
+                  Logs().d('Unable to render mxc image', e, s);
+                  return SizedBox(
+                    width: widget.width,
+                    height: widget.height,
+                    child: Material(
+                      color: Theme.of(context).colorScheme.surfaceContainer,
+                      child: Icon(
+                        Icons.broken_image_outlined,
+                        size: min(widget.height ?? 64, 64),
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
                     ),
-                  ),
-                );
-              },
-            )
-          : SizedBox(
-              width: widget.width,
-              height: widget.height,
-            ),
+                  );
+                },
+              )
+              : SizedBox(width: widget.width, height: widget.height),
     );
   }
 }

@@ -106,21 +106,21 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
         return;
       }
 
-      widget.overlayController
-          .setState(() => widget.overlayController.activity = activity);
-    } catch (e, s) {
-      debugPrint(
-        "Error fetching activity: $e",
+      widget.overlayController.setState(
+        () => widget.overlayController.activity = activity,
       );
+    } catch (e, s) {
+      debugPrint("Error fetching activity: $e");
       ErrorHandler.logError(
         e: e,
         s: s,
         data: {
           'activity': currentActivity?.toJson(),
           'record': currentCompletionRecord?.toJson(),
-          'targetTokens': widget.targetTokensAndActivityType.tokens
-              .map((token) => token.toJson())
-              .toList(),
+          'targetTokens':
+              widget.targetTokensAndActivityType.tokens
+                  .map((token) => token.toJson())
+                  .toList(),
           'activityType': widget.targetTokensAndActivityType.activityType,
           'morphFeature': widget.targetTokensAndActivityType.morphFeature,
         },
@@ -174,10 +174,10 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
 
     final PracticeActivityModelResponse activityResponse =
         await practiceGenerationController.getPracticeActivity(
-      req,
-      widget.pangeaMessageEvent,
-      context,
-    );
+          req,
+          widget.pangeaMessageEvent,
+          context,
+        );
 
     if (activityResponse.activity == null) return null;
 
@@ -187,10 +187,10 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   }
 
   ConstructUseMetaData get metadata => ConstructUseMetaData(
-        eventId: widget.pangeaMessageEvent.eventId,
-        roomId: widget.pangeaMessageEvent.room.id,
-        timeStamp: DateTime.now(),
-      );
+    eventId: widget.pangeaMessageEvent.eventId,
+    roomId: widget.pangeaMessageEvent.room.id,
+    timeStamp: DateTime.now(),
+  );
 
   final Duration _savorTheJoyDuration = const Duration(seconds: 1);
 
@@ -205,10 +205,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
         e: e,
         s: s,
         m: 'Failed to savor the joy',
-        data: {
-          'activity': currentActivity,
-          'record': currentCompletionRecord,
-        },
+        data: {'activity': currentActivity, 'record': currentCompletionRecord},
       );
     }
   }
@@ -228,8 +225,10 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
 
       // wait for savor the joy before popping from the activity queue
       // to keep the completed activity on screen for a moment
-      widget.overlayController
-          .onActivityFinish(currentActivity!.activityType, null);
+      widget.overlayController.onActivityFinish(
+        currentActivity!.activityType,
+        null,
+      );
 
       widget.overlayController.widget.chatController.choreographer.tts.stop();
     } catch (e, s) {
@@ -238,10 +237,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'activity': currentActivity,
-          'record': currentCompletionRecord,
-        },
+        data: {'activity': currentActivity, 'record': currentCompletionRecord},
       );
     }
   }
@@ -294,19 +290,13 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   Widget build(BuildContext context) {
     if (_error != null) {
       debugger(when: kDebugMode);
-      return CardErrorWidget(
-        error: _error!,
-        maxWidth: 500,
-      );
+      return CardErrorWidget(error: _error!, maxWidth: 500);
     }
 
     if (!fetchingActivity && currentActivity == null) {
       debugPrint("don't think we should be here");
       debugger(when: kDebugMode);
-      return CardErrorWidget(
-        error: _error!,
-        maxWidth: 500,
-      );
+      return CardErrorWidget(error: _error!, maxWidth: 500);
     }
 
     return Column(
@@ -316,9 +306,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
         // Conditionally show the darkening and progress indicator based on the loading state
         if (!savoringTheJoy && fetchingActivity) ...[
           // Circular progress indicator in the center
-          const ToolbarContentLoadingIndicator(
-            height: 40,
-          ),
+          const ToolbarContentLoadingIndicator(height: 40),
         ],
       ],
     );

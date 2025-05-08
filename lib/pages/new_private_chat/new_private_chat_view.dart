@@ -66,44 +66,47 @@ class NewPrivateChatView extends StatelessWidget {
                     color: theme.colorScheme.onPrimaryContainer,
                     fontWeight: FontWeight.normal,
                   ),
-                  prefixIcon: searchResponse == null
-                      ? const Icon(Icons.search_outlined)
-                      : FutureBuilder(
-                          future: searchResponse,
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState !=
-                                ConnectionState.done) {
-                              return const Padding(
-                                padding: EdgeInsets.all(10.0),
-                                child: SizedBox.square(
-                                  dimension: 24,
-                                  child: CircularProgressIndicator.adaptive(
-                                    strokeWidth: 1,
+                  prefixIcon:
+                      searchResponse == null
+                          ? const Icon(Icons.search_outlined)
+                          : FutureBuilder(
+                            future: searchResponse,
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState !=
+                                  ConnectionState.done) {
+                                return const Padding(
+                                  padding: EdgeInsets.all(10.0),
+                                  child: SizedBox.square(
+                                    dimension: 24,
+                                    child: CircularProgressIndicator.adaptive(
+                                      strokeWidth: 1,
+                                    ),
                                   ),
-                                ),
-                              );
-                            }
-                            return const Icon(Icons.search_outlined);
-                          },
-                        ),
-                  suffixIcon: controller.controller.text.isEmpty
-                      ? null
-                      : IconButton(
-                          icon: const Icon(Icons.clear_outlined),
-                          onPressed: () {
-                            controller.controller.clear();
-                            controller.searchUsers();
-                          },
-                        ),
+                                );
+                              }
+                              return const Icon(Icons.search_outlined);
+                            },
+                          ),
+                  suffixIcon:
+                      controller.controller.text.isEmpty
+                          ? null
+                          : IconButton(
+                            icon: const Icon(Icons.clear_outlined),
+                            onPressed: () {
+                              controller.controller.clear();
+                              controller.searchUsers();
+                            },
+                          ),
                 ),
               ),
             ),
             Expanded(
               child: AnimatedCrossFade(
                 duration: FluffyThemes.animationDuration,
-                crossFadeState: searchResponse == null
-                    ? CrossFadeState.showFirst
-                    : CrossFadeState.showSecond,
+                crossFadeState:
+                    searchResponse == null
+                        ? CrossFadeState.showFirst
+                        : CrossFadeState.showSecond,
                 firstChild: ListView(
                   children: [
                     Padding(
@@ -111,9 +114,7 @@ class NewPrivateChatView extends StatelessWidget {
                       child: SelectableText.rich(
                         TextSpan(
                           children: [
-                            TextSpan(
-                              text: L10n.of(context).yourGlobalUserIdIs,
-                            ),
+                            TextSpan(text: L10n.of(context).yourGlobalUserIdIs),
                             TextSpan(
                               text: Matrix.of(context).client.userID,
                               style: const TextStyle(
@@ -164,22 +165,22 @@ class NewPrivateChatView extends StatelessWidget {
                           vertical: 24.0,
                         ),
                         child: Material(
-                          borderRadius:
-                              BorderRadius.circular(AppConfig.borderRadius),
+                          borderRadius: BorderRadius.circular(
+                            AppConfig.borderRadius,
+                          ),
                           color: theme.colorScheme.primaryContainer,
                           clipBehavior: Clip.hardEdge,
                           child: InkWell(
-                            borderRadius:
-                                BorderRadius.circular(AppConfig.borderRadius),
-                            onTap: () => showQrCodeViewer(
-                              context,
-                              userId,
+                            borderRadius: BorderRadius.circular(
+                              AppConfig.borderRadius,
                             ),
+                            onTap: () => showQrCodeViewer(context, userId),
                             child: Padding(
                               padding: const EdgeInsets.all(32.0),
                               child: ConstrainedBox(
-                                constraints:
-                                    const BoxConstraints(maxWidth: 256),
+                                constraints: const BoxConstraints(
+                                  maxWidth: 256,
+                                ),
                                 child: PrettyQrView.data(
                                   data: 'https://matrix.to/#/$userId',
                                   decoration: PrettyQrDecoration(
@@ -210,9 +211,7 @@ class NewPrivateChatView extends StatelessWidget {
                           Text(
                             error.toLocalizedString(context),
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: theme.colorScheme.error,
-                            ),
+                            style: TextStyle(color: theme.colorScheme.error),
                           ),
                           const SizedBox(height: 12),
                           OutlinedButton.icon(
@@ -252,7 +251,8 @@ class NewPrivateChatView extends StatelessWidget {
                       itemCount: result.length,
                       itemBuilder: (context, i) {
                         final contact = result[i];
-                        final displayname = contact.displayName ??
+                        final displayname =
+                            contact.displayName ??
                             contact.userId.localpart ??
                             contact.userId;
                         return ListTile(

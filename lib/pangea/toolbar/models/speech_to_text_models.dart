@@ -29,13 +29,13 @@ class SpeechToTextAudioConfigModel {
   });
 
   Map<String, dynamic> toJson() => {
-        "encoding": encoding.value,
-        "sample_rate_hertz": sampleRateHertz,
-        "user_l1": userL1,
-        "user_l2": userL2,
-        "enable_word_confidence": enableWordConfidence,
-        "enable_automatic_punctuation": enableAutomaticPunctuation,
-      };
+    "encoding": encoding.value,
+    "sample_rate_hertz": sampleRateHertz,
+    "user_l1": userL1,
+    "user_l2": userL2,
+    "enable_word_confidence": enableWordConfidence,
+    "enable_automatic_punctuation": enableAutomaticPunctuation,
+  };
 }
 
 class SpeechToTextRequestModel {
@@ -50,9 +50,9 @@ class SpeechToTextRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        "audio_content": base64Encode(audioContent),
-        "config": config.toJson(),
-      };
+    "audio_content": base64Encode(audioContent),
+    "config": config.toJson(),
+  };
 
   @override
   bool operator ==(Object other) {
@@ -67,10 +67,7 @@ class SpeechToTextRequestModel {
   int get hashCode {
     final bytesSample =
         audioContent.length > 10 ? audioContent.sublist(0, 10) : audioContent;
-    return Object.hashAll([
-      Object.hashAll(bytesSample),
-      config.hashCode,
-    ]);
+    return Object.hashAll([Object.hashAll(bytesSample), config.hashCode]);
   }
 }
 
@@ -107,22 +104,24 @@ class STTToken {
     // debugPrint('STTToken.fromJson: $json');
     return STTToken(
       token: PangeaToken.fromJson(json['token']),
-      startTime: json['start_time'] != null
-          ? Duration(milliseconds: (json['start_time'] * 1000).round())
-          : null,
-      endTime: json['end_time'] != null
-          ? Duration(milliseconds: (json['end_time'] * 1000).round())
-          : null,
+      startTime:
+          json['start_time'] != null
+              ? Duration(milliseconds: (json['start_time'] * 1000).round())
+              : null,
+      endTime:
+          json['end_time'] != null
+              ? Duration(milliseconds: (json['end_time'] * 1000).round())
+              : null,
       confidence: json['confidence'],
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "token": token.toJson(),
-        "start_time": startTime?.inMilliseconds,
-        "end_time": endTime?.inMilliseconds,
-        "confidence": confidence,
-      };
+    "token": token.toJson(),
+    "start_time": startTime?.inMilliseconds,
+    "end_time": endTime?.inMilliseconds,
+    "confidence": confidence,
+  };
 
   @override
   bool operator ==(Object other) {
@@ -165,24 +164,24 @@ class Transcript {
   double? get wordsPerMinute => wordsPerHr != null ? wordsPerHr! / 60 : null;
 
   factory Transcript.fromJson(Map<String, dynamic> json) => Transcript(
-        text: json['transcript'],
-        confidence: json['confidence'] <= 100
+    text: json['transcript'],
+    confidence:
+        json['confidence'] <= 100
             ? json['confidence']
             : json['confidence'] / 100,
-        sttTokens: (json['stt_tokens'] as List)
-            .map((e) => STTToken.fromJson(e))
-            .toList(),
-        langCode: json['lang_code'],
-        wordsPerHr: json['words_per_hr'],
-      );
+    sttTokens:
+        (json['stt_tokens'] as List).map((e) => STTToken.fromJson(e)).toList(),
+    langCode: json['lang_code'],
+    wordsPerHr: json['words_per_hr'],
+  );
 
   Map<String, dynamic> toJson() => {
-        "transcript": text,
-        "confidence": confidence,
-        "stt_tokens": sttTokens.map((e) => e.toJson()).toList(),
-        "lang_code": langCode,
-        "words_per_hr": wordsPerHr,
-      };
+    "transcript": text,
+    "confidence": confidence,
+    "stt_tokens": sttTokens.map((e) => e.toJson()).toList(),
+    "lang_code": langCode,
+    "words_per_hr": wordsPerHr,
+  };
 
   Color color(BuildContext context) {
     if (confidence > thresholdForGreen) {
@@ -199,22 +198,21 @@ class SpeechToTextResult {
 
   factory SpeechToTextResult.fromJson(Map<String, dynamic> json) =>
       SpeechToTextResult(
-        transcripts: (json['transcripts'] as List)
-            .map((e) => Transcript.fromJson(e))
-            .toList(),
+        transcripts:
+            (json['transcripts'] as List)
+                .map((e) => Transcript.fromJson(e))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => {
-        "transcripts": transcripts.map((e) => e.toJson()).toList(),
-      };
+    "transcripts": transcripts.map((e) => e.toJson()).toList(),
+  };
 }
 
 class SpeechToTextModel {
   final List<SpeechToTextResult> results;
 
-  SpeechToTextModel({
-    required this.results,
-  });
+  SpeechToTextModel({required this.results});
 
   Transcript get transcript => results.first.transcripts.first;
 
@@ -222,12 +220,13 @@ class SpeechToTextModel {
 
   factory SpeechToTextModel.fromJson(Map<String, dynamic> json) =>
       SpeechToTextModel(
-        results: (json['results'] as List)
-            .map((e) => SpeechToTextResult.fromJson(e))
-            .toList(),
+        results:
+            (json['results'] as List)
+                .map((e) => SpeechToTextResult.fromJson(e))
+                .toList(),
       );
 
   Map<String, dynamic> toJson() => {
-        "results": results.map((e) => e.toJson()).toList(),
-      };
+    "results": results.map((e) => e.toJson()).toList(),
+  };
 }

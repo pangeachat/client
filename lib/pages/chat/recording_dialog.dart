@@ -18,9 +18,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'events/audio_player.dart';
 
 class RecordingDialog extends StatefulWidget {
-  const RecordingDialog({
-    super.key,
-  });
+  const RecordingDialog({super.key});
 
   @override
   RecordingDialogState createState() => RecordingDialogState();
@@ -40,12 +38,13 @@ class RecordingDialogState extends State<RecordingDialog> {
   Future<void> startRecording() async {
     final store = Matrix.of(context).store;
     try {
-      final codec = kIsWeb
-          // Web seems to create webm instead of ogg when using opus encoder
-          // which does not play on iOS right now. So we use wav for now:
-          ? AudioEncoder.wav
-          // Everywhere else we use opus if supported by the platform:
-          : await _audioRecorder.isEncoderSupported(AudioEncoder.opus)
+      final codec =
+          kIsWeb
+              // Web seems to create webm instead of ogg when using opus encoder
+              // which does not play on iOS right now. So we use wav for now:
+              ? AudioEncoder.wav
+              // Everywhere else we use opus if supported by the platform:
+              : await _audioRecorder.isEncoderSupported(AudioEncoder.opus)
               ? AudioEncoder.opus
               : AudioEncoder.aacLc;
       fileName =
@@ -65,21 +64,27 @@ class RecordingDialogState extends State<RecordingDialog> {
 
       // #Pangea
       final isNotError = await showUpdateVersionDialog(
-        future: () async =>
+        future:
+            () async =>
             // Pangea#
             await _audioRecorder.start(
-          RecordConfig(
-            bitRate: AppSettings.audioRecordingBitRate.getItem(store),
-            sampleRate: AppSettings.audioRecordingSamplingRate.getItem(store),
-            numChannels: AppSettings.audioRecordingNumChannels.getItem(store),
-            autoGain: AppSettings.audioRecordingAutoGain.getItem(store),
-            echoCancel: AppSettings.audioRecordingEchoCancel.getItem(store),
-            noiseSuppress:
-                AppSettings.audioRecordingNoiseSuppress.getItem(store),
-            encoder: codec,
-          ),
-          path: path ?? '',
-        ),
+              RecordConfig(
+                bitRate: AppSettings.audioRecordingBitRate.getItem(store),
+                sampleRate: AppSettings.audioRecordingSamplingRate.getItem(
+                  store,
+                ),
+                numChannels: AppSettings.audioRecordingNumChannels.getItem(
+                  store,
+                ),
+                autoGain: AppSettings.audioRecordingAutoGain.getItem(store),
+                echoCancel: AppSettings.audioRecordingEchoCancel.getItem(store),
+                noiseSuppress: AppSettings.audioRecordingNoiseSuppress.getItem(
+                  store,
+                ),
+                encoder: codec,
+              ),
+              path: path ?? '',
+            ),
         // #Pangea
         context: context,
       );
@@ -91,16 +96,18 @@ class RecordingDialogState extends State<RecordingDialog> {
       // Pangea#
       setState(() => _duration = Duration.zero);
       _recorderSubscription?.cancel();
-      _recorderSubscription =
-          Timer.periodic(const Duration(milliseconds: 100), (_) async {
-        final amplitude = await _audioRecorder.getAmplitude();
-        var value = 100 + amplitude.current * 2;
-        value = value < 1 ? 1 : value;
-        amplitudeTimeline.add(value);
-        setState(() {
-          _duration += const Duration(milliseconds: 100);
-        });
-      });
+      _recorderSubscription = Timer.periodic(
+        const Duration(milliseconds: 100),
+        (_) async {
+          final amplitude = await _audioRecorder.getAmplitude();
+          var value = 100 + amplitude.current * 2;
+          value = value < 1 ? 1 : value;
+          amplitudeTimeline.add(value);
+          setState(() {
+            _duration += const Duration(milliseconds: 100);
+          });
+        },
+      );
     } catch (_) {
       setState(() => error = true);
       rethrow;
@@ -127,9 +134,10 @@ class RecordingDialogState extends State<RecordingDialog> {
 
     if (path == null) throw ('Recording failed!');
     const waveCount = AudioPlayerWidget.wavesCount;
-    final step = amplitudeTimeline.length < waveCount
-        ? 1
-        : (amplitudeTimeline.length / waveCount).round();
+    final step =
+        amplitudeTimeline.length < waveCount
+            ? 1
+            : (amplitudeTimeline.length / waveCount).round();
     final waveform = <int>[];
     for (var i = 0; i < amplitudeTimeline.length; i += step) {
       waveform.add((amplitudeTimeline[i] / 100 * 1024).round());
@@ -151,48 +159,48 @@ class RecordingDialogState extends State<RecordingDialog> {
     const maxDecibalWidth = 64.0;
     final time =
         '${_duration.inMinutes.toString().padLeft(2, '0')}:${(_duration.inSeconds % 60).toString().padLeft(2, '0')}';
-    final content = error
-        ? Text(L10n.of(context).oopsSomethingWentWrong)
-        : Row(
-            children: [
-              Container(
-                width: 16,
-                height: 16,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32),
-                  color: Colors.red,
+    final content =
+        error
+            ? Text(L10n.of(context).oopsSomethingWentWrong)
+            : Row(
+              children: [
+                Container(
+                  width: 16,
+                  height: 16,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(32),
+                    color: Colors.red,
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: amplitudeTimeline.reversed
-                      .take(26)
-                      .toList()
-                      .reversed
-                      .map(
-                        (amplitude) => Container(
-                          margin: const EdgeInsets.only(left: 2),
-                          width: 4,
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.primary,
-                            borderRadius:
-                                BorderRadius.circular(AppConfig.borderRadius),
-                          ),
-                          height: maxDecibalWidth * (amplitude / 100),
-                        ),
-                      )
-                      .toList(),
+                Expanded(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children:
+                        amplitudeTimeline.reversed
+                            .take(26)
+                            .toList()
+                            .reversed
+                            .map(
+                              (amplitude) => Container(
+                                margin: const EdgeInsets.only(left: 2),
+                                width: 4,
+                                decoration: BoxDecoration(
+                                  color: theme.colorScheme.primary,
+                                  borderRadius: BorderRadius.circular(
+                                    AppConfig.borderRadius,
+                                  ),
+                                ),
+                                height: maxDecibalWidth * (amplitude / 100),
+                              ),
+                            )
+                            .toList(),
+                  ),
                 ),
-              ),
-              const SizedBox(width: 8),
-              SizedBox(
-                width: 48,
-                child: Text(time),
-              ),
-            ],
-          );
+                const SizedBox(width: 8),
+                SizedBox(width: 48, child: Text(time)),
+              ],
+            );
     if (PlatformInfos.isCupertinoStyle) {
       return CupertinoAlertDialog(
         content: content,
@@ -221,9 +229,7 @@ class RecordingDialogState extends State<RecordingDialog> {
           onPressed: () => Navigator.of(context, rootNavigator: false).pop(),
           child: Text(
             L10n.of(context).cancel,
-            style: TextStyle(
-              color: theme.colorScheme.error,
-            ),
+            style: TextStyle(color: theme.colorScheme.error),
           ),
         ),
         if (error != true)

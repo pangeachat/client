@@ -47,15 +47,17 @@ class MultipleChoiceActivity {
 
   int choiceIndex(String choice) => choices.indexOf(choice);
 
-  Color choiceColor(int index) => correctAnswerIndices.contains(index)
-      ? AppConfig.success
-      : AppConfig.warning;
+  Color choiceColor(int index) =>
+      correctAnswerIndices.contains(index)
+          ? AppConfig.success
+          : AppConfig.warning;
 
   factory MultipleChoiceActivity.fromJson(Map<String, dynamic> json) {
-    final spanDisplay = json['span_display_details'] != null &&
-            json['span_display_details'] is Map
-        ? RelevantSpanDisplayDetails.fromJson(json['span_display_details'])
-        : null;
+    final spanDisplay =
+        json['span_display_details'] != null &&
+                json['span_display_details'] is Map
+            ? RelevantSpanDisplayDetails.fromJson(json['span_display_details'])
+            : null;
 
     final answerEntry = json['answer'] ?? json['correct_answer'] ?? "";
     List<String> answers = [];

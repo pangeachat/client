@@ -30,22 +30,22 @@ class SessionBackup {
       SessionBackup.fromJson(jsonDecode(json));
 
   factory SessionBackup.fromJson(Map<String, dynamic> json) => SessionBackup(
-        olmAccount: json['olm_account'],
-        accessToken: json['access_token'],
-        userId: json['user_id'],
-        homeserver: json['homeserver'],
-        deviceId: json['device_id'],
-        deviceName: json['device_name'],
-      );
+    olmAccount: json['olm_account'],
+    accessToken: json['access_token'],
+    userId: json['user_id'],
+    homeserver: json['homeserver'],
+    deviceId: json['device_id'],
+    deviceName: json['device_name'],
+  );
 
   Map<String, dynamic> toJson() => {
-        'olm_account': olmAccount,
-        'access_token': accessToken,
-        'user_id': userId,
-        'homeserver': homeserver,
-        'device_id': deviceId,
-        if (deviceName != null) 'device_name': deviceName,
-      };
+    'olm_account': olmAccount,
+    'access_token': accessToken,
+    'user_id': userId,
+    'homeserver': homeserver,
+    'device_id': deviceId,
+    if (deviceName != null) 'device_name': deviceName,
+  };
 
   @override
   String toString() => jsonEncode(toJson());
@@ -53,9 +53,10 @@ class SessionBackup {
 
 extension InitWithRestoreExtension on Client {
   static Future<void> deleteSessionBackup(String clientName) async {
-    final storage = PlatformInfos.isMobile || PlatformInfos.isLinux
-        ? const FlutterSecureStorage()
-        : null;
+    final storage =
+        PlatformInfos.isMobile || PlatformInfos.isLinux
+            ? const FlutterSecureStorage()
+            : null;
     await storage?.delete(
       key: '${AppConfig.applicationName}_session_backup_$clientName',
     );
@@ -64,9 +65,10 @@ extension InitWithRestoreExtension on Client {
   Future<void> initWithRestore({void Function()? onMigration}) async {
     final storageKey =
         '${AppConfig.applicationName}_session_backup_$clientName';
-    final storage = PlatformInfos.isMobile || PlatformInfos.isLinux
-        ? const FlutterSecureStorage()
-        : null;
+    final storage =
+        PlatformInfos.isMobile || PlatformInfos.isLinux
+            ? const FlutterSecureStorage()
+            : null;
 
     try {
       await init(
@@ -81,7 +83,8 @@ extension InitWithRestoreExtension on Client {
         final homeserver = this.homeserver?.toString();
         final deviceId = deviceID;
         final userId = userID;
-        final hasBackup = accessToken != null &&
+        final hasBackup =
+            accessToken != null &&
             homeserver != null &&
             deviceId != null &&
             userId != null;
@@ -90,14 +93,15 @@ extension InitWithRestoreExtension on Client {
           Logs().v('Store session in backup');
           storage?.write(
             key: storageKey,
-            value: SessionBackup(
-              olmAccount: encryption?.pickledOlmAccount,
-              accessToken: accessToken,
-              deviceId: deviceId,
-              homeserver: homeserver,
-              deviceName: deviceName,
-              userId: userId,
-            ).toString(),
+            value:
+                SessionBackup(
+                  olmAccount: encryption?.pickledOlmAccount,
+                  accessToken: accessToken,
+                  deviceId: deviceId,
+                  homeserver: homeserver,
+                  deviceName: deviceName,
+                  userId: userId,
+                ).toString(),
           );
         }
       }

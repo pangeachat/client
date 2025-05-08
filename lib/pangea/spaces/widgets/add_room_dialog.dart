@@ -5,9 +5,7 @@ import 'package:matrix/matrix.dart' as matrix;
 import 'package:matrix/matrix.dart';
 
 class AddRoomDialog extends StatefulWidget {
-  const AddRoomDialog({
-    super.key,
-  });
+  const AddRoomDialog({super.key});
 
   @override
   AddRoomDialogState createState() => AddRoomDialogState();
@@ -32,9 +30,7 @@ class AddRoomDialogState extends State<AddRoomDialog> {
       child: Form(
         key: _formKey,
         child: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxWidth: 400,
-          ),
+          constraints: const BoxConstraints(maxWidth: 400),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -61,8 +57,8 @@ class AddRoomDialogState extends State<AddRoomDialog> {
                         }
                         return null;
                       },
-                      onTapOutside: (_) =>
-                          FocusManager.instance.primaryFocus?.unfocus(),
+                      onTapOutside:
+                          (_) => FocusManager.instance.primaryFocus?.unfocus(),
                     ),
                     const SizedBox(height: 20),
                     TextFormField(
@@ -73,8 +69,8 @@ class AddRoomDialogState extends State<AddRoomDialog> {
                       minLines: 4,
                       maxLines: 8,
                       maxLength: 255,
-                      onTapOutside: (_) =>
-                          FocusManager.instance.primaryFocus?.unfocus(),
+                      onTapOutside:
+                          (_) => FocusManager.instance.primaryFocus?.unfocus(),
                     ),
                   ],
                 ),

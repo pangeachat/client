@@ -10,8 +10,8 @@ class MorphTagDisplay extends StatelessWidget {
     required MorphFeaturesEnum morphFeature,
     required String morphTag,
     required this.textColor,
-  })  : _morphFeature = morphFeature,
-        _morphTag = morphTag;
+  }) : _morphFeature = morphFeature,
+       _morphTag = morphTag;
 
   final MorphFeaturesEnum _morphFeature;
   final String _morphTag;
@@ -36,9 +36,9 @@ class MorphTagDisplay extends StatelessWidget {
                 context: context,
               ) ??
               _morphTag,
-          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                color: textColor,
-              ),
+          style: Theme.of(
+            context,
+          ).textTheme.titleLarge?.copyWith(color: textColor),
         ),
       ],
     );

@@ -96,20 +96,23 @@ class SubscriptionController extends BaseController {
       availableSubscriptionInfo = AvailableSubscriptionsInfo();
       await availableSubscriptionInfo!.setAvailableSubscriptions();
 
-      final subs =
-          await SubscriptionRepo.getCurrentSubscriptionInfo(null, null);
+      final subs = await SubscriptionRepo.getCurrentSubscriptionInfo(
+        null,
+        null,
+      );
 
-      currentSubscriptionInfo = kIsWeb
-          ? WebSubscriptionInfo(
-              userID: _userID!,
-              availableSubscriptionInfo: availableSubscriptionInfo!,
-              history: subs.allSubscriptions,
-            )
-          : MobileSubscriptionInfo(
-              userID: _userID!,
-              availableSubscriptionInfo: availableSubscriptionInfo!,
-              history: subs.allSubscriptions,
-            );
+      currentSubscriptionInfo =
+          kIsWeb
+              ? WebSubscriptionInfo(
+                userID: _userID!,
+                availableSubscriptionInfo: availableSubscriptionInfo!,
+                history: subs.allSubscriptions,
+              )
+              : MobileSubscriptionInfo(
+                userID: _userID!,
+                availableSubscriptionInfo: availableSubscriptionInfo!,
+                history: subs.allSubscriptions,
+              );
 
       await currentSubscriptionInfo!.configure();
       await currentSubscriptionInfo!.setCurrentSubscription();
@@ -120,24 +123,21 @@ class SubscriptionController extends BaseController {
       }
 
       if (!kIsWeb) {
-        Purchases.addCustomerInfoUpdateListener(
-          (CustomerInfo info) async {
-            final bool? wasSubscribed = isSubscribed;
-            await updateCustomerInfo();
-            if (wasSubscribed != null &&
-                !wasSubscribed &&
-                (isSubscribed != null && isSubscribed!)) {
-              subscriptionStream.add(true);
-            }
-          },
-        );
+        Purchases.addCustomerInfoUpdateListener((CustomerInfo info) async {
+          final bool? wasSubscribed = isSubscribed;
+          await updateCustomerInfo();
+          if (wasSubscribed != null &&
+              !wasSubscribed &&
+              (isSubscribed != null && isSubscribed!)) {
+            subscriptionStream.add(true);
+          }
+        });
       } else {
-        final bool? beganWebPayment =
-            subscriptionBox.read(PLocalKey.beganWebPayment);
+        final bool? beganWebPayment = subscriptionBox.read(
+          PLocalKey.beganWebPayment,
+        );
         if (beganWebPayment ?? false) {
-          await subscriptionBox.remove(
-            PLocalKey.beganWebPayment,
-          );
+          await subscriptionBox.remove(PLocalKey.beganWebPayment);
           if (isSubscribed != null && isSubscribed!) {
             subscriptionStream.add(true);
           }
@@ -157,19 +157,20 @@ class SubscriptionController extends BaseController {
       );
 
       if (currentSubscriptionInfo?.currentSubscriptionId == null) {
-        currentSubscriptionInfo ??= kIsWeb
-            ? WebSubscriptionInfo(
-                userID: _userID!,
-                availableSubscriptionInfo:
-                    availableSubscriptionInfo ?? AvailableSubscriptionsInfo(),
-                history: {},
-              )
-            : MobileSubscriptionInfo(
-                userID: _userID!,
-                availableSubscriptionInfo:
-                    availableSubscriptionInfo ?? AvailableSubscriptionsInfo(),
-                history: {},
-              );
+        currentSubscriptionInfo ??=
+            kIsWeb
+                ? WebSubscriptionInfo(
+                  userID: _userID!,
+                  availableSubscriptionInfo:
+                      availableSubscriptionInfo ?? AvailableSubscriptionsInfo(),
+                  history: {},
+                )
+                : MobileSubscriptionInfo(
+                  userID: _userID!,
+                  availableSubscriptionInfo:
+                      availableSubscriptionInfo ?? AvailableSubscriptionsInfo(),
+                  history: {},
+                );
 
         currentSubscriptionInfo!.currentSubscriptionId =
             AppConfig.errorSubscriptionId;
@@ -197,9 +198,7 @@ class SubscriptionController extends BaseController {
           ErrorHandler.logError(
             m: "Tried to subscribe to web SubscriptionDetails with Null duration",
             s: StackTrace.current,
-            data: {
-              "selectedSubscription": selectedSubscription.toJson(),
-            },
+            data: {"selectedSubscription": selectedSubscription.toJson()},
           );
           return;
         }
@@ -207,15 +206,9 @@ class SubscriptionController extends BaseController {
           selectedSubscription.duration!,
           isPromo: isPromo,
         );
-        await subscriptionBox.write(
-          PLocalKey.beganWebPayment,
-          true,
-        );
+        await subscriptionBox.write(PLocalKey.beganWebPayment, true);
         setState(null);
-        launchUrlString(
-          paymentLink,
-          webOnlyWindowName: "_self",
-        );
+        launchUrlString(paymentLink, webOnlyWindowName: "_self");
         return;
       }
       if (selectedSubscription.package == null) {
@@ -231,10 +224,7 @@ class SubscriptionController extends BaseController {
         return;
       }
 
-      GoogleAnalytics.beginPurchaseSubscription(
-        selectedSubscription,
-        context,
-      );
+      GoogleAnalytics.beginPurchaseSubscription(selectedSubscription, context);
       await Purchases.purchasePackage(selectedSubscription.package!);
       GoogleAnalytics.updateUserSubscriptionStatus(true);
     }
@@ -261,22 +251,18 @@ class SubscriptionController extends BaseController {
     return isSubscribed!
         ? SubscriptionStatus.subscribed
         : _shouldShowPaywall
-            ? SubscriptionStatus.shouldShowPaywall
-            : SubscriptionStatus.dimissedPaywall;
+        ? SubscriptionStatus.shouldShowPaywall
+        : SubscriptionStatus.dimissedPaywall;
   }
 
   DateTime? get _lastDismissedPaywall {
-    final lastDismissed = subscriptionBox.read(
-      PLocalKey.dismissedPaywall,
-    );
+    final lastDismissed = subscriptionBox.read(PLocalKey.dismissedPaywall);
     if (lastDismissed == null) return null;
     return DateTime.tryParse(lastDismissed);
   }
 
   int? get _paywallBackoff {
-    final backoff = subscriptionBox.read(
-      PLocalKey.paywallBackoff,
-    );
+    final backoff = subscriptionBox.read(PLocalKey.paywallBackoff);
     if (backoff == null) return null;
     return backoff;
   }
@@ -298,10 +284,7 @@ class SubscriptionController extends BaseController {
     );
 
     if (_paywallBackoff == null) {
-      await subscriptionBox.write(
-        PLocalKey.paywallBackoff,
-        1,
-      );
+      await subscriptionBox.write(PLocalKey.paywallBackoff, 1);
     } else {
       await subscriptionBox.write(
         PLocalKey.paywallBackoff,
@@ -325,14 +308,13 @@ class SubscriptionController extends BaseController {
         clipBehavior: Clip.hardEdge,
         context: context,
         constraints: BoxConstraints(
-          maxHeight: PlatformInfos.isMobile
-              ? MediaQuery.of(context).size.height - 50
-              : 600,
+          maxHeight:
+              PlatformInfos.isMobile
+                  ? MediaQuery.of(context).size.height - 50
+                  : 600,
         ),
         builder: (_) {
-          return SubscriptionPaywall(
-            pangeaController: _pangeaController,
-          );
+          return SubscriptionPaywall(pangeaController: _pangeaController);
         },
       );
       dismissPaywall();
@@ -371,15 +353,12 @@ class SubscriptionController extends BaseController {
     return paymentLink;
   }
 
-  String? get defaultManagementURL =>
-      currentSubscriptionInfo?.currentSubscription
-          ?.defaultManagementURL(availableSubscriptionInfo?.appIds);
+  String? get defaultManagementURL => currentSubscriptionInfo
+      ?.currentSubscription
+      ?.defaultManagementURL(availableSubscriptionInfo?.appIds);
 }
 
-enum SubscriptionDuration {
-  month,
-  year,
-}
+enum SubscriptionDuration { month, year }
 
 extension SubscriptionDurationExtension on SubscriptionDuration {
   String get value => this == SubscriptionDuration.month ? "month" : "year";
@@ -403,9 +382,10 @@ class SubscriptionDetails {
 
   bool get isTrial => appId == "trial";
 
-  String displayPrice(BuildContext context) => isTrial || price <= 0
-      ? L10n.of(context).freeTrial
-      : localizedPrice ?? "\$${price.toStringAsFixed(2)}";
+  String displayPrice(BuildContext context) =>
+      isTrial || price <= 0
+          ? L10n.of(context).freeTrial
+          : localizedPrice ?? "\$${price.toStringAsFixed(2)}";
 
   String displayName(BuildContext context) {
     if (isTrial) {
@@ -425,8 +405,8 @@ class SubscriptionDetails {
     return appId == appIds?.androidId
         ? AppConfig.googlePlayMangementUrl
         : appId == appIds?.appleId
-            ? AppConfig.appleMangementUrl
-            : Environment.stripeManagementUrl;
+        ? AppConfig.appleMangementUrl
+        : Environment.stripeManagementUrl;
   }
 
   Map<String, dynamic> toJson() {

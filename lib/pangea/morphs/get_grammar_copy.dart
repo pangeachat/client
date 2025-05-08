@@ -497,19 +497,14 @@ String? getGrammarCopy({
       ErrorHandler.logError(
         e: Exception('Empty tag'),
         m: 'Empty tag in getGrammarCopy',
-        data: {
-          'context': context,
-        },
+        data: {'context': context},
       );
       return L10n.of(context).grammarCopyUnknown;
     default:
       // debugger(when: kDebugMode);
       ErrorHandler.logError(
         e: 'Need to add copy to intl_en.arb',
-        data: {
-          'tag': key,
-          'context': context,
-        },
+        data: {'tag': key, 'context': context},
       );
       return lemma; // Fallback to the lemma itself if no match is found
   }

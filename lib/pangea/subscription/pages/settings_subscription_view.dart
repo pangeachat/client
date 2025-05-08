@@ -27,26 +27,24 @@ class SettingsSubscriptionView extends StatelessWidget {
           ListTile(
             title: Text(L10n.of(context).cancelSubscription),
             enabled: controller.showManagementOptions,
-            onTap: () => controller.launchMangementUrl(
-              ManagementOption.cancel,
-            ),
+            onTap: () => controller.launchMangementUrl(ManagementOption.cancel),
             trailing: const Icon(Icons.cancel_outlined),
           ),
           const Divider(height: 1),
           ListTile(
             title: Text(L10n.of(context).paymentMethod),
             trailing: const Icon(Icons.credit_card),
-            onTap: () => controller.launchMangementUrl(
-              ManagementOption.paymentMethod,
-            ),
+            onTap:
+                () => controller.launchMangementUrl(
+                  ManagementOption.paymentMethod,
+                ),
             enabled: controller.showManagementOptions,
           ),
           ListTile(
             title: Text(L10n.of(context).paymentHistory),
             trailing: const Icon(Icons.keyboard_arrow_right_outlined),
-            onTap: () => controller.launchMangementUrl(
-              ManagementOption.history,
-            ),
+            onTap:
+                () => controller.launchMangementUrl(ManagementOption.history),
             enabled: controller.showManagementOptions,
           ),
         ],
@@ -58,9 +56,7 @@ class SettingsSubscriptionView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
-          L10n.of(context).subscriptionManagement,
-        ),
+        title: Text(L10n.of(context).subscriptionManagement),
       ),
       body: ListTileTheme(
         iconColor: Theme.of(context).textTheme.bodyLarge!.color,
@@ -72,9 +68,7 @@ class SettingsSubscriptionView extends StatelessWidget {
               if (isSubscribed != null &&
                   isSubscribed &&
                   !controller.showManagementOptions)
-                ManagementNotAvailableWarning(
-                  controller: controller,
-                ),
+                ManagementNotAvailableWarning(controller: controller),
               if (isSubscribed != null && !isSubscribed)
                 ChangeSubscription(controller: controller),
               if (controller.showManagementOptions) ...managementButtons,
@@ -89,10 +83,7 @@ class SettingsSubscriptionView extends StatelessWidget {
 class ManagementNotAvailableWarning extends StatelessWidget {
   final SubscriptionManagementController controller;
 
-  const ManagementNotAvailableWarning({
-    required this.controller,
-    super.key,
-  });
+  const ManagementNotAvailableWarning({required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -124,10 +115,7 @@ class ManagementNotAvailableWarning extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(20),
-        child: Text(
-          getWarningText(),
-          textAlign: TextAlign.center,
-        ),
+        child: Text(getWarningText(), textAlign: TextAlign.center),
       ),
     );
   }

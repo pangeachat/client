@@ -30,11 +30,11 @@ class TokensRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.fullText: fullText,
-        ModelKey.userL1: senderL1,
-        ModelKey.userL2: senderL2,
-        ModelKey.langCode: langCode,
-      };
+    ModelKey.fullText: fullText,
+    ModelKey.userL1: senderL1,
+    ModelKey.userL2: senderL2,
+    ModelKey.langCode: langCode,
+  };
 
   // override equals and hashcode
   @override
@@ -62,22 +62,22 @@ class TokensResponseModel {
     required this.detections,
   });
 
-  factory TokensResponseModel.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory TokensResponseModel.fromJson(Map<String, dynamic> json) =>
       TokensResponseModel(
-        tokens: (json[ModelKey.tokens] as Iterable)
-            .map<PangeaToken>(
-              (e) => PangeaToken.fromJson(e as Map<String, dynamic>),
-            )
-            .toList()
-            .cast<PangeaToken>(),
+        tokens:
+            (json[ModelKey.tokens] as Iterable)
+                .map<PangeaToken>(
+                  (e) => PangeaToken.fromJson(e as Map<String, dynamic>),
+                )
+                .toList()
+                .cast<PangeaToken>(),
         lang: json[ModelKey.lang],
-        detections: (json[ModelKey.allDetections] as Iterable)
-            .map<LanguageDetection>(
-              (e) => LanguageDetection.fromJson(e as Map<String, dynamic>),
-            )
-            .toList()
-            .cast<LanguageDetection>(),
+        detections:
+            (json[ModelKey.allDetections] as Iterable)
+                .map<LanguageDetection>(
+                  (e) => LanguageDetection.fromJson(e as Map<String, dynamic>),
+                )
+                .toList()
+                .cast<LanguageDetection>(),
       );
 }

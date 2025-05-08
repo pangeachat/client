@@ -4,10 +4,7 @@ class LanguageDetection {
   String langCode;
   double confidence;
 
-  LanguageDetection({
-    required this.langCode,
-    required this.confidence,
-  });
+  LanguageDetection({required this.langCode, required this.confidence});
 
   factory LanguageDetection.fromJson(Map<String, dynamic> json) {
     final dynamic confValue = json[ModelKey.confidence];
@@ -28,7 +25,7 @@ class LanguageDetection {
   }
 
   Map<String, dynamic> toJson() => {
-        ModelKey.langCode: langCode,
-        ModelKey.confidence: confidence,
-      };
+    ModelKey.langCode: langCode,
+    ModelKey.confidence: confidence,
+  };
 }

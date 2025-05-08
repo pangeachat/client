@@ -10,10 +10,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class PaywallCard extends StatelessWidget {
   final ChatController chatController;
-  const PaywallCard({
-    super.key,
-    required this.chatController,
-  });
+  const PaywallCard({super.key, required this.chatController});
 
   @override
   Widget build(BuildContext context) {

@@ -19,16 +19,10 @@ class BootstrapDialog extends StatefulWidget {
   final bool wipe;
   final Client client;
 
-  const BootstrapDialog({
-    super.key,
-    this.wipe = false,
-    required this.client,
-  });
+  const BootstrapDialog({super.key, this.wipe = false, required this.client});
 
-  Future<bool?> show(BuildContext context) => showAdaptiveBottomSheet(
-        context: context,
-        builder: (context) => this,
-      );
+  Future<bool?> show(BuildContext context) =>
+      showAdaptiveBottomSheet(context: context, builder: (context) => this);
 
   @override
   BootstrapDialogState createState() => BootstrapDialogState();
@@ -79,8 +73,9 @@ class BootstrapDialogState extends State<BootstrapDialog> {
     _wipe = wipe;
     titleText = null;
     _recoveryKeyStored = false;
-    bootstrap =
-        widget.client.encryption!.bootstrap(onUpdate: (_) => setState(() {}));
+    bootstrap = widget.client.encryption!.bootstrap(
+      onUpdate: (_) => setState(() {}),
+    );
     final key = await const FlutterSecureStorage().read(key: _secureStorageKey);
     if (key == null) return;
     _recoveryKeyTextEditingController.text = key;
@@ -109,8 +104,9 @@ class BootstrapDialogState extends State<BootstrapDialog> {
         ),
         body: Center(
           child: ConstrainedBox(
-            constraints:
-                const BoxConstraints(maxWidth: FluffyThemes.columnWidth * 1.5),
+            constraints: const BoxConstraints(
+              maxWidth: FluffyThemes.columnWidth * 1.5,
+            ),
             child: ListView(
               padding: const EdgeInsets.all(16.0),
               children: [
@@ -125,10 +121,7 @@ class BootstrapDialogState extends State<BootstrapDialog> {
                   ),
                   subtitle: Text(L10n.of(context).chatBackupDescription),
                 ),
-                const Divider(
-                  height: 32,
-                  thickness: 1,
-                ),
+                const Divider(height: 32, thickness: 1),
                 TextField(
                   minLines: 2,
                   maxLines: 4,
@@ -152,8 +145,9 @@ class BootstrapDialogState extends State<BootstrapDialog> {
                       });
                     },
                     title: Text(_getSecureStorageLocalizedName()),
-                    subtitle:
-                        Text(L10n.of(context).storeInSecureStorageDescription),
+                    subtitle: Text(
+                      L10n.of(context).storeInSecureStorageDescription,
+                    ),
                   ),
                 const SizedBox(height: 16),
                 CheckboxListTile.adaptive(
@@ -174,14 +168,14 @@ class BootstrapDialogState extends State<BootstrapDialog> {
                   onPressed:
                       (_recoveryKeyCopied || _storeInSecureStorage == true)
                           ? () {
-                              if (_storeInSecureStorage == true) {
-                                const FlutterSecureStorage().write(
-                                  key: _secureStorageKey,
-                                  value: key,
-                                );
-                              }
-                              setState(() => _recoveryKeyStored = true);
+                            if (_storeInSecureStorage == true) {
+                              const FlutterSecureStorage().write(
+                                key: _secureStorageKey,
+                                value: key,
+                              );
                             }
+                            setState(() => _recoveryKeyStored = true);
+                          }
                           : null,
                 ),
               ],
@@ -238,8 +232,9 @@ class BootstrapDialogState extends State<BootstrapDialog> {
                   padding: const EdgeInsets.all(16.0),
                   children: [
                     ListTile(
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 8.0),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                      ),
                       trailing: Icon(
                         Icons.info_outlined,
                         color: theme.colorScheme.primary,
@@ -254,9 +249,10 @@ class BootstrapDialogState extends State<BootstrapDialog> {
                       maxLines: 2,
                       autocorrect: false,
                       readOnly: _recoveryKeyInputLoading,
-                      autofillHints: _recoveryKeyInputLoading
-                          ? null
-                          : [AutofillHints.password],
+                      autofillHints:
+                          _recoveryKeyInputLoading
+                              ? null
+                              : [AutofillHints.password],
                       controller: _recoveryKeyTextEditingController,
                       style: const TextStyle(fontFamily: 'RobotoMono'),
                       decoration: InputDecoration(
@@ -278,69 +274,79 @@ class BootstrapDialogState extends State<BootstrapDialog> {
                         iconColor: theme.colorScheme.onPrimary,
                         backgroundColor: theme.colorScheme.primary,
                       ),
-                      icon: _recoveryKeyInputLoading
-                          ? const CircularProgressIndicator.adaptive()
-                          : const Icon(Icons.lock_open_outlined),
+                      icon:
+                          _recoveryKeyInputLoading
+                              ? const CircularProgressIndicator.adaptive()
+                              : const Icon(Icons.lock_open_outlined),
                       label: Text(L10n.of(context).unlockOldMessages),
-                      onPressed: _recoveryKeyInputLoading
-                          ? null
-                          : () async {
-                              setState(() {
-                                _recoveryKeyInputError = null;
-                                _recoveryKeyInputLoading = true;
-                              });
-                              try {
-                                final key = _recoveryKeyTextEditingController
-                                    .text
-                                    .trim();
-                                if (key.isEmpty) return;
-                                await bootstrap.newSsssKey!.unlock(
-                                  keyOrPassphrase: key,
-                                );
-                                await bootstrap.openExistingSsss();
-                                Logs().d('SSSS unlocked');
-                                if (bootstrap.encryption.crossSigning.enabled) {
-                                  Logs().v(
-                                    'Cross signing is already enabled. Try to self-sign',
+                      onPressed:
+                          _recoveryKeyInputLoading
+                              ? null
+                              : () async {
+                                setState(() {
+                                  _recoveryKeyInputError = null;
+                                  _recoveryKeyInputLoading = true;
+                                });
+                                try {
+                                  final key =
+                                      _recoveryKeyTextEditingController.text
+                                          .trim();
+                                  if (key.isEmpty) return;
+                                  await bootstrap.newSsssKey!.unlock(
+                                    keyOrPassphrase: key,
                                   );
-                                  try {
-                                    await bootstrap
-                                        .client.encryption!.crossSigning
-                                        .selfSign(recoveryKey: key);
-                                    Logs().d('Successful selfsigned');
-                                  } catch (e, s) {
-                                    Logs().e(
-                                      'Unable to self sign with recovery key after successfully open existing SSSS',
-                                      e,
-                                      s,
+                                  await bootstrap.openExistingSsss();
+                                  Logs().d('SSSS unlocked');
+                                  if (bootstrap
+                                      .encryption
+                                      .crossSigning
+                                      .enabled) {
+                                    Logs().v(
+                                      'Cross signing is already enabled. Try to self-sign',
                                     );
+                                    try {
+                                      await bootstrap
+                                          .client
+                                          .encryption!
+                                          .crossSigning
+                                          .selfSign(recoveryKey: key);
+                                      Logs().d('Successful selfsigned');
+                                    } catch (e, s) {
+                                      Logs().e(
+                                        'Unable to self sign with recovery key after successfully open existing SSSS',
+                                        e,
+                                        s,
+                                      );
+                                    }
                                   }
+                                } on InvalidPassphraseException catch (e) {
+                                  setState(
+                                    () =>
+                                        _recoveryKeyInputError = e
+                                            .toLocalizedString(context),
+                                  );
+                                } on FormatException catch (_) {
+                                  setState(
+                                    () =>
+                                        _recoveryKeyInputError =
+                                            L10n.of(context).wrongRecoveryKey,
+                                  );
+                                } catch (e, s) {
+                                  ErrorReporter(
+                                    context,
+                                    'Unable to open SSSS with recovery key',
+                                  ).onErrorCallback(e, s);
+                                  setState(
+                                    () =>
+                                        _recoveryKeyInputError = e
+                                            .toLocalizedString(context),
+                                  );
+                                } finally {
+                                  setState(
+                                    () => _recoveryKeyInputLoading = false,
+                                  );
                                 }
-                              } on InvalidPassphraseException catch (e) {
-                                setState(
-                                  () => _recoveryKeyInputError =
-                                      e.toLocalizedString(context),
-                                );
-                              } on FormatException catch (_) {
-                                setState(
-                                  () => _recoveryKeyInputError =
-                                      L10n.of(context).wrongRecoveryKey,
-                                );
-                              } catch (e, s) {
-                                ErrorReporter(
-                                  context,
-                                  'Unable to open SSSS with recovery key',
-                                ).onErrorCallback(e, s);
-                                setState(
-                                  () => _recoveryKeyInputError =
-                                      e.toLocalizedString(context),
-                                );
-                              } finally {
-                                setState(
-                                  () => _recoveryKeyInputLoading = false,
-                                );
-                              }
-                            },
+                              },
                     ),
                     const SizedBox(height: 16),
                     Row(
@@ -357,33 +363,41 @@ class BootstrapDialogState extends State<BootstrapDialog> {
                     ElevatedButton.icon(
                       icon: const Icon(Icons.cast_connected_outlined),
                       label: Text(L10n.of(context).transferFromAnotherDevice),
-                      onPressed: _recoveryKeyInputLoading
-                          ? null
-                          : () async {
-                              final consent = await showOkCancelAlertDialog(
-                                context: context,
-                                title: L10n.of(context).verifyOtherDevice,
-                                message: L10n.of(context)
-                                    .verifyOtherDeviceDescription,
-                                okLabel: L10n.of(context).ok,
-                                cancelLabel: L10n.of(context).cancel,
-                              );
-                              if (consent != OkCancelResult.ok) return;
-                              final req = await showFutureLoadingDialog(
-                                context: context,
-                                delay: false,
-                                future: () async {
-                                  await widget.client.updateUserDeviceKeys();
-                                  return widget.client
-                                      .userDeviceKeys[widget.client.userID!]!
-                                      .startVerification();
-                                },
-                              );
-                              if (req.error != null) return;
-                              await KeyVerificationDialog(request: req.result!)
-                                  .show(context);
-                              Navigator.of(context, rootNavigator: false).pop();
-                            },
+                      onPressed:
+                          _recoveryKeyInputLoading
+                              ? null
+                              : () async {
+                                final consent = await showOkCancelAlertDialog(
+                                  context: context,
+                                  title: L10n.of(context).verifyOtherDevice,
+                                  message:
+                                      L10n.of(
+                                        context,
+                                      ).verifyOtherDeviceDescription,
+                                  okLabel: L10n.of(context).ok,
+                                  cancelLabel: L10n.of(context).cancel,
+                                );
+                                if (consent != OkCancelResult.ok) return;
+                                final req = await showFutureLoadingDialog(
+                                  context: context,
+                                  delay: false,
+                                  future: () async {
+                                    await widget.client.updateUserDeviceKeys();
+                                    return widget
+                                        .client
+                                        .userDeviceKeys[widget.client.userID!]!
+                                        .startVerification();
+                                  },
+                                );
+                                if (req.error != null) return;
+                                await KeyVerificationDialog(
+                                  request: req.result!,
+                                ).show(context);
+                                Navigator.of(
+                                  context,
+                                  rootNavigator: false,
+                                ).pop();
+                              },
                     ),
                     const SizedBox(height: 16),
                     ElevatedButton.icon(
@@ -394,22 +408,23 @@ class BootstrapDialogState extends State<BootstrapDialog> {
                       ),
                       icon: const Icon(Icons.delete_outlined),
                       label: Text(L10n.of(context).recoveryKeyLost),
-                      onPressed: _recoveryKeyInputLoading
-                          ? null
-                          : () async {
-                              if (OkCancelResult.ok ==
-                                  await showOkCancelAlertDialog(
-                                    useRootNavigator: false,
-                                    context: context,
-                                    title: L10n.of(context).recoveryKeyLost,
-                                    message: L10n.of(context).wipeChatBackup,
-                                    okLabel: L10n.of(context).ok,
-                                    cancelLabel: L10n.of(context).cancel,
-                                    isDestructive: true,
-                                  )) {
-                                setState(() => _createBootstrap(true));
-                              }
-                            },
+                      onPressed:
+                          _recoveryKeyInputLoading
+                              ? null
+                              : () async {
+                                if (OkCancelResult.ok ==
+                                    await showOkCancelAlertDialog(
+                                      useRootNavigator: false,
+                                      context: context,
+                                      title: L10n.of(context).recoveryKeyLost,
+                                      message: L10n.of(context).wipeChatBackup,
+                                      okLabel: L10n.of(context).ok,
+                                      cancelLabel: L10n.of(context).cancel,
+                                      isDestructive: true,
+                                    )) {
+                                  setState(() => _createBootstrap(true));
+                                }
+                              },
                     ),
                   ],
                 ),
@@ -446,8 +461,11 @@ class BootstrapDialogState extends State<BootstrapDialog> {
           body = const Icon(Icons.error_outline, color: Colors.red, size: 80);
           buttons.add(
             ElevatedButton(
-              onPressed: () =>
-                  Navigator.of(context, rootNavigator: false).pop<bool>(false),
+              onPressed:
+                  () => Navigator.of(
+                    context,
+                    rootNavigator: false,
+                  ).pop<bool>(false),
               child: Text(L10n.of(context).close),
             ),
           );
@@ -472,8 +490,11 @@ class BootstrapDialogState extends State<BootstrapDialog> {
           );
           buttons.add(
             ElevatedButton(
-              onPressed: () =>
-                  Navigator.of(context, rootNavigator: false).pop<bool>(false),
+              onPressed:
+                  () => Navigator.of(
+                    context,
+                    rootNavigator: false,
+                  ).pop<bool>(false),
               child: Text(L10n.of(context).close),
             ),
           );
@@ -485,8 +506,9 @@ class BootstrapDialogState extends State<BootstrapDialog> {
       appBar: AppBar(
         leading: Center(
           child: CloseButton(
-            onPressed: () =>
-                Navigator.of(context, rootNavigator: false).pop<bool>(true),
+            onPressed:
+                () =>
+                    Navigator.of(context, rootNavigator: false).pop<bool>(true),
           ),
         ),
         title: Text(titleText ?? L10n.of(context).loadingPleaseWait),
@@ -497,11 +519,7 @@ class BootstrapDialogState extends State<BootstrapDialog> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              body,
-              const SizedBox(height: 8),
-              ...buttons,
-            ],
+            children: [body, const SizedBox(height: 8), ...buttons],
           ),
         ),
       ),

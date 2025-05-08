@@ -51,17 +51,20 @@ class LoginController extends State<Login> {
     // TODO: implement initState
     super.initState();
     loadingSignIn = true;
-    pangeaController.checkHomeServerAction().then((value) {
-      setState(() {
-        loadingSignIn = false;
-      });
-    }).catchError((e) {
-      final String err = e.toString();
-      setState(() {
-        loadingSignIn = false;
-        passwordError = err.toLocalizedString(context);
-      });
-    });
+    pangeaController
+        .checkHomeServerAction()
+        .then((value) {
+          setState(() {
+            loadingSignIn = false;
+          });
+        })
+        .catchError((e) {
+          final String err = e.toString();
+          setState(() {
+            loadingSignIn = false;
+            passwordError = err.toLocalizedString(context);
+          });
+        });
 
     usernameController.addListener(() => setState(() {}));
     passwordController.addListener(() => setState(() {}));
@@ -194,8 +197,9 @@ class LoginController extends State<Login> {
           final dialogResult = await showOkCancelAlertDialog(
             context: context,
             useRootNavigator: false,
-            title: L10n.of(context)
-                .noMatrixServer(newDomain.toString(), oldHomeserver.toString()),
+            title: L10n.of(
+              context,
+            ).noMatrixServer(newDomain.toString(), oldHomeserver.toString()),
             okLabel: L10n.of(context).ok,
             cancelLabel: L10n.of(context).cancel,
           );
@@ -238,12 +242,14 @@ class LoginController extends State<Login> {
     final clientSecret = DateTime.now().millisecondsSinceEpoch.toString();
     final response = await showFutureLoadingDialog(
       context: context,
-      future: () =>
-          Matrix.of(context).getLoginClient().requestTokenToResetPasswordEmail(
-                clientSecret,
-                input,
-                sendAttempt++,
-              ),
+      future:
+          () => Matrix.of(
+            context,
+          ).getLoginClient().requestTokenToResetPasswordEmail(
+            clientSecret,
+            input,
+            sendAttempt++,
+          ),
     );
     if (response.error != null) return;
     final password = await showTextInputDialog(
@@ -273,17 +279,19 @@ class LoginController extends State<Login> {
     final data = <String, dynamic>{
       'new_password': password,
       'logout_devices': false,
-      "auth": AuthenticationThreePidCreds(
-        type: AuthenticationTypes.emailIdentity,
-        threepidCreds: ThreepidCreds(
-          sid: response.result!.sid,
-          clientSecret: clientSecret,
-        ),
-      ).toJson(),
+      "auth":
+          AuthenticationThreePidCreds(
+            type: AuthenticationTypes.emailIdentity,
+            threepidCreds: ThreepidCreds(
+              sid: response.result!.sid,
+              clientSecret: clientSecret,
+            ),
+          ).toJson(),
     };
     final success = await showFutureLoadingDialog(
       context: context,
-      future: () => Matrix.of(context).getLoginClient().request(
+      future:
+          () => Matrix.of(context).getLoginClient().request(
             RequestType.POST,
             '/client/v3/account/password',
             data: data,
@@ -311,9 +319,10 @@ class LoginController extends State<Login> {
 // #Pangea
 // extension on String {
 extension LoginExtension on String {
-// Pangea#
-  static final RegExp _phoneRegex =
-      RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$');
+  // Pangea#
+  static final RegExp _phoneRegex = RegExp(
+    r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$',
+  );
   static final RegExp _emailRegex = RegExp(r'(.+)@(.+)\.(.+)');
 
   bool get isEmail => _emailRegex.hasMatch(this);

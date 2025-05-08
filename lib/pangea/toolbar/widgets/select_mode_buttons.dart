@@ -124,8 +124,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   Future<void> _updateMode(SelectMode mode) async {
     _clear();
     setState(
-      () => _selectedMode =
-          _selectedMode == mode && mode != SelectMode.audio ? null : mode,
+      () =>
+          _selectedMode =
+              _selectedMode == mode && mode != SelectMode.audio ? null : mode,
     );
 
     if (_selectedMode == SelectMode.audio) {
@@ -144,10 +145,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     if (_selectedMode == SelectMode.translate) {
       await _loadTranslation();
       if (_repEvent == null) return;
-      widget.overlayController.setShowTranslation(
-        true,
-        _repEvent!.text,
-      );
+      widget.overlayController.setShowTranslation(true, _repEvent!.text);
     }
   }
 
@@ -165,9 +163,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       if (localEvent != null) {
         _audioBytes = await localEvent.getPangeaAudioFile();
       } else {
-        _audioBytes = await messageEvent!.getMatrixAudioFile(
-          langCode,
-        );
+        _audioBytes = await messageEvent!.getMatrixAudioFile(langCode);
       }
 
       if (!kIsWeb) {
@@ -215,10 +211,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         await _audioPlayer.setFilePath(_audioFile!.path);
       } else {
         await _audioPlayer.setAudioSource(
-          BytesAudioSource(
-            _audioBytes!.bytes,
-            _audioBytes!.mimeType,
-          ),
+          BytesAudioSource(_audioBytes!.bytes, _audioBytes!.mimeType),
         );
       }
       _audioPlayer.play();
@@ -228,9 +221,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         e: e,
         s: s,
         m: 'something wrong playing message audio',
-        data: {
-          'event': messageEvent?.event.toJson(),
-        },
+        data: {'event': messageEvent?.event.toJson()},
       );
     }
   }
@@ -255,10 +246,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     try {
       await _fetchRepresentation();
     } catch (err) {
-      ErrorHandler.logError(
-        e: err,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, data: {});
     }
 
     if (mounted) {
@@ -338,9 +326,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                 color: Theme.of(context).colorScheme.primaryContainer,
                 onPressed: () => _updateMode(mode),
                 playSound: true,
-                colorFactor: Theme.of(context).brightness == Brightness.light
-                    ? 0.55
-                    : 0.3,
+                colorFactor:
+                    Theme.of(context).brightness == Brightness.light
+                        ? 0.55
+                        : 0.3,
                 child: Container(
                   height: buttonSize,
                   width: buttonSize,

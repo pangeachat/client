@@ -49,9 +49,10 @@ class FullWidthButtonState extends State<FullWidthButton> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 height: 40,
                 decoration: BoxDecoration(
-                  color: widget.enabled
-                      ? Theme.of(context).colorScheme.primary
-                      : Theme.of(context).disabledColor,
+                  color:
+                      widget.enabled
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).disabledColor,
                   borderRadius: BorderRadius.circular(36),
                 ),
                 child: Row(
@@ -59,27 +60,25 @@ class FullWidthButtonState extends State<FullWidthButton> {
                   children: [
                     widget.loading
                         ? const Expanded(
-                            child: SizedBox(
-                              height: 18,
-                              child: Center(child: LinearProgressIndicator()),
-                            ),
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              if (widget.icon != null) widget.icon!,
-                              if (widget.icon != null)
-                                const SizedBox(width: 10),
-                              Text(
-                                widget.title,
-                                style: TextStyle(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ],
+                          child: SizedBox(
+                            height: 18,
+                            child: Center(child: LinearProgressIndicator()),
                           ),
+                        )
+                        : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if (widget.icon != null) widget.icon!,
+                            if (widget.icon != null) const SizedBox(width: 10),
+                            Text(
+                              widget.title,
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.onPrimary,
+                                fontSize: 16,
+                              ),
+                            ),
+                          ],
+                        ),
                   ],
                 ),
               ),
@@ -88,21 +87,22 @@ class FullWidthButtonState extends State<FullWidthButton> {
         ),
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: widget.error == null
-              ? const SizedBox.shrink()
-              : Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 30,
-                    vertical: 5,
-                  ),
-                  child: Text(
-                    widget.error!,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.error,
-                      fontSize: 12,
+          child:
+              widget.error == null
+                  ? const SizedBox.shrink()
+                  : Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 30,
+                      vertical: 5,
+                    ),
+                    child: Text(
+                      widget.error!,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.error,
+                        fontSize: 12,
+                      ),
                     ),
                   ),
-                ),
         ),
       ],
     );
@@ -151,9 +151,7 @@ class FullWidthTextField extends StatelessWidget {
         decoration: InputDecoration(
           labelText: labelText,
           hintText: hintText,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(36.0),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(36.0)),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 30,
             vertical: 8.0,

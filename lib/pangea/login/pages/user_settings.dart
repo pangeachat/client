@@ -64,7 +64,8 @@ class UserSettingsState extends State<UserSettingsPage> {
     super.initState();
     selectedTargetLanguage = _pangeaController.languageController.userL2;
     selectedAvatarPath = avatarPaths.first;
-    displayNameController.text = Matrix.of(context).client.userID?.localpart ??
+    displayNameController.text =
+        Matrix.of(context).client.userID?.localpart ??
         Matrix.of(context).client.userID ??
         "";
   }
@@ -127,27 +128,15 @@ class UserSettingsState extends State<UserSettingsPage> {
     try {
       MatrixFile? file;
       if (avatar != null && _selectedFilePath != null) {
-        file = MatrixFile(
-          bytes: avatar!,
-          name: _selectedFilePath!,
-        );
+        file = MatrixFile(bytes: avatar!, name: _selectedFilePath!);
       } else if (selectedAvatarPath != null) {
         final ByteData byteData = await rootBundle.load(selectedAvatarPath!);
         final Uint8List bytes = byteData.buffer.asUint8List();
-        file = MatrixFile(
-          bytes: bytes,
-          name: selectedAvatarPath!,
-        );
+        file = MatrixFile(bytes: bytes, name: selectedAvatarPath!);
       }
       if (file != null) await client.setAvatar(file);
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {
-          "avatar": avatar.toString(),
-        },
-      );
+      ErrorHandler.logError(e: err, s: s, data: {"avatar": avatar.toString()});
     }
   }
 
@@ -182,19 +171,16 @@ class UserSettingsState extends State<UserSettingsPage> {
         _setDisplayName(),
         _setAvatar(),
         _pangeaController.subscriptionController.reinitialize(),
-        _pangeaController.userController.updateProfile(
-          (profile) {
-            if (_systemLanguage != null) {
-              profile.userSettings.sourceLanguage = _systemLanguage!.langCode;
-            }
-            profile.userSettings.targetLanguage =
-                selectedTargetLanguage!.langCode;
-            profile.userSettings.cefrLevel = selectedCefrLevel;
-            profile.userSettings.createdAt = DateTime.now();
-            return profile;
-          },
-          waitForDataInSync: true,
-        ),
+        _pangeaController.userController.updateProfile((profile) {
+          if (_systemLanguage != null) {
+            profile.userSettings.sourceLanguage = _systemLanguage!.langCode;
+          }
+          profile.userSettings.targetLanguage =
+              selectedTargetLanguage!.langCode;
+          profile.userSettings.cefrLevel = selectedCefrLevel;
+          profile.userSettings.createdAt = DateTime.now();
+          return profile;
+        }, waitForDataInSync: true),
         _pangeaController.userController.updatePublicProfile(
           targetLanguage: selectedTargetLanguage,
           baseLanguage: _systemLanguage,

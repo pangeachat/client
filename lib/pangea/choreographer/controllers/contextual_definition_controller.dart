@@ -23,10 +23,9 @@ class ContextualDefinitionController {
 
   _ContextualDefinitionCacheItem? _getLocal(
     ContextualDefinitionRequestModel req,
-  ) =>
-      _definitions.firstWhereOrNull(
-        (e) => e.word == req.word && e.fullText == req.fullText,
-      );
+  ) => _definitions.firstWhereOrNull(
+    (e) => e.word == req.word && e.fullText == req.fullText,
+  );
 
   Future<ContextualDefinitionResponseModel?> get(
     ContextualDefinitionRequestModel req,
@@ -52,9 +51,9 @@ class ContextualDefinitionController {
     try {
       final ContextualDefinitionResponseModel res =
           await _ContextualDefinitionRepo.define(
-        _pangeaController.userController.accessToken,
-        request,
-      );
+            _pangeaController.userController.accessToken,
+            request,
+          );
       return res;
     } catch (err, stack) {
       debugPrint(
@@ -95,20 +94,13 @@ class _ContextualDefinitionRepo {
 
     final ContextualDefinitionResponseModel response =
         ContextualDefinitionResponseModel.fromJson(
-      jsonDecode(
-        utf8.decode(res.bodyBytes).toString(),
-      ),
-    );
+          jsonDecode(utf8.decode(res.bodyBytes).toString()),
+        );
 
     if (response.text.isEmpty) {
       ErrorHandler.logError(
-        e: Exception(
-          "empty text in contextual definition response",
-        ),
-        data: {
-          "request": request.toJson(),
-          "accessToken": accessToken,
-        },
+        e: Exception("empty text in contextual definition response"),
+        data: {"request": request.toJson(), "accessToken": accessToken},
       );
     }
 
@@ -132,12 +124,12 @@ class ContextualDefinitionRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.fullText: fullText,
-        ModelKey.word: word,
-        ModelKey.lang: feedbackLang,
-        ModelKey.fullTextLang: fullTextLang,
-        ModelKey.wordLang: wordLang,
-      };
+    ModelKey.fullText: fullText,
+    ModelKey.word: word,
+    ModelKey.lang: feedbackLang,
+    ModelKey.fullTextLang: fullTextLang,
+    ModelKey.wordLang: wordLang,
+  };
 }
 
 class ContextualDefinitionResponseModel {
@@ -147,6 +139,5 @@ class ContextualDefinitionResponseModel {
 
   factory ContextualDefinitionResponseModel.fromJson(
     Map<String, dynamic> json,
-  ) =>
-      ContextualDefinitionResponseModel(text: json["response"]);
+  ) => ContextualDefinitionResponseModel(text: json["response"]);
 }

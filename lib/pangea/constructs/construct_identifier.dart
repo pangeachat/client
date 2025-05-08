@@ -41,11 +41,7 @@ class ConstructIdentifier {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         e: Exception("Morph feature not found"),
-        data: {
-          "category": category,
-          "lemma": lemma,
-          "type": type,
-        },
+        data: {"category": category, "lemma": lemma, "type": type},
       );
     }
   }
@@ -90,11 +86,7 @@ class ConstructIdentifier {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'lemma': lemma,
-      'type': type.string,
-      'cat': category,
-    };
+    return {'lemma': lemma, 'type': type.string, 'cat': category};
   }
 
   // override operator == and hashCode
@@ -123,9 +115,7 @@ class ConstructIdentifier {
 
   ConstructUses get constructUses =>
       MatrixState.pangeaController.getAnalytics.constructListModel
-          .getConstructUses(
-        this,
-      ) ??
+          .getConstructUses(this) ??
       ConstructUses(
         lemma: lemma,
         constructType: ConstructTypeEnum.morph,
@@ -140,11 +130,11 @@ class ConstructIdentifier {
   UserSetLemmaInfo? get userLemmaInfo {
     switch (type) {
       case ConstructTypeEnum.vocab:
-        final dynamic lemmaInfoContent = MatrixState
-            .pangeaController.matrixState.client
-            .analyticsRoomLocal()
-            ?.getState(PangeaEventTypes.userSetLemmaInfo, string)
-            ?.content;
+        final dynamic lemmaInfoContent =
+            MatrixState.pangeaController.matrixState.client
+                .analyticsRoomLocal()
+                ?.getState(PangeaEventTypes.userSetLemmaInfo, string)
+                ?.content;
         if (lemmaInfoContent != null && lemmaInfoContent is Map) {
           try {
             return UserSetLemmaInfo.fromJson(
@@ -154,10 +144,7 @@ class ConstructIdentifier {
             debugger(when: kDebugMode);
             ErrorHandler.logError(
               e: e,
-              data: {
-                "construct": string,
-                "content": lemmaInfoContent,
-              },
+              data: {"construct": string, "content": lemmaInfoContent},
               s: s,
             );
             return null;
@@ -201,29 +188,30 @@ class ConstructIdentifier {
       await syncFuture;
     } catch (err, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        data: newLemmaInfo.toJson(),
-        s: s,
-      );
+      ErrorHandler.logError(e: err, data: newLemmaInfo.toJson(), s: s);
     }
   }
 
   /// [lemmmaLang] if not set, assumed to be userL2
-  Future<LemmaInfoResponse> getLemmaInfo([
-    String? lemmaLang,
-    String? userl1,
-  ]) =>
+  Future<LemmaInfoResponse> getLemmaInfo([String? lemmaLang, String? userl1]) =>
       LemmaInfoRepo.get(
         LemmaInfoRequest(
           partOfSpeech: category,
-          lemmaLang: lemmaLang ??
+          lemmaLang:
+              lemmaLang ??
               MatrixState
-                  .pangeaController.languageController.userL2?.langCodeShort ??
+                  .pangeaController
+                  .languageController
+                  .userL2
+                  ?.langCodeShort ??
               LanguageKeys.defaultLanguage,
-          userL1: userl1 ??
+          userL1:
+              userl1 ??
               MatrixState
-                  .pangeaController.languageController.userL1?.langCodeShort ??
+                  .pangeaController
+                  .languageController
+                  .userL1
+                  ?.langCodeShort ??
               LanguageKeys.defaultLanguage,
           lemma: lemma,
         ),
@@ -252,17 +240,15 @@ class ConstructIdentifier {
             e: Exception(
               "form is null in isActivityProbablyLevelAppropriate for morphId",
             ),
-            data: {
-              "activity": a,
-              "construct": toJson(),
-            },
+            data: {"activity": a, "construct": toJson()},
           );
           return false;
         }
-        final uses = constructUses.uses
-            .where((u) => u.form == form)
-            .map((u) => u.timeStamp)
-            .toList();
+        final uses =
+            constructUses.uses
+                .where((u) => u.form == form)
+                .map((u) => u.timeStamp)
+                .toList();
 
         if (uses.isEmpty) return true;
 
@@ -271,7 +257,8 @@ class ConstructIdentifier {
         return DateTime.now().difference(lastUsed).inDays >
             1 * constructUses.points;
       case ActivityTypeEnum.wordFocusListening:
-        final pos = PartOfSpeechEnumExtensions.fromString(lemma) ??
+        final pos =
+            PartOfSpeechEnumExtensions.fromString(lemma) ??
             PartOfSpeechEnumExtensions.fromString(category);
 
         if (pos == null) {
@@ -286,10 +273,7 @@ class ConstructIdentifier {
           e: Exception(
             "Activity type $a not handled in ConstructIdentifier.isActivityProbablyLevelAppropriate",
           ),
-          data: {
-            "activity": a,
-            "construct": toJson(),
-          },
+          data: {"activity": a, "construct": toJson()},
         );
         return false;
     }
@@ -302,17 +286,20 @@ class ConstructIdentifier {
   /// we want users to be able to do an emoji activity as a ramp up to
   /// a word meaning activity
   int get daysSinceLastEligibleUseForMeaning {
-    final times = constructUses.uses
-        .where(
-          (u) =>
-              u.useType.sentByUser ||
-              ActivityTypeEnum.wordMeaning.associatedUseTypes
-                  .contains(u.useType) ||
-              ActivityTypeEnum.messageMeaning.associatedUseTypes
-                  .contains(u.useType),
-        )
-        .map((u) => u.timeStamp)
-        .toList();
+    final times =
+        constructUses.uses
+            .where(
+              (u) =>
+                  u.useType.sentByUser ||
+                  ActivityTypeEnum.wordMeaning.associatedUseTypes.contains(
+                    u.useType,
+                  ) ||
+                  ActivityTypeEnum.messageMeaning.associatedUseTypes.contains(
+                    u.useType,
+                  ),
+            )
+            .map((u) => u.timeStamp)
+            .toList();
 
     if (times.isEmpty) return 1000;
 

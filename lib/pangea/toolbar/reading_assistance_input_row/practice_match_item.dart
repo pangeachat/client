@@ -73,11 +73,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
         }
       } catch (e, s) {
         debugger(when: kDebugMode);
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {"text": widget.audioContent},
-        );
+        ErrorHandler.logError(e: e, s: s, data: {"text": widget.audioContent});
       } finally {
         if (mounted) {
           setState(() => _isPlaying = false);
@@ -129,15 +125,13 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
             decoration: BoxDecoration(
               color: color(context).withAlpha((0.4 * 255).toInt()),
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-              border: isSelected
-                  ? Border.all(
-                      color: color(context).withAlpha(255),
-                      width: 2,
-                    )
-                  : Border.all(
-                      color: Colors.transparent,
-                      width: 2,
-                    ),
+              border:
+                  isSelected
+                      ? Border.all(
+                        color: color(context).withAlpha(255),
+                        width: 2,
+                      )
+                      : Border.all(color: Colors.transparent, width: 2),
             ),
             child: widget.content,
           ),
@@ -147,10 +141,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
     return LongPressDraggable<PracticeChoice>(
       data: widget.constructForm,
-      feedback: Material(
-        type: MaterialType.transparency,
-        child: content,
-      ),
+      feedback: Material(type: MaterialType.transparency, child: content),
       delay: const Duration(milliseconds: 50),
       onDragStarted: onTap,
       child: InkWell(

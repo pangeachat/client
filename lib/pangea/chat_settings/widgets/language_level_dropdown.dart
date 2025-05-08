@@ -29,59 +29,57 @@ class LanguageLevelDropdown extends StatelessWidget {
     final l10n = L10n.of(context);
 
     return DropdownButtonFormField2<LanguageLevelTypeEnum>(
-      customButton: initialLevel != null &&
-              LanguageLevelTypeEnum.values.contains(initialLevel)
-          ? CustomDropdownTextButton(text: initialLevel!.title(context))
-          : null,
+      customButton:
+          initialLevel != null &&
+                  LanguageLevelTypeEnum.values.contains(initialLevel)
+              ? CustomDropdownTextButton(text: initialLevel!.title(context))
+              : null,
       menuItemStyleData: MenuItemStyleData(
-        padding: const EdgeInsets.symmetric(
-          vertical: 8.0,
-          horizontal: 16.0,
-        ),
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
         height: FluffyThemes.isColumnMode(context) ? 100.0 : 150.0,
       ),
-      decoration: InputDecoration(
-        labelText: l10n.cefrLevelLabel,
-      ),
+      decoration: InputDecoration(labelText: l10n.cefrLevelLabel),
       isExpanded: true,
       dropdownStyleData: DropdownStyleData(
         maxHeight: kIsWeb ? 500 : null,
         decoration: BoxDecoration(
-          color: backgroundColor ??
+          color:
+              backgroundColor ??
               Theme.of(context).colorScheme.surfaceContainerHigh,
           borderRadius: BorderRadius.circular(14.0),
         ),
       ),
       items:
           LanguageLevelTypeEnum.values.map((LanguageLevelTypeEnum levelOption) {
-        return DropdownMenuItem(
-          value: levelOption,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(levelOption.title(context)),
-              Flexible(
-                child: Text(
-                  levelOption.description(context),
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
-                    fontSize: 14,
+            return DropdownMenuItem(
+              value: levelOption,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(levelOption.title(context)),
+                  Flexible(
+                    child: Text(
+                      levelOption.description(context),
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        fontSize: 14,
+                      ),
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
-                  maxLines: 5,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                ],
               ),
-            ],
-          ),
-        );
-      }).toList(),
-      onChanged: enabled
-          ? (value) {
-              if (value != null) onChanged?.call(value);
-            }
-          : null,
+            );
+          }).toList(),
+      onChanged:
+          enabled
+              ? (value) {
+                if (value != null) onChanged?.call(value);
+              }
+              : null,
       value: initialLevel,
       validator: validator,
     );

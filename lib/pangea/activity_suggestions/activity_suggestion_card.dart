@@ -40,17 +40,15 @@ class ActivitySuggestionCard extends StatelessWidget {
       depressed: selected || onPressed == null,
       onPressed: onPressed,
       borderRadius: BorderRadius.circular(24.0),
-      color: theme.brightness == Brightness.dark
-          ? theme.colorScheme.primary
-          : theme.colorScheme.surfaceContainerHighest,
+      color:
+          theme.brightness == Brightness.dark
+              ? theme.colorScheme.primary
+              : theme.colorScheme.surfaceContainerHighest,
       colorFactor: theme.brightness == Brightness.dark ? 0.6 : 0.2,
       child: Container(
         decoration: BoxDecoration(
-          border: selected
-              ? Border.all(
-                  color: theme.colorScheme.primary,
-                )
-              : null,
+          border:
+              selected ? Border.all(color: theme.colorScheme.primary) : null,
           borderRadius: BorderRadius.circular(24.0),
         ),
         height: height,
@@ -76,26 +74,28 @@ class ActivitySuggestionCard extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24.0),
-                    child: image != null
-                        ? Image.memory(image!, fit: BoxFit.cover)
-                        : activity.imageURL != null
+                    child:
+                        image != null
+                            ? Image.memory(image!, fit: BoxFit.cover)
+                            : activity.imageURL != null
                             ? activity.imageURL!.startsWith("mxc")
                                 ? MxcImage(
-                                    uri: Uri.parse(activity.imageURL!),
-                                    width: width,
-                                    height: width,
-                                    cacheKey: activity.bookmarkId,
-                                    fit: BoxFit.cover,
-                                  )
+                                  uri: Uri.parse(activity.imageURL!),
+                                  width: width,
+                                  height: width,
+                                  cacheKey: activity.bookmarkId,
+                                  fit: BoxFit.cover,
+                                )
                                 : CachedNetworkImage(
-                                    imageUrl: activity.imageURL!,
-                                    placeholder: (context, url) => const Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                    errorWidget: (context, url, error) =>
-                                        const SizedBox(),
-                                    fit: BoxFit.cover,
-                                  )
+                                  imageUrl: activity.imageURL!,
+                                  placeholder:
+                                      (context, url) => const Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                  errorWidget:
+                                      (context, url, error) => const SizedBox(),
+                                  fit: BoxFit.cover,
+                                )
                             : null,
                   ),
                 ),
@@ -138,10 +138,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 spacing: 8.0,
                                 children: [
-                                  const Icon(
-                                    Icons.group_outlined,
-                                    size: 12.0,
-                                  ),
+                                  const Icon(Icons.group_outlined, size: 12.0),
                                   Text(
                                     "${activity.req.numberOfParticipants}",
                                     style: theme.textTheme.labelSmall,
@@ -183,21 +180,21 @@ class ActivitySuggestionCard extends StatelessWidget {
                   isBookmarked ? Icons.bookmark : Icons.bookmark_border,
                   color: Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
-                onPressed: onPressed != null
-                    ? () async {
-                        await (isBookmarked
-                            ? BookmarkedActivitiesRepo.remove(
+                onPressed:
+                    onPressed != null
+                        ? () async {
+                          await (isBookmarked
+                              ? BookmarkedActivitiesRepo.remove(
                                 activity.bookmarkId,
                               )
-                            : BookmarkedActivitiesRepo.save(activity));
-                        onChange();
-                      }
-                    : null,
+                              : BookmarkedActivitiesRepo.save(activity));
+                          onChange();
+                        }
+                        : null,
                 style: IconButton.styleFrom(
-                  backgroundColor: Theme.of(context)
-                      .colorScheme
-                      .primaryContainer
-                      .withAlpha(180),
+                  backgroundColor: Theme.of(
+                    context,
+                  ).colorScheme.primaryContainer.withAlpha(180),
                 ),
               ),
             ),

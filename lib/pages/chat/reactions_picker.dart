@@ -17,7 +17,8 @@ class ReactionsPicker extends StatelessWidget {
     final theme = Theme.of(context);
 
     if (controller.showEmojiPicker) return const SizedBox.shrink();
-    final display = controller.editEvent == null &&
+    final display =
+        controller.editEvent == null &&
         controller.replyEvent == null &&
         controller.room.canSendDefaultMessages &&
         controller.selectedEvents.isNotEmpty;
@@ -68,26 +69,27 @@ class ReactionsPicker extends StatelessWidget {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: emojis.length,
-                      itemBuilder: (c, i) => InkWell(
-                        borderRadius: BorderRadius.circular(8),
-                        onTap: () => controller.sendEmojiAction(emojis[i]),
-                        child: Container(
-                          // #Pangea
-                          // width: 56,
-                          // height: 56,
-                          width: AppConfig.reactionsPickerHeight,
-                          height: AppConfig.reactionsPickerHeight,
-                          // Pangea#
-                          alignment: Alignment.center,
-                          child: Text(
-                            emojis[i],
-                            // #Pangea
-                            // style: const TextStyle(fontSize: 30),
-                            style: const TextStyle(fontSize: 20),
-                            // Pangea#
+                      itemBuilder:
+                          (c, i) => InkWell(
+                            borderRadius: BorderRadius.circular(8),
+                            onTap: () => controller.sendEmojiAction(emojis[i]),
+                            child: Container(
+                              // #Pangea
+                              // width: 56,
+                              // height: 56,
+                              width: AppConfig.reactionsPickerHeight,
+                              height: AppConfig.reactionsPickerHeight,
+                              // Pangea#
+                              alignment: Alignment.center,
+                              child: Text(
+                                emojis[i],
+                                // #Pangea
+                                // style: const TextStyle(fontSize: 30),
+                                style: const TextStyle(fontSize: 20),
+                                // Pangea#
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
                     ),
                   ),
                 ),
@@ -106,8 +108,9 @@ class ReactionsPicker extends StatelessWidget {
                     ),
                     child: const Icon(Icons.add_outlined),
                   ),
-                  onTap: () =>
-                      controller.pickEmojiReactionAction(allReactionEvents),
+                  onTap:
+                      () =>
+                          controller.pickEmojiReactionAction(allReactionEvents),
                 ),
               ],
             );

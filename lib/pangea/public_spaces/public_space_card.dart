@@ -24,22 +24,23 @@ class PublicSpaceCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return PressableButton(
-      onPressed: () => showAdaptiveDialog(
-        context: context,
-        builder: (c) => PublicRoomDialog(
-          roomAlias: space.canonicalAlias ?? space.roomId,
-          chunk: space,
-        ),
-      ),
+      onPressed:
+          () => showAdaptiveDialog(
+            context: context,
+            builder:
+                (c) => PublicRoomDialog(
+                  roomAlias: space.canonicalAlias ?? space.roomId,
+                  chunk: space,
+                ),
+          ),
       borderRadius: BorderRadius.circular(24.0),
-      color: theme.brightness == Brightness.dark
-          ? theme.colorScheme.primary
-          : theme.colorScheme.surfaceContainerHighest,
+      color:
+          theme.brightness == Brightness.dark
+              ? theme.colorScheme.primary
+              : theme.colorScheme.surfaceContainerHighest,
       colorFactor: theme.brightness == Brightness.dark ? 0.6 : 0.2,
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(24.0),
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(24.0)),
         height: height,
         width: width,
         child: Stack(
@@ -61,14 +62,15 @@ class PublicSpaceCard extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24.0),
-                    child: space.avatarUrl != null
-                        ? MxcImage(
-                            uri: space.avatarUrl!,
-                            width: width,
-                            height: width,
-                            fit: BoxFit.cover,
-                          )
-                        : const SizedBox(),
+                    child:
+                        space.avatarUrl != null
+                            ? MxcImage(
+                              uri: space.avatarUrl!,
+                              width: width,
+                              height: width,
+                              fit: BoxFit.cover,
+                            )
+                            : const SizedBox(),
                   ),
                 ),
                 Expanded(
@@ -110,14 +112,11 @@ class PublicSpaceCard extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 spacing: 8.0,
                                 children: [
-                                  const Icon(
-                                    Icons.group_outlined,
-                                    size: 12.0,
-                                  ),
+                                  const Icon(Icons.group_outlined, size: 12.0),
                                   Text(
-                                    L10n.of(context).countParticipants(
-                                      space.numJoinedMembers,
-                                    ),
+                                    L10n.of(
+                                      context,
+                                    ).countParticipants(space.numJoinedMembers),
                                     style: theme.textTheme.labelSmall,
                                   ),
                                 ],

@@ -10,10 +10,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class MessageUnsubscribedCard extends StatelessWidget {
   final MessageOverlayController controller;
 
-  const MessageUnsubscribedCard({
-    super.key,
-    required this.controller,
-  });
+  const MessageUnsubscribedCard({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +18,7 @@ class MessageUnsubscribedCard extends StatelessWidget {
         MatrixState.pangeaController.userController.inTrialWindow();
 
     return Container(
-      constraints: const BoxConstraints(
-        maxWidth: AppConfig.toolbarMinWidth,
-      ),
+      constraints: const BoxConstraints(maxWidth: AppConfig.toolbarMinWidth),
       padding: const EdgeInsets.all(16),
       child: Column(
         children: [
@@ -57,8 +52,9 @@ class MessageUnsubscribedCard extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 controller.widget.chatController.clearSelectedEvents();
-                MatrixState.pangeaController.subscriptionController
-                    .showPaywall(context);
+                MatrixState.pangeaController.subscriptionController.showPaywall(
+                  context,
+                );
               },
               style: ButtonStyle(
                 backgroundColor: WidgetStateProperty.all<Color>(

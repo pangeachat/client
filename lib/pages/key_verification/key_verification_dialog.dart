@@ -15,17 +15,14 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class KeyVerificationDialog extends StatefulWidget {
   Future<void> show(BuildContext context) => showAdaptiveDialog(
-        context: context,
-        builder: (context) => this,
-        barrierDismissible: false,
-      );
+    context: context,
+    builder: (context) => this,
+    barrierDismissible: false,
+  );
 
   final KeyVerification request;
 
-  const KeyVerificationDialog({
-    super.key,
-    required this.request,
-  });
+  const KeyVerificationDialog({super.key, required this.request});
 
   @override
   KeyVerificationPageState createState() => KeyVerificationPageState();
@@ -57,8 +54,10 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
   void dispose() {
     widget.request.onUpdate =
         originalOnUpdate; // don't want to get updates anymore
-    if (![KeyVerificationState.error, KeyVerificationState.done]
-        .contains(widget.request.state)) {
+    if (![
+      KeyVerificationState.error,
+      KeyVerificationState.done,
+    ].contains(widget.request.state)) {
       widget.request.cancel('m.user');
     }
     super.dispose();
@@ -98,8 +97,9 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
     final theme = Theme.of(context);
 
     User? user;
-    final directChatId =
-        widget.request.client.getDirectChatFromUserId(widget.request.userId);
+    final directChatId = widget.request.client.getDirectChatFromUserId(
+      widget.request.userId,
+    );
     if (directChatId != null) {
       user = widget.request.client
           .getRoomById(directChatId)!
@@ -152,17 +152,13 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
         );
         buttons.add(
           AdaptiveDialogAction(
-            child: Text(
-              L10n.of(context).submit,
-            ),
+            child: Text(L10n.of(context).submit),
             onPressed: () => checkInput(textEditingController.text),
           ),
         );
         buttons.add(
           AdaptiveDialogAction(
-            child: Text(
-              L10n.of(context).skip,
-            ),
+            child: Text(L10n.of(context).skip),
             onPressed: () => widget.request.openSSSS(skip: true),
           ),
         );
@@ -179,16 +175,15 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
               size: Avatar.defaultSize * 2,
             ),
             const SizedBox(height: 16),
-            Text(
-              L10n.of(context).askVerificationRequest(displayName),
-            ),
+            Text(L10n.of(context).askVerificationRequest(displayName)),
           ],
         );
         buttons.add(
           AdaptiveDialogAction(
-            onPressed: () => widget.request
-                .rejectVerification()
-                .then((_) => Navigator.of(context, rootNavigator: false).pop()),
+            onPressed:
+                () => widget.request.rejectVerification().then(
+                  (_) => Navigator.of(context, rootNavigator: false).pop(),
+                ),
             child: Text(
               L10n.of(context).reject,
               style: TextStyle(color: theme.colorScheme.error),
@@ -211,10 +206,7 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
               Stack(
                 alignment: Alignment.center,
                 children: [
-                  Avatar(
-                    mxContent: user?.avatarUrl,
-                    name: displayName,
-                  ),
+                  Avatar(mxContent: user?.avatarUrl, name: displayName),
                   const SizedBox(
                     width: Avatar.defaultSize + 2,
                     height: Avatar.defaultSize + 2,
@@ -250,24 +242,24 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
             style: const TextStyle(fontSize: 16),
           );
           compareWidget = TextSpan(
-            children: widget.request.sasEmojis
-                .map((e) => WidgetSpan(child: _Emoji(e, sasEmoji)))
-                .toList(),
+            children:
+                widget.request.sasEmojis
+                    .map((e) => WidgetSpan(child: _Emoji(e, sasEmoji)))
+                    .toList(),
           );
         } else {
           title = Text(L10n.of(context).compareNumbersMatch);
           final numbers = widget.request.sasNumbers;
           final numbstr = '${numbers[0]}-${numbers[1]}-${numbers[2]}';
-          compareWidget =
-              TextSpan(text: numbstr, style: const TextStyle(fontSize: 40));
+          compareWidget = TextSpan(
+            text: numbstr,
+            style: const TextStyle(fontSize: 40),
+          );
         }
         body = Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text.rich(
-              compareWidget,
-              textAlign: TextAlign.center,
-            ),
+            Text.rich(compareWidget, textAlign: TextAlign.center),
           ],
         );
         buttons.add(
@@ -287,19 +279,17 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
         );
         break;
       case KeyVerificationState.waitingSas:
-        final acceptText = widget.request.sasTypes.contains('emoji')
-            ? L10n.of(context).waitingPartnerEmoji
-            : L10n.of(context).waitingPartnerNumbers;
+        final acceptText =
+            widget.request.sasTypes.contains('emoji')
+                ? L10n.of(context).waitingPartnerEmoji
+                : L10n.of(context).waitingPartnerNumbers;
         body = Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             const SizedBox(height: 16),
             const CircularProgressIndicator.adaptive(strokeWidth: 2),
             const SizedBox(height: 16),
-            Text(
-              acceptText,
-              textAlign: TextAlign.center,
-            ),
+            Text(acceptText, textAlign: TextAlign.center),
           ],
         );
         break;
@@ -315,9 +305,7 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
         );
         buttons.add(
           AdaptiveDialogAction(
-            child: Text(
-              L10n.of(context).close,
-            ),
+            child: Text(L10n.of(context).close),
             onPressed: () => Navigator.of(context, rootNavigator: false).pop(),
           ),
         );
@@ -339,9 +327,7 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
         );
         buttons.add(
           AdaptiveDialogAction(
-            child: Text(
-              L10n.of(context).close,
-            ),
+            child: Text(L10n.of(context).close),
             onPressed: () => Navigator.of(context, rootNavigator: false).pop(),
           ),
         );
@@ -353,9 +339,7 @@ class KeyVerificationPageState extends State<KeyVerificationDialog> {
       content: SizedBox(
         height: 256,
         width: 256,
-        child: ListView(
-          children: [body],
-        ),
+        child: ListView(children: [body]),
       ),
       actions: buttons,
     );

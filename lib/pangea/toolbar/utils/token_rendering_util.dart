@@ -27,16 +27,14 @@ class TokenRenderingUtil {
     return readingAssistanceMode == ReadingAssistanceMode.transitionMode;
   }
 
-  double? _fontSize(BuildContext context) => showCenterStyling
-      ? overlayController != null && overlayController!.maxWidth > 600
-          ? Theme.of(context).textTheme.titleLarge?.fontSize
-          : Theme.of(context).textTheme.bodyLarge?.fontSize
-      : null;
+  double? _fontSize(BuildContext context) =>
+      showCenterStyling
+          ? overlayController != null && overlayController!.maxWidth > 600
+              ? Theme.of(context).textTheme.titleLarge?.fontSize
+              : Theme.of(context).textTheme.bodyLarge?.fontSize
+          : null;
 
-  TextStyle style(
-    BuildContext context, {
-    Color? color,
-  }) =>
+  TextStyle style(BuildContext context, {Color? color}) =>
       existingStyle.copyWith(
         fontSize: _fontSize(context),
         decoration: TextDecoration.underline,
@@ -51,10 +49,7 @@ class TokenRenderingUtil {
     }
 
     final textPainter = TextPainter(
-      text: TextSpan(
-        text: text,
-        style: style(context),
-      ),
+      text: TextSpan(text: text, style: style(context)),
       maxLines: 1,
       textDirection: TextDirection.ltr,
     )..layout();

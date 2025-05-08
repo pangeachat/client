@@ -25,8 +25,9 @@ class SpanDataRepo {
       body: request.toJson(),
     );
 
-    final Map<String, dynamic> json =
-        jsonDecode(utf8.decode(res.bodyBytes).toString());
+    final Map<String, dynamic> json = jsonDecode(
+      utf8.decode(res.bodyBytes).toString(),
+    );
 
     return SpanDetailsRepoReqAndRes.fromJson(json);
   }
@@ -58,12 +59,12 @@ class SpanDetailsRepoReqAndRes {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.userL1: userL1,
-        ModelKey.userL2: userL2,
-        "enable_it": enableIT,
-        "enable_igc": enableIGC,
-        'span': span.toJson(),
-      };
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
+    "enable_it": enableIT,
+    "enable_igc": enableIGC,
+    'span': span.toJson(),
+  };
 
   factory SpanDetailsRepoReqAndRes.fromJson(Map<String, dynamic> json) =>
       SpanDetailsRepoReqAndRes(

@@ -68,24 +68,27 @@ class MessageMorphInputBarContentState
     super.didUpdateWidget(oldWidget);
   }
 
-  TextStyle? textStyle(BuildContext context) => overlay.maxWidth > 600
-      ? Theme.of(context).textTheme.bodyLarge?.copyWith(
-            fontWeight: FontWeight.bold,
-          )
-      : Theme.of(context).textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-          );
+  TextStyle? textStyle(BuildContext context) =>
+      overlay.maxWidth > 600
+          ? Theme.of(
+            context,
+          ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)
+          : Theme.of(
+            context,
+          ).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
-    final iconSize = overlay.maxWidth > 600
-        ? 28.0
-        : overlay.maxWidth > 600
+    final iconSize =
+        overlay.maxWidth > 600
+            ? 28.0
+            : overlay.maxWidth > 600
             ? 24.0
             : 16.0;
-    final spacing = overlay.maxWidth > 600
-        ? 16.0
-        : overlay.maxWidth > 600
+    final spacing =
+        overlay.maxWidth > 600
+            ? 16.0
+            : overlay.maxWidth > 600
             ? 8.0
             : 4.0;
 
@@ -121,60 +124,65 @@ class MessageMorphInputBarContentState
           runAlignment: WrapAlignment.center,
           spacing: spacing,
           runSpacing: spacing,
-          children: widget.activity.multipleChoiceContent!.choices.mapIndexed(
-            (index, choice) {
-              final wasCorrect =
-                  widget.activity.practiceTarget.wasCorrectChoice(choice);
+          children:
+              widget.activity.multipleChoiceContent!.choices.mapIndexed((
+                index,
+                choice,
+              ) {
+                final wasCorrect = widget.activity.practiceTarget
+                    .wasCorrectChoice(choice);
 
-              return ChoiceAnimationWidget(
-                isSelected: selectedTag == choice,
-                isCorrect: wasCorrect,
-                child: MessageMorphChoiceItem(
-                  cId: ConstructIdentifier(
-                    lemma: choice,
-                    type: ConstructTypeEnum.morph,
-                    category: morph.name,
-                  ),
-                  onTap: () {
-                    setState(() => selectedTag = choice);
-
-                    widget.activity.onMultipleChoiceSelect(
-                      token,
-                      PracticeChoice(
-                        choiceContent: choice,
-                        form: ConstructForm(
-                          cId: widget.activity.targetTokens.first
-                              .morphIdByFeature(
-                            widget.activity.morphFeature!,
-                          )!,
-                          form: token.text.content,
-                        ),
-                      ),
-                      widget.pangeaMessageEvent,
-                      () => overlay.setState(() {}),
-                    );
-                  },
+                return ChoiceAnimationWidget(
                   isSelected: selectedTag == choice,
-                  isGold: wasCorrect,
-                ),
-              );
-            },
-          ).toList(),
+                  isCorrect: wasCorrect,
+                  child: MessageMorphChoiceItem(
+                    cId: ConstructIdentifier(
+                      lemma: choice,
+                      type: ConstructTypeEnum.morph,
+                      category: morph.name,
+                    ),
+                    onTap: () {
+                      setState(() => selectedTag = choice);
+
+                      widget.activity.onMultipleChoiceSelect(
+                        token,
+                        PracticeChoice(
+                          choiceContent: choice,
+                          form: ConstructForm(
+                            cId:
+                                widget.activity.targetTokens.first
+                                    .morphIdByFeature(
+                                      widget.activity.morphFeature!,
+                                    )!,
+                            form: token.text.content,
+                          ),
+                        ),
+                        widget.pangeaMessageEvent,
+                        () => overlay.setState(() {}),
+                      );
+                    },
+                    isSelected: selectedTag == choice,
+                    isGold: wasCorrect,
+                  ),
+                );
+              }).toList(),
         ),
         Container(
           constraints: BoxConstraints(
             minHeight: overlay.maxWidth > 600 ? 20 : 34,
           ),
           alignment: Alignment.center,
-          child: selectedTag != null
-              ? MorphMeaningWidget(
-                  feature: morph,
-                  tag: selectedTag!,
-                  style: overlay.maxWidth > 600
-                      ? Theme.of(context).textTheme.bodyLarge
-                      : Theme.of(context).textTheme.bodySmall,
-                )
-              : const SizedBox.shrink(),
+          child:
+              selectedTag != null
+                  ? MorphMeaningWidget(
+                    feature: morph,
+                    tag: selectedTag!,
+                    style:
+                        overlay.maxWidth > 600
+                            ? Theme.of(context).textTheme.bodyLarge
+                            : Theme.of(context).textTheme.bodySmall,
+                  )
+                  : const SizedBox.shrink(),
         ),
       ],
     );

@@ -36,10 +36,7 @@ class GoogleAnalytics {
   }
 
   static updateUserSubscriptionStatus(bool subscribed) {
-    analytics?.setUserProperty(
-      name: 'subscribed',
-      value: "$subscribed",
-    );
+    analytics?.setUserProperty(name: 'subscribed', value: "$subscribed");
   }
 
   static logEvent(String name, {parameters}) {
@@ -93,10 +90,7 @@ class GoogleAnalytics {
   static sendMessage(String chatRoomId, String classCode) {
     logEvent(
       'sent_message',
-      parameters: {
-        "chat_id": chatRoomId,
-        'group_id': classCode,
-      },
+      parameters: {"chat_id": chatRoomId, 'group_id': classCode},
     );
   }
 
@@ -125,7 +119,7 @@ class GoogleAnalytics {
             'price': details.price,
             'item_category': "subscription",
             'quantity': 1,
-          }
+          },
         ],
       },
     );

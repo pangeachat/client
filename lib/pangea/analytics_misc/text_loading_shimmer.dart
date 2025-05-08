@@ -6,10 +6,7 @@ import 'package:fluffychat/config/app_config.dart';
 
 class TextLoadingShimmer extends StatelessWidget {
   final double width;
-  const TextLoadingShimmer({
-    super.key,
-    this.width = 140.0,
-  });
+  const TextLoadingShimmer({super.key, this.width = 140.0});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +17,10 @@ class TextLoadingShimmer extends StatelessWidget {
       child: Container(
         height: AppConfig.messageFontSize * AppConfig.fontSizeFactor,
         width: width, // Width of the rectangle
-        color: Theme.of(context)
-            .colorScheme
-            .primary, // Background color of the rectangle
+        color:
+            Theme.of(
+              context,
+            ).colorScheme.primary, // Background color of the rectangle
       ),
     );
   }

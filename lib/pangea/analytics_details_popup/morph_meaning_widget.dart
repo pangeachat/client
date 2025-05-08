@@ -86,9 +86,10 @@ class MorphMeaningWidgetState extends State<MorphMeaningWidget> {
 
   Future<void> editMorphMeaning(String userEdit) async {
     // Truncate to max characters if needed
-    final truncatedEdit = userEdit.length > maxCharacters
-        ? userEdit.substring(0, maxCharacters)
-        : userEdit;
+    final truncatedEdit =
+        userEdit.length > maxCharacters
+            ? userEdit.substring(0, maxCharacters)
+            : userEdit;
 
     await MorphInfoRepo.setMorphDefinition(
       feature: widget.feature,
@@ -174,15 +175,7 @@ class MorphEditView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(
-            getGrammarCopy(
-                  category: morphFeature.name,
-                  lemma: morphTag,
-                  context: context,
-                ) ??
-                morphTag,
-            '',
-          )}",
+          "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(getGrammarCopy(category: morphFeature.name, lemma: morphTag, context: context) ?? morphTag, '')}",
           textAlign: TextAlign.center,
           style: const TextStyle(fontStyle: FontStyle.italic),
         ),
@@ -212,10 +205,11 @@ class MorphEditView extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             ElevatedButton(
-              onPressed: () =>
-                  controller.text != meaning && controller.text.isNotEmpty
-                      ? editMorphMeaning(controller.text)
-                      : null,
+              onPressed:
+                  () =>
+                      controller.text != meaning && controller.text.isNotEmpty
+                          ? editMorphMeaning(controller.text)
+                          : null,
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),

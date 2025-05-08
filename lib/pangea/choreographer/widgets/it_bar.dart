@@ -176,11 +176,12 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                               iconSize: iconSize,
                               color: Theme.of(context).colorScheme.primary,
                               icon: const Icon(Icons.settings_outlined),
-                              onPressed: () => showDialog(
-                                context: context,
-                                builder: (c) => const SettingsLearning(),
-                                barrierDismissible: false,
-                              ),
+                              onPressed:
+                                  () => showDialog(
+                                    context: context,
+                                    builder: (c) => const SettingsLearning(),
+                                    barrierDismissible: false,
+                                  ),
                             ),
                           ),
                         SizedBox(
@@ -202,12 +203,13 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                     if (!itController.isEditingSourceText)
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
-                        child: itController.sourceText != null
-                            ? Text(
-                                itController.sourceText!,
-                                textAlign: TextAlign.center,
-                              )
-                            : const LinearProgressIndicator(),
+                        child:
+                            itController.sourceText != null
+                                ? Text(
+                                  itController.sourceText!,
+                                  textAlign: TextAlign.center,
+                                )
+                                : const LinearProgressIndicator(),
                       ),
                     const SizedBox(height: 8.0),
                     Container(
@@ -216,19 +218,21 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                       child: AnimatedSize(
                         duration: itController.animationSpeed,
                         child: Center(
-                          child: itController.choreographer.errorService.isError
-                              ? ITError(
-                                  error: itController
-                                      .choreographer.errorService.error!,
-                                  controller: itController,
-                                )
-                              : itController.showChoiceFeedback
-                                  ? ChoiceFeedbackText(
-                                      controller: itController,
-                                    )
+                          child:
+                              itController.choreographer.errorService.isError
+                                  ? ITError(
+                                    error:
+                                        itController
+                                            .choreographer
+                                            .errorService
+                                            .error!,
+                                    controller: itController,
+                                  )
+                                  : itController.showChoiceFeedback
+                                  ? ChoiceFeedbackText(controller: itController)
                                   : itController.isTranslationDone
-                                      ? const SizedBox()
-                                      : ITChoices(controller: itController),
+                                  ? const SizedBox()
+                                  : ITChoices(controller: itController),
                         ),
                       ),
                     ),
@@ -244,10 +248,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
 }
 
 class ChoiceFeedbackText extends StatelessWidget {
-  const ChoiceFeedbackText({
-    super.key,
-    required this.controller,
-  });
+  const ChoiceFeedbackText({super.key, required this.controller});
 
   final ITController controller;
 
@@ -273,10 +274,7 @@ class ChoiceFeedbackText extends StatelessWidget {
 }
 
 class ITChoices extends StatelessWidget {
-  const ITChoices({
-    super.key,
-    required this.controller,
-  });
+  const ITChoices({super.key, required this.controller});
 
   // final choices = [
   //   "we need a really long translation to see what's going to happen with that. it should probably have multiple sentences so that we can see what happens there.we need a really long translation to see what's going to happen with that. it should probably have multiple sentences so that we can see what happens there.",
@@ -291,10 +289,7 @@ class ITChoices extends StatelessWidget {
 
   String? get sourceText {
     if ((controller.sourceText == null || controller.sourceText!.isEmpty)) {
-      ErrorHandler.logError(
-        m: "null source text in ItChoices",
-        data: {},
-      );
+      ErrorHandler.logError(m: "null source text in ItChoices", data: {});
     }
     return controller.sourceText;
   }
@@ -309,9 +304,7 @@ class ITChoices extends StatelessWidget {
       ErrorHandler.logError(
         m: "currentITStep is null in showCard",
         s: StackTrace.current,
-        data: {
-          "index": index,
-        },
+        data: {"index": index},
       );
       return;
     }
@@ -320,35 +313,38 @@ class ITChoices extends StatelessWidget {
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
     OverlayUtil.showPositionedCard(
       context: context,
-      cardToShow: choiceFeedback == null
-          ? WordDataCard(
-              word: controller.currentITStep!.continuances[index].text,
-              wordLang: controller.targetLangCode,
-              fullText: sourceText ?? controller.choreographer.currentText,
-              fullTextLang: sourceText != null
-                  ? controller.sourceLangCode
-                  : controller.targetLangCode,
-              hasInfo: controller.currentITStep!.continuances[index].hasInfo,
-              choiceFeedback: choiceFeedback,
-              room: controller.choreographer.chatController.room,
-            )
-          : ITFeedbackCard(
-              req: ITFeedbackRequestModel(
-                sourceText: sourceText!,
-                currentText: controller.choreographer.currentText,
-                chosenContinuance:
-                    controller.currentITStep!.continuances[index].text,
-                bestContinuance: controller.currentITStep!.best.text,
-                // TODO: we want this to eventually switch between target and source lang,
-                // based on the learner's proficiency - maybe with the words involved in the translation
-                // maybe overall. For now, we'll just use the source lang.
-                feedbackLang: controller.choreographer.l1Lang?.langCode ??
-                    controller.sourceLangCode,
-                sourceTextLang: controller.sourceLangCode,
-                targetLang: controller.targetLangCode,
+      cardToShow:
+          choiceFeedback == null
+              ? WordDataCard(
+                word: controller.currentITStep!.continuances[index].text,
+                wordLang: controller.targetLangCode,
+                fullText: sourceText ?? controller.choreographer.currentText,
+                fullTextLang:
+                    sourceText != null
+                        ? controller.sourceLangCode
+                        : controller.targetLangCode,
+                hasInfo: controller.currentITStep!.continuances[index].hasInfo,
+                choiceFeedback: choiceFeedback,
+                room: controller.choreographer.chatController.room,
+              )
+              : ITFeedbackCard(
+                req: ITFeedbackRequestModel(
+                  sourceText: sourceText!,
+                  currentText: controller.choreographer.currentText,
+                  chosenContinuance:
+                      controller.currentITStep!.continuances[index].text,
+                  bestContinuance: controller.currentITStep!.best.text,
+                  // TODO: we want this to eventually switch between target and source lang,
+                  // based on the learner's proficiency - maybe with the words involved in the translation
+                  // maybe overall. For now, we'll just use the source lang.
+                  feedbackLang:
+                      controller.choreographer.l1Lang?.langCode ??
+                      controller.sourceLangCode,
+                  sourceTextLang: controller.sourceLangCode,
+                  targetLang: controller.targetLangCode,
+                ),
+                choiceFeedback: choiceFeedback,
               ),
-              choiceFeedback: choiceFeedback,
-            ),
       maxHeight: 300,
       maxWidth: 300,
       borderColor: borderColor,
@@ -394,29 +390,32 @@ class ITChoices extends StatelessWidget {
       }
       return ChoicesArray(
         id: controller.currentITStep.hashCode.toString(),
-        isLoading: controller.isLoading ||
+        isLoading:
+            controller.isLoading ||
             controller.choreographer.isFetching ||
             controller.currentITStep == null,
         //TODO - pass current span being translated
         originalSpan: "dummy",
-        choices: controller.currentITStep!.continuances.map((e) {
-          try {
-            return Choice(
-              text: e.text.trim(),
-              color: e.color,
-              isGold: e.description == "best",
-            );
-          } catch (e) {
-            debugger(when: kDebugMode);
-            return Choice(text: "error", color: Colors.red);
-          }
-        }).toList(),
+        choices:
+            controller.currentITStep!.continuances.map((e) {
+              try {
+                return Choice(
+                  text: e.text.trim(),
+                  color: e.color,
+                  isGold: e.description == "best",
+                );
+              } catch (e) {
+                debugger(when: kDebugMode);
+                return Choice(text: "error", color: Colors.red);
+              }
+            }).toList(),
         onPressed: (value, index) => selectContinuance(index, context),
         onLongPress: (value, index) => showCard(context, index),
         selectedChoiceIndex: null,
         tts: controller.choreographer.tts,
-        langCode: controller.choreographer.pangeaController.languageController
-            .activeL2Code(),
+        langCode:
+            controller.choreographer.pangeaController.languageController
+                .activeL2Code(),
       );
     } catch (e) {
       debugger(when: kDebugMode);

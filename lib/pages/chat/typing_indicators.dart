@@ -21,34 +21,36 @@ class TypingIndicators extends StatelessWidget {
     return StreamBuilder<Object>(
       stream: controller.room.client.onSync.stream.where(
         (syncUpdate) =>
-            syncUpdate.rooms?.join?[controller.room.id]?.ephemeral
-                ?.any((ephemeral) => ephemeral.type == 'm.typing') ??
+            syncUpdate.rooms?.join?[controller.room.id]?.ephemeral?.any(
+              (ephemeral) => ephemeral.type == 'm.typing',
+            ) ??
             false,
       ),
       builder: (context, _) {
-        final typingUsers = controller.room.typingUsers
-          ..removeWhere((u) => u.stateKey == Matrix.of(context).client.userID);
+        final typingUsers =
+            controller.room.typingUsers..removeWhere(
+              (u) => u.stateKey == Matrix.of(context).client.userID,
+            );
 
         return Container(
           width: double.infinity,
           alignment: Alignment.center,
           child: AnimatedContainer(
-            constraints:
-                const BoxConstraints(maxWidth: FluffyThemes.columnWidth * 2.5),
+            constraints: const BoxConstraints(
+              maxWidth: FluffyThemes.columnWidth * 2.5,
+            ),
             height: typingUsers.isEmpty ? 0 : avatarSize + 8,
             duration: FluffyThemes.animationDuration,
             curve: FluffyThemes.animationCurve,
-            alignment: controller.timeline!.events.isNotEmpty &&
-                    controller.timeline!.events.first.senderId ==
-                        Matrix.of(context).client.userID
-                ? Alignment.topRight
-                : Alignment.topLeft,
+            alignment:
+                controller.timeline!.events.isNotEmpty &&
+                        controller.timeline!.events.first.senderId ==
+                            Matrix.of(context).client.userID
+                    ? Alignment.topRight
+                    : Alignment.topLeft,
             clipBehavior: Clip.hardEdge,
             decoration: const BoxDecoration(),
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8.0,
-              vertical: 4.0,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
             child: Row(
               children: [
                 Container(
@@ -71,17 +73,20 @@ class TypingIndicators extends StatelessWidget {
                           padding: const EdgeInsets.only(left: 16),
                           child: Avatar(
                             size: avatarSize,
-                            mxContent: typingUsers.length == 2
-                                ? typingUsers.last.avatarUrl
-                                : null,
+                            mxContent:
+                                typingUsers.length == 2
+                                    ? typingUsers.last.avatarUrl
+                                    : null,
                             // #Pangea
-                            userId: typingUsers.length == 2
-                                ? typingUsers.last.id
-                                : null,
+                            userId:
+                                typingUsers.length == 2
+                                    ? typingUsers.last.id
+                                    : null,
                             // Pangea#
-                            name: typingUsers.length == 2
-                                ? typingUsers.last.calcDisplayname()
-                                : '+${typingUsers.length - 1}',
+                            name:
+                                typingUsers.length == 2
+                                    ? typingUsers.last.calcDisplayname()
+                                    : '+${typingUsers.length - 1}',
                           ),
                         ),
                     ],
@@ -123,17 +128,14 @@ class __TypingDotsState extends State<_TypingDots> {
 
   @override
   void initState() {
-    _timer = Timer.periodic(
-      animationDuration,
-      (_) {
-        if (!mounted) {
-          return;
-        }
-        setState(() {
-          _tick = (_tick + 1) % 4;
-        });
-      },
-    );
+    _timer = Timer.periodic(animationDuration, (_) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _tick = (_tick + 1) % 4;
+      });
+    });
     super.initState();
   }
 

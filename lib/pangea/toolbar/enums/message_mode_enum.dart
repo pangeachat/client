@@ -19,9 +19,9 @@ enum MessageMode {
   wordEmoji,
   wordMeaning,
   wordMorph,
+
   // wordZoomTextToSpeech,
   // wordZoomSpeechToText,
-
   messageMeaning,
   listening,
   messageSpeechToText,
@@ -153,9 +153,7 @@ extension MessageModeExtension on MessageMode {
     }
   }
 
-  bool isUnlocked(
-    MessageOverlayController overlayController,
-  ) {
+  bool isUnlocked(MessageOverlayController overlayController) {
     switch (this) {
       case MessageMode.messageTranslation:
         return overlayController.isTranslationUnlocked;
@@ -267,25 +265,26 @@ extension MessageModeExtension on MessageMode {
       case MessageMode.wordMorph:
         // get the morph feature with some tokens left to practice, from most to least important for learning
         return pangeaMessage
-            .messageDisplayRepresentation!.morphFeatureSetToPractice
+            .messageDisplayRepresentation!
+            .morphFeatureSetToPractice
             .firstWhereOrNull(
               (feature) =>
                   pangeaMessage.messageDisplayRepresentation!.tokens!.any((t) {
-                final String? morphTag = t.getMorphTag(feature);
+                    final String? morphTag = t.getMorphTag(feature);
 
-                if (morphTag == null) {
-                  return false;
-                }
+                    if (morphTag == null) {
+                      return false;
+                    }
 
-                return ConstructIdentifier(
-                  lemma: morphTag,
-                  type: ConstructTypeEnum.morph,
-                  category: feature.name,
-                ).isActivityProbablyLevelAppropriate(
-                  associatedActivityType!,
-                  t.text.content,
-                );
-              }),
+                    return ConstructIdentifier(
+                      lemma: morphTag,
+                      type: ConstructTypeEnum.morph,
+                      category: feature.name,
+                    ).isActivityProbablyLevelAppropriate(
+                      associatedActivityType!,
+                      t.text.content,
+                    );
+                  }),
             )
             ?.name;
 

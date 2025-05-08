@@ -65,12 +65,15 @@ class BotOptionsModel {
       //////////////////////////////////////////////////////////////////////////
       // General Bot Options
       //////////////////////////////////////////////////////////////////////////
-      languageLevel: json[ModelKey.languageLevel] is int
-          ? LanguageLevelTypeEnumExtension.fromInt(json[ModelKey.languageLevel])
-          : json[ModelKey.languageLevel] is String
+      languageLevel:
+          json[ModelKey.languageLevel] is int
+              ? LanguageLevelTypeEnumExtension.fromInt(
+                json[ModelKey.languageLevel],
+              )
+              : json[ModelKey.languageLevel] is String
               ? LanguageLevelTypeEnumExtension.fromString(
-                  json[ModelKey.languageLevel],
-                )
+                json[ModelKey.languageLevel],
+              )
               : LanguageLevelTypeEnum.a1,
       safetyModeration: json[ModelKey.safetyModeration] ?? true,
       mode: json[ModelKey.mode] ?? BotMode.discussion,
@@ -127,11 +130,7 @@ class BotOptionsModel {
       return data;
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: data,
-      );
+      ErrorHandler.logError(e: e, s: s, data: data);
       return data;
     }
   }
@@ -183,8 +182,6 @@ class BotOptionsModel {
     }
   }
 
-  StateEvent get toStateEvent => StateEvent(
-        content: toJson(),
-        type: PangeaEventTypes.botOptions,
-      );
+  StateEvent get toStateEvent =>
+      StateEvent(content: toJson(), type: PangeaEventTypes.botOptions);
 }

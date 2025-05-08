@@ -18,9 +18,7 @@ import 'package:fluffychat/pangea/word_bank/vocab_request.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaMeaningActivityGenerator {
-  Future<MessageActivityResponse> get(
-    MessageActivityRequest req,
-  ) async {
+  Future<MessageActivityResponse> get(MessageActivityRequest req) async {
     if (req.targetTokens.length == 1) {
       return _multipleChoiceActivity(req);
     } else {
@@ -32,9 +30,10 @@ class LemmaMeaningActivityGenerator {
     MessageActivityRequest req,
   ) async {
     final ConstructIdentifier lemmaId = ConstructIdentifier(
-      lemma: req.targetTokens[0].lemma.text.isNotEmpty
-          ? req.targetTokens[0].lemma.text
-          : req.targetTokens[0].lemma.form,
+      lemma:
+          req.targetTokens[0].lemma.text.isNotEmpty
+              ? req.targetTokens[0].lemma.text
+              : req.targetTokens[0].lemma.form,
       type: ConstructTypeEnum.vocab,
       category: req.targetTokens[0].pos,
     );
@@ -61,8 +60,9 @@ class LemmaMeaningActivityGenerator {
         langCode: req.userL2,
         activityType: ActivityTypeEnum.wordMeaning,
         multipleChoiceContent: MultipleChoiceActivity(
-          question: L10n.of(MatrixState.pangeaController.matrixState.context)
-              .whatIsMeaning(lemmaId.lemma, lemmaId.category),
+          question: L10n.of(
+            MatrixState.pangeaController.matrixState.context,
+          ).whatIsMeaning(lemmaId.lemma, lemmaId.category),
           choices: choices,
           answers: [res.meaning],
           spanDisplayDetails: null,
@@ -74,12 +74,14 @@ class LemmaMeaningActivityGenerator {
   Future<MessageActivityResponse> _matchActivity(
     MessageActivityRequest req,
   ) async {
-    final List<Future<LemmaInfoResponse>> lemmaInfoFutures = req.targetTokens
-        .map((token) => token.vocabConstructID.getLemmaInfo())
-        .toList();
+    final List<Future<LemmaInfoResponse>> lemmaInfoFutures =
+        req.targetTokens
+            .map((token) => token.vocabConstructID.getLemmaInfo())
+            .toList();
 
-    final List<LemmaInfoResponse> lemmaInfos =
-        await Future.wait(lemmaInfoFutures);
+    final List<LemmaInfoResponse> lemmaInfos = await Future.wait(
+      lemmaInfoFutures,
+    );
 
     final Map<ConstructForm, List<String>> matchInfo = Map.fromIterables(
       req.targetTokens.map((token) => token.vocabForm),
@@ -91,9 +93,7 @@ class LemmaMeaningActivityGenerator {
         activityType: ActivityTypeEnum.wordMeaning,
         targetTokens: req.targetTokens,
         langCode: req.userL2,
-        matchContent: PracticeMatchActivity(
-          matchInfo: matchInfo,
-        ),
+        matchContent: PracticeMatchActivity(matchInfo: matchInfo),
       ),
     );
   }
@@ -106,8 +106,13 @@ class LemmaMeaningActivityGenerator {
     final eligible = await VocabRepo.getSemanticallySimilarWords(
       VocabRequest(
         langCode: req.lemmaLang,
-        level: MatrixState
-            .pangeaController.userController.profile.userSettings.cefrLevel,
+        level:
+            MatrixState
+                .pangeaController
+                .userController
+                .profile
+                .userSettings
+                .cefrLevel,
         lemma: req.lemma,
         pos: req.partOfSpeech,
         count: count,

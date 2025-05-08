@@ -12,11 +12,7 @@ import 'package:universal_html/html.dart' as html;
 
 // ignore: deprecated_member_use
 class FlutterHiveCollectionsDatabase extends HiveCollectionsDatabase {
-  FlutterHiveCollectionsDatabase(
-    super.name,
-    String super.path, {
-    super.key,
-  });
+  FlutterHiveCollectionsDatabase(super.name, String super.path, {super.key});
 
   static const String _cipherStorageKey = 'hive_encryption_key';
 
@@ -129,8 +125,9 @@ class FlutterHiveCollectionsDatabase extends HiveCollectionsDatabase {
   Future<Uint8List?> getFile(Uri mxcUri) async {
     if (!supportsFileStoring) return null;
     final tempDirectory = await _getFileStoreDirectory();
-    final file =
-        File('$tempDirectory/${Uri.encodeComponent(mxcUri.toString())}');
+    final file = File(
+      '$tempDirectory/${Uri.encodeComponent(mxcUri.toString())}',
+    );
     if (await file.exists() == false) return null;
     final bytes = await file.readAsBytes();
     return bytes;
@@ -140,8 +137,9 @@ class FlutterHiveCollectionsDatabase extends HiveCollectionsDatabase {
   Future storeFile(Uri mxcUri, Uint8List bytes, int time) async {
     if (!supportsFileStoring) return null;
     final tempDirectory = await _getFileStoreDirectory();
-    final file =
-        File('$tempDirectory/${Uri.encodeComponent(mxcUri.toString())}');
+    final file = File(
+      '$tempDirectory/${Uri.encodeComponent(mxcUri.toString())}',
+    );
     if (await file.exists()) return;
     await file.writeAsBytes(bytes);
     return;

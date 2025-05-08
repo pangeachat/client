@@ -84,11 +84,8 @@ class RepresentationEvent {
       return null;
     }
 
-    final Set<Event> tokenEvents = _event?.aggregatedEvents(
-          timeline,
-          PangeaEventTypes.tokens,
-        ) ??
-        {};
+    final Set<Event> tokenEvents =
+        _event?.aggregatedEvents(timeline, PangeaEventTypes.tokens) ?? {};
 
     if (tokenEvents.isEmpty) return null;
 
@@ -115,10 +112,7 @@ class RepresentationEvent {
         Sentry.addBreadcrumb(
           Breadcrumb(
             message: 'Stored tokens do not match text for representation',
-            data: {
-              'text': text,
-              'tokens': tokenPangeaEvent.tokens,
-            },
+            data: {'text': text, 'tokens': tokenPangeaEvent.tokens},
           ),
         );
         continue;
@@ -130,9 +124,7 @@ class RepresentationEvent {
     if (storedTokens == null) {
       ErrorHandler.logError(
         e: "No tokens found for representation",
-        data: {
-          "event": _event?.toJson(),
-        },
+        data: {"event": _event?.toJson()},
       );
       return null;
     }
@@ -162,8 +154,8 @@ class RepresentationEvent {
         ),
       );
     }
-    final List<PangeaToken> res =
-        await MatrixState.pangeaController.messageData.getTokens(
+    final List<PangeaToken>
+    res = await MatrixState.pangeaController.messageData.getTokens(
       repEventId: _event?.eventId,
       room: _event?.room ?? parentMessageEvent.room,
       req: TokensRequestModel(
@@ -171,12 +163,12 @@ class RepresentationEvent {
         langCode: langCode,
         senderL1:
             MatrixState.pangeaController.languageController.userL1?.langCode ??
-                LanguageKeys.unknownLanguage,
+            LanguageKeys.unknownLanguage,
         // since langCode is known, senderL2 will be used to determine whether these tokens
         // need pos/mporph tags whether lemmas are eligible to marked as "save_vocab=true"
         senderL2:
             MatrixState.pangeaController.languageController.userL2?.langCode ??
-                LanguageKeys.unknownLanguage,
+            LanguageKeys.unknownLanguage,
       ),
     );
 
@@ -214,11 +206,7 @@ class RepresentationEvent {
     if (_choreo != null) return _choreo;
 
     if (_event == null) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "_event and _choreo both null",
-        ),
-      );
+      Sentry.addBreadcrumb(Breadcrumb(message: "_event and _choreo both null"));
       return null;
     }
 

@@ -33,24 +33,27 @@ class UserSettings {
   });
 
   factory UserSettings.fromJson(Map<String, dynamic> json) => UserSettings(
-        dateOfBirth: json[ModelKey.userDateOfBirth] != null
+    dateOfBirth:
+        json[ModelKey.userDateOfBirth] != null
             ? DateTime.parse(json[ModelKey.userDateOfBirth])
             : null,
-        createdAt: json[ModelKey.userCreatedAt] != null
+    createdAt:
+        json[ModelKey.userCreatedAt] != null
             ? DateTime.parse(json[ModelKey.userCreatedAt])
             : null,
-        autoPlayMessages: json[ModelKey.autoPlayMessages],
-        publicProfile: json[ModelKey.publicProfile],
-        targetLanguage: json[ModelKey.l2LanguageKey],
-        sourceLanguage: json[ModelKey.l1LanguageKey],
-        country: json[ModelKey.userCountry],
-        hasJoinedHelpSpace: json[ModelKey.hasJoinedHelpSpace],
-        cefrLevel: json[ModelKey.cefrLevel] is String
+    autoPlayMessages: json[ModelKey.autoPlayMessages],
+    publicProfile: json[ModelKey.publicProfile],
+    targetLanguage: json[ModelKey.l2LanguageKey],
+    sourceLanguage: json[ModelKey.l1LanguageKey],
+    country: json[ModelKey.userCountry],
+    hasJoinedHelpSpace: json[ModelKey.hasJoinedHelpSpace],
+    cefrLevel:
+        json[ModelKey.cefrLevel] is String
             ? LanguageLevelTypeEnumExtension.fromString(
-                json[ModelKey.cefrLevel],
-              )
+              json[ModelKey.cefrLevel],
+            )
             : LanguageLevelTypeEnum.a1,
-      );
+  );
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -71,8 +74,9 @@ class UserSettings {
         MatrixState.pangeaController.matrixState.client.accountData;
 
     if (!accountData.containsKey(ModelKey.userDateOfBirth)) return null;
-    final dobContent = accountData[ModelKey.userDateOfBirth]!
-        .content[ModelKey.userDateOfBirth];
+    final dobContent =
+        accountData[ModelKey.userDateOfBirth]!.content[ModelKey
+            .userDateOfBirth];
 
     String? dobString;
     if (dobContent != null) {
@@ -100,18 +104,24 @@ class UserSettings {
     return UserSettings(
       dateOfBirth: dob,
       createdAt: createdAt,
-      autoPlayMessages: (accountData[ModelKey.autoPlayMessages]
-              ?.content[ModelKey.autoPlayMessages] as bool?) ??
+      autoPlayMessages:
+          (accountData[ModelKey.autoPlayMessages]?.content[ModelKey
+                  .autoPlayMessages]
+              as bool?) ??
           false,
-      publicProfile: (accountData[ModelKey.publicProfile]
-              ?.content[ModelKey.publicProfile] as bool?) ??
+      publicProfile:
+          (accountData[ModelKey.publicProfile]?.content[ModelKey.publicProfile]
+              as bool?) ??
           false,
-      targetLanguage: accountData[ModelKey.l2LanguageKey]
-          ?.content[ModelKey.l2LanguageKey] as String?,
-      sourceLanguage: accountData[ModelKey.l1LanguageKey]
-          ?.content[ModelKey.l1LanguageKey] as String?,
-      country: accountData[ModelKey.userCountry]?.content[ModelKey.userCountry]
-          as String?,
+      targetLanguage:
+          accountData[ModelKey.l2LanguageKey]?.content[ModelKey.l2LanguageKey]
+              as String?,
+      sourceLanguage:
+          accountData[ModelKey.l1LanguageKey]?.content[ModelKey.l1LanguageKey]
+              as String?,
+      country:
+          accountData[ModelKey.userCountry]?.content[ModelKey.userCountry]
+              as String?,
     );
   }
 
@@ -181,20 +191,26 @@ class UserToolSettings {
     return UserToolSettings(
       interactiveTranslator:
           (accountData[ToolSetting.interactiveTranslator.toString()]
-                      ?.content[ToolSetting.interactiveTranslator.toString()]
-                  as bool?) ??
-              true,
+                  ?.content[ToolSetting.interactiveTranslator.toString()]
+              as bool?) ??
+          true,
       interactiveGrammar:
           (accountData[ToolSetting.interactiveGrammar.toString()]
-                      ?.content[ToolSetting.interactiveGrammar.toString()]
-                  as bool?) ??
-              true,
-      immersionMode: false,
-      definitions: (accountData[ToolSetting.definitions.toString()]
-              ?.content[ToolSetting.definitions.toString()] as bool?) ??
+                  ?.content[ToolSetting.interactiveGrammar.toString()]
+              as bool?) ??
           true,
-      autoIGC: (accountData[ToolSetting.autoIGC.toString()]
-              ?.content[ToolSetting.autoIGC.toString()] as bool?) ??
+      immersionMode: false,
+      definitions:
+          (accountData[ToolSetting.definitions.toString()]?.content[ToolSetting
+                  .definitions
+                  .toString()]
+              as bool?) ??
+          true,
+      autoIGC:
+          (accountData[ToolSetting.autoIGC.toString()]?.content[ToolSetting
+                  .autoIGC
+                  .toString()]
+              as bool?) ??
           true,
     );
   }
@@ -240,18 +256,21 @@ class Profile {
         profileData[ModelKey.instructionsSettings];
 
     return Profile(
-      userSettings:
-          UserSettings.fromJson(userSettingsContent as Map<String, dynamic>),
-      toolSettings: toolSettingsContent != null
-          ? UserToolSettings.fromJson(
-              toolSettingsContent as Map<String, dynamic>,
-            )
-          : UserToolSettings(),
-      instructionSettings: instructionSettingsContent != null
-          ? InstructionSettings.fromJson(
-              instructionSettingsContent as Map<String, dynamic>,
-            )
-          : InstructionSettings(),
+      userSettings: UserSettings.fromJson(
+        userSettingsContent as Map<String, dynamic>,
+      ),
+      toolSettings:
+          toolSettingsContent != null
+              ? UserToolSettings.fromJson(
+                toolSettingsContent as Map<String, dynamic>,
+              )
+              : UserToolSettings(),
+      instructionSettings:
+          instructionSettingsContent != null
+              ? InstructionSettings.fromJson(
+                instructionSettingsContent as Map<String, dynamic>,
+              )
+              : InstructionSettings(),
     );
   }
 
@@ -282,9 +301,7 @@ class Profile {
   /// Saves the current configuration of the profile to the client's account data.
   /// If [waitForDataInSync] is true, the function will wait for the updated account
   /// data to come through in a sync, indicating that it has been set on the matrix server.
-  Future<void> saveProfileData({
-    waitForDataInSync = false,
-  }) async {
+  Future<void> saveProfileData({waitForDataInSync = false}) async {
     final PangeaController pangeaController = MatrixState.pangeaController;
     final Client client = pangeaController.matrixState.client;
     final List<String> profileKeys = [
@@ -303,11 +320,7 @@ class Profile {
             ),
       );
     }
-    await client.setAccountData(
-      client.userID!,
-      ModelKey.userProfile,
-      toJson(),
-    );
+    await client.setAccountData(client.userID!, ModelKey.userProfile, toJson());
 
     if (waitForDataInSync) {
       await waitForUpdate;
@@ -354,12 +367,8 @@ class PangeaProfile {
   });
 
   factory PangeaProfile.fromJson(Map<String, dynamic> json) {
-    final l2 = LanguageModel.codeFromNameOrCode(
-      json[ModelKey.l2LanguageKey],
-    );
-    final l1 = LanguageModel.codeFromNameOrCode(
-      json[ModelKey.l1LanguageKey],
-    );
+    final l2 = LanguageModel.codeFromNameOrCode(json[ModelKey.l2LanguageKey]);
+    final l1 = LanguageModel.codeFromNameOrCode(json[ModelKey.l1LanguageKey]);
 
     return PangeaProfile(
       createdAt: json[ModelKey.userCreatedAt],
@@ -389,10 +398,7 @@ class PangeaProfileResponse {
   final PangeaProfile profile;
   final String access;
 
-  PangeaProfileResponse({
-    required this.profile,
-    required this.access,
-  });
+  PangeaProfileResponse({required this.profile, required this.access});
 
   factory PangeaProfileResponse.fromJson(Map<String, dynamic> json) {
     return PangeaProfileResponse(

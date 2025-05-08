@@ -99,43 +99,43 @@ extension PartOfSpeechEnumExtensions on PartOfSpeechEnum {
   }
 
   bool get isContentWord => [
-        PartOfSpeechEnum.noun,
-        PartOfSpeechEnum.verb,
-        PartOfSpeechEnum.adj,
-        PartOfSpeechEnum.adv,
-      ].contains(this);
+    PartOfSpeechEnum.noun,
+    PartOfSpeechEnum.verb,
+    PartOfSpeechEnum.adj,
+    PartOfSpeechEnum.adv,
+  ].contains(this);
 
   bool get canBeDefined => [
-        PartOfSpeechEnum.noun,
-        PartOfSpeechEnum.verb,
-        PartOfSpeechEnum.adj,
-        PartOfSpeechEnum.adv,
-        PartOfSpeechEnum.propn,
-        PartOfSpeechEnum.intj,
-        PartOfSpeechEnum.det,
-        PartOfSpeechEnum.pron,
-        PartOfSpeechEnum.sconj,
-        PartOfSpeechEnum.cconj,
-        PartOfSpeechEnum.adp,
-        PartOfSpeechEnum.aux,
-        PartOfSpeechEnum.num,
-      ].contains(this);
+    PartOfSpeechEnum.noun,
+    PartOfSpeechEnum.verb,
+    PartOfSpeechEnum.adj,
+    PartOfSpeechEnum.adv,
+    PartOfSpeechEnum.propn,
+    PartOfSpeechEnum.intj,
+    PartOfSpeechEnum.det,
+    PartOfSpeechEnum.pron,
+    PartOfSpeechEnum.sconj,
+    PartOfSpeechEnum.cconj,
+    PartOfSpeechEnum.adp,
+    PartOfSpeechEnum.aux,
+    PartOfSpeechEnum.num,
+  ].contains(this);
 
   bool get canBeHeard => [
-        PartOfSpeechEnum.noun,
-        PartOfSpeechEnum.verb,
-        PartOfSpeechEnum.adj,
-        PartOfSpeechEnum.adv,
-        PartOfSpeechEnum.propn,
-        PartOfSpeechEnum.intj,
-        PartOfSpeechEnum.det,
-        PartOfSpeechEnum.pron,
-        PartOfSpeechEnum.sconj,
-        PartOfSpeechEnum.cconj,
-        PartOfSpeechEnum.adp,
-        PartOfSpeechEnum.aux,
-        PartOfSpeechEnum.num,
-      ].contains(this);
+    PartOfSpeechEnum.noun,
+    PartOfSpeechEnum.verb,
+    PartOfSpeechEnum.adj,
+    PartOfSpeechEnum.adv,
+    PartOfSpeechEnum.propn,
+    PartOfSpeechEnum.intj,
+    PartOfSpeechEnum.det,
+    PartOfSpeechEnum.pron,
+    PartOfSpeechEnum.sconj,
+    PartOfSpeechEnum.cconj,
+    PartOfSpeechEnum.adp,
+    PartOfSpeechEnum.aux,
+    PartOfSpeechEnum.num,
+  ].contains(this);
 
   bool eligibleForPractice(ActivityTypeEnum activityType) {
     switch (activityType) {

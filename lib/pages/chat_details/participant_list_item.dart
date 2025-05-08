@@ -25,9 +25,10 @@ class ParticipantListItem extends StatelessWidget {
       Membership.leave => L10n.of(context).leftTheChat,
     };
 
-    final permissionBatch = user.powerLevel >= 100
-        ? L10n.of(context).admin
-        : user.powerLevel >= 50
+    final permissionBatch =
+        user.powerLevel >= 100
+            ? L10n.of(context).admin
+            : user.powerLevel >= 50
             ? L10n.of(context).moderator
             : '';
 
@@ -46,53 +47,45 @@ class ParticipantListItem extends StatelessWidget {
           // Pangea#
           if (permissionBatch.isNotEmpty)
             Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 6,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: user.powerLevel >= 100
-                    ? theme.colorScheme.tertiary
-                    : theme.colorScheme.tertiaryContainer,
-                borderRadius: BorderRadius.circular(
-                  AppConfig.borderRadius,
-                ),
+                color:
+                    user.powerLevel >= 100
+                        ? theme.colorScheme.tertiary
+                        : theme.colorScheme.tertiaryContainer,
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
               ),
               child: Text(
                 permissionBatch,
                 style: theme.textTheme.labelSmall?.copyWith(
-                  color: user.powerLevel >= 100
-                      ? theme.colorScheme.onTertiary
-                      : theme.colorScheme.onTertiaryContainer,
+                  color:
+                      user.powerLevel >= 100
+                          ? theme.colorScheme.onTertiary
+                          : theme.colorScheme.onTertiaryContainer,
                 ),
               ),
             ),
           membershipBatch == null
               ? const SizedBox.shrink()
               : Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  margin: const EdgeInsets.symmetric(horizontal: 8),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.secondaryContainer,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Center(
-                    child: Text(
-                      membershipBatch,
-                      style: theme.textTheme.labelSmall?.copyWith(
-                        color: theme.colorScheme.onSecondaryContainer,
-                      ),
+                padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 8),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.secondaryContainer,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Text(
+                    membershipBatch,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.onSecondaryContainer,
                     ),
                   ),
                 ),
+              ),
         ],
       ),
-      subtitle: Text(
-        user.id,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
+      subtitle: Text(user.id, maxLines: 1, overflow: TextOverflow.ellipsis),
       leading: Opacity(
         opacity: user.membership == Membership.join ? 1 : 0.5,
         child: Avatar(

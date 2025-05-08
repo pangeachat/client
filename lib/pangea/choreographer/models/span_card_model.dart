@@ -6,7 +6,7 @@ class SpanCardModel {
   // IGCTextData igcTextData;
   int matchIndex;
   Future<void> Function({required int matchIndex, required int choiceIndex})
-      onReplacementSelect;
+  onReplacementSelect;
   Future<void> Function(String) onSentenceRewrite;
   void Function() onIgnore;
   void Function() onITStart;

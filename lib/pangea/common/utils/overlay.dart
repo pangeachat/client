@@ -11,11 +11,7 @@ import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
 
-enum OverlayPositionEnum {
-  transform,
-  centered,
-  top,
-}
+enum OverlayPositionEnum { transform, centered, top }
 
 class OverlayUtil {
   static showOverlay({
@@ -42,51 +38,58 @@ class OverlayUtil {
       }
 
       final OverlayEntry entry = OverlayEntry(
-        builder: (context) => AnimatedContainer(
-          duration: FluffyThemes.animationDuration,
-          curve: FluffyThemes.animationCurve,
-          child: Stack(
-            children: [
-              if (backDropToDismiss)
-                IgnorePointer(
-                  ignoring: ignorePointer,
-                  child: TransparentBackdrop(
-                    backgroundColor: backgroundColor,
-                    onDismiss: onDismiss,
-                    blurBackground: blurBackground,
-                  ),
-                ),
-              Positioned(
-                top: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                right: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                left: (position == OverlayPositionEnum.centered ||
-                        position == OverlayPositionEnum.top)
-                    ? 0
-                    : null,
-                bottom: (position == OverlayPositionEnum.centered) ? 0 : null,
-                child: (position != OverlayPositionEnum.transform)
-                    ? child
-                    : CompositedTransformFollower(
-                        targetAnchor: targetAnchor ?? Alignment.topCenter,
-                        followerAnchor:
-                            followerAnchor ?? Alignment.bottomCenter,
-                        link: MatrixState.pAnyState
-                            .layerLinkAndKey(transformTargetId)
-                            .link,
-                        showWhenUnlinked: false,
-                        offset: offset ?? Offset.zero,
-                        child: child,
+        builder:
+            (context) => AnimatedContainer(
+              duration: FluffyThemes.animationDuration,
+              curve: FluffyThemes.animationCurve,
+              child: Stack(
+                children: [
+                  if (backDropToDismiss)
+                    IgnorePointer(
+                      ignoring: ignorePointer,
+                      child: TransparentBackdrop(
+                        backgroundColor: backgroundColor,
+                        onDismiss: onDismiss,
+                        blurBackground: blurBackground,
                       ),
+                    ),
+                  Positioned(
+                    top:
+                        (position == OverlayPositionEnum.centered ||
+                                position == OverlayPositionEnum.top)
+                            ? 0
+                            : null,
+                    right:
+                        (position == OverlayPositionEnum.centered ||
+                                position == OverlayPositionEnum.top)
+                            ? 0
+                            : null,
+                    left:
+                        (position == OverlayPositionEnum.centered ||
+                                position == OverlayPositionEnum.top)
+                            ? 0
+                            : null,
+                    bottom:
+                        (position == OverlayPositionEnum.centered) ? 0 : null,
+                    child:
+                        (position != OverlayPositionEnum.transform)
+                            ? child
+                            : CompositedTransformFollower(
+                              targetAnchor: targetAnchor ?? Alignment.topCenter,
+                              followerAnchor:
+                                  followerAnchor ?? Alignment.bottomCenter,
+                              link:
+                                  MatrixState.pAnyState
+                                      .layerLinkAndKey(transformTargetId)
+                                      .link,
+                              showWhenUnlinked: false,
+                              offset: offset ?? Offset.zero,
+                              child: child,
+                            ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
+            ),
       );
 
       MatrixState.pAnyState.openOverlay(
@@ -97,11 +100,7 @@ class OverlayUtil {
       );
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: stack, data: {});
     }
   }
 
@@ -121,8 +120,8 @@ class OverlayUtil {
     bool ignorePointer = false,
   }) {
     try {
-      final LayerLinkAndKey layerLinkAndKey =
-          MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
+      final LayerLinkAndKey layerLinkAndKey = MatrixState.pAnyState
+          .layerLinkAndKey(transformTargetId);
       if (layerLinkAndKey.key.currentContext == null) {
         debugPrint("layerLinkAndKey.key.currentContext is null");
         return;
@@ -134,15 +133,18 @@ class OverlayUtil {
 
       bool hasTopOverflow = false;
       if (targetRenderBox != null && targetRenderBox.hasSize) {
-        final Offset transformTargetOffset =
-            (targetRenderBox).localToGlobal(Offset.zero);
+        final Offset transformTargetOffset = (targetRenderBox).localToGlobal(
+          Offset.zero,
+        );
         final Size transformTargetSize = targetRenderBox.size;
 
-        final columnWidth = FluffyThemes.isColumnMode(context)
-            ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
-            : 0;
+        final columnWidth =
+            FluffyThemes.isColumnMode(context)
+                ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
+                : 0;
 
-        final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
+        final horizontalMidpoint =
+            (transformTargetOffset.dx - columnWidth) +
             (transformTargetSize.width / 2);
 
         final verticalMidpoint =
@@ -150,7 +152,8 @@ class OverlayUtil {
 
         final halfMaxWidth = maxWidth / 2;
         final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
-        final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
+        final hasRightOverflow =
+            (horizontalMidpoint + halfMaxWidth) >
             (MediaQuery.of(context).size.width - columnWidth - 10);
         hasTopOverflow = (verticalMidpoint - maxHeight) < 0;
 
@@ -160,26 +163,28 @@ class OverlayUtil {
         if (hasLeftOverflow) {
           xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
         } else if (hasRightOverflow) {
-          xOffset = (MediaQuery.of(context).size.width - columnWidth) -
+          xOffset =
+              (MediaQuery.of(context).size.width - columnWidth) -
               (horizontalMidpoint + halfMaxWidth + 10);
         }
         offset = Offset(xOffset, 0);
       }
 
-      final Widget child = addBorder
-          ? Material(
-              borderOnForeground: false,
-              color: Colors.transparent,
-              clipBehavior: Clip.antiAlias,
-              child: OverlayContainer(
-                cardToShow: cardToShow,
-                borderColor: borderColor,
-                maxHeight: maxHeight,
-                maxWidth: maxWidth,
-                isScrollable: isScrollable,
-              ),
-            )
-          : cardToShow;
+      final Widget child =
+          addBorder
+              ? Material(
+                borderOnForeground: false,
+                color: Colors.transparent,
+                clipBehavior: Clip.antiAlias,
+                child: OverlayContainer(
+                  cardToShow: cardToShow,
+                  borderColor: borderColor,
+                  maxHeight: maxHeight,
+                  maxWidth: maxWidth,
+                  isScrollable: isScrollable,
+                ),
+              )
+              : cardToShow;
 
       showOverlay(
         context: context,
@@ -199,11 +204,7 @@ class OverlayUtil {
       );
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: stack, data: {});
     }
   }
 
@@ -236,21 +237,16 @@ class TransparentBackdropState extends State<TransparentBackdrop>
   void initState() {
     super.initState();
     _controller = AnimationController(
-      duration:
-          const Duration(milliseconds: AppConfig.overlayAnimationDuration),
+      duration: const Duration(
+        milliseconds: AppConfig.overlayAnimationDuration,
+      ),
       vsync: this,
     );
     _opacityTween = Tween<double>(begin: 0.0, end: 0.8).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: FluffyThemes.animationCurve,
-      ),
+      CurvedAnimation(parent: _controller, curve: FluffyThemes.animationCurve),
     );
     _blurTween = Tween<double>(begin: 0.0, end: 2.5).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: FluffyThemes.animationCurve,
-      ),
+      CurvedAnimation(parent: _controller, curve: FluffyThemes.animationCurve),
     );
 
     Future.delayed(const Duration(milliseconds: 100), () {
@@ -271,8 +267,10 @@ class TransparentBackdropState extends State<TransparentBackdrop>
       builder: (context, _) {
         return Material(
           borderOnForeground: false,
-          color: widget.backgroundColor
-                  ?.withAlpha((_opacityTween.value * 255).round()) ??
+          color:
+              widget.backgroundColor?.withAlpha(
+                (_opacityTween.value * 255).round(),
+              ) ??
               Colors.transparent,
           clipBehavior: Clip.antiAlias,
           child: InkWell(
@@ -290,12 +288,13 @@ class TransparentBackdropState extends State<TransparentBackdrop>
               animation: _blurTween,
               builder: (context, _) {
                 return BackdropFilter(
-                  filter: widget.blurBackground
-                      ? ImageFilter.blur(
-                          sigmaX: _blurTween.value,
-                          sigmaY: _blurTween.value,
-                        )
-                      : ImageFilter.blur(sigmaX: 0, sigmaY: 0),
+                  filter:
+                      widget.blurBackground
+                          ? ImageFilter.blur(
+                            sigmaX: _blurTween.value,
+                            sigmaY: _blurTween.value,
+                          )
+                          : ImageFilter.blur(sigmaX: 0, sigmaY: 0),
                   child: Container(
                     height: double.infinity,
                     width: double.infinity,

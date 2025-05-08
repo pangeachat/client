@@ -21,21 +21,13 @@ class ChatInputBarHeader extends StatelessWidget {
     }
 
     return Container(
-      margin: EdgeInsets.only(
-        bottom: 10,
-        left: padding,
-        right: padding,
-      ),
+      margin: EdgeInsets.only(bottom: 10, left: padding, right: padding),
       constraints: const BoxConstraints(
         maxWidth: FluffyThemes.columnWidth * 2.4,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          ChatFloatingActionButton(
-            controller: controller,
-          ),
-        ],
+        children: [ChatFloatingActionButton(controller: controller)],
       ),
     );
   }

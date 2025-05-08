@@ -33,18 +33,19 @@ class PracticeRecord {
     }
   }
 
-  factory PracticeRecord.fromJson(
-    Map<String, dynamic> json,
-  ) {
+  factory PracticeRecord.fromJson(Map<String, dynamic> json) {
     return PracticeRecord(
-      responses: (json['responses'] as List)
-          .map(
-            (e) => ActivityRecordResponse.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
-      timestamp: json['createdAt'] != null
-          ? DateTime.parse(json['createdAt'] as String)
-          : null,
+      responses:
+          (json['responses'] as List)
+              .map(
+                (e) =>
+                    ActivityRecordResponse.fromJson(e as Map<String, dynamic>),
+              )
+              .toList(),
+      timestamp:
+          json['createdAt'] != null
+              ? DateTime.parse(json['createdAt'] as String)
+              : null,
     );
   }
 
@@ -72,10 +73,7 @@ class PracticeRecord {
     return responses.any((element) => element.text == text);
   }
 
-  bool alreadyHasMatchResponse(
-    ConstructIdentifier cId,
-    String text,
-  ) {
+  bool alreadyHasMatchResponse(ConstructIdentifier cId, String text) {
     return responses.any(
       (element) => element.cId == cId && element.text == text,
     );
@@ -144,9 +142,7 @@ class PracticeRecord {
   ) =>
       responses
           .toSet()
-          .expand(
-            (response) => response.toUses(practiceActivity, metadata),
-          )
+          .expand((response) => response.toUses(practiceActivity, metadata))
           .toList();
 
   @override
@@ -268,29 +264,27 @@ class ActivityRecordResponse {
           return [];
         }
         return practiceActivity.targetTokens
-            .map(
-              (t) {
-                final tag = t.getMorphTag(practiceActivity.morphFeature!);
-                if (tag == null) {
-                  debugger(when: kDebugMode);
-                  ErrorHandler.logError(
-                    m: "null tag in morph activity",
-                    data: practiceActivity.toJson(),
-                  );
-                  return null;
-                }
-                final constructUseType = useType(practiceActivity.activityType);
-                return OneConstructUse(
-                  lemma: tag,
-                  form: practiceActivity.targetTokens.first.text.content,
-                  constructType: ConstructTypeEnum.morph,
-                  useType: constructUseType,
-                  metadata: metadata,
-                  category: practiceActivity.morphFeature!,
-                  xp: constructUseType.pointValue,
+            .map((t) {
+              final tag = t.getMorphTag(practiceActivity.morphFeature!);
+              if (tag == null) {
+                debugger(when: kDebugMode);
+                ErrorHandler.logError(
+                  m: "null tag in morph activity",
+                  data: practiceActivity.toJson(),
                 );
-              },
-            )
+                return null;
+              }
+              final constructUseType = useType(practiceActivity.activityType);
+              return OneConstructUse(
+                lemma: tag,
+                form: practiceActivity.targetTokens.first.text.content,
+                constructType: ConstructTypeEnum.morph,
+                useType: constructUseType,
+                metadata: metadata,
+                category: practiceActivity.morphFeature!,
+                xp: constructUseType.pointValue,
+              );
+            })
             .where((c) => c != null)
             .cast<OneConstructUse>()
             .toList();

@@ -64,9 +64,10 @@ class PracticeTarget {
       tokens:
           (json['tokens'] as List).map((e) => PangeaToken.fromJson(e)).toList(),
       activityType: ActivityTypeEnum.values[json['activityType']],
-      morphFeature: json['morphFeature'] == null
-          ? null
-          : MorphFeaturesEnum.values[json['morphFeature']],
+      morphFeature:
+          json['morphFeature'] == null
+              ? null
+              : MorphFeaturesEnum.values[json['morphFeature']],
       userL2: json['userL2'],
     );
   }
@@ -95,8 +96,9 @@ class PracticeTarget {
     }
 
     return tokens.every(
-      (t) => record.responses
-          .any((res) => res.cId == t.vocabConstructID && res.isCorrect),
+      (t) => record.responses.any(
+        (res) => res.cId == t.vocabConstructID && res.isCorrect,
+      ),
     );
   }
 
@@ -107,10 +109,7 @@ class PracticeTarget {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         m: "isCompleteByToken: cId is null for token ${token.text.content}",
-        data: {
-          "t": token.toJson(),
-          "morph": morph?.name,
-        },
+        data: {"t": token.toJson(), "morph": morph?.name},
       );
       return false;
     }
