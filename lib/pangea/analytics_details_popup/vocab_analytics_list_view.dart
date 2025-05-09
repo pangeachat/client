@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
+import 'package:fluffychat/pangea/analytics_downloads/download_analytics_button.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -78,6 +79,12 @@ class VocabAnalyticsListView extends StatelessWidget {
       ),
     );
 
+    filters.add(
+      const DownloadAnalyticsButton(
+        type: ConstructTypeEnum.vocab,
+      ),
+    );
+
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -98,7 +105,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 225.0),
+                    constraints: const BoxConstraints(maxWidth: 250.0),
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
                       transitionBuilder: (child, animation) => FadeTransition(
