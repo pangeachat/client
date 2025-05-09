@@ -57,13 +57,9 @@ class EditMorphWidgetState extends State<EditMorphWidget> {
     try {
       setState(() => _availableMorphTags = null);
       final resp = await MorphsRepo.get();
-      _availableMorphTags = resp.getDisplayTags(
-        feature.name,
-      );
+      _availableMorphTags = resp.getDisplayTags(feature.name);
     } catch (e) {
-      _availableMorphTags = defaultMorphMapping.getDisplayTags(
-        feature.name,
-      );
+      _availableMorphTags = defaultMorphMapping.getDisplayTags(feature.name);
     } finally {
       if (mounted) setState(() {});
     }
@@ -73,15 +69,14 @@ class EditMorphWidgetState extends State<EditMorphWidget> {
     if (_selectedMorphTag == null) return;
     showFutureLoadingDialog(
       context: context,
-      future: () => _sendEditedMessage(
-        (token) {
-          token.morph[widget.morphFeature] = _selectedMorphTag!;
-          if (widget.morphFeature.name.toLowerCase() == 'pos') {
-            token.pos = _selectedMorphTag!;
-          }
-          return token;
-        },
-      ),
+      future:
+          () => _sendEditedMessage((token) {
+            token.morph[widget.morphFeature] = _selectedMorphTag!;
+            if (widget.morphFeature.name.toLowerCase() == 'pos') {
+              token.pos = _selectedMorphTag!;
+            }
+            return token;
+          }),
     );
   }
 
@@ -90,9 +85,10 @@ class EditMorphWidgetState extends State<EditMorphWidget> {
   ) async {
     try {
       final pm = widget.pangeaMessageEvent;
-      final existingTokens = pm.originalSent!.tokens!
-          .map((token) => PangeaToken.fromJson(token.toJson()))
-          .toList();
+      final existingTokens =
+          pm.originalSent!.tokens!
+              .map((token) => PangeaToken.fromJson(token.toJson()))
+              .toList();
 
       final tokenIndex = existingTokens.indexWhere(
         (token) => token.text.offset == widget.token.text.offset,
@@ -111,12 +107,13 @@ class EditMorphWidgetState extends State<EditMorphWidget> {
           tokens: existingTokens,
           detections: pm.originalSent?.detections,
         ),
-        tokensWritten: pm.originalWritten?.tokens != null
-            ? PangeaMessageTokens(
-                tokens: pm.originalWritten!.tokens!,
-                detections: pm.originalWritten?.detections,
-              )
-            : null,
+        tokensWritten:
+            pm.originalWritten?.tokens != null
+                ? PangeaMessageTokens(
+                  tokens: pm.originalWritten!.tokens!,
+                  detections: pm.originalWritten?.detections,
+                )
+                : null,
         choreo: pm.originalSent?.choreo,
         messageTag: ModelKey.messageTagMorphEdit,
       );
@@ -142,10 +139,7 @@ class EditMorphWidgetState extends State<EditMorphWidget> {
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.only(
-            top: 16.0,
-            bottom: 48.0,
-          ),
+          padding: const EdgeInsets.only(top: 16.0, bottom: 48.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -161,57 +155,56 @@ class EditMorphWidgetState extends State<EditMorphWidget> {
                 else
                   Wrap(
                     alignment: WrapAlignment.center,
-                    children: _availableMorphTags!.map((tag) {
-                      return Container(
-                        margin: const EdgeInsets.all(2),
-                        padding: EdgeInsets.zero,
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(10),
-                          ),
-                          border: Border.all(
-                            color: _selectedMorphTag == tag
-                                ? Theme.of(context).colorScheme.primary
-                                : Colors.transparent,
-                            style: BorderStyle.solid,
-                            width: 2.0,
-                          ),
-                        ),
-                        child: TextButton(
-                          style: ButtonStyle(
-                            padding: WidgetStateProperty.all(
-                              const EdgeInsets.symmetric(
-                                horizontal: 7,
+                    children:
+                        _availableMorphTags!.map((tag) {
+                          return Container(
+                            margin: const EdgeInsets.all(2),
+                            padding: EdgeInsets.zero,
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                              border: Border.all(
+                                color:
+                                    _selectedMorphTag == tag
+                                        ? Theme.of(context).colorScheme.primary
+                                        : Colors.transparent,
+                                style: BorderStyle.solid,
+                                width: 2.0,
                               ),
                             ),
-                            backgroundColor: WidgetStateProperty.all<Color>(
-                              _selectedMorphTag == tag
-                                  ? Theme.of(context)
-                                      .colorScheme
-                                      .primary
-                                      .withAlpha(50)
-                                  : Colors.transparent,
-                            ),
-                            shape: WidgetStateProperty.all(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                            child: TextButton(
+                              style: ButtonStyle(
+                                padding: WidgetStateProperty.all(
+                                  const EdgeInsets.symmetric(horizontal: 7),
+                                ),
+                                backgroundColor: WidgetStateProperty.all<Color>(
+                                  _selectedMorphTag == tag
+                                      ? Theme.of(
+                                        context,
+                                      ).colorScheme.primary.withAlpha(50)
+                                      : Colors.transparent,
+                                ),
+                                shape: WidgetStateProperty.all(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                              onPressed:
+                                  () => setState(() => _selectedMorphTag = tag),
+                              child: Text(
+                                getGrammarCopy(
+                                      category: widget.morphFeature.name,
+                                      lemma: tag,
+                                      context: context,
+                                    ) ??
+                                    tag,
+                                textAlign: TextAlign.center,
                               ),
                             ),
-                          ),
-                          onPressed: () =>
-                              setState(() => _selectedMorphTag = tag),
-                          child: Text(
-                            getGrammarCopy(
-                                  category: widget.morphFeature.name,
-                                  lemma: tag,
-                                  context: context,
-                                ) ??
-                                tag,
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      );
-                    }).toList(),
+                          );
+                        }).toList(),
                   ),
               ],
             ),

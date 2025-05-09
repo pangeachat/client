@@ -17,10 +17,7 @@ class PracticeRecordRepo {
     _memoryCache.clear();
   }
 
-  static void save(
-    PracticeTarget selection,
-    PracticeRecord entry,
-  ) {
+  static void save(PracticeTarget selection, PracticeRecord entry) {
     _storage.write(selection.storageKey, entry.toJson());
     _memoryCache[selection.storageKey] = entry;
   }
@@ -28,14 +25,15 @@ class PracticeRecordRepo {
   static void clean() {
     final Iterable<String> keys = _storage.getKeys();
     if (keys.length > 300) {
-      final entries = keys
-          .map((key) {
-            final entry = PracticeRecord.fromJson(_storage.read(key));
-            return MapEntry(key, entry);
-          })
-          .cast<MapEntry<String, PracticeRecord>>()
-          .toList()
-        ..sort((a, b) => a.value.createdAt.compareTo(b.value.createdAt));
+      final entries =
+          keys
+              .map((key) {
+                final entry = PracticeRecord.fromJson(_storage.read(key));
+                return MapEntry(key, entry);
+              })
+              .cast<MapEntry<String, PracticeRecord>>()
+              .toList()
+            ..sort((a, b) => a.value.createdAt.compareTo(b.value.createdAt));
       for (var i = 0; i < 5; i++) {
         _storage.remove(entries[i].key);
       }
@@ -45,9 +43,7 @@ class PracticeRecordRepo {
     }
   }
 
-  static PracticeRecord get(
-    PracticeTarget target,
-  ) {
+  static PracticeRecord get(PracticeTarget target) {
     final String key = target.storageKey;
     if (_memoryCache.containsKey(key)) {
       return _memoryCache[key]!;

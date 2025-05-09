@@ -38,8 +38,9 @@ extension ConstructExtension on ConstructTypeEnum {
   String? getDisplayCopy(String category, BuildContext context) {
     switch (this) {
       case ConstructTypeEnum.morph:
-        return MorphFeaturesEnumExtension.fromString(category)
-            .getDisplayCopy(context);
+        return MorphFeaturesEnumExtension.fromString(
+          category,
+        ).getDisplayCopy(context);
       case ConstructTypeEnum.vocab:
         return getVocabCategoryName(category, context);
     }

@@ -38,11 +38,12 @@ class VocabAnalyticsListTileState extends State<VocabAnalyticsListTile> {
           width: maxWidth,
           padding: EdgeInsets.all(padding),
           decoration: BoxDecoration(
-            color: _isHovered
-                ? widget.constructUse.constructLevel
-                    .color(context)
-                    .withAlpha(20)
-                : Colors.transparent,
+            color:
+                _isHovered
+                    ? widget.constructUse.constructLevel
+                        .color(context)
+                        .withAlpha(20)
+                    : Colors.transparent,
             borderRadius: BorderRadius.circular(AppConfig.borderRadius),
           ),
           child: Column(
@@ -54,14 +55,13 @@ class VocabAnalyticsListTileState extends State<VocabAnalyticsListTile> {
                 child: Opacity(
                   opacity:
                       widget.constructUse.id.userSetEmoji.isEmpty ? 0.5 : 1,
-                  child: widget.constructUse.id.userSetEmoji.isNotEmpty
-                      ? Text(
-                          widget.constructUse.id.userSetEmoji.first,
-                          style: const TextStyle(
-                            fontSize: 22,
-                          ),
-                        )
-                      : widget.constructUse.constructLevel.icon(36.0),
+                  child:
+                      widget.constructUse.id.userSetEmoji.isNotEmpty
+                          ? Text(
+                            widget.constructUse.id.userSetEmoji.first,
+                            style: const TextStyle(fontSize: 22),
+                          )
+                          : widget.constructUse.constructLevel.icon(36.0),
                 ),
               ),
               Container(
@@ -73,9 +73,12 @@ class VocabAnalyticsListTileState extends State<VocabAnalyticsListTile> {
                   maxWidth: maxWidth - padding * 2,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Theme.of(context).brightness == Brightness.light
-                        ? widget.constructUse.constructLevel.darkColor(context)
-                        : widget.constructUse.constructLevel.color(context),
+                    color:
+                        Theme.of(context).brightness == Brightness.light
+                            ? widget.constructUse.constructLevel.darkColor(
+                              context,
+                            )
+                            : widget.constructUse.constructLevel.color(context),
                   ),
                 ),
               ),

@@ -57,10 +57,7 @@ enum AppSettings<T> {
     'chat.fluffy.no_encryption_warning_shown',
     false,
   ),
-  displayChatDetailsColumn(
-    'chat.fluffy.display_chat_details_column',
-    false,
-  );
+  displayChatDetailsColumn('chat.fluffy.display_chat_details_column', false);
 
   final String key;
   final T defaultValue;

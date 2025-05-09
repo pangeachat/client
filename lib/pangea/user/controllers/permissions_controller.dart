@@ -20,7 +20,8 @@ class PermissionsController extends BaseController {
     final age = today.year - dob.year;
 
     // Check if the birthday has occurred yet this year
-    final hasHadBirthdayThisYear = (today.month > dob.month) ||
+    final hasHadBirthdayThisYear =
+        (today.month > dob.month) ||
         (today.month == dob.month && today.day >= dob.day);
 
     // Return true if they are 18 or older
@@ -39,16 +40,28 @@ class PermissionsController extends BaseController {
     switch (setting) {
       case ToolSetting.interactiveTranslator:
         return _pangeaController
-            .userController.profile.toolSettings.interactiveTranslator;
+            .userController
+            .profile
+            .toolSettings
+            .interactiveTranslator;
       case ToolSetting.interactiveGrammar:
         return _pangeaController
-            .userController.profile.toolSettings.interactiveGrammar;
+            .userController
+            .profile
+            .toolSettings
+            .interactiveGrammar;
       case ToolSetting.immersionMode:
         return _pangeaController
-            .userController.profile.toolSettings.immersionMode;
+            .userController
+            .profile
+            .toolSettings
+            .immersionMode;
       case ToolSetting.definitions:
         return _pangeaController
-            .userController.profile.toolSettings.definitions;
+            .userController
+            .profile
+            .toolSettings
+            .definitions;
       case ToolSetting.autoIGC:
         return _pangeaController.userController.profile.toolSettings.autoIGC;
       default:

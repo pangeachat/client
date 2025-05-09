@@ -15,18 +15,20 @@ class Requests {
   late String? accessToken;
   late String? choreoApiKey;
   //Question: How can we make baseUrl optional?
-  Requests({
-    this.accessToken,
-    this.baseUrl = '',
-    this.choreoApiKey,
-  });
+  Requests({this.accessToken, this.baseUrl = '', this.choreoApiKey});
 
   Future<http.Response> post({
     required String url,
     required Map<dynamic, dynamic> body,
   }) async {
-    body[ModelKey.cefrLevel] = MatrixState
-        .pangeaController.userController.profile.userSettings.cefrLevel.string;
+    body[ModelKey.cefrLevel] =
+        MatrixState
+            .pangeaController
+            .userController
+            .profile
+            .userSettings
+            .cefrLevel
+            .string;
 
     dynamic encoded;
     encoded = jsonEncode(body);
@@ -47,8 +49,14 @@ class Requests {
     required String url,
     required Map<dynamic, dynamic> body,
   }) async {
-    body[ModelKey.cefrLevel] = MatrixState
-        .pangeaController.userController.profile.userSettings.cefrLevel.string;
+    body[ModelKey.cefrLevel] =
+        MatrixState
+            .pangeaController
+            .userController
+            .profile
+            .userSettings
+            .cefrLevel
+            .string;
 
     dynamic encoded;
     encoded = jsonEncode(body);
@@ -67,8 +75,10 @@ class Requests {
   }
 
   Future<http.Response> get({required String url, String objectId = ""}) async {
-    final http.Response response =
-        await http.get(_uriBuilder(url + objectId), headers: _headers);
+    final http.Response response = await http.get(
+      _uriBuilder(url + objectId),
+      headers: _headers,
+    );
 
     handleError(response, objectId: objectId);
 

@@ -7,10 +7,7 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 class ActivityPlanPageLaunchIconButton extends StatelessWidget {
-  const ActivityPlanPageLaunchIconButton({
-    super.key,
-    required this.controller,
-  });
+  const ActivityPlanPageLaunchIconButton({super.key, required this.controller});
 
   final ChatController controller;
 

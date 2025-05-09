@@ -34,31 +34,21 @@ class ClassController extends BaseController {
   }
 
   Future<void> joinCachedSpaceCode(BuildContext context) async {
-    final String? classCode = linkBox.read(
-      PLocalKey.cachedClassCodeToJoin,
-    );
+    final String? classCode = linkBox.read(PLocalKey.cachedClassCodeToJoin);
 
     final String? alias = _classStorage.read(PLocalKey.cachedAliasToJoin);
 
     if (classCode != null) {
-      await joinClasswithCode(
-        context,
-        classCode,
-      );
+      await joinClasswithCode(context, classCode);
 
-      await linkBox.remove(
-        PLocalKey.cachedClassCodeToJoin,
-      );
+      await linkBox.remove(PLocalKey.cachedClassCodeToJoin);
     } else if (alias != null) {
       await joinCachedRoomAlias(alias, context);
       await _classStorage.remove(PLocalKey.cachedAliasToJoin);
     }
   }
 
-  Future<void> joinCachedRoomAlias(
-    String alias,
-    BuildContext context,
-  ) async {
+  Future<void> joinCachedRoomAlias(String alias, BuildContext context) async {
     if (alias.isEmpty) {
       context.go("/rooms");
       return;
@@ -126,7 +116,8 @@ class ClassController extends BaseController {
         final foundClasses = List<String>.from(knockResult['rooms']);
         final alreadyJoined = List<String>.from(knockResult['already_joined']);
 
-        final bool inFoundClass = foundClasses.isNotEmpty &&
+        final bool inFoundClass =
+            foundClasses.isNotEmpty &&
             _pangeaController.matrixState.client.rooms.any(
               (room) => room.id == foundClasses.first,
             );
@@ -141,10 +132,7 @@ class ClassController extends BaseController {
         }
 
         final chosenClassId = foundClasses.first;
-        await chatBox.write(
-          PLocalKey.justInputtedCode,
-          classCode,
-        );
+        await chatBox.write(PLocalKey.justInputtedCode, classCode);
         return chosenClassId;
       },
     );
@@ -195,13 +183,7 @@ class ClassController extends BaseController {
       context.go("/rooms?spaceId=${room.id}");
       return spaceID;
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "classCode": classCode,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"classCode": classCode});
       return result.Result.error(e, s);
     }
   }
@@ -219,10 +201,7 @@ class ClassController extends BaseController {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const BotFace(
-                  width: 100,
-                  expression: BotExpression.idle,
-                ),
+                const BotFace(width: 100, expression: BotExpression.idle),
                 const SizedBox(height: 16),
                 Text(
                   // "Are you like me?",

@@ -20,12 +20,13 @@ class DummyChatListItem extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: titleColor,
-          child: animate
-              ? CircularProgressIndicator(
-                  strokeWidth: 1,
-                  color: theme.textTheme.bodyLarge!.color,
-                )
-              : const SizedBox.shrink(),
+          child:
+              animate
+                  ? CircularProgressIndicator(
+                    strokeWidth: 1,
+                    color: theme.textTheme.bodyLarge!.color,
+                  )
+                  : const SizedBox.shrink(),
         ),
         title: Row(
           children: [

@@ -71,8 +71,9 @@ class LemmaEmojiRowState extends State<LemmaEmojiRow> {
       emojiChoices = info.emoji;
     } catch (e, s) {
       for (int i = 0; i < 3; i++) {
-        emojiChoices
-            .add(AppEmojis.emojis[Random().nextInt(AppEmojis.emojis.length)]);
+        emojiChoices.add(
+          AppEmojis.emojis[Random().nextInt(AppEmojis.emojis.length)],
+        );
       }
       debugger(when: kDebugMode);
       ErrorHandler.logError(data: widget.cId.toJson(), e: e, s: s);
@@ -104,11 +105,7 @@ class LemmaEmojiRowState extends State<LemmaEmojiRow> {
     try {
       displayEmoji = emoji;
 
-      await widget.cId.setUserLemmaInfo(
-        UserSetLemmaInfo(
-          emojis: [emoji],
-        ),
-      );
+      await widget.cId.setUserLemmaInfo(UserSetLemmaInfo(emojis: [emoji]));
 
       if (mounted) {
         widget.emojiSetCallback?.call();
@@ -128,46 +125,41 @@ class LemmaEmojiRowState extends State<LemmaEmojiRow> {
   Widget build(BuildContext context) {
     return Material(
       child: CompositedTransformTarget(
-        link: MatrixState.pAnyState
-            .layerLinkAndKey(
-              widget.cId.string,
-            )
-            .link,
+        link: MatrixState.pAnyState.layerLinkAndKey(widget.cId.string).link,
         child: Container(
-          key: MatrixState.pAnyState
-              .layerLinkAndKey(
-                widget.cId.string,
-              )
-              .key,
+          key: MatrixState.pAnyState.layerLinkAndKey(widget.cId.string).key,
           height: 50,
           width: 50,
           alignment: Alignment.center,
-          child: displayEmoji != null && widget.shouldShowEmojis
-              ? InkWell(
-                  hoverColor:
-                      Theme.of(context).colorScheme.primary.withAlpha(50),
-                  onTap: widget.onTapOverride ?? openEmojiSetOverlay,
-                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      displayEmoji!,
-                      style: TextStyle(fontSize: widget.iconSize ?? 20),
+          child:
+              displayEmoji != null && widget.shouldShowEmojis
+                  ? InkWell(
+                    hoverColor: Theme.of(
+                      context,
+                    ).colorScheme.primary.withAlpha(50),
+                    onTap: widget.onTapOverride ?? openEmojiSetOverlay,
+                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        displayEmoji!,
+                        style: TextStyle(fontSize: widget.iconSize ?? 20),
+                      ),
                     ),
+                  )
+                  : WordZoomActivityButton(
+                    icon: Icon(
+                      Icons.add_reaction_outlined,
+                      color:
+                          widget.isSelected
+                              ? Theme.of(context).colorScheme.primary
+                              : null,
+                    ),
+                    isSelected: widget.isSelected,
+                    onPressed: widget.onTapOverride ?? openEmojiSetOverlay,
+                    opacity: widget.isSelected ? 1 : 0.4,
+                    tooltip: MessageMode.wordEmoji.title(context),
                   ),
-                )
-              : WordZoomActivityButton(
-                  icon: Icon(
-                    Icons.add_reaction_outlined,
-                    color: widget.isSelected
-                        ? Theme.of(context).colorScheme.primary
-                        : null,
-                  ),
-                  isSelected: widget.isSelected,
-                  onPressed: widget.onTapOverride ?? openEmojiSetOverlay,
-                  opacity: widget.isSelected ? 1 : 0.4,
-                  tooltip: MessageMode.wordEmoji.title(context),
-                ),
         ),
       ),
     );
@@ -211,14 +203,15 @@ class EmojiEditOverlay extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
-            children: emojis
-                .map(
-                  (emoji) => EmojiChoiceItem(
-                    emoji: emoji,
-                    onSelectEmoji: onSelectEmoji,
-                  ),
-                )
-                .toList(),
+            children:
+                emojis
+                    .map(
+                      (emoji) => EmojiChoiceItem(
+                        emoji: emoji,
+                        onSelectEmoji: onSelectEmoji,
+                      ),
+                    )
+                    .toList(),
           ),
         ),
       ),
@@ -260,9 +253,10 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
           duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: _isHovered
-                ? Theme.of(context).colorScheme.primary.withAlpha(50)
-                : Colors.transparent,
+            color:
+                _isHovered
+                    ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                    : Colors.transparent,
             borderRadius: BorderRadius.circular(AppConfig.borderRadius),
           ),
           child: Text(

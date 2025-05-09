@@ -36,14 +36,14 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
   @override
   void initState() {
     super.initState();
-    _memberSubscription = event.room.client.onRoomState.stream.where(
-      (u) {
-        return u.roomId == event.room.id &&
-            u.state.type == EventTypes.RoomMember;
-      },
-    ).listen((_) {
-      if (_members > 1) setState(() {});
-    });
+    _memberSubscription = event.room.client.onRoomState.stream
+        .where((u) {
+          return u.roomId == event.room.id &&
+              u.state.type == EventTypes.RoomMember;
+        })
+        .listen((_) {
+          if (_members > 1) setState(() {});
+        });
   }
 
   @override
@@ -106,21 +106,13 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
           const SizedBox(height: 16.0),
           InstructionsInlineTooltip(
             instructionsEnum: InstructionsEnum.clickMessage,
-            padding: const EdgeInsets.only(
-              left: 16.0,
-              right: 16.0,
-              top: 16.0,
-            ),
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
             onClose: () => setState(() {}),
           ),
           if (_members <= 1 && InstructionsEnum.clickMessage.isToggledOff)
             const InstructionsInlineTooltip(
               instructionsEnum: InstructionsEnum.emptyChatWarning,
-              padding: EdgeInsets.only(
-                left: 16.0,
-                right: 16.0,
-                top: 16.0,
-              ),
+              padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 16.0),
             ),
           // Pangea#
         ],

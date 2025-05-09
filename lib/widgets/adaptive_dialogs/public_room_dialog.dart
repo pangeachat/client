@@ -42,8 +42,9 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (chunk != null) {
-      final room = MatrixState.pangeaController.matrixState.client
-          .getRoomById(chunk!.roomId);
+      final room = MatrixState.pangeaController.matrixState.client.getRoomById(
+        chunk!.roomId,
+      );
 
       if (room != null && room.membership == Membership.join) {
         context.go("/rooms?spaceId=${room.id}");
@@ -69,12 +70,10 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
         if (chunk != null && client.getRoomById(chunk.roomId) != null) {
           return chunk.roomId;
         }
-        final roomId = chunk != null && knock
-            ? await client.knockRoom(chunk.roomId, via: via)
-            : await client.joinRoom(
-                roomAlias ?? chunk!.roomId,
-                via: via,
-              );
+        final roomId =
+            chunk != null && knock
+                ? await client.knockRoom(chunk.roomId, via: via)
+                : await client.joinRoom(roomAlias ?? chunk!.roomId, via: via);
 
         // #Pangea
         // if (!knock && client.getRoomById(roomId) == null) {
@@ -122,11 +121,9 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
     final chunk = this.chunk;
     if (chunk != null) return chunk;
     final query = await Matrix.of(context).client.queryPublicRooms(
-          server: roomAlias!.domain,
-          filter: PublicRoomQueryFilter(
-            genericSearchTerm: roomAlias,
-          ),
-        );
+      server: roomAlias!.domain,
+      filter: PublicRoomQueryFilter(genericSearchTerm: roomAlias),
+    );
     if (!query.chunk.any(_testRoom)) {
       throw (L10n.of(context).noRoomsFound);
     }
@@ -135,12 +132,12 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
 
   // #Pangea
   Future<void> _joinWithCode() async {
-    final resp =
-        await MatrixState.pangeaController.classController.joinClasswithCode(
-      context,
-      _codeController.text,
-      notFoundError: L10n.of(context).notTheCodeError,
-    );
+    final resp = await MatrixState.pangeaController.classController
+        .joinClasswithCode(
+          context,
+          _codeController.text,
+          notFoundError: L10n.of(context).notTheCodeError,
+        );
     if (!resp.isError) {
       Navigator.of(context).pop(true);
     }
@@ -170,10 +167,7 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
       content: ConstrainedBox(
         // #Pangea
         // constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
-        constraints: const BoxConstraints(
-          maxWidth: 256,
-          maxHeight: 300,
-        ),
+        constraints: const BoxConstraints(maxWidth: 256, maxHeight: 300),
         // Pangea#
         child: FutureBuilder<PublicRoomsChunk>(
           future: _search(context),
@@ -191,81 +185,92 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                 children: [
                   if (roomLink != null)
                     HoverBuilder(
-                      builder: (context, hovered) => StatefulBuilder(
-                        builder: (context, setState) => MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () {
-                              Clipboard.setData(
-                                // #Pangea
-                                // ClipboardData(text: roomLink),
-                                ClipboardData(text: roomLink!),
-                                // Pangea#
-                              );
-                              setState(() {
-                                copied = true;
-                              });
-                            },
-                            child: RichText(
-                              text: TextSpan(
-                                children: [
-                                  WidgetSpan(
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 4.0),
-                                      child: AnimatedScale(
-                                        duration:
-                                            FluffyThemes.animationDuration,
-                                        curve: FluffyThemes.animationCurve,
-                                        scale: hovered
-                                            ? 1.33
-                                            : copied
-                                                ? 1.25
-                                                : 1.0,
-                                        child: Icon(
-                                          copied
-                                              ? Icons.check_circle
-                                              : Icons.copy,
-                                          size: 12,
-                                          color: copied ? Colors.green : null,
-                                        ),
+                      builder:
+                          (context, hovered) => StatefulBuilder(
+                            builder:
+                                (context, setState) => MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Clipboard.setData(
+                                        // #Pangea
+                                        // ClipboardData(text: roomLink),
+                                        ClipboardData(text: roomLink!),
+                                        // Pangea#
+                                      );
+                                      setState(() {
+                                        copied = true;
+                                      });
+                                    },
+                                    child: RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          WidgetSpan(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                right: 4.0,
+                                              ),
+                                              child: AnimatedScale(
+                                                duration:
+                                                    FluffyThemes
+                                                        .animationDuration,
+                                                curve:
+                                                    FluffyThemes.animationCurve,
+                                                scale:
+                                                    hovered
+                                                        ? 1.33
+                                                        : copied
+                                                        ? 1.25
+                                                        : 1.0,
+                                                child: Icon(
+                                                  copied
+                                                      ? Icons.check_circle
+                                                      : Icons.copy,
+                                                  size: 12,
+                                                  color:
+                                                      copied
+                                                          ? Colors.green
+                                                          : null,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          // #Pangea
+                                          // TextSpan(text: roomLink),
+                                          TextSpan(
+                                            text:
+                                                L10n.of(context).shareSpaceLink,
+                                          ),
+                                          // Pangea#
+                                        ],
+                                        style: theme.textTheme.bodyMedium
+                                            ?.copyWith(fontSize: 10),
                                       ),
+                                      textAlign: TextAlign.center,
                                     ),
                                   ),
-                                  // #Pangea
-                                  // TextSpan(text: roomLink),
-                                  TextSpan(
-                                    text: L10n.of(context).shareSpaceLink,
-                                  ),
-                                  // Pangea#
-                                ],
-                                style: theme.textTheme.bodyMedium
-                                    ?.copyWith(fontSize: 10),
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
+                                ),
                           ),
-                        ),
-                      ),
                     ),
                   Center(
                     child: Avatar(
                       mxContent: avatar,
                       name: profile?.name ?? roomLink,
                       size: Avatar.defaultSize * 2,
-                      onTap: avatar != null
-                          ? () => showDialog(
+                      onTap:
+                          avatar != null
+                              ? () => showDialog(
                                 context: context,
                                 builder: (_) => MxcImageViewer(avatar),
                               )
-                          : null,
+                              : null,
                     ),
                   ),
                   if (profile?.numJoinedMembers != null)
                     Text(
-                      L10n.of(context).countParticipants(
-                        profile?.numJoinedMembers ?? 0,
-                      ),
+                      L10n.of(
+                        context,
+                      ).countParticipants(profile?.numJoinedMembers ?? 0),
                       style: const TextStyle(fontSize: 10),
                       textAlign: TextAlign.center,
                     ),
@@ -283,9 +288,7 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                         children: [
                           Expanded(
                             child: TextField(
-                              style: const TextStyle(
-                                fontSize: 12,
-                              ),
+                              style: const TextStyle(fontSize: 12),
                               controller: _codeController,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
@@ -297,9 +300,7 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                                 contentPadding: const EdgeInsets.symmetric(
                                   horizontal: 16.0,
                                 ),
-                                labelStyle: const TextStyle(
-                                  fontSize: 12,
-                                ),
+                                labelStyle: const TextStyle(fontSize: 12),
                                 hintStyle: TextStyle(
                                   color: Theme.of(context).hintColor,
                                   fontSize: 12,
@@ -331,9 +332,7 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                               ),
                               child: Text(
                                 L10n.of(context).join,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                ),
+                                style: const TextStyle(fontSize: 12),
                               ),
                             ),
                           ),
@@ -345,8 +344,9 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                   if (topic != null && topic.isNotEmpty)
                     SelectableLinkify(
                       text: topic,
-                      textScaleFactor:
-                          MediaQuery.textScalerOf(context).scale(1),
+                      textScaleFactor: MediaQuery.textScalerOf(
+                        context,
+                      ).scale(1),
                       textAlign: TextAlign.center,
                       options: const LinkifyOptions(humanize: false),
                       linkStyle: TextStyle(
@@ -354,8 +354,8 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                         decoration: TextDecoration.underline,
                         decorationColor: theme.colorScheme.primary,
                       ),
-                      onOpen: (url) =>
-                          UrlLauncher(context, url.url).launchUrl(),
+                      onOpen:
+                          (url) => UrlLauncher(context, url.url).launchUrl(),
                     ),
                 ],
               ),
@@ -375,8 +375,8 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                 ? L10n.of(context).askToJoin
                 // Pangea#
                 : chunk?.roomType == 'm.space'
-                    ? L10n.of(context).joinSpace
-                    : L10n.of(context).joinRoom,
+                ? L10n.of(context).joinSpace
+                : L10n.of(context).joinRoom,
           ),
         ),
         AdaptiveDialogAction(

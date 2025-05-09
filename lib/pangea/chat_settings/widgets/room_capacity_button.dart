@@ -12,11 +12,7 @@ class RoomCapacityButton extends StatefulWidget {
   final Room room;
   final ChatDetailsController? controller;
 
-  const RoomCapacityButton({
-    super.key,
-    required this.room,
-    this.controller,
-  });
+  const RoomCapacityButton({super.key, required this.room, this.controller});
 
   @override
   RoomCapacityButtonState createState() => RoomCapacityButtonState();
@@ -90,9 +86,7 @@ class RoomCapacityButtonState extends State<RoomCapacityButton> {
     );
     if (success.error == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(L10n.of(context).chatCapacityHasBeenChanged),
-        ),
+        SnackBar(content: Text(L10n.of(context).chatCapacityHasBeenChanged)),
       );
       setState(() {});
     }

@@ -23,10 +23,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class SettingsLearning extends StatefulWidget {
   final bool isDialog;
 
-  const SettingsLearning({
-    this.isDialog = true,
-    super.key,
-  });
+  const SettingsLearning({this.isDialog = true, super.key});
 
   @override
   SettingsLearningController createState() => SettingsLearningController();
@@ -61,15 +58,15 @@ class SettingsLearningController extends State<SettingsLearning> {
   bool get haveSettingsBeenChanged {
     for (final setting in _profile.userSettings.toJson().entries) {
       if (setting.value !=
-          pangeaController.userController.profile.userSettings
-              .toJson()[setting.key]) {
+          pangeaController.userController.profile.userSettings.toJson()[setting
+              .key]) {
         return true;
       }
     }
     for (final setting in _profile.toolSettings.toJson().entries) {
       if (setting.value !=
-          pangeaController.userController.profile.toolSettings
-              .toJson()[setting.key]) {
+          pangeaController.userController.profile.toolSettings.toJson()[setting
+              .key]) {
         return true;
       }
     }
@@ -123,10 +120,11 @@ class SettingsLearningController extends State<SettingsLearning> {
     if (formKey.currentState!.validate()) {
       await showFutureLoadingDialog(
         context: context,
-        future: () async => pangeaController.userController.updateProfile(
-          (_) => _profile,
-          waitForDataInSync: true,
-        ),
+        future:
+            () async => pangeaController.userController.updateProfile(
+              (_) => _profile,
+              waitForDataInSync: true,
+            ),
       );
       Navigator.of(context).pop();
     }
@@ -136,13 +134,11 @@ class SettingsLearningController extends State<SettingsLearning> {
     _profile.instructionSettings = InstructionSettings();
     await showFutureLoadingDialog(
       context: context,
-      future: () async => pangeaController.userController.updateProfile(
-        (profile) {
-          profile.instructionSettings = InstructionSettings();
-          return profile;
-        },
-        waitForDataInSync: true,
-      ),
+      future:
+          () async => pangeaController.userController.updateProfile((profile) {
+            profile.instructionSettings = InstructionSettings();
+            return profile;
+          }, waitForDataInSync: true),
       onError: (e, s) {
         debugPrint("Error resetting instruction tooltips: $e");
         debugger(when: kDebugMode);
@@ -257,12 +253,14 @@ class SettingsLearningController extends State<SettingsLearning> {
             : PLanguageStore.byLangCode('es'));
   }
 
-  LanguageModel? get userL1 => _profile.userSettings.sourceLanguage != null
-      ? PLanguageStore.byLangCode(_profile.userSettings.sourceLanguage!)
-      : null;
-  LanguageModel? get userL2 => _profile.userSettings.targetLanguage != null
-      ? PLanguageStore.byLangCode(_profile.userSettings.targetLanguage!)
-      : null;
+  LanguageModel? get userL1 =>
+      _profile.userSettings.sourceLanguage != null
+          ? PLanguageStore.byLangCode(_profile.userSettings.sourceLanguage!)
+          : null;
+  LanguageModel? get userL2 =>
+      _profile.userSettings.targetLanguage != null
+          ? PLanguageStore.byLangCode(_profile.userSettings.targetLanguage!)
+          : null;
 
   bool get publicProfile => _profile.userSettings.publicProfile ?? true;
 

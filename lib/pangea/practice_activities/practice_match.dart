@@ -13,13 +13,9 @@ class PracticeMatchActivity {
 
   List<PracticeChoice> choices = List.empty(growable: true);
 
-  PracticeMatchActivity({
-    required this.matchInfo,
-  }) {
+  PracticeMatchActivity({required this.matchInfo}) {
     for (final ith in matchInfo.entries) {
-      debugPrint(
-        'Construct: ${ith.key}, Forms: ${ith.value}',
-      );
+      debugPrint('Construct: ${ith.key}, Forms: ${ith.value}');
     }
     // for all the entries in matchInfo, remove an Strings that appear in multiple entries
     final Map<String, int> allForms = {};
@@ -80,28 +76,22 @@ class PracticeMatchActivity {
     final Map<ConstructForm, List<String>> matchInfo = {};
     for (final constructJson in json['match_info']) {
       final ConstructForm cId = ConstructForm.fromJson(constructJson['cId']);
-      final List<String> surfaceForms =
-          List<String>.from(constructJson['forms']);
+      final List<String> surfaceForms = List<String>.from(
+        constructJson['forms'],
+      );
       matchInfo[cId] = surfaceForms;
     }
 
-    return PracticeMatchActivity(
-      matchInfo: matchInfo,
-    );
+    return PracticeMatchActivity(matchInfo: matchInfo);
   }
 
   Map<String, dynamic> toJson() {
     final List<Map<String, dynamic>> matchInfo = [];
     for (final cId in this.matchInfo.keys) {
-      matchInfo.add({
-        'cId': cId.toJson(),
-        'forms': this.matchInfo[cId],
-      });
+      matchInfo.add({'cId': cId.toJson(), 'forms': this.matchInfo[cId]});
     }
 
-    return {
-      'match_info': matchInfo,
-    };
+    return {'match_info': matchInfo};
   }
 
   @override
