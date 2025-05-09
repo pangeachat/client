@@ -1,11 +1,13 @@
 // ignore_for_file: implementation_imports
 
-import 'package:fluffychat/pages/chat_details/chat_details.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/visibility.dart' as visible;
+
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 class ClassNameHeader extends StatelessWidget {
   final Room room;
