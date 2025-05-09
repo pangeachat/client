@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/analytics_details_popup/morph_analytics_list_v
 import 'package:fluffychat/pangea/analytics_details_popup/morph_details_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_details_view.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_view.dart';
+import 'package:fluffychat/pangea/analytics_downloads/download_analytics_button.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -160,6 +161,10 @@ class AnalyticsPopupWrapperState extends State<AnalyticsPopupWrapper> {
                 localView = ConstructTypeEnum.morph;
                 localConstructZoom = null;
               }),
+            ),
+            const SizedBox(width: 4.0),
+            const DownloadAnalyticsButton(
+              type: ConstructTypeEnum.morph,
             ),
             const SizedBox(width: 4.0),
           ],
