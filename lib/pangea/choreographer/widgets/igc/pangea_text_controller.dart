@@ -18,10 +18,7 @@ class PangeaTextController extends TextEditingController {
   Choreographer choreographer;
 
   EditType editType = EditType.keyboard;
-  PangeaTextController({
-    String? text,
-    required this.choreographer,
-  }) {
+  PangeaTextController({String? text, required this.choreographer}) {
     text ??= '';
     this.text = text;
   }
@@ -46,15 +43,15 @@ class PangeaTextController extends TextEditingController {
 
     // show the paywall if appropriate
     if (choreographer
-                .pangeaController.subscriptionController.subscriptionStatus ==
+                .pangeaController
+                .subscriptionController
+                .subscriptionStatus ==
             SubscriptionStatus.shouldShowPaywall &&
         !choreographer.isFetching &&
         text.isNotEmpty) {
       OverlayUtil.showPositionedCard(
         context: context,
-        cardToShow: PaywallCard(
-          chatController: choreographer.chatController,
-        ),
+        cardToShow: PaywallCard(chatController: choreographer.chatController),
         maxHeight: 325,
         maxWidth: 325,
         transformTargetId: choreographer.inputTransformTargetKey,
@@ -73,10 +70,8 @@ class PangeaTextController extends TextEditingController {
       return;
     }
 
-    final int matchIndex =
-        choreographer.igc.igcTextData!.getTopMatchIndexForOffset(
-      selection.baseOffset,
-    );
+    final int matchIndex = choreographer.igc.igcTextData!
+        .getTopMatchIndexForOffset(selection.baseOffset);
 
     // if autoplay on and it start then just start it
     if (matchIndex != -1 &&
@@ -87,27 +82,29 @@ class PangeaTextController extends TextEditingController {
       );
     }
 
-    final Widget? cardToShow = matchIndex != -1
-        ? SpanCard(
-            scm: SpanCardModel(
-              // igcTextData: choreographer.igc.igcTextData!,
-              matchIndex: matchIndex,
-              onReplacementSelect: choreographer.onReplacementSelect,
-              // may not need this
-              onSentenceRewrite: ((sentenceRewrite) async {}),
-              onIgnore: () => choreographer.onIgnoreMatch(
-                cursorOffset: selection.baseOffset,
+    final Widget? cardToShow =
+        matchIndex != -1
+            ? SpanCard(
+              scm: SpanCardModel(
+                // igcTextData: choreographer.igc.igcTextData!,
+                matchIndex: matchIndex,
+                onReplacementSelect: choreographer.onReplacementSelect,
+                // may not need this
+                onSentenceRewrite: ((sentenceRewrite) async {}),
+                onIgnore:
+                    () => choreographer.onIgnoreMatch(
+                      cursorOffset: selection.baseOffset,
+                    ),
+                onITStart: () {
+                  choreographer.onITStart(
+                    choreographer.igc.igcTextData!.matches[matchIndex],
+                  );
+                },
+                choreographer: choreographer,
               ),
-              onITStart: () {
-                choreographer.onITStart(
-                  choreographer.igc.igcTextData!.matches[matchIndex],
-                );
-              },
-              choreographer: choreographer,
-            ),
-            roomId: choreographer.roomId,
-          )
-        : null;
+              roomId: choreographer.roomId,
+            )
+            : null;
 
     if (cardToShow != null) {
       MatrixState.pAnyState.closeAllOverlays(
@@ -116,10 +113,11 @@ class PangeaTextController extends TextEditingController {
       OverlayUtil.showPositionedCard(
         overlayKey: matchIndex != -1 ? "span_card_overlay_$matchIndex" : null,
         context: context,
-        maxHeight: matchIndex != -1 &&
-                choreographer.igc.igcTextData!.matches[matchIndex].isITStart
-            ? 260
-            : 400,
+        maxHeight:
+            matchIndex != -1 &&
+                    choreographer.igc.igcTextData!.matches[matchIndex].isITStart
+                ? 260
+                : 400,
         maxWidth: 350,
         cardToShow: cardToShow,
         transformTargetId: choreographer.inputTransformTargetKey,
@@ -150,17 +148,18 @@ class PangeaTextController extends TextEditingController {
     //   debugPrint("composing after ${value.composing.textAfter(value.text)}");
     // }
 
-    final SubscriptionStatus canSendStatus = choreographer
-        .pangeaController.subscriptionController.subscriptionStatus;
+    final SubscriptionStatus canSendStatus =
+        choreographer
+            .pangeaController
+            .subscriptionController
+            .subscriptionStatus;
     if (canSendStatus == SubscriptionStatus.shouldShowPaywall &&
         !choreographer.isFetching &&
         text.isNotEmpty) {
       return TextSpan(
         text: text,
         style: style?.merge(
-          IGCTextData.underlineStyle(
-            const Color.fromARGB(187, 132, 96, 224),
-          ),
+          IGCTextData.underlineStyle(const Color.fromARGB(187, 132, 96, 224)),
         ),
       );
     } else if (choreographer.igc.igcTextData == null || text.isEmpty) {
@@ -178,11 +177,12 @@ class PangeaTextController extends TextEditingController {
         style: style,
         children: [
           ...choreographer.igc.igcTextData!.constructTokenSpan(
-            choreoSteps: choreoSteps.isNotEmpty &&
-                    choreoSteps.last.acceptedOrIgnoredMatch?.status ==
-                        PangeaMatchStatus.automatic
-                ? choreoSteps
-                : [],
+            choreoSteps:
+                choreoSteps.isNotEmpty &&
+                        choreoSteps.last.acceptedOrIgnoredMatch?.status ==
+                            PangeaMatchStatus.automatic
+                    ? choreoSteps
+                    : [],
             defaultStyle: style,
             onUndo: choreographer.onUndoReplacement,
           ),

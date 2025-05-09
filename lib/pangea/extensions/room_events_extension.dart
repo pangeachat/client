@@ -14,26 +14,14 @@ extension EventsRoomExtension on Room {
       try {
         await room.leave();
       } catch (e, s) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {
-            'roomID': room.id,
-          },
-        );
+        ErrorHandler.logError(e: e, s: s, data: {'roomID': room.id});
       }
     }
 
     try {
       await leave();
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          'roomID': id,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {'roomID': id});
     }
   }
 
@@ -115,15 +103,16 @@ extension EventsRoomExtension on Room {
               ? inReplyTo.formattedText
               : htmlEscape.convert(inReplyTo.body).replaceAll('\n', '<br>'))
           .replaceAll(
-        RegExp(
-          r'<mx-reply>.*</mx-reply>',
-          caseSensitive: false,
-          multiLine: false,
-          dotAll: true,
-        ),
-        '',
-      );
-      final repliedHtml = content.tryGet<String>('formatted_body') ??
+            RegExp(
+              r'<mx-reply>.*</mx-reply>',
+              caseSensitive: false,
+              multiLine: false,
+              dotAll: true,
+            ),
+            '',
+          );
+      final repliedHtml =
+          content.tryGet<String>('formatted_body') ??
           htmlEscape
               .convert(content.tryGet<String>('body') ?? '')
               .replaceAll('\n', '<br>');
@@ -134,9 +123,7 @@ extension EventsRoomExtension on Room {
       content['body'] =
           '${replyText.replaceAll('@room', '@\u200broom')}\n\n${content.tryGet<String>('body') ?? ''}';
       content['m.relates_to'] = {
-        'm.in_reply_to': {
-          'event_id': inReplyTo.eventId,
-        },
+        'm.in_reply_to': {'event_id': inReplyTo.eventId},
       };
     }
 
@@ -211,10 +198,7 @@ extension EventsRoomExtension on Room {
     //       threadRootEventId: threadRootEventId,
     //       threadLastEventId: threadLastEventId);
     // }
-    final event = <String, dynamic>{
-      'msgtype': msgtype,
-      'body': message,
-    };
+    final event = <String, dynamic>{'msgtype': msgtype, 'body': message};
     if (choreo != null) {
       event[ModelKey.choreoRecord] = choreo.toJson();
     }
@@ -282,10 +266,7 @@ extension EventsRoomExtension on Room {
 
     MatrixFile? file;
     if (filename != null && bytes != null) {
-      file = MatrixFile(
-        bytes: bytes,
-        name: filename,
-      );
+      file = MatrixFile(bytes: bytes, name: filename);
     }
     final eventId = await pangeaSendTextEvent(
       activity.markdown,
@@ -296,9 +277,7 @@ extension EventsRoomExtension on Room {
       await sendFileEvent(
         file,
         shrinkImageMaxDimension: 1600,
-        extraContent: {
-          ModelKey.messageTags: ModelKey.messageTagActivityPlan,
-        },
+        extraContent: {ModelKey.messageTags: ModelKey.messageTagActivityPlan},
       );
     }
 
@@ -330,12 +309,7 @@ extension EventsRoomExtension on Room {
       Direction.b,
       limit: count ?? 100,
       filter: jsonEncode(
-        StateFilter(
-          types: [
-            PangeaEventTypes.construct,
-          ],
-          senders: [userID],
-        ),
+        StateFilter(types: [PangeaEventTypes.construct], senders: [userID]),
       ),
     );
 
@@ -347,12 +321,7 @@ extension EventsRoomExtension on Room {
         Direction.b,
         limit: count ?? 100,
         filter: jsonEncode(
-          StateFilter(
-            types: [
-              PangeaEventTypes.construct,
-            ],
-            senders: [userID],
-          ),
+          StateFilter(types: [PangeaEventTypes.construct], senders: [userID]),
         ),
         from: resp.end,
       );

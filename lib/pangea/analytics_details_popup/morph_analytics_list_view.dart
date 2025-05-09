@@ -19,10 +19,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class MorphAnalyticsListView extends StatelessWidget {
   final AnalyticsPopupWrapperState controller;
 
-  const MorphAnalyticsListView({
-    required this.controller,
-    super.key,
-  });
+  const MorphAnalyticsListView({required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,16 +41,17 @@ class MorphAnalyticsListView extends StatelessWidget {
                 final feature = controller.features[index];
                 return feature.displayTags.isNotEmpty
                     ? Padding(
-                        padding: const EdgeInsets.only(bottom: 16.0),
-                        child: MorphFeatureBox(
-                          morphFeature: feature.feature,
-                          allTags: controller.morphs
-                              .getDisplayTags(feature.feature)
-                              .map((tag) => tag.toLowerCase())
-                              .toSet(),
-                          onConstructZoom: controller.setConstructZoom,
-                        ),
-                      )
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: MorphFeatureBox(
+                        morphFeature: feature.feature,
+                        allTags:
+                            controller.morphs
+                                .getDisplayTags(feature.feature)
+                                .map((tag) => tag.toLowerCase())
+                                .toSet(),
+                        onConstructZoom: controller.setConstructZoom,
+                      ),
+                    )
                     : const SizedBox.shrink();
               },
             ),
@@ -121,38 +119,40 @@ class MorphFeatureBox extends StatelessWidget {
                   alignment: WrapAlignment.center,
                   spacing: 16.0,
                   runSpacing: 16.0,
-                  children: allTags
-                      .map(
-                        (morphTag) {
-                          final id = ConstructIdentifier(
-                            lemma: morphTag,
-                            type: ConstructTypeEnum.morph,
-                            category: morphFeature,
-                          );
+                  children:
+                      allTags
+                          .map((morphTag) {
+                            final id = ConstructIdentifier(
+                              lemma: morphTag,
+                              type: ConstructTypeEnum.morph,
+                              category: morphFeature,
+                            );
 
-                          final analytics = MatrixState.pangeaController
-                                  .getAnalytics.constructListModel
-                                  .getConstructUses(id) ??
-                              ConstructUses(
-                                lemma: morphTag,
-                                constructType: ConstructTypeEnum.morph,
-                                category: morphFeature,
-                                uses: [],
-                              );
+                            final analytics =
+                                MatrixState
+                                    .pangeaController
+                                    .getAnalytics
+                                    .constructListModel
+                                    .getConstructUses(id) ??
+                                ConstructUses(
+                                  lemma: morphTag,
+                                  constructType: ConstructTypeEnum.morph,
+                                  category: morphFeature,
+                                  uses: [],
+                                );
 
-                          return MorphTagChip(
-                            morphFeature: morphFeature,
-                            morphTag: morphTag,
-                            constructAnalytics: analytics,
-                            onTap: () => onConstructZoom(id),
-                          );
-                        },
-                      )
-                      .sortedBy<num>(
-                        (chip) => chip.constructAnalytics.points,
-                      )
-                      .reversed
-                      .toList(),
+                            return MorphTagChip(
+                              morphFeature: morphFeature,
+                              morphTag: morphTag,
+                              constructAnalytics: analytics,
+                              onTap: () => onConstructZoom(id),
+                            );
+                          })
+                          .sortedBy<num>(
+                            (chip) => chip.constructAnalytics.points,
+                          )
+                          .reversed
+                          .toList(),
                 ),
               ),
             ],
@@ -193,22 +193,20 @@ class MorphTagChip extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(32.0),
-            gradient: unlocked
-                ? LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: <Color>[
-                      Colors.transparent,
-                      constructAnalytics.lemmaCategory.color(context),
-                    ],
-                  )
-                : null,
+            gradient:
+                unlocked
+                    ? LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: <Color>[
+                        Colors.transparent,
+                        constructAnalytics.lemmaCategory.color(context),
+                      ],
+                    )
+                    : null,
             color: unlocked ? null : theme.disabledColor,
           ),
-          padding: const EdgeInsets.symmetric(
-            vertical: 4.0,
-            horizontal: 8.0,
-          ),
+          padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             spacing: 8.0,
@@ -216,15 +214,10 @@ class MorphTagChip extends StatelessWidget {
               SizedBox(
                 width: 28.0,
                 height: 28.0,
-                child: unlocked || Matrix.of(context).client.isSupportAccount
-                    ? MorphIcon(
-                        morphFeature: feature,
-                        morphTag: morphTag,
-                      )
-                    : const Icon(
-                        Icons.lock,
-                        color: Colors.white,
-                      ),
+                child:
+                    unlocked || Matrix.of(context).client.isSupportAccount
+                        ? MorphIcon(morphFeature: feature, morphTag: morphTag)
+                        : const Icon(Icons.lock, color: Colors.white),
               ),
               Text(
                 getGrammarCopy(
@@ -235,9 +228,10 @@ class MorphTagChip extends StatelessWidget {
                     morphTag,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: theme.brightness == Brightness.dark
-                      ? Colors.white
-                      : Colors.black,
+                  color:
+                      theme.brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
                 ),
               ),
             ],

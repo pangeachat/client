@@ -15,7 +15,8 @@ class BotStyle {
     try {
       final TextStyle botStyle = TextStyle(
         fontWeight: bold ? FontWeight.w700 : null,
-        fontSize: AppConfig.messageFontSize *
+        fontSize:
+            AppConfig.messageFontSize *
             AppConfig.fontSizeFactor *
             (big == true ? 1.2 : 1),
         fontStyle: italics ? FontStyle.italic : null,
@@ -26,11 +27,7 @@ class BotStyle {
 
       return existingStyle?.merge(botStyle) ?? botStyle;
     } catch (err, stack) {
-      ErrorHandler.logError(
-        m: "error getting styles",
-        s: stack,
-        data: {},
-      );
+      ErrorHandler.logError(m: "error getting styles", s: stack, data: {});
       return existingStyle ?? const TextStyle();
     }
   }

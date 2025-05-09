@@ -45,8 +45,9 @@ class _VideoRendererState extends State<VideoRenderer> {
 
   @override
   void initState() {
-    _streamChangeSubscription =
-        widget.stream?.onStreamChanged.stream.listen((stream) {
+    _streamChangeSubscription = widget.stream?.onStreamChanged.stream.listen((
+      stream,
+    ) {
       setState(() {
         _renderer?.srcObject = stream;
       });
@@ -68,19 +69,20 @@ class _VideoRendererState extends State<VideoRenderer> {
   }
 
   @override
-  Widget build(BuildContext context) => !_rendererReady
-      ? Container()
-      : Builder(
-          key: widget.key,
-          builder: (ctx) {
-            return RTCVideoView(
-              _renderer!,
-              mirror: widget.mirror,
-              filterQuality: FilterQuality.medium,
-              objectFit: widget.fit,
-              placeholderBuilder: (_) =>
-                  Container(color: Colors.white.withAlpha(45)),
-            );
-          },
-        );
+  Widget build(BuildContext context) =>
+      !_rendererReady
+          ? Container()
+          : Builder(
+            key: widget.key,
+            builder: (ctx) {
+              return RTCVideoView(
+                _renderer!,
+                mirror: widget.mirror,
+                filterQuality: FilterQuality.medium,
+                objectFit: widget.fit,
+                placeholderBuilder:
+                    (_) => Container(color: Colors.white.withAlpha(45)),
+              );
+            },
+          );
 }

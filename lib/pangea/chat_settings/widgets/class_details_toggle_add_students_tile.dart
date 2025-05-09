@@ -28,9 +28,7 @@ class SpaceDetailsToggleAddStudentsTile extends StatelessWidget {
           leading: CircleAvatar(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             foregroundColor: Theme.of(context).textTheme.bodyLarge!.color,
-            child: const Icon(
-              Icons.add,
-            ),
+            child: const Icon(Icons.add),
           ),
           trailing: Icon(
             controller.displayAddStudentOptions

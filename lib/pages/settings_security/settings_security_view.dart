@@ -33,10 +33,9 @@ class SettingsSecurityView extends StatelessWidget {
         iconColor: theme.colorScheme.onSurface,
         child: MaxWidthBody(
           child: FutureBuilder(
-            future: Matrix.of(context)
-                .client
-                .getCapabilities()
-                .timeout(const Duration(seconds: 10)),
+            future: Matrix.of(
+              context,
+            ).client.getCapabilities().timeout(const Duration(seconds: 10)),
             builder: (context, snapshot) {
               final capabilities = snapshot.data;
               final error = snapshot.error;
@@ -82,8 +81,8 @@ class SettingsSecurityView extends StatelessWidget {
                         Matrix.of(context).client.ignoredUsers.length,
                       ),
                     ),
-                    onTap: () =>
-                        context.go('/rooms/settings/security/ignorelist'),
+                    onTap:
+                        () => context.go('/rooms/settings/security/ignorelist'),
                   ),
                   if (Matrix.of(context).client.encryption != null) ...{
                     if (PlatformInfos.isMobile)
@@ -107,24 +106,29 @@ class SettingsSecurityView extends StatelessWidget {
                   ),
                   ListTile(
                     title: Material(
-                      borderRadius:
-                          BorderRadius.circular(AppConfig.borderRadius / 2),
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius / 2,
+                      ),
                       color: theme.colorScheme.onInverseSurface,
                       child: DropdownButton<ShareKeysWith>(
                         isExpanded: true,
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        borderRadius:
-                            BorderRadius.circular(AppConfig.borderRadius / 2),
+                        borderRadius: BorderRadius.circular(
+                          AppConfig.borderRadius / 2,
+                        ),
                         underline: const SizedBox.shrink(),
                         value: Matrix.of(context).client.shareKeysWith,
-                        items: ShareKeysWith.values
-                            .map(
-                              (share) => DropdownMenuItem(
-                                value: share,
-                                child: Text(share.localized(L10n.of(context))),
-                              ),
-                            )
-                            .toList(),
+                        items:
+                            ShareKeysWith.values
+                                .map(
+                                  (share) => DropdownMenuItem(
+                                    value: share,
+                                    child: Text(
+                                      share.localized(L10n.of(context)),
+                                    ),
+                                  ),
+                                )
+                                .toList(),
                         onChanged: controller.changeShareKeysWith,
                       ),
                     ),
@@ -153,8 +157,8 @@ class SettingsSecurityView extends StatelessWidget {
                       leading: const Icon(Icons.password_outlined),
                       trailing: const Icon(Icons.chevron_right_outlined),
                       title: Text(L10n.of(context).changePassword),
-                      onTap: () =>
-                          context.go('/rooms/settings/security/password'),
+                      onTap:
+                          () => context.go('/rooms/settings/security/password'),
                     ),
                   ListTile(
                     iconColor: Colors.orange,

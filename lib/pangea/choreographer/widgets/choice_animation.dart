@@ -49,54 +49,49 @@ class ChoiceAnimationWidgetState extends State<ChoiceAnimationWidget>
     super.dispose();
   }
 
-  Animation<double> get _animation => widget.isCorrect == true
-      ? TweenSequence<double>([
-          TweenSequenceItem<double>(
-            tween: Tween<double>(begin: 1.0, end: 1.2),
-            weight: 1.0,
-          ),
-          TweenSequenceItem<double>(
-            tween: Tween<double>(begin: 1.2, end: 1.0),
-            weight: 1.0,
-          ),
-        ]).animate(_controller)
-      : TweenSequence<double>([
-          TweenSequenceItem<double>(
-            tween: Tween<double>(begin: 0, end: -8 * pi / 180),
-            weight: 1.0,
-          ),
-          TweenSequenceItem<double>(
-            tween: Tween<double>(begin: -8 * pi / 180, end: 16 * pi / 180),
-            weight: 2.0,
-          ),
-          TweenSequenceItem<double>(
-            tween: Tween<double>(begin: 16 * pi / 180, end: 0),
-            weight: 1.0,
-          ),
-        ]).animate(_controller);
+  Animation<double> get _animation =>
+      widget.isCorrect == true
+          ? TweenSequence<double>([
+            TweenSequenceItem<double>(
+              tween: Tween<double>(begin: 1.0, end: 1.2),
+              weight: 1.0,
+            ),
+            TweenSequenceItem<double>(
+              tween: Tween<double>(begin: 1.2, end: 1.0),
+              weight: 1.0,
+            ),
+          ]).animate(_controller)
+          : TweenSequence<double>([
+            TweenSequenceItem<double>(
+              tween: Tween<double>(begin: 0, end: -8 * pi / 180),
+              weight: 1.0,
+            ),
+            TweenSequenceItem<double>(
+              tween: Tween<double>(begin: -8 * pi / 180, end: 16 * pi / 180),
+              weight: 2.0,
+            ),
+            TweenSequenceItem<double>(
+              tween: Tween<double>(begin: 16 * pi / 180, end: 0),
+              weight: 1.0,
+            ),
+          ]).animate(_controller);
 
   @override
   Widget build(BuildContext context) {
     return widget.isCorrect == true
         ? AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              return Transform.scale(
-                scale: _animation.value,
-                child: child,
-              );
-            },
-            child: widget.child,
-          )
+          animation: _animation,
+          builder: (context, child) {
+            return Transform.scale(scale: _animation.value, child: child);
+          },
+          child: widget.child,
+        )
         : AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              return Transform.rotate(
-                angle: _animation.value,
-                child: child,
-              );
-            },
-            child: widget.child,
-          );
+          animation: _animation,
+          builder: (context, child) {
+            return Transform.rotate(angle: _animation.value, child: child);
+          },
+          child: widget.child,
+        );
   }
 }

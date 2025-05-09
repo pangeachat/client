@@ -22,13 +22,12 @@ Future<void> pangeaSSOLoginAction(
   final bool isDefaultPlatform =
       (PlatformInfos.isMobile || PlatformInfos.isWeb || PlatformInfos.isMacOS);
 
-  final redirectUrl = kIsWeb
-      ? Uri.parse(html.window.location.href)
-          .resolveUri(
-            Uri(pathSegments: ['auth.html']),
-          )
-          .toString()
-      : isDefaultPlatform
+  final redirectUrl =
+      kIsWeb
+          ? Uri.parse(
+            html.window.location.href,
+          ).resolveUri(Uri(pathSegments: ['auth.html'])).toString()
+          : isDefaultPlatform
           ? '${AppConfig.appOpenUrlScheme.toLowerCase()}://login'
           : 'http://localhost:3001//login';
 
@@ -37,9 +36,10 @@ Future<void> pangeaSSOLoginAction(
     queryParameters: {'redirectUrl': redirectUrl},
   );
 
-  final urlScheme = isDefaultPlatform
-      ? Uri.parse(redirectUrl).scheme
-      : "http://localhost:3001";
+  final urlScheme =
+      isDefaultPlatform
+          ? Uri.parse(redirectUrl).scheme
+          : "http://localhost:3001";
 
   String result;
   try {
@@ -61,14 +61,13 @@ Future<void> pangeaSSOLoginAction(
   final redirect = client.onLoginStateChanged.stream
       .where((state) => state == LoginState.loggedIn)
       .first
-      .then(
-    (_) {
-      final route = FluffyChatApp.router.state.fullPath;
-      if (route == null || !route.contains("/rooms")) {
-        context.go("/rooms");
-      }
-    },
-  ).timeout(const Duration(seconds: 30));
+      .then((_) {
+        final route = FluffyChatApp.router.state.fullPath;
+        if (route == null || !route.contains("/rooms")) {
+          context.go("/rooms");
+        }
+      })
+      .timeout(const Duration(seconds: 30));
 
   final loginRes = await client.login(
     LoginType.mLoginToken,

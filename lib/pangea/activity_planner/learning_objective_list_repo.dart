@@ -10,8 +10,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../common/network/requests.dart';
 
 class LearningObjectiveListRepo {
-  static final GetStorage _objectiveListStorage =
-      GetStorage('objective_list_storage');
+  static final GetStorage _objectiveListStorage = GetStorage(
+    'objective_list_storage',
+  );
 
   static void set(
     ActivitySettingRequestSchema request,

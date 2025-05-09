@@ -54,7 +54,8 @@ class OverlayCenterContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
-      ignoring: !isTransitionAnimation &&
+      ignoring:
+          !isTransitionAnimation &&
           readingAssistanceMode != ReadingAssistanceMode.practiceMode,
       child: Container(
         constraints: BoxConstraints(maxWidth: maxWidth),
@@ -62,9 +63,10 @@ class OverlayCenterContent extends StatelessWidget {
           type: MaterialType.transparency,
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: event.senderId == event.room.client.userID
-                ? CrossAxisAlignment.end
-                : CrossAxisAlignment.start,
+            crossAxisAlignment:
+                event.senderId == event.room.client.userID
+                    ? CrossAxisAlignment.end
+                    : CrossAxisAlignment.start,
             children: [
               MeasureRenderBox(
                 onChange: onChangeMessageSize,
@@ -80,9 +82,10 @@ class OverlayCenterContent extends StatelessWidget {
                   sizeAnimation: sizeAnimation,
                   // there's a split seconds between when the transition animation starts and
                   // when the sizeAnimation is set when the original dimensions need to be enforced
-                  messageWidth: (sizeAnimation == null && isTransitionAnimation)
-                      ? messageWidth
-                      : null,
+                  messageWidth:
+                      (sizeAnimation == null && isTransitionAnimation)
+                          ? messageWidth
+                          : null,
                   messageHeight:
                       (sizeAnimation == null && isTransitionAnimation)
                           ? messageHeight
@@ -97,10 +100,7 @@ class OverlayCenterContent extends StatelessWidget {
                   padding: const EdgeInsets.all(4),
                   child: SizedBox(
                     height: 20,
-                    child: MessageReactions(
-                      event,
-                      chatController.timeline!,
-                    ),
+                    child: MessageReactions(event, chatController.timeline!),
                   ),
                 ),
             ],

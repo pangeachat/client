@@ -12,10 +12,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 class ReferFriendsDialog extends StatelessWidget {
   final Room room;
 
-  const ReferFriendsDialog({
-    required this.room,
-    super.key,
-  });
+  const ReferFriendsDialog({required this.room, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +46,10 @@ class ReferFriendsDialog extends StatelessWidget {
                   imageUrl:
                       "${AppConfig.assetsBaseURL}/${RoomSettingsConstants.referFriendDialogAsset}",
                   errorWidget: (context, url, error) => const SizedBox(),
-                  placeholder: (context, url) => const Center(
-                    child: CircularProgressIndicator.adaptive(),
-                  ),
+                  placeholder:
+                      (context, url) => const Center(
+                        child: CircularProgressIndicator.adaptive(),
+                      ),
                 ),
               ),
             ),
@@ -59,9 +57,9 @@ class ReferFriendsDialog extends StatelessWidget {
           Text(
             L10n.of(context).referFriendDialogTitle,
             style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+              fontWeight: FontWeight.bold,
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
           Text(
             L10n.of(context).referFriendDialogDesc,
@@ -72,19 +70,12 @@ class ReferFriendsDialog extends StatelessWidget {
             child: ListTile(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24.0),
-                side: BorderSide(
-                  color: Theme.of(context).colorScheme.primary,
-                ),
+                side: BorderSide(color: Theme.of(context).colorScheme.primary),
               ),
-              title: Text(
-                inviteLink,
-                overflow: TextOverflow.ellipsis,
-              ),
+              title: Text(inviteLink, overflow: TextOverflow.ellipsis),
               trailing: const Icon(Icons.copy_outlined),
               onTap: () async {
-                Clipboard.setData(
-                  ClipboardData(text: inviteLink),
-                );
+                Clipboard.setData(ClipboardData(text: inviteLink));
               },
             ),
           ),

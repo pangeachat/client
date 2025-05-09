@@ -16,60 +16,67 @@ import 'package:fluffychat/widgets/matrix.dart';
 class VocabAnalyticsListView extends StatelessWidget {
   final AnalyticsPopupWrapperState controller;
 
-  const VocabAnalyticsListView({
-    super.key,
-    required this.controller,
-  });
+  const VocabAnalyticsListView({super.key, required this.controller});
 
   List<ConstructUses> get _vocab => MatrixState
-      .pangeaController.getAnalytics.constructListModel
+      .pangeaController
+      .getAnalytics
+      .constructListModel
       .constructList(type: ConstructTypeEnum.vocab)
       .sorted((a, b) => a.lemma.toLowerCase().compareTo(b.lemma.toLowerCase()));
 
-  List<ConstructUses> get _filteredVocab => _vocab
-      .where(
-        (use) =>
-            use.lemma.isNotEmpty &&
-            (controller.selectedConstructLevel == null
-                ? true
-                : use.lemmaCategory == controller.selectedConstructLevel) &&
-            (controller.isSearching
-                ? use.lemma
-                    .toLowerCase()
-                    .contains(controller.searchController.text.toLowerCase())
-                : true),
-      )
-      .toList();
+  List<ConstructUses> get _filteredVocab =>
+      _vocab
+          .where(
+            (use) =>
+                use.lemma.isNotEmpty &&
+                (controller.selectedConstructLevel == null
+                    ? true
+                    : use.lemmaCategory == controller.selectedConstructLevel) &&
+                (controller.isSearching
+                    ? use.lemma.toLowerCase().contains(
+                      controller.searchController.text.toLowerCase(),
+                    )
+                    : true),
+          )
+          .toList();
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> filters = ConstructLevelEnum.values.reversed
-        .map((constructLevelCategory) {
-          final int count = _vocab
-              .where((e) => e.lemmaCategory == constructLevelCategory)
-              .length;
-          return InkWell(
-            onTap: () =>
-                controller.setSelectedConstructLevel(constructLevelCategory),
-            customBorder: const CircleBorder(),
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color:
-                    controller.selectedConstructLevel == constructLevelCategory
-                        ? constructLevelCategory.color(context).withAlpha(50)
-                        : null,
-              ),
-              padding: const EdgeInsets.all(8.0),
-              child: Badge(
-                label: Text(count.toString()),
-                child: constructLevelCategory.icon(40),
-              ),
-            ),
-          );
-        })
-        .cast<Widget>()
-        .toList();
+    final List<Widget> filters =
+        ConstructLevelEnum.values.reversed
+            .map((constructLevelCategory) {
+              final int count =
+                  _vocab
+                      .where((e) => e.lemmaCategory == constructLevelCategory)
+                      .length;
+              return InkWell(
+                onTap:
+                    () => controller.setSelectedConstructLevel(
+                      constructLevelCategory,
+                    ),
+                customBorder: const CircleBorder(),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color:
+                        controller.selectedConstructLevel ==
+                                constructLevelCategory
+                            ? constructLevelCategory
+                                .color(context)
+                                .withAlpha(50)
+                            : null,
+                  ),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Badge(
+                    label: Text(count.toString()),
+                    child: constructLevelCategory.icon(40),
+                  ),
+                ),
+              );
+            })
+            .cast<Widget>()
+            .toList();
 
     filters.add(
       IconButton(
@@ -101,40 +108,42 @@ class VocabAnalyticsListView extends StatelessWidget {
                     constraints: const BoxConstraints(maxWidth: 225.0),
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
-                      transitionBuilder: (child, animation) => FadeTransition(
-                        opacity: animation,
-                        child: child,
-                      ),
-                      child: controller.isSearching
-                          ? Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              key: const ValueKey('search'),
-                              children: [
-                                Expanded(
-                                  child: TextField(
-                                    autofocus: true,
-                                    controller: controller.searchController,
-                                    decoration: const InputDecoration(
-                                      contentPadding: EdgeInsets.symmetric(
-                                        vertical: 6.0,
-                                        horizontal: 12.0,
+                      transitionBuilder:
+                          (child, animation) =>
+                              FadeTransition(opacity: animation, child: child),
+                      child:
+                          controller.isSearching
+                              ? Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                key: const ValueKey('search'),
+                                children: [
+                                  Expanded(
+                                    child: TextField(
+                                      autofocus: true,
+                                      controller: controller.searchController,
+                                      decoration: const InputDecoration(
+                                        contentPadding: EdgeInsets.symmetric(
+                                          vertical: 6.0,
+                                          horizontal: 12.0,
+                                        ),
+                                        isDense: true,
+                                        border: OutlineInputBorder(),
                                       ),
-                                      isDense: true,
-                                      border: OutlineInputBorder(),
                                     ),
                                   ),
-                                ),
-                                IconButton(
-                                  icon: const Icon(Icons.close),
-                                  onPressed: controller.toggleSearching,
-                                ),
-                              ],
-                            )
-                          : Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              key: const ValueKey('filters'),
-                              children: filters,
-                            ),
+                                  IconButton(
+                                    icon: const Icon(Icons.close),
+                                    onPressed: controller.toggleSearching,
+                                  ),
+                                ],
+                              )
+                              : Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                key: const ValueKey('filters'),
+                                children: filters,
+                              ),
                     ),
                   ),
                 ],

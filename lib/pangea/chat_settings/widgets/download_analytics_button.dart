@@ -8,10 +8,7 @@ import 'package:fluffychat/pangea/spaces/widgets/download_analytics_dialog.dart'
 class DownloadAnalyticsButton extends StatelessWidget {
   final Room space;
 
-  const DownloadAnalyticsButton({
-    super.key,
-    required this.space,
-  });
+  const DownloadAnalyticsButton({super.key, required this.space});
 
   @override
   Widget build(BuildContext context) {

@@ -11,11 +11,7 @@ class Lemma {
   /// server handles this determination
   final bool saveVocab;
 
-  Lemma({
-    required this.text,
-    required this.saveVocab,
-    required this.form,
-  });
+  Lemma({required this.text, required this.saveVocab, required this.form});
 
   factory Lemma.fromJson(Map<String, dynamic> json) {
     return Lemma(
@@ -26,11 +22,7 @@ class Lemma {
   }
 
   toJson() {
-    return {
-      'text': text,
-      'save_vocab': saveVocab,
-      'form': form,
-    };
+    return {'text': text, 'save_vocab': saveVocab, 'form': form};
   }
 
   static Lemma create(String form) =>

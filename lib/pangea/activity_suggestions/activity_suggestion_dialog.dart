@@ -30,18 +30,10 @@ class ActivitySuggestionDialog extends StatefulWidget {
   final String buttonText;
   final Room? room;
 
-  final Function(
-    ActivityPlanModel,
-    Uint8List?,
-    String?,
-  )? onLaunch;
+  final Function(ActivityPlanModel, Uint8List?, String?)? onLaunch;
 
-  final Future<void> Function(
-    String,
-    ActivityPlanModel,
-    Uint8List?,
-    String?,
-  )? onEdit;
+  final Future<void> Function(String, ActivityPlanModel, Uint8List?, String?)?
+  onEdit;
 
   const ActivitySuggestionDialog({
     required this.initialActivity,
@@ -129,12 +121,11 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
           final mxcUri = Uri.parse(widget.initialActivity.imageURL!);
           final data = await client.downloadMxcCached(mxcUri);
           _avatar = data;
-          _filename = Uri.encodeComponent(
-            mxcUri.pathSegments.last,
-          );
+          _filename = Uri.encodeComponent(mxcUri.pathSegments.last);
         } else {
-          final Response response =
-              await http.get(Uri.parse(widget.initialActivity.imageURL!));
+          final Response response = await http.get(
+            Uri.parse(widget.initialActivity.imageURL!),
+          );
           _avatar = response.bodyBytes;
           _filename = Uri.encodeComponent(
             Uri.parse(widget.initialActivity.imageURL!).pathSegments.last,
@@ -145,9 +136,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
       ErrorHandler.logError(
         e: err,
         s: s,
-        data: {
-          "imageURL": widget.initialActivity.imageURL,
-        },
+        data: {"imageURL": widget.initialActivity.imageURL},
       );
     }
   }
@@ -162,20 +151,19 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
   }
 
   ActivityPlanModel get _updatedActivity => ActivityPlanModel(
-        req: widget.initialActivity.req,
-        title: _titleController.text,
-        learningObjective: _learningObjectivesController.text,
-        instructions: _instructionsController.text,
-        vocab: _vocab,
-        imageURL: _imageURL,
-      );
+    req: widget.initialActivity.req,
+    title: _titleController.text,
+    learningObjective: _learningObjectivesController.text,
+    instructions: _instructionsController.text,
+    vocab: _vocab,
+    imageURL: _imageURL,
+  );
 
   Future<void> _updateImageURL() async {
     if (_avatar == null) return;
-    final url = await Matrix.of(context).client.uploadContent(
-          _avatar!,
-          filename: _filename,
-        );
+    final url = await Matrix.of(
+      context,
+    ).client.uploadContent(_avatar!, filename: _filename);
     if (!mounted) return;
     setState(() {
       _imageURL = url.toString();
@@ -183,13 +171,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
   }
 
   void _addVocab() {
-    _vocab.insert(
-      0,
-      Vocab(
-        lemma: _vocabController.text.trim(),
-        pos: "",
-      ),
-    );
+    _vocab.insert(0, Vocab(lemma: _vocabController.text.trim(), pos: ""));
     _vocabController.clear();
     if (mounted) setState(() {});
   }
@@ -222,9 +204,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
           StateEvent(
             type: EventTypes.RoomAvatar,
             stateKey: '',
-            content: {
-              "url": _updatedActivity.imageURL,
-            },
+            content: {"url": _updatedActivity.imageURL},
           ),
         StateEvent(
           type: EventTypes.RoomPowerLevels,
@@ -288,38 +268,36 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                 alignment: Alignment.center,
                 children: [
                   Container(
-                    constraints: const BoxConstraints(
-                      maxHeight: 400.0,
-                    ),
+                    constraints: const BoxConstraints(maxHeight: 400.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(24.0),
                     ),
                     width: width,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(24.0),
-                      child: _avatar != null
-                          ? Image.memory(_avatar!, fit: BoxFit.cover)
-                          : _updatedActivity.imageURL != null
+                      child:
+                          _avatar != null
+                              ? Image.memory(_avatar!, fit: BoxFit.cover)
+                              : _updatedActivity.imageURL != null
                               ? _updatedActivity.imageURL!.startsWith("mxc")
                                   ? MxcImage(
-                                      uri: Uri.parse(
-                                        _updatedActivity.imageURL!,
-                                      ),
-                                      width: width,
-                                      height: 200,
-                                      cacheKey: _updatedActivity.bookmarkId,
-                                      fit: BoxFit.cover,
-                                    )
+                                    uri: Uri.parse(_updatedActivity.imageURL!),
+                                    width: width,
+                                    height: 200,
+                                    cacheKey: _updatedActivity.bookmarkId,
+                                    fit: BoxFit.cover,
+                                  )
                                   : CachedNetworkImage(
-                                      imageUrl: _updatedActivity.imageURL!,
-                                      fit: BoxFit.cover,
-                                      placeholder: (context, url) =>
-                                          const Center(
-                                        child: CircularProgressIndicator(),
-                                      ),
-                                      errorWidget: (context, url, error) =>
-                                          const SizedBox(),
-                                    )
+                                    imageUrl: _updatedActivity.imageURL!,
+                                    fit: BoxFit.cover,
+                                    placeholder:
+                                        (context, url) => const Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                    errorWidget:
+                                        (context, url, error) =>
+                                            const SizedBox(),
+                                  )
                               : null,
                     ),
                   ),
@@ -331,10 +309,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                         onTap: _setAvatar,
                         child: const CircleAvatar(
                           radius: 24.0,
-                          child: Icon(
-                            Icons.add_a_photo_outlined,
-                            size: 24.0,
-                          ),
+                          child: Icon(Icons.add_a_photo_outlined, size: 24.0),
                         ),
                       ),
                     ),
@@ -365,8 +340,9 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                             icon: Icons.event_note_outlined,
                             child: Text(
                               _updatedActivity.title,
-                              style: theme.textTheme.titleLarge
-                                  ?.copyWith(fontWeight: FontWeight.bold),
+                              style: theme.textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
                               maxLines: 6,
                               overflow: TextOverflow.ellipsis,
                             ),
@@ -457,45 +433,50 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                           ActivitySuggestionCardRow(
                             icon: Symbols.dictionary,
                             child: ConstrainedBox(
-                              constraints:
-                                  const BoxConstraints(maxHeight: 60.0),
+                              constraints: const BoxConstraints(
+                                maxHeight: 60.0,
+                              ),
                               child: SingleChildScrollView(
                                 child: Wrap(
                                   spacing: 4.0,
                                   runSpacing: 4.0,
-                                  children: _vocab
-                                      .mapIndexed(
-                                        (i, vocab) => Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 4.0,
-                                            horizontal: 8.0,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: theme.colorScheme.primary
-                                                .withAlpha(20),
-                                            borderRadius:
-                                                BorderRadius.circular(24.0),
-                                          ),
-                                          child: MouseRegion(
-                                            cursor: SystemMouseCursors.click,
-                                            child: GestureDetector(
-                                              onTap: () => _removeVocab(i),
-                                              child: Row(
-                                                spacing: 4.0,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Text(vocab.lemma),
-                                                  const Icon(
-                                                    Icons.close,
-                                                    size: 12.0,
+                                  children:
+                                      _vocab
+                                          .mapIndexed(
+                                            (i, vocab) => Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    vertical: 4.0,
+                                                    horizontal: 8.0,
                                                   ),
-                                                ],
+                                              decoration: BoxDecoration(
+                                                color: theme.colorScheme.primary
+                                                    .withAlpha(20),
+                                                borderRadius:
+                                                    BorderRadius.circular(24.0),
+                                              ),
+                                              child: MouseRegion(
+                                                cursor:
+                                                    SystemMouseCursors.click,
+                                                child: GestureDetector(
+                                                  onTap: () => _removeVocab(i),
+                                                  child: Row(
+                                                    spacing: 4.0,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Text(vocab.lemma),
+                                                      const Icon(
+                                                        Icons.close,
+                                                        size: 12.0,
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ),
-                                      )
-                                      .toList(),
+                                          )
+                                          .toList(),
                                 ),
                               ),
                             ),
@@ -504,32 +485,36 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                           ActivitySuggestionCardRow(
                             icon: Symbols.dictionary,
                             child: ConstrainedBox(
-                              constraints:
-                                  const BoxConstraints(maxHeight: 60.0),
+                              constraints: const BoxConstraints(
+                                maxHeight: 60.0,
+                              ),
                               child: SingleChildScrollView(
                                 child: Wrap(
                                   spacing: 4.0,
                                   runSpacing: 4.0,
-                                  children: _vocab
-                                      .map(
-                                        (vocab) => Container(
-                                          padding: const EdgeInsets.symmetric(
-                                            vertical: 4.0,
-                                            horizontal: 8.0,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: theme.colorScheme.primary
-                                                .withAlpha(20),
-                                            borderRadius:
-                                                BorderRadius.circular(24.0),
-                                          ),
-                                          child: Text(
-                                            vocab.lemma,
-                                            style: theme.textTheme.bodyMedium,
-                                          ),
-                                        ),
-                                      )
-                                      .toList(),
+                                  children:
+                                      _vocab
+                                          .map(
+                                            (vocab) => Container(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                    vertical: 4.0,
+                                                    horizontal: 8.0,
+                                                  ),
+                                              decoration: BoxDecoration(
+                                                color: theme.colorScheme.primary
+                                                    .withAlpha(20),
+                                                borderRadius:
+                                                    BorderRadius.circular(24.0),
+                                              ),
+                                              child: Text(
+                                                vocab.lemma,
+                                                style:
+                                                    theme.textTheme.bodyMedium,
+                                              ),
+                                            ),
+                                          )
+                                          .toList(),
                                 ),
                               ),
                             ),
@@ -594,8 +579,9 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                           ),
                           child: Text(
                             L10n.of(context).save,
-                            style: theme.textTheme.bodyLarge
-                                ?.copyWith(color: theme.colorScheme.onPrimary),
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: theme.colorScheme.onPrimary,
+                            ),
                           ),
                         ),
                       )
@@ -637,8 +623,9 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                           ),
                           child: Text(
                             widget.buttonText,
-                            style: theme.textTheme.bodyLarge
-                                ?.copyWith(color: theme.colorScheme.onPrimary),
+                            style: theme.textTheme.bodyLarge?.copyWith(
+                              color: theme.colorScheme.onPrimary,
+                            ),
                           ),
                         ),
                       ),
@@ -675,12 +662,13 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
     final content = AnimatedSize(
       duration: FluffyThemes.animationDuration,
       child: ConstrainedBox(
-        constraints: FluffyThemes.isColumnMode(context)
-            ? BoxConstraints(maxWidth: width)
-            : BoxConstraints(
-                maxWidth: width,
-                maxHeight: MediaQuery.of(context).size.height,
-              ),
+        constraints:
+            FluffyThemes.isColumnMode(context)
+                ? BoxConstraints(maxWidth: width)
+                : BoxConstraints(
+                  maxWidth: width,
+                  maxHeight: MediaQuery.of(context).size.height,
+                ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20.0),
           child: body,
@@ -690,9 +678,10 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
 
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
-      child: FluffyThemes.isColumnMode(context)
-          ? Dialog(child: content)
-          : Dialog.fullscreen(child: content),
+      child:
+          FluffyThemes.isColumnMode(context)
+              ? Dialog(child: content)
+              : Dialog.fullscreen(child: content),
     );
   }
 }

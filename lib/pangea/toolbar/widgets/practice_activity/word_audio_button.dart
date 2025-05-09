@@ -54,13 +54,15 @@ class WordAudioButtonState extends State<WordAudioButton> {
   @override
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
-      link: MatrixState.pAnyState
-          .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
-          .link,
+      link:
+          MatrixState.pAnyState
+              .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
+              .link,
       child: Opacity(
-        key: MatrixState.pAnyState
-            .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
-            .key,
+        key:
+            MatrixState.pAnyState
+                .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
+                .key,
         opacity: widget.isSelected || _isPlaying ? 1 : widget.baseOpacity,
         child: Tooltip(
           message:
@@ -68,7 +70,8 @@ class WordAudioButtonState extends State<WordAudioButton> {
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
-              onTap: widget.callbackOverride ??
+              onTap:
+                  widget.callbackOverride ??
                   () async {
                     if (_isPlaying) {
                       await tts.stop();
@@ -92,9 +95,7 @@ class WordAudioButtonState extends State<WordAudioButton> {
                         ErrorHandler.logError(
                           e: e,
                           s: s,
-                          data: {
-                            "text": widget.text,
-                          },
+                          data: {"text": widget.text},
                         );
                       } finally {
                         if (mounted) {

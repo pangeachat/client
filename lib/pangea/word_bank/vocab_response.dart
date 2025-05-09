@@ -10,11 +10,12 @@ class VocabResponse {
   }
 
   VocabResponse.fromJson(Map<String, dynamic> json)
-      : vocab = (json['vocab'] as List)
-            .map((e) => ConstructIdentifier.fromJson(e))
-            .toList();
+    : vocab =
+          (json['vocab'] as List)
+              .map((e) => ConstructIdentifier.fromJson(e))
+              .toList();
 
   Map<String, dynamic> toJson() => {
-        'vocab': vocab.map((e) => e.toJson()).toList(),
-      };
+    'vocab': vocab.map((e) => e.toJson()).toList(),
+  };
 }

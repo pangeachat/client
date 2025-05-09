@@ -11,24 +11,22 @@ void showSubscribedSnackbar(BuildContext context) {
         TextSpan(
           text: L10n.of(context).successfullySubscribed,
           style: TextStyle(
-            color: Theme.of(context).brightness == Brightness.light
-                ? Colors.white
-                : Colors.black,
+            color:
+                Theme.of(context).brightness == Brightness.light
+                    ? Colors.white
+                    : Colors.black,
           ),
         ),
         const TextSpan(text: " "),
         TextSpan(
           text: L10n.of(context).clickToManageSubscription,
           style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
-          recognizer: TapGestureRecognizer()
-            ..onTap = () => context.go('/rooms/settings/subscription'),
+          recognizer:
+              TapGestureRecognizer()
+                ..onTap = () => context.go('/rooms/settings/subscription'),
         ),
       ],
     ),
   );
-  ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(
-      content: text,
-    ),
-  );
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: text));
 }

@@ -19,13 +19,12 @@ class ReplyDisplay extends StatelessWidget {
     return AnimatedContainer(
       duration: FluffyThemes.animationDuration,
       curve: FluffyThemes.animationCurve,
-      height: controller.editEvent != null || controller.replyEvent != null
-          ? 56
-          : 0,
+      height:
+          controller.editEvent != null || controller.replyEvent != null
+              ? 56
+              : 0,
       clipBehavior: Clip.hardEdge,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.onInverseSurface,
-      ),
+      decoration: BoxDecoration(color: theme.colorScheme.onInverseSurface),
       child: Row(
         children: <Widget>[
           IconButton(
@@ -34,14 +33,17 @@ class ReplyDisplay extends StatelessWidget {
             onPressed: controller.cancelReplyEventAction,
           ),
           Expanded(
-            child: controller.replyEvent != null
-                ? ReplyContent(
-                    controller.replyEvent!,
-                    timeline: controller.timeline!,
-                  )
-                : _EditContent(
-                    controller.editEvent?.getDisplayEvent(controller.timeline!),
-                  ),
+            child:
+                controller.replyEvent != null
+                    ? ReplyContent(
+                      controller.replyEvent!,
+                      timeline: controller.timeline!,
+                    )
+                    : _EditContent(
+                      controller.editEvent?.getDisplayEvent(
+                        controller.timeline!,
+                      ),
+                    ),
           ),
         ],
       ),
@@ -63,10 +65,7 @@ class _EditContent extends StatelessWidget {
     }
     return Row(
       children: <Widget>[
-        Icon(
-          Icons.edit,
-          color: theme.colorScheme.primary,
-        ),
+        Icon(Icons.edit, color: theme.colorScheme.primary),
         Container(width: 15.0),
         Text(
           event.calcLocalizedBodyFallback(
@@ -76,9 +75,7 @@ class _EditContent extends StatelessWidget {
           ),
           overflow: TextOverflow.ellipsis,
           maxLines: 1,
-          style: TextStyle(
-            color: theme.textTheme.bodyMedium!.color,
-          ),
+          style: TextStyle(color: theme.textTheme.bodyMedium!.color),
         ),
       ],
     );
