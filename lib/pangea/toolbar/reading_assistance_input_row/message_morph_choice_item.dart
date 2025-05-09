@@ -48,10 +48,9 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
           : AppConfig.warning.withAlpha((0.4 * 255).toInt());
     }
     if (widget.isSelected) {
-      return Theme.of(context)
-          .colorScheme
-          .primary
-          .withAlpha((0.4 * 255).toInt());
+      return Theme.of(
+        context,
+      ).colorScheme.primary.withAlpha((0.4 * 255).toInt());
     }
     return _isHovered
         ? Theme.of(context).colorScheme.primary.withAlpha((0.2 * 255).toInt())
@@ -62,9 +61,10 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
   Widget build(BuildContext context) {
     final color = _color;
     final iconSize = FluffyThemes.isColumnMode(context) ? 24.0 : 16.0;
-    final style = FluffyThemes.isColumnMode(context)
-        ? Theme.of(context).textTheme.bodyLarge
-        : Theme.of(context).textTheme.bodySmall;
+    final style =
+        FluffyThemes.isColumnMode(context)
+            ? Theme.of(context).textTheme.bodyLarge
+            : Theme.of(context).textTheme.bodySmall;
     return InkWell(
       onHover: (isHovered) => setState(() => _isHovered = isHovered),
       borderRadius: BorderRadius.circular(AppConfig.borderRadius),
@@ -76,16 +76,14 @@ class MessageMorphChoiceItemState extends State<MessageMorphChoiceItem> {
             color: color,
             borderRadius: BorderRadius.circular(AppConfig.borderRadius),
             border: Border.all(
-              color: widget.isSelected || _isHovered
-                  ? color.withAlpha(255)
-                  : Colors.transparent,
+              color:
+                  widget.isSelected || _isHovered
+                      ? color.withAlpha(255)
+                      : Colors.transparent,
               width: 2.0,
             ),
           ),
-          padding: const EdgeInsets.symmetric(
-            vertical: 8.0,
-            horizontal: 12.0,
-          ),
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,

@@ -4,9 +4,7 @@ class ActivitySettingRequestSchema {
   ActivitySettingRequestSchema({required this.langCode});
 
   Map<String, dynamic> toJson() {
-    return {
-      'lang_code': langCode,
-    };
+    return {'lang_code': langCode};
   }
 
   String get storageKey => 'topic_list-$langCode';
@@ -29,9 +27,6 @@ class ActivitySettingResponseSchema {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'default_name': defaultName,
-      'name': name,
-    };
+    return {'default_name': defaultName, 'name': name};
   }
 }

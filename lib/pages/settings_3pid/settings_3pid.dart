@@ -33,7 +33,8 @@ class Settings3PidController extends State<Settings3Pid> {
     final clientSecret = DateTime.now().millisecondsSinceEpoch.toString();
     final response = await showFutureLoadingDialog(
       context: context,
-      future: () => Matrix.of(context).client.requestTokenToRegisterEmail(
+      future:
+          () => Matrix.of(context).client.requestTokenToRegisterEmail(
             clientSecret,
             input,
             Settings3Pid.sendAttempt++,
@@ -54,12 +55,11 @@ class Settings3PidController extends State<Settings3Pid> {
     final success = await showFutureLoadingDialog(
       context: context,
       delay: false,
-      future: () => Matrix.of(context).client.uiaRequestBackground(
-            (auth) => Matrix.of(context).client.add3PID(
-                  clientSecret,
-                  response.result!.sid,
-                  auth: auth,
-                ),
+      future:
+          () => Matrix.of(context).client.uiaRequestBackground(
+            (auth) => Matrix.of(
+              context,
+            ).client.add3PID(clientSecret, response.result!.sid, auth: auth),
           ),
     );
     if (success.error != null) return;
@@ -81,10 +81,10 @@ class Settings3PidController extends State<Settings3Pid> {
     }
     final success = await showFutureLoadingDialog(
       context: context,
-      future: () => Matrix.of(context).client.delete3pidFromAccount(
-            identifier.address,
-            identifier.medium,
-          ),
+      future:
+          () => Matrix.of(
+            context,
+          ).client.delete3pidFromAccount(identifier.address, identifier.medium),
     );
     if (success.error != null) return;
     setState(() => request = null);

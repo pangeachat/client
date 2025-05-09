@@ -20,13 +20,12 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
 
   @override
   Future<void> configure() async {
-    final PurchasesConfiguration configuration = Platform.isAndroid
-        ? PurchasesConfiguration(Environment.rcGoogleKey)
-        : PurchasesConfiguration(Environment.rcIosKey);
+    final PurchasesConfiguration configuration =
+        Platform.isAndroid
+            ? PurchasesConfiguration(Environment.rcGoogleKey)
+            : PurchasesConfiguration(Environment.rcIosKey);
     try {
-      await Purchases.configure(
-        configuration..appUserID = userID,
-      );
+      await Purchases.configure(configuration..appUserID = userID);
       await super.configure();
       await setMobilePackages();
     } catch (err) {
@@ -84,16 +83,15 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
               (MapEntry<String, EntitlementInfo> entry) =>
                   entry.value.isActive &&
                   (entry.value.expirationDate == null ||
-                      DateTime.parse(entry.value.expirationDate!)
-                          .isAfter(DateTime.now())),
+                      DateTime.parse(
+                        entry.value.expirationDate!,
+                      ).isAfter(DateTime.now())),
             )
             .map((MapEntry<String, EntitlementInfo> entry) => entry.value)
             .toList();
 
     if (activeEntitlements.length > 1) {
-      debugPrint(
-        "User has more than one active entitlement.",
-      );
+      debugPrint("User has more than one active entitlement.");
     } else if (activeEntitlements.isEmpty) {
       debugPrint("User has no active entitlements");
       resetSubscription();
@@ -102,9 +100,10 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
 
     final EntitlementInfo activeEntitlement = activeEntitlements[0];
     currentSubscriptionId = activeEntitlement.productIdentifier;
-    expirationDate = activeEntitlement.expirationDate != null
-        ? DateTime.parse(activeEntitlement.expirationDate!)
-        : null;
+    expirationDate =
+        activeEntitlement.expirationDate != null
+            ? DateTime.parse(activeEntitlement.expirationDate!)
+            : null;
 
     if (activeEntitlement.periodType == PeriodType.trial) {
       // We dont use actual trials as it would require adding a CC on devices

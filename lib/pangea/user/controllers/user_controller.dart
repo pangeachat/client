@@ -42,12 +42,12 @@ class UserController extends BaseController {
     _profileListener ??= client.onSync.stream
         .where((sync) => sync.accountData != null)
         .listen((sync) {
-      final profileData = client.accountData[ModelKey.userProfile]?.content;
-      final Profile? fromAccountData = Profile.fromAccountData(profileData);
-      if (fromAccountData != null) {
-        _cachedProfile = fromAccountData;
-      }
-    });
+          final profileData = client.accountData[ModelKey.userProfile]?.content;
+          final Profile? fromAccountData = Profile.fromAccountData(profileData);
+          if (fromAccountData != null) {
+            _cachedProfile = fromAccountData;
+          }
+        });
   }
 
   /// The user's profile. Will be empty if the client's accountData hasn't
@@ -128,11 +128,7 @@ class UserController extends BaseController {
         setState(null);
       }
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
     } finally {
       if (!initCompleter.isCompleted) {
         initCompleter.complete();
@@ -169,10 +165,10 @@ class UserController extends BaseController {
       _pangeaController.getAnalytics.initCompleter.future
           .timeout(const Duration(seconds: 10))
           .then((_) {
-        updatePublicProfile(
-          level: _pangeaController.getAnalytics.constructListModel.level,
-        );
-      });
+            updatePublicProfile(
+              level: _pangeaController.getAnalytics.constructListModel.level,
+            );
+          });
     }
   }
 
@@ -219,10 +215,10 @@ class UserController extends BaseController {
   }
 
   Future<void> _savePublicProfile() async => client.setUserProfile(
-        client.userID!,
-        PangeaEventTypes.profileAnalytics,
-        publicProfile!.toJson(),
-      );
+    client.userID!,
+    PangeaEventTypes.profileAnalytics,
+    publicProfile!.toJson(),
+  );
 
   /// Returns a boolean value indicating whether a new JWT (JSON Web Token) is needed.
   bool needNewJWT(String token) => Jwt.isExpired(token);
@@ -259,11 +255,7 @@ class UserController extends BaseController {
       await initialize();
       return profile.userSettings.targetLanguage != null;
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
       return false;
     }
   }
@@ -299,11 +291,7 @@ class UserController extends BaseController {
           srcLang != LanguageKeys.unknownLanguage &&
           tgtLang != LanguageKeys.unknownLanguage;
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {},
-      );
+      ErrorHandler.logError(e: err, s: s, data: {});
       return false;
     }
   }
@@ -344,13 +332,7 @@ class UserController extends BaseController {
       final resp = await client.getUserProfile(userId);
       return PublicProfileModel.fromJson(resp.additionalProperties);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          userId: userId,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {userId: userId});
       return PublicProfileModel();
     }
   }

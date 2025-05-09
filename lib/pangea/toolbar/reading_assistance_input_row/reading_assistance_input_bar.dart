@@ -35,10 +35,10 @@ class ReadingAssistanceInputBar extends StatelessWidget {
         overlayController.toolbarMode.associatedActivityType != null &&
                 overlayController.pangeaMessageEvent != null
             ? overlayController.practiceSelection?.getSelection(
-                overlayController.toolbarMode.associatedActivityType!,
-                overlayController.selectedMorph?.token,
-                overlayController.selectedMorph?.morph,
-              )
+              overlayController.toolbarMode.associatedActivityType!,
+              overlayController.selectedMorph?.token,
+              overlayController.selectedMorph?.morph,
+            )
             : null;
 
     if (overlayController.pangeaMessageEvent?.isAudioMessage == true) {
@@ -53,10 +53,9 @@ class ReadingAssistanceInputBar extends StatelessWidget {
           //TODO: show all emojis for the lemmas and allow sending normal reactions
           content = Text(
             L10n.of(context).choosePracticeMode,
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge
-                ?.copyWith(fontStyle: FontStyle.italic),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyLarge?.copyWith(fontStyle: FontStyle.italic),
           );
 
         case MessageMode.messageTranslation:
@@ -99,9 +98,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
     }
 
     return Container(
-      constraints: const BoxConstraints(
-        minHeight: minContentHeight,
-      ),
+      constraints: const BoxConstraints(minHeight: minContentHeight),
       child: Center(child: content),
     );
   }
@@ -118,9 +115,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
           duration: const Duration(
             milliseconds: AppConfig.overlayAnimationDuration,
           ),
-          child: SingleChildScrollView(
-            child: barContent(context),
-          ),
+          child: SingleChildScrollView(child: barContent(context)),
         ),
       ),
     );

@@ -2,12 +2,9 @@ part of "pangea_room_extension.dart";
 
 extension RoomSettingsRoomExtension on Room {
   Future<void> updateRoomCapacity(int newCapacity) =>
-      client.setRoomStateWithKey(
-        id,
-        PangeaEventTypes.capacity,
-        '',
-        {'capacity': newCapacity},
-      );
+      client.setRoomStateWithKey(id, PangeaEventTypes.capacity, '', {
+        'capacity': newCapacity,
+      });
 
   int? get capacity {
     final t = getState(PangeaEventTypes.capacity)?.content['capacity'];
@@ -23,20 +20,16 @@ extension RoomSettingsRoomExtension on Room {
   }
 
   Text nameAndRoomTypeIcon([TextStyle? textStyle]) => Text.rich(
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: textStyle,
-        TextSpan(
-          children: [
-            WidgetSpan(
-              child: Icon(roomTypeIcon),
-            ),
-            TextSpan(
-              text: '  $name',
-            ),
-          ],
-        ),
-      );
+    maxLines: 1,
+    overflow: TextOverflow.ellipsis,
+    style: textStyle,
+    TextSpan(
+      children: [
+        WidgetSpan(child: Icon(roomTypeIcon)),
+        TextSpan(text: '  $name'),
+      ],
+    ),
+  );
 
   BotOptionsModel? get botOptions {
     if (isSpace) return null;
@@ -55,10 +48,7 @@ extension RoomSettingsRoomExtension on Room {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          "roomID": id,
-          "stateEvent": stateEvent.content,
-        },
+        data: {"roomID": id, "stateEvent": stateEvent.content},
       );
       return null;
     }

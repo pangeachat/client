@@ -62,12 +62,13 @@ class UrlLauncher {
       // we need to transmute geo URIs on desktop and on iOS
       if ((!PlatformInfos.isMobile || PlatformInfos.isIOS) &&
           uri.scheme == 'geo') {
-        final latlong = uri.path
-            .split(';')
-            .first
-            .split(',')
-            .map((s) => double.tryParse(s))
-            .toList();
+        final latlong =
+            uri.path
+                .split(';')
+                .first
+                .split(',')
+                .map((s) => double.tryParse(s))
+                .toList();
         if (latlong.length == 2 &&
             latlong.first != null &&
             latlong.last != null) {
@@ -99,13 +100,16 @@ class UrlLauncher {
     // okay, we have either an http or an https URI.
     // As some platforms have issues with opening unicode URLs, we are going to help
     // them out by punycode-encoding them for them ourself.
-    final newHost = uri.host.split('.').map((hostPartEncoded) {
-      final hostPart = Uri.decodeComponent(hostPartEncoded);
-      final hostPartPunycode = punycodeEncode(hostPart);
-      return hostPartPunycode != '$hostPart-'
-          ? 'xn--$hostPartPunycode'
-          : hostPart;
-    }).join('.');
+    final newHost = uri.host
+        .split('.')
+        .map((hostPartEncoded) {
+          final hostPart = Uri.decodeComponent(hostPartEncoded);
+          final hostPartPunycode = punycodeEncode(hostPart);
+          return hostPartPunycode != '$hostPart-'
+              ? 'xn--$hostPartPunycode'
+              : hostPart;
+        })
+        .join('.');
     // Force LaunchMode.externalApplication, otherwise url_launcher will default
     // to opening links in a webview on mobile platforms.
     launchUrlString(
@@ -117,17 +121,17 @@ class UrlLauncher {
   void openMatrixToUrl() async {
     final matrix = Matrix.of(context);
     final url = this.url!.replaceFirst(
-          AppConfig.deepLinkPrefix,
-          AppConfig.inviteLinkPrefix,
-        );
+      AppConfig.deepLinkPrefix,
+      AppConfig.inviteLinkPrefix,
+    );
 
     // The identifier might be a matrix.to url and needs escaping. Or, it might have multiple
     // identifiers (room id & event id), or it might also have a query part.
     // All this needs parsing.
-    final identityParts = url.parseIdentifierIntoParts() ??
+    final identityParts =
+        url.parseIdentifierIntoParts() ??
         Uri.tryParse(url)?.host.parseIdentifierIntoParts() ??
-        Uri.tryParse(url)
-            ?.pathSegments
+        Uri.tryParse(url)?.pathSegments
             .lastWhereOrNull((_) => true)
             ?.parseIdentifierIntoParts();
     if (identityParts == null) {
@@ -138,7 +142,8 @@ class UrlLauncher {
       // we got a room! Let's open that one
       final roomIdOrAlias = identityParts.primaryIdentifier;
       final event = identityParts.secondaryIdentifier;
-      var room = matrix.client.getRoomByAlias(roomIdOrAlias) ??
+      var room =
+          matrix.client.getRoomByAlias(roomIdOrAlias) ??
           matrix.client.getRoomById(roomIdOrAlias);
       var roomId = room?.id;
       // we make the servers a set and later on convert to a list, so that we can easily
@@ -171,10 +176,7 @@ class UrlLauncher {
         // we have the room, so....just open it
         if (event != null) {
           context.go(
-            '/${Uri(
-              pathSegments: ['rooms', room.id],
-              queryParameters: {'event': event},
-            )}',
+            '/${Uri(pathSegments: ['rooms', room.id], queryParameters: {'event': event})}',
           );
         } else {
           context.go('/rooms/${room.id}');
@@ -183,9 +185,9 @@ class UrlLauncher {
       } else {
         await showAdaptiveDialog(
           context: context,
-          builder: (c) => PublicRoomDialog(
-            roomAlias: identityParts.primaryIdentifier,
-          ),
+          builder:
+              (c) =>
+                  PublicRoomDialog(roomAlias: identityParts.primaryIdentifier),
         );
       }
       if (roomIdOrAlias.sigil == '!') {
@@ -198,10 +200,11 @@ class UrlLauncher {
           roomId = roomIdOrAlias;
           final response = await showFutureLoadingDialog(
             context: context,
-            future: () => matrix.client.joinRoom(
-              roomIdOrAlias,
-              serverName: servers.isNotEmpty ? servers.toList() : null,
-            ),
+            future:
+                () => matrix.client.joinRoom(
+                  roomIdOrAlias,
+                  serverName: servers.isNotEmpty ? servers.toList() : null,
+                ),
           );
           // wait for two seconds so that it probably came down /sync
           await showFutureLoadingDialog(
@@ -225,12 +228,11 @@ class UrlLauncher {
       var noProfileWarning = false;
       final profileResult = await showFutureLoadingDialog(
         context: context,
-        future: () => matrix.client.getProfileFromUserId(userId).catchError(
-          (_) {
-            noProfileWarning = true;
-            return Profile(userId: userId);
-          },
-        ),
+        future:
+            () => matrix.client.getProfileFromUserId(userId).catchError((_) {
+              noProfileWarning = true;
+              return Profile(userId: userId);
+            }),
       );
       await UserDialog.show(
         context: context,

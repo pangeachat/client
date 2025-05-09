@@ -5,10 +5,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelDisplayName extends StatefulWidget {
   final String userId;
-  const LevelDisplayName({
-    required this.userId,
-    super.key,
-  });
+  const LevelDisplayName({required this.userId, super.key});
 
   @override
   State<LevelDisplayName> createState() => LevelDisplayNameState();
@@ -39,10 +36,7 @@ class LevelDisplayNameState extends State<LevelDisplayName> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 8.0,
-        vertical: 4.0,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       child: Row(
         children: <Widget>[
           if (_loading)
@@ -64,10 +58,7 @@ class LevelDisplayNameState extends State<LevelDisplayName> {
                   ),
                 if (_profile?.baseLanguage != null &&
                     _profile?.targetLanguage != null)
-                  const Icon(
-                    Icons.arrow_forward_outlined,
-                    size: 16.0,
-                  ),
+                  const Icon(Icons.arrow_forward_outlined, size: 16.0),
                 if (_profile?.targetLanguage != null)
                   Text(
                     _profile!.targetLanguage!.langCodeShort.toUpperCase(),

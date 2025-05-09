@@ -33,11 +33,7 @@ class SpanCard extends StatefulWidget {
   final SpanCardModel scm;
   final String roomId;
 
-  SpanCard({
-    super.key,
-    required this.scm,
-    required this.roomId,
-  });
+  SpanCard({super.key, required this.scm, required this.roomId});
 
   @override
   State<SpanCard> createState() => SpanCardState();
@@ -87,10 +83,10 @@ class SpanCardState extends State<SpanCard> {
     }
 
     // if user ever selected the correct choice, automatically select it
-    final selectedCorrectIndex =
-        widget.scm.pangeaMatch!.match.choices!.indexWhere((choice) {
-      return choice.selected && choice.isBestCorrection;
-    });
+    final selectedCorrectIndex = widget.scm.pangeaMatch!.match.choices!
+        .indexWhere((choice) {
+          return choice.selected && choice.isBestCorrection;
+        });
 
     if (selectedCorrectIndex != -1) {
       selectedChoiceIndex = selectedCorrectIndex;
@@ -134,9 +130,7 @@ class SpanCardState extends State<SpanCard> {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          "matchIndex": widget.scm.matchIndex,
-        },
+        data: {"matchIndex": widget.scm.matchIndex},
       );
       if (mounted) {
         setState(() {
@@ -153,9 +147,10 @@ class SpanCardState extends State<SpanCard> {
       selectedChoice!.timestamp = DateTime.now();
       selectedChoice!.selected = true;
       setState(
-        () => (selectedChoice!.isBestCorrection
-            ? BotExpression.gold
-            : BotExpression.surprised),
+        () =>
+            (selectedChoice!.isBestCorrection
+                ? BotExpression.gold
+                : BotExpression.surprised),
       );
     }
   }
@@ -169,13 +164,10 @@ class SpanCardState extends State<SpanCard> {
   }
 
   void onIgnoreMatch() {
-    Future.delayed(
-      Duration.zero,
-      () {
-        widget.scm.onIgnore();
-        _showFirstMatch();
-      },
-    );
+    Future.delayed(Duration.zero, () {
+      widget.scm.onIgnore();
+      _showFirstMatch();
+    });
   }
 
   void _showFirstMatch() {
@@ -197,10 +189,7 @@ class WordMatchContent extends StatelessWidget {
   final PangeaController pangeaController = MatrixState.pangeaController;
   final SpanCardState controller;
 
-  WordMatchContent({
-    required this.controller,
-    super.key,
-  });
+  WordMatchContent({required this.controller, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -257,23 +246,26 @@ class WordMatchContent extends StatelessWidget {
                       originalSpan:
                           controller.widget.scm.pangeaMatch!.matchContent,
                       isLoading: controller.fetchingData,
-                      choices: controller.widget.scm.pangeaMatch!.match.choices
-                          ?.map(
-                            (e) => Choice(
-                              text: e.value,
-                              color: e.selected ? e.type.color : null,
-                              isGold: e.type.name == 'bestCorrection',
-                            ),
-                          )
-                          .toList(),
-                      onPressed: (value, index) =>
-                          controller.onChoiceSelect(index),
+                      choices:
+                          controller.widget.scm.pangeaMatch!.match.choices
+                              ?.map(
+                                (e) => Choice(
+                                  text: e.value,
+                                  color: e.selected ? e.type.color : null,
+                                  isGold: e.type.name == 'bestCorrection',
+                                ),
+                              )
+                              .toList(),
+                      onPressed:
+                          (value, index) => controller.onChoiceSelect(index),
                       selectedChoiceIndex: controller.selectedChoiceIndex,
                       tts: controller.tts,
-                      id: controller.widget.scm.pangeaMatch!.hashCode
-                          .toString(),
-                      langCode: MatrixState.pangeaController.languageController
-                          .activeL2Code(),
+                      id:
+                          controller.widget.scm.pangeaMatch!.hashCode
+                              .toString(),
+                      langCode:
+                          MatrixState.pangeaController.languageController
+                              .activeL2Code(),
                     ),
                   const SizedBox(height: 12),
                   PromptAndFeedback(controller: controller),
@@ -307,9 +299,10 @@ class WordMatchContent extends StatelessWidget {
                   child: Opacity(
                     opacity: controller.selectedChoiceIndex != null ? 1.0 : 0.5,
                     child: TextButton(
-                      onPressed: controller.selectedChoiceIndex != null
-                          ? controller.onReplaceSelected
-                          : null,
+                      onPressed:
+                          controller.selectedChoiceIndex != null
+                              ? controller.onReplaceSelected
+                              : null,
                       style: ButtonStyle(
                         backgroundColor: WidgetStateProperty.all<Color>(
                           (controller.selectedChoice != null
@@ -318,15 +311,16 @@ class WordMatchContent extends StatelessWidget {
                               .withAlpha(50),
                         ),
                         // Outline if Replace button enabled
-                        side: controller.selectedChoice != null
-                            ? WidgetStateProperty.all(
-                                BorderSide(
-                                  color: controller.selectedChoice!.color,
-                                  style: BorderStyle.solid,
-                                  width: 2.0,
-                                ),
-                              )
-                            : null,
+                        side:
+                            controller.selectedChoice != null
+                                ? WidgetStateProperty.all(
+                                  BorderSide(
+                                    color: controller.selectedChoice!.color,
+                                    style: BorderStyle.solid,
+                                    width: 2.0,
+                                  ),
+                                )
+                                : null,
                       ),
                       child: Text(L10n.of(context).replace),
                     ),
@@ -367,21 +361,14 @@ class WordMatchContent extends StatelessWidget {
       );
     } on Exception catch (e) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: e,
-        s: StackTrace.current,
-        data: {},
-      );
+      ErrorHandler.logError(e: e, s: StackTrace.current, data: {});
       rethrow;
     }
   }
 }
 
 class PromptAndFeedback extends StatelessWidget {
-  const PromptAndFeedback({
-    super.key,
-    required this.controller,
-  });
+  const PromptAndFeedback({super.key, required this.controller});
 
   final SpanCardState controller;
 
@@ -392,9 +379,10 @@ class PromptAndFeedback extends StatelessWidget {
     }
 
     return Container(
-      constraints: controller.widget.scm.pangeaMatch!.isITStart
-          ? null
-          : const BoxConstraints(minHeight: 100),
+      constraints:
+          controller.widget.scm.pangeaMatch!.isITStart
+              ? null
+              : const BoxConstraints(minHeight: 100),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -429,9 +417,9 @@ class PromptAndFeedback extends StatelessWidget {
             Text(
               controller.widget.scm.pangeaMatch!.match.type.typeName
                   .defaultPrompt(context),
-              style: BotStyle.text(context).copyWith(
-                fontStyle: FontStyle.italic,
-              ),
+              style: BotStyle.text(
+                context,
+              ).copyWith(fontStyle: FontStyle.italic),
             ),
         ],
       ),
@@ -440,9 +428,7 @@ class PromptAndFeedback extends StatelessWidget {
 }
 
 class LoadingText extends StatefulWidget {
-  const LoadingText({
-    super.key,
-  });
+  const LoadingText({super.key});
 
   @override
   LoadingTextState createState() => LoadingTextState();
@@ -460,10 +446,7 @@ class LoadingTextState extends State<LoadingText>
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          L10n.of(context).makingActivity,
-          style: BotStyle.text(context),
-        ),
+        Text(L10n.of(context).makingActivity, style: BotStyle.text(context)),
         AnimatedBuilder(
           animation: _controller,
           builder: (BuildContext context, Widget? child) {
@@ -485,10 +468,7 @@ class LoadingTextState extends State<LoadingText>
 }
 
 class StartITButton extends StatelessWidget {
-  const StartITButton({
-    super.key,
-    required this.onITStart,
-  });
+  const StartITButton({super.key, required this.onITStart});
 
   final void Function() onITStart;
 

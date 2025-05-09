@@ -5,11 +5,7 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 
-enum ProgressIndicatorEnum {
-  level,
-  wordsUsed,
-  morphsUsed,
-}
+enum ProgressIndicatorEnum { level, wordsUsed, morphsUsed }
 
 extension ProgressIndicatorsExtension on ProgressIndicatorEnum {
   IconData get icon {

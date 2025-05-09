@@ -21,18 +21,14 @@ class ITFeedbackController {
     _pangeaController = pangeaController;
   }
 
-  _ITFeedbackCacheItem? _getLocal(
-    ITFeedbackRequestModel req,
-  ) =>
+  _ITFeedbackCacheItem? _getLocal(ITFeedbackRequestModel req) =>
       _feedback.firstWhereOrNull(
         (e) =>
             e.chosenContinuance == req.chosenContinuance &&
             e.sourceText == req.sourceText,
       );
 
-  Future<ITFeedbackResponseModel?> get(
-    ITFeedbackRequestModel req,
-  ) {
+  Future<ITFeedbackResponseModel?> get(ITFeedbackRequestModel req) {
     final _ITFeedbackCacheItem? localItem = _getLocal(req);
 
     if (localItem != null) return localItem.data;
@@ -48,9 +44,7 @@ class ITFeedbackController {
     return _feedback.last.data;
   }
 
-  Future<ITFeedbackResponseModel?> _get(
-    ITFeedbackRequestModel request,
-  ) async {
+  Future<ITFeedbackResponseModel?> _get(ITFeedbackRequestModel request) async {
     try {
       final ITFeedbackResponseModel res = await _ITFeedbackRepo.get(
         _pangeaController.userController.accessToken,
@@ -95,20 +89,13 @@ class _ITFeedbackRepo {
     );
 
     final ITFeedbackResponseModel response = ITFeedbackResponseModel.fromJson(
-      jsonDecode(
-        utf8.decode(res.bodyBytes).toString(),
-      ),
+      jsonDecode(utf8.decode(res.bodyBytes).toString()),
     );
 
     if (response.text.isEmpty) {
       ErrorHandler.logError(
-        e: Exception(
-          "empty text in contextual definition response",
-        ),
-        data: {
-          "request": request.toJson(),
-          "accessToken": accessToken,
-        },
+        e: Exception("empty text in contextual definition response"),
+        data: {"request": request.toJson(), "accessToken": accessToken},
       );
     }
 
@@ -136,14 +123,14 @@ class ITFeedbackRequestModel {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.sourceText: sourceText,
-        ModelKey.currentText: currentText,
-        ModelKey.bestContinuance: bestContinuance,
-        ModelKey.chosenContinuance: chosenContinuance,
-        ModelKey.feedbackLang: feedbackLang,
-        ModelKey.srcLang: sourceTextLang,
-        ModelKey.tgtLang: targetLang,
-      };
+    ModelKey.sourceText: sourceText,
+    ModelKey.currentText: currentText,
+    ModelKey.bestContinuance: bestContinuance,
+    ModelKey.chosenContinuance: chosenContinuance,
+    ModelKey.feedbackLang: feedbackLang,
+    ModelKey.srcLang: sourceTextLang,
+    ModelKey.tgtLang: targetLang,
+  };
 }
 
 class ITFeedbackResponseModel {
@@ -151,8 +138,6 @@ class ITFeedbackResponseModel {
 
   ITFeedbackResponseModel({required this.text});
 
-  factory ITFeedbackResponseModel.fromJson(
-    Map<String, dynamic> json,
-  ) =>
+  factory ITFeedbackResponseModel.fromJson(Map<String, dynamic> json) =>
       ITFeedbackResponseModel(text: json[ModelKey.text]);
 }

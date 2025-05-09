@@ -17,9 +17,7 @@ import 'construct_type_enum.dart';
 class ConstructAnalyticsModel {
   List<OneConstructUse> uses;
 
-  ConstructAnalyticsModel({
-    this.uses = const [],
-  });
+  ConstructAnalyticsModel({this.uses = const []});
 
   static const _usesKey = "uses";
 
@@ -37,13 +35,7 @@ class ConstructAnalyticsModel {
           try {
             uses.add(OneConstructUse.fromJson(useJson));
           } catch (err, s) {
-            ErrorHandler.logError(
-              e: err,
-              s: s,
-              data: {
-                "useJson": useJson,
-              },
-            );
+            ErrorHandler.logError(e: err, s: s, data: {"useJson": useJson});
             continue;
           }
         }
@@ -52,21 +44,15 @@ class ConstructAnalyticsModel {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         m: "Analytics room with non-list uses",
-        data: {
-          "usesKey": _usesKey,
-        },
+        data: {"usesKey": _usesKey},
       );
     }
 
-    return ConstructAnalyticsModel(
-      uses: uses,
-    );
+    return ConstructAnalyticsModel(uses: uses);
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      _usesKey: uses.map((use) => use.toJson()).toList(),
-    };
+    return {_usesKey: uses.map((use) => use.toJson()).toList()};
   }
 }
 
@@ -116,9 +102,10 @@ class OneConstructUse {
   factory OneConstructUse.fromJson(Map<String, dynamic> json) {
     debugger(when: kDebugMode && json['constructType'] == null);
 
-    final ConstructTypeEnum constructType = json['constructType'] != null
-        ? ConstructTypeUtil.fromString(json['constructType'])
-        : ConstructTypeEnum.vocab;
+    final ConstructTypeEnum constructType =
+        json['constructType'] != null
+            ? ConstructTypeUtil.fromString(json['constructType'])
+            : ConstructTypeEnum.vocab;
 
     final useType = ConstructUseTypeUtil.fromString(json['useType']);
 
@@ -139,17 +126,17 @@ class OneConstructUse {
   }
 
   Map<String, dynamic> toJson() => {
-        'useType': useType.string,
-        'chatId': metadata.roomId,
-        'timeStamp': metadata.timeStamp.toIso8601String(),
-        'form': form,
-        'msgId': metadata.eventId,
-        'lemma': lemma,
-        'constructType': constructType.string,
-        'categories': category,
-        'id': id,
-        'xp': xp,
-      };
+    'useType': useType.string,
+    'chatId': metadata.roomId,
+    'timeStamp': metadata.timeStamp.toIso8601String(),
+    'form': form,
+    'msgId': metadata.eventId,
+    'lemma': lemma,
+    'constructType': constructType.string,
+    'categories': category,
+    'id': id,
+    'xp': xp,
+  };
 
   String get category {
     if (_category.isEmpty) return "other";
@@ -163,9 +150,10 @@ class OneConstructUse {
     final categoryEntry = json['cat'] ?? json['categories'];
 
     if (constructType == ConstructTypeEnum.vocab) {
-      final String? category = categoryEntry is String
-          ? categoryEntry
-          : categoryEntry is List && categoryEntry.isNotEmpty
+      final String? category =
+          categoryEntry is String
+              ? categoryEntry
+              : categoryEntry is List && categoryEntry.isNotEmpty
               ? categoryEntry.first
               : null;
       return category ?? "Other";
@@ -209,10 +197,10 @@ class OneConstructUse {
   }
 
   ConstructIdentifier get identifier => ConstructIdentifier(
-        lemma: lemma,
-        type: constructType,
-        category: category,
-      );
+    lemma: lemma,
+    type: constructType,
+    category: category,
+  );
 }
 
 class ConstructUseMetaData {

@@ -32,15 +32,19 @@ class ConversationBotModeDynamicZone extends StatelessWidget {
         child: TextFormField(
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
           decoration: InputDecoration(
-            hintText: L10n.of(context)
-                .conversationBotDiscussionZone_discussionTopicPlaceholder,
+            hintText:
+                L10n.of(
+                  context,
+                ).conversationBotDiscussionZone_discussionTopicPlaceholder,
           ),
           controller: discussionTopicController,
-          validator: (value) => enabled &&
-                  mode == BotMode.discussion &&
-                  (value == null || value.isEmpty)
-              ? L10n.of(context).enterDiscussionTopic
-              : null,
+          validator:
+              (value) =>
+                  enabled &&
+                          mode == BotMode.discussion &&
+                          (value == null || value.isEmpty)
+                      ? L10n.of(context).enterDiscussionTopic
+                      : null,
           enabled: hasPermission && enabled,
           minLines: 1, // Minimum number of lines
           maxLines: null, // Allow the field to expand based on content
@@ -53,8 +57,10 @@ class ConversationBotModeDynamicZone extends StatelessWidget {
         child: TextFormField(
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
           decoration: InputDecoration(
-            hintText: L10n.of(context)
-                .conversationBotDiscussionZone_discussionKeywordsPlaceholder,
+            hintText:
+                L10n.of(
+                  context,
+                ).conversationBotDiscussionZone_discussionKeywordsPlaceholder,
           ),
           controller: discussionKeywordsController,
           enabled: hasPermission && enabled,
@@ -71,15 +77,19 @@ class ConversationBotModeDynamicZone extends StatelessWidget {
         child: TextFormField(
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
           decoration: InputDecoration(
-            hintText: L10n.of(context)
-                .conversationBotCustomZone_customSystemPromptPlaceholder,
+            hintText:
+                L10n.of(
+                  context,
+                ).conversationBotCustomZone_customSystemPromptPlaceholder,
             contentPadding: const EdgeInsets.symmetric(horizontal: 28.0),
           ),
-          validator: (value) => enabled &&
-                  mode == BotMode.custom &&
-                  (value == null || value.isEmpty)
-              ? L10n.of(context).enterPrompt
-              : null,
+          validator:
+              (value) =>
+                  enabled &&
+                          mode == BotMode.custom &&
+                          (value == null || value.isEmpty)
+                      ? L10n.of(context).enterPrompt
+                      : null,
           controller: customSystemPromptController,
           enabled: hasPermission && enabled,
           minLines: 1, // Minimum number of lines

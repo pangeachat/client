@@ -38,17 +38,15 @@ abstract class AppConfig {
       reactionsPickerHeight + (chatInputRowOverlayPadding * 2) + toolbarSpacing;
   static const double practiceModeInputBarHeight =
       readingAssistanceInputBarHeight +
-          toolbarButtonsHeight +
-          (chatInputRowOverlayPadding * 2) +
-          toolbarSpacing;
+      toolbarButtonsHeight +
+      (chatInputRowOverlayPadding * 2) +
+      toolbarSpacing;
   static const double audioTranscriptionMaxHeight = 150.0;
 
-  static TextStyle messageTextStyle(
-    Event? event,
-    Color textColor,
-  ) {
+  static TextStyle messageTextStyle(Event? event, Color textColor) {
     final fontSize = messageFontSize * fontSizeFactor;
-    final bigEmotes = event != null &&
+    final bigEmotes =
+        event != null &&
         event.onlyEmotes &&
         event.numberEmotes > 0 &&
         event.numberEmotes <= 10;

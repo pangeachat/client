@@ -63,24 +63,26 @@ class NaviRailItem extends StatelessWidget {
                   curve: FluffyThemes.animationCurve,
                   child: Material(
                     borderRadius: borderRadius,
-                    color: isSelected
-                        ? theme.colorScheme.primaryContainer
-                        : theme.colorScheme.surfaceContainerHigh,
+                    color:
+                        isSelected
+                            ? theme.colorScheme.primaryContainer
+                            : theme.colorScheme.surfaceContainerHigh,
                     child: Tooltip(
                       message: toolTip,
                       child: InkWell(
                         borderRadius: borderRadius,
                         onTap: onTap,
-                        child: unreadBadgeFilter == null
-                            ? icon
-                            : UnreadRoomsBadge(
-                                filter: unreadBadgeFilter,
-                                badgePosition: BadgePosition.topEnd(
-                                  top: -12,
-                                  end: -8,
+                        child:
+                            unreadBadgeFilter == null
+                                ? icon
+                                : UnreadRoomsBadge(
+                                  filter: unreadBadgeFilter,
+                                  badgePosition: BadgePosition.topEnd(
+                                    top: -12,
+                                    end: -8,
+                                  ),
+                                  child: icon,
                                 ),
-                                child: icon,
-                              ),
                       ),
                     ),
                   ),

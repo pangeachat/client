@@ -23,8 +23,8 @@ class RelevantSpanDisplayDetails {
   factory RelevantSpanDisplayDetails.fromJson(Map<String, dynamic> json) {
     final ActivityDisplayInstructionsEnum? display =
         ActivityDisplayInstructionsEnum.values.firstWhereOrNull(
-      (e) => e.string == json['display_instructions'],
-    );
+          (e) => e.string == json['display_instructions'],
+        );
     if (display == null) {
       debugger(when: kDebugMode);
     }

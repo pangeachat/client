@@ -66,10 +66,11 @@ class MessageDataController extends BaseController {
     if (repEventId != null && room != null) {
       room
           .sendPangeaEvent(
-            content: PangeaMessageTokens(
-              tokens: res.tokens,
-              detections: res.detections,
-            ).toJson(),
+            content:
+                PangeaMessageTokens(
+                  tokens: res.tokens,
+                  detections: res.detections,
+                ).toJson(),
             parentEventId: repEventId,
             type: PangeaEventTypes.tokens,
           )
@@ -110,8 +111,10 @@ class MessageDataController extends BaseController {
     required FullTextTranslationRequestModel req,
     required Event messageEvent,
   }) async {
-    return _representationCache[req.hashCode] ??=
-        _getPangeaRepresentation(req: req, messageEvent: messageEvent);
+    return _representationCache[req.hashCode] ??= _getPangeaRepresentation(
+      req: req,
+      messageEvent: messageEvent,
+    );
   }
 
   Future<PangeaRepresentation> _getPangeaRepresentation({
@@ -120,9 +123,9 @@ class MessageDataController extends BaseController {
   }) async {
     final FullTextTranslationResponseModel res =
         await FullTextTranslationRepo.translate(
-      accessToken: _pangeaController.userController.accessToken,
-      request: req,
-    );
+          accessToken: _pangeaController.userController.accessToken,
+          request: req,
+        );
 
     final rep = PangeaRepresentation(
       langCode: req.tgtLang,
@@ -156,9 +159,9 @@ class MessageDataController extends BaseController {
   }) async {
     final FullTextTranslationResponseModel res =
         await FullTextTranslationRepo.translate(
-      accessToken: _pangeaController.userController.accessToken,
-      request: req,
-    );
+          accessToken: _pangeaController.userController.accessToken,
+          request: req,
+        );
 
     if (originalSent && messageEvent.originalSent != null) {
       originalSent = false;
@@ -201,10 +204,11 @@ class MessageDataController extends BaseController {
 
     try {
       await room.sendPangeaEvent(
-        content: PangeaMessageTokens(
-          tokens: res.tokens,
-          detections: res.detections,
-        ).toJson(),
+        content:
+            PangeaMessageTokens(
+              tokens: res.tokens,
+              detections: res.detections,
+            ).toJson(),
         parentEventId: repEventId,
         type: PangeaEventTypes.tokens,
       );

@@ -229,6 +229,6 @@ final MorphFeaturesAndTags defaultUDMapping = MorphFeaturesAndTags.fromJson({
     {
       "feature": "x",
       "tag": ["X"],
-    }
+    },
   ],
 });

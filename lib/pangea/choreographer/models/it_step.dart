@@ -9,11 +9,7 @@ class ITStep {
   String? customInput;
   bool showAlternativeTranslationOption = false;
 
-  ITStep(
-    this.continuances, {
-    this.chosen,
-    this.customInput,
-  }) {
+  ITStep(this.continuances, {this.chosen, this.customInput}) {
     if (chosen == null && customInput == null) {
       throw Exception("ITStep must have either chosen or customInput");
     }

@@ -21,28 +21,32 @@ class MultipleEmotesSettingsView extends StatelessWidget {
         title: Text(L10n.of(context).emotePacks),
       ),
       body: StreamBuilder(
-        stream: room.client.onRoomState.stream
-            .where((update) => update.roomId == room.id),
+        stream: room.client.onRoomState.stream.where(
+          (update) => update.roomId == room.id,
+        ),
         builder: (context, snapshot) {
           final packStateEvents = room.states['im.ponies.room_emotes'];
           // we need to manually convert the map using Map.of, otherwise assigning null will throw a type error.
-          final packs = packStateEvents != null
-              ? Map<String, StrippedStateEvent?>.of(packStateEvents)
-              : <String, StrippedStateEvent?>{};
+          final packs =
+              packStateEvents != null
+                  ? Map<String, StrippedStateEvent?>.of(packStateEvents)
+                  : <String, StrippedStateEvent?>{};
           if (!packs.containsKey('')) {
             packs[''] = null;
           }
           final keys = packs.keys.toList();
           keys.sort();
           return ListView.separated(
-            separatorBuilder: (BuildContext context, int i) =>
-                const SizedBox.shrink(),
+            separatorBuilder:
+                (BuildContext context, int i) => const SizedBox.shrink(),
             itemCount: keys.length,
             itemBuilder: (BuildContext context, int i) {
               final event = packs[keys[i]];
-              final eventPack =
-                  event?.content.tryGetMap<String, Object?>('pack');
-              final packName = eventPack?.tryGet<String>('displayname') ??
+              final eventPack = event?.content.tryGetMap<String, Object?>(
+                'pack',
+              );
+              final packName =
+                  eventPack?.tryGet<String>('displayname') ??
                   eventPack?.tryGet<String>('name') ??
                   (keys[i].isNotEmpty ? keys[i] : 'Default Pack');
 
@@ -50,8 +54,14 @@ class MultipleEmotesSettingsView extends StatelessWidget {
                 title: Text(packName),
                 onTap: () async {
                   context.go(
-                    ['', 'rooms', room.id, 'details', 'emotes', keys[i]]
-                        .join('/'),
+                    [
+                      '',
+                      'rooms',
+                      room.id,
+                      'details',
+                      'emotes',
+                      keys[i],
+                    ].join('/'),
                   );
                 },
               );

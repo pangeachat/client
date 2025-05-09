@@ -24,20 +24,13 @@ class TokensRepo {
     );
 
     final TokensResponseModel response = TokensResponseModel.fromJson(
-      jsonDecode(
-        utf8.decode(res.bodyBytes).toString(),
-      ),
+      jsonDecode(utf8.decode(res.bodyBytes).toString()),
     );
 
     if (response.tokens.isEmpty) {
       ErrorHandler.logError(
-        e: Exception(
-          "empty tokens in tokenize response return",
-        ),
-        data: {
-          "accessToken": accessToken,
-          "request": request.toJson(),
-        },
+        e: Exception("empty tokens in tokenize response return"),
+        data: {"accessToken": accessToken, "request": request.toJson()},
       );
     }
 

@@ -32,10 +32,7 @@ class _RequestCacheItem {
   final PracticeActivityModelResponse practiceActivity;
   final DateTime createdAt = DateTime.now();
 
-  _RequestCacheItem({
-    required this.req,
-    required this.practiceActivity,
-  });
+  _RequestCacheItem({required this.req, required this.practiceActivity});
 }
 
 /// Controller for handling activity completions.
@@ -141,10 +138,7 @@ class PracticeRepo {
       case ActivityTypeEnum.wordFocusListening:
         return _wordFoocusListening.get(req, context);
       case ActivityTypeEnum.hiddenWordListening:
-        return _fetchFromServer(
-          accessToken: accessToken,
-          requestModel: req,
-        );
+        return _fetchFromServer(accessToken: accessToken, requestModel: req);
     }
   }
 
@@ -167,8 +161,9 @@ class PracticeRepo {
     );
 
     // this improves the UI by generally packing wrapped choices more tightly
-    res.activity.multipleChoiceContent?.choices
-        .sort((a, b) => a.length.compareTo(b.length));
+    res.activity.multipleChoiceContent?.choices.sort(
+      (a, b) => a.length.compareTo(b.length),
+    );
 
     // TODO resolve some wierdness here whereby the activity can be null but then... it's not
     final eventCompleter = Completer<PracticeActivityEvent?>();

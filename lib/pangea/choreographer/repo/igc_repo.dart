@@ -24,8 +24,9 @@ class IgcRepo {
       body: igcRequest.toJson(),
     );
 
-    final Map<String, dynamic> json =
-        jsonDecode(utf8.decode(res.bodyBytes).toString());
+    final Map<String, dynamic> json = jsonDecode(
+      utf8.decode(res.bodyBytes).toString(),
+    );
 
     final IGCTextData response = IGCTextData.fromJson(json);
 
@@ -71,16 +72,17 @@ class PreviousMessage {
       PreviousMessage(
         content: json[ModelKey.prevContent] ?? "",
         sender: json[ModelKey.prevSender] ?? "",
-        timestamp: json[ModelKey.prevTimestamp] == null
-            ? DateTime.now()
-            : DateTime.parse(json[ModelKey.prevTimestamp]),
+        timestamp:
+            json[ModelKey.prevTimestamp] == null
+                ? DateTime.now()
+                : DateTime.parse(json[ModelKey.prevTimestamp]),
       );
 
   Map<String, dynamic> toJson() => {
-        ModelKey.prevContent: content,
-        ModelKey.prevSender: sender,
-        ModelKey.prevTimestamp: timestamp.toIso8601String(),
-      };
+    ModelKey.prevContent: content,
+    ModelKey.prevSender: sender,
+    ModelKey.prevTimestamp: timestamp.toIso8601String(),
+  };
 
   @override
   bool operator ==(Object other) {
@@ -95,11 +97,7 @@ class PreviousMessage {
 
   @override
   int get hashCode {
-    return Object.hash(
-      content,
-      sender,
-      timestamp,
-    );
+    return Object.hash(content, sender, timestamp);
   }
 }
 
@@ -123,15 +121,16 @@ class IGCRequestBody {
   });
 
   Map<String, dynamic> toJson() => {
-        ModelKey.fullText: fullText,
-        ModelKey.userL1: userL1,
-        ModelKey.userL2: userL2,
-        "enable_it": enableIT,
-        "enable_igc": enableIGC,
-        ModelKey.userId: userId,
-        ModelKey.prevMessages:
-            jsonEncode(prevMessages.map((x) => x.toJson()).toList()),
-      };
+    ModelKey.fullText: fullText,
+    ModelKey.userL1: userL1,
+    ModelKey.userL2: userL2,
+    "enable_it": enableIT,
+    "enable_igc": enableIGC,
+    ModelKey.userId: userId,
+    ModelKey.prevMessages: jsonEncode(
+      prevMessages.map((x) => x.toJson()).toList(),
+    ),
+  };
 
   @override
   bool operator ==(Object other) {
@@ -149,12 +148,12 @@ class IGCRequestBody {
 
   @override
   int get hashCode => Object.hash(
-        fullText.trim(),
-        userL1,
-        userL2,
-        enableIT,
-        enableIGC,
-        userId,
-        Object.hashAll(prevMessages),
-      );
+    fullText.trim(),
+    userL1,
+    userL2,
+    enableIT,
+    enableIGC,
+    userId,
+    Object.hashAll(prevMessages),
+  );
 }

@@ -6,23 +6,15 @@ import 'package:go_router/go_router.dart';
 class BottomNavLayout extends StatelessWidget {
   final Widget mainView;
 
-  const BottomNavLayout({
-    super.key,
-    required this.mainView,
-  });
+  const BottomNavLayout({super.key, required this.mainView});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: mainView,
-      bottomNavigationBar: const BottomNavBar(),
-    );
+    return Scaffold(body: mainView, bottomNavigationBar: const BottomNavBar());
   }
 }
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({
-    super.key,
-  });
+  const BottomNavBar({super.key});
 
   @override
   BottomNavBarState createState() => BottomNavBarState();

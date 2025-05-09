@@ -35,24 +35,24 @@ class ChatViewBackgroundState extends State<ChatViewBackground> {
   Widget build(BuildContext context) {
     return widget.choreographer.itController.willOpen
         ? Positioned(
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
-            child: Material(
-              borderOnForeground: false,
-              color: const Color.fromRGBO(0, 0, 0, 1).withAlpha(150),
-              clipBehavior: Clip.antiAlias,
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
-                child: Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  color: Colors.transparent,
-                ),
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0,
+          child: Material(
+            borderOnForeground: false,
+            color: const Color.fromRGBO(0, 0, 0, 1).withAlpha(150),
+            clipBehavior: Clip.antiAlias,
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
+              child: Container(
+                height: double.infinity,
+                width: double.infinity,
+                color: Colors.transparent,
               ),
             ),
-          )
+          ),
+        )
         : const SizedBox.shrink();
   }
 }

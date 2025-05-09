@@ -40,23 +40,23 @@ class LemmaActivityGenerator {
   }
 
   Future<List<String>> lemmaActivityDistractors(PangeaToken token) async {
-    final List<String> lemmas = MatrixState
-        .pangeaController.getAnalytics.constructListModel
-        .constructList(type: ConstructTypeEnum.vocab)
-        .map((c) => c.lemma)
-        .toSet()
-        .toList();
+    final List<String> lemmas =
+        MatrixState.pangeaController.getAnalytics.constructListModel
+            .constructList(type: ConstructTypeEnum.vocab)
+            .map((c) => c.lemma)
+            .toSet()
+            .toList();
 
     // Offload computation to an isolate
-    final Map<String, int> distances =
-        await compute(_computeDistancesInIsolate, {
-      'lemmas': lemmas,
-      'target': token.lemma.text,
-    });
+    final Map<String, int> distances = await compute(
+      _computeDistancesInIsolate,
+      {'lemmas': lemmas, 'target': token.lemma.text},
+    );
 
     // Sort lemmas by distance
-    final sortedLemmas = distances.keys.toList()
-      ..sort((a, b) => distances[a]!.compareTo(distances[b]!));
+    final sortedLemmas =
+        distances.keys.toList()
+          ..sort((a, b) => distances[a]!.compareTo(distances[b]!));
 
     // Take the shortest 4
     final choices = sortedLemmas.take(4).toList();
@@ -101,9 +101,13 @@ class LemmaActivityGenerator {
         } else if (s[i - 1] == t[j - 1]) {
           dp[i][j] = dp[i - 1][j - 1];
         } else {
-          dp[i][j] = 1 +
-              [dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]]
-                  .reduce((a, b) => a < b ? a : b);
+          dp[i][j] =
+              1 +
+              [
+                dp[i - 1][j],
+                dp[i][j - 1],
+                dp[i - 1][j - 1],
+              ].reduce((a, b) => a < b ? a : b);
         }
       }
     }

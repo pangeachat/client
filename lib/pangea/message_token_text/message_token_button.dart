@@ -130,17 +130,14 @@ class MessageTokenButtonState extends State<MessageTokenButton>
   PracticeTarget? get _activity => widget.practiceTargetForToken;
 
   bool get _isActivityCompleteOrNullForToken =>
-      _activity?.isCompleteByToken(
-        widget.token,
-        _activity!.morphFeature,
-      ) ==
+      _activity?.isCompleteByToken(widget.token, _activity!.morphFeature) ==
       true;
 
   void _setSelected() {
     final selected =
         widget.overlayController?.selectedMorph?.token == widget.token &&
-            widget.overlayController?.selectedMorph?.morph ==
-                _activity?.morphFeature;
+        widget.overlayController?.selectedMorph?.morph ==
+            _activity?.morphFeature;
 
     if (selected != _isSelected) {
       setState(() {
@@ -219,9 +216,10 @@ class MessageTokenButtonState extends State<MessageTokenButton>
         textStyle: widget.textStyle,
         sizeAnimation: _iconSizeAnimation!,
         onHover: _setHovered,
-        onTap: () => widget.overlayController!.onMorphActivitySelect(
-          MorphSelection(widget.token, _activity!.morphFeature!),
-        ),
+        onTap:
+            () => widget.overlayController!.onMorphActivitySelect(
+              MorphSelection(widget.token, _activity!.morphFeature!),
+            ),
         onMatch: _onMatch,
       );
     }
@@ -242,9 +240,10 @@ class MessageTokenButtonState extends State<MessageTokenButton>
             textStyle: widget.textStyle,
             sizeAnimation: _iconSizeAnimation!,
             onHover: _setHovered,
-            onTap: () => widget.overlayController!.onMorphActivitySelect(
-              MorphSelection(widget.token, _activity!.morphFeature!),
-            ),
+            onTap:
+                () => widget.overlayController!.onMorphActivitySelect(
+                  MorphSelection(widget.token, _activity!.morphFeature!),
+                ),
             onMatch: _onMatch,
           );
         },
@@ -290,11 +289,12 @@ class MessageTokenButtonContent extends StatelessWidget {
   });
 
   TextStyle get _emojiStyle => textStyle.copyWith(
-        fontSize: (textStyle.fontSize ?? tokenButtonDefaultFontSize) + 4,
-      );
+    fontSize: (textStyle.fontSize ?? tokenButtonDefaultFontSize) + 4,
+  );
 
-  static final _borderRadius =
-      BorderRadius.circular(AppConfig.borderRadius - 4);
+  static final _borderRadius = BorderRadius.circular(
+    AppConfig.borderRadius - 4,
+  );
 
   Color _color(BuildContext context) {
     if (activity == null) {
@@ -379,35 +379,36 @@ class MessageTokenButtonContent extends StatelessWidget {
 
     return DragTarget<PracticeChoice>(
       builder: (BuildContext context, accepted, rejected) {
-        final double colorAlpha = 0.3 +
+        final double colorAlpha =
+            0.3 +
             (selectedChoice != null ? 0.4 : 0.0) +
             (accepted.isNotEmpty ? 0.3 : 0.0);
 
         return InkWell(
-          onTap: selectedChoice != null
-              ? () => onMatch?.call(selectedChoice!)
-              : null,
+          onTap:
+              selectedChoice != null
+                  ? () => onMatch?.call(selectedChoice!)
+                  : null,
           borderRadius: _borderRadius,
           child: CustomPaint(
             painter: DottedBorderPainter(
-              color: Theme.of(context)
-                  .colorScheme
-                  .primary
-                  .withAlpha((colorAlpha * 255).toInt()),
+              color: Theme.of(
+                context,
+              ).colorScheme.primary.withAlpha((colorAlpha * 255).toInt()),
               borderRadius: _borderRadius,
             ),
             child: Container(
               height: height,
               padding: const EdgeInsets.only(top: 10.0),
-              width: MessageMode.wordMeaning == messageMode
-                  ? width
-                  : min(width, height),
+              width:
+                  MessageMode.wordMeaning == messageMode
+                      ? width
+                      : min(width, height),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Theme.of(context)
-                    .colorScheme
-                    .primary
-                    .withAlpha((max(0, colorAlpha - 0.7) * 255).toInt()),
+                color: Theme.of(context).colorScheme.primary.withAlpha(
+                  (max(0, colorAlpha - 0.7) * 255).toInt(),
+                ),
                 borderRadius: _borderRadius,
               ),
             ),

@@ -29,9 +29,7 @@ class SignupPageView extends StatelessWidget {
             title: L10n.of(context).signUpWithEmail,
             onPressed: () {
               if (!validator()) return;
-              context.go(
-                '/home/signup/email',
-              );
+              context.go('/home/signup/email');
             },
             icon: PangeaLogoSvg(
               width: 20,
@@ -53,10 +51,7 @@ class SignupPageView extends StatelessWidget {
             validator: validator,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 8.0,
-              horizontal: 8.0,
-            ),
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
             child: RichText(
               textAlign: TextAlign.justify,
               text: TextSpan(

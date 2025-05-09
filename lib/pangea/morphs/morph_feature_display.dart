@@ -4,10 +4,7 @@ import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 
 class MorphFeatureDisplay extends StatelessWidget {
-  const MorphFeatureDisplay({
-    super.key,
-    required this.morphFeature,
-  });
+  const MorphFeatureDisplay({super.key, required this.morphFeature});
 
   final MorphFeaturesEnum morphFeature;
 
@@ -19,10 +16,7 @@ class MorphFeatureDisplay extends StatelessWidget {
         SizedBox(
           width: 24.0,
           height: 24.0,
-          child: MorphIcon(
-            morphFeature: morphFeature,
-            morphTag: null,
-          ),
+          child: MorphIcon(morphFeature: morphFeature, morphTag: null),
         ),
         const SizedBox(width: 10.0),
         Text(

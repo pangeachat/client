@@ -14,10 +14,8 @@ class ChatSearchMessageTab extends StatelessWidget {
   final String searchQuery;
   final Room room;
   final Stream<(List<Event>, String?)>? searchStream;
-  final void Function({
-    String? prevBatch,
-    List<Event>? previousSearchResult,
-  }) startSearch;
+  final void Function({String? prevBatch, List<Event>? previousSearchResult})
+  startSearch;
 
   const ChatSearchMessageTab({
     required this.searchQuery,
@@ -42,9 +40,7 @@ class ChatSearchMessageTab extends StatelessWidget {
               const SizedBox(height: 8),
               Text(
                 L10n.of(context).searchIn(
-                  room.getLocalizedDisplayname(
-                    MatrixLocals(L10n.of(context)),
-                  ),
+                  room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
                 ),
               ),
             ],
@@ -55,19 +51,15 @@ class ChatSearchMessageTab extends StatelessWidget {
         return SelectionArea(
           child: ListView.separated(
             itemCount: events.length + 1,
-            separatorBuilder: (context, _) => Divider(
-              color: theme.dividerColor,
-              height: 1,
-            ),
+            separatorBuilder:
+                (context, _) => Divider(color: theme.dividerColor, height: 1),
             itemBuilder: (context, i) {
               if (i == events.length) {
                 if (snapshot.connectionState != ConnectionState.done) {
                   return const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Center(
-                      child: CircularProgressIndicator.adaptive(
-                        strokeWidth: 2,
-                      ),
+                      child: CircularProgressIndicator.adaptive(strokeWidth: 2),
                     ),
                   );
                 }
@@ -83,13 +75,12 @@ class ChatSearchMessageTab extends StatelessWidget {
                         backgroundColor: theme.colorScheme.secondaryContainer,
                         foregroundColor: theme.colorScheme.onSecondaryContainer,
                       ),
-                      onPressed: () => startSearch(
-                        prevBatch: nextBatch,
-                        previousSearchResult: events,
-                      ),
-                      icon: const Icon(
-                        Icons.arrow_downward_outlined,
-                      ),
+                      onPressed:
+                          () => startSearch(
+                            prevBatch: nextBatch,
+                            previousSearchResult: events,
+                          ),
+                      icon: const Icon(Icons.arrow_downward_outlined),
                       label: Text(L10n.of(context).searchMore),
                     ),
                   ),
@@ -143,9 +134,7 @@ class _MessageSearchResultListTile extends StatelessWidget {
             size: 16,
           ),
           const SizedBox(width: 8),
-          Text(
-            displayname,
-          ),
+          Text(displayname),
           Expanded(
             child: Text(
               ' | ${event.originServerTs.localizedTimeShort(context)}',
@@ -163,28 +152,23 @@ class _MessageSearchResultListTile extends StatelessWidget {
           decorationColor: theme.colorScheme.primary,
         ),
         onOpen: (url) => UrlLauncher(context, url.url).launchUrl(),
-        text: event
-            .calcLocalizedBodyFallback(
-              plaintextBody: true,
-              removeMarkdown: true,
-              MatrixLocals(
-                L10n.of(context),
-              ),
-            )
-            .trim(),
+        text:
+            event
+                .calcLocalizedBodyFallback(
+                  plaintextBody: true,
+                  removeMarkdown: true,
+                  MatrixLocals(L10n.of(context)),
+                )
+                .trim(),
         maxLines: 7,
         overflow: TextOverflow.ellipsis,
       ),
       trailing: IconButton(
-        icon: const Icon(
-          Icons.chevron_right_outlined,
-        ),
-        onPressed: () => context.go(
-          '/${Uri(
-            pathSegments: ['rooms', room.id],
-            queryParameters: {'event': event.eventId},
-          )}',
-        ),
+        icon: const Icon(Icons.chevron_right_outlined),
+        onPressed:
+            () => context.go(
+              '/${Uri(pathSegments: ['rooms', room.id], queryParameters: {'event': event.eventId})}',
+            ),
       ),
     );
   }

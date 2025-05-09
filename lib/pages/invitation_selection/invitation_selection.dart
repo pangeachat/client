@@ -15,10 +15,7 @@ import '../../utils/localized_exception_extension.dart';
 
 class InvitationSelection extends StatefulWidget {
   final String roomId;
-  const InvitationSelection({
-    super.key,
-    required this.roomId,
-  });
+  const InvitationSelection({super.key, required this.roomId});
 
   @override
   InvitationSelectionController createState() =>
@@ -41,21 +38,21 @@ class InvitationSelectionController extends State<InvitationSelection> {
   }
 
   List<Membership> get _membershipOrder => [
-        Membership.join,
-        Membership.invite,
-        Membership.knock,
-        Membership.leave,
-        Membership.ban,
-      ];
+    Membership.join,
+    Membership.invite,
+    Membership.knock,
+    Membership.leave,
+    Membership.ban,
+  ];
 
   String? membershipCopy(Membership? membership) => switch (membership) {
-        Membership.ban => L10n.of(context).banned,
-        Membership.invite => L10n.of(context).invited,
-        Membership.join => null,
-        Membership.knock => L10n.of(context).knocking,
-        Membership.leave => L10n.of(context).leftTheChat,
-        null => null,
-      };
+    Membership.ban => L10n.of(context).banned,
+    Membership.invite => L10n.of(context).invited,
+    Membership.join => null,
+    Membership.knock => L10n.of(context).knocking,
+    Membership.leave => L10n.of(context).leftTheChat,
+    null => null,
+  };
 
   int _sortUsers(User a, User b) {
     // sort yourself to the top
@@ -100,38 +97,41 @@ class InvitationSelectionController extends State<InvitationSelection> {
     final client = Matrix.of(context).client;
     final room = client.getRoomById(roomId!)!;
 
-    final participants = (room.summary.mJoinedMemberCount ?? 0) > 100
-        ? room.getParticipants()
-        // #Pangea
-        // : await room.requestParticipants();
-        : await room.requestParticipants(
-            [Membership.join, Membership.invite, Membership.knock],
-            false,
-            true,
-          );
+    final participants =
+        (room.summary.mJoinedMemberCount ?? 0) > 100
+            ? room.getParticipants()
+            // #Pangea
+            // : await room.requestParticipants();
+            : await room.requestParticipants(
+              [Membership.join, Membership.invite, Membership.knock],
+              false,
+              true,
+            );
     // Pangea#
     participants.removeWhere(
       (u) => ![Membership.join, Membership.invite].contains(u.membership),
     );
-    final contacts = client.rooms
-        .where((r) => r.isDirectChat)
-        // #Pangea
-        // .map((r) => r.unsafeGetUserFromMemoryOrFallback(r.directChatMatrixID!))
-        .map(
-          (r) => r
-              .getParticipants()
-              .firstWhereOrNull((u) => u.id != client.userID),
-        )
-        .where((u) => u != null)
-        .cast<User>()
-        // Pangea#
-        .toList();
+    final contacts =
+        client.rooms
+            .where((r) => r.isDirectChat)
+            // #Pangea
+            // .map((r) => r.unsafeGetUserFromMemoryOrFallback(r.directChatMatrixID!))
+            .map(
+              (r) => r.getParticipants().firstWhereOrNull(
+                (u) => u.id != client.userID,
+              ),
+            )
+            .where((u) => u != null)
+            .cast<User>()
+            // Pangea#
+            .toList();
     // #Pangea
-    final mutuals = client.rooms
-        .where((r) => r.isSpace)
-        .map((r) => r.getParticipants())
-        .expand((element) => element)
-        .toList();
+    final mutuals =
+        client.rooms
+            .where((r) => r.isSpace)
+            .map((r) => r.getParticipants())
+            .expand((element) => element)
+            .toList();
 
     for (final user in mutuals) {
       final index = contacts.indexWhere((u) => u.id == user.id);
@@ -201,13 +201,15 @@ class InvitationSelectionController extends State<InvitationSelection> {
     try {
       // response = await matrix.client.searchUserDirectory(text, limit: 10);
       //#Pangea
-      response =
-          await matrix.client.searchUserDirectory(pangeaSearchText, limit: 10);
+      response = await matrix.client.searchUserDirectory(
+        pangeaSearchText,
+        limit: 10,
+      );
       //#Pangea
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text((e).toLocalizedString(context))),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text((e).toLocalizedString(context))));
       return;
     } finally {
       setState(() => loading = false);
@@ -217,21 +219,24 @@ class InvitationSelectionController extends State<InvitationSelection> {
       if (text.isValidMatrixId &&
           foundProfiles.indexWhere((profile) => text == profile.userId) == -1) {
         setState(
-          () => foundProfiles = [
-            Profile.fromJson({'user_id': text}),
-          ],
+          () =>
+              foundProfiles = [
+                Profile.fromJson({'user_id': text}),
+              ],
         );
       }
       //#Pangea
-      final participants = Matrix.of(context)
-          .client
-          .getRoomById(roomId!)
-          ?.getParticipants()
-          .where(
-            (user) =>
-                [Membership.join, Membership.invite].contains(user.membership),
-          )
-          .toList();
+      final participants =
+          Matrix.of(context).client
+              .getRoomById(roomId!)
+              ?.getParticipants()
+              .where(
+                (user) => [
+                  Membership.join,
+                  Membership.invite,
+                ].contains(user.membership),
+              )
+              .toList();
       foundProfiles.removeWhere(
         (profile) =>
             participants?.indexWhere((u) => u.id == profile.userId) != -1 &&

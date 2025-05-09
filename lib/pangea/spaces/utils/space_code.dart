@@ -37,9 +37,7 @@ class SpaceCodeUtil {
     }
   }
 
-  static Future<void> joinWithSpaceCodeDialog(
-    BuildContext context,
-  ) async {
+  static Future<void> joinWithSpaceCodeDialog(BuildContext context) async {
     final String? spaceCode = await showTextInputDialog(
       context: context,
       title: L10n.of(context).joinWithClassCode,
@@ -59,18 +57,15 @@ class SpaceCodeUtil {
     BuildContext context,
     String title,
     void Function()? action,
-  ) =>
-      showDialog(
-        context: context,
-        useRootNavigator: false,
-        builder: (context) => AlertDialog(
+  ) => showDialog(
+    context: context,
+    useRootNavigator: false,
+    builder:
+        (context) => AlertDialog(
           content: Text(title),
           actions: [
-            TextButton(
-              onPressed: action,
-              child: Text(L10n.of(context).ok),
-            ),
+            TextButton(onPressed: action, child: Text(L10n.of(context).ok)),
           ],
         ),
-      );
+  );
 }

@@ -46,9 +46,7 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
         MatrixState.pangeaController.subscriptionController.isSubscribed;
 
     if (subscribed != null && !subscribed) {
-      return MessageUnsubscribedCard(
-        controller: widget.overlayController,
-      );
+      return MessageUnsubscribedCard(controller: widget.overlayController);
     }
 
     if (widget.overlayController.practiceSelection?.hasHiddenWordActivity ??
@@ -56,8 +54,10 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
       return PracticeActivityCard(
         pangeaMessageEvent: widget.pangeaMessageEvent,
         overlayController: widget.overlayController,
-        targetTokensAndActivityType: widget.overlayController.practiceSelection!
-            .nextActivity(ActivityTypeEnum.hiddenWordListening)!,
+        targetTokensAndActivityType:
+            widget.overlayController.practiceSelection!.nextActivity(
+              ActivityTypeEnum.hiddenWordListening,
+            )!,
       );
     }
 
@@ -66,8 +66,10 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
       return PracticeActivityCard(
         pangeaMessageEvent: widget.pangeaMessageEvent,
         overlayController: widget.overlayController,
-        targetTokensAndActivityType: widget.overlayController.practiceSelection!
-            .nextActivity(ActivityTypeEnum.messageMeaning)!,
+        targetTokensAndActivityType:
+            widget.overlayController.practiceSelection!.nextActivity(
+              ActivityTypeEnum.messageMeaning,
+            )!,
       );
     }
 
@@ -131,9 +133,10 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
 
   @override
   Widget build(BuildContext context) {
-    if (![MessageTypes.Text, MessageTypes.Audio].contains(
-      widget.pangeaMessageEvent.event.messageType,
-    )) {
+    if (![
+      MessageTypes.Text,
+      MessageTypes.Audio,
+    ].contains(widget.pangeaMessageEvent.event.messageType)) {
       return const SizedBox();
     }
 

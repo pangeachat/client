@@ -11,10 +11,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class ChatListViewBodyWrapper extends StatefulWidget {
   final ChatListController controller;
 
-  const ChatListViewBodyWrapper({
-    required this.controller,
-    super.key,
-  });
+  const ChatListViewBodyWrapper({required this.controller, super.key});
 
   @override
   State<ChatListViewBodyWrapper> createState() =>

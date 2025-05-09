@@ -18,10 +18,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class ActivityGeneratorView extends StatelessWidget {
   final ActivityGeneratorState controller;
 
-  const ActivityGeneratorView(
-    this.controller, {
-    super.key,
-  });
+  const ActivityGeneratorView(this.controller, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +53,8 @@ class ActivityGeneratorView extends StatelessWidget {
           return ActivityPlanCard(
             activity: controller.activities![index],
             room: controller.room,
-            onEdit: (updatedActivity) =>
-                controller.onEdit(index, updatedActivity),
+            onEdit:
+                (updatedActivity) => controller.onEdit(index, updatedActivity),
             onChange: controller.update,
             initialImageURL: controller.filename,
           );
@@ -66,10 +63,9 @@ class ActivityGeneratorView extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(L10n.of(context).makeYourOwnActivity),
-      ),
-      body: body ??
+      appBar: AppBar(title: Text(L10n.of(context).makeYourOwnActivity)),
+      body:
+          body ??
           Center(
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 600),
@@ -98,40 +94,55 @@ class ActivityGeneratorView extends StatelessWidget {
                               child: CircularProgressIndicator(),
                             );
                           },
-                          errorWidget: (context, url, error) =>
-                              const SizedBox(),
+                          errorWidget:
+                              (context, url, error) => const SizedBox(),
                         ),
                       ),
                     ),
                     const SizedBox(height: 16.0),
                     PLanguageDropdown(
-                      languages: MatrixState
-                          .pangeaController.pLanguageStore.baseOptions,
-                      onChange: (val) => controller
-                          .setSelectedLanguageOfInstructions(val.langCode),
+                      languages:
+                          MatrixState
+                              .pangeaController
+                              .pLanguageStore
+                              .baseOptions,
+                      onChange:
+                          (val) => controller.setSelectedLanguageOfInstructions(
+                            val.langCode,
+                          ),
                       initialLanguage:
                           controller.selectedLanguageOfInstructions != null
                               ? PLanguageStore.byLangCode(
-                                  controller.selectedLanguageOfInstructions!,
-                                )
+                                controller.selectedLanguageOfInstructions!,
+                              )
                               : MatrixState
-                                  .pangeaController.languageController.userL1,
+                                  .pangeaController
+                                  .languageController
+                                  .userL1,
                       isL2List: false,
                       decorationText:
                           L10n.of(context).languageOfInstructionsLabel,
                     ),
                     const SizedBox(height: 16.0),
                     PLanguageDropdown(
-                      languages: MatrixState
-                          .pangeaController.pLanguageStore.targetOptions,
-                      onChange: (val) =>
-                          controller.setSelectedTargetLanguage(val.langCode),
-                      initialLanguage: controller.selectedTargetLanguage != null
-                          ? PLanguageStore.byLangCode(
-                              controller.selectedTargetLanguage!,
-                            )
-                          : MatrixState
-                              .pangeaController.languageController.userL2,
+                      languages:
+                          MatrixState
+                              .pangeaController
+                              .pLanguageStore
+                              .targetOptions,
+                      onChange:
+                          (val) => controller.setSelectedTargetLanguage(
+                            val.langCode,
+                          ),
+                      initialLanguage:
+                          controller.selectedTargetLanguage != null
+                              ? PLanguageStore.byLangCode(
+                                controller.selectedTargetLanguage!,
+                              )
+                              : MatrixState
+                                  .pangeaController
+                                  .languageController
+                                  .userL2,
                       decorationText: L10n.of(context).targetLanguageLabel,
                       isL2List: true,
                     ),
@@ -175,12 +186,14 @@ class ActivityGeneratorView extends StatelessWidget {
                         }
                         return null;
                       },
-                      onChanged: (val) => controller
-                          .setSelectedNumberOfParticipants(int.tryParse(val)),
+                      onChanged:
+                          (val) => controller.setSelectedNumberOfParticipants(
+                            int.tryParse(val),
+                          ),
                       initialValue:
                           controller.selectedNumberOfParticipants?.toString(),
-                      onTapOutside: (_) =>
-                          FocusManager.instance.primaryFocus?.unfocus(),
+                      onTapOutside:
+                          (_) => FocusManager.instance.primaryFocus?.unfocus(),
                       onFieldSubmitted: (_) {
                         if (controller.formKey.currentState?.validate() ??
                             false) {

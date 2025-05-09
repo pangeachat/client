@@ -10,11 +10,7 @@ class OverlayListEntry {
   final String? key;
   final bool canPop;
 
-  OverlayListEntry(
-    this.entry, {
-    this.key,
-    this.canPop = true,
-  });
+  OverlayListEntry(this.entry, {this.key, this.canPop = true});
 }
 
 class PangeaAnyState {
@@ -31,8 +27,9 @@ class PangeaAnyState {
         Sentry.addBreadcrumb(Breadcrumb(data: _layerLinkAndKeys));
         throw Exception("layerLinkAndKey with null for $transformTargetId");
       } else {
-        _layerLinkAndKeys[transformTargetId] =
-            LayerLinkAndKey(transformTargetId);
+        _layerLinkAndKeys[transformTargetId] = LayerLinkAndKey(
+          transformTargetId,
+        );
       }
     }
 
@@ -50,13 +47,7 @@ class PangeaAnyState {
       return;
     }
 
-    entries.add(
-      OverlayListEntry(
-        entry,
-        key: overlayKey,
-        canPop: canPop,
-      ),
-    );
+    entries.add(OverlayListEntry(entry, key: overlayKey, canPop: canPop));
 
     if (overlayKey != null) {
       activeOverlays.add(overlayKey);
@@ -66,23 +57,16 @@ class PangeaAnyState {
   }
 
   void closeOverlay([String? overlayKey]) {
-    final entry = overlayKey != null
-        ? entries.firstWhereOrNull((element) => element.key == overlayKey)
-        : entries.lastWhereOrNull(
-            (element) => element.canPop,
-          );
+    final entry =
+        overlayKey != null
+            ? entries.firstWhereOrNull((element) => element.key == overlayKey)
+            : entries.lastWhereOrNull((element) => element.canPop);
 
     if (entry != null) {
       try {
         entry.entry.remove();
       } catch (err, s) {
-        ErrorHandler.logError(
-          e: err,
-          s: s,
-          data: {
-            "overlay": entry,
-          },
-        );
+        ErrorHandler.logError(e: err, s: s, data: {"overlay": entry});
       }
       entries.remove(entry);
 
@@ -92,20 +76,18 @@ class PangeaAnyState {
     }
   }
 
-  void closeAllOverlays({
-    RegExp? filter,
-    force = false,
-  }) {
+  void closeAllOverlays({RegExp? filter, force = false}) {
     List<OverlayListEntry> shouldRemove = List.from(entries);
     if (!force) {
       shouldRemove = shouldRemove.where((element) => element.canPop).toList();
     }
 
     if (filter != null) {
-      shouldRemove = shouldRemove
-          .where((element) => element.key != null)
-          .where((element) => filter.hasMatch(element.key!))
-          .toList();
+      shouldRemove =
+          shouldRemove
+              .where((element) => element.key != null)
+              .where((element) => filter.hasMatch(element.key!))
+              .toList();
     }
     if (shouldRemove.isEmpty) return;
 
@@ -113,13 +95,7 @@ class PangeaAnyState {
       try {
         shouldRemove[i].entry.remove();
       } catch (err, s) {
-        ErrorHandler.logError(
-          e: err,
-          s: s,
-          data: {
-            "overlay": shouldRemove[i],
-          },
-        );
+        ErrorHandler.logError(e: err, s: s, data: {"overlay": shouldRemove[i]});
       }
 
       if (shouldRemove[i].key != null) {
@@ -158,10 +134,10 @@ class LayerLinkAndKey {
   }
 
   Map<String, dynamic> toJson() => {
-        "key": key.toString(),
-        "link": link.toString(),
-        "transformTargetId": transformTargetId,
-      };
+    "key": key.toString(),
+    "link": link.toString(),
+    "transformTargetId": transformTargetId,
+  };
 
   @override
   operator ==(Object other) =>

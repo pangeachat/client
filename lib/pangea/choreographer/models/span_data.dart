@@ -28,19 +28,21 @@ class SpanData {
     return SpanData(
       message: json['message'],
       shortMessage: json['shortMessage'] ?? json['short_message'],
-      choices: choices
-          ?.map<SpanChoice>(
-            (e) => SpanChoice.fromJson(e as Map<String, dynamic>),
-          )
-          .toList(),
+      choices:
+          choices
+              ?.map<SpanChoice>(
+                (e) => SpanChoice.fromJson(e as Map<String, dynamic>),
+              )
+              .toList(),
       offset: json['offset'] as int,
       length: json['length'] as int,
       fullText:
           json['sentence'] ?? json['full_text'] ?? json['fullText'] as String,
       type: SpanDataType.fromJson(json['type'] as Map<String, dynamic>),
-      rule: json['rule'] != null
-          ? Rule.fromJson(json['rule'] as Map<String, dynamic>)
-          : null,
+      rule:
+          json['rule'] != null
+              ? Rule.fromJson(json['rule'] as Map<String, dynamic>)
+              : null,
     );
   }
 
@@ -54,17 +56,18 @@ class SpanData {
   Rule? rule;
 
   Map<String, dynamic> toJson() => {
-        'message': message,
-        'short_message': shortMessage,
-        'choices': choices != null
+    'message': message,
+    'short_message': shortMessage,
+    'choices':
+        choices != null
             ? List<dynamic>.from(choices!.map((x) => x.toJson()))
             : null,
-        'offset': offset,
-        'length': length,
-        'full_text': fullText,
-        'type': type.toJson(),
-        'rule': rule?.toJson(),
-      };
+    'offset': offset,
+    'length': length,
+    'full_text': fullText,
+    'type': type.toJson(),
+    'rule': rule?.toJson(),
+  };
 }
 
 class SpanChoice {
@@ -95,12 +98,13 @@ class SpanChoice {
     //     : [];
     return SpanChoice(
       value: json['value'] as String,
-      type: json['type'] != null
-          ? SpanChoiceType.values.firstWhereOrNull(
-                (element) => element.name == json['type'],
-              ) ??
-              SpanChoiceType.bestCorrection
-          : SpanChoiceType.bestCorrection,
+      type:
+          json['type'] != null
+              ? SpanChoiceType.values.firstWhereOrNull(
+                    (element) => element.name == json['type'],
+                  ) ??
+                  SpanChoiceType.bestCorrection
+              : SpanChoiceType.bestCorrection,
       feedback: json['feedback'],
       selected: json['selected'] ?? false,
       timestamp:
@@ -110,13 +114,13 @@ class SpanChoice {
   }
 
   Map<String, dynamic> toJson() => {
-        'value': value,
-        'type': type.name,
-        'selected': selected,
-        'feedback': feedback,
-        'timestamp': timestamp?.toIso8601String(),
-        // 'tokens': tokens.map((e) => e.toJson()).toList(),
-      };
+    'value': value,
+    'type': type.name,
+    'selected': selected,
+    'feedback': feedback,
+    'timestamp': timestamp?.toIso8601String(),
+    // 'tokens': tokens.map((e) => e.toJson()).toList(),
+  };
 
   String feedbackToDisplay(BuildContext context) {
     if (feedback == null) {
@@ -157,39 +161,32 @@ class SpanChoice {
 }
 
 class Rule {
-  Rule({
-    required this.id,
-  });
-  factory Rule.fromJson(Map<String, dynamic> json) => Rule(
-        id: json['id'] as String,
-      );
+  Rule({required this.id});
+  factory Rule.fromJson(Map<String, dynamic> json) =>
+      Rule(id: json['id'] as String);
 
   String id;
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-      };
+  Map<String, dynamic> toJson() => {'id': id};
 }
 
 class SpanDataType {
-  SpanDataType({
-    required this.typeName,
-  });
+  SpanDataType({required this.typeName});
 
   factory SpanDataType.fromJson(Map<String, dynamic> json) {
     final String? type =
         json['typeName'] ?? json['type'] ?? json['type_name'] as String?;
     return SpanDataType(
-      typeName: type != null
-          ? SpanDataTypeEnum.values
-                  .firstWhereOrNull((element) => element.name == type) ??
-              SpanDataTypeEnum.correction
-          : SpanDataTypeEnum.correction,
+      typeName:
+          type != null
+              ? SpanDataTypeEnum.values.firstWhereOrNull(
+                    (element) => element.name == type,
+                  ) ??
+                  SpanDataTypeEnum.correction
+              : SpanDataTypeEnum.correction,
     );
   }
   SpanDataTypeEnum typeName;
 
-  Map<String, dynamic> toJson() => {
-        'type_name': typeName.name,
-      };
+  Map<String, dynamic> toJson() => {'type_name': typeName.name};
 }

@@ -13,10 +13,7 @@ import '../../widgets/adaptive_dialogs/user_dialog.dart';
 class StatusMessageList extends StatelessWidget {
   final void Function() onStatusEdit;
 
-  const StatusMessageList({
-    required this.onStatusEdit,
-    super.key,
-  });
+  const StatusMessageList({required this.onStatusEdit, super.key});
 
   static const double height = 116;
 
@@ -24,10 +21,7 @@ class StatusMessageList extends StatelessWidget {
     final client = Matrix.of(context).client;
     if (profile.userId == client.userID) return onStatusEdit();
 
-    UserDialog.show(
-      context: context,
-      profile: profile,
-    );
+    UserDialog.show(context: context, profile: profile);
     return;
   }
 
@@ -43,10 +37,11 @@ class StatusMessageList extends StatelessWidget {
           duration: FluffyThemes.animationDuration,
           curve: Curves.easeInOut,
           child: FutureBuilder(
-            initialData: interestingPresences
-                // ignore: deprecated_member_use
-                .map((userId) => client.presences[userId])
-                .whereType<CachedPresence>(),
+            initialData:
+                interestingPresences
+                    // ignore: deprecated_member_use
+                    .map((userId) => client.presences[userId])
+                    .whereType<CachedPresence>(),
             future: Future.wait(
               client.interestingPresences.map(
                 (userId) => client.fetchCurrentPresence(
@@ -79,11 +74,12 @@ class StatusMessageList extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   scrollDirection: Axis.horizontal,
                   itemCount: presences.length,
-                  itemBuilder: (context, i) => PresenceAvatar(
-                    presence: presences[i],
-                    height: StatusMessageList.height,
-                    onTap: (profile) => _onStatusTab(context, profile),
-                  ),
+                  itemBuilder:
+                      (context, i) => PresenceAvatar(
+                        presence: presences[i],
+                        height: StatusMessageList.height,
+                        onTap: (profile) => _onStatusTab(context, profile),
+                      ),
                 ),
               );
             },
@@ -116,7 +112,8 @@ class PresenceAvatar extends StatelessWidget {
         final theme = Theme.of(context);
 
         final profile = snapshot.data;
-        final displayName = profile?.displayName ??
+        final displayName =
+            profile?.displayName ??
             presence.userid.localpart ??
             presence.userid;
         final statusMsg = presence.statusMsg;
@@ -147,8 +144,9 @@ class PresenceAvatar extends StatelessWidget {
                                 padding: const EdgeInsets.all(3),
                                 decoration: BoxDecoration(
                                   gradient: presence.gradient,
-                                  borderRadius:
-                                      BorderRadius.circular(avatarSize),
+                                  borderRadius: BorderRadius.circular(
+                                    avatarSize,
+                                  ),
                                 ),
                                 child: Avatar(
                                   name: displayName,
@@ -168,10 +166,13 @@ class PresenceAvatar extends StatelessWidget {
                                     height: 24,
                                     child: FloatingActionButton.small(
                                       heroTag: null,
-                                      onPressed: () => onTap(
-                                        profile ??
-                                            Profile(userId: presence.userid),
-                                      ),
+                                      onPressed:
+                                          () => onTap(
+                                            profile ??
+                                                Profile(
+                                                  userId: presence.userid,
+                                                ),
+                                          ),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
                                       ),
@@ -218,10 +219,7 @@ class PresenceAvatar extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(
                                       AppConfig.borderRadius / 2,
                                     ),
-                                    child: const SizedBox(
-                                      width: 8,
-                                      height: 8,
-                                    ),
+                                    child: const SizedBox(width: 8, height: 8),
                                   ),
                                 ),
                                 Positioned(
@@ -234,10 +232,7 @@ class PresenceAvatar extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(
                                       AppConfig.borderRadius / 2,
                                     ),
-                                    child: const SizedBox(
-                                      width: 4,
-                                      height: 4,
-                                    ),
+                                    child: const SizedBox(width: 4, height: 4),
                                   ),
                                 ),
                               ],
@@ -256,9 +251,7 @@ class PresenceAvatar extends StatelessWidget {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 13,
-                    ),
+                    style: const TextStyle(fontSize: 13),
                   ),
                 ),
               ],
@@ -272,10 +265,12 @@ class PresenceAvatar extends StatelessWidget {
 
 extension on Client {
   Set<String> get interestingPresences {
-    final allHeroes = rooms.map((room) => room.summary.mHeroes).fold(
-      <String>{},
-      (previousValue, element) => previousValue..addAll(element ?? {}),
-    );
+    final allHeroes = rooms
+        .map((room) => room.summary.mHeroes)
+        .fold(
+          <String>{},
+          (previousValue, element) => previousValue..addAll(element ?? {}),
+        );
     allHeroes.add(userID!);
     return allHeroes;
   }
@@ -291,33 +286,30 @@ extension on CachedPresence {
           ? DateTime.now()
           : DateTime.fromMillisecondsSinceEpoch(0));
 
-  LinearGradient get gradient => presence.isOnline == true
-      ? LinearGradient(
-          colors: [
-            Colors.green,
-            Colors.green.shade200,
-            Colors.green.shade900,
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        )
-      : presence.isUnavailable
+  LinearGradient get gradient =>
+      presence.isOnline == true
           ? LinearGradient(
-              colors: [
-                Colors.yellow,
-                Colors.yellow.shade200,
-                Colors.yellow.shade900,
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            )
+            colors: [
+              Colors.green,
+              Colors.green.shade200,
+              Colors.green.shade900,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          )
+          : presence.isUnavailable
+          ? LinearGradient(
+            colors: [
+              Colors.yellow,
+              Colors.yellow.shade200,
+              Colors.yellow.shade900,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          )
           : LinearGradient(
-              colors: [
-                Colors.grey,
-                Colors.grey.shade200,
-                Colors.grey.shade900,
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            );
+            colors: [Colors.grey, Colors.grey.shade200, Colors.grey.shade900],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          );
 }

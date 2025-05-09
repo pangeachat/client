@@ -1,24 +1,18 @@
 part of "pangea_room_extension.dart";
 
 extension ChildrenAndParentsRoomExtension on Room {
-  List<Room> get pangeaSpaceParents => client.rooms
-      .where(
-        (r) => r.isSpace,
-      )
-      .where(
-        (space) => space.spaceChildren.any(
-          (room) => room.roomId == id,
-        ),
-      )
-      .toList();
+  List<Room> get pangeaSpaceParents =>
+      client.rooms
+          .where((r) => r.isSpace)
+          .where(
+            (space) => space.spaceChildren.any((room) => room.roomId == id),
+          )
+          .toList();
 
   /// Wrapper around call to setSpaceChild with added functionality
   /// to prevent adding one room to multiple spaces, and resets the
   /// subspace's JoinRules and Visibility to defaults.
-  Future<void> pangeaSetSpaceChild(
-    String roomId, {
-    bool? suggested,
-  }) async {
+  Future<void> pangeaSetSpaceChild(String roomId, {bool? suggested}) async {
     final Room? child = client.getRoomById(roomId);
     if (child == null) return;
     if (child.isSpace) {
@@ -34,10 +28,7 @@ extension ChildrenAndParentsRoomExtension on Room {
         ErrorHandler.logError(
           e: e,
           m: 'Failed to remove child from parent',
-          data: {
-            "roomID": roomId,
-            "parentID": parent.id,
-          },
+          data: {"roomID": roomId, "parentID": parent.id},
         );
       }
     }
@@ -53,11 +44,7 @@ extension ChildrenAndParentsRoomExtension on Room {
       ErrorHandler.logError(
         e: err,
         s: stack,
-        data: {
-          "roomID": roomId,
-          "childID": child.id,
-          "suggested": suggested,
-        },
+        data: {"roomID": roomId, "childID": child.id, "suggested": suggested},
       );
     }
   }
@@ -73,13 +60,14 @@ extension ChildrenAndParentsRoomExtension on Room {
   }
 
   /// The number of child rooms to display for a given space.
-  int get spaceChildCount => client.rooms
-      .where(
-        (r) => spaceChildren.any(
-          (child) => r.id == child.roomId && !r.isAnalyticsRoom,
-        ),
-      )
-      .length;
+  int get spaceChildCount =>
+      client.rooms
+          .where(
+            (r) => spaceChildren.any(
+              (child) => r.id == child.roomId && !r.isAnalyticsRoom,
+            ),
+          )
+          .length;
 }
 
 class NestedSpaceError extends Error {

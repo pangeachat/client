@@ -47,24 +47,30 @@ class ConversationBotSettingsForm extends StatelessWidget {
         PLanguageDropdown(
           decorationText: L10n.of(context).targetLanguage,
           languages: MatrixState.pangeaController.pLanguageStore.targetOptions,
-          onChange: (lang) => hasPermission && enabled
-              ? onUpdateBotLanguage(lang.langCode)
-              : null,
-          initialLanguage: botOptions.targetLanguage != null
-              ? PLanguageStore.byLangCode(botOptions.targetLanguage!)
-              : null,
+          onChange:
+              (lang) =>
+                  hasPermission && enabled
+                      ? onUpdateBotLanguage(lang.langCode)
+                      : null,
+          initialLanguage:
+              botOptions.targetLanguage != null
+                  ? PLanguageStore.byLangCode(botOptions.targetLanguage!)
+                  : null,
           enabled: enabled && hasPermission,
         ),
         const SizedBox(height: 12),
         LanguageLevelDropdown(
           initialLevel: botOptions.languageLevel,
-          onChanged: hasPermission && enabled
-              ? (value) =>
-                  onUpdateBotLanguageLevel(value as LanguageLevelTypeEnum?)
-              : null,
-          validator: (value) => enabled && value == null
-              ? L10n.of(context).enterLanguageLevel
-              : null,
+          onChanged:
+              hasPermission && enabled
+                  ? (value) =>
+                      onUpdateBotLanguageLevel(value as LanguageLevelTypeEnum?)
+                  : null,
+          validator:
+              (value) =>
+                  enabled && value == null
+                      ? L10n.of(context).enterLanguageLevel
+                      : null,
           enabled: enabled && hasPermission,
         ),
       ],

@@ -25,9 +25,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class AppVersionUtil {
   static final GetStorage _versionBox = GetStorage("version_storage");
 
-  static Future<AppVersionResponse> _getAppVersion(
-    String accessToken,
-  ) async {
+  static Future<AppVersionResponse> _getAppVersion(String accessToken) async {
     final packageInfo = await PackageInfo.fromPlatform();
     final currentVersion = packageInfo.version;
     final currentBuildNumber = packageInfo.buildNumber;
@@ -103,9 +101,11 @@ class AppVersionUtil {
     // If a part of the current version is greater than the
     // remote version, then the current version is newer than
     // the remote version.
-    for (int i = 0;
-        i < min(currentVersionParts.length, remoteVersionParts.length);
-        i++) {
+    for (
+      int i = 0;
+      i < min(currentVersionParts.length, remoteVersionParts.length);
+      i++
+    ) {
       if (currentVersionParts[i] < remoteVersionParts[i]) {
         isOlderCurrentVersion = true;
         isDifferentVersion = true;
@@ -172,16 +172,16 @@ class AppVersionUtil {
   ) async {
     return mandatoryUpdate
         ? showOkAlertDialog(
-            context: context,
-            title: L10n.of(context).pleaseUpdateApp,
-            okLabel: L10n.of(context).updateNow,
-          )
+          context: context,
+          title: L10n.of(context).pleaseUpdateApp,
+          okLabel: L10n.of(context).updateNow,
+        )
         : showOkCancelAlertDialog(
-            context: context,
-            title: L10n.of(context).pleaseUpdateApp,
-            okLabel: L10n.of(context).updateNow,
-            cancelLabel: L10n.of(context).updateLater,
-          );
+          context: context,
+          title: L10n.of(context).pleaseUpdateApp,
+          okLabel: L10n.of(context).updateNow,
+          cancelLabel: L10n.of(context).updateLater,
+        );
   }
 
   static Future<void> _launchUpdate() async {
@@ -190,9 +190,10 @@ class AppVersionUtil {
       return;
     }
 
-    final String url = PlatformInfos.isIOS
-        ? AppConfig.iosUpdateURL
-        : AppConfig.androidUpdateURL;
+    final String url =
+        PlatformInfos.isIOS
+            ? AppConfig.iosUpdateURL
+            : AppConfig.androidUpdateURL;
     await launchUrlString(url);
   }
 

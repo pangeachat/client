@@ -51,19 +51,21 @@ abstract class ClientManager {
     if (initialize) {
       await Future.wait(
         clients.map(
-          (client) => client.initWithRestore(
-            onMigration: () async {
-              // #Pangea
-              // final l10n = await lookupL10n(PlatformDispatcher.instance.locale);
-              // sendInitNotification(
-              //   l10n.databaseMigrationTitle,
-              //   l10n.databaseMigrationBody,
-              // );
-              // Pangea#
-            },
-          ).catchError(
-            (e, s) => Logs().e('Unable to initialize client', e, s),
-          ),
+          (client) => client
+              .initWithRestore(
+                onMigration: () async {
+                  // #Pangea
+                  // final l10n = await lookupL10n(PlatformDispatcher.instance.locale);
+                  // sendInitNotification(
+                  //   l10n.databaseMigrationTitle,
+                  //   l10n.databaseMigrationBody,
+                  // );
+                  // Pangea#
+                },
+              )
+              .catchError(
+                (e, s) => Logs().e('Unable to initialize client', e, s),
+              ),
         ),
       );
     }
@@ -99,9 +101,10 @@ abstract class ClientManager {
     await store.setStringList(clientNamespace, clientNamesList);
   }
 
-  static NativeImplementations get nativeImplementations => kIsWeb
-      ? const NativeImplementationsDummy()
-      : NativeImplementationsIsolate(compute);
+  static NativeImplementations get nativeImplementations =>
+      kIsWeb
+          ? const NativeImplementationsDummy()
+          : NativeImplementationsIsolate(compute);
 
   static Client createClient(String clientName, SharedPreferences store) {
     final shareKeysWith = AppSettings.shareKeysWith.getItem(store);
@@ -143,8 +146,10 @@ abstract class ClientManager {
       customImageResizer: PlatformInfos.isMobile ? customImageResizer : null,
       defaultNetworkRequestTimeout: const Duration(minutes: 30),
       enableDehydratedDevices: true,
-      shareKeysWith: ShareKeysWith.values
-              .singleWhereOrNull((share) => share.name == shareKeysWith) ??
+      shareKeysWith:
+          ShareKeysWith.values.singleWhereOrNull(
+            (share) => share.name == shareKeysWith,
+          ) ??
           ShareKeysWith.all,
       convertLinebreaksInFormatting: false,
       // #Pangea
@@ -171,10 +176,7 @@ abstract class ClientManager {
 
   static void sendInitNotification(String title, String body) async {
     if (kIsWeb) {
-      html.Notification(
-        title,
-        body: body,
-      );
+      html.Notification(title, body: body);
       return;
     }
     if (Platform.isLinux) {
@@ -182,9 +184,7 @@ abstract class ClientManager {
         title,
         body: body,
         appName: AppConfig.applicationName,
-        hints: [
-          NotificationHint.soundName('message-new-instant'),
-        ],
+        hints: [NotificationHint.soundName('message-new-instant')],
       );
       return;
     }

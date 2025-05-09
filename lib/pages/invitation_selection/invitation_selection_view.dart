@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
@@ -10,7 +9,6 @@ import 'package:matrix/matrix.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/invitation_selection/invitation_selection.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
@@ -19,6 +17,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -31,13 +30,12 @@ class InvitationSelectionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final room =
-        Matrix.of(context).client.getRoomById(controller.widget.roomId);
+    final room = Matrix.of(
+      context,
+    ).client.getRoomById(controller.widget.roomId);
     if (room == null) {
       return Scaffold(
-        appBar: AppBar(
-          title: Text(L10n.of(context).oopsSomethingWentWrong),
-        ),
+        appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
         body: Center(
           child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
         ),
@@ -53,6 +51,26 @@ class InvitationSelectionView extends StatelessWidget {
         leading: const Center(child: BackButton()),
         titleSpacing: 0,
         title: Text(L10n.of(context).inviteContact),
+        // #Pangea
+        actions: [
+          if (room.isSpace)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 7.0, 2.0),
+              child: IconButton(
+                icon: const Icon(Icons.ios_share_outlined, size: 25.0),
+                tooltip: L10n.of(context).shareInviteLink,
+                onPressed: () {
+                  final String initialUrl =
+                      kIsWeb ? html.window.origin! : Environment.frontendURL;
+                  final link =
+                      "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode(context)}";
+
+                  FluffyShare.share(link, context);
+                },
+              ),
+            ),
+        ],
+        // Pangea#
       ),
       body: MaxWidthBody(
         innerPadding: const EdgeInsets.symmetric(vertical: 8),
@@ -61,100 +79,6 @@ class InvitationSelectionView extends StatelessWidget {
         // Pangea#
         child: Column(
           children: [
-            // #Pangea
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: InkWell(
-                customBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(99),
-                ),
-                onTap: () async {
-                  await Clipboard.setData(
-                    ClipboardData(text: room.classCode(context)),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12.0,
-                    horizontal: 16.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.secondaryContainer,
-                    borderRadius: BorderRadius.circular(99),
-                  ),
-                  child: Row(
-                    spacing: 16.0,
-                    children: [
-                      const Icon(
-                        Icons.copy_outlined,
-                        size: 20.0,
-                      ),
-                      Text(
-                        "${L10n.of(context).copyClassCode}: ${room.classCode(context)}",
-                        style: TextStyle(
-                          color: theme.colorScheme.onPrimaryContainer,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                bottom: 16.0,
-                left: 16.0,
-                right: 16.0,
-              ),
-              child: InkWell(
-                customBorder: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(99),
-                ),
-                onTap: () async {
-                  final String initialUrl =
-                      kIsWeb ? html.window.origin! : Environment.frontendURL;
-                  final link =
-                      "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode(context)}";
-                  await Clipboard.setData(ClipboardData(text: link));
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 12.0,
-                    horizontal: 16.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.secondaryContainer,
-                    borderRadius: BorderRadius.circular(99),
-                  ),
-                  child: Row(
-                    spacing: 16.0,
-                    children: [
-                      const Icon(
-                        Icons.copy_outlined,
-                        size: 20.0,
-                      ),
-                      Text(
-                        L10n.of(context).copyClassLink,
-                        style: TextStyle(
-                          color: theme.colorScheme.onPrimaryContainer,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            // Pangea#
             Padding(
               // #Pangea
               // padding: const EdgeInsets.all(16.0),
@@ -181,20 +105,21 @@ class InvitationSelectionView extends StatelessWidget {
                   hintText: L10n.of(context).inviteStudentByUserName,
                   // hintText: L10n.of(context).inviteContactToGroup(groupName),
                   // Pangea#
-                  prefixIcon: controller.loading
-                      ? const Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 10.0,
-                            horizontal: 12,
-                          ),
-                          child: SizedBox.square(
-                            dimension: 24,
-                            child: CircularProgressIndicator.adaptive(
-                              strokeWidth: 2,
+                  prefixIcon:
+                      controller.loading
+                          ? const Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10.0,
+                              horizontal: 12,
                             ),
-                          ),
-                        )
-                      : const Icon(Icons.search_outlined),
+                            child: SizedBox.square(
+                              dimension: 24,
+                              child: CircularProgressIndicator.adaptive(
+                                strokeWidth: 2,
+                              ),
+                            ),
+                          )
+                          : const Icon(Icons.search_outlined),
                 ),
                 onChanged: controller.searchUserWithCoolDown,
               ),
@@ -204,141 +129,155 @@ class InvitationSelectionView extends StatelessWidget {
             Expanded(
               child: StreamBuilder<Object>(
                 // Pangea#
-                stream: room.client.onRoomState.stream
-                    .where((update) => update.roomId == room.id),
+                stream: room.client.onRoomState.stream.where(
+                  (update) => update.roomId == room.id,
+                ),
                 builder: (context, snapshot) {
                   final participants =
                       room.getParticipants().map((user) => user.id).toSet();
                   return controller.foundProfiles.isNotEmpty
                       ? ListView.builder(
-                          // #Pangea
-                          // physics: const NeverScrollableScrollPhysics(),
-                          // shrinkWrap: true,
-                          // Pangea#
-                          itemCount: controller.foundProfiles.length,
-                          itemBuilder: (BuildContext context, int i) =>
-                              _InviteContactListTile(
-                            profile: controller.foundProfiles[i],
-                            isMember: participants
-                                .contains(controller.foundProfiles[i].userId),
-                            onTap: () => controller.inviteAction(
-                              context,
-                              controller.foundProfiles[i].userId,
-                              controller.foundProfiles[i].displayName ??
-                                  controller
-                                      .foundProfiles[i].userId.localpart ??
-                                  L10n.of(context).user,
-                            ),
-                          ),
-                        )
-                      : FutureBuilder<List<User>>(
-                          future: controller.getContacts(context),
-                          builder: (BuildContext context, snapshot) {
-                            if (!snapshot.hasData) {
-                              return const Center(
-                                child: CircularProgressIndicator.adaptive(
-                                  strokeWidth: 2,
+                        // #Pangea
+                        // physics: const NeverScrollableScrollPhysics(),
+                        // shrinkWrap: true,
+                        // Pangea#
+                        itemCount: controller.foundProfiles.length,
+                        itemBuilder:
+                            (BuildContext context, int i) =>
+                                _InviteContactListTile(
+                                  profile: controller.foundProfiles[i],
+                                  isMember: participants.contains(
+                                    controller.foundProfiles[i].userId,
+                                  ),
+                                  onTap:
+                                      () => controller.inviteAction(
+                                        context,
+                                        controller.foundProfiles[i].userId,
+                                        controller
+                                                .foundProfiles[i]
+                                                .displayName ??
+                                            controller
+                                                .foundProfiles[i]
+                                                .userId
+                                                .localpart ??
+                                            L10n.of(context).user,
+                                      ),
                                 ),
-                              );
-                            }
-                            final contacts = snapshot.data!;
-                            return ListView.builder(
-                              // #Pangea
-                              // physics: const NeverScrollableScrollPhysics(),
-                              // shrinkWrap: true,
-                              // itemCount: contacts.length,
-                              // itemBuilder: (BuildContext context, int i) =>
-                              //    _InviteContactListTile(
-                              itemCount: contacts.length + 1,
-                              itemBuilder: (BuildContext context, int i) {
-                                if (i == contacts.length) {
-                                  return room.isSpace
-                                      ? const SizedBox()
-                                      : Center(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(16.0),
-                                            child: SizedBox(
-                                              width: 450,
-                                              child: CachedNetworkImage(
-                                                imageUrl:
-                                                    "${AppConfig.assetsBaseURL}/${RoomSettingsConstants.referFriendAsset}",
-                                                errorWidget:
-                                                    (context, url, error) =>
-                                                        const SizedBox(),
-                                                placeholder: (context, url) =>
-                                                    const Center(
-                                                  child:
-                                                      CircularProgressIndicator
-                                                          .adaptive(),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                }
-                                return _InviteContactListTile(
-                                  // Pangea#
-                                  user: contacts[i],
-                                  profile: Profile(
-                                    avatarUrl: contacts[i].avatarUrl,
-                                    displayName: contacts[i].displayName ??
-                                        contacts[i].id.localpart ??
-                                        L10n.of(context).user,
-                                    userId: contacts[i].id,
-                                  ),
-                                  isMember:
-                                      participants.contains(contacts[i].id),
-                                  onTap: () => controller.inviteAction(
-                                    context,
-                                    contacts[i].id,
-                                    contacts[i].displayName ??
-                                        contacts[i].id.localpart ??
-                                        L10n.of(context).user,
-                                  ),
-                                  // #Pangea
-                                  roomPowerLevel: controller.participants
-                                      ?.firstWhereOrNull(
-                                        (element) =>
-                                            element.id == contacts[i].id,
-                                      )
-                                      ?.powerLevel,
-                                  membership: controller.participants
-                                      ?.firstWhereOrNull(
-                                        (element) =>
-                                            element.id == contacts[i].id,
-                                      )
-                                      ?.membership,
-                                  // Pangea#
-                                );
-                              },
+                      )
+                      : FutureBuilder<List<User>>(
+                        future: controller.getContacts(context),
+                        builder: (BuildContext context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return const Center(
+                              child: CircularProgressIndicator.adaptive(
+                                strokeWidth: 2,
+                              ),
                             );
-                          },
-                        );
+                          }
+                          final contacts = snapshot.data!;
+                          return ListView.builder(
+                            // #Pangea
+                            // physics: const NeverScrollableScrollPhysics(),
+                            // shrinkWrap: true,
+                            // itemCount: contacts.length,
+                            // itemBuilder: (BuildContext context, int i) =>
+                            //    _InviteContactListTile(
+                            itemCount: contacts.length + 1,
+                            itemBuilder: (BuildContext context, int i) {
+                              if (i == contacts.length) {
+                                return room.isSpace
+                                    ? const SizedBox()
+                                    : Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: SizedBox(
+                                          width: 450,
+                                          child: CachedNetworkImage(
+                                            imageUrl:
+                                                "${AppConfig.assetsBaseURL}/${RoomSettingsConstants.referFriendAsset}",
+                                            errorWidget:
+                                                (context, url, error) =>
+                                                    const SizedBox(),
+                                            placeholder:
+                                                (context, url) => const Center(
+                                                  child:
+                                                      CircularProgressIndicator.adaptive(),
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                              }
+                              return _InviteContactListTile(
+                                // Pangea#
+                                user: contacts[i],
+                                profile: Profile(
+                                  avatarUrl: contacts[i].avatarUrl,
+                                  displayName:
+                                      contacts[i].displayName ??
+                                      contacts[i].id.localpart ??
+                                      L10n.of(context).user,
+                                  userId: contacts[i].id,
+                                ),
+                                isMember: participants.contains(contacts[i].id),
+                                onTap:
+                                    () => controller.inviteAction(
+                                      context,
+                                      contacts[i].id,
+                                      contacts[i].displayName ??
+                                          contacts[i].id.localpart ??
+                                          L10n.of(context).user,
+                                    ),
+                                // #Pangea
+                                roomPowerLevel:
+                                    controller.participants
+                                        ?.firstWhereOrNull(
+                                          (element) =>
+                                              element.id == contacts[i].id,
+                                        )
+                                        ?.powerLevel,
+                                membership:
+                                    controller.participants
+                                        ?.firstWhereOrNull(
+                                          (element) =>
+                                              element.id == contacts[i].id,
+                                        )
+                                        ?.membership,
+                                // Pangea#
+                              );
+                            },
+                          );
+                        },
+                      );
                 },
               ),
             ),
             // #Pangea
             if (!room.isSpace)
               Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 8.0,
                   right: 8.0,
                   top: 16.0,
-                  bottom: FluffyThemes.isColumnMode(context) ? 0 : 16.0,
+                  bottom: 16.0,
                 ),
                 child: Row(
                   spacing: 8.0,
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () => showDialog(
-                          context: context,
-                          builder: (context) => FullWidthDialog(
-                            dialogContent: ReferFriendsDialog(room: room),
-                            maxWidth: 600.0,
-                            maxHeight: 800.0,
-                          ),
-                        ),
+                        onPressed:
+                            () => showDialog(
+                              context: context,
+                              builder:
+                                  (context) => FullWidthDialog(
+                                    dialogContent: ReferFriendsDialog(
+                                      room: room,
+                                    ),
+                                    maxWidth: 600.0,
+                                    maxHeight: 800.0,
+                                  ),
+                            ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppConfig.gold,
                         ),
@@ -348,18 +287,20 @@ class InvitationSelectionView extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.redeem_outlined,
-                              color: Theme.of(context).brightness ==
-                                      Brightness.light
-                                  ? DefaultTextStyle.of(context).style.color
-                                  : Theme.of(context).colorScheme.surface,
+                              color:
+                                  Theme.of(context).brightness ==
+                                          Brightness.light
+                                      ? DefaultTextStyle.of(context).style.color
+                                      : Theme.of(context).colorScheme.surface,
                             ),
                             Text(
                               L10n.of(context).referFriends,
                               style: TextStyle(
-                                color: Theme.of(context).brightness ==
-                                        Brightness.light
-                                    ? null
-                                    : Theme.of(context).colorScheme.surface,
+                                color:
+                                    Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? null
+                                        : Theme.of(context).colorScheme.surface,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -432,18 +373,18 @@ class _InviteContactListTile extends StatelessWidget {
       return roomPowerLevel! >= 100
           ? L10n.of(context).admin
           : roomPowerLevel! >= 50
-              ? L10n.of(context).moderator
-              : null;
+          ? L10n.of(context).moderator
+          : null;
     }
 
     String? membershipCopy() => switch (membership) {
-          Membership.ban => L10n.of(context).banned,
-          Membership.invite => L10n.of(context).invited,
-          Membership.join => null,
-          Membership.knock => L10n.of(context).knocking,
-          Membership.leave => L10n.of(context).leftTheChat,
-          null => null,
-        };
+      Membership.ban => L10n.of(context).banned,
+      Membership.invite => L10n.of(context).invited,
+      Membership.join => null,
+      Membership.knock => L10n.of(context).knocking,
+      Membership.leave => L10n.of(context).leftTheChat,
+      null => null,
+    };
     // Pangea#
 
     final theme = Theme.of(context);
@@ -454,10 +395,7 @@ class _InviteContactListTile extends StatelessWidget {
         mxContent: profile.avatarUrl,
         name: profile.displayName,
         presenceUserId: profile.userId,
-        onTap: () => UserDialog.show(
-          context: context,
-          profile: profile,
-        ),
+        onTap: () => UserDialog.show(context: context, profile: profile),
       ),
       title: Text(
         profile.displayName ?? profile.userId.localpart ?? l10n.user,
@@ -468,9 +406,7 @@ class _InviteContactListTile extends StatelessWidget {
         profile.userId,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: TextStyle(
-          color: theme.colorScheme.secondary,
-        ),
+        style: TextStyle(color: theme.colorScheme.secondary),
       ),
       // #Pangea
       // trailing: TextButton.icon(
@@ -490,32 +426,26 @@ class _InviteContactListTile extends StatelessWidget {
                 color: theme.secondaryHeaderColor,
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Text(
-                membershipCopy()!,
-                style: theme.textTheme.labelSmall,
-              ),
+              child: Text(membershipCopy()!, style: theme.textTheme.labelSmall),
             )
           else if (permissionCopy() != null)
             Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 6,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               margin: const EdgeInsets.only(right: 8),
               decoration: BoxDecoration(
-                color: roomPowerLevel! >= 100
-                    ? theme.colorScheme.tertiary
-                    : theme.colorScheme.tertiaryContainer,
-                borderRadius: BorderRadius.circular(
-                  AppConfig.borderRadius,
-                ),
+                color:
+                    roomPowerLevel! >= 100
+                        ? theme.colorScheme.tertiary
+                        : theme.colorScheme.tertiaryContainer,
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
               ),
               child: Text(
                 permissionCopy()!,
                 style: theme.textTheme.labelSmall?.copyWith(
-                  color: roomPowerLevel! >= 100
-                      ? theme.colorScheme.onTertiary
-                      : theme.colorScheme.onTertiaryContainer,
+                  color:
+                      roomPowerLevel! >= 100
+                          ? theme.colorScheme.onTertiary
+                          : theme.colorScheme.onTertiaryContainer,
                 ),
               ),
             )

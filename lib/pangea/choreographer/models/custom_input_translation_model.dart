@@ -24,30 +24,32 @@ class CustomInputRequestModel {
   });
 
   factory CustomInputRequestModel.fromJson(json) => CustomInputRequestModel(
-        text: json['text'],
-        customInput: json['custom_input'],
-        sourceLangCode: json[ModelKey.srcLang],
-        targetLangCode: json[ModelKey.tgtLang],
-        userId: json['user_id'],
-        roomId: json['room_id'],
-        goldTranslation: json['gold_translation'],
-        goldContinuances: json['gold_continuances'] != null
-            ? List.from(json['gold_continuances'])
-                .map((e) => Continuance.fromJson(e))
-                .toList()
+    text: json['text'],
+    customInput: json['custom_input'],
+    sourceLangCode: json[ModelKey.srcLang],
+    targetLangCode: json[ModelKey.tgtLang],
+    userId: json['user_id'],
+    roomId: json['room_id'],
+    goldTranslation: json['gold_translation'],
+    goldContinuances:
+        json['gold_continuances'] != null
+            ? List.from(
+              json['gold_continuances'],
+            ).map((e) => Continuance.fromJson(e)).toList()
             : null,
-      );
+  );
 
   toJson() => {
-        'text': text,
-        'custom_input': customInput,
-        ModelKey.srcLang: sourceLangCode,
-        ModelKey.tgtLang: targetLangCode,
-        'user_id': userId,
-        'room_id': roomId,
-        'gold_translation': goldTranslation,
-        'gold_continuances': goldContinuances != null
+    'text': text,
+    'custom_input': customInput,
+    ModelKey.srcLang: sourceLangCode,
+    ModelKey.tgtLang: targetLangCode,
+    'user_id': userId,
+    'room_id': roomId,
+    'gold_translation': goldTranslation,
+    'gold_continuances':
+        goldContinuances != null
             ? List.from(goldContinuances!.map((e) => e.toJson()))
             : null,
-      };
+  };
 }

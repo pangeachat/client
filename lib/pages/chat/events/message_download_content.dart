@@ -23,13 +23,14 @@ class MessageDownloadContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final filename = event.content.tryGet<String>('filename') ?? event.body;
-    final filetype = (filename.contains('.')
-        ? filename.split('.').last.toUpperCase()
-        : event.content
-                .tryGetMap<String, dynamic>('info')
-                ?.tryGet<String>('mimetype')
-                ?.toUpperCase() ??
-            'UNKNOWN');
+    final filetype =
+        (filename.contains('.')
+            ? filename.split('.').last.toUpperCase()
+            : event.content
+                    .tryGetMap<String, dynamic>('info')
+                    ?.tryGet<String>('mimetype')
+                    ?.toUpperCase() ??
+                'UNKNOWN');
     final sizeString = event.sizeString ?? '?MB';
     final fileDescription = event.fileDescription;
     return Column(

@@ -17,15 +17,16 @@ class DottedBorderPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..strokeWidth = strokeWidth
-      ..style = PaintingStyle.stroke;
+    final paint =
+        Paint()
+          ..color = color
+          ..strokeWidth = strokeWidth
+          ..style = PaintingStyle.stroke;
 
-    final path = Path()
-      ..addRRect(
-        borderRadius.toRRect(Rect.fromLTWH(0, 0, size.width, size.height)),
-      );
+    final path =
+        Path()..addRRect(
+          borderRadius.toRRect(Rect.fromLTWH(0, 0, size.width, size.height)),
+        );
 
     final dashPath = Path();
     final pathMetrics = path.computeMetrics();
