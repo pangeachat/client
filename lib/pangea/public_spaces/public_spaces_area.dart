@@ -52,12 +52,12 @@ class PublicSpacesAreaState extends State<PublicSpacesArea> {
     setState(() => _loading = true);
     try {
       final resp = await Matrix.of(context).client.queryPublicRooms(
-            filter: PublicRoomQueryFilter(
-              roomTypes: ['m.space'],
-              genericSearchTerm: _searchController.text,
-            ),
-            limit: 100,
-          );
+        filter: PublicRoomQueryFilter(
+          roomTypes: ['m.space'],
+          genericSearchTerm: _searchController.text,
+        ),
+        limit: 100,
+      );
       _spaceItems.addAll(resp.chunk);
       _spaceItems.sort((a, b) {
         int getPriority(item) {
@@ -100,31 +100,32 @@ class PublicSpacesAreaState extends State<PublicSpacesArea> {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
-    final List<Widget> cards = _loading && _spaceItems.isEmpty
-        ? List.generate(5, (i) {
-            return Shimmer.fromColors(
-              baseColor: theme.colorScheme.primary.withAlpha(20),
-              highlightColor: theme.colorScheme.primary.withAlpha(50),
-              child: Container(
-                height: cardHeight,
-                width: cardWidth,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainer,
-                  borderRadius: BorderRadius.circular(24.0),
+    final List<Widget> cards =
+        _loading && _spaceItems.isEmpty
+            ? List.generate(5, (i) {
+              return Shimmer.fromColors(
+                baseColor: theme.colorScheme.primary.withAlpha(20),
+                highlightColor: theme.colorScheme.primary.withAlpha(50),
+                child: Container(
+                  height: cardHeight,
+                  width: cardWidth,
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.surfaceContainer,
+                    borderRadius: BorderRadius.circular(24.0),
+                  ),
                 ),
-              ),
-            );
-          })
-        : _spaceItems
-            .map((space) {
-              return PublicSpaceCard(
-                space: space,
-                width: cardWidth,
-                height: cardHeight,
               );
             })
-            .cast<Widget>()
-            .toList();
+            : _spaceItems
+                .map((space) {
+                  return PublicSpaceCard(
+                    space: space,
+                    width: cardWidth,
+                    height: cardHeight,
+                  );
+                })
+                .cast<Widget>()
+                .toList();
 
     if (_loading && _spaceItems.isNotEmpty) {
       cards.add(
@@ -141,55 +142,57 @@ class PublicSpacesAreaState extends State<PublicSpacesArea> {
       children: [
         AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
-          transitionBuilder: (child, animation) => FadeTransition(
-            opacity: animation,
-            child: child,
-          ),
-          child: _isSearching
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  key: const ValueKey('search'),
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        autofocus: true,
-                        controller: _searchController,
-                        onChanged: _onSearchEnter,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
-                            vertical: 6.0,
-                            horizontal: 12.0,
+          transitionBuilder:
+              (child, animation) =>
+                  FadeTransition(opacity: animation, child: child),
+          child:
+              _isSearching
+                  ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    key: const ValueKey('search'),
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          autofocus: true,
+                          controller: _searchController,
+                          onChanged: _onSearchEnter,
+                          decoration: const InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                              vertical: 6.0,
+                              horizontal: 12.0,
+                            ),
+                            isDense: true,
+                            border: OutlineInputBorder(),
                           ),
-                          isDense: true,
-                          border: OutlineInputBorder(),
                         ),
                       ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.close),
-                      onPressed: _toggleSearching,
-                    ),
-                  ],
-                )
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  key: const ValueKey('title'),
-                  children: [
-                    Text(
-                      L10n.of(context).publicSpacesTitle,
-                      style: isColumnMode
-                          ? theme.textTheme.titleLarge
-                              ?.copyWith(fontWeight: FontWeight.bold)
-                          : theme.textTheme.titleMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                            ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.search),
-                      onPressed: _toggleSearching,
-                    ),
-                  ],
-                ),
+                      IconButton(
+                        icon: const Icon(Icons.close),
+                        onPressed: _toggleSearching,
+                      ),
+                    ],
+                  )
+                  : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    key: const ValueKey('title'),
+                    children: [
+                      Text(
+                        L10n.of(context).publicSpacesTitle,
+                        style:
+                            isColumnMode
+                                ? theme.textTheme.titleLarge?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                )
+                                : theme.textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.search),
+                        onPressed: _toggleSearching,
+                      ),
+                    ],
+                  ),
         ),
         Container(
           decoration: const BoxDecoration(),
@@ -201,10 +204,7 @@ class PublicSpacesAreaState extends State<PublicSpacesArea> {
               child: SingleChildScrollView(
                 controller: _scrollController,
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  spacing: 8.0,
-                  children: cards,
-                ),
+                child: Row(spacing: 8.0, children: cards),
               ),
             ),
           ),

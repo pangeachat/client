@@ -8,10 +8,7 @@ import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart
 import '../../../pages/chat/chat.dart';
 
 class ChoreographerSendButton extends StatefulWidget {
-  const ChoreographerSendButton({
-    super.key,
-    required this.controller,
-  });
+  const ChoreographerSendButton({super.key, required this.controller});
   final ChatController controller;
 
   @override
@@ -45,14 +42,16 @@ class ChoreographerSendButtonState extends State<ChoreographerSendButton> {
       alignment: Alignment.center,
       child: IconButton(
         icon: const Icon(Icons.send_outlined),
-        color:
-            widget.controller.choreographer.assistanceState.stateColor(context),
-        onPressed: widget.controller.choreographer.isFetching
-            ? null
-            : () {
-                widget.controller.choreographer.incrementTimesClicked();
-                widget.controller.choreographer.send(context);
-              },
+        color: widget.controller.choreographer.assistanceState.stateColor(
+          context,
+        ),
+        onPressed:
+            widget.controller.choreographer.isFetching
+                ? null
+                : () {
+                  widget.controller.choreographer.incrementTimesClicked();
+                  widget.controller.choreographer.send(context);
+                },
         tooltip: L10n.of(context).send,
       ),
     );

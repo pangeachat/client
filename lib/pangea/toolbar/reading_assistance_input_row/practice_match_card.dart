@@ -29,10 +29,7 @@ class MatchActivityCard extends StatelessWidget {
 
   ActivityTypeEnum get activityType => currentActivity.activityType;
 
-  Widget choiceDisplayContent(
-    String choice,
-    double? fontSize,
-  ) {
+  Widget choiceDisplayContent(String choice, double? fontSize) {
     switch (activityType) {
       case ActivityTypeEnum.emoji:
       case ActivityTypeEnum.wordMeaning:
@@ -42,10 +39,7 @@ class MatchActivityCard extends StatelessWidget {
           textAlign: TextAlign.center,
         );
       case ActivityTypeEnum.wordFocusListening:
-        return Icon(
-          Icons.volume_up,
-          size: fontSize,
-        );
+        return Icon(Icons.volume_up, size: fontSize);
       default:
         debugger(when: kDebugMode);
         return const SizedBox();
@@ -54,7 +48,8 @@ class MatchActivityCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double fontSize = (FluffyThemes.isColumnMode(context)
+    double fontSize =
+        (FluffyThemes.isColumnMode(context)
             ? Theme.of(context).textTheme.titleLarge?.fontSize
             : Theme.of(context).textTheme.titleMedium?.fontSize) ??
         26;
@@ -80,30 +75,30 @@ class MatchActivityCard extends StatelessWidget {
           alignment: WrapAlignment.center,
           spacing: 4.0,
           runSpacing: 4.0,
-          children: activity.matchContent!.choices.map(
-            (PracticeChoice cf) {
-              final bool? wasCorrect =
-                  currentActivity.practiceTarget.wasCorrectMatch(cf);
-              return ChoiceAnimationWidget(
-                isSelected: overlayController.selectedChoice == cf,
-                isCorrect: wasCorrect,
-                child: PracticeMatchItem(
-                  token: currentActivity.practiceTarget.tokens.firstWhereOrNull(
-                    (t) => t.vocabConstructID == cf.form.cId,
-                  ),
+          children:
+              activity.matchContent!.choices.map((PracticeChoice cf) {
+                final bool? wasCorrect = currentActivity.practiceTarget
+                    .wasCorrectMatch(cf);
+                return ChoiceAnimationWidget(
                   isSelected: overlayController.selectedChoice == cf,
                   isCorrect: wasCorrect,
-                  constructForm: cf,
-                  content: choiceDisplayContent(cf.choiceContent, fontSize),
-                  audioContent:
-                      activityType == ActivityTypeEnum.wordFocusListening
-                          ? cf.choiceContent
-                          : null,
-                  overlayController: overlayController,
-                ),
-              );
-            },
-          ).toList(),
+                  child: PracticeMatchItem(
+                    token: currentActivity.practiceTarget.tokens
+                        .firstWhereOrNull(
+                          (t) => t.vocabConstructID == cf.form.cId,
+                        ),
+                    isSelected: overlayController.selectedChoice == cf,
+                    isCorrect: wasCorrect,
+                    constructForm: cf,
+                    content: choiceDisplayContent(cf.choiceContent, fontSize),
+                    audioContent:
+                        activityType == ActivityTypeEnum.wordFocusListening
+                            ? cf.choiceContent
+                            : null,
+                    overlayController: overlayController,
+                  ),
+                );
+              }).toList(),
         ),
       ],
     );

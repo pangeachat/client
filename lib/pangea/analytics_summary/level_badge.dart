@@ -8,10 +8,7 @@ import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 
 class LevelBadge extends StatelessWidget {
   final int level;
-  const LevelBadge({
-    required this.level,
-    super.key,
-  });
+  const LevelBadge({required this.level, super.key});
 
   @override
   Widget build(BuildContext context) {

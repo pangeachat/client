@@ -16,9 +16,10 @@ import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 extension LocalNotificationsExtension on MatrixState {
-  static final html.AudioElement _audioPlayer = html.AudioElement()
-    ..src = 'assets/assets/sounds/notification.ogg'
-    ..load();
+  static final html.AudioElement _audioPlayer =
+      html.AudioElement()
+        ..src = 'assets/assets/sounds/notification.ogg'
+        ..load();
 
   void showLocalNotification(Event event) async {
     final roomId = event.room.id;
@@ -30,11 +31,13 @@ extension LocalNotificationsExtension on MatrixState {
       }
     }
 
-    final title =
-        event.room.getLocalizedDisplayname(MatrixLocals(L10n.of(context)));
+    final title = event.room.getLocalizedDisplayname(
+      MatrixLocals(L10n.of(context)),
+    );
     final body = await event.calcLocalizedBody(
       MatrixLocals(L10n.of(context)),
-      withSenderNamePrefix: !event.room.isDirectChat ||
+      withSenderNamePrefix:
+          !event.room.isDirectChat ||
           event.room.lastEvent?.senderId == client.userID,
       plaintextBody: true,
       hideReply: true,
@@ -58,13 +61,13 @@ extension LocalNotificationsExtension on MatrixState {
           isThumbnail: true,
         );
 
-        thumbnailUri =
-            await event.senderFromMemoryOrFallback.avatarUrl?.getThumbnailUri(
-          client,
-          width: size,
-          height: size,
-          method: thumbnailMethod,
-        );
+        thumbnailUri = await event.senderFromMemoryOrFallback.avatarUrl
+            ?.getThumbnailUri(
+              client,
+              width: size,
+              height: size,
+              method: thumbnailMethod,
+            );
       }
 
       _audioPlayer.play();
@@ -92,13 +95,12 @@ extension LocalNotificationsExtension on MatrixState {
             L10n.of(context).markAsRead,
           ),
         ],
-        hints: [
-          NotificationHint.soundName('message-new-instant'),
-        ],
+        hints: [NotificationHint.soundName('message-new-instant')],
       );
       notification.action.then((actionStr) {
-        final action = DesktopNotificationActions.values
-            .singleWhere((a) => a.name == actionStr);
+        final action = DesktopNotificationActions.values.singleWhere(
+          (a) => a.name == actionStr,
+        );
         switch (action) {
           case DesktopNotificationActions.seen:
             event.room.setReadMarker(

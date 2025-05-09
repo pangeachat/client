@@ -12,10 +12,7 @@ import 'package:fluffychat/utils/stream_extension.dart';
 
 class KnockingUsersIndicator extends StatefulWidget {
   final Room room;
-  const KnockingUsersIndicator({
-    super.key,
-    required this.room,
-  });
+  const KnockingUsersIndicator({super.key, required this.room});
 
   @override
   KnockingUsersIndicatorState createState() => KnockingUsersIndicatorState();
@@ -48,9 +45,10 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
   }
 
   Future<void> _setKnockingUsers({bool loadParticipants = false}) async {
-    _knockingUsers = loadParticipants
-        ? await widget.room.requestParticipants([Membership.knock])
-        : widget.room.getParticipants([Membership.knock]);
+    _knockingUsers =
+        loadParticipants
+            ? await widget.room.requestParticipants([Membership.knock])
+            : widget.room.getParticipants([Membership.knock]);
     if (mounted) setState(() {});
   }
 
@@ -61,47 +59,49 @@ class KnockingUsersIndicatorState extends State<KnockingUsersIndicator> {
       itemBuilder: (context, i) {
         return AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: _knockingUsers.isEmpty || !widget.room.isRoomAdmin
-              ? const SizedBox()
-              : Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 4,
-                    vertical: 1,
-                  ),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(
-                      AppConfig.borderRadius,
+          child:
+              _knockingUsers.isEmpty || !widget.room.isRoomAdmin
+                  ? const SizedBox()
+                  : Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 4,
+                      vertical: 1,
                     ),
-                    clipBehavior: Clip.hardEdge,
-                    child: ListTile(
-                      minVerticalPadding: 0,
-                      trailing: Icon(
-                        Icons.adaptive.arrow_forward_outlined,
-                        size: 16,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius,
                       ),
-                      title: Row(
-                        spacing: 8.0,
-                        children: [
-                          Icon(
-                            Icons.notifications_outlined,
-                            color: Theme.of(context).colorScheme.error,
-                          ),
-                          Expanded(
-                            child: Text(
-                              _knockingUsers.length == 1
-                                  ? "1 user is requesting to join your space"
-                                  : "${_knockingUsers.length} users are requesting to join your space",
-                              style: Theme.of(context).textTheme.bodyMedium,
+                      clipBehavior: Clip.hardEdge,
+                      child: ListTile(
+                        minVerticalPadding: 0,
+                        trailing: Icon(
+                          Icons.adaptive.arrow_forward_outlined,
+                          size: 16,
+                        ),
+                        title: Row(
+                          spacing: 8.0,
+                          children: [
+                            Icon(
+                              Icons.notifications_outlined,
+                              color: Theme.of(context).colorScheme.error,
                             ),
-                          ),
-                        ],
-                      ),
-                      onTap: () => context.push(
-                        "/rooms/${widget.room.id}/details/members",
+                            Expanded(
+                              child: Text(
+                                _knockingUsers.length == 1
+                                    ? "1 user is requesting to join your space"
+                                    : "${_knockingUsers.length} users are requesting to join your space",
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ),
+                          ],
+                        ),
+                        onTap:
+                            () => context.push(
+                              "/rooms/${widget.room.id}/details/members",
+                            ),
                       ),
                     ),
                   ),
-                ),
         );
       },
     );

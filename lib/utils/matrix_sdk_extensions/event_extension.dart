@@ -39,15 +39,19 @@ extension LocalizedBody on Event {
       thumbnailInfoMap['size'] < room.client.database!.maxFileSize;
 
   bool get showThumbnail =>
-      [MessageTypes.Image, MessageTypes.Sticker, MessageTypes.Video]
-          .contains(messageType) &&
+      [
+        MessageTypes.Image,
+        MessageTypes.Sticker,
+        MessageTypes.Video,
+      ].contains(messageType) &&
       (kIsWeb ||
           isAttachmentSmallEnough ||
           isThumbnailSmallEnough ||
           (content['url'] is String));
 
-  String? get sizeString => content
-      .tryGetMap<String, dynamic>('info')
-      ?.tryGet<int>('size')
-      ?.sizeString;
+  String? get sizeString =>
+      content
+          .tryGetMap<String, dynamic>('info')
+          ?.tryGet<int>('size')
+          ?.sizeString;
 }

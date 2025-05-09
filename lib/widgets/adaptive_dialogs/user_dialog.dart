@@ -23,15 +23,12 @@ class UserDialog extends StatelessWidget {
     required BuildContext context,
     required Profile profile,
     bool noProfileWarning = false,
-  }) =>
-      showAdaptiveDialog(
-        context: context,
-        barrierDismissible: true,
-        builder: (context) => UserDialog(
-          profile,
-          noProfileWarning: noProfileWarning,
-        ),
-      );
+  }) => showAdaptiveDialog(
+    context: context,
+    barrierDismissible: true,
+    builder:
+        (context) => UserDialog(profile, noProfileWarning: noProfileWarning),
+  );
 
   final Profile profile;
   final bool noProfileWarning;
@@ -42,7 +39,8 @@ class UserDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
     final dmRoomId = client.getDirectChatFromUserId(profile.userId);
-    final displayname = profile.displayName ??
+    final displayname =
+        profile.displayName ??
         profile.userId.localpart ??
         L10n.of(context).user;
     var copied = false;
@@ -62,12 +60,13 @@ class UserDialog extends StatelessWidget {
             if (presence == null) return const SizedBox.shrink();
             final statusMsg = presence.statusMsg;
             final lastActiveTimestamp = presence.lastActiveTimestamp;
-            final presenceText = presence.currentlyActive == true
-                ? L10n.of(context).currentlyActive
-                : lastActiveTimestamp != null
+            final presenceText =
+                presence.currentlyActive == true
+                    ? L10n.of(context).currentlyActive
+                    : lastActiveTimestamp != null
                     ? L10n.of(context).lastActiveAgo(
-                        lastActiveTimestamp.localizedTimeShort(context),
-                      )
+                      lastActiveTimestamp.localizedTimeShort(context),
+                    )
                     : null;
             return SingleChildScrollView(
               child: Column(
@@ -76,64 +75,76 @@ class UserDialog extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   HoverBuilder(
-                    builder: (context, hovered) => StatefulBuilder(
-                      builder: (context, setState) => MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () {
-                            Clipboard.setData(
-                              ClipboardData(text: profile.userId),
-                            );
-                            setState(() {
-                              copied = true;
-                            });
-                          },
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                WidgetSpan(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 4.0),
-                                    child: AnimatedScale(
-                                      duration: FluffyThemes.animationDuration,
-                                      curve: FluffyThemes.animationCurve,
-                                      scale: hovered
-                                          ? 1.33
-                                          : copied
-                                              ? 1.25
-                                              : 1.0,
-                                      child: Icon(
-                                        copied
-                                            ? Icons.check_circle
-                                            : Icons.copy,
-                                        size: 12,
-                                        color: copied ? Colors.green : null,
-                                      ),
+                    builder:
+                        (context, hovered) => StatefulBuilder(
+                          builder:
+                              (context, setState) => MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Clipboard.setData(
+                                      ClipboardData(text: profile.userId),
+                                    );
+                                    setState(() {
+                                      copied = true;
+                                    });
+                                  },
+                                  child: RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        WidgetSpan(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                              right: 4.0,
+                                            ),
+                                            child: AnimatedScale(
+                                              duration:
+                                                  FluffyThemes
+                                                      .animationDuration,
+                                              curve:
+                                                  FluffyThemes.animationCurve,
+                                              scale:
+                                                  hovered
+                                                      ? 1.33
+                                                      : copied
+                                                      ? 1.25
+                                                      : 1.0,
+                                              child: Icon(
+                                                copied
+                                                    ? Icons.check_circle
+                                                    : Icons.copy,
+                                                size: 12,
+                                                color:
+                                                    copied
+                                                        ? Colors.green
+                                                        : null,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        TextSpan(text: profile.userId),
+                                      ],
+                                      style: theme.textTheme.bodyMedium
+                                          ?.copyWith(fontSize: 10),
                                     ),
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
-                                TextSpan(text: profile.userId),
-                              ],
-                              style: theme.textTheme.bodyMedium
-                                  ?.copyWith(fontSize: 10),
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
+                              ),
                         ),
-                      ),
-                    ),
                   ),
                   Center(
                     child: Avatar(
                       mxContent: avatar,
                       name: displayname,
                       size: Avatar.defaultSize * 2,
-                      onTap: avatar != null
-                          ? () => showDialog(
+                      onTap:
+                          avatar != null
+                              ? () => showDialog(
                                 context: context,
                                 builder: (_) => MxcImageViewer(avatar),
                               )
-                          : null,
+                              : null,
                     ),
                   ),
                   if (presenceText != null)
@@ -145,8 +156,9 @@ class UserDialog extends StatelessWidget {
                   if (statusMsg != null)
                     SelectableLinkify(
                       text: statusMsg,
-                      textScaleFactor:
-                          MediaQuery.textScalerOf(context).scale(1),
+                      textScaleFactor: MediaQuery.textScalerOf(
+                        context,
+                      ).scale(1),
                       textAlign: TextAlign.center,
                       options: const LinkifyOptions(humanize: false),
                       linkStyle: TextStyle(
@@ -154,17 +166,15 @@ class UserDialog extends StatelessWidget {
                         decoration: TextDecoration.underline,
                         decorationColor: theme.colorScheme.primary,
                       ),
-                      onOpen: (url) =>
-                          UrlLauncher(context, url.url).launchUrl(),
+                      onOpen:
+                          (url) => UrlLauncher(context, url.url).launchUrl(),
                     ),
                   // #Pangea
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        LevelDisplayName(userId: profile.userId),
-                      ],
+                      children: [LevelDisplayName(userId: profile.userId)],
                     ),
                   ),
                   // Pangea#
@@ -185,10 +195,11 @@ class UserDialog extends StatelessWidget {
                 context: context,
                 // #Pangea
                 // future: () => client.startDirectChat(profile.userId),
-                future: () => client.startDirectChat(
-                  profile.userId,
-                  enableEncryption: false,
-                ),
+                future:
+                    () => client.startDirectChat(
+                      profile.userId,
+                      enableEncryption: false,
+                    ),
                 // Pangea#
               );
               final roomId = roomIdResult.result;

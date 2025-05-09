@@ -7,10 +7,7 @@ import 'package:fluffychat/pangea/toolbar/widgets/toolbar_button.dart';
 class PracticeModeButtons extends StatelessWidget {
   final MessageOverlayController overlayController;
 
-  const PracticeModeButtons({
-    required this.overlayController,
-    super.key,
-  });
+  const PracticeModeButtons({required this.overlayController, super.key});
 
   static const double iconWidth = 36.0;
   static const double buttonSize = 40.0;

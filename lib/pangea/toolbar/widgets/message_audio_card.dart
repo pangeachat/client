@@ -57,9 +57,7 @@ class MessageAudioCardState extends State<MessageAudioCard> {
       if (localEvent != null) {
         audioFile = await localEvent.getPangeaAudioFile();
       } else {
-        audioFile = await widget.messageEvent.getMatrixAudioFile(
-          langCode,
-        );
+        audioFile = await widget.messageEvent.getMatrixAudioFile(langCode);
       }
       debugPrint("audio file is now: $audioFile. setting starts and ends...");
       if (mounted) setState(() => _isLoading = false);
@@ -87,31 +85,32 @@ class MessageAudioCardState extends State<MessageAudioCard> {
         Container(
           alignment: Alignment.center,
           height: 40,
-          child: _isLoading
-              ? const TextLoadingShimmer(width: 200)
-              : audioFile != null
+          child:
+              _isLoading
+                  ? const TextLoadingShimmer(width: 200)
+                  : audioFile != null
                   ? AudioPlayerWidget(
-                      null,
-                      matrixFile: audioFile,
-                      sectionStartMS: null,
-                      sectionEndMS: null,
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                      setIsPlayingAudio: widget.setIsPlayingAudio,
-                      fontSize:
-                          AppConfig.messageFontSize * AppConfig.fontSizeFactor,
-                      padding: 0,
-                      isOverlay: true,
-                      chatController:
-                          widget.overlayController.widget.chatController,
-                      overlayController: widget.overlayController,
-                      linkColor:
-                          Theme.of(context).brightness == Brightness.light
-                              ? Theme.of(context).colorScheme.primary
-                              : Theme.of(context).colorScheme.onPrimary,
-                    )
+                    null,
+                    matrixFile: audioFile,
+                    sectionStartMS: null,
+                    sectionEndMS: null,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    setIsPlayingAudio: widget.setIsPlayingAudio,
+                    fontSize:
+                        AppConfig.messageFontSize * AppConfig.fontSizeFactor,
+                    padding: 0,
+                    isOverlay: true,
+                    chatController:
+                        widget.overlayController.widget.chatController,
+                    overlayController: widget.overlayController,
+                    linkColor:
+                        Theme.of(context).brightness == Brightness.light
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context).colorScheme.onPrimary,
+                  )
                   : const CardErrorWidget(
-                      error: "Null audio file in message_audio_card",
-                    ),
+                    error: "Null audio file in message_audio_card",
+                  ),
         ),
       ],
     );

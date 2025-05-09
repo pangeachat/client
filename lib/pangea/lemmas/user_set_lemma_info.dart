@@ -2,10 +2,7 @@ class UserSetLemmaInfo {
   final String? meaning;
   final List<String>? emojis;
 
-  UserSetLemmaInfo({
-    this.emojis,
-    this.meaning,
-  });
+  UserSetLemmaInfo({this.emojis, this.meaning});
 
   factory UserSetLemmaInfo.fromJson(Map<String, dynamic> json) {
     return UserSetLemmaInfo(
@@ -15,10 +12,7 @@ class UserSetLemmaInfo {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'emojis': emojis,
-      'meaning': meaning,
-    };
+    return {'emojis': emojis, 'meaning': meaning};
   }
 
   @override

@@ -52,14 +52,20 @@ class LearningProgressIndicatorsState
       updateData(null);
     }
     _analyticsSubscription = MatrixState
-        .pangeaController.getAnalytics.analyticsStream.stream
+        .pangeaController
+        .getAnalytics
+        .analyticsStream
+        .stream
         .listen(updateData);
 
     // rebuild when target language changes
-    _languageSubscription =
-        MatrixState.pangeaController.userController.stateStream.listen((_) {
-      if (mounted) setState(() {});
-    });
+    _languageSubscription = MatrixState
+        .pangeaController
+        .userController
+        .stateStream
+        .listen((_) {
+          if (mounted) setState(() {});
+        });
 
     final client = MatrixState.pangeaController.matrixState.client;
     if (client.userID == null) return;
@@ -114,30 +120,29 @@ class LearningProgressIndicatorsState
             child: GestureDetector(
               onTap: () => context.go("/rooms/settings"),
               child: Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 8.0,
-                  right: 8.0,
-                ),
+                padding: const EdgeInsets.only(bottom: 8.0, right: 8.0),
                 child: Stack(
                   clipBehavior: Clip.none, // Allow overflow
                   children: [
                     FutureBuilder<Profile>(
                       future: client.fetchOwnProfile(),
-                      builder: (context, snapshot) => Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Material(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(99),
-                            child: Avatar(
-                              mxContent: snapshot.data?.avatarUrl,
-                              name: snapshot.data?.displayName ??
-                                  client.userID!.localpart,
-                              size: 60,
-                            ),
+                      builder:
+                          (context, snapshot) => Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Material(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(99),
+                                child: Avatar(
+                                  mxContent: snapshot.data?.avatarUrl,
+                                  name:
+                                      snapshot.data?.displayName ??
+                                      client.userID!.localpart,
+                                  size: 60,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
                     ),
                     Positioned(
                       bottom: -3,
@@ -180,11 +185,12 @@ class LearningProgressIndicatorsState
                     ),
                   ),
                   LearningSettingsButton(
-                    onTap: () => showDialog(
-                      context: context,
-                      builder: (c) => const SettingsLearning(),
-                      barrierDismissible: false,
-                    ),
+                    onTap:
+                        () => showDialog(
+                          context: context,
+                          builder: (c) => const SettingsLearning(),
+                          barrierDismissible: false,
+                        ),
                     l2: userL2?.langCode.toUpperCase(),
                   ),
                 ],
@@ -192,23 +198,23 @@ class LearningProgressIndicatorsState
               const SizedBox(height: 6),
               Row(
                 spacing: 6.0,
-                children: ConstructTypeEnum.values
-                    .map(
-                      (c) => ProgressIndicatorBadge(
-                        points: uniqueLemmas(c.indicator),
-                        loading: _loading,
-                        onTap: () {
-                          showDialog<AnalyticsPopupWrapper>(
-                            context: context,
-                            builder: (context) => AnalyticsPopupWrapper(
-                              view: c,
-                            ),
-                          );
-                        },
-                        indicator: c.indicator,
-                      ),
-                    )
-                    .toList(),
+                children:
+                    ConstructTypeEnum.values
+                        .map(
+                          (c) => ProgressIndicatorBadge(
+                            points: uniqueLemmas(c.indicator),
+                            loading: _loading,
+                            onTap: () {
+                              showDialog<AnalyticsPopupWrapper>(
+                                context: context,
+                                builder:
+                                    (context) => AnalyticsPopupWrapper(view: c),
+                              );
+                            },
+                            indicator: c.indicator,
+                          ),
+                        )
+                        .toList(),
               ),
               const SizedBox(height: 6),
               MouseRegion(

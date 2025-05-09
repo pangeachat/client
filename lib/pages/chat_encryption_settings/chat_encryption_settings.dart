@@ -78,8 +78,9 @@ class ChatEncryptionSettingsController extends State<ChatEncryptionSettings> {
       cancelLabel: L10n.of(context).cancel,
     );
     if (consent != OkCancelResult.ok) return;
-    final req = await room.client.userDeviceKeys[room.directChatMatrixID]!
-        .startVerification();
+    final req =
+        await room.client.userDeviceKeys[room.directChatMatrixID]!
+            .startVerification();
     req.onUpdate = () {
       if (req.state == KeyVerificationState.done) {
         setState(() {});

@@ -27,45 +27,45 @@ class ChatPermissionsSettingsView extends StatelessWidget {
           stream: controller.onChanged,
           builder: (context, _) {
             final roomId = controller.roomId;
-            final room = roomId == null
-                ? null
-                : Matrix.of(context).client.getRoomById(roomId);
+            final room =
+                roomId == null
+                    ? null
+                    : Matrix.of(context).client.getRoomById(roomId);
             if (room == null) {
               return Center(child: Text(L10n.of(context).noRoomsFound));
             }
             final powerLevelsContent = Map<String, Object?>.from(
               room.getState(EventTypes.RoomPowerLevels)?.content ?? {},
             );
-            final powerLevels =
-                Map<String, dynamic>.from(powerLevelsContent) // #Pangea
-                  // ..removeWhere((k, v) => v is! int);
-                  ..removeWhere(
-                    (k, v) =>
-                        v is! int ||
-                        k.equals("m.call.invite") ||
-                        k.equals("historical") ||
-                        k.equals("state_default"),
-                  );
+            final powerLevels = Map<String, dynamic>.from(
+                powerLevelsContent,
+              ) // #Pangea
+              // ..removeWhere((k, v) => v is! int);
+              ..removeWhere(
+                (k, v) =>
+                    v is! int ||
+                    k.equals("m.call.invite") ||
+                    k.equals("historical") ||
+                    k.equals("state_default"),
+              );
             // Pangea#
             final eventsPowerLevels = Map<String, int?>.from(
               powerLevelsContent.tryGetMap<String, int?>('events') ?? {},
               // #Pangea
             )..removeWhere(
-                (k, v) =>
-                    v is! int ||
-                    k.equals("m.space.child") ||
-                    k.equals("pangea.usranalytics") ||
-                    k.equals(EventTypes.RoomPowerLevels),
-              );
+              (k, v) =>
+                  v is! int ||
+                  k.equals("m.space.child") ||
+                  k.equals("pangea.usranalytics") ||
+                  k.equals(EventTypes.RoomPowerLevels),
+            );
             // )..removeWhere((k, v) => v is! int);
             // Pangea#
             return Column(
               children: [
                 ListTile(
                   leading: const Icon(Icons.info_outlined),
-                  subtitle: Text(
-                    L10n.of(context).chatPermissionsDescription,
-                  ),
+                  subtitle: Text(L10n.of(context).chatPermissionsDescription),
                 ),
                 Divider(color: theme.dividerColor),
                 ListTile(
@@ -84,12 +84,13 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                       PermissionsListTile(
                         permissionKey: entry.key,
                         permission: entry.value,
-                        onChanged: (level) => controller.editPowerLevel(
-                          context,
-                          entry.key,
-                          entry.value,
-                          newLevel: level,
-                        ),
+                        onChanged:
+                            (level) => controller.editPowerLevel(
+                              context,
+                              entry.key,
+                              entry.value,
+                              newLevel: level,
+                            ),
                         canEdit: room.canChangePowerLevel,
                       ),
                     // #Pangea
@@ -145,13 +146,14 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                         category: 'events',
                         permission: entry.value ?? 0,
                         canEdit: room.canChangePowerLevel,
-                        onChanged: (level) => controller.editPowerLevel(
-                          context,
-                          entry.key,
-                          entry.value ?? 0,
-                          newLevel: level,
-                          category: 'events',
-                        ),
+                        onChanged:
+                            (level) => controller.editPowerLevel(
+                              context,
+                              entry.key,
+                              entry.value ?? 0,
+                              newLevel: level,
+                              category: 'events',
+                            ),
                       ),
                   ],
                 ),

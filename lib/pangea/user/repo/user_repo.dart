@@ -36,10 +36,7 @@ class PUserRepo {
     final String searchUrl =
         "${PApiUrls.searchUserProfiles}?limit=$limit${pageNumber != null ? '&page=$pageNumber' : ''}";
 
-    final Response res = await req.post(
-      url: searchUrl,
-      body: body,
-    );
+    final Response res = await req.post(url: searchUrl, body: body);
 
     //PTODO - implement paginiation - make another call with next url
 
