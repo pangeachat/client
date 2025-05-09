@@ -112,15 +112,15 @@ class FullTextTranslationRequestModel {
   //PTODO throw error for null
 
   Map<String, dynamic> toJson() => {
-        "text": text,
-        ModelKey.srcLang: srcLang,
-        ModelKey.tgtLang: tgtLang,
-        ModelKey.userL2: userL2,
-        ModelKey.userL1: userL1,
-        ModelKey.deepL: deepL,
-        ModelKey.offset: offset,
-        ModelKey.length: length,
-      };
+    "text": text,
+    ModelKey.srcLang: srcLang,
+    ModelKey.tgtLang: tgtLang,
+    ModelKey.userL2: userL2,
+    ModelKey.userL1: userL1,
+    ModelKey.deepL: deepL,
+    ModelKey.offset: offset,
+    ModelKey.length: length,
+  };
 
   // override equals and hashcode
   @override
@@ -166,12 +166,11 @@ class FullTextTranslationResponseModel {
 
   factory FullTextTranslationResponseModel.fromJson(Map<String, dynamic> json) {
     return FullTextTranslationResponseModel(
-      translations: (json["translations"] as Iterable)
-          .map<String>(
-            (e) => e,
-          )
-          .toList()
-          .cast<String>(),
+      translations:
+          (json["translations"] as Iterable)
+              .map<String>((e) => e)
+              .toList()
+              .cast<String>(),
       source: json[ModelKey.srcLang],
       deepL: json['deepl_res'],
     );

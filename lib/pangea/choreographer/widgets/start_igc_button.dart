@@ -10,10 +10,7 @@ import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart
 import '../../../pages/chat/chat.dart';
 
 class StartIGCButton extends StatefulWidget {
-  const StartIGCButton({
-    super.key,
-    required this.controller,
-  });
+  const StartIGCButton({super.key, required this.controller});
 
   final ChatController controller;
 
@@ -35,8 +32,9 @@ class StartIGCButtonState extends State<StartIGCButton>
       vsync: this,
       duration: const Duration(seconds: 2),
     );
-    _choreoListener = widget.controller.choreographer.stateStream.stream
-        .listen(_updateSpinnerState);
+    _choreoListener = widget.controller.choreographer.stateStream.stream.listen(
+      _updateSpinnerState,
+    );
     super.initState();
   }
 
@@ -77,9 +75,7 @@ class StartIGCButtonState extends State<StartIGCButton>
       case AssistanceState.noSub:
         OverlayUtil.showPositionedCard(
           context: context,
-          cardToShow: PaywallCard(
-            chatController: widget.controller,
-          ),
+          cardToShow: PaywallCard(chatController: widget.controller),
           maxHeight: 325,
           maxWidth: 325,
           transformTargetId:
@@ -113,31 +109,34 @@ class StartIGCButtonState extends State<StartIGCButton>
         enableFeedback: _enableFeedback,
         onTap: _enableFeedback ? _onTap : null,
         customBorder: const CircleBorder(),
-        onLongPress: _enableFeedback
-            ? () => showDialog(
+        onLongPress:
+            _enableFeedback
+                ? () => showDialog(
                   context: context,
                   builder: (c) => const SettingsLearning(),
                   barrierDismissible: false,
                 )
-            : null,
+                : null,
         child: Stack(
           alignment: Alignment.center,
           children: [
             _controller != null
                 ? RotationTransition(
-                    turns: Tween(begin: 0.0, end: math.pi * 2)
-                        .animate(_controller!),
-                    child: Icon(
-                      size: 36,
-                      Icons.autorenew_rounded,
-                      color: assistanceState.stateColor(context),
-                    ),
-                  )
-                : Icon(
+                  turns: Tween(
+                    begin: 0.0,
+                    end: math.pi * 2,
+                  ).animate(_controller!),
+                  child: Icon(
                     size: 36,
                     Icons.autorenew_rounded,
                     color: assistanceState.stateColor(context),
                   ),
+                )
+                : Icon(
+                  size: 36,
+                  Icons.autorenew_rounded,
+                  color: assistanceState.stateColor(context),
+                ),
             Container(
               width: 20,
               height: 20,

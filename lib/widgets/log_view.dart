@@ -15,17 +15,15 @@ class LogViewerState extends State<LogViewer> {
   double fontSize = 14;
   @override
   Widget build(BuildContext context) {
-    final outputEvents = Logs()
-        .outputEvents
-        .where((e) => e.level.index <= logLevel.index)
-        .toList();
+    final outputEvents =
+        Logs().outputEvents
+            .where((e) => e.level.index <= logLevel.index)
+            .toList();
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(logLevel.toString()),
-        leading: BackButton(
-          onPressed: () => context.go('/'),
-        ),
+        leading: BackButton(onPressed: () => context.go('/')),
         actions: [
           IconButton(
             icon: const Icon(Icons.zoom_in_outlined),
@@ -36,29 +34,30 @@ class LogViewerState extends State<LogViewer> {
             onPressed: () => setState(() => fontSize--),
           ),
           PopupMenuButton<Level>(
-            itemBuilder: (context) => Level.values
-                .map(
-                  (level) => PopupMenuItem(
-                    value: level,
-                    child: Text(level.toString()),
-                  ),
-                )
-                .toList(),
+            itemBuilder:
+                (context) =>
+                    Level.values
+                        .map(
+                          (level) => PopupMenuItem(
+                            value: level,
+                            child: Text(level.toString()),
+                          ),
+                        )
+                        .toList(),
             onSelected: (Level level) => setState(() => logLevel = level),
           ),
         ],
       ),
       body: ListView.builder(
         itemCount: outputEvents.length,
-        itemBuilder: (context, i) => SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: SelectableText(
-            outputEvents[i].toDisplayString(),
-            style: TextStyle(
-              color: outputEvents[i].color,
+        itemBuilder:
+            (context, i) => SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: SelectableText(
+                outputEvents[i].toDisplayString(),
+                style: TextStyle(color: outputEvents[i].color),
+              ),
             ),
-          ),
-        ),
       ),
     );
   }

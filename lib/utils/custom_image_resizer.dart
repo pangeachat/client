@@ -7,11 +7,12 @@ import 'package:matrix/matrix.dart';
 import 'package:native_imaging/native_imaging.dart' as native;
 
 (int, int) _scaleToBox(int width, int height, {required int boxSize}) {
-  final fit = applyBoxFit(
-    BoxFit.scaleDown,
-    Size(width.toDouble(), height.toDouble()),
-    Size(boxSize.toDouble(), boxSize.toDouble()),
-  ).destination;
+  final fit =
+      applyBoxFit(
+        BoxFit.scaleDown,
+        Size(width.toDouble(), height.toDouble()),
+        Size(boxSize.toDouble(), boxSize.toDouble()),
+      ).destination;
   return (fit.width.round(), fit.height.round());
 }
 
@@ -61,7 +62,8 @@ Future<MatrixImageFileResizedResponse?> customImageResizer(
       // scale down image for blurhashing to speed it up
       final (blurW, blurH) = _scaleToBox(width, height, boxSize: 100);
       final blurhashImg = nativeImg.resample(
-        blurW, blurH,
+        blurW,
+        blurH,
         // nearest is unsupported...
         native.Transform.bilinear,
       );
@@ -79,8 +81,11 @@ Future<MatrixImageFileResizedResponse?> customImageResizer(
       if (width > max || height > max) {
         (width, height) = _scaleToBox(width, height, boxSize: max);
 
-        final scaledImg =
-            nativeImg.resample(width, height, native.Transform.lanczos);
+        final scaledImg = nativeImg.resample(
+          width,
+          height,
+          native.Transform.lanczos,
+        );
         nativeImg.free();
         nativeImg = scaledImg;
       }

@@ -32,10 +32,7 @@ class MorphsRepo {
   static const int _cacheDurationMinutes = 1;
 
   static void set(String languageCode, MorphFeaturesAndTags response) {
-    _morphsStorage.write(
-      languageCode,
-      response.toJson(),
-    );
+    _morphsStorage.write(languageCode, response.toJson());
   }
 
   static MorphFeaturesAndTags fromJson(Map<String, dynamic> json) {
@@ -61,13 +58,7 @@ class MorphsRepo {
       return response;
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "languageCode": languageCode,
-        },
-      );
+      ErrorHandler.logError(e: e, s: s, data: {"languageCode": languageCode});
       return defaultMorphMapping;
     }
   }

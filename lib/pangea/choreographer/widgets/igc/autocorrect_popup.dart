@@ -26,10 +26,7 @@ class AutocorrectPopup extends StatelessWidget {
           spacing: 8.0,
           children: [
             Text(originalText),
-            InkWell(
-              onTap: onUndo,
-              child: const Icon(Icons.replay, size: 12),
-            ),
+            InkWell(onTap: onUndo, child: const Icon(Icons.replay, size: 12)),
           ],
         ),
       ),

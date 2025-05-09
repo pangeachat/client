@@ -7,10 +7,7 @@ class ConstructForm {
   /// The constructIdenfifier
   final ConstructIdentifier cId;
 
-  ConstructForm({
-    required this.form,
-    required this.cId,
-  });
+  ConstructForm({required this.form, required this.cId});
 
   @override
   bool operator ==(Object other) {
@@ -30,9 +27,6 @@ class ConstructForm {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'form': form,
-      'cId': cId.toJson(),
-    };
+    return {'form': form, 'cId': cId.toJson()};
   }
 }

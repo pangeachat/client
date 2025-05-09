@@ -36,14 +36,14 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
   @override
   void initState() {
     super.initState();
-    _memberSubscription = event.room.client.onRoomState.stream.where(
-      (u) {
-        return u.roomId == event.room.id &&
-            u.state.type == EventTypes.RoomMember;
-      },
-    ).listen((_) {
-      if (_members > 1) setState(() {});
-    });
+    _memberSubscription = event.room.client.onRoomState.stream
+        .where((u) {
+          return u.roomId == event.room.id &&
+              u.state.type == EventTypes.RoomMember;
+        })
+        .listen((_) {
+          if (_members > 1) setState(() {});
+        });
   }
 
   @override

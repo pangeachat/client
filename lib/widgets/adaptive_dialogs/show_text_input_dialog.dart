@@ -77,17 +77,18 @@ Future<String?> showTextInputDialog({
                       // maxLines: maxLines,
                       minLines: autoSubmit ? 1 : minLines,
                       maxLines: autoSubmit ? 1 : maxLines,
-                      onSubmitted: autoSubmit
-                          ? (_) {
-                              final input = controller.text;
-                              final errorText = validator?.call(input);
-                              if (errorText != null) {
-                                error = errorText;
-                                return;
+                      onSubmitted:
+                          autoSubmit
+                              ? (_) {
+                                final input = controller.text;
+                                final errorText = validator?.call(input);
+                                if (errorText != null) {
+                                  error = errorText;
+                                  return;
+                                }
+                                Navigator.of(context).pop<String>(input);
                               }
-                              Navigator.of(context).pop<String>(input);
-                            }
-                          : null,
+                              : null,
                       // Pangea#
                       maxLength: maxLength,
                       keyboardType: keyboardType,
@@ -115,9 +116,10 @@ Future<String?> showTextInputDialog({
               autofocus: true,
               child: Text(
                 okLabel ?? L10n.of(context).ok,
-                style: isDestructive
-                    ? TextStyle(color: Theme.of(context).colorScheme.error)
-                    : null,
+                style:
+                    isDestructive
+                        ? TextStyle(color: Theme.of(context).colorScheme.error)
+                        : null,
               ),
             ),
           ],

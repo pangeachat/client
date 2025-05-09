@@ -32,12 +32,10 @@ class MorphIcon extends StatelessWidget {
         morphTag: morphTag,
         context: context,
       ),
-      colorReplacements: theme.brightness == Brightness.dark
-          ? {
-              "white": theme.cardColor.hexValue.toString(),
-              "black": "white",
-            }
-          : {},
+      colorReplacements:
+          theme.brightness == Brightness.dark
+              ? {"white": theme.cardColor.hexValue.toString(), "black": "white"}
+              : {},
       errorIcon: Icon(morphFeature.fallbackIcon),
       width: size?.width,
       height: size?.height,
@@ -48,13 +46,14 @@ class MorphIcon extends StatelessWidget {
     }
 
     return Tooltip(
-      message: morphTag == null
-          ? morphFeature.getDisplayCopy(context)
-          : getGrammarCopy(
-              category: morphFeature.name,
-              lemma: morphTag!,
-              context: context,
-            ),
+      message:
+          morphTag == null
+              ? morphFeature.getDisplayCopy(context)
+              : getGrammarCopy(
+                category: morphFeature.name,
+                lemma: morphTag!,
+                context: context,
+              ),
       triggerMode: TooltipTriggerMode.tap,
       child: content,
     );

@@ -17,8 +17,10 @@ class ITRepo {
       choreoApiKey: Environment.choreoApiKey,
       accessToken: MatrixState.pangeaController.userController.accessToken,
     );
-    final Response res =
-        await req.post(url: PApiUrls.firstStep, body: initalText.toJson());
+    final Response res = await req.post(
+      url: PApiUrls.firstStep,
+      body: initalText.toJson(),
+    );
 
     final json = jsonDecode(utf8.decode(res.bodyBytes).toString());
 

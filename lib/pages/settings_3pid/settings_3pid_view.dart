@@ -67,28 +67,31 @@ class Settings3PidView extends StatelessWidget {
                   title: Text(
                     identifier.isEmpty
                         ? L10n.of(context).noPasswordRecoveryDescription
-                        : L10n.of(context)
-                            .withTheseAddressesRecoveryDescription,
+                        : L10n.of(
+                          context,
+                        ).withTheseAddressesRecoveryDescription,
                   ),
                 ),
                 const Divider(),
                 Expanded(
                   child: ListView.builder(
                     itemCount: identifier.length,
-                    itemBuilder: (BuildContext context, int i) => ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: theme.scaffoldBackgroundColor,
-                        foregroundColor: Colors.grey,
-                        child: Icon(identifier[i].iconData),
-                      ),
-                      title: Text(identifier[i].address),
-                      trailing: IconButton(
-                        tooltip: L10n.of(context).delete,
-                        icon: const Icon(Icons.delete_forever_outlined),
-                        color: Colors.red,
-                        onPressed: () => controller.delete3Pid(identifier[i]),
-                      ),
-                    ),
+                    itemBuilder:
+                        (BuildContext context, int i) => ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: theme.scaffoldBackgroundColor,
+                            foregroundColor: Colors.grey,
+                            child: Icon(identifier[i].iconData),
+                          ),
+                          title: Text(identifier[i].address),
+                          trailing: IconButton(
+                            tooltip: L10n.of(context).delete,
+                            icon: const Icon(Icons.delete_forever_outlined),
+                            color: Colors.red,
+                            onPressed:
+                                () => controller.delete3Pid(identifier[i]),
+                          ),
+                        ),
                   ),
                 ),
               ],

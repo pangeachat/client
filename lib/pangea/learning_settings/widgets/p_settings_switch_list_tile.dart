@@ -49,24 +49,22 @@ class PSettingsSwitchListTileState
       title: Text(widget.title),
       activeColor: AppConfig.activeToggleColor,
       subtitle: widget.subtitle != null ? Text(widget.subtitle!) : null,
-      onChanged: widget.enabled
-          ? (bool newValue) async {
-              try {
-                widget.onChange(newValue);
-                setState(() => currentValue = newValue);
-              } catch (err, s) {
-                ErrorHandler.logError(
-                  e: err,
-                  m: "Failed to updates user setting",
-                  s: s,
-                  data: {
-                    "newValue": newValue,
-                    "currentValue": currentValue,
-                  },
-                );
+      onChanged:
+          widget.enabled
+              ? (bool newValue) async {
+                try {
+                  widget.onChange(newValue);
+                  setState(() => currentValue = newValue);
+                } catch (err, s) {
+                  ErrorHandler.logError(
+                    e: err,
+                    m: "Failed to updates user setting",
+                    s: s,
+                    data: {"newValue": newValue, "currentValue": currentValue},
+                  );
+                }
               }
-            }
-          : null,
+              : null,
     );
   }
 }

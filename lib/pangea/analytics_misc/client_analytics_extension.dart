@@ -43,15 +43,12 @@ extension AnalyticsClientExtension on Client {
         analyticsRoom.membership == Membership.invite) {
       debugger(when: kDebugMode);
       analyticsRoom.join().onError(
-            (error, stackTrace) => ErrorHandler.logError(
-              e: error,
-              s: stackTrace,
-              data: {
-                "langCode": lang!.langCodeShort,
-                "userIdParam": userIdParam,
-              },
-            ),
-          );
+        (error, stackTrace) => ErrorHandler.logError(
+          e: error,
+          s: stackTrace,
+          data: {"langCode": lang!.langCodeShort, "userIdParam": userIdParam},
+        ),
+      );
       return analyticsRoom;
     }
     return analyticsRoom;
@@ -87,11 +84,8 @@ extension AnalyticsClientExtension on Client {
   }
 
   /// Get all my analytics rooms
-  List<Room> get _allMyAnalyticsRooms => rooms
-      .where(
-        (e) => e.isAnalyticsRoomOfUser(userID!),
-      )
-      .toList();
+  List<Room> get _allMyAnalyticsRooms =>
+      rooms.where((e) => e.isAnalyticsRoomOfUser(userID!)).toList();
 
   /// Update the visibility of all analytics rooms to private (do they don't show in search
   /// results) and set the join rules to public (so they come through in space hierarchy response)
@@ -137,9 +131,10 @@ extension AnalyticsClientExtension on Client {
     final Random random = Random();
     for (final space in spaces) {
       if (userID == null || !space.canSendEvent(EventTypes.SpaceChild)) return;
-      final List<Room> roomsNotAdded = _allMyAnalyticsRooms.where((room) {
-        return !space.spaceChildren.any((child) => child.roomId == room.id);
-      }).toList();
+      final List<Room> roomsNotAdded =
+          _allMyAnalyticsRooms.where((room) {
+            return !space.spaceChildren.any((child) => child.roomId == room.id);
+          }).toList();
 
       if (roomsNotAdded.isEmpty) continue;
 

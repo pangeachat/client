@@ -91,10 +91,10 @@ class InstructionsInlineTooltipState extends State<InstructionsInlineTooltip>
   Widget build(BuildContext context) {
     return widget.animate
         ? SizeTransition(
-            sizeFactor: _animation!,
-            axisAlignment: -1.0,
-            child: _buildTooltipContent(context),
-          )
+          sizeFactor: _animation!,
+          axisAlignment: -1.0,
+          child: _buildTooltipContent(context),
+        )
         : (_isToggledOff
             ? const SizedBox.shrink()
             : _buildTooltipContent(context));
@@ -127,9 +127,10 @@ class InstructionsInlineTooltipState extends State<InstructionsInlineTooltip>
                 child: Center(
                   child: Text(
                     widget.instructionsEnum.body(L10n.of(context)),
-                    style: FluffyThemes.isColumnMode(context)
-                        ? Theme.of(context).textTheme.titleLarge
-                        : Theme.of(context).textTheme.bodyLarge,
+                    style:
+                        FluffyThemes.isColumnMode(context)
+                            ? Theme.of(context).textTheme.titleLarge
+                            : Theme.of(context).textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                 ),

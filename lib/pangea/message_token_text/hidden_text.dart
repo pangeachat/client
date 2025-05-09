@@ -4,11 +4,7 @@ class HiddenText extends StatelessWidget {
   final String text;
   final TextStyle style;
 
-  const HiddenText({
-    super.key,
-    required this.text,
-    required this.style,
-  });
+  const HiddenText({super.key, required this.text, required this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +29,7 @@ class HiddenText extends StatelessWidget {
           ),
           Positioned(
             bottom: 0,
-            child: Container(
-              width: textWidth,
-              height: 1,
-              color: style.color,
-            ),
+            child: Container(width: textWidth, height: 1, color: style.color),
           ),
         ],
       ),

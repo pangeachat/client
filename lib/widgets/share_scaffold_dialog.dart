@@ -64,16 +64,15 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final rooms = Matrix.of(context)
-        .client
-        .rooms
-        .where(
-          (room) =>
-              room.canSendDefaultMessages &&
-              !room.isSpace &&
-              room.membership == Membership.join,
-        )
-        .toList();
+    final rooms =
+        Matrix.of(context).client.rooms
+            .where(
+              (room) =>
+                  room.canSendDefaultMessages &&
+                  !room.isSpace &&
+                  room.membership == Membership.join,
+            )
+            .toList();
     final filter = _filterController.text.trim().toLowerCase();
     return Scaffold(
       appBar: AppBar(
@@ -138,8 +137,9 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
                     ),
                     controlAffinity: ListTileControlAffinity.trailing,
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(AppConfig.borderRadius),
+                      borderRadius: BorderRadius.circular(
+                        AppConfig.borderRadius,
+                      ),
                     ),
                     secondary: Avatar(
                       mxContent: room.avatar,
@@ -159,19 +159,20 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
       bottomNavigationBar: AnimatedSize(
         duration: FluffyThemes.animationDuration,
         curve: FluffyThemes.animationCurve,
-        child: selectedRoomId == null
-            ? const SizedBox.shrink()
-            : Material(
-                elevation: 8,
-                shadowColor: theme.appBarTheme.shadowColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ElevatedButton(
-                    onPressed: _forwardAction,
-                    child: Text(L10n.of(context).forward),
+        child:
+            selectedRoomId == null
+                ? const SizedBox.shrink()
+                : Material(
+                  elevation: 8,
+                  shadowColor: theme.appBarTheme.shadowColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ElevatedButton(
+                      onPressed: _forwardAction,
+                      child: Text(L10n.of(context).forward),
+                    ),
                   ),
                 ),
-              ),
       ),
     );
   }
