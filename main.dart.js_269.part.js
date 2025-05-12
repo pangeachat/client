@@ -1638,18 +1638,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waTooltip() {
       return "D\xf9ng L2 kh\xf4ng tr\u1ee3 gi\xfap";
     },
-    get$addStudents() {
-      return "M\u1eddi b\u1eb1ng li\xean k\u1ebft ho\u1eb7c m\xe3";
-    },
-    get$copyClassLink() {
-      return "Sao ch\xe9p li\xean k\u1ebft m\u1eddi";
-    },
-    get$copyClassLinkDesc() {
-      return "Nh\u1ea5n li\xean k\u1ebft n\xe0y \u0111\u01b0a ng\u01b0\u1eddi d\xf9ng \u0111\u1ebfn \u1ee9ng d\u1ee5ng, y\xeau c\u1ea7u h\u1ecd \u0111\u0103ng k\xfd v\xe0 t\u1ef1 \u0111\u1ed9ng tham gia kh\xf4ng gian.";
-    },
-    get$copyClassCode() {
-      return "Sao ch\xe9p m\xe3 m\u1eddi";
-    },
     get$inviteStudentByUserName() {
       return "M\u1eddi ng\u01b0\u1eddi d\xf9ng qua t\xean";
     },
@@ -1719,26 +1707,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$helpMeTranslate() {
       return "\u0110\u1ed3ng \xfd!";
     },
-    get$needsItShortMessage() {
-      return "Ra ngo\xe0i ng\xf4n ng\u1eef \u0111\xedch";
-    },
     needsItMessage$1(targetLanguage) {
       return "\u0110\u1ee3i \u0111\xe3, \u0111i\u1ec1u n\xe0y kh\xf4ng ph\u1ea3i b\u1eb1ng " + targetLanguage + "! B\u1ea1n c\xf3 c\u1ea7n gi\xfap d\u1ecbch kh\xf4ng?";
-    },
-    get$tokenTranslationTitle() {
-      return "M\u1ed9t t\u1eeb trong ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a b\u1ea1n.";
-    },
-    get$spanTranslationDesc() {
-      return "Xem g\u1ee3i \xfd d\u1ecbch b\xean d\u01b0\u1edbi.";
-    },
-    get$spanTranslationTitle() {
-      return "M\u1ed9t s\u1ed1 t\u1eeb trong ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a b\u1ea1n.";
-    },
-    get$l1SpanAndGrammarTitle() {
-      return "Ngo\xe0i ng\xf4n ng\u1eef \u0111\xedch";
-    },
-    get$l1SpanAndGrammarDesc() {
-      return "C\xf3 th\u1ec3 l\xe0 ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a b\u1ea1n ho\u1eb7c c\xf3 th\u1ec3 l\xe0 l\u1ed7i ng\u1eef ph\xe1p.";
     },
     get$countryInformation() {
       return "Qu\u1ed1c gia c\u1ee7a t\xf4i";
@@ -2673,9 +2643,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pay() {
       return "Thanh to\xe1n";
     },
-    get$copyClassCodeDesc() {
-      return "Ng\u01b0\u1eddi d\xf9ng \u0111\xe3 c\xf3 t\xe0i kho\u1ea3n c\xf3 th\u1ec3 'Tham gia kh\xf4ng gian' trong menu ch\xednh.";
-    },
     invitedToSpace$2(space, user) {
       return user + " \u0111\xe3 m\u1eddi b\u1ea1n tham gia kh\xf4ng gian: " + space + "! B\u1ea1n c\xf3 ch\u1ea5p nh\u1eadn kh\xf4ng?";
     },
@@ -2705,12 +2672,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$blurMeansTranslateBody() {
       return "Khi Ch\u1ebf \u0111\u1ed9 Nh\u1eadp vai b\u1eadt, tin nh\u1eafn b\u1eb1ng ng\xf4n ng\u1eef g\u1ed1c s\u1ebd b\u1ecb l\xe0m m\u1edd trong l\xfac Pangea Bot d\u1ecbch sang ng\xf4n ng\u1eef \u0111\xedch. B\u1ea1n c\xf3 th\u1ec3 t\u1eaft ch\u1ebf \u0111\u1ed9 n\xe0y trong c\xe0i \u0111\u1eb7t kh\xf4ng gian.";
-    },
-    get$someErrorTitle() {
-      return "Hmm, c\xf3 g\xec \u0111\xf3 kh\xf4ng \u0111\xfang";
-    },
-    get$someErrorBody() {
-      return "C\xf3 th\u1ec3 \u0111\xe2y l\xe0 l\u1ed7i ho\u1eb7c n\u1ed9i dung b\u1eb1ng ng\xf4n ng\u1eef kh\xe1c.";
     },
     get$bestCorrectionFeedback() {
       return "\u0110\xfang r\u1ed3i!";
@@ -4389,6 +4350,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_269", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "u+JhaXH0qdEp6iXkAfkl078G60g=");
+})($__dart_deferred_initializers__, "SnItprD3nbb3jDWjoR4ioowPN68=");
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map

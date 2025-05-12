@@ -1638,18 +1638,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waTooltip() {
       return "Uso de L2 sin asistencia";
     },
-    get$addStudents() {
-      return "Agregar estudiantes";
-    },
-    get$copyClassLink() {
-      return "Copiar enlace de invitaci\xf3n";
-    },
-    get$copyClassLinkDesc() {
-      return "Al hacer clic en este enlace, los usuarios acceder\xe1n a la aplicaci\xf3n, se abrir\xe1n una cuenta y se unir\xe1n autom\xe1ticamente a este espacio.";
-    },
-    get$copyClassCode() {
-      return "Copiar c\xf3digo de invitaci\xf3n";
-    },
     get$inviteStudentByUserName() {
       return "Invitar a estudiantes por usuario";
     },
@@ -1719,26 +1707,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$helpMeTranslate() {
       return "\xa1S\xed!";
     },
-    get$needsItShortMessage() {
-      return "\xa1Pruebe la traducci\xf3n interactiva!";
-    },
     needsItMessage$1(targetLanguage) {
       return "Espera, \xa1ese no es " + targetLanguage + "! \xbfNecesitas ayuda para traducir?";
-    },
-    get$tokenTranslationTitle() {
-      return "Una palabra est\xe1 en su idioma base.";
-    },
-    get$spanTranslationDesc() {
-      return "Vea posibles traducciones abajo.";
-    },
-    get$spanTranslationTitle() {
-      return "Algunas palabras est\xe1n en su idioma base.";
-    },
-    get$l1SpanAndGrammarTitle() {
-      return "Fuera del idioma de destino";
-    },
-    get$l1SpanAndGrammarDesc() {
-      return "Esto podr\xeda estar en su idioma base o podr\xeda ser un error gramatical.";
     },
     get$countryInformation() {
       return "Informaci\xf3n de pa\xeds";
@@ -2673,9 +2643,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pay() {
       return "Pagar";
     },
-    get$copyClassCodeDesc() {
-      return "Los estudiantes que ya est\xe1n en la aplicaci\xf3n pueden 'Unirse a una clase o a un intercambio' a trav\xe9s del men\xfa principal.";
-    },
     invitedToSpace$2(space, user) {
       return user + " te ha invitado a unirte a un espacio: \xa1" + space + "! \xbfDeseas aceptar?";
     },
@@ -2705,12 +2672,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$blurMeansTranslateBody() {
       return "Mientras el Modo Inmersi\xf3n est\xe9 activado, los mensajes que se env\xeden en tu idioma base aparecer\xe1n borrosos mientras Pangea Bot los traduce a tu idioma de destino. El Modo Inmersi\xf3n puede activarse en los ajustes individuales y espaciales.";
-    },
-    get$someErrorTitle() {
-      return "Hm, algo no est\xe1 bien";
-    },
-    get$someErrorBody() {
-      return "Podr\xeda ser un error o algo en tu lenguaje base.";
     },
     get$bestCorrectionFeedback() {
       return "\xa1Correcto!";
@@ -4389,6 +4350,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_206", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "oazotePlac2WGtlWUmWwKyQQBDU=");
+})($__dart_deferred_initializers__, "oLNnd+Vl99k5d5qLG48DncoXncU=");
 ;
 //# sourceMappingURL=main.dart.js_206.part.js.map

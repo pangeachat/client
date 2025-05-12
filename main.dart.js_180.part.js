@@ -1639,18 +1639,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waTooltip() {
       return "L2 use without assistance";
     },
-    get$addStudents() {
-      return "Invite users by link or code";
-    },
-    get$copyClassLink() {
-      return "Copy invite link";
-    },
-    get$copyClassLinkDesc() {
-      return "Clicking this link will take users to the app, direct them to make an account and they will automatically join this space.";
-    },
-    get$copyClassCode() {
-      return "Copy invite code";
-    },
     get$inviteStudentByUserName() {
       return "Invite users by username";
     },
@@ -1720,26 +1708,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$helpMeTranslate() {
       return "Yes!";
     },
-    get$needsItShortMessage() {
-      return "Out of target";
-    },
     needsItMessage$1(targetLanguage) {
       return "Wait, that's not " + targetLanguage + "! Do you need help translating?";
-    },
-    get$tokenTranslationTitle() {
-      return "A word is in your base language.";
-    },
-    get$spanTranslationDesc() {
-      return "See possible translations below.";
-    },
-    get$spanTranslationTitle() {
-      return "Some words are in your base language.";
-    },
-    get$l1SpanAndGrammarTitle() {
-      return "Outside target language";
-    },
-    get$l1SpanAndGrammarDesc() {
-      return "This could in your base language or it could be a grammar error.";
     },
     get$countryInformation() {
       return "My country";
@@ -2674,9 +2644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pay() {
       return "Pay";
     },
-    get$copyClassCodeDesc() {
-      return "Users who are already in the app can 'Join space' via the main menu.";
-    },
     invitedToSpace$2(space, user) {
       return user + " has invited you to join a space: " + space + "! Do you wish to accept?";
     },
@@ -2706,12 +2673,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$blurMeansTranslateBody() {
       return "While Immersion Mode is on, messages that are sent in your base language will be blurred while Pangea Bot translates them to your target language. Immersion Mode can be toggled in individual and space settings.";
-    },
-    get$someErrorTitle() {
-      return "Hm, something's not right";
-    },
-    get$someErrorBody() {
-      return "It could be an error or something in your base language.";
     },
     get$bestCorrectionFeedback() {
       return "That's correct!";
@@ -4390,6 +4351,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_180", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "FsRLYax156rZfLhd/b54vck78O0=");
+})($__dart_deferred_initializers__, "P4lcjaIupCgwE7Y96U/x5+wCKio=");
 ;
 //# sourceMappingURL=main.dart.js_180.part.js.map
