@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/spaces/pages/pangea_space_page_view.dart';
 import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -38,8 +39,10 @@ class SpaceViewLeaderboardState extends State<SpaceViewLeaderboard> {
     return LoadParticipantsUtil(
       space: widget.space,
       builder: (participantsLoader) {
-        final filteredParticipants =
-            participantsLoader.filteredParticipants("");
+        final filteredParticipants = participantsLoader
+            .filteredParticipants("")
+            .where((u) => u.id != BotName.byEnvironment)
+            .toList();
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,

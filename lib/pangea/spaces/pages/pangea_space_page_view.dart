@@ -10,13 +10,13 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_details/participant_list_item.dart';
-import 'package:fluffychat/pages/user_bottom_sheet/user_bottom_sheet.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/spaces/pages/pangea_space_page.dart';
 import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
-import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
@@ -38,9 +38,10 @@ class PangeaSpacePageView extends StatelessWidget {
       MatrixLocals(L10n.of(context)),
     );
 
-    final filteredParticipants = participantsLoader.filteredParticipants(
-      controller.searchController.text,
-    );
+    final filteredParticipants = participantsLoader
+        .filteredParticipants("")
+        .where((u) => u.id != BotName.byEnvironment)
+        .toList();
 
     final bool showMedals = !participantsLoader.loading &&
         controller.searchController.text.isEmpty &&
@@ -461,11 +462,12 @@ class LeaderboardMedal extends StatelessWidget {
           child: MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
-              onTap: () => showAdaptiveBottomSheet(
+              onTap: () => UserDialog.show(
                 context: context,
-                builder: (c) => UserBottomSheet(
-                  user: user,
-                  outerContext: context,
+                profile: Profile(
+                  userId: user.id,
+                  displayName: user.displayName,
+                  avatarUrl: user.avatarUrl,
                 ),
               ),
               child: Center(
@@ -582,11 +584,12 @@ class TrophyParticipantListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => showAdaptiveBottomSheet(
+      onTap: () => UserDialog.show(
         context: context,
-        builder: (c) => UserBottomSheet(
-          user: user,
-          outerContext: context,
+        profile: Profile(
+          userId: user.id,
+          displayName: user.displayName,
+          avatarUrl: user.avatarUrl,
         ),
       ),
       child: Row(
