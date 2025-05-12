@@ -26,16 +26,22 @@ class PangeaLoginScaffold extends StatelessWidget {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return SafeArea(
       child: Scaffold(
-        appBar:
-            customAppBar ?? AppBar(toolbarHeight: isColumnMode ? null : 40.0),
+        appBar: customAppBar ??
+            AppBar(
+              toolbarHeight: isColumnMode ? null : 40.0,
+            ),
         body: LayoutBuilder(
           builder: (context, constraints) {
             return SingleChildScrollView(
               child: ConstrainedBox(
-                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                constraints: BoxConstraints(
+                  minHeight: constraints.maxHeight,
+                ),
                 child: Center(
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 300),
+                    constraints: const BoxConstraints(
+                      maxWidth: 300,
+                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -47,16 +53,15 @@ class PangeaLoginScaffold extends StatelessWidget {
                             color: Colors.transparent,
                           ),
                           child: ClipOval(
-                            child:
-                                mainAssetBytes != null
-                                    ? Image.memory(
-                                      mainAssetBytes!,
-                                      fit: BoxFit.cover,
-                                    )
-                                    : Image.asset(
-                                      mainAssetPath,
-                                      fit: BoxFit.cover,
-                                    ),
+                            child: mainAssetBytes != null
+                                ? Image.memory(
+                                    mainAssetBytes!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : Image.asset(
+                                    mainAssetPath,
+                                    fit: BoxFit.cover,
+                                  ),
                           ),
                         ),
                         if (showAppName)

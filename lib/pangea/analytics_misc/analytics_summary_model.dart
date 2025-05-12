@@ -79,7 +79,10 @@ class AnalyticsSummaryModel {
   });
 
   static AnalyticsSummaryModel emptyModel(String userID) {
-    return AnalyticsSummaryModel(username: userID, dataAvailable: false);
+    return AnalyticsSummaryModel(
+      username: userID,
+      dataAvailable: false,
+    );
   }
 
   static AnalyticsSummaryModel fromConstructListModel(
@@ -88,18 +91,16 @@ class AnalyticsSummaryModel {
     String Function(ConstructUses) getCopy,
     BuildContext context,
   ) {
-    final vocabLemmas =
-        model != null
-            ? LemmasToUsesWrapper(
-              model.lemmasToUses(type: ConstructTypeEnum.vocab),
-            )
-            : null;
-    final morphLemmas =
-        model != null
-            ? LemmasToUsesWrapper(
-              model.lemmasToUses(type: ConstructTypeEnum.morph),
-            )
-            : null;
+    final vocabLemmas = model != null
+        ? LemmasToUsesWrapper(
+            model.lemmasToUses(type: ConstructTypeEnum.vocab),
+          )
+        : null;
+    final morphLemmas = model != null
+        ? LemmasToUsesWrapper(
+            model.lemmasToUses(type: ConstructTypeEnum.morph),
+          )
+        : null;
 
     final List<String> correctOriginalUseLemmas = [];
     final List<String> correctSystemUseLemmas = [];
@@ -108,10 +109,9 @@ class AnalyticsSummaryModel {
 
     if (morphLemmas != null) {
       final originalWrittenUses = morphLemmas.lemmasByPercent(
-        filter:
-            (use) =>
-                use.useType == ConstructUseTypeEnum.wa ||
-                use.useType == ConstructUseTypeEnum.ga,
+        filter: (use) =>
+            use.useType == ConstructUseTypeEnum.wa ||
+            use.useType == ConstructUseTypeEnum.ga,
         percent: 0.8,
         context: context,
       );
@@ -120,12 +120,11 @@ class AnalyticsSummaryModel {
       incorrectOriginalUseLemmas.addAll(originalWrittenUses.under);
 
       final systemGeneratedUses = morphLemmas.lemmasByPercent(
-        filter:
-            (use) =>
-                use.useType != ConstructUseTypeEnum.wa &&
-                use.useType != ConstructUseTypeEnum.ga &&
-                use.useType != ConstructUseTypeEnum.unk &&
-                use.xp != 0,
+        filter: (use) =>
+            use.useType != ConstructUseTypeEnum.wa &&
+            use.useType != ConstructUseTypeEnum.ga &&
+            use.useType != ConstructUseTypeEnum.unk &&
+            use.xp != 0,
         percent: 0.8,
         context: context,
       );
@@ -156,12 +155,11 @@ class AnalyticsSummaryModel {
       }
     }
 
-    final numMessageSent =
-        model?.uses
-            .where((use) => use.useType.sentByUser)
-            .map((use) => use.metadata.eventId)
-            .toSet()
-            .length;
+    final numMessageSent = model?.uses
+        .where((use) => use.useType.sentByUser)
+        .map((use) => use.metadata.eventId)
+        .toSet()
+        .length;
 
     return AnalyticsSummaryModel(
       username: userID,
@@ -177,10 +175,9 @@ class AnalyticsSummaryModel {
           vocabLemmas?.thresholdedLemmas(start: 31, end: 200).length,
       numLemmasLargeXP: vocabLemmas?.thresholdedLemmas(start: 201).length,
       numMorphConstructs: model?.grammarLemmas,
-      listMorphConstructs:
-          morphLemmas?.lemmasToUses.entries
-              .map((entry) => getCopy(entry.value.first))
-              .toList(),
+      listMorphConstructs: morphLemmas?.lemmasToUses.entries
+          .map((entry) => getCopy(entry.value.first))
+          .toList(),
       listMorphConstructsUsedCorrectlyOriginal: correctOriginalUseLemmas,
       listMorphConstructsUsedIncorrectlyOriginal: incorrectOriginalUseLemmas,
       listMorphConstructsUsedCorrectlySystem: correctSystemUseLemmas,

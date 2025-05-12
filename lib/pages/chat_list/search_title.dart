@@ -22,8 +22,14 @@ class SearchTitle extends StatelessWidget {
 
     return Material(
       shape: Border(
-        top: BorderSide(color: theme.dividerColor, width: 1),
-        bottom: BorderSide(color: theme.dividerColor, width: 1),
+        top: BorderSide(
+          color: theme.dividerColor,
+          width: 1,
+        ),
+        bottom: BorderSide(
+          color: theme.dividerColor,
+          width: 1,
+        ),
       ),
       color: color ?? theme.colorScheme.surface,
       child: InkWell(
@@ -32,7 +38,10 @@ class SearchTitle extends StatelessWidget {
         child: Align(
           alignment: Alignment.centerLeft,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 8,
+            ),
             child: IconTheme(
               data: theme.iconTheme.copyWith(size: 16),
               child: Row(

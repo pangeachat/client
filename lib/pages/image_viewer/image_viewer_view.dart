@@ -55,82 +55,77 @@ class ImageViewerView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: Builder(
-                  builder:
-                      (context) => IconButton(
-                        style: iconButtonStyle,
-                        onPressed: () => controller.shareFileAction(context),
-                        tooltip: L10n.of(context).share,
-                        color: Colors.white,
-                        icon: Icon(Icons.adaptive.share_outlined),
-                      ),
+                  builder: (context) => IconButton(
+                    style: iconButtonStyle,
+                    onPressed: () => controller.shareFileAction(context),
+                    tooltip: L10n.of(context).share,
+                    color: Colors.white,
+                    icon: Icon(Icons.adaptive.share_outlined),
+                  ),
                 ),
               ),
           ],
         ),
         body: HoverBuilder(
-          builder:
-              (context, hovered) => Stack(
-                children: [
-                  KeyboardListener(
-                    focusNode: controller.focusNode,
-                    onKeyEvent: controller.onKeyEvent,
-                    child: PageView.builder(
-                      controller: controller.pageController,
-                      itemCount: controller.allEvents.length,
-                      itemBuilder:
-                          (context, i) => InteractiveViewer(
-                            minScale: 1.0,
-                            maxScale: 10.0,
-                            onInteractionEnd: controller.onInteractionEnds,
-                            child: Center(
-                              child: Hero(
-                                tag: controller.allEvents[i].eventId,
-                                child: GestureDetector(
-                                  // Ignore taps to not go back here:
-                                  onTap: () {},
-                                  child: MxcImage(
-                                    key: ValueKey(
-                                      controller.allEvents[i].eventId,
-                                    ),
-                                    event: controller.allEvents[i],
-                                    fit: BoxFit.contain,
-                                    isThumbnail: false,
-                                    animated: true,
-                                  ),
-                                ),
-                              ),
-                            ),
+          builder: (context, hovered) => Stack(
+            children: [
+              KeyboardListener(
+                focusNode: controller.focusNode,
+                onKeyEvent: controller.onKeyEvent,
+                child: PageView.builder(
+                  controller: controller.pageController,
+                  itemCount: controller.allEvents.length,
+                  itemBuilder: (context, i) => InteractiveViewer(
+                    minScale: 1.0,
+                    maxScale: 10.0,
+                    onInteractionEnd: controller.onInteractionEnds,
+                    child: Center(
+                      child: Hero(
+                        tag: controller.allEvents[i].eventId,
+                        child: GestureDetector(
+                          // Ignore taps to not go back here:
+                          onTap: () {},
+                          child: MxcImage(
+                            key: ValueKey(controller.allEvents[i].eventId),
+                            event: controller.allEvents[i],
+                            fit: BoxFit.contain,
+                            isThumbnail: false,
+                            animated: true,
                           ),
+                        ),
+                      ),
                     ),
                   ),
-                  if (hovered && controller.canGoBack)
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: IconButton(
-                          style: iconButtonStyle,
-                          tooltip: L10n.of(context).previous,
-                          icon: const Icon(Icons.chevron_left_outlined),
-                          onPressed: controller.prevImage,
-                        ),
-                      ),
-                    ),
-                  if (hovered && controller.canGoNext)
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: IconButton(
-                          style: iconButtonStyle,
-                          tooltip: L10n.of(context).next,
-                          icon: const Icon(Icons.chevron_right_outlined),
-                          onPressed: controller.nextImage,
-                        ),
-                      ),
-                    ),
-                ],
+                ),
               ),
+              if (hovered && controller.canGoBack)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: IconButton(
+                      style: iconButtonStyle,
+                      tooltip: L10n.of(context).previous,
+                      icon: const Icon(Icons.chevron_left_outlined),
+                      onPressed: controller.prevImage,
+                    ),
+                  ),
+                ),
+              if (hovered && controller.canGoNext)
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: IconButton(
+                      style: iconButtonStyle,
+                      tooltip: L10n.of(context).next,
+                      icon: const Icon(Icons.chevron_right_outlined),
+                      onPressed: controller.nextImage,
+                    ),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

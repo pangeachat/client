@@ -31,10 +31,9 @@ class AnalyticsDetailsViewContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color textColor =
-        (Theme.of(context).brightness != Brightness.light
-            ? construct.lemmaCategory.color(context)
-            : construct.lemmaCategory.darkColor(context));
+    final Color textColor = (Theme.of(context).brightness != Brightness.light
+        ? construct.lemmaCategory.color(context)
+        : construct.lemmaCategory.darkColor(context));
 
     return SingleChildScrollView(
       child: Column(
@@ -60,9 +59,9 @@ class AnalyticsDetailsViewContent extends StatelessWidget {
               const SizedBox(width: 16.0),
               Text(
                 "${construct.points} XP",
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(color: textColor),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: textColor,
+                    ),
               ),
             ],
           ),
@@ -72,9 +71,9 @@ class AnalyticsDetailsViewContent extends StatelessWidget {
             child: Column(
               children: [
                 LemmaUseExampleMessages(construct: construct),
-                ...LearningSkillsEnum.values.where((v) => v.isVisible).map((
-                  skill,
-                ) {
+                ...LearningSkillsEnum.values
+                    .where((v) => v.isVisible)
+                    .map((skill) {
                   return LemmaUsageDots(
                     construct: construct,
                     category: skill,

@@ -19,7 +19,10 @@ class MissingVoiceButton extends StatelessWidget {
         package: 'com.talktolearn.chat',
       );
 
-      await showFutureLoadingDialog(context: context, future: intent.launch);
+      await showFutureLoadingDialog(
+        context: context,
+        future: intent.launch,
+      );
     }
   }
 
@@ -39,7 +42,9 @@ class MissingVoiceButton extends StatelessWidget {
         MatrixState.pAnyState.closeOverlay();
         await launchTTSSettings(context);
       },
-      child: Center(child: Text(L10n.of(context).openVoiceSettings)),
+      child: Center(
+        child: Text(L10n.of(context).openVoiceSettings),
+      ),
     );
   }
 }

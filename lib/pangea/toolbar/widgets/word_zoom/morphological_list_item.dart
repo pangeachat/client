@@ -97,7 +97,11 @@ class MorphologicalListItem extends StatelessWidget {
       );
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(data: cId.toJson(), e: e, s: s);
+      ErrorHandler.logError(
+        data: cId.toJson(),
+        e: e,
+        s: s,
+      );
     }
   }
 
@@ -110,29 +114,26 @@ class MorphologicalListItem extends StatelessWidget {
         width: 40,
         height: 40,
         child: WordZoomActivityButton(
-          icon:
-              shouldDoActivity
-                  ? const Icon(Symbols.toys_and_games)
-                  : MorphIcon(
-                    morphFeature: morphFeature,
-                    morphTag: token.getMorphTag(morphFeature),
-                    size: const Size(24, 24),
-                  ),
+          icon: shouldDoActivity
+              ? const Icon(Symbols.toys_and_games)
+              : MorphIcon(
+                  morphFeature: morphFeature,
+                  morphTag: token.getMorphTag(morphFeature),
+                  size: const Size(24, 24),
+                ),
           isSelected: isSelected,
           onPressed: () {
-            overlayController.onMorphActivitySelect(
-              MorphSelection(token, morphFeature),
-            );
+            overlayController
+                .onMorphActivitySelect(MorphSelection(token, morphFeature));
             _openDefintionPopup(context);
           },
-          tooltip:
-              shouldDoActivity
-                  ? morphFeature.getDisplayCopy(context)
-                  : getGrammarCopy(
-                    category: morphFeature.name,
-                    lemma: morphTag,
-                    context: context,
-                  ),
+          tooltip: shouldDoActivity
+              ? morphFeature.getDisplayCopy(context)
+              : getGrammarCopy(
+                  category: morphFeature.name,
+                  lemma: morphTag,
+                  context: context,
+                ),
           opacity: isSelected ? 1 : 0.7,
         ),
       ),
@@ -199,7 +200,11 @@ class MorphMeaningPopupState extends State<MorphMeaningPopup> {
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(data: widget.cId.toJson(), e: e, s: s);
+      ErrorHandler.logError(
+        data: widget.cId.toJson(),
+        e: e,
+        s: s,
+      );
     }
   }
 
@@ -229,91 +234,78 @@ class MorphMeaningPopupState extends State<MorphMeaningPopup> {
               ],
             ),
             alignment: Alignment.center,
-            child:
-                _isEditMode
-                    ? EditMorphWidget(
-                      token: widget.token,
-                      pangeaMessageEvent: widget.pangeaMessageEvent,
-                      morphFeature: _morphFeature,
-                      onClose: () {
-                        _setEditMode(false);
-                        _fetchDefinition();
-                        widget.refresh();
-                      },
-                    )
-                    : SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            spacing: 16.0,
-                            children: [
-                              SizedBox(
-                                width: 24.0,
-                                height: 24.0,
-                                child: MorphIcon(
-                                  morphFeature: _morphFeature,
-                                  morphTag: _morphTag,
+            child: _isEditMode
+                ? EditMorphWidget(
+                    token: widget.token,
+                    pangeaMessageEvent: widget.pangeaMessageEvent,
+                    morphFeature: _morphFeature,
+                    onClose: () {
+                      _setEditMode(false);
+                      _fetchDefinition();
+                      widget.refresh();
+                    },
+                  )
+                : SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          spacing: 16.0,
+                          children: [
+                            SizedBox(
+                              width: 24.0,
+                              height: 24.0,
+                              child: MorphIcon(
+                                morphFeature: _morphFeature,
+                                morphTag: _morphTag,
+                              ),
+                            ),
+                            Flexible(
+                              child: Text(
+                                textAlign: TextAlign.center,
+                                getGrammarCopy(
+                                      category: _morphFeature.name,
+                                      lemma: _morphTag,
+                                      context: context,
+                                    ) ??
+                                    _morphTag,
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                            ),
+                            if (MatrixState.pangeaController.getAnalytics
+                                    .constructListModel
+                                    .getConstructUses(widget.cId) !=
+                                null)
+                              ConstructXpWidget(
+                                id: widget.cId,
+                                onTap: () => showDialog<AnalyticsPopupWrapper>(
+                                  context: context,
+                                  builder: (context) => AnalyticsPopupWrapper(
+                                    constructZoom: widget.cId,
+                                    view: ConstructTypeEnum.morph,
+                                    backButtonOverride: IconButton(
+                                      icon: const Icon(Icons.close),
+                                      onPressed: () =>
+                                          Navigator.of(context).pop(),
+                                    ),
+                                  ),
                                 ),
                               ),
-                              Flexible(
-                                child: Text(
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 16.0),
+                          child: _defintion != null
+                              ? Text(
+                                  _defintion!,
                                   textAlign: TextAlign.center,
-                                  getGrammarCopy(
-                                        category: _morphFeature.name,
-                                        lemma: _morphTag,
-                                        context: context,
-                                      ) ??
-                                      _morphTag,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                              ),
-                              if (MatrixState
-                                      .pangeaController
-                                      .getAnalytics
-                                      .constructListModel
-                                      .getConstructUses(widget.cId) !=
-                                  null)
-                                ConstructXpWidget(
-                                  id: widget.cId,
-                                  onTap:
-                                      () => showDialog<AnalyticsPopupWrapper>(
-                                        context: context,
-                                        builder:
-                                            (context) => AnalyticsPopupWrapper(
-                                              constructZoom: widget.cId,
-                                              view: ConstructTypeEnum.morph,
-                                              backButtonOverride: IconButton(
-                                                icon: const Icon(Icons.close),
-                                                onPressed:
-                                                    () =>
-                                                        Navigator.of(
-                                                          context,
-                                                        ).pop(),
-                                              ),
-                                            ),
-                                      ),
-                                ),
-                            ],
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 16.0),
-                            child:
-                                _defintion != null
-                                    ? Text(
-                                      _defintion!,
-                                      textAlign: TextAlign.center,
-                                      style:
-                                          Theme.of(
-                                            context,
-                                          ).textTheme.bodyMedium,
-                                    )
-                                    : const LinearProgressIndicator(),
-                          ),
-                        ],
-                      ),
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                )
+                              : const LinearProgressIndicator(),
+                        ),
+                      ],
                     ),
+                  ),
           ),
           if (!_isEditMode)
             Positioned(

@@ -33,9 +33,8 @@ class VoipPlugin with WidgetsBindingObserver implements WebRTCDelegate {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState? state) {
-    background =
-        (state == AppLifecycleState.detached ||
-            state == AppLifecycleState.paused);
+    background = (state == AppLifecycleState.detached ||
+        state == AppLifecycleState.paused);
   }
 
   void addCallingOverlay(String callId, CallSession call) {
@@ -51,28 +50,26 @@ class VoipPlugin with WidgetsBindingObserver implements WebRTCDelegate {
     if (kIsWeb) {
       showDialog(
         context: context,
-        builder:
-            (context) => Calling(
-              context: context,
-              client: client,
-              callId: callId,
-              call: call,
-              onClear: () => Navigator.of(context).pop(),
-            ),
+        builder: (context) => Calling(
+          context: context,
+          client: client,
+          callId: callId,
+          call: call,
+          onClear: () => Navigator.of(context).pop(),
+        ),
       );
     } else {
       overlayEntry = OverlayEntry(
-        builder:
-            (_) => Calling(
-              context: context,
-              client: client,
-              callId: callId,
-              call: call,
-              onClear: () {
-                overlayEntry?.remove();
-                overlayEntry = null;
-              },
-            ),
+        builder: (_) => Calling(
+          context: context,
+          client: client,
+          callId: callId,
+          call: call,
+          onClear: () {
+            overlayEntry?.remove();
+            overlayEntry = null;
+          },
+        ),
       );
       Overlay.of(context).insert(overlayEntry!);
     }
@@ -88,7 +85,8 @@ class VoipPlugin with WidgetsBindingObserver implements WebRTCDelegate {
   Future<RTCPeerConnection> createPeerConnection(
     Map<String, dynamic> configuration, [
     Map<String, dynamic> constraints = const {},
-  ]) => webrtc_impl.createPeerConnection(configuration, constraints);
+  ]) =>
+      webrtc_impl.createPeerConnection(configuration, constraints);
 
   Future<bool> get hasCallingAccount async => false;
 

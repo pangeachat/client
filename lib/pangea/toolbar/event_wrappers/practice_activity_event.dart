@@ -46,10 +46,9 @@ class PracticeActivityEvent {
       debugger(when: kDebugMode);
       return [];
     }
-    final List<Event> records =
-        event
-            .aggregatedEvents(timeline!, PangeaEventTypes.activityRecord)
-            .toList();
+    final List<Event> records = event
+        .aggregatedEvents(timeline!, PangeaEventTypes.activityRecord)
+        .toList();
 
     return records
         .map((event) => PracticeActivityRecordEvent(event: event))

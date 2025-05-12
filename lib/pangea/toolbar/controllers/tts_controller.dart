@@ -27,11 +27,10 @@ class TtsController {
   final ChatController? chatController;
   TtsController({this.chatController}) {
     setAvailableLanguages();
-    _languageSubscription = MatrixState
-        .pangeaController
-        .userController
-        .stateStream
-        .listen((_) => setAvailableLanguages());
+    _languageSubscription =
+        MatrixState.pangeaController.userController.stateStream.listen(
+      (_) => setAvailableLanguages(),
+    );
   }
 
   List<String> _availableLangCodes = [];
@@ -59,7 +58,12 @@ class TtsController {
       return;
     }
 
-    ErrorHandler.logError(e: 'TTS error', data: {'message': message});
+    ErrorHandler.logError(
+      e: 'TTS error',
+      data: {
+        'message': message,
+      },
+    );
   }
 
   Future<void> setAvailableLanguages() async {
@@ -74,23 +78,26 @@ class TtsController {
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: s, data: {});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {},
+      );
     }
   }
 
   Future<void> _setAvailableBaseLanguages() async {
     final voices = (await _tts.getVoices) as List?;
-    _availableLangCodes =
-        (voices ?? [])
-            .map((v) {
-              // on iOS / web, the codes are in 'locale', but on Android, they are in 'name'
-              final nameCode = v['name'];
-              final localeCode = v['locale'];
-              return localeCode.contains("-") ? localeCode : nameCode;
-            })
-            .toSet()
-            .cast<String>()
-            .toList();
+    _availableLangCodes = (voices ?? [])
+        .map((v) {
+          // on iOS / web, the codes are in 'locale', but on Android, they are in 'name'
+          final nameCode = v['name'];
+          final localeCode = v['locale'];
+          return localeCode.contains("-") ? localeCode : nameCode;
+        })
+        .toSet()
+        .cast<String>()
+        .toList();
   }
 
   Future<void> _setAvailableAltLanguages() async {
@@ -119,7 +126,9 @@ class TtsController {
         'availableLangCodes': _availableLangCodes,
       };
       debugPrint("TTS: Language not supported: $jsonData");
-      Sentry.addBreadcrumb(Breadcrumb.fromJson(jsonData));
+      Sentry.addBreadcrumb(
+        Breadcrumb.fromJson(jsonData),
+      );
     }
   }
 
@@ -133,12 +142,18 @@ class TtsController {
       if (!_useAlternativeTTS && result != 1) {
         ErrorHandler.logError(
           m: 'Unexpected result from tts.stop',
-          data: {'result': result},
+          data: {
+            'result': result,
+          },
         );
       }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: s, data: {});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {},
+      );
     }
   }
 
@@ -154,13 +169,8 @@ class TtsController {
     chatController?.stopMediaStream.add(null);
     await _setSpeakingLanguage(langCode);
 
-    final enableTTS =
-        MatrixState
-            .pangeaController
-            .userController
-            .profile
-            .toolSettings
-            .enableTTS;
+    final enableTTS = MatrixState
+        .pangeaController.userController.profile.toolSettings.enableTTS;
     if (enableTTS) {
       final token = PangeaTokenText(
         offset: 0,
@@ -168,8 +178,16 @@ class TtsController {
         length: text.length,
       );
       await (_isLangFullySupported(langCode)
-          ? _speak(text, langCode, [token])
-          : _speakFromChoreo(text, langCode, [token]));
+          ? _speak(
+              text,
+              langCode,
+              [token],
+            )
+          : _speakFromChoreo(
+              text,
+              langCode,
+              [token],
+            ));
     } else if (targetID != null && context != null) {
       await _showTTSDisabledPopup(context, targetID);
     }
@@ -190,14 +208,14 @@ class TtsController {
                 ? _alternativeTTS.speak(text)
                 : _tts.speak(text))
             .timeout(
-              const Duration(seconds: 5),
-              onTimeout: () {
-                ErrorHandler.logError(
-                  e: "Timeout on tts.speak",
-                  data: {"text": text},
-                );
-              },
-            ),
+          const Duration(seconds: 5),
+          onTimeout: () {
+            ErrorHandler.logError(
+              e: "Timeout on tts.speak",
+              data: {"text": text},
+            );
+          },
+        ),
       );
       Logs().i('Finished speaking: $text, result: $result');
 
@@ -215,7 +233,13 @@ class TtsController {
       // }
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: s, data: {'text': text});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'text': text,
+        },
+      );
       await _speakFromChoreo(text, langCode, tokens);
     }
   }
@@ -235,14 +259,20 @@ class TtsController {
           tokens: tokens,
           userL1:
               MatrixState.pangeaController.languageController.activeL1Code() ??
-              LanguageKeys.unknownLanguage,
+                  LanguageKeys.unknownLanguage,
           userL2:
               MatrixState.pangeaController.languageController.activeL2Code() ??
-              LanguageKeys.unknownLanguage,
+                  LanguageKeys.unknownLanguage,
         ),
       );
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'text': text});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'text': text,
+        },
+      );
     } finally {
       loadingChoreoStream.add(false);
     }
@@ -254,14 +284,20 @@ class TtsController {
       Logs().i('Speaking from choreo: $text, langCode: $langCode');
       final audioContent = base64Decode(ttsRes.audioContent);
       await audioPlayer.setAudioSource(
-        BytesAudioSource(audioContent, ttsRes.mimeType),
+        BytesAudioSource(
+          audioContent,
+          ttsRes.mimeType,
+        ),
       );
       await audioPlayer.play();
     } catch (e, s) {
       ErrorHandler.logError(
         e: 'Error playing audio',
         s: s,
-        data: {'error': e.toString(), 'text': text},
+        data: {
+          'error': e.toString(),
+          'text': text,
+        },
       );
     } finally {
       await audioPlayer.dispose();
@@ -284,11 +320,12 @@ class TtsController {
   Future<void> _showTTSDisabledPopup(
     BuildContext context,
     String targetID,
-  ) async => instructionsShowPopup(
-    context,
-    InstructionsEnum.ttsDisabled,
-    targetID,
-    showToggle: false,
-    forceShow: true,
-  );
+  ) async =>
+      instructionsShowPopup(
+        context,
+        InstructionsEnum.ttsDisabled,
+        targetID,
+        showToggle: false,
+        forceShow: true,
+      );
 }

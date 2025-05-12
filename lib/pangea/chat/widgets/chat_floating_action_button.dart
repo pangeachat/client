@@ -9,7 +9,10 @@ import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 
 class ChatFloatingActionButton extends StatefulWidget {
   final ChatController controller;
-  const ChatFloatingActionButton({super.key, required this.controller});
+  const ChatFloatingActionButton({
+    super.key,
+    required this.controller,
+  });
 
   @override
   ChatFloatingActionButtonState createState() =>
@@ -36,9 +39,12 @@ class ChatFloatingActionButtonState extends State<ChatFloatingActionButton> {
     debugPrint("showPermissionsError: $showPermissionsError");
 
     if (showPermissionsError) {
-      Future.delayed(const Duration(seconds: 5), () {
-        if (mounted) setState(() => showPermissionsError = false);
-      });
+      Future.delayed(
+        const Duration(seconds: 5),
+        () {
+          if (mounted) setState(() => showPermissionsError = false);
+        },
+      );
     }
 
     // Rebuild the widget each time there's an update from choreo (i.e., an error).
@@ -77,9 +83,9 @@ class ChatFloatingActionButtonState extends State<ChatFloatingActionButton> {
 
     return showPermissionsError
         ? LanguagePermissionsButtons(
-          choreographer: widget.controller.choreographer,
-          roomID: widget.controller.roomId,
-        )
+            choreographer: widget.controller.choreographer,
+            roomID: widget.controller.roomId,
+          )
         : const SizedBox.shrink();
   }
 }

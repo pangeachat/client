@@ -5,7 +5,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/it_controller.dart';
 
 class ITRestartButton extends StatelessWidget {
-  ITRestartButton({super.key, required this.controller});
+  ITRestartButton({
+    super.key,
+    required this.controller,
+  });
 
   final ITController controller;
   final PangeaController pangeaController = MatrixState.pangeaController;

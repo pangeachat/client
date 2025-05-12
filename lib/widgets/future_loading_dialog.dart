@@ -49,25 +49,30 @@ Future<Result<T>> showFutureLoadingDialog<T>({
     final result = await showAdaptiveDialog<Result<T>>(
       context: context,
       barrierDismissible: barrierDismissible,
-      builder:
-          (BuildContext context) => LoadingDialog<T>(
-            future: futureExec,
-            title: title,
-            backLabel: backLabel,
-            exceptionContext: exceptionContext,
-            // #Pangea
-            onError: onError,
-            onDismiss: onDismiss,
-            onSuccess: onSuccess,
-            // Pangea#
-          ),
+      builder: (BuildContext context) => LoadingDialog<T>(
+        future: futureExec,
+        title: title,
+        backLabel: backLabel,
+        exceptionContext: exceptionContext,
+        // #Pangea
+        onError: onError,
+        onDismiss: onDismiss,
+        onSuccess: onSuccess,
+        // Pangea#
+      ),
     );
     return result ??
-        Result.error(Exception('FutureDialog canceled'), StackTrace.current);
+        Result.error(
+          Exception('FutureDialog canceled'),
+          StackTrace.current,
+        );
   }
 
   // #Pangea
-  return Result.error(Exception('FutureDialog canceled'), StackTrace.current);
+  return Result.error(
+    Exception('FutureDialog canceled'),
+    StackTrace.current,
+  );
   // Pangea#
 }
 
@@ -149,23 +154,19 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
     // final titleLabel = exception != null
     //     ? exception.toLocalizedString(context, widget.exceptionContext)
     //     : widget.title ?? L10n.of(context).loadingPleaseWait;
-    final titleLabel =
-        exception != null
-            ? exception.toLocalizedString(context, widget.exceptionContext)
-            : _successMessage ??
-                widget.title ??
-                L10n.of(context).loadingPleaseWait;
+    final titleLabel = exception != null
+        ? exception.toLocalizedString(context, widget.exceptionContext)
+        : _successMessage ?? widget.title ?? L10n.of(context).loadingPleaseWait;
     // Pangea#
 
     return AlertDialog.adaptive(
-      title:
-          exception == null
-              ? null
-              : Icon(
-                Icons.error_outline_outlined,
-                color: Theme.of(context).colorScheme.error,
-                size: 48,
-              ),
+      title: exception == null
+          ? null
+          : Icon(
+              Icons.error_outline_outlined,
+              color: Theme.of(context).colorScheme.error,
+              size: 48,
+            ),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256),
         child: Row(
@@ -184,10 +185,9 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
                 maxLines: 4,
                 // #Pangea
                 // textAlign: exception == null ? TextAlign.left : null,
-                textAlign:
-                    exception == null && _successMessage == null
-                        ? TextAlign.left
-                        : null,
+                textAlign: exception == null && _successMessage == null
+                    ? TextAlign.left
+                    : null,
                 // Pangea#
                 overflow: TextOverflow.ellipsis,
               ),
@@ -209,38 +209,38 @@ class LoadingDialogState<T> extends State<LoadingDialog> {
       //           child: Text(widget.backLabel ?? L10n.of(context).close),
       //         ),
       //       ],
-      actions:
-          _successMessage != null
-              ? [
-                AdaptiveDialogAction(
-                  onPressed:
-                      () => Navigator.of(
-                        context,
-                      ).pop<Result<T>>(Result.value(_result as T)),
-                  child: Text(L10n.of(context).close),
+      actions: _successMessage != null
+          ? [
+              AdaptiveDialogAction(
+                onPressed: () => Navigator.of(context).pop<Result<T>>(
+                  Result.value(_result as T),
                 ),
-              ]
-              : exception == null
+                child: Text(L10n.of(context).close),
+              ),
+            ]
+          : exception == null
               ? widget.onDismiss != null
                   ? [
-                    AdaptiveDialogAction(
-                      onPressed: () {
-                        widget.onDismiss!();
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(L10n.of(context).cancel),
-                    ),
-                  ]
+                      AdaptiveDialogAction(
+                        onPressed: () {
+                          widget.onDismiss!();
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(L10n.of(context).cancel),
+                      ),
+                    ]
                   : null
               : [
-                AdaptiveDialogAction(
-                  onPressed:
-                      () => Navigator.of(
-                        context,
-                      ).pop<Result<T>>(Result.error(exception, stackTrace)),
-                  child: Text(widget.backLabel ?? L10n.of(context).close),
-                ),
-              ],
+                  AdaptiveDialogAction(
+                    onPressed: () => Navigator.of(context).pop<Result<T>>(
+                      Result.error(
+                        exception,
+                        stackTrace,
+                      ),
+                    ),
+                    child: Text(widget.backLabel ?? L10n.of(context).close),
+                  ),
+                ],
       // Pangea#
     );
   }

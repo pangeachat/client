@@ -26,11 +26,24 @@ Future<void> downloadChat(
   try {
     final List<Event> allEvents = await getAllEvents(room);
     final TimelineChunk chunk = TimelineChunk(events: allEvents);
-    final Timeline timeline = Timeline(room: room, chunk: chunk);
+    final Timeline timeline = Timeline(
+      room: room,
+      chunk: chunk,
+    );
 
-    allPangeaMessages = getPangeaMessageEvents(allEvents, timeline, room);
+    allPangeaMessages = getPangeaMessageEvents(
+      allEvents,
+      timeline,
+      room,
+    );
   } catch (err, s) {
-    ErrorHandler.logError(e: err, s: s, data: {"roomID": room.id});
+    ErrorHandler.logError(
+      e: err,
+      s: s,
+      data: {
+        "roomID": room.id,
+      },
+    );
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
@@ -43,7 +56,11 @@ Future<void> downloadChat(
 
   if (allPangeaMessages.isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(L10n.of(context).emptyChatDownloadWarning)),
+      SnackBar(
+        content: Text(
+          L10n.of(context).emptyChatDownloadWarning,
+        ),
+      ),
     );
     return;
   }
@@ -52,38 +69,26 @@ Future<void> downloadChat(
 
   switch (type) {
     case DownloadType.txt:
-      final String content = getTxtContent(
-        allPangeaMessages,
-        context,
-        filename,
-        room,
-      );
+      final String content =
+          getTxtContent(allPangeaMessages, context, filename, room);
       downloadFile(content, filename, DownloadType.txt);
       break;
     case DownloadType.csv:
-      final String content = getCSVContent(
-        allPangeaMessages,
-        context,
-        filename,
-      );
+      final String content =
+          getCSVContent(allPangeaMessages, context, filename);
       downloadFile(content, filename, DownloadType.csv);
       return;
     case DownloadType.xlsx:
-      final List<int> content = getExcelContent(
-        allPangeaMessages,
-        context,
-        filename,
-      );
+      final List<int> content =
+          getExcelContent(allPangeaMessages, context, filename);
       downloadFile(content, filename, DownloadType.xlsx);
       return;
   }
 }
 
 Future<List<Event>> getAllEvents(Room room) async {
-  final GetRoomEventsResponse initalResp = await room.client.getRoomEvents(
-    room.id,
-    Direction.b,
-  );
+  final GetRoomEventsResponse initalResp =
+      await room.client.getRoomEvents(room.id, Direction.b);
   if (initalResp.end == null) return [];
   String? nextStartToken = initalResp.end;
   List<MatrixEvent> allMatrixEvents = initalResp.chunk;
@@ -100,10 +105,9 @@ Future<List<Event>> getAllEvents(Room room) async {
         : nextStartToken = null;
   }
   allMatrixEvents = allMatrixEvents.reversed.toList();
-  final List<Event> allEvents =
-      allMatrixEvents
-          .map((MatrixEvent message) => Event.fromMatrixEvent(message, room))
-          .toList();
+  final List<Event> allEvents = allMatrixEvents
+      .map((MatrixEvent message) => Event.fromMatrixEvent(message, room))
+      .toList();
   return allEvents;
 }
 
@@ -112,22 +116,21 @@ List<PangeaMessageEvent> getPangeaMessageEvents(
   Timeline timeline,
   Room room,
 ) {
-  final List<PangeaMessageEvent> allPangeaMessages =
-      events
-          .where(
-            (Event event) =>
-                event.type == EventTypes.Message &&
-                event.content['msgtype'] == MessageTypes.Text,
-          )
-          .map(
-            (Event message) => PangeaMessageEvent(
-              event: message,
-              timeline: timeline,
-              ownMessage: false,
-            ),
-          )
-          .cast<PangeaMessageEvent>()
-          .toList();
+  final List<PangeaMessageEvent> allPangeaMessages = events
+      .where(
+        (Event event) =>
+            event.type == EventTypes.Message &&
+            event.content['msgtype'] == MessageTypes.Text,
+      )
+      .map(
+        (Event message) => PangeaMessageEvent(
+          event: message,
+          timeline: timeline,
+          ownMessage: false,
+        ),
+      )
+      .cast<PangeaMessageEvent>()
+      .toList();
   return allPangeaMessages;
 }
 
@@ -161,13 +164,11 @@ String getFilename(Room room, DownloadType type) {
       .trim()
       .replaceAll(RegExp(r'[^A-Za-z0-9\s]'), "")
       .replaceAll(RegExp(r'\s+'), "-");
-  final String timestamp = DateFormat(
-    'yyyy-MM-dd-hh:mm:ss',
-  ).format(DateTime.now());
-  final String extension =
-      type == DownloadType.txt
-          ? 'txt'
-          : type == DownloadType.csv
+  final String timestamp =
+      DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now());
+  final String extension = type == DownloadType.txt
+      ? 'txt'
+      : type == DownloadType.csv
           ? 'csv'
           : 'xlsx';
   return "$roomName-$timestamp.$extension";
@@ -192,9 +193,8 @@ String getTxtContent(
 ) {
   String formattedInfo = "";
   for (final PangeaMessageEvent message in messages) {
-    final String timestamp = DateFormat(
-      'yyyy-MM-dd hh:mm:ss',
-    ).format(message.originServerTs);
+    final String timestamp =
+        DateFormat('yyyy-MM-dd hh:mm:ss').format(message.originServerTs);
     final String sender = message.senderId;
     final String originalMsg = getOriginalText(message);
     final String sentMsg = getSentText(message);
@@ -239,12 +239,11 @@ String getCSVContent(
       L10n.of(context).sentMessage,
       L10n.of(context).taTooltip,
       L10n.of(context).gaTooltip,
-    ],
+    ]
   ];
   for (final PangeaMessageEvent message in messages) {
-    final String timestamp = DateFormat(
-      'yyyy-MM-dd hh:mm:ss',
-    ).format(message.originServerTs);
+    final String timestamp =
+        DateFormat('yyyy-MM-dd hh:mm:ss').format(message.originServerTs);
     final String sender = message.senderId;
     final String originalMsg = getOriginalText(message);
     final String sentMsg = getSentText(message);

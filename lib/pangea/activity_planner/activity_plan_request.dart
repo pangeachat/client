@@ -45,12 +45,11 @@ class ActivityPlanRequest {
         mode: json[ModelKey.activityRequestMode],
         objective: json[ModelKey.activityRequestObjective],
         media: MediaEnum.nan.fromString(json[ModelKey.activityRequestMedia]),
-        cefrLevel:
-            json[ModelKey.activityRequestCefrLevel] != null
-                ? LanguageLevelTypeEnumExtension.fromString(
-                  json[ModelKey.activityRequestCefrLevel],
-                )
-                : LanguageLevelTypeEnum.a1,
+        cefrLevel: json[ModelKey.activityRequestCefrLevel] != null
+            ? LanguageLevelTypeEnumExtension.fromString(
+                json[ModelKey.activityRequestCefrLevel],
+              )
+            : LanguageLevelTypeEnum.a1,
         languageOfInstructions:
             json[ModelKey.activityRequestLanguageOfInstructions],
         targetLanguage: json[ModelKey.activityRequestTargetLanguage],

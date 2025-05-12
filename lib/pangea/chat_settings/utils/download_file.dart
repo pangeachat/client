@@ -20,8 +20,8 @@ Future<void> downloadFile(
   if (kIsWeb) {
     final blob = webfile.Blob([contents], mimetype(fileType), 'native');
     webfile.AnchorElement(
-        href: webfile.Url.createObjectUrlFromBlob(blob).toString(),
-      )
+      href: webfile.Url.createObjectUrlFromBlob(blob).toString(),
+    )
       ..setAttribute("download", filename)
       ..click();
     return;
@@ -39,7 +39,11 @@ Future<void> downloadFile(
       }
     } catch (err, s) {
       debugPrint("Failed to get download folder path");
-      ErrorHandler.logError(e: err, s: s, data: {});
+      ErrorHandler.logError(
+        e: err,
+        s: s,
+        data: {},
+      );
     }
     if (directory != null) {
       final File f = File("${directory.path}/$filename");

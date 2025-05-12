@@ -4,7 +4,12 @@ import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum SpanDataTypeEnum { definition, practice, correction, itStart }
+enum SpanDataTypeEnum {
+  definition,
+  practice,
+  correction,
+  itStart,
+}
 
 extension SpanDataTypeEnumExt on SpanDataTypeEnum {
   String get name {

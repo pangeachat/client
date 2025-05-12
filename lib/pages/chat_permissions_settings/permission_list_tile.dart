@@ -76,10 +76,9 @@ class PermissionsListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final color =
-        permission >= 100
-            ? Colors.orangeAccent
-            : permission >= 50
+    final color = permission >= 100
+        ? Colors.orangeAccent
+        : permission >= 50
             ? Colors.blueAccent
             : Colors.greenAccent;
     return ListTile(
@@ -114,12 +113,14 @@ class PermissionsListTile extends StatelessWidget {
             DropdownMenuItem(
               value: permission >= 100 ? permission : 100,
               child: Text(
-                L10n.of(
-                  context,
-                ).adminLevel(permission >= 100 ? permission : 100),
+                L10n.of(context)
+                    .adminLevel(permission >= 100 ? permission : 100),
               ),
             ),
-            DropdownMenuItem(value: null, child: Text(L10n.of(context).custom)),
+            DropdownMenuItem(
+              value: null,
+              child: Text(L10n.of(context).custom),
+            ),
           ],
         ),
       ),

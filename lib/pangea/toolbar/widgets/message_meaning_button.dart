@@ -19,10 +19,9 @@ class MessageMeaningButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedCrossFade(
-      crossFadeState:
-          overlayController.isPracticeComplete
-              ? CrossFadeState.showSecond
-              : CrossFadeState.showFirst,
+      crossFadeState: overlayController.isPracticeComplete
+          ? CrossFadeState.showSecond
+          : CrossFadeState.showFirst,
       duration: FluffyThemes.animationDuration,
       firstChild: ToolbarButton(
         mode: MessageMode.messageMeaning,

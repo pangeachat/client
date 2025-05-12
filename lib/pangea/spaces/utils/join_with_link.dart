@@ -27,9 +27,9 @@ class _JoinClassWithLinkState extends State<JoinClassWithLink> {
     super.initState();
 
     Future.delayed(Duration.zero, () async {
-      classCode =
-          GoRouterState.of(context).uri.queryParameters[SpaceConstants
-              .classCode];
+      classCode = GoRouterState.of(context)
+          .uri
+          .queryParameters[SpaceConstants.classCode];
 
       if (classCode == null) {
         Sentry.addBreadcrumb(

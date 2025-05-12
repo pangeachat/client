@@ -5,7 +5,10 @@ class MorphSelection {
   PangeaToken token;
   MorphFeaturesEnum morph;
 
-  MorphSelection(this.token, this.morph);
+  MorphSelection(
+    this.token,
+    this.morph,
+  );
 
   @override
   bool operator ==(Object other) {

@@ -27,8 +27,7 @@ class SettingsSwitchListTileState extends State<SettingsSwitchListTile> {
   Widget build(BuildContext context) {
     final subtitle = widget.subtitle;
     return SwitchListTile.adaptive(
-      value:
-          Matrix.of(context).store.getBool(widget.storeKey) ??
+      value: Matrix.of(context).store.getBool(widget.storeKey) ??
           widget.defaultValue,
       title: Text(widget.title),
       subtitle: subtitle == null ? null : Text(subtitle),

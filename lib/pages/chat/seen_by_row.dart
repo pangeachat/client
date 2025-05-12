@@ -20,21 +20,18 @@ class SeenByRow extends StatelessWidget {
       width: double.infinity,
       alignment: Alignment.center,
       child: AnimatedContainer(
-        constraints: const BoxConstraints(
-          maxWidth: FluffyThemes.columnWidth * 2.5,
-        ),
+        constraints:
+            const BoxConstraints(maxWidth: FluffyThemes.columnWidth * 2.5),
         height: seenByUsers.isEmpty ? 0 : 24,
-        duration:
-            seenByUsers.isEmpty
-                ? Duration.zero
-                : FluffyThemes.animationDuration,
+        duration: seenByUsers.isEmpty
+            ? Duration.zero
+            : FluffyThemes.animationDuration,
         curve: FluffyThemes.animationCurve,
-        alignment:
-            controller.timeline!.events.isNotEmpty &&
-                    controller.timeline!.events.first.senderId ==
-                        Matrix.of(context).client.userID
-                ? Alignment.topRight
-                : Alignment.topLeft,
+        alignment: controller.timeline!.events.isNotEmpty &&
+                controller.timeline!.events.first.senderId ==
+                    Matrix.of(context).client.userID
+            ? Alignment.topRight
+            : Alignment.topLeft,
         padding: const EdgeInsets.only(left: 8, right: 8, bottom: 4),
         child: Wrap(
           spacing: 4,
@@ -43,15 +40,15 @@ class SeenByRow extends StatelessWidget {
                     ? seenByUsers.sublist(0, maxAvatars)
                     : seenByUsers)
                 .map(
-                  (user) => Avatar(
-                    mxContent: user.avatarUrl,
-                    name: user.calcDisplayname(),
-                    // #Pangea
-                    userId: user.id,
-                    // Pangea#
-                    size: 16,
-                  ),
-                ),
+              (user) => Avatar(
+                mxContent: user.avatarUrl,
+                name: user.calcDisplayname(),
+                // #Pangea
+                userId: user.id,
+                // Pangea#
+                size: 16,
+              ),
+            ),
             if (seenByUsers.length > maxAvatars)
               SizedBox(
                 width: 16,

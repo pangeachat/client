@@ -47,9 +47,8 @@ class CurrentSubscriptionInfo {
 
   String? get purchasePlatformDisplayName {
     if (currentSubscription?.appId == null) return null;
-    return availableSubscriptionInfo.appIds?.appDisplayName(
-      currentSubscription!.appId!,
-    );
+    return availableSubscriptionInfo.appIds
+        ?.appDisplayName(currentSubscription!.appId!);
   }
 
   bool get purchasedOnWeb =>
@@ -78,7 +77,11 @@ class AvailableSubscriptionsInfo {
   final subscriptionBox =
       MatrixState.pangeaController.subscriptionController.subscriptionBox;
 
-  AvailableSubscriptionsInfo({this.appIds, this.allProducts, this.lastUpdated});
+  AvailableSubscriptionsInfo({
+    this.appIds,
+    this.allProducts,
+    this.lastUpdated,
+  });
 
   Future<void> setAvailableSubscriptions() async {
     final cachedInfo = _getCachedSubscriptionInfo();
@@ -88,32 +91,38 @@ class AvailableSubscriptionsInfo {
 
     if (cachedInfo == null) await _cacheSubscriptionInfo();
 
-    availableSubscriptions =
-        (allProducts ?? [])
-            .where(
-              (product) =>
-                  product.appId == appIds!.currentAppId ||
-                  product.appId == "trial",
-            )
-            .sorted((a, b) => a.price.compareTo(b.price))
-            .toList();
+    availableSubscriptions = (allProducts ?? [])
+        .where(
+          (product) =>
+              product.appId == appIds!.currentAppId || product.appId == "trial",
+        )
+        .sorted((a, b) => a.price.compareTo(b.price))
+        .toList();
   }
 
   Future<void> _cacheSubscriptionInfo() async {
     try {
       final json = toJson();
-      await subscriptionBox.write(PLocalKey.availableSubscriptionInfo, json);
+      await subscriptionBox.write(
+        PLocalKey.availableSubscriptionInfo,
+        json,
+      );
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {"appIds": appIds, "allProducts": allProducts},
+        data: {
+          "appIds": appIds,
+          "allProducts": allProducts,
+        },
       );
     }
   }
 
   AvailableSubscriptionsInfo? _getCachedSubscriptionInfo() {
-    final json = subscriptionBox.read(PLocalKey.availableSubscriptionInfo);
+    final json = subscriptionBox.read(
+      PLocalKey.availableSubscriptionInfo,
+    );
     if (json is! Map<String, dynamic>) {
       return null;
     }
@@ -122,7 +131,13 @@ class AvailableSubscriptionsInfo {
       final resp = AvailableSubscriptionsInfo.fromJson(json);
       return resp.lastUpdated == null ? null : resp;
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"json": json});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "json": json,
+        },
+      );
       return null;
     }
   }
@@ -137,15 +152,13 @@ class AvailableSubscriptionsInfo {
     }
 
     final appIds = SubscriptionAppIds.fromJson(json['app_ids']);
-    final allProducts =
-        (json['all_products'] as List<dynamic>)
-            .map((product) => SubscriptionDetails.fromJson(product))
-            .toList()
-            .cast<SubscriptionDetails>();
-    final lastUpdated =
-        json['last_updated'] != null
-            ? DateTime.tryParse(json['last_updated']!)
-            : null;
+    final allProducts = (json['all_products'] as List<dynamic>)
+        .map((product) => SubscriptionDetails.fromJson(product))
+        .toList()
+        .cast<SubscriptionDetails>();
+    final lastUpdated = json['last_updated'] != null
+        ? DateTime.tryParse(json['last_updated']!)
+        : null;
     return AvailableSubscriptionsInfo(
       appIds: appIds,
       allProducts: allProducts,

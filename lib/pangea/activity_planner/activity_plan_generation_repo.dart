@@ -11,9 +11,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../common/network/requests.dart';
 
 class ActivityPlanGenerationRepo {
-  static final GetStorage _activityPlanStorage = GetStorage(
-    'activity_plan_storage',
-  );
+  static final GetStorage _activityPlanStorage =
+      GetStorage('activity_plan_storage');
 
   static void set(ActivityPlanRequest request, ActivityPlanResponse response) {
     _activityPlanStorage.write(request.storageKey, response.toJson());

@@ -68,7 +68,7 @@ enum ConstructUseTypeEnum {
   ignMM,
 
   /// not defined, likely a new construct introduced by choreo and not yet classified by an old version of the client
-  nan,
+  nan
 }
 
 extension ConstructUseTypeExtension on ConstructUseTypeEnum {

@@ -11,9 +11,8 @@ import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivitySearchRepo {
-  static final GetStorage _activityPlanStorage = GetStorage(
-    'activity_plan_search_storage',
-  );
+  static final GetStorage _activityPlanStorage =
+      GetStorage('activity_plan_search_storage');
 
   static void set(ActivityPlanRequest request, ActivityPlanResponse response) {
     _activityPlanStorage.write(request.storageKey, response.toJson());

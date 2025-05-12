@@ -21,19 +21,13 @@ class PublicProfileModel {
 
     final profileJson = json[PangeaEventTypes.profileAnalytics];
 
-    final baseLanguage =
-        profileJson[ModelKey.userSourceLanguage] != null
-            ? PLanguageStore.byLangCode(
-              profileJson[ModelKey.userSourceLanguage],
-            )
-            : null;
+    final baseLanguage = profileJson[ModelKey.userSourceLanguage] != null
+        ? PLanguageStore.byLangCode(profileJson[ModelKey.userSourceLanguage])
+        : null;
 
-    final targetLanguage =
-        profileJson[ModelKey.userTargetLanguage] != null
-            ? PLanguageStore.byLangCode(
-              profileJson[ModelKey.userTargetLanguage],
-            )
-            : null;
+    final targetLanguage = profileJson[ModelKey.userTargetLanguage] != null
+        ? PLanguageStore.byLangCode(profileJson[ModelKey.userTargetLanguage])
+        : null;
 
     final languageAnalytics = <LanguageModel, LanguageAnalyticsProfileEntry>{};
     if (profileJson[ModelKey.analytics] != null &&
@@ -43,10 +37,8 @@ class PublicProfileModel {
         if (lang == null) continue;
         final level = entry.value[ModelKey.level];
         final xpOffset = entry.value[ModelKey.xpOffset] ?? 0;
-        languageAnalytics[lang] = LanguageAnalyticsProfileEntry(
-          level,
-          xpOffset,
-        );
+        languageAnalytics[lang] =
+            LanguageAnalyticsProfileEntry(level, xpOffset);
       }
     }
 

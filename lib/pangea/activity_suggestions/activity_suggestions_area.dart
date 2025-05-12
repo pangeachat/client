@@ -50,14 +50,14 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
 
     _languageStream ??= MatrixState.pangeaController.userController.stateStream
         .listen((update) {
-          if (update is Map<String, dynamic> &&
-              (update.containsKey('prev_base_lang') ||
-                  update.containsKey('prev_target_lang'))) {
-            WidgetsBinding.instance.addPostFrameCallback(
-              (_) => _setActivityItems(),
-            );
-          }
-        });
+      if (update is Map<String, dynamic> &&
+          (update.containsKey('prev_base_lang') ||
+              update.containsKey('prev_target_lang'))) {
+        WidgetsBinding.instance.addPostFrameCallback(
+          (_) => _setActivityItems(),
+        );
+      }
+    });
   }
 
   @override
@@ -112,50 +112,48 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
-    final List<Widget> cards =
-        _loading
-            ? List.generate(5, (i) {
-              return Shimmer.fromColors(
-                baseColor: theme.colorScheme.primary.withAlpha(20),
-                highlightColor: theme.colorScheme.primary.withAlpha(50),
-                child: Container(
-                  height: cardHeight,
-                  width: cardWidth,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceContainer,
-                    borderRadius: BorderRadius.circular(24.0),
-                  ),
+    final List<Widget> cards = _loading
+        ? List.generate(5, (i) {
+            return Shimmer.fromColors(
+              baseColor: theme.colorScheme.primary.withAlpha(20),
+              highlightColor: theme.colorScheme.primary.withAlpha(50),
+              child: Container(
+                height: cardHeight,
+                width: cardWidth,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surfaceContainer,
+                  borderRadius: BorderRadius.circular(24.0),
                 ),
-              );
-            })
-            : _activityItems
-                .map((activity) {
-                  return ActivitySuggestionCard(
-                    activity: activity,
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return ActivitySuggestionDialog(
-                            initialActivity: activity,
-                            buttonText: L10n.of(context).inviteAndLaunch,
-                            room: widget.room,
-                          );
-                        },
+              ),
+            );
+          })
+        : _activityItems
+            .map((activity) {
+              return ActivitySuggestionCard(
+                activity: activity,
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return ActivitySuggestionDialog(
+                        initialActivity: activity,
+                        buttonText: L10n.of(context).inviteAndLaunch,
+                        room: widget.room,
                       );
                     },
-                    width: cardWidth,
-                    height: cardHeight,
-                    onChange: () {
-                      if (mounted) setState(() {});
-                    },
                   );
-                })
-                .cast<Widget>()
-                .toList();
+                },
+                width: cardWidth,
+                height: cardHeight,
+                onChange: () {
+                  if (mounted) setState(() {});
+                },
+              );
+            })
+            .cast<Widget>()
+            .toList();
 
-    final scrollDirection =
-        widget.scrollDirection ??
+    final scrollDirection = widget.scrollDirection ??
         (_isColumnMode ? Axis.horizontal : Axis.vertical);
 
     return Column(
@@ -168,14 +166,12 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
               Flexible(
                 child: Text(
                   L10n.of(context).startChat,
-                  style:
-                      isColumnMode
-                          ? theme.textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          )
-                          : theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                  style: isColumnMode
+                      ? theme.textTheme.titleLarge
+                          ?.copyWith(fontWeight: FontWeight.bold)
+                      : theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -269,29 +265,31 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
           ),
         Container(
           decoration: const BoxDecoration(),
-          child:
-              scrollDirection == Axis.horizontal
-                  ? Scrollbar(
-                    thumbVisibility: true,
-                    controller: _scrollController,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 16.0),
-                      child: SingleChildScrollView(
-                        controller: _scrollController,
-                        scrollDirection: Axis.horizontal,
-                        child: Row(spacing: 8.0, children: cards),
+          child: scrollDirection == Axis.horizontal
+              ? Scrollbar(
+                  thumbVisibility: true,
+                  controller: _scrollController,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: SingleChildScrollView(
+                      controller: _scrollController,
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        spacing: 8.0,
+                        children: cards,
                       ),
                     ),
-                  )
-                  : SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Wrap(
-                      alignment: WrapAlignment.spaceEvenly,
-                      runSpacing: 16.0,
-                      spacing: 4.0,
-                      children: cards,
-                    ),
                   ),
+                )
+              : SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  child: Wrap(
+                    alignment: WrapAlignment.spaceEvenly,
+                    runSpacing: 16.0,
+                    spacing: 4.0,
+                    children: cards,
+                  ),
+                ),
         ),
       ],
     );

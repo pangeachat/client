@@ -63,8 +63,7 @@ class BackgroundPush {
   Future<void> loadLocale() async {
     final context = matrix?.context;
     // inspired by _lookupL10n in .dart_tool/flutter_gen/gen_l10n/l10n.dart
-    l10n ??=
-        (context != null ? L10n.of(context) : null) ??
+    l10n ??= (context != null ? L10n.of(context) : null) ??
         (await L10n.delegate.load(PlatformDispatcher.instance.locale));
   }
 
@@ -83,9 +82,8 @@ class BackgroundPush {
   void _init() async {
     try {
       // #Pangea
-      onLogin ??= client.onLoginStateChanged.stream.listen(
-        handleLoginStateChanged,
-      );
+      onLogin ??=
+          client.onLoginStateChanged.stream.listen(handleLoginStateChanged);
       FirebaseMessaging.instance.getInitialMessage().then(_onOpenNotification);
       FirebaseMessaging.onMessageOpenedApp.listen(_onOpenNotification);
       // Pangea#
@@ -98,16 +96,15 @@ class BackgroundPush {
       );
       Logs().v('Flutter Local Notifications initialized');
       firebase?.setListeners(
-        onMessage:
-            (message) => pushHelper(
-              PushNotification.fromJson(
-                Map<String, dynamic>.from(message['data'] ?? message),
-              ),
-              client: client,
-              l10n: l10n,
-              activeRoomId: matrix?.activeRoomId,
-              flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
-            ),
+        onMessage: (message) => pushHelper(
+          PushNotification.fromJson(
+            Map<String, dynamic>.from(message['data'] ?? message),
+          ),
+          client: client,
+          l10n: l10n,
+          activeRoomId: matrix?.activeRoomId,
+          flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
+        ),
         // #Pangea
         onNewToken: _newFcmToken,
         // Pangea#
@@ -156,7 +153,9 @@ class BackgroundPush {
       ErrorHandler.logError(
         e: err,
         s: s,
-        data: {"roomId": message.data['room_id']},
+        data: {
+          "roomId": message.data['room_id'],
+        },
       );
     }
   }
@@ -200,10 +199,9 @@ class BackgroundPush {
 
     // Workaround for app icon badge not updating
     if (Platform.isIOS) {
-      final unreadCount =
-          client.rooms
-              .where((room) => room.isUnreadOrInvited && room.id != roomId)
-              .length;
+      final unreadCount = client.rooms
+          .where((room) => room.isUnreadOrInvited && room.id != roomId)
+          .length;
       // #Pangea
       try {
         // Pangea#
@@ -236,8 +234,7 @@ class BackgroundPush {
       if (PlatformInfos.isAndroid) {
         _flutterLocalNotificationsPlugin
             .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin
-            >()
+                AndroidFlutterLocalNotificationsPlugin>()
             ?.requestNotificationsPermission();
       }
       // #Pangea
@@ -251,8 +248,7 @@ class BackgroundPush {
     // Pangea#
     final clientName = PlatformInfos.clientName;
     oldTokens ??= <String>{};
-    final pushers =
-        await (client.getPushers().catchError((e) {
+    final pushers = await (client.getPushers().catchError((e) {
           Logs().w('[Push] Unable to request pushers', e);
           return <Pusher>[];
         })) ??
@@ -283,12 +279,12 @@ class BackgroundPush {
           // Pangea#
           currentPushers.first.data.url.toString() == gatewayUrl &&
           currentPushers.first.data.format ==
-              AppSettings.pushNotificationsPusherFormat.getItem(
-                matrix!.store,
-              ) &&
-          mapEquals(currentPushers.single.data.additionalProperties, {
-            "data_message": pusherDataMessageFormat,
-          })) {
+              AppSettings.pushNotificationsPusherFormat
+                  .getItem(matrix!.store) &&
+          mapEquals(
+            currentPushers.single.data.additionalProperties,
+            {"data_message": pusherDataMessageFormat},
+          )) {
         Logs().i('[Push] Pusher already set');
       } else {
         Logs().i('Need to set new pusher');
@@ -327,9 +323,8 @@ class BackgroundPush {
             // Pangea#
             data: PusherData(
               url: Uri.parse(gatewayUrl!),
-              format: AppSettings.pushNotificationsPusherFormat.getItem(
-                matrix!.store,
-              ),
+              format: AppSettings.pushNotificationsPusherFormat
+                  .getItem(matrix!.store),
               additionalProperties: {"data_message": pusherDataMessageFormat},
             ),
             kind: 'http',
@@ -339,16 +334,19 @@ class BackgroundPush {
       } catch (e, s) {
         Logs().e('[Push] Unable to set pushers', e, s);
         // #Pangea
-        ErrorHandler.logError(e: e, s: s, data: {});
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {},
+        );
         // Pangea#
       }
     }
   }
 
-  final pusherDataMessageFormat =
-      Platform.isAndroid
-          ? 'android'
-          : Platform.isIOS
+  final pusherDataMessageFormat = Platform.isAndroid
+      ? 'android'
+      : Platform.isIOS
           ? 'ios'
           : null;
 
@@ -374,9 +372,9 @@ class BackgroundPush {
     }
 
     // ignore: unawaited_futures
-    _flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails().then((
-      details,
-    ) {
+    _flutterLocalNotificationsPlugin
+        .getNotificationAppLaunchDetails()
+        .then((details) {
       if (details == null ||
           !details.didNotificationLaunchApp ||
           _wentToRoomOnStartup) {
@@ -399,7 +397,9 @@ class BackgroundPush {
       if (PlatformInfos.isAndroid) {
         onFcmError?.call(
           l10n!.noGoogleServicesWarning,
-          link: Uri.parse(AppConfig.enablePushTutorial),
+          link: Uri.parse(
+            AppConfig.enablePushTutorial,
+          ),
         );
         return;
       }
@@ -423,9 +423,8 @@ class BackgroundPush {
       }
     }
     await setupPusher(
-      gatewayUrl: AppSettings.pushNotificationsGatewayUrl.getItem(
-        matrix!.store,
-      ),
+      gatewayUrl:
+          AppSettings.pushNotificationsGatewayUrl.getItem(matrix!.store),
       token: _fcmToken,
     );
   }
@@ -452,15 +451,20 @@ class BackgroundPush {
     } catch (e, s) {
       Logs().e('[Push] Failed to open room', e, s);
       // #Pangea
-      ErrorHandler.logError(e: e, s: s, data: {"roomID": response?.payload});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "roomID": response?.payload,
+        },
+      );
       // Pangea#
     }
   }
 
   Future<void> setupUp() async {
-    await UnifiedPushUi(matrix!.context, [
-      "default",
-    ], UPFunctions()).registerAppWithDialog();
+    await UnifiedPushUi(matrix!.context, ["default"], UPFunctions())
+        .registerAppWithDialog();
   }
 
   Future<void> _newUpEndpoint(String newEndpoint, String i) async {
@@ -472,15 +476,16 @@ class BackgroundPush {
     var endpoint =
         'https://matrix.gateway.unifiedpush.org/_matrix/push/v1/notify';
     try {
-      final url =
-          Uri.parse(newEndpoint)
-              .replace(path: '/_matrix/push/v1/notify', query: '')
-              .toString()
-              .split('?')
-              .first;
-      final res = json.decode(
-        utf8.decode((await http.get(Uri.parse(url))).bodyBytes),
-      );
+      final url = Uri.parse(newEndpoint)
+          .replace(
+            path: '/_matrix/push/v1/notify',
+            query: '',
+          )
+          .toString()
+          .split('?')
+          .first;
+      final res =
+          json.decode(utf8.decode((await http.get(Uri.parse(url))).bodyBytes));
       if (res['gateway'] == 'matrix' ||
           (res['unifiedpush'] is Map &&
               res['unifiedpush']['gateway'] == 'matrix')) {
@@ -513,14 +518,15 @@ class BackgroundPush {
   Future<void> _upUnregistered(String i) async {
     upAction = true;
     Logs().i('[Push] Removing UnifiedPush endpoint...');
-    final oldEndpoint = matrix?.store.getString(
-      SettingKeys.unifiedPushEndpoint,
-    );
+    final oldEndpoint =
+        matrix?.store.getString(SettingKeys.unifiedPushEndpoint);
     await matrix?.store.setBool(SettingKeys.unifiedPushRegistered, false);
     await matrix?.store.remove(SettingKeys.unifiedPushEndpoint);
     if (oldEndpoint?.isNotEmpty ?? false) {
       // remove the old pusher
-      await setupPusher(oldTokens: {oldEndpoint});
+      await setupPusher(
+        oldTokens: {oldEndpoint},
+      );
     }
   }
 
@@ -544,13 +550,12 @@ class BackgroundPush {
   Future<String?> _getToken() async {
     if (Platform.isAndroid) {
       await Firebase.initializeApp(
-        // options: DefaultFirebaseOptions.currentPlatform,
-      );
+          // options: DefaultFirebaseOptions.currentPlatform,
+          );
       return (await FirebaseMessaging.instance.getToken());
     }
     return await firebase?.getToken();
   }
-
   // Pangea#
 }
 

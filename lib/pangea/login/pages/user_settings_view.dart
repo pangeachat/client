@@ -14,27 +14,29 @@ import 'package:fluffychat/pangea/user/utils/p_logout.dart';
 class UserSettingsView extends StatelessWidget {
   final UserSettingsState controller;
 
-  const UserSettingsView({required this.controller, super.key});
+  const UserSettingsView({
+    required this.controller,
+    super.key,
+  });
 
   final double avatarSize = 55.0;
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> avatarOptions =
-        controller.avatarPaths
-            .mapIndexed((index, path) {
-              return Padding(
-                padding: const EdgeInsets.all(5),
-                child: AvatarOption(
-                  onTap: () => controller.setSelectedAvatarPath(index),
-                  path: path,
-                  selected: controller.selectedAvatarIndex == index,
-                  size: avatarSize,
-                ),
-              );
-            })
-            .cast<Widget>()
-            .toList();
+    final List<Widget> avatarOptions = controller.avatarPaths
+        .mapIndexed((index, path) {
+          return Padding(
+            padding: const EdgeInsets.all(5),
+            child: AvatarOption(
+              onTap: () => controller.setSelectedAvatarPath(index),
+              path: path,
+              selected: controller.selectedAvatarIndex == index,
+              size: avatarSize,
+            ),
+          );
+        })
+        .cast<Widget>()
+        .toList();
 
     avatarOptions.add(
       Padding(
@@ -48,10 +50,9 @@ class UserSettingsView extends StatelessWidget {
               shape: BoxShape.circle,
               color: Colors.white,
               border: Border.all(
-                color:
-                    controller.avatar != null
-                        ? AppConfig.activeToggleColor
-                        : Theme.of(context).colorScheme.primary,
+                color: controller.avatar != null
+                    ? AppConfig.activeToggleColor
+                    : Theme.of(context).colorScheme.primary,
                 width: 2,
               ),
             ),
@@ -70,7 +71,10 @@ class UserSettingsView extends StatelessWidget {
       child: PangeaLoginScaffold(
         customAppBar: AppBar(
           leading: BackButton(
-            onPressed: () => pLogoutAction(context, bypassWarning: true),
+            onPressed: () => pLogoutAction(
+              context,
+              bypassWarning: true,
+            ),
           ),
         ),
         showAppName: false,
@@ -87,7 +91,10 @@ class UserSettingsView extends StatelessWidget {
               ),
             ),
           ),
-          Wrap(alignment: WrapAlignment.center, children: avatarOptions),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: avatarOptions,
+          ),
           FullWidthTextField(
             labelText: L10n.of(context).displayName,
             hintText: L10n.of(context).username,
@@ -119,10 +126,9 @@ class UserSettingsView extends StatelessWidget {
           ),
           FullWidthButton(
             title: L10n.of(context).letsStart,
-            onPressed:
-                controller.selectedTargetLanguage != null
-                    ? controller.createUserInPangea
-                    : null,
+            onPressed: controller.selectedTargetLanguage != null
+                ? controller.createUserInPangea
+                : null,
             error: controller.profileCreationError,
             loading: controller.loading,
             enabled: controller.selectedTargetLanguage != null,
@@ -158,10 +164,9 @@ class AvatarOption extends StatelessWidget {
           shape: BoxShape.circle,
           color: Colors.white,
           border: Border.all(
-            color:
-                selected
-                    ? AppConfig.activeToggleColor
-                    : Theme.of(context).colorScheme.primary,
+            color: selected
+                ? AppConfig.activeToggleColor
+                : Theme.of(context).colorScheme.primary,
             width: 2,
           ),
         ),

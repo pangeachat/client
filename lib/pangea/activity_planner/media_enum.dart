@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-enum MediaEnum { images, videos, voiceMessages, nan }
+enum MediaEnum {
+  images,
+  videos,
+  voiceMessages,
+  nan,
+}
 
 extension MediaEnumExtension on MediaEnum {
   //fromString

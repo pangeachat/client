@@ -22,7 +22,9 @@ class SimilarityRepo {
     );
 
     final SimilartyResponseModel response = SimilartyResponseModel.fromJson(
-      jsonDecode(utf8.decode(res.bodyBytes).toString()),
+      jsonDecode(
+        utf8.decode(res.bodyBytes).toString(),
+      ),
     );
 
     return response;
@@ -36,9 +38,9 @@ class SimilarityRequestModel {
   SimilarityRequestModel({required this.benchmark, required this.toCompare});
 
   Map<String, dynamic> toJson() => {
-    "original": benchmark,
-    "to_compare": toCompare,
-  };
+        "original": benchmark,
+        "to_compare": toCompare,
+      };
 }
 
 class SimilartyResponseModel {
@@ -47,11 +49,15 @@ class SimilartyResponseModel {
 
   SimilartyResponseModel({required this.benchmark, required this.scores});
 
-  factory SimilartyResponseModel.fromJson(Map<String, dynamic> json) =>
+  factory SimilartyResponseModel.fromJson(
+    Map<String, dynamic> json,
+  ) =>
       SimilartyResponseModel(
         benchmark: json["original"],
         scores: List<SimilarityScore>.from(
-          json["scores"].map((x) => SimilarityScore.fromJson(x)),
+          json["scores"].map(
+            (x) => SimilarityScore.fromJson(x),
+          ),
         ),
       );
 

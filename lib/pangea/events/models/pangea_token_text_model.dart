@@ -26,11 +26,8 @@ class PangeaTokenText {
   static const String _contentKey = "content";
   static const String _lengthKey = "length";
 
-  Map<String, dynamic> toJson() => {
-    _offsetKey: offset,
-    _contentKey: content,
-    _lengthKey: length,
-  };
+  Map<String, dynamic> toJson() =>
+      {_offsetKey: offset, _contentKey: content, _lengthKey: length};
 
   //override equals and hashcode
   @override

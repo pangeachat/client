@@ -22,22 +22,16 @@ class Environment {
     String? homeServerFromSynapseURL = dotenv.env['SYNAPSE_URL'];
     if (homeServerFromSynapseURL != null) {
       if (homeServerFromSynapseURL.startsWith("http://")) {
-        homeServerFromSynapseURL = homeServerFromSynapseURL.replaceFirst(
-          "http://",
-          "",
-        );
+        homeServerFromSynapseURL =
+            homeServerFromSynapseURL.replaceFirst("http://", "");
       }
       if (homeServerFromSynapseURL.startsWith("https://")) {
-        homeServerFromSynapseURL = homeServerFromSynapseURL.replaceFirst(
-          "https://",
-          "",
-        );
+        homeServerFromSynapseURL =
+            homeServerFromSynapseURL.replaceFirst("https://", "");
       }
       if (homeServerFromSynapseURL.startsWith("matrix.")) {
-        homeServerFromSynapseURL = homeServerFromSynapseURL.replaceFirst(
-          "matrix.",
-          "",
-        );
+        homeServerFromSynapseURL =
+            homeServerFromSynapseURL.replaceFirst("matrix.", "");
       }
     }
     return dotenv.env["HOME_SERVER"] ??

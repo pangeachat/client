@@ -20,9 +20,8 @@ class ConversationBotGameMasterInstructionsInput extends StatelessWidget {
     String gameMasterInstructions =
         initialBotOptions.textAdventureGameMasterInstructions ?? "";
 
-    final TextEditingController textFieldController = TextEditingController(
-      text: gameMasterInstructions,
-    );
+    final TextEditingController textFieldController =
+        TextEditingController(text: gameMasterInstructions);
 
     final GlobalKey<FormState> gameMasterInstructionsFormKey =
         GlobalKey<FormState>();
@@ -31,58 +30,54 @@ class ConversationBotGameMasterInstructionsInput extends StatelessWidget {
       showDialog(
         context: context,
         useRootNavigator: false,
-        builder:
-            (BuildContext context) => AlertDialog(
-              title: Text(
-                L10n.of(
-                  context,
-                ).conversationBotTextAdventureZone_instructionPlaceholder,
-              ),
-              content: Form(
-                key: gameMasterInstructionsFormKey,
-                child: TextFormField(
-                  minLines: 1,
-                  maxLines: 10,
-                  maxLength: 1000,
-                  controller: textFieldController,
-                  onChanged: (value) {
-                    if (value.isNotEmpty) {
-                      gameMasterInstructions = value;
-                    }
-                  },
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'This field cannot be empty';
-                    }
-                    return null;
-                  },
-                ),
-              ),
-              actions: [
-                TextButton(
-                  child: Text(L10n.of(context).cancel),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-                TextButton(
-                  child: Text(L10n.of(context).ok),
-                  onPressed: () {
-                    if (gameMasterInstructionsFormKey.currentState!
-                        .validate()) {
-                      if (gameMasterInstructions !=
-                          initialBotOptions
-                              .textAdventureGameMasterInstructions) {
-                        initialBotOptions.textAdventureGameMasterInstructions =
-                            gameMasterInstructions;
-                        onChanged.call(initialBotOptions);
-                      }
-                      Navigator.of(context).pop();
-                    }
-                  },
-                ),
-              ],
+        builder: (BuildContext context) => AlertDialog(
+          title: Text(
+            L10n.of(context)
+                .conversationBotTextAdventureZone_instructionPlaceholder,
+          ),
+          content: Form(
+            key: gameMasterInstructionsFormKey,
+            child: TextFormField(
+              minLines: 1,
+              maxLines: 10,
+              maxLength: 1000,
+              controller: textFieldController,
+              onChanged: (value) {
+                if (value.isNotEmpty) {
+                  gameMasterInstructions = value;
+                }
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'This field cannot be empty';
+                }
+                return null;
+              },
             ),
+          ),
+          actions: [
+            TextButton(
+              child: Text(L10n.of(context).cancel),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text(L10n.of(context).ok),
+              onPressed: () {
+                if (gameMasterInstructionsFormKey.currentState!.validate()) {
+                  if (gameMasterInstructions !=
+                      initialBotOptions.textAdventureGameMasterInstructions) {
+                    initialBotOptions.textAdventureGameMasterInstructions =
+                        gameMasterInstructions;
+                    onChanged.call(initialBotOptions);
+                  }
+                  Navigator.of(context).pop();
+                }
+              },
+            ),
+          ],
+        ),
       );
     }
 
@@ -90,9 +85,8 @@ class ConversationBotGameMasterInstructionsInput extends StatelessWidget {
       onTap: setBotTextAdventureGameMasterInstructionsAction,
       title: Text(
         initialBotOptions.textAdventureGameMasterInstructions ??
-            L10n.of(
-              context,
-            ).conversationBotTextAdventureZone_instructionPlaceholder,
+            L10n.of(context)
+                .conversationBotTextAdventureZone_instructionPlaceholder,
       ),
     );
   }

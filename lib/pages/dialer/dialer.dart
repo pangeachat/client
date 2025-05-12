@@ -70,7 +70,9 @@ class _StreamView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(color: Colors.black54),
+      decoration: const BoxDecoration(
+        color: Colors.black54,
+      ),
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
@@ -131,8 +133,9 @@ class Calling extends StatefulWidget {
 class MyCallingPage extends State<Calling> {
   Room? get room => call.room;
 
-  String get displayName =>
-      call.room.getLocalizedDisplayname(MatrixLocals(L10n.of(widget.context)));
+  String get displayName => call.room.getLocalizedDisplayname(
+        MatrixLocals(L10n.of(widget.context)),
+      );
 
   String get callId => widget.callId;
 
@@ -216,7 +219,10 @@ class MyCallingPage extends State<Calling> {
   }
 
   void cleanUp() {
-    Timer(const Duration(seconds: 2), () => widget.onClear?.call());
+    Timer(
+      const Duration(seconds: 2),
+      () => widget.onClear?.call(),
+    );
     if (call.type == CallType.kVideo) {
       try {
         unawaited(WakelockPlus.disable());
@@ -235,18 +241,15 @@ class MyCallingPage extends State<Calling> {
       MediaQuery.of(widget.context).size.width,
       MediaQuery.of(widget.context).size.height,
     );
-    _localVideoMargin =
-        remoteStream != null
-            ? const EdgeInsets.only(top: 20.0, right: 20.0)
-            : EdgeInsets.zero;
-    _localVideoWidth =
-        remoteStream != null
-            ? shortSide / 3
-            : MediaQuery.of(widget.context).size.width;
-    _localVideoHeight =
-        remoteStream != null
-            ? shortSide / 4
-            : MediaQuery.of(widget.context).size.height;
+    _localVideoMargin = remoteStream != null
+        ? const EdgeInsets.only(top: 20.0, right: 20.0)
+        : EdgeInsets.zero;
+    _localVideoWidth = remoteStream != null
+        ? shortSide / 3
+        : MediaQuery.of(widget.context).size.width;
+    _localVideoHeight = remoteStream != null
+        ? shortSide / 4
+        : MediaQuery.of(widget.context).size.height;
   }
 
   void _handleCallState(CallState state) {
@@ -429,7 +432,9 @@ class MyCallingPage extends State<Calling> {
           hangupButton,
         ];
       case CallState.kEnded:
-        return <Widget>[hangupButton];
+        return <Widget>[
+          hangupButton,
+        ];
       case CallState.kFledgling:
       case CallState.kWaitLocalMedia:
       case CallState.kCreateOffer:
@@ -451,8 +456,9 @@ class MyCallingPage extends State<Calling> {
     if (call.localHold || call.remoteOnHold) {
       var title = '';
       if (call.localHold) {
-        title =
-            '${call.room.getLocalizedDisplayname(MatrixLocals(L10n.of(widget.context)))} held the call.';
+        title = '${call.room.getLocalizedDisplayname(
+          MatrixLocals(L10n.of(widget.context)),
+        )} held the call.';
       } else if (call.remoteOnHold) {
         title = 'You held the call.';
       }
@@ -461,10 +467,17 @@ class MyCallingPage extends State<Calling> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.pause, size: 48.0, color: Colors.white),
+              const Icon(
+                Icons.pause,
+                size: 48.0,
+                color: Colors.white,
+              ),
               Text(
                 title,
-                style: const TextStyle(color: Colors.white, fontSize: 24.0),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 24.0,
+                ),
               ),
             ],
           ),
@@ -473,8 +486,7 @@ class MyCallingPage extends State<Calling> {
       return stackWidgets;
     }
 
-    var primaryStream =
-        call.remoteScreenSharingStream ??
+    var primaryStream = call.remoteScreenSharingStream ??
         call.localScreenSharingStream ??
         call.remoteUserMediaStream ??
         call.localUserMediaStream;
@@ -513,10 +525,8 @@ class MyCallingPage extends State<Calling> {
         SizedBox(
           width: _localVideoWidth,
           height: _localVideoHeight,
-          child: _StreamView(
-            remoteUserMediaStream!,
-            matrixClient: widget.client,
-          ),
+          child:
+              _StreamView(remoteUserMediaStream!, matrixClient: widget.client),
         ),
       );
       secondaryStreamViews.add(const SizedBox(height: 10));
@@ -557,7 +567,9 @@ class MyCallingPage extends State<Calling> {
           child: Container(
             width: _localVideoWidth,
             margin: _localVideoMargin,
-            child: Column(children: secondaryStreamViews),
+            child: Column(
+              children: secondaryStreamViews,
+            ),
           ),
         ),
       );
@@ -585,7 +597,9 @@ class MyCallingPage extends State<Calling> {
           body: OrientationBuilder(
             builder: (BuildContext context, Orientation orientation) {
               return Container(
-                decoration: const BoxDecoration(color: Colors.black87),
+                decoration: const BoxDecoration(
+                  color: Colors.black87,
+                ),
                 child: Stack(
                   children: [
                     ..._buildContent(orientation, isFloating),

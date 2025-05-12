@@ -22,17 +22,18 @@ class ErrorHandler {
   ErrorHandler();
 
   static Future<void> initialize() async {
-    await SentryFlutter.init((options) {
-      options.dsn = Environment.sentryDsn;
-      options.tracesSampleRate = 0.1;
-      options.debug = kDebugMode;
-      options.environment =
-          kDebugMode
-              ? "debug"
-              : Environment.isStaging
-              ? "staging"
-              : "productionC";
-    });
+    await SentryFlutter.init(
+      (options) {
+        options.dsn = Environment.sentryDsn;
+        options.tracesSampleRate = 0.1;
+        options.debug = kDebugMode;
+        options.environment = kDebugMode
+            ? "debug"
+            : Environment.isStaging
+                ? "staging"
+                : "productionC";
+      },
+    );
 
     // Error handling
     FlutterError.onError = (FlutterErrorDetails details) async {
@@ -45,7 +46,11 @@ class ErrorHandler {
     };
 
     PlatformDispatcher.instance.onError = (exception, stack) {
-      logError(e: exception, s: stack, data: {});
+      logError(
+        e: exception,
+        s: stack,
+        data: {},
+      );
       return true;
     };
   }
@@ -100,7 +105,11 @@ class ErrorCopy {
       if (error is http.Response) {
         errorCode = (error as http.Response).statusCode;
       } else {
-        ErrorHandler.logError(e: error, s: StackTrace.current, data: {});
+        ErrorHandler.logError(
+          e: error,
+          s: StackTrace.current,
+          data: {},
+        );
         errorCode = null;
       }
       final L10n l10n = L10n.of(context);
@@ -145,7 +154,11 @@ class ErrorCopy {
           body = l10n.errorPleaseRefresh;
       }
     } catch (e, s) {
-      ErrorHandler.logError(e: s, s: s, data: {});
+      ErrorHandler.logError(
+        e: s,
+        s: s,
+        data: {},
+      );
       _setDefaults();
     }
   }

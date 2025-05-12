@@ -17,15 +17,14 @@ class ClientChooserButton extends StatelessWidget {
 
   List<PopupMenuEntry<Object>> _bundleMenuItems(BuildContext context) {
     final matrix = Matrix.of(context);
-    final bundles =
-        matrix.accountBundles.keys.toList()..sort(
-          (a, b) =>
-              a!.isValidMatrixId == b!.isValidMatrixId
-                  ? 0
-                  : a.isValidMatrixId && !b.isValidMatrixId
-                  ? -1
-                  : 1,
-        );
+    final bundles = matrix.accountBundles.keys.toList()
+      ..sort(
+        (a, b) => a!.isValidMatrixId == b!.isValidMatrixId
+            ? 0
+            : a.isValidMatrixId && !b.isValidMatrixId
+                ? -1
+                : 1,
+      );
     return <PopupMenuEntry<Object>>[
       PopupMenuItem(
         value: SettingsAction.newGroup,
@@ -108,35 +107,32 @@ class ClientChooserButton extends StatelessWidget {
                 value: client,
                 child: FutureBuilder<Profile?>(
                   future: client.fetchOwnProfile(),
-                  builder:
-                      (context, snapshot) => Row(
-                        children: [
-                          Avatar(
-                            mxContent: snapshot.data?.avatarUrl,
-                            name:
-                                snapshot.data?.displayName ??
-                                client.userID!.localpart,
-                            size: 32,
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Text(
-                              snapshot.data?.displayName ??
-                                  client.userID!.localpart!,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          IconButton(
-                            icon: const Icon(Icons.edit_outlined),
-                            onPressed:
-                                () => controller.editBundlesForAccount(
-                                  client.userID,
-                                  bundle,
-                                ),
-                          ),
-                        ],
+                  builder: (context, snapshot) => Row(
+                    children: [
+                      Avatar(
+                        mxContent: snapshot.data?.avatarUrl,
+                        name: snapshot.data?.displayName ??
+                            client.userID!.localpart,
+                        size: 32,
                       ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          snapshot.data?.displayName ??
+                              client.userID!.localpart!,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      IconButton(
+                        icon: const Icon(Icons.edit_outlined),
+                        onPressed: () => controller.editBundlesForAccount(
+                          client.userID,
+                          bundle,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -162,34 +158,38 @@ class ClientChooserButton extends StatelessWidget {
     matrix.accountBundles.forEach((key, value) => clientCount += value.length);
     return FutureBuilder<Profile>(
       future: matrix.client.fetchOwnProfile(),
-      builder:
-          (context, snapshot) => Stack(
-            alignment: Alignment.center,
-            children: [
-              ...List.generate(clientCount, (index) => const SizedBox.shrink()),
-              const SizedBox.shrink(),
-              const SizedBox.shrink(),
-              PopupMenuButton<Object>(
-                onSelected: (o) => _clientSelected(o, context),
-                itemBuilder: _bundleMenuItems,
-                child: Material(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(99),
-                  child: Avatar(
-                    mxContent: snapshot.data?.avatarUrl,
-                    name:
-                        snapshot.data?.displayName ??
-                        matrix.client.userID!.localpart,
-                    size: 32,
-                  ),
-                ),
-              ),
-            ],
+      builder: (context, snapshot) => Stack(
+        alignment: Alignment.center,
+        children: [
+          ...List.generate(
+            clientCount,
+            (index) => const SizedBox.shrink(),
           ),
+          const SizedBox.shrink(),
+          const SizedBox.shrink(),
+          PopupMenuButton<Object>(
+            onSelected: (o) => _clientSelected(o, context),
+            itemBuilder: _bundleMenuItems,
+            child: Material(
+              color: Colors.transparent,
+              borderRadius: BorderRadius.circular(99),
+              child: Avatar(
+                mxContent: snapshot.data?.avatarUrl,
+                name: snapshot.data?.displayName ??
+                    matrix.client.userID!.localpart,
+                size: 32,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  void _clientSelected(Object object, BuildContext context) async {
+  void _clientSelected(
+    Object object,
+    BuildContext context,
+  ) async {
     if (object is Client) {
       controller.setActiveClient(object);
     } else if (object is String) {

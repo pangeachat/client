@@ -44,9 +44,11 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
 
     final success = await showFutureLoadingDialog(
       context: context,
-      future:
-          () => Matrix.of(context).client.deletePusher(
-            PusherId(appId: pusher.appId, pushkey: pusher.pushkey),
+      future: () => Matrix.of(context).client.deletePusher(
+            PusherId(
+              appId: pusher.appId,
+              pushkey: pusher.pushkey,
+            ),
           ),
     );
 
@@ -64,26 +66,29 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
       isLoading = true;
     });
     try {
-      final updateFromSync =
-          Matrix.of(context).client.onSync.stream
-              .where(
-                (syncUpdate) =>
-                    syncUpdate.accountData?.any(
-                      (accountData) => accountData.type == 'm.push_rules',
-                    ) ??
-                    false,
-              )
-              .first;
-      await Matrix.of(
-        context,
-      ).client.setPushRuleEnabled(kind, pushRule.ruleId, !pushRule.enabled);
+      final updateFromSync = Matrix.of(context)
+          .client
+          .onSync
+          .stream
+          .where(
+            (syncUpdate) =>
+                syncUpdate.accountData?.any(
+                  (accountData) => accountData.type == 'm.push_rules',
+                ) ??
+                false,
+          )
+          .first;
+      await Matrix.of(context).client.setPushRuleEnabled(
+            kind,
+            pushRule.ruleId,
+            !pushRule.enabled,
+          );
       await updateFromSync;
     } catch (e, s) {
       Logs().w('Unable to toggle push rule', e, s);
       if (!mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
     } finally {
       if (mounted) {
         setState(() {
@@ -97,45 +102,44 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
     final theme = Theme.of(context);
     final action = await showAdaptiveDialog<PushRuleDialogAction>(
       context: context,
-      builder:
-          (context) => ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 256),
-            child: AlertDialog.adaptive(
-              title: Text(rule.getPushRuleName(L10n.of(context))),
-              content: Padding(
-                padding: const EdgeInsets.only(top: 16.0),
-                child: Material(
-                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                  color: theme.colorScheme.surfaceContainer,
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(16),
-                    scrollDirection: Axis.horizontal,
-                    child: SelectableText(
-                      prettyJson(rule.toJson()),
-                      style: TextStyle(color: theme.colorScheme.onSurface),
-                    ),
+      builder: (context) => ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: 256),
+        child: AlertDialog.adaptive(
+          title: Text(rule.getPushRuleName(L10n.of(context))),
+          content: Padding(
+            padding: const EdgeInsets.only(top: 16.0),
+            child: Material(
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              color: theme.colorScheme.surfaceContainer,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                scrollDirection: Axis.horizontal,
+                child: SelectableText(
+                  prettyJson(rule.toJson()),
+                  style: TextStyle(
+                    color: theme.colorScheme.onSurface,
                   ),
                 ),
               ),
-              actions: [
-                AdaptiveDialogAction(
-                  onPressed: Navigator.of(context).pop,
-                  child: Text(L10n.of(context).close),
-                ),
-                if (!rule.ruleId.startsWith('.m.'))
-                  AdaptiveDialogAction(
-                    onPressed:
-                        () => Navigator.of(
-                          context,
-                        ).pop(PushRuleDialogAction.delete),
-                    child: Text(
-                      L10n.of(context).delete,
-                      style: TextStyle(color: theme.colorScheme.error),
-                    ),
-                  ),
-              ],
             ),
           ),
+          actions: [
+            AdaptiveDialogAction(
+              onPressed: Navigator.of(context).pop,
+              child: Text(L10n.of(context).close),
+            ),
+            if (!rule.ruleId.startsWith('.m.'))
+              AdaptiveDialogAction(
+                onPressed: () =>
+                    Navigator.of(context).pop(PushRuleDialogAction.delete),
+                child: Text(
+                  L10n.of(context).delete,
+                  style: TextStyle(color: theme.colorScheme.error),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
     if (action == null) return;
     if (!mounted) return;
@@ -154,24 +158,29 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
           isLoading = true;
         });
         try {
-          final updateFromSync =
-              Matrix.of(context).client.onSync.stream
-                  .where(
-                    (syncUpdate) =>
-                        syncUpdate.accountData?.any(
-                          (accountData) => accountData.type == 'm.push_rules',
-                        ) ??
-                        false,
-                  )
-                  .first;
-          await Matrix.of(context).client.deletePushRule(kind, rule.ruleId);
+          final updateFromSync = Matrix.of(context)
+              .client
+              .onSync
+              .stream
+              .where(
+                (syncUpdate) =>
+                    syncUpdate.accountData?.any(
+                      (accountData) => accountData.type == 'm.push_rules',
+                    ) ??
+                    false,
+              )
+              .first;
+          await Matrix.of(context).client.deletePushRule(
+                kind,
+                rule.ruleId,
+              );
           await updateFromSync;
         } catch (e, s) {
           Logs().w('Unable to delete push rule', e, s);
           if (!mounted) return;
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(e.toLocalizedString(context))),
+          );
         } finally {
           if (mounted) {
             setState(() {

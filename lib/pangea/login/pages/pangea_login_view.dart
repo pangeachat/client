@@ -70,10 +70,9 @@ class PangeaLoginView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(4.0),
             child: TextButton(
-              onPressed:
-                  controller.loadingSignIn
-                      ? () {}
-                      : controller.passwordForgotten,
+              onPressed: controller.loadingSignIn
+                  ? () {}
+                  : controller.passwordForgotten,
               style: TextButton.styleFrom(
                 foregroundColor: Theme.of(context).colorScheme.error,
                 padding: const EdgeInsets.symmetric(
@@ -111,7 +110,10 @@ class PangeaLoginView extends StatelessWidget {
             setLoading: controller.setLoadingSSO,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(
+              vertical: 8.0,
+              horizontal: 8.0,
+            ),
             child: RichText(
               textAlign: TextAlign.justify,
               text: TextSpan(

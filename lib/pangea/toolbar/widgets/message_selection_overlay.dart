@@ -51,11 +51,11 @@ class MessageSelectionOverlay extends StatefulWidget {
     required Event? prevEvent,
     required Timeline timeline,
     super.key,
-  }) : _initialSelectedToken = initialSelectedToken,
-       _nextEvent = nextEvent,
-       _prevEvent = prevEvent,
-       _event = event,
-       _timeline = timeline;
+  })  : _initialSelectedToken = initialSelectedToken,
+        _nextEvent = nextEvent,
+        _prevEvent = prevEvent,
+        _event = event,
+        _timeline = timeline;
 
   @override
   MessageOverlayController createState() => MessageOverlayController();
@@ -148,10 +148,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       }
 
       // Get all the lemma infos
-      final messageVocabConstructIds =
-          pangeaMessageEvent!.messageDisplayRepresentation!.tokensToSave
-              .map((e) => e.vocabConstructID)
-              .toList();
+      final messageVocabConstructIds = pangeaMessageEvent!
+          .messageDisplayRepresentation!.tokensToSave
+          .map((e) => e.vocabConstructID)
+          .toList();
 
       final List<Future<LemmaInfoResponse>> lemmaInfoFutures =
           messageVocabConstructIds
@@ -161,11 +161,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       Future.wait(lemmaInfoFutures).then((resp) {
         if (mounted) {
           setState(
-            () =>
-                messageLemmaInfos = Map.fromIterables(
-                  messageVocabConstructIds,
-                  resp,
-                ),
+            () => messageLemmaInfos = Map.fromIterables(
+              messageVocabConstructIds,
+              resp,
+            ),
           );
         }
       });
@@ -174,7 +173,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {"eventID": pangeaMessageEvent?.eventId},
+        data: {
+          "eventID": pangeaMessageEvent?.eventId,
+        },
       );
     } finally {
       _initializeSelectedToken();
@@ -231,7 +232,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     int retries = 0;
     while (retries < 5 &&
         selectedToken != null &&
-        !MatrixState.pAnyState.isOverlayOpen(selectedToken!.text.uniqueKey)) {
+        !MatrixState.pAnyState.isOverlayOpen(
+          selectedToken!.text.uniqueKey,
+        )) {
       await Future.delayed(const Duration(milliseconds: 100));
       _showReadingAssistanceContent();
       retries++;
@@ -312,7 +315,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   void _showReadingAssistanceContent() {
     if (selectedToken == null) return;
-    if (MatrixState.pAnyState.isOverlayOpen(selectedToken!.text.uniqueKey)) {
+    if (MatrixState.pAnyState.isOverlayOpen(
+      selectedToken!.text.uniqueKey,
+    )) {
       return;
     }
 
@@ -337,18 +342,18 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   void updateToolbarMode(MessageMode mode) => setState(() {
-    selectedChoice = null;
+        selectedChoice = null;
 
-    // close overlay of any selected token
-    if (_selectedSpan != null) {
-      updateSelectedSpan(_selectedSpan!);
-    }
+        // close overlay of any selected token
+        if (_selectedSpan != null) {
+          updateSelectedSpan(_selectedSpan!);
+        }
 
-    toolbarMode = mode;
-    if (toolbarMode != MessageMode.wordMorph) {
-      selectedMorph = null;
-    }
-  });
+        toolbarMode = mode;
+        if (toolbarMode != MessageMode.wordMorph) {
+          selectedMorph = null;
+        }
+      });
 
   ///////////////////////////////////
   /// User action handlers
@@ -393,10 +398,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /// Getters
   ////////////////////////////////////
   PangeaMessageEvent? get pangeaMessageEvent => PangeaMessageEvent(
-    event: widget._event,
-    timeline: widget._timeline,
-    ownMessage: widget._event.room.client.userID == widget._event.senderId,
-  );
+        event: widget._event,
+        timeline: widget._timeline,
+        ownMessage: widget._event.room.client.userID == widget._event.senderId,
+      );
 
   bool get showToolbarButtons =>
       pangeaMessageEvent != null &&
@@ -447,19 +452,18 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   PracticeSelection? get practiceSelection =>
       pangeaMessageEvent?.messageDisplayRepresentation?.tokens != null
           ? PracticeSelectionRepo.get(
-            pangeaMessageEvent!.messageDisplayLangCode,
-            pangeaMessageEvent!.messageDisplayRepresentation!.tokens!,
-          )
+              pangeaMessageEvent!.messageDisplayLangCode,
+              pangeaMessageEvent!.messageDisplayRepresentation!.tokens!,
+            )
           : null;
 
   bool get messageInUserL2 =>
       pangeaMessageEvent?.messageDisplayLangCode.split("-")[0] ==
       MatrixState.pangeaController.languageController.userL2?.langCodeShort;
 
-  PangeaToken? get selectedToken => pangeaMessageEvent
-      ?.messageDisplayRepresentation
-      ?.tokens
-      ?.firstWhereOrNull(isTokenSelected);
+  PangeaToken? get selectedToken =>
+      pangeaMessageEvent?.messageDisplayRepresentation?.tokens
+          ?.firstWhereOrNull(isTokenSelected);
 
   /// Whether the overlay is currently displaying a selection
   bool get isSelection => _selectedSpan != null || _highlightedTokens != null;
@@ -526,7 +530,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     setState(() {});
   }
 
-  void onClickOverlayMessageToken(PangeaToken token) {
+  void onClickOverlayMessageToken(
+    PangeaToken token,
+  ) {
     if (practiceSelection?.hasHiddenWordActivity == true ||
         readingAssistanceMode == ReadingAssistanceMode.practiceMode) {
       return;
@@ -552,8 +558,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// Whether the given token is currently selected or highlighted
   bool isTokenSelected(PangeaToken token) {
-    final isSelected =
-        _selectedSpan?.offset == token.text.offset &&
+    final isSelected = _selectedSpan?.offset == token.text.offset &&
         _selectedSpan?.length == token.text.length;
     return isSelected;
   }

@@ -33,7 +33,9 @@ class OverlayContainer extends StatelessWidget {
           width: 2,
           color: borderColor ?? Theme.of(context).colorScheme.primary,
         ),
-        borderRadius: const BorderRadius.all(Radius.circular(25)),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(25),
+        ),
       ),
       constraints: BoxConstraints(
         maxWidth: maxWidth,

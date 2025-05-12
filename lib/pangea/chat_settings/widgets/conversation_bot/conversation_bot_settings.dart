@@ -24,7 +24,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 class ConversationBotSettings extends StatefulWidget {
   final Room room;
 
-  const ConversationBotSettings({super.key, required this.room});
+  const ConversationBotSettings({
+    super.key,
+    required this.room,
+  });
 
   @override
   ConversationBotSettingsState createState() => ConversationBotSettingsState();
@@ -34,17 +37,20 @@ class ConversationBotSettingsState extends State<ConversationBotSettings> {
   Future<void> setBotOptions(BotOptionsModel botOptions) async {
     try {
       await Matrix.of(context).client.setRoomStateWithKey(
-        widget.room.id,
-        PangeaEventTypes.botOptions,
-        '',
-        botOptions.toJson(),
-      );
+            widget.room.id,
+            PangeaEventTypes.botOptions,
+            '',
+            botOptions.toJson(),
+          );
     } catch (err, stack) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         e: err,
         s: stack,
-        data: {"botOptions": botOptions.toJson(), "roomID": widget.room.id},
+        data: {
+          "botOptions": botOptions.toJson(),
+          "roomID": widget.room.id,
+        },
       );
     }
   }
@@ -69,17 +75,18 @@ class ConversationBotSettingsState extends State<ConversationBotSettings> {
             leading: CircleAvatar(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               foregroundColor: Theme.of(context).textTheme.bodyLarge!.color,
-              child: const BotFace(width: 30.0, expression: BotExpression.idle),
+              child: const BotFace(
+                width: 30.0,
+                expression: BotExpression.idle,
+              ),
             ),
-            onTap:
-                () => showDialog<BotOptionsModel?>(
-                  context: context,
-                  builder:
-                      (BuildContext context) => ConversationBotSettingsDialog(
-                        room: widget.room,
-                        onSubmit: setBotOptions,
-                      ),
-                ),
+            onTap: () => showDialog<BotOptionsModel?>(
+              context: context,
+              builder: (BuildContext context) => ConversationBotSettingsDialog(
+                room: widget.room,
+                onSubmit: setBotOptions,
+              ),
+            ),
           ),
         ],
       ),
@@ -120,10 +127,9 @@ class ConversationBotSettingsDialogState
   @override
   void initState() {
     super.initState();
-    botOptions =
-        widget.room.botOptions != null
-            ? BotOptionsModel.fromJson(widget.room.botOptions?.toJson())
-            : BotOptionsModel();
+    botOptions = widget.room.botOptions != null
+        ? BotOptionsModel.fromJson(widget.room.botOptions?.toJson())
+        : BotOptionsModel();
 
     botOptions.targetLanguage ??=
         MatrixState.pangeaController.languageController.userL2?.langCode;
@@ -133,7 +139,7 @@ class ConversationBotSettingsDialogState
     });
     hasPermission =
         widget.room.powerForChangingStateEvent(PangeaEventTypes.botOptions) <=
-        widget.room.ownPowerLevel;
+            widget.room.ownPowerLevel;
 
     discussionKeywordsController.text = botOptions.discussionKeywords ?? "";
     discussionTopicController.text = botOptions.discussionTopic ?? "";
@@ -181,7 +187,9 @@ class ConversationBotSettingsDialogState
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 12,
+                  ),
                   child: Text(
                     L10n.of(context).botConfig,
                     style: Theme.of(context).textTheme.titleLarge,
@@ -197,14 +205,15 @@ class ConversationBotSettingsDialogState
               onTap:
                   hasPermission ? null : () => showNoPermissionDialog(context),
               child: SwitchListTile(
-                title: Text(L10n.of(context).conversationBotStatus),
+                title: Text(
+                  L10n.of(context).conversationBotStatus,
+                ),
                 value: addBot,
-                onChanged:
-                    hasPermission
-                        ? (bool value) {
-                          setState(() => addBot = value);
-                        }
-                        : null, // Keeps the switch disabled
+                onChanged: hasPermission
+                    ? (bool value) {
+                        setState(() => addBot = value);
+                      }
+                    : null, // Keeps the switch disabled
                 contentPadding: const EdgeInsets.all(4),
               ),
             ),
@@ -260,12 +269,8 @@ class ConversationBotSettingsDialogState
                     if (!isValid) return;
 
                     updateFromTextControllers();
-                    botOptions.targetLanguage ??=
-                        MatrixState
-                            .pangeaController
-                            .languageController
-                            .userL2
-                            ?.langCode;
+                    botOptions.targetLanguage ??= MatrixState
+                        .pangeaController.languageController.userL2?.langCode;
 
                     await showFutureLoadingDialog(
                       context: context,
@@ -281,10 +286,9 @@ class ConversationBotSettingsDialogState
 
                     Navigator.of(context).pop(botOptions);
                   },
-                  child:
-                      hasPermission
-                          ? Text(L10n.of(context).confirm)
-                          : Text(L10n.of(context).close),
+                  child: hasPermission
+                      ? Text(L10n.of(context).confirm)
+                      : Text(L10n.of(context).close),
                 ),
               ],
             ),

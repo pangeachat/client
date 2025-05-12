@@ -38,29 +38,30 @@ class ActivityPlannerPageAppBar extends StatelessWidget
           ),
         ],
       ),
-      title:
-          pageMode == PageMode.savedActivities
-              ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.bookmarks),
-                  const SizedBox(width: 8),
-                  Flexible(child: Text(l10n.myBookmarkedActivities)),
-                ],
-              )
-              : Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.event_note_outlined),
-                  const SizedBox(width: 8),
-                  Flexible(
-                    child: Text(
-                      l10n.activityPlannerTitle,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+      title: pageMode == PageMode.savedActivities
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.bookmarks),
+                const SizedBox(width: 8),
+                Flexible(
+                  child: Text(l10n.myBookmarkedActivities),
+                ),
+              ],
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.event_note_outlined),
+                const SizedBox(width: 8),
+                Flexible(
+                  child: Text(
+                    l10n.activityPlannerTitle,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                ],
-              ),
+                ),
+              ],
+            ),
       actions: [
         Container(
           width: 150.0,
@@ -85,7 +86,9 @@ class ActivityPlannerPageAppBar extends StatelessWidget
                     svgUrl:
                         "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.crayonIconPath}",
                     colorReplacements: {
-                      "#CDBEF9": colorToHex(theme.colorScheme.secondary),
+                      "#CDBEF9": colorToHex(
+                        theme.colorScheme.secondary,
+                      ),
                     },
                     height: 16.0,
                     width: 16.0,

@@ -9,7 +9,10 @@ import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 class ConstructUsesXPTile extends StatelessWidget {
   final ConstructUses constructUses;
 
-  const ConstructUsesXPTile(this.constructUses, {super.key});
+  const ConstructUsesXPTile(
+    this.constructUses, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +40,7 @@ class ConstructUsesXPTile extends StatelessWidget {
           children: [
             Expanded(
               child: LinearProgressIndicator(
-                value:
-                    constructUses.points /
+                value: constructUses.points /
                     constructUses.constructType.maxXPPerLemma,
                 minHeight: 20,
                 borderRadius: const BorderRadius.all(
@@ -51,7 +53,9 @@ class ConstructUsesXPTile extends StatelessWidget {
             Text("${constructUses.points}xp"),
           ],
         ),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 20,
+        ),
       ),
     );
   }

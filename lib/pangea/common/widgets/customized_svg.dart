@@ -110,10 +110,16 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
     final response = await http.get(Uri.parse(widget.svgUrl));
     if (response.statusCode != 200) {
       final e = Exception('Failed to load SVG: ${response.statusCode}');
-      ErrorHandler.logError(e: e, data: {"svgUrl": widget.svgUrl});
-      await CustomizedSvg._svgStorage.write(widget.svgUrl, {
-        'timestamp': DateTime.now().millisecondsSinceEpoch,
-      });
+      ErrorHandler.logError(
+        e: e,
+        data: {
+          "svgUrl": widget.svgUrl,
+        },
+      );
+      await CustomizedSvg._svgStorage.write(
+        widget.svgUrl,
+        {'timestamp': DateTime.now().millisecondsSinceEpoch},
+      );
       throw e;
     }
 
@@ -140,9 +146,8 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
         cachedSvgEntry is Map<String, dynamic> &&
         cachedSvgEntry['svg'] is String &&
         cachedSvgEntry['timestamp'] is int &&
-        DateTime.fromMillisecondsSinceEpoch(
-          cachedSvgEntry['timestamp'],
-        ).isAfter(_cacheClearDate)) {
+        DateTime.fromMillisecondsSinceEpoch(cachedSvgEntry['timestamp'])
+            .isAfter(_cacheClearDate)) {
       return _modifySVG(cachedSvgEntry['svg'] as String);
     }
     return null;
@@ -155,10 +160,15 @@ class _CustomizedSvgState extends State<CustomizedSvg> {
         return SizedBox(
           width: widget.width,
           height: widget.height,
-          child: const Center(child: CircularProgressIndicator()),
+          child: const Center(
+            child: CircularProgressIndicator(),
+          ),
         );
       } else {
-        return SizedBox(width: widget.width, height: widget.height);
+        return SizedBox(
+          width: widget.width,
+          height: widget.height,
+        );
       }
     } else if (_hasError || _svgContent == null) {
       return widget.errorIcon;

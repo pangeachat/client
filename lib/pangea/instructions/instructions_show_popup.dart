@@ -36,33 +36,39 @@ Future<void> instructionsShowPopup(
   }
 
   final botStyle = BotStyle.text(context);
-  Future.delayed(const Duration(seconds: 1), () {
-    if (!context.mounted) return;
-    OverlayUtil.showPositionedCard(
-      context: context,
-      backDropToDismiss: false,
-      cardToShow: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CardHeader(
-            text: key.title(L10n.of(context)),
-            botExpression: BotExpression.idle,
-            // onClose: () => {_instructionsClosed[key.toString()] = true},
-          ),
-          const SizedBox(height: 10.0),
-          Padding(
-            padding: const EdgeInsets.all(6.0),
-            child: Text(key.body(L10n.of(context)), style: botStyle),
-          ),
-          if (customContent != null) customContent,
-          if (showToggle) InstructionsToggle(instructionsKey: key),
-        ],
-      ),
-      maxHeight: 300,
-      maxWidth: 300,
-      transformTargetId: transformTargetKey,
-      closePrevOverlay: false,
-      overlayKey: key.toString(),
-    );
-  });
+  Future.delayed(
+    const Duration(seconds: 1),
+    () {
+      if (!context.mounted) return;
+      OverlayUtil.showPositionedCard(
+        context: context,
+        backDropToDismiss: false,
+        cardToShow: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CardHeader(
+              text: key.title(L10n.of(context)),
+              botExpression: BotExpression.idle,
+              // onClose: () => {_instructionsClosed[key.toString()] = true},
+            ),
+            const SizedBox(height: 10.0),
+            Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: Text(
+                key.body(L10n.of(context)),
+                style: botStyle,
+              ),
+            ),
+            if (customContent != null) customContent,
+            if (showToggle) InstructionsToggle(instructionsKey: key),
+          ],
+        ),
+        maxHeight: 300,
+        maxWidth: 300,
+        transformTargetId: transformTargetKey,
+        closePrevOverlay: false,
+        overlayKey: key.toString(),
+      );
+    },
+  );
 }

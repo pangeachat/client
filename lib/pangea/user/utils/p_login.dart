@@ -21,7 +21,10 @@ void pLoginAction({
 
   await showFutureLoadingDialog(
     context: context,
-    future: () => _loginFuture(controller: controller, context: context),
+    future: () => _loginFuture(
+      controller: controller,
+      context: context,
+    ),
     onError: (e, s) {
       controller.setLoadingSignIn(false);
       controller.setLoadingSSO(false, SSOProvider.apple);
@@ -65,23 +68,23 @@ Future<void> _loginFuture({
   final redirect = client.onLoginStateChanged.stream
       .where((state) => state == LoginState.loggedIn)
       .first
-      .then((_) {
-        final route = FluffyChatApp.router.state.fullPath;
-        if (route == null || !route.contains("/rooms")) {
-          context.go("/rooms");
-        }
-      })
-      .timeout(const Duration(seconds: 30));
+      .then(
+    (_) {
+      final route = FluffyChatApp.router.state.fullPath;
+      if (route == null || !route.contains("/rooms")) {
+        context.go("/rooms");
+      }
+    },
+  ).timeout(const Duration(seconds: 30));
 
   final loginRes = await client.login(
     LoginType.mLoginPassword,
     identifier: identifier,
     // To stay compatible with older server versions
     // ignore: deprecated_member_use
-    user:
-        identifier.type == AuthenticationIdentifierTypes.userId
-            ? username
-            : null,
+    user: identifier.type == AuthenticationIdentifierTypes.userId
+        ? username
+        : null,
     password: controller.passwordController.text.trim(),
     initialDeviceDisplayName: PlatformInfos.clientName,
     onInitStateChanged: (state) {

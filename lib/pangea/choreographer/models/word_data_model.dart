@@ -43,20 +43,20 @@ class WordData {
   static const String _dataFullKey = 'data_full';
 
   Map<String, dynamic> toJson() => {
-    // _languageSensesKey: languageSenses.map((e) => e.toJson()).toList(),
-    ModelKey.word: word,
-    ModelKey.userL1: userL1,
-    ModelKey.userL2: userL2,
-    ModelKey.baseDefinition: baseDefinition,
-    ModelKey.targetDefinition: targetDefinition,
-    ModelKey.basePartOfSpeech: basePartOfSpeech,
-    ModelKey.targetPartOfSpeech: targetPartOfSpeech,
-    ModelKey.partOfSpeech: partOfSpeech,
-    ModelKey.baseWord: baseWord,
-    ModelKey.targetWord: targetWord,
-    ModelKey.baseExampleSentence: baseExampleSentence,
-    ModelKey.targetExampleSentence: targetExampleSentence,
-  };
+        // _languageSensesKey: languageSenses.map((e) => e.toJson()).toList(),
+        ModelKey.word: word,
+        ModelKey.userL1: userL1,
+        ModelKey.userL2: userL2,
+        ModelKey.baseDefinition: baseDefinition,
+        ModelKey.targetDefinition: targetDefinition,
+        ModelKey.basePartOfSpeech: basePartOfSpeech,
+        ModelKey.targetPartOfSpeech: targetPartOfSpeech,
+        ModelKey.partOfSpeech: partOfSpeech,
+        ModelKey.baseWord: baseWord,
+        ModelKey.targetWord: targetWord,
+        ModelKey.baseExampleSentence: baseExampleSentence,
+        ModelKey.targetExampleSentence: targetExampleSentence,
+      };
 
   factory WordData.fromJson(
     Map<String, dynamic> json, {
@@ -81,8 +81,8 @@ class WordData {
         baseWord: json[_dataFullKey][ModelKey.baseWord],
         targetWord: json[_dataFullKey][ModelKey.targetWord],
         baseExampleSentence: json[_dataFullKey][ModelKey.baseExampleSentence],
-        targetExampleSentence:
-            json[_dataFullKey][ModelKey.targetExampleSentence],
+        targetExampleSentence: json[_dataFullKey]
+            [ModelKey.targetExampleSentence],
         word: word,
         userL1: userL1,
         userL2: userL2,
@@ -99,13 +99,13 @@ class WordData {
     required String f,
     required String? l1,
     required String? l2,
-  }) => word == w && userL1 == l1 && userL2 == l2 && fullText == f;
+  }) =>
+      word == w && userL1 == l1 && userL2 == l2 && fullText == f;
 
   String? formattedPartOfSpeech(LanguageType languageType) {
-    final String pos =
-        languageType == LanguageType.base
-            ? basePartOfSpeech
-            : targetPartOfSpeech;
+    final String pos = languageType == LanguageType.base
+        ? basePartOfSpeech
+        : targetPartOfSpeech;
     if (pos.isEmpty) return null;
     return pos[0].toUpperCase() + pos.substring(1);
   }

@@ -9,7 +9,10 @@ import 'package:fluffychat/pangea/subscription/widgets/subscription_options.dart
 
 class SubscriptionPaywall extends StatelessWidget {
   final PangeaController pangeaController;
-  const SubscriptionPaywall({super.key, required this.pangeaController});
+  const SubscriptionPaywall({
+    super.key,
+    required this.pangeaController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +46,9 @@ class SubscriptionPaywall extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               Center(
-                child: SubscriptionOptions(pangeaController: pangeaController),
+                child: SubscriptionOptions(
+                  pangeaController: pangeaController,
+                ),
               ),
             ],
           ),

@@ -75,46 +75,47 @@ abstract class AppRoutes {
   static final List<RouteBase> routes = [
     GoRoute(
       path: '/',
-      redirect:
-          (context, state) =>
-              Matrix.of(context).client.isLogged() ? '/rooms' : '/home',
+      redirect: (context, state) =>
+          Matrix.of(context).client.isLogged() ? '/rooms' : '/home',
     ),
     GoRoute(
       path: '/home',
-      pageBuilder:
-          (context, state) => defaultPageBuilder(
-            context,
-            state,
-            // #Pangea
-            // const HomeserverPicker(addMultiAccount: false),
-            const LoginOrSignupView(),
-            // Pangea#
-          ),
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        // #Pangea
+        // const HomeserverPicker(addMultiAccount: false),
+        const LoginOrSignupView(),
+        // Pangea#
+      ),
       redirect: loggedInRedirect,
       routes: [
         GoRoute(
           path: 'login',
-          pageBuilder:
-              (context, state) =>
-                  defaultPageBuilder(context, state, const Login()),
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const Login(),
+          ),
           redirect: loggedInRedirect,
         ),
         // #Pangea
         GoRoute(
           path: 'signup',
-          pageBuilder:
-              (context, state) =>
-                  defaultPageBuilder(context, state, const SignupPage()),
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const SignupPage(),
+          ),
           redirect: loggedInRedirect,
           routes: [
             GoRoute(
               path: 'email',
-              pageBuilder:
-                  (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    const SignupPage(withEmail: true),
-                  ),
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const SignupPage(withEmail: true),
+              ),
               redirect: loggedInRedirect,
             ),
           ],
@@ -124,40 +125,46 @@ abstract class AppRoutes {
     ),
     GoRoute(
       path: '/logs',
-      pageBuilder:
-          (context, state) =>
-              defaultPageBuilder(context, state, const LogViewer()),
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        const LogViewer(),
+      ),
     ),
     GoRoute(
       path: '/configs',
-      pageBuilder:
-          (context, state) =>
-              defaultPageBuilder(context, state, const ConfigViewer()),
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        const ConfigViewer(),
+      ),
     ),
     // #Pangea
     GoRoute(
       path: '/join_with_link',
-      pageBuilder:
-          (context, state) =>
-              defaultPageBuilder(context, state, const JoinClassWithLink()),
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        const JoinClassWithLink(),
+      ),
     ),
     GoRoute(
       path: '/join_with_alias',
-      pageBuilder:
-          (context, state) =>
-              Matrix.of(context).client.isLogged()
-                  ? chatListShellRouteBuilder(
-                    context,
-                    state,
-                    const JoinWithAlias(),
-                  )
-                  : defaultPageBuilder(context, state, const JoinWithAlias()),
+      pageBuilder: (context, state) => Matrix.of(context).client.isLogged()
+          ? chatListShellRouteBuilder(context, state, const JoinWithAlias())
+          : defaultPageBuilder(
+              context,
+              state,
+              const JoinWithAlias(),
+            ),
     ),
     GoRoute(
       path: '/user_age',
-      pageBuilder:
-          (context, state) =>
-              defaultPageBuilder(context, state, const UserSettingsPage()),
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        const UserSettingsPage(),
+      ),
       redirect: loggedOutRedirect,
     ),
     ShellRoute(
@@ -166,20 +173,21 @@ abstract class AppRoutes {
         GoRoute(
           path: '/homepage',
           redirect: loggedOutRedirect,
-          pageBuilder:
-              (context, state) =>
-                  defaultPageBuilder(context, state, const SuggestionsPage()),
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const SuggestionsPage(),
+          ),
           routes: [
             ...newRoomRoutes,
             GoRoute(
               path: '/planner',
               redirect: loggedOutRedirect,
-              pageBuilder:
-                  (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    const ActivityGenerator(),
-                  ),
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const ActivityGenerator(),
+              ),
             ),
           ],
         ),
@@ -190,63 +198,64 @@ abstract class AppRoutes {
       // Never use a transition on the shell route. Changing the PageBuilder
       // here based on a MediaQuery causes the child to briefly be rendered
       // twice with the same GlobalKey, blowing up the rendering.
-      pageBuilder:
-          (context, state, child) => noTransitionPageBuilder(
-            context,
-            state,
-            FluffyThemes.isColumnMode(context) &&
-                    state.fullPath?.startsWith('/rooms/settings') == false
-                ? TwoColumnLayout(
-                  mainView: ChatList(
-                    activeChat: state.pathParameters['roomid'],
-                    displayNavigationRail:
-                        state.path?.startsWith('/rooms/settings') != true,
-                  ),
-                  sideView: child,
-                )
-                // #Pangea
-                // : child,
-                : FluffyThemes.isColumnMode(context) ||
+      pageBuilder: (context, state, child) => noTransitionPageBuilder(
+        context,
+        state,
+        FluffyThemes.isColumnMode(context) &&
+                state.fullPath?.startsWith('/rooms/settings') == false
+            ? TwoColumnLayout(
+                mainView: ChatList(
+                  activeChat: state.pathParameters['roomid'],
+                  displayNavigationRail:
+                      state.path?.startsWith('/rooms/settings') != true,
+                ),
+                sideView: child,
+              )
+            // #Pangea
+            // : child,
+            : FluffyThemes.isColumnMode(context) ||
                     (state.fullPath?.split("/").reversed.elementAt(1) ==
                             'rooms' &&
                         state.pathParameters['roomid'] != null)
                 ? child
                 : BottomNavLayout(mainView: child),
-            // Pangea#
-          ),
+        // Pangea#
+      ),
       routes: [
         GoRoute(
           path: '/rooms',
           redirect: loggedOutRedirect,
-          pageBuilder:
-              (context, state) => defaultPageBuilder(
-                context,
-                state,
-                FluffyThemes.isColumnMode(context)
-                    // #Pangea
-                    // ? const EmptyPage()
-                    ? const SuggestionsPage()
-                    // Pangea#
-                    : ChatList(activeChat: state.pathParameters['roomid']),
-              ),
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            FluffyThemes.isColumnMode(context)
+                // #Pangea
+                // ? const EmptyPage()
+                ? const SuggestionsPage()
+                // Pangea#
+                : ChatList(
+                    activeChat: state.pathParameters['roomid'],
+                  ),
+          ),
           routes: [
             GoRoute(
               path: 'archive',
-              pageBuilder:
-                  (context, state) =>
-                      defaultPageBuilder(context, state, const Archive()),
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const Archive(),
+              ),
               routes: [
                 GoRoute(
                   path: ':roomid',
-                  pageBuilder:
-                      (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        ChatPage(
-                          roomId: state.pathParameters['roomid']!,
-                          eventId: state.uri.queryParameters['event'],
-                        ),
-                      ),
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    ChatPage(
+                      roomId: state.pathParameters['roomid']!,
+                      eventId: state.uri.queryParameters['event'],
+                    ),
+                  ),
                   redirect: loggedOutRedirect,
                 ),
               ],
@@ -254,30 +263,30 @@ abstract class AppRoutes {
             ),
             GoRoute(
               path: 'newprivatechat',
-              pageBuilder:
-                  (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    const NewPrivateChat(),
-                  ),
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const NewPrivateChat(),
+              ),
               redirect: loggedOutRedirect,
             ),
             GoRoute(
               path: 'newgroup',
-              pageBuilder:
-                  (context, state) =>
-                      defaultPageBuilder(context, state, const NewGroup()),
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const NewGroup(),
+              ),
               redirect: loggedOutRedirect,
               // #Pangea
               routes: [
                 GoRoute(
                   path: ':spaceid',
-                  pageBuilder:
-                      (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        NewGroup(spaceId: state.pathParameters['spaceid']!),
-                      ),
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    NewGroup(spaceId: state.pathParameters['spaceid']!),
+                  ),
                   redirect: loggedOutRedirect,
                 ),
               ],
@@ -285,94 +294,88 @@ abstract class AppRoutes {
             ),
             GoRoute(
               path: 'newspace',
-              pageBuilder:
-                  (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    const NewGroup(createGroupType: CreateGroupType.space),
-                  ),
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const NewGroup(createGroupType: CreateGroupType.space),
+              ),
               redirect: loggedOutRedirect,
             ),
             // #Pangea
             GoRoute(
               path: 'partner',
-              pageBuilder:
-                  (context, state) =>
-                      defaultPageBuilder(context, state, const FindPartner()),
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const FindPartner(),
+              ),
               redirect: loggedOutRedirect,
             ),
             // Pangea#
             ShellRoute(
-              pageBuilder:
-                  (context, state, child) => defaultPageBuilder(
-                    context,
-                    state,
-                    FluffyThemes.isColumnMode(context)
-                        ? TwoColumnLayout(
-                          mainView: Settings(key: state.pageKey),
-                          sideView: child,
-                        )
-                        : child,
-                  ),
+              pageBuilder: (context, state, child) => defaultPageBuilder(
+                context,
+                state,
+                FluffyThemes.isColumnMode(context)
+                    ? TwoColumnLayout(
+                        mainView: Settings(key: state.pageKey),
+                        sideView: child,
+                      )
+                    : child,
+              ),
               routes: [
                 GoRoute(
                   path: 'settings',
-                  pageBuilder:
-                      (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        FluffyThemes.isColumnMode(context)
-                            ? const EmptyPage()
-                            : const Settings(),
-                      ),
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    FluffyThemes.isColumnMode(context)
+                        ? const EmptyPage()
+                        : const Settings(),
+                  ),
                   routes: [
                     GoRoute(
                       path: 'notifications',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const SettingsNotifications(),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const SettingsNotifications(),
+                      ),
                       redirect: loggedOutRedirect,
                     ),
                     GoRoute(
                       path: 'style',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const SettingsStyle(),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const SettingsStyle(),
+                      ),
                       redirect: loggedOutRedirect,
                     ),
                     GoRoute(
                       path: 'devices',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const DevicesSettings(),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const DevicesSettings(),
+                      ),
                       redirect: loggedOutRedirect,
                     ),
                     GoRoute(
                       path: 'chat',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const SettingsChat(),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const SettingsChat(),
+                      ),
                       routes: [
                         GoRoute(
                           path: 'emotes',
-                          pageBuilder:
-                              (context, state) => defaultPageBuilder(
-                                context,
-                                state,
-                                const EmotesSettings(),
-                              ),
+                          pageBuilder: (context, state) => defaultPageBuilder(
+                            context,
+                            state,
+                            const EmotesSettings(),
+                          ),
                         ),
                       ],
                       redirect: loggedOutRedirect,
@@ -424,12 +427,11 @@ abstract class AppRoutes {
                     GoRoute(
                       path: 'security',
                       redirect: loggedOutRedirect,
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const SettingsSecurity(),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const SettingsSecurity(),
+                      ),
                       routes: [
                         GoRoute(
                           path: 'password',
@@ -457,12 +459,11 @@ abstract class AppRoutes {
                         ),
                         GoRoute(
                           path: '3pid',
-                          pageBuilder:
-                              (context, state) => defaultPageBuilder(
-                                context,
-                                state,
-                                const Settings3Pid(),
-                              ),
+                          pageBuilder: (context, state) => defaultPageBuilder(
+                            context,
+                            state,
+                            const Settings3Pid(),
+                          ),
                           redirect: loggedOutRedirect,
                         ),
                       ],
@@ -470,22 +471,22 @@ abstract class AppRoutes {
                     // #Pangea
                     GoRoute(
                       path: 'learning',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const SettingsLearning(isDialog: false),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const SettingsLearning(
+                          isDialog: false,
+                        ),
+                      ),
                       redirect: loggedOutRedirect,
                     ),
                     GoRoute(
                       path: 'subscription',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const SubscriptionManagement(),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const SubscriptionManagement(),
+                      ),
                       redirect: loggedOutRedirect,
                     ),
                     // Pangea#
@@ -498,10 +499,9 @@ abstract class AppRoutes {
               path: ':roomid',
               pageBuilder: (context, state) {
                 final body = state.uri.queryParameters['body'];
-                var shareItems =
-                    state.extra is List<ShareItem>
-                        ? state.extra as List<ShareItem>
-                        : null;
+                var shareItems = state.extra is List<ShareItem>
+                    ? state.extra as List<ShareItem>
+                    : null;
                 if (body != null && body.isNotEmpty) {
                   shareItems ??= [];
                   shareItems.add(TextShareItem(body));
@@ -520,38 +520,37 @@ abstract class AppRoutes {
               routes: [
                 GoRoute(
                   path: 'search',
-                  pageBuilder:
-                      (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        ChatSearchPage(roomId: state.pathParameters['roomid']!),
-                      ),
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    ChatSearchPage(
+                      roomId: state.pathParameters['roomid']!,
+                    ),
+                  ),
                   redirect: loggedOutRedirect,
                 ),
                 // #Pangea
                 GoRoute(
                   path: 'planner',
-                  pageBuilder:
-                      (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        ActivityPlannerPage(
-                          roomID: state.pathParameters['roomid']!,
-                        ),
-                      ),
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    ActivityPlannerPage(
+                      roomID: state.pathParameters['roomid']!,
+                    ),
+                  ),
                   redirect: loggedOutRedirect,
                   routes: [
                     GoRoute(
                       path: '/generator',
                       redirect: loggedOutRedirect,
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            ActivityGenerator(
-                              roomID: state.pathParameters['roomid']!,
-                            ),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        ActivityGenerator(
+                          roomID: state.pathParameters['roomid']!,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -567,99 +566,92 @@ abstract class AppRoutes {
                 // Pangea#
                 GoRoute(
                   path: 'invite',
-                  pageBuilder:
-                      (context, state) => defaultPageBuilder(
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    InvitationSelection(
+                      roomId: state.pathParameters['roomid']!,
+                    ),
+                  ),
+                  redirect: loggedOutRedirect,
+                ),
+                GoRoute(
+                  path: 'details',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    ChatDetails(
+                      roomId: state.pathParameters['roomid']!,
+                    ),
+                  ),
+                  routes: [
+                    GoRoute(
+                      path: 'access',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        ChatAccessSettings(
+                          roomId: state.pathParameters['roomid']!,
+                        ),
+                      ),
+                      redirect: loggedOutRedirect,
+                    ),
+                    GoRoute(
+                      path: 'members',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        ChatMembersPage(
+                          roomId: state.pathParameters['roomid']!,
+                        ),
+                      ),
+                      redirect: loggedOutRedirect,
+                    ),
+                    GoRoute(
+                      path: 'permissions',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const ChatPermissionsSettings(),
+                      ),
+                      redirect: loggedOutRedirect,
+                    ),
+                    GoRoute(
+                      path: 'invite',
+                      pageBuilder: (context, state) => defaultPageBuilder(
                         context,
                         state,
                         InvitationSelection(
                           roomId: state.pathParameters['roomid']!,
                         ),
                       ),
-                  redirect: loggedOutRedirect,
-                ),
-                GoRoute(
-                  path: 'details',
-                  pageBuilder:
-                      (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        ChatDetails(roomId: state.pathParameters['roomid']!),
-                      ),
-                  routes: [
-                    GoRoute(
-                      path: 'access',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            ChatAccessSettings(
-                              roomId: state.pathParameters['roomid']!,
-                            ),
-                          ),
-                      redirect: loggedOutRedirect,
-                    ),
-                    GoRoute(
-                      path: 'members',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            ChatMembersPage(
-                              roomId: state.pathParameters['roomid']!,
-                            ),
-                          ),
-                      redirect: loggedOutRedirect,
-                    ),
-                    GoRoute(
-                      path: 'permissions',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const ChatPermissionsSettings(),
-                          ),
-                      redirect: loggedOutRedirect,
-                    ),
-                    GoRoute(
-                      path: 'invite',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            InvitationSelection(
-                              roomId: state.pathParameters['roomid']!,
-                            ),
-                          ),
                       redirect: loggedOutRedirect,
                     ),
                     GoRoute(
                       path: 'multiple_emotes',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const MultipleEmotesSettings(),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const MultipleEmotesSettings(),
+                      ),
                       redirect: loggedOutRedirect,
                     ),
                     GoRoute(
                       path: 'emotes',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const EmotesSettings(),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const EmotesSettings(),
+                      ),
                       redirect: loggedOutRedirect,
                     ),
                     GoRoute(
                       path: 'emotes/:state_key',
-                      pageBuilder:
-                          (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const EmotesSettings(),
-                          ),
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        const EmotesSettings(),
+                      ),
                       redirect: loggedOutRedirect,
                     ),
                   ],
@@ -677,19 +669,20 @@ abstract class AppRoutes {
     BuildContext context,
     GoRouterState state,
     Widget child,
-  ) => NoTransitionPage(
-    key: state.pageKey,
-    restorationId: state.pageKey.value,
-    child: child,
-  );
+  ) =>
+      NoTransitionPage(
+        key: state.pageKey,
+        restorationId: state.pageKey.value,
+        child: child,
+      );
 
   static Page defaultPageBuilder(
     BuildContext context,
     GoRouterState state,
     Widget child,
   ) =>
-  // #Pangea
-  noTransitionPageBuilder(context, state, child);
+      // #Pangea
+      noTransitionPageBuilder(context, state, child);
   // FluffyThemes.isColumnMode(context)
   //     ? noTransitionPageBuilder(context, state, child)
   //     : MaterialPage(
@@ -701,44 +694,50 @@ abstract class AppRoutes {
 
   // #Pangea
   static List<RouteBase> get newRoomRoutes => [
-    GoRoute(
-      path: 'newgroup',
-      pageBuilder:
-          (context, state) =>
-              defaultPageBuilder(context, state, const NewGroup()),
-      redirect: loggedOutRedirect,
-    ),
-    GoRoute(
-      path: 'newspace',
-      pageBuilder:
-          (context, state) => defaultPageBuilder(
+        GoRoute(
+          path: 'newgroup',
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const NewGroup(),
+          ),
+          redirect: loggedOutRedirect,
+        ),
+        GoRoute(
+          path: 'newspace',
+          pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
             const NewGroup(createGroupType: CreateGroupType.space),
           ),
-      redirect: loggedOutRedirect,
-    ),
-  ];
+          redirect: loggedOutRedirect,
+        ),
+      ];
 
-  static Page chatListShellRouteBuilder(context, state, child) =>
+  static Page chatListShellRouteBuilder(
+    context,
+    state,
+    child,
+  ) =>
       noTransitionPageBuilder(
         context,
         state,
         FluffyThemes.isColumnMode(context) &&
                 state.fullPath?.startsWith('/rooms/settings') == false
             ? TwoColumnLayout(
-              mainView: ChatList(
-                activeChat: state.pathParameters['roomid'],
-                displayNavigationRail:
-                    state.path?.startsWith('/rooms/settings') != true,
-              ),
-              sideView: child,
-            )
+                mainView: ChatList(
+                  activeChat: state.pathParameters['roomid'],
+                  displayNavigationRail:
+                      state.path?.startsWith('/rooms/settings') != true,
+                ),
+                sideView: child,
+              )
             : FluffyThemes.isColumnMode(context) ||
-                (state.fullPath?.split("/").reversed.elementAt(1) == 'rooms' &&
-                    state.pathParameters['roomid'] != null)
-            ? child
-            : BottomNavLayout(mainView: child),
+                    (state.fullPath?.split("/").reversed.elementAt(1) ==
+                            'rooms' &&
+                        state.pathParameters['roomid'] != null)
+                ? child
+                : BottomNavLayout(mainView: child),
       );
   // Pangea#
 }

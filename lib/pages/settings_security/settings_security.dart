@@ -92,11 +92,9 @@ class SettingsSecurityController extends State<SettingsSecurity> {
       // title: L10n.of(context).confirmMatrixId,
       title: L10n.of(context).confirmUserId,
       // Pangea#
-      validator:
-          (text) =>
-              text == supposedMxid
-                  ? null
-                  : L10n.of(context).supposedMxid(supposedMxid),
+      validator: (text) => text == supposedMxid
+          ? null
+          : L10n.of(context).supposedMxid(supposedMxid),
       isDestructive: true,
       okLabel: L10n.of(context).delete,
       cancelLabel: L10n.of(context).cancel,
@@ -119,8 +117,7 @@ class SettingsSecurityController extends State<SettingsSecurity> {
     if (input == null) return;
     await showFutureLoadingDialog(
       context: context,
-      future:
-          () => Matrix.of(context).client.deactivateAccount(
+      future: () => Matrix.of(context).client.deactivateAccount(
             auth: AuthenticationPassword(
               password: input,
               identifier: AuthenticationUserIdentifier(
@@ -132,7 +129,9 @@ class SettingsSecurityController extends State<SettingsSecurity> {
   }
 
   void showBootstrapDialog(BuildContext context) async {
-    await BootstrapDialog(client: Matrix.of(context).client).show(context);
+    await BootstrapDialog(
+      client: Matrix.of(context).client,
+    ).show(context);
   }
 
   Future<void> dehydrateAction() => Matrix.of(context).dehydrateAction(context);

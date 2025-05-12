@@ -45,11 +45,10 @@ class PangeaRichText extends StatefulWidget {
 class PangeaRichTextState extends State<PangeaRichText> {
   final PangeaController pangeaController = MatrixState.pangeaController;
   bool _fetchingRepresentation = false;
-  double get blur =>
-      (_fetchingRepresentation && widget.immersionMode) ||
-              !pangeaController.languageController.languagesSet
-          ? 5
-          : 0;
+  double get blur => (_fetchingRepresentation && widget.immersionMode) ||
+          !pangeaController.languageController.languagesSet
+      ? 5
+      : 0;
   String textSpan = "";
   PangeaRepresentation? repEvent;
 
@@ -76,7 +75,9 @@ class PangeaRichTextState extends State<PangeaRichText> {
         e: PangeaWarningError(error),
         s: stackTrace,
         m: "Error setting text span in PangeaRichText",
-        data: {"newTextSpan": newTextSpan},
+        data: {
+          "newTextSpan": newTextSpan,
+        },
       );
     }
   }
@@ -100,29 +101,27 @@ class PangeaRichTextState extends State<PangeaRichText> {
       setState(() => _fetchingRepresentation = true);
       widget.pangeaMessageEvent
           .representationByLanguageGlobal(
-            langCode: widget.pangeaMessageEvent.messageDisplayLangCode,
-          )
+        langCode: widget.pangeaMessageEvent.messageDisplayLangCode,
+      )
           .onError((error, stackTrace) {
-            ErrorHandler.logError(
-              e: PangeaWarningError(error),
-              s: stackTrace,
-              m: "Error fetching representation",
-              data: {
-                "langCode": widget.pangeaMessageEvent.messageDisplayLangCode,
-              },
-            );
-            return null;
-          })
-          .then((event) {
-            if (!mounted) return;
-            repEvent = event;
-            _setTextSpan(repEvent?.text ?? widget.pangeaMessageEvent.body);
-          })
-          .whenComplete(() {
-            if (mounted) {
-              setState(() => _fetchingRepresentation = false);
-            }
-          });
+        ErrorHandler.logError(
+          e: PangeaWarningError(error),
+          s: stackTrace,
+          m: "Error fetching representation",
+          data: {
+            "langCode": widget.pangeaMessageEvent.messageDisplayLangCode,
+          },
+        );
+        return null;
+      }).then((event) {
+        if (!mounted) return;
+        repEvent = event;
+        _setTextSpan(repEvent?.text ?? widget.pangeaMessageEvent.body);
+      }).whenComplete(() {
+        if (mounted) {
+          setState(() => _fetchingRepresentation = false);
+        }
+      });
 
       _setTextSpan(widget.pangeaMessageEvent.body);
     } else {
@@ -174,9 +173,12 @@ class PangeaRichTextState extends State<PangeaRichText> {
 
     return blur > 0
         ? ImageFiltered(
-          imageFilter: ImageFilter.blur(sigmaX: blur, sigmaY: blur),
-          child: richText,
-        )
+            imageFilter: ImageFilter.blur(
+              sigmaX: blur,
+              sigmaY: blur,
+            ),
+            child: richText,
+          )
         : richText;
   }
 

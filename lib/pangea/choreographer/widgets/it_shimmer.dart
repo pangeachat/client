@@ -21,7 +21,10 @@ class ItShimmer extends StatelessWidget {
       dummyStrings.add(originalSpan);
     }
     return dummyStrings.map(
-      (e) => ITShimmerElement(text: e, fontSize: fontSize),
+      (e) => ITShimmerElement(
+        text: e,
+        fontSize: fontSize,
+      ),
     );
   }
 
@@ -67,7 +70,9 @@ class ITShimmerElement extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: 7),
             ),
             shape: WidgetStateProperty.all(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
             backgroundColor: WidgetStateProperty.all<Color>(
               Theme.of(context).colorScheme.primary.withAlpha(50),
@@ -76,10 +81,10 @@ class ITShimmerElement extends StatelessWidget {
           onPressed: () {},
           child: Text(
             text,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color: Colors.transparent,
-              fontSize: fontSize,
-            ),
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(color: Colors.transparent, fontSize: fontSize),
           ),
         ),
       ),

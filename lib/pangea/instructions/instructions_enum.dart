@@ -64,7 +64,9 @@ extension InstructionsEnumExtension on InstructionsEnum {
         ErrorHandler.logError(
           e: Exception("No title for this instruction"),
           m: 'InstructionsEnumExtension.title',
-          data: {'this': this},
+          data: {
+            'this': this,
+          },
         );
         debugger(when: kDebugMode);
         return "";
@@ -137,12 +139,9 @@ extension InstructionsEnumExtension on InstructionsEnum {
     }
   }
 
-  bool get isToggledOff => MatrixState
-      .pangeaController
-      .userController
-      .profile
-      .instructionSettings
-      .getStatus(this);
+  bool get isToggledOff =>
+      MatrixState.pangeaController.userController.profile.instructionSettings
+          .getStatus(this);
 
   void setToggledOff(bool value) {
     final userController = MatrixState.pangeaController.userController;

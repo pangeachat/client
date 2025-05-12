@@ -15,9 +15,11 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    final homeserver = Matrix.of(
-      context,
-    ).getLoginClient().homeserver.toString().replaceFirst('https://', '');
+    final homeserver = Matrix.of(context)
+        .getLoginClient()
+        .homeserver
+        .toString()
+        .replaceFirst('https://', '');
     final title = L10n.of(context).logInTo(homeserver);
     final titleParts = title.split(homeserver);
 
@@ -63,10 +65,9 @@ class LoginView extends StatelessWidget {
                     controller: controller.usernameController,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
-                    autofillHints:
-                        controller.loadingSignIn
-                            ? null
-                            : [AutofillHints.username],
+                    autofillHints: controller.loadingSignIn
+                        ? null
+                        : [AutofillHints.username],
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.account_box_outlined),
                       errorText: controller.usernameError,
@@ -82,10 +83,9 @@ class LoginView extends StatelessWidget {
                   child: TextField(
                     readOnly: controller.loadingSignIn,
                     autocorrect: false,
-                    autofillHints:
-                        controller.loadingSignIn
-                            ? null
-                            : [AutofillHints.password],
+                    autofillHints: controller.loadingSignIn
+                        ? null
+                        : [AutofillHints.password],
                     controller: controller.passwordController,
                     textInputAction: TextInputAction.go,
                     obscureText: !controller.showPassword,
@@ -118,20 +118,18 @@ class LoginView extends StatelessWidget {
                     ),
                     onPressed:
                         controller.loadingSignIn ? null : controller.login,
-                    child:
-                        controller.loadingSignIn
-                            ? const LinearProgressIndicator()
-                            : Text(L10n.of(context).login),
+                    child: controller.loadingSignIn
+                        ? const LinearProgressIndicator()
+                        : Text(L10n.of(context).login),
                   ),
                 ),
                 const SizedBox(height: 16),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: TextButton(
-                    onPressed:
-                        controller.loadingSignIn
-                            ? () {}
-                            : controller.passwordForgotten,
+                    onPressed: controller.loadingSignIn
+                        ? () {}
+                        : controller.passwordForgotten,
                     style: TextButton.styleFrom(
                       foregroundColor: theme.colorScheme.error,
                     ),

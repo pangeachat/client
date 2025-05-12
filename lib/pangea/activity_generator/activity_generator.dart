@@ -23,7 +23,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityGenerator extends StatefulWidget {
   final String? roomID;
-  const ActivityGenerator({this.roomID, super.key});
+  const ActivityGenerator({
+    this.roomID,
+    super.key,
+  });
 
   @override
   ActivityGeneratorState createState() => ActivityGeneratorState();
@@ -69,21 +72,21 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
   }
 
   ActivitySettingRequestSchema get req => ActivitySettingRequestSchema(
-    langCode:
-        MatrixState.pangeaController.languageController.userL2?.langCode ??
-        LanguageKeys.defaultLanguage,
-  );
+        langCode:
+            MatrixState.pangeaController.languageController.userL2?.langCode ??
+                LanguageKeys.defaultLanguage,
+      );
 
   ActivityPlanRequest get planRequest => ActivityPlanRequest(
-    topic: topicController.text,
-    mode: modeController.text,
-    objective: objectiveController.text,
-    media: selectedMedia,
-    languageOfInstructions: selectedLanguageOfInstructions!,
-    targetLanguage: selectedTargetLanguage!,
-    cefrLevel: selectedCefrLevel!,
-    numberOfParticipants: selectedNumberOfParticipants!,
-  );
+        topic: topicController.text,
+        mode: modeController.text,
+        objective: objectiveController.text,
+        media: selectedMedia,
+        languageOfInstructions: selectedLanguageOfInstructions!,
+        targetLanguage: selectedTargetLanguage!,
+        cefrLevel: selectedCefrLevel!,
+        numberOfParticipants: selectedNumberOfParticipants!,
+      );
 
   Future<List<ActivitySettingResponseSchema>> get topicItems =>
       TopicListRepo.get(req);
@@ -94,10 +97,9 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
   Future<List<ActivitySettingResponseSchema>> get objectiveItems =>
       LearningObjectiveListRepo.get(req);
 
-  Room? get room =>
-      widget.roomID != null
-          ? Matrix.of(context).client.getRoomById(widget.roomID!)
-          : null;
+  Room? get room => widget.roomID != null
+      ? Matrix.of(context).client.getRoomById(widget.roomID!)
+      : null;
 
   String? validateNotNull(String? value) {
     if (value == null || value.isEmpty) {
@@ -180,10 +182,8 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
     final mode = await _selectedMode;
     if (mode == null) return;
 
-    final modeName = mode.defaultName.toLowerCase().replaceAll(
-      RegExp(r'\s+'),
-      '',
-    );
+    final modeName =
+        mode.defaultName.toLowerCase().replaceAll(RegExp(r'\s+'), '');
 
     if (!mounted || activities == null) return;
     final imageUrl =
@@ -234,7 +234,9 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {'activityPlanRequest': planRequest},
+        data: {
+          'activityPlanRequest': planRequest,
+        },
       );
     } finally {
       if (mounted) setState(() => loading = false);

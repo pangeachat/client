@@ -2,7 +2,10 @@ import 'package:matrix/matrix.dart';
 
 extension FileDescriptionExtension on Event {
   String? get fileDescription {
-    if (!{MessageTypes.File, MessageTypes.Image}.contains(messageType)) {
+    if (!{
+      MessageTypes.File,
+      MessageTypes.Image,
+    }.contains(messageType)) {
       return null;
     }
     final formattedBody = content.tryGet<String>('formatted_body');

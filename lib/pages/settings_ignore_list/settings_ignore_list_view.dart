@@ -59,7 +59,9 @@ class SettingsIgnoreListView extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(color: theme.dividerColor),
+            Divider(
+              color: theme.dividerColor,
+            ),
             Expanded(
               child: StreamBuilder<Object>(
                 stream: client.onSync.stream.where(
@@ -73,42 +75,33 @@ class SettingsIgnoreListView extends StatelessWidget {
                 builder: (context, snapshot) {
                   return ListView.builder(
                     itemCount: client.ignoredUsers.length,
-                    itemBuilder:
-                        (c, i) => FutureBuilder<Profile>(
-                          future: client.getProfileFromUserId(
-                            client.ignoredUsers[i],
-                          ),
-                          builder:
-                              (c, s) => ListTile(
-                                leading: Avatar(
-                                  mxContent: s.data?.avatarUrl ?? Uri.parse(''),
-                                  name:
-                                      s.data?.displayName ??
-                                      client.ignoredUsers[i],
-                                  // #Pangea
-                                  userId: s.data?.userId,
-                                  // Pangea#
-                                ),
-                                title: Text(
-                                  s.data?.displayName ?? client.ignoredUsers[i],
-                                ),
-                                subtitle: Text(
-                                  s.data?.userId ?? client.ignoredUsers[i],
-                                ),
-                                trailing: IconButton(
-                                  tooltip: L10n.of(context).delete,
-                                  icon: const Icon(Icons.delete_outlined),
-                                  onPressed:
-                                      () => showFutureLoadingDialog(
-                                        context: context,
-                                        future:
-                                            () => client.unignoreUser(
-                                              client.ignoredUsers[i],
-                                            ),
-                                      ),
-                                ),
-                              ),
+                    itemBuilder: (c, i) => FutureBuilder<Profile>(
+                      future:
+                          client.getProfileFromUserId(client.ignoredUsers[i]),
+                      builder: (c, s) => ListTile(
+                        leading: Avatar(
+                          mxContent: s.data?.avatarUrl ?? Uri.parse(''),
+                          name: s.data?.displayName ?? client.ignoredUsers[i],
+                          // #Pangea
+                          userId: s.data?.userId,
+                          // Pangea#
                         ),
+                        title: Text(
+                          s.data?.displayName ?? client.ignoredUsers[i],
+                        ),
+                        subtitle:
+                            Text(s.data?.userId ?? client.ignoredUsers[i]),
+                        trailing: IconButton(
+                          tooltip: L10n.of(context).delete,
+                          icon: const Icon(Icons.delete_outlined),
+                          onPressed: () => showFutureLoadingDialog(
+                            context: context,
+                            future: () =>
+                                client.unignoreUser(client.ignoredUsers[i]),
+                          ),
+                        ),
+                      ),
+                    ),
                   );
                 },
               ),

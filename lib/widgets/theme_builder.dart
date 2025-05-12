@@ -12,8 +12,7 @@ class ThemeBuilder extends StatefulWidget {
     BuildContext context,
     ThemeMode themeMode,
     Color? primaryColor,
-  )
-  builder;
+  ) builder;
 
   final String themeModeSettingsKey;
   final String primaryColorSettingsKey;
@@ -39,7 +38,10 @@ class ThemeController extends State<ThemeBuilder> {
   Color? get primaryColor => _primaryColor;
 
   static ThemeController of(BuildContext context) =>
-      Provider.of<ThemeController>(context, listen: false);
+      Provider.of<ThemeController>(
+        context,
+        listen: false,
+      );
 
   void _loadData(_) async {
     final preferences =
@@ -49,9 +51,8 @@ class ThemeController extends State<ThemeBuilder> {
     final rawColor = preferences.getInt(widget.primaryColorSettingsKey);
 
     setState(() {
-      _themeMode = ThemeMode.values.singleWhereOrNull(
-        (value) => value.name == rawThemeMode,
-      );
+      _themeMode = ThemeMode.values
+          .singleWhereOrNull((value) => value.name == rawThemeMode);
       _primaryColor = rawColor == null ? null : Color(rawColor);
     });
   }
@@ -92,12 +93,11 @@ class ThemeController extends State<ThemeBuilder> {
     return Provider(
       create: (_) => this,
       child: DynamicColorBuilder(
-        builder:
-            (light, _) => widget.builder(
-              context,
-              themeMode,
-              primaryColor ?? light?.primary,
-            ),
+        builder: (light, _) => widget.builder(
+          context,
+          themeMode,
+          primaryColor ?? light?.primary,
+        ),
       ),
     );
   }

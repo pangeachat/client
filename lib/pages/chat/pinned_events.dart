@@ -19,40 +19,36 @@ class PinnedEvents extends StatelessWidget {
   Future<void> _displayPinnedEventsDialog(BuildContext context) async {
     final eventsResult = await showFutureLoadingDialog(
       context: context,
-      future:
-          () => Future.wait(
-            controller.room.pinnedEventIds.map(
-              (eventId) => controller.room.getEventById(eventId),
-            ),
-          ),
+      future: () => Future.wait(
+        controller.room.pinnedEventIds.map(
+          (eventId) => controller.room.getEventById(eventId),
+        ),
+      ),
     );
     final events = eventsResult.result;
     if (events == null) return;
 
-    final eventId =
-        events.length == 1
-            ? events.single?.eventId
-            : await showModalActionPopup<String>(
-              context: context,
-              title: L10n.of(context).pin,
-              cancelLabel: L10n.of(context).cancel,
-              actions:
-                  events
-                      .map(
-                        (event) => AdaptiveModalAction(
-                          value: event?.eventId ?? '',
-                          icon: const Icon(Icons.push_pin_outlined),
-                          label:
-                              event?.calcLocalizedBodyFallback(
-                                MatrixLocals(L10n.of(context)),
-                                withSenderNamePrefix: true,
-                                hideReply: true,
-                              ) ??
-                              'UNKNOWN',
-                        ),
-                      )
-                      .toList(),
-            );
+    final eventId = events.length == 1
+        ? events.single?.eventId
+        : await showModalActionPopup<String>(
+            context: context,
+            title: L10n.of(context).pin,
+            cancelLabel: L10n.of(context).cancel,
+            actions: events
+                .map(
+                  (event) => AdaptiveModalAction(
+                    value: event?.eventId ?? '',
+                    icon: const Icon(Icons.push_pin_outlined),
+                    label: event?.calcLocalizedBodyFallback(
+                          MatrixLocals(L10n.of(context)),
+                          withSenderNamePrefix: true,
+                          hideReply: true,
+                        ) ??
+                        'UNKNOWN',
+                  ),
+                )
+                .toList(),
+          );
 
     if (eventId != null) controller.scrollToEventId(eventId);
   }
@@ -72,8 +68,7 @@ class PinnedEvents extends StatelessWidget {
       builder: (context, snapshot) {
         final event = snapshot.data;
         return ChatAppBarListTile(
-          title:
-              event?.calcLocalizedBodyFallback(
+          title: event?.calcLocalizedBodyFallback(
                 MatrixLocals(L10n.of(context)),
                 withSenderNamePrefix: true,
                 hideReply: true,
@@ -85,10 +80,9 @@ class PinnedEvents extends StatelessWidget {
             color: theme.colorScheme.onSurfaceVariant,
             icon: const Icon(Icons.push_pin),
             tooltip: L10n.of(context).unpin,
-            onPressed:
-                controller.room.canSendEvent(EventTypes.RoomPinnedEvents)
-                    ? () => controller.unpinEvent(event!.eventId)
-                    : null,
+            onPressed: controller.room.canSendEvent(EventTypes.RoomPinnedEvents)
+                ? () => controller.unpinEvent(event!.eventId)
+                : null,
           ),
           onTap: () => _displayPinnedEventsDialog(context),
         );

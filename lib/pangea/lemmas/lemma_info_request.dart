@@ -17,8 +17,8 @@ class LemmaInfoRequest {
     required this.userL1,
     required this.lemma,
     this.feedback,
-  }) : partOfSpeech = partOfSpeech.toLowerCase(),
-       lemmaLang = lemmaLang.toLowerCase();
+  })  : partOfSpeech = partOfSpeech.toLowerCase(),
+        lemmaLang = lemmaLang.toLowerCase();
 
   Map<String, dynamic> toJson() {
     return {
@@ -48,8 +48,8 @@ class LemmaInfoRequest {
   }
 
   ConstructIdentifier get cId => ConstructIdentifier(
-    lemma: lemma,
-    type: ConstructTypeEnum.vocab,
-    category: partOfSpeech,
-  );
+        lemma: lemma,
+        type: ConstructTypeEnum.vocab,
+        category: partOfSpeech,
+      );
 }

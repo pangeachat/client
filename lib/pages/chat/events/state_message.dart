@@ -22,12 +22,12 @@ class StateMessage extends StatelessWidget {
             color: theme.colorScheme.surface.withAlpha(128),
             borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
-                vertical: 4.0,
-              ),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               child: Text(
-                event.calcLocalizedBodyFallback(MatrixLocals(L10n.of(context))),
+                event.calcLocalizedBodyFallback(
+                  MatrixLocals(L10n.of(context)),
+                ),
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

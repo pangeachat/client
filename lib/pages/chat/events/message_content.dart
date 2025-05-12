@@ -130,8 +130,7 @@ class MessageContent extends StatelessWidget {
   // }
 
   void onClick(PangeaToken token) {
-    token =
-        pangeaMessageEvent?.messageDisplayRepresentation
+    token = pangeaMessageEvent?.messageDisplayRepresentation
             ?.getClosestNonPunctToken(token) ??
         token;
 
@@ -140,14 +139,14 @@ class MessageContent extends StatelessWidget {
       return;
     } else {
       Future.delayed(
-        const Duration(milliseconds: AppConfig.overlayAnimationDuration),
-        () {
-          controller.choreographer.tts.tryToSpeak(
-            token.text.content,
-            langCode: pangeaMessageEvent!.messageDisplayLangCode,
-          );
-        },
-      );
+          const Duration(
+            milliseconds: AppConfig.overlayAnimationDuration,
+          ), () {
+        controller.choreographer.tts.tryToSpeak(
+          token.text.content,
+          langCode: pangeaMessageEvent!.messageDisplayLangCode,
+        );
+      });
     }
 
     controller.showToolbar(
@@ -196,10 +195,9 @@ class MessageContent extends StatelessWidget {
                 ?.tryGet<int>('h');
             var width = maxSize;
             var height = maxSize;
-            var fit =
-                event.messageType == MessageTypes.Sticker
-                    ? BoxFit.contain
-                    : BoxFit.cover;
+            var fit = event.messageType == MessageTypes.Sticker
+                ? BoxFit.contain
+                : BoxFit.cover;
             if (w != null && h != null) {
               fit = BoxFit.contain;
               if (w > h) {
@@ -223,12 +221,12 @@ class MessageContent extends StatelessWidget {
             return CuteContent(event);
           case MessageTypes.Audio:
             if (PlatformInfos.isMobile ||
-                PlatformInfos.isMacOS ||
-                PlatformInfos.isWeb
-            // Disabled until https://github.com/bleonard252/just_audio_mpv/issues/3
-            // is fixed
-            //   || PlatformInfos.isLinux
-            ) {
+                    PlatformInfos.isMacOS ||
+                    PlatformInfos.isWeb
+                // Disabled until https://github.com/bleonard252/just_audio_mpv/issues/3
+                // is fixed
+                //   || PlatformInfos.isLinux
+                ) {
               return AudioPlayerWidget(
                 event,
                 color: textColor,
@@ -319,17 +317,15 @@ class MessageContent extends StatelessWidget {
           //   );
           // Pangea#
           case MessageTypes.Location:
-            final geoUri = Uri.tryParse(
-              event.content.tryGet<String>('geo_uri')!,
-            );
+            final geoUri =
+                Uri.tryParse(event.content.tryGet<String>('geo_uri')!);
             if (geoUri != null && geoUri.scheme == 'geo') {
-              final latlong =
-                  geoUri.path
-                      .split(';')
-                      .first
-                      .split(',')
-                      .map((s) => double.tryParse(s))
-                      .toList();
+              final latlong = geoUri.path
+                  .split(';')
+                  .first
+                  .split(',')
+                  .map((s) => double.tryParse(s))
+                  .toList();
               if (latlong.length == 2 &&
                   latlong.first != null &&
                   latlong.last != null) {
@@ -362,20 +358,18 @@ class MessageContent extends StatelessWidget {
               return FutureBuilder<User?>(
                 future: event.redactedBecause?.fetchSenderUser(),
                 builder: (context, snapshot) {
-                  final reason = event.redactedBecause?.content.tryGet<String>(
-                    'reason',
-                  );
-                  final redactedBy =
-                      snapshot.data?.calcDisplayname() ??
+                  final reason =
+                      event.redactedBecause?.content.tryGet<String>('reason');
+                  final redactedBy = snapshot.data?.calcDisplayname() ??
                       event.redactedBecause?.senderId.localpart ??
                       L10n.of(context).user;
                   return _ButtonContent(
-                    label:
-                        reason == null
-                            ? L10n.of(context).redactedBy(redactedBy)
-                            : L10n.of(
-                              context,
-                            ).redactedByBecause(redactedBy, reason),
+                    label: reason == null
+                        ? L10n.of(context).redactedBy(redactedBy)
+                        : L10n.of(context).redactedByBecause(
+                            redactedBy,
+                            reason,
+                          ),
                     icon: '🗑️',
                     textColor: buttonTextColor.withAlpha(128),
                     onPressed: () => onInfoTab!(event),
@@ -392,10 +386,8 @@ class MessageContent extends StatelessWidget {
 
             // #Pangea
 
-            final messageTextStyle = AppConfig.messageTextStyle(
-              event,
-              textColor,
-            );
+            final messageTextStyle =
+                AppConfig.messageTextStyle(event, textColor);
 
             if (pangeaMessageEvent != null &&
                 pangeaMessageEvent!.shouldShowToolbar) {
@@ -412,20 +404,16 @@ class MessageContent extends StatelessWidget {
                   onClick: onClick,
                   isSelected: overlayController != null ? isSelected : null,
                   messageMode: overlayController?.toolbarMode,
-                  isHighlighted:
-                      (PangeaToken token) =>
-                          overlayController
-                                  ?.toolbarMode
-                                  .associatedActivityType !=
-                              null &&
-                          overlayController?.practiceSelection
-                                  ?.hasActiveActivityByToken(
-                                    overlayController!
-                                        .toolbarMode
-                                        .associatedActivityType!,
-                                    token,
-                                  ) ==
-                              true,
+                  isHighlighted: (PangeaToken token) =>
+                      overlayController?.toolbarMode.associatedActivityType !=
+                          null &&
+                      overlayController?.practiceSelection
+                              ?.hasActiveActivityByToken(
+                            overlayController!
+                                .toolbarMode.associatedActivityType!,
+                            token,
+                          ) ==
+                          true,
                   overlayController: overlayController,
                   isTransitionAnimation: isTransitionAnimation,
                   readingAssistanceMode: readingAssistanceMode,
@@ -435,8 +423,8 @@ class MessageContent extends StatelessWidget {
             // Pangea#
 
             return
-            // #Pangea
-            ToolbarSelectionArea(
+                // #Pangea
+                ToolbarSelectionArea(
               event: event,
               controller: controller,
               pangeaMessageEvent: pangeaMessageEvent,
@@ -444,8 +432,8 @@ class MessageContent extends StatelessWidget {
               nextEvent: nextEvent,
               prevEvent: prevEvent,
               child:
-              // Pangea#
-              Padding(
+                  // Pangea#
+                  Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16,
                   vertical: 8,
@@ -531,12 +519,18 @@ class _ButtonContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 16,
+        vertical: 8,
+      ),
       child: InkWell(
         onTap: onPressed,
         child: Text(
           '$icon  $label',
-          style: TextStyle(color: textColor, fontSize: fontSize),
+          style: TextStyle(
+            color: textColor,
+            fontSize: fontSize,
+          ),
         ),
       ),
     );

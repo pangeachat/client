@@ -19,7 +19,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 class VocabDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
 
-  const VocabDetailsView({super.key, required this.constructId});
+  const VocabDetailsView({
+    super.key,
+    required this.constructId,
+  });
 
   ConstructUses get _construct => constructId.constructUses;
 
@@ -41,17 +44,16 @@ class VocabDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color textColor =
-        (Theme.of(context).brightness != Brightness.light
-            ? _construct.lemmaCategory.color(context)
-            : _construct.lemmaCategory.darkColor(context));
+    final Color textColor = (Theme.of(context).brightness != Brightness.light
+        ? _construct.lemmaCategory.color(context)
+        : _construct.lemmaCategory.darkColor(context));
 
     return AnalyticsDetailsViewContent(
       title: WordTextWithAudioButton(
         text: _construct.lemma,
-        style: Theme.of(
-          context,
-        ).textTheme.headlineLarge?.copyWith(color: textColor),
+        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+              color: textColor,
+            ),
         iconSize: _iconSize,
         uniqueID: "${_construct.lemma}-${_construct.category}",
       ),
@@ -68,9 +70,9 @@ class VocabDetailsView extends StatelessWidget {
                       context: context,
                     ) ??
                     _construct.lemma,
-                style: Theme.of(
-                  context,
-                ).textTheme.bodyLarge?.copyWith(color: textColor),
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: textColor,
+                    ),
               ),
               SizedBox(
                 width: _iconSize,
@@ -102,21 +104,21 @@ class VocabDetailsView extends StatelessWidget {
           children: [
             Align(
               alignment: Alignment.topLeft,
-              child:
-                  _userL2 == null
-                      ? Text(L10n.of(context).meaningNotFound)
-                      : LemmaMeaningWidget(
-                        constructUse: _construct,
-                        langCode: _userL2!,
-                        controller: null,
-                        token: null,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        leading: TextSpan(
-                          text: L10n.of(context).meaningSectionHeader,
-                          style: Theme.of(context).textTheme.bodyLarge
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
+              child: _userL2 == null
+                  ? Text(L10n.of(context).meaningNotFound)
+                  : LemmaMeaningWidget(
+                      constructUse: _construct,
+                      langCode: _userL2!,
+                      controller: null,
+                      token: null,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                      leading: TextSpan(
+                        text: L10n.of(context).meaningSectionHeader,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
+                    ),
             ),
             Align(
               alignment: Alignment.topLeft,
@@ -128,8 +130,8 @@ class VocabDetailsView extends StatelessWidget {
                   Text(
                     L10n.of(context).formSectionHeader,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                   const SizedBox(width: 6.0),
                   ...forms.mapIndexed(

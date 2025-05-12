@@ -104,9 +104,8 @@ class PracticeActivityModel {
     //   "onMultipleChoiceSelect: ${choice.form} ${responseUseType(choice)}",
     // );
 
-    final constructUseType = practiceTarget.record.responses.last.useType(
-      activityType,
-    );
+    final constructUseType =
+        practiceTarget.record.responses.last.useType(activityType);
     MatrixState.pangeaController.putAnalytics.setState(
       AnalyticsStream(
         eventId: event?.eventId,
@@ -184,9 +183,8 @@ class PracticeActivityModel {
 
     // we don't take off points for incorrect emoji matches
     if (ActivityTypeEnum.emoji != activityType || isCorrect) {
-      final constructUseType = practiceTarget.record.responses.last.useType(
-        activityType,
-      );
+      final constructUseType =
+          practiceTarget.record.responses.last.useType(activityType);
       MatrixState.pangeaController.putAnalytics.setState(
         AnalyticsStream(
           eventId: event?.eventId,
@@ -218,16 +216,16 @@ class PracticeActivityModel {
         choice.form.cId
             .setUserLemmaInfo(UserSetLemmaInfo(emojis: [choice.choiceContent]))
             .then((value) {
-              callback();
-            });
+          callback();
+        });
       }
 
       if (activityType == ActivityTypeEnum.wordMeaning) {
         choice.form.cId
             .setUserLemmaInfo(UserSetLemmaInfo(meaning: choice.choiceContent))
             .then((value) {
-              callback();
-            });
+          callback();
+        });
       }
     }
     callback();
@@ -236,11 +234,11 @@ class PracticeActivityModel {
   PracticeRecord get record => practiceTarget.record;
 
   PracticeTarget get practiceTarget => PracticeTarget(
-    tokens: targetTokens,
-    activityType: activityType,
-    userL2: langCode,
-    morphFeature: morphFeature,
-  );
+        tokens: targetTokens,
+        activityType: activityType,
+        userL2: langCode,
+        morphFeature: morphFeature,
+      );
 
   String get targetLemma => targetTokens.first.lemma.text;
 
@@ -279,45 +277,46 @@ class PracticeActivityModel {
         (json['content'] ?? json["multiple_choice"]) as Map<String, dynamic>?;
 
     if (contentMap == null) {
-      Sentry.addBreadcrumb(Breadcrumb(data: {"json": json}));
+      Sentry.addBreadcrumb(
+        Breadcrumb(data: {"json": json}),
+      );
       throw ("content is null in PracticeActivityModel.fromJson");
     }
 
     if (json['lang_code'] is! String) {
-      Sentry.addBreadcrumb(Breadcrumb(data: {"json": json}));
+      Sentry.addBreadcrumb(
+        Breadcrumb(data: {"json": json}),
+      );
       throw ("lang_code is not a string in PracticeActivityModel.fromJson");
     }
 
     final targetConstructsEntry =
         json['tgt_constructs'] ?? json['target_constructs'];
     if (targetConstructsEntry is! List) {
-      Sentry.addBreadcrumb(Breadcrumb(data: {"json": json}));
+      Sentry.addBreadcrumb(
+        Breadcrumb(data: {"json": json}),
+      );
       throw ("tgt_constructs is not a list in PracticeActivityModel.fromJson");
     }
 
     return PracticeActivityModel(
       langCode: json['lang_code'] as String,
-      activityType: ActivityTypeEnum.wordMeaning.fromString(
-        json['activity_type'],
-      ),
-      multipleChoiceContent:
-          json['content'] != null
-              ? MultipleChoiceActivity.fromJson(contentMap)
-              : null,
-      targetTokens:
-          (json['target_tokens'] as List)
-              .map((e) => PangeaToken.fromJson(e as Map<String, dynamic>))
-              .toList(),
-      matchContent:
-          json['match_content'] != null
-              ? PracticeMatchActivity.fromJson(contentMap)
-              : null,
-      morphFeature:
-          json['morph_feature'] != null
-              ? MorphFeaturesEnumExtension.fromString(
-                json['morph_feature'] as String,
-              )
-              : null,
+      activityType:
+          ActivityTypeEnum.wordMeaning.fromString(json['activity_type']),
+      multipleChoiceContent: json['content'] != null
+          ? MultipleChoiceActivity.fromJson(contentMap)
+          : null,
+      targetTokens: (json['target_tokens'] as List)
+          .map((e) => PangeaToken.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      matchContent: json['match_content'] != null
+          ? PracticeMatchActivity.fromJson(contentMap)
+          : null,
+      morphFeature: json['morph_feature'] != null
+          ? MorphFeaturesEnumExtension.fromString(
+              json['morph_feature'] as String,
+            )
+          : null,
     );
   }
 

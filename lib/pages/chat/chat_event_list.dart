@@ -18,7 +18,10 @@ import 'package:fluffychat/utils/platform_infos.dart';
 class ChatEventList extends StatelessWidget {
   final ChatController controller;
 
-  const ChatEventList({super.key, required this.controller});
+  const ChatEventList({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +32,10 @@ class ChatEventList extends StatelessWidget {
     }
     final theme = Theme.of(context);
 
-    final colors = [theme.secondaryBubbleColor, theme.bubbleColor];
+    final colors = [
+      theme.secondaryBubbleColor,
+      theme.bubbleColor,
+    ];
 
     final horizontalPadding = FluffyThemes.isColumnMode(context) ? 8.0 : 0.0;
 
@@ -56,10 +62,9 @@ class ChatEventList extends StatelessWidget {
         ),
         reverse: true,
         controller: controller.scrollController,
-        keyboardDismissBehavior:
-            PlatformInfos.isIOS
-                ? ScrollViewKeyboardDismissBehavior.onDrag
-                : ScrollViewKeyboardDismissBehavior.manual,
+        keyboardDismissBehavior: PlatformInfos.isIOS
+            ? ScrollViewKeyboardDismissBehavior.onDrag
+            : ScrollViewKeyboardDismissBehavior.manual,
         childrenDelegate: SliverChildBuilderDelegate(
           (BuildContext context, int i) {
             // Footer to display typing indicator and read receipts:
@@ -79,7 +84,10 @@ class ChatEventList extends StatelessWidget {
               }
               return Column(
                 mainAxisSize: MainAxisSize.min,
-                children: [SeenByRow(controller), TypingIndicators(controller)],
+                children: [
+                  SeenByRow(controller),
+                  TypingIndicators(controller),
+                ],
               );
             }
 
@@ -104,9 +112,8 @@ class ChatEventList extends StatelessWidget {
                 return Builder(
                   builder: (context) {
                     // #Pangea
-                    WidgetsBinding.instance.addPostFrameCallback(
-                      (_) => controller.requestHistory,
-                    );
+                    WidgetsBinding.instance
+                        .addPostFrameCallback((_) => controller.requestHistory);
                     return Column(
                       children: [
                         const SizedBox(height: AppConfig.toolbarMaxHeight),
@@ -139,8 +146,7 @@ class ChatEventList extends StatelessWidget {
 
             // The message at this index:
             final event = events[i];
-            final animateIn =
-                animateInEventIndex != null &&
+            final animateIn = animateInEventIndex != null &&
                 timeline.events.length > animateInEventIndex &&
                 event == timeline.events[animateInEventIndex];
 
@@ -152,66 +158,62 @@ class ChatEventList extends StatelessWidget {
                   // #Pangea
                   event.isActivityMessage
                       ? ActivityPlanMessage(
-                        event,
-                        controller: controller,
-                        timeline: timeline,
-                        animateIn: animateIn,
-                        resetAnimateIn: () {
-                          controller.animateInEventIndex = null;
-                        },
-                        highlightMarker:
-                            controller.scrollToEventIdMarker == event.eventId,
-                      )
+                          event,
+                          controller: controller,
+                          timeline: timeline,
+                          animateIn: animateIn,
+                          resetAnimateIn: () {
+                            controller.animateInEventIndex = null;
+                          },
+                          highlightMarker:
+                              controller.scrollToEventIdMarker == event.eventId,
+                        )
                       :
                       // Pangea#
                       Message(
-                        event,
-                        animateIn: animateIn,
-                        resetAnimateIn: () {
-                          controller.animateInEventIndex = null;
-                        },
-                        onSwipe: () => controller.replyAction(replyTo: event),
-                        // #Pangea
-                        onInfoTab: (_) => {},
-                        // onInfoTab: controller.showEventInfo,
-                        // Pangea#
-                        onMention:
-                            () =>
-                                controller.sendController.text +=
-                                    '${event.senderFromMemoryOrFallback.mention} ',
-                        highlightMarker:
-                            controller.scrollToEventIdMarker == event.eventId,
-                        // #Pangea
-                        // onSelect: controller.onSelectMessage,
-                        onSelect: (_) {},
-                        // Pangea#
-                        scrollToEventId:
-                            (String eventId) =>
-                                controller.scrollToEventId(eventId),
-                        longPressSelect: controller.selectedEvents.isNotEmpty,
-                        // #Pangea
-                        immersionMode: controller.choreographer.immersionMode,
-                        controller: controller,
-                        isButton: event.eventId == controller.buttonEventID,
-                        // Pangea#
-                        selected: controller.selectedEvents.any(
-                          (e) => e.eventId == event.eventId,
+                          event,
+                          animateIn: animateIn,
+                          resetAnimateIn: () {
+                            controller.animateInEventIndex = null;
+                          },
+                          onSwipe: () => controller.replyAction(replyTo: event),
+                          // #Pangea
+                          onInfoTab: (_) => {},
+                          // onInfoTab: controller.showEventInfo,
+                          // Pangea#
+                          onMention: () => controller.sendController.text +=
+                              '${event.senderFromMemoryOrFallback.mention} ',
+                          highlightMarker:
+                              controller.scrollToEventIdMarker == event.eventId,
+                          // #Pangea
+                          // onSelect: controller.onSelectMessage,
+                          onSelect: (_) {},
+                          // Pangea#
+                          scrollToEventId: (String eventId) =>
+                              controller.scrollToEventId(eventId),
+                          longPressSelect: controller.selectedEvents.isNotEmpty,
+                          // #Pangea
+                          immersionMode: controller.choreographer.immersionMode,
+                          controller: controller,
+                          isButton: event.eventId == controller.buttonEventID,
+                          // Pangea#
+                          selected: controller.selectedEvents
+                              .any((e) => e.eventId == event.eventId),
+                          timeline: timeline,
+                          displayReadMarker: i > 0 &&
+                              controller.readMarkerEventId == event.eventId,
+                          nextEvent:
+                              i + 1 < events.length ? events[i + 1] : null,
+                          previousEvent: i > 0 ? events[i - 1] : null,
+                          wallpaperMode: hasWallpaper,
+                          scrollController: controller.scrollController,
+                          colors: colors,
                         ),
-                        timeline: timeline,
-                        displayReadMarker:
-                            i > 0 &&
-                            controller.readMarkerEventId == event.eventId,
-                        nextEvent: i + 1 < events.length ? events[i + 1] : null,
-                        previousEvent: i > 0 ? events[i - 1] : null,
-                        wallpaperMode: hasWallpaper,
-                        scrollController: controller.scrollController,
-                        colors: colors,
-                      ),
             );
           },
           childCount: events.length + 2,
-          findChildIndexCallback:
-              (key) => controller.findChildIndexCallback(key, thisEventsKeyMap),
+          findChildIndexCallback: (key) =>
+              controller.findChildIndexCallback(key, thisEventsKeyMap),
         ),
       ),
     );

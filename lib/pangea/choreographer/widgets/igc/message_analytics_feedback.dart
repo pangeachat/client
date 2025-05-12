@@ -102,9 +102,9 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
   void _showAnalyticsDialog(ConstructTypeEnum? type) {
     showDialog<AnalyticsPopupWrapper>(
       context: context,
-      builder:
-          (context) =>
-              AnalyticsPopupWrapper(view: type ?? ConstructTypeEnum.vocab),
+      builder: (context) => AnalyticsPopupWrapper(
+        view: type ?? ConstructTypeEnum.vocab,
+      ),
     );
   }
 
@@ -127,9 +127,8 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
             builder: (context, child) {
               return Container(
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainerHighest.withAlpha(
-                    (_opacityAnimation.value * 255).round(),
-                  ),
+                  color: theme.colorScheme.surfaceContainerHighest
+                      .withAlpha((_opacityAnimation.value * 255).round()),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16.0),
                     topRight: Radius.circular(16.0),
@@ -151,8 +150,9 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
                         newConstructs: widget.newVocabConstructs,
                         type: ConstructTypeEnum.vocab,
                         tooltip: L10n.of(context).newVocab,
-                        onTap:
-                            () => _showAnalyticsDialog(ConstructTypeEnum.vocab),
+                        onTap: () => _showAnalyticsDialog(
+                          ConstructTypeEnum.vocab,
+                        ),
                       ),
                     if (widget.newGrammarConstructs > 0)
                       NewConstructsBadge(
@@ -161,8 +161,9 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
                         newConstructs: widget.newGrammarConstructs,
                         type: ConstructTypeEnum.morph,
                         tooltip: L10n.of(context).newGrammar,
-                        onTap:
-                            () => _showAnalyticsDialog(ConstructTypeEnum.morph),
+                        onTap: () => _showAnalyticsDialog(
+                          ConstructTypeEnum.morph,
+                        ),
                       ),
                   ],
                 ),
@@ -268,7 +269,12 @@ class _AnimatedCounterState extends State<AnimatedCounter>
     _animation = IntTween(
       begin: 0,
       end: widget.endValue,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeOutCubic,
+      ),
+    );
 
     if (widget.startAnimation) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -298,7 +304,10 @@ class _AnimatedCounterState extends State<AnimatedCounter>
     return AnimatedBuilder(
       animation: _animation,
       builder: (context, child) {
-        return Text("+ ${_animation.value}", style: widget.style);
+        return Text(
+          "+ ${_animation.value}",
+          style: widget.style,
+        );
       },
     );
   }

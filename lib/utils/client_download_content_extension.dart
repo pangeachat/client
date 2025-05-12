@@ -12,31 +12,29 @@ extension ClientDownloadContentExtension on Client {
     ThumbnailMethod? thumbnailMethod,
   }) async {
     // To stay compatible with previous storeKeys:
-    final cacheKey =
-        isThumbnail
-            // ignore: deprecated_member_use
-            ? mxc.getThumbnail(
-              this,
-              width: width,
-              height: height,
-              animated: animated,
-              method: thumbnailMethod!,
-            )
-            : mxc;
+    final cacheKey = isThumbnail
+        // ignore: deprecated_member_use
+        ? mxc.getThumbnail(
+            this,
+            width: width,
+            height: height,
+            animated: animated,
+            method: thumbnailMethod!,
+          )
+        : mxc;
 
     final cachedData = await database?.getFile(cacheKey);
     if (cachedData != null) return cachedData;
 
-    final httpUri =
-        isThumbnail
-            ? await mxc.getThumbnailUri(
-              this,
-              width: width,
-              height: height,
-              animated: animated,
-              method: thumbnailMethod,
-            )
-            : await mxc.getDownloadUri(this);
+    final httpUri = isThumbnail
+        ? await mxc.getThumbnailUri(
+            this,
+            width: width,
+            height: height,
+            animated: animated,
+            method: thumbnailMethod,
+          )
+        : await mxc.getDownloadUri(this);
 
     final response = await httpClient.get(
       httpUri,

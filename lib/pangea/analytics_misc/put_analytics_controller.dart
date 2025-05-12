@@ -55,14 +55,12 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   void initialize() {
     // Listen for calls to setState on the analytics stream
     // and update the analytics room if necessary
-    _analyticsStream ??= stateStream.listen(
-      (data) => _onNewAnalyticsData(data),
-    );
+    _analyticsStream ??=
+        stateStream.listen((data) => _onNewAnalyticsData(data));
 
     // Listen for changes to the user's language settings
-    _languageStream ??= _pangeaController.userController.stateStream.listen((
-      update,
-    ) {
+    _languageStream ??=
+        _pangeaController.userController.stateStream.listen((update) {
       if (update is Map<String, dynamic> &&
           update['prev_target_lang'] is LanguageModel) {
         final LanguageModel previousL2 = update['prev_target_lang'];
@@ -140,18 +138,22 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
 
     final level = _pangeaController.getAnalytics.constructListModel.level;
 
-    _addLocalMessage(eventID, constructs).then((_) {
-      if (roomID != null) _clearDraftUses(roomID);
-      _decideWhetherToUpdateAnalyticsRoom(
-        level,
-        data.targetID,
-        data.constructs,
-      );
-    });
+    _addLocalMessage(eventID, constructs).then(
+      (_) {
+        if (roomID != null) _clearDraftUses(roomID);
+        _decideWhetherToUpdateAnalyticsRoom(
+          level,
+          data.targetID,
+          data.constructs,
+        );
+      },
+    );
   }
 
   Future<void> _onUpdateLanguages(LanguageModel? previousL2) async {
-    await sendLocalAnalyticsToAnalyticsRoom(l2Override: previousL2);
+    await sendLocalAnalyticsToAnalyticsRoom(
+      l2Override: previousL2,
+    );
     _pangeaController.resetAnalytics().then((_) {
       final level = _pangeaController.getAnalytics.constructListModel.level;
       _pangeaController.userController.updatePublicProfile(level: level);
@@ -259,12 +261,11 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
       // if this is not a draft message, add the eventId to the metadata
       // if it's missing (it will be missing for draft constructs)
       if (cacheKey != null && !cacheKey.startsWith('draft')) {
-        constructs =
-            constructs.map((construct) {
-              if (construct.metadata.eventId != null) return construct;
-              construct.metadata.eventId = cacheKey;
-              return construct;
-            }).toList();
+        constructs = constructs.map((construct) {
+          if (construct.metadata.eventId != null) return construct;
+          construct.metadata.eventId = cacheKey;
+          return construct;
+        }).toList();
       }
 
       cacheKey ??= Object.hashAll(constructs).toString();
@@ -276,7 +277,9 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
         e: PangeaWarningError("Failed to add message since update: $e"),
         s: s,
         m: 'Failed to add message since update for eventId: $cacheKey',
-        data: {"cacheKey": cacheKey},
+        data: {
+          "cacheKey": cacheKey,
+        },
       );
     }
   }
@@ -316,18 +319,16 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   /// Clears the local cache of recently sent constructs. Called before updating analytics
   void clearMessagesSinceUpdate({clearDrafts = false}) {
     if (clearDrafts) {
-      MatrixState.pangeaController.getAnalytics.analyticsBox.remove(
-        PLocalKey.messagesSinceUpdate,
-      );
+      MatrixState.pangeaController.getAnalytics.analyticsBox
+          .remove(PLocalKey.messagesSinceUpdate);
       return;
     }
 
     final localCache = _pangeaController.getAnalytics.messagesSinceUpdate;
     final draftKeys = localCache.keys.where((key) => key.startsWith('draft'));
     if (draftKeys.isEmpty) {
-      MatrixState.pangeaController.getAnalytics.analyticsBox.remove(
-        PLocalKey.messagesSinceUpdate,
-      );
+      MatrixState.pangeaController.getAnalytics.analyticsBox
+          .remove(PLocalKey.messagesSinceUpdate);
       return;
     }
 
@@ -381,14 +382,20 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
 
       lastUpdated = DateTime.now();
       analyticsUpdateStream.add(
-        AnalyticsUpdate(AnalyticsUpdateType.server, [], isLogout: onLogout),
+        AnalyticsUpdate(
+          AnalyticsUpdateType.server,
+          [],
+          isLogout: onLogout,
+        ),
       );
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
         m: "Failed to update analytics",
         s: s,
-        data: {"l2Override": l2Override},
+        data: {
+          "l2Override": l2Override,
+        },
       );
     } finally {
       _updateCompleter?.complete();
@@ -401,8 +408,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   Future<void> _updateAnalytics({LanguageModel? l2Override}) async {
     // if there's no cached construct data, there's nothing to send
     final cachedConstructs = _pangeaController.getAnalytics.messagesSinceUpdate;
-    final bool onlyDraft =
-        cachedConstructs.length == 1 &&
+    final bool onlyDraft = cachedConstructs.length == 1 &&
         cachedConstructs.keys.single.startsWith('draft');
     if (cachedConstructs.isEmpty || onlyDraft) return;
 

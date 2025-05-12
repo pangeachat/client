@@ -25,7 +25,10 @@ Future<dynamic> showFeedbackDialog(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const BotFace(width: 60, expression: BotExpression.addled),
+                const BotFace(
+                  width: 60,
+                  expression: BotExpression.addled,
+                ),
                 const SizedBox(height: 10),
                 Text(L10n.of(context).reportContentIssueDescription),
                 const SizedBox(height: 10),
@@ -33,7 +36,9 @@ Future<dynamic> showFeedbackDialog(
                   padding: const EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
-                    border: Border.all(color: AppConfig.warning),
+                    border: Border.all(
+                      color: AppConfig.warning,
+                    ),
                   ),
                   child: offendingContent,
                 ),

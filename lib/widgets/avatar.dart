@@ -51,8 +51,7 @@ class Avatar extends StatelessWidget {
     final fallbackLetters =
         name == null || name.isEmpty ? '@' : name.substring(0, 1);
 
-    final noPic =
-        mxContent == null ||
+    final noPic = mxContent == null ||
         mxContent.toString().isEmpty ||
         mxContent.toString() == 'null';
     final borderRadius = this.borderRadius ?? BorderRadius.circular(size / 2);
@@ -63,10 +62,9 @@ class Avatar extends StatelessWidget {
           width: size,
           height: size,
           child: Material(
-            color:
-                theme.brightness == Brightness.light
-                    ? Colors.white
-                    : Colors.black,
+            color: theme.brightness == Brightness.light
+                ? Colors.white
+                : Colors.black,
             shape: RoundedRectangleBorder(
               borderRadius: borderRadius,
               side: border ?? BorderSide.none,
@@ -76,44 +74,45 @@ class Avatar extends StatelessWidget {
                 // #Pangea
                 (userId ?? presenceUserId) == BotName.byEnvironment
                     ? BotFace(
-                      width: size,
-                      expression: BotExpression.idle,
-                      useRive: useRive,
-                    )
+                        width: size,
+                        expression: BotExpression.idle,
+                        useRive: useRive,
+                      )
                     :
                     // Pangea#
+
                     noPic
-                    ? Container(
-                      decoration: BoxDecoration(color: name?.lightColorAvatar),
-                      alignment: Alignment.center,
-                      child: Text(
-                        fallbackLetters,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: 'RobotoMono',
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: (size / 2.5).roundToDouble(),
-                        ),
-                      ),
-                    )
-                    : MxcImage(
-                      client: client,
-                      key: ValueKey(mxContent.toString()),
-                      cacheKey: '${mxContent}_$size',
-                      uri: mxContent,
-                      fit: BoxFit.cover,
-                      width: size,
-                      height: size,
-                      placeholder:
-                          (_) => Center(
-                            child: Icon(
-                              Icons.person_2,
-                              color: theme.colorScheme.tertiary,
-                              size: size / 1.5,
+                        ? Container(
+                            decoration:
+                                BoxDecoration(color: name?.lightColorAvatar),
+                            alignment: Alignment.center,
+                            child: Text(
+                              fallbackLetters,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'RobotoMono',
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: (size / 2.5).roundToDouble(),
+                              ),
+                            ),
+                          )
+                        : MxcImage(
+                            client: client,
+                            key: ValueKey(mxContent.toString()),
+                            cacheKey: '${mxContent}_$size',
+                            uri: mxContent,
+                            fit: BoxFit.cover,
+                            width: size,
+                            height: size,
+                            placeholder: (_) => Center(
+                              child: Icon(
+                                Icons.person_2,
+                                color: theme.colorScheme.tertiary,
+                                size: size / 1.5,
+                              ),
                             ),
                           ),
-                    ),
           ),
         ),
         // #Pangea
@@ -129,10 +128,9 @@ class Avatar extends StatelessWidget {
                       presence.lastActiveTimestamp == null)) {
                 return const SizedBox.shrink();
               }
-              final dotColor =
-                  presence.presence.isOnline
-                      ? Colors.green
-                      : presence.presence.isUnavailable
+              final dotColor = presence.presence.isOnline
+                  ? Colors.green
+                  : presence.presence.isUnavailable
                       ? Colors.orange
                       : Colors.grey;
               return Positioned(
@@ -167,7 +165,10 @@ class Avatar extends StatelessWidget {
     if (onTap == null) return container;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
-      child: GestureDetector(onTap: onTap, child: container),
+      child: GestureDetector(
+        onTap: onTap,
+        child: container,
+      ),
     );
   }
 }

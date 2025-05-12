@@ -9,7 +9,10 @@ class InputPasteListener {
 
   String _currentText = '';
 
-  InputPasteListener(this.controller, this.onPaste) {
+  InputPasteListener(
+    this.controller,
+    this.onPaste,
+  ) {
     controller.addListener(() {
       final difference =
           controller.text.characters.length - _currentText.characters.length;

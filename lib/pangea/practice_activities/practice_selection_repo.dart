@@ -37,7 +37,10 @@ class PracticeSelectionRepo {
         m: 'Failed to parse PracticeSelection from JSON',
         e: e,
         s: s,
-        data: {'key': key, 'json': _storage.read(key)},
+        data: {
+          'key': key,
+          'json': _storage.read(key),
+        },
       );
       _storage.remove(key);
       return null;
@@ -47,13 +50,12 @@ class PracticeSelectionRepo {
   static void clean() {
     final Iterable<String> keys = _storage.getKeys();
     if (keys.length > 300) {
-      final entries =
-          keys
-              .map((key) => _parsePracticeSelection(key))
-              .where((entry) => entry != null)
-              .cast<MapEntry<String, PracticeSelection>>()
-              .toList()
-            ..sort((a, b) => a.value.createdAt.compareTo(b.value.createdAt));
+      final entries = keys
+          .map((key) => _parsePracticeSelection(key))
+          .where((entry) => entry != null)
+          .cast<MapEntry<String, PracticeSelection>>()
+          .toList()
+        ..sort((a, b) => a.value.createdAt.compareTo(b.value.createdAt));
       for (var i = 0; i < 5 && i < entries.length; i++) {
         _storage.remove(entries[i].key);
       }

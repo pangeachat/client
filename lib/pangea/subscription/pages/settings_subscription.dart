@@ -43,13 +43,11 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
       setState(() {});
     });
 
-    _subscriptionStatusStream ??= subscriptionController
-        .subscriptionStream
-        .stream
-        .listen((_) {
-          showSubscribedSnackbar(context);
-          context.go('/rooms');
-        });
+    _subscriptionStatusStream ??=
+        subscriptionController.subscriptionStream.stream.listen((_) {
+      showSubscribedSnackbar(context);
+      context.go('/rooms');
+    });
 
     subscriptionController.updateCustomerInfo();
     super.initState();
@@ -64,9 +62,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
 
   bool get subscriptionsAvailable =>
       subscriptionController
-          .availableSubscriptionInfo
-          ?.availableSubscriptions
-          .isNotEmpty ??
+          .availableSubscriptionInfo?.availableSubscriptions.isNotEmpty ??
       false;
 
   bool get currentSubscriptionAvailable =>
@@ -78,20 +74,15 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
   bool get currentSubscriptionIsTrial =>
       currentSubscriptionAvailable &&
       (subscriptionController
-              .currentSubscriptionInfo
-              ?.currentSubscription
-              ?.isTrial ??
+              .currentSubscriptionInfo?.currentSubscription?.isTrial ??
           false);
 
-  String? get purchasePlatformDisplayName =>
-      subscriptionController
-          .currentSubscriptionInfo
-          ?.purchasePlatformDisplayName;
+  String? get purchasePlatformDisplayName => subscriptionController
+      .currentSubscriptionInfo?.purchasePlatformDisplayName;
 
   bool get currentSubscriptionIsPromotional =>
       subscriptionController
-          .currentSubscriptionInfo
-          ?.currentSubscriptionIsPromotional ??
+          .currentSubscriptionInfo?.currentSubscriptionIsPromotional ??
       false;
 
   String get currentSubscriptionTitle =>
@@ -112,8 +103,7 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
       return true;
     }
     return subscriptionController
-        .currentSubscriptionInfo!
-        .currentPlatformMatchesPurchasePlatform;
+        .currentSubscriptionInfo!.currentPlatformMatchesPurchasePlatform;
   }
 
   Future<void> submitChange(
@@ -123,12 +113,11 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
     setState(() => loading = true);
     await showFutureLoadingDialog(
       context: context,
-      future:
-          () async => subscriptionController.submitSubscriptionChange(
-            subscription,
-            context,
-            isPromo: isPromo,
-          ),
+      future: () async => subscriptionController.submitSubscriptionChange(
+        subscription,
+        context,
+        isPromo: isPromo,
+      ),
       onError: (error, s) {
         setState(() => loading = false);
         return null;
@@ -147,11 +136,8 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
     if (email != null) {
       managementUrl += "?prefilled_email=${Uri.encodeComponent(email)}";
     }
-    final String? purchaseAppId =
-        subscriptionController
-            .currentSubscriptionInfo
-            ?.currentSubscription
-            ?.appId;
+    final String? purchaseAppId = subscriptionController
+        .currentSubscriptionInfo?.currentSubscription?.appId;
     if (purchaseAppId == null) return;
 
     final SubscriptionAppIds? appIds =
@@ -206,4 +192,8 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
   Widget build(BuildContext context) => SettingsSubscriptionView(this);
 }
 
-enum ManagementOption { cancel, paymentMethod, history }
+enum ManagementOption {
+  cancel,
+  paymentMethod,
+  history,
+}

@@ -21,23 +21,23 @@ class VocabRequest {
   });
 
   VocabRequest.fromJson(Map<String, dynamic> json)
-    : langCode = json['langCode'],
-      level = LanguageLevelTypeEnum.values[json['level']],
-      prefix = json['prefix'],
-      suffix = json['suffix'],
-      count = json['count'],
-      lemma = json['lemma'],
-      pos = json['pos'];
+      : langCode = json['langCode'],
+        level = LanguageLevelTypeEnum.values[json['level']],
+        prefix = json['prefix'],
+        suffix = json['suffix'],
+        count = json['count'],
+        lemma = json['lemma'],
+        pos = json['pos'];
 
   Map<String, dynamic> toJson() => {
-    'langCode': langCode,
-    'level': level.index,
-    'prefix': prefix,
-    'suffix': suffix,
-    'lemma': lemma,
-    'pos': pos,
-    'count': count,
-  };
+        'langCode': langCode,
+        'level': level.index,
+        'prefix': prefix,
+        'suffix': suffix,
+        'lemma': lemma,
+        'pos': pos,
+        'count': count,
+      };
 
   String get storageKey =>
       '${langCode}_${level.index}_${prefix}_${suffix}_$count';

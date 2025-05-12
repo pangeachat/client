@@ -13,8 +13,13 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 Future<Room> getReportsDM(User teacher, Room space) async {
-  final String roomId = await teacher.startDirectChat(enableEncryption: false);
-  space.setSpaceChild(roomId, suggested: false);
+  final String roomId = await teacher.startDirectChat(
+    enableEncryption: false,
+  );
+  space.setSpaceChild(
+    roomId,
+    suggested: false,
+  );
   return space.client.getRoomById(roomId)!;
 }
 
@@ -29,9 +34,18 @@ void reportEvent(
     message: L10n.of(context).whyDoYouWantToReportThis,
     cancelLabel: L10n.of(context).cancel,
     actions: [
-      AdaptiveModalAction(value: 1, label: L10n.of(context).offensive),
-      AdaptiveModalAction(value: 2, label: L10n.of(context).translationProblem),
-      AdaptiveModalAction(value: 3, label: L10n.of(context).other),
+      AdaptiveModalAction(
+        value: 1,
+        label: L10n.of(context).offensive,
+      ),
+      AdaptiveModalAction(
+        value: 2,
+        label: L10n.of(context).translationProblem,
+      ),
+      AdaptiveModalAction(
+        value: 3,
+        label: L10n.of(context).other,
+      ),
     ],
   );
   if (score == null) return;
@@ -89,10 +103,8 @@ Future<void> reportOffensiveMessage(
   final resp = await showFutureLoadingDialog<List<SpaceTeacher>>(
     context: context,
     future: () async {
-      final List<SpaceTeacher> teachers = await getReportTeachers(
-        context,
-        reportedInRoom,
-      );
+      final List<SpaceTeacher> teachers =
+          await getReportTeachers(context, reportedInRoom);
       if (teachers.isEmpty) {
         throw L10n.of(context).noTeachersFound;
       }
@@ -107,8 +119,8 @@ Future<void> reportOffensiveMessage(
   final List<SpaceTeacher>? selectedTeachers = await showDialog(
     context: context,
     useRootNavigator: false,
-    builder:
-        (BuildContext context) => TeacherSelectDialog(teachers: resp.result!),
+    builder: (BuildContext context) =>
+        TeacherSelectDialog(teachers: resp.result!),
   );
 
   if (selectedTeachers == null || selectedTeachers.isEmpty) {
@@ -129,12 +141,15 @@ Future<void> reportOffensiveMessage(
 
       final String reportingUserId = Matrix.of(context).client.userID ?? "";
       final String roomName = reportedInRoom.getLocalizedDisplayname();
-      final String messageTitle = L10n.of(
-        context,
-      ).reportMessageTitle(reportingUserId, reportedUserId, roomName);
-      final String messageBody = L10n.of(
-        context,
-      ).reportMessageBody(reportedMessage, reason ?? L10n.of(context).none);
+      final String messageTitle = L10n.of(context).reportMessageTitle(
+        reportingUserId,
+        reportedUserId,
+        roomName,
+      );
+      final String messageBody = L10n.of(context).reportMessageBody(
+        reportedMessage,
+        reason ?? L10n.of(context).none,
+      );
       final String message = "$messageTitle\n\n$messageBody";
       for (final Room reportDM in reportDMs) {
         final event = <String, dynamic>{
@@ -155,16 +170,15 @@ Future<List<SpaceTeacher>> getReportTeachers(
   // prioritize the spaces that are parents of the report room
   final List<SpaceTeacher> teachers = [];
 
-  final List<Room> reportRoomParentSpaces =
-      room.spaceParents
-          .where((parentSpace) => parentSpace.roomId != null)
-          .map(
-            (parentSpace) =>
-                Matrix.of(context).client.getRoomById(parentSpace.roomId!),
-          )
-          .where((parentSpace) => parentSpace != null)
-          .cast<Room>()
-          .toList();
+  final List<Room> reportRoomParentSpaces = room.spaceParents
+      .where((parentSpace) => parentSpace.roomId != null)
+      .map(
+        (parentSpace) =>
+            Matrix.of(context).client.getRoomById(parentSpace.roomId!),
+      )
+      .where((parentSpace) => parentSpace != null)
+      .cast<Room>()
+      .toList();
 
   for (final Room space in reportRoomParentSpaces) {
     final List<User> spaceTeachers = await space.teachers;
@@ -176,12 +190,11 @@ Future<List<SpaceTeacher>> getReportTeachers(
     }
   }
 
-  final List<Room> otherSpaces =
-      Matrix.of(context).client.rooms
-          .where(
-            (room) => room.isSpace && !reportRoomParentSpaces.contains(room),
-          )
-          .toList();
+  final List<Room> otherSpaces = Matrix.of(context)
+      .client
+      .rooms
+      .where((room) => room.isSpace && !reportRoomParentSpaces.contains(room))
+      .toList();
 
   for (final space in otherSpaces) {
     for (final spaceTeacher in await space.teachers) {
@@ -223,18 +236,16 @@ class _TeacherSelectDialogState extends State<TeacherSelectDialog> {
       ),
       content: SingleChildScrollView(
         child: ListBody(
-          children:
-              widget.teachers
-                  .map(
-                    (teacher) => CheckboxListTile(
-                      value: _selectedItems.contains(teacher),
-                      title: Text(teacher.teacher.id),
-                      controlAffinity: ListTileControlAffinity.leading,
-                      onChanged:
-                          (isChecked) => _itemChange(teacher, isChecked!),
-                    ),
-                  )
-                  .toList(),
+          children: widget.teachers
+              .map(
+                (teacher) => CheckboxListTile(
+                  value: _selectedItems.contains(teacher),
+                  title: Text(teacher.teacher.id),
+                  controlAffinity: ListTileControlAffinity.leading,
+                  onChanged: (isChecked) => _itemChange(teacher, isChecked!),
+                ),
+              )
+              .toList(),
         ),
       ),
       actions: [

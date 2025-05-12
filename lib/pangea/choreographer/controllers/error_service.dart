@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import '../../common/utils/error_handler.dart';
 
-enum ChoreoErrorType { unknown, classDisabled, userDisabled }
+enum ChoreoErrorType {
+  unknown,
+  classDisabled,
+  userDisabled,
+}
 
 class ChoreoError {
   final ChoreoErrorType type;

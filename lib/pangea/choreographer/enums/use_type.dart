@@ -39,27 +39,35 @@ extension UseTypeMethods on UseType {
   Widget iconView(BuildContext context, Color color, [int size = 14]) =>
       Tooltip(
         message: tooltipString(context),
-        child: Icon(iconData, color: color, size: size.toDouble()),
+        child: Icon(
+          iconData,
+          color: color,
+          size: size.toDouble(),
+        ),
       );
 
   Widget iconButtonView(BuildContext context, Color color, [int size = 14]) =>
       Tooltip(
         message: tooltipString(context),
-        child: Icon(iconData, color: color, size: size.toDouble()),
+        child: Icon(
+          iconData,
+          color: color,
+          size: size.toDouble(),
+        ),
       );
 
   Widget textView(BuildContext context, [TextStyle? existingStyle]) => Tooltip(
-    message: tooltipString(context),
-    child: Text(
-      string,
-      style: BotStyle.text(
-        context,
-        existingStyle: existingStyle,
-        italics: true,
-      ),
-      textAlign: TextAlign.end,
-    ),
-  );
+        message: tooltipString(context),
+        child: Text(
+          string,
+          style: BotStyle.text(
+            context,
+            existingStyle: existingStyle,
+            italics: true,
+          ),
+          textAlign: TextAlign.end,
+        ),
+      );
 
   static bool isDarkMode(BuildContext context) =>
       Theme.of(context).brightness == Brightness.dark;

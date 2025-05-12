@@ -13,7 +13,11 @@ Future<bool> showUpdateVersionDialog({
     await future();
     return true;
   } catch (err, s) {
-    ErrorHandler.logError(e: err, s: s, data: {});
+    ErrorHandler.logError(
+      e: err,
+      s: s,
+      data: {},
+    );
     await showOkAlertDialog(
       context: context,
       title: L10n.of(context).oopsSomethingWentWrong,

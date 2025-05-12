@@ -58,8 +58,11 @@ class SpanDataController {
     final span = _getSpan(matchIndex);
     if (span == null) return false;
 
-    final correctChoice =
-        span.choices?.firstWhereOrNull((c) => c.isBestCorrection)?.value;
+    final correctChoice = span.choices
+        ?.firstWhereOrNull(
+          (c) => c.isBestCorrection,
+        )
+        ?.value;
 
     final errorSpan = span.fullText.substring(
       span.offset,
@@ -70,7 +73,10 @@ class SpanDataController {
         normalizeString(correctChoice) == normalizeString(errorSpan);
   }
 
-  Future<void> getSpanDetails(int matchIndex, {bool force = false}) async {
+  Future<void> getSpanDetails(
+    int matchIndex, {
+    bool force = false,
+  }) async {
     final SpanData? span = _getSpan(matchIndex);
     if (span == null || (isNormalizationError(matchIndex) && !force)) return;
 

@@ -65,7 +65,13 @@ class MatchCopy {
       }
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: err, s: stack, data: {"match": match.toJson()});
+      ErrorHandler.logError(
+        e: err,
+        s: stack,
+        data: {
+          "match": match.toJson(),
+        },
+      );
       _setDefaults();
     }
   }
@@ -90,10 +96,7 @@ class MatchCopy {
           title = l10n.needsItShortMessage;
           description = l10n.needsItMessage(
             MatrixState
-                    .pangeaController
-                    .languageController
-                    .userL2
-                    ?.displayName ??
+                    .pangeaController.languageController.userL2?.displayName ??
                 "target language",
           );
           break;
@@ -212,7 +215,13 @@ class MatchCopy {
       }
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: err, s: stack, data: {"match": match.toJson()});
+      ErrorHandler.logError(
+        e: err,
+        s: stack,
+        data: {
+          "match": match.toJson(),
+        },
+      );
       _setDefaults();
     }
   }

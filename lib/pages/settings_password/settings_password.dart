@@ -55,11 +55,13 @@ class SettingsPasswordController extends State<SettingsPassword> {
     try {
       final scaffoldMessenger = ScaffoldMessenger.of(context);
       await Matrix.of(context).client.changePassword(
-        newPassword1Controller.text,
-        oldPassword: oldPasswordController.text,
-      );
+            newPassword1Controller.text,
+            oldPassword: oldPasswordController.text,
+          );
       scaffoldMessenger.showSnackBar(
-        SnackBar(content: Text(L10n.of(context).passwordHasBeenChanged)),
+        SnackBar(
+          content: Text(L10n.of(context).passwordHasBeenChanged),
+        ),
       );
       if (mounted) context.pop();
     } catch (e) {

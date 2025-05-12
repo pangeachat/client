@@ -54,13 +54,19 @@ class LanguageSettingsModel {
       return data;
     } catch (e, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: s, data: data);
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: data,
+      );
       return data;
     }
   }
 
-  StateEvent get toStateEvent =>
-      StateEvent(content: toJson(), type: PangeaEventTypes.languageSettings);
+  StateEvent get toStateEvent => StateEvent(
+        content: toJson(),
+        type: PangeaEventTypes.languageSettings,
+      );
 }
 
 class PangeaRoomRules {
@@ -129,36 +135,37 @@ class PangeaRoomRules {
     }
   }
 
-  StateEvent get toStateEvent =>
-      StateEvent(content: toJson(), type: PangeaEventTypes.rules);
+  StateEvent get toStateEvent => StateEvent(
+        content: toJson(),
+        type: PangeaEventTypes.rules,
+      );
 
-  factory PangeaRoomRules.fromJson(
-    Map<String, dynamic> json,
-  ) => PangeaRoomRules(
-    // pangeaClassID: json['pangea_class'];
-    isPublic: json['is_public'],
-    isOpenEnrollment: json['is_open_enrollment'],
-    oneToOneChatClass: json['one_to_one_chat_class'],
-    isCreateRooms: json['is_create_rooms'],
-    isShareVideo: json['is_share_video'],
-    isSharePhoto: json['is_share_photo'],
-    isShareFiles: json['is_share_files'],
-    isShareLocation: json['is_share_location'],
-    isCreateStories: json['is_create_stories'],
-    isVoiceNotes: json['is_voice_notes'],
-    isInviteOnlyStudents: json['is_invite_only_students'] ?? true,
-    interactiveTranslator:
-        json['interactive_translator'] ??
-        SpaceConstants.languageToolPermissions,
-    interactiveGrammar:
-        json['interactive_grammar'] ?? SpaceConstants.languageToolPermissions,
-    immersionMode:
-        json['immersion_mode'] ?? SpaceConstants.languageToolPermissions,
-    definitions: json['definitions'] ?? SpaceConstants.languageToolPermissions,
-    translations:
-        json['translations'] ?? SpaceConstants.languageToolPermissions,
-    autoIGC: json['auto_igc'] ?? SpaceConstants.languageToolPermissions,
-  );
+  factory PangeaRoomRules.fromJson(Map<String, dynamic> json) =>
+      PangeaRoomRules(
+        // pangeaClassID: json['pangea_class'];
+        isPublic: json['is_public'],
+        isOpenEnrollment: json['is_open_enrollment'],
+        oneToOneChatClass: json['one_to_one_chat_class'],
+        isCreateRooms: json['is_create_rooms'],
+        isShareVideo: json['is_share_video'],
+        isSharePhoto: json['is_share_photo'],
+        isShareFiles: json['is_share_files'],
+        isShareLocation: json['is_share_location'],
+        isCreateStories: json['is_create_stories'],
+        isVoiceNotes: json['is_voice_notes'],
+        isInviteOnlyStudents: json['is_invite_only_students'] ?? true,
+        interactiveTranslator: json['interactive_translator'] ??
+            SpaceConstants.languageToolPermissions,
+        interactiveGrammar: json['interactive_grammar'] ??
+            SpaceConstants.languageToolPermissions,
+        immersionMode:
+            json['immersion_mode'] ?? SpaceConstants.languageToolPermissions,
+        definitions:
+            json['definitions'] ?? SpaceConstants.languageToolPermissions,
+        translations:
+            json['translations'] ?? SpaceConstants.languageToolPermissions,
+        autoIGC: json['auto_igc'] ?? SpaceConstants.languageToolPermissions,
+      );
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};

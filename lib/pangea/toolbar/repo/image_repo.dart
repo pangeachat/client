@@ -14,7 +14,10 @@ class GenerateImageeResponse {
   final String imageUrl;
   final String prompt;
 
-  GenerateImageeResponse({required this.imageUrl, required this.prompt});
+  GenerateImageeResponse({
+    required this.imageUrl,
+    required this.prompt,
+  });
 
   factory GenerateImageeResponse.fromJson(Map<String, dynamic> json) {
     return GenerateImageeResponse(
@@ -37,7 +40,9 @@ class GenerateImageRequest {
 
   GenerateImageRequest({required this.prompt});
 
-  Map<String, dynamic> toJson() => {'prompt': prompt};
+  Map<String, dynamic> toJson() => {
+        'prompt': prompt,
+      };
 }
 
 class ImageRepo {
@@ -67,7 +72,8 @@ class ImageRepo {
     } catch (err, stack) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(e: err, s: stack, data: requestBody);
-      return GenerateImageeResponse.error(); // Return an error model or handle accordingly
+      return GenerateImageeResponse
+          .error(); // Return an error model or handle accordingly
     }
   }
 }

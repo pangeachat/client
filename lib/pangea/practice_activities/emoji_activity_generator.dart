@@ -50,14 +50,12 @@ class EmojiActivityGenerator {
     MessageActivityRequest req,
     BuildContext context,
   ) async {
-    final List<Future<LemmaInfoResponse>> lemmaInfoFutures =
-        req.targetTokens
-            .map((token) => token.vocabConstructID.getLemmaInfo())
-            .toList();
+    final List<Future<LemmaInfoResponse>> lemmaInfoFutures = req.targetTokens
+        .map((token) => token.vocabConstructID.getLemmaInfo())
+        .toList();
 
-    final List<LemmaInfoResponse> lemmaInfos = await Future.wait(
-      lemmaInfoFutures,
-    );
+    final List<LemmaInfoResponse> lemmaInfos =
+        await Future.wait(lemmaInfoFutures);
 
     final Map<ConstructForm, List<String>> matchInfo = Map.fromIterables(
       req.targetTokens.map((token) => token.vocabForm),
@@ -69,7 +67,9 @@ class EmojiActivityGenerator {
         activityType: ActivityTypeEnum.emoji,
         targetTokens: req.targetTokens,
         langCode: req.userL2,
-        matchContent: PracticeMatchActivity(matchInfo: matchInfo),
+        matchContent: PracticeMatchActivity(
+          matchInfo: matchInfo,
+        ),
       ),
     );
   }

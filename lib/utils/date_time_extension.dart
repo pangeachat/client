@@ -41,8 +41,7 @@ extension DateTimeExtension on DateTime {
 
     final sameDay = sameYear && now.month == month && now.day == day;
 
-    final sameWeek =
-        sameYear &&
+    final sameWeek = sameYear &&
         !sameDay &&
         now.millisecondsSinceEpoch - millisecondsSinceEpoch <
             1000 * 60 * 60 * 24 * 7;
@@ -50,17 +49,14 @@ extension DateTimeExtension on DateTime {
     if (sameDay) {
       return localizedTimeOfDay(context);
     } else if (sameWeek) {
-      return DateFormat.E(
-        Localizations.localeOf(context).languageCode,
-      ).format(this);
+      return DateFormat.E(Localizations.localeOf(context).languageCode)
+          .format(this);
     } else if (sameYear) {
-      return DateFormat.MMMd(
-        Localizations.localeOf(context).languageCode,
-      ).format(this);
+      return DateFormat.MMMd(Localizations.localeOf(context).languageCode)
+          .format(this);
     }
-    return DateFormat.yMMMd(
-      Localizations.localeOf(context).languageCode,
-    ).format(this);
+    return DateFormat.yMMMd(Localizations.localeOf(context).languageCode)
+        .format(this);
   }
 
   /// If the DateTime is today, this returns [localizedTimeOfDay()], if not it also

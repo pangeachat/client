@@ -47,12 +47,11 @@ void chatListHandleSpaceTap(
       //else confirm you want to join
       //can we tell whether space or chat?
       final rooms = Matrix.of(context).client.rooms.where(
-        (element) => element.isSpace && element.membership == Membership.join,
-      );
+            (element) =>
+                element.isSpace && element.membership == Membership.join,
+          );
       final justInputtedCode = MatrixState
-          .pangeaController
-          .classController
-          .chatBox
+          .pangeaController.classController.chatBox
           .read(PLocalKey.justInputtedCode);
       if (rooms.any((s) => s.spaceChildren.any((c) => c.roomId == space.id))) {
         autoJoin(space);

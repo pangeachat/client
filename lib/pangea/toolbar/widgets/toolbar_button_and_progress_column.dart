@@ -28,10 +28,8 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
 
   static const double iconWidth = 36.0;
   static const double buttonSize = 40.0;
-  static const barMargin = EdgeInsets.symmetric(
-    horizontal: iconWidth / 2,
-    vertical: buttonSize / 2,
-  );
+  static const barMargin =
+      EdgeInsets.symmetric(horizontal: iconWidth / 2, vertical: buttonSize / 2);
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +60,12 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
               AnimatedContainer(
                 duration: FluffyThemes.animationDuration,
                 width: width,
-                height:
-                    overlayController.isPracticeComplete
-                        ? height
-                        : min(
-                          height,
-                          height * proportionOfActivitiesCompleted!,
-                        ),
+                height: overlayController.isPracticeComplete
+                    ? height
+                    : min(
+                        height,
+                        height * proportionOfActivitiesCompleted!,
+                      ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                   color: AppConfig.gold,
@@ -76,18 +73,14 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                 margin: barMargin,
               ),
               Positioned(
-                bottom:
-                    height * MessageMode.noneSelected.pointOnBar -
+                bottom: height * MessageMode.noneSelected.pointOnBar -
                     buttonSize / 2 -
                     barMargin.vertical / 2,
                 child: Container(
                   decoration: BoxDecoration(
-                    color:
-                        overlayController.isPracticeComplete
-                            ? AppConfig.gold
-                            : MessageModeExtension.barAndLockedButtonColor(
-                              context,
-                            ),
+                    color: overlayController.isPracticeComplete
+                        ? AppConfig.gold
+                        : MessageModeExtension.barAndLockedButtonColor(context),
                     shape: BoxShape.circle,
                   ),
                   height: buttonSize,
@@ -95,10 +88,9 @@ class ToolbarButtonAndProgressColumn extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Icon(
                     Icons.star_rounded,
-                    color:
-                        overlayController.isPracticeComplete
-                            ? Colors.white
-                            : Theme.of(context).colorScheme.onSurface,
+                    color: overlayController.isPracticeComplete
+                        ? Colors.white
+                        : Theme.of(context).colorScheme.onSurface,
                     size: 30,
                   ),
                 ),

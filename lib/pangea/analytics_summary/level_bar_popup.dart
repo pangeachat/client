@@ -12,7 +12,9 @@ import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LevelBarPopup extends StatelessWidget {
-  const LevelBarPopup({super.key});
+  const LevelBarPopup({
+    super.key,
+  });
 
   GetAnalyticsController get getAnalyticsController =>
       MatrixState.pangeaController.getAnalytics;
@@ -26,7 +28,10 @@ class LevelBarPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 400, maxHeight: 600),
+        constraints: const BoxConstraints(
+          maxWidth: 400,
+          maxHeight: 600,
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20.0),
           child: Scaffold(
@@ -111,8 +116,7 @@ class LevelBarPopup extends StatelessWidget {
                       final use = uses[index];
                       String lemmaCopy = use.lemma;
                       if (use.constructType == ConstructTypeEnum.morph) {
-                        lemmaCopy =
-                            getGrammarCopy(
+                        lemmaCopy = getGrammarCopy(
                               category: use.category,
                               lemma: use.lemma,
                               context: context,

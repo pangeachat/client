@@ -30,9 +30,8 @@ class LevelUpUtil {
 
     final snackbarRegex = RegExp(r'_snackbar$');
 
-    while (MatrixState.pAnyState.activeOverlays.any(
-      (overlayId) => snackbarRegex.hasMatch(overlayId),
-    )) {
+    while (MatrixState.pAnyState.activeOverlays
+        .any((overlayId) => snackbarRegex.hasMatch(overlayId))) {
       await Future.delayed(const Duration(milliseconds: 100));
     }
 
@@ -52,7 +51,10 @@ class LevelUpUtil {
     OverlayUtil.showOverlay(
       overlayKey: "level_up_notification",
       context: context,
-      child: LevelUpBanner(level: level, prevLevel: prevLevel),
+      child: LevelUpBanner(
+        level: level,
+        prevLevel: prevLevel,
+      ),
       transformTargetId: '',
       position: OverlayPositionEnum.top,
       backDropToDismiss: false,
@@ -104,7 +106,12 @@ class LevelUpBannerState extends State<LevelUpBanner>
     _slideAnimation = Tween<Offset>(
       begin: const Offset(0, -1),
       end: Offset.zero,
-    ).animate(CurvedAnimation(parent: _slideController, curve: Curves.easeOut));
+    ).animate(
+      CurvedAnimation(
+        parent: _slideController,
+        curve: Curves.easeOut,
+      ),
+    );
 
     _sizeController = AnimationController(
       vsync: this,
@@ -114,7 +121,12 @@ class LevelUpBannerState extends State<LevelUpBanner>
     _sizeAnimation = Tween<double>(
       begin: 0,
       end: 1,
-    ).animate(CurvedAnimation(parent: _sizeController, curve: Curves.easeOut));
+    ).animate(
+      CurvedAnimation(
+        parent: _sizeController,
+        curve: Curves.easeOut,
+      ),
+    );
 
     _slideController.forward();
 
@@ -133,7 +145,10 @@ class LevelUpBannerState extends State<LevelUpBanner>
   Future<void> _setConstructSummary() async {
     try {
       _constructSummary = await MatrixState.pangeaController.getAnalytics
-          .generateLevelUpAnalytics(widget.level, widget.prevLevel);
+          .generateLevelUpAnalytics(
+        widget.level,
+        widget.prevLevel,
+      );
     } catch (e) {
       _error = e.toString();
     } finally {
@@ -179,24 +194,26 @@ class LevelUpBannerState extends State<LevelUpBanner>
           : _sizeController.reverse());
 
       if (!_showDetails) {
-        await Future.delayed(const Duration(milliseconds: 300), () async {
-          if (!mounted) return;
-          _close();
-        });
+        await Future.delayed(
+          const Duration(milliseconds: 300),
+          () async {
+            if (!mounted) return;
+            _close();
+          },
+        );
       }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final style =
-        FluffyThemes.isColumnMode(context)
-            ? Theme.of(context).textTheme.titleLarge?.copyWith(
+    final style = FluffyThemes.isColumnMode(context)
+        ? Theme.of(context).textTheme.titleLarge?.copyWith(
               color: Theme.of(context).colorScheme.onSecondaryContainer,
               fontWeight: FontWeight.bold,
               letterSpacing: 0.5,
             )
-            : Theme.of(context).textTheme.bodyLarge?.copyWith(
+        : Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: Theme.of(context).colorScheme.onSecondaryContainer,
               fontWeight: FontWeight.bold,
               letterSpacing: 0.5,
@@ -212,7 +229,9 @@ class LevelUpBannerState extends State<LevelUpBanner>
               child: Align(
                 alignment: Alignment.topCenter,
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 600.0),
+                  constraints: const BoxConstraints(
+                    maxWidth: 600.0,
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -222,12 +241,13 @@ class LevelUpBannerState extends State<LevelUpBanner>
                         },
                         onTap: _toggleDetails,
                         child: Container(
-                          margin: const EdgeInsets.only(top: 16),
+                          margin: const EdgeInsets.only(
+                            top: 16,
+                          ),
                           decoration: BoxDecoration(
-                            color:
-                                Theme.of(
-                                  context,
-                                ).colorScheme.secondaryContainer,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .secondaryContainer,
                             borderRadius: BorderRadius.circular(8),
                           ),
                           padding: const EdgeInsets.symmetric(
@@ -243,14 +263,16 @@ class LevelUpBannerState extends State<LevelUpBanner>
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: L10n.of(
-                                          context,
-                                        ).congratulationsOnReaching(
+                                        text: L10n.of(context)
+                                            .congratulationsOnReaching(
                                           widget.level,
                                         ),
                                         style: style,
                                       ),
-                                      TextSpan(text: "  ", style: style),
+                                      TextSpan(
+                                        text: "  ",
+                                        style: style,
+                                      ),
                                       WidgetSpan(
                                         child: CachedNetworkImage(
                                           imageUrl:
@@ -268,62 +290,57 @@ class LevelUpBannerState extends State<LevelUpBanner>
                                   if (Environment.isStaging)
                                     AnimatedSize(
                                       duration: FluffyThemes.animationDuration,
-                                      child:
-                                          _error == null
-                                              ? FluffyThemes.isColumnMode(
-                                                    context,
-                                                  )
-                                                  ? ElevatedButton(
-                                                    style: IconButton.styleFrom(
-                                                      padding:
-                                                          const EdgeInsets.symmetric(
-                                                            vertical: 4.0,
-                                                            horizontal: 16.0,
-                                                          ),
-                                                    ),
-                                                    onPressed: _toggleDetails,
-                                                    child: Text(
-                                                      L10n.of(context).details,
-                                                    ),
-                                                  )
-                                                  : SizedBox(
-                                                    width: 32.0,
-                                                    height: 32.0,
-                                                    child: Center(
-                                                      child: IconButton(
-                                                        icon: const Icon(
-                                                          Icons.info_outline,
-                                                        ),
-                                                        style: IconButton.styleFrom(
-                                                          padding:
-                                                              const EdgeInsets.all(
-                                                                4.0,
-                                                              ),
-                                                        ),
-                                                        onPressed:
-                                                            _toggleDetails,
-                                                        constraints:
-                                                            const BoxConstraints(),
-                                                      ),
-                                                    ),
-                                                  )
-                                              : Row(
-                                                children: [
-                                                  Tooltip(
-                                                    message:
-                                                        L10n.of(
-                                                          context,
-                                                        ).oopsSomethingWentWrong,
-                                                    child: Icon(
-                                                      Icons.error,
-                                                      color:
-                                                          Theme.of(
-                                                            context,
-                                                          ).colorScheme.error,
+                                      child: _error == null
+                                          ? FluffyThemes.isColumnMode(context)
+                                              ? ElevatedButton(
+                                                  style: IconButton.styleFrom(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                      vertical: 4.0,
+                                                      horizontal: 16.0,
                                                     ),
                                                   ),
-                                                ],
-                                              ),
+                                                  onPressed: _toggleDetails,
+                                                  child: Text(
+                                                    L10n.of(context).details,
+                                                  ),
+                                                )
+                                              : SizedBox(
+                                                  width: 32.0,
+                                                  height: 32.0,
+                                                  child: Center(
+                                                    child: IconButton(
+                                                      icon: const Icon(
+                                                        Icons.info_outline,
+                                                      ),
+                                                      style:
+                                                          IconButton.styleFrom(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .all(
+                                                          4.0,
+                                                        ),
+                                                      ),
+                                                      onPressed: _toggleDetails,
+                                                      constraints:
+                                                          const BoxConstraints(),
+                                                    ),
+                                                  ),
+                                                )
+                                          : Row(
+                                              children: [
+                                                Tooltip(
+                                                  message: L10n.of(context)
+                                                      .oopsSomethingWentWrong,
+                                                  child: Icon(
+                                                    Icons.error,
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .error,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
                                     ),
                                   IconButton(
                                     icon: const Icon(Icons.close),
@@ -342,7 +359,9 @@ class LevelUpBannerState extends State<LevelUpBanner>
                             maxHeight:
                                 MediaQuery.of(context).size.height * 0.75,
                           ),
-                          margin: const EdgeInsets.only(top: 4.0),
+                          margin: const EdgeInsets.only(
+                            top: 4.0,
+                          ),
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.circular(8),
@@ -364,60 +383,56 @@ class LevelUpBannerState extends State<LevelUpBanner>
                                   children: [
                                     ...LearningSkillsEnum.values
                                         .where(
-                                          (v) =>
-                                              v.isVisible &&
-                                              _skillsPoints(v) > -1,
-                                        )
+                                      (v) =>
+                                          v.isVisible && _skillsPoints(v) > -1,
+                                    )
                                         .map((skill) {
-                                          return TableRow(
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                      vertical: 9.0,
-                                                      horizontal: 18.0,
-                                                    ),
-                                                child: Icon(
-                                                  skill.icon,
-                                                  size: 25,
-                                                  color: Colors.white,
-                                                ),
+                                      return TableRow(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 9.0,
+                                              horizontal: 18.0,
+                                            ),
+                                            child: Icon(
+                                              skill.icon,
+                                              size: 25,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 9.0,
+                                              horizontal: 18.0,
+                                            ),
+                                            child: Text(
+                                              skill.tooltip(context),
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
                                               ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                      vertical: 9.0,
-                                                      horizontal: 18.0,
-                                                    ),
-                                                child: Text(
-                                                  skill.tooltip(context),
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.white,
-                                                  ),
-                                                  textAlign: TextAlign.center,
-                                                ),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 9.0,
+                                              horizontal: 18.0,
+                                            ),
+                                            child: Text(
+                                              "+ ${_skillsPoints(skill)} XP",
+                                              style: const TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.white,
                                               ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                      vertical: 9.0,
-                                                      horizontal: 18.0,
-                                                    ),
-                                                child: Text(
-                                                  "+ ${_skillsPoints(skill)} XP",
-                                                  style: const TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.white,
-                                                  ),
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        }),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    }),
                                   ],
                                 ),
                                 CachedNetworkImage(
@@ -430,10 +445,9 @@ class LevelUpBannerState extends State<LevelUpBanner>
                                   Container(
                                     padding: const EdgeInsets.all(12),
                                     decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(
-                                            context,
-                                          ).colorScheme.secondaryContainer,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondaryContainer,
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Text(
@@ -441,15 +455,16 @@ class LevelUpBannerState extends State<LevelUpBanner>
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w600,
-                                        color:
-                                            Theme.of(
-                                              context,
-                                            ).colorScheme.onSecondaryContainer,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSecondaryContainer,
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),
-                                const SizedBox(height: 24),
+                                const SizedBox(
+                                  height: 24,
+                                ),
                                 // Share button, currently no functionality
                                 // ElevatedButton(
                                 //   onPressed: () {

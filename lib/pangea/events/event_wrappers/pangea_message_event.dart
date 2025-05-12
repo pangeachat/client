@@ -45,7 +45,9 @@ class PangeaMessageEvent {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         m: "${event.type} should not be used to make a PangeaMessageEvent",
-        data: {"event": event.toJson()},
+        data: {
+          "event": event.toJson(),
+        },
       );
     }
     _event = event;
@@ -77,40 +79,46 @@ class PangeaMessageEvent {
   }
 
   Event? _latestEditCache;
-  Event get _latestEdit =>
-      _latestEditCache ??=
-          _event
-              .aggregatedEvents(timeline, RelationshipTypes.edit)
-              //sort by event.originServerTs to get the most recent first
-              .sorted((a, b) => b.originServerTs.compareTo(a.originServerTs))
-              .firstOrNull ??
-          _event;
+  Event get _latestEdit => _latestEditCache ??= _event
+          .aggregatedEvents(
+            timeline,
+            RelationshipTypes.edit,
+          )
+          //sort by event.originServerTs to get the most recent first
+          .sorted(
+            (a, b) => b.originServerTs.compareTo(a.originServerTs),
+          )
+          .firstOrNull ??
+      _event;
 
   void updateLatestEdit() {
     _latestEditCache = null;
     _representations = null;
   }
 
-  Future<PangeaAudioFile?> getMatrixAudioFile(String langCode) async {
+  Future<PangeaAudioFile?> getMatrixAudioFile(
+    String langCode,
+  ) async {
     final RepresentationEvent? rep = representationByLanguage(langCode);
 
     final TextToSpeechRequest params = TextToSpeechRequest(
       text: rep?.content.text ?? body,
-      tokens:
-          (await rep?.tokensGlobal(
+      tokens: (await rep?.tokensGlobal(
             senderId,
             originServerTs,
-          ))?.map((t) => t.text).toList() ??
+          ))
+              ?.map((t) => t.text)
+              .toList() ??
           [],
       langCode: langCode,
       userL1: l1Code ?? LanguageKeys.unknownLanguage,
       userL2: l2Code ?? LanguageKeys.unknownLanguage,
     );
 
-    final TextToSpeechResponse response = await MatrixState
-        .pangeaController
-        .textToSpeech
-        .get(params);
+    final TextToSpeechResponse response =
+        await MatrixState.pangeaController.textToSpeech.get(
+      params,
+    );
 
     final audioBytes = base64.decode(response.audioContent);
     final eventIdParam = _event.eventId;
@@ -141,7 +149,10 @@ class PangeaMessageEvent {
       file,
       inReplyTo: _event,
       extraContent: {
-        'info': {...file.info, 'duration': response.durationMillis},
+        'info': {
+          ...file.info,
+          'duration': response.durationMillis,
+        },
         'org.matrix.msc3245.voice': {},
         'org.matrix.msc1767.audio': {
           'duration': response.durationMillis,
@@ -164,66 +175,73 @@ class PangeaMessageEvent {
   }
 
   Event? getTextToSpeechLocal(String langCode, String text) {
-    return allAudio.firstWhereOrNull((event) {
-      try {
-        // Safely access
-        final dataMap = event.content.tryGetMap(ModelKey.transcription);
+    return allAudio.firstWhereOrNull(
+      (event) {
+        try {
+          // Safely access
+          final dataMap = event.content.tryGetMap(ModelKey.transcription);
 
-        if (dataMap == null) {
-          return false;
-        }
+          if (dataMap == null) {
+            return false;
+          }
 
-        // old text to speech content will not have TTSToken data
-        // we want to disregard them and just generate new ones
-        // for that, we'll return false if 'tokens' are null
-        // while in-development, we'll pause here to inspect
-        // debugger can be removed after we're sure it's working
-        if (dataMap['tokens'] == null) {
-          // events before today will definitely not have the tokens
-          debugger(
-            when:
-                kDebugMode &&
-                event.originServerTs.isAfter(DateTime(2024, 10, 16)),
+          // old text to speech content will not have TTSToken data
+          // we want to disregard them and just generate new ones
+          // for that, we'll return false if 'tokens' are null
+          // while in-development, we'll pause here to inspect
+          // debugger can be removed after we're sure it's working
+          if (dataMap['tokens'] == null) {
+            // events before today will definitely not have the tokens
+            debugger(
+              when: kDebugMode &&
+                  event.originServerTs.isAfter(DateTime(2024, 10, 16)),
+            );
+            return false;
+          }
+
+          final PangeaAudioEventData audioData =
+              PangeaAudioEventData.fromJson(dataMap as dynamic);
+
+          // Check if both language code and text match
+          return audioData.langCode == langCode && audioData.text == text;
+        } catch (e, s) {
+          debugger(when: kDebugMode);
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {},
+            m: "error parsing data in getTextToSpeechLocal",
           );
           return false;
         }
-
-        final PangeaAudioEventData audioData = PangeaAudioEventData.fromJson(
-          dataMap as dynamic,
-        );
-
-        // Check if both language code and text match
-        return audioData.langCode == langCode && audioData.text == text;
-      } catch (e, s) {
-        debugger(when: kDebugMode);
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {},
-          m: "error parsing data in getTextToSpeechLocal",
-        );
-        return false;
-      }
-    });
+      },
+    );
   }
 
   // get audio events that are related to this event
-  Set<Event> get allAudio =>
-      _latestEdit.aggregatedEvents(timeline, RelationshipTypes.reply).where((
-        element,
-      ) {
+  Set<Event> get allAudio => _latestEdit
+          .aggregatedEvents(
+        timeline,
+        RelationshipTypes.reply,
+      )
+          .where((element) {
         return element.content.tryGet<Map<String, dynamic>>(
               ModelKey.transcription,
             ) !=
             null;
       }).toSet();
 
-  SpeechToTextModel? getSpeechToTextLocal(String? l1Code, String? l2Code) {
+  SpeechToTextModel? getSpeechToTextLocal(
+    String? l1Code,
+    String? l2Code,
+  ) {
     if (l1Code == null || l2Code == null) {
       return null;
     }
     return representations
-        .firstWhereOrNull((element) => element.content.speechToText != null)
+        .firstWhereOrNull(
+          (element) => element.content.speechToText != null,
+        )
         ?.content
         .speechToText;
   }
@@ -247,9 +265,8 @@ class PangeaMessageEvent {
       return null;
     }
 
-    final rawBotTranscription = event.content.tryGetMap(
-      ModelKey.botTranscription,
-    );
+    final rawBotTranscription =
+        event.content.tryGetMap(ModelKey.botTranscription);
     if (rawBotTranscription != null) {
       final botTranscription = SpeechToTextModel.fromJson(
         Map<String, dynamic>.from(rawBotTranscription),
@@ -257,11 +274,12 @@ class PangeaMessageEvent {
       return botTranscription;
     }
 
-    final SpeechToTextModel? speechToTextLocal =
-        representations
-            .firstWhereOrNull((element) => element.content.speechToText != null)
-            ?.content
-            .speechToText;
+    final SpeechToTextModel? speechToTextLocal = representations
+        .firstWhereOrNull(
+          (element) => element.content.speechToText != null,
+        )
+        ?.content
+        .speechToText;
 
     if (speechToTextLocal != null) return speechToTextLocal;
 
@@ -290,8 +308,8 @@ class PangeaMessageEvent {
     debugPrint("mimeType ${matrixFile.mimeType}");
     debugPrint("encoding ${mimeTypeToAudioEncoding(matrixFile.mimeType)}");
 
-    final SpeechToTextModel
-    response = await MatrixState.pangeaController.speechToText.get(
+    final SpeechToTextModel response =
+        await MatrixState.pangeaController.speechToText.get(
       SpeechToTextRequestModel(
         audioContent: matrixFile.bytes,
         audioEvent: _event,
@@ -391,7 +409,9 @@ class PangeaMessageEvent {
           m: "error parsing originalSent",
           e: err,
           s: s,
-          data: {"event": _event.toJson()},
+          data: {
+            "event": _event.toJson(),
+          },
         );
       }
     }
@@ -417,14 +437,19 @@ class PangeaMessageEvent {
           m: "error parsing originalWritten",
           e: err,
           s: s,
-          data: {"event": _event.toJson()},
+          data: {
+            "event": _event.toJson(),
+          },
         );
       }
     }
 
     _representations!.addAll(
       _latestEdit
-          .aggregatedEvents(timeline, PangeaEventTypes.representation)
+          .aggregatedEvents(
+            timeline,
+            PangeaEventTypes.representation,
+          )
           .map(
             (e) => RepresentationEvent(
               event: e,
@@ -432,13 +457,14 @@ class PangeaMessageEvent {
               timeline: timeline,
             ),
           )
-          .sorted((a, b) {
-            //TODO - test with edited events to make sure this is working
-            if (a.event == null) return -1;
-            if (b.event == null) return 1;
-            return b.event!.originServerTs.compareTo(a.event!.originServerTs);
-          })
-          .toList(),
+          .sorted(
+        (a, b) {
+          //TODO - test with edited events to make sure this is working
+          if (a.event == null) return -1;
+          if (b.event == null) return 1;
+          return b.event!.originServerTs.compareTo(a.event!.originServerTs);
+        },
+      ).toList(),
     );
 
     return _representations!;
@@ -450,8 +476,8 @@ class PangeaMessageEvent {
       );
 
   int translationIndex(String langCode) => representations.indexWhere(
-    (element) => element.langCode.split("-")[0] == langCode.split("-")[0],
-  );
+        (element) => element.langCode.split("-")[0] == langCode.split("-")[0],
+      );
 
   String translationTextSafe(String langCode) {
     return representationByLanguage(langCode)?.text ?? body;
@@ -504,7 +530,13 @@ class PangeaMessageEvent {
         ),
       );
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"event": _event.toJson()});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "event": _event.toJson(),
+        },
+      );
       return null;
     }
 
@@ -519,32 +551,30 @@ class PangeaMessageEvent {
 
     return MatrixState.pangeaController.messageData
         .getPangeaRepresentationEvent(
-          req: FullTextTranslationRequestModel(
-            text: originalSent?.content.text ?? _latestEdit.body,
-            srcLang: originalSent?.langCode,
-            tgtLang: langCode,
-            userL2: l2Code ?? LanguageKeys.unknownLanguage,
-            userL1: l1Code ?? LanguageKeys.unknownLanguage,
-          ),
-          messageEvent: this,
-          originalSent: true,
-        );
+      req: FullTextTranslationRequestModel(
+        text: originalSent?.content.text ?? _latestEdit.body,
+        srcLang: originalSent?.langCode,
+        tgtLang: langCode,
+        userL2: l2Code ?? LanguageKeys.unknownLanguage,
+        userL1: l1Code ?? LanguageKeys.unknownLanguage,
+      ),
+      messageEvent: this,
+      originalSent: true,
+    );
   }
 
-  RepresentationEvent? get originalSent => representations.firstWhereOrNull(
-    (element) => element.content.originalSent,
-  );
+  RepresentationEvent? get originalSent => representations
+      .firstWhereOrNull((element) => element.content.originalSent);
 
-  RepresentationEvent? get originalWritten => representations.firstWhereOrNull(
-    (element) => element.content.originalWritten,
-  );
+  RepresentationEvent? get originalWritten => representations
+      .firstWhereOrNull((element) => element.content.originalWritten);
 
   PangeaRepresentation get defaultRepresentation => PangeaRepresentation(
-    langCode: LanguageKeys.unknownLanguage,
-    text: body,
-    originalSent: false,
-    originalWritten: false,
-  );
+        langCode: LanguageKeys.unknownLanguage,
+        text: body,
+        originalSent: false,
+        originalWritten: false,
+      );
 
   UseType get msgUseType {
     final ChoreoRecord? choreoRecord = originalSent?.choreo;
@@ -596,20 +626,20 @@ class PangeaMessageEvent {
     }
 
     final eligibleTokens = messageDisplayRepresentation!.tokens!.where(
-      (token) =>
-          token.isActivityBasicallyEligible(ActivityTypeEnum.wordMeaning),
+      (token) => token.isActivityBasicallyEligible(
+        ActivityTypeEnum.wordMeaning,
+      ),
     );
 
     if (eligibleTokens.isEmpty) return 1;
 
     final alreadyDid = eligibleTokens.where(
-      (token) =>
-          !shouldDoActivity(
-            token: token,
-            a: ActivityTypeEnum.wordMeaning,
-            feature: null,
-            tag: null,
-          ),
+      (token) => !shouldDoActivity(
+        token: token,
+        a: ActivityTypeEnum.wordMeaning,
+        feature: null,
+        tag: null,
+      ),
     );
 
     return alreadyDid.length / eligibleTokens.length;
@@ -628,8 +658,7 @@ class PangeaMessageEvent {
 
   String get messageDisplayLangCode {
     final bool immersionMode = MatrixState
-        .pangeaController
-        .permissionsController
+        .pangeaController.permissionsController
         .isToolEnabled(ToolSetting.immersionMode, room);
 
     final String? originalLangCode =
@@ -651,34 +680,37 @@ class PangeaMessageEvent {
     final RepresentationEvent? repEvent = originalSent ?? originalWritten;
     if (repEvent?.choreo == null) return null;
 
-    final List<PangeaMatch> steps =
-        repEvent!.choreo!.choreoSteps
-            .where(
-              (choreoStep) =>
-                  choreoStep.acceptedOrIgnoredMatch != null &&
-                  choreoStep.acceptedOrIgnoredMatch?.match.shortMessage ==
-                      lemma,
-            )
-            .map((element) => element.acceptedOrIgnoredMatch)
-            .cast<PangeaMatch>()
-            .toList();
+    final List<PangeaMatch> steps = repEvent!.choreo!.choreoSteps
+        .where(
+          (choreoStep) =>
+              choreoStep.acceptedOrIgnoredMatch != null &&
+              choreoStep.acceptedOrIgnoredMatch?.match.shortMessage == lemma,
+        )
+        .map((element) => element.acceptedOrIgnoredMatch)
+        .cast<PangeaMatch>()
+        .toList();
     return steps;
   }
 
   /// Returns a list of all [PracticeActivityEvent] objects
   /// associated with this message event.
   List<PracticeActivityEvent> get _practiceActivityEvents {
-    final List<Event> events =
-        _latestEdit
-            .aggregatedEvents(timeline, PangeaEventTypes.pangeaActivity)
-            .where((event) => !event.redacted)
-            .toList();
+    final List<Event> events = _latestEdit
+        .aggregatedEvents(
+          timeline,
+          PangeaEventTypes.pangeaActivity,
+        )
+        .where((event) => !event.redacted)
+        .toList();
 
     final List<PracticeActivityEvent> practiceEvents = [];
     for (final event in events) {
       try {
         practiceEvents.add(
-          PracticeActivityEvent(timeline: timeline, event: event),
+          PracticeActivityEvent(
+            timeline: timeline,
+            event: event,
+          ),
         );
       } catch (e, s) {
         ErrorHandler.logError(e: e, s: s, data: event.toJson());
@@ -693,7 +725,13 @@ class PangeaMessageEvent {
     try {
       return practiceActivities.isNotEmpty;
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"event": _event.toJson()});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "event": _event.toJson(),
+        },
+      );
       return false;
     }
   }
@@ -731,6 +769,10 @@ class PangeaMessageEvent {
       return false;
     }
 
-    return token.shouldDoActivity(a: a, feature: feature, tag: tag);
+    return token.shouldDoActivity(
+      a: a,
+      feature: feature,
+      tag: tag,
+    );
   }
 }

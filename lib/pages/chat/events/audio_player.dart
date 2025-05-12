@@ -160,9 +160,11 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       _playAction();
     } catch (e, s) {
       Logs().v('Could not download audio file', e, s);
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toLocalizedString(context)),
+        ),
+      );
     }
   }
 
@@ -253,8 +255,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       // Pangea#
     }
     audioPlayer.play().onError(
-      ErrorReporter(context, 'Unable to play audio message').onErrorCallback,
-    );
+          ErrorReporter(context, 'Unable to play audio message')
+              .onErrorCallback,
+        );
   }
 
   static const double buttonSize = 36;
@@ -278,8 +281,7 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
 
   List<int>? _getWaveform() {
     // #Pangea
-    final eventWaveForm =
-        widget.matrixFile?.waveform ??
+    final eventWaveForm = widget.matrixFile?.waveform ??
         widget.event?.content
             .tryGetMap<String, dynamic>('org.matrix.msc1767.audio')
             ?.tryGetList<int>('waveform');
@@ -408,30 +410,29 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                 SizedBox(
                   width: buttonSize,
                   height: buttonSize,
-                  child:
-                      status == AudioPlayerStatus.downloading
-                          ? CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: widget.color,
-                          )
-                          : InkWell(
+                  child: status == AudioPlayerStatus.downloading
+                      ? CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: widget.color,
+                        )
+                      : InkWell(
+                          borderRadius: BorderRadius.circular(64),
+                          // #Pangea
+                          // onLongPress: () => widget.event.saveFile(context),
+                          onLongPress: () => widget.event?.saveFile(context),
+                          // Pangea#
+                          onTap: _startAction,
+                          child: Material(
+                            color: widget.color.withAlpha(64),
                             borderRadius: BorderRadius.circular(64),
-                            // #Pangea
-                            // onLongPress: () => widget.event.saveFile(context),
-                            onLongPress: () => widget.event?.saveFile(context),
-                            // Pangea#
-                            onTap: _startAction,
-                            child: Material(
-                              color: widget.color.withAlpha(64),
-                              borderRadius: BorderRadius.circular(64),
-                              child: Icon(
-                                audioPlayer?.playerState.playing == true
-                                    ? Icons.pause_outlined
-                                    : Icons.play_arrow_outlined,
-                                color: widget.color,
-                              ),
+                            child: Icon(
+                              audioPlayer?.playerState.playing == true
+                                  ? Icons.pause_outlined
+                                  : Icons.play_arrow_outlined,
+                              color: widget.color,
                             ),
                           ),
+                        ),
                 ),
                 // #Pangea
                 // const SizedBox(width: 8),
@@ -444,11 +445,9 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Row(
                             children: [
-                              for (
-                                var i = 0;
-                                i < AudioPlayerWidget.wavesCount;
-                                i++
-                              )
+                              for (var i = 0;
+                                  i < AudioPlayerWidget.wavesCount;
+                                  i++)
                                 Expanded(
                                   child: Container(
                                     height: 32,
@@ -458,13 +457,14 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                       // margin: const EdgeInsets.symmetric(
                                       //   horizontal: 1,
                                       // ),
-                                      margin: const EdgeInsets.only(right: 0.5),
+                                      margin: const EdgeInsets.only(
+                                        right: 0.5,
+                                      ),
                                       // Pangea#
                                       decoration: BoxDecoration(
-                                        color:
-                                            i < wavePosition
-                                                ? widget.color
-                                                : widget.color.withAlpha(128),
+                                        color: i < wavePosition
+                                            ? widget.color
+                                            : widget.color.withAlpha(128),
                                         borderRadius: BorderRadius.circular(64),
                                       ),
                                       height: 32 * (waveform[i] / 1024),
@@ -477,30 +477,23 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                       SizedBox(
                         height: 32,
                         child: Slider(
-                          thumbColor:
-                              widget.event?.senderId ==
-                                      widget.event?.room.client.userID
-                                  ? theme.colorScheme.onPrimary
-                                  : theme.colorScheme.primary,
-                          activeColor:
-                              waveform == null
-                                  ? widget.color
-                                  : Colors.transparent,
-                          inactiveColor:
-                              waveform == null
-                                  ? widget.color.withAlpha(128)
-                                  : Colors.transparent,
+                          thumbColor: widget.event?.senderId ==
+                                  widget.event?.room.client.userID
+                              ? theme.colorScheme.onPrimary
+                              : theme.colorScheme.primary,
+                          activeColor: waveform == null
+                              ? widget.color
+                              : Colors.transparent,
+                          inactiveColor: waveform == null
+                              ? widget.color.withAlpha(128)
+                              : Colors.transparent,
                           max: maxPosition,
                           value: currentPosition,
-                          onChanged:
-                              (position) =>
-                                  audioPlayer == null
-                                      ? _startAction()
-                                      : audioPlayer.seek(
-                                        Duration(
-                                          milliseconds: position.round(),
-                                        ),
-                                      ),
+                          onChanged: (position) => audioPlayer == null
+                              ? _startAction()
+                              : audioPlayer.seek(
+                                  Duration(milliseconds: position.round()),
+                                ),
                         ),
                       ),
                     ],
@@ -514,7 +507,10 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                 // Pangea#
                 Text(
                   statusText,
-                  style: TextStyle(color: widget.color, fontSize: 12),
+                  style: TextStyle(
+                    color: widget.color,
+                    fontSize: 12,
+                  ),
                 ),
                 // #Pangea
                 // const SizedBox(width: 8),
@@ -559,14 +555,17 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
             ),
           ),
           if (fileDescription != null
-              // #Pangea
-              &&
-              widget.event != null
-          // Pangea#
-          ) ...[
+                  // #Pangea
+                  &&
+                  widget.event != null
+              // Pangea#
+              ) ...[
             const SizedBox(height: 8),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
               child: Linkify(
                 text: fileDescription,
                 textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
@@ -630,5 +629,4 @@ class BytesAudioSource extends StreamAudioSource {
     );
   }
 }
-
 // Pangea#

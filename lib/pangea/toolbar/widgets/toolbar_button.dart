@@ -19,13 +19,14 @@ class ToolbarButton extends StatelessWidget {
     super.key,
   });
 
-  Color color(BuildContext context) =>
-      mode.iconButtonColor(context, overlayController);
+  Color color(BuildContext context) => mode.iconButtonColor(
+        context,
+        overlayController,
+      );
 
-  bool get enabled =>
-      mode == MessageMode.messageTranslation
-          ? overlayController.isTranslationUnlocked
-          : true;
+  bool get enabled => mode == MessageMode.messageTranslation
+      ? overlayController.isTranslationUnlocked
+      : true;
 
   @override
   Widget build(BuildContext context) {

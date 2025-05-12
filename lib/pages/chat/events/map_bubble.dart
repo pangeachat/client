@@ -74,10 +74,9 @@ class MapBubble extends StatelessWidget {
                 child: Text(
                   ' © OpenStreetMap contributors ',
                   style: TextStyle(
-                    color:
-                        theme.brightness == Brightness.dark
-                            ? Colors.white
-                            : Colors.black,
+                    color: theme.brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black,
                     backgroundColor: theme.appBarTheme.backgroundColor,
                   ),
                 ),

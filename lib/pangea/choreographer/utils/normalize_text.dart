@@ -19,7 +19,11 @@ String normalizeString(String input) {
 
     return normalized.isEmpty ? input : normalized;
   } catch (e, s) {
-    ErrorHandler.logError(e: e, s: s, data: {'input': input});
+    ErrorHandler.logError(
+      e: e,
+      s: s,
+      data: {'input': input},
+    );
     return input;
   }
 }

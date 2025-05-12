@@ -68,10 +68,9 @@ class PangeaRepresentation {
       text: json[_textKey],
       originalSent: json[_originalSentKey] ?? false,
       originalWritten: json[_originalWrittenKey] ?? false,
-      speechToText:
-          json[_speechToTextKey] == null
-              ? null
-              : SpeechToTextModel.fromJson(json[_speechToTextKey]),
+      speechToText: json[_speechToTextKey] == null
+          ? null
+          : SpeechToTextModel.fromJson(json[_speechToTextKey]),
     );
   }
 
@@ -125,17 +124,15 @@ class PangeaRepresentation {
     List<PangeaToken> tokensToSave =
         tokens.where((token) => token.lemma.saveVocab).toList();
     if (choreo != null && choreo.pastedStrings.isNotEmpty) {
-      tokensToSave =
-          tokensToSave
-              .where(
-                (token) =>
-                    !choreo.pastedStrings.any(
-                      (pasted) => pasted.toLowerCase().contains(
-                        token.text.content.toLowerCase(),
-                      ),
-                    ),
-              )
-              .toList();
+      tokensToSave = tokensToSave
+          .where(
+            (token) => !choreo.pastedStrings.any(
+              (pasted) => pasted
+                  .toLowerCase()
+                  .contains(token.text.content.toLowerCase()),
+            ),
+          )
+          .toList();
     }
 
     if (choreo == null ||
@@ -198,37 +195,56 @@ class PangeaRepresentation {
       if (tokenStep.acceptedOrIgnoredMatch != null &&
           tokenStep.acceptedOrIgnoredMatch?.status !=
               PangeaMatchStatus.accepted) {
-        uses.addAll(token.allUses(ConstructUseTypeEnum.ga, metadata, 0));
+        uses.addAll(
+          token.allUses(
+            ConstructUseTypeEnum.ga,
+            metadata,
+            0,
+          ),
+        );
         continue;
       }
 
       if (tokenStep.itStep != null) {
-        final selectedChoices =
-            tokenStep.itStep!.continuances
-                .where((choice) => choice.wasClicked)
-                .length;
+        final selectedChoices = tokenStep.itStep!.continuances
+            .where((choice) => choice.wasClicked)
+            .length;
         if (selectedChoices == 0) {
           ErrorHandler.logError(
             e: "No selected choices for IT step",
-            data: {"token": token.text.content, "step": tokenStep.toJson()},
+            data: {
+              "token": token.text.content,
+              "step": tokenStep.toJson(),
+            },
           );
           continue;
         }
 
         final corITPoints = ConstructUseTypeEnum.corIt.pointValue;
         final incITPoints = ConstructUseTypeEnum.incIt.pointValue;
-        final xp = max(0, corITPoints + (incITPoints * (selectedChoices - 1)));
+        final xp = max(
+          0,
+          corITPoints + (incITPoints * (selectedChoices - 1)),
+        );
 
-        uses.addAll(token.allUses(ConstructUseTypeEnum.ta, metadata, xp));
+        uses.addAll(
+          token.allUses(
+            ConstructUseTypeEnum.ta,
+            metadata,
+            xp,
+          ),
+        );
       } else if (tokenStep.acceptedOrIgnoredMatch!.match.choices != null) {
-        final selectedChoices =
-            tokenStep.acceptedOrIgnoredMatch!.match.choices!
-                .where((choice) => choice.selected)
-                .length;
+        final selectedChoices = tokenStep.acceptedOrIgnoredMatch!.match.choices!
+            .where((choice) => choice.selected)
+            .length;
         if (selectedChoices == 0) {
           ErrorHandler.logError(
             e: "No selected choices for IGC step",
-            data: {"token": token.text.content, "step": tokenStep.toJson()},
+            data: {
+              "token": token.text.content,
+              "step": tokenStep.toJson(),
+            },
           );
           continue;
         }
@@ -240,7 +256,13 @@ class PangeaRepresentation {
           corIGCPoints + (incIGCPoints * (selectedChoices - 1)),
         );
 
-        uses.addAll(token.allUses(ConstructUseTypeEnum.ga, metadata, xp));
+        uses.addAll(
+          token.allUses(
+            ConstructUseTypeEnum.ga,
+            metadata,
+            xp,
+          ),
+        );
       }
     }
 

@@ -23,10 +23,9 @@ class ArchiveController extends State<Archive> {
     if (archive.isNotEmpty) return archive;
     // #Pangea
     //return archive = await Matrix.of(context).client.loadArchive();
-    return archive =
-        (await Matrix.of(context).client.loadArchive())
-            .where((e) => (!e.isSpace && !e.isAnalyticsRoom))
-            .toList();
+    return archive = (await Matrix.of(context).client.loadArchive())
+        .where((e) => (!e.isSpace && !e.isAnalyticsRoom))
+        .toList();
     // Pangea#
   }
 

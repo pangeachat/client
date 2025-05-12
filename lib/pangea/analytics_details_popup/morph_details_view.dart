@@ -13,7 +13,10 @@ import 'package:fluffychat/pangea/morphs/morph_tag_display.dart';
 class MorphDetailsView extends StatelessWidget {
   final ConstructIdentifier constructId;
 
-  const MorphDetailsView({required this.constructId, super.key});
+  const MorphDetailsView({
+    required this.constructId,
+    super.key,
+  });
 
   ConstructUses get _construct => constructId.constructUses;
   MorphFeaturesEnum get _morphFeature =>
@@ -22,10 +25,9 @@ class MorphDetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color textColor =
-        Theme.of(context).brightness != Brightness.light
-            ? _construct.lemmaCategory.color(context)
-            : _construct.lemmaCategory.darkColor(context);
+    final Color textColor = Theme.of(context).brightness != Brightness.light
+        ? _construct.lemmaCategory.color(context)
+        : _construct.lemmaCategory.darkColor(context);
 
     return AnalyticsDetailsViewContent(
       subtitle: MorphFeatureDisplay(morphFeature: _morphFeature),

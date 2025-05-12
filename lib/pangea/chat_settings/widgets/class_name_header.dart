@@ -28,7 +28,10 @@ class ClassNameHeader extends StatelessWidget {
       ),
       icon: visible.Visibility(
         visible: controller.showEditNameIcon,
-        child: Icon(Icons.edit, color: Theme.of(context).colorScheme.onSurface),
+        child: Icon(
+          Icons.edit,
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
       ),
       label: room.nameAndRoomTypeIcon(
         TextStyle(

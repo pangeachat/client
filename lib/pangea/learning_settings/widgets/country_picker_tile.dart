@@ -33,18 +33,19 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
   Widget build(BuildContext context) {
     final countries = CountryService().getAll();
     return DropdownButtonFormField2<Country>(
-      customButton:
-          widget.learningController.country != null &&
-                  countries.any(
-                    (country) =>
-                        country.name == widget.learningController.country!.name,
-                  )
-              ? CountryPickerTile(
-                widget.learningController.country!,
-                isDropdown: true,
+      customButton: widget.learningController.country != null &&
+              countries.any(
+                (country) =>
+                    country.name == widget.learningController.country!.name,
               )
-              : null,
-      menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.zero),
+          ? CountryPickerTile(
+              widget.learningController.country!,
+              isDropdown: true,
+            )
+          : null,
+      menuItemStyleData: const MenuItemStyleData(
+        padding: EdgeInsets.zero,
+      ),
       isExpanded: true,
       decoration: InputDecoration(
         labelText: L10n.of(context).countryInformation,
@@ -61,11 +62,13 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
           (country) => DropdownMenuItem(
             value: country,
             child: Container(
-              color:
-                  widget.learningController.country == country
-                      ? Theme.of(context).colorScheme.primary.withAlpha(20)
-                      : Colors.transparent,
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+              color: widget.learningController.country == country
+                  ? Theme.of(context).colorScheme.primary.withAlpha(20)
+                  : Colors.transparent,
+              padding: const EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 12,
+              ),
               child: CountryPickerTile(country),
             ),
           ),
@@ -81,7 +84,9 @@ class CountryPickerDropdownState extends State<CountryPickerDropdown> {
           child: TextField(
             autofocus: true,
             controller: _searchController,
-            decoration: const InputDecoration(prefixIcon: Icon(Icons.search)),
+            decoration: const InputDecoration(
+              prefixIcon: Icon(Icons.search),
+            ),
           ),
         ),
         searchMatchFn: (item, searchValue) {
@@ -103,7 +108,11 @@ class CountryPickerTile extends StatelessWidget {
   final Country country;
   final bool isDropdown;
 
-  const CountryPickerTile(this.country, {super.key, this.isDropdown = false});
+  const CountryPickerTile(
+    this.country, {
+    super.key,
+    this.isDropdown = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +127,10 @@ class CountryPickerTile extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Text(
-              CountryDisplayUtil.countryDisplayName(country.name, context) ??
+              CountryDisplayUtil.countryDisplayName(
+                    country.name,
+                    context,
+                  ) ??
                   '',
               style: const TextStyle().copyWith(
                 color: Theme.of(context).textTheme.bodyLarge!.color,

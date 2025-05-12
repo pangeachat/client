@@ -75,7 +75,9 @@ void showMemberActionsPopupMenu({
                   padding: const EdgeInsets.all(4.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [LevelDisplayName(userId: user.id)],
+                    children: [
+                      LevelDisplayName(userId: user.id),
+                    ],
                   ),
                 ),
                 // Pangea#
@@ -123,8 +125,8 @@ void showMemberActionsPopupMenu({
                   user.powerLevel < 50
                       ? L10n.of(context).userLevel(user.powerLevel)
                       : user.powerLevel < 100
-                      ? L10n.of(context).moderatorLevel(user.powerLevel)
-                      : L10n.of(context).adminLevel(user.powerLevel),
+                          ? L10n.of(context).moderatorLevel(user.powerLevel)
+                          : L10n.of(context).adminLevel(user.powerLevel),
                   style: const TextStyle(fontSize: 10),
                 ),
               ],
@@ -241,12 +243,11 @@ void showMemberActionsPopupMenu({
             cancelLabel: L10n.of(context).no,
             // #Pangea
             // message: L10n.of(context).kickUserDescription,
-            message:
-                user.id == BotName.byEnvironment &&
-                        !user.room.isSpace &&
-                        !user.room.isDirectChat
-                    ? L10n.of(context).kickBotWarning
-                    : L10n.of(context).kickUserDescription,
+            message: user.id == BotName.byEnvironment &&
+                    !user.room.isSpace &&
+                    !user.room.isDirectChat
+                ? L10n.of(context).kickBotWarning
+                : L10n.of(context).kickUserDescription,
             // Pangea#
           ) ==
           OkCancelResult.ok) {

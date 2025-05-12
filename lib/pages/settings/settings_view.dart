@@ -47,7 +47,10 @@ class SettingsView extends StatelessWidget {
             onGoToChats: () => context.go('/rooms'),
             onGoToSpaceId: (spaceId) => context.go('/rooms?spaceId=$spaceId'),
           ),
-          Container(color: Theme.of(context).dividerColor, width: 1),
+          Container(
+            color: Theme.of(context).dividerColor,
+            width: 1,
+          ),
         ],
         Expanded(
           child: Scaffold(
@@ -73,8 +76,7 @@ class SettingsView extends StatelessWidget {
                     builder: (context, snapshot) {
                       final profile = snapshot.data;
                       final avatar = profile?.avatarUrl;
-                      final mxid =
-                          Matrix.of(context).client.userID ??
+                      final mxid = Matrix.of(context).client.userID ??
                           L10n.of(context).user;
                       final displayname =
                           profile?.displayName ?? mxid.localpart ?? mxid;
@@ -91,14 +93,13 @@ class SettingsView extends StatelessWidget {
                                   userId: profile?.userId,
                                   // Pangea#
                                   size: Avatar.defaultSize * 2.5,
-                                  onTap:
-                                      avatar != null
-                                          ? () => showDialog(
+                                  onTap: avatar != null
+                                      ? () => showDialog(
                                             context: context,
-                                            builder:
-                                                (_) => MxcImageViewer(avatar),
+                                            builder: (_) =>
+                                                MxcImageViewer(avatar),
                                           )
-                                          : null,
+                                      : null,
                                 ),
                                 if (profile != null)
                                   Positioned(
@@ -136,12 +137,14 @@ class SettingsView extends StatelessWidget {
                                     displayname,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(fontSize: 18),
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                    ),
                                   ),
                                 ),
                                 TextButton.icon(
-                                  onPressed:
-                                      () => FluffyShare.share(mxid, context),
+                                  onPressed: () =>
+                                      FluffyShare.share(mxid, context),
                                   icon: const Icon(
                                     Icons.copy_outlined,
                                     size: 14,
@@ -207,10 +210,9 @@ class SettingsView extends StatelessWidget {
                   ListTile(
                     leading: const Icon(Icons.format_paint_outlined),
                     title: Text(L10n.of(context).changeTheme),
-                    tileColor:
-                        activeRoute.startsWith('/rooms/settings/style')
-                            ? theme.colorScheme.surfaceContainerHigh
-                            : null,
+                    tileColor: activeRoute.startsWith('/rooms/settings/style')
+                        ? theme.colorScheme.surfaceContainerHigh
+                        : null,
                     onTap: () => context.go('/rooms/settings/style'),
                   ),
                   ListTile(
@@ -226,19 +228,17 @@ class SettingsView extends StatelessWidget {
                     leading: const Icon(Icons.devices_outlined),
                     title: Text(L10n.of(context).devices),
                     onTap: () => context.go('/rooms/settings/devices'),
-                    tileColor:
-                        activeRoute.startsWith('/rooms/settings/devices')
-                            ? theme.colorScheme.surfaceContainerHigh
-                            : null,
+                    tileColor: activeRoute.startsWith('/rooms/settings/devices')
+                        ? theme.colorScheme.surfaceContainerHigh
+                        : null,
                   ),
                   ListTile(
                     leading: const Icon(Icons.forum_outlined),
                     title: Text(L10n.of(context).chat),
                     onTap: () => context.go('/rooms/settings/chat'),
-                    tileColor:
-                        activeRoute.startsWith('/rooms/settings/chat')
-                            ? theme.colorScheme.surfaceContainerHigh
-                            : null,
+                    tileColor: activeRoute.startsWith('/rooms/settings/chat')
+                        ? theme.colorScheme.surfaceContainerHigh
+                        : null,
                   ),
                   // #Pangea
                   ListTile(
@@ -269,12 +269,11 @@ class SettingsView extends StatelessWidget {
                       await showFutureLoadingDialog(
                         context: context,
                         future: () async {
-                          final roomId = await Matrix.of(
-                            context,
-                          ).client.startDirectChat(
-                            Environment.supportUserId,
-                            enableEncryption: false,
-                          );
+                          final roomId =
+                              await Matrix.of(context).client.startDirectChat(
+                                    Environment.supportUserId,
+                                    enableEncryption: false,
+                                  );
                           context.go('/rooms/$roomId');
                         },
                       );
@@ -303,18 +302,17 @@ class SettingsView extends StatelessWidget {
                             );
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                content: Text(
-                                  L10n.of(context).copiedToClipboard,
-                                ),
+                                content:
+                                    Text(L10n.of(context).copiedToClipboard),
                               ),
                             );
                           },
                           title: Text(
                             snapshot.data != null
                                 ? L10n.of(context).versionText(
-                                  snapshot.data!.version,
-                                  snapshot.data!.buildNumber,
-                                )
+                                    snapshot.data!.version,
+                                    snapshot.data!.buildNumber,
+                                  )
                                 : L10n.of(context).versionNotFound,
                           ),
                         );

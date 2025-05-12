@@ -125,7 +125,10 @@ class ITController {
 
       if (useCustomInput && currentITStep != null) {
         completedITSteps.add(
-          ITStep(currentITStep!.continuances, customInput: currentText),
+          ITStep(
+            currentITStep!.continuances,
+            customInput: currentText,
+          ),
         );
       }
 
@@ -206,9 +209,8 @@ class ITController {
       final String nextText =
           goldRouteTracker.continuances[completedITSteps.length].text;
 
-      final ITResponseModel res = await _customInputTranslation(
-        currentText + nextText,
-      );
+      final ITResponseModel res =
+          await _customInputTranslation(currentText + nextText);
       if (sourceText == null) return null;
 
       return CurrentITStep(
@@ -226,9 +228,8 @@ class ITController {
           data: {
             "sourceText": sourceText,
             "currentITStepPayloadID": currentITStep?.payloadId,
-            "continuances": goldRouteTracker.continuances.map(
-              (e) => e.toJson(),
-            ),
+            "continuances":
+                goldRouteTracker.continuances.map((e) => e.toJson()),
           },
         );
       }
@@ -271,7 +272,10 @@ class ITController {
       );
     } finally {
       choreographer.stopLoading();
-      choreographer.textController.setSystemText("", EditType.other);
+      choreographer.textController.setSystemText(
+        "",
+        EditType.other,
+      );
     }
   }
 
@@ -419,12 +423,12 @@ class CurrentITStep {
           ...responseModel.continuances
               .where((c) => c.text.toLowerCase() != goldCont.text.toLowerCase())
               .map((e) {
-                //we only want one green choice and for that to be our gold
-                if (e.level == ChoreoConstants.levelThresholdForGreen) {
-                  e.level = ChoreoConstants.levelThresholdForYellow;
-                }
-                return e;
-              }),
+            //we only want one green choice and for that to be our gold
+            if (e.level == ChoreoConstants.levelThresholdForGreen) {
+              e.level = ChoreoConstants.levelThresholdForYellow;
+            }
+            return e;
+          }),
           goldCont,
         ];
         continuances.shuffle();

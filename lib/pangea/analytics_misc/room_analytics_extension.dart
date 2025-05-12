@@ -49,10 +49,9 @@ extension AnalyticsRoomExtension on Room {
           (r) => r.id == nextRoomChunk.roomId,
         );
 
-        final (analyticsRoom, calls) =
-            matchingRoom != null
-                ? await _handleJoinedAnalyticsRoom(matchingRoom, userL2)
-                : await _handleUnjoinedAnalyticsRoom(nextRoomChunk, userL2);
+        final (analyticsRoom, calls) = matchingRoom != null
+            ? await _handleJoinedAnalyticsRoom(matchingRoom, userL2)
+            : await _handleUnjoinedAnalyticsRoom(nextRoomChunk, userL2);
 
         callsToServer += calls;
         if (analyticsRoom == null) continue;
@@ -108,7 +107,9 @@ extension AnalyticsRoomExtension on Room {
     return (analyticsRoom, 0);
   }
 
-  Future<Room?> _joinAnalyticsRoomChunk(SpaceRoomsChunk chunk) async {
+  Future<Room?> _joinAnalyticsRoomChunk(
+    SpaceRoomsChunk chunk,
+  ) async {
     final matchingRoom = client.rooms.firstWhereOrNull(
       (r) => r.id == chunk.roomId,
     );
@@ -120,7 +121,13 @@ extension AnalyticsRoomExtension on Room {
       await syncFuture;
       return client.getRoomById(chunk.roomId);
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"roomID": chunk.roomId});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "roomID": chunk.roomId,
+        },
+      );
       return null;
     }
   }
@@ -135,7 +142,13 @@ extension AnalyticsRoomExtension on Room {
     try {
       await room.leave();
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"roomID": room.id});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "roomID": room.id,
+        },
+      );
     }
   }
 
@@ -152,17 +165,18 @@ extension AnalyticsRoomExtension on Room {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {"spaceID": id, "nextBatch": nextBatch},
+        data: {
+          "spaceID": id,
+          "nextBatch": nextBatch,
+        },
       );
       return null;
     }
   }
 
   Future<DateTime?> analyticsLastUpdated(String userId) async {
-    final List<Event> events = await getRoomAnalyticsEvents(
-      count: 1,
-      userID: userId,
-    );
+    final List<Event> events =
+        await getRoomAnalyticsEvents(count: 1, userID: userId);
     if (events.isEmpty) return null;
     return events.first.originServerTs;
   }
@@ -197,7 +211,9 @@ extension AnalyticsRoomExtension on Room {
   /// The [uses] parameter is a list of [OneConstructUse] objects representing the
   /// constructs to be sent. To prevent hitting the maximum event size, the events
   /// are chunked into smaller lists. Each chunk is sent as a separate event.
-  Future<void> sendConstructsEvent(List<OneConstructUse> uses) async {
+  Future<void> sendConstructsEvent(
+    List<OneConstructUse> uses,
+  ) async {
     // It's possible that the user has no info to send yet, but to prevent trying
     // to load the data over and over again, we'll sometimes send an empty event to
     // indicate that we have checked and there was no data.

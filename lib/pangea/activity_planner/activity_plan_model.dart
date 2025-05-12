@@ -20,7 +20,7 @@ class ActivityPlanModel {
     required this.vocab,
     this.imageURL,
   }) : bookmarkId =
-           "${title.hashCode ^ learningObjective.hashCode ^ instructions.hashCode ^ imageURL.hashCode ^ vocab.map((v) => v.hashCode).reduce((a, b) => a ^ b)}";
+            "${title.hashCode ^ learningObjective.hashCode ^ instructions.hashCode ^ imageURL.hashCode ^ vocab.map((v) => v.hashCode).reduce((a, b) => a ^ b)}";
 
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {
     return ActivityPlanModel(
@@ -93,14 +93,23 @@ class Vocab {
   final String lemma;
   final String pos;
 
-  Vocab({required this.lemma, required this.pos});
+  Vocab({
+    required this.lemma,
+    required this.pos,
+  });
 
   factory Vocab.fromJson(Map<String, dynamic> json) {
-    return Vocab(lemma: json['lemma'], pos: json['pos']);
+    return Vocab(
+      lemma: json['lemma'],
+      pos: json['pos'],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    return {'lemma': lemma, 'pos': pos};
+    return {
+      'lemma': lemma,
+      'pos': pos,
+    };
   }
 
   @override

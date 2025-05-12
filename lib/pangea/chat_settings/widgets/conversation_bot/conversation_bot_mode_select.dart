@@ -33,10 +33,11 @@ class ConversationBotModeSelect extends StatelessWidget {
     };
 
     return DropdownButtonFormField2(
-      customButton:
-          initialMode != null && options.containsKey(initialMode)
-              ? CustomDropdownTextButton(text: options[initialMode]!)
-              : null,
+      customButton: initialMode != null && options.containsKey(initialMode)
+          ? CustomDropdownTextButton(
+              text: options[initialMode]!,
+            )
+          : null,
       menuItemStyleData: const MenuItemStyleData(
         padding: EdgeInsets.zero, // Remove default padding
       ),

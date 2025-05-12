@@ -54,34 +54,33 @@ class ChatSearchController extends State<ChatSearchPage>
     }
 
     setState(() {
-      searchStream =
-          timeline
-              .startSearch(
-                searchTerm: searchController.text,
-                prevBatch: prevBatch,
-                requestHistoryCount: 1000,
-                limit: 32,
-              )
-              .map(
-                (result) => (
-                  [
-                    if (previousSearchResult != null) ...previousSearchResult,
-                    ...result.$1,
-                  ],
-                  result.$2,
-                ),
-              )
-              // Deduplication workaround for
-              // https://github.com/famedly/matrix-dart-sdk/issues/1831
-              .map(
-                (result) => (
-                  <String, Event>{
-                    for (final event in result.$1) event.eventId: event,
-                  }.values.toList(),
-                  result.$2,
-                ),
-              )
-              .asBroadcastStream();
+      searchStream = timeline
+          .startSearch(
+            searchTerm: searchController.text,
+            prevBatch: prevBatch,
+            requestHistoryCount: 1000,
+            limit: 32,
+          )
+          .map(
+            (result) => (
+              [
+                if (previousSearchResult != null) ...previousSearchResult,
+                ...result.$1,
+              ],
+              result.$2,
+            ),
+          )
+          // Deduplication workaround for
+          // https://github.com/famedly/matrix-dart-sdk/issues/1831
+          .map(
+            (result) => (
+              <String, Event>{
+                for (final event in result.$1) event.eventId: event,
+              }.values.toList(),
+              result.$2,
+            ),
+          )
+          .asBroadcastStream();
     });
   }
 
@@ -92,38 +91,36 @@ class ChatSearchController extends State<ChatSearchPage>
     final timeline = this.timeline ??= await room!.getTimeline();
 
     setState(() {
-      galleryStream =
-          timeline
-              .startSearch(
-                searchFunc:
-                    (event) => {
-                      MessageTypes.Image,
-                      MessageTypes.Video,
-                    }.contains(event.messageType),
-                prevBatch: prevBatch,
-                requestHistoryCount: 1000,
-                limit: 32,
-              )
-              .map(
-                (result) => (
-                  [
-                    if (previousSearchResult != null) ...previousSearchResult,
-                    ...result.$1,
-                  ],
-                  result.$2,
-                ),
-              )
-              // Deduplication workaround for
-              // https://github.com/famedly/matrix-dart-sdk/issues/1831
-              .map(
-                (result) => (
-                  <String, Event>{
-                    for (final event in result.$1) event.eventId: event,
-                  }.values.toList(),
-                  result.$2,
-                ),
-              )
-              .asBroadcastStream();
+      galleryStream = timeline
+          .startSearch(
+            searchFunc: (event) => {
+              MessageTypes.Image,
+              MessageTypes.Video,
+            }.contains(event.messageType),
+            prevBatch: prevBatch,
+            requestHistoryCount: 1000,
+            limit: 32,
+          )
+          .map(
+            (result) => (
+              [
+                if (previousSearchResult != null) ...previousSearchResult,
+                ...result.$1,
+              ],
+              result.$2,
+            ),
+          )
+          // Deduplication workaround for
+          // https://github.com/famedly/matrix-dart-sdk/issues/1831
+          .map(
+            (result) => (
+              <String, Event>{
+                for (final event in result.$1) event.eventId: event,
+              }.values.toList(),
+              result.$2,
+            ),
+          )
+          .asBroadcastStream();
     });
   }
 
@@ -134,40 +131,36 @@ class ChatSearchController extends State<ChatSearchPage>
     final timeline = this.timeline ??= await room!.getTimeline();
 
     setState(() {
-      fileStream =
-          timeline
-              .startSearch(
-                searchFunc:
-                    (event) =>
-                        event.messageType == MessageTypes.File ||
-                        (event.messageType == MessageTypes.Audio &&
-                            !event.content.containsKey(
-                              'org.matrix.msc3245.voice',
-                            )),
-                prevBatch: prevBatch,
-                requestHistoryCount: 1000,
-                limit: 32,
-              )
-              .map(
-                (result) => (
-                  [
-                    if (previousSearchResult != null) ...previousSearchResult,
-                    ...result.$1,
-                  ],
-                  result.$2,
-                ),
-              )
-              // Deduplication workaround for
-              // https://github.com/famedly/matrix-dart-sdk/issues/1831
-              .map(
-                (result) => (
-                  <String, Event>{
-                    for (final event in result.$1) event.eventId: event,
-                  }.values.toList(),
-                  result.$2,
-                ),
-              )
-              .asBroadcastStream();
+      fileStream = timeline
+          .startSearch(
+            searchFunc: (event) =>
+                event.messageType == MessageTypes.File ||
+                (event.messageType == MessageTypes.Audio &&
+                    !event.content.containsKey('org.matrix.msc3245.voice')),
+            prevBatch: prevBatch,
+            requestHistoryCount: 1000,
+            limit: 32,
+          )
+          .map(
+            (result) => (
+              [
+                if (previousSearchResult != null) ...previousSearchResult,
+                ...result.$1,
+              ],
+              result.$2,
+            ),
+          )
+          // Deduplication workaround for
+          // https://github.com/famedly/matrix-dart-sdk/issues/1831
+          .map(
+            (result) => (
+              <String, Event>{
+                for (final event in result.$1) event.eventId: event,
+              }.values.toList(),
+              result.$2,
+            ),
+          )
+          .asBroadcastStream();
     });
   }
 

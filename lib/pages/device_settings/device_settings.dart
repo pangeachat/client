@@ -72,10 +72,12 @@ class DevicesSettingsController extends State<DevicesSettings> {
     await showFutureLoadingDialog(
       context: context,
       delay: false,
-      future:
-          () => matrix.client.uiaRequestBackground(
-            (auth) => matrix.client.deleteDevices(deviceIds, auth: auth),
-          ),
+      future: () => matrix.client.uiaRequestBackground(
+        (auth) => matrix.client.deleteDevices(
+          deviceIds,
+          auth: auth,
+        ),
+      ),
     );
     reload();
   }
@@ -91,10 +93,9 @@ class DevicesSettingsController extends State<DevicesSettings> {
     if (displayName == null) return;
     final success = await showFutureLoadingDialog(
       context: context,
-      future:
-          () => Matrix.of(
-            context,
-          ).client.updateDevice(device.deviceId, displayName: displayName),
+      future: () => Matrix.of(context)
+          .client
+          .updateDevice(device.deviceId, displayName: displayName),
     );
     if (success.error == null) {
       reload();
@@ -110,17 +111,14 @@ class DevicesSettingsController extends State<DevicesSettings> {
       cancelLabel: L10n.of(context).cancel,
     );
     if (consent != OkCancelResult.ok) return;
-    final req =
-        await Matrix.of(context)
-            .client
-            .userDeviceKeys[Matrix.of(context).client.userID!]!
-            .deviceKeys[device.deviceId]!
-            .startVerification();
+    final req = await Matrix.of(context)
+        .client
+        .userDeviceKeys[Matrix.of(context).client.userID!]!
+        .deviceKeys[device.deviceId]!
+        .startVerification();
     req.onUpdate = () {
-      if ({
-        KeyVerificationState.error,
-        KeyVerificationState.done,
-      }.contains(req.state)) {
+      if ({KeyVerificationState.error, KeyVerificationState.done}
+          .contains(req.state)) {
         setState(() {});
       }
     };
@@ -128,11 +126,10 @@ class DevicesSettingsController extends State<DevicesSettings> {
   }
 
   void blockDeviceAction(Device device) async {
-    final key =
-        Matrix.of(context)
-            .client
-            .userDeviceKeys[Matrix.of(context).client.userID!]!
-            .deviceKeys[device.deviceId]!;
+    final key = Matrix.of(context)
+        .client
+        .userDeviceKeys[Matrix.of(context).client.userID!]!
+        .deviceKeys[device.deviceId]!;
     if (key.directVerified) {
       await key.setVerified(false);
     }
@@ -141,11 +138,10 @@ class DevicesSettingsController extends State<DevicesSettings> {
   }
 
   void unblockDeviceAction(Device device) async {
-    final key =
-        Matrix.of(context)
-            .client
-            .userDeviceKeys[Matrix.of(context).client.userID!]!
-            .deviceKeys[device.deviceId]!;
+    final key = Matrix.of(context)
+        .client
+        .userDeviceKeys[Matrix.of(context).client.userID!]!
+        .deviceKeys[device.deviceId]!;
     await key.setBlocked(false);
     setState(() {});
   }
@@ -153,12 +149,13 @@ class DevicesSettingsController extends State<DevicesSettings> {
   bool _isOwnDevice(Device userDevice) =>
       userDevice.deviceId == Matrix.of(context).client.deviceID;
 
-  Device? get thisDevice => devices!.firstWhereOrNull(_isOwnDevice);
+  Device? get thisDevice => devices!.firstWhereOrNull(
+        _isOwnDevice,
+      );
 
-  List<Device> get notThisDevice =>
-      List<Device>.from(devices!)
-        ..removeWhere(_isOwnDevice)
-        ..sort((a, b) => (b.lastSeenTs ?? 0).compareTo(a.lastSeenTs ?? 0));
+  List<Device> get notThisDevice => List<Device>.from(devices!)
+    ..removeWhere(_isOwnDevice)
+    ..sort((a, b) => (b.lastSeenTs ?? 0).compareTo(a.lastSeenTs ?? 0));
 
   @override
   Widget build(BuildContext context) => DevicesSettingsView(this);

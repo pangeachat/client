@@ -45,7 +45,9 @@ class SpeechToTextController {
     _cacheClearTimer?.cancel();
   }
 
-  Future<SpeechToTextModel> get(SpeechToTextRequestModel requestModel) async {
+  Future<SpeechToTextModel> get(
+    SpeechToTextRequestModel requestModel,
+  ) async {
     final int cacheKey = requestModel.hashCode;
 
     if (_cache.containsKey(cacheKey)) {
@@ -75,18 +77,19 @@ class SpeechToTextController {
 
     requestModel.audioEvent?.room
         .sendPangeaEvent(
-          content:
-              PangeaRepresentation(
-                langCode: response.langCode,
-                text: response.transcript.text,
-                originalSent: false,
-                originalWritten: false,
-                speechToText: response,
-              ).toJson(),
+          content: PangeaRepresentation(
+            langCode: response.langCode,
+            text: response.transcript.text,
+            originalSent: false,
+            originalWritten: false,
+            speechToText: response,
+          ).toJson(),
           parentEventId: requestModel.audioEvent!.eventId,
           type: PangeaEventTypes.representation,
         )
-        .then((_) => debugPrint('Transcript saved as matrix event'));
+        .then(
+          (_) => debugPrint('Transcript saved as matrix event'),
+        );
 
     return Future.value(null);
   }

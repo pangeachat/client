@@ -86,24 +86,25 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       duration: _animationDuration,
     );
 
-    _reactionSubscription = widget.chatController.room.client.onSync.stream
-        .where((update) {
-          // check if this sync update has a reaction event or a
-          // redaction (of a reaction event). If so, rebuild the overlay
-          final room = widget.chatController.room;
-          final timelineEvents = update.rooms?.join?[room.id]?.timeline?.events;
-          if (timelineEvents == null) return false;
+    _reactionSubscription =
+        widget.chatController.room.client.onSync.stream.where(
+      (update) {
+        // check if this sync update has a reaction event or a
+        // redaction (of a reaction event). If so, rebuild the overlay
+        final room = widget.chatController.room;
+        final timelineEvents = update.rooms?.join?[room.id]?.timeline?.events;
+        if (timelineEvents == null) return false;
 
-          final eventID = widget.event.eventId;
-          return timelineEvents.any(
-            (e) =>
-                e.type == EventTypes.Redaction ||
-                (e.type == EventTypes.Reaction &&
-                    Event.fromMatrixEvent(e, room).relationshipEventId ==
-                        eventID),
-          );
-        })
-        .listen((_) => setState(() {}));
+        final eventID = widget.event.eventId;
+        return timelineEvents.any(
+          (e) =>
+              e.type == EventTypes.Redaction ||
+              (e.type == EventTypes.Reaction &&
+                  Event.fromMatrixEvent(e, room).relationshipEventId ==
+                      eventID),
+        );
+      },
+    ).listen((_) => setState(() {}));
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await _centeredMessageCompleter.future;
@@ -118,7 +119,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         );
       });
 
-      _setReadingAssistanceMode(ReadingAssistanceMode.selectMode);
+      _setReadingAssistanceMode(
+        ReadingAssistanceMode.selectMode,
+      );
     });
   }
 
@@ -179,15 +182,13 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     if (mode == ReadingAssistanceMode.practiceMode) {
       setState(
-        () =>
-            widget.overlayController.readingAssistanceMode =
-                ReadingAssistanceMode.transitionMode,
+        () => widget.overlayController.readingAssistanceMode =
+            ReadingAssistanceMode.transitionMode,
       );
     } else if (mode == ReadingAssistanceMode.selectMode) {
       setState(
-        () =>
-            widget.overlayController.readingAssistanceMode =
-                ReadingAssistanceMode.selectMode,
+        () => widget.overlayController.readingAssistanceMode =
+            ReadingAssistanceMode.selectMode,
       );
     }
 
@@ -201,10 +202,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
           curve: FluffyThemes.animationCurve,
         ),
       )..addListener(() {
-        if (mounted) {
-          setState(() => _currentOffset = _overlayOffsetAnimation?.value);
-        }
-      });
+          if (mounted) {
+            setState(() => _currentOffset = _overlayOffsetAnimation?.value);
+          }
+        });
     } else if (mode == ReadingAssistanceMode.practiceMode) {
       _overlayOffsetAnimation = Tween<Offset>(
         begin: _currentOffset,
@@ -215,13 +216,16 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
           curve: FluffyThemes.animationCurve,
         ),
       )..addListener(() {
-        if (mounted) {
-          setState(() => _currentOffset = _overlayOffsetAnimation?.value);
-        }
-      });
+          if (mounted) {
+            setState(() => _currentOffset = _overlayOffsetAnimation?.value);
+          }
+        });
 
       _messageSizeAnimation = Tween<Size>(
-        begin: Size(_originalMessageSize.width, _originalMessageSize.height),
+        begin: Size(
+          _originalMessageSize.width,
+          _originalMessageSize.height,
+        ),
         end: _adjustedCenteredMessageSize,
       ).animate(
         CurvedAnimation(
@@ -237,14 +241,20 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
   }
 
-  T _runWithLogging<T>(Function runner, String errorMessage, T defaultValue) {
+  T _runWithLogging<T>(
+    Function runner,
+    String errorMessage,
+    T defaultValue,
+  ) {
     try {
       return runner();
     } catch (e, s) {
       ErrorHandler.logError(
         e: "$errorMessage: $e",
         s: s,
-        data: {"eventID": widget.event.eventId},
+        data: {
+          "eventID": widget.event.eventId,
+        },
       );
       return defaultValue;
     }
@@ -267,15 +277,14 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   // screen size
 
   MediaQueryData? get _mediaQuery => _runWithLogging<MediaQueryData?>(
-    () => MediaQuery.of(context),
-    "Error getting media query",
-    null,
-  );
+        () => MediaQuery.of(context),
+        "Error getting media query",
+        null,
+      );
 
-  double get _columnWidth =>
-      FluffyThemes.isColumnMode(context)
-          ? (FluffyThemes.columnWidth + FluffyThemes.navRailWidth)
-          : 0;
+  double get _columnWidth => FluffyThemes.isColumnMode(context)
+      ? (FluffyThemes.columnWidth + FluffyThemes.navRailWidth)
+      : 0;
 
   /// Available vertical space not taken up by the header and footer
   double? get _verticalSpace {
@@ -287,8 +296,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     const double messageMargin = 16.0;
     // widget.event.isActivityMessage ? 0 : Avatar.defaultSize + 16 + 8;
     final bool showingDetails = widget.chatController.displayChatDetailsColumn;
-    final double totalMaxWidth =
-        (FluffyThemes.columnWidth * 2.5) -
+    final double totalMaxWidth = (FluffyThemes.columnWidth * 2.5) -
         (showingDetails ? FluffyThemes.columnWidth : 0) -
         messageMargin;
     double? maxWidth;
@@ -308,10 +316,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   // original message size and offset
 
   RenderBox? get _messageRenderBox => _runWithLogging<RenderBox?>(
-    () => MatrixState.pAnyState.getRenderBox(widget.event.eventId),
-    "Error getting message render box",
-    null,
-  );
+        () => MatrixState.pAnyState.getRenderBox(
+          widget.event.eventId,
+        ),
+        "Error getting message render box",
+        null,
+      );
 
   Size get _defaultMessageSize => const Size(FluffyThemes.columnWidth / 2, 100);
 
@@ -366,10 +376,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   // message offset
 
-  static const Offset _defaultMessageOffset = Offset(
-    _messageDefaultLeftMargin,
-    300,
-  );
+  static const Offset _defaultMessageOffset =
+      Offset(_messageDefaultLeftMargin, 300);
 
   Offset get _originalMessageOffset {
     if (_messageRenderBox == null || !_messageRenderBox!.hasSize) {
@@ -388,13 +396,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
 
     final topOffset = _originalMessageOffset.dy;
-    final bottomOffset =
-        _originalMessageBottomOffset -
+    final bottomOffset = _originalMessageBottomOffset -
         _reactionsHeight -
         _selectionButtonsHeight;
 
-    final hasHeaderOverflow =
-        topOffset <
+    final hasHeaderOverflow = topOffset <
         (_headerHeight + AppConfig.toolbarSpacing + _audioTranscriptionHeight);
     final hasFooterOverflow =
         bottomOffset < (_footerHeight + AppConfig.toolbarSpacing);
@@ -407,14 +413,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
 
     if (hasHeaderOverflow) {
-      final difference =
-          topOffset -
+      final difference = topOffset -
           (_headerHeight +
               AppConfig.toolbarSpacing +
               _audioTranscriptionHeight);
 
-      double newBottomOffset =
-          _mediaQuery!.size.height -
+      double newBottomOffset = _mediaQuery!.size.height -
           _originalMessageOffset.dy +
           difference -
           _originalMessageSize.height -
@@ -453,8 +457,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         _reactionsHeight;
   }
 
-  double get _messageLeftOffset =>
-      max(_originalMessageOffset.dx - _columnWidth - _horizontalPadding, 0);
+  double get _messageLeftOffset => max(
+        _originalMessageOffset.dx - _columnWidth - _horizontalPadding,
+        0,
+      );
 
   double get _messageRightOffset {
     if (_mediaQuery == null || !_ownMessage) {
@@ -496,10 +502,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   bool get showSelectionButtons =>
       _showButtons &&
-      [
-        ReadingAssistanceMode.selectMode,
-        null,
-      ].contains(widget.overlayController.readingAssistanceMode);
+      [ReadingAssistanceMode.selectMode, null]
+          .contains(widget.overlayController.readingAssistanceMode);
 
   double get _selectionButtonsHeight {
     return showSelectionButtons ? AppConfig.toolbarButtonsHeight : 0;
@@ -580,13 +584,15 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                             ],
                           ),
                         ),
-                        const Expanded(flex: 3, child: SizedBox.shrink()),
+                        const Expanded(
+                          flex: 3,
+                          child: SizedBox.shrink(),
+                        ),
                         Opacity(
-                          opacity:
-                              _readingAssistanceMode ==
-                                      ReadingAssistanceMode.practiceMode
-                                  ? 1.0
-                                  : 0.0,
+                          opacity: _readingAssistanceMode ==
+                                  ReadingAssistanceMode.practiceMode
+                              ? 1.0
+                              : 0.0,
                           child: OverlayCenterContent(
                             event: widget.event,
                             messageHeight: null,
@@ -600,8 +606,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                             hasReactions: _hasReactions,
                             onChangeMessageSize: _setCenteredMessageSize,
                             isTransitionAnimation: false,
-                            maxHeight:
-                                _mediaQuery!.size.height -
+                            maxHeight: _mediaQuery!.size.height -
                                 _headerHeight -
                                 _footerHeight -
                                 AppConfig.toolbarSpacing * 2 -
@@ -609,7 +614,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                             readingAssistanceMode: _readingAssistanceMode,
                           ),
                         ),
-                        const Expanded(flex: 1, child: SizedBox.shrink()),
+                        const Expanded(
+                          flex: 1,
+                          child: SizedBox.shrink(),
+                        ),
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -642,26 +650,22 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                             _overlayOffsetAnimation ?? _animationController,
                         builder: (context, child) {
                           return Positioned(
-                            left:
-                                _ownMessage
-                                    ? null
-                                    : (_overlayOffsetAnimation?.value)?.dx ??
-                                        _messageLeftOffset,
-                            right:
-                                _ownMessage
-                                    ? (_overlayOffsetAnimation?.value)?.dx ??
-                                        _messageRightOffset
-                                    : null,
-                            bottom:
-                                (_overlayOffsetAnimation?.value)?.dy ??
+                            left: _ownMessage
+                                ? null
+                                : (_overlayOffsetAnimation?.value)?.dx ??
+                                    _messageLeftOffset,
+                            right: _ownMessage
+                                ? (_overlayOffsetAnimation?.value)?.dx ??
+                                    _messageRightOffset
+                                : null,
+                            bottom: (_overlayOffsetAnimation?.value)?.dy ??
                                 _originalMessageBottomOffset -
                                     _reactionsHeight -
                                     _selectionButtonsHeight,
                             child: Column(
-                              crossAxisAlignment:
-                                  _ownMessage
-                                      ? CrossAxisAlignment.end
-                                      : CrossAxisAlignment.start,
+                              crossAxisAlignment: _ownMessage
+                                  ? CrossAxisAlignment.end
+                                  : CrossAxisAlignment.start,
                               children: [
                                 OverlayCenterContent(
                                   event: widget.event,
@@ -676,8 +680,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                                   hasReactions: _hasReactions,
                                   sizeAnimation: _messageSizeAnimation,
                                   isTransitionAnimation: true,
-                                  maxHeight:
-                                      _mediaQuery!.size.height -
+                                  maxHeight: _mediaQuery!.size.height -
                                       _headerHeight -
                                       _footerHeight -
                                       AppConfig.toolbarSpacing * 2 -
@@ -714,11 +717,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                                   maxWidth: _toolbarMaxWidth,
                                 ),
                                 child: InstructionsInlineTooltip(
-                                  instructionsEnum:
-                                      widget
-                                          .overlayController
-                                          .toolbarMode
-                                          .instructionsEnum ??
+                                  instructionsEnum: widget.overlayController
+                                          .toolbarMode.instructionsEnum ??
                                       InstructionsEnum
                                           .readingAssistanceOverview,
                                   bold: true,
@@ -745,11 +745,8 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                             maxWidth: widget.overlayController.maxWidth,
                           ),
                           child: InstructionsInlineTooltip(
-                            instructionsEnum:
-                                widget
-                                    .overlayController
-                                    .toolbarMode
-                                    .instructionsEnum ??
+                            instructionsEnum: widget.overlayController
+                                    .toolbarMode.instructionsEnum ??
                                 InstructionsEnum.readingAssistanceOverview,
                             bold: true,
                           ),
@@ -758,7 +755,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                   ],
                 ),
               ),
-              if (_showDetails) const SizedBox(width: FluffyThemes.columnWidth),
+              if (_showDetails)
+                const SizedBox(
+                  width: FluffyThemes.columnWidth,
+                ),
             ],
           ),
         ),

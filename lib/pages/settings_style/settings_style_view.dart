@@ -45,8 +45,8 @@ class SettingsStyleView extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: SegmentedButton<ThemeMode>(
                 selected: {controller.currentTheme},
-                onSelectionChanged:
-                    (selected) => controller.switchTheme(selected.single),
+                onSelectionChanged: (selected) =>
+                    controller.switchTheme(selected.single),
                 segments: [
                   ButtonSegment(
                     value: ThemeMode.light,
@@ -66,7 +66,9 @@ class SettingsStyleView extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(color: theme.dividerColor),
+            Divider(
+              color: theme.dividerColor,
+            ),
             ListTile(
               title: Text(
                 L10n.of(context).setColorTheme,
@@ -82,9 +84,8 @@ class SettingsStyleView extends StatelessWidget {
                     Theme.of(context).brightness == Brightness.light
                         ? light?.primary
                         : dark?.primary;
-                final colors = List<Color?>.from(
-                  SettingsStyleController.customColors,
-                );
+                final colors =
+                    List<Color?>.from(SettingsStyleController.customColors);
                 if (systemColor == null) {
                   colors.remove(null);
                 }
@@ -99,35 +100,31 @@ class SettingsStyleView extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: Tooltip(
-                        message:
-                            color == null
-                                ? L10n.of(context).systemTheme
-                                : '#${color.hexValue.toRadixString(16).toUpperCase()}',
+                        message: color == null
+                            ? L10n.of(context).systemTheme
+                            : '#${color.hexValue.toRadixString(16).toUpperCase()}',
                         child: InkWell(
                           borderRadius: BorderRadius.circular(colorPickerSize),
                           onTap: () => controller.setChatColor(color),
                           child: Material(
                             color: color ?? systemColor,
                             elevation: 6,
-                            borderRadius: BorderRadius.circular(
-                              colorPickerSize,
-                            ),
+                            borderRadius:
+                                BorderRadius.circular(colorPickerSize),
                             child: SizedBox(
                               width: colorPickerSize,
                               height: colorPickerSize,
-                              child:
-                                  controller.currentColor == color
-                                      ? Center(
-                                        child: Icon(
-                                          Icons.check,
-                                          size: 16,
-                                          color:
-                                              Theme.of(
-                                                context,
-                                              ).colorScheme.onPrimary,
-                                        ),
-                                      )
-                                      : null,
+                              child: controller.currentColor == color
+                                  ? Center(
+                                      child: Icon(
+                                        Icons.check,
+                                        size: 16,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary,
+                                      ),
+                                    )
+                                  : null,
                             ),
                           ),
                         ),
@@ -137,7 +134,9 @@ class SettingsStyleView extends StatelessWidget {
                 );
               },
             ),
-            Divider(color: theme.dividerColor),
+            Divider(
+              color: theme.dividerColor,
+            ),
             ListTile(
               title: Text(
                 L10n.of(context).messagesStyle,
@@ -196,10 +195,8 @@ class SettingsStyleView extends StatelessWidget {
                               StateMessage(
                                 Event(
                                   eventId: 'style_dummy',
-                                  room: Room(
-                                    id: '!style_dummy',
-                                    client: client,
-                                  ),
+                                  room:
+                                      Room(id: '!style_dummy', client: client),
                                   content: {'membership': 'join'},
                                   type: EventTypes.RoomMember,
                                   senderId: client.userID!,
@@ -211,10 +208,9 @@ class SettingsStyleView extends StatelessWidget {
                                 padding: EdgeInsets.only(
                                   left: 12 + 12 + Avatar.defaultSize,
                                   right: 12,
-                                  top:
-                                      accountConfig.wallpaperUrl == null
-                                          ? 0
-                                          : 12,
+                                  top: accountConfig.wallpaperUrl == null
+                                      ? 0
+                                      : 12,
                                   bottom: 12,
                                 ),
                                 child: DecoratedBox(
@@ -233,8 +229,7 @@ class SettingsStyleView extends StatelessWidget {
                                       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor',
                                       style: TextStyle(
                                         color: theme.onBubbleColor,
-                                        fontSize:
-                                            AppConfig.messageFontSize *
+                                        fontSize: AppConfig.messageFontSize *
                                             AppConfig.fontSizeFactor,
                                       ),
                                     ),
@@ -247,10 +242,9 @@ class SettingsStyleView extends StatelessWidget {
                                   padding: EdgeInsets.only(
                                     right: 12,
                                     left: 12,
-                                    top:
-                                        accountConfig.wallpaperUrl == null
-                                            ? 0
-                                            : 12,
+                                    top: accountConfig.wallpaperUrl == null
+                                        ? 0
+                                        : 12,
                                     bottom: 12,
                                   ),
                                   child: Material(
@@ -268,8 +262,7 @@ class SettingsStyleView extends StatelessWidget {
                                         'Lorem ipsum dolor sit amet',
                                         style: TextStyle(
                                           color: theme.colorScheme.onSurface,
-                                          fontSize:
-                                              AppConfig.messageFontSize *
+                                          fontSize: AppConfig.messageFontSize *
                                               AppConfig.fontSizeFactor,
                                         ),
                                       ),
@@ -282,7 +275,9 @@ class SettingsStyleView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Divider(color: theme.dividerColor),
+                    Divider(
+                      color: theme.dividerColor,
+                    ),
                     ListTile(
                       title: TextButton.icon(
                         style: TextButton.styleFrom(
@@ -294,14 +289,13 @@ class SettingsStyleView extends StatelessWidget {
                         icon: const Icon(Icons.edit_outlined),
                         label: Text(L10n.of(context).setWallpaper),
                       ),
-                      trailing:
-                          accountConfig.wallpaperUrl == null
-                              ? null
-                              : IconButton(
-                                icon: const Icon(Icons.delete_outlined),
-                                color: theme.colorScheme.error,
-                                onPressed: controller.deleteChatWallpaper,
-                              ),
+                      trailing: accountConfig.wallpaperUrl == null
+                          ? null
+                          : IconButton(
+                              icon: const Icon(Icons.delete_outlined),
+                              color: theme.colorScheme.error,
+                              onPressed: controller.deleteChatWallpaper,
+                            ),
                     ),
                     if (accountConfig.wallpaperUrl != null) ...[
                       ListTile(title: Text(L10n.of(context).opacity)),
@@ -341,7 +335,9 @@ class SettingsStyleView extends StatelessWidget {
               semanticFormatterCallback: (d) => d.toString(),
               onChanged: controller.changeFontSizeFactor,
             ),
-            Divider(color: theme.dividerColor),
+            Divider(
+              color: theme.dividerColor,
+            ),
             ListTile(
               title: Text(
                 L10n.of(context).overview,

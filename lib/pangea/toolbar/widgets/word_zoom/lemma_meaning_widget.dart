@@ -78,15 +78,15 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
   }
 
   LemmaInfoRequest get _request => LemmaInfoRequest(
-    lemma: _lemma,
-    partOfSpeech: widget.constructUse.category,
+        lemma: _lemma,
+        partOfSpeech: widget.constructUse.category,
 
-    /// This assumes that the user's L2 is the language of the lemma
-    lemmaLang: widget.langCode,
-    userL1:
-        MatrixState.pangeaController.languageController.userL1?.langCode ??
-        LanguageKeys.defaultLanguage,
-  );
+        /// This assumes that the user's L2 is the language of the lemma
+        lemmaLang: widget.langCode,
+        userL1:
+            MatrixState.pangeaController.languageController.userL1?.langCode ??
+                LanguageKeys.defaultLanguage,
+      );
 
   Future<void> _fetchLemmaMeaning() async {
     setState(() {
@@ -131,13 +131,12 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
       return WordZoomActivityButton(
         icon: const Icon(Symbols.dictionary),
         isSelected: widget.controller?.toolbarMode == MessageMode.wordMeaning,
-        onPressed:
-            widget.controller != null
-                ? () {
-                  // TODO: it would be better to explicitly set to wordMeaningChoice here
-                  widget.controller!.updateToolbarMode(MessageMode.wordMeaning);
-                }
-                : () => {},
+        onPressed: widget.controller != null
+            ? () {
+                // TODO: it would be better to explicitly set to wordMeaningChoice here
+                widget.controller!.updateToolbarMode(MessageMode.wordMeaning);
+              }
+            : () => {},
         opacity:
             widget.controller?.toolbarMode == MessageMode.wordMeaning ? 1 : 0.4,
       );
@@ -174,7 +173,9 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
                 minLines: 1,
                 maxLines: 3,
                 controller: _controller,
-                decoration: InputDecoration(hintText: _lemmaInfo?.meaning),
+                decoration: InputDecoration(
+                  hintText: _lemmaInfo?.meaning,
+                ),
               ),
             ),
             const SizedBox(height: 10),
@@ -193,12 +194,10 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
                 ),
                 const SizedBox(width: 10),
                 ElevatedButton(
-                  onPressed:
-                      () =>
-                          _controller.text != _lemmaInfo?.meaning &&
-                                  _controller.text.isNotEmpty
-                              ? editLemmaMeaning(_controller.text)
-                              : null,
+                  onPressed: () => _controller.text != _lemmaInfo?.meaning &&
+                          _controller.text.isNotEmpty
+                      ? editLemmaMeaning(_controller.text)
+                      : null,
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -229,17 +228,18 @@ class LemmaMeaningWidgetState extends State<LemmaMeaningWidget> {
                     widget.leading == null ? TextAlign.center : TextAlign.start,
                 text: TextSpan(
                   style: widget.style?.copyWith(
-                    color:
-                        widget.controller?.toolbarMode ==
-                                MessageMode.wordMeaning
-                            ? Theme.of(context).colorScheme.primary
-                            : null,
+                    color: widget.controller?.toolbarMode ==
+                            MessageMode.wordMeaning
+                        ? Theme.of(context).colorScheme.primary
+                        : null,
                   ),
                   children: [
                     if (widget.leading != null) widget.leading!,
                     if (widget.leading != null)
                       const WidgetSpan(child: SizedBox(width: 6.0)),
-                    TextSpan(text: _lemmaInfo?.meaning),
+                    TextSpan(
+                      text: _lemmaInfo?.meaning,
+                    ),
                   ],
                 ),
               ),

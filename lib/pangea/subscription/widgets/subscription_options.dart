@@ -10,7 +10,10 @@ import 'package:fluffychat/pangea/subscription/controllers/subscription_controll
 
 class SubscriptionOptions extends StatelessWidget {
   final PangeaController pangeaController;
-  const SubscriptionOptions({super.key, required this.pangeaController});
+  const SubscriptionOptions({
+    super.key,
+    required this.pangeaController,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,39 +21,36 @@ class SubscriptionOptions extends StatelessWidget {
       alignment: WrapAlignment.center,
       direction: Axis.horizontal,
       spacing: 10,
-      children:
-          pangeaController.userController.inTrialWindow()
-              ? [
-                SubscriptionCard(
-                  onTap:
-                      () =>
-                          pangeaController.subscriptionController
-                              .activateNewUserTrial(),
-                  title: L10n.of(context).freeTrial,
-                  description: L10n.of(context).freeTrialDesc,
-                  buttonText: L10n.of(context).activateTrial,
+      children: pangeaController.userController.inTrialWindow()
+          ? [
+              SubscriptionCard(
+                onTap: () => pangeaController.subscriptionController
+                    .activateNewUserTrial(),
+                title: L10n.of(context).freeTrial,
+                description: L10n.of(context).freeTrialDesc,
+                buttonText: L10n.of(context).activateTrial,
+              ),
+            ]
+          : pangeaController.subscriptionController.availableSubscriptionInfo!
+              .availableSubscriptions
+              .map(
+                (subscription) => SubscriptionCard(
+                  subscription: subscription,
+                  onTap: () {
+                    pangeaController.subscriptionController
+                        .submitSubscriptionChange(
+                      subscription,
+                      context,
+                    );
+                  },
+                  title: subscription.displayName(context),
+                  enabled: !subscription.isTrial,
+                  description: subscription.isTrial
+                      ? L10n.of(context).trialPeriodExpired
+                      : null,
                 ),
-              ]
-              : pangeaController
-                  .subscriptionController
-                  .availableSubscriptionInfo!
-                  .availableSubscriptions
-                  .map(
-                    (subscription) => SubscriptionCard(
-                      subscription: subscription,
-                      onTap: () {
-                        pangeaController.subscriptionController
-                            .submitSubscriptionChange(subscription, context);
-                      },
-                      title: subscription.displayName(context),
-                      enabled: !subscription.isTrial,
-                      description:
-                          subscription.isTrial
-                              ? L10n.of(context).trialPeriodExpired
-                              : null,
-                    ),
-                  )
-                  .toList(),
+              )
+              .toList(),
     );
   }
 }
@@ -116,15 +116,16 @@ class SubscriptionCard extends StatelessWidget {
                 ),
               ),
               OutlinedButton(
-                onPressed:
-                    enabled
-                        ? () {
-                          if (onTap != null) onTap!();
-                          Navigator.of(context).pop();
-                        }
-                        : null,
+                onPressed: enabled
+                    ? () {
+                        if (onTap != null) onTap!();
+                        Navigator.of(context).pop();
+                      }
+                    : null,
                 style: buttonStyle,
-                child: Text(buttonText ?? L10n.of(context).subscribe),
+                child: Text(
+                  buttonText ?? L10n.of(context).subscribe,
+                ),
               ),
             ],
           ),

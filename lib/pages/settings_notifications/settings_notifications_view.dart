@@ -37,12 +37,12 @@ class SettingsNotificationsView extends StatelessWidget {
       body: MaxWidthBody(
         child: StreamBuilder(
           stream: Matrix.of(context).client.onSync.stream.where(
-            (syncUpdate) =>
-                syncUpdate.accountData?.any(
-                  (accountData) => accountData.type == 'm.push_rules',
-                ) ??
-                false,
-          ),
+                (syncUpdate) =>
+                    syncUpdate.accountData?.any(
+                      (accountData) => accountData.type == 'm.push_rules',
+                    ) ??
+                    false,
+              ),
           builder: (BuildContext context, _) {
             final theme = Theme.of(context);
             return SelectionArea(
@@ -62,9 +62,8 @@ class SettingsNotificationsView extends StatelessWidget {
                       // #Pangea
                       // for (final rule in category.rules)
                       for (final rule in category.rules.where(
-                        (rule) => PushRuleExtension.defaultPushRuleIds.contains(
-                          rule.ruleId,
-                        ),
+                        (rule) => PushRuleExtension.defaultPushRuleIds
+                            .contains(rule.ruleId),
                       ))
                         // Pangea#
                         ListTile(
@@ -80,11 +79,10 @@ class SettingsNotificationsView extends StatelessWidget {
                                 const TextSpan(text: ' '),
                                 WidgetSpan(
                                   child: InkWell(
-                                    onTap:
-                                        () => controller.editPushRule(
-                                          rule,
-                                          category.kind,
-                                        ),
+                                    onTap: () => controller.editPushRule(
+                                      rule,
+                                      category.kind,
+                                    ),
                                     child: Text(
                                       L10n.of(context).more,
                                       style: TextStyle(
@@ -101,18 +99,17 @@ class SettingsNotificationsView extends StatelessWidget {
                           ),
                           trailing: Switch.adaptive(
                             value: rule.enabled,
-                            onChanged:
-                                controller.isLoading
-                                    ? null
-                                    : rule.ruleId != '.m.rule.master' &&
-                                        Matrix.of(
-                                          context,
-                                        ).client.allPushNotificationsMuted
+                            onChanged: controller.isLoading
+                                ? null
+                                : rule.ruleId != '.m.rule.master' &&
+                                        Matrix.of(context)
+                                            .client
+                                            .allPushNotificationsMuted
                                     ? null
                                     : (_) => controller.togglePushRule(
-                                      category.kind,
-                                      rule,
-                                    ),
+                                          category.kind,
+                                          rule,
+                                        ),
                           ),
                         ),
                       Divider(color: theme.dividerColor),
@@ -127,9 +124,8 @@ class SettingsNotificationsView extends StatelessWidget {
                     ),
                   ),
                   FutureBuilder<List<Pusher>?>(
-                    future:
-                        controller.pusherFuture ??=
-                            Matrix.of(context).client.getPushers(),
+                    future: controller.pusherFuture ??=
+                        Matrix.of(context).client.getPushers(),
                     builder: (context, snapshot) {
                       if (snapshot.hasError) {
                         Center(
@@ -158,14 +154,13 @@ class SettingsNotificationsView extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: pushers.length,
-                        itemBuilder:
-                            (_, i) => ListTile(
-                              title: Text(
-                                '${pushers[i].appDisplayName} - ${pushers[i].appId}',
-                              ),
-                              subtitle: Text(pushers[i].data.url.toString()),
-                              onTap: () => controller.onPusherTap(pushers[i]),
-                            ),
+                        itemBuilder: (_, i) => ListTile(
+                          title: Text(
+                            '${pushers[i].appDisplayName} - ${pushers[i].appId}',
+                          ),
+                          subtitle: Text(pushers[i].data.url.toString()),
+                          onTap: () => controller.onPusherTap(pushers[i]),
+                        ),
                       );
                     },
                   ),

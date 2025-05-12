@@ -17,13 +17,15 @@ class FullWidthDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final content = ConstrainedBox(
-      constraints:
-          FluffyThemes.isColumnMode(context)
-              ? BoxConstraints(maxWidth: maxWidth, maxHeight: maxHeight)
-              : BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
-                maxHeight: MediaQuery.of(context).size.height,
-              ),
+      constraints: FluffyThemes.isColumnMode(context)
+          ? BoxConstraints(
+              maxWidth: maxWidth,
+              maxHeight: maxHeight,
+            )
+          : BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width,
+              maxHeight: MediaQuery.of(context).size.height,
+            ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20.0),
         child: dialogContent,

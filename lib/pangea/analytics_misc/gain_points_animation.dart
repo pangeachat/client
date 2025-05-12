@@ -51,31 +51,42 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
     _progressAnimation = Tween<double>(
       begin: 0.0,
       end: 3.0,
-    ).animate(CurvedAnimation(parent: _controller!, curve: Curves.easeOut));
+    ).animate(
+      CurvedAnimation(
+        parent: _controller!,
+        curve: Curves.easeOut,
+      ),
+    );
 
     _fadeAnimation = Tween<double>(
       begin: 1.0,
       end: 0.0,
-    ).animate(CurvedAnimation(parent: _controller!, curve: Curves.easeIn));
+    ).animate(
+      CurvedAnimation(
+        parent: _controller!,
+        curve: Curves.easeIn,
+      ),
+    );
 
     initParticleTrajectories();
-    _controller?.forward().then((_) {
-      if (!mounted) return;
-      MatrixState.pAnyState.closeOverlay("${widget.targetID}_points");
-    });
+    _controller?.forward().then(
+      (_) {
+        if (!mounted) return;
+        MatrixState.pAnyState.closeOverlay("${widget.targetID}_points");
+      },
+    );
   }
 
   void initParticleTrajectories() {
     for (int i = 0; i < widget.points.abs(); i++) {
       final angle =
           (i - widget.points.abs() / 2) / widget.points.abs() * (pi / 3) +
-          (_random.nextDouble() - 0.5) * pi / 6 +
-          pi / 2;
+              (_random.nextDouble() - 0.5) * pi / 6 +
+              pi / 2;
 
       final speedMultiplier =
           0.75 + _random.nextDouble() / 4; // Random speed multiplier.
-      final speed =
-          _particleSpeed *
+      final speed = _particleSpeed *
           speedMultiplier *
           (widget.points > 0 ? 2 : 1); // Exponential speed.
       _trajectories.add(
@@ -115,7 +126,9 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
         context,
         big: true,
         setColor: textColor == null,
-        existingStyle: TextStyle(color: textColor),
+        existingStyle: TextStyle(
+          color: textColor,
+        ),
       ),
     );
 

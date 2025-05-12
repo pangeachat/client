@@ -58,10 +58,8 @@ class PressableButtonState extends State<PressableButton>
       duration: const Duration(milliseconds: 100),
       vsync: this,
     );
-    _tweenAnimation = Tween<double>(
-      begin: 0,
-      end: widget.buttonHeight,
-    ).animate(_controller);
+    _tweenAnimation =
+        Tween<double>(begin: 0, end: widget.buttonHeight).animate(_controller);
 
     if (!_depressed) {
       _triggerAnimationSubscription = widget.triggerAnimation?.listen((_) {
@@ -171,16 +169,13 @@ class PressableButtonState extends State<PressableButton>
                           borderRadius: widget.borderRadius,
                         ),
                         padding: EdgeInsets.only(
-                          bottom:
-                              !_depressed
-                                  ? widget.buttonHeight - _tweenAnimation.value
-                                  : 0,
-                          right:
-                              !_depressed
-                                  ? (widget.buttonHeight -
-                                          _tweenAnimation.value) /
-                                      2
-                                  : 0,
+                          bottom: !_depressed
+                              ? widget.buttonHeight - _tweenAnimation.value
+                              : 0,
+                          right: !_depressed
+                              ? (widget.buttonHeight - _tweenAnimation.value) /
+                                  2
+                              : 0,
                         ),
                         child: child,
                       ),
@@ -192,7 +187,9 @@ class PressableButtonState extends State<PressableButton>
             );
           },
           child: Container(
-            decoration: BoxDecoration(borderRadius: widget.borderRadius),
+            decoration: BoxDecoration(
+              borderRadius: widget.borderRadius,
+            ),
             child: widget.child,
           ),
         ),

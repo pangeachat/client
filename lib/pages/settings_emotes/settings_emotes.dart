@@ -41,11 +41,13 @@ class EmotesSettingsController extends State<EmotesSettings> {
 
   ImagePackContent _getPack() {
     final client = Matrix.of(context).client;
-    final event =
-        (room != null
+    final event = (room != null
             ? room!.getState('im.ponies.room_emotes', stateKey ?? '')
             : client.accountData['im.ponies.user_emotes']) ??
-        BasicEvent(type: 'm.dummy', content: {});
+        BasicEvent(
+          type: 'm.dummy',
+          content: {},
+        );
     // make sure we work on a *copy* of the event
     return BasicEvent.fromJson(event.toJson()).parsedImagePackContent;
   }
@@ -68,23 +70,21 @@ class EmotesSettingsController extends State<EmotesSettings> {
     if (room != null) {
       await showFutureLoadingDialog(
         context: context,
-        future:
-            () => client.setRoomStateWithKey(
-              room!.id,
-              'im.ponies.room_emotes',
-              stateKey ?? '',
-              pack!.toJson(),
-            ),
+        future: () => client.setRoomStateWithKey(
+          room!.id,
+          'im.ponies.room_emotes',
+          stateKey ?? '',
+          pack!.toJson(),
+        ),
       );
     } else {
       await showFutureLoadingDialog(
         context: context,
-        future:
-            () => client.setAccountData(
-              client.userID!,
-              'im.ponies.user_emotes',
-              pack!.toJson(),
-            ),
+        future: () => client.setAccountData(
+          client.userID!,
+          'im.ponies.user_emotes',
+          pack!.toJson(),
+        ),
       );
     }
   }
@@ -94,8 +94,7 @@ class EmotesSettingsController extends State<EmotesSettings> {
       return;
     }
     final client = Matrix.of(context).client;
-    final content =
-        client.accountData['im.ponies.emote_rooms']?.content ??
+    final content = client.accountData['im.ponies.emote_rooms']?.content ??
         <String, dynamic>{};
     if (active) {
       if (content['rooms'] is! Map) {
@@ -113,20 +112,19 @@ class EmotesSettingsController extends State<EmotesSettings> {
     // and save
     await showFutureLoadingDialog(
       context: context,
-      future:
-          () => client.setAccountData(
-            client.userID!,
-            'im.ponies.emote_rooms',
-            content,
-          ),
+      future: () => client.setAccountData(
+        client.userID!,
+        'im.ponies.emote_rooms',
+        content,
+      ),
     );
     setState(() {});
   }
 
   void removeImageAction(String oldImageCode) => setState(() {
-    pack!.images.remove(oldImageCode);
-    showSave = true;
-  });
+        pack!.images.remove(oldImageCode);
+        showSave = true;
+      });
 
   void submitImageAction(
     String oldImageCode,
@@ -221,7 +219,10 @@ class EmotesSettingsController extends State<EmotesSettings> {
   void imagePickerAction(
     ValueNotifier<ImagePackImageContent?> controller,
   ) async {
-    final result = await selectFiles(context, type: FileSelectorType.images);
+    final result = await selectFiles(
+      context,
+      type: FileSelectorType.images,
+    );
     final pickedFile = result.firstOrNull;
     if (pickedFile == null) return;
     var file = MatrixImageFile(
@@ -229,17 +230,15 @@ class EmotesSettingsController extends State<EmotesSettings> {
       name: pickedFile.name,
     );
     try {
-      file =
-          (await file.generateThumbnail(
-            nativeImplementations: ClientManager.nativeImplementations,
-          ))!;
+      file = (await file.generateThumbnail(
+        nativeImplementations: ClientManager.nativeImplementations,
+      ))!;
     } catch (e, s) {
       Logs().w('Unable to create thumbnail', e, s);
     }
     final uploadResp = await showFutureLoadingDialog(
       context: context,
-      future:
-          () => Matrix.of(context).client.uploadContent(
+      future: () => Matrix.of(context).client.uploadContent(
             file.bytes,
             filename: file.name,
             contentType: file.mimeType,
@@ -247,7 +246,9 @@ class EmotesSettingsController extends State<EmotesSettings> {
     );
     if (uploadResp.error == null) {
       setState(() {
-        final info = <String, dynamic>{...file.info};
+        final info = <String, dynamic>{
+          ...file.info,
+        };
         // normalize width / height to 256, required for stickers
         if (info['w'] is int && info['h'] is int) {
           final ratio = info['w'] / info['h'];
@@ -276,7 +277,10 @@ class EmotesSettingsController extends State<EmotesSettings> {
     final result = await showFutureLoadingDialog<Archive?>(
       context: context,
       future: () async {
-        final result = await selectFiles(context, type: FileSelectorType.zip);
+        final result = await selectFiles(
+          context,
+          type: FileSelectorType.zip,
+        );
 
         if (result.isEmpty) return null;
 
@@ -295,9 +299,10 @@ class EmotesSettingsController extends State<EmotesSettings> {
       context: context,
       // breaks [Matrix.of] calls otherwise
       useRootNavigator: false,
-      builder:
-          (context) =>
-              ImportEmoteArchiveDialog(controller: this, archive: archive),
+      builder: (context) => ImportEmoteArchiveDialog(
+        controller: this,
+        archive: archive,
+      ),
     );
     setState(() {});
   }
@@ -320,7 +325,11 @@ class EmotesSettingsController extends State<EmotesSettings> {
           );
 
           archive.addFile(
-            ArchiveFile(name, response.bodyBytes.length, response.bodyBytes),
+            ArchiveFile(
+              name,
+              response.bodyBytes.length,
+              response.bodyBytes,
+            ),
           );
         }
         final fileName =

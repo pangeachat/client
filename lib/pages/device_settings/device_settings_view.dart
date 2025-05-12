@@ -58,9 +58,8 @@ class DevicesSettingsView extends StatelessWidget {
                               child: Icon(Icons.info_outlined),
                             ),
                             subtitle: Text(
-                              L10n.of(
-                                context,
-                              ).noticeChatBackupDeviceVerification,
+                              L10n.of(context)
+                                  .noticeChatBackupDeviceVerification,
                             ),
                           ),
                         ),
@@ -109,10 +108,9 @@ class DevicesSettingsView extends StatelessWidget {
                                     theme.colorScheme.errorContainer,
                               ),
                               icon: const Icon(Icons.delete_outline),
-                              onPressed:
-                                  () => controller.removeDevicesAction(
-                                    controller.notThisDevice,
-                                  ),
+                              onPressed: () => controller.removeDevicesAction(
+                                controller.notThisDevice,
+                              ),
                             ),
                           ),
                         )

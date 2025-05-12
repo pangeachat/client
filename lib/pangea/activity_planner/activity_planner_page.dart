@@ -8,7 +8,10 @@ import 'package:fluffychat/pangea/activity_planner/bookmarked_activity_list.dart
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestions_area.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum PageMode { featuredActivities, savedActivities }
+enum PageMode {
+  featuredActivities,
+  savedActivities,
+}
 
 class ActivityPlannerPage extends StatefulWidget {
   final String roomID;
@@ -32,7 +35,10 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
     Widget body = const SizedBox();
     switch (pageMode) {
       case PageMode.savedActivities:
-        body = BookmarkedActivitiesList(room: room, controller: this);
+        body = BookmarkedActivitiesList(
+          room: room,
+          controller: this,
+        );
         break;
       case PageMode.featuredActivities:
         body = Expanded(
@@ -56,10 +62,8 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
           constraints: const BoxConstraints(maxWidth: 800.0),
           child: Column(
             children: [
-              if ([
-                PageMode.featuredActivities,
-                PageMode.savedActivities,
-              ].contains(pageMode))
+              if ([PageMode.featuredActivities, PageMode.savedActivities]
+                  .contains(pageMode))
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -67,8 +71,8 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                       padding: const EdgeInsets.all(16.0),
                       child: SegmentedButton<PageMode>(
                         selected: {pageMode},
-                        onSelectionChanged:
-                            (modes) => _setPageMode(modes.first),
+                        onSelectionChanged: (modes) =>
+                            _setPageMode(modes.first),
                         segments: [
                           ButtonSegment(
                             value: PageMode.featuredActivities,

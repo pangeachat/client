@@ -33,11 +33,10 @@ class OverlayFooter extends StatelessWidget {
         left: bottomSheetPadding,
         right: bottomSheetPadding,
       ),
-      height:
-          readingAssistanceMode == ReadingAssistanceMode.practiceMode ||
-                  readingAssistanceMode == ReadingAssistanceMode.transitionMode
-              ? AppConfig.practiceModeInputBarHeight
-              : AppConfig.selectModeInputBarHeight,
+      height: readingAssistanceMode == ReadingAssistanceMode.practiceMode ||
+              readingAssistanceMode == ReadingAssistanceMode.transitionMode
+          ? AppConfig.practiceModeInputBarHeight
+          : AppConfig.selectModeInputBarHeight,
       alignment: Alignment.center,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,

@@ -15,7 +15,10 @@ import 'homeserver_picker.dart';
 class HomeserverPickerView extends StatelessWidget {
   final HomeserverPickerController controller;
 
-  const HomeserverPickerView(this.controller, {super.key});
+  const HomeserverPickerView(
+    this.controller, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,42 +36,41 @@ class HomeserverPickerView extends StatelessWidget {
         actions: [
           PopupMenuButton<MoreLoginActions>(
             onSelected: controller.onMoreAction,
-            itemBuilder:
-                (_) => [
-                  PopupMenuItem(
-                    value: MoreLoginActions.importBackup,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.import_export_outlined),
-                        const SizedBox(width: 12),
-                        Text(L10n.of(context).hydrate),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: MoreLoginActions.privacy,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.privacy_tip_outlined),
-                        const SizedBox(width: 12),
-                        Text(L10n.of(context).privacy),
-                      ],
-                    ),
-                  ),
-                  PopupMenuItem(
-                    value: MoreLoginActions.about,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.info_outlined),
-                        const SizedBox(width: 12),
-                        Text(L10n.of(context).about),
-                      ],
-                    ),
-                  ),
-                ],
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                value: MoreLoginActions.importBackup,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.import_export_outlined),
+                    const SizedBox(width: 12),
+                    Text(L10n.of(context).hydrate),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: MoreLoginActions.privacy,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.privacy_tip_outlined),
+                    const SizedBox(width: 12),
+                    Text(L10n.of(context).privacy),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: MoreLoginActions.about,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(Icons.info_outlined),
+                    const SizedBox(width: 12),
+                    Text(L10n.of(context).about),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -120,9 +122,8 @@ class HomeserverPickerView extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 32.0),
                       child: SelectableLinkify(
                         text: L10n.of(context).appIntroduction,
-                        textScaleFactor: MediaQuery.textScalerOf(
-                          context,
-                        ).scale(1),
+                        textScaleFactor:
+                            MediaQuery.textScalerOf(context).scale(1),
                         textAlign: TextAlign.center,
                         linkStyle: TextStyle(
                           color: theme.colorScheme.secondary,
@@ -139,8 +140,8 @@ class HomeserverPickerView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           TextField(
-                            onSubmitted:
-                                (_) => controller.checkHomeserverAction(),
+                            onSubmitted: (_) =>
+                                controller.checkHomeserverAction(),
                             controller: controller.homeserverController,
                             autocorrect: false,
                             keyboardType: TextInputType.url,
@@ -163,55 +164,43 @@ class HomeserverPickerView extends StatelessWidget {
                                 onPressed: () {
                                   showDialog(
                                     context: context,
-                                    builder:
-                                        (context) => AlertDialog.adaptive(
-                                          title: Text(
-                                            L10n.of(context).whatIsAHomeserver,
-                                          ),
-                                          content: Linkify(
-                                            text:
-                                                L10n.of(
-                                                  context,
-                                                ).homeserverDescription,
-                                            textScaleFactor:
-                                                MediaQuery.textScalerOf(
-                                                  context,
-                                                ).scale(1),
-                                            options: const LinkifyOptions(
-                                              humanize: false,
-                                            ),
-                                            linkStyle: TextStyle(
-                                              color: theme.colorScheme.primary,
-                                              decorationColor:
-                                                  theme.colorScheme.primary,
-                                            ),
-                                            onOpen:
-                                                (link) =>
-                                                    launchUrlString(link.url),
-                                          ),
-                                          actions: [
-                                            AdaptiveDialogAction(
-                                              onPressed:
-                                                  () => launchUrl(
-                                                    Uri.https(
-                                                      'servers.joinmatrix.org',
-                                                    ),
-                                                  ),
-                                              child: Text(
-                                                L10n.of(
-                                                  context,
-                                                ).discoverHomeservers,
-                                              ),
-                                            ),
-                                            AdaptiveDialogAction(
-                                              onPressed:
-                                                  Navigator.of(context).pop,
-                                              child: Text(
-                                                L10n.of(context).close,
-                                              ),
-                                            ),
-                                          ],
+                                    builder: (context) => AlertDialog.adaptive(
+                                      title: Text(
+                                        L10n.of(context).whatIsAHomeserver,
+                                      ),
+                                      content: Linkify(
+                                        text: L10n.of(context)
+                                            .homeserverDescription,
+                                        textScaleFactor:
+                                            MediaQuery.textScalerOf(context)
+                                                .scale(1),
+                                        options: const LinkifyOptions(
+                                          humanize: false,
                                         ),
+                                        linkStyle: TextStyle(
+                                          color: theme.colorScheme.primary,
+                                          decorationColor:
+                                              theme.colorScheme.primary,
+                                        ),
+                                        onOpen: (link) =>
+                                            launchUrlString(link.url),
+                                      ),
+                                      actions: [
+                                        AdaptiveDialogAction(
+                                          onPressed: () => launchUrl(
+                                            Uri.https('servers.joinmatrix.org'),
+                                          ),
+                                          child: Text(
+                                            L10n.of(context)
+                                                .discoverHomeservers,
+                                          ),
+                                        ),
+                                        AdaptiveDialogAction(
+                                          onPressed: Navigator.of(context).pop,
+                                          child: Text(L10n.of(context).close),
+                                        ),
+                                      ],
+                                    ),
                                   );
                                 },
                                 icon: const Icon(Icons.info_outlined),
@@ -224,24 +213,21 @@ class HomeserverPickerView extends StatelessWidget {
                               backgroundColor: theme.colorScheme.primary,
                               foregroundColor: theme.colorScheme.onPrimary,
                             ),
-                            onPressed:
-                                controller.isLoading
-                                    ? null
-                                    : controller.checkHomeserverAction,
-                            child:
-                                controller.isLoading
-                                    ? const LinearProgressIndicator()
-                                    : Text(L10n.of(context).continueText),
+                            onPressed: controller.isLoading
+                                ? null
+                                : controller.checkHomeserverAction,
+                            child: controller.isLoading
+                                ? const LinearProgressIndicator()
+                                : Text(L10n.of(context).continueText),
                           ),
                           TextButton(
                             style: TextButton.styleFrom(
                               foregroundColor: theme.colorScheme.secondary,
                               textStyle: theme.textTheme.labelMedium,
                             ),
-                            onPressed:
-                                controller.isLoading
-                                    ? null
-                                    : () => controller.checkHomeserverAction(
+                            onPressed: controller.isLoading
+                                ? null
+                                : () => controller.checkHomeserverAction(
                                       legacyPasswordLogin: true,
                                     ),
                             child: Text(L10n.of(context).loginWithMatrixId),

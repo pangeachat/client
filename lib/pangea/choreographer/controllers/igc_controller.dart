@@ -29,9 +29,9 @@ class _IgnoredMatchCacheItem {
   PangeaMatch match;
 
   String get spanText => match.match.fullText.substring(
-    match.match.offset,
-    match.match.offset + match.match.length,
-  );
+        match.match.offset,
+        match.match.offset + match.match.length,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -82,11 +82,9 @@ class IgcController {
         userId: choreographer.pangeaController.userController.userId!,
         userL1: choreographer.l1LangCode!,
         userL2: choreographer.l2LangCode!,
-        enableIGC:
-            choreographer.igcEnabled &&
+        enableIGC: choreographer.igcEnabled &&
             choreographer.choreoMode != ChoreoMode.it,
-        enableIT:
-            choreographer.itEnabled &&
+        enableIT: choreographer.itEnabled &&
             choreographer.choreoMode != ChoreoMode.it,
         prevMessages: _prevMessages(),
       );
@@ -98,7 +96,10 @@ class IgcController {
       // if the request is not in the cache, add it
       if (!_igcTextDataCache.containsKey(reqBody.hashCode)) {
         _igcTextDataCache[reqBody.hashCode] = _IGCTextDataCacheItem(
-          data: IgcRepo.getIGC(choreographer.accessToken, igcRequest: reqBody),
+          data: IgcRepo.getIGC(
+            choreographer.accessToken,
+            igcRequest: reqBody,
+          ),
         );
       }
 
@@ -122,9 +123,8 @@ class IgcController {
 
       final List<PangeaMatch> filteredMatches = List.from(igcTextData!.matches);
       for (final PangeaMatch match in igcTextData!.matches) {
-        final _IgnoredMatchCacheItem cacheEntry = _IgnoredMatchCacheItem(
-          match: match,
-        );
+        final _IgnoredMatchCacheItem cacheEntry =
+            _IgnoredMatchCacheItem(match: match);
 
         if (_ignoredMatchCache.containsKey(cacheEntry.hashCode)) {
           filteredMatches.remove(match);
@@ -184,7 +184,9 @@ class IgcController {
       ErrorHandler.logError(
         m: "should not be calling showFirstMatch with this igcTextData.",
         s: StackTrace.current,
-        data: {"igcTextData": igcTextData?.toJson()},
+        data: {
+          "igcTextData": igcTextData?.toJson(),
+        },
       );
       return;
     }
@@ -211,9 +213,9 @@ class IgcController {
           matchIndex: firstMatchIndex,
           onReplacementSelect: choreographer.onReplacementSelect,
           onSentenceRewrite: (value) async {},
-          onIgnore:
-              () =>
-                  choreographer.onIgnoreMatch(cursorOffset: match.match.offset),
+          onIgnore: () => choreographer.onIgnoreMatch(
+            cursorOffset: match.match.offset,
+          ),
           onITStart: () {
             if (choreographer.itEnabled && igcTextData != null) {
               choreographer.onITStart(igcTextData!.matches[firstMatchIndex]);
@@ -234,39 +236,32 @@ class IgcController {
   /// Get the content of previous text and audio messages in chat.
   /// Passed to IGC request to add context.
   List<PreviousMessage> _prevMessages({int numMessages = 5}) {
-    final List<Event> events =
-        choreographer.chatController.visibleEvents
-            .where(
-              (e) =>
-                  e.type == EventTypes.Message &&
-                  (e.messageType == MessageTypes.Text ||
-                      e.messageType == MessageTypes.Audio),
-            )
-            .toList();
+    final List<Event> events = choreographer.chatController.visibleEvents
+        .where(
+          (e) =>
+              e.type == EventTypes.Message &&
+              (e.messageType == MessageTypes.Text ||
+                  e.messageType == MessageTypes.Audio),
+        )
+        .toList();
 
     final List<PreviousMessage> messages = [];
     for (final Event event in events) {
-      final String? content =
-          event.messageType == MessageTypes.Text
-              ? event.content.toString()
-              : PangeaMessageEvent(
-                    event: event,
-                    timeline: choreographer.chatController.timeline!,
-                    ownMessage:
-                        event.senderId ==
-                        choreographer
-                            .pangeaController
-                            .matrixState
-                            .client
-                            .userID,
-                  )
-                  .getSpeechToTextLocal(
-                    choreographer.l1LangCode,
-                    choreographer.l2LangCode,
-                  )
-                  ?.transcript
-                  .text
-                  .trim(); // trim whitespace
+      final String? content = event.messageType == MessageTypes.Text
+          ? event.content.toString()
+          : PangeaMessageEvent(
+              event: event,
+              timeline: choreographer.chatController.timeline!,
+              ownMessage: event.senderId ==
+                  choreographer.pangeaController.matrixState.client.userID,
+            )
+              .getSpeechToTextLocal(
+                choreographer.l1LangCode,
+                choreographer.l2LangCode,
+              )
+              ?.transcript
+              .text
+              .trim(); // trim whitespace
       if (content == null) continue;
       messages.add(
         PreviousMessage(

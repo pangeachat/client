@@ -40,34 +40,34 @@ class EmotesSettingsView extends StatelessWidget {
               }
             },
             enabled: !controller.readonly,
-            itemBuilder:
-                (context) => [
-                  PopupMenuItem(
-                    value: PopupMenuEmojiActions.import,
-                    child: Text(L10n.of(context).importFromZipFile),
-                  ),
-                  PopupMenuItem(
-                    value: PopupMenuEmojiActions.export,
-                    child: Text(L10n.of(context).exportEmotePack),
-                  ),
-                ],
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                value: PopupMenuEmojiActions.import,
+                child: Text(L10n.of(context).importFromZipFile),
+              ),
+              PopupMenuItem(
+                value: PopupMenuEmojiActions.export,
+                child: Text(L10n.of(context).exportEmotePack),
+              ),
+            ],
           ),
         ],
       ),
-      floatingActionButton:
-          controller.showSave
-              ? FloatingActionButton(
-                onPressed: controller.saveAction,
-                child: const Icon(Icons.save_outlined, color: Colors.white),
-              )
-              : null,
+      floatingActionButton: controller.showSave
+          ? FloatingActionButton(
+              onPressed: controller.saveAction,
+              child: const Icon(Icons.save_outlined, color: Colors.white),
+            )
+          : null,
       body: MaxWidthBody(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             if (!controller.readonly)
               Container(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8.0,
+                ),
                 child: ListTile(
                   leading: Container(
                     width: 180.0,
@@ -122,54 +122,51 @@ class EmotesSettingsView extends StatelessWidget {
               const Divider(),
             imageKeys.isEmpty
                 ? Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Text(
-                      L10n.of(context).noEmotesFound,
-                      style: const TextStyle(fontSize: 20),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        L10n.of(context).noEmotesFound,
+                        style: const TextStyle(fontSize: 20),
+                      ),
                     ),
-                  ),
-                )
+                  )
                 : ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  separatorBuilder:
-                      (BuildContext context, int i) => const SizedBox.shrink(),
-                  itemCount: imageKeys.length + 1,
-                  itemBuilder: (BuildContext context, int i) {
-                    if (i >= imageKeys.length) {
-                      return Container(height: 70);
-                    }
-                    final imageCode = imageKeys[i];
-                    final image = controller.pack!.images[imageCode]!;
-                    final textEditingController = TextEditingController();
-                    textEditingController.text = imageCode;
-                    final useShortCuts =
-                        (PlatformInfos.isWeb || PlatformInfos.isDesktop);
-                    return ListTile(
-                      leading: Container(
-                        width: 180.0,
-                        height: 38,
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(10),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    separatorBuilder: (BuildContext context, int i) =>
+                        const SizedBox.shrink(),
+                    itemCount: imageKeys.length + 1,
+                    itemBuilder: (BuildContext context, int i) {
+                      if (i >= imageKeys.length) {
+                        return Container(height: 70);
+                      }
+                      final imageCode = imageKeys[i];
+                      final image = controller.pack!.images[imageCode]!;
+                      final textEditingController = TextEditingController();
+                      textEditingController.text = imageCode;
+                      final useShortCuts =
+                          (PlatformInfos.isWeb || PlatformInfos.isDesktop);
+                      return ListTile(
+                        leading: Container(
+                          width: 180.0,
+                          height: 38,
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            color: theme.secondaryHeaderColor,
                           ),
-                          color: theme.secondaryHeaderColor,
-                        ),
-                        child: Shortcuts(
-                          shortcuts:
-                              !useShortCuts
-                                  ? {}
-                                  : {
+                          child: Shortcuts(
+                            shortcuts: !useShortCuts
+                                ? {}
+                                : {
                                     LogicalKeySet(LogicalKeyboardKey.enter):
                                         SubmitLineIntent(),
                                   },
-                          child: Actions(
-                            actions:
-                                !useShortCuts
-                                    ? {}
-                                    : {
+                            child: Actions(
+                              actions: !useShortCuts
+                                  ? {}
+                                  : {
                                       SubmitLineIntent: CallbackAction(
                                         onInvoke: (i) {
                                           controller.submitImageAction(
@@ -182,54 +179,52 @@ class EmotesSettingsView extends StatelessWidget {
                                         },
                                       ),
                                     },
-                            child: TextField(
-                              readOnly: controller.readonly,
-                              controller: textEditingController,
-                              autocorrect: false,
-                              minLines: 1,
-                              maxLines: 1,
-                              decoration: InputDecoration(
-                                hintText: L10n.of(context).emoteShortcode,
-                                prefixText: ': ',
-                                suffixText: ':',
-                                prefixStyle: TextStyle(
-                                  color: theme.colorScheme.secondary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                suffixStyle: TextStyle(
-                                  color: theme.colorScheme.secondary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                border: InputBorder.none,
-                              ),
-                              onSubmitted:
-                                  (s) => controller.submitImageAction(
-                                    imageCode,
-                                    s,
-                                    image,
-                                    textEditingController,
+                              child: TextField(
+                                readOnly: controller.readonly,
+                                controller: textEditingController,
+                                autocorrect: false,
+                                minLines: 1,
+                                maxLines: 1,
+                                decoration: InputDecoration(
+                                  hintText: L10n.of(context).emoteShortcode,
+                                  prefixText: ': ',
+                                  suffixText: ':',
+                                  prefixStyle: TextStyle(
+                                    color: theme.colorScheme.secondary,
+                                    fontWeight: FontWeight.bold,
                                   ),
+                                  suffixStyle: TextStyle(
+                                    color: theme.colorScheme.secondary,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  border: InputBorder.none,
+                                ),
+                                onSubmitted: (s) =>
+                                    controller.submitImageAction(
+                                  imageCode,
+                                  s,
+                                  image,
+                                  textEditingController,
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      title: _EmoteImage(image.url),
-                      trailing:
-                          controller.readonly
-                              ? null
-                              : InkWell(
-                                onTap:
-                                    () =>
-                                        controller.removeImageAction(imageCode),
+                        title: _EmoteImage(image.url),
+                        trailing: controller.readonly
+                            ? null
+                            : InkWell(
+                                onTap: () =>
+                                    controller.removeImageAction(imageCode),
                                 child: const Icon(
                                   Icons.delete_outlined,
                                   color: Colors.red,
                                   size: 32.0,
                                 ),
                               ),
-                    );
-                  },
-                ),
+                      );
+                    },
+                  ),
           ],
         ),
       ),

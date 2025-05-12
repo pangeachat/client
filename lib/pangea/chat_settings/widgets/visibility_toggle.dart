@@ -43,9 +43,9 @@ class VisibilityToggleState extends State<VisibilityToggle> {
 
   Future<void> _getVisibility() async {
     try {
-      final resp = await Matrix.of(
-        context,
-      ).client.getRoomVisibilityOnDirectory(room.id);
+      final resp = await Matrix.of(context).client.getRoomVisibilityOnDirectory(
+            room.id,
+          );
       _visibility = resp ?? matrix.Visibility.private;
     } catch (e) {
       _error = e.toString();
@@ -89,10 +89,8 @@ class VisibilityToggleState extends State<VisibilityToggle> {
             child: const Icon(Icons.key_outlined),
           ),
           value: !_isPublic,
-          onChanged:
-              (value) => widget.setJoinRules(
-                value ? JoinRules.knock : JoinRules.public,
-              ),
+          onChanged: (value) =>
+              widget.setJoinRules(value ? JoinRules.knock : JoinRules.public),
         ),
         ListTile(
           title: Text(
@@ -107,9 +105,8 @@ class VisibilityToggleState extends State<VisibilityToggle> {
             foregroundColor: widget.iconColor,
             child: const Icon(Icons.search_outlined),
           ),
-          onTap:
-              _visibility != null
-                  ? () => showFutureLoadingDialog(
+          onTap: _visibility != null
+              ? () => showFutureLoadingDialog(
                     future: () async {
                       _setVisibility(
                         _visibility == matrix.Visibility.public
@@ -119,35 +116,32 @@ class VisibilityToggleState extends State<VisibilityToggle> {
                     },
                     context: context,
                   )
-                  : null,
-          trailing:
-              _loading || _error != null
-                  ? SizedBox(
-                    height: 24.0,
-                    width: 24.0,
-                    child:
-                        _error != null
-                            ? Icon(
-                              Icons.error,
-                              color: Theme.of(context).colorScheme.error,
-                            )
-                            : const CircularProgressIndicator.adaptive(),
-                  )
-                  : Switch.adaptive(
-                    activeColor: AppConfig.activeToggleColor,
-                    value: _visibility == matrix.Visibility.public,
-                    onChanged:
-                        (value) => showFutureLoadingDialog(
-                          future: () async {
-                            _setVisibility(
-                              value
-                                  ? matrix.Visibility.public
-                                  : matrix.Visibility.private,
-                            );
-                          },
-                          context: context,
-                        ),
+              : null,
+          trailing: _loading || _error != null
+              ? SizedBox(
+                  height: 24.0,
+                  width: 24.0,
+                  child: _error != null
+                      ? Icon(
+                          Icons.error,
+                          color: Theme.of(context).colorScheme.error,
+                        )
+                      : const CircularProgressIndicator.adaptive(),
+                )
+              : Switch.adaptive(
+                  activeColor: AppConfig.activeToggleColor,
+                  value: _visibility == matrix.Visibility.public,
+                  onChanged: (value) => showFutureLoadingDialog(
+                    future: () async {
+                      _setVisibility(
+                        value
+                            ? matrix.Visibility.public
+                            : matrix.Visibility.private,
+                      );
+                    },
+                    context: context,
                   ),
+                ),
         ),
       ],
     );

@@ -7,7 +7,10 @@ class PracticeChoice {
   /// Form of the associated token
   final ConstructForm form;
 
-  PracticeChoice({required this.choiceContent, required this.form});
+  PracticeChoice({
+    required this.choiceContent,
+    required this.form,
+  });
 
   @override
   bool operator ==(Object other) {

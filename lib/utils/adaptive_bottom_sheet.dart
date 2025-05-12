@@ -18,37 +18,38 @@ Future<T?> showAdaptiveBottomSheet<T>({
       useRootNavigator: useRootNavigator,
       barrierDismissible: isDismissible,
       useSafeArea: true,
-      builder:
-          (context) => Center(
-            child: Container(
-              margin: const EdgeInsets.all(16),
-              constraints: const BoxConstraints(maxWidth: 480, maxHeight: 720),
-              child: Material(
-                elevation: Theme.of(context).dialogTheme.elevation ?? 4,
-                shadowColor: Theme.of(context).dialogTheme.shadowColor,
-                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                color: Theme.of(context).scaffoldBackgroundColor,
-                clipBehavior: Clip.hardEdge,
-                child: builder(context),
-              ),
-            ),
+      builder: (context) => Center(
+        child: Container(
+          margin: const EdgeInsets.all(16),
+          constraints: const BoxConstraints(
+            maxWidth: 480,
+            maxHeight: 720,
           ),
+          child: Material(
+            elevation: Theme.of(context).dialogTheme.elevation ?? 4,
+            shadowColor: Theme.of(context).dialogTheme.shadowColor,
+            borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+            color: Theme.of(context).scaffoldBackgroundColor,
+            clipBehavior: Clip.hardEdge,
+            child: builder(context),
+          ),
+        ),
+      ),
     );
   }
 
   return showModalBottomSheet<T>(
     context: context,
-    builder:
-        (context) => Padding(
-          padding: EdgeInsets.zero,
-          child: ClipRRect(
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(AppConfig.borderRadius / 2),
-              topRight: Radius.circular(AppConfig.borderRadius / 2),
-            ),
-            child: builder(context),
-          ),
+    builder: (context) => Padding(
+      padding: EdgeInsets.zero,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(AppConfig.borderRadius / 2),
+          topRight: Radius.circular(AppConfig.borderRadius / 2),
         ),
+        child: builder(context),
+      ),
+    ),
     useRootNavigator: useRootNavigator,
     isDismissible: isDismissible,
     isScrollControlled: isScrollControlled,

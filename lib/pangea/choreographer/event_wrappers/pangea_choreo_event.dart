@@ -15,7 +15,9 @@ class ChoreoEvent {
 
   ChoreoEvent({required this.event}) {
     if (event.type != PangeaEventTypes.choreoRecord) {
-      throw Exception("${event.type} should not be used to make a ChoreoEvent");
+      throw Exception(
+        "${event.type} should not be used to make a ChoreoEvent",
+      );
     }
   }
 
@@ -25,7 +27,13 @@ class ChoreoEvent {
       return _content;
     } catch (err, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: err, s: s, data: {"event": event.toJson()});
+      ErrorHandler.logError(
+        e: err,
+        s: s,
+        data: {
+          "event": event.toJson(),
+        },
+      );
       return null;
     }
   }

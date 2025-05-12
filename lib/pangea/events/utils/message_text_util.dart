@@ -58,14 +58,12 @@ class MessageTextUtil {
                 tokenStart: t.tokenStart,
                 tokenEnd: t.tokenEnd,
                 hideContent: t.hideContent,
-                selected:
-                    t.token != null
-                        ? isSelected?.call(t.token!) ?? false
-                        : false,
-                isHighlighted:
-                    t.token != null
-                        ? isHighlighted?.call(t.token!) ?? false
-                        : false,
+                selected: t.token != null
+                    ? isSelected?.call(t.token!) ?? false
+                    : false,
+                isHighlighted: t.token != null
+                    ? isHighlighted?.call(t.token!) ?? false
+                    : false,
                 token: t.token,
               ),
             )
@@ -144,8 +142,7 @@ class MessageTextUtil {
             tokenEnd: messageCharacters.take(token.end).length,
             token: token,
             hideContent: hideContent,
-            selected:
-                (isSelected?.call(token) ?? false) &&
+            selected: (isSelected?.call(token) ?? false) &&
                 !hideContent &&
                 !hasHiddenContent,
             isHighlighted: isHighlighted?.call(token) ?? false,

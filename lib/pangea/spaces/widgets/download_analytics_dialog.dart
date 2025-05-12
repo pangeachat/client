@@ -21,7 +21,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class DownloadAnalyticsDialog extends StatefulWidget {
   final Room space;
-  const DownloadAnalyticsDialog({required this.space, super.key});
+  const DownloadAnalyticsDialog({
+    required this.space,
+    super.key,
+  });
 
   @override
   DownloadAnalyticsDialogState createState() => DownloadAnalyticsDialogState();
@@ -46,9 +49,19 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
 
   Future<void> _initialize() async {
     try {
-      await widget.space.requestParticipants([Membership.join], false, true);
+      await widget.space.requestParticipants(
+        [Membership.join],
+        false,
+        true,
+      );
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"spaceID": widget.space.id});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "spaceID": widget.space.id,
+        },
+      );
     } finally {
       _downloadStatuses = Map.fromEntries(
         _usersToDownload.map((user) => MapEntry(user.id, 0)),
@@ -73,15 +86,14 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     );
   }
 
-  List<User> get _usersToDownload =>
-      widget.space
-          .getParticipants()
-          .where(
-            (member) =>
-                member.id != BotName.byEnvironment &&
-                member.membership == Membership.join,
-          )
-          .toList();
+  List<User> get _usersToDownload => widget.space
+      .getParticipants()
+      .where(
+        (member) =>
+            member.id != BotName.byEnvironment &&
+            member.membership == Membership.join,
+      )
+      .toList();
 
   Color _downloadStatusColor(String userID) {
     final status = _downloadStatuses[userID];
@@ -109,9 +121,8 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
       });
 
       final List<AnalyticsSummaryModel> summaries = [];
-      await for (final batch in widget.space.getNextAnalyticsRoomBatch(
-        userL2!,
-      )) {
+      await for (final batch
+          in widget.space.getNextAnalyticsRoomBatch(userL2!)) {
         if (batch.isEmpty) continue;
         final List<AnalyticsSummaryModel?> batchSummaries = await Future.wait(
           batch.map((r) => _getAnalyticsModel(r)),
@@ -135,7 +146,13 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
         });
       }
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"spaceID": widget.space.id});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "spaceID": widget.space.id,
+        },
+      );
 
       _clean();
       _error = e.toString();
@@ -146,15 +163,18 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
   Future<void> _downloadSpaceAnalytics(
     List<AnalyticsSummaryModel> summaries,
   ) async {
-    final content =
-        _downloadType == DownloadType.xlsx
-            ? _getExcelFileContent(summaries)
-            : _getCSVFileContent(summaries);
+    final content = _downloadType == DownloadType.xlsx
+        ? _getExcelFileContent(summaries)
+        : _getCSVFileContent(summaries);
 
     final fileName =
         "analytics_${widget.space.name}_${DateTime.now().toIso8601String()}.${_downloadType == DownloadType.xlsx ? 'xlsx' : 'csv'}";
 
-    await downloadFile(content, fileName, DownloadType.csv);
+    await downloadFile(
+      content,
+      fileName,
+      DownloadType.csv,
+    );
   }
 
   Future<AnalyticsSummaryModel?> _getAnalyticsModel(Room analyticsRoom) async {
@@ -192,7 +212,10 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
       ErrorHandler.logError(
         e: e,
         s: s,
-        data: {"spaceID": widget.space.id, "userID": userID},
+        data: {
+          "spaceID": widget.space.id,
+          "userID": userID,
+        },
       );
       if (mounted) setState(() => _downloadStatuses[userID] = -2);
     } finally {
@@ -203,7 +226,10 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
           ErrorHandler.logError(
             e: e,
             s: s,
-            data: {"spaceID": widget.space.id, "userID": userID},
+            data: {
+              "spaceID": widget.space.id,
+              "userID": userID,
+            },
           );
         }
       }
@@ -211,7 +237,9 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     return summary;
   }
 
-  List<CellValue> _formatExcelRow(AnalyticsSummaryModel summary) {
+  List<CellValue> _formatExcelRow(
+    AnalyticsSummaryModel summary,
+  ) {
     final List<CellValue> row = [];
     for (int i = 0; i < AnalyticsSummaryEnum.values.length; i++) {
       final key = AnalyticsSummaryEnum.values[i];
@@ -227,13 +255,20 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     return row;
   }
 
-  List<int> _getExcelFileContent(List<AnalyticsSummaryModel> summaries) {
+  List<int> _getExcelFileContent(
+    List<AnalyticsSummaryModel> summaries,
+  ) {
     final excel = Excel.createExcel();
     final sheet = excel['Sheet1'];
 
     for (final key in AnalyticsSummaryEnum.values) {
       sheet
-          .cell(CellIndex.indexByColumnRow(rowIndex: 0, columnIndex: key.index))
+          .cell(
+            CellIndex.indexByColumnRow(
+              rowIndex: 0,
+              columnIndex: key.index,
+            ),
+          )
           .value = TextCellValue(key.header(L10n.of(context)));
     }
 
@@ -251,7 +286,9 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
     return excel.encode() ?? [];
   }
 
-  String _getCSVFileContent(List<AnalyticsSummaryModel> summaries) {
+  String _getCSVFileContent(
+    List<AnalyticsSummaryModel> summaries,
+  ) {
     final List<List<dynamic>> rows = [];
     final headerRow = [];
     for (final key in AnalyticsSummaryEnum.values) {
@@ -287,7 +324,9 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        constraints: const BoxConstraints(maxWidth: 400),
+        constraints: const BoxConstraints(
+          maxWidth: 400,
+        ),
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -318,7 +357,10 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 300, minHeight: 0),
+                constraints: const BoxConstraints(
+                  maxHeight: 300,
+                  minHeight: 0,
+                ),
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: _usersToDownload.length,
@@ -343,28 +385,24 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
                             SizedBox(
                               width: 40,
                               height: 30,
-                              child:
-                                  (_downloadStatuses[user.id] ?? 0) < 0
-                                      ? const Icon(
-                                        Icons.error_outline,
-                                        size: 16,
-                                      )
-                                      : Center(
-                                        child: AnimatedContainer(
-                                          duration:
-                                              FluffyThemes.animationDuration,
-                                          height: 12,
-                                          width: 12,
-                                          decoration: BoxDecoration(
-                                            color: _downloadStatusColor(
-                                              user.id,
-                                            ),
-                                            borderRadius: BorderRadius.circular(
-                                              100,
-                                            ),
-                                          ),
+                              child: (_downloadStatuses[user.id] ?? 0) < 0
+                                  ? const Icon(
+                                      Icons.error_outline,
+                                      size: 16,
+                                    )
+                                  : Center(
+                                      child: AnimatedContainer(
+                                        duration:
+                                            FluffyThemes.animationDuration,
+                                        height: 12,
+                                        width: 12,
+                                        decoration: BoxDecoration(
+                                          color: _downloadStatusColor(user.id),
+                                          borderRadius:
+                                              BorderRadius.circular(100),
                                         ),
                                       ),
+                                    ),
                             ),
                             Flexible(
                               child: Column(
@@ -391,39 +429,36 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
               padding: const EdgeInsets.fromLTRB(8.0, 16.0, 8.0, 8.0),
               child: OutlinedButton(
                 onPressed: _loading || !_initialized ? null : _runDownload,
-                child:
-                    _initialized && !_loading
-                        ? Text(
-                          _loading
-                              ? L10n.of(context).downloading
-                              : L10n.of(context).download,
-                        )
-                        : const SizedBox(
-                          height: 10,
-                          width: 100,
-                          child: LinearProgressIndicator(),
-                        ),
+                child: _initialized && !_loading
+                    ? Text(
+                        _loading
+                            ? L10n.of(context).downloading
+                            : L10n.of(context).download,
+                      )
+                    : const SizedBox(
+                        height: 10,
+                        width: 100,
+                        child: LinearProgressIndicator(),
+                      ),
               ),
             ),
             AnimatedSize(
               duration: FluffyThemes.animationDuration,
-              child:
-                  _statusText != null
-                      ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(_statusText!),
-                      )
-                      : const SizedBox(),
+              child: _statusText != null
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(_statusText!),
+                    )
+                  : const SizedBox(),
             ),
             AnimatedSize(
               duration: FluffyThemes.animationDuration,
-              child:
-                  _error != null
-                      ? Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(L10n.of(context).oopsSomethingWentWrong),
-                      )
-                      : const SizedBox(),
+              child: _error != null
+                  ? Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(L10n.of(context).oopsSomethingWentWrong),
+                    )
+                  : const SizedBox(),
             ),
           ],
         ),

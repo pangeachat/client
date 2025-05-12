@@ -56,14 +56,11 @@ class ITFeedbackCardController extends State<ITFeedbackCard> {
         accessToken: controller.userController.accessToken,
         request: FullTextTranslationRequestModel(
           text: widget.req.chosenContinuance,
-          tgtLang:
-              controller.languageController.userL1?.langCode ??
+          tgtLang: controller.languageController.userL1?.langCode ??
               widget.req.sourceTextLang,
-          userL1:
-              controller.languageController.userL1?.langCode ??
+          userL1: controller.languageController.userL1?.langCode ??
               widget.req.sourceTextLang,
-          userL2:
-              controller.languageController.userL2?.langCode ??
+          userL2: controller.languageController.userL2?.langCode ??
               widget.req.targetLang,
         ),
       );
@@ -88,14 +85,16 @@ class ITFeedbackCardController extends State<ITFeedbackCard> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      error == null
-          ? ITFeedbackCardView(controller: this)
-          : CardErrorWidget(error: error!);
+  Widget build(BuildContext context) => error == null
+      ? ITFeedbackCardView(controller: this)
+      : CardErrorWidget(error: error!);
 }
 
 class ITFeedbackCardView extends StatelessWidget {
-  const ITFeedbackCardView({super.key, required this.controller});
+  const ITFeedbackCardView({
+    super.key,
+    required this.controller,
+  });
 
   final ITFeedbackCardController controller;
 
@@ -114,17 +113,23 @@ class ITFeedbackCardView extends StatelessWidget {
             style: BotStyle.text(context),
           ),
           const SizedBox(width: 10),
-          Text("≈", style: BotStyle.text(context)),
+          Text(
+            "≈",
+            style: BotStyle.text(context),
+          ),
           const SizedBox(width: 10),
           controller.res?.text != null
-              ? Text(controller.res!.text, style: BotStyle.text(context))
+              ? Text(
+                  controller.res!.text,
+                  style: BotStyle.text(context),
+                )
               : TextLoadingShimmer(
-                width: min(
-                  140,
-                  characterWidth *
-                      controller.widget.req.chosenContinuance.length,
+                  width: min(
+                    140,
+                    characterWidth *
+                        controller.widget.req.chosenContinuance.length,
+                  ),
                 ),
-              ),
         ],
       ),
     );

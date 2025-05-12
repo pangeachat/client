@@ -58,13 +58,11 @@ class OverlayMessage extends StatelessWidget {
     final theme = Theme.of(context);
     final bool ownMessage = event.senderId == Matrix.of(context).client.userID;
 
-    final displayTime =
-        event.type == EventTypes.RoomCreate ||
+    final displayTime = event.type == EventTypes.RoomCreate ||
         nextEvent == null ||
         !event.originServerTs.sameEnvironment(nextEvent!.originServerTs);
 
-    final nextEventSameSender =
-        nextEvent != null &&
+    final nextEventSameSender = nextEvent != null &&
         {
           EventTypes.Message,
           EventTypes.Sticker,
@@ -73,8 +71,7 @@ class OverlayMessage extends StatelessWidget {
         nextEvent!.senderId == event.senderId &&
         !displayTime;
 
-    final previousEventSameSender =
-        previousEvent != null &&
+    final previousEventSameSender = previousEvent != null &&
         {
           EventTypes.Message,
           EventTypes.Sticker,
@@ -83,15 +80,13 @@ class OverlayMessage extends StatelessWidget {
         previousEvent!.senderId == event.senderId &&
         previousEvent!.originServerTs.sameEnvironment(event.originServerTs);
 
-    final textColor =
-        ownMessage
-            ? ThemeData.dark().colorScheme.onPrimary
-            : theme.colorScheme.onSurface;
+    final textColor = ownMessage
+        ? ThemeData.dark().colorScheme.onPrimary
+        : theme.colorScheme.onSurface;
 
-    final linkColor =
-        theme.brightness == Brightness.light
-            ? theme.colorScheme.primary
-            : ownMessage
+    final linkColor = theme.brightness == Brightness.light
+        ? theme.colorScheme.primary
+        : ownMessage
             ? theme.colorScheme.onPrimary
             : theme.colorScheme.onSurface;
 
@@ -110,24 +105,21 @@ class OverlayMessage extends StatelessWidget {
     // ignore: deprecated_member_use
     var color = theme.colorScheme.surfaceContainerHigh;
     if (ownMessage) {
-      color =
-          displayEvent.status.isError
-              ? Colors.redAccent
-              : Color.alphaBlend(
-                Colors.white.withAlpha(180),
-                ThemeData.dark().colorScheme.primary,
-              );
+      color = displayEvent.status.isError
+          ? Colors.redAccent
+          : Color.alphaBlend(
+              Colors.white.withAlpha(180),
+              ThemeData.dark().colorScheme.primary,
+            );
     }
 
     if (event.isActivityMessage) {
-      color =
-          theme.brightness == Brightness.dark
-              ? theme.colorScheme.onSecondary
-              : theme.colorScheme.primary;
+      color = theme.brightness == Brightness.dark
+          ? theme.colorScheme.onSecondary
+          : theme.colorScheme.primary;
     }
 
-    final noBubble =
-        ({
+    final noBubble = ({
               MessageTypes.Video,
               MessageTypes.Image,
               MessageTypes.Sticker,
@@ -140,19 +132,22 @@ class OverlayMessage extends StatelessWidget {
             event.numberEmotes > 0 &&
             event.numberEmotes <= 3);
 
-    final showTranslation =
-        overlayController.showTranslation &&
+    final showTranslation = overlayController.showTranslation &&
         overlayController.translationText != null;
 
     final showTranscription = pangeaMessageEvent?.isAudioMessage == true;
 
     final content = Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+        borderRadius: BorderRadius.circular(
+          AppConfig.borderRadius,
+        ),
       ),
       width: messageWidth,
       height: messageHeight,
-      constraints: BoxConstraints(maxHeight: maxHeight),
+      constraints: BoxConstraints(
+        maxHeight: maxHeight,
+      ),
       child: SingleChildScrollView(
         dragStartBehavior: DragStartBehavior.down,
         child: Column(
@@ -161,30 +156,41 @@ class OverlayMessage extends StatelessWidget {
           children: <Widget>[
             if (event.relationshipType == RelationshipTypes.reply)
               FutureBuilder<Event?>(
-                future: event.getReplyEvent(timeline),
-                builder: (BuildContext context, snapshot) {
-                  final replyEvent =
-                      snapshot.hasData
-                          ? snapshot.data!
-                          : Event(
-                            eventId: event.relationshipEventId!,
-                            content: {'msgtype': 'm.text', 'body': '...'},
-                            senderId: event.senderId,
-                            type: 'm.room.message',
-                            room: event.room,
-                            status: EventStatus.sent,
-                            originServerTs: DateTime.now(),
-                          );
+                future: event.getReplyEvent(
+                  timeline,
+                ),
+                builder: (
+                  BuildContext context,
+                  snapshot,
+                ) {
+                  final replyEvent = snapshot.hasData
+                      ? snapshot.data!
+                      : Event(
+                          eventId: event.relationshipEventId!,
+                          content: {
+                            'msgtype': 'm.text',
+                            'body': '...',
+                          },
+                          senderId: event.senderId,
+                          type: 'm.room.message',
+                          room: event.room,
+                          status: EventStatus.sent,
+                          originServerTs: DateTime.now(),
+                        );
                   return Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16, top: 8),
+                    padding: const EdgeInsets.only(
+                      left: 16,
+                      right: 16,
+                      top: 8,
+                    ),
                     child: Material(
                       color: Colors.transparent,
                       borderRadius: ReplyContent.borderRadius,
                       child: InkWell(
                         borderRadius: ReplyContent.borderRadius,
-                        onTap:
-                            () =>
-                                controller.scrollToEventId(replyEvent.eventId),
+                        onTap: () => controller.scrollToEventId(
+                          replyEvent.eventId,
+                        ),
                         child: AbsorbPointer(
                           child: ReplyContent(
                             replyEvent,
@@ -212,7 +218,10 @@ class OverlayMessage extends StatelessWidget {
               isTransitionAnimation: isTransitionAnimation,
               readingAssistanceMode: readingAssistanceMode,
             ),
-            if (event.hasAggregatedEvents(timeline, RelationshipTypes.edit))
+            if (event.hasAggregatedEvents(
+              timeline,
+              RelationshipTypes.edit,
+            ))
               Padding(
                 padding: const EdgeInsets.only(
                   bottom: 8.0,
@@ -229,9 +238,13 @@ class OverlayMessage extends StatelessWidget {
                       size: 14,
                     ),
                     Text(
-                      displayEvent.originServerTs.localizedTimeShort(context),
+                      displayEvent.originServerTs.localizedTimeShort(
+                        context,
+                      ),
                       style: TextStyle(
-                        color: textColor.withAlpha(164),
+                        color: textColor.withAlpha(
+                          164,
+                        ),
                         fontSize: 11,
                       ),
                     ),
@@ -256,15 +269,15 @@ class OverlayMessage extends StatelessWidget {
           children: [
             sizeAnimation != null
                 ? AnimatedBuilder(
-                  animation: sizeAnimation!,
-                  builder: (context, child) {
-                    return SizedBox(
-                      height: sizeAnimation!.value.height,
-                      width: sizeAnimation!.value.width,
-                      child: content,
-                    );
-                  },
-                )
+                    animation: sizeAnimation!,
+                    builder: (context, child) {
+                      return SizedBox(
+                        height: sizeAnimation!.value.height,
+                        width: sizeAnimation!.value.width,
+                        child: content,
+                      );
+                    },
+                  )
                 : content,
             if (showTranscription || showTranslation)
               Container(
@@ -273,21 +286,27 @@ class OverlayMessage extends StatelessWidget {
                   maxHeight: AppConfig.audioTranscriptionMaxHeight,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(12.0, 20.0, 12.0, 12.0),
+                  padding: const EdgeInsets.fromLTRB(
+                    12.0,
+                    20.0,
+                    12.0,
+                    12.0,
+                  ),
                   child: SingleChildScrollView(
-                    child:
-                        showTranscription
-                            ? MessageSpeechToTextCard(
-                              messageEvent: pangeaMessageEvent!,
-                              textColor: textColor,
-                            )
-                            : Text(
-                              overlayController.translationText!,
-                              style: AppConfig.messageTextStyle(
-                                event,
-                                textColor,
-                              ).copyWith(fontStyle: FontStyle.italic),
+                    child: showTranscription
+                        ? MessageSpeechToTextCard(
+                            messageEvent: pangeaMessageEvent!,
+                            textColor: textColor,
+                          )
+                        : Text(
+                            overlayController.translationText!,
+                            style: AppConfig.messageTextStyle(
+                              event,
+                              textColor,
+                            ).copyWith(
+                              fontStyle: FontStyle.italic,
                             ),
+                          ),
                   ),
                 ),
               ),

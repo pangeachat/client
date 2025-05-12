@@ -41,8 +41,14 @@ class FindPartnerView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              LanguageSelectionRow(controller: controller, isSource: true),
-              LanguageSelectionRow(controller: controller, isSource: false),
+              LanguageSelectionRow(
+                controller: controller,
+                isSource: true,
+              ),
+              LanguageSelectionRow(
+                controller: controller,
+                isSource: false,
+              ),
               Padding(
                 padding: const EdgeInsets.all(18),
                 child: Row(
@@ -60,29 +66,27 @@ class FindPartnerView extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-                          child:
-                              controller.flagEmoji != null
-                                  ? RichText(
-                                    text: TextSpan(
-                                      text: controller.flagEmoji,
-                                      style: const TextStyle(fontSize: 30),
-                                    ),
-                                  )
-                                  : const PangeaLogoSvg(width: 30),
+                          child: controller.flagEmoji != null
+                              ? RichText(
+                                  text: TextSpan(
+                                    text: controller.flagEmoji,
+                                    style: const TextStyle(fontSize: 30),
+                                  ),
+                                )
+                              : const PangeaLogoSvg(width: 30),
                         ),
                         IconButton(
                           icon: const Icon(Icons.expand_more),
-                          onPressed:
-                              () => showCountryPicker(
-                                showWorldWide: true,
-                                context: context,
-                                showPhoneCode: false,
-                                onSelect: (Country country) {
-                                  controller.filterUserProfiles(
-                                    country: country,
-                                  );
-                                },
-                              ),
+                          onPressed: () => showCountryPicker(
+                            showWorldWide: true,
+                            context: context,
+                            showPhoneCode: false,
+                            onSelect: (Country country) {
+                              controller.filterUserProfiles(
+                                country: country,
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -92,27 +96,29 @@ class FindPartnerView extends StatelessWidget {
               controller.initialLoad
                   ? const ExpandedContainer(body: ListPlaceholder())
                   : controller.userProfiles.isNotEmpty
-                  ? ExpandedContainer(
-                    body: ListView.builder(
-                      controller: controller.scrollController,
-                      itemCount: controller.userProfiles.length + 1,
-                      itemBuilder:
-                          (context, i) =>
-                              i != controller.userProfiles.length
-                                  ? UserProfileEntry(
+                      ? ExpandedContainer(
+                          body: ListView.builder(
+                            controller: controller.scrollController,
+                            itemCount: controller.userProfiles.length + 1,
+                            itemBuilder: (context, i) => i !=
+                                    controller.userProfiles.length
+                                ? UserProfileEntry(
                                     pangeaProfile: controller.userProfiles[i],
                                     controller: controller,
                                   )
-                                  : controller.loading
-                                  ? const Center(
-                                    child: CircularProgressIndicator.adaptive(),
-                                  )
-                                  : const SizedBox.shrink(),
-                    ),
-                  )
-                  : ExpandedContainer(
-                    body: Center(child: Text(L10n.of(context).noResults)),
-                  ),
+                                : controller.loading
+                                    ? const Center(
+                                        child: CircularProgressIndicator
+                                            .adaptive(),
+                                      )
+                                    : const SizedBox.shrink(),
+                          ),
+                        )
+                      : ExpandedContainer(
+                          body: Center(
+                            child: Text(L10n.of(context).noResults),
+                          ),
+                        ),
             ],
           ),
         ),
@@ -122,7 +128,10 @@ class FindPartnerView extends StatelessWidget {
 }
 
 class ExpandedContainer extends StatelessWidget {
-  const ExpandedContainer({super.key, required this.body});
+  const ExpandedContainer({
+    super.key,
+    required this.body,
+  });
 
   final Widget body;
 
@@ -138,7 +147,10 @@ class ExpandedContainer extends StatelessWidget {
 }
 
 class ProfileSearchTextField extends StatelessWidget {
-  const ProfileSearchTextField({super.key, required this.controller});
+  const ProfileSearchTextField({
+    super.key,
+    required this.controller,
+  });
 
   final FindPartnerController controller;
 
@@ -153,10 +165,9 @@ class ProfileSearchTextField extends StatelessWidget {
           maxHeight: 48,
           minWidth: 48,
         ),
-        suffixIcon:
-            controller.initialLoad
-                ? const CircularProgressIndicator.adaptive()
-                : const Icon(Icons.search_outlined),
+        suffixIcon: controller.initialLoad
+            ? const CircularProgressIndicator.adaptive()
+            : const Icon(Icons.search_outlined),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16),
       ),
       onChanged: controller.searchUserProfilesWithCoolDown,
@@ -165,7 +176,9 @@ class ProfileSearchTextField extends StatelessWidget {
 }
 
 class PageTitleText extends StatelessWidget {
-  const PageTitleText({super.key});
+  const PageTitleText({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -200,24 +213,22 @@ class LanguageSelectionRow extends StatelessWidget {
       children: [
         Flexible(
           child: ListTile(
-            title:
-                isSource
-                    ? Text(
-                      L10n.of(context).iWantALanguagePartnerWhoSpeaks,
-                      style: const TextStyle(fontSize: 16),
-                    )
-                    : Text(
-                      L10n.of(context).iWantALanguagePartnerWhoIsLearning,
-                      style: const TextStyle(fontSize: 16),
-                    ),
+            title: isSource
+                ? Text(
+                    L10n.of(context).iWantALanguagePartnerWhoSpeaks,
+                    style: const TextStyle(fontSize: 16),
+                  )
+                : Text(
+                    L10n.of(context).iWantALanguagePartnerWhoIsLearning,
+                    style: const TextStyle(fontSize: 16),
+                  ),
           ),
         ),
         Flexible(
           child: PLanguageDropdown(
-            languages:
-                isSource
-                    ? controller.pangeaController.pLanguageStore.baseOptions
-                    : controller.pangeaController.pLanguageStore.targetOptions,
+            languages: isSource
+                ? controller.pangeaController.pLanguageStore.baseOptions
+                : controller.pangeaController.pLanguageStore.targetOptions,
             onChange: (language) {
               controller.filterUserProfiles(
                 sourceLanguage: isSource ? language : null,
@@ -225,14 +236,12 @@ class LanguageSelectionRow extends StatelessWidget {
               );
             },
             isL2List: !isSource,
-            initialLanguage:
-                isSource
-                    ? controller.sourceLanguageSearch
-                    : controller.targetLanguageSearch,
-            decorationText:
-                isSource
-                    ? L10n.of(context).myBaseLanguage
-                    : L10n.of(context).iWantToLearn,
+            initialLanguage: isSource
+                ? controller.sourceLanguageSearch
+                : controller.targetLanguageSearch,
+            decorationText: isSource
+                ? L10n.of(context).myBaseLanguage
+                : L10n.of(context).iWantToLearn,
           ),
         ),
       ],
@@ -256,17 +265,16 @@ class UserProfileEntry extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         FutureBuilder<matrix.Profile>(
-          future: Matrix.of(
-            context,
-          ).client.getProfileFromUserId(pangeaProfile.pangeaUserId),
+          future: Matrix.of(context)
+              .client
+              .getProfileFromUserId(pangeaProfile.pangeaUserId),
           builder: ((context, snapshot) {
             final matrixProfile = snapshot.data;
             return ListTile(
               leading: Avatar(
-                name:
-                    matrixProfile == null || matrixProfile.avatarUrl == null
-                        ? pangeaProfile.pangeaUserId
-                        : null,
+                name: matrixProfile == null || matrixProfile.avatarUrl == null
+                    ? pangeaProfile.pangeaUserId
+                    : null,
                 mxContent: matrixProfile?.avatarUrl,
               ),
               title: Row(
@@ -291,15 +299,13 @@ class UserProfileEntry extends StatelessWidget {
                   ),
                 ],
               ),
-              onTap:
-                  () => showModalBottomSheet(
-                    context: context,
-                    builder:
-                        (c) => ProfileBottomSheet(
-                          userId: pangeaProfile.pangeaUserId,
-                          outerContext: context,
-                        ),
-                  ),
+              onTap: () => showModalBottomSheet(
+                context: context,
+                builder: (c) => ProfileBottomSheet(
+                  userId: pangeaProfile.pangeaUserId,
+                  outerContext: context,
+                ),
+              ),
             );
           }),
         ),

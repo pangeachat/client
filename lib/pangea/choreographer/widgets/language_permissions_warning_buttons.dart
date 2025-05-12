@@ -39,25 +39,23 @@ class LanguagePermissionsButtons extends StatelessWidget {
           TextSpan(
             text: copy.title,
             style: TextStyle(
-              color:
-                  Theme.of(context).brightness == Brightness.light
-                      ? Colors.white
-                      : Colors.black,
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Colors.white
+                  : Colors.black,
             ),
           ),
           if (copy.description != null)
             TextSpan(
               text: copy.description,
               style: TextStyle(color: Theme.of(context).colorScheme.primary),
-              recognizer:
-                  TapGestureRecognizer()
-                    ..onTap = () {
-                      showDialog(
-                        context: context,
-                        builder: (c) => const SettingsLearning(),
-                        barrierDismissible: false,
-                      );
-                    },
+              recognizer: TapGestureRecognizer()
+                ..onTap = () {
+                  showDialog(
+                    context: context,
+                    builder: (c) => const SettingsLearning(),
+                    barrierDismissible: false,
+                  );
+                },
             ),
         ],
       ),
@@ -105,7 +103,9 @@ class LanguagePermissionsButtons extends StatelessWidget {
     debugger(when: kDebugMode);
     ErrorHandler.logError(
       e: Exception("Unhandled case in language permissions"),
-      data: {"roomID": roomID},
+      data: {
+        "roomID": roomID,
+      },
     );
     return null;
   }
@@ -113,7 +113,10 @@ class LanguagePermissionsButtons extends StatelessWidget {
   void showMessage(BuildContext context, Widget text) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(duration: const Duration(seconds: 10), content: text),
+      SnackBar(
+        duration: const Duration(seconds: 10),
+        content: text,
+      ),
     );
   }
 }

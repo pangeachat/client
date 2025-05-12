@@ -35,7 +35,6 @@ class ErrorReporter {
       );
     }
   }
-
   // final text = '$error\n${stackTrace ?? ''}';
   // await showAdaptiveDialog(
   //   context: context,

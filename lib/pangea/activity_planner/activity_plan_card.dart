@@ -61,12 +61,10 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
     super.initState();
     _tempActivity = widget.activity;
     _titleController = TextEditingController(text: _tempActivity.title);
-    _learningObjectiveController = TextEditingController(
-      text: _tempActivity.learningObjective,
-    );
-    _instructionsController = TextEditingController(
-      text: _tempActivity.instructions,
-    );
+    _learningObjectiveController =
+        TextEditingController(text: _tempActivity.learningObjective);
+    _instructionsController =
+        TextEditingController(text: _tempActivity.instructions);
     _filename = widget.initialImageURL?.split("/").last;
     _imageURL = widget.activity.imageURL ?? widget.initialImageURL;
   }
@@ -158,9 +156,10 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
       _filename = photo.name;
     });
 
-    final url = await Matrix.of(
-      context,
-    ).client.uploadContent(bytes, filename: photo.name);
+    final url = await Matrix.of(context).client.uploadContent(
+          bytes,
+          filename: photo.name,
+        );
 
     final updatedActivity = ActivityPlanModel(
       req: _tempActivity.req,
@@ -192,7 +191,10 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
         String? avatarUrl;
         if (_avatar != null) {
           final client = Matrix.of(context).client;
-          final url = await client.uploadContent(_avatar!, filename: _filename);
+          final url = await client.uploadContent(
+            _avatar!,
+            filename: _filename,
+          );
           avatarUrl = url.toString();
         }
 
@@ -218,7 +220,9 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
               StateEvent(
                 type: EventTypes.RoomAvatar,
                 stateKey: '',
-                content: {"url": avatarUrl},
+                content: {
+                  "url": avatarUrl,
+                },
               ),
             ],
             StateEvent(
@@ -271,32 +275,31 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                       ),
                       clipBehavior: Clip.hardEdge,
                       alignment: Alignment.center,
-                      child:
-                          _imageURL != null || _avatar != null
-                              ? ClipRRect(
-                                child:
-                                    _avatar == null
-                                        ? CachedNetworkImage(
-                                          fit: BoxFit.cover,
-                                          imageUrl: _imageURL!,
-                                          placeholder: (context, url) {
-                                            return const Center(
-                                              child:
-                                                  CircularProgressIndicator(),
-                                            );
-                                          },
-                                          errorWidget: (context, url, error) {
-                                            return const Padding(
-                                              padding: EdgeInsets.all(28.0),
-                                            );
-                                          },
-                                        )
-                                        : Image.memory(
-                                          _avatar!,
-                                          fit: BoxFit.cover,
-                                        ),
-                              )
-                              : const Padding(padding: EdgeInsets.all(28.0)),
+                      child: _imageURL != null || _avatar != null
+                          ? ClipRRect(
+                              child: _avatar == null
+                                  ? CachedNetworkImage(
+                                      fit: BoxFit.cover,
+                                      imageUrl: _imageURL!,
+                                      placeholder: (context, url) {
+                                        return const Center(
+                                          child: CircularProgressIndicator(),
+                                        );
+                                      },
+                                      errorWidget: (context, url, error) {
+                                        return const Padding(
+                                          padding: EdgeInsets.all(28.0),
+                                        );
+                                      },
+                                    )
+                                  : Image.memory(
+                                      _avatar!,
+                                      fit: BoxFit.cover,
+                                    ),
+                            )
+                          : const Padding(
+                              padding: EdgeInsets.all(28.0),
+                            ),
                     ),
                     if (_isEditing)
                       Positioned(
@@ -324,27 +327,24 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                         const Icon(Icons.event_note_outlined),
                         const SizedBox(width: itemPadding),
                         Expanded(
-                          child:
-                              _isEditing
-                                  ? TextField(
-                                    controller: _titleController,
-                                    decoration: InputDecoration(
-                                      labelText: L10n.of(context).activityTitle,
-                                    ),
-                                    maxLines: null,
-                                  )
-                                  : Text(
-                                    widget.activity.title,
-                                    style:
-                                        Theme.of(context).textTheme.bodyLarge,
+                          child: _isEditing
+                              ? TextField(
+                                  controller: _titleController,
+                                  decoration: InputDecoration(
+                                    labelText: L10n.of(context).activityTitle,
                                   ),
+                                  maxLines: null,
+                                )
+                              : Text(
+                                  widget.activity.title,
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ),
                         ),
                         if (!_isEditing)
                           IconButton(
-                            onPressed:
-                                isBookmarked
-                                    ? () => _removeBookmark()
-                                    : () => _addBookmark(widget.activity),
+                            onPressed: isBookmarked
+                                ? () => _removeBookmark()
+                                : () => _addBookmark(widget.activity),
                             icon: Icon(
                               isBookmarked
                                   ? Icons.bookmark
@@ -362,20 +362,18 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                         ),
                         const SizedBox(width: itemPadding),
                         Expanded(
-                          child:
-                              _isEditing
-                                  ? TextField(
-                                    controller: _learningObjectiveController,
-                                    decoration: InputDecoration(
-                                      labelText: l10n.learningObjectiveLabel,
-                                    ),
-                                    maxLines: null,
-                                  )
-                                  : Text(
-                                    widget.activity.learningObjective,
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium,
+                          child: _isEditing
+                              ? TextField(
+                                  controller: _learningObjectiveController,
+                                  decoration: InputDecoration(
+                                    labelText: l10n.learningObjectiveLabel,
                                   ),
+                                  maxLines: null,
+                                )
+                              : Text(
+                                  widget.activity.learningObjective,
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
                         ),
                       ],
                     ),
@@ -388,20 +386,18 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                         ),
                         const SizedBox(width: itemPadding),
                         Expanded(
-                          child:
-                              _isEditing
-                                  ? TextField(
-                                    controller: _instructionsController,
-                                    decoration: InputDecoration(
-                                      labelText: l10n.instructions,
-                                    ),
-                                    maxLines: null,
-                                  )
-                                  : Text(
-                                    widget.activity.instructions,
-                                    style:
-                                        Theme.of(context).textTheme.bodyMedium,
+                          child: _isEditing
+                              ? TextField(
+                                  controller: _instructionsController,
+                                  decoration: InputDecoration(
+                                    labelText: l10n.instructions,
                                   ),
+                                  maxLines: null,
+                                )
+                              : Text(
+                                  widget.activity.instructions,
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
                         ),
                       ],
                     ),
@@ -418,41 +414,35 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                             child: Wrap(
                               spacing: 4.0,
                               runSpacing: 4.0,
-                              children:
-                                  List<Widget>.generate(
-                                    _tempActivity.vocab.length,
-                                    (int index) {
-                                      return _isEditing
-                                          ? Chip(
-                                            label: Text(
-                                              _tempActivity.vocab[index].lemma,
-                                            ),
-                                            onDeleted:
-                                                () => _removeVocab(index),
-                                            backgroundColor: Colors.transparent,
-                                            visualDensity:
-                                                VisualDensity.compact,
-                                            shape: const StadiumBorder(
-                                              side: BorderSide(
-                                                color: Colors.transparent,
-                                              ),
-                                            ),
-                                          )
-                                          : Chip(
-                                            label: Text(
-                                              _tempActivity.vocab[index].lemma,
-                                            ),
-                                            backgroundColor: Colors.transparent,
-                                            visualDensity:
-                                                VisualDensity.compact,
-                                            shape: const StadiumBorder(
-                                              side: BorderSide(
-                                                color: Colors.transparent,
-                                              ),
-                                            ),
-                                          );
-                                    },
-                                  ).toList(),
+                              children: List<Widget>.generate(
+                                  _tempActivity.vocab.length, (int index) {
+                                return _isEditing
+                                    ? Chip(
+                                        label: Text(
+                                          _tempActivity.vocab[index].lemma,
+                                        ),
+                                        onDeleted: () => _removeVocab(index),
+                                        backgroundColor: Colors.transparent,
+                                        visualDensity: VisualDensity.compact,
+                                        shape: const StadiumBorder(
+                                          side: BorderSide(
+                                            color: Colors.transparent,
+                                          ),
+                                        ),
+                                      )
+                                    : Chip(
+                                        label: Text(
+                                          _tempActivity.vocab[index].lemma,
+                                        ),
+                                        backgroundColor: Colors.transparent,
+                                        visualDensity: VisualDensity.compact,
+                                        shape: const StadiumBorder(
+                                          side: BorderSide(
+                                            color: Colors.transparent,
+                                          ),
+                                        ),
+                                      );
+                              }).toList(),
                             ),
                           ),
                         ],
@@ -494,16 +484,13 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                               message:
                                   !_isEditing ? l10n.edit : l10n.saveChanges,
                               child: IconButton(
-                                icon: Icon(
-                                  !_isEditing ? Icons.edit : Icons.save,
-                                ),
-                                onPressed:
-                                    () =>
-                                        !_isEditing
-                                            ? setState(() {
-                                              _isEditing = true;
-                                            })
-                                            : _saveEdits(),
+                                icon:
+                                    Icon(!_isEditing ? Icons.edit : Icons.save),
+                                onPressed: () => !_isEditing
+                                    ? setState(() {
+                                        _isEditing = true;
+                                      })
+                                    : _saveEdits(),
                                 isSelected: _isEditing,
                               ),
                             ),

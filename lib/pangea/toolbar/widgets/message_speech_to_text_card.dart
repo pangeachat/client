@@ -96,7 +96,9 @@ class MessageSpeechToTextCardState extends State<MessageSpeechToTextCard> {
                     ),
                   ),
                   const TextSpan(text: " "),
-                  TextSpan(text: L10n.of(context).oopsSomethingWentWrong),
+                  TextSpan(
+                    text: L10n.of(context).oopsSomethingWentWrong,
+                  ),
                 ],
               ),
             ),
@@ -110,7 +112,9 @@ class MessageSpeechToTextCardState extends State<MessageSpeechToTextCard> {
       style: AppConfig.messageTextStyle(
         widget.messageEvent.event,
         widget.textColor,
-      ).copyWith(fontStyle: FontStyle.italic),
+      ).copyWith(
+        fontStyle: FontStyle.italic,
+      ),
     );
   }
 }

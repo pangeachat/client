@@ -40,7 +40,10 @@ class _CuteContentState extends State<CuteContent> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(widget.event.text, style: const TextStyle(fontSize: 150)),
+              Text(
+                widget.event.text,
+                style: const TextStyle(fontSize: 150),
+              ),
               if (label != null) Text(label),
             ],
           ),
@@ -55,14 +58,13 @@ class _CuteContentState extends State<CuteContent> {
 
     OverlayEntry? overlay;
     overlay = OverlayEntry(
-      builder:
-          (context) => CuteEventOverlay(
-            emoji: widget.event.text,
-            onAnimationEnd: () {
-              _isOverlayShown = false;
-              overlay?.remove();
-            },
-          ),
+      builder: (context) => CuteEventOverlay(
+        emoji: widget.event.text,
+        onAnimationEnd: () {
+          _isOverlayShown = false;
+          overlay?.remove();
+        },
+      ),
     );
     Overlay.of(context).insert(overlay);
   }
@@ -109,7 +111,10 @@ class _CuteEventOverlayState extends State<CuteEventOverlay>
     with TickerProviderStateMixin {
   final List<Size> items = List.generate(
     50,
-    (index) => Size(Random().nextDouble(), 4 + (Random().nextDouble() * 4)),
+    (index) => Size(
+      Random().nextDouble(),
+      4 + (Random().nextDouble() * 4),
+    ),
   );
 
   AnimationController? controller;
@@ -129,38 +134,37 @@ class _CuteEventOverlayState extends State<CuteEventOverlay>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: controller!,
-      builder:
-          (context, _) => LayoutBuilder(
-            builder: (context, constraints) {
-              final width = constraints.maxWidth - _CuteOverlayContent.size;
-              final height = constraints.maxHeight + _CuteOverlayContent.size;
-              return SizedBox(
-                height: constraints.maxHeight,
-                width: constraints.maxWidth,
-                child: OverflowBox(
-                  child: Stack(
-                    alignment: Alignment.bottomLeft,
-                    fit: StackFit.expand,
-                    children:
-                        items
-                            .map(
-                              (position) => Positioned(
-                                left: position.width * width,
-                                bottom:
-                                    (height *
-                                        .25 *
-                                        position.height *
-                                        (controller?.value ?? 0)) -
-                                    _CuteOverlayContent.size,
-                                child: _CuteOverlayContent(emoji: widget.emoji),
-                              ),
-                            )
-                            .toList(),
-                  ),
-                ),
-              );
-            },
-          ),
+      builder: (context, _) => LayoutBuilder(
+        builder: (context, constraints) {
+          final width = constraints.maxWidth - _CuteOverlayContent.size;
+          final height = constraints.maxHeight + _CuteOverlayContent.size;
+          return SizedBox(
+            height: constraints.maxHeight,
+            width: constraints.maxWidth,
+            child: OverflowBox(
+              child: Stack(
+                alignment: Alignment.bottomLeft,
+                fit: StackFit.expand,
+                children: items
+                    .map(
+                      (position) => Positioned(
+                        left: position.width * width,
+                        bottom: (height *
+                                .25 *
+                                position.height *
+                                (controller?.value ?? 0)) -
+                            _CuteOverlayContent.size,
+                        child: _CuteOverlayContent(
+                          emoji: widget.emoji,
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -181,7 +185,10 @@ class _CuteOverlayContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox.square(
       dimension: size,
-      child: Text(emoji, style: const TextStyle(fontSize: 48)),
+      child: Text(
+        emoji,
+        style: const TextStyle(fontSize: 48),
+      ),
     );
   }
 }

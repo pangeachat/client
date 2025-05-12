@@ -30,14 +30,12 @@ class AdaptiveDialogAction extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:
-                      autofocus
-                          ? theme.colorScheme.primary
-                          : theme.colorScheme.surfaceBright,
-                  foregroundColor:
-                      autofocus
-                          ? theme.colorScheme.onPrimary
-                          : theme.colorScheme.primary,
+                  backgroundColor: autofocus
+                      ? theme.colorScheme.primary
+                      : theme.colorScheme.surfaceBright,
+                  foregroundColor: autofocus
+                      ? theme.colorScheme.onPrimary
+                      : theme.colorScheme.primary,
                 ),
                 onPressed: onPressed,
                 autofocus: autofocus,

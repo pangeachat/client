@@ -45,11 +45,9 @@ class FindPartnerController extends State<FindPartner> {
 
   @override
   void initState() {
-    targetLanguageSearch =
-        pangeaController.languageController.userL1 ??
+    targetLanguageSearch = pangeaController.languageController.userL1 ??
         pangeaController.pLanguageStore.targetOptions[1];
-    sourceLanguageSearch =
-        pangeaController.languageController.userL2 ??
+    sourceLanguageSearch = pangeaController.languageController.userL2 ??
         pangeaController.pLanguageStore.targetOptions[0];
 
     scrollController.addListener(() {
@@ -86,8 +84,7 @@ class FindPartnerController extends State<FindPartner> {
     return FindPartnerView(this);
   }
 
-  List<PangeaProfile> get userProfiles =>
-      _userProfilesCache.where((p) {
+  List<PangeaProfile> get userProfiles => _userProfilesCache.where((p) {
         return (p.targetLanguage != null &&
                 targetLanguageSearch.langCode == p.targetLanguage) &&
             (p.sourceLanguage != null &&

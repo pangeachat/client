@@ -62,12 +62,14 @@ class PangeaSsoButton extends StatelessWidget {
     setLoading(true, provider);
     await showFutureLoadingDialog(
       context: context,
-      future:
-          () async => pangeaSSOLoginAction(
-            IdentityProvider(id: provider.id, name: provider.name),
-            Matrix.of(context).getLoginClient(),
-            context,
-          ),
+      future: () async => pangeaSSOLoginAction(
+        IdentityProvider(
+          id: provider.id,
+          name: provider.name,
+        ),
+        Matrix.of(context).getLoginClient(),
+        context,
+      ),
       onError: (e, s) {
         setLoading(false, provider);
         return e is MatrixException

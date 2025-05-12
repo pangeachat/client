@@ -31,12 +31,19 @@ class CardErrorWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(errorCopy.title, style: BotStyle.text(context), softWrap: true),
+          Text(
+            errorCopy.title,
+            style: BotStyle.text(context),
+            softWrap: true,
+          ),
           const SizedBox(height: 6.0),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const BotFace(width: 50.0, expression: BotExpression.addled),
+              const BotFace(
+                width: 50.0,
+                expression: BotExpression.addled,
+              ),
               const SizedBox(width: 12.0),
               Flexible(
                 child: Text(

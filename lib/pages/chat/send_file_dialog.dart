@@ -74,12 +74,11 @@ class SendFileDialogState extends State<SendFileDialog> {
             throw FileTooBigMatrixException(length, maxUploadSize);
           }
           // Else we just create a MatrixFile
-          file =
-              MatrixFile(
-                bytes: await xfile.readAsBytes(),
-                name: xfile.name,
-                mimeType: mimeType,
-              ).detectFileType;
+          file = MatrixFile(
+            bytes: await xfile.readAsBytes(),
+            name: xfile.name,
+            mimeType: mimeType,
+          ).detectFileType;
         }
 
         if (file.bytes.length > maxUploadSize) {
@@ -111,9 +110,8 @@ class SendFileDialogState extends State<SendFileDialog> {
           if (e.error != MatrixError.M_LIMIT_EXCEEDED || retryAfterMs == null) {
             rethrow;
           }
-          final retryAfterDuration = Duration(
-            milliseconds: retryAfterMs + 1000,
-          );
+          final retryAfterDuration =
+              Duration(milliseconds: retryAfterMs + 1000);
 
           scaffoldMessenger.showSnackBar(
             SnackBar(
@@ -157,9 +155,8 @@ class SendFileDialogState extends State<SendFileDialog> {
   }
 
   Future<String> _calcCombinedFileSize() async {
-    final lengths = await Future.wait(
-      widget.files.map((file) => file.length()),
-    );
+    final lengths =
+        await Future.wait(widget.files.map((file) => file.length()));
     return lengths.fold<double>(0, (p, length) => p + length).sizeString;
   }
 
@@ -168,23 +165,20 @@ class SendFileDialogState extends State<SendFileDialog> {
     final theme = Theme.of(context);
 
     var sendStr = L10n.of(context).sendFile;
-    final uniqueFileType =
-        widget.files
-            .map((file) => file.mimeType ?? lookupMimeType(file.name))
-            .map((mimeType) => mimeType?.split('/').first)
-            .toSet()
-            .singleOrNull;
+    final uniqueFileType = widget.files
+        .map((file) => file.mimeType ?? lookupMimeType(file.name))
+        .map((mimeType) => mimeType?.split('/').first)
+        .toSet()
+        .singleOrNull;
 
-    final fileName =
-        widget.files.length == 1
-            ? widget.files.single.name
-            : L10n.of(context).countFiles(widget.files.length);
-    final fileTypes =
-        widget.files
-            .map((file) => file.name.split('.').last)
-            .toSet()
-            .join(', ')
-            .toUpperCase();
+    final fileName = widget.files.length == 1
+        ? widget.files.single.name
+        : L10n.of(context).countFiles(widget.files.length);
+    final fileTypes = widget.files
+        .map((file) => file.name.split('.').last)
+        .toSet()
+        .join(', ')
+        .toUpperCase();
 
     if (uniqueFileType == 'image') {
       if (widget.files.length == 1) {
@@ -226,72 +220,67 @@ class SendFileDialogState extends State<SendFileDialog> {
                             shrinkWrap: true,
                             itemCount: widget.files.length,
                             scrollDirection: Axis.horizontal,
-                            itemBuilder:
-                                (context, i) => Padding(
-                                  padding: const EdgeInsets.only(right: 8.0),
-                                  child: Material(
-                                    borderRadius: BorderRadius.circular(
-                                      AppConfig.borderRadius / 2,
-                                    ),
-                                    color: Colors.black,
-                                    clipBehavior: Clip.hardEdge,
-                                    child: FutureBuilder(
-                                      future: widget.files[i].readAsBytes(),
-                                      builder: (context, snapshot) {
-                                        final bytes = snapshot.data;
-                                        if (bytes == null) {
-                                          return const Center(
-                                            child:
-                                                CircularProgressIndicator.adaptive(),
-                                          );
-                                        }
-                                        if (snapshot.error != null) {
-                                          Logs().w(
-                                            'Unable to preview image',
-                                            snapshot.error,
-                                            snapshot.stackTrace,
-                                          );
-                                          return const Center(
-                                            child: SizedBox(
-                                              width: 256,
-                                              height: 256,
-                                              child: Icon(
-                                                Icons.broken_image_outlined,
-                                                size: 64,
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        return Image.memory(
-                                          bytes,
+                            itemBuilder: (context, i) => Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: Material(
+                                borderRadius: BorderRadius.circular(
+                                  AppConfig.borderRadius / 2,
+                                ),
+                                color: Colors.black,
+                                clipBehavior: Clip.hardEdge,
+                                child: FutureBuilder(
+                                  future: widget.files[i].readAsBytes(),
+                                  builder: (context, snapshot) {
+                                    final bytes = snapshot.data;
+                                    if (bytes == null) {
+                                      return const Center(
+                                        child: CircularProgressIndicator
+                                            .adaptive(),
+                                      );
+                                    }
+                                    if (snapshot.error != null) {
+                                      Logs().w(
+                                        'Unable to preview image',
+                                        snapshot.error,
+                                        snapshot.stackTrace,
+                                      );
+                                      return const Center(
+                                        child: SizedBox(
+                                          width: 256,
                                           height: 256,
-                                          width:
-                                              widget.files.length == 1
-                                                  ? 256 - 36
-                                                  : null,
-                                          fit: BoxFit.contain,
-                                          errorBuilder: (context, e, s) {
-                                            Logs().w(
-                                              'Unable to preview image',
-                                              e,
-                                              s,
-                                            );
-                                            return const Center(
-                                              child: SizedBox(
-                                                width: 256,
-                                                height: 256,
-                                                child: Icon(
-                                                  Icons.broken_image_outlined,
-                                                  size: 64,
-                                                ),
-                                              ),
-                                            );
-                                          },
+                                          child: Icon(
+                                            Icons.broken_image_outlined,
+                                            size: 64,
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    return Image.memory(
+                                      bytes,
+                                      height: 256,
+                                      width: widget.files.length == 1
+                                          ? 256 - 36
+                                          : null,
+                                      fit: BoxFit.contain,
+                                      errorBuilder: (context, e, s) {
+                                        Logs()
+                                            .w('Unable to preview image', e, s);
+                                        return const Center(
+                                          child: SizedBox(
+                                            width: 256,
+                                            height: 256,
+                                            child: Icon(
+                                              Icons.broken_image_outlined,
+                                              size: 64,
+                                            ),
+                                          ),
                                         );
                                       },
-                                    ),
-                                  ),
+                                    );
+                                  },
                                 ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -305,10 +294,10 @@ class SendFileDialogState extends State<SendFileDialog> {
                             uniqueFileType == null
                                 ? Icons.description_outlined
                                 : uniqueFileType == 'video'
-                                ? Icons.video_file_outlined
-                                : uniqueFileType == 'audio'
-                                ? Icons.audio_file_outlined
-                                : Icons.description_outlined,
+                                    ? Icons.video_file_outlined
+                                    : uniqueFileType == 'audio'
+                                        ? Icons.audio_file_outlined
+                                        : Icons.description_outlined,
                             size: 32,
                           ),
                           const SizedBox(width: 8),
@@ -351,24 +340,20 @@ class SendFileDialogState extends State<SendFileDialog> {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if ({
-                          TargetPlatform.iOS,
-                          TargetPlatform.macOS,
-                        }.contains(theme.platform))
+                        if ({TargetPlatform.iOS, TargetPlatform.macOS}
+                            .contains(theme.platform))
                           CupertinoSwitch(
                             value: compressionSupported && compress,
-                            onChanged:
-                                compressionSupported
-                                    ? (v) => setState(() => compress = v)
-                                    : null,
+                            onChanged: compressionSupported
+                                ? (v) => setState(() => compress = v)
+                                : null,
                           )
                         else
                           Switch.adaptive(
                             value: compressionSupported && compress,
-                            onChanged:
-                                compressionSupported
-                                    ? (v) => setState(() => compress = v)
-                                    : null,
+                            onChanged: compressionSupported
+                                ? (v) => setState(() => compress = v)
+                                : null,
                           ),
                         const SizedBox(width: 16),
                         Expanded(
@@ -407,8 +392,8 @@ class SendFileDialogState extends State<SendFileDialog> {
           ),
           actions: <Widget>[
             AdaptiveDialogAction(
-              onPressed:
-                  () => Navigator.of(context, rootNavigator: false).pop(),
+              onPressed: () =>
+                  Navigator.of(context, rootNavigator: false).pop(),
               child: Text(L10n.of(context).cancel),
             ),
             AdaptiveDialogAction(
@@ -436,7 +421,9 @@ extension on ScaffoldMessengerState {
             const SizedBox(
               width: 16,
               height: 16,
-              child: CircularProgressIndicator.adaptive(strokeWidth: 2),
+              child: CircularProgressIndicator.adaptive(
+                strokeWidth: 2,
+              ),
             ),
             const SizedBox(width: 16),
             Text(title),

@@ -45,9 +45,10 @@ class BookmarkedActivitiesListState extends State<BookmarkedActivitiesList> {
     String? filename,
   ) async {
     if (avatar != null) {
-      final url = await Matrix.of(
-        context,
-      ).client.uploadContent(avatar, filename: filename);
+      final url = await Matrix.of(context).client.uploadContent(
+            avatar,
+            filename: filename,
+          );
       if (!mounted) return;
       setState(() {
         activity = ActivityPlanModel(
@@ -73,7 +74,10 @@ class BookmarkedActivitiesListState extends State<BookmarkedActivitiesList> {
       return Center(
         child: Container(
           constraints: const BoxConstraints(maxWidth: 200),
-          child: Text(l10n.noBookmarkedActivities, textAlign: TextAlign.center),
+          child: Text(
+            l10n.noBookmarkedActivities,
+            textAlign: TextAlign.center,
+          ),
         ),
       );
     }
@@ -86,28 +90,27 @@ class BookmarkedActivitiesListState extends State<BookmarkedActivitiesList> {
             alignment: WrapAlignment.spaceEvenly,
             runSpacing: 16.0,
             spacing: 4.0,
-            children:
-                _bookmarkedActivities.map((activity) {
-                  return ActivitySuggestionCard(
-                    activity: activity,
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return ActivitySuggestionDialog(
-                            initialActivity: activity,
-                            buttonText: L10n.of(context).inviteAndLaunch,
-                            room: widget.room,
-                            onEdit: _onEdit,
-                          );
-                        },
+            children: _bookmarkedActivities.map((activity) {
+              return ActivitySuggestionCard(
+                activity: activity,
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return ActivitySuggestionDialog(
+                        initialActivity: activity,
+                        buttonText: L10n.of(context).inviteAndLaunch,
+                        room: widget.room,
+                        onEdit: _onEdit,
                       );
                     },
-                    width: cardWidth,
-                    height: cardHeight,
-                    onChange: () => setState(() {}),
                   );
-                }).toList(),
+                },
+                width: cardWidth,
+                height: cardHeight,
+                onChange: () => setState(() {}),
+              );
+            }).toList(),
           ),
         ),
       ),

@@ -15,7 +15,9 @@ class TokensEvent {
 
   TokensEvent({required this.event}) {
     if (event.type != PangeaEventTypes.tokens) {
-      throw Exception("${event.type} should not be used to make a TokensEvent");
+      throw Exception(
+        "${event.type} should not be used to make a TokensEvent",
+      );
     }
   }
 
@@ -25,7 +27,13 @@ class TokensEvent {
       return _content!;
     } catch (err, s) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: err, s: s, data: {"event": event.toJson()});
+      ErrorHandler.logError(
+        e: err,
+        s: s,
+        data: {
+          "event": event.toJson(),
+        },
+      );
       return null;
     }
   }

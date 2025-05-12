@@ -24,13 +24,11 @@ class ChatAccessSettingsPageView extends StatelessWidget {
       ),
       body: MaxWidthBody(
         child: StreamBuilder<Object>(
-          stream: room.client.onRoomState.stream.where(
-            (update) => update.roomId == controller.room.id,
-          ),
+          stream: room.client.onRoomState.stream
+              .where((update) => update.roomId == controller.room.id),
           builder: (context, snapshot) {
             final canonicalAlias = room.canonicalAlias;
-            final altAliases =
-                room
+            final altAliases = room
                     .getState(EventTypes.RoomCanonicalAlias)
                     ?.content
                     .tryGetList<String>('alt_aliases') ??
@@ -50,17 +48,15 @@ class ChatAccessSettingsPageView extends StatelessWidget {
                 for (final historyVisibility in HistoryVisibility.values)
                   RadioListTile<HistoryVisibility>.adaptive(
                     title: Text(
-                      historyVisibility.getLocalizedString(
-                        MatrixLocals(L10n.of(context)),
-                      ),
+                      historyVisibility
+                          .getLocalizedString(MatrixLocals(L10n.of(context))),
                     ),
                     value: historyVisibility,
                     groupValue: room.historyVisibility,
-                    onChanged:
-                        controller.historyVisibilityLoading ||
-                                !room.canChangeHistoryVisibility
-                            ? null
-                            : controller.setHistoryVisibility,
+                    onChanged: controller.historyVisibilityLoading ||
+                            !room.canChangeHistoryVisibility
+                        ? null
+                        : controller.setHistoryVisibility,
                   ),
                 Divider(color: theme.dividerColor),
                 ListTile(
@@ -78,20 +74,19 @@ class ChatAccessSettingsPageView extends StatelessWidget {
                 for (final joinRule in controller.availableJoinRules)
                   if (joinRule != JoinRules.private)
                     RadioListTile<JoinRules>.adaptive(
-                      title: Text(joinRule.localizedString(L10n.of(context))),
+                      title: Text(
+                        joinRule.localizedString(L10n.of(context)),
+                      ),
                       value: joinRule,
                       groupValue: room.joinRules,
-                      onChanged:
-                          controller.joinRulesLoading ||
-                                  !room.canChangeJoinRules
-                              ? null
-                              : controller.setJoinRule,
+                      onChanged: controller.joinRulesLoading ||
+                              !room.canChangeJoinRules
+                          ? null
+                          : controller.setJoinRule,
                     ),
                 Divider(color: theme.dividerColor),
-                if ({
-                  JoinRules.public,
-                  JoinRules.knock,
-                }.contains(room.joinRules)) ...[
+                if ({JoinRules.public, JoinRules.knock}
+                    .contains(room.joinRules)) ...[
                   ListTile(
                     title: Text(
                       L10n.of(context).areGuestsAllowedToJoin,
@@ -110,11 +105,10 @@ class ChatAccessSettingsPageView extends StatelessWidget {
                       ),
                       value: guestAccess,
                       groupValue: room.guestAccess,
-                      onChanged:
-                          controller.guestAccessLoading ||
-                                  !room.canChangeGuestAccess
-                              ? null
-                              : controller.setGuestAccess,
+                      onChanged: controller.guestAccessLoading ||
+                              !room.canChangeGuestAccess
+                          ? null
+                          : controller.setGuestAccess,
                     ),
                   Divider(color: theme.dividerColor),
                   ListTile(
@@ -134,23 +128,21 @@ class ChatAccessSettingsPageView extends StatelessWidget {
                   if (canonicalAlias.isNotEmpty)
                     _AliasListTile(
                       alias: canonicalAlias,
-                      onDelete:
-                          room.canChangeStateEvent(
-                                EventTypes.RoomCanonicalAlias,
-                              )
-                              ? () => controller.deleteAlias(canonicalAlias)
-                              : null,
+                      onDelete: room.canChangeStateEvent(
+                        EventTypes.RoomCanonicalAlias,
+                      )
+                          ? () => controller.deleteAlias(canonicalAlias)
+                          : null,
                       isCanonicalAlias: true,
                     ),
                   for (final alias in altAliases)
                     _AliasListTile(
                       alias: alias,
-                      onDelete:
-                          room.canChangeStateEvent(
-                                EventTypes.RoomCanonicalAlias,
-                              )
-                              ? () => controller.deleteAlias(alias)
-                              : null,
+                      onDelete: room.canChangeStateEvent(
+                        EventTypes.RoomCanonicalAlias,
+                      )
+                          ? () => controller.deleteAlias(alias)
+                          : null,
                     ),
                   FutureBuilder(
                     future: room.client.getLocalAliases(room.id),
@@ -160,40 +152,34 @@ class ChatAccessSettingsPageView extends StatelessWidget {
                         return const SizedBox.shrink();
                       }
                       localAddresses.remove(room.canonicalAlias);
-                      localAddresses.removeWhere(
-                        (alias) => altAliases.contains(alias),
-                      );
+                      localAddresses
+                          .removeWhere((alias) => altAliases.contains(alias));
                       return Column(
                         mainAxisSize: MainAxisSize.min,
-                        children:
-                            localAddresses
-                                .map(
-                                  (alias) => _AliasListTile(
-                                    alias: alias,
-                                    published: false,
-                                    onDelete:
-                                        () => controller.deleteAlias(alias),
-                                  ),
-                                )
-                                .toList(),
+                        children: localAddresses
+                            .map(
+                              (alias) => _AliasListTile(
+                                alias: alias,
+                                published: false,
+                                onDelete: () => controller.deleteAlias(alias),
+                              ),
+                            )
+                            .toList(),
                       );
                     },
                   ),
                   Divider(color: theme.dividerColor),
                   FutureBuilder(
                     future: room.client.getRoomVisibilityOnDirectory(room.id),
-                    builder:
-                        (context, snapshot) => SwitchListTile.adaptive(
-                          value: snapshot.data == Visibility.public,
-                          title: Text(
-                            L10n.of(
-                              context,
-                            ).chatCanBeDiscoveredViaSearchOnServer(
-                              room.client.userID!.domain!,
-                            ),
-                          ),
-                          onChanged: controller.setChatVisibilityOnDirectory,
+                    builder: (context, snapshot) => SwitchListTile.adaptive(
+                      value: snapshot.data == Visibility.public,
+                      title: Text(
+                        L10n.of(context).chatCanBeDiscoveredViaSearchOnServer(
+                          room.client.userID!.domain!,
                         ),
+                      ),
+                      onChanged: controller.setChatVisibilityOnDirectory,
+                    ),
                   ),
                 ],
                 ListTile(
@@ -213,13 +199,12 @@ class ChatAccessSettingsPageView extends StatelessWidget {
                             .tryGet<String>('room_version') ??
                         'Unknown',
                   ),
-                  trailing:
-                      room.canSendEvent(EventTypes.RoomTombstone)
-                          ? IconButton(
-                            icon: const Icon(Icons.upgrade_outlined),
-                            onPressed: controller.updateRoomAction,
-                          )
-                          : null,
+                  trailing: room.canSendEvent(EventTypes.RoomTombstone)
+                      ? IconButton(
+                          icon: const Icon(Icons.upgrade_outlined),
+                          onPressed: controller.updateRoomAction,
+                        )
+                      : null,
                 ),
               ],
             );
@@ -248,12 +233,14 @@ class _AliasListTile extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ListTile(
-      leading:
-          isCanonicalAlias
-              ? const Icon(Icons.star)
-              : const Icon(Icons.link_outlined),
+      leading: isCanonicalAlias
+          ? const Icon(Icons.star)
+          : const Icon(Icons.link_outlined),
       title: InkWell(
-        onTap: () => FluffyShare.share('https://matrix.to/#/$alias', context),
+        onTap: () => FluffyShare.share(
+          'https://matrix.to/#/$alias',
+          context,
+        ),
         child: SelectableText(
           alias,
           style: TextStyle(
@@ -264,14 +251,13 @@ class _AliasListTile extends StatelessWidget {
           ),
         ),
       ),
-      trailing:
-          onDelete != null
-              ? IconButton(
-                color: theme.colorScheme.error,
-                icon: const Icon(Icons.delete_outlined),
-                onPressed: onDelete,
-              )
-              : null,
+      trailing: onDelete != null
+          ? IconButton(
+              color: theme.colorScheme.error,
+              icon: const Icon(Icons.delete_outlined),
+              onPressed: onDelete,
+            )
+          : null,
     );
   }
 }

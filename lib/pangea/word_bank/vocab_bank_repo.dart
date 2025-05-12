@@ -72,7 +72,9 @@ class VocabRepo {
       ErrorHandler.logError(
         e: err,
         s: stack,
-        data: {"request": request.toJson()},
+        data: {
+          "request": request.toJson(),
+        },
       );
 
       return VocabRepo.placeholderData();
@@ -84,11 +86,11 @@ class VocabRepo {
   static Future<VocabResponse> getAllCandidateVocab(
     VocabRequest request,
   ) async {
-    final List<ConstructIdentifier> myVocab =
-        MatrixState.pangeaController.getAnalytics.constructListModel
-            .constructList(type: ConstructTypeEnum.vocab)
-            .map((use) => use.id)
-            .toList();
+    final List<ConstructIdentifier> myVocab = MatrixState
+        .pangeaController.getAnalytics.constructListModel
+        .constructList(type: ConstructTypeEnum.vocab)
+        .map((use) => use.id)
+        .toList();
 
     final List<ConstructIdentifier> vocabBank =
         (await VocabRepo.get(request)).vocab;
@@ -109,16 +111,13 @@ class VocabRepo {
 
     // we filter out words that do not share the same part of speech as the token
     // TODO: semantic similarity is not implemented yet
-    final sharingPos =
-        candidates
-            .where(
-              (element) =>
-                  (element.category.toLowerCase() ==
-                          request.pos?.toLowerCase() &&
-                      element.lemma.toLowerCase() !=
-                          request.lemma?.toLowerCase()),
-            )
-            .toList();
+    final sharingPos = candidates
+        .where(
+          (element) =>
+              (element.category.toLowerCase() == request.pos?.toLowerCase() &&
+                  element.lemma.toLowerCase() != request.lemma?.toLowerCase()),
+        )
+        .toList();
 
     // we prefer to return words that share the same part of speech as the token
     // but if there are no words that share the same part of speech, we return all words
@@ -134,15 +133,13 @@ class VocabRepo {
     // Otherwise, pull from a set of starter words for each language
     final candidates = (await VocabRepo.getAllCandidateVocab(request)).vocab;
 
-    final sharingPos =
-        candidates
-            .where(
-              (element) =>
-                  element.category.toLowerCase() !=
-                      request.pos?.toLowerCase() &&
-                  element.lemma.toLowerCase() != request.lemma?.toLowerCase(),
-            )
-            .toList();
+    final sharingPos = candidates
+        .where(
+          (element) =>
+              element.category.toLowerCase() != request.pos?.toLowerCase() &&
+              element.lemma.toLowerCase() != request.lemma?.toLowerCase(),
+        )
+        .toList();
 
     final disSimilarWords = sharingPos.isEmpty ? candidates : sharingPos;
 
@@ -165,10 +162,9 @@ class VocabRepo {
   }
 
   static VocabResponse placeholderData([LanguageModel? language]) {
-    language ??=
-        MatrixState.pangeaController.languageController.userL2 == null
-            ? PLanguageStore.byLangCode(LanguageKeys.defaultLanguage)
-            : MatrixState.pangeaController.languageController.userL2!;
+    language ??= MatrixState.pangeaController.languageController.userL2 == null
+        ? PLanguageStore.byLangCode(LanguageKeys.defaultLanguage)
+        : MatrixState.pangeaController.languageController.userL2!;
 
     //TODO - move this to the server and fill out all our languages
     final Map<String, VocabResponse> placeholder = {

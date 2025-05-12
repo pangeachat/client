@@ -12,22 +12,22 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class ChangeSubscription extends StatelessWidget {
   final SubscriptionManagementController controller;
-  ChangeSubscription({required this.controller, super.key});
+  ChangeSubscription({
+    required this.controller,
+    super.key,
+  });
 
   final PangeaController pangeaController = MatrixState.pangeaController;
 
   List<SubscriptionDetails> get subscriptions =>
-      pangeaController
-          .subscriptionController
-          .availableSubscriptionInfo
+      pangeaController.subscriptionController.availableSubscriptionInfo
           ?.availableSubscriptions ??
       [];
 
   bool get inTrialWindow => pangeaController.userController.inTrialWindow();
 
-  String get trialEnds => DateFormat.yMMMd().format(
-    DateTime.now().add(const Duration(days: kIsWeb ? 0 : 7)),
-  );
+  String get trialEnds => DateFormat.yMMMd()
+      .format(DateTime.now().add(const Duration(days: kIsWeb ? 0 : 7)));
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,9 @@ class ChangeSubscription extends StatelessWidget {
       return const Center(
         child: Padding(
           padding: EdgeInsets.all(16.0),
-          child: CircularProgressIndicator.adaptive(strokeWidth: 2),
+          child: CircularProgressIndicator.adaptive(
+            strokeWidth: 2,
+          ),
         ),
       );
     }
@@ -62,147 +64,134 @@ class ChangeSubscription extends StatelessWidget {
                 child: Column(
                   children: [
                     ListTile(
-                      title: Text(subscription.displayName(context)),
+                      title: Text(
+                        subscription.displayName(context),
+                      ),
                       trailing: Icon(
                         controller.selectedSubscription?.id != subscription.id
                             ? Icons.keyboard_arrow_right_outlined
                             : Icons.keyboard_arrow_down_outlined,
                       ),
-                      enabled:
-                          (!subscription.isTrial || inTrialWindow) &&
+                      enabled: (!subscription.isTrial || inTrialWindow) &&
                           !controller.isCurrentSubscription(subscription),
                       onTap: () => controller.selectSubscription(subscription),
                     ),
                     AnimatedSize(
                       duration: FluffyThemes.animationDuration,
-                      child:
-                          controller.selectedSubscription?.id != subscription.id
-                              ? const SizedBox()
-                              : Column(
-                                children: [
-                                  Container(
-                                    constraints: const BoxConstraints(
-                                      maxWidth: 400.0,
+                      child: controller.selectedSubscription?.id !=
+                              subscription.id
+                          ? const SizedBox()
+                          : Column(
+                              children: [
+                                Container(
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 400.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Theme.of(context).dividerColor,
                                     ),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        color: Theme.of(context).dividerColor,
-                                      ),
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(16.0),
-                                      ),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(16.0),
                                     ),
-                                    margin: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        if (!kIsWeb)
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  Theme.of(
-                                                    context,
-                                                  ).colorScheme.onPrimary,
-                                              borderRadius:
-                                                  const BorderRadius.only(
-                                                    topLeft: Radius.circular(
-                                                      16.0,
-                                                    ),
-                                                    topRight: Radius.circular(
-                                                      16.0,
-                                                    ),
-                                                  ),
-                                            ),
-                                            padding: const EdgeInsets.all(16.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  L10n.of(
-                                                    context,
-                                                  ).startingToday,
-                                                ),
-                                                Text(
-                                                  L10n.of(
-                                                    context,
-                                                  ).oneWeekFreeTrial,
-                                                ),
-                                              ],
+                                  ),
+                                  margin: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      if (!kIsWeb)
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onPrimary,
+                                            borderRadius:
+                                                const BorderRadius.only(
+                                              topLeft: Radius.circular(16.0),
+                                              topRight: Radius.circular(16.0),
                                             ),
                                           ),
-                                        Padding(
                                           padding: const EdgeInsets.all(16.0),
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                L10n.of(
-                                                  context,
-                                                ).paidSubscriptionStarts(
-                                                  trialEnds,
-                                                ),
+                                                L10n.of(context).startingToday,
                                               ),
                                               Text(
-                                                "${subscription.displayPrice(context)}/${subscription.duration?.value}",
-                                                style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                                L10n.of(context)
+                                                    .oneWeekFreeTrial,
                                               ),
                                             ],
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    constraints: const BoxConstraints(
-                                      maxWidth: 400.0,
-                                    ),
-                                    padding: const EdgeInsets.all(16.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          L10n.of(
-                                            context,
-                                          ).cancelInSubscriptionSettings,
-                                        ),
-                                        if (!kIsWeb)
-                                          Text(
-                                            L10n.of(
-                                              context,
-                                            ).cancelToAvoidCharges(trialEnds),
-                                          ),
-                                        const SizedBox(height: 20.0),
-                                        ElevatedButton(
-                                          onPressed:
-                                              () => controller.submitChange(
-                                                subscription,
+                                      Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              L10n.of(context)
+                                                  .paidSubscriptionStarts(
+                                                trialEnds,
                                               ),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              controller.loading
-                                                  ? const CircularProgressIndicator.adaptive()
-                                                  : Text(
+                                            ),
+                                            Text(
+                                              "${subscription.displayPrice(context)}/${subscription.duration?.value}",
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 400.0,
+                                  ),
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        L10n.of(context)
+                                            .cancelInSubscriptionSettings,
+                                      ),
+                                      if (!kIsWeb)
+                                        Text(
+                                          L10n.of(context)
+                                              .cancelToAvoidCharges(trialEnds),
+                                        ),
+                                      const SizedBox(height: 20.0),
+                                      ElevatedButton(
+                                        onPressed: () => controller
+                                            .submitChange(subscription),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            controller.loading
+                                                ? const CircularProgressIndicator
+                                                    .adaptive()
+                                                : Text(
                                                     subscription.isTrial
-                                                        ? L10n.of(
-                                                          context,
-                                                        ).activateTrial
+                                                        ? L10n.of(context)
+                                                            .activateTrial
                                                         : L10n.of(context).pay,
                                                   ),
-                                            ],
-                                          ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
+                            ),
                     ),
                   ],
                 ),

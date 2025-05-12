@@ -9,7 +9,11 @@ class LearningSettingsButton extends StatelessWidget {
   final String? l2;
   final VoidCallback onTap;
 
-  const LearningSettingsButton({super.key, this.l2, required this.onTap});
+  const LearningSettingsButton({
+    super.key,
+    this.l2,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

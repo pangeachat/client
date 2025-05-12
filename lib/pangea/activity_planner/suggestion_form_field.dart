@@ -25,11 +25,10 @@ class SuggestionFormField extends StatelessWidget {
       optionsBuilder: (TextEditingValue textEditingValue) async {
         return (await suggestions)
             .where((ActivitySettingResponseSchema option) {
-              return option.name.toLowerCase().contains(
-                textEditingValue.text.toLowerCase(),
-              );
-            })
-            .map((ActivitySettingResponseSchema e) => e.name);
+          return option.name
+              .toLowerCase()
+              .contains(textEditingValue.text.toLowerCase());
+        }).map((ActivitySettingResponseSchema e) => e.name);
       },
       onSelected: (val) => controller.text = val,
       fieldViewBuilder: (
@@ -45,7 +44,10 @@ class SuggestionFormField extends StatelessWidget {
         return TextFormField(
           controller: textEditingController,
           focusNode: focusNode,
-          decoration: InputDecoration(labelText: label, hintText: placeholder),
+          decoration: InputDecoration(
+            labelText: label,
+            hintText: placeholder,
+          ),
           validator: validator,
           onTapOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
         );

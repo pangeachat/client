@@ -21,9 +21,8 @@ class LanguageDetectionRepo {
       body: request.toJson(),
     );
 
-    final Map<String, dynamic> json = jsonDecode(
-      utf8.decode(res.bodyBytes).toString(),
-    );
+    final Map<String, dynamic> json =
+        jsonDecode(utf8.decode(res.bodyBytes).toString());
 
     final LanguageDetectionResponse response =
         LanguageDetectionResponse.fromJson(json);
@@ -37,10 +36,18 @@ class LanguageDetectionRequest {
   final String? senderl1;
   final String? senderl2;
 
-  LanguageDetectionRequest({required this.text, this.senderl1, this.senderl2});
+  LanguageDetectionRequest({
+    required this.text,
+    this.senderl1,
+    this.senderl2,
+  });
 
   Map<String, dynamic> toJson() {
-    return {'full_text': text, 'sender_l1': senderl1, 'sender_l2': senderl2};
+    return {
+      'full_text': text,
+      'sender_l1': senderl1,
+      'sender_l2': senderl2,
+    };
   }
 }
 
@@ -48,7 +55,10 @@ class LanguageDetectionResponse {
   List<LanguageDetection> detections;
   String fullText;
 
-  LanguageDetectionResponse({required this.detections, required this.fullText});
+  LanguageDetectionResponse({
+    required this.detections,
+    required this.fullText,
+  });
 
   factory LanguageDetectionResponse.fromJson(Map<String, dynamic> json) {
     return LanguageDetectionResponse(

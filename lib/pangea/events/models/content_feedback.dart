@@ -12,7 +12,10 @@ class ContentFeedback<T extends JsonSerializable> {
   ContentFeedback(this.content, this.feedback);
 
   toJson() {
-    return {'content': content.toJson(), 'feedback': feedback};
+    return {
+      'content': content.toJson(),
+      'feedback': feedback,
+    };
   }
 
   @override

@@ -55,17 +55,15 @@ class GetAnalyticsController extends BaseController {
 
   // the minimum XP required for the next level
   int get _minXPForNextLevel {
-    return constructListModel.calculateXpWithLevel(
-      constructListModel.level + 1,
-    );
+    return constructListModel
+        .calculateXpWithLevel(constructListModel.level + 1);
   }
 
   int get minXPForNextLevel => _minXPForNextLevel;
 
   // the progress within the current level as a percentage (0.0 to 1.0)
   double get levelProgress {
-    final progress =
-        (constructListModel.totalXP - _minXPForLevel) /
+    final progress = (constructListModel.totalXP - _minXPForLevel) /
         (_minXPForNextLevel - _minXPForLevel);
     return progress >= 0 ? progress : 0;
   }
@@ -79,9 +77,7 @@ class GetAnalyticsController extends BaseController {
       _client.addAnalyticsRoomsToSpaces();
 
       _analyticsUpdateSubscription ??= _pangeaController
-          .putAnalytics
-          .analyticsUpdateStream
-          .stream
+          .putAnalytics.analyticsUpdateStream.stream
           .listen(_onAnalyticsUpdate);
 
       // When a newly-joined space comes through in a sync
@@ -95,12 +91,19 @@ class GetAnalyticsController extends BaseController {
 
       final offset =
           _pangeaController.userController.publicProfile?.xpOffset ?? 0;
-      constructListModel.updateConstructs([
-        ...(_getConstructsLocal() ?? []),
-        ..._locallyCachedConstructs,
-      ], offset);
+      constructListModel.updateConstructs(
+        [
+          ...(_getConstructsLocal() ?? []),
+          ..._locallyCachedConstructs,
+        ],
+        offset,
+      );
     } catch (err, s) {
-      ErrorHandler.logError(e: err, s: s, data: {});
+      ErrorHandler.logError(
+        e: err,
+        s: s,
+        data: {},
+      );
     } finally {
       _updateAnalyticsStream(points: 0, newConstructs: []);
       if (!initCompleter.isCompleted) initCompleter.complete();
@@ -121,17 +124,21 @@ class GetAnalyticsController extends BaseController {
     // perMessage.dispose();
   }
 
-  Future<void> _onAnalyticsUpdate(AnalyticsUpdate analyticsUpdate) async {
+  Future<void> _onAnalyticsUpdate(
+    AnalyticsUpdate analyticsUpdate,
+  ) async {
     if (analyticsUpdate.isLogout) return;
     final oldLevel = constructListModel.level;
 
     final offset =
         _pangeaController.userController.publicProfile?.xpOffset ?? 0;
 
-    final prevUnlockedMorphs =
-        constructListModel
-            .unlockedLemmas(ConstructTypeEnum.morph, threshold: 25)
-            .toSet();
+    final prevUnlockedMorphs = constructListModel
+        .unlockedLemmas(
+          ConstructTypeEnum.morph,
+          threshold: 25,
+        )
+        .toSet();
 
     final prevUnlockedVocab =
         constructListModel.unlockedLemmas(ConstructTypeEnum.vocab).toSet();
@@ -139,7 +146,10 @@ class GetAnalyticsController extends BaseController {
     constructListModel.updateConstructs(analyticsUpdate.newConstructs, offset);
 
     final newUnlockedMorphs = constructListModel
-        .unlockedLemmas(ConstructTypeEnum.morph, threshold: 25)
+        .unlockedLemmas(
+          ConstructTypeEnum.morph,
+          threshold: 25,
+        )
         .toSet()
         .difference(prevUnlockedMorphs);
 
@@ -183,13 +193,14 @@ class GetAnalyticsController extends BaseController {
     required int points,
     required List<ConstructIdentifier> newConstructs,
     String? targetID,
-  }) => analyticsStream.add(
-    AnalyticsStreamUpdate(
-      points: points,
-      newConstructs: newConstructs,
-      targetID: targetID,
-    ),
-  );
+  }) =>
+      analyticsStream.add(
+        AnalyticsStreamUpdate(
+          points: points,
+          newConstructs: newConstructs,
+          targetID: targetID,
+        ),
+      );
 
   void _onLevelUp(final int lowerLevel, final int upperLevel) {
     setState({
@@ -200,8 +211,7 @@ class GetAnalyticsController extends BaseController {
   }
 
   Future<void> _onLevelDown(final int lowerLevel, final int upperLevel) async {
-    final offset =
-        constructListModel.calculateXpWithLevel(lowerLevel) -
+    final offset = constructListModel.calculateXpWithLevel(lowerLevel) -
         constructListModel.totalXP;
     await _pangeaController.userController.addXPOffset(offset);
     constructListModel.updateConstructs(
@@ -234,16 +244,21 @@ class GetAnalyticsController extends BaseController {
             formattedCache[entry.key] =
                 entry.value.map((e) => OneConstructUse.fromJson(e)).toList();
           } catch (err, s) {
-            ErrorHandler.logError(e: err, s: s, data: {"key": entry.key});
+            ErrorHandler.logError(
+              e: err,
+              s: s,
+              data: {
+                "key": entry.key,
+              },
+            );
             continue;
           }
         }
         return formattedCache;
       } catch (err) {
         // if something goes wrong while trying to format the local data, clear it
-        _pangeaController.putAnalytics.clearMessagesSinceUpdate(
-          clearDrafts: true,
-        );
+        _pangeaController.putAnalytics
+            .clearMessagesSinceUpdate(clearDrafts: true);
         return {};
       }
     } catch (exception, stackTrace) {
@@ -253,7 +268,9 @@ class GetAnalyticsController extends BaseController {
         ),
         s: stackTrace,
         m: 'Failed to retrieve messages since update',
-        data: {"messagesSinceUpdate": PLocalKey.messagesSinceUpdate},
+        data: {
+          "messagesSinceUpdate": PLocalKey.messagesSinceUpdate,
+        },
       );
       return {};
     }
@@ -310,7 +327,10 @@ class GetAnalyticsController extends BaseController {
 
     // if there isn't already a valid, local cache, cache the filtered uses
     if (local == null) {
-      _cacheConstructs(constructType: constructType, uses: uses);
+      _cacheConstructs(
+        constructType: constructType,
+        uses: uses,
+      );
     }
 
     return uses;
@@ -413,27 +433,25 @@ class GetAnalyticsController extends BaseController {
     return newConstructCount;
   }
 
-  //   Future<GenerateConstructSummaryResult?>
-  //       _generateLevelUpAnalyticsAndSaveToStateEvent(
-  //     final int lowerLevel,
-  //     final int upperLevel,
-  //   ) async {
-  //     // generate level up analytics as a construct summary
-  //     ConstructSummary summary;
-  //     try {
-  //       final int maxXP = constructListModel.calculateXpWithLevel(upperLevel);
-  //       final int minXP = constructListModel.calculateXpWithLevel(lowerLevel);
-  //       int diffXP = maxXP - minXP;
-  //       if (diffXP < 0) diffXP = 0;
+//   Future<GenerateConstructSummaryResult?>
+//       _generateLevelUpAnalyticsAndSaveToStateEvent(
+//     final int lowerLevel,
+//     final int upperLevel,
+//   ) async {
+//     // generate level up analytics as a construct summary
+//     ConstructSummary summary;
+//     try {
+//       final int maxXP = constructListModel.calculateXpWithLevel(upperLevel);
+//       final int minXP = constructListModel.calculateXpWithLevel(lowerLevel);
+//       int diffXP = maxXP - minXP;
+//       if (diffXP < 0) diffXP = 0;
 
   Future<ConstructSummary?> getConstructSummaryFromStateEvent() async {
     try {
       final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
       if (analyticsRoom == null) return null;
-      final state = analyticsRoom.getState(
-        PangeaEventTypes.constructSummary,
-        '',
-      );
+      final state =
+          analyticsRoom.getState(PangeaEventTypes.constructSummary, '');
       if (state == null) return null;
       return ConstructSummary.fromJson(state.content);
     } catch (e) {
@@ -507,7 +525,9 @@ class GetAnalyticsController extends BaseController {
       }
 
       // don't await this, just return the original response
-      _saveConstructSummaryResponseToStateEvent(summary);
+      _saveConstructSummaryResponseToStateEvent(
+        summary,
+      );
     } catch (e, s) {
       debugPrint("Error saving construct summary room: $e");
       ErrorHandler.logError(e: e, s: s, data: {'e': e});

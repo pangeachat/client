@@ -51,12 +51,22 @@ class ConstructXpWidgetState extends State<ConstructXpWidget>
     _offsetAnimation = Tween<Offset>(
       begin: Offset.zero,
       end: const Offset(0.0, -1.0),
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeOut,
+      ),
+    );
 
     _fadeAnimation = Tween<double>(
       begin: 1.0,
       end: 0.0,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeOut,
+      ),
+    );
 
     setState(() => constructLemmaCategory = constructUse?.lemmaCategory);
 
@@ -74,11 +84,9 @@ class ConstructXpWidgetState extends State<ConstructXpWidget>
     });
   }
 
-  ConstructUses? get constructUse => MatrixState
-      .pangeaController
-      .getAnalytics
-      .constructListModel
-      .getConstructUses(widget.id);
+  ConstructUses? get constructUse =>
+      MatrixState.pangeaController.getAnalytics.constructListModel
+          .getConstructUses(widget.id);
 
   Stream<AnalyticsStreamUpdate> get stream =>
       MatrixState.pangeaController.getAnalytics.analyticsStream.stream;
@@ -111,7 +119,10 @@ class ConstructXpWidgetState extends State<ConstructXpWidget>
               if (didChange)
                 SlideTransition(
                   position: _offsetAnimation,
-                  child: FadeTransition(opacity: _fadeAnimation, child: svg),
+                  child: FadeTransition(
+                    opacity: _fadeAnimation,
+                    child: svg,
+                  ),
                 ),
             ],
           ),

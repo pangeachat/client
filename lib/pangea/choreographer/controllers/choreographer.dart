@@ -71,9 +71,8 @@ class Choreographer {
     igc = IgcController(this);
     errorService = ErrorService(this);
     _textController.addListener(_onChangeListener);
-    _languageStream = pangeaController.userController.stateStream.listen((
-      update,
-    ) {
+    _languageStream =
+        pangeaController.userController.stateStream.listen((update) {
       if (update is Map<String, dynamic> &&
           update['prev_target_lang'] is LanguageModel) {
         clear();
@@ -111,12 +110,14 @@ class Choreographer {
       final status = pangeaController.subscriptionController.subscriptionStatus;
       status == SubscriptionStatus.shouldShowPaywall
           ? OverlayUtil.showPositionedCard(
-            context: context,
-            cardToShow: PaywallCard(chatController: chatController),
-            maxHeight: 325,
-            maxWidth: 325,
-            transformTargetId: inputTransformTargetKey,
-          )
+              context: context,
+              cardToShow: PaywallCard(
+                chatController: chatController,
+              ),
+              maxHeight: 325,
+              maxWidth: 325,
+              transformTargetId: inputTransformTargetKey,
+            )
           : chatController.send();
       return;
     }
@@ -142,11 +143,11 @@ class Choreographer {
     final PangeaRepresentation? originalWritten =
         choreoRecord.includedIT && itController.sourceText != null
             ? PangeaRepresentation(
-              langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
-              text: itController.sourceText!,
-              originalWritten: true,
-              originalSent: false,
-            )
+                langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
+                text: itController.sourceText!,
+                originalWritten: true,
+                originalSent: false,
+              )
             : null;
 
     final detectionResp = await LanguageDetectionRepo.get(
@@ -182,10 +183,12 @@ class Choreographer {
       );
     }
 
-    final PangeaMessageTokens? tokensSent =
-        res != null
-            ? PangeaMessageTokens(tokens: res, detections: detections)
-            : null;
+    final PangeaMessageTokens? tokensSent = res != null
+        ? PangeaMessageTokens(
+            tokens: res,
+            detections: detections,
+          )
+        : null;
 
     chatController.send(
       // originalWritten: originalWritten,
@@ -211,7 +214,9 @@ class Choreographer {
       throw Exception("this isn't an itStart match!");
     }
     choreoMode = ChoreoMode.it;
-    itController.initializeIT(ITStartData(_textController.text, null));
+    itController.initializeIT(
+      ITStartData(_textController.text, null),
+    );
     itMatch.status = PangeaMatchStatus.accepted;
 
     choreoRecord.addRecord(_textController.text, match: itMatch);
@@ -272,7 +277,9 @@ class Choreographer {
   /// tokens, and translations. Includes logic to exit the flow if the user is not subscribed, if the tools are not enabled, or
   /// or if autoIGC is not enabled and the user has not manually requested it.
   /// [onlyTokensAndLanguageDetection] will
-  Future<void> getLanguageHelp({bool manual = false}) async {
+  Future<void> getLanguageHelp({
+    bool manual = false,
+  }) async {
     try {
       if (errorService.isError) return;
       final SubscriptionStatus canSendStatus =
@@ -325,9 +332,8 @@ class Choreographer {
           ? EditType.itGold
           : EditType.itStandard,
     );
-    _textController.selection = TextSelection.collapsed(
-      offset: _textController.text.length,
-    );
+    _textController.selection =
+        TextSelection.collapsed(offset: _textController.text.length);
     giveInputFocus();
   }
 
@@ -340,7 +346,10 @@ class Choreographer {
         ErrorHandler.logError(
           e: "onReplacementSelect with null igcTextData",
           s: StackTrace.current,
-          data: {"matchIndex": matchIndex, "choiceIndex": choiceIndex},
+          data: {
+            "matchIndex": matchIndex,
+            "choiceIndex": choiceIndex,
+          },
         );
         MatrixState.pAnyState.closeOverlay();
         return;
@@ -368,28 +377,25 @@ class Choreographer {
       //   return;
       // }
 
-      igc
-          .igcTextData!
-          .matches[matchIndex]
-          .match
-          .choices![choiceIndex]
+      igc.igcTextData!.matches[matchIndex].match.choices![choiceIndex]
           .selected = true;
 
-      final isNormalizationError = igc.spanDataController.isNormalizationError(
-        matchIndex,
-      );
+      final isNormalizationError =
+          igc.spanDataController.isNormalizationError(matchIndex);
 
       //if it's the right choice, replace in text
       if (!isNormalizationError) {
         choreoRecord.addRecord(
           _textController.text,
-          match:
-              igc.igcTextData!.matches[matchIndex].copyWith
-                ..status = PangeaMatchStatus.accepted,
+          match: igc.igcTextData!.matches[matchIndex].copyWith
+            ..status = PangeaMatchStatus.accepted,
         );
       }
 
-      igc.igcTextData!.acceptReplacement(matchIndex, choiceIndex);
+      igc.igcTextData!.acceptReplacement(
+        matchIndex,
+        choiceIndex,
+      );
 
       _textController.setSystemText(
         igc.igcTextData!.originalInput,
@@ -444,9 +450,8 @@ class Choreographer {
 
   void acceptNormalizationMatches() {
     for (int i = 0; i < igc.igcTextData!.matches.length; i++) {
-      final isNormalizationError = igc.spanDataController.isNormalizationError(
-        i,
-      );
+      final isNormalizationError =
+          igc.spanDataController.isNormalizationError(i);
 
       if (!isNormalizationError) continue;
       final match = igc.igcTextData!.matches[i];
@@ -458,7 +463,9 @@ class Choreographer {
 
       igc.igcTextData!.acceptReplacement(
         i,
-        match.match.choices!.indexWhere((c) => c.isBestCorrection),
+        match.match.choices!.indexWhere(
+          (c) => c.isBestCorrection,
+        ),
       );
 
       _textController.setSystemText(
@@ -492,9 +499,8 @@ class Choreographer {
       igc.onIgnoreMatch(igc.igcTextData!.matches[matchIndex]);
       igc.igcTextData!.matches[matchIndex].status = PangeaMatchStatus.ignored;
 
-      final isNormalizationError = igc.spanDataController.isNormalizationError(
-        matchIndex,
-      );
+      final isNormalizationError =
+          igc.spanDataController.isNormalizationError(matchIndex);
 
       if (!isNormalizationError) {
         choreoRecord.addRecord(
@@ -517,7 +523,9 @@ class Choreographer {
       ErrorHandler.logError(
         e: err,
         s: stack,
-        data: {"igctextData": igc.igcTextData?.toJson()},
+        data: {
+          "igctextData": igc.igcTextData?.toJson(),
+        },
       );
       igc.igcTextData?.matches.clear();
     } finally {
@@ -606,10 +614,10 @@ class Choreographer {
   get roomId => chatController.roomId;
 
   bool get _useCustomInput => [
-    EditType.keyboard,
-    EditType.igc,
-    EditType.alternativeTranslation,
-  ].contains(_textController.editType);
+        EditType.keyboard,
+        EditType.igc,
+        EditType.alternativeTranslation,
+      ].contains(_textController.editType);
 
   bool get editTypeIsKeyboard => EditType.keyboard == _textController.editType;
 
@@ -636,20 +644,26 @@ class Choreographer {
   String get itBotTransformTargetKey => 'itBot$roomId';
 
   bool get igcEnabled => pangeaController.permissionsController.isToolEnabled(
-    ToolSetting.interactiveGrammar,
-    chatController.room,
-  );
+        ToolSetting.interactiveGrammar,
+        chatController.room,
+      );
 
   bool get itEnabled => pangeaController.permissionsController.isToolEnabled(
-    ToolSetting.interactiveTranslator,
-    chatController.room,
-  );
+        ToolSetting.interactiveTranslator,
+        chatController.room,
+      );
 
-  bool get immersionMode => pangeaController.permissionsController
-      .isToolEnabled(ToolSetting.immersionMode, chatController.room);
+  bool get immersionMode =>
+      pangeaController.permissionsController.isToolEnabled(
+        ToolSetting.immersionMode,
+        chatController.room,
+      );
 
-  bool get isAutoIGCEnabled => pangeaController.permissionsController
-      .isToolEnabled(ToolSetting.autoIGC, chatController.room);
+  bool get isAutoIGCEnabled =>
+      pangeaController.permissionsController.isToolEnabled(
+        ToolSetting.autoIGC,
+        chatController.room,
+      );
 
   AssistanceState get assistanceState {
     final isSubscribed = pangeaController.subscriptionController.isSubscribed;
@@ -700,12 +714,10 @@ class Choreographer {
     }
 
     // if they have relevant matches, don't let them send
-    final hasITMatches = igc.igcTextData!.matches.any(
-      (match) => match.isITStart,
-    );
-    final hasIGCMatches = igc.igcTextData!.matches.any(
-      (match) => !match.isITStart,
-    );
+    final hasITMatches =
+        igc.igcTextData!.matches.any((match) => match.isITStart);
+    final hasIGCMatches =
+        igc.igcTextData!.matches.any((match) => !match.isITStart);
     if ((itEnabled && hasITMatches) || (igcEnabled && hasIGCMatches)) {
       return false;
     }

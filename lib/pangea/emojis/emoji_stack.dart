@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class EmojiStack extends StatelessWidget {
-  const EmojiStack({super.key, required List<String> emoji, this.style})
-    : _emoji = emoji;
+  const EmojiStack({
+    super.key,
+    required List<String> emoji,
+    this.style,
+  }) : _emoji = emoji;
 
   final List<String> _emoji;
   final TextStyle? style;
@@ -13,7 +16,10 @@ class EmojiStack extends StatelessWidget {
     //   _emoji.first,
     //   style: style,
     // );
-    return Text(_emoji.join(''), style: style);
+    return Text(
+      _emoji.join(''),
+      style: style,
+    );
     // return Stack(
     //   children: [
     //     for (final emoji in _emoji)

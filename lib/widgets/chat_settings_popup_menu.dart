@@ -33,7 +33,10 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
 
   @override
   Widget build(BuildContext context) {
-    notificationChangeSub ??= Matrix.of(context).client.onSync.stream
+    notificationChangeSub ??= Matrix.of(context)
+        .client
+        .onSync
+        .stream
         .where(
           (syncUpdate) =>
               syncUpdate.accountData?.any(
@@ -41,7 +44,9 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
               ) ??
               false,
         )
-        .listen((u) => setState(() {}));
+        .listen(
+          (u) => setState(() {}),
+        );
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -74,17 +79,15 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
               case ChatPopupMenuActions.mute:
                 await showFutureLoadingDialog(
                   context: context,
-                  future:
-                      () => widget.room.setPushRuleState(
-                        PushRuleState.mentionsOnly,
-                      ),
+                  future: () =>
+                      widget.room.setPushRuleState(PushRuleState.mentionsOnly),
                 );
                 break;
               case ChatPopupMenuActions.unmute:
                 await showFutureLoadingDialog(
                   context: context,
-                  future:
-                      () => widget.room.setPushRuleState(PushRuleState.notify),
+                  future: () =>
+                      widget.room.setPushRuleState(PushRuleState.notify),
                 );
                 break;
               case ChatPopupMenuActions.details:
@@ -95,62 +98,61 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
                 break;
             }
           },
-          itemBuilder:
-              (BuildContext context) => [
-                if (widget.displayChatDetails)
-                  PopupMenuItem<ChatPopupMenuActions>(
-                    value: ChatPopupMenuActions.details,
-                    child: Row(
-                      children: [
-                        const Icon(Icons.info_outline_rounded),
-                        const SizedBox(width: 12),
-                        Text(L10n.of(context).chatDetails),
-                      ],
-                    ),
-                  ),
-                if (widget.room.pushRuleState == PushRuleState.notify)
-                  PopupMenuItem<ChatPopupMenuActions>(
-                    value: ChatPopupMenuActions.mute,
-                    child: Row(
-                      children: [
-                        const Icon(Icons.notifications_off_outlined),
-                        const SizedBox(width: 12),
-                        Text(L10n.of(context).muteChat),
-                      ],
-                    ),
-                  )
-                else
-                  PopupMenuItem<ChatPopupMenuActions>(
-                    value: ChatPopupMenuActions.unmute,
-                    child: Row(
-                      children: [
-                        const Icon(Icons.notifications_on_outlined),
-                        const SizedBox(width: 12),
-                        Text(L10n.of(context).unmuteChat),
-                      ],
-                    ),
-                  ),
-                PopupMenuItem<ChatPopupMenuActions>(
-                  value: ChatPopupMenuActions.search,
-                  child: Row(
-                    children: [
-                      const Icon(Icons.search_outlined),
-                      const SizedBox(width: 12),
-                      Text(L10n.of(context).search),
-                    ],
-                  ),
+          itemBuilder: (BuildContext context) => [
+            if (widget.displayChatDetails)
+              PopupMenuItem<ChatPopupMenuActions>(
+                value: ChatPopupMenuActions.details,
+                child: Row(
+                  children: [
+                    const Icon(Icons.info_outline_rounded),
+                    const SizedBox(width: 12),
+                    Text(L10n.of(context).chatDetails),
+                  ],
                 ),
-                PopupMenuItem<ChatPopupMenuActions>(
-                  value: ChatPopupMenuActions.leave,
-                  child: Row(
-                    children: [
-                      const Icon(Icons.delete_outlined),
-                      const SizedBox(width: 12),
-                      Text(L10n.of(context).leave),
-                    ],
-                  ),
+              ),
+            if (widget.room.pushRuleState == PushRuleState.notify)
+              PopupMenuItem<ChatPopupMenuActions>(
+                value: ChatPopupMenuActions.mute,
+                child: Row(
+                  children: [
+                    const Icon(Icons.notifications_off_outlined),
+                    const SizedBox(width: 12),
+                    Text(L10n.of(context).muteChat),
+                  ],
                 ),
-              ],
+              )
+            else
+              PopupMenuItem<ChatPopupMenuActions>(
+                value: ChatPopupMenuActions.unmute,
+                child: Row(
+                  children: [
+                    const Icon(Icons.notifications_on_outlined),
+                    const SizedBox(width: 12),
+                    Text(L10n.of(context).unmuteChat),
+                  ],
+                ),
+              ),
+            PopupMenuItem<ChatPopupMenuActions>(
+              value: ChatPopupMenuActions.search,
+              child: Row(
+                children: [
+                  const Icon(Icons.search_outlined),
+                  const SizedBox(width: 12),
+                  Text(L10n.of(context).search),
+                ],
+              ),
+            ),
+            PopupMenuItem<ChatPopupMenuActions>(
+              value: ChatPopupMenuActions.leave,
+              child: Row(
+                children: [
+                  const Icon(Icons.delete_outlined),
+                  const SizedBox(width: 12),
+                  Text(L10n.of(context).leave),
+                ],
+              ),
+            ),
+          ],
         ),
       ],
     );

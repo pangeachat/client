@@ -36,10 +36,9 @@ Future<void> pLanguageDialog(
   if (userL2 != null && userL2.langCode != LanguageKeys.unknownLanguage) {
     selectedTargetLanguage = userL2;
   } else {
-    selectedTargetLanguage =
-        selectedSourceLanguage?.langCode != 'en'
-            ? PLanguageStore.byLangCode('en')!
-            : PLanguageStore.byLangCode('es')!;
+    selectedTargetLanguage = selectedSourceLanguage?.langCode != 'en'
+        ? PLanguageStore.byLangCode('en')!
+        : PLanguageStore.byLangCode('es')!;
   }
 
   return showDialog(
@@ -61,8 +60,8 @@ Future<void> pLanguageDialog(
                       title: L10n.of(context).whatIsYourBaseLanguage,
                     ),
                     PLanguageDropdown(
-                      onChange:
-                          (p0) => setState(() => selectedSourceLanguage = p0),
+                      onChange: (p0) =>
+                          setState(() => selectedSourceLanguage = p0),
                       initialLanguage:
                           selectedSourceLanguage ?? LanguageModel.unknown,
                       languages: pangeaController.pLanguageStore.baseOptions,
@@ -73,8 +72,8 @@ Future<void> pLanguageDialog(
                       title: L10n.of(context).whatLanguageYouWantToLearn,
                     ),
                     PLanguageDropdown(
-                      onChange:
-                          (p0) => setState(() => selectedTargetLanguage = p0),
+                      onChange: (p0) =>
+                          setState(() => selectedTargetLanguage = p0),
                       initialLanguage: selectedTargetLanguage,
                       languages: pangeaController.pLanguageStore.targetOptions,
                       isL2List: true,
@@ -95,36 +94,43 @@ Future<void> pLanguageDialog(
                     selectedSourceLanguage?.langCode !=
                             selectedTargetLanguage.langCode
                         ? showFutureLoadingDialog(
-                          context: context,
-                          future: () async {
-                            try {
-                              await pangeaController.userController
-                                  .updateProfile((profile) {
+                            context: context,
+                            future: () async {
+                              try {
+                                await pangeaController.userController
+                                    .updateProfile(
+                                  (profile) {
                                     profile.userSettings.sourceLanguage =
                                         selectedSourceLanguage?.langCode;
                                     profile.userSettings.targetLanguage =
                                         selectedTargetLanguage.langCode;
                                     return profile;
-                                  }, waitForDataInSync: true);
-                              Navigator.pop(context);
-                            } catch (err, s) {
-                              debugger(when: kDebugMode);
-                              ErrorHandler.logError(e: err, s: s, data: {});
-                              rethrow;
-                            } finally {
-                              callback();
-                            }
-                          },
-                        )
+                                  },
+                                  waitForDataInSync: true,
+                                );
+                                Navigator.pop(context);
+                              } catch (err, s) {
+                                debugger(when: kDebugMode);
+                                ErrorHandler.logError(
+                                  e: err,
+                                  s: s,
+                                  data: {},
+                                );
+                                rethrow;
+                              } finally {
+                                callback();
+                              }
+                            },
+                          )
                         : ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              L10n.of(context).noIdenticalLanguages,
+                            SnackBar(
+                              content: Text(
+                                L10n.of(context).noIdenticalLanguages,
+                              ),
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.primary,
                             ),
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                          ),
-                        );
+                          );
                   },
                   child: Text(L10n.of(context).saveChanges),
                 ),

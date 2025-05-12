@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 
-enum SpanChoiceType { bestCorrection, distractor, bestAnswer }
+enum SpanChoiceType {
+  bestCorrection,
+  distractor,
+  bestAnswer,
+}
 
 extension SpanChoiceExt on SpanChoiceType {
   String get name {

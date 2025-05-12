@@ -91,15 +91,12 @@ class BotFaceState extends State<BotFace> {
   Future<void> _loadRiveFile() async {
     if (!widget.useRive) return;
 
-    final riveFile = await RiveFile.asset(
-      'assets/pangea/bot_faces/pangea_bot.riv',
-    );
+    final riveFile =
+        await RiveFile.asset('assets/pangea/bot_faces/pangea_bot.riv');
 
     final artboard = riveFile.mainArtboard;
-    _controller = StateMachineController.fromArtboard(
-      artboard,
-      'BotIconStateMachine',
-    );
+    _controller =
+        StateMachineController.fromArtboard(artboard, 'BotIconStateMachine');
 
     if (_controller != null) {
       artboard.addController(_controller!);
@@ -121,15 +118,16 @@ class BotFaceState extends State<BotFace> {
     return SizedBox(
       width: widget.width,
       height: widget.width,
-      child:
-          _artboard != null
-              ? Rive(artboard: _artboard!, fit: BoxFit.cover)
-              : CachedNetworkImage(
-                imageUrl: svgURL,
-                placeholder:
-                    (context, url) => const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              ),
+      child: _artboard != null
+          ? Rive(
+              artboard: _artboard!,
+              fit: BoxFit.cover,
+            )
+          : CachedNetworkImage(
+              imageUrl: svgURL,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
     );
   }
 }

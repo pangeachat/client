@@ -13,7 +13,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class SignupPage extends StatefulWidget {
   final bool withEmail;
-  const SignupPage({this.withEmail = false, super.key});
+  const SignupPage({
+    this.withEmail = false,
+    super.key,
+  });
 
   @override
   SignupPageController createState() => SignupPageController();
@@ -117,9 +120,8 @@ class SignupPageController extends State<SignupPage> {
       return L10n.of(context).chooseAStrongPassword;
     }
     if (value.length < minPassLength) {
-      return L10n.of(
-        context,
-      ).pleaseChooseAtLeastChars(minPassLength.toString());
+      return L10n.of(context)
+          .pleaseChooseAtLeastChars(minPassLength.toString());
     }
     return null;
   }
@@ -174,12 +176,12 @@ class SignupPageController extends State<SignupPage> {
     if (email.isNotEmpty) {
       Matrix.of(context).currentClientSecret =
           DateTime.now().millisecondsSinceEpoch.toString();
-      Matrix.of(context).currentThreepidCreds = await client
-          .requestTokenToRegisterEmail(
-            Matrix.of(context).currentClientSecret,
-            email,
-            0,
-          );
+      Matrix.of(context).currentThreepidCreds =
+          await client.requestTokenToRegisterEmail(
+        Matrix.of(context).currentClientSecret,
+        email,
+        0,
+      );
     }
 
     final displayname = usernameController.text;
@@ -197,7 +199,10 @@ class SignupPageController extends State<SignupPage> {
     GoogleAnalytics.login("pangea", registerRes?.userId);
 
     if (displayname != localPart && client.userID != null) {
-      await client.setDisplayName(client.userID!, displayname);
+      await client.setDisplayName(
+        client.userID!,
+        displayname,
+      );
     }
   }
 

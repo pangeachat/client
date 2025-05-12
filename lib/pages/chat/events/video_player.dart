@@ -103,16 +103,18 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
 
       // #Pangea
       _stopVideoSubscription?.cancel();
-      _stopVideoSubscription = widget.chatController?.stopMediaStream.stream
-          .listen((_) {
-            _videoPlayerController?.pause();
-            _chewieController?.pause();
-          });
+      _stopVideoSubscription =
+          widget.chatController?.stopMediaStream.stream.listen((_) {
+        _videoPlayerController?.pause();
+        _chewieController?.pause();
+      });
       // Pangea#
     } on IOException catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text(e.toLocalizedString(context))));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(e.toLocalizedString(context)),
+        ),
+      );
     } catch (e, s) {
       ErrorReporter(context, 'Unable to play video').onErrorCallback(e, s);
     } finally {
@@ -143,10 +145,8 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
     final theme = Theme.of(context);
 
     final hasThumbnail = widget.event.hasThumbnail;
-    final blurHash =
-        (widget.event.infoMap as Map<String, dynamic>).tryGet<String>(
-          'xyz.amorgan.blurhash',
-        ) ??
+    final blurHash = (widget.event.infoMap as Map<String, dynamic>)
+            .tryGet<String>('xyz.amorgan.blurhash') ??
         fallbackBlurHash;
     final fileDescription = widget.event.fileDescription;
     final textColor = widget.textColor;
@@ -164,60 +164,60 @@ class EventVideoPlayerState extends State<EventVideoPlayer> {
           borderRadius: BorderRadius.circular(AppConfig.borderRadius),
           child: SizedBox(
             height: width,
-            child:
-                chewieController != null
-                    ? Center(child: Chewie(controller: chewieController))
-                    : Stack(
-                      children: [
-                        if (hasThumbnail)
-                          Center(
-                            child: ImageBubble(
-                              widget.event,
-                              tapToView: false,
-                              textColor: widget.textColor,
-                            ),
-                          )
-                        else
-                          BlurHash(
-                            blurhash: blurHash,
-                            width: width,
-                            height: width,
-                          ),
+            child: chewieController != null
+                ? Center(child: Chewie(controller: chewieController))
+                : Stack(
+                    children: [
+                      if (hasThumbnail)
                         Center(
-                          child: IconButton(
-                            style: IconButton.styleFrom(
-                              backgroundColor: theme.colorScheme.surface,
-                            ),
-                            icon:
-                                _isDownloading
-                                    ? const SizedBox(
-                                      width: 24,
-                                      height: 24,
-                                      child: CircularProgressIndicator.adaptive(
-                                        strokeWidth: 2,
-                                      ),
-                                    )
-                                    : _supportsVideoPlayer
-                                    ? const Icon(Icons.play_circle_outlined)
-                                    : const Icon(Icons.file_download_outlined),
-                            tooltip:
-                                _isDownloading
-                                    ? L10n.of(context).loadingPleaseWait
-                                    : L10n.of(context).videoWithSize(
-                                      widget.event.sizeString ?? '?MB',
-                                    ),
-                            onPressed: _isDownloading ? null : _downloadAction,
+                          child: ImageBubble(
+                            widget.event,
+                            tapToView: false,
+                            textColor: widget.textColor,
                           ),
+                        )
+                      else
+                        BlurHash(
+                          blurhash: blurHash,
+                          width: width,
+                          height: width,
                         ),
-                      ],
-                    ),
+                      Center(
+                        child: IconButton(
+                          style: IconButton.styleFrom(
+                            backgroundColor: theme.colorScheme.surface,
+                          ),
+                          icon: _isDownloading
+                              ? const SizedBox(
+                                  width: 24,
+                                  height: 24,
+                                  child: CircularProgressIndicator.adaptive(
+                                    strokeWidth: 2,
+                                  ),
+                                )
+                              : _supportsVideoPlayer
+                                  ? const Icon(Icons.play_circle_outlined)
+                                  : const Icon(Icons.file_download_outlined),
+                          tooltip: _isDownloading
+                              ? L10n.of(context).loadingPleaseWait
+                              : L10n.of(context).videoWithSize(
+                                  widget.event.sizeString ?? '?MB',
+                                ),
+                          onPressed: _isDownloading ? null : _downloadAction,
+                        ),
+                      ),
+                    ],
+                  ),
           ),
         ),
         if (fileDescription != null && textColor != null && linkColor != null)
           SizedBox(
             width: width,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
               child: Linkify(
                 text: fileDescription,
                 textScaleFactor: MediaQuery.textScalerOf(context).scale(1),

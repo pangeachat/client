@@ -9,7 +9,10 @@ class PIPView extends StatefulWidget {
   final double? floatingHeight;
   final bool avoidKeyboard;
 
-  final Widget Function(BuildContext context, bool isFloating) builder;
+  final Widget Function(
+    BuildContext context,
+    bool isFloating,
+  ) builder;
 
   const PIPView({
     super.key,
@@ -92,7 +95,10 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
   void _onPanUpdate(DragUpdateDetails details) {
     if (!_isDragging) return;
     setState(() {
-      _dragOffset = _dragOffset.translate(details.delta.dx, details.delta.dy);
+      _dragOffset = _dragOffset.translate(
+        details.delta.dx,
+        details.delta.dy,
+      );
     });
   }
 
@@ -165,10 +171,9 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
         // BoxFit.cover
         final widthRatio = floatingWidth / width;
         final heightRatio = floatingHeight / height;
-        final scaledDownScale =
-            widthRatio > heightRatio
-                ? floatingWidgetSize.width / fullWidgetSize.width
-                : floatingWidgetSize.height / fullWidgetSize.height;
+        final scaledDownScale = widthRatio > heightRatio
+            ? floatingWidgetSize.width / fullWidgetSize.width
+            : floatingWidgetSize.height / fullWidgetSize.height;
 
         return Stack(
           children: <Widget>[
@@ -178,7 +183,9 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
                 _dragAnimationController,
               ]),
               builder: (context, child) {
-                final animationCurve = CurveTween(curve: Curves.easeInOutQuad);
+                final animationCurve = CurveTween(
+                  curve: Curves.easeInOutQuad,
+                );
                 final dragAnimationValue = animationCurve.transform(
                   _dragAnimationController.value,
                 );
@@ -186,17 +193,16 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
                   _toggleFloatingAnimationController.value,
                 );
 
-                final floatingOffset =
-                    _isDragging
-                        ? _dragOffset
-                        : Tween<Offset>(
-                          begin: _dragOffset,
-                          end: calculatedOffset,
-                        ).transform(
-                          _dragAnimationController.isAnimating
-                              ? dragAnimationValue
-                              : toggleFloatingAnimationValue,
-                        );
+                final floatingOffset = _isDragging
+                    ? _dragOffset
+                    : Tween<Offset>(
+                        begin: _dragOffset,
+                        end: calculatedOffset,
+                      ).transform(
+                        _dragAnimationController.isAnimating
+                            ? dragAnimationValue
+                            : toggleFloatingAnimationValue,
+                      );
                 final borderRadius = Tween<double>(
                   begin: 0,
                   end: 10,
@@ -260,13 +266,21 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
   }
 }
 
-enum PIPViewCorner { topLeft, topRight, bottomLeft, bottomRight }
+enum PIPViewCorner {
+  topLeft,
+  topRight,
+  bottomLeft,
+  bottomRight,
+}
 
 class _CornerDistance {
   final PIPViewCorner corner;
   final double distance;
 
-  _CornerDistance({required this.corner, required this.distance});
+  _CornerDistance({
+    required this.corner,
+    required this.distance,
+  });
 }
 
 PIPViewCorner _calculateNearestCorner({
@@ -274,9 +288,16 @@ PIPViewCorner _calculateNearestCorner({
   required Map<PIPViewCorner, Offset> offsets,
 }) {
   _CornerDistance calculateDistance(PIPViewCorner corner) {
-    final distance =
-        offsets[corner]!.translate(-offset.dx, -offset.dy).distanceSquared;
-    return _CornerDistance(corner: corner, distance: distance);
+    final distance = offsets[corner]!
+        .translate(
+          -offset.dx,
+          -offset.dy,
+        )
+        .distanceSquared;
+    return _CornerDistance(
+      corner: corner,
+      distance: distance,
+    );
   }
 
   final distances = PIPViewCorner.values.map(calculateDistance).toList();

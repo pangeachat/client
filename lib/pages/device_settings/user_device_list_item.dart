@@ -9,7 +9,13 @@ import '../../utils/date_time_extension.dart';
 import '../../utils/matrix_sdk_extensions/device_extension.dart';
 import '../../widgets/matrix.dart';
 
-enum UserDeviceListItemAction { rename, remove, verify, block, unblock }
+enum UserDeviceListItemAction {
+  rename,
+  remove,
+  verify,
+  block,
+  unblock,
+}
 
 class UserDeviceListItem extends StatelessWidget {
   final Device userDevice;
@@ -32,10 +38,8 @@ class UserDeviceListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
-    final keys =
-        client
-            .userDeviceKeys[Matrix.of(context).client.userID]
-            ?.deviceKeys[userDevice.deviceId];
+    final keys = client.userDeviceKeys[Matrix.of(context).client.userID]
+        ?.deviceKeys[userDevice.deviceId];
     final isOwnDevice = userDevice.deviceId == client.deviceID;
 
     return Padding(
@@ -106,14 +110,13 @@ class UserDeviceListItem extends StatelessWidget {
           },
           leading: CircleAvatar(
             foregroundColor: Colors.white,
-            backgroundColor:
-                keys == null
-                    ? Colors.grey[700]
-                    : keys.blocked
+            backgroundColor: keys == null
+                ? Colors.grey[700]
+                : keys.blocked
                     ? Colors.red
                     : keys.verified
-                    ? Colors.green
-                    : Colors.orange,
+                        ? Colors.green
+                        : Colors.orange,
             child: Icon(userDevice.icon),
           ),
           title: Text(
@@ -123,30 +126,27 @@ class UserDeviceListItem extends StatelessWidget {
           ),
           subtitle: Text(
             L10n.of(context).lastActiveAgo(
-              DateTime.fromMillisecondsSinceEpoch(
-                userDevice.lastSeenTs ?? 0,
-              ).localizedTimeShort(context),
+              DateTime.fromMillisecondsSinceEpoch(userDevice.lastSeenTs ?? 0)
+                  .localizedTimeShort(context),
             ),
             style: const TextStyle(fontWeight: FontWeight.w300),
           ),
-          trailing:
-              keys == null
-                  ? null
-                  : Text(
-                    keys.blocked
-                        ? L10n.of(context).blocked
+          trailing: keys == null
+              ? null
+              : Text(
+                  keys.blocked
+                      ? L10n.of(context).blocked
+                      : keys.verified
+                          ? L10n.of(context).verified
+                          : L10n.of(context).unverified,
+                  style: TextStyle(
+                    color: keys.blocked
+                        ? Colors.red
                         : keys.verified
-                        ? L10n.of(context).verified
-                        : L10n.of(context).unverified,
-                    style: TextStyle(
-                      color:
-                          keys.blocked
-                              ? Colors.red
-                              : keys.verified
-                              ? Colors.green
-                              : Colors.orange,
-                    ),
+                            ? Colors.green
+                            : Colors.orange,
                   ),
+                ),
         ),
       ),
     );

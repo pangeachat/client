@@ -45,40 +45,40 @@ class _ImportEmoteArchiveDialogState extends State<ImportEmoteArchiveDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(L10n.of(context).importEmojis),
-      content:
-          _loading
-              ? Center(child: CircularProgressIndicator(value: _progress))
-              : SingleChildScrollView(
-                child: Wrap(
-                  alignment: WrapAlignment.spaceEvenly,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  runSpacing: 8,
-                  spacing: 8,
-                  children:
-                      _importMap.entries
-                          .map(
-                            (e) => _EmojiImportPreview(
-                              key: ValueKey(e.key.name),
-                              entry: e,
-                              onNameChanged: (name) => _importMap[e.key] = name,
-                              onRemove:
-                                  () =>
-                                      setState(() => _importMap.remove(e.key)),
-                            ),
-                          )
-                          .toList(),
-                ),
+      content: _loading
+          ? Center(
+              child: CircularProgressIndicator(
+                value: _progress,
               ),
+            )
+          : SingleChildScrollView(
+              child: Wrap(
+                alignment: WrapAlignment.spaceEvenly,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                runSpacing: 8,
+                spacing: 8,
+                children: _importMap.entries
+                    .map(
+                      (e) => _EmojiImportPreview(
+                        key: ValueKey(e.key.name),
+                        entry: e,
+                        onNameChanged: (name) => _importMap[e.key] = name,
+                        onRemove: () =>
+                            setState(() => _importMap.remove(e.key)),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
       actions: [
         TextButton(
           onPressed: _loading ? null : Navigator.of(context).pop,
           child: Text(L10n.of(context).cancel),
         ),
         TextButton(
-          onPressed:
-              _loading
-                  ? null
-                  : _importMap.isNotEmpty
+          onPressed: _loading
+              ? null
+              : _importMap.isNotEmpty
                   ? _addEmotePack
                   : null,
           child: Text(L10n.of(context).importNow),
@@ -91,8 +91,12 @@ class _ImportEmoteArchiveDialogState extends State<ImportEmoteArchiveDialog> {
     _importMap = Map.fromEntries(
       widget.archive.files
           .where((e) => e.isFile)
-          .map((e) => MapEntry(e, e.name.emoteNameFromPath))
-          .sorted((a, b) => a.value.compareTo(b.value)),
+          .map(
+            (e) => MapEntry(e, e.name.emoteNameFromPath),
+          )
+          .sorted(
+            (a, b) => a.value.compareTo(b.value),
+          ),
     );
   }
 
@@ -144,7 +148,10 @@ class _ImportEmoteArchiveDialogState extends State<ImportEmoteArchiveDialog> {
       final imageCode = entry.value;
 
       try {
-        var mxcFile = MatrixImageFile(bytes: file.content, name: file.name);
+        var mxcFile = MatrixImageFile(
+          bytes: file.content,
+          name: file.name,
+        );
 
         final thumbnail = (await mxcFile.generateThumbnail(
           nativeImplementations: ClientManager.nativeImplementations,
@@ -155,12 +162,14 @@ class _ImportEmoteArchiveDialogState extends State<ImportEmoteArchiveDialog> {
           mxcFile = thumbnail;
         }
         final uri = await Matrix.of(context).client.uploadContent(
-          mxcFile.bytes,
-          filename: mxcFile.name,
-          contentType: mxcFile.mimeType,
-        );
+              mxcFile.bytes,
+              filename: mxcFile.name,
+              contentType: mxcFile.mimeType,
+            );
 
-        final info = <String, dynamic>{...mxcFile.info};
+        final info = <String, dynamic>{
+          ...mxcFile.info,
+        };
 
         // normalize width / height to 256, required for stickers
         if (info['w'] is int && info['h'] is int) {
@@ -173,12 +182,11 @@ class _ImportEmoteArchiveDialogState extends State<ImportEmoteArchiveDialog> {
             info['w'] = (ratio * 256.0).round();
           }
         }
-        widget
-            .controller
-            .pack!
-            .images[imageCode] = ImagePackImageContent.fromJson(
-          <String, dynamic>{'url': uri.toString(), 'info': info},
-        );
+        widget.controller.pack!.images[imageCode] =
+            ImagePackImageContent.fromJson(<String, dynamic>{
+          'url': uri.toString(),
+          'info': info,
+        });
         successfulUploads.add(file.name);
       } catch (e) {
         Logs().d('Could not upload emote $imageCode');
@@ -196,9 +204,8 @@ class _ImportEmoteArchiveDialogState extends State<ImportEmoteArchiveDialog> {
     // in case we have unhandled / duplicated emotes left, don't pop
     if (mounted) setState(() {});
     if (_importMap.isEmpty) {
-      WidgetsBinding.instance.addPostFrameCallback(
-        (_) => Navigator.of(context).pop(),
-      );
+      WidgetsBinding.instance
+          .addPostFrameCallback((_) => Navigator.of(context).pop());
     }
   }
 }
@@ -252,11 +259,12 @@ class _EmojiImportPreviewState extends State<_EmojiImportPreview> {
                   height: 64,
                   width: 64,
                   errorBuilder: (context, e, s) {
-                    WidgetsBinding.instance.addPostFrameCallback(
-                      (_) => _setRenderError(),
-                    );
+                    WidgetsBinding.instance
+                        .addPostFrameCallback((_) => _setRenderError());
 
-                    return _ImageFileError(name: widget.entry.key.name);
+                    return _ImageFileError(
+                      name: widget.entry.key.name,
+                    );
                   },
                 ),
                 SizedBox(
@@ -339,7 +347,8 @@ extension on String {
   /// Used to compute emote name proposal based on file name
   String get emoteNameFromPath {
     // ... removing leading path
-    return split(RegExp(r'[/\\]')).last
+    return split(RegExp(r'[/\\]'))
+        .last
         // ... removing file extension
         .split('.')
         .first

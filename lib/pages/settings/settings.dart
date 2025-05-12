@@ -26,9 +26,9 @@ class SettingsController extends State<Settings> {
   bool profileUpdated = false;
 
   void updateProfile() => setState(() {
-    profileUpdated = true;
-    profileFuture = null;
-  });
+        profileUpdated = true;
+        profileFuture = null;
+      });
 
   void setDisplaynameAction() async {
     final profile = await profileFuture;
@@ -99,15 +99,14 @@ class SettingsController extends State<Settings> {
           icon: const Icon(Icons.delete_outlined),
         ),
     ];
-    final action =
-        actions.length == 1
-            ? actions.single.value
-            : await showModalActionPopup<AvatarAction>(
-              context: context,
-              title: L10n.of(context).changeYourAvatar,
-              cancelLabel: L10n.of(context).cancel,
-              actions: actions,
-            );
+    final action = actions.length == 1
+        ? actions.single.value
+        : await showModalActionPopup<AvatarAction>(
+            context: context,
+            title: L10n.of(context).changeYourAvatar,
+            cancelLabel: L10n.of(context).cancel,
+            actions: actions,
+          );
     if (action == null) return;
     final matrix = Matrix.of(context);
     if (action == AvatarAction.remove) {
@@ -123,16 +122,21 @@ class SettingsController extends State<Settings> {
     MatrixFile file;
     if (PlatformInfos.isMobile) {
       final result = await ImagePicker().pickImage(
-        source:
-            action == AvatarAction.camera
-                ? ImageSource.camera
-                : ImageSource.gallery,
+        source: action == AvatarAction.camera
+            ? ImageSource.camera
+            : ImageSource.gallery,
         imageQuality: 50,
       );
       if (result == null) return;
-      file = MatrixFile(bytes: await result.readAsBytes(), name: result.path);
+      file = MatrixFile(
+        bytes: await result.readAsBytes(),
+        name: result.path,
+      );
     } else {
-      final result = await selectFiles(context, type: FileSelectorType.images);
+      final result = await selectFiles(
+        context,
+        type: FileSelectorType.images,
+      );
       final pickedFile = result.firstOrNull;
       if (pickedFile == null) return;
       file = MatrixFile(
@@ -174,8 +178,8 @@ class SettingsController extends State<Settings> {
         await client.encryption?.crossSigning.isCached() ?? false;
     final needsBootstrap =
         await client.encryption?.keyManager.isCached() == false ||
-        client.encryption?.crossSigning.enabled == false ||
-        crossSigning == false;
+            client.encryption?.crossSigning.enabled == false ||
+            crossSigning == false;
     final isUnknownSession = client.isUnknownSession;
     setState(() {
       showChatBackupBanner = needsBootstrap || isUnknownSession;
@@ -206,7 +210,9 @@ class SettingsController extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
-    profileFuture ??= client.getProfileFromUserId(client.userID!);
+    profileFuture ??= client.getProfileFromUserId(
+      client.userID!,
+    );
     return SettingsView(this);
   }
 }

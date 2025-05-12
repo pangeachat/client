@@ -32,42 +32,39 @@ class MaxWidthBody extends StatelessWidget {
           final theme = Theme.of(context);
 
           const desiredWidth = FluffyThemes.columnWidth * 1.5;
-          final body =
-              constraints.maxWidth <= desiredWidth
-                  ? child
-                  : Container(
-                    alignment: Alignment.topCenter,
-                    // #Pangea
-                    // padding: const EdgeInsets.all(32),
-                    padding: padding ?? const EdgeInsets.all(32),
-                    // Pangea#
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        maxWidth: FluffyThemes.columnWidth * 1.5,
+          final body = constraints.maxWidth <= desiredWidth
+              ? child
+              : Container(
+                  alignment: Alignment.topCenter,
+                  // #Pangea
+                  // padding: const EdgeInsets.all(32),
+                  padding: padding ?? const EdgeInsets.all(32),
+                  // Pangea#
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: FluffyThemes.columnWidth * 1.5,
+                    ),
+                    child: Material(
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(AppConfig.borderRadius),
+                        side: BorderSide(
+                          // #Pangea
+                          // color: theme.dividerColor,
+                          color: showBorder
+                              ? theme.dividerColor
+                              : Colors.transparent,
+                          // Pangea#
+                        ),
                       ),
-                      child: Material(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            AppConfig.borderRadius,
-                          ),
-                          side: BorderSide(
-                            // #Pangea
-                            // color: theme.dividerColor,
-                            color:
-                                showBorder
-                                    ? theme.dividerColor
-                                    : Colors.transparent,
-                            // Pangea#
-                          ),
-                        ),
-                        clipBehavior: Clip.hardEdge,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: child,
-                        ),
+                      clipBehavior: Clip.hardEdge,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: child,
                       ),
                     ),
-                  );
+                  ),
+                );
           if (!withScrolling) return body;
 
           return SingleChildScrollView(

@@ -114,7 +114,13 @@ class WordDataCardController extends State<WordDataCard> {
       GoogleAnalytics.contextualRequest();
     } catch (err, stack) {
       debugger(when: kDebugMode);
-      ErrorHandler.logError(e: err, s: stack, data: {"request": req?.toJson()});
+      ErrorHandler.logError(
+        e: err,
+        s: stack,
+        data: {
+          "request": req?.toJson(),
+        },
+      );
       definitionError = Exception("Error getting definition");
     } finally {
       if (mounted) setState(() => isLoadingContextualDefinition = false);
@@ -157,7 +163,10 @@ class WordDataCardController extends State<WordDataCard> {
 }
 
 class WordDataCardView extends StatelessWidget {
-  const WordDataCardView({super.key, required this.controller});
+  const WordDataCardView({
+    super.key,
+    required this.controller,
+  });
 
   final WordDataCardController controller;
 
@@ -281,24 +290,24 @@ class WordNetInfo extends StatelessWidget {
   }
 }
 
-enum LanguageType { target, base }
+enum LanguageType {
+  target,
+  base,
+}
 
 class SensesForLanguage extends StatelessWidget {
-  String get exampleSentence =>
-      languageType == LanguageType.target
-          ? wordData.targetExampleSentence
-          : wordData.baseExampleSentence;
+  String get exampleSentence => languageType == LanguageType.target
+      ? wordData.targetExampleSentence
+      : wordData.baseExampleSentence;
 
-  String get definition =>
-      languageType == LanguageType.target
-          ? wordData.targetDefinition
-          : wordData.baseDefinition;
+  String get definition => languageType == LanguageType.target
+      ? wordData.targetDefinition
+      : wordData.baseDefinition;
 
   String formattedTitle(BuildContext context) {
-    final String word =
-        languageType == LanguageType.target
-            ? wordData.targetWord
-            : wordData.baseWord;
+    final String word = languageType == LanguageType.target
+        ? wordData.targetWord
+        : wordData.baseWord;
     String? pos = wordData.formattedPartOfSpeech(languageType);
     if (pos == null || pos.isEmpty) pos = L10n.of(context).unkDisplayName;
     return "$word (${wordData.formattedPartOfSpeech(languageType)})";
@@ -336,7 +345,11 @@ class SensesForLanguage extends StatelessWidget {
               if (definition.isNotEmpty)
                 RichText(
                   text: TextSpan(
-                    style: BotStyle.text(context, italics: false, bold: false),
+                    style: BotStyle.text(
+                      context,
+                      italics: false,
+                      bold: false,
+                    ),
                     children: <TextSpan>[
                       TextSpan(
                         text: "${L10n.of(context).definition}: ",
@@ -350,11 +363,17 @@ class SensesForLanguage extends StatelessWidget {
               if (exampleSentence.isNotEmpty)
                 RichText(
                   text: TextSpan(
-                    style: BotStyle.text(context, italics: false, bold: false),
+                    style: BotStyle.text(
+                      context,
+                      italics: false,
+                      bold: false,
+                    ),
                     children: <TextSpan>[
                       TextSpan(
                         text: "${L10n.of(context).exampleSentence}: ",
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       TextSpan(text: exampleSentence),
                     ],

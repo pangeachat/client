@@ -6,7 +6,10 @@ import 'package:fluffychat/pangea/analytics_summary/progress_bar/progress_bar_de
 class ProgressBarBackground extends StatelessWidget {
   final ProgressBarDetails details;
 
-  const ProgressBarBackground({super.key, required this.details});
+  const ProgressBarBackground({
+    super.key,
+    required this.details,
+  });
 
   @override
   Widget build(BuildContext context) {

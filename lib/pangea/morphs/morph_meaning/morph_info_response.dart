@@ -20,7 +20,11 @@ class MorphologicalTag {
   }
 
   Map<String, dynamic> toJson() {
-    return {'code': code, 'l1_title': l1Title, 'l1_description': l1Description};
+    return {
+      'code': code,
+      'l1_title': l1Title,
+      'l1_description': l1Description,
+    };
   }
 }
 
@@ -75,10 +79,9 @@ class MorphInfoResponse {
 
   factory MorphInfoResponse.fromJson(Map<String, dynamic> json) {
     final featuresFromJson = json['features'] as List;
-    final List<MorphologicalFeature> featuresList =
-        featuresFromJson
-            .map((feature) => MorphologicalFeature.fromJson(feature))
-            .toList();
+    final List<MorphologicalFeature> featuresList = featuresFromJson
+        .map((feature) => MorphologicalFeature.fromJson(feature))
+        .toList();
 
     return MorphInfoResponse(
       userL1: json['user_l1'],
@@ -128,17 +131,17 @@ class MorphInfoResponse {
     }
 
     final tagIndex = features[featureIndex].tags.indexWhere(
-      (tag) => tag.code.toLowerCase() == morphTag.toLowerCase(),
-    );
+          (tag) => tag.code.toLowerCase() == morphTag.toLowerCase(),
+        );
 
     if (tagIndex == -1) {
       features[featureIndex].tags.add(
-        MorphologicalTag(
-          code: morphTag,
-          l1Title: morphTag,
-          l1Description: defintion,
-        ),
-      );
+            MorphologicalTag(
+              code: morphTag,
+              l1Title: morphTag,
+              l1Description: defintion,
+            ),
+          );
       return;
     }
 

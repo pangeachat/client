@@ -123,34 +123,35 @@ class NewGroupController extends State<NewGroup> {
   Future<void> _createGroup() async {
     if (!mounted) return;
     final roomId = await Matrix.of(context).client.createGroupChat(
-      // #Pangea
-      // visibility:
-      //     groupCanBeFound ? sdk.Visibility.public : sdk.Visibility.private,
-      // preset: publicGroup
-      //     ? sdk.CreateRoomPreset.publicChat
-      //     : sdk.CreateRoomPreset.privateChat,
-      preset: sdk.CreateRoomPreset.publicChat,
-      visibility: sdk.Visibility.private,
-      // Pangea#
-      groupName: nameController.text.isNotEmpty ? nameController.text : null,
-      initialState: [
-        if (avatar != null)
-          sdk.StateEvent(
-            type: sdk.EventTypes.RoomAvatar,
-            content: {'url': avatarUrl.toString()},
-          ),
-        // #Pangea
-        StateEvent(
-          type: EventTypes.RoomPowerLevels,
-          stateKey: '',
-          content: defaultPowerLevels(Matrix.of(context).client.userID!),
-        ),
-        // Pangea#
-      ],
-      // #Pangea
-      enableEncryption: false,
-      // Pangea#
-    );
+          // #Pangea
+          // visibility:
+          //     groupCanBeFound ? sdk.Visibility.public : sdk.Visibility.private,
+          // preset: publicGroup
+          //     ? sdk.CreateRoomPreset.publicChat
+          //     : sdk.CreateRoomPreset.privateChat,
+          preset: sdk.CreateRoomPreset.publicChat,
+          visibility: sdk.Visibility.private,
+          // Pangea#
+          groupName:
+              nameController.text.isNotEmpty ? nameController.text : null,
+          initialState: [
+            if (avatar != null)
+              sdk.StateEvent(
+                type: sdk.EventTypes.RoomAvatar,
+                content: {'url': avatarUrl.toString()},
+              ),
+            // #Pangea
+            StateEvent(
+              type: EventTypes.RoomPowerLevels,
+              stateKey: '',
+              content: defaultPowerLevels(Matrix.of(context).client.userID!),
+            ),
+            // Pangea#
+          ],
+          // #Pangea
+          enableEncryption: false,
+          // Pangea#
+        );
     if (!mounted) return;
     // #Pangea
     final client = Matrix.of(context).client;
@@ -200,33 +201,33 @@ class NewGroupController extends State<NewGroup> {
     final joinCode = await SpaceCodeUtil.generateSpaceCode(client);
     // Pangea#
     final spaceId = await Matrix.of(context).client.createRoom(
-      // #Pangea
-      // preset: publicGroup
-      //     ? sdk.CreateRoomPreset.publicChat
-      //     : sdk.CreateRoomPreset.privateChat,
-      // Pangea#
-      creationContent: {'type': RoomCreationTypes.mSpace},
-      // #Pangea
-      // visibility: publicGroup ? sdk.Visibility.public : null,
-      visibility:
-          groupCanBeFound ? sdk.Visibility.public : sdk.Visibility.private,
-      // roomAliasName: publicGroup
-      //     ? nameController.text.trim().toLowerCase().replaceAll(' ', '_')
-      //     : null,
-      // Pangea#
-      name: nameController.text.trim(),
-      powerLevelContentOverride: {'events_default': 100},
-      initialState: [
-        // #Pangea
-        ..._spaceInitialState(joinCode),
-        // Pangea#
-        if (avatar != null)
-          sdk.StateEvent(
-            type: sdk.EventTypes.RoomAvatar,
-            content: {'url': avatarUrl.toString()},
-          ),
-      ],
-    );
+          // #Pangea
+          // preset: publicGroup
+          //     ? sdk.CreateRoomPreset.publicChat
+          //     : sdk.CreateRoomPreset.privateChat,
+          // Pangea#
+          creationContent: {'type': RoomCreationTypes.mSpace},
+          // #Pangea
+          // visibility: publicGroup ? sdk.Visibility.public : null,
+          visibility:
+              groupCanBeFound ? sdk.Visibility.public : sdk.Visibility.private,
+          // roomAliasName: publicGroup
+          //     ? nameController.text.trim().toLowerCase().replaceAll(' ', '_')
+          //     : null,
+          // Pangea#
+          name: nameController.text.trim(),
+          powerLevelContentOverride: {'events_default': 100},
+          initialState: [
+            // #Pangea
+            ..._spaceInitialState(joinCode),
+            // Pangea#
+            if (avatar != null)
+              sdk.StateEvent(
+                type: sdk.EventTypes.RoomAvatar,
+                content: {'url': avatarUrl.toString()},
+              ),
+          ],
+        );
     if (!mounted) return;
     // #Pangea
     Room? room = client.getRoomById(spaceId);
@@ -252,7 +253,9 @@ class NewGroupController extends State<NewGroup> {
         type: EventTypes.RoomPowerLevels,
         stateKey: '',
         content: {
-          'events': {EventTypes.SpaceChild: 0},
+          'events': {
+            EventTypes.SpaceChild: 0,
+          },
           'users_default': 0,
           'users': {
             Matrix.of(context).client.userID: SpaceConstants.powerLevelOfAdmin,
@@ -262,13 +265,9 @@ class NewGroupController extends State<NewGroup> {
       StateEvent(
         type: sdk.EventTypes.RoomJoinRules,
         content: {
-          ModelKey.joinRule:
-              requiredCodeToJoin
-                  ? sdk.JoinRules.knock.toString().replaceAll('JoinRules.', '')
-                  : sdk.JoinRules.public.toString().replaceAll(
-                    'JoinRules.',
-                    '',
-                  ),
+          ModelKey.joinRule: requiredCodeToJoin
+              ? sdk.JoinRules.knock.toString().replaceAll('JoinRules.', '')
+              : sdk.JoinRules.public.toString().replaceAll('JoinRules.', ''),
           ModelKey.accessCode: joinCode,
         },
       ),
@@ -308,14 +307,18 @@ class NewGroupController extends State<NewGroup> {
           // #Pangea
           // await _createGroup();
           await _createGroup().timeout(
-            const Duration(seconds: AppConfig.roomCreationTimeoutSeconds),
+            const Duration(
+              seconds: AppConfig.roomCreationTimeoutSeconds,
+            ),
           );
         // Pangea#
         case CreateGroupType.space:
           // #Pangea
           // await _createSpace();
           await _createSpace().timeout(
-            const Duration(seconds: AppConfig.roomCreationTimeoutSeconds),
+            const Duration(
+              seconds: AppConfig.roomCreationTimeoutSeconds,
+            ),
           );
         // Pangea#
       }

@@ -58,10 +58,9 @@ class LemmaWidgetState extends State<LemmaWidget> {
 
   Future<void> _editLemma() async {
     try {
-      final existingTokens =
-          widget.pangeaMessageEvent.originalSent!.tokens!
-              .map((token) => PangeaToken.fromJson(token.toJson()))
-              .toList();
+      final existingTokens = widget.pangeaMessageEvent.originalSent!.tokens!
+          .map((token) => PangeaToken.fromJson(token.toJson()))
+          .toList();
 
       // change the morphological tag in the selected token
       final tokenIndex = existingTokens.indexWhere(
@@ -82,21 +81,22 @@ class LemmaWidgetState extends State<LemmaWidget> {
           tokens: existingTokens,
           detections: widget.pangeaMessageEvent.originalSent!.detections,
         ),
-        tokensWritten:
-            widget.pangeaMessageEvent.originalWritten?.tokens != null
-                ? PangeaMessageTokens(
-                  tokens: widget.pangeaMessageEvent.originalWritten!.tokens!,
-                  detections:
-                      widget.pangeaMessageEvent.originalWritten?.detections,
-                )
-                : null,
+        tokensWritten: widget.pangeaMessageEvent.originalWritten?.tokens != null
+            ? PangeaMessageTokens(
+                tokens: widget.pangeaMessageEvent.originalWritten!.tokens!,
+                detections:
+                    widget.pangeaMessageEvent.originalWritten?.detections,
+              )
+            : null,
         choreo: widget.pangeaMessageEvent.originalSent?.choreo,
         messageTag: ModelKey.messageTagLemmaEdit,
       );
 
       _toggleEditMode(false);
     } catch (e) {
-      SnackBar(content: Text(L10n.of(context).oopsSomethingWentWrong));
+      SnackBar(
+        content: Text(L10n.of(context).oopsSomethingWentWrong),
+      );
       ErrorHandler.logError(
         e: e,
         data: {
@@ -123,7 +123,11 @@ class LemmaWidgetState extends State<LemmaWidget> {
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontStyle: FontStyle.italic),
               ),
-              TextField(minLines: 1, maxLines: 3, controller: _controller),
+              TextField(
+                minLines: 1,
+                maxLines: 3,
+                controller: _controller,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -142,9 +146,9 @@ class LemmaWidgetState extends State<LemmaWidget> {
                     onPressed: () {
                       _controller.text != widget.token.lemma.text
                           ? showFutureLoadingDialog(
-                            context: context,
-                            future: () async => _editLemma(),
-                          )
+                              context: context,
+                              future: () async => _editLemma(),
+                            )
                           : null;
                     },
                     style: ElevatedButton.styleFrom(

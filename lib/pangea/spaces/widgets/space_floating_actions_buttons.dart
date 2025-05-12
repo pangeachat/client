@@ -19,12 +19,18 @@ class SpaceFloatingActionButtons extends StatelessWidget {
           FloatingActionButton.extended(
             onPressed: () => SpaceCodeUtil.joinWithSpaceCodeDialog(context),
             icon: const Icon(Icons.join_right_outlined),
-            label: Text(L10n.of(context).join, overflow: TextOverflow.fade),
+            label: Text(
+              L10n.of(context).join,
+              overflow: TextOverflow.fade,
+            ),
           ),
           FloatingActionButton.extended(
             onPressed: () => context.go('/rooms/newspace'),
             icon: const Icon(Icons.add),
-            label: Text(L10n.of(context).space, overflow: TextOverflow.fade),
+            label: Text(
+              L10n.of(context).space,
+              overflow: TextOverflow.fade,
+            ),
           ),
         ],
       ),

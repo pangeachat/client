@@ -90,46 +90,44 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
       children: [
         DropdownButtonFormField2<LanguageModel>(
           enableFeedback: widget.enabled,
-          customButton:
-              widget.initialLanguage != null &&
-                      sortedLanguages.contains(widget.initialLanguage)
-                  ? LanguageDropDownEntry(
-                    languageModel: widget.initialLanguage!,
-                    isL2List: widget.isL2List,
-                    isDropdown: true,
-                    enabled: widget.enabled,
-                  )
-                  : null,
-          menuItemStyleData: const MenuItemStyleData(padding: EdgeInsets.zero),
+          customButton: widget.initialLanguage != null &&
+                  sortedLanguages.contains(widget.initialLanguage)
+              ? LanguageDropDownEntry(
+                  languageModel: widget.initialLanguage!,
+                  isL2List: widget.isL2List,
+                  isDropdown: true,
+                  enabled: widget.enabled,
+                )
+              : null,
+          menuItemStyleData: const MenuItemStyleData(
+            padding: EdgeInsets.zero,
+          ),
           decoration: InputDecoration(
             labelText: widget.decorationText,
-            enabledBorder:
-                hasError
-                    ? OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.error,
-                      ),
-                    )
-                    : null,
-            focusedBorder:
-                hasError
-                    ? OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(14),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.error,
-                        width: 2,
-                      ),
-                    )
-                    : null,
+            enabledBorder: hasError
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                  )
+                : null,
+            focusedBorder: hasError
+                ? OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 2,
+                    ),
+                  )
+                : null,
           ),
           isExpanded: true,
           dropdownStyleData: DropdownStyleData(
             maxHeight: kIsWeb ? 500 : null,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(14),
-              color:
-                  widget.backgroundColor ??
+              color: widget.backgroundColor ??
                   Theme.of(context).colorScheme.surfaceContainerHigh,
             ),
           ),
@@ -147,10 +145,9 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
               (languageModel) => DropdownMenuItem(
                 value: languageModel,
                 child: Container(
-                  color:
-                      widget.initialLanguage == languageModel
-                          ? Theme.of(context).colorScheme.primary.withAlpha(20)
-                          : Colors.transparent,
+                  color: widget.initialLanguage == languageModel
+                      ? Theme.of(context).colorScheme.primary.withAlpha(20)
+                      : Colors.transparent,
                   padding: const EdgeInsets.symmetric(
                     vertical: 8,
                     horizontal: 12,
@@ -194,22 +191,21 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
         ),
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child:
-              widget.error == null
-                  ? const SizedBox.shrink()
-                  : Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 5,
-                    ),
-                    child: Text(
-                      widget.error!,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
-                        fontSize: 12,
-                      ),
+          child: widget.error == null
+              ? const SizedBox.shrink()
+              : Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 5,
+                  ),
+                  child: Text(
+                    widget.error!,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                      fontSize: 12,
                     ),
                   ),
+                ),
         ),
       ],
     );
@@ -236,7 +232,9 @@ class LanguageDropDownEntry extends StatelessWidget {
       children: [
         Opacity(
           opacity: enabled ? 1 : 0.5,
-          child: LanguageFlag(language: languageModel),
+          child: LanguageFlag(
+            language: languageModel,
+          ),
         ),
         const SizedBox(width: 10),
         Expanded(
@@ -245,10 +243,9 @@ class LanguageDropDownEntry extends StatelessWidget {
               Text(
                 languageModel.getDisplayName(context) ?? "",
                 style: const TextStyle().copyWith(
-                  color:
-                      enabled
-                          ? Theme.of(context).textTheme.bodyLarge!.color
-                          : Theme.of(context).disabledColor,
+                  color: enabled
+                      ? Theme.of(context).textTheme.bodyLarge!.color
+                      : Theme.of(context).disabledColor,
                   fontSize: 14,
                 ),
                 overflow: TextOverflow.ellipsis,

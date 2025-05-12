@@ -62,12 +62,10 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
     if (widget.initialSelectedChoice != null) {
       currentRecordModel?.addResponse(
         target: widget.currentActivity.practiceTarget,
-        cId:
-            widget.currentActivity.morphFeature == null
-                ? widget.currentActivity.targetTokens.first.vocabConstructID
-                : widget.currentActivity.targetTokens.first.morphIdByFeature(
-                  widget.currentActivity.morphFeature!,
-                )!,
+        cId: widget.currentActivity.morphFeature == null
+            ? widget.currentActivity.targetTokens.first.vocabConstructID
+            : widget.currentActivity.targetTokens.first
+                .morphIdByFeature(widget.currentActivity.morphFeature!)!,
         text: widget.initialSelectedChoice,
         score: 1,
       );
@@ -86,8 +84,8 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
       widget.overlayController.widget.chatController.choreographer.tts;
 
   void updateChoice(String value, int index) {
-    final bool isCorrect = widget.currentActivity.multipleChoiceContent!
-        .isCorrect(value, index);
+    final bool isCorrect =
+        widget.currentActivity.multipleChoiceContent!.isCorrect(value, index);
 
     if (currentRecordModel?.hasTextResponse(value) ?? false) {
       return;
@@ -99,12 +97,10 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
 
     currentRecordModel?.addResponse(
       target: widget.currentActivity.practiceTarget,
-      cId:
-          widget.currentActivity.morphFeature == null
-              ? widget.currentActivity.targetTokens.first.vocabConstructID
-              : widget.currentActivity.targetTokens.first.morphIdByFeature(
-                widget.currentActivity.morphFeature!,
-              )!,
+      cId: widget.currentActivity.morphFeature == null
+          ? widget.currentActivity.targetTokens.first.vocabConstructID
+          : widget.currentActivity.targetTokens.first
+              .morphIdByFeature(widget.currentActivity.morphFeature!)!,
       text: value,
       score: isCorrect ? 1 : 0,
     );
@@ -152,20 +148,17 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
 
       // The next entry in the analytics stream should be from the above putAnalytics.setState.
       // So we can wait for the stream to update before calling onActivityFinish.
-      final streamFuture =
-          MatrixState
-              .pangeaController
-              .getAnalytics
-              .analyticsStream
-              .stream
-              .first;
+      final streamFuture = MatrixState
+          .pangeaController.getAnalytics.analyticsStream.stream.first;
       streamFuture.then((_) {
         widget.practiceCardController.onActivityFinish();
       });
     }
 
     if (mounted) {
-      setState(() => selectedChoiceIndex = index);
+      setState(
+        () => selectedChoiceIndex = index,
+      );
     }
   }
 
@@ -174,12 +167,17 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
     final List<Choice> choices = [];
     for (int i = 0; i < activity!.choices.length; i++) {
       final String value = activity.choices[i];
-      final color =
-          currentRecordModel?.hasTextResponse(value) ?? false
-              ? activity.choiceColor(i)
-              : null;
+      final color = currentRecordModel?.hasTextResponse(value) ?? false
+          ? activity.choiceColor(i)
+          : null;
       final isGold = activity.isCorrect(value, i);
-      choices.add(Choice(text: value, color: color, isGold: isGold));
+      choices.add(
+        Choice(
+          text: value,
+          color: color,
+          isGold: isGold,
+        ),
+      );
     }
     return choices;
   }
@@ -188,12 +186,8 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
     if (widget.currentActivity.activityType != ActivityTypeEnum.morphId) {
       return value;
     }
-    final morphFeature =
-        widget
-            .practiceCardController
-            .widget
-            .targetTokensAndActivityType
-            .morphFeature;
+    final morphFeature = widget
+        .practiceCardController.widget.targetTokensAndActivityType.morphFeature;
     if (morphFeature == null) return value;
 
     return getGrammarCopy(
@@ -237,11 +231,8 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
           WordAudioButton(
             text: practiceActivity.multipleChoiceContent!.answers.first,
             uniqueID: "audio-activity-${widget.event.eventId}",
-            langCode:
-                widget
-                    .overlayController
-                    .pangeaMessageEvent
-                    ?.messageDisplayLangCode,
+            langCode: widget
+                .overlayController.pangeaMessageEvent?.messageDisplayLangCode,
           ),
         if (practiceActivity.activityType ==
             ActivityTypeEnum.hiddenWordListening)
@@ -278,7 +269,10 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
         maxHeight: AppConfig.toolbarMaxHeight,
       ),
       child: SingleChildScrollView(
-        child: Padding(padding: const EdgeInsets.all(8), child: content),
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: content,
+        ),
       ),
     );
   }

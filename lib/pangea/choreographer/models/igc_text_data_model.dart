@@ -41,15 +41,16 @@ class IGCTextData {
 
   factory IGCTextData.fromJson(Map<String, dynamic> json) {
     return IGCTextData(
-      matches:
-          json[_matchesKey] != null
-              ? (json[_matchesKey] as Iterable)
-                  .map<PangeaMatch>((e) {
-                    return PangeaMatch.fromJson(e as Map<String, dynamic>);
-                  })
-                  .toList()
-                  .cast<PangeaMatch>()
-              : [],
+      matches: json[_matchesKey] != null
+          ? (json[_matchesKey] as Iterable)
+              .map<PangeaMatch>(
+                (e) {
+                  return PangeaMatch.fromJson(e as Map<String, dynamic>);
+                },
+              )
+              .toList()
+              .cast<PangeaMatch>()
+          : [],
       originalInput: json["original_input"],
       fullTextCorrection: json["full_text_correction"],
       userL1: json[ModelKey.userL1],
@@ -65,8 +66,7 @@ class IGCTextData {
     String userL2,
   ) {
     final PangeaRepresentation content = event.content;
-    final List<PangeaMatch> matches =
-        event.choreo?.choreoSteps
+    final List<PangeaMatch> matches = event.choreo?.choreoSteps
             .map((step) => step.acceptedOrIgnoredMatch)
             .whereType<PangeaMatch>()
             .toList() ??
@@ -91,19 +91,22 @@ class IGCTextData {
   static const String _matchesKey = "matches";
 
   Map<String, dynamic> toJson() => {
-    "original_input": originalInput,
-    "full_text_correction": fullTextCorrection,
-    _matchesKey: matches.map((e) => e.toJson()).toList(),
-    ModelKey.userL1: userL1,
-    ModelKey.userL2: userL2,
-    "enable_it": enableIT,
-    "enable_igc": enableIGC,
-  };
+        "original_input": originalInput,
+        "full_text_correction": fullTextCorrection,
+        _matchesKey: matches.map((e) => e.toJson()).toList(),
+        ModelKey.userL1: userL1,
+        ModelKey.userL2: userL2,
+        "enable_it": enableIT,
+        "enable_igc": enableIGC,
+      };
 
   // reconstruct fullText based on accepted match
   //update offsets in existing matches to reflect the change
   //if existing matches overlap with the accepted one, remove them??
-  void acceptReplacement(int matchIndex, int choiceIndex) async {
+  void acceptReplacement(
+    int matchIndex,
+    int choiceIndex,
+  ) async {
     //should be already added to choreoRecord
     //TODO - that should be done in the same function to avoid error potential
 
@@ -113,7 +116,9 @@ class IGCTextData {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         m: "pangeaMatch.match.choices is null in acceptReplacement",
-        data: {"match": pangeaMatch.match.toJson()},
+        data: {
+          "match": pangeaMatch.match.toJson(),
+        },
       );
       return;
     }
@@ -121,9 +126,8 @@ class IGCTextData {
     final SpanChoice replacement = pangeaMatch.match.choices![choiceIndex];
 
     final newStart = originalInput.characters.take(pangeaMatch.match.offset);
-    final newEnd = originalInput.characters.skip(
-      pangeaMatch.match.offset + pangeaMatch.match.length,
-    );
+    final newEnd = originalInput.characters
+        .skip(pangeaMatch.match.offset + pangeaMatch.match.length);
     final fullText = newStart + replacement.value.characters + newEnd;
     originalInput = fullText.toString();
 
@@ -146,7 +150,9 @@ class IGCTextData {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         m: "pangeaMatch.match.choices is null in undoReplacement",
-        data: {"match": match.match.toJson()},
+        data: {
+          "match": match.match.toJson(),
+        },
       );
       return;
     }
@@ -155,7 +161,9 @@ class IGCTextData {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         m: "pangeaMatch.match.choices has no best correction in undoReplacement",
-        data: {"match": match.match.toJson()},
+        data: {
+          "match": match.match.toJson(),
+        },
       );
       return;
     }
@@ -163,13 +171,12 @@ class IGCTextData {
     final bestCorrection =
         match.match.choices!.firstWhere((c) => c.isBestCorrection).value;
 
-    final String replacement =
-        match.match.fullText.characters
-            .getRange(
-              match.match.offset,
-              match.match.offset + match.match.length,
-            )
-            .toString();
+    final String replacement = match.match.fullText.characters
+        .getRange(
+          match.match.offset,
+          match.match.offset + match.match.length,
+        )
+        .toString();
 
     final newStart = originalInput.characters.take(match.match.offset);
     final newEnd = originalInput.characters.skip(
@@ -209,10 +216,10 @@ class IGCTextData {
   }
 
   static TextStyle underlineStyle(Color color) => TextStyle(
-    decoration: TextDecoration.underline,
-    decorationColor: color,
-    decorationThickness: 5,
-  );
+        decoration: TextDecoration.underline,
+        decorationColor: color,
+        decorationThickness: 5,
+      );
 
   TextSpan getSpanItem({
     required int start,
@@ -248,16 +255,15 @@ class IGCTextData {
     void Function(PangeaMatch)? onUndo,
     TextStyle? defaultStyle,
   }) {
-    final automaticMatches =
-        choreoSteps
-            .where(
-              (step) =>
-                  step.acceptedOrIgnoredMatch?.status ==
-                  PangeaMatchStatus.automatic,
-            )
-            .map((step) => step.acceptedOrIgnoredMatch)
-            .whereType<PangeaMatch>()
-            .toList();
+    final automaticMatches = choreoSteps
+        .where(
+          (step) =>
+              step.acceptedOrIgnoredMatch?.status ==
+              PangeaMatchStatus.automatic,
+        )
+        .map((step) => step.acceptedOrIgnoredMatch)
+        .whereType<PangeaMatch>()
+        .toList();
 
     final List<PangeaMatch> textSpanMatches = List.from(matches);
     textSpanMatches.addAll(automaticMatches);
@@ -265,19 +271,23 @@ class IGCTextData {
     final List<InlineSpan> items = [];
 
     if (loading) {
-      return [TextSpan(text: originalInput, style: defaultStyle)];
+      return [
+        TextSpan(
+          text: originalInput,
+          style: defaultStyle,
+        ),
+      ];
     }
 
     textSpanMatches.sort((a, b) => a.match.offset.compareTo(b.match.offset));
-    final List<List<int>> matchRanges =
-        textSpanMatches
-            .map(
-              (match) => [
-                match.match.offset,
-                match.match.length + match.match.offset,
-              ],
-            )
-            .toList();
+    final List<List<int>> matchRanges = textSpanMatches
+        .map(
+          (match) => [
+            match.match.offset,
+            match.match.length + match.match.offset,
+          ],
+        )
+        .toList();
 
     // create a pointer to the current index in the original input
     // and iterate until the pointer has reached the end of the input
@@ -299,59 +309,53 @@ class IGCTextData {
           defaultStyle,
         );
         if (match.status == PangeaMatchStatus.automatic) {
-          final span =
-              originalInput.characters
-                  .getRange(
-                    match.match.offset,
-                    match.match.offset +
-                        (match.match.choices
-                                ?.firstWhere((c) => c.isBestCorrection)
-                                .value
-                                .characters
-                                .length ??
-                            match.match.length),
-                  )
-                  .toString();
+          final span = originalInput.characters
+              .getRange(
+                match.match.offset,
+                match.match.offset +
+                    (match.match.choices
+                            ?.firstWhere((c) => c.isBestCorrection)
+                            .value
+                            .characters
+                            .length ??
+                        match.match.length),
+              )
+              .toString();
 
-          final originalText =
-              match.match.fullText.characters
-                  .getRange(
-                    match.match.offset,
-                    match.match.offset + match.match.length,
-                  )
-                  .toString();
+          final originalText = match.match.fullText.characters
+              .getRange(
+                match.match.offset,
+                match.match.offset + match.match.length,
+              )
+              .toString();
 
           items.add(
             WidgetSpan(
               alignment: PlaceholderAlignment.middle,
               child: CompositedTransformTarget(
-                link:
-                    MatrixState.pAnyState
-                        .layerLinkAndKey("autocorrection_$matchIndex")
-                        .link,
+                link: MatrixState.pAnyState
+                    .layerLinkAndKey("autocorrection_$matchIndex")
+                    .link,
                 child: Builder(
                   builder: (context) {
                     return RichText(
-                      key:
-                          MatrixState.pAnyState
-                              .layerLinkAndKey("autocorrection_$matchIndex")
-                              .key,
+                      key: MatrixState.pAnyState
+                          .layerLinkAndKey("autocorrection_$matchIndex")
+                          .key,
                       text: TextSpan(
                         text: span,
                         style: style,
-                        recognizer:
-                            TapGestureRecognizer()
-                              ..onTap = () {
-                                OverlayUtil.showOverlay(
-                                  context: context,
-                                  child: AutocorrectPopup(
-                                    originalText: originalText,
-                                    onUndo: () => onUndo?.call(match),
-                                  ),
-                                  transformTargetId:
-                                      "autocorrection_$matchIndex",
-                                );
-                              },
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            OverlayUtil.showOverlay(
+                              context: context,
+                              child: AutocorrectPopup(
+                                originalText: originalText,
+                                onUndo: () => onUndo?.call(match),
+                              ),
+                              transformTargetId: "autocorrection_$matchIndex",
+                            );
+                          },
                       ),
                     );
                   },
@@ -360,8 +364,7 @@ class IGCTextData {
             ),
           );
 
-          currentIndex =
-              match.match.offset +
+          currentIndex = match.match.offset +
               (match.match.choices
                       ?.firstWhere((c) => c.isBestCorrection)
                       .value
@@ -381,14 +384,19 @@ class IGCTextData {
         // otherwise, if the pointer is not at a match, then add all the text
         // until the next match (or, if there is not next match, the end of the
         // text) to items and move the pointer to the start of the next match
-        final int nextIndex =
-            matchRanges
-                .firstWhereOrNull((range) => range[0] > currentIndex)
+        final int nextIndex = matchRanges
+                .firstWhereOrNull(
+                  (range) => range[0] > currentIndex,
+                )
                 ?.first ??
             originalInput.characters.length;
 
         items.add(
-          getSpanItem(start: currentIndex, end: nextIndex, style: defaultStyle),
+          getSpanItem(
+            start: currentIndex,
+            end: nextIndex,
+            style: defaultStyle,
+          ),
         );
         currentIndex = nextIndex;
       }

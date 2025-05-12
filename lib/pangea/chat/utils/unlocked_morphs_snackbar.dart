@@ -59,7 +59,10 @@ class ConstructNotificationUtil {
         OverlayUtil.showOverlay(
           overlayKey: "${construct.string}_snackbar",
           context: context,
-          child: ConstructNotificationOverlay(construct: construct, copy: copy),
+          child: ConstructNotificationOverlay(
+            construct: construct,
+            copy: copy,
+          ),
           transformTargetId: "",
           position: OverlayPositionEnum.top,
           backDropToDismiss: false,
@@ -67,15 +70,13 @@ class ConstructNotificationUtil {
           canPop: false,
         );
 
-        MatrixState.pAnyState.activeOverlays.add(
-          "${construct.string}_snackbar",
-        );
+        MatrixState.pAnyState.activeOverlays
+            .add("${construct.string}_snackbar");
 
         await closeCompleter!.future;
       } catch (e) {
-        MatrixState.pAnyState.activeOverlays.remove(
-          "${construct.string}_snackbar",
-        );
+        MatrixState.pAnyState.activeOverlays
+            .remove("${construct.string}_snackbar");
         showingNotification = false;
         break;
       }
@@ -101,8 +102,7 @@ class ConstructNotificationOverlay extends StatefulWidget {
 }
 
 class ConstructNotificationOverlayState
-    extends State<ConstructNotificationOverlay>
-    with TickerProviderStateMixin {
+    extends State<ConstructNotificationOverlay> with TickerProviderStateMixin {
   AnimationController? _controller;
   Animation<double>? _animation;
 
@@ -114,7 +114,10 @@ class ConstructNotificationOverlayState
       vsync: this,
     );
 
-    _animation = CurvedAnimation(parent: _controller!, curve: Curves.easeInOut);
+    _animation = CurvedAnimation(
+      parent: _controller!,
+      curve: Curves.easeInOut,
+    );
 
     _controller!.forward().then((_) {
       OverlayUtil.showOverlay(
@@ -153,15 +156,14 @@ class ConstructNotificationOverlayState
   void _showDetails() {
     showDialog<AnalyticsPopupWrapper>(
       context: context,
-      builder:
-          (context) => AnalyticsPopupWrapper(
-            constructZoom: widget.construct,
-            view: ConstructTypeEnum.morph,
-            backButtonOverride: IconButton(
-              icon: const Icon(Icons.close),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ),
+      builder: (context) => AnalyticsPopupWrapper(
+        constructZoom: widget.construct,
+        view: ConstructTypeEnum.morph,
+        backButtonOverride: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ),
     );
   }
 
@@ -169,15 +171,13 @@ class ConstructNotificationOverlayState
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return CompositedTransformTarget(
-      link:
-          MatrixState.pAnyState
-              .layerLinkAndKey("${widget.construct.string}_notification")
-              .link,
+      link: MatrixState.pAnyState
+          .layerLinkAndKey("${widget.construct.string}_notification")
+          .link,
       child: SafeArea(
-        key:
-            MatrixState.pAnyState
-                .layerLinkAndKey("${widget.construct.string}_notification")
-                .key,
+        key: MatrixState.pAnyState
+            .layerLinkAndKey("${widget.construct.string}_notification")
+            .key,
         child: Material(
           type: MaterialType.transparency,
           child: SizeTransition(
@@ -227,24 +227,22 @@ class ConstructNotificationOverlayState
                                 Text(
                                   widget.copy ?? widget.construct.lemma,
                                   style: TextStyle(
-                                    fontSize:
-                                        FluffyThemes.isColumnMode(context)
-                                            ? 32.0
-                                            : 16.0,
+                                    fontSize: FluffyThemes.isColumnMode(context)
+                                        ? 32.0
+                                        : 16.0,
                                     color: AppConfig.gold,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 MorphIcon(
-                                  size:
-                                      isColumnMode
-                                          ? null
-                                          : const Size(24.0, 24.0),
+                                  size: isColumnMode
+                                      ? null
+                                      : const Size(24.0, 24.0),
                                   morphFeature:
                                       MorphFeaturesEnumExtension.fromString(
-                                        widget.construct.category,
-                                      ),
+                                    widget.construct.category,
+                                  ),
                                   morphTag: widget.construct.lemma,
                                 ),
                               ],
@@ -258,37 +256,36 @@ class ConstructNotificationOverlayState
                             children: [
                               Tooltip(
                                 message: L10n.of(context).details,
-                                child:
-                                    constraints.maxWidth >= 600
-                                        ? ElevatedButton(
-                                          style: IconButton.styleFrom(
-                                            padding: const EdgeInsets.symmetric(
-                                              vertical: 4.0,
-                                              horizontal: 16.0,
-                                            ),
-                                          ),
-                                          onPressed: _showDetails,
-                                          child: Text(L10n.of(context).details),
-                                        )
-                                        : SizedBox(
-                                          width: 32.0,
-                                          height: 32.0,
-                                          child: Center(
-                                            child: IconButton(
-                                              icon: const Icon(
-                                                Icons.info_outline,
-                                              ),
-                                              style: IconButton.styleFrom(
-                                                padding: const EdgeInsets.all(
-                                                  4.0,
-                                                ),
-                                              ),
-                                              onPressed: _showDetails,
-                                              constraints:
-                                                  const BoxConstraints(),
-                                            ),
+                                child: constraints.maxWidth >= 600
+                                    ? ElevatedButton(
+                                        style: IconButton.styleFrom(
+                                          padding: const EdgeInsets.symmetric(
+                                            vertical: 4.0,
+                                            horizontal: 16.0,
                                           ),
                                         ),
+                                        onPressed: _showDetails,
+                                        child: Text(
+                                          L10n.of(context).details,
+                                        ),
+                                      )
+                                    : SizedBox(
+                                        width: 32.0,
+                                        height: 32.0,
+                                        child: Center(
+                                          child: IconButton(
+                                            icon: const Icon(
+                                              Icons.info_outline,
+                                            ),
+                                            style: IconButton.styleFrom(
+                                              padding:
+                                                  const EdgeInsets.all(4.0),
+                                            ),
+                                            onPressed: _showDetails,
+                                            constraints: const BoxConstraints(),
+                                          ),
+                                        ),
+                                      ),
                               ),
                               SizedBox(
                                 width: 32.0,
@@ -297,7 +294,9 @@ class ConstructNotificationOverlayState
                                   child: Tooltip(
                                     message: L10n.of(context).close,
                                     child: IconButton(
-                                      icon: const Icon(Icons.close),
+                                      icon: const Icon(
+                                        Icons.close,
+                                      ),
                                       style: IconButton.styleFrom(
                                         padding: const EdgeInsets.all(4.0),
                                       ),

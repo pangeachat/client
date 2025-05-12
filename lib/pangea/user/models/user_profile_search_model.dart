@@ -18,11 +18,10 @@ class UserProfileSearchResponse {
       count: json["count"],
       next: json["next"],
       previous: json["previous"],
-      results:
-          json["results"]
-              .map((p) => PangeaProfile.fromJson(p))
-              .toList()
-              .cast<PangeaProfile>(),
+      results: json["results"]
+          .map((p) => PangeaProfile.fromJson(p))
+          .toList()
+          .cast<PangeaProfile>(),
     );
   }
 }

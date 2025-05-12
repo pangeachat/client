@@ -126,10 +126,8 @@ class PangeaController {
       return;
     }
 
-    final String homeServer = AppConfig.defaultHomeserver
-        .trim()
-        .toLowerCase()
-        .replaceAll(' ', '-');
+    final String homeServer =
+        AppConfig.defaultHomeserver.trim().toLowerCase().replaceAll(' ', '-');
     var homeserver = Uri.parse(homeServer);
     if (homeserver.scheme.isEmpty) {
       homeserver = Uri.https(homeServer, '');
@@ -203,9 +201,8 @@ class PangeaController {
       if (botDMs.isEmpty) {
         try {
           // Copied from client.dart.startDirectChat
-          final directChatRoomId = matrixState.client.getDirectChatFromUserId(
-            BotName.byEnvironment,
-          );
+          final directChatRoomId =
+              matrixState.client.getDirectChatFromUserId(BotName.byEnvironment);
           if (directChatRoomId != null) {
             final room = matrixState.client.getRoomById(directChatRoomId);
             if (room != null) {
@@ -220,10 +217,8 @@ class PangeaController {
                 if (room.membership != Membership.leave) {
                   if (room.membership != Membership.join) {
                     // Wait for room actually appears in sync with the right membership
-                    await matrixState.client.waitForRoomInSync(
-                      directChatRoomId,
-                      join: true,
-                    );
+                    await matrixState.client
+                        .waitForRoomInSync(directChatRoomId, join: true);
                   }
                   return null;
                 }
@@ -264,7 +259,9 @@ class PangeaController {
             if (room == null) {
               ErrorHandler.logError(
                 e: "Bot chat null after waiting for room in sync",
-                data: {"roomId": roomId},
+                data: {
+                  "roomId": roomId,
+                },
               );
               return null;
             }
@@ -278,20 +275,16 @@ class PangeaController {
               "",
               BotOptionsModel(mode: BotMode.directChat).toJson(),
             );
-            await matrixState.client.getRoomStateWithKey(
-              roomId,
-              PangeaEventTypes.botOptions,
-              "",
-            );
+            await matrixState.client
+                .getRoomStateWithKey(roomId, PangeaEventTypes.botOptions, "");
           }
 
           // invite bot to direct chat
           await matrixState.client.setRoomStateWithKey(
-            roomId,
-            EventTypes.RoomMember,
-            BotName.byEnvironment,
-            {"membership": Membership.invite.name, "is_direct": true},
-          );
+              roomId, EventTypes.RoomMember, BotName.byEnvironment, {
+            "membership": Membership.invite.name,
+            "is_direct": true,
+          });
           await room.addToDirectChat(BotName.byEnvironment);
 
           return null;
@@ -301,9 +294,8 @@ class PangeaController {
             e: err,
             s: stack,
             data: {
-              "directChatRoomId": matrixState.client.getDirectChatFromUserId(
-                BotName.byEnvironment,
-              ),
+              "directChatRoomId": matrixState.client
+                  .getDirectChatFromUserId(BotName.byEnvironment),
             },
           );
         }
@@ -340,9 +332,8 @@ class PangeaController {
   }
 
   void _subscribeToStreams() {
-    matrixState.client.onLoginStateChanged.stream.listen(
-      _handleLoginStateChange,
-    );
+    matrixState.client.onLoginStateChanged.stream
+        .listen(_handleLoginStateChange);
 
     // Listen for changes to the user's language settings
     _languageStream ??= userController.stateStream.listen((update) {

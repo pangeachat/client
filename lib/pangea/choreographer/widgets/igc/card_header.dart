@@ -26,7 +26,10 @@ class CardHeader extends StatelessWidget {
           Flexible(
             child: Row(
               children: [
-                BotFace(width: 50.0, expression: botExpression),
+                BotFace(
+                  width: 50.0,
+                  expression: botExpression,
+                ),
                 const SizedBox(width: 12.0),
                 Flexible(
                   child: Text(

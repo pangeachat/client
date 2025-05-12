@@ -14,7 +14,7 @@ extension UiaRequestManager on MatrixState {
     final l10n = L10n.of(context);
     final navigatorContext =
         FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
-        context;
+            context;
     try {
       if (uiaRequest.state != UiaRequestState.waitForUser ||
           uiaRequest.nextStages.isEmpty) {
@@ -25,8 +25,7 @@ extension UiaRequestManager on MatrixState {
       Logs().d('Uia Request Stage: $stage');
       switch (stage) {
         case AuthenticationTypes.password:
-          final input =
-              cachedPassword ??
+          final input = cachedPassword ??
               (await showTextInputDialog(
                 context: navigatorContext,
                 title: l10n.pleaseEnterYourPassword,

@@ -18,7 +18,9 @@ typedef POSActivitySequence = List<String>;
 
 class MorphActivityGenerator {
   /// Generate a morphological activity for a given token and morphological feature
-  Future<MessageActivityResponse> get(MessageActivityRequest req) async {
+  Future<MessageActivityResponse> get(
+    MessageActivityRequest req,
+  ) async {
     debugger(when: kDebugMode && req.targetTokens.length != 1);
 
     debugger(when: kDebugMode && req.targetMorphFeature == null);
@@ -33,10 +35,8 @@ class MorphActivityGenerator {
       throw "No morph tag found for morph feature";
     }
 
-    final List<String> distractors = token.morphActivityDistractors(
-      morphFeature,
-      morphTag,
-    );
+    final List<String> distractors =
+        token.morphActivityDistractors(morphFeature, morphTag);
 
     debugger(when: kDebugMode && distractors.length < 3);
 
@@ -47,17 +47,15 @@ class MorphActivityGenerator {
         activityType: ActivityTypeEnum.morphId,
         morphFeature: req.targetMorphFeature,
         multipleChoiceContent: MultipleChoiceActivity(
-          question:
-              MatrixState.pangeaController.matrixState.context.mounted
-                  ? L10n.of(
+          question: MatrixState.pangeaController.matrixState.context.mounted
+              ? L10n.of(MatrixState.pangeaController.matrixState.context)
+                  .whatIsTheMorphTag(
+                  morphFeature.getDisplayCopy(
                     MatrixState.pangeaController.matrixState.context,
-                  ).whatIsTheMorphTag(
-                    morphFeature.getDisplayCopy(
-                      MatrixState.pangeaController.matrixState.context,
-                    ),
-                    token.text.content,
-                  )
-                  : morphFeature.name,
+                  ),
+                  token.text.content,
+                )
+              : morphFeature.name,
           choices: distractors + [morphTag],
           answers: [morphTag],
           spanDisplayDetails: null,

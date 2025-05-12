@@ -22,7 +22,10 @@ class ConstructUses {
 
   // Total points for all uses of this lemma
   int get points {
-    return uses.fold<int>(0, (total, use) => total + use.xp);
+    return uses.fold<int>(
+      0,
+      (total, use) => total + use.xp,
+    );
   }
 
   DateTime? get lastUsed {
@@ -47,10 +50,10 @@ class ConstructUses {
   bool get hasIncorrectUse => uses.any((use) => use.xp < 0);
 
   ConstructIdentifier get id => ConstructIdentifier(
-    lemma: lemma,
-    type: constructType,
-    category: category,
-  );
+        lemma: lemma,
+        type: constructType,
+        category: category,
+      );
 
   Map<String, dynamic> toJson() {
     final json = {

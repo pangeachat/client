@@ -29,20 +29,18 @@ class ChoreoRecord {
   factory ChoreoRecord.fromJson(Map<String, dynamic> json) {
     final stepsRaw = json[_stepsKey];
     return ChoreoRecord(
-      choreoSteps:
-          (jsonDecode(stepsRaw ?? "[]") as Iterable)
-              .map((e) {
-                return ChoreoRecordStep.fromJson(e);
-              })
-              .toList()
-              .cast<ChoreoRecordStep>(),
-      openMatches:
-          (jsonDecode(json[_openMatchesKey] ?? "[]") as Iterable)
-              .map((e) {
-                return PangeaMatch.fromJson(e);
-              })
-              .toList()
-              .cast<PangeaMatch>(),
+      choreoSteps: (jsonDecode(stepsRaw ?? "[]") as Iterable)
+          .map((e) {
+            return ChoreoRecordStep.fromJson(e);
+          })
+          .toList()
+          .cast<ChoreoRecordStep>(),
+      openMatches: (jsonDecode(json[_openMatchesKey] ?? "[]") as Iterable)
+          .map((e) {
+            return PangeaMatch.fromJson(e);
+          })
+          .toList()
+          .cast<PangeaMatch>(),
       // current: json[_currentKey],
     );
   }
@@ -54,9 +52,8 @@ class ChoreoRecord {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data[_stepsKey] = jsonEncode(choreoSteps.map((e) => e.toJson()).toList());
-    data[_openMatchesKey] = jsonEncode(
-      openMatches.map((e) => e.toJson()).toList(),
-    );
+    data[_openMatchesKey] =
+        jsonEncode(openMatches.map((e) => e.toJson()).toList());
     // data[_currentKey] = current;
     return data;
   }
@@ -66,19 +63,24 @@ class ChoreoRecord {
       throw Exception("match and step should not both be defined");
     }
     choreoSteps.add(
-      ChoreoRecordStep(text: text, acceptedOrIgnoredMatch: match, itStep: step),
+      ChoreoRecordStep(
+        text: text,
+        acceptedOrIgnoredMatch: match,
+        itStep: step,
+      ),
     );
   }
 
   bool get hasAcceptedMatches => choreoSteps.any(
-    (element) =>
-        element.acceptedOrIgnoredMatch?.status == PangeaMatchStatus.accepted,
-  );
+        (element) =>
+            element.acceptedOrIgnoredMatch?.status ==
+            PangeaMatchStatus.accepted,
+      );
 
   bool get hasIgnoredMatches => choreoSteps.any(
-    (element) =>
-        element.acceptedOrIgnoredMatch?.status == PangeaMatchStatus.ignored,
-  );
+        (element) =>
+            element.acceptedOrIgnoredMatch?.status == PangeaMatchStatus.ignored,
+      );
 
   // bool get includedIT => choreoSteps.any((step) {
   //       return step.acceptedOrIgnoredMatch?.status ==
@@ -87,17 +89,21 @@ class ChoreoRecord {
   //     });
 
   bool get includedIT => choreoSteps.any((step) {
-    return step.acceptedOrIgnoredMatch?.status == PangeaMatchStatus.accepted &&
-        (step.acceptedOrIgnoredMatch?.isOutOfTargetMatch ?? false);
-  });
+        return step.acceptedOrIgnoredMatch?.status ==
+                PangeaMatchStatus.accepted &&
+            (step.acceptedOrIgnoredMatch?.isOutOfTargetMatch ?? false);
+      });
 
   bool get includedIGC => choreoSteps.any((step) {
-    return step.acceptedOrIgnoredMatch?.status == PangeaMatchStatus.accepted &&
-        (step.acceptedOrIgnoredMatch?.isGrammarMatch ?? false);
-  });
+        return step.acceptedOrIgnoredMatch?.status ==
+                PangeaMatchStatus.accepted &&
+            (step.acceptedOrIgnoredMatch?.isGrammarMatch ?? false);
+      });
 
-  static ChoreoRecord get newRecord =>
-      ChoreoRecord(choreoSteps: [], openMatches: []);
+  static ChoreoRecord get newRecord => ChoreoRecord(
+        choreoSteps: [],
+        openMatches: [],
+      );
 
   List<ITStep> get itSteps =>
       choreoSteps.where((e) => e.itStep != null).map((e) => e.itStep!).toList();
@@ -153,10 +159,9 @@ class ChoreoRecordStep {
   factory ChoreoRecordStep.fromJson(Map<String, dynamic> json) {
     return ChoreoRecordStep(
       text: json[_textKey],
-      acceptedOrIgnoredMatch:
-          json[_acceptedOrIgnoredMatchKey] != null
-              ? PangeaMatch.fromJson(json[_acceptedOrIgnoredMatchKey])
-              : null,
+      acceptedOrIgnoredMatch: json[_acceptedOrIgnoredMatchKey] != null
+          ? PangeaMatch.fromJson(json[_acceptedOrIgnoredMatchKey])
+          : null,
       itStep: json[_stepKey] != null ? ITStep.fromJson(json[_stepKey]) : null,
     );
   }

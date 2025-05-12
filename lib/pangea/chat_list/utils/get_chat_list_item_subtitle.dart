@@ -32,10 +32,9 @@ class ChatListItemSubtitle extends StatelessWidget {
   Future<MessageEventAndTokens> _getPangeaMessageEvent(
     final Event event,
   ) async {
-    final Timeline timeline =
-        event.room.timeline != null
-            ? event.room.timeline!
-            : await event.room.getTimeline();
+    final Timeline timeline = event.room.timeline != null
+        ? event.room.timeline!
+        : await event.room.getTimeline();
 
     final pangeaMessageEvent = PangeaMessageEvent(
       event: event,
@@ -43,10 +42,16 @@ class ChatListItemSubtitle extends StatelessWidget {
       ownMessage: event.senderId == event.room.client.userID,
     );
 
-    final tokens = await pangeaMessageEvent.messageDisplayRepresentation
-        ?.tokensGlobal(event.senderId, event.originServerTs);
+    final tokens =
+        await pangeaMessageEvent.messageDisplayRepresentation?.tokensGlobal(
+      event.senderId,
+      event.originServerTs,
+    );
 
-    return MessageEventAndTokens(event: pangeaMessageEvent, tokens: tokens);
+    return MessageEventAndTokens(
+      event: pangeaMessageEvent,
+      tokens: tokens,
+    );
   }
 
   @override
@@ -60,8 +65,7 @@ class ChatListItemSubtitle extends StatelessWidget {
           hideEdit: true,
           plaintextBody: true,
           removeMarkdown: true,
-          withSenderNamePrefix:
-              !event!.room.isDirectChat ||
+          withSenderNamePrefix: !event!.room.isDirectChat ||
               event!.room.directChatMatrixID != event!.room.lastEvent?.senderId,
         ),
         builder: (context, snapshot) {
@@ -86,13 +90,12 @@ class ChatListItemSubtitle extends StatelessWidget {
           final pangeaMessageEvent = messageEventAndTokens.event;
           final tokens = messageEventAndTokens.tokens;
 
-          final analyticsEntry =
-              tokens != null
-                  ? PracticeSelectionRepo.get(
-                    messageEventAndTokens.event.messageDisplayLangCode,
-                    tokens,
-                  )
-                  : null;
+          final analyticsEntry = tokens != null
+              ? PracticeSelectionRepo.get(
+                  messageEventAndTokens.event.messageDisplayLangCode,
+                  tokens,
+                )
+              : null;
 
           return MessageTextWidget(
             pangeaMessageEvent: pangeaMessageEvent,
@@ -108,7 +111,10 @@ class ChatListItemSubtitle extends StatelessWidget {
           );
         }
 
-        return Text(L10n.of(context).emptyChat, style: style);
+        return Text(
+          L10n.of(context).emptyChat,
+          style: style,
+        );
       },
     );
   }
@@ -118,5 +124,8 @@ class MessageEventAndTokens {
   final PangeaMessageEvent event;
   final List<PangeaToken>? tokens;
 
-  MessageEventAndTokens({required this.event, required this.tokens});
+  MessageEventAndTokens({
+    required this.event,
+    required this.tokens,
+  });
 }

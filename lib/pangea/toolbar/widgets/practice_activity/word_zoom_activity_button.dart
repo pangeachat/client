@@ -52,11 +52,17 @@ class WordZoomActivityButton extends StatelessWidget {
     );
 
     if (opacity != null) {
-      buttonContent = Opacity(opacity: opacity!, child: buttonContent);
+      buttonContent = Opacity(
+        opacity: opacity!,
+        child: buttonContent,
+      );
     }
 
     if (tooltip != null) {
-      buttonContent = Tooltip(message: tooltip!, child: buttonContent);
+      buttonContent = Tooltip(
+        message: tooltip!,
+        child: buttonContent,
+      );
     }
 
     return buttonContent;

@@ -49,7 +49,9 @@ class ChatInputBarState extends State<ChatInputBar> {
           child: Material(
             clipBehavior: Clip.hardEdge,
             type: MaterialType.transparency,
-            borderRadius: const BorderRadius.all(Radius.circular(24)),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(24),
+            ),
             child: Column(
               children: [
                 ITBar(choreographer: widget.controller.choreographer),
@@ -61,7 +63,9 @@ class ChatInputBarState extends State<ChatInputBar> {
                   child: Column(
                     children: [
                       ReplyDisplay(widget.controller),
-                      PangeaChatInputRow(controller: widget.controller),
+                      PangeaChatInputRow(
+                        controller: widget.controller,
+                      ),
                       ChatEmojiPicker(widget.controller),
                     ],
                   ),
