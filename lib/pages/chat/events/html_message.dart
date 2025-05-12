@@ -70,6 +70,7 @@ class HtmlMessage extends StatelessWidget {
   static const Set<String> allowedHtmlTags = {
     'font',
     'del',
+    's',
     'h1',
     'h2',
     'h3',
@@ -336,6 +337,7 @@ class HtmlMessage extends StatelessWidget {
                         ? () => onClick?.call(token)
                         : null,
                     child: Text.rich(
+                      textScaler: TextScaler.noScaling,
                       TextSpan(
                         children: [
                           LinkifySpan(
@@ -407,6 +409,12 @@ class HtmlMessage extends StatelessWidget {
               splashColor: Colors.transparent,
               onTap: () => UrlLauncher(context, href, node.text).launchUrl(),
               child: Text.rich(
+                // #Pangea
+                // Text.rich applies the device's textScaleFactor
+                // overriding this one since non-html messages don't
+                // abide by the device's textScaleFactor
+                textScaler: TextScaler.noScaling,
+                // Pangea#
                 TextSpan(
                   children: _renderWithLineBreaks(
                     node.nodes,
@@ -428,6 +436,9 @@ class HtmlMessage extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: fontSize),
             child: Text.rich(
+              // #Pangea
+              textScaler: TextScaler.noScaling,
+              // Pangea#
               TextSpan(
                 children: [
                   if (node.parent?.localName == 'ul')
@@ -435,7 +446,7 @@ class HtmlMessage extends StatelessWidget {
                   if (node.parent?.localName == 'ol')
                     TextSpan(
                       text:
-                          '${(node.parent?.nodes.indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
+                          '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
                     ),
                   ..._renderWithLineBreaks(
                     node.nodes,
@@ -456,11 +467,14 @@ class HtmlMessage extends StatelessWidget {
               border: Border(
                 left: BorderSide(
                   color: textColor,
-                  width: 3,
+                  width: 5,
                 ),
               ),
             ),
             child: Text.rich(
+              // #Pangea
+              textScaler: TextScaler.noScaling,
+              // Pangea#
               TextSpan(
                 children: _renderWithLineBreaks(
                   node.nodes,
@@ -501,7 +515,7 @@ class HtmlMessage extends StatelessWidget {
                 ),
                 textStyle: TextStyle(
                   fontSize: fontSize,
-                  fontFamily: 'UbuntuMono',
+                  fontFamily: 'RobotoMono',
                 ),
               ),
             ),
@@ -543,6 +557,9 @@ class HtmlMessage extends StatelessWidget {
                 obscure = !obscure;
               }),
               child: Text.rich(
+                // #Pangea
+                textScaler: TextScaler.noScaling,
+                // Pangea#
                 TextSpan(
                   children: [
                     WidgetSpan(
@@ -591,6 +608,9 @@ class HtmlMessage extends StatelessWidget {
                 obscure = !obscure;
               }),
               child: Text.rich(
+                // #Pangea
+                textScaler: TextScaler.noScaling,
+                // Pangea#
                 TextSpan(
                   children: _renderWithLineBreaks(
                     node.nodes,
@@ -619,6 +639,7 @@ class HtmlMessage extends StatelessWidget {
             'strong' => const TextStyle(fontWeight: FontWeight.bold),
             'em' || 'i' => const TextStyle(fontStyle: FontStyle.italic),
             'del' ||
+            's' ||
             'strikethrough' =>
               const TextStyle(decoration: TextDecoration.lineThrough),
             'u' => const TextStyle(decoration: TextDecoration.underline),
@@ -652,6 +673,7 @@ class HtmlMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // #Pangea
+    // return Text.rich(
     dom.Node parsed = parser.parse(html).body ?? dom.Element.html('');
     if (tokens != null) {
       parsed = _tokenizeHtml(parsed, html, List.from(tokens!));
@@ -668,8 +690,9 @@ class HtmlMessage extends StatelessWidget {
             );
           }
         },
-        // Pangea#
         child: Text.rich(
+          textScaler: TextScaler.noScaling,
+          // Pangea#
           _renderHtml(
             // #Pangea
             // parser.parse(html).body ?? dom.Element.html(''),

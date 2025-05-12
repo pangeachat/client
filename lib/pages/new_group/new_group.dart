@@ -10,7 +10,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/new_group/new_group_view.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -237,20 +236,14 @@ class NewGroupController extends State<NewGroup> {
       room = client.getRoomById(spaceId);
     }
     if (room == null) return;
-    GoogleAnalytics.createClass(room.name, room.classCode(context));
-    try {
-      await room.invite(BotName.byEnvironment);
-    } catch (err) {
-      ErrorHandler.logError(
-        e: "Failed to invite pangea bot to new space",
-        data: {"spaceId": spaceId, "error": err},
-      );
+    final spaceCode = room.classCode(context);
+    if (spaceCode != null) {
+      GoogleAnalytics.createClass(room.name, spaceCode);
     }
 
     // if a timeout happened, don't redirect to the space
     if (error != null) return;
-    MatrixState.pangeaController.classController
-        .setActiveSpaceIdInChatListController(spaceId);
+    context.go("/rooms?spaceId=$spaceId");
     // Pangea#
     context.pop<String>(spaceId);
   }

@@ -16,21 +16,17 @@ import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/public_spaces/pangea_public_room_bottom_sheet.dart';
 import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
 import 'package:fluffychat/pangea/spaces/widgets/space_view_leaderboard.dart';
-import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum AddRoomType {
-  chat,
-  subspace,
-}
+enum AddRoomType { chat, subspace }
 
 class SpaceView extends StatefulWidget {
   final String spaceId;
@@ -264,13 +260,9 @@ class _SpaceViewState extends State<SpaceView> {
     final client = Matrix.of(context).client;
     final space = client.getRoomById(widget.spaceId);
 
-    final joined = await showAdaptiveBottomSheet<bool>(
+    final joined = await showAdaptiveDialog<bool>(
       context: context,
-      // #Pangea
-      // builder: (_) => PublicRoomBottomSheet(
-      builder: (_) => PangeaPublicRoomBottomSheet(
-        // Pangea#
-        outerContext: context,
+      builder: (_) => PublicRoomDialog(
         chunk: item,
         via: space?.spaceChildren
             .firstWhereOrNull(
@@ -281,7 +273,10 @@ class _SpaceViewState extends State<SpaceView> {
     );
     if (mounted && joined == true) {
       setState(() {
+        // #Pangea
+        // _discoveredChildren.remove(item);
         _discoveredChildren?.remove(item);
+        // Pangea#
       });
     }
   }
@@ -521,7 +516,7 @@ class _SpaceViewState extends State<SpaceView> {
                 mxContent: room?.avatar,
                 name: displayname,
                 // #Pangea
-                presenceUserId: room?.directChatMatrixID,
+                userId: room?.directChatMatrixID,
                 // Pangea#
                 border: BorderSide(width: 1, color: theme.dividerColor),
                 borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2),
@@ -707,8 +702,7 @@ class _SpaceViewState extends State<SpaceView> {
                                     mxContent: joinedParents[i].avatar,
                                     name: displayname,
                                     // #Pangea
-                                    presenceUserId:
-                                        joinedParents[i].directChatMatrixID,
+                                    userId: joinedParents[i].directChatMatrixID,
                                     // Pangea#
                                     size: Avatar.defaultSize / 2,
                                     borderRadius: BorderRadius.circular(
@@ -746,7 +740,10 @@ class _SpaceViewState extends State<SpaceView> {
                       },
                     ),
                     SliverList.builder(
+                      // #Pangea
+                      // itemCount: _discoveredChildren.length + 2,
                       itemCount: (_discoveredChildren?.length ?? 0) + 2,
+                      // Pangea#
                       itemBuilder: (context, i) {
                         if (i == 0) {
                           return SearchTitle(
@@ -755,7 +752,10 @@ class _SpaceViewState extends State<SpaceView> {
                           );
                         }
                         i--;
+                        // #Pangea
+                        // if (i == _discoveredChildren.length) {
                         if (i == (_discoveredChildren?.length ?? 0)) {
+                          // Pangea#
                           if (_noMoreRooms) {
                             return Padding(
                               padding: const EdgeInsets.all(12.0),
@@ -773,7 +773,10 @@ class _SpaceViewState extends State<SpaceView> {
                               vertical: 2.0,
                             ),
                             child: TextButton(
+                              // #Pangea
+                              // onPressed: _isLoading ? null : _loadHierarchy,
                               onPressed: _isLoading ? null : loadHierarchy,
+                              // Pangea#
                               child: _isLoading
                                   ? LinearProgressIndicator(
                                       borderRadius: BorderRadius.circular(
@@ -784,7 +787,10 @@ class _SpaceViewState extends State<SpaceView> {
                             ),
                           );
                         }
+                        // #Pangea
+                        // final item = _discoveredChildren[i];
                         final item = _discoveredChildren![i];
+                        // Pangea#
                         final displayname = item.name ??
                             item.canonicalAlias ??
                             L10n.of(context).emptyChat;
@@ -810,7 +816,7 @@ class _SpaceViewState extends State<SpaceView> {
                                 mxContent: item.avatarUrl,
                                 name: displayname,
                                 // #Pangea
-                                presenceUserId: Matrix.of(context)
+                                userId: Matrix.of(context)
                                     .client
                                     .getRoomById(item.roomId)
                                     ?.directChatMatrixID,

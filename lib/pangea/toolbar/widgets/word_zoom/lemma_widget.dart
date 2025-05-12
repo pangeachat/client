@@ -9,7 +9,6 @@ import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
-import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -168,42 +167,29 @@ class LemmaWidgetState extends State<LemmaWidget> {
       );
     }
 
-    return Row(
-      children: [
-        // Tooltip(
-        //   triggerMode: TooltipTriggerMode.tap,
-        //   message: L10n.of(context).doubleClickToEdit,
-        //   child: GestureDetector(
-        //     onLongPress: () => _toggleEditMode(true),
-        //     onDoubleTap: () => _toggleEditMode(true),
-        //     child:
-        Text(
-          widget.token.lemma.text,
-          style: Theme.of(context).textTheme.headlineSmall,
-          overflow: TextOverflow.ellipsis,
-        ),
-        //   ),
-        // ),
-        if (widget.token.lemma.text.toLowerCase() ==
-            widget.token.text.content.toLowerCase())
+    return Expanded(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Flexible(
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: Text(
+                widget.token.lemma.text,
+                style: Theme.of(context).textTheme.headlineSmall,
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
           WordAudioButton(
-            text: widget.token.text.content,
-            isSelected:
-                MessageMode.listening == widget.overlayController?.toolbarMode,
+            text: widget.token.lemma.text,
             baseOpacity: 0.4,
-            callbackOverride: widget.overlayController?.practiceSelection
-                        ?.hasActiveActivityByToken(
-                      MessageMode.listening.associatedActivityType!,
-                      widget.token,
-                    ) ==
-                    true
-                ? () => widget.overlayController
-                    ?.updateToolbarMode(MessageMode.listening)
-                : null,
             uniqueID: "lemma-content-${widget.token.text.content}",
             langCode: widget.pangeaMessageEvent.messageDisplayLangCode,
+            padding: const EdgeInsets.all(4.0),
           ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -138,7 +138,7 @@ class _MessageSearchResultListTile extends StatelessWidget {
             mxContent: sender.avatarUrl,
             name: displayname,
             // #Pangea
-            presenceUserId: sender.id,
+            userId: sender.id,
             // Pangea#
             size: 16,
           ),
@@ -155,6 +155,7 @@ class _MessageSearchResultListTile extends StatelessWidget {
         ],
       ),
       subtitle: Linkify(
+        textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
         options: const LinkifyOptions(humanize: false),
         linkStyle: TextStyle(
           color: theme.colorScheme.primary,

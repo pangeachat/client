@@ -43,7 +43,9 @@ class GetAnalyticsController extends BaseController {
     _pangeaController = pangeaController;
   }
 
+  LanguageModel? get _l1 => _pangeaController.languageController.userL1;
   LanguageModel? get _l2 => _pangeaController.languageController.userL2;
+
   Client get _client => _pangeaController.matrixState.client;
 
   // the minimum XP required for a given level
@@ -200,15 +202,11 @@ class GetAnalyticsController extends BaseController {
         ),
       );
 
-  Future<void> _onLevelUp(final int lowerLevel, final int upperLevel) async {
-    final result = await _generateLevelUpAnalyticsAndSaveToStateEvent(
-      lowerLevel,
-      upperLevel,
-    );
+  void _onLevelUp(final int lowerLevel, final int upperLevel) {
     setState({
       'level_up': constructListModel.level,
-      'analytics_room_id': _client.analyticsRoomLocal(_l2!)?.id,
-      "construct_summary": result,
+      'upper_level': upperLevel,
+      'lower_level': lowerLevel,
     });
   }
 
@@ -463,7 +461,7 @@ class GetAnalyticsController extends BaseController {
     }
   }
 
-  Future<ConstructSummary?> _generateLevelUpAnalyticsAndSaveToStateEvent(
+  Future<ConstructSummary?> generateLevelUpAnalytics(
     final int lowerLevel,
     final int upperLevel,
   ) async {
@@ -507,7 +505,7 @@ class GetAnalyticsController extends BaseController {
       final request = ConstructSummaryRequest(
         constructs: constructUseOfCurrentLevel,
         constructUseMessageContentBodies: constructUseMessageContentBodies,
-        language: _l2!.langCodeShort,
+        language: _l1!.langCodeShort,
         upperLevel: upperLevel,
         lowerLevel: lowerLevel,
       );
@@ -519,24 +517,22 @@ class GetAnalyticsController extends BaseController {
       ErrorHandler.logError(e: e, data: {'e': e});
       return null;
     }
+
     try {
-      final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
+      final Room? analyticsRoom = await _client.getMyAnalyticsRoom(_l2!);
       if (analyticsRoom == null) {
-        ErrorHandler.logError(
-          data: {'message': "Analytics room not found for user"},
-        );
-        return null;
+        throw "Analytics room not found for user";
       }
 
       // don't await this, just return the original response
       _saveConstructSummaryResponseToStateEvent(
         summary,
       );
-    } catch (e) {
+    } catch (e, s) {
       debugPrint("Error saving construct summary room: $e");
-      ErrorHandler.logError(e: e, data: {'e': e});
-      return null;
+      ErrorHandler.logError(e: e, s: s, data: {'e': e});
     }
+
     return summary;
   }
 }

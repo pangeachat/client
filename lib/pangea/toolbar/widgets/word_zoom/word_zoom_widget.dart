@@ -69,11 +69,18 @@ class WordZoomWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //@ggurdin - might need to play with size to properly center
-                  IconButton(
-                    onPressed: () => overlayController.updateSelectedSpan(
-                      token.text,
+                  SizedBox(
+                    width: 24.0,
+                    height: 24.0,
+                    child: IconButton(
+                      onPressed: () => overlayController.updateSelectedSpan(
+                        token.text,
+                      ),
+                      icon: const Icon(Icons.close),
+                      style: IconButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                      ),
                     ),
-                    icon: const Icon(Icons.close),
                   ),
                   LemmaWidget(
                     token: _selectedToken,
@@ -161,8 +168,9 @@ class WordZoomWidget extends StatelessWidget {
             Wrap(
               alignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 8.0,
               children: [
-                if (!_selectedToken.doesLemmaTextMatchTokenText) ...[
+                ...[
                   Text(
                     _selectedToken.text.content,
                     style: Theme.of(context).textTheme.bodyLarge,
@@ -170,20 +178,7 @@ class WordZoomWidget extends StatelessWidget {
                   ),
                   WordAudioButton(
                     text: _selectedToken.text.content,
-                    isSelected:
-                        MessageMode.listening == overlayController.toolbarMode,
                     baseOpacity: 0.4,
-                    callbackOverride: overlayController.hideWordCardContent &&
-                            overlayController.practiceSelection
-                                    ?.hasActiveActivityByToken(
-                                  MessageMode.listening.associatedActivityType!,
-                                  _selectedToken,
-                                ) ==
-                                true &&
-                            overlayController.hideWordCardContent
-                        ? () => overlayController
-                            .updateToolbarMode(MessageMode.listening)
-                        : null,
                     uniqueID: "word-zoom-audio-${_selectedToken.text.content}",
                     langCode: overlayController
                         .pangeaMessageEvent?.messageDisplayLangCode,

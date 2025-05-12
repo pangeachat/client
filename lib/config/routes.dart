@@ -38,10 +38,12 @@ import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/login/pages/user_settings.dart';
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/pangea/spaces/utils/join_with_alias.dart';
 import 'package:fluffychat/pangea/spaces/utils/join_with_link.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/pangea/user/pages/find_partner.dart';
+import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
 import 'package:fluffychat/widgets/log_view.dart';
@@ -130,23 +132,37 @@ abstract class AppRoutes {
         const LogViewer(),
       ),
     ),
+    GoRoute(
+      path: '/configs',
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        const ConfigViewer(),
+      ),
+    ),
     // #Pangea
     GoRoute(
       path: '/join_with_link',
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
         state,
-        const JoinClassWithLink(),
+        JoinClassWithLink(
+          classCode: state.uri.queryParameters[SpaceConstants.classCode],
+        ),
       ),
     ),
     GoRoute(
       path: '/join_with_alias',
       pageBuilder: (context, state) => Matrix.of(context).client.isLogged()
-          ? chatListShellRouteBuilder(context, state, const JoinWithAlias())
+          ? chatListShellRouteBuilder(
+              context,
+              state,
+              JoinWithAlias(alias: state.uri.queryParameters['alias']),
+            )
           : defaultPageBuilder(
               context,
               state,
-              const JoinWithAlias(),
+              JoinWithAlias(alias: state.uri.queryParameters['alias']),
             ),
     ),
     GoRoute(
@@ -197,6 +213,10 @@ abstract class AppRoutes {
             ? TwoColumnLayout(
                 mainView: ChatList(
                   activeChat: state.pathParameters['roomid'],
+                  // #Pangea
+                  activeSpaceId: state.uri.queryParameters['spaceId'],
+                  activeFilter: state.uri.queryParameters['filter'],
+                  // Pangea#
                   displayNavigationRail:
                       state.path?.startsWith('/rooms/settings') != true,
                 ),
@@ -215,7 +235,25 @@ abstract class AppRoutes {
       routes: [
         GoRoute(
           path: '/rooms',
-          redirect: loggedOutRedirect,
+          // #Pangea
+          // redirect: loggedOutRedirect,
+          redirect: (context, state) async {
+            final resp = await loggedOutRedirect(context, state);
+            final spaceId = state.uri.queryParameters['spaceId'];
+
+            if (resp != null ||
+                !state.uri.queryParameters.containsKey('spaceId') ||
+                spaceId == 'clear' ||
+                !FluffyThemes.isColumnMode(context) ||
+                (state.fullPath?.contains('details') ?? true)) {
+              return resp;
+            }
+
+            return !FluffyThemes.isColumnMode(context)
+                ? resp
+                : '/rooms/$spaceId/details?spaceId=${spaceId ?? 'clear'}';
+          },
+          // Pangea#
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
@@ -226,6 +264,10 @@ abstract class AppRoutes {
                 // Pangea#
                 : ChatList(
                     activeChat: state.pathParameters['roomid'],
+                    // #Pangea
+                    activeSpaceId: state.uri.queryParameters['spaceId'],
+                    activeFilter: state.uri.queryParameters['filter'],
+                    // Pangea#
                   ),
           ),
           routes: [
@@ -718,6 +760,10 @@ abstract class AppRoutes {
             ? TwoColumnLayout(
                 mainView: ChatList(
                   activeChat: state.pathParameters['roomid'],
+                  // #Pangea
+                  activeSpaceId: state.uri.queryParameters['spaceId'],
+                  activeFilter: state.uri.queryParameters['filter'],
+                  // Pangea#
                   displayNavigationRail:
                       state.path?.startsWith('/rooms/settings') != true,
                 ),

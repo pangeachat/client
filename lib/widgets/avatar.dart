@@ -23,6 +23,7 @@ class Avatar extends StatelessWidget {
   // #Pangea
   final bool useRive;
   final bool showPresence;
+  final String? userId;
   // Pangea#
 
   const Avatar({
@@ -39,6 +40,7 @@ class Avatar extends StatelessWidget {
     // #Pangea
     this.useRive = false,
     this.showPresence = true,
+    this.userId,
     // Pangea#
     super.key,
   });
@@ -47,31 +49,13 @@ class Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    var fallbackLetters = '@';
     final name = this.name;
-    if (name != null) {
-      if (name.runes.length >= 2) {
-        fallbackLetters = String.fromCharCodes(name.runes, 0, 2);
-      } else if (name.runes.length == 1) {
-        fallbackLetters = name;
-      }
-    }
+    final fallbackLetters =
+        name == null || name.isEmpty ? '@' : name.substring(0, 1);
+
     final noPic = mxContent == null ||
         mxContent.toString().isEmpty ||
         mxContent.toString() == 'null';
-    final textColor = name?.lightColorAvatar;
-    final textWidget = Container(
-      color: textColor,
-      alignment: Alignment.center,
-      child: Text(
-        fallbackLetters,
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
-          fontSize: (size / 3).roundToDouble(),
-        ),
-      ),
-    );
     final borderRadius = this.borderRadius ?? BorderRadius.circular(size / 2);
     final presenceUserId = this.presenceUserId;
     final container = Stack(
@@ -90,7 +74,7 @@ class Avatar extends StatelessWidget {
             clipBehavior: Clip.hardEdge,
             child:
                 // #Pangea
-                presenceUserId == BotName.byEnvironment
+                (userId ?? presenceUserId) == BotName.byEnvironment
                     ? BotFace(
                         width: size,
                         expression: BotExpression.idle,
@@ -98,8 +82,23 @@ class Avatar extends StatelessWidget {
                       )
                     :
                     // Pangea#
+
                     noPic
-                        ? textWidget
+                        ? Container(
+                            decoration:
+                                BoxDecoration(color: name?.lightColorAvatar),
+                            alignment: Alignment.center,
+                            child: Text(
+                              fallbackLetters,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontFamily: 'RobotoMono',
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: (size / 2.5).roundToDouble(),
+                              ),
+                            ),
+                          )
                         : MxcImage(
                             client: client,
                             key: ValueKey(mxContent.toString()),
@@ -166,10 +165,12 @@ class Avatar extends StatelessWidget {
       ],
     );
     if (onTap == null) return container;
-    return InkWell(
-      onTap: onTap,
-      borderRadius: borderRadius,
-      child: container,
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: onTap,
+        child: container,
+      ),
     );
   }
 }
