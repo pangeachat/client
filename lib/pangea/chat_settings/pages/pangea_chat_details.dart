@@ -5,7 +5,7 @@ import 'package:fluffychat/pangea/chat_settings/utils/download_chat.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/download_file.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/class_name_header.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/conversation_bot/conversation_bot_settings.dart';
-import 'package:fluffychat/pangea/chat_settings/widgets/download_analytics_button.dart';
+import 'package:fluffychat/pangea/chat_settings/widgets/download_space_analytics_button.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/room_capacity_button.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/visibility_toggle.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -101,6 +101,7 @@ class PangeaChatDetailsView extends StatelessWidget {
               controller: controller,
               room: room,
             ),
+            centerTitle: true,
             backgroundColor: theme.appBarTheme.backgroundColor,
           ),
           body: MaxWidthBody(
@@ -340,7 +341,7 @@ class PangeaChatDetailsView extends StatelessWidget {
                             controller: controller,
                           ),
                         if (room.isSpace && room.isRoomAdmin && kIsWeb)
-                          DownloadAnalyticsButton(space: room),
+                          DownloadSpaceAnalyticsButton(space: room),
                         Divider(color: theme.dividerColor, height: 1),
                         if (room.isRoomAdmin && !room.isSpace)
                           ListTile(
@@ -423,8 +424,7 @@ class PangeaChatDetailsView extends StatelessWidget {
                                   room.isSpace ? room.leaveSpace : room.leave,
                             );
                             if (!resp.isError) {
-                              MatrixState.pangeaController.classController
-                                  .setActiveSpaceIdInChatListController(null);
+                              context.go("/rooms?spaceId=clear");
                             }
                           },
                         ),
