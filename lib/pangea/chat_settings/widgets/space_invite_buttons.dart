@@ -1,14 +1,12 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:matrix/matrix.dart';
-import 'package:universal_html/html.dart' as html;
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:matrix/matrix.dart';
+import 'package:universal_html/html.dart' as html;
 
 class SpaceInviteButtons extends StatefulWidget {
   final Room room;
@@ -51,7 +49,7 @@ class SpaceInviteButtonsController extends State<SpaceInviteButtons> {
   @override
   Widget build(BuildContext context) {
     final spaceCode = widget.room.classCode(context);
-    if (spaceCode == null) {
+    if (!widget.room.isSpace || spaceCode == null) {
       return const SizedBox.shrink();
     }
 
