@@ -54,54 +54,51 @@ class InvitationSelectionView extends StatelessWidget {
         title: Text(L10n.of(context).inviteContact),
         // #Pangea
         actions: [
-          if (room.isSpace)
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 0, 7.0, 2.0),
-              child: PopupMenuButton<int>(
-                icon: const Icon(Icons.share_outlined),
-                onSelected: (value) async {
-                  final spaceCode = room.classCode(context)!;
-                  String toCopy = spaceCode;
-                  if (value == 0) {
-                    final String initialUrl =
-                        kIsWeb ? html.window.origin! : Environment.frontendURL;
-                    toCopy =
-                        "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode(context)}";
-                  }
+          if (room.isSpace && room.classCode(context) != null)
+            PopupMenuButton<int>(
+              icon: const Icon(Icons.share_outlined),
+              onSelected: (value) async {
+                final spaceCode = room.classCode(context)!;
+                String toCopy = spaceCode;
+                if (value == 0) {
+                  final String initialUrl =
+                      kIsWeb ? html.window.origin! : Environment.frontendURL;
+                  toCopy =
+                      "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${room.classCode(context)}";
+                }
 
-                  await Clipboard.setData(ClipboardData(text: toCopy));
-                  ScaffoldMessenger.of(
-                    context,
-                  ).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        L10n.of(context).copiedToClipboard,
-                      ),
-                    ),
-                  );
-                },
-                itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
-                  PopupMenuItem<int>(
-                    value: 0,
-                    child: ListTile(
-                      leading: const Icon(Icons.share_outlined),
-                      title: Text(L10n.of(context).shareSpaceLink),
-                      contentPadding: const EdgeInsets.all(0),
+                await Clipboard.setData(ClipboardData(text: toCopy));
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      L10n.of(context).copiedToClipboard,
                     ),
                   ),
-                  PopupMenuItem<int>(
-                    value: 1,
-                    child: ListTile(
-                      leading: const Icon(Icons.share_outlined),
-                      title: Text(
-                        L10n.of(context)
-                            .shareInviteCode(room.classCode(context)!),
-                      ),
-                      contentPadding: const EdgeInsets.all(0),
-                    ),
+                );
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
+                PopupMenuItem<int>(
+                  value: 0,
+                  child: ListTile(
+                    leading: const Icon(Icons.share_outlined),
+                    title: Text(L10n.of(context).shareSpaceLink),
+                    contentPadding: const EdgeInsets.all(0),
                   ),
-                ],
-              ),
+                ),
+                PopupMenuItem<int>(
+                  value: 1,
+                  child: ListTile(
+                    leading: const Icon(Icons.share_outlined),
+                    title: Text(
+                      L10n.of(context)
+                          .shareInviteCode(room.classCode(context)!),
+                    ),
+                    contentPadding: const EdgeInsets.all(0),
+                  ),
+                ),
+              ],
             ),
         ],
         // Pangea#

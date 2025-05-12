@@ -294,8 +294,6 @@ class PangeaChatDetailsView extends StatelessWidget {
                           ),
                         if (room.canInvite && !room.isDirectChat)
                           Divider(color: theme.dividerColor, height: 1),
-                        if (room.isSpace && room.isRoomAdmin)
-                          Divider(color: theme.dividerColor, height: 1),
                         if (isGroupChat && room.isRoomAdmin)
                           ListTile(
                             title: Text(
