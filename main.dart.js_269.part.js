@@ -3726,6 +3726,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kh\xf4ng gian gi\xfap b\u1ea1n qu\u1ea3n l\xfd nhi\u1ec1u cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 x\xe2y d\u1ef1ng c\u1ed9ng \u0111\u1ed3ng ri\xeang ho\u1eb7c c\xf4ng khai.";
     },
+    get$enterCodeToJoin() {
+      return "Nh\u1eadp m\xe3 \u0111\u1ec3 tham gia";
+    },
     get$updateNow() {
       return "C\u1eadp nh\u1eadt ngay";
     },
@@ -4335,6 +4338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaderboard() {
       return "Leaderboard";
     },
+    welcomeUser$1(user) {
+      return "Welcome " + user;
+    },
+    get$joinSpaceOnboardingDesc() {
+      return "Do you have an invite code or link to a learning community?";
+    },
+    get$skipForNow() {
+      return "Skip for now";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4350,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_269", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "SnItprD3nbb3jDWjoR4ioowPN68=");
+})($__dart_deferred_initializers__, "/hhdX5Mb3o6e4eMXmhO8J7xTqBw=");
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map

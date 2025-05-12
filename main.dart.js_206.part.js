@@ -3726,6 +3726,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Los espacios te permiten consolidar tus chats y construir comunidades privadas o p\xfablicas.";
     },
+    get$enterCodeToJoin() {
+      return "Ingrese el c\xf3digo para unirse";
+    },
     get$updateNow() {
       return "Comenzar actualizaci\xf3n en segundo plano.";
     },
@@ -4335,6 +4338,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaderboard() {
       return "Leaderboard";
     },
+    welcomeUser$1(user) {
+      return "Welcome " + user;
+    },
+    get$joinSpaceOnboardingDesc() {
+      return "Do you have an invite code or link to a learning community?";
+    },
+    get$skipForNow() {
+      return "Skip for now";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4350,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_206", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "oLNnd+Vl99k5d5qLG48DncoXncU=");
+})($__dart_deferred_initializers__, "0OjscNUs29NvU4u+ttCjF2FS/vw=");
 ;
 //# sourceMappingURL=main.dart.js_206.part.js.map
