@@ -23,10 +23,8 @@ import 'package:fluffychat/pangea/morphs/morph_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsDownloadDialog extends StatefulWidget {
-  final ConstructTypeEnum type;
   const AnalyticsDownloadDialog({
     super.key,
-    required this.type,
   });
 
   @override
@@ -58,13 +56,16 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         _error = null;
       });
 
-      final summaries = await (widget.type == ConstructTypeEnum.vocab
-          ? _getVocabAnalytics()
-          : _getMorphAnalytics());
+      final vocabSummary = await _getVocabAnalytics();
+      final morphSummary = await _getMorphAnalytics();
 
-      final content = _getExcelFileContent(summaries);
+      final content = _getExcelFileContent({
+        ConstructTypeEnum.vocab: vocabSummary,
+        ConstructTypeEnum.morph: morphSummary,
+      });
+
       final fileName =
-          "analytics_${MatrixState.pangeaController.matrixState.client.userID}_${DateTime.now().toIso8601String()}.${_downloadType == DownloadType.xlsx ? 'xlsx' : 'csv'}";
+          "analytics_${MatrixState.pangeaController.matrixState.client.userID?.localpart}_${DateTime.now().toIso8601String()}.${_downloadType == DownloadType.xlsx ? 'xlsx' : 'csv'}";
 
       await downloadFile(
         content,
@@ -75,7 +76,6 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
       ErrorHandler.logError(
         e: e,
         data: {
-          "type": widget.type,
           "downloadType": _downloadType,
         },
       );
@@ -244,51 +244,58 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   List<int> _getExcelFileContent(
-    List<AnalyticsSummaryModel> summaries,
+    Map<ConstructTypeEnum, List<AnalyticsSummaryModel>> summaries,
   ) {
     final excel = Excel.createExcel();
-    final sheet = excel['Sheet1'];
 
-    final values = widget.type == ConstructTypeEnum.vocab
-        ? AnalyticsSummaryEnum.vocabValues
-        : AnalyticsSummaryEnum.morphValues;
+    for (final entry in summaries.entries) {
+      final sheet = excel[entry.key.sheetname(context)];
+      final values = entry.key == ConstructTypeEnum.vocab
+          ? AnalyticsSummaryEnum.vocabValues
+          : AnalyticsSummaryEnum.morphValues;
 
-    for (final key in values) {
-      sheet
-          .cell(
-            CellIndex.indexByColumnRow(
-              rowIndex: 0,
-              columnIndex: values.indexOf(key),
+      for (final key in values) {
+        sheet
+            .cell(
+              CellIndex.indexByColumnRow(
+                rowIndex: 0,
+                columnIndex: values.indexOf(key),
+              ),
+            )
+            .value = TextCellValue(key.header(context));
+      }
+
+      final rows = entry.value
+          .map(
+            (summary) => _formatExcelRow(
+              summary,
+              entry.key,
             ),
           )
-          .value = TextCellValue(key.header(context));
-    }
+          .toList();
 
-    final rows = summaries
-        .map(
-          (summary) => _formatExcelRow(
-            summary,
-          ),
-        )
-        .toList();
-
-    for (int i = 0; i < rows.length; i++) {
-      final row = rows[i];
-      for (int j = 0; j < row.length; j++) {
-        final cell = row[j];
-        sheet
-            .cell(CellIndex.indexByColumnRow(rowIndex: i + 2, columnIndex: j))
-            .value = cell;
+      for (int i = 0; i < rows.length; i++) {
+        final row = rows[i];
+        for (int j = 0; j < row.length; j++) {
+          final cell = row[j];
+          sheet
+              .cell(CellIndex.indexByColumnRow(rowIndex: i + 2, columnIndex: j))
+              .value = cell;
+        }
       }
     }
+
+    excel.setDefaultSheet(ConstructTypeEnum.vocab.sheetname(context));
+    excel.delete('Sheet1');
     return excel.encode() ?? [];
   }
 
   List<CellValue> _formatExcelRow(
     AnalyticsSummaryModel summary,
+    ConstructTypeEnum type,
   ) {
     final List<CellValue> row = [];
-    final values = widget.type == ConstructTypeEnum.vocab
+    final values = type == ConstructTypeEnum.vocab
         ? AnalyticsSummaryEnum.vocabValues
         : AnalyticsSummaryEnum.morphValues;
 

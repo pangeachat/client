@@ -4,7 +4,6 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
-import 'package:fluffychat/pangea/analytics_downloads/download_analytics_button.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -76,12 +75,6 @@ class VocabAnalyticsListView extends StatelessWidget {
       IconButton(
         icon: const Icon(Icons.search_outlined),
         onPressed: controller.toggleSearching,
-      ),
-    );
-
-    filters.add(
-      const DownloadAnalyticsButton(
-        type: ConstructTypeEnum.vocab,
       ),
     );
 
