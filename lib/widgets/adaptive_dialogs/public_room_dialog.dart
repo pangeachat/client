@@ -311,6 +311,9 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
                               ),
                             ),
                             Container(
+                              // #Pangea
+                              height: 40,
+                              // Pangea#
                               decoration: BoxDecoration(
                                 border: Border(
                                   left: BorderSide(
