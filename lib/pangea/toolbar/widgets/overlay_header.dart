@@ -59,13 +59,12 @@ class OverlayHeader extends StatelessWidget {
           if (controller.canSaveSelectedEvent)
             // Use builder context to correctly position the share dialog on iPad
             Builder(
-              builder:
-                  (context) => IconButton(
-                    icon: const Icon(Symbols.download),
-                    tooltip: L10n.of(context).download,
-                    onPressed: () => controller.saveSelectedEvent(context),
-                    color: theme.colorScheme.primary,
-                  ),
+              builder: (context) => IconButton(
+                icon: const Icon(Symbols.download),
+                tooltip: L10n.of(context).download,
+                onPressed: () => controller.saveSelectedEvent(context),
+                color: theme.colorScheme.primary,
+              ),
             ),
           if (controller.canPinSelectedEvents)
             IconButton(
