@@ -4044,12 +4044,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Nh\u1ea5p \u0111\xfap \u0111\u1ec3 ch\u1ec9nh s\u1eeda.";
     },
-    get$notInClass() {
-      return "Kh\xf4ng thu\u1ed9c l\u1edbp!";
-    },
-    get$noClassCode() {
-      return "Kh\xf4ng c\xf3 m\xe3 l\u1edbp!";
-    },
     get$chooseCorrectLabel() {
       return "Ch\u1ecdn nh\xe3n \u0111\xfang.";
     },
@@ -4227,15 +4221,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$readingAssistanceOverviewBody() {
       return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
     },
-    get$referFriends() {
-      return "Refer friends";
-    },
-    get$referFriendDialogTitle() {
-      return "Invite a friend to your conversation";
-    },
-    get$referFriendDialogDesc() {
-      return "Do you have a friend who is excited to learn a new language with you? Then copy and send this invitation link to join and start chatting with you today.";
-    },
     get$resetInstructionTooltipsTitle() {
       return "Reset instruction tooltips";
     },
@@ -4309,7 +4294,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Enter space code";
     },
     get$shareSpaceLink() {
-      return "Share link to space";
+      return "Share link";
     },
     get$byUsingPangeaChat() {
       return "By using Pangea Chat, I agree to the ";
@@ -4380,6 +4365,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$timesUsedWithAssistance() {
       return "Times used with assistance";
     },
+    get$goToSpaceButton() {
+      return "Go to space";
+    },
+    shareInviteCode$1(code) {
+      return "Share invite code: " + code;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4395,6 +4386,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_269", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "xwcOu80PAQxc6VDiCxOFY3XrKKw=");
+})($__dart_deferred_initializers__, "guUCBYarAu74fvTy1+P68/543b0=");
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map
