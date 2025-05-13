@@ -42,6 +42,7 @@ import '../../widgets/matrix.dart';
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
 
+
 enum PopupMenuAction {
   settings,
   invite,
@@ -490,7 +491,9 @@ class ChatListController extends State<ChatList>
       if (mounted) {
         searchServer =
             Matrix.of(context).store.getString(_serverStoreNamespace);
-        Matrix.of(context).backgroundPush?.setupPush();
+        // #Pangea
+        // Matrix.of(context).backgroundPush?.setupPush();
+        // Pangea#
         UpdateNotifier.showUpdateSnackBar(context);
         // #Pangea
         AppVersionUtil.showAppVersionDialog(context);
