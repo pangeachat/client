@@ -19,7 +19,6 @@ import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
-import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -120,7 +119,7 @@ class ChatListController extends State<ChatList>
 
     // #Pangea
     if (FluffyThemes.isColumnMode(context)) {
-      context.push("/rooms/$spaceId/details");
+      context.push("/rooms/$spaceId");
     }
     // Pangea#
 
@@ -533,9 +532,7 @@ class ChatListController extends State<ChatList>
 
           // #Pangea
           final String? justInputtedCode =
-              MatrixState.pangeaController.classController.chatBox.read(
-            PLocalKey.justInputtedCode,
-          );
+              MatrixState.pangeaController.classController.justInputtedCode();
           final newSpaceCode = space?.classCode(context);
           if (newSpaceCode == justInputtedCode) return;
 

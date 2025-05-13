@@ -6,12 +6,10 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pages/chat_details/participant_list_item.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/download_chat.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/download_file.dart';
-import 'package:fluffychat/pangea/chat_settings/widgets/class_details_toggle_add_students_tile.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/class_name_header.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/conversation_bot/conversation_bot_settings.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/download_space_analytics_button.dart';
@@ -96,9 +94,7 @@ class PangeaChatDetailsView extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             leading: controller.widget.embeddedCloseButton ??
-                (room.isSpace && FluffyThemes.isColumnMode(context)
-                    ? const SizedBox()
-                    : const Center(child: BackButton())),
+                const Center(child: BackButton()),
             elevation: theme.appBarTheme.elevation,
             title: ClassNameHeader(
               controller: controller,
@@ -278,7 +274,7 @@ class PangeaChatDetailsView extends StatelessWidget {
                         if (room.canInvite && !room.isDirectChat)
                           ListTile(
                             title: Text(
-                              L10n.of(context).inviteStudentByUserName,
+                              L10n.of(context).inviteContact,
                               style: TextStyle(
                                 color: Theme.of(context).colorScheme.secondary,
                                 fontWeight: FontWeight.bold,
@@ -297,12 +293,6 @@ class PangeaChatDetailsView extends StatelessWidget {
                                 context.push('/rooms/${room.id}/invite'),
                           ),
                         if (room.canInvite && !room.isDirectChat)
-                          Divider(color: theme.dividerColor, height: 1),
-                        if (room.isSpace && room.isRoomAdmin)
-                          SpaceDetailsToggleAddStudentsTile(
-                            controller: controller,
-                          ),
-                        if (room.isSpace && room.isRoomAdmin)
                           Divider(color: theme.dividerColor, height: 1),
                         if (isGroupChat && room.isRoomAdmin)
                           ListTile(
