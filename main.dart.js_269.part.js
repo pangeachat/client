@@ -28,16 +28,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kh\xf4ng ph\u1ea3i t\u1ec7p \u1ea3nh.";
     },
     get$setCustomPermissionLevel() {
-      return "Set custom permission level";
+      return "\u0110\u1eb7t c\u1ea5p \u0111\u1ed9 quy\u1ec1n t\xf9y ch\u1ec9nh";
     },
     get$setPermissionsLevelDescription() {
-      return "Please choose a predefined role below or enter a custom permission level between 0 and 100.";
+      return "Vui l\xf2ng ch\u1ecdn m\u1ed9t vai tr\xf2 \u0111\xe3 \u0111\u1ecbnh ngh\u0129a s\u1eb5n b\xean d\u01b0\u1edbi ho\u1eb7c nh\u1eadp m\u1ed9t c\u1ea5p \u0111\u1ed9 quy\u1ec1n t\xf9y ch\u1ec9nh t\u1eeb 0 \u0111\u1ebfn 100.";
     },
     get$ignoreUser() {
-      return "Ignore user";
+      return "B\u1ecf qua ng\u01b0\u1eddi d\xf9ng";
     },
     get$normalUser() {
-      return "Normal user";
+      return "Ng\u01b0\u1eddi d\xf9ng b\xecnh th\u01b0\u1eddng";
     },
     get$remove(_) {
       return "Lo\u1ea1i b\u1ecf";
@@ -91,7 +91,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "T\u1ea5t c\u1ea3";
     },
     get$commandHint_roomupgrade() {
-      return "Upgrade this room to the given room version";
+      return "N\xe2ng c\u1ea5p ph\xf2ng n\xe0y l\xean phi\xean b\u1ea3n ph\xf2ng \u0111\xe3 cho";
     },
     get$commandHint_googly() {
       return "G\u1eedi c\u1eb7p m\u1eaft theo d\xf5i";
@@ -1591,7 +1591,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kh\xf4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3 tr\xean thi\u1ebft b\u1ecb n\xe0y";
     },
     get$enterNewChat() {
-      return "Enter new chat";
+      return "Tham gia tr\xf2 chuy\u1ec7n m\u1edbi";
     },
     get$editChatPermissions() {
       return "Ch\u1ec9nh s\u1eeda quy\u1ec1n h\u1ea1n tr\xf2 chuy\u1ec7n";
@@ -3691,7 +3691,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ch\u1ecdn ph\u01b0\u01a1ng \xe1n t\u1ed1t nh\u1ea5t \u0111\u1ec3 d\u1ecbch tin nh\u1eafn c\u1ee7a b\u1ea1n!";
     },
     get$completeActivitiesToUnlock() {
-      return "Complete at least one activity to unlock the translation!";
+      return "Ho\xe0n th\xe0nh \xedt nh\u1ea5t m\u1ed9t ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 m\u1edf kh\xf3a b\u1ea3n d\u1ecbch!";
     },
     get$botSettingsSubtitle() {
       return "M\u1eddi bot ki\u1ec3m duy\u1ec7t ho\u1eb7c kh\u1edfi t\u1ea1o ho\u1ea1t \u0111\u1ed9ng tr\xf2 chuy\u1ec7n";
@@ -3739,10 +3739,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "D\xf9ng kh\xf4ng c\u1ea7n tr\u1ee3 gi\xfap";
     },
     get$constructUseGaDesc() {
-      return "Grammar assistance";
+      return "H\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p";
     },
     get$constructUseTaDesc() {
-      return "Translation assistance";
+      return "H\u1ed7 tr\u1ee3 d\u1ecbch thu\u1eadt";
     },
     get$constructUseUnkDesc() {
       return "Kh\xf4ng x\xe1c \u0111\u1ecbnh";
@@ -4003,7 +4003,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "T\u1eeb '" + lemma + "' c\xf3 ngh\u0129a l\xe0 g\xec?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Match meanings with the words in the message!";
+      return "Kh\u1edbp ngh\u0129a v\u1edbi c\xe1c t\u1eeb trong tin nh\u1eafn!";
     },
     get$doubleClickToEdit() {
       return "Nh\u1ea5p \u0111\xfap \u0111\u1ec3 ch\u1ec9nh s\u1eeda.";
@@ -4153,199 +4153,199 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho $" + lemma;
     },
     get$analyticsVocabListBody() {
-      return "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.";
+      return "\u0110\xe2y l\xe0 to\xe0n b\u1ed9 t\u1eeb v\u1ef1ng c\u1ee7a b\u1ea1n! Khi b\u1ea1n ki\u1ebfm XP cho m\u1ed7i t\u1eeb, ch\xfang s\u1ebd t\u1eeb h\u1ea1t gi\u1ed1ng ph\xe1t tri\u1ec3n th\xe0nh n\u1edf r\u1ed9. Nh\u1ea5p v\xe0o b\u1ea5t k\u1ef3 t\u1eeb n\xe0o \u0111\u1ec3 xem th\xeam chi ti\u1ebft.";
     },
     get$morphAnalyticsListBody() {
-      return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
+      return "\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 c\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p trong ng\xf4n ng\u1eef b\u1ea1n \u0111ang h\u1ecdc! B\u1ea1n s\u1ebd m\u1edf kh\xf3a ch\xfang khi g\u1eb7p ph\u1ea3i trong khi tr\xf2 chuy\u1ec7n. Nh\u1ea5p \u0111\u1ec3 xem chi ti\u1ebft.";
     },
     get$joinByCode() {
       return "Tham gia b\u1eb1ng m\xe3";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Listen to the complete message. Then match the audios with the words.";
+      return "Nghe to\xe0n b\u1ed9 tin nh\u1eafn. Sau \u0111\xf3, kh\u1edbp c\xe1c \xe2m thanh v\u1edbi c\xe1c t\u1eeb.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Click the puzzle pieces for grammar questions!";
+      return "Nh\u1ea5p v\xe0o c\xe1c m\u1ea3nh gh\xe9p cho c\xe1c c\xe2u h\u1ecfi ng\u1eef ph\xe1p!";
     },
     get$inviteAndLaunch() {
-      return "Launch and invite";
+      return "Kh\u1edfi \u0111\u1ed9ng v\xe0 m\u1eddi";
     },
     get$createOwnChat() {
-      return "Create your own chat";
+      return "T\u1ea1o tr\xf2 chuy\u1ec7n c\u1ee7a ri\xeang b\u1ea1n";
     },
     get$pleaseEnterInt() {
-      return "Please enter a number";
+      return "Vui l\xf2ng nh\u1eadp m\u1ed9t s\u1ed1";
     },
     get$home() {
-      return "Home";
+      return "Trang ch\u1ee7";
     },
     get$join(_) {
-      return "Join";
+      return "Tham gia";
     },
     get$readingAssistanceOverviewBody() {
-      return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
+      return "Nh\u1ea5p v\xe0o c\xe1c n\xfat b\xean d\u01b0\u1edbi \u0111\u1ec3 ch\u01a1i mini-game v\u1ec1 vi\u1ec7c kh\u1edbp emoji, \xe2m thanh, ngh\u0129a t\u1eeb v\xe0 kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p. Ho\u1eb7c nh\u1ea5p v\xe0o b\u1ea5t k\u1ef3 t\u1eeb n\xe0o \u0111\u1ec3 xem chi ti\u1ebft.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Reset instruction tooltips";
+      return "\u0110\u1eb7t l\u1ea1i h\u01b0\u1edbng d\u1eabn c\xf4ng c\u1ee5";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Click to show instruction tooltips like for a brand new user.";
+      return "Nh\u1ea5p \u0111\u1ec3 hi\u1ec3n th\u1ecb h\u01b0\u1edbng d\u1eabn c\xf4ng c\u1ee5 nh\u01b0 cho m\u1ed9t ng\u01b0\u1eddi d\xf9ng ho\xe0n to\xe0n m\u1edbi.";
     },
     get$selectForGrammar() {
-      return "Select a grammar icon for activities and details.";
+      return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng ng\u1eef ph\xe1p cho c\xe1c ho\u1ea1t \u0111\u1ed9ng v\xe0 chi ti\u1ebft.";
     },
     get$newChatActivityTitle() {
-      return "Add a fun activity?";
+      return "Th\xeam m\u1ed9t ho\u1ea1t \u0111\u1ed9ng th\xfa v\u1ecb?";
     },
     get$newChatActivityDesc() {
-      return "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!";
+      return "Bi\u1ebfn m\u1ed7i cu\u1ed9c tr\xf2 chuy\u1ec7n nh\xf3m th\xe0nh m\u1ed9t cu\u1ed9c phi\xeau l\u01b0u v\u1edbi K\u1ebf ho\u1ea1ch Ho\u1ea1t \u0111\u1ed9ng! \u0110\u1eb7t c\xe1c ch\u1ee7 \u0111\u1ec1 v\xe0 m\u1ee5c ti\xeau h\u1ea5p d\u1eabn cho nh\xf3m, v\xe0 mang cu\u1ed9c tr\xf2 chuy\u1ec7n \u0111\u1ebfn cu\u1ed9c s\u1ed1ng v\u1edbi nh\u1eefng h\xecnh \u1ea3nh tuy\u1ec7t \u0111\u1eb9p. Kh\u01a1i d\u1eady nh\u1eefng cu\u1ed9c th\u1ea3o lu\u1eadn s\xe1ng t\u1ea1o v\xe0 gi\u1eef cho ni\u1ec1m vui ch\u1ea3y tr\xf4i m\u1ed9t c\xe1ch d\u1ec5 d\xe0ng!";
     },
     get$randomize() {
-      return "Randomize";
+      return "Ng\u1eabu nhi\xean h\xf3a";
     },
     get$clear(_) {
-      return "Clear";
+      return "X\xf3a";
     },
     get$makeYourOwnActivity() {
-      return "Make your own activity";
+      return "T\u1ea1o ho\u1ea1t \u0111\u1ed9ng c\u1ee7a ri\xeang b\u1ea1n";
     },
     get$featuredActivities() {
-      return "Featured";
+      return "N\u1ed5i b\u1eadt";
     },
     get$yourBookmarks() {
-      return "Bookmarked";
+      return "\u0110\xe3 \u0111\xe1nh d\u1ea5u";
     },
     get$goToChat() {
-      return "Go to chat";
+      return "\u0110i \u0111\u1ebfn tr\xf2 chuy\u1ec7n";
     },
     get$save(_) {
-      return "Save";
+      return "L\u01b0u";
     },
     get$selectActivity() {
-      return "Select activity";
+      return "Ch\u1ecdn ho\u1ea1t \u0111\u1ed9ng";
     },
     get$wordFocusListeningMultipleChoice() {
-      return "Which audio matches the word?";
+      return "\xc2m thanh n\xe0o ph\xf9 h\u1ee3p v\u1edbi t\u1eeb?";
     },
     get$createActivity() {
-      return "Create activity";
+      return "T\u1ea1o ho\u1ea1t \u0111\u1ed9ng";
     },
     get$startChat() {
-      return "Start a chat";
+      return "B\u1eaft \u0111\u1ea7u tr\xf2 chuy\u1ec7n";
     },
     get$translationProblem() {
-      return "Translation problem";
+      return "V\u1ea5n \u0111\u1ec1 d\u1ecbch thu\u1eadt";
     },
     get$publicSpacesTitle() {
-      return "Learning communities";
+      return "C\u1ed9ng \u0111\u1ed3ng h\u1ecdc t\u1eadp";
     },
     get$askToJoin() {
-      return "Ask to join";
+      return "Y\xeau c\u1ea7u tham gia";
     },
     get$emptyChatWarningTitle() {
-      return "Chat is empty";
+      return "Tr\xf2 chuy\u1ec7n tr\u1ed1ng";
     },
     get$emptyChatWarningDesc() {
-      return "You haven't invited anyone to your chat. Go to Chat settings to invite your contacts or the Bot. You can also do this later.";
+      return "B\u1ea1n ch\u01b0a m\u1eddi ai v\xe0o tr\xf2 chuy\u1ec7n c\u1ee7a m\xecnh. \u0110i \u0111\u1ebfn c\xe0i \u0111\u1eb7t tr\xf2 chuy\u1ec7n \u0111\u1ec3 m\u1eddi danh b\u1ea1 ho\u1eb7c Bot c\u1ee7a b\u1ea1n. B\u1ea1n c\u0169ng c\xf3 th\u1ec3 l\xe0m \u0111i\u1ec1u n\xe0y sau.";
     },
     get$areYouLikeMe() {
-      return "Are you like me?";
+      return "B\u1ea1n c\xf3 gi\u1ed1ng t\xf4i kh\xf4ng?";
     },
     get$tryAgainLater() {
-      return "Too many attempts made. Please try again in 5 minutes.";
+      return "\u0110\xe3 th\u1ef1c hi\u1ec7n qu\xe1 nhi\u1ec1u l\u1ea7n. Vui l\xf2ng th\u1eed l\u1ea1i sau 5 ph\xfat.";
     },
     get$enterSpaceCode() {
-      return "Enter space code";
+      return "Nh\u1eadp m\xe3 kh\xf4ng gian";
     },
     get$shareSpaceLink() {
-      return "Share link";
+      return "Chia s\u1ebb li\xean k\u1ebft";
     },
     get$byUsingPangeaChat() {
-      return "By using Pangea Chat, I agree to the ";
+      return "B\u1eb1ng c\xe1ch s\u1eed d\u1ee5ng Pangea Chat, t\xf4i \u0111\u1ed3ng \xfd v\u1edbi ";
     },
     get$details(_) {
-      return "Details";
+      return "Chi ti\u1ebft";
     },
     get$languageLevelPreA1Desc() {
-      return "I have never learned or used the language.";
+      return "T\xf4i ch\u01b0a bao gi\u1edd h\u1ecdc ho\u1eb7c s\u1eed d\u1ee5ng ng\xf4n ng\u1eef n\xe0y.";
     },
     get$languageLevelA1Desc() {
-      return "I can understand and use some familiar everyday expressions and very basic phrases.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u v\xe0 s\u1eed d\u1ee5ng m\u1ed9t s\u1ed1 bi\u1ec3u th\u1ee9c quen thu\u1ed9c h\xe0ng ng\xe0y v\xe0 c\xe1c c\u1ee5m t\u1eeb r\u1ea5t c\u01a1 b\u1ea3n.";
     },
     get$languageLevelA2Desc() {
-      return "I can understand sentences and frequently used expressions related to areas of immediate relevance";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u c\xe1c c\xe2u v\xe0 c\xe1c bi\u1ec3u th\u1ee9c th\u01b0\u1eddng \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng li\xean quan \u0111\u1ebfn c\xe1c l\u0129nh v\u1ef1c c\xf3 li\xean quan ngay l\u1eadp t\u1ee9c.";
     },
     get$languageLevelB1Desc() {
-      return "I can deal with most familiar situations and can produce simple connected text on familiar topics.";
+      return "T\xf4i c\xf3 th\u1ec3 x\u1eed l\xfd h\u1ea7u h\u1ebft c\xe1c t\xecnh hu\u1ed1ng quen thu\u1ed9c v\xe0 c\xf3 th\u1ec3 t\u1ea1o ra v\u0103n b\u1ea3n \u0111\u01a1n gi\u1ea3n li\xean k\u1ebft v\u1ec1 c\xe1c ch\u1ee7 \u0111\u1ec1 quen thu\u1ed9c.";
     },
     get$languageLevelB2Desc() {
-      return "I can understand the mains ideas of complex texts and interact with a degree of fluency and spontaneity.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u c\xe1c \xfd ch\xednh c\u1ee7a c\xe1c v\u0103n b\u1ea3n ph\u1ee9c t\u1ea1p v\xe0 t\u01b0\u01a1ng t\xe1c v\u1edbi m\u1ed9t m\u1ee9c \u0111\u1ed9 l\u01b0u lo\xe1t v\xe0 t\u1ef1 ph\xe1t.";
     },
     get$languageLevelC1Desc() {
-      return "I can express ideas fluently and spontaneously without much struggle and understand a wide range of demanding texts.";
+      return "T\xf4i c\xf3 th\u1ec3 di\u1ec5n \u0111\u1ea1t \xfd t\u01b0\u1edfng m\u1ed9t c\xe1ch l\u01b0u lo\xe1t v\xe0 t\u1ef1 ph\xe1t m\xe0 kh\xf4ng g\u1eb7p nhi\u1ec1u kh\xf3 kh\u0103n v\xe0 hi\u1ec3u m\u1ed9t lo\u1ea1t c\xe1c v\u0103n b\u1ea3n \u0111\xf2i h\u1ecfi.";
     },
     get$languageLevelC2Desc() {
-      return "I can understand virtually everything heard or read and express myself fluently and precisely.";
+      return "T\xf4i c\xf3 th\u1ec3 hi\u1ec3u h\u1ea7u nh\u01b0 m\u1ecdi th\u1ee9 nghe ho\u1eb7c \u0111\u1ecdc v\xe0 di\u1ec5n \u0111\u1ea1t b\u1ea3n th\xe2n m\u1ed9t c\xe1ch l\u01b0u lo\xe1t v\xe0 ch\xednh x\xe1c.";
     },
     get$newVocab() {
-      return "New vocab";
+      return "T\u1eeb v\u1ef1ng m\u1edbi";
     },
     get$newGrammar() {
-      return "New grammar concepts";
+      return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p m\u1edbi";
     },
     congratulationsOnReaching$1(level) {
-      return "You've reached Level " + level + "!";
+      return "B\u1ea1n \u0111\xe3 \u0111\u1ea1t \u0111\u1ebfn C\u1ea5p \u0111\u1ed9 " + level + "!";
     },
     get$choosePracticeMode() {
-      return "Click on one of the buttons above to start a practice activity";
+      return "Nh\u1ea5p v\xe0o m\u1ed9t trong c\xe1c n\xfat \u1edf tr\xean \u0111\u1ec3 b\u1eaft \u0111\u1ea7u m\u1ed9t ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh";
     },
     get$approve() {
-      return "Approve";
+      return "Ch\u1ea5p thu\u1eadn";
     },
     get$youHaveKnocked() {
-      return "You have knocked";
+      return "B\u1ea1n \u0111\xe3 g\xf5 c\u1eeda";
     },
     get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
+      return "Vui l\xf2ng ch\u1edd cho \u0111\u1ebfn khi ai \u0111\xf3 trong ph\xf2ng m\u1eddi b\u1ea1n.";
     },
     get$lemma() {
       return "Lemma";
     },
     get$grammarFeature() {
-      return "Grammar feature";
+      return "T\xednh n\u0103ng ng\u1eef ph\xe1p";
     },
     get$grammarTag() {
-      return "Grammar tag";
+      return "Th\u1ebb ng\u1eef ph\xe1p";
     },
     get$forms() {
-      return "Forms";
+      return "H\xecnh th\u1ee9c";
     },
     get$exampleMessages() {
-      return "Example messages";
+      return "Tin nh\u1eafn v\xed d\u1ee5";
     },
     get$timesUsedIndependently() {
-      return "Times used independently";
+      return "S\u1ed1 l\u1ea7n s\u1eed d\u1ee5ng \u0111\u1ed9c l\u1eadp";
     },
     get$timesUsedWithAssistance() {
-      return "Times used with assistance";
+      return "S\u1ed1 l\u1ea7n s\u1eed d\u1ee5ng v\u1edbi s\u1ef1 tr\u1ee3 gi\xfap";
     },
     get$goToSpaceButton() {
-      return "Go to space";
+      return "\u0110i \u0111\u1ebfn kh\xf4ng gian";
     },
     shareInviteCode$1(code) {
-      return "Share invite code: " + code;
+      return "Chia s\u1ebb m\xe3 m\u1eddi: " + code;
     },
     get$leaderboard() {
-      return "Leaderboard";
+      return "B\u1ea3ng x\u1ebfp h\u1ea1ng";
     },
     welcomeUser$1(user) {
-      return "Welcome " + user;
+      return "Ch\xe0o m\u1eebng " + user;
     },
     get$joinSpaceOnboardingDesc() {
-      return "Do you have an invite code or link to a learning community?";
+      return "B\u1ea1n c\xf3 m\xe3 m\u1eddi ho\u1eb7c li\xean k\u1ebft \u0111\u1ebfn m\u1ed9t c\u1ed9ng \u0111\u1ed3ng h\u1ecdc t\u1eadp kh\xf4ng?";
     },
     get$skipForNow() {
-      return "Skip for now";
+      return "B\u1ecf qua t\u1ea1m th\u1eddi";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4362,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_269", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "/hhdX5Mb3o6e4eMXmhO8J7xTqBw=");
+})($__dart_deferred_initializers__, "KuSlZ3cb9wgfr5pu8iQqT1U/nFY=");
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map
