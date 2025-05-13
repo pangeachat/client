@@ -1593,9 +1593,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enterNewChat() {
       return "Enter new chat";
     },
-    get$editChatPermissions() {
-      return "Edit chat permissions";
-    },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
     },
@@ -4347,6 +4344,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$skipForNow() {
       return "Skip for now";
     },
+    get$permissions(_) {
+      return "Permissions";
+    },
+    get$spaceChildPermission() {
+      return "Who can add new chats and subspaces to this space";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4362,6 +4365,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_218", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "H3w5h6aLK1cS05ZKw9ZUemiQxRE=");
+})($__dart_deferred_initializers__, "MeRTDcwUf988lED0/zhWU8Kcd5w=");
 ;
 //# sourceMappingURL=main.dart.js_218.part.js.map
