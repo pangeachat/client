@@ -4350,6 +4350,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$spaceChildPermission() {
       return "Who can add new chats and subspaces to this space";
     },
+    get$addEnvironmentOverride() {
+      return "Add environment override";
+    },
+    get$defaultOption() {
+      return "Default";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4368,6 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "qMVdWu8P8BQi3/Rvv0RxtRAM1PU=");
+})($__dart_deferred_initializers__, "MEdIyzlSMbM0740gIigJTLpC2b0=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map
