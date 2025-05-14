@@ -31,8 +31,8 @@ class PublicRoomBottomSheet extends StatefulWidget {
 
 class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
   BuildContext get outerContext => widget.outerContext;
-  String? get roomAlias => widget.roomAlias;
   PublicRoomsChunk? get chunk => widget.chunk;
+  String? get roomAlias => widget.roomAlias;
   List<String>? get via => widget.via;
 
   final TextEditingController _codeController = TextEditingController();
@@ -70,10 +70,9 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
     if (chunk?.roomType != 'm.space' && !client.getRoomById(roomID)!.isSpace) {
       outerContext.go("/rooms/$roomID");
     }
-    // else {
-    //   MatrixState.pangeaController.classController
-    //       .setActiveSpaceIdInChatListController(roomID);
-    // }
+    else {
+      context.go('/rooms?spaceId=$roomID');
+    }
   }
 
   Future<void> _joinRoom() async {
