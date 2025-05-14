@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
+import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
 import 'package:fluffychat/pangea/spaces/widgets/space_view_leaderboard.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
