@@ -258,24 +258,28 @@ class _SpaceViewState extends State<SpaceView> {
     final client = Matrix.of(context).client;
     final space = client.getRoomById(widget.spaceId);
 
-    final joined = await showAdaptiveDialog<bool>(
+    // #Pangea
+    // final joined = await showAdaptiveDialog<bool>(
+    //   context: context,
+    //   builder: (_) => PublicRoomDialog(
+    //     chunk: item,
+    //     via: space?.spaceChildren
+    //         .firstWhereOrNull(
+    //           (child) => child.roomId == item.roomId,
+    //         )
+    //         ?.via,
+    //   ),
+    // );
+    final joined = await PublicRoomBottomSheet.show(
       context: context,
-      // #Pangea
-      builder: (_) => PublicRoomBottomSheet(
-        // builder: (_) => PublicRoomDialog(
-        outerContext: context,
-        // Pangea#
-        chunk: item,
-        via: space?.spaceChildren
-            .firstWhereOrNull(
-              (child) => child.roomId == item.roomId,
-            )
-            ?.via,
-      
-        
-      
-      ),
+      chunk: item,
+      via: space?.spaceChildren
+          .firstWhereOrNull(
+            (child) => child.roomId == item.roomId,
+          )
+          ?.via,
     );
+    // Pangea#
     if (mounted && joined == true) {
       setState(() {
         // #Pangea

@@ -180,15 +180,17 @@ class UrlLauncher {
         }
         return;
       } else {
-        await showAdaptiveDialog(
+        // #Pangea
+        // await showAdaptiveDialog(
+        //   context: context,
+        //   builder: (c) => PublicRoomDialog(
+        //     roomAlias: identityParts.primaryIdentifier,
+        //   ),
+        // );
+        await PublicRoomBottomSheet.show(
           context: context,
-          // #Pangea
-          builder: (c) => PublicRoomBottomSheet(
-            // builder: (c) => PublicRoomDialog(
-            outerContext: context,
-            // Pangea#
-            roomAlias: identityParts.primaryIdentifier,
-          ),
+          roomAlias: identityParts.primaryIdentifier,
+          // Pangea#
         );
       }
       if (roomIdOrAlias.sigil == '!') {

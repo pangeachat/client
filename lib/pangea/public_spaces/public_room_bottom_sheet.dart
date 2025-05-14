@@ -25,6 +25,32 @@ class PublicRoomBottomSheet extends StatefulWidget {
     assert(roomAlias != null || chunk != null);
   }
 
+  static Future<bool?> show({
+    required BuildContext context,
+    String? roomAlias,
+    PublicRoomsChunk? chunk,
+    List<String>? via,
+  }) async {
+    final room = MatrixState.pangeaController.matrixState.client
+        .getRoomById(chunk!.roomId);
+
+    if (room != null && room.membership == Membership.join) {
+      context.go("/rooms?spaceId=${room.id}");
+      return null;
+    }
+
+    return showAdaptiveDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) => PublicRoomBottomSheet(
+        roomAlias: roomAlias,
+        chunk: chunk,
+        via: via,
+        outerContext: context,
+      ),
+    );
+  }
+
   @override
   State<StatefulWidget> createState() => PublicRoomBottomSheetState();
 }
