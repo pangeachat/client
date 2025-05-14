@@ -28,7 +28,6 @@ Map<String, dynamic> restrictedPowerLevels(String userID) => {
         "m.room.tombstone": 100,
       },
       "users": {
-        "@bot:staging.pangea.chat": 50,
         userID: 100,
       },
     };
