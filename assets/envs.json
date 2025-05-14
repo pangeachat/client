@@ -1,1 +1,26 @@
-
+[
+    {
+        "environment": "production",
+        "frontendURL": "https://app.pangea.chat",
+        "synapseURL": "matrix.pangea.chat",
+        "choreoApi": "https://api.pangea.chat",
+        "choreoApiKey": "223d863480cbb439fd9f16538c5b56ea09ac375c5aa7ea4c39cc32211117afae",
+        "rcGoogleKey": "goog_paQMrzFKGzuWZvcMTPkkvIsifJe",
+        "rcIosKey": "appl_DUPqnxuLjkBLzhBPTWeDjqNENuv",
+        "rcOfferingName": "default",
+        "stripeManagementUrl": "https://billing.stripe.com/p/login/dR6dSkf5p6rBc4EcMM",
+        "botName": "@bot:pangea.chat"
+    },
+    {
+        "environment": "staging",
+        "frontendURL": "https://app.staging.pangea.chat",
+        "synapseURL": "matrix.staging.pangea.chat",
+        "choreoApi": "https://api.staging.pangea.chat",
+        "choreoApiKey": "e6fa9fa97031ba0c852efe78457922f278a2fbc109752fe18e465337699e9873",
+        "rcGoogleKey": "goog_paQMrzFKGzuWZvcMTPkkvIsifJe",
+        "rcIosKey": "appl_DUPqnxuLjkBLzhBPTWeDjqNENuv",
+        "rcOfferingName": "test",
+        "stripeManagementUrl": "https://billing.stripe.com/p/login/test_9AQaI8d3O9lmaXe5kk",
+        "botName": "@bot:staging.pangea.chat"
+    }
+]
