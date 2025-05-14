@@ -1,12 +1,21 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart' as sdk;
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
 import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
@@ -17,12 +26,6 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart' as sdk;
-import 'package:matrix/matrix.dart';
 
 enum AddRoomType { chat, subspace }
 
@@ -87,7 +90,7 @@ class _SpaceViewState extends State<SpaceView> {
     // and reload the hierarchy when they come through
     final client = Matrix.of(context).client;
     _roomSubscription ??= client.onSync.stream
-        .where(hasHierarchyUpdate)
+        .where(_hasHierarchyUpdate)
         .listen((update) => loadHierarchy(hasUpdate: true));
     // Pangea#
     super.initState();
@@ -122,6 +125,44 @@ class _SpaceViewState extends State<SpaceView> {
     super.dispose();
   }
 
+  Future<void> _joinDefaultChats() async {
+    if (_discoveredChildren == null) return;
+    final found = List<SpaceRoomsChunk>.from(_discoveredChildren!);
+
+    final List<Future> joinFutures = [];
+    for (final chunk in found) {
+      if (chunk.canonicalAlias == null) continue;
+      final alias = chunk.canonicalAlias!;
+
+      final isDefaultChat = (alias.localpart ?? '')
+              .startsWith(SpaceConstants.announcementsChatAlias) ||
+          (alias.localpart ?? '')
+              .startsWith(SpaceConstants.introductionChatAlias);
+
+      if (!isDefaultChat) continue;
+
+      joinFutures.add(
+        Matrix.of(context).client.joinRoom(alias).then((_) {
+          _discoveredChildren?.remove(chunk);
+        }).catchError((e, s) {
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {
+              'alias': alias,
+              'spaceId': widget.spaceId,
+            },
+          );
+          return null;
+        }),
+      );
+    }
+
+    if (joinFutures.isNotEmpty) {
+      await Future.wait(joinFutures);
+    }
+  }
+
   Future<void> loadHierarchy({hasUpdate = false}) async {
     final room = Matrix.of(context).client.getRoomById(widget.spaceId);
     if (room == null) return;
@@ -132,6 +173,7 @@ class _SpaceViewState extends State<SpaceView> {
 
     try {
       await _loadHierarchy(activeSpace: room, hasUpdate: hasUpdate);
+      await _joinDefaultChats();
     } catch (e, s) {
       Logs().w('Unable to load hierarchy', e, s);
       if (!mounted) return;
@@ -206,12 +248,12 @@ class _SpaceViewState extends State<SpaceView> {
 
       // finally, set the response to the last response for this space
       // and set the current next batch token
-      currentHierarchy = filterHierarchyResponse(activeSpace, response.rooms);
+      currentHierarchy = _filterHierarchyResponse(activeSpace, response.rooms);
       currentNextBatch = response.nextBatch;
     }
 
     _discoveredChildren = currentHierarchy;
-    _discoveredChildren?.sort(sortSpaceChildren);
+    _discoveredChildren?.sort(_sortSpaceChildren);
     _nextBatch = currentNextBatch;
   }
 
@@ -403,7 +445,7 @@ class _SpaceViewState extends State<SpaceView> {
   // Pangea#
 
   // #Pangea
-  bool includeSpaceChild(
+  bool _includeSpaceChild(
     Room space,
     SpaceRoomsChunk hierarchyMember,
   ) {
@@ -421,7 +463,7 @@ class _SpaceViewState extends State<SpaceView> {
     return !isAnalyticsRoom && (isMember || isSuggested);
   }
 
-  List<SpaceRoomsChunk> filterHierarchyResponse(
+  List<SpaceRoomsChunk> _filterHierarchyResponse(
     Room space,
     List<SpaceRoomsChunk> hierarchyResponse,
   ) {
@@ -437,7 +479,7 @@ class _SpaceViewState extends State<SpaceView> {
       );
       if (isDuplicate) continue;
 
-      if (includeSpaceChild(space, child)) {
+      if (_includeSpaceChild(space, child)) {
         filteredChildren.add(child);
       }
     }
@@ -446,7 +488,7 @@ class _SpaceViewState extends State<SpaceView> {
 
   /// Used to filter out sync updates with hierarchy updates for the active
   /// space so that the view can be auto-reloaded in the room subscription
-  bool hasHierarchyUpdate(SyncUpdate update) {
+  bool _hasHierarchyUpdate(SyncUpdate update) {
     final joinTimeline = update.rooms?.join?[widget.spaceId]?.timeline;
     final leaveTimeline = update.rooms?.leave?[widget.spaceId]?.timeline;
     if (joinTimeline == null && leaveTimeline == null) return false;
@@ -461,7 +503,7 @@ class _SpaceViewState extends State<SpaceView> {
     return hasJoinUpdate || hasLeaveUpdate;
   }
 
-  int sortSpaceChildren(
+  int _sortSpaceChildren(
     SpaceRoomsChunk a,
     SpaceRoomsChunk b,
   ) {
@@ -474,19 +516,6 @@ class _SpaceViewState extends State<SpaceView> {
       return 1;
     }
     return 0;
-  }
-
-  List<Room>? get joinedRooms {
-    final room = Matrix.of(context).client.getRoomById(widget.spaceId);
-    if (room == null) return null;
-
-    final spaceChildIds =
-        room.spaceChildren.map((c) => c.roomId).whereType<String>().toSet();
-
-    return room.client.rooms
-        .where((room) => spaceChildIds.contains(room.id))
-        .where((room) => !room.isAnalyticsRoom)
-        .toList();
   }
   // Pangea#
 

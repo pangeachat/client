@@ -1,12 +1,13 @@
-import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import '../../config/themes.dart';
 import '../../utils/url_launcher.dart';
 import '../avatar.dart';
@@ -26,6 +27,31 @@ class PublicRoomDialog extends StatefulWidget {
 
   const PublicRoomDialog({super.key, this.roomAlias, this.chunk, this.via});
   // #Pangea
+  static Future<bool?> show({
+    required BuildContext context,
+    String? roomAlias,
+    PublicRoomsChunk? chunk,
+    List<String>? via,
+  }) async {
+    final room = MatrixState.pangeaController.matrixState.client
+        .getRoomById(chunk!.roomId);
+
+    if (room != null && room.membership == Membership.join) {
+      context.go("/rooms?spaceId=${room.id}");
+      return null;
+    }
+
+    return showAdaptiveDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) => PublicRoomDialog(
+        roomAlias: roomAlias,
+        chunk: chunk,
+        via: via,
+      ),
+    );
+  }
+
   @override
   State<PublicRoomDialog> createState() => PublicRoomDialogState();
 }
@@ -36,20 +62,6 @@ class PublicRoomDialogState extends State<PublicRoomDialog> {
   List<String>? get via => widget.via;
 
   final TextEditingController _codeController = TextEditingController();
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (chunk != null) {
-      final room = MatrixState.pangeaController.matrixState.client
-          .getRoomById(chunk!.roomId);
-
-      if (room != null && room.membership == Membership.join) {
-        context.go("/rooms?spaceId=${room.id}");
-        Navigator.of(context).maybePop();
-      }
-    }
-  }
 
   @override
   void dispose() {
