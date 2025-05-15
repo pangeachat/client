@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/new_group/new_group.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_carousel.dart';
 import 'package:fluffychat/pangea/spaces/utils/space_code.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class NewGroupView extends StatelessWidget {
   final NewGroupController controller;
@@ -131,9 +129,9 @@ class NewGroupView extends StatelessWidget {
                   onFieldSubmitted: (value) {
                     controller.loading ? null : controller.submitAction();
                   },
-                  validator: (value) => value == null || value.isEmpty
-                      ? L10n.of(context).pleaseFillOut
-                      : null,
+                  validator: (value) => controller.canSubmit
+                      ? null
+                      : L10n.of(context).pleaseFillOut,
                   focusNode: controller.focusNode,
                   // Pangea#
                 ),
