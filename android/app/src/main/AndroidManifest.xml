@@ -122,13 +122,16 @@
         </activity>
 
         <!-- #Pangea This prevents Android notifications from coming through -->
-        <!-- <service android:name=".FcmPushService"
+        <service android:name=".FcmPushService"
           android:exported="false">
           <intent-filter>
             <action android:name="com.google.firebase.MESSAGING_EVENT"/>
           </intent-filter>
-        </service> -->
+        </service>
         <!-- Pangea# -->
+        <meta-data
+            android:name="firebase_messaging_auto_init_enabled"
+            android:value="false" />
 
         <service android:name="com.pravera.flutter_foreground_task.service.ForegroundService"
              android:foregroundServiceType="camera|microphone|mediaProjection">

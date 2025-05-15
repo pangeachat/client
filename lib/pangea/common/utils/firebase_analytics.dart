@@ -1,9 +1,8 @@
-import 'package:flutter/widgets.dart';
-
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
+import 'package:flutter/widgets.dart';
+
 import '../../../config/firebase_options.dart';
 
 // PageRoute import
@@ -20,10 +19,12 @@ class GoogleAnalytics {
   static Future<void> initialize() async {
     FirebaseApp app;
     try {
+      debugPrint("initialize GoogleAnalytics");
       app = await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform,
       );
-    } on Exception {
+    } on Exception catch (e) {
+      debugPrint("analytics exception: $e");
       app = Firebase.app();
     }
 

@@ -2,12 +2,14 @@
   "project_info": {
     "project_number": "545984292675",
     "project_id": "pangea-chat-936ee",
-    "storage_bucket": "pangea-chat-936ee.appspot.com"
+    "storage_bucket": "pangea-chat-936ee.appspot.com",
+    "firebase_url": "https://pangea-chat-936ee-default-rtdb.firebaseio.com"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:545984292675:android:d808acce7a80c20bb931f6",
+        "database_url": "https://pangea-chat-936ee-default-rtdb.firebaseio.com",
         "android_client_info": {
           "package_name": "com.talktolearn.chat"
         }
@@ -38,6 +40,9 @@
               }
             }
           ]
+        },
+        "analytics_service": {
+          "status": "ENABLED"
         }
       }
     }
