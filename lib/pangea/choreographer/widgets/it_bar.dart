@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/it_controller.dart';
@@ -14,6 +11,9 @@ import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import '../../common/utils/overlay.dart';
 import '../controllers/it_feedback_controller.dart';
 import '../models/it_response_model.dart';
@@ -104,6 +104,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
           spacing: 8.0,
           children: [
             if (showITInstructionsTooltip)
+              const SizedBox(height: 0),
               const InstructionsInlineTooltip(
                 instructionsEnum: InstructionsEnum.clickBestOption,
                 animate: false,
@@ -116,9 +117,13 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
             Container(
               key: widget.choreographer.itBarLinkAndKey.key,
               decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
                 color: Theme.of(context).colorScheme.surfaceContainer,
               ),
-              padding: const EdgeInsets.fromLTRB(0, 3, 3, 3),
+              padding: const EdgeInsets.all(3),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
