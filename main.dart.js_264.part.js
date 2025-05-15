@@ -561,9 +561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u0b85\u0bb0\u0b9f\u0bcd\u0b9f\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
     },
-    get$joinRoom() {
-      return "\u0b85\u0bb1\u0bc8\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " " + targetName + " \u0b90 \u0b89\u0ba4\u0bc8\u0ba4\u0bcd\u0ba4\u0bbe\u0bb0\u0bcd";
     },
@@ -1196,9 +1193,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf\u0baf\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
-    },
-    get$joinSpace() {
-      return "\u0bb5\u0bbf\u0ba3\u0bcd\u0bb5\u0bc6\u0bb3\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bb5\u0bc1\u0bae\u0bcd";
     },
     get$publicSpaces() {
       return "\u0baa\u0bca\u0ba4\u0bc1 \u0b87\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
@@ -4155,6 +4149,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4299,12 +4296,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "Approve";
     },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
-    },
     get$lemma() {
       return "Lemma";
     },
@@ -4374,6 +4365,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "MEdIyzlSMbM0740gIigJTLpC2b0=");
+})($__dart_deferred_initializers__, "+MF2pWEmIM6IUAwPtQNgWHszHYo=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map

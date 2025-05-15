@@ -561,9 +561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + "\ub2d8\uc774 \ucc44\ud305\uc5d0 \ucc38\uac00\ud568";
     },
-    get$joinRoom() {
-      return "\ubc29 \ucc38\uac00\ud558\uae30";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + "\ub2d8\uc774 " + targetName + "\ub2d8\uc744 \ucd94\ubc29\ud568";
     },
@@ -1196,9 +1193,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "\uc0c8 \uc8fc\uc18c \ub9cc\ub4e4\uae30";
-    },
-    get$joinSpace() {
-      return "\uc2a4\ud398\uc774\uc2a4 \ucc38\uac00";
     },
     get$publicSpaces() {
       return "\uacf5\uac1c \uc2a4\ud398\uc774\uc2a4\ub4e4";
@@ -4155,6 +4149,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4299,12 +4296,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "Approve";
     },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
-    },
     get$lemma() {
       return "Lemma";
     },
@@ -4371,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_247", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "z3jKzIrOWQ6BeK2Ui4viifFd3Sk=");
+})($__dart_deferred_initializers__, "TwX2okuSFzW6x+s1k4Y6QchRIzQ=");
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map

@@ -561,9 +561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u0111\xe3 tham gia cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
-    get$joinRoom() {
-      return "Tham gia ph\xf2ng";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u0111\xe3 \u0111\xe1 " + targetName;
     },
@@ -1196,9 +1193,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "T\u1ea1o \u0111\u1ecba ch\u1ec9 m\u1edbi";
-    },
-    get$joinSpace() {
-      return "Tham gia kh\xf4ng gian";
     },
     get$publicSpaces() {
       return "Kh\xf4ng gian c\xf4ng khai";
@@ -4155,6 +4149,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "\u0110\xe2y l\xe0 t\u1ea5t c\u1ea3 c\xe1c kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p trong ng\xf4n ng\u1eef b\u1ea1n \u0111ang h\u1ecdc! B\u1ea1n s\u1ebd m\u1edf kh\xf3a ch\xfang khi g\u1eb7p ph\u1ea3i trong khi tr\xf2 chuy\u1ec7n. Nh\u1ea5p \u0111\u1ec3 xem chi ti\u1ebft.";
     },
+    get$knockSpaceSuccess() {
+      return "B\u1ea1n \u0111\xe3 y\xeau c\u1ea7u tham gia kh\xf4ng gian n\xe0y! M\u1ed9t qu\u1ea3n tr\u1ecb vi\xean s\u1ebd ph\u1ea3n h\u1ed3i y\xeau c\u1ea7u c\u1ee7a b\u1ea1n khi h\u1ecd nh\u1eadn \u0111\u01b0\u1ee3c n\xf3 \ud83d\ude04";
+    },
     get$joinByCode() {
       return "Tham gia b\u1eb1ng m\xe3";
     },
@@ -4299,12 +4296,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "Ch\u1ea5p thu\u1eadn";
     },
-    get$youHaveKnocked() {
-      return "B\u1ea1n \u0111\xe3 g\xf5 c\u1eeda";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Vui l\xf2ng ch\u1edd cho \u0111\u1ebfn khi ai \u0111\xf3 trong ph\xf2ng m\u1eddi b\u1ea1n.";
-    },
     get$lemma() {
       return "Lemma";
     },
@@ -4371,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_269", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "EPRYF6U5n/muir1LX+qBwWwtTtc=");
+})($__dart_deferred_initializers__, "Qr/DXgUPOnuU0Aoel2O8+hieIMA=");
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map

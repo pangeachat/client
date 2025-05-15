@@ -561,9 +561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " sohbete kat\u0131ld\u0131";
     },
-    get$joinRoom() {
-      return "Odaya kat\u0131l";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + ", " + targetName + " ki\u015fisini att\u0131";
     },
@@ -1196,9 +1193,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Yeni adres olu\u015ftur";
-    },
-    get$joinSpace() {
-      return "Alana kat\u0131l";
     },
     get$publicSpaces() {
       return "Herkese a\xe7\u0131k alanlar";
@@ -4155,6 +4149,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4299,12 +4296,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "Approve";
     },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
-    },
     get$lemma() {
       return "Lemma";
     },
@@ -4374,6 +4365,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_267", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Md8sXDbak/mzBGBSqVGsZEHyP8o=");
+})($__dart_deferred_initializers__, "WLvw9MgGO1hwMazHe6FnV9KfNmQ=");
 ;
 //# sourceMappingURL=main.dart.js_267.part.js.map

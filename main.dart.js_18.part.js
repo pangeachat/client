@@ -574,9 +574,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " joined the chat";
     },
-    get$joinRoom() {
-      return "Join room";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " kicked " + targetName;
     },
@@ -1209,9 +1206,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
     },
     get$publicSpaces() {
       return "Public spaces";
@@ -4168,6 +4162,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4311,12 +4308,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$approve() {
       return "Approve";
-    },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
     },
     get$lemma() {
       return "Lemma";
@@ -4874,9 +4865,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " entrou na conversa";
-    },
-    get$joinRoom() {
-      return "Entrar na sala";
     },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " enxotou " + targetName;
@@ -5505,9 +5493,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewAddress() {
       return "Criar um novo endere\xe7o";
     },
-    get$joinSpace() {
-      return "Ingressar no espa\xe7o";
-    },
     get$publicSpaces() {
       return "Espa\xe7os p\xfablicos";
     },
@@ -5993,9 +5978,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return username + " entrou na conversa";
     },
-    get$joinRoom() {
-      return "Entrar na sala";
-    },
     kicked$2(username, targetName) {
       return username + " expulsou " + targetName;
     },
@@ -6256,6 +6238,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "qhG3j88E1Kc/+I5K9xAOcnmmAfY=");
+})($__dart_deferred_initializers__, "dPK5BhJ4N/onG+wqydwc7f7e0mI=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map

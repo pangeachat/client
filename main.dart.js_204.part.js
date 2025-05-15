@@ -561,9 +561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return username + " ali\u011dis al la babilo";
     },
-    get$joinRoom() {
-      return "Ali\u011di al \u0109ambro";
-    },
     kicked$2(username, targetName) {
       return username + " forpelis uzanton " + targetName;
     },
@@ -1196,9 +1193,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
     },
     get$publicSpaces() {
       return "Public spaces";
@@ -4155,6 +4149,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4299,12 +4296,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "Approve";
     },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
-    },
     get$lemma() {
       return "Lemma";
     },
@@ -4371,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_204", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "DU5IJDyVoYJNq4nZW87S+RrZIYo=");
+})($__dart_deferred_initializers__, "s+36New9ye0WDvPp8vhE281v1OU=");
 ;
 //# sourceMappingURL=main.dart.js_204.part.js.map

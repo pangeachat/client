@@ -568,9 +568,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u52a0\u5165\u4e86\u804a\u5929";
     },
-    get$joinRoom() {
-      return "\u52a0\u5165\u804a\u5929\u5ba4";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u8e22\u51fa\u4e86 " + targetName;
     },
@@ -1203,9 +1200,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "\u65b0\u5efa\u5730\u5740";
-    },
-    get$joinSpace() {
-      return "\u52a0\u5165\u7a7a\u95f4";
     },
     get$publicSpaces() {
       return "\u516c\u5f00\u7a7a\u95f4";
@@ -4162,6 +4156,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4305,12 +4302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$approve() {
       return "Approve";
-    },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
     },
     get$lemma() {
       return "Lemma";
@@ -4898,9 +4889,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u52a0\u5165\u4e86\u804a\u5929\u5ba4";
-    },
-    get$joinRoom() {
-      return "\u52a0\u5165\u804a\u5929\u5ba4";
     },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u8e22\u4e86 " + targetName;
@@ -5535,9 +5523,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewAddress() {
       return "\u5efa\u7acb\u65b0\u5730\u5740";
     },
-    get$joinSpace() {
-      return "\u52a0\u5165\u7a7a\u9593";
-    },
     get$publicSpaces() {
       return "\u516c\u5171\u7a7a\u9593";
     },
@@ -5827,6 +5812,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "SRjghUgZCGtjrmepPUbUZVqSajk=");
+})($__dart_deferred_initializers__, "8iyCOa3Otc5yG4qPWFqGP8tBTbM=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

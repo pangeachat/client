@@ -561,9 +561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u304c\u30c1\u30e3\u30c3\u30c8\u306b\u53c2\u52a0\u3057\u307e\u3057\u305f";
     },
-    get$joinRoom() {
-      return "\u90e8\u5c4b\u306b\u53c2\u52a0";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u306f " + targetName + " \u3092\u30ad\u30c3\u30af\u3057\u307e\u3057\u305f";
     },
@@ -1196,9 +1193,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
     },
     get$publicSpaces() {
       return "Public spaces";
@@ -4155,6 +4149,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4299,12 +4296,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "Approve";
     },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
-    },
     get$lemma() {
       return "Lemma";
     },
@@ -4371,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_245", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "V4DugY8THFYse48a1cSNUBXMegw=");
+})($__dart_deferred_initializers__, "qSUF+ohieaEfOXYeaxoeZSx2GTk=");
 ;
 //# sourceMappingURL=main.dart.js_245.part.js.map

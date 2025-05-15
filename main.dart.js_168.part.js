@@ -562,9 +562,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b \u0627\u0646\u0636\u0645 " + username + " \u0625\u0644\u0649 \u0627\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
     },
-    get$joinRoom() {
-      return "\u0627\u0646\u0636\u0645 \u0644\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " \u0631\u0643\u0644 " + targetName;
     },
@@ -1197,9 +1194,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "\u0625\u0646\u0634\u0627\u0621 \u0639\u0646\u0648\u0627\u0646 \u062c\u062f\u064a\u062f";
-    },
-    get$joinSpace() {
-      return "\u0627\u0646\u0636\u0645 \u0625\u0644\u0649 \u0627\u0644\u0645\u0633\u0627\u062d\u0629";
     },
     get$publicSpaces() {
       return "\u0645\u0633\u0627\u062d\u0629 \u0639\u0627\u0645\u0629";
@@ -4156,6 +4150,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4300,12 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "Approve";
     },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
-    },
     get$lemma() {
       return "Lemma";
     },
@@ -4372,6 +4363,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_168", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ZBqRLDhgK00DyqXrHDImCHsYniw=");
+})($__dart_deferred_initializers__, "4QcfbrDtCCgS52lL+z1xi0jFlE4=");
 ;
 //# sourceMappingURL=main.dart.js_168.part.js.map

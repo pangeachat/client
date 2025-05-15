@@ -561,9 +561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " \u0628\u0647 \u06af\u067e \u067e\u06cc\u0648\u0633\u062a";
     },
-    get$joinRoom() {
-      return "\u067e\u06cc\u0648\u0633\u062a\u0646 \u0628\u0647 \u0627\u062a\u0627\u0642";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " " + targetName + " \u0631\u0627 \u0628\u06cc\u0631\u0648\u0646 \u06a9\u0631\u062f";
     },
@@ -1196,9 +1193,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Create new address";
-    },
-    get$joinSpace() {
-      return "Join space";
     },
     get$publicSpaces() {
       return "Public spaces";
@@ -4155,6 +4149,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4299,12 +4296,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "Approve";
     },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
-    },
     get$lemma() {
       return "Lemma";
     },
@@ -4371,6 +4362,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_215", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "bqYmLV8Lpaf4JQOAWmqo5oytchU=");
+})($__dart_deferred_initializers__, "0u8dAZsJjrwPvzlB14v/6o4f8Ew=");
 ;
 //# sourceMappingURL=main.dart.js_215.part.js.map

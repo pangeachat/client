@@ -562,9 +562,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     joinedTheChat$1(username) {
       return "\ud83d\udc4b " + username + " do\u0142\u0105czy\u0142/-a do czatu";
     },
-    get$joinRoom() {
-      return "Do\u0142\u0105cz do pokoju";
-    },
     kicked$2(username, targetName) {
       return "\ud83d\udc5e " + username + " wyrzuci\u0142/-a " + targetName;
     },
@@ -1197,9 +1194,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$createNewAddress() {
       return "Utw\xf3rz nowy adres";
-    },
-    get$joinSpace() {
-      return "Do\u0142\u0105cz do przestrzeni";
     },
     get$publicSpaces() {
       return "Przestrzenie publiczne";
@@ -4156,6 +4150,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$morphAnalyticsListBody() {
       return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
     },
+    get$knockSpaceSuccess() {
+      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+    },
     get$joinByCode() {
       return "Join by code";
     },
@@ -4300,12 +4297,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "Approve";
     },
-    get$youHaveKnocked() {
-      return "You have knocked";
-    },
-    get$pleaseWaitUntilInvited() {
-      return "Please wait now, until someone from the room invites you.";
-    },
     get$lemma() {
       return "Lemma";
     },
@@ -4372,6 +4363,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_253", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "yFhfrzg8fSsw5VW9+R1+v6npZRw=");
+})($__dart_deferred_initializers__, "t0y6ITXhbqk3FEYF5rzm+Mrbfqs=");
 ;
 //# sourceMappingURL=main.dart.js_253.part.js.map
