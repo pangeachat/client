@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 abstract class AppConfig {
   // #Pangea
@@ -121,7 +119,10 @@ abstract class AppConfig {
       'https://8591d0d863b646feb4f3dda7e5dcab38@o256755.ingest.sentry.io/5243143';
   // Pangea#
   static bool renderHtml = true;
-  static bool hideRedactedEvents = false;
+  // #Pangea
+  // static bool hideRedactedEvents = false;
+  static bool hideRedactedEvents = true;
+  // Pangea#
   static bool hideUnknownEvents = true;
   static bool hideUnimportantStateEvents = true;
   static bool separateChatTypes = false;
