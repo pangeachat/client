@@ -11,6 +11,7 @@ import 'package:shimmer/shimmer.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
 import 'package:fluffychat/pangea/activity_planner/media_enum.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_plan_search_repo.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
@@ -153,10 +154,15 @@ class ActivitySuggestionCarouselState
     showDialog(
       context: context,
       builder: (context) {
-        return ActivitySuggestionDialog(
+        return ActivityPlannerBuilder(
           initialActivity: _currentActivity!,
-          buttonText: L10n.of(context).selectActivity,
           onLaunch: widget.onActivitySelected,
+          builder: (controller) {
+            return ActivitySuggestionDialog(
+              controller: controller,
+              buttonText: L10n.of(context).selectActivity,
+            );
+          },
         );
       },
     );

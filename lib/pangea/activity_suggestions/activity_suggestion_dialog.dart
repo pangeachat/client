@@ -1,54 +1,25 @@
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:matrix/matrix.dart' as sdk;
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card_row.dart';
-import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/utils/client_download_content_extension.dart';
-import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
 class ActivitySuggestionDialog extends StatefulWidget {
-  final ActivityPlanModel initialActivity;
+  final ActivityPlannerBuilderState controller;
   final String buttonText;
-  final Room? room;
-
-  final Function(
-    ActivityPlanModel,
-    Uint8List?,
-    String?,
-  )? onLaunch;
-
-  final Future<void> Function(
-    String,
-    ActivityPlanModel,
-    Uint8List?,
-    String?,
-  )? onEdit;
 
   const ActivitySuggestionDialog({
-    required this.initialActivity,
+    required this.controller,
     required this.buttonText,
-    this.onLaunch,
-    this.onEdit,
-    this.room,
     super.key,
   });
 
@@ -58,218 +29,24 @@ class ActivitySuggestionDialog extends StatefulWidget {
 }
 
 class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
-  bool _isEditing = false;
-  Uint8List? _avatar;
-  String? _imageURL;
-  String? _filename;
-
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _instructionsController = TextEditingController();
-  final TextEditingController _vocabController = TextEditingController();
-  final TextEditingController _participantsController = TextEditingController();
-  final TextEditingController _learningObjectivesController =
-      TextEditingController();
-
-  // storing this separately so that we can dismiss edits,
-  // rather than directly modifying the activity with each change
-  final List<Vocab> _vocab = [];
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-    _titleController.text = widget.initialActivity.title;
-    _learningObjectivesController.text =
-        widget.initialActivity.learningObjective;
-    _instructionsController.text = widget.initialActivity.instructions;
-    _participantsController.text =
-        widget.initialActivity.req.numberOfParticipants.toString();
-    _vocab.addAll(widget.initialActivity.vocab);
-    _imageURL = widget.initialActivity.imageURL;
-    _setAvatarByURL();
-  }
-
-  @override
-  void dispose() {
-    _titleController.dispose();
-    _learningObjectivesController.dispose();
-    _instructionsController.dispose();
-    _vocabController.dispose();
-    _participantsController.dispose();
-    super.dispose();
-  }
-
-  void _setEditing(bool editting) {
-    _isEditing = editting;
-    if (mounted) setState(() {});
-  }
-
-  void _setAvatar() async {
-    final photo = await selectFiles(
-      context,
-      type: FileSelectorType.images,
-      allowMultiple: false,
-    );
-    final bytes = await photo.singleOrNull?.readAsBytes();
-    if (mounted) {
-      setState(() {
-        _avatar = bytes;
-        _filename = photo.singleOrNull?.name;
-      });
-    }
-  }
-
-  Future<void> _setAvatarByURL() async {
-    if (widget.initialActivity.imageURL == null) return;
-    try {
-      if (_avatar == null) {
-        if (widget.initialActivity.imageURL!.startsWith("mxc")) {
-          final client = Matrix.of(context).client;
-          final mxcUri = Uri.parse(widget.initialActivity.imageURL!);
-          final data = await client.downloadMxcCached(mxcUri);
-          _avatar = data;
-          _filename = Uri.encodeComponent(
-            mxcUri.pathSegments.last,
-          );
-        } else {
-          final Response response =
-              await http.get(Uri.parse(widget.initialActivity.imageURL!));
-          _avatar = response.bodyBytes;
-          _filename = Uri.encodeComponent(
-            Uri.parse(widget.initialActivity.imageURL!).pathSegments.last,
-          );
-        }
-      }
-    } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {
-          "imageURL": widget.initialActivity.imageURL,
-        },
-      );
-    }
-  }
-
-  void _clearEdits() {
-    _avatar = null;
-    _filename = null;
-    _setAvatarByURL();
-    _vocab.clear();
-    _vocab.addAll(widget.initialActivity.vocab);
-    if (mounted) setState(() {});
-  }
-
-  ActivityPlanModel get _updatedActivity => ActivityPlanModel(
-        req: widget.initialActivity.req,
-        title: _titleController.text,
-        learningObjective: _learningObjectivesController.text,
-        instructions: _instructionsController.text,
-        vocab: _vocab,
-        imageURL: _imageURL,
-      );
-
-  Future<void> _updateImageURL() async {
-    if (_avatar == null) return;
-    final url = await Matrix.of(context).client.uploadContent(
-          _avatar!,
-          filename: _filename,
-        );
-    if (!mounted) return;
-    setState(() {
-      _imageURL = url.toString();
-    });
-  }
-
-  void _addVocab() {
-    _vocab.insert(
-      0,
-      Vocab(
-        lemma: _vocabController.text.trim(),
-        pos: "",
-      ),
-    );
-    _vocabController.clear();
-    if (mounted) setState(() {});
-  }
-
-  void _removeVocab(int index) {
-    _vocab.removeAt(index);
-    if (mounted) setState(() {});
-  }
-
-  Future<void> _launchActivity() async {
-    await _updateImageURL();
-
-    if (widget.room != null) {
-      await widget.room!.sendActivityPlan(
-        _updatedActivity,
-        avatar: _avatar,
-        filename: _filename,
-      );
-      context.go("/rooms/${widget.room!.id}/invite");
-      return;
-    }
-
-    final client = Matrix.of(context).client;
-    final roomId = await client.createGroupChat(
-      preset: CreateRoomPreset.publicChat,
-      visibility: sdk.Visibility.private,
-      groupName: _updatedActivity.title,
-      initialState: [
-        if (_updatedActivity.imageURL != null)
-          StateEvent(
-            type: EventTypes.RoomAvatar,
-            stateKey: '',
-            content: {
-              "url": _updatedActivity.imageURL,
-            },
-          ),
-        StateEvent(
-          type: EventTypes.RoomPowerLevels,
-          stateKey: '',
-          content: defaultPowerLevels(client.userID!),
-        ),
-      ],
-      enableEncryption: false,
-    );
-
-    Room? room = Matrix.of(context).client.getRoomById(roomId);
-    if (room == null) {
-      await client.waitForRoomInSync(roomId);
-      room = Matrix.of(context).client.getRoomById(roomId);
-      if (room == null) return;
-    }
-
-    await room.sendActivityPlan(
-      _updatedActivity,
-      avatar: _avatar,
-      filename: _filename,
-    );
-
-    context.go("/rooms/$roomId/invite?filter=groups");
-  }
-
-  Future<void> _saveEdits() async {
-    if (!_formKey.currentState!.validate()) return;
-    await _updateImageURL();
-    _setEditing(false);
-    if (widget.onEdit != null) {
-      await widget.onEdit!(
-        widget.initialActivity.bookmarkId,
-        _updatedActivity,
-        _avatar,
-        _filename,
-      );
-    }
-  }
-
-  double get width {
+  double get _width {
     if (FluffyThemes.isColumnMode(context)) {
       return 400.0;
     }
     return MediaQuery.of(context).size.width;
+  }
+
+  Future<void> _launchActivity() async {
+    if (widget.controller.widget.onLaunch != null) {
+      await widget.controller.updateImageURL();
+      widget.controller.widget.onLaunch!.call(
+        widget.controller.updatedActivity,
+        widget.controller.avatar,
+        widget.controller.filename,
+      );
+    } else {
+      debugPrint("launch activity");
+    }
   }
 
   @override
@@ -279,7 +56,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
       alignment: Alignment.topCenter,
       children: [
         Form(
-          key: _formKey,
+          key: widget.controller.formKey,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -294,24 +71,31 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(24.0),
                     ),
-                    width: width,
+                    width: _width,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(24.0),
-                      child: _avatar != null
-                          ? Image.memory(_avatar!, fit: BoxFit.cover)
-                          : _updatedActivity.imageURL != null
-                              ? _updatedActivity.imageURL!.startsWith("mxc")
+                      child: widget.controller.avatar != null
+                          ? Image.memory(
+                              widget.controller.avatar!,
+                              fit: BoxFit.cover,
+                            )
+                          : widget.controller.updatedActivity.imageURL != null
+                              ? widget.controller.updatedActivity.imageURL!
+                                      .startsWith("mxc")
                                   ? MxcImage(
                                       uri: Uri.parse(
-                                        _updatedActivity.imageURL!,
+                                        widget.controller.updatedActivity
+                                            .imageURL!,
                                       ),
-                                      width: width,
+                                      width: _width,
                                       height: 200,
-                                      cacheKey: _updatedActivity.bookmarkId,
+                                      cacheKey: widget.controller
+                                          .updatedActivity.bookmarkId,
                                       fit: BoxFit.cover,
                                     )
                                   : CachedNetworkImage(
-                                      imageUrl: _updatedActivity.imageURL!,
+                                      imageUrl: widget
+                                          .controller.updatedActivity.imageURL!,
                                       fit: BoxFit.cover,
                                       placeholder: (context, url) =>
                                           const Center(
@@ -323,12 +107,12 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                               : null,
                     ),
                   ),
-                  if (_isEditing)
+                  if (widget.controller.isEditing)
                     Positioned(
                       bottom: 8.0,
                       child: InkWell(
                         borderRadius: BorderRadius.circular(90),
-                        onTap: _setAvatar,
+                        onTap: widget.controller.selectAvatar,
                         child: const CircleAvatar(
                           radius: 24.0,
                           child: Icon(
@@ -348,11 +132,11 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                       spacing: 8.0,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if (_isEditing)
+                        if (widget.controller.isEditing)
                           ActivitySuggestionCardRow(
                             icon: Icons.event_note_outlined,
                             child: TextFormField(
-                              controller: _titleController,
+                              controller: widget.controller.titleController,
                               decoration: InputDecoration(
                                 labelText: L10n.of(context).activityTitle,
                               ),
@@ -364,18 +148,19 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                           ActivitySuggestionCardRow(
                             icon: Icons.event_note_outlined,
                             child: Text(
-                              _updatedActivity.title,
+                              widget.controller.updatedActivity.title,
                               style: theme.textTheme.titleLarge
                                   ?.copyWith(fontWeight: FontWeight.bold),
                               maxLines: 6,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                        if (_isEditing)
+                        if (widget.controller.isEditing)
                           ActivitySuggestionCardRow(
                             icon: Symbols.target,
                             child: TextFormField(
-                              controller: _learningObjectivesController,
+                              controller: widget
+                                  .controller.learningObjectivesController,
                               decoration: InputDecoration(
                                 labelText:
                                     L10n.of(context).learningObjectiveLabel,
@@ -388,17 +173,19 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                           ActivitySuggestionCardRow(
                             icon: Symbols.target,
                             child: Text(
-                              _updatedActivity.learningObjective,
+                              widget
+                                  .controller.updatedActivity.learningObjective,
                               maxLines: 6,
                               overflow: TextOverflow.ellipsis,
                               style: theme.textTheme.bodyLarge,
                             ),
                           ),
-                        if (_isEditing)
+                        if (widget.controller.isEditing)
                           ActivitySuggestionCardRow(
                             icon: Symbols.steps,
                             child: TextFormField(
-                              controller: _instructionsController,
+                              controller:
+                                  widget.controller.instructionsController,
                               decoration: InputDecoration(
                                 labelText: L10n.of(context).instructions,
                               ),
@@ -410,17 +197,18 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                           ActivitySuggestionCardRow(
                             icon: Symbols.steps,
                             child: Text(
-                              _updatedActivity.instructions,
+                              widget.controller.updatedActivity.instructions,
                               maxLines: 8,
                               overflow: TextOverflow.ellipsis,
                               style: theme.textTheme.bodyLarge,
                             ),
                           ),
-                        if (_isEditing)
+                        if (widget.controller.isEditing)
                           ActivitySuggestionCardRow(
                             icon: Icons.group_outlined,
                             child: TextFormField(
-                              controller: _participantsController,
+                              controller:
+                                  widget.controller.participantsController,
                               decoration: InputDecoration(
                                 labelText: L10n.of(context).classRoster,
                               ),
@@ -448,12 +236,13 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                             icon: Icons.group_outlined,
                             child: Text(
                               L10n.of(context).countParticipants(
-                                _updatedActivity.req.numberOfParticipants,
+                                widget.controller.updatedActivity.req
+                                    .numberOfParticipants,
                               ),
                               style: theme.textTheme.bodyLarge,
                             ),
                           ),
-                        if (_isEditing)
+                        if (widget.controller.isEditing)
                           ActivitySuggestionCardRow(
                             icon: Symbols.dictionary,
                             child: ConstrainedBox(
@@ -463,7 +252,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                                 child: Wrap(
                                   spacing: 4.0,
                                   runSpacing: 4.0,
-                                  children: _vocab
+                                  children: widget.controller.vocab
                                       .mapIndexed(
                                         (i, vocab) => Container(
                                           padding: const EdgeInsets.symmetric(
@@ -479,7 +268,8 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                                           child: MouseRegion(
                                             cursor: SystemMouseCursors.click,
                                             child: GestureDetector(
-                                              onTap: () => _removeVocab(i),
+                                              onTap: () => widget.controller
+                                                  .removeVocab(i),
                                               child: Row(
                                                 spacing: 4.0,
                                                 mainAxisSize: MainAxisSize.min,
@@ -510,7 +300,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                                 child: Wrap(
                                   spacing: 4.0,
                                   runSpacing: 4.0,
-                                  children: _vocab
+                                  children: widget.controller.vocab
                                       .map(
                                         (vocab) => Container(
                                           padding: const EdgeInsets.symmetric(
@@ -534,7 +324,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                               ),
                             ),
                           ),
-                        if (_isEditing)
+                        if (widget.controller.isEditing)
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: Row(
@@ -542,12 +332,14 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                               children: [
                                 Expanded(
                                   child: TextFormField(
-                                    controller: _vocabController,
+                                    controller:
+                                        widget.controller.vocabController,
                                     decoration: InputDecoration(
                                       hintText: L10n.of(context).addVocabulary,
                                     ),
                                     maxLines: 1,
-                                    onFieldSubmitted: (_) => _addVocab(),
+                                    onFieldSubmitted: (_) =>
+                                        widget.controller.addVocab(),
                                   ),
                                 ),
                                 IconButton(
@@ -556,7 +348,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                                       const BoxConstraints(), // override default min size of 48px
                                   iconSize: 16.0,
                                   icon: const Icon(Icons.add_outlined),
-                                  onPressed: _addVocab,
+                                  onPressed: widget.controller.addVocab,
                                 ),
                               ],
                             ),
@@ -571,10 +363,10 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                 child: Row(
                   spacing: 6.0,
                   children: [
-                    if (_isEditing && widget.onEdit != null)
+                    if (widget.controller.isEditing)
                       Expanded(
                         child: ElevatedButton(
-                          onPressed: _saveEdits,
+                          onPressed: widget.controller.saveEdits,
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size.zero,
                             padding: const EdgeInsets.all(6.0),
@@ -595,24 +387,13 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () async {
-                            if (!_formKey.currentState!.validate()) {
+                            if (!widget.controller.formKey.currentState!
+                                .validate()) {
                               return;
                             }
                             final resp = await showFutureLoadingDialog(
                               context: context,
-                              future: () async {
-                                if (widget.onLaunch != null) {
-                                  await _updateImageURL();
-
-                                  widget.onLaunch!.call(
-                                    _updatedActivity,
-                                    _avatar,
-                                    _filename,
-                                  );
-                                } else {
-                                  await _launchActivity();
-                                }
-                              },
+                              future: _launchActivity,
                             );
 
                             if (resp.isError) return;
@@ -634,12 +415,12 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                           ),
                         ),
                       ),
-                    if (_isEditing)
+                    if (widget.controller.isEditing)
                       GestureDetector(
                         child: const Icon(Icons.close_outlined, size: 16.0),
                         onTap: () {
-                          _clearEdits();
-                          _setEditing(false);
+                          widget.controller.clearEdits();
+                          widget.controller.setEditing(false);
                         },
                       )
                     else
@@ -652,7 +433,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                             const BoxConstraints(), // override default min size of 48px
                         iconSize: 24.0,
                         icon: const Icon(Icons.edit_outlined),
-                        onPressed: () => _setEditing(true),
+                        onPressed: () => widget.controller.setEditing(true),
                       ),
                   ],
                 ),
@@ -676,9 +457,9 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
       duration: FluffyThemes.animationDuration,
       child: ConstrainedBox(
         constraints: FluffyThemes.isColumnMode(context)
-            ? BoxConstraints(maxWidth: width)
+            ? BoxConstraints(maxWidth: _width)
             : BoxConstraints(
-                maxWidth: width,
+                maxWidth: _width,
                 maxHeight: MediaQuery.of(context).size.height,
               ),
         child: ClipRRect(
