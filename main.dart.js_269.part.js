@@ -4161,12 +4161,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseMorphsInstructionsBody() {
       return "Nh\u1ea5p v\xe0o c\xe1c m\u1ea3nh gh\xe9p cho c\xe1c c\xe2u h\u1ecfi ng\u1eef ph\xe1p!";
     },
-    get$inviteAndLaunch() {
-      return "Kh\u1edfi \u0111\u1ed9ng v\xe0 m\u1eddi";
-    },
-    get$createOwnChat() {
-      return "T\u1ea1o tr\xf2 chuy\u1ec7n c\u1ee7a ri\xeang b\u1ea1n";
-    },
     get$pleaseEnterInt() {
       return "Vui l\xf2ng nh\u1eadp m\u1ed9t s\u1ed1";
     },
@@ -4224,14 +4218,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createActivity() {
       return "T\u1ea1o ho\u1ea1t \u0111\u1ed9ng";
     },
-    get$startChat() {
-      return "B\u1eaft \u0111\u1ea7u tr\xf2 chuy\u1ec7n";
-    },
     get$translationProblem() {
       return "V\u1ea5n \u0111\u1ec1 d\u1ecbch thu\u1eadt";
-    },
-    get$publicSpacesTitle() {
-      return "C\u1ed9ng \u0111\u1ed3ng h\u1ecdc t\u1eadp";
     },
     get$askToJoin() {
       return "Y\xeau c\u1ea7u tham gia";
@@ -4347,6 +4335,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$defaultOption() {
       return "Default";
     },
+    get$chatWithActivities() {
+      return "Chat with activities";
+    },
+    get$findYourPeople() {
+      return "Find your people";
+    },
+    get$launch() {
+      return "Launch";
+    },
+    get$launchActivityToChats() {
+      return "Launch activity to chats";
+    },
+    get$searchChats() {
+      return "Search chats";
+    },
+    get$selectChats() {
+      return "Select chats";
+    },
+    get$selectChatToStart() {
+      return "Complete! Select a chat to start";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4362,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_269", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Qr/DXgUPOnuU0Aoel2O8+hieIMA=");
+})($__dart_deferred_initializers__, "SC4QZ/ABDJeHhA2FKYixqZN+tPE=");
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map

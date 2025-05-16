@@ -4161,12 +4161,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseMorphsInstructionsBody() {
       return "Click the puzzle pieces for grammar questions!";
     },
-    get$inviteAndLaunch() {
-      return "Launch and invite";
-    },
-    get$createOwnChat() {
-      return "Create your own chat";
-    },
     get$pleaseEnterInt() {
       return "Please enter a number";
     },
@@ -4224,14 +4218,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createActivity() {
       return "Create activity";
     },
-    get$startChat() {
-      return "Start a chat";
-    },
     get$translationProblem() {
       return "Translation problem";
-    },
-    get$publicSpacesTitle() {
-      return "Learning communities";
     },
     get$askToJoin() {
       return "Ask to join";
@@ -4347,6 +4335,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$defaultOption() {
       return "Default";
     },
+    get$chatWithActivities() {
+      return "Chat with activities";
+    },
+    get$findYourPeople() {
+      return "Find your people";
+    },
+    get$launch() {
+      return "Launch";
+    },
+    get$launchActivityToChats() {
+      return "Launch activity to chats";
+    },
+    get$searchChats() {
+      return "Search chats";
+    },
+    get$selectChats() {
+      return "Select chats";
+    },
+    get$selectChatToStart() {
+      return "Complete! Select a chat to start";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4362,6 +4371,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_247", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "TwX2okuSFzW6x+s1k4Y6QchRIzQ=");
+})($__dart_deferred_initializers__, "yTuJnoZm5+D2LV5IFHQYCjco2zM=");
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map
