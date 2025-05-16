@@ -103,11 +103,11 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
         child: Column(
           spacing: 8.0,
           children: [
-            if (showITInstructionsTooltip) const SizedBox(height: 0),
-            const InstructionsInlineTooltip(
-              instructionsEnum: InstructionsEnum.clickBestOption,
-              animate: false,
-            ),
+            if (showITInstructionsTooltip)
+              const InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.clickBestOption,
+                animate: false,
+              ),
             if (showTranslationsChoicesTooltip)
               const InstructionsInlineTooltip(
                 instructionsEnum: InstructionsEnum.translationChoices,
