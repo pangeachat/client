@@ -5,22 +5,24 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
 import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
+import 'package:fluffychat/pangea/activity_suggestions/activity_room_selection.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class ActivityPlanCard extends StatefulWidget {
   final ActivityPlannerBuilderState controller;
-  final VoidCallback onChangeBookmarkStatus;
 
   const ActivityPlanCard({
     super.key,
     required this.controller,
-    required this.onChangeBookmarkStatus,
   });
 
   @override
@@ -40,7 +42,6 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
     } finally {
       if (mounted) {
         setState(() {});
-        widget.onChangeBookmarkStatus();
       }
     }
   }
@@ -60,12 +61,44 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
     } finally {
       if (mounted) {
         setState(() {});
-        widget.onChangeBookmarkStatus();
       }
     }
   }
 
-  Future<void> _onLaunch() async {}
+  Future<void> _onLaunch() async {
+    if (widget.controller.room != null) {
+      final resp = await showFutureLoadingDialog(
+        context: context,
+        future: widget.controller.launchToRoom,
+      );
+      if (!resp.isError) {
+        context.go("/rooms/${widget.controller.room!.id}");
+      }
+      return;
+    }
+
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return FullWidthDialog(
+          dialogContent: DecoratedBox(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+            ),
+            child: ActivityRoomSelection(
+              controller: widget.controller,
+              backButton: IconButton(
+                onPressed: Navigator.of(context).pop,
+                icon: const Icon(Icons.close),
+              ),
+            ),
+          ),
+          maxWidth: 400.0,
+          maxHeight: 650.0,
+        );
+      },
+    );
+  }
 
   bool get _isBookmarked => BookmarkedActivitiesRepo.isBookmarked(
         widget.controller.updatedActivity,

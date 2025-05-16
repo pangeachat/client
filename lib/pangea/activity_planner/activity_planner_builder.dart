@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -16,6 +18,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 class ActivityPlannerBuilder extends StatefulWidget {
   final ActivityPlanModel initialActivity;
   final String? initialFilename;
+  final Room? room;
+
   final Widget Function(ActivityPlannerBuilderState) builder;
 
   final Future<void> Function(
@@ -25,19 +29,13 @@ class ActivityPlannerBuilder extends StatefulWidget {
     String?,
   )? onEdit;
 
-  final Function(
-    ActivityPlanModel,
-    Uint8List?,
-    String?,
-  )? onLaunch;
-
   const ActivityPlannerBuilder({
     super.key,
     required this.initialActivity,
-    required this.builder,
     this.initialFilename,
+    this.room,
+    required this.builder,
     this.onEdit,
-    this.onLaunch,
   });
 
   @override
@@ -76,6 +74,8 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     participantsController.dispose();
     super.dispose();
   }
+
+  Room? get room => widget.room;
 
   ActivityPlanModel get updatedActivity {
     final int participants = int.tryParse(participantsController.text.trim()) ??
@@ -217,6 +217,15 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
         isEditing = false;
       });
     }
+  }
+
+  Future<void> launchToRoom() async {
+    return widget.room?.sendActivityPlan(
+      updatedActivity,
+      avatar: avatar,
+      filename: filename,
+      avatarURL: imageURL,
+    );
   }
 
   @override

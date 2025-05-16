@@ -101,6 +101,7 @@ class BookmarkedActivitiesListState extends State<BookmarkedActivitiesList> {
                       return ActivityPlannerBuilder(
                         initialActivity: activity,
                         onEdit: _onEdit,
+                        room: widget.room,
                         builder: (controller) {
                           return ActivitySuggestionDialog(
                             controller: controller,

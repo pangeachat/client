@@ -57,10 +57,10 @@ class ActivityGeneratorView extends StatelessWidget {
           return ActivityPlannerBuilder(
             initialActivity: controller.activities![index],
             initialFilename: controller.filename,
+            room: controller.room,
             builder: (c) {
               return ActivityPlanCard(
                 controller: c,
-                onChangeBookmarkStatus: controller.update,
               );
             },
           );

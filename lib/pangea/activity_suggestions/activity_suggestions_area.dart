@@ -135,6 +135,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     builder: (context) {
                       return ActivityPlannerBuilder(
                         initialActivity: activity,
+                        room: widget.room,
                         builder: (controller) {
                           return ActivitySuggestionDialog(
                             controller: controller,

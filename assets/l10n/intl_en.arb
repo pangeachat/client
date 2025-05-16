@@ -4939,5 +4939,9 @@
   "defaultOption": "Default",
   "chatWithActivities": "Chat with activities",
   "findYourPeople": "Find your people",
-  "launch": "Launch"
+  "launch": "Launch",
+  "launchActivityToChats": "Launch activity to chats",
+  "searchChats": "Search chats",
+  "selectChats": "Select chats",
+  "selectChatToStart": "Complete! Select a chat to start"
 }
