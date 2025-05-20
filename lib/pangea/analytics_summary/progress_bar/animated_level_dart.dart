@@ -1,9 +1,8 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:flutter/material.dart';
 
 class AnimatedLevelBar extends StatefulWidget {
   final double height;
@@ -95,14 +94,6 @@ class AnimatedLevelBarState extends State<AnimatedLevelBar>
                 borderRadius: const BorderRadius.all(
                   Radius.circular(AppConfig.borderRadius),
                 ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withAlpha(50),
-                    spreadRadius: 0,
-                    blurRadius: 5,
-                    offset: const Offset(5, 0),
-                  ),
-                ],
               ),
             ),
             Positioned(
