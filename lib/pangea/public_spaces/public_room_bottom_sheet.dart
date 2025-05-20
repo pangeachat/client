@@ -1,16 +1,14 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:go_router/go_router.dart';
-import 'package:material_symbols_icons/symbols.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart';
 
 class PublicRoomBottomSheet extends StatefulWidget {
   final String? roomAlias;
@@ -208,6 +206,7 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                           child: Column(
                             spacing: 16.0,
                             mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
                               Row(
                                 spacing: 8.0,
@@ -226,6 +225,7 @@ class PublicRoomBottomSheetState extends State<PublicRoomBottomSheet> {
                                     child: Text(
                                       chunk!.topic!,
                                       softWrap: true,
+                                      textAlign: TextAlign.start,
                                       maxLines: null,
                                     ),
                                   ),
