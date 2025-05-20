@@ -70,6 +70,10 @@ class PermissionsListTile extends StatelessWidget {
         // #Pangea
         case EventTypes.SpaceChild:
           return L10n.of(context).spaceChildPermission;
+        case EventTypes.RoomPinnedEvents:
+          return L10n.of(context).pinMessages;
+        case EventTypes.RoomJoinRules:
+          return L10n.of(context).setJoinRules;
         // Pangea#
       }
     }
