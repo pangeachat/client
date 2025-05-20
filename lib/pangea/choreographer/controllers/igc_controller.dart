@@ -104,7 +104,9 @@ class IgcController {
       }
 
       final IGCTextData igcTextDataResponse =
-          await _igcTextDataCache[reqBody.hashCode]!.data;
+          await _igcTextDataCache[reqBody.hashCode]!
+              .data
+              .timeout((const Duration(seconds: 10)));
 
       // this will happen when the user changes the input while igc is fetching results
       if (igcTextDataResponse.originalInput != choreographer.currentText) {
@@ -202,7 +204,9 @@ class IgcController {
     }
 
     choreographer.chatController.inputFocus.unfocus();
-    MatrixState.pAnyState.closeAllOverlays(RegExp(r'span_card_overlay_\d+'));
+    MatrixState.pAnyState.closeAllOverlays(
+      filter: RegExp(r'span_card_overlay_\d+'),
+    );
     OverlayUtil.showPositionedCard(
       overlayKey: "span_card_overlay_$firstMatchIndex",
       context: context,

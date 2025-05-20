@@ -25,7 +25,7 @@ import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.da
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
-  final GetStorage analyticsBox = GetStorage("analytics_storage");
+  static final GetStorage analyticsBox = GetStorage("analytics_storage");
   late PangeaController _pangeaController;
   late PracticeSelectionRepo perMessage;
 
@@ -202,15 +202,11 @@ class GetAnalyticsController extends BaseController {
         ),
       );
 
-  Future<void> _onLevelUp(final int lowerLevel, final int upperLevel) async {
-    final result = await _generateLevelUpAnalyticsAndSaveToStateEvent(
-      lowerLevel,
-      upperLevel,
-    );
+  void _onLevelUp(final int lowerLevel, final int upperLevel) {
     setState({
       'level_up': constructListModel.level,
-      'analytics_room_id': _client.analyticsRoomLocal(_l2!)?.id,
-      "construct_summary": result,
+      'upper_level': upperLevel,
+      'lower_level': lowerLevel,
     });
   }
 
@@ -279,6 +275,15 @@ class GetAnalyticsController extends BaseController {
       return {};
     }
   }
+
+  Future<void> clearMessagesCache() async =>
+      analyticsBox.remove(PLocalKey.messagesSinceUpdate);
+
+  Future<void> setMessagesCache(Map<dynamic, dynamic> cacheValue) async =>
+      analyticsBox.write(
+        PLocalKey.messagesSinceUpdate,
+        cacheValue,
+      );
 
   /// A flat list of all locally cached construct uses
   List<OneConstructUse> get _locallyCachedConstructs =>
@@ -465,7 +470,7 @@ class GetAnalyticsController extends BaseController {
     }
   }
 
-  Future<ConstructSummary?> _generateLevelUpAnalyticsAndSaveToStateEvent(
+  Future<ConstructSummary?> generateLevelUpAnalytics(
     final int lowerLevel,
     final int upperLevel,
   ) async {
@@ -521,24 +526,22 @@ class GetAnalyticsController extends BaseController {
       ErrorHandler.logError(e: e, data: {'e': e});
       return null;
     }
+
     try {
-      final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
+      final Room? analyticsRoom = await _client.getMyAnalyticsRoom(_l2!);
       if (analyticsRoom == null) {
-        ErrorHandler.logError(
-          data: {'message': "Analytics room not found for user"},
-        );
-        return null;
+        throw "Analytics room not found for user";
       }
 
       // don't await this, just return the original response
       _saveConstructSummaryResponseToStateEvent(
         summary,
       );
-    } catch (e) {
+    } catch (e, s) {
       debugPrint("Error saving construct summary room: $e");
-      ErrorHandler.logError(e: e, data: {'e': e});
-      return null;
+      ErrorHandler.logError(e: e, s: s, data: {'e': e});
     }
+
     return summary;
   }
 }

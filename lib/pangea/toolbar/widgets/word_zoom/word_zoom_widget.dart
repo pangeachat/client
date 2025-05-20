@@ -10,7 +10,6 @@ import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_emoji_row.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
@@ -22,14 +21,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 class WordZoomWidget extends StatelessWidget {
   final PangeaToken token;
   final PangeaMessageEvent messageEvent;
-  final TtsController tts;
   final MessageOverlayController overlayController;
 
   const WordZoomWidget({
     super.key,
     required this.token,
     required this.messageEvent,
-    required this.tts,
     required this.overlayController,
   });
 
@@ -69,11 +66,18 @@ class WordZoomWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   //@ggurdin - might need to play with size to properly center
-                  IconButton(
-                    onPressed: () => overlayController.updateSelectedSpan(
-                      token.text,
+                  SizedBox(
+                    width: 24.0,
+                    height: 24.0,
+                    child: IconButton(
+                      onPressed: () => overlayController.updateSelectedSpan(
+                        token.text,
+                      ),
+                      icon: const Icon(Icons.close),
+                      style: IconButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                      ),
                     ),
-                    icon: const Icon(Icons.close),
                   ),
                   LemmaWidget(
                     token: _selectedToken,
@@ -86,7 +90,6 @@ class WordZoomWidget extends StatelessWidget {
                       debugPrint("what are we doing edits with?");
                       _onEditDone();
                     },
-                    tts: tts,
                     overlayController: overlayController,
                   ),
                   ConstructXpWidget(
@@ -161,8 +164,9 @@ class WordZoomWidget extends StatelessWidget {
             Wrap(
               alignment: WrapAlignment.center,
               crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 8.0,
               children: [
-                if (!_selectedToken.doesLemmaTextMatchTokenText) ...[
+                ...[
                   Text(
                     _selectedToken.text.content,
                     style: Theme.of(context).textTheme.bodyLarge,
@@ -170,23 +174,10 @@ class WordZoomWidget extends StatelessWidget {
                   ),
                   WordAudioButton(
                     text: _selectedToken.text.content,
-                    isSelected:
-                        MessageMode.listening == overlayController.toolbarMode,
                     baseOpacity: 0.4,
-                    callbackOverride: overlayController.hideWordCardContent &&
-                            overlayController.practiceSelection
-                                    ?.hasActiveActivityByToken(
-                                  MessageMode.listening.associatedActivityType!,
-                                  _selectedToken,
-                                ) ==
-                                true &&
-                            overlayController.hideWordCardContent
-                        ? () => overlayController
-                            .updateToolbarMode(MessageMode.listening)
-                        : null,
                     uniqueID: "word-zoom-audio-${_selectedToken.text.content}",
                     langCode: overlayController
-                        .pangeaMessageEvent?.messageDisplayLangCode,
+                        .pangeaMessageEvent!.messageDisplayLangCode,
                   ),
                 ],
                 ..._selectedToken.morphsBasicallyEligibleForPracticeByPriority
