@@ -1,10 +1,7 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_summary/level_bar_popup.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class LevelBadge extends StatelessWidget {
   final int level;
@@ -31,29 +28,14 @@ class LevelBadge extends StatelessWidget {
           color: Theme.of(context).colorScheme.surfaceBright,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CircleAvatar(
-              backgroundColor: AppConfig.gold,
-              radius: 8,
-              child: Icon(
-                size: 12,
-                Icons.star,
-                color: Theme.of(context).colorScheme.surfaceBright,
-                weight: 1000,
-              ),
-            ),
-            const SizedBox(width: 4),
+        child: 
             Text(
-              L10n.of(context).levelShort(level),
+          "⭐ ${L10n.of(context).levelShort(level)}",
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
