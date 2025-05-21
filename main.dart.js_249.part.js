@@ -1293,15 +1293,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     adminLevel$1(level) {
       return "" + level + " - P\u0101rvald\u012bt\u0101js";
     },
-    get$changeGeneralChatSettings() {
-      return "Main\u012bt visp\u0101r\u0113jos t\u0113rz\u0113\u0161anas iestat\u012bjumus";
-    },
-    get$inviteOtherUsers() {
-      return "Uzaicin\u0101t \u0161aj\u0101 t\u0113rz\u0113\u0161an\u0101 citus lietot\u0101jus";
-    },
-    get$changeTheChatPermissions() {
-      return "Main\u012bt t\u0113rz\u0113\u0161anas at\u013caujas";
-    },
     get$changeTheVisibilityOfChatHistory() {
       return "Main\u012bt t\u0113rz\u0113\u0161anas v\u0113stures redzam\u012bbu";
     },
@@ -1310,9 +1301,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendRoomNotifications() {
       return "S\u016bt\u012bt @istaba pazi\u0146ojumus";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Main\u012bt t\u0113rz\u0113\u0161anas aprakstu";
     },
     get$chatPermissionsDescription() {
       return "Noteikt, kur\u0161 sp\u0113ka l\u012bmenis ir nepiecie\u0161ams noteikt\u0101m darb\u012bb\u0101m \u0161aj\u0101 t\u0113rz\u0113\u0161an\u0101. Sp\u0113ka l\u012bme\u0146i 0, 50 un 100 parasti atbilst lietot\u0101jiem, moderatoriem un p\u0101rvald\u012bt\u0101jiem, bet ir iesp\u0113jams jebk\u0101ds iedal\u012bjums.";
@@ -4281,6 +4269,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     get$approve() {
       return "Approve";
     },
@@ -4356,6 +4350,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectChatToStart() {
       return "Complete! Select a chat to start";
     },
+    get$configureSpace() {
+      return "Configure space";
+    },
+    get$pinMessages() {
+      return "Pin messages";
+    },
+    get$setJoinRules() {
+      return "Set join rules";
+    },
+    get$changeGeneralSettings() {
+      return "Change general settings";
+    },
+    get$inviteOtherUsersToRoom() {
+      return "Invite other users";
+    },
+    get$changeTheNameOfTheSpace() {
+      return "Change the name of the space";
+    },
+    get$changeTheDescription() {
+      return "Change the description";
+    },
+    get$changeThePermissions() {
+      return "Change the permissions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4389,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_249", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "TCdYwl/wGkA9U1m+9QCXLSrzCM8=");
+})($__dart_deferred_initializers__, "yS/k9oAm8GoSWqqHPS+SEefeQPI=");
 ;
 //# sourceMappingURL=main.dart.js_249.part.js.map

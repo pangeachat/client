@@ -1293,15 +1293,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     adminLevel$1(level) {
       return "" + level + " - Beheerder";
     },
-    get$changeGeneralChatSettings() {
-      return "Algemene chat instellingen wijzigen";
-    },
-    get$inviteOtherUsers() {
-      return "Personen voor deze chat uitnodigen";
-    },
-    get$changeTheChatPermissions() {
-      return "Chat-rechten wijzigen";
-    },
     get$changeTheVisibilityOfChatHistory() {
       return "Zichtbaarheid van de chat-geschiedenis wijzigen";
     },
@@ -1310,9 +1301,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendRoomNotifications() {
       return "@room-meldingen versturen";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Chatomschrijving wijzigen";
     },
     get$chatPermissionsDescription() {
       return "Stel het gewenste rechten-niveau in voor bepaalde acties in deze chat. Het rechten-niveau 0, 50 en 100 zijn gebruikelijk voor deelnemer, moderator en beheerder, maar elke verdeling is mogelijk.";
@@ -4281,6 +4269,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     get$approve() {
       return "Approve";
     },
@@ -4356,6 +4350,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectChatToStart() {
       return "Complete! Select a chat to start";
     },
+    get$configureSpace() {
+      return "Configure space";
+    },
+    get$pinMessages() {
+      return "Pin messages";
+    },
+    get$setJoinRules() {
+      return "Set join rules";
+    },
+    get$changeGeneralSettings() {
+      return "Change general settings";
+    },
+    get$inviteOtherUsersToRoom() {
+      return "Invite other users";
+    },
+    get$changeTheNameOfTheSpace() {
+      return "Change the name of the space";
+    },
+    get$changeTheDescription() {
+      return "Change the description";
+    },
+    get$changeThePermissions() {
+      return "Change the permissions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4389,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_252", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "jiyq6eQB+ab9wvRsgb7wpiis6GE=");
+})($__dart_deferred_initializers__, "YWZSKd2dujTq3U5vEnClAKroHRQ=");
 ;
 //# sourceMappingURL=main.dart.js_252.part.js.map

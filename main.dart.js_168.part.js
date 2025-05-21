@@ -1294,15 +1294,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     adminLevel$1(level) {
       return "" + level + " - \u0645\u062f\u064a\u0631";
     },
-    get$changeGeneralChatSettings() {
-      return "\u062a\u063a\u064a\u064a\u0631 \u0625\u0639\u062f\u0627\u062f\u0627\u062a \u0627\u0644\u062f\u0631\u062f\u0634\u0629 \u0627\u0644\u0639\u0627\u0645\u0629";
-    },
-    get$inviteOtherUsers() {
-      return "\u062f\u0639\u0648\u0629 \u0645\u0633\u062a\u062e\u062f\u0645\u064a\u0646 \u0622\u062e\u0631\u064a\u0646 \u0625\u0644\u0649 \u0647\u0630\u0647 \u0627\u0644\u062f\u0631\u062f\u0634\u0629";
-    },
-    get$changeTheChatPermissions() {
-      return "\u062a\u063a\u064a\u064a\u0631 \u0623\u0630\u0648\u0646\u0627\u062a \u0627\u0644\u062f\u0631\u062f\u0634\u0629";
-    },
     get$changeTheVisibilityOfChatHistory() {
       return "\u062a\u063a\u064a\u064a\u0631 \u0631\u0624\u064a\u0629 \u0633\u062c\u0644 \u0627\u0644\u062f\u0631\u062f\u0634\u0629";
     },
@@ -1311,9 +1302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendRoomNotifications() {
       return "\u0625\u0631\u0633\u0627\u0644 \u0625\u0634\u0639\u0627\u0631\u0627\u062a @room";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "\u062a\u063a\u064a\u064a\u0631 \u0648\u0635\u0641 \u0627\u0644\u062f\u0631\u062f\u0634\u0629";
     },
     get$chatPermissionsDescription() {
       return "\u202a\u062d\u062f\u062f \u0645\u0633\u062a\u0648\u0649 \u0627\u0644\u0635\u0644\u0627\u062d\u064a\u0629 \u0627\u0644\u0636\u0631\u0648\u0631\u064a \u0644\u0625\u062c\u0631\u0627\u0621\u0627\u062a \u0645\u0639\u064a\u0646\u0629 \u0641\u064a \u0647\u0630\u0647 \u0627\u0644\u062f\u0631\u062f\u0634\u0629. \u0639\u0627\u062f\u0629 \u0645\u0627 \u062a\u0645\u062b\u0644 \u0645\u0633\u062a\u0648\u064a\u0627\u062a \u0627\u0644\u0635\u0644\u0627\u062d\u064a\u0629 0 \u0648 50 \u0648 100 \u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645\u064a\u0646 \u0648\u0627\u0644\u0645\u0634\u0631\u0641\u064a\u0646 \u0648\u0644\u0643\u0646 \u0623\u064a \u062a\u062f\u0631\u062c \u0645\u0645\u0643\u0646.";
@@ -4282,6 +4270,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     get$approve() {
       return "Approve";
     },
@@ -4357,6 +4351,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectChatToStart() {
       return "Complete! Select a chat to start";
     },
+    get$configureSpace() {
+      return "Configure space";
+    },
+    get$pinMessages() {
+      return "Pin messages";
+    },
+    get$setJoinRules() {
+      return "Set join rules";
+    },
+    get$changeGeneralSettings() {
+      return "Change general settings";
+    },
+    get$inviteOtherUsersToRoom() {
+      return "Invite other users";
+    },
+    get$changeTheNameOfTheSpace() {
+      return "Change the name of the space";
+    },
+    get$changeTheDescription() {
+      return "Change the description";
+    },
+    get$changeThePermissions() {
+      return "Change the permissions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4372,6 +4390,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_168", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "fux53gl3t6tbQzCMjfN1TwYrYI8=");
+})($__dart_deferred_initializers__, "9mJq/Nm0C7XUXlGu+vCjq/L1zwU=");
 ;
 //# sourceMappingURL=main.dart.js_168.part.js.map

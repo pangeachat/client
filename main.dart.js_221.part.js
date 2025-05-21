@@ -1293,15 +1293,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     adminLevel$1(level) {
       return "" + level + " - Riarach\xe1n";
     },
-    get$changeGeneralChatSettings() {
-      return "Athraigh socruithe ginear\xe1lta comhr\xe1";
-    },
-    get$inviteOtherUsers() {
-      return "Tabhair cuireadh d'\xfas\xe1ideoir\xed eile chuig an gcomhr\xe1 seo";
-    },
-    get$changeTheChatPermissions() {
-      return "Athraigh na ceadanna comhr\xe1";
-    },
     get$changeTheVisibilityOfChatHistory() {
       return "Athraigh infheictheacht stair an chomhr\xe1";
     },
@@ -1310,9 +1301,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendRoomNotifications() {
       return "Seol f\xf3gra\xed @room";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Athraigh an cur s\xedos ar an gcomhr\xe1";
     },
     get$chatPermissionsDescription() {
       return "Sainmh\xednigh c\xe9n leibh\xe9al cumhachta is g\xe1 le haghaidh gn\xedomhartha \xe1irithe sa chomhr\xe1 seo. De ghn\xe1th b\xedonn na leibh\xe9il chumhachta 0, 50 agus 100 ag d\xe9anamh ionada\xedochta d'\xfas\xe1ideoir\xed, do mhodhn\xf3ir\xed agus do riarth\xf3ir\xed, ach is f\xe9idir aon ghr\xe1d\xfa a dh\xe9anamh.";
@@ -4281,6 +4269,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     get$approve() {
       return "Approve";
     },
@@ -4356,6 +4350,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectChatToStart() {
       return "Complete! Select a chat to start";
     },
+    get$configureSpace() {
+      return "Configure space";
+    },
+    get$pinMessages() {
+      return "Pin messages";
+    },
+    get$setJoinRules() {
+      return "Set join rules";
+    },
+    get$changeGeneralSettings() {
+      return "Change general settings";
+    },
+    get$inviteOtherUsersToRoom() {
+      return "Invite other users";
+    },
+    get$changeTheNameOfTheSpace() {
+      return "Change the name of the space";
+    },
+    get$changeTheDescription() {
+      return "Change the description";
+    },
+    get$changeThePermissions() {
+      return "Change the permissions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4374,6 +4392,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_221", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "wixhI3iQMXtIYcVQL5WuC0WUvAw=");
+})($__dart_deferred_initializers__, "searGAzvX01yFeTgq0mkyDuiWKs=");
 ;
 //# sourceMappingURL=main.dart.js_221.part.js.map

@@ -1294,15 +1294,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     adminLevel$1(level) {
       return "" + level + " - Administrator";
     },
-    get$changeGeneralChatSettings() {
-      return "Zmie\u0144 og\xf3lne ustawienia czatu";
-    },
-    get$inviteOtherUsers() {
-      return "Zapro\u015b innych u\u017cytkownik\xf3w do tego czatu";
-    },
-    get$changeTheChatPermissions() {
-      return "Zmie\u0144 uprawnienia w czacie";
-    },
     get$changeTheVisibilityOfChatHistory() {
       return "Zmie\u0144 widoczno\u015b\u0107 historii czatu";
     },
@@ -1311,9 +1302,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendRoomNotifications() {
       return "Wysy\u0142aj powiadomienia @room";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Zmie\u0144 opis czatu";
     },
     get$chatPermissionsDescription() {
       return "Ustal jaki poziom uprawnie\u0144 jest wymagany dla okre\u015blonych czynno\u015bci w czacie. Poziomy uprawnie\u0144 0, 50 i 100 zwykle dotycz\u0105 odpowiednio u\u017cytkownik\xf3w, moderator\xf3w i administrator\xf3w, ale mo\u017cliwa jest dowolna gradacja.";
@@ -4282,6 +4270,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     get$approve() {
       return "Approve";
     },
@@ -4357,6 +4351,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectChatToStart() {
       return "Complete! Select a chat to start";
     },
+    get$configureSpace() {
+      return "Configure space";
+    },
+    get$pinMessages() {
+      return "Pin messages";
+    },
+    get$setJoinRules() {
+      return "Set join rules";
+    },
+    get$changeGeneralSettings() {
+      return "Change general settings";
+    },
+    get$inviteOtherUsersToRoom() {
+      return "Invite other users";
+    },
+    get$changeTheNameOfTheSpace() {
+      return "Change the name of the space";
+    },
+    get$changeTheDescription() {
+      return "Change the description";
+    },
+    get$changeThePermissions() {
+      return "Change the permissions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4372,6 +4390,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_253", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "nHlCcwTo/Zzi/ykI9b+3XgGv4LU=");
+})($__dart_deferred_initializers__, "du8FCdOfUuSg9ubJ/qHrGCT6nfA=");
 ;
 //# sourceMappingURL=main.dart.js_253.part.js.map

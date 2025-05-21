@@ -1293,15 +1293,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     adminLevel$1(level) {
       return "" + level + " - Qu\u1ea3n tr\u1ecb vi\xean";
     },
-    get$changeGeneralChatSettings() {
-      return "Thay \u0111\u1ed5i c\xe0i \u0111\u1eb7t chung c\u1ee7a cu\u1ed9c tr\xf2 chuy\u1ec7n";
-    },
-    get$inviteOtherUsers() {
-      return "M\u1eddi ng\u01b0\u1eddi d\xf9ng kh\xe1c v\xe0o cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y";
-    },
-    get$changeTheChatPermissions() {
-      return "Thay \u0111\u1ed5i quy\u1ec1n c\u1ee7a tr\xf2 chuy\u1ec7n";
-    },
     get$changeTheVisibilityOfChatHistory() {
       return "Thay \u0111\u1ed5i c\xe1ch hi\u1ec3n th\u1ecb l\u1ecbch s\u1eed tr\xf2 chuy\u1ec7n";
     },
@@ -1310,9 +1301,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendRoomNotifications() {
       return "G\u1eedi th\xf4ng b\xe1o @room";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Thay \u0111\u1ed5i m\xf4 t\u1ea3 cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$chatPermissionsDescription() {
       return "\u0110\u1eb7t m\u1ee9c quy\u1ec1n t\u1ed1i thi\u1ec3u c\u1ea7n thi\u1ebft cho m\u1ed7i h\xe0nh \u0111\u1ed9ng. Th\u01b0\u1eddng c\u1ea5p 0, 50 v\xe0 100 t\u01b0\u01a1ng \u1ee9ng ng\u01b0\u1eddi d\xf9ng, \u0111i\u1ec1u h\xe0nh v\xe0 qu\u1ea3n tr\u1ecb, nh\u01b0ng b\u1ea1n c\xf3 th\u1ec3 t\xf9y ch\u1ec9nh chi ti\u1ebft.";
@@ -4281,6 +4269,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$choosePracticeMode() {
       return "Nh\u1ea5p v\xe0o m\u1ed9t trong c\xe1c n\xfat \u1edf tr\xean \u0111\u1ec3 b\u1eaft \u0111\u1ea7u m\u1ed9t ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh";
     },
+    get$ban() {
+      return "C\u1ea5m";
+    },
+    get$kick() {
+      return "\u0110\xe1";
+    },
     get$approve() {
       return "Ch\u1ea5p thu\u1eadn";
     },
@@ -4356,6 +4350,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectChatToStart() {
       return "Complete! Select a chat to start";
     },
+    get$configureSpace() {
+      return "Configure space";
+    },
+    get$pinMessages() {
+      return "Pin messages";
+    },
+    get$setJoinRules() {
+      return "Set join rules";
+    },
+    get$changeGeneralSettings() {
+      return "Change general settings";
+    },
+    get$inviteOtherUsersToRoom() {
+      return "Invite other users";
+    },
+    get$changeTheNameOfTheSpace() {
+      return "Change the name of the space";
+    },
+    get$changeTheDescription() {
+      return "Change the description";
+    },
+    get$changeThePermissions() {
+      return "Change the permissions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4389,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_269", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "SC4QZ/ABDJeHhA2FKYixqZN+tPE=");
+})($__dart_deferred_initializers__, "wVAexENFiw3OOYu4042eeQPCOQ8=");
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map

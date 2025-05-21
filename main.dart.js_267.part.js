@@ -1293,15 +1293,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     adminLevel$1(level) {
       return "" + level + " - Y\xf6netici";
     },
-    get$changeGeneralChatSettings() {
-      return "Genel sohbet ayarlar\u0131n\u0131 de\u011fi\u015ftir";
-    },
-    get$inviteOtherUsers() {
-      return "Di\u011fer kullan\u0131c\u0131lar\u0131 bu sohbete davet et";
-    },
-    get$changeTheChatPermissions() {
-      return "Sohbet izinlerini de\u011fi\u015ftir";
-    },
     get$changeTheVisibilityOfChatHistory() {
       return "Sohbet ge\xe7mi\u015finin g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftir";
     },
@@ -1310,9 +1301,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendRoomNotifications() {
       return "@oda bildirimleri g\xf6nder";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "Sohbetin a\xe7\u0131klamas\u0131n\u0131 de\u011fi\u015ftir";
     },
     get$chatPermissionsDescription() {
       return "Bu sohbette belirli eylemler i\xe7in hangi g\xfc\xe7 d\xfczeyinin gerekli oldu\u011funu tan\u0131mlay\u0131n. 0, 50 ve 100 g\xfc\xe7 d\xfczeyleri genellikle kullan\u0131c\u0131lar\u0131, moderat\xf6rleri ve y\xf6neticileri temsil eder, ancak herhangi bir derecelendirme m\xfcmk\xfcnd\xfcr.";
@@ -4281,6 +4269,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     get$approve() {
       return "Approve";
     },
@@ -4356,6 +4350,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectChatToStart() {
       return "Complete! Select a chat to start";
     },
+    get$configureSpace() {
+      return "Configure space";
+    },
+    get$pinMessages() {
+      return "Pin messages";
+    },
+    get$setJoinRules() {
+      return "Set join rules";
+    },
+    get$changeGeneralSettings() {
+      return "Change general settings";
+    },
+    get$inviteOtherUsersToRoom() {
+      return "Invite other users";
+    },
+    get$changeTheNameOfTheSpace() {
+      return "Change the name of the space";
+    },
+    get$changeTheDescription() {
+      return "Change the description";
+    },
+    get$changeThePermissions() {
+      return "Change the permissions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4374,6 +4392,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_267", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "dWhDpuHrrRbq35rqZ8xOfOSxPQI=");
+})($__dart_deferred_initializers__, "m4seNRtPEJukci1Yc/YQQ3kGrTU=");
 ;
 //# sourceMappingURL=main.dart.js_267.part.js.map

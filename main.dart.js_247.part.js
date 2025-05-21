@@ -1293,15 +1293,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     adminLevel$1(level) {
       return "" + level + " - \uc6b4\uc601\uc790";
     },
-    get$changeGeneralChatSettings() {
-      return "\uc77c\ubc18 \ucc44\ud305 \uc124\uc815 \ubc88\uacbd\ud558\uae30";
-    },
-    get$inviteOtherUsers() {
-      return "\ub2e4\ub978 \uc0ac\uc6a9\uc790\ub97c \uc774 \ucc44\ud305\uc5d0 \ucd08\ub300\ud558\uae30";
-    },
-    get$changeTheChatPermissions() {
-      return "\ucc44\ud305 \uad8c\ud55c \ubc14\uafb8\uae30";
-    },
     get$changeTheVisibilityOfChatHistory() {
       return "\ucc44\ud305 \uae30\ub85d \ud45c\uc2dc \uc5ec\ubd80 \ubc14\uafb8\uae30";
     },
@@ -1310,9 +1301,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendRoomNotifications() {
       return "@room \uc54c\ub9bc \ubcf4\ub0b4\uae30";
-    },
-    get$changeTheDescriptionOfTheGroup() {
-      return "\ucc44\ud305 \uc124\uba85 \ubc14\uafb8\uae30";
     },
     get$chatPermissionsDescription() {
       return "\uc774 \ucc44\ud305\uc5d0\uc11c \ud2b9\uc815 \uc791\uc5c5\uc5d0 \uc694\uad6c\ud560 \uad8c\ud55c \ub808\ubca8\uc744 \uc815\uc758\ud569\ub2c8\ub2e4. \uad8c\ud55c \ub808\ubca8 0, 50, 100\uc740 \uc77c\ubc18\uc801\uc73c\ub85c \uc720\uc800, \uad00\ub9ac\uc790, \uc6b4\uc601\uc790\ub97c \ub098\ud0c0\ub0b4\uc9c0\ub9cc, \ubaa8\ub4e0 \uc22b\uc790\uac00 \uac00\ub2a5\ud569\ub2c8\ub2e4.";
@@ -4281,6 +4269,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
     },
+    get$ban() {
+      return "Ban";
+    },
+    get$kick() {
+      return "Kick";
+    },
     get$approve() {
       return "Approve";
     },
@@ -4356,6 +4350,30 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectChatToStart() {
       return "Complete! Select a chat to start";
     },
+    get$configureSpace() {
+      return "Configure space";
+    },
+    get$pinMessages() {
+      return "Pin messages";
+    },
+    get$setJoinRules() {
+      return "Set join rules";
+    },
+    get$changeGeneralSettings() {
+      return "Change general settings";
+    },
+    get$inviteOtherUsersToRoom() {
+      return "Invite other users";
+    },
+    get$changeTheNameOfTheSpace() {
+      return "Change the name of the space";
+    },
+    get$changeTheDescription() {
+      return "Change the description";
+    },
+    get$changeThePermissions() {
+      return "Change the permissions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4371,6 +4389,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_247", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "yTuJnoZm5+D2LV5IFHQYCjco2zM=");
+})($__dart_deferred_initializers__, "zRWfx2IICswckfoNMPHYfF8Zfbw=");
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map
