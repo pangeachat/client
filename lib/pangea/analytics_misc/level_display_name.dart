@@ -50,7 +50,14 @@ class LevelDisplayNameState extends State<LevelDisplayName> {
       child: Row(
         children: <Widget>[
           if (_loading)
-            const CircularProgressIndicator()
+            const Padding(
+              padding: EdgeInsets.all(4.0),
+              child: SizedBox(
+                width: 12.0,
+                height: 12.0,
+                child: CircularProgressIndicator.adaptive(),
+              ),
+            )
           else if (_error != null || _profile == null)
             const SizedBox()
           else
