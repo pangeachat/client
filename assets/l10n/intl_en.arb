@@ -4946,5 +4946,6 @@
   "selectChatToStart": "Complete! Select a chat to start",
   "configureSpace": "Configure space",
   "pinMessages": "Pin messages",
-  "setJoinRules": "Set join rules"
+  "setJoinRules": "Set join rules",
+  "displayNavigationRail": "Show navigation rail on mobile"
 }
