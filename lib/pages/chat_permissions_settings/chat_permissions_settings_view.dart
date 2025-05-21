@@ -79,6 +79,9 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                           newLevel: level,
                         ),
                         canEdit: room.canChangePowerLevel,
+                        // #Pangea
+                        room: room,
+                        // Pangea#
                       ),
                     Divider(color: theme.dividerColor),
                     ListTile(
@@ -112,6 +115,9 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                             newLevel: level,
                             category: 'notifications',
                           ),
+                          // #Pangea
+                          room: room,
+                          // Pangea#
                         );
                       },
                     ),
@@ -143,6 +149,9 @@ class ChatPermissionsSettingsView extends StatelessWidget {
                           newLevel: level,
                           category: 'events',
                         ),
+                        // #Pangea
+                        room: room,
+                        // Pangea#
                       ),
                   ],
                 ),
