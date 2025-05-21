@@ -4374,6 +4374,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$changeThePermissions() {
       return "Change the permissions";
     },
+    get$introductions() {
+      return "Introductions";
+    },
+    get$announcements() {
+      return "Announcements";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4389,6 +4395,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_202", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "nyd/yHaK6Rhgb3CpAYWiW9aQ1Ow=");
+})($__dart_deferred_initializers__, "8svNgYrEFGII23hG0NnE7bCFOUo=");
 ;
 //# sourceMappingURL=main.dart.js_202.part.js.map
