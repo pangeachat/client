@@ -4944,8 +4944,7 @@
   "searchChats": "Search chats",
   "selectChats": "Select chats",
   "selectChatToStart": "Complete! Select a chat to start",
-  "maxFifty": "Max 50"
-,
+  "maxFifty": "Max 50",
   "configureSpace": "Configure space",
   "pinMessages": "Pin messages",
   "setJoinRules": "Set join rules",
