@@ -4347,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectChatToStart() {
       return "Complete! Select a chat to start";
     },
+    get$maxFifty() {
+      return "Max 50";
+    },
     get$configureSpace() {
       return "Configure space";
     },
@@ -4404,6 +4407,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_227", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "CYw7+3TQzOaVmNMa3BKzXOaxQ/k=");
+})($__dart_deferred_initializers__, "W+wbBHnC1m/i4m3e6CIBRoSN81M=");
 ;
 //# sourceMappingURL=main.dart.js_227.part.js.map
