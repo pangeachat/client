@@ -361,6 +361,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " \u540d\u53c2\u4e0e\u8005";
     },
+    get$create(_) {
+      return "\u521b\u5efa";
+    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " \u521b\u5efa\u4e86\u804a\u5929";
     },
@@ -721,6 +724,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pin() {
       return "\u7f6e\u9876";
     },
+    get$pleaseChoose() {
+      return "\u8bf7\u9009\u62e9";
+    },
     get$pleaseEnterYourPassword() {
       return "\u8bf7\u8f93\u5165\u4f60\u7684\u5bc6\u7801";
     },
@@ -978,9 +984,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$weSentYouAnEmail() {
       return "\u6211\u4eec\u5411\u4f60\u53d1\u9001\u4e86\u4e00\u5c01\u7535\u5b50\u90ae\u4ef6";
-    },
-    get$whoCanPerformWhichAction() {
-      return "\u8c01\u53ef\u4ee5\u6267\u884c\u54ea\u4e9b\u64cd\u4f5c";
     },
     get$whyDoYouWantToReportThis() {
       return "\u4f60\u4e3e\u62a5\u7684\u7406\u7531\u662f\u4ec0\u4e48\uff1f";
@@ -3679,12 +3682,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$completeActivitiesToUnlock() {
       return "Complete at least one activity to unlock the translation!";
     },
-    get$botSettingsSubtitle() {
-      return "Invite bot to moderate chat activity";
-    },
-    get$noCapacityLimit() {
-      return "No capacity limit";
-    },
     get$downloadGroupText() {
       return "Download group text";
     },
@@ -3702,9 +3699,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$addSubspaceWarning() {
       return "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.";
-    },
-    get$nestedSpaceError() {
-      return "Spaces should not be added as children of other spaces";
     },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
@@ -4312,9 +4306,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
     },
-    get$leaderboard() {
-      return "Leaderboard";
-    },
     welcomeUser$1(user) {
       return "Welcome " + user;
     },
@@ -4392,6 +4383,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$announcements() {
       return "Announcements";
+    },
+    get$activities() {
+      return "Activities";
+    },
+    get$access() {
+      return "Access";
+    },
+    get$addSubspace() {
+      return "Add subspace";
+    },
+    get$botSettings() {
+      return "Bot settings";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4721,6 +4724,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     countParticipants$1(count) {
       return "" + count + " \u500b\u53c3\u8207\u8005";
+    },
+    get$create(_) {
+      return "\u5efa\u7acb";
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " \u5efa\u7acb\u4e86\u804a\u5929\u5ba4";
@@ -5082,6 +5088,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pin() {
       return "\u91d8\u9078";
     },
+    get$pleaseChoose() {
+      return "\u8acb\u9078\u64c7";
+    },
     get$pleaseEnterYourPassword() {
       return "\u8acb\u8f38\u5165\u60a8\u7684\u5bc6\u78bc";
     },
@@ -5339,9 +5348,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$weSentYouAnEmail() {
       return "\u6211\u5011\u5411\u60a8\u50b3\u9001\u4e86\u4e00\u5c01\u96fb\u5b50\u90f5\u4ef6";
-    },
-    get$whoCanPerformWhichAction() {
-      return "\u8ab0\u53ef\u4ee5\u57f7\u884c\u9019\u500b\u52d5\u4f5c";
     },
     get$whyDoYouWantToReportThis() {
       return "\u60a8\u6aa2\u8209\u7684\u539f\u56e0\u662f\u4ec0\u9ebc\uff1f";
@@ -5839,6 +5845,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "6KIt4SGWVTuXi+VsmKcZvEPTWi8=");
+})($__dart_deferred_initializers__, "X8NXOrAwZu2TfWdkLPKqx7S2VDc=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

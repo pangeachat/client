@@ -354,6 +354,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participants";
     },
+    get$create(_) {
+      return "Create";
+    },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " created the chat";
     },
@@ -714,6 +717,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pin() {
       return "Pin";
     },
+    get$pleaseChoose() {
+      return "Please choose";
+    },
     get$pleaseEnterYourPassword() {
       return "Please enter your password";
     },
@@ -971,9 +977,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$weSentYouAnEmail() {
       return "We sent you an email";
-    },
-    get$whoCanPerformWhichAction() {
-      return "Who can perform which action";
     },
     get$whyDoYouWantToReportThis() {
       return "Why do you want to report this?";
@@ -3672,12 +3675,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$completeActivitiesToUnlock() {
       return "Complete at least one activity to unlock the translation!";
     },
-    get$botSettingsSubtitle() {
-      return "Invite bot to moderate chat activity";
-    },
-    get$noCapacityLimit() {
-      return "No capacity limit";
-    },
     get$downloadGroupText() {
       return "Download group text";
     },
@@ -3695,9 +3692,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$addSubspaceWarning() {
       return "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.";
-    },
-    get$nestedSpaceError() {
-      return "Spaces should not be added as children of other spaces";
     },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
@@ -4305,9 +4299,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
     },
-    get$leaderboard() {
-      return "Leaderboard";
-    },
     welcomeUser$1(user) {
       return "Welcome " + user;
     },
@@ -4386,6 +4377,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcements() {
       return "Announcements";
     },
+    get$activities() {
+      return "Activities";
+    },
+    get$access() {
+      return "Access";
+    },
+    get$addSubspace() {
+      return "Add subspace";
+    },
+    get$botSettings() {
+      return "Bot settings";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4401,6 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_202", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "JK6Wdwu0lSTZthDRIwDdQR2AkYc=");
+})($__dart_deferred_initializers__, "RfW9q+2ss/uTxcdJxHSYsN3TsmM=");
 ;
 //# sourceMappingURL=main.dart.js_202.part.js.map

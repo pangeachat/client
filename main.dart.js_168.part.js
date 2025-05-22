@@ -355,6 +355,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " \u0645\u0646\u062a\u0633\u0628\u0627";
     },
+    get$create(_) {
+      return "\u0623\u0646\u0634\u0626";
+    },
     createdTheChat$1(username) {
       return "\ud83d\udcac \u0623\u0646\u0634\u0623 " + username + " \u0627\u0644\u0645\u062d\u0627\u062f\u062b\u0629";
     },
@@ -715,6 +718,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pin() {
       return "\u062b\u0628\u0650\u0651\u062a";
     },
+    get$pleaseChoose() {
+      return "\u0627\u062e\u062a\u0631 \u0631\u062c\u0627\u0621";
+    },
     get$pleaseEnterYourPassword() {
       return "\u0623\u062f\u062e\u0644 \u0643\u0644\u0645\u0629 \u0627\u0644\u0633\u0631";
     },
@@ -972,9 +978,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$weSentYouAnEmail() {
       return "\u0623\u0631\u0633\u0644\u0646\u0627 \u0644\u0643 \u0631\u0633\u0627\u0644\u0629 \u0628\u0627\u0644\u0628\u0631\u064a\u062f \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a";
-    },
-    get$whoCanPerformWhichAction() {
-      return "\u0645\u0646 \u064a\u0633\u062a\u0637\u064a\u0639 \u0627\u0644\u0642\u064a\u0627\u0645 \u0628\u0623\u064a \u0639\u0645\u0644";
     },
     get$whyDoYouWantToReportThis() {
       return "\u0644\u0645\u0627\u0630\u0627 \u062a\u0631\u064a\u062f \u0627\u0644\u0625\u0628\u0644\u0627\u063a \u0639\u0646\u0647\u061f";
@@ -3673,12 +3676,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$completeActivitiesToUnlock() {
       return "Complete at least one activity to unlock the translation!";
     },
-    get$botSettingsSubtitle() {
-      return "Invite bot to moderate chat activity";
-    },
-    get$noCapacityLimit() {
-      return "No capacity limit";
-    },
     get$downloadGroupText() {
       return "Download group text";
     },
@@ -3696,9 +3693,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$addSubspaceWarning() {
       return "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.";
-    },
-    get$nestedSpaceError() {
-      return "Spaces should not be added as children of other spaces";
     },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
@@ -4306,9 +4300,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
     },
-    get$leaderboard() {
-      return "Leaderboard";
-    },
     welcomeUser$1(user) {
       return "Welcome " + user;
     },
@@ -4387,6 +4378,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcements() {
       return "Announcements";
     },
+    get$activities() {
+      return "Activities";
+    },
+    get$access() {
+      return "Access";
+    },
+    get$addSubspace() {
+      return "Add subspace";
+    },
+    get$botSettings() {
+      return "Bot settings";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4402,6 +4405,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_168", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "71aP7VxN4pkjxyIx3kQRUBfZVQE=");
+})($__dart_deferred_initializers__, "/WBOn/LmCakygY3mRfUrLORG+IA=");
 ;
 //# sourceMappingURL=main.dart.js_168.part.js.map

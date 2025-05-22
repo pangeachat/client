@@ -354,6 +354,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countParticipants$1(count) {
       return "" + count + " participantes";
     },
+    get$create(_) {
+      return "Crear";
+    },
     createdTheChat$1(username) {
       return "\ud83d\udcac" + username + " cre\xf3 el chat";
     },
@@ -714,6 +717,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pin() {
       return "Pin";
     },
+    get$pleaseChoose() {
+      return "Por favor elija";
+    },
     get$pleaseEnterYourPassword() {
       return "Por favor ingrese su contrase\xf1a";
     },
@@ -971,9 +977,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$weSentYouAnEmail() {
       return "Te enviamos un correo electr\xf3nico";
-    },
-    get$whoCanPerformWhichAction() {
-      return "Qui\xe9n puede realizar qu\xe9 acci\xf3n";
     },
     get$whyDoYouWantToReportThis() {
       return "\xbfPor qu\xe9 quieres denunciar esto?";
@@ -3672,12 +3675,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$completeActivitiesToUnlock() {
       return "Complete at least one activity to unlock the translation!";
     },
-    get$botSettingsSubtitle() {
-      return "Invitar a un bot a moderar la actividad del chat";
-    },
-    get$noCapacityLimit() {
-      return "Sin l\xedmite de capacidad";
-    },
     get$downloadGroupText() {
       return "Descargar texto del grupo";
     },
@@ -3695,9 +3692,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$addSubspaceWarning() {
       return "Una vez que agregues esto, no aparecer\xe1 en los resultados de b\xfasqueda p\xfablica, y ser\xe1 visible para todos los miembros del espacio principal.";
-    },
-    get$nestedSpaceError() {
-      return "Los espacios no deben ser a\xf1adidos como hijos de otros espacios";
     },
     get$createChatAndInviteUsers() {
       return "Crear chat e invitar usuarios";
@@ -4305,9 +4299,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
     },
-    get$leaderboard() {
-      return "Leaderboard";
-    },
     welcomeUser$1(user) {
       return "Welcome " + user;
     },
@@ -4386,6 +4377,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcements() {
       return "Announcements";
     },
+    get$activities() {
+      return "Activities";
+    },
+    get$access() {
+      return "Access";
+    },
+    get$addSubspace() {
+      return "Add subspace";
+    },
+    get$botSettings() {
+      return "Bot settings";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4401,6 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_206", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "qieNX/X4yz5mws1ySifPj7Uksug=");
+})($__dart_deferred_initializers__, "6+dxtjZdBbaM/PspmNgWs4De2SA=");
 ;
 //# sourceMappingURL=main.dart.js_206.part.js.map

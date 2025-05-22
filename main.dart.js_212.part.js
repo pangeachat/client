@@ -2,30 +2,30 @@
 ((s, d, e) => {
   s[d] = s[d] || {};
   s[d][e] = s[d][e] || [];
-  s[d][e].push({p: "main.dart.js_252", e: "beginPart"});
+  s[d][e].push({p: "main.dart.js_212", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nNl$() {
-      return new A.L10nNl(B.canonicalizedLocale("nl"));
+    L10nEt$() {
+      return new A.L10nEt(B.canonicalizedLocale("et"));
     },
-    L10nNl: function L10nNl(t0) {
+    L10nEt: function L10nEt(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[52];
-  A = hunkHelpers.updateHolder(holdersList[38], A);
-  A.L10nNl.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[16], A);
+  A.L10nEt.prototype = {
     get$alwaysUse24HourFormat() {
-      return "true";
+      return "false";
     },
     get$repeatPassword() {
-      return "Wachtwoord herhalen";
+      return "Korda salas\xf5na";
     },
     get$notAnImage() {
-      return "Geen afbeeldingsbestand.";
+      return "See pole pildifail.";
     },
     get$setCustomPermissionLevel() {
       return "Set custom permission level";
@@ -40,1540 +40,1543 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Normal user";
     },
     get$remove(_) {
-      return "Verwijder";
+      return "Eemalda";
     },
     get$importNow() {
-      return "Nu importeren";
+      return "Impordi kohe";
     },
     get$importEmojis() {
-      return "Emoji's importeren";
+      return "Impordi emojid";
     },
     get$importFromZipFile() {
-      return "Uit zip-bestand importeren";
+      return "Impordi zip-failist";
     },
     get$exportEmotePack() {
-      return "Emote-pakket als zip exporteren";
+      return "Ekspordi emotikonide pakk zip-failina";
     },
     get$replace(_) {
-      return "Vervang";
+      return "Asenda";
     },
     aboutHomeserver$1(homeserver) {
-      return "Over " + homeserver;
+      return "Koduserveri teave: " + homeserver;
     },
     get$accept(_) {
-      return "Accepteren";
+      return "N\xf5ustu";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " heeft de uitnodiging geaccepteerd";
+      return "\ud83d\udc4d " + username + " v\xf5ttis kutse vastu";
     },
     get$account() {
-      return "Account";
+      return "Kasutajakonto";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " heeft eind-tot-eindversleuteling geactiveerd";
+      return "\ud83d\udd10" + username + " v\xf5ttis kasutusele l\xe4biva kr\xfcptimise";
     },
     get$addEmail() {
-      return "Email toevoegen";
+      return "Lisa e-posti aadress";
     },
     supposedMxid$1(mxid) {
-      return "Dit moet " + mxid + " zijn";
+      return "See peaks olema " + mxid;
     },
     get$addToSpace() {
-      return "Aan space toevoegen";
+      return "Lisa kogukonda";
     },
     get$admin() {
-      return "Beheerder";
+      return "Peakasutaja";
     },
     get$alias() {
       return "alias";
     },
     get$all() {
-      return "Alle";
+      return "K\xf5ik";
     },
     get$commandHint_roomupgrade() {
-      return "Upgradeer deze kamer naar de aangegeven kamerversie";
+      return "Uuenda see jututuba antud jututoa versioonini";
     },
     get$commandHint_googly() {
-      return "Wiebel-ogen versturen";
+      return "Saada \xfched otsivad silmad";
     },
     get$commandHint_cuddle() {
-      return "Een knuffel versturen";
+      return "Saada \xfcks kaisutus";
     },
     get$commandHint_hug() {
-      return "Een knuffel versturen";
+      return "Saada \xfcks kallistus";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " stuurt je wiebelogen";
+      return senderName + " saatis sulle otsivad silmad";
     },
     cuddleContent$1(senderName) {
-      return senderName + " knuffelt je";
+      return senderName + " kaisutab sind";
     },
     hugContent$1(senderName) {
-      return senderName + " omhelst je";
+      return senderName + " kallistab sind";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " heeft de oproep beantwoord";
+      return senderName + " vastas k\xf5nele";
     },
     get$anyoneCanJoin() {
-      return "Iedereen kan toetreden";
+      return "K\xf5ik v\xf5ivad liituda";
     },
     get$archive() {
-      return "Archief";
+      return "Arhiiv";
     },
     get$areGuestsAllowedToJoin() {
-      return "Mogen gasten deelnemen";
+      return "Kas k\xfclalised v\xf5ivad liituda";
     },
     get$areYouSure() {
-      return "Weet je het zeker?";
+      return "Kas sa oled kindel?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Weet je zeker dat je wilt uitloggen?";
+      return "Kas sa oled kindel, et soovid v\xe4lja logida?";
     },
     get$askSSSSSign() {
-      return "Voer je beveiligde opslag wachtwoordzin of herstelsleutel in om de andere persoon te kunnen ondertekenen.";
+      return "Selleks, et teist osapoolt identifitseerivat allkirja anda, palun sisesta oma turvahoidla paroolifraas v\xf5i taastev\xf5ti.";
     },
     askVerificationRequest$1(username) {
-      return "Accepteer je dit verificatieverzoek van " + username + "?";
+      return "Kas v\xf5tad vastu selle verifitseerimispalve kasutajalt " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "De homeserver ondersteunt de login types:\n" + serverVersions + "\nMaar deze app ondersteunt alleen:\n" + supportedVersions;
+      return "See koduserver toetab Matrixi v\xf5rku sisselogimiseks:\n" + serverVersions + "\nAga see rakendus toetab vaid j\xe4rgmisi v\xf5imalusi:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Typemeldingen verzenden";
+      return "Saada kirjutamise teavitusi";
     },
     get$swipeRightToLeftToReply() {
-      return "Veeg van rechts naar links om te reageren";
+      return "Vastamiseks viipa paremalt vasakule";
     },
     get$sendOnEnter() {
-      return "Verstuur met enter";
+      return "Saada s\xf5num sisestusklahvi vajutusel";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " chats en " + participants + " deelnemers";
+      return "" + chats + " vestlust ja " + participants + " osalejat";
     },
     get$noMoreChatsFound() {
-      return "Geen chats gevonden...";
+      return "Rohkem vestlusi ei leidu...";
     },
     get$noChatsFoundHere() {
-      return "Hier zijn nog geen chats. Begin een nieuwe chat met iemand door op de onderstaande knop te klikken. \u2935\ufe0f";
+      return "Siin ei leidu veel \xfchtegi vestlust. Alusta uut vestlust kl\xf5psides allpool asuvat nuppu. \u2935\ufe0f";
     },
     get$unread() {
-      return "Ongelezen";
+      return "Lugemata";
     },
     get$space() {
-      return "Space";
+      return "Kogukond";
     },
     get$spaces() {
-      return "Spaces";
+      return "Kogukonnad";
     },
     get$banFromChat() {
-      return "Van chat verbannen";
+      return "Keela ligip\xe4\xe4s vestlusele";
     },
     get$banned() {
-      return "Verbannen";
+      return "Ligip\xe4\xe4s vestlusele on keelatud";
     },
     bannedUser$2(username, targetName) {
-      return username + " verbant " + targetName;
+      return username + " keelas ligip\xe4\xe4su kasutajale " + targetName;
     },
     get$blockDevice() {
-      return "Apparaat blokkeren";
+      return "Blokeeri seade";
     },
     get$blocked() {
-      return "Geblokkeerd";
+      return "Blokeeritud";
     },
     get$cancel(_) {
-      return "Annuleren";
+      return "Katkesta";
     },
     cantOpenUri$1(uri) {
-      return "Kan de URI " + uri + " niet openen";
+      return uri + " aadressi avamine ei \xf5nnestu";
     },
     get$changeDeviceName() {
-      return "Apparaatnaam wijzigen";
+      return "Muuda seadme nime";
     },
     changedTheChatAvatar$1(username) {
-      return username + " heeft de chatavatar gewijzigd";
+      return username + " muutis vestluse tunnuspilti";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " heeft de chatomschrijving gewijzigd in: '" + description + "'";
+      return username + " muutis vestluse uueks kirjelduseks '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " heeft de chatnaam gewijzigd in: '" + chatname + "'";
+      return username + " muutis oma uueks vestlusnimeks '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " heeft de chatrechten gewijzigd";
+      return username + " muutis vestlusega seotud \xf5igusi";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + "'s naam is nu '" + displayname + "'";
+      return username + " muutis oma uueks kuvatavaks nimeks: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " heeft de toegangsregels voor gasten gewijzigd";
+      return username + " muutis k\xfclaliste ligip\xe4\xe4sureegleid";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " heeft de gastenregels gewijzigd in: " + rules;
+      return username + " muutis k\xfclaliste ligip\xe4\xe4sureegleid j\xe4rgnevalt: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " heeft de zichtbaarheid van de geschiedenis gewijzigd";
+      return username + " muutis s\xf5numite ajaloo n\xe4htavust";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " heeft de zichtbaarheid van de geschiedenis gewijzigd in: " + rules;
+      return username + " muutis s\xf5numite ajaloo n\xe4htavust j\xe4rgnevalt: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " heeft de toetredingsregels gewijzigd";
+      return username + " muutis liitumise reegleid";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " heeft de toetredingsregels gewijzigd in: " + joinRules;
+      return username + " muutis liitumise reegleid j\xe4rgnevalt: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + "'s avatar is gewijzigd";
+      return username + " muutis oma tunnuspilti";
     },
     changedTheRoomAliases$1(username) {
-      return username + " heeft de kameraliassen gewijzigd";
+      return username + " muutis jututoa aliast";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " heeft de uitnodigingslink gewijzigd";
+      return username + " muutis kutse linki";
     },
     get$changePassword() {
-      return "Wachtwoord wijzigen";
+      return "Muuda salas\xf5na";
     },
     get$changeTheme() {
-      return "Je stijl veranderen";
+      return "Muuda oma stiili";
     },
     get$changeYourAvatar() {
-      return "Jouw avatar veranderen";
+      return "Muuda oma tunnuspilti";
     },
     get$channelCorruptedDecryptError() {
-      return "De versleuteling is beschadigd";
+      return "Kasutatud kr\xfcptimine on vigane";
     },
     get$chat() {
-      return "Chat";
+      return "Vestlus";
     },
     get$chatDetails() {
-      return "Chatdetails";
+      return "Vestluse teave";
     },
     get$chats() {
-      return "Chats";
+      return "Vestlused";
     },
     get$chooseAStrongPassword() {
-      return "Kies een sterk wachtwoord";
+      return "Vali korralik salas\xf5na";
     },
     get$clearArchive() {
-      return "Archief wissen";
+      return "Kustuta arhiiv";
     },
     get$close(_) {
-      return "Sluiten";
+      return "Sulge";
     },
     get$commandHint_markasdm() {
-      return "Markeer als priv\xe9berichtenkamer voor Matrix ID";
+      return "M\xe4rgi otsevestusluseks antud Matrixi ID jaoks";
     },
     get$commandHint_markasgroup() {
-      return "Markeer als groep";
+      return "M\xe4rgi vestlusr\xfchmaks";
     },
     get$commandHint_ban() {
-      return "Persoon uit deze kamer verbannen";
+      return "Sea sellele kasutajale antud jututoas suhtluskeeld";
     },
     get$commandHint_clearcache() {
-      return "Cache wissen";
+      return "T\xfchjenda vahem\xe4lu";
     },
     get$commandHint_create() {
-      return "Maak een lege groepschat\nGebruik --no-encryption om de versleuteling uit te schakelen";
+      return "Loo t\xfchi vestlusr\xfchm\nKr\xfcptimise keelamiseks kasuta --no-encryption v\xf5tit";
     },
     get$commandHint_discardsession() {
-      return "Sessie weggooien";
+      return "Loobu sessioonist";
     },
     get$commandHint_dm() {
-      return "Start een directe chat\nGebruik --no-encryption om de versleuteling uit te schakelen";
+      return "Alusta otsevestlust\nKr\xfcptimise keelamiseks kasuta --no-encryption v\xf5tit";
     },
     get$commandHint_html() {
-      return "Tekst met HTML-opmaak versturen";
+      return "Saada HTML-vormingus tekst";
     },
     get$commandHint_invite() {
-      return "Persoon in deze kamer uitnodigen";
+      return "Kutsu see kasutaja antud jututuppa";
     },
     get$commandHint_join() {
-      return "Toetreden tot de vermelde kamer";
+      return "Liitu selle jututoaga";
     },
     get$commandHint_kick() {
-      return "Persoon uit deze kamer verwijderen";
+      return "Eemalda antud kasutaja sellest jututoast";
     },
     get$commandHint_leave() {
-      return "Deze kamer verlaten";
+      return "Lahku sellest jututoast";
     },
     get$commandHint_me() {
-      return "Beschrijf jezelf";
+      return "Kirjelda ennast";
     },
     get$commandHint_myroomavatar() {
-      return "Jouw avatar voor deze kamer instellen (met mxc-uri)";
+      return "M\xe4\xe4ra selles jututoas oma tunnuspilt (mxc-uri vahendusel)";
     },
     get$commandHint_myroomnick() {
-      return "Jouw naam voor deze kamer instellen";
+      return "M\xe4\xe4ra selles jututoas oma kuvatav nimi";
     },
     get$commandHint_op() {
-      return "Machtsniveau van de persoon instellen (standaard: 50)";
+      return "Seadista selle kasutaja \xf5igusi (vaikimisi: 50)";
     },
     get$commandHint_plain() {
-      return "Niet-opgemaakte tekst versturen";
+      return "Saada vormindamata tekst";
     },
     get$commandHint_react() {
-      return "Antwoord als reactie versturen";
+      return "Saada vastus reaktsioonina";
     },
     get$commandHint_send() {
-      return "Tekst versturen";
+      return "Saada s\xf5num";
     },
     get$commandHint_unban() {
-      return "Persoon weer in deze kamer toestaan";
+      return "Eemalda sellelt kasutajalt antud jututoas suhtluskeeld";
     },
     get$commandInvalid() {
-      return "Opdracht ongeldig";
+      return "Vigane k\xe4sk";
     },
     commandMissing$1(command) {
-      return command + " is geen opdracht.";
+      return command + " ei ole k\xe4sk.";
     },
     get$compareEmojiMatch() {
-      return "Vergelijk de emoji's";
+      return "Palun v\xf5rdle emotikone";
     },
     get$compareNumbersMatch() {
-      return "Vergelijk de cijfers";
+      return "Palun v\xf5rdle numbreid";
     },
     get$configureChat() {
-      return "Chat configureren";
+      return "Seadista vestlust";
     },
     get$confirm(_) {
-      return "Bevestigen";
+      return "Kinnita";
     },
     get$contentHasBeenReported() {
-      return "De inhoud is gerapporteerd aan de serverbeheerders";
+      return "Saatsime selle sisu kohta teate koduserveri haldajate";
     },
     get$copiedToClipboard() {
-      return "Gekopieerd naar klembord";
+      return "Kopeerisin l\xf5ikelauale";
     },
     get$copy(_) {
-      return "Bericht kopi\xebren";
+      return "Kopeeri";
     },
     couldNotDecryptMessage$1(error) {
-      return "Kan het bericht niet ontsleutelen: " + error;
+      return "S\xf5numi dekr\xfcptimine ei \xf5nnestunud: " + error;
     },
     countParticipants$1(count) {
-      return "" + count + " personen";
+      return "" + count + " osalejat";
+    },
+    get$create(_) {
+      return "Loo";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " heeft de chat gemaakt";
+      return "\ud83d\udcac " + username + " algatas vestluse";
     },
     get$createGroup() {
-      return "Groep aanmaken";
+      return "Loo vestlusr\xfchm";
     },
     get$createNewSpace() {
-      return "Maak nieuwe space aan";
+      return "Uus kogukond";
     },
     get$currentlyActive() {
-      return "Momenteel actief";
+      return "Hetkel aktiivne";
     },
     get$darkTheme() {
-      return "Donker";
+      return "Tume";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Hierdoor wordt je account gedeactiveerd. Dit kan niet ongedaan gemaakt worden! Weet je het zeker?";
+      return "J\xe4rgnevaga eemaldatakse sinu konto kasutusest. Seda tegevust ei saa tagasi p\xf6\xf6rata! Kas sa ikka oled kindel?";
     },
     get$defaultPermissionLevel() {
-      return "Standaard machtigingsniveau voor nieuwe personen";
+      return "Vaikimisi \xf5igused uutele kasutajatele";
     },
     get$$delete(_) {
-      return "Verwijderen";
+      return "Kustuta";
     },
     get$deleteAccount() {
-      return "Account verwijderen";
+      return "Kustuta kasutajakonto";
     },
     get$deleteMessage() {
-      return "Bericht verwijderen";
+      return "Kustuta s\xf5num";
     },
     get$devices() {
-      return "Apparaten";
+      return "Seadmed";
     },
     get$displaynameHasBeenChanged() {
-      return "De naam is gewijzigd";
+      return "Kuvatav nimi on muudetud";
     },
     get$downloadFile() {
-      return "Bestand downloaden";
+      return "Laadi fail alla";
     },
     get$edit() {
-      return "Wijzig";
+      return "Muuda";
     },
     get$editBlockedServers() {
-      return "Geblokkeerde servers wijzigen";
+      return "Muuda blokeeritud serverite loendit";
     },
     get$chatPermissions() {
-      return "Chat toestemmingen";
+      return "Vestluse \xf5igused";
     },
     get$editDisplayname() {
-      return "Naam wijzigen";
+      return "Muuda kuvatavat nime";
     },
     get$editRoomAliases() {
-      return "Kameraliassen wijzigen";
+      return "Muuda jututoa aliast";
     },
     get$editRoomAvatar() {
-      return "Kameravatar wijzigen";
+      return "Muuda jututoa tunnuspilti";
     },
     get$emoteExists() {
-      return "Emoticon bestaat al!";
+      return "Selline emotsioonitegevus on juba olemas!";
     },
     get$emoteInvalid() {
-      return "Ongeldige emoticon korte code!";
+      return "Vigane emotsioonitegevuse l\xfchikood!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Recent gebruikte emoticons zullen hier verschijnen...";
+      return "Hiljuti kasutatud emotikonid kuvame siin...";
     },
     get$emotePacks() {
-      return "Emoticonpakketten voor de kamer";
+      return "Emotsioonitegevuste pakid jututoa jaoks";
     },
     get$globalChatId() {
-      return "Globale chat ID";
+      return "\xdcldine vestluse tunnus";
     },
     get$accessAndVisibility() {
-      return "Toegang en zichtbaarheid";
+      return "Ligip\xe4\xe4setavus ja n\xe4htavus";
     },
     get$customEmojisAndStickers() {
-      return "Aangepaste emoticons en stickers";
+      return "Kohandatud emotikonid ja kleepsud";
     },
     get$emoteShortcode() {
-      return "Emoticon korte code";
+      return "Emotsioonitegevuse l\xfchikood";
     },
     get$emoteWarnNeedToPick() {
-      return "Je moet een emoticon korte code en afbeelding kiezen!";
+      return "Sa pead valima emotsioonitegevuse l\xfchikoodi ja pildi!";
     },
     get$emptyChat() {
-      return "Lege chat";
+      return "Vestlust pole olnud";
     },
     get$enableEmotesGlobally() {
-      return "Emoticonpakket overal inschakelen";
+      return "V\xf5ta emotsioonitegevuste pakid l\xe4bivalt kasutusele";
     },
     get$enableEncryption() {
-      return "Versleuteling inschakelen";
+      return "Kasuta kr\xfcptimist";
     },
     get$encrypted() {
-      return "Versleuteld";
+      return "Kr\xfcptitud";
     },
     get$encryptionNotEnabled() {
-      return "Versleuteling is niet ingeschakeld";
+      return "Kr\xfcptimine ei ole kasutusel";
     },
     endedTheCall$1(senderName) {
-      return senderName + " heeft het gesprek be\xebindigd";
+      return senderName + " l\xf5petas k\xf5ne";
     },
     get$enterAnEmailAddress() {
-      return "Voer een email in";
+      return "Sisesta e-posti aadress";
     },
     errorObtainingLocation$1(error) {
-      return "Locatie ophalen fout: " + error;
+      return "Viga asukoha tuvastamisel: " + error;
     },
     get$extremeOffensive() {
-      return "Extreem beledigend";
+      return "\xc4\xe4rmiselt solvav";
     },
     get$fontSize(_) {
-      return "Lettergrootte";
+      return "Fondi suurus";
     },
     get$forward(_) {
-      return "Stuur door";
+      return "Edasta";
     },
     get$fromJoining() {
-      return "Vanaf toetreden";
+      return "Alates liitumise hetkest";
     },
     get$fromTheInvitation() {
-      return "Vanaf uitnodiging";
+      return "Kutse saamisest";
     },
     get$groups() {
-      return "Groepen";
+      return "Vestlusr\xfchmad";
     },
     get$guestsAreForbidden() {
-      return "Gasten zijn verboden";
+      return "K\xfclalised ei ole lubatud";
     },
     get$guestsCanJoin() {
-      return "Gasten kunnen deelnemen";
+      return "K\xfclalised v\xf5ivad liituda";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " heeft de uitnodiging voor " + targetName + " ingetrokken";
+      return username + " on v\xf5tnud tagasi " + targetName + " kutse";
     },
     get$help() {
-      return "Help";
+      return "Abiteave";
     },
     get$hideRedactedMessages() {
-      return "Verberg verwijderde berichten";
+      return "Peida muudetud s\xf5numid";
     },
     get$hideRedactedMessagesBody() {
-      return "Als iemand een bericht verwijdert, is dit bericht niet meer zichtbaar in de chat.";
+      return "Kui keegi muudab s\xf5numit, siis teda enam ei kuvataks vestluses.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Verberg ongeldige of onbekende berichtformaten";
+      return "Peida vigase v\xf5i tundmatu vorminguga s\xf5numid";
     },
     get$howOffensiveIsThisContent() {
-      return "Hoe beledigend is deze inhoud?";
+      return "Kui solvav see sisu on?";
     },
     get$block() {
-      return "Blokkeren";
+      return "Blokeeri";
     },
     get$blockedUsers() {
-      return "Geblokkeerde personen";
+      return "Blokeeritud kasutajad";
     },
     get$blockListDescription() {
-      return "Je kunt personen blokkeren die je lastig vallen. Je kan dan geen berichten meer ontvangen of kameruitnodigingen krijgen van de personen op je blokkeerlijst.";
+      return "Sul on v\xf5imalik blokeerida neid kasutajaid, kes sind segavad. Oma isiklikku blokerimisloendisse lisatud kasutajad ei saa sulle saata s\xf5numeid ega kutseid.";
     },
     get$blockUsername() {
-      return "Negeer inlognaam";
+      return "Eira kasutajanime";
     },
     get$iHaveClickedOnLink() {
-      return "Ik heb op de link geklikt";
+      return "Ma olen kl\xf5psinud saadetud linki";
     },
     get$incorrectPassphraseOrKey() {
-      return "Onjuiste wachtwoordzin of herstelsleutel";
+      return "Vigane paroolifraas v\xf5i taastev\xf5ti";
     },
     get$inoffensive() {
-      return "Niet beledigend";
+      return "Kahjutu";
     },
     get$inviteContact() {
-      return "Contact uitnodigen";
+      return "Kutsu s\xf5pru ja tuttavaid";
     },
     get$noChatDescriptionYet() {
-      return "Nog geen chatomschrijving gemaakt.";
+      return "Vestluse kirjeldus on puudu.";
     },
     get$tryAgain() {
-      return "Opnieuw proberen";
+      return "Proovi uuesti";
     },
     get$invited() {
-      return "Uitgenodigd";
+      return "Kutsutud";
     },
     get$redactMessageDescription() {
-      return "Het bericht zal worden aangepast voor alle deelnemers in dit gesprek. Dit kan niet ongedaan gemaakt worden.";
+      return "S\xf5numi muudatus kehtib k\xf5ikidele vestluses osalejatele. Seda muudatust ei saa tagasi p\xf6\xf6rata.";
     },
     get$optionalRedactReason() {
-      return "(Optioneel) Reden voor aanpassing van dit bericht...";
+      return "(Kui soovid lisada) S\xf5numi muutmise p\xf5hjus...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " heeft " + targetName + " uitgenodigd";
+      return "\ud83d\udce9 " + username + " saatis kutse kasutajale " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Alleen uitgenodigde personen";
+      return "Ainult kutsutud kasutajatele";
     },
     inviteText$2(username, link) {
-      return username + " heeft je uitgenodigd voor FluffyChat.\n1. Bezoek https://fluffychat.im en installeer de app\n2. Registreer of log in\n3. Open deze uitnodigingslink:\n" + link;
+      return username + " kutsus sind kasutama Matrix'i-p\xf5hist suhtlusrakendust FluffyChat. \n1. Ava fluffychat.im ja paigalda FluffyChat'i rakendus \n2. Liitu kasutajaks v\xf5i logi sisse olemasoleva Matrix'i kasutajakontoga\n3. Ava kutse link: \n " + link;
     },
     get$isTyping() {
-      return "is aan het typen\u2026";
+      return "kirjutab\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " is toegetreden tot de chat";
+      return "\ud83d\udc4b " + username + " liitus vestlusega";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " heeft " + targetName + " verwijderd";
+      return "\ud83d\udc5e " + username + " m\xfcksas kasutaja " + targetName + " v\xe4lja";
     },
     get$kickFromChat() {
-      return "Uit chat verwijderen";
+      return "M\xfcksa vestlusest v\xe4lja";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Laatst actief: " + localizedTimeShort;
+      return "Viimati n\xe4htud: " + localizedTimeShort;
     },
     get$leave() {
-      return "Chat verlaten";
+      return "Lahku";
     },
     get$leftTheChat() {
-      return "Verliet de chat";
+      return "Lahkus vestlusest";
     },
     get$lightTheme() {
-      return "Licht";
+      return "Hele";
     },
     loadCountMoreParticipants$1(count) {
-      return "Laad nog " + count + " personen";
+      return "Lisa veel " + count + " osalejat";
     },
     get$dehydrate() {
-      return "Sessie exporteren en apparaat wissen";
+      return "Ekspordi sessiooni teave ja kustuta nutiseadmest rakenduse andmed";
     },
     get$dehydrateWarning() {
-      return "Deze actie kan niet ongedaan worden gemaakt. Zorg ervoor dat je het back-upbestand veilig opslaat.";
+      return "Seda tegevust ei saa tagasi p\xf6\xf6rata. Palun kontrolli, et sa oled varukoopia turvaliselt salvestanud.";
     },
     get$dehydrateTor() {
-      return "TOR-sessies: Exporteer sessie";
+      return "TOR'i kasutajad: Ekspordi sessioon";
     },
     get$dehydrateTorLong() {
-      return "Voor TOR-sessies is het aanbevolen de sessie te exporteren alvorens het venster te sluiten.";
+      return "Kui oled TOR'i v\xf5rgu kasutaja, siis enne akna sulgemist palun ekspordi viimase sessiooni andmed.";
     },
     get$loadingPleaseWait() {
-      return "Bezig met laden\u2026 Even geduld.";
+      return "Laadin andmeid\u2026 Palun oota.";
     },
     get$loadMore() {
-      return "Meer laden\u2026";
+      return "Laadi veel\u2026";
     },
     get$locationDisabledNotice() {
-      return "Locatievoorzieningen is uitgeschakeld. Zet dit eerst aan om je locatie te delen.";
+      return "Asukohateenused on seadmes v\xe4ljal\xfclitatud. Asukoha jagamiseks palun l\xfclita nad sisse.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Locatievoorzieningen is geweigerd. Zet hem aan om locatie delen te gebruiken.";
+      return "Puudub luba asukohateenuste kasutamiseks. Asukoha jagamiseks palun anna rakendusele vastavad \xf5igused.";
     },
     get$logout() {
-      return "Uitloggen";
+      return "Logi v\xe4lja";
     },
     get$mention() {
-      return "Vermeld";
+      return "M\xe4rgi \xe4ra";
     },
     get$messages() {
-      return "Berichten";
+      return "S\xf5numid";
     },
     get$messagesStyle() {
-      return "Berichten:";
+      return "S\xf5numid:";
     },
     get$moderator() {
-      return "Moderator";
+      return "Moderaator";
     },
     get$newChat() {
-      return "Nieuwe chat";
+      return "Uus vestlus";
     },
     get$newVerificationRequest() {
-      return "Nieuw verificatieverzoek!";
+      return "Uus verifitseerimisp\xe4ring!";
     },
     get$next(_) {
-      return "Volgende";
+      return "Edasi";
     },
     get$no() {
-      return "Nee";
+      return "Ei";
     },
     get$noConnectionToTheServer() {
-      return "Geen verbinding met de server";
+      return "Puudub \xfchendus koduserveriga";
     },
     get$noEmotesFound() {
-      return "Geen emoticons gevonden. \ud83d\ude15";
+      return "\xdchtegi emotsioonitegevust ei leidunud. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Uitnodigingslink delen";
+      return "Jaga kutse linki";
     },
     get$none() {
-      return "Geen";
+      return "Mitte midagi";
     },
     get$noPasswordRecoveryDescription() {
-      return "Je hebt nog geen manier toegevoegd om je wachtwoord te herstellen.";
+      return "Sa pole veel lisanud v\xf5imalust salas\xf5na taastamiseks.";
     },
     get$noPermission() {
-      return "Geen toestemming";
+      return "\xd5igused puuduvad";
     },
     get$noRoomsFound() {
-      return "Geen kamers gevonden \u2026";
+      return "Jututubasid ei leidunud\u2026";
     },
     get$notifications() {
-      return "Meldingen";
+      return "Teavitused";
     },
     get$obtainingLocation() {
-      return "Locatie ophalen\u2026";
+      return "Tuvastan asukohta\u2026";
     },
     get$offensive() {
-      return "Beledigend";
+      return "Solvav";
     },
     get$ok() {
-      return "OK";
+      return "Sobib";
     },
     get$oopsSomethingWentWrong() {
-      return "Oeps, er ging iets mis\u2026";
+      return "Hopsti! Midagi l\xe4ks n\xfc\xfcd viltu\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\xc9\xe9n van jouw apparaten is uitgelogd";
+      return "\xdcks sinu klientrakendustest on Matrix'i v\xf5rgust v\xe4lja loginud";
     },
     get$openInMaps() {
-      return "In kaarten openen";
+      return "Ava kaardirakendusega";
     },
     get$link() {
       return "Link";
     },
     get$serverRequiresEmail() {
-      return "Deze server wil je email laten bevestigen bij de registratie.";
+      return "See koduserver eeldab registreerimisel kasutatava e-postiaadressi kinnitamist.";
     },
     get$or() {
-      return "Of";
+      return "v\xf5i";
     },
     get$participant() {
-      return "Personen";
+      return "Osaleja";
     },
     get$passphraseOrKey() {
-      return "wachtwoordzin of herstelsleutel";
+      return "paroolifraas v\xf5i taastev\xf5ti";
     },
     get$password(_) {
-      return "Wachtwoord";
+      return "Salas\xf5na";
     },
     get$passwordForgotten() {
-      return "Wachtwoord vergeten";
+      return "Salas\xf5na on ununenud";
     },
     get$passwordHasBeenChanged() {
-      return "Wachtwoord gewijzigd";
+      return "Salas\xf5na on muudetud";
     },
     get$overview() {
-      return "Overzicht";
+      return "\xdclevaade";
     },
     get$passwordRecoverySettings() {
-      return "Wachtwoordherstel-instellingen";
+      return "Salas\xf5na taastamise seadistused";
     },
     get$passwordRecovery() {
-      return "Wachtwoordherstel";
+      return "Salas\xf5na taastamine";
     },
     get$pickImage() {
-      return "Kies een afbeelding";
+      return "Vali pilt";
     },
     get$pin() {
-      return "Pin";
+      return "Klammerda";
+    },
+    get$pleaseChoose() {
+      return "Palun vali";
     },
     get$pleaseEnterYourPassword() {
-      return "Voer jouw wachtwoord in";
+      return "Palun sisesta oma salas\xf5na";
     },
     get$pleaseEnterYourPin() {
-      return "Voer je pincode in";
+      return "Palun sisesta oma PIN-kood";
     },
     get$pleaseEnterYourUsername() {
-      return "Voer je inlognaam in";
+      return "Palun sisesta oma kasutajanimi";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Volg de instructies op de website en tik op volgende.";
+      return "Palun j\xe4rgi veebilehel olevaid juhiseid ja kl\xf5psi nuppu Edasi.";
     },
     get$privacy() {
-      return "Privacy";
+      return "Privaatsus";
     },
     get$reason(_) {
-      return "Reden";
+      return "P\xf5hjus";
     },
     redactedBy$1(username) {
-      return "Aangepast door " + username;
+      return "Muutja: " + username;
     },
     get$directChat() {
-      return "Directe chat";
+      return "Otsevestlus";
     },
     redactedByBecause$2(username, reason) {
-      return "Aangepast door " + username + ', reden: "' + reason + '"';
+      return "Muutja " + username + " m\xe4rkis p\xf5hjuseks: \u201e" + reason + "\u201c";
     },
     redactedAnEvent$1(username) {
-      return username + " heeft een event verwijderd";
+      return username + " muutis s\xfcndmust";
     },
     get$redactMessage() {
-      return "Aangepast bericht";
+      return "Muuda s\xf5numit";
     },
     get$reject() {
-      return "Afwijzen";
+      return "L\xfckka tagasi";
     },
     rejectedTheInvitation$1(username) {
-      return username + " heeft de uitnodiging afgewezen";
+      return username + " l\xfckkas kutse tagasi";
     },
     get$removeAllOtherDevices() {
-      return "Verwijder alle andere apparaten";
+      return "Eemalda k\xf5ik muud seadmed";
     },
     get$unbanFromChat() {
-      return "Verbanning opheffen";
+      return "Eemalda suhtluskeeld";
     },
     get$removeYourAvatar() {
-      return "Jouw avatar verwijderen";
+      return "Kustuta oma tunnuspilt";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Kamerversie upgraden";
+      return "Asenda jututoa senine versioon uuega";
     },
     get$reply(_) {
-      return "Antwoord";
+      return "Vasta";
     },
     get$reportMessage() {
-      return "Bericht rapporteren";
+      return "Teata s\xf5numist";
     },
     get$roomHasBeenUpgraded() {
-      return "Kamer is ge\xfcpgrade";
+      return "Jututoa vesrioon on uuendatud";
     },
     get$roomVersion() {
-      return "Kamerversie";
+      return "Jututoa versioon";
     },
     get$search(_) {
-      return "Zoeken";
+      return "Otsi";
     },
     get$security() {
-      return "Beveiliging";
+      return "Turvalisus";
     },
     get$send(_) {
-      return "Verstuur";
+      return "Saada";
     },
     get$sendAMessage() {
-      return "Stuur een bericht";
+      return "Saada s\xf5num";
     },
     get$sendAsText() {
-      return "Als tekst versturen";
+      return "Saada tekstis\xf5numina";
     },
     get$sendAudio() {
-      return "Audio versturen";
+      return "Saada helifail";
     },
     get$sendFile() {
-      return "Bestand versturen";
+      return "Saada fail";
     },
     get$sendImage() {
-      return "Afbeelding versturen";
+      return "Saada pilt";
     },
     sendImages$1(count) {
-      return "Stuur " + count + " afbeelding(en)";
+      return "Saada " + count + " pilti";
     },
     get$sendMessages() {
-      return "Berichten versturen";
+      return "Saada s\xf5numeid";
     },
     get$sendVideo() {
-      return "Video versturen";
+      return "Saada videofail";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " heeft een bestand verzonden";
+      return "\ud83d\udcc1 " + username + " saatis faili";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " heeft een audio verzonden";
+      return "\ud83c\udfa4 " + username + " saatis helifaili";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " heeft een afbeelding verzonden";
+      return "\ud83d\uddbc\ufe0f " + username + " saatis pildi";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " heeft een sticker verzonden";
+      return "\ud83d\ude0a " + username + " saatis kleepsu";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " heeft een video verzonden";
+      return "\ud83c\udfa5 " + username + " saatis video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " heeft oproepgegevens verzonden";
+      return senderName + " saatis teavet k\xf5ne kohta";
     },
     get$separateChatTypes() {
-      return "Directe chats en groepen los weergeven";
+      return "Eraldi vestlused ja jututoad";
     },
     get$setAsCanonicalAlias() {
-      return "Als hoofdalias instellen";
+      return "M\xe4\xe4ra p\xf5hinimeks";
     },
     get$setChatDescription() {
-      return "Chatomschrijving instellen";
+      return "Lisa vestluse kirjeldus";
     },
     get$settings() {
-      return "Instellingen";
+      return "Seadistused";
     },
     get$share(_) {
-      return "Delen";
+      return "Jaga";
     },
     sharedTheLocation$1(username) {
-      return username + " heeft deze locatie gedeeld";
+      return username + " jagas oma asukohta";
     },
     get$shareLocation() {
-      return "Locatie delen";
+      return "Jaga asukohta";
     },
     get$presencesToggle() {
-      return "Toon statusberichten van andere personen";
+      return "N\xe4ita teiste kasutajate olekuteateid";
     },
     get$skip(_) {
-      return "Overslaan";
+      return "J\xe4ta vahele";
     },
     get$sourceCode() {
-      return "Broncode";
+      return "L\xe4htekood";
     },
     get$spaceName() {
-      return "Spacenaam";
+      return "Kogukonna nimi";
     },
     startedACall$1(senderName) {
-      return senderName + " heeft een gesprek gestart";
+      return senderName + " alustas k\xf5net";
     },
     get$status(_) {
-      return "Status";
+      return "Olek";
     },
     get$submit(_) {
-      return "Indienen";
+      return "Saada";
     },
     get$synchronizingPleaseWait() {
-      return "Synchroniseren... Even geduld.";
+      return "S\xfcnkroniseerin andmeid\u2026 Palun oota.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Synchroniseren\u2026 (" + percentage + "%)";
+      return " S\xfcnkroniseerime\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Systeem";
+      return "S\xfcsteem";
     },
     get$theyDontMatch() {
-      return "Ze komen niet overeen";
+      return "Nad ei klapi omavahel";
     },
     get$theyMatch() {
-      return "Ze komen overeen";
+      return "Nad klapivad omavahel";
     },
     get$tooManyRequestsWarning() {
-      return "Te veel verzoeken. Probeer het later nog eens!";
+      return "Liiga palju p\xe4ringuid. Palun proovi hiljem uuesti!";
     },
     get$tryToSendAgain() {
-      return "Probeer nogmaals te verzenden";
+      return "Proovi uuesti saata";
     },
     get$unavailable() {
-      return "Niet beschikbaar";
+      return "Eemal";
     },
     unbannedUser$2(username, targetName) {
-      return username + " heeft verbanning " + targetName + " ongedaan gemaakt";
+      return username + " eemaldas ligip\xe4\xe4sukeelu kasutajalt " + targetName;
     },
     get$unblockDevice() {
-      return "Deblokkeer apparaat";
+      return "Eemalda seadmelt blokeering";
     },
     get$unknownDevice() {
-      return "Onbekend apparaat";
+      return "Tundmatu seade";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Onbekend versleutelingsalgoritme";
+      return "Tundmatu kr\xfcptoalgoritm";
     },
     unknownEvent$1(type) {
-      return "Onbekend evenement '" + type + "'";
+      return "Tundmatu s\xfcndmuse t\xfc\xfcp '" + type + "'";
     },
     get$unpin() {
-      return "Losmaken";
+      return "Eemalda klammerdus";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " en " + count + " anderen zijn aan het typen \u2026";
+      return username + " ja " + count + " muud kirjutavad\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " en " + username2 + " zijn aan het typen \u2026";
+      return username + " ja " + username2 + " kirjutavad\u2026";
     },
     userIsTyping$1(username) {
-      return username + " is aan het typen \u2026";
+      return username + " kirjutab\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " is vertrokken uit de chat";
+      return "\ud83d\udeaa" + username + " lahkus vestlusest";
     },
     get$username(_) {
-      return "Inlognaam";
+      return "Kasutajanimi";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " heeft een " + type + " -gebeurtenis gestuurd";
+      return username + " saatis " + type + " s\xfcndmuse";
     },
     get$unverified() {
-      return "Niet geverifieerd";
+      return "Verifitseerimata";
     },
     get$verified() {
-      return "Geverifieerd";
+      return "Verifitseeritud";
     },
     get$verifyStart() {
-      return "Verificatie starten";
+      return "Alusta verifitseerimist";
     },
     get$verifySuccess() {
-      return "Je bent succesvol geverifieerd!";
+      return "Sinu verifitseerimine \xf5nnestus!";
     },
     get$verifyTitle() {
-      return "Ander account verifi\xebren";
+      return "Verifitseerin teist kasutajakontot";
     },
     get$visibilityOfTheChatHistory() {
-      return "Chatgeschiedenis zichtbaarheid";
+      return "Vestluse ajaloo n\xe4htavus";
     },
     get$visibleForAllParticipants() {
-      return "Zichtbaar voor alle personen";
+      return "N\xe4htav k\xf5ikidele osalejatele";
     },
     get$visibleForEveryone() {
-      return "Zichtbaar voor iedereen";
+      return "N\xe4htav k\xf5ikidele";
     },
     get$voiceMessage() {
-      return "Spraakbericht versturen";
+      return "H\xe4\xe4ls\xf5num";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Wachten tot partner het verzoek accepteert \u2026";
+      return "Ootan, et teine osapool n\xf5ustuks p\xe4ringuga\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Wachten tot je partner de emoji accepteert\u2026";
+      return "Ootan teise osapoole kinnitust, et tegemist on samade emojidega\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Wachten tot partner de nummers accepteert \u2026";
+      return "Ootan teise osapoole kinnitust, et tegemist on samade numbritega\u2026";
     },
     get$warning() {
-      return "Waarschuwing!";
+      return "Hoiatus!";
     },
     get$weSentYouAnEmail() {
-      return "We hebben je een email gestuurd";
-    },
-    get$whoCanPerformWhichAction() {
-      return "Wie kan welke actie uitvoeren";
+      return "Me saatsime sulle e-kirja";
     },
     get$whyDoYouWantToReportThis() {
-      return "Waarom wil je dit rapporteren?";
+      return "Miks sa soovid sellest teatada?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Met deze adressen kun je je wachtwoord herstellen.";
+      return "Nende e-posti aadresside abil saad taastada oma salas\xf5na.";
     },
     get$writeAMessage() {
-      return "Schrijf een bericht\u2026";
+      return "Kirjuta \xfcks s\xf5num\u2026";
     },
     get$yes() {
-      return "Ja";
+      return "Jah";
     },
     get$you() {
-      return "Jij";
+      return "Sina";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Je neemt niet langer deel aan deze chat";
+      return "Sa enam ei osale selles vestluses";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Je bent verbannen uit deze chat";
+      return "Sinule on selles vestluses seatud suhtluskeeld";
     },
     get$yourPublicKey() {
-      return "Je publieke sleutel";
+      return "Sinu avalik v\xf5ti";
     },
     get$messageInfo() {
-      return "Berichtinfo";
+      return "S\xf5numi teave";
     },
     get$time(_) {
-      return "Tijd";
+      return "Kellaaeg";
     },
     get$sender() {
-      return "Afzender";
+      return "Saatja";
     },
     get$openGallery() {
-      return "Galerij openen";
+      return "Ava galerii";
     },
     get$removeFromSpace() {
-      return "Uit de space verwijderen";
+      return "Eemalda kogukonnast";
     },
     videoWithSize$1(size) {
       return "Video (" + size + ")";
     },
     get$markAsRead() {
-      return "Markeer als gelezen";
+      return "M\xe4rgi loetuks";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " reageerde met " + reaction;
+      return sender + " reageeris nii " + reaction;
     },
     get$pinMessage() {
-      return "Maak vast aan kamer";
+      return "Klammerda s\xf5num jututuppa";
     },
     get$confirmEventUnpin() {
-      return "Weet je zeker dat je de gebeurtenis definitief wilt losmaken?";
+      return "Kas sa oled kindel, et tahad klammerdatud s\xfcndmuse eemaldada?";
     },
     get$emojis() {
-      return "Emoji's";
+      return "Emotikonid";
     },
     get$youRejectedTheInvitation() {
-      return "Je hebt de uitnodiging afgewezen";
+      return "Sa l\xfckkasid kutse tagasi";
     },
     get$youJoinedTheChat() {
-      return "Je bent toegetreden tot de chat";
+      return "Sa liitusid vestlusega";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Je hebt de uitnodiging geaccepteerd";
+      return "\ud83d\udc4d Sa v\xf5tsid kutse vastu";
     },
     youBannedUser$1(user) {
-      return "Je hebt " + user + " verbannen";
+      return "Sa seadsid suhtluskeelu kasutajale " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Je hebt de uitnodiging voor " + user + " ingetrokken";
+      return "Sa oled t\xfchistanud kutse kasutajale " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Je bent uitgenodigd door " + user;
+      return "\ud83d\udce9 " + user + " saatis sulle kutse";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Je hebt " + user + " uitgenodigd";
+      return "\ud83d\udce9 Sa saatsid kutse kasutajale " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Je hebt " + user + " weggestuurd";
+      return "\ud83d\udc5e Sa m\xfcksasid kasutaja " + user + " v\xe4lja";
     },
     youUnbannedUser$1(user) {
-      return "Je hebt de ban op " + user + " opgeheven";
+      return "Sa eemaldasid suhtluskeelu kasutajalt " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " heeft geklopt";
+      return "\ud83d\udeaa" + user + " on jututoa uksele koputanud";
     },
     get$usersMustKnock() {
-      return "Personen moeten kloppen";
+      return "Kasutajad peavad uksele koputama";
     },
     get$noOneCanJoin() {
-      return "Niemand kan deelnemen";
+      return "Mitte keegi ei saa liituda";
     },
     get$users() {
-      return "Personen";
+      return "Kasutajad";
     },
     countFiles$1(count) {
-      return "" + count + " bestanden";
+      return "" + count + " faili";
     },
     get$user() {
-      return "Persoon";
+      return "Kasutaja";
     },
     get$custom() {
-      return "Aangepast";
+      return "Kohandatud";
     },
     get$noKeyForThisMessage() {
-      return "Dit kan gebeuren als het bericht is verzonden voordat je bij je account op dit apparaat hebt aangemeld.\n\nHet is ook mogelijk dat de afzender je apparaat heeft geblokkeerd of dat er iets mis is gegaan met de internetverbinding.\n\nKan je het bericht wel lezen op een andere sessie? Dan kan je het bericht daarvandaan overzetten! Ga naar Instellingen > Apparaten en zorg ervoor dat je apparaten elkaar hebben geverifieerd. Wanneer je de kamer de volgende keer opent en beide sessies op de voorgrond staan, zullen de sleutels automatisch worden verzonden.\n\nWil je de sleutels niet verliezen als je uitlogt of van apparaat wisselt? Zorg er dan voor dat je de chatback-up hebt aangezet in de instellingen.";
+      return "See v\xf5ib juhtuda, kui s\xf5num oli saadetud enne, kui siin seadmes oma kontoga sisse logisid.\n\nSamuti v\xf5ib juhtuda siis, kui saatja on lugemises selles seadmes blokeerinud v\xf5i on tekkinud t\xf5rkeid veebi\xfchenduses.\n\nAga m\xf5nes teises seadmes saad seda s\xf5numit lugeda? Siis sa v\xf5id s\xf5numi sealt \xfcle t\xf5sta. Ava Seadistused -> Seadmed ning kontrolli, et k\xf5ik sinu seadmed on omavahel verifitseeritud. Kui avad selle vestluse v\xf5i jututoa ning m\xf5lemad sessioonid on avatud, siis vajalikud kr\xfcptov\xf5tmed saadetakse automaatset.\n\nKas sa soovid v\xe4ltida kr\xfcptov\xf5tmete kadumist v\xe4ljalogimisel ja seadmete vahetusel? Siis palun kontrolli, et seadistuses on kr\xfcptov\xf5tmete varundus sisse l\xfclitatud.";
     },
     get$newSpace() {
-      return "Space aanmaken";
+      return "Uus kogukond";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Lege chat (was " + oldDisplayName + ")";
+      return "S\xf5numiteta vestlus (vana nimega " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Chat heropenen";
+      return "Alusta vestlust uuesti";
     },
     get$noOtherDevicesFound() {
-      return "Geen andere apparaten gevonden";
+      return "Muid seadmeid ei leidu";
     },
     fileIsTooBigForServer$1(max) {
-      return "Kan niet verzenden! De server ondersteunt alleen bijlages tot " + max + ".";
+      return "Saatmine ei \xf5nnestu! Serveri vaid kuni " + max + " suurusega manuseid.";
     },
     get$jumpToLastReadMessage() {
-      return "Spring naar het laatst gelezen bericht";
+      return "Liigu viimase loetud s\xf5numini";
     },
     get$readUpToHere() {
-      return "Lees tot hier";
+      return "Siiamaani on loetud";
     },
     get$jump() {
-      return "Spring";
+      return "H\xfcppa";
     },
     get$openLinkInBrowser() {
-      return "Link in browser openen";
+      return "Ava link veebibrauseris";
     },
     get$setColorTheme() {
-      return "Kleurthema instellen:";
+      return "Vali v\xe4rviteema:";
     },
     get$invite() {
-      return "Uitnodigen";
+      return "Kutsu";
     },
     get$invalidInput() {
-      return "Ongeldige invoer!";
+      return "Vigane sisend!";
     },
     wrongPinEntered$1(seconds) {
-      return "Verkeerde pin ingevoerd! Probeer het nog eens over " + seconds + " seconden...";
+      return "Sisestasid vale PIN-koodi! Proovi uuesti " + seconds + " sekundi p\xe4rast...";
     },
     get$pleaseEnterANumber() {
-      return "Vul een getal in groter dan 0";
+      return "Palun sisesta 0'st suurem number";
     },
     get$roomUpgradeDescription() {
-      return "De chat zal dan opnieuw gemaakt worden met de nieuwe kamerversie. Alle deelnemers worden ge\xefnformeerd dat ze moeten overstappen naar de nieuwe chat. Je kan meer lezen over kamerversies op https://spec.matrix.org/latest/rooms/";
+      return "See vestlus luuakse n\xfc\xfcd uuesti jututoa uue versioonina. K\xf5ik senised osalejad saavad teate, et nad peavad liituma uue vestlusega. Jututubade versioonide kohta leiad teavet https://spec.matrix.org/latest/rooms/ lehelt";
     },
     get$removeDevicesDescription() {
-      return "Je wordt op dit apparaat uitgelogd en zal niet langer in staat zijn om berichten te ontvangen.";
+      return "Sind logitakse sellest seadmest v\xe4lja ja sa enam ei saa s\xf5numeid.";
     },
     get$banUserDescription() {
-      return "De persoon zal worden verbannen van de chat en kan niet meer toetreden totdat de verbanning is opgeheven.";
+      return "Sellele kasutajale on n\xfc\xfcd selles jututoas seatud suhtluskeeld ning ta ei saa vestluses osaleda seni, kuni suhtluskeeld pole eemaldatud.";
     },
     get$unbanUserDescription() {
-      return "De persoon zal weer in staat zijn om de chat te betreden als ze het proberen.";
+      return "Uuesti proovimisel saab see kasutaja n\xfc\xfcd vestlusega liituda.";
     },
     get$kickUserDescription() {
-      return "De persoon is verwijderd uit de chat, maar is niet verbannen. In openbare chats kan de persoon op elk moment opnieuw deelnemen.";
+      return "See kasutaja on n\xfc\xfcd jutuoast v\xe4lja m\xfcksatud, kuid talle pole seatud suhtluskeeldu. Avaliku jututoa puhul saab ta alati uuesti liituda.";
     },
     get$makeAdminDescription() {
-      return "Wanneer je deze persoon beheerder maakt kun je dit niet ongedaan maken als jullie dezelfde rechten hebben.";
+      return "Kui annad sellele kasutajale peakasutaja \xf5igused, siis kuna tal on sinuga samad \xf5igused, sa ei saa seda toimingut enam tagasi p\xf6\xf6rata.";
     },
     get$yourGlobalUserIdIs() {
-      return "Je Matrix ID is: ";
+      return "Sinu \xfcldine kasutajatunnus on: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Helaas kan er geen persoon gevonden worden met "' + query + '". Controleer of je een typfout hebt gemaakt.';
+      return "P\xe4ringuga \u201e" + query + "\u201c ei leidunud kahkus \xfchtegi kasutajat. Palun kontrolli, et p\xe4ringus poleks vigu.";
     },
     get$knocking() {
-      return "Kloppen";
+      return "Koputus uksele";
     },
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "Chat kan worden gevonden via een zoekopdracht op " + server;
+      return "Vestluse v\xf5i jututoa saad leida otsingust serveris " + server;
     },
     get$searchChatsRooms() {
-      return "Zoek naar #chats, @personen...";
+      return "Otsi #vestlusi, @kasutajaid...";
     },
     get$nothingFound() {
-      return "Niets gevonden...";
+      return "Ei leidnud mitte midagi...";
     },
     get$wrongRecoveryKey() {
-      return "Helaas... dit lijkt niet de correcte herstelsleutel.";
+      return "Vabandust..., see ei tundu olema korrektne taastev\xf5ti.";
     },
     get$startConversation() {
-      return "Start gesprek";
+      return "Alusta vestlust";
     },
     get$commandHint_sendraw() {
-      return "Stuur kale json";
+      return "Saada json oma algup\xe4rasel kujul";
     },
     get$searchForUsers() {
-      return "Zoek naar @personen...";
+      return "Otsi kasutajat @kasutajanimi ...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Vul je huidige wachtwoord in";
+      return "Palun sisesta oma praegune salas\xf5na";
     },
     get$newPassword() {
-      return "Nieuw wachtwoord";
+      return "Uus salas\xf5na";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Kies a.j.b. een sterk wachtwoord";
+      return "Palun sisesta korralik salas\xf5na";
     },
     get$passwordsDoNotMatch() {
-      return "Wachtwoorden komen niet overeen";
+      return "Salas\xf5nad ei klapi omavahel";
     },
     get$passwordIsWrong() {
-      return "Je ingevoerde wachtwoord is fout";
+      return "Sinu sisestatud salas\xf5na on vale";
     },
     get$publicChatAddresses() {
-      return "Openbare chat adressen";
+      return "Vestluse avalik aadress";
     },
     get$createNewAddress() {
-      return "Cre\xeber nieuw adres";
+      return "Loo uus aadress";
     },
     get$publicSpaces() {
-      return "Openbare spaces";
+      return "Avalikud kogukonnad";
     },
     get$decline() {
-      return "Weiger";
+      return "Keeldu";
     },
     get$thisDevice() {
-      return "Dit apparaat:";
+      return "See seade:";
     },
     get$initAppError() {
-      return "Er is een fout opgetreden bij het laden van de app";
+      return "Rakenduse k\xe4ivitamisel tekkis viga";
     },
     searchIn$1(chat) {
-      return 'Zoek in chat "' + chat + '"...';
+      return "Otsi vestlusest \u201e" + chat + "\u201c...";
     },
     get$searchMore() {
-      return "Zoek meer...";
+      return "Otsi veel...";
     },
     get$gallery() {
-      return "Galerij";
+      return "Galerii";
     },
     get$files(_) {
-      return "Bestanden";
+      return "Failid";
     },
     sessionLostBody$2(url, error) {
-      return "Je sessie is verlopen. Meldt alsjeblieft deze fout aan de ontwikkelaars via deze link " + url + ". De foutmelding is: " + error;
+      return "Sinu sessioon on kadunud. Palun teata sellest veast arendajatele siin: " + url + " m\xe4rkides veateate: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "De app probeert nu je sessie te herstellen van een back-up. Meldt alsjeblieft deze fout aan de ontwikkelaars via deze link " + url + ". De foutmelding is: " + error;
+      return "N\xfc\xfcd \xfcritab rakendus taastada sinu sessiooni varukoopiast. Palun teata sellest veast arendajatele siin: " + url + " m\xe4rkides veateate: " + error;
     },
     get$sendReadReceipts() {
-      return "Leesbevestigingen versturen";
+      return "Saada lugemisteatisi";
     },
     get$sendTypingNotificationsDescription() {
-      return "Andere deelnemers in de chat kunnen zien wanneer je een bericht aan het typen bent.";
+      return "Muud vestluses osalejad saavad n\xe4ha, kui sa oled uut s\xf5numit kirjutamas.";
     },
     get$sendReadReceiptsDescription() {
-      return "Andere deelnemers van de chat kunnen zien of je een bericht hebt gelezen.";
+      return "Muud vestluses osalejad n\xe4evad, kas oled s\xf5numit lugenud.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Ander apparaat verifi\xebren";
+      return "\ud83d\udd10 Verifitseeri oma muu seade";
     },
     get$verifyOtherDeviceDescription() {
-      return "Een geverifieerd ander apparaat zorgt ervoor dat de apparaten sleutels uitwisselen, wat je beveiliging versterkt. \ud83d\udcaa Als je de verificatie start verschijnt er een popup op beide apparaten. Hier staat een reeks emoji's of getallen die je met elkaar moet vergelijken. Het is handig om beide apparaten bij de hand te hebben voordat je de verificatie start. \ud83e\udd33";
+      return "Kui sa oled oma muu seadme verifitseerinud, siis need seadmed v\xf5ivad vahetada kr\xfcptov\xf5tmeid ning see parandab \xfcldist turvalisust. \ud83d\udcaa Kui alustad verifitseerimist, siis sinu m\xf5lemas seadmes tekib rakenduses h\xfcpikaken. Seal kuvatakse emotikonide v\xf5i numbrite jada, mida pead omavahel v\xf5rdlema. On oluline, et m\xf5lemad seadmed on verifitseerimise alustamisel sinu k\xf5rval. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " accepteerde de sleutelverificatie";
+      return sender + " n\xf5ustus kr\xfcptov\xf5tmete verifitseerimisega";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " annuleerde de sleutelverificatie";
+      return sender + " katkestas kr\xfcptov\xf5tmete verifitseerimise";
     },
     completedKeyVerification$1(sender) {
-      return sender + " ronde de sleutelverificatie af";
+      return sender + " sai valmis kr\xfcptov\xf5tmete verifitseerimise";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " is klaar voor de sleutelverificatie";
+      return sender + " on valmis kr\xfcptov\xf5tmete verifitseerimiseks";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " vraagt een sleutelverificatie";
+      return sender + " palus kr\xfcptov\xf5tmete verifitseerimist";
     },
     startedKeyVerification$1(sender) {
-      return sender + " start een sleutelverificatie";
+      return sender + " alustas kr\xfcptov\xf5tmete verifitseerimist";
     },
     get$stickers() {
-      return "Stickers";
+      return "Kleepsud";
     },
     get$discover() {
-      return "Ontdek";
+      return "Otsi ja leia";
     },
     get$commandHint_ignore() {
-      return "Negeer de gegeven Matrix ID";
+      return "Eira seda Matrixi kasutajatunnust";
     },
     get$commandHint_unignore() {
-      return "Herstel de negeerde Matrix ID";
+      return "L\xf5peta selle Matrixi kasutajatunnuse eiramine";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Momenteel zijn er " + count + " personen geblokkeerd.";
+      return "Hetkel on " + count + " blokeeritud kasutajat.";
     },
     get$restricted() {
-      return "Beperkt";
+      return "Piiratud";
     },
     get$knockRestricted() {
-      return "Kloppen is beperkt";
+      return "Koputa piiratud ligip\xe4\xe4suga jututoa uksele";
     },
     goToSpace$1(space) {
-      return "Ga naar space: " + space;
+      return "Ava kogukond: " + space;
     },
     get$markAsUnread() {
-      return "Als ongelezen markeren";
+      return "M\xe4rgi mitteloetuks";
     },
     userLevel$1(level) {
-      return "" + level + " - Persoon";
+      return "" + level + " - kasutaja";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderator";
+      return "" + level + " - moderaator";
     },
     adminLevel$1(level) {
-      return "" + level + " - Beheerder";
+      return "" + level + " - peakasutaja";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Zichtbaarheid van de chat-geschiedenis wijzigen";
+      return "Muuda vestluse ajaloo n\xe4htavust";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Standaard openbaar chat-adres wijzigen";
+      return "Muuda vestluse p\xf5hilist avalikult n\xe4htavat aadressi";
     },
     get$sendRoomNotifications() {
-      return "@room-meldingen versturen";
+      return "Saada @jututuba teavitusi";
     },
     get$chatPermissionsDescription() {
-      return "Stel het gewenste rechten-niveau in voor bepaalde acties in deze chat. Het rechten-niveau 0, 50 en 100 zijn gebruikelijk voor deelnemer, moderator en beheerder, maar elke verdeling is mogelijk.";
+      return "M\xe4\xe4ra erinevatele kasutajatele selles vestluses vajalikud \xf5igused. T\xfc\xfcpiliselt on need 0, 50 ja 100 (vastavalt kasutajad, moderaatorid ja peakasutajad), kuid igasugused vahepealsed variatsioonid on ka v\xf5imalikud.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 Update " + version + " ge\xefnstalleerd!";
+      return "\ud83c\udf89 Versiooniuuendus " + version + " on paigaldatud!";
     },
     get$sendCanceled() {
-      return "Versturen geannuleerd";
+      return "Saatmine on katkestatud";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Dit lijkt geen ondersteunde server. Verkeerde URL?";
+      return "Ei tundu olema \xfchilduv koduserver. Kas v\xf5rguaadress on ikka \xf5ige?";
     },
     get$calculatingFileSize() {
-      return "Bestandsgrootte berekenen...";
+      return "Arvutame faili suurust...";
     },
     get$prepareSendingAttachment() {
-      return "Bijlage versturen voorbereiden...";
+      return "Valmistume manuse saatmiseks...";
     },
     get$sendingAttachment() {
-      return "Bijlage versturen...";
+      return "Saadame manust...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Bijlage versturen " + index + " van " + $length + "...";
+      return "Saadame manust: " + index + " pikkusega " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Server limiet bereikt! Wacht " + seconds + " seconden...";
+      return "Serveri poolt lubatud \xfclempiir on k\xe4es. Ootame " + seconds + " sekundit...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Opmerking: Als al je apparaten zijn verbonden met de chat back-up worden ze automatisch geverifieerd.";
+      return "M\xe4rkus: kui liidad k\xf5ik oma seadmed vestluste varundamisega, siis on nad sellega ka automaatselt verifitseeritud.";
     },
     get$continueText() {
-      return "Doorgaan";
+      return "J\xe4tka";
     },
     get$blur(_) {
-      return "Vervaag:";
+      return "H\xe4gusus:";
     },
     get$opacity(_) {
-      return "Doorzichtigheid:";
+      return "L\xe4bipaistmatus:";
     },
     get$setWallpaper() {
-      return "Wallpaper instellen";
+      return "M\xe4\xe4ra taustapildiks";
     },
     get$noContactInformationProvided() {
-      return "Server geeft geen geldige contactinformatie";
+      return "Server ei jaga asjakohast kontaktteavet";
     },
     get$contactServerAdmin() {
-      return "Contact opnemen met serverbeheerder";
+      return "V\xf5ta \xfchendust serveri haldajaga";
     },
     get$contactServerSecurity() {
-      return "Contact opnemen met serverbeveiliger";
+      return "V\xf5ta \xfchendust serveri andmeturbe eest vastutajaga";
     },
     get$supportPage() {
-      return "Supportpagina";
+      return "Kasutajatugi";
     },
     get$serverInformation() {
-      return "Server-informatie:";
+      return "Serveri teave:";
     },
     get$name(_) {
-      return "Naam";
+      return "Nimi";
     },
     get$version(_) {
-      return "Versie";
+      return "Versioon";
     },
     get$compress() {
-      return "Comprimeren";
+      return "Paki kokku";
     },
     get$boldText() {
-      return "Vet gedrukte tekst";
+      return "Paks kiri";
     },
     get$italicText() {
-      return "Cursieve tekst";
+      return "Kaldkiri";
     },
     get$strikeThrough() {
-      return "Doorhalen";
+      return "L\xe4bikriipsutatud kiri";
     },
     get$pleaseFillOut() {
-      return "Vul alsjeblieft in";
+      return "Palun t\xe4ida";
     },
     get$invalidUrl() {
-      return "Ongeldige url";
+      return "Vigane v\xf5rguaadress";
     },
     get$addLink() {
-      return "Koppeling toevoegen";
+      return "Lisa link";
     },
     get$unableToJoinChat() {
-      return "Kan niet toetreden tot de chat. Misschien heeft de andere partij het gesprek al afgesloten.";
+      return "Vestlusega liitumine ei \xf5nnestu. V\xf5ib-olla on teine osapool juba vestluse sulgenud.";
     },
     get$previous() {
-      return "Vorige";
+      return "Eelmine";
     },
     get$otherPartyNotLoggedIn() {
-      return "De andere partij is momenteel niet ingelogd en kan daarom geen berichten ontvangen!";
+      return "Vestluse teine osapool pole hetkel v\xf5rku loginud ega seega saa neid s\xf5numeid kohe k\xe4tte!";
     },
     get$open(_) {
-      return "Open";
+      return "Ava";
     },
     get$waitingForServer() {
-      return "Wachten op server...";
+      return "Ootame serveri vastust...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Nieuw chat verzoek";
+      return "\ud83d\udce9 Uus vestluskutse";
     },
     get$contentNotificationSettings() {
-      return "Contentmelding instellingen";
+      return "Sisuteavituste seadistused";
     },
     get$generalNotificationSettings() {
-      return "Algemene melding instellingen";
+      return "\xdcldised teavituste seadistused";
     },
     get$roomNotificationSettings() {
-      return "Kamermelding instellingen";
+      return "Jututoa teavituste seadistused";
     },
     get$userSpecificNotificationSettings() {
-      return "Persoon specifieke melding instellingen";
+      return "Kasutajakohaste teavituste seadistused";
     },
     get$otherNotificationSettings() {
-      return "Andere melding instellingen";
+      return "Muud teavituste seadistused";
     },
     get$notificationRuleContainsUserName() {
-      return "Bevat naam van persoon";
+      return "Kasutajanime olemasolul";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Stuurt een melding als een bericht de persoon vermeld.";
+      return "Teavita kasutajat, kui s\xf5numis on tema kasutajanimi.";
     },
     get$notificationRuleMaster() {
-      return "Alle meldingen uitschakelen";
+      return "Summuta k\xf5ik teavitused";
     },
     get$notificationRuleMasterDescription() {
-      return "Overschrijf alle andere regels en meldingen uitschakelen.";
+      return "\xc4ra j\xe4rgi muid reegleid ja l\xfclita k\xf5ik teavitused v\xe4lja.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Automatische berichten uitschakelen";
+      return "\xc4ra teavita automaatsete s\xf5numite korral";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Meldingen van automatische accounts zoals bots uitschakelen.";
+      return "\xc4ra teavita s\xf5numite puhul, mis on genereeritud masinate, nt jututubade robotite poolt.";
     },
     get$notificationRuleInviteForMe() {
-      return "Uitnodiging voor mij";
+      return "Kutsed mulle";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Stuur een melding wanneer een persoon wordt uitgenodigd voor een kamer.";
+      return "Teavita kasutajat jututoa kutse saamisel.";
     },
     get$notificationRuleMemberEvent() {
-      return "Kamer-gebeurtenis";
+      return "Jututoa liikmelisusega seotud s\xfcndmus";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Meldingen voor kamer-gebeurtenissen uitschakelen.";
+      return "\xc4ra teavita s\xf5numite puhul, mis seotud jututubade liikmelisusega.";
     },
     get$notificationRuleIsUserMention() {
-      return "Persoonvermelding";
+      return "Kasutaja mainimised";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Stuur een melding als de persoon direct genoemd wordt in een bericht.";
+      return "Teavita kasutajat, kui ta on s\xf5numis otseselt mainitud.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Bevat de naam";
+      return "Kuvatava nime sisaldumisel";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Stuur een melding als de persoon genoemd wordt in het bericht.";
+      return "Teavita kasutajat, kui s\xf5numis leidub ta kuvatav nimi.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Kamervermelding";
+      return "Jututoa mainimine";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Stuur een melding naar de persoon als er in een kamervermelding is.";
+      return "Teavita kasutajat, kui jututuba on s\xf5numis otseselt mainitud.";
     },
     get$notificationRuleRoomnotif() {
-      return "Kamermelding";
+      return "Jututoa \xfcldteavitus";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Stuur een melding naar de persoon wanneer een bericht '@room' bevat.";
+      return "Teavita kasutajat, kui jututuba on s\xf5numis otseselt mainitud viisil \u201e@toanimi\u201c.";
     },
     get$notificationRuleTombstone() {
-      return "Sleutingsbericht";
+      return "Jututoa tegevuse l\xf5petamine";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Stuur een melding naar de persoon over kamersluitingsberichten.";
+      return "Teavita kasutajat jututoa v\xe4ljal\xfclitamisega seotud s\xf5numite korral.";
     },
     get$notificationRuleReaction() {
-      return "Reactie";
+      return "Reageerimised";
     },
     get$notificationRuleReactionDescription() {
-      return "Meldingen voor reacties uitschakelen.";
+      return "Teavita kasutajat s\xf5numitele reageerimise korral.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Kamer Server ACL";
+      return "Jututoa ligip\xe4\xe4su\xf5igused serveris";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Meldingen voor kamer server toegangscontrolelijst (ACL) uitschakelen.";
+      return "Peida teavitused jututoa ligip\xe4\xe4su\xf5iguste muutuste korral serveris.";
     },
     get$notificationRuleSuppressEdits() {
-      return "Bewerkingen uitschakelen";
+      return "Peida muutmised";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Meldingen voor bewerkte berichten uitschakelen.";
+      return "Peida teavitused s\xf5numite muutmise kohta.";
     },
     get$notificationRuleCall() {
-      return "Oproep";
+      return "K\xf5ned";
     },
     get$notificationRuleCallDescription() {
-      return "Stuur een melding naar de persoon over oproepen.";
+      return "Teavita kasutajat saabuvast video- v\xf5i h\xe4\xe4lk\xf5nest.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Versleutelde een-op-een kamer";
+      return "Kahepoolne vestlus kr\xfcptitud jututoas";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Stuur een melding naar de persoon over berichten in versleutelde een-op-een kamers.";
+      return "Teavita kasutajat kahepoolse kr\xfcptitud vestluse s\xf5numitest.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Een-op-een kamer";
+      return "Kahepoolne vestlus kr\xfcptimata jututoas";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Stuur een melding naar de persoon over berichten in een-op-een kamers.";
+      return "Teavita kasutajat kahepoolse kr\xfcptimata vestluse s\xf5numitest.";
     },
     get$notificationRuleMessage() {
-      return "Bericht";
+      return "\xdcldised s\xf5numid";
     },
     get$notificationRuleMessageDescription() {
-      return "Stuur een melding naar de persoon over algemene berichten.";
+      return "Teavita kasutajat \xfcldistest s\xf5numitest.";
     },
     get$notificationRuleEncrypted() {
-      return "Versleuteld";
+      return "Kr\xfcptitud s\xf5numid";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Stuur een melding naar de persoon over berichten in versleutelde kamers.";
+      return "Teavita kasutajat s\xf5numitest kr\xfcptitud jututubades.";
     },
     get$notificationRuleJitsi() {
-      return "Jitsi";
+      return "Jitsi videok\xf5ned";
     },
     get$notificationRuleJitsiDescription() {
-      return "Stuur een melding naar de persoon over Jitsi widget gebeurtenissen.";
+      return "Teavita kasutajat s\xfcndmustest Jitsi vidinas.";
     },
     get$notificationRuleServerAcl() {
-      return "Server ACL gebeurtenissen uitschakelen";
+      return "Ligip\xe4\xe4su\xf5igused serveris";
     },
     get$notificationRuleServerAclDescription() {
-      return "Meldingen over server ACL gebeurtenissen uitschakelen.";
+      return "Peida teavitused ligip\xe4\xe4su\xf5iguste muutuste korral serveris.";
     },
     unknownPushRule$1(rule) {
-      return "Onbekende notificatieregel '" + rule + "'";
+      return "T\xf5uketeavituse tundmatu reegel '" + rule + "'";
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Als je deze melding-instelling verwijderd, kan dit niet ongedaan gemaakt worden.";
+      return "Kui sa kustutad selle teavituse seadistuse, siis seda tegevust tagasi v\xf5tta ei saa.";
     },
     get$more() {
-      return "Meer";
+      return "Lisateave";
     },
     get$shareKeysWith() {
-      return "Deel sleutels met...";
+      return "Jaga v\xf5tmeid seadmega...";
     },
     get$shareKeysWithDescription() {
-      return "Welke apparaten moeten vertrouwd worden zodat ze je berichten kunnen lezen in versleutelde chats?";
+      return "Missuguseid seadmeid sa usaldad, et neist v\xf5iks lugeda kr\xfcptitud vestluste s\xf5numeid?";
     },
     get$allDevices() {
-      return "Alle apparaten";
+      return "K\xf5iki seadmeid";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Kruislings geverifieerde apparaten als ingeschakeld";
+      return "Risttunnustatud seadmeid, kui see v\xf5imalus on kasutusel";
     },
     get$crossVerifiedDevices() {
-      return "Kruislings geverifieerde apparaten";
+      return "Risttunnustatud seadmeid";
     },
     get$verifiedDevicesOnly() {
-      return "Alleen geverifieerde apparaten";
+      return "Vaid verifitseeritud seadmeid";
     },
     get$optionalMessage() {
-      return "(Optioneel) bericht...";
+      return "S\xf5num (kui soovid lisada)...";
     },
     get$notSupportedOnThisDevice() {
-      return "Niet ondersteund op dit apparaat";
+      return "See pole antud seadmes toetatud";
     },
     get$enterNewChat() {
-      return "Nieuwe chat openen";
+      return "Liitu uue vestlusega";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
@@ -3672,12 +3675,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$completeActivitiesToUnlock() {
       return "Complete at least one activity to unlock the translation!";
     },
-    get$botSettingsSubtitle() {
-      return "Invite bot to moderate chat activity";
-    },
-    get$noCapacityLimit() {
-      return "No capacity limit";
-    },
     get$downloadGroupText() {
       return "Download group text";
     },
@@ -3695,9 +3692,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$addSubspaceWarning() {
       return "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.";
-    },
-    get$nestedSpaceError() {
-      return "Spaces should not be added as children of other spaces";
     },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
@@ -4305,9 +4299,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
     },
-    get$leaderboard() {
-      return "Leaderboard";
-    },
     welcomeUser$1(user) {
       return "Welcome " + user;
     },
@@ -4386,6 +4377,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcements() {
       return "Announcements";
     },
+    get$activities() {
+      return "Activities";
+    },
+    get$access() {
+      return "Access";
+    },
+    get$addSubspace() {
+      return "Add subspace";
+    },
+    get$botSettings() {
+      return "Bot settings";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4393,14 +4396,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nNl, C.L10n);
+    _inherit(A.L10nEt, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nNl":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEt":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
-  d.eventLog.push({p: "main.dart.js_252", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "BXXOVRdoVI8yD5it1S+Z2BBcF6o=");
+  d.eventLog.push({p: "main.dart.js_212", e: "endPart", h: h});
+})($__dart_deferred_initializers__, "eqFOKfWtqubREpiFPgXN8jW3BRY=");
 ;
-//# sourceMappingURL=main.dart.js_252.part.js.map
+//# sourceMappingURL=main.dart.js_212.part.js.map

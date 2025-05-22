@@ -2,30 +2,30 @@
 ((s, d, e) => {
   s[d] = s[d] || {};
   s[d][e] = s[d][e] || [];
-  s[d][e].push({p: "main.dart.js_234", e: "beginPart"});
+  s[d][e].push({p: "main.dart.js_223", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nHu$() {
-      return new A.L10nHu(B.canonicalizedLocale("hu"));
+    L10nGl$() {
+      return new A.L10nGl(B.canonicalizedLocale("gl"));
     },
-    L10nHu: function L10nHu(t0) {
+    L10nGl: function L10nGl(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[52];
-  A = hunkHelpers.updateHolder(holdersList[27], A);
-  A.L10nHu.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[23], A);
+  A.L10nGl.prototype = {
     get$alwaysUse24HourFormat() {
-      return "true";
+      return "falso";
     },
     get$repeatPassword() {
-      return "Jelsz\xf3 megism\xe9tl\xe9se";
+      return "Repite o contrasinal";
     },
     get$notAnImage() {
-      return "Nem k\xe9p f\xe1jl.";
+      return "Non \xe9 un ficheiro de imaxe.";
     },
     get$setCustomPermissionLevel() {
       return "Set custom permission level";
@@ -40,1540 +40,1543 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Normal user";
     },
     get$remove(_) {
-      return "Elt\xe1vol\xedt\xe1s";
+      return "Quitar";
     },
     get$importNow() {
-      return "Import\xe1l\xe1s most";
+      return "Importar agora";
     },
     get$importEmojis() {
-      return "Emojik import\xe1l\xe1sa";
+      return "Importar Emojis";
     },
     get$importFromZipFile() {
-      return "Import\xe1l\xe1s zip f\xe1jlb\xf3l";
+      return "Importar desde ficheiro .zip";
     },
     get$exportEmotePack() {
-      return "Emojik export\xe1l\xe1sa zip-be";
+      return "Exportar paquete Emote como .zip";
     },
     get$replace(_) {
-      return "Kicser\xe9l";
+      return "Substitu\xedr";
     },
     aboutHomeserver$1(homeserver) {
-      return "About " + homeserver;
+      return "Sobre " + homeserver;
     },
     get$accept(_) {
-      return "Elfogad\xe1s";
+      return "Aceptar";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " elfogadta a megh\xedv\xe1st";
+      return "\ud83d\udc4d " + username + " aceptou o convite";
     },
     get$account() {
-      return "Fi\xf3k";
+      return "Conta";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " aktiv\xe1lta a v\xe9gpontok k\xf6z\xf6tti titkos\xedt\xe1st";
+      return "\ud83d\udd10 " + username + " activou a cifraxe extremo-a-extremo";
     },
     get$addEmail() {
-      return "E-mail-c\xedm hozz\xe1ad\xe1sa";
+      return "Engadir email";
     },
     supposedMxid$1(mxid) {
-      return mxid + "-nek kell lennie";
+      return "Deber\xeda ser " + mxid;
     },
     get$addToSpace() {
-      return "Hozz\xe1ad\xe1s t\xe9rhez";
+      return "Engadir ao espazo";
     },
     get$admin() {
       return "Admin";
     },
     get$alias() {
-      return "\xe1ln\xe9v";
+      return "alias";
     },
     get$all() {
-      return "\xd6sszes";
+      return "Todos";
     },
     get$commandHint_roomupgrade() {
-      return "Upgrade this room to the given room version";
+      return "Actualizar esta sala \xe1 versi\xf3n de sala indicada";
     },
     get$commandHint_googly() {
-      return "G\xfcl\xfcszemek k\xfcld\xe9se";
+      return "Env\xeda uns ollos desos grandes";
     },
     get$commandHint_cuddle() {
-      return "\xd6sszeb\xfaj\xe1s k\xfcld\xe9se";
+      return "Env\xeda un agarimo";
     },
     get$commandHint_hug() {
-      return "\xd6lel\xe9s k\xfcld\xe9se";
+      return "Env\xeda un abrazo";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " g\xfcl\xfcszemeket k\xfcld";
+      return senderName + " enviouche uns ollos grandes";
     },
     cuddleContent$1(senderName) {
-      return senderName + " hozz\xe1d b\xfajik";
+      return senderName + " m\xe1ndache un achuche";
     },
     hugContent$1(senderName) {
-      return senderName + " meg\xf6lelt";
+      return senderName + " abr\xe1zate";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " felvette a h\xedv\xe1st";
+      return senderName + " respondeu \xe1 chamada";
     },
     get$anyoneCanJoin() {
-      return "B\xe1rki csatlakozhat";
+      return "Calquera pode unirse";
     },
     get$archive() {
-      return "Arch\xedvum";
+      return "Arquivo";
     },
     get$areGuestsAllowedToJoin() {
-      return "Csatlakozhatnak-e vend\xe9gek";
+      return "Permitir o acceso de convidadas";
     },
     get$areYouSure() {
-      return "Biztos benne?";
+      return "Tes a certeza?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Biztosan kijelentkezik?";
+      return "Tes a certeza de querer sa\xedr?";
     },
     get$askSSSSSign() {
-      return "A m\xe1sik f\xe9l igazol\xe1s\xe1hoz meg kell adni a biztons\xe1gos t\xe1rol\xf3 jelmondat\xe1t vagy a vissza\xe1ll\xedt\xe1si kulcsot.";
+      return "Para poder asinar a outra persoa, escribe a t\xfaa frase de paso ou chave de recuperaci\xf3n.";
     },
     askVerificationRequest$1(username) {
-      return "Elfogadja " + username + " hiteles\xedt\xe9si k\xe9relm\xe9t?";
+      return "Aceptar a solicitude de verificaci\xf3n de " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "A kiszolg\xe1l\xf3 a k\xf6vetkez\u0151 bejelentkez\xe9seket t\xe1mogatja:\n" + serverVersions + "\nDe ez az alkalmaz\xe1st csak ezeket t\xe1mogatja:\n" + supportedVersions;
+      return "O servidor soporta as seguintes formas de conexi\xf3n:\n" + serverVersions + "\nPero esta app s\xf3 soporta:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "G\xe9pel\xe9si inf\xf3 megjelen\xedt\xe9se";
+      return "Permitir ver que est\xe1s escribindo";
     },
     get$swipeRightToLeftToReply() {
-      return "H\xfazza balra a v\xe1laszol\xe1shoz";
+      return "Despraza hacia a esquerda para responder";
     },
     get$sendOnEnter() {
-      return "K\xfcld\xe9s Enterrel";
+      return "Enter para enviar";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " cseveg\xe9sek \xe9s " + participants + " r\xe9sztvev\u0151k";
+      return "" + chats + " charlas e " + participants + " participantes";
     },
     get$noMoreChatsFound() {
-      return "Nincs t\xf6bb cseveg\xe9s...";
+      return "Non se atopan m\xe1is charlas\u2026";
     },
     get$noChatsFoundHere() {
-      return "Itt m\xe9g nincs cseveg\xe9s. Kezdjen \xfajat valakivel a lentebbi gombbal. \u2935\ufe0f";
+      return "Sen charlas por aqu\xed. Comeza unha nova conversa con algu\xe9n premendo no bot\xf3n de abaixo. \u2935\ufe0f";
     },
     get$unread() {
-      return "Olvasatlan";
+      return "Sen ler";
     },
     get$space() {
-      return "T\xe9r";
+      return "Espazo";
     },
     get$spaces() {
-      return "Terek";
+      return "Espazos";
     },
     get$banFromChat() {
-      return "Kitilt\xe1s cseveg\xe9sb\u0151l";
+      return "Vetar na conversa";
     },
     get$banned() {
-      return "Kitiltva";
+      return "Vetada";
     },
     bannedUser$2(username, targetName) {
-      return username + " kitiltotta: " + targetName;
+      return username + " vetou a " + targetName;
     },
     get$blockDevice() {
-      return "Eszk\xf6z blokkol\xe1sa";
+      return "Bloquear dispositivo";
     },
     get$blocked() {
-      return "Blokkolva";
+      return "Bloqueado";
     },
     get$cancel(_) {
-      return "M\xe9gse";
+      return "Cancelar";
     },
     cantOpenUri$1(uri) {
-      return "Nem siker\xfclt az URI megnyit\xe1sa: " + uri;
+      return "Non se pode abrir o URI " + uri;
     },
     get$changeDeviceName() {
-      return "Eszk\xf6zn\xe9v m\xf3dos\xedt\xe1sa";
+      return "Cambiar nome do dispositivo";
     },
     changedTheChatAvatar$1(username) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9si profilk\xe9p\xe9t";
+      return username + " cambiou o avatar da conversa";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9s le\xedr\xe1s\xe1t erre: '" + description + "'";
+      return username + " mudou a descrici\xf3n da conversa a: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9s nev\xe9t erre: '" + chatname + "'";
+      return username + " mudou o nome da charla a: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9si enged\xe9lyeket";
+      return username + " mudou os permisos da conversa";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " m\xf3dos\xedtotta a megjelen\xedtett nev\xe9t erre: '" + displayname + "'";
+      return username + " cambiou o nome p\xfablico a: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyokat";
+      return username + " mudou as regras de acceso para convidadas";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyait erre: " + rules;
+      return username + " mudou as regras de acceso para convidadas a: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t";
+      return username + " mudou a visibilidade do historial";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t erre: " + rules;
+      return username + " mudou a visibilidade do historial a: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " m\xf3dos\xedtott a csatlakoz\xe1si szab\xe1lyokat";
+      return username + " mudou as regras de acceso";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " m\xf3dos\xedtotta a csatlakoz\xe1si szab\xe1lyokat erre: " + joinRules;
+      return username + " mudou as regras de acceso a: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " m\xf3dos\xedtotta a profilk\xe9p\xe9t";
+      return username + " mudou o avatar";
     },
     changedTheRoomAliases$1(username) {
-      return username + " m\xf3dos\xedtotta a szoba \xe1lneveit";
+      return username + " mudou os alias da sala";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " m\xf3dos\xedtotta a megh\xedv\xf3 hivatkoz\xe1st";
+      return username + " mudou a ligaz\xf3n de convite";
     },
     get$changePassword() {
-      return "Jelsz\xf3 m\xf3dos\xedt\xe1sa";
+      return "Mudar contrasinal";
     },
     get$changeTheme() {
-      return "St\xedlus m\xf3dos\xedt\xe1sa";
+      return "Cambiar o estilo";
     },
     get$changeYourAvatar() {
-      return "Profilk\xe9p m\xf3dos\xedt\xe1sa";
+      return "Cambia o avatar";
     },
     get$channelCorruptedDecryptError() {
-      return "A titkos\xedt\xe1s megs\xe9r\xfclt";
+      return "A cifraxe est\xe1 estragada";
     },
     get$chat() {
-      return "Cseveg\xe9s";
+      return "Conversa";
     },
     get$chatDetails() {
-      return "Cseveg\xe9s r\xe9szletei";
+      return "Detalles da conversa";
     },
     get$chats() {
-      return "Cseveg\xe9sek";
+      return "Conversas";
     },
     get$chooseAStrongPassword() {
-      return "V\xe1lasszon egy er\u0151s jelsz\xf3t";
+      return "Escolle un contrasinal forte";
     },
     get$clearArchive() {
-      return "Arch\xedvum t\xf6rl\xe9se";
+      return "Baleirar arquivo";
     },
     get$close(_) {
-      return "Bez\xe1r\xe1s";
+      return "Pechar";
     },
     get$commandHint_markasdm() {
-      return "Szoba megjel\xf6l\xe9se mint k\xf6zvetlen cseveg\u0151 szoba az adott Matrix ID-n\xe9l";
+      return "Marcar como sala de mensaxe directa para o ID Matrix indicado";
     },
     get$commandHint_markasgroup() {
-      return "Csoportnak jel\xf6l\xe9s";
+      return "Marcar como grupo";
     },
     get$commandHint_ban() {
-      return "Felhaszn\xe1l\xf3 kitilt\xe1sa ebb\u0151l a szob\xe1b\xf3l";
+      return "Vetar a usuaria indicada desta sala";
     },
     get$commandHint_clearcache() {
-      return "Gyors\xedt\xf3t\xe1r t\xf6rl\xe9se";
+      return "Baleirar cach\xe9";
     },
     get$commandHint_create() {
-      return "Egy \xfcres cseveg\u0151 csoport l\xe9trehoz\xe1sa\nA --no-encryption kapcsol\xf3val titkos\xedtatlan szoba hozhat\xf3 l\xe9tre";
+      return "Crear un grupo de conversa baleiro\nUsa --no-encryption para desactivar a cifraxe";
     },
     get$commandHint_discardsession() {
-      return "Munkamenet elvet\xe9se";
+      return "Descartar sesi\xf3n";
     },
     get$commandHint_dm() {
-      return "K\xf6zvetlen cseveg\xe9s ind\xedt\xe1sa\nA --no-encryption kapcsol\xf3val titkos\xedtatlan besz\xe9lget\xe9st hozhat l\xe9tre";
+      return "Iniciar unha charla directa\nUsa --no-encryption para desactivar a cifraxe";
     },
     get$commandHint_html() {
-      return "HTML form\xe1zott \xfczenet k\xfcld\xe9se";
+      return "Enviar texto con formato HTML";
     },
     get$commandHint_invite() {
-      return "Adott felhaszn\xe1l\xf3 megh\xedv\xe1sa ebbe a szob\xe1ba";
+      return "Convidar \xe1 usuaria a esta sala";
     },
     get$commandHint_join() {
-      return "Csatlakoz\xe1s a megadott szob\xe1hoz";
+      return "Unirte \xe1 sala indicada";
     },
     get$commandHint_kick() {
-      return "A megadott felhaszn\xe1l\xf3 kir\xfag\xe1sa a szob\xe1b\xf3l";
+      return "Eliminar a usuaria indicada desta sala";
     },
     get$commandHint_leave() {
-      return "Szoba elhagy\xe1sa";
+      return "Sa\xedr desta sala";
     },
     get$commandHint_me() {
-      return "Jellemezd magad";
+      return "Conta algo sobre ti";
     },
     get$commandHint_myroomavatar() {
-      return "Az ebben a szob\xe1ban megjelen\xedtett profilk\xe9ped megv\xe1ltoztat\xe1sa (mxc URI haszn\xe1lat\xe1val)";
+      return "Establece a t\xfaa imaxe para esta sala (por mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Az ebben a szob\xe1ban megjelen\xedtett neved megv\xe1ltoztat\xe1sa";
+      return "Establece o teu nome p\xfablico para esta sala";
     },
     get$commandHint_op() {
-      return "Az adott felhaszn\xe1l\xf3 hozz\xe1f\xe9r\xe9si szintj\xe9nek megad\xe1sa (alap\xe9rtelmezett: 50)";
+      return "Establecer o nivel de responsabilidade da usuaria (por defecto: 50)";
     },
     get$commandHint_plain() {
-      return "Form\xe1zatlan sz\xf6veg k\xfcld\xe9se";
+      return "Enviar texto sen formato";
     },
     get$commandHint_react() {
-      return "V\xe1lasz k\xfcld\xe9se reakci\xf3k\xe9nt";
+      return "Enviar resposta como reacci\xf3n";
     },
     get$commandHint_send() {
-      return "Sz\xf6veg k\xfcld\xe9se";
+      return "Enviar texto";
     },
     get$commandHint_unban() {
-      return "Adott felhaszn\xe1l\xf3 kitilt\xe1s\xe1nak felold\xe1sa a szob\xe1hoz";
+      return "Retirar veto \xe1 usuaria para esta sala";
     },
     get$commandInvalid() {
-      return "\xc9rv\xe9nytelen parancs";
+      return "Comando non v\xe1lido";
     },
     commandMissing$1(command) {
-      return command + " nem egy parancs.";
+      return command + " non \xe9 un comando.";
     },
     get$compareEmojiMatch() {
-      return "Hasonl\xedtsa \xf6ssze az emojikat";
+      return "Compara estes emojis";
     },
     get$compareNumbersMatch() {
-      return "K\xe9rem hasonl\xedtsa \xf6ssze a sz\xe1mokat";
+      return "Compara estes n\xfameros";
     },
     get$configureChat() {
-      return "Cseveg\xe9s konfigur\xe1l\xe1sa";
+      return "Configurar conversa";
     },
     get$confirm(_) {
-      return "Meger\u0151s\xedt\xe9s";
+      return "Confirmar";
     },
     get$contentHasBeenReported() {
-      return "A tartalom jelentve lett a szerver \xfczemeltet\u0151inek";
+      return "O contido foi denunciado \xe1 administraci\xf3n do servidor";
     },
     get$copiedToClipboard() {
-      return "V\xe1g\xf3lapra m\xe1solva";
+      return "Copiado ao portapapeis";
     },
     get$copy(_) {
-      return "M\xe1sol\xe1s";
+      return "Copiar";
     },
     couldNotDecryptMessage$1(error) {
-      return "Nem siker\xfclt visszafejteni az \xfczenetet: " + error;
+      return "Non se descifrou a mensaxe: " + error;
     },
     countParticipants$1(count) {
-      return "" + count + " r\xe9sztvev\u0151";
+      return "" + count + " participantes";
+    },
+    get$create(_) {
+      return "Crear";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " cseveg\xe9st hozott l\xe9tre";
+      return "\ud83d\udcac " + username + " creou a conversa";
     },
     get$createGroup() {
-      return "Csoport l\xe9trehoz\xe1sa";
+      return "Crear grupo";
     },
     get$createNewSpace() {
-      return "\xdaj t\xe9r";
+      return "Novo espazo";
     },
     get$currentlyActive() {
-      return "Jelenleg akt\xedv";
+      return "Actualmente activo";
     },
     get$darkTheme() {
-      return "S\xf6t\xe9t";
+      return "Escuro";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Ez deaktiv\xe1lja a felhaszn\xe1l\xf3i fi\xf3kj\xe1t. Ez nem vonhat\xf3 vissza! Biztos benne?";
+      return "Esto desactivar\xe1 a conta. Esto non ten volta atr\xe1s. Est\xe1s segura?";
     },
     get$defaultPermissionLevel() {
-      return "Alap\xe9rtelmezett hozz\xe1f\xe9r\xe9si szint \xfaj felhaszn\xe1l\xf3knak";
+      return "Nivel de permisos por defecto para novas usuarias";
     },
     get$$delete(_) {
-      return "T\xf6rl\xe9s";
+      return "Eliminar";
     },
     get$deleteAccount() {
-      return "Fi\xf3k t\xf6rl\xe9se";
+      return "Eliminar conta";
     },
     get$deleteMessage() {
-      return "\xdczenet t\xf6rl\xe9se";
+      return "Eliminar mensaxe";
     },
     get$devices() {
-      return "Eszk\xf6z\xf6k";
+      return "Dispositivos";
     },
     get$displaynameHasBeenChanged() {
-      return "Megjelen\xedt\xe9si n\xe9v megv\xe1ltozott";
+      return "O nome p\xfablico mudou";
     },
     get$downloadFile() {
-      return "F\xe1jl let\xf6lt\xe9se";
+      return "Descargar ficheiro";
     },
     get$edit() {
-      return "Szerkeszt";
+      return "Editar";
     },
     get$editBlockedServers() {
-      return "Blokkolt szerverek szerkeszt\xe9se";
+      return "Editar servidores bloqueados";
     },
     get$chatPermissions() {
-      return "Cseveg\xe9s enged\xe9lyek";
+      return "Permisos da conversa";
     },
     get$editDisplayname() {
-      return "Megjelen\xedt\xe9si n\xe9v szerkeszt\xe9se";
+      return "Editar nome p\xfablico";
     },
     get$editRoomAliases() {
-      return "Szoba \xe1lnevek szerkeszt\xe9se";
+      return "Editar alias da sala";
     },
     get$editRoomAvatar() {
-      return "Szoba profilk\xe9p\xe9nek szerkeszt\xe9se";
+      return "Editar avatar da sala";
     },
     get$emoteExists() {
-      return "A hangulatjel m\xe1r l\xe9tezik!";
+      return "Xa existe ese emote!";
     },
     get$emoteInvalid() {
-      return "\xc9rv\xe9nytelen emoji r\xf6vidk\xf3d!";
+      return "Atallo do emote non \xe9 v\xe1lido!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Nemr\xe9g haszn\xe1lt emojik fognak itt megjelenni...";
+      return "Os emotes usados recentemente aparecer\xe1n aqu\xed...";
     },
     get$emotePacks() {
-      return "Emoji csomagok a szob\xe1hoz";
+      return "Paquetes de Emotes para a sala";
     },
     get$globalChatId() {
-      return "Glob\xe1lis cseveg\u0151 azonos\xedt\xf3";
+      return "ID Global da charla";
     },
     get$accessAndVisibility() {
-      return "Hozz\xe1f\xe9r\xe9s \xe9s l\xe1that\xf3s\xe1g";
+      return "Acceso e Visibilidade";
     },
     get$customEmojisAndStickers() {
-      return "Egyedi emotikonok \xe9s matric\xe1k";
+      return "Emojis personais e adhesivos";
     },
     get$emoteShortcode() {
-      return "Emoji r\xf6vidk\xf3d";
+      return "Atallo de Emote";
     },
     get$emoteWarnNeedToPick() {
-      return "Az emojihoz egy k\xe9pet \xe9s egy r\xf6vidk\xf3dot kell v\xe1lasztani!";
+      return "Escribe un atallo e asocialle unha imaxe!";
     },
     get$emptyChat() {
-      return "\xdcres cseveg\xe9s";
+      return "Conversa baleira";
     },
     get$enableEmotesGlobally() {
-      return "Emoji csomag enged\xe9lyez\xe9se glob\xe1lisan";
+      return "Activar paquete emote globalmente";
     },
     get$enableEncryption() {
-      return "Titkos\xedt\xe1s enged\xe9lyez\xe9se";
+      return "Activar cifraxe";
     },
     get$encrypted() {
-      return "Titkos\xedtott";
+      return "Cifrado";
     },
     get$encryptionNotEnabled() {
-      return "Titkos\xedt\xe1s nincs enged\xe9lyezve";
+      return "A cifraxe non est\xe1 activada";
     },
     endedTheCall$1(senderName) {
-      return senderName + " befejezte a h\xedv\xe1st";
+      return senderName + " rematou a chamada";
     },
     get$enterAnEmailAddress() {
-      return "Adjon meg egy email c\xedmet";
+      return "Escribe un enderezo de email";
     },
     errorObtainingLocation$1(error) {
-      return "Hiba a tart\xf3zkod\xe1si hely meghat\xe1roz\xe1sa k\xf6zben: " + error;
+      return "Erro ao obter a localizaci\xf3n: " + error;
     },
     get$extremeOffensive() {
-      return "Rendk\xedv\xfcl s\xe9rt\u0151";
+      return "Extremadamente ofensivo";
     },
     get$fontSize(_) {
-      return "Bet\u0171m\xe9ret";
+      return "Tama\xf1o da letra";
     },
     get$forward(_) {
-      return "Tov\xe1bb\xedt\xe1s";
+      return "Reenviar";
     },
     get$fromJoining() {
-      return "Csatlakoz\xe1s \xf3ta";
+      return "Desde que se una";
     },
     get$fromTheInvitation() {
-      return "Megh\xedv\xe1s \xf3ta";
+      return "Desde o convite";
     },
     get$groups() {
-      return "Csoportok";
+      return "Grupos";
     },
     get$guestsAreForbidden() {
-      return "Nem lehetnek vend\xe9gek";
+      return "Non se permiten convidadas";
     },
     get$guestsCanJoin() {
-      return "Csatlakozhatnak vend\xe9gek";
+      return "Perm\xedtense convidadas";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " visszavonta " + targetName + " megh\xedv\xe1s\xe1t";
+      return username + " retirou o convite para " + targetName;
     },
     get$help() {
-      return "S\xfag\xf3";
+      return "Axuda";
     },
     get$hideRedactedMessages() {
-      return "Szerkesztett \xfczenetek elrejt\xe9se";
+      return "Agochar mensaxes editadas";
     },
     get$hideRedactedMessagesBody() {
-      return "Ha valaki szerkeszti az \xfczenet\xe9t, ez az \xfczenet nem jelenik meg a cseveg\xe9s sor\xe1n.";
+      return "Se algu\xe9n corrixe unha mensaxe ent\xf3n esta xa non ser\xe1 visible na charla.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\xc9rv\xe9nytelen vagy ismeretlen \xfczenetform\xe1tum elrejt\xe9se";
+      return "Agochar formatos de mensaxe non v\xe1lidos ou desco\xf1ecidos";
     },
     get$howOffensiveIsThisContent() {
-      return "Mennyire s\xe9rt\u0151 ez a tartalom?";
+      return "\xc9 moi ofensivo este contido?";
     },
     get$block() {
-      return "Blokkol\xe1s";
+      return "Bloquear";
     },
     get$blockedUsers() {
-      return "Blokkolt felhaszn\xe1l\xf3k";
+      return "Usuarias bloqueadas";
     },
     get$blockListDescription() {
-      return "Az \xd6nt zavar\xf3 felhaszn\xe1l\xf3kat blokkolhatja. A blokkolt list\xe1n tal\xe1lhat\xf3 felhaszn\xe1l\xf3kt\xf3l nem tud fogadni \xfczenetet vagy szoba megh\xedv\xe1st.";
+      return "Podes bloquear usuarias que che molesten. Non recibir\xe1s mensaxes nin convites para salas procedentes das usuarias da t\xfaa lista persoal de bloqueo.";
     },
     get$blockUsername() {
-      return "Felhaszn\xe1l\xf3n\xe9v mell\u0151z\xe9se";
+      return "Ignorar identificador";
     },
     get$iHaveClickedOnLink() {
-      return "R\xe1kattintottam a linkre";
+      return "Prem\xedn na ligaz\xf3n";
     },
     get$incorrectPassphraseOrKey() {
-      return "Hib\xe1s jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
+      return "Frase de paso ou chave de recuperaci\xf3n incorrecta";
     },
     get$inoffensive() {
-      return "Nem s\xe9rt\u0151";
+      return "Inofensivo";
     },
     get$inviteContact() {
-      return "Ismer\u0151s megh\xedv\xe1sa";
+      return "Convidar contacto";
     },
     get$noChatDescriptionYet() {
-      return "M\xe9g nincs cseveg\u0151 szoba le\xedr\xe1s.";
+      return "A\xednda non se escribeu a descrici\xf3n da conversa.";
     },
     get$tryAgain() {
-      return "Pr\xf3b\xe1lja \xfajra";
+      return "Intentar outra vez";
     },
     get$invited() {
-      return "Megh\xedvott";
+      return "Convidado";
     },
     get$redactMessageDescription() {
-      return "A t\xe1rsalg\xe1sban \xf6sszes r\xe9sztvev\u0151je sz\xe1m\xe1ra m\xf3dos\xedt\xe1sra ker\xfcl az \xfczenet. Ez nem visszavonhat\xf3.";
+      return "A mensaxe vai ser editada para todas as participantes na conversa. Non ten volta atr\xe1s.";
     },
     get$optionalRedactReason() {
-      return "(Tetsz\u0151leges) A szerkeszt\xe9s oka...";
+      return "(Optativo) Raz\xf3n para editar a mensaxe...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " megh\xedvta " + targetName + "-t";
+      return "\ud83d\udce9 " + username + " convidou a " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Csak megh\xedvott felhaszn\xe1l\xf3k";
+      return "S\xf3 usuarias convidadas";
     },
     inviteText$2(username, link) {
-      return username + " megh\xedvott a FluffyChat-be.\n1. Keresse fel a fluffychat.im oldalt, \xe9s telep\xedtse az alkalmaz\xe1st \n2. Regisztr\xe1ljon vagy jelentkezzen be \n3. Nyissa meg a megh\xedv\xf3 linket: \n " + link;
+      return username + " convidoute a FluffyChat.\n1. Visita fluffychat.im e instala a app\n2. Crea unha conta ou Accede\n3. Abre a ligaz\xf3n do convite: \n " + link;
     },
     get$isTyping() {
-      return "g\xe9pel\u2026";
+      return "est\xe1 escribindo\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " csatlakozott a cseveg\xe9shez";
+      return "\ud83d\udc4b " + username + " un\xeduse \xe1 conversa";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " kir\xfagta " + targetName + "-t";
+      return "\ud83d\udc5e " + username + " expulsou a " + targetName;
     },
     get$kickFromChat() {
-      return "Kir\xfag\xe1s a cseveg\xe9sb\u0151l";
+      return "Expulsar da conversa";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Utolj\xe1ra akt\xedv: " + localizedTimeShort;
+      return "\xdaltima actividade: " + localizedTimeShort;
     },
     get$leave() {
-      return "Elhagy\xe1s";
+      return "Sa\xedr";
     },
     get$leftTheChat() {
-      return "Elhagyta a cseveg\xe9st";
+      return "Deixar a conversa";
     },
     get$lightTheme() {
-      return "Vil\xe1gos";
+      return "Claro";
     },
     loadCountMoreParticipants$1(count) {
-      return "Tov\xe1bbi " + count + " r\xe9sztvev\u0151 bet\xf6lt\xe9se";
+      return "Cargar " + count + " participantes m\xe1is";
     },
     get$dehydrate() {
-      return "Munkamenet export\xe1l\xe1sa \xe9s az eszk\xf6z t\xf6rl\xe9se";
+      return "Exportar sesi\xf3n e eliminar dispositivo";
     },
     get$dehydrateWarning() {
-      return "Ez nem visszavonhat\xf3. Bizonyosodjon meg r\xf3la, hogy biztons\xe1gos helyen t\xe1rolja a mentett f\xe1jlt.";
+      return "Esta acci\xf3n non \xe9 reversible. Pon coidado en gardar o ficheiro de apoio.";
     },
     get$dehydrateTor() {
-      return "TOR felhaszn\xe1l\xf3k: munkamenet export\xe1l\xe1sa";
+      return "Usuarias TOR: Exportar sesi\xf3n";
     },
     get$dehydrateTorLong() {
-      return "TOR felhaszn\xe1l\xf3knak aj\xe1nlott a munkamenet export\xe1l\xe1sa az ablak bez\xe1r\xe1sa el\u0151tt.";
+      return "Para usuarias de TOR, \xe9 recomendable exportar a sesi\xf3n antes de pechar a xanela.";
     },
     get$loadingPleaseWait() {
-      return "Bet\xf6lt\xe9s\u2026 K\xe9rem, v\xe1rjon.";
+      return "Cargando... Agarda.";
     },
     get$loadMore() {
-      return "Tov\xe1bbiak bet\xf6lt\xe9se\u2026";
+      return "Cargar m\xe1is\u2026";
     },
     get$locationDisabledNotice() {
-      return "A helymeghat\xe1roz\xe1s ki van kapcsolva. K\xe9rem, kapcsolja be, hogy meg tudja osztani helyzet\xe9t.";
+      return "Os servizos de localizaci\xf3n est\xe1n desactivados. Act\xedvaos para poder compartir a localizaci\xf3n.";
     },
     get$locationPermissionDeniedNotice() {
-      return "A helymeghat\xe1roz\xe1s nem enged\xe9lyezett az alkalmaz\xe1s sz\xe1m\xe1ra. K\xe9rem enged\xe9lyezze, hogy meg tudja osztani helyzet\xe9t.";
+      return "Permiso de localizaci\xf3n denegado. Concede este permiso para poder compartir a localizaci\xf3n.";
     },
     get$logout() {
-      return "Kijelentkez\xe9s";
+      return "Pechar sesi\xf3n";
     },
     get$mention() {
-      return "Megeml\xedt\xe9s";
+      return "Menci\xf3n";
     },
     get$messages() {
-      return "\xdczenetek";
+      return "Mensaxes";
     },
     get$messagesStyle() {
-      return "\xdczenetek:";
+      return "Mensaxes:";
     },
     get$moderator() {
-      return "Moder\xe1tor";
+      return "Moderadora";
     },
     get$newChat() {
-      return "\xdaj cseveg\xe9s";
+      return "Nova conversa";
     },
     get$newVerificationRequest() {
-      return "\xdaj hiteles\xedt\xe9si k\xe9relem!";
+      return "Nova solicitude de verificaci\xf3n!";
     },
     get$next(_) {
-      return "K\xf6vetkez\u0151";
+      return "Seguinte";
     },
     get$no() {
-      return "Nem";
+      return "Non";
     },
     get$noConnectionToTheServer() {
-      return "Nem el\xe9rhet\u0151 a szerver";
+      return "Sen conexi\xf3n co servidor";
     },
     get$noEmotesFound() {
-      return "Emojik nem el\xe9rhet\u0151ek. \ud83d\ude15";
+      return "Non hai emotes. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Megh\xedv\xf3 link megoszt\xe1sa";
+      return "Comparte ligaz\xf3n de convite";
     },
     get$none() {
-      return "Nincs";
+      return "Ning\xfan";
     },
     get$noPasswordRecoveryDescription() {
-      return "M\xe9g nem adott meg semmilyen m\xf3dot a jelszava vissza\xe1ll\xedt\xe1s\xe1ra.";
+      return "A\xednda non engaiches ning\xfan xeito de recuperar o contrasinal.";
     },
     get$noPermission() {
-      return "Nincs enged\xe9ly";
+      return "Sen permiso";
     },
     get$noRoomsFound() {
-      return "Nem tal\xe1lhat\xf3ak szob\xe1k\u2026";
+      return "Non se atoparon salas\u2026";
     },
     get$notifications() {
-      return "\xc9rtes\xedt\xe9sek";
+      return "Notificaci\xf3ns";
     },
     get$obtainingLocation() {
-      return "Tart\xf3zkod\xe1si hely lek\xe9r\xe9se\u2026";
+      return "Obtendo a localizaci\xf3n\u2026";
     },
     get$offensive() {
-      return "S\xe9rt\u0151";
+      return "Ofensivo";
     },
     get$ok() {
-      return "Rendben";
+      return "Ok";
     },
     get$oopsSomethingWentWrong() {
-      return "Hopp\xe1, valami hiba l\xe9pett fel\u2026";
+      return "Ooooi, algo fallou\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Az egyik kliense kijelentkezett";
+      return "Un dos teus clientes foi desconectado";
     },
     get$openInMaps() {
-      return "Megnyit\xe1s t\xe9rk\xe9pen";
+      return "Abrir en mapas";
     },
     get$link() {
-      return "Hivatkoz\xe1s";
+      return "Ligaz\xf3n";
     },
     get$serverRequiresEmail() {
-      return "Ehhez a szerverhez sz\xfcks\xe9ges az email c\xedm\xe9nek visszaigazol\xe1sa.";
+      return "O servidor precisa validar o teu enderezo de email para rexistrarte.";
     },
     get$or() {
-      return "Vagy";
+      return "Ou";
     },
     get$participant() {
-      return "R\xe9sztvev\u0151";
+      return "Participante";
     },
     get$passphraseOrKey() {
-      return "jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
+      return "frase de paso ou chave de recuperaci\xf3n";
     },
     get$password(_) {
-      return "Jelsz\xf3";
+      return "Contrasinal";
     },
     get$passwordForgotten() {
-      return "Elfelejtett jelsz\xf3";
+      return "Contrasinal esquecido";
     },
     get$passwordHasBeenChanged() {
-      return "A jelsz\xf3 m\xf3dos\xedt\xe1sra ker\xfclt";
+      return "Cambiouse o contrasinal";
     },
     get$overview() {
-      return "\xc1ttekint\xe9s";
+      return "Vista xeral";
     },
     get$passwordRecoverySettings() {
-      return "Jelsz\xf3-helyre\xe1ll\xedt\xe1si be\xe1ll\xedt\xe1sok";
+      return "Axustes de recuperaci\xf3n do contrasinal";
     },
     get$passwordRecovery() {
-      return "Jelsz\xf3 vissza\xe1ll\xedt\xe1s";
+      return "Recuperaci\xf3n do contrasinal";
     },
     get$pickImage() {
-      return "K\xe9p v\xe1laszt\xe1sa";
+      return "Elixe unha imaxe";
     },
     get$pin() {
-      return "R\xf6gz\xedt\xe9s";
+      return "Fixar";
+    },
+    get$pleaseChoose() {
+      return "Por favor elixe";
     },
     get$pleaseEnterYourPassword() {
-      return "K\xe9rem adja meg jelszav\xe1t";
+      return "Escribe o teu contrasinal";
     },
     get$pleaseEnterYourPin() {
-      return "\xcdrja be PIN k\xf3dj\xe1t";
+      return "Escribe o teu pin";
     },
     get$pleaseEnterYourUsername() {
-      return "Adja meg a felhaszn\xe1l\xf3nev\xe9t";
+      return "Escribe o teu nome de usuaria";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "K\xe9rem k\xf6vesse az instrukci\xf3kat az oldalon, \xe9s nyomjon a tov\xe1bb gombra.";
+      return "Segue as instrucci\xf3ns do sitio web e toca en seguinte.";
     },
     get$privacy() {
-      return "Adatv\xe9delem";
+      return "Privacidade";
     },
     get$reason(_) {
-      return "Indok";
+      return "Raz\xf3n";
     },
     redactedBy$1(username) {
-      return username + " \xe1ltal szerkesztve";
+      return "Editada por " + username;
     },
     get$directChat() {
-      return "K\xf6zvetlen cseveg\xe9s";
+      return "Conversa Directa";
     },
     redactedByBecause$2(username, reason) {
-      return username + ' \xe1ltal szerkesztve, mivel: "' + reason + '"';
+      return "Editada por " + username + ' debido a: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " visszavont egy esem\xe9nyt";
+      return username + " editou un evento";
     },
     get$redactMessage() {
-      return "\xdczenet visszavon\xe1sa";
+      return "Eliminar mensaxe";
     },
     get$reject() {
-      return "Elutas\xedt";
+      return "Rexeitar";
     },
     rejectedTheInvitation$1(username) {
-      return username + " elutas\xedtotta a megh\xedv\xe1st";
+      return username + " rexeitou o convite";
     },
     get$removeAllOtherDevices() {
-      return "Minden m\xe1s eszk\xf6z elt\xe1vol\xedt\xe1sa";
+      return "Quitar todos os outros dispositivos";
     },
     get$unbanFromChat() {
-      return "Cseveg\xe9s kitilt\xe1s felold\xe1sa";
+      return "Retirar veto na conversa";
     },
     get$removeYourAvatar() {
-      return "Profilk\xe9p t\xf6rl\xe9se";
+      return "Elimina o avatar";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Szoba cser\xe9l\xe9se egy \xfajabb verzi\xf3ra";
+      return "Substitu\xedr sala pola nova versi\xf3n";
     },
     get$reply(_) {
-      return "V\xe1lasz";
+      return "Responder";
     },
     get$reportMessage() {
-      return "\xdczenet jelent\xe9se";
+      return "Denunciar mensaxe";
     },
     get$roomHasBeenUpgraded() {
-      return "A szoba friss\xedtve lett";
+      return "A sala foi actualizada";
     },
     get$roomVersion() {
-      return "Szoba verzi\xf3";
+      return "Versi\xf3n da sala";
     },
     get$search(_) {
-      return "Keres\xe9s";
+      return "Buscar";
     },
     get$security() {
-      return "Biztons\xe1g";
+      return "Seguridade";
     },
     get$send(_) {
-      return "K\xfcld\xe9s";
+      return "Enviar";
     },
     get$sendAMessage() {
-      return "\xdczenet k\xfcld\xe9se";
+      return "Enviar unha mensaxe";
     },
     get$sendAsText() {
-      return "Sz\xf6vegk\xe9nt k\xfcld\xe9s";
+      return "Enviar como texto";
     },
     get$sendAudio() {
-      return "Hang\xfczenet k\xfcld\xe9se";
+      return "Enviar audio";
     },
     get$sendFile() {
-      return "F\xe1jl k\xfcld\xe9se";
+      return "Enviar ficheiro";
     },
     get$sendImage() {
-      return "K\xe9p k\xfcld\xe9se";
+      return "Enviar imaxe";
     },
     sendImages$1(count) {
-      return "Send " + count + " image";
+      return "Enviar " + count + " imaxe";
     },
     get$sendMessages() {
-      return "\xdczenetek k\xfcld\xe9se";
+      return "Enviar mensaxes";
     },
     get$sendVideo() {
-      return "Vide\xf3 k\xfcld\xe9se";
+      return "Enviar v\xeddeo";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " k\xfcld\xf6tt egy f\xe1jlt";
+      return "\ud83d\udcc1 " + username + " enviou un ficheiro";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " hang\xfczenetet k\xfcld\xf6tt";
+      return "\ud83c\udfa4 " + username + " enviou un audio";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " k\xe9p\xfczenetet k\xfcld\xf6tt";
+      return "\ud83d\uddbc\ufe0f " + username + " enviou unha imaxe";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " matric\xe1t k\xfcld\xf6tt";
+      return "\ud83d\ude0a " + username + " enviou un adhesivo";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " vide\xf3t k\xfcld\xf6tt";
+      return "\ud83c\udfa5 " + username + " enviou un v\xeddeo";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " h\xedv\xe1sinform\xe1ci\xf3t k\xfcld\xf6tt";
+      return senderName + " enviou informaci\xf3n da chamada";
     },
     get$separateChatTypes() {
-      return "Csoportok \xe9s k\xf6zvetlen \xfczenetek elk\xfcl\xf6n\xedt\xe9se";
+      return "Separar Conversas directas e Grupos";
     },
     get$setAsCanonicalAlias() {
-      return "Be\xe1ll\xedt\xe1s mint alap\xe9rtelmezett \xe1ln\xe9v";
+      return "Establecer como alias principal";
     },
     get$setChatDescription() {
-      return "Cseveg\xe9s le\xedr\xe1s be\xe1ll\xedt\xe1sa";
+      return "Escribir descrici\xf3n da conversa";
     },
     get$settings() {
-      return "Be\xe1ll\xedt\xe1sok";
+      return "Axustes";
     },
     get$share(_) {
-      return "Megoszt\xe1s";
+      return "Compartir";
     },
     sharedTheLocation$1(username) {
-      return username + " megosztotta a poz\xedci\xf3j\xe1t";
+      return username + " compartiu a s\xfaa localizaci\xf3n";
     },
     get$shareLocation() {
-      return "Poz\xedci\xf3 megoszt\xe1sa";
+      return "Compartir localizaci\xf3n";
     },
     get$presencesToggle() {
-      return "M\xe1sok st\xe1tusz \xfczenet\xe9nek megjelen\xedt\xe9se";
+      return "Mostra mensaxes de estado de outras usuarias";
     },
     get$skip(_) {
-      return "Kihagy\xe1s";
+      return "Saltar";
     },
     get$sourceCode() {
-      return "Forr\xe1sk\xf3d";
+      return "C\xf3digo fonte";
     },
     get$spaceName() {
-      return "T\xe9r neve";
+      return "Nome do Espazo";
     },
     startedACall$1(senderName) {
-      return senderName + " h\xedv\xe1st ind\xedtott";
+      return senderName + " iniciou unha chamada";
     },
     get$status(_) {
-      return "St\xe1tusz";
+      return "Estado";
     },
     get$submit(_) {
-      return "Bek\xfcld\xe9s";
+      return "Enviar";
     },
     get$synchronizingPleaseWait() {
-      return "Szinkroniz\xe1l\xe1s...k\xe9rem v\xe1rjon.";
+      return "Sincronizando... Agarda.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Synchronizing\u2026 (" + percentage + "%)";
+      return " Sincronizando\u2026(" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Rendszer";
+      return "Sistema";
     },
     get$theyDontMatch() {
-      return "Nem egyeznek";
+      return "Non concordan";
     },
     get$theyMatch() {
-      return "Egyeznek";
+      return "Concordan";
     },
     get$tooManyRequestsWarning() {
-      return "T\xfal sok egyidej\u0171 k\xe9relem. K\xe9rem pr\xf3b\xe1lja meg k\xe9s\u0151bb!";
+      return "Demasiadas solicitudes. Int\xe9ntao m\xe1is tarde!";
     },
     get$tryToSendAgain() {
-      return "\xdajrak\xfcld\xe9s megpr\xf3b\xe1l\xe1sa";
+      return "Int\xe9ntao outra vez";
     },
     get$unavailable() {
-      return "Nem el\xe9rhet\u0151";
+      return "Non dispo\xf1ible";
     },
     unbannedUser$2(username, targetName) {
-      return username + " feloldotta " + targetName + " kitilt\xe1s\xe1t";
+      return username + " retirou o veto a " + targetName;
     },
     get$unblockDevice() {
-      return "Eszk\xf6z blokkol\xe1s\xe1nak megsz\xfcntet\xe9se";
+      return "Desbloquear dispositivo";
     },
     get$unknownDevice() {
-      return "Ismeretlen eszk\xf6z";
+      return "Dispositivo desco\xf1ecido";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Ismeretlen titkos\xedt\xe1si algoritmus";
+      return "Algoritmo de cifraxe desco\xf1ecido";
     },
     unknownEvent$1(type) {
-      return "Ismeretlen esem\xe9ny: '" + type + "'";
+      return "Evento desco\xf1ecido '" + type + "'";
     },
     get$unpin() {
-      return "R\xf6gz\xedt\xe9s megsz\xfcntet\xe9se";
+      return "Desafixar";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \xe9s " + count + " m\xe1sik r\xe9sztvev\u0151 g\xe9pel\u2026";
+      return username + " e " + count + " m\xe1is est\xe1n escribindo\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \xe9s " + username2 + " g\xe9pel\u2026";
+      return username + " e " + username2 + " est\xe1n escribindo\u2026";
     },
     userIsTyping$1(username) {
-      return username + " g\xe9pel\u2026";
+      return username + " est\xe1 escribindo\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " elhagyta a cseveg\xe9st";
+      return "\ud83d\udeaa " + username + " deixou a conversa";
     },
     get$username(_) {
-      return "Felhaszn\xe1l\xf3n\xe9v";
+      return "Nome de usuaria";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " " + type + " esem\xe9nyt k\xfcld\xf6tt";
+      return username + " enviou un evento " + type;
     },
     get$unverified() {
-      return "Nem visszaigazolt";
+      return "Sen verificar";
     },
     get$verified() {
-      return "Visszaigazolt";
+      return "Verificado";
     },
     get$verifyStart() {
-      return "Hiteles\xedt\xe9s megkezd\xe9se";
+      return "Comezar verificaci\xf3n";
     },
     get$verifySuccess() {
-      return "Sikeres hiteles\xedt\xe9s!";
+      return "Verificaches correctamente!";
     },
     get$verifyTitle() {
-      return "M\xe1sik fi\xf3k hiteles\xedt\xe9se";
+      return "Verificando a outra conta";
     },
     get$visibilityOfTheChatHistory() {
-      return "Cseveg\xe9si el\u0151zm\xe9ny l\xe1that\xf3s\xe1ga";
+      return "Visibilidade do historial da conversa";
     },
     get$visibleForAllParticipants() {
-      return "Minden r\xe9sztvev\u0151 sz\xe1m\xe1ra l\xe1that\xf3";
+      return "Visible para todas as participantes";
     },
     get$visibleForEveryone() {
-      return "B\xe1rki sz\xe1m\xe1ra l\xe1that\xf3";
+      return "Visible para todas";
     },
     get$voiceMessage() {
-      return "Hang\xfczenet";
+      return "Mensaxe de voz";
     },
     get$waitingPartnerAcceptRequest() {
-      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a k\xe9r\xe9st\u2026";
+      return "Agardando a que a outra parte acepte a solicitude\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja az emojit\u2026";
+      return "Agardando a que a outra parte acepte as emoticonas\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a sz\xe1mokat\u2026";
+      return "Agardando a que a outra parte acepte os n\xfameros\u2026";
     },
     get$warning() {
-      return "Figyelmeztet\xe9s!";
+      return "Aviso!";
     },
     get$weSentYouAnEmail() {
-      return "K\xfcldt\xfcnk \xd6nnek egy emailt";
-    },
-    get$whoCanPerformWhichAction() {
-      return "Ki milyen m\u0171veletet v\xe9gezhet";
+      return "Enviamosche un email";
     },
     get$whyDoYouWantToReportThis() {
-      return "Mi\xe9rt k\xedv\xe1nja ezt bejelenteni?";
+      return "Por que queres denunciar esto?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Ezekkel a c\xedmekkel vissza tudja \xe1ll\xedtani a jelszav\xe1t.";
+      return "Con estos enderezos podes recuperar o contrasinal.";
     },
     get$writeAMessage() {
-      return "\xcdrjon egy \xfczenetet\u2026";
+      return "Escribe unha mensaxe\u2026";
     },
     get$yes() {
-      return "Igen";
+      return "Si";
     },
     get$you() {
-      return "\xd6n";
+      return "Ti";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Imm\xe1ron nem vesz r\xe9szt ebben a cseveg\xe9sben";
+      return "Xa non participas desta conversa";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Kitiltott\xe1k ebb\u0151l a cseveg\xe9sb\u0151l";
+      return "Foches vetada nesta conversa";
     },
     get$yourPublicKey() {
-      return "A publikus kulcsa";
+      return "A t\xfaa chave p\xfablica";
     },
     get$messageInfo() {
-      return "\xdczenet inform\xe1ci\xf3";
+      return "Info da mensaxe";
     },
     get$time(_) {
-      return "Id\u0151";
+      return "Hora";
     },
     get$sender() {
-      return "K\xfcld\u0151";
+      return "Remitente";
     },
     get$openGallery() {
-      return "Gal\xe9ria megnyit\xe1sa";
+      return "Galer\xeda p\xfablica";
     },
     get$removeFromSpace() {
-      return "Elt\xe1vol\xedt\xe1s a t\xe9rr\u0151l";
+      return "Retirar do espazo";
     },
     videoWithSize$1(size) {
-      return "Vide\xf3 (" + size + ")";
+      return "V\xeddeo (" + size + ")";
     },
     get$markAsRead() {
-      return "Olvasottk\xe9nt megjel\xf6l\xe9s";
+      return "Marcar como lido";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " a k\xf6vetkez\u0151t reag\xe1lta: " + reaction;
+      return sender + " reaccionou con " + reaction;
     },
     get$pinMessage() {
-      return "Kit\u0171z\xe9s a szob\xe1ban";
+      return "Fixar na sala";
     },
     get$confirmEventUnpin() {
-      return "Biztosan v\xe9gleg le akarja venni a kit\u0171z\xf6tt esem\xe9nyt?";
+      return "Tes a certeza de querer desafixar o evento?";
     },
     get$emojis() {
-      return "Emojik";
+      return "Emojis";
     },
     get$youRejectedTheInvitation() {
-      return "Visszautas\xedtotta a megh\xedv\xe1st";
+      return "Rexeitaches o convite";
     },
     get$youJoinedTheChat() {
-      return "Becsatlakozott a cseveg\xe9sbe";
+      return "Un\xedcheste \xe1 conversa";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Elfogadta a megh\xedv\xe1st";
+      return "\ud83d\udc4d Aceptaches o convite";
     },
     youBannedUser$1(user) {
-      return "Letitotta " + user + "-t";
+      return "Vetaches a " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Visszavonta a megh\xedv\xe1st " + user + "-t\xf3l";
+      return "Retiraches o convite para " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Megh\xedv\xe1st kapott " + user + "-t\xf3l";
+      return "\ud83d\udce9 " + user + " convidoute";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Megh\xedvta " + user + "-t";
+      return "\ud83d\udce9 Convidaches a " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Kir\xfagta " + user + "-t";
+      return "\ud83d\udc5e Expulsaches a " + user;
     },
     youUnbannedUser$1(user) {
-      return "Levette a letilt\xe1st " + user + "-r\u0151l";
+      return "Retiraches o veto a " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " bekopogott";
+      return "\ud83d\udeaa " + user + " petou na porta";
     },
     get$usersMustKnock() {
-      return "A felhaszn\xe1l\xf3knak be kell kopogniuk";
+      return "As usuarias te\xf1en que pedir entrar";
     },
     get$noOneCanJoin() {
-      return "Senki sem csatlakozhat";
+      return "Ningu\xe9n pode unirse";
     },
     get$users() {
-      return "Felhaszn\xe1l\xf3k";
+      return "Usuarias";
     },
     countFiles$1(count) {
-      return "" + count + " f\xe1jl";
+      return "" + count + " ficheiros";
     },
     get$user() {
-      return "Felhaszn\xe1l\xf3";
+      return "Usuaria";
     },
     get$custom() {
-      return "Egy\xe9ni";
+      return "Personal";
     },
     get$noKeyForThisMessage() {
-      return "Akkor fordulhat el\u0151, ha az \xfczenet az eszk\xf6zre val\xf3 bejelentkez\xe9s el\u0151tt ker\xfclt k\xfcld\xe9sre.\n\nAz is elk\xe9pzelhet\u0151, hogy a k\xfcld\u0151 blokkolta az eszk\xf6z\xe9t, vagy valami probl\xe9ma l\xe9pett fel az internet kapcsolatban.\n\nM\xe1s helyen l\xe1tja az \xfczenetet? Akkor \xe1t tudja m\xe1solni ide is! Menjen a Be\xe1ll\xedt\xe1sok > Eszk\xf6z\xf6k r\xe9szbe, \xe9s gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy az eszk\xf6zei meger\u0151s\xedtett\xe9k egym\xe1st. Legk\xf6zelebb amikor ezt a szob\xe1t megnyitja, \xe9s mind a k\xe9t kliens az el\u0151t\xe9rben van, akkor szikroniz\xe1l\xf3dni fognak.\n\nNem akarja elvesz\xedteni a kulcsokat amikor kijelentkezik, vagy eszk\xf6zt cser\xe9l? Gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy bekapcsolta a chat ment\xe9st a be\xe1ll\xedt\xe1sokban.";
+      return "Pode ser que a mensaxe fose enviada antes de que ti accedeses \xe1 t\xfaa conta neste dispositivo.\n\nTam\xe9n \xe9 posible que a remitente non validase o teu dispositivo ou tam\xe9n que algo fallase na conexi\xf3n a internet.\n\nPodes ler a mensaxe noutro dispositivo? Ent\xf3n podes transferila desde el! Vai a Axustes > Dispositivos e comproba que tes t\xf3dolos dispositivos verificados. Ent\xf3n cando abras a sala a pr\xf3xima vez a sincronizaci\xf3n realizarase e as chaves transmitiranse autom\xe1ticamente.\n\nNon desexas perder as chaves cando pechas sesi\xf3n ou cambias de dispositivo? Comproba nos axustes que activaches a copia de apoio das conversas.";
     },
     get$newSpace() {
-      return "\xdaj t\xe9r";
+      return "Novo espazo";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\xdcres cseveg\xe9s (kor\xe1bban " + oldDisplayName + ")";
+      return "Conversa baleira (era " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Cseveg\xe9s \xfajranyit\xe1sa";
+      return "Reabrir conversa";
     },
     get$noOtherDevicesFound() {
-      return "Nem tal\xe1lhat\xf3 m\xe1s eszk\xf6z";
+      return "Non se atopan outros dispositivos";
     },
     fileIsTooBigForServer$1(max) {
-      return "A szerver sz\xe1m\xe1ra t\xfal nagy a f\xe1jl a k\xfcld\xe9shez.";
+      return "Non se puido enviar! O servidor s\xf3 permite anexos que non superen " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Az utolj\xe1ra olvasott \xfczenethez ugr\xe1s";
+      return "Ir \xe1 \xfaltima mensaxe lida";
     },
     get$readUpToHere() {
-      return "Ezid\xe1ig elolvasva";
+      return "Lin ate aqu\xed";
     },
     get$jump() {
-      return "Ugr\xe1s";
+      return "Ir al\xe1";
     },
     get$openLinkInBrowser() {
-      return "Hivatkoz\xe1s megnyit\xe1sa b\xf6ng\xe9sz\u0151ben";
+      return "Abrir ligaz\xf3n no navegador";
     },
     get$setColorTheme() {
-      return "Sz\xedn t\xe9ma be\xe1ll\xedt\xe1sa:";
+      return "Cor do decorado:";
     },
     get$invite() {
-      return "Megh\xedv\xe1s";
+      return "Convidar";
     },
     get$invalidInput() {
-      return "Hib\xe1s bevitel!";
+      return "Contido non v\xe1lido!";
     },
     wrongPinEntered$1(seconds) {
-      return "Hib\xe1s pink\xf3d ker\xfclt be\xedr\xe1sra. Pr\xf3b\xe1lja \xfajra " + seconds + " mp m\xfalva...";
+      return "PIN incorrecto! Int\xe9ntao outra vez en " + seconds + " segundos...";
     },
     get$pleaseEnterANumber() {
-      return "Adjon meg egy 0-n\xe1l nagyobb sz\xe1mot";
+      return "Escribe un n\xfamero maior de cero";
     },
     get$roomUpgradeDescription() {
-      return "A cseveg\xe9s \xfajra elk\xe9sz\xfcl az \xfaj verzi\xf3val. Minden r\xe9sztvev\u0151 \xe9rtes\xedt\xe9st kap, hogy \xe1t kell \xe1llniuk az \xfaj cseveg\xe9sre. Tov\xe1bbi inform\xe1ci\xf3k\xe9rt a szoba verzi\xf3kr\xf3l l\xe1togasson el a https://spec.matrix.org/latest/rooms/ c\xedmre";
+      return "Vaise recrear a charla coa nova versi\xf3n da sala. Todas as participantes recibir\xe1n unha notificaci\xf3n para que cambien \xe1 nova charla. Podes ler m\xe1is informaci\xf3n acerca das versi\xf3ns das salas en https://spec.matrix.org/latest/rooms/";
     },
     get$removeDevicesDescription() {
-      return "Ki fog jelentkezni a k\xe9sz\xfcl\xe9kr\u0151l, \xe9s t\xf6bbi nem fog tudni fogadni \xfczeneteket.";
+      return "Vas pechar a sesi\xf3n neste dispositivo e xa non poder\xe1s recibir mensaxes nel.";
     },
     get$banUserDescription() {
-      return "A felhaszn\xe1l\xf3 kitilt\xe1sra ker\xfcl a cseveg\xe9sb\u0151l, \xe9s nem fog tudni visszaj\xf6nni eg\xe9szen a kitilt\xe1s felold\xe1s\xe1ig.";
+      return "Vaise vetar a usuaria na conversa e non poder\xe1 entrar outra vez ata que se retire o veto.";
     },
     get$unbanUserDescription() {
-      return "A felhaszn\xe1l\xf3 vissza tud j\xf6nni a cseveg\xe9sbe ha akar.";
+      return "A usuaria vai poder entrar outra vez na conversa se quere.";
     },
     get$kickUserDescription() {
-      return "A felhaszn\xe1l\xf3 kir\xfag\xe1sra ker\xfclt a cseveg\xe9sb\u0151l, de nincs kitiltva. Publikus cseveg\xe9s eset\xe9n a felhaszn\xe1l\xf3 b\xe1rmikor visszat\xe9rhet.";
+      return "A usuaria foi expulsada pero non vetada. En conversas p\xfablicas a usuaria pode volver cando queira.";
     },
     get$makeAdminDescription() {
-      return "Miut\xe1n a felhaszn\xe1l\xf3b\xf3l admin lesz, nem fogja tudni visszavonni d\xf6nt\xe9s\xe9t, mivel azonos jogosults\xe1gi szinttel fognak rendelkezni.";
+      return "Cando convirtas a esta usuaria en admin non poder\xe1s desfacer a acci\xf3n xa que ter\xe1 os mesmos permisos ca ti.";
     },
     get$yourGlobalUserIdIs() {
-      return "A glob\xe1lis felhaszn\xe1l\xf3-ID-je: ";
+      return "O teu ID-usuaria global \xe9: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '"' + query + '" n\xe9ven nem tal\xe1lhat\xf3 felhaszn\xe1l\xf3. Ellen\u0151rizze nincs e el\xedr\xe1s.';
+      return 'Lamentamos non atopar ningunha usuaria con "' + query + '". Comproba se est\xe1 ben escrito.';
     },
     get$knocking() {
-      return "Bekopog\xe1s";
+      return "A solicitar";
     },
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "Cseveg\xe9s felfedezhet\u0151 a " + server + " szerveren t\xf6rt\xe9n\u0151 keres\xe9ssel";
+      return "A charla pode ser atopada ao buscar en " + server;
     },
     get$searchChatsRooms() {
-      return "Keressen #cseveg\xe9seket, @felhaszn\xe1l\xf3kat...";
+      return "Buscar #conversas, @usuarias...";
     },
     get$nothingFound() {
-      return "Nincs tal\xe1lat...";
+      return "Non atopamos nada...";
     },
     get$wrongRecoveryKey() {
-      return "Sajnos, \xfagy t\u0171nik hib\xe1san adta meg a vissza\xe1ll\xedt\xe1si kulcsot.";
+      return "Desculpa... non semella ser o xeito correcto de recuperar a chave.";
     },
     get$startConversation() {
-      return "Besz\xe9lget\xe9s ind\xedt\xe1sa";
+      return "Iniciar conversa";
     },
     get$commandHint_sendraw() {
-      return "Tiszta json k\xfcld\xe9se";
+      return "Enviar json sen editar";
     },
     get$searchForUsers() {
-      return "Keressen @felhaszn\xe1l\xf3kat...";
+      return "Buscar @persoas...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "K\xe9rem adja meg jelenlegi jelszav\xe1t";
+      return "Escribe o contrasinal actual";
     },
     get$newPassword() {
-      return "\xdaj jelsz\xf3";
+      return "Novo contrasinal";
     },
     get$pleaseChooseAStrongPassword() {
-      return "K\xe9rem v\xe1lasszon egy er\u0151s jelsz\xf3t";
+      return "Elixe un contrasinal forte";
     },
     get$passwordsDoNotMatch() {
-      return "A jelszavak nem egyeznek";
+      return "Os contrasinais non concordan";
     },
     get$passwordIsWrong() {
-      return "A be\xedrt jelszava hib\xe1s";
+      return "O contrasinal escrito non \xe9 correcto";
     },
     get$publicChatAddresses() {
-      return "Nyilv\xe1nos cseveg\xe9s c\xedmek";
+      return "Enderezos p\xfablicos da charla";
     },
     get$createNewAddress() {
-      return "\xdaj c\xedm l\xe9trehoz\xe1sa";
+      return "Crear novos enderezos";
     },
     get$publicSpaces() {
-      return "Nyilv\xe1nos terek";
+      return "Espazos p\xfablicos";
     },
     get$decline() {
-      return "Elutas\xedt\xe1s";
+      return "Desbotar";
     },
     get$thisDevice() {
-      return "Ez az eszk\xf6z:";
+      return "Este dispositivo:";
     },
     get$initAppError() {
-      return "Hiba l\xe9pett fel az app ind\xedt\xe1sa sor\xe1n";
+      return "Houbo un fallo ao iniciar a app";
     },
     searchIn$1(chat) {
-      return 'Keres\xe9s a cseveg\xe9sben "' + chat + '"...';
+      return 'Buscar na conversa "' + chat + '"...';
     },
     get$searchMore() {
-      return "Tov\xe1bbi keres\xe9s...";
+      return "Buscar m\xe1is...";
     },
     get$gallery() {
-      return "Gal\xe9ria";
+      return "Galer\xeda";
     },
     get$files(_) {
-      return "F\xe1jlok";
+      return "Ficheiros";
     },
     sessionLostBody$2(url, error) {
-      return "A munkamenete elvesz\u0151d\xf6tt. K\xe9rem jelentse ezt a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
+      return "Estragouse a t\xfaa sesi\xf3n. Por favor informa deste fallo \xe1s desenvolvedoras en " + url + ". A mensaxe do erro \xe9: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Megpr\xf3b\xe1lkozunk vissza\xe1ll\xedtani a munkamenet\xe9t egy kor\xe1bbi ment\xe9sb\u0151l. K\xe9rem jelezze a hib\xe1t a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
+      return "A app vai intentar restablecer a sesi\xf3n desde a copia de apoio. Por favor informa deste erro \xe1s desenvolvedoras en " + url + ". A mensaxe do erro \xe9: " + error;
     },
     get$sendReadReceipts() {
-      return "Olvas\xe1si igazol\xe1s k\xfcld\xe9se";
+      return "Enviar confirmaci\xf3n de lectura";
     },
     get$sendTypingNotificationsDescription() {
-      return "A cseveg\xe9s t\xf6bbi tagja l\xe1tja amikor g\xe9pel.";
+      return "As outras participantes da conversa poden ver cando est\xe1s a escribir unha mensaxe.";
     },
     get$sendReadReceiptsDescription() {
-      return "A cseveg\xe9s t\xf6bbi tagja l\xe1tja melyik \xfczenetet l\xe1tta.";
+      return "Outras participantes na conversa poden ver cando liches unha mensaxe.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 M\xe1s eszk\xf6z meger\u0151s\xedt\xe9se";
+      return "\ud83d\udd10 Verificar outro dispositivo";
     },
     get$verifyOtherDeviceDescription() {
-      return "Amikor egy m\xe1sik eszk\xf6zt er\u0151s\xedt meg, az eszk\xf6z\xf6k kulcsokat cser\xe9lnek egym\xe1s k\xf6z\xf6tt, ez\xe1ltal n\xf6velve az \xf6sszbiztons\xe1got. \ud83d\udcaa Amikor megkezd\u0151dik a folyamat, mind a k\xe9t eszk\xf6z\xf6n megjelenik egy felugr\xf3 \xfczenet. Emojik \xe9s sz\xe1mok sorozata fog megjelenni, amit \xf6ssze tud hasonl\xedtani a k\xe9t eszk\xf6z\xf6n. \xc9rdemes teh\xe1t mind a k\xe9t eszk\xf6zt a k\xf6zelben tartani. \ud83e\udd33";
+      return "Ao verificar outro dispositivo est\xe1s compartindo as chaves, aumentando a t\xfaa seguridade \ud83d\udcaa. Ao iniciar a verificaci\xf3n aparecer\xe1 unha xanela emerxente nos dous dispositivos. Nesa xanela ver\xe1s varios emojis ou n\xfameros que tes que comparar entre eles. O mellor xeito de facelo \xe9 ter os dous dispositivos contigo cando inicias o proceso de verificaci\xf3n. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " elfogadta a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " aceptou a verificaci\xf3n da chave";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " nem fogadta el a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " desbotou a verificaci\xf3n da chave";
     },
     completedKeyVerification$1(sender) {
-      return sender + " befejezte a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " completou a verificaci\xf3n da chave";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " k\xe9szen \xe1ll a kulcs meger\u0151s\xedt\xe9sre";
+      return sender + " xa pode verificar a chave";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " kulcs meger\u0151s\xedt\xe9st k\xe9r";
+      return sender + " solicitou verificar a chave";
     },
     startedKeyVerification$1(sender) {
-      return sender + " elkezdte a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " comezou coa verificaci\xf3n da chave";
     },
     get$stickers() {
-      return "Matrica";
+      return "Adhesivos";
     },
     get$discover() {
-      return "Felfedez\xe9s";
+      return "Descubrir";
     },
     get$commandHint_ignore() {
-      return "Adott matrix ID figyelmen k\xedv\xfcl hagy\xe1sa";
+      return "Ignorar o ID matrix indicado";
     },
     get$commandHint_unignore() {
-      return "Adott matrix ID figyelembe v\xe9tele";
+      return "Non ignorar o ID matrix indicado";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Jelenleg " + count + " felhaszn\xe1l\xf3 van letiltva.";
+      return "Agora mesmo hai " + count + " usuarias bloqueadas.";
     },
     get$restricted() {
-      return "Korl\xe1tozott";
+      return "Non accesible";
     },
     get$knockRestricted() {
-      return "Kopog\xe1s korl\xe1tozva";
+      return "Peta \xe1 porta";
     },
     goToSpace$1(space) {
-      return "Menj a t\xe9rre: " + space;
+      return "Ir ao espazo: " + space;
     },
     get$markAsUnread() {
-      return "Olvasatlannak jel\xf6l\xe9s";
+      return "Marcar como non lido";
     },
     userLevel$1(level) {
-      return "" + level + " - Felhaszn\xe1l\xf3";
+      return "" + level + " - Usuaria";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moder\xe1tor";
+      return "" + level + " - Moderadora";
     },
     adminLevel$1(level) {
-      return "" + level + " - Rendszergazda";
+      return "" + level + " - Administradora";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Cseveg\xe9si el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1nak v\xe1ltoztat\xe1sa";
+      return "Cambiar a visibilidade do historial da charla";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Cseveg\xe9s f\u0151, nyilv\xe1nos c\xedm\xe9nek v\xe1ltoztat\xe1sa";
+      return "Cambiar o enderezo p\xfablico principal da charla";
     },
     get$sendRoomNotifications() {
-      return "@room \xe9rtes\xedt\xe9s k\xfcld\xe9se";
+      return "Enviar notificaci\xf3ns a @room";
     },
     get$chatPermissionsDescription() {
-      return "Adja meg milyen er\u0151ss\xe9gi szint kell egyes cseveg\xe9si akci\xf3khoz. A 0, 50 \xe9s 100-as szintek \xe1ltal\xe1ban felhaszn\xe1l\xf3kat, moder\xe1torokat \xe9s rendszergazd\xe1kat jel\xf6lnek de b\xe1rmilyen szintez\xe9s lehets\xe9ges.";
+      return "Define que nivel de permisos son necesarios para realizar certas acci\xf3ns nesta charla. Os niveis de permiso 0, 50 e 100 normalmente representan, usuarias, moderadoras e administradoras, pero son posibles outras escalas.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 " + version + " verzi\xf3j\xfa fejleszt\xe9s telep\xedtve!";
+      return "\ud83c\udf89 Instalouse a actualizaci\xf3n a " + version + "!";
     },
     get$sendCanceled() {
-      return "Visszavon\xe1s k\xfcld\xe9se";
+      return "Cancelouse o env\xedo";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Nem t\u0171nik kompatibilisnak a M\xe1trix-kiszolg\xe1l\xf3val. Helytelen URL?";
+      return "Non semella ser un servidor de inicio compatible. \xc9 o URL correcto?";
     },
     get$calculatingFileSize() {
-      return "Calculating file size...";
+      return "Calculando o tama\xf1o do ficheiro\u2026";
     },
     get$prepareSendingAttachment() {
-      return "Prepare sending attachment...";
+      return "Preparando o env\xedo\u2026";
     },
     get$sendingAttachment() {
-      return "Sending attachment...";
+      return "Enviando o anexo\u2026";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Sending attachment " + index + " of " + $length + "...";
+      return "Enviando o anexo " + index + " de " + $length + "\u2026";
     },
     serverLimitReached$1(seconds) {
-      return "Server limit reached! Waiting " + seconds + " seconds...";
+      return "Acadouse o l\xedmite do servidor! Agarda " + seconds + " segundos\u2026";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
+      return "Nota: Cando conectas todos os teus dispositivos \xe1 copia de apoio da conversa quedan verificados automaticamente.";
     },
     get$continueText() {
-      return "Continue";
+      return "Continuar";
     },
     get$blur(_) {
-      return "Blur:";
+      return "N\xe9boa:";
     },
     get$opacity(_) {
-      return "Opacity:";
+      return "Opacidade:";
     },
     get$setWallpaper() {
-      return "Set wallpaper";
+      return "Establecer fondo";
     },
     get$noContactInformationProvided() {
-      return "Server does not provide any valid contact information";
+      return "O servidor non proporciona informaci\xf3n de contacto v\xe1lida";
     },
     get$contactServerAdmin() {
-      return "Contact server admin";
+      return "Contacto con Admin do servidor";
     },
     get$contactServerSecurity() {
-      return "Contact server security";
+      return "Contacto con Seguridade do servidor";
     },
     get$supportPage() {
-      return "Support page";
+      return "P\xe1xina de axuda";
     },
     get$serverInformation() {
-      return "Server information:";
+      return "Informaci\xf3n do servidor:";
     },
     get$name(_) {
-      return "Name";
+      return "Nome";
     },
     get$version(_) {
-      return "Version";
+      return "Versi\xf3n";
     },
     get$compress() {
-      return "Compress";
+      return "Comprimir";
     },
     get$boldText() {
-      return "Bold text";
+      return "Resaltar texto";
     },
     get$italicText() {
-      return "Italic text";
+      return "Cursiva";
     },
     get$strikeThrough() {
-      return "Strikethrough";
+      return "Riscar";
     },
     get$pleaseFillOut() {
-      return "Please fill out";
+      return "Por favor completa";
     },
     get$invalidUrl() {
-      return "Invalid url";
+      return "URL non v\xe1lido";
     },
     get$addLink() {
-      return "Add link";
+      return "Engadir ligaz\xf3n";
     },
     get$unableToJoinChat() {
-      return "Unable to join chat. Maybe the other party has already closed the conversation.";
+      return "Non se puido acceder. Pode que a outra parte xa pechase a conversa.";
     },
     get$previous() {
-      return "Previous";
+      return "Anterior";
     },
     get$otherPartyNotLoggedIn() {
-      return "The other party is currently not logged in and therefore cannot receive messages!";
+      return "A outra parte non est\xe1 conectada neste momento e pode que non reciba as mensaxes!";
     },
     get$open(_) {
-      return "Open";
+      return "Abrir";
     },
     get$waitingForServer() {
-      return "Waiting for server...";
+      return "Agardando polo servidor\u2026";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 New chat request";
+      return "\ud83d\udce9 Nova solicitude de conversa";
     },
     get$contentNotificationSettings() {
-      return "Content notification settings";
+      return "Axustes de notificaci\xf3n de contido";
     },
     get$generalNotificationSettings() {
-      return "General notification settings";
+      return "Axustes xerais das notificaci\xf3ns";
     },
     get$roomNotificationSettings() {
-      return "Room notification settings";
+      return "Axustes de notificaci\xf3ns da sala";
     },
     get$userSpecificNotificationSettings() {
-      return "User specific notification settings";
+      return "Axustes de notificaci\xf3n espec\xedficos da usuaria";
     },
     get$otherNotificationSettings() {
-      return "Other notification settings";
+      return "Outros axustes das notificaci\xf3ns";
     },
     get$notificationRuleContainsUserName() {
-      return "Contains User Name";
+      return "Cont\xe9n nome de usuaria";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Notifies the user when a message contains their username.";
+      return "Informa \xe1 usuaria cando unha mensaxe cont\xe9n o seu identificador.";
     },
     get$notificationRuleMaster() {
-      return "Mute all notifications";
+      return "Acalar todas as notificaci\xf3ns";
     },
     get$notificationRuleMasterDescription() {
-      return "Overrides all other rules and disables all notifications.";
+      return "Sobrescribe todas as outras regras e desactiva todas as notificaci\xf3ns.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Suppress Automated Messages";
+      return "Suprimir mensaxes automatizadas";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Suppresses notifications from automated clients like bots.";
+      return "Suprime as notificaci\xf3ns desde clientes automatizados como os robots.";
     },
     get$notificationRuleInviteForMe() {
-      return "Invite for Me";
+      return "Te\xf1o un convite";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Notifies the user when they are invited to a room.";
+      return "Informa \xe1 usuaria de que recibeu o convite para unha sala.";
     },
     get$notificationRuleMemberEvent() {
-      return "Member Event";
+      return "Eventos dos participantes";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Suppresses notifications for membership events.";
+      return "Suprime as notificaci\xf3ns dos eventos de participaci\xf3n.";
     },
     get$notificationRuleIsUserMention() {
-      return "User Mention";
+      return "Menci\xf3n da usuaria";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Notifies the user when they are directly mentioned in a message.";
+      return "Informa cando se menciona expl\xedcitamente a usuaria nunha mensaxe.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Contains Display Name";
+      return "Cont\xe9n o nome p\xfablico";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Notifies the user when a message contains their display name.";
+      return "Informa \xe1 usuaria cando unha mensaxe cont\xe9n o seu nome p\xfablico.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Room Mention";
+      return "Menci\xf3n da sala";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Notifies the user when there is a room mention.";
+      return "Informa \xe1 usuaria cando hai unha menci\xf3n da sala.";
     },
     get$notificationRuleRoomnotif() {
-      return "Room Notification";
+      return "Notificaci\xf3n da sala";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Notifies the user when a message contains '@room'.";
+      return "Informa \xe1 usuaria cando unha mensaxe cont\xe9n '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "Tombstone";
+      return "L\xe1pida";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Notifies the user about room deactivation messages.";
+      return "Informa \xe1 usuaria sobre a desactivaci\xf3n de mensaxes na sala.";
     },
     get$notificationRuleReaction() {
-      return "Reaction";
+      return "Reacci\xf3n";
     },
     get$notificationRuleReactionDescription() {
-      return "Suppresses notifications for reactions.";
+      return "Omite as notificaci\xf3ns sobre reacci\xf3ns.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Room Server ACL";
+      return "ACL da servidor da sala";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Suppresses notifications for room server access control lists (ACL).";
+      return "Omite notificaci\xf3ns para as listas de control de acceso (ACL) do servidor da sala.";
     },
     get$notificationRuleSuppressEdits() {
-      return "Suppress Edits";
+      return "Omite edici\xf3ns";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Suppresses notifications for edited messages.";
+      return "Omite as notificaci\xf3ns sobre mensaxes editadas.";
     },
     get$notificationRuleCall() {
-      return "Call";
+      return "Chamada";
     },
     get$notificationRuleCallDescription() {
-      return "Notifies the user about calls.";
+      return "Informa \xe1 usuaria sobre as chamadas.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Encrypted Room One-to-One";
+      return "Sala cifrada conversa persoal";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Notifies the user about messages in encrypted one-to-one rooms.";
+      return "Informa \xe1 usuaria sobre mensaxes cifradas en salas de conversa persoal.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Room One-to-One";
+      return "Sala de conversa persoal";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Notifies the user about messages in one-to-one rooms.";
+      return "Informa \xe1 usuaria sobre mensaxes en salas de conversa persoal.";
     },
     get$notificationRuleMessage() {
-      return "Message";
+      return "Mensaxe";
     },
     get$notificationRuleMessageDescription() {
-      return "Notifies the user about general messages.";
+      return "Informa \xe1 usuaria sobre mensaxes xen\xe9ricas.";
     },
     get$notificationRuleEncrypted() {
-      return "Encrypted";
+      return "Salas cifradas";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Notifies the user about messages in encrypted rooms.";
+      return "Informa \xe1 usuaria sobre mensaxes en salas cifradas.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Notifies the user about Jitsi widget events.";
+      return "Informa \xe1 usuaria sobre eventos do widget Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "Suppress Server ACL Events";
+      return "Omite eventos do sevidor ACL";
     },
     get$notificationRuleServerAclDescription() {
-      return "Suppresses notifications for Server ACL events.";
+      return "Omite notificaci\xf3n sobre eventos do servidor ACL.";
     },
     unknownPushRule$1(rule) {
-      return "Unknown push rule '" + rule + "'";
+      return "Regra push desco\xf1ecida '" + rule + "'";
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "If you delete this notification setting, this can not be undone.";
+      return "Se omites este axuste de notificaci\xf3ns non poder\xe1s desfacer a acci\xf3n.";
     },
     get$more() {
-      return "More";
+      return "M\xe1is";
     },
     get$shareKeysWith() {
-      return "Share keys with...";
+      return "Compartir chaves con\u2026";
     },
     get$shareKeysWithDescription() {
-      return "Which devices should be trusted so that they can read along your messages in encrypted chats?";
+      return "En que dispositivos se pode confiar e poden ler as t\xfaas conversas cifradas?";
     },
     get$allDevices() {
-      return "All devices";
+      return "Todos os dispositivos";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Cross verified devices if enabled";
+      return "Dispositivos verificados se est\xe1 activado";
     },
     get$crossVerifiedDevices() {
-      return "Cross verified devices";
+      return "Dispositivos verificados";
     },
     get$verifiedDevicesOnly() {
-      return "Verified devices only";
+      return "S\xf3 dispositivos verificados";
     },
     get$optionalMessage() {
-      return "(Optional) message...";
+      return "(Optativo) mensaxe\u2026";
     },
     get$notSupportedOnThisDevice() {
-      return "Not supported on this device";
+      return "Non compatible co dispositivo";
     },
     get$enterNewChat() {
-      return "Enter new chat";
+      return "Entrar na nova conversa";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
@@ -3672,12 +3675,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$completeActivitiesToUnlock() {
       return "Complete at least one activity to unlock the translation!";
     },
-    get$botSettingsSubtitle() {
-      return "Invite bot to moderate chat activity";
-    },
-    get$noCapacityLimit() {
-      return "No capacity limit";
-    },
     get$downloadGroupText() {
       return "Download group text";
     },
@@ -3695,9 +3692,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$addSubspaceWarning() {
       return "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.";
-    },
-    get$nestedSpaceError() {
-      return "Spaces should not be added as children of other spaces";
     },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
@@ -4305,9 +4299,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
     },
-    get$leaderboard() {
-      return "Leaderboard";
-    },
     welcomeUser$1(user) {
       return "Welcome " + user;
     },
@@ -4386,6 +4377,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$announcements() {
       return "Announcements";
     },
+    get$activities() {
+      return "Activities";
+    },
+    get$access() {
+      return "Access";
+    },
+    get$addSubspace() {
+      return "Add subspace";
+    },
+    get$botSettings() {
+      return "Bot settings";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4393,14 +4396,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nHu, C.L10n);
+    _inherit(A.L10nGl, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHu":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nGl":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
-  d.eventLog.push({p: "main.dart.js_234", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "fVWRpZr1Mz3gXNYKY+QUvQ2VWPE=");
+  d.eventLog.push({p: "main.dart.js_223", e: "endPart", h: h});
+})($__dart_deferred_initializers__, "oVoeEXIpghtDhgtiAxVhqrOBzyM=");
 ;
-//# sourceMappingURL=main.dart.js_234.part.js.map
+//# sourceMappingURL=main.dart.js_223.part.js.map
