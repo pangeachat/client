@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/activity_generator/activity_generator.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_card.dart';
@@ -15,6 +10,9 @@ import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart'
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class ActivityGeneratorView extends StatelessWidget {
   final ActivityGeneratorState controller;
@@ -175,6 +173,9 @@ class ActivityGeneratorView extends StatelessWidget {
                         final n = int.tryParse(value);
                         if (n == null || n <= 0) {
                           return l10n.mustBeInteger;
+                        }
+                        if (n > 50) {
+                          return l10n.maxFifty;
                         }
                         return null;
                       },

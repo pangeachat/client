@@ -4943,5 +4943,7 @@
   "launchActivityToChats": "Launch activity to chats",
   "searchChats": "Search chats",
   "selectChats": "Select chats",
-  "selectChatToStart": "Complete! Select a chat to start"
+  "selectChatToStart": "Complete! Select a chat to start",
+  "maxFifty": "Max 50"
+
 }
