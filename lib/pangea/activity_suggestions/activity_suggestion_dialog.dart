@@ -1,11 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-import 'package:go_router/go_router.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_room_selection.dart';
@@ -13,6 +7,10 @@ import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card_
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
+import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 enum _PageMode {
   activity,
@@ -269,6 +267,10 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                                               if (val <= 0) {
                                                 return L10n.of(context)
                                                     .pleaseEnterInt;
+                                              }
+                                              if (val > 50) {
+                                                return L10n.of(context)
+                                                    .maxFifty;
                                               }
                                             } catch (e) {
                                               return L10n.of(context)
