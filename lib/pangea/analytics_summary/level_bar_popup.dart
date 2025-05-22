@@ -41,13 +41,13 @@ class LevelBarPopup extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                        Text(
+                    Text(
                       "⭐ ${L10n.of(context).levelShort(level)}",
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w900,
-                            color: AppConfig.gold,
-                          ),
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w900,
+                        color: AppConfig.gold,
+                      ),
                     ),
                     Opacity(
                       opacity: 0.25,
