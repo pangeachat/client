@@ -3,23 +3,31 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:flutter_gen/gen_l10n/l10n.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pages/chat_details/participant_list_item.dart';
+import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
+import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/class_name_header.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/conversation_bot/conversation_bot_settings.dart';
+import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
 import 'package:fluffychat/pangea/spaces/widgets/download_space_analytics_dialog.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -78,7 +86,7 @@ class PangeaChatDetailsView extends StatelessWidget {
             child: ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: members.length + 1 + (canRequestMoreMembers ? 1 : 0),
+              itemCount: 2,
               itemBuilder: (BuildContext context, int i) => i == 0
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -240,26 +248,10 @@ class PangeaChatDetailsView extends StatelessWidget {
                         ),
                       ],
                     )
-                  : i < members.length + 1
-                      ? ParticipantListItem(members[i - 1])
-                      : ListTile(
-                          title: Text(
-                            L10n.of(context).loadCountMoreParticipants(
-                              (actualMembersCount - members.length),
-                            ),
-                          ),
-                          leading: CircleAvatar(
-                            backgroundColor: theme.scaffoldBackgroundColor,
-                            child: const Icon(
-                              Icons.group_outlined,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          onTap: () => context.push(
-                            '/rooms/${controller.roomId!}/details/members',
-                          ),
-                          trailing: const Icon(Icons.chevron_right_outlined),
-                        ),
+                  : Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: RoomParticipantsSection(room: room),
+                    ),
             ),
           ),
         );
@@ -445,6 +437,42 @@ class RoomDetailsButtonRowState extends State<RoomDetailsButtonRow> {
         },
         visible: (room) => room.membership == Membership.join,
       ),
+      ButtonDetails(
+        title: l10n.delete,
+        icon: const Icon(Icons.delete_outline),
+        onPressed: () async {
+          if (room.isSpace) {
+            final resp = await showDialog<bool?>(
+              context: context,
+              builder: (_) => DeleteSpaceDialog(space: room),
+            );
+
+            if (resp == true) {
+              context.go("/rooms?spaceId=clear");
+            }
+          } else {
+            final confirmed = await showOkCancelAlertDialog(
+              context: context,
+              title: L10n.of(context).areYouSure,
+              okLabel: L10n.of(context).delete,
+              cancelLabel: L10n.of(context).cancel,
+              isDestructive: true,
+              message: room.isSpace
+                  ? L10n.of(context).deleteSpaceDesc
+                  : L10n.of(context).deleteChatDesc,
+            );
+            if (confirmed != OkCancelResult.ok) return;
+
+            final resp = await showFutureLoadingDialog(
+              context: context,
+              future: room.delete,
+            );
+            if (resp.isError) return;
+            context.go("/rooms?spaceId=clear");
+          }
+        },
+        visible: (room) => room.isRoomAdmin,
+      ),
     ];
   }
 
@@ -616,4 +644,169 @@ class ButtonDetails {
     required this.onPressed,
     required this.visible,
   });
+}
+
+class RoomParticipantsSection extends StatelessWidget {
+  final Room room;
+
+  const RoomParticipantsSection({
+    required this.room,
+    super.key,
+  });
+
+  final double _width = 90.0;
+  final double _padding = 12.0;
+
+  double get _fullWidth => _width + (_padding * 2);
+
+  @override
+  Widget build(BuildContext context) {
+    final List<User> members = room.getParticipants().toList()
+      ..sort((b, a) => a.powerLevel.compareTo(b.powerLevel));
+
+    final actualMembersCount = (room.summary.mInvitedMemberCount ?? 0) +
+        (room.summary.mJoinedMemberCount ?? 0);
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final availableWidth = constraints.maxWidth;
+        final capacity = (availableWidth / _fullWidth).floor();
+
+        if (capacity < 4) {
+          return Column(
+            children: [
+              ...members.map((member) => ParticipantListItem(member)),
+              if (actualMembersCount - members.length > 0)
+                ListTile(
+                  title: Text(
+                    L10n.of(context).loadCountMoreParticipants(
+                      (actualMembersCount - members.length),
+                    ),
+                  ),
+                  leading: CircleAvatar(
+                    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                    child: const Icon(
+                      Icons.group_outlined,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  onTap: () => context.push(
+                    '/rooms/${room.id}/details/members',
+                  ),
+                  trailing: const Icon(Icons.chevron_right_outlined),
+                ),
+            ],
+          );
+        }
+
+        return LoadParticipantsUtil(
+          space: room,
+          builder: (participantsLoader) {
+            final filteredParticipants =
+                participantsLoader.filteredParticipants("");
+            return Wrap(
+              alignment: WrapAlignment.center,
+              runAlignment: WrapAlignment.center,
+              children: [
+                ...filteredParticipants.mapIndexed((index, user) {
+                  Color? color = index == 0
+                      ? AppConfig.gold
+                      : index == 1
+                          ? Colors.grey[400]!
+                          : index == 2
+                              ? Colors.brown[400]!
+                              : null;
+
+                  final publicProfile = participantsLoader.getPublicProfile(
+                    user.id,
+                  );
+
+                  if (user.id == BotName.byEnvironment ||
+                      publicProfile == null ||
+                      publicProfile.level == null) {
+                    color = null;
+                  }
+
+                  return Padding(
+                    padding: EdgeInsets.all(_padding),
+                    child: SizedBox(
+                      width: _width,
+                      child: Column(
+                        children: [
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              if (color != null)
+                                CircleAvatar(
+                                  radius: _width / 2,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      gradient: LinearGradient(
+                                        begin: const Alignment(0.5, -0.5),
+                                        end: const Alignment(-0.5, 0.5),
+                                        colors: <Color>[
+                                          color,
+                                          Colors.white,
+                                          color,
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              else
+                                SizedBox(
+                                  height: _width,
+                                  width: _width,
+                                ),
+                              MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () => UserDialog.show(
+                                    context: context,
+                                    profile: Profile(
+                                      userId: user.id,
+                                      displayName: user.displayName,
+                                      avatarUrl: user.avatarUrl,
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Avatar(
+                                      mxContent: user.avatarUrl,
+                                      name: user.calcDisplayname(),
+                                      size: _width - 6.0,
+                                      presenceUserId: user.id,
+                                      showPresence: false,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            user.calcDisplayname(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge
+                                ?.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                          ),
+                          LevelDisplayName(
+                            userId: user.id,
+                            textStyle: Theme.of(context).textTheme.labelSmall,
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
 }
