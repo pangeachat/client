@@ -169,14 +169,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noChatsFoundHere() {
       return "No chats found here yet. Start a new chat with someone by using the button below. \u2935\ufe0f";
     },
-    get$unread() {
-      return "Unread";
-    },
     get$space() {
       return "Space";
-    },
-    get$spaces() {
-      return "Spaces";
     },
     get$banFromChat() {
       return "Ban from chat";
@@ -495,9 +489,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$fromTheInvitation() {
       return "From the invitation";
-    },
-    get$groups() {
-      return "Groups";
     },
     get$guestsAreForbidden() {
       return "Guests are forbidden";
@@ -4836,9 +4827,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$fromTheInvitation() {
       return "Desde o convite";
     },
-    get$groups() {
-      return "Grupos";
-    },
     get$guestsAreForbidden() {
       return "Convidados est\xe3o proibidos";
     },
@@ -5984,9 +5972,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$forward(_) {
       return "Reencaminhar";
     },
-    get$groups() {
-      return "Grupos";
-    },
     get$guestsAreForbidden() {
       return "S\xe3o proibidos visitantes";
     },
@@ -6295,6 +6280,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "HEsJFHKpimvj5UG8mreokRdhY3M=");
+})($__dart_deferred_initializers__, "priPH6UsOOZivZnH3LnCfvI3yww=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map
