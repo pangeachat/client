@@ -1,13 +1,11 @@
-import 'package:flutter/material.dart';
-
-import 'package:flutter_gen/gen_l10n/l10n.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/new_group/new_group.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_carousel.dart';
 import 'package:fluffychat/pangea/spaces/utils/space_code.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/l10n.dart';
 
 class NewGroupView extends StatelessWidget {
   final NewGroupController controller;
@@ -40,17 +38,18 @@ class NewGroupView extends StatelessWidget {
           // Pangea#
         ),
         actions: [
-          TextButton(
-            onPressed: controller.loading
-                ? null
-                : () => SpaceCodeUtil.joinWithSpaceCodeDialog(context),
-            child: Text(
-              L10n.of(context).joinByCode,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
+          if (controller.createGroupType == CreateGroupType.space)
+            TextButton(
+              onPressed: controller.loading
+                  ? null
+                  : () => SpaceCodeUtil.joinWithSpaceCodeDialog(context),
+              child: Text(
+                L10n.of(context).joinByCode,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               ),
             ),
-          ),
         ],
       ),
       body: MaxWidthBody(
@@ -65,27 +64,30 @@ class NewGroupView extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SegmentedButton<CreateGroupType>(
-                selected: {controller.createGroupType},
-                onSelectionChanged: controller.setCreateGroupType,
-                segments: [
-                  ButtonSegment(
-                    value: CreateGroupType.group,
-                    // #Pangea
-                    // label: Text(L10n.of(context).group),
-                    label: Text(L10n.of(context).chat),
-                    // Pangea#
-                  ),
-                  ButtonSegment(
-                    value: CreateGroupType.space,
-                    label: Text(L10n.of(context).space),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
+            // #Pangea
+            // Simplying options here
+            // Padding(
+            //   padding: const EdgeInsets.all(16.0),
+            //   child: SegmentedButton<CreateGroupType>(
+            //     selected: {controller.createGroupType},
+            //     onSelectionChanged: controller.setCreateGroupType,
+            //     segments: [
+            //       ButtonSegment(
+            //         value: CreateGroupType.group,
+            //         // #Pangea
+            //         // label: Text(L10n.of(context).group),
+            //         label: Text(L10n.of(context).chat),
+            //         // Pangea#
+            //       ),
+            //       ButtonSegment(
+            //         value: CreateGroupType.space,
+            //         label: Text(L10n.of(context).space),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // const SizedBox(height: 16),
+            // Pangea#
             InkWell(
               borderRadius: BorderRadius.circular(90),
               onTap: controller.loading ? null : controller.selectPhoto,
