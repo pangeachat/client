@@ -4393,6 +4393,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$botSettings() {
       return "Bot settings";
     },
+    get$activitySuggestionTimeoutMessage() {
+      return "We are working hard to generate activties for you, please check back in a minute";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4408,6 +4411,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_181", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "XpjJirsj9mFnoRzJ4yJ5Ul+3JBs=");
+})($__dart_deferred_initializers__, "j+3SLoSI9Oc+Ma+8S9nzAUuhCjY=");
 ;
 //# sourceMappingURL=main.dart.js_181.part.js.map
