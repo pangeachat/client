@@ -1149,9 +1149,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
       return "La discussion peut \xeatre d\xe9couverte via la recherche sur " + server;
     },
-    get$searchChatsRooms() {
-      return "Rechercher des #discussions, @utilisateurs/trices...";
-    },
     get$nothingFound() {
       return "Rien n'a \xe9t\xe9 trouv\xe9...";
     },
@@ -4401,6 +4398,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_218", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "xVMvSnLxUWYzF2cZUQKg9JV0a4A=");
+})($__dart_deferred_initializers__, "7Ck/oL0cC0N0toHCsujDX6kj6so=");
 ;
 //# sourceMappingURL=main.dart.js_218.part.js.map

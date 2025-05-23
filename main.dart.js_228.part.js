@@ -1149,9 +1149,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
       return "Razgovor se mo\u017ee otkriti pretra\u017eivanjem servera " + server;
     },
-    get$searchChatsRooms() {
-      return "Tra\u017ei #chats, @users \u2026";
-    },
     get$nothingFound() {
       return "Ni\u0161ta nije prona\u0111eno...";
     },
@@ -4401,6 +4398,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_228", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "wbZPkuHihlf87/9G1BqUaEY+Lmc=");
+})($__dart_deferred_initializers__, "6enNv7qqm6fWhUfPPTf7vEvvi/s=");
 ;
 //# sourceMappingURL=main.dart.js_228.part.js.map

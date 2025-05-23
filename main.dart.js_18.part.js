@@ -1162,9 +1162,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
       return "Chat can be discovered via the search on " + server;
     },
-    get$searchChatsRooms() {
-      return "Search for #chats, @users...";
-    },
     get$nothingFound() {
       return "Nothing found...";
     },
@@ -5493,9 +5490,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
       return "O chat pode ser descoberto pela pesquisa em " + server;
     },
-    get$searchChatsRooms() {
-      return "Buscar por #conversas, @usu\xe1rios...";
-    },
     get$nothingFound() {
       return "Nada foi encontrado...";
     },
@@ -6280,6 +6274,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "priPH6UsOOZivZnH3LnCfvI3yww=");
+})($__dart_deferred_initializers__, "NuGFEx5m5sg6JtZgeeYgx0vWiIQ=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map

@@ -1149,9 +1149,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
       return "\u0411\u0435\u0441\u0456\u0434\u0443 \u043c\u043e\u0436\u043d\u0430 \u0437\u043d\u0430\u0439\u0442\u0438 \u0437\u0430 \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043e\u044e \u043f\u043e\u0448\u0443\u043a\u0443 \u043d\u0430 " + server;
     },
-    get$searchChatsRooms() {
-      return "\u041f\u043e\u0448\u0443\u043a \u0434\u043b\u044f #chats, @users...";
-    },
     get$nothingFound() {
       return "\u041d\u0456\u0447\u043e\u0433\u043e \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e...";
     },
@@ -4401,6 +4398,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_268", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ELBjleqdoKjBU7Nt0SyLj8P3GYc=");
+})($__dart_deferred_initializers__, "pg4It/XclgLyQMRRoOy8zkqoFNE=");
 ;
 //# sourceMappingURL=main.dart.js_268.part.js.map

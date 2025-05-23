@@ -1149,9 +1149,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
       return "Cseveg\xe9s felfedezhet\u0151 a " + server + " szerveren t\xf6rt\xe9n\u0151 keres\xe9ssel";
     },
-    get$searchChatsRooms() {
-      return "Keressen #cseveg\xe9seket, @felhaszn\xe1l\xf3kat...";
-    },
     get$nothingFound() {
       return "Nincs tal\xe1lat...";
     },
@@ -4401,6 +4398,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_234", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "FwC9Sm5que7NVaKQiW0cxIxw5Ew=");
+})($__dart_deferred_initializers__, "ro33Z8sBAYQodDCfnHXg4u2+RIk=");
 ;
 //# sourceMappingURL=main.dart.js_234.part.js.map

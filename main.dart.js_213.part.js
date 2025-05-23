@@ -1149,9 +1149,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     chatCanBeDiscoveredViaSearchOnServer$1(server) {
       return "Txata " + server + "(e)n bilaketa eginez aurkitu daiteke";
     },
-    get$searchChatsRooms() {
-      return "Bilatu #txatak, @erabiltzaileak\u2026";
-    },
     get$nothingFound() {
       return "Ez da ezer aurkitu\u2026";
     },
@@ -4404,6 +4401,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_213", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "LX8Mgz58l7uAFHVJX/GHdG7RDSI=");
+})($__dart_deferred_initializers__, "YIJ3LMZpAPrBD8o/ll0uDA+iciU=");
 ;
 //# sourceMappingURL=main.dart.js_213.part.js.map
