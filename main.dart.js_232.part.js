@@ -4327,7 +4327,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bot settings";
     },
     get$activitySuggestionTimeoutMessage() {
-      return "We are working hard to generate activties for you, please check back in a minute";
+      return "We are working hard to generate activities for you, please check back in a minute";
     },
     get$accessSettingsWarning() {
       return "Oops! It looks like you don't have permission to set the Access rules of this room. You should check these to make sure they're what you need and talk to a room admin if you need to change them";
@@ -4377,6 +4377,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_232", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+WvwGhDFZXaUJPq0+SJAcEU/d2M=");
+})($__dart_deferred_initializers__, "3Y3mlBiV5Ra1AFEacItWUHOAdIM=");
 ;
 //# sourceMappingURL=main.dart.js_232.part.js.map
