@@ -42,7 +42,6 @@ import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/pangea/spaces/utils/join_with_alias.dart';
 import 'package:fluffychat/pangea/spaces/utils/join_with_link.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
-import 'package:fluffychat/pangea/user/pages/find_partner.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
@@ -298,16 +297,6 @@ abstract class AppRoutes {
                 context,
                 state,
                 const NewGroup(createGroupType: CreateGroupType.space),
-              ),
-              redirect: loggedOutRedirect,
-            ),
-            // #Pangea
-            GoRoute(
-              path: 'partner',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                const FindPartner(),
               ),
               redirect: loggedOutRedirect,
             ),
