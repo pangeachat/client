@@ -97,9 +97,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Admin";
     },
-    get$alias() {
-      return "alias";
-    },
     get$all() {
       return "All";
     },
@@ -128,13 +125,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return senderName + " answered the call";
     },
     get$anyoneCanJoin() {
-      return "Anyone can join";
+      return "Anyone can join! However, admin can kick and ban whoever misbehaves. Those who are banned may not return!";
     },
     get$archive() {
       return "Archive";
-    },
-    get$areGuestsAllowedToJoin() {
-      return "Are guest users allowed to join";
     },
     get$areYouSure() {
       return "Tens a certeza?";
@@ -367,9 +361,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " created the chat";
     },
-    get$createGroup() {
-      return "Create group";
-    },
     get$createNewSpace() {
       return "New space";
     },
@@ -418,9 +409,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editDisplayname() {
       return "Edit displayname";
     },
-    get$editRoomAliases() {
-      return "Edit room aliases";
-    },
     get$editRoomAvatar() {
       return "Edit room avatar";
     },
@@ -435,12 +423,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$emotePacks() {
       return "Emote packs for room";
-    },
-    get$globalChatId() {
-      return "Global chat ID";
-    },
-    get$accessAndVisibility() {
-      return "Access and visibility";
     },
     get$customEmojisAndStickers() {
       return "Custom emojis and stickers";
@@ -558,9 +540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$invitedUsersOnly() {
       return "Invited users only";
-    },
-    inviteText$2(username, link) {
-      return username + " invited you to FluffyChat.\n1. Visit fluffychat.im and install the app \n2. Sign up or sign in \n3. Open the invite link: \n " + link;
     },
     get$isTyping() {
       return "is typing\u2026";
@@ -784,9 +763,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$roomHasBeenUpgraded() {
       return "Room has been upgraded";
     },
-    get$roomVersion() {
-      return "Room version";
-    },
     get$search(_) {
       return "Pesquisar";
     },
@@ -840,9 +816,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$separateChatTypes() {
       return "Separate Direct Chats and Groups";
-    },
-    get$setAsCanonicalAlias() {
-      return "Set as main alias";
     },
     get$setChatDescription() {
       return "Set chat description";
@@ -955,9 +928,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$verifyTitle() {
       return "Verifying other account";
     },
-    get$visibilityOfTheChatHistory() {
-      return "Visibility of the chat history";
-    },
     get$visibleForAllParticipants() {
       return "Visible for all participants";
     },
@@ -1069,12 +1039,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " has knocked";
     },
-    get$usersMustKnock() {
-      return "Users must knock";
-    },
-    get$noOneCanJoin() {
-      return "No one can join";
-    },
     get$users() {
       return "Utilizadores";
     },
@@ -1132,9 +1096,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "Please enter a number greater than 0";
     },
-    get$roomUpgradeDescription() {
-      return "The chat will then be recreated with the new room version. All participants will be notified that they need to switch to the new chat. You can find out more about room versions at https://spec.matrix.org/latest/rooms/";
-    },
     get$removeDevicesDescription() {
       return "You will be logged out of this device and will no longer be able to receive messages.";
     },
@@ -1158,9 +1119,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$knocking() {
       return "Knocking";
-    },
-    chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "Chat can be discovered via the search on " + server;
     },
     get$nothingFound() {
       return "Nothing found...";
@@ -1191,12 +1149,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordIsWrong() {
       return "Your entered password is wrong";
-    },
-    get$publicChatAddresses() {
-      return "Public chat addresses";
-    },
-    get$createNewAddress() {
-      return "Create new address";
     },
     get$publicSpaces() {
       return "Public spaces";
@@ -1278,9 +1230,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$restricted() {
       return "Restricted";
-    },
-    get$knockRestricted() {
-      return "Knock restricted";
     },
     goToSpace$1(space) {
       return "Go to space: " + space;
@@ -4069,9 +4018,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickOnEmailLink() {
       return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
     },
-    get$whoIsAllowedToJoinThisChat() {
-      return "Who is allowed to join this chat";
-    },
     get$dontForgetPassword() {
       return "Don't forget your password!";
     },
@@ -4396,6 +4342,39 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitySuggestionTimeoutMessage() {
       return "We are working hard to generate activties for you, please check back in a minute";
     },
+    get$accessSettingsWarning() {
+      return "Oops! It looks like you don't have permission to set the Access rules of this room. You should check these to make sure they're what you need and talk to a room admin if you need to change them";
+    },
+    get$howSpaceCanBeFound() {
+      return "How this space can be found";
+    },
+    get$$private() {
+      return "Private";
+    },
+    get$cannotBeFoundInSearch() {
+      return "Cannot be found in search";
+    },
+    get$$public(_) {
+      return "Public";
+    },
+    get$visibleToCommunity() {
+      return 'Visible to the broader Pangea Chat community via "Find your people"';
+    },
+    get$howSpaceCanBeJoined() {
+      return "How this space can be joined";
+    },
+    get$canBeFoundVia() {
+      return "Can be found via:";
+    },
+    get$canBeFoundViaInvitation() {
+      return "\u2022 invitation";
+    },
+    get$canBeFoundViaCodeOrLink() {
+      return "\u2022 code or link";
+    },
+    get$canBeFoundViaKnock() {
+      return "\u2022 request to join and admin approval";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4449,9 +4428,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Admin";
     },
-    get$alias() {
-      return "cognome";
-    },
     get$all() {
       return "Todas";
     },
@@ -4481,9 +4457,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$archive() {
       return "Arquivo";
-    },
-    get$areGuestsAllowedToJoin() {
-      return "Usu\xe1rios convidados podem participar";
     },
     get$areYouSure() {
       return "Tem certeza?";
@@ -4701,9 +4674,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " criou a conversa";
     },
-    get$createGroup() {
-      return "Criar grupo";
-    },
     get$createNewSpace() {
       return "Novo espa\xe7o";
     },
@@ -4752,9 +4722,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editDisplayname() {
       return "Editar nome de exibi\xe7\xe3o";
     },
-    get$editRoomAliases() {
-      return "Editar cognome da sala";
-    },
     get$editRoomAvatar() {
       return "Editar o avatar da sala";
     },
@@ -4769,12 +4736,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$emotePacks() {
       return "Pacote de emoji para a sala";
-    },
-    get$globalChatId() {
-      return "ID de chat global";
-    },
-    get$accessAndVisibility() {
-      return "Acesso e visibilidade";
     },
     get$customEmojisAndStickers() {
       return "Emojis e stickers customizados";
@@ -4892,9 +4853,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$invitedUsersOnly() {
       return "Apenas usu\xe1rios convidados";
-    },
-    inviteText$2(username, link) {
-      return username + " convidou voc\xea para o FluffyChat. \n1. Visite fluffychat.im e instale o aplicativo\n2. Entre ou crie uma conta \n3. Abra o link do convite:\n " + link;
     },
     get$isTyping() {
       return "est\xe1 escrevendo\u2026";
@@ -5118,9 +5076,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$roomHasBeenUpgraded() {
       return "Sala foi atualizada";
     },
-    get$roomVersion() {
-      return "Vers\xe3o da sala";
-    },
     get$search(_) {
       return "Buscar";
     },
@@ -5171,9 +5126,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$separateChatTypes() {
       return "Separar Conversas Diretas e Grupos";
-    },
-    get$setAsCanonicalAlias() {
-      return "Fixar como cognome principal";
     },
     get$setChatDescription() {
       return "Inserir descri\xe7\xe3o da conversa";
@@ -5282,9 +5234,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$verifyTitle() {
       return "Verificando outra conta";
-    },
-    get$visibilityOfTheChatHistory() {
-      return "Visibilidade do hist\xf3rico da conversa";
     },
     get$visibleForAllParticipants() {
       return "Vis\xedvel aos participantes";
@@ -5397,12 +5346,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " bateu na porta";
     },
-    get$usersMustKnock() {
-      return "Usu\xe1rios devem bater na porta";
-    },
-    get$noOneCanJoin() {
-      return "Ningu\xe9m pode entrar";
-    },
     get$users() {
       return "Usu\xe1rios";
     },
@@ -5460,9 +5403,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pleaseEnterANumber() {
       return "Por favor, insira um n\xfamero maior que 0";
     },
-    get$roomUpgradeDescription() {
-      return "A conversa ser\xe1 recriada com a nova vers\xe3o de sala. Todos participantes ser\xe1 notificados e ter\xe3o que migrar para a nova sala. Voc\xea pode encontrar mais informa\xe7\xf5es sobre vers\xf5es de sala em https://spec.matrix.org/latest/room/";
-    },
     get$removeDevicesDescription() {
       return "Voc\xea encerrar\xe1 a sess\xe3o neste dispositivo e n\xe3o poder\xe1 mais receber mensagens.";
     },
@@ -5486,9 +5426,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$knocking() {
       return "Batendo na porta";
-    },
-    chatCanBeDiscoveredViaSearchOnServer$1(server) {
-      return "O chat pode ser descoberto pela pesquisa em " + server;
     },
     get$nothingFound() {
       return "Nada foi encontrado...";
@@ -5519,12 +5456,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$passwordIsWrong() {
       return "A senha inserida est\xe1 incorreta";
-    },
-    get$publicChatAddresses() {
-      return "Endere\xe7os de chat p\xfablicos";
-    },
-    get$createNewAddress() {
-      return "Criar um novo endere\xe7o";
     },
     get$publicSpaces() {
       return "Espa\xe7os p\xfablicos";
@@ -5607,9 +5538,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$restricted() {
       return "Restrito";
     },
-    get$knockRestricted() {
-      return "Bater na porta restrito";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5642,9 +5570,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Admin";
     },
-    get$alias() {
-      return "alcunha";
-    },
     get$all() {
       return "Todos(as)";
     },
@@ -5656,9 +5581,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$archive() {
       return "Arquivo";
-    },
-    get$areGuestsAllowedToJoin() {
-      return "Todos os visitantes podem entrar";
     },
     get$areYouSure() {
       return "Tens a certeza?";
@@ -5912,9 +5834,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$editDisplayname() {
       return "Editar nome de exibi\xe7\xe3o";
     },
-    get$editRoomAliases() {
-      return "Editar alcunhas da sala";
-    },
     get$editRoomAvatar() {
       return "Editar avatar da sala";
     },
@@ -6001,9 +5920,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$invitedUsersOnly() {
       return "Utilizadores(as) convidados(as) apenas";
-    },
-    inviteText$2(username, link) {
-      return username + " convidou-te para o FluffyChat.\n1. Instala o FluffyChat: https://fluffychat.im\n2. Regista-te ou inicia sess\xe3o.\n3. Abre a liga\xe7\xe3o de convite: " + link;
     },
     get$isTyping() {
       return "est\xe1 a escrever\u2026";
@@ -6206,9 +6122,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$roomHasBeenUpgraded() {
       return "A sala foi atualizada";
     },
-    get$roomVersion() {
-      return "Vers\xe3o da sala";
-    },
     get$search(_) {
       return "Procurar";
     },
@@ -6274,6 +6187,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "NuGFEx5m5sg6JtZgeeYgx0vWiIQ=");
+})($__dart_deferred_initializers__, "/0nbkzPI+7ASlnpwQ2rlhMnZEWY=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map
