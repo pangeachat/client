@@ -4297,16 +4297,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "B\u1ecf qua t\u1ea1m th\u1eddi";
     },
     get$permissions(_) {
-      return "Permissions";
+      return "Quy\u1ec1n h\u1ea1n";
     },
     get$spaceChildPermission() {
-      return "Who can add new chats and subspaces to this space";
+      return "Ai c\xf3 th\u1ec3 th\xeam tr\xf2 chuy\u1ec7n v\xe0 kh\xf4ng gian con v\xe0o kh\xf4ng gian n\xe0y";
     },
     get$addEnvironmentOverride() {
-      return "Add environment override";
+      return "Th\xeam ghi \u0111\xe8 m\xf4i tr\u01b0\u1eddng";
     },
     get$defaultOption() {
-      return "Default";
+      return "M\u1eb7c \u0111\u1ecbnh";
     },
     get$deleteChatDesc() {
       return "Are you sure you want to delete this chat? It will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics.";
@@ -4315,58 +4315,58 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "The space and any selected chats and/or subspaces will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
     },
     get$chatWithActivities() {
-      return "Chat with activities";
+      return "Tr\xf2 chuy\u1ec7n v\u1edbi c\xe1c ho\u1ea1t \u0111\u1ed9ng";
     },
     get$findYourPeople() {
-      return "Find your people";
+      return "T\xecm ng\u01b0\u1eddi c\u1ee7a b\u1ea1n";
     },
     get$launch() {
-      return "Launch";
+      return "Kh\u1edfi \u0111\u1ed9ng";
     },
     get$launchActivityToChats() {
-      return "Launch activity to chats";
+      return "Kh\u1edfi \u0111\u1ed9ng ho\u1ea1t \u0111\u1ed9ng \u0111\u1ebfn c\xe1c tr\xf2 chuy\u1ec7n";
     },
     get$searchChats() {
-      return "Search chats";
+      return "T\xecm ki\u1ebfm cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$selectChats() {
-      return "Select chats";
+      return "Ch\u1ecdn cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     get$selectChatToStart() {
-      return "Complete! Select a chat to start";
+      return "Ho\xe0n t\u1ea5t! Ch\u1ecdn m\u1ed9t tr\xf2 chuy\u1ec7n \u0111\u1ec3 b\u1eaft \u0111\u1ea7u";
     },
     get$maxFifty() {
       return "Max 50";
     },
     get$configureSpace() {
-      return "Configure space";
+      return "C\u1ea5u h\xecnh kh\xf4ng gian";
     },
     get$pinMessages() {
-      return "Pin messages";
+      return "Ghim tin nh\u1eafn";
     },
     get$setJoinRules() {
-      return "Set join rules";
+      return "\u0110\u1eb7t quy t\u1eafc tham gia";
     },
     get$changeGeneralSettings() {
-      return "Change general settings";
+      return "Thay \u0111\u1ed5i c\xe0i \u0111\u1eb7t chung";
     },
     get$inviteOtherUsersToRoom() {
-      return "Invite other users";
+      return "M\u1eddi ng\u01b0\u1eddi d\xf9ng kh\xe1c";
     },
     get$changeTheNameOfTheSpace() {
-      return "Change the name of the space";
+      return "Thay \u0111\u1ed5i t\xean c\u1ee7a kh\xf4ng gian";
     },
     get$changeTheDescription() {
-      return "Change the description";
+      return "Thay \u0111\u1ed5i m\xf4 t\u1ea3";
     },
     get$changeThePermissions() {
-      return "Change the permissions";
+      return "Thay \u0111\u1ed5i quy\u1ec1n h\u1ea1n";
     },
     get$introductions() {
-      return "Introductions";
+      return "Gi\u1edbi thi\u1ec7u";
     },
     get$announcements() {
-      return "Announcements";
+      return "Th\xf4ng b\xe1o";
     },
     get$activities() {
       return "Activities";
@@ -4398,6 +4398,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_269", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "d1vYBQgGwvetpPjgWVZISuWIFJg=");
+})($__dart_deferred_initializers__, "VrAzHVNGj03Ig74b3OE9dLQSBmg=");
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map

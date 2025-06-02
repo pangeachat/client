@@ -28,16 +28,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "El archivo no es una imagen.";
     },
     get$setCustomPermissionLevel() {
-      return "Set custom permission level";
+      return "Establecer nivel de permiso personalizado";
     },
     get$setPermissionsLevelDescription() {
-      return "Please choose a predefined role below or enter a custom permission level between 0 and 100.";
+      return "Por favor, elige un rol predefinido a continuaci\xf3n o ingresa un nivel de permiso personalizado entre 0 y 100.";
     },
     get$ignoreUser() {
-      return "Ignore user";
+      return "Ignorar usuario";
     },
     get$normalUser() {
-      return "Normal user";
+      return "Usuario normal";
     },
     get$remove(_) {
       return "Eliminar";
@@ -91,7 +91,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Todo";
     },
     get$commandHint_roomupgrade() {
-      return "Upgrade this room to the given room version";
+      return "Mejorar esta sala a la versi\xf3n de sala dada";
     },
     get$commandHint_googly() {
       return "Enviar unos ojos saltones";
@@ -3661,7 +3661,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Elija las mejores opciones para traducir su mensaje";
     },
     get$completeActivitiesToUnlock() {
-      return "Complete at least one activity to unlock the translation!";
+      return "\xa1Completa al menos una actividad para desbloquear la traducci\xf3n!";
     },
     get$downloadGroupText() {
       return "Descargar texto del grupo";
@@ -3700,10 +3700,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Usado sin ayuda";
     },
     get$constructUseGaDesc() {
-      return "Grammar assistance";
+      return "Asistencia gramatical";
     },
     get$constructUseTaDesc() {
-      return "Translation assistance";
+      return "Asistencia de traducci\xf3n";
     },
     get$constructUseUnkDesc() {
       return "Desconocido";
@@ -3964,7 +3964,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\xbfQu\xe9 significa '" + lemma + "'?";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Match meanings with the words in the message!";
+      return "\xa1Empareja significados con las palabras en el mensaje!";
     },
     get$doubleClickToEdit() {
       return "Haz doble clic para editar.";
@@ -4105,208 +4105,208 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Desafortunadamente, tu plataforma no es compatible actualmente con esta funci\xf3n. \xa1Mantente atento a futuros desarrollos!";
     },
     get$pleaseUpdateApp() {
-      return "Please update the app to continue.";
+      return "Por favor, actualiza la aplicaci\xf3n para continuar.";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Match emojis with the words they best represent. Don't worry! No points off for disagreeing. \ud83d\ude05";
+      return "Empareja emojis con las palabras que mejor representan. \xa1No te preocupes! No se restan puntos por no estar de acuerdo. \ud83d\ude05";
     },
     pickAnEmojiFor$1(lemma) {
-      return "Pick an emoji for $" + lemma;
+      return "Elige un emoji para $" + lemma;
     },
     get$analyticsVocabListBody() {
-      return "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.";
+      return "\xa1Este es todo tu vocabulario! A medida que ganes XP por cada palabra, pasar\xe1n de pl\xe1ntula a plena floraci\xf3n. Haz clic en cualquier palabra para ver m\xe1s detalles.";
     },
     get$morphAnalyticsListBody() {
-      return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
+      return "\xa1Estos son todos los conceptos gramaticales en el idioma que est\xe1s aprendiendo! Los desbloquear\xe1s a medida que los encuentres mientras chateas. Haz clic para m\xe1s detalles.";
     },
     get$knockSpaceSuccess() {
-      return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
+      return "\xa1Has solicitado unirte a este espacio! Un administrador responder\xe1 a tu solicitud cuando la reciba \ud83d\ude04";
     },
     get$joinByCode() {
-      return "Join by code";
+      return "Unirse por c\xf3digo";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Listen to the complete message. Then match the audios with the words.";
+      return "Escucha el mensaje completo. Luego empareja los audios con las palabras.";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Click the puzzle pieces for grammar questions!";
+      return "\xa1Haz clic en las piezas del rompecabezas para preguntas gramaticales!";
     },
     get$pleaseEnterInt() {
-      return "Please enter a number";
+      return "Por favor, introduce un n\xfamero";
     },
     get$home() {
-      return "Home";
+      return "Inicio";
     },
     get$join(_) {
-      return "Join";
+      return "Unirse";
     },
     get$readingAssistanceOverviewBody() {
-      return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
+      return "Haz clic en los botones de abajo para mini-juegos sobre emparejar emojis, audios, significados de palabras y conceptos gramaticales. O haz clic en cualquier palabra para m\xe1s detalles.";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Reset instruction tooltips";
+      return "Restablecer las descripciones emergentes de instrucciones";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Click to show instruction tooltips like for a brand new user.";
+      return "Haz clic para mostrar las descripciones emergentes de instrucciones como si fueras un usuario nuevo.";
     },
     get$selectForGrammar() {
-      return "Select a grammar icon for activities and details.";
+      return "Selecciona un \xedcono de gram\xe1tica para actividades y detalles.";
     },
     get$newChatActivityTitle() {
-      return "Add a fun activity?";
+      return "\xbfAgregar una actividad divertida?";
     },
     get$newChatActivityDesc() {
-      return "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!";
+      return "\xa1Haz que cada chat grupal sea una aventura con el Planificador de Actividades! Establece temas y objetivos cautivadores para el grupo, y da vida a las conversaciones con im\xe1genes impresionantes. \xa1Inicia discusiones imaginativas y mant\xe9n la diversi\xf3n fluyendo sin esfuerzo!";
     },
     get$randomize() {
-      return "Randomize";
+      return "Aleatorizar";
     },
     get$clear(_) {
-      return "Clear";
+      return "Limpiar";
     },
     get$makeYourOwnActivity() {
-      return "Make your own activity";
+      return "Crea tu propia actividad";
     },
     get$featuredActivities() {
-      return "Featured";
+      return "Destacadas";
     },
     get$yourBookmarks() {
-      return "Bookmarked";
+      return "Marcados";
     },
     get$goToChat() {
-      return "Go to chat";
+      return "Ir al chat";
     },
     get$save(_) {
-      return "Save";
+      return "Guardar";
     },
     get$selectActivity() {
-      return "Select activity";
+      return "Seleccionar actividad";
     },
     get$wordFocusListeningMultipleChoice() {
-      return "Which audio matches the word?";
+      return "\xbfQu\xe9 audio coincide con la palabra?";
     },
     get$createActivity() {
-      return "Create activity";
+      return "Crear actividad";
     },
     get$translationProblem() {
-      return "Translation problem";
+      return "Problema de traducci\xf3n";
     },
     get$askToJoin() {
-      return "Ask to join";
+      return "Pedir unirse";
     },
     get$emptyChatWarningTitle() {
-      return "Chat is empty";
+      return "El chat est\xe1 vac\xedo";
     },
     get$emptyChatWarningDesc() {
-      return "You haven't invited anyone to your chat. Go to Chat settings to invite your contacts or the Bot. You can also do this later.";
+      return "No has invitado a nadie a tu chat. Ve a la configuraci\xf3n del chat para invitar a tus contactos o al Bot. Tambi\xe9n puedes hacer esto m\xe1s tarde.";
     },
     get$areYouLikeMe() {
-      return "Are you like me?";
+      return "\xbfEres como yo?";
     },
     get$tryAgainLater() {
-      return "Too many attempts made. Please try again in 5 minutes.";
+      return "Se han realizado demasiados intentos. Por favor, int\xe9ntalo de nuevo en 5 minutos.";
     },
     get$enterSpaceCode() {
-      return "Enter space code";
+      return "Ingresa el c\xf3digo del espacio";
     },
     get$shareSpaceLink() {
-      return "Share link";
+      return "Compartir enlace";
     },
     get$byUsingPangeaChat() {
-      return "By using Pangea Chat, I agree to the ";
+      return "Al usar Pangea Chat, acepto los ";
     },
     get$details(_) {
-      return "Details";
+      return "Detalles";
     },
     get$languageLevelPreA1Desc() {
-      return "I have never learned or used the language.";
+      return "Nunca he aprendido ni usado el idioma.";
     },
     get$languageLevelA1Desc() {
-      return "I can understand and use some familiar everyday expressions and very basic phrases.";
+      return "Puedo entender y usar algunas expresiones cotidianas familiares y frases muy b\xe1sicas.";
     },
     get$languageLevelA2Desc() {
-      return "I can understand sentences and frequently used expressions related to areas of immediate relevance";
+      return "Puedo entender oraciones y expresiones de uso frecuente relacionadas con \xe1reas de relevancia inmediata.";
     },
     get$languageLevelB1Desc() {
-      return "I can deal with most familiar situations and can produce simple connected text on familiar topics.";
+      return "Puedo manejar la mayor\xeda de las situaciones familiares y puedo producir texto simple y conectado sobre temas familiares.";
     },
     get$languageLevelB2Desc() {
-      return "I can understand the mains ideas of complex texts and interact with a degree of fluency and spontaneity.";
+      return "Puedo entender las ideas principales de textos complejos e interactuar con un grado de fluidez y espontaneidad.";
     },
     get$languageLevelC1Desc() {
-      return "I can express ideas fluently and spontaneously without much struggle and understand a wide range of demanding texts.";
+      return "Puedo expresar ideas con fluidez y espontaneidad sin mucho esfuerzo y entender una amplia gama de textos exigentes.";
     },
     get$languageLevelC2Desc() {
-      return "I can understand virtually everything heard or read and express myself fluently and precisely.";
+      return "Puedo entender pr\xe1cticamente todo lo que escucho o leo y expresarme con fluidez y precisi\xf3n.";
     },
     get$newVocab() {
-      return "New vocab";
+      return "Nuevo vocabulario";
     },
     get$newGrammar() {
-      return "New grammar concepts";
+      return "Nuevos conceptos gramaticales";
     },
     congratulationsOnReaching$1(level) {
-      return "You've reached Level " + level + "!";
+      return "\xa1Has alcanzado el Nivel " + level + "!";
     },
     get$choosePracticeMode() {
-      return "Click on one of the buttons above to start a practice activity";
+      return "Haz clic en uno de los botones de arriba para comenzar una actividad de pr\xe1ctica";
     },
     get$ban() {
-      return "Ban";
+      return "Prohibir";
     },
     get$kick() {
-      return "Kick";
+      return "Expulsar";
     },
     get$approve() {
-      return "Approve";
+      return "Aprobar";
     },
     get$lemma() {
-      return "Lemma";
+      return "Lema";
     },
     get$grammarFeature() {
-      return "Grammar feature";
+      return "Caracter\xedstica gramatical";
     },
     get$grammarTag() {
-      return "Grammar tag";
+      return "Etiqueta gramatical";
     },
     get$forms() {
-      return "Forms";
+      return "Formas";
     },
     get$exampleMessages() {
-      return "Example messages";
+      return "Mensajes de ejemplo";
     },
     get$timesUsedIndependently() {
-      return "Times used independently";
+      return "Veces utilizado de forma independiente";
     },
     get$timesUsedWithAssistance() {
-      return "Times used with assistance";
+      return "Veces utilizado con asistencia";
     },
     get$goToSpaceButton() {
-      return "Go to space";
+      return "Ir al espacio";
     },
     shareInviteCode$1(code) {
-      return "Share invite code: " + code;
+      return "Compartir c\xf3digo de invitaci\xf3n: " + code;
     },
     welcomeUser$1(user) {
-      return "Welcome " + user;
+      return "Bienvenido " + user;
     },
     get$joinSpaceOnboardingDesc() {
-      return "Do you have an invite code or link to a learning community?";
+      return "\xbfTienes un c\xf3digo de invitaci\xf3n o enlace a una comunidad de aprendizaje?";
     },
     get$skipForNow() {
-      return "Skip for now";
+      return "Saltar por ahora";
     },
     get$permissions(_) {
-      return "Permissions";
+      return "Permisos";
     },
     get$spaceChildPermission() {
-      return "Who can add new chats and subspaces to this space";
+      return "Qui\xe9n puede agregar nuevos chats y subespacios a este espacio";
     },
     get$addEnvironmentOverride() {
-      return "Add environment override";
+      return "Agregar anulaci\xf3n de entorno";
     },
     get$defaultOption() {
-      return "Default";
+      return "Predeterminado";
     },
     get$deleteChatDesc() {
       return "Are you sure you want to delete this chat? It will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics.";
@@ -4315,58 +4315,58 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "The space and any selected chats and/or subspaces will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
     },
     get$chatWithActivities() {
-      return "Chat with activities";
+      return "Charlar con actividades";
     },
     get$findYourPeople() {
-      return "Find your people";
+      return "Encuentra a tu gente";
     },
     get$launch() {
-      return "Launch";
+      return "Lanzar";
     },
     get$launchActivityToChats() {
-      return "Launch activity to chats";
+      return "Lanzar actividad a los chats";
     },
     get$searchChats() {
-      return "Search chats";
+      return "Buscar chats";
     },
     get$selectChats() {
-      return "Select chats";
+      return "Seleccionar chats";
     },
     get$selectChatToStart() {
-      return "Complete! Select a chat to start";
+      return "\xa1Completado! Selecciona un chat para comenzar";
     },
     get$maxFifty() {
       return "Max 50";
     },
     get$configureSpace() {
-      return "Configure space";
+      return "Configurar espacio";
     },
     get$pinMessages() {
-      return "Pin messages";
+      return "Fijar mensajes";
     },
     get$setJoinRules() {
-      return "Set join rules";
+      return "Establecer reglas de uni\xf3n";
     },
     get$changeGeneralSettings() {
-      return "Change general settings";
+      return "Cambiar configuraciones generales";
     },
     get$inviteOtherUsersToRoom() {
-      return "Invite other users";
+      return "Invitar a otros usuarios";
     },
     get$changeTheNameOfTheSpace() {
-      return "Change the name of the space";
+      return "Cambiar el nombre del espacio";
     },
     get$changeTheDescription() {
-      return "Change the description";
+      return "Cambiar la descripci\xf3n";
     },
     get$changeThePermissions() {
-      return "Change the permissions";
+      return "Cambiar los permisos";
     },
     get$introductions() {
-      return "Introductions";
+      return "Introducciones";
     },
     get$announcements() {
-      return "Announcements";
+      return "Anuncios";
     },
     get$activities() {
       return "Activities";
@@ -4398,6 +4398,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_205", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "q71KEvZFhgNV383MP6K4cDhOl8g=");
+})($__dart_deferred_initializers__, "a9aG/bxV+UAmNpvujxIX9VwfLjg=");
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map
