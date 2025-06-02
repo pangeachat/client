@@ -88,7 +88,8 @@ class ChatPage extends StatelessWidget {
     final room = Matrix.of(context).client.getRoomById(roomId);
     // #Pangea
 
-    if (room?.isSpace ?? false) {
+    if (room?.isSpace == true &&
+        GoRouterState.of(context).fullPath?.endsWith(":roomid") == true) {
       ErrorHandler.logError(
         e: "Space chat opened",
         s: StackTrace.current,
@@ -900,7 +901,7 @@ class ChatController extends State<ChatPageWithRoom>
           pangeaEditingEvent = previousEdit;
         }
 
-        final spaceCode = room.classCode(context);
+        final spaceCode = room.classCode;
         if (spaceCode != null) {
           GoogleAnalytics.sendMessage(
             room.id,
