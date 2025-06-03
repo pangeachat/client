@@ -31,62 +31,67 @@ class PublicSpaceTile extends StatelessWidget {
           spacing: 12,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Avatar(
-                  mxContent: space.avatarUrl,
-                  name: space.name,
-                  size: isColumnMode ? 80.0 : 60.0,
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding: const EdgeInsets.all(
-                      16.0,
+            SizedBox(
+              height: isColumnMode ? 80.0 : 58.0,
+              child: Row(
+                children: [
+                  Avatar(
+                    mxContent: space.avatarUrl,
+                    name: space.name,
+                    size: isColumnMode ? 80.0 : 58.0,
+                    borderRadius: BorderRadius.circular(
+                      10,
                     ),
-                    child: Column(
-                      spacing: 8,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          space.name ?? '',
-                          style: TextStyle(
-                            fontSize: isColumnMode ? 20.0 : 14.0,
+                  ),
+                  Flexible(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        spacing: 8.0,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            space.name ?? '',
+                            style: TextStyle(
+                              fontSize: isColumnMode ? 20.0 : 14.0,
+                              height: 1.2,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Row(
-                          spacing: 10,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.group,
-                              size: isColumnMode ? 30.0 : 16.0,
-                            ),
-                            Text(
-                              L10n.of(context).countParticipants(
-                                space.numJoinedMembers,
+                          Row(
+                            spacing: 10,
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.group,
+                                size: isColumnMode ? 30.0 : 16.0,
                               ),
-                              style: TextStyle(
-                                fontSize: isColumnMode ? 20.0 : 12.0,
+                              Text(
+                                L10n.of(context).countParticipants(
+                                  space.numJoinedMembers,
+                                ),
+                                style: TextStyle(
+                                  fontSize: isColumnMode ? 20.0 : 12.0,
+                                  height: 1.2,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             if (isColumnMode && space.topic != null && space.topic!.isNotEmpty)
               Text(
                 space.topic!,
                 style: const TextStyle(
                   fontSize: 20.0,
+                  height: 1.2,
                 ),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

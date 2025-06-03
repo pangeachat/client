@@ -131,6 +131,7 @@ class FindYourPeopleView extends StatelessWidget {
                                 hintStyle: TextStyle(
                                   color: theme.colorScheme.onPrimaryContainer,
                                   fontWeight: FontWeight.normal,
+                                  fontSize: 16.0,
                                 ),
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.never,
