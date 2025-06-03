@@ -33,6 +33,7 @@ import 'package:fluffychat/pangea/activity_generator/activity_generator.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_page.dart';
 import 'package:fluffychat/pangea/activity_suggestions/suggestions_page.dart';
 import 'package:fluffychat/pangea/find_your_people/find_your_people.dart';
+import 'package:fluffychat/pangea/find_your_people/find_your_people_side_view.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
@@ -153,17 +154,11 @@ abstract class AppRoutes {
     ),
     GoRoute(
       path: '/join_with_alias',
-      pageBuilder: (context, state) => Matrix.of(context).client.isLogged()
-          ? chatListShellRouteBuilder(
-              context,
-              state,
-              JoinWithAlias(alias: state.uri.queryParameters['alias']),
-            )
-          : defaultPageBuilder(
-              context,
-              state,
-              JoinWithAlias(alias: state.uri.queryParameters['alias']),
-            ),
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        JoinWithAlias(alias: state.uri.queryParameters['alias']),
+      ),
     ),
     GoRoute(
       path: '/user_age',
@@ -195,8 +190,13 @@ abstract class AppRoutes {
       pageBuilder: (context, state, child) => noTransitionPageBuilder(
         context,
         state,
+        // #Pangea
+        // FluffyThemes.isColumnMode(context) &&
+        //         state.fullPath?.startsWith('/rooms/settings') == false
         FluffyThemes.isColumnMode(context) &&
-                state.fullPath?.startsWith('/rooms/settings') == false
+                state.fullPath?.startsWith('/rooms/settings') == false &&
+                state.fullPath?.startsWith('/rooms/communities') == false
+            // Pangea#
             ? TwoColumnLayout(
                 mainView: ChatList(
                   activeChat: state.pathParameters['roomid'],
@@ -302,14 +302,29 @@ abstract class AppRoutes {
               redirect: loggedOutRedirect,
             ),
             // #Pangea
-            GoRoute(
-              path: 'communities',
-              redirect: loggedOutRedirect,
-              pageBuilder: (context, state) => defaultPageBuilder(
+            ShellRoute(
+              pageBuilder: (context, state, child) => defaultPageBuilder(
                 context,
                 state,
-                const FindYourPeople(),
+                FluffyThemes.isColumnMode(context)
+                    ? TwoColumnLayout(
+                        mainView: const FindYourPeopleSideView(),
+                        sideView: child,
+                        dividerColor: Colors.transparent,
+                      )
+                    : child,
               ),
+              routes: [
+                GoRoute(
+                  path: 'communities',
+                  redirect: loggedOutRedirect,
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    const FindYourPeople(),
+                  ),
+                ),
+              ],
             ),
             GoRoute(
               path: 'homepage',
@@ -747,27 +762,5 @@ abstract class AppRoutes {
           redirect: loggedOutRedirect,
         ),
       ];
-
-  static Page chatListShellRouteBuilder(
-    context,
-    state,
-    child,
-  ) =>
-      noTransitionPageBuilder(
-        context,
-        state,
-        FluffyThemes.isColumnMode(context) &&
-                state.fullPath?.startsWith('/rooms/settings') == false
-            ? TwoColumnLayout(
-                mainView: ChatList(
-                  activeChat: state.pathParameters['roomid'],
-                  activeSpaceId: state.uri.queryParameters['spaceId'],
-                  displayNavigationRail:
-                      state.path?.startsWith('/rooms/settings') != true,
-                ),
-                sideView: child,
-              )
-            : child,
-      );
   // Pangea#
 }

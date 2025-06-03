@@ -87,7 +87,9 @@ class SpacesNavigationRail extends StatelessWidget {
                         if (i == 0) {
                           return NaviRailItem(
                             isSelected: isColumnMode
-                                ? activeSpaceId == null && !isSettings
+                                ? activeSpaceId == null &&
+                                    !isSettings &&
+                                    !isCommunities
                                 : isHomepage,
                             onTap: () {
                               if (isColumnMode) {
