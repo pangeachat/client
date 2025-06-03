@@ -1563,24 +1563,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noIdenticalLanguages() {
       return "Por favor, elija diferentes idiomas base e idiomas de aprender.";
     },
-    get$iWantALanguagePartnerFrom() {
-      return "Es de:";
-    },
-    get$worldWide() {
-      return "En todo el mundo";
-    },
-    get$noResults() {
-      return "\xa1No hay resultados! Intente ampliar su b\xfasqueda.";
-    },
-    get$iWantAConversationPartner() {
-      return "Quiero un compa\xf1ero de conversaci\xf3n qui\xe9n";
-    },
-    get$iWantALanguagePartnerWhoSpeaks() {
-      return "Habla:";
-    },
-    get$iWantALanguagePartnerWhoIsLearning() {
-      return "Est\xe1 aprendiendo:";
-    },
     get$joinWithClassCode() {
       return "\xdanete a una clase o a un intercambio";
     },
@@ -3636,6 +3618,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Los espacios te permiten consolidar tus chats y construir comunidades privadas o p\xfablicas.";
     },
+    get$joinWithCode() {
+      return "Unirse con c\xf3digo";
+    },
     get$enterCodeToJoin() {
       return "Ingrese el c\xf3digo para unirse";
     },
@@ -4362,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 request to join and admin approval";
     },
+    get$createYourSpace() {
+      return "Create your space";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4377,6 +4365,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_203", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "jtpvY1IzNLN80I1zhiYRzpGy2e8=");
+})($__dart_deferred_initializers__, "SV6erQZGuzIBIBZH/LptGDAiEoQ=");
 ;
 //# sourceMappingURL=main.dart.js_203.part.js.map

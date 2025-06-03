@@ -1563,24 +1563,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noIdenticalLanguages() {
       return "Vui l\xf2ng ch\u1ecdn ng\xf4n ng\u1eef c\u01a1 s\u1edf v\xe0 \u0111\xedch kh\xe1c nhau";
     },
-    get$iWantALanguagePartnerFrom() {
-      return "\u0110\u1ebfn t\u1eeb:";
-    },
-    get$worldWide() {
-      return "To\xe0n c\u1ea7u";
-    },
-    get$noResults() {
-      return "Kh\xf4ng t\xecm th\u1ea5y k\u1ebft qu\u1ea3! H\xe3y th\u1eed m\u1edf r\u1ed9ng ti\xeau ch\xed.";
-    },
-    get$iWantAConversationPartner() {
-      return "T\xf4i mu\u1ed1n b\u1ea1n h\u1ed9i tho\u1ea1i";
-    },
-    get$iWantALanguagePartnerWhoSpeaks() {
-      return "N\xf3i:";
-    },
-    get$iWantALanguagePartnerWhoIsLearning() {
-      return "\u0110ang h\u1ecdc:";
-    },
     get$joinWithClassCode() {
       return "Tham gia kh\xf4ng gian";
     },
@@ -3636,6 +3618,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kh\xf4ng gian gi\xfap b\u1ea1n qu\u1ea3n l\xfd nhi\u1ec1u cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 x\xe2y d\u1ef1ng c\u1ed9ng \u0111\u1ed3ng ri\xeang ho\u1eb7c c\xf4ng khai.";
     },
+    get$joinWithCode() {
+      return "Tham gia b\u1eb1ng m\xe3";
+    },
     get$enterCodeToJoin() {
       return "Nh\u1eadp m\xe3 \u0111\u1ec3 tham gia";
     },
@@ -4362,6 +4347,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 request to join and admin approval";
     },
+    get$createYourSpace() {
+      return "Create your space";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4377,6 +4365,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_266", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "riQkSlaCJSTH6mT9gS7p6IuVqDM=");
+})($__dart_deferred_initializers__, "7p/XikhssSb1RmObu3sV6w9o4nQ=");
 ;
 //# sourceMappingURL=main.dart.js_266.part.js.map

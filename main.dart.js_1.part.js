@@ -1570,24 +1570,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noIdenticalLanguages() {
       return "Please choose different base and target languages";
     },
-    get$iWantALanguagePartnerFrom() {
-      return "Is from:";
-    },
-    get$worldWide() {
-      return "Worldwide";
-    },
-    get$noResults() {
-      return "No results! Try broadening your search.";
-    },
-    get$iWantAConversationPartner() {
-      return "I want a conversation partner who";
-    },
-    get$iWantALanguagePartnerWhoSpeaks() {
-      return "Speaks:";
-    },
-    get$iWantALanguagePartnerWhoIsLearning() {
-      return "Is learning:";
-    },
     get$joinWithClassCode() {
       return "Join space";
     },
@@ -3643,6 +3625,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Spaces allow you to consolidate your chats and build private or public communities.";
     },
+    get$joinWithCode() {
+      return "Join with code";
+    },
     get$enterCodeToJoin() {
       return "Enter code to join";
     },
@@ -4368,6 +4353,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$canBeFoundViaKnock() {
       return "\u2022 request to join and admin approval";
+    },
+    get$createYourSpace() {
+      return "Create your space";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5755,6 +5743,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Tc8bBPw9Gq/gNbh0U85BjHA/EbM=");
+})($__dart_deferred_initializers__, "ZLNsDK0t4CPNzVC+n+r2dCHO9i8=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
