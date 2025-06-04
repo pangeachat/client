@@ -2,30 +2,30 @@
 ((s, d, e) => {
   s[d] = s[d] || {};
   s[d][e] = s[d][e] || [];
-  s[d][e].push({p: "main.dart.js_209", e: "beginPart"});
+  s[d][e].push({p: "main.dart.js_230", e: "beginPart"});
 })(self, "$__dart_deferred_initializers__", "eventLog");
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nEt$() {
-      return new A.L10nEt(B.canonicalizedLocale("et"));
+    L10nHu$() {
+      return new A.L10nHu(B.canonicalizedLocale("hu"));
     },
-    L10nEt: function L10nEt(t0) {
+    L10nHu: function L10nHu(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[52];
-  A = hunkHelpers.updateHolder(holdersList[16], A);
-  A.L10nEt.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[27], A);
+  A.L10nHu.prototype = {
     get$alwaysUse24HourFormat() {
-      return "false";
+      return "true";
     },
     get$repeatPassword() {
-      return "Korda salas\xf5na";
+      return "Jelsz\xf3 megism\xe9tl\xe9se";
     },
     get$notAnImage() {
-      return "See pole pildifail.";
+      return "Nem k\xe9p f\xe1jl.";
     },
     get$setCustomPermissionLevel() {
       return "Set custom permission level";
@@ -40,1480 +40,1483 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Normal user";
     },
     get$remove(_) {
-      return "Eemalda";
+      return "Elt\xe1vol\xedt\xe1s";
     },
     get$importNow() {
-      return "Impordi kohe";
+      return "Import\xe1l\xe1s most";
     },
     get$importEmojis() {
-      return "Impordi emojid";
+      return "Emojik import\xe1l\xe1sa";
     },
     get$importFromZipFile() {
-      return "Impordi zip-failist";
+      return "Import\xe1l\xe1s zip f\xe1jlb\xf3l";
     },
     get$exportEmotePack() {
-      return "Ekspordi emotikonide pakk zip-failina";
+      return "Emojik export\xe1l\xe1sa zip-be";
     },
     get$replace(_) {
-      return "Asenda";
+      return "Kicser\xe9l";
     },
     aboutHomeserver$1(homeserver) {
-      return "Koduserveri teave: " + homeserver;
+      return "About " + homeserver;
     },
     get$accept(_) {
-      return "N\xf5ustu";
+      return "Elfogad\xe1s";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " v\xf5ttis kutse vastu";
+      return "\ud83d\udc4d " + username + " elfogadta a megh\xedv\xe1st";
     },
     get$account() {
-      return "Kasutajakonto";
+      return "Fi\xf3k";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10" + username + " v\xf5ttis kasutusele l\xe4biva kr\xfcptimise";
+      return "\ud83d\udd10 " + username + " aktiv\xe1lta a v\xe9gpontok k\xf6z\xf6tti titkos\xedt\xe1st";
     },
     get$addEmail() {
-      return "Lisa e-posti aadress";
+      return "E-mail-c\xedm hozz\xe1ad\xe1sa";
     },
     supposedMxid$1(mxid) {
-      return "See peaks olema " + mxid;
+      return mxid + "-nek kell lennie";
     },
     get$addToSpace() {
-      return "Lisa kogukonda";
+      return "Hozz\xe1ad\xe1s t\xe9rhez";
     },
     get$admin() {
-      return "Peakasutaja";
-    },
-    get$all() {
-      return "K\xf5ik";
+      return "Admin";
     },
     get$commandHint_roomupgrade() {
-      return "Uuenda see jututuba antud jututoa versioonini";
+      return "Upgrade this room to the given room version";
     },
     get$commandHint_googly() {
-      return "Saada \xfched otsivad silmad";
+      return "G\xfcl\xfcszemek k\xfcld\xe9se";
     },
     get$commandHint_cuddle() {
-      return "Saada \xfcks kaisutus";
+      return "\xd6sszeb\xfaj\xe1s k\xfcld\xe9se";
     },
     get$commandHint_hug() {
-      return "Saada \xfcks kallistus";
+      return "\xd6lel\xe9s k\xfcld\xe9se";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " saatis sulle otsivad silmad";
+      return senderName + " g\xfcl\xfcszemeket k\xfcld";
     },
     cuddleContent$1(senderName) {
-      return senderName + " kaisutab sind";
+      return senderName + " hozz\xe1d b\xfajik";
     },
     hugContent$1(senderName) {
-      return senderName + " kallistab sind";
+      return senderName + " meg\xf6lelt";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " vastas k\xf5nele";
+      return senderName + " felvette a h\xedv\xe1st";
     },
     get$anyoneCanJoin() {
-      return "K\xf5ik v\xf5ivad liituda";
+      return "B\xe1rki csatlakozhat";
     },
     get$archive() {
-      return "Arhiiv";
+      return "Arch\xedvum";
     },
     get$areYouSure() {
-      return "Kas sa oled kindel?";
+      return "Biztos benne?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Kas sa oled kindel, et soovid v\xe4lja logida?";
+      return "Biztosan kijelentkezik?";
     },
     get$askSSSSSign() {
-      return "Selleks, et teist osapoolt identifitseerivat allkirja anda, palun sisesta oma turvahoidla paroolifraas v\xf5i taastev\xf5ti.";
+      return "A m\xe1sik f\xe9l igazol\xe1s\xe1hoz meg kell adni a biztons\xe1gos t\xe1rol\xf3 jelmondat\xe1t vagy a vissza\xe1ll\xedt\xe1si kulcsot.";
     },
     askVerificationRequest$1(username) {
-      return "Kas v\xf5tad vastu selle verifitseerimispalve kasutajalt " + username + "?";
+      return "Elfogadja " + username + " hiteles\xedt\xe9si k\xe9relm\xe9t?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "See koduserver toetab Matrixi v\xf5rku sisselogimiseks:\n" + serverVersions + "\nAga see rakendus toetab vaid j\xe4rgmisi v\xf5imalusi:\n" + supportedVersions;
+      return "A kiszolg\xe1l\xf3 a k\xf6vetkez\u0151 bejelentkez\xe9seket t\xe1mogatja:\n" + serverVersions + "\nDe ez az alkalmaz\xe1st csak ezeket t\xe1mogatja:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Saada kirjutamise teavitusi";
+      return "G\xe9pel\xe9si inf\xf3 megjelen\xedt\xe9se";
     },
     get$swipeRightToLeftToReply() {
-      return "Vastamiseks viipa paremalt vasakule";
+      return "H\xfazza balra a v\xe1laszol\xe1shoz";
     },
     get$sendOnEnter() {
-      return "Saada s\xf5num sisestusklahvi vajutusel";
+      return "K\xfcld\xe9s Enterrel";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " vestlust ja " + participants + " osalejat";
+      return "" + chats + " cseveg\xe9sek \xe9s " + participants + " r\xe9sztvev\u0151k";
     },
     get$noMoreChatsFound() {
-      return "Rohkem vestlusi ei leidu...";
+      return "Nincs t\xf6bb cseveg\xe9s...";
     },
     get$noChatsFoundHere() {
-      return "Siin ei leidu veel \xfchtegi vestlust. Alusta uut vestlust kl\xf5psides allpool asuvat nuppu. \u2935\ufe0f";
+      return "Itt m\xe9g nincs cseveg\xe9s. Kezdjen \xfajat valakivel a lentebbi gombbal. \u2935\ufe0f";
     },
     get$space() {
-      return "Kogukond";
+      return "T\xe9r";
     },
     get$banFromChat() {
-      return "Keela ligip\xe4\xe4s vestlusele";
+      return "Kitilt\xe1s cseveg\xe9sb\u0151l";
     },
     get$banned() {
-      return "Ligip\xe4\xe4s vestlusele on keelatud";
+      return "Kitiltva";
     },
     bannedUser$2(username, targetName) {
-      return username + " keelas ligip\xe4\xe4su kasutajale " + targetName;
+      return username + " kitiltotta: " + targetName;
     },
     get$blockDevice() {
-      return "Blokeeri seade";
+      return "Eszk\xf6z blokkol\xe1sa";
     },
     get$blocked() {
-      return "Blokeeritud";
+      return "Blokkolva";
     },
     get$cancel(_) {
-      return "Katkesta";
+      return "M\xe9gse";
     },
     cantOpenUri$1(uri) {
-      return uri + " aadressi avamine ei \xf5nnestu";
+      return "Nem siker\xfclt az URI megnyit\xe1sa: " + uri;
     },
     get$changeDeviceName() {
-      return "Muuda seadme nime";
+      return "Eszk\xf6zn\xe9v m\xf3dos\xedt\xe1sa";
     },
     changedTheChatAvatar$1(username) {
-      return username + " muutis vestluse tunnuspilti";
+      return username + " m\xf3dos\xedtotta a cseveg\xe9si profilk\xe9p\xe9t";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " muutis vestluse uueks kirjelduseks '" + description + "'";
+      return username + " m\xf3dos\xedtotta a cseveg\xe9s le\xedr\xe1s\xe1t erre: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " muutis oma uueks vestlusnimeks '" + chatname + "'";
+      return username + " m\xf3dos\xedtotta a cseveg\xe9s nev\xe9t erre: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " muutis vestlusega seotud \xf5igusi";
+      return username + " m\xf3dos\xedtotta a cseveg\xe9si enged\xe9lyeket";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " muutis oma uueks kuvatavaks nimeks: '" + displayname + "'";
+      return username + " m\xf3dos\xedtotta a megjelen\xedtett nev\xe9t erre: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " muutis k\xfclaliste ligip\xe4\xe4sureegleid";
+      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyokat";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " muutis k\xfclaliste ligip\xe4\xe4sureegleid j\xe4rgnevalt: " + rules;
+      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyait erre: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " muutis s\xf5numite ajaloo n\xe4htavust";
+      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " muutis s\xf5numite ajaloo n\xe4htavust j\xe4rgnevalt: " + rules;
+      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t erre: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " muutis liitumise reegleid";
+      return username + " m\xf3dos\xedtott a csatlakoz\xe1si szab\xe1lyokat";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " muutis liitumise reegleid j\xe4rgnevalt: " + joinRules;
+      return username + " m\xf3dos\xedtotta a csatlakoz\xe1si szab\xe1lyokat erre: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " muutis oma tunnuspilti";
+      return username + " m\xf3dos\xedtotta a profilk\xe9p\xe9t";
     },
     changedTheRoomAliases$1(username) {
-      return username + " muutis jututoa aliast";
+      return username + " m\xf3dos\xedtotta a szoba \xe1lneveit";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " muutis kutse linki";
+      return username + " m\xf3dos\xedtotta a megh\xedv\xf3 hivatkoz\xe1st";
     },
     get$changePassword() {
-      return "Muuda salas\xf5na";
+      return "Jelsz\xf3 m\xf3dos\xedt\xe1sa";
     },
     get$changeTheme() {
-      return "Muuda oma stiili";
+      return "St\xedlus m\xf3dos\xedt\xe1sa";
     },
     get$changeYourAvatar() {
-      return "Muuda oma tunnuspilti";
+      return "Profilk\xe9p m\xf3dos\xedt\xe1sa";
     },
     get$channelCorruptedDecryptError() {
-      return "Kasutatud kr\xfcptimine on vigane";
+      return "A titkos\xedt\xe1s megs\xe9r\xfclt";
     },
     get$chat() {
-      return "Vestlus";
+      return "Cseveg\xe9s";
     },
     get$chatDetails() {
-      return "Vestluse teave";
+      return "Cseveg\xe9s r\xe9szletei";
     },
     get$chats() {
-      return "Vestlused";
+      return "Cseveg\xe9sek";
     },
     get$chooseAStrongPassword() {
-      return "Vali korralik salas\xf5na";
+      return "V\xe1lasszon egy er\u0151s jelsz\xf3t";
     },
     get$clearArchive() {
-      return "Kustuta arhiiv";
+      return "Arch\xedvum t\xf6rl\xe9se";
     },
     get$close(_) {
-      return "Sulge";
+      return "Bez\xe1r\xe1s";
     },
     get$commandHint_markasdm() {
-      return "M\xe4rgi otsevestusluseks antud Matrixi ID jaoks";
+      return "Szoba megjel\xf6l\xe9se mint k\xf6zvetlen cseveg\u0151 szoba az adott Matrix ID-n\xe9l";
     },
     get$commandHint_markasgroup() {
-      return "M\xe4rgi vestlusr\xfchmaks";
+      return "Csoportnak jel\xf6l\xe9s";
     },
     get$commandHint_ban() {
-      return "Sea sellele kasutajale antud jututoas suhtluskeeld";
+      return "Felhaszn\xe1l\xf3 kitilt\xe1sa ebb\u0151l a szob\xe1b\xf3l";
     },
     get$commandHint_clearcache() {
-      return "T\xfchjenda vahem\xe4lu";
+      return "Gyors\xedt\xf3t\xe1r t\xf6rl\xe9se";
     },
     get$commandHint_create() {
-      return "Loo t\xfchi vestlusr\xfchm\nKr\xfcptimise keelamiseks kasuta --no-encryption v\xf5tit";
+      return "Egy \xfcres cseveg\u0151 csoport l\xe9trehoz\xe1sa\nA --no-encryption kapcsol\xf3val titkos\xedtatlan szoba hozhat\xf3 l\xe9tre";
     },
     get$commandHint_discardsession() {
-      return "Loobu sessioonist";
+      return "Munkamenet elvet\xe9se";
     },
     get$commandHint_dm() {
-      return "Alusta otsevestlust\nKr\xfcptimise keelamiseks kasuta --no-encryption v\xf5tit";
+      return "K\xf6zvetlen cseveg\xe9s ind\xedt\xe1sa\nA --no-encryption kapcsol\xf3val titkos\xedtatlan besz\xe9lget\xe9st hozhat l\xe9tre";
     },
     get$commandHint_html() {
-      return "Saada HTML-vormingus tekst";
+      return "HTML form\xe1zott \xfczenet k\xfcld\xe9se";
     },
     get$commandHint_invite() {
-      return "Kutsu see kasutaja antud jututuppa";
+      return "Adott felhaszn\xe1l\xf3 megh\xedv\xe1sa ebbe a szob\xe1ba";
     },
     get$commandHint_join() {
-      return "Liitu selle jututoaga";
+      return "Csatlakoz\xe1s a megadott szob\xe1hoz";
     },
     get$commandHint_kick() {
-      return "Eemalda antud kasutaja sellest jututoast";
+      return "A megadott felhaszn\xe1l\xf3 kir\xfag\xe1sa a szob\xe1b\xf3l";
     },
     get$commandHint_leave() {
-      return "Lahku sellest jututoast";
+      return "Szoba elhagy\xe1sa";
     },
     get$commandHint_me() {
-      return "Kirjelda ennast";
+      return "Jellemezd magad";
     },
     get$commandHint_myroomavatar() {
-      return "M\xe4\xe4ra selles jututoas oma tunnuspilt (mxc-uri vahendusel)";
+      return "Az ebben a szob\xe1ban megjelen\xedtett profilk\xe9ped megv\xe1ltoztat\xe1sa (mxc URI haszn\xe1lat\xe1val)";
     },
     get$commandHint_myroomnick() {
-      return "M\xe4\xe4ra selles jututoas oma kuvatav nimi";
+      return "Az ebben a szob\xe1ban megjelen\xedtett neved megv\xe1ltoztat\xe1sa";
     },
     get$commandHint_op() {
-      return "Seadista selle kasutaja \xf5igusi (vaikimisi: 50)";
+      return "Az adott felhaszn\xe1l\xf3 hozz\xe1f\xe9r\xe9si szintj\xe9nek megad\xe1sa (alap\xe9rtelmezett: 50)";
     },
     get$commandHint_plain() {
-      return "Saada vormindamata tekst";
+      return "Form\xe1zatlan sz\xf6veg k\xfcld\xe9se";
     },
     get$commandHint_react() {
-      return "Saada vastus reaktsioonina";
+      return "V\xe1lasz k\xfcld\xe9se reakci\xf3k\xe9nt";
     },
     get$commandHint_send() {
-      return "Saada s\xf5num";
+      return "Sz\xf6veg k\xfcld\xe9se";
     },
     get$commandHint_unban() {
-      return "Eemalda sellelt kasutajalt antud jututoas suhtluskeeld";
+      return "Adott felhaszn\xe1l\xf3 kitilt\xe1s\xe1nak felold\xe1sa a szob\xe1hoz";
     },
     get$commandInvalid() {
-      return "Vigane k\xe4sk";
+      return "\xc9rv\xe9nytelen parancs";
     },
     commandMissing$1(command) {
-      return command + " ei ole k\xe4sk.";
+      return command + " nem egy parancs.";
     },
     get$compareEmojiMatch() {
-      return "Palun v\xf5rdle emotikone";
+      return "Hasonl\xedtsa \xf6ssze az emojikat";
     },
     get$compareNumbersMatch() {
-      return "Palun v\xf5rdle numbreid";
+      return "K\xe9rem hasonl\xedtsa \xf6ssze a sz\xe1mokat";
     },
     get$configureChat() {
-      return "Seadista vestlust";
+      return "Cseveg\xe9s konfigur\xe1l\xe1sa";
     },
     get$confirm(_) {
-      return "Kinnita";
+      return "Meger\u0151s\xedt\xe9s";
     },
     get$contentHasBeenReported() {
-      return "Saatsime selle sisu kohta teate koduserveri haldajate";
+      return "A tartalom jelentve lett a szerver \xfczemeltet\u0151inek";
     },
     get$copiedToClipboard() {
-      return "Kopeerisin l\xf5ikelauale";
+      return "V\xe1g\xf3lapra m\xe1solva";
     },
     get$copy(_) {
-      return "Kopeeri";
+      return "M\xe1sol\xe1s";
     },
     couldNotDecryptMessage$1(error) {
-      return "S\xf5numi dekr\xfcptimine ei \xf5nnestunud: " + error;
+      return "Nem siker\xfclt visszafejteni az \xfczenetet: " + error;
     },
     countParticipants$1(count) {
-      return "" + count + " osalejat";
+      return "" + count + " r\xe9sztvev\u0151";
+    },
+    countInvited$1(count) {
+      return "" + count + " invited";
     },
     get$create(_) {
-      return "Loo";
+      return "L\xe9trehoz\xe1s";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " algatas vestluse";
+      return "\ud83d\udcac " + username + " cseveg\xe9st hozott l\xe9tre";
     },
     get$createNewSpace() {
-      return "Uus kogukond";
+      return "\xdaj t\xe9r";
     },
     get$currentlyActive() {
-      return "Hetkel aktiivne";
+      return "Jelenleg akt\xedv";
     },
     get$darkTheme() {
-      return "Tume";
+      return "S\xf6t\xe9t";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "J\xe4rgnevaga eemaldatakse sinu konto kasutusest. Seda tegevust ei saa tagasi p\xf6\xf6rata! Kas sa ikka oled kindel?";
+      return "Ez deaktiv\xe1lja a felhaszn\xe1l\xf3i fi\xf3kj\xe1t. Ez nem vonhat\xf3 vissza! Biztos benne?";
     },
     get$defaultPermissionLevel() {
-      return "Vaikimisi \xf5igused uutele kasutajatele";
+      return "Alap\xe9rtelmezett hozz\xe1f\xe9r\xe9si szint \xfaj felhaszn\xe1l\xf3knak";
     },
     get$$delete(_) {
-      return "Kustuta";
+      return "T\xf6rl\xe9s";
     },
     get$deleteAccount() {
-      return "Kustuta kasutajakonto";
+      return "Fi\xf3k t\xf6rl\xe9se";
     },
     get$deleteMessage() {
-      return "Kustuta s\xf5num";
+      return "\xdczenet t\xf6rl\xe9se";
     },
     get$devices() {
-      return "Seadmed";
+      return "Eszk\xf6z\xf6k";
     },
     get$displaynameHasBeenChanged() {
-      return "Kuvatav nimi on muudetud";
+      return "Megjelen\xedt\xe9si n\xe9v megv\xe1ltozott";
     },
     get$downloadFile() {
-      return "Laadi fail alla";
+      return "F\xe1jl let\xf6lt\xe9se";
     },
     get$edit() {
-      return "Muuda";
+      return "Szerkeszt";
     },
     get$editBlockedServers() {
-      return "Muuda blokeeritud serverite loendit";
+      return "Blokkolt szerverek szerkeszt\xe9se";
     },
     get$chatPermissions() {
-      return "Vestluse \xf5igused";
+      return "Cseveg\xe9s enged\xe9lyek";
     },
     get$editDisplayname() {
-      return "Muuda kuvatavat nime";
+      return "Megjelen\xedt\xe9si n\xe9v szerkeszt\xe9se";
     },
     get$editRoomAvatar() {
-      return "Muuda jututoa tunnuspilti";
+      return "Szoba profilk\xe9p\xe9nek szerkeszt\xe9se";
     },
     get$emoteExists() {
-      return "Selline emotsioonitegevus on juba olemas!";
+      return "A hangulatjel m\xe1r l\xe9tezik!";
     },
     get$emoteInvalid() {
-      return "Vigane emotsioonitegevuse l\xfchikood!";
+      return "\xc9rv\xe9nytelen emoji r\xf6vidk\xf3d!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Hiljuti kasutatud emotikonid kuvame siin...";
+      return "Nemr\xe9g haszn\xe1lt emojik fognak itt megjelenni...";
     },
     get$emotePacks() {
-      return "Emotsioonitegevuste pakid jututoa jaoks";
+      return "Emoji csomagok a szob\xe1hoz";
     },
     get$customEmojisAndStickers() {
-      return "Kohandatud emotikonid ja kleepsud";
+      return "Egyedi emotikonok \xe9s matric\xe1k";
     },
     get$emoteShortcode() {
-      return "Emotsioonitegevuse l\xfchikood";
+      return "Emoji r\xf6vidk\xf3d";
     },
     get$emoteWarnNeedToPick() {
-      return "Sa pead valima emotsioonitegevuse l\xfchikoodi ja pildi!";
+      return "Az emojihoz egy k\xe9pet \xe9s egy r\xf6vidk\xf3dot kell v\xe1lasztani!";
     },
     get$emptyChat() {
-      return "Vestlust pole olnud";
+      return "\xdcres cseveg\xe9s";
     },
     get$enableEmotesGlobally() {
-      return "V\xf5ta emotsioonitegevuste pakid l\xe4bivalt kasutusele";
+      return "Emoji csomag enged\xe9lyez\xe9se glob\xe1lisan";
     },
     get$enableEncryption() {
-      return "Kasuta kr\xfcptimist";
+      return "Titkos\xedt\xe1s enged\xe9lyez\xe9se";
     },
     get$encrypted() {
-      return "Kr\xfcptitud";
+      return "Titkos\xedtott";
     },
     get$encryptionNotEnabled() {
-      return "Kr\xfcptimine ei ole kasutusel";
+      return "Titkos\xedt\xe1s nincs enged\xe9lyezve";
     },
     endedTheCall$1(senderName) {
-      return senderName + " l\xf5petas k\xf5ne";
+      return senderName + " befejezte a h\xedv\xe1st";
     },
     get$enterAnEmailAddress() {
-      return "Sisesta e-posti aadress";
+      return "Adjon meg egy email c\xedmet";
     },
     errorObtainingLocation$1(error) {
-      return "Viga asukoha tuvastamisel: " + error;
+      return "Hiba a tart\xf3zkod\xe1si hely meghat\xe1roz\xe1sa k\xf6zben: " + error;
     },
     get$extremeOffensive() {
-      return "\xc4\xe4rmiselt solvav";
+      return "Rendk\xedv\xfcl s\xe9rt\u0151";
     },
     get$fontSize(_) {
-      return "Fondi suurus";
+      return "Bet\u0171m\xe9ret";
     },
     get$forward(_) {
-      return "Edasta";
+      return "Tov\xe1bb\xedt\xe1s";
     },
     get$fromJoining() {
-      return "Alates liitumise hetkest";
+      return "Csatlakoz\xe1s \xf3ta";
     },
     get$fromTheInvitation() {
-      return "Kutse saamisest";
+      return "Megh\xedv\xe1s \xf3ta";
     },
     get$guestsAreForbidden() {
-      return "K\xfclalised ei ole lubatud";
+      return "Nem lehetnek vend\xe9gek";
     },
     get$guestsCanJoin() {
-      return "K\xfclalised v\xf5ivad liituda";
+      return "Csatlakozhatnak vend\xe9gek";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " on v\xf5tnud tagasi " + targetName + " kutse";
+      return username + " visszavonta " + targetName + " megh\xedv\xe1s\xe1t";
     },
     get$help() {
-      return "Abiteave";
+      return "S\xfag\xf3";
     },
     get$hideRedactedMessages() {
-      return "Peida muudetud s\xf5numid";
+      return "Szerkesztett \xfczenetek elrejt\xe9se";
     },
     get$hideRedactedMessagesBody() {
-      return "Kui keegi muudab s\xf5numit, siis teda enam ei kuvataks vestluses.";
+      return "Ha valaki szerkeszti az \xfczenet\xe9t, ez az \xfczenet nem jelenik meg a cseveg\xe9s sor\xe1n.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Peida vigase v\xf5i tundmatu vorminguga s\xf5numid";
+      return "\xc9rv\xe9nytelen vagy ismeretlen \xfczenetform\xe1tum elrejt\xe9se";
     },
     get$howOffensiveIsThisContent() {
-      return "Kui solvav see sisu on?";
+      return "Mennyire s\xe9rt\u0151 ez a tartalom?";
     },
     get$block() {
-      return "Blokeeri";
+      return "Blokkol\xe1s";
     },
     get$blockedUsers() {
-      return "Blokeeritud kasutajad";
+      return "Blokkolt felhaszn\xe1l\xf3k";
     },
     get$blockListDescription() {
-      return "Sul on v\xf5imalik blokeerida neid kasutajaid, kes sind segavad. Oma isiklikku blokerimisloendisse lisatud kasutajad ei saa sulle saata s\xf5numeid ega kutseid.";
+      return "Az \xd6nt zavar\xf3 felhaszn\xe1l\xf3kat blokkolhatja. A blokkolt list\xe1n tal\xe1lhat\xf3 felhaszn\xe1l\xf3kt\xf3l nem tud fogadni \xfczenetet vagy szoba megh\xedv\xe1st.";
     },
     get$blockUsername() {
-      return "Eira kasutajanime";
+      return "Felhaszn\xe1l\xf3n\xe9v mell\u0151z\xe9se";
     },
     get$iHaveClickedOnLink() {
-      return "Ma olen kl\xf5psinud saadetud linki";
+      return "R\xe1kattintottam a linkre";
     },
     get$incorrectPassphraseOrKey() {
-      return "Vigane paroolifraas v\xf5i taastev\xf5ti";
+      return "Hib\xe1s jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
     },
     get$inoffensive() {
-      return "Kahjutu";
+      return "Nem s\xe9rt\u0151";
     },
     get$inviteContact() {
-      return "Kutsu s\xf5pru ja tuttavaid";
+      return "Ismer\u0151s megh\xedv\xe1sa";
     },
     get$noChatDescriptionYet() {
-      return "Vestluse kirjeldus on puudu.";
+      return "M\xe9g nincs cseveg\u0151 szoba le\xedr\xe1s.";
     },
     get$tryAgain() {
-      return "Proovi uuesti";
+      return "Pr\xf3b\xe1lja \xfajra";
     },
     get$invited() {
-      return "Kutsutud";
+      return "Megh\xedvott";
     },
     get$redactMessageDescription() {
-      return "S\xf5numi muudatus kehtib k\xf5ikidele vestluses osalejatele. Seda muudatust ei saa tagasi p\xf6\xf6rata.";
+      return "A t\xe1rsalg\xe1sban \xf6sszes r\xe9sztvev\u0151je sz\xe1m\xe1ra m\xf3dos\xedt\xe1sra ker\xfcl az \xfczenet. Ez nem visszavonhat\xf3.";
     },
     get$optionalRedactReason() {
-      return "(Kui soovid lisada) S\xf5numi muutmise p\xf5hjus...";
+      return "(Tetsz\u0151leges) A szerkeszt\xe9s oka...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " saatis kutse kasutajale " + targetName;
+      return "\ud83d\udce9 " + username + " megh\xedvta " + targetName + "-t";
     },
     get$invitedUsersOnly() {
-      return "Ainult kutsutud kasutajatele";
+      return "Csak megh\xedvott felhaszn\xe1l\xf3k";
     },
     get$isTyping() {
-      return "kirjutab\u2026";
+      return "g\xe9pel\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " liitus vestlusega";
+      return "\ud83d\udc4b " + username + " csatlakozott a cseveg\xe9shez";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " m\xfcksas kasutaja " + targetName + " v\xe4lja";
+      return "\ud83d\udc5e " + username + " kir\xfagta " + targetName + "-t";
     },
     get$kickFromChat() {
-      return "M\xfcksa vestlusest v\xe4lja";
+      return "Kir\xfag\xe1s a cseveg\xe9sb\u0151l";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Viimati n\xe4htud: " + localizedTimeShort;
+      return "Utolj\xe1ra akt\xedv: " + localizedTimeShort;
     },
     get$leave() {
-      return "Lahku";
+      return "Elhagy\xe1s";
     },
     get$leftTheChat() {
-      return "Lahkus vestlusest";
+      return "Elhagyta a cseveg\xe9st";
     },
     get$lightTheme() {
-      return "Hele";
+      return "Vil\xe1gos";
     },
     loadCountMoreParticipants$1(count) {
-      return "Lisa veel " + count + " osalejat";
+      return "Tov\xe1bbi " + count + " r\xe9sztvev\u0151 bet\xf6lt\xe9se";
     },
     get$dehydrate() {
-      return "Ekspordi sessiooni teave ja kustuta nutiseadmest rakenduse andmed";
+      return "Munkamenet export\xe1l\xe1sa \xe9s az eszk\xf6z t\xf6rl\xe9se";
     },
     get$dehydrateWarning() {
-      return "Seda tegevust ei saa tagasi p\xf6\xf6rata. Palun kontrolli, et sa oled varukoopia turvaliselt salvestanud.";
+      return "Ez nem visszavonhat\xf3. Bizonyosodjon meg r\xf3la, hogy biztons\xe1gos helyen t\xe1rolja a mentett f\xe1jlt.";
     },
     get$dehydrateTor() {
-      return "TOR'i kasutajad: Ekspordi sessioon";
+      return "TOR felhaszn\xe1l\xf3k: munkamenet export\xe1l\xe1sa";
     },
     get$dehydrateTorLong() {
-      return "Kui oled TOR'i v\xf5rgu kasutaja, siis enne akna sulgemist palun ekspordi viimase sessiooni andmed.";
+      return "TOR felhaszn\xe1l\xf3knak aj\xe1nlott a munkamenet export\xe1l\xe1sa az ablak bez\xe1r\xe1sa el\u0151tt.";
     },
     get$loadingPleaseWait() {
-      return "Laadin andmeid\u2026 Palun oota.";
+      return "Bet\xf6lt\xe9s\u2026 K\xe9rem, v\xe1rjon.";
     },
     get$loadMore() {
-      return "Laadi veel\u2026";
+      return "Tov\xe1bbiak bet\xf6lt\xe9se\u2026";
     },
     get$locationDisabledNotice() {
-      return "Asukohateenused on seadmes v\xe4ljal\xfclitatud. Asukoha jagamiseks palun l\xfclita nad sisse.";
+      return "A helymeghat\xe1roz\xe1s ki van kapcsolva. K\xe9rem, kapcsolja be, hogy meg tudja osztani helyzet\xe9t.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Puudub luba asukohateenuste kasutamiseks. Asukoha jagamiseks palun anna rakendusele vastavad \xf5igused.";
+      return "A helymeghat\xe1roz\xe1s nem enged\xe9lyezett az alkalmaz\xe1s sz\xe1m\xe1ra. K\xe9rem enged\xe9lyezze, hogy meg tudja osztani helyzet\xe9t.";
     },
     get$logout() {
-      return "Logi v\xe4lja";
+      return "Kijelentkez\xe9s";
     },
     get$mention() {
-      return "M\xe4rgi \xe4ra";
+      return "Megeml\xedt\xe9s";
     },
     get$messages() {
-      return "S\xf5numid";
+      return "\xdczenetek";
     },
     get$messagesStyle() {
-      return "S\xf5numid:";
+      return "\xdczenetek:";
     },
     get$moderator() {
-      return "Moderaator";
+      return "Moder\xe1tor";
     },
     get$newChat() {
-      return "Uus vestlus";
+      return "\xdaj cseveg\xe9s";
     },
     get$newVerificationRequest() {
-      return "Uus verifitseerimisp\xe4ring!";
+      return "\xdaj hiteles\xedt\xe9si k\xe9relem!";
     },
     get$next(_) {
-      return "Edasi";
+      return "K\xf6vetkez\u0151";
     },
     get$no() {
-      return "Ei";
+      return "Nem";
     },
     get$noConnectionToTheServer() {
-      return "Puudub \xfchendus koduserveriga";
+      return "Nem el\xe9rhet\u0151 a szerver";
     },
     get$noEmotesFound() {
-      return "\xdchtegi emotsioonitegevust ei leidunud. \ud83d\ude15";
+      return "Emojik nem el\xe9rhet\u0151ek. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Jaga kutse linki";
+      return "Megh\xedv\xf3 link megoszt\xe1sa";
     },
     get$none() {
-      return "Mitte midagi";
+      return "Nincs";
     },
     get$noPasswordRecoveryDescription() {
-      return "Sa pole veel lisanud v\xf5imalust salas\xf5na taastamiseks.";
+      return "M\xe9g nem adott meg semmilyen m\xf3dot a jelszava vissza\xe1ll\xedt\xe1s\xe1ra.";
     },
     get$noPermission() {
-      return "\xd5igused puuduvad";
+      return "Nincs enged\xe9ly";
     },
     get$noRoomsFound() {
-      return "Jututubasid ei leidunud\u2026";
+      return "Nem tal\xe1lhat\xf3ak szob\xe1k\u2026";
     },
     get$notifications() {
-      return "Teavitused";
+      return "\xc9rtes\xedt\xe9sek";
     },
     get$obtainingLocation() {
-      return "Tuvastan asukohta\u2026";
+      return "Tart\xf3zkod\xe1si hely lek\xe9r\xe9se\u2026";
     },
     get$offensive() {
-      return "Solvav";
+      return "S\xe9rt\u0151";
     },
     get$ok() {
-      return "Sobib";
+      return "Rendben";
     },
     get$oopsSomethingWentWrong() {
-      return "Hopsti! Midagi l\xe4ks n\xfc\xfcd viltu\u2026";
+      return "Hopp\xe1, valami hiba l\xe9pett fel\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\xdcks sinu klientrakendustest on Matrix'i v\xf5rgust v\xe4lja loginud";
+      return "Az egyik kliense kijelentkezett";
     },
     get$openInMaps() {
-      return "Ava kaardirakendusega";
+      return "Megnyit\xe1s t\xe9rk\xe9pen";
     },
     get$link() {
-      return "Link";
+      return "Hivatkoz\xe1s";
     },
     get$serverRequiresEmail() {
-      return "See koduserver eeldab registreerimisel kasutatava e-postiaadressi kinnitamist.";
+      return "Ehhez a szerverhez sz\xfcks\xe9ges az email c\xedm\xe9nek visszaigazol\xe1sa.";
     },
     get$or() {
-      return "v\xf5i";
+      return "Vagy";
     },
     get$participant() {
-      return "Osaleja";
+      return "R\xe9sztvev\u0151";
     },
     get$passphraseOrKey() {
-      return "paroolifraas v\xf5i taastev\xf5ti";
+      return "jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
     },
     get$password(_) {
-      return "Salas\xf5na";
+      return "Jelsz\xf3";
     },
     get$passwordForgotten() {
-      return "Salas\xf5na on ununenud";
+      return "Elfelejtett jelsz\xf3";
     },
     get$passwordHasBeenChanged() {
-      return "Salas\xf5na on muudetud";
+      return "A jelsz\xf3 m\xf3dos\xedt\xe1sra ker\xfclt";
     },
     get$overview() {
-      return "\xdclevaade";
+      return "\xc1ttekint\xe9s";
     },
     get$passwordRecoverySettings() {
-      return "Salas\xf5na taastamise seadistused";
+      return "Jelsz\xf3-helyre\xe1ll\xedt\xe1si be\xe1ll\xedt\xe1sok";
     },
     get$passwordRecovery() {
-      return "Salas\xf5na taastamine";
+      return "Jelsz\xf3 vissza\xe1ll\xedt\xe1s";
     },
     get$pickImage() {
-      return "Vali pilt";
+      return "K\xe9p v\xe1laszt\xe1sa";
     },
     get$pin() {
-      return "Klammerda";
+      return "R\xf6gz\xedt\xe9s";
     },
     get$pleaseChoose() {
-      return "Palun vali";
+      return "K\xe9rj\xfck v\xe1lasszon";
     },
     get$pleaseEnterYourPassword() {
-      return "Palun sisesta oma salas\xf5na";
+      return "K\xe9rem adja meg jelszav\xe1t";
     },
     get$pleaseEnterYourPin() {
-      return "Palun sisesta oma PIN-kood";
+      return "\xcdrja be PIN k\xf3dj\xe1t";
     },
     get$pleaseEnterYourUsername() {
-      return "Palun sisesta oma kasutajanimi";
+      return "Adja meg a felhaszn\xe1l\xf3nev\xe9t";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Palun j\xe4rgi veebilehel olevaid juhiseid ja kl\xf5psi nuppu Edasi.";
+      return "K\xe9rem k\xf6vesse az instrukci\xf3kat az oldalon, \xe9s nyomjon a tov\xe1bb gombra.";
     },
     get$privacy() {
-      return "Privaatsus";
+      return "Adatv\xe9delem";
     },
     get$reason(_) {
-      return "P\xf5hjus";
+      return "Indok";
     },
     redactedBy$1(username) {
-      return "Muutja: " + username;
+      return username + " \xe1ltal szerkesztve";
     },
     get$directChat() {
-      return "Otsevestlus";
+      return "K\xf6zvetlen cseveg\xe9s";
     },
     redactedByBecause$2(username, reason) {
-      return "Muutja " + username + " m\xe4rkis p\xf5hjuseks: \u201e" + reason + "\u201c";
+      return username + ' \xe1ltal szerkesztve, mivel: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " muutis s\xfcndmust";
+      return username + " visszavont egy esem\xe9nyt";
     },
     get$redactMessage() {
-      return "Muuda s\xf5numit";
+      return "\xdczenet visszavon\xe1sa";
     },
     get$reject() {
-      return "L\xfckka tagasi";
+      return "Elutas\xedt";
     },
     rejectedTheInvitation$1(username) {
-      return username + " l\xfckkas kutse tagasi";
+      return username + " elutas\xedtotta a megh\xedv\xe1st";
     },
     get$removeAllOtherDevices() {
-      return "Eemalda k\xf5ik muud seadmed";
+      return "Minden m\xe1s eszk\xf6z elt\xe1vol\xedt\xe1sa";
     },
     get$unbanFromChat() {
-      return "Eemalda suhtluskeeld";
+      return "Cseveg\xe9s kitilt\xe1s felold\xe1sa";
     },
     get$removeYourAvatar() {
-      return "Kustuta oma tunnuspilt";
+      return "Profilk\xe9p t\xf6rl\xe9se";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Asenda jututoa senine versioon uuega";
+      return "Szoba cser\xe9l\xe9se egy \xfajabb verzi\xf3ra";
     },
     get$reply(_) {
-      return "Vasta";
+      return "V\xe1lasz";
     },
     get$reportMessage() {
-      return "Teata s\xf5numist";
+      return "\xdczenet jelent\xe9se";
     },
     get$roomHasBeenUpgraded() {
-      return "Jututoa vesrioon on uuendatud";
+      return "A szoba friss\xedtve lett";
     },
     get$search(_) {
-      return "Otsi";
+      return "Keres\xe9s";
     },
     get$security() {
-      return "Turvalisus";
+      return "Biztons\xe1g";
     },
     get$send(_) {
-      return "Saada";
+      return "K\xfcld\xe9s";
     },
     get$sendAMessage() {
-      return "Saada s\xf5num";
+      return "\xdczenet k\xfcld\xe9se";
     },
     get$sendAsText() {
-      return "Saada tekstis\xf5numina";
+      return "Sz\xf6vegk\xe9nt k\xfcld\xe9s";
     },
     get$sendAudio() {
-      return "Saada helifail";
+      return "Hang\xfczenet k\xfcld\xe9se";
     },
     get$sendFile() {
-      return "Saada fail";
+      return "F\xe1jl k\xfcld\xe9se";
     },
     get$sendImage() {
-      return "Saada pilt";
+      return "K\xe9p k\xfcld\xe9se";
     },
     sendImages$1(count) {
-      return "Saada " + count + " pilti";
+      return "Send " + count + " image";
     },
     get$sendMessages() {
-      return "Saada s\xf5numeid";
+      return "\xdczenetek k\xfcld\xe9se";
     },
     get$sendVideo() {
-      return "Saada videofail";
+      return "Vide\xf3 k\xfcld\xe9se";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " saatis faili";
+      return "\ud83d\udcc1 " + username + " k\xfcld\xf6tt egy f\xe1jlt";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " saatis helifaili";
+      return "\ud83c\udfa4 " + username + " hang\xfczenetet k\xfcld\xf6tt";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " saatis pildi";
+      return "\ud83d\uddbc\ufe0f " + username + " k\xe9p\xfczenetet k\xfcld\xf6tt";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " saatis kleepsu";
+      return "\ud83d\ude0a " + username + " matric\xe1t k\xfcld\xf6tt";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " saatis video";
+      return "\ud83c\udfa5 " + username + " vide\xf3t k\xfcld\xf6tt";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " saatis teavet k\xf5ne kohta";
+      return senderName + " h\xedv\xe1sinform\xe1ci\xf3t k\xfcld\xf6tt";
     },
     get$separateChatTypes() {
-      return "Eraldi vestlused ja jututoad";
+      return "Csoportok \xe9s k\xf6zvetlen \xfczenetek elk\xfcl\xf6n\xedt\xe9se";
     },
     get$setChatDescription() {
-      return "Lisa vestluse kirjeldus";
+      return "Cseveg\xe9s le\xedr\xe1s be\xe1ll\xedt\xe1sa";
     },
     get$settings() {
-      return "Seadistused";
+      return "Be\xe1ll\xedt\xe1sok";
     },
     get$share(_) {
-      return "Jaga";
+      return "Megoszt\xe1s";
     },
     sharedTheLocation$1(username) {
-      return username + " jagas oma asukohta";
+      return username + " megosztotta a poz\xedci\xf3j\xe1t";
     },
     get$shareLocation() {
-      return "Jaga asukohta";
+      return "Poz\xedci\xf3 megoszt\xe1sa";
     },
     get$presencesToggle() {
-      return "N\xe4ita teiste kasutajate olekuteateid";
+      return "M\xe1sok st\xe1tusz \xfczenet\xe9nek megjelen\xedt\xe9se";
     },
     get$skip(_) {
-      return "J\xe4ta vahele";
+      return "Kihagy\xe1s";
     },
     get$sourceCode() {
-      return "L\xe4htekood";
+      return "Forr\xe1sk\xf3d";
     },
     get$spaceName() {
-      return "Kogukonna nimi";
+      return "T\xe9r neve";
     },
     startedACall$1(senderName) {
-      return senderName + " alustas k\xf5net";
+      return senderName + " h\xedv\xe1st ind\xedtott";
     },
     get$status(_) {
-      return "Olek";
+      return "St\xe1tusz";
     },
     get$submit(_) {
-      return "Saada";
+      return "Bek\xfcld\xe9s";
     },
     get$synchronizingPleaseWait() {
-      return "S\xfcnkroniseerin andmeid\u2026 Palun oota.";
+      return "Szinkroniz\xe1l\xe1s...k\xe9rem v\xe1rjon.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " S\xfcnkroniseerime\u2026 (" + percentage + "%)";
+      return " Synchronizing\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "S\xfcsteem";
+      return "Rendszer";
     },
     get$theyDontMatch() {
-      return "Nad ei klapi omavahel";
+      return "Nem egyeznek";
     },
     get$theyMatch() {
-      return "Nad klapivad omavahel";
+      return "Egyeznek";
     },
     get$tooManyRequestsWarning() {
-      return "Liiga palju p\xe4ringuid. Palun proovi hiljem uuesti!";
+      return "T\xfal sok egyidej\u0171 k\xe9relem. K\xe9rem pr\xf3b\xe1lja meg k\xe9s\u0151bb!";
     },
     get$tryToSendAgain() {
-      return "Proovi uuesti saata";
+      return "\xdajrak\xfcld\xe9s megpr\xf3b\xe1l\xe1sa";
     },
     get$unavailable() {
-      return "Eemal";
+      return "Nem el\xe9rhet\u0151";
     },
     unbannedUser$2(username, targetName) {
-      return username + " eemaldas ligip\xe4\xe4sukeelu kasutajalt " + targetName;
+      return username + " feloldotta " + targetName + " kitilt\xe1s\xe1t";
     },
     get$unblockDevice() {
-      return "Eemalda seadmelt blokeering";
+      return "Eszk\xf6z blokkol\xe1s\xe1nak megsz\xfcntet\xe9se";
     },
     get$unknownDevice() {
-      return "Tundmatu seade";
+      return "Ismeretlen eszk\xf6z";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Tundmatu kr\xfcptoalgoritm";
+      return "Ismeretlen titkos\xedt\xe1si algoritmus";
     },
     unknownEvent$1(type) {
-      return "Tundmatu s\xfcndmuse t\xfc\xfcp '" + type + "'";
+      return "Ismeretlen esem\xe9ny: '" + type + "'";
     },
     get$unpin() {
-      return "Eemalda klammerdus";
+      return "R\xf6gz\xedt\xe9s megsz\xfcntet\xe9se";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " ja " + count + " muud kirjutavad\u2026";
+      return username + " \xe9s " + count + " m\xe1sik r\xe9sztvev\u0151 g\xe9pel\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " ja " + username2 + " kirjutavad\u2026";
+      return username + " \xe9s " + username2 + " g\xe9pel\u2026";
     },
     userIsTyping$1(username) {
-      return username + " kirjutab\u2026";
+      return username + " g\xe9pel\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa" + username + " lahkus vestlusest";
+      return "\ud83d\udeaa " + username + " elhagyta a cseveg\xe9st";
     },
     get$username(_) {
-      return "Kasutajanimi";
+      return "Felhaszn\xe1l\xf3n\xe9v";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " saatis " + type + " s\xfcndmuse";
+      return username + " " + type + " esem\xe9nyt k\xfcld\xf6tt";
     },
     get$unverified() {
-      return "Verifitseerimata";
+      return "Nem visszaigazolt";
     },
     get$verified() {
-      return "Verifitseeritud";
+      return "Visszaigazolt";
     },
     get$verifyStart() {
-      return "Alusta verifitseerimist";
+      return "Hiteles\xedt\xe9s megkezd\xe9se";
     },
     get$verifySuccess() {
-      return "Sinu verifitseerimine \xf5nnestus!";
+      return "Sikeres hiteles\xedt\xe9s!";
     },
     get$verifyTitle() {
-      return "Verifitseerin teist kasutajakontot";
+      return "M\xe1sik fi\xf3k hiteles\xedt\xe9se";
     },
     get$visibleForAllParticipants() {
-      return "N\xe4htav k\xf5ikidele osalejatele";
+      return "Minden r\xe9sztvev\u0151 sz\xe1m\xe1ra l\xe1that\xf3";
     },
     get$visibleForEveryone() {
-      return "N\xe4htav k\xf5ikidele";
+      return "B\xe1rki sz\xe1m\xe1ra l\xe1that\xf3";
     },
     get$voiceMessage() {
-      return "H\xe4\xe4ls\xf5num";
+      return "Hang\xfczenet";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Ootan, et teine osapool n\xf5ustuks p\xe4ringuga\u2026";
+      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a k\xe9r\xe9st\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Ootan teise osapoole kinnitust, et tegemist on samade emojidega\u2026";
+      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja az emojit\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Ootan teise osapoole kinnitust, et tegemist on samade numbritega\u2026";
+      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a sz\xe1mokat\u2026";
     },
     get$warning() {
-      return "Hoiatus!";
+      return "Figyelmeztet\xe9s!";
     },
     get$weSentYouAnEmail() {
-      return "Me saatsime sulle e-kirja";
+      return "K\xfcldt\xfcnk \xd6nnek egy emailt";
     },
     get$whyDoYouWantToReportThis() {
-      return "Miks sa soovid sellest teatada?";
+      return "Mi\xe9rt k\xedv\xe1nja ezt bejelenteni?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Nende e-posti aadresside abil saad taastada oma salas\xf5na.";
+      return "Ezekkel a c\xedmekkel vissza tudja \xe1ll\xedtani a jelszav\xe1t.";
     },
     get$writeAMessage() {
-      return "Kirjuta \xfcks s\xf5num\u2026";
+      return "\xcdrjon egy \xfczenetet\u2026";
     },
     get$yes() {
-      return "Jah";
+      return "Igen";
     },
     get$you() {
-      return "Sina";
+      return "\xd6n";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Sa enam ei osale selles vestluses";
+      return "Imm\xe1ron nem vesz r\xe9szt ebben a cseveg\xe9sben";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Sinule on selles vestluses seatud suhtluskeeld";
+      return "Kitiltott\xe1k ebb\u0151l a cseveg\xe9sb\u0151l";
     },
     get$yourPublicKey() {
-      return "Sinu avalik v\xf5ti";
+      return "A publikus kulcsa";
     },
     get$messageInfo() {
-      return "S\xf5numi teave";
+      return "\xdczenet inform\xe1ci\xf3";
     },
     get$time(_) {
-      return "Kellaaeg";
+      return "Id\u0151";
     },
     get$sender() {
-      return "Saatja";
+      return "K\xfcld\u0151";
     },
     get$openGallery() {
-      return "Ava galerii";
+      return "Gal\xe9ria megnyit\xe1sa";
     },
     get$removeFromSpace() {
-      return "Eemalda kogukonnast";
+      return "Elt\xe1vol\xedt\xe1s a t\xe9rr\u0151l";
     },
     videoWithSize$1(size) {
-      return "Video (" + size + ")";
+      return "Vide\xf3 (" + size + ")";
     },
     get$markAsRead() {
-      return "M\xe4rgi loetuks";
+      return "Olvasottk\xe9nt megjel\xf6l\xe9s";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " reageeris nii " + reaction;
+      return sender + " a k\xf6vetkez\u0151t reag\xe1lta: " + reaction;
     },
     get$pinMessage() {
-      return "Klammerda s\xf5num jututuppa";
+      return "Kit\u0171z\xe9s a szob\xe1ban";
     },
     get$confirmEventUnpin() {
-      return "Kas sa oled kindel, et tahad klammerdatud s\xfcndmuse eemaldada?";
+      return "Biztosan v\xe9gleg le akarja venni a kit\u0171z\xf6tt esem\xe9nyt?";
     },
     get$emojis() {
-      return "Emotikonid";
+      return "Emojik";
     },
     get$youRejectedTheInvitation() {
-      return "Sa l\xfckkasid kutse tagasi";
+      return "Visszautas\xedtotta a megh\xedv\xe1st";
     },
     get$youJoinedTheChat() {
-      return "Sa liitusid vestlusega";
+      return "Becsatlakozott a cseveg\xe9sbe";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Sa v\xf5tsid kutse vastu";
+      return "\ud83d\udc4d Elfogadta a megh\xedv\xe1st";
     },
     youBannedUser$1(user) {
-      return "Sa seadsid suhtluskeelu kasutajale " + user;
+      return "Letitotta " + user + "-t";
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Sa oled t\xfchistanud kutse kasutajale " + user;
+      return "Visszavonta a megh\xedv\xe1st " + user + "-t\xf3l";
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 " + user + " saatis sulle kutse";
+      return "\ud83d\udce9 Megh\xedv\xe1st kapott " + user + "-t\xf3l";
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Sa saatsid kutse kasutajale " + user;
+      return "\ud83d\udce9 Megh\xedvta " + user + "-t";
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Sa m\xfcksasid kasutaja " + user + " v\xe4lja";
+      return "\ud83d\udc5e Kir\xfagta " + user + "-t";
     },
     youUnbannedUser$1(user) {
-      return "Sa eemaldasid suhtluskeelu kasutajalt " + user;
+      return "Levette a letilt\xe1st " + user + "-r\u0151l";
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa" + user + " on jututoa uksele koputanud";
+      return "\ud83d\udeaa " + user + " bekopogott";
     },
     get$users() {
-      return "Kasutajad";
+      return "Felhaszn\xe1l\xf3k";
     },
     countFiles$1(count) {
-      return "" + count + " faili";
+      return "" + count + " f\xe1jl";
     },
     get$user() {
-      return "Kasutaja";
+      return "Felhaszn\xe1l\xf3";
     },
     get$custom() {
-      return "Kohandatud";
+      return "Egy\xe9ni";
     },
     get$noKeyForThisMessage() {
-      return "See v\xf5ib juhtuda, kui s\xf5num oli saadetud enne, kui siin seadmes oma kontoga sisse logisid.\n\nSamuti v\xf5ib juhtuda siis, kui saatja on lugemises selles seadmes blokeerinud v\xf5i on tekkinud t\xf5rkeid veebi\xfchenduses.\n\nAga m\xf5nes teises seadmes saad seda s\xf5numit lugeda? Siis sa v\xf5id s\xf5numi sealt \xfcle t\xf5sta. Ava Seadistused -> Seadmed ning kontrolli, et k\xf5ik sinu seadmed on omavahel verifitseeritud. Kui avad selle vestluse v\xf5i jututoa ning m\xf5lemad sessioonid on avatud, siis vajalikud kr\xfcptov\xf5tmed saadetakse automaatset.\n\nKas sa soovid v\xe4ltida kr\xfcptov\xf5tmete kadumist v\xe4ljalogimisel ja seadmete vahetusel? Siis palun kontrolli, et seadistuses on kr\xfcptov\xf5tmete varundus sisse l\xfclitatud.";
+      return "Akkor fordulhat el\u0151, ha az \xfczenet az eszk\xf6zre val\xf3 bejelentkez\xe9s el\u0151tt ker\xfclt k\xfcld\xe9sre.\n\nAz is elk\xe9pzelhet\u0151, hogy a k\xfcld\u0151 blokkolta az eszk\xf6z\xe9t, vagy valami probl\xe9ma l\xe9pett fel az internet kapcsolatban.\n\nM\xe1s helyen l\xe1tja az \xfczenetet? Akkor \xe1t tudja m\xe1solni ide is! Menjen a Be\xe1ll\xedt\xe1sok > Eszk\xf6z\xf6k r\xe9szbe, \xe9s gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy az eszk\xf6zei meger\u0151s\xedtett\xe9k egym\xe1st. Legk\xf6zelebb amikor ezt a szob\xe1t megnyitja, \xe9s mind a k\xe9t kliens az el\u0151t\xe9rben van, akkor szikroniz\xe1l\xf3dni fognak.\n\nNem akarja elvesz\xedteni a kulcsokat amikor kijelentkezik, vagy eszk\xf6zt cser\xe9l? Gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy bekapcsolta a chat ment\xe9st a be\xe1ll\xedt\xe1sokban.";
     },
     get$newSpace() {
-      return "Uus kogukond";
+      return "\xdaj t\xe9r";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "S\xf5numiteta vestlus (vana nimega " + oldDisplayName + ")";
+      return "\xdcres cseveg\xe9s (kor\xe1bban " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Alusta vestlust uuesti";
+      return "Cseveg\xe9s \xfajranyit\xe1sa";
     },
     get$noOtherDevicesFound() {
-      return "Muid seadmeid ei leidu";
+      return "Nem tal\xe1lhat\xf3 m\xe1s eszk\xf6z";
     },
     fileIsTooBigForServer$1(max) {
-      return "Saatmine ei \xf5nnestu! Serveri vaid kuni " + max + " suurusega manuseid.";
+      return "A szerver sz\xe1m\xe1ra t\xfal nagy a f\xe1jl a k\xfcld\xe9shez.";
     },
     get$jumpToLastReadMessage() {
-      return "Liigu viimase loetud s\xf5numini";
+      return "Az utolj\xe1ra olvasott \xfczenethez ugr\xe1s";
     },
     get$readUpToHere() {
-      return "Siiamaani on loetud";
+      return "Ezid\xe1ig elolvasva";
     },
     get$jump() {
-      return "H\xfcppa";
+      return "Ugr\xe1s";
     },
     get$openLinkInBrowser() {
-      return "Ava link veebibrauseris";
+      return "Hivatkoz\xe1s megnyit\xe1sa b\xf6ng\xe9sz\u0151ben";
     },
     get$setColorTheme() {
-      return "Vali v\xe4rviteema:";
+      return "Sz\xedn t\xe9ma be\xe1ll\xedt\xe1sa:";
     },
     get$invite() {
-      return "Kutsu";
+      return "Megh\xedv\xe1s";
     },
     get$invalidInput() {
-      return "Vigane sisend!";
+      return "Hib\xe1s bevitel!";
     },
     wrongPinEntered$1(seconds) {
-      return "Sisestasid vale PIN-koodi! Proovi uuesti " + seconds + " sekundi p\xe4rast...";
+      return "Hib\xe1s pink\xf3d ker\xfclt be\xedr\xe1sra. Pr\xf3b\xe1lja \xfajra " + seconds + " mp m\xfalva...";
     },
     get$pleaseEnterANumber() {
-      return "Palun sisesta 0'st suurem number";
+      return "Adjon meg egy 0-n\xe1l nagyobb sz\xe1mot";
     },
     get$removeDevicesDescription() {
-      return "Sind logitakse sellest seadmest v\xe4lja ja sa enam ei saa s\xf5numeid.";
+      return "Ki fog jelentkezni a k\xe9sz\xfcl\xe9kr\u0151l, \xe9s t\xf6bbi nem fog tudni fogadni \xfczeneteket.";
     },
     get$banUserDescription() {
-      return "Sellele kasutajale on n\xfc\xfcd selles jututoas seatud suhtluskeeld ning ta ei saa vestluses osaleda seni, kuni suhtluskeeld pole eemaldatud.";
+      return "A felhaszn\xe1l\xf3 kitilt\xe1sra ker\xfcl a cseveg\xe9sb\u0151l, \xe9s nem fog tudni visszaj\xf6nni eg\xe9szen a kitilt\xe1s felold\xe1s\xe1ig.";
     },
     get$unbanUserDescription() {
-      return "Uuesti proovimisel saab see kasutaja n\xfc\xfcd vestlusega liituda.";
+      return "A felhaszn\xe1l\xf3 vissza tud j\xf6nni a cseveg\xe9sbe ha akar.";
     },
     get$kickUserDescription() {
-      return "See kasutaja on n\xfc\xfcd jutuoast v\xe4lja m\xfcksatud, kuid talle pole seatud suhtluskeeldu. Avaliku jututoa puhul saab ta alati uuesti liituda.";
+      return "A felhaszn\xe1l\xf3 kir\xfag\xe1sra ker\xfclt a cseveg\xe9sb\u0151l, de nincs kitiltva. Publikus cseveg\xe9s eset\xe9n a felhaszn\xe1l\xf3 b\xe1rmikor visszat\xe9rhet.";
     },
     get$makeAdminDescription() {
-      return "Kui annad sellele kasutajale peakasutaja \xf5igused, siis kuna tal on sinuga samad \xf5igused, sa ei saa seda toimingut enam tagasi p\xf6\xf6rata.";
+      return "Miut\xe1n a felhaszn\xe1l\xf3b\xf3l admin lesz, nem fogja tudni visszavonni d\xf6nt\xe9s\xe9t, mivel azonos jogosults\xe1gi szinttel fognak rendelkezni.";
     },
     get$yourGlobalUserIdIs() {
-      return "Sinu \xfcldine kasutajatunnus on: ";
+      return "A glob\xe1lis felhaszn\xe1l\xf3-ID-je: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return "P\xe4ringuga \u201e" + query + "\u201c ei leidunud kahkus \xfchtegi kasutajat. Palun kontrolli, et p\xe4ringus poleks vigu.";
+      return '"' + query + '" n\xe9ven nem tal\xe1lhat\xf3 felhaszn\xe1l\xf3. Ellen\u0151rizze nincs e el\xedr\xe1s.';
     },
     get$knocking() {
-      return "Koputus uksele";
+      return "Bekopog\xe1s";
     },
     get$nothingFound() {
-      return "Ei leidnud mitte midagi...";
+      return "Nincs tal\xe1lat...";
     },
     get$wrongRecoveryKey() {
-      return "Vabandust..., see ei tundu olema korrektne taastev\xf5ti.";
+      return "Sajnos, \xfagy t\u0171nik hib\xe1san adta meg a vissza\xe1ll\xedt\xe1si kulcsot.";
     },
     get$startConversation() {
-      return "Alusta vestlust";
+      return "Besz\xe9lget\xe9s ind\xedt\xe1sa";
     },
     get$commandHint_sendraw() {
-      return "Saada json oma algup\xe4rasel kujul";
+      return "Tiszta json k\xfcld\xe9se";
     },
     get$searchForUsers() {
-      return "Otsi kasutajat @kasutajanimi ...";
+      return "Keressen @felhaszn\xe1l\xf3kat...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Palun sisesta oma praegune salas\xf5na";
+      return "K\xe9rem adja meg jelenlegi jelszav\xe1t";
     },
     get$newPassword() {
-      return "Uus salas\xf5na";
+      return "\xdaj jelsz\xf3";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Palun sisesta korralik salas\xf5na";
+      return "K\xe9rem v\xe1lasszon egy er\u0151s jelsz\xf3t";
     },
     get$passwordsDoNotMatch() {
-      return "Salas\xf5nad ei klapi omavahel";
+      return "A jelszavak nem egyeznek";
     },
     get$passwordIsWrong() {
-      return "Sinu sisestatud salas\xf5na on vale";
+      return "A be\xedrt jelszava hib\xe1s";
     },
     get$publicSpaces() {
-      return "Avalikud kogukonnad";
+      return "Nyilv\xe1nos terek";
     },
     get$decline() {
-      return "Keeldu";
+      return "Elutas\xedt\xe1s";
     },
     get$thisDevice() {
-      return "See seade:";
+      return "Ez az eszk\xf6z:";
     },
     get$initAppError() {
-      return "Rakenduse k\xe4ivitamisel tekkis viga";
+      return "Hiba l\xe9pett fel az app ind\xedt\xe1sa sor\xe1n";
     },
     searchIn$1(chat) {
-      return "Otsi vestlusest \u201e" + chat + "\u201c...";
+      return 'Keres\xe9s a cseveg\xe9sben "' + chat + '"...';
     },
     get$searchMore() {
-      return "Otsi veel...";
+      return "Tov\xe1bbi keres\xe9s...";
     },
     get$gallery() {
-      return "Galerii";
+      return "Gal\xe9ria";
     },
     get$files(_) {
-      return "Failid";
+      return "F\xe1jlok";
     },
     sessionLostBody$2(url, error) {
-      return "Sinu sessioon on kadunud. Palun teata sellest veast arendajatele siin: " + url + " m\xe4rkides veateate: " + error;
+      return "A munkamenete elvesz\u0151d\xf6tt. K\xe9rem jelentse ezt a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "N\xfc\xfcd \xfcritab rakendus taastada sinu sessiooni varukoopiast. Palun teata sellest veast arendajatele siin: " + url + " m\xe4rkides veateate: " + error;
+      return "Megpr\xf3b\xe1lkozunk vissza\xe1ll\xedtani a munkamenet\xe9t egy kor\xe1bbi ment\xe9sb\u0151l. K\xe9rem jelezze a hib\xe1t a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
     },
     get$sendReadReceipts() {
-      return "Saada lugemisteatisi";
+      return "Olvas\xe1si igazol\xe1s k\xfcld\xe9se";
     },
     get$sendTypingNotificationsDescription() {
-      return "Muud vestluses osalejad saavad n\xe4ha, kui sa oled uut s\xf5numit kirjutamas.";
+      return "A cseveg\xe9s t\xf6bbi tagja l\xe1tja amikor g\xe9pel.";
     },
     get$sendReadReceiptsDescription() {
-      return "Muud vestluses osalejad n\xe4evad, kas oled s\xf5numit lugenud.";
+      return "A cseveg\xe9s t\xf6bbi tagja l\xe1tja melyik \xfczenetet l\xe1tta.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Verifitseeri oma muu seade";
+      return "\ud83d\udd10 M\xe1s eszk\xf6z meger\u0151s\xedt\xe9se";
     },
     get$verifyOtherDeviceDescription() {
-      return "Kui sa oled oma muu seadme verifitseerinud, siis need seadmed v\xf5ivad vahetada kr\xfcptov\xf5tmeid ning see parandab \xfcldist turvalisust. \ud83d\udcaa Kui alustad verifitseerimist, siis sinu m\xf5lemas seadmes tekib rakenduses h\xfcpikaken. Seal kuvatakse emotikonide v\xf5i numbrite jada, mida pead omavahel v\xf5rdlema. On oluline, et m\xf5lemad seadmed on verifitseerimise alustamisel sinu k\xf5rval. \ud83e\udd33";
+      return "Amikor egy m\xe1sik eszk\xf6zt er\u0151s\xedt meg, az eszk\xf6z\xf6k kulcsokat cser\xe9lnek egym\xe1s k\xf6z\xf6tt, ez\xe1ltal n\xf6velve az \xf6sszbiztons\xe1got. \ud83d\udcaa Amikor megkezd\u0151dik a folyamat, mind a k\xe9t eszk\xf6z\xf6n megjelenik egy felugr\xf3 \xfczenet. Emojik \xe9s sz\xe1mok sorozata fog megjelenni, amit \xf6ssze tud hasonl\xedtani a k\xe9t eszk\xf6z\xf6n. \xc9rdemes teh\xe1t mind a k\xe9t eszk\xf6zt a k\xf6zelben tartani. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " n\xf5ustus kr\xfcptov\xf5tmete verifitseerimisega";
+      return sender + " elfogadta a kulcs meger\u0151s\xedt\xe9st";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " katkestas kr\xfcptov\xf5tmete verifitseerimise";
+      return sender + " nem fogadta el a kulcs meger\u0151s\xedt\xe9st";
     },
     completedKeyVerification$1(sender) {
-      return sender + " sai valmis kr\xfcptov\xf5tmete verifitseerimise";
+      return sender + " befejezte a kulcs meger\u0151s\xedt\xe9st";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " on valmis kr\xfcptov\xf5tmete verifitseerimiseks";
+      return sender + " k\xe9szen \xe1ll a kulcs meger\u0151s\xedt\xe9sre";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " palus kr\xfcptov\xf5tmete verifitseerimist";
+      return sender + " kulcs meger\u0151s\xedt\xe9st k\xe9r";
     },
     startedKeyVerification$1(sender) {
-      return sender + " alustas kr\xfcptov\xf5tmete verifitseerimist";
+      return sender + " elkezdte a kulcs meger\u0151s\xedt\xe9st";
     },
     get$stickers() {
-      return "Kleepsud";
+      return "Matrica";
     },
     get$discover() {
-      return "Otsi ja leia";
+      return "Felfedez\xe9s";
     },
     get$commandHint_ignore() {
-      return "Eira seda Matrixi kasutajatunnust";
+      return "Adott matrix ID figyelmen k\xedv\xfcl hagy\xe1sa";
     },
     get$commandHint_unignore() {
-      return "L\xf5peta selle Matrixi kasutajatunnuse eiramine";
+      return "Adott matrix ID figyelembe v\xe9tele";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Hetkel on " + count + " blokeeritud kasutajat.";
+      return "Jelenleg " + count + " felhaszn\xe1l\xf3 van letiltva.";
     },
     get$restricted() {
-      return "Piiratud";
+      return "Korl\xe1tozott";
     },
     goToSpace$1(space) {
-      return "Ava kogukond: " + space;
+      return "Menj a t\xe9rre: " + space;
     },
     get$markAsUnread() {
-      return "M\xe4rgi mitteloetuks";
+      return "Olvasatlannak jel\xf6l\xe9s";
     },
     userLevel$1(level) {
-      return "" + level + " - kasutaja";
+      return "" + level + " - Felhaszn\xe1l\xf3";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - moderaator";
+      return "" + level + " - Moder\xe1tor";
     },
     adminLevel$1(level) {
-      return "" + level + " - peakasutaja";
+      return "" + level + " - Rendszergazda";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Muuda vestluse ajaloo n\xe4htavust";
+      return "Cseveg\xe9si el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1nak v\xe1ltoztat\xe1sa";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Muuda vestluse p\xf5hilist avalikult n\xe4htavat aadressi";
+      return "Cseveg\xe9s f\u0151, nyilv\xe1nos c\xedm\xe9nek v\xe1ltoztat\xe1sa";
     },
     get$sendRoomNotifications() {
-      return "Saada @jututuba teavitusi";
+      return "@room \xe9rtes\xedt\xe9s k\xfcld\xe9se";
     },
     get$chatPermissionsDescription() {
-      return "M\xe4\xe4ra erinevatele kasutajatele selles vestluses vajalikud \xf5igused. T\xfc\xfcpiliselt on need 0, 50 ja 100 (vastavalt kasutajad, moderaatorid ja peakasutajad), kuid igasugused vahepealsed variatsioonid on ka v\xf5imalikud.";
+      return "Adja meg milyen er\u0151ss\xe9gi szint kell egyes cseveg\xe9si akci\xf3khoz. A 0, 50 \xe9s 100-as szintek \xe1ltal\xe1ban felhaszn\xe1l\xf3kat, moder\xe1torokat \xe9s rendszergazd\xe1kat jel\xf6lnek de b\xe1rmilyen szintez\xe9s lehets\xe9ges.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 Versiooniuuendus " + version + " on paigaldatud!";
+      return "\ud83c\udf89 " + version + " verzi\xf3j\xfa fejleszt\xe9s telep\xedtve!";
     },
     get$sendCanceled() {
-      return "Saatmine on katkestatud";
+      return "Visszavon\xe1s k\xfcld\xe9se";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Ei tundu olema \xfchilduv koduserver. Kas v\xf5rguaadress on ikka \xf5ige?";
+      return "Nem t\u0171nik kompatibilisnak a M\xe1trix-kiszolg\xe1l\xf3val. Helytelen URL?";
     },
     get$calculatingFileSize() {
-      return "Arvutame faili suurust...";
+      return "Calculating file size...";
     },
     get$prepareSendingAttachment() {
-      return "Valmistume manuse saatmiseks...";
+      return "Prepare sending attachment...";
     },
     get$sendingAttachment() {
-      return "Saadame manust...";
+      return "Sending attachment...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Saadame manust: " + index + " pikkusega " + $length + "...";
+      return "Sending attachment " + index + " of " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Serveri poolt lubatud \xfclempiir on k\xe4es. Ootame " + seconds + " sekundit...";
+      return "Server limit reached! Waiting " + seconds + " seconds...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "M\xe4rkus: kui liidad k\xf5ik oma seadmed vestluste varundamisega, siis on nad sellega ka automaatselt verifitseeritud.";
+      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
     },
     get$continueText() {
-      return "J\xe4tka";
+      return "Continue";
     },
     get$blur(_) {
-      return "H\xe4gusus:";
+      return "Blur:";
     },
     get$opacity(_) {
-      return "L\xe4bipaistmatus:";
+      return "Opacity:";
     },
     get$setWallpaper() {
-      return "M\xe4\xe4ra taustapildiks";
+      return "Set wallpaper";
     },
     get$noContactInformationProvided() {
-      return "Server ei jaga asjakohast kontaktteavet";
+      return "Server does not provide any valid contact information";
     },
     get$contactServerAdmin() {
-      return "V\xf5ta \xfchendust serveri haldajaga";
+      return "Contact server admin";
     },
     get$contactServerSecurity() {
-      return "V\xf5ta \xfchendust serveri andmeturbe eest vastutajaga";
+      return "Contact server security";
     },
     get$supportPage() {
-      return "Kasutajatugi";
+      return "Support page";
     },
     get$serverInformation() {
-      return "Serveri teave:";
+      return "Server information:";
     },
     get$name(_) {
-      return "Nimi";
+      return "Name";
     },
     get$version(_) {
-      return "Versioon";
+      return "Version";
     },
     get$compress() {
-      return "Paki kokku";
+      return "Compress";
     },
     get$boldText() {
-      return "Paks kiri";
+      return "Bold text";
     },
     get$italicText() {
-      return "Kaldkiri";
+      return "Italic text";
     },
     get$strikeThrough() {
-      return "L\xe4bikriipsutatud kiri";
+      return "Strikethrough";
     },
     get$pleaseFillOut() {
-      return "Palun t\xe4ida";
+      return "Please fill out";
     },
     get$invalidUrl() {
-      return "Vigane v\xf5rguaadress";
+      return "Invalid url";
     },
     get$addLink() {
-      return "Lisa link";
+      return "Add link";
     },
     get$unableToJoinChat() {
-      return "Vestlusega liitumine ei \xf5nnestu. V\xf5ib-olla on teine osapool juba vestluse sulgenud.";
+      return "Unable to join chat. Maybe the other party has already closed the conversation.";
     },
     get$previous() {
-      return "Eelmine";
+      return "Previous";
     },
     get$otherPartyNotLoggedIn() {
-      return "Vestluse teine osapool pole hetkel v\xf5rku loginud ega seega saa neid s\xf5numeid kohe k\xe4tte!";
+      return "The other party is currently not logged in and therefore cannot receive messages!";
     },
     get$open(_) {
-      return "Ava";
+      return "Open";
     },
     get$waitingForServer() {
-      return "Ootame serveri vastust...";
+      return "Waiting for server...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Uus vestluskutse";
+      return "\ud83d\udce9 New chat request";
     },
     get$contentNotificationSettings() {
-      return "Sisuteavituste seadistused";
+      return "Content notification settings";
     },
     get$generalNotificationSettings() {
-      return "\xdcldised teavituste seadistused";
+      return "General notification settings";
     },
     get$roomNotificationSettings() {
-      return "Jututoa teavituste seadistused";
+      return "Room notification settings";
     },
     get$userSpecificNotificationSettings() {
-      return "Kasutajakohaste teavituste seadistused";
+      return "User specific notification settings";
     },
     get$otherNotificationSettings() {
-      return "Muud teavituste seadistused";
+      return "Other notification settings";
     },
     get$notificationRuleContainsUserName() {
-      return "Kasutajanime olemasolul";
+      return "Contains User Name";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Teavita kasutajat, kui s\xf5numis on tema kasutajanimi.";
+      return "Notifies the user when a message contains their username.";
     },
     get$notificationRuleMaster() {
-      return "Summuta k\xf5ik teavitused";
+      return "Mute all notifications";
     },
     get$notificationRuleMasterDescription() {
-      return "\xc4ra j\xe4rgi muid reegleid ja l\xfclita k\xf5ik teavitused v\xe4lja.";
+      return "Overrides all other rules and disables all notifications.";
     },
     get$notificationRuleSuppressNotices() {
-      return "\xc4ra teavita automaatsete s\xf5numite korral";
+      return "Suppress Automated Messages";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "\xc4ra teavita s\xf5numite puhul, mis on genereeritud masinate, nt jututubade robotite poolt.";
+      return "Suppresses notifications from automated clients like bots.";
     },
     get$notificationRuleInviteForMe() {
-      return "Kutsed mulle";
+      return "Invite for Me";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Teavita kasutajat jututoa kutse saamisel.";
+      return "Notifies the user when they are invited to a room.";
     },
     get$notificationRuleMemberEvent() {
-      return "Jututoa liikmelisusega seotud s\xfcndmus";
+      return "Member Event";
     },
     get$notificationRuleMemberEventDescription() {
-      return "\xc4ra teavita s\xf5numite puhul, mis seotud jututubade liikmelisusega.";
+      return "Suppresses notifications for membership events.";
     },
     get$notificationRuleIsUserMention() {
-      return "Kasutaja mainimised";
+      return "User Mention";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Teavita kasutajat, kui ta on s\xf5numis otseselt mainitud.";
+      return "Notifies the user when they are directly mentioned in a message.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Kuvatava nime sisaldumisel";
+      return "Contains Display Name";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Teavita kasutajat, kui s\xf5numis leidub ta kuvatav nimi.";
+      return "Notifies the user when a message contains their display name.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Jututoa mainimine";
+      return "Room Mention";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Teavita kasutajat, kui jututuba on s\xf5numis otseselt mainitud.";
+      return "Notifies the user when there is a room mention.";
     },
     get$notificationRuleRoomnotif() {
-      return "Jututoa \xfcldteavitus";
+      return "Room Notification";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Teavita kasutajat, kui jututuba on s\xf5numis otseselt mainitud viisil \u201e@toanimi\u201c.";
+      return "Notifies the user when a message contains '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "Jututoa tegevuse l\xf5petamine";
+      return "Tombstone";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Teavita kasutajat jututoa v\xe4ljal\xfclitamisega seotud s\xf5numite korral.";
+      return "Notifies the user about room deactivation messages.";
     },
     get$notificationRuleReaction() {
-      return "Reageerimised";
+      return "Reaction";
     },
     get$notificationRuleReactionDescription() {
-      return "Teavita kasutajat s\xf5numitele reageerimise korral.";
+      return "Suppresses notifications for reactions.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Jututoa ligip\xe4\xe4su\xf5igused serveris";
+      return "Room Server ACL";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Peida teavitused jututoa ligip\xe4\xe4su\xf5iguste muutuste korral serveris.";
+      return "Suppresses notifications for room server access control lists (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Peida muutmised";
+      return "Suppress Edits";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Peida teavitused s\xf5numite muutmise kohta.";
+      return "Suppresses notifications for edited messages.";
     },
     get$notificationRuleCall() {
-      return "K\xf5ned";
+      return "Call";
     },
     get$notificationRuleCallDescription() {
-      return "Teavita kasutajat saabuvast video- v\xf5i h\xe4\xe4lk\xf5nest.";
+      return "Notifies the user about calls.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Kahepoolne vestlus kr\xfcptitud jututoas";
+      return "Encrypted Room One-to-One";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Teavita kasutajat kahepoolse kr\xfcptitud vestluse s\xf5numitest.";
+      return "Notifies the user about messages in encrypted one-to-one rooms.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Kahepoolne vestlus kr\xfcptimata jututoas";
+      return "Room One-to-One";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Teavita kasutajat kahepoolse kr\xfcptimata vestluse s\xf5numitest.";
+      return "Notifies the user about messages in one-to-one rooms.";
     },
     get$notificationRuleMessage() {
-      return "\xdcldised s\xf5numid";
+      return "Message";
     },
     get$notificationRuleMessageDescription() {
-      return "Teavita kasutajat \xfcldistest s\xf5numitest.";
+      return "Notifies the user about general messages.";
     },
     get$notificationRuleEncrypted() {
-      return "Kr\xfcptitud s\xf5numid";
+      return "Encrypted";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Teavita kasutajat s\xf5numitest kr\xfcptitud jututubades.";
+      return "Notifies the user about messages in encrypted rooms.";
     },
     get$notificationRuleJitsi() {
-      return "Jitsi videok\xf5ned";
+      return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Teavita kasutajat s\xfcndmustest Jitsi vidinas.";
+      return "Notifies the user about Jitsi widget events.";
     },
     get$notificationRuleServerAcl() {
-      return "Ligip\xe4\xe4su\xf5igused serveris";
+      return "Suppress Server ACL Events";
     },
     get$notificationRuleServerAclDescription() {
-      return "Peida teavitused ligip\xe4\xe4su\xf5iguste muutuste korral serveris.";
+      return "Suppresses notifications for Server ACL events.";
     },
     unknownPushRule$1(rule) {
-      return "T\xf5uketeavituse tundmatu reegel '" + rule + "'";
+      return "Unknown push rule '" + rule + "'";
+    },
+    sentVoiceMessage$2(sender, duration) {
+      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Kui sa kustutad selle teavituse seadistuse, siis seda tegevust tagasi v\xf5tta ei saa.";
+      return "If you delete this notification setting, this can not be undone.";
     },
     get$more() {
-      return "Lisateave";
+      return "More";
     },
     get$shareKeysWith() {
-      return "Jaga v\xf5tmeid seadmega...";
+      return "Share keys with...";
     },
     get$shareKeysWithDescription() {
-      return "Missuguseid seadmeid sa usaldad, et neist v\xf5iks lugeda kr\xfcptitud vestluste s\xf5numeid?";
+      return "Which devices should be trusted so that they can read along your messages in encrypted chats?";
     },
     get$allDevices() {
-      return "K\xf5iki seadmeid";
+      return "All devices";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Risttunnustatud seadmeid, kui see v\xf5imalus on kasutusel";
+      return "Cross verified devices if enabled";
     },
     get$crossVerifiedDevices() {
-      return "Risttunnustatud seadmeid";
+      return "Cross verified devices";
     },
     get$verifiedDevicesOnly() {
-      return "Vaid verifitseeritud seadmeid";
+      return "Verified devices only";
     },
     get$optionalMessage() {
-      return "S\xf5num (kui soovid lisada)...";
+      return "(Optional) message...";
     },
     get$notSupportedOnThisDevice() {
-      return "See pole antud seadmes toetatud";
+      return "Not supported on this device";
     },
     get$enterNewChat() {
-      return "Liitu uue vestlusega";
+      return "Enter new chat";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
@@ -4360,14 +4363,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nEt, C.L10n);
+    _inherit(A.L10nHu, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nEt":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHu":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
-  d.eventLog.push({p: "main.dart.js_209", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "hL2I+czd2Z8BOS+ZtdViYD/Gvcs=");
+  d.eventLog.push({p: "main.dart.js_230", e: "endPart", h: h});
+})($__dart_deferred_initializers__, "P4CRWHC93ajaa7FVtk4Dwc22wzI=");
 ;
-//# sourceMappingURL=main.dart.js_209.part.js.map
+//# sourceMappingURL=main.dart.js_230.part.js.map

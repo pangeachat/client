@@ -85,9 +85,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Administraci\xf3";
     },
-    get$all() {
-      return "Tot";
-    },
     get$commandHint_roomupgrade() {
       return "Upgrade this room to the given room version";
     },
@@ -342,6 +339,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     countParticipants$1(count) {
       return "" + count + " participants";
+    },
+    countInvited$1(count) {
+      return "" + count + " invited";
     },
     get$create(_) {
       return "Crea";
@@ -1482,6 +1482,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     unknownPushRule$1(rule) {
       return "No es coneix la regla push '" + rule + "'";
+    },
+    sentVoiceMessage$2(sender, duration) {
+      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
       return "Si esborres aquesta opci\xf3 de notificaci\xf3 no ho podr\xe0s tornar a canviar.";
@@ -4369,6 +4372,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_178", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "oOZ/MPwaYyf/jZ9heJDbHoo7FlU=");
+})($__dart_deferred_initializers__, "ZesSf8BuoG9yKVUtAihBDYhRZGc=");
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

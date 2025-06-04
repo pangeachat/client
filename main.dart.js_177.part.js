@@ -85,9 +85,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$admin() {
       return "Admin";
     },
-    get$all() {
-      return "All";
-    },
     get$commandHint_roomupgrade() {
       return "Upgrade this room to the given room version";
     },
@@ -342,6 +339,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     countParticipants$1(count) {
       return "" + count + " participants";
+    },
+    countInvited$1(count) {
+      return "" + count + " invited";
     },
     get$create(_) {
       return "Create";
@@ -1482,6 +1482,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     unknownPushRule$1(rule) {
       return "Unknown push rule '" + rule + "'";
+    },
+    sentVoiceMessage$2(sender, duration) {
+      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
       return "If you delete this notification setting, this can not be undone.";
@@ -4369,6 +4372,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_177", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "no0uBL1UQEEmUuPpYlgYfdhtHcY=");
+})($__dart_deferred_initializers__, "Z/5Gb8pyA1obRCMo62luVq+cXgM=");
 ;
 //# sourceMappingURL=main.dart.js_177.part.js.map
