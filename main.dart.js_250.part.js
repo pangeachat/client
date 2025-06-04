@@ -4351,6 +4351,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createYourSpace() {
       return "Create your space";
     },
+    get$sendActivities() {
+      return "Send activities";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4366,6 +4369,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_250", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ZTogxgpeLLF8sgm9M9T41/J0Mn0=");
+})($__dart_deferred_initializers__, "r9OyHj2XZEwUSNwA47TKFn0BnvI=");
 ;
 //# sourceMappingURL=main.dart.js_250.part.js.map
