@@ -1,12 +1,12 @@
 import 'dart:developer';
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
@@ -112,6 +112,7 @@ class OverlayUtil {
     required double maxHeight,
     required double maxWidth,
     backDropToDismiss = true,
+    String? alternateTransformTargetId,
     Color? borderColor,
     bool closePrevOverlay = true,
     String? overlayKey,
@@ -121,6 +122,82 @@ class OverlayUtil {
     bool ignorePointer = false,
   }) {
     try {
+      // Variables accessed by both normal and alternate calculations
+      Offset offset = Offset.zero;
+      bool hasTopOverflow = false;
+      final columnWidth = FluffyThemes.isColumnMode(context)
+          ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
+          : 0;
+      final halfMaxWidth = maxWidth / 2;
+
+      // If space for alternate is sufficient, do not perform normal calculations
+      bool useAlternate = false;
+
+      // Test whether to use alternate target
+      // In case of word zoom card, that is message (instead of word token)
+      if (alternateTransformTargetId != null) {
+        // Copy normal calculations, with alternateTransformTargetId instead of transformTargetId
+        final LayerLinkAndKey alternateLayerLinkAndKey =
+            MatrixState.pAnyState.layerLinkAndKey(alternateTransformTargetId);
+
+        if (alternateLayerLinkAndKey.key.currentContext != null) {
+          final RenderBox? alternateTargetRenderBox =
+              alternateLayerLinkAndKey.key.currentContext!.findRenderObject()
+                  as RenderBox?;
+
+          if (alternateTargetRenderBox != null &&
+              alternateTargetRenderBox.hasSize) {
+            final Offset alternateTransformTargetOffset =
+                (alternateTargetRenderBox).localToGlobal(Offset.zero);
+            final Size alternateTransformTargetSize =
+                alternateTargetRenderBox.size;
+
+            final alternateHorizontalMidpoint =
+                (alternateTransformTargetOffset.dx - columnWidth) +
+                    (alternateTransformTargetSize.width / 2);
+
+            final alternateVerticalMidpoint =
+                alternateTransformTargetOffset.dy +
+                    (alternateTransformTargetSize.height / 2);
+
+            final alternateHasLeftOverflow =
+                (alternateHorizontalMidpoint - halfMaxWidth) < 10;
+            final alternateHasRightOverflow =
+                (alternateHorizontalMidpoint + halfMaxWidth) >
+                    (MediaQuery.of(context).size.width - columnWidth - 10);
+
+            // Calculate whether there is enough space above message
+            hasTopOverflow = (alternateVerticalMidpoint - maxHeight) < 0;
+
+            // If there is enough space above or below, the message will be used as the target
+            useAlternate = !hasTopOverflow ||
+                (alternateVerticalMidpoint > AppConfig.toolbarMinHeight);
+
+            // If using message as target, copy horizontal offset calculations
+            if (useAlternate) {
+              double xOffset = 0;
+
+              MediaQuery.of(context).size.width -
+                  (alternateHorizontalMidpoint + halfMaxWidth);
+              if (alternateHasLeftOverflow) {
+                xOffset =
+                    (alternateHorizontalMidpoint - halfMaxWidth - 10) * -1;
+              } else if (alternateHasRightOverflow) {
+                xOffset = (MediaQuery.of(context).size.width - columnWidth) -
+                    (alternateHorizontalMidpoint + halfMaxWidth + 10);
+              }
+              offset = Offset(xOffset, 0);
+            }
+
+            // Else reset shared variables to perform normal calculations below
+            else {
+              hasTopOverflow = false;
+            }
+          }
+        }
+      }
+
+      if (!useAlternate) {
       final LayerLinkAndKey layerLinkAndKey =
           MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
       if (layerLinkAndKey.key.currentContext == null) {
@@ -128,19 +205,13 @@ class OverlayUtil {
         return;
       }
 
-      Offset offset = Offset.zero;
       final RenderBox? targetRenderBox =
           layerLinkAndKey.key.currentContext!.findRenderObject() as RenderBox?;
 
-      bool hasTopOverflow = false;
       if (targetRenderBox != null && targetRenderBox.hasSize) {
         final Offset transformTargetOffset =
             (targetRenderBox).localToGlobal(Offset.zero);
         final Size transformTargetSize = targetRenderBox.size;
-
-        final columnWidth = FluffyThemes.isColumnMode(context)
-            ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
-            : 0;
 
         final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
             (transformTargetSize.width / 2);
@@ -165,6 +236,7 @@ class OverlayUtil {
         }
         offset = Offset(xOffset, 0);
       }
+      }
 
       final Widget child = addBorder
           ? Material(
@@ -184,7 +256,8 @@ class OverlayUtil {
       showOverlay(
         context: context,
         child: child,
-        transformTargetId: transformTargetId,
+        transformTargetId:
+            useAlternate ? alternateTransformTargetId! : transformTargetId,
         backDropToDismiss: backDropToDismiss,
         borderColor: borderColor,
         closePrevOverlay: closePrevOverlay,
