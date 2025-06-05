@@ -171,11 +171,17 @@ class OverlayUtil {
 
             // Calculate whether there is enough space above message
             hasTopOverflow =
-                (alternateVerticalMidpoint - maxHeight - standardMargin) < 0;
+                (alternateTransformTargetOffset.dy -
+                    maxHeight -
+                    standardMargin) <
+                0;
 
             // If there is enough space above or below, the message will be used as the target
             useAlternate = !hasTopOverflow ||
-                (alternateVerticalMidpoint + maxHeight + standardMargin <
+                (alternateTransformTargetOffset.dy +
+                        alternateTransformTargetSize.height +
+                        maxHeight +
+                        standardMargin <
                     MediaQuery.sizeOf(context).height);
 
             // If using message as target, copy horizontal offset calculations
