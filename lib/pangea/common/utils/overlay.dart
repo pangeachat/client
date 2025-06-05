@@ -122,7 +122,7 @@ class OverlayUtil {
     bool ignorePointer = false,
   }) {
     try {
-      // Variables accessed by both normal and alternate calculations
+      // Variables needed by both normal and alternate calculations
       Offset offset = Offset.zero;
       bool hasTopOverflow = false;
       final columnWidth = FluffyThemes.isColumnMode(context)
@@ -134,7 +134,7 @@ class OverlayUtil {
       bool useAlternate = false;
 
       // Test whether to use alternate target
-      // In case of word zoom card, that is message (instead of word token)
+      // In case of word zoom card, that is message overlay (instead of word token)
       if (alternateTransformTargetId != null) {
         // Copy normal calculations, with alternateTransformTargetId instead of transformTargetId
         final LayerLinkAndKey alternateLayerLinkAndKey =
@@ -166,12 +166,17 @@ class OverlayUtil {
                 (alternateHorizontalMidpoint + halfMaxWidth) >
                     (MediaQuery.of(context).size.width - columnWidth - 10);
 
+            // Standard margin between message and zoom card
+            const double standardMargin = 6;
+
             // Calculate whether there is enough space above message
-            hasTopOverflow = (alternateVerticalMidpoint - maxHeight) < 0;
+            hasTopOverflow =
+                (alternateVerticalMidpoint - maxHeight - standardMargin) < 0;
 
             // If there is enough space above or below, the message will be used as the target
             useAlternate = !hasTopOverflow ||
-                (alternateVerticalMidpoint > AppConfig.toolbarMinHeight);
+                (alternateVerticalMidpoint + maxHeight + standardMargin <
+                    MediaQuery.sizeOf(context).height);
 
             // If using message as target, copy horizontal offset calculations
             if (useAlternate) {
@@ -186,7 +191,8 @@ class OverlayUtil {
                 xOffset = (MediaQuery.of(context).size.width - columnWidth) -
                     (alternateHorizontalMidpoint + halfMaxWidth + 10);
               }
-              offset = Offset(xOffset, 0);
+              offset =
+                  Offset(xOffset, standardMargin * (hasTopOverflow ? 1 : -1));
             }
 
             // Else reset shared variables to perform normal calculations below
