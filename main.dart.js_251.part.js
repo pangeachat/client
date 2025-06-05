@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0447\u0430\u0442\u0430";
     },
+    get$setStatus() {
+      return "\u0417\u0430\u0434\u0430\u0442\u044c \u0441\u0442\u0430\u0442\u0443\u0441";
+    },
     get$settings() {
       return "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "\u0421\u0442\u0430\u0442\u0443\u0441";
+    },
+    get$statusExampleMessage() {
+      return "\u041a\u0430\u043a \u0443 \u0432\u0430\u0441 \u0441\u0435\u0433\u043e\u0434\u043d\u044f \u0434\u0435\u043b\u0430?";
     },
     get$submit(_) {
       return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "\u041e\u0442\u043f\u0440\u0430\u0432\u0438\u0442\u044c \u0441\u044b\u0440\u043e\u0439 json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "\u0427\u0442\u043e\u0431\u044b \u043e\u0447\u0438\u0441\u0442\u0438\u0442\u044c \u0441\u0442\u0430\u0442\u0443\u0441, \u043e\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u043f\u043e\u043b\u0435 \u043f\u0443\u0441\u0442\u044b\u043c.";
     },
     get$searchForUsers() {
       return "\u041f\u043e\u0438\u0441\u043a @\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_251", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Y2okArznZXMwphbeic3ufFBZ4SU=");
+})($__dart_deferred_initializers__, "lm55QCVDv5m+xwIM0KPTyptYJrQ=");
 ;
 //# sourceMappingURL=main.dart.js_251.part.js.map

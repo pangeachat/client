@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Chatomschrijving instellen";
     },
+    get$setStatus() {
+      return "Status instellen";
+    },
     get$settings() {
       return "Instellingen";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
+    },
+    get$statusExampleMessage() {
+      return "Hoe gaat het met jouw vandaag?";
     },
     get$submit(_) {
       return "Indienen";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Stuur kale json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Laat leeg om je status te resetten.";
     },
     get$searchForUsers() {
       return "Zoek naar @personen...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_248", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "qKhvoXxb9XzHhWRa7/idOgOmIaw=");
+})($__dart_deferred_initializers__, "/Cpsrw/v2SB1e9f8bUzP8ZvD9qo=");
 ;
 //# sourceMappingURL=main.dart.js_248.part.js.map

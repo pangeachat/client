@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Lisa vestluse kirjeldus";
     },
+    get$setStatus() {
+      return "M\xe4\xe4ra olek";
+    },
     get$settings() {
       return "Seadistused";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Olek";
+    },
+    get$statusExampleMessage() {
+      return "Kuidas sul t\xe4na l\xe4heb?";
     },
     get$submit(_) {
       return "Saada";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Saada json oma algup\xe4rasel kujul";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Senise oleku eemaldamiseks j\xe4ta v\xe4\xe4rtus t\xfchjaks.";
     },
     get$searchForUsers() {
       return "Otsi kasutajat @kasutajanimi ...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_208", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+und2YZEhTCbM3oJBfxa5oQkfsI=");
+})($__dart_deferred_initializers__, "FiY/o71Ikq/FkC/IsNi4CH3TQlI=");
 ;
 //# sourceMappingURL=main.dart.js_208.part.js.map

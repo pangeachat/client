@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Set chat description";
     },
+    get$setStatus() {
+      return "Nastavi\u0165 status";
+    },
     get$settings() {
       return "Nastavenia";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
+    },
+    get$statusExampleMessage() {
+      return "Ako sa dnes m\xe1te?";
     },
     get$submit(_) {
       return "Odosla\u0165";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send raw json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Leave empty to clear your status.";
     },
     get$searchForUsers() {
       return "Search for @users...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_255", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "WP0or++ffQqk3siASQZ9kkfGAI4=");
+})($__dart_deferred_initializers__, "hP/evXwJKAMR2xpIos0M2FEvtgs=");
 ;
 //# sourceMappingURL=main.dart.js_255.part.js.map

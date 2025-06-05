@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Lihat deskripsi obrolan";
     },
+    get$setStatus() {
+      return "Tetapkan status";
+    },
     get$settings() {
       return "Pengaturan";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
+    },
+    get$statusExampleMessage() {
+      return "Apa kabar hari ini?";
     },
     get$submit(_) {
       return "Kirim";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Kirim JSON mentah";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Tinggalkan kosong untuk menghapus statusmu.";
     },
     get$searchForUsers() {
       return "Cari @pengguna...";
@@ -4374,6 +4383,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_233", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "klUTCJd1QYgfIIs0emQO4mK+fUs=");
+})($__dart_deferred_initializers__, "393MWReElXKRNkvFH56SMAXLLHU=");
 ;
 //# sourceMappingURL=main.dart.js_233.part.js.map

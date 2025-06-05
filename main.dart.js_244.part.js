@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Set chat description";
     },
+    get$setStatus() {
+      return "Nustatyti b\u016bsen\u0105";
+    },
     get$settings() {
       return "Nustatytmai";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "B\u016bsena";
+    },
+    get$statusExampleMessage() {
+      return "Kaip sekasi \u0161iandien?";
     },
     get$submit(_) {
       return "Pateikti";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send raw json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Leave empty to clear your status.";
     },
     get$searchForUsers() {
       return "Search for @users...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_244", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "zZy6oGd+13fvGCMSmIqfA0x2mr4=");
+})($__dart_deferred_initializers__, "/wTd8z4xkhq1pZeJh4yelf8920A=");
 ;
 //# sourceMappingURL=main.dart.js_244.part.js.map

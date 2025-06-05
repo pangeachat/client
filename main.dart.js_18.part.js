@@ -820,6 +820,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Set chat description";
     },
+    get$setStatus() {
+      return "Set status";
+    },
     get$settings() {
       return "Configura\xe7\xf5es";
     },
@@ -849,6 +852,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
+    },
+    get$statusExampleMessage() {
+      return "How are you today?";
     },
     get$submit(_) {
       return "Submit";
@@ -1131,6 +1137,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send raw json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Leave empty to clear your status.";
     },
     get$searchForUsers() {
       return "Search for @users...";
@@ -5121,6 +5130,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Inserir descri\xe7\xe3o da conversa";
     },
+    get$setStatus() {
+      return "Alterar o status";
+    },
     get$settings() {
       return "Configura\xe7\xf5es";
     },
@@ -5150,6 +5162,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
+    },
+    get$statusExampleMessage() {
+      return "Como vai voc\xea?";
     },
     get$submit(_) {
       return "Submeter";
@@ -5429,6 +5444,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Enviar JSON puro";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Deixe em branco para limpar seu Status.";
     },
     get$searchForUsers() {
       return "Buscar por @usu\xe1rios...";
@@ -6175,6 +6193,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "1wUSP0EHtQV+63mTFiWphQatJrI=");
+})($__dart_deferred_initializers__, "IsLe8hrqAZCGCJKUqH/ylpo9+XY=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map

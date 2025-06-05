@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Asetti keskustelun kuvauksen";
     },
+    get$setStatus() {
+      return "Aseta tila";
+    },
     get$settings() {
       return "Asetukset";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Tila";
+    },
+    get$statusExampleMessage() {
+      return "Millainen on vointisi?";
     },
     get$submit(_) {
       return "L\xe4het\xe4";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send raw json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Leave empty to clear your status.";
     },
     get$searchForUsers() {
       return "Search for @users...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_213", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "H5+trFlY2dPzs7DYwljkEHUMazE=");
+})($__dart_deferred_initializers__, "A/w/31Ps8Zng3EpxmEzXfkK5Yhw=");
 ;
 //# sourceMappingURL=main.dart.js_213.part.js.map

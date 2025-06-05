@@ -808,6 +808,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Posa una descripci\xf3 de xat";
     },
+    get$setStatus() {
+      return "Defineix l\u2019estat";
+    },
     get$settings() {
       return "Par\xe0metres";
     },
@@ -837,6 +840,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Estat";
+    },
+    get$statusExampleMessage() {
+      return "Com us sentiu avui?";
     },
     get$submit(_) {
       return "Envia";
@@ -1119,6 +1125,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Envia un json pelat";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Per esborrar el teu estat, deixa-ho en blanc.";
     },
     get$searchForUsers() {
       return "Cerca @usuari\xefs...";
@@ -4372,6 +4381,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_178", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ZesSf8BuoG9yKVUtAihBDYhRZGc=");
+})($__dart_deferred_initializers__, "Z3D8Cg7/LP7eaGlB8TRi3UqVk/0=");
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Set chat description";
     },
+    get$setStatus() {
+      return "Stabili\u021bi status";
+    },
     get$settings() {
       return "Configur\u0103ri";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
+    },
+    get$statusExampleMessage() {
+      return "Ce face\u021bi?";
     },
     get$submit(_) {
       return "Trimite\u021bi";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send raw json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Leave empty to clear your status.";
     },
     get$searchForUsers() {
       return "Search for @users...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_250", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "gWwytREMEx8iHbXBPdbHVxpnNBU=");
+})($__dart_deferred_initializers__, "kPn182pAqpoT1Ltg+RC50VsVm+U=");
 ;
 //# sourceMappingURL=main.dart.js_250.part.js.map

@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Set chat description";
     },
+    get$setStatus() {
+      return "\u062a\u0646\u0638\u06cc\u0645 \u0648\u0636\u0639\u06cc\u062a";
+    },
     get$settings() {
       return "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "\u0648\u0636\u0639\u06cc\u062a";
+    },
+    get$statusExampleMessage() {
+      return "\u0627\u0645\u0631\u0648\u0632 \u062d\u0627\u0644\u062a\u0627\u0646 \u0686\u0637\u0648\u0631 \u0627\u0633\u062a\u061f";
     },
     get$submit(_) {
       return "\u0627\u0631\u0633\u0627\u0644";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send raw json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Leave empty to clear your status.";
     },
     get$searchForUsers() {
       return "Search for @users...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_212", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "skP/Cq0d3s01esAz+wcax5VTvlg=");
+})($__dart_deferred_initializers__, "0/oW9PptxDVeIIVesu7svvgqBeo=");
 ;
 //# sourceMappingURL=main.dart.js_212.part.js.map

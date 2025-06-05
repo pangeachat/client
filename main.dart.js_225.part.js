@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Postavi opis rzgovora";
     },
+    get$setStatus() {
+      return "Postavi stanje";
+    },
     get$settings() {
       return "Postavke";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Stanje";
+    },
+    get$statusExampleMessage() {
+      return "Kako si danas?";
     },
     get$submit(_) {
       return "Po\u0161alji";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Po\u0161alji neobra\u0111eni json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Ostavi prazno za brisanje tvog stanja.";
     },
     get$searchForUsers() {
       return "Tra\u017ei @users...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_225", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "jZBOn8h7uLiPsenthwoAJYYC2oc=");
+})($__dart_deferred_initializers__, "mA241Js6CZ4Bb6utk1qReJ0CJ5w=");
 ;
 //# sourceMappingURL=main.dart.js_225.part.js.map

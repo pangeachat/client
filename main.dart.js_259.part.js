@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "\xc4ndra chattens beskrivning";
     },
+    get$setStatus() {
+      return "St\xe4ll in status";
+    },
     get$settings() {
       return "Inst\xe4llningar";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Status";
+    },
+    get$statusExampleMessage() {
+      return "Hur m\xe5r du i dag?";
     },
     get$submit(_) {
       return "Skicka in";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Skicka r\xe5 json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "L\xe4mna tom f\xf6r att ta bort din status.";
     },
     get$searchForUsers() {
       return "S\xf6k efter @anv\xe4ndare\u2026";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "CKSCF4sPl0j4gWvzB21x8TxfMZU=");
+})($__dart_deferred_initializers__, "U2SkAdApJEJ8+eebYG0d/wQDGLM=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map

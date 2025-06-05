@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Sohbet a\xe7\u0131klamas\u0131n\u0131 ayarla";
     },
+    get$setStatus() {
+      return "Durumu ayarla";
+    },
     get$settings() {
       return "Ayarlar";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Durum";
+    },
+    get$statusExampleMessage() {
+      return "Bug\xfcn nas\u0131ls\u0131n\u0131z?";
     },
     get$submit(_) {
       return "G\xf6nder";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Ham JSON g\xf6nder";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Durumunuzu temizlemek i\xe7in bo\u015f b\u0131rak\u0131n.";
     },
     get$searchForUsers() {
       return "@kullan\u0131c\u0131lar\u0131 ara...";
@@ -4374,6 +4383,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "8EAwFQexg1xhV/bJ6Hccayhre1I=");
+})($__dart_deferred_initializers__, "6UicYdVzsR9sZ24MIxIPv09vT5k=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map

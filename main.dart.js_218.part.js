@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Socraigh cur s\xedos ar an gcomhr\xe1";
     },
+    get$setStatus() {
+      return "Cuir st\xe1das";
+    },
     get$settings() {
       return "Socruithe";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "Staid";
+    },
+    get$statusExampleMessage() {
+      return "Conas at\xe1 t\xfa inniu?";
     },
     get$submit(_) {
       return "Cuir isteach";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Seol json amh";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "F\xe1g folamh chun do st\xe1das a ghlanadh.";
     },
     get$searchForUsers() {
       return "Cuardaigh @users...";
@@ -4374,6 +4383,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_218", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "RvtUZ9UW7OB3duwhgmm3lYfokNc=");
+})($__dart_deferred_initializers__, "kqT07IYoGpIqkgpy3Pt4G39DOvQ=");
 ;
 //# sourceMappingURL=main.dart.js_218.part.js.map

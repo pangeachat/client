@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Set chat description";
     },
+    get$setStatus() {
+      return "\u30b9\u30c6\u30fc\u30bf\u30b9\u306e\u8a2d\u5b9a";
+    },
     get$settings() {
       return "\u8a2d\u5b9a";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "\u30b9\u30c6\u30fc\u30bf\u30b9";
+    },
+    get$statusExampleMessage() {
+      return "\u304a\u5143\u6c17\u3067\u3059\u304b\uff1f";
     },
     get$submit(_) {
       return "\u9001\u4fe1";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Send raw json";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Leave empty to clear your status.";
     },
     get$searchForUsers() {
       return "Search for @users...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_241", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "iBMGC7YVjP44xWxGN8FwYmhvpfw=");
+})($__dart_deferred_initializers__, "4rJZmFwmnAdNu5KR1JnlKnWTaiw=");
 ;
 //# sourceMappingURL=main.dart.js_241.part.js.map

@@ -807,6 +807,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$setChatDescription() {
       return "Iestat\u012bt t\u0113rz\u0113\u0161anas aprakstu";
     },
+    get$setStatus() {
+      return "Iestat\u012bt st\u0101vokli";
+    },
     get$settings() {
       return "Iestat\u012bjumi";
     },
@@ -836,6 +839,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$status(_) {
       return "St\u0101voklis";
+    },
+    get$statusExampleMessage() {
+      return "K\u0101 Tev \u0161odien kl\u0101jas?";
     },
     get$submit(_) {
       return "Iesniegt";
@@ -1118,6 +1124,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_sendraw() {
       return "Nos\u016bt\u012bt neapstr\u0101d\u0101tu JSON";
+    },
+    get$leaveEmptyToClearStatus() {
+      return "Atst\u0101t tuk\u0161u, lai not\u012br\u012btu savu st\u0101vokli.";
     },
     get$searchForUsers() {
       return "Mekl\u0113t @lietot\u0101jus...";
@@ -4371,6 +4380,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_245", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "zQYptTcYAoMpf6nfUuLu2FbiKWI=");
+})($__dart_deferred_initializers__, "EflfII7UTYI6ghC8txHfyGXTHMY=");
 ;
 //# sourceMappingURL=main.dart.js_245.part.js.map
