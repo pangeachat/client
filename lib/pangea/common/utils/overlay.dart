@@ -1,12 +1,12 @@
 import 'dart:developer';
 import 'dart:ui';
 
-import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
-import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
+import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
 import '../../../config/themes.dart';
 import '../../../widgets/matrix.dart';
 import 'error_handler.dart';
@@ -116,11 +116,10 @@ class OverlayUtil {
     halfMaxWidth,
   ) {
     debugPrint("Alternate target: $transformTargetId");
-    
+
     // Check whether alternate is possible to use
     // If not, return default values for hasTopOverflow and offset
     if (transformTargetId == null) {
-      debugPrint("Alternate transformTargetId is null");
       return (false, false, Offset.zero);
     }
 
@@ -129,74 +128,66 @@ class OverlayUtil {
 
     // Check whether alternate is possible to use
     if (layerLinkAndKey.key.currentContext == null) {
-      debugPrint("Alternate layerLinkAndKey is null");
+      debugPrint("Alternate layerLinkAndKey.key.currentContext is null");
       return (false, false, Offset.zero);
     }
 
     final RenderBox? targetRenderBox =
-        layerLinkAndKey.key.currentContext!.findRenderObject()
-                  as RenderBox?;
+        layerLinkAndKey.key.currentContext!.findRenderObject() as RenderBox?;
 
     // Check whether alternate is possible to use
     if (targetRenderBox == null || !targetRenderBox.hasSize) {
-      debugPrint("Alternate targetRenderBox is null or does not have a size");
       return (false, false, Offset.zero);
     }
 
     // Get relevant size/position variables
     final Offset transformTargetOffset =
         (targetRenderBox).localToGlobal(Offset.zero);
-            final Size alternateTransformTargetSize =
-                targetRenderBox.size;
+    final Size alternateTransformTargetSize = targetRenderBox.size;
 
-            final alternateHorizontalMidpoint =
+    final alternateHorizontalMidpoint =
         (transformTargetOffset.dx - columnWidth) +
-                    (alternateTransformTargetSize.width / 2);
+            (alternateTransformTargetSize.width / 2);
 
-            final alternateHasLeftOverflow =
-                (alternateHorizontalMidpoint - halfMaxWidth) < 10;
-            final alternateHasRightOverflow =
-                (alternateHorizontalMidpoint + halfMaxWidth) >
-                    (MediaQuery.of(context).size.width - columnWidth - 10);
+    final alternateHasLeftOverflow =
+        (alternateHorizontalMidpoint - halfMaxWidth) < 10;
+    final alternateHasRightOverflow =
+        (alternateHorizontalMidpoint + halfMaxWidth) >
+            (MediaQuery.of(context).size.width - columnWidth - 10);
 
-            // Standard margin between message and zoom card
-            const double standardMargin = 6;
+    // Standard margin between message and zoom card
+    const double standardMargin = 6;
 
-            // Calculate whether there is enough space above message
+    // Calculate whether there is enough space above message
     final hasTopOverflow =
-        (transformTargetOffset.dy -
-                    maxHeight -
-                    standardMargin) <
-                0;
+        (transformTargetOffset.dy - maxHeight - standardMargin) < 0;
 
     // If there is enough space above or below, the alternate will be used as the target
     if (!hasTopOverflow ||
         (transformTargetOffset.dy +
-                        alternateTransformTargetSize.height +
-                        maxHeight +
-                        standardMargin <
+                alternateTransformTargetSize.height +
+                maxHeight +
+                standardMargin <
             MediaQuery.sizeOf(context).height)) {
-
       // Copy horizontal offset calculations
-              double xOffset = 0;
+      double xOffset = 0;
 
-              MediaQuery.of(context).size.width -
-                  (alternateHorizontalMidpoint + halfMaxWidth);
-              if (alternateHasLeftOverflow) {
-                xOffset =
-                    (alternateHorizontalMidpoint - halfMaxWidth - 10) * -1;
-              } else if (alternateHasRightOverflow) {
-                xOffset = (MediaQuery.of(context).size.width - columnWidth) -
-                    (alternateHorizontalMidpoint + halfMaxWidth + 10);
-              }
+      MediaQuery.of(context).size.width -
+          (alternateHorizontalMidpoint + halfMaxWidth);
+      if (alternateHasLeftOverflow) {
+        xOffset = (alternateHorizontalMidpoint - halfMaxWidth - 10) * -1;
+      } else if (alternateHasRightOverflow) {
+        xOffset = (MediaQuery.of(context).size.width - columnWidth) -
+            (alternateHorizontalMidpoint + halfMaxWidth + 10);
+      }
 
       // Position word zoom card above/below message overlay by standard margin
       final offset =
-                  Offset(xOffset, standardMargin * (hasTopOverflow ? 1 : -1));
+          Offset(xOffset, standardMargin * (hasTopOverflow ? 1 : -1));
       // Alternate will be used
       // Return alternateHasTopOverflow and alternateOffset
       return (true, hasTopOverflow, offset);
-            }
+    }
 
     // Else don't use alternate; return default values for hasTopOverflow and offset
     return (false, false, Offset.zero);
@@ -236,44 +227,45 @@ class OverlayUtil {
 
       // If space for alternate is sufficient, do not perform normal calculations
       if (!useAlternate) {
-      final LayerLinkAndKey layerLinkAndKey =
-          MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
-      if (layerLinkAndKey.key.currentContext == null) {
-        debugPrint("layerLinkAndKey.key.currentContext is null");
-        return;
-      }
-
-      final RenderBox? targetRenderBox =
-          layerLinkAndKey.key.currentContext!.findRenderObject() as RenderBox?;
-
-      if (targetRenderBox != null && targetRenderBox.hasSize) {
-        final Offset transformTargetOffset =
-            (targetRenderBox).localToGlobal(Offset.zero);
-        final Size transformTargetSize = targetRenderBox.size;
-
-        final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
-            (transformTargetSize.width / 2);
-
-        final verticalMidpoint =
-            transformTargetOffset.dy + (transformTargetSize.height / 2);
-
-        final halfMaxWidth = maxWidth / 2;
-        final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
-        final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
-            (MediaQuery.of(context).size.width - columnWidth - 10);
-        hasTopOverflow = (verticalMidpoint - maxHeight) < 0;
-
-        double xOffset = 0;
-
-        MediaQuery.of(context).size.width - (horizontalMidpoint + halfMaxWidth);
-        if (hasLeftOverflow) {
-          xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
-        } else if (hasRightOverflow) {
-          xOffset = (MediaQuery.of(context).size.width - columnWidth) -
-              (horizontalMidpoint + halfMaxWidth + 10);
+        final LayerLinkAndKey layerLinkAndKey =
+            MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
+        if (layerLinkAndKey.key.currentContext == null) {
+          debugPrint("layerLinkAndKey.key.currentContext is null");
+          return;
         }
-        offset = Offset(xOffset, 0);
-      }
+
+        final RenderBox? targetRenderBox = layerLinkAndKey.key.currentContext!
+            .findRenderObject() as RenderBox?;
+
+        if (targetRenderBox != null && targetRenderBox.hasSize) {
+          final Offset transformTargetOffset =
+              (targetRenderBox).localToGlobal(Offset.zero);
+          final Size transformTargetSize = targetRenderBox.size;
+
+          final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
+              (transformTargetSize.width / 2);
+
+          final verticalMidpoint =
+              transformTargetOffset.dy + (transformTargetSize.height / 2);
+
+          final halfMaxWidth = maxWidth / 2;
+          final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
+          final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
+              (MediaQuery.of(context).size.width - columnWidth - 10);
+          hasTopOverflow = (verticalMidpoint - maxHeight) < 0;
+
+          double xOffset = 0;
+
+          MediaQuery.of(context).size.width -
+              (horizontalMidpoint + halfMaxWidth);
+          if (hasLeftOverflow) {
+            xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
+          } else if (hasRightOverflow) {
+            xOffset = (MediaQuery.of(context).size.width - columnWidth) -
+                (horizontalMidpoint + halfMaxWidth + 10);
+          }
+          offset = Offset(xOffset, 0);
+        }
       }
 
       final Widget child = addBorder

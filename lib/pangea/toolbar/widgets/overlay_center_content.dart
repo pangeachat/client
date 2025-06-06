@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/message_reactions.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -6,8 +10,6 @@ import 'package:fluffychat/pangea/toolbar/widgets/measure_render_box.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_message.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 class OverlayCenterContent extends StatelessWidget {
   final Event event;
@@ -71,31 +73,32 @@ class OverlayCenterContent extends StatelessWidget {
                   link: MatrixState.pAnyState
                       .layerLinkAndKey("${event.eventId}-overlay-bubble")
                       .link,
-                child: OverlayMessage(
+                  child: OverlayMessage(
                     key: MatrixState.pAnyState
                         .layerLinkAndKey("${event.eventId}-overlay-bubble")
                         .key,
-                  event,
-                  pangeaMessageEvent: pangeaMessageEvent,
-                  immersionMode: chatController.choreographer.immersionMode,
-                  controller: chatController,
-                  overlayController: overlayController,
-                  nextEvent: nextEvent,
-                  previousEvent: prevEvent,
-                  timeline: chatController.timeline!,
-                  sizeAnimation: sizeAnimation,
-                  // there's a split seconds between when the transition animation starts and
-                  // when the sizeAnimation is set when the original dimensions need to be enforced
-                  messageWidth: (sizeAnimation == null && isTransitionAnimation)
-                      ? messageWidth
-                      : null,
-                  messageHeight:
-                      (sizeAnimation == null && isTransitionAnimation)
-                          ? messageHeight
-                          : null,
-                  maxHeight: maxHeight,
-                  isTransitionAnimation: isTransitionAnimation,
-                  readingAssistanceMode: readingAssistanceMode,
+                    event,
+                    pangeaMessageEvent: pangeaMessageEvent,
+                    immersionMode: chatController.choreographer.immersionMode,
+                    controller: chatController,
+                    overlayController: overlayController,
+                    nextEvent: nextEvent,
+                    previousEvent: prevEvent,
+                    timeline: chatController.timeline!,
+                    sizeAnimation: sizeAnimation,
+                    // there's a split seconds between when the transition animation starts and
+                    // when the sizeAnimation is set when the original dimensions need to be enforced
+                    messageWidth:
+                        (sizeAnimation == null && isTransitionAnimation)
+                            ? messageWidth
+                            : null,
+                    messageHeight:
+                        (sizeAnimation == null && isTransitionAnimation)
+                            ? messageHeight
+                            : null,
+                    maxHeight: maxHeight,
+                    isTransitionAnimation: isTransitionAnimation,
+                    readingAssistanceMode: readingAssistanceMode,
                   ),
                 ),
               ),
