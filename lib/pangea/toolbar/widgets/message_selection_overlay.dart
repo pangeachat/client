@@ -331,7 +331,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         cardToShow: entry,
         transformTargetId: selectedToken!.text.uniqueKey,
         // Word zoom card may use message as target, if there is enough room
-        alternateTransformTargetId: pangeaMessageEvent!.event.eventId,
+        alternateTransformTargetId: "${event.eventId}-overlay-bubble",
         closePrevOverlay: false,
         backDropToDismiss: false,
         addBorder: false,
