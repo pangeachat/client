@@ -105,6 +105,103 @@ class OverlayUtil {
     }
   }
 
+  /// Check whether there is enough space to use the alternate target
+  /// In case of word zoom card, that is message overlay (instead of word token)
+  /// Returns (useAlternate, alternateHasTopOverflow, alternateOffset)
+  static (bool, bool, Offset) _checkAlternate(
+    transformTargetId,
+    context,
+    columnWidth,
+    maxHeight,
+    halfMaxWidth,
+  ) {
+    debugPrint("Alternate target: $transformTargetId");
+    
+    // Check whether alternate is possible to use
+    // If not, return default values for hasTopOverflow and offset
+    if (transformTargetId == null) {
+      debugPrint("Alternate transformTargetId is null");
+      return (false, false, Offset.zero);
+    }
+
+    final LayerLinkAndKey layerLinkAndKey =
+        MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
+
+    // Check whether alternate is possible to use
+    if (layerLinkAndKey.key.currentContext == null) {
+      debugPrint("Alternate layerLinkAndKey is null");
+      return (false, false, Offset.zero);
+    }
+
+    final RenderBox? targetRenderBox =
+        layerLinkAndKey.key.currentContext!.findRenderObject()
+                  as RenderBox?;
+
+    // Check whether alternate is possible to use
+    if (targetRenderBox == null || !targetRenderBox.hasSize) {
+      debugPrint("Alternate targetRenderBox is null or does not have a size");
+      return (false, false, Offset.zero);
+    }
+
+    // Get relevant size/position variables
+    final Offset transformTargetOffset =
+        (targetRenderBox).localToGlobal(Offset.zero);
+            final Size alternateTransformTargetSize =
+                targetRenderBox.size;
+
+            final alternateHorizontalMidpoint =
+        (transformTargetOffset.dx - columnWidth) +
+                    (alternateTransformTargetSize.width / 2);
+
+            final alternateHasLeftOverflow =
+                (alternateHorizontalMidpoint - halfMaxWidth) < 10;
+            final alternateHasRightOverflow =
+                (alternateHorizontalMidpoint + halfMaxWidth) >
+                    (MediaQuery.of(context).size.width - columnWidth - 10);
+
+            // Standard margin between message and zoom card
+            const double standardMargin = 6;
+
+            // Calculate whether there is enough space above message
+    final hasTopOverflow =
+        (transformTargetOffset.dy -
+                    maxHeight -
+                    standardMargin) <
+                0;
+
+    // If there is enough space above or below, the alternate will be used as the target
+    if (!hasTopOverflow ||
+        (transformTargetOffset.dy +
+                        alternateTransformTargetSize.height +
+                        maxHeight +
+                        standardMargin <
+            MediaQuery.sizeOf(context).height)) {
+
+      // Copy horizontal offset calculations
+              double xOffset = 0;
+
+              MediaQuery.of(context).size.width -
+                  (alternateHorizontalMidpoint + halfMaxWidth);
+              if (alternateHasLeftOverflow) {
+                xOffset =
+                    (alternateHorizontalMidpoint - halfMaxWidth - 10) * -1;
+              } else if (alternateHasRightOverflow) {
+                xOffset = (MediaQuery.of(context).size.width - columnWidth) -
+                    (alternateHorizontalMidpoint + halfMaxWidth + 10);
+              }
+
+      // Position word zoom card above/below message overlay by standard margin
+      final offset =
+                  Offset(xOffset, standardMargin * (hasTopOverflow ? 1 : -1));
+      // Alternate will be used
+      // Return alternateHasTopOverflow and alternateOffset
+      return (true, hasTopOverflow, offset);
+            }
+
+    // Else don't use alternate; return default values for hasTopOverflow and offset
+    return (false, false, Offset.zero);
+  }
+
   static showPositionedCard({
     required BuildContext context,
     required Widget cardToShow,
@@ -122,93 +219,22 @@ class OverlayUtil {
     bool ignorePointer = false,
   }) {
     try {
-      // Variables needed by both normal and alternate calculations
-      Offset offset = Offset.zero;
-      bool hasTopOverflow = false;
       final columnWidth = FluffyThemes.isColumnMode(context)
           ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
           : 0;
-      final halfMaxWidth = maxWidth / 2;
+
+      // Check whether to use the alternate
+      // If not, hasTopOverflow defaults to false
+      // and offset defaults to Offset.zero
+      var (useAlternate, hasTopOverflow, offset) = _checkAlternate(
+        alternateTransformTargetId,
+        context,
+        columnWidth,
+        maxHeight,
+        maxWidth / 2,
+      );
 
       // If space for alternate is sufficient, do not perform normal calculations
-      bool useAlternate = false;
-
-      // Test whether to use alternate target
-      // In case of word zoom card, that is message overlay (instead of word token)
-      if (alternateTransformTargetId != null) {
-        // Copy normal calculations, with alternateTransformTargetId instead of transformTargetId
-        final LayerLinkAndKey alternateLayerLinkAndKey =
-            MatrixState.pAnyState.layerLinkAndKey(alternateTransformTargetId);
-
-        if (alternateLayerLinkAndKey.key.currentContext != null) {
-          final RenderBox? alternateTargetRenderBox =
-              alternateLayerLinkAndKey.key.currentContext!.findRenderObject()
-                  as RenderBox?;
-
-          if (alternateTargetRenderBox != null &&
-              alternateTargetRenderBox.hasSize) {
-            final Offset alternateTransformTargetOffset =
-                (alternateTargetRenderBox).localToGlobal(Offset.zero);
-            final Size alternateTransformTargetSize =
-                alternateTargetRenderBox.size;
-
-            final alternateHorizontalMidpoint =
-                (alternateTransformTargetOffset.dx - columnWidth) +
-                    (alternateTransformTargetSize.width / 2);
-
-            final alternateVerticalMidpoint =
-                alternateTransformTargetOffset.dy +
-                    (alternateTransformTargetSize.height / 2);
-
-            final alternateHasLeftOverflow =
-                (alternateHorizontalMidpoint - halfMaxWidth) < 10;
-            final alternateHasRightOverflow =
-                (alternateHorizontalMidpoint + halfMaxWidth) >
-                    (MediaQuery.of(context).size.width - columnWidth - 10);
-
-            // Standard margin between message and zoom card
-            const double standardMargin = 6;
-
-            // Calculate whether there is enough space above message
-            hasTopOverflow =
-                (alternateTransformTargetOffset.dy -
-                    maxHeight -
-                    standardMargin) <
-                0;
-
-            // If there is enough space above or below, the message will be used as the target
-            useAlternate = !hasTopOverflow ||
-                (alternateTransformTargetOffset.dy +
-                        alternateTransformTargetSize.height +
-                        maxHeight +
-                        standardMargin <
-                    MediaQuery.sizeOf(context).height);
-
-            // If using message as target, copy horizontal offset calculations
-            if (useAlternate) {
-              double xOffset = 0;
-
-              MediaQuery.of(context).size.width -
-                  (alternateHorizontalMidpoint + halfMaxWidth);
-              if (alternateHasLeftOverflow) {
-                xOffset =
-                    (alternateHorizontalMidpoint - halfMaxWidth - 10) * -1;
-              } else if (alternateHasRightOverflow) {
-                xOffset = (MediaQuery.of(context).size.width - columnWidth) -
-                    (alternateHorizontalMidpoint + halfMaxWidth + 10);
-              }
-              offset =
-                  Offset(xOffset, standardMargin * (hasTopOverflow ? 1 : -1));
-            }
-
-            // Else reset shared variables to perform normal calculations below
-            else {
-              hasTopOverflow = false;
-            }
-          }
-        }
-      }
-
       if (!useAlternate) {
       final LayerLinkAndKey layerLinkAndKey =
           MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
