@@ -304,7 +304,7 @@ class RoomDetailsButtonRowState extends State<RoomDetailsButtonRow> {
     super.dispose();
   }
 
-  final double _buttonWidth = 165.0;
+  final double _buttonWidth = 125.0;
   final double _buttonHeight = 84.0;
   final double _miniButtonWidth = 50.0;
 
@@ -500,11 +500,6 @@ class RoomDetailsButtonRowState extends State<RoomDetailsButtonRow> {
           final mini = fullButtonCapacity < 4;
           final capacity = mini ? miniButtonCapacity : fullButtonCapacity;
 
-          debugPrint(
-            "RoomDetailsButtonRow: $fullButtonCapacity buttons available",
-          );
-          debugPrint("Available width: $availableWidth");
-
           List<ButtonDetails> mainViewButtons =
               buttons.where((button) => button.showInMainView).toList();
           final List<ButtonDetails> otherButtons =
@@ -603,44 +598,53 @@ class RoomDetailsButton extends StatelessWidget {
       return const SizedBox();
     }
 
-    return AbsorbPointer(
-      absorbing: !buttonDetails.enabled,
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: HoverBuilder(
-          builder: (context, hovered) {
-            return GestureDetector(
-              onTap: buttonDetails.onPressed,
-              child: Opacity(
-                opacity: buttonDetails.enabled ? 1.0 : 0.5,
-                child: Container(
-                  width: width,
-                  height: height,
-                  decoration: BoxDecoration(
-                    color: hovered
-                        ? Theme.of(context).colorScheme.primary.withAlpha(50)
-                        : Colors.transparent,
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  padding: const EdgeInsets.all(12.0),
-                  child: mini
-                      ? buttonDetails.icon
-                      : Column(
-                          spacing: 12.0,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            buttonDetails.icon,
-                            Text(
-                              buttonDetails.title,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(fontSize: 12.0),
+    return TooltipVisibility(
+      visible: mini,
+      child: Tooltip(
+        message: buttonDetails.title,
+        child: AbsorbPointer(
+          absorbing: !buttonDetails.enabled,
+          child: MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: HoverBuilder(
+              builder: (context, hovered) {
+                return GestureDetector(
+                  onTap: buttonDetails.onPressed,
+                  child: Opacity(
+                    opacity: buttonDetails.enabled ? 1.0 : 0.5,
+                    child: Container(
+                      width: width,
+                      height: height,
+                      decoration: BoxDecoration(
+                        color: hovered
+                            ? Theme.of(context)
+                                .colorScheme
+                                .primary
+                                .withAlpha(50)
+                            : Colors.transparent,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: const EdgeInsets.all(12.0),
+                      child: mini
+                          ? buttonDetails.icon
+                          : Column(
+                              spacing: 12.0,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                buttonDetails.icon,
+                                Text(
+                                  buttonDetails.title,
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(fontSize: 12.0),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                ),
-              ),
-            );
-          },
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
         ),
       ),
     );
