@@ -296,13 +296,18 @@ class MessageTokenButtonContent extends StatelessWidget {
       BorderRadius.circular(AppConfig.borderRadius - 4);
 
   Color _color(BuildContext context) {
+    final bool isLight = Theme.of(context).brightness == Brightness.light;
     if (activity == null) {
-      return Theme.of(context).colorScheme.primary;
+      return isLight
+          ? Theme.of(context).colorScheme.primary
+          : Theme.of(context).colorScheme.primaryContainer;
     }
     if (isActivityCompleteOrNullForToken) {
       return AppConfig.gold;
     }
-    return Theme.of(context).colorScheme.primary;
+    return isLight
+        ? Theme.of(context).colorScheme.primary
+        : Theme.of(context).colorScheme.primaryContainer;
   }
 
   @override
@@ -361,6 +366,7 @@ class MessageTokenButtonContent extends StatelessWidget {
               builder: (context, child) {
                 return Icon(
                   Symbols.toys_and_games,
+
                   color: _color(context),
                   size: sizeAnimation.value, // Use the new animation
                 );
@@ -384,10 +390,15 @@ class MessageTokenButtonContent extends StatelessWidget {
           borderRadius: _borderRadius,
           child: CustomPaint(
             painter: DottedBorderPainter(
-              color: Theme.of(context)
-                  .colorScheme
-                  .primary
-                  .withAlpha((colorAlpha * 255).toInt()),
+              color: Theme.of(context).brightness == Brightness.light
+                  ? Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withAlpha((colorAlpha * 255).toInt())
+                  : Theme.of(context)
+                      .colorScheme
+                      .primaryContainer
+                      .withAlpha((colorAlpha * 275).toInt()),
               borderRadius: _borderRadius,
             ),
             child: Container(
