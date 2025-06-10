@@ -3915,9 +3915,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Double-click to edit.";
     },
-    get$chooseCorrectLabel() {
-      return "Choose the correct label.";
-    },
     get$activityPlannerTitle() {
       return "Activity Planner";
     },
@@ -4419,6 +4416,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_230", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "pQPhFlPycHAbxWzpGppZ8Hn9yiI=");
+})($__dart_deferred_initializers__, "T7lVSe4vpZtzfWuUFnsw48AFg5Y=");
 ;
 //# sourceMappingURL=main.dart.js_230.part.js.map
