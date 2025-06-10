@@ -327,13 +327,21 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       pangeaMessageEvent: pangeaMessageEvent!,
       overlayController: this,
     );
+
     if (mounted) {
+      // Word zoom card may use message as target, if there is enough room
+      bool useAlternate = _useAlternate(
+        "${event.eventId}-overlay-bubble",
+        context,
+        AppConfig.toolbarMaxHeight,
+      );
       OverlayUtil.showPositionedCard(
         context: context,
         cardToShow: entry,
-        transformTargetId: selectedToken!.text.uniqueKey,
-        // Word zoom card may use message as target, if there is enough room
-        alternateTransformTargetId: "${event.eventId}-overlay-bubble",
+        transformTargetId: useAlternate
+            ? "${event.eventId}-overlay-bubble"
+            : selectedToken!.text.uniqueKey,
+        verticalMargin: useAlternate ? 6 : 0,
         closePrevOverlay: false,
         backDropToDismiss: false,
         addBorder: false,
@@ -342,6 +350,54 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         maxWidth: min(AppConfig.toolbarMinWidth, maxWidth),
       );
     }
+  }
+
+  /// Check whether there is enough space to position the
+  /// word zoom card above or below the message overlay
+  bool _useAlternate(
+    transformTargetId,
+    context,
+    maxHeight,
+  ) {
+    // Check whether alternate is possible to use
+    if (transformTargetId == null) {
+      return false;
+    }
+
+    final LayerLinkAndKey layerLinkAndKey =
+        MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
+
+    if (layerLinkAndKey.key.currentContext == null) {
+      debugPrint("Alternate layerLinkAndKey.key.currentContext is null");
+      return false;
+    }
+
+    final RenderBox? targetRenderBox =
+        layerLinkAndKey.key.currentContext!.findRenderObject() as RenderBox?;
+
+    // Check whether alternate is possible to use
+    if (targetRenderBox == null || !targetRenderBox.hasSize) {
+      return false;
+    }
+
+    // Get relevant size/position variables
+    final Offset transformTargetOffset =
+        (targetRenderBox).localToGlobal(Offset.zero);
+    final Size alternateTransformTargetSize = targetRenderBox.size;
+
+    const double standardMargin = 6;
+
+    // Calculate whether there is enough space above alternate
+    if (!((transformTargetOffset.dy - maxHeight - standardMargin) < 0)) {
+      return true;
+    }
+
+    // Calculate whether there is enough space below alternate
+    return (transformTargetOffset.dy +
+            alternateTransformTargetSize.height +
+            maxHeight +
+            standardMargin <
+        MediaQuery.sizeOf(context).height);
   }
 
   void updateToolbarMode(MessageMode mode) => setState(() {
