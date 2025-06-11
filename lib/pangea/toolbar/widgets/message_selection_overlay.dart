@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
@@ -330,7 +331,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
     if (mounted) {
       // Word zoom card may use message as target, if there is enough room
-      bool useAlternate = _useAlternate(
+      final bool useAlternate = _useAlternate(
         "${event.eventId}-overlay-bubble",
         context,
         AppConfig.toolbarMaxHeight,
