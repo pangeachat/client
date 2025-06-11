@@ -4399,7 +4399,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Start chatting!";
     },
     get$getStartedFriendsButton() {
-      return "Invite a friend";
+      return "Chat with a friend";
     },
     get$groupChat() {
       return "Group Chat";
@@ -4428,6 +4428,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_260", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "OSYFd+RgPf29IpCzM5WvKC4wEtc=");
+})($__dart_deferred_initializers__, "jTcga+Uhv6Snoj0cqdhExSel5Yk=");
 ;
 //# sourceMappingURL=main.dart.js_260.part.js.map
