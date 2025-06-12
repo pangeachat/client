@@ -144,9 +144,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMoreChatsFound() {
       return "Wala nang mga chat na nahanap\u2026";
     },
-    get$noChatsFoundHere() {
-      return "Walang pang mga chat na nahanap dito. Magsimula ng bagong chat kasama ang isang tao sa pamamagitan ng paggamit ng button sa ibaba. \u2935\ufe0f";
-    },
     get$space() {
       return "Espasyo";
     },
@@ -4413,6 +4410,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$speakingExercisesTooltip() {
       return "Speaking practice";
     },
+    get$noChatsFoundHereYet() {
+      return "No chats found here yet";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4428,6 +4428,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_212", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "7ISs4eRgDlO5sKXSYBibWH63B7g=");
+})($__dart_deferred_initializers__, "cfwCxyBBakte3QBOY7Nr00fhz20=");
 ;
 //# sourceMappingURL=main.dart.js_212.part.js.map

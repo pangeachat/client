@@ -144,9 +144,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMoreChatsFound() {
       return "\ucc44\ud305\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4...";
     },
-    get$noChatsFoundHere() {
-      return "\ub300\ud654\uac00 \ubc1c\uacac\ub418\uc9c0 \uc54a\uc558\uc2b5\ub2c8\ub2e4. \uc544\ub798 \ubc84\ud2bc\uc744 \uc0ac\uc6a9\ud558\uc5ec \uc0c8 \ub300\ud654\ub97c \uc2dc\uc791\ud574 \ubcf4\uc138\uc694. \u2935\ufe0f";
-    },
     get$space() {
       return "\uc2a4\ud398\uc774\uc2a4";
     },
@@ -4413,6 +4410,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$speakingExercisesTooltip() {
       return "Speaking practice";
     },
+    get$noChatsFoundHereYet() {
+      return "No chats found here yet";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4428,6 +4428,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_241", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "tBHxbomlkedLuTMG6jgqjWy2CLw=");
+})($__dart_deferred_initializers__, "iAJo66jUdqUepJbTnUfXN66xeQA=");
 ;
 //# sourceMappingURL=main.dart.js_241.part.js.map

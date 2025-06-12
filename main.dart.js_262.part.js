@@ -144,9 +144,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMoreChatsFound() {
       return "\u0411\u0456\u043b\u044c\u0448\u0435 \u0447\u0430\u0442\u0456\u0432 \u043d\u0435 \u0437\u043d\u0430\u0439\u0434\u0435\u043d\u043e...";
     },
-    get$noChatsFoundHere() {
-      return "\u0411\u0435\u0441\u0456\u0434 \u0449\u0435 \u043d\u0435\u043c\u0430\u0454. \u0420\u043e\u0437\u043f\u043e\u0447\u043d\u0456\u0442\u044c \u0441\u043f\u0456\u043b\u043a\u0443\u0432\u0430\u043d\u043d\u044f \u043d\u0430\u0442\u0438\u0441\u043d\u0443\u0432\u0448\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u043d\u0438\u0436\u0447\u0435. \u2935\ufe0f";
-    },
     get$space() {
       return "\u041f\u0440\u043e\u0441\u0442\u0456\u0440";
     },
@@ -4413,6 +4410,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$speakingExercisesTooltip() {
       return "Speaking practice";
     },
+    get$noChatsFoundHereYet() {
+      return "No chats found here yet";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4428,6 +4428,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "0hHprO+hxDcQ67pwYy2UPAmcKwA=");
+})($__dart_deferred_initializers__, "J5LIca3NekjH2dAjTm4rsn3xNuM=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map

@@ -144,9 +144,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMoreChatsFound() {
       return "\u6435\u5514\u5230\u66f4\u591a\u5048\u50be\u5566\u2026";
     },
-    get$noChatsFoundHere() {
-      return "\u66ab\u6642\u672a\u6709\u5048\u50be\u3002\u64b3\u4e0b\u9762\u7c92\u63a3\u540c\u4eba\u958b\u59cb\u50be\u5048 \u2935\ufe0f";
-    },
     get$space() {
       return "\u7a7a\u9593";
     },
@@ -4413,6 +4410,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$speakingExercisesTooltip() {
       return "Speaking practice";
     },
+    get$noChatsFoundHereYet() {
+      return "No chats found here yet";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4428,6 +4428,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "rH469xGkHCB15wGbLGGU5tUKUaQ=");
+})($__dart_deferred_initializers__, "/oGCyT8LnWXkuwr+AfNdi+1Y9Zs=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map

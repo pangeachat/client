@@ -144,9 +144,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMoreChatsFound() {
       return "Non se atopan m\xe1is charlas\u2026";
     },
-    get$noChatsFoundHere() {
-      return "Sen charlas por aqu\xed. Comeza unha nova conversa con algu\xe9n premendo no bot\xf3n de abaixo. \u2935\ufe0f";
-    },
     get$space() {
       return "Espazo";
     },
@@ -4413,6 +4410,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$speakingExercisesTooltip() {
       return "Speaking practice";
     },
+    get$noChatsFoundHereYet() {
+      return "No chats found here yet";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4428,6 +4428,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_217", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "lHJlu1b5d/solR3chU7wubszaug=");
+})($__dart_deferred_initializers__, "g3kxBDnQ/NZo7236z9n087idew8=");
 ;
 //# sourceMappingURL=main.dart.js_217.part.js.map

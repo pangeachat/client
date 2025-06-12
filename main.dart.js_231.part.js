@@ -144,9 +144,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMoreChatsFound() {
       return "Tidak ada chat lagi yang ditemukan...";
     },
-    get$noChatsFoundHere() {
-      return "Belum ada chat di sini. Mulai chat baru dengan seseorang menggunakan tombol di bawah. \u2935\ufe0f";
-    },
     get$space() {
       return "Space";
     },
@@ -4413,6 +4410,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$speakingExercisesTooltip() {
       return "Speaking practice";
     },
+    get$noChatsFoundHereYet() {
+      return "No chats found here yet";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4431,6 +4431,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_231", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "CeGWLGiPzw69y0/qheYenLyFL7o=");
+})($__dart_deferred_initializers__, "i2mqWkdJ3UDEa3xp0txVI/q0BhE=");
 ;
 //# sourceMappingURL=main.dart.js_231.part.js.map

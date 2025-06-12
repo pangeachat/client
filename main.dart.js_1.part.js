@@ -151,9 +151,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noMoreChatsFound() {
       return "\u627e\u4e0d\u5230\u66f4\u591a\u804a\u5929\u2026";
     },
-    get$noChatsFoundHere() {
-      return "\u6b64\u5904\u5c1a\u672a\u627e\u5230\u804a\u5929\u3002\u4f7f\u7528\u4e0b\u65b9\u6309\u94ae \u2935\ufe0f \u5f00\u59cb\u548c\u67d0\u4eba\u7684\u65b0\u804a\u5929";
-    },
     get$space() {
       return "\u7a7a\u95f4";
     },
@@ -4420,6 +4417,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$speakingExercisesTooltip() {
       return "Speaking practice";
     },
+    get$noChatsFoundHereYet() {
+      return "No chats found here yet";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4550,9 +4550,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noMoreChatsFound() {
       return "\u6c92\u6709\u66f4\u591a\u804a\u5929\u5ba4\u4e86...";
-    },
-    get$noChatsFoundHere() {
-      return "\u9084\u6c92\u958b\u59cb\u804a\u5929\u55ce\uff1f\u9ede\u64ca\u4e0b\u65b9\u6309\u9215\u627e\u500b\u4eba\u804a\u804a\u5427\u2935";
     },
     get$space() {
       return "\u7a7a\u9593";
@@ -5947,6 +5944,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "e4oDX1xC0cQ2LIs6SER8qJy4rUE=");
+})($__dart_deferred_initializers__, "09D2TerGG773QbulY8pdjiv4bNc=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
