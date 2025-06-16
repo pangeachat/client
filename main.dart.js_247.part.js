@@ -4414,6 +4414,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noChatsFoundHereYet() {
       return "No chats found here yet";
     },
+    get$transcriptionFailed() {
+      return "Failed to transcribe audio";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4429,6 +4432,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_247", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "sLuLNyVrxE2W0TN/k0wUnWYoXKg=");
+})($__dart_deferred_initializers__, "jrf1gDThciYUTfgLBHNdru5ERiE=");
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map
