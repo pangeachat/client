@@ -3624,12 +3624,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "Notificaciones desactivadas";
     },
-    get$requireCodeToJoin() {
-      return "Requiere c\xf3digo para unirse";
-    },
-    get$canFindInSearch() {
-      return "Se puede encontrar en la b\xfasqueda";
-    },
     get$addSubspaceWarning() {
       return "Una vez que agregues esto, no aparecer\xe1 en los resultados de b\xfasqueda p\xfablica, y ser\xe1 visible para todos los miembros del espacio principal.";
     },
@@ -4071,9 +4065,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockSpaceSuccess() {
       return "\xa1Has solicitado unirte a este espacio! Un administrador responder\xe1 a tu solicitud cuando la reciba \ud83d\ude04";
     },
-    get$joinByCode() {
-      return "Unirse por c\xf3digo";
-    },
     get$chooseWordAudioInstructionsBody() {
       return "Escucha el mensaje completo. Luego empareja los audios con las palabras.";
     },
@@ -4449,6 +4440,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "7eCV+c6aSvhPBvvU5Dy3eh33Af0=");
+})($__dart_deferred_initializers__, "Vo33xD3TRNaQFjyM1VeBaK0EGX8=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

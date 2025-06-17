@@ -3624,12 +3624,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "Notifications off";
     },
-    get$requireCodeToJoin() {
-      return "Require code to join";
-    },
-    get$canFindInSearch() {
-      return "Can find in search";
-    },
     get$addSubspaceWarning() {
       return "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.";
     },
@@ -4071,9 +4065,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockSpaceSuccess() {
       return "You have requested to join this space! An admin will respond to your request when they receive it \ud83d\ude00";
     },
-    get$joinByCode() {
-      return "Join by code";
-    },
     get$chooseWordAudioInstructionsBody() {
       return "Listen to the complete message. Then match the audios with the words.";
     },
@@ -4449,6 +4440,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_206", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Nsc/d95jibiPwkiP0IdLFEWcdhs=");
+})($__dart_deferred_initializers__, "KsYqi7uxzkjh7wz1KK9RbBn4yq0=");
 ;
 //# sourceMappingURL=main.dart.js_206.part.js.map

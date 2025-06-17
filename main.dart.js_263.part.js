@@ -3624,12 +3624,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "T\u1eaft th\xf4ng b\xe1o";
     },
-    get$requireCodeToJoin() {
-      return "Y\xeau c\u1ea7u m\xe3 \u0111\u1ec3 tham gia";
-    },
-    get$canFindInSearch() {
-      return "C\xf3 th\u1ec3 t\xecm th\u1ea5y qua t\xecm ki\u1ebfm";
-    },
     get$addSubspaceWarning() {
       return "Khi b\u1ea1n th\xeam kh\xf4ng gian con, n\xf3 s\u1ebd kh\xf4ng hi\u1ec3n th\u1ecb trong k\u1ebft qu\u1ea3 t\xecm ki\u1ebfm c\xf4ng khai v\xe0 m\u1ecdi th\xe0nh vi\xean c\u1ee7a kh\xf4ng gian cha \u0111\u1ec1u c\xf3 th\u1ec3 th\u1ea5y.";
     },
@@ -4071,9 +4065,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$knockSpaceSuccess() {
       return "B\u1ea1n \u0111\xe3 y\xeau c\u1ea7u tham gia kh\xf4ng gian n\xe0y! M\u1ed9t qu\u1ea3n tr\u1ecb vi\xean s\u1ebd ph\u1ea3n h\u1ed3i y\xeau c\u1ea7u c\u1ee7a b\u1ea1n khi h\u1ecd nh\u1eadn \u0111\u01b0\u1ee3c n\xf3 \ud83d\ude04";
     },
-    get$joinByCode() {
-      return "Tham gia b\u1eb1ng m\xe3";
-    },
     get$chooseWordAudioInstructionsBody() {
       return "Nghe to\xe0n b\u1ed9 tin nh\u1eafn. Sau \u0111\xf3, kh\u1edbp c\xe1c \xe2m thanh v\u1edbi c\xe1c t\u1eeb.";
     },
@@ -4449,6 +4440,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+nv7i83maYanLQ5L7C+AsbDmDZk=");
+})($__dart_deferred_initializers__, "yX4ON+yiB3PDSwm5KdppvwHGLlg=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
