@@ -4417,6 +4417,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$transcriptionFailed() {
       return "Failed to transcribe audio";
     },
+    get$aUserIsKnocking() {
+      return "1 user is requesting to join your space";
+    },
+    usersAreKnocking$1(users) {
+      return "" + users + " users are requesting to join your space";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4432,6 +4438,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_173", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Yce/tdepbzdPKAg5cFSRpCRELF0=");
+})($__dart_deferred_initializers__, "aIbR8LItYZXpmxUplndOmW7gB/E=");
 ;
 //# sourceMappingURL=main.dart.js_173.part.js.map
