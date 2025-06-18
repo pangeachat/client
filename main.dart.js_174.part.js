@@ -4426,6 +4426,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     usersAreKnocking$1(users) {
       return "" + users + " users are requesting to join your space";
     },
+    get$failedToFetchTranscription() {
+      return "Failed to fetch transcription";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4441,6 +4444,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_174", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "HHaHwlYVX6YPGvcGfv5p+z1kI7Q=");
+})($__dart_deferred_initializers__, "PPhyvNp8M5iaftpgcyxgzMiMGxI=");
 ;
 //# sourceMappingURL=main.dart.js_174.part.js.map
