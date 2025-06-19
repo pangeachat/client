@@ -25,6 +25,15 @@ class Onboarding extends StatefulWidget {
 class OnboardingController extends State<Onboarding> {
   static final GetStorage _onboardingStorage = GetStorage('onboarding_storage');
 
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the storage if needed
+    GetStorage.init('onboarding_storage').then((_) {
+      if (mounted) setState(() {});
+    });
+  }
+
   static bool get isClosed => _onboardingStorage.read('closed') ?? false;
 
   static bool get isComplete => OnboardingStepsEnum.values.every(
@@ -40,12 +49,12 @@ class OnboardingController extends State<Onboarding> {
           (r) => r.isSpace,
         );
       case OnboardingStepsEnum.inviteFriends:
-        return hasInvitedFriends;
+        return MatrixState.pangeaController.matrixState.client.rooms.any(
+          (r) =>
+              r.isDirectChat && r.directChatMatrixID != BotName.byEnvironment,
+        );
     }
   }
-
-  static bool get hasInvitedFriends =>
-      _onboardingStorage.read('invite_friends') ?? false;
 
   static bool get hasBotDM =>
       MatrixState.pangeaController.matrixState.client.rooms.any((room) {
@@ -66,8 +75,6 @@ class OnboardingController extends State<Onboarding> {
 
   Future<void> inviteFriends() async {
     FluffyShare.shareInviteLink(context);
-    await _onboardingStorage.write('invite_friends', true);
-    if (mounted) setState(() {});
   }
 
   Future<void> startChatWithBot() async {

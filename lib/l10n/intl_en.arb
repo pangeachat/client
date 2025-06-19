@@ -5011,8 +5011,26 @@
   "getStartedComplete": "You've completed this section!\nKeep exploring our amazing features by chatting with friends!",
   "getStartedFriendsComplete": "Woohoo! You've got friends! 😉",
   "getStartedBotChatButton": "Start chatting!",
-  "getStartedFriendsButton": "Invite a friend",
+  "getStartedFriendsButton": "Chat with a friend",
   "groupChat": "Group Chat",
   "directMessage": "Direct Message",
-  "newDirectMessage": "New direct message"
+  "newDirectMessage": "New direct message",
+  "speakingExercisesTooltip": "Speaking practice",
+  "noChatsFoundHereYet": "No chats found here yet",
+  "endNow": "End now",
+  "setDuration": "Set duration",
+  "activityEnded": "That’s a wrap for this activity! Big thanks to everyone for chatting, learning, and making this space so lively. Language grows with conversation, and every word exchanged brings us closer to confidence and fluency.\n\nKeep practicing, stay curious, and don’t be shy to keep the conversation going!",
+  "duration": "Duration",
+  "transcriptionFailed": "Failed to transcribe audio",
+  "aUserIsKnocking": "1 user is requesting to join your space",
+  "usersAreKnocking": "{users} users are requesting to join your space",
+  "@usersAreKnocking": {
+      "type": "int",
+      "placeholders": {
+          "users": {
+              "type": "int"
+          }
+      }
+  },
+  "failedToFetchTranscription": "Failed to fetch transcription"
 }

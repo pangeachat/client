@@ -185,6 +185,23 @@ class HtmlMessage extends StatelessWidget {
       result.add(html.substring(lastEnd)); // Remaining text after last tag
     }
 
+    final replyTagIndex = result.indexWhere(
+      (string) => string.contains('<mx-reply>'),
+    );
+    if (replyTagIndex != -1) {
+      final closingReplyTagIndex = result.indexWhere(
+        (string) => string.contains('</mx-reply>'),
+        replyTagIndex,
+      );
+      if (closingReplyTagIndex != -1) {
+        result.replaceRange(
+          replyTagIndex,
+          closingReplyTagIndex + 1,
+          [result.sublist(replyTagIndex, closingReplyTagIndex + 1).join()],
+        );
+      }
+    }
+
     for (final PangeaToken token in tokens ?? []) {
       final String tokenText = token.text.content;
       final substringIndex = result.indexWhere(
@@ -277,6 +294,23 @@ class HtmlMessage extends StatelessWidget {
     // We must not render tags which are not in the allow list:
     if (!allowedHtmlTags.contains(node.localName)) return const TextSpan();
 
+    // #Pangea
+    final renderer = TokenRenderingUtil(
+      pangeaMessageEvent: pangeaMessageEvent,
+      readingAssistanceMode: readingAssistanceMode,
+      existingStyle: pangeaMessageEvent != null
+          ? textStyle.merge(
+              AppConfig.messageTextStyle(
+                pangeaMessageEvent!.event,
+                textColor,
+              ),
+            )
+          : textStyle,
+      overlayController: overlayController,
+      isTransitionAnimation: isTransitionAnimation,
+    );
+    // Pangea#
+
     switch (node.localName) {
       // #Pangea
       case 'token':
@@ -290,26 +324,12 @@ class HtmlMessage extends StatelessWidget {
             ? isSelected!.call(token)
             : false;
 
-        final renderer = TokenRenderingUtil(
-          pangeaMessageEvent: pangeaMessageEvent,
-          readingAssistanceMode: readingAssistanceMode,
-          existingStyle: textStyle.merge(
-            AppConfig.messageTextStyle(
-              pangeaMessageEvent!.event,
-              textColor,
-            ),
-          ),
-          overlayController: overlayController,
-          isTransitionAnimation: isTransitionAnimation,
-        );
-
         final tokenWidth = renderer.tokenTextWidthForContainer(
           context,
           node.innerHtml,
         );
 
         return WidgetSpan(
-          alignment: PlaceholderAlignment.middle,
           child: CompositedTransformTarget(
             link: token != null && renderer.assignTokenKey
                 ? MatrixState.pAnyState
@@ -403,7 +423,10 @@ class HtmlMessage extends StatelessWidget {
                 avatar: user.avatarUrl,
                 uri: href,
                 outerContext: context,
-                fontSize: fontSize,
+                // #Pangea
+                // fontSize: fontSize,
+                fontSize: renderer.fontSize(context) ?? fontSize,
+                // Pangea#
                 color: linkStyle.color,
                 // #Pangea
                 userId: user.id,
@@ -424,7 +447,10 @@ class HtmlMessage extends StatelessWidget {
                 avatar: room?.avatar,
                 uri: href,
                 outerContext: context,
-                fontSize: fontSize,
+                // #Pangea
+                // fontSize: fontSize,
+                fontSize: renderer.fontSize(context) ?? fontSize,
+                // Pangea#
                 color: linkStyle.color,
               ),
             );
@@ -493,11 +519,33 @@ class HtmlMessage extends StatelessWidget {
               TextSpan(
                 children: [
                   if (node.parent?.localName == 'ul')
-                    const TextSpan(text: '• '),
+                    // #Pangea
+                    // const TextSpan(text: '• '),
+                    TextSpan(
+                      text: '• ',
+                      style: renderer.style(
+                        context,
+                        color: renderer.backgroundColor(
+                          context,
+                          false,
+                        ),
+                      ),
+                    ),
+                  // Pangea#
                   if (node.parent?.localName == 'ol')
                     TextSpan(
                       text:
                           '${(node.parent?.nodes.whereType<dom.Element>().toList().indexOf(node) ?? 0) + (int.tryParse(node.parent?.attributes['start'] ?? '1') ?? 1)}. ',
+                      // #Pangea
+                      // style: textStyle,
+                      style: renderer.style(
+                        context,
+                        color: renderer.backgroundColor(
+                          context,
+                          false,
+                        ),
+                      ),
+                      // Pangea#
                     ),
                   if (node.className == 'task-list-item')
                     WidgetSpan(
@@ -893,30 +941,56 @@ class MatrixPill extends StatelessWidget {
     return InkWell(
       splashColor: Colors.transparent,
       onTap: UrlLauncher(outerContext, uri).launchUrl,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Avatar(
-            mxContent: avatar,
-            name: name,
-            size: 16,
-            // #Pangea
-            userId: userId,
-            // Pangea#
-          ),
-          const SizedBox(width: 6),
-          Text(
-            name,
-            style: TextStyle(
-              color: color,
-              decorationColor: color,
-              decoration: TextDecoration.underline,
-              fontSize: fontSize,
-              height: 1.25,
+      // #Pangea
+      child: RichText(
+        textScaler: TextScaler.noScaling,
+        text: TextSpan(
+          children: [
+            WidgetSpan(
+              alignment: PlaceholderAlignment.middle,
+              child: Avatar(
+                mxContent: avatar,
+                name: name,
+                size: 16,
+                userId: userId,
+              ),
             ),
-          ),
-        ],
+            const WidgetSpan(child: SizedBox(width: 6)),
+            TextSpan(
+              text: name,
+              style: TextStyle(
+                color: color,
+                decorationColor: color,
+                decoration: TextDecoration.underline,
+                fontSize: fontSize,
+                height: 1.25,
+              ),
+            ),
+          ],
+        ),
       ),
+      // child: Row(
+      //   mainAxisSize: MainAxisSize.min,
+      //   children: [
+      //     Avatar(
+      //       mxContent: avatar,
+      //       name: name,
+      //       size: 16,
+      //     ),
+      //     const SizedBox(width: 6),
+      //     Text(
+      //       name,
+      //       style: TextStyle(
+      //         color: color,
+      //         decorationColor: color,
+      //         decoration: TextDecoration.underline,
+      //         fontSize: fontSize,
+      //         height: 1.25,
+      //       ),
+      //     ),
+      //   ],
+      // ),
+      // Pangea#
     );
   }
 }

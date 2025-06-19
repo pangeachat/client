@@ -22,7 +22,6 @@ import 'package:fluffychat/utils/file_description.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/event_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
-import '../../../widgets/fluffy_chat_app.dart';
 import '../../../widgets/matrix.dart';
 
 class AudioPlayerWidget extends StatefulWidget {
@@ -36,9 +35,10 @@ class AudioPlayerWidget extends StatefulWidget {
   final String roomId;
   final String senderId;
   final PangeaAudioFile? matrixFile;
-  final Function(bool)? setIsPlayingAudio;
   final ChatController chatController;
   final MessageOverlayController? overlayController;
+  final VoidCallback? onPlay;
+  final bool autoplay;
   // Pangea#
 
   static const int wavesCount = 40;
@@ -53,9 +53,10 @@ class AudioPlayerWidget extends StatefulWidget {
     required this.roomId,
     required this.senderId,
     this.matrixFile,
-    this.setIsPlayingAudio,
     required this.chatController,
     this.overlayController,
+    this.onPlay,
+    this.autoplay = false,
     // Pangea#
     super.key,
   });
@@ -76,9 +77,8 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
   String? _durationString;
 
   // #Pangea
-  StreamSubscription? _onShowToolbar;
   StreamSubscription? _onAudioPositionChanged;
-  StreamSubscription? _onPlayerStateChanged;
+  StreamSubscription? _onAudioStateChanged;
   // Pangea#
 
   @override
@@ -89,83 +89,76 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
         ? null
         : matrix.audioPlayer;
     if (audioPlayer != null) {
-      if (audioPlayer.playing && !audioPlayer.isAtEndPosition) {
-        // #Pangea
-        try {
-          // Pangea#
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            ScaffoldMessenger.of(matrix.context).showMaterialBanner(
-              MaterialBanner(
-                padding: EdgeInsets.zero,
-                leading: StreamBuilder(
-                  stream: audioPlayer.playerStateStream.asBroadcastStream(),
-                  builder: (context, _) => IconButton(
-                    onPressed: () {
-                      if (audioPlayer.isAtEndPosition) {
-                        audioPlayer.seek(Duration.zero);
-                      } else if (audioPlayer.playing) {
-                        audioPlayer.pause();
-                      } else {
-                        audioPlayer.play();
-                      }
-                    },
-                    icon: audioPlayer.playing && !audioPlayer.isAtEndPosition
-                        ? const Icon(Icons.pause_outlined)
-                        : const Icon(Icons.play_arrow_outlined),
-                  ),
-                ),
-                content: StreamBuilder(
-                  stream: audioPlayer.positionStream.asBroadcastStream(),
-                  builder: (context, _) => GestureDetector(
-                    onTap: () => FluffyChatApp.router.go(
-                      // #Pangea
-                      // '/rooms/${widget.event.room.id}?event=${widget.event.eventId}',
-                      '/rooms/${widget.roomId}?event=${widget.eventId}',
-                      // Pangea#
-                    ),
-                    child: Text(
-                      // #Pangea
-                      // '🎙️ ${audioPlayer.position.minuteSecondString} / ${audioPlayer.duration?.minuteSecondString} - ${widget.event.senderFromMemoryOrFallback.calcDisplayname()}',
-                      '🎙️ ${audioPlayer.position.minuteSecondString} / ${audioPlayer.duration?.minuteSecondString} - ${widget.event?.senderFromMemoryOrFallback.calcDisplayname() ?? widget.senderId}',
-                      // Pangea#
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ),
-                actions: [
-                  IconButton(
-                    onPressed: () {
-                      audioPlayer.pause();
-                      audioPlayer.dispose();
-                      matrix.voiceMessageEventId.value =
-                          matrix.audioPlayer = null;
+      // #Pangea
+      // if (audioPlayer.playing && !audioPlayer.isAtEndPosition) {
+      //   WidgetsBinding.instance.addPostFrameCallback((_) {
+      //     ScaffoldMessenger.of(matrix.context).showMaterialBanner(
+      //       MaterialBanner(
+      //         padding: EdgeInsets.zero,
+      //         leading: StreamBuilder(
+      //           stream: audioPlayer.playerStateStream.asBroadcastStream(),
+      //           builder: (context, _) => IconButton(
+      //             onPressed: () {
+      //               if (audioPlayer.isAtEndPosition) {
+      //                 audioPlayer.seek(Duration.zero);
+      //               } else if (audioPlayer.playing) {
+      //                 audioPlayer.pause();
+      //               } else {
+      //                 audioPlayer.play();
+      //               }
+      //             },
+      //             icon: audioPlayer.playing && !audioPlayer.isAtEndPosition
+      //                 ? const Icon(Icons.pause_outlined)
+      //                 : const Icon(Icons.play_arrow_outlined),
+      //           ),
+      //         ),
+      //         content: StreamBuilder(
+      //           stream: audioPlayer.positionStream.asBroadcastStream(),
+      //           builder: (context, _) => GestureDetector(
+      //             onTap: () => FluffyChatApp.router.go(
+      //               // #Pangea
+      //               // '/rooms/${widget.event.room.id}?event=${widget.event.eventId}',
+      //               '/rooms/${widget.roomId}?event=${widget.eventId}',
+      //               // Pangea#
+      //             ),
+      //             child: Text(
+      //               // #Pangea
+      //               // '🎙️ ${audioPlayer.position.minuteSecondString} / ${audioPlayer.duration?.minuteSecondString} - ${widget.event.senderFromMemoryOrFallback.calcDisplayname()}',
+      //               '🎙️ ${audioPlayer.position.minuteSecondString} / ${audioPlayer.duration?.minuteSecondString} - ${widget.event?.senderFromMemoryOrFallback.calcDisplayname() ?? widget.senderId}',
+      //               // Pangea#
+      //               maxLines: 1,
+      //               overflow: TextOverflow.ellipsis,
+      //             ),
+      //           ),
+      //         ),
+      //         actions: [
+      //           IconButton(
+      //             onPressed: () {
+      //               audioPlayer.pause();
+      //               audioPlayer.dispose();
+      //               matrix.voiceMessageEventId.value =
+      //                   matrix.audioPlayer = null;
 
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        ScaffoldMessenger.of(matrix.context)
-                            .clearMaterialBanners();
-                      });
-                    },
-                    icon: const Icon(Icons.close_outlined),
-                  ),
-                ],
-              ),
-            );
-          });
-          // #Pangea
-        } catch (e) {
-          audioPlayer.stop();
-        }
-        // Pangea#
-        return;
-      }
+      //               WidgetsBinding.instance.addPostFrameCallback((_) {
+      //                 ScaffoldMessenger.of(matrix.context)
+      //                     .clearMaterialBanners();
+      //               });
+      //             },
+      //             icon: const Icon(Icons.close_outlined),
+      //           ),
+      //         ],
+      //       ),
+      //     );
+      //   });
+      //   return;
+      // }
+      // Pangea#
       audioPlayer.pause();
       audioPlayer.dispose();
       matrix.voiceMessageEventId.value = matrix.audioPlayer = null;
       // #Pangea
-      _onShowToolbar?.cancel();
       _onAudioPositionChanged?.cancel();
-      _onPlayerStateChanged?.cancel();
+      _onAudioStateChanged?.cancel();
       // Pangea#
     }
   }
@@ -253,6 +246,7 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     // #Pangea
     // if (matrix.voiceMessageEventId.value != widget.event.eventId) return;
     if (matrix.voiceMessageEventId.value != widget.eventId) return;
+    matrix.audioPlayer?.dispose();
     // Pangea#
 
     final audioPlayer = matrix.audioPlayer = AudioPlayer();
@@ -270,12 +264,14 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       }
     });
 
-    _onPlayerStateChanged?.cancel();
-    _onPlayerStateChanged = audioPlayer.playingStream.listen(
-      (isPlaying) => setState(() {
-        widget.setIsPlayingAudio?.call(isPlaying);
-      }),
-    );
+    _onAudioStateChanged?.cancel();
+    _onAudioStateChanged =
+        matrix.audioPlayer!.playerStateStream.listen((state) {
+      if (state.processingState == ProcessingState.completed) {
+        matrix.audioPlayer!.stop();
+        matrix.audioPlayer!.seek(Duration.zero);
+      }
+    });
     // Pangea#
 
     // #Pangea
@@ -394,6 +390,10 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
       final duration = Duration(milliseconds: durationInt);
       _durationString = duration.minuteSecondString;
     }
+
+    // #Pangea
+    if (widget.autoplay) _onButtonTap();
+    // Pangea#
   }
 
   @override
@@ -465,7 +465,11 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                   onLongPress: () =>
                                       widget.event?.saveFile(context),
                                   // Pangea#
-                                  onTap: _onButtonTap,
+                                  onTap: () {
+                                    widget.onPlay != null
+                                        ? widget.onPlay!.call()
+                                        : _onButtonTap();
+                                  },
                                   child: Material(
                                     color: widget.color.withAlpha(64),
                                     borderRadius: BorderRadius.circular(64),
@@ -550,16 +554,25 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                           ),
                         ),
                         const SizedBox(width: 8),
-                        SizedBox(
-                          width: 36,
-                          child: Text(
-                            statusText,
-                            style: TextStyle(
-                              color: widget.color,
-                              fontSize: 12,
-                            ),
+                        // #Pangea
+                        // SizedBox(
+                        //   width: 36,
+                        //   child: Text(
+                        //     statusText,
+                        //     style: TextStyle(
+                        //       color: widget.color,
+                        //       fontSize: 12,
+                        //     ),
+                        //   ),
+                        // ),
+                        Text(
+                          statusText,
+                          style: TextStyle(
+                            color: widget.color,
+                            fontSize: 12,
                           ),
                         ),
+                        // Pangea#
                         const SizedBox(width: 8),
                         AnimatedCrossFade(
                           firstChild: Padding(

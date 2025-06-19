@@ -15,9 +15,9 @@ import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/search_title.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
+import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/onboarding/onboarding.dart';
 import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
@@ -375,6 +375,23 @@ class _SpaceViewState extends State<SpaceView> {
         if (!mounted) return;
         if (success.error != null) return;
         widget.onBack();
+      // #Pangea
+      case SpaceActions.delete:
+        if (space == null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(L10n.of(context).oopsSomethingWentWrong)),
+          );
+          return;
+        }
+        final resp = await showDialog<bool?>(
+          context: context,
+          builder: (_) => DeleteSpaceDialog(space: space),
+        );
+
+        if (resp == true) {
+          context.go("/rooms?spaceId=clear");
+        }
+      // Pangea#
     }
   }
 
@@ -662,12 +679,44 @@ class _SpaceViewState extends State<SpaceView> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.delete_outlined),
+                        // #Pangea
+                        // const Icon(Icons.delete_outlined),
+                        const Icon(Icons.logout_outlined),
+                        // Pangea#
                         const SizedBox(width: 12),
                         Text(L10n.of(context).leave),
                       ],
                     ),
                   ),
+                  // #Pangea
+                  if (Matrix.of(context)
+                          .client
+                          .getRoomById(widget.spaceId)
+                          ?.isRoomAdmin ??
+                      false)
+                    PopupMenuItem(
+                      value: SpaceActions.delete,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.delete_outlined,
+                            color:
+                                Theme.of(context).colorScheme.onErrorContainer,
+                          ),
+                          const SizedBox(width: 12),
+                          Text(
+                            L10n.of(context).delete,
+                            style: TextStyle(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onErrorContainer,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  // Pangea#
                 ],
               ),
             ],
@@ -955,16 +1004,6 @@ class _SpaceViewState extends State<SpaceView> {
                         );
                       },
                     ),
-                    // #Pangea
-                    const SliverPadding(padding: EdgeInsets.all(12.0)),
-                    if (!FluffyThemes.isColumnMode(context))
-                      SliverList.builder(
-                        itemCount: 1,
-                        itemBuilder: (context, _) {
-                          return const Onboarding();
-                        },
-                      ),
-                    // Pangea#
                     const SliverPadding(padding: EdgeInsets.only(top: 32)),
                   ],
                 );
@@ -978,4 +1017,7 @@ enum SpaceActions {
   settings,
   invite,
   leave,
+  // #Pangea
+  delete,
+  // Pangea#
 }
