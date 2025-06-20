@@ -1,11 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -22,6 +16,10 @@ import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
+import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
@@ -476,6 +474,29 @@ class GetAnalyticsController extends BaseController {
   ) async {
     // generate level up analytics as a construct summary
     ConstructSummary summary;
+
+    // How to get the most up-to-date construct summary
+    final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
+    final lastSavedSummary = analyticsRoom?.constructSummary;
+    debugPrint(
+      "Last saved construct summary: $lastSavedSummary",
+    );
+
+    if (lastSavedSummary != null) {
+      // How to get all summary events in the timeline
+      final timeline = await analyticsRoom!.getTimeline();
+      final summaryEvents = timeline.events
+          .where(
+            (e) => e.type == PangeaEventTypes.constructSummary,
+          )
+          .map(
+            (e) => ConstructSummary.fromJson(e.content),
+          )
+          .toList();
+
+      return lastSavedSummary;
+    }
+
     try {
       final int maxXP = constructListModel.calculateXpWithLevel(upperLevel);
       final int minXP = constructListModel.calculateXpWithLevel(lowerLevel);

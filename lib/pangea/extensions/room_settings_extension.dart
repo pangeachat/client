@@ -63,4 +63,23 @@ extension RoomSettingsRoomExtension on Room {
       return null;
     }
   }
+
+  ConstructSummary? get constructSummary {
+    final stateEvent = getState(PangeaEventTypes.constructSummary);
+    if (stateEvent == null) return null;
+
+    try {
+      return ConstructSummary.fromJson(stateEvent.content);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "roomID": id,
+          "stateEvent": stateEvent.content,
+        },
+      );
+      return null;
+    }
+  }
 }
