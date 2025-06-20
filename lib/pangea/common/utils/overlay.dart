@@ -112,6 +112,7 @@ class OverlayUtil {
     required double maxHeight,
     required double maxWidth,
     backDropToDismiss = true,
+    double verticalMargin = 0,
     Color? borderColor,
     bool closePrevOverlay = true,
     String? overlayKey,
@@ -152,7 +153,7 @@ class OverlayUtil {
         final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
         final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
             (MediaQuery.of(context).size.width - columnWidth - 10);
-        hasTopOverflow = (verticalMidpoint - maxHeight) < 0;
+        hasTopOverflow = (verticalMidpoint - verticalMargin - maxHeight) < 0;
 
         double xOffset = 0;
 
@@ -163,7 +164,8 @@ class OverlayUtil {
           xOffset = (MediaQuery.of(context).size.width - columnWidth) -
               (horizontalMidpoint + halfMaxWidth + 10);
         }
-        offset = Offset(xOffset, 0);
+        offset =
+            Offset(xOffset, hasTopOverflow ? verticalMargin : -verticalMargin);
       }
 
       final Widget child = addBorder

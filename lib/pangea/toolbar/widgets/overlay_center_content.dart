@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dar
 import 'package:fluffychat/pangea/toolbar/widgets/measure_render_box.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_message.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class OverlayCenterContent extends StatelessWidget {
   final Event event;
@@ -68,28 +69,37 @@ class OverlayCenterContent extends StatelessWidget {
             children: [
               MeasureRenderBox(
                 onChange: onChangeMessageSize,
-                child: OverlayMessage(
-                  event,
-                  pangeaMessageEvent: pangeaMessageEvent,
-                  immersionMode: chatController.choreographer.immersionMode,
-                  controller: chatController,
-                  overlayController: overlayController,
-                  nextEvent: nextEvent,
-                  previousEvent: prevEvent,
-                  timeline: chatController.timeline!,
-                  sizeAnimation: sizeAnimation,
-                  // there's a split seconds between when the transition animation starts and
-                  // when the sizeAnimation is set when the original dimensions need to be enforced
-                  messageWidth: (sizeAnimation == null && isTransitionAnimation)
-                      ? messageWidth
-                      : null,
-                  messageHeight:
-                      (sizeAnimation == null && isTransitionAnimation)
-                          ? messageHeight
-                          : null,
-                  maxHeight: maxHeight,
-                  isTransitionAnimation: isTransitionAnimation,
-                  readingAssistanceMode: readingAssistanceMode,
+                child: CompositedTransformTarget(
+                  link: MatrixState.pAnyState
+                      .layerLinkAndKey("${event.eventId}-overlay-bubble")
+                      .link,
+                  child: OverlayMessage(
+                    key: MatrixState.pAnyState
+                        .layerLinkAndKey("${event.eventId}-overlay-bubble")
+                        .key,
+                    event,
+                    pangeaMessageEvent: pangeaMessageEvent,
+                    immersionMode: chatController.choreographer.immersionMode,
+                    controller: chatController,
+                    overlayController: overlayController,
+                    nextEvent: nextEvent,
+                    previousEvent: prevEvent,
+                    timeline: chatController.timeline!,
+                    sizeAnimation: sizeAnimation,
+                    // there's a split seconds between when the transition animation starts and
+                    // when the sizeAnimation is set when the original dimensions need to be enforced
+                    messageWidth:
+                        (sizeAnimation == null && isTransitionAnimation)
+                            ? messageWidth
+                            : null,
+                    messageHeight:
+                        (sizeAnimation == null && isTransitionAnimation)
+                            ? messageHeight
+                            : null,
+                    maxHeight: maxHeight,
+                    isTransitionAnimation: isTransitionAnimation,
+                    readingAssistanceMode: readingAssistanceMode,
+                  ),
                 ),
               ),
               if (hasReactions)
