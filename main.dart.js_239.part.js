@@ -4428,6 +4428,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedToFetchTranscription() {
       return "Failed to fetch transcription";
     },
+    get$deleteEmptySpaceDesc() {
+      return "The space will be deleted for all participants. This action cannot be undone.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4443,6 +4446,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_239", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ge2e73mGvu9F92/lwi7rb32DWtQ=");
+})($__dart_deferred_initializers__, "BRj/SAP6n8yc38moa6Lf3btLhQU=");
 ;
 //# sourceMappingURL=main.dart.js_239.part.js.map
