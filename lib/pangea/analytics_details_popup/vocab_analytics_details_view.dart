@@ -28,9 +28,6 @@ class VocabDetailsView extends StatelessWidget {
 
   ConstructUses get _construct => constructId.constructUses;
 
-  String? get _userL1 =>
-      MatrixState.pangeaController.languageController.userL1?.langCode;
-
   /// Get the language code for the current lemma
   String? get _userL2 =>
       MatrixState.pangeaController.languageController.userL2?.langCode;
@@ -67,7 +64,7 @@ class VocabDetailsView extends StatelessWidget {
               );
             },
           ),
-          if (MatrixState.pangeaController.languageController.userL2 != null)
+          if (MatrixState.pangeaController.languageController.showTrancription)
             Padding(
               padding: const EdgeInsets.only(top: 4.0),
               child: PhoneticTranscriptionWidget(
@@ -135,8 +132,6 @@ class VocabDetailsView extends StatelessWidget {
                   : LemmaMeaningWidget(
                       constructUse: _construct,
                       langCode: _userL2!,
-                      controller: null,
-                      token: null,
                       style: Theme.of(context).textTheme.bodyLarge,
                       leading: TextSpan(
                         text: L10n.of(context).meaningSectionHeader,

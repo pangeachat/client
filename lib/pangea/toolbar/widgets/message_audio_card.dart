@@ -84,7 +84,7 @@ class MessageAudioCardState extends State<MessageAudioCard> {
         : audioFile != null
             ? AudioPlayerWidget(
                 null,
-                eventId: widget.messageEvent.eventId,
+                eventId: "${widget.messageEvent.eventId}_practice",
                 roomId: widget.messageEvent.room.id,
                 senderId: widget.messageEvent.senderId,
                 matrixFile: audioFile,
@@ -104,7 +104,7 @@ class MessageAudioCardState extends State<MessageAudioCard> {
 
 class PangeaAudioFile extends MatrixAudioFile {
   List<int>? waveform;
-  List<TTSToken> tokens;
+  List<TTSToken>? tokens;
 
   PangeaAudioFile({
     required super.bytes,

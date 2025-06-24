@@ -37,7 +37,6 @@ class AudioPlayerWidget extends StatefulWidget {
   final PangeaAudioFile? matrixFile;
   final ChatController chatController;
   final MessageOverlayController? overlayController;
-  final VoidCallback? onPlay;
   final bool autoplay;
   // Pangea#
 
@@ -55,7 +54,6 @@ class AudioPlayerWidget extends StatefulWidget {
     this.matrixFile,
     required this.chatController,
     this.overlayController,
-    this.onPlay,
     this.autoplay = false,
     // Pangea#
     super.key,
@@ -256,10 +254,10 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     _onAudioPositionChanged =
         matrix.audioPlayer!.positionStream.listen((state) {
       // Pass current timestamp to overlay, so it can highlight as necessary
-      if (widget.matrixFile != null) {
+      if (widget.matrixFile?.tokens != null) {
         widget.overlayController?.highlightCurrentText(
           state.inMilliseconds,
-          widget.matrixFile!.tokens,
+          widget.matrixFile!.tokens!,
         );
       }
     });
@@ -310,19 +308,34 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
     final audioPlayer = matrix.audioPlayer;
     if (audioPlayer == null) return;
     switch (audioPlayer.speed) {
+      // #Pangea
+      // case 1.0:
+      //   await audioPlayer.setSpeed(1.25);
+      //   break;
+      // case 1.25:
+      //   await audioPlayer.setSpeed(1.5);
+      //   break;
+      // case 1.5:
+      //   await audioPlayer.setSpeed(2.0);
+      //   break;
+      // case 2.0:
+      //   await audioPlayer.setSpeed(0.5);
+      //   break;
+      // case 0.5:
       case 1.0:
+        await audioPlayer.setSpeed(0.75);
+        break;
+      case 0.75:
+        await audioPlayer.setSpeed(0.5);
+        break;
+      case 0.5:
         await audioPlayer.setSpeed(1.25);
         break;
       case 1.25:
         await audioPlayer.setSpeed(1.5);
         break;
       case 1.5:
-        await audioPlayer.setSpeed(2.0);
-        break;
-      case 2.0:
-        await audioPlayer.setSpeed(0.5);
-        break;
-      case 0.5:
+      // Pangea#
       default:
         await audioPlayer.setSpeed(1.0);
         break;
@@ -465,11 +478,7 @@ class AudioPlayerState extends State<AudioPlayerWidget> {
                                   onLongPress: () =>
                                       widget.event?.saveFile(context),
                                   // Pangea#
-                                  onTap: () {
-                                    widget.onPlay != null
-                                        ? widget.onPlay!.call()
-                                        : _onButtonTap();
-                                  },
+                                  onTap: _onButtonTap,
                                   child: Material(
                                     color: widget.color.withAlpha(64),
                                     borderRadius: BorderRadius.circular(64),
