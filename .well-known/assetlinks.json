@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.talktolearn.chat",
+    "sha256_cert_fingerprints":
+    ["58:12:8B:3B:E7:FF:84:1C:37:FA:26:E3:35:E7:EF:71:80:F7:A1:02:AE:CE:8F:41:73:59:20:AB:7C:1C:1F:D8"]
+  }
+}]
