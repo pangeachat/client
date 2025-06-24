@@ -381,28 +381,37 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       }
 
       // Copies message_selection_positioner calculations
+      // with some adjustments for ease of comprehension
       // to determine whether the overlay message will be shifted
       final Offset originalMessageOffset =
           targetRenderBox.localToGlobal(Offset.zero);
-
-      final originalMessageBottomOffset = _mediaQuery.size.height -
-          originalMessageOffset.dy -
-          targetRenderBox.size.height;
 
       final audioTranscriptionHeight =
           pangeaMessageEvent?.isAudioMessage ?? false
               ? AppConfig.audioTranscriptionMaxHeight
               : 0;
 
+      // Space between top of screen and top of message
       final topOffset = originalMessageOffset.dy;
-      final bottomOffset = originalMessageBottomOffset -
-          _reactionsHeight -
+      // Space between bottom of screen and bottom of message
+      final bottomOffset = _mediaQuery.size.height -
+          originalMessageOffset.dy -
+          targetRenderBox.size.height;
+
+      // Space between top of screen and top of message overlay must
+      // include space for header, toolbar spacing, and any
+      // extra height from audio transcripts
+      final minOverlayTopOffset =
+          _headerHeight + AppConfig.toolbarSpacing + audioTranscriptionHeight;
+      // Space between bottom of screen and bottom of message overlay must
+      // include space for footer, toolbar spacing, reactions, and selection buttons
+      final minOverlayBottomOffset = _footerHeight +
+          AppConfig.toolbarSpacing +
+          _reactionsHeight +
           _selectionButtonsHeight;
 
-      final hasHeaderOverflow = topOffset <
-          (_headerHeight + AppConfig.toolbarSpacing + audioTranscriptionHeight);
-      final hasFooterOverflow =
-          bottomOffset < (_footerHeight + AppConfig.toolbarSpacing);
+      final hasHeaderOverflow = topOffset < minOverlayTopOffset;
+      final hasFooterOverflow = bottomOffset < minOverlayBottomOffset;
 
       // If there is both top and bottom overflow, there
       // will not be enough space for the zoom card
@@ -410,51 +419,50 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         return null;
       }
 
-      // Variables storing results of changes to position, or lack thereof
+      // Variables storing final top/bottom offsets
+      // to be used when determining space for word zoom card
       double finalBottomOffset = bottomOffset;
       double finalTopOffset = topOffset;
 
-      // Overlay shifts down
+      // Overlay shifts down to minimum viable top offset
       if (hasHeaderOverflow) {
-        final double difference = topOffset -
-            (_headerHeight +
-                AppConfig.toolbarSpacing +
-                audioTranscriptionHeight);
+        finalTopOffset = minOverlayTopOffset;
 
         finalBottomOffset = _mediaQuery.size.height -
-            originalMessageOffset.dy +
-            difference -
-            targetRenderBox.size.height -
-            _selectionButtonsHeight;
-
-        // Increase finalTopOffset by |difference|
-        finalTopOffset -= difference;
+            finalTopOffset -
+            targetRenderBox.size.height;
 
         // If fix to top overflow causes bottom overflow,
         // there will not be enough space for the zoom card
-        if (finalBottomOffset < _footerHeight + AppConfig.toolbarSpacing) {
+        if (finalBottomOffset < minOverlayBottomOffset) {
           return null;
         }
       }
-      // Overlay shifts up; positive difference
+      // Overlay shifts up to minimum viable bottom offset
       else if (hasFooterOverflow) {
-        // should it be AppConfig.toolbarSpacing * 2 to match
-        // returned offset in message_selection_positioner?
-        final double difference =
-            _footerHeight + AppConfig.toolbarSpacing - bottomOffset;
-        finalBottomOffset = _footerHeight + AppConfig.toolbarSpacing;
-        finalTopOffset = topOffset - difference - audioTranscriptionHeight;
+        finalBottomOffset = minOverlayBottomOffset;
+        finalTopOffset = _mediaQuery.size.height -
+            finalBottomOffset -
+            targetRenderBox.size.height;
       }
+
+      // To show the word zoom card above the message,
+      // there must be space for audio transcription,
+      // standard margin, and word zoom card
+      final minZoomTopOffset =
+          audioTranscriptionHeight + maxHeight + standardMargin;
+      // To show the word zoom card below the message,
+      // there must be space for the standard margin and word zoom card
+      final minZoomBottomOffset = maxHeight + standardMargin;
 
       double? yOffset;
 
-      // If there is space above,
-      // calculate vertical offset from current overlay message
-      if (finalTopOffset - maxHeight - standardMargin >= 0) {
+      // Determine whether there is space above
+      if (finalTopOffset >= minZoomTopOffset) {
         yOffset = -standardMargin;
       }
-      // Else check if there is space below
-      else if (finalBottomOffset - maxHeight - standardMargin >= 0) {
+      // Else determine whether there is space below
+      else if (finalBottomOffset >= minZoomBottomOffset) {
         yOffset = standardMargin;
       }
       // If there is not space above or below, return null
@@ -472,9 +480,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           (targetRenderBox.size.width / 2);
       final halfMaxWidth = min(AppConfig.toolbarMinWidth, maxWidth) / 2;
 
-      final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
+      final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 20;
       final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
-          (MediaQuery.of(context).size.width - columnWidth - 10);
+          (MediaQuery.of(context).size.width - columnWidth - 20);
       MediaQuery.of(context).size.width - (horizontalMidpoint + halfMaxWidth);
       if (hasLeftOverflow) {
         xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
@@ -483,6 +491,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
             (horizontalMidpoint + halfMaxWidth + 10);
       }
 
+      debugPrint("xOffset: $xOffset");
       return Offset(xOffset, yOffset);
     } catch (err, stack) {
       debugger(when: kDebugMode);
