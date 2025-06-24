@@ -10,6 +10,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -330,7 +331,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
     if (mounted) {
       // Word zoom card may use message as target, if there is enough room
-      final bool useAlternate = _useAlternate(
+      final Offset? alternateOffset = _alternateOffset(
         "${event.eventId}-overlay-bubble",
         context,
         AppConfig.toolbarMaxHeight,
@@ -338,10 +339,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       OverlayUtil.showPositionedCard(
         context: context,
         cardToShow: entry,
-        transformTargetId: useAlternate
+        transformTargetId: (alternateOffset != null)
             ? "${event.eventId}-overlay-bubble"
             : selectedToken!.text.uniqueKey,
-        verticalMargin: useAlternate ? 6 : 0,
+        alternateOffset: alternateOffset,
         closePrevOverlay: false,
         backDropToDismiss: false,
         addBorder: false,
@@ -354,50 +355,200 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// Check whether there is enough space to position the
   /// word zoom card above or below the message overlay
-  bool _useAlternate(
+  /// If so, return offset
+  Offset? _alternateOffset(
     transformTargetId,
     context,
     maxHeight,
   ) {
-    // Check whether alternate is possible to use
-    if (transformTargetId == null) {
+    try {
+      const standardMargin = 6.0;
+
+      // Check whether alternate is possible to use
+      if (transformTargetId == null) {
+        return null;
+      }
+      final LayerLinkAndKey layerLinkAndKey =
+          MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
+      if (layerLinkAndKey.key.currentContext == null) {
+        debugPrint("Alternate layerLinkAndKey.key.currentContext is null");
+        return null;
+      }
+      final RenderBox? targetRenderBox =
+          layerLinkAndKey.key.currentContext!.findRenderObject() as RenderBox?;
+      if (targetRenderBox == null || !targetRenderBox.hasSize) {
+        return null;
+      }
+
+      // Copies message_selection_positioner calculations
+      // to determine whether the overlay message will be shifted
+      final Offset originalMessageOffset =
+          targetRenderBox.localToGlobal(Offset.zero);
+
+      final originalMessageBottomOffset = _mediaQuery.size.height -
+          originalMessageOffset.dy -
+          targetRenderBox.size.height;
+
+      final audioTranscriptionHeight =
+          pangeaMessageEvent?.isAudioMessage ?? false
+              ? AppConfig.audioTranscriptionMaxHeight
+              : 0;
+
+      final topOffset = originalMessageOffset.dy;
+      final bottomOffset = originalMessageBottomOffset -
+          _reactionsHeight -
+          _selectionButtonsHeight;
+
+      final hasHeaderOverflow = topOffset <
+          (_headerHeight + AppConfig.toolbarSpacing + audioTranscriptionHeight);
+      final hasFooterOverflow =
+          bottomOffset < (_footerHeight + AppConfig.toolbarSpacing);
+
+      // If there is both top and bottom overflow, there
+      // will not be enough space for the zoom card
+      if (hasHeaderOverflow && hasFooterOverflow) {
+        return null;
+      }
+
+      // Variables storing results of changes to position, or lack thereof
+      double finalBottomOffset = bottomOffset;
+      double finalTopOffset = topOffset;
+
+      // Overlay shifts down
+      if (hasHeaderOverflow) {
+        final double difference = topOffset -
+            (_headerHeight +
+                AppConfig.toolbarSpacing +
+                audioTranscriptionHeight);
+
+        finalBottomOffset = _mediaQuery.size.height -
+            originalMessageOffset.dy +
+            difference -
+            targetRenderBox.size.height -
+            _selectionButtonsHeight;
+
+        // Increase finalTopOffset by |difference|
+        finalTopOffset -= difference;
+
+        // If fix to top overflow causes bottom overflow,
+        // there will not be enough space for the zoom card
+        if (finalBottomOffset < _footerHeight + AppConfig.toolbarSpacing) {
+          return null;
+        }
+      }
+      // Overlay shifts up; positive difference
+      else if (hasFooterOverflow) {
+        // should it be AppConfig.toolbarSpacing * 2 to match
+        // returned offset in message_selection_positioner?
+        final double difference =
+            _footerHeight + AppConfig.toolbarSpacing - bottomOffset;
+        finalBottomOffset = _footerHeight + AppConfig.toolbarSpacing;
+        finalTopOffset = topOffset - difference - audioTranscriptionHeight;
+      }
+
+      double? yOffset;
+
+      // If there is space above,
+      // calculate vertical offset from current overlay message
+      if (finalTopOffset - maxHeight - standardMargin >= 0) {
+        yOffset = -standardMargin;
+      }
+      // Else check if there is space below
+      else if (finalBottomOffset - maxHeight - standardMargin >= 0) {
+        yOffset = standardMargin;
+      }
+      // If there is not space above or below, return null
+      else {
+        return null;
+      }
+
+      // Copy xOffset calculations from showPositionedCard
+      double xOffset = 0;
+
+      final columnWidth = FluffyThemes.isColumnMode(context)
+          ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
+          : 0;
+      final horizontalMidpoint = (originalMessageOffset.dx - columnWidth) +
+          (targetRenderBox.size.width / 2);
+      final halfMaxWidth = min(AppConfig.toolbarMinWidth, maxWidth) / 2;
+
+      final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
+      final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
+          (MediaQuery.of(context).size.width - columnWidth - 10);
+      MediaQuery.of(context).size.width - (horizontalMidpoint + halfMaxWidth);
+      if (hasLeftOverflow) {
+        xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
+      } else if (hasRightOverflow) {
+        xOffset = (MediaQuery.of(context).size.width - columnWidth) -
+            (horizontalMidpoint + halfMaxWidth + 10);
+      }
+
+      return Offset(xOffset, yOffset);
+    } catch (err, stack) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(
+        e: err,
+        s: stack,
+        data: {},
+      );
+    }
+    return null;
+  }
+
+  double get _footerHeight {
+    final inputBarSize =
+        readingAssistanceMode == ReadingAssistanceMode.practiceMode ||
+                readingAssistanceMode == ReadingAssistanceMode.transitionMode
+            ? AppConfig.practiceModeInputBarHeight
+            : AppConfig.selectModeInputBarHeight;
+    return inputBarSize + (_mediaQuery.padding.bottom);
+  }
+
+  double get _headerHeight =>
+      (Theme.of(context).appBarTheme.toolbarHeight ??
+          AppConfig.defaultHeaderHeight) +
+      (_mediaQuery.padding.top);
+
+  /// Return height taken up by reactions to message,
+  /// or 0 if there are reactions to show
+  double get _reactionsHeight {
+    return (event
+            .aggregatedEvents(
+              widget.chatController.timeline!,
+              RelationshipTypes.reaction,
+            )
+            .where((e) => !e.redacted)
+            .isNotEmpty)
+        ? 28
+        : 0;
+  }
+
+  /// Return height taken up by selection buttons,
+  /// or 0 if buttons are not shown
+  double get _selectionButtonsHeight {
+    final showSelectionButtons = _showButtons &&
+        [ReadingAssistanceMode.selectMode, null]
+            .contains(readingAssistanceMode);
+    return showSelectionButtons ? AppConfig.toolbarButtonsHeight : 0;
+  }
+
+  MediaQueryData get _mediaQuery => MediaQuery.of(context);
+
+  bool get _showButtons {
+    if (!(pangeaMessageEvent?.shouldShowToolbar ?? false)) {
       return false;
     }
 
-    final LayerLinkAndKey layerLinkAndKey =
-        MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
-
-    if (layerLinkAndKey.key.currentContext == null) {
-      debugPrint("Alternate layerLinkAndKey.key.currentContext is null");
+    final type = pangeaMessageEvent?.event.messageType;
+    if (![MessageTypes.Text, MessageTypes.Audio].contains(type)) {
       return false;
     }
 
-    final RenderBox? targetRenderBox =
-        layerLinkAndKey.key.currentContext!.findRenderObject() as RenderBox?;
-
-    // Check whether alternate is possible to use
-    if (targetRenderBox == null || !targetRenderBox.hasSize) {
-      return false;
+    if (type == MessageTypes.Text) {
+      return pangeaMessageEvent?.messageDisplayLangIsL2 ?? false;
     }
 
-    // Get relevant size/position variables
-    final Offset transformTargetOffset =
-        (targetRenderBox).localToGlobal(Offset.zero);
-    final Size alternateTransformTargetSize = targetRenderBox.size;
-
-    const double standardMargin = 6;
-
-    // Calculate whether there is enough space above alternate
-    if (!((transformTargetOffset.dy - maxHeight - standardMargin) < 0)) {
-      return true;
-    }
-
-    // Calculate whether there is enough space below alternate
-    return (transformTargetOffset.dy +
-            alternateTransformTargetSize.height +
-            maxHeight +
-            standardMargin <
-        MediaQuery.sizeOf(context).height);
+    return true;
   }
 
   void updateToolbarMode(MessageMode mode) => setState(() {

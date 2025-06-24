@@ -112,7 +112,7 @@ class OverlayUtil {
     required double maxHeight,
     required double maxWidth,
     backDropToDismiss = true,
-    double verticalMargin = 0,
+    Offset? alternateOffset,
     Color? borderColor,
     bool closePrevOverlay = true,
     String? overlayKey,
@@ -122,50 +122,58 @@ class OverlayUtil {
     bool ignorePointer = false,
   }) {
     try {
-      final LayerLinkAndKey layerLinkAndKey =
-          MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
-      if (layerLinkAndKey.key.currentContext == null) {
-        debugPrint("layerLinkAndKey.key.currentContext is null");
-        return;
-      }
-
       Offset offset = Offset.zero;
-      final RenderBox? targetRenderBox =
-          layerLinkAndKey.key.currentContext!.findRenderObject() as RenderBox?;
-
       bool hasTopOverflow = false;
-      if (targetRenderBox != null && targetRenderBox.hasSize) {
-        final Offset transformTargetOffset =
-            (targetRenderBox).localToGlobal(Offset.zero);
-        final Size transformTargetSize = targetRenderBox.size;
 
-        final columnWidth = FluffyThemes.isColumnMode(context)
-            ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
-            : 0;
-
-        final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
-            (transformTargetSize.width / 2);
-
-        final verticalMidpoint =
-            transformTargetOffset.dy + (transformTargetSize.height / 2);
-
-        final halfMaxWidth = maxWidth / 2;
-        final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
-        final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
-            (MediaQuery.of(context).size.width - columnWidth - 10);
-        hasTopOverflow = (verticalMidpoint - verticalMargin - maxHeight) < 0;
-
-        double xOffset = 0;
-
-        MediaQuery.of(context).size.width - (horizontalMidpoint + halfMaxWidth);
-        if (hasLeftOverflow) {
-          xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
-        } else if (hasRightOverflow) {
-          xOffset = (MediaQuery.of(context).size.width - columnWidth) -
-              (horizontalMidpoint + halfMaxWidth + 10);
+      if (alternateOffset != null) {
+        // show below if vertical offset is positive
+        hasTopOverflow = alternateOffset.dy > 0;
+        offset = alternateOffset;
+      } else {
+        debugPrint("Not shown in overlay");
+        final LayerLinkAndKey layerLinkAndKey =
+            MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
+        if (layerLinkAndKey.key.currentContext == null) {
+          debugPrint("layerLinkAndKey.key.currentContext is null");
+          return;
         }
-        offset =
-            Offset(xOffset, hasTopOverflow ? verticalMargin : -verticalMargin);
+
+        final RenderBox? targetRenderBox = layerLinkAndKey.key.currentContext!
+            .findRenderObject() as RenderBox?;
+
+        if (targetRenderBox != null && targetRenderBox.hasSize) {
+          final Offset transformTargetOffset =
+              (targetRenderBox).localToGlobal(Offset.zero);
+          final Size transformTargetSize = targetRenderBox.size;
+
+          final columnWidth = FluffyThemes.isColumnMode(context)
+              ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
+              : 0;
+
+          final horizontalMidpoint = (transformTargetOffset.dx - columnWidth) +
+              (transformTargetSize.width / 2);
+
+          final verticalMidpoint =
+              transformTargetOffset.dy + (transformTargetSize.height / 2);
+
+          final halfMaxWidth = maxWidth / 2;
+          final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
+          final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
+              (MediaQuery.of(context).size.width - columnWidth - 10);
+          hasTopOverflow = (verticalMidpoint - maxHeight) < 0;
+
+          double xOffset = 0;
+
+          MediaQuery.of(context).size.width -
+              (horizontalMidpoint + halfMaxWidth);
+          if (hasLeftOverflow) {
+            xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
+          } else if (hasRightOverflow) {
+            xOffset = (MediaQuery.of(context).size.width - columnWidth) -
+                (horizontalMidpoint + halfMaxWidth + 10);
+          }
+          offset = Offset(xOffset, 0);
+        }
       }
 
       final Widget child = addBorder
