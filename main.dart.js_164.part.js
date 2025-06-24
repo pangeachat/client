@@ -4405,18 +4405,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noChatsFoundHereYet() {
       return "No chats found here yet";
     },
-    get$endNow() {
-      return "End now";
-    },
-    get$setDuration() {
-      return "Set duration";
-    },
-    get$activityEnded() {
-      return "That\u2019s a wrap for this activity! Big thanks to everyone for chatting, learning, and making this space so lively. Language grows with conversation, and every word exchanged brings us closer to confidence and fluency.\n\nKeep practicing, stay curious, and don\u2019t be shy to keep the conversation going!";
-    },
-    get$duration(_) {
-      return "Duration";
-    },
     get$transcriptionFailed() {
       return "Failed to transcribe audio";
     },
@@ -4447,6 +4435,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_164", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "cVD1CGQt3dOaQGon02GrD7JbmDU=");
+})($__dart_deferred_initializers__, "eop6jZd2kLcV5hM5hrqxt+90bt4=");
 ;
 //# sourceMappingURL=main.dart.js_164.part.js.map
