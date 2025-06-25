@@ -103,6 +103,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   double maxWidth = AppConfig.toolbarMinWidth;
 
+  List<PangeaToken> newTokens = [];
+
   /////////////////////////////////////
   /// Lifecycle
   /////////////////////////////////////
@@ -114,6 +116,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => widget.chatController.setSelectedEvent(event),
     );
+
+    newTokens = pangeaMessageEvent?.messageDisplayRepresentation?.tokens
+            ?.where((token) {
+          return token.lemma.saveVocab == true &&
+              token.vocabConstruct.uses.isEmpty;
+        }).toList() ??
+        [];
   }
 
   @override
@@ -576,6 +585,15 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     final isSelected = _selectedSpan?.offset == token.text.offset &&
         _selectedSpan?.length == token.text.length;
     return isSelected;
+  }
+
+  bool isNewToken(PangeaToken token) {
+    if (newTokens.isEmpty) return false;
+    return newTokens.any(
+      (t) =>
+          t.text.offset == token.text.offset &&
+          t.text.length == token.text.length,
+    );
   }
 
   bool isTokenHighlighted(PangeaToken token) {
