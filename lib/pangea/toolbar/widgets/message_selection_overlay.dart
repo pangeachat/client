@@ -103,6 +103,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   bool showSpeechTranslation = false;
   String? speechTranslation;
 
+  final StreamController contentChangedStream = StreamController.broadcast();
+
   double maxWidth = AppConfig.toolbarMinWidth;
 
   /////////////////////////////////////
@@ -123,6 +125,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => widget.chatController.clearSelectedEvents(),
     );
+    contentChangedStream.close();
     super.dispose();
   }
 
@@ -806,7 +809,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   void setTranslation(String value) {
     if (mounted) {
-      setState(() => translation = value);
+      setState(() {
+        translation = value;
+        contentChangedStream.add(true);
+      });
     }
   }
 
@@ -817,12 +823,18 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     if (showTranslation == show) return;
-    setState(() => showTranslation = show);
+    setState(() {
+      showTranslation = show;
+      contentChangedStream.add(true);
+    });
   }
 
   void setSpeechTranslation(String value) {
     if (mounted) {
-      setState(() => speechTranslation = value);
+      setState(() {
+        speechTranslation = value;
+        contentChangedStream.add(true);
+      });
     }
   }
 
@@ -833,7 +845,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     if (showSpeechTranslation == show) return;
-    setState(() => showSpeechTranslation = show);
+    setState(() {
+      showSpeechTranslation = show;
+      contentChangedStream.add(true);
+    });
   }
 
   void setTranscription(SpeechToTextModel value) {
@@ -841,13 +856,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       setState(() {
         transcriptionError = null;
         transcription = value;
+        contentChangedStream.add(true);
       });
     }
   }
 
   void setTranscriptionError(String value) {
     if (mounted) {
-      setState(() => transcriptionError = value);
+      setState(() {
+        transcriptionError = value;
+        contentChangedStream.add(true);
+      });
     }
   }
 
