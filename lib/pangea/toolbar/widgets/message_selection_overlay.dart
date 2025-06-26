@@ -469,20 +469,19 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           : 0;
       final horizontalMidpoint = (originalMessageOffset.dx - columnWidth) +
           (targetRenderBox.size.width / 2);
-      final halfMaxWidth = min(AppConfig.toolbarMinWidth, maxWidth) / 2;
+      const halfMaxWidth = AppConfig.toolbarMinWidth / 2;
 
       final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 20;
       final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
           (MediaQuery.of(context).size.width - columnWidth - 20);
-      MediaQuery.of(context).size.width - (horizontalMidpoint + halfMaxWidth);
       if (hasLeftOverflow) {
         xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
       } else if (hasRightOverflow) {
+        // Move left by halfMaxWidth, right by (screen width - horizontalMidpoint - 10)
         xOffset = (MediaQuery.of(context).size.width - columnWidth) -
             (horizontalMidpoint + halfMaxWidth + 10);
       }
 
-      debugPrint("xOffset: $xOffset");
       return Offset(xOffset, yOffset);
     } catch (err, stack) {
       debugger(when: kDebugMode);

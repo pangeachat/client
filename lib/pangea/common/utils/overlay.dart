@@ -130,7 +130,6 @@ class OverlayUtil {
         hasTopOverflow = alternateOffset.dy > 0;
         offset = alternateOffset;
       } else {
-        debugPrint("Not shown in overlay");
         final LayerLinkAndKey layerLinkAndKey =
             MatrixState.pAnyState.layerLinkAndKey(transformTargetId);
         if (layerLinkAndKey.key.currentContext == null) {
