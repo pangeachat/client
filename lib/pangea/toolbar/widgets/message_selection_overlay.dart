@@ -389,11 +389,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       final Offset originalMessageOffset =
           targetRenderBox.localToGlobal(Offset.zero);
 
-      final audioTranscriptionHeight =
-          pangeaMessageEvent?.isAudioMessage ?? false
-              ? AppConfig.audioTranscriptionMaxHeight
-              : 0;
-
       // Space between top of screen and top of message
       final topOffset = originalMessageOffset.dy;
       // Space between bottom of screen and bottom of message
@@ -402,10 +397,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
           targetRenderBox.size.height;
 
       // Space between top of screen and top of message overlay must
-      // include space for header, toolbar spacing, and any
-      // extra height from audio transcripts
-      final minOverlayTopOffset =
-          _headerHeight + AppConfig.toolbarSpacing + audioTranscriptionHeight;
+      // include space for header and toolbar spacing
+      final minOverlayTopOffset = _headerHeight + AppConfig.toolbarSpacing;
       // Space between bottom of screen and bottom of message overlay must
       // include space for footer, toolbar spacing, reactions, and selection buttons
       final minOverlayBottomOffset = _footerHeight +
@@ -449,23 +442,18 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
             targetRenderBox.size.height;
       }
 
-      // To show the word zoom card above the message,
-      // there must be space for audio transcription,
-      // standard margin, and word zoom card
-      final minZoomTopOffset =
-          audioTranscriptionHeight + maxHeight + standardMargin;
-      // To show the word zoom card below the message,
+      // To show the word zoom card above or below the message,
       // there must be space for the standard margin and word zoom card
-      final minZoomBottomOffset = maxHeight + standardMargin;
+      final minZoomOffset = maxHeight + standardMargin;
 
       double? yOffset;
 
       // Determine whether there is space above
-      if (finalTopOffset >= minZoomTopOffset) {
+      if (finalTopOffset >= minZoomOffset) {
         yOffset = -standardMargin;
       }
       // Else determine whether there is space below
-      else if (finalBottomOffset >= minZoomBottomOffset) {
+      else if (finalBottomOffset >= minZoomOffset) {
         yOffset = standardMargin;
       }
       // If there is not space above or below, return null
