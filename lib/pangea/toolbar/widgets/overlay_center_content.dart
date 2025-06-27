@@ -69,33 +69,39 @@ class OverlayCenterContent extends StatelessWidget {
             children: [
               MeasureRenderBox(
                 onChange: onChangeMessageSize,
-                child: OverlayMessage(
-                  key: isTransitionAnimation
-                      ? MatrixState.pAnyState
-                          .layerLinkAndKey('overlay_message_${event.eventId}')
-                          .key
-                      : null,
-                  event,
-                  pangeaMessageEvent: pangeaMessageEvent,
-                  immersionMode: chatController.choreographer.immersionMode,
-                  controller: chatController,
-                  overlayController: overlayController,
-                  nextEvent: nextEvent,
-                  previousEvent: prevEvent,
-                  timeline: chatController.timeline!,
-                  sizeAnimation: sizeAnimation,
-                  // there's a split seconds between when the transition animation starts and
-                  // when the sizeAnimation is set when the original dimensions need to be enforced
-                  messageWidth: (sizeAnimation == null && isTransitionAnimation)
-                      ? messageWidth
-                      : null,
-                  messageHeight:
-                      (sizeAnimation == null && isTransitionAnimation)
-                          ? messageHeight
-                          : null,
-                  maxHeight: maxHeight,
-                  isTransitionAnimation: isTransitionAnimation,
-                  readingAssistanceMode: readingAssistanceMode,
+                child: CompositedTransformTarget(
+                  link: MatrixState.pAnyState
+                      .layerLinkAndKey("${event.eventId}-overlay-bubble")
+                      .link,
+                  child: OverlayMessage(
+                    key: isTransitionAnimation
+                        ? MatrixState.pAnyState
+                            .layerLinkAndKey('${event.eventId}-overlay-bubble')
+                            .key
+                        : null,
+                    event,
+                    pangeaMessageEvent: pangeaMessageEvent,
+                    immersionMode: chatController.choreographer.immersionMode,
+                    controller: chatController,
+                    overlayController: overlayController,
+                    nextEvent: nextEvent,
+                    previousEvent: prevEvent,
+                    timeline: chatController.timeline!,
+                    sizeAnimation: sizeAnimation,
+                    // there's a split seconds between when the transition animation starts and
+                    // when the sizeAnimation is set when the original dimensions need to be enforced
+                    messageWidth:
+                        (sizeAnimation == null && isTransitionAnimation)
+                            ? messageWidth
+                            : null,
+                    messageHeight:
+                        (sizeAnimation == null && isTransitionAnimation)
+                            ? messageHeight
+                            : null,
+                    maxHeight: maxHeight,
+                    isTransitionAnimation: isTransitionAnimation,
+                    readingAssistanceMode: readingAssistanceMode,
+                  ),
                 ),
               ),
               if (hasReactions)
