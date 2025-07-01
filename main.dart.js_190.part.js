@@ -1573,9 +1573,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$interactiveTranslatorRequired() {
       return "Required";
     },
-    get$multiLingualSpace() {
-      return "Multilingual Space";
-    },
     get$waTooltip() {
       return "L2 use without assistance";
     },
@@ -4438,6 +4435,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_190", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "qqFxWk1rnds4g4UpILlh3TQHSIA=");
+})($__dart_deferred_initializers__, "JJ4d/7d6eYhsavRK3FxuQLLrTG4=");
 ;
 //# sourceMappingURL=main.dart.js_190.part.js.map
