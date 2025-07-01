@@ -4185,9 +4185,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Nuevos conceptos gramaticales";
     },
-    congratulationsOnReaching$1(level) {
-      return "\xa1Has alcanzado el Nivel " + level + "!";
-    },
     get$choosePracticeMode() {
       return "Haz clic en uno de los botones de arriba para comenzar una actividad de pr\xe1ctica";
     },
@@ -4356,6 +4353,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createYourSpace() {
       return "Create your space";
     },
+    get$youHaveLeveledUp() {
+      return "You have leveled up!";
+    },
     get$sendActivities() {
       return "Send activities";
     },
@@ -4399,7 +4399,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "New direct message";
     },
     get$speakingExercisesTooltip() {
-      return "Speaking practice";
+      return "Speaking";
     },
     get$noChatsFoundHereYet() {
       return "No chats found here yet";
@@ -4434,6 +4434,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "uZqmisym9kNCcaGvwLaBsAQB8BI=");
+})($__dart_deferred_initializers__, "9I5vG9ULCV0eQSPHLRJPzpa07HE=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

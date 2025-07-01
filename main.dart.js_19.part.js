@@ -3803,13 +3803,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Forms used in chats:";
     },
     get$writingExercisesTooltip() {
-      return "Writing practice";
+      return "Writing";
     },
     get$listeningExercisesTooltip() {
-      return "Listening practice";
+      return "Listening";
     },
     get$readingExercisesTooltip() {
-      return "Reading practice";
+      return "Reading";
     },
     get$meaningNotFound() {
       return "Meaning could not be found.";
@@ -4198,9 +4198,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "New grammar concepts";
     },
-    congratulationsOnReaching$1(level) {
-      return "You've reached Level " + level + "!";
-    },
     get$choosePracticeMode() {
       return "Click on one of the buttons above to start a practice activity";
     },
@@ -4369,6 +4366,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createYourSpace() {
       return "Create your space";
     },
+    get$youHaveLeveledUp() {
+      return "You have leveled up!";
+    },
     get$sendActivities() {
       return "Send activities";
     },
@@ -4412,7 +4412,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "New direct message";
     },
     get$speakingExercisesTooltip() {
-      return "Speaking practice";
+      return "Speaking";
     },
     get$noChatsFoundHereYet() {
       return "No chats found here yet";
@@ -6271,6 +6271,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_19", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+5zpp74PpNDLo9/Mr78z93Mb1VQ=");
+})($__dart_deferred_initializers__, "SxBndUuLQUFXFh+4/6C5xtUIYC8=");
 ;
 //# sourceMappingURL=main.dart.js_19.part.js.map

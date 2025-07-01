@@ -4185,9 +4185,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newGrammar() {
       return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p m\u1edbi";
     },
-    congratulationsOnReaching$1(level) {
-      return "B\u1ea1n \u0111\xe3 \u0111\u1ea1t \u0111\u1ebfn C\u1ea5p \u0111\u1ed9 " + level + "!";
-    },
     get$choosePracticeMode() {
       return "Nh\u1ea5p v\xe0o m\u1ed9t trong c\xe1c n\xfat \u1edf tr\xean \u0111\u1ec3 b\u1eaft \u0111\u1ea7u m\u1ed9t ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh";
     },
@@ -4356,6 +4353,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createYourSpace() {
       return "Create your space";
     },
+    get$youHaveLeveledUp() {
+      return "You have leveled up!";
+    },
     get$sendActivities() {
       return "Send activities";
     },
@@ -4399,7 +4399,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "New direct message";
     },
     get$speakingExercisesTooltip() {
-      return "Speaking practice";
+      return "Speaking";
     },
     get$noChatsFoundHereYet() {
       return "No chats found here yet";
@@ -4434,6 +4434,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Fg8GjS/CWVSPG61YlnDo7ku1Fxs=");
+})($__dart_deferred_initializers__, "DhOP4ZfBhk4ZGGKxjXEOHG78R1Q=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
