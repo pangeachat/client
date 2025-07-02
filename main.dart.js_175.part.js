@@ -4246,9 +4246,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteSpaceDesc() {
       return "The space and any selected chats and/or subspaces will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
     },
-    get$chatWithActivities() {
-      return "Chat with activities";
-    },
     get$findYourPeople() {
       return "Find your people";
     },
@@ -4432,6 +4429,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_175", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "BEzqfmRldW0hMnNjYFIbftxaSYc=");
+})($__dart_deferred_initializers__, "5R8/1RoU52SeFRnJjd0Cu/h/8uQ=");
 ;
 //# sourceMappingURL=main.dart.js_175.part.js.map
