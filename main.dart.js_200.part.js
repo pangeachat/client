@@ -3925,7 +3925,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Elige un tema...";
     },
     get$modeLabel() {
-      return "Modo";
+      return "Activity type";
     },
     get$modePlaceholder() {
       return "Elige un modo...";
@@ -4102,7 +4102,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Limpiar";
     },
     get$makeYourOwnActivity() {
-      return "Crea tu propia actividad";
+      return "Create your own activity";
     },
     get$featuredActivities() {
       return "Destacadas";
@@ -4413,6 +4413,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
+    get$regenerate() {
+      return "Regenerate";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4428,6 +4431,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "zvBQT52CnPh4rtFe7cb+eb1dluM=");
+})($__dart_deferred_initializers__, "+XNODswtPmQi5+siv/jlti1c9xI=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

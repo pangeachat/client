@@ -3938,7 +3938,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Choose a topic...";
     },
     get$modeLabel() {
-      return "Mode";
+      return "Activity type";
     },
     get$modePlaceholder() {
       return "Choose a mode...";
@@ -4115,7 +4115,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Clear";
     },
     get$makeYourOwnActivity() {
-      return "Make your own activity";
+      return "Create your own activity";
     },
     get$featuredActivities() {
       return "Featured";
@@ -4425,6 +4425,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
+    },
+    get$regenerate() {
+      return "Regenerate";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6265,6 +6268,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_19", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "0LR+RLBLMBv3PdVkly6/Uzx4FrI=");
+})($__dart_deferred_initializers__, "ZyEpOguebPXi1JlNWXs2CICbGRY=");
 ;
 //# sourceMappingURL=main.dart.js_19.part.js.map

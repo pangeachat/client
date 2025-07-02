@@ -3925,7 +3925,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ch\u1ecdn m\u1ed9t ch\u1ee7 \u0111\u1ec1...";
     },
     get$modeLabel() {
-      return "Ch\u1ebf \u0111\u1ed9";
+      return "Activity type";
     },
     get$modePlaceholder() {
       return "Ch\u1ecdn m\u1ed9t ch\u1ebf \u0111\u1ed9...";
@@ -4102,7 +4102,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "X\xf3a";
     },
     get$makeYourOwnActivity() {
-      return "T\u1ea1o ho\u1ea1t \u0111\u1ed9ng c\u1ee7a ri\xeang b\u1ea1n";
+      return "Create your own activity";
     },
     get$featuredActivities() {
       return "N\u1ed5i b\u1eadt";
@@ -4413,6 +4413,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
+    get$regenerate() {
+      return "Regenerate";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4428,6 +4431,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "tTnuhleb2KTYWqBzlkbHAqCel7A=");
+})($__dart_deferred_initializers__, "e5grdhLdhHluVnhJNeL+9EoSeGM=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
