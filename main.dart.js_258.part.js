@@ -3711,6 +3711,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$constructUseEmojiDesc() {
       return "Correct in emoji activity";
     },
+    get$constructUseCollected() {
+      return "Collected in chat";
+    },
     get$constructUseNanDesc() {
       return "Not applicable";
     },
@@ -4401,6 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_258", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "8JcpYbvPj7dy8xI5RoTs3wYV/9o=");
+})($__dart_deferred_initializers__, "StkZhd9axQst/1ehtQylT2ZZby0=");
 ;
 //# sourceMappingURL=main.dart.js_258.part.js.map
