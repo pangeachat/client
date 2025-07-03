@@ -4176,27 +4176,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$kick() {
       return "Expulsar";
     },
-    get$lemma() {
-      return "Lema";
-    },
-    get$grammarFeature() {
-      return "Caracter\xedstica gramatical";
-    },
-    get$grammarTag() {
-      return "Etiqueta gramatical";
-    },
-    get$forms() {
-      return "Formas";
-    },
-    get$exampleMessages() {
-      return "Mensajes de ejemplo";
-    },
-    get$timesUsedIndependently() {
-      return "Veces utilizado de forma independiente";
-    },
-    get$timesUsedWithAssistance() {
-      return "Veces utilizado con asistencia";
-    },
     get$goToSpaceButton() {
       return "Ir al espacio";
     },
@@ -4419,6 +4398,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "EgVc99jsWzxQBepWVV+qqRPOJQo=");
+})($__dart_deferred_initializers__, "qvEaUWXNRRM2/IYqIrRwIkCG7YI=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map
