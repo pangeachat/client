@@ -867,9 +867,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "Demasiadas solicitudes. \xa1Por favor int\xe9ntelo m\xe1s tarde!";
     },
-    get$tryToSendAgain() {
-      return "Intentar enviar nuevamente";
-    },
     get$unavailable() {
       return "Indisponible";
     },
@@ -1718,9 +1715,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$clickMessageBody() {
       return "Haz clic en un mensaje para herramientas de idioma como traducci\xf3n, reproducci\xf3n y m\xe1s!";
-    },
-    get$allDone() {
-      return "\xa1Listo!";
     },
     get$vocab() {
       return "Vocabulario";
@@ -2651,9 +2645,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Por favor, elija un nombre de usuario";
-    },
-    get$listen() {
-      return "Listas";
     },
     get$trialPeriodExpired() {
       return "Su periodo de prueba ha expirado";
@@ -4086,9 +4077,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Haz clic para mostrar las descripciones emergentes de instrucciones como si fueras un usuario nuevo.";
     },
-    get$selectForGrammar() {
-      return "Selecciona un \xedcono de gram\xe1tica para actividades y detalles.";
-    },
     get$newChatActivityTitle() {
       return "\xbfAgregar una actividad divertida?";
     },
@@ -4181,9 +4169,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newGrammar() {
       return "Nuevos conceptos gramaticales";
-    },
-    get$choosePracticeMode() {
-      return "Haz clic en uno de los botones de arriba para comenzar una actividad de pr\xe1ctica";
     },
     get$ban() {
       return "Prohibir";
@@ -4413,6 +4398,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
+    get$customReaction() {
+      return "Custom reaction";
+    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4431,6 +4419,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+XNODswtPmQi5+siv/jlti1c9xI=");
+})($__dart_deferred_initializers__, "EgVc99jsWzxQBepWVV+qqRPOJQo=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

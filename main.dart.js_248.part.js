@@ -867,9 +867,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "Prea multe cereri. V\u0103 rug\u0103m s\u0103 \xeencerca\u021bi din nou mai t\u0103rziu!";
     },
-    get$tryToSendAgain() {
-      return "\xcencerca\u021bi s\u0103 trimite\u021bi din nou";
-    },
     get$unavailable() {
       return "Nedisponibil";
     },
@@ -1718,9 +1715,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$clickMessageBody() {
       return "Click a message for language tools like translation, play back and more!";
-    },
-    get$allDone() {
-      return "All done!";
     },
     get$vocab() {
       return "Vocab";
@@ -2651,9 +2645,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Please choose a username";
-    },
-    get$listen() {
-      return "Listen";
     },
     get$trialPeriodExpired() {
       return "Your trial period has expired";
@@ -4086,9 +4077,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Click to show instruction tooltips like for a brand new user.";
     },
-    get$selectForGrammar() {
-      return "Select a grammar icon for activities and details.";
-    },
     get$newChatActivityTitle() {
       return "Add a fun activity?";
     },
@@ -4181,9 +4169,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newGrammar() {
       return "New grammar concepts";
-    },
-    get$choosePracticeMode() {
-      return "Click on one of the buttons above to start a practice activity";
     },
     get$ban() {
       return "Ban";
@@ -4413,6 +4398,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
+    get$customReaction() {
+      return "Custom reaction";
+    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4431,6 +4419,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_248", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "5nPEeeREKvbZBAZQLDdRbBX2rPg=");
+})($__dart_deferred_initializers__, "biDHLp+U6bBW3kgBOJDpuhOzim0=");
 ;
 //# sourceMappingURL=main.dart.js_248.part.js.map

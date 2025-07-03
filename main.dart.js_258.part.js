@@ -867,9 +867,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "\u0baa\u0bb2 \u0b95\u0bcb\u0bb0\u0bbf\u0b95\u0bcd\u0b95\u0bc8\u0b95\u0bb3\u0bcd. \u0ba4\u0baf\u0bb5\u0bc1\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0bb0\u0bcd \u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd!";
     },
-    get$tryToSendAgain() {
-      return "\u0bae\u0bc0\u0ba3\u0bcd\u0b9f\u0bc1\u0bae\u0bcd \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa \u0bae\u0bc1\u0baf\u0bb1\u0bcd\u0b9a\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
-    },
     get$unavailable() {
       return "\u0b95\u0bbf\u0b9f\u0bc8\u0b95\u0bcd\u0b95\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8";
     },
@@ -1718,9 +1715,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$clickMessageBody() {
       return "Click a message for language tools like translation, play back and more!";
-    },
-    get$allDone() {
-      return "All done!";
     },
     get$vocab() {
       return "Vocab";
@@ -2651,9 +2645,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Please choose a username";
-    },
-    get$listen() {
-      return "Listen";
     },
     get$trialPeriodExpired() {
       return "Your trial period has expired";
@@ -4086,9 +4077,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Click to show instruction tooltips like for a brand new user.";
     },
-    get$selectForGrammar() {
-      return "Select a grammar icon for activities and details.";
-    },
     get$newChatActivityTitle() {
       return "Add a fun activity?";
     },
@@ -4181,9 +4169,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newGrammar() {
       return "New grammar concepts";
-    },
-    get$choosePracticeMode() {
-      return "Click on one of the buttons above to start a practice activity";
     },
     get$ban() {
       return "Ban";
@@ -4413,6 +4398,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
+    get$customReaction() {
+      return "Custom reaction";
+    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4434,6 +4422,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_258", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ew83xqplnb0+ymMMEcDUy8zEKfM=");
+})($__dart_deferred_initializers__, "DU42MH/7QGLt/P5SE10qKZ5+4kE=");
 ;
 //# sourceMappingURL=main.dart.js_258.part.js.map

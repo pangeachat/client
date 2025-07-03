@@ -867,9 +867,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "\u0417\u0430\u0431\u0430\u0433\u0430\u0442\u043e \u0437\u0430\u043f\u0438\u0442\u0456\u0432. \u0421\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043f\u0456\u0437\u043d\u0456\u0448\u0435!";
     },
-    get$tryToSendAgain() {
-      return "\u0421\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435 \u043d\u0430\u0434\u0456\u0441\u043b\u0430\u0442\u0438 \u0449\u0435 \u0440\u0430\u0437";
-    },
     get$unavailable() {
       return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u0438\u0439";
     },
@@ -1718,9 +1715,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$clickMessageBody() {
       return "Click a message for language tools like translation, play back and more!";
-    },
-    get$allDone() {
-      return "All done!";
     },
     get$vocab() {
       return "Vocab";
@@ -2651,9 +2645,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Please choose a username";
-    },
-    get$listen() {
-      return "Listen";
     },
     get$trialPeriodExpired() {
       return "Your trial period has expired";
@@ -4086,9 +4077,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Click to show instruction tooltips like for a brand new user.";
     },
-    get$selectForGrammar() {
-      return "Select a grammar icon for activities and details.";
-    },
     get$newChatActivityTitle() {
       return "Add a fun activity?";
     },
@@ -4181,9 +4169,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newGrammar() {
       return "New grammar concepts";
-    },
-    get$choosePracticeMode() {
-      return "Click on one of the buttons above to start a practice activity";
     },
     get$ban() {
       return "Ban";
@@ -4413,6 +4398,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
+    get$customReaction() {
+      return "Custom reaction";
+    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4431,6 +4419,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_262", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "K30hb+x0AbpEjTTtOnOTJYDwU08=");
+})($__dart_deferred_initializers__, "1f4zgtMNNzZMLIxoUFmy+Mwomr4=");
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map
