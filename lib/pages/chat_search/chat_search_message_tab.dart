@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -55,7 +54,6 @@ class ChatSearchMessageTab extends StatelessWidget {
         // #Pangea
         events.removeWhere(
           (event) =>
-              !event.isVisibleInGui ||
               event.type != EventTypes.Message ||
               event.messageType != MessageTypes.Text,
         );
