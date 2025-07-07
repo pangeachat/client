@@ -3566,7 +3566,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Imperfect";
     },
     get$grammarCopyVERBFORMsup() {
-      return "SuApine";
+      return "Supine";
     },
     get$grammarCopyVERBFORMadn() {
       return "Adnominal";
@@ -4405,6 +4405,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_190", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "MFKYX6omQDQWrGVyR4z3hG1Y1KY=");
+})($__dart_deferred_initializers__, "zXDqNgOEo2QlGqxpM1w3+BEM4YM=");
 ;
 //# sourceMappingURL=main.dart.js_190.part.js.map
