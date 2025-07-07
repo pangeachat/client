@@ -53,7 +53,12 @@ class ChatSearchMessageTab extends StatelessWidget {
         }
         final events = snapshot.data?.$1 ?? [];
         // #Pangea
-        events.removeWhere((event) => !event.isVisibleInGui);
+        events.removeWhere(
+          (event) =>
+              !event.isVisibleInGui ||
+              event.type != EventTypes.Message ||
+              event.messageType != MessageTypes.Text,
+        );
         // Pangea#
 
         return SelectionArea(
