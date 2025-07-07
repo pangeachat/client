@@ -3948,12 +3948,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityPlannerOverviewInstructionsBody() {
       return "\xa1Elige un tema, modo, objetivo de aprendizaje y genera una actividad para el chat!";
     },
-    get$myBookmarkedActivities() {
-      return "Mis Actividades Marcadas";
-    },
-    get$noBookmarkedActivities() {
-      return "No hay actividades marcadas";
-    },
     get$activityTitle() {
       return "T\xedtulo de la Actividad";
     },
@@ -4097,9 +4091,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$featuredActivities() {
       return "Destacadas";
-    },
-    get$yourBookmarks() {
-      return "Marcados";
     },
     get$goToChat() {
       return "Ir al chat";
@@ -4386,6 +4377,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$regenerate() {
       return "Regenerate";
     },
+    get$mySavedActivities() {
+      return "My Saved Activities";
+    },
+    get$noSavedActivities() {
+      return "No saved activities";
+    },
+    get$yourSavedActivities() {
+      return "Saved Activities";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4401,6 +4401,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "7WQnfLhJirSfO6WMmU1RVluFCIQ=");
+})($__dart_deferred_initializers__, "IOd9EyJFtkCAL85BqfDJ9IeskX0=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

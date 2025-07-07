@@ -3948,12 +3948,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityPlannerOverviewInstructionsBody() {
       return "Ch\u1ecdn ch\u1ee7 \u0111\u1ec1, ch\u1ebf \u0111\u1ed9, m\u1ee5c ti\xeau h\u1ecdc t\u1eadp v\xe0 t\u1ea1o ho\u1ea1t \u0111\u1ed9ng cho cu\u1ed9c tr\xf2 chuy\u1ec7n!";
     },
-    get$myBookmarkedActivities() {
-      return "Ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 \u0111\xe1nh d\u1ea5u";
-    },
-    get$noBookmarkedActivities() {
-      return "Ch\u01b0a c\xf3 ho\u1ea1t \u0111\u1ed9ng n\xe0o \u0111\u01b0\u1ee3c \u0111\xe1nh d\u1ea5u";
-    },
     get$activityTitle() {
       return "Ti\xeau \u0111\u1ec1 ho\u1ea1t \u0111\u1ed9ng";
     },
@@ -4097,9 +4091,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$featuredActivities() {
       return "N\u1ed5i b\u1eadt";
-    },
-    get$yourBookmarks() {
-      return "\u0110\xe3 \u0111\xe1nh d\u1ea5u";
     },
     get$goToChat() {
       return "\u0110i \u0111\u1ebfn tr\xf2 chuy\u1ec7n";
@@ -4386,6 +4377,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$regenerate() {
       return "Regenerate";
     },
+    get$mySavedActivities() {
+      return "My Saved Activities";
+    },
+    get$noSavedActivities() {
+      return "No saved activities";
+    },
+    get$yourSavedActivities() {
+      return "Saved Activities";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4401,6 +4401,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "4KfUwlIGau5xizmEHa9Temg/BUA=");
+})($__dart_deferred_initializers__, "QWGsLs9c299xWAAfhGpRyNgyeTQ=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map
