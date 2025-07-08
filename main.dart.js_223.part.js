@@ -4386,6 +4386,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$yourSavedActivities() {
       return "Saved Activities";
     },
+    get$failedToPlayVideo() {
+      return "Failed to play video";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4401,6 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_223", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "3ZY1Z9e/vVQ0vcof4gn9+mivK70=");
+})($__dart_deferred_initializers__, "Pfz4teWxKJbVFuQxnH4hENqzNPk=");
 ;
 //# sourceMappingURL=main.dart.js_223.part.js.map
