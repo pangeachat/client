@@ -3576,6 +3576,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVERBFORMlng() {
       return "D\u1ea1ng d\xe0i";
     },
+    get$grammarCopyVERBFORMshrt() {
+      return "Short";
+    },
     get$grammarCopyVERBTYPEcaus() {
       return "\u0110\u1ed9ng t\u1eeb sai khi\u1ebfn";
     },
@@ -4404,6 +4407,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_264", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "HqVHnzYRbjuvgX8PfAaTpvblnas=");
+})($__dart_deferred_initializers__, "EhsdlZbCmAjqcppORVnq72DsMnU=");
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map
