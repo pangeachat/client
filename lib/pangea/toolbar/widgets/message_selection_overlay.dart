@@ -17,12 +17,10 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_activity_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_choice.dart';
@@ -74,8 +72,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /////////////////////////////////////
   MessageMode toolbarMode = MessageMode.noneSelected;
 
-  Map<ConstructIdentifier, LemmaInfoResponse>? messageLemmaInfos;
-
   /// set and cleared by the PracticeActivityCard
   /// has to be at this level so drag targets can access it
   PracticeActivityModel? activity;
@@ -121,13 +117,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => widget.chatController.setSelectedEvent(event),
     );
-    newTokens = pangeaMessageEvent?.messageDisplayRepresentation?.tokens
-            ?.where((token) {
-          return token.lemma.saveVocab == true &&
-              token.vocabConstruct.uses.isEmpty &&
-              messageInUserL2;
-        }).toList() ??
-        [];
   }
 
   @override
@@ -162,27 +151,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         );
       }
 
-      // Get all the lemma infos
-      final messageVocabConstructIds = pangeaMessageEvent!
-          .messageDisplayRepresentation!.tokensToSave
-          .map((e) => e.vocabConstructID)
-          .toList();
-
-      final List<Future<LemmaInfoResponse>> lemmaInfoFutures =
-          messageVocabConstructIds
-              .map((token) => token.getLemmaInfo())
-              .toList();
-
-      Future.wait(lemmaInfoFutures).then((resp) {
-        if (mounted) {
-          setState(
-            () => messageLemmaInfos = Map.fromIterables(
-              messageVocabConstructIds,
-              resp,
-            ),
-          );
-        }
-      });
+      newTokens = pangeaMessageEvent?.messageDisplayRepresentation?.tokens
+              ?.where((token) {
+            return token.lemma.saveVocab == true &&
+                token.vocabConstruct.uses.isEmpty &&
+                messageInUserL2;
+          }).toList() ??
+          [];
     } catch (e, s) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
@@ -195,7 +170,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     } finally {
       _initializeSelectedToken();
       _setInitialToolbarMode();
-      messageLemmaInfos ??= {};
       initialized = true;
       if (mounted) setState(() {});
     }
@@ -309,9 +283,9 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     if (mounted) setState(() {});
-    // Future.delayed(const Duration(milliseconds: 10), () {
-    //   _showReadingAssistanceContent();
-    // });
+    if (selectedToken != null && isNewToken(selectedToken!)) {
+      _onSelectNewToken(selectedToken!);
+    }
   }
 
   void _showReadingAssistanceContent() {
@@ -441,7 +415,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   bool get isTranslationUnlocked =>
       pangeaMessageEvent?.ownMessage == true ||
       !messageInUserL2 ||
-      (messageLemmaInfos?.isEmpty ?? false) ||
       isEmojiDone ||
       isMeaningDone ||
       isListeningDone ||
@@ -570,44 +543,45 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     updateSelectedSpan(token.text);
+  }
 
-    if (isNewToken(token)) {
-      Future.delayed(const Duration(milliseconds: 1700), () {
-        MatrixState.pangeaController.putAnalytics.setState(
-          AnalyticsStream(
-            eventId: event.eventId,
-            roomId: event.room.id,
-            constructs: [
-              OneConstructUse(
-                useType: ConstructUseTypeEnum.click,
-                lemma: token.lemma.text,
-                constructType: ConstructTypeEnum.vocab,
-                metadata: ConstructUseMetaData(
-                  roomId: event.room.id,
-                  timeStamp: DateTime.now(),
-                  eventId: event.eventId,
-                ),
-                category: token.pos,
-                form: token.text.content,
-                xp: ConstructUseTypeEnum.click.pointValue,
+  void _onSelectNewToken(PangeaToken token) {
+    if (!isNewToken(token)) return;
+    Future.delayed(const Duration(milliseconds: 1700), () {
+      MatrixState.pangeaController.putAnalytics.setState(
+        AnalyticsStream(
+          eventId: event.eventId,
+          roomId: event.room.id,
+          constructs: [
+            OneConstructUse(
+              useType: ConstructUseTypeEnum.click,
+              lemma: token.lemma.text,
+              constructType: ConstructTypeEnum.vocab,
+              metadata: ConstructUseMetaData(
+                roomId: event.room.id,
+                timeStamp: DateTime.now(),
+                eventId: event.eventId,
               ),
-            ],
-            targetID: token.text.uniqueKey,
-          ),
-        );
+              category: token.pos,
+              form: token.text.content,
+              xp: ConstructUseTypeEnum.click.pointValue,
+            ),
+          ],
+          targetID: token.text.uniqueKey,
+        ),
+      );
 
-        if (mounted) {
-          setState(() {
-            newTokens.removeWhere(
-              (t) =>
-                  t.text.offset == token.text.offset &&
-                  t.text.length == token.text.length &&
-                  t.lemma.text.equals(token.lemma.text),
-            );
-          });
-        }
-      });
-    }
+      if (mounted) {
+        setState(() {
+          newTokens.removeWhere(
+            (t) =>
+                t.text.offset == token.text.offset &&
+                t.text.length == token.text.length &&
+                t.lemma.text.equals(token.lemma.text),
+          );
+        });
+      }
+    });
   }
 
   PracticeTarget? practiceTargetForToken(PangeaToken token) {
