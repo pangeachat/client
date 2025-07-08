@@ -1382,7 +1382,10 @@ class ChatController extends State<ChatPageWithRoom>
         future: () async {
           if (event.status.isSent) {
             if (event.canRedact) {
-              await event.redactEvent(reason: reason);
+              // #Pangea
+              // await event.redactEvent(reason: reason);
+              await redactAndUnpinEvent(event, reason: reason);
+              // Pangea#
             } else {
               final client = currentRoomBundle.firstWhere(
                 (cl) => selectedEvents.first.senderId == cl!.userID,
@@ -1392,7 +1395,11 @@ class ChatController extends State<ChatPageWithRoom>
                 return;
               }
               final room = client.getRoomById(roomId)!;
-              await Event.fromJson(event.toJson(), room).redactEvent(
+              // #Pangea
+              // await Event.fromJson(event.toJson(), room).redactEvent(
+              await redactAndUnpinEvent(
+                Event.fromJson(event.toJson(), room),
+                // Pangea#
                 reason: reason,
               );
             }
@@ -1890,6 +1897,20 @@ class ChatController extends State<ChatPageWithRoom>
     );
     // Pangea#
   }
+
+  // #Pangea
+  Future<String?> redactAndUnpinEvent(
+    Event event, {
+    String? reason,
+    String? txid,
+  }) async {
+    final events = room.pinnedEventIds
+      ..removeWhere((oldEvent) => oldEvent == event.eventId);
+    room.setPinnedEvents(events);
+
+    return await room.redactEvent(event.eventId, reason: reason, txid: txid);
+  }
+// Pangea#
 
   Timer? _storeInputTimeoutTimer;
   Duration storeInputTimeout = const Duration(milliseconds: 500);
