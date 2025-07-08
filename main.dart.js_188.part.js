@@ -53,10 +53,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Importer fra .zip fil";
     },
     get$exportEmotePack() {
-      return "Export Emote pack as .zip";
+      return "Eksport\xe9r Emote-pakke som .zip-fil";
     },
     get$replace(_) {
-      return "Replace";
+      return "Erstat";
     },
     aboutHomeserver$1(homeserver) {
       return "About " + homeserver;
@@ -1533,6 +1533,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$commandHint_logoutall() {
       return "Logout all active devices";
+    },
+    get$customReaction() {
+      return "Custom reaction";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
@@ -4372,9 +4375,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
-    get$customReaction() {
-      return "Custom reaction";
-    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4402,6 +4402,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_188", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "VTV2w70vEuIz9z5GdxOcxmC5hBg=");
+})($__dart_deferred_initializers__, "jB7jS+LNUMhVd2RuBrtjeWkOq9E=");
 ;
 //# sourceMappingURL=main.dart.js_188.part.js.map

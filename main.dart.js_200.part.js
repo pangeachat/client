@@ -28,10 +28,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "El archivo no es una imagen.";
     },
     get$setCustomPermissionLevel() {
-      return "Establecer nivel de permiso personalizado";
+      return "Agregar nivel personalizado de permiso";
     },
     get$setPermissionsLevelDescription() {
-      return "Por favor, elige un rol predefinido a continuaci\xf3n o ingresa un nivel de permiso personalizado entre 0 y 100.";
+      return "Por favor elige un rol predeterminado o un nivel de permiso personalizado entre 0 a 100.";
     },
     get$ignoreUser() {
       return "Ignorar usuario";
@@ -85,7 +85,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Administrador";
     },
     get$commandHint_roomupgrade() {
-      return "Mejorar esta sala a la versi\xf3n de sala dada";
+      return "Actualizar este chat a la versi\xf3n de chat dada";
     },
     get$commandHint_googly() {
       return "Enviar unos ojos saltones";
@@ -334,13 +334,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "No se pudo descifrar el mensaje: " + error;
     },
     get$checkList() {
-      return "Check list";
+      return "Lista de tareas";
     },
     countParticipants$1(count) {
       return "" + count + " participantes";
     },
     countInvited$1(count) {
-      return "" + count + " invited";
+      return "" + count + " invitado";
     },
     get$create(_) {
       return "Crear";
@@ -1489,7 +1489,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Regla de notificaci\xf3n desconocida '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - Voice message from " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Mensaje de voz de " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
       return "Si eliminas este ajuste de notificaci\xf3n, esto no se puede deshacer.";
@@ -1528,10 +1528,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aprobar";
     },
     get$commandHint_logout() {
-      return "Logout your current device";
+      return "Salir del dispositivo actual";
     },
     get$commandHint_logoutall() {
-      return "Logout all active devices";
+      return "Salir de todos los dispositivos activos";
+    },
+    get$customReaction() {
+      return "Custom reaction";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Escribe en " + l1 + " o " + l2 + "...";
@@ -4371,9 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
-    get$customReaction() {
-      return "Custom reaction";
-    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4401,6 +4401,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_200", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "IOd9EyJFtkCAL85BqfDJ9IeskX0=");
+})($__dart_deferred_initializers__, "17HTSb9U0hCnTYGCRlbDeM6llx8=");
 ;
 //# sourceMappingURL=main.dart.js_200.part.js.map

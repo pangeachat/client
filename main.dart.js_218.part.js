@@ -1489,7 +1489,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Regra push desco\xf1ecida '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Mensaxe de voz de  " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
       return "Se omites este axuste de notificaci\xf3ns non poder\xe1s desfacer a acci\xf3n.";
@@ -1528,10 +1528,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aprobar";
     },
     get$commandHint_logout() {
-      return "Logout your current device";
+      return "Fechar a sesi\xf3n no dispositivo actual";
     },
     get$commandHint_logoutall() {
-      return "Logout all active devices";
+      return "Fechar a sesi\xf3n en todos os dispositivos activos";
+    },
+    get$customReaction() {
+      return "Custom reaction";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
@@ -4371,9 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
-    get$customReaction() {
-      return "Custom reaction";
-    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4401,6 +4401,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_218", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "O7k2k/6nZSe78/wE69xqSi9x83o=");
+})($__dart_deferred_initializers__, "zfh4MKhmztwp9Rjy+4ijrz5kXx0=");
 ;
 //# sourceMappingURL=main.dart.js_218.part.js.map

@@ -178,7 +178,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return username + " muutis vestluse uueks kirjelduseks '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " muutis oma uueks vestlusnimeks '" + chatname + "'";
+      return username + " muutis vestluse uueks nimeks '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
       return username + " muutis vestlusega seotud \xf5igusi";
@@ -1489,7 +1489,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "T\xf5uketeavituse tundmatu reegel '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - H\xe4\xe4ls\xf5num kasutajalt " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
       return "Kui sa kustutad selle teavituse seadistuse, siis seda tegevust tagasi v\xf5tta ei saa.";
@@ -1528,10 +1528,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kiida heaks";
     },
     get$commandHint_logout() {
-      return "Logout your current device";
+      return "Logi oma praegusest seadmest v\xe4lja";
     },
     get$commandHint_logoutall() {
-      return "Logout all active devices";
+      return "Logi k\xf5ikidest aktiivsetest seadmetest v\xe4lja";
+    },
+    get$customReaction() {
+      return "Custom reaction";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
@@ -4371,9 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
-    get$customReaction() {
-      return "Custom reaction";
-    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4401,6 +4401,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_207", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "S5BmBcOZC0PZ9fachKFvGJfgJks=");
+})($__dart_deferred_initializers__, "gZFAWZ5g6yrxt3T63+v43Irs0Jo=");
 ;
 //# sourceMappingURL=main.dart.js_207.part.js.map

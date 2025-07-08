@@ -1489,7 +1489,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Aturan dorongan '" + rule + "' tidak diketahui";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Pesan suara dari " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
       return "Jika kamu menghapus pengaturan notifikasi ini, maka tidak dapat diurungkan.";
@@ -1528,10 +1528,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Terima";
     },
     get$commandHint_logout() {
-      return "Logout your current device";
+      return "Keluar dari perangkatmu saat ini";
     },
     get$commandHint_logoutall() {
-      return "Logout all active devices";
+      return "Keluarkan semua perangkat aktif";
+    },
+    get$customReaction() {
+      return "Custom reaction";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
@@ -4371,9 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
-    get$customReaction() {
-      return "Custom reaction";
-    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4404,6 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_232", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "g9bQCgU62+xI+dBsTiYSiaujEIM=");
+})($__dart_deferred_initializers__, "ALEA6k7mS6DCNftaXLdET3bznHE=");
 ;
 //# sourceMappingURL=main.dart.js_232.part.js.map

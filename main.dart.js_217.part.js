@@ -319,7 +319,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Cumraigh comhr\xe1";
     },
     get$confirm(_) {
-      return "Deimhnigh";
+      return "Dearbhaigh";
     },
     get$contentHasBeenReported() {
       return "Tuairisc\xedodh an t-\xe1bhar do lucht riarach\xe1in an fhreastala\xed";
@@ -1489,7 +1489,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Riail bhr\xfa anaithnid '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Teachtaireacht ghutha \xf3 " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
       return "M\xe1 scriosann t\xfa an socr\xfa f\xf3gra seo, n\xed f\xe9idir \xe9 seo a cheal\xfa.";
@@ -1528,10 +1528,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ceadaigh";
     },
     get$commandHint_logout() {
-      return "Logout your current device";
+      return "Log\xe1il amach as do ghl\xe9as reatha";
     },
     get$commandHint_logoutall() {
-      return "Logout all active devices";
+      return "Log\xe1il amach gach gl\xe9as gn\xedomhach";
+    },
+    get$customReaction() {
+      return "Custom reaction";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
@@ -4371,9 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
-    get$customReaction() {
-      return "Custom reaction";
-    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4404,6 +4404,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_217", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "2xl+zJeM6C4XPQ1075WFYnMPNbA=");
+})($__dart_deferred_initializers__, "LrlYzQhJibcrbZR0nvIyT4aKycw=");
 ;
 //# sourceMappingURL=main.dart.js_217.part.js.map

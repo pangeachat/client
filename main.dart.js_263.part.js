@@ -1489,7 +1489,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u041d\u0435\u0432\u0456\u0434\u043e\u043c\u0435 \u043f\u0440\u0430\u0432\u0438\u043b\u043e \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u043d\u044f '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - " + sender + " - \u0413\u043e\u043b\u043e\u0441\u043e\u0432\u0435 \u043f\u043e\u0432\u0456\u0434\u043e\u043c\u043b\u0435\u043d\u043d\u044f \u0432\u0456\u0434 " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
       return "\u042f\u043a\u0449\u043e \u0432\u0438 \u0432\u0438\u0434\u0430\u043b\u0438\u0442\u0435 \u0446\u0435 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0441\u043f\u043e\u0432\u0456\u0449\u0435\u043d\u044c, \u0432\u0456\u0434\u043d\u043e\u0432\u0438\u0442\u0438 \u0439\u043e\u0433\u043e \u0431\u0443\u0434\u0435 \u043d\u0435\u043c\u043e\u0436\u043b\u0438\u0432\u043e.";
@@ -1528,10 +1528,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0421\u0445\u0432\u0430\u043b\u0438\u0442\u0438";
     },
     get$commandHint_logout() {
-      return "Logout your current device";
+      return "\u0412\u0438\u0439\u0442\u0438 \u043d\u0430 \u0446\u044c\u043e\u043c\u0443 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u0457";
     },
     get$commandHint_logoutall() {
-      return "Logout all active devices";
+      return "\u0412\u0438\u0439\u0442\u0438 \u043d\u0430 \u0432\u0441\u0456\u0445 \u0430\u043a\u0442\u0438\u0432\u043d\u0438\u0445 \u043f\u0440\u0438\u0441\u0442\u0440\u043e\u044f\u0445";
+    },
+    get$customReaction() {
+      return "Custom reaction";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "Type in " + l1 + " or " + l2 + "...";
@@ -4371,9 +4374,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The space will be deleted for all participants. This action cannot be undone.";
     },
-    get$customReaction() {
-      return "Custom reaction";
-    },
     get$regenerate() {
       return "Regenerate";
     },
@@ -4401,6 +4401,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "OpKrTlvUnlktjHDMTROnpwbqX3c=");
+})($__dart_deferred_initializers__, "GDf4MwpJrThFo0+YT+R4Jo98ki4=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
