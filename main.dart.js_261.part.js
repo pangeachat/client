@@ -867,6 +867,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "Too many requests. Please try again later!";
     },
+    get$tryToSendAgain() {
+      return "Try to send again";
+    },
     get$unavailable() {
       return "Unavailable";
     },
@@ -4407,6 +4410,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_261", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "lyTULLUk5TrD2QuOzvBP60kpV40=");
+})($__dart_deferred_initializers__, "K/iL4yLNp2D3TQeib9jsz3cFZpo=");
 ;
 //# sourceMappingURL=main.dart.js_261.part.js.map

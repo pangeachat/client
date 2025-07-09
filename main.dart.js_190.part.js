@@ -868,6 +868,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "Zu viele Anfragen. Bitte versuche es sp\xe4ter noch einmal!";
     },
+    get$tryToSendAgain() {
+      return "Noch mal versuchen zu senden";
+    },
     get$unavailable() {
       return "Nicht verf\xfcgbar";
     },
@@ -4411,6 +4414,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_190", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "rYqdlC39XIa6O2HRG8Zj2JqLiqY=");
+})($__dart_deferred_initializers__, "Bt7OLi2GgZmf69VLH78akQTamI8=");
 ;
 //# sourceMappingURL=main.dart.js_190.part.js.map

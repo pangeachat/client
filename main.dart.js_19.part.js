@@ -880,6 +880,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "Too many requests. Please try again later!";
     },
+    get$tryToSendAgain() {
+      return "Try to send again";
+    },
     get$unavailable() {
       return "Unavailable";
     },
@@ -5226,6 +5229,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "Demasiadas requisi\xe7\xf5es. Por favor, tente novamente mais tarde!";
     },
+    get$tryToSendAgain() {
+      return "Tente enviar novamente";
+    },
     get$unavailable() {
       return "Indispon\xedvel";
     },
@@ -6241,6 +6247,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_19", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "8H4kYnzGw7iRVVd0XrpqREwyRsc=");
+})($__dart_deferred_initializers__, "1+Q/ERsSpE7Xr/BtuKdM7mk4MvQ=");
 ;
 //# sourceMappingURL=main.dart.js_19.part.js.map

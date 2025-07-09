@@ -867,6 +867,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "Eskaera gehiegi. Saiatu berriro geroago!";
     },
+    get$tryToSendAgain() {
+      return "Saiatu berriro bidaltzen";
+    },
     get$unavailable() {
       return "Ez dago eskuragai";
     },
@@ -4410,6 +4413,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_209", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Uu0i/R/oLbkE6N3+A7zM3XyBk7c=");
+})($__dart_deferred_initializers__, "zk1eR6N8Vk8THJNVTaqwEGTo6tI=");
 ;
 //# sourceMappingURL=main.dart.js_209.part.js.map

@@ -867,6 +867,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "F\xf6r m\xe5nga f\xf6rfr\xe5gningar. V\xe4nligen f\xf6rs\xf6k senare!";
     },
+    get$tryToSendAgain() {
+      return "F\xf6rs\xf6k att skicka igen";
+    },
     get$unavailable() {
       return "Upptagen";
     },
@@ -4407,6 +4410,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_258", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "XjiO/zl9YN5bph8pZUD2aABwP/s=");
+})($__dart_deferred_initializers__, "EBGj5KAAzwLFGh2wAkYBXZerpFg=");
 ;
 //# sourceMappingURL=main.dart.js_258.part.js.map

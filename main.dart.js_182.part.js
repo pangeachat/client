@@ -868,6 +868,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "P\u0159\xedli\u0161 mnoho po\u017eadavk\u016f. Pros\xedm zkuste to znovu pozd\u011bji!";
     },
+    get$tryToSendAgain() {
+      return "Zkuste odeslat znovu";
+    },
     get$unavailable() {
       return "Nedostupn\xed";
     },
@@ -4408,6 +4411,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_182", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "ILY78n9terZi8Iv0NoCwp+1e+fM=");
+})($__dart_deferred_initializers__, "zI90x4cUmRMgioa4Z3rpcLt0Hek=");
 ;
 //# sourceMappingURL=main.dart.js_182.part.js.map

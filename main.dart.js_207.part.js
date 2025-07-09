@@ -867,6 +867,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$tooManyRequestsWarning() {
       return "Liiga palju p\xe4ringuid. Palun proovi hiljem uuesti!";
     },
+    get$tryToSendAgain() {
+      return "Proovi uuesti saata";
+    },
     get$unavailable() {
       return "Eemal";
     },
@@ -4407,6 +4410,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_207", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "MpM8S8gwpyzgN5askRzTp4gQkBc=");
+})($__dart_deferred_initializers__, "woV66cQaH6tnCn6J+NSPceulqAQ=");
 ;
 //# sourceMappingURL=main.dart.js_207.part.js.map
