@@ -855,14 +855,15 @@ class _SpaceViewState extends State<SpaceView> {
                     //   },
                     // ),
                     KnockingUsersIndicator(room: room),
-                    SliverList.builder(
-                      itemCount: 1,
-                      itemBuilder: (context, i) {
-                        return LeaderboardParticipantList(
-                          space: room,
-                        );
-                      },
-                    ),
+                    if (!FluffyThemes.isColumnMode(context))
+                      SliverList.builder(
+                        itemCount: 1,
+                        itemBuilder: (context, i) {
+                          return LeaderboardParticipantList(
+                            space: room,
+                          );
+                        },
+                      ),
                     // Pangea#
                     SliverList.builder(
                       itemCount: joinedRooms.length,
