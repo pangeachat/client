@@ -1376,9 +1376,15 @@ class ChatController extends State<ChatPageWithRoom>
           if (event.status.isSent) {
             if (event.canRedact) {
               // #Pangea
-              // await event.redactEvent(reason: reason);
-              await redactAndUnpinEvent(event, reason: reason);
+              // https://github.com/pangeachat/client/issues/3353
+              if (room.canChangeStateEvent(EventTypes.RoomPinnedEvents)) {
+                final pinnedEvents = room.pinnedEventIds
+                    .where((e) => e != event.eventId)
+                    .toList();
+                await room.setPinnedEvents(pinnedEvents);
+              }
               // Pangea#
+              await event.redactEvent(reason: reason);
             } else {
               final client = currentRoomBundle.firstWhere(
                 (cl) => selectedEvents.first.senderId == cl!.userID,
@@ -1388,11 +1394,7 @@ class ChatController extends State<ChatPageWithRoom>
                 return;
               }
               final room = client.getRoomById(roomId)!;
-              // #Pangea
-              // await Event.fromJson(event.toJson(), room).redactEvent(
-              await redactAndUnpinEvent(
-                Event.fromJson(event.toJson(), room),
-                // Pangea#
+              await Event.fromJson(event.toJson(), room).redactEvent(
                 reason: reason,
               );
             }
@@ -1813,20 +1815,6 @@ class ChatController extends State<ChatPageWithRoom>
     );
     // Pangea#
   }
-
-  // #Pangea
-  Future<String?> redactAndUnpinEvent(
-    Event event, {
-    String? reason,
-    String? txid,
-  }) async {
-    final events = room.pinnedEventIds
-      ..removeWhere((oldEvent) => oldEvent == event.eventId);
-    room.setPinnedEvents(events);
-
-    return await room.redactEvent(event.eventId, reason: reason, txid: txid);
-  }
-// Pangea#
 
   Timer? _storeInputTimeoutTimer;
   static const Duration _storeInputTimeout = Duration(milliseconds: 500);
