@@ -7,18 +7,18 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B,
   A = {
-    L10nBn$() {
-      return new A.L10nBn(B.canonicalizedLocale("bn"));
+    L10nBo$() {
+      return new A.L10nBo(B.canonicalizedLocale("bo"));
     },
-    L10nBn: function L10nBn(t0) {
+    L10nBo: function L10nBo(t0) {
       this.localeName = t0;
     }
   },
   C;
   B = holdersList[0];
-  A = hunkHelpers.updateHolder(holdersList[7], A);
+  A = hunkHelpers.updateHolder(holdersList[8], A);
   C = holdersList[54];
-  A.L10nBn.prototype = {
+  A.L10nBo.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -62,13 +62,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "About " + homeserver;
     },
     get$accept(_) {
-      return "\u09b8\u09cd\u09ac\u09c0\u0995\u09be\u09b0 \u0995\u09b0\u09bf";
+      return "Accept";
     },
     acceptedTheInvitation$1(username) {
-      return username + " \u0986\u09ae\u09a8\u09cd\u09a4\u09cd\u09b0\u09a3 \u0997\u09cd\u09b0\u09b9\u09a3 \u0995\u09b0\u09c7\u099b\u09c7";
+      return "\ud83d\udc4d " + username + " accepted the invitation";
     },
     get$account() {
-      return "\u0985\u09cd\u09af\u09be\u0995\u09be\u0989\u09a8\u09cd\u099f";
+      return "Account";
     },
     activatedEndToEndEncryption$1(username) {
       return "\ud83d\udd10 " + username + " activated end to end encryption";
@@ -1578,9 +1578,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$waTooltip() {
       return "L2 use without assistance";
-    },
-    get$inviteStudentByUserName() {
-      return "Invite users by username";
     },
     get$noIdenticalLanguages() {
       return "Please choose different base and target languages";
@@ -4102,9 +4099,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$featuredActivities() {
       return "Featured";
     },
-    get$goToChat() {
-      return "Go to chat";
-    },
     get$save(_) {
       return "Save";
     },
@@ -4179,9 +4173,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$kick() {
       return "Kick";
-    },
-    get$goToSpaceButton() {
-      return "Go to space";
     },
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
@@ -4393,6 +4384,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$failedToPlayVideo() {
       return "Failed to play video";
     },
+    get$done() {
+      return "Done";
+    },
+    get$inThisSpace() {
+      return "In this space";
+    },
+    get$myContacts() {
+      return "My contacts";
+    },
+    get$inviteAllInSpace() {
+      return "Invite all in this space";
+    },
+    get$spaceParticipantsHaveBeenInvitedToTheChat() {
+      return "All space participants has been invited to the chat";
+    },
+    numKnocking$1(count) {
+      return "" + count + " knocking";
+    },
+    numInvited$1(count) {
+      return "" + count + " invited";
+    },
     get$saved() {
       return "Saved";
     },
@@ -4403,14 +4415,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nBn, C.L10n);
+    _inherit(A.L10nBo, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nBn":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nBo":{"L10n":[]}}'));
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_173", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "9kfmBwB3UfcLD5W80RPCpKk4eKs=");
+})($__dart_deferred_initializers__, "bzkPJaPWWwAgQPfzVQFiBnvi+E8=");
 ;
 //# sourceMappingURL=main.dart.js_173.part.js.map

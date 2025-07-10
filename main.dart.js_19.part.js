@@ -1591,9 +1591,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waTooltip() {
       return "L2 use without assistance";
     },
-    get$inviteStudentByUserName() {
-      return "Invite users by username";
-    },
     get$noIdenticalLanguages() {
       return "Please choose different base and target languages";
     },
@@ -4114,9 +4111,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$featuredActivities() {
       return "Featured";
     },
-    get$goToChat() {
-      return "Go to chat";
-    },
     get$save(_) {
       return "Save";
     },
@@ -4191,9 +4185,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$kick() {
       return "Kick";
-    },
-    get$goToSpaceButton() {
-      return "Go to space";
     },
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
@@ -4404,6 +4395,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$failedToPlayVideo() {
       return "Failed to play video";
+    },
+    get$done() {
+      return "Done";
+    },
+    get$inThisSpace() {
+      return "In this space";
+    },
+    get$myContacts() {
+      return "My contacts";
+    },
+    get$inviteAllInSpace() {
+      return "Invite all in this space";
+    },
+    get$spaceParticipantsHaveBeenInvitedToTheChat() {
+      return "All space participants has been invited to the chat";
+    },
+    numKnocking$1(count) {
+      return "" + count + " knocking";
+    },
+    numInvited$1(count) {
+      return "" + count + " invited";
     },
     get$saved() {
       return "Saved";
@@ -6247,6 +6259,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_19", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "yd/NEj47hchoVWe7UIO7rLVtr1g=");
+})($__dart_deferred_initializers__, "V5Wq7p/aCWajQ1EHavR+SMm//qA=");
 ;
 //# sourceMappingURL=main.dart.js_19.part.js.map
