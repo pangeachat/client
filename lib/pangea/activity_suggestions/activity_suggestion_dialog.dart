@@ -306,8 +306,6 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                                               ?.copyWith(
                                             fontWeight: FontWeight.bold,
                                           ),
-                                          maxLines: 6,
-                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
                                     if (widget.controller.isEditing)
@@ -330,8 +328,6 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                                         child: Text(
                                           widget.controller.updatedActivity
                                               .learningObjective,
-                                          maxLines: 6,
-                                          overflow: TextOverflow.ellipsis,
                                           style: theme.textTheme.bodyLarge,
                                         ),
                                       ),
@@ -355,8 +351,6 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                                         child: Text(
                                           widget.controller.updatedActivity
                                               .instructions,
-                                          maxLines: 8,
-                                          overflow: TextOverflow.ellipsis,
                                           style: theme.textTheme.bodyLarge,
                                         ),
                                       ),
