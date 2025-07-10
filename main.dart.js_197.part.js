@@ -556,9 +556,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$lightTheme() {
       return "Hela";
     },
-    loadCountMoreParticipants$1(count) {
-      return "Enlegi " + count + " pliajn partoprenantojn";
-    },
     get$dehydrate() {
       return "Export session and wipe device";
     },
@@ -4423,6 +4420,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_197", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "OtYtDAZnG7i2fumJf0ux3h/Asvc=");
+})($__dart_deferred_initializers__, "gSv/x4ATwHSdD645yRwveF87fO8=");
 ;
 //# sourceMappingURL=main.dart.js_197.part.js.map

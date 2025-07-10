@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$lightTheme() {
       return "Lys";
     },
-    loadCountMoreParticipants$1(count) {
-      return "Last inn " + count + " deltagere til";
-    },
     get$dehydrate() {
       return "Export session and wipe device";
     },
@@ -4422,6 +4419,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_244", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "WuvxX2moI0qAArNaJqfbuIAsATY=");
+})($__dart_deferred_initializers__, "IUrDP43odziSj/GQxROMKSmx2z8=");
 ;
 //# sourceMappingURL=main.dart.js_244.part.js.map

@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$lightTheme() {
       return "Hele";
     },
-    loadCountMoreParticipants$1(count) {
-      return "Lisa veel " + count + " osalejat";
-    },
     get$dehydrate() {
       return "Ekspordi sessiooni teave ja kustuta nutiseadmest rakenduse andmed";
     },
@@ -4422,6 +4419,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_206", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "XFDM6yK07qhfDxEBs1dz3JKzG+s=");
+})($__dart_deferred_initializers__, "vC+/f45nhumDR9e+1iFzpp12H2w=");
 ;
 //# sourceMappingURL=main.dart.js_206.part.js.map

@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$lightTheme() {
       return "Ljust";
     },
-    loadCountMoreParticipants$1(count) {
-      return "Ladda " + count + " mer deltagare";
-    },
     get$dehydrate() {
       return "Exportera sessionen och rensa enheten";
     },
@@ -4422,6 +4419,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_257", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "VS6e1Wi9/WUb8csQ/GrqYnOAGjo=");
+})($__dart_deferred_initializers__, "aJovBclycehu533VkbkrmSlrZFk=");
 ;
 //# sourceMappingURL=main.dart.js_257.part.js.map

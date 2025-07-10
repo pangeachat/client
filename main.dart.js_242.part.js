@@ -555,9 +555,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$lightTheme() {
       return "\u0160viesi";
     },
-    loadCountMoreParticipants$1(count) {
-      return "\u012ekelti dar " + count + " dalyvius";
-    },
     get$dehydrate() {
       return "Eksportuoti sesij\u0105 ir i\u0161valyti \u012frengin\u012f";
     },
@@ -4422,6 +4419,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_242", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "5ikpNBw7mjAv3Z9GQGCbHC1svQc=");
+})($__dart_deferred_initializers__, "irHIkwUfIysWK6fPXMjJ13HDCis=");
 ;
 //# sourceMappingURL=main.dart.js_242.part.js.map
