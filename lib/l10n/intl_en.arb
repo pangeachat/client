@@ -5065,5 +5065,6 @@
   "reset": "Reset",
   "errorGenerateActivityMessage": "Failed to generate activity",
   "errorRegenerateActivityMessage": "Failed to regenerate activity",
-  "errorFetchingActivitiesMessage": "Failed to fetch activities"
+  "errorFetchingActivitiesMessage": "Failed to fetch activities",
+  "errorFetchingDefinition": "Failed to fetch definition"
 }
