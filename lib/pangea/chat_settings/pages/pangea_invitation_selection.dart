@@ -16,10 +16,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 enum InvitationFilter {
   space,
   contacts,
-  invited,
   knocking,
-  public,
-  participants;
+  invited,
+  participants,
+  public;
 
   static InvitationFilter? fromString(String value) {
     switch (value) {
@@ -81,7 +81,7 @@ class PangeaInvitationSelectionController
   List<Profile> foundProfiles = [];
   Timer? coolDown;
 
-  InvitationFilter filter = InvitationFilter.public;
+  InvitationFilter filter = InvitationFilter.knocking;
 
   @override
   void initState() {
@@ -92,6 +92,8 @@ class PangeaInvitationSelectionController
       filter = widget.initialFilter!;
     } else if (spaceParent != null) {
       filter = InvitationFilter.space;
+    } else if (_room?.getParticipants([Membership.knock]).isEmpty ?? true) {
+      filter = InvitationFilter.contacts;
     }
 
     if (filter == InvitationFilter.public) {
@@ -99,7 +101,11 @@ class PangeaInvitationSelectionController
     }
 
     _room?.requestParticipants(
-      [Membership.join, Membership.invite, Membership.knock],
+      [
+        Membership.join,
+        Membership.invite,
+        Membership.knock,
+      ],
       false,
       true,
     ).then((_) {
@@ -111,7 +117,11 @@ class PangeaInvitationSelectionController
     });
 
     spaceParent?.requestParticipants(
-      [Membership.join, Membership.invite, Membership.knock],
+      [
+        Membership.join,
+        Membership.invite,
+        Membership.knock,
+      ],
       false,
       true,
     ).then((_) {

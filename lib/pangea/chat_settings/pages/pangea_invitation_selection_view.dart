@@ -16,11 +16,13 @@ import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selectio
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
+import 'package:fluffychat/utils/fluffy_share.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 
 class PangeaInvitationSelectionView extends StatelessWidget {
   final PangeaInvitationSelectionController controller;
@@ -44,6 +46,10 @@ class PangeaInvitationSelectionView extends StatelessWidget {
 
     final theme = Theme.of(context);
     final contacts = controller.filteredContacts();
+
+    final alias = room.canonicalAlias.isEmpty
+        ? controller.widget.roomId
+        : room.canonicalAlias;
 
     return Scaffold(
       appBar: AppBar(
@@ -72,7 +78,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                     color: theme.colorScheme.onPrimaryContainer,
                     fontWeight: FontWeight.normal,
                   ),
-                  hintText: L10n.of(context).inviteStudentByUserName,
+                  hintText: L10n.of(context).search,
                   prefixIcon: controller.loading
                       ? const Padding(
                           padding: EdgeInsets.symmetric(
@@ -338,7 +344,10 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        onPressed: () {},
+                        onPressed: () => FluffyShare.share(
+                          "${Environment.frontendURL}/#/join_with_alias?alias=$alias",
+                          context,
+                        ),
                       ),
                     ),
                   ElevatedButton(
@@ -401,13 +410,18 @@ class _InviteContactListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
 
-    final membership = controller.participants
-        ?.firstWhereOrNull(
-          (p) => p.id == profile.userId,
-        )
-        ?.membership;
+    final participant = controller.participants?.firstWhereOrNull(
+      (p) => p.id == profile.userId,
+    );
+    final membership = participant?.membership;
 
     return ListTile(
+      onTap: participant != null
+          ? () => showMemberActionsPopupMenu(
+                context: context,
+                user: participant,
+              )
+          : null,
       leading: Avatar(
         mxContent: profile.avatarUrl,
         name: profile.displayName,
