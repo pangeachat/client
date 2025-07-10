@@ -5066,5 +5066,7 @@
   "errorGenerateActivityMessage": "Failed to generate activity",
   "errorRegenerateActivityMessage": "Failed to regenerate activity",
   "errorFetchingActivitiesMessage": "Failed to fetch activities",
-  "errorFetchingDefinition": "Failed to fetch definition"
+  "errorFetchingDefinition": "Failed to fetch definition",
+  "errorProcessAnalytics": "Failed to process analytics",
+  "errorDownloading": "Download failed"
 }

@@ -49,6 +49,9 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
   }
 
   Future<void> _downloadAnalytics() async {
+    List<AnalyticsSummaryModel> vocabSummary;
+    List<AnalyticsSummaryModel> morphSummary;
+
     try {
       setState(() {
         _downloading = true;
@@ -56,9 +59,27 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         _error = null;
       });
 
-      final vocabSummary = await _getVocabAnalytics();
-      final morphSummary = await _getMorphAnalytics();
+      vocabSummary = await _getVocabAnalytics();
+      morphSummary = await _getMorphAnalytics();
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "downloadType": _downloadType,
+        },
+      );
 
+      if (mounted) {
+        setState(() {
+          _downloading = false;
+          _error = L10n.of(context).errorProcessAnalytics;
+        });
+      }
+      return;
+    }
+
+    try {
       final content = _getExcelFileContent({
         ConstructTypeEnum.vocab: vocabSummary,
         ConstructTypeEnum.morph: morphSummary,
@@ -72,6 +93,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
         fileName,
         _downloadType,
       );
+      _downloaded = true;
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -80,12 +102,9 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
           "downloadType": _downloadType,
         },
       );
-      _error = e.toString();
+      _error = L10n.of(context).errorDownloading;
     } finally {
-      setState(() {
-        _downloading = false;
-        _downloaded = true;
-      });
+      if (mounted) setState(() => _downloading = false);
     }
   }
 
@@ -376,7 +395,7 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
               child: _error != null
                   ? Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(L10n.of(context).oopsSomethingWentWrong),
+                      child: Text(_error!),
                     )
                   : const SizedBox(),
             ),
