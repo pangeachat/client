@@ -687,6 +687,7 @@ class RoomParticipantsSection extends StatelessWidget {
             final filteredParticipants =
                 participantsLoader.filteredParticipants("");
 
+            final originalLeaders = filteredParticipants.take(3).toList();
             filteredParticipants.sort((a, b) {
               // always sort bot to the end
               final aIsBot = a.id == BotName.byEnvironment;
@@ -775,6 +776,21 @@ class RoomParticipantsSection extends StatelessWidget {
                     Membership.leave => null,
                   };
 
+                  final publicProfile = participantsLoader.getPublicProfile(
+                    user.id,
+                  );
+
+                  final leaderIndex = originalLeaders.indexOf(user);
+                  LinearGradient? gradient;
+                  if (leaderIndex != -1) {
+                    gradient = leaderIndex.leaderboardGradient;
+                    if (user.id == BotName.byEnvironment ||
+                        publicProfile == null ||
+                        publicProfile.level == null) {
+                      gradient = null;
+                    }
+                  }
+
                   return SizedBox(
                     width: _width,
                     child: Opacity(
@@ -782,28 +798,48 @@ class RoomParticipantsSection extends StatelessWidget {
                       child: Column(
                         spacing: 4.0,
                         children: [
-                          Builder(
-                            builder: (context) {
-                              return MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: GestureDetector(
-                                  onTap: () => showMemberActionsPopupMenu(
-                                    context: context,
-                                    user: user,
-                                  ),
-                                  child: Center(
-                                    child: Avatar(
-                                      mxContent: user.avatarUrl,
-                                      name: user.calcDisplayname(),
-                                      size: _width,
-                                      presenceUserId: user.id,
-                                      presenceOffset: const Offset(0, 0),
-                                      presenceSize: 18.0,
+                          Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              if (gradient != null)
+                                CircleAvatar(
+                                  radius: _width / 2,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      gradient: gradient,
                                     ),
                                   ),
+                                )
+                              else
+                                SizedBox(
+                                  height: _width,
+                                  width: _width,
                                 ),
-                              );
-                            },
+                              Builder(
+                                builder: (context) {
+                                  return MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: GestureDetector(
+                                      onTap: () => showMemberActionsPopupMenu(
+                                        context: context,
+                                        user: user,
+                                      ),
+                                      child: Center(
+                                        child: Avatar(
+                                          mxContent: user.avatarUrl,
+                                          name: user.calcDisplayname(),
+                                          size: _width - 6.0,
+                                          presenceUserId: user.id,
+                                          presenceOffset: const Offset(0, 0),
+                                          presenceSize: 18.0,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ],
                           ),
                           Text(
                             user.calcDisplayname(),
