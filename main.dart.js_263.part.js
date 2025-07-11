@@ -334,13 +334,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Kh\xf4ng th\u1ec3 gi\u1ea3i m\xe3 tin nh\u1eafn: " + error;
     },
     get$checkList() {
-      return "Check list";
+      return "Danh s\xe1ch ki\u1ec3m tra";
     },
     countParticipants$1(count) {
       return "" + count + " th\xe0nh vi\xean";
     },
     countInvited$1(count) {
-      return "" + count + " invited";
+      return "" + count + " ng\u01b0\u1eddi \u0111\u01b0\u1ee3c m\u1eddi";
     },
     get$create(_) {
       return "T\u1ea1o";
@@ -1489,7 +1489,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Quy t\u1eafc \u0111\u1ea9y kh\xf4ng x\xe1c \u0111\u1ecbnh '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - Voice message from " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Tin nh\u1eafn tho\u1ea1i t\u1eeb " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
       return "N\u1ebfu b\u1ea1n x\xf3a c\xe0i \u0111\u1eb7t th\xf4ng b\xe1o n\xe0y, \u0111i\u1ec1u n\xe0y s\u1ebd kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
@@ -1528,13 +1528,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ch\u1ea5p thu\u1eadn";
     },
     get$commandHint_logout() {
-      return "Logout your current device";
+      return "\u0110\u0103ng xu\u1ea5t kh\u1ecfi thi\u1ebft b\u1ecb hi\u1ec7n t\u1ea1i c\u1ee7a b\u1ea1n";
     },
     get$commandHint_logoutall() {
-      return "Logout all active devices";
+      return "\u0110\u0103ng xu\u1ea5t kh\u1ecfi t\u1ea5t c\u1ea3 c\xe1c thi\u1ebft b\u1ecb \u0111ang ho\u1ea1t \u0111\u1ed9ng";
     },
     get$customReaction() {
-      return "Custom reaction";
+      return "Ph\u1ea3n \u1ee9ng t\xf9y ch\u1ec9nh";
     },
     writeAMessageLangCodes$2(l1, l2) {
       return "G\xf5 b\u1eb1ng " + l1 + " ho\u1eb7c " + l2 + "...";
@@ -3574,7 +3574,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "D\u1ea1ng d\xe0i";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Short";
+      return "Ng\u1eafn";
     },
     get$grammarCopyVERBTYPEcaus() {
       return "\u0110\u1ed9ng t\u1eeb sai khi\u1ebfn";
@@ -3715,7 +3715,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ch\u1ecdn bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac ch\xednh x\xe1c";
     },
     get$constructUseCollected() {
-      return "Collected in chat";
+      return "\u0110\u01b0\u1ee3c thu th\u1eadp trong tr\xf2 chuy\u1ec7n";
     },
     get$constructUseNanDesc() {
       return "Kh\xf4ng \xe1p d\u1ee5ng";
@@ -3922,7 +3922,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ch\u1ecdn m\u1ed9t ch\u1ee7 \u0111\u1ec1...";
     },
     get$modeLabel() {
-      return "Activity type";
+      return "Lo\u1ea1i ho\u1ea1t \u0111\u1ed9ng";
     },
     get$modePlaceholder() {
       return "Ch\u1ecdn m\u1ed9t ch\u1ebf \u0111\u1ed9...";
@@ -4090,7 +4090,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "X\xf3a";
     },
     get$makeYourOwnActivity() {
-      return "Create your own activity";
+      return "T\u1ea1o ho\u1ea1t \u0111\u1ed9ng c\u1ee7a ri\xeang b\u1ea1n";
     },
     get$featuredActivities() {
       return "N\u1ed5i b\u1eadt";
@@ -4216,10 +4216,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "M\u1eb7c \u0111\u1ecbnh";
     },
     get$deleteChatDesc() {
-      return "Are you sure you want to delete this chat? It will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics.";
+      return "B\u1ea1n c\xf3 ch\u1eafc ch\u1eafn mu\u1ed1n x\xf3a tr\xf2 chuy\u1ec7n n\xe0y kh\xf4ng? N\xf3 s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia v\xe0 t\u1ea5t c\u1ea3 tin nh\u1eafn trong tr\xf2 chuy\u1ec7n s\u1ebd kh\xf4ng c\xf2n kh\u1ea3 d\u1ee5ng cho vi\u1ec7c th\u1ef1c h\xe0nh ho\u1eb7c ph\xe2n t\xedch h\u1ecdc t\u1eadp.";
     },
     get$deleteSpaceDesc() {
-      return "The space and any selected chats and/or subspaces will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
+      return "Kh\xf4ng gian v\xe0 b\u1ea5t k\u1ef3 tr\xf2 chuy\u1ec7n v\xe0/ho\u1eb7c kh\xf4ng gian con n\xe0o \u0111\u01b0\u1ee3c ch\u1ecdn s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia v\xe0 t\u1ea5t c\u1ea3 tin nh\u1eafn trong tr\xf2 chuy\u1ec7n s\u1ebd kh\xf4ng c\xf2n kh\u1ea3 d\u1ee5ng cho vi\u1ec7c th\u1ef1c h\xe0nh ho\u1eb7c ph\xe2n t\xedch h\u1ecdc t\u1eadp. H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$findYourPeople() {
       return "T\xecm ng\u01b0\u1eddi c\u1ee7a b\u1ea1n";
@@ -4240,7 +4240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Ho\xe0n t\u1ea5t! Ch\u1ecdn m\u1ed9t tr\xf2 chuy\u1ec7n \u0111\u1ec3 b\u1eaft \u0111\u1ea7u";
     },
     get$maxFifty() {
-      return "Max 50";
+      return "T\u1ed1i \u0111a 50";
     },
     get$configureSpace() {
       return "C\u1ea5u h\xecnh kh\xf4ng gian";
@@ -4273,157 +4273,157 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Th\xf4ng b\xe1o";
     },
     get$activities() {
-      return "Activities";
+      return "Ho\u1ea1t \u0111\u1ed9ng";
     },
     get$access() {
-      return "Access";
+      return "Truy c\u1eadp";
     },
     get$addSubspace() {
-      return "Add subspace";
+      return "Th\xeam kh\xf4ng gian con";
     },
     get$botSettings() {
-      return "Bot settings";
+      return "C\xe0i \u0111\u1eb7t bot";
     },
     get$activitySuggestionTimeoutMessage() {
-      return "We are working hard to generate activities for you, please check back in a minute";
+      return "Ch\xfang t\xf4i \u0111ang l\xe0m vi\u1ec7c ch\u0103m ch\u1ec9 \u0111\u1ec3 t\u1ea1o ra c\xe1c ho\u1ea1t \u0111\u1ed9ng cho b\u1ea1n, vui l\xf2ng quay l\u1ea1i sau m\u1ed9t ph\xfat";
     },
     get$accessSettingsWarning() {
-      return "Oops! It looks like you don't have permission to set the Access rules of this room. You should check these to make sure they're what you need and talk to a room admin if you need to change them";
+      return "\xd4i! C\xf3 v\u1ebb nh\u01b0 b\u1ea1n kh\xf4ng c\xf3 quy\u1ec1n thi\u1ebft l\u1eadp c\xe1c quy t\u1eafc Truy c\u1eadp c\u1ee7a ph\xf2ng n\xe0y. B\u1ea1n n\xean ki\u1ec3m tra nh\u1eefng \u0111i\u1ec1u n\xe0y \u0111\u1ec3 \u0111\u1ea3m b\u1ea3o ch\xfang l\xe0 nh\u1eefng g\xec b\u1ea1n c\u1ea7n v\xe0 n\xf3i chuy\u1ec7n v\u1edbi qu\u1ea3n tr\u1ecb vi\xean ph\xf2ng n\u1ebfu b\u1ea1n c\u1ea7n thay \u0111\u1ed5i ch\xfang";
     },
     get$howSpaceCanBeFound() {
-      return "How this space can be found";
+      return "C\xe1ch kh\xf4ng gian n\xe0y c\xf3 th\u1ec3 \u0111\u01b0\u1ee3c t\xecm th\u1ea5y";
     },
     get$$private() {
-      return "Private";
+      return "Ri\xeang t\u01b0";
     },
     get$cannotBeFoundInSearch() {
-      return "Cannot be found in search";
+      return "Kh\xf4ng th\u1ec3 t\xecm th\u1ea5y trong t\xecm ki\u1ebfm";
     },
     get$$public(_) {
-      return "Public";
+      return "C\xf4ng khai";
     },
     get$visibleToCommunity() {
-      return 'Visible to the broader Pangea Chat community via "Find your people"';
+      return 'C\xf3 th\u1ec3 nh\xecn th\u1ea5y b\u1edfi c\u1ed9ng \u0111\u1ed3ng Pangea Chat r\u1ed9ng l\u1edbn h\u01a1n qua "T\xecm ng\u01b0\u1eddi c\u1ee7a b\u1ea1n"';
     },
     get$howSpaceCanBeJoined() {
-      return "How this space can be joined";
+      return "C\xe1ch tham gia kh\xf4ng gian n\xe0y";
     },
     get$canBeFoundVia() {
-      return "Can be found via:";
+      return "C\xf3 th\u1ec3 t\xecm th\u1ea5y qua:";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 invitation";
+      return "\u2022 l\u1eddi m\u1eddi";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 code or link";
+      return "\u2022 m\xe3 ho\u1eb7c li\xean k\u1ebft";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 request to join and admin approval";
+      return "\u2022 y\xeau c\u1ea7u tham gia v\xe0 s\u1ef1 ch\u1ea5p thu\u1eadn c\u1ee7a qu\u1ea3n tr\u1ecb vi\xean";
     },
     get$createYourSpace() {
-      return "Create your space";
+      return "T\u1ea1o kh\xf4ng gian c\u1ee7a b\u1ea1n";
     },
     get$youHaveLeveledUp() {
-      return "You have leveled up!";
+      return "B\u1ea1n \u0111\xe3 n\xe2ng c\u1ea5p!";
     },
     get$sendActivities() {
-      return "Send activities";
+      return "G\u1eedi ho\u1ea1t \u0111\u1ed9ng";
     },
     get$getStarted() {
       return "B\u1eaft \u0111\u1ea7u";
     },
     get$getStartedBotChatDesc() {
-      return "Chatting with AI is a great place to start and Pangea reading, writing, listening and speaking tools make it easy!";
+      return "Tr\xf2 chuy\u1ec7n v\u1edbi AI l\xe0 m\u1ed9t n\u01a1i tuy\u1ec7t v\u1eddi \u0111\u1ec3 b\u1eaft \u0111\u1ea7u v\xe0 c\xe1c c\xf4ng c\u1ee5 \u0111\u1ecdc, vi\u1ebft, nghe v\xe0 n\xf3i c\u1ee7a Pangea gi\xfap \u0111i\u1ec1u \u0111\xf3 d\u1ec5 d\xe0ng!";
     },
     get$getStartedCommunitiesDesc() {
-      return "Learning with a community is where Pangea Chat shines!\nYou can join your class, find a school, or even make your own!";
+      return "H\u1ecdc t\u1eadp v\u1edbi m\u1ed9t c\u1ed9ng \u0111\u1ed3ng l\xe0 n\u01a1i Pangea Chat t\u1ecfa s\xe1ng!\nB\u1ea1n c\xf3 th\u1ec3 tham gia l\u1edbp h\u1ecdc c\u1ee7a m\xecnh, t\xecm m\u1ed9t tr\u01b0\u1eddng h\u1ecdc, ho\u1eb7c th\u1eadm ch\xed t\u1ea1o ri\xeang cho m\xecnh!";
     },
     get$getStartedFriendsDesc() {
-      return "Do you have a friend that wants to learn with you?";
+      return "B\u1ea1n c\xf3 m\u1ed9t ng\u01b0\u1eddi b\u1ea1n mu\u1ed1n h\u1ecdc c\xf9ng b\u1ea1n kh\xf4ng?";
     },
     get$getStartedBotChatComplete() {
-      return "Well-done! You're chatting with the bot!";
+      return "Tuy\u1ec7t v\u1eddi! B\u1ea1n \u0111ang tr\xf2 chuy\u1ec7n v\u1edbi bot!";
     },
     get$getStartedCommunitiesComplete() {
-      return "Great, you have joined a space!";
+      return "Tuy\u1ec7t v\u1eddi, b\u1ea1n \u0111\xe3 tham gia m\u1ed9t kh\xf4ng gian!";
     },
     get$getStartedComplete() {
-      return "You've completed this section!\nKeep exploring our amazing features by chatting with friends!";
+      return "B\u1ea1n \u0111\xe3 ho\xe0n th\xe0nh ph\u1ea7n n\xe0y!\nTi\u1ebfp t\u1ee5c kh\xe1m ph\xe1 c\xe1c t\xednh n\u0103ng tuy\u1ec7t v\u1eddi c\u1ee7a ch\xfang t\xf4i b\u1eb1ng c\xe1ch tr\xf2 chuy\u1ec7n v\u1edbi b\u1ea1n b\xe8!";
     },
     get$getStartedFriendsComplete() {
-      return "Woohoo! You've got friends! \ud83d\ude09";
+      return "Woohoo! B\u1ea1n \u0111\xe3 c\xf3 b\u1ea1n b\xe8! \ud83d\ude09";
     },
     get$getStartedBotChatButton() {
-      return "Start chatting!";
+      return "B\u1eaft \u0111\u1ea7u tr\xf2 chuy\u1ec7n!";
     },
     get$getStartedFriendsButton() {
-      return "Chat with a friend";
+      return "Tr\xf2 chuy\u1ec7n v\u1edbi m\u1ed9t ng\u01b0\u1eddi b\u1ea1n";
     },
     get$groupChat() {
-      return "Group Chat";
+      return "Nh\xf3m tr\xf2 chuy\u1ec7n";
     },
     get$directMessage() {
-      return "Direct Message";
+      return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp";
     },
     get$newDirectMessage() {
-      return "New direct message";
+      return "Tin nh\u1eafn tr\u1ef1c ti\u1ebfp m\u1edbi";
     },
     get$speakingExercisesTooltip() {
-      return "Speaking";
+      return "N\xf3i";
     },
     get$noChatsFoundHereYet() {
-      return "No chats found here yet";
+      return "Ch\u01b0a t\xecm th\u1ea5y tr\xf2 chuy\u1ec7n n\xe0o \u1edf \u0111\xe2y";
     },
     get$transcriptionFailed() {
-      return "Failed to transcribe audio";
+      return "Kh\xf4ng th\u1ec3 chuy\u1ec3n \u0111\u1ed5i \xe2m thanh";
     },
     get$aUserIsKnocking() {
-      return "1 user is requesting to join your space";
+      return "1 ng\u01b0\u1eddi d\xf9ng \u0111ang y\xeau c\u1ea7u tham gia kh\xf4ng gian c\u1ee7a b\u1ea1n";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " users are requesting to join your space";
+      return "" + users + " ng\u01b0\u1eddi d\xf9ng \u0111ang y\xeau c\u1ea7u tham gia kh\xf4ng gian c\u1ee7a b\u1ea1n";
     },
     get$failedToFetchTranscription() {
-      return "Failed to fetch transcription";
+      return "Kh\xf4ng th\u1ec3 l\u1ea5y b\u1ea3n chuy\u1ec3n \u0111\u1ed5i";
     },
     get$deleteEmptySpaceDesc() {
-      return "The space will be deleted for all participants. This action cannot be undone.";
+      return "Kh\xf4ng gian s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia. H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
     get$regenerate() {
-      return "Regenerate";
+      return "T\u1ea1o l\u1ea1i";
     },
     get$mySavedActivities() {
-      return "My Saved Activities";
+      return "C\xe1c ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 l\u01b0u c\u1ee7a t\xf4i";
     },
     get$noSavedActivities() {
-      return "No saved activities";
+      return "Kh\xf4ng c\xf3 ho\u1ea1t \u0111\u1ed9ng n\xe0o \u0111\xe3 l\u01b0u";
     },
     get$failedToPlayVideo() {
-      return "Failed to play video";
+      return "Kh\xf4ng th\u1ec3 ph\xe1t video";
     },
     get$done() {
-      return "Done";
+      return "Xong";
     },
     get$inThisSpace() {
-      return "In this space";
+      return "Trong kh\xf4ng gian n\xe0y";
     },
     get$myContacts() {
-      return "My contacts";
+      return "Danh b\u1ea1 c\u1ee7a t\xf4i";
     },
     get$inviteAllInSpace() {
-      return "Invite all in this space";
+      return "M\u1eddi t\u1ea5t c\u1ea3 trong kh\xf4ng gian n\xe0y";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "All space participants has been invited to the chat";
+      return "T\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia kh\xf4ng gian \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi v\xe0o cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
     numKnocking$1(count) {
-      return "" + count + " knocking";
+      return "" + count + " g\xf5 c\u1eeda";
     },
     numInvited$1(count) {
-      return "" + count + " invited";
+      return "" + count + " \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi";
     },
     get$saved() {
-      return "Saved";
+      return "\u0110\xe3 l\u01b0u";
     },
     get$reset(_) {
       return "Reset";
@@ -4467,6 +4467,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "TU1uk6sIlFPzzQbw1aTqhXR5yxA=");
+})($__dart_deferred_initializers__, "yMsRgasgRWRFoeC4dxR5DHccm5g=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
