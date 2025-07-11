@@ -2719,6 +2719,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$practice() {
       return "Pr\xe1ctica";
     },
+    get$noLanguagesSet() {
+      return "No hay idiomas configurados";
+    },
     get$speechToTextBody() {
       return "Para los mensajes de voz, puedes ver una transcripci\xf3n y la puntuaci\xf3n de palabras por minuto del orador.";
     },
@@ -4453,6 +4456,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorLoadingSpaceChildren() {
       return "Failed to load chats within this space";
     },
+    get$unexpectedError() {
+      return "Unexpected error.";
+    },
+    get$pleaseReload() {
+      return "Please reload and try again.";
+    },
+    get$translationError() {
+      return "Translation error";
+    },
+    get$errorFetchingActivity() {
+      return "Failed to fetch activity";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4468,6 +4483,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_199", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "GBLkEOUzNZEqMWh80QI29eXR21M=");
+})($__dart_deferred_initializers__, "leHtDwTMnb9bKUWB/STrz6LLd20=");
 ;
 //# sourceMappingURL=main.dart.js_199.part.js.map

@@ -2725,6 +2725,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$practice() {
       return "Practice";
     },
+    get$noLanguagesSet() {
+      return "No languages set";
+    },
     get$speechToTextBody() {
       return "For voice messages, you can see a transcript as well as the speaker's Words Per Minute score.";
     },
@@ -4459,6 +4462,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorLoadingSpaceChildren() {
       return "Failed to load chats within this space";
     },
+    get$unexpectedError() {
+      return "Unexpected error.";
+    },
+    get$pleaseReload() {
+      return "Please reload and try again.";
+    },
+    get$translationError() {
+      return "Translation error";
+    },
+    get$errorFetchingActivity() {
+      return "Failed to fetch activity";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -5980,6 +5995,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "1RlaOmx9ZeVgI8Z/zberTRrQNcY=");
+})($__dart_deferred_initializers__, "kKfFOjKbIPQQ8+H6nwhabeZbLUI=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

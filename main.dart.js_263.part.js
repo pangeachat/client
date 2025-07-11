@@ -2718,6 +2718,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$practice() {
       return "Luy\u1ec7n t\u1eadp";
     },
+    get$noLanguagesSet() {
+      return "Ch\u01b0a thi\u1ebft l\u1eadp ng\xf4n ng\u1eef";
+    },
     get$speechToTextBody() {
       return "V\u1edbi tin nh\u1eafn tho\u1ea1i, b\u1ea1n c\xf3 th\u1ec3 xem b\u1ea3n ch\xe9p gi\u1ecdng n\xf3i v\xe0 \u0111i\u1ec3m t\u1eeb/ph\xfat c\u1ee7a ng\u01b0\u1eddi n\xf3i.";
     },
@@ -4452,6 +4455,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorLoadingSpaceChildren() {
       return "Failed to load chats within this space";
     },
+    get$unexpectedError() {
+      return "Unexpected error.";
+    },
+    get$pleaseReload() {
+      return "Please reload and try again.";
+    },
+    get$translationError() {
+      return "Translation error";
+    },
+    get$errorFetchingActivity() {
+      return "Failed to fetch activity";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4467,6 +4482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "yMsRgasgRWRFoeC4dxR5DHccm5g=");
+})($__dart_deferred_initializers__, "pf17wZf/y6XduyBWTy6UoM1YFnM=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
