@@ -202,6 +202,7 @@ class WordZoomWidget extends StatelessWidget {
                           ),
                         LemmaReactionPicker(
                           cId: _selectedToken.vocabConstructID,
+                          eventId: messageEvent.eventId,
                           controller: overlayController.widget.chatController,
                         ),
                         if (controller.error != null)
