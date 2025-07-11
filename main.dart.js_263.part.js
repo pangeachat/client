@@ -4170,6 +4170,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$kick() {
       return "\u0110\xe1";
     },
+    get$lemma() {
+      return "Lemma";
+    },
+    get$grammarFeature() {
+      return "T\xednh n\u0103ng ng\u1eef ph\xe1p";
+    },
+    get$grammarTag() {
+      return "Th\u1ebb ng\u1eef ph\xe1p";
+    },
+    get$forms() {
+      return "H\xecnh th\u1ee9c";
+    },
+    get$exampleMessages() {
+      return "Tin nh\u1eafn v\xed d\u1ee5";
+    },
+    get$timesUsedIndependently() {
+      return "S\u1ed1 l\u1ea7n s\u1eed d\u1ee5ng \u0111\u1ed9c l\u1eadp";
+    },
+    get$timesUsedWithAssistance() {
+      return "S\u1ed1 l\u1ea7n s\u1eed d\u1ee5ng v\u1edbi s\u1ef1 tr\u1ee3 gi\xfap";
+    },
     shareInviteCode$1(code) {
       return "Chia s\u1ebb m\xe3 m\u1eddi: " + code;
     },
@@ -4404,6 +4425,33 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$saved() {
       return "Saved";
     },
+    get$reset(_) {
+      return "Reset";
+    },
+    get$errorGenerateActivityMessage() {
+      return "Failed to generate activity";
+    },
+    get$errorRegenerateActivityMessage() {
+      return "Failed to regenerate activity";
+    },
+    get$errorFetchingActivitiesMessage() {
+      return "Failed to fetch activities";
+    },
+    get$errorFetchingDefinition() {
+      return "Failed to fetch definition";
+    },
+    get$errorProcessAnalytics() {
+      return "Failed to process analytics";
+    },
+    get$errorDownloading() {
+      return "Download failed";
+    },
+    get$errorFetchingLevelSummary() {
+      return "Failed to fetch level summary";
+    },
+    get$errorLoadingSpaceChildren() {
+      return "Failed to load chats within this space";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4419,6 +4467,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "yUiWjEYnRtlSQ6Gnx+ZdCS4nTN4=");
+})($__dart_deferred_initializers__, "TU1uk6sIlFPzzQbw1aTqhXR5yxA=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map

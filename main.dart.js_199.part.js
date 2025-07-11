@@ -4171,6 +4171,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$kick() {
       return "Expulsar";
     },
+    get$lemma() {
+      return "Lema";
+    },
+    get$grammarFeature() {
+      return "Caracter\xedstica gramatical";
+    },
+    get$grammarTag() {
+      return "Etiqueta gramatical";
+    },
+    get$forms() {
+      return "Formas";
+    },
+    get$exampleMessages() {
+      return "Mensajes de ejemplo";
+    },
+    get$timesUsedIndependently() {
+      return "Veces utilizado de forma independiente";
+    },
+    get$timesUsedWithAssistance() {
+      return "Veces utilizado con asistencia";
+    },
     shareInviteCode$1(code) {
       return "Compartir c\xf3digo de invitaci\xf3n: " + code;
     },
@@ -4405,6 +4426,33 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$saved() {
       return "Saved";
     },
+    get$reset(_) {
+      return "Reset";
+    },
+    get$errorGenerateActivityMessage() {
+      return "Failed to generate activity";
+    },
+    get$errorRegenerateActivityMessage() {
+      return "Failed to regenerate activity";
+    },
+    get$errorFetchingActivitiesMessage() {
+      return "Failed to fetch activities";
+    },
+    get$errorFetchingDefinition() {
+      return "Failed to fetch definition";
+    },
+    get$errorProcessAnalytics() {
+      return "Failed to process analytics";
+    },
+    get$errorDownloading() {
+      return "Download failed";
+    },
+    get$errorFetchingLevelSummary() {
+      return "Failed to fetch level summary";
+    },
+    get$errorLoadingSpaceChildren() {
+      return "Failed to load chats within this space";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4420,6 +4468,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_199", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "0FnaVTdwVaTWP/CUPs1NBNZosAU=");
+})($__dart_deferred_initializers__, "GBLkEOUzNZEqMWh80QI29eXR21M=");
 ;
 //# sourceMappingURL=main.dart.js_199.part.js.map

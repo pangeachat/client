@@ -4170,6 +4170,27 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$kick() {
       return "Kick";
     },
+    get$lemma() {
+      return "Lemma";
+    },
+    get$grammarFeature() {
+      return "Grammar feature";
+    },
+    get$grammarTag() {
+      return "Grammar tag";
+    },
+    get$forms() {
+      return "Forms";
+    },
+    get$exampleMessages() {
+      return "Example messages";
+    },
+    get$timesUsedIndependently() {
+      return "Times used independently";
+    },
+    get$timesUsedWithAssistance() {
+      return "Times used with assistance";
+    },
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
     },
@@ -4404,6 +4425,33 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$saved() {
       return "Saved";
     },
+    get$reset(_) {
+      return "Reset";
+    },
+    get$errorGenerateActivityMessage() {
+      return "Failed to generate activity";
+    },
+    get$errorRegenerateActivityMessage() {
+      return "Failed to regenerate activity";
+    },
+    get$errorFetchingActivitiesMessage() {
+      return "Failed to fetch activities";
+    },
+    get$errorFetchingDefinition() {
+      return "Failed to fetch definition";
+    },
+    get$errorProcessAnalytics() {
+      return "Failed to process analytics";
+    },
+    get$errorDownloading() {
+      return "Download failed";
+    },
+    get$errorFetchingLevelSummary() {
+      return "Failed to fetch level summary";
+    },
+    get$errorLoadingSpaceChildren() {
+      return "Failed to load chats within this space";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4422,6 +4470,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_208", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "y6OKe/o8g4h///pT56a7r7w4TkE=");
+})($__dart_deferred_initializers__, "G7n79VP3UXlV8La0rDjisbIiCn0=");
 ;
 //# sourceMappingURL=main.dart.js_208.part.js.map
