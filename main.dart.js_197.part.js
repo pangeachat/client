@@ -2704,8 +2704,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatCapacityHasBeenChanged() {
       return "Chat capacity changed";
     },
-    get$chatCapacitySetTooLow() {
-      return "Chat capacity cannot be set below the current number of members.";
+    chatCapacitySetTooLow$1(count) {
+      return "Chat capacity must be at least " + count + ".";
     },
     get$chatCapacityExplanation() {
       return "Chat capacity limits the number of members allowed in a chat.";
@@ -4483,6 +4483,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_197", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "pEda95SZvar0lSuY9aUQ+BlIl7s=");
+})($__dart_deferred_initializers__, "59YZoxYKMFF7G+MRrDFmzsGoeNQ=");
 ;
 //# sourceMappingURL=main.dart.js_197.part.js.map

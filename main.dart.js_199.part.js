@@ -2704,8 +2704,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatCapacityHasBeenChanged() {
       return "Capacidad de chat modificada";
     },
-    get$chatCapacitySetTooLow() {
-      return "La capacidad del chat no se puede establecer por debajo del n\xfamero actual de no administradores.";
+    chatCapacitySetTooLow$1(count) {
+      return "Chat capacity must be at least " + count + ".";
     },
     get$chatCapacityExplanation() {
       return "La capacidad del chat limita el n\xfamero de usuarios no administradores permitidos en un chat.";
@@ -4483,6 +4483,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_199", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "leHtDwTMnb9bKUWB/STrz6LLd20=");
+})($__dart_deferred_initializers__, "O2PwATlKmFTnPqv5UxEYZMZC7cI=");
 ;
 //# sourceMappingURL=main.dart.js_199.part.js.map
