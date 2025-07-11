@@ -5068,5 +5068,7 @@
   "errorFetchingActivitiesMessage": "Failed to fetch activities",
   "errorFetchingDefinition": "Failed to fetch definition",
   "errorProcessAnalytics": "Failed to process analytics",
-  "errorDownloading": "Download failed"
+  "errorDownloading": "Download failed",
+  "errorFetchingLevelSummary": "Failed to fetch level summary",
+  "errorLoadingSpaceChildren": "Failed to load chats within this space"
 }

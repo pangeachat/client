@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/learning_skills_enum.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/download_file.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
@@ -395,7 +396,9 @@ class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
               child: _error != null
                   ? Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(_error!),
+                      child: ErrorIndicator(
+                        message: _error!,
+                      ),
                     )
                   : const SizedBox(),
             ),
