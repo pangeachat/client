@@ -27,8 +27,7 @@ class ErrorIndicator extends StatelessWidget {
           child: Text(
             message,
             style: style,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
           ),
         ),
       ],
