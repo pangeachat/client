@@ -182,7 +182,7 @@ class ITController {
         );
       }
       choreographer.errorService.setErrorAndLock(
-        ChoreoError(type: ChoreoErrorType.unknown, raw: e),
+        ChoreoError(raw: e),
       );
     } finally {
       choreographer.stopLoading();
@@ -236,7 +236,7 @@ class ITController {
         );
       }
       choreographer.errorService.setErrorAndLock(
-        ChoreoError(type: ChoreoErrorType.unknown, raw: e),
+        ChoreoError(raw: e),
       );
     } finally {
       choreographer.stopLoading();
@@ -270,7 +270,7 @@ class ITController {
         );
       }
       choreographer.errorService.setErrorAndLock(
-        ChoreoError(type: ChoreoErrorType.unknown, raw: err),
+        ChoreoError(raw: err),
       );
     } finally {
       choreographer.stopLoading();

@@ -91,8 +91,8 @@ class ErrorCopy {
   int? errorCode;
 
   ErrorCopy(
-    this.context,
-    this.error, {
+    this.context, {
+    this.error,
     String? title,
     String? body,
   }) {
