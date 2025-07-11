@@ -76,6 +76,7 @@ class ITController {
       );
     }
     clear();
+    choreographer.errorService.resetError();
     dismissed = true;
   }
 
