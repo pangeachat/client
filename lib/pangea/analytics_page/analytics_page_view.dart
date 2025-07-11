@@ -42,7 +42,6 @@ class AnalyticsPageView extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsetsGeometry.all(16.0),
                 child: Column(
-                  spacing: 16.0,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     LearningProgressIndicators(
@@ -59,14 +58,12 @@ class AnalyticsPageView extends StatelessWidget {
                             return AnalyticsPopupWrapper(
                               constructZoom: controller.widget.constructZoom,
                               view: ConstructTypeEnum.morph,
-                              showAppBar: false,
                             );
                           } else if (controller.selectedIndicator ==
                               ProgressIndicatorEnum.wordsUsed) {
                             return AnalyticsPopupWrapper(
                               constructZoom: controller.widget.constructZoom,
                               view: ConstructTypeEnum.vocab,
-                              showAppBar: false,
                             );
                           }
 

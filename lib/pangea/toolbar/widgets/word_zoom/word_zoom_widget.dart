@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
@@ -88,7 +89,7 @@ class WordZoomWidget extends StatelessWidget {
                         token.text.content,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 32.0,
+                          fontSize: 28.0,
                           fontWeight: FontWeight.w600,
                           height: 1.2,
                           color:
@@ -202,12 +203,13 @@ class WordZoomWidget extends StatelessWidget {
                           ),
                         LemmaReactionPicker(
                           cId: _selectedToken.vocabConstructID,
+                          eventId: messageEvent.eventId,
                           controller: overlayController.widget.chatController,
                         ),
                         if (controller.error != null)
-                          Text(
-                            L10n.of(context).oopsSomethingWentWrong,
-                            textAlign: TextAlign.center,
+                          ErrorIndicator(
+                            message: L10n.of(context).errorFetchingDefinition,
+                            style: const TextStyle(fontSize: 14.0),
                           )
                         else if (controller.isLoading ||
                             controller.lemmaInfo == null)
