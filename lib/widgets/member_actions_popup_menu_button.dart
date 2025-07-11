@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -25,13 +24,11 @@ void showMemberActionsPopupMenu({
   final dmRoomId = user.room.client.getDirectChatFromUserId(user.id);
   // Pangea#
 
-  final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+  final overlay = Overlay.of(context, rootOverlay: true)
+      .context
+      .findRenderObject() as RenderBox;
 
   final button = context.findRenderObject() as RenderBox;
-
-  final double xOffset = FluffyThemes.isColumnMode(context)
-      ? FluffyThemes.columnWidth + FluffyThemes.navRailWidth
-      : 0;
 
   final position = RelativeRect.fromRect(
     Rect.fromPoints(
@@ -42,12 +39,6 @@ void showMemberActionsPopupMenu({
       ),
     ),
     Offset.zero & overlay.size,
-  );
-
-  debugPrint("bbb overlay: ${overlay.size.height}, ${overlay.size.width}");
-
-  debugPrint(
-    "bbc rect: ${position.left}, ${position.top}, ${position.right}, ${position.bottom}",
   );
 
   final action = await showMenu<_MemberActions>(
