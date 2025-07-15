@@ -696,7 +696,6 @@
       }
     }
   },
-  "checkList": "Check list",
   "countParticipants": "{count} participants",
   "@countParticipants": {
     "type": "String",
@@ -3209,7 +3208,7 @@
       }
     }
   },
-  "sentVoiceMessage": "🎙️ {duration} - Voice message from {sender}",
+  "sentVoiceMessage": "\uD83C\uDF99\uFE0F {duration} - {sender}",
   "@sentVoiceMessage": {
     "type": "String",
     "placeholders": {
@@ -3234,13 +3233,6 @@
   "optionalMessage": "(Optional) message...",
   "notSupportedOnThisDevice": "Not supported on this device",
   "enterNewChat": "Enter new chat",
-  "approve": "Approve",
-  "youHaveKnocked": "You have knocked",
-  "pleaseWaitUntilInvited": "Please wait now, until someone from the room invites you.",
-  "commandHint_logout": "Logout your current device",
-  "commandHint_logoutall": "Logout all active devices",
-  "displayNavigationRail": "Show navigation rail on mobile",
-  "customReaction": "Custom reaction",
   "accountInformation": "Account information",
   "addGroupDescription": "Add a chat description",
   "addNewFriend": "Add new friend",
@@ -4170,24 +4162,8 @@
   "spaceCapacityNotSet": "This space has no capacity limit.",
   "chatCapacityHasBeenChanged": "Chat capacity changed",
   "spaceCapacityHasBeenChanged": "Space capacity changed",
-  "chatCapacitySetTooLow": "Chat capacity must be at least {count}.",
-  "@chatCapacitySetTooLow": {
-    "type": "int",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
-  "spaceCapacitySetTooLow": "Space capacity must be at least {count}.",
-  "@spaceCapacitySetTooLow": {
-    "type": "int",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
+  "chatCapacitySetTooLow": "Chat capacity cannot be set below the current number of members.",
+  "spaceCapacitySetTooLow": "Space capacity cannot be set below the current number of members.",
   "chatCapacityExplanation": "Chat capacity limits the number of members allowed in a chat.",
   "spaceCapacityExplanation": "Space capacity limits the number of members allowed in a space.",
   "chatExceedsCapacity": "This chat exceeds its capacity.",
@@ -4531,10 +4507,9 @@
   "grammarCopyPUNCTTYPEperi": "Period",
   "grammarCopyREFLEXyes": "Reflexive",
   "grammarCopyTENSEimp": "Imperfect",
-  "grammarCopyVERBFORMsup": "Supine",
+  "grammarCopyVERBFORMsup": "SuApine",
   "grammarCopyVERBFORMadn": "Adnominal",
   "grammarCopyVERBFORMlng": "Long",
-  "grammarCopyVERBFORMshrt": "Short",
   "grammarCopyVERBTYPEcaus": "Causative Verb",
   "grammarCopyVOICEcau": "Causative",
   "grammarCopyVOICEdir": "Direct",
@@ -4607,7 +4582,6 @@
   "constructUseIncMDesc": "Incorrect in grammar activity",
   "constructUseIgnMDesc": "Ignored in grammar activity",
   "constructUseEmojiDesc": "Correct in emoji activity",
-  "constructUseCollected": "Collected in chat",
   "constructUseNanDesc": "Not applicable",
   "xpIntoLevel": "{currentXP} / {maxXP} XP",
   "@xpIntoLevel": {
@@ -4649,9 +4623,9 @@
   "meaningSectionHeader": "Meaning:",
   "formSectionHeader": "Forms used in chats:",
   "noEmojiSelectedTooltip": "No emoji selected",
-  "writingExercisesTooltip": "Writing",
-  "listeningExercisesTooltip": "Listening",
-  "readingExercisesTooltip": "Reading",
+  "writingExercisesTooltip": "Writing practice",
+  "listeningExercisesTooltip": "Listening practice",
+  "readingExercisesTooltip": "Reading practice",
   "meaningNotFound": "Meaning could not be found.",
   "formsNotFound": "Forms could not be found.",
   "chooseBaseForm": "Choose the base form",
@@ -4751,7 +4725,7 @@
   "activityPlannerTitle": "Activity Planner",
   "topicLabel": "Topic",
   "topicPlaceholder": "Choose a topic...",
-  "modeLabel": "Activity type",
+  "modeLabel": "Mode",
   "modePlaceholder": "Choose a mode...",
   "learningObjectiveLabel": "Learning Objective",
   "learningObjectivePlaceholder": "Choose a learning objective...",
@@ -4765,9 +4739,12 @@
   "video": "Video",
   "nan": "Not applicable",
   "activityPlannerOverviewInstructionsBody": "Choose a topic, mode, learning objective and generate an activity for the chat!",
+  "myBookmarkedActivities": "My Bookmarked Activities",
+  "noBookmarkedActivities": "No bookmarked activities",
   "activityTitle": "Activity Title",
   "addVocabulary": "Add vocabulary",
   "instructions": "Instructions",
+  "bookmark": "Bookmark this activity",
   "numberOfLearners": "Number of learners",
   "mustBeInteger": "Must be an integer e.g. 1, 2, 3, ...",
   "noLemmasFound": "There's no vocabulary with more than {xp} XP. Keep practicing!",
@@ -4889,8 +4866,9 @@
   "exploreMore": "Explore more",
   "randomize": "Randomize",
   "clear": "Clear",
-  "makeYourOwnActivity": "Create your own activity",
+  "makeYourOwnActivity": "Make your own activity",
   "featuredActivities": "Featured",
+  "yourBookmarks": "Bookmarked",
   "goToChat": "Go to chat",
   "save": "Save",
   "selectActivity": "Select activity",
@@ -4946,6 +4924,9 @@
   "ban": "Ban",
   "unban": "Unban",
   "kick": "Kick",
+  "approve": "Approve",
+  "youHaveKnocked": "You have knocked",
+  "pleaseWaitUntilInvited": "Please wait now, until someone from the room invites you.",
   "lemma": "Lemma",
   "grammarFeature": "Grammar feature",
   "grammarTag": "Grammar tag",
@@ -4990,6 +4971,7 @@
   "configureSpace": "Configure space",
   "pinMessages": "Pin messages",
   "setJoinRules": "Set join rules",
+  "displayNavigationRail": "Show navigation rail on mobile",
   "changeGeneralSettings": "Change general settings",
   "inviteOtherUsersToRoom": "Invite other users",
   "changeTheNameOfTheSpace": "Change the name of the space",
@@ -5016,7 +4998,6 @@
   "canBeFoundViaKnock": "\u2022 request to join and admin approval",
   "anyoneCanJoin": "Anyone can join! However, admin can kick and ban whoever misbehaves. Those who are banned may not return!",
   "createYourSpace": "Create your space",
-  "youHaveLeveledUp": "You have leveled up!",
   "sendActivities": "Send activities",
   "getStarted": "Get Started",
   "getStartedBotChatDesc": "Chatting with AI is a great place to start and Pangea reading, writing, listening and speaking tools make it easy!",
@@ -5092,7 +5073,7 @@
   "translationError": "Translation error",
   "errorFetchingTranslation": "Failed to fetch translation",
   "errorFetchingActivity": "Failed to fetch activity",
-  "maxInputLength": "{maxLength} character limit",
+    "maxInputLength": "{maxLength} character limit",
   "@maxInputLength": {
     "type": "String",
     "placeholders": {
@@ -5100,5 +5081,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "getStartedFriendsButton": "Invite a friend"
 }
