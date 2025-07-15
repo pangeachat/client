@@ -156,7 +156,16 @@ class ActivityGeneratorView extends StatelessWidget {
                     const SizedBox(height: 16.0),
                     SuggestionFormField(
                       suggestions: controller.topicItems,
-                      validator: controller.validateNotNull,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return l10n.interactiveTranslatorRequired;
+                        }
+                        const int maxLength = 50;
+                        if (value.length > maxLength) {
+                          return l10n.maxInputLength(maxLength);
+                        }
+                        return null;
+                      },
                       label: l10n.topicLabel,
                       placeholder: l10n.topicPlaceholder,
                       controller: controller.topicController,
@@ -164,7 +173,16 @@ class ActivityGeneratorView extends StatelessWidget {
                     const SizedBox(height: 16.0),
                     SuggestionFormField(
                       suggestions: controller.objectiveItems,
-                      validator: controller.validateNotNull,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return l10n.interactiveTranslatorRequired;
+                        }
+                        const int maxLength = 140;
+                        if (value.length > maxLength) {
+                          return l10n.maxInputLength(maxLength);
+                        }
+                        return null;
+                      },
                       label: l10n.learningObjectiveLabel,
                       placeholder: l10n.learningObjectivePlaceholder,
                       controller: controller.objectiveController,
@@ -172,7 +190,16 @@ class ActivityGeneratorView extends StatelessWidget {
                     const SizedBox(height: 16.0),
                     SuggestionFormField(
                       suggestions: controller.modeItems,
-                      validator: controller.validateNotNull,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return l10n.interactiveTranslatorRequired;
+                        }
+                        const int maxLength = 50;
+                        if (value.length > maxLength) {
+                          return l10n.maxInputLength(maxLength);
+                        }
+                        return null;
+                      },
                       label: l10n.modeLabel,
                       placeholder: l10n.modePlaceholder,
                       controller: controller.modeController,

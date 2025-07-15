@@ -5091,5 +5091,14 @@
   "pleaseReload": "Please reload and try again.",
   "translationError": "Translation error",
   "errorFetchingTranslation": "Failed to fetch translation",
-  "errorFetchingActivity": "Failed to fetch activity"
+  "errorFetchingActivity": "Failed to fetch activity",
+  "maxInputLength": "{maxLength} character limit",
+  "@maxInputLength": {
+    "type": "String",
+    "placeholders": {
+      "maxLength": {
+        "type": "int"
+      }
+    }
+  }
 }
