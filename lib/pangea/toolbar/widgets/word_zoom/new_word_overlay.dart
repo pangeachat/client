@@ -4,17 +4,20 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 
 class NewWordOverlay extends StatefulWidget {
   final Color overlayColor;
+  final MessageOverlayController overlayController;
   final PangeaToken token;
   final String transformTargetId;
 
   const NewWordOverlay({
     super.key,
     required this.overlayColor,
+    required this.overlayController,
     required this.token,
     required this.transformTargetId,
   });
@@ -38,10 +41,10 @@ class _NewWordOverlayState extends State<NewWordOverlay>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1700),
+      duration: const Duration(milliseconds: 1850),
     )..addStatusListener((AnimationStatus status) {
         if (status == AnimationStatus.completed) {
-          MatrixState.pAnyState.closeOverlay(widget.transformTargetId);
+          dispose();
         }
       });
 
@@ -52,12 +55,12 @@ class _NewWordOverlayState extends State<NewWordOverlay>
 
     _fadeAnim = CurvedAnimation(
       parent: _controller!,
-      curve: const Interval(0.6, 1.0, curve: Curves.easeOut),
+      curve: const Interval(0.5, 1.0, curve: Curves.easeOut),
     );
 
     _moveAnim = CurvedAnimation(
       parent: _controller!,
-      curve: const Interval(0.6, 1.0, curve: Curves.easeOut),
+      curve: const Interval(0.5, 1.0, curve: Curves.easeOut),
     );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -69,6 +72,7 @@ class _NewWordOverlayState extends State<NewWordOverlay>
 
   @override
   void dispose() {
+    widget.overlayController.onSelectNewToken(widget.token);
     _controller?.dispose();
     MatrixState.pAnyState.closeOverlay(widget.transformTargetId);
     super.dispose();
@@ -100,7 +104,7 @@ class _NewWordOverlayState extends State<NewWordOverlay>
           final fade = 1.0 - (_fadeAnim!.value);
           final move = _moveAnim!.value;
 
-          final seedSize = 75 * scale * ((!columnMode) ? fade : 1);
+          final seedSize = 75 * scale * fade;
 
           // Calculate movement to top left if fullscreen, or top right of word card if mobile
           final screenSize = MediaQuery.of(context).size;
@@ -131,16 +135,24 @@ class _NewWordOverlayState extends State<NewWordOverlay>
 
   @override
   Widget build(BuildContext context) {
-    return Positioned(
-      left: 5,
-      right: 5,
-      top: 50,
-      bottom: 5,
-      child: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: widget.overlayColor,
-      ),
+    return AnimatedBuilder(
+      animation: _controller!,
+      builder: (context, child) {
+        return Positioned(
+          left: 5,
+          right: 5,
+          top: 50,
+          bottom: 5,
+          child: Opacity(
+            opacity: 1 - _fadeAnim!.value,
+            child: Container(
+              height: double.infinity,
+              width: double.infinity,
+              color: widget.overlayColor,
+            ),
+          ),
+        );
+      },
     );
   }
 }

@@ -265,8 +265,9 @@ class WordZoomWidget extends StatelessWidget {
         wordIsNew
             ? NewWordOverlay(
                 key: ValueKey(transformTargetId),
-                overlayColor: overlayColor,
                 token: token,
+                overlayColor: overlayColor,
+                overlayController: overlayController,
                 transformTargetId: transformTargetId,
                 //cardKey: cardKey,
               )

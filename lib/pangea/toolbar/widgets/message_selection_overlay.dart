@@ -2,13 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -36,6 +30,10 @@ import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/morph_sel
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_positioner.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/reading_assistance_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:matrix/matrix.dart';
 
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)
 class MessageSelectionOverlay extends StatefulWidget {
@@ -279,9 +277,11 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
     _selectedSpan = selectedSpan;
     if (mounted) setState(() {});
-    if (selectedToken != null && isNewToken(selectedToken!)) {
-      _onSelectNewToken(selectedToken!);
-    }
+
+    //Commented out so onSelectNewTokens can be manually called after animation is finished
+    // if (selectedToken != null && isNewToken(selectedToken!)) {
+    //   _onSelectNewToken(selectedToken!);
+    // }
   }
 
   void _showReadingAssistanceContent() {
@@ -556,43 +556,41 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     updateSelectedSpan(token.text);
   }
 
-  void _onSelectNewToken(PangeaToken token) {
+  void onSelectNewToken(PangeaToken token) {
     if (!isNewToken(token)) return;
-    Future.delayed(const Duration(milliseconds: 1700), () {
-      MatrixState.pangeaController.putAnalytics.setState(
-        AnalyticsStream(
-          eventId: event.eventId,
-          roomId: event.room.id,
-          constructs: [
-            OneConstructUse(
-              useType: ConstructUseTypeEnum.click,
-              lemma: token.lemma.text,
-              constructType: ConstructTypeEnum.vocab,
-              metadata: ConstructUseMetaData(
-                roomId: event.room.id,
-                timeStamp: DateTime.now(),
-                eventId: event.eventId,
-              ),
-              category: token.pos,
-              form: token.text.content,
-              xp: ConstructUseTypeEnum.click.pointValue,
+    MatrixState.pangeaController.putAnalytics.setState(
+      AnalyticsStream(
+        eventId: event.eventId,
+        roomId: event.room.id,
+        constructs: [
+          OneConstructUse(
+            useType: ConstructUseTypeEnum.click,
+            lemma: token.lemma.text,
+            constructType: ConstructTypeEnum.vocab,
+            metadata: ConstructUseMetaData(
+              roomId: event.room.id,
+              timeStamp: DateTime.now(),
+              eventId: event.eventId,
             ),
-          ],
-          targetID: token.text.uniqueKey,
-        ),
-      );
+            category: token.pos,
+            form: token.text.content,
+            xp: ConstructUseTypeEnum.click.pointValue,
+          ),
+        ],
+        targetID: token.text.uniqueKey,
+      ),
+    );
 
-      if (mounted) {
-        setState(() {
-          newTokens.removeWhere(
-            (t) =>
-                t.text.offset == token.text.offset &&
-                t.text.length == token.text.length &&
-                t.lemma.text.equals(token.lemma.text),
-          );
-        });
-      }
-    });
+    if (mounted) {
+      setState(() {
+        newTokens.removeWhere(
+          (t) =>
+              t.text.offset == token.text.offset &&
+              t.text.length == token.text.length &&
+              t.lemma.text.equals(token.lemma.text),
+        );
+      });
+    }
   }
 
   PracticeTarget? practiceTargetForToken(PangeaToken token) {
