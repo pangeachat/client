@@ -15,13 +15,12 @@ import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_chat_details.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/download_chat.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/download_file.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/spaces/utils/set_class_name.dart';
-import 'package:fluffychat/pangea/spaces/utils/space_code.dart';
 import 'package:fluffychat/utils/file_selector.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -59,32 +58,37 @@ class ChatDetailsController extends State<ChatDetails> {
   bool displayAddStudentOptions = false;
   void toggleAddStudentOptions() =>
       setState(() => displayAddStudentOptions = !displayAddStudentOptions);
-  void setDisplaynameAction() => setClassDisplayname(context, roomId);
-  // void setDisplaynameAction() async {
-  //   final room = Matrix.of(context).client.getRoomById(roomId!)!;
-  //   final input = await showTextInputDialog(
-  //     context: context,
-  //     title: L10n.of(context).changeTheNameOfTheGroup,
-  //     okLabel: L10n.of(context).ok,
-  //     cancelLabel: L10n.of(context).cancel,
-  //     initialText: room.getLocalizedDisplayname(
-  //       MatrixLocals(
-  //         L10n.of(context),
-  //       ),
-  //     ),
-  //   );
-  //   if (input == null) return;
-  //   final success = await showFutureLoadingDialog(
-  //     context: context,
-  //     future: () => room.setName(input),
-  //   );
-  //   if (success.error == null) {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(content: Text(L10n.of(context).displaynameHasBeenChanged)),
-  //     );
-  //   }
-  // }
   // Pangea#
+
+  void setDisplaynameAction() async {
+    final room = Matrix.of(context).client.getRoomById(roomId!)!;
+    final input = await showTextInputDialog(
+      context: context,
+      // #Pangea
+      // title: L10n.of(context).changeTheNameOfTheGroup,
+      title: room.isSpace
+          ? L10n.of(context).changeTheNameOfTheClass
+          : L10n.of(context).changeTheNameOfTheChat,
+      // Pangea#
+      okLabel: L10n.of(context).ok,
+      cancelLabel: L10n.of(context).cancel,
+      initialText: room.getLocalizedDisplayname(
+        MatrixLocals(
+          L10n.of(context),
+        ),
+      ),
+    );
+    if (input == null) return;
+    final success = await showFutureLoadingDialog(
+      context: context,
+      future: () => room.setName(input),
+    );
+    if (success.error == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(L10n.of(context).displaynameHasBeenChanged)),
+      );
+    }
+  }
 
   void setTopicAction() async {
     final room = Matrix.of(context).client.getRoomById(roomId!)!;
@@ -285,7 +289,8 @@ class ChatDetailsController extends State<ChatDetails> {
           return L10n.of(context).enterNumber;
         }
         if (int.parse(value) < (room.summary.mJoinedMemberCount ?? 1)) {
-          return L10n.of(context).chatCapacitySetTooLow;
+          return L10n.of(context)
+              .chatCapacitySetTooLow(room.summary.mJoinedMemberCount ?? 1);
         }
         return null;
       },
@@ -333,7 +338,6 @@ class ChatDetailsController extends State<ChatDetails> {
       future: () async {
         final activeSpace = client.getRoomById(roomId!)!;
         await activeSpace.postLoad();
-        final accessCode = await SpaceCodeUtil.generateSpaceCode(client);
 
         final resp = await client.createRoom(
           name: names,
@@ -341,18 +345,14 @@ class ChatDetailsController extends State<ChatDetails> {
           creationContent: {'type': 'm.space'},
           initialState: [
             RoomDefaults.defaultSpacePowerLevels(client.userID!),
-            StateEvent(
-              type: EventTypes.RoomJoinRules,
-              content: {
-                'join_rule': 'knock_restricted',
-                'allow': [
-                  {
-                    "type": "m.room_membership",
-                    "room_id": roomId!,
-                  }
-                ],
-                ModelKey.accessCode: accessCode,
-              },
+            await client.pangeaJoinRules(
+              'knock_restricted',
+              allow: [
+                {
+                  "type": "m.room_membership",
+                  "room_id": roomId!,
+                }
+              ],
             ),
           ],
         );

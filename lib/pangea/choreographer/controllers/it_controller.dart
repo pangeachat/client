@@ -76,6 +76,7 @@ class ITController {
       );
     }
     clear();
+    choreographer.errorService.resetError();
     dismissed = true;
   }
 
@@ -96,6 +97,7 @@ class ITController {
     debugPrint("_setSourceText with detectedLang ${_itStartData!.langCode}");
     // if (_itStartData!.langCode == choreographer.l1LangCode) {
     sourceText = _itStartData!.text;
+    choreographer.translatedText = sourceText;
     return;
     // }
 
@@ -181,7 +183,7 @@ class ITController {
         );
       }
       choreographer.errorService.setErrorAndLock(
-        ChoreoError(type: ChoreoErrorType.unknown, raw: e),
+        ChoreoError(raw: e),
       );
     } finally {
       choreographer.stopLoading();
@@ -235,7 +237,7 @@ class ITController {
         );
       }
       choreographer.errorService.setErrorAndLock(
-        ChoreoError(type: ChoreoErrorType.unknown, raw: e),
+        ChoreoError(raw: e),
       );
     } finally {
       choreographer.stopLoading();
@@ -269,7 +271,7 @@ class ITController {
         );
       }
       choreographer.errorService.setErrorAndLock(
-        ChoreoError(type: ChoreoErrorType.unknown, raw: err),
+        ChoreoError(raw: err),
       );
     } finally {
       choreographer.stopLoading();

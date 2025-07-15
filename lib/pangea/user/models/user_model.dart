@@ -146,16 +146,17 @@ class UserSettings {
   }
 
   @override
-  int get hashCode =>
-      dateOfBirth.hashCode ^
-      createdAt.hashCode ^
-      autoPlayMessages.hashCode ^
-      publicProfile.hashCode ^
-      targetLanguage.hashCode ^
-      sourceLanguage.hashCode ^
-      country.hashCode ^
-      hasJoinedHelpSpace.hashCode ^
-      cefrLevel.hashCode;
+  int get hashCode => Object.hashAll([
+        dateOfBirth.hashCode,
+        createdAt.hashCode,
+        autoPlayMessages.hashCode,
+        publicProfile.hashCode,
+        targetLanguage.hashCode,
+        sourceLanguage.hashCode,
+        country.hashCode,
+        hasJoinedHelpSpace.hashCode,
+        cefrLevel.hashCode,
+      ]);
 }
 
 /// The user's language tool settings.
@@ -173,7 +174,7 @@ class UserToolSettings {
     this.interactiveGrammar = true,
     this.immersionMode = false,
     this.definitions = true,
-    this.autoIGC = true,
+    this.autoIGC = false,
     this.enableTTS = true,
     this.enableAutocorrect = false,
   });
@@ -186,7 +187,7 @@ class UserToolSettings {
             json[ToolSetting.interactiveGrammar.toString()] ?? true,
         immersionMode: false,
         definitions: json[ToolSetting.definitions.toString()] ?? true,
-        autoIGC: json[ToolSetting.autoIGC.toString()] ?? true,
+        autoIGC: json[ModelKey.autoIGC] ?? false,
         enableTTS: json[ToolSetting.enableTTS.toString()] ?? true,
         enableAutocorrect: json["enableAutocorrect"] ?? false,
       );
@@ -197,7 +198,7 @@ class UserToolSettings {
     data[ToolSetting.interactiveGrammar.toString()] = interactiveGrammar;
     data[ToolSetting.immersionMode.toString()] = immersionMode;
     data[ToolSetting.definitions.toString()] = definitions;
-    data[ToolSetting.autoIGC.toString()] = autoIGC;
+    data[ModelKey.autoIGC] = autoIGC;
     data[ToolSetting.enableTTS.toString()] = enableTTS;
     data["enableAutocorrect"] = enableAutocorrect;
     return data;
@@ -254,14 +255,15 @@ class UserToolSettings {
   }
 
   @override
-  int get hashCode =>
-      interactiveTranslator.hashCode ^
-      interactiveGrammar.hashCode ^
-      immersionMode.hashCode ^
-      definitions.hashCode ^
-      autoIGC.hashCode ^
-      enableTTS.hashCode ^
-      enableAutocorrect.hashCode;
+  int get hashCode => Object.hashAll([
+        interactiveTranslator.hashCode,
+        interactiveGrammar.hashCode,
+        immersionMode.hashCode,
+        definitions.hashCode,
+        autoIGC.hashCode,
+        enableTTS.hashCode,
+        enableAutocorrect.hashCode,
+      ]);
 }
 
 /// A wrapper around the matrix account data for the user profile.

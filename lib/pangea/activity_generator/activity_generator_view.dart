@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart
 import 'package:fluffychat/pangea/activity_planner/suggestion_form_field.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestions_constants.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
@@ -38,10 +39,12 @@ class ActivityGeneratorView extends StatelessWidget {
     } else if (controller.error != null) {
       body = Center(
         child: Column(
+          spacing: 16.0,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(l10n.oopsSomethingWentWrong),
-            const SizedBox(height: 16),
+            ErrorIndicator(
+              message: l10n.errorGenerateActivityMessage,
+            ),
             ElevatedButton(
               onPressed: controller.generate,
               child: Text(l10n.tryAgain),
@@ -154,6 +157,7 @@ class ActivityGeneratorView extends StatelessWidget {
                     SuggestionFormField(
                       suggestions: controller.topicItems,
                       validator: controller.validateNotNull,
+                      maxLength: 50,
                       label: l10n.topicLabel,
                       placeholder: l10n.topicPlaceholder,
                       controller: controller.topicController,
@@ -162,6 +166,7 @@ class ActivityGeneratorView extends StatelessWidget {
                     SuggestionFormField(
                       suggestions: controller.objectiveItems,
                       validator: controller.validateNotNull,
+                      maxLength: 140,
                       label: l10n.learningObjectiveLabel,
                       placeholder: l10n.learningObjectivePlaceholder,
                       controller: controller.objectiveController,
@@ -170,6 +175,7 @@ class ActivityGeneratorView extends StatelessWidget {
                     SuggestionFormField(
                       suggestions: controller.modeItems,
                       validator: controller.validateNotNull,
+                      maxLength: 50,
                       label: l10n.modeLabel,
                       placeholder: l10n.modePlaceholder,
                       controller: controller.modeController,

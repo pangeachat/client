@@ -1,5 +1,6 @@
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
@@ -60,128 +61,124 @@ class WordZoomWidget extends StatelessWidget {
             maxHeight: AppConfig.toolbarMaxHeight - 8,
             maxWidth: AppConfig.toolbarMinWidth,
           ),
-          child: CompositedTransformTarget(
-            link: layerLink,
-            child: SingleChildScrollView(
-              child: Column(
-                spacing: 12.0,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: 24.0,
-                        height: 24.0,
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: () => overlayController.updateSelectedSpan(
-                              token.text,
-                            ),
-                            child: const Icon(
-                              Icons.close,
-                              size: 16.0,
-                            ),
+          child: SingleChildScrollView(
+            child: Column(
+              spacing: 12.0,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: 24.0,
+                      height: 24.0,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: GestureDetector(
+                          onTap: () =>
+                              overlayController.updateSelectedSpan(null),
+                          child: const Icon(
+                            Icons.close,
+                            size: 16.0,
                           ),
                         ),
                       ),
-                      Flexible(
-                        child: Text(
-                          token.text.content,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w600,
-                            height: 1.2,
-                            color:
-                                Theme.of(context).brightness == Brightness.light
-                                    ? AppConfig.yellowDark
-                                    : AppConfig.yellowLight,
+                    ),
+                    Flexible(
+                      child: Text(
+                        token.text.content,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 28.0,
+                          fontWeight: FontWeight.w600,
+                          height: 1.2,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? AppConfig.yellowDark
+                                  : AppConfig.yellowLight,
+                        ),
+                      ),
+                    ),
+                    ConstructXpWidget(
+                      id: token.vocabConstructID,
+                      onTap: () => context.go(
+                        "/rooms/analytics?mode=vocab",
+                        extra: token.vocabConstructID,
+                      ),
+                    ),
+                  ],
+                ),
+                LemmaMeaningBuilder(
+                  langCode: messageEvent.messageDisplayLangCode,
+                  constructId: token.vocabConstructID,
+                  builder: (context, controller) {
+                    if (controller.editMode) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(
+                              token.vocabConstructID.lemma,
+                              token.vocabConstructID.category,
+                            )}",
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(fontStyle: FontStyle.italic),
                           ),
-                        ),
-                      ),
-                      ConstructXpWidget(
-                        id: token.vocabConstructID,
-                        onTap: () => context.go(
-                          "/rooms/analytics?mode=vocab",
-                          extra: token.vocabConstructID,
-                        ),
-                      ),
-                    ],
-                  ),
-                  LemmaMeaningBuilder(
-                    langCode: messageEvent.messageDisplayLangCode,
-                    constructId: token.vocabConstructID,
-                    builder: (context, controller) {
-                      if (controller.editMode) {
-                        return Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              "${L10n.of(context).pangeaBotIsFallible} ${L10n.of(context).whatIsMeaning(
-                                token.vocabConstructID.lemma,
-                                token.vocabConstructID.category,
-                              )}",
-                              textAlign: TextAlign.center,
-                              style:
-                                  const TextStyle(fontStyle: FontStyle.italic),
-                            ),
-                            const SizedBox(height: 10),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              child: TextField(
-                                minLines: 1,
-                                maxLines: 3,
-                                controller: controller.controller,
-                                decoration: InputDecoration(
-                                  hintText: controller.lemmaInfo?.meaning,
-                                ),
+                          const SizedBox(height: 10),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: TextField(
+                              minLines: 1,
+                              maxLines: 3,
+                              controller: controller.controller,
+                              decoration: InputDecoration(
+                                hintText: controller.lemmaInfo?.meaning,
                               ),
                             ),
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ElevatedButton(
-                                  onPressed: () =>
-                                      controller.toggleEditMode(false),
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                    ),
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () =>
+                                    controller.toggleEditMode(false),
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
-                                  child: Text(L10n.of(context).cancel),
-                                ),
-                                const SizedBox(width: 10),
-                                ElevatedButton(
-                                  onPressed: () => controller.controller.text !=
-                                              controller.lemmaInfo?.meaning &&
-                                          controller.controller.text.isNotEmpty
-                                      ? controller.editLemmaMeaning(
-                                          controller.controller.text,
-                                        )
-                                      : null,
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 10,
-                                    ),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
                                   ),
-                                  child: Text(L10n.of(context).saveChanges),
                                 ),
-                              ],
-                            ),
-                          ],
-                        );
-                      }
+                                child: Text(L10n.of(context).cancel),
+                              ),
+                              const SizedBox(width: 10),
+                              ElevatedButton(
+                                onPressed: () => controller.controller.text !=
+                                            controller.lemmaInfo?.meaning &&
+                                        controller.controller.text.isNotEmpty
+                                    ? controller.editLemmaMeaning(
+                                        controller.controller.text,
+                                      )
+                                    : null,
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 10,
+                                  ),
+                                ),
+                                child: Text(L10n.of(context).saveChanges),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    }
 
                       return Column(
                         spacing: 12.0,
@@ -207,12 +204,13 @@ class WordZoomWidget extends StatelessWidget {
                             ),
                           LemmaReactionPicker(
                             cId: _selectedToken.vocabConstructID,
+                          event: messageEvent.event,
                             controller: overlayController.widget.chatController,
                           ),
                           if (controller.error != null)
-                            Text(
-                              L10n.of(context).oopsSomethingWentWrong,
-                              textAlign: TextAlign.center,
+                            ErrorIndicator(
+                              message: L10n.of(context).errorFetchingDefinition,
+                              style: const TextStyle(fontSize: 14.0),
                             )
                           else if (controller.isLoading ||
                               controller.lemmaInfo == null)
@@ -261,7 +259,7 @@ class WordZoomWidget extends StatelessWidget {
               ),
             ),
           ),
-        ),
+        ,,,,),
         wordIsNew
             ? NewWordOverlay(
                 key: ValueKey(transformTargetId),

@@ -4170,8 +4170,24 @@
   "spaceCapacityNotSet": "This space has no capacity limit.",
   "chatCapacityHasBeenChanged": "Chat capacity changed",
   "spaceCapacityHasBeenChanged": "Space capacity changed",
-  "chatCapacitySetTooLow": "Chat capacity cannot be set below the current number of members.",
-  "spaceCapacitySetTooLow": "Space capacity cannot be set below the current number of members.",
+  "chatCapacitySetTooLow": "Chat capacity must be at least {count}.",
+  "@chatCapacitySetTooLow": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "spaceCapacitySetTooLow": "Space capacity must be at least {count}.",
+  "@spaceCapacitySetTooLow": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "chatCapacityExplanation": "Chat capacity limits the number of members allowed in a chat.",
   "spaceCapacityExplanation": "Space capacity limits the number of members allowed in a space.",
   "chatExceedsCapacity": "This chat exceeds its capacity.",
@@ -5061,5 +5077,20 @@
       }
     }
   },
-  "saved": "Saved"
+  "saved": "Saved",
+  "reset": "Reset",
+  "errorGenerateActivityMessage": "Failed to generate activity",
+  "errorRegenerateActivityMessage": "Failed to regenerate activity",
+  "errorFetchingActivitiesMessage": "Failed to fetch activities",
+  "errorFetchingDefinition": "Failed to fetch definition",
+  "errorProcessAnalytics": "Failed to process analytics",
+  "errorDownloading": "Download failed",
+  "errorFetchingLevelSummary": "Failed to fetch level summary",
+  "errorLoadingSpaceChildren": "Failed to load chats within this space",
+  "unexpectedError": "Unexpected error.",
+  "pleaseReload": "Please reload and try again.",
+  "translationError": "Translation error",
+  "errorFetchingTranslation": "Failed to fetch translation",
+  "errorFetchingActivity": "Failed to fetch activity",
+  "check": "Check"
 }
