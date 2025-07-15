@@ -228,6 +228,15 @@ class SettingsView extends StatelessWidget {
                   //   color: theme.dividerColor,
                   // ),
                   ListTile(
+                    leading: const Icon(Icons.account_circle_outlined),
+                    title: Text(L10n.of(context).upgradeToPro),
+                    onTap: () => context.go('/rooms/settings/subscription'),
+                    tileColor:
+                        activeRoute.startsWith('/rooms/settings/subscription')
+                            ? theme.colorScheme.surfaceContainerHigh
+                            : null,
+                  ),
+                  ListTile(
                     leading: const Icon(Icons.language_outlined),
                     title: Text(L10n.of(context).learningSettings),
                     tileColor:
@@ -270,17 +279,6 @@ class SettingsView extends StatelessWidget {
                         ? theme.colorScheme.surfaceContainerHigh
                         : null,
                   ),
-                  // #Pangea
-                  ListTile(
-                    leading: const Icon(Icons.account_circle_outlined),
-                    title: Text(L10n.of(context).subscriptionManagement),
-                    onTap: () => context.go('/rooms/settings/subscription'),
-                    tileColor:
-                        activeRoute.startsWith('/rooms/settings/subscription')
-                            ? theme.colorScheme.surfaceContainerHigh
-                            : null,
-                  ),
-                  // Pangea#
                   ListTile(
                     leading: const Icon(Icons.shield_outlined),
                     title: Text(L10n.of(context).security),

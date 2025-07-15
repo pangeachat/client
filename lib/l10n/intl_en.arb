@@ -5092,5 +5092,22 @@
   "translationError": "Translation error",
   "errorFetchingTranslation": "Failed to fetch translation",
   "errorFetchingActivity": "Failed to fetch activity",
-  "check": "Check"
+  "check": "Check",
+  "upgradeToPro": "Upgrade to Pro",
+  "freeModeChatDesc": "Chat with text, voice, images, videos",
+  "freeModeCreateDesc": "Create and join learning communities",
+  "freeModeBotDesc": "Chat with AI anywhere anytime",
+  "freeModeActivitiesDesc": "Complete tasks shared by your community",
+  "freeModeAnalyticsDesc": "Playful progress tracking and leaderboard",
+  "freeModeLanguagesDesc": "Communicate in 49 target languages",
+  "paidModeWriteDesc": "Write in your target language on Day One",
+  "paidModeGenerateDesc": "Generate tasks and practice activities",
+  "paidModeAnalyticsDesc": "Powerful vocab and grammar analytics",
+  "paidModeAudioDesc": "Improve listening with audio messages",
+  "paidModePracticeDesc": "Practice speaking with AI feedback",
+  "paidModeEmojisDesc": "Visualize word meaning with emojis",
+  "tagline": "Learn a language while texting your friends",
+  "freeModeLabel": "FREE",
+  "paidModeLabel": "Pro",
+  "aiPowerups": "AI Powerups"
 }
