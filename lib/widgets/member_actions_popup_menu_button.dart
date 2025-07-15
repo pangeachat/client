@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -29,15 +30,25 @@ void showMemberActionsPopupMenu({
   final overlay = Overlay.of(context, rootOverlay: true)
       .context
       .findRenderObject() as RenderBox;
-  // Pangea3
+  // Pangea#
 
   final button = context.findRenderObject() as RenderBox;
 
+// #Pangea
+  final double offset =
+      FluffyThemes.isColumnMode(context) && overlay.size.width <= 947 ? 218 : 0;
+  // Pangea#
+
   final position = RelativeRect.fromRect(
     Rect.fromPoints(
-      button.localToGlobal(const Offset(0, -65), ancestor: overlay),
+      // #Pangea
+      // button.localToGlobal(const Offset(0, -65), ancestor: overlay),
+      // button.localToGlobal(
+      //   button.size.bottomRight(Offset.zero) + const Offset(-50, 0),
+      button.localToGlobal(Offset(offset, -65), ancestor: overlay),
       button.localToGlobal(
-        button.size.bottomRight(Offset.zero) + const Offset(-50, 0),
+        button.size.bottomRight(Offset.zero) + Offset(offset - 50, 0),
+        // Pangea#
         ancestor: overlay,
       ),
     ),
