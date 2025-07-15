@@ -5073,7 +5073,7 @@
   "translationError": "Translation error",
   "errorFetchingTranslation": "Failed to fetch translation",
   "errorFetchingActivity": "Failed to fetch activity",
-    "maxInputLength": "{maxLength} character limit",
+  "maxInputLength": "{maxLength} character limit",
   "@maxInputLength": {
     "type": "String",
     "placeholders": {
