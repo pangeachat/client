@@ -158,7 +158,10 @@ class HtmlMessage extends StatelessWidget {
   List<PangeaToken>? get tokens =>
       pangeaMessageEvent?.messageDisplayRepresentation?.tokens
           ?.where(
-            (t) => t.pos != "PUNCT" && !t.lemma.text.contains(RegExp(r'[0-9]')),
+            (t) =>
+                t.pos != "PUNCT" &&
+                !t.lemma.text.contains(RegExp(r'[0-9]')) &&
+                t.lemma.text.length <= 50,
           )
           .toList();
 
