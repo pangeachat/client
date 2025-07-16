@@ -87,6 +87,7 @@ class ConstructSummaryRequest {
       'msgs': messages,
       'user_l1': userL1,
       'user_l2': userL2,
+      'language': userL1,
       'upper_level': upperLevel,
       'lower_level': lowerLevel,
     };
