@@ -351,7 +351,7 @@ class SubscriptionController extends BaseController {
       accessToken: _pangeaController.userController.accessToken,
     );
     final String reqUrl = Uri.encodeFull(
-      "${PApiUrls.paymentLink}?pangea_user_id=$_userID&duration=${duration.value}&redeem=$isPromo",
+      "${PApiUrls.paymentLink}?pangea_user_id=$_userID&duration=${duration.name}&redeem=$isPromo",
     );
     final Response res = await req.get(url: reqUrl);
     final json = jsonDecode(res.body);
@@ -402,11 +402,27 @@ class SubscriptionController extends BaseController {
 
 enum SubscriptionDuration {
   month,
-  year,
-}
+  year;
 
-extension SubscriptionDurationExtension on SubscriptionDuration {
-  String get value => this == SubscriptionDuration.month ? "month" : "year";
+  String value(BuildContext context) {
+    final l10n = L10n.of(context);
+    switch (this) {
+      case SubscriptionDuration.month:
+        return l10n.monthAbvr;
+      case SubscriptionDuration.year:
+        return l10n.yearAbvr;
+    }
+  }
+
+  String description(BuildContext context) {
+    final l10n = L10n.of(context);
+    switch (this) {
+      case SubscriptionDuration.month:
+        return l10n.mostPopular;
+      case SubscriptionDuration.year:
+        return l10n.mostSavings;
+    }
+  }
 }
 
 class SubscriptionDetails {
@@ -427,9 +443,11 @@ class SubscriptionDetails {
 
   bool get isTrial => appId == "trial";
 
-  String displayPrice(BuildContext context) => isTrial || price <= 0
-      ? L10n.of(context).freeTrial
-      : localizedPrice ?? "\$${price.toStringAsFixed(2)}";
+  String displayPrice(BuildContext context) {
+    final priceString = localizedPrice ?? "\$${price.toStringAsFixed(2)}";
+    if (duration == null) return priceString;
+    return "$priceString/${duration!.value(context)}";
+  }
 
   String displayName(BuildContext context) {
     if (isTrial) {
@@ -457,7 +475,7 @@ class SubscriptionDetails {
     final data = <String, dynamic>{};
     data['price'] = price;
     data['id'] = id;
-    data['duration'] = duration?.value;
+    data['duration'] = duration?.name;
     data['appId'] = appId;
     return data;
   }
@@ -466,10 +484,18 @@ class SubscriptionDetails {
     return SubscriptionDetails(
       price: json['price'],
       duration: SubscriptionDuration.values.firstWhereOrNull(
-        (duration) => duration.value == json['duration'],
+        (duration) => duration.name == json['duration'],
       ),
       id: json['id'],
       appId: json['appId'],
     );
   }
+
+  static SubscriptionDetails get free => SubscriptionDetails(
+        price: 0.0,
+        id: "free",
+        duration: null,
+      );
+
+  bool get isFree => id == "free";
 }

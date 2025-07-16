@@ -137,7 +137,7 @@ class RCProductsResponseModel {
           (productDetails) => SubscriptionDetails(
             price: double.parse(metadata['$packageId.price']),
             duration: SubscriptionDuration.values.firstWhereOrNull(
-              (duration) => duration.value == metadata['$packageId.duration'],
+              (duration) => duration.name == metadata['$packageId.duration'],
             ),
             id: productDetails['product']['store_identifier'],
             appId: productDetails['product']['app_id'],

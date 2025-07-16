@@ -5481,7 +5481,6 @@
       }
     }
   },
-  "cancelInSubscriptionSettings": "• Cancela en cualquier momento en la configuración de suscripción",
   "cancelToAvoidCharges": "• Cancela antes de {trialEnds} para evitar cargos",
   "@cancelToAvoidCharges": {
     "type": "String",

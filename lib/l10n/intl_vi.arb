@@ -3718,7 +3718,6 @@
       }
     }
   },
-  "cancelInSubscriptionSettings": "• Hủy bất cứ lúc nào trong cài đặt đăng ký",
   "cancelToAvoidCharges": "• Hủy trước {trialEnds} để tránh bị tính phí",
   "@cancelToAvoidCharges": {
     "type": "String",

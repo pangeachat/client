@@ -87,10 +87,7 @@ class AvailableSubscriptionsInfo {
     if (cachedInfo == null) await _cacheSubscriptionInfo();
 
     availableSubscriptions = (allProducts ?? [])
-        .where(
-          (product) =>
-              product.appId == appIds!.currentAppId || product.appId == "trial",
-        )
+        .where((product) => product.appId == appIds!.currentAppId)
         .sorted((a, b) => a.price.compareTo(b.price))
         .toList();
   }

@@ -4830,7 +4830,7 @@
       }
     }
   },
-  "cancelInSubscriptionSettings": "• Cancel at any time in subscription settings",
+  "cancelInSubscriptionSettings": "• Cancel at any time in Upgrade to Pro settings",
   "cancelToAvoidCharges": "• Cancel before {trialEnds} to avoid charges",
   "@cancelToAvoidCharges": {
     "type": "String",
@@ -5109,5 +5109,22 @@
   "tagline": "Learn a language while texting your friends",
   "freeModeLabel": "FREE",
   "paidModeLabel": "Pro",
-  "aiPowerups": "AI Powerups"
+  "aiPowerups": "AI Powerups",
+  "monthAbvr": "mo",
+  "yearAbvr": "yr",
+  "fiftyPerDay": "50 per day",
+  "unlimited": "Unlimited",
+  "mostPopular": "Most popular",
+  "mostSavings": "Most savings",
+  "free": "Free",
+  "chooseYourPlan": "Choose your plan",
+  "startDate": "• Starting {start}",
+  "@startDate": {
+    "type": "String",
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
+  }
 }
