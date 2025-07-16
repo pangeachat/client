@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
@@ -16,6 +13,7 @@ import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class MorphAnalyticsListView extends StatelessWidget {
   final AnalyticsPopupWrapperState controller;
@@ -222,14 +220,13 @@ class MorphTagChip extends StatelessWidget {
                 width: 28.0,
                 height: 28.0,
                 child: unlocked
-                    ? IconButton.filled(
-                        style: IconButton.styleFrom(
-                          backgroundColor:
-                              theme.colorScheme.surface.withAlpha(180),
+                    ? Container(
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.surface.withAlpha(180),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         padding: const EdgeInsets.all(4),
-                        onPressed: () => {},
-                        icon: MorphIcon(
+                        child: MorphIcon(
                           morphFeature: feature,
                           morphTag: morphTag,
                         ),
