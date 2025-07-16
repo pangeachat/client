@@ -21,7 +21,6 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -178,6 +177,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
               .where((l) => l == LoginState.loggedIn)
               .first
               .then((_) {
+            // #Pangea
+            MatrixState.pangeaController.handleLoginStateChange(
+              LoginState.loggedIn,
+              _loginClientCandidate!.userID,
+            );
+            // Pangea#
             if (!widget.clients.contains(_loginClientCandidate)) {
               widget.clients.add(_loginClientCandidate!);
             }
@@ -254,7 +259,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       ),
     );
     pangeaController = PangeaController(matrix: widget, matrixState: this);
-    TtsController.initialize();
     // Pangea#
   }
 
@@ -312,6 +316,12 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     });
     onLoginStateChanged[name] ??=
         c.onLoginStateChanged.stream.listen((state) async {
+      // #Pangea
+      MatrixState.pangeaController.handleLoginStateChange(
+        state,
+        c.userID,
+      );
+      // Pangea#
       final loggedInWithMultipleClients = widget.clients.length > 1;
       if (state == LoginState.loggedOut) {
         _cancelSubs(c.clientName);
@@ -335,27 +345,8 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           FluffyChatApp.router.go('/rooms');
         }
       } else {
-        // #Pangea
-        if (state == LoginState.loggedIn) {
-          final futures = [
-            pangeaController.userController.reinitialize(),
-            pangeaController.subscriptionController.reinitialize(),
-          ];
-          await Future.wait(futures);
-        }
-        String routeDestination;
-        if (state == LoginState.loggedIn) {
-          routeDestination =
-              await pangeaController.userController.isUserDataAvailableAndL2Set
-                  ? '/rooms'
-                  : "/user_age";
-        } else {
-          routeDestination = '/home';
-        }
-        FluffyChatApp.router.go(routeDestination);
-        // FluffyChatApp.router
-        //     .go(state == LoginState.loggedIn ? '/rooms' : '/home');
-        // Pangea#
+        FluffyChatApp.router
+            .go(state == LoginState.loggedIn ? '/rooms' : '/home');
       }
     });
     onUiaRequest[name] ??= c.onUiaRequest.stream.listen(uiaRequestHandler);

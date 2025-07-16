@@ -22,6 +22,7 @@ import 'package:fluffychat/pangea/spaces/controllers/space_controller.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/speech_to_text_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/text_to_speech_controller.dart';
+import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/user/controllers/permissions_controller.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -58,7 +59,7 @@ class PangeaController {
   int? randomint;
   PangeaController({required this.matrix, required this.matrixState}) {
     _setup();
-    _subscribeToStreams();
+    _setLanguageStream();
     randomint = Random().nextInt(2000);
   }
 
@@ -76,6 +77,8 @@ class PangeaController {
     getAnalytics.initialize();
     subscriptionController.initialize();
     setPangeaPushRules();
+
+    TtsController.setAvailableLanguages();
   }
 
   /// Initialize controllers
@@ -157,7 +160,7 @@ class PangeaController {
   }
 
   /// check user information if not found then redirect to Date of birth page
-  _handleLoginStateChange(LoginState state, String? userID) {
+  void handleLoginStateChange(LoginState state, String? userID) {
     switch (state) {
       case LoginState.loggedOut:
       case LoginState.softLoggedOut:
@@ -173,6 +176,9 @@ class PangeaController {
         putAnalytics.initialize();
         getAnalytics.initialize();
         _setLanguageStream();
+
+        userController.reinitialize();
+        subscriptionController.reinitialize();
         break;
     }
     if (state != LoginState.loggedIn) {
@@ -194,13 +200,6 @@ class PangeaController {
     getAnalytics.dispose();
     putAnalytics.initialize();
     await getAnalytics.initialize();
-  }
-
-  void _subscribeToStreams() {
-    final userID = matrixState.client.userID;
-    matrixState.client.onLoginStateChanged.stream
-        .listen((state) => _handleLoginStateChange(state, userID));
-    _setLanguageStream();
   }
 
   void _setLanguageStream() {
