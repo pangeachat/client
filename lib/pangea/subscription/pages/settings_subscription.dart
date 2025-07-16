@@ -8,6 +8,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription_view.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class SubscriptionManagement extends StatefulWidget {
@@ -123,28 +124,24 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
   //       .currentSubscriptionInfo!.currentPlatformMatchesPurchasePlatform;
   // }
 
-  // Future<void> submitChange(
-  //   SubscriptionDetails subscription, {
-  //   bool isPromo = false,
-  // }) async {
-  //   setState(() => loading = true);
-  //   await showFutureLoadingDialog(
-  //     context: context,
-  //     future: () async => subscriptionController.submitSubscriptionChange(
-  //       subscription,
-  //       context,
-  //       isPromo: isPromo,
-  //     ),
-  //     onError: (error, s) {
-  //       setState(() => loading = false);
-  //       return null;
-  //     },
-  //   );
+  Future<void> submitChange() async {
+    setState(() => loading = true);
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async => subscriptionController.submitSubscriptionChange(
+        selectedSubscription,
+        context,
+      ),
+      onError: (error, s) {
+        setState(() => loading = false);
+        return null;
+      },
+    );
 
-  //   if (mounted && loading) {
-  //     setState(() => loading = false);
-  //   }
-  // }
+    if (mounted && loading) {
+      setState(() => loading = false);
+    }
+  }
 
   // Future<void> launchMangementUrl(ManagementOption option) async {
   //   String managementUrl = Environment.stripeManagementUrl;

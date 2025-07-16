@@ -27,77 +27,86 @@ class SubscriptionOptionCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () => controller.selectSubscription(subscription),
         child: Opacity(
-          opacity: selected ? 1.0 : 0.5,
+          opacity: selected ? 1.0 : 0.75,
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(
                 color: selected
                     ? theme.colorScheme.primaryContainer
                     : theme.disabledColor,
-                width: 2.0,
+                width: isColumnMode ? 2.0 : 1.0,
               ),
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(12.0),
             ),
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: selected
-                        ? theme.colorScheme.primaryContainer
-                        : theme.disabledColor,
-                  ),
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        subscription.displayPrice(context),
-                        style: TextStyle(
-                          fontSize: isColumnMode ? 24 : 16,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsetsGeometry.symmetric(
-                    horizontal: 4.0,
-                    vertical: 8.0,
-                  ),
-                  child: Column(
-                    spacing: 12.0,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.bolt,
-                            size: isColumnMode ? 24 : 16,
-                            color: AppConfig.yellowDark,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: selected
+                          ? theme.colorScheme.primaryContainer
+                          : theme.disabledColor,
+                    ),
+                    padding: const EdgeInsets.all(4.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          subscription.displayPrice(context),
+                          style: TextStyle(
+                            fontSize: isColumnMode ? 24 : 16,
                           ),
-                          Text(
-                            subscription.isFree
-                                ? L10n.of(context).fiftyPerDay
-                                : L10n.of(context).unlimited,
-                            style: TextStyle(
-                              fontSize: isColumnMode ? 20 : 12,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: theme.brightness == Brightness.light
+                          ? Colors.white
+                          : Colors.black,
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    padding: const EdgeInsetsGeometry.symmetric(
+                      horizontal: 4.0,
+                      vertical: 8.0,
+                    ),
+                    child: Column(
+                      spacing: 12.0,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.bolt,
+                              size: isColumnMode ? 24 : 16,
                               color: AppConfig.yellowDark,
                             ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        subscription.duration?.description(context) ??
-                            L10n.of(context).free,
-                        style: TextStyle(
-                          fontSize: isColumnMode ? 20 : 12,
+                            Text(
+                              subscription.isFree
+                                  ? L10n.of(context).fiftyPerDay
+                                  : L10n.of(context).unlimited,
+                              style: TextStyle(
+                                fontSize: isColumnMode ? 20 : 12,
+                                color: AppConfig.yellowDark,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
+                        Text(
+                          subscription.duration?.description(context) ??
+                              L10n.of(context).free,
+                          style: TextStyle(
+                            fontSize: isColumnMode ? 20 : 12,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

@@ -52,6 +52,9 @@ class MaxWidthBody extends StatelessWidget {
                     ),
                     // Pangea#
                     child: Material(
+                      // #Pangea
+                      type: MaterialType.transparency,
+                      // Pangea#
                       shape: RoundedRectangleBorder(
                         borderRadius:
                             BorderRadius.circular(AppConfig.borderRadius),
