@@ -101,9 +101,16 @@ class MobileSubscriptionInfo extends CurrentSubscriptionInfo {
 
     final EntitlementInfo activeEntitlement = activeEntitlements[0];
     currentSubscriptionId = activeEntitlement.productIdentifier;
-    expirationDate = activeEntitlement.expirationDate != null
-        ? DateTime.parse(activeEntitlement.expirationDate!)
-        : null;
+
+    final endDate = activeEntitlement.expirationDate;
+    if (endDate != null) {
+      final parsed = DateTime.tryParse(endDate);
+      activeEntitlement.willRenew
+          ? expirationDate = parsed
+          : renewalDate = parsed;
+    }
+
+    registrationDate = DateTime.parse(activeEntitlement.originalPurchaseDate);
 
     if (activeEntitlement.periodType == PeriodType.trial) {
       // We dont use actual trials as it would require adding a CC on devices

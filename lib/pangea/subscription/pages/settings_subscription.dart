@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription_view.dart';
+import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -83,11 +87,11 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
   //         .availableSubscriptionInfo?.availableSubscriptions.isNotEmpty ??
   //     false;
 
-  // bool get currentSubscriptionAvailable =>
-  //     subscriptionController.isSubscribed != null &&
-  //     subscriptionController.isSubscribed! &&
-  //     subscriptionController.currentSubscriptionInfo?.currentSubscription !=
-  //         null;
+  bool get currentSubscriptionAvailable =>
+      subscriptionController.isSubscribed != null &&
+      subscriptionController.isSubscribed! &&
+      subscriptionController.currentSubscriptionInfo?.currentSubscription !=
+          null;
 
   // bool get currentSubscriptionIsTrial =>
   //     currentSubscriptionAvailable &&
@@ -95,13 +99,13 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
   //             .currentSubscriptionInfo?.currentSubscription?.isTrial ??
   //         false);
 
-  // String? get purchasePlatformDisplayName => subscriptionController
-  //     .currentSubscriptionInfo?.purchasePlatformDisplayName;
+  String? get purchasePlatformDisplayName => subscriptionController
+      .currentSubscriptionInfo?.purchasePlatformDisplayName;
 
-  // bool get currentSubscriptionIsPromotional =>
-  //     subscriptionController
-  //         .currentSubscriptionInfo?.currentSubscriptionIsPromotional ??
-  //     false;
+  bool get currentSubscriptionIsPromotional =>
+      subscriptionController
+          .currentSubscriptionInfo?.currentSubscriptionIsPromotional ??
+      false;
 
   // String get currentSubscriptionTitle =>
   //     subscriptionController.currentSubscriptionInfo?.currentSubscription
@@ -113,16 +117,16 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
   //         ?.displayPrice(context) ??
   //     "";
 
-  // bool get showManagementOptions {
-  //   if (!currentSubscriptionAvailable) {
-  //     return false;
-  //   }
-  //   if (subscriptionController.currentSubscriptionInfo!.purchasedOnWeb) {
-  //     return true;
-  //   }
-  //   return subscriptionController
-  //       .currentSubscriptionInfo!.currentPlatformMatchesPurchasePlatform;
-  // }
+  bool get showManagementOptions {
+    if (!currentSubscriptionAvailable) {
+      return false;
+    }
+    if (subscriptionController.currentSubscriptionInfo!.purchasedOnWeb) {
+      return true;
+    }
+    return subscriptionController
+        .currentSubscriptionInfo!.currentPlatformMatchesPurchasePlatform;
+  }
 
   Future<void> submitChange() async {
     setState(() => loading = true);
@@ -143,52 +147,52 @@ class SubscriptionManagementController extends State<SubscriptionManagement> {
     }
   }
 
-  // Future<void> launchMangementUrl(ManagementOption option) async {
-  //   String managementUrl = Environment.stripeManagementUrl;
-  //   final String? email =
-  //       await MatrixState.pangeaController.userController.userEmail;
-  //   if (email != null) {
-  //     managementUrl += "?prefilled_email=${Uri.encodeComponent(email)}";
-  //   }
-  //   final String? purchaseAppId = subscriptionController
-  //       .currentSubscriptionInfo?.currentSubscription?.appId;
-  //   if (purchaseAppId == null) return;
+  Future<void> launchMangementUrl(ManagementOption option) async {
+    String managementUrl = Environment.stripeManagementUrl;
+    final String? email =
+        await MatrixState.pangeaController.userController.userEmail;
+    if (email != null) {
+      managementUrl += "?prefilled_email=${Uri.encodeComponent(email)}";
+    }
+    final String? purchaseAppId = subscriptionController
+        .currentSubscriptionInfo?.currentSubscription?.appId;
+    if (purchaseAppId == null) return;
 
-  //   final SubscriptionAppIds? appIds =
-  //       subscriptionController.availableSubscriptionInfo!.appIds;
+    final SubscriptionAppIds? appIds =
+        subscriptionController.availableSubscriptionInfo!.appIds;
 
-  //   if (purchaseAppId == appIds?.stripeId) {
-  //     launchUrlString(managementUrl);
-  //     return;
-  //   }
-  //   if (purchaseAppId == appIds?.appleId) {
-  //     launchUrlString(
-  //       AppConfig.appleMangementUrl,
-  //       mode: LaunchMode.externalApplication,
-  //     );
-  //     return;
-  //   }
-  //   switch (option) {
-  //     case ManagementOption.history:
-  //       launchUrlString(
-  //         AppConfig.googlePlayHistoryUrl,
-  //         mode: LaunchMode.externalApplication,
-  //       );
-  //       break;
-  //     case ManagementOption.paymentMethod:
-  //       launchUrlString(
-  //         AppConfig.googlePlayPaymentMethodUrl,
-  //         mode: LaunchMode.externalApplication,
-  //       );
-  //       break;
-  //     default:
-  //       launchUrlString(
-  //         AppConfig.googlePlayMangementUrl,
-  //         mode: LaunchMode.externalApplication,
-  //       );
-  //       break;
-  //   }
-  // }
+    if (purchaseAppId == appIds?.stripeId) {
+      launchUrlString(managementUrl);
+      return;
+    }
+    if (purchaseAppId == appIds?.appleId) {
+      launchUrlString(
+        AppConfig.appleMangementUrl,
+        mode: LaunchMode.externalApplication,
+      );
+      return;
+    }
+    switch (option) {
+      case ManagementOption.history:
+        launchUrlString(
+          AppConfig.googlePlayHistoryUrl,
+          mode: LaunchMode.externalApplication,
+        );
+        break;
+      case ManagementOption.paymentMethod:
+        launchUrlString(
+          AppConfig.googlePlayPaymentMethodUrl,
+          mode: LaunchMode.externalApplication,
+        );
+        break;
+      default:
+        launchUrlString(
+          AppConfig.googlePlayMangementUrl,
+          mode: LaunchMode.externalApplication,
+        );
+        break;
+    }
+  }
 
   void selectSubscription(SubscriptionDetails subscription) {
     setState(() => selectedSubscription = subscription);

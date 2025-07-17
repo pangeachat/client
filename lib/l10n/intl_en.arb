@@ -5126,5 +5126,18 @@
         "type": "String"
       }
     }
+  },
+  "proPlan": "Pro plan",
+  "powerups": "Powerups",
+  "renewOn": "Renew on",
+  "expiresOn": "Expires on",
+  "registrationDate": "Starting {start}",
+  "@registrationDate": {
+    "type": "String",
+    "placeholders": {
+      "start": {
+        "type": "String"
+      }
+    }
   }
 }

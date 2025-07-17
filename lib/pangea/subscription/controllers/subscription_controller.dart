@@ -423,6 +423,16 @@ enum SubscriptionDuration {
         return l10n.mostSavings;
     }
   }
+
+  String fullName(BuildContext context) {
+    final l10n = L10n.of(context);
+    switch (this) {
+      case SubscriptionDuration.month:
+        return l10n.monthlySubscription;
+      case SubscriptionDuration.year:
+        return l10n.yearlySubscription;
+    }
+  }
 }
 
 class SubscriptionDetails {

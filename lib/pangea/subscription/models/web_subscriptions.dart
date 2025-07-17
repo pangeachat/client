@@ -22,6 +22,8 @@ class WebSubscriptionInfo extends CurrentSubscriptionInfo {
 
       currentSubscriptionId = rcResponse.currentSubscriptionId;
       expirationDate = rcResponse.expirationDate;
+      registrationDate = rcResponse.registrationDate;
+      renewalDate = rcResponse.renewalDate;
     } catch (err) {
       currentSubscriptionId = AppConfig.errorSubscriptionId;
     }

@@ -11,6 +11,8 @@ class CurrentSubscriptionInfo {
   final String userID;
   final AvailableSubscriptionsInfo availableSubscriptionInfo;
 
+  DateTime? registrationDate;
+  DateTime? renewalDate;
   DateTime? expirationDate;
   String? currentSubscriptionId;
 
@@ -39,8 +41,8 @@ class CurrentSubscriptionInfo {
 
   bool get isLifetimeSubscription =>
       currentSubscriptionIsPromotional &&
-      expirationDate != null &&
-      expirationDate!.isAfter(DateTime(2100));
+      ((expirationDate != null && expirationDate!.isAfter(DateTime(2100))) ||
+          (renewalDate != null && renewalDate!.isAfter(DateTime(2100))));
 
   String? get purchasePlatformDisplayName {
     if (currentSubscription?.appId == null) return null;

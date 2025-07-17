@@ -151,7 +151,9 @@ class RCProductsResponseModel {
 class RCSubscriptionResponseModel {
   String? currentSubscriptionId;
   SubscriptionDetails? currentSubscription;
+  DateTime? registrationDate;
   DateTime? expirationDate;
+  DateTime? renewalDate;
   List<String>? allEntitlements;
   Map<String, RCSubscription>? allSubscriptions;
 
@@ -159,7 +161,9 @@ class RCSubscriptionResponseModel {
     this.currentSubscriptionId,
     this.currentSubscription,
     this.allEntitlements,
+    this.registrationDate,
     this.expirationDate,
+    this.renewalDate,
     this.allSubscriptions,
   });
 
@@ -192,9 +196,24 @@ class RCSubscriptionResponseModel {
     final Map<String, dynamic> currentSubscriptionMetadata =
         json['subscriptions'][currentSubscriptionId];
 
-    final DateTime expirationDate = DateTime.parse(
+    final DateTime endDate = DateTime.parse(
       currentSubscriptionMetadata['expires_date'],
     );
+
+    final DateTime? unsubscribedAt =
+        currentSubscriptionMetadata['unsubscribe_detected_at'] != null
+            ? DateTime.parse(
+                currentSubscriptionMetadata['unsubscribe_detected_at'],
+              )
+            : null;
+
+    final DateTime purchaseDate = DateTime.parse(
+      currentSubscriptionMetadata['purchase_date'],
+    );
+
+    final willExpire =
+        (unsubscribedAt != null && unsubscribedAt.isAfter(purchaseDate)) ||
+            currentSubscriptionId.startsWith('rc_promo');
 
     final SubscriptionDetails? currentSubscription =
         allProducts?.firstWhereOrNull(
@@ -206,7 +225,9 @@ class RCSubscriptionResponseModel {
     return RCSubscriptionResponseModel(
       currentSubscription: currentSubscription,
       currentSubscriptionId: currentSubscriptionId,
-      expirationDate: expirationDate,
+      expirationDate: willExpire ? endDate : null,
+      renewalDate: willExpire ? null : endDate,
+      registrationDate: purchaseDate,
       allEntitlements: activeEntitlements,
       allSubscriptions: history,
     );
