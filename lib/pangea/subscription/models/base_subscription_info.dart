@@ -1,9 +1,9 @@
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/subscription/constants/subscription_app_id.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_repo.dart';
-import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Contains information about the users's current subscription

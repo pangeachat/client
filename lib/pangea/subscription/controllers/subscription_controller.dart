@@ -1,7 +1,15 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:url_launcher/url_launcher_string.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -12,18 +20,12 @@ import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/subscription/constants/subscription_app_id.dart';
 import 'package:fluffychat/pangea/subscription/models/base_subscription_info.dart';
 import 'package:fluffychat/pangea/subscription/models/mobile_subscriptions.dart';
 import 'package:fluffychat/pangea/subscription/models/web_subscriptions.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_repo.dart';
-import 'package:fluffychat/pangea/subscription/utils/subscription_app_id.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-import 'package:purchases_flutter/purchases_flutter.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 enum SubscriptionStatus {
   loading,
