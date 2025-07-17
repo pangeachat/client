@@ -16,6 +16,8 @@ import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
+import 'package:fluffychat/pangea/subscription/constants/subscription_constants.dart';
+import 'package:fluffychat/pangea/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityGeneratorView extends StatelessWidget {
@@ -31,10 +33,37 @@ class ActivityGeneratorView extends StatelessWidget {
     final l10n = L10n.of(context);
     Widget? body;
 
+    final isSubscribed =
+        MatrixState.pangeaController.subscriptionController.isSubscribed ??
+            true;
+
+    final hasPowerups =
+        MatrixState.pangeaController.subscriptionController.remainingPowerups >
+            0;
+
     if (controller.loading) {
-      body = const Padding(
-        padding: EdgeInsets.all(32.0),
-        child: Center(child: CircularProgressIndicator()),
+      body = Padding(
+        padding: const EdgeInsets.all(32.0),
+        child: Center(
+          child: Column(
+            children: [
+              const CircularProgressIndicator(),
+              if (!isSubscribed && hasPowerups) ...[
+                const SizedBox(height: 32.0),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: SubscriptionPaywall(
+                      title: L10n.of(context).goProGetMore,
+                      description: L10n.of(context).dontMissOutOnActivities,
+                      assetPath:
+                          "${AppConfig.assetsBaseURL}/${SubscriptionConstants.remainingPowerups}",
+                    ),
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
       );
     } else if (controller.error != null) {
       body = Center(

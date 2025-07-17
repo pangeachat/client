@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/activity_suggestions/activity_suggestions_cons
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/subscription/repo/power_ups_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityGenerator extends StatefulWidget {
@@ -218,6 +219,7 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
       );
       activities = resp.activityPlans;
       await _setModeImageURL();
+      await PowerupsRepo.usePowerup(Matrix.of(context).client.userID!);
     } catch (e, s) {
       error = e;
       ErrorHandler.logError(

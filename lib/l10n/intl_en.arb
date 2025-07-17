@@ -5139,5 +5139,12 @@
         "type": "String"
       }
     }
-  }
+  },
+  "goProGetMore": "Go Pro, Get more",
+  "dontMissOutOnActivities": "Don’t miss out on Unlimited activity generation!",
+  "choosePlan": "Choose plan",
+  "remindMeLater": "Remind me later",
+  "paywallTitle": "No Powerups Left",
+  "paywallDesc": "You've used 50 Free Powerups for today!\nCheck back tomorrow or upgrade to enjoy Unlimited AI Powerups features!",
+  "proLabel": "PRO"
 }

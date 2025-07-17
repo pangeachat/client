@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
@@ -12,6 +14,7 @@ import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicator_
 import 'package:fluffychat/pangea/analytics_summary/progress_indicator.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
+import 'package:fluffychat/pangea/subscription/repo/power_ups_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// A summary of "My Analytics" shown at the top of the chat list
@@ -94,6 +97,9 @@ class LearningProgressIndicatorsState
     final userL1 = MatrixState.pangeaController.languageController.userL1;
     final userL2 = MatrixState.pangeaController.languageController.userL2;
 
+    final isSubscribed =
+        MatrixState.pangeaController.subscriptionController.isSubscribed;
+
     return Row(
       children: [
         Expanded(
@@ -175,6 +181,46 @@ class LearningProgressIndicatorsState
                     child: Row(
                       spacing: 8.0,
                       children: [
+                        StreamBuilder(
+                          stream: MatrixState.pangeaController
+                              .subscriptionController.powerupsStream.stream,
+                          builder: (context, _) {
+                            return HoverButton(
+                              onPressed: () =>
+                                  context.go("/rooms/settings/subscription"),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(
+                                    Icons.bolt,
+                                    color: AppConfig.yellowDark,
+                                    size: 24.0,
+                                  ),
+                                  if (isSubscribed == null)
+                                    const SizedBox(
+                                      width: 24.0,
+                                      height: 24.0,
+                                      child: CircularProgressIndicator(
+                                        color: AppConfig.yellowDark,
+                                        strokeWidth: 2.0,
+                                      ),
+                                    )
+                                  else
+                                    Text(
+                                      isSubscribed
+                                          ? L10n.of(context).proLabel
+                                          : PowerupsRepo.get(client.userID!)
+                                              .toString(),
+                                      style: const TextStyle(
+                                        fontSize: 14.0,
+                                        color: AppConfig.yellowDark,
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            );
+                          },
+                        ),
                         Expanded(
                           child: LearningProgressBar(
                             level: _constructsModel.level,

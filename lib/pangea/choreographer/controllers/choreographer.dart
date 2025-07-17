@@ -15,11 +15,9 @@ import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/utils/input_paste_listener.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
@@ -101,20 +99,13 @@ class Choreographer {
       return;
     }
 
-    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
-    if (isSubscribed != null && !isSubscribed) {
+    if (!pangeaController.subscriptionController.enableAssistance) {
       // don't want to run IGC if user isn't subscribed, so either
       // show the paywall if applicable or just send the message
       final status = pangeaController.subscriptionController.subscriptionStatus;
       status == SubscriptionStatus.shouldShowPaywall
-          ? OverlayUtil.showPositionedCard(
-              context: context,
-              cardToShow: PaywallCard(
-                chatController: chatController,
-              ),
-              maxHeight: 325,
-              maxWidth: 325,
-              transformTargetId: inputTransformTargetKey,
+          ? pangeaController.subscriptionController.showPaywall(
+              context,
             )
           : chatController.send(
               message: chatController.sendController.text,
@@ -690,9 +681,8 @@ class Choreographer {
       );
 
   AssistanceState get assistanceState {
-    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
-    if (isSubscribed != null && !isSubscribed) {
-      return AssistanceState.noSub;
+    if (!pangeaController.subscriptionController.enableAssistance) {
+      return AssistanceState.unsubscribed;
     }
 
     if (currentText.isEmpty && itController.sourceText == null) {

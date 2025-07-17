@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/app_config.dart';
 
 enum AssistanceState {
-  noSub,
+  unsubscribed,
   noMessage,
   notFetched,
   fetching,
@@ -18,7 +18,7 @@ enum AssistanceState {
 extension AssistanceStateExtension on AssistanceState {
   Color stateColor(context) {
     switch (this) {
-      case AssistanceState.noSub:
+      case AssistanceState.unsubscribed:
       case AssistanceState.noMessage:
         return Theme.of(context).disabledColor;
       case AssistanceState.notFetched:

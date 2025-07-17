@@ -56,8 +56,9 @@ class MessageUnsubscribedCard extends StatelessWidget {
             child: TextButton(
               onPressed: () {
                 controller.widget.chatController.clearSelectedEvents();
-                MatrixState.pangeaController.subscriptionController
-                    .showPaywall(context);
+                MatrixState.pangeaController.subscriptionController.showPaywall(
+                  context,
+                );
               },
               style: ButtonStyle(
                 backgroundColor: WidgetStateProperty.all<Color>(

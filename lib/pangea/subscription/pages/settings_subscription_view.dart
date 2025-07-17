@@ -162,7 +162,10 @@ class SettingsSubscriptionView extends StatelessWidget {
                             return Expanded(
                               child: SubscriptionOptionCard(
                                 subscription: subscription,
-                                controller: controller,
+                                selectedSubscription:
+                                    controller.selectedSubscription,
+                                selectSubscription: () =>
+                                    controller.selectSubscription(subscription),
                               ),
                             );
                           }).toList(),

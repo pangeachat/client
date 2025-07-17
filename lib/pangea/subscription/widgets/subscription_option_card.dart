@@ -4,36 +4,35 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 
 class SubscriptionOptionCard extends StatelessWidget {
   final SubscriptionDetails subscription;
-  final SubscriptionManagementController controller;
+  final SubscriptionDetails? selectedSubscription;
+  final VoidCallback selectSubscription;
 
   const SubscriptionOptionCard({
     super.key,
     required this.subscription,
-    required this.controller,
+    required this.selectedSubscription,
+    required this.selectSubscription,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    final selected = controller.selectedSubscription?.id == subscription.id;
+    final selected = subscription.id == selectedSubscription?.id;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () => controller.selectSubscription(subscription),
+        onTap: selectSubscription,
         child: Opacity(
-          opacity: selected ? 1.0 : 0.75,
+          opacity: selected ? 1.0 : 0.5,
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(
-                color: selected
-                    ? theme.colorScheme.primaryContainer
-                    : theme.disabledColor,
+                color: theme.colorScheme.primaryContainer,
                 width: isColumnMode ? 2.0 : 1.0,
               ),
               borderRadius: BorderRadius.circular(12.0),
@@ -44,9 +43,7 @@ class SubscriptionOptionCard extends StatelessWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: selected
-                          ? theme.colorScheme.primaryContainer
-                          : theme.disabledColor,
+                      color: theme.colorScheme.primaryContainer,
                     ),
                     padding: const EdgeInsets.all(4.0),
                     child: Row(

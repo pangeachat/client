@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/choreographer/models/igc_text_data_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -51,14 +50,8 @@ class PangeaTextController extends TextEditingController {
             SubscriptionStatus.shouldShowPaywall &&
         !choreographer.isFetching &&
         text.isNotEmpty) {
-      OverlayUtil.showPositionedCard(
-        context: context,
-        cardToShow: PaywallCard(
-          chatController: choreographer.chatController,
-        ),
-        maxHeight: 325,
-        maxWidth: 325,
-        transformTargetId: choreographer.inputTransformTargetKey,
+      choreographer.pangeaController.subscriptionController.showPaywall(
+        context,
       );
     }
 

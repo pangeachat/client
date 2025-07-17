@@ -21,11 +21,15 @@ import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/subscription/constants/subscription_app_id.dart';
+import 'package:fluffychat/pangea/subscription/constants/subscription_constants.dart';
 import 'package:fluffychat/pangea/subscription/models/base_subscription_info.dart';
 import 'package:fluffychat/pangea/subscription/models/mobile_subscriptions.dart';
 import 'package:fluffychat/pangea/subscription/models/web_subscriptions.dart';
+import 'package:fluffychat/pangea/subscription/repo/power_ups_repo.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_repo.dart';
+import 'package:fluffychat/pangea/subscription/widgets/subscription_paywall.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
+import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 
 enum SubscriptionStatus {
   loading,
@@ -42,13 +46,17 @@ class SubscriptionController extends BaseController {
   AvailableSubscriptionsInfo? availableSubscriptionInfo;
 
   final StreamController subscriptionStream = StreamController.broadcast();
+  final StreamController powerupsStream = StreamController.broadcast();
 
   SubscriptionController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
+    PowerupsRepo.initialize();
   }
 
   UserController get _userController => _pangeaController.userController;
   String? get _userID => _pangeaController.matrixState.client.userID;
+
+  int get remainingPowerups => PowerupsRepo.get(_userID!);
 
   bool? get isSubscribed {
     if (!initCompleter.isCompleted) return null;
@@ -57,6 +65,10 @@ class SubscriptionController extends BaseController {
         currentSubscriptionInfo?.currentSubscriptionId != null;
 
     return hasSubscription || _userController.inTrialWindow();
+  }
+
+  bool get enableAssistance {
+    return isSubscribed == null || isSubscribed! || remainingPowerups > 0;
   }
 
   bool _isInitializing = false;
@@ -249,6 +261,10 @@ class SubscriptionController extends BaseController {
       return SubscriptionStatus.loading;
     }
 
+    if (remainingPowerups > 0) {
+      return SubscriptionStatus.subscribed;
+    }
+
     return isSubscribed!
         ? SubscriptionStatus.subscribed
         : _shouldShowPaywall
@@ -275,6 +291,7 @@ class SubscriptionController extends BaseController {
   /// whether or not the paywall should be shown
   bool get _shouldShowPaywall {
     return initCompleter.isCompleted &&
+        remainingPowerups <= 0 &&
         isSubscribed != null &&
         !isSubscribed! &&
         (_lastDismissedPaywall == null ||
@@ -302,43 +319,20 @@ class SubscriptionController extends BaseController {
   }
 
   Future<void> showPaywall(BuildContext context) async {
-    // TODO re-enable paywall
-    // try {
-    //   if (!initCompleter.isCompleted) {
-    //     await initialize();
-    //   }
-    //   if (availableSubscriptionInfo?.availableSubscriptions.isEmpty ?? true) {
-    //     return;
-    //   }
-    //   if (isSubscribed == null || isSubscribed!) return;
-    //   await showModalBottomSheet(
-    //     isScrollControlled: true,
-    //     useRootNavigator: !PlatformInfos.isMobile,
-    //     clipBehavior: Clip.hardEdge,
-    //     context: context,
-    //     constraints: BoxConstraints(
-    //       maxHeight: PlatformInfos.isMobile
-    //           ? MediaQuery.of(context).size.height - 50
-    //           : 600,
-    //     ),
-    //     builder: (_) {
-    //       return SubscriptionPaywall(
-    //         pangeaController: _pangeaController,
-    //       );
-    //     },
-    //   );
-    //   dismissPaywall();
-    // } catch (e, s) {
-    //   ErrorHandler.logError(
-    //     e: e,
-    //     s: s,
-    //     data: {
-    //       "availableSubscriptionInfo": availableSubscriptionInfo?.toJson(
-    //         validate: false,
-    //       ),
-    //     },
-    //   );
-    // }
+    await showAdaptiveBottomSheet(
+      context: context,
+      builder: (context) {
+        return SingleChildScrollView(
+          child: SubscriptionPaywall(
+            title: L10n.of(context).paywallTitle,
+            description: L10n.of(context).paywallDesc,
+            onClose: Navigator.of(context).pop,
+            assetPath:
+                "${AppConfig.assetsBaseURL}/${SubscriptionConstants.noPowerups}",
+          ),
+        );
+      },
+    );
   }
 
   Future<String> getPaymentLink(

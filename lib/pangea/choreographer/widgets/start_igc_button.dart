@@ -6,9 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
-import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import '../../../pages/chat/chat.dart';
 
 class StartIGCButton extends StatefulWidget {
@@ -80,16 +79,9 @@ class StartIGCButtonState extends State<StartIGCButton>
 
   Future<void> _onTap() async {
     switch (assistanceState) {
-      case AssistanceState.noSub:
-        OverlayUtil.showPositionedCard(
-          context: context,
-          cardToShow: PaywallCard(
-            chatController: widget.controller,
-          ),
-          maxHeight: 325,
-          maxWidth: 325,
-          transformTargetId:
-              widget.controller.choreographer.inputTransformTargetKey,
+      case AssistanceState.unsubscribed:
+        MatrixState.pangeaController.subscriptionController.showPaywall(
+          context,
         );
         return;
       case AssistanceState.noMessage:
@@ -114,7 +106,7 @@ class StartIGCButtonState extends State<StartIGCButton>
 
   Color get _backgroundColor {
     switch (assistanceState) {
-      case AssistanceState.noSub:
+      case AssistanceState.unsubscribed:
       case AssistanceState.noMessage:
       case AssistanceState.fetched:
       case AssistanceState.complete:

@@ -38,10 +38,7 @@ class ReadingAssistanceContent extends StatefulWidget {
 
 class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
   Widget? toolbarContent(BuildContext context) {
-    final bool? subscribed =
-        MatrixState.pangeaController.subscriptionController.isSubscribed;
-
-    if (subscribed != null && !subscribed) {
+    if (MatrixState.pangeaController.subscriptionController.enableAssistance) {
       return MessageUnsubscribedCard(
         controller: widget.overlayController,
       );
