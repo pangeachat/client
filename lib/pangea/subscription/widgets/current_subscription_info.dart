@@ -32,7 +32,7 @@ class CurrentSubscriptionInfoWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: isColumnMode ? 14.0 : 8.0),
       padding: EdgeInsets.symmetric(
-        horizontal: isColumnMode ? 24.0 : 8.0,
+        horizontal: isColumnMode ? 48.0 : 32.0,
         vertical: isColumnMode ? 16.0 : 8.0,
       ),
       decoration: BoxDecoration(
@@ -86,11 +86,11 @@ class CurrentSubscriptionInfoWidget extends StatelessWidget {
               children: [
                 Text(
                   currentSubscription!.duration!.fullName(context),
-                  style: TextStyle(fontSize: isColumnMode ? 20 : 8),
+                  style: TextStyle(fontSize: isColumnMode ? 20 : 12),
                 ),
                 Text(
                   currentSubscription.displayPrice(context),
-                  style: TextStyle(fontSize: isColumnMode ? 20 : 8),
+                  style: TextStyle(fontSize: isColumnMode ? 20 : 12),
                 ),
               ],
             ),
@@ -99,11 +99,11 @@ class CurrentSubscriptionInfoWidget extends StatelessWidget {
             children: [
               Text(
                 L10n.of(context).powerups,
-                style: TextStyle(fontSize: isColumnMode ? 20 : 8),
+                style: TextStyle(fontSize: isColumnMode ? 20 : 12),
               ),
               Text(
                 L10n.of(context).unlimited,
-                style: TextStyle(fontSize: isColumnMode ? 20 : 8),
+                style: TextStyle(fontSize: isColumnMode ? 20 : 12),
               ),
             ],
           ),
@@ -113,11 +113,11 @@ class CurrentSubscriptionInfoWidget extends StatelessWidget {
               children: [
                 Text(
                   L10n.of(context).renewOn,
-                  style: TextStyle(fontSize: isColumnMode ? 20 : 8),
+                  style: TextStyle(fontSize: isColumnMode ? 20 : 12),
                 ),
                 Text(
                   formatter.format(renewalDate),
-                  style: TextStyle(fontSize: isColumnMode ? 20 : 8),
+                  style: TextStyle(fontSize: isColumnMode ? 20 : 12),
                 ),
               ],
             )
@@ -128,11 +128,11 @@ class CurrentSubscriptionInfoWidget extends StatelessWidget {
               children: [
                 Text(
                   L10n.of(context).expiresOn,
-                  style: TextStyle(fontSize: isColumnMode ? 20 : 8),
+                  style: TextStyle(fontSize: isColumnMode ? 20 : 12),
                 ),
                 Text(
                   formatter.format(expirationDate),
-                  style: TextStyle(fontSize: isColumnMode ? 20 : 8),
+                  style: TextStyle(fontSize: isColumnMode ? 20 : 12),
                 ),
               ],
             ),
