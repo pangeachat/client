@@ -183,6 +183,7 @@ class NewGroupView extends StatelessWidget {
                   enabled: controller.nameController.text.isNotEmpty,
                   selectedActivity: controller.selectedActivity,
                   selectedActivityImage: controller.selectedActivityImage,
+                  controller: controller,
                 ),
               ),
             // Pangea#

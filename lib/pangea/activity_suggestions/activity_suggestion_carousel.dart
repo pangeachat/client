@@ -9,6 +9,7 @@ import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pages/new_group/new_group.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
@@ -29,11 +30,13 @@ class ActivitySuggestionCarousel extends StatefulWidget {
   final ActivityPlanModel? selectedActivity;
   final Uint8List? selectedActivityImage;
   final bool enabled;
+  final NewGroupController controller;
 
   const ActivitySuggestionCarousel({
     required this.onActivitySelected,
     required this.selectedActivity,
     required this.selectedActivityImage,
+    required this.controller,
     this.enabled = true,
     super.key,
   });
@@ -112,11 +115,13 @@ class ActivitySuggestionCarouselState
     return index == -1 ? null : index;
   }
 
+  bool get _enabled => widget.enabled && !widget.controller.loading;
+
   bool get _canMoveLeft =>
-      widget.enabled && _currentIndex != null && _currentIndex! > 0;
+      _enabled && _currentIndex != null && _currentIndex! > 0;
 
   bool get _canMoveRight =>
-      widget.enabled &&
+      _enabled &&
       _currentIndex != null &&
       _currentIndex! < _activityItems.length - 1;
 
@@ -192,7 +197,7 @@ class ActivitySuggestionCarouselState
       duration: FluffyThemes.animationDuration,
       child: AnimatedOpacity(
         duration: FluffyThemes.animationDuration,
-        opacity: widget.enabled ? 1.0 : 0.5,
+        opacity: _enabled ? 1.0 : 0.5,
         child: _closed
             ? const SizedBox.shrink()
             : Container(
@@ -218,7 +223,7 @@ class ActivitySuggestionCarouselState
                           ),
                           IconButton(
                             icon: const Icon(Icons.close),
-                            onPressed: widget.enabled ? _close : null,
+                            onPressed: _enabled ? _close : null,
                           ),
                         ],
                       ),
@@ -271,8 +276,7 @@ class ActivitySuggestionCarouselState
                                       selected: widget.selectedActivity ==
                                           _currentActivity,
                                       activity: _currentActivity!,
-                                      onPressed:
-                                          widget.enabled ? _onClickCard : null,
+                                      onPressed: _enabled ? _onClickCard : null,
                                       width: _cardWidth,
                                       height: _cardHeight,
                                       image: _currentActivity ==
@@ -305,11 +309,9 @@ class ActivitySuggestionCarouselState
                       children: _activityItems.mapIndexed((i, activity) {
                         final selected = activity == _currentActivity;
                         return InkWell(
-                          enableFeedback: widget.enabled,
+                          enableFeedback: _enabled,
                           borderRadius: BorderRadius.circular(12.0),
-                          onTap: widget.enabled
-                              ? () => _setActivityByIndex(i)
-                              : null,
+                          onTap: _enabled ? () => _setActivityByIndex(i) : null,
                           child: ImageFiltered(
                             imageFilter: ImageFilter.blur(
                               sigmaX: selected ? 0.0 : 0.5,
