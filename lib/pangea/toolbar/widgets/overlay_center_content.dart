@@ -32,8 +32,8 @@ class OverlayCenterContent extends StatelessWidget {
 
   const OverlayCenterContent({
     required this.event,
-    required this.messageHeight,
-    required this.messageWidth,
+    this.messageHeight,
+    this.messageWidth,
     required this.overlayController,
     required this.chatController,
     required this.nextEvent,
@@ -76,13 +76,8 @@ class OverlayCenterContent extends StatelessWidget {
                   sizeAnimation: sizeAnimation,
                   // there's a split seconds between when the transition animation starts and
                   // when the sizeAnimation is set when the original dimensions need to be enforced
-                  messageWidth: (sizeAnimation == null && isTransitionAnimation)
-                      ? messageWidth
-                      : null,
-                  messageHeight:
-                      (sizeAnimation == null && isTransitionAnimation)
-                          ? messageHeight
-                          : null,
+                  messageWidth: messageWidth,
+                  messageHeight: messageHeight,
                   isTransitionAnimation: isTransitionAnimation,
                   readingAssistanceMode: readingAssistanceMode,
                 ),

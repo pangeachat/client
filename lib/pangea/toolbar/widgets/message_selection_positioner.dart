@@ -14,9 +14,13 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
+import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/reading_assistance_input_bar.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/magic_floating_message.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/overlay_center_content.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/practice_mode_buttons.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/practice_mode_transition_animation.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/reading_assistance_content.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
@@ -74,6 +78,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   ScrollController? _scrollController;
 
   bool finishedAnimating = false;
+  bool finishedTransition = false;
+  bool startedTransition = false;
+
+  ReadingAssistanceMode readingAssistanceMode =
+      ReadingAssistanceMode.selectMode;
 
   // final _animationDuration = const Duration(
   //   milliseconds: AppConfig.overlayAnimationDuration,
@@ -564,6 +573,18 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   Size? get _overlayMessageSize => _overlayMessageRenderBox?.size;
 
+  Offset? get overlayMessageOffset {
+    if (_overlayMessageRenderBox == null ||
+        !_overlayMessageRenderBox!.hasSize) {
+      return null;
+    }
+    return _runWithLogging(
+      () => _overlayMessageRenderBox?.localToGlobal(Offset.zero),
+      "Error getting overlay message offset",
+      null,
+    );
+  }
+
   RenderBox? get _messageRenderBox => _runWithLogging<RenderBox?>(
         () => MatrixState.pAnyState.getRenderBox(
           widget.event.eventId,
@@ -665,6 +686,22 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
     }
   }
 
+  void onStartedTransition() {
+    if (mounted) {
+      setState(() {
+        startedTransition = true;
+      });
+    }
+  }
+
+  void onFinishedTransition() {
+    if (mounted) {
+      setState(() {
+        finishedTransition = true;
+      });
+    }
+  }
+
   Duration transitionAnimationDuration = const Duration(milliseconds: 300);
 
   @override
@@ -689,123 +726,158 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                         ? Alignment.centerRight
                         : Alignment.centerLeft,
                     children: [
-                      GestureDetector(
-                        onTap: widget.chatController.clearSelectedEvents,
-                        child: SingleChildScrollView(
-                          controller: _scrollController,
-                          padding: EdgeInsets.only(
-                            left: messageLeftOffset ?? 0.0,
-                            right: messageRightOffset ?? 0.0,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: ownMessage
-                                ? CrossAxisAlignment.end
-                                : CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              if (mediaQuery != null &&
-                                  _availableSpaceAboveContent != null &&
-                                  _availableSpaceAboveContent! <
-                                      _overheadContentHeight)
-                                AnimatedContainer(
-                                  duration: FluffyThemes.animationDuration,
-                                  height: contentHeight +
-                                              _overheadContentHeight >
-                                          mediaQuery!.size.height
-                                      ? _overheadContentHeight
-                                      : (_overheadContentHeight -
-                                              _availableSpaceAboveContent!) *
-                                          2,
-                                ),
-                              Opacity(
-                                opacity: finishedAnimating ? 1.0 : 0.0,
-                                child: CompositedTransformTarget(
-                                  link: MatrixState.pAnyState
-                                      .layerLinkAndKey(
-                                        'overlay_message_${widget.event.eventId}',
-                                      )
-                                      .link,
-                                  child: OverlayCenterContent(
-                                    event: widget.event,
-                                    messageHeight: originalMessageSize.height,
-                                    messageWidth: widget.overlayController
-                                            .showingExtraContent
-                                        ? max(originalMessageSize.width, 150)
-                                        : originalMessageSize.width,
-                                    overlayController: widget.overlayController,
-                                    chatController: widget.chatController,
-                                    nextEvent: widget.nextEvent,
-                                    prevEvent: widget.prevEvent,
-                                    hasReactions: hasReactions,
-                                    // sizeAnimation: _messageSizeAnimation,
-                                    isTransitionAnimation: true,
-                                    readingAssistanceMode: widget
-                                        .overlayController
-                                        .readingAssistanceMode,
-                                    overlayKey: MatrixState.pAnyState
+                      if (!startedTransition)
+                        GestureDetector(
+                          onTap: widget.chatController.clearSelectedEvents,
+                          child: SingleChildScrollView(
+                            controller: _scrollController,
+                            padding: EdgeInsets.only(
+                              left: messageLeftOffset ?? 0.0,
+                              right: messageRightOffset ?? 0.0,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: ownMessage
+                                  ? CrossAxisAlignment.end
+                                  : CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (mediaQuery != null &&
+                                    _availableSpaceAboveContent != null &&
+                                    _availableSpaceAboveContent! <
+                                        _overheadContentHeight)
+                                  AnimatedContainer(
+                                    duration: FluffyThemes.animationDuration,
+                                    height: contentHeight +
+                                                _overheadContentHeight >
+                                            mediaQuery!.size.height
+                                        ? _overheadContentHeight
+                                        : (_overheadContentHeight -
+                                                _availableSpaceAboveContent!) *
+                                            2,
+                                  ),
+                                Opacity(
+                                  opacity:
+                                      finishedAnimating && !startedTransition
+                                          ? 1.0
+                                          : 0.0,
+                                  child: CompositedTransformTarget(
+                                    link: MatrixState.pAnyState
                                         .layerLinkAndKey(
                                           'overlay_message_${widget.event.eventId}',
                                         )
-                                        .key,
+                                        .link,
+                                    child: OverlayCenterContent(
+                                      event: widget.event,
+                                      messageHeight: originalMessageSize.height,
+                                      messageWidth: widget.overlayController
+                                              .showingExtraContent
+                                          ? max(originalMessageSize.width, 150)
+                                          : originalMessageSize.width,
+                                      overlayController:
+                                          widget.overlayController,
+                                      chatController: widget.chatController,
+                                      nextEvent: widget.nextEvent,
+                                      prevEvent: widget.prevEvent,
+                                      hasReactions: hasReactions,
+                                      isTransitionAnimation: true,
+                                      readingAssistanceMode:
+                                          readingAssistanceMode,
+                                      overlayKey: MatrixState.pAnyState
+                                          .layerLinkAndKey(
+                                            'overlay_message_${widget.event.eventId}',
+                                          )
+                                          .key,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(height: 4.0),
-                              AnimatedOpacity(
-                                opacity: finishedAnimating ? 1.0 : 0.0,
-                                duration: transitionAnimationDuration,
-                                child: SelectModeButtons(
-                                  controller: widget.chatController,
-                                  overlayController: widget.overlayController,
-                                  lauchPractice: () {},
-                                  // lauchPractice: () {
-                                  //   _setReadingAssistanceMode(
-                                  //     ReadingAssistanceMode.practiceMode,
-                                  //   );
-                                  //   widget.overlayController
-                                  //       .updateSelectedSpan(null);
-                                  // },
+                                const SizedBox(height: 4.0),
+                                AnimatedOpacity(
+                                  opacity: finishedAnimating ? 1.0 : 0.0,
+                                  duration: transitionAnimationDuration,
+                                  child: SelectModeButtons(
+                                    controller: widget.chatController,
+                                    overlayController: widget.overlayController,
+                                    lauchPractice: () => setState(
+                                      () => readingAssistanceMode =
+                                          ReadingAssistanceMode.practiceMode,
+                                    ),
+                                  ),
                                 ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      if (readingAssistanceMode ==
+                          ReadingAssistanceMode.practiceMode)
+                        Opacity(
+                          opacity: finishedTransition ? 1.0 : 0.0,
+                          child: GestureDetector(
+                            onTap: widget.chatController.clearSelectedEvents,
+                            child: CenteredMessage(
+                              targetId:
+                                  "overlay_center_message_${widget.event.eventId}",
+                              controller: this,
+                            ),
+                          ),
+                        ),
+                      if (!startedTransition)
+                        AnimatedPositioned(
+                          top: _wordCardTopOffset,
+                          left: _wordCardLeftOffset,
+                          right: messageRightOffset,
+                          duration: FluffyThemes.animationDuration,
+                          child: AnimatedOpacity(
+                            opacity: finishedAnimating ? 1.0 : 0.0,
+                            duration: transitionAnimationDuration,
+                            child: AnimatedSize(
+                              alignment: ownMessage
+                                  ? Alignment.bottomRight
+                                  : Alignment.bottomLeft,
+                              duration: FluffyThemes.animationDuration,
+                              child: _wordCardTopOffset == null
+                                  ? const SizedBox()
+                                  : widget.pangeaMessageEvent != null &&
+                                          widget.overlayController
+                                                  .selectedToken !=
+                                              null
+                                      ? ReadingAssistanceContent(
+                                          pangeaMessageEvent:
+                                              widget.pangeaMessageEvent!,
+                                          overlayController:
+                                              widget.overlayController,
+                                        )
+                                      : MessageReactionPicker(
+                                          chatController: widget.chatController,
+                                        ),
+                            ),
+                          ),
+                        ),
+                      if (!finishedAnimating)
+                        MagicFloatingMessage(controller: this),
+                      if (readingAssistanceMode ==
+                          ReadingAssistanceMode.practiceMode) ...[
+                        PracticeModeTransitionAnimation(
+                          targetId:
+                              "overlay_center_message_${widget.event.eventId}",
+                          controller: this,
+                        ),
+                        Positioned(
+                          left: 0,
+                          right: 0,
+                          bottom: 20,
+                          child: Column(
+                            children: [
+                              PracticeModeButtons(
+                                overlayController: widget.overlayController,
+                              ),
+                              ReadingAssistanceInputBar(
+                                widget.chatController,
+                                widget.overlayController,
                               ),
                             ],
                           ),
                         ),
-                      ),
-                      AnimatedPositioned(
-                        top: _wordCardTopOffset,
-                        left: _wordCardLeftOffset,
-                        right: messageRightOffset,
-                        duration: FluffyThemes.animationDuration,
-                        child: AnimatedOpacity(
-                          opacity: finishedAnimating ? 1.0 : 0.0,
-                          duration: transitionAnimationDuration,
-                          child: AnimatedSize(
-                            alignment: ownMessage
-                                ? Alignment.bottomRight
-                                : Alignment.bottomLeft,
-                            duration: FluffyThemes.animationDuration,
-                            child: _wordCardTopOffset == null
-                                ? const SizedBox()
-                                : widget.pangeaMessageEvent != null &&
-                                        widget.overlayController
-                                                .selectedToken !=
-                                            null
-                                    ? ReadingAssistanceContent(
-                                        pangeaMessageEvent:
-                                            widget.pangeaMessageEvent!,
-                                        overlayController:
-                                            widget.overlayController,
-                                      )
-                                    : MessageReactionPicker(
-                                        chatController: widget.chatController,
-                                      ),
-                          ),
-                        ),
-                      ),
-                      if (!finishedAnimating)
-                        MagicFloatingMessage(
-                          controller: this,
-                        ),
+                      ],
                     ],
                   ),
                 ),

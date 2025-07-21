@@ -117,8 +117,7 @@ class MagicFloatingMessageState extends State<MagicFloatingMessage>
             nextEvent: widget.controller.widget.nextEvent,
             prevEvent: widget.controller.widget.prevEvent,
             hasReactions: widget.controller.hasReactions,
-            readingAssistanceMode: widget
-                .controller.widget.overlayController.readingAssistanceMode,
+            readingAssistanceMode: widget.controller.readingAssistanceMode,
             isTransitionAnimation: true,
           ),
         );
