@@ -178,7 +178,9 @@ class NewGroupController extends State<NewGroup> {
       try {
         final space = client.getRoomById(widget.spaceId!);
         await space?.addToSpace(room.id);
-        await client.waitForRoomInSync(roomId);
+        if (room.pangeaSpaceParents.isEmpty) {
+          await client.waitForRoomInSync(roomId);
+        }
       } catch (err) {
         ErrorHandler.logError(
           e: "Failed to add room to space",
