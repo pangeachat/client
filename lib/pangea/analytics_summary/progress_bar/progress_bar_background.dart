@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_bar/progress_bar_details.dart';
+import 'package:flutter/material.dart';
 
 class ProgressBarBackground extends StatelessWidget {
   final ProgressBarDetails details;
@@ -22,7 +21,7 @@ class ProgressBarBackground extends StatelessWidget {
           borderRadius: const BorderRadius.all(
             Radius.circular(AppConfig.borderRadius),
           ),
-          color: details.borderColor.withAlpha(50),
+          color: details.borderColor,
         ),
       ),
     );
