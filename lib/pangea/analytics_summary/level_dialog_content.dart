@@ -9,11 +9,16 @@ import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/morphs/get_grammar_copy.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class LevelDialogContent extends StatelessWidget {
+class LevelDialogContent extends StatefulWidget {
   const LevelDialogContent({
     super.key,
   });
 
+  @override
+  LevelDialogContentState createState() => LevelDialogContentState();
+}
+
+class LevelDialogContentState extends State<LevelDialogContent> {
   GetAnalyticsController get getAnalyticsController =>
       MatrixState.pangeaController.getAnalytics;
   int get level => getAnalyticsController.constructListModel.level;
@@ -22,8 +27,30 @@ class LevelDialogContent extends StatelessWidget {
   List<OneConstructUse> get uses =>
       getAnalyticsController.constructListModel.truncatedUses;
 
+  bool _loading =
+      !(MatrixState.pangeaController.getAnalytics.initCompleter.isCompleted);
+
+  @override
+  void initState() {
+    if (_loading) {
+      loadAnalytics();
+    }
+    super.initState();
+  }
+
+  Future<void> loadAnalytics() async {
+    await getAnalyticsController.analyticsStream.stream.first;
+
+    setState(() {
+      _loading = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    if (_loading) {
+      return const SizedBox();
+    }
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 0,
