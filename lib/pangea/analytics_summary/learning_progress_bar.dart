@@ -22,14 +22,11 @@ class LearningProgressBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (loading) {
-      return Center(
-        child: SizedBox(
-          height: height ?? 14,
-          width: height ?? 14,
-          child: const CircularProgressIndicator(
-            strokeWidth: 2.0,
-            color: AppConfig.goldLight,
-          ),
+      return Container(
+        alignment: Alignment.center,
+        height: height,
+        child: const LinearProgressIndicator(
+          color: AppConfig.goldLight,
         ),
       );
     }
