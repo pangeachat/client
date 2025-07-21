@@ -1,26 +1,34 @@
-import 'package:flutter/material.dart';
+import 'dart:math';
 
 import 'package:collection/collection.dart' show IterableExtension;
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pages/chat/events/emoji_burst.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
-class MessageReactions extends StatelessWidget {
+class MessageReactions extends StatefulWidget {
   final Event event;
   final Timeline timeline;
 
   const MessageReactions(this.event, this.timeline, {super.key});
 
   @override
+  State<MessageReactions> createState() => _MessageReactionsState();
+}
+
+class _MessageReactionsState extends State<MessageReactions> {
+  Set<String> _previousUserReactions = {};
+
+  @override
   Widget build(BuildContext context) {
-    final allReactionEvents =
-        event.aggregatedEvents(timeline, RelationshipTypes.reaction);
+    final allReactionEvents = widget.event
+        .aggregatedEvents(widget.timeline, RelationshipTypes.reaction);
     final reactionMap = <String, _ReactionEntry>{};
     final client = Matrix.of(context).client;
 
@@ -43,9 +51,27 @@ class MessageReactions extends StatelessWidget {
       }
     }
 
+    // Track which reactions the user has reacted to
+    final Set<String> currentUserReactions = reactionMap.entries
+        .where((e) => e.value.reacted)
+        .map((e) => e.key)
+        .toSet();
+
+    final Set<String> newReactions =
+        currentUserReactions.difference(_previousUserReactions);
+
+    // Save for next build
+    _previousUserReactions = currentUserReactions;
+
     final reactionList = reactionMap.values.toList();
     reactionList.sort((a, b) => b.count - a.count > 0 ? 1 : -1);
-    final ownMessage = event.senderId == event.room.client.userID;
+    final ownMessage = widget.event.senderId == client.userID;
+    // return AnimatedSize(
+    //   duration: FluffyThemes.animationDuration,
+    //   curve: FluffyThemes.animationCurve,
+    //   alignment: Alignment.bottomCenter,
+    //   clipBehavior: Clip.none,
+    //   child:
     return Wrap(
       spacing: 4.0,
       runSpacing: 4.0,
@@ -53,10 +79,12 @@ class MessageReactions extends StatelessWidget {
       children: [
         ...reactionList.map(
           (r) => _Reaction(
+            key: ValueKey(r.key),
+            firstReact: newReactions.contains(r.key),
             reactionKey: r.key,
             count: r.count,
             reacted: r.reacted,
-            onTap: () {
+            onTap: () async {
               if (r.reacted) {
                 final evt = allReactionEvents.firstWhereOrNull(
                   (e) =>
@@ -64,13 +92,14 @@ class MessageReactions extends StatelessWidget {
                       e.content.tryGetMap('m.relates_to')?['key'] == r.key,
                 );
                 if (evt != null) {
-                  showFutureLoadingDialog(
+                  await showFutureLoadingDialog(
                     context: context,
                     future: () => evt.redactEvent(),
                   );
                 }
               } else {
-                event.room.sendReaction(event.eventId, r.key);
+                await widget.event.room
+                    .sendReaction(widget.event.eventId, r.key);
               }
             },
             onLongPress: () async => await _AdaptableReactorsDialog(
@@ -90,48 +119,204 @@ class MessageReactions extends StatelessWidget {
           ),
       ],
     );
+    // );
   }
 }
 
-class _Reaction extends StatelessWidget {
+class _Reaction extends StatefulWidget {
   final String reactionKey;
   final int count;
   final bool? reacted;
-  final void Function()? onTap;
+  final bool firstReact;
+  final Future<void> Function()? onTap;
   final void Function()? onLongPress;
 
   const _Reaction({
+    required super.key,
     required this.reactionKey,
     required this.count,
     required this.reacted,
+    required this.firstReact,
     required this.onTap,
     required this.onLongPress,
   });
+
+  @override
+  State<_Reaction> createState() => _ReactionState();
+}
+
+class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
+  late AnimationController _bounceOutController;
+  late Animation<double> _bounceOutAnimation;
+  late AnimationController _burstController;
+  late Animation<double> _burstAnimation;
+
+  late AnimationController _growController;
+  late Animation<double> _growScale;
+  late Animation<double> _growOffset;
+
+  final List<BurstParticle> _burstParticles = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _bounceOutController = AnimationController(
+      duration: const Duration(milliseconds: 200),
+      vsync: this,
+    );
+    _bounceOutAnimation = Tween<double>(
+      begin: 1.0,
+      end: 0,
+    ).animate(
+      CurvedAnimation(
+        parent: _bounceOutController,
+        curve: Curves.easeInBack,
+      ),
+    );
+
+    _burstController = AnimationController(
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
+    );
+    _burstAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: _burstController,
+        curve: Curves.easeOut,
+      ),
+    );
+
+    _growController = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+    // Scale: 0.7 -> 1.18 (overshoot) -> 1.0
+    _growScale = TweenSequence([
+      TweenSequenceItem(
+        tween: Tween<double>(begin: 0.7, end: 1.18)
+            .chain(CurveTween(curve: Curves.easeOutBack)),
+        weight: 60,
+      ),
+      TweenSequenceItem(
+        tween: Tween<double>(begin: 1.18, end: 1.0)
+            .chain(CurveTween(curve: Curves.easeIn)),
+        weight: 40,
+      ),
+    ]).animate(_growController);
+    // Offset: 0 -> -10 (up) -> 0
+    _growOffset = TweenSequence([
+      TweenSequenceItem(
+        tween: Tween<double>(begin: 0.0, end: -10.0)
+            .chain(CurveTween(curve: Curves.easeOut)),
+        weight: 60,
+      ),
+      TweenSequenceItem(
+        tween: Tween<double>(begin: -10.0, end: 0.0)
+            .chain(CurveTween(curve: Curves.easeIn)),
+        weight: 40,
+      ),
+    ]).animate(_growController);
+
+    if (widget.firstReact) {
+      _growController.forward();
+    }
+  }
+
+  @override
+  void dispose() {
+    _bounceOutController.dispose();
+    _burstController.dispose();
+    _growController.dispose();
+    super.dispose();
+  }
+
+  void resetState() {
+    _bounceOutController.reset();
+    _burstController.reset();
+    _growController.reset();
+  }
+
+  _animateAndReact() async {
+    final bool? wasReacted = widget.reacted;
+    final bool wasSingle = (widget.count == 1);
+
+    if (widget.reacted == true) {
+      if (widget.count == 1) {
+        await _bounceOutController.forward();
+        _triggerBurstAnimation();
+      } else {
+        //bounce out and back in, if there's more than one.
+        await _bounceOutController.forward();
+        await _triggerBurstAnimation();
+      }
+    }
+
+    // Execute the actual reaction logic and wait for it to complete
+    if (widget.onTap != null) {
+      await widget.onTap!();
+      if (!wasReacted!) {
+        _growController.forward();
+      }
+      if (wasReacted && !wasSingle) {
+        //bounces back in when unreacting to a multiple reacted emoji, after it has decremented
+        await _bounceOutController.reverse();
+        resetState();
+      }
+    }
+  }
+
+  _triggerBurstAnimation() {
+    // Clear previous particles
+    _burstParticles.clear();
+
+    // Create new particles
+    final random = Random();
+    for (int i = 0; i < 8; i++) {
+      _burstParticles.add(
+        BurstParticle(
+          emoji: widget.reactionKey,
+          angle: (i * 45.0) +
+              random.nextDouble() * 30 -
+              15, // Spread around 360 degrees
+          distance: 20 + random.nextDouble() * 30,
+          scale: 0.6 + random.nextDouble() * 0.4,
+          rotation: random.nextDouble() * 360,
+        ),
+      );
+    }
+
+    // Start burst animation
+    _burstController.reset();
+    _burstController.forward();
+  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final textColor =
         theme.brightness == Brightness.dark ? Colors.white : Colors.black;
-    final color = reacted == true
+    final color = widget.reacted == true
         ? theme.bubbleColor
         : theme.colorScheme.surfaceContainerHigh;
+
     Widget content;
-    if (reactionKey.startsWith('mxc://')) {
+    if (widget.reactionKey.startsWith('mxc://')) {
       content = Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           MxcImage(
-            uri: Uri.parse(reactionKey),
+            uri: Uri.parse(widget.reactionKey),
             width: 20,
             height: 20,
             animated: false,
             isThumbnail: false,
           ),
-          if (count > 1) ...[
+          if (widget.count > 1) ...[
             const SizedBox(width: 4),
             Text(
-              count.toString(),
+              widget.count.toString(),
               style: TextStyle(
                 color: textColor,
                 fontSize: DefaultTextStyle.of(context).style.fontSize,
@@ -141,37 +326,76 @@ class _Reaction extends StatelessWidget {
         ],
       );
     } else {
-      var renderKey = Characters(reactionKey);
+      var renderKey = Characters(widget.reactionKey);
       if (renderKey.length > 10) {
         renderKey = renderKey.getRange(0, 9) + Characters('…');
       }
       content = Text(
-        renderKey.toString() + (count > 1 ? ' $count' : ''),
+        renderKey.toString() + (widget.count > 1 ? ' ${widget.count}' : ''),
         style: TextStyle(
-          color: reacted == true ? theme.onBubbleColor : textColor,
+          color: widget.reacted == true ? theme.onBubbleColor : textColor,
           fontSize: DefaultTextStyle.of(context).style.fontSize,
         ),
       );
     }
-    return InkWell(
-      onTap: () => onTap != null ? onTap!() : null,
-      onLongPress: () => onLongPress != null ? onLongPress!() : null,
-      borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2),
-      child: Container(
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius / 2),
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        AnimatedBuilder(
+          animation: Listenable.merge([_bounceOutAnimation, _growController]),
+          builder: (context, child) {
+            // If growing, animate scale/offset in, else use bounce for exit
+            final isGrowing = _growController.isAnimating ||
+                (_growController.value > 0 && _growController.value < 1.0);
+            final scale =
+                isGrowing ? _growScale.value : _bounceOutAnimation.value;
+            final offsetY = isGrowing ? _growOffset.value : 0.0;
+            return Transform.translate(
+              offset: Offset(0, offsetY),
+              child: Transform.scale(
+                scale: scale,
+                child: InkWell(
+                  onTap: _animateAndReact,
+                  onLongPress: () =>
+                      widget.onLongPress != null ? widget.onLongPress!() : null,
+                  borderRadius:
+                      BorderRadius.circular(AppConfig.borderRadius / 2),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: color,
+                      borderRadius:
+                          BorderRadius.circular(AppConfig.borderRadius / 2),
+                    ),
+                    padding: PlatformInfos.isIOS
+                        ? const EdgeInsets.fromLTRB(5.5, 1, 3, 2.5)
+                        : const EdgeInsets.symmetric(
+                            horizontal: 4,
+                            vertical: 2,
+                          ),
+                    child: content,
+                  ),
+                ),
+              ),
+            );
+          },
         ),
-        // #Pangea
-        // issue: https://github.com/pangeachat/client/issues/3100
-        // fix: https://github.com/flutter/flutter/issues/119623#issuecomment-2476719745
-        padding: PlatformInfos.isIOS
-            ? const EdgeInsets.fromLTRB(5.5, 1, 3, 2.5)
-            : const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        // padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        // Pangea#
-        child: content,
-      ),
+        AnimatedBuilder(
+          animation: _burstAnimation,
+          builder: (context, child) {
+            if (_burstAnimation.value == 0.0) return const SizedBox.shrink();
+
+            return Positioned.fill(
+              child: CustomPaint(
+                painter: BurstPainter(
+                  particles: _burstParticles,
+                  progress: _burstAnimation.value,
+                ),
+              ),
+            );
+          },
+        ),
+      ],
     );
   }
 }
