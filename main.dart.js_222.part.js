@@ -4227,9 +4227,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findYourPeople() {
       return "Find your people";
     },
-    get$launch() {
-      return "Launch";
-    },
     get$launchActivityToChats() {
       return "Launch activity to chats";
     },
@@ -4485,6 +4482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_222", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "PnA9skd5b78hIYr47m65YT8C5W0=");
+})($__dart_deferred_initializers__, "bpO254ZwHsXazHDLJnOmrS58hms=");
 ;
 //# sourceMappingURL=main.dart.js_222.part.js.map

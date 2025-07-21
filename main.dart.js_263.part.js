@@ -4227,9 +4227,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findYourPeople() {
       return "T\xecm ng\u01b0\u1eddi c\u1ee7a b\u1ea1n";
     },
-    get$launch() {
-      return "Kh\u1edfi \u0111\u1ed9ng";
-    },
     get$launchActivityToChats() {
       return "Kh\u1edfi \u0111\u1ed9ng ho\u1ea1t \u0111\u1ed9ng \u0111\u1ebfn c\xe1c tr\xf2 chuy\u1ec7n";
     },
@@ -4485,6 +4482,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "0NIMw9PZ+3tqsbJJJb03LkvuvT8=");
+})($__dart_deferred_initializers__, "GmwTCncNkiwgpi9tRSTDV47BU58=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
