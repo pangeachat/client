@@ -9,7 +9,6 @@ import 'package:matrix/matrix.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/choreographer/repo/language_detection_repo.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -513,12 +512,11 @@ class PangeaMessageEvent {
       return repLocal?.content;
     }
 
-    if (eventId.contains("web")) return null;
+    if (eventId.contains("Pangea Chat")) return null;
 
     // should this just be the original event body?
     // worth a conversation with the team
-    final PangeaRepresentation? basis =
-        (originalWritten ?? originalSent)?.content;
+    final PangeaRepresentation? basis = originalSent?.content;
 
     // clear representations cache so the new representation event can be added
     // when next requested
@@ -586,6 +584,19 @@ class PangeaMessageEvent {
 
   RepresentationEvent? get originalWritten => representations
       .firstWhereOrNull((element) => element.content.originalWritten);
+
+  String get originalWrittenContent {
+    String? written = originalSent?.content.text;
+    if (originalWritten != null && !originalWritten!.content.originalSent) {
+      written = originalWritten!.text;
+    } else if (originalSent?.choreo != null &&
+        originalSent!.choreo!.choreoSteps.isNotEmpty) {
+      final steps = originalSent!.choreo!.choreoSteps;
+      written = steps.first.text;
+    }
+
+    return written ?? body;
+  }
 
   PangeaRepresentation get defaultRepresentation => PangeaRepresentation(
         langCode: LanguageKeys.unknownLanguage,
@@ -675,12 +686,17 @@ class PangeaMessageEvent {
       messageDisplayLangCode.split("-")[0] == l2Code?.split("-")[0];
 
   String get messageDisplayLangCode {
+    if (isAudioMessage) {
+      final stt = getSpeechToTextLocal();
+      if (stt == null) return LanguageKeys.unknownLanguage;
+      return stt.langCode;
+    }
+
     final bool immersionMode = MatrixState
         .pangeaController.permissionsController
         .isToolEnabled(ToolSetting.immersionMode, room);
 
-    final String? originalLangCode =
-        (originalWritten ?? originalSent)?.langCode;
+    final String? originalLangCode = originalSent?.langCode;
 
     final String? langCode = immersionMode ? l2Code : originalLangCode;
     return langCode ?? LanguageKeys.unknownLanguage;
@@ -693,22 +709,6 @@ class PangeaMessageEvent {
   /// If the message display text is not available for the current language code,
   /// it returns the message body.
   String get messageDisplayText => messageDisplayRepresentation?.text ?? body;
-
-  List<PangeaMatch>? errorSteps(String lemma) {
-    final RepresentationEvent? repEvent = originalSent ?? originalWritten;
-    if (repEvent?.choreo == null) return null;
-
-    final List<PangeaMatch> steps = repEvent!.choreo!.choreoSteps
-        .where(
-          (choreoStep) =>
-              choreoStep.acceptedOrIgnoredMatch != null &&
-              choreoStep.acceptedOrIgnoredMatch?.match.shortMessage == lemma,
-        )
-        .map((element) => element.acceptedOrIgnoredMatch)
-        .cast<PangeaMatch>()
-        .toList();
-    return steps;
-  }
 
   /// Returns a list of all [PracticeActivityEvent] objects
   /// associated with this message event.

@@ -176,7 +176,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                         builder: (controller) {
                           return ActivitySuggestionDialog(
                             controller: controller,
-                            buttonText: L10n.of(context).launch,
+                            buttonText: L10n.of(context).launchActivityButton,
                             replaceActivity: (a) =>
                                 _onReplaceActivity(index, a),
                           );
@@ -216,17 +216,19 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                             ? L10n.of(context).activitySuggestionTimeoutMessage
                             : L10n.of(context).errorFetchingActivitiesMessage,
                       ),
-                      ElevatedButton(
-                        onPressed: _setActivityItems,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primaryContainer,
-                          foregroundColor: theme.colorScheme.onPrimaryContainer,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12.0,
+                      if (!_timeout)
+                        ElevatedButton(
+                          onPressed: _setActivityItems,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primaryContainer,
+                            foregroundColor:
+                                theme.colorScheme.onPrimaryContainer,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0,
+                            ),
                           ),
+                          child: Text(L10n.of(context).tryAgain),
                         ),
-                        child: Text(L10n.of(context).tryAgain),
-                      ),
                     ],
                   ),
                 )

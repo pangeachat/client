@@ -14,23 +14,12 @@ enum ProgressIndicatorEnum {
     switch (value) {
       case 'vocab':
         return ProgressIndicatorEnum.wordsUsed;
-      case 'morphs':
+      case 'morph':
         return ProgressIndicatorEnum.morphsUsed;
       case 'level':
         return ProgressIndicatorEnum.level;
       default:
         return null;
-    }
-  }
-
-  String toShortString() {
-    switch (this) {
-      case ProgressIndicatorEnum.wordsUsed:
-        return 'vocab';
-      case ProgressIndicatorEnum.morphsUsed:
-        return 'morphs';
-      case ProgressIndicatorEnum.level:
-        return 'level';
     }
   }
 }
