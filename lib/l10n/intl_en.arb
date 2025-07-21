@@ -5092,5 +5092,6 @@
   "translationError": "Translation error",
   "errorFetchingTranslation": "Failed to fetch translation",
   "errorFetchingActivity": "Failed to fetch activity",
-  "check": "Check"
+  "check": "Check",
+  "selectActivityButton": "Select Activity"
 }

@@ -695,8 +695,12 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
                                               const Icon(Icons.send),
                                               Expanded(
                                                 child: Text(
-                                                  L10n.of(context)
-                                                      .launchActivityButton,
+                                                  (widget.controller.room ==
+                                                          null)
+                                                      ? L10n.of(context)
+                                                          .selectActivityButton
+                                                      : L10n.of(context)
+                                                          .launchActivityButton,
                                                   textAlign: TextAlign.center,
                                                 ),
                                               ),
