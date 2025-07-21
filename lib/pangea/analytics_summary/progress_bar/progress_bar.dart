@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/analytics_summary/progress_bar/level_bar.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_bar/progress_bar_background.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_bar/progress_bar_details.dart';
-import 'package:flutter/material.dart';
 
 // Provide an order list of level indicators, each with it's color
 // and stream. Also provide an overall width and pointsPerLevel.

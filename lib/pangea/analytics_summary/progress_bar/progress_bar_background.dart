@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_bar/progress_bar_details.dart';
-import 'package:flutter/material.dart';
 
 class ProgressBarBackground extends StatelessWidget {
   final ProgressBarDetails details;
