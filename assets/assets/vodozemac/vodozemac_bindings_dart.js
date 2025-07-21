@@ -1494,13 +1494,6 @@ let wasm_bindgen;
     };
 
     /**
-     * @param {number} ptr
-     */
-    __exports.frb_dart_opaque_drop_thread_box_persistent_handle = function(ptr) {
-        wasm.frb_dart_opaque_drop_thread_box_persistent_handle(ptr);
-    };
-
-    /**
      * # Safety
      *
      * This should never be called manually.
@@ -1522,8 +1515,15 @@ let wasm_bindgen;
         return ret;
     };
 
+    /**
+     * @param {number} ptr
+     */
+    __exports.frb_dart_opaque_drop_thread_box_persistent_handle = function(ptr) {
+        wasm.frb_dart_opaque_drop_thread_box_persistent_handle(ptr);
+    };
+
     function __wbg_adapter_40(arg0, arg1, arg2) {
-        wasm.closure589_externref_shim(arg0, arg1, arg2);
+        wasm.closure580_externref_shim(arg0, arg1, arg2);
     }
 
     const WorkerPoolFinalization = (typeof FinalizationRegistry === 'undefined')
@@ -1883,8 +1883,8 @@ let wasm_bindgen;
             const ret = false;
             return ret;
         };
-        imports.wbg.__wbindgen_closure_wrapper1748 = function(arg0, arg1, arg2) {
-            const ret = makeMutClosure(arg0, arg1, 590, __wbg_adapter_40);
+        imports.wbg.__wbindgen_closure_wrapper1723 = function(arg0, arg1, arg2) {
+            const ret = makeMutClosure(arg0, arg1, 581, __wbg_adapter_40);
             return ret;
         };
         imports.wbg.__wbindgen_debug_string = function(arg0, arg1) {
