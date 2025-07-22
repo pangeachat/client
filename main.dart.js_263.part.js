@@ -1716,6 +1716,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickMessageBody() {
       return "Nh\u1ea5n v\xe0o tin nh\u1eafn \u0111\u1ec3 truy c\u1eadp c\xe1c c\xf4ng c\u1ee5 ng\xf4n ng\u1eef nh\u01b0 d\u1ecbch, nghe l\u1ea1i v\xe0 h\u01a1n th\u1ebf n\u1eefa!";
     },
+    get$allDone() {
+      return "Ho\xe0n t\u1ea5t!";
+    },
     get$vocab() {
       return "T\u1eeb v\u1ef1ng";
     },
@@ -2645,6 +2648,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Vui l\xf2ng ch\u1ecdn t\xean ng\u01b0\u1eddi d\xf9ng";
+    },
+    get$listen() {
+      return "Nghe";
     },
     get$trialPeriodExpired() {
       return "Th\u1eddi gian d\xf9ng th\u1eed \u0111\xe3 h\u1ebft h\u1ea1n";
@@ -4080,6 +4086,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Nh\u1ea5p \u0111\u1ec3 hi\u1ec3n th\u1ecb h\u01b0\u1edbng d\u1eabn c\xf4ng c\u1ee5 nh\u01b0 cho m\u1ed9t ng\u01b0\u1eddi d\xf9ng ho\xe0n to\xe0n m\u1edbi.";
     },
+    get$selectForGrammar() {
+      return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng ng\u1eef ph\xe1p cho c\xe1c ho\u1ea1t \u0111\u1ed9ng v\xe0 chi ti\u1ebft.";
+    },
     get$newChatActivityTitle() {
       return "Th\xeam m\u1ed9t ho\u1ea1t \u0111\u1ed9ng th\xfa v\u1ecb?";
     },
@@ -4166,6 +4175,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newGrammar() {
       return "Kh\xe1i ni\u1ec7m ng\u1eef ph\xe1p m\u1edbi";
+    },
+    get$choosePracticeMode() {
+      return "Nh\u1ea5p v\xe0o m\u1ed9t trong c\xe1c n\xfat \u1edf tr\xean \u0111\u1ec3 b\u1eaft \u0111\u1ea7u m\u1ed9t ho\u1ea1t \u0111\u1ed9ng th\u1ef1c h\xe0nh";
     },
     get$ban() {
       return "C\u1ea5m";
@@ -4461,6 +4473,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Translation error";
     },
+    get$errorFetchingTranslation() {
+      return "Failed to fetch translation";
+    },
     get$errorFetchingActivity() {
       return "Failed to fetch activity";
     },
@@ -4482,6 +4497,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "GmwTCncNkiwgpi9tRSTDV47BU58=");
+})($__dart_deferred_initializers__, "pptB3zAVMQswDPYT9AVxEi401BE=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map

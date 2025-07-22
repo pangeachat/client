@@ -1717,6 +1717,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickMessageBody() {
       return "Haz clic en un mensaje para herramientas de idioma como traducci\xf3n, reproducci\xf3n y m\xe1s!";
     },
+    get$allDone() {
+      return "\xa1Listo!";
+    },
     get$vocab() {
       return "Vocabulario";
     },
@@ -2646,6 +2649,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Por favor, elija un nombre de usuario";
+    },
+    get$listen() {
+      return "Listas";
     },
     get$trialPeriodExpired() {
       return "Su periodo de prueba ha expirado";
@@ -4081,6 +4087,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Haz clic para mostrar las descripciones emergentes de instrucciones como si fueras un usuario nuevo.";
     },
+    get$selectForGrammar() {
+      return "Selecciona un \xedcono de gram\xe1tica para actividades y detalles.";
+    },
     get$newChatActivityTitle() {
       return "\xbfAgregar una actividad divertida?";
     },
@@ -4167,6 +4176,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newGrammar() {
       return "Nuevos conceptos gramaticales";
+    },
+    get$choosePracticeMode() {
+      return "Haz clic en uno de los botones de arriba para comenzar una actividad de pr\xe1ctica";
     },
     get$ban() {
       return "Prohibir";
@@ -4462,6 +4474,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Translation error";
     },
+    get$errorFetchingTranslation() {
+      return "Failed to fetch translation";
+    },
     get$errorFetchingActivity() {
       return "Failed to fetch activity";
     },
@@ -4483,6 +4498,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_199", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Het3pufs5iVUt9cYvy/LeaGNTPM=");
+})($__dart_deferred_initializers__, "nqXm+LKKh/kSA+MxrSdEizLWviI=");
 ;
 //# sourceMappingURL=main.dart.js_199.part.js.map

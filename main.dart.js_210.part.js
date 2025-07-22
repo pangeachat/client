@@ -1716,6 +1716,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickMessageBody() {
       return "Click a message for language tools like translation, play back and more!";
     },
+    get$allDone() {
+      return "All done!";
+    },
     get$vocab() {
       return "Vocab";
     },
@@ -2645,6 +2648,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$pleaseChooseAUsername() {
       return "Please choose a username";
+    },
+    get$listen() {
+      return "Listen";
     },
     get$trialPeriodExpired() {
       return "Your trial period has expired";
@@ -4080,6 +4086,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$resetInstructionTooltipsDesc() {
       return "Click to show instruction tooltips like for a brand new user.";
     },
+    get$selectForGrammar() {
+      return "Select a grammar icon for activities and details.";
+    },
     get$newChatActivityTitle() {
       return "Add a fun activity?";
     },
@@ -4166,6 +4175,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$newGrammar() {
       return "New grammar concepts";
+    },
+    get$choosePracticeMode() {
+      return "Click on one of the buttons above to start a practice activity";
     },
     get$ban() {
       return "Ban";
@@ -4461,6 +4473,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationError() {
       return "Translation error";
     },
+    get$errorFetchingTranslation() {
+      return "Failed to fetch translation";
+    },
     get$errorFetchingActivity() {
       return "Failed to fetch activity";
     },
@@ -4482,6 +4497,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_210", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "M5PgrcEGrTcmfRfZMrRmr4G8lKY=");
+})($__dart_deferred_initializers__, "M7VsfFPA1GX/HzEKoGHfensoN4Y=");
 ;
 //# sourceMappingURL=main.dart.js_210.part.js.map
