@@ -8,6 +8,7 @@ import 'package:fluffychat/pangea/toolbar/widgets/message_mode_locked_card.dart'
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_translation_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/practice_activity_card.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/practice_mode_buttons.dart';
 
 const double minContentHeight = 120;
 
@@ -101,24 +102,31 @@ class ReadingAssistanceInputBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Container(
-        padding: const EdgeInsets.all(8.0),
-        alignment: Alignment.center,
-        constraints: BoxConstraints(
-          minHeight: minContentHeight,
-          maxHeight: AppConfig.readingAssistanceInputBarHeight,
-          maxWidth: overlayController.maxWidth,
+    return Column(
+      children: [
+        PracticeModeButtons(
+          overlayController: overlayController,
         ),
-        child: AnimatedSize(
-          duration: const Duration(
-            milliseconds: AppConfig.overlayAnimationDuration,
-          ),
-          child: SingleChildScrollView(
-            child: barContent(context),
+        Material(
+          child: Container(
+            padding: const EdgeInsets.all(8.0),
+            alignment: Alignment.center,
+            constraints: BoxConstraints(
+              minHeight: minContentHeight,
+              maxHeight: AppConfig.readingAssistanceInputBarHeight,
+              maxWidth: overlayController.maxWidth,
+            ),
+            child: AnimatedSize(
+              duration: const Duration(
+                milliseconds: AppConfig.overlayAnimationDuration,
+              ),
+              child: SingleChildScrollView(
+                child: barContent(context),
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }

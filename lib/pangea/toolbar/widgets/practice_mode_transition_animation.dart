@@ -161,32 +161,39 @@ class CenteredMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-            width: controller.mediaQuery!.size.width - controller.columnWidth,
-            height: 20.0,
+    return Opacity(
+      opacity: controller.finishedTransition ? 1.0 : 0.0,
+      child: GestureDetector(
+        onTap: controller.widget.chatController.clearSelectedEvents,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width:
+                    controller.mediaQuery!.size.width - controller.columnWidth,
+                height: 20.0,
+              ),
+              OverlayCenterContent(
+                event: controller.widget.event,
+                overlayController: controller.widget.overlayController,
+                chatController: controller.widget.chatController,
+                nextEvent: controller.widget.nextEvent,
+                prevEvent: controller.widget.prevEvent,
+                hasReactions: controller.hasReactions,
+                overlayKey: MatrixState.pAnyState
+                    .layerLinkAndKey(
+                      "overlay_center_message_${controller.widget.event.eventId}",
+                    )
+                    .key,
+                readingAssistanceMode: controller.readingAssistanceMode,
+              ),
+              const SizedBox(
+                height: AppConfig.readingAssistanceInputBarHeight + 60.0,
+              ),
+            ],
           ),
-          OverlayCenterContent(
-            event: controller.widget.event,
-            overlayController: controller.widget.overlayController,
-            chatController: controller.widget.chatController,
-            nextEvent: controller.widget.nextEvent,
-            prevEvent: controller.widget.prevEvent,
-            hasReactions: controller.hasReactions,
-            overlayKey: MatrixState.pAnyState
-                .layerLinkAndKey(
-                  "overlay_center_message_${controller.widget.event.eventId}",
-                )
-                .key,
-            readingAssistanceMode: controller.readingAssistanceMode,
-          ),
-          const SizedBox(
-            height: AppConfig.readingAssistanceInputBarHeight + 60.0,
-          ),
-        ],
+        ),
       ),
     );
   }
