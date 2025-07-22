@@ -46,7 +46,8 @@ class AnalyticsPageView extends StatelessWidget {
                   children: [
                     LearningProgressIndicators(
                       selected: controller.selectedIndicator,
-                      canSelect: false,
+                      canSelect: controller.selectedIndicator !=
+                          ProgressIndicatorEnum.level,
                     ),
                     Expanded(
                       child: Builder(
