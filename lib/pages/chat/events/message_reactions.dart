@@ -1,8 +1,10 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/emoji_burst.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -15,21 +17,78 @@ import 'package:matrix/matrix.dart';
 class MessageReactions extends StatefulWidget {
   final Event event;
   final Timeline timeline;
+  final ChatController controller;
 
-  const MessageReactions(this.event, this.timeline, {super.key});
+  const MessageReactions(
+    this.event,
+    this.timeline,
+    this.controller, {
+    super.key,
+  });
 
   @override
   State<MessageReactions> createState() => _MessageReactionsState();
 }
 
 class _MessageReactionsState extends State<MessageReactions> {
-  Set<String> _previousUserReactions = {};
+  StreamSubscription? _reactionSubscription;
+  Map<String, _ReactionEntry> _reactionMap = {};
+  Set<String> _newlyAddedReactions = {};
 
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
+    _updateReactionMap();
+    _setupReactionStream();
+  }
+
+  void _setupReactionStream() {
+    _reactionSubscription = widget.controller.room.client.onSync.stream.where(
+      (update) {
+        final room = widget.controller.room;
+        final timelineEvents = update.rooms?.join?[room.id]?.timeline?.events;
+        if (timelineEvents == null) return false;
+
+        final eventID = widget.event.eventId;
+        return timelineEvents.any(
+          (e) =>
+              e.type == EventTypes.Redaction ||
+              (e.type == EventTypes.Reaction &&
+                  Event.fromMatrixEvent(e, room).relationshipEventId ==
+                      eventID),
+        );
+      },
+    ).listen(_onReactionUpdate);
+  }
+
+  void _onReactionUpdate(SyncUpdate update) {
+    final previousReactions = Set<String>.from(_reactionMap.keys);
+    _updateReactionMap();
+    final currentReactions = Set<String>.from(_reactionMap.keys);
+
+    // Identify newly added reactions for animation
+    _newlyAddedReactions = currentReactions.difference(previousReactions);
+
+    if (mounted) {
+      setState(() {});
+
+      // Clear newly added reactions after animation duration to prevent continuous animation
+      if (_newlyAddedReactions.isNotEmpty) {
+        Future.delayed(const Duration(milliseconds: 600), () {
+          if (mounted) {
+            setState(() {
+              _newlyAddedReactions.clear();
+            });
+          }
+        });
+      }
+    }
+  }
+
+  void _updateReactionMap() {
     final allReactionEvents = widget.event
         .aggregatedEvents(widget.timeline, RelationshipTypes.reaction);
-    final reactionMap = <String, _ReactionEntry>{};
+    final newReactionMap = <String, _ReactionEntry>{};
     final client = Matrix.of(context).client;
 
     for (final e in allReactionEvents) {
@@ -37,38 +96,43 @@ class _MessageReactionsState extends State<MessageReactions> {
           .tryGetMap<String, dynamic>('m.relates_to')
           ?.tryGet<String>('key');
       if (key != null) {
-        if (!reactionMap.containsKey(key)) {
-          reactionMap[key] = _ReactionEntry(
+        if (!newReactionMap.containsKey(key)) {
+          newReactionMap[key] = _ReactionEntry(
             key: key,
             count: 0,
             reacted: false,
             reactors: [],
           );
         }
-        reactionMap[key]!.count++;
-        reactionMap[key]!.reactors!.add(e.senderFromMemoryOrFallback);
-        reactionMap[key]!.reacted |= e.senderId == e.room.client.userID;
+        newReactionMap[key]!.count++;
+        newReactionMap[key]!.reactors!.add(e.senderFromMemoryOrFallback);
+        newReactionMap[key]!.reacted |= e.senderId == client.userID;
       }
     }
 
-    // Track which reactions the user has reacted to
-    final Set<String> currentUserReactions = reactionMap.entries
-        .where((e) => e.value.reacted)
-        .map((e) => e.key)
-        .toSet();
+    _reactionMap = newReactionMap;
+  }
 
-    final Set<String> newReactions =
-        currentUserReactions.difference(_previousUserReactions);
+  @override
+  void dispose() {
+    _reactionSubscription?.cancel();
+    super.dispose();
+  }
 
-    // Save for next build
-    _previousUserReactions = currentUserReactions;
+  @override
+  Widget build(BuildContext context) {
+    final client = Matrix.of(context).client;
+    final reactionList = _reactionMap.values.toList()
+      ..sort((a, b) => b.count - a.count > 0 ? 1 : -1);
 
-    final reactionList = reactionMap.values.toList();
-    reactionList.sort((a, b) => b.count - a.count > 0 ? 1 : -1);
     final ownMessage = widget.event.senderId == client.userID;
+    final allReactionEvents = widget.event
+        .aggregatedEvents(widget.timeline, RelationshipTypes.reaction)
+        .toList();
+
     return AnimatedSize(
       duration: FluffyThemes.animationDuration,
-      curve: Curves.linear,
+      curve: FluffyThemes.animationCurve,
       alignment: ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
       clipBehavior: Clip.none,
       child: Wrap(
@@ -88,28 +152,11 @@ class _MessageReactionsState extends State<MessageReactions> {
           ...reactionList.map(
             (r) => _Reaction(
               key: ValueKey(r.key),
-              firstReact: newReactions.contains(r.key),
+              firstReact: _newlyAddedReactions.contains(r.key),
               reactionKey: r.key,
               count: r.count,
               reacted: r.reacted,
-              onTap: () async {
-                if (r.reacted) {
-                  final evt = allReactionEvents.firstWhereOrNull(
-                    (e) =>
-                        e.senderId == e.room.client.userID &&
-                        e.content.tryGetMap('m.relates_to')?['key'] == r.key,
-                  );
-                  if (evt != null) {
-                    await showFutureLoadingDialog(
-                      context: context,
-                      future: () => evt.redactEvent(),
-                    );
-                  }
-                } else {
-                  await widget.event.room
-                      .sendReaction(widget.event.eventId, r.key);
-                }
-              },
+              onTap: () => _handleReactionTap(r, allReactionEvents),
               onLongPress: () async => await _AdaptableReactorsDialog(
                 client: client,
                 reactionEntry: r,
@@ -128,6 +175,27 @@ class _MessageReactionsState extends State<MessageReactions> {
         ],
       ),
     );
+  }
+
+  Future<void> _handleReactionTap(
+    _ReactionEntry reaction,
+    List<Event> allReactionEvents,
+  ) async {
+    if (reaction.reacted) {
+      final evt = allReactionEvents.firstWhereOrNull(
+        (e) =>
+            e.senderId == e.room.client.userID &&
+            e.content.tryGetMap('m.relates_to')?['key'] == reaction.key,
+      );
+      if (evt != null) {
+        await showFutureLoadingDialog(
+          context: context,
+          future: () => evt.redactEvent(),
+        );
+      }
+    } else {
+      await widget.event.room.sendReaction(widget.event.eventId, reaction.key);
+    }
   }
 }
 
@@ -256,7 +324,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
         await _triggerBurstAnimation();
       } else {
         //bounce out and back in, if there's more than one.
-        await _bounceOutController.forward();
+        _bounceOutController.forward();
         await _triggerBurstAnimation();
       }
     }
@@ -348,57 +416,74 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
       );
     }
 
+    // We want the reaction's layout size to shrink as it animates out, but the burst can overflow.
     return Stack(
       clipBehavior: Clip.none,
       children: [
         AnimatedBuilder(
           animation: Listenable.merge([_bounceOutAnimation, _growController]),
           builder: (context, child) {
-            // If growing, animate scale/offset in, else use bounce for exit
             final isGrowing = _growController.isAnimating ||
                 (_growController.value > 0 && _growController.value < 1.0);
             final scale =
                 isGrowing ? _growScale.value : _bounceOutAnimation.value;
             final offsetY = isGrowing ? _growOffset.value : 0.0;
-            return Transform.translate(
-              offset: Offset(0, offsetY),
-              child: Transform.scale(
-                scale: scale,
-                child: InkWell(
-                  onTap: _animateAndReact,
-                  onLongPress: () =>
-                      widget.onLongPress != null ? widget.onLongPress!() : null,
-                  borderRadius:
-                      BorderRadius.circular(AppConfig.borderRadius / 2),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: color,
-                      borderRadius:
-                          BorderRadius.circular(AppConfig.borderRadius / 2),
-                    ),
-                    padding: PlatformInfos.isIOS
-                        ? const EdgeInsets.fromLTRB(5.5, 1, 3, 2.5)
-                        : const EdgeInsets.symmetric(
-                            horizontal: 4,
-                            vertical: 2,
-                          ),
-                    child: content,
+
+            return AnimatedSize(
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.easeInOut,
+              alignment: Alignment.center,
+              clipBehavior: Clip.none,
+              child: Opacity(
+                opacity: scale.clamp(0.0, 1.0),
+                child: Transform.translate(
+                  offset: Offset(0, offsetY),
+                  child: Transform.scale(
+                    scale: scale,
+                    child: scale > 0.01
+                        ? InkWell(
+                            onTap: _animateAndReact,
+                            onLongPress: () => widget.onLongPress != null
+                                ? widget.onLongPress!()
+                                : null,
+                            borderRadius: BorderRadius.circular(
+                              AppConfig.borderRadius / 2,
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: color,
+                                borderRadius: BorderRadius.circular(
+                                  AppConfig.borderRadius / 2,
+                                ),
+                              ),
+                              padding: PlatformInfos.isIOS
+                                  ? const EdgeInsets.fromLTRB(5.5, 1, 3, 2.5)
+                                  : const EdgeInsets.symmetric(
+                                      horizontal: 4,
+                                      vertical: 2,
+                                    ),
+                              child: content,
+                            ),
+                          )
+                        : const SizedBox.shrink(),
                   ),
                 ),
               ),
             );
           },
         ),
+        // The burst animation is always allowed to overflow, not clipped by the shrinking size.
         AnimatedBuilder(
           animation: _burstAnimation,
           builder: (context, child) {
             if (_burstAnimation.value == 0.0) return const SizedBox.shrink();
-
             return Positioned.fill(
-              child: CustomPaint(
-                painter: BurstPainter(
-                  particles: _burstParticles,
-                  progress: _burstAnimation.value,
+              child: IgnorePointer(
+                child: CustomPaint(
+                  painter: BurstPainter(
+                    particles: _burstParticles,
+                    progress: _burstAnimation.value,
+                  ),
                 ),
               ),
             );

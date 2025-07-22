@@ -1003,7 +1003,7 @@ class Message extends StatelessWidget {
                         left: (ownMessage ? 0 : Avatar.defaultSize) + 12.0,
                         right: ownMessage ? 0 : 12.0,
                       ),
-                      child: MessageReactions(event, timeline),
+                      child: MessageReactions(event, timeline, controller),
                     ),
               //ADDED TO REPLACE ANIMATEDSIZE
               if (displayReadMarker)
