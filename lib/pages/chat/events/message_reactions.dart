@@ -66,60 +66,68 @@ class _MessageReactionsState extends State<MessageReactions> {
     final reactionList = reactionMap.values.toList();
     reactionList.sort((a, b) => b.count - a.count > 0 ? 1 : -1);
     final ownMessage = widget.event.senderId == client.userID;
-    // return AnimatedSize(
-    //   duration: FluffyThemes.animationDuration,
-    //   curve: FluffyThemes.animationCurve,
-    //   alignment: Alignment.bottomCenter,
-    //   clipBehavior: Clip.none,
-    //   child:
-    return Wrap(
-      spacing: 4.0,
-      runSpacing: 4.0,
-      alignment: ownMessage ? WrapAlignment.end : WrapAlignment.start,
-      children: [
-        ...reactionList.map(
-          (r) => _Reaction(
-            key: ValueKey(r.key),
-            firstReact: newReactions.contains(r.key),
-            reactionKey: r.key,
-            count: r.count,
-            reacted: r.reacted,
-            onTap: () async {
-              if (r.reacted) {
-                final evt = allReactionEvents.firstWhereOrNull(
-                  (e) =>
-                      e.senderId == e.room.client.userID &&
-                      e.content.tryGetMap('m.relates_to')?['key'] == r.key,
-                );
-                if (evt != null) {
-                  await showFutureLoadingDialog(
-                    context: context,
-                    future: () => evt.redactEvent(),
+    return AnimatedSize(
+      duration: FluffyThemes.animationDuration,
+      curve: Curves.linear,
+      alignment: ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
+      clipBehavior: Clip.none,
+      child: Wrap(
+        spacing: 4.0,
+        runSpacing: 4.0,
+        alignment: ownMessage ? WrapAlignment.end : WrapAlignment.start,
+        children: [
+          if (allReactionEvents.any((e) => e.status.isSending) && ownMessage)
+            const SizedBox(
+              width: 24,
+              height: 24,
+              child: Padding(
+                padding: EdgeInsets.all(4.0),
+                child: CircularProgressIndicator.adaptive(strokeWidth: 1),
+              ),
+            ),
+          ...reactionList.map(
+            (r) => _Reaction(
+              key: ValueKey(r.key),
+              firstReact: newReactions.contains(r.key),
+              reactionKey: r.key,
+              count: r.count,
+              reacted: r.reacted,
+              onTap: () async {
+                if (r.reacted) {
+                  final evt = allReactionEvents.firstWhereOrNull(
+                    (e) =>
+                        e.senderId == e.room.client.userID &&
+                        e.content.tryGetMap('m.relates_to')?['key'] == r.key,
                   );
+                  if (evt != null) {
+                    await showFutureLoadingDialog(
+                      context: context,
+                      future: () => evt.redactEvent(),
+                    );
+                  }
+                } else {
+                  await widget.event.room
+                      .sendReaction(widget.event.eventId, r.key);
                 }
-              } else {
-                await widget.event.room
-                    .sendReaction(widget.event.eventId, r.key);
-              }
-            },
-            onLongPress: () async => await _AdaptableReactorsDialog(
-              client: client,
-              reactionEntry: r,
-            ).show(context),
-          ),
-        ),
-        if (allReactionEvents.any((e) => e.status.isSending))
-          const SizedBox(
-            width: 24,
-            height: 24,
-            child: Padding(
-              padding: EdgeInsets.all(4.0),
-              child: CircularProgressIndicator.adaptive(strokeWidth: 1),
+              },
+              onLongPress: () async => await _AdaptableReactorsDialog(
+                client: client,
+                reactionEntry: r,
+              ).show(context),
             ),
           ),
-      ],
+          if (allReactionEvents.any((e) => e.status.isSending) && !ownMessage)
+            const SizedBox(
+              width: 24,
+              height: 24,
+              child: Padding(
+                padding: EdgeInsets.all(4.0),
+                child: CircularProgressIndicator.adaptive(strokeWidth: 1),
+              ),
+            ),
+        ],
+      ),
     );
-    // );
   }
 }
 
@@ -245,7 +253,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     if (widget.reacted == true) {
       if (widget.count == 1) {
         await _bounceOutController.forward();
-        _triggerBurstAnimation();
+        await _triggerBurstAnimation();
       } else {
         //bounce out and back in, if there's more than one.
         await _bounceOutController.forward();
@@ -255,10 +263,11 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
 
     // Execute the actual reaction logic and wait for it to complete
     if (widget.onTap != null) {
-      await widget.onTap!();
       if (!wasReacted!) {
-        _growController.forward();
+        await _growController.forward();
       }
+      await widget.onTap!();
+
       if (wasReacted && !wasSingle) {
         //bounces back in when unreacting to a multiple reacted emoji, after it has decremented
         await _bounceOutController.reverse();
@@ -267,7 +276,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     }
   }
 
-  _triggerBurstAnimation() {
+  Future<void> _triggerBurstAnimation() async {
     // Clear previous particles
     _burstParticles.clear();
 
@@ -289,7 +298,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
 
     // Start burst animation
     _burstController.reset();
-    _burstController.forward();
+    await _burstController.forward();
   }
 
   @override
