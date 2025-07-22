@@ -291,7 +291,10 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   bool get shouldScroll {
     if (mediaQuery == null) return false;
-    return _fullContentHeight > mediaQuery!.size.height;
+    return _fullContentHeight >
+        (mediaQuery!.size.height -
+            mediaQuery!.padding.bottom -
+            mediaQuery!.padding.top);
   }
 
   bool get _hasFooterOverflow {
@@ -301,16 +304,23 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
         reactionsHeight +
         AppConfig.toolbarMenuHeight +
         4.0;
-    return bottomOffset > mediaQuery!.size.height - mediaQuery!.padding.bottom;
+    return bottomOffset >
+        (mediaQuery!.size.height -
+            mediaQuery!.padding.bottom -
+            mediaQuery!.padding.top);
   }
 
   double get spaceAboveContent {
     if (shouldScroll) return _overheadContentHeight;
     if (_hasFooterOverflow) {
-      return mediaQuery!.size.height - _fullContentHeight;
+      return mediaQuery!.size.height -
+          mediaQuery!.padding.top -
+          _fullContentHeight;
     }
 
-    return _originalMessageOffset.dy - _overheadContentHeight;
+    return _originalMessageOffset.dy -
+        mediaQuery!.padding.top -
+        _overheadContentHeight;
   }
 
   void _onContentSizeChanged(_) {
@@ -357,7 +367,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
                 width: mediaQuery!.size.width -
                     columnWidth -
                     (showDetails ? FluffyThemes.columnWidth : 0),
-                height: mediaQuery!.size.height,
+                height: mediaQuery!.size.height -
+                    mediaQuery!.padding.top -
+                    mediaQuery!.padding.bottom,
                 child: Stack(
                   alignment:
                       ownMessage ? Alignment.centerRight : Alignment.centerLeft,
