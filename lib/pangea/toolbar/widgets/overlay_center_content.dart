@@ -92,7 +92,7 @@ class OverlayCenterContent extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.only(
                       top: 4.0,
-                      left: 4.0,
+                      left: (ownMessage ? 30.0 : 0) + 4.0,
                       right: ownMessage ? 0 : 12.0,
                     ),
                     child: MessageReactions(
