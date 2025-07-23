@@ -34,10 +34,12 @@ class _MessageReactionsState extends State<MessageReactions> {
   StreamSubscription? _reactionSubscription;
   Map<String, _ReactionEntry> _reactionMap = {};
   Set<String> _newlyAddedReactions = {};
+  late Client client;
 
   @override
   void initState() {
     super.initState();
+    client = Matrix.of(context).client;
     _updateReactionMap();
     _setupReactionStream();
   }
@@ -73,15 +75,15 @@ class _MessageReactionsState extends State<MessageReactions> {
       setState(() {});
 
       // Clear newly added reactions after animation duration to prevent continuous animation
-      if (_newlyAddedReactions.isNotEmpty) {
-        Future.delayed(const Duration(milliseconds: 600), () {
-          if (mounted) {
-            setState(() {
-              _newlyAddedReactions.clear();
-            });
-          }
-        });
-      }
+      // if (_newlyAddedReactions.isNotEmpty) {
+      //   Future.delayed(const Duration(milliseconds: 600), () {
+      //     if (mounted) {
+      //       setState(() {
+      //         _newlyAddedReactions.clear();
+      //       });
+      //     }
+      //   });
+      // }
     }
   }
 
@@ -89,7 +91,6 @@ class _MessageReactionsState extends State<MessageReactions> {
     final allReactionEvents = widget.event
         .aggregatedEvents(widget.timeline, RelationshipTypes.reaction);
     final newReactionMap = <String, _ReactionEntry>{};
-    final client = Matrix.of(context).client;
 
     for (final e in allReactionEvents) {
       final key = e.content
@@ -121,7 +122,6 @@ class _MessageReactionsState extends State<MessageReactions> {
 
   @override
   Widget build(BuildContext context) {
-    final client = Matrix.of(context).client;
     final reactionList = _reactionMap.values.toList()
       ..sort((a, b) => b.count - a.count > 0 ? 1 : -1);
 
@@ -237,7 +237,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _bounceOutController = AnimationController(
-      duration: const Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 400),
       vsync: this,
     );
     _bounceOutAnimation = Tween<double>(
@@ -251,7 +251,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     );
 
     _burstController = AnimationController(
-      duration: const Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 450),
       vsync: this,
     );
     _burstAnimation = Tween<double>(
@@ -265,10 +265,9 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     );
 
     _growController = AnimationController(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     );
-    // Scale: 0.7 -> 1.18 (overshoot) -> 1.0
     _growScale = TweenSequence([
       TweenSequenceItem(
         tween: Tween<double>(begin: 0.7, end: 1.18)
@@ -325,7 +324,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
       } else {
         //bounce out and back in, if there's more than one.
         _bounceOutController.forward();
-        await _triggerBurstAnimation();
+        _triggerBurstAnimation();
       }
     }
 
@@ -416,7 +415,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
       );
     }
 
-    // We want the reaction's layout size to shrink as it animates out, but the burst can overflow.
+    //Burst should continue/overflow after emoji shrinks away
     return Stack(
       clipBehavior: Clip.none,
       children: [
@@ -425,10 +424,12 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
           builder: (context, child) {
             final isGrowing = _growController.isAnimating ||
                 (_growController.value > 0 && _growController.value < 1.0);
+            final isBouncing = _bounceOutController.isAnimating;
             final scale =
                 isGrowing ? _growScale.value : _bounceOutAnimation.value;
             final offsetY = isGrowing ? _growOffset.value : 0.0;
 
+            // AnimatedSize on each emoji makes it move smoothly
             return AnimatedSize(
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeInOut,
