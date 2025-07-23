@@ -137,7 +137,7 @@ class ClassController extends BaseController {
           return "429";
         }
         if (knockResponse.statusCode != 200) {
-          throw notFoundError ?? L10n.of(context).unableToFindClass;
+          throw notFoundError ?? L10n.of(context).unableToFindRoom;
         }
 
         final knockResult = jsonDecode(knockResponse.body);
@@ -150,12 +150,17 @@ class ClassController extends BaseController {
             );
 
         if (alreadyJoined.isNotEmpty || inFoundClass) {
-          context.go("/rooms?spaceId=${alreadyJoined.first}");
+          final room = client.getRoomById(alreadyJoined.first);
+          if (!(room?.isSpace ?? true)) {
+            context.go("/rooms/${alreadyJoined.first}");
+          } else {
+            context.go("/rooms?spaceId=${alreadyJoined.first}");
+          }
           return null;
         }
 
         if (foundClasses.isEmpty) {
-          throw notFoundError ?? L10n.of(context).unableToFindClass;
+          throw notFoundError ?? L10n.of(context).unableToFindRoom;
         }
 
         final chosenClassId = foundClasses.first;
@@ -206,7 +211,11 @@ class ClassController extends BaseController {
         await room.requestParticipants();
       }
 
-      context.go("/rooms?spaceId=${room.id}");
+      if (room.isSpace) {
+        context.go("/rooms?spaceId=${room.id}");
+      } else {
+        context.go("/rooms/${room.id}");
+      }
       return spaceID;
     } catch (e, s) {
       ErrorHandler.logError(
