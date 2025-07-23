@@ -1585,9 +1585,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinWithClassCodeHint() {
       return "Introduzca el c\xf3digo de invitaci\xf3n";
     },
-    get$unableToFindClass() {
-      return "No hay espacio con ese c\xf3digo. Por favor int\xe9ntalo de nuevo.";
-    },
     get$languageLevelPreA1() {
       return "Principiante absoluto (Pre A1)";
     },
@@ -4483,6 +4480,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$check(_) {
       return "Check";
     },
+    get$unableToFindRoom() {
+      return "No chat or space found with that code. Please try again.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4498,6 +4498,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_199", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "nqXm+LKKh/kSA+MxrSdEizLWviI=");
+})($__dart_deferred_initializers__, "oNySLI05VvJu4ADyS9xuPgFExds=");
 ;
 //# sourceMappingURL=main.dart.js_199.part.js.map
