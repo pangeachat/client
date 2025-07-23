@@ -1,4 +1,7 @@
 import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:bsdiff/bsdiff.dart';
 
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'it_step.dart';
@@ -9,6 +12,8 @@ import 'it_step.dart';
 /// to a representation
 /// It represents the real-time changes to a text
 /// TODO - start saving senderL2Code in choreoRecord to be able better decide the useType
+
+// todo: if values are saved wrong, would that cause any problems serverside?
 
 class ChoreoRecord {
   /// ordered versions of the representation, with first being original and last
@@ -62,14 +67,26 @@ class ChoreoRecord {
     if (match != null && step != null) {
       throw Exception("match and step should not both be defined");
     }
+
+    // If this is the first choreo record step, save the current text
+    final bool saveCurrent = originalText == null || originalText == text;
+
     choreoSteps.add(
       ChoreoRecordStep(
-        text: text,
+        currentText: saveCurrent ? text : null,
+        originalText: saveCurrent ? null : utf8.encode(originalText!),
+        edits: saveCurrent
+            ? null
+            : bsdiff(utf8.encode(originalText!), utf8.encode(text)),
         acceptedOrIgnoredMatch: match,
         itStep: step,
       ),
     );
   }
+
+  /// Get original version of message from initial entry
+  String? get originalText =>
+      choreoSteps.isNotEmpty ? choreoSteps.first.text : null;
 
   bool get hasAcceptedMatches => choreoSteps.any(
         (element) =>
@@ -135,7 +152,11 @@ class ChoreoRecord {
 /// adds "amigo" and a step saved
 class ChoreoRecordStep {
   /// text after changes have been made
-  String text;
+  String? currentText;
+
+  /// text before any changes were made, and the changes made to it
+  Uint8List? originalText;
+  Uint8List? edits;
 
   /// all matches throughout edit process,
   /// including those open, accepted and ignored
@@ -145,7 +166,9 @@ class ChoreoRecordStep {
   ITStep? itStep;
 
   ChoreoRecordStep({
-    required this.text,
+    this.currentText,
+    this.originalText,
+    this.edits,
     this.acceptedOrIgnoredMatch,
     this.itStep,
   }) {
@@ -154,11 +177,30 @@ class ChoreoRecordStep {
         "itStep and acceptedOrIgnoredMatch should not both be defined",
       );
     }
+    if (currentText == null && (originalText == null || edits == null)) {
+      throw Exception(
+        "Either current text or original text + edits must be provided",
+      );
+    }
   }
 
+  /// Provides text from currentText, or by applying edits to originalText
+  String get text => currentText ?? utf8.decode(bspatch(originalText!, edits!));
+
   factory ChoreoRecordStep.fromJson(Map<String, dynamic> json) {
+    final retrievedCurrentText = json[_textKey];
+    final retrievedOriginalText = json[_originalTextKey];
+    final retrievedEdits = json[_editsKey];
+
+    if (retrievedOriginalText == null || retrievedEdits == null) {
+      // todo: convert old data into the new form
+      // how do I retrieve ChoreoRecord originalText from here? Is it possible?
+    }
+
     return ChoreoRecordStep(
-      text: json[_textKey],
+      currentText: retrievedCurrentText,
+      originalText: retrievedOriginalText,
+      edits: retrievedEdits,
       acceptedOrIgnoredMatch: json[_acceptedOrIgnoredMatchKey] != null
           ? PangeaMatch.fromJson(json[_acceptedOrIgnoredMatchKey])
           : null,
@@ -167,12 +209,18 @@ class ChoreoRecordStep {
   }
 
   static const _textKey = "txt";
+  static const _originalTextKey = "txt_v2";
+  static const _editsKey = "edit_v2";
   static const _acceptedOrIgnoredMatchKey = "mtch";
   static const _stepKey = "stp";
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data[_textKey] = text;
+    final bool saveCurrent = originalText == null || edits == null;
+
+    data[_textKey] = saveCurrent ? currentText : null;
+    data[_originalTextKey] = saveCurrent ? null : originalText;
+    data[_editsKey] = saveCurrent ? null : edits;
     data[_acceptedOrIgnoredMatchKey] = acceptedOrIgnoredMatch?.toJson();
     data[_stepKey] = itStep?.toJson();
     return data;
