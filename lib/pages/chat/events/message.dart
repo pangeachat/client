@@ -1008,6 +1008,7 @@ class Message extends StatelessWidget {
                       child: MessageReactions(
                         event,
                         timeline,
+                        controller,
                         key: MatrixState.pAnyState
                             .layerLinkAndKey(
                               'message_reactions_${event.eventId}',
@@ -1016,7 +1017,6 @@ class Message extends StatelessWidget {
                       ),
                       // Pangea#
                     ),
-              //ADDED TO REPLACE ANIMATEDSIZE
               if (displayReadMarker)
                 Row(
                   children: [

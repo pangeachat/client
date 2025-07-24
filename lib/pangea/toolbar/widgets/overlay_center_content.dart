@@ -84,24 +84,25 @@ class OverlayCenterContent extends StatelessWidget {
                   readingAssistanceMode: readingAssistanceMode,
                 ),
               ),
-              if (hasReactions)
-                AnimatedSize(
-                  duration: FluffyThemes.animationDuration,
-                  curve: FluffyThemes.animationCurve,
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      top: 4.0,
-                      left: 4.0,
-                      right: ownMessage ? 0 : 12.0,
-                    ),
-                    child: MessageReactions(
-                      event,
-                      chatController.timeline!,
-                      chatController,
-                    ),
-                  ),
+              // if (hasReactions)
+              //   AnimatedSize(
+              //     duration: FluffyThemes.animationDuration,
+              //     curve: FluffyThemes.animationCurve,
+              //     alignment: Alignment.bottomCenter,
+              // child:
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 4.0,
+                  left: 4.0,
+                  right: ownMessage ? 0 : 12.0,
                 ),
+                child: MessageReactions(
+                  event,
+                  chatController.timeline!,
+                  chatController,
+                ),
+              ),
+              // ),
             ],
           ),
         ),

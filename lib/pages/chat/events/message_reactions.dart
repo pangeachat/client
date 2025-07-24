@@ -272,7 +272,6 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
         weight: 40,
       ),
     ]).animate(_growController);
-    // Offset: 0 -> -10 (up) -> 0
     _growOffset = TweenSequence([
       TweenSequenceItem(
         tween: Tween<double>(begin: 0.0, end: -10.0)
@@ -422,7 +421,6 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
                 isGrowing ? _growScale.value : _bounceOutAnimation.value;
             final offsetY = isGrowing ? _growOffset.value : 0.0;
 
-            // AnimatedSize on each emoji makes it move smoothly
             return AnimatedSize(
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeInOut,
