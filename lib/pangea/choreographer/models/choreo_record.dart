@@ -1,8 +1,6 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
-import 'package:bsdiff/bsdiff.dart';
-
+import 'package:fluffychat/pangea/choreographer/models/choreo_edit.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'it_step.dart';
 
@@ -12,8 +10,6 @@ import 'it_step.dart';
 /// to a representation
 /// It represents the real-time changes to a text
 /// TODO - start saving senderL2Code in choreoRecord to be able better decide the useType
-
-// todo: if values are saved wrong, would that cause any problems serverside?
 
 class ChoreoRecord {
   /// ordered versions of the representation, with first being original and last
@@ -33,10 +29,34 @@ class ChoreoRecord {
 
   factory ChoreoRecord.fromJson(Map<String, dynamic> json) {
     final stepsRaw = json[_stepsKey];
+    String? previousText = "";
+
     return ChoreoRecord(
       choreoSteps: (jsonDecode(stepsRaw ?? "[]") as Iterable)
           .map((e) {
-            return ChoreoRecordStep.fromJson(e);
+            final ChoreoRecordStep step = ChoreoRecordStep.fromJson(e);
+
+            if (previousText != null) {
+              // Do not check initial step
+              if (previousText!.isEmpty) {
+                previousText = step.text!;
+              }
+              // All steps except the initial step should have 'edits' parameter
+              else if (step.text != null) {
+                final String currentText = step.text!;
+                step.edits = ChoreoEdit.fromText(
+                  originalText: previousText!,
+                  editedText: currentText,
+                );
+                step.text = null;
+                previousText = currentText;
+              }
+              // If an updated step is encountered, do not check in future iterations
+              else {
+                previousText = null;
+              }
+            }
+            return step;
           })
           .toList()
           .cast<ChoreoRecordStep>(),
@@ -67,26 +87,22 @@ class ChoreoRecord {
     if (match != null && step != null) {
       throw Exception("match and step should not both be defined");
     }
-
-    // If this is the first choreo record step, save the current text
-    final bool saveCurrent = originalText == null || originalText == text;
-
+    // Initial step saves text and not edits
+    final bool initialStep = choreoSteps.isEmpty;
     choreoSteps.add(
       ChoreoRecordStep(
-        currentText: saveCurrent ? text : null,
-        originalText: saveCurrent ? null : utf8.encode(originalText!),
-        edits: saveCurrent
+        text: initialStep ? text : null,
+        edits: initialStep
             ? null
-            : bsdiff(utf8.encode(originalText!), utf8.encode(text)),
+            : ChoreoEdit.fromText(
+                originalText: choreoSteps.last.text!,
+                editedText: text,
+              ),
         acceptedOrIgnoredMatch: match,
         itStep: step,
       ),
     );
   }
-
-  /// Get original version of message from initial entry
-  String? get originalText =>
-      choreoSteps.isNotEmpty ? choreoSteps.first.text : null;
 
   bool get hasAcceptedMatches => choreoSteps.any(
         (element) =>
@@ -124,9 +140,6 @@ class ChoreoRecord {
 
   List<ITStep> get itSteps =>
       choreoSteps.where((e) => e.itStep != null).map((e) => e.itStep!).toList();
-
-  String get finalMessage =>
-      choreoSteps.isNotEmpty ? choreoSteps.last.text : "";
 }
 
 /// A new ChoreoRecordStep is saved in the following cases:
@@ -152,11 +165,11 @@ class ChoreoRecord {
 /// adds "amigo" and a step saved
 class ChoreoRecordStep {
   /// text after changes have been made
-  String? currentText;
+  String? text;
 
-  /// text before any changes were made, and the changes made to it
-  Uint8List? originalText;
-  Uint8List? edits;
+  /// Edits that, when applied to previous step's text,
+  /// will provide the current step's text
+  ChoreoEdit? edits;
 
   /// all matches throughout edit process,
   /// including those open, accepted and ignored
@@ -166,8 +179,7 @@ class ChoreoRecordStep {
   ITStep? itStep;
 
   ChoreoRecordStep({
-    this.currentText,
-    this.originalText,
+    this.text,
     this.edits,
     this.acceptedOrIgnoredMatch,
     this.itStep,
@@ -177,30 +189,17 @@ class ChoreoRecordStep {
         "itStep and acceptedOrIgnoredMatch should not both be defined",
       );
     }
-    if (currentText == null && (originalText == null || edits == null)) {
+    if (text == null && edits == null) {
       throw Exception(
-        "Either current text or original text + edits must be provided",
+        "Every step must have either text or edits",
       );
     }
   }
 
-  /// Provides text from currentText, or by applying edits to originalText
-  String get text => currentText ?? utf8.decode(bspatch(originalText!, edits!));
-
   factory ChoreoRecordStep.fromJson(Map<String, dynamic> json) {
-    final retrievedCurrentText = json[_textKey];
-    final retrievedOriginalText = json[_originalTextKey];
-    final retrievedEdits = json[_editsKey];
-
-    if (retrievedOriginalText == null || retrievedEdits == null) {
-      // todo: convert old data into the new form
-      // how do I retrieve ChoreoRecord originalText from here? Is it possible?
-    }
-
     return ChoreoRecordStep(
-      currentText: retrievedCurrentText,
-      originalText: retrievedOriginalText,
-      edits: retrievedEdits,
+      text: json[_textKey],
+      edits: json[_editKey],
       acceptedOrIgnoredMatch: json[_acceptedOrIgnoredMatchKey] != null
           ? PangeaMatch.fromJson(json[_acceptedOrIgnoredMatchKey])
           : null,
@@ -209,18 +208,14 @@ class ChoreoRecordStep {
   }
 
   static const _textKey = "txt";
-  static const _originalTextKey = "txt_v2";
-  static const _editsKey = "edit_v2";
+  static const _editKey = "edits_v2";
   static const _acceptedOrIgnoredMatchKey = "mtch";
   static const _stepKey = "stp";
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    final bool saveCurrent = originalText == null || edits == null;
-
-    data[_textKey] = saveCurrent ? currentText : null;
-    data[_originalTextKey] = saveCurrent ? null : originalText;
-    data[_editsKey] = saveCurrent ? null : edits;
+    data[_textKey] = text;
+    data[_editKey] = edits;
     data[_acceptedOrIgnoredMatchKey] = acceptedOrIgnoredMatch?.toJson();
     data[_stepKey] = itStep?.toJson();
     return data;
