@@ -339,9 +339,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
       _burstParticles.add(
         BurstParticle(
           emoji: widget.reactionKey,
-          angle: (i * 45.0) +
-              random.nextDouble() * 30 -
-              15, // Spread around 360 degrees
+          angle: (i * 45.0) + random.nextDouble() * 30 - 15,
           distance: 20 + random.nextDouble() * 30,
           scale: 0.6 + random.nextDouble() * 0.4,
           rotation: random.nextDouble() * 360,
@@ -468,7 +466,6 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
             );
           },
         ),
-        // The burst animation is always allowed to overflow, not clipped by the shrinking size.
         AnimatedBuilder(
           animation: _burstAnimation,
           builder: (context, child) {

@@ -979,6 +979,7 @@ class Message extends StatelessWidget {
                   );
                 },
               ),
+              // #Pangea
               // AnimatedSize(
               //   duration: FluffyThemes.animationDuration,
               //   curve: FluffyThemes.animationCurve,
@@ -1003,8 +1004,6 @@ class Message extends StatelessWidget {
                         left: (ownMessage ? 0 : Avatar.defaultSize) + 12.0,
                         right: ownMessage ? 0 : 12.0,
                       ),
-                      // #Pangea
-                      // child: MessageReactions(event, timeline, controller),
                       child: PangeaMessageReactions(
                         event,
                         timeline,
