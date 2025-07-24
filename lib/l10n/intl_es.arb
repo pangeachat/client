@@ -1,6 +1,6 @@
 {
   "@@locale": "es",
-  "@@last_modified": "2025-05-23 14:51:23.780564",
+  "@@last_modified": "2021-08-14 12:41:10.097243",
   "about": "Acerca de",
   "@about": {
     "type": "String",
@@ -3383,10 +3383,10 @@
   "@commandHint_logoutall": {},
   "displayNavigationRail": "Mostrar carril de navegación en móvil",
   "@displayNavigationRail": {},
-  "youHaveKnocked": "Has sido golpeado",
-  "@youHaveKnocked": {},
   "approve": "Aprobar",
   "@approve": {},
+  "youHaveKnocked": "Has sido golpeado",
+  "@youHaveKnocked": {},
   "accountInformation": "Información de la cuenta",
   "addGroupDescription": "Agregar una descripción al grupo",
   "alreadyHaveAnAccount": "¿Ya tiene una cuenta?",
@@ -3394,6 +3394,7 @@
   "askSSSSCache": "Ingrese su contraseña de almacenamiento segura (SSSS) o la clave de recuperación para almacenar en caché las claves.",
   "askSSSSVerify": "",
   "authentication": "Autenticación",
+  "avatarHasBeenChanged": "Imagen de perfil modificada",
   "avatarHasBeenChanged": "Imagen de perfil modificada",
   "cachedKeys": "Claves almacenadas en caché",
   "changesHaveBeenSaved": "Los cambios se han guardado",
@@ -3434,15 +3435,6 @@
   "makeSureTheIdentifierIsValid": "Asegúrese de que el identificador es válido",
   "messageWillBeRemovedWarning": "El mensaje será eliminado para todos los participantes",
   "monday": "Lunes",
-  "moreEvents": "{count,plural, =1{1 evento más} other{{count} más eventos}}",
-  "@moreEvents": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "String"
-      }
-    }
-  },
   "noCrossSignBootstrap": "Fluffychat actualmente no soporta la activación de Cross-Signing. Por favor, actívelo dentro de Riot.",
   "noMegolmBootstrap": "Fluffychat actualmente no soporta la activación de Online Key Backup. Por favor, actívelo dentro de Riot.",
   "noPublicRoomsFound": "Sin chats públicos…",
