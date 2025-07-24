@@ -1,4 +1,3 @@
-# #Pangea
 # name: Pull Request Workflow
 
 # on:
@@ -26,12 +25,12 @@
 #       - name: Check license compliance
 #         run: dart run license_checker check-licenses -c licenses.yaml --problematic
 #       - run: flutter analyze
-#       - name: Apply google services patch
-#         run: git apply ./scripts/enable-android-google-services.patch
+#       - name: Add Firebase Messaging
+#         run: ./scripts/add-firebase-messaging.sh
 #       - run: flutter analyze
 #       - run: flutter test
 
-#   build_apk:
+#   build_debug_apk:
 #     runs-on: ubuntu-latest
 #     steps:
 #       - uses: actions/checkout@v4
@@ -43,18 +42,12 @@
 #       - uses: subosito/flutter-action@v2
 #         with:
 #           flutter-version: ${{ env.FLUTTER_VERSION }}
-#           cache: false
+#           cache: true
+#       - uses: moonrepo/setup-rust@v1
 #       - run: flutter pub get
-#       - name: Free Disk Space (Ubuntu)
-#         uses: jlumbroso/free-disk-space@main
-#         with:
-#           # this might remove tools that are actually needed,
-#           # if set to "true" but frees about 6 GB
-#           tool-cache: false
-#           android: false
 #       - run: flutter build apk --debug
 
-#   build_web:
+#   build_debug_web:
 #     runs-on: ubuntu-latest
 #     steps:
 #       - uses: actions/checkout@v4
@@ -62,13 +55,14 @@
 #       - uses: subosito/flutter-action@v2
 #         with:
 #           flutter-version: ${{ env.FLUTTER_VERSION }}
-#           cache: false
+#           cache: true
+#       - uses: moonrepo/setup-rust@v1
+#       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
 #       - run: flutter pub get
 #       - name: Prepare web
 #         run: ./scripts/prepare-web.sh
 #       - run: flutter build web
 
-#   commented out because we do not build Pangea Chat to linux
 #   build_debug_linux:
 #     strategy:
 #       matrix:
@@ -83,11 +77,12 @@
 #         run: |
 #           git clone --branch ${{ env.FLUTTER_VERSION }} https://github.com/flutter/flutter.git
 #           ./flutter/bin/flutter doctor
+#       - uses: moonrepo/setup-rust@v1
 #       - run: ./flutter/bin/flutter pub get
 #       - run: ./flutter/bin/flutter build linux --target-platform linux-${{ matrix.arch }}
 
 #   build_debug_ios:
-#     runs-on: macos-15
+#     runs-on: macos-latest
 #     steps:
 #       - uses: actions/checkout@v4
 #       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
@@ -100,6 +95,8 @@
 #         with:
 #           xcode-version: latest
 #       - run: brew install sqlcipher
+#       - uses: moonrepo/setup-rust@v1
+#       - name: Add Firebase Key
+#         run: echo '${{secrets.GOOGLE_SERVICES_INFO_PLIST}}' | base64 -d > ios/Runner/GoogleService-Info.plist
 #       - run: flutter pub get
-#       - run: flutter build ipa --no-codesign
-# Pangea#
+#       - run: flutter build ios --no-codesign

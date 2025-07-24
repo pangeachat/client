@@ -44,7 +44,7 @@ import '../config/setting_keys.dart';
 import '../widgets/matrix.dart';
 import 'platform_infos.dart';
 
-//import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
+//<GOOGLE_SERVICES>import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
 
 class NoTokenException implements Exception {
   String get cause => 'Cannot get firebase token';
@@ -69,7 +69,7 @@ class BackgroundPush {
 
   final pendingTests = <String, Completer<void>>{};
 
-  // final dynamic firebase = null; //FcmSharedIsolate();
+  //<GOOGLE_SERVICES>final firebase = FcmSharedIsolate();
   // #Pangea
   // uncommented to enable notifications on IOS
   final FcmSharedIsolate? firebase = FcmSharedIsolate();
@@ -93,6 +93,18 @@ class BackgroundPush {
         onDidReceiveNotificationResponse: goToRoom,
       );
       Logs().v('Flutter Local Notifications initialized');
+      //<GOOGLE_SERVICES>firebase.setListeners(
+      //<GOOGLE_SERVICES>  onMessage: (message) => pushHelper(
+      //<GOOGLE_SERVICES>    PushNotification.fromJson(
+      //<GOOGLE_SERVICES>      Map<String, dynamic>.from(message['data'] ?? message),
+      //<GOOGLE_SERVICES>    ),
+      //<GOOGLE_SERVICES>    client: client,
+      //<GOOGLE_SERVICES>    l10n: l10n,
+      //<GOOGLE_SERVICES>    activeRoomId: matrix?.activeRoomId,
+      //<GOOGLE_SERVICES>    flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
+      //<GOOGLE_SERVICES>  ),
+      //<GOOGLE_SERVICES>);
+      // #Pangea
       firebase?.setListeners(
         onMessage: (message) => pushHelper(
           PushNotification.fromJson(
@@ -103,10 +115,9 @@ class BackgroundPush {
           activeRoomId: matrix?.activeRoomId,
           flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
         ),
-        // #Pangea
         onNewToken: _newFcmToken,
-        // Pangea#
       );
+      // Pangea#
       if (Platform.isAndroid) {
         await UnifiedPush.initialize(
           onNewEndpoint: _newUpEndpoint,
@@ -223,25 +234,17 @@ class BackgroundPush {
     Set<String?>? oldTokens,
     bool useDeviceSpecificAppId = false,
   }) async {
-    // #Pangea
-    try {
-      // Pangea#
-      if (PlatformInfos.isIOS) {
-        await firebase?.requestPermission();
-      }
-      if (PlatformInfos.isAndroid) {
-        _flutterLocalNotificationsPlugin
-            .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin>()
-            ?.requestNotificationsPermission();
-      }
+    if (PlatformInfos.isIOS) {
+      //<GOOGLE_SERVICES>await firebase.requestPermission();
       // #Pangea
-    } catch (err, s) {
-      ErrorHandler.logError(
-        e: "Error requesting notifications permission: $err",
-        s: s,
-        data: {},
-      );
+      await firebase?.requestPermission();
+      // Pangea#
+    }
+    if (PlatformInfos.isAndroid) {
+      _flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestNotificationsPermission();
     }
     // Pangea#
     final clientName = PlatformInfos.clientName;
@@ -409,8 +412,8 @@ class BackgroundPush {
     Logs().v('Setup firebase');
     if (_fcmToken?.isEmpty ?? true) {
       try {
+        //<GOOGLE_SERVICES>_fcmToken = await firebase.getToken();
         // #Pangea
-        // _fcmToken = await firebase?.getToken();
         _fcmToken = await _getToken();
         // Pangea#
         if (_fcmToken == null) throw ('PushToken is null');
@@ -497,11 +500,12 @@ class BackgroundPush {
     Logs().i('[Push] UnifiedPush using endpoint $endpoint');
     final oldTokens = <String?>{};
     try {
+      //<GOOGLE_SERVICES>final fcmToken = await firebase.getToken();
+      //<GOOGLE_SERVICES>oldTokens.add(fcmToken);
       // #Pangea
-      // final fcmToken = await firebase?.getToken();
       final fcmToken = await _getToken();
-      // Pangea#
       oldTokens.add(fcmToken);
+      // Pangea#
     } catch (_) {}
     await setupPusher(
       gatewayUrl: endpoint,
