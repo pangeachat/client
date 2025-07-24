@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pages/chat/events/pangea_message_reactions.dart';
 import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -18,7 +19,6 @@ import 'package:swipe_to_action/swipe_to_action.dart';
 
 import '../../../config/app_config.dart';
 import 'message_content.dart';
-import 'message_reactions.dart';
 import 'reply_content.dart';
 import 'state_message.dart';
 
@@ -1005,7 +1005,7 @@ class Message extends StatelessWidget {
                       ),
                       // #Pangea
                       // child: MessageReactions(event, timeline, controller),
-                      child: MessageReactions(
+                      child: PangeaMessageReactions(
                         event,
                         timeline,
                         controller,

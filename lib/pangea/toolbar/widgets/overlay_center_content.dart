@@ -1,6 +1,6 @@
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pages/chat/events/message_reactions.dart';
+import 'package:fluffychat/pages/chat/events/pangea_message_reactions.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/measure_render_box.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
@@ -84,19 +84,13 @@ class OverlayCenterContent extends StatelessWidget {
                   readingAssistanceMode: readingAssistanceMode,
                 ),
               ),
-              // if (hasReactions)
-              //   AnimatedSize(
-              //     duration: FluffyThemes.animationDuration,
-              //     curve: FluffyThemes.animationCurve,
-              //     alignment: Alignment.bottomCenter,
-              // child:
               Padding(
                 padding: EdgeInsets.only(
                   top: 4.0,
                   left: 4.0,
                   right: ownMessage ? 0 : 12.0,
                 ),
-                child: MessageReactions(
+                child: PangeaMessageReactions(
                   event,
                   chatController.timeline!,
                   chatController,

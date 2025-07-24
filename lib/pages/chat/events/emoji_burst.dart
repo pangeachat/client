@@ -34,11 +34,8 @@ class BurstPainter extends CustomPainter {
     for (final particle in particles) {
       final radians = particle.angle * (pi / 180);
       final currentDistance = particle.distance * progress;
-
       final x = center.dx + cos(radians) * currentDistance;
       final y = center.dy + sin(radians) * currentDistance;
-
-      //calculate fade and shrink near end
       final opacity = (1.0 - progress).clamp(0.0, 1.0);
       final animatedScale = particle.scale * (1.0 + (progress * 0.5)) * opacity;
 
@@ -47,7 +44,6 @@ class BurstPainter extends CustomPainter {
       canvas.scale(animatedScale);
       canvas.rotate(particle.rotation * progress * (pi / 180));
 
-      // Draw the emoji
       final textPainter = TextPainter(
         text: TextSpan(
           text: particle.emoji,
