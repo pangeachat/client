@@ -453,7 +453,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    Logs().v('AppLifecycleState = $state');
     final foreground = state != AppLifecycleState.inactive &&
         state != AppLifecycleState.paused;
     for (final client in widget.clients) {
