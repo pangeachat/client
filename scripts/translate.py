@@ -4,20 +4,28 @@ Prerequiresite:
 - Ensure you have python `openai` package installed. If not, run `pip install openai`.
 - Ensure you have an OpenAI API key set in your environment variable `OPENAI_API_KEY`. If not, you can set it by running `export OPENAI_API_KEY=your-api-key` on MacOS/Linux.
 
+3 modes:
+- append mode (default): translate only the missing translation keys
+- upsert mode: translate everything (all keys from English)
+- update mode: specify keys to translate and update their metadata
+
 Usage:
 python scripts/translate.py
 """
 
+import json
+import random
+from collections import OrderedDict
+from datetime import datetime
 from pathlib import Path
 from typing import Any
+
+from openai import OpenAI
 
 l10n_dir = Path(__file__).parent.parent / "lib" / "l10n"
 
 
 def load_needed_translations() -> dict[str, list[str]]:
-    import json
-    from pathlib import Path
-
     path_to_needed_translations = (
         Path(__file__).parent.parent / "needed-translations.txt"
     )
@@ -25,31 +33,26 @@ def load_needed_translations() -> dict[str, list[str]]:
         raise FileNotFoundError(
             f"File not found: {path_to_needed_translations}. Please run `flutter gen-l10n` to generate the file."
         )
-    with open(path_to_needed_translations) as f:
+    with open(path_to_needed_translations, encoding="utf-8") as f:
         needed_translations = json.loads(f.read())
 
     return needed_translations
 
 
 def load_translations(lang_code: str) -> dict[str, str]:
-    import json
-
     path_to_translations = l10n_dir / f"intl_{lang_code}.arb"
     if not path_to_translations.exists():
         raise FileNotFoundError(
             f"File not found: {path_to_translations}. Please run `flutter gen-l10n` to generate the file."
         )
 
-    with open(path_to_translations) as f:
+    with open(path_to_translations, encoding="utf-8") as f:
         translations = json.loads(f.read())
 
     return translations
 
 
 def save_translations(lang_code: str, translations: dict[str, str]) -> None:
-    import json
-    from collections import OrderedDict
-    from datetime import datetime
 
     path_to_translations = l10n_dir / f"intl_{lang_code}.arb"
 
@@ -58,7 +61,7 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
 
     # Load existing data to preserve order if exists.
     if path_to_translations.exists():
-        with open(path_to_translations, "r") as f:
+        with open(path_to_translations, "r", encoding="utf-8") as f:
             try:
                 existing_data = json.load(f, object_pairs_hook=OrderedDict)
             except json.JSONDecodeError:
@@ -73,7 +76,7 @@ def save_translations(lang_code: str, translations: dict[str, str]) -> None:
         else:
             existing_data[key] = value  # new key appended at the end
 
-    with open(path_to_translations, "w") as f:
+    with open(path_to_translations, "w", encoding="utf-8") as f:
         f.write(json.dumps(existing_data, indent=2, ensure_ascii=False))
 
 
@@ -177,10 +180,6 @@ def translate(lang_code: str, lang_display_name: str) -> None:
     """
     Translate the needed translations from English to the target language.
     """
-    import json
-    import random
-
-    from openai import OpenAI
 
     needed_translations = load_needed_translations()
     needed_translations = needed_translations.get(lang_code, [])
@@ -292,7 +291,7 @@ def translate(lang_code: str, lang_display_name: str) -> None:
     reconcile_metadata(lang_code, needed_translations, english_translations_dict)
 
 
-"""Example usage:
+"""
 python scripts/translate.py
 """
 if __name__ == "__main__":
