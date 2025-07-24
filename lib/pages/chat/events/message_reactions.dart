@@ -73,17 +73,6 @@ class _MessageReactionsState extends State<MessageReactions> {
 
     if (mounted) {
       setState(() {});
-
-      // Clear newly added reactions after animation duration to prevent continuous animation
-      // if (_newlyAddedReactions.isNotEmpty) {
-      //   Future.delayed(const Duration(milliseconds: 600), () {
-      //     if (mounted) {
-      //       setState(() {
-      //         _newlyAddedReactions.clear();
-      //       });
-      //     }
-      //   });
-      // }
     }
   }
 
@@ -136,6 +125,7 @@ class _MessageReactionsState extends State<MessageReactions> {
       alignment: ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
       clipBehavior: Clip.none,
       child: Wrap(
+        crossAxisAlignment: WrapCrossAlignment.center,
         spacing: 4.0,
         runSpacing: 4.0,
         alignment: ownMessage ? WrapAlignment.end : WrapAlignment.start,
@@ -222,6 +212,7 @@ class _Reaction extends StatefulWidget {
 }
 
 class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
+  bool _hasAnimatedFirstReact = false;
   late AnimationController _bounceOutController;
   late Animation<double> _bounceOutAnimation;
   late AnimationController _burstController;
@@ -232,6 +223,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
   late Animation<double> _growOffset;
 
   final List<BurstParticle> _burstParticles = [];
+  bool _isBusy = false;
 
   @override
   void initState() {
@@ -270,7 +262,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
     );
     _growScale = TweenSequence([
       TweenSequenceItem(
-        tween: Tween<double>(begin: 0.7, end: 1.18)
+        tween: Tween<double>(begin: 0.6, end: 1.18)
             .chain(CurveTween(curve: Curves.easeOutBack)),
         weight: 60,
       ),
@@ -296,6 +288,7 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
 
     if (widget.firstReact) {
       _growController.forward();
+      _hasAnimatedFirstReact = true;
     }
   }
 
@@ -441,9 +434,20 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
                   offset: Offset(0, offsetY),
                   child: Transform.scale(
                     scale: scale,
+                    alignment: Alignment.center,
                     child: scale > 0.01
                         ? InkWell(
-                            onTap: _animateAndReact,
+                            onTap: () async {
+                              if (_isBusy || isBouncing || isGrowing) {
+                                return;
+                              }
+                              _isBusy = true;
+                              try {
+                                await _animateAndReact();
+                              } finally {
+                                if (mounted) setState(() => _isBusy = false);
+                              }
+                            },
                             onLongPress: () => widget.onLongPress != null
                                 ? widget.onLongPress!()
                                 : null,
