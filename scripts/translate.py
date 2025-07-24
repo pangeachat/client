@@ -1,18 +1,35 @@
 """
 Prerequiresite:
-- Ensure you have an up-to-date `needed-translations.txt` file should you wish to translate only the missing translation keys. To generate an updated `needed-translations.txt` file, run `flutter gen-l10n`
-- Ensure you have python `openai` package installed. If not, run `pip install openai`.
-- Ensure you have an OpenAI API key set in your environment variable `OPENAI_API_KEY`. If not, you can set it by running `export OPENAI_API_KEY=your-api-key` on MacOS/Linux.
+- Ensure you have an up-to-date `needed-translations.txt` file should you wish to translate only the missing translation keys. To generate an updated `needed-translations.txt` file, run:
+```
+flutter gen-l10n
+```
+
+- Ensure you have python `openai` package installed. If not, run:
+```
+pip install openai
+```
+
+- Ensure you have an OpenAI API key set in your environment variable `OPENAI_API_KEY`. If not, you can set it by running:
+```
+export OPENAI_API_KEY=your-api-key
+```
+
+- Ensure vi language translations are up-to-date. This script uses en->vi translations as an example on how to translate so it is necessary. If not, you can run:
+```
+python scripts/translate.py --lang vi --lang-display-name "Vietnamese" --mode append
+```
 
 3 modes:
 - append mode (default): translate only the missing translation keys
-- upsert mode: translate everything (all keys from English)
-- update mode: specify keys to translate and update their metadata
+- upsert mode (not implemented): translate everything (all keys from English)
+- update mode (not implemented): specify keys to translate and update their metadata
 
 Usage:
 python scripts/translate.py
 """
 
+import argparse
 import json
 import random
 from collections import OrderedDict
@@ -23,6 +40,20 @@ from typing import Any
 from openai import OpenAI
 
 l10n_dir = Path(__file__).parent.parent / "lib" / "l10n"
+
+
+def load_all_keys() -> list[str]:
+    """
+    Load all translation keys from intl_en.arb file.
+    """
+    path_to_en_translations = l10n_dir / "intl_en.arb"
+    if not path_to_en_translations.exists():
+        raise FileNotFoundError(
+            f"File not found: {path_to_en_translations}. Please run `flutter gen-l10n` to generate the file."
+        )
+    with open(path_to_en_translations, encoding="utf-8") as f:
+        translations = json.loads(f.read())
+    return [key for key in translations.keys() if not key.startswith("@")]
 
 
 def load_needed_translations() -> dict[str, list[str]]:
@@ -36,18 +67,22 @@ def load_needed_translations() -> dict[str, list[str]]:
     with open(path_to_needed_translations, encoding="utf-8") as f:
         needed_translations = json.loads(f.read())
 
+    supported_langs = load_supported_languages()
+    all_keys = load_all_keys()
+    for lang_code, _ in supported_langs:
+        if lang_code not in needed_translations:
+            needed_translations[lang_code] = all_keys
+
     return needed_translations
 
 
 def load_translations(lang_code: str) -> dict[str, str]:
     path_to_translations = l10n_dir / f"intl_{lang_code}.arb"
     if not path_to_translations.exists():
-        raise FileNotFoundError(
-            f"File not found: {path_to_translations}. Please run `flutter gen-l10n` to generate the file."
-        )
-
-    with open(path_to_translations, encoding="utf-8") as f:
-        translations = json.loads(f.read())
+        translations = {}
+    else:
+        with open(path_to_translations, encoding="utf-8") as f:
+            translations = json.loads(f.read())
 
     return translations
 
@@ -176,7 +211,7 @@ def reconcile_metadata(
     save_translations(lang_code, translations)
 
 
-def translate(lang_code: str, lang_display_name: str) -> None:
+def append_translate(lang_code: str, lang_display_name: str) -> None:
     """
     Translate the needed translations from English to the target language.
     """
@@ -273,7 +308,7 @@ def translate(lang_code: str, lang_display_name: str) -> None:
                     "content": prompt,
                 },
             ],
-            model="gpt-4o-mini",
+            model="gpt-4.1-nano",
             temperature=0.0,
         )
         response = chat_completion.choices[0].message.content
@@ -291,15 +326,91 @@ def translate(lang_code: str, lang_display_name: str) -> None:
     reconcile_metadata(lang_code, needed_translations, english_translations_dict)
 
 
+def load_supported_languages() -> list[tuple[str, str]]:
+    """
+    Load the supported languages from the languages.json file.
+    """
+    with open("scripts/languages.json", "r", encoding="utf-8") as f:
+        raw_languages = json.load(f)
+    languages: list[tuple[str, str]] = []
+    for lang in raw_languages:
+        assert isinstance(lang, dict), "Each language entry must be a dictionary."
+        language_code = lang.get("language_code", None)
+        language_name = lang.get("language_name", None)
+        assert (
+            language_code and language_name
+        ), f"Each language must have a 'language_code' and 'language_name'. Found: {lang}"
+        languages.append((language_code, language_name))
+    return languages
+
+
 """
-python scripts/translate.py
+python scripts/translate.py --lang vi --lang-display-name "Vietnamese" --mode append
+
+python scripts/translate.py --translate-all --mode append
 """
 if __name__ == "__main__":
-    lang_code = input("Enter the language code (e.g. vi, en): ").strip()
-    lang_display_name = input(
-        "Enter the language display name (e.g. Vietnamese, English): "
+    parser = argparse.ArgumentParser(description="Translate app strings.")
+
+    parser.add_argument(
+        "--lang",
+        type=str,
+        help="Language code to translate to (e.g. 'vi' for Vietnamese, 'en' for English).",
     )
-    translate(
-        lang_code=lang_code,
-        lang_display_name=lang_display_name,
+
+    parser.add_argument(
+        "--lang-display-name",
+        type=str,
+        help="Display name of the language (e.g. 'Vietnamese', 'English').",
     )
+
+    parser.add_argument(
+        "--mode",
+        type=str,
+        choices=["append", "upsert", "update"],
+        default="append",
+        help="Mode of translation: 'append' to translate only missing keys, 'upsert' to translate all keys, 'update' to specify keys to translate and update their metadata.",
+    )
+
+    parser.add_argument(
+        "--translate-all",
+        action="store_true",
+        help="Translate all keys (overrides the mode).",
+    )
+
+    args = parser.parse_args()
+
+    translate_all = args.translate_all
+
+    lang_code = args.lang
+
+    lang_display_name = args.lang_display_name
+
+    mode = args.mode
+
+    if not translate_all:
+        assert (
+            args.lang
+        ), "Language code is required if translate all is not set. Use --lang to specify the language code."
+        assert (
+            args.lang_display_name
+        ), "Language display name is required if translate all is not set. Use --lang-display-name to specify the language display name."
+
+    if mode == "append":
+        if not translate_all:
+            append_translate(
+                lang_code=lang_code,
+                lang_display_name=lang_display_name,
+            )
+        else:
+            languages = load_supported_languages()
+            for i, (lang_code, lang_display_name) in enumerate(languages):
+                print(f"Translating {i + 1}/{len(languages)}: {lang_display_name}")
+                append_translate(
+                    lang_code=lang_code,
+                    lang_display_name=lang_display_name,
+                )
+    else:
+        raise NotImplementedError(
+            f"Mode '{mode}' is not implemented yet. Please use 'append' mode for now."
+        )
