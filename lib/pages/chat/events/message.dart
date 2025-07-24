@@ -568,7 +568,10 @@ class Message extends StatelessWidget {
                                                         .link,
                                                     // child: BubbleBackground(
                                                     //   colors: colors,
-                                                    //   ignore: noBubble || !ownMessage,
+                                                    //   ignore: noBubble ||
+                                                    //     !ownMessage ||
+                                                    //     MediaQuery.of(context)
+                                                    //         .highContrast,
                                                     //   scrollController: scrollController,
                                                     // Pangea#
                                                     child: Container(
