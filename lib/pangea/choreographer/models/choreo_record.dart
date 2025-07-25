@@ -36,13 +36,20 @@ class ChoreoRecord {
           .map((e) {
             final ChoreoRecordStep step = ChoreoRecordStep.fromJson(e);
 
+            // If an updated step is encountered,
+            // do not check for text in future iterations
             if (previousText != null) {
-              // Do not check initial step
-              if (previousText!.isEmpty) {
+              if (step.text == null) {
+                previousText = null;
+              }
+              // Do not convert initial step text to edits
+              // Also affects steps preceded by empty strings,
+              // which does not negatively affect memory efficiency
+              else if (previousText!.isEmpty) {
                 previousText = step.text!;
               }
               // All steps except the initial step should have 'edits' parameter
-              else if (step.text != null) {
+              else {
                 final String currentText = step.text!;
                 step.edits = ChoreoEdit.fromText(
                   originalText: previousText!,
@@ -50,10 +57,6 @@ class ChoreoRecord {
                 );
                 step.text = null;
                 previousText = currentText;
-              }
-              // If an updated step is encountered, do not check in future iterations
-              else {
-                previousText = null;
               }
             }
             return step;
@@ -89,19 +92,31 @@ class ChoreoRecord {
     }
     // Initial step saves text and not edits
     final bool initialStep = choreoSteps.isEmpty;
+
     choreoSteps.add(
       ChoreoRecordStep(
         text: initialStep ? text : null,
         edits: initialStep
             ? null
             : ChoreoEdit.fromText(
-                originalText: choreoSteps.last.text!,
+                originalText: lastText,
                 editedText: text,
               ),
         acceptedOrIgnoredMatch: match,
         itStep: step,
       ),
     );
+  }
+
+  /// Get the text of the latest entry in choreoSteps
+  String get lastText {
+    String previousText = "";
+    for (final step in choreoSteps) {
+      final String currentText =
+          step.text ?? step.edits!.editedText(previousText);
+      previousText = currentText;
+    }
+    return previousText;
   }
 
   bool get hasAcceptedMatches => choreoSteps.any(
@@ -164,10 +179,11 @@ class ChoreoRecord {
 /// the user chooses "hola" and a step is saved
 /// adds "amigo" and a step saved
 class ChoreoRecordStep {
-  /// text after changes have been made
+  /// Text of current step
+  /// The entire text of initial step is saved
   String? text;
 
-  /// Edits that, when applied to previous step's text,
+  /// Edits that, when applied to the previous step's text,
   /// will provide the current step's text
   ChoreoEdit? edits;
 
@@ -199,7 +215,8 @@ class ChoreoRecordStep {
   factory ChoreoRecordStep.fromJson(Map<String, dynamic> json) {
     return ChoreoRecordStep(
       text: json[_textKey],
-      edits: json[_editKey],
+      edits:
+          json[_editKey] != null ? ChoreoEdit.fromJson(json[_editKey]) : null,
       acceptedOrIgnoredMatch: json[_acceptedOrIgnoredMatchKey] != null
           ? PangeaMatch.fromJson(json[_acceptedOrIgnoredMatchKey])
           : null,
@@ -215,7 +232,7 @@ class ChoreoRecordStep {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data[_textKey] = text;
-    data[_editKey] = edits;
+    data[_editKey] = edits?.toJson();
     data[_acceptedOrIgnoredMatchKey] = acceptedOrIgnoredMatch?.toJson();
     data[_stepKey] = itStep?.toJson();
     return data;

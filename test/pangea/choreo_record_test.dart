@@ -1,27 +1,118 @@
-import 'package:flutter/foundation.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/pangea/choreographer/models/choreo_edit.dart';
+import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 
 void main() async {
   group("Optimized choreo record tests", () {
-    test("Test that data saved in via choreo_edit can be accurately retrieved",
-        () {
-      const String originalText = "Aqui esta un menaje";
-      const String editedText = "Aqui esta un mensaje";
+    test("Test that choreo_edit parameters are accurately calculated", () {
+      const String originalText = "Parameter";
+      const String editedText = "Perrimeter";
 
       final ChoreoEdit edits = ChoreoEdit.fromText(
-          originalText: originalText, editedText: editedText);
-      debugPrint('Edits length: ${edits.length}');
+        originalText: originalText,
+        editedText: editedText,
+      );
 
-      final retrievedText = edits.editedText(originalText);
-      debugPrint('Retrieved text: $retrievedText');
-      expect(
-        retrievedText,
-        equals(editedText),
-        reason:
-            'Applying edits to the original text should produce the entire edited message',
+      assert(
+        edits.offset == 1 && edits.length == 3 && edits.insert == "erri",
+      );
+    });
+
+    test("Test that data saved via ChoreoEdit can be accurately retrieved", () {
+      const String originalText = "Parameter";
+      const String editedText = "Perrimeter";
+
+      final ChoreoEdit edits = ChoreoEdit.fromText(
+        originalText: originalText,
+        editedText: editedText,
+      );
+
+      final String retrieved = edits.editedText(originalText);
+
+      assert(
+        retrieved == editedText,
+      );
+    });
+
+    test("Test that addRecord and lastText work correctly", () {
+      final List<String> steps = [];
+
+      steps.add("Yes");
+      steps.add("");
+      steps.add("Si");
+
+      final record = ChoreoRecord.newRecord;
+      for (final step in steps) {
+        record.addRecord(step);
+      }
+
+      assert(
+        record.choreoSteps[0].text != null &&
+            record.choreoSteps[1].edits != null &&
+            record.choreoSteps[2].edits != null &&
+            record.lastText == "Si",
+      );
+    });
+
+    test("Test that fromJSON receives updated version correctly", () {
+      final List<String> steps = [];
+
+      steps.add("Yes");
+      steps.add("");
+      steps.add("Si");
+
+      final record = ChoreoRecord.newRecord;
+      for (final step in steps) {
+        record.addRecord(step);
+      }
+
+      final json = record.toJson();
+      final received = ChoreoRecord.fromJson(json);
+
+      assert(
+        received.choreoSteps[0].text != null &&
+            received.choreoSteps[1].edits != null &&
+            received.choreoSteps[2].edits != null &&
+            received.lastText == "Si",
+      );
+    });
+
+    test("Test that fromJSON converts old version correctly", () {
+      final List<String> steps = [];
+
+      steps.add("One");
+      steps.add("");
+      steps.add("Dos");
+      steps.add("Tres");
+      steps.add("");
+      steps.add("Cinco");
+      steps.add("Cincai");
+
+      final record = ChoreoRecord.newRecord;
+
+      for (final step in steps) {
+        record.choreoSteps.add(
+          ChoreoRecordStep(
+            text: step,
+          ),
+        );
+      }
+
+      final json = record.toJson();
+      final received = ChoreoRecord.fromJson(json);
+
+      // Initial step and steps following empty strings
+      // will have text instead of edits
+      assert(
+        received.choreoSteps[0].text == "One" &&
+            received.choreoSteps[1].edits != null &&
+            received.choreoSteps[2].text == "Dos" &&
+            received.choreoSteps[3].edits != null &&
+            received.choreoSteps[4].edits != null &&
+            received.choreoSteps[5].text == "Cinco" &&
+            received.choreoSteps[6].edits != null &&
+            received.lastText == "Cincai",
       );
     });
   });

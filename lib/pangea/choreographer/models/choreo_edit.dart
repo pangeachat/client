@@ -8,9 +8,9 @@ class ChoreoEdit {
 
   /// Normal constructor created from preexisting ChoreoEdit values
   ChoreoEdit({
-    required int offset,
-    required int length,
-    required String insert,
+    required this.offset,
+    required this.length,
+    required this.insert,
   });
 
   /// Constructor that determines and saves
@@ -20,16 +20,42 @@ class ChoreoEdit {
     required String editedText,
   }) {
     if (originalText != editedText) {
-      offset = _firstDifference(originalText, editedText);
-      length = _lastDifference(originalText, editedText) + 1 - offset;
+      if (editedText.isEmpty) {
+        length = originalText.length;
+      } else if (originalText.isNotEmpty) {
+        offset = _firstDifference(originalText, editedText);
+        length = _lastDifference(originalText, editedText) + 1 - offset;
+      }
       insert = _insertion(originalText, editedText);
     }
+  }
+
+  factory ChoreoEdit.fromJson(Map<String, dynamic> json) {
+    return ChoreoEdit(
+      offset: json[_offsetKey],
+      length: json[_lengthKey],
+      insert: json[_insertKey],
+    );
+  }
+
+  static const _offsetKey = "offst_v2";
+  static const _lengthKey = "lngth_v2";
+  static const _insertKey = "insrt_v2";
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data[_offsetKey] = offset;
+    data[_lengthKey] = length;
+    data[_insertKey] = insert;
+    return data;
   }
 
   /// Find index of first character where strings differ
   int _firstDifference(String originalText, String editedText) {
     var i = 0;
-    while (originalText[i] == editedText[i]) i++;
+    while (originalText[i] == editedText[i]) {
+      i++;
+    }
     return i;
   }
 
@@ -38,7 +64,9 @@ class ChoreoEdit {
   int _lastDifference(String originalText, String editedText) {
     var i = originalText.length - 1;
     final lengthDifference = editedText.length - originalText.length;
-    while (originalText[i] == editedText[i + lengthDifference]) i--;
+    while (originalText[i] == editedText[i + lengthDifference]) {
+      i--;
+    }
     return i;
   }
 
