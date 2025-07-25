@@ -13,7 +13,6 @@ list(APPEND FLUTTER_PLUGIN_LIST
   flutter_tts
   flutter_webrtc
   geolocator_windows
-  pasteboard
   permission_handler_windows
   record_windows
   rive_common

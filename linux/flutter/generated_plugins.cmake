@@ -12,7 +12,6 @@ list(APPEND FLUTTER_PLUGIN_LIST
   gtk
   handy_window
   open_file_linux
-  pasteboard
   record_linux
   sentry_flutter
   sqlcipher_flutter_libs
