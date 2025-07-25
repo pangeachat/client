@@ -52,175 +52,177 @@ class ChatEventList extends StatelessWidget {
     final hasWallpaper =
         controller.room.client.applicationAccountConfig.wallpaperUrl != null;
 
-    return SelectionArea(
-      child: ListView.custom(
-        padding: EdgeInsets.only(
-          top: 16,
-          bottom: 8,
-          left: horizontalPadding,
-          right: horizontalPadding,
-        ),
-        reverse: true,
-        controller: controller.scrollController,
-        keyboardDismissBehavior: PlatformInfos.isIOS
-            ? ScrollViewKeyboardDismissBehavior.onDrag
-            : ScrollViewKeyboardDismissBehavior.manual,
-        childrenDelegate: SliverChildBuilderDelegate(
-          (BuildContext context, int i) {
-            // Footer to display typing indicator and read receipts:
-            if (i == 0) {
-              if (timeline.isRequestingFuture) {
-                return const Center(
-                  child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-                );
-              }
-              if (timeline.canRequestFuture) {
-                return Center(
-                  child: IconButton(
-                    onPressed: controller.requestFuture,
-                    icon: const Icon(Icons.refresh_outlined),
-                  ),
-                );
-              }
-              return Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SeenByRow(controller),
-                  TypingIndicators(controller),
-                ],
+    return
+        // #Pangea
+        // SelectionArea(
+        //   child:
+        // Pangea#
+        ListView.custom(
+      padding: EdgeInsets.only(
+        top: 16,
+        bottom: 8,
+        left: horizontalPadding,
+        right: horizontalPadding,
+      ),
+      reverse: true,
+      controller: controller.scrollController,
+      keyboardDismissBehavior: PlatformInfos.isIOS
+          ? ScrollViewKeyboardDismissBehavior.onDrag
+          : ScrollViewKeyboardDismissBehavior.manual,
+      childrenDelegate: SliverChildBuilderDelegate(
+        (BuildContext context, int i) {
+          // Footer to display typing indicator and read receipts:
+          if (i == 0) {
+            if (timeline.isRequestingFuture) {
+              return const Center(
+                child: CircularProgressIndicator.adaptive(strokeWidth: 2),
               );
             }
+            if (timeline.canRequestFuture) {
+              return Center(
+                child: IconButton(
+                  onPressed: controller.requestFuture,
+                  icon: const Icon(Icons.refresh_outlined),
+                ),
+              );
+            }
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SeenByRow(controller),
+                TypingIndicators(controller),
+              ],
+            );
+          }
 
-            // Request history button or progress indicator:
-            if (i == events.length + 1) {
-              if (timeline.isRequestingHistory) {
-                // #Pangea
-                // return const Center(
-                //   child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-                // );
-                return const Column(
-                  children: [
-                    SizedBox(height: AppConfig.toolbarMaxHeight),
-                    Center(
-                      child: CircularProgressIndicator.adaptive(strokeWidth: 2),
-                    ),
-                  ],
-                );
-                // Pangea#
-              }
-              if (timeline.canRequestHistory) {
-                return Builder(
-                  builder: (context) {
-                    // #Pangea
-                    WidgetsBinding.instance
-                        .addPostFrameCallback((_) => controller.requestHistory);
-                    return Column(
-                      children: [
-                        const SizedBox(height: AppConfig.toolbarMaxHeight),
-                        Center(
-                          child: IconButton(
-                            onPressed: controller.requestHistory,
-                            icon: const Icon(Icons.refresh_outlined),
-                          ),
-                        ),
-                      ],
-                    );
-                    // WidgetsBinding.instance
-                    //     .addPostFrameCallback(controller.requestHistory);
-                    // return Center(
-                    //   child: IconButton(
-                    //     onPressed: controller.requestHistory,
-                    //     icon: const Icon(Icons.refresh_outlined),
-                    //   ),
-                    // );
-                    // Pangea#
-                  },
-                );
-              }
+          // Request history button or progress indicator:
+          if (i == events.length + 1) {
+            if (timeline.isRequestingHistory) {
               // #Pangea
-              // return const SizedBox.shrink();
-              return const SizedBox(height: AppConfig.toolbarMaxHeight);
+              // return const Center(
+              //   child: CircularProgressIndicator.adaptive(strokeWidth: 2),
+              // );
+              return const Column(
+                children: [
+                  SizedBox(height: AppConfig.toolbarMaxHeight),
+                  Center(
+                    child: CircularProgressIndicator.adaptive(strokeWidth: 2),
+                  ),
+                ],
+              );
               // Pangea#
             }
-            i--;
-
-            // The message at this index:
-            final event = events[i];
-            final animateIn = animateInEventIndex != null &&
-                timeline.events.length > animateInEventIndex &&
-                event == timeline.events[animateInEventIndex];
-
-            return AutoScrollTag(
-              key: ValueKey(event.eventId),
-              index: i,
-              controller: controller.scrollController,
-              child:
+            if (timeline.canRequestHistory) {
+              return Builder(
+                builder: (context) {
                   // #Pangea
-                  event.isActivityMessage
-                      ? ActivityPlanMessage(
-                          event,
-                          controller: controller,
-                          timeline: timeline,
-                          animateIn: animateIn,
-                          resetAnimateIn: () {
-                            controller.animateInEventIndex = null;
-                          },
-                          highlightMarker:
-                              controller.scrollToEventIdMarker == event.eventId,
-                          selected: controller.selectedEvents
-                              .any((e) => e.eventId == event.eventId),
-                        )
-                      :
-                      // Pangea#
-                      Message(
-                          event,
-                          animateIn: animateIn,
-                          resetAnimateIn: () {
-                            controller.animateInEventIndex = null;
-                          },
-                          onSwipe: () => controller.replyAction(replyTo: event),
-                          // #Pangea
-                          onInfoTab: (_) => {},
-                          // onInfoTab: controller.showEventInfo,
-                          // Pangea#
-                          onMention: () => controller.sendController.text +=
-                              '${event.senderFromMemoryOrFallback.mention} ',
-                          highlightMarker:
-                              controller.scrollToEventIdMarker == event.eventId,
-                          // #Pangea
-                          // onSelect: controller.onSelectMessage,
-                          onSelect: (_) {},
-                          // Pangea#
-                          scrollToEventId: (String eventId) =>
-                              controller.scrollToEventId(eventId),
-                          longPressSelect: controller.selectedEvents.isNotEmpty,
-                          // #Pangea
-                          immersionMode: controller.choreographer.immersionMode,
-                          controller: controller,
-                          isButton: event.eventId == controller.buttonEventID,
-                          // Pangea#
-                          selected: controller.selectedEvents
-                              .any((e) => e.eventId == event.eventId),
-                          singleSelected:
-                              controller.selectedEvents.singleOrNull?.eventId ==
-                                  event.eventId,
-                          onEdit: () => controller.editSelectedEventAction(),
-                          timeline: timeline,
-                          displayReadMarker: i > 0 &&
-                              controller.readMarkerEventId == event.eventId,
-                          nextEvent:
-                              i + 1 < events.length ? events[i + 1] : null,
-                          previousEvent: i > 0 ? events[i - 1] : null,
-                          wallpaperMode: hasWallpaper,
-                          scrollController: controller.scrollController,
-                          colors: colors,
+                  WidgetsBinding.instance
+                      .addPostFrameCallback((_) => controller.requestHistory);
+                  return Column(
+                    children: [
+                      const SizedBox(height: AppConfig.toolbarMaxHeight),
+                      Center(
+                        child: IconButton(
+                          onPressed: controller.requestHistory,
+                          icon: const Icon(Icons.refresh_outlined),
                         ),
-            );
-          },
-          childCount: events.length + 2,
-          findChildIndexCallback: (key) =>
-              controller.findChildIndexCallback(key, thisEventsKeyMap),
-        ),
+                      ),
+                    ],
+                  );
+                  // WidgetsBinding.instance
+                  //     .addPostFrameCallback(controller.requestHistory);
+                  // return Center(
+                  //   child: IconButton(
+                  //     onPressed: controller.requestHistory,
+                  //     icon: const Icon(Icons.refresh_outlined),
+                  //   ),
+                  // );
+                  // Pangea#
+                },
+              );
+            }
+            // #Pangea
+            // return const SizedBox.shrink();
+            return const SizedBox(height: AppConfig.toolbarMaxHeight);
+            // Pangea#
+          }
+          i--;
+
+          // The message at this index:
+          final event = events[i];
+          final animateIn = animateInEventIndex != null &&
+              timeline.events.length > animateInEventIndex &&
+              event == timeline.events[animateInEventIndex];
+
+          return AutoScrollTag(
+            key: ValueKey(event.eventId),
+            index: i,
+            controller: controller.scrollController,
+            child:
+                // #Pangea
+                event.isActivityMessage
+                    ? ActivityPlanMessage(
+                        event,
+                        controller: controller,
+                        timeline: timeline,
+                        animateIn: animateIn,
+                        resetAnimateIn: () {
+                          controller.animateInEventIndex = null;
+                        },
+                        highlightMarker:
+                            controller.scrollToEventIdMarker == event.eventId,
+                        selected: controller.selectedEvents
+                            .any((e) => e.eventId == event.eventId),
+                      )
+                    :
+                    // Pangea#
+                    Message(
+                        event,
+                        animateIn: animateIn,
+                        resetAnimateIn: () {
+                          controller.animateInEventIndex = null;
+                        },
+                        onSwipe: () => controller.replyAction(replyTo: event),
+                        // #Pangea
+                        onInfoTab: (_) => {},
+                        // onInfoTab: controller.showEventInfo,
+                        // Pangea#
+                        onMention: () => controller.sendController.text +=
+                            '${event.senderFromMemoryOrFallback.mention} ',
+                        highlightMarker:
+                            controller.scrollToEventIdMarker == event.eventId,
+                        // #Pangea
+                        // onSelect: controller.onSelectMessage,
+                        onSelect: (_) {},
+                        // Pangea#
+                        scrollToEventId: (String eventId) =>
+                            controller.scrollToEventId(eventId),
+                        longPressSelect: controller.selectedEvents.isNotEmpty,
+                        // #Pangea
+                        immersionMode: controller.choreographer.immersionMode,
+                        controller: controller,
+                        isButton: event.eventId == controller.buttonEventID,
+                        // Pangea#
+                        selected: controller.selectedEvents
+                            .any((e) => e.eventId == event.eventId),
+                        singleSelected:
+                            controller.selectedEvents.singleOrNull?.eventId ==
+                                event.eventId,
+                        onEdit: () => controller.editSelectedEventAction(),
+                        timeline: timeline,
+                        displayReadMarker: i > 0 &&
+                            controller.readMarkerEventId == event.eventId,
+                        nextEvent: i + 1 < events.length ? events[i + 1] : null,
+                        previousEvent: i > 0 ? events[i - 1] : null,
+                        wallpaperMode: hasWallpaper,
+                        scrollController: controller.scrollController,
+                        colors: colors,
+                      ),
+          );
+        },
+        childCount: events.length + 2,
+        findChildIndexCallback: (key) =>
+            controller.findChildIndexCallback(key, thisEventsKeyMap),
       ),
     );
   }
