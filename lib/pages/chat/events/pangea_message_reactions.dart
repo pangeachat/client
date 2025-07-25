@@ -1,11 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart' show IterableExtension;
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -15,6 +11,8 @@ import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class PangeaMessageReactions extends StatefulWidget {
   final Event event;
@@ -127,7 +125,6 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
       clipBehavior: Clip.none,
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
-        spacing: 4.0,
         runSpacing: 4.0,
         alignment: ownMessage ? WrapAlignment.end : WrapAlignment.start,
         children: [
@@ -427,38 +424,41 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
                     scale: scale,
                     alignment: Alignment.center,
                     child: scale > 0.01
-                        ? InkWell(
-                            onTap: () async {
-                              if (_isBusy || isBouncing || isGrowing) {
-                                return;
-                              }
-                              _isBusy = true;
-                              try {
-                                await _animateAndReact();
-                              } finally {
-                                if (mounted) setState(() => _isBusy = false);
-                              }
-                            },
-                            onLongPress: () => widget.onLongPress != null
-                                ? widget.onLongPress!()
-                                : null,
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius / 2,
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: color,
-                                borderRadius: BorderRadius.circular(
-                                  AppConfig.borderRadius / 2,
-                                ),
+                        ? Padding(
+                            padding: const EdgeInsets.only(left: 2, right: 2),
+                            child: InkWell(
+                              onTap: () async {
+                                if (_isBusy || isBouncing || isGrowing) {
+                                  return;
+                                }
+                                _isBusy = true;
+                                try {
+                                  await _animateAndReact();
+                                } finally {
+                                  if (mounted) setState(() => _isBusy = false);
+                                }
+                              },
+                              onLongPress: () => widget.onLongPress != null
+                                  ? widget.onLongPress!()
+                                  : null,
+                              borderRadius: BorderRadius.circular(
+                                AppConfig.borderRadius / 2,
                               ),
-                              padding: PlatformInfos.isIOS
-                                  ? const EdgeInsets.fromLTRB(5.5, 1, 3, 2.5)
-                                  : const EdgeInsets.symmetric(
-                                      horizontal: 4,
-                                      vertical: 2,
-                                    ),
-                              child: content,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: color,
+                                  borderRadius: BorderRadius.circular(
+                                    AppConfig.borderRadius / 2,
+                                  ),
+                                ),
+                                padding: PlatformInfos.isIOS
+                                    ? const EdgeInsets.fromLTRB(5.5, 1, 3, 2.5)
+                                    : const EdgeInsets.symmetric(
+                                        horizontal: 4,
+                                        vertical: 2,
+                                      ),
+                                child: content,
+                              ),
                             ),
                           )
                         : const SizedBox.shrink(),
