@@ -210,6 +210,11 @@ class ChoreoRecordStep {
         "Every step must have either text or edits",
       );
     }
+    if (text != null && edits != null) {
+      throw Exception(
+        "Each step should only have text or edit",
+      );
+    }
   }
 
   factory ChoreoRecordStep.fromJson(Map<String, dynamic> json) {

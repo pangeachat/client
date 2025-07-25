@@ -20,8 +20,8 @@ void main() async {
     });
 
     test("Test that data saved via ChoreoEdit can be accurately retrieved", () {
-      const String originalText = "Parameter";
-      const String editedText = "Perrimeter";
+      const String originalText = "step";
+      const String editedText = "steps";
 
       final ChoreoEdit edits = ChoreoEdit.fromText(
         originalText: originalText,

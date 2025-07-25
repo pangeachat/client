@@ -1,3 +1,5 @@
+import 'dart:math';
+
 /// Changes made to previous choreo step's text
 /// Remove substring of length 'length', starting at position 'offset'
 /// Then add String 'insert' at that position
@@ -53,7 +55,8 @@ class ChoreoEdit {
   /// Find index of first character where strings differ
   int _firstDifference(String originalText, String editedText) {
     var i = 0;
-    while (originalText[i] == editedText[i]) {
+    final minLength = min(originalText.length, editedText.length);
+    while (i < minLength && originalText[i] == editedText[i]) {
       i++;
     }
     return i;
@@ -63,9 +66,10 @@ class ChoreoEdit {
   /// traverse backward until a non-matching char is found
   int _lastDifference(String originalText, String editedText) {
     var i = originalText.length - 1;
-    final lengthDifference = editedText.length - originalText.length;
-    while (originalText[i] == editedText[i + lengthDifference]) {
+    var j = editedText.length - 1;
+    while (min(i, j) > offset && originalText[i] == editedText[j]) {
       i--;
+      j--;
     }
     return i;
   }
