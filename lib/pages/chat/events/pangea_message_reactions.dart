@@ -1,7 +1,11 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart' show IterableExtension;
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -11,8 +15,6 @@ import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 class PangeaMessageReactions extends StatefulWidget {
   final Event event;
@@ -519,23 +521,26 @@ class _AdaptableReactorsDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final body = SingleChildScrollView(
-      child: Wrap(
-        spacing: 8.0,
-        runSpacing: 4.0,
-        alignment: WrapAlignment.center,
-        children: <Widget>[
-          for (final reactor in reactionEntry!.reactors!)
-            Chip(
-              avatar: Avatar(
-                mxContent: reactor.avatarUrl,
-                name: reactor.displayName,
-                client: client,
-                presenceUserId: reactor.stateKey,
+    final body = Material(
+      type: MaterialType.transparency,
+      child: SingleChildScrollView(
+        child: Wrap(
+          spacing: 8.0,
+          runSpacing: 4.0,
+          alignment: WrapAlignment.center,
+          children: <Widget>[
+            for (final reactor in reactionEntry!.reactors!)
+              Chip(
+                avatar: Avatar(
+                  mxContent: reactor.avatarUrl,
+                  name: reactor.displayName,
+                  client: client,
+                  presenceUserId: reactor.stateKey,
+                ),
+                label: Text(reactor.displayName!),
               ),
-              label: Text(reactor.displayName!),
-            ),
-        ],
+          ],
+        ),
       ),
     );
 
