@@ -122,33 +122,47 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                         ),
                         clipBehavior: Clip.hardEdge,
                         alignment: Alignment.center,
-                        child: widget.controller.imageURL != null ||
-                                widget.controller.avatar != null
-                            ? ClipRRect(
-                                borderRadius: BorderRadius.circular(20.0),
-                                child: widget.controller.avatar == null
-                                    ? CachedNetworkImage(
-                                        fit: BoxFit.cover,
-                                        imageUrl: widget.controller.imageURL!,
-                                        placeholder: (context, url) {
-                                          return const Center(
-                                            child: CircularProgressIndicator(),
-                                          );
-                                        },
-                                        errorWidget: (context, url, error) {
-                                          return const Padding(
-                                            padding: EdgeInsets.all(28.0),
-                                          );
-                                        },
-                                      )
-                                    : Image.memory(
-                                        widget.controller.avatar!,
-                                        fit: BoxFit.cover,
-                                      ),
+                        child: widget.controller.isLaunching
+                            ? Avatar(
+                                mxContent: widget.controller.room.avatar,
+                                name: widget.controller.room
+                                    .getLocalizedDisplayname(
+                                  MatrixLocals(
+                                    L10n.of(context),
+                                  ),
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                                size: 200.0,
                               )
-                            : const Padding(
-                                padding: EdgeInsets.all(28.0),
-                              ),
+                            : widget.controller.imageURL != null ||
+                                    widget.controller.avatar != null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    child: widget.controller.avatar == null
+                                        ? CachedNetworkImage(
+                                            fit: BoxFit.cover,
+                                            imageUrl:
+                                                widget.controller.imageURL!,
+                                            placeholder: (context, url) {
+                                              return const Center(
+                                                child:
+                                                    CircularProgressIndicator(),
+                                              );
+                                            },
+                                            errorWidget: (context, url, error) {
+                                              return const Padding(
+                                                padding: EdgeInsets.all(28.0),
+                                              );
+                                            },
+                                          )
+                                        : Image.memory(
+                                            widget.controller.avatar!,
+                                            fit: BoxFit.cover,
+                                          ),
+                                  )
+                                : const Padding(
+                                    padding: EdgeInsets.all(28.0),
+                                  ),
                       ),
                       if (widget.controller.isEditing)
                         InkWell(
