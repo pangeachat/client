@@ -21,15 +21,9 @@ class ChoreoEdit {
     required String originalText,
     required String editedText,
   }) {
-    if (originalText != editedText) {
-      if (editedText.isEmpty) {
-        length = originalText.length;
-      } else if (originalText.isNotEmpty) {
-        offset = _firstDifference(originalText, editedText);
-        length = _lastDifference(originalText, editedText) + 1 - offset;
-      }
-      insert = _insertion(originalText, editedText);
-    }
+    offset = _firstDifference(originalText, editedText);
+    length = _lastDifference(originalText, editedText) + 1 - offset;
+    insert = _insertion(originalText, editedText);
   }
 
   factory ChoreoEdit.fromJson(Map<String, dynamic> json) {
