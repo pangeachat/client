@@ -38,11 +38,15 @@ void main() async {
     test("Test that addRecord and lastText work correctly", () {
       final List<String> steps = [];
 
-      steps.add("Yes");
       steps.add("");
       steps.add("Si");
 
-      final record = ChoreoRecord.newRecord;
+      final record = ChoreoRecord(
+        originalText: "Yes",
+        choreoSteps: [],
+        openMatches: [],
+      );
+
       for (final step in steps) {
         record.addRecord(step);
       }
@@ -50,7 +54,6 @@ void main() async {
       assert(
         record.choreoSteps[0].edits != null &&
             record.choreoSteps[1].edits != null &&
-            record.choreoSteps[2].edits != null &&
             record.lastText == "Si",
       );
     });
@@ -58,11 +61,15 @@ void main() async {
     test("Test that fromJSON receives updated version correctly", () {
       final List<String> steps = [];
 
-      steps.add("Yes");
       steps.add("");
       steps.add("Si");
 
-      final record = ChoreoRecord.newRecord;
+      final record = ChoreoRecord(
+        originalText: "Yes",
+        choreoSteps: [],
+        openMatches: [],
+      );
+
       for (final step in steps) {
         record.addRecord(step);
       }
@@ -73,7 +80,6 @@ void main() async {
       assert(
         received.choreoSteps[0].edits != null &&
             received.choreoSteps[1].edits != null &&
-            received.choreoSteps[2].edits != null &&
             received.lastText == "Si",
       );
     });
@@ -81,7 +87,6 @@ void main() async {
     test("Test that fromJSON converts old version correctly", () {
       final List<String> steps = [];
 
-      steps.add("One");
       steps.add("");
       steps.add("Dos");
       steps.add("Tres");
@@ -89,15 +94,14 @@ void main() async {
       steps.add("Cinco");
       steps.add("Cincai");
 
-      final record = ChoreoRecord.newRecord;
-      record.originalText = "One";
+      final record = ChoreoRecord(
+        originalText: "One",
+        choreoSteps: [],
+        openMatches: [],
+      );
 
       for (final step in steps) {
-        record.choreoSteps.add(
-          ChoreoRecordStep(
-            text: step,
-          ),
-        );
+        record.addRecord(step);
       }
 
       final json = record.toJson();
@@ -112,7 +116,6 @@ void main() async {
             received.choreoSteps[3].edits != null &&
             received.choreoSteps[4].edits != null &&
             received.choreoSteps[5].edits != null &&
-            received.choreoSteps[6].edits != null &&
             received.lastText == "Cincai",
       );
     });

@@ -48,7 +48,7 @@ class Choreographer {
   final int msBeforeIGCStart = 10000;
 
   Timer? debounceTimer;
-  ChoreoRecord choreoRecord = ChoreoRecord.newRecord;
+  ChoreoRecord? choreoRecord;
   // last checked by IGC or translation
   String? _lastChecked;
   ChoreoMode choreoMode = ChoreoMode.igc;
@@ -146,7 +146,7 @@ class Choreographer {
     final message = chatController.sendController.text;
     final fakeEventId = chatController.sendFakeMessage();
     final PangeaRepresentation? originalWritten =
-        choreoRecord.includedIT && translatedText != null
+        choreoRecord?.includedIT == true && translatedText != null
             ? PangeaRepresentation(
                 langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
                 text: translatedText!,
@@ -195,7 +195,7 @@ class Choreographer {
           "currentText": message,
           "l1LangCode": l1LangCode,
           "l2LangCode": l2LangCode,
-          "choreoRecord": choreoRecord.toJson(),
+          "choreoRecord": choreoRecord?.toJson(),
         },
       );
     } finally {
@@ -218,6 +218,14 @@ class Choreographer {
     }
   }
 
+  void _initChoreoRecord() {
+    choreoRecord ??= ChoreoRecord(
+      originalText: textController.text,
+      choreoSteps: [],
+      openMatches: [],
+    );
+  }
+
   void onITStart(PangeaMatch itMatch) {
     if (!itMatch.isITStart) {
       throw Exception("this isn't an itStart match!");
@@ -228,7 +236,8 @@ class Choreographer {
     );
     itMatch.status = PangeaMatchStatus.accepted;
 
-    choreoRecord.addRecord(_textController.text, match: itMatch);
+    _initChoreoRecord();
+    choreoRecord!.addRecord(_textController.text, match: itMatch);
     translatedText = _textController.text;
 
     //PTODO - if totally in L1, save tokens, that's good stuff
@@ -311,6 +320,7 @@ class Choreographer {
       }
 
       startLoading();
+      _initChoreoRecord();
 
       // if getting language assistance after finishing IT,
       // reset the itController
@@ -342,7 +352,8 @@ class Choreographer {
   }
 
   void onITChoiceSelect(ITStep step) {
-    choreoRecord.addRecord(_textController.text, step: step);
+    _initChoreoRecord();
+    choreoRecord!.addRecord(_textController.text, step: step);
     _textController.setSystemText(
       _textController.text + step.continuances[step.chosen!].text,
       step.continuances[step.chosen!].gold
@@ -402,7 +413,8 @@ class Choreographer {
 
       //if it's the right choice, replace in text
       if (!isNormalizationError) {
-        choreoRecord.addRecord(
+        _initChoreoRecord();
+        choreoRecord!.addRecord(
           _textController.text,
           match: igc.igcTextData!.matches[matchIndex].copyWith
             ..status = PangeaMatchStatus.accepted,
@@ -442,7 +454,7 @@ class Choreographer {
     try {
       igc.igcTextData?.undoReplacement(match);
 
-      choreoRecord.choreoSteps.removeWhere(
+      choreoRecord?.choreoSteps.removeWhere(
         (step) => step.acceptedOrIgnoredMatch == match,
       );
 
@@ -488,7 +500,8 @@ class Choreographer {
           .characters
           .length;
 
-      choreoRecord.addRecord(
+      _initChoreoRecord();
+      choreoRecord!.addRecord(
         _textController.text,
         match: newMatch,
       );
@@ -528,7 +541,8 @@ class Choreographer {
           igc.spanDataController.isNormalizationError(matchIndex);
 
       if (!isNormalizationError) {
-        choreoRecord.addRecord(
+        _initChoreoRecord();
+        choreoRecord!.addRecord(
           _textController.text,
           match: igc.igcTextData!.matches[matchIndex],
         );
@@ -575,7 +589,7 @@ class Choreographer {
     _lastChecked = null;
     _timesClicked = 0;
     isFetching = false;
-    choreoRecord = ChoreoRecord.newRecord;
+    choreoRecord = null;
     translatedText = null;
     itController.clear();
     igc.dispose();
@@ -583,7 +597,8 @@ class Choreographer {
   }
 
   Future<void> onPaste(value) async {
-    choreoRecord.pastedStrings.add(value);
+    _initChoreoRecord();
+    choreoRecord!.pastedStrings.add(value);
   }
 
   dispose() {
