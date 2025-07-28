@@ -21,12 +21,12 @@ class ChoreoRecord {
 
   final Set<String> pastedStrings = {};
 
-  String? originalText;
+  String originalText;
 
   ChoreoRecord({
     required this.choreoSteps,
     required this.openMatches,
-    this.originalText,
+    required this.originalText,
     // required this.current,
   });
 
@@ -61,7 +61,7 @@ class ChoreoRecord {
           })
           .toList()
           .cast<ChoreoRecordStep>(),
-      originalText: json[_originalTextKey] ?? originalText,
+      originalText: json[_originalTextKey] ?? originalText ?? "",
       openMatches: (jsonDecode(json[_openMatchesKey] ?? "[]") as Iterable)
           .map((e) {
             return PangeaMatch.fromJson(e);
@@ -93,7 +93,9 @@ class ChoreoRecord {
     }
 
     // Initialize originalText if this is first step
-    originalText ??= text;
+    if (choreoSteps.isEmpty) {
+      originalText = text;
+    }
 
     choreoSteps.add(
       ChoreoRecordStep(
@@ -109,7 +111,7 @@ class ChoreoRecord {
 
   /// Get the text of the latest entry in choreoSteps
   String get lastText {
-    String previousText = originalText!;
+    String previousText = originalText;
     for (final step in choreoSteps) {
       previousText = step.edits!.editedText(previousText);
     }
@@ -148,6 +150,7 @@ class ChoreoRecord {
   static ChoreoRecord get newRecord => ChoreoRecord(
         choreoSteps: [],
         openMatches: [],
+        originalText: "",
       );
 
   List<ITStep> get itSteps =>
