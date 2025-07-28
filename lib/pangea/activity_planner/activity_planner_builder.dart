@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Visibility;
 
 import 'package:collection/collection.dart';
 import 'package:http/http.dart' as http;
@@ -9,17 +9,25 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
+import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+enum ActivityLaunchState {
+  base,
+  editing,
+  launching,
+}
+
 class ActivityPlannerBuilder extends StatefulWidget {
   final ActivityPlanModel initialActivity;
   final String? initialFilename;
-  final Room? room;
+  final Room room;
 
   final Widget Function(ActivityPlannerBuilderState) builder;
 
@@ -27,7 +35,7 @@ class ActivityPlannerBuilder extends StatefulWidget {
     super.key,
     required this.initialActivity,
     this.initialFilename,
-    this.room,
+    required this.room,
     required this.builder,
   });
 
@@ -36,10 +44,12 @@ class ActivityPlannerBuilder extends StatefulWidget {
 }
 
 class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
-  bool isEditing = false;
+  ActivityLaunchState launchState = ActivityLaunchState.base;
   Uint8List? avatar;
   String? imageURL;
   String? filename;
+
+  int numActivities = 1;
 
   final TextEditingController titleController = TextEditingController();
   final TextEditingController instructionsController = TextEditingController();
@@ -69,7 +79,10 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     super.dispose();
   }
 
-  Room? get room => widget.room;
+  Room get room => widget.room;
+
+  bool get isEditing => launchState == ActivityLaunchState.editing;
+  bool get isLaunching => launchState == ActivityLaunchState.launching;
 
   ActivityPlanRequest get updatedRequest {
     final int participants = int.tryParse(participantsController.text.trim()) ??
@@ -135,8 +148,10 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     if (mounted) setState(() {});
   }
 
-  void setEditing(bool editting) {
-    isEditing = editting;
+  void startEditing() => setLaunchState(ActivityLaunchState.editing);
+
+  void setLaunchState(ActivityLaunchState state) {
+    launchState = state;
     if (mounted) setState(() {});
   }
 
@@ -176,6 +191,10 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
         filename = photo.singleOrNull?.name;
       });
     }
+  }
+
+  void setNumActivities(int count) {
+    if (mounted) setState(() => numActivities = count);
   }
 
   Future<void> _setAvatarByURL(String url) async {
@@ -223,7 +242,7 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
   Future<void> saveEdits() async {
     if (!formKey.currentState!.validate()) return;
     await updateImageURL();
-    setEditing(false);
+    setLaunchState(ActivityLaunchState.base);
 
     await BookmarkedActivitiesRepo.remove(widget.initialActivity.bookmarkId);
     await BookmarkedActivitiesRepo.save(updatedActivity);
@@ -232,16 +251,60 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
 
   Future<void> clearEdits() async {
     await resetActivity();
-    if (mounted) {
-      setState(() {
-        isEditing = false;
-      });
-    }
+    setLaunchState(ActivityLaunchState.base);
   }
 
-  Future<void> launchToRoom() async {
-    if (room == null || room!.isSpace) return;
-    return room?.sendActivityPlan(
+  Future<void> launchToSpace() async {
+    final futures = List.generate(numActivities, (index) {
+      return _launchActivityRoom(
+        "${updatedActivity.title} ${index + 1}",
+      );
+    });
+
+    await Future.wait(futures);
+  }
+
+  Future<void> _launchActivityRoom(String name) async {
+    final roomID = await Matrix.of(context).client.createGroupChat(
+          visibility: Visibility.private,
+          groupName: name,
+          initialState: [
+            if (updatedActivity.imageURL != null)
+              StateEvent(
+                type: EventTypes.RoomAvatar,
+                content: {'url': updatedActivity.imageURL},
+              ),
+            RoomDefaults.defaultPowerLevels(
+              Matrix.of(context).client.userID!,
+            ),
+            await Matrix.of(context).client.pangeaJoinRules(
+              'knock_restricted',
+              allow: [
+                {
+                  "type": "m.room_membership",
+                  "room_id": room.id,
+                }
+              ],
+            ),
+          ],
+          enableEncryption: false,
+        );
+
+    Room? activityRoom = room.client.getRoomById(roomID);
+    if (activityRoom == null) {
+      await room.client.waitForRoomInSync(roomID);
+      activityRoom = room.client.getRoomById(roomID);
+      if (activityRoom == null) {
+        throw Exception("Failed to create activity room $name");
+      }
+    }
+
+    await room.addToSpace(activityRoom.id);
+    if (activityRoom.pangeaSpaceParents.isEmpty) {
+      await room.client.waitForRoomInSync(activityRoom.id);
+    }
+
+    await activityRoom.sendActivityPlan(
       updatedActivity,
       avatar: avatar,
       filename: filename,

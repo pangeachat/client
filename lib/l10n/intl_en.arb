@@ -4896,7 +4896,6 @@
   "newChatActivityDesc": "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!",
   "exploreMore": "Explore more",
   "wordFocusListeningMultipleChoice": "Which audio matches the word?",
-  "createActivity": "Create activity",
   "startChat": "Start a chat",
   "translationProblem": "Translation problem",
   "perfectTranslation": "Perfect translation!",
@@ -5092,5 +5091,18 @@
   "errorFetchingTranslation": "Failed to fetch translation",
   "errorFetchingActivity": "Failed to fetch activity",
   "check": "Check",
-  "unableToFindRoom": "No chat or space found with that code. Please try again."
+  "unableToFindRoom": "No chat or space found with that code. Please try again.",
+  "createActivityPlan": "Create a new activity plan",
+  "saveAndLaunch": "Save and Launch",
+  "launchToSpace": "Launch to Space",
+  "numberOfActivities": "Number of activities",
+  "minimumActivityParticipants": "Each Activity needs a minimum {count} of participant(s).",
+  "@minimumActivityParticipants": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  }
 }

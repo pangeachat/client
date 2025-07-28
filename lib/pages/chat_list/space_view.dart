@@ -559,8 +559,10 @@ class _SpaceViewState extends State<SpaceView> {
     final theme = Theme.of(context);
 
     final room = Matrix.of(context).client.getRoomById(widget.spaceId);
-    final displayname =
-        room?.getLocalizedDisplayname() ?? L10n.of(context).nothingFound;
+    // #Pangea
+    // final displayname =
+    //     room?.getLocalizedDisplayname() ?? L10n.of(context).nothingFound;
+    // Pangea#
 
     // #Pangea
     final joinedParents = room?.spaceParents
@@ -668,11 +670,12 @@ class _SpaceViewState extends State<SpaceView> {
               // #Pangea
               // onPressed: _addChatOrSubspace,
               // label: Text(L10n.of(context).group),
+              // icon: const Icon(Icons.group_add_outlined),
               onPressed: () =>
-                  context.go("/rooms/newgroup?space=${widget.spaceId}"),
-              label: Text(L10n.of(context).groupChat),
+                  context.go("/rooms/${widget.spaceId}/details/planner"),
+              label: Text(L10n.of(context).activities),
+              icon: const Icon(Icons.event_note_outlined),
               // Pangea#
-              icon: const Icon(Icons.group_add_outlined),
             )
           : null,
       body: room == null
