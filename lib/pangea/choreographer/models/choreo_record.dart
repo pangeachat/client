@@ -21,48 +21,47 @@ class ChoreoRecord {
 
   final Set<String> pastedStrings = {};
 
+  String? originalText;
+
   ChoreoRecord({
     required this.choreoSteps,
     required this.openMatches,
+    this.originalText,
     // required this.current,
   });
 
   factory ChoreoRecord.fromJson(Map<String, dynamic> json) {
     final stepsRaw = json[_stepsKey];
-    String? previousText = "";
+    String? previousText;
+    String? originalText;
 
     return ChoreoRecord(
       choreoSteps: (jsonDecode(stepsRaw ?? "[]") as Iterable)
           .map((e) {
             final ChoreoRecordStep step = ChoreoRecordStep.fromJson(e);
 
-            // If an updated step is encountered,
-            // do not check for text in future iterations
-            if (previousText != null) {
-              if (step.text == null) {
-                previousText = null;
-              }
-              // Do not convert initial step text to edits
-              // Also affects steps preceded by empty strings,
-              // which does not negatively affect memory efficiency
-              else if (previousText!.isEmpty) {
-                previousText = step.text!;
-              }
-              // All steps except the initial step should have 'edits' parameter
-              else {
-                final String currentText = step.text!;
-                step.edits = ChoreoEdit.fromText(
-                  originalText: previousText!,
-                  editedText: currentText,
-                );
-                step.text = null;
-                previousText = currentText;
-              }
+            // If step uses updated version, don't change anything
+            if (step.text == null) {
+              return step;
             }
+
+            // If this is first step, initialize previousText and originalText
+            previousText ??= step.text;
+            originalText ??= step.text;
+
+            // Convert text to edits
+            step.edits = ChoreoEdit.fromText(
+              originalText: previousText!,
+              editedText: step.text!,
+            );
+            previousText = step.text!;
+            step.text = null;
+
             return step;
           })
           .toList()
           .cast<ChoreoRecordStep>(),
+      originalText: json[_originalTextKey] ?? originalText,
       openMatches: (jsonDecode(json[_openMatchesKey] ?? "[]") as Iterable)
           .map((e) {
             return PangeaMatch.fromJson(e);
@@ -75,6 +74,7 @@ class ChoreoRecord {
 
   static const _stepsKey = "stps";
   static const _openMatchesKey = "mtchs";
+  static const _originalTextKey = "ogtxt_v2";
   // static const _currentKey = "crnt";
 
   Map<String, dynamic> toJson() {
@@ -82,6 +82,7 @@ class ChoreoRecord {
     data[_stepsKey] = jsonEncode(choreoSteps.map((e) => e.toJson()).toList());
     data[_openMatchesKey] =
         jsonEncode(openMatches.map((e) => e.toJson()).toList());
+    data[_originalTextKey] = originalText;
     // data[_currentKey] = current;
     return data;
   }
@@ -90,18 +91,16 @@ class ChoreoRecord {
     if (match != null && step != null) {
       throw Exception("match and step should not both be defined");
     }
-    // Initial step saves text and not edits
-    final bool initialStep = choreoSteps.isEmpty;
+
+    // Initialize originalText if this is first step
+    originalText ??= text;
 
     choreoSteps.add(
       ChoreoRecordStep(
-        text: initialStep ? text : null,
-        edits: initialStep
-            ? null
-            : ChoreoEdit.fromText(
-                originalText: lastText,
-                editedText: text,
-              ),
+        edits: ChoreoEdit.fromText(
+          originalText: lastText,
+          editedText: text,
+        ),
         acceptedOrIgnoredMatch: match,
         itStep: step,
       ),
@@ -110,11 +109,9 @@ class ChoreoRecord {
 
   /// Get the text of the latest entry in choreoSteps
   String get lastText {
-    String previousText = "";
+    String previousText = originalText!;
     for (final step in choreoSteps) {
-      final String currentText =
-          step.text ?? step.edits!.editedText(previousText);
-      previousText = currentText;
+      previousText = step.edits!.editedText(previousText);
     }
     return previousText;
   }
@@ -180,11 +177,14 @@ class ChoreoRecord {
 /// adds "amigo" and a step saved
 class ChoreoRecordStep {
   /// Text of current step
-  /// The entire text of initial step is saved
+  /// Should never exist, except when using fromJSON
+  /// on old version of ChoreoRecordStep
   String? text;
 
   /// Edits that, when applied to the previous step's text,
   /// will provide the current step's text
+  /// Should always exist, except when using fromJSON
+  /// on old version of ChoreoRecordStep
   ChoreoEdit? edits;
 
   /// all matches throughout edit process,
@@ -203,16 +203,6 @@ class ChoreoRecordStep {
     if (itStep != null && acceptedOrIgnoredMatch != null) {
       throw Exception(
         "itStep and acceptedOrIgnoredMatch should not both be defined",
-      );
-    }
-    if (text == null && edits == null) {
-      throw Exception(
-        "Every step must have either text or edits",
-      );
-    }
-    if (text != null && edits != null) {
-      throw Exception(
-        "Each step should only have text or edit",
       );
     }
   }

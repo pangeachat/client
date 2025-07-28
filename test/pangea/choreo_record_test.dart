@@ -48,7 +48,7 @@ void main() async {
       }
 
       assert(
-        record.choreoSteps[0].text != null &&
+        record.choreoSteps[0].edits != null &&
             record.choreoSteps[1].edits != null &&
             record.choreoSteps[2].edits != null &&
             record.lastText == "Si",
@@ -71,7 +71,7 @@ void main() async {
       final received = ChoreoRecord.fromJson(json);
 
       assert(
-        received.choreoSteps[0].text != null &&
+        received.choreoSteps[0].edits != null &&
             received.choreoSteps[1].edits != null &&
             received.choreoSteps[2].edits != null &&
             received.lastText == "Si",
@@ -105,12 +105,12 @@ void main() async {
       // Initial step and steps following empty strings
       // will have text instead of edits
       assert(
-        received.choreoSteps[0].text == "One" &&
+        received.choreoSteps[0].edits != null &&
             received.choreoSteps[1].edits != null &&
-            received.choreoSteps[2].text == "Dos" &&
+            received.choreoSteps[2].edits != null &&
             received.choreoSteps[3].edits != null &&
             received.choreoSteps[4].edits != null &&
-            received.choreoSteps[5].text == "Cinco" &&
+            received.choreoSteps[5].edits != null &&
             received.choreoSteps[6].edits != null &&
             received.lastText == "Cincai",
       );
