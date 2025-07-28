@@ -90,6 +90,7 @@ void main() async {
       steps.add("Cincai");
 
       final record = ChoreoRecord.newRecord;
+      record.originalText = "One";
 
       for (final step in steps) {
         record.choreoSteps.add(
