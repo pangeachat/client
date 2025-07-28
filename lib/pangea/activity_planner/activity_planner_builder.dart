@@ -255,24 +255,30 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
   }
 
   Future<void> launchToSpace() async {
-    final futures = List.generate(numActivities, (index) {
-      return _launchActivityRoom(
-        "${updatedActivity.title} ${index + 1}",
+    final List<String> activityRoomIDs = [];
+    try {
+      await Future.wait(
+        List.generate(numActivities, (i) async {
+          final id = await _launchActivityRoom(i);
+          activityRoomIDs.add(id);
+        }),
       );
-    });
-
-    await Future.wait(futures);
+    } catch (e) {
+      _cleanupFailedLaunch(activityRoomIDs);
+      rethrow;
+    }
   }
 
-  Future<void> _launchActivityRoom(String name) async {
+  Future<String> _launchActivityRoom(int index) async {
+    await updateImageURL();
     final roomID = await Matrix.of(context).client.createGroupChat(
           visibility: Visibility.private,
-          groupName: name,
+          groupName: "${updatedActivity.title} ${index + 1}",
           initialState: [
-            if (updatedActivity.imageURL != null)
+            if (imageURL != null)
               StateEvent(
                 type: EventTypes.RoomAvatar,
-                content: {'url': updatedActivity.imageURL},
+                content: {'url': imageURL},
               ),
             RoomDefaults.defaultPowerLevels(
               Matrix.of(context).client.userID!,
@@ -295,7 +301,7 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
       await room.client.waitForRoomInSync(roomID);
       activityRoom = room.client.getRoomById(roomID);
       if (activityRoom == null) {
-        throw Exception("Failed to create activity room $name");
+        throw Exception("Failed to create activity room");
       }
     }
 
@@ -309,6 +315,23 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
       avatar: avatar,
       filename: filename,
     );
+
+    return activityRoom.id;
+  }
+
+  Future<void> _cleanupFailedLaunch(List<String> roomIds) async {
+    final futures = roomIds.map((id) async {
+      final room = Matrix.of(context).client.getRoomById(id);
+      if (room == null) return;
+
+      try {
+        await room.leave();
+      } catch (e) {
+        debugPrint("Failed to leave room $id: $e");
+      }
+    });
+
+    await Future.wait(futures);
   }
 
   @override

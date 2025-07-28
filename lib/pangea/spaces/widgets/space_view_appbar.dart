@@ -39,28 +39,30 @@ class SpaceViewAppbar extends StatelessWidget {
                 icon: const Icon(Icons.arrow_back_outlined),
                 onPressed: () => toParentSpace(joinedParents!.first.id),
               ),
-            Column(
-              spacing: 4.0,
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  displayname,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontSize: 16),
-                ),
-                if (room != null)
+            Flexible(
+              child: Column(
+                spacing: 4.0,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Text(
-                    L10n.of(context).countChatsAndCountParticipants(
-                      room!.spaceChildren.length,
-                      room!.summary.mJoinedMemberCount ?? 1,
-                    ),
+                    displayname,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 12),
+                    style: const TextStyle(fontSize: 16),
                   ),
-              ],
+                  if (room != null)
+                    Text(
+                      L10n.of(context).countChatsAndCountParticipants(
+                        room!.spaceChildren.length,
+                        room!.summary.mJoinedMemberCount ?? 1,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                ],
+              ),
             ),
           ],
         ),

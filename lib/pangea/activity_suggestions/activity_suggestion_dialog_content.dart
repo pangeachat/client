@@ -680,6 +680,7 @@ class _ActivitySuggestionLaunchContent extends StatelessWidget {
               count: activityController.numActivities,
               update: activityController.setNumActivities,
               min: 1,
+              max: 5,
             ),
           ],
         ),

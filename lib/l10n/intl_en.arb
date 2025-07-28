@@ -5079,6 +5079,7 @@
   "reset": "Reset",
   "errorGenerateActivityMessage": "Failed to generate activity",
   "errorRegenerateActivityMessage": "Failed to regenerate activity",
+  "errorLaunchActivityMessage": "Failed to launch activity",
   "errorFetchingActivitiesMessage": "Failed to fetch activities",
   "errorFetchingDefinition": "Failed to fetch definition",
   "errorProcessAnalytics": "Failed to process analytics",
@@ -5095,7 +5096,7 @@
   "createActivityPlan": "Create a new activity plan",
   "saveAndLaunch": "Save and Launch",
   "launchToSpace": "Launch to Space",
-  "numberOfActivities": "Number of activities",
+  "numberOfActivities": "Number of Activity Sessions",
   "minimumActivityParticipants": "Each Activity needs a minimum {count} of participant(s).",
   "@minimumActivityParticipants": {
     "type": "String",

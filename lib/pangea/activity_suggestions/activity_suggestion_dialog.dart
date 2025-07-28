@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -11,7 +12,6 @@ import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_dialo
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class ActivitySuggestionDialog extends StatefulWidget {
   final ActivityPlannerBuilderState controller;
@@ -33,7 +33,8 @@ class ActivitySuggestionDialog extends StatefulWidget {
 
 class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
   bool _loading = false;
-  Object? _error;
+  String? _regenerateError;
+  String? _launchError;
 
   double get _width => FluffyThemes.isColumnMode(context)
       ? 400.0
@@ -49,20 +50,15 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
 
       setState(() {
         _loading = true;
-        _error = null;
+        _regenerateError = null;
+        _launchError = null;
       });
 
-      final resp = await showFutureLoadingDialog(
-        context: context,
-        future: widget.controller.launchToSpace,
-      );
-
-      // if (!resp.isError) {
-      //   context.go("/rooms/${widget.controller.room.id}");
-      //   Navigator.of(context).pop();
-      // }
+      await widget.controller.launchToSpace();
+      context.go("/rooms?spaceId=${widget.controller.room.id}");
+      Navigator.of(context).pop();
     } catch (e, s) {
-      _error = e;
+      _launchError = L10n.of(context).errorLaunchActivityMessage;
       ErrorHandler.logError(
         e: e,
         s: s,
@@ -82,7 +78,8 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
   Future<void> onRegenerate() async {
     setState(() {
       _loading = true;
-      _error = null;
+      _regenerateError = null;
+      _launchError = null;
     });
 
     try {
@@ -98,7 +95,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
       widget.replaceActivity?.call(plan);
       await widget.controller.overrideActivity(plan);
     } catch (e, s) {
-      _error = e;
+      _regenerateError = L10n.of(context).errorRegenerateActivityMessage;
       ErrorHandler.logError(
         e: e,
         s: s,
@@ -120,7 +117,8 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
     widget.controller.resetActivity();
     setState(() {
       _loading = false;
-      _error = null;
+      _regenerateError = null;
+      _launchError = null;
     });
   }
 
@@ -150,32 +148,38 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
           ),
           child: Builder(
             builder: (context) {
-              if (_error != null) {
+              if (_regenerateError != null || _launchError != null) {
                 return Center(
                   child: Column(
                     spacing: 16.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ErrorIndicator(
-                        message:
-                            L10n.of(context).errorRegenerateActivityMessage,
+                        message: _regenerateError ?? _launchError!,
                       ),
-                      Row(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ElevatedButton(
-                            onPressed: onRegenerate,
-                            style: buttonStyle,
-                            child: Text(L10n.of(context).tryAgain),
-                          ),
-                          ElevatedButton(
-                            onPressed: _resetActivity,
-                            style: buttonStyle,
-                            child: Text(L10n.of(context).reset),
-                          ),
-                        ],
-                      ),
+                      if (_regenerateError != null)
+                        Row(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            ElevatedButton(
+                              onPressed: onRegenerate,
+                              style: buttonStyle,
+                              child: Text(L10n.of(context).tryAgain),
+                            ),
+                            ElevatedButton(
+                              onPressed: _resetActivity,
+                              style: buttonStyle,
+                              child: Text(L10n.of(context).reset),
+                            ),
+                          ],
+                        )
+                      else
+                        ElevatedButton(
+                          onPressed: launchActivity,
+                          style: buttonStyle,
+                          child: Text(L10n.of(context).tryAgain),
+                        ),
                     ],
                   ),
                 );
@@ -274,9 +278,11 @@ class NumberCounter extends StatelessWidget {
                     padding: const EdgeInsets.all(0.0),
                   )
                 : null,
-            onPressed: () {
-              update(count + 1);
-            },
+            onPressed: max == null || count + 1 <= max!
+                ? () {
+                    update(count + 1);
+                  }
+                : null,
           ),
         ],
       ),
