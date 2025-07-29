@@ -4,9 +4,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/hover_builder.dart';
 
 class JoinActivityWidget extends StatefulWidget {
   final Room room;
@@ -55,60 +55,13 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       if (roles > 0)
-                        Row(
+                        Wrap(
                           spacing: 16.0,
-                          mainAxisSize: MainAxisSize.min,
+                          runSpacing: 16.0,
                           children: List.generate(roles, (index) {
-                            return MouseRegion(
-                              cursor: SystemMouseCursors.click,
-                              child: GestureDetector(
-                                onTap: () => _selectRole(index),
-                                child: HoverBuilder(
-                                  builder: (context, hovered) {
-                                    return Container(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 4.0,
-                                        horizontal: 8.0,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        color: hovered || _selectedRole == index
-                                            ? theme.colorScheme.primaryContainer
-                                                .withAlpha(
-                                                _selectedRole == index
-                                                    ? 100
-                                                    : 50,
-                                              )
-                                            : Colors.transparent,
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          CircleAvatar(
-                                            radius: 30.0,
-                                            backgroundColor: theme
-                                                .colorScheme.primaryContainer,
-                                          ),
-                                          Text(
-                                            L10n.of(context).participant,
-                                            style: const TextStyle(
-                                              fontSize: 12.0,
-                                            ),
-                                          ),
-                                          Text(
-                                            L10n.of(context).openRoleLabel,
-                                            style: TextStyle(
-                                              fontSize: 12.0,
-                                              color: theme.colorScheme.primary,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
+                            return ActivityParticipantIndicator(
+                              selected: _selectedRole == index,
+                              onTap: () => _selectRole(index),
                             );
                           }),
                         ),

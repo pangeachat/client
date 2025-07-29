@@ -1,7 +1,7 @@
 class ActivityRoleModel {
   final String userId;
   final String? role;
-  final DateTime? finishedAt;
+  DateTime? finishedAt;
 
   ActivityRoleModel({
     required this.userId,

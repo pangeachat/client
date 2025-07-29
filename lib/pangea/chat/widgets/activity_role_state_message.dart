@@ -17,12 +17,15 @@ class ActivityRoleStateMessage extends StatelessWidget {
         : event.senderFromMemoryOrFallback.calcDisplayname();
 
     String role = L10n.of(context).participant;
+    bool finished = false;
 
     try {
       final roleContent = event.content['role'] as String?;
       if (roleContent != null) {
         role = roleContent;
       }
+
+      finished = event.content['finishedAt'] != null;
     } catch (e) {
       // If the role is not found, we keep the default participant role.
     }
@@ -39,7 +42,9 @@ class ActivityRoleStateMessage extends StatelessWidget {
               padding:
                   const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               child: Text(
-                L10n.of(context).joinedTheActivity(senderName, role),
+                finished
+                    ? L10n.of(context).finishedTheActivity(senderName)
+                    : L10n.of(context).joinedTheActivity(senderName, role),
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

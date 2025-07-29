@@ -42,6 +42,19 @@ extension ActivityRoomExtension on Room {
     );
   }
 
+  Future<void> finishActivity(String userId) async {
+    final role = activityRole(userId);
+    if (role == null) return;
+
+    role.finishedAt = DateTime.now();
+    await client.setRoomStateWithKey(
+      id,
+      PangeaEventTypes.activityRole,
+      userId,
+      role.toJson(),
+    );
+  }
+
   ActivityPlanModel? get activityPlan {
     final stateEvent = getState(PangeaEventTypes.activityPlan);
     if (stateEvent == null) return null;
@@ -81,13 +94,23 @@ extension ActivityRoomExtension on Room {
     }
   }
 
+  List<StrippedStateEvent> get _activityRoleEvents {
+    return states[PangeaEventTypes.activityRole]?.values.toList() ?? [];
+  }
+
   List<ActivityRoleModel> get activityRoles {
-    final roles = states[PangeaEventTypes.activityRole]?.values.toList() ?? [];
-    return roles.map((r) => ActivityRoleModel.fromJson(r.content)).toList();
+    return _activityRoleEvents
+        .map((r) => ActivityRoleModel.fromJson(r.content))
+        .toList();
   }
 
   bool get hasJoinedActivity {
     return activityPlan == null || activityRole(client.userID!) != null;
+  }
+
+  bool get hasFinishedActivity {
+    final role = activityRole(client.userID!);
+    return role != null && role.isFinished;
   }
 
   int? get numberOfParticipants {
