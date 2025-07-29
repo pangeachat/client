@@ -56,7 +56,11 @@ extension IsStateExtension on Event {
 
   // #Pangea
   bool get pangeaIsEventTypeKnown =>
-      isEventTypeKnown || [PangeaEventTypes.activityPlan].contains(type);
+      isEventTypeKnown ||
+      [
+        PangeaEventTypes.activityPlan,
+        PangeaEventTypes.activityRole,
+      ].contains(type);
 
   // we're filtering out some state events that we don't want to render
   static const Set<String> importantStateEvents = {
@@ -66,6 +70,7 @@ extension IsStateExtension on Event {
     EventTypes.RoomTombstone,
     EventTypes.CallInvite,
     PangeaEventTypes.activityPlan,
+    PangeaEventTypes.activityRole,
   };
   // Pangea#
 }

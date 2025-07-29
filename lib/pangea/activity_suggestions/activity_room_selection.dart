@@ -71,7 +71,7 @@ class ActivityRoomSelectionState extends State<ActivityRoomSelection> {
         });
 
     final room = widget.controller.room;
-    if (room != null && room.isSpace) {
+    if (room.isSpace) {
       _launchableRooms = _launchableRooms.where((r) {
         return room.spaceChildren.any((child) => child.roomId == r.id);
       }).toList();

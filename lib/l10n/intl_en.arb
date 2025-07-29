@@ -5105,5 +5105,20 @@
         "type": "int"
       }
     }
+  },
+  "unjoinedActivityMessage": "Do you want to participate? Choose an open role!\nOr hang out and watch the show!",
+  "confirmRole": "Confirm role",
+  "openRoleLabel": "OPEN",
+  "joinedTheActivity": "👋 {username} joined as {role}",
+  "@joinedTheActivity": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      },
+      "role": {
+        "type": "String"
+      }
+    }
   }
 }
