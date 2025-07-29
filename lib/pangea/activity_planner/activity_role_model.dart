@@ -28,4 +28,18 @@ class ActivityRoleModel {
       'finishedAt': finishedAt?.toIso8601String(),
     };
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is ActivityRoleModel &&
+        other.userId == userId &&
+        other.role == role &&
+        other.finishedAt == finishedAt;
+  }
+
+  @override
+  int get hashCode =>
+      userId.hashCode ^ role.hashCode ^ (finishedAt?.hashCode ?? 0);
 }

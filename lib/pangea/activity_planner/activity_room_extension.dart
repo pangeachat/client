@@ -113,6 +113,10 @@ extension ActivityRoomExtension on Room {
     return role != null && role.isFinished;
   }
 
+  bool get activityIsFinished {
+    return activityRoles.isNotEmpty && activityRoles.every((r) => r.isFinished);
+  }
+
   int? get numberOfParticipants {
     return activityPlan?.req.numberOfParticipants;
   }
