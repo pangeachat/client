@@ -61,7 +61,7 @@ class ChoreoEdit {
   int _lastDifference(String originalText, String editedText) {
     var i = originalText.length - 1;
     var j = editedText.length - 1;
-    while (min(i, j) > offset && originalText[i] == editedText[j]) {
+    while (min(i, j) >= offset && originalText[i] == editedText[j]) {
       i--;
       j--;
     }
