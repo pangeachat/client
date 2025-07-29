@@ -31,7 +31,6 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/utils/show_update_snackbar.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -45,6 +44,7 @@ import '../../widgets/matrix.dart';
 
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
+
 
 enum PopupMenuAction {
   settings,
@@ -144,82 +144,6 @@ class ChatListController extends State<ChatList>
 
   void onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
-      final theme = Theme.of(context);
-      final inviteEvent = room.getState(
-        EventTypes.RoomMember,
-        room.client.userID!,
-      );
-      final matrixLocals = MatrixLocals(L10n.of(context));
-      final action = await showAdaptiveDialog<InviteAction>(
-        context: context,
-        builder: (context) => AlertDialog.adaptive(
-          title: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 256),
-            child: Center(
-              child: Text(
-                room.getLocalizedDisplayname(matrixLocals),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-          content: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
-            child: Text(
-              inviteEvent == null
-                  ? L10n.of(context).inviteForMe
-                  : inviteEvent.content.tryGet<String>('reason') ??
-                      L10n.of(context).youInvitedBy(
-                        room
-                            .unsafeGetUserFromMemoryOrFallback(
-                              inviteEvent.senderId,
-                            )
-                            .calcDisplayname(i18n: matrixLocals),
-                      ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          actions: [
-            AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.accept),
-              bigButtons: true,
-              child: Text(L10n.of(context).accept),
-            ),
-            AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.decline),
-              bigButtons: true,
-              child: Text(
-                L10n.of(context).decline,
-                style: TextStyle(color: theme.colorScheme.error),
-              ),
-            ),
-            AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.block),
-              bigButtons: true,
-              child: Text(
-                L10n.of(context).block,
-                style: TextStyle(color: theme.colorScheme.error),
-              ),
-            ),
-          ],
-        ),
-      );
-      switch (action) {
-        case null:
-          return;
-        case InviteAction.accept:
-          break;
-        case InviteAction.decline:
-          await showFutureLoadingDialog(
-            context: context,
-            future: () => room.leave(),
-          );
-          return;
-        case InviteAction.block:
-          final userId = inviteEvent?.senderId;
-          context.go('/rooms/settings/security/ignorelist', extra: userId);
-          return;
-      }
-      if (!mounted) return;
       final joinResult = await showFutureLoadingDialog(
         context: context,
         future: () async {
