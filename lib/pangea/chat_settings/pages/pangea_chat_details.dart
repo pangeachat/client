@@ -314,12 +314,6 @@ class RoomDetailsButtonRowState extends State<RoomDetailsButtonRow> {
 
   Room get room => widget.room;
 
-  /// Bot DMs should show Bot settings on details page
-  bool get hasBot => room
-      .getParticipants()
-      .where((member) => (member.id == BotName.byEnvironment))
-      .isNotEmpty;
-
   List<ButtonDetails> _buttons(BuildContext context) {
     final L10n l10n = L10n.of(context);
     return [
@@ -421,8 +415,9 @@ class RoomDetailsButtonRowState extends State<RoomDetailsButtonRow> {
             onSubmit: widget.controller.setBotOptions,
           ),
         ),
-        visible:
-            !room.isSpace && (!room.isDirectChat || hasBot) && room.canInvite,
+        visible: !room.isSpace &&
+            (!room.isDirectChat || room.botOptions != null) &&
+            room.canInvite,
       ),
       ButtonDetails(
         title: l10n.chatCapacity,
