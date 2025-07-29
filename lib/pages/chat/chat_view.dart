@@ -404,13 +404,17 @@ class ChatView extends StatelessWidget {
                               ),
                             // #Pangea
                             // Keep messages above minimum input bar height
-                            if (!controller.room.isAbandonedDMRoom)
+                            if (!controller.room.isAbandonedDMRoom &&
+                                controller.room.canSendDefaultMessages &&
+                                controller.room.membership == Membership.join &&
+                                controller.room.hasJoinedActivity)
                               AnimatedSize(
                                 duration: const Duration(milliseconds: 200),
                                 child: SizedBox(
                                   height: controller.inputBarHeight,
                                 ),
                               ),
+                            JoinActivityWidget(room: controller.room),
                             // Pangea#
                           ],
                         ),
@@ -439,7 +443,6 @@ class ChatView extends StatelessWidget {
                               ],
                             ),
                           ),
-                        JoinActivityWidget(room: controller.room),
                         // Pangea#
                       ],
                     ),
