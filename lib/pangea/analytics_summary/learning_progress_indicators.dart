@@ -112,23 +112,51 @@ class LearningProgressIndicatorsState
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Row(
                       spacing: 16.0,
-                      children: ConstructTypeEnum.values
-                          .map(
-                            (c) => HoverButton(
-                              selected: widget.selected == c.indicator,
-                              onPressed: () {
-                                context.go(
-                                  "/rooms/analytics?mode=${c.string}",
-                                );
-                              },
-                              child: ProgressIndicatorBadge(
-                                indicator: c.indicator,
-                                loading: _loading,
-                                points: uniqueLemmas(c.indicator),
-                              ),
+                      children: [
+                        ...ConstructTypeEnum.values.map(
+                          (c) => HoverButton(
+                            selected: widget.selected == c.indicator,
+                            onPressed: () {
+                              context.go(
+                                "/rooms/analytics?mode=${c.string}",
+                              );
+                            },
+                            child: ProgressIndicatorBadge(
+                              indicator: c.indicator,
+                              loading: _loading,
+                              points: uniqueLemmas(c.indicator),
                             ),
-                          )
-                          .toList(),
+                          ),
+                        ),
+                        HoverButton(
+                          selected: widget.selected ==
+                              ProgressIndicatorEnum.activities,
+                          onPressed: () {
+                            context.go(
+                              "/rooms/analytics?mode=activities",
+                            );
+                          },
+                          child: Tooltip(
+                            message: ProgressIndicatorEnum.activities
+                                .tooltip(context),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  size: 18,
+                                  Icons.radar,
+                                  color: Theme.of(context).colorScheme.primary,
+                                  weight: 1000,
+                                ),
+                                const SizedBox(width: 6.0),
+                                const AnimatedFloatingNumber(
+                                  number: 10,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   HoverButton(

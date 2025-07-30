@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -121,7 +122,6 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                     right: 16.0,
                   ),
                   child: Column(
-                    spacing: 16.0,
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: widget.room.activityIsFinished
@@ -132,8 +132,8 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                 child: imageURL.startsWith("mxc")
                                     ? MxcImage(
                                         uri: Uri.parse(imageURL),
-                                        width: 200.0,
-                                        height: 200.0,
+                                        width: 100.0,
+                                        height: 100.0,
                                         cacheKey: widget
                                             .room.activityPlan!.bookmarkId,
                                         fit: BoxFit.cover,
@@ -141,8 +141,8 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                     : CachedNetworkImage(
                                         imageUrl: imageURL,
                                         fit: BoxFit.cover,
-                                        width: 200.0,
-                                        height: 200.0,
+                                        width: 100.0,
+                                        height: 100.0,
                                         placeholder: (
                                           context,
                                           url,
@@ -158,9 +158,15 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                             const SizedBox(),
                                       ),
                               ),
-                            const Text(
-                              "This is the group Activity Summary Placeholder text.\nQuis varius quam quisque id diam. Aliquam sem et tortor consequat id porta nibh venenatis cras. Duis ut diam quam nulla. In metus vulputate eu scelerisque. Id aliquet lectus proin nibh nisl condimentum. ",
-                              textAlign: TextAlign.center,
+                            const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 4.0),
+                              child: Text(
+                                "This is the group Activity Summary Placeholder text.\nQuis varius quam quisque id diam. Aliquam sem et tortor consequat id porta nibh venenatis cras. Duis ut diam quam nulla. In metus vulputate eu scelerisque. Id aliquet lectus proin nibh nisl condimentum. ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                ),
+                              ),
                             ),
                             if (_highlightedRole != null)
                               ActivityResultsCarousel(
@@ -173,6 +179,7 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                       (u) => u.id == _highlightedRole!.userId,
                                     ),
                               ),
+                            const SizedBox(height: 8.0),
                             Wrap(
                               spacing: 16.0,
                               runSpacing: 16.0,
@@ -189,6 +196,29 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                     ),
                                   )
                                   .toList(),
+                            ),
+                            const SizedBox(height: 20.0),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.all(16.0),
+                                foregroundColor:
+                                    theme.colorScheme.onPrimaryContainer,
+                                backgroundColor:
+                                    theme.colorScheme.primaryContainer,
+                              ),
+                              onPressed: () async {
+                                await showFutureLoadingDialog(
+                                  context: context,
+                                  future: () => widget.room.leave(),
+                                );
+                                context.go("/rooms/analytics");
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(L10n.of(context).archiveToAnalytics),
+                                ],
+                              ),
                             ),
                           ]
                         : [
@@ -288,8 +318,8 @@ class ActivityResultsCarousel extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24.0),
               ),
-              height: 300.0,
-              width: 250.0,
+              height: 200.0,
+              width: 175.0,
               child: Container(
                 decoration: BoxDecoration(
                   color: theme.colorScheme.surfaceContainer,
@@ -302,20 +332,23 @@ class ActivityResultsCarousel extends StatelessWidget {
                     Align(
                       alignment: Alignment.center,
                       child: Avatar(
-                        size: 64.0,
+                        size: 40.0,
                         mxContent: user?.avatarUrl,
                         name: user?.calcDisplayname() ?? selectedRole.userId,
                         userId: selectedRole.userId,
                       ),
                     ),
+                    const SizedBox(height: 4.0),
                     Text(
                       selectedRole.role != null
                           ? "${selectedRole.role!} | ${selectedRole.userId.localpart}"
                           : "${selectedRole.userId.localpart}",
+                      style: const TextStyle(fontSize: 12.0),
                     ),
                     const SizedBox(height: 10.0),
                     const Text(
                       "Personal summary of this user in text form.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper a lacus vestibulum sed. ",
+                      style: TextStyle(fontSize: 8.0),
                     ),
                   ],
                 ),

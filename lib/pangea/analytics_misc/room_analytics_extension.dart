@@ -268,4 +268,32 @@ extension AnalyticsRoomExtension on Room {
       );
     }
   }
+
+  List<String> get activityRoomIds {
+    final state = getState(PangeaEventTypes.activityRoomIds);
+    if (state?.content[ModelKey.roomIds] is List) {
+      return List<String>.from(state!.content[ModelKey.roomIds] as List);
+    }
+    return [];
+  }
+
+  Future<void> setActivityRoomIds(List<String> roomIds) async {
+    final rooms = roomIds.map((r) => client.getRoomById(r)).toList();
+    roomIds = rooms
+        .where((r) => r?.activityPlan != null)
+        .map((rooms) => rooms!.id)
+        .toList();
+
+    List<String> ids = List.from(activityRoomIds);
+    ids.addAll(roomIds);
+    ids = ids.toSet().toList(); // remove duplicates
+    if (ids.length == activityRoomIds.length) return;
+
+    await client.setRoomStateWithKey(
+      id,
+      PangeaEventTypes.activityRoomIds,
+      "",
+      {ModelKey.roomIds: ids},
+    );
+  }
 }

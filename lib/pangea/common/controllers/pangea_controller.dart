@@ -53,6 +53,7 @@ class PangeaController {
   final pLanguageStore = PLanguageStore();
 
   StreamSubscription? _languageStream;
+  StreamSubscription? _leaveSubscription;
 
   ///Matrix Variables
   MatrixState matrixState;
@@ -61,7 +62,8 @@ class PangeaController {
   int? randomint;
   PangeaController({required this.matrix, required this.matrixState}) {
     _setup();
-    _setLanguageStream();
+    _setLanguageSubscription();
+    _setLeaveSubscription();
     randomint = Random().nextInt(2000);
   }
 
@@ -184,7 +186,8 @@ class PangeaController {
         // Initialize analytics data
         putAnalytics.initialize();
         getAnalytics.initialize();
-        _setLanguageStream();
+        _setLanguageSubscription();
+        _setLeaveSubscription();
 
         userController.reinitialize().then((_) {
           final l1 = userController.profile.userSettings.sourceLanguage;
@@ -212,11 +215,38 @@ class PangeaController {
     await getAnalytics.initialize();
   }
 
-  void _setLanguageStream() {
+  void _setLanguageSubscription() {
     _languageStream?.cancel();
     _languageStream = userController.languageStream.stream.listen(
       (_) => clearCache(exclude: ["analytics_storage"]),
     );
+  }
+
+  void _setLeaveSubscription() {
+    _leaveSubscription?.cancel();
+    _leaveSubscription = matrixState.client.onSync.stream
+        .where((update) => update.rooms?.leave != null)
+        .listen((update) {
+      final leave = update.rooms!.leave;
+
+      List<String> roomIds = [];
+      for (final entry in leave!.entries) {
+        final roomId = entry.key;
+        final state = entry.value.state;
+
+        if (state != null &&
+            state.any(
+              (e) =>
+                  e.type == EventTypes.RoomMember &&
+                  e.stateKey == matrixState.client.userID &&
+                  e.content['membership'] == 'leave',
+            )) {
+          roomIds.add(roomId);
+        }
+      }
+      roomIds = roomIds.toSet().toList();
+      putAnalytics.sendActivityAnalytics(roomIds);
+    });
   }
 
   Future<void> setPangeaPushRules() async {

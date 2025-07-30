@@ -45,4 +45,6 @@ class PangeaEventTypes {
 
   /// Profile information related to a user's analytics
   static const profileAnalytics = "pangea.analytics_profile";
+
+  static const activityRoomIds = "pangea.activity_room_ids";
 }

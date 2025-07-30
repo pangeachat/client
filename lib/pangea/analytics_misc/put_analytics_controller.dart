@@ -414,6 +414,25 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
       _pangeaController.getAnalytics.locallyCachedSentConstructs,
     );
   }
+
+  Future<void> sendActivityAnalytics(List<String> roomIds) async {
+    if (_pangeaController.matrixState.client.userID == null) return;
+    if (_pangeaController.languageController.userL2 == null) return;
+
+    try {
+      final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
+        _pangeaController.languageController.userL2!,
+      );
+      await analyticsRoom?.setActivityRoomIds(roomIds);
+    } catch (err, s) {
+      ErrorHandler.logError(
+        e: err,
+        m: "Failed to send activity analytics",
+        s: s,
+        data: {},
+      );
+    }
+  }
 }
 
 class AnalyticsStream {
