@@ -152,7 +152,9 @@ class ChatListController extends State<ChatList>
       );
       final matrixLocals = MatrixLocals(L10n.of(context));
       final action = await showAdaptiveDialog<InviteAction>(
+        // #Pangea
         barrierDismissible: true,
+        // Pangea#
         context: context,
         builder: (context) => AlertDialog.adaptive(
           title: ConstrainedBox(
