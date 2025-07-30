@@ -33,11 +33,28 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
   @override
   void initState() {
     super.initState();
-    _highlightedRole = widget.room.activityRoles.isNotEmpty
-        ? widget.room.activityRoles.firstWhereOrNull(
-            (r) => r.userId == widget.room.client.userID,
-          )
-        : null;
+    _setDefaultHighlightedRole();
+  }
+
+  @override
+  void didUpdateWidget(JoinActivityWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _setDefaultHighlightedRole();
+  }
+
+  void _setDefaultHighlightedRole() {
+    if (_hightlightedRoleIndex >= 0) return;
+
+    final roles = widget.room.activityRoles;
+    _highlightedRole = roles.firstWhereOrNull(
+      (r) => r.userId == widget.room.client.userID,
+    );
+
+    if (_highlightedRole == null && roles.isNotEmpty) {
+      _highlightedRole = roles.first;
+    }
+
+    if (mounted) setState(() {});
   }
 
   int get _hightlightedRoleIndex {
