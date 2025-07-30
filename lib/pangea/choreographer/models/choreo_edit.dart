@@ -21,6 +21,11 @@ class ChoreoEdit {
     required String originalText,
     required String editedText,
   }) {
+    if (originalText == editedText) {
+      // No changes, return empty edit
+      return;
+    }
+
     offset = _firstDifference(originalText, editedText);
     length = _lastDifference(originalText, editedText) + 1 - offset;
     insert = _insertion(originalText, editedText);

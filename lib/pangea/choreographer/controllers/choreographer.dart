@@ -235,9 +235,6 @@ class Choreographer {
       ITStartData(_textController.text, null),
     );
     itMatch.status = PangeaMatchStatus.accepted;
-
-    _initChoreoRecord();
-    choreoRecord!.addRecord(_textController.text, match: itMatch);
     translatedText = _textController.text;
 
     //PTODO - if totally in L1, save tokens, that's good stuff
@@ -245,6 +242,9 @@ class Choreographer {
     igc.clear();
 
     _textController.setSystemText("", EditType.itStart);
+
+    _initChoreoRecord();
+    choreoRecord!.addRecord(_textController.text, match: itMatch);
   }
 
   /// Handles any changes to the text input
@@ -352,8 +352,6 @@ class Choreographer {
   }
 
   void onITChoiceSelect(ITStep step) {
-    _initChoreoRecord();
-    choreoRecord!.addRecord(_textController.text, step: step);
     _textController.setSystemText(
       _textController.text + step.continuances[step.chosen!].text,
       step.continuances[step.chosen!].gold
@@ -362,6 +360,10 @@ class Choreographer {
     );
     _textController.selection =
         TextSelection.collapsed(offset: _textController.text.length);
+
+    _initChoreoRecord();
+    choreoRecord!.addRecord(_textController.text, step: step);
+
     giveInputFocus();
   }
 
@@ -411,15 +413,8 @@ class Choreographer {
       final isNormalizationError =
           igc.spanDataController.isNormalizationError(matchIndex);
 
-      //if it's the right choice, replace in text
-      if (!isNormalizationError) {
-        _initChoreoRecord();
-        choreoRecord!.addRecord(
-          _textController.text,
-          match: igc.igcTextData!.matches[matchIndex].copyWith
-            ..status = PangeaMatchStatus.accepted,
-        );
-      }
+      final match = igc.igcTextData!.matches[matchIndex].copyWith
+        ..status = PangeaMatchStatus.accepted;
 
       igc.igcTextData!.acceptReplacement(
         matchIndex,
@@ -430,6 +425,15 @@ class Choreographer {
         igc.igcTextData!.originalInput,
         EditType.igc,
       );
+
+      //if it's the right choice, replace in text
+      if (!isNormalizationError) {
+        _initChoreoRecord();
+        choreoRecord!.addRecord(
+          _textController.text,
+          match: match,
+        );
+      }
 
       MatrixState.pAnyState.closeOverlay();
       setState();
@@ -478,15 +482,26 @@ class Choreographer {
   }
 
   void acceptNormalizationMatches() {
+    final List<int> indices = [];
     for (int i = 0; i < igc.igcTextData!.matches.length; i++) {
       final isNormalizationError =
           igc.spanDataController.isNormalizationError(i);
+      if (isNormalizationError) indices.add(i);
+    }
 
-      if (!isNormalizationError) continue;
-      final match = igc.igcTextData!.matches[i];
+    if (indices.isEmpty) return;
 
+    _initChoreoRecord();
+    final matches = igc.igcTextData!.matches
+        .where(
+          (match) => indices.contains(igc.igcTextData!.matches.indexOf(match)),
+        )
+        .toList();
+
+    for (final match in matches) {
+      final index = igc.igcTextData!.matches.indexOf(match);
       igc.igcTextData!.acceptReplacement(
-        i,
+        index,
         match.match.choices!.indexWhere(
           (c) => c.isBestCorrection,
         ),
@@ -500,15 +515,14 @@ class Choreographer {
           .characters
           .length;
 
-      _initChoreoRecord();
-      choreoRecord!.addRecord(
-        _textController.text,
-        match: newMatch,
-      );
-
       _textController.setSystemText(
         igc.igcTextData!.originalInput,
         EditType.igc,
+      );
+
+      choreoRecord!.addRecord(
+        currentText,
+        match: newMatch,
       );
     }
   }

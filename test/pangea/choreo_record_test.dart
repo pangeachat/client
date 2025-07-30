@@ -54,7 +54,7 @@ void main() async {
       assert(
         record.choreoSteps[0].edits != null &&
             record.choreoSteps[1].edits != null &&
-            record.lastText == "Si",
+            record.stepText() == "Si",
       );
     });
 
@@ -80,7 +80,7 @@ void main() async {
       assert(
         received.choreoSteps[0].edits != null &&
             received.choreoSteps[1].edits != null &&
-            received.lastText == "Si",
+            received.stepText() == "Si",
       );
     });
 
@@ -116,7 +116,7 @@ void main() async {
             received.choreoSteps[3].edits != null &&
             received.choreoSteps[4].edits != null &&
             received.choreoSteps[5].edits != null &&
-            received.lastText == "Cincai",
+            received.stepText() == "Cincai",
       );
     });
   });

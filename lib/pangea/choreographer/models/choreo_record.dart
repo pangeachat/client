@@ -101,25 +101,43 @@ class ChoreoRecord {
       throw Exception("match and step should not both be defined");
     }
 
+    final edit = ChoreoEdit.fromText(
+      originalText: stepText(),
+      editedText: text,
+    );
+
     choreoSteps.add(
       ChoreoRecordStep(
-        edits: ChoreoEdit.fromText(
-          originalText: lastText,
-          editedText: text,
-        ),
+        edits: edit,
         acceptedOrIgnoredMatch: match,
         itStep: step,
       ),
     );
   }
 
-  /// Get the text of the latest entry in choreoSteps
-  String get lastText {
-    String previousText = originalText;
-    for (final step in choreoSteps) {
-      previousText = step.edits!.editedText(previousText);
+  /// Get the text at [stepIndex]
+  String stepText({int? stepIndex}) {
+    stepIndex ??= choreoSteps.length - 1;
+    if (stepIndex >= choreoSteps.length) {
+      throw RangeError.index(stepIndex, choreoSteps, "index out of range");
     }
-    return previousText;
+
+    if (stepIndex < 0) return originalText;
+
+    String text = originalText;
+    for (int i = 0; i <= stepIndex; i++) {
+      final step = choreoSteps[i];
+      if (step.edits == null) continue;
+      final edits = step.edits!;
+
+      text = text.replaceRange(
+        edits.offset,
+        edits.offset + edits.length,
+        edits.insert,
+      );
+    }
+
+    return text;
   }
 
   bool get hasAcceptedMatches => choreoSteps.any(
