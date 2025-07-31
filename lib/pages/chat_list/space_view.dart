@@ -698,7 +698,7 @@ class _SpaceViewState extends State<SpaceView> {
                 final joinedRooms = room.client.rooms
                     .where((room) => childrenIds.remove(room.id))
                     // #Pangea
-                    .where((room) => !room.isAnalyticsRoom)
+                    .where((room) => !room.isHiddenRoom)
                     // Pangea#
                     .toList();
 

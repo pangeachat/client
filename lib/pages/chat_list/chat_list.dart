@@ -46,6 +46,7 @@ import '../../widgets/matrix.dart';
 import 'package:fluffychat/utils/tor_stub.dart'
     if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
 
+
 enum PopupMenuAction {
   settings,
   invite,
@@ -262,24 +263,24 @@ class ChatListController extends State<ChatList>
       case ActiveFilter.allChats:
         // #Pangea
         // return (room) => true;
-        return (room) => !room.isAnalyticsRoom && !room.isSpace;
+        return (room) => !room.isHiddenRoom && !room.isSpace;
       // Pangea#
       case ActiveFilter.messages:
         // #Pangea
         // return (room) => !room.isSpace && room.isDirectChat;
         return (room) =>
-            !room.isSpace && room.isDirectChat && !room.isAnalyticsRoom;
+            !room.isSpace && room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.groups:
         // #Pangea
         // return (room) => !room.isSpace && !room.isDirectChat;
         return (room) =>
-            !room.isSpace && !room.isDirectChat && !room.isAnalyticsRoom;
+            !room.isSpace && !room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.unread:
         // #Pangea
         // return (room) => room.isUnreadOrInvited;
-        return (room) => room.isUnreadOrInvited && !room.isAnalyticsRoom;
+        return (room) => room.isUnreadOrInvited && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.spaces:
         return (room) => room.isSpace;
@@ -647,7 +648,7 @@ class ChatListController extends State<ChatList>
         final room = client.getRoomById(roomID);
         if (room == null ||
             room.isSpace ||
-            room.isAnalyticsRoom ||
+            room.isHiddenRoom ||
             room.capacity == null ||
             (room.summary.mJoinedMemberCount ?? 1) <= room.capacity!) {
           continue;

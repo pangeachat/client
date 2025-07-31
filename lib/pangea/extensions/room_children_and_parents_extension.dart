@@ -94,7 +94,7 @@ extension ChildrenAndParentsRoomExtension on Room {
   int get spaceChildCount => client.rooms
       .where(
         (r) => spaceChildren.any(
-          (child) => r.id == child.roomId && !r.isAnalyticsRoom,
+          (child) => r.id == child.roomId && !r.isHiddenRoom,
         ),
       )
       .length;
