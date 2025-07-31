@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/activity_planner/activity_room_extension.dart'
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
 class JoinActivityWidget extends StatefulWidget {
@@ -91,6 +92,20 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
     if (_hightlightedRoleIndex < widget.room.activityRoles.length - 1) {
       _highlightRole(widget.room.activityRoles[_hightlightedRoleIndex + 1]);
     }
+  }
+
+  Future<void> _archiveToAnalytics() async {
+    final role = widget.room.activityRole(widget.room.client.userID!);
+    if (role == null) {
+      throw Exception(
+        "Cannot archive activity without a role for user ${widget.room.client.userID!}",
+      );
+    }
+
+    role.archivedAt = DateTime.now();
+    await widget.room.archiveActivity();
+    await MatrixState.pangeaController.putAnalytics
+        .sendActivityAnalytics(widget.room.id);
   }
 
   @override
@@ -207,11 +222,16 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                     theme.colorScheme.primaryContainer,
                               ),
                               onPressed: () async {
-                                await showFutureLoadingDialog(
+                                final resp = await showFutureLoadingDialog(
                                   context: context,
-                                  future: () => widget.room.leave(),
+                                  future: _archiveToAnalytics,
                                 );
-                                context.go("/rooms/analytics");
+
+                                if (!resp.isError) {
+                                  context.go(
+                                    "/rooms/analytics?mode=activities",
+                                  );
+                                }
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -257,9 +277,7 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                         showFutureLoadingDialog(
                                           context: context,
                                           future: () =>
-                                              widget.room.setActivityRole(
-                                            widget.room.client.userID!,
-                                          ),
+                                              widget.room.setActivityRole(),
                                         );
                                       }
                                     : null,

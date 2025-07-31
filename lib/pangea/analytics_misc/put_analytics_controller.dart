@@ -415,7 +415,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
     );
   }
 
-  Future<void> sendActivityAnalytics(List<String> roomIds) async {
+  Future<void> sendActivityAnalytics(String roomId) async {
     if (_pangeaController.matrixState.client.userID == null) return;
     if (_pangeaController.languageController.userL2 == null) return;
 
@@ -423,7 +423,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
       final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
         _pangeaController.languageController.userL2!,
       );
-      await analyticsRoom?.setActivityRoomIds(roomIds);
+      await analyticsRoom?.addActivityRoomId(roomId);
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,

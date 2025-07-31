@@ -277,17 +277,10 @@ extension AnalyticsRoomExtension on Room {
     return [];
   }
 
-  Future<void> setActivityRoomIds(List<String> roomIds) async {
-    final rooms = roomIds.map((r) => client.getRoomById(r)).toList();
-    roomIds = rooms
-        .where((r) => r?.activityPlan != null)
-        .map((rooms) => rooms!.id)
-        .toList();
-
-    List<String> ids = List.from(activityRoomIds);
-    ids.addAll(roomIds);
-    ids = ids.toSet().toList(); // remove duplicates
-    if (ids.length == activityRoomIds.length) return;
+  Future<void> addActivityRoomId(String roomId) async {
+    final List<String> ids = List.from(activityRoomIds);
+    if (ids.contains(roomId)) return;
+    ids.add(roomId);
 
     await client.setRoomStateWithKey(
       id,

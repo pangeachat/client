@@ -49,9 +49,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
     await showFutureLoadingDialog(
       context: context,
       future: () async {
-        await room.finishActivity(
-          room.client.userID!,
-        );
+        await room.finishActivity();
         if (mounted) {
           _setShowDropdown(false);
         }

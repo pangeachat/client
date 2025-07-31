@@ -27,30 +27,42 @@ extension ActivityRoomExtension on Room {
     }
   }
 
-  Future<void> setActivityRole(
-    String userId, {
+  Future<void> setActivityRole({
     String? role,
   }) async {
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.activityRole,
-      userId,
+      client.userID!,
       ActivityRoleModel(
-        userId: userId,
+        userId: client.userID!,
         role: role,
       ).toJson(),
     );
   }
 
-  Future<void> finishActivity(String userId) async {
-    final role = activityRole(userId);
+  Future<void> finishActivity() async {
+    final role = activityRole(client.userID!);
     if (role == null) return;
 
     role.finishedAt = DateTime.now();
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.activityRole,
-      userId,
+      client.userID!,
+      role.toJson(),
+    );
+  }
+
+  Future<void> archiveActivity() async {
+    final role = activityRole(client.userID!);
+    if (role == null) return;
+
+    role.archivedAt = DateTime.now();
+    await client.setRoomStateWithKey(
+      id,
+      PangeaEventTypes.activityRole,
+      client.userID!,
       role.toJson(),
     );
   }
