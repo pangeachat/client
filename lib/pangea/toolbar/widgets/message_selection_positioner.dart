@@ -153,7 +153,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   double get reactionsHeight {
     if (_reactionsRenderBox != null) {
-      return _reactionsRenderBox!.size.height + 4.0;
+      return _reactionsRenderBox!.size.height;
     }
     return hasReactions ? 28.0 : 0.0;
   }
@@ -332,7 +332,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     final messageHeight = originalMessageSize.height;
     final originalContentHeight =
-        messageHeight + reactionsHeight + AppConfig.toolbarMenuHeight + 4.0;
+        messageHeight + reactionsHeight + AppConfig.toolbarMenuHeight + 8.0;
 
     final screenHeight = mediaQuery!.size.height - mediaQuery!.padding.bottom;
 
@@ -343,7 +343,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
       return screenHeight - _fullContentHeight;
     }
 
-    return screenHeight - _originalMessageOffset.dy - originalContentHeight;
+    return boxHeight;
   }
 
   void _onContentSizeChanged(_) {
