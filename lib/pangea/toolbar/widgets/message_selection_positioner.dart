@@ -336,11 +336,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     final screenHeight = mediaQuery!.size.height - mediaQuery!.padding.bottom;
 
-    final boxHeight =
+    double boxHeight =
         screenHeight - _originalMessageOffset.dy - originalContentHeight;
 
     if (boxHeight + _fullContentHeight > screenHeight) {
-      return screenHeight - _fullContentHeight;
+      boxHeight = screenHeight - _fullContentHeight - 8.0;
     }
 
     return boxHeight;
