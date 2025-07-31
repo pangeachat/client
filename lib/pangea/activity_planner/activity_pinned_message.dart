@@ -64,6 +64,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
     }
 
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
 
     return Positioned(
       top: 0,
@@ -94,7 +95,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                           minimumSize: Size.zero,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 12.0,
-                            vertical: 2.0,
+                            vertical: 4.0,
                           ),
                           backgroundColor: theme.colorScheme.onSurface,
                           foregroundColor: theme.colorScheme.surface,
@@ -115,41 +116,54 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
             curve: Curves.easeInOut,
             child: ClipRect(
               child: _showDropdown
-                  ? Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.surfaceContainerHighest,
+                  ? Container(
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.surfaceContainerHighest,
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 16.0,
+                      ),
+                      child: Column(
+                        spacing: 12.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            L10n.of(context).endActivityDesc,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: isColumnMode ? 16.0 : 12.0,
+                            ),
                           ),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12.0,
-                            vertical: 16.0,
+                          CachedNetworkImage(
+                            imageUrl:
+                                "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.endActivityAssetPath}",
+                            width: isColumnMode ? 240.0 : 120.0,
                           ),
-                          child: Column(
-                            spacing: 12.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                L10n.of(context).endActivityDesc,
-                                textAlign: TextAlign.center,
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                                vertical: 8.0,
                               ),
-                              CachedNetworkImage(
-                                imageUrl:
-                                    "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.endActivityAssetPath}",
-                              ),
-                              ElevatedButton(
-                                onPressed: _finishActivity,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(L10n.of(context).endActivityTitle),
-                                  ],
+                              foregroundColor: theme.colorScheme.onSecondary,
+                              backgroundColor: theme.colorScheme.secondary,
+                            ),
+                            onPressed: _finishActivity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  L10n.of(context).endActivityTitle,
+                                  style: TextStyle(
+                                    fontSize: isColumnMode ? 16.0 : 12.0,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     )
                   : const SizedBox.shrink(),
             ),

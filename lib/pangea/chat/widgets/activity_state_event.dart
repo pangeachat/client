@@ -28,8 +28,8 @@ class ActivityStateEvent extends StatelessWidget {
             Text(activity.markdown),
             if (roles.isNotEmpty)
               Wrap(
-                spacing: 16.0,
-                runSpacing: 16.0,
+                spacing: 12.0,
+                runSpacing: 12.0,
                 children: event.room.activityRoles.map((role) {
                   return ActivityParticipantIndicator(
                     role: role,

@@ -173,13 +173,14 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                             const SizedBox(),
                                       ),
                               ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(vertical: 4.0),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 4.0),
                               child: Text(
                                 "This is the group Activity Summary Placeholder text.\nQuis varius quam quisque id diam. Aliquam sem et tortor consequat id porta nibh venenatis cras. Duis ut diam quam nulla. In metus vulputate eu scelerisque. Id aliquet lectus proin nibh nisl condimentum. ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: isColumnMode ? 16.0 : 12.0,
                                 ),
                               ),
                             ),
@@ -196,15 +197,17 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                               ),
                             const SizedBox(height: 8.0),
                             Wrap(
-                              spacing: 16.0,
-                              runSpacing: 16.0,
+                              spacing: 12.0,
+                              runSpacing: 12.0,
                               children: allRoles
                                   .map(
                                     (role) => Opacity(
                                       opacity:
                                           _highlightedRole == role ? 1.0 : 0.5,
                                       child: ActivityParticipantIndicator(
-                                        onTap: () => _highlightRole(role),
+                                        onTap: _highlightedRole == role
+                                            ? null
+                                            : () => _highlightRole(role),
                                         role: role,
                                         displayname: role.userId.localpart,
                                       ),
@@ -215,7 +218,10 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                             const SizedBox(height: 20.0),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.all(16.0),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12.0,
+                                  vertical: 8.0,
+                                ),
                                 foregroundColor:
                                     theme.colorScheme.onPrimaryContainer,
                                 backgroundColor:
@@ -244,8 +250,8 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                         : [
                             if (unassignedRoles > 0)
                               Wrap(
-                                spacing: 16.0,
-                                runSpacing: 16.0,
+                                spacing: 12.0,
+                                runSpacing: 12.0,
                                 children:
                                     List.generate(unassignedRoles, (index) {
                                   return ActivityParticipantIndicator(
@@ -254,19 +260,24 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                   );
                                 }),
                               ),
+                            const SizedBox(height: 16.0),
                             Text(
                               unassignedRoles > 0
                                   ? L10n.of(context).unjoinedActivityMessage
                                   : L10n.of(context).fullActivityMessage,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: isColumnMode ? 18.0 : 14.0,
+                                fontSize: isColumnMode ? 16.0 : 12.0,
                               ),
                             ),
+                            const SizedBox(height: 16.0),
                             if (unassignedRoles > 0)
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.all(16.0),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12.0,
+                                    vertical: 8.0,
+                                  ),
                                   foregroundColor:
                                       theme.colorScheme.onPrimaryContainer,
                                   backgroundColor:
@@ -284,7 +295,12 @@ class JoinActivityWidgetState extends State<JoinActivityWidget> {
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(L10n.of(context).confirmRole),
+                                    Text(
+                                      L10n.of(context).confirmRole,
+                                      style: TextStyle(
+                                        fontSize: isColumnMode ? 16.0 : 12.0,
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -316,6 +332,8 @@ class ActivityResultsCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -336,8 +354,8 @@ class ActivityResultsCarousel extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24.0),
               ),
-              height: 200.0,
-              width: 175.0,
+              // height: isColumnMode ? 300.0 : 200.0,
+              width: isColumnMode ? 225.0 : 175.0,
               child: Container(
                 decoration: BoxDecoration(
                   color: theme.colorScheme.surfaceContainer,
@@ -350,7 +368,7 @@ class ActivityResultsCarousel extends StatelessWidget {
                     Align(
                       alignment: Alignment.center,
                       child: Avatar(
-                        size: 40.0,
+                        size: isColumnMode ? 60.0 : 40.0,
                         mxContent: user?.avatarUrl,
                         name: user?.calcDisplayname() ?? selectedRole.userId,
                         userId: selectedRole.userId,
@@ -361,12 +379,12 @@ class ActivityResultsCarousel extends StatelessWidget {
                       selectedRole.role != null
                           ? "${selectedRole.role!} | ${selectedRole.userId.localpart}"
                           : "${selectedRole.userId.localpart}",
-                      style: const TextStyle(fontSize: 12.0),
+                      style: TextStyle(fontSize: isColumnMode ? 16.0 : 12.0),
                     ),
                     const SizedBox(height: 10.0),
-                    const Text(
+                    Text(
                       "Personal summary of this user in text form.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper a lacus vestibulum sed. ",
-                      style: TextStyle(fontSize: 8.0),
+                      style: TextStyle(fontSize: isColumnMode ? 12.0 : 8.0),
                     ),
                   ],
                 ),
