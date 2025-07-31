@@ -59,7 +59,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
 
   @override
   Widget build(BuildContext context) {
-    if (!room.hasJoinedActivity) {
+    if (!room.hasJoinedActivity || room.activityPlan == null) {
       return const SizedBox.shrink();
     }
 

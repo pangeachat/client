@@ -1,11 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
-import 'package:get_storage/get_storage.dart';
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
-
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
@@ -24,6 +18,10 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/practice_activities/practice_selection_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// A minimized version of AnalyticsController that get the logged in user's analytics
 class GetAnalyticsController extends BaseController {
@@ -108,7 +106,11 @@ class GetAnalyticsController extends BaseController {
         data: {},
       );
     } finally {
-      _updateAnalyticsStream(points: 0, newConstructs: []);
+      _updateAnalyticsStream(
+        type: AnalyticsUpdateType.local,
+        points: 0,
+        newConstructs: [],
+      );
       if (!initCompleter.isCompleted) initCompleter.complete();
       _initializing = false;
     }
@@ -130,7 +132,18 @@ class GetAnalyticsController extends BaseController {
   Future<void> _onAnalyticsUpdate(
     AnalyticsUpdate analyticsUpdate,
   ) async {
+    final validTypes = [AnalyticsUpdateType.local, AnalyticsUpdateType.server];
+    if (!validTypes.contains(analyticsUpdate.type)) {
+      _updateAnalyticsStream(
+        type: analyticsUpdate.type,
+        points: 0,
+        newConstructs: [],
+      );
+      return;
+    }
+
     if (analyticsUpdate.isLogout) return;
+
     final oldLevel = constructListModel.level;
 
     final offset =
@@ -176,6 +189,7 @@ class GetAnalyticsController extends BaseController {
       _onUnlockMorphLemmas(newUnlockedMorphs);
     }
     _updateAnalyticsStream(
+      type: analyticsUpdate.type,
       points: analyticsUpdate.newConstructs.fold<int>(
         0,
         (previousValue, element) => previousValue + element.xp,
@@ -193,12 +207,14 @@ class GetAnalyticsController extends BaseController {
   }
 
   void _updateAnalyticsStream({
+    required AnalyticsUpdateType type,
     required int points,
     required List<ConstructIdentifier> newConstructs,
     String? targetID,
   }) =>
       analyticsStream.add(
         AnalyticsStreamUpdate(
+          type: type,
           points: points,
           newConstructs: newConstructs,
           targetID: targetID,
@@ -570,6 +586,13 @@ class GetAnalyticsController extends BaseController {
 
     return summary;
   }
+
+  List<Room> get archivedActivities {
+    final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
+    if (analyticsRoom == null) return [];
+    final ids = analyticsRoom.activityRoomIds;
+    return ids.map((id) => _client.getRoomById(id)).whereType<Room>().toList();
+  }
 }
 
 class AnalyticsCacheEntry {
@@ -602,11 +625,13 @@ class AnalyticsCacheEntry {
 }
 
 class AnalyticsStreamUpdate {
+  final AnalyticsUpdateType type;
   final int points;
   final List<ConstructIdentifier> newConstructs;
   final String? targetID;
 
   AnalyticsStreamUpdate({
+    required this.type,
     required this.points,
     required this.newConstructs,
     this.targetID,

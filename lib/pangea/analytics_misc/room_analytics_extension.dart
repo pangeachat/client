@@ -280,13 +280,39 @@ extension AnalyticsRoomExtension on Room {
   Future<void> addActivityRoomId(String roomId) async {
     final List<String> ids = List.from(activityRoomIds);
     if (ids.contains(roomId)) return;
+
+    final prevLength = ids.length;
     ids.add(roomId);
 
+    final syncFuture = client.waitForRoomInSync(id, join: true);
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.activityRoomIds,
       "",
       {ModelKey.roomIds: ids},
     );
+    final newLength = activityRoomIds.length;
+    if (newLength == prevLength) {
+      await syncFuture;
+    }
+  }
+
+  Future<void> removeActivityRoomId(String roomId) async {
+    final List<String> ids = List.from(activityRoomIds);
+    if (!ids.contains(roomId)) return;
+    final prevLength = ids.length;
+    ids.remove(roomId);
+
+    final syncFuture = client.waitForRoomInSync(id, join: true);
+    await client.setRoomStateWithKey(
+      id,
+      PangeaEventTypes.activityRoomIds,
+      "",
+      {ModelKey.roomIds: ids},
+    );
+    final newLength = activityRoomIds.length;
+    if (newLength == prevLength) {
+      await syncFuture;
+    }
   }
 }

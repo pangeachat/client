@@ -213,20 +213,27 @@ class ChatView extends StatelessWidget {
                         tooltip: L10n.of(context).close,
                         color: theme.colorScheme.onTertiaryContainer,
                       )
-                    : FluffyThemes.isColumnMode(context)
-                        ? null
-                        : StreamBuilder<Object>(
-                            stream:
-                                Matrix.of(context).client.onSync.stream.where(
+                    // #Pangea
+                    : controller.widget.backButton != null
+                        ? controller.widget.backButton!
+                        // Pangea#
+                        : FluffyThemes.isColumnMode(context)
+                            ? null
+                            : StreamBuilder<Object>(
+                                stream: Matrix.of(context)
+                                    .client
+                                    .onSync
+                                    .stream
+                                    .where(
                                       (syncUpdate) => syncUpdate.hasRoomUpdate,
                                     ),
-                            builder: (context, _) => UnreadRoomsBadge(
-                              filter: (r) => r.id != controller.roomId,
-                              badgePosition:
-                                  BadgePosition.topEnd(end: 8, top: 4),
-                              child: const Center(child: BackButton()),
-                            ),
-                          ),
+                                builder: (context, _) => UnreadRoomsBadge(
+                                  filter: (r) => r.id != controller.roomId,
+                                  badgePosition:
+                                      BadgePosition.topEnd(end: 8, top: 4),
+                                  child: const Center(child: BackButton()),
+                                ),
+                              ),
                 titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
                 title: ChatAppBarTitle(controller),
                 actions: _appBarActions(context),

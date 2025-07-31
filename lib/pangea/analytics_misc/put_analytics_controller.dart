@@ -15,7 +15,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-enum AnalyticsUpdateType { server, local }
+enum AnalyticsUpdateType { server, local, activities }
 
 /// handles the processing of analytics for
 /// 1) messages sent by the user and
@@ -24,6 +24,7 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
   late PangeaController _pangeaController;
   StreamController<AnalyticsUpdate> analyticsUpdateStream =
       StreamController.broadcast();
+
   StreamSubscription<AnalyticsStream>? _analyticsStream;
   StreamSubscription? _languageStream;
   Timer? _updateTimer;
@@ -419,19 +420,35 @@ class PutAnalyticsController extends BaseController<AnalyticsStream> {
     if (_pangeaController.matrixState.client.userID == null) return;
     if (_pangeaController.languageController.userL2 == null) return;
 
-    try {
-      final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
-        _pangeaController.languageController.userL2!,
-      );
-      await analyticsRoom?.addActivityRoomId(roomId);
-    } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        m: "Failed to send activity analytics",
-        s: s,
-        data: {},
-      );
-    }
+    final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
+      _pangeaController.languageController.userL2!,
+    );
+    if (analyticsRoom == null) return;
+    await analyticsRoom.addActivityRoomId(roomId);
+
+    analyticsUpdateStream.add(
+      AnalyticsUpdate(
+        AnalyticsUpdateType.activities,
+        [],
+      ),
+    );
+  }
+
+  Future<void> removeActivityAnalytics(String roomId) async {
+    if (_pangeaController.matrixState.client.userID == null) return;
+    if (_pangeaController.languageController.userL2 == null) return;
+
+    final Room? analyticsRoom = await _client.getMyAnalyticsRoom(
+      _pangeaController.languageController.userL2!,
+    );
+    if (analyticsRoom == null) return;
+    await analyticsRoom.removeActivityRoomId(roomId);
+    analyticsUpdateStream.add(
+      AnalyticsUpdate(
+        AnalyticsUpdateType.activities,
+        [],
+      ),
+    );
   }
 }
 

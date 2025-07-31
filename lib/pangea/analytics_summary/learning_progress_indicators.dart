@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
@@ -99,6 +100,8 @@ class LearningProgressIndicatorsState
     final userL1 = MatrixState.pangeaController.languageController.userL1;
     final userL2 = MatrixState.pangeaController.languageController.userL2;
 
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
     return Row(
       children: [
         Expanded(
@@ -111,7 +114,7 @@ class LearningProgressIndicatorsState
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Row(
-                      spacing: 16.0,
+                      spacing: isColumnMode ? 16.0 : 4.0,
                       children: [
                         ...ConstructTypeEnum.values.map(
                           (c) => HoverButton(
@@ -149,8 +152,9 @@ class LearningProgressIndicatorsState
                                   weight: 1000,
                                 ),
                                 const SizedBox(width: 6.0),
-                                const AnimatedFloatingNumber(
-                                  number: 10,
+                                AnimatedFloatingNumber(
+                                  number: MatrixState.pangeaController
+                                      .getAnalytics.archivedActivities.length,
                                 ),
                               ],
                             ),
