@@ -147,18 +147,17 @@ class PracticeTarget {
   }
 
   /// if any of the choices were correct, return true
-  /// if all of the choices were incorrect, return false
-  /// if null, it means the user has not yet responded with that choice
+  /// if most recent choice was incorrect, return false
+  /// null for all other situations
   bool? wasCorrectMatch(PracticeChoice choice) {
     for (final response in record.responses) {
       if (response.text == choice.choiceContent && response.isCorrect) {
         return true;
       }
     }
-    for (final response in record.responses) {
-      if (response.text == choice.choiceContent) {
-        return false;
-      }
+
+    if (record.latestResponse?.text == choice.choiceContent) {
+      return false;
     }
     return null;
   }
