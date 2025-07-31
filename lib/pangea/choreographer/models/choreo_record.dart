@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:fluffychat/pangea/choreographer/models/choreo_edit.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'it_step.dart';
 
 /// this class lives within a [PangeaIGCEvent]
@@ -27,7 +28,6 @@ class ChoreoRecord {
     required this.choreoSteps,
     required this.openMatches,
     required this.originalText,
-    // required this.current,
   });
 
   factory ChoreoRecord.fromJson(
@@ -35,31 +35,84 @@ class ChoreoRecord {
     String? defaultOriginalText,
   ]) {
     final stepsRaw = json[_stepsKey];
-    String? previousText;
     String? originalText = json[_originalTextKey];
 
-    final steps = (jsonDecode(stepsRaw ?? "[]") as Iterable)
-        .map((e) {
-          final ChoreoRecordStep step = ChoreoRecordStep.fromJson(e);
-          final migratedText = e["txt"] as String?;
+    List<ChoreoRecordStep> steps = [];
+    final stepContent = (jsonDecode(stepsRaw ?? "[]") as Iterable);
 
-          // If step uses updated version, don't change anything
-          if (migratedText == null) return step;
+    if (stepContent.isNotEmpty &&
+        originalText == null &&
+        stepContent.first["txt"] is String) {
+      originalText = stepContent.first["txt"];
+    }
 
-          // If this is first step, initialize previousText and originalText
-          previousText ??= migratedText;
-          originalText ??= migratedText;
+    if (stepContent.every((step) => step["txt"] is! String)) {
+      steps = stepContent
+          .map((e) => ChoreoRecordStep.fromJson(e))
+          .toList()
+          .cast<ChoreoRecordStep>();
+    } else {
+      String? currentEdit = originalText;
+      for (final content in stepContent) {
+        final String textBefore = content["txt"] ?? "";
+        String textAfter = textBefore;
 
-          // Convert text to edits
-          step.edits = ChoreoEdit.fromText(
-            originalText: previousText!,
-            editedText: migratedText,
+        currentEdit ??= textBefore;
+
+        // typically, taking the original text and applying the edits from the choreo steps
+        // will yield a correct result, but it's possible the user manually changed the text
+        // between steps, so we need handle that by adding an extra step
+        if (textBefore != currentEdit) {
+          final edits = ChoreoEdit.fromText(
+            originalText: currentEdit,
+            editedText: textBefore,
           );
-          previousText = migratedText;
-          return step;
-        })
-        .toList()
-        .cast<ChoreoRecordStep>();
+
+          steps.add(ChoreoRecordStep(edits: edits));
+          currentEdit = textBefore;
+        }
+
+        int offset = 0;
+        int length = 0;
+        String insert = "";
+
+        final step = ChoreoRecordStep.fromJson(content);
+        if (step.acceptedOrIgnoredMatch != null) {
+          final SpanData? match = step.acceptedOrIgnoredMatch?.match;
+          final correction = match?.bestChoice;
+          if (correction != null) {
+            offset = match!.offset;
+            length = match.length;
+            insert = correction.value;
+          }
+        } else if (step.itStep != null) {
+          final chosen = step.itStep!.chosenContinuance;
+          if (chosen != null) {
+            offset = (content["txt"] ?? "").length;
+            insert = chosen.text;
+          }
+        }
+
+        if (textBefore.length - offset - length < 0) {
+          length = textBefore.length - offset;
+        }
+
+        textAfter = textBefore.replaceRange(
+          offset,
+          offset + length,
+          insert,
+        );
+
+        final edits = ChoreoEdit.fromText(
+          originalText: currentEdit,
+          editedText: textAfter,
+        );
+
+        currentEdit = textAfter;
+        step.edits = edits;
+        steps.add(step);
+      }
+    }
 
     if (originalText == null &&
         (steps.isNotEmpty || defaultOriginalText == null)) {
@@ -77,7 +130,6 @@ class ChoreoRecord {
           })
           .toList()
           .cast<PangeaMatch>(),
-      // current: json[_currentKey],
     );
   }
 
