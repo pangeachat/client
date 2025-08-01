@@ -13,6 +13,9 @@ import 'package:fluffychat/pages/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/pages/chat/chat_app_bar_title.dart';
 import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_pinned_message.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_planner/join_activity_widget.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar_header.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_view_background.dart';
@@ -413,13 +416,18 @@ class ChatView extends StatelessWidget {
                               ),
                             // #Pangea
                             // Keep messages above minimum input bar height
-                            if (!controller.room.isAbandonedDMRoom)
+                            if (!controller.room.isAbandonedDMRoom &&
+                                controller.room.canSendDefaultMessages &&
+                                controller.room.membership == Membership.join &&
+                                controller.room.hasJoinedActivity &&
+                                !controller.room.hasFinishedActivity)
                               AnimatedSize(
                                 duration: const Duration(milliseconds: 200),
                                 child: SizedBox(
                                   height: controller.inputBarHeight,
                                 ),
                               ),
+                            JoinActivityWidget(room: controller.room),
                             // Pangea#
                           ],
                         ),
@@ -427,7 +435,9 @@ class ChatView extends StatelessWidget {
                         ChatViewBackground(controller.choreographer),
                         if (!controller.room.isAbandonedDMRoom &&
                             controller.room.canSendDefaultMessages &&
-                            controller.room.membership == Membership.join)
+                            controller.room.membership == Membership.join &&
+                            controller.room.hasJoinedActivity &&
+                            !controller.room.hasFinishedActivity)
                           Positioned(
                             left: 0,
                             right: 0,
@@ -447,6 +457,7 @@ class ChatView extends StatelessWidget {
                               ],
                             ),
                           ),
+                        ActivityPinnedMessage(controller),
                         // Pangea#
                       ],
                     ),
