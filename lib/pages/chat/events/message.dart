@@ -360,13 +360,7 @@ class Message extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(
                                       AppConfig.borderRadius / 2,
                                     ),
-                                    // #Pangea
-                                    //color: selected || highlightMarker
-                                    color: selected ||
-                                            (highlightMarker &&
-                                                event.room.pinnedEventIds
-                                                    .contains(event.eventId))
-                                        // Pangea#
+                                    color: selected || highlightMarker
                                         ? theme.colorScheme.secondaryContainer
                                             .withAlpha(128)
                                         : Colors.transparent,
