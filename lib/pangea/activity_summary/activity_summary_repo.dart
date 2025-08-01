@@ -1,20 +1,23 @@
 import 'dart:convert';
 
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
+
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
 
 class ActivitySummaryRepo {
   static final GetStorage _activitySummaryStorage =
       GetStorage('activity_summary_storage');
 
-  static void set(ActivitySummaryRequestModel request,
-      ActivitySummaryResponseModel response) {
+  static void set(
+    ActivitySummaryRequestModel request,
+    ActivitySummaryResponseModel response,
+  ) {
     _activitySummaryStorage.write(_storageKey(request), response.toJson());
   }
 
@@ -24,7 +27,8 @@ class ActivitySummaryRepo {
   }
 
   static Future<ActivitySummaryResponseModel> get(
-      ActivitySummaryRequestModel request) async {
+    ActivitySummaryRequestModel request,
+  ) async {
     final cachedJson = _activitySummaryStorage.read(_storageKey(request));
     if (cachedJson != null) {
       final cached = ActivitySummaryResponseModel.fromJson(cachedJson);
