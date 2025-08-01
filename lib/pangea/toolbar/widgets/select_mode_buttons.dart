@@ -109,7 +109,7 @@ enum MessageActions {
       case MessageActions.pin:
         return l10n.pinMessage;
       case MessageActions.unpin:
-        return l10n.unpinMessage;
+        return l10n.unpin;
       case MessageActions.report:
         return l10n.reportMessage;
       case MessageActions.info:
@@ -647,6 +647,9 @@ class MoreButton extends StatelessWidget {
       return false;
     }
 
+    final isPinned = events.length == 1 &&
+        controller.room.pinnedEventIds.contains(events.first.eventId);
+
     switch (action) {
       case MessageActions.reply:
         return events.length == 1 && controller.room.canSendDefaultMessages;
@@ -662,9 +665,9 @@ class MoreButton extends StatelessWidget {
       case MessageActions.download:
         return controller.canSaveSelectedEvent;
       case MessageActions.pin:
-        return controller.canPinSelectedEvents && !controller.isPinned;
+        return controller.canPinSelectedEvents && !isPinned;
       case MessageActions.unpin:
-        return controller.canPinSelectedEvents && controller.isPinned;
+        return controller.canPinSelectedEvents && isPinned;
       case MessageActions.forward:
       case MessageActions.report:
       case MessageActions.info:

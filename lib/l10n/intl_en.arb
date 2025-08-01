@@ -5092,6 +5092,5 @@
   "errorFetchingTranslation": "Failed to fetch translation",
   "errorFetchingActivity": "Failed to fetch activity",
   "check": "Check",
-  "unableToFindRoom": "No chat or space found with that code. Please try again.",
-  "unpinMessage": "Unpin"
+  "unableToFindRoom": "No chat or space found with that code. Please try again."
 }

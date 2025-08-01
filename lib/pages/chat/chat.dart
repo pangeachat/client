@@ -1446,11 +1446,6 @@ class ChatController extends State<ChatPageWithRoom>
     return true;
   }
 
-  // #Pangea
-  bool get isPinned =>
-      room.pinnedEventIds.contains(selectedEvents.single.eventId);
-  // #Pangea
-
   bool get canEditSelectedEvents {
     if (isArchived ||
         selectedEvents.length != 1 ||
@@ -1825,13 +1820,11 @@ class ChatController extends State<ChatPageWithRoom>
     //   context: context,
     //   future: () => room.setPinnedEvents(pinnedEventIds),
     // );
-    setState(() {
-      clearSelectedEvents();
-    });
     await showFutureLoadingDialog(
       context: context,
       future: () => room.setPinnedEvents(pinnedEventIds),
     );
+    clearSelectedEvents();
     // Pangea#
   }
 
