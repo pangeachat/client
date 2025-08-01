@@ -141,11 +141,19 @@ class PracticeActivityModel {
   ) {
     // the user has already selected this choice
     // so we don't want to record it again
+    if (isComplete) {
+      return;
+    }
     if (practiceTarget.record.alreadyHasMatchResponse(
-          token.vocabConstructID,
-          choice.choiceContent,
-        ) ||
-        isComplete) {
+      token.vocabConstructID,
+      choice.choiceContent,
+    )) {
+      // Update repeated match timestamp
+      practiceTarget.record.responses
+          .firstWhereOrNull(
+            (element) => element.text == choice.choiceContent,
+          )
+          ?.timestamp = DateTime.now();
       return;
     }
 

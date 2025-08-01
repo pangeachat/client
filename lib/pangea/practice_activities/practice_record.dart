@@ -175,7 +175,7 @@ class ActivityRecordResponse {
   final String? text;
   final Uint8List? audioBytes;
   final Uint8List? imageBytes;
-  final DateTime timestamp;
+  DateTime timestamp;
   final double score;
 
   ActivityRecordResponse({
