@@ -6,8 +6,12 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_repo.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
+import 'package:fluffychat/pangea/chat_settings/utils/download_chat.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 
 extension ActivityRoomExtension on Room {
   Future<void> sendActivityPlan(
@@ -46,11 +50,56 @@ extension ActivityRoomExtension on Room {
     if (role == null) return;
 
     role.finishedAt = DateTime.now();
+    final syncFuture = client.waitForRoomInSync(id);
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.activityRole,
       client.userID!,
       role.toJson(),
+    );
+    await syncFuture;
+
+    if (activityIsFinished) {
+      await fetchSummaries();
+    }
+  }
+
+  Future<void> fetchSummaries() async {
+    final events = await getAllEvents(this);
+    final List<ActivitySummaryResultsMessage> messages = [];
+    for (final event in events) {
+      if (event.type != EventTypes.Message ||
+          event.messageType != MessageTypes.Text) {
+        continue;
+      }
+
+      final timeline = this.timeline ?? await getTimeline();
+      final pangeaMessage = PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: client.userID == event.senderId,
+      );
+
+      final activityMessage = ActivitySummaryResultsMessage(
+        userId: event.senderId,
+        sent: pangeaMessage.originalSent?.text ?? event.body,
+        written: pangeaMessage.originalWrittenContent,
+        time: event.originServerTs,
+        tool: [
+          if (pangeaMessage.originalSent?.choreo?.includedIT == true) "it",
+          if (pangeaMessage.originalSent?.choreo?.includedIGC == true) "igc",
+        ],
+      );
+
+      messages.add(activityMessage);
+    }
+
+    await ActivitySummaryRepo.get(
+      ActivitySummaryRequestModel(
+        activity: activityPlan!,
+        activityResults: messages,
+        contentFeedback: [],
+      ),
     );
   }
 
