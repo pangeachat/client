@@ -322,9 +322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Confirma";
     },
-    get$contentHasBeenReported() {
-      return "El contingut s\u2019ha denunciat als administradors del servidor";
-    },
     get$copiedToClipboard() {
       return "S\u2019ha copiat al porta-retalls";
     },
@@ -445,9 +442,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "S\u2019ha produ\xeft un error en obtenir la ubicaci\xf3: " + error;
     },
-    get$extremeOffensive() {
-      return "Extremadament ofensiu";
-    },
     get$fontSize(_) {
       return "Mida de la lletra";
     },
@@ -481,9 +475,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Amaga els missatges que tinguin un format desconegut";
     },
-    get$howOffensiveIsThisContent() {
-      return "Com d\u2019ofensiu \xe9s aquest contingut?";
-    },
     get$block() {
       return "Bloca";
     },
@@ -501,9 +492,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Frase de seguretat o clau de recuperaci\xf3 incorrecta";
-    },
-    get$inoffensive() {
-      return "Inofensiu";
     },
     get$inviteContact() {
       return "Convida contacte";
@@ -4498,6 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_174", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "eJuv8Op4ICq4e7dLsJ1WSK2bntw=");
+})($__dart_deferred_initializers__, "BBnZPlweJwP58VSkmxH3GpSWWJo=");
 ;
 //# sourceMappingURL=main.dart.js_174.part.js.map

@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Conferma";
     },
-    get$contentHasBeenReported() {
-      return "Il contenuto \xe8 stato segnalato agli amministratori del server";
-    },
     get$copiedToClipboard() {
       return "Copiato negli Appunti";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Errore cercando di ottenere la posizione: " + error;
     },
-    get$extremeOffensive() {
-      return "Estremamente offensivo";
-    },
     get$fontSize(_) {
       return "Dimensione carattere";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Nascondi formati di messaggi non validi o sconosciuti";
     },
-    get$howOffensiveIsThisContent() {
-      return "Quanto \xe8 offensivo questo contenuto?";
-    },
     get$block() {
       return "Blocca";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Frase segrata o chiave di ripristino errate";
-    },
-    get$inoffensive() {
-      return "Inoffensivo";
     },
     get$inviteContact() {
       return "Invita contatto";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_237", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "6i71sEIAIZinrLyYVW0z4qA3c5c=");
+})($__dart_deferred_initializers__, "oivR5sQiqvTouY81+zI+VguK38U=");
 ;
 //# sourceMappingURL=main.dart.js_237.part.js.map

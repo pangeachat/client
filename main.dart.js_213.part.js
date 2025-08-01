@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Confirmer";
     },
-    get$contentHasBeenReported() {
-      return "Le contenu a \xe9t\xe9 signal\xe9 aux administrateurs du serveur";
-    },
     get$copiedToClipboard() {
       return "Copi\xe9 dans le presse-papier";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Erreur lors de l'obtention de la localisation : " + error;
     },
-    get$extremeOffensive() {
-      return "Extr\xeamement offensant";
-    },
     get$fontSize(_) {
       return "Taille de la police";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Masquer les formats de message invalides ou inconnus";
     },
-    get$howOffensiveIsThisContent() {
-      return "\xc0 quel point ce contenu est-il offensant\xa0?";
-    },
     get$block() {
       return "Bloquer";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Phrase de passe ou cl\xe9 de r\xe9cup\xe9ration incorrecte";
-    },
-    get$inoffensive() {
-      return "Non offensant";
     },
     get$inviteContact() {
       return "Inviter un contact";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_213", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "nEp+u2yHu4PLaP2kzLmlDLuwqhs=");
+})($__dart_deferred_initializers__, "FeyCe1xcpVkzoI5AcDfjqsE50Tk=");
 ;
 //# sourceMappingURL=main.dart.js_213.part.js.map

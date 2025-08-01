@@ -322,9 +322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Konfirmi";
     },
-    get$contentHasBeenReported() {
-      return "La enhavo raporti\u011dis al la administrantoj de la servilo";
-    },
     get$copiedToClipboard() {
       return "Kopiite al tondujo";
     },
@@ -445,9 +442,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Eraris akirado de loko: " + error;
     },
-    get$extremeOffensive() {
-      return "Tre ofenda";
-    },
     get$fontSize(_) {
       return "Grandeco de tiparo";
     },
@@ -481,9 +475,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "Kiel ofenda estas \u0109i tiu enhavo?";
-    },
     get$block() {
       return "Block";
     },
@@ -501,9 +492,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Ne\u011dusta pasfrazo a\u016d rehava \u015dlosilo";
-    },
-    get$inoffensive() {
-      return "Neofenda";
     },
     get$inviteContact() {
       return "Inviti kontakton";
@@ -4498,6 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_197", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "kJDkJoka4JcYDdRg9f90IFvPDfs=");
+})($__dart_deferred_initializers__, "RqCTv0Uxy+27uNxawthDLjA4/IM=");
 ;
 //# sourceMappingURL=main.dart.js_197.part.js.map

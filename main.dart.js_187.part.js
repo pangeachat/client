@@ -322,9 +322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Confirm";
     },
-    get$contentHasBeenReported() {
-      return "The content has been reported to the server admins";
-    },
     get$copiedToClipboard() {
       return "Copied to clipboard";
     },
@@ -445,9 +442,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Error obtaining location: " + error;
     },
-    get$extremeOffensive() {
-      return "Extremely offensive";
-    },
     get$fontSize(_) {
       return "Font size";
     },
@@ -481,9 +475,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "How offensive is this content?";
-    },
     get$block() {
       return "Block";
     },
@@ -501,9 +492,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Incorrect passphrase or recovery key";
-    },
-    get$inoffensive() {
-      return "Inoffensive";
     },
     get$inviteContact() {
       return "Invite contact";
@@ -4498,6 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_187", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+a+SOlG7wU+XmDXlJfbzaMhMU3I=");
+})($__dart_deferred_initializers__, "04jUTH1eGmvzDuoM8w56GslHBnc=");
 ;
 //# sourceMappingURL=main.dart.js_187.part.js.map

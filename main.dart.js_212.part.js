@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Kumpirmahin";
     },
-    get$contentHasBeenReported() {
-      return "Inulat ang nilalaman sa mga pangangasiwa ng server";
-    },
     get$copiedToClipboard() {
       return "Kinopya sa clipboard";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Hindi makuha ang lokasyon: " + error;
     },
-    get$extremeOffensive() {
-      return "Lubhang nakakasakit";
-    },
     get$fontSize(_) {
       return "Laki ng font";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "How offensive is this content?";
-    },
     get$block() {
       return "Block";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Incorrect passphrase or recovery key";
-    },
-    get$inoffensive() {
-      return "Inoffensive";
     },
     get$inviteContact() {
       return "Invite contact";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_212", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "0gY4oQ066ZK3RYJOzHOwCcjmLhc=");
+})($__dart_deferred_initializers__, "xpfUvLNCtxyqQFP5S689o5fBBPo=");
 ;
 //# sourceMappingURL=main.dart.js_212.part.js.map

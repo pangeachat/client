@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "X\xe1c nh\u1eadn";
     },
-    get$contentHasBeenReported() {
-      return "N\u1ed9i dung \u0111\xe3 \u0111\u01b0\u1ee3c b\xe1o c\xe1o";
-    },
     get$copiedToClipboard() {
       return "\u0110\xe3 sao ch\xe9p v\xe0o khay nh\u1edb t\u1ea1m";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "L\u1ed7i khi l\u1ea5y v\u1ecb tr\xed: " + error;
     },
-    get$extremeOffensive() {
-      return "C\u1ef1c k\u1ef3 x\xfac ph\u1ea1m";
-    },
     get$fontSize(_) {
       return "K\xedch th\u01b0\u1edbc ph\xf4ng ch\u1eef";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "\u1ea8n c\xe1c \u0111\u1ecbnh d\u1ea1ng tin nh\u1eafn kh\xf4ng h\u1ee3p l\u1ec7 ho\u1eb7c ch\u01b0a \u0111\u01b0\u1ee3c bi\u1ebft";
     },
-    get$howOffensiveIsThisContent() {
-      return "N\u1ed9i dung n\xe0y m\u1ee9c \u0111\u1ed9 x\xfac ph\u1ea1m nh\u01b0 th\u1ebf n\xe0o?";
-    },
     get$block() {
       return "ch\u1eb7n";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "C\u1ee5m m\u1eadt kh\u1ea9u ho\u1eb7c kh\xf3a kh\xf4i ph\u1ee5c kh\xf4ng ch\xednh x\xe1c";
-    },
-    get$inoffensive() {
-      return "\xcdt x\xfac ph\u1ea1m";
     },
     get$inviteContact() {
       return "M\u1eddi li\xean h\u1ec7";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "jD+Etj9fsR5q46XVI7fN9Ir4p5o=");
+})($__dart_deferred_initializers__, "UkF/K/k8yjz0MJGIMUuyo3la6yY=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map

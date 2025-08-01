@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "\u05dc\u05d0\u05e9\u05e8";
     },
-    get$contentHasBeenReported() {
-      return "\u05d4\u05ea\u05d5\u05db\u05df \u05d3\u05d5\u05d5\u05d7 \u05dc\u05de\u05e0\u05d4\u05dc\u05d9 \u05d4\u05e9\u05e8\u05ea";
-    },
     get$copiedToClipboard() {
       return "\u05d4\u05d5\u05e2\u05ea\u05e7 \u05dc\u05dc\u05d5\u05d7 \u05d4\u05d2\u05d6\u05d9\u05e8\u05d9\u05dd";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "\u05e9\u05d2\u05d9\u05d0\u05d4 \u05d1\u05d4\u05e9\u05d2\u05ea \u05de\u05d9\u05e7\u05d5\u05dd: " + error;
     },
-    get$extremeOffensive() {
-      return "\u05e4\u05d5\u05d2\u05e2\u05e0\u05d9 \u05d1\u05d9\u05d5\u05ea\u05e8";
-    },
     get$fontSize(_) {
       return "\u05d2\u05d5\u05d3\u05dc \u05d2\u05d5\u05e4\u05df";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "\u05e2\u05d3 \u05db\u05de\u05d4 \u05d4\u05ea\u05d5\u05db\u05df \u05d4\u05d6\u05d4 \u05e4\u05d5\u05d2\u05e2\u05e0\u05d9?";
-    },
     get$block() {
       return "Block";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "\u05d1\u05d9\u05d8\u05d5\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4 \u05d0\u05d5 \u05de\u05e4\u05ea\u05d7 \u05e9\u05d7\u05d6\u05d5\u05e8 \u05e9\u05d2\u05d5\u05d9\u05d9\u05dd";
-    },
-    get$inoffensive() {
-      return "\u05dc\u05b9\u05d0 \u05e4\u05bc\u05d5\u05b9\u05d2\u05b5\u05e2\u05b7";
     },
     get$inviteContact() {
       return "\u05d4\u05d6\u05de\u05df \u05d0\u05d9\u05e9 \u05e7\u05e9\u05e8";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_221", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "g41SW+lTRNYNqTWAaXujkT2qGOg=");
+})($__dart_deferred_initializers__, "kLrPdlbegWdAsdoBXH/4gBoUfh4=");
 ;
 //# sourceMappingURL=main.dart.js_221.part.js.map

@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Potvrdi";
     },
-    get$contentHasBeenReported() {
-      return "Sadr\u017eaj je prijavljen administratorima poslu\u017eitelja";
-    },
     get$copiedToClipboard() {
       return "Kopirano u me\u0111uspremnik";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Gre\u0161ka u dohva\u0107anju lokacije: " + error;
     },
-    get$extremeOffensive() {
-      return "Izrazito uvredljiv";
-    },
     get$fontSize(_) {
       return "Veli\u010dina fonta";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Sakrij neva\u017ee\u0107e ili nepoznate formate poruka";
     },
-    get$howOffensiveIsThisContent() {
-      return "Koliko je ovaj sadr\u017eaj uvredljiv?";
-    },
     get$block() {
       return "Blokiraj";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Neispravna lozinka ili klju\u010d za obnavljanje";
-    },
-    get$inoffensive() {
-      return "Neuvredljiv";
     },
     get$inviteContact() {
       return "Pozovi kontakt";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_223", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "oOSw5j9ajpxfAxVu8Pbc5P36I+E=");
+})($__dart_deferred_initializers__, "eKqBAtLfOrfVL6FwVOqu7HTvNmM=");
 ;
 //# sourceMappingURL=main.dart.js_223.part.js.map

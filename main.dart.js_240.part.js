@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "\u10d3\u10d0\u10d3\u10d0\u10e1\u10e2\u10e3\u10e0\u10d4\u10d1\u10d0";
     },
-    get$contentHasBeenReported() {
-      return "\u10d4\u10e1 \u10d9\u10dd\u10dc\u10e2\u10d4\u10dc\u10e2\u10d8 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d8\u10da \u10d8\u10e5\u10dc\u10d0 \u10e1\u10d4\u10e0\u10d5\u10d4\u10e0\u10d8\u10e1 \u10d0\u10d3\u10db\u10d8\u10dc\u10d8\u10e1\u10e2\u10e0\u10d0\u10e2\u10dd\u10e0\u10d4\u10d1\u10d7\u10d0\u10dc";
-    },
     get$copiedToClipboard() {
       return "\u10d9\u10dd\u10de\u10d8\u10e0\u10d4\u10d1\u10e3\u10da\u10d8\u10d0 \u10d1\u10e3\u10e4\u10d4\u10e0\u10e8\u10d8";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Error obtaining location: " + error;
     },
-    get$extremeOffensive() {
-      return "Extremely offensive";
-    },
     get$fontSize(_) {
       return "Font size";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "How offensive is this content?";
-    },
     get$block() {
       return "Block";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Incorrect passphrase or recovery key";
-    },
-    get$inoffensive() {
-      return "Inoffensive";
     },
     get$inviteContact() {
       return "Invite contact";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_240", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "wCjDPXpdd721Ub+4JbsXR0r4iBQ=");
+})($__dart_deferred_initializers__, "IMRR2Bj7ZZlApUvo3SUNZl1i46s=");
 ;
 //# sourceMappingURL=main.dart.js_240.part.js.map

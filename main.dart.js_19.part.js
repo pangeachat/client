@@ -334,9 +334,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Confirm";
     },
-    get$contentHasBeenReported() {
-      return "The content has been reported to the server admins";
-    },
     get$copiedToClipboard() {
       return "Copiada para a \xe1rea de transfer\xeancia";
     },
@@ -457,9 +454,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Error obtaining location: " + error;
     },
-    get$extremeOffensive() {
-      return "Extremely offensive";
-    },
     get$fontSize(_) {
       return "Font size";
     },
@@ -493,9 +487,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "How offensive is this content?";
-    },
     get$block() {
       return "Block";
     },
@@ -513,9 +504,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Incorrect passphrase or recovery key";
-    },
-    get$inoffensive() {
-      return "Inoffensive";
     },
     get$inviteContact() {
       return "Invite contact";
@@ -4782,9 +4770,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Confirma";
     },
-    get$contentHasBeenReported() {
-      return "O conte\xfado foi denunciado para quem administra o servidor";
-    },
     get$copiedToClipboard() {
       return "Copiado para \xe1rea de transfer\xeancia";
     },
@@ -4899,9 +4884,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Erro ao obter local: " + error;
     },
-    get$extremeOffensive() {
-      return "Extremamente ofensivo";
-    },
     get$fontSize(_) {
       return "Tamanho da fonte";
     },
@@ -4935,9 +4917,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Esconder formatos de mensagem inv\xe1lidos ou desconhecidos";
     },
-    get$howOffensiveIsThisContent() {
-      return "O qu\xe3o ofensivo \xe9 este conte\xfado?";
-    },
     get$block() {
       return "Bloquear";
     },
@@ -4955,9 +4934,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Frase secreta ou chave de recupera\xe7\xe3o incorreta";
-    },
-    get$inoffensive() {
-      return "Inofensivo";
     },
     get$inviteContact() {
       return "Convidar contato";
@@ -5909,9 +5885,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Confirmar";
     },
-    get$contentHasBeenReported() {
-      return "O conte\xfado foi denunciado aos admins do servidor";
-    },
     get$copiedToClipboard() {
       return "Copiado para a \xe1rea de transfer\xeancia";
     },
@@ -6017,9 +5990,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Erro ao obter localiza\xe7\xe3o: " + error;
     },
-    get$extremeOffensive() {
-      return "Extremamente ofensivo";
-    },
     get$fontSize(_) {
       return "Tamanho da letra";
     },
@@ -6038,17 +6008,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$help() {
       return "Ajuda";
     },
-    get$howOffensiveIsThisContent() {
-      return "Qu\xe3o ofensivo \xe9 este conte\xfado?";
-    },
     get$iHaveClickedOnLink() {
       return "Eu cliquei na liga\xe7\xe3o";
     },
     get$incorrectPassphraseOrKey() {
       return "Senha ou chave de recupera\xe7\xe3o incorretos";
-    },
-    get$inoffensive() {
-      return "Inofensivo";
     },
     get$inviteContact() {
       return "Convidar contacto";
@@ -6328,6 +6292,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_19", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "75Dqf8V7yDQTFZUPrjsWk9IS1zM=");
+})($__dart_deferred_initializers__, "q8r7BiWKkwtyulQA8JbPV62qeds=");
 ;
 //# sourceMappingURL=main.dart.js_19.part.js.map

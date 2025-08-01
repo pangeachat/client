@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Baieztatu";
     },
-    get$contentHasBeenReported() {
-      return "Edukia zerbitzariko administratzaileei jakinarazi zaie";
-    },
     get$copiedToClipboard() {
       return "Arbelera kopiatu da";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Errorea kokapena lortzerakoan: " + error;
     },
-    get$extremeOffensive() {
-      return "Izugarri iraingarria";
-    },
     get$fontSize(_) {
       return "Letraren tamaina";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Ezkutatu mezuen formatu ezezagun edo baliogabea";
     },
-    get$howOffensiveIsThisContent() {
-      return "Zenbaterainoko iraingarria da eduki hau?";
-    },
     get$block() {
       return "Blokeatu";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Pasaesaldi edo berreskuratze-gakoa ez da zuzena";
-    },
-    get$inoffensive() {
-      return "Ez da iraingarria";
     },
     get$inviteContact() {
       return "Kontaktuak gonbidatu";
@@ -4500,6 +4488,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_208", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "orAOdZbPVHSQ8evRLo4b2cqRk9Q=");
+})($__dart_deferred_initializers__, "J1ohzRhZ/8xkBWrpG9Nid0N/nME=");
 ;
 //# sourceMappingURL=main.dart.js_208.part.js.map

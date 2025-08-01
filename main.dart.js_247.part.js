@@ -322,9 +322,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Potwierd\u017a";
     },
-    get$contentHasBeenReported() {
-      return "Tre\u015b\u0107 zosta\u0142a zg\u0142oszona administratorom serwera";
-    },
     get$copiedToClipboard() {
       return "Skopiowano do schowka";
     },
@@ -445,9 +442,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "B\u0142\u0105d w ustalaniu lokalizacji: " + error;
     },
-    get$extremeOffensive() {
-      return "Bardzo obra\u017aliwe";
-    },
     get$fontSize(_) {
       return "Rozmiar fontu";
     },
@@ -481,9 +475,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Ukryj niepoprawne lub nieznane typy wiadomo\u015bci";
     },
-    get$howOffensiveIsThisContent() {
-      return "Jak bardzo obra\u017aliwa jest ta tre\u015b\u0107?";
-    },
     get$block() {
       return "Zablokuj";
     },
@@ -501,9 +492,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Z\u0142e has\u0142o bezpiecze\u0144stwa lub klucz odzyskiwania";
-    },
-    get$inoffensive() {
-      return "Nieobra\u017aliwe";
     },
     get$inviteContact() {
       return "Zapro\u015b kontakt";
@@ -4498,6 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_247", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "SUNolaWBVwFNH05PBWSVb1MySlY=");
+})($__dart_deferred_initializers__, "yNBjmihr+UzqzaV/8oTk4jt0kqs=");
 ;
 //# sourceMappingURL=main.dart.js_247.part.js.map

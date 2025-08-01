@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "\u062a\u0627\u06cc\u06cc\u062f";
     },
-    get$contentHasBeenReported() {
-      return "\u0645\u062d\u062a\u0648\u0627 \u0628\u0647 \u0645\u062f\u06cc\u0631\u0627\u0646 \u0633\u0631\u0648\u0631 \u06af\u0632\u0627\u0631\u0634 \u0634\u062f\u0647 \u0627\u0633\u062a";
-    },
     get$copiedToClipboard() {
       return "\u062f\u0631 \u062d\u0627\u0641\u0638\u0647 \u06a9\u067e\u06cc \u0634\u062f";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "\u062e\u0637\u0627 \u0647\u0646\u06af\u0627\u0645 \u0628\u062f\u0633\u062a \u0622\u0648\u0631\u062f\u0646 \u0645\u06a9\u0627\u0646: " + error;
     },
-    get$extremeOffensive() {
-      return "\u0628\u0647 \u0634\u062f\u062a \u062a\u0648\u0647\u06cc\u0646 \u0622\u0645\u06cc\u0632";
-    },
     get$fontSize(_) {
       return "\u0627\u0646\u062f\u0627\u0632\u0647 \u0642\u0644\u0645";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "\u0627\u06cc\u0646 \u0645\u062d\u062a\u0648\u0627 \u0686\u0647 \u0645\u0642\u062f\u0627\u0631 \u062a\u0648\u0647\u06cc\u0646 \u0622\u0645\u06cc\u0632 \u0627\u0633\u062a\u061f";
-    },
     get$block() {
       return "Block";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "\u0639\u0628\u0627\u0631\u062a \u0639\u0628\u0648\u0631 \u06cc\u0627 \u06a9\u0644\u06cc\u062f \u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0627\u0634\u062a\u0628\u0627\u0647 \u0627\u0633\u062a";
-    },
-    get$inoffensive() {
-      return "\u0628\u06cc \u0636\u0631\u0631";
     },
     get$inviteContact() {
       return "\u062f\u0639\u0648\u062a \u0627\u0632 \u0645\u062e\u0627\u0637\u0628";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_210", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "/QtBOSxVWXEOjfO5jAhj2OGfKN4=");
+})($__dart_deferred_initializers__, "YxzPQ5/YKbD3zhBpcjZiB32P+kE=");
 ;
 //# sourceMappingURL=main.dart.js_210.part.js.map

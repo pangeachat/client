@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Potrdi";
     },
-    get$contentHasBeenReported() {
-      return "Vsebina je bila prijavljena skrbnikom stre\u017enika";
-    },
     get$copiedToClipboard() {
       return "Kopirano v odlo\u017ei\u0161\u010de";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Error obtaining location: " + error;
     },
-    get$extremeOffensive() {
-      return "Extremely offensive";
-    },
     get$fontSize(_) {
       return "Font size";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "How offensive is this content?";
-    },
     get$block() {
       return "Block";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Incorrect passphrase or recovery key";
-    },
-    get$inoffensive() {
-      return "Inoffensive";
     },
     get$inviteContact() {
       return "Invite contact";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_254", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "xljxAB1WWw4CNJfytft78qkeJ/Y=");
+})($__dart_deferred_initializers__, "S91ZJybEeNV7CbpjZzA82MZMH34=");
 ;
 //# sourceMappingURL=main.dart.js_254.part.js.map

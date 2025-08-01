@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "\u78ba\u8a8d";
     },
-    get$contentHasBeenReported() {
-      return "\u30b5\u30fc\u30d0\u30fc\u7ba1\u7406\u8005\u306b\u901a\u5831\u3055\u308c\u307e\u3057\u305f";
-    },
     get$copiedToClipboard() {
       return "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u306b\u30b3\u30d4\u30fc\u3055\u308c\u307e\u3057\u305f";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "\u4f4d\u7f6e\u60c5\u5831\u306e\u53d6\u5f97\u4e2d\u306b\u30a8\u30e9\u30fc\u304c\u767a\u751f\u3057\u307e\u3057\u305f: " + error;
     },
-    get$extremeOffensive() {
-      return "\u3068\u3066\u3082\u653b\u6483\u7684";
-    },
     get$fontSize(_) {
       return "\u30d5\u30a9\u30f3\u30c8\u30b5\u30a4\u30ba";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "\u3069\u306e\u304f\u3089\u3044\u653b\u6483\u7684\u3067\u3057\u305f\u304b\uff1f";
-    },
     get$block() {
       return "Block";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "\u30d1\u30b9\u30d5\u30ec\u30fc\u30ba\u304b\u30ea\u30ab\u30d0\u30ea\u30fc\u30ad\u30fc\u304c\u9593\u9055\u3063\u3066\u3044\u307e\u3059";
-    },
-    get$inoffensive() {
-      return "\u975e\u653b\u6483\u7684";
     },
     get$inviteContact() {
       return "\u9023\u7d61\u5148\u304b\u3089\u62db\u5f85\u3059\u308b";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_239", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "pDwDlwE4InBAVvKgPAh/PKXH0NM=");
+})($__dart_deferred_initializers__, "Oavt5cYkLCBSOGDFcC+mB6dz1P0=");
 ;
 //# sourceMappingURL=main.dart.js_239.part.js.map

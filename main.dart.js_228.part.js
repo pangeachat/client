@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "Meger\u0151s\xedt";
     },
-    get$contentHasBeenReported() {
-      return "A tartalom jelent\xe9sre ker\xfclt a szerver adminisztr\xe1torok sz\xe1m\xe1ra";
-    },
     get$copiedToClipboard() {
       return "V\xe1g\xf3lapra m\xe1solva";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Hiba a helymeghat\xe1roz\xe1skor: " + error;
     },
-    get$extremeOffensive() {
-      return "Rendk\xedv\xfcl s\xe9rt\u0151";
-    },
     get$fontSize(_) {
       return "Bet\u0171m\xe9ret";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "\xc9rv\xe9nytelen vagy ismeretlen \xfczenetform\xe1tum elrejt\xe9se";
     },
-    get$howOffensiveIsThisContent() {
-      return "Mennyire s\xe9rt\u0151 ez a tartalom?";
-    },
     get$block() {
       return "Blokkol\xe1s";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "Hib\xe1s jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
-    },
-    get$inoffensive() {
-      return "Nem s\xe9rt\u0151";
     },
     get$inviteContact() {
       return "Ismer\u0151s megh\xedv\xe1sa";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_228", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "w9jKxraVm87bM4bimUYMqVKhQow=");
+})($__dart_deferred_initializers__, "Ruzkfo2JKU4gouNbpbEi0Gej4Uc=");
 ;
 //# sourceMappingURL=main.dart.js_228.part.js.map

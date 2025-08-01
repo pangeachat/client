@@ -321,9 +321,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirm(_) {
       return "\u041f\u043e\u0442\u0432\u0440\u0434\u0438";
     },
-    get$contentHasBeenReported() {
-      return "\u0421\u0430\u0434\u0440\u0436\u0430\u0458 \u0458\u0435 \u043f\u0440\u0438\u0458\u0430\u0432\u0459\u0435\u043d \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0438\u043c\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u0430";
-    },
     get$copiedToClipboard() {
       return "\u041a\u043e\u043f\u0438\u0440\u0430\u043d\u043e \u0443 \u043a\u043b\u0438\u043f\u0431\u043e\u0440\u0434";
     },
@@ -444,9 +441,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     errorObtainingLocation$1(error) {
       return "Error obtaining location: " + error;
     },
-    get$extremeOffensive() {
-      return "\u0415\u043a\u0441\u0442\u0440\u0435\u043c\u043d\u043e \u0443\u0432\u0440\u0435\u0434\u0459\u0438\u0432";
-    },
     get$fontSize(_) {
       return "\u0412\u0435\u043b\u0438\u0447\u0438\u043d\u0430 \u0444\u043e\u043d\u0442\u0430";
     },
@@ -480,9 +474,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$hideInvalidOrUnknownMessageFormats() {
       return "Hide invalid or unknown message formats";
     },
-    get$howOffensiveIsThisContent() {
-      return "\u041a\u043e\u043b\u0438\u043a\u043e \u0458\u0435 \u0443\u0432\u0440\u0435\u0434\u0459\u0438\u0432 \u043e\u0432\u0430\u0458 \u0441\u0430\u0434\u0440\u0436\u0430\u0458?";
-    },
     get$block() {
       return "Block";
     },
@@ -500,9 +491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$incorrectPassphraseOrKey() {
       return "\u041d\u0435\u0438\u0441\u043f\u0440\u0430\u0432\u043d\u0430 \u0444\u0440\u0430\u0437\u0430 \u0438\u043b\u0438 \u043a\u0459\u0443\u0447 \u043e\u043f\u043e\u0440\u0430\u0432\u043a\u0430";
-    },
-    get$inoffensive() {
-      return "\u041d\u0438\u0458\u0435 \u0443\u0432\u0440\u0435\u0434\u0459\u0438\u0432";
     },
     get$inviteContact() {
       return "\u041f\u043e\u0437\u0438\u0432\u0430\u045a\u0435 \u043e\u0441\u043e\u0431\u0430";
@@ -4497,6 +4485,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_255", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "tEJ1tNM84Uq/91opb0l87xU0Rus=");
+})($__dart_deferred_initializers__, "kwCoSYhb0fMcwJpQTt+K46ApBLE=");
 ;
 //# sourceMappingURL=main.dart.js_255.part.js.map
