@@ -201,7 +201,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       children: [
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: (_timeout || !_loading && cards.isEmpty)
+          child: (_timeout || (!_loading && cards.isEmpty))
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -210,7 +210,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     children: [
                       ErrorIndicator(
                         message: _timeout
-                            ? L10n.of(context).activitySuggestionTimeoutMessage
+                            ? L10n.of(context).generatingNewActivities
                             : L10n.of(context).errorFetchingActivitiesMessage,
                       ),
                       ElevatedButton(
@@ -229,31 +229,43 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                 )
               : Container(
                   decoration: const BoxDecoration(),
-                  child: scrollDirection == Axis.horizontal
-                      ? Scrollbar(
-                          thumbVisibility: true,
-                          controller: _scrollController,
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 16.0),
-                            child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      scrollDirection == Axis.horizontal
+                          ? Scrollbar(
+                              thumbVisibility: true,
                               controller: _scrollController,
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                spacing: 8.0,
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 16.0),
+                                child: SingleChildScrollView(
+                                  controller: _scrollController,
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    spacing: 8.0,
+                                    children: cards,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Wrap(
+                                alignment: WrapAlignment.spaceEvenly,
+                                runSpacing: 16.0,
+                                spacing: 4.0,
                                 children: cards,
                               ),
                             ),
-                          ),
-                        )
-                      : SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: Wrap(
-                            alignment: WrapAlignment.spaceEvenly,
-                            runSpacing: 16.0,
-                            spacing: 4.0,
-                            children: cards,
+                      if (cards.length < 5)
+                        Padding(
+                          padding: const EdgeInsetsGeometry.all(16.0),
+                          child: ErrorIndicator(
+                            message: L10n.of(context)
+                                .activitySuggestionTimeoutMessage,
                           ),
                         ),
+                    ],
+                  ),
                 ),
         ),
       ],

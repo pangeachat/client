@@ -5092,5 +5092,6 @@
   "errorFetchingTranslation": "Failed to fetch translation",
   "errorFetchingActivity": "Failed to fetch activity",
   "check": "Check",
-  "unableToFindRoom": "No chat or space found with that code. Please try again."
+  "unableToFindRoom": "No chat or space found with that code. Please try again.",
+  "generatingNewActivities": "You're the first user of this language pair! Please wait a moment, we're preparing activities just for you."
 }
