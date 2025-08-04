@@ -7,13 +7,29 @@ import 'package:fluffychat/pangea/activity_planner/activity_finished_status_mess
 import 'package:fluffychat/pangea/activity_planner/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_unfinished_status_message.dart';
 
-class ActivityStatusMessage extends StatelessWidget {
+class ActivityStatusMessage extends StatefulWidget {
   final Room room;
 
   const ActivityStatusMessage({
     super.key,
     required this.room,
   });
+
+  @override
+  ActivityStatusMessageState createState() => ActivityStatusMessageState();
+}
+
+class ActivityStatusMessageState extends State<ActivityStatusMessage> {
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.room.activityIsFinished && widget.room.activitySummary == null) {
+      widget.room.fetchSummaries().then((_) {
+        if (mounted) setState(() {});
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +40,8 @@ class ActivityStatusMessage extends StatelessWidget {
       child: Material(
         child: AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: !room.hasJoinedActivity || room.activityIsFinished
+          child: !widget.room.hasJoinedActivity ||
+                  widget.room.activityIsFinished
               ? Padding(
                   padding: EdgeInsets.only(
                     bottom: FluffyThemes.isColumnMode(context) ? 32.0 : 16.0,
@@ -36,9 +53,9 @@ class ActivityStatusMessage extends StatelessWidget {
                       maxHeight: MediaQuery.of(context).size.height * 0.8,
                     ),
                     child: SingleChildScrollView(
-                      child: room.activityIsFinished
-                          ? ActivityFinishedStatusMessage(room: room)
-                          : ActivityUnfinishedStatusMessage(room: room),
+                      child: widget.room.activityIsFinished
+                          ? ActivityFinishedStatusMessage(room: widget.room)
+                          : ActivityUnfinishedStatusMessage(room: widget.room),
                     ),
                   ),
                 )

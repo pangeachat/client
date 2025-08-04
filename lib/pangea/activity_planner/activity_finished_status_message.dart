@@ -38,12 +38,6 @@ class ActivityFinishedStatusMessageState
   void initState() {
     super.initState();
     _setDefaultHighlightedRole();
-
-    if (widget.room.activitySummary == null) {
-      widget.room.fetchSummaries().then((_) {
-        if (mounted) setState(() {});
-      });
-    }
   }
 
   @override
@@ -127,7 +121,7 @@ class ActivityFinishedStatusMessageState
           (u) => u.id == _highlightedRole?.userId,
         );
     final userSummary =
-        widget.room.activitySummary?.response.participants.firstWhereOrNull(
+        widget.room.activitySummary?.participants.firstWhereOrNull(
       (p) => p.participantId == _highlightedRole!.userId,
     );
 
@@ -181,7 +175,7 @@ class ActivityFinishedStatusMessageState
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     child: Text(
-                      summary.response.summary,
+                      summary.summary,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: isColumnMode ? 16.0 : 12.0,

@@ -96,7 +96,7 @@ class ActivityResultsCarousel extends StatelessWidget {
                             spacing: 4.0,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              const Icon(Icons.star, size: 12.0),
+                              const Icon(Icons.school, size: 12.0),
                               Text(
                                 summary.cefrLevel,
                                 style: TextStyle(

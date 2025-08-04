@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
-import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_repo.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
@@ -65,20 +64,11 @@ extension ActivityRoomExtension on Room {
   Future<void> setActivitySummary(
     ActivitySummaryResponseModel summary,
   ) async {
-    final content = ActivitySummaryModel(
-      response: summary,
-      analytics: ActivitySummaryAnalytics(
-        morphs: 0,
-        vocab: 0,
-        xp: 0,
-      ),
-    );
-
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.activitySummary,
       "",
-      content.toJson(),
+      summary.toJson(),
     );
   }
 
@@ -177,12 +167,12 @@ extension ActivityRoomExtension on Room {
     }
   }
 
-  ActivitySummaryModel? get activitySummary {
+  ActivitySummaryResponseModel? get activitySummary {
     final stateEvent = getState(PangeaEventTypes.activitySummary);
     if (stateEvent == null) return null;
 
     try {
-      return ActivitySummaryModel.fromJson(stateEvent.content);
+      return ActivitySummaryResponseModel.fromJson(stateEvent.content);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
