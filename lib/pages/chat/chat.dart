@@ -1790,8 +1790,8 @@ class ChatController extends State<ChatPageWithRoom>
       title: L10n.of(context).unpin,
       // #Pangea
       // message: L10n.of(context).confirmEventUnpin,
-      // Pangea#
       message: L10n.of(context).confirmMessageUnpin,
+      // Pangea#
       okLabel: L10n.of(context).unpin,
       cancelLabel: L10n.of(context).cancel,
     );
