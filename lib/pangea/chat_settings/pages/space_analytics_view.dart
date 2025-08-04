@@ -7,9 +7,10 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/space_analytics.dart';
 import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
+import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/spaces/widgets/download_space_analytics_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class SpaceAnalyticsView extends StatelessWidget {
   final SpaceAnalyticsState controller;
@@ -43,20 +44,29 @@ class SpaceAnalyticsView extends StatelessWidget {
                     spacing: isColumnMode ? 12.0 : 4.0,
                     children: [
                       _MenuButton(
-                        text: "Request 6",
+                        text: L10n.of(context).requestCount(
+                          controller.requestableUsersCount,
+                        ),
                         icon: Symbols.approval_delegation,
-                        onPressed: () {
-                          // Handle analytics button press
-                        },
+                        onPressed: controller.requestAllAnalytics,
                       ),
-                      _MenuButton(
-                        text: L10n.of(context).download,
-                        icon: Icons.download,
-                        onPressed: () {
-                          // Handle analytics button press
-                        },
-                        mini: !isColumnMode,
-                      ),
+                      if (controller.room != null &&
+                          controller.availableAnalyticsRooms.isNotEmpty)
+                        _MenuButton(
+                          text: L10n.of(context).download,
+                          icon: Icons.download,
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => DownloadAnalyticsDialog(
+                                space: controller.room!,
+                                analyticsRooms:
+                                    controller.availableAnalyticsRooms,
+                              ),
+                            );
+                          },
+                          mini: !isColumnMode,
+                        ),
                     ],
                   ),
                   Row(
@@ -65,62 +75,60 @@ class SpaceAnalyticsView extends StatelessWidget {
                       _MenuButton(
                         text: L10n.of(context).refresh,
                         icon: Symbols.refresh,
-                        onPressed: () {
-                          // Handle refresh button press
-                        },
+                        onPressed: controller.refresh,
                         mini: !isColumnMode,
                       ),
-                      SizedBox(
-                        width: 100.0,
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton2(
-                            customButton: Container(
-                              height: isColumnMode ? 42.0 : 32.0,
-                              decoration: BoxDecoration(
-                                color: theme.colorScheme.primaryContainer,
-                                borderRadius: BorderRadius.circular(40),
-                              ),
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  if (controller.selectedLanguage != null)
-                                    Text(
-                                      controller.selectedLanguage!,
-                                      style: TextStyle(
-                                        color: theme
-                                            .colorScheme.onPrimaryContainer,
-                                        fontSize: isColumnMode ? 16.0 : 12.0,
-                                      ),
-                                    ),
-                                  Icon(
-                                    Icons.arrow_drop_down,
-                                    color: theme.colorScheme.onPrimaryContainer,
-                                    size: isColumnMode ? 24.0 : 16.0,
-                                  ),
-                                ],
-                              ),
+                      DropdownButtonHideUnderline(
+                        child: DropdownButton2<LanguageModel>(
+                          customButton: Container(
+                            height: isColumnMode ? 42.0 : 32.0,
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.primaryContainer,
+                              borderRadius: BorderRadius.circular(40),
                             ),
-                            value: controller.selectedLanguage,
-                            items: controller.availableLanguages
-                                .map(
-                                  (item) => DropdownMenuItem(
-                                    value: item,
-                                    child: DropdownTextButton(
-                                      text: item,
-                                      isSelected: false,
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                if (controller.selectedLanguage != null)
+                                  Text(
+                                    controller.selectedLanguage!
+                                            .getDisplayName(context) ??
+                                        controller
+                                            .selectedLanguage!.displayName,
+                                    style: TextStyle(
+                                      color:
+                                          theme.colorScheme.onPrimaryContainer,
+                                      fontSize: isColumnMode ? 16.0 : 12.0,
                                     ),
                                   ),
-                                )
-                                .toList(),
-                            onChanged: controller.setSelectedLanguage,
-                            buttonStyleData: ButtonStyleData(
-                              // This is necessary for the ink response to match our customButton radius.
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(40),
-                              ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: theme.colorScheme.onPrimaryContainer,
+                                  size: isColumnMode ? 24.0 : 16.0,
+                                ),
+                              ],
+                            ),
+                          ),
+                          value: controller.selectedLanguage,
+                          items: controller.availableLanguages
+                              .map(
+                                (item) => DropdownMenuItem(
+                                  value: item,
+                                  child: DropdownTextButton(
+                                    text: item.getDisplayName(context) ??
+                                        item.displayName,
+                                    isSelected: false,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: controller.setSelectedLanguage,
+                          buttonStyleData: ButtonStyleData(
+                            // This is necessary for the ink response to match our customButton radius.
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
                             ),
                           ),
                         ),
@@ -167,8 +175,6 @@ class SpaceAnalyticsView extends StatelessWidget {
                   ...controller.downloads.entries.map(
                     (entry) {
                       final download = entry.value;
-                      final availability = controller.availability(entry.key);
-
                       return TableRow(
                         children: [
                           TableCell(
@@ -202,37 +208,12 @@ class SpaceAnalyticsView extends StatelessWidget {
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                        if (availability !=
-                                            Availability.available)
-                                          FilterChip(
-                                            padding: EdgeInsets.zero,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(32),
-                                            ),
-                                            label: const Row(
-                                              spacing: 8.0,
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Icon(
-                                                  Symbols.approval_delegation,
-                                                  size: 12.0,
-                                                ),
-                                                Text("Request"),
-                                              ],
-                                            ),
-                                            selected: false,
-                                            onSelected: (_) {
-                                              Matrix.of(context)
-                                                  .client
-                                                  .knockRoom(
-                                                    controller
-                                                        .analyticsRoomIdOfUser(
-                                                      entry.key,
-                                                    )!,
-                                                  );
-                                            },
-                                          ),
+                                        _RequestButton(
+                                          status: controller
+                                              .requestStatusOfUser(entry.key),
+                                          onPressed: () => controller
+                                              .requestAnalytics(entry.key),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -415,6 +396,48 @@ class _MissingContentCell extends StatelessWidget {
                 size: 16.0,
               ),
       ),
+    );
+  }
+}
+
+class _RequestButton extends StatelessWidget {
+  final RequestStatus status;
+  final VoidCallback onPressed;
+
+  const _RequestButton({
+    required this.status,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (!status.showButton) return const SizedBox.shrink();
+
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
+    return FilterChip(
+      padding: EdgeInsets.zero,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(32),
+      ),
+      label: Row(
+        spacing: 8.0,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            status.icon,
+            size: 12.0,
+          ),
+          Text(
+            status.label(context),
+            style: TextStyle(fontSize: isColumnMode ? 16.0 : 12.0),
+          ),
+        ],
+      ),
+      selected: true,
+      onSelected: status.enabled ? (_) => onPressed.call() : null,
+      disabledColor: Theme.of(context).disabledColor.withAlpha(25),
+      selectedColor: status.backgroundColor(context),
     );
   }
 }

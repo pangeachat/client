@@ -5106,5 +5106,17 @@
         "type": "int"
       }
     }
-  }
+  },
+  "request": "Request",
+  "requestCount": "Request {count}",
+  "@requestCount": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pending": "Pending",
+  "inactive": "Inactive"
 }
