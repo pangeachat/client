@@ -209,6 +209,7 @@ class DownloadAnalyticsDialogState extends State<DownloadAnalyticsDialog> {
       summary = SpaceAnalyticsSummaryModel.fromConstructListModel(
         userID,
         constructs,
+        0,
         getCopy,
         context,
       );

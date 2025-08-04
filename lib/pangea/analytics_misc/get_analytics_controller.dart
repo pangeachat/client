@@ -76,7 +76,7 @@ class GetAnalyticsController extends BaseController {
 
     try {
       await GetStorage.init("analytics_storage");
-      _client.updateAnalyticsRoomVisibility();
+      _client.updateAnalyticsRoomJoinRules();
       _client.addAnalyticsRoomsToSpaces();
 
       _analyticsUpdateSubscription ??= _pangeaController

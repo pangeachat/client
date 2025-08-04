@@ -1,0 +1,420 @@
+import 'package:flutter/material.dart';
+
+import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:material_symbols_icons/symbols.dart';
+
+import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/chat_settings/pages/space_analytics.dart';
+import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
+import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/layouts/max_width_body.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+class SpaceAnalyticsView extends StatelessWidget {
+  final SpaceAnalyticsState controller;
+  const SpaceAnalyticsView({
+    super.key,
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
+    final rowPadding = isColumnMode ? 12.0 : 4.0;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(L10n.of(context).spaceAnalyticsPage),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(isColumnMode ? 16.0 : 8.0),
+        child: MaxWidthBody(
+          maxWidth: 1000,
+          showBorder: false,
+          child: Column(
+            spacing: isColumnMode ? 24.0 : 12.0,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    spacing: isColumnMode ? 12.0 : 4.0,
+                    children: [
+                      _MenuButton(
+                        text: "Request 6",
+                        icon: Symbols.approval_delegation,
+                        onPressed: () {
+                          // Handle analytics button press
+                        },
+                      ),
+                      _MenuButton(
+                        text: L10n.of(context).download,
+                        icon: Icons.download,
+                        onPressed: () {
+                          // Handle analytics button press
+                        },
+                        mini: !isColumnMode,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    spacing: isColumnMode ? 12.0 : 4.0,
+                    children: [
+                      _MenuButton(
+                        text: L10n.of(context).refresh,
+                        icon: Symbols.refresh,
+                        onPressed: () {
+                          // Handle refresh button press
+                        },
+                        mini: !isColumnMode,
+                      ),
+                      SizedBox(
+                        width: 100.0,
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton2(
+                            customButton: Container(
+                              height: isColumnMode ? 42.0 : 32.0,
+                              decoration: BoxDecoration(
+                                color: theme.colorScheme.primaryContainer,
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  if (controller.selectedLanguage != null)
+                                    Text(
+                                      controller.selectedLanguage!,
+                                      style: TextStyle(
+                                        color: theme
+                                            .colorScheme.onPrimaryContainer,
+                                        fontSize: isColumnMode ? 16.0 : 12.0,
+                                      ),
+                                    ),
+                                  Icon(
+                                    Icons.arrow_drop_down,
+                                    color: theme.colorScheme.onPrimaryContainer,
+                                    size: isColumnMode ? 24.0 : 16.0,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            value: controller.selectedLanguage,
+                            items: controller.availableLanguages
+                                .map(
+                                  (item) => DropdownMenuItem(
+                                    value: item,
+                                    child: DropdownTextButton(
+                                      text: item,
+                                      isSelected: false,
+                                    ),
+                                  ),
+                                )
+                                .toList(),
+                            onChanged: controller.setSelectedLanguage,
+                            buttonStyleData: ButtonStyleData(
+                              // This is necessary for the ink response to match our customButton radius.
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Table(
+                columnWidths: const {0: FlexColumnWidth(2.5)},
+                children: [
+                  TableRow(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(color: theme.dividerColor),
+                      ),
+                    ),
+                    children: [
+                      _TableHeaderCell(
+                        text: L10n.of(context).viewingAnalytics(
+                          controller.completedDownloads,
+                          controller.downloads.length,
+                        ),
+                        icon: Icons.group_outlined,
+                      ),
+                      _TableHeaderCell(
+                        text: L10n.of(context).level,
+                        icon: Icons.star,
+                      ),
+                      _TableHeaderCell(
+                        text: L10n.of(context).vocab,
+                        icon: Symbols.dictionary,
+                      ),
+                      _TableHeaderCell(
+                        text: L10n.of(context).grammar,
+                        icon: Symbols.toys_and_games,
+                      ),
+                      _TableHeaderCell(
+                        text: L10n.of(context).activities,
+                        icon: Icons.radar,
+                      ),
+                    ],
+                  ),
+                  ...controller.downloads.entries.map(
+                    (entry) {
+                      final download = entry.value;
+                      final availability = controller.availability(entry.key);
+
+                      return TableRow(
+                        children: [
+                          TableCell(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: rowPadding,
+                              ),
+                              child: Row(
+                                spacing: isColumnMode ? 16.0 : 8.0,
+                                children: [
+                                  Avatar(
+                                    size: isColumnMode ? 40.0 : 24.0,
+                                    mxContent: entry.key.avatarUrl,
+                                    name: entry.key.calcDisplayname(),
+                                    userId: entry.key.id,
+                                    presenceUserId: entry.key.id,
+                                  ),
+                                  Flexible(
+                                    child: Column(
+                                      spacing: 8.0,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          entry.key.id,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            fontSize:
+                                                isColumnMode ? 16.0 : 12.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        if (availability !=
+                                            Availability.available)
+                                          FilterChip(
+                                            padding: EdgeInsets.zero,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(32),
+                                            ),
+                                            label: const Row(
+                                              spacing: 8.0,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Icon(
+                                                  Symbols.approval_delegation,
+                                                  size: 12.0,
+                                                ),
+                                                Text("Request"),
+                                              ],
+                                            ),
+                                            selected: false,
+                                            onSelected: (_) {
+                                              Matrix.of(context)
+                                                  .client
+                                                  .knockRoom(
+                                                    controller
+                                                        .analyticsRoomIdOfUser(
+                                                      entry.key,
+                                                    )!,
+                                                  );
+                                            },
+                                          ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          _TableContentCell(
+                            text: download.summary?.level?.toString(),
+                            status: download.status,
+                          ),
+                          _TableContentCell(
+                            text: download.summary?.numLemmas.toString(),
+                            status: download.status,
+                          ),
+                          _TableContentCell(
+                            text:
+                                download.summary?.numMorphConstructs.toString(),
+                            status: download.status,
+                          ),
+                          _TableContentCell(
+                            text: download.summary?.numCompletedActivities
+                                .toString(),
+                            status: download.status,
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _MenuButton extends StatelessWidget {
+  final String text;
+  final IconData icon;
+  final VoidCallback onPressed;
+
+  final bool mini;
+
+  const _MenuButton({
+    required this.text,
+    required this.icon,
+    required this.onPressed,
+    this.mini = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
+    final height = isColumnMode ? 42.0 : 32.0;
+
+    return InkWell(
+      borderRadius: BorderRadius.circular(40),
+      onTap: onPressed,
+      child: Container(
+        height: height,
+        width: mini ? height : null,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.primaryContainer,
+          borderRadius: BorderRadius.circular(40),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          spacing: 4.0,
+          children: [
+            Icon(
+              icon,
+              color: theme.colorScheme.onPrimaryContainer,
+              size: isColumnMode ? 24.0 : 16.0,
+            ),
+            if (!mini)
+              Text(
+                text,
+                style: TextStyle(
+                  color: theme.colorScheme.onPrimaryContainer,
+                  fontSize: isColumnMode ? 16.0 : 12.0,
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _TableHeaderCell extends StatelessWidget {
+  final String text;
+  final IconData icon;
+  const _TableHeaderCell({
+    required this.text,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 6.0,
+        horizontal: 8.0,
+      ),
+      child: Column(
+        spacing: 10.0,
+        children: [
+          Icon(icon, size: 22.0),
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: isColumnMode ? 12.0 : 8.0,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _TableContentCell extends StatelessWidget {
+  final String? text;
+  final DownloadStatus status;
+
+  const _TableContentCell({
+    required this.text,
+    required this.status,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (status != DownloadStatus.available) {
+      return _MissingContentCell(
+        status,
+      );
+    }
+
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+    return TableCell(
+      verticalAlignment: TableCellVerticalAlignment.fill,
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          text!,
+          style: TextStyle(
+            fontSize: isColumnMode ? 16.0 : 12.0,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _MissingContentCell extends StatelessWidget {
+  final DownloadStatus status;
+
+  const _MissingContentCell(this.status);
+
+  @override
+  Widget build(BuildContext context) {
+    return TableCell(
+      verticalAlignment: TableCellVerticalAlignment.fill,
+      child: Align(
+        alignment: Alignment.center,
+        child: status == DownloadStatus.loading
+            ? const SizedBox(
+                width: 16.0,
+                height: 16.0,
+                child: CircularProgressIndicator.adaptive(),
+              )
+            : const Icon(
+                Icons.visibility_off_outlined,
+                size: 16.0,
+              ),
+      ),
+    );
+  }
+}

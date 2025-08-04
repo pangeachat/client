@@ -4199,7 +4199,7 @@
   "roomAddedToSpace": "Room(s) have been added to the selected space.",
   "addChatToSpaceDesc": "Adding a chat to a space will make the chat appear within the space for students and give them access.",
   "addSpaceToSpaceDesc": "Adding a sub space to space will make the sub space appear in the main space's chat list.",
-  "spaceAnalytics": "Space Analytics",
+  "spaceAnalytics": "Space analytics",
   "changeAnalyticsLanguage": "Change Analytics Language",
   "suggestToSpace": "Suggest this space",
   "suggestToSpaceDesc": "Suggested sub spaces will appear in their main space's chat list",
@@ -5092,5 +5092,19 @@
   "errorFetchingTranslation": "Failed to fetch translation",
   "errorFetchingActivity": "Failed to fetch activity",
   "check": "Check",
-  "unableToFindRoom": "No chat or space found with that code. Please try again."
+  "unableToFindRoom": "No chat or space found with that code. Please try again.",
+  "spaceAnalyticsPage": "Space analytics page",
+  "numCompletedActivities": "Number of completed activities",
+  "viewingAnalytics": "Viewing {visible}/{users} Analytics",
+  "@viewingAnalytics": {
+    "type": "String",
+    "placeholders": {
+      "visible": {
+        "type": "int"
+      },
+      "users": {
+        "type": "int"
+      }
+    }
+  }
 }
