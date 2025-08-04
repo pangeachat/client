@@ -205,13 +205,17 @@ extension EventsRoomExtension on Room {
     String? tempEventId,
   }) {
     // if (parseCommands) {
-    //   return client.parseAndRunCommand(this, message,
-    //       inReplyTo: inReplyTo,
-    //       editEventId: editEventId,
-    //       txid: txid,
-    //       threadRootEventId: threadRootEventId,
-    //       threadLastEventId: threadLastEventId);
+    //   return client.parseAndRunCommand(
+    //     this,
+    //     message,
+    //     inReplyTo: inReplyTo,
+    //     editEventId: editEventId,
+    //     txid: txid,
+    //     threadRootEventId: threadRootEventId,
+    //     threadLastEventId: threadLastEventId,
+    //   );
     // }
+
     final event = <String, dynamic>{
       'msgtype': msgtype,
       'body': message,

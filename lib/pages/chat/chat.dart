@@ -1371,6 +1371,9 @@ class ChatController extends State<ChatPageWithRoom>
             message: L10n.of(context).redactMessageDescription,
             isDestructive: true,
             hintText: L10n.of(context).optionalRedactReason,
+            // #Pangea
+            maxLength: 255,
+            // Pangea#
             okLabel: L10n.of(context).remove,
             cancelLabel: L10n.of(context).cancel,
             // #Pangea
@@ -1809,6 +1812,13 @@ class ChatController extends State<ChatPageWithRoom>
     if (response == OkCancelResult.ok) {
       final events = room.pinnedEventIds
         ..removeWhere((oldEvent) => oldEvent == eventId);
+      // #Pangea
+      if (scrollToEventIdMarker == eventId) {
+        setState(() {
+          scrollToEventIdMarker = null;
+        });
+      }
+      // Pangea#
       showFutureLoadingDialog(
         context: context,
         future: () => room.setPinnedEvents(events),
@@ -1825,7 +1835,10 @@ class ChatController extends State<ChatPageWithRoom>
     final unpin = selectedEventIds.length == 1 &&
         pinnedEventIds.contains(selectedEventIds.single);
     if (unpin) {
-      pinnedEventIds.removeWhere(selectedEventIds.contains);
+      // #Pangea
+      //pinnedEventIds.removeWhere(selectedEventIds.contains);
+      unpinEvent(selectedEventIds.single);
+      // Pangea#
     } else {
       pinnedEventIds.addAll(selectedEventIds);
     }
@@ -1838,6 +1851,7 @@ class ChatController extends State<ChatPageWithRoom>
       context: context,
       future: () => room.setPinnedEvents(pinnedEventIds),
     );
+    clearSelectedEvents();
     // Pangea#
   }
 
