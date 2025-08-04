@@ -1141,6 +1141,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpaces() {
       return "\u516c\u5f00\u7a7a\u95f4";
     },
+    get$subspace() {
+      return "\u5b50\u7a7a\u95f4";
+    },
     get$decline() {
       return "\u62d2\u7edd";
     },
@@ -4081,12 +4084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectForGrammar() {
       return "Select a grammar icon for activities and details.";
     },
-    get$newChatActivityTitle() {
-      return "Add a fun activity?";
-    },
-    get$newChatActivityDesc() {
-      return "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!";
-    },
     get$randomize() {
       return "Randomize";
     },
@@ -4102,14 +4099,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$save(_) {
       return "Save";
     },
-    get$selectActivity() {
-      return "Select activity";
-    },
     get$wordFocusListeningMultipleChoice() {
       return "Which audio matches the word?";
-    },
-    get$createActivity() {
-      return "Create activity";
     },
     get$translationProblem() {
       return "Translation problem";
@@ -4230,18 +4221,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$findYourPeople() {
       return "Find your people";
-    },
-    get$launchActivityToChats() {
-      return "Launch activity to chats";
-    },
-    get$searchChats() {
-      return "Search chats";
-    },
-    get$selectChats() {
-      return "Select chats";
-    },
-    get$selectChatToStart() {
-      return "Complete! Select a chat to start";
     },
     get$maxFifty() {
       return "Max 50";
@@ -4438,6 +4417,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorRegenerateActivityMessage() {
       return "Failed to regenerate activity";
     },
+    get$errorLaunchActivityMessage() {
+      return "Failed to launch activity";
+    },
     get$errorFetchingActivitiesMessage() {
       return "Failed to fetch activities";
     },
@@ -4476,6 +4458,48 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$unableToFindRoom() {
       return "No chat or space found with that code. Please try again.";
+    },
+    get$createActivityPlan() {
+      return "Create a new activity plan";
+    },
+    get$saveAndLaunch() {
+      return "Save and Launch";
+    },
+    get$launchToSpace() {
+      return "Launch to Space";
+    },
+    get$numberOfActivities() {
+      return "Number of Activity Sessions";
+    },
+    minimumActivityParticipants$1(count) {
+      return "Each Activity needs a minimum " + count + " of participant(s).";
+    },
+    get$unjoinedActivityMessage() {
+      return "Do you want to participate? Choose an open role!\nOr hang out and watch the show!";
+    },
+    get$fullActivityMessage() {
+      return "Feel free to watch the show! While there aren't any open roles to participate, you can view the chat!";
+    },
+    get$confirmRole() {
+      return "Confirm role";
+    },
+    get$openRoleLabel() {
+      return "OPEN";
+    },
+    joinedTheActivity$2(username, role) {
+      return "\ud83d\udc4b " + username + " joined as " + role;
+    },
+    finishedTheActivity$1(username) {
+      return "\ud83c\udfaf " + username + " wrapped up this activity";
+    },
+    get$endActivityTitle() {
+      return "Wrapped up my part";
+    },
+    get$endActivityDesc() {
+      return "Did you complete the objectives?\nThis is your confirmation that you're stepping back from texting. But don\u2019t worry, the fun continues in the chat! Feel free to hang out and enjoy the show until everyone clicks 'Done'.";
+    },
+    get$archiveToAnalytics() {
+      return "Archive to Analytics";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5592,6 +5616,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpaces() {
       return "\u516c\u5171\u7a7a\u9593";
     },
+    get$subspace() {
+      return "\u5b50\u7a7a\u9593";
+    },
     get$decline() {
       return "\u62d2\u7d55";
     },
@@ -5986,6 +6013,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "7k+UgjPZ0jJMWJpSVF19qCikx+4=");
+})($__dart_deferred_initializers__, "tHUqjZWbxLPkuwJWcxkRZCHRvpw=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

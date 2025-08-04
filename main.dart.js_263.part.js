@@ -1134,6 +1134,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$publicSpaces() {
       return "Kh\xf4ng gian c\xf4ng khai";
     },
+    get$subspace() {
+      return "Kh\xf4ng gian con";
+    },
     get$decline() {
       return "T\u1eeb ch\u1ed1i";
     },
@@ -4074,12 +4077,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$selectForGrammar() {
       return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng ng\u1eef ph\xe1p cho c\xe1c ho\u1ea1t \u0111\u1ed9ng v\xe0 chi ti\u1ebft.";
     },
-    get$newChatActivityTitle() {
-      return "Th\xeam m\u1ed9t ho\u1ea1t \u0111\u1ed9ng th\xfa v\u1ecb?";
-    },
-    get$newChatActivityDesc() {
-      return "Bi\u1ebfn m\u1ed7i cu\u1ed9c tr\xf2 chuy\u1ec7n nh\xf3m th\xe0nh m\u1ed9t cu\u1ed9c phi\xeau l\u01b0u v\u1edbi K\u1ebf ho\u1ea1ch Ho\u1ea1t \u0111\u1ed9ng! \u0110\u1eb7t c\xe1c ch\u1ee7 \u0111\u1ec1 v\xe0 m\u1ee5c ti\xeau h\u1ea5p d\u1eabn cho nh\xf3m, v\xe0 mang cu\u1ed9c tr\xf2 chuy\u1ec7n \u0111\u1ebfn cu\u1ed9c s\u1ed1ng v\u1edbi nh\u1eefng h\xecnh \u1ea3nh tuy\u1ec7t \u0111\u1eb9p. Kh\u01a1i d\u1eady nh\u1eefng cu\u1ed9c th\u1ea3o lu\u1eadn s\xe1ng t\u1ea1o v\xe0 gi\u1eef cho ni\u1ec1m vui ch\u1ea3y tr\xf4i m\u1ed9t c\xe1ch d\u1ec5 d\xe0ng!";
-    },
     get$randomize() {
       return "Ng\u1eabu nhi\xean h\xf3a";
     },
@@ -4095,14 +4092,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$save(_) {
       return "L\u01b0u";
     },
-    get$selectActivity() {
-      return "Ch\u1ecdn ho\u1ea1t \u0111\u1ed9ng";
-    },
     get$wordFocusListeningMultipleChoice() {
       return "\xc2m thanh n\xe0o ph\xf9 h\u1ee3p v\u1edbi t\u1eeb?";
-    },
-    get$createActivity() {
-      return "T\u1ea1o ho\u1ea1t \u0111\u1ed9ng";
     },
     get$translationProblem() {
       return "V\u1ea5n \u0111\u1ec1 d\u1ecbch thu\u1eadt";
@@ -4223,18 +4214,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$findYourPeople() {
       return "T\xecm ng\u01b0\u1eddi c\u1ee7a b\u1ea1n";
-    },
-    get$launchActivityToChats() {
-      return "Kh\u1edfi \u0111\u1ed9ng ho\u1ea1t \u0111\u1ed9ng \u0111\u1ebfn c\xe1c tr\xf2 chuy\u1ec7n";
-    },
-    get$searchChats() {
-      return "T\xecm ki\u1ebfm cu\u1ed9c tr\xf2 chuy\u1ec7n";
-    },
-    get$selectChats() {
-      return "Ch\u1ecdn cu\u1ed9c tr\xf2 chuy\u1ec7n";
-    },
-    get$selectChatToStart() {
-      return "Ho\xe0n t\u1ea5t! Ch\u1ecdn m\u1ed9t tr\xf2 chuy\u1ec7n \u0111\u1ec3 b\u1eaft \u0111\u1ea7u";
     },
     get$maxFifty() {
       return "T\u1ed1i \u0111a 50";
@@ -4431,6 +4410,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorRegenerateActivityMessage() {
       return "Failed to regenerate activity";
     },
+    get$errorLaunchActivityMessage() {
+      return "Failed to launch activity";
+    },
     get$errorFetchingActivitiesMessage() {
       return "Failed to fetch activities";
     },
@@ -4470,6 +4452,48 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "No chat or space found with that code. Please try again.";
     },
+    get$createActivityPlan() {
+      return "Create a new activity plan";
+    },
+    get$saveAndLaunch() {
+      return "Save and Launch";
+    },
+    get$launchToSpace() {
+      return "Launch to Space";
+    },
+    get$numberOfActivities() {
+      return "Number of Activity Sessions";
+    },
+    minimumActivityParticipants$1(count) {
+      return "Each Activity needs a minimum " + count + " of participant(s).";
+    },
+    get$unjoinedActivityMessage() {
+      return "Do you want to participate? Choose an open role!\nOr hang out and watch the show!";
+    },
+    get$fullActivityMessage() {
+      return "Feel free to watch the show! While there aren't any open roles to participate, you can view the chat!";
+    },
+    get$confirmRole() {
+      return "Confirm role";
+    },
+    get$openRoleLabel() {
+      return "OPEN";
+    },
+    joinedTheActivity$2(username, role) {
+      return "\ud83d\udc4b " + username + " joined as " + role;
+    },
+    finishedTheActivity$1(username) {
+      return "\ud83c\udfaf " + username + " wrapped up this activity";
+    },
+    get$endActivityTitle() {
+      return "Wrapped up my part";
+    },
+    get$endActivityDesc() {
+      return "Did you complete the objectives?\nThis is your confirmation that you're stepping back from texting. But don\u2019t worry, the fun continues in the chat! Feel free to hang out and enjoy the show until everyone clicks 'Done'.";
+    },
+    get$archiveToAnalytics() {
+      return "Archive to Analytics";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4485,6 +4509,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_263", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "UkF/K/k8yjz0MJGIMUuyo3la6yY=");
+})($__dart_deferred_initializers__, "/JoDuddt9HWN9N3JwJoOrnIK0yg=");
 ;
 //# sourceMappingURL=main.dart.js_263.part.js.map
