@@ -14,6 +14,7 @@ class RoomDefaults {
           "events": {
             PangeaEventTypes.activityPlan: 0,
             PangeaEventTypes.activityRole: 0,
+            PangeaEventTypes.activitySummary: 0,
             "m.room.power_levels": 100,
             "m.room.pinned_events": 50,
           },
@@ -40,6 +41,7 @@ class RoomDefaults {
           "events": {
             PangeaEventTypes.activityPlan: 50,
             PangeaEventTypes.activityRole: 0,
+            PangeaEventTypes.activitySummary: 0,
             "m.room.power_levels": 100,
             "m.room.pinned_events": 50,
           },

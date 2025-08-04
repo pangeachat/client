@@ -137,6 +137,7 @@ abstract class ClientManager {
         EventTypes.RoomJoinRules,
         PangeaEventTypes.activityPlan,
         PangeaEventTypes.activityRole,
+        PangeaEventTypes.activitySummary,
         PangeaEventTypes.constructSummary,
         PangeaEventTypes.activityRoomIds,
         // Pangea#

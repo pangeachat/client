@@ -15,7 +15,7 @@ import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_pinned_message.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_planner/join_activity_widget.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_status_message.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar_header.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_view_background.dart';
@@ -27,7 +27,9 @@ import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../../utils/stream_extension.dart';
 
-enum _EventContextAction { info, report }
+// #Pangea
+// enum _EventContextAction { info, report }
+// Pangea#
 
 class ChatView extends StatelessWidget {
   final ChatController controller;
@@ -430,7 +432,7 @@ class ChatView extends StatelessWidget {
                                   height: controller.inputBarHeight,
                                 ),
                               ),
-                            JoinActivityWidget(room: controller.room),
+                            ActivityStatusMessage(room: controller.room),
                             // Pangea#
                           ],
                         ),

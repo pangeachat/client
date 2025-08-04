@@ -46,7 +46,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
   }
 
   Future<void> _finishActivity() async {
-    await showFutureLoadingDialog(
+    final resp = await showFutureLoadingDialog(
       context: context,
       future: () async {
         await room.finishActivity();
@@ -55,6 +55,11 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
         }
       },
     );
+
+    if (resp.isError) return;
+    if (room.activityIsFinished) {
+      await room.fetchSummaries();
+    }
   }
 
   @override
