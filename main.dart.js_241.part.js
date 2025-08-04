@@ -981,9 +981,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pinMessage() {
       return "\ubc29\uc5d0 \uace0\uc815";
     },
-    get$confirmEventUnpin() {
-      return "\uc774\ubca4\ud2b8\ub97c \uc601\uad6c\uc801\uc73c\ub85c \uace0\uc815 \ud574\uc81c\ud560 \uac83\uc774 \ud655\uc2e4\ud55c\uac00\uc694?";
-    },
     get$emojis() {
       return "\uc774\ubaa8\uc9c0";
     },
@@ -4452,6 +4449,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "No chat or space found with that code. Please try again.";
     },
+    get$confirmMessageUnpin() {
+      return "Are you sure you want to unpin this message?";
+    },
     get$createActivityPlan() {
       return "Create a new activity plan";
     },
@@ -4509,6 +4509,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_241", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "NKmWD+T6udgFnr3iSipkeyLQ5W0=");
+})($__dart_deferred_initializers__, "C2CTu7aYVQl+TNnU/7zo+IeUryo=");
 ;
 //# sourceMappingURL=main.dart.js_241.part.js.map

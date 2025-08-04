@@ -988,9 +988,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pinMessage() {
       return "\u7f6e\u9876\u5230\u804a\u5929\u5ba4";
     },
-    get$confirmEventUnpin() {
-      return "\u4f60\u786e\u5b9a\u8981\u6c38\u4e45\u6027\u53d6\u6d88\u7f6e\u9876\u6b64\u4e8b\u4ef6\u5417\uff1f";
-    },
     get$emojis() {
       return "\u8868\u60c5\u7b26\u53f7";
     },
@@ -4459,6 +4456,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "No chat or space found with that code. Please try again.";
     },
+    get$confirmMessageUnpin() {
+      return "Are you sure you want to unpin this message?";
+    },
     get$createActivityPlan() {
       return "Create a new activity plan";
     },
@@ -5463,9 +5463,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pinMessage() {
       return "\u91d8\u9078\u5230\u623f\u9593";
     },
-    get$confirmEventUnpin() {
-      return "\u60a8\u78ba\u5b9a\u8981\u6c38\u4e45\u53d6\u6d88\u91d8\u9078\u8a72\u4e8b\u4ef6\u55ce\uff1f";
-    },
     get$emojis() {
       return "\u8868\u60c5\u7b26\u865f";
     },
@@ -6013,6 +6010,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "tHUqjZWbxLPkuwJWcxkRZCHRvpw=");
+})($__dart_deferred_initializers__, "dS1w6hc+vykhLIism/xvPybA5gM=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

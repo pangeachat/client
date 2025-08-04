@@ -981,9 +981,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pinMessage() {
       return "Klammerda s\xf5num jututuppa";
     },
-    get$confirmEventUnpin() {
-      return "Kas sa oled kindel, et tahad klammerdatud s\xfcndmuse eemaldada?";
-    },
     get$emojis() {
       return "Emotikonid";
     },
@@ -4452,6 +4449,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "No chat or space found with that code. Please try again.";
     },
+    get$confirmMessageUnpin() {
+      return "Are you sure you want to unpin this message?";
+    },
     get$createActivityPlan() {
       return "Create a new activity plan";
     },
@@ -4509,6 +4509,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_206", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "QMhq1/aktaki8Molp/lVA4gLzd0=");
+})($__dart_deferred_initializers__, "7/DTClj0pdb27zIrvKT1XZWJV3c=");
 ;
 //# sourceMappingURL=main.dart.js_206.part.js.map

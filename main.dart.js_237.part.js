@@ -981,9 +981,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pinMessage() {
       return "Fissa alla stanza";
     },
-    get$confirmEventUnpin() {
-      return "Sei sicuro di voler permanentemente sfissare l'evento?";
-    },
     get$emojis() {
       return "Emoji";
     },
@@ -4452,6 +4449,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "No chat or space found with that code. Please try again.";
     },
+    get$confirmMessageUnpin() {
+      return "Are you sure you want to unpin this message?";
+    },
     get$createActivityPlan() {
       return "Create a new activity plan";
     },
@@ -4509,6 +4509,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_237", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "HPtrjFNB354FmoFB2JdZFR0EtrA=");
+})($__dart_deferred_initializers__, "6i7r7NaA9DPvTtDGbo0VF/TbHgg=");
 ;
 //# sourceMappingURL=main.dart.js_237.part.js.map
