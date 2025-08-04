@@ -69,7 +69,7 @@ class ChatListItemSubtitle extends StatelessWidget {
         builder: (context, snapshot) {
           return Text(
             snapshot.hasData && snapshot.data != null
-                ? snapshot.data!
+                ? snapshot.data!.replaceAll('●', '')
                 : L10n.of(context).emptyChat,
             style: style,
             softWrap: false,
