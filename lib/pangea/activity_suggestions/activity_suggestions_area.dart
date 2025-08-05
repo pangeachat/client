@@ -132,9 +132,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       _activityItems.addAll(resp.activityPlans);
       _timeout = _activityItems.isEmpty;
     } finally {
-      if (mounted) {
-        setState(() => _loading = false);
-      }
+      if (mounted) setState(() => _loading = false);
     }
   }
 
