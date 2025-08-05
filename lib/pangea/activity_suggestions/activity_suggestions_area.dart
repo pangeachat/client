@@ -130,9 +130,15 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         },
       );
       _activityItems.addAll(resp.activityPlans);
-      _timeout = false;
+      _timeout = _activityItems.isEmpty;
     } finally {
-      if (mounted) setState(() => _loading = false);
+      // Only set loading to false if 1+ activity has been provided
+      if (_activityItems.isNotEmpty) {
+        _loading = false;
+      }
+      if (mounted) {
+        setState(() => {});
+      }
     }
   }
 
@@ -263,6 +269,19 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                             message: L10n.of(context)
                                 .activitySuggestionTimeoutMessage,
                           ),
+                        ),
+                      if (cards.length < 5)
+                        ElevatedButton(
+                          onPressed: _setActivityItems,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primaryContainer,
+                            foregroundColor:
+                                theme.colorScheme.onPrimaryContainer,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0,
+                            ),
+                          ),
+                          child: Text(L10n.of(context).tryAgain),
                         ),
                     ],
                   ),
