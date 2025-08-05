@@ -108,7 +108,15 @@ extension AnalyticsClientExtension on Client {
     }
   }
 
-  Future<void> addAnalyticsRoomIdsToProfile() async {}
+  Future<void> loadAnalyticsRequests() async {
+    if (prevBatch == null) await onSync.stream.first;
+    if (userID == null || userID == BotName.byEnvironment) return;
+
+    for (final analyticsRoom in allMyAnalyticsRooms) {
+      if (!isLogged()) return;
+      analyticsRoom.requestParticipants([Membership.knock], false, true);
+    }
+  }
 
   /// Space admins join analytics rooms in spaces via the space hierarchy,
   /// so other members of the space need to add their analytics rooms to the space.
