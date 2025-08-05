@@ -310,12 +310,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_unban() {
       return "\u5728\u6b64\u804a\u5929\u5ba4\u89e3\u5c01\u6307\u5b9a\u7528\u6237";
     },
-    get$commandInvalid() {
-      return "\u6307\u4ee4\u65e0\u6548";
-    },
-    commandMissing$1(command) {
-      return command + " \u4e0d\u662f\u6307\u4ee4\u3002";
-    },
     get$compareEmojiMatch() {
       return "\u8bf7\u6bd4\u8f83\u8868\u60c5\u7b26\u53f7";
     },
@@ -756,9 +750,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendAMessage() {
       return "\u53d1\u9001\u4e00\u6761\u6d88\u606f";
-    },
-    get$sendAsText() {
-      return "\u4ee5\u6587\u672c\u53d1\u9001";
     },
     get$sendAudio() {
       return "\u53d1\u9001\u97f3\u9891";
@@ -4800,12 +4791,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_unban() {
       return "\u5728\u6b64\u804a\u5929\u5ba4\u89e3\u9664\u5c01\u9396\u8a72\u4f7f\u7528\u8005";
     },
-    get$commandInvalid() {
-      return "\u547d\u4ee4\u7121\u6548";
-    },
-    commandMissing$1(command) {
-      return command + " \u4e0d\u662f\u6b63\u78ba\u7684\u547d\u4ee4\u3002";
-    },
     get$compareEmojiMatch() {
       return "\u8acb\u5c0d\u6bd4\u9019\u4e9b\u8868\u60c5";
     },
@@ -5240,9 +5225,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendAMessage() {
       return "\u50b3\u9001\u8a0a\u606f";
-    },
-    get$sendAsText() {
-      return "\u4ee5\u6587\u5b57\u50b3\u9001";
     },
     get$sendAudio() {
       return "\u50b3\u9001\u97f3\u8a0a";
@@ -6019,6 +6001,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "shEm34vKwx0EM6wfaP80HSyCgh0=");
+})($__dart_deferred_initializers__, "SFOLBvAnQpod3oj/17R0r2euMEI=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

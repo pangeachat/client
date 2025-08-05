@@ -316,12 +316,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_unban() {
       return "Unban the given user from this room";
     },
-    get$commandInvalid() {
-      return "Command invalid";
-    },
-    commandMissing$1(command) {
-      return command + " is not a command.";
-    },
     get$compareEmojiMatch() {
       return "Please compare the emojis";
     },
@@ -762,9 +756,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendAMessage() {
       return "Send a message";
-    },
-    get$sendAsText() {
-      return "Send as text";
     },
     get$sendAudio() {
       return "Send audio";
@@ -4785,12 +4776,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_unban() {
       return "Revogar o banimento de um(a) usu\xe1rio(a) desta sala";
     },
-    get$commandInvalid() {
-      return "Comando inv\xe1lido";
-    },
-    commandMissing$1(command) {
-      return command + " n\xe3o \xe9 um comando.";
-    },
     get$compareEmojiMatch() {
       return "Por favor compare os emojis";
     },
@@ -5225,9 +5210,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$sendAMessage() {
       return "Enviar mensagem";
-    },
-    get$sendAsText() {
-      return "Enviar como texto";
     },
     get$sendAudio() {
       return "Enviar audio";
@@ -5900,12 +5882,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$commandHint_unban() {
       return "Perdoar o utilizador dado";
     },
-    get$commandInvalid() {
-      return "Comando inv\xe1lido";
-    },
-    commandMissing$1(command) {
-      return command + " n\xe3o \xe9 um comando.";
-    },
     get$compareEmojiMatch() {
       return "Compara e certifica-te que os emojis que se seguem correspondem aos do outro dispositivo:";
     },
@@ -6272,9 +6248,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$sendAMessage() {
       return "Enviar a mensagem";
     },
-    get$sendAsText() {
-      return "Enviar como texto";
-    },
     get$sendAudio() {
       return "Enviar \xe1udio";
     },
@@ -6325,6 +6298,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "jzHcKBwJ8QaQW1ekXToFD+XJvZ8=");
+})($__dart_deferred_initializers__, "MjrOX3t8JL6rvBHapv67uXeSzkM=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map

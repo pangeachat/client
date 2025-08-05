@@ -7,1519 +7,1510 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nHu$() {
-      return new A.L10nHu(B.canonicalizedLocale("hu"));
+    L10nId$() {
+      return new A.L10nId(B.canonicalizedLocale("id"));
     },
-    L10nHu: function L10nHu(t0) {
+    L10nId: function L10nId(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[28], A);
-  A.L10nHu.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[30], A);
+  A.L10nId.prototype = {
     get$alwaysUse24HourFormat() {
-      return "hamis";
+      return "tidak";
     },
     get$repeatPassword() {
-      return "Jelsz\xf3 ism\xe9tl\xe9se";
+      return "Ulangi kata sandi";
     },
     get$notAnImage() {
-      return "Nem k\xe9p f\xe1jl.";
+      return "Bukan berkas gambar.";
     },
     get$setCustomPermissionLevel() {
-      return "Egyedi enged\xe9lyszint be\xe1ll\xedt\xe1sa";
+      return "Atur tingkat perizinan kustom";
     },
     get$setPermissionsLevelDescription() {
-      return "K\xe9rem, v\xe1lasszon egy el\u0151re meghat\xe1rozott szerepk\xf6rt, vagy adjon meg egy egyedi enged\xe9ly szintet 0 \xe9s 100 k\xf6z\xf6tt.";
+      return "Silakan pilih peran yang sudah ditentukan di bawah atau masukkan tingkat perizinan kustom antara 0 dan 100.";
     },
     get$ignoreUser() {
-      return "Felhaszn\xe1l\xf3 ignor\xe1l\xe1sa";
+      return "Abaikan pengguna";
     },
     get$normalUser() {
-      return "Norm\xe1l felhaszn\xe1l\xf3";
+      return "Pengguna biasa";
     },
     get$remove(_) {
-      return "Elt\xe1vol\xedt\xe1s";
+      return "Hapus";
     },
     get$importNow() {
-      return "Import\xe1l\xe1s most";
+      return "Impor sekarang";
     },
     get$importEmojis() {
-      return "Emojik import\xe1l\xe1sa";
+      return "Impor Emoji";
     },
     get$importFromZipFile() {
-      return "Import\xe1l\xe1s zip f\xe1jlb\xf3l";
+      return "Impor dari berkas .zip";
     },
     get$exportEmotePack() {
-      return "Emojicsomag export\xe1l\xe1sa zip-be";
+      return "Ekspor paket Emote sebagai .zip";
     },
     get$replace(_) {
-      return "Kicser\xe9l";
+      return "Ganti";
     },
     aboutHomeserver$1(homeserver) {
-      return "N\xe9vjegy " + homeserver;
+      return "Tentang " + homeserver;
     },
     get$accept(_) {
-      return "Elfogad";
+      return "Terima";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " elfogadta a megh\xedv\xe1st";
+      return "\ud83d\udc4d " + username + " menerima undangannya";
     },
     get$account() {
-      return "Fi\xf3k";
+      return "Akun";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " aktiv\xe1lta a v\xe9gpontok k\xf6z\xf6tti titkos\xedt\xe1st";
+      return "\ud83d\udd10 " + username + " mengaktifkan enkripsi ujung ke ujung";
     },
     get$addEmail() {
-      return "E-mail-c\xedm hozz\xe1ad\xe1sa";
+      return "Tambah email";
     },
     supposedMxid$1(mxid) {
-      return mxid + "-nek kell lennie";
+      return "Ini seharusnya " + mxid;
     },
     get$addToSpace() {
-      return "Hozz\xe1ad\xe1s a t\xe9rhez";
+      return "Tambah ke space";
     },
     get$admin() {
-      return "Adminisztr\xe1tor";
+      return "Admin";
     },
     get$commandHint_roomupgrade() {
-      return "Szoba friss\xedt\xe9se a megadott szoba verzi\xf3ra";
+      return "Tingkatkan ruangan ini ke versi ruangan yang ditentukan";
     },
     get$commandHint_googly() {
-      return "G\xfcl\xfcszemek k\xfcld\xe9se";
+      return "Kirim mata googly";
     },
     get$commandHint_cuddle() {
-      return "\xd6sszeb\xfaj\xe1s k\xfcld\xe9se";
+      return "Kirim berpelukan";
     },
     get$commandHint_hug() {
-      return "\xd6lel\xe9s k\xfcld\xe9se";
+      return "Kirim pelukan";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " g\xfcl\xfcszemeket k\xfcld";
+      return senderName + " mengirim mata googly";
     },
     cuddleContent$1(senderName) {
-      return senderName + " hozz\xe1d b\xfajik";
+      return senderName + " berpelukan dengan kamu";
     },
     hugContent$1(senderName) {
-      return senderName + " meg\xf6lel";
+      return senderName + " memeluk kamu";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " v\xe1laszolt a h\xedv\xe1sra";
+      return senderName + " menjawab panggilan";
     },
     get$anyoneCanJoin() {
-      return "B\xe1rki csatlakozhat";
+      return "Siapa saja dapat bergabung";
     },
     get$archive() {
-      return "Arch\xedvum";
+      return "Arsip";
     },
     get$areYouSure() {
-      return "Biztos benne?";
+      return "Apakah kamu yakin?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Biztosan kijelentkezik?";
+      return "Apakah kamu yakin ingin keluar?";
     },
     get$askSSSSSign() {
-      return "A m\xe1sik f\xe9l igazol\xe1s\xe1hoz meg kell adnia a biztons\xe1gos t\xe1rol\xf3 jelmondat\xe1t vagy a vissza\xe1ll\xedt\xe1si kulcsot\xe1t.";
+      return "Untuk dapat menandatangani orang lain, silakan masukkan frasa sandi atau kunci pemulihan penyimpanan aman kamu.";
     },
     askVerificationRequest$1(username) {
-      return "Elfogadja " + username + " hiteles\xedt\xe9si k\xe9relm\xe9t?";
+      return "Terima permintaan verifikasi dari " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "A Matrix-kiszolg\xe1l\xf3 a k\xf6vetkez\u0151 bejelentkez\xe9seket t\xe1mogatja:\n" + serverVersions + "\nDe ez az alkalmaz\xe1st csak ezeket t\xe1mogatja:\n" + supportedVersions;
+      return "Homeserver ini mendukung tipe masuk ini:\n" + serverVersions + "\nTetapi aplikasi ini mendukung:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "G\xe9pel\xe9si \xe9rtes\xedt\xe9s megjelen\xedt\xe9se";
+      return "Kirim notifikasi pengetikan";
     },
     get$swipeRightToLeftToReply() {
-      return "H\xfazza balra a v\xe1laszol\xe1shoz";
+      return "Usap dari kanan ke kiri untuk membalas";
     },
     get$sendOnEnter() {
-      return "K\xfcld\xe9s Enterrel";
+      return "Kirim dengan enter";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " cseveg\xe9sek \xe9s " + participants + " r\xe9sztvev\u0151k";
+      return "" + chats + " chat dan " + participants + " anggota";
     },
     get$noMoreChatsFound() {
-      return "Nem tal\xe1lhat\xf3 t\xf6bb cseveg\xe9s...";
+      return "Tidak ada chat lagi yang ditemukan...";
     },
     get$space() {
-      return "T\xe9r";
+      return "Space";
     },
     get$banFromChat() {
-      return "Kitilt\xe1s a cseveg\xe9sb\u0151l";
+      return "Cekal dari obrolan";
     },
     get$banned() {
-      return "Kitiltva";
+      return "Dicekal";
     },
     bannedUser$2(username, targetName) {
-      return username + " kitiltva " + targetName + " \xe1ltal";
+      return username + " mencekal " + targetName;
     },
     get$blockDevice() {
-      return "Eszk\xf6z blokkol\xe1sa";
+      return "Blokir Perangkat";
     },
     get$blocked() {
-      return "Blokkolva";
+      return "Diblokir";
     },
     get$cancel(_) {
-      return "M\xe9gse";
+      return "Batal";
     },
     cantOpenUri$1(uri) {
-      return "Nem siker\xfclt a k\xf6vetkez\u0151 URI megnyit\xe1sa: " + uri;
+      return "Tidak bisa membuka URI ini " + uri;
     },
     get$changeDeviceName() {
-      return "Eszk\xf6zn\xe9v m\xf3dos\xedt\xe1sa";
+      return "Ganti nama perangkat";
     },
     changedTheChatAvatar$1(username) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9si profilk\xe9p\xe9t";
+      return username + " mengubah avatar obrolan";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " megv\xe1ltoztatta a cseveg\xe9s le\xedr\xe1st a k\xf6vetkez\u0151re: '" + description + "'";
+      return username + " mengubah deskripsi obrolan ke: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9s nev\xe9t a k\xf6vetkez\u0151re: '" + chatname + "'";
+      return username + " mengubah nama obrolan ke: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " m\xf3dos\xedtotta a cseveg\xe9si enged\xe9lyeket";
+      return username + " mengubah izin obrolan";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " m\xf3dos\xedtotta a megjelen\xedtett nev\xe9t erre: '" + displayname + "'";
+      return username + " mengubah nama tampilan ke: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyokat";
+      return username + " mengubah aturan akses tamu";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " m\xf3dos\xedtotta a vend\xe9gek hozz\xe1f\xe9r\xe9si szab\xe1lyait a k\xf6vetkez\u0151re: " + rules;
+      return username + " mengubah aturan akses tamu ke: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t";
+      return username + " mengubah visibilitas sejarah";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " m\xf3dos\xedtotta az el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1t a k\xf6vetkez\u0151re: " + rules;
+      return username + " mengubah visibilitas sejarah ke: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " m\xf3dos\xedtott a csatlakoz\xe1si szab\xe1lyokat";
+      return username + " mengubah aturan bergabung";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " m\xf3dos\xedtotta a csatlakoz\xe1si szab\xe1lyokat a k\xf6vetkez\u0151re: " + joinRules;
+      return username + " mengubah aturan bergabung ke: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " m\xf3dos\xedtotta a profilk\xe9p\xe9t";
+      return username + " mengubah avatarnya";
     },
     changedTheRoomAliases$1(username) {
-      return username + " m\xf3dos\xedtotta a szoba \xe1lneveit";
+      return username + " mengubah alias ruangan";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " m\xf3dos\xedtotta a megh\xedv\xf3 hivatkoz\xe1st";
+      return username + " mengubah tautan undangan";
     },
     get$changePassword() {
-      return "Jelsz\xf3 m\xf3dos\xedt\xe1sa";
+      return "Ubah kata sandi";
     },
     get$changeTheme() {
-      return "St\xedlus\xe1nak m\xf3dos\xedt\xe1sa";
+      return "Ubah tema";
     },
     get$changeYourAvatar() {
-      return "Profilk\xe9p m\xf3dos\xedt\xe1sa";
+      return "Ubah avatarmu";
     },
     get$channelCorruptedDecryptError() {
-      return "A titkos\xedt\xe1s megs\xe9r\xfclt";
+      return "Enkripsi telah rusak";
     },
     get$chat() {
-      return "Cseveg\xe9s";
+      return "Obrolan";
     },
     get$chatDetails() {
-      return "Cseveg\xe9s r\xe9szletei";
+      return "Detail obrolan";
     },
     get$chats() {
-      return "Cseveg\xe9sek";
+      return "Obrolan";
     },
     get$chooseAStrongPassword() {
-      return "V\xe1lasszon egy er\u0151s jelsz\xf3t";
+      return "Pilih kata sandi yang kuat";
     },
     get$clearArchive() {
-      return "Arch\xedvum \xfcr\xedt\xe9se";
+      return "Bersihkan arsip";
     },
     get$close(_) {
-      return "Bez\xe1r";
+      return "Tutup";
     },
     get$commandHint_markasdm() {
-      return "Szoba megjel\xf6l\xe9se mint k\xf6zvetlen cseveg\u0151 szoba az adott Matrix ID-n\xe9l";
+      return "Tandai sebagai ruangan pesan langsung untuk ID Matrix yang ditentukan";
     },
     get$commandHint_markasgroup() {
-      return "Jel\xf6l\xe9s csoportnak";
+      return "Tandai sebagai grup";
     },
     get$commandHint_ban() {
-      return "Adott felhaszn\xe1l\xf3 kitilt\xe1sa a szob\xe1b\xf3l";
+      return "Cekal pengguna yang dicantumkan dari ruangan ini";
     },
     get$commandHint_clearcache() {
-      return "Gyors\xedt\xf3t\xe1r t\xf6rl\xe9se";
+      return "Bersihkan tembolok";
     },
     get$commandHint_create() {
-      return "Egy \xfcres cseveg\u0151 csoport l\xe9trehoz\xe1sa\nA --no-encryption param\xe9terrel feloldhatja a titkos\xedt\xe1st";
+      return "Buat sebuah grup obrolan kosong\nGunakan --no-encryption untuk menonaktifkan enkripsi";
     },
     get$commandHint_discardsession() {
-      return "Munkamenet elvet\xe9se";
+      return "Buang sesi";
     },
     get$commandHint_dm() {
-      return "K\xf6zvetlen cseveg\xe9s ind\xedt\xe1sa\nA --no-encryption param\xe9terrel kikapcsolhatja a titkos\xedt\xe1st";
+      return "Mulai sebuah obrolan langsung\nGunakan --no-encryption untuk menonaktifkan enkripsi";
     },
     get$commandHint_html() {
-      return "HTML form\xe1zott sz\xf6veg k\xfcld\xe9se";
+      return "Kirim teks yang diformat dengan HTML";
     },
     get$commandHint_invite() {
-      return "Adott felhaszn\xe1l\xf3 megh\xedv\xe1sa ebbe a szob\xe1ba";
+      return "Undang pengguna yang dicantum ke ruangan ini";
     },
     get$commandHint_join() {
-      return "Csatlakoz\xe1s a megadott szob\xe1hoz";
+      return "Gabung ke ruangan yang dicantum";
     },
     get$commandHint_kick() {
-      return "A megadott felhaszn\xe1l\xf3 kir\xfag\xe1sa a szob\xe1b\xf3l";
+      return "Keluarkan pengguna yang dicantum dari ruangan ini";
     },
     get$commandHint_leave() {
-      return "Szoba elhagy\xe1sa";
+      return "Tinggalkan ruangan ini";
     },
     get$commandHint_me() {
-      return "\xcdrja le mag\xe1t";
+      return "Jelaskan dirimu";
     },
     get$commandHint_myroomavatar() {
-      return "Profilk\xe9pe hozz\xe1rendel\xe9se a szob\xe1hoz (mxc URI haszn\xe1lat\xe1val)";
+      return "Tetapkan gambarmu untuk ruangan ini (oleh uri-mxc)";
     },
     get$commandHint_myroomnick() {
-      return "Megjelen\xedtett nev\xe9nek hozz\xe1rendel\xe9se a szob\xe1hoz";
+      return "Tetapkan nama tampilanmu untuk ruangan ini";
     },
     get$commandHint_op() {
-      return "Az adott felhaszn\xe1l\xf3 hozz\xe1f\xe9r\xe9si szintj\xe9nek megad\xe1sa (alap\xe9rtelmezett: 50)";
+      return "Tetapkan tingkat kekuatan pengguna yang dicantum (default: 50)";
     },
     get$commandHint_plain() {
-      return "Form\xe1zatlan sz\xf6veg k\xfcld\xe9se";
+      return "Kirim teks yang tidak diformat";
     },
     get$commandHint_react() {
-      return "V\xe1lasz k\xfcld\xe9se reakci\xf3k\xe9nt";
+      return "Kirim balasan sebagai reaksi";
     },
     get$commandHint_send() {
-      return "Sz\xf6veg k\xfcld\xe9se";
+      return "Kirim teks";
     },
     get$commandHint_unban() {
-      return "Adott felhaszn\xe1l\xf3 kitilt\xe1s\xe1nak felold\xe1sa a szob\xe1hoz";
-    },
-    get$commandInvalid() {
-      return "\xc9rv\xe9nytelen parancs";
-    },
-    commandMissing$1(command) {
-      return command + " nem egy parancs.";
+      return "Hilangkan cekalan untuk pengguna yang dicantumkan dari ruangan ini";
     },
     get$compareEmojiMatch() {
-      return "K\xe9rem, hasonl\xedtsa \xf6ssze a hangulatjeleket";
+      return "Bandingkan emoji";
     },
     get$compareNumbersMatch() {
-      return "K\xe9rem, hasonl\xedtsa \xf6ssze a sz\xe1mokat";
+      return "Bandingkan angka";
     },
     get$configureChat() {
-      return "Cseveg\xe9s konfigur\xe1l\xe1sa";
+      return "Konfigurasi obrolan";
     },
     get$confirm(_) {
-      return "Meger\u0151s\xedt";
+      return "Konfirmasi";
     },
     get$copiedToClipboard() {
-      return "V\xe1g\xf3lapra m\xe1solva";
+      return "Disalin ke papan klip";
     },
     get$copy(_) {
-      return "M\xe1sol\xe1s";
+      return "Salin";
     },
     couldNotDecryptMessage$1(error) {
-      return "Nem siker\xfclt visszafejteni az \xfczenetet: " + error;
+      return "Tidak dapat mendekripsikan pesan: " + error;
     },
     get$checkList() {
-      return "Tennival\xf3k list\xe1ja";
+      return "Ceklis";
     },
     countParticipants$1(count) {
-      return "" + count + " r\xe9sztvev\u0151";
+      return "" + count + " anggota";
     },
     countInvited$1(count) {
-      return "" + count + " megh\xedvott";
+      return "" + count + " diundang";
     },
     get$create(_) {
-      return "L\xe9trehoz";
+      return "Buat";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " cseveg\xe9st hozott l\xe9tre";
+      return "\ud83d\udcac " + username + " membuat obrolan ini";
     },
     get$createNewSpace() {
-      return "\xdaj t\xe9r";
+      return "Space baru";
     },
     get$currentlyActive() {
-      return "Jelenleg akt\xedv";
+      return "Aktif";
     },
     get$darkTheme() {
-      return "S\xf6t\xe9t";
+      return "Gelap";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
-      return date + ", " + timeOfDay;
+      return timeOfDay + ", " + date;
     },
     get$deactivateAccountWarning() {
-      return "Ez deaktiv\xe1lja a felhaszn\xe1l\xf3i fi\xf3kj\xe1t. Ez nem vonhat\xf3 vissza! Biztos benne?";
+      return "Ini akan menonaktifkan akun penggunamu. Ini tidak bisa dibatalkan! Apakah kamu yakin?";
     },
     get$defaultPermissionLevel() {
-      return "Alap\xe9rtelmezett hozz\xe1f\xe9r\xe9si szint \xfaj felhaszn\xe1l\xf3kn\xe1l";
+      return "Level izin bawaan untuk pengguna baru";
     },
     get$$delete(_) {
-      return "T\xf6rl\xe9s";
+      return "Hapus";
     },
     get$deleteAccount() {
-      return "Fi\xf3k t\xf6rl\xe9se";
+      return "Hapus akun";
     },
     get$deleteMessage() {
-      return "\xdczenet t\xf6rl\xe9se";
+      return "Hapus pesan";
     },
     get$devices() {
-      return "Eszk\xf6z\xf6k";
+      return "Perangkat";
     },
     get$displaynameHasBeenChanged() {
-      return "A megjelen\xedt\xe9si n\xe9v megv\xe1ltozott";
+      return "Nama tampilan telah diubah";
     },
     get$downloadFile() {
-      return "F\xe1jl let\xf6lt\xe9se";
+      return "Unduh berkas";
     },
     get$edit() {
-      return "Szerkeszt";
+      return "Sunting";
     },
     get$editBlockedServers() {
-      return "Blokkolt szerverek szerkeszt\xe9se";
+      return "Edit server yang diblokir";
     },
     get$chatPermissions() {
-      return "Cseveg\xe9s enged\xe9lyek";
+      return "Perizinan obrolan";
     },
     get$editDisplayname() {
-      return "Megjelen\xedt\xe9si n\xe9v szerkeszt\xe9se";
+      return "Edit nama tampilan";
     },
     get$editRoomAvatar() {
-      return "Szoba-profilk\xe9p szerkeszt\xe9se";
+      return "Edit avatar ruangan";
     },
     get$emoteExists() {
-      return "A hangulatjel m\xe1r l\xe9tezik!";
+      return "Emote sudah ada!";
     },
     get$emoteInvalid() {
-      return "\xc9rv\xe9nytelen hangulatjel r\xf6vidk\xf3d!";
+      return "Shortcode emote tidak valid!";
     },
     get$emoteKeyboardNoRecents() {
-      return "A nemr\xe9g haszn\xe1lt hangulatjelek fognak itt megjelenni...";
+      return "Emote yang telah digunakan akan muncul di sini...";
     },
     get$emotePacks() {
-      return "Hangulatjel csomagok a szob\xe1hoz";
+      return "Paket emote untuk ruangan";
     },
     get$customEmojisAndStickers() {
-      return "Egyedi hangulatjelek \xe9s matric\xe1k";
+      return "Emoji dan stiker kustom";
     },
     get$emoteShortcode() {
-      return "Hangulatjel r\xf6vidk\xf3d";
+      return "Shortcode emote";
     },
     get$emoteWarnNeedToPick() {
-      return "Ki kell v\xe1lasztania egy hangulatjel r\xf6vidk\xf3dot \xe9s egy k\xe9pet!";
+      return "Kamu harus memilih shortcode emote dan gambar!";
     },
     get$emptyChat() {
-      return "\xdcres cseveg\xe9s";
+      return "Chat kosong";
     },
     get$enableEmotesGlobally() {
-      return "Hangulatjel csomag enged\xe9lyez\xe9se glob\xe1lisan";
+      return "Aktifkan paket emote secara global";
     },
     get$enableEncryption() {
-      return "Titkos\xedt\xe1s enged\xe9lyez\xe9se";
+      return "Aktifkan enkripsi";
     },
     get$encrypted() {
-      return "Titkos\xedtott";
+      return "Terenkripsi";
     },
     get$encryptionNotEnabled() {
-      return "Titkos\xedt\xe1s nem enged\xe9lyezve";
+      return "Enkripsi tidak diaktifkan";
     },
     endedTheCall$1(senderName) {
-      return senderName + " befejezte a h\xedv\xe1st";
+      return senderName + " mengakhiri panggilan";
     },
     get$enterAnEmailAddress() {
-      return "Adjon meg egy email c\xedmet";
+      return "Masukkan alamat email";
     },
     errorObtainingLocation$1(error) {
-      return "Hiba a helymeghat\xe1roz\xe1skor: " + error;
+      return "Gagal mendapat lokasi: " + error;
     },
     get$fontSize(_) {
-      return "Bet\u0171m\xe9ret";
+      return "Ukuran font";
     },
     get$forward(_) {
-      return "Tov\xe1bb\xedt\xe1s";
+      return "Teruskan";
     },
     get$fromJoining() {
-      return "Csatlakoz\xe1s \xf3ta";
+      return "Dari bergabung";
     },
     get$fromTheInvitation() {
-      return "Megh\xedv\xe1s \xf3ta";
+      return "Dari undangan";
     },
     get$guestsAreForbidden() {
-      return "A vend\xe9gek nem enged\xe9lyezettek";
+      return "Tamu dilarang";
     },
     get$guestsCanJoin() {
-      return "Csatlakozhatnak vend\xe9gek";
+      return "Tamu bisa bergabung";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " visszavonta " + targetName + " megh\xedv\xe1s\xe1t";
+      return username + " telah mencabut undangan untuk " + targetName;
     },
     get$help() {
-      return "S\xfag\xf3";
+      return "Bantuan";
     },
     get$hideRedactedMessages() {
-      return "Szerkesztett \xfczenetek elrejt\xe9se";
+      return "Sembunyikan pesan yang dihapus";
     },
     get$hideRedactedMessagesBody() {
-      return "Ha valaki szerkeszti az \xfczenet\xe9t, ez az \xfczenet nem jelenik meg a cseveg\xe9s sor\xe1n.";
+      return "Jika seseorang menghapus pesan, pesannya tidak akan terlihat lagi dalam obrolan.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "\xc9rv\xe9nytelen vagy ismeretlen \xfczenetform\xe1tum elrejt\xe9se";
+      return "Sembunyikan format pesan yang tidak valid atau tidak diketahui";
     },
     get$block() {
-      return "Blokkol\xe1s";
+      return "Blokir";
     },
     get$blockedUsers() {
-      return "Blokkolt felhaszn\xe1l\xf3k";
+      return "Pengguna yang terblokir";
     },
     get$blockListDescription() {
-      return "Az \xd6nt zavar\xf3 felhaszn\xe1l\xf3kat blokkolhatja. A blokkolt list\xe1n tal\xe1lhat\xf3 felhaszn\xe1l\xf3kt\xf3l nem tud fogadni \xfczenetet vagy szoba megh\xedv\xe1st.";
+      return "Kamu bisa memblokir pengguna yang sedang menganggumu. Kamu tidak akan mendapatkan pesan atau undangan ruangan dari pengguna dalam daftar blokiran pribadimu.";
     },
     get$blockUsername() {
-      return "Felhaszn\xe1l\xf3n\xe9v ignor\xe1l\xe1sa";
+      return "Abaikan nama pengguna";
     },
     get$iHaveClickedOnLink() {
-      return "R\xe1kattintottam a linkre";
+      return "Saya sudah klik tautannya";
     },
     get$incorrectPassphraseOrKey() {
-      return "Hib\xe1s jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
+      return "Frasa sandi atau kunci pemulihan yang salah";
     },
     get$inviteContact() {
-      return "Ismer\u0151s megh\xedv\xe1sa";
+      return "Undang kontak";
     },
     get$noChatDescriptionYet() {
-      return "M\xe9g nincs cseveg\u0151 szoba le\xedr\xe1s.";
+      return "Deskripsi obrolan belum dibuat.";
     },
     get$tryAgain() {
-      return "Pr\xf3b\xe1lja \xfajra";
+      return "Coba ulang";
     },
     get$invited() {
-      return "Megh\xedvott";
+      return "Diundang";
     },
     get$redactMessageDescription() {
-      return "A t\xe1rsalg\xe1sban \xf6sszes r\xe9sztvev\u0151je sz\xe1m\xe1ra m\xf3dos\xedt\xe1sra ker\xfcl az \xfczenet. Ez nem visszavonhat\xf3.";
+      return "Pesan akan dihilangkan untuk semua anggota dalam percakapan ini. Ini tidak dapat diurungkan.";
     },
     get$optionalRedactReason() {
-      return "(V\xe1laszthat\xf3) A szerkeszt\xe9s oka...";
+      return "(Opsional) Alasan menghilangkan pesan ini...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " megh\xedvta " + targetName + " felhaszn\xe1l\xf3t";
+      return "\ud83d\udce9 " + username + " mengundang " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Csak megh\xedvott felhaszn\xe1l\xf3k";
+      return "Pengguna yang diundang saja";
     },
     get$inviteForMe() {
-      return "Megh\xedv\xe1s sz\xe1momra";
+      return "Undangan untuk saya";
     },
     get$isTyping() {
-      return "\xe9pp g\xe9pel\u2026";
+      return "sedang mengetik\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " csatlakozott a cseveg\xe9shez";
+      return "\ud83d\udc4b " + username + " telah bergabung dengan obrolan";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " kir\xfagta " + targetName + "-t";
+      return "\ud83d\udc5e " + username + " mengeluarkan " + targetName;
     },
     get$kickFromChat() {
-      return "Kir\xfag\xe1s a cseveg\xe9sb\u0151l";
+      return "Keluarkan dari obrolan";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Utolj\xe1ra akt\xedv: " + localizedTimeShort;
+      return "Terakhir aktif: " + localizedTimeShort;
     },
     get$leave() {
-      return "Elhagy";
+      return "Tinggalkan";
     },
     get$leftTheChat() {
-      return "Elhagyta a cseveg\xe9st";
+      return "Keluar dari obrolan";
     },
     get$lightTheme() {
-      return "Vil\xe1gos";
+      return "Terang";
     },
     get$dehydrate() {
-      return "Munkamenet export\xe1l\xe1sa \xe9s az eszk\xf6z t\xf6rl\xe9se";
+      return "Ekspor sesi dan bersihkan perangkat";
     },
     get$dehydrateWarning() {
-      return "Ez nem visszavonhat\xf3. Bizonyosodjon meg r\xf3la, hogy biztons\xe1gos helyre menti a f\xe1jlt.";
+      return "Tindakan ini tidak dapat diurungkan. Pastikan kamu telah menyimpan file cadangan dengan aman.";
     },
     get$dehydrateTor() {
-      return "TOR felhaszn\xe1l\xf3k: Munkamenet export\xe1l\xe1sa";
+      return "Pengguna Tor: Ekspor sesi";
     },
     get$dehydrateTorLong() {
-      return "TOR felhaszn\xe1l\xf3knak aj\xe1nlott a munkamenet export\xe1l\xe1sa az ablak bez\xe1r\xe1sa el\u0151tt.";
+      return "Pengguna Tor disarankan untuk mengekspor sesi sebelum menutup jendela.";
     },
     get$loadingPleaseWait() {
-      return "Bet\xf6lt\xe9s\u2026 K\xe9rem, v\xe1rjon.";
+      return "Memuat\u2026 Mohon tunggu.";
     },
     get$loadMore() {
-      return "Tov\xe1bbiak bet\xf6lt\xe9se\u2026";
+      return "Muat lebih banyak\u2026";
     },
     get$locationDisabledNotice() {
-      return "A helymeghat\xe1roz\xe1s ki van kapcsolva. K\xe9rem, kapcsolja be, hogy meg tudja osztani helyzet\xe9t.";
+      return "Layanan lokasi dinonaktifkan. Mohon diaktifkan untuk bisa membagikan lokasimu.";
     },
     get$locationPermissionDeniedNotice() {
-      return "A helymeghat\xe1roz\xe1s visszautas\xedt\xe1sra ker\xfclt. K\xe9rem enged\xe9lyezze, hogy meg tudja osztani helyzet\xe9t.";
+      return "Izin lokasi ditolak. Mohon memberikan izin untuk bisa membagikan lokasimu.";
     },
     get$logout() {
-      return "Kijelentkez\xe9s";
+      return "Keluar";
     },
     get$mention() {
-      return "Megeml\xedt\xe9s";
+      return "Sebutkan";
     },
     get$messages() {
-      return "\xdczenetek";
+      return "Pesan";
     },
     get$messagesStyle() {
-      return "\xdczenetek:";
+      return "Pesan:";
     },
     get$moderator() {
-      return "Moder\xe1tor";
+      return "Moderator";
     },
     get$newChat() {
-      return "\xdaj cseveg\xe9s";
+      return "Chat baru";
     },
     get$newVerificationRequest() {
-      return "\xdaj hiteles\xedt\xe9si k\xe9relem!";
+      return "Permintaan verifikasi baru!";
     },
     get$next(_) {
-      return "K\xf6vetkez\u0151";
+      return "Lanjut";
     },
     get$no() {
-      return "Nem";
+      return "Tidak";
     },
     get$noConnectionToTheServer() {
-      return "Nem el\xe9rhet\u0151 a szerver";
+      return "Tidak ada koneksi ke server";
     },
     get$noEmotesFound() {
-      return "Nem tal\xe1lhat\xf3ak hangulatjelek. \ud83d\ude15";
+      return "Tidak ada emote yang ditemukan. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Megh\xedv\xf3 link megoszt\xe1sa";
+      return "Bagikan tautan undangan";
     },
     get$none() {
-      return "Nincs";
+      return "Tidak Ada";
     },
     get$noPasswordRecoveryDescription() {
-      return "M\xe9g nem adott meg semmilyen m\xf3dszert a jelszava vissza\xe1ll\xedt\xe1s\xe1ra.";
+      return "Kamu belum menambahkan cara untuk memulihkan kata sandimu.";
     },
     get$noPermission() {
-      return "Nincs enged\xe9ly";
+      return "Tidak ada izin";
     },
     get$noRoomsFound() {
-      return "Nem tal\xe1lhat\xf3ak szob\xe1k\u2026";
+      return "Tidak ada ruangan yang ditemukan\u2026";
     },
     get$notifications() {
-      return "\xc9rtes\xedt\xe9sek";
+      return "Notifikasi";
     },
     get$obtainingLocation() {
-      return "Tart\xf3zkod\xe1si hely lek\xe9r\xe9se\u2026";
+      return "Mendapatkan lokasi\u2026";
     },
     get$offensive() {
-      return "S\xe9rt\u0151";
+      return "Menyinggung";
     },
     get$ok() {
       return "Ok";
     },
     get$oopsSomethingWentWrong() {
-      return "Hopp\xe1, valami hiba l\xe9pett fel\u2026";
+      return "Ups, ada yang salah\u2026";
     },
     get$oneClientLoggedOut() {
-      return "Az egyik kliense kijelentkezett";
+      return "Salah satu klienmu telah keluar";
     },
     get$openInMaps() {
-      return "Megnyit\xe1s t\xe9rk\xe9pen";
+      return "Buka di peta";
     },
     get$link() {
-      return "Hivatkoz\xe1s";
+      return "Tautan";
     },
     get$serverRequiresEmail() {
-      return "Ehhez a szerverhez sz\xfcks\xe9ges az email c\xedm\xe9nek visszaigazol\xe1sa.";
+      return "Server ini harus memvalidasi alamat email kamu untuk registrasi.";
     },
     get$or() {
-      return "Vagy";
+      return "Atau";
     },
     get$participant() {
-      return "R\xe9sztvev\u0151";
+      return "Peserta";
     },
     get$passphraseOrKey() {
-      return "jelmondat vagy vissza\xe1ll\xedt\xe1si kulcs";
+      return "frasa sandi atau kunci pemulihan";
     },
     get$password(_) {
-      return "Jelsz\xf3";
+      return "Kata sandi";
     },
     get$passwordForgotten() {
-      return "Elfelejtett jelsz\xf3";
+      return "Lupa kata sandi";
     },
     get$passwordHasBeenChanged() {
-      return "A jelsz\xf3 m\xf3dos\xedt\xe1sra ker\xfclt";
+      return "Kata sandi telah diubah";
     },
     get$overview() {
-      return "\xc1ttekint\xe9s";
+      return "Ikhtisar";
     },
     get$passwordRecoverySettings() {
-      return "Jelsz\xf3-helyre\xe1ll\xedt\xe1si be\xe1ll\xedt\xe1sok";
+      return "Pengaturan pemulihan kata sandi";
     },
     get$passwordRecovery() {
-      return "Jelsz\xf3 vissza\xe1ll\xedt\xe1s";
+      return "Pemulihan kata sandi";
     },
     get$pickImage() {
-      return "K\xe9p v\xe1laszt\xe1sa";
+      return "Pilih gambar";
     },
     get$pin() {
-      return "R\xf6gz\xedt\xe9s";
+      return "Pin";
     },
     get$pleaseChoose() {
-      return "K\xe9rem, v\xe1lasszon";
+      return "Mohon pilih";
     },
     get$pleaseEnterYourPassword() {
-      return "K\xe9rem, adja meg jelszav\xe1t";
+      return "Mohon masukkan kata sandimu";
     },
     get$pleaseEnterYourPin() {
-      return "K\xe9rem, \xedrja be PIN k\xf3dj\xe1t";
+      return "Masukkan pin";
     },
     get$pleaseEnterYourUsername() {
-      return "K\xe9rem, adja meg a felhaszn\xe1l\xf3nev\xe9t";
+      return "Mohon masukkan nama penggunamu";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "K\xe9rem, k\xf6vesse az instrukci\xf3kat az oldalon, \xe9s nyomjon a tov\xe1bb gombra.";
+      return "Mohon ikuti petunjuk di situs web dan tekan lanjut.";
     },
     get$privacy() {
-      return "Adatv\xe9delem";
+      return "Privasi";
     },
     get$reason(_) {
-      return "Indok";
+      return "Alasan";
     },
     redactedBy$1(username) {
-      return username + " \xe1ltal szerkesztve";
+      return "Dihilangkan oleh " + username;
     },
     get$directChat() {
-      return "Priv\xe1t cseveg\xe9s";
+      return "Chat langsung";
     },
     redactedByBecause$2(username, reason) {
-      return username + ' \xe1ltal szerkesztve, mivel: "' + reason + '"';
+      return "Dihilangkan oleh " + username + ' karena: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " szerkesztett egy esem\xe9nyt";
+      return username + " menghapus sebuah peristiwa";
     },
     get$redactMessage() {
-      return "\xdczenet szerkeszt\xe9se";
+      return "Hapus pesan";
     },
     get$reject() {
-      return "Elutas\xedt";
+      return "Tolak";
     },
     rejectedTheInvitation$1(username) {
-      return username + " elutas\xedtotta a megh\xedv\xe1st";
+      return username + " menolak undangannya";
     },
     get$removeAllOtherDevices() {
-      return "Minden m\xe1s eszk\xf6z elt\xe1vol\xedt\xe1sa";
+      return "Hapus semua perangkat lain";
     },
     get$unbanFromChat() {
-      return "Cseveg\xe9s kitilt\xe1s felold\xe1sa";
+      return "Hilangkan cekalan dari obrolan";
     },
     get$removeYourAvatar() {
-      return "Profilk\xe9p\xe9nek t\xf6rl\xe9se";
+      return "Hapus avatarmu";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Szoba cser\xe9l\xe9se egy \xfajabb verzi\xf3ra";
+      return "Menggantikan ruangan dengan versi baru";
     },
     get$reply(_) {
-      return "V\xe1lasz";
+      return "Balas";
     },
     get$reportMessage() {
-      return "\xdczenet jelent\xe9se";
+      return "Laporkan pesan";
     },
     get$roomHasBeenUpgraded() {
-      return "A szoba friss\xedt\xe9sre ker\xfclt";
+      return "Ruangan telah ditingkatkan";
     },
     get$search(_) {
-      return "Keres\xe9s";
+      return "Cari";
     },
     get$security() {
-      return "Biztons\xe1g";
+      return "Keamanan";
     },
     get$send(_) {
-      return "K\xfcld\xe9s";
+      return "Kirim";
     },
     get$sendAMessage() {
-      return "\xdczenet k\xfcld\xe9se";
-    },
-    get$sendAsText() {
-      return "K\xfcld\xe9s sz\xf6vegk\xe9nt";
+      return "Kirim pesan";
     },
     get$sendAudio() {
-      return "Hang\xfczenet k\xfcld\xe9se";
+      return "Kirim suara";
     },
     get$sendFile() {
-      return "F\xe1jl k\xfcld\xe9se";
+      return "Kirim file";
     },
     get$sendImage() {
-      return "K\xe9p k\xfcld\xe9se";
+      return "Kirim gambar";
     },
     sendImages$1(count) {
-      return "" + count + " k\xe9p k\xfcld\xe9se";
+      return "Kirim " + count + " gambar";
     },
     get$sendMessages() {
-      return "\xdczenetek k\xfcld\xe9se";
+      return "Kirim pesan";
     },
     get$sendVideo() {
-      return "Vide\xf3 k\xfcld\xe9se";
+      return "Kirim video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " k\xfcld\xf6tt egy f\xe1jlt";
+      return "\ud83d\udcc1 " + username + " mengirim file";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " hang\xfczenetet k\xfcld\xf6tt";
+      return "\ud83c\udfa4 " + username + " mengirim suara";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " k\xe9pet k\xfcld\xf6tt";
+      return "\ud83d\uddbc\ufe0f " + username + " mengirim gambar";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " matric\xe1t k\xfcld\xf6tt";
+      return "\ud83d\ude0a " + username + " mengirim stiker";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " vide\xf3t k\xfcld\xf6tt";
+      return "\ud83c\udfa5 " + username + " mengirim video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " h\xedv\xe1sinform\xe1ci\xf3t k\xfcld\xf6tt";
+      return senderName + " mengirim informasi panggilan";
     },
     get$separateChatTypes() {
-      return "Csoportok \xe9s priv\xe1t \xfczenetek elk\xfcl\xf6n\xedt\xe9se";
+      return "Pisahkan Pesan Langsung dan Grup";
     },
     get$setChatDescription() {
-      return "Cseveg\xe9s le\xedr\xe1s be\xe1ll\xedt\xe1sa";
+      return "Lihat deskripsi obrolan";
     },
     get$setStatus() {
-      return "\xc1llapot be\xe1ll\xedt\xe1sa";
+      return "Tetapkan status";
     },
     get$settings() {
-      return "Be\xe1ll\xedt\xe1sok";
+      return "Pengaturan";
     },
     get$share(_) {
-      return "Megoszt\xe1s";
+      return "Bagikan";
     },
     sharedTheLocation$1(username) {
-      return username + " megosztotta a poz\xedci\xf3j\xe1t";
+      return username + " membagikan lokasinya";
     },
     get$shareLocation() {
-      return "Poz\xedci\xf3 megoszt\xe1sa";
+      return "Bagikan lokasi";
     },
     get$presencesToggle() {
-      return "M\xe1s felhaszn\xe1l\xf3k \xe1llapot \xfczeneteinek megjelen\xedt\xe9se";
+      return "Tampilkan pesan status dari pengguna lain";
     },
     get$skip(_) {
-      return "Kihagy";
+      return "Lewat";
     },
     get$sourceCode() {
-      return "Forr\xe1sk\xf3d";
+      return "Kode sumber";
     },
     get$spaceName() {
-      return "T\xe9r n\xe9v";
+      return "Nama space";
     },
     startedACall$1(senderName) {
-      return senderName + " h\xedv\xe1st ind\xedtott";
+      return senderName + " memulai panggilan";
     },
     get$status(_) {
-      return "\xc1llapot";
+      return "Status";
     },
     get$statusExampleMessage() {
-      return "Hogy \xe9rzi mag\xe1t a mai napon?";
+      return "Apa kabar hari ini?";
     },
     get$submit(_) {
-      return "Bek\xfcld\xe9s";
+      return "Kirim";
     },
     get$synchronizingPleaseWait() {
-      return "Szinkroniz\xe1l\xe1s... K\xe9rem, v\xe1rjon.";
+      return "Menyinkronkan... Mohon tunggu.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Szinkroniz\xe1l\xe1s\u2026 (" + percentage + "%)";
+      return " Sinkronisasi\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Rendszer";
+      return "Sistem";
     },
     get$theyDontMatch() {
-      return "Nem egyez\u0151ek";
+      return "Tidak Cocok";
     },
     get$theyMatch() {
-      return "Egyez\u0151ek";
+      return "Cocok";
     },
     get$tooManyRequestsWarning() {
-      return "T\xfal sok egyidej\u0171 k\xe9relem. K\xe9rem pr\xf3b\xe1lja meg k\xe9s\u0151bb!";
+      return "Terlalu banyak permintaan. Coba lagi nanti!";
     },
     get$tryToSendAgain() {
-      return "\xdajrak\xfcld\xe9s megpr\xf3b\xe1l\xe1sa";
+      return "Coba kirim lagi";
     },
     get$unavailable() {
-      return "Nem el\xe9rhet\u0151";
+      return "Tidak tersedia";
     },
     unbannedUser$2(username, targetName) {
-      return username + " feloldotta " + targetName + " kitilt\xe1s\xe1t";
+      return username + " menghilangkan cekalan " + targetName;
     },
     get$unblockDevice() {
-      return "Eszk\xf6z blokkol\xe1s felold\xe1sa";
+      return "Hilangkan Pemblokiran Perangkat";
     },
     get$unknownDevice() {
-      return "Ismeretlen eszk\xf6z";
+      return "Perangkat tidak dikenal";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Ismeretlen titkos\xedt\xe1si algoritmus";
+      return "Algoritma enkripsi tidak dikenal";
     },
     unknownEvent$1(type) {
-      return "Ismeretlen esem\xe9ny: '" + type + "'";
+      return "Peristiwa tidak dikenal '" + type + "'";
     },
     get$unpin() {
-      return "R\xf6gz\xedt\xe9s megsz\xfcntet\xe9se";
+      return "Lepaskan pin";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " \xe9s " + count + " m\xe1sik r\xe9sztvev\u0151 g\xe9pel\u2026";
+      return username + " dan " + count + " lainnya sedang mengetik\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " \xe9s " + username2 + " g\xe9pel\u2026";
+      return username + " dan " + username2 + " sedang mengetik\u2026";
     },
     userIsTyping$1(username) {
-      return username + " g\xe9pel\u2026";
+      return username + " sedang mengetik\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " elhagyta a cseveg\xe9st";
+      return "\ud83d\udeaa " + username + " keluar dari obrolan";
     },
     get$username(_) {
-      return "Felhaszn\xe1l\xf3n\xe9v";
+      return "Nama Pengguna";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " felhaszn\xe1l\xf3 " + type + " esem\xe9nyt k\xfcld\xf6tt";
+      return username + " mengirim peristiwa " + type;
     },
     get$unverified() {
-      return "Hiteles\xedtetlen";
+      return "Tidak terverifikasi";
     },
     get$verified() {
-      return "Hiteles\xedtett";
+      return "Terverifikasi";
     },
     get$verifyStart() {
-      return "Hiteles\xedt\xe9s megkezd\xe9se";
+      return "Mulai Verifikasi";
     },
     get$verifySuccess() {
-      return "Sikeres hiteles\xedt\xe9s!";
+      return "Kamu berhasil memverifikasi!";
     },
     get$verifyTitle() {
-      return "M\xe1sik fi\xf3k hiteles\xedt\xe9se";
+      return "Memverifikasi akun lain";
     },
     get$visibleForAllParticipants() {
-      return "Minden r\xe9sztvev\u0151 sz\xe1m\xe1ra l\xe1that\xf3";
+      return "Terlihat untuk semua anggota";
     },
     get$visibleForEveryone() {
-      return "B\xe1rki sz\xe1m\xe1ra l\xe1that\xf3";
+      return "Terlihat untuk semua orang";
     },
     get$voiceMessage() {
-      return "Hang\xfczenet";
+      return "Pesan suara";
     },
     get$waitingPartnerAcceptRequest() {
-      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a k\xe9r\xe9st\u2026";
+      return "Menunggu pengguna untuk menerima permintaan\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a hangulatjelet\u2026";
+      return "Menunggu pengguna untuk menerima emoji\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "V\xe1rakoz\xe1s a partnerre, hogy elfogadja a sz\xe1mokat\u2026";
+      return "Menunggu pengguna untuk menerima angka\u2026";
     },
     get$warning() {
-      return "Figyelem!";
+      return "Peringatan!";
     },
     get$weSentYouAnEmail() {
-      return "K\xfcldt\xfcnk \xd6nnek egy emailt";
+      return "Kami mengirim kamu sebuah email";
     },
     get$whyDoYouWantToReportThis() {
-      return "Mi\xe9rt k\xedv\xe1nja ezt bejelenteni?";
+      return "Kenapa kamu ingin melaporkannya?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Ezekkel a c\xedmekkel vissza tudja \xe1ll\xedtani a jelszav\xe1t.";
+      return "Dengan alamat ini kamu bisa memulihkan kata sandimu.";
     },
     get$writeAMessage() {
-      return "\xcdrjon egy \xfczenetet\u2026";
+      return "Tulis pesan\u2026";
     },
     get$yes() {
-      return "Igen";
+      return "Ya";
     },
     get$you() {
-      return "\xd6n";
+      return "Kamu";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Imm\xe1ron nem vesz r\xe9szt ebben a cseveg\xe9sben";
+      return "Kamu tidak berpartisipasi lagi di obrolan ini";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Kitiltott\xe1k ebb\u0151l a cseveg\xe9sb\u0151l";
+      return "Kamu telah dicekal dari obrolan ini";
     },
     get$yourPublicKey() {
-      return "A publikus kulcsa";
+      return "Kunci publikmu";
     },
     get$messageInfo() {
-      return "\xdczenet inform\xe1ci\xf3";
+      return "Informasi pesan";
     },
     get$time(_) {
-      return "Id\u0151";
+      return "Waktu";
     },
     get$sender() {
-      return "K\xfcld\u0151";
+      return "Pengirim";
     },
     get$openGallery() {
-      return "Gal\xe9ria megnyit\xe1sa";
+      return "Buka galeri";
     },
     get$removeFromSpace() {
-      return "Elt\xe1vol\xedt\xe1s a t\xe9rr\u0151l";
+      return "Hilangkan dari space";
     },
     get$markAsRead() {
-      return "Olvasottk\xe9nt megjel\xf6l\xe9s";
+      return "Tandai sebagai dibaca";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " a k\xf6vetkez\u0151k\xe9pp reag\xe1lt: " + reaction;
+      return sender + " bereaksi dengan " + reaction;
     },
     get$pinMessage() {
-      return "Kit\u0171z\xe9s a szob\xe1ban";
+      return "Sematkan ke ruangan";
     },
     get$emojis() {
-      return "Hangulatjelek";
+      return "Emoji";
     },
     get$youRejectedTheInvitation() {
-      return "Visszautas\xedtotta a megh\xedv\xe1st";
+      return "Kamu menolak undangannya";
     },
     get$youJoinedTheChat() {
-      return "Becsatlakozott a cseveg\xe9sbe";
+      return "Kamu bergabung ke obrolan";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Elfogadta a megh\xedv\xe1st";
+      return "\ud83d\udc4d Kamu menerima undangannya";
     },
     youBannedUser$1(user) {
-      return "Letitotta " + user + " felhaszn\xe1l\xf3t";
+      return "Kamu mencekal " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Visszavonta " + user + " megh\xedv\xe1s\xe1t";
+      return "Kamu telah membatalkan undangan untuk " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 " + user + " j\xf3volt\xe1b\xf3l kapott megh\xedv\xe1st";
+      return "\ud83d\udce9 Kamu telah diundang oleh " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Megh\xedvta " + user + "-t";
+      return "\ud83d\udce9 Kamu mengundang " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Kir\xfagta " + user + "-t";
+      return "\ud83d\udc5e Kamu mengeluarkan " + user;
     },
     youUnbannedUser$1(user) {
-      return "Levette a letilt\xe1st " + user + "-r\u0151l";
+      return "Kamu membatalkan cekalan " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " bekopogott";
+      return "\ud83d\udeaa " + user + " telah dikeluarkan";
     },
     get$users() {
-      return "Felhaszn\xe1l\xf3k";
+      return "Pengguna";
     },
     countFiles$1(count) {
-      return "" + count + " f\xe1jl";
+      return "" + count + " file";
     },
     get$user() {
-      return "Felhaszn\xe1l\xf3";
+      return "Pengguna";
     },
     get$custom() {
-      return "Egyedi";
+      return "Kustom";
     },
     get$noKeyForThisMessage() {
-      return "Akkor fordulhat el\u0151, ha az \xfczenet az eszk\xf6zre val\xf3 bejelentkez\xe9s el\u0151tt ker\xfclt k\xfcld\xe9sre.\n\nAz is elk\xe9pzelhet\u0151, hogy a k\xfcld\u0151 blokkolta az eszk\xf6z\xe9t, vagy valami probl\xe9ma l\xe9pett fel az internet kapcsolatban.\n\nM\xe1s helyen l\xe1tja az \xfczenetet? Akkor \xe1t tudja m\xe1solni ide is! Menjen a Be\xe1ll\xedt\xe1sok > Eszk\xf6z\xf6k r\xe9szbe, \xe9s gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy az eszk\xf6zei meger\u0151s\xedtett\xe9k egym\xe1st. Legk\xf6zelebb amikor ezt a szob\xe1t megnyitja, \xe9s mind a k\xe9t kliens az el\u0151t\xe9rben van, akkor szikroniz\xe1l\xf3dni fognak.\n\nNem akarja elvesz\xedteni a kulcsokat amikor kijelentkezik, vagy eszk\xf6zt cser\xe9l? Gy\u0151z\u0151dj\xf6n meg r\xf3la, hogy bekapcsolta a chat ment\xe9st a be\xe1ll\xedt\xe1sokban.";
+      return "Hal ini bisa terjadi jika pesan dikirim sebelum kamu masuk ke akunmu di perangkat ini.\n\nMungkin juga pengirim telah memblokir perangkatmu atau ada yang tidak beres dengan koneksi internet.\n\nApakah kamu bisa membaca pesan pada sesi lain? Maka kamu bisa mentransfer pesan dari sesi tersebut! Buka Pengaturan > Perangkat dan pastikan bahwa perangkat Anda telah ditandatangani secara silang. Ketika kamu membuka ruangan di lain waktu dan kedua sesi berada di latar depan, kunci akan ditransmisikan secara otomatis.\n\nApakah kamu tidak mau kehilangan kunci saat keluar atau berpindah perangkat? Pastikan bahwa kamu telah mengaktifkan cadangan obrolan dalam pengaturan.";
     },
     get$newSpace() {
-      return "\xdaj t\xe9r";
+      return "Space baru";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "\xdcres cseveg\xe9s (kor\xe1bban " + oldDisplayName + ")";
+      return "Obrolan kosong (sebelumnya " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Cseveg\xe9s \xfajranyit\xe1sa";
+      return "Buka obrolan lagi";
     },
     get$noOtherDevicesFound() {
-      return "Nem tal\xe1lhat\xf3 m\xe1s eszk\xf6z";
+      return "Tidak ada perangkat lain yang ditemukan";
     },
     fileIsTooBigForServer$1(max) {
-      return "Nem k\xfcldhet\u0151 el! A szerver csak " + max + " hat\xe1rig enged csatolm\xe1nyokat.";
+      return "Tidak dapat mengirim! Server hanya mendukung lampiran sampai dengan " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Az utolj\xe1ra olvasott \xfczenethez ugr\xe1s";
+      return "Pergi ke pesan terakhir dibaca";
     },
     get$readUpToHere() {
-      return "Olvas\xe1s id\xe1ig";
+      return "Baca sampai sini";
     },
     get$jump() {
-      return "Ugr\xe1s";
+      return "Lompat";
     },
     get$openLinkInBrowser() {
-      return "Hivatkoz\xe1s megnyit\xe1sa b\xf6ng\xe9sz\u0151ben";
+      return "Buka tautan dalam peramban";
     },
     get$setColorTheme() {
-      return "Sz\xedn s\xe9ma be\xe1ll\xedt\xe1sa:";
+      return "Atur tema warna:";
     },
     get$invite() {
-      return "Megh\xedv\xe1s";
+      return "Undang";
     },
     get$invalidInput() {
-      return "Hib\xe1s bevitel!";
+      return "Masukan tidak valid!";
     },
     wrongPinEntered$1(seconds) {
-      return "Hib\xe1s pink\xf3dot adott meg! Pr\xf3b\xe1lja \xfajra " + seconds + " mp m\xfalva...";
+      return "PIN yang dimasukkan salah! Coba lagi dalam " + seconds + " detik...";
     },
     get$pleaseEnterANumber() {
-      return "Adjon meg egy 0-n\xe1l nagyobb sz\xe1mot";
+      return "Silakan masukkan angka lebih dari 0";
     },
     get$removeDevicesDescription() {
-      return "Ki fog jelentkezni a k\xe9sz\xfcl\xe9kr\u0151l, \xe9s t\xf6bb\xe9 nem fog tudni fogadni \xfczeneteket.";
+      return "Kamu akan dikeluarkan dari perangkat ini dan tidak akan dapat menerima pesan lagi.";
     },
     get$banUserDescription() {
-      return "A felhaszn\xe1l\xf3 kitilt\xe1sra ker\xfcl a cseveg\xe9sb\u0151l, \xe9s nem fog tudni visszaj\xf6nni eg\xe9szen a kitilt\xe1s felold\xe1s\xe1ig.";
+      return "Pengguna akan dicekal dari percakapan dan tidak akan dapat memasuki percakapan lagi sampai dibatalkan cekalannya.";
     },
     get$unbanUserDescription() {
-      return "A felhaszn\xe1l\xf3 vissza tud j\xf6nni a cseveg\xe9sbe ha akar.";
+      return "Pengguna akan dapat memasuki percakapannya lagi jika dicoba.";
     },
     get$kickUserDescription() {
-      return "A felhaszn\xe1l\xf3 kir\xfag\xe1sra ker\xfclt a cseveg\xe9sb\u0151l, de nincs kitiltva. Publikus cseveg\xe9s eset\xe9n a felhaszn\xe1l\xf3 b\xe1rmikor visszat\xe9rhet.";
+      return "Pengguna ini dikeluarkan dari percakapan tetapi tidak dicekal. Dalam percakapan publik, penggunanya dapat bergabung ulang kapan pun.";
     },
     get$makeAdminDescription() {
-      return "Miut\xe1n a felhaszn\xe1l\xf3t aminisztr\xe1torr\xe1 l\xe9pteti el\u0151, nem fogja tudni visszavonni d\xf6nt\xe9s\xe9t, mivel azonos jogosults\xe1gi szinttel fognak rendelkezni.";
+      return "Setelah kamu membuat pengguna ini admin, kamu tidak akan dapat mengurungkan ini karena penggunanya akan memiliki perizinan yang sama seperti kamu.";
     },
     get$yourGlobalUserIdIs() {
-      return "A glob\xe1lis felhaszn\xe1l\xf3-ID-je: ";
+      return "ID pengguna globalmu adalah: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return '"' + query + '"-vel nem tal\xe1lhat\xf3 felhaszn\xe1l\xf3. Ellen\u0151rizze nincs e el\xedr\xe1s.';
+      return 'Sayangnya tidak ada pengguna yang dapat ditemukan dengan "' + query + '". Silakan periksa jika ada tipo.';
     },
     get$knocking() {
-      return "Bekopog\xe1s";
+      return "Mengetuk";
     },
     get$nothingFound() {
-      return "Nincs tal\xe1lat...";
+      return "Tidak ada yang ditemukan...";
     },
     get$wrongRecoveryKey() {
-      return "Sajnos, \xfagy t\u0171nik hib\xe1san adta meg a vissza\xe1ll\xedt\xe1si kulcsot.";
+      return "Maaf... ini sepertinya bukan kunci pemulihan yang benar.";
     },
     get$startConversation() {
-      return "T\xe1rsalg\xe1s kezd\xe9se";
+      return "Mulai percakapan";
     },
     get$commandHint_sendraw() {
-      return "Tiszta json k\xfcld\xe9se";
+      return "Kirim JSON mentah";
     },
     get$leaveEmptyToClearStatus() {
-      return "Hagyja \xfcresen a st\xe1tusz kit\xf6rl\xe9s\xe9hez.";
+      return "Tinggalkan kosong untuk menghapus statusmu.";
     },
     get$searchForUsers() {
-      return "Keressen @felhaszn\xe1l\xf3kat...";
+      return "Cari @pengguna...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "K\xe9rem adja meg jelenlegi jelszav\xe1t";
+      return "Silakan masukkan kata sandimu saat ini";
     },
     get$newPassword() {
-      return "\xdaj jelsz\xf3";
+      return "Kata sandi baru";
     },
     get$pleaseChooseAStrongPassword() {
-      return "K\xe9rem v\xe1lasszon egy er\u0151s jelsz\xf3t";
+      return "Silakan pilih kata sandi yang kuat";
     },
     get$passwordsDoNotMatch() {
-      return "A jelszavak nem egyeznek";
+      return "Kata sandi tidak cocok";
     },
     get$passwordIsWrong() {
-      return "Hib\xe1s a be\xedrt jelszava";
+      return "Kata sandi yang kamu masukkan salah";
     },
     get$publicSpaces() {
-      return "Nyilv\xe1nos terek";
+      return "Space publik";
     },
     get$subspace() {
-      return "Al-t\xe9r";
+      return "Subspace";
     },
     get$decline() {
-      return "Elutas\xedt\xe1s";
+      return "Tolak";
     },
     get$thisDevice() {
-      return "Ez az eszk\xf6z:";
+      return "Perangkat ini:";
     },
     get$initAppError() {
-      return "Hiba l\xe9pett fel az app ind\xedt\xe1sa sor\xe1n";
+      return "Terjadi kesalahan saat init aplikasi";
     },
     searchIn$1(chat) {
-      return 'Keres\xe9s a "' + chat + '" cseveg\xe9sben...';
+      return 'Cari dalam obrolan "' + chat + '"...';
     },
     get$searchMore() {
-      return "Tov\xe1bbi keres\xe9s...";
+      return "Cari lebih banyak...";
     },
     get$gallery() {
-      return "Gal\xe9ria";
+      return "Galeri";
     },
     get$files(_) {
-      return "F\xe1jlok";
+      return "Berkas";
     },
     sessionLostBody$2(url, error) {
-      return "A munkamenete elvesz\u0151d\xf6tt. K\xe9rem jelentse ezt a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
+      return "Sesimu hilang. Silakan laporkan kesalahan ini kepada pengembang di " + url + ". Pesan kesalahannya adalah: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Megpr\xf3b\xe1lkozunk vissza\xe1ll\xedtani a munkamenet\xe9t egy kor\xe1bbi ment\xe9sb\u0151l. K\xe9rem jelezze a hib\xe1t a fejleszt\u0151knek a " + url + " c\xedmen. A hiba sz\xf6vege a k\xf6vetkez\u0151: " + error;
+      return "Aplikasi sekarang mencoba memulihkan sesimu dari cadangan. Silakan laporkan kesalahan ini kepada pengembang di " + url + ". Pesan kesalahannya adalah: " + error;
     },
     get$sendReadReceipts() {
-      return "Olvas\xe1si igazol\xe1s k\xfcld\xe9se";
+      return "Kirim laporan dibaca";
     },
     get$sendTypingNotificationsDescription() {
-      return "A cseveg\xe9s t\xf6bbi tagja l\xe1tja amikor g\xe9pel.";
+      return "Anggota lain dalam percakapan dapat melihat ketika kamu sedang mengetik sebuah pesan baru.";
     },
     get$sendReadReceiptsDescription() {
-      return "A cseveg\xe9s t\xf6bbi tagja l\xe1thatja, ha olvasta az \xfczeneteiket.";
+      return "Anggota lain dalam percakapan dapat melihat ketika kamu membaca sebuah pesan.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 M\xe1s eszk\xf6z hiteles\xedt\xe9se";
+      return "\ud83d\udd10 Verifikasi perangkat lain";
     },
     get$verifyOtherDeviceDescription() {
-      return "Amikor egy m\xe1sik eszk\xf6zt hiteles\xedt, az eszk\xf6z\xf6k kulcsokat cser\xe9lnek egym\xe1s k\xf6z\xf6tt, ez\xe1ltal n\xf6velve az \xf6sszbiztons\xe1got. \ud83d\udcaa Amikor megkezd\u0151dik a folyamat, mind a k\xe9t eszk\xf6z\xf6n megjelenik egy felugr\xf3 \xfczenet. Hangulatjelek \xe9s sz\xe1mok sorozata fog megjelenni, amit \xf6ssze tud hasonl\xedtani a k\xe9t eszk\xf6z\xf6n. \xc9rdemes teh\xe1t mind a k\xe9t eszk\xf6zt a k\xf6zelben tartani. \ud83e\udd33";
+      return "Saat kamu memverifikasi perangkat lain, perangkat tersebut dapat bertukar kunci, sehingga meningkatkan keamananmu secara keseluruhan. \ud83d\udcaa Saat Anda memulai verifikasi, sebuah pemberitahuan akan muncul di aplikasi pada kedua perangkat. Di situ kemudian akan melihat serangkaian emoji atau angka yang harus dibandingkan satu sama lain. Sebaiknya siapkan kedua perangkat sebelum kamu memulai verifikasi. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " elfogadta a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " menerima verifikasi kunci";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " visszautas\xedtotta a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " membatalkan verifikasi kunci";
     },
     completedKeyVerification$1(sender) {
-      return sender + " befejezte a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " menyelesaikan verifikasi kunci";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " k\xe9szen \xe1ll a kulcs meger\u0151s\xedt\xe9sre";
+      return sender + " siap untuk verifikasi kunci";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " kulcs meger\u0151s\xedt\xe9st k\xe9r";
+      return sender + " meminta verifikasi kunci";
     },
     startedKeyVerification$1(sender) {
-      return sender + " elkezdte a kulcs meger\u0151s\xedt\xe9st";
+      return sender + " memulai verifikasi kunci";
     },
     get$stickers() {
-      return "Matric\xe1k";
+      return "Stiker";
     },
     get$discover() {
-      return "Felfedez\xe9s";
+      return "Jelajahi";
     },
     get$commandHint_ignore() {
-      return "Adott matrix ID figyelmen k\xedv\xfcl hagy\xe1sa";
+      return "Abaikan ID Matrix yang diberikan";
     },
     get$commandHint_unignore() {
-      return "Adott matrix ID figyelembe v\xe9tele";
+      return "Batalkan pengabaian ID Matrix yang diberikan";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Jelenleg " + count + " felhaszn\xe1l\xf3 van letiltva.";
+      return "Saat ini ada " + count + " pengguna yang diblokir.";
     },
     get$restricted() {
-      return "Korl\xe1tozott";
+      return "Dibatasi";
     },
     goToSpace$1(space) {
-      return "Ugr\xe1s a " + space + " t\xe9rre";
+      return "Pergi ke space: " + space;
     },
     get$markAsUnread() {
-      return "Olvasatlannak jel\xf6l\xe9s";
+      return "Tandai sebagai belum dibaca";
     },
     userLevel$1(level) {
-      return "" + level + " - Felhaszn\xe1l\xf3";
+      return "" + level + " - Pengguna";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moder\xe1tor";
+      return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - Adminisztr\xe1tor";
+      return "" + level + " - Admin";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Cseveg\xe9si el\u0151zm\xe9nyek l\xe1that\xf3s\xe1g\xe1nak v\xe1ltoztat\xe1sa";
+      return "Ubah keterlihatan riwayat chat";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Cseveg\xe9s f\u0151, nyilv\xe1nos c\xedm\xe9nek v\xe1ltoztat\xe1sa";
+      return "Ubah alamat chat publik utama";
     },
     get$sendRoomNotifications() {
-      return "@szoba \xe9rtes\xedt\xe9s k\xfcld\xe9se";
+      return "Kirim notifikasi @room";
     },
     get$chatPermissionsDescription() {
-      return "Adja meg milyen er\u0151ss\xe9gi szint kell egyes cseveg\xe9si m\u0171velethez. A 0, 50 \xe9s 100-as szintek \xe1ltal\xe1ban felhaszn\xe1l\xf3kat, moder\xe1torokat \xe9s adminisztr\xe1torokat jel\xf6lnek de b\xe1rmilyen szintez\xe9s lehets\xe9ges.";
+      return "Tentukan tingkat kekuasaan yang diperlukan untuk tindakan tertentu dalam chat ini. Tingkat kekuasaan 0, 50 dan 100 biasanya mewakili pengguna, moderator dan admin, tetapi gradasi apa pun dimungkinkan.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 " + version + " verzi\xf3j\xfa friss\xedt\xe9s telep\xedtve!";
+      return "\ud83c\udf89 Pembaruan " + version + " terpasang!";
     },
     get$sendCanceled() {
-      return "K\xfcld\xe9s visszavonva";
+      return "Pengiriman dibatalkan";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Nem t\u0171nik kompatibilisnek a M\xe1trix-kiszolg\xe1l\xf3nak. Hib\xe1s a hivatkoz\xe1s?";
+      return "Sepertinya bukan homeserver yang kompatibel. URL salah?";
     },
     get$calculatingFileSize() {
-      return "F\xe1jl m\xe9ret kalkul\xe1l\xe1sa...";
+      return "Menghitung ukuran berkas...";
     },
     get$prepareSendingAttachment() {
-      return "Felk\xe9sz\xfcl\xe9s csatolm\xe1ny k\xfcld\xe9s\xe9re...";
+      return "Menyiapkan pengiriman lampiran...";
     },
     get$sendingAttachment() {
-      return "Csatolm\xe1ny k\xfcld\xe9se...";
+      return "Mengirim lampiran...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "" + index + " csatolm\xe1ny k\xfcld\xe9se " + $length + "-b\xf3l...";
+      return "Mengirim lampiran " + index + " dari " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Szerver korl\xe1t el\xe9rve! " + seconds + " mp t\xfcrelem...";
+      return "Batasan server tercapai! Menunggu " + seconds + " detik...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Megjegyz\xe9s: Minden eszk\xf6ze amit a cseveg\xe9s ment\xe9shez kapcsol, automatikusan hiteles\xedt\xe9sre ker\xfcl.";
+      return "Catatan: Ketika Anda menghubungkan semua perangkat Anda ke cadangan chat, mereka akan diverifikasi secara otomatis.";
     },
     get$continueText() {
-      return "Folytat\xe1s";
+      return "Lanjutkan";
     },
     get$blur(_) {
-      return "Hom\xe1lyos\xedt:";
+      return "Buram:";
     },
     get$opacity(_) {
-      return "\xc1tl\xe1tsz\xf3s\xe1g:";
+      return "Opasitas:";
     },
     get$setWallpaper() {
-      return "H\xe1tt\xe9r be\xe1ll\xedt\xe1s";
+      return "Atur later belakang";
     },
     get$noContactInformationProvided() {
-      return "A szervert\u0151l nem \xe9rkezett vissza kapcsolati inform\xe1ci\xf3";
+      return "Server tidak menyediakan informasi kontak valid apa pun";
     },
     get$contactServerAdmin() {
-      return "Kapcsolatfelv\xe9tel a szerver adminnal";
+      return "Hubungi admin server";
     },
     get$contactServerSecurity() {
-      return "Kapcsolatfelv\xe9tel a szerver biztons\xe1ggal";
+      return "Hubungi keamanan server";
     },
     get$supportPage() {
-      return "T\xe1mogat\xe1si oldal";
+      return "Laman dukungan";
     },
     get$serverInformation() {
-      return "Szerver inform\xe1ci\xf3:";
+      return "Informasi server:";
     },
     get$name(_) {
-      return "N\xe9v";
+      return "Nama";
     },
     get$version(_) {
-      return "Verzi\xf3";
+      return "Versi";
     },
     get$compress() {
-      return "T\xf6m\xf6r\xedt\xe9s";
+      return "Kompres";
     },
     get$boldText() {
-      return "F\xe9lk\xf6v\xe9r sz\xf6veg";
+      return "Teks tebal";
     },
     get$italicText() {
-      return "D\u0151lt sz\xf6veg";
+      return "Teks miring";
     },
     get$strikeThrough() {
-      return "\xc1th\xfazott";
+      return "Coret";
     },
     get$pleaseFillOut() {
-      return "K\xe9rem t\xf6ltse ki";
+      return "Silakan isi";
     },
     get$invalidUrl() {
-      return "Helytelen hivatkoz\xe1s";
+      return "URL tidak valid";
     },
     get$addLink() {
-      return "Hivatkoz\xe1s hozz\xe1ad\xe1sa";
+      return "Tambahkan tautan";
     },
     get$unableToJoinChat() {
-      return "Nem csatlakozhat a cseveg\xe9shez. Elk\xe9pzelhet\u0151, hogy a m\xe1sik f\xe9l m\xe1r kil\xe9pett.";
+      return "Tidak dapat bergabung dalam chat. Mungkin pihak lain telah menutup percakapan.";
     },
     get$previous() {
-      return "El\u0151z\u0151";
+      return "Sebelumnya";
     },
     get$otherPartyNotLoggedIn() {
-      return "A m\xe1sik f\xe9l jelenleg nincs bejelentkezve, emiatt nem fogadhat \xfczeneteket!";
+      return "Pihak lain belum masuk dan tidak dapat menerima pesan!";
     },
     get$open(_) {
-      return "Megnyit\xe1s";
+      return "Buka";
     },
     get$waitingForServer() {
-      return "V\xe1rakoz\xe1s a szerverre...";
+      return "Menunggu server...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 \xdaj cseveg\xe9s k\xe9relem";
+      return "\ud83d\udce9 Permintaan pesan baru";
     },
     get$contentNotificationSettings() {
-      return "Tartalom \xe9rtes\xedt\xe9si be\xe1ll\xedt\xe1sok";
+      return "Pengaturan notifikasi konten";
     },
     get$generalNotificationSettings() {
-      return "\xc1tal\xe1nos \xe9rtes\xedt\xe9si be\xe1ll\xedt\xe1sok";
+      return "Pengaturan notifikasi umum";
     },
     get$roomNotificationSettings() {
-      return "Szoba \xe9rtes\xedt\xe9si be\xe1ll\xedt\xe1sok";
+      return "Pengaturan notifikasi ruangan";
     },
     get$userSpecificNotificationSettings() {
-      return "Felhaszn\xe1l\xf3 specifikus \xe9rtes\xedt\xe9s be\xe1ll\xedt\xe1sok";
+      return "Pengaturan notifikasi spesifik pengguna";
     },
     get$otherNotificationSettings() {
-      return "Egy\xe9b \xe9rtes\xedt\xe9s be\xe1ll\xedt\xe1sok";
+      return "Pengaturan notifikasi lainnya";
     },
     get$notificationRuleContainsUserName() {
-      return "Felhaszn\xe1l\xf3 nevet tartalmaz";
+      return "Berisi Nama Pengguna";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t, ha az \xfczenet tartalmazza a nev\xe9t.";
+      return "Memberi tahu pengguna ketika pesan memiliki nama penggunanya.";
     },
     get$notificationRuleMaster() {
-      return "Minden \xe9rtes\xedt\xe9s n\xe9m\xedt\xe1sa";
+      return "Bisukan semua notifikasi";
     },
     get$notificationRuleMasterDescription() {
-      return "Fel\xfcl\xedr minden m\xe1s szab\xe1lyt, \xe9s kikapcsolja az \xf6sszes \xe9rtes\xedt\xe9st.";
+      return "Menimpa peraturan lainnya dan menonaktifkan semua notifikasi.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Minden automata \xfczenetet n\xe9m\xedt";
+      return "Dimakan Pesan Terautomasi";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "N\xe9m\xedt minden automata klienst\u0151l \xe9rkez\u0151 \xe9rtes\xedt\xe9st mint p\xe9ld\xe1ul botok.";
+      return "Mendiamkan notifikasi dari klien terautomasi seperti bot.";
     },
     get$notificationRuleInviteForMe() {
-      return "Megh\xedv\xe1s Sz\xe1momra";
+      return "Undang untuk Aku";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t szoba megh\xedv\xe1s eset\xe9n.";
+      return "Memberi tahu pengguna ketika diundang ke ruangan.";
     },
     get$notificationRuleMemberEvent() {
-      return "Tagi Esem\xe9ny";
+      return "Peristiwa Anggota";
     },
     get$notificationRuleMemberEventDescription() {
-      return "N\xe9m\xedtja a tagi esem\xe9nyek \xe9rtes\xedt\xe9seit.";
+      return "Mendiamkan notifikasi peristiwa keanggotaan.";
     },
     get$notificationRuleIsUserMention() {
-      return "Felhaszn\xe1l\xf3 Eml\xedt\xe9se";
+      return "Sebutan Pengguna";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t, ha k\xf6zvetlen\xfcl eml\xedt\xe9sre ker\xfcl az \xfczenetben.";
+      return "Memberi tahu pengguna ketika disebut secara langsung dalam pesan.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Megjelen\xedtett Nevet Tartalmaz";
+      return "Berisi Nama Tampilan";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t, ha k\xf6zvetlen\xfcl eml\xedt\xe9sre ker\xfcl a megjelen\xedtett neve az \xfczenetben.";
+      return "Memberi tahu pengguna ketika pesan berisi nama tampilannya.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Szoba Eml\xedt\xe9s";
+      return "Sebutan Ruangan";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t szoba eml\xedt\xe9skor.";
+      return "Memberi tahu pengguna ketika ada sebutan ruangan.";
     },
     get$notificationRuleRoomnotif() {
-      return "Szoba \xc9rtes\xedt\xe9s";
+      return "Notifikasi Ruangan";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t ha az \xfczenet tartalmazza a '@szoba' eml\xedt\xe9st.";
+      return "Memberi tahu pengguna ketika pesan berisi '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "S\xedrk\u0151";
+      return "Nisan";
     },
     get$notificationRuleTombstoneDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a szoba deaktiv\xe1l\xe1s \xfczenetekr\u0151l.";
+      return "Memberi tahu pengguna tentang pesan deaktivasi ruangan.";
     },
     get$notificationRuleReaction() {
-      return "Reakci\xf3";
+      return "Reaksi";
     },
     get$notificationRuleReactionDescription() {
-      return "N\xe9m\xedtja a reakci\xf3k \xe9rtes\xedt\xe9seit.";
+      return "Mendiamkan notifikasi reaksi.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Szoba Szerver ACL";
+      return "ACL Server Ruangan";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "N\xe9m\xedtja a szoba szerver hozz\xe1f\xe9r\xe9si kezel\u0151 lista (ACL) \xe9rtes\xedt\xe9seket.";
+      return "Mendiamkan notifikasi daftar kontrol akses server ruangan (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Szerkeszt\xe9sek n\xe9m\xedt\xe1sa";
+      return "Diamkan Penyuntingan";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "N\xe9m\xedtja a szerkesztett \xfczenetek \xe9rtes\xedt\xe9seit.";
+      return "Mendiamkan notifikasi pesan tersunting.";
     },
     get$notificationRuleCall() {
-      return "H\xedv\xe1s";
+      return "Panggilan";
     },
     get$notificationRuleCallDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a h\xedv\xe1sokr\xf3l.";
+      return "Memberi tahu pengguna tentang panggilan.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Titkos\xedtott N\xe9gyszemk\xf6zti Szoba";
+      return "Ruangan Terenkripsi Satu ke Satu";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a titkos\xedtott n\xe9gyszemk\xf6zti szob\xe1kban lev\u0151 \xfczenetekr\u0151l.";
+      return string$.Member;
     },
     get$notificationRuleRoomOneToOne() {
-      return "N\xe9gyszemk\xf6zti Szoba";
+      return "Ruangan Satu ke Satu";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a n\xe9gyszemk\xf6zti szob\xe1ban lev\u0151 \xfczenetekr\u0151l.";
+      return string$.Member;
     },
     get$notificationRuleMessage() {
-      return "\xdczenet";
+      return "Pesan";
     },
     get$notificationRuleMessageDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t az \xe1ltal\xe1nos \xfczenetekr\u0151l.";
+      return "Memberi tahu pengguna tentang pesan umum.";
     },
     get$notificationRuleEncrypted() {
-      return "Titkos\xedtott";
+      return "Terenkripsi";
     },
     get$notificationRuleEncryptedDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a titkos\xedtott szob\xe1kban lev\u0151 \xfczenetekr\u0151l.";
+      return "Memberi tahu pengguna tentang pesan dalam ruangan terenkripsi.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "\xc9rtes\xedti a felhaszn\xe1l\xf3t a Jitsi widget esem\xe9nyekr\u0151l.";
+      return "Memberi tahu pengguna tentang peristiwa widget Jitsi.";
     },
     get$notificationRuleServerAcl() {
-      return "N\xe9m\xedtja a Szerver ACL Esem\xe9nyeket";
+      return "Diamkan Peristiwa ACL Server";
     },
     get$notificationRuleServerAclDescription() {
-      return "N\xe9m\xedtja a Szerver ACL esem\xe9nyek \xe9rtes\xedt\xe9seit.";
+      return "Mendiamkan notifikasi peristiwa ACL server.";
     },
     unknownPushRule$1(rule) {
-      return "'" + rule + "' egy ismeretlen push szab\xe1ly";
+      return "Aturan dorongan '" + rule + "' tidak diketahui";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Pesan suara dari " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Ha t\xf6rli ezt az \xe9rtes\xedt\xe9si be\xe1ll\xedt\xe1st, k\xe9s\u0151bb nem vonhat\xf3 vissza.";
+      return "Jika kamu menghapus pengaturan notifikasi ini, maka tidak dapat diurungkan.";
     },
     get$more() {
-      return "T\xf6bb";
+      return "Tambahan";
     },
     get$shareKeysWith() {
-      return "Kulcsok megoszt\xe1sa...";
+      return "Bagikan kunci dengan...";
     },
     get$shareKeysWithDescription() {
-      return "Mely eszk\xf6z\xf6k tekinthet\u0151ek megb\xedzhat\xf3nak, hogy olvashass\xe1k a titkos\xedtott cseveg\xe9seket is?";
+      return "Perangkat apa saja yang dipercayai supaya mereka bisa membaca bersama dengan pesanmu dalam obrolan terenkripsi?";
     },
     get$allDevices() {
-      return "Minden eszk\xf6z";
+      return "Semua perangkat";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Kereszt-hiteles\xedtett eszk\xf6z\xf6k ha be van kapcsolva";
+      return "Verifikasi silang perangkat jika diaktifkan";
     },
     get$crossVerifiedDevices() {
-      return "Kereszt-hiteles\xedtett eszk\xf6z\xf6k";
+      return "Perangkat terverifikasi silang";
     },
     get$verifiedDevicesOnly() {
-      return "Csak hiteles\xedtett eszk\xf6z\xf6k";
+      return "Perangkat terverifikasi saja";
     },
     get$optionalMessage() {
-      return "(V\xe1laszthat\xf3) \xfczenet...";
+      return "Pesan (opsional)...";
     },
     get$notSupportedOnThisDevice() {
-      return "Nem t\xe1mogatott ezen az eszk\xf6z\xf6n";
+      return "Tidak didukung pada perangkat ini";
     },
     get$enterNewChat() {
-      return "Bel\xe9p\xe9s \xfaj cseveg\xe9sbe";
+      return "Masuk ke obrolan baru";
     },
     get$approve() {
-      return "J\xf3v\xe1hagy";
+      return "Terima";
     },
     get$commandHint_logout() {
-      return "Logout your current device";
+      return "Keluar dari perangkatmu saat ini";
     },
     get$commandHint_logoutall() {
-      return "Logout all active devices";
+      return "Keluarkan semua perangkat aktif";
     },
     get$customReaction() {
       return "Custom reaction";
@@ -4510,14 +4501,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nHu, C.L10n);
+    _inherit(A.L10nId, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nHu":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nId":{"L10n":[]}}'));
+  var string$ = {
+    Member: "Memberi tahu pengguna tentang pesan dalam ruangan satu ke satu."
+  };
 };
 ;
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_228", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "CiQ3++JZNUSg+lMUz97r0XuoByY=");
+})($__dart_deferred_initializers__, "SBXrvnWlNgxFyjGF314IkulPfsg=");
 ;
 //# sourceMappingURL=main.dart.js_228.part.js.map
