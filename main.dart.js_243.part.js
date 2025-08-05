@@ -4486,13 +4486,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\ud83c\udfaf " + username + " wrapped up this activity";
     },
     get$endActivityTitle() {
-      return "Wrapped up my part";
+      return "I'm Done";
     },
     get$endActivityDesc() {
       return "Did you complete the objectives?\nThis is your confirmation that you're stepping back from texting. But don\u2019t worry, the fun continues in the chat! Feel free to hang out and enjoy the show until everyone clicks 'Done'.";
     },
     get$archiveToAnalytics() {
-      return "Archive to Analytics";
+      return "Add to my Completed Activities";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4509,6 +4509,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_243", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "OrMrPuLS9tB/jCE3574u+wei7hQ=");
+})($__dart_deferred_initializers__, "AhoIu6Xcu9dcLSTO+9STo6NTOzw=");
 ;
 //# sourceMappingURL=main.dart.js_243.part.js.map
