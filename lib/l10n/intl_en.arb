@@ -696,6 +696,7 @@
       }
     }
   },
+  "checkList": "Check list",
   "countParticipants": "{count} participants",
   "@countParticipants": {
     "type": "String",
@@ -3208,7 +3209,7 @@
       }
     }
   },
-  "sentVoiceMessage": "\uD83C\uDF99\uFE0F {duration} - {sender}",
+  "sentVoiceMessage": "🎙️ {duration} - Voice message from {sender}",
   "@sentVoiceMessage": {
     "type": "String",
     "placeholders": {
@@ -3233,6 +3234,13 @@
   "optionalMessage": "(Optional) message...",
   "notSupportedOnThisDevice": "Not supported on this device",
   "enterNewChat": "Enter new chat",
+  "approve": "Approve",
+  "youHaveKnocked": "You have knocked",
+  "pleaseWaitUntilInvited": "Please wait now, until someone from the room invites you.",
+  "commandHint_logout": "Logout your current device",
+  "commandHint_logoutall": "Logout all active devices",
+  "displayNavigationRail": "Show navigation rail on mobile",
+  "customReaction": "Custom reaction",
   "accountInformation": "Account information",
   "addGroupDescription": "Add a chat description",
   "addNewFriend": "Add new friend",
@@ -3302,7 +3310,6 @@
   "iWantALanguagePartnerWhoIsLearning": "Is learning:",
   "joinWithClassCode": "Join space",
   "joinWithClassCodeHint": "Enter invite code",
-  "unableToFindClass": "There's no space with that code. Please try again.",
   "languageLevelPreA1": "True Beginner (Pre A1)",
   "languageLevelA1": "Beginner (A1)",
   "languageLevelA2": "Elementary (A2)",
@@ -4162,8 +4169,24 @@
   "spaceCapacityNotSet": "This space has no capacity limit.",
   "chatCapacityHasBeenChanged": "Chat capacity changed",
   "spaceCapacityHasBeenChanged": "Space capacity changed",
-  "chatCapacitySetTooLow": "Chat capacity cannot be set below the current number of members.",
-  "spaceCapacitySetTooLow": "Space capacity cannot be set below the current number of members.",
+  "chatCapacitySetTooLow": "Chat capacity must be at least {count}.",
+  "@chatCapacitySetTooLow": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "spaceCapacitySetTooLow": "Space capacity must be at least {count}.",
+  "@spaceCapacitySetTooLow": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "chatCapacityExplanation": "Chat capacity limits the number of members allowed in a chat.",
   "spaceCapacityExplanation": "Space capacity limits the number of members allowed in a space.",
   "chatExceedsCapacity": "This chat exceeds its capacity.",
@@ -4507,9 +4530,10 @@
   "grammarCopyPUNCTTYPEperi": "Period",
   "grammarCopyREFLEXyes": "Reflexive",
   "grammarCopyTENSEimp": "Imperfect",
-  "grammarCopyVERBFORMsup": "SuApine",
+  "grammarCopyVERBFORMsup": "Supine",
   "grammarCopyVERBFORMadn": "Adnominal",
   "grammarCopyVERBFORMlng": "Long",
+  "grammarCopyVERBFORMshrt": "Short",
   "grammarCopyVERBTYPEcaus": "Causative Verb",
   "grammarCopyVOICEcau": "Causative",
   "grammarCopyVOICEdir": "Direct",
@@ -4582,6 +4606,7 @@
   "constructUseIncMDesc": "Incorrect in grammar activity",
   "constructUseIgnMDesc": "Ignored in grammar activity",
   "constructUseEmojiDesc": "Correct in emoji activity",
+  "constructUseCollected": "Collected in chat",
   "constructUseNanDesc": "Not applicable",
   "xpIntoLevel": "{currentXP} / {maxXP} XP",
   "@xpIntoLevel": {
@@ -4623,9 +4648,9 @@
   "meaningSectionHeader": "Meaning:",
   "formSectionHeader": "Forms used in chats:",
   "noEmojiSelectedTooltip": "No emoji selected",
-  "writingExercisesTooltip": "Writing practice",
-  "listeningExercisesTooltip": "Listening practice",
-  "readingExercisesTooltip": "Reading practice",
+  "writingExercisesTooltip": "Writing",
+  "listeningExercisesTooltip": "Listening",
+  "readingExercisesTooltip": "Reading",
   "meaningNotFound": "Meaning could not be found.",
   "formsNotFound": "Forms could not be found.",
   "chooseBaseForm": "Choose the base form",
@@ -4725,7 +4750,7 @@
   "activityPlannerTitle": "Activity Planner",
   "topicLabel": "Topic",
   "topicPlaceholder": "Choose a topic...",
-  "modeLabel": "Mode",
+  "modeLabel": "Activity type",
   "modePlaceholder": "Choose a mode...",
   "learningObjectiveLabel": "Learning Objective",
   "learningObjectivePlaceholder": "Choose a learning objective...",
@@ -4739,12 +4764,9 @@
   "video": "Video",
   "nan": "Not applicable",
   "activityPlannerOverviewInstructionsBody": "Choose a topic, mode, learning objective and generate an activity for the chat!",
-  "myBookmarkedActivities": "My Bookmarked Activities",
-  "noBookmarkedActivities": "No bookmarked activities",
   "activityTitle": "Activity Title",
   "addVocabulary": "Add vocabulary",
   "instructions": "Instructions",
-  "bookmark": "Bookmark this activity",
   "numberOfLearners": "Number of learners",
   "mustBeInteger": "Must be an integer e.g. 1, 2, 3, ...",
   "noLemmasFound": "There's no vocabulary with more than {xp} XP. Keep practicing!",
@@ -4866,16 +4888,14 @@
   "exploreMore": "Explore more",
   "randomize": "Randomize",
   "clear": "Clear",
-  "makeYourOwnActivity": "Make your own activity",
+  "makeYourOwnActivity": "Create your own activity",
   "featuredActivities": "Featured",
-  "yourBookmarks": "Bookmarked",
   "goToChat": "Go to chat",
   "save": "Save",
   "selectActivity": "Select activity",
   "newChatActivityDesc": "Make every group chat an adventure with Activity Planner! Set captivating topics and objectives for the group, and bring conversations to life with stunning images. Spark imaginative discussions and keep the fun flowing effortlessly!",
   "exploreMore": "Explore more",
   "wordFocusListeningMultipleChoice": "Which audio matches the word?",
-  "createActivity": "Create activity",
   "startChat": "Start a chat",
   "translationProblem": "Translation problem",
   "perfectTranslation": "Perfect translation!",
@@ -4924,9 +4944,6 @@
   "ban": "Ban",
   "unban": "Unban",
   "kick": "Kick",
-  "approve": "Approve",
-  "youHaveKnocked": "You have knocked",
-  "pleaseWaitUntilInvited": "Please wait now, until someone from the room invites you.",
   "lemma": "Lemma",
   "grammarFeature": "Grammar feature",
   "grammarTag": "Grammar tag",
@@ -4971,7 +4988,6 @@
   "configureSpace": "Configure space",
   "pinMessages": "Pin messages",
   "setJoinRules": "Set join rules",
-  "displayNavigationRail": "Show navigation rail on mobile",
   "changeGeneralSettings": "Change general settings",
   "inviteOtherUsersToRoom": "Invite other users",
   "changeTheNameOfTheSpace": "Change the name of the space",
@@ -4983,7 +4999,7 @@
   "access": "Access",
   "addSubspace": "Add subspace",
   "botSettings": "Bot settings",
-  "activitySuggestionTimeoutMessage": "We are working hard to generate activities for you, please check back in a minute",
+  "activitySuggestionTimeoutMessage": "We are working hard to generate more activities for you, please check back in a minute",
   "accessSettingsWarning": "Oops! It looks like you don't have permission to set the Access rules of this room. You should check these to make sure they're what you need and talk to a room admin if you need to change them",
   "howSpaceCanBeFound": "How this space can be found",
   "private": "Private",
@@ -4998,6 +5014,7 @@
   "canBeFoundViaKnock": "\u2022 request to join and admin approval",
   "anyoneCanJoin": "Anyone can join! However, admin can kick and ban whoever misbehaves. Those who are banned may not return!",
   "createYourSpace": "Create your space",
+  "youHaveLeveledUp": "You have leveled up!",
   "sendActivities": "Send activities",
   "getStarted": "Get Started",
   "getStartedBotChatDesc": "Chatting with AI is a great place to start and Pangea reading, writing, listening and speaking tools make it easy!",
@@ -5062,6 +5079,7 @@
   "reset": "Reset",
   "errorGenerateActivityMessage": "Failed to generate activity",
   "errorRegenerateActivityMessage": "Failed to regenerate activity",
+  "errorLaunchActivityMessage": "Failed to launch activity",
   "errorFetchingActivitiesMessage": "Failed to fetch activities",
   "errorFetchingDefinition": "Failed to fetch definition",
   "errorProcessAnalytics": "Failed to process analytics",
@@ -5075,6 +5093,50 @@
   "errorFetchingActivity": "Failed to fetch activity",
   "check": "Check",
   "unableToFindRoom": "No chat or space found with that code. Please try again.",
-  "generatingNewActivities": "You're the first user of this language pair! Please wait a moment, we're preparing activities just for you.",
-  "getStartedFriendsButton": "Invite a friend"
+  "confirmMessageUnpin": "Are you sure you want to unpin this message?",
+  "createActivityPlan": "Create a new activity plan",
+  "saveAndLaunch": "Save and Launch",
+  "launchToSpace": "Launch to Space",
+  "numberOfActivities": "Number of Activity Sessions",
+  "minimumActivityParticipants": "Each Activity needs a minimum {count} of participant(s).",
+  "@minimumActivityParticipants": {
+    "type": "String",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "unjoinedActivityMessage": "Do you want to participate? Choose an open role!\nOr hang out and watch the show!",
+  "fullActivityMessage": "Feel free to watch the show! While there aren't any open roles to participate, you can view the chat!",
+  "confirmRole": "Confirm role",
+  "openRoleLabel": "OPEN",
+  "joinedTheActivity": "👋 {username} joined as {role}",
+  "@joinedTheActivity": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      },
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "finishedTheActivity": "🎯 {username} wrapped up this activity",
+  "@finishedTheActivity": {
+    "type": "String",
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "endActivityTitle": "I'm Done",
+  "endActivityDesc": "Did you complete the objectives?\nThis is your confirmation that you're stepping back from texting. But don’t worry, the fun continues in the chat! Feel free to hang out and enjoy the show until everyone clicks 'Done'.",
+  "archiveToAnalytics": "Add to my Completed Activities",
+  "activitySummaryError": "Activity summaries unavailable",
+  "requestSummaries": "Request summaries",
+  "loadingActivitySummary": "Loading activity summary...",
+  "generatingNewActivities": "You're the first user of this language pair! Please wait a moment, we're preparing activities just for you."
 }
