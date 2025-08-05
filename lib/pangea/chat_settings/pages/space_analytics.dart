@@ -107,6 +107,8 @@ class SpaceAnalytics extends StatefulWidget {
 }
 
 class SpaceAnalyticsState extends State<SpaceAnalytics> {
+  bool initialized = false;
+
   Map<User, AnalyticsDownload> downloads = {};
   Map<User, PublicProfileModel> profiles = {};
   final Map<LanguageModel, List<User>> _langsToUsers = {};
@@ -152,6 +154,44 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   int get requestableUsersCount => _availableUsersForLang
       .where((user) => requestStatusOfUser(user) == RequestStatus.unrequested)
       .length;
+
+  List<MapEntry<User, AnalyticsDownload>> get sortedDownloads {
+    final entries = downloads.entries.toList();
+    entries.sort((a, b) {
+      // sort available downloads first
+      if (a.value.status == DownloadStatus.available &&
+          b.value.status != DownloadStatus.available) {
+        return -1;
+      } else if (a.value.status != DownloadStatus.available &&
+          b.value.status == DownloadStatus.available) {
+        return 1;
+      }
+
+      final aStatus = requestStatusOfUser(a.key);
+      final bStatus = requestStatusOfUser(b.key);
+
+      // then requestable users
+      if (aStatus == RequestStatus.unrequested &&
+          bStatus != RequestStatus.unrequested) {
+        return -1;
+      } else if (aStatus != RequestStatus.unrequested &&
+          bStatus == RequestStatus.unrequested) {
+        return 1;
+      }
+
+      // then sort not found to the end
+      if (aStatus == RequestStatus.notFound &&
+          bStatus != RequestStatus.notFound) {
+        return 1;
+      } else if (aStatus != RequestStatus.notFound &&
+          bStatus == RequestStatus.notFound) {
+        return -1;
+      }
+
+      return 0;
+    });
+    return entries;
+  }
 
   @override
   void initState() {
@@ -201,21 +241,25 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   }
 
   Future<void> _initialize() async {
-    GetStorage.init('analytics_request_storage').then((_) {
-      if (mounted) setState(() {});
-    });
+    final List<Future> futures = [
+      GetStorage.init('analytics_request_storage'),
+      _loadProfiles(),
+    ];
+    await Future.wait(futures);
+    await refresh();
 
+    if (mounted) {
+      setState(() => initialized = true);
+    }
+  }
+
+  Future<void> _loadProfiles() async {
     await room?.requestParticipants(
       [Membership.join],
       false,
       true,
     );
 
-    await _loadProfiles();
-    refresh();
-  }
-
-  Future<void> _loadProfiles() async {
     final futures = _availableUsers.map((u) async {
       final resp = await MatrixState.pangeaController.userController
           .getPublicProfile(u.id);

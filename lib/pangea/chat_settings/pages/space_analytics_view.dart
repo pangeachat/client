@@ -137,114 +137,121 @@ class SpaceAnalyticsView extends StatelessWidget {
                   ),
                 ],
               ),
-              Table(
-                columnWidths: const {0: FlexColumnWidth(2.5)},
-                children: [
-                  TableRow(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(color: theme.dividerColor),
-                      ),
-                    ),
-                    children: [
-                      _TableHeaderCell(
-                        text: L10n.of(context).viewingAnalytics(
-                          controller.completedDownloads,
-                          controller.downloads.length,
-                        ),
-                        icon: Icons.group_outlined,
-                      ),
-                      _TableHeaderCell(
-                        text: L10n.of(context).level,
-                        icon: Icons.star,
-                      ),
-                      _TableHeaderCell(
-                        text: L10n.of(context).vocab,
-                        icon: Symbols.dictionary,
-                      ),
-                      _TableHeaderCell(
-                        text: L10n.of(context).grammar,
-                        icon: Symbols.toys_and_games,
-                      ),
-                      _TableHeaderCell(
-                        text: L10n.of(context).activities,
-                        icon: Icons.radar,
-                      ),
-                    ],
-                  ),
-                  ...controller.downloads.entries.map(
-                    (entry) {
-                      final download = entry.value;
-                      return TableRow(
-                        children: [
-                          TableCell(
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: rowPadding,
+              controller.initialized
+                  ? Table(
+                      columnWidths: const {0: FlexColumnWidth(2.5)},
+                      children: [
+                        TableRow(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(color: theme.dividerColor),
+                            ),
+                          ),
+                          children: [
+                            _TableHeaderCell(
+                              text: L10n.of(context).viewingAnalytics(
+                                controller.completedDownloads,
+                                controller.downloads.length,
                               ),
-                              child: Row(
-                                spacing: isColumnMode ? 16.0 : 8.0,
-                                children: [
-                                  Avatar(
-                                    size: isColumnMode ? 40.0 : 24.0,
-                                    mxContent: entry.key.avatarUrl,
-                                    name: entry.key.calcDisplayname(),
-                                    userId: entry.key.id,
-                                    presenceUserId: entry.key.id,
-                                  ),
-                                  Flexible(
-                                    child: Column(
-                                      spacing: 8.0,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                              icon: Icons.group_outlined,
+                            ),
+                            _TableHeaderCell(
+                              text: L10n.of(context).level,
+                              icon: Icons.star,
+                            ),
+                            _TableHeaderCell(
+                              text: L10n.of(context).vocab,
+                              icon: Symbols.dictionary,
+                            ),
+                            _TableHeaderCell(
+                              text: L10n.of(context).grammar,
+                              icon: Symbols.toys_and_games,
+                            ),
+                            _TableHeaderCell(
+                              text: L10n.of(context).activities,
+                              icon: Icons.radar,
+                            ),
+                          ],
+                        ),
+                        ...controller.sortedDownloads.map(
+                          (entry) {
+                            final download = entry.value;
+                            return TableRow(
+                              children: [
+                                TableCell(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: rowPadding,
+                                    ),
+                                    child: Row(
+                                      spacing: isColumnMode ? 16.0 : 8.0,
                                       children: [
-                                        Text(
-                                          entry.key.id,
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(
-                                            fontSize:
-                                                isColumnMode ? 16.0 : 12.0,
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                        Avatar(
+                                          size: isColumnMode ? 40.0 : 24.0,
+                                          mxContent: entry.key.avatarUrl,
+                                          name: entry.key.calcDisplayname(),
+                                          userId: entry.key.id,
+                                          presenceUserId: entry.key.id,
                                         ),
-                                        _RequestButton(
-                                          status: controller
-                                              .requestStatusOfUser(entry.key),
-                                          onPressed: () => controller
-                                              .requestAnalytics(entry.key),
+                                        Flexible(
+                                          child: Column(
+                                            spacing: 8.0,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                entry.key.id,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                  fontSize: isColumnMode
+                                                      ? 16.0
+                                                      : 12.0,
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              _RequestButton(
+                                                status: controller
+                                                    .requestStatusOfUser(
+                                                  entry.key,
+                                                ),
+                                                onPressed: () =>
+                                                    controller.requestAnalytics(
+                                                  entry.key,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          _TableContentCell(
-                            text: download.summary?.level?.toString(),
-                            status: download.status,
-                          ),
-                          _TableContentCell(
-                            text: download.summary?.numLemmas.toString(),
-                            status: download.status,
-                          ),
-                          _TableContentCell(
-                            text:
-                                download.summary?.numMorphConstructs.toString(),
-                            status: download.status,
-                          ),
-                          _TableContentCell(
-                            text: download.summary?.numCompletedActivities
-                                .toString(),
-                            status: download.status,
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ],
-              ),
+                                ),
+                                _TableContentCell(
+                                  text: download.summary?.level?.toString(),
+                                  status: download.status,
+                                ),
+                                _TableContentCell(
+                                  text: download.summary?.numLemmas.toString(),
+                                  status: download.status,
+                                ),
+                                _TableContentCell(
+                                  text: download.summary?.numMorphConstructs
+                                      .toString(),
+                                  status: download.status,
+                                ),
+                                _TableContentCell(
+                                  text: download.summary?.numCompletedActivities
+                                      .toString(),
+                                  status: download.status,
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      ],
+                    )
+                  : const CircularProgressIndicator.adaptive(),
             ],
           ),
         ),
