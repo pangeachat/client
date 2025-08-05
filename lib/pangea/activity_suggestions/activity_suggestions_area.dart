@@ -132,12 +132,8 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       _activityItems.addAll(resp.activityPlans);
       _timeout = _activityItems.isEmpty;
     } finally {
-      // Only set loading to false if 1+ activity has been provided
-      if (_activityItems.isNotEmpty) {
-        _loading = false;
-      }
       if (mounted) {
-        setState(() => {});
+        setState(() => _loading = false);
       }
     }
   }
