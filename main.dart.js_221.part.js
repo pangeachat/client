@@ -4494,6 +4494,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$archiveToAnalytics() {
       return "Add to my Completed Activities";
     },
+    get$activitySummaryError() {
+      return "Activity summaries unavailable";
+    },
+    get$requestSummaries() {
+      return "Request summaries";
+    },
+    get$loadingActivitySummary() {
+      return "Loading activity summary...";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4509,6 +4518,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_221", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "hBuSiu4Lm12saoZAgmv89LuAoFE=");
+})($__dart_deferred_initializers__, "CUBctGAMqdeUD8BsF28W2QQf6h8=");
 ;
 //# sourceMappingURL=main.dart.js_221.part.js.map
