@@ -81,11 +81,18 @@ class ChatPage extends StatelessWidget {
   final List<ShareItem>? shareItems;
   final String? eventId;
 
+  // #Pangea
+  final Widget? backButton;
+  // Pangea#
+
   const ChatPage({
     super.key,
     required this.roomId,
     this.eventId,
     this.shareItems,
+    // #Pangea
+    this.backButton,
+    // Pangea#
   });
 
   @override
@@ -122,6 +129,9 @@ class ChatPage extends StatelessWidget {
       room: room,
       shareItems: shareItems,
       eventId: eventId,
+      // #Pangea
+      backButton: backButton,
+      // Pangea#
     );
   }
 }
@@ -131,11 +141,18 @@ class ChatPageWithRoom extends StatefulWidget {
   final List<ShareItem>? shareItems;
   final String? eventId;
 
+  // #Pangea
+  final Widget? backButton;
+  // Pangea#
+
   const ChatPageWithRoom({
     super.key,
     required this.room,
     this.shareItems,
     this.eventId,
+    // #Pangea
+    this.backButton,
+    // Pangea#
   });
 
   @override
@@ -1788,7 +1805,10 @@ class ChatController extends State<ChatPageWithRoom>
     final response = await showOkCancelAlertDialog(
       context: context,
       title: L10n.of(context).unpin,
-      message: L10n.of(context).confirmEventUnpin,
+      // #Pangea
+      // message: L10n.of(context).confirmEventUnpin,
+      message: L10n.of(context).confirmMessageUnpin,
+      // Pangea#
       okLabel: L10n.of(context).unpin,
       cancelLabel: L10n.of(context).cancel,
     );
