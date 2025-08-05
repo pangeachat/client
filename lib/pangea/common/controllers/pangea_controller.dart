@@ -61,7 +61,7 @@ class PangeaController {
   int? randomint;
   PangeaController({required this.matrix, required this.matrixState}) {
     _setup();
-    _setLanguageStream();
+    _setLanguageSubscription();
     randomint = Random().nextInt(2000);
   }
 
@@ -185,7 +185,7 @@ class PangeaController {
         // Initialize analytics data
         putAnalytics.initialize();
         getAnalytics.initialize();
-        _setLanguageStream();
+        _setLanguageSubscription();
 
         userController.reinitialize().then((_) {
           final l1 = userController.profile.userSettings.sourceLanguage;
@@ -213,7 +213,7 @@ class PangeaController {
     await getAnalytics.initialize();
   }
 
-  void _setLanguageStream() {
+  void _setLanguageSubscription() {
     _languageStream?.cancel();
     _languageStream = userController.languageStream.stream.listen(
       (_) => clearCache(exclude: ["analytics_storage"]),
