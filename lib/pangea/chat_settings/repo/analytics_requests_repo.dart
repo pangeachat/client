@@ -55,6 +55,25 @@ class AnalyticsRequestsRepo {
     return status.status;
   }
 
+  static List<RequestStatus> getAll() {
+    final entries = _requestStorage.getValues();
+    final statuses = <RequestStatus>[];
+
+    for (final entry in entries) {
+      if (entry is Map<String, dynamic>) {
+        final status = _AnalyticsRequestEntry.fromJson(entry);
+        if (!status.isExpired) {
+          statuses.add(status.status);
+        } else {
+          // Remove expired entry
+          _requestStorage.remove(entry['key']);
+        }
+      }
+    }
+
+    return statuses.toSet().toList();
+  }
+
   static Future<void> set(
     String userId,
     LanguageModel language,

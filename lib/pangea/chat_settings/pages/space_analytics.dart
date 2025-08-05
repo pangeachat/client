@@ -13,6 +13,8 @@ import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/space_analytics_view.dart';
 import 'package:fluffychat/pangea/chat_settings/repo/analytics_requests_repo.dart';
+import 'package:fluffychat/pangea/chat_settings/widgets/space_analytics_inactive_dialog.dart';
+import 'package:fluffychat/pangea/chat_settings/widgets/space_analytics_request_dialog.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
@@ -368,6 +370,16 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       status = RequestStatus.requested;
     } catch (e) {
       status = RequestStatus.notFound;
+      if (!AnalyticsRequestsRepo.getAll().any(
+        (status) => status == RequestStatus.notFound,
+      )) {
+        showDialog(
+          context: context,
+          builder: (_) {
+            return const SpaceAnalyticsInactiveDialog();
+          },
+        );
+      }
     } finally {
       await AnalyticsRequestsRepo.set(
         user.id,
@@ -390,6 +402,17 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   }
 
   Future<void> requestAllAnalytics() async {
+    if (requestableUsersCount == 0) return;
+    final resp = await showDialog(
+      context: context,
+      builder: (_) {
+        return SpaceAnalyticsRequestDialog(
+          count: requestableUsersCount,
+        );
+      },
+    );
+
+    if (resp != true) return;
     final users = _availableUsersForLang
         .where((user) => requestStatusOfUser(user) == RequestStatus.unrequested)
         .toList();
