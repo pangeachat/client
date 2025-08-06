@@ -5108,15 +5108,7 @@
     }
   },
   "request": "Request",
-  "requestCount": "Request {count}",
-  "@requestCount": {
-    "type": "String",
-    "placeholders": {
-      "count": {
-        "type": "int"
-      }
-    }
-  },
+  "requestAll": "Request All",
   "confirmMessageUnpin": "Are you sure you want to unpin this message?",
   "createActivityPlan": "Create a new activity plan",
   "saveAndLaunch": "Save and Launch",
@@ -5198,5 +5190,6 @@
         "type": "String"
       }
     }
-  }
+  },
+  "noDataFound": "No data found"
 }

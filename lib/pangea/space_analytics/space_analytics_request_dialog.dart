@@ -9,10 +9,8 @@ import 'package:fluffychat/pangea/analytics_page/analytics_page_constants.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 
 class SpaceAnalyticsRequestDialog extends StatelessWidget {
-  final int count;
   const SpaceAnalyticsRequestDialog({
     super.key,
-    required this.count,
   });
 
   @override
@@ -70,7 +68,7 @@ class SpaceAnalyticsRequestDialog extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(Symbols.approval_delegation),
-                          Text(L10n.of(context).requestAccess(count)),
+                          Text(L10n.of(context).requestAll),
                         ],
                       ),
                     ),
