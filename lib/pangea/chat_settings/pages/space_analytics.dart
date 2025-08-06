@@ -198,7 +198,6 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   @override
   void initState() {
     super.initState();
-    selectedLanguage = _userL2;
     _initialize();
   }
 
@@ -233,12 +232,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   }
 
   void setSelectedLanguage(LanguageModel? lang) {
-    if (lang == null) {
-      selectedLanguage = _userL2;
-    } else {
-      selectedLanguage = lang;
-    }
-
+    selectedLanguage = lang;
     refresh();
   }
 
@@ -248,8 +242,12 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       _loadProfiles(),
     ];
     await Future.wait(futures);
-    await refresh();
 
+    selectedLanguage = availableLanguages.contains(_userL2)
+        ? _userL2
+        : availableLanguages.firstOrNull;
+
+    await refresh();
     if (mounted) {
       setState(() => initialized = true);
     }

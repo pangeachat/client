@@ -9,7 +9,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/space_analytics_requested_dialog.dart';
-import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class AnalyticsRequestIndicator extends StatefulWidget {
@@ -25,47 +24,7 @@ class AnalyticsRequestIndicator extends StatefulWidget {
 }
 
 class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
-  StreamSubscription? _memberSubscription;
-
   AnalyticsRequestIndicatorState();
-
-  @override
-  void initState() {
-    super.initState();
-    _memberSubscription ??= widget.room.client.onSync.stream
-        .where(_isMemberUpdate)
-        .rateLimit(const Duration(seconds: 1))
-        .listen((_) => setState(() {}));
-  }
-
-  @override
-  void dispose() {
-    _memberSubscription?.cancel();
-    super.dispose();
-  }
-
-  bool _isMemberUpdate(SyncUpdate update) {
-    if (update.rooms == null) return false;
-    final join = update.rooms!.join;
-    final leave = update.rooms!.leave;
-    if (join == null && leave == null) return false;
-
-    final analyticsRooms = widget.room.client.allMyAnalyticsRooms;
-    final hasJoinUpdates = join?.entries.any(
-      (e) =>
-          analyticsRooms.any((r) => r.id == e.key) &&
-          e.value.state?.any((s) => s.type == EventTypes.RoomMember) == true,
-    );
-    if (hasJoinUpdates == true) return true;
-
-    return leave?.entries.any(
-          (e) =>
-              analyticsRooms.any((r) => r.id == e.key) &&
-              e.value.state?.any((s) => s.type == EventTypes.RoomMember) ==
-                  true,
-        ) ??
-        false;
-  }
 
   Map<User, List<Room>> get _knockingAdmins {
     final admins =
@@ -83,7 +42,6 @@ class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
       }
     }
 
-    debugPrint("knockingAdmins: $knockingAdmins");
     return knockingAdmins;
   }
 
@@ -104,9 +62,9 @@ class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
           final user = entry.key;
           final rooms = entry.value;
 
-          final List<Future> futures = resp
-              ? rooms.map((room) => room.invite(user.id)).toList()
-              : rooms.map((room) => room.kick(user.id)).toList();
+          final List<Future> futures = rooms
+              .map((room) => resp ? room.invite(user.id) : room.kick(user.id))
+              .toList();
 
           await Future.wait(futures);
         }

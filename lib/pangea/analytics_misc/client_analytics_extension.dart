@@ -115,6 +115,7 @@ extension AnalyticsClientExtension on Client {
     for (final analyticsRoom in allMyAnalyticsRooms) {
       if (!isLogged()) return;
       analyticsRoom.requestParticipants([Membership.knock], false, true);
+      analyticsRoom.postLoad();
     }
   }
 
