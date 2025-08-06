@@ -283,7 +283,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                 Expanded(
                                   child: Text(
                                     L10n.of(context)
-                                        .minimumActivityParticipants(
+                                        .maximumActivityParticipants(
                                       widget.controller.updatedActivity.req
                                           .numberOfParticipants,
                                     ),
@@ -619,6 +619,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                               Column(
                                 spacing: 12.0,
                                 children: [
+                                  const SizedBox(),
                                   Row(
                                     spacing: 12.0,
                                     children: [
