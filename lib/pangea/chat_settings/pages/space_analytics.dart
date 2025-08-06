@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/intl.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
@@ -78,10 +79,10 @@ enum RequestStatus {
     switch (this) {
       case RequestStatus.available:
       case RequestStatus.unrequested:
-        return theme.colorScheme.primaryContainer.withAlpha(180);
+        return theme.colorScheme.primaryContainer;
       case RequestStatus.notFound:
       case RequestStatus.requested:
-        return theme.disabledColor.withAlpha(25);
+        return theme.disabledColor;
     }
   }
 
@@ -110,12 +111,12 @@ class SpaceAnalytics extends StatefulWidget {
 
 class SpaceAnalyticsState extends State<SpaceAnalytics> {
   bool initialized = false;
+  DateTime? _lastUpdated;
 
+  LanguageModel? selectedLanguage;
   Map<User, AnalyticsDownload> downloads = {};
   Map<User, PublicProfileModel> profiles = {};
   final Map<LanguageModel, List<User>> _langsToUsers = {};
-
-  LanguageModel? selectedLanguage;
 
   Room? get room => Matrix.of(context).client.getRoomById(widget.roomId);
 
@@ -193,6 +194,16 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       return 0;
     });
     return entries;
+  }
+
+  String? get lastUpdatedString {
+    if (_lastUpdated == null) return null;
+    final now = DateTime.now();
+    final difference = now.difference(_lastUpdated!);
+
+    return difference.inDays > 0
+        ? DateFormat('yyyy-MM-dd').format(_lastUpdated!)
+        : DateFormat('HH:mm a').format(_lastUpdated!);
   }
 
   @override
@@ -305,6 +316,12 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       }
       await _getAnalyticsModel(analyticsRoom);
     }
+
+    if (mounted) {
+      setState(() {
+        _lastUpdated = DateTime.now();
+      });
+    }
   }
 
   Future<void> _getAnalyticsModel(
@@ -335,7 +352,7 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       summary = SpaceAnalyticsSummaryModel.fromConstructListModel(
         userID,
         constructs,
-        0,
+        analyticsRoom.activityRoomIds.length,
         _getCopy,
         context,
       );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -72,6 +73,17 @@ class SpaceAnalyticsView extends StatelessWidget {
                   Row(
                     spacing: isColumnMode ? 12.0 : 4.0,
                     children: [
+                      if (controller.lastUpdatedString != null)
+                        Text(
+                          L10n.of(context).lastUpdated(
+                            controller.lastUpdatedString!,
+                          ),
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                            fontSize: isColumnMode ? 12.0 : 8.0,
+                            color: theme.disabledColor,
+                          ),
+                        ),
                       _MenuButton(
                         text: L10n.of(context).refresh,
                         icon: Symbols.refresh,
@@ -81,13 +93,15 @@ class SpaceAnalyticsView extends StatelessWidget {
                       DropdownButtonHideUnderline(
                         child: DropdownButton2<LanguageModel>(
                           customButton: Container(
-                            height: isColumnMode ? 42.0 : 32.0,
+                            height: isColumnMode ? 36.0 : 26.0,
                             decoration: BoxDecoration(
                               color: theme.colorScheme.primaryContainer,
                               borderRadius: BorderRadius.circular(40),
                             ),
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 8.0),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: isColumnMode ? 8.0 : 4.0,
+                              vertical: 4.0,
+                            ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -106,7 +120,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                 Icon(
                                   Icons.arrow_drop_down,
                                   color: theme.colorScheme.onPrimaryContainer,
-                                  size: isColumnMode ? 24.0 : 16.0,
+                                  size: isColumnMode ? 24.0 : 14.0,
                                 ),
                               ],
                             ),
@@ -130,6 +144,10 @@ class SpaceAnalyticsView extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(40),
                             ),
+                          ),
+                          dropdownStyleData: const DropdownStyleData(
+                            offset: Offset(-50, 0),
+                            width: 150,
                           ),
                         ),
                       ),
@@ -173,8 +191,8 @@ class SpaceAnalyticsView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        ...controller.sortedDownloads.map(
-                          (entry) {
+                        ...controller.sortedDownloads.mapIndexed(
+                          (index, entry) {
                             final download = entry.value;
                             return TableRow(
                               children: [
@@ -187,7 +205,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                       spacing: isColumnMode ? 16.0 : 8.0,
                                       children: [
                                         Avatar(
-                                          size: isColumnMode ? 40.0 : 24.0,
+                                          size: isColumnMode ? 64.0 : 40.0,
                                           mxContent: entry.key.avatarUrl,
                                           name: entry.key.calcDisplayname(),
                                           userId: entry.key.id,
@@ -195,10 +213,14 @@ class SpaceAnalyticsView extends StatelessWidget {
                                         ),
                                         Flexible(
                                           child: Column(
-                                            spacing: 8.0,
+                                            spacing: 4.0,
+                                            mainAxisSize: MainAxisSize.min,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
+                                              SizedBox(
+                                                height: index == 0 ? 8.0 : 0.0,
+                                              ),
                                               Text(
                                                 entry.key.id,
                                                 maxLines: 1,
@@ -220,6 +242,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                                   entry.key,
                                                 ),
                                               ),
+                                              const SizedBox(height: 8.0),
                                             ],
                                           ),
                                         ),
@@ -279,7 +302,7 @@ class _MenuButton extends StatelessWidget {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
-    final height = isColumnMode ? 42.0 : 32.0;
+    final height = isColumnMode ? 36.0 : 26.0;
 
     return InkWell(
       borderRadius: BorderRadius.circular(40),
@@ -291,25 +314,33 @@ class _MenuButton extends StatelessWidget {
           color: theme.colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(40),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Row(
-          spacing: 4.0,
-          children: [
-            Icon(
-              icon,
-              color: theme.colorScheme.onPrimaryContainer,
-              size: isColumnMode ? 24.0 : 16.0,
-            ),
-            if (!mini)
-              Text(
-                text,
-                style: TextStyle(
-                  color: theme.colorScheme.onPrimaryContainer,
-                  fontSize: isColumnMode ? 16.0 : 12.0,
-                ),
-              ),
-          ],
+        padding: EdgeInsets.symmetric(
+          horizontal: isColumnMode ? 8.0 : 4.0,
+          vertical: 4.0,
         ),
+        child: mini
+            ? Icon(
+                icon,
+                color: theme.colorScheme.onPrimaryContainer,
+                size: isColumnMode ? 24.0 : 14.0,
+              )
+            : Row(
+                spacing: 4.0,
+                children: [
+                  Icon(
+                    icon,
+                    color: theme.colorScheme.onPrimaryContainer,
+                    size: isColumnMode ? 24.0 : 14.0,
+                  ),
+                  Text(
+                    text,
+                    style: TextStyle(
+                      color: theme.colorScheme.onPrimaryContainer,
+                      fontSize: isColumnMode ? 16.0 : 12.0,
+                    ),
+                  ),
+                ],
+              ),
       ),
     );
   }
@@ -367,7 +398,7 @@ class _TableContentCell extends StatelessWidget {
     final isColumnMode = FluffyThemes.isColumnMode(context);
     return TableCell(
       verticalAlignment: TableCellVerticalAlignment.fill,
-      child: Align(
+      child: Container(
         alignment: Alignment.center,
         child: Text(
           text!,
@@ -390,7 +421,7 @@ class _MissingContentCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return TableCell(
       verticalAlignment: TableCellVerticalAlignment.fill,
-      child: Align(
+      child: Container(
         alignment: Alignment.center,
         child: status == DownloadStatus.loading
             ? const SizedBox(
@@ -422,29 +453,35 @@ class _RequestButton extends StatelessWidget {
 
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
-    return FilterChip(
-      padding: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(32),
-      ),
-      label: Row(
-        spacing: 8.0,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            status.icon,
-            size: 12.0,
+    return MouseRegion(
+      cursor: status.enabled ? SystemMouseCursors.click : MouseCursor.defer,
+      child: GestureDetector(
+        onTap: status.enabled ? onPressed : null,
+        child: Opacity(
+          opacity: status.enabled ? 0.9 : 0.3,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(40),
+              color: status.backgroundColor(context),
+            ),
+            child: Row(
+              spacing: 8.0,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  status.icon,
+                  size: isColumnMode ? 12.0 : 8.0,
+                ),
+                Text(
+                  status.label(context),
+                  style: TextStyle(fontSize: isColumnMode ? 12.0 : 8.0),
+                ),
+              ],
+            ),
           ),
-          Text(
-            status.label(context),
-            style: TextStyle(fontSize: isColumnMode ? 16.0 : 12.0),
-          ),
-        ],
+        ),
       ),
-      selected: true,
-      onSelected: status.enabled ? (_) => onPressed.call() : null,
-      disabledColor: Theme.of(context).disabledColor.withAlpha(25),
-      selectedColor: status.backgroundColor(context),
     );
   }
 }

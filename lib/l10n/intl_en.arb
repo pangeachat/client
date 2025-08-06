@@ -5189,5 +5189,14 @@
   },
   "allowAccess": "Allow Access",
   "denyAccess": "Deny Access",
-  "adminRequestedAccess": "Admins asked to view your analytics."
+  "adminRequestedAccess": "Admins asked to view your analytics.",
+  "lastUpdated": "Updated\n{time}",
+  "@lastUpdated": {
+    "type": "String",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  }
 }
