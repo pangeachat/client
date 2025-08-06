@@ -103,21 +103,17 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
     }
 
     try {
-      setState(() {
-        _activityItems.clear();
-        _loading = true;
-      });
+      if (retries == 0) {
+        setState(() {
+          _activityItems.clear();
+          _loading = true;
+          _timeout = false;
+        });
+      }
 
       final resp = await ActivitySearchRepo.get(_request).timeout(
         const Duration(seconds: 5),
         onTimeout: () {
-          if (mounted) {
-            setState(() {
-              _timeout = true;
-              _loading = false;
-            });
-          }
-
           Future.delayed(const Duration(seconds: 5), () {
             if (mounted) _setActivityItems(retries: retries + 1);
           });
@@ -130,9 +126,25 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         },
       );
       _activityItems.addAll(resp.activityPlans);
-      _timeout = _activityItems.isEmpty;
+
+      // If activities are not successfully retrieved, try again
+      if (_activityItems.isEmpty) {
+        Future.delayed(const Duration(seconds: 5), () {
+          if (mounted) _setActivityItems(retries: retries + 1);
+        });
+
+        return;
+      }
     } finally {
-      if (mounted) setState(() => _loading = false);
+      // If activities are successfully retrieved, set timeout and loading to false
+      if (mounted && _activityItems.isNotEmpty) {
+        setState(
+          () {
+            _loading = false;
+            _timeout = false;
+          },
+        );
+      }
     }
   }
 
