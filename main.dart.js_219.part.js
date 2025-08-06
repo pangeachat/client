@@ -4476,8 +4476,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numberOfActivities() {
       return "Number of Activity Sessions";
     },
-    minimumActivityParticipants$1(count) {
-      return "Each Activity needs a minimum " + count + " of participant(s).";
+    maximumActivityParticipants$1(count) {
+      return "Each Activity can have a maximum of " + count + " participant(s).";
     },
     get$pending(_) {
       return "Pending";
@@ -4563,6 +4563,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_219", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "qo9wGUqrBeMuuncToBKeQHzAWsI=");
+})($__dart_deferred_initializers__, "L8YHY2v2RNRhJF7ool5f1flfF2s=");
 ;
 //# sourceMappingURL=main.dart.js_219.part.js.map
