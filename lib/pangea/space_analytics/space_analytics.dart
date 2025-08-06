@@ -389,6 +389,8 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
           selectedLanguage!,
           status,
         );
+
+        downloads[user]?.requestStatus = status;
       }
 
       if (mounted) setState(() {});
