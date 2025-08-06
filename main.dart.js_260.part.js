@@ -2556,6 +2556,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$freeTrial() {
       return "D\xf9ng th\u1eed mi\u1ec5n ph\xed";
     },
+    get$noDataFound() {
+      return "Kh\xf4ng t\xecm th\u1ea5y d\u1eef li\u1ec7u";
+    },
     promoSubscriptionExpirationDesc$1(expiration) {
       return "G\xf3i khuy\u1ebfn m\xe3i h\u1ebft h\u1ea1n v\xe0o " + expiration + ". N\u1ebfu c\u1ea7n tr\u1ee3 gi\xfap, h\xe3y li\xean h\u1ec7 support@pangea.chat.";
     },
@@ -2649,6 +2652,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$kickBotWarning() {
       return "\u0110\xe1 Pangea Bot s\u1ebd x\xf3a bot h\u1ed9i tho\u1ea1i kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0y.";
     },
+    get$refresh(_) {
+      return "T\u1ea3i l\u1ea1i";
+    },
     get$botConfig() {
       return "C\u1ea5u h\xecnh bot v\xe0 ho\u1ea1t \u0111\u1ed9ng";
     },
@@ -2696,6 +2702,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$buildTranslation() {
       return "X\xe2y d\u1ef1ng b\u1ea3n d\u1ecbch c\u1ee7a b\u1ea1n t\u1eeb c\xe1c l\u1ef1a ch\u1ecdn tr\xean";
+    },
+    get$spaceAnalytics() {
+      return "Ph\xe2n t\xedch kh\xf4ng gian";
     },
     get$practice() {
       return "Luy\u1ec7n t\u1eadp";
@@ -3849,9 +3858,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$numIncorrectChoices() {
       return "S\u1ed1 t\u1eeb \u0111\xe3 ch\u1ecdn sai t\u1eeb g\u1ee3i \xfd h\u1ec7 th\u1ed1ng";
     },
-    get$downloadSpaceAnalytics() {
-      return "T\u1ea3i ph\xe2n t\xedch kh\xf4ng gian";
-    },
     get$commaSeparatedFile() {
       return "CSV";
     },
@@ -4440,6 +4446,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "No chat or space found with that code. Please try again.";
     },
+    get$spaceAnalyticsPage() {
+      return "Space analytics page";
+    },
+    get$numCompletedActivities() {
+      return "Number of completed activities";
+    },
+    viewingAnalytics$2(visible, users) {
+      return "Viewing " + visible + "/" + users + " Analytics";
+    },
+    get$request(_) {
+      return "Request";
+    },
+    get$requestAll(_) {
+      return "Request All";
+    },
     get$confirmMessageUnpin() {
       return "Are you sure you want to unpin this message?";
     },
@@ -4457,6 +4478,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     minimumActivityParticipants$1(count) {
       return "Each Activity needs a minimum " + count + " of participant(s).";
+    },
+    get$pending(_) {
+      return "Pending";
     },
     get$unjoinedActivityMessage() {
       return "Do you want to participate? Choose an open role!\nOr hang out and watch the show!";
@@ -4494,6 +4518,36 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$loadingActivitySummary() {
       return "Loading activity summary...";
     },
+    get$requestAccessTitle() {
+      return "Request to analytics view access?";
+    },
+    get$requestAccessDesc() {
+      return "Would you like to request access to view participant analytics?\n\nIf participants agree, admin of this space will be able to view their:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\n    \u2022 They will not be able to view their:\n    \u2022 messages in chats outside the space\n    \u2022 vocabulary list";
+    },
+    get$analyticsInactiveTitle() {
+      return "Requests to inactive users couldn\u2019t be sent";
+    },
+    get$analyticsInactiveDesc() {
+      return "Inactive users who haven't logged in since this feature was introduced won't see your request.\n\nThe Request button will appear once they return. You can resend the request later by clicking the Request button under their name when it's available.";
+    },
+    get$accessRequestedTitle() {
+      return "Analytics Access Request";
+    },
+    accessRequestedDesc$1(space) {
+      return "The administrators of \u201c" + space + "\u201d are requesting to view your learning analytics.\n\nIf you agree, admin of this space will be able to view your:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\n    \u2022 They will not be able to view your:\n    \u2022 messages in chats outside the space\n    \u2022 vocabulary list";
+    },
+    get$allowAccess() {
+      return "Allow Access";
+    },
+    get$denyAccess() {
+      return "Deny Access";
+    },
+    get$adminRequestedAccess() {
+      return "Admins asked to view your analytics.";
+    },
+    lastUpdated$1(time) {
+      return "Updated\n" + time;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4509,6 +4563,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_260", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Afatya6Q4Lfqmzpaj6lrE5e4Q0c=");
+})($__dart_deferred_initializers__, "cXWgWu+dQflw+64frMEC/UXVzzQ=");
 ;
 //# sourceMappingURL=main.dart.js_260.part.js.map
