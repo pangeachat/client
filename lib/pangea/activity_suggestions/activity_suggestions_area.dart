@@ -114,6 +114,13 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       final resp = await ActivitySearchRepo.get(_request).timeout(
         const Duration(seconds: 5),
         onTimeout: () {
+          if (mounted) {
+            setState(() {
+              _timeout = true;
+              _loading = false;
+            });
+          }
+
           Future.delayed(const Duration(seconds: 5), () {
             if (mounted) _setActivityItems(retries: retries + 1);
           });
@@ -129,11 +136,20 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
 
       // If activities are not successfully retrieved, try again
       if (_activityItems.isEmpty) {
+        if (mounted) {
+          setState(() {
+            _timeout = true;
+            _loading = false;
+          });
+        }
+
         Future.delayed(const Duration(seconds: 5), () {
           if (mounted) _setActivityItems(retries: retries + 1);
         });
 
-        return;
+        throw TimeoutException(
+          L10n.of(context).activitySuggestionTimeoutMessage,
+        );
       }
     } finally {
       // If activities are successfully retrieved, set timeout and loading to false
