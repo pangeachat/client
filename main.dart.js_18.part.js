@@ -4268,7 +4268,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bot settings";
     },
     get$activitySuggestionTimeoutMessage() {
-      return "We are working hard to generate activities for you, please check back in a minute";
+      return "We are working hard to generate more activities for you, please check back in a minute";
     },
     get$accessSettingsWarning() {
       return "Oops! It looks like you don't have permission to set the Access rules of this room. You should check these to make sure they're what you need and talk to a room admin if you need to change them";
@@ -4420,9 +4420,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorLaunchActivityMessage() {
       return "Failed to launch activity";
     },
-    get$errorFetchingActivitiesMessage() {
-      return "Failed to fetch activities";
-    },
     get$errorFetchingDefinition() {
       return "Failed to fetch definition";
     },
@@ -4530,6 +4527,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$loadingActivitySummary() {
       return "Loading activity summary...";
+    },
+    get$generatingNewActivities() {
+      return "You're the first user of this language pair! Please wait a moment, we're preparing activities just for you.";
     },
     get$requestAccessTitle() {
       return "Request to analytics view access?";
@@ -6352,6 +6352,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "vaxCKGJOkufYq2wO/TOrp00A4sQ=");
+})($__dart_deferred_initializers__, "F/GuFyMK3LJ8//YcakoyqLKyXiE=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map
