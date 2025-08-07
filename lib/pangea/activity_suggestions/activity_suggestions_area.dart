@@ -61,7 +61,10 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
     super.dispose();
   }
 
+  // _loading is true when _setActivityItems is currently requesting activities
   bool _loading = true;
+  // _timeout is true if 1+ round of _setActivityItems
+  // has occurred and no activities retrieved
   bool _timeout = false;
   bool get _isColumnMode => FluffyThemes.isColumnMode(context);
 
@@ -117,7 +120,6 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
           if (mounted) {
             setState(() {
               _timeout = true;
-              _loading = false;
             });
           }
 
@@ -139,7 +141,6 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         if (mounted) {
           setState(() {
             _timeout = true;
-            _loading = false;
           });
         }
 
@@ -229,7 +230,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       children: [
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: (_timeout || (!_loading && cards.isEmpty))
+          child: _timeout
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -237,21 +238,22 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ErrorIndicator(
-                        message: _timeout
-                            ? L10n.of(context).generatingNewActivities
-                            : L10n.of(context).errorFetchingActivitiesMessage,
+                        message: L10n.of(context).generatingNewActivities,
                       ),
-                      ElevatedButton(
-                        onPressed: _setActivityItems,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.colorScheme.primaryContainer,
-                          foregroundColor: theme.colorScheme.onPrimaryContainer,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12.0,
+                      if (_loading) const CircularProgressIndicator(),
+                      if (!_loading)
+                        ElevatedButton(
+                          onPressed: _setActivityItems,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: theme.colorScheme.primaryContainer,
+                            foregroundColor:
+                                theme.colorScheme.onPrimaryContainer,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0,
+                            ),
                           ),
+                          child: Text(L10n.of(context).tryAgain),
                         ),
-                        child: Text(L10n.of(context).tryAgain),
-                      ),
                     ],
                   ),
                 )
@@ -292,18 +294,24 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                                 .activitySuggestionTimeoutMessage,
                           ),
                         ),
-                      if (cards.length < 5)
-                        ElevatedButton(
-                          onPressed: _setActivityItems,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer,
-                            foregroundColor:
-                                theme.colorScheme.onPrimaryContainer,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12.0,
+                      if (cards.length < 5 && _loading)
+                        const CircularProgressIndicator(),
+                      if (cards.length < 5 && !_loading)
+                        Padding(
+                          padding: const EdgeInsetsGeometry.only(bottom: 16),
+                          child: ElevatedButton(
+                            onPressed: _setActivityItems,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                              ),
                             ),
+                            child: Text(L10n.of(context).tryAgain),
                           ),
-                          child: Text(L10n.of(context).tryAgain),
                         ),
                     ],
                   ),
