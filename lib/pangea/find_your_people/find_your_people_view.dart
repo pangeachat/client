@@ -20,10 +20,12 @@ class FindYourPeopleView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
+    // Treats web screens without enough space like mobile screens
+    final isWideColumnMode = MediaQuery.of(context).size.width >
+        FluffyThemes.columnWidth * 2.5 + FluffyThemes.navRailWidth;
 
     return Scaffold(
-      appBar: isColumnMode
+      appBar: isWideColumnMode
           ? null
           : AppBar(
               leading: IconButton(
@@ -64,7 +66,7 @@ class FindYourPeopleView extends StatelessWidget {
                 ),
               ],
             ),
-      floatingActionButton: isColumnMode
+      floatingActionButton: isWideColumnMode
           ? null
           : FloatingActionButton.extended(
               onPressed: () => context.push('/rooms/newspace'),
@@ -75,7 +77,7 @@ class FindYourPeopleView extends StatelessWidget {
               ),
             ),
       body: Padding(
-        padding: isColumnMode
+        padding: isWideColumnMode
             ? const EdgeInsets.symmetric(
                 horizontal: 24.0,
                 vertical: 20.0,
@@ -85,7 +87,7 @@ class FindYourPeopleView extends StatelessWidget {
           spacing: 16.0,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (isColumnMode)
+            if (isWideColumnMode)
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 16.0,
@@ -98,11 +100,11 @@ class FindYourPeopleView extends StatelessWidget {
               ),
             Expanded(
               child: Column(
-                spacing: isColumnMode ? 32.0 : 16.0,
+                spacing: isWideColumnMode ? 32.0 : 16.0,
                 children: [
                   Container(
                     height: 48.0,
-                    padding: isColumnMode
+                    padding: isWideColumnMode
                         ? const EdgeInsets.symmetric(horizontal: 12)
                         : null,
                     child: Row(
@@ -117,12 +119,12 @@ class FindYourPeopleView extends StatelessWidget {
                               onChanged: controller.onSearchEnter,
                               textInputAction: TextInputAction.search,
                               decoration: InputDecoration(
-                                filled: !isColumnMode,
-                                fillColor: isColumnMode
+                                filled: !isWideColumnMode,
+                                fillColor: isWideColumnMode
                                     ? null
                                     : theme.colorScheme.secondaryContainer,
                                 border: OutlineInputBorder(
-                                  borderSide: isColumnMode
+                                  borderSide: isWideColumnMode
                                       ? const BorderSide()
                                       : BorderSide.none,
                                   borderRadius: BorderRadius.circular(100),
@@ -148,7 +150,7 @@ class FindYourPeopleView extends StatelessWidget {
                             ),
                           ),
                         ),
-                        if (isColumnMode)
+                        if (isWideColumnMode)
                           TextButton(
                             child: Row(
                               children: [
@@ -170,7 +172,7 @@ class FindYourPeopleView extends StatelessWidget {
                             onPressed: () =>
                                 SpaceCodeUtil.joinWithSpaceCodeDialog(context),
                           ),
-                        if (isColumnMode)
+                        if (isWideColumnMode)
                           TextButton(
                             child: Row(
                               children: [
@@ -221,7 +223,7 @@ class FindYourPeopleView extends StatelessWidget {
                                       final space =
                                           controller.spaceItems[index];
                                       return Padding(
-                                        padding: isColumnMode
+                                        padding: isWideColumnMode
                                             ? const EdgeInsets.only(
                                                 bottom: 32.0,
                                               )
