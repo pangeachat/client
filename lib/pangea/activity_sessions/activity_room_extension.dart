@@ -294,13 +294,12 @@ extension ActivityRoomExtension on Room {
     });
   }
 
-  int? get numberOfParticipants {
-    return activityPlan?.req.numberOfParticipants;
-  }
-
   int get remainingRoles {
-    if (numberOfParticipants == null) return 0;
-    return max(0, numberOfParticipants! - (activityRoles?.roles.length ?? 0));
+    if (activityPlan == null) return 0;
+    return max(
+      0,
+      activityPlan!.roles.length - (activityRoles?.roles.length ?? 0),
+    );
   }
 
   bool get isHiddenActivityRoom =>
