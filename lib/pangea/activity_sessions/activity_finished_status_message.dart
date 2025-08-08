@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_results_carousel.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
@@ -48,6 +49,8 @@ class ActivityFinishedStatusMessageState
     super.didUpdateWidget(oldWidget);
     _setDefaultHighlightedRole();
   }
+
+  Map<String, ActivityRole> get _roles => widget.room.activityPlan?.roles ?? {};
 
   void _setExpanded(bool expanded) {
     if (mounted) setState(() => _expanded = expanded);
@@ -205,17 +208,25 @@ class ActivityFinishedStatusMessageState
                     alignment: WrapAlignment.center,
                     spacing: 12.0,
                     runSpacing: 12.0,
-                    children: rolesWithSummaries
-                        .map(
-                          (role) => ActivityParticipantIndicator(
-                            onTap: _highlightedRole == role
-                                ? null
-                                : () => _highlightRole(role),
-                            assignedRole: role,
-                            selected: _highlightedRole == role,
-                          ),
-                        )
-                        .toList(),
+                    children: rolesWithSummaries.map(
+                      (role) {
+                        final user =
+                            widget.room.getParticipants().firstWhereOrNull(
+                                  (u) => u.id == role.userId,
+                                );
+
+                        return ActivityParticipantIndicator(
+                          availableRole: _roles[role.id]!,
+                          avatarUrl: _roles[role.id]?.avatarUrl ??
+                              user?.avatarUrl?.toString(),
+                          onTap: _highlightedRole == role
+                              ? null
+                              : () => _highlightRole(role),
+                          assignedRole: role,
+                          selected: _highlightedRole == role,
+                        );
+                      },
+                    ).toList(),
                   ),
                   const SizedBox(height: 20.0),
                 ] else if (summary?.isLoading ?? false)

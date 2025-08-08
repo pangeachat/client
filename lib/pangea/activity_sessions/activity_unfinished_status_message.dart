@@ -53,8 +53,10 @@ class ActivityUnfinishedStatusMessageState
               runSpacing: 12.0,
               children: unassignedIds.map((id) {
                 return ActivityParticipantIndicator(
+                  availableRole: availableRoles[id]!,
                   selected: _selectedRoleId == id,
                   onTap: () => _selectRole(id),
+                  avatarUrl: availableRoles[id]?.avatarUrl,
                 );
               }).toList(),
             ),
