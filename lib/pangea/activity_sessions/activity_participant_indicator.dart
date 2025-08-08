@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 
 class ActivityParticipantIndicator extends StatelessWidget {
-  final bool selected;
-
-  final ActivityRoleModel? role;
-  final String? displayname;
+  final ActivityRoleModel? assignedRole;
 
   final VoidCallback? onTap;
+  final bool selected;
+  final double opacity;
 
   const ActivityParticipantIndicator({
     super.key,
+    this.assignedRole,
     this.selected = false,
-    this.role,
-    this.displayname,
     this.onTap,
+    this.opacity = 1.0,
   });
 
   @override
@@ -33,7 +34,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
           child: HoverBuilder(
             builder: (context, hovered) {
               return Opacity(
-                opacity: onTap == null ? 0.7 : 1.0,
+                opacity: opacity,
                 child: Container(
                   padding: const EdgeInsets.symmetric(
                     vertical: 4.0,
@@ -55,17 +56,19 @@ class ActivityParticipantIndicator extends StatelessWidget {
                         backgroundColor: theme.colorScheme.primaryContainer,
                       ),
                       Text(
-                        role?.role ?? L10n.of(context).participant,
+                        assignedRole?.role ?? L10n.of(context).participant,
                         style: const TextStyle(
                           fontSize: 12.0,
                         ),
                       ),
                       Text(
-                        displayname ?? L10n.of(context).openRoleLabel,
+                        assignedRole?.userId.localpart ??
+                            L10n.of(context).openRoleLabel,
                         style: TextStyle(
                           fontSize: 12.0,
-                          color: displayname?.lightColorAvatar ??
-                              role?.role?.lightColorAvatar,
+                          color: assignedRole
+                                  ?.userId.localpart?.lightColorAvatar ??
+                              assignedRole?.role?.lightColorAvatar,
                         ),
                       ),
                     ],

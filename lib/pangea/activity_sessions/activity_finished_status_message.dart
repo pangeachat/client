@@ -110,7 +110,7 @@ class ActivityFinishedStatusMessageState
     }
 
     final roles = widget.room.activityRoles;
-    return roles?.roles.where((role) {
+    return roles?.roles.values.where((role) {
           return widget.room.activitySummary!.summary!.participants.any(
             (p) => p.participantId == role.userId,
           );
@@ -202,6 +202,7 @@ class ActivityFinishedStatusMessageState
                     ),
                   const SizedBox(height: 8.0),
                   Wrap(
+                    alignment: WrapAlignment.center,
                     spacing: 12.0,
                     runSpacing: 12.0,
                     children: rolesWithSummaries
@@ -210,8 +211,7 @@ class ActivityFinishedStatusMessageState
                             onTap: _highlightedRole == role
                                 ? null
                                 : () => _highlightRole(role),
-                            role: role,
-                            displayname: role.userId.localpart,
+                            assignedRole: role,
                             selected: _highlightedRole == role,
                           ),
                         )

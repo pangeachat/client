@@ -14,9 +14,14 @@ class ActivityStateEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (event.room.activityPlan == null) {
+      return const SizedBox();
+    }
+
     try {
       final activity = ActivityPlanModel.fromJson(event.content);
-      final roles = event.room.activityRoles?.roles ?? [];
+      final availableRoles = event.room.activityPlan!.roles;
+      final assignedRoles = event.room.activityRoles?.roles ?? {};
 
       return Container(
         padding: const EdgeInsets.symmetric(
@@ -33,17 +38,18 @@ class ActivityStateEvent extends StatelessWidget {
               activity.markdown,
               style: const TextStyle(fontSize: 14.0),
             ),
-            if (roles.isNotEmpty)
-              Wrap(
-                spacing: 12.0,
-                runSpacing: 12.0,
-                children: roles.map((role) {
-                  return ActivityParticipantIndicator(
-                    role: role,
-                    displayname: role.userId.localpart,
-                  );
-                }).toList(),
-              ),
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 12.0,
+              runSpacing: 12.0,
+              children: availableRoles.values.map((availableRole) {
+                final assignedRole = assignedRoles[availableRole.id];
+                return ActivityParticipantIndicator(
+                  assignedRole: assignedRole,
+                  opacity: assignedRole == null ? 0.5 : 1.0,
+                );
+              }).toList(),
+            ),
           ],
         ),
       );
