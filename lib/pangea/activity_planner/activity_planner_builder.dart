@@ -102,6 +102,7 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
       instructions: instructionsController.text,
       vocab: vocab,
       imageURL: imageURL,
+      roles: widget.initialActivity.roles,
     );
   }
 

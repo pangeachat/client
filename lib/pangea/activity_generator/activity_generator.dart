@@ -191,6 +191,7 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
           instructions: activity.instructions,
           vocab: activity.vocab,
           imageURL: imageUrl,
+          roles: activity.roles,
         );
       }
     });
