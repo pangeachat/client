@@ -182,20 +182,24 @@ class Vocab {
 
 class Role {
   final String name;
+  final String? avatarUrl;
 
   Role({
     required this.name,
+    this.avatarUrl,
   });
 
   factory Role.fromJson(Map<String, dynamic> json) {
     return Role(
       name: json['name'],
+      avatarUrl: json['avatar_url'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'name': name,
+      'avatar_url': avatarUrl,
     };
   }
 }
