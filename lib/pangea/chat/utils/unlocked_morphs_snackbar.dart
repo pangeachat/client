@@ -229,21 +229,24 @@ class ConstructNotificationOverlayState
                               alignment: WrapAlignment.center,
                               crossAxisAlignment: WrapCrossAlignment.center,
                               children: [
-                                Text(
-                                  widget.copy ?? widget.construct.lemma,
-                                  style: TextStyle(
-                                    fontSize: FluffyThemes.isColumnMode(context)
-                                        ? 32.0
-                                        : 16.0,
-                                    color: AppConfig.gold,
-                                    fontWeight: FontWeight.bold,
+                                Flexible(
+                                  child: Text(
+                                    widget.copy ?? widget.construct.lemma,
+                                    style: TextStyle(
+                                      fontSize:
+                                          FluffyThemes.isColumnMode(context)
+                                              ? 22.0
+                                              : 16.0,
+                                      color: AppConfig.gold,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
                                 ),
                                 MorphIcon(
                                   size: isColumnMode
                                       ? null
-                                      : const Size(24.0, 24.0),
+                                      : const Size(22.0, 22.0),
                                   morphFeature:
                                       MorphFeaturesEnumExtension.fromString(
                                     widget.construct.category,
