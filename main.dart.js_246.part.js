@@ -4491,12 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$openRoleLabel() {
       return "OPEN";
     },
-    joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " joined as " + role;
-    },
-    finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " wrapped up this activity";
-    },
     get$endActivityTitle() {
       return "I'm Done";
     },
@@ -4516,7 +4510,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Loading activity summary...";
     },
     get$generatingNewActivities() {
-      return "You're the first user of this language pair! Please wait a moment, we're preparing activities just for you.";
+      return "You're the first user of this language pair! Please give us a minute, we're preparing activities just for you.";
     },
     get$requestAccessTitle() {
       return "Request to analytics view access?";
@@ -4563,6 +4557,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_246", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "V0R9iREPDQiQ5AMj/Vg7dN7Yoz4=");
+})($__dart_deferred_initializers__, "u6/ZjWnHIrr0joRJ3L4FDn+h6E0=");
 ;
 //# sourceMappingURL=main.dart.js_246.part.js.map
