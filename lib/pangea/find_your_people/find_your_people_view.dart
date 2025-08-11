@@ -197,6 +197,7 @@ class FindYourPeopleView extends StatelessWidget {
                                   Flexible(
                                     child: TextButton(
                                       child: Row(
+                                        mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Icon(
                                             Icons.add_box_outlined,
