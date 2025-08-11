@@ -90,6 +90,17 @@ class BackgroundPush {
         ),
         onDidReceiveNotificationResponse: goToRoom,
       );
+
+      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+        pushHelper(
+          PushNotification.fromJson(message.data),
+          client: client,
+          l10n: l10n,
+          activeRoomId: matrix?.activeRoomId,
+          flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
+        );
+      });
+
       Logs().v('Flutter Local Notifications initialized');
       firebase?.setListeners(
         onMessage: (message) => pushHelper(
@@ -105,6 +116,7 @@ class BackgroundPush {
         onNewToken: _newFcmToken,
         // Pangea#
       );
+
       if (Platform.isAndroid) {
         await UnifiedPush.initialize(
           onNewEndpoint: _newUpEndpoint,
