@@ -129,14 +129,18 @@ abstract class ClientManager {
         // #Pangea
         // The things in this list will be loaded in the first sync, without having
         // to postLoad to confirm that these state events are completely loaded
+        EventTypes.RoomPowerLevels,
+        EventTypes.RoomJoinRules,
+        EventTypes.RoomMember,
         PangeaEventTypes.rules,
         PangeaEventTypes.botOptions,
         PangeaEventTypes.capacity,
-        EventTypes.RoomPowerLevels,
         PangeaEventTypes.userSetLemmaInfo,
-        EventTypes.RoomJoinRules,
         PangeaEventTypes.activityPlan,
+        PangeaEventTypes.activityRole,
+        PangeaEventTypes.activitySummary,
         PangeaEventTypes.constructSummary,
+        PangeaEventTypes.activityRoomIds,
         // Pangea#
       },
       logLevel: kReleaseMode ? Level.warning : Level.verbose,
@@ -158,7 +162,6 @@ abstract class ClientManager {
       // #Pangea
       syncFilter: Filter(
         room: RoomFilter(
-          state: StateFilter(lazyLoadMembers: true),
           timeline: StateFilter(
             notTypes: [
               PangeaEventTypes.construct,

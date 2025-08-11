@@ -154,6 +154,7 @@ class ModelKey {
   static const String analytics = "analytics";
   static const String level = "level";
   static const String xpOffset = "xp_offset";
+  static const String analyticsRoomId = "analytics_room_id";
 
   // activity plan
   static const String activityPlanRequest = "req";
@@ -179,4 +180,5 @@ class ModelKey {
       "number_of_participants";
 
   static const String autoIGC = "auto_igc";
+  static const String roomIds = "room_ids";
 }

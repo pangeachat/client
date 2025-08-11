@@ -32,12 +32,14 @@ class ConstructNotificationUtil {
     }
   }
 
+  static final Set<String> _closedOverlays = {};
+
   static void onClose(ConstructIdentifier construct) {
     final overlayKey = "${construct.string}_snackbar";
+    if (_closedOverlays.contains(overlayKey)) return;
+    _closedOverlays.add(overlayKey);
     MatrixState.pAnyState.closeOverlay(overlayKey);
-
     MatrixState.pAnyState.activeOverlays.remove(overlayKey);
-
     unlockedConstructs.remove(construct);
     closeCompleter?.complete();
     closeCompleter = null;
@@ -147,14 +149,20 @@ class ConstructNotificationOverlayState
 
   @override
   void dispose() {
+    ConstructNotificationUtil.onClose(widget.construct);
     _controller?.dispose();
     super.dispose();
   }
 
   void _close() {
-    _controller?.reverse().then((_) {
+    if (_controller?.status == AnimationStatus.completed) {
+      //only animate closed if still mounted, not if navigating away
+      _controller?.reverse().then((_) {
+        ConstructNotificationUtil.onClose(widget.construct);
+      });
+    } else {
       ConstructNotificationUtil.onClose(widget.construct);
-    });
+    }
   }
 
   void _showDetails() {
@@ -225,7 +233,7 @@ class ConstructNotificationOverlayState
                                   widget.copy ?? widget.construct.lemma,
                                   style: TextStyle(
                                     fontSize: FluffyThemes.isColumnMode(context)
-                                        ? 32.0
+                                        ? 22.0
                                         : 16.0,
                                     color: AppConfig.gold,
                                     fontWeight: FontWeight.bold,
@@ -235,7 +243,7 @@ class ConstructNotificationOverlayState
                                 MorphIcon(
                                   size: isColumnMode
                                       ? null
-                                      : const Size(24.0, 24.0),
+                                      : const Size(22.0, 22.0),
                                   morphFeature:
                                       MorphFeaturesEnumExtension.fromString(
                                     widget.construct.category,

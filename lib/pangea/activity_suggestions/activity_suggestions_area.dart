@@ -7,18 +7,20 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_generator/media_enum.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_response.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
-import 'package:fluffychat/pangea/activity_planner/media_enum.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_plan_search_repo.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_dialog.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
@@ -26,12 +28,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivitySuggestionsArea extends StatefulWidget {
   final Axis? scrollDirection;
-  final Room? room;
+  final Room room;
 
   const ActivitySuggestionsArea({
     super.key,
     this.scrollDirection,
-    this.room,
+    required this.room,
   });
   @override
   ActivitySuggestionsAreaState createState() => ActivitySuggestionsAreaState();
@@ -61,7 +63,10 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
     super.dispose();
   }
 
+  // _loading is true when _setActivityItems is currently requesting activities
   bool _loading = true;
+  // _timeout is true if 1+ round of _setActivityItems
+  // has occurred and no activities retrieved
   bool _timeout = false;
   bool get _isColumnMode => FluffyThemes.isColumnMode(context);
 
@@ -103,10 +108,13 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
     }
 
     try {
-      setState(() {
-        _activityItems.clear();
-        _loading = true;
-      });
+      if (retries == 0) {
+        setState(() {
+          _activityItems.clear();
+          _loading = true;
+          _timeout = false;
+        });
+      }
 
       final resp = await ActivitySearchRepo.get(_request).timeout(
         const Duration(seconds: 5),
@@ -114,7 +122,6 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
           if (mounted) {
             setState(() {
               _timeout = true;
-              _loading = false;
             });
           }
 
@@ -130,9 +137,44 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         },
       );
       _activityItems.addAll(resp.activityPlans);
-      _timeout = false;
+
+      // If activities are not successfully retrieved, try again
+      if (_activityItems.isEmpty) {
+        if (mounted) {
+          setState(() {
+            _timeout = true;
+          });
+        }
+
+        Future.delayed(const Duration(seconds: 5), () {
+          if (mounted) _setActivityItems(retries: retries + 1);
+        });
+
+        throw TimeoutException(
+          L10n.of(context).activitySuggestionTimeoutMessage,
+        );
+      }
+    } catch (e, s) {
+      if (e is! TimeoutException) rethrow;
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'retries': retries,
+          'request': _request.toJson(),
+        },
+        level: SentryLevel.warning,
+      );
     } finally {
-      if (mounted) setState(() => _loading = false);
+      // If activities are successfully retrieved, set timeout and loading to false
+      if (mounted && _activityItems.isNotEmpty) {
+        setState(
+          () {
+            _loading = false;
+            _timeout = false;
+          },
+        );
+      }
     }
   }
 
@@ -173,7 +215,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                         builder: (controller) {
                           return ActivitySuggestionDialog(
                             controller: controller,
-                            buttonText: L10n.of(context).launchActivityButton,
+                            buttonText: L10n.of(context).saveAndLaunch,
                             replaceActivity: (a) =>
                                 _onReplaceActivity(index, a),
                           );
@@ -201,19 +243,22 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       children: [
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: (_timeout || !_loading && cards.isEmpty)
+          child: _timeout
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     spacing: 16.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ErrorIndicator(
-                        message: _timeout
-                            ? L10n.of(context).activitySuggestionTimeoutMessage
-                            : L10n.of(context).errorFetchingActivitiesMessage,
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(maxWidth: 300),
+                        child: Text(
+                          L10n.of(context).generatingNewActivities,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                      if (!_timeout)
+                      if (_loading) const CircularProgressIndicator(),
+                      if (!_loading)
                         ElevatedButton(
                           onPressed: _setActivityItems,
                           style: ElevatedButton.styleFrom(
@@ -231,31 +276,62 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                 )
               : Container(
                   decoration: const BoxDecoration(),
-                  child: scrollDirection == Axis.horizontal
-                      ? Scrollbar(
-                          thumbVisibility: true,
-                          controller: _scrollController,
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 16.0),
-                            child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      scrollDirection == Axis.horizontal
+                          ? Scrollbar(
+                              thumbVisibility: true,
                               controller: _scrollController,
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                spacing: 8.0,
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 16.0),
+                                child: SingleChildScrollView(
+                                  controller: _scrollController,
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    spacing: 8.0,
+                                    children: cards,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Wrap(
+                                alignment: WrapAlignment.spaceEvenly,
+                                runSpacing: 16.0,
+                                spacing: 4.0,
                                 children: cards,
                               ),
                             ),
-                          ),
-                        )
-                      : SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          child: Wrap(
-                            alignment: WrapAlignment.spaceEvenly,
-                            runSpacing: 16.0,
-                            spacing: 4.0,
-                            children: cards,
+                      if (cards.length < 5)
+                        Padding(
+                          padding: const EdgeInsetsGeometry.all(16.0),
+                          child: ErrorIndicator(
+                            message: L10n.of(context)
+                                .activitySuggestionTimeoutMessage,
                           ),
                         ),
+                      if (cards.length < 5 && _loading)
+                        const CircularProgressIndicator(),
+                      if (cards.length < 5 && !_loading)
+                        Padding(
+                          padding: const EdgeInsetsGeometry.only(bottom: 16),
+                          child: ElevatedButton(
+                            onPressed: _setActivityItems,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                              ),
+                            ),
+                            child: Text(L10n.of(context).tryAgain),
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
         ),
       ],

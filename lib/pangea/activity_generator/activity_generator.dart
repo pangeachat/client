@@ -6,14 +6,14 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_generator/activity_generator_view.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_mode_list_repo.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_generation_repo.dart';
+import 'package:fluffychat/pangea/activity_generator/activity_mode_list_repo.dart';
+import 'package:fluffychat/pangea/activity_generator/activity_plan_generation_repo.dart';
+import 'package:fluffychat/pangea/activity_generator/learning_objective_list_repo.dart';
+import 'package:fluffychat/pangea/activity_generator/list_request_schema.dart';
+import 'package:fluffychat/pangea/activity_generator/media_enum.dart';
+import 'package:fluffychat/pangea/activity_generator/topic_list_repo.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
-import 'package:fluffychat/pangea/activity_planner/learning_objective_list_repo.dart';
-import 'package:fluffychat/pangea/activity_planner/list_request_schema.dart';
-import 'package:fluffychat/pangea/activity_planner/media_enum.dart';
-import 'package:fluffychat/pangea/activity_planner/topic_list_repo.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestions_constants.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
@@ -21,9 +21,9 @@ import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_en
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityGenerator extends StatefulWidget {
-  final String? roomID;
+  final String roomID;
   const ActivityGenerator({
-    this.roomID,
+    required this.roomID,
     super.key,
   });
 
@@ -53,6 +53,7 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
   @override
   void initState() {
     super.initState();
+
     selectedLanguageOfInstructions =
         MatrixState.pangeaController.languageController.userL1?.langCode;
     selectedTargetLanguage =
@@ -96,9 +97,7 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
   Future<List<ActivitySettingResponseSchema>> get objectiveItems =>
       LearningObjectiveListRepo.get(req);
 
-  Room? get room => widget.roomID != null
-      ? Matrix.of(context).client.getRoomById(widget.roomID!)
-      : null;
+  Room? get room => Matrix.of(context).client.getRoomById(widget.roomID);
 
   String? validateNotNull(String? value) {
     if (value == null || value.isEmpty) {
@@ -192,6 +191,7 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
           instructions: activity.instructions,
           vocab: activity.vocab,
           imageURL: imageUrl,
+          roles: activity.roles,
         );
       }
     });

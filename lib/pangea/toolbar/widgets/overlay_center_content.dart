@@ -98,7 +98,6 @@ class OverlayCenterContent extends StatelessWidget {
                   chatController,
                 ),
               ),
-              // ),
             ],
           ),
         ),
