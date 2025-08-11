@@ -166,65 +166,54 @@ class FindYourPeopleView extends StatelessWidget {
                               ),
                             ),
                             if (isColumnMode)
-                              Row(
+                              TextButton(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.join_full,
+                                      color:
+                                          theme.colorScheme.onPrimaryContainer,
+                                      size: 24.0,
+                                    ),
+                                    const SizedBox(width: 8.0),
+                                    Text(
+                                      L10n.of(context).joinWithCode,
+                                      style: TextStyle(
+                                        color: theme
+                                            .colorScheme.onPrimaryContainer,
+                                        fontSize: 16.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                onPressed: () =>
+                                    SpaceCodeUtil.joinWithSpaceCodeDialog(
+                                  context,
+                                ),
+                              ),
+                            TextButton(
+                              child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  TextButton(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.join_full,
-                                          color: theme
-                                              .colorScheme.onPrimaryContainer,
-                                          size: 24.0,
-                                        ),
-                                        const SizedBox(width: 8.0),
-                                        Text(
-                                          L10n.of(context).joinWithCode,
-                                          style: TextStyle(
-                                            color: theme
-                                                .colorScheme.onPrimaryContainer,
-                                            fontSize: 16.0,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    onPressed: () =>
-                                        SpaceCodeUtil.joinWithSpaceCodeDialog(
-                                      context,
-                                    ),
+                                  Icon(
+                                    Icons.add_box_outlined,
+                                    color: theme.colorScheme.onPrimaryContainer,
+                                    size: 24.0,
                                   ),
-                                  Flexible(
-                                    child: TextButton(
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Icon(
-                                            Icons.add_box_outlined,
-                                            color: theme
-                                                .colorScheme.onPrimaryContainer,
-                                            size: 24.0,
-                                          ),
-                                          const SizedBox(width: 8.0),
-                                          Flexible(
-                                            child: Text(
-                                              L10n.of(context).createYourSpace,
-                                              style: TextStyle(
-                                                color: theme.colorScheme
-                                                    .onPrimaryContainer,
-                                                fontSize: 16.0,
-                                              ),
-                                              overflow: TextOverflow.ellipsis,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      onPressed: () =>
-                                          context.push('/rooms/newspace'),
+                                  const SizedBox(width: 8.0),
+                                  Text(
+                                    L10n.of(context).createYourSpace,
+                                    style: TextStyle(
+                                      color:
+                                          theme.colorScheme.onPrimaryContainer,
+                                      fontSize: 16.0,
                                     ),
                                   ),
                                 ],
                               ),
+                              onPressed: () => context.push('/rooms/newspace'),
+                            ),
                           ],
                         ),
                       );
