@@ -194,28 +194,33 @@ class FindYourPeopleView extends StatelessWidget {
                                       context,
                                     ),
                                   ),
-                                  TextButton(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.add_box_outlined,
-                                          color: theme
-                                              .colorScheme.onPrimaryContainer,
-                                          size: 24.0,
-                                        ),
-                                        const SizedBox(width: 8.0),
-                                        Text(
-                                          L10n.of(context).createYourSpace,
-                                          style: TextStyle(
+                                  Flexible(
+                                    child: TextButton(
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.add_box_outlined,
                                             color: theme
                                                 .colorScheme.onPrimaryContainer,
-                                            fontSize: 16.0,
+                                            size: 24.0,
                                           ),
-                                        ),
-                                      ],
+                                          const SizedBox(width: 8.0),
+                                          Flexible(
+                                            child: Text(
+                                              L10n.of(context).createYourSpace,
+                                              style: TextStyle(
+                                                color: theme.colorScheme
+                                                    .onPrimaryContainer,
+                                                fontSize: 16.0,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      onPressed: () =>
+                                          context.push('/rooms/newspace'),
                                     ),
-                                    onPressed: () =>
-                                        context.push('/rooms/newspace'),
                                   ),
                                 ],
                               ),
