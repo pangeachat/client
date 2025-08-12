@@ -123,11 +123,13 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
       return;
     }
 
-    setState(() {
-      topicController.text = selectedTopic;
-      objectiveController.text = selectedObjective;
-      modeController.text = selectedMode;
-    });
+    if (mounted) {
+      setState(() {
+        topicController.text = selectedTopic;
+        objectiveController.text = selectedObjective;
+        modeController.text = selectedMode;
+      });
+    }
   }
 
   void clearSelections() async {
@@ -169,24 +171,33 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
 
   Future<void> _setTopic() async {
     final topic = await TopicListRepo.get(req);
-    setState(() {
-      topicItems = topic;
-    });
+
+    if (mounted) {
+      setState(() {
+        topicItems = topic;
+      });
+    }
   }
 
   Future<void> _setMode() async {
     final mode = await ActivityModeListRepo.get(req);
-    setState(() {
-      modeItems = mode;
-    });
-    _setModeImageURL();
+
+    if (mounted) {
+      setState(() {
+        modeItems = mode;
+      });
+      _setModeImageURL();
+    }
   }
 
   Future<void> _setObjective() async {
     final objective = await LearningObjectiveListRepo.get(req);
-    setState(() {
-      objectiveItems = objective;
-    });
+
+    if (mounted) {
+      setState(() {
+        objectiveItems = objective;
+      });
+    }
   }
 
   Future<void> _setModeImageURL() async {
