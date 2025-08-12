@@ -1,4 +1,6 @@
-import 'dart:typed_data';
+import 'dart:math';
+
+import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
@@ -12,6 +14,7 @@ import 'package:fluffychat/pangea/activity_summary/activity_summary_repo.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/download_chat.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
@@ -54,7 +57,7 @@ extension ActivityRoomExtension on Room {
 
   Future<void> continueActivity() async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
-    final role = currentRoles.role(client.userID!);
+    final role = ownRole;
     if (role == null || !role.isFinished) return;
 
     role.finishedAt = null; // Reset finished state
@@ -74,7 +77,7 @@ extension ActivityRoomExtension on Room {
     }
 
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
-    final role = currentRoles.role(client.userID!);
+    final role = ownRole;
     if (role == null || role.isFinished) return;
     role.finishedAt = DateTime.now();
     currentRoles.updateRole(role);
@@ -100,7 +103,7 @@ extension ActivityRoomExtension on Room {
 
   Future<void> archiveActivity() async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
-    final role = currentRoles.role(client.userID!);
+    final role = ownRole;
     if (role == null || !role.isFinished) return;
 
     role.archivedAt = DateTime.now();
@@ -241,16 +244,26 @@ extension ActivityRoomExtension on Room {
     try {
       return ActivityRolesModel.fromJson(content);
     } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "roomID": id,
-          "stateEvent": content,
-        },
-      );
+      if (!kDebugMode && !Environment.isStagingEnvironment) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {
+            "roomID": id,
+            "stateEvent": content,
+          },
+        );
+      }
       return null;
     }
+  }
+
+  ActivityRoleModel? get ownRole => activityRoles?.role(client.userID!);
+
+  int get remainingRoles {
+    final availableRoles = activityPlan!.roles;
+    final assignedRoles = activityRoles?.roles ?? {};
+    return max(0, availableRoles.length - assignedRoles.length);
   }
 
   bool get showActivityChatUI {
@@ -261,18 +274,17 @@ extension ActivityRoomExtension on Room {
 
   bool get isActiveInActivity {
     if (!showActivityChatUI) return false;
-    final role = activityRoles?.role(client.userID!);
+    final role = ownRole;
     return role != null && !role.isFinished;
   }
 
   bool get isInactiveInActivity {
     if (!showActivityChatUI) return false;
-    final role = activityRoles?.role(client.userID!);
+    final role = ownRole;
     return role == null || role.isFinished;
   }
 
-  bool get hasCompletedActivity =>
-      activityRoles?.role(client.userID!)?.isFinished ?? false;
+  bool get hasCompletedActivity => ownRole?.isFinished ?? false;
 
   bool get activityIsFinished {
     final roles = activityRoles?.roles.values.where(
@@ -292,6 +304,5 @@ extension ActivityRoomExtension on Room {
     });
   }
 
-  bool get isHiddenActivityRoom =>
-      activityRoles?.role(client.userID!)?.isArchived ?? false;
+  bool get isHiddenActivityRoom => ownRole?.isArchived ?? false;
 }
