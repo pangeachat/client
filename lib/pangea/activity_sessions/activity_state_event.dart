@@ -46,7 +46,8 @@ class ActivityStateEvent extends StatelessWidget {
               activity.markdown,
               style: const TextStyle(fontSize: 14.0),
             ),
-            if (event.room.ownRole != null) ...[
+            if (event.room.ownRole != null ||
+                event.room.remainingRoles == 0) ...[
               Wrap(
                 alignment: WrapAlignment.center,
                 spacing: 12.0,

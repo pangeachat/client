@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
@@ -257,6 +259,12 @@ extension ActivityRoomExtension on Room {
   }
 
   ActivityRoleModel? get ownRole => activityRoles?.role(client.userID!);
+
+  int get remainingRoles {
+    final availableRoles = activityPlan!.roles;
+    final assignedRoles = activityRoles?.roles ?? {};
+    return max(0, availableRoles.length - assignedRoles.length);
+  }
 
   bool get showActivityChatUI {
     return activityPlan != null &&
