@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_results_carousel.dart';
@@ -14,104 +14,65 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class ActivityFinishedStatusMessage extends StatefulWidget {
-  final Room room;
+class ActivityFinishedStatusMessage extends StatelessWidget {
+  final ChatController controller;
 
   const ActivityFinishedStatusMessage({
     super.key,
-    required this.room,
+    required this.controller,
   });
 
-  @override
-  ActivityFinishedStatusMessageState createState() =>
-      ActivityFinishedStatusMessageState();
-}
-
-class ActivityFinishedStatusMessageState
-    extends State<ActivityFinishedStatusMessage> {
-  ActivityRoleModel? _highlightedRole;
-
-  @override
-  void initState() {
-    super.initState();
-    _setDefaultHighlightedRole();
-
-    if (widget.room.activityIsFinished && widget.room.activitySummary == null) {
-      widget.room.fetchSummaries();
-    }
-  }
-
-  @override
-  void didUpdateWidget(ActivityFinishedStatusMessage oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _setDefaultHighlightedRole();
-  }
-
-  Map<String, ActivityRole> get _roles => widget.room.activityPlan?.roles ?? {};
-
-  int get _hightlightedRoleIndex {
-    if (_highlightedRole == null) {
-      return -1; // No highlighted role
-    }
-    return _rolesWithSummaries.indexOf(_highlightedRole!);
-  }
-
-  void _setDefaultHighlightedRole() {
-    if (_hightlightedRoleIndex >= 0) return;
-
-    final roles = _rolesWithSummaries;
-    _highlightedRole = roles.firstWhereOrNull(
-      (r) => r.userId == widget.room.client.userID,
-    );
-
-    if (_highlightedRole == null && roles.isNotEmpty) {
-      _highlightedRole = roles.first;
-    }
-
-    if (mounted) setState(() {});
-  }
-
-  void _highlightRole(ActivityRoleModel role) {
-    if (mounted) setState(() => _highlightedRole = role);
-  }
+  Map<String, ActivityRole> get _roles =>
+      controller.room.activityPlan?.roles ?? {};
 
   Future<void> _archiveToAnalytics() async {
-    await widget.room.archiveActivity();
+    await controller.room.archiveActivity();
     await MatrixState.pangeaController.putAnalytics
-        .sendActivityAnalytics(widget.room.id);
+        .sendActivityAnalytics(controller.room.id);
   }
 
   List<ActivityRoleModel> get _rolesWithSummaries {
-    if (widget.room.activitySummary?.summary == null) {
+    if (controller.room.activitySummary?.summary == null) {
       return <ActivityRoleModel>[];
     }
 
-    final roles = widget.room.activityRoles;
+    final roles = controller.room.activityRoles;
     return roles?.roles.values.where((role) {
-          return widget.room.activitySummary!.summary!.participants.any(
+          return controller.room.activitySummary!.summary!.participants.any(
             (p) => p.participantId == role.userId,
           );
         }).toList() ??
         [];
   }
 
+  ActivityRoleModel? get _highlightedRole {
+    if (controller.highlightedRole != null) {
+      return controller.highlightedRole;
+    }
+
+    return _rolesWithSummaries.firstWhereOrNull(
+      (r) => r.userId == controller.room.client.userID,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    if (!widget.room.showActivityChatUI || !widget.room.activityIsFinished) {
+    if (!controller.room.showActivityChatUI ||
+        !controller.room.activityIsFinished) {
       return const SizedBox.shrink();
     }
 
-    final summary = widget.room.activitySummary;
+    final summary = controller.room.activitySummary;
 
     final theme = Theme.of(context);
 
-    final user = widget.room.getParticipants().firstWhereOrNull(
+    final user = controller.room.getParticipants().firstWhereOrNull(
           (u) => u.id == _highlightedRole?.userId,
         );
 
     final userSummary =
-        widget.room.activitySummary?.summary?.participants.firstWhereOrNull(
-      (p) => p.participantId == _highlightedRole!.userId,
+        controller.room.activitySummary?.summary?.participants.firstWhereOrNull(
+      (p) => p.participantId == _highlightedRole?.userId,
     );
 
     return AnimatedSize(
@@ -141,40 +102,55 @@ class ActivityFinishedStatusMessageState
                     ),
                   ),
                 ),
+                const SizedBox(height: 16.0),
                 if (_highlightedRole != null && userSummary != null)
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: ActivityResultsCarousel(
-                      selectedRole: _highlightedRole!,
-                      user: user,
-                      summary: userSummary,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(24.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.surfaceContainer,
+                      ),
+                      child: Column(
+                        children: [
+                          ActivityResultsCarousel(
+                            selectedRole: _highlightedRole!,
+                            user: user,
+                            summary: userSummary,
+                          ),
+                          Wrap(
+                            alignment: WrapAlignment.center,
+                            children: _rolesWithSummaries.map(
+                              (role) {
+                                final user = controller.room
+                                    .getParticipants()
+                                    .firstWhereOrNull(
+                                      (u) => u.id == role.userId,
+                                    );
+
+                                return IntrinsicWidth(
+                                  child: ActivityParticipantIndicator(
+                                    availableRole: _roles[role.id]!,
+                                    avatarUrl: _roles[role.id]?.avatarUrl ??
+                                        user?.avatarUrl?.toString(),
+                                    onTap: _highlightedRole == role
+                                        ? null
+                                        : () => controller.highlightRole(role),
+                                    assignedRole: role,
+                                    selected: _highlightedRole == role,
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8.0,
+                                      horizontal: 24.0,
+                                    ),
+                                    borderRadius: BorderRadius.zero,
+                                  ),
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                const SizedBox(height: 8.0),
-                Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 12.0,
-                  runSpacing: 12.0,
-                  children: _rolesWithSummaries.map(
-                    (role) {
-                      final user =
-                          widget.room.getParticipants().firstWhereOrNull(
-                                (u) => u.id == role.userId,
-                              );
-
-                      return ActivityParticipantIndicator(
-                        availableRole: _roles[role.id]!,
-                        avatarUrl: _roles[role.id]?.avatarUrl ??
-                            user?.avatarUrl?.toString(),
-                        onTap: _highlightedRole == role
-                            ? null
-                            : () => _highlightRole(role),
-                        assignedRole: role,
-                        selected: _highlightedRole == role,
-                      );
-                    },
-                  ).toList(),
-                ),
                 const SizedBox(height: 20.0),
               ] else if (summary?.isLoading ?? false)
                 Padding(
@@ -210,13 +186,13 @@ class ActivityFinishedStatusMessageState
                         ],
                       ),
                       TextButton(
-                        onPressed: () => widget.room.fetchSummaries(),
+                        onPressed: () => controller.room.fetchSummaries(),
                         child: Text(L10n.of(context).requestSummaries),
                       ),
                     ],
                   ),
                 ),
-              if (!widget.room.isHiddenActivityRoom)
+              if (!controller.room.isHiddenActivityRoom)
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(

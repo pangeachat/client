@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 
@@ -21,18 +22,26 @@ class ActivityResultsCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
     return Container(
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceContainer,
-        borderRadius: BorderRadius.circular(24.0),
+        color: theme.colorScheme.surfaceContainerHighest,
       ),
       padding: const EdgeInsets.all(12.0),
+      alignment: Alignment.centerLeft,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            summary.feedback,
-            style: const TextStyle(fontSize: 12.0),
+          SizedBox(
+            height: isColumnMode ? 80.0 : 125.0,
+            child: SingleChildScrollView(
+              child: Text(
+                summary.feedback,
+                style: const TextStyle(fontSize: 12.0),
+              ),
+            ),
           ),
           const SizedBox(height: 10.0),
           Wrap(

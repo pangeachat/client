@@ -125,7 +125,7 @@ class ChatEventList extends StatelessWidget {
 
             // #Pangea
             if (i == 1) {
-              return ActivityFinishedStatusMessage(room: controller.room);
+              return ActivityFinishedStatusMessage(controller: controller);
             }
             // Pangea#
 
