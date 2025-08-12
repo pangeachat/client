@@ -3935,7 +3935,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Nivel CEFR";
     },
     get$generateActivitiesButton() {
-      return "Generar Actividades";
+      return "Generate Activity";
     },
     get$launchActivityButton() {
       return "Iniciar Actividad";
@@ -4561,6 +4561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_196", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "nAZgXH6kl4IAHlnryzx6+FX0vgc=");
+})($__dart_deferred_initializers__, "oF+JM/JEesiCCGMao/M6UjnXoOo=");
 ;
 //# sourceMappingURL=main.dart.js_196.part.js.map
