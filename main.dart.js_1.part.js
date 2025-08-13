@@ -4498,12 +4498,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$openRoleLabel() {
       return "OPEN";
     },
-    joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " joined as " + role;
-    },
-    finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " wrapped up this activity";
-    },
     get$endActivityTitle() {
       return "I'm done";
     },
@@ -6061,6 +6055,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "4ZuXko9OUBSsLbMVO9cLSRY05O8=");
+})($__dart_deferred_initializers__, "mkw9plexcX7+UiSxAicwiP9+44Y=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
