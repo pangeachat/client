@@ -17,15 +17,10 @@ extension RoomInformationRoomExtension on Room {
                 ));
   }
 
-  Future<bool> get botIsInRoom async {
-    final List<User> participants = await requestParticipants();
-    return participants.any(
+  bool get isBotChat {
+    return getParticipants().any(
       (User user) => user.id == BotName.byEnvironment,
     );
-  }
-
-  Future<bool> get isBotDM async {
-    return botOptions?.mode == BotMode.directChat && await botIsInRoom;
   }
 
   bool isAnalyticsRoomOfUser(String userId) =>

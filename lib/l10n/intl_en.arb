@@ -5193,5 +5193,7 @@
     }
   },
   "noDataFound": "No data found",
-  "activityFinishedMessage": "All Finished!"
+  "activityFinishedMessage": "All Finished!",
+  "addBot": "Add bot",
+  "kickBot": "Kick bot"
 }

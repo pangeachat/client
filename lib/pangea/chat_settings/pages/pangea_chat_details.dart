@@ -12,6 +12,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
@@ -397,23 +398,41 @@ class RoomDetailsButtonRowState extends State<RoomDetailsButtonRow> {
         visible: room.ownPowerLevel >= 50 && !room.isSpace && kIsWeb,
         showInMainView: false,
       ),
-      ButtonDetails(
-        title: l10n.botSettings,
-        icon: const BotFace(
-          width: 30.0,
-          expression: BotExpression.idle,
-        ),
-        onPressed: () => showDialog<BotOptionsModel?>(
-          context: context,
-          builder: (BuildContext context) => ConversationBotSettingsDialog(
-            room: room,
-            onSubmit: widget.controller.setBotOptions,
-          ),
-        ),
-        visible: !room.isSpace &&
-            (!room.isDirectChat || room.botOptions != null) &&
-            room.canInvite,
-      ),
+      room.showActivityChatUI
+          ? ButtonDetails(
+              title: widget.room.isBotChat ? l10n.kickBot : l10n.addBot,
+              icon: const BotFace(
+                width: 30.0,
+                expression: BotExpression.idle,
+              ),
+              onPressed: () {
+                showFutureLoadingDialog(
+                  context: context,
+                  future: () => widget.room.isBotChat
+                      ? widget.room.kick(BotName.byEnvironment)
+                      : widget.room.invite(BotName.byEnvironment),
+                );
+              },
+              visible: room.canInvite,
+            )
+          : ButtonDetails(
+              title: l10n.botSettings,
+              icon: const BotFace(
+                width: 30.0,
+                expression: BotExpression.idle,
+              ),
+              onPressed: () => showDialog<BotOptionsModel?>(
+                context: context,
+                builder: (BuildContext context) =>
+                    ConversationBotSettingsDialog(
+                  room: room,
+                  onSubmit: widget.controller.setBotOptions,
+                ),
+              ),
+              visible: !room.isSpace &&
+                  (!room.isDirectChat || room.botOptions != null) &&
+                  room.canInvite,
+            ),
       ButtonDetails(
         title: l10n.chatCapacity,
         icon: const Icon(Icons.reduce_capacity, size: 30.0),

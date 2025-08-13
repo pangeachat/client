@@ -134,9 +134,7 @@ class ConversationBotSettingsDialogState
     botOptions.targetLanguage ??=
         MatrixState.pangeaController.languageController.userL2?.langCode;
 
-    widget.room.botIsInRoom.then((bool isBotRoom) {
-      setState(() => addBot = isBotRoom);
-    });
+    addBot = widget.room.isBotChat;
     hasPermission =
         widget.room.powerForChangingStateEvent(PangeaEventTypes.botOptions) <=
             widget.room.ownPowerLevel;
@@ -277,7 +275,7 @@ class ConversationBotSettingsDialogState
                       future: () async => widget.onSubmit(botOptions),
                     );
 
-                    final bool isBotRoomMember = await widget.room.botIsInRoom;
+                    final bool isBotRoomMember = widget.room.isBotChat;
                     if (addBot && !isBotRoomMember) {
                       await widget.room.invite(BotName.byEnvironment);
                     } else if (!addBot && isBotRoomMember) {
