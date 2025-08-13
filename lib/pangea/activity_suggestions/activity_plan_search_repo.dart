@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
@@ -29,11 +31,8 @@ class ActivitySearchRepo {
         _activityPlanStorage.remove(storageKey);
       }
 
-      if (cached != null) {
-        return ResponseWrapper(
-          response: cached.response,
-          statusCode: cached.statusCode,
-        );
+      if (cached is ResponseWrapper) {
+        return cached;
       }
     }
 
@@ -42,12 +41,23 @@ class ActivitySearchRepo {
       accessToken: MatrixState.pangeaController.userController.accessToken,
     );
 
-    final Response res = await req.post(
-      url: PApiUrls.activityPlanSearch,
-      body: request.toJson(),
-    );
+    Response? res;
+    try {
+      res = await req.post(
+        url: PApiUrls.activityPlanSearch,
+        body: request.toJson(),
+      );
+    } catch (err) {
+      debugPrint("err: $err, err is http response: ${err is Response}");
+      if (err is Response) {
+        return ResponseWrapper(
+          response: ActivityPlanResponse(activityPlans: []),
+          statusCode: err.statusCode,
+        );
+      }
+    }
 
-    final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
+    final decodedBody = jsonDecode(utf8.decode(res!.bodyBytes));
     final response = ActivityPlanResponse.fromJson(decodedBody);
     final wrappedResponse =
         ResponseWrapper(response: response, statusCode: res.statusCode);

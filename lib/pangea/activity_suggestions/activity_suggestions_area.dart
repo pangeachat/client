@@ -67,7 +67,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
   // _timeout is true if 1+ round of _setActivityItems
   // has occurred and no activities retrieved
   bool _timeout = false;
-  bool _error = false;
+  int _error = 0;
 
   bool get _isColumnMode => FluffyThemes.isColumnMode(context);
 
@@ -109,7 +109,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
     }
 
     try {
-      if (retries == 0) {
+      if (retries == 0 && mounted) {
         setState(() {
           _activityItems.clear();
           _loading = true;
@@ -166,14 +166,13 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
           return;
 
         case < 200 || >= 300: // Activities cannot be successfully retrieved
-          if (mounted) setState(() => _error = true);
-          return;
-
-        default:
+          debugPrint("Activity search error: status code ${resp.statusCode}");
+          if (mounted) setState(() => _error = resp.statusCode);
           return;
       }
+    } on TimeoutException {
+      rethrow;
     } catch (e, s) {
-      if (e is! TimeoutException) rethrow;
       ErrorHandler.logError(
         e: e,
         s: s,
@@ -183,7 +182,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         },
         level: SentryLevel.warning,
       );
-    } finally {}
+    }
   }
 
   void _onReplaceActivity(int index, ActivityPlanModel a) {
@@ -252,7 +251,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       children: [
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: _timeout || _error
+          child: _timeout || _error != 0
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -262,14 +261,19 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 300),
                         child: Text(
-                          _error
-                              ? L10n.of(context).errorFetchingActivitiesMessage
+                          _error != 0
+                              ? _error == 401
+                                  ? L10n.of(context)
+                                      .activitySearchNoSubscription
+                                  : L10n.of(context)
+                                      .errorFetchingActivitiesMessage
                               : L10n.of(context).generatingNewActivities,
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      if (_loading) const CircularProgressIndicator(),
-                      if (!_loading && !_error)
+                      if (_loading && _error == 0)
+                        const CircularProgressIndicator(),
+                      if (!_loading && _error == 0)
                         ElevatedButton(
                           onPressed: _setActivityItems,
                           style: ElevatedButton.styleFrom(

@@ -5193,5 +5193,6 @@
     }
   },
   "noDataFound": "No data found",
-  "activityFinishedMessage": "All Finished!"
+  "activityFinishedMessage": "All Finished!",
+  "activitySearchNoSubscription": "No subscription"
 }
