@@ -232,12 +232,8 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     spacing: 16.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ConstrainedBox(
-                        constraints: const BoxConstraints(maxWidth: 300),
-                        child: Text(
-                          _status.message(L10n.of(context)),
-                          textAlign: TextAlign.center,
-                        ),
+                      ErrorIndicator(
+                        message: _status.message(L10n.of(context)),
                       ),
                       if (_loading && _status == ActivitySearchEnum.timeout)
                         const CircularProgressIndicator(),
