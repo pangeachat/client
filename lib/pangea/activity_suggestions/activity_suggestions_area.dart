@@ -126,7 +126,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
             if (mounted) _setActivityItems(retries: retries + 1);
           });
 
-          return Future<ResponseWrapper>.error(
+          return Future<ActivityPlanResponseWrapper>.error(
             TimeoutException(
               L10n.of(context).activitySuggestionTimeoutMessage,
             ),
@@ -166,7 +166,6 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
           return;
 
         case < 200 || >= 300: // Activities cannot be successfully retrieved
-          debugPrint("Activity search error: status code ${resp.statusCode}");
           if (mounted) setState(() => _error = resp.statusCode);
           return;
       }

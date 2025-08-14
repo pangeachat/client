@@ -78,7 +78,7 @@ class Requests {
   Uri _uriBuilder(url) =>
       baseUrl != null ? Uri.parse(baseUrl! + url) : Uri.parse(url);
 
-  addBreadcrumb(
+  void addBreadcrumb(
     http.Response response, {
     Map<dynamic, dynamic>? body,
     String? objectId,

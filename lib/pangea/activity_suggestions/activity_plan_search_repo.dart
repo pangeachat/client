@@ -16,22 +16,27 @@ class ActivitySearchRepo {
   static final GetStorage _activityPlanStorage =
       GetStorage('activity_plan_search_storage');
 
-  static void set(String storageKey, ResponseWrapper wrappedResponse) {
+  static void set(
+    String storageKey,
+    ActivityPlanResponseWrapper wrappedResponse,
+  ) {
     _activityPlanStorage.write(storageKey, wrappedResponse.toJson());
   }
 
-  static Future<ResponseWrapper> get(ActivityPlanRequest request) async {
+  static Future<ActivityPlanResponseWrapper> get(
+    ActivityPlanRequest request,
+  ) async {
     final storageKey = "${request.storageKey}_wrapper";
     final cachedJson = _activityPlanStorage.read(storageKey);
     if (cachedJson != null) {
-      ResponseWrapper? cached;
+      ActivityPlanResponseWrapper? cached;
       try {
-        cached = ResponseWrapper.fromJson(cachedJson);
+        cached = ActivityPlanResponseWrapper.fromJson(cachedJson);
       } catch (e) {
         _activityPlanStorage.remove(storageKey);
       }
 
-      if (cached is ResponseWrapper) {
+      if (cached is ActivityPlanResponseWrapper) {
         return cached;
       }
     }
@@ -50,7 +55,7 @@ class ActivitySearchRepo {
     } catch (err) {
       debugPrint("err: $err, err is http response: ${err is Response}");
       if (err is Response) {
-        return ResponseWrapper(
+        return ActivityPlanResponseWrapper(
           response: ActivityPlanResponse(activityPlans: []),
           statusCode: err.statusCode,
         );
@@ -59,8 +64,10 @@ class ActivitySearchRepo {
 
     final decodedBody = jsonDecode(utf8.decode(res!.bodyBytes));
     final response = ActivityPlanResponse.fromJson(decodedBody);
-    final wrappedResponse =
-        ResponseWrapper(response: response, statusCode: res.statusCode);
+    final wrappedResponse = ActivityPlanResponseWrapper(
+      response: response,
+      statusCode: res.statusCode,
+    );
 
     if (res.statusCode == 200) {
       set(storageKey, wrappedResponse);
@@ -70,17 +77,17 @@ class ActivitySearchRepo {
   }
 }
 
-class ResponseWrapper {
+class ActivityPlanResponseWrapper {
   final ActivityPlanResponse response;
   final int statusCode;
 
-  ResponseWrapper({
+  ActivityPlanResponseWrapper({
     required this.response,
     required this.statusCode,
   });
 
-  factory ResponseWrapper.fromJson(Map<String, dynamic> json) {
-    return ResponseWrapper(
+  factory ActivityPlanResponseWrapper.fromJson(Map<String, dynamic> json) {
+    return ActivityPlanResponseWrapper(
       response: json['activity_plan_response'].fromJson,
       statusCode: json['activity_response_status'],
     );
