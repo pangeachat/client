@@ -111,7 +111,10 @@ dependencies:
   country_picker: ^2.0.25
   csv: ^6.0.0
   dropdown_button2: ^2.3.9
-  excel: ^4.0.6
+  excel:
+    git: 
+      url: https://github.com/justkawal/excel.git
+      ref: main
   firebase_analytics: ^11.0.1
   firebase_core: ^3.1.0
   firebase_messaging: ^15.1.5
