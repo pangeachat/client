@@ -16,9 +16,11 @@ abstract class FluffyShare {
   }) async {
     if (PlatformInfos.isMobile && !copyOnly) {
       final box = context.findRenderObject() as RenderBox;
-      await Share.share(
-        text,
-        sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+      await SharePlus.instance.share(
+        ShareParams(
+          text: text,
+          sharePositionOrigin: box.localToGlobal(Offset.zero) & box.size,
+        ),
       );
       return;
     }
