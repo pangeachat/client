@@ -234,6 +234,15 @@ class PangeaMessageEvent {
       }).toSet();
 
   SpeechToTextModel? getSpeechToTextLocal() {
+    final rawBotTranscription =
+        event.content.tryGetMap(ModelKey.botTranscription);
+
+    if (rawBotTranscription != null) {
+      return SpeechToTextModel.fromJson(
+        Map<String, dynamic>.from(rawBotTranscription),
+      );
+    }
+
     return representations
         .firstWhereOrNull(
           (element) => element.content.speechToText != null,
@@ -268,7 +277,8 @@ class PangeaMessageEvent {
         Map<String, dynamic>.from(rawBotTranscription),
       );
 
-      _representations?.add(
+      _representations ??= [];
+      _representations!.add(
         RepresentationEvent(
           timeline: timeline,
           parentMessageEvent: _event,
@@ -371,6 +381,7 @@ class PangeaMessageEvent {
       if (_latestEdit.content[ModelKey.choreoRecord] == null) return null;
       return ChoreoRecord.fromJson(
         _latestEdit.content[ModelKey.choreoRecord] as Map<String, dynamic>,
+        originalWrittenContent,
       );
     } catch (e, s) {
       ErrorHandler.logError(
@@ -589,10 +600,8 @@ class PangeaMessageEvent {
     String? written = originalSent?.content.text;
     if (originalWritten != null && !originalWritten!.content.originalSent) {
       written = originalWritten!.text;
-    } else if (originalSent?.choreo != null &&
-        originalSent!.choreo!.choreoSteps.isNotEmpty) {
-      final steps = originalSent!.choreo!.choreoSteps;
-      written = steps.first.text;
+    } else if (originalSent?.choreo != null) {
+      written = originalSent!.choreo!.originalText;
     }
 
     return written ?? body;

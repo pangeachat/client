@@ -120,50 +120,43 @@ class _PangeaMessageReactionsState extends State<PangeaMessageReactions> {
         .aggregatedEvents(widget.timeline, RelationshipTypes.reaction)
         .toList();
 
-    return AnimatedSize(
-      duration: FluffyThemes.animationDuration,
-      curve: FluffyThemes.animationCurve,
-      alignment: ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
-      clipBehavior: Clip.none,
-      child: Wrap(
-        crossAxisAlignment: WrapCrossAlignment.center,
-        spacing: 4.0,
-        runSpacing: 4.0,
-        alignment: ownMessage ? WrapAlignment.end : WrapAlignment.start,
-        children: [
-          if (allReactionEvents.any((e) => e.status.isSending) && ownMessage)
-            const SizedBox(
-              width: 24,
-              height: 24,
-              child: Padding(
-                padding: EdgeInsets.all(4.0),
-                child: CircularProgressIndicator.adaptive(strokeWidth: 1),
+    return Directionality(
+      textDirection: ownMessage ? TextDirection.rtl : TextDirection.ltr,
+      child: AnimatedSize(
+        duration: FluffyThemes.animationDuration,
+        curve: FluffyThemes.animationCurve,
+        alignment: ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
+        clipBehavior: Clip.none,
+        child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
+          runSpacing: 4.0,
+          alignment: WrapAlignment.start,
+          children: [
+            ...reactionList.map(
+              (r) => _Reaction(
+                key: ValueKey(r.key),
+                firstReact: _newlyAddedReactions.contains(r.key),
+                reactionKey: r.key,
+                count: r.count,
+                reacted: r.reacted,
+                onTap: () => _handleReactionTap(r, allReactionEvents),
+                onLongPress: () async => await _AdaptableReactorsDialog(
+                  client: client,
+                  reactionEntry: r,
+                ).show(context),
               ),
             ),
-          ...reactionList.map(
-            (r) => _Reaction(
-              key: ValueKey(r.key),
-              firstReact: _newlyAddedReactions.contains(r.key),
-              reactionKey: r.key,
-              count: r.count,
-              reacted: r.reacted,
-              onTap: () => _handleReactionTap(r, allReactionEvents),
-              onLongPress: () async => await _AdaptableReactorsDialog(
-                client: client,
-                reactionEntry: r,
-              ).show(context),
-            ),
-          ),
-          if (allReactionEvents.any((e) => e.status.isSending) && !ownMessage)
-            const SizedBox(
-              width: 24,
-              height: 24,
-              child: Padding(
-                padding: EdgeInsets.all(4.0),
-                child: CircularProgressIndicator.adaptive(strokeWidth: 1),
+            if (allReactionEvents.any((e) => e.status.isSending))
+              const SizedBox(
+                width: 24,
+                height: 24,
+                child: Padding(
+                  padding: EdgeInsets.all(4.0),
+                  child: CircularProgressIndicator.adaptive(strokeWidth: 1),
+                ),
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -427,38 +420,41 @@ class _ReactionState extends State<_Reaction> with TickerProviderStateMixin {
                     scale: scale,
                     alignment: Alignment.center,
                     child: scale > 0.01
-                        ? InkWell(
-                            onTap: () async {
-                              if (_isBusy || isBouncing || isGrowing) {
-                                return;
-                              }
-                              _isBusy = true;
-                              try {
-                                await _animateAndReact();
-                              } finally {
-                                if (mounted) setState(() => _isBusy = false);
-                              }
-                            },
-                            onLongPress: () => widget.onLongPress != null
-                                ? widget.onLongPress!()
-                                : null,
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius / 2,
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: color,
-                                borderRadius: BorderRadius.circular(
-                                  AppConfig.borderRadius / 2,
-                                ),
+                        ? Padding(
+                            padding: const EdgeInsets.only(left: 2, right: 2),
+                            child: InkWell(
+                              onTap: () async {
+                                if (_isBusy || isBouncing || isGrowing) {
+                                  return;
+                                }
+                                _isBusy = true;
+                                try {
+                                  await _animateAndReact();
+                                } finally {
+                                  if (mounted) setState(() => _isBusy = false);
+                                }
+                              },
+                              onLongPress: () => widget.onLongPress != null
+                                  ? widget.onLongPress!()
+                                  : null,
+                              borderRadius: BorderRadius.circular(
+                                AppConfig.borderRadius / 2,
                               ),
-                              padding: PlatformInfos.isIOS
-                                  ? const EdgeInsets.fromLTRB(5.5, 1, 3, 2.5)
-                                  : const EdgeInsets.symmetric(
-                                      horizontal: 4,
-                                      vertical: 2,
-                                    ),
-                              child: content,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: color,
+                                  borderRadius: BorderRadius.circular(
+                                    AppConfig.borderRadius / 2,
+                                  ),
+                                ),
+                                padding: PlatformInfos.isIOS
+                                    ? const EdgeInsets.fromLTRB(5.5, 1, 3, 2.5)
+                                    : const EdgeInsets.symmetric(
+                                        horizontal: 4,
+                                        vertical: 2,
+                                      ),
+                                child: content,
+                              ),
                             ),
                           )
                         : const SizedBox.shrink(),
@@ -516,28 +512,31 @@ class _AdaptableReactorsDialog extends StatelessWidget {
         context: context,
         builder: (context) => this,
         barrierDismissible: true,
-        useRootNavigator: false,
+        useRootNavigator: true,
       );
 
   @override
   Widget build(BuildContext context) {
-    final body = SingleChildScrollView(
-      child: Wrap(
-        spacing: 8.0,
-        runSpacing: 4.0,
-        alignment: WrapAlignment.center,
-        children: <Widget>[
-          for (final reactor in reactionEntry!.reactors!)
-            Chip(
-              avatar: Avatar(
-                mxContent: reactor.avatarUrl,
-                name: reactor.displayName,
-                client: client,
-                presenceUserId: reactor.stateKey,
+    final body = Material(
+      type: MaterialType.transparency,
+      child: SingleChildScrollView(
+        child: Wrap(
+          spacing: 8.0,
+          runSpacing: 4.0,
+          alignment: WrapAlignment.center,
+          children: <Widget>[
+            for (final reactor in reactionEntry!.reactors!)
+              Chip(
+                avatar: Avatar(
+                  mxContent: reactor.avatarUrl,
+                  name: reactor.displayName,
+                  client: client,
+                  presenceUserId: reactor.stateKey,
+                ),
+                label: Text(reactor.displayName!),
               ),
-              label: Text(reactor.displayName!),
-            ),
-        ],
+          ],
+        ),
       ),
     );
 

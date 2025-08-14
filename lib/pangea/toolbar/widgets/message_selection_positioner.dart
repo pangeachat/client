@@ -153,7 +153,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   double get reactionsHeight {
     if (_reactionsRenderBox != null) {
-      return _reactionsRenderBox!.size.height + 4.0;
+      return _reactionsRenderBox!.size.height;
     }
     return hasReactions ? 28.0 : 0.0;
   }
@@ -317,7 +317,12 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   bool get _hasFooterOverflow {
     if (_screenHeight == null) return false;
-    final bottomOffset = _originalMessageOffset.dy + _contentHeight;
+    final bottomOffset = _originalMessageOffset.dy +
+        originalMessageSize.height +
+        reactionsHeight +
+        AppConfig.toolbarMenuHeight +
+        4.0;
+
     return bottomOffset > _screenHeight!;
   }
 
@@ -327,18 +332,22 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
     final messageHeight = originalMessageSize.height;
     final originalContentHeight =
-        messageHeight + reactionsHeight + AppConfig.toolbarMenuHeight + 4.0;
+        messageHeight + reactionsHeight + AppConfig.toolbarMenuHeight + 8.0;
 
     final screenHeight = mediaQuery!.size.height - mediaQuery!.padding.bottom;
 
-    final boxHeight =
+    double boxHeight =
         screenHeight - _originalMessageOffset.dy - originalContentHeight;
 
-    if (boxHeight + _fullContentHeight > screenHeight) {
-      return screenHeight - _fullContentHeight;
+    final neededSpace =
+        boxHeight + _fullContentHeight + mediaQuery!.padding.top + 4.0;
+
+    if (neededSpace > screenHeight) {
+      boxHeight =
+          screenHeight - _fullContentHeight - mediaQuery!.padding.top - 4.0;
     }
 
-    return screenHeight - _originalMessageOffset.dy - originalContentHeight;
+    return boxHeight;
   }
 
   void _onContentSizeChanged(_) {

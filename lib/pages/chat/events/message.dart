@@ -10,7 +10,13 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/pangea_message_reactions.dart';
 import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_creation_state_event.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_roles_event.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_state_event.dart';
+import 'package:fluffychat/pangea/chat/extensions/custom_room_display_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
@@ -127,8 +133,24 @@ class Message extends StatelessWidget {
         return const SizedBox.shrink();
       }
       if (event.type == EventTypes.RoomCreate) {
-        return RoomCreationStateEvent(event: event);
+        // #Pangea
+        // return RoomCreationStateEvent(event: event);
+        return event.room.activityPlan != null
+            ? ActivityCreationStateEvent(event: event)
+            : RoomCreationStateEvent(event: event);
+        // Pangea#
       }
+
+      // #Pangea
+      if (event.type == PangeaEventTypes.activityPlan) {
+        return ActivityStateEvent(event: event);
+      }
+
+      if (event.type == PangeaEventTypes.activityRole) {
+        return ActivityRolesEvent(event: event);
+      }
+      // Pangea#
+
       return StateMessage(event, onExpand: onExpand, isCollapsed: isCollapsed);
     }
 
@@ -464,7 +486,15 @@ class Message extends StatelessWidget {
                                                               .senderFromMemoryOrFallback
                                                               .calcDisplayname();
                                                       return Text(
-                                                        displayname,
+                                                        // #Pangea
+                                                        // displayname,
+                                                        controller.room
+                                                            .senderDisplayName(
+                                                          snapshot.data ??
+                                                              event
+                                                                  .senderFromMemoryOrFallback,
+                                                        ),
+                                                        // Pangea#
                                                         style: TextStyle(
                                                           fontSize: 11,
                                                           fontWeight:

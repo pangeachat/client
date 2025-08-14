@@ -6,14 +6,14 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_generator/activity_generator_view.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_mode_list_repo.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_generation_repo.dart';
+import 'package:fluffychat/pangea/activity_generator/activity_mode_list_repo.dart';
+import 'package:fluffychat/pangea/activity_generator/activity_plan_generation_repo.dart';
+import 'package:fluffychat/pangea/activity_generator/learning_objective_list_repo.dart';
+import 'package:fluffychat/pangea/activity_generator/list_request_schema.dart';
+import 'package:fluffychat/pangea/activity_generator/media_enum.dart';
+import 'package:fluffychat/pangea/activity_generator/topic_list_repo.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
-import 'package:fluffychat/pangea/activity_planner/learning_objective_list_repo.dart';
-import 'package:fluffychat/pangea/activity_planner/list_request_schema.dart';
-import 'package:fluffychat/pangea/activity_planner/media_enum.dart';
-import 'package:fluffychat/pangea/activity_planner/topic_list_repo.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestions_constants.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
@@ -21,9 +21,9 @@ import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_en
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityGenerator extends StatefulWidget {
-  final String? roomID;
+  final String roomID;
   const ActivityGenerator({
-    this.roomID,
+    required this.roomID,
     super.key,
   });
 
@@ -50,16 +50,23 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
 
   String? filename;
 
+  List<ActivitySettingResponseSchema>? topicItems;
+  List<ActivitySettingResponseSchema>? modeItems;
+  List<ActivitySettingResponseSchema>? objectiveItems;
+
   @override
   void initState() {
     super.initState();
+
     selectedLanguageOfInstructions =
         MatrixState.pangeaController.languageController.userL1?.langCode;
     selectedTargetLanguage =
         MatrixState.pangeaController.languageController.userL2?.langCode;
     selectedCefrLevel = LanguageLevelTypeEnum.a1;
     selectedNumberOfParticipants = 3;
-    _setModeImageURL();
+    _setMode();
+    _setTopic();
+    _setObjective();
   }
 
   @override
@@ -87,18 +94,7 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
         numberOfParticipants: selectedNumberOfParticipants!,
       );
 
-  Future<List<ActivitySettingResponseSchema>> get topicItems =>
-      TopicListRepo.get(req);
-
-  Future<List<ActivitySettingResponseSchema>> get modeItems =>
-      ActivityModeListRepo.get(req);
-
-  Future<List<ActivitySettingResponseSchema>> get objectiveItems =>
-      LearningObjectiveListRepo.get(req);
-
-  Room? get room => widget.roomID != null
-      ? Matrix.of(context).client.getRoomById(widget.roomID!)
-      : null;
+  Room? get room => Matrix.of(context).client.getRoomById(widget.roomID);
 
   String? validateNotNull(String? value) {
     if (value == null || value.isEmpty) {
@@ -107,31 +103,33 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
     return null;
   }
 
-  Future<String> _randomTopic() async {
-    final topics = await topicItems;
-    return (topics..shuffle()).first.name;
-  }
+  String? get _randomTopic => (topicItems?..shuffle())?.first.name;
 
-  Future<String> _randomObjective() async {
-    final objectives = await objectiveItems;
-    return (objectives..shuffle()).first.name;
-  }
+  String? get _randomObjective => (objectiveItems?..shuffle())?.first.name;
 
-  Future<String> _randomMode() async {
-    final modes = await modeItems;
-    return (modes..shuffle()).first.name;
-  }
+  String? get _randomMode => (modeItems?..shuffle())?.first.name;
 
-  void randomizeSelections() async {
-    final selectedTopic = await _randomTopic();
-    final selectedObjective = await _randomObjective();
-    final selectedMode = await _randomMode();
+  bool get randomizeEnabled =>
+      topicItems != null && objectiveItems != null && modeItems != null;
 
-    setState(() {
-      topicController.text = selectedTopic;
-      objectiveController.text = selectedObjective;
-      modeController.text = selectedMode;
-    });
+  void randomizeSelections() {
+    final selectedTopic = _randomTopic;
+    final selectedObjective = _randomObjective;
+    final selectedMode = _randomMode;
+
+    if (selectedTopic == null ||
+        selectedObjective == null ||
+        selectedMode == null) {
+      return;
+    }
+
+    if (mounted) {
+      setState(() {
+        topicController.text = selectedTopic;
+        objectiveController.text = selectedObjective;
+        modeController.text = selectedMode;
+      });
+    }
   }
 
   void clearSelections() async {
@@ -165,15 +163,45 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
     setState(() => selectedCefrLevel = value);
   }
 
-  Future<ActivitySettingResponseSchema?> get _selectedMode async {
-    final modes = await modeItems;
-    return modes.firstWhereOrNull(
+  ActivitySettingResponseSchema? get _selectedMode {
+    return modeItems?.firstWhereOrNull(
       (element) => element.name.toLowerCase() == planRequest.mode.toLowerCase(),
     );
   }
 
+  Future<void> _setTopic() async {
+    final topic = await TopicListRepo.get(req);
+
+    if (mounted) {
+      setState(() {
+        topicItems = topic;
+      });
+    }
+  }
+
+  Future<void> _setMode() async {
+    final mode = await ActivityModeListRepo.get(req);
+
+    if (mounted) {
+      setState(() {
+        modeItems = mode;
+      });
+      _setModeImageURL();
+    }
+  }
+
+  Future<void> _setObjective() async {
+    final objective = await LearningObjectiveListRepo.get(req);
+
+    if (mounted) {
+      setState(() {
+        objectiveItems = objective;
+      });
+    }
+  }
+
   Future<void> _setModeImageURL() async {
-    final mode = await _selectedMode;
+    final mode = _selectedMode;
     if (mode == null) return;
 
     final modeName =
@@ -192,6 +220,8 @@ class ActivityGeneratorState extends State<ActivityGenerator> {
           instructions: activity.instructions,
           vocab: activity.vocab,
           imageURL: imageUrl,
+          roles: activity.roles,
+          bookmarkId: activity.bookmarkId,
         );
       }
     });

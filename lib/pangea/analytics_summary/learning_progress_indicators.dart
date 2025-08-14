@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
@@ -11,6 +13,7 @@ import 'package:fluffychat/pangea/analytics_summary/learning_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicator_button.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicator.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -99,6 +102,8 @@ class LearningProgressIndicatorsState
     final userL1 = MatrixState.pangeaController.languageController.userL1;
     final userL2 = MatrixState.pangeaController.languageController.userL2;
 
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
     return Row(
       children: [
         Expanded(
@@ -111,24 +116,57 @@ class LearningProgressIndicatorsState
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Row(
-                      spacing: 16.0,
-                      children: ConstructTypeEnum.values
-                          .map(
-                            (c) => HoverButton(
-                              selected: widget.selected == c.indicator,
-                              onPressed: () {
-                                context.go(
-                                  "/rooms/analytics?mode=${c.string}",
-                                );
-                              },
-                              child: ProgressIndicatorBadge(
-                                indicator: c.indicator,
-                                loading: _loading,
-                                points: uniqueLemmas(c.indicator),
-                              ),
+                      spacing: isColumnMode ? 16.0 : 4.0,
+                      children: [
+                        ...ConstructTypeEnum.values.map(
+                          (c) => HoverButton(
+                            selected: widget.selected == c.indicator,
+                            onPressed: () {
+                              context.go(
+                                "/rooms/analytics?mode=${c.string}",
+                              );
+                            },
+                            child: ProgressIndicatorBadge(
+                              indicator: c.indicator,
+                              loading: _loading,
+                              points: uniqueLemmas(c.indicator),
                             ),
-                          )
-                          .toList(),
+                          ),
+                        ),
+                        HoverButton(
+                          selected: widget.selected ==
+                              ProgressIndicatorEnum.activities,
+                          onPressed: () {
+                            context.go(
+                              "/rooms/analytics?mode=activities",
+                            );
+                          },
+                          child: Tooltip(
+                            message: ProgressIndicatorEnum.activities
+                                .tooltip(context),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  size: 18,
+                                  Icons.radar,
+                                  color: Theme.of(context).colorScheme.primary,
+                                  weight: 1000,
+                                ),
+                                const SizedBox(width: 6.0),
+                                AnimatedFloatingNumber(
+                                  number: Matrix.of(context)
+                                          .client
+                                          .analyticsRoomLocal()
+                                          ?.activityRoomIds
+                                          .length ??
+                                      0,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   HoverButton(

@@ -31,6 +31,7 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/utils/show_update_snackbar.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
@@ -143,6 +144,85 @@ class ChatListController extends State<ChatList>
 
   void onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
+      // #Pangea
+      final theme = Theme.of(context);
+      final inviteEvent = room.getState(
+        EventTypes.RoomMember,
+        room.client.userID!,
+      );
+      final matrixLocals = MatrixLocals(L10n.of(context));
+      final action = await showAdaptiveDialog<InviteActions>(
+        barrierDismissible: true,
+        context: context,
+        builder: (context) => AlertDialog.adaptive(
+          title: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 256),
+            child: Center(
+              child: Text(
+                room.getLocalizedDisplayname(matrixLocals),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+          content: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
+            child: Text(
+              inviteEvent == null
+                  ? L10n.of(context).inviteForMe
+                  : inviteEvent.content.tryGet<String>('reason') ??
+                      L10n.of(context).youInvitedBy(
+                        room
+                            .unsafeGetUserFromMemoryOrFallback(
+                              inviteEvent.senderId,
+                            )
+                            .calcDisplayname(i18n: matrixLocals),
+                      ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          actions: [
+            AdaptiveDialogAction(
+              onPressed: () => Navigator.of(context).pop(InviteActions.accept),
+              bigButtons: true,
+              child: Text(L10n.of(context).accept),
+            ),
+            AdaptiveDialogAction(
+              onPressed: () => Navigator.of(context).pop(InviteActions.decline),
+              bigButtons: true,
+              child: Text(
+                L10n.of(context).decline,
+                style: TextStyle(color: theme.colorScheme.error),
+              ),
+            ),
+            AdaptiveDialogAction(
+              onPressed: () => Navigator.of(context).pop(InviteActions.block),
+              bigButtons: true,
+              child: Text(
+                L10n.of(context).block,
+                style: TextStyle(color: theme.colorScheme.error),
+              ),
+            ),
+          ],
+        ),
+      );
+      switch (action) {
+        case null:
+          return;
+        case InviteActions.accept:
+          break;
+        case InviteActions.decline:
+          await showFutureLoadingDialog(
+            context: context,
+            future: () => room.leave(),
+          );
+          return;
+        case InviteActions.block:
+          final userId = inviteEvent?.senderId;
+          context.go('/rooms/settings/security/ignorelist', extra: userId);
+          return;
+      }
+      if (!mounted) return;
+      // Pangea#
       final joinResult = await showFutureLoadingDialog(
         context: context,
         future: () async {
@@ -185,24 +265,24 @@ class ChatListController extends State<ChatList>
       case ActiveFilter.allChats:
         // #Pangea
         // return (room) => true;
-        return (room) => !room.isAnalyticsRoom && !room.isSpace;
+        return (room) => !room.isHiddenRoom && !room.isSpace;
       // Pangea#
       case ActiveFilter.messages:
         // #Pangea
         // return (room) => !room.isSpace && room.isDirectChat;
         return (room) =>
-            !room.isSpace && room.isDirectChat && !room.isAnalyticsRoom;
+            !room.isSpace && room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.groups:
         // #Pangea
         // return (room) => !room.isSpace && !room.isDirectChat;
         return (room) =>
-            !room.isSpace && !room.isDirectChat && !room.isAnalyticsRoom;
+            !room.isSpace && !room.isDirectChat && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.unread:
         // #Pangea
         // return (room) => room.isUnreadOrInvited;
-        return (room) => room.isUnreadOrInvited && !room.isAnalyticsRoom;
+        return (room) => room.isUnreadOrInvited && !room.isHiddenRoom;
       // Pangea#
       case ActiveFilter.spaces:
         return (room) => room.isSpace;
@@ -570,7 +650,7 @@ class ChatListController extends State<ChatList>
         final room = client.getRoomById(roomID);
         if (room == null ||
             room.isSpace ||
-            room.isAnalyticsRoom ||
+            room.isHiddenRoom ||
             room.capacity == null ||
             (room.summary.mJoinedMemberCount ?? 1) <= room.capacity!) {
           continue;
@@ -1066,8 +1146,9 @@ class ChatListController extends State<ChatList>
             context: context,
             future: room.delete,
           );
-          if (resp.isError) return;
-          if (mounted) context.go("/rooms?spaceId=clear");
+          if (mounted && !resp.isError) {
+            context.go("/rooms");
+          }
         }
         return;
       // Pangea#

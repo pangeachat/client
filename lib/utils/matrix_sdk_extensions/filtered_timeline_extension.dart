@@ -1,24 +1,23 @@
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import '../../config/app_config.dart';
 
 extension VisibleInGuiExtension on List<Event> {
   List<Event> filterByVisibleInGui({String? exceptionEventId}) => where(
-        (event) => event.isVisibleInGui || event.eventId == exceptionEventId,
+        // #Pangea
+        // (event) => event.isVisibleInGui || event.eventId == exceptionEventId,
+        (event) =>
+            (event.isVisibleInGui || event.eventId == exceptionEventId) &&
+            event.isVisibleInPangeaGui,
+        // Pangea#
       ).toList();
 }
 
 extension IsStateExtension on Event {
   bool get isVisibleInGui =>
-      // #Pangea
-      content.tryGet(ModelKey.transcription) == null &&
-      // if sending of transcription fails,
-      // don't show it as a errored audio event in timeline.
-      ((unsigned?['extra_content']
-              as Map<String, dynamic>?)?[ModelKey.transcription] ==
-          null) &&
-      // Pangea#
       // always filter out edit and reaction relationships
       !{RelationshipTypes.edit, RelationshipTypes.reaction}
           .contains(relationshipType) &&
@@ -30,7 +29,16 @@ extension IsStateExtension on Event {
       // if we enabled to hide all redacted events, don't show those
       (!AppConfig.hideRedactedEvents || !redacted) &&
       // if we enabled to hide all unknown events, don't show those
-      (!AppConfig.hideUnknownEvents || isEventTypeKnown);
+      // #Pangea
+      // (!AppConfig.hideUnknownEvents || isEventTypeKnown);
+      (!AppConfig.hideUnknownEvents || pangeaIsEventTypeKnown) &&
+      content.tryGet(ModelKey.transcription) == null &&
+      // if sending of transcription fails,
+      // don't show it as a errored audio event in timeline.
+      ((unsigned?['extra_content']
+              as Map<String, dynamic>?)?[ModelKey.transcription] ==
+          null);
+  // Pangea#
 
   bool get isState => !{
         EventTypes.Message,
@@ -45,4 +53,21 @@ extension IsStateExtension on Event {
         EventTypes.RoomCreate,
         EventTypes.RoomTombstone,
       }.contains(type);
+
+  // #Pangea
+  bool get isVisibleInPangeaGui {
+    if (!room.showActivityChatUI) {
+      return true;
+    }
+
+    return type != EventTypes.RoomMember;
+  }
+
+  bool get pangeaIsEventTypeKnown =>
+      isEventTypeKnown ||
+      [
+        PangeaEventTypes.activityPlan,
+        PangeaEventTypes.activityRole,
+      ].contains(type);
+  // Pangea#
 }
