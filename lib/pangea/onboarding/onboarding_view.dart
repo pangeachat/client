@@ -33,7 +33,7 @@ class OnboardingView extends StatelessWidget {
       return const EmptyPage();
     }
 
-    final screenheight = MediaQuery.of(context).size.height;
+    final screenheight = MediaQuery.sizeOf(context).height;
 
     return Material(
       child: StreamBuilder(

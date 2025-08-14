@@ -151,7 +151,7 @@ class OverlayMessage extends StatelessWidget {
             constraints: BoxConstraints(
               maxWidth: min(
                 FluffyThemes.columnWidth * 1.5,
-                MediaQuery.of(context).size.width -
+                MediaQuery.sizeOf(context).width -
                     (ownMessage ? 0 : Avatar.defaultSize) -
                     32.0 -
                     (FluffyThemes.isColumnMode(context)
@@ -240,7 +240,7 @@ class OverlayMessage extends StatelessWidget {
             constraints: BoxConstraints(
               maxWidth: min(
                 FluffyThemes.columnWidth * 1.5,
-                MediaQuery.of(context).size.width -
+                MediaQuery.sizeOf(context).width -
                     (ownMessage ? 0 : Avatar.defaultSize) -
                     32.0 -
                     (FluffyThemes.isColumnMode(context)

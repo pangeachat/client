@@ -108,7 +108,7 @@ class _NewWordOverlayState extends State<NewWordOverlay>
           final seedSize = 75 * scale * fade;
 
           // Calculate movement to top left if fullscreen, or top right of word card if mobile
-          final screenSize = MediaQuery.of(context).size;
+          final screenSize = MediaQuery.sizeOf(context);
           final moveX =
               columnMode ? -move * (screenSize.width / 2 - 50) : move * 130;
 

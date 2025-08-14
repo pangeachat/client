@@ -158,16 +158,16 @@ class OverlayUtil {
         final halfMaxWidth = maxWidth / 2;
         final hasLeftOverflow = (horizontalMidpoint - halfMaxWidth) < 10;
         final hasRightOverflow = (horizontalMidpoint + halfMaxWidth) >
-            (MediaQuery.of(context).size.width - columnWidth - 10);
+            (MediaQuery.sizeOf(context).width - columnWidth - 10);
         hasTopOverflow = (verticalMidpoint - maxHeight) < 0;
 
         double xOffset = 0;
 
-        MediaQuery.of(context).size.width - (horizontalMidpoint + halfMaxWidth);
+        MediaQuery.sizeOf(context).width - (horizontalMidpoint + halfMaxWidth);
         if (hasLeftOverflow) {
           xOffset = (horizontalMidpoint - halfMaxWidth - 10) * -1;
         } else if (hasRightOverflow) {
-          xOffset = (MediaQuery.of(context).size.width - columnWidth) -
+          xOffset = (MediaQuery.sizeOf(context).width - columnWidth) -
               (horizontalMidpoint + halfMaxWidth + 10);
         }
         offset = Offset(xOffset, 0);

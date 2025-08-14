@@ -319,7 +319,7 @@ class SubscriptionController extends BaseController {
         context: context,
         constraints: BoxConstraints(
           maxHeight: PlatformInfos.isMobile
-              ? MediaQuery.of(context).size.height - 50
+              ? MediaQuery.sizeOf(context).height - 50
               : 600,
         ),
         builder: (_) {

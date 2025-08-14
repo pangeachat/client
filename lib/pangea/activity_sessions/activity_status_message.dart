@@ -41,7 +41,7 @@ class ActivityStatusMessage extends StatelessWidget {
           ),
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.8,
+              maxHeight: MediaQuery.sizeOf(context).height * 0.8,
             ),
             child: SingleChildScrollView(
               child: ActivityUnfinishedStatusMessage(room: room),
