@@ -2564,7 +2564,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Free Trial";
     },
     get$noDataFound() {
-      return "No data found";
+      return "Not found";
     },
     promoSubscriptionExpirationDesc$1(expiration) {
       return "Your current subscription is promotional and expires on " + expiration + ". Message support@pangea.chat for help changing your subscription.";
@@ -6064,6 +6064,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "EJf0F9SK+dQhcTD5kpdoqews9Q4=");
+})($__dart_deferred_initializers__, "Fk7/eaq1qj37KobY1RsY4/XPZMw=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
