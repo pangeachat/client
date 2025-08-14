@@ -17,6 +17,7 @@ import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_plan_search_repo.dart';
+import 'package:fluffychat/pangea/activity_suggestions/activity_search_enum.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_dialog.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -64,10 +65,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
 
   // _loading is true when _setActivityItems is currently requesting activities
   bool _loading = true;
-  // _timeout is true if 1+ round of _setActivityItems
-  // has occurred and no activities retrieved
-  bool _timeout = false;
-  int _error = 0;
+  ActivitySearchEnum _status = ActivitySearchEnum.waiting;
 
   bool get _isColumnMode => FluffyThemes.isColumnMode(context);
 
@@ -101,7 +99,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
     if (retries > 3) {
       if (mounted) {
         setState(() {
-          _timeout = true;
+          _status = ActivitySearchEnum.timeout;
           _loading = false;
         });
       }
@@ -113,14 +111,14 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         setState(() {
           _activityItems.clear();
           _loading = true;
-          _timeout = false;
+          _status = ActivitySearchEnum.waiting;
         });
       }
 
       final resp = await ActivitySearchRepo.get(_request).timeout(
         const Duration(seconds: 5),
         onTimeout: () {
-          if (mounted) setState(() => _timeout = true);
+          if (mounted) setState(() => _status = ActivitySearchEnum.timeout);
 
           Future.delayed(const Duration(seconds: 5), () {
             if (mounted) _setActivityItems(retries: retries + 1);
@@ -134,40 +132,17 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
         },
       );
       _activityItems.addAll(resp.response.activityPlans);
-      switch (resp.statusCode) {
-        case 200: // All activities successfully retrieved
-          if (mounted) {
-            setState(
-              () {
-                _loading = false;
-                _timeout = false;
-              },
-            );
-          }
-          return;
+      _status = _status.fromCode(resp.statusCode);
+      if (_status != ActivitySearchEnum.error) {
+        if (_activityItems.isEmpty) {
+          if (mounted) setState(() => _status = ActivitySearchEnum.timeout);
 
-        case 202: // 0-4 activities successfully retrieved
-          if (_activityItems.isEmpty) {
-            if (mounted) setState(() => _timeout = true);
-
-            Future.delayed(const Duration(seconds: 5), () {
-              if (mounted) _setActivityItems(retries: retries + 1);
-            });
-          } else {
-            if (mounted) {
-              setState(
-                () {
-                  _loading = false;
-                  _timeout = false;
-                },
-              );
-            }
-          }
-          return;
-
-        case < 200 || >= 300: // Activities cannot be successfully retrieved
-          if (mounted) setState(() => _error = resp.statusCode);
-          return;
+          Future.delayed(const Duration(seconds: 5), () {
+            if (mounted) _setActivityItems(retries: retries + 1);
+          });
+        } else {
+          if (mounted) setState(() => _loading = false);
+        }
       }
     } on TimeoutException {
       rethrow;
@@ -250,7 +225,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       children: [
         AnimatedSize(
           duration: FluffyThemes.animationDuration,
-          child: _timeout || _error != 0
+          child: _status.hideCards
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -260,19 +235,13 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                       ConstrainedBox(
                         constraints: const BoxConstraints(maxWidth: 300),
                         child: Text(
-                          _error != 0
-                              ? _error == 401
-                                  ? L10n.of(context)
-                                      .activitySearchNoSubscription
-                                  : L10n.of(context)
-                                      .errorFetchingActivitiesMessage
-                              : L10n.of(context).generatingNewActivities,
+                          _status.message(L10n.of(context)),
                           textAlign: TextAlign.center,
                         ),
                       ),
-                      if (_loading && _error == 0)
+                      if (_loading && _status == ActivitySearchEnum.timeout)
                         const CircularProgressIndicator(),
-                      if (!_loading && _error == 0)
+                      if (!_loading && _status == ActivitySearchEnum.timeout)
                         ElevatedButton(
                           onPressed: _setActivityItems,
                           style: ElevatedButton.styleFrom(
@@ -321,8 +290,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                         Padding(
                           padding: const EdgeInsetsGeometry.all(16.0),
                           child: ErrorIndicator(
-                            message: L10n.of(context)
-                                .activitySuggestionTimeoutMessage,
+                            message: _status.message(L10n.of(context)),
                           ),
                         ),
                       if (cards.length < 5 && _loading)
