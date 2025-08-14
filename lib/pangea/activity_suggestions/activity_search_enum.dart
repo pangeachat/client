@@ -29,10 +29,10 @@ extension ActivitySearchExtension on ActivitySearchEnum {
     switch (this) {
       case ActivitySearchEnum.complete:
       case ActivitySearchEnum.waiting:
-        return true;
+        return false;
       case ActivitySearchEnum.timeout:
       case ActivitySearchEnum.error:
-        return false;
+        return true;
     }
   }
 
