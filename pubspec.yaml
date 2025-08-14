@@ -14,7 +14,7 @@ environment:
 dependencies:
   animations: ^2.0.11
   app_links: ^6.3.3
-  archive: ^3.4.10
+  archive: ^4.0.7
   async: ^2.11.0
   badges: ^3.1.2
   blurhash_dart: ^1.2.1
@@ -29,14 +29,14 @@ dependencies:
   desktop_notifications: ^0.6.3
   device_info_plus: ^11.5.0
   diacritic: ^0.1.6
-  dynamic_color: ^1.7.0
+  dynamic_color: ^1.8.1
   emoji_picker_flutter: ^4.3.0
   emojis: ^0.9.9
   file_picker: ^10.2.1
   file_selector: ^1.0.3
   flutter:
     sdk: flutter
-  flutter_foreground_task: ^6.1.3
+  flutter_foreground_task: ^9.1.0
   flutter_highlighter: ^0.1.1
   flutter_linkify: ^6.0.0
   flutter_local_notifications: ^19.4.0
@@ -55,7 +55,7 @@ dependencies:
   flutter_web_auth_2: ^3.1.1 # Version 4 blocked by https://github.com/MixinNetwork/flutter-plugins/issues/379
   flutter_webrtc: ^1.0.0
   geolocator: ^14.0.2
-  go_router: ^16.0.0
+  go_router: ^16.1.0
   handy_window: ^0.4.0
   html: ^0.15.4
   http: ^1.2.0
@@ -94,7 +94,7 @@ dependencies:
   sqlcipher_flutter_libs: ^0.6.7
   swipe_to_action: ^0.3.0
   tor_detector_web: ^1.1.0
-  unifiedpush: ^5.0.1
+  unifiedpush: ^6.0.2
   unifiedpush_ui: ^0.1.0
   universal_html: ^2.2.4
   url_launcher: ^6.3.2
@@ -134,7 +134,7 @@ dependencies:
 
 dev_dependencies:
   flutter_lints: ^3.0.0
-  flutter_native_splash: ^2.0.3+1
+  flutter_native_splash: ^2.4.6
   flutter_test:
     sdk: flutter
   import_sorter: ^4.6.0

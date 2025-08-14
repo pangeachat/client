@@ -284,9 +284,9 @@ class EmotesSettingsController extends State<EmotesSettings> {
 
         if (result.isEmpty) return null;
 
-        final buffer = InputStream(await result.first.readAsBytes());
+        final buffer = InputMemoryStream(await result.first.readAsBytes());
 
-        final archive = ZipDecoder().decodeBuffer(buffer);
+        final archive = ZipDecoder().decodeStream(buffer);
 
         return archive;
       },
@@ -335,8 +335,6 @@ class EmotesSettingsController extends State<EmotesSettings> {
         final fileName =
             '${pack.pack.displayName ?? client.userID?.localpart ?? 'emotes'}.zip';
         final output = ZipEncoder().encode(archive);
-
-        if (output == null) return;
 
         MatrixFile(
           name: fileName,
