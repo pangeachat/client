@@ -4408,6 +4408,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$errorLaunchActivityMessage() {
       return "Failed to launch activity";
     },
+    get$errorFetchingActivitiesMessage() {
+      return "Failed to fetch activities";
+    },
     get$errorFetchingDefinition() {
       return "Failed to fetch definition";
     },
@@ -4570,6 +4573,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_157", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "hMv7XQs+ZroHkvy5tONuHruhRpY=");
+})($__dart_deferred_initializers__, "2Hw99ZHm3QCi/WYK6raJXvFVMrw=");
 ;
 //# sourceMappingURL=main.dart.js_157.part.js.map
