@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:collection/collection.dart';
@@ -16,7 +18,6 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 extension ActivityRoomExtension on Room {
   Future<void> sendActivityPlan(
@@ -55,7 +56,7 @@ extension ActivityRoomExtension on Room {
 
   Future<void> continueActivity() async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
-    final role = currentRoles.role(client.userID!);
+    final role = ownRole;
     if (role == null || !role.isFinished) return;
 
     role.finishedAt = null; // Reset finished state
@@ -69,13 +70,8 @@ extension ActivityRoomExtension on Room {
   }
 
   Future<void> finishActivity() async {
-    if (isRoomAdmin) {
-      await _finishActivityForAll();
-      return;
-    }
-
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
-    final role = currentRoles.role(client.userID!);
+    final role = ownRole;
     if (role == null || role.isFinished) return;
     role.finishedAt = DateTime.now();
     currentRoles.updateRole(role);
@@ -88,7 +84,7 @@ extension ActivityRoomExtension on Room {
     );
   }
 
-  Future<void> _finishActivityForAll() async {
+  Future<void> finishActivityForAll() async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     currentRoles.finishAll();
     await client.setRoomStateWithKey(
@@ -101,7 +97,7 @@ extension ActivityRoomExtension on Room {
 
   Future<void> archiveActivity() async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
-    final role = currentRoles.role(client.userID!);
+    final role = ownRole;
     if (role == null || !role.isFinished) return;
 
     role.archivedAt = DateTime.now();
@@ -256,6 +252,27 @@ extension ActivityRoomExtension on Room {
     }
   }
 
+  Map<String, ActivityRoleModel>? get assignedRoles {
+    final roles = activityRoles?.roles;
+    if (roles == null) return null;
+
+    final participants = getParticipants();
+    return Map.fromEntries(
+      roles.entries.where(
+        (r) => participants.any(
+          (p) => p.id == r.value.userId && p.membership == Membership.join,
+        ),
+      ),
+    );
+  }
+
+  ActivityRoleModel? get ownRole => activityRoles?.role(client.userID!);
+
+  int get remainingRoles {
+    final availableRoles = activityPlan!.roles;
+    return max(0, availableRoles.length - (assignedRoles?.length ?? 0));
+  }
+
   bool get showActivityChatUI {
     return activityPlan != null &&
         powerForChangingStateEvent(PangeaEventTypes.activityRole) == 0 &&
@@ -264,18 +281,17 @@ extension ActivityRoomExtension on Room {
 
   bool get isActiveInActivity {
     if (!showActivityChatUI) return false;
-    final role = activityRoles?.role(client.userID!);
+    final role = ownRole;
     return role != null && !role.isFinished;
   }
 
   bool get isInactiveInActivity {
     if (!showActivityChatUI) return false;
-    final role = activityRoles?.role(client.userID!);
+    final role = ownRole;
     return role == null || role.isFinished;
   }
 
-  bool get hasCompletedActivity =>
-      activityRoles?.role(client.userID!)?.isFinished ?? false;
+  bool get hasCompletedActivity => ownRole?.isFinished ?? false;
 
   bool get activityIsFinished {
     final roles = activityRoles?.roles.values.where(
@@ -283,6 +299,8 @@ extension ActivityRoomExtension on Room {
     );
 
     if (roles == null || roles.isEmpty) return false;
+    if (!roles.any((r) => r.isFinished)) return false;
+
     return roles.every((r) {
       if (r.isFinished) return true;
 
@@ -295,6 +313,5 @@ extension ActivityRoomExtension on Room {
     });
   }
 
-  bool get isHiddenActivityRoom =>
-      activityRoles?.role(client.userID!)?.isArchived ?? false;
+  bool get isHiddenActivityRoom => ownRole?.isArchived ?? false;
 }

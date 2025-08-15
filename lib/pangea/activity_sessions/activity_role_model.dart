@@ -1,3 +1,5 @@
+import 'package:fluffychat/l10n/l10n.dart';
+
 class ActivityRoleModel {
   final String id;
   final String userId;
@@ -17,16 +19,31 @@ class ActivityRoleModel {
 
   bool get isArchived => archivedAt != null;
 
+  String? stateEventMessage(String displayName, L10n l10n) {
+    if (isArchived) {
+      return null;
+    }
+
+    if (isFinished) {
+      return l10n.finishedTheActivity(displayName);
+    }
+
+    return l10n.joinedTheActivity(
+      displayName,
+      role ?? l10n.participant,
+    );
+  }
+
   factory ActivityRoleModel.fromJson(Map<String, dynamic> json) {
     return ActivityRoleModel(
-      id: json['id'],
-      userId: json['userId'],
-      role: json['role'],
-      finishedAt: json['finishedAt'] != null
-          ? DateTime.parse(json['finishedAt'])
+      id: json['id'] as String,
+      userId: json['user_id'] as String,
+      role: json['role'] as String?,
+      finishedAt: json['finished_at'] != null
+          ? DateTime.parse(json['finished_at'])
           : null,
-      archivedAt: json['archivedAt'] != null
-          ? DateTime.parse(json['archivedAt'])
+      archivedAt: json['archived_at'] != null
+          ? DateTime.parse(json['archived_at'])
           : null,
     );
   }
@@ -34,10 +51,10 @@ class ActivityRoleModel {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'userId': userId,
+      'user_id': userId,
       'role': role,
-      'finishedAt': finishedAt?.toIso8601String(),
-      'archivedAt': archivedAt?.toIso8601String(),
+      'finished_at': finishedAt?.toIso8601String(),
+      'archived_at': archivedAt?.toIso8601String(),
     };
   }
 

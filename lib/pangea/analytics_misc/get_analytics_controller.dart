@@ -154,7 +154,7 @@ class GetAnalyticsController extends BaseController {
     final prevUnlockedMorphs = constructListModel
         .unlockedLemmas(
           ConstructTypeEnum.morph,
-          threshold: 25,
+          threshold: 30,
         )
         .toSet();
 
@@ -166,7 +166,7 @@ class GetAnalyticsController extends BaseController {
     final newUnlockedMorphs = constructListModel
         .unlockedLemmas(
           ConstructTypeEnum.morph,
-          threshold: 25,
+          threshold: 30,
         )
         .toSet()
         .difference(prevUnlockedMorphs);
@@ -572,9 +572,11 @@ class GetAnalyticsController extends BaseController {
     final response = await ConstructRepo.generateConstructSummary(request);
     final ConstructSummary summary = response.summary;
     summary.levelVocabConstructs = MatrixState
-        .pangeaController.getAnalytics.constructListModel.vocabLemmas;
+        .pangeaController.getAnalytics.constructListModel
+        .numConstructs(ConstructTypeEnum.vocab);
     summary.levelGrammarConstructs = MatrixState
-        .pangeaController.getAnalytics.constructListModel.grammarLemmas;
+        .pangeaController.getAnalytics.constructListModel
+        .numConstructs(ConstructTypeEnum.morph);
 
     final Room? analyticsRoom = await _client.getMyAnalyticsRoom(_l2!);
     if (analyticsRoom == null) {
