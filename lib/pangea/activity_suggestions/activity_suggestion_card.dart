@@ -1,18 +1,20 @@
-import 'dart:typed_data';
+import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
-import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
-  final ActivityPlanModel activity;
+  final ActivityPlannerBuilderState controller;
   final Uint8List? image;
-  final VoidCallback? onPressed;
+  final VoidCallback onPressed;
 
   final double width;
   final double height;
@@ -22,7 +24,7 @@ class ActivitySuggestionCard extends StatelessWidget {
 
   const ActivitySuggestionCard({
     super.key,
-    required this.activity,
+    required this.controller,
     required this.onPressed,
     required this.width,
     required this.height,
@@ -31,13 +33,24 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.image,
   });
 
+  ActivityPlanModel get activity => controller.updatedActivity;
+
+  Future<void> _toggleBookmark() async {
+    try {
+      await controller.toggleBookmarkedActivity();
+    } catch (e, stack) {
+      debugger(when: kDebugMode);
+      ErrorHandler.logError(e: e, s: stack, data: activity.toJson());
+    } finally {
+      onChange();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isBookmarked = BookmarkedActivitiesRepo.isBookmarked(activity);
-
     return PressableButton(
-      depressed: selected || onPressed == null,
+      depressed: selected,
       onPressed: onPressed,
       borderRadius: BorderRadius.circular(24.0),
       color: theme.brightness == Brightness.dark
@@ -180,19 +193,10 @@ class ActivitySuggestionCard extends StatelessWidget {
               right: 4.0,
               child: IconButton(
                 icon: Icon(
-                  isBookmarked ? Icons.save : Icons.save_outlined,
+                  controller.isBookmarked ? Icons.save : Icons.save_outlined,
                   color: Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
-                onPressed: onPressed != null
-                    ? () async {
-                        await (isBookmarked
-                            ? BookmarkedActivitiesRepo.remove(
-                                activity.bookmarkId,
-                              )
-                            : BookmarkedActivitiesRepo.save(activity));
-                        onChange();
-                      }
-                    : null,
+                onPressed: _toggleBookmark,
                 style: IconButton.styleFrom(
                   backgroundColor: Theme.of(context)
                       .colorScheme
