@@ -9,9 +9,7 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
-import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_dialog.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -38,25 +36,9 @@ class ActivityPlanCard extends StatefulWidget {
 class ActivityPlanCardState extends State<ActivityPlanCard> {
   static const double itemPadding = 12;
 
-  Future<ActivityPlanModel> _addBookmark(ActivityPlanModel activity) async {
+  Future<void> _toggleBookmark() async {
     try {
-      return BookmarkedActivitiesRepo.save(activity);
-    } catch (e, stack) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: stack, data: activity.toJson());
-      return activity; // Return the original activity in case of error
-    } finally {
-      if (mounted) {
-        setState(() {});
-      }
-    }
-  }
-
-  Future<void> _removeBookmark() async {
-    try {
-      BookmarkedActivitiesRepo.remove(
-        widget.controller.updatedActivity.bookmarkId,
-      );
+      await widget.controller.toggleBookmarkedActivity();
     } catch (e, stack) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
@@ -91,10 +73,6 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
       context.go("/rooms?spaceId=${widget.controller.room.id}");
     }
   }
-
-  bool get _isBookmarked => BookmarkedActivitiesRepo.isBookmarked(
-        widget.controller.updatedActivity,
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -376,13 +354,9 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                 ),
                                 if (!widget.controller.isEditing)
                                   IconButton(
-                                    onPressed: _isBookmarked
-                                        ? () => _removeBookmark()
-                                        : () => _addBookmark(
-                                              widget.controller.updatedActivity,
-                                            ),
+                                    onPressed: _toggleBookmark,
                                     icon: Icon(
-                                      _isBookmarked
+                                      widget.controller.isBookmarked
                                           ? Icons.save
                                           : Icons.save_outlined,
                                     ),

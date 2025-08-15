@@ -60,16 +60,16 @@ class BookmarkedActivitiesListState extends State<BookmarkedActivitiesList> {
             runSpacing: 16.0,
             spacing: 4.0,
             children: _bookmarkedActivities.map((activity) {
-              return ActivitySuggestionCard(
-                activity: activity,
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return ActivityPlannerBuilder(
-                        initialActivity: activity,
-                        room: widget.room,
-                        builder: (controller) {
+              return ActivityPlannerBuilder(
+                initialActivity: activity,
+                room: widget.room,
+                builder: (controller) {
+                  return ActivitySuggestionCard(
+                    controller: controller,
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
                           return ActivitySuggestionDialog(
                             controller: controller,
                             buttonText: l10n.launchActivityButton,
@@ -77,11 +77,11 @@ class BookmarkedActivitiesListState extends State<BookmarkedActivitiesList> {
                         },
                       );
                     },
+                    width: cardWidth,
+                    height: cardHeight,
+                    onChange: () => setState(() {}),
                   );
                 },
-                width: cardWidth,
-                height: cardHeight,
-                onChange: () => setState(() {}),
               );
             }).toList(),
           ),
