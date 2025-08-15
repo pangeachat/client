@@ -5,6 +5,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestions_constants.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,31 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
     } else {
       _setShowDropdown(true);
     }
+  }
+
+  int _getAssignedRolesCount() {
+    final assignedRoles = room.assignedRoles;
+    if (assignedRoles == null) return 0;
+
+    // Filter out the bot from the count, similar to activityIsFinished logic
+    //This is a workaround for the Bot not officially wrapping up, if it does in the future this can be taken out and just return the count
+    final nonBotRoles = assignedRoles.values.where(
+      (role) => role.userId != BotName.byEnvironment,
+    );
+
+    return nonBotRoles.length;
+  }
+
+  int _getCompletedRolesCount() {
+    final assignedRoles = room.assignedRoles;
+    if (assignedRoles == null) return 0;
+
+    // Filter out the bot and count only finished non-bot roles
+    return assignedRoles.values
+        .where(
+          (role) => role.userId != BotName.byEnvironment && role.isFinished,
+        )
+        .length;
   }
 
   Future<void> _finishActivity({bool forAll = false}) async {
@@ -152,7 +178,15 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        L10n.of(context).endActivityDesc,
+                        //L10n.of(context).endActivityDesc,
+                        "🎯 ${room.activityPlan!.learningObjective}",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: isColumnMode ? 16.0 : 12.0,
+                        ),
+                      ),
+                      Text(
+                        "📖 ${room.activityPlan!.vocabString}",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: isColumnMode ? 16.0 : 12.0,
@@ -162,6 +196,14 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                         imageUrl:
                             "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.endActivityAssetPath}",
                         width: isColumnMode ? 240.0 : 120.0,
+                      ),
+                      Text(
+                        "${_getCompletedRolesCount()}/${_getAssignedRolesCount()} completed",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: isColumnMode ? 14.0 : 11.0,
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
                       ),
                       Row(
                         spacing: 12.0,
