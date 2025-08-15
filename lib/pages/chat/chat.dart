@@ -186,6 +186,9 @@ class ChatController extends State<ChatPageWithRoom>
   late final FocusNode inputFocus;
   StreamSubscription<html.Event>? onFocusSub;
 
+  // Activity pinned message dropdown callback
+  VoidCallback? activityPinnedShowDropdown;
+
   Timer? typingCoolDown;
   Timer? typingTimeout;
   bool currentlyTyping = false;

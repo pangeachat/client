@@ -125,15 +125,22 @@ class ChatView extends StatelessWidget {
     if (!controller.room.isArchived) {
       // #Pangea
       return [
-        if (controller.room.activityPlan == null ||
-            !controller.room.showActivityChatUI)
-          IconButton(
-            icon: const Icon(Icons.search_outlined),
-            tooltip: L10n.of(context).search,
-            onPressed: () {
-              context.go('/rooms/${controller.room.id}/search');
-            },
-          ),
+        (controller.room.activityPlan == null ||
+                !controller.room.showActivityChatUI)
+            ? IconButton(
+                icon: const Icon(Icons.search_outlined),
+                tooltip: L10n.of(context).search,
+                onPressed: () {
+                  context.go('/rooms/${controller.room.id}/search');
+                },
+              )
+            : IconButton(
+                icon: const Icon(Icons.event_note, color: AppConfig.goldLight),
+                tooltip: "Activity status",
+                onPressed: () {
+                  controller.activityPinnedShowDropdown?.call();
+                },
+              ),
         IconButton(
           icon: const Icon(Icons.settings_outlined),
           tooltip: L10n.of(context).chatDetails,
@@ -466,7 +473,11 @@ class ChatView extends StatelessWidget {
                               ],
                             ),
                           ),
-                        ActivityPinnedMessage(controller),
+                        ActivityPinnedMessage(
+                          controller,
+                          onShowDropdown: () {
+                          },
+                        ),
                         // Pangea#
                       ],
                     ),
