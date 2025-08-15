@@ -1,13 +1,14 @@
 import 'dart:developer';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/config/app_emojis.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_emoji_row.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 class LemmmaHighlightEmojiRow extends StatefulWidget {
   final ConstructIdentifier cId;
