@@ -49,6 +49,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                             icon: Symbols.approval_delegation,
                             onPressed: controller.requestAllAnalytics,
                             mini: mini,
+                            hideLabel: false,
                           ),
                           if (controller.room != null &&
                               controller.availableAnalyticsRooms.isNotEmpty)
@@ -66,6 +67,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                 );
                               },
                               mini: mini,
+                              hideLabel: mini,
                             ),
                         ],
                       ),
@@ -88,6 +90,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                             icon: Symbols.refresh,
                             onPressed: controller.refresh,
                             mini: mini,
+                            hideLabel: mini,
                           ),
                           DropdownButtonHideUnderline(
                             child: DropdownButton2<LanguageModel>(
@@ -315,12 +318,14 @@ class _MenuButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   final bool mini;
+  final bool hideLabel;
 
   const _MenuButton({
     required this.text,
     required this.icon,
     required this.onPressed,
     this.mini = false,
+    this.hideLabel = false,
   });
 
   @override
@@ -334,7 +339,7 @@ class _MenuButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         height: height,
-        width: mini ? height : null,
+        width: hideLabel ? height : null,
         decoration: BoxDecoration(
           color: theme.colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(40),
@@ -343,7 +348,7 @@ class _MenuButton extends StatelessWidget {
           horizontal: !mini ? 8.0 : 4.0,
           vertical: 4.0,
         ),
-        child: mini
+        child: hideLabel
             ? Icon(
                 icon,
                 color: theme.colorScheme.onPrimaryContainer,
