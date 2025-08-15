@@ -4446,9 +4446,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "No chat or space found with that code. Please try again.";
     },
-    get$spaceAnalyticsPage() {
-      return "Space analytics page";
-    },
     get$numCompletedActivities() {
       return "Number of completed activities";
     },
@@ -4572,6 +4569,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_260", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "yXVRwNDQ4x5C0kTWg+Ir4g31UM4=");
+})($__dart_deferred_initializers__, "2FnwSNCNmDGEbKEkGgwXdp33ZF4=");
 ;
 //# sourceMappingURL=main.dart.js_260.part.js.map
