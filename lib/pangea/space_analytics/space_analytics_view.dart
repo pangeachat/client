@@ -67,7 +67,6 @@ class SpaceAnalyticsView extends StatelessWidget {
                                 );
                               },
                               mini: mini,
-                              hideLabel: mini,
                             ),
                         ],
                       ),
@@ -90,7 +89,6 @@ class SpaceAnalyticsView extends StatelessWidget {
                             icon: Symbols.refresh,
                             onPressed: controller.refresh,
                             mini: mini,
-                            hideLabel: mini,
                           ),
                           DropdownButtonHideUnderline(
                             child: DropdownButton2<LanguageModel>(
@@ -318,14 +316,14 @@ class _MenuButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   final bool mini;
-  final bool hideLabel;
+  final bool? hideLabel;
 
   const _MenuButton({
     required this.text,
     required this.icon,
     required this.onPressed,
     this.mini = false,
-    this.hideLabel = false,
+    this.hideLabel,
   });
 
   @override
@@ -339,7 +337,7 @@ class _MenuButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         height: height,
-        width: hideLabel ? height : null,
+        width: hideLabel ?? mini ? height : null,
         decoration: BoxDecoration(
           color: theme.colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(40),
@@ -348,7 +346,7 @@ class _MenuButton extends StatelessWidget {
           horizontal: !mini ? 8.0 : 4.0,
           vertical: 4.0,
         ),
-        child: hideLabel
+        child: hideLabel ?? mini
             ? Icon(
                 icon,
                 color: theme.colorScheme.onPrimaryContainer,
