@@ -117,7 +117,7 @@ class FindYourPeopleView extends StatelessWidget {
                                     )
                                   : BoxConstraints(
                                       maxWidth:
-                                          MediaQuery.of(context).size.width -
+                                          MediaQuery.sizeOf(context).width -
                                               24.0,
                                     ),
                               child: SizedBox(

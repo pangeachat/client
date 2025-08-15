@@ -30,8 +30,8 @@ class FullWidthDialog extends StatelessWidget {
                 maxHeight: maxHeight,
               )
             : BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width,
-                maxHeight: MediaQuery.of(context).size.height,
+                maxWidth: MediaQuery.sizeOf(context).width,
+                maxHeight: MediaQuery.sizeOf(context).height,
               ),
         child: ClipRRect(
           borderRadius:

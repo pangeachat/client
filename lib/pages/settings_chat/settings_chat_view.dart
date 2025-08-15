@@ -36,13 +36,6 @@ class SettingsChatView extends StatelessWidget {
               //   storeKey: SettingKeys.renderHtml,
               //   defaultValue: AppConfig.renderHtml,
               // ),
-              // SettingsSwitchListTile.adaptive(
-              //   title: L10n.of(context).hideMemberChangesInPublicChats,
-              //   subtitle: L10n.of(context).hideMemberChangesInPublicChatsBody,
-              //   onChanged: (b) => AppConfig.hideUnimportantStateEvents = b,
-              //   storeKey: SettingKeys.hideUnimportantStateEvents,
-              //   defaultValue: AppConfig.hideUnimportantStateEvents,
-              // ),
               // Pangea#
               SettingsSwitchListTile.adaptive(
                 title: L10n.of(context).hideRedactedMessages,
