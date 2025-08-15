@@ -10,13 +10,14 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
-import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_suggestions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -272,8 +273,11 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     setLaunchState(ActivityLaunchState.base);
   }
 
+  UserController get _userController =>
+      MatrixState.pangeaController.userController;
+
   bool get isBookmarked =>
-      BookmarkedActivitiesRepo.isBookmarked(updatedActivity);
+      _userController.isBookmarked(updatedActivity.bookmarkId);
 
   Future<void> toggleBookmarkedActivity() async {
     isBookmarked
@@ -282,16 +286,33 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
   }
 
   Future<void> _addBookmarkedActivity() async {
-    await BookmarkedActivitiesRepo.save(updatedActivity);
+    await _userController.addBookmarkedActivity(
+      activityId: updatedActivity.bookmarkId,
+    );
+    await ActivityPlanRepo.set(updatedActivity);
   }
 
   Future<void> _updateBookmarkedActivity() async {
-    await BookmarkedActivitiesRepo.remove(widget.initialActivity.bookmarkId);
-    await BookmarkedActivitiesRepo.save(updatedActivity);
+    // save updates locally, in case choreo results in error
+    await ActivityPlanRepo.set(updatedActivity);
+
+    // prevent an error or delay from the choreo endpoint bubbling up
+    // in the UI, since the changes are still stored locally
+    ActivityPlanRepo.update(
+      updatedActivity,
+    ).then((resp) {
+      _userController.updateBookmarkedActivity(
+        activityId: widget.initialActivity.bookmarkId,
+        newActivityId: resp.bookmarkId,
+      );
+    });
   }
 
   Future<void> _removeBookmarkedActivity() async {
-    await BookmarkedActivitiesRepo.remove(updatedActivity.bookmarkId);
+    await _userController.removeBookmarkedActivity(
+      activityId: updatedActivity.bookmarkId,
+    );
+    await ActivityPlanRepo.remove(updatedActivity.bookmarkId);
   }
 
   Future<void> launchToSpace() async {

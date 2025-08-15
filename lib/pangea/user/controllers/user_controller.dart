@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:matrix/matrix.dart' as matrix;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_suggestions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -148,6 +151,7 @@ class UserController {
     _initializing = true;
 
     try {
+      await GetStorage.init('activity_plan_by_id_storage');
       await _initialize();
       _addProfileListener();
       _addAnalyticsRoomIdsToPublicProfile();
@@ -444,7 +448,10 @@ class UserController {
   Future<void> addBookmarkedActivity({
     required String activityId,
   }) async {
-    if (activitiesProfile == null) return;
+    if (activitiesProfile == null) {
+      throw Exception("Activities profile is not initialized");
+    }
+
     activitiesProfile!.addBookmark(activityId);
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileActivities,
@@ -452,11 +459,37 @@ class UserController {
     );
   }
 
+  Future<List<ActivityPlanModel>> getBookmarkedActivities() async {
+    if (activitiesProfile == null) {
+      throw Exception("Activities profile is not initialized");
+    }
+
+    return Future.wait(
+      activitiesProfile!.bookmarkedActivities
+          .map((id) => ActivityPlanRepo.get(id))
+          .toList(),
+    );
+  }
+
+  List<ActivityPlanModel> getBookmarkedActivitiesSync() {
+    if (activitiesProfile == null) {
+      throw Exception("Activities profile is not initialized");
+    }
+
+    return activitiesProfile!.bookmarkedActivities
+        .map((id) => ActivityPlanRepo.getCached(id))
+        .whereType<ActivityPlanModel>()
+        .toList();
+  }
+
   Future<void> updateBookmarkedActivity({
     required String activityId,
     required String newActivityId,
   }) async {
-    if (activitiesProfile == null) return;
+    if (activitiesProfile == null) {
+      throw Exception("Activities profile is not initialized");
+    }
+
     activitiesProfile!.removeBookmark(activityId);
     activitiesProfile!.addBookmark(newActivityId);
     await _savePublicProfileUpdate(
@@ -468,13 +501,19 @@ class UserController {
   Future<void> removeBookmarkedActivity({
     required String activityId,
   }) async {
-    if (activitiesProfile == null) return;
+    if (activitiesProfile == null) {
+      throw Exception("Activities profile is not initialized");
+    }
+
     activitiesProfile!.removeBookmark(activityId);
     await _savePublicProfileUpdate(
       PangeaEventTypes.profileActivities,
       activitiesProfile!.toJson(),
     );
   }
+
+  bool isBookmarked(String id) =>
+      activitiesProfile?.bookmarkedActivities.contains(id) ?? false;
 
   Future<AnalyticsProfileModel> getPublicAnalyticsProfile(
     String userId,
