@@ -1,9 +1,6 @@
 import 'dart:developer';
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/app_emojis.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -13,6 +10,8 @@ import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_zoom_activity_button.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class LemmaEmojiRow extends StatefulWidget {
   final ConstructIdentifier cId;
@@ -178,12 +177,14 @@ class EmojiEditOverlay extends StatelessWidget {
   final Function(String) onSelectEmoji;
   final ConstructIdentifier cId;
   final List<String> emojis;
+  final String? displayEmoji;
 
   const EmojiEditOverlay({
     super.key,
     required this.onSelectEmoji,
     required this.cId,
     required this.emojis,
+    this.displayEmoji,
   });
 
   @override
@@ -192,19 +193,19 @@ class EmojiEditOverlay extends StatelessWidget {
       borderRadius: BorderRadius.circular(AppConfig.borderRadius),
       child: Container(
         padding: const EdgeInsets.all(8),
-        height: 70,
-        width: 200,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).colorScheme.onSurface.withAlpha(50),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
+        height: 80,
+        //width: 200,
+        // decoration: BoxDecoration(
+        //   color: Theme.of(context).colorScheme.surface,
+        //   borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+        //   boxShadow: [
+        //     BoxShadow(
+        //       color: Theme.of(context).colorScheme.onSurface.withAlpha(50),
+        //       blurRadius: 4,
+        //       offset: const Offset(0, 2),
+        //     ),
+        //   ],
+        // ),
         alignment: Alignment.center,
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
@@ -216,6 +217,9 @@ class EmojiEditOverlay extends StatelessWidget {
                   (emoji) => EmojiChoiceItem(
                     emoji: emoji,
                     onSelectEmoji: onSelectEmoji,
+                    // will highlight selected emoji, or the first emoji if none are selected
+                    isDisplay: (displayEmoji == emoji ||
+                        ((displayEmoji == null) && emoji == emojis.first)),
                   ),
                 )
                 .toList(),
@@ -229,10 +233,12 @@ class EmojiEditOverlay extends StatelessWidget {
 class EmojiChoiceItem extends StatefulWidget {
   final String emoji;
   final Function(String) onSelectEmoji;
+  final bool isDisplay;
 
   const EmojiChoiceItem({
     super.key,
     required this.emoji,
+    required this.isDisplay,
     required this.onSelectEmoji,
   });
 
@@ -245,6 +251,10 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.isDisplay) {
+      widget.onSelectEmoji(widget.emoji);
+    }
+
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
@@ -256,18 +266,27 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
           }
           widget.onSelectEmoji(widget.emoji);
         },
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: _isHovered
-                ? Theme.of(context).colorScheme.primary.withAlpha(50)
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          ),
-          child: Text(
-            widget.emoji,
-            style: Theme.of(context).textTheme.headlineSmall,
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: _isHovered
+                  ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              border: widget.isDisplay
+                  ? Border.all(
+                      color: AppConfig.goldLight,
+                      width: 4,
+                    )
+                  : null,
+            ),
+            child: Text(
+              widget.emoji,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
           ),
         ),
       ),
