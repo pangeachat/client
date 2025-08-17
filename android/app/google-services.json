@@ -8,42 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:545984292675:android:49df48f90e934f5bb931f6",
-        "android_client_info": {
-          "package_name": "com.example.test"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "545984292675-2amsnoan1mt6lec1fld1a7eagu6gej7o.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAyWBbl83WXzbVr6txyCmlUsZhpWomQfdg"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "545984292675-2amsnoan1mt6lec1fld1a7eagu6gej7o.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "545984292675-f5p76l3h9sibsonrct7a8l9ca3c69at0.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.talktolearn.chat"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:545984292675:android:d808acce7a80c20bb931f6",
         "android_client_info": {
           "package_name": "com.talktolearn.chat"
