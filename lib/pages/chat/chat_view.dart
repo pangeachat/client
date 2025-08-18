@@ -126,8 +126,7 @@ class ChatView extends StatelessWidget {
     if (!controller.room.isArchived) {
       // #Pangea
       return [
-        (controller.room.activityPlan == null ||
-                !controller.room.showActivityChatUI)
+        !controller.room.showActivityChatUI
             ? IconButton(
                 icon: const Icon(Icons.search_outlined),
                 tooltip: L10n.of(context).search,

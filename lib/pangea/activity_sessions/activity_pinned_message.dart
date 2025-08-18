@@ -99,6 +99,10 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
 
   @override
   Widget build(BuildContext context) {
+    if (!room.showActivityChatUI) {
+      return const SizedBox.shrink();
+    }
+
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
