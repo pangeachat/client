@@ -135,7 +135,9 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
       _status = _status.fromCode(resp.statusCode);
       if (_status != ActivitySearchEnum.error) {
         if (_activityItems.isEmpty) {
-          if (mounted) setState(() => _status = ActivitySearchEnum.timeout);
+          if (mounted && retries != 0) {
+            setState(() => _status = ActivitySearchEnum.timeout);
+          }
 
           Future.delayed(const Duration(seconds: 5), () {
             if (mounted) _setActivityItems(retries: retries + 1);
