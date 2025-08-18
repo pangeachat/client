@@ -4843,7 +4843,7 @@
   "autocorrectNotAvailable": "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!",
   "pleaseUpdateApp": "Please update the app to continue.",
   "chooseEmojiInstructionsBody": "Match emojis with the words they best represent. Don't worry! No points off for disagreeing. 😅",
-  "pickAnEmojiFor": "Pick an emoji for ${lemma}",
+  "pickAnEmojiFor": "Pick an emoji for {lemma}",
   "@pickAnEmojiFor": {
     "type": "String",
     "placeholders": {
@@ -5093,7 +5093,6 @@
   "errorFetchingActivity": "Failed to fetch activity",
   "check": "Check",
   "unableToFindRoom": "No chat or space found with that code. Please try again.",
-  "spaceAnalyticsPage": "Space analytics page",
   "numCompletedActivities": "Number of completed activities",
   "viewingAnalytics": "Viewing {visible}/{users} Analytics",
   "@viewingAnalytics": {
@@ -5192,7 +5191,7 @@
       }
     }
   },
-  "noDataFound": "Not found",
+  "noDataFound": "No data found",
   "activityFinishedMessage": "All Finished!",
   "endForAll": "End for all"
 }
