@@ -1,8 +1,9 @@
-import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:flutter/widgets.dart';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import '../../../config/firebase_options.dart';
 
 // PageRoute import
@@ -29,7 +30,7 @@ class GoogleAnalytics {
     }
 
     analytics = FirebaseAnalytics.instanceFor(app: app);
-    
+
     debugPrint("Firebase App Name: ${app.name}");
     debugPrint("Firebase App Options:");
     debugPrint("  App ID: ${app.options.appId}");
