@@ -1,29 +1,27 @@
 import 'dart:developer';
-import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_emojis.dart';
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_emoji_row.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_builder.dart';
 
 class LemmmaHighlightEmojiRow extends StatefulWidget {
+  final LemmaMeaningBuilderState controller;
   final ConstructIdentifier cId;
   final VoidCallback? onTapOverride;
   final bool isSelected;
   final double? iconSize;
 
-  final void Function()? emojiSetCallback;
-
   const LemmmaHighlightEmojiRow({
     super.key,
+    required this.controller,
     required this.cId,
     required this.onTapOverride,
     required this.isSelected,
-    this.emojiSetCallback,
     this.iconSize,
   });
 
@@ -33,12 +31,10 @@ class LemmmaHighlightEmojiRow extends StatefulWidget {
 
 class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
   String? displayEmoji;
-  List<String> emojiChoices = [];
 
   @override
   void initState() {
     super.initState();
-    loadEmojiSet();
     displayEmoji = widget.cId.userSetEmoji.firstOrNull;
   }
 
@@ -56,39 +52,14 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
     super.dispose();
   }
 
-  void loadEmojiSet() async {
-    try {
-      final info = await widget.cId.getLemmaInfo();
-      emojiChoices = info.emoji;
-    } catch (e, s) {
-      for (int i = 0; i < 3; i++) {
-        emojiChoices
-            .add(AppEmojis.emojis[Random().nextInt(AppEmojis.emojis.length)]);
-      }
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(data: widget.cId.toJson(), e: e, s: s);
-    }
-
-    // Trigger rebuild once emojis are loaded
-    if (mounted) {
-      setState(() {});
-    }
-  }
-
   Future<void> setEmoji(String emoji) async {
     try {
-      displayEmoji = emoji;
-
+      setState(() => displayEmoji = emoji);
       await widget.cId.setUserLemmaInfo(
         UserSetLemmaInfo(
           emojis: [emoji],
         ),
       );
-
-      if (mounted) {
-        widget.emojiSetCallback?.call();
-        setState(() {});
-      }
     } catch (e, s) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(data: widget.cId.toJson(), e: e, s: s);
@@ -97,12 +68,93 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.controller.isLoading) {
+      return const CircularProgressIndicator.adaptive();
+    }
+
+    final emojis = widget.controller.lemmaInfo?.emoji;
+    if (widget.controller.error != null || emojis == null || emojis.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
     return Material(
-      child: EmojiEditOverlay(
-        cId: widget.cId,
-        onSelectEmoji: setEmoji,
-        emojis: emojiChoices,
-        displayEmoji: displayEmoji,
+      borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+      child: Container(
+        padding: const EdgeInsets.all(8),
+        height: 80,
+        alignment: Alignment.center,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: emojis
+                .map(
+                  (emoji) => EmojiChoiceItem(
+                    emoji: emoji,
+                    onSelectEmoji: () => setEmoji(emoji),
+                    // will highlight selected emoji, or the first emoji if none are selected
+                    isDisplay: (displayEmoji == emoji ||
+                        (displayEmoji == null && emoji == emojis.first)),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class EmojiChoiceItem extends StatefulWidget {
+  final String emoji;
+  final VoidCallback onSelectEmoji;
+  final bool isDisplay;
+
+  const EmojiChoiceItem({
+    super.key,
+    required this.emoji,
+    required this.isDisplay,
+    required this.onSelectEmoji,
+  });
+
+  @override
+  EmojiChoiceItemState createState() => EmojiChoiceItemState();
+}
+
+class EmojiChoiceItemState extends State<EmojiChoiceItem> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: GestureDetector(
+        onTap: widget.onSelectEmoji,
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: _isHovered
+                  ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                  : Colors.transparent,
+              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+              border: widget.isDisplay
+                  ? Border.all(
+                      color: AppConfig.goldLight,
+                      width: 4,
+                    )
+                  : null,
+            ),
+            child: Text(
+              widget.emoji,
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ),
+        ),
       ),
     );
   }
