@@ -25,7 +25,7 @@ class SpaceAnalyticsView extends StatelessWidget {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(L10n.of(context).spaceAnalyticsPage),
+        title: Text(L10n.of(context).spaceAnalytics),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -49,6 +49,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                             icon: Symbols.approval_delegation,
                             onPressed: controller.requestAllAnalytics,
                             mini: mini,
+                            hideLabel: false,
                           ),
                           if (controller.room != null &&
                               controller.availableAnalyticsRooms.isNotEmpty)
@@ -147,8 +148,8 @@ class SpaceAnalyticsView extends StatelessWidget {
                                 ),
                               ),
                               dropdownStyleData: const DropdownStyleData(
-                                offset: Offset(-50, 0),
-                                width: 150,
+                                offset: Offset(-160, 0),
+                                width: 250,
                               ),
                             ),
                           ),
@@ -315,12 +316,14 @@ class _MenuButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   final bool mini;
+  final bool? hideLabel;
 
   const _MenuButton({
     required this.text,
     required this.icon,
     required this.onPressed,
     this.mini = false,
+    this.hideLabel,
   });
 
   @override
@@ -334,7 +337,7 @@ class _MenuButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         height: height,
-        width: mini ? height : null,
+        width: hideLabel ?? mini ? height : null,
         decoration: BoxDecoration(
           color: theme.colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(40),
@@ -343,7 +346,7 @@ class _MenuButton extends StatelessWidget {
           horizontal: !mini ? 8.0 : 4.0,
           vertical: 4.0,
         ),
-        child: mini
+        child: hideLabel ?? mini
             ? Icon(
                 icon,
                 color: theme.colorScheme.onPrimaryContainer,
@@ -502,22 +505,33 @@ class _RequestButton extends StatelessWidget {
         child: Opacity(
           opacity: status.enabled ? 0.9 : 0.3,
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: status.backgroundColor(context),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8.0,
+              vertical: 4.0,
             ),
+            decoration: status != RequestStatus.unavailable
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(40),
+                    color: status.backgroundColor(context),
+                  )
+                : null,
             child: Row(
               spacing: 8.0,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  status.icon,
-                  size: !mini ? 12.0 : 8.0,
-                ),
+                if (status.icon != null)
+                  Icon(
+                    status.icon,
+                    size: !mini ? 12.0 : 8.0,
+                  ),
                 Text(
                   status.label(context),
-                  style: TextStyle(fontSize: !mini ? 12.0 : 8.0),
+                  style: TextStyle(
+                    fontSize: !mini ? 12.0 : 8.0,
+                    fontStyle: status == RequestStatus.unavailable
+                        ? FontStyle.italic
+                        : FontStyle.normal,
+                  ),
                 ),
               ],
             ),
