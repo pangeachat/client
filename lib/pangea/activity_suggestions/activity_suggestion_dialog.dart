@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -40,6 +42,22 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
       ? 400.0
       : MediaQuery.of(context).size.width;
 
+  StreamSubscription? _stateSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    _stateSubscription = widget.controller.stateStream.stream.listen((state) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _stateSubscription?.cancel();
+    super.dispose();
+  }
+
   Future<void> launchActivity() async {
     try {
       if (!widget.controller.room.isSpace) {
@@ -54,8 +72,10 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
         _launchError = null;
       });
 
-      await widget.controller.launchToSpace();
-      context.go("/rooms?spaceId=${widget.controller.room.id}");
+      final ids = await widget.controller.launchToSpace();
+      ids.length == 1
+          ? context.go("/rooms/${ids.first}")
+          : context.go("/rooms?spaceId=${widget.controller.room.id}");
       Navigator.of(context).pop();
     } catch (e, s) {
       _launchError = L10n.of(context).errorLaunchActivityMessage;
