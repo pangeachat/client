@@ -2634,12 +2634,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$trialPeriodExpired() {
       return "Th\u1eddi gian d\xf9ng th\u1eed \u0111\xe3 h\u1ebft h\u1ea1n";
     },
-    get$translations() {
-      return "b\u1ea3n d\u1ecbch";
-    },
-    get$messageAudio() {
-      return "\xe2m thanh tin nh\u1eafn";
-    },
     get$subscribedToUnlockTools() {
       return "\u0110\u0103ng k\xfd \u0111\u1ec3 m\u1edf kh\xf3a d\u1ecbch t\u01b0\u01a1ng t\xe1c, ki\u1ec3m tra ng\u1eef ph\xe1p, \xe2m thanh, ho\u1ea1t \u0111\u1ed9ng v\xe0 ph\xe2n t\xedch h\u1ecdc t\u1eadp!";
     },
@@ -4032,9 +4026,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseEmojiInstructionsBody() {
       return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho t\u1eeb n\xe0y! Kh\xf4ng c\xf3 c\xe2u tr\u1ea3 l\u1eddi sai v\xe0 b\u1ea1n c\xf3 th\u1ec3 chuy\u1ec3n \u0111\u1ed5i b\u1ea5t c\u1ee9 l\xfac n\xe0o! \ud83d\ude04";
     },
-    pickAnEmojiFor$1(lemma) {
-      return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng c\u1ea3m x\xfac cho $" + lemma;
-    },
     get$analyticsVocabListBody() {
       return "\u0110\xe2y l\xe0 to\xe0n b\u1ed9 t\u1eeb v\u1ef1ng c\u1ee7a b\u1ea1n! Khi b\u1ea1n ki\u1ebfm XP cho m\u1ed7i t\u1eeb, ch\xfang s\u1ebd t\u1eeb h\u1ea1t gi\u1ed1ng ph\xe1t tri\u1ec3n th\xe0nh n\u1edf r\u1ed9. Nh\u1ea5p v\xe0o b\u1ea5t k\u1ef3 t\u1eeb n\xe0o \u0111\u1ec3 xem th\xeam chi ti\u1ebft.";
     },
@@ -4085,9 +4076,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$save(_) {
       return "L\u01b0u";
-    },
-    get$wordFocusListeningMultipleChoice() {
-      return "\xc2m thanh n\xe0o ph\xf9 h\u1ee3p v\u1edbi t\u1eeb?";
     },
     get$translationProblem() {
       return "V\u1ea5n \u0111\u1ec1 d\u1ecbch thu\u1eadt";
@@ -4569,6 +4557,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "E+YYdz4kfgwLvXmWsAqtHYflRqI=");
+})($__dart_deferred_initializers__, "O5ZT8Uwf5oqZha/EJzxL8/D1HE8=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map

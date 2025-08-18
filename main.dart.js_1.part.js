@@ -2641,12 +2641,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$trialPeriodExpired() {
       return "Your trial period has expired";
     },
-    get$translations() {
-      return "translations";
-    },
-    get$messageAudio() {
-      return "message audio";
-    },
     get$subscribedToUnlockTools() {
       return "Subscribe to unlock interactive translation and grammar checking, audio playback, personalized practice activities, and learning analytics!";
     },
@@ -4039,9 +4033,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseEmojiInstructionsBody() {
       return "Match emojis with the words they best represent. Don't worry! No points off for disagreeing. \ud83d\ude05";
     },
-    pickAnEmojiFor$1(lemma) {
-      return "Pick an emoji for $" + lemma;
-    },
     get$analyticsVocabListBody() {
       return "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.";
     },
@@ -4092,9 +4083,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$save(_) {
       return "Save";
-    },
-    get$wordFocusListeningMultipleChoice() {
-      return "Which audio matches the word?";
     },
     get$translationProblem() {
       return "Translation problem";
@@ -6061,6 +6049,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "L0kkeDOhQlWDFfTxWTGhGC+/KXY=");
+})($__dart_deferred_initializers__, "oYxTO+31bJpwXNaB3eEiyvEDrm0=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

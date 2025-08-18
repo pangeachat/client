@@ -2635,12 +2635,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$trialPeriodExpired() {
       return "Su periodo de prueba ha expirado";
     },
-    get$translations() {
-      return "traducci\xf3nes";
-    },
-    get$messageAudio() {
-      return "mensaje de audio";
-    },
     get$subscribedToUnlockTools() {
       return "\xa1Suscr\xedbete para desbloquear la traducci\xf3n interactiva y la verificaci\xf3n gramatical, la reproducci\xf3n de audio, las actividades de pr\xe1ctica personalizadas y la anal\xedtica de aprendizaje!";
     },
@@ -4033,9 +4027,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseEmojiInstructionsBody() {
       return "Empareja emojis con las palabras que mejor representan. \xa1No te preocupes! No se restan puntos por no estar de acuerdo. \ud83d\ude05";
     },
-    pickAnEmojiFor$1(lemma) {
-      return "Elige un emoji para $" + lemma;
-    },
     get$analyticsVocabListBody() {
       return "\xa1Este es todo tu vocabulario! A medida que ganes XP por cada palabra, pasar\xe1n de pl\xe1ntula a plena floraci\xf3n. Haz clic en cualquier palabra para ver m\xe1s detalles.";
     },
@@ -4086,9 +4077,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$save(_) {
       return "Guardar";
-    },
-    get$wordFocusListeningMultipleChoice() {
-      return "\xbfQu\xe9 audio coincide con la palabra?";
     },
     get$translationProblem() {
       return "Problema de traducci\xf3n";
@@ -4570,6 +4558,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_195", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "0rlgEnHGcwiu8YcySrvXXGfSyp8=");
+})($__dart_deferred_initializers__, "aiMHutKzz78EUQSM8kDtc8j4y0g=");
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map
