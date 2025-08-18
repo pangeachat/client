@@ -206,9 +206,6 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                     },
                     width: cardWidth,
                     height: cardHeight,
-                    onChange: () {
-                      if (mounted) setState(() {});
-                    },
                   );
                 },
               );

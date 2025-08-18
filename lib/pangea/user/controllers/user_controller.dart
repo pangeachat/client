@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart' as matrix;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
-import 'package:fluffychat/pangea/activity_suggestions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -464,11 +463,7 @@ class UserController {
       throw Exception("Activities profile is not initialized");
     }
 
-    return Future.wait(
-      activitiesProfile!.bookmarkedActivities
-          .map((id) => ActivityPlanRepo.get(id))
-          .toList(),
-    );
+    return activitiesProfile!.getBookmarkedActivities();
   }
 
   List<ActivityPlanModel> getBookmarkedActivitiesSync() {
@@ -476,10 +471,7 @@ class UserController {
       throw Exception("Activities profile is not initialized");
     }
 
-    return activitiesProfile!.bookmarkedActivities
-        .map((id) => ActivityPlanRepo.getCached(id))
-        .whereType<ActivityPlanModel>()
-        .toList();
+    return activitiesProfile!.getBookmarkedActivitiesSync();
   }
 
   Future<void> updateBookmarkedActivity({
@@ -512,8 +504,7 @@ class UserController {
     );
   }
 
-  bool isBookmarked(String id) =>
-      activitiesProfile?.bookmarkedActivities.contains(id) ?? false;
+  bool isBookmarked(String id) => activitiesProfile?.isBookmarked(id) ?? false;
 
   Future<AnalyticsProfileModel> getPublicAnalyticsProfile(
     String userId,

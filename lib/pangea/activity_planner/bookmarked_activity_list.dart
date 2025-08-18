@@ -110,7 +110,6 @@ class BookmarkedActivitiesListState extends State<BookmarkedActivitiesList> {
                     },
                     width: cardWidth,
                     height: cardHeight,
-                    onChange: () => setState(() {}),
                   );
                 },
               );

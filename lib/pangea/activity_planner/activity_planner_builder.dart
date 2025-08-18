@@ -283,6 +283,7 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     isBookmarked
         ? await _removeBookmarkedActivity()
         : await _addBookmarkedActivity();
+    update();
   }
 
   Future<void> _addBookmarkedActivity() async {

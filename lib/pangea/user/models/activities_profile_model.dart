@@ -1,26 +1,39 @@
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_suggestions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 
 class ActivitiesProfileModel {
-  final List<String> bookmarkedActivities;
+  final List<String> _bookmarkedActivities;
 
   ActivitiesProfileModel({
-    required this.bookmarkedActivities,
-  });
+    required List<String> bookmarkedActivities,
+  }) : _bookmarkedActivities = bookmarkedActivities;
 
   static ActivitiesProfileModel get empty => ActivitiesProfileModel(
         bookmarkedActivities: [],
       );
 
+  bool isBookmarked(String id) => _bookmarkedActivities.contains(id);
+
   void addBookmark(String activityId) {
-    if (!bookmarkedActivities.contains(activityId)) {
-      bookmarkedActivities.add(activityId);
+    if (!_bookmarkedActivities.contains(activityId)) {
+      _bookmarkedActivities.add(activityId);
     }
   }
 
   void removeBookmark(String activityId) {
-    bookmarkedActivities.remove(activityId);
+    _bookmarkedActivities.remove(activityId);
   }
+
+  Future<List<ActivityPlanModel>> getBookmarkedActivities() => Future.wait(
+        _bookmarkedActivities.map((id) => ActivityPlanRepo.get(id)).toList(),
+      );
+
+  List<ActivityPlanModel> getBookmarkedActivitiesSync() => _bookmarkedActivities
+      .map((id) => ActivityPlanRepo.getCached(id))
+      .whereType<ActivityPlanModel>()
+      .toList();
 
   static ActivitiesProfileModel fromJson(Map<String, dynamic> json) {
     if (!json.containsKey(PangeaEventTypes.profileActivities)) {
@@ -36,7 +49,7 @@ class ActivitiesProfileModel {
 
   Map<String, dynamic> toJson() {
     return {
-      ModelKey.bookmarkedActivities: bookmarkedActivities,
+      ModelKey.bookmarkedActivities: _bookmarkedActivities,
     };
   }
 }

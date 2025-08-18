@@ -1,26 +1,17 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
   final ActivityPlannerBuilderState controller;
-  final Uint8List? image;
   final VoidCallback onPressed;
-
   final double width;
   final double height;
-  final bool selected;
-
-  final VoidCallback onChange;
 
   const ActivitySuggestionCard({
     super.key,
@@ -28,29 +19,14 @@ class ActivitySuggestionCard extends StatelessWidget {
     required this.onPressed,
     required this.width,
     required this.height,
-    required this.onChange,
-    this.selected = false,
-    this.image,
   });
 
   ActivityPlanModel get activity => controller.updatedActivity;
-
-  Future<void> _toggleBookmark() async {
-    try {
-      await controller.toggleBookmarkedActivity();
-    } catch (e, stack) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: stack, data: activity.toJson());
-    } finally {
-      onChange();
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return PressableButton(
-      depressed: selected,
       onPressed: onPressed,
       borderRadius: BorderRadius.circular(24.0),
       color: theme.brightness == Brightness.dark
@@ -59,11 +35,6 @@ class ActivitySuggestionCard extends StatelessWidget {
       colorFactor: theme.brightness == Brightness.dark ? 0.6 : 0.2,
       child: Container(
         decoration: BoxDecoration(
-          border: selected
-              ? Border.all(
-                  color: theme.colorScheme.primary,
-                )
-              : null,
           borderRadius: BorderRadius.circular(24.0),
         ),
         height: height,
@@ -89,27 +60,25 @@ class ActivitySuggestionCard extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24.0),
-                    child: image != null
-                        ? Image.memory(image!, fit: BoxFit.cover)
-                        : activity.imageURL != null
-                            ? activity.imageURL!.startsWith("mxc")
-                                ? MxcImage(
-                                    uri: Uri.parse(activity.imageURL!),
-                                    width: width,
-                                    height: width,
-                                    cacheKey: activity.bookmarkId,
-                                    fit: BoxFit.cover,
-                                  )
-                                : CachedNetworkImage(
-                                    imageUrl: activity.imageURL!,
-                                    placeholder: (context, url) => const Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                                    errorWidget: (context, url, error) =>
-                                        const SizedBox(),
-                                    fit: BoxFit.cover,
-                                  )
-                            : null,
+                    child: activity.imageURL != null
+                        ? activity.imageURL!.startsWith("mxc")
+                            ? MxcImage(
+                                uri: Uri.parse(activity.imageURL!),
+                                width: width,
+                                height: width,
+                                cacheKey: activity.bookmarkId,
+                                fit: BoxFit.cover,
+                              )
+                            : CachedNetworkImage(
+                                imageUrl: activity.imageURL!,
+                                placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const SizedBox(),
+                                fit: BoxFit.cover,
+                              )
+                        : null,
                   ),
                 ),
                 Expanded(
@@ -196,7 +165,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                   controller.isBookmarked ? Icons.save : Icons.save_outlined,
                   color: Theme.of(context).colorScheme.onPrimaryContainer,
                 ),
-                onPressed: _toggleBookmark,
+                onPressed: controller.toggleBookmarkedActivity,
                 style: IconButton.styleFrom(
                   backgroundColor: Theme.of(context)
                       .colorScheme
