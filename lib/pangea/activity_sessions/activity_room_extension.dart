@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_repo.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
@@ -119,7 +120,9 @@ extension ActivityRoomExtension on Room {
   }
 
   Future<void> fetchSummaries() async {
-    if (activitySummary?.summary != null) return;
+    if (activitySummary?.summary != null) {
+      return;
+    }
 
     await setActivitySummary(
       ActivitySummaryModel(
@@ -130,6 +133,9 @@ extension ActivityRoomExtension on Room {
 
     final events = await getAllEvents();
     final List<ActivitySummaryResultsMessage> messages = [];
+    final ActivitySummaryAnalyticsModel analytics =
+        ActivitySummaryAnalyticsModel();
+
     for (final event in events) {
       if (event.type != EventTypes.Message ||
           event.messageType != MessageTypes.Text) {
@@ -155,6 +161,7 @@ extension ActivityRoomExtension on Room {
       );
 
       messages.add(activityMessage);
+      analytics.addConstructs(pangeaMessage);
     }
 
     try {
@@ -163,11 +170,15 @@ extension ActivityRoomExtension on Room {
           activity: activityPlan!,
           activityResults: messages,
           contentFeedback: [],
+          analytics: analytics,
         ),
       );
 
       await setActivitySummary(
-        ActivitySummaryModel(summary: resp),
+        ActivitySummaryModel(
+          summary: resp,
+          analytics: analytics,
+        ),
       );
     } catch (e, s) {
       ErrorHandler.logError(

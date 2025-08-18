@@ -11,6 +11,8 @@ import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicat
 import 'package:fluffychat/pangea/activity_sessions/activity_results_carousel.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -103,6 +105,59 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
                     ),
                   ),
                 ),
+                if (summary.analytics != null)
+                  Row(
+                    spacing: 8.0,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.primaryContainer,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          spacing: 4.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              ConstructTypeEnum.vocab.indicator.icon,
+                              size: 12.0,
+                            ),
+                            Text(
+                              "${summary.analytics!.uniqueConstructCount(ConstructTypeEnum.vocab)}",
+                              style: const TextStyle(
+                                fontSize: 12.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        decoration: BoxDecoration(
+                          color: theme.colorScheme.primaryContainer,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Row(
+                          spacing: 4.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              ConstructTypeEnum.morph.indicator.icon,
+                              size: 12.0,
+                            ),
+                            Text(
+                              "${summary.analytics!.uniqueConstructCount(ConstructTypeEnum.morph)}",
+                              style: const TextStyle(
+                                fontSize: 12.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 const SizedBox(height: 16.0),
                 if (_highlightedRole != null && userSummary != null)
                   ClipRRect(
