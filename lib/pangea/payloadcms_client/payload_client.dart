@@ -1,12 +1,190 @@
 import 'dart:convert';
+import 'dart:io';
 
-import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/payloadcms_client/payload_models.dart';
-import 'package:fluffychat/pangea/payloadcms_client/payload_query.dart';
-import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
-import 'package:sentry_flutter/sentry_flutter.dart';
+import 'payload_models.dart';
+import 'payload_query.dart';
+
+/// Simple error logging for pure Dart (no Flutter dependencies)
+class DartErrorHandler {
+  static void logError({
+    required Object e,
+    StackTrace? s,
+    Map<String, dynamic>? data,
+  }) {
+    print('ERROR: $e');
+    if (s != null) {
+      print('STACK: $s');
+    }
+    if (data != null) {
+      print('DATA: $data');
+    }
+  }
+}
+
+/// Simple debugging utilities
+class DartDebug {
+  static const bool kDebugMode = true; // Set based on your needs
+
+  static void debugPrint(String message) {
+    if (kDebugMode) {
+      print(message);
+    }
+  }
+}
+
+/// Simple HTTP client for pure Dart
+class SimpleHttpClient {
+  final Duration timeout;
+
+  const SimpleHttpClient({this.timeout = const Duration(seconds: 30)});
+
+  Future<HttpResponse> get(
+    String url, {
+    Map<String, String>? headers,
+  }) async {
+    final client = HttpClient();
+    try {
+      client.connectionTimeout = timeout;
+      final request = await client.getUrl(Uri.parse(url));
+
+      if (headers != null) {
+        headers.forEach((key, value) {
+          request.headers.add(key, value);
+        });
+      }
+
+      final response = await request.close();
+      final body = await response.transform(utf8.decoder).join();
+
+      return HttpResponse(
+        statusCode: response.statusCode,
+        body: body,
+        headers: _extractHeaders(response.headers),
+      );
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<HttpResponse> post(
+    String url, {
+    Map<String, String>? headers,
+    String? body,
+  }) async {
+    final client = HttpClient();
+    try {
+      client.connectionTimeout = timeout;
+      final request = await client.postUrl(Uri.parse(url));
+
+      if (headers != null) {
+        headers.forEach((key, value) {
+          request.headers.add(key, value);
+        });
+      }
+
+      if (body != null) {
+        request.write(body);
+      }
+
+      final response = await request.close();
+      final responseBody = await response.transform(utf8.decoder).join();
+
+      return HttpResponse(
+        statusCode: response.statusCode,
+        body: responseBody,
+        headers: _extractHeaders(response.headers),
+      );
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<HttpResponse> put(
+    String url, {
+    Map<String, String>? headers,
+    String? body,
+  }) async {
+    final client = HttpClient();
+    try {
+      client.connectionTimeout = timeout;
+      final request = await client.putUrl(Uri.parse(url));
+
+      if (headers != null) {
+        headers.forEach((key, value) {
+          request.headers.add(key, value);
+        });
+      }
+
+      if (body != null) {
+        request.write(body);
+      }
+
+      final response = await request.close();
+      final responseBody = await response.transform(utf8.decoder).join();
+
+      return HttpResponse(
+        statusCode: response.statusCode,
+        body: responseBody,
+        headers: _extractHeaders(response.headers),
+      );
+    } finally {
+      client.close();
+    }
+  }
+
+  Future<HttpResponse> delete(
+    String url, {
+    Map<String, String>? headers,
+  }) async {
+    final client = HttpClient();
+    try {
+      client.connectionTimeout = timeout;
+      final request = await client.deleteUrl(Uri.parse(url));
+
+      if (headers != null) {
+        headers.forEach((key, value) {
+          request.headers.add(key, value);
+        });
+      }
+
+      final response = await request.close();
+      final responseBody = await response.transform(utf8.decoder).join();
+
+      return HttpResponse(
+        statusCode: response.statusCode,
+        body: responseBody,
+        headers: _extractHeaders(response.headers),
+      );
+    } finally {
+      client.close();
+    }
+  }
+
+  Map<String, String> _extractHeaders(HttpHeaders headers) {
+    final result = <String, String>{};
+    headers.forEach((name, values) {
+      result[name] = values.join(', ');
+    });
+    return result;
+  }
+
+  void close() {
+    // No-op for simple HTTP client
+  }
+}
+
+/// Simple HTTP response wrapper
+class HttpResponse {
+  final int statusCode;
+  final String body;
+  final Map<String, String> headers;
+
+  const HttpResponse({
+    required this.statusCode,
+    required this.body,
+    required this.headers,
+  });
+}
 
 /// Client for interacting with PayloadCMS API
 ///
@@ -17,7 +195,7 @@ class PayloadClient {
   late String baseUrl;
   late String baseApiPath;
   final String? accessToken;
-  final http.Client _httpClient;
+  final SimpleHttpClient _httpClient;
 
   /// Creates a new PayloadClient instance
   ///
@@ -25,12 +203,13 @@ class PayloadClient {
   /// - [httpClient]: Optional custom HTTP client
   /// - [baseApiPath]: Base API path (defaults to '/cms/api')
   /// - [accessToken]: Optional access token for authenticated requests
+  /// - [baseUrl]: Base URL for the PayloadCMS instance
   PayloadClient({
-    http.Client? httpClient,
-    String? baseApiPath,
     this.accessToken,
-  }) : _httpClient = httpClient ?? http.Client() {
-    baseUrl = Environment.cmsApi;
+    String? baseApiPath,
+    String? baseUrl,
+  }) : _httpClient =  const SimpleHttpClient() {
+    this.baseUrl = baseUrl ?? 'http://localhost:3000';
     this.baseApiPath = baseApiPath ?? '/cms/api';
   }
 
@@ -39,22 +218,18 @@ class PayloadClient {
     try {
       final uri = Uri.parse('$baseUrl$endpoint');
       final response = await _httpClient.get(
-        uri,
+        uri.toString(),
         headers: _headers,
       );
 
       _handleError(response, endpoint: endpoint);
 
-      final responseBody = utf8.decode(response.bodyBytes);
-      return json.decode(responseBody) as Map<String, dynamic>;
+      return json.decode(response.body) as Map<String, dynamic>;
     } catch (e, s) {
-      ErrorHandler.logError(
+      DartErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'endpoint': endpoint,
-          'baseUrl': baseUrl,
-        },
+        data: {'endpoint': endpoint, 'baseUrl': baseUrl},
       );
       rethrow;
     }
@@ -72,22 +247,21 @@ class PayloadClient {
       );
 
       final response = await _httpClient.get(
-        uri,
+        uri.toString(),
         headers: _headers,
       );
 
       _handleError(response, endpoint: endpoint, queryParams: queryParams);
 
-      final responseBody = utf8.decode(response.bodyBytes);
-      return json.decode(responseBody) as Map<String, dynamic>;
+      return json.decode(response.body) as Map<String, dynamic>;
     } catch (e, s) {
-      ErrorHandler.logError(
+      DartErrorHandler.logError(
         e: e,
         s: s,
         data: {
           'endpoint': endpoint,
           'baseUrl': baseUrl,
-          'query': query.toQueryParams(),
+          'query': query.toQueryParams()
         },
       );
       rethrow;
@@ -102,24 +276,19 @@ class PayloadClient {
     try {
       final uri = Uri.parse('$baseUrl$endpoint');
       final response = await _httpClient.post(
-        uri,
+        uri.toString(),
         headers: _headers,
         body: json.encode(data),
       );
 
       _handleError(response, endpoint: endpoint, requestData: data);
 
-      final responseBody = utf8.decode(response.bodyBytes);
-      return json.decode(responseBody) as Map<String, dynamic>;
+      return json.decode(response.body) as Map<String, dynamic>;
     } catch (e, s) {
-      ErrorHandler.logError(
+      DartErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'endpoint': endpoint,
-          'baseUrl': baseUrl,
-          'requestData': data,
-        },
+        data: {'endpoint': endpoint, 'baseUrl': baseUrl, 'requestData': data},
       );
       rethrow;
     }
@@ -133,24 +302,19 @@ class PayloadClient {
     try {
       final uri = Uri.parse('$baseUrl$endpoint');
       final response = await _httpClient.put(
-        uri,
+        uri.toString(),
         headers: _headers,
         body: json.encode(data),
       );
 
       _handleError(response, endpoint: endpoint, requestData: data);
 
-      final responseBody = utf8.decode(response.bodyBytes);
-      return json.decode(responseBody) as Map<String, dynamic>;
+      return json.decode(response.body) as Map<String, dynamic>;
     } catch (e, s) {
-      ErrorHandler.logError(
+      DartErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'endpoint': endpoint,
-          'baseUrl': baseUrl,
-          'requestData': data,
-        },
+        data: {'endpoint': endpoint, 'baseUrl': baseUrl, 'requestData': data},
       );
       rethrow;
     }
@@ -161,22 +325,18 @@ class PayloadClient {
     try {
       final uri = Uri.parse('$baseUrl$endpoint');
       final response = await _httpClient.delete(
-        uri,
+        uri.toString(),
         headers: _headers,
       );
 
       _handleError(response, endpoint: endpoint);
 
-      final responseBody = utf8.decode(response.bodyBytes);
-      return json.decode(responseBody) as Map<String, dynamic>;
+      return json.decode(response.body) as Map<String, dynamic>;
     } catch (e, s) {
-      ErrorHandler.logError(
+      DartErrorHandler.logError(
         e: e,
         s: s,
-        data: {
-          'endpoint': endpoint,
-          'baseUrl': baseUrl,
-        },
+        data: {'endpoint': endpoint, 'baseUrl': baseUrl},
       );
       rethrow;
     }
@@ -238,8 +398,11 @@ class PayloadClient {
     int page = 1,
     int limit = 10,
   }) async {
-    final response = await getPaginated('$baseApiPath/$collection',
-        page: page, limit: limit);
+    final response = await getPaginated(
+      '$baseApiPath/$collection',
+      page: page,
+      limit: limit,
+    );
     return PayloadPaginatedResponse<T>.fromJson(response, fromJson);
   }
 
@@ -286,43 +449,24 @@ class PayloadClient {
   }
 
   void _handleError(
-    http.Response response, {
+    HttpResponse response, {
     required String endpoint,
     Map<String, dynamic>? requestData,
     Map<String, String>? queryParams,
   }) {
     if (response.statusCode >= 400) {
-      if (kDebugMode) {
-        debugPrint('PayloadCMS API Error - Status: ${response.statusCode}');
-        debugPrint('Endpoint: $endpoint');
-        debugPrint('Response: ${response.body}');
-        if (requestData != null) {
-          debugPrint('Request Data: $requestData');
-        }
-        if (queryParams != null) {
-          debugPrint('Query Params: $queryParams');
-        }
-      }
-
-      // Add breadcrumb for Sentry
-      Sentry.addBreadcrumb(
-        Breadcrumb.http(
-          url: response.request?.url ?? Uri.parse('$baseUrl$endpoint'),
-          method: response.request?.method ?? 'Unknown',
-          statusCode: response.statusCode,
-        ),
-      );
-
+      // Simple logging without Flutter dependencies
+      print('PayloadCMS API Error - Status: ${response.statusCode}');
+      print('Endpoint: $endpoint');
+      print('Response: ${response.body}');
       if (requestData != null) {
-        Sentry.addBreadcrumb(
-          Breadcrumb(
-            message: 'PayloadCMS API Request Data',
-            data: requestData,
-          ),
-        );
+        print('Request Data: $requestData');
+      }
+      if (queryParams != null) {
+        print('Query Params: $queryParams');
       }
 
-      throw http.ClientException(
+      throw Exception(
         'PayloadCMS API Error: ${response.statusCode} - ${response.body}',
       );
     }

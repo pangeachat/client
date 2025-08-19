@@ -269,8 +269,10 @@ class PayloadQueryBuilder {
       where(field, PayloadOperator.exists, exists);
 
   /// Add sorting
-  PayloadQueryBuilder sortBy(String field,
-      [SortDirection direction = SortDirection.ascending]) {
+  PayloadQueryBuilder sortBy(
+    String field, [
+    SortDirection direction = SortDirection.ascending,
+  ]) {
     _sorts.add(PayloadSort(field: field, direction: direction));
     return this;
   }

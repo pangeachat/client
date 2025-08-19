@@ -1,3 +1,4 @@
+import 'package:fluffychat/pangea/payloadcms_client/payload_client.dart';
 import 'package:fluffychat/pangea/payloadcms_client/payload_models.dart';
 
 /// CEFR levels for courses
@@ -24,8 +25,7 @@ enum CefrLevel {
 /// User reference for created/updated by fields
 class UserReference {
   final String relationTo;
-  final String
-      value; // Could be User or MatrixUser object, but we'll keep as ID
+  final String value;
 
   const UserReference({
     required this.relationTo,
@@ -64,18 +64,18 @@ class UserReference {
 }
 
 /// Modules relationship for courses
-class CourseModulesRelation {
-  final List<String> docs; // Course module IDs
+class CoursePlanModulesRelation {
+  final List<String> docs;
   final bool? hasNextPage;
   final int? totalDocs;
 
-  const CourseModulesRelation({
+  const CoursePlanModulesRelation({
     required this.docs,
     this.hasNextPage,
     this.totalDocs,
   });
 
-  factory CourseModulesRelation.fromJson(Map<String, dynamic> json) {
+  factory CoursePlanModulesRelation.fromJson(Map<String, dynamic> json) {
     final docsJson = json['docs'] as List<dynamic>? ?? [];
     final docs = docsJson.map((doc) {
       if (doc is String) {
@@ -86,7 +86,7 @@ class CourseModulesRelation {
       return doc.toString();
     }).toList();
 
-    return CourseModulesRelation(
+    return CoursePlanModulesRelation(
       docs: docs,
       hasNextPage: json['hasNextPage'] as bool?,
       totalDocs: json['totalDocs'] as int?,
@@ -104,7 +104,7 @@ class CourseModulesRelation {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is CourseModulesRelation &&
+    return other is CoursePlanModulesRelation &&
         _listEquals(other.docs, docs) &&
         other.hasNextPage == hasNextPage &&
         other.totalDocs == totalDocs;
@@ -114,10 +114,9 @@ class CourseModulesRelation {
   int get hashCode => Object.hash(Object.hashAll(docs), hasNextPage, totalDocs);
 
   @override
-  String toString() => 'CourseModulesRelation(docs: ${docs.length} items, '
+  String toString() => 'CoursePlanModulesRelation(docs: ${docs.length} items, '
       'hasNextPage: $hasNextPage, totalDocs: $totalDocs)';
 
-  // Helper method for list equality
   static bool _listEquals<T>(List<T>? a, List<T>? b) {
     if (a == null) return b == null;
     if (b == null || a.length != b.length) return false;
@@ -128,45 +127,45 @@ class CourseModulesRelation {
   }
 }
 
-/// Model representing a course from PayloadCMS
-class Course implements PayloadDocument {
+/// Model representing a course
+class CoursePlan implements PayloadDocument {
   @override
   final String id;
   final String title;
   final String description;
   final CefrLevel cefrLevel;
-  final String l1; // Language 1 (source language)
-  final String l2; // Language 2 (target language)
-  final CourseModulesRelation modules;
+  final String l1;
+  final String l2;
+  final CoursePlanModulesRelation coursePlanModules;
   final UserReference? createdBy;
   final UserReference? updatedBy;
   final DateTime createdAt;
   final DateTime updatedAt;
 
-  const Course({
+  const CoursePlan({
     required this.id,
     required this.title,
     required this.description,
     required this.cefrLevel,
     required this.l1,
     required this.l2,
-    required this.modules,
+    required this.coursePlanModules,
     this.createdBy,
     this.updatedBy,
     required this.createdAt,
     required this.updatedAt,
   });
 
-  factory Course.fromJson(Map<String, dynamic> json) {
-    return Course(
+  factory CoursePlan.fromJson(Map<String, dynamic> json) {
+    return CoursePlan(
       id: json['id'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
       cefrLevel: CefrLevel.fromString(json['cefrLevel'] as String),
       l1: json['l1'] as String,
       l2: json['l2'] as String,
-      modules: CourseModulesRelation.fromJson(
-        json['modules'] as Map<String, dynamic>? ?? {},
+      coursePlanModules: CoursePlanModulesRelation.fromJson(
+        json['coursePlanModules'] as Map<String, dynamic>? ?? {},
       ),
       createdBy: json['createdBy'] != null
           ? UserReference.fromJson(json['createdBy'] as Map<String, dynamic>)
@@ -188,7 +187,7 @@ class Course implements PayloadDocument {
       'cefrLevel': cefrLevel.value,
       'l1': l1,
       'l2': l2,
-      'modules': modules.toJson(),
+      'coursePlanModules': coursePlanModules.toJson(),
       if (createdBy != null) 'createdBy': createdBy!.toJson(),
       if (updatedBy != null) 'updatedBy': updatedBy!.toJson(),
       'createdAt': createdAt.toIso8601String(),
@@ -199,14 +198,14 @@ class Course implements PayloadDocument {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is Course &&
+    return other is CoursePlan &&
         other.id == id &&
         other.title == title &&
         other.description == description &&
         other.cefrLevel == cefrLevel &&
         other.l1 == l1 &&
         other.l2 == l2 &&
-        other.modules == modules &&
+        other.coursePlanModules == coursePlanModules &&
         other.createdBy == createdBy &&
         other.updatedBy == updatedBy &&
         other.createdAt == createdAt &&
@@ -222,7 +221,7 @@ class Course implements PayloadDocument {
       cefrLevel,
       l1,
       l2,
-      modules,
+      coursePlanModules,
       createdBy,
       updatedBy,
       createdAt,
@@ -236,5 +235,42 @@ class Course implements PayloadDocument {
   }
 }
 
-/// Type alias for courses paginated response
-typedef CoursesResponse = PayloadPaginatedResponse<Course>;
+/// Repository for managing courses data from PayloadCMS
+class CoursesRepo extends PayloadClient {
+  /// Create a CoursesRepo instance
+  CoursesRepo({
+    super.accessToken,
+    super.baseUrl,
+    super.baseApiPath,
+  });
+
+  /// Find courses with pagination
+  Future<PayloadPaginatedResponse<CoursePlan>> find({
+    int page = 1,
+    int limit = 10,
+  }) async {
+    final query = queryBuilder().paginate(page, limit).build();
+
+    return getCollectionWithQuery('course-plans', query, CoursePlan.fromJson);
+  }
+
+  /// Find a specific course by ID
+  Future<CoursePlan> findById(String courseId) async {
+    return getDocument('course-plans', courseId, CoursePlan.fromJson);
+  }
+
+  /// Update a specific course by ID
+  Future<CoursePlan> update(String courseId, Map<String, dynamic> data) async {
+    return updateDocument('course-plans', courseId, data, CoursePlan.fromJson);
+  }
+
+  /// Delete a specific course by ID
+  Future<CoursePlan> deleteCourse(String courseId) async {
+    return deleteDocument('course-plans', courseId, CoursePlan.fromJson);
+  }
+
+  /// Create a new course
+  Future<CoursePlan> create(Map<String, dynamic> data) async {
+    return createDocument('course-plans', data, CoursePlan.fromJson);
+  }
+}
