@@ -714,241 +714,247 @@ class _SpaceViewState extends State<SpaceView> {
                 //     .toList();
                 // Pangea#
                 final filter = _filterController.text.trim().toLowerCase();
-                return CustomScrollView(
-                  slivers: [
-                    SliverAppBar(
-                      floating: true,
-                      toolbarHeight: 72,
-                      scrolledUnderElevation: 0,
-                      backgroundColor: Colors.transparent,
-                      automaticallyImplyLeading: false,
-                      title: TextField(
-                        controller: _filterController,
-                        onChanged: (_) => setState(() {}),
-                        textInputAction: TextInputAction.search,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: theme.colorScheme.secondaryContainer,
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(99),
-                          ),
-                          contentPadding: EdgeInsets.zero,
-                          hintText: L10n.of(context).search,
-                          hintStyle: TextStyle(
-                            color: theme.colorScheme.onPrimaryContainer,
-                            fontWeight: FontWeight.normal,
-                          ),
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          prefixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.search_outlined,
+                // #Pangea
+                // return CustomScrollView(
+                return SafeArea(
+                  child: CustomScrollView(
+                    // Pangea#
+                    slivers: [
+                      SliverAppBar(
+                        floating: true,
+                        toolbarHeight: 72,
+                        scrolledUnderElevation: 0,
+                        backgroundColor: Colors.transparent,
+                        automaticallyImplyLeading: false,
+                        title: TextField(
+                          controller: _filterController,
+                          onChanged: (_) => setState(() {}),
+                          textInputAction: TextInputAction.search,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: theme.colorScheme.secondaryContainer,
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(99),
+                            ),
+                            contentPadding: EdgeInsets.zero,
+                            hintText: L10n.of(context).search,
+                            hintStyle: TextStyle(
                               color: theme.colorScheme.onPrimaryContainer,
+                              fontWeight: FontWeight.normal,
+                            ),
+                            floatingLabelBehavior: FloatingLabelBehavior.never,
+                            prefixIcon: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.search_outlined,
+                                color: theme.colorScheme.onPrimaryContainer,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    // #Pangea
-                    // SliverList.builder(
-                    //   itemCount: joinedParents.length,
-                    //   itemBuilder: (context, i) {
-                    //     final displayname =
-                    //         joinedParents[i].getLocalizedDisplayname();
-                    //     return Padding(
-                    //       padding: const EdgeInsets.symmetric(
-                    //         horizontal: 8,
-                    //         vertical: 1,
-                    //       ),
-                    //       child: Material(
-                    //         borderRadius:
-                    //             BorderRadius.circular(AppConfig.borderRadius),
-                    //         clipBehavior: Clip.hardEdge,
-                    //         child: ListTile(
-                    //           minVerticalPadding: 0,
-                    //           leading: Icon(
-                    //             Icons.adaptive.arrow_back_outlined,
-                    //             size: 16,
-                    //           ),
-                    //           title: Row(
-                    //             children: [
-                    //               Avatar(
-                    //                 mxContent: joinedParents[i].avatar,
-                    //                 name: displayname,
-                    //                 // #Pangea
-                    //                 userId: joinedParents[i].directChatMatrixID,
-                    //                 // Pangea#
-                    //                 size: Avatar.defaultSize / 2,
-                    //                 borderRadius: BorderRadius.circular(
-                    //                   AppConfig.borderRadius / 4,
-                    //                 ),
-                    //               ),
-                    //               const SizedBox(width: 8),
-                    //               Expanded(child: Text(displayname)),
-                    //             ],
-                    //           ),
-                    //           onTap: () =>
-                    //               widget.toParentSpace(joinedParents[i].id),
-                    //         ),
-                    //       ),
-                    //     );
-                    //   },
-                    // ),
-                    KnockingUsersIndicator(room: room),
-                    if (!FluffyThemes.isColumnMode(context))
+                      // #Pangea
+                      // SliverList.builder(
+                      //   itemCount: joinedParents.length,
+                      //   itemBuilder: (context, i) {
+                      //     final displayname =
+                      //         joinedParents[i].getLocalizedDisplayname();
+                      //     return Padding(
+                      //       padding: const EdgeInsets.symmetric(
+                      //         horizontal: 8,
+                      //         vertical: 1,
+                      //       ),
+                      //       child: Material(
+                      //         borderRadius:
+                      //             BorderRadius.circular(AppConfig.borderRadius),
+                      //         clipBehavior: Clip.hardEdge,
+                      //         child: ListTile(
+                      //           minVerticalPadding: 0,
+                      //           leading: Icon(
+                      //             Icons.adaptive.arrow_back_outlined,
+                      //             size: 16,
+                      //           ),
+                      //           title: Row(
+                      //             children: [
+                      //               Avatar(
+                      //                 mxContent: joinedParents[i].avatar,
+                      //                 name: displayname,
+                      //                 // #Pangea
+                      //                 userId: joinedParents[i].directChatMatrixID,
+                      //                 // Pangea#
+                      //                 size: Avatar.defaultSize / 2,
+                      //                 borderRadius: BorderRadius.circular(
+                      //                   AppConfig.borderRadius / 4,
+                      //                 ),
+                      //               ),
+                      //               const SizedBox(width: 8),
+                      //               Expanded(child: Text(displayname)),
+                      //             ],
+                      //           ),
+                      //           onTap: () =>
+                      //               widget.toParentSpace(joinedParents[i].id),
+                      //         ),
+                      //       ),
+                      //     );
+                      //   },
+                      // ),
+                      KnockingUsersIndicator(room: room),
+                      if (!FluffyThemes.isColumnMode(context))
+                        SliverList.builder(
+                          itemCount: 1,
+                          itemBuilder: (context, i) {
+                            return LeaderboardParticipantList(
+                              space: room,
+                            );
+                          },
+                        ),
+                      AnalyticsRequestIndicator(room: room),
+                      // Pangea#
                       SliverList.builder(
-                        itemCount: 1,
+                        itemCount: joinedRooms.length,
                         itemBuilder: (context, i) {
-                          return LeaderboardParticipantList(
-                            space: room,
+                          final joinedRoom = joinedRooms[i];
+                          return ChatListItem(
+                            joinedRoom,
+                            filter: filter,
+                            onTap: () => widget.onChatTab(joinedRoom),
+                            onLongPress: (context) => widget.onChatContext(
+                              joinedRoom,
+                              context,
+                            ),
+                            activeChat: widget.activeChat == joinedRoom.id,
                           );
                         },
                       ),
-                    AnalyticsRequestIndicator(room: room),
-                    // Pangea#
-                    SliverList.builder(
-                      itemCount: joinedRooms.length,
-                      itemBuilder: (context, i) {
-                        final joinedRoom = joinedRooms[i];
-                        return ChatListItem(
-                          joinedRoom,
-                          filter: filter,
-                          onTap: () => widget.onChatTab(joinedRoom),
-                          onLongPress: (context) => widget.onChatContext(
-                            joinedRoom,
-                            context,
-                          ),
-                          activeChat: widget.activeChat == joinedRoom.id,
-                        );
-                      },
-                    ),
-                    SliverList.builder(
-                      // #Pangea
-                      // itemCount: _discoveredChildren.length + 2,
-                      itemCount: (_discoveredChildren?.length ?? 0) + 2,
-                      // Pangea#
-                      itemBuilder: (context, i) {
-                        if (i == 0) {
-                          return SearchTitle(
-                            title: L10n.of(context).discover,
-                            icon: const Icon(Icons.explore_outlined),
-                          );
-                        }
-                        i--;
+                      SliverList.builder(
                         // #Pangea
-                        // if (i == _discoveredChildren.length) {
-                        if (i == (_discoveredChildren?.length ?? 0)) {
-                          // Pangea#
-                          if (_noMoreRooms) {
-                            return Padding(
-                              padding: const EdgeInsets.all(12.0),
-                              child: Center(
-                                child: Text(
-                                  L10n.of(context).noMoreChatsFound,
-                                  style: const TextStyle(fontSize: 13),
+                        // itemCount: _discoveredChildren.length + 2,
+                        itemCount: (_discoveredChildren?.length ?? 0) + 2,
+                        // Pangea#
+                        itemBuilder: (context, i) {
+                          if (i == 0) {
+                            return SearchTitle(
+                              title: L10n.of(context).discover,
+                              icon: const Icon(Icons.explore_outlined),
+                            );
+                          }
+                          i--;
+                          // #Pangea
+                          // if (i == _discoveredChildren.length) {
+                          if (i == (_discoveredChildren?.length ?? 0)) {
+                            // Pangea#
+                            if (_noMoreRooms) {
+                              return Padding(
+                                padding: const EdgeInsets.all(12.0),
+                                child: Center(
+                                  child: Text(
+                                    L10n.of(context).noMoreChatsFound,
+                                    style: const TextStyle(fontSize: 13),
+                                  ),
                                 ),
+                              );
+                            }
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                                vertical: 2.0,
+                              ),
+                              child: TextButton(
+                                // #Pangea
+                                // onPressed: _isLoading ? null : _loadHierarchy,
+                                onPressed: _isLoading ? null : loadHierarchy,
+                                // Pangea#
+                                child: _isLoading
+                                    ? LinearProgressIndicator(
+                                        borderRadius: BorderRadius.circular(
+                                          AppConfig.borderRadius,
+                                        ),
+                                      )
+                                    : Text(L10n.of(context).loadMore),
                               ),
                             );
                           }
+                          // #Pangea
+                          // final item = _discoveredChildren[i];
+                          final item = _discoveredChildren![i];
+                          // Pangea#
+                          final displayname = item.name ??
+                              item.canonicalAlias ??
+                              L10n.of(context).emptyChat;
+                          if (!displayname.toLowerCase().contains(filter)) {
+                            return const SizedBox.shrink();
+                          }
                           return Padding(
                             padding: const EdgeInsets.symmetric(
-                              horizontal: 12.0,
-                              vertical: 2.0,
+                              horizontal: 8,
+                              vertical: 1,
                             ),
-                            child: TextButton(
-                              // #Pangea
-                              // onPressed: _isLoading ? null : _loadHierarchy,
-                              onPressed: _isLoading ? null : loadHierarchy,
-                              // Pangea#
-                              child: _isLoading
-                                  ? LinearProgressIndicator(
-                                      borderRadius: BorderRadius.circular(
-                                        AppConfig.borderRadius,
+                            child: Material(
+                              borderRadius:
+                                  BorderRadius.circular(AppConfig.borderRadius),
+                              clipBehavior: Clip.hardEdge,
+                              child: ListTile(
+                                visualDensity:
+                                    const VisualDensity(vertical: -0.5),
+                                contentPadding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                onTap: () => _joinChildRoom(item),
+                                leading: Avatar(
+                                  mxContent: item.avatarUrl,
+                                  name: displayname,
+                                  // #Pangea
+                                  userId: Matrix.of(context)
+                                      .client
+                                      .getRoomById(item.roomId)
+                                      ?.directChatMatrixID,
+                                  // Pangea#
+                                  borderRadius: item.roomType == 'm.space'
+                                      ? BorderRadius.circular(
+                                          AppConfig.borderRadius / 2,
+                                        )
+                                      : null,
+                                ),
+                                title: Row(
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        displayname,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
                                       ),
-                                    )
-                                  : Text(L10n.of(context).loadMore),
+                                    ),
+                                    Text(
+                                      item.numJoinedMembers.toString(),
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        color:
+                                            theme.textTheme.bodyMedium!.color,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 4),
+                                    const Icon(
+                                      Icons.people_outlined,
+                                      size: 14,
+                                    ),
+                                  ],
+                                ),
+                                subtitle: Text(
+                                  item.topic ??
+                                      L10n.of(context).countParticipants(
+                                        item.numJoinedMembers,
+                                      ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
                             ),
                           );
-                        }
-                        // #Pangea
-                        // final item = _discoveredChildren[i];
-                        final item = _discoveredChildren![i];
-                        // Pangea#
-                        final displayname = item.name ??
-                            item.canonicalAlias ??
-                            L10n.of(context).emptyChat;
-                        if (!displayname.toLowerCase().contains(filter)) {
-                          return const SizedBox.shrink();
-                        }
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 1,
-                          ),
-                          child: Material(
-                            borderRadius:
-                                BorderRadius.circular(AppConfig.borderRadius),
-                            clipBehavior: Clip.hardEdge,
-                            child: ListTile(
-                              visualDensity:
-                                  const VisualDensity(vertical: -0.5),
-                              contentPadding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
-                              onTap: () => _joinChildRoom(item),
-                              leading: Avatar(
-                                mxContent: item.avatarUrl,
-                                name: displayname,
-                                // #Pangea
-                                userId: Matrix.of(context)
-                                    .client
-                                    .getRoomById(item.roomId)
-                                    ?.directChatMatrixID,
-                                // Pangea#
-                                borderRadius: item.roomType == 'm.space'
-                                    ? BorderRadius.circular(
-                                        AppConfig.borderRadius / 2,
-                                      )
-                                    : null,
-                              ),
-                              title: Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      displayname,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ),
-                                  Text(
-                                    item.numJoinedMembers.toString(),
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      color: theme.textTheme.bodyMedium!.color,
-                                    ),
-                                  ),
-                                  const SizedBox(width: 4),
-                                  const Icon(
-                                    Icons.people_outlined,
-                                    size: 14,
-                                  ),
-                                ],
-                              ),
-                              subtitle: Text(
-                                item.topic ??
-                                    L10n.of(context).countParticipants(
-                                      item.numJoinedMembers,
-                                    ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                    const SliverPadding(padding: EdgeInsets.only(top: 32)),
-                  ],
+                        },
+                      ),
+                      const SliverPadding(padding: EdgeInsets.only(top: 32)),
+                    ],
+                  ),
                 );
               },
             ),
