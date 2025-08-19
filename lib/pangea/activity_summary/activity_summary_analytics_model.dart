@@ -25,6 +25,13 @@ class ActivitySummaryAnalyticsModel {
   int uniqueConstructCount(ConstructTypeEnum type) =>
       uniqueConstructCountsByType()[type] ?? 0;
 
+  /// Unique constructs of a given type for a specific user
+  int uniqueConstructCountForUser(String userId, ConstructTypeEnum type) {
+    final userAnalytics = constructs[userId];
+    if (userAnalytics == null) return 0;
+    return userAnalytics.constructsOfType(type).length;
+  }
+
   void addConstructs(PangeaMessageEvent event) {
     final uses = event.originalSent?.vocabAndMorphUses();
     if (uses == null || uses.isEmpty) return;

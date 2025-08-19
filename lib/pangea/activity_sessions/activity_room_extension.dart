@@ -10,7 +10,6 @@ import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
-import 'package:fluffychat/pangea/activity_summary/activity_summary_repo.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -18,6 +17,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import '../activity_summary/activity_summary_repo.dart';
 
 extension ActivityRoomExtension on Room {
   Future<void> sendActivityPlan(
@@ -136,13 +136,13 @@ extension ActivityRoomExtension on Room {
     final ActivitySummaryAnalyticsModel analytics =
         ActivitySummaryAnalyticsModel();
 
+    final timeline = this.timeline ?? await getTimeline();
     for (final event in events) {
       if (event.type != EventTypes.Message ||
           event.messageType != MessageTypes.Text) {
         continue;
       }
 
-      final timeline = this.timeline ?? await getTimeline();
       final pangeaMessage = PangeaMessageEvent(
         event: event,
         timeline: timeline,

@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_analytics_chip.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_results_carousel.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
@@ -110,51 +111,13 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
                     spacing: 8.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(4.0),
-                        decoration: BoxDecoration(
-                          color: theme.colorScheme.primaryContainer,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          spacing: 4.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              ConstructTypeEnum.vocab.indicator.icon,
-                              size: 12.0,
-                            ),
-                            Text(
-                              "${summary.analytics!.uniqueConstructCount(ConstructTypeEnum.vocab)}",
-                              style: const TextStyle(
-                                fontSize: 12.0,
-                              ),
-                            ),
-                          ],
-                        ),
+                      ActivityAnalyticsChip(
+                        ConstructTypeEnum.vocab.indicator.icon,
+                        "${summary.analytics!.uniqueConstructCount(ConstructTypeEnum.vocab)}",
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(4.0),
-                        decoration: BoxDecoration(
-                          color: theme.colorScheme.primaryContainer,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          spacing: 4.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              ConstructTypeEnum.morph.indicator.icon,
-                              size: 12.0,
-                            ),
-                            Text(
-                              "${summary.analytics!.uniqueConstructCount(ConstructTypeEnum.morph)}",
-                              style: const TextStyle(
-                                fontSize: 12.0,
-                              ),
-                            ),
-                          ],
-                        ),
+                      ActivityAnalyticsChip(
+                        ConstructTypeEnum.morph.indicator.icon,
+                        "${summary.analytics!.uniqueConstructCount(ConstructTypeEnum.morph)}",
                       ),
                     ],
                   ),
@@ -169,9 +132,11 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
                       child: Column(
                         children: [
                           ActivityResultsCarousel(
+                            userId: _highlightedRole!.userId,
                             selectedRole: _highlightedRole!,
                             user: user,
                             summary: userSummary,
+                            analytics: summary.analytics,
                           ),
                           Wrap(
                             alignment: WrapAlignment.center,
