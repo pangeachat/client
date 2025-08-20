@@ -35,6 +35,8 @@ import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dar
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_side_view.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/course_creation/new_course_page.dart';
+import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
 import 'package:fluffychat/pangea/find_your_people/find_your_people.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
@@ -316,6 +318,26 @@ abstract class AppRoutes {
               redirect: loggedOutRedirect,
             ),
             // #Pangea
+            GoRoute(
+              path: 'newcourse',
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                const NewCourse(),
+              ),
+              redirect: loggedOutRedirect,
+              routes: [
+                GoRoute(
+                  path: ':courseId',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    SelectedCourse(state.pathParameters['courseId']!),
+                  ),
+                  redirect: loggedOutRedirect,
+                ),
+              ],
+            ),
             ShellRoute(
               pageBuilder: (context, state, child) => defaultPageBuilder(
                 context,

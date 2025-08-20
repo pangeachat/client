@@ -19,6 +19,7 @@ extension SpacesClientExtension on Client {
     JoinRules joinRules = JoinRules.public,
     Uint8List? avatar,
     Uri? avatarUrl,
+    List<StateEvent>? initialState,
   }) async {
     final roomId = await createRoom(
       creationContent: {'type': RoomCreationTypes.mSpace},
@@ -35,6 +36,7 @@ extension SpacesClientExtension on Client {
             type: EventTypes.RoomAvatar,
             content: {'url': avatarUrl.toString()},
           ),
+        if (initialState != null) ...initialState,
       ],
     );
 

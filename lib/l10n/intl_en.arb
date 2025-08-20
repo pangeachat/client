@@ -5193,5 +5193,30 @@
   },
   "noDataFound": "No data found",
   "activityFinishedMessage": "All Finished!",
-  "endForAll": "End for all"
+  "endForAll": "End for all",
+  "newCourse": "New Course",
+  "newCourseSubtitle": "Which course template would you like to use?",
+  "failedToLoadCourses": "Failed to load courses",
+  "numModules": "{num} modules",
+  "@numModules": {
+    "type": "int",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "numActivityPlans": "{num} activity plans",
+  "@numActivityPlans": {
+    "type": "int",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "coursePlan": "Course Plan",
+  "editCourseLater": "You can edit template title, descriptions, and course image later.",
+  "newCourseAccess": "By default, courses are private and require admin approval to join. You can edit these settings at any time.",
+  "createCourse": "Create course"
 }
