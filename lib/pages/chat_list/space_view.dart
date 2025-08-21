@@ -593,6 +593,7 @@ class _SpaceViewState extends State<SpaceView> {
           joinedParents: joinedParents,
         ),
       ),
+      // #Pangea
       // appBar: AppBar(
       //   leading: FluffyThemes.isColumnMode(context)
       //       ? null
@@ -669,22 +670,17 @@ class _SpaceViewState extends State<SpaceView> {
       //     ),
       //   ],
       // ),
-      floatingActionButton: room?.canChangeStateEvent(
-                EventTypes.SpaceChild,
-              ) ==
-              true
-          ? FloatingActionButton.extended(
-              // #Pangea
-              // onPressed: _addChatOrSubspace,
-              // label: Text(L10n.of(context).group),
-              // icon: const Icon(Icons.group_add_outlined),
-              onPressed: () =>
-                  context.go("/rooms/${widget.spaceId}/details/planner"),
-              label: Text(L10n.of(context).activities),
-              icon: const Icon(Icons.event_note_outlined),
-              // Pangea#
-            )
-          : null,
+      // floatingActionButton: room?.canChangeStateEvent(
+      //           EventTypes.SpaceChild,
+      //         ) ==
+      //         true
+      //     ? FloatingActionButton.extended(
+      //         onPressed: _addChatOrSubspace,
+      //         label: Text(L10n.of(context).group),
+      //         icon: const Icon(Icons.group_add_outlined),
+      //       )
+      //     : null,
+      // Pangea#
       body: room == null
           ? const Center(
               child: Icon(

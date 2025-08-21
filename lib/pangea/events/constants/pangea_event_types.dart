@@ -51,4 +51,5 @@ class PangeaEventTypes {
 
   /// Relates to course plans
   static const coursePlan = "pangea.course_plan";
+  static const courseUser = "p.course_user";
 }

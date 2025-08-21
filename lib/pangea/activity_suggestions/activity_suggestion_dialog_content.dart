@@ -393,7 +393,7 @@ class _ActivitySuggestionEditContent extends StatelessWidget {
         child: TextFormField(
           controller: activityController.participantsController,
           decoration: InputDecoration(
-            labelText: L10n.of(context).classRoster,
+            labelText: L10n.of(context).participants,
           ),
           maxLines: 1,
           keyboardType: TextInputType.number,

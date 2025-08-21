@@ -10,7 +10,6 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_view.dart';
 import 'package:fluffychat/pangea/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/courses/course_repo.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/spaces/utils/client_spaces_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -24,36 +23,13 @@ class SelectedCourse extends StatefulWidget {
 }
 
 class SelectedCourseController extends State<SelectedCourse> {
-  CoursePlanModel? course;
-
-  @override
-  void initState() {
-    super.initState();
-    CourseRepo.get(widget.courseId).then((value) {
-      if (!mounted) return;
-
-      if (value == null) {
-        context.go("/rooms/newcourse");
-        return;
-      }
-
-      setState(() => course = value);
-    });
-  }
-
-  Future<void> launchCourse() async {
-    if (course == null) {
-      context.go("/rooms/newcourse");
-      return;
-    }
-
+  Future<void> launchCourse(CoursePlanModel course) async {
     final client = Matrix.of(context).client;
-
     Uint8List? avatar;
     Uri? avatarUrl;
-    if (course!.imageUrl != null) {
+    if (course.imageUrl != null) {
       try {
-        final Response response = await http.get(Uri.parse(course!.imageUrl!));
+        final Response response = await http.get(Uri.parse(course.imageUrl!));
         avatar = response.bodyBytes;
         avatarUrl = await client.uploadContent(avatar);
       } catch (e) {
@@ -62,7 +38,7 @@ class SelectedCourseController extends State<SelectedCourse> {
     }
 
     final roomId = await client.createPangeaSpace(
-      name: course!.title,
+      name: course.title,
       introChatName: L10n.of(context).introductions,
       announcementsChatName: L10n.of(context).announcements,
       visibility: sdk.Visibility.private,
@@ -71,7 +47,7 @@ class SelectedCourseController extends State<SelectedCourse> {
         sdk.StateEvent(
           type: PangeaEventTypes.coursePlan,
           content: {
-            "uuid": course!.uuid,
+            "uuid": course.uuid,
           },
         ),
       ],
@@ -86,5 +62,8 @@ class SelectedCourseController extends State<SelectedCourse> {
   }
 
   @override
-  Widget build(BuildContext context) => SelectedCourseView(this);
+  Widget build(BuildContext context) => SelectedCourseView(
+        courseId: widget.courseId,
+        launchCourse: launchCourse,
+      );
 }
