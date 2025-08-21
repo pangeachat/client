@@ -199,7 +199,7 @@ class CourseSettings extends StatelessWidget {
                                       return ActivitySuggestionDialog(
                                         controller: activityController,
                                         buttonText:
-                                            L10n.of(context).saveAndLaunch,
+                                            L10n.of(context).launchToSpace,
                                       );
                                     },
                                   );

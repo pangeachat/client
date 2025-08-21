@@ -230,9 +230,27 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                     ),
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Symbols.upload),
-                  onPressed: () {},
+                PopupMenuButton(
+                  child: const Icon(Symbols.upload),
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
+                    PopupMenuItem<int>(
+                      value: 0,
+                      child: ListTile(
+                        title: Text(L10n.of(context).shareSpaceLink),
+                        contentPadding: const EdgeInsets.all(0),
+                      ),
+                    ),
+                    PopupMenuItem<int>(
+                      value: 1,
+                      child: ListTile(
+                        title: Text(
+                          L10n.of(context)
+                              .shareInviteCode(widget.room.classCode!),
+                        ),
+                        contentPadding: const EdgeInsets.all(0),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

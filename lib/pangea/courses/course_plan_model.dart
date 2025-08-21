@@ -94,6 +94,17 @@ class CoursePlanModel {
       baseLanguageModel?.langCode.toUpperCase() ??
       languageOfInstructions.toUpperCase();
 
+  String? topicID(String activityID) {
+    for (final topic in topics) {
+      for (final activity in topic.activities) {
+        if (activity.bookmarkId == activityID) {
+          return topic.uuid;
+        }
+      }
+    }
+    return null;
+  }
+
   /// Deserialize from JSON
   factory CoursePlanModel.fromJson(Map<String, dynamic> json) {
     return CoursePlanModel(

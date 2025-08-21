@@ -41,7 +41,7 @@ extension CoursePlanRoomExtension on Room {
     }
 
     final activityIds =
-        course.topics[topicIndex].activities.map((a) => a..bookmarkId).toList();
+        course.topics[topicIndex].activities.map((a) => a.bookmarkId).toList();
     return state.completedActivities(topicID).toSet().containsAll(activityIds);
   }
 
@@ -74,7 +74,7 @@ extension CoursePlanRoomExtension on Room {
     return topicUserMap;
   }
 
-  Future<void> completeActivity(
+  Future<void> finishCourseActivity(
     String activityID,
     String topicID,
   ) async {

@@ -5238,5 +5238,6 @@
         "type": "int"
       }
     }
-  }
+  },
+  "activityNotFoundForCourse": "This activity was not found within the course"
 }

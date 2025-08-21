@@ -22,11 +22,17 @@ class CourseUserState {
   }
 
   factory CourseUserState.fromJson(Map<String, dynamic> json) {
+    final Map<String, List<String>> activities = {};
+    final activityEntry =
+        (json['comp_act_by_topic'] as Map<String, dynamic>?) ?? {};
+
+    for (final entry in activityEntry.entries) {
+      activities[entry.key] = List<String>.from(entry.value);
+    }
+
     return CourseUserState(
       userID: json['user_id'],
-      completedActivities: Map<String, List<String>>.from(
-        json['comp_act_by_topic'] ?? {},
-      ),
+      completedActivities: activities,
     );
   }
 

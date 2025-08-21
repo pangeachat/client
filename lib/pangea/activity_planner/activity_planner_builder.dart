@@ -33,6 +33,9 @@ class ActivityPlannerBuilder extends StatefulWidget {
   final String? initialFilename;
   final Room room;
 
+  final bool enabledEdits;
+  final bool enableMultiLaunch;
+
   final Widget Function(ActivityPlannerBuilderState) builder;
 
   const ActivityPlannerBuilder({
@@ -41,6 +44,8 @@ class ActivityPlannerBuilder extends StatefulWidget {
     this.initialFilename,
     required this.room,
     required this.builder,
+    this.enabledEdits = false,
+    this.enableMultiLaunch = false,
   });
 
   @override
