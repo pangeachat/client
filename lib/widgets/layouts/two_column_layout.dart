@@ -37,8 +37,9 @@ class TwoColumnLayout extends StatelessWidget {
             // #Pangea
             if (FluffyThemes.isColumnMode(context) ||
                 state.fullPath != '/rooms/:roomid') ...[
-              const SpacesNavigationRail(
-                activeSpaceId: null,
+              SpacesNavigationRail(
+                activeSpaceId: state.pathParameters['spaceid'],
+                path: state.fullPath,
               ),
               Container(
                 color: Theme.of(context).dividerColor,
@@ -80,7 +81,9 @@ class TwoColumnLayout extends StatelessWidget {
 class _MainView extends StatelessWidget {
   final GoRouterState state;
 
-  const _MainView({required this.state});
+  const _MainView({
+    required this.state,
+  });
 
   String get _asset {
     const defaultAsset = FindYourPeopleConstants.sideBearFileName;
@@ -99,6 +102,7 @@ class _MainView extends StatelessWidget {
     if (path == null) {
       return ChatList(
         activeChat: state.pathParameters['roomid'],
+        activeSpaceId: state.pathParameters['spaceid'],
       );
     }
 
@@ -123,6 +127,7 @@ class _MainView extends StatelessWidget {
 
     return ChatList(
       activeChat: state.pathParameters['roomid'],
+      activeSpaceId: state.pathParameters['spaceid'],
     );
   }
 }

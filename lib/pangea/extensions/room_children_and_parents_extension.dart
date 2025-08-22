@@ -1,6 +1,15 @@
 part of "pangea_room_extension.dart";
 
 extension ChildrenAndParentsRoomExtension on Room {
+  Room? get firstSpaceParent {
+    for (final parent in spaceParents) {
+      if (parent.roomId == null) continue;
+      final room = client.getRoomById(parent.roomId!);
+      if (room != null) return room;
+    }
+    return null;
+  }
+
   List<Room> get pangeaSpaceParents => client.rooms
       .where(
         (r) => r.isSpace,

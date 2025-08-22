@@ -1,19 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import 'package:app_links/app_links.dart';
 import 'package:cross_file/cross_file.dart';
-import 'package:flutter_shortcuts_new/flutter_shortcuts_new.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart' as sdk;
-import 'package:matrix/matrix.dart';
-import 'package:receive_sharing_intent/receive_sharing_intent.dart';
-
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_view.dart';
 import 'package:fluffychat/pangea/chat_list/utils/app_version_util.dart';
@@ -31,6 +20,8 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/utils/show_update_snackbar.dart';
+import 'package:fluffychat/utils/tor_stub.dart'
+    if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -38,13 +29,19 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart'
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_shortcuts_new/flutter_shortcuts_new.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart' as sdk;
+import 'package:matrix/matrix.dart';
+import 'package:receive_sharing_intent/receive_sharing_intent.dart';
+
 import '../../../utils/account_bundles.dart';
 import '../../config/setting_keys.dart';
 import '../../utils/url_launcher.dart';
 import '../../widgets/matrix.dart';
-
-import 'package:fluffychat/utils/tor_stub.dart'
-    if (dart.library.html) 'package:tor_detector_web/tor_detector_web.dart';
 
 enum PopupMenuAction {
   settings,
@@ -113,33 +110,25 @@ class ChatListController extends State<ChatList>
       ? ActiveFilter.messages
       : ActiveFilter.allChats;
 
-  String? _activeSpaceId;
-  String? get activeSpaceId => _activeSpaceId;
-
-  void setActiveSpace(String spaceId) async {
-    await Matrix.of(context).client.getRoomById(spaceId)!.postLoad();
-
-    // #Pangea
-    if (FluffyThemes.isColumnMode(context)) {
-      context.push("/rooms/$spaceId/details");
-    }
-    // Pangea#
-
-    setState(() {
-      _activeSpaceId = spaceId;
-    });
-  }
-
   // #Pangea
+  String? get activeSpaceId => widget.activeSpaceId;
+  // String? _activeSpaceId;
+  // String? get activeSpaceId => _activeSpaceId;
+
+  // void setActiveSpace(String spaceId) async {
+  //   await Matrix.of(context).client.getRoomById(spaceId)!.postLoad();
+
+  //   setState(() {
+  //     _activeSpaceId = spaceId;
+  //   });
+  // }
+
   // void clearActiveSpace() => setState(() {
   //       _activeSpaceId = null;
   //     });
-  void clearActiveSpace() {
-    setState(() {
-      _activeSpaceId = null;
-    });
-    context.go("/rooms");
-  }
+  void clearActiveSpace() => context.go("/rooms");
+  void setActiveSpace(String spaceId) =>
+      context.go("/rooms/spaces/$spaceId/details");
   // Pangea#
 
   void onChatTap(Room room) async {
@@ -524,9 +513,7 @@ class ChatListController extends State<ChatList>
   //#Pangea
   StreamSubscription? _invitedSpaceSubscription;
   StreamSubscription? _subscriptionStatusStream;
-  StreamSubscription? _spaceChildSubscription;
   StreamSubscription? _roomCapacitySubscription;
-  final Set<String> hasUpdates = {};
   //Pangea#
 
   @override
@@ -625,11 +612,6 @@ class ChatListController extends State<ChatList>
     // so that when the user navigates to the space that was updated, it will
     // reload any rooms that have been added / removed
     final client = MatrixState.pangeaController.matrixState.client;
-    _spaceChildSubscription ??= client.onRoomState.stream.where((u) {
-      return u.state.type == EventTypes.SpaceChild && u.roomId != activeSpaceId;
-    }).listen((update) {
-      hasUpdates.add(update.roomId);
-    });
 
     // listen for room join events and leave room if over capacity
     _roomCapacitySubscription ??= client.onSync.stream
@@ -669,9 +651,6 @@ class ChatListController extends State<ChatList>
       }
     });
 
-    _activeSpaceId =
-        widget.activeSpaceId == 'clear' ? null : widget.activeSpaceId;
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _joinInvitedSpaces();
     });
@@ -681,17 +660,6 @@ class ChatListController extends State<ChatList>
   }
 
   // #Pangea
-  @override
-  void didUpdateWidget(ChatList oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.activeSpaceId != oldWidget.activeSpaceId &&
-        widget.activeSpaceId != null) {
-      widget.activeSpaceId == 'clear'
-          ? clearActiveSpace()
-          : setActiveSpace(widget.activeSpaceId!);
-    }
-  }
-
   Future<void> _joinInvitedSpaces() async {
     final invitedSpaces = Matrix.of(context).client.rooms.where(
           (r) => r.isSpace && r.membership == Membership.invite,
@@ -711,7 +679,6 @@ class ChatListController extends State<ChatList>
     //#Pangea
     _invitedSpaceSubscription?.cancel();
     _subscriptionStatusStream?.cancel();
-    _spaceChildSubscription?.cancel();
     _roomCapacitySubscription?.cancel();
     //Pangea#
     scrollController.removeListener(_onScroll);
@@ -1097,7 +1064,7 @@ class ChatListController extends State<ChatList>
             builder: (_) => DeleteSpaceDialog(space: room),
           );
           if (resp == true && mounted) {
-            context.go("/rooms?spaceId=clear");
+            context.go("/rooms");
           }
         } else {
           final confirmed = await showOkCancelAlertDialog(
@@ -1257,29 +1224,31 @@ class ChatListController extends State<ChatList>
     });
   }
 
-  void setActiveClient(Client client) {
-    context.go('/rooms');
-    setState(() {
-      activeFilter = ActiveFilter.allChats;
-      _activeSpaceId = null;
-      Matrix.of(context).setActiveClient(client);
-    });
-    _clientStream.add(client);
-  }
+  // #Pangea
+  // void setActiveClient(Client client) {
+  //   context.go('/rooms');
+  //   setState(() {
+  //     activeFilter = ActiveFilter.allChats;
+  //     _activeSpaceId = null;
+  //     Matrix.of(context).setActiveClient(client);
+  //   });
+  //   _clientStream.add(client);
+  // }
 
-  void setActiveBundle(String bundle) {
-    context.go('/rooms');
-    setState(() {
-      _activeSpaceId = null;
-      Matrix.of(context).activeBundle = bundle;
-      if (!Matrix.of(context)
-          .currentBundle!
-          .any((client) => client == Matrix.of(context).client)) {
-        Matrix.of(context)
-            .setActiveClient(Matrix.of(context).currentBundle!.first);
-      }
-    });
-  }
+  // void setActiveBundle(String bundle) {
+  //   context.go('/rooms');
+  //   setState(() {
+  //     _activeSpaceId = null;
+  //     Matrix.of(context).activeBundle = bundle;
+  //     if (!Matrix.of(context)
+  //         .currentBundle!
+  //         .any((client) => client == Matrix.of(context).client)) {
+  //       Matrix.of(context)
+  //           .setActiveClient(Matrix.of(context).currentBundle!.first);
+  //     }
+  //   });
+  // }
+  // Pangea#
 
   void editBundlesForAccount(String? userId, String? activeBundle) async {
     final l10n = L10n.of(context);

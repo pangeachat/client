@@ -158,7 +158,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             future: room.leave,
           );
           if (!resp.isError) {
-            context.go("/rooms?spaceId=clear");
+            context.go("/rooms");
           }
         },
         visible: room.membership == Membership.join,
@@ -183,7 +183,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             future: room.delete,
           );
           if (resp.isError) return;
-          context.go("/rooms?spaceId=clear");
+          context.go("/rooms");
         },
         visible: room.isRoomAdmin && !room.isDirectChat,
         showInMainView: false,

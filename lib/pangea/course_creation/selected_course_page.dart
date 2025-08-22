@@ -59,7 +59,7 @@ class SelectedCourseController extends State<SelectedCourse> {
     if (!mounted) return;
     final room = client.getRoomById(roomId);
     if (room == null) return;
-    context.go("/rooms?spaceId=$roomId");
+    context.go("/rooms/spaces/${room.id}/details");
   }
 
   @override

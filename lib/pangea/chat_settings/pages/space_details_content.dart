@@ -61,7 +61,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         title: l10n.coursePlan,
         icon: const Icon(Icons.map_outlined, size: 30.0),
         onPressed: () => setSelectedTab(SpaceSettingsTabs.course),
-        visible: widget.room.coursePlan != null,
+        visible: true,
         tab: SpaceSettingsTabs.course,
       ),
       ButtonDetails(
@@ -101,7 +101,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         description: l10n.editCourseDesc,
         icon: const Icon(Icons.edit_outlined, size: 30.0),
         onPressed: () {},
-        visible: widget.room.coursePlan != null,
+        visible: false,
         enabled: widget.room.canChangeStateEvent(PangeaEventTypes.coursePlan),
         showInMainView: false,
       ),
@@ -154,7 +154,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
             future: widget.room.leaveSpace,
           );
           if (!resp.isError) {
-            context.go("/rooms?spaceId=clear");
+            context.go("/rooms");
           }
         },
         visible: widget.room.membership == Membership.join,
@@ -175,7 +175,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
           );
 
           if (resp == true) {
-            context.go("/rooms?spaceId=clear");
+            context.go("/rooms");
           }
         },
         visible: widget.room.isRoomAdmin && !widget.room.isDirectChat,
