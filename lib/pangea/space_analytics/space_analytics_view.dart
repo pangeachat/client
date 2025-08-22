@@ -503,8 +503,8 @@ class _RequestButton extends StatelessWidget {
         child: Opacity(
           opacity: status.enabled ? 0.9 : 0.3,
           child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8.0,
+            padding: EdgeInsets.symmetric(
+              horizontal: (status != RequestStatus.unavailable) ? 8.0 : 0.0,
               vertical: 4.0,
             ),
             decoration: status != RequestStatus.unavailable
