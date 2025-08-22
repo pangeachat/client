@@ -566,7 +566,9 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    const EmptyPage(),
+                    ChatDetails(
+                      roomId: state.pathParameters['spaceid']!,
+                    ),
                   ),
                   redirect: loggedOutRedirect,
                   routes: [

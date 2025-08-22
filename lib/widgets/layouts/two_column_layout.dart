@@ -36,7 +36,7 @@ class TwoColumnLayout extends StatelessWidget {
           children: [
             // #Pangea
             if (FluffyThemes.isColumnMode(context) ||
-                state.fullPath != '/rooms/:roomid') ...[
+                !(state.fullPath?.endsWith(":roomid") ?? false)) ...[
               SpacesNavigationRail(
                 activeSpaceId: state.pathParameters['spaceid'],
                 path: state.fullPath,

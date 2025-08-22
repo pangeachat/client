@@ -53,6 +53,7 @@ class PangeaRoomDetailsView extends StatelessWidget {
               maxWidth: 900,
               showBorder: false,
               innerPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+              withScrolling: !room.isSpace,
               child: room.isSpace
                   ? SpaceDetailsContent(controller, room)
                   : ChatDetailsContent(controller, room),

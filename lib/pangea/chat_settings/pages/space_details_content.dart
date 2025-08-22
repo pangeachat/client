@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/chat_settings/pages/room_participants_widget.d
 import 'package:fluffychat/pangea/chat_settings/pages/space_details_button_row.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_settings/course_settings.dart';
 import 'package:fluffychat/pangea/courses/course_plan_builder.dart';
@@ -29,6 +30,7 @@ import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 enum SpaceSettingsTabs {
+  chat,
   course,
   participants,
   analytics,
@@ -48,6 +50,16 @@ class SpaceDetailsContent extends StatefulWidget {
 class SpaceDetailsContentState extends State<SpaceDetailsContent> {
   SpaceSettingsTabs _selectedTab = SpaceSettingsTabs.course;
 
+  @override
+  void didUpdateWidget(covariant SpaceDetailsContent oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.room.id != widget.room.id) {
+      setState(() {
+        _selectedTab = SpaceSettingsTabs.course;
+      });
+    }
+  }
+
   void setSelectedTab(SpaceSettingsTabs tab) {
     setState(() {
       _selectedTab = tab;
@@ -57,6 +69,13 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
   List<ButtonDetails> get _buttons {
     final L10n l10n = L10n.of(context);
     return [
+      ButtonDetails(
+        title: l10n.chats,
+        icon: const Icon(Icons.chat_bubble_outline, size: 30.0),
+        onPressed: () => setSelectedTab(SpaceSettingsTabs.chat),
+        visible: !FluffyThemes.isColumnMode(context),
+        tab: SpaceSettingsTabs.chat,
+      ),
       ButtonDetails(
         title: l10n.coursePlan,
         icon: const Icon(Icons.map_outlined, size: 30.0),
@@ -195,6 +214,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
       courseId: widget.room.coursePlan?.uuid,
       builder: (context, courseController) {
         return Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -292,101 +312,99 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
               onTabSelected: setSelectedTab,
               buttons: _buttons,
             ),
-            Builder(
-              builder: (context) {
-                switch (_selectedTab) {
-                  case SpaceSettingsTabs.course:
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: isColumnMode ? 30.0 : 12.0,
-                      ),
-                      child: CourseSettings(
-                        courseController,
-                        room: widget.room,
-                      ),
-                    );
-                  case SpaceSettingsTabs.participants:
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: isColumnMode ? 50.0 : 8.0,
-                      ),
-                      child: RoomParticipantsSection(room: widget.room),
-                    );
-                  case SpaceSettingsTabs.analytics:
-                    return Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: isColumnMode ? 30.0 : 14.0,
+            SizedBox(height: isColumnMode ? 30.0 : 12.0),
+            Expanded(
+              child: Builder(
+                builder: (context) {
+                  switch (_selectedTab) {
+                    case SpaceSettingsTabs.chat:
+                      return CourseChats(
+                        widget.room.id,
+                        activeChat: null,
+                      );
+                    case SpaceSettingsTabs.course:
+                      return SingleChildScrollView(
+                        child: CourseSettings(
+                          courseController,
+                          room: widget.room,
                         ),
-                        child: SpaceAnalytics(roomId: widget.room.id),
-                      ),
-                    );
-                  case SpaceSettingsTabs.more:
-                    final buttons = _buttons
-                        .where(
-                          (b) => !b.showInMainView && b.visible,
-                        )
-                        .toList();
+                      );
+                    case SpaceSettingsTabs.participants:
+                      return SingleChildScrollView(
+                        child: RoomParticipantsSection(room: widget.room),
+                      );
+                    case SpaceSettingsTabs.analytics:
+                      return SingleChildScrollView(
+                        child: Center(
+                          child: SpaceAnalytics(roomId: widget.room.id),
+                        ),
+                      );
+                    case SpaceSettingsTabs.more:
+                      final buttons = _buttons
+                          .where(
+                            (b) => !b.showInMainView && b.visible,
+                          )
+                          .toList();
 
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: isColumnMode ? 30.0 : 14.0,
-                      ),
-                      child: Column(
-                        children: [
-                          if (courseController.course != null) ...[
-                            Text(
-                              courseController.course!.description,
-                              style: TextStyle(
-                                fontSize: isColumnMode ? 16.0 : 12.0,
-                              ),
-                            ),
-                            SizedBox(height: isColumnMode ? 30.0 : 14.0),
-                          ],
-                          Column(
-                            spacing: 10.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: buttons.map((b) {
-                              return Opacity(
-                                opacity: b.enabled ? 1.0 : 0.5,
-                                child: ListTile(
-                                  title: Text(
-                                    b.title,
-                                    style: TextStyle(
-                                      fontSize: 12.0,
-                                      color: b.desctructive
-                                          ? Theme.of(context).colorScheme.error
-                                          : null,
-                                    ),
-                                  ),
-                                  subtitle: b.description != null
-                                      ? Text(
-                                          b.description!,
-                                          style: TextStyle(
-                                            fontSize: 8.0,
-                                            color: b.desctructive
-                                                ? Theme.of(context)
-                                                    .colorScheme
-                                                    .error
-                                                : null,
-                                          ),
-                                        )
-                                      : null,
-                                  leading: b.icon,
-                                  onTap: b.enabled
-                                      ? () {
-                                          b.onPressed?.call();
-                                        }
-                                      : null,
+                      return SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            if (courseController.course != null) ...[
+                              Text(
+                                courseController.course!.description,
+                                style: TextStyle(
+                                  fontSize: isColumnMode ? 16.0 : 12.0,
                                 ),
-                              );
-                            }).toList(),
-                          ),
-                        ],
-                      ),
-                    );
-                }
-              },
+                              ),
+                              SizedBox(height: isColumnMode ? 30.0 : 14.0),
+                            ],
+                            Column(
+                              spacing: 10.0,
+                              mainAxisSize: MainAxisSize.min,
+                              children: buttons.map((b) {
+                                return Opacity(
+                                  opacity: b.enabled ? 1.0 : 0.5,
+                                  child: ListTile(
+                                    title: Text(
+                                      b.title,
+                                      style: TextStyle(
+                                        fontSize: 12.0,
+                                        color: b.desctructive
+                                            ? Theme.of(context)
+                                                .colorScheme
+                                                .error
+                                            : null,
+                                      ),
+                                    ),
+                                    subtitle: b.description != null
+                                        ? Text(
+                                            b.description!,
+                                            style: TextStyle(
+                                              fontSize: 8.0,
+                                              color: b.desctructive
+                                                  ? Theme.of(context)
+                                                      .colorScheme
+                                                      .error
+                                                  : null,
+                                            ),
+                                          )
+                                        : null,
+                                    leading: b.icon,
+                                    onTap: b.enabled
+                                        ? () {
+                                            b.onPressed?.call();
+                                          }
+                                        : null,
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ],
+                        ),
+                      );
+                  }
+                },
+              ),
             ),
           ],
         );
