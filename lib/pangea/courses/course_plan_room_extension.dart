@@ -45,6 +45,21 @@ extension CoursePlanRoomExtension on Room {
     return state.completedActivities(topicID).toSet().containsAll(activityIds);
   }
 
+  Topic? currentTopic(
+    String userID,
+    CoursePlanModel course,
+  ) {
+    if (coursePlan == null) return null;
+    final topicIDs = course.topics.map((t) => t.uuid).toList();
+    if (topicIDs.isEmpty) return null;
+
+    final index = topicIDs.indexWhere(
+      (t) => !_hasCompletedTopic(userID, t, course),
+    );
+
+    return index == -1 ? null : course.topics[index];
+  }
+
   int currentTopicIndex(
     String userID,
     CoursePlanModel course,

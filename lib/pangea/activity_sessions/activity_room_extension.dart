@@ -12,6 +12,7 @@ import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_mo
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/courses/course_plan_room_extension.dart';
@@ -327,4 +328,9 @@ extension ActivityRoomExtension on Room {
   Room? get courseParent => pangeaSpaceParents.firstWhereOrNull(
         (parent) => parent.coursePlan != null,
       );
+
+  bool get isActivitySession =>
+      getState(EventTypes.RoomCreate)?.content.tryGet<String>('type') ==
+          PangeaRoomTypes.activitySession ||
+      activityPlan != null;
 }
