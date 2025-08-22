@@ -33,7 +33,6 @@ import 'package:fluffychat/pangea/activity_planner/activity_planner_page.dart';
 import 'package:fluffychat/pangea/analytics_page/analytics_page.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
-import 'package:fluffychat/pangea/common/widgets/pangea_side_view.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/course_creation/new_course_page.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
@@ -208,46 +207,25 @@ abstract class AppRoutes {
         // #Pangea
         // FluffyThemes.isColumnMode(context) &&
         //         state.fullPath?.startsWith('/rooms/settings') == false
-        FluffyThemes.isColumnMode(context) &&
-                state.fullPath?.startsWith('/rooms/settings') == false &&
-                state.fullPath?.startsWith('/rooms/communities') == false &&
-                state.fullPath?.startsWith('/rooms/analytics') == false
-            // Pangea#
-            ? TwoColumnLayout(
-                mainView: ChatList(
-                  activeChat: state.pathParameters['roomid'],
-                  // #Pangea
-                  activeSpaceId: state.uri.queryParameters['spaceId'],
-                  // Pangea#
-                  displayNavigationRail:
-                      state.path?.startsWith('/rooms/settings') != true,
-                ),
-                sideView: child,
-              )
-            : child,
+        //     ? TwoColumnLayout(
+        //         mainView: ChatList(
+        //           activeChat: state.pathParameters['roomid'],
+        //           displayNavigationRail:
+        //               state.path?.startsWith('/rooms/settings') != true,
+        //         ),
+        //         sideView: child,
+        //       )
+        //     : child,
+        TwoColumnLayout(
+          state: state,
+          sideView: child,
+        ),
+        // Pangea#
       ),
       routes: [
         GoRoute(
           path: '/rooms',
-          // #Pangea
-          // redirect: loggedOutRedirect,
-          redirect: (context, state) async {
-            final resp = await loggedOutRedirect(context, state);
-            if (resp != null) return resp;
-            final isColumnMode = FluffyThemes.isColumnMode(context);
-
-            final spaceId = state.uri.queryParameters['spaceId'];
-            if (spaceId != null &&
-                spaceId != 'clear' &&
-                isColumnMode &&
-                state.fullPath != null &&
-                !state.fullPath!.contains('details')) {
-              return '/rooms/$spaceId/details?spaceId=$spaceId';
-            }
-
-            return null;
-          },
-          // Pangea#
+          redirect: loggedOutRedirect,
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
@@ -258,9 +236,6 @@ abstract class AppRoutes {
                 // Pangea#
                 : ChatList(
                     activeChat: state.pathParameters['roomid'],
-                    // #Pangea
-                    activeSpaceId: state.uri.queryParameters['spaceId'],
-                    // Pangea#
                   ),
           ),
           routes: [
@@ -338,237 +313,236 @@ abstract class AppRoutes {
                 ),
               ],
             ),
-            ShellRoute(
-              pageBuilder: (context, state, child) => defaultPageBuilder(
+            // #Pangea
+            // ShellRoute(
+            //   pageBuilder: (context, state, child) => defaultPageBuilder(
+            //     context,
+            //     state,
+            //     FluffyThemes.isColumnMode(context)
+            //         ? TwoColumnLayout(
+            //             mainView: PangeaSideView(path: state.fullPath),
+            //             sideView: child,
+            //           )
+            //         : child,
+            //   ),
+            //   routes: [
+            // Pangea#
+            GoRoute(
+              path: 'communities',
+              redirect: loggedOutRedirect,
+              pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                FluffyThemes.isColumnMode(context)
-                    ? TwoColumnLayout(
-                        mainView: PangeaSideView(path: state.fullPath),
-                        sideView: child,
-                        dividerColor: Colors.transparent,
-                      )
-                    : child,
+                const FindYourPeople(),
+              ),
+            ),
+            GoRoute(
+              path: 'analytics',
+              redirect: loggedOutRedirect,
+              pageBuilder: (context, state) => defaultPageBuilder(
+                context,
+                state,
+                AnalyticsPage(
+                  selectedIndicator: ProgressIndicatorEnum.fromString(
+                    state.uri.queryParameters['mode'] ?? 'vocab',
+                  ),
+                  constructZoom: state.extra is ConstructIdentifier
+                      ? state.extra as ConstructIdentifier
+                      : null,
+                ),
               ),
               routes: [
                 GoRoute(
-                  path: 'communities',
-                  redirect: loggedOutRedirect,
+                  path: ':roomid',
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    const FindYourPeople(),
-                  ),
-                ),
-                GoRoute(
-                  path: 'analytics',
-                  redirect: loggedOutRedirect,
-                  pageBuilder: (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    AnalyticsPage(
-                      selectedIndicator: ProgressIndicatorEnum.fromString(
-                        state.uri.queryParameters['mode'] ?? 'vocab',
-                      ),
-                      constructZoom: state.extra is ConstructIdentifier
-                          ? state.extra as ConstructIdentifier
-                          : null,
-                    ),
-                  ),
-                  routes: [
-                    GoRoute(
-                      path: ':roomid',
-                      pageBuilder: (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        ChatPage(
-                          roomId: state.pathParameters['roomid']!,
-                          eventId: state.uri.queryParameters['event'],
-                          backButton: BackButton(
-                            onPressed: () => context.go(
-                              "/rooms/analytics?mode=activities",
-                            ),
-                          ),
+                    ChatPage(
+                      roomId: state.pathParameters['roomid']!,
+                      eventId: state.uri.queryParameters['event'],
+                      backButton: BackButton(
+                        onPressed: () => context.go(
+                          "/rooms/analytics?mode=activities",
                         ),
                       ),
-                      redirect: loggedOutRedirect,
                     ),
-                  ],
+                  ),
+                  redirect: loggedOutRedirect,
                 ),
               ],
             ),
             // Pangea#
-            ShellRoute(
-              pageBuilder: (context, state, child) => defaultPageBuilder(
+            // #Pangea
+            // ShellRoute(
+            //   pageBuilder: (context, state, child) => defaultPageBuilder(
+            //     context,
+            //     state,
+            //     FluffyThemes.isColumnMode(context)
+            //         ? TwoColumnLayout(
+            //             mainView: Settings(key: state.pageKey),
+            //             sideView: child,
+            //           )
+            //         : child,
+            //   ),
+            //   routes: [
+            // Pangea#
+            GoRoute(
+              path: 'settings',
+              pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
                 FluffyThemes.isColumnMode(context)
-                    ? TwoColumnLayout(
-                        mainView: Settings(key: state.pageKey),
-                        sideView: child,
-                      )
-                    : child,
+                    ? const EmptyPage()
+                    : const Settings(),
               ),
               routes: [
                 GoRoute(
-                  path: 'settings',
+                  path: 'notifications',
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    FluffyThemes.isColumnMode(context)
-                        ? const EmptyPage()
-                        : const Settings(),
+                    const SettingsNotifications(),
+                  ),
+                  redirect: loggedOutRedirect,
+                ),
+                GoRoute(
+                  path: 'style',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    const SettingsStyle(),
+                  ),
+                  redirect: loggedOutRedirect,
+                ),
+                GoRoute(
+                  path: 'devices',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    const DevicesSettings(),
+                  ),
+                  redirect: loggedOutRedirect,
+                ),
+                GoRoute(
+                  path: 'chat',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    const SettingsChat(),
                   ),
                   routes: [
                     GoRoute(
-                      path: 'notifications',
+                      path: 'emotes',
                       pageBuilder: (context, state) => defaultPageBuilder(
                         context,
                         state,
-                        const SettingsNotifications(),
+                        const EmotesSettings(),
                       ),
-                      redirect: loggedOutRedirect,
                     ),
+                  ],
+                  redirect: loggedOutRedirect,
+                ),
+                // #Pangea
+                // GoRoute(
+                //   path: 'addaccount',
+                //   redirect: loggedOutRedirect,
+                //   pageBuilder: (context, state) => defaultPageBuilder(
+                //     context,
+                //     state,
+                //     const HomeserverPicker(addMultiAccount: true),
+                //   ),
+                //   routes: [
+                //     GoRoute(
+                //       path: 'login',
+                //       pageBuilder: (context, state) => defaultPageBuilder(
+                //         context,
+                //         state,
+                //         Login(client: state.extra as Client),
+                //       ),
+                //       redirect: loggedOutRedirect,
+                //     ),
+                //   ],
+                // ),
+                // Pangea#
+                GoRoute(
+                  path: 'homeserver',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      const SettingsHomeserver(),
+                    );
+                  },
+                  redirect: loggedOutRedirect,
+                ),
+                GoRoute(
+                  path: 'security',
+                  redirect: loggedOutRedirect,
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    const SettingsSecurity(),
+                  ),
+                  routes: [
                     GoRoute(
-                      path: 'style',
-                      pageBuilder: (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        const SettingsStyle(),
-                      ),
-                      redirect: loggedOutRedirect,
-                    ),
-                    GoRoute(
-                      path: 'devices',
-                      pageBuilder: (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        const DevicesSettings(),
-                      ),
-                      redirect: loggedOutRedirect,
-                    ),
-                    GoRoute(
-                      path: 'chat',
-                      pageBuilder: (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        const SettingsChat(),
-                      ),
-                      routes: [
-                        GoRoute(
-                          path: 'emotes',
-                          pageBuilder: (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const EmotesSettings(),
-                          ),
-                        ),
-                      ],
-                      redirect: loggedOutRedirect,
-                    ),
-                    // #Pangea
-                    // GoRoute(
-                    //   path: 'addaccount',
-                    //   redirect: loggedOutRedirect,
-                    //   pageBuilder: (context, state) => defaultPageBuilder(
-                    //     context,
-                    //     state,
-                    //     const HomeserverPicker(addMultiAccount: true),
-                    //   ),
-                    //   routes: [
-                    //     GoRoute(
-                    //       path: 'login',
-                    //       pageBuilder: (context, state) => defaultPageBuilder(
-                    //         context,
-                    //         state,
-                    //         Login(client: state.extra as Client),
-                    //       ),
-                    //       redirect: loggedOutRedirect,
-                    //     ),
-                    //   ],
-                    // ),
-                    // Pangea#
-                    GoRoute(
-                      path: 'homeserver',
+                      path: 'password',
                       pageBuilder: (context, state) {
                         return defaultPageBuilder(
                           context,
                           state,
-                          const SettingsHomeserver(),
+                          const SettingsPassword(),
                         );
                       },
                       redirect: loggedOutRedirect,
                     ),
                     GoRoute(
-                      path: 'security',
-                      redirect: loggedOutRedirect,
-                      pageBuilder: (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        const SettingsSecurity(),
-                      ),
-                      routes: [
-                        GoRoute(
-                          path: 'password',
-                          pageBuilder: (context, state) {
-                            return defaultPageBuilder(
-                              context,
-                              state,
-                              const SettingsPassword(),
-                            );
-                          },
-                          redirect: loggedOutRedirect,
-                        ),
-                        GoRoute(
-                          path: 'ignorelist',
-                          pageBuilder: (context, state) {
-                            return defaultPageBuilder(
-                              context,
-                              state,
-                              SettingsIgnoreList(
-                                initialUserId: state.extra?.toString(),
-                              ),
-                            );
-                          },
-                          redirect: loggedOutRedirect,
-                        ),
-                        GoRoute(
-                          path: '3pid',
-                          pageBuilder: (context, state) => defaultPageBuilder(
-                            context,
-                            state,
-                            const Settings3Pid(),
+                      path: 'ignorelist',
+                      pageBuilder: (context, state) {
+                        return defaultPageBuilder(
+                          context,
+                          state,
+                          SettingsIgnoreList(
+                            initialUserId: state.extra?.toString(),
                           ),
-                          redirect: loggedOutRedirect,
-                        ),
-                      ],
-                    ),
-                    // #Pangea
-                    GoRoute(
-                      path: 'learning',
-                      pageBuilder: (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        const SettingsLearning(
-                          isDialog: false,
-                        ),
-                      ),
+                        );
+                      },
                       redirect: loggedOutRedirect,
                     ),
                     GoRoute(
-                      path: 'subscription',
+                      path: '3pid',
                       pageBuilder: (context, state) => defaultPageBuilder(
                         context,
                         state,
-                        const SubscriptionManagement(),
+                        const Settings3Pid(),
                       ),
                       redirect: loggedOutRedirect,
                     ),
-                    // Pangea#
                   ],
+                ),
+                // #Pangea
+                GoRoute(
+                  path: 'learning',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    const SettingsLearning(
+                      isDialog: false,
+                    ),
+                  ),
                   redirect: loggedOutRedirect,
                 ),
+                GoRoute(
+                  path: 'subscription',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    const SubscriptionManagement(),
+                  ),
+                  redirect: loggedOutRedirect,
+                ),
+                // Pangea#
               ],
+              redirect: loggedOutRedirect,
             ),
             GoRoute(
               path: ':roomid',
