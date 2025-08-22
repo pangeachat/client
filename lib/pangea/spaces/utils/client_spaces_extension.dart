@@ -20,6 +20,7 @@ extension SpacesClientExtension on Client {
     Uint8List? avatar,
     Uri? avatarUrl,
     List<StateEvent>? initialState,
+    int spaceChild = 50,
   }) async {
     final roomId = await createRoom(
       creationContent: {'type': RoomCreationTypes.mSpace},
@@ -27,7 +28,10 @@ extension SpacesClientExtension on Client {
       name: name.trim(),
       powerLevelContentOverride: {'events_default': 100},
       initialState: [
-        RoomDefaults.defaultSpacePowerLevels(userID!),
+        RoomDefaults.defaultSpacePowerLevels(
+          userID!,
+          spaceChild: spaceChild,
+        ),
         await pangeaJoinRules(
           joinRules.toString().replaceAll('JoinRules.', ''),
         ),

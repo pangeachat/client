@@ -53,6 +53,7 @@ class SelectedCourseController extends State<SelectedCourse> {
       ],
       avatar: avatar,
       avatarUrl: avatarUrl,
+      spaceChild: 0,
     );
 
     if (!mounted) return;

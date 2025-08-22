@@ -37,22 +37,10 @@ extension ChildrenAndParentsRoomExtension on Room {
       }
     }
 
-    try {
-      await _trySetSpaceChild(
-        roomId,
-        suggested: suggested,
-      );
-    } catch (err, stack) {
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {
-          "roomID": roomId,
-          "childID": child.id,
-          "suggested": suggested,
-        },
-      );
-    }
+    await _trySetSpaceChild(
+      roomId,
+      suggested: suggested,
+    );
   }
 
   Future<void> _trySetSpaceChild(

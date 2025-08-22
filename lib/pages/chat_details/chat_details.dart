@@ -368,48 +368,47 @@ class ChatDetailsController extends State<ChatDetails> {
     );
     if (names == null) return;
 
-    final resp = await Matrix.of(context).client.createGroupChat(
-          visibility: sdk.Visibility.private,
-          groupName: names,
-          initialState: [
-            RoomDefaults.defaultPowerLevels(
-              Matrix.of(context).client.userID!,
-            ),
-            await Matrix.of(context).client.pangeaJoinRules(
-                  'knock_restricted',
-                  allow: roomId != null
-                      ? [
-                          {
-                            "type": "m.room_membership",
-                            "room_id": roomId,
-                          }
-                        ]
-                      : null,
+    final resp = await showFutureLoadingDialog<String>(
+      context: context,
+      future: () async {
+        final newRoomId = await Matrix.of(context).client.createGroupChat(
+              visibility: sdk.Visibility.private,
+              groupName: names,
+              initialState: [
+                RoomDefaults.defaultPowerLevels(
+                  Matrix.of(context).client.userID!,
                 ),
-          ],
-          enableEncryption: false,
-        );
+                await Matrix.of(context).client.pangeaJoinRules(
+                      'knock_restricted',
+                      allow: roomId != null
+                          ? [
+                              {
+                                "type": "m.room_membership",
+                                "room_id": roomId,
+                              }
+                            ]
+                          : null,
+                    ),
+              ],
+              enableEncryption: false,
+            );
+        final client = Matrix.of(context).client;
+        Room? room = client.getRoomById(newRoomId);
+        if (room == null) {
+          await client.waitForRoomInSync(newRoomId);
+          room = client.getRoomById(newRoomId);
+        }
+        if (room == null) newRoomId;
+        await activeSpace.addToSpace(room!.id);
+        if (room.pangeaSpaceParents.isEmpty) {
+          await client.waitForRoomInSync(newRoomId);
+        }
 
-    if (!mounted) return;
-    final client = Matrix.of(context).client;
-    Room? room = client.getRoomById(resp);
-    if (room == null) {
-      await client.waitForRoomInSync(resp);
-      room = client.getRoomById(resp);
-    }
-    if (room == null) return;
+        return newRoomId;
+      },
+    );
 
-    try {
-      await activeSpace.addToSpace(room.id);
-      if (room.pangeaSpaceParents.isEmpty) {
-        await client.waitForRoomInSync(resp);
-      }
-    } catch (err) {
-      ErrorHandler.logError(
-        e: "Failed to add room to space",
-        data: {"spaceId": roomId, "error": err},
-      );
-    }
+    if (resp.isError || resp.result == null || !mounted) return;
     context.go('/rooms/$roomId/invite');
   }
   // Pangea#
