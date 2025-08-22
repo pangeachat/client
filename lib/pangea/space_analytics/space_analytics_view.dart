@@ -26,6 +26,7 @@ class SpaceAnalyticsView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(L10n.of(context).spaceAnalytics),
+        centerTitle: true,
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
