@@ -400,16 +400,15 @@ class ChatDetailsController extends State<ChatDetails> {
         }
         if (room == null) newRoomId;
         await activeSpace.addToSpace(room!.id);
-        if (room.pangeaSpaceParents.isEmpty) {
+        if (room.spaceParents.isEmpty) {
           await client.waitForRoomInSync(newRoomId);
         }
-
         return newRoomId;
       },
     );
 
     if (resp.isError || resp.result == null || !mounted) return;
-    context.go('/rooms/$roomId/invite');
+    context.go('/rooms/${resp.result}/invite');
   }
   // Pangea#
 }

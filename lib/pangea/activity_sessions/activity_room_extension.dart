@@ -330,7 +330,10 @@ extension ActivityRoomExtension on Room {
       );
 
   bool get isActivitySession =>
-      getState(EventTypes.RoomCreate)?.content.tryGet<String>('type') ==
-          PangeaRoomTypes.activitySession ||
+      getState(EventTypes.RoomCreate)
+              ?.content
+              .tryGet<String>('type')
+              ?.startsWith(PangeaRoomTypes.activitySession) ==
+          true ||
       activityPlan != null;
 }

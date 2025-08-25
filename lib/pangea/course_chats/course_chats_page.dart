@@ -14,6 +14,8 @@ import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
+import 'package:fluffychat/pangea/courses/course_plan_model.dart';
+import 'package:fluffychat/pangea/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
@@ -50,6 +52,9 @@ class CourseChatsController extends State<CourseChats> {
   String? _nextBatch;
   bool noMoreRooms = false;
   bool isLoading = false;
+
+  CoursePlanModel? course;
+  String? selectedTopicId;
 
   @override
   void initState() {
@@ -90,6 +95,45 @@ class CourseChatsController extends State<CourseChats> {
     _roomSubscription?.cancel();
     super.dispose();
   }
+
+  void setCourse(CoursePlanModel? course) {
+    setState(() {
+      this.course = course;
+    });
+  }
+
+  void setSelectedTopicId(String topicID) {
+    setState(() {
+      selectedTopicId = topicID;
+    });
+  }
+
+  int get _selectedTopicIndex =>
+      course?.topics.indexWhere((t) => t.uuid == selectedTopicId) ?? -1;
+
+  bool get canMoveLeft => _selectedTopicIndex > 0;
+  bool get canMoveRight {
+    if (course == null) return false;
+    final endIndex =
+        room?.ownCurrentTopicIndex(course!) ?? (course!.topics.length - 1);
+    return _selectedTopicIndex < endIndex;
+  }
+
+  void moveLeft() {
+    if (canMoveLeft) {
+      setSelectedTopicId(course!.topics[_selectedTopicIndex - 1].uuid);
+    }
+  }
+
+  void moveRight() {
+    if (canMoveRight) {
+      setSelectedTopicId(course!.topics[_selectedTopicIndex + 1].uuid);
+    }
+  }
+
+  Topic? get selectedTopic => course?.topics.firstWhereOrNull(
+        (topic) => topic.uuid == selectedTopicId,
+      );
 
   Future<void> _joinDefaultChats() async {
     if (discoveredChildren == null) return;
@@ -133,9 +177,7 @@ class CourseChatsController extends State<CourseChats> {
     final room = Matrix.of(context).client.getRoomById(widget.roomId);
     if (room == null) return;
 
-    setState(() {
-      isLoading = true;
-    });
+    if (mounted) setState(() => isLoading = true);
 
     try {
       await _loadHierarchy(activeSpace: room, reload: reload);
@@ -149,9 +191,7 @@ class CourseChatsController extends State<CourseChats> {
       }
     } finally {
       if (mounted) {
-        setState(() {
-          isLoading = false;
-        });
+        setState(() => isLoading = false);
       }
     }
   }
@@ -722,7 +762,7 @@ class CourseChatsController extends State<CourseChats> {
             future: room.delete,
           );
           if (mounted && !resp.isError) {
-            context.go("/rooms");
+            context.go("/rooms/spaces/${widget.roomId}/details");
           }
         }
         return;
@@ -757,7 +797,7 @@ class CourseChatsController extends State<CourseChats> {
         continue;
       }
 
-      final room = Matrix.of(context).client.getRoomById(child.roomId);
+      final room = space.client.getRoomById(child.roomId);
       if (room != null && room.membership != Membership.leave) {
         // If the room is already joined or invited, skip it
         continue;

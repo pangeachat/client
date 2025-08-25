@@ -50,6 +50,8 @@ class Topic {
       'image_url': imageUrl,
     };
   }
+
+  List<String> get activityIds => activities.map((e) => e.bookmarkId).toList();
 }
 
 /// Represents a course plan in the course planner response.

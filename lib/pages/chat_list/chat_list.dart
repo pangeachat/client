@@ -1087,7 +1087,9 @@ class ChatListController extends State<ChatList>
             future: room.delete,
           );
           if (mounted && !resp.isError) {
-            context.go("/rooms");
+            activeSpaceId != null
+                ? context.go('/rooms/spaces/$activeSpaceId/details')
+                : context.go("/rooms");
           }
         }
         return;

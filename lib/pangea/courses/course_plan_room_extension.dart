@@ -60,6 +60,9 @@ extension CoursePlanRoomExtension on Room {
     return index == -1 ? null : course.topics[index];
   }
 
+  Topic? ownCurrentTopic(CoursePlanModel course) =>
+      currentTopic(client.userID!, course);
+
   int currentTopicIndex(
     String userID,
     CoursePlanModel course,
@@ -74,6 +77,9 @@ extension CoursePlanRoomExtension on Room {
 
     return index == -1 ? 0 : index;
   }
+
+  int ownCurrentTopicIndex(CoursePlanModel course) =>
+      currentTopicIndex(client.userID!, course);
 
   Map<String, List<User>> topicsToUsers(CoursePlanModel course) {
     final Map<String, List<User>> topicUserMap = {};

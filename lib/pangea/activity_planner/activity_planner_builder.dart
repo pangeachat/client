@@ -342,7 +342,8 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     await updateImageURL();
     final roomID = await Matrix.of(context).client.createRoom(
           creationContent: {
-            'type': PangeaRoomTypes.activitySession,
+            'type':
+                "${PangeaRoomTypes.activitySession}:${updatedActivity.bookmarkId}",
           },
           visibility: Visibility.private,
           name: "${updatedActivity.title} ${index + 1}",
