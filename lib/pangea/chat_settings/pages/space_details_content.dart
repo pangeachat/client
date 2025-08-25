@@ -80,7 +80,6 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         title: l10n.coursePlan,
         icon: const Icon(Icons.map_outlined, size: 30.0),
         onPressed: () => setSelectedTab(SpaceSettingsTabs.course),
-        visible: true,
         tab: SpaceSettingsTabs.course,
       ),
       ButtonDetails(
@@ -88,13 +87,11 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         icon: const Icon(Icons.group_outlined, size: 30.0),
         onPressed: () => setSelectedTab(SpaceSettingsTabs.participants),
         tab: SpaceSettingsTabs.participants,
-        visible: true,
       ),
       ButtonDetails(
         title: l10n.stats,
         icon: const Icon(Symbols.bar_chart_4_bars, size: 30.0),
         onPressed: () => setSelectedTab(SpaceSettingsTabs.analytics),
-        visible: true,
         enabled: widget.room.isRoomAdmin,
         tab: SpaceSettingsTabs.analytics,
       ),
@@ -111,7 +108,6 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
           }
           context.go('/rooms/${widget.room.id}/details/invite?filter=$filter');
         },
-        visible: widget.room.canInvite && !widget.room.isDirectChat,
         enabled: widget.room.canInvite && !widget.room.isDirectChat,
         showInMainView: false,
       ),
@@ -130,7 +126,6 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
         onPressed: () =>
             context.go('/rooms/${widget.room.id}/details/permissions'),
-        visible: true,
         enabled: widget.room.isRoomAdmin && !widget.room.isDirectChat,
         showInMainView: false,
       ),
@@ -139,8 +134,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         description: l10n.accessDesc,
         icon: const Icon(Icons.shield_outlined, size: 30.0),
         onPressed: () => context.go('/rooms/${widget.room.id}/details/access'),
-        visible: widget.room.spaceParents.isEmpty,
-        enabled: widget.room.isRoomAdmin,
+        enabled: widget.room.isRoomAdmin && widget.room.spaceParents.isEmpty,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -148,10 +142,10 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         description: l10n.createGroupChatDesc,
         icon: const Icon(Symbols.chat_add_on, size: 30.0),
         onPressed: widget.controller.addGroupChat,
-        visible: true,
-        enabled: widget.room.canChangeStateEvent(
-          EventTypes.SpaceChild,
-        ),
+        enabled: widget.room.isRoomAdmin &&
+            widget.room.canChangeStateEvent(
+              EventTypes.SpaceChild,
+            ),
         showInMainView: false,
       ),
       ButtonDetails(
@@ -176,7 +170,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
             context.go("/rooms");
           }
         },
-        visible: widget.room.membership == Membership.join,
+        enabled: widget.room.membership == Membership.join,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -197,7 +191,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
             context.go("/rooms");
           }
         },
-        visible: widget.room.isRoomAdmin && !widget.room.isDirectChat,
+        enabled: widget.room.isRoomAdmin && !widget.room.isDirectChat,
         showInMainView: false,
         desctructive: true,
       ),

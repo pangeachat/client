@@ -72,7 +72,6 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         title: l10n.permissions,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
         onPressed: () => context.go('/rooms/${room.id}/details/permissions'),
-        visible: room.isRoomAdmin && !room.isDirectChat,
         enabled: room.isRoomAdmin && !room.isDirectChat,
         showInMainView: false,
       ),
@@ -94,7 +93,6 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
                 : PushRuleState.notify,
           ),
         ),
-        visible: true,
       ),
       ButtonDetails(
         title: l10n.invite,
@@ -106,14 +104,14 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
           }
           context.go('/rooms/${room.id}/details/invite?filter=$filter');
         },
-        visible: room.canInvite && !room.isDirectChat,
         enabled: room.canInvite && !room.isDirectChat,
       ),
       ButtonDetails(
         title: l10n.download,
         icon: const Icon(Icons.download_outlined, size: 30.0),
         onPressed: widget.controller.downloadChatAction,
-        visible: room.ownPowerLevel >= 50 && kIsWeb,
+        visible: kIsWeb,
+        enabled: room.ownPowerLevel >= 50,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -129,14 +127,14 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             onSubmit: widget.controller.setBotOptions,
           ),
         ),
-        visible:
-            (!room.isDirectChat || room.botOptions != null) && room.canInvite,
+        visible: !room.isDirectChat || room.botOptions != null,
+        enabled: room.canInvite,
       ),
       ButtonDetails(
         title: l10n.chatCapacity,
         icon: const Icon(Icons.reduce_capacity, size: 30.0),
         onPressed: widget.controller.setRoomCapacity,
-        visible: !room.isDirectChat && room.canSendDefaultStates,
+        enabled: !room.isDirectChat && room.canSendDefaultStates,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -161,7 +159,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
             context.go("/rooms");
           }
         },
-        visible: room.membership == Membership.join,
+        enabled: room.membership == Membership.join,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -185,7 +183,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
           if (resp.isError) return;
           context.go("/rooms");
         },
-        visible: room.isRoomAdmin && !room.isDirectChat,
+        enabled: room.isRoomAdmin && !room.isDirectChat,
         showInMainView: false,
       ),
     ];
@@ -224,12 +222,13 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
                 return Expanded(
                   child: PopupMenuButton(
                     useRootNavigator: true,
-                    onSelected: (button) => button.onPressed?.call(),
                     itemBuilder: (context) {
                       return otherButtons
                           .map(
                             (button) => PopupMenuItem(
                               value: button,
+                              onTap: button.enabled ? button.onPressed : null,
+                              enabled: button.enabled,
                               child: Row(
                                 children: [
                                   button.icon,
@@ -246,7 +245,6 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
                       buttonDetails: ButtonDetails(
                         title: L10n.of(context).more,
                         icon: const Icon(Icons.more_horiz_outlined),
-                        visible: true,
                       ),
                       height: mini ? _miniButtonWidth : _buttonHeight,
                     ),

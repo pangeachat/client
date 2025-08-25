@@ -99,7 +99,6 @@ class SpaceDetailsButtonRowState extends State<SpaceDetailsButtonRow> {
                   buttonDetails: ButtonDetails(
                     title: L10n.of(context).more,
                     icon: const Icon(Icons.more_horiz_outlined),
-                    visible: true,
                     onPressed: () =>
                         widget.onTabSelected(SpaceSettingsTabs.more),
                   ),
