@@ -1,12 +1,10 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart';
-
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:get_storage/get_storage.dart';
-
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Environment {
   static bool get itIsTime =>
@@ -60,6 +58,14 @@ class Environment {
     }
     if (envEntry.endsWith("/choreo/")) {
       return envEntry.replaceAll("/choreo/", "");
+    }
+    return envEntry;
+  }
+
+  static String get cmsApi {
+    final envEntry = appConfigOverride?.cmsApi ?? dotenv.env['CMS_API'];
+    if (envEntry == null) {
+      return "Not found";
     }
     return envEntry;
   }
@@ -179,6 +185,7 @@ class AppConfigOverride {
   final String? frontendURL;
   final String? synapseURL;
   final String? homeServer;
+  final String? cmsApi;
   final String? choreoApi;
   final String? choreoApiKey;
   final String? sentryDsn;
@@ -193,6 +200,7 @@ class AppConfigOverride {
     this.frontendURL,
     this.synapseURL,
     this.homeServer,
+    this.cmsApi,
     this.choreoApi,
     this.choreoApiKey,
     this.sentryDsn,
@@ -209,6 +217,7 @@ class AppConfigOverride {
       frontendURL: json['frontendURL'] as String?,
       synapseURL: json['synapseURL'] as String?,
       homeServer: json['homeServer'] as String?,
+      cmsApi: json['cmsApi'] as String?,
       choreoApi: json['choreoApi'] as String?,
       choreoApiKey: json['choreoApiKey'] as String?,
       sentryDsn: json['sentryDsn'] as String?,
@@ -226,6 +235,7 @@ class AppConfigOverride {
       'frontendURL': frontendURL,
       'synapseURL': synapseURL,
       'homeServer': homeServer,
+      'cmsApi': cmsApi,
       'choreoApi': choreoApi,
       'choreoApiKey': choreoApiKey,
       'sentryDsn': sentryDsn,
@@ -243,6 +253,7 @@ class AppConfigOverride {
         frontendURL.hashCode ^
         synapseURL.hashCode ^
         homeServer.hashCode ^
+        cmsApi.hashCode ^
         choreoApi.hashCode ^
         choreoApiKey.hashCode ^
         sentryDsn.hashCode ^
@@ -261,6 +272,7 @@ class AppConfigOverride {
         frontendURL == other.frontendURL &&
         synapseURL == other.synapseURL &&
         homeServer == other.homeServer &&
+        cmsApi == other.cmsApi &&
         choreoApi == other.choreoApi &&
         choreoApiKey == other.choreoApiKey &&
         sentryDsn == other.sentryDsn &&
