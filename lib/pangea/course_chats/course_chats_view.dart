@@ -83,27 +83,31 @@ class CourseChatsView extends StatelessWidget {
           }
         }
 
+        final isColumnMode = FluffyThemes.isColumnMode(context);
+
         return StreamBuilder(
           stream: room.client.onSync.stream
               .where((s) => s.hasRoomUpdate)
               .rateLimit(const Duration(seconds: 1)),
           builder: (context, snapshot) {
             return Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 12.0,
-                horizontal: 8.0,
-              ),
+              padding: isColumnMode
+                  ? const EdgeInsets.symmetric(
+                      vertical: 12.0,
+                      horizontal: 8.0,
+                    )
+                  : const EdgeInsets.all(0.0),
               child: ListView.builder(
                 shrinkWrap: true,
                 itemCount: joinedChats.length +
                     joinedSessions.length +
                     discoveredGroupChats.length +
                     discoveredSessions.length +
-                    3,
+                    5,
                 itemBuilder: (context, i) {
                   // courses chats title
                   if (i == 0) {
-                    if (FluffyThemes.isColumnMode(context)) {
+                    if (isColumnMode) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10.0),
                         child: Column(
@@ -239,6 +243,52 @@ class CourseChatsView extends StatelessWidget {
                   }
                   i--;
 
+                  if (i == 0) {
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        bottom: 4.0,
+                        left: 24.0,
+                        right: 24.0,
+                      ),
+                      child: Row(
+                        spacing: 4.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.event_note_outlined,
+                            size: 14.0,
+                          ),
+                          Text(
+                            L10n.of(context).myActivitySessions,
+                            style: const TextStyle(fontSize: 12.0),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                  i--;
+
+                  if (i == 0) {
+                    return joinedSessions.isEmpty && discoveredSessions.isEmpty
+                        ? Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  L10n.of(context).noSessionsFound,
+                                  style: const TextStyle(
+                                    fontSize: 12.0,
+                                  ),
+                                ),
+                                const Icon(Icons.map_outlined, size: 24.0),
+                              ],
+                            ),
+                          )
+                        : const SizedBox();
+                  }
+                  i--;
+
                   // joined activity sessions
                   if (i < joinedSessions.length) {
                     final joinedRoom = joinedSessions[i];
@@ -266,16 +316,9 @@ class CourseChatsView extends StatelessWidget {
                   i -= discoveredSessions.length;
 
                   if (controller.noMoreRooms) {
-                    return Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Center(
-                        child: Text(
-                          L10n.of(context).noMoreChatsFound,
-                          style: const TextStyle(fontSize: 13),
-                        ),
-                      ),
-                    );
+                    return const SizedBox();
                   }
+
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 12.0,

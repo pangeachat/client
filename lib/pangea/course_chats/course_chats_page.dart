@@ -27,9 +27,9 @@ import 'package:fluffychat/widgets/adaptive_dialogs/show_modal_action_popup.dart
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseChats extends StatefulWidget {
+  final Client client;
   final String roomId;
   final String? activeChat;
 
@@ -37,6 +37,7 @@ class CourseChats extends StatefulWidget {
     this.roomId, {
     super.key,
     required this.activeChat,
+    required this.client,
   });
 
   @override
@@ -45,7 +46,7 @@ class CourseChats extends StatefulWidget {
 
 class CourseChatsController extends State<CourseChats> {
   String get roomId => widget.roomId;
-  Room? get room => Matrix.of(context).client.getRoomById(widget.roomId);
+  Room? get room => widget.client.getRoomById(widget.roomId);
 
   List<SpaceRoomsChunk>? discoveredChildren;
   StreamSubscription? _roomSubscription;
@@ -60,7 +61,7 @@ class CourseChatsController extends State<CourseChats> {
   void initState() {
     // load full participant list into memory to ensure widgets
     // that rely on full participants list work as expected
-    final room = Matrix.of(context).client.getRoomById(widget.roomId);
+    final room = widget.client.getRoomById(widget.roomId);
     room?.requestParticipants().then((_) {
       if (mounted) setState(() {});
     });
@@ -69,8 +70,7 @@ class CourseChatsController extends State<CourseChats> {
 
     // Listen for changes to the activeSpace's hierarchy,
     // and reload the hierarchy when they come through
-    final client = Matrix.of(context).client;
-    _roomSubscription ??= client.onSync.stream
+    _roomSubscription ??= widget.client.onSync.stream
         .where(_hasHierarchyUpdate)
         .listen((update) => loadHierarchy(reload: true));
     super.initState();
@@ -152,7 +152,7 @@ class CourseChatsController extends State<CourseChats> {
       if (!isDefaultChat) continue;
 
       joinFutures.add(
-        Matrix.of(context).client.joinRoom(alias).then((_) {
+        widget.client.joinRoom(alias).then((_) {
           discoveredChildren?.remove(chunk);
         }).catchError((e, s) {
           ErrorHandler.logError(
@@ -174,7 +174,7 @@ class CourseChatsController extends State<CourseChats> {
   }
 
   Future<void> loadHierarchy({reload = false}) async {
-    final room = Matrix.of(context).client.getRoomById(widget.roomId);
+    final room = widget.client.getRoomById(widget.roomId);
     if (room == null) return;
 
     if (mounted) setState(() => isLoading = true);
@@ -240,12 +240,12 @@ class CourseChatsController extends State<CourseChats> {
       }
 
       // make the call to the server
-      final response = await Matrix.of(context).client.getSpaceHierarchy(
-            widget.roomId,
-            maxDepth: 1,
-            from: currentNextBatch,
-            limit: 100,
-          );
+      final response = await widget.client.getSpaceHierarchy(
+        widget.roomId,
+        maxDepth: 1,
+        from: currentNextBatch,
+        limit: 100,
+      );
       callsToServer++;
 
       if (response.nextBatch == null) {
@@ -387,8 +387,7 @@ class CourseChatsController extends State<CourseChats> {
   }
 
   void joinChildRoom(SpaceRoomsChunk item) async {
-    final client = Matrix.of(context).client;
-    final space = client.getRoomById(widget.roomId);
+    final space = widget.client.getRoomById(widget.roomId);
     final joined = await PublicRoomBottomSheet.show(
       context: context,
       chunk: item,
@@ -778,7 +777,7 @@ class CourseChatsController extends State<CourseChats> {
         hierarchyMember.roomType == PangeaRoomTypes.analytics;
 
     final bool isMember = [Membership.join, Membership.invite].contains(
-      Matrix.of(context).client.getRoomById(hierarchyMember.roomId)?.membership,
+      widget.client.getRoomById(hierarchyMember.roomId)?.membership,
     );
 
     final bool isSuggested =

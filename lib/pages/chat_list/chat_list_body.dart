@@ -46,6 +46,7 @@ class ChatListViewBody extends StatelessWidget {
         activeSpace,
         key: ValueKey(activeSpace),
         activeChat: controller.activeChat,
+        client: client,
       );
       // Pangea#
     }

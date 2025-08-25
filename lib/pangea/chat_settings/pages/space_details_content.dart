@@ -329,6 +329,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                       return CourseChats(
                         widget.room.id,
                         activeChat: null,
+                        client: widget.room.client,
                       );
                     case SpaceSettingsTabs.course:
                       return SingleChildScrollView(
