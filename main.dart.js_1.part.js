@@ -346,6 +346,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " \u521b\u5efa\u4e86\u804a\u5929";
     },
+    get$createGroup() {
+      return "\u521b\u5efa\u7fa4\u7ec4";
+    },
     get$createNewSpace() {
       return "\u521b\u5efa\u65b0\u7a7a\u95f4";
     },
@@ -1096,6 +1099,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$nothingFound() {
       return "\u672a\u627e\u5230\u4efb\u4f55\u5185\u5bb9\u2026";
     },
+    get$groupName() {
+      return "\u7fa4\u7ec4\u540d\u79f0";
+    },
     get$wrongRecoveryKey() {
       return "\u62b1\u6b49\u2026\u8fd9\u4f3c\u4e4e\u4e0d\u662f\u6b63\u786e\u7684\u6062\u590d\u5bc6\u94a5\u3002";
     },
@@ -1128,9 +1134,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$publicSpaces() {
       return "\u516c\u5f00\u7a7a\u95f4";
-    },
-    get$subspace() {
-      return "\u5b50\u7a7a\u95f4";
     },
     get$decline() {
       return "\u62d2\u7edd";
@@ -1194,9 +1197,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$stickers() {
       return "\u8d34\u7eb8";
-    },
-    get$discover() {
-      return "\u53d1\u73b0";
     },
     get$commandHint_ignore() {
       return "\u5ffd\u7565\u7ed9\u5b9a\u7684 matrix ID";
@@ -1690,7 +1690,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$learningSettings() {
       return "Learning settings";
     },
-    get$classRoster() {
+    get$participants() {
       return "Participants";
     },
     get$clickMessageTitle() {
@@ -2703,9 +2703,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$buildTranslation() {
       return "Build your translation from the choices above";
-    },
-    get$spaceAnalytics() {
-      return "Space analytics";
     },
     get$practice() {
       return "Practice";
@@ -4243,9 +4240,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$access() {
       return "Access";
     },
-    get$addSubspace() {
-      return "Add subspace";
-    },
     get$botSettings() {
       return "Bot settings";
     },
@@ -4285,9 +4279,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$canBeFoundViaKnock() {
       return "\u2022 request to join and admin approval";
     },
-    get$createYourSpace() {
-      return "Create your space";
-    },
     get$youHaveLeveledUp() {
       return "You have leveled up!";
     },
@@ -4324,9 +4315,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$getStartedFriendsButton() {
       return "Chat with a friend";
     },
-    get$groupChat() {
-      return "Group Chat";
-    },
     get$directMessage() {
       return "Direct Message";
     },
@@ -4341,12 +4329,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$transcriptionFailed() {
       return "Failed to transcribe audio";
-    },
-    get$aUserIsKnocking() {
-      return "1 user is requesting to join your space";
-    },
-    usersAreKnocking$1(users) {
-      return "" + users + " users are requesting to join your space";
     },
     get$failedToFetchTranscription() {
       return "Failed to fetch transcription";
@@ -4525,21 +4507,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$analyticsInactiveDesc() {
       return "Inactive users who haven't logged in since this feature was introduced won't see your request.\n\nThe Request button will appear once they return. You can resend the request later by clicking the Request button under their name when it's available.";
     },
-    get$accessRequestedTitle() {
-      return "Analytics Access Request";
-    },
-    accessRequestedDesc$1(space) {
-      return "The administrators of \u201c" + space + "\u201d are requesting to view your learning analytics.\n\nIf you agree, admins of this space will be able to view your:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view your:\n    \u2022 messages in chats outside the space\n    \u2022 vocabulary list";
-    },
-    get$allowAccess() {
-      return "Allow Access";
-    },
-    get$denyAccess() {
-      return "Deny Access";
-    },
-    get$adminRequestedAccess() {
-      return "Admins asked to view your analytics.";
-    },
     lastUpdated$1(time) {
       return "Updated\n" + time;
     },
@@ -4548,6 +4515,81 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$endForAll() {
       return "End for all";
+    },
+    get$newCourse() {
+      return "New Course";
+    },
+    get$newCourseSubtitle() {
+      return "Which course template would you like to use?";
+    },
+    get$failedToLoadCourses() {
+      return "Failed to load courses";
+    },
+    numModules$1(num) {
+      return "" + num + " modules";
+    },
+    numActivityPlans$1(num) {
+      return "" + num + " activity plans";
+    },
+    get$coursePlan() {
+      return "Course Plan";
+    },
+    get$editCourseLater() {
+      return "You can edit template title, descriptions, and course image later.";
+    },
+    get$newCourseAccess() {
+      return "By default, courses are private and require admin approval to join. You can edit these settings at any time.";
+    },
+    get$createCourse() {
+      return "Create course";
+    },
+    get$stats() {
+      return "Stats";
+    },
+    get$createGroupChat() {
+      return "Create group chat";
+    },
+    get$editCourse() {
+      return "Edit course";
+    },
+    get$inviteDesc() {
+      return "By username, by code or link";
+    },
+    get$editCourseDesc() {
+      return "Here you can edit course title, description, etc.";
+    },
+    get$permissionsDesc() {
+      return "Set permissions such as who can invite users, send messages, create chats, etc.";
+    },
+    get$accessDesc() {
+      return "You can make your course open to the world! Or, make your course private and secure.";
+    },
+    get$createGroupChatDesc() {
+      return "Whereas activity sessions start and end, group chats will stay open for routine communication.";
+    },
+    get$deleteDesc() {
+      return "Only space admin can delete a chat. This is a destructive action which removes all users and deletes all chats. Proceed with caution.";
+    },
+    get$failedToLoadCourseInfo() {
+      return "Failed to load course information";
+    },
+    get$noCourseFound() {
+      return "No course information found";
+    },
+    additionalParticipants$1(num) {
+      return "+ " + num + " others";
+    },
+    get$activityNotFoundForCourse() {
+      return "This activity was not found within the course";
+    },
+    get$courseChats() {
+      return "Course Chats";
+    },
+    get$noSessionsFound() {
+      return "None found. Ready to start?";
+    },
+    get$myActivitySessions() {
+      return "My Activity Sessions";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4868,6 +4910,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     createdTheChat$1(username) {
       return "\ud83d\udcac " + username + " \u5efa\u7acb\u4e86\u804a\u5929\u5ba4";
+    },
+    get$createGroup() {
+      return "\u5efa\u7acb\u7fa4\u7d44";
     },
     get$createNewSpace() {
       return "\u65b0\u5efa\u7a7a\u9593";
@@ -5619,6 +5664,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$nothingFound() {
       return "\u4ec0\u9ebc\u90fd\u6c92\u627e\u5230......";
     },
+    get$groupName() {
+      return "\u7fa4\u7d44\u540d\u7a31";
+    },
     get$wrongRecoveryKey() {
       return "\u62b1\u6b49......\u9019\u4f3c\u4e4e\u4e0d\u662f\u6b63\u78ba\u7684\u6062\u5fa9\u5bc6\u9470\u3002";
     },
@@ -5651,9 +5699,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$publicSpaces() {
       return "\u516c\u5171\u7a7a\u9593";
-    },
-    get$subspace() {
-      return "\u5b50\u7a7a\u9593";
     },
     get$decline() {
       return "\u62d2\u7d55";
@@ -5717,9 +5762,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$stickers() {
       return "\u8cbc\u5716";
-    },
-    get$discover() {
-      return "\u767c\u73fe";
     },
     get$commandHint_ignore() {
       return "\u7121\u8996\u5df2\u63d0\u4f9b\u7684 Matrix ID";
@@ -6049,6 +6091,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "oYxTO+31bJpwXNaB3eEiyvEDrm0=");
+})($__dart_deferred_initializers__, "of7sGwhZKI6ON4U6Mb7VF4fCF6I=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
