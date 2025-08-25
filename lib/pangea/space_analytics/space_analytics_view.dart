@@ -130,14 +130,6 @@ class SpaceAnalyticsView extends StatelessWidget {
                               ),
                               value: controller.selectedLanguage,
                               items: controller.availableLanguages
-                                  .sorted(
-                                    (a, b) => (a.getDisplayName(context) ??
-                                            a.displayName)
-                                        .compareTo(
-                                      b.getDisplayName(context) ??
-                                          b.displayName,
-                                    ),
-                                  )
                                   .map(
                                     (item) => DropdownMenuItem(
                                       value: item,
