@@ -48,14 +48,28 @@ class SpaceDetailsContent extends StatefulWidget {
 }
 
 class SpaceDetailsContentState extends State<SpaceDetailsContent> {
-  SpaceSettingsTabs _selectedTab = SpaceSettingsTabs.course;
+  SpaceSettingsTabs? _selectedTab;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(
+        () => _selectedTab = FluffyThemes.isColumnMode(context)
+            ? SpaceSettingsTabs.course
+            : SpaceSettingsTabs.chat,
+      );
+    });
+  }
 
   @override
   void didUpdateWidget(covariant SpaceDetailsContent oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.room.id != widget.room.id) {
       setState(() {
-        _selectedTab = SpaceSettingsTabs.course;
+        _selectedTab = FluffyThemes.isColumnMode(context)
+            ? SpaceSettingsTabs.course
+            : SpaceSettingsTabs.chat;
       });
     }
   }
@@ -396,6 +410,8 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                           ],
                         ),
                       );
+                    case null:
+                      return const SizedBox();
                   }
                 },
               ),
