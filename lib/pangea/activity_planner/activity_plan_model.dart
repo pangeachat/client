@@ -131,7 +131,13 @@ class ActivityPlanModel {
   /// use target emoji for learning objective
   /// use step emoji for instructions
   String get markdown {
-    String markdown = '''🎯 $learningObjective \n🪜 $instructions \n\n📖''';
+    final String markdown =
+        '''🎯 $learningObjective \n🪜 $instructions \n\n📖 $vocabString''';
+    return markdown;
+  }
+
+  String get vocabString {
+    String vocabString = "";
     // cycle through vocab with index
     for (var i = 0; i < vocab.length; i++) {
       // if the lemma appears more than once in the vocab list, show the pos
@@ -139,10 +145,10 @@ class ActivityPlanModel {
       final v = vocab[i];
       final bool showPos =
           vocab.where((vocab) => vocab.lemma == v.lemma).length > 1;
-      markdown +=
+      vocabString +=
           '${v.lemma}${showPos ? ' (${v.pos})' : ''}${i + 1 < vocab.length ? ', ' : ''}';
     }
-    return markdown;
+    return vocabString;
   }
 
   @override
