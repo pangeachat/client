@@ -60,11 +60,8 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
         break;
     }
 
-    // #Pangea
-    // return Scaffold(
     return SafeArea(
       child: Scaffold(
-        // Pangea#
         appBar: ActivityPlannerPageAppBar(
           pageMode: pageMode,
           roomID: widget.roomID,
@@ -141,7 +138,7 @@ class ActivityPlannerPageState extends State<ActivityPlannerPage> {
                           ),
                           selected: false,
                           onSelected: (_) => context.go(
-                            '/rooms/${widget.roomID}/details/planner/generator',
+                            '/rooms/spaces/${widget.roomID}/details/planner/generator',
                           ),
                         ),
                       ],

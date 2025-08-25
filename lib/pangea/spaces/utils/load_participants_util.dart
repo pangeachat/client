@@ -51,6 +51,7 @@ class LoadParticipantsUtilState extends State<LoadParticipantsUtil> {
         error = null;
       });
 
+      await widget.space.requestParticipants();
       await _cacheLevels();
     } catch (err, s) {
       error = err.toString();
@@ -68,15 +69,8 @@ class LoadParticipantsUtilState extends State<LoadParticipantsUtil> {
     }
   }
 
-  List<User> filteredParticipants(String filter) {
-    final searchText = filter.toLowerCase();
-    final filtered = participants.where((user) {
-      final displayName = user.displayName?.toLowerCase() ?? '';
-      return displayName.contains(searchText) ||
-          user.id.toLowerCase().contains(searchText);
-    }).toList();
-
-    filtered.sort((a, b) {
+  List<User> sortedParticipants() {
+    participants.sort((a, b) {
       if (a.id == BotName.byEnvironment) {
         return 1;
       }
@@ -98,7 +92,7 @@ class LoadParticipantsUtilState extends State<LoadParticipantsUtil> {
       return (bProfile?.level ?? 0).compareTo(aProfile?.level ?? 0);
     });
 
-    return filtered;
+    return participants;
   }
 
   Future<void> _cacheLevels() async {
