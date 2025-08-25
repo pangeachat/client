@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
@@ -212,6 +213,7 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
               buttons.where((button) => !button.showInMainView).toList();
 
           return Row(
+            spacing: FluffyThemes.isColumnMode(context) ? 12.0 : 0.0,
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(mainViewButtons.length + 1, (index) {
               if (index == mainViewButtons.length) {

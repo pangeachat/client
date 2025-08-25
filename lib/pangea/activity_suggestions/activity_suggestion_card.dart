@@ -36,74 +36,58 @@ class ActivitySuggestionCard extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: onPressed,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24.0),
-          ),
+        child: SizedBox(
           height: height,
           width: width,
-          child: Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainer,
-                  borderRadius: BorderRadius.circular(24.0),
-                ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surfaceContainer,
               ),
-              Column(
+              child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
+                  SizedBox(
                     height: width,
                     width: width,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24.0),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(24.0),
-                      child: activity.imageURL != null
-                          ? activity.imageURL!.startsWith("mxc")
-                              ? MxcImage(
-                                  uri: Uri.parse(activity.imageURL!),
-                                  width: width,
-                                  height: width,
-                                  cacheKey: activity.bookmarkId,
-                                  fit: BoxFit.cover,
-                                )
-                              : CachedNetworkImage(
-                                  imageUrl: activity.imageURL!,
-                                  placeholder: (context, url) => const Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                  errorWidget: (context, url, error) =>
-                                      const SizedBox(),
-                                  fit: BoxFit.cover,
-                                )
-                          : null,
-                    ),
+                    child: activity.imageURL != null
+                        ? activity.imageURL!.startsWith("mxc")
+                            ? MxcImage(
+                                uri: Uri.parse(activity.imageURL!),
+                                width: width,
+                                height: width,
+                                cacheKey: activity.bookmarkId,
+                                fit: BoxFit.cover,
+                              )
+                            : CachedNetworkImage(
+                                imageUrl: activity.imageURL!,
+                                placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const SizedBox(),
+                                fit: BoxFit.cover,
+                                width: width,
+                                height: width,
+                              )
+                        : const SizedBox(),
                   ),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  activity.title,
-                                  style: TextStyle(
-                                    fontSize: fontSize,
-                                  ),
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
+                          Text(
+                            activity.title,
+                            style: TextStyle(
+                              fontSize: fontSize,
+                            ),
+                            maxLines: 3,
+                            overflow: TextOverflow.ellipsis,
                           ),
                           Row(
                             mainAxisSize: MainAxisSize.min,
@@ -112,14 +96,12 @@ class ActivitySuggestionCard extends StatelessWidget {
                               if (activity.req.mode.isNotEmpty)
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
-                                  child: Flexible(
-                                    child: Text(
-                                      activity.req.mode,
-                                      style: fontSizeSmall != null
-                                          ? TextStyle(fontSize: fontSizeSmall)
-                                          : theme.textTheme.labelSmall,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
+                                  child: Text(
+                                    activity.req.mode,
+                                    style: fontSizeSmall != null
+                                        ? TextStyle(fontSize: fontSizeSmall)
+                                        : theme.textTheme.labelSmall,
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               Padding(
@@ -149,7 +131,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),

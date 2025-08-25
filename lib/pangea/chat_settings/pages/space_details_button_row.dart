@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/room_details_buttons.dart';
@@ -85,7 +86,7 @@ class SpaceDetailsButtonRowState extends State<SpaceDetailsButtonRow> {
             buttons.where((button) => !button.showInMainView).toList();
 
         return Row(
-          spacing: 4.0,
+          spacing: FluffyThemes.isColumnMode(context) ? 12.0 : 0.0,
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(mainViewButtons.length + 1, (index) {
             if (index == mainViewButtons.length) {
