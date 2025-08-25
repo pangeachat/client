@@ -13,12 +13,19 @@ class ActivitySuggestionCard extends StatelessWidget {
   final double width;
   final double height;
 
+  final double? fontSize;
+  final double? fontSizeSmall;
+  final double? iconSize;
+
   const ActivitySuggestionCard({
     super.key,
     required this.controller,
     required this.onPressed,
     required this.width,
     required this.height,
+    this.fontSize,
+    this.fontSizeSmall,
+    this.iconSize,
   });
 
   ActivityPlanModel get activity => controller.updatedActivity;
@@ -33,6 +40,7 @@ class ActivitySuggestionCard extends StatelessWidget {
           ? theme.colorScheme.primary
           : theme.colorScheme.surfaceContainerHighest,
       colorFactor: theme.brightness == Brightness.dark ? 0.6 : 0.2,
+      buttonHeight: 2.0,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24.0),
@@ -83,21 +91,20 @@ class ActivitySuggestionCard extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: const EdgeInsets.all(4.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      spacing: 8.0,
                       children: [
                         Row(
                           children: [
                             Flexible(
                               child: Text(
                                 activity.title,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                                style: TextStyle(
+                                  fontSize: fontSize,
                                 ),
-                                maxLines: 2,
+                                maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ),
@@ -107,48 +114,38 @@ class ActivitySuggestionCard extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           spacing: 8.0,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: theme.colorScheme.primaryContainer,
-                                borderRadius: BorderRadius.circular(24.0),
-                              ),
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 2.0,
-                                horizontal: 8.0,
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                spacing: 8.0,
-                                children: [
-                                  const Icon(
-                                    Icons.group_outlined,
-                                    size: 12.0,
-                                  ),
-                                  Text(
-                                    "${activity.req.numberOfParticipants}",
-                                    style: theme.textTheme.labelSmall,
-                                  ),
-                                ],
-                              ),
-                            ),
                             if (activity.req.mode.isNotEmpty)
-                              Flexible(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: theme.colorScheme.primaryContainer,
-                                    borderRadius: BorderRadius.circular(24.0),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 2.0,
-                                    horizontal: 8.0,
-                                  ),
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Flexible(
                                   child: Text(
                                     activity.req.mode,
-                                    style: theme.textTheme.labelSmall,
+                                    style: fontSizeSmall != null
+                                        ? TextStyle(fontSize: fontSizeSmall)
+                                        : theme.textTheme.labelSmall,
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                               ),
+                            Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                spacing: 4.0,
+                                children: [
+                                  Icon(
+                                    Icons.group_outlined,
+                                    size: iconSize ?? 12.0,
+                                  ),
+                                  Text(
+                                    "${activity.req.numberOfParticipants}",
+                                    style: fontSizeSmall != null
+                                        ? TextStyle(fontSize: fontSizeSmall)
+                                        : theme.textTheme.labelSmall,
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ],
@@ -157,23 +154,23 @@ class ActivitySuggestionCard extends StatelessWidget {
                 ),
               ],
             ),
-            Positioned(
-              top: 4.0,
-              right: 4.0,
-              child: IconButton(
-                icon: Icon(
-                  controller.isBookmarked ? Icons.save : Icons.save_outlined,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
-                ),
-                onPressed: controller.toggleBookmarkedActivity,
-                style: IconButton.styleFrom(
-                  backgroundColor: Theme.of(context)
-                      .colorScheme
-                      .primaryContainer
-                      .withAlpha(180),
-                ),
-              ),
-            ),
+            //     Positioned(
+            //       top: 4.0,
+            //       right: 4.0,
+            //       child: IconButton(
+            //         icon: Icon(
+            //           controller.isBookmarked ? Icons.save : Icons.save_outlined,
+            //           color: Theme.of(context).colorScheme.onPrimaryContainer,
+            //         ),
+            //         onPressed: controller.toggleBookmarkedActivity,
+            //         style: IconButton.styleFrom(
+            //           backgroundColor: Theme.of(context)
+            //               .colorScheme
+            //               .primaryContainer
+            //               .withAlpha(180),
+            //         ),
+            //       ),
+            //     ),
           ],
         ),
       ),
