@@ -65,7 +65,7 @@ class FindYourPeopleView extends StatelessWidget {
               ],
             ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => context.push('/rooms/newcourse'),
+        onPressed: () => context.push('/rooms/communities/newcourse'),
         icon: const Icon(Icons.add_box_outlined),
         label: Text(
           L10n.of(context).newCourse,

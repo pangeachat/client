@@ -295,27 +295,6 @@ abstract class AppRoutes {
               redirect: loggedOutRedirect,
             ),
             // #Pangea
-            GoRoute(
-              path: 'newcourse',
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                const NewCourse(),
-              ),
-              redirect: loggedOutRedirect,
-              routes: [
-                GoRoute(
-                  path: ':courseId',
-                  pageBuilder: (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    SelectedCourse(state.pathParameters['courseId']!),
-                  ),
-                  redirect: loggedOutRedirect,
-                ),
-              ],
-            ),
-            // #Pangea
             // ShellRoute(
             //   pageBuilder: (context, state, child) => defaultPageBuilder(
             //     context,
@@ -337,6 +316,28 @@ abstract class AppRoutes {
                 state,
                 const FindYourPeople(),
               ),
+              routes: [
+                GoRoute(
+                  path: 'newcourse',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    const NewCourse(),
+                  ),
+                  redirect: loggedOutRedirect,
+                  routes: [
+                    GoRoute(
+                      path: ':courseId',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        SelectedCourse(state.pathParameters['courseId']!),
+                      ),
+                      redirect: loggedOutRedirect,
+                    ),
+                  ],
+                ),
+              ],
             ),
             GoRoute(
               path: 'analytics',

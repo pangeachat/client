@@ -36,7 +36,7 @@ class SelectedCourseView extends StatelessWidget {
       ),
       body: CoursePlanBuilder(
         courseId: courseId,
-        onNotFound: () => context.go("/rooms/newcourse"),
+        onNotFound: () => context.go("/rooms/communities/newcourse"),
         builder: (context, controller) {
           final course = controller.course;
           return MaxWidthBody(

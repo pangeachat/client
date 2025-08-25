@@ -123,7 +123,7 @@ class NewCourseView extends StatelessWidget {
                         child: CoursePlanTile(
                           course: controller.courses[index],
                           onTap: () => context.go(
-                            "/rooms/newcourse/${controller.courses[index].uuid}",
+                            "/rooms/communities/newcourse/${controller.courses[index].uuid}",
                           ),
                           titleFontSize: titleFontSize,
                           chipFontSize: descFontSize,
