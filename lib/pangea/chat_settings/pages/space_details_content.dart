@@ -225,6 +225,9 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
+              crossAxisAlignment: isColumnMode
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 if (isColumnMode) ...[
@@ -240,75 +243,76 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                   const SizedBox(width: 16.0),
                 ],
                 Flexible(
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          displayname,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: isColumnMode ? 32.0 : 12.0,
-                          ),
+                  child: Column(
+                    spacing: 12.0,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        displayname,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: isColumnMode ? 32.0 : 12.0,
                         ),
-                        if (isColumnMode && courseController.course != null)
-                          CourseInfoChips(
-                            courseController.course!,
-                            fontSize: 12.0,
-                            iconSize: 12.0,
-                          ),
-                      ],
-                    ),
+                      ),
+                      if (isColumnMode && courseController.course != null)
+                        CourseInfoChips(
+                          courseController.course!,
+                          fontSize: 12.0,
+                          iconSize: 12.0,
+                        ),
+                    ],
                   ),
                 ),
                 if (widget.room.classCode != null)
-                  PopupMenuButton(
-                    child: const Icon(Symbols.upload),
-                    onSelected: (value) async {
-                      final spaceCode = widget.room.classCode!;
-                      String toCopy = spaceCode;
-                      if (value == 0) {
-                        final String initialUrl = kIsWeb
-                            ? html.window.origin!
-                            : Environment.frontendURL;
-                        toCopy =
-                            "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${widget.room.classCode}";
-                      }
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: PopupMenuButton(
+                      child: const Icon(Symbols.upload),
+                      onSelected: (value) async {
+                        final spaceCode = widget.room.classCode!;
+                        String toCopy = spaceCode;
+                        if (value == 0) {
+                          final String initialUrl = kIsWeb
+                              ? html.window.origin!
+                              : Environment.frontendURL;
+                          toCopy =
+                              "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${widget.room.classCode}";
+                        }
 
-                      await Clipboard.setData(ClipboardData(text: toCopy));
-                      ScaffoldMessenger.of(
-                        context,
-                      ).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            L10n.of(context).copiedToClipboard,
+                        await Clipboard.setData(ClipboardData(text: toCopy));
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              L10n.of(context).copiedToClipboard,
+                            ),
+                          ),
+                        );
+                      },
+                      itemBuilder: (BuildContext context) =>
+                          <PopupMenuEntry<int>>[
+                        PopupMenuItem<int>(
+                          value: 0,
+                          child: ListTile(
+                            title: Text(L10n.of(context).shareSpaceLink),
+                            contentPadding: const EdgeInsets.all(0),
                           ),
                         ),
-                      );
-                    },
-                    itemBuilder: (BuildContext context) =>
-                        <PopupMenuEntry<int>>[
-                      PopupMenuItem<int>(
-                        value: 0,
-                        child: ListTile(
-                          title: Text(L10n.of(context).shareSpaceLink),
-                          contentPadding: const EdgeInsets.all(0),
-                        ),
-                      ),
-                      PopupMenuItem<int>(
-                        value: 1,
-                        child: ListTile(
-                          title: Text(
-                            L10n.of(context)
-                                .shareInviteCode(widget.room.classCode!),
+                        PopupMenuItem<int>(
+                          value: 1,
+                          child: ListTile(
+                            title: Text(
+                              L10n.of(context)
+                                  .shareInviteCode(widget.room.classCode!),
+                            ),
+                            contentPadding: const EdgeInsets.all(0),
                           ),
-                          contentPadding: const EdgeInsets.all(0),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
               ],
             ),
@@ -320,7 +324,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
               onTabSelected: setSelectedTab,
               buttons: _buttons,
             ),
-            SizedBox(height: isColumnMode ? 30.0 : 12.0),
+            SizedBox(height: isColumnMode ? 30.0 : 14.0),
             Expanded(
               child: Builder(
                 builder: (context) {
