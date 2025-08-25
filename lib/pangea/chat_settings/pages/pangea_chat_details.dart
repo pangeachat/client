@@ -173,11 +173,12 @@ class PangeaChatDetailsView extends StatelessWidget {
                                     ),
                                   ),
                                   TextButton.icon(
-                                    onPressed: room.isDirectChat
-                                        ? null
-                                        : () => context.push(
-                                              '/rooms/${controller.roomId}/details/invite?filter=participants',
-                                            ),
+                                    onPressed:
+                                        room.isDirectChat || !room.canInvite
+                                            ? null
+                                            : () => context.push(
+                                                  '/rooms/${controller.roomId}/details/invite?filter=participants',
+                                                ),
                                     icon: const Icon(
                                       Icons.group_outlined,
                                       size: 14,
