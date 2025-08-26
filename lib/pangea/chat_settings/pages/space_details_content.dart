@@ -190,10 +190,9 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
       ButtonDetails(
         title: l10n.delete,
         description: l10n.deleteDesc,
-        icon: Icon(
+        icon: const Icon(
           Icons.delete_outline,
           size: 30.0,
-          color: Theme.of(context).colorScheme.error,
         ),
         onPressed: () async {
           final resp = await showDialog<bool?>(
@@ -207,7 +206,6 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         },
         enabled: widget.room.isRoomAdmin && !widget.room.isDirectChat,
         showInMainView: false,
-        desctructive: true,
       ),
     ];
   }
@@ -380,25 +378,15 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                                   child: ListTile(
                                     title: Text(
                                       b.title,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontSize: 12.0,
-                                        color: b.desctructive
-                                            ? Theme.of(context)
-                                                .colorScheme
-                                                .error
-                                            : null,
                                       ),
                                     ),
                                     subtitle: b.description != null
                                         ? Text(
                                             b.description!,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 8.0,
-                                              color: b.desctructive
-                                                  ? Theme.of(context)
-                                                      .colorScheme
-                                                      .error
-                                                  : null,
                                             ),
                                           )
                                         : null,
