@@ -120,7 +120,9 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                 ? 'space'
                 : 'contacts';
           }
-          context.go('/rooms/${widget.room.id}/details/invite?filter=$filter');
+          context.go(
+            '/rooms/spaces/${widget.room.id}/details/invite?filter=$filter',
+          );
         },
         enabled: widget.room.canInvite && !widget.room.isDirectChat,
         showInMainView: false,
@@ -190,10 +192,9 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
       ButtonDetails(
         title: l10n.delete,
         description: l10n.deleteDesc,
-        icon: Icon(
+        icon: const Icon(
           Icons.delete_outline,
           size: 30.0,
-          color: Theme.of(context).colorScheme.error,
         ),
         onPressed: () async {
           final resp = await showDialog<bool?>(
@@ -207,7 +208,6 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         },
         enabled: widget.room.isRoomAdmin && !widget.room.isDirectChat,
         showInMainView: false,
-        desctructive: true,
       ),
     ];
   }
@@ -230,38 +230,48 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                   : CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if (isColumnMode) ...[
-                  Avatar(
-                    mxContent: widget.room.avatar,
-                    name: displayname,
-                    userId: widget.room.directChatMatrixID,
-                    size: Avatar.defaultSize * 2.5,
-                    borderRadius: widget.room.isSpace
-                        ? BorderRadius.circular(24.0)
-                        : null,
-                  ),
-                  const SizedBox(width: 16.0),
-                ],
                 Flexible(
-                  child: Column(
-                    spacing: 12.0,
+                  child: Row(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        displayname,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontSize: isColumnMode ? 32.0 : 12.0,
+                      if (isColumnMode) ...[
+                        Avatar(
+                          mxContent: widget.room.avatar,
+                          name: displayname,
+                          userId: widget.room.directChatMatrixID,
+                          size: 80.0,
+                          borderRadius: widget.room.isSpace
+                              ? BorderRadius.circular(24.0)
+                              : null,
+                        ),
+                        const SizedBox(width: 16.0),
+                      ],
+                      Flexible(
+                        child: Column(
+                          spacing: 12.0,
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              displayname,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: isColumnMode ? 32.0 : 16.0,
+                                fontWeight: isColumnMode
+                                    ? FontWeight.normal
+                                    : FontWeight.bold,
+                              ),
+                            ),
+                            if (isColumnMode && courseController.course != null)
+                              CourseInfoChips(
+                                courseController.course!,
+                                fontSize: 12.0,
+                                iconSize: 12.0,
+                              ),
+                          ],
                         ),
                       ),
-                      if (isColumnMode && courseController.course != null)
-                        CourseInfoChips(
-                          courseController.course!,
-                          fontSize: 12.0,
-                          iconSize: 12.0,
-                        ),
                     ],
                   ),
                 ),
@@ -378,35 +388,13 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                                 return Opacity(
                                   opacity: b.enabled ? 1.0 : 0.5,
                                   child: ListTile(
-                                    title: Text(
-                                      b.title,
-                                      style: TextStyle(
-                                        fontSize: 12.0,
-                                        color: b.desctructive
-                                            ? Theme.of(context)
-                                                .colorScheme
-                                                .error
-                                            : null,
-                                      ),
-                                    ),
+                                    title: Text(b.title),
                                     subtitle: b.description != null
-                                        ? Text(
-                                            b.description!,
-                                            style: TextStyle(
-                                              fontSize: 8.0,
-                                              color: b.desctructive
-                                                  ? Theme.of(context)
-                                                      .colorScheme
-                                                      .error
-                                                  : null,
-                                            ),
-                                          )
+                                        ? Text(b.description!)
                                         : null,
                                     leading: b.icon,
                                     onTap: b.enabled
-                                        ? () {
-                                            b.onPressed?.call();
-                                          }
+                                        ? () => b.onPressed?.call()
                                         : null,
                                   ),
                                 );
