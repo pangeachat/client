@@ -4323,6 +4323,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$transcriptionFailed() {
       return "Kh\xf4ng th\u1ec3 chuy\u1ec3n \u0111\u1ed5i \xe2m thanh";
     },
+    get$aUserIsKnocking() {
+      return "1 ng\u01b0\u1eddi d\xf9ng \u0111ang y\xeau c\u1ea7u tham gia kh\xf4ng gian c\u1ee7a b\u1ea1n";
+    },
+    usersAreKnocking$1(users) {
+      return "" + users + " ng\u01b0\u1eddi d\xf9ng \u0111ang y\xeau c\u1ea7u tham gia kh\xf4ng gian c\u1ee7a b\u1ea1n";
+    },
     get$failedToFetchTranscription() {
       return "Kh\xf4ng th\u1ec3 l\u1ea5y b\u1ea3n chuy\u1ec3n \u0111\u1ed5i";
     },
@@ -4500,6 +4506,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$analyticsInactiveDesc() {
       return "Inactive users who haven't logged in since this feature was introduced won't see your request.\n\nThe Request button will appear once they return. You can resend the request later by clicking the Request button under their name when it's available.";
     },
+    get$accessRequestedTitle() {
+      return "Analytics Access Request";
+    },
+    accessRequestedDesc$1(space) {
+      return "The administrators of \u201c" + space + "\u201d are requesting to view your learning analytics.\n\nIf you agree, admins of this space will be able to view your:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view your:\n    \u2022 messages in chats outside the space\n    \u2022 vocabulary list";
+    },
+    get$allowAccess() {
+      return "Allow Access";
+    },
+    get$denyAccess() {
+      return "Deny Access";
+    },
+    get$adminRequestedAccess() {
+      return "Admins asked to view your analytics.";
+    },
     lastUpdated$1(time) {
       return "Updated\n" + time;
     },
@@ -4599,6 +4620,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_257", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Kk+IpKCgeIC6mRe7zs9V1AYbTnM=");
+})($__dart_deferred_initializers__, "NOL1+Dl3QXBobQAeGvOH3QVWTbI=");
 ;
 //# sourceMappingURL=main.dart.js_257.part.js.map

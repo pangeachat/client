@@ -4323,6 +4323,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$transcriptionFailed() {
       return "Failed to transcribe audio";
     },
+    get$aUserIsKnocking() {
+      return "1 user is requesting to join your space";
+    },
+    usersAreKnocking$1(users) {
+      return "" + users + " users are requesting to join your space";
+    },
     get$failedToFetchTranscription() {
       return "Failed to fetch transcription";
     },
@@ -4500,6 +4506,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$analyticsInactiveDesc() {
       return "Inactive users who haven't logged in since this feature was introduced won't see your request.\n\nThe Request button will appear once they return. You can resend the request later by clicking the Request button under their name when it's available.";
     },
+    get$accessRequestedTitle() {
+      return "Analytics Access Request";
+    },
+    accessRequestedDesc$1(space) {
+      return "The administrators of \u201c" + space + "\u201d are requesting to view your learning analytics.\n\nIf you agree, admins of this space will be able to view your:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view your:\n    \u2022 messages in chats outside the space\n    \u2022 vocabulary list";
+    },
+    get$allowAccess() {
+      return "Allow Access";
+    },
+    get$denyAccess() {
+      return "Deny Access";
+    },
+    get$adminRequestedAccess() {
+      return "Admins asked to view your analytics.";
+    },
     lastUpdated$1(time) {
       return "Updated\n" + time;
     },
@@ -4599,6 +4620,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_217", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "JAJQ/yl/50x7tAgUm5Lh9vxE+Ak=");
+})($__dart_deferred_initializers__, "u9WrbtsDKUgsAQ/Cq/0JjJvVIfk=");
 ;
 //# sourceMappingURL=main.dart.js_217.part.js.map
