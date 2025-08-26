@@ -78,9 +78,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     supposedMxid$1(mxid) {
       return mxid + " \uc774\uc5b4\uc57c \ud568";
     },
-    get$addToSpace() {
-      return "\uc2a4\ud398\uc774\uc2a4\uc5d0 \ucd94\uac00";
-    },
     get$admin() {
       return "\uc6b4\uc601\uc790";
     },
@@ -143,9 +140,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noMoreChatsFound() {
       return "\ucc44\ud305\uc744 \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4...";
-    },
-    get$space() {
-      return "\uc2a4\ud398\uc774\uc2a4";
     },
     get$banFromChat() {
       return "\ucc44\ud305\uc5d0\uc11c \uc601\uad6c \ucd94\ubc29";
@@ -962,9 +956,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$openGallery() {
       return "\uac24\ub7ec\ub9ac \uc5f4\uae30";
-    },
-    get$removeFromSpace() {
-      return "\uc2a4\ud398\uc774\uc2a4\uc5d0\uc11c \uc0ad\uc81c";
     },
     get$markAsRead() {
       return "\uc77d\uc74c\uc73c\ub85c \ud45c\uc2dc\ud558\uae30";
@@ -3600,9 +3591,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "Notifications off";
     },
-    get$addSubspaceWarning() {
-      return "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.";
-    },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
     },
@@ -4239,9 +4227,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitySuggestionTimeoutMessage() {
       return "We are working hard to generate more activities for you, please check back in a minute";
     },
-    get$accessSettingsWarning() {
-      return "Oops! It looks like you don't have permission to set the Access rules of this room. You should check these to make sure they're what you need and talk to a room admin if you need to change them";
-    },
     get$howSpaceCanBeFound() {
       return "How this space can be found";
     },
@@ -4605,6 +4590,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myActivitySessions() {
       return "My Activity Sessions";
     },
+    get$directMessages() {
+      return "Direct Messages";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4620,6 +4608,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_235", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "mdYYR8YsQtds2prsYaJNznM6XGs=");
+})($__dart_deferred_initializers__, "9JZ/RTbvc31cilIgeSCbaYZKqbE=");
 ;
 //# sourceMappingURL=main.dart.js_235.part.js.map

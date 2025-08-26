@@ -78,9 +78,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     supposedMxid$1(mxid) {
       return "\u10d4\u10e1 \u10e3\u10dc\u10d3\u10d0 \u10d8\u10e7\u10dd\u10e1 " + mxid;
     },
-    get$addToSpace() {
-      return "\u10e1\u10d8\u10d5\u10e0\u10ea\u10d4\u10e8\u10d8 \u10d3\u10d0\u10db\u10d0\u10e2\u10d4\u10d1\u10d0";
-    },
     get$admin() {
       return "\u10d0\u10d3\u10db\u10d8\u10dc\u10d8";
     },
@@ -143,9 +140,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
-    },
-    get$space() {
-      return "Space";
     },
     get$banFromChat() {
       return "\u10e9\u10d0\u10e2\u10d8\u10d3\u10d0\u10dc \u10d2\u10d0\u10d2\u10d3\u10d4\u10d1\u10d0 \u10d3\u10d0 \u10d1\u10da\u10dd\u10d9\u10d8\u10e0\u10d4\u10d1\u10d0";
@@ -962,9 +956,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$openGallery() {
       return "Open gallery";
-    },
-    get$removeFromSpace() {
-      return "Remove from space";
     },
     get$markAsRead() {
       return "Mark as read";
@@ -3600,9 +3591,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "Notifications off";
     },
-    get$addSubspaceWarning() {
-      return "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.";
-    },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
     },
@@ -4239,9 +4227,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitySuggestionTimeoutMessage() {
       return "We are working hard to generate more activities for you, please check back in a minute";
     },
-    get$accessSettingsWarning() {
-      return "Oops! It looks like you don't have permission to set the Access rules of this room. You should check these to make sure they're what you need and talk to a room admin if you need to change them";
-    },
     get$howSpaceCanBeFound() {
       return "How this space can be found";
     },
@@ -4605,6 +4590,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myActivitySessions() {
       return "My Activity Sessions";
     },
+    get$directMessages() {
+      return "Direct Messages";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4620,6 +4608,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_234", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "uVOu5NeSwXAhdflKRZyP9FW/yFQ=");
+})($__dart_deferred_initializers__, "d7esGjSmchM/p6OeW9r2i0yTc3E=");
 ;
 //# sourceMappingURL=main.dart.js_234.part.js.map

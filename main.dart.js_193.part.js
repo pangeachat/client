@@ -79,9 +79,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     supposedMxid$1(mxid) {
       return "Esto deber\xeda ser " + mxid;
     },
-    get$addToSpace() {
-      return "Agregar al espacio";
-    },
     get$admin() {
       return "Administrador";
     },
@@ -144,9 +141,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noMoreChatsFound() {
       return "No se encontraron m\xe1s chats...";
-    },
-    get$space() {
-      return "Espacio";
     },
     get$banFromChat() {
       return "Vetar del chat";
@@ -963,9 +957,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$openGallery() {
       return "Abrir galer\xeda";
-    },
-    get$removeFromSpace() {
-      return "Eliminar del espacio";
     },
     get$markAsRead() {
       return "Marcar como le\xeddo";
@@ -3601,9 +3592,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "Notificaciones desactivadas";
     },
-    get$addSubspaceWarning() {
-      return "Una vez que agregues esto, no aparecer\xe1 en los resultados de b\xfasqueda p\xfablica, y ser\xe1 visible para todos los miembros del espacio principal.";
-    },
     get$createChatAndInviteUsers() {
       return "Crear chat e invitar usuarios";
     },
@@ -4240,9 +4228,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitySuggestionTimeoutMessage() {
       return "We are working hard to generate more activities for you, please check back in a minute";
     },
-    get$accessSettingsWarning() {
-      return "Oops! It looks like you don't have permission to set the Access rules of this room. You should check these to make sure they're what you need and talk to a room admin if you need to change them";
-    },
     get$howSpaceCanBeFound() {
       return "How this space can be found";
     },
@@ -4606,6 +4591,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myActivitySessions() {
       return "My Activity Sessions";
     },
+    get$directMessages() {
+      return "Direct Messages";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4621,6 +4609,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_193", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "9uvpJ1u1FurdINnQenIijMmatvE=");
+})($__dart_deferred_initializers__, "YJAAsJaTe7PrXD0aQeQeeZTFUSc=");
 ;
 //# sourceMappingURL=main.dart.js_193.part.js.map

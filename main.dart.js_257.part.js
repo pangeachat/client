@@ -78,9 +78,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     supposedMxid$1(mxid) {
       return "\u0110\xe2y n\xean l\xe0 " + mxid;
     },
-    get$addToSpace() {
-      return "Th\xeam v\xe0o kh\xf4ng gian";
-    },
     get$admin() {
       return "Qu\u1ea3n tr\u1ecb vi\xean";
     },
@@ -143,9 +140,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noMoreChatsFound() {
       return "Kh\xf4ng c\xf2n cu\u1ed9c tr\xf2 chuy\u1ec7n n\xe0o...";
-    },
-    get$space() {
-      return "Kh\xf4ng gian";
     },
     get$banFromChat() {
       return "C\u1ea5m kh\u1ecfi cu\u1ed9c tr\xf2 chuy\u1ec7n";
@@ -962,9 +956,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$openGallery() {
       return "M\u1edf th\u01b0 vi\u1ec7n";
-    },
-    get$removeFromSpace() {
-      return "G\u1ee1 kh\u1ecfi kh\xf4ng gian";
     },
     get$markAsRead() {
       return "\u0110\xe1nh d\u1ea5u \u0111\xe3 \u0111\u1ecdc";
@@ -3600,9 +3591,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "T\u1eaft th\xf4ng b\xe1o";
     },
-    get$addSubspaceWarning() {
-      return "Khi b\u1ea1n th\xeam kh\xf4ng gian con, n\xf3 s\u1ebd kh\xf4ng hi\u1ec3n th\u1ecb trong k\u1ebft qu\u1ea3 t\xecm ki\u1ebfm c\xf4ng khai v\xe0 m\u1ecdi th\xe0nh vi\xean c\u1ee7a kh\xf4ng gian cha \u0111\u1ec1u c\xf3 th\u1ec3 th\u1ea5y.";
-    },
     get$createChatAndInviteUsers() {
       return "T\u1ea1o cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 m\u1eddi ng\u01b0\u1eddi d\xf9ng";
     },
@@ -4239,9 +4227,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitySuggestionTimeoutMessage() {
       return "Ch\xfang t\xf4i \u0111ang l\xe0m vi\u1ec7c ch\u0103m ch\u1ec9 \u0111\u1ec3 t\u1ea1o ra c\xe1c ho\u1ea1t \u0111\u1ed9ng cho b\u1ea1n, vui l\xf2ng quay l\u1ea1i sau m\u1ed9t ph\xfat";
     },
-    get$accessSettingsWarning() {
-      return "\xd4i! C\xf3 v\u1ebb nh\u01b0 b\u1ea1n kh\xf4ng c\xf3 quy\u1ec1n thi\u1ebft l\u1eadp c\xe1c quy t\u1eafc Truy c\u1eadp c\u1ee7a ph\xf2ng n\xe0y. B\u1ea1n n\xean ki\u1ec3m tra nh\u1eefng \u0111i\u1ec1u n\xe0y \u0111\u1ec3 \u0111\u1ea3m b\u1ea3o ch\xfang l\xe0 nh\u1eefng g\xec b\u1ea1n c\u1ea7n v\xe0 n\xf3i chuy\u1ec7n v\u1edbi qu\u1ea3n tr\u1ecb vi\xean ph\xf2ng n\u1ebfu b\u1ea1n c\u1ea7n thay \u0111\u1ed5i ch\xfang";
-    },
     get$howSpaceCanBeFound() {
       return "C\xe1ch kh\xf4ng gian n\xe0y c\xf3 th\u1ec3 \u0111\u01b0\u1ee3c t\xecm th\u1ea5y";
     },
@@ -4605,6 +4590,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myActivitySessions() {
       return "My Activity Sessions";
     },
+    get$directMessages() {
+      return "Direct Messages";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4620,6 +4608,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_257", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "NOL1+Dl3QXBobQAeGvOH3QVWTbI=");
+})($__dart_deferred_initializers__, "ufnql2riksRsNvCAZ05saJ7fJnE=");
 ;
 //# sourceMappingURL=main.dart.js_257.part.js.map

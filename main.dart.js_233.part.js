@@ -78,9 +78,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     supposedMxid$1(mxid) {
       return "This should be " + mxid;
     },
-    get$addToSpace() {
-      return "\u30b9\u30da\u30fc\u30b9\u306b\u8ffd\u52a0";
-    },
     get$admin() {
       return "\u7ba1\u7406\u8005";
     },
@@ -143,9 +140,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noMoreChatsFound() {
       return "No more chats found...";
-    },
-    get$space() {
-      return "Space";
     },
     get$banFromChat() {
       return "\u30c1\u30e3\u30c3\u30c8\u304b\u3089BAN\u3059\u308b";
@@ -962,9 +956,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$openGallery() {
       return "\u30ae\u30e3\u30e9\u30ea\u30fc\u3092\u958b\u304f";
-    },
-    get$removeFromSpace() {
-      return "\u30b9\u30da\u30fc\u30b9\u304b\u3089\u524a\u9664";
     },
     get$markAsRead() {
       return "\u65e2\u8aad\u306b\u3059\u308b";
@@ -3600,9 +3591,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$notificationsOff() {
       return "Notifications off";
     },
-    get$addSubspaceWarning() {
-      return "Once you add this, it will not appear in public search results, and it will be visible to all members of the parent space.";
-    },
     get$createChatAndInviteUsers() {
       return "Create chat and invite users";
     },
@@ -4239,9 +4227,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activitySuggestionTimeoutMessage() {
       return "We are working hard to generate more activities for you, please check back in a minute";
     },
-    get$accessSettingsWarning() {
-      return "Oops! It looks like you don't have permission to set the Access rules of this room. You should check these to make sure they're what you need and talk to a room admin if you need to change them";
-    },
     get$howSpaceCanBeFound() {
       return "How this space can be found";
     },
@@ -4605,6 +4590,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myActivitySessions() {
       return "My Activity Sessions";
     },
+    get$directMessages() {
+      return "Direct Messages";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4620,6 +4608,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_233", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Cb3VAVruvvQWumEKAGj0AID6UZI=");
+})($__dart_deferred_initializers__, "8oiNz9we/3LnRiKudwfNHkJCNXQ=");
 ;
 //# sourceMappingURL=main.dart.js_233.part.js.map
