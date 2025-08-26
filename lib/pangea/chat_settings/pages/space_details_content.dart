@@ -233,7 +233,7 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                     mxContent: widget.room.avatar,
                     name: displayname,
                     userId: widget.room.directChatMatrixID,
-                    size: Avatar.defaultSize * 2.5,
+                    size: 80.0,
                     borderRadius: widget.room.isSpace
                         ? BorderRadius.circular(24.0)
                         : null,
