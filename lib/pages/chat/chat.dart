@@ -29,6 +29,8 @@ import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pages/chat/recording_dialog.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
@@ -100,6 +102,9 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final room = Matrix.of(context).client.getRoomById(roomId);
     // #Pangea
+    if (room?.isActivitySession == true && !room!.activityHasStarted) {
+      return ActivitySessionStartPage(room: room);
+    }
 
     if (room?.isSpace == true &&
         GoRouterState.of(context).fullPath?.endsWith(":roomid") == true) {

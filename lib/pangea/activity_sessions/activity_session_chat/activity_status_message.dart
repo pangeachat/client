@@ -4,8 +4,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_unfinished_status_message.dart';
-import 'package:fluffychat/pangea/activity_sessions/load_activity_summary_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_unfinished_status_message.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/load_activity_summary_widget.dart';
 
 class ActivityStatusMessage extends StatelessWidget {
   final Room room;

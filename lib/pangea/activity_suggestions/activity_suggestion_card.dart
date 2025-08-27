@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
-
+import 'package:fluffychat/pangea/activity_planner/activity_plan_image_widget.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
-import 'package:fluffychat/widgets/mxc_image.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
   final ActivityPlannerBuilderState controller;
@@ -49,30 +47,10 @@ class ActivitySuggestionCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    height: width,
+                  ActivityPlanImage(
+                    activity,
                     width: width,
-                    child: activity.imageURL != null
-                        ? activity.imageURL!.startsWith("mxc")
-                            ? MxcImage(
-                                uri: Uri.parse(activity.imageURL!),
-                                width: width,
-                                height: width,
-                                cacheKey: activity.bookmarkId,
-                                fit: BoxFit.cover,
-                              )
-                            : CachedNetworkImage(
-                                imageUrl: activity.imageURL!,
-                                placeholder: (context, url) => const Center(
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) =>
-                                    const SizedBox(),
-                                fit: BoxFit.cover,
-                                width: width,
-                                height: width,
-                              )
-                        : const SizedBox(),
+                    borderRadius: const BorderRadius.all(Radius.zero),
                   ),
                   Expanded(
                     child: Padding(

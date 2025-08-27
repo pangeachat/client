@@ -4,8 +4,9 @@ import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 
 class ActivityRolesModel {
   final Map<String, ActivityRoleModel> roles;
+  final bool started;
 
-  const ActivityRolesModel(this.roles);
+  const ActivityRolesModel(this.roles, {this.started = false});
 
   ActivityRoleModel? role(String userId) {
     return roles.values.firstWhereOrNull((r) => r.userId == userId);
@@ -30,12 +31,17 @@ class ActivityRolesModel {
   Map<String, dynamic> toJson() {
     return {
       "roles": roles.map((id, role) => MapEntry(id, role.toJson())),
+      "started": started,
     };
   }
 
   static ActivityRolesModel fromJson(Map<String, dynamic> json) {
     final roles = (json['roles'] as Map<String, dynamic>)
         .map((id, value) => MapEntry(id, ActivityRoleModel.fromJson(value)));
-    return ActivityRolesModel(roles);
+
+    return ActivityRolesModel(
+      roles,
+      started: json['started'] ?? false,
+    );
   }
 }
