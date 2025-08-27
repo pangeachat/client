@@ -159,6 +159,8 @@ class ModelKey {
   // activity plan
   static const String activityPlanRequest = "req";
   static const String activityPlanTitle = "title";
+  static const String activityPlanDescription = "description";
+  static const String activityPlanLocation = "location";
   static const String activityPlanLearningObjective = "learning_objective";
   static const String activityPlanInstructions = "instructions";
   static const String activityPlanVocab = "vocab";
