@@ -1,17 +1,14 @@
-import 'package:flutter/material.dart';
-
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_suggestions/activity_suggestions_constants.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart';
 
 class ActivityPinnedMessage extends StatefulWidget {
   final ChatController controller;
@@ -127,40 +124,41 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
             decoration: BoxDecoration(
               color: theme.colorScheme.surface,
             ),
-            child: const SizedBox(),
-            //ChatAppBarListTile(
-            //   title: "🎯 ${room.activityPlan!.learningObjective}",
-            //   leading: const SizedBox(width: 18.0),
-            //   trailing: Padding(
-            //     padding: const EdgeInsets.only(right: 12.0),
-            //     child: ElevatedButton(
-            //       onPressed:
-            //           _showDropdown ? null : () => _setShowDropdown(true),
-            //       style: ElevatedButton.styleFrom(
-            //         minimumSize: Size.zero,
-            //         padding: const EdgeInsets.symmetric(
-            //           horizontal: 12.0,
-            //           vertical: 4.0,
-            //         ),
-            //         backgroundColor: AppConfig.yellowDark,
-            //         foregroundColor: theme.colorScheme.surface,
-            //         disabledBackgroundColor:
-            //             AppConfig.yellowDark.withAlpha(100),
-            //         disabledForegroundColor:
-            //             theme.colorScheme.surface.withAlpha(100),
-            //       ),
-            //       child: Text(
-            //         L10n.of(context).endActivityTitle,
-            //         style: const TextStyle(
-            //           fontSize: 16.0,
-            //           fontWeight: FontWeight.w900,
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            //   onTap: _scrollToActivity,
-            // ),
+            child: const SizedBox.shrink(),
+            //ActivityStatsRow(onToggleDropdown: toggleDropdown),
           ),
+          //ChatAppBarListTile(
+          //   title: "🎯 ${room.activityPlan!.learningObjective}",
+          //   leading: const SizedBox(width: 18.0),
+          //   trailing: Padding(
+          //     padding: const EdgeInsets.only(right: 12.0),
+          //     child: ElevatedButton(
+          //       onPressed:
+          //           _showDropdown ? null : () => _setShowDropdown(true),
+          //       style: ElevatedButton.styleFrom(
+          //         minimumSize: Size.zero,
+          //         padding: const EdgeInsets.symmetric(
+          //           horizontal: 12.0,
+          //           vertical: 4.0,
+          //         ),
+          //         backgroundColor: AppConfig.yellowDark,
+          //         foregroundColor: theme.colorScheme.surface,
+          //         disabledBackgroundColor:
+          //             AppConfig.yellowDark.withAlpha(100),
+          //         disabledForegroundColor:
+          //             theme.colorScheme.surface.withAlpha(100),
+          //       ),
+          //       child: Text(
+          //         L10n.of(context).endActivityTitle,
+          //         style: const TextStyle(
+          //           fontSize: 16.0,
+          //           fontWeight: FontWeight.w900,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          //   onTap: _scrollToActivity,
+          // ),
           ClipRect(
             child: AnimatedAlign(
               duration: FluffyThemes.animationDuration,
@@ -269,11 +267,8 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                                       ),
                                     ),
                                   ),
-                                ),
-                              ),
+                              ],
                             ),
-                        ],
-                      ),
                     ],
                   ),
                 ),
@@ -288,6 +283,61 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
               ),
             ),
         ],
+      ),
+    );
+  }
+}
+
+class ActivityStatsRow extends StatelessWidget {
+  final VoidCallback onToggleDropdown;
+
+  const ActivityStatsRow({
+    super.key,
+    required this.onToggleDropdown,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(20),
+      onTap: onToggleDropdown,
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppConfig.goldLight.withAlpha(100),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.radar,
+              size: 20,
+            ),
+            Text(
+              "67 XP",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(width: 20),
+            const Icon(
+              Symbols.dictionary,
+              size: 20,
+            ),
+            Text(
+              "16",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(width: 20),
+            const Icon(
+              Symbols.toys_and_games,
+              size: 20,
+            ),
+            Text(
+              "4",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+          ],
+        ),
       ),
     );
   }

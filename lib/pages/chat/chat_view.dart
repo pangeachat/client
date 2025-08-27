@@ -126,21 +126,21 @@ class ChatView extends StatelessWidget {
     if (!controller.room.isArchived) {
       // #Pangea
       return [
-        !controller.room.showActivityChatUI
-            ? IconButton(
-                icon: const Icon(Icons.search_outlined),
-                tooltip: L10n.of(context).search,
-                onPressed: () {
-                  context.go('/rooms/${controller.room.id}/search');
-                },
-              )
-            : IconButton(
-                icon: const Icon(Icons.event_note, color: AppConfig.goldLight),
-                tooltip: "Activity status",
-                onPressed: () {
-                  controller.activityPinnedShowDropdown?.call();
-                },
-              ),
+        // !controller.room.showActivityChatUI?
+        IconButton(
+          icon: const Icon(Icons.search_outlined),
+          tooltip: L10n.of(context).search,
+          onPressed: () {
+            context.go('/rooms/${controller.room.id}/search');
+          },
+        ),
+        // : IconButton(
+        //     icon: const Icon(Icons.event_note, color: AppConfig.goldLight),
+        //     tooltip: "Activity status",
+        //     onPressed: () {
+        //       controller.activityPinnedShowDropdown?.call();
+        //     },
+        //   ),
         IconButton(
           icon: const Icon(Icons.settings_outlined),
           tooltip: L10n.of(context).chatDetails,
@@ -223,6 +223,10 @@ class ChatView extends StatelessWidget {
                 //     ? null
                 //     : theme.colorScheme.tertiaryContainer,
                 // Pangea#
+                // Make AppBar taller for activities
+                toolbarHeight:
+                    controller.room.showActivityChatUI ? 106.0 : null,
+                centerTitle: controller.room.showActivityChatUI,
                 automaticallyImplyLeading: false,
                 leading: controller.selectMode
                     ? IconButton(
@@ -253,7 +257,25 @@ class ChatView extends StatelessWidget {
                                 ),
                               ),
                 titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
-                title: ChatAppBarTitle(controller),
+                title: controller.room.showActivityChatUI
+                    ? Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // Centered title without picture for activities
+                          Text(
+                            controller.room.getLocalizedDisplayname(),
+                            style: theme.textTheme.titleLarge,
+                            textAlign: TextAlign.center,
+                          ),
+                          const SizedBox(height: 8),
+                          // Centered ActivityStatsRow beneath title
+                          ActivityStatsRow(
+                            onToggleDropdown:
+                                controller.activityPinnedShowDropdown ?? () {},
+                          ),
+                        ],
+                      )
+                    : ChatAppBarTitle(controller),
                 actions: _appBarActions(context),
                 bottom: PreferredSize(
                   preferredSize: Size.fromHeight(appbarBottomHeight),
