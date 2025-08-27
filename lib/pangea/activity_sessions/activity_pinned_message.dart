@@ -106,6 +106,15 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
     final theme = Theme.of(context);
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
+    // Completion status variables
+    final bool userComplete = room.hasCompletedActivity;
+    final bool activityComplete = room.activityIsFinished;
+
+    final String message = userComplete
+        ? activityComplete
+            ? "Everyone has wrapped up and the activity is complete! See the activity summary in chat when it is generated."
+            : "${_getCompletedRolesCount()}/${_getAssignedRolesCount()} are done. Wait for everyone to finish, and we'll generate you a summary in the chat! \n\nIf you'd like to rejoin the conversation, click 'Continue' in the chat."
+        : "${_getCompletedRolesCount()}/${_getAssignedRolesCount()} are done. Have you completed your objective?";
     return Positioned(
       top: 0,
       left: 0,
@@ -116,9 +125,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
           AnimatedContainer(
             duration: FluffyThemes.animationDuration,
             decoration: BoxDecoration(
-              color: _showDropdown
-                  ? theme.colorScheme.surfaceContainerHighest
-                  : theme.colorScheme.surface,
+              color: theme.colorScheme.surface,
             ),
             child: const SizedBox(),
             //ChatAppBarListTile(
@@ -173,7 +180,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceContainerHighest,
+                    color: theme.colorScheme.surface,
                   ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12.0,
@@ -198,59 +205,69 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                           fontSize: isColumnMode ? 16.0 : 12.0,
                         ),
                       ),
-                      CachedNetworkImage(
-                        imageUrl:
-                            "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.endActivityAssetPath}",
-                        width: isColumnMode ? 240.0 : 120.0,
-                      ),
+                      // CachedNetworkImage(
+                      //   imageUrl:
+                      //       "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.endActivityAssetPath}",
+                      //   width: isColumnMode ? 240.0 : 120.0,
+                      // ),
                       Text(
-                        "${_getCompletedRolesCount()}/${_getAssignedRolesCount()} completed",
+                        message,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: isColumnMode ? 14.0 : 11.0,
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
                       ),
-                      Row(
-                        spacing: 12.0,
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12.0,
-                                  vertical: 8.0,
-                                ),
-                                foregroundColor: theme.colorScheme.onSecondary,
-                                backgroundColor: theme.colorScheme.secondary,
-                              ),
-                              onPressed: _finishActivity,
-                              child: Text(
-                                L10n.of(context).endActivityTitle,
-                                style: TextStyle(
-                                  fontSize: isColumnMode ? 16.0 : 12.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                          if (room.isRoomAdmin)
-                            Expanded(
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 12.0,
-                                    vertical: 8.0,
+                      userComplete
+                          ? const SizedBox.shrink()
+                          : Column(
+                              spacing: 12.0,
+                              children: [
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0,
+                                        vertical: 8.0,
+                                      ),
+                                      foregroundColor:
+                                          theme.colorScheme.onSecondary,
+                                      backgroundColor:
+                                          theme.colorScheme.secondary,
+                                    ),
+                                    onPressed: _finishActivity,
+                                    child: Text(
+                                      L10n.of(context).endActivityTitle,
+                                      style: TextStyle(
+                                        fontSize: isColumnMode ? 16.0 : 12.0,
+                                      ),
+                                    ),
                                   ),
-                                  foregroundColor:
-                                      theme.colorScheme.onErrorContainer,
-                                  backgroundColor:
-                                      theme.colorScheme.errorContainer,
                                 ),
-                                onPressed: () => _finishActivity(forAll: true),
-                                child: Text(
-                                  L10n.of(context).endForAll,
-                                  style: TextStyle(
-                                    fontSize: isColumnMode ? 16.0 : 12.0,
+                                if (room.isRoomAdmin)
+                                  SizedBox(
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 12.0,
+                                          vertical: 8.0,
+                                        ),
+                                        foregroundColor:
+                                            theme.colorScheme.onErrorContainer,
+                                        backgroundColor:
+                                            theme.colorScheme.errorContainer,
+                                      ),
+                                      onPressed: () =>
+                                          _finishActivity(forAll: true),
+                                      child: Text(
+                                        L10n.of(context).endForAll,
+                                        style: TextStyle(
+                                          fontSize: isColumnMode ? 16.0 : 12.0,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
