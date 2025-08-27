@@ -272,6 +272,7 @@ class ChatView extends StatelessWidget {
                           ActivityStatsRow(
                             onToggleDropdown:
                                 controller.activityPinnedShowDropdown ?? () {},
+                            room: controller.room,
                           ),
                         ],
                       )

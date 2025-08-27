@@ -125,40 +125,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
               color: theme.colorScheme.surface,
             ),
             child: const SizedBox.shrink(),
-            //ActivityStatsRow(onToggleDropdown: toggleDropdown),
           ),
-          //ChatAppBarListTile(
-          //   title: "🎯 ${room.activityPlan!.learningObjective}",
-          //   leading: const SizedBox(width: 18.0),
-          //   trailing: Padding(
-          //     padding: const EdgeInsets.only(right: 12.0),
-          //     child: ElevatedButton(
-          //       onPressed:
-          //           _showDropdown ? null : () => _setShowDropdown(true),
-          //       style: ElevatedButton.styleFrom(
-          //         minimumSize: Size.zero,
-          //         padding: const EdgeInsets.symmetric(
-          //           horizontal: 12.0,
-          //           vertical: 4.0,
-          //         ),
-          //         backgroundColor: AppConfig.yellowDark,
-          //         foregroundColor: theme.colorScheme.surface,
-          //         disabledBackgroundColor:
-          //             AppConfig.yellowDark.withAlpha(100),
-          //         disabledForegroundColor:
-          //             theme.colorScheme.surface.withAlpha(100),
-          //       ),
-          //       child: Text(
-          //         L10n.of(context).endActivityTitle,
-          //         style: const TextStyle(
-          //           fontSize: 16.0,
-          //           fontWeight: FontWeight.w900,
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          //   onTap: _scrollToActivity,
-          // ),
           ClipRect(
             child: AnimatedAlign(
               duration: FluffyThemes.animationDuration,
@@ -167,14 +134,12 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
               alignment: Alignment.topCenter,
               child: GestureDetector(
                 onPanUpdate: (details) {
-                  // Detect upward swipe (negative delta means swiping up)
+                  // Detect upward swipe
                   if (details.delta.dy < -2) {
                     _setShowDropdown(false);
                   }
                 },
-                onTap: () {
-                  // Prevent taps from bubbling up to the background tap handler
-                },
+                onTap: () {},
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -203,11 +168,6 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                           fontSize: isColumnMode ? 16.0 : 12.0,
                         ),
                       ),
-                      // CachedNetworkImage(
-                      //   imageUrl:
-                      //       "${AppConfig.assetsBaseURL}/${ActivitySuggestionsConstants.endActivityAssetPath}",
-                      //   width: isColumnMode ? 240.0 : 120.0,
-                      // ),
                       Text(
                         message,
                         textAlign: TextAlign.center,
@@ -221,28 +181,6 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                           : Column(
                               spacing: 12.0,
                               children: [
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0,
-                                        vertical: 8.0,
-                                      ),
-                                      foregroundColor:
-                                          theme.colorScheme.onSecondary,
-                                      backgroundColor:
-                                          theme.colorScheme.secondary,
-                                    ),
-                                    onPressed: _finishActivity,
-                                    child: Text(
-                                      L10n.of(context).endActivityTitle,
-                                      style: TextStyle(
-                                        fontSize: isColumnMode ? 16.0 : 12.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
                                 if (room.isRoomAdmin)
                                   SizedBox(
                                     width: double.infinity,
@@ -253,9 +191,8 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                                           vertical: 8.0,
                                         ),
                                         foregroundColor:
-                                            theme.colorScheme.onErrorContainer,
-                                        backgroundColor:
-                                            theme.colorScheme.errorContainer,
+                                            theme.colorScheme.primary,
+                                        backgroundColor: Colors.transparent,
                                       ),
                                       onPressed: () =>
                                           _finishActivity(forAll: true),
@@ -267,6 +204,28 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                                       ),
                                     ),
                                   ),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 12.0,
+                                        vertical: 8.0,
+                                      ),
+                                      // foregroundColor:
+                                      //     theme.colorScheme.onSecondary,
+                                      // backgroundColor:
+                                      //     theme.colorScheme.secondary,
+                                    ),
+                                    onPressed: _finishActivity,
+                                    child: Text(
+                                      L10n.of(context).endActivityTitle,
+                                      style: TextStyle(
+                                        fontSize: isColumnMode ? 16.0 : 12.0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                     ],
@@ -289,56 +248,90 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
 }
 
 class ActivityStatsRow extends StatelessWidget {
+  final Room room;
   final VoidCallback onToggleDropdown;
 
   const ActivityStatsRow({
     super.key,
+    required this.room,
     required this.onToggleDropdown,
   });
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(20),
-      onTap: onToggleDropdown,
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppConfig.goldLight.withAlpha(100),
-          borderRadius: BorderRadius.circular(20),
+    final theme = Theme.of(context);
+    final stats = room.currentStatsIncrease;
+
+    return Container(
+      width: 350,
+      height: 55,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20),
+        onTap: onToggleDropdown,
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppConfig.goldLight.withAlpha(100),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildStatItem(
+                context: context,
+                icon: Icons.radar,
+                value: "${stats.xp}",
+                label: "XP",
+              ),
+              _buildStatItem(
+                context: context,
+                icon: Symbols.dictionary,
+                value: "${stats.vocab}",
+                label: "Vocab",
+              ),
+              _buildStatItem(
+                context: context,
+                icon: Symbols.toys_and_games,
+                value: "${stats.grammar}",
+                label: "Grammar",
+              ),
+            ],
+          ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Row(
+      ),
+    );
+  }
+
+  Widget _buildStatItem({
+    required BuildContext context,
+    required IconData icon,
+    required String value,
+    required String label,
+  }) {
+    final theme = Theme.of(context);
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          icon,
+          size: 18,
+          color: theme.colorScheme.onSurface,
+        ),
+        const SizedBox(width: 4),
+        Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(
-              Icons.radar,
-              size: 20,
-            ),
             Text(
-              "67 XP",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            const SizedBox(width: 20),
-            const Icon(
-              Symbols.dictionary,
-              size: 20,
-            ),
-            Text(
-              "16",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            const SizedBox(width: 20),
-            const Icon(
-              Symbols.toys_and_games,
-              size: 20,
-            ),
-            Text(
-              "4",
-              style: Theme.of(context).textTheme.bodyMedium,
+              value,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.onSurface,
+              ),
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }
