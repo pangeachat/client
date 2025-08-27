@@ -264,8 +264,8 @@ extension ActivityRoomExtension on Room {
   ActivityRoleModel? get ownRole => activityRoles?.role(client.userID!);
 
   int get remainingRoles {
-    final availableRoles = activityPlan!.roles;
-    return max(0, availableRoles.length - (assignedRoles?.length ?? 0));
+    final availableRoles = activityPlan?.roles;
+    return max(0, (availableRoles?.length ?? 0) - (assignedRoles?.length ?? 0));
   }
 
   bool get showActivityChatUI {

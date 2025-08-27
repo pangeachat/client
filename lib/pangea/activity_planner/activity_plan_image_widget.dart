@@ -36,7 +36,7 @@ class ActivityPlanImage extends StatelessWidget {
                 uri: Uri.parse(url),
                 width: width,
                 height: width,
-                cacheKey: activity.bookmarkId,
+                cacheKey: activity.activityId,
                 fit: BoxFit.cover,
               )
             : CachedNetworkImage(

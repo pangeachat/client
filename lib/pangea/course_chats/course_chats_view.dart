@@ -70,7 +70,7 @@ class CourseChatsView extends StatelessWidget {
             for (final joinedRoom in joinedRooms) {
               if (joinedRoom.isActivitySession) {
                 if (topic == null ||
-                    activityIds.contains(joinedRoom.activityPlan?.bookmarkId)) {
+                    activityIds.contains(joinedRoom.activityPlan?.activityId)) {
                   joinedSessions.add(joinedRoom);
                 }
               } else {
