@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
@@ -115,27 +116,33 @@ class ActivitySessionStartView extends StatelessWidget {
                                 ),
                                 if (controller.state ==
                                     SessionState.confirmedRole) ...[
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                          theme.colorScheme.primaryContainer,
-                                      foregroundColor:
-                                          theme.colorScheme.onPrimaryContainer,
-                                      padding: const EdgeInsets.all(8.0),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
+                                  if (controller.room.courseParent != null)
+                                    ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor:
+                                            theme.colorScheme.primaryContainer,
+                                        foregroundColor: theme
+                                            .colorScheme.onPrimaryContainer,
+                                        padding: const EdgeInsets.all(8.0),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                      ),
+                                      onPressed: () => showFutureLoadingDialog(
+                                        context: context,
+                                        future: controller.pingCourse,
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            L10n.of(context).pingParticipants,
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    onPressed: () {},
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(L10n.of(context).pingParticipants),
-                                      ],
-                                    ),
-                                  ),
                                   if (controller.room.isRoomAdmin) ...[
                                     ElevatedButton(
                                       style: ElevatedButton.styleFrom(

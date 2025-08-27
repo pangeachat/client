@@ -145,6 +145,14 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     }
   }
 
+  Future<void> pingCourse() async {
+    if (room.courseParent == null) {
+      throw Exception("Activity is not part of a course");
+    }
+
+    await room.courseParent!.sendTextEvent("");
+  }
+
   Future<void> _loadParticipants() async {
     setState(() => _loading = true);
     await room.requestParticipants(
