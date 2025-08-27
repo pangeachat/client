@@ -131,7 +131,6 @@ abstract class ClientManager {
         // to postLoad to confirm that these state events are completely loaded
         EventTypes.RoomPowerLevels,
         EventTypes.RoomJoinRules,
-        EventTypes.RoomMember,
         PangeaEventTypes.rules,
         PangeaEventTypes.botOptions,
         PangeaEventTypes.capacity,
@@ -141,6 +140,8 @@ abstract class ClientManager {
         PangeaEventTypes.activitySummary,
         PangeaEventTypes.constructSummary,
         PangeaEventTypes.activityRoomIds,
+        PangeaEventTypes.coursePlan,
+        PangeaEventTypes.courseUser,
         // Pangea#
       },
       logLevel: kReleaseMode ? Level.warning : Level.verbose,
@@ -162,6 +163,7 @@ abstract class ClientManager {
       // #Pangea
       syncFilter: Filter(
         room: RoomFilter(
+          state: StateFilter(lazyLoadMembers: true),
           timeline: StateFilter(
             notTypes: [
               PangeaEventTypes.construct,

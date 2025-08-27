@@ -153,7 +153,10 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
       .toList();
 
   List<LanguageModel> get availableLanguages => _langsToUsers.keys.toList()
-    ..sort((a, b) => a.langCode.compareTo(b.langCode));
+    ..sort(
+      (a, b) => (a.getDisplayName(context) ?? a.displayName)
+          .compareTo(b.getDisplayName(context) ?? b.displayName),
+    );
 
   int get completedDownloads =>
       downloads.values.where((d) => d.summary != null).length;
@@ -213,7 +216,12 @@ class SpaceAnalyticsState extends State<SpaceAnalytics> {
   }
 
   Future<void> _initialize() async {
-    await room?.requestParticipants();
+    await room?.requestParticipants(
+      [Membership.join, Membership.invite, Membership.knock],
+      false,
+      true,
+    );
+
     final List<Future> futures = [
       GetStorage.init('analytics_request_storage'),
       _loadProfiles(),

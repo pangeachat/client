@@ -8,15 +8,18 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
-import 'package:fluffychat/pangea/activity_summary/activity_summary_repo.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/chat_settings/utils/download_chat.dart';
+import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import '../activity_summary/activity_summary_repo.dart';
 
 extension ActivityRoomExtension on Room {
   Future<void> sendActivityPlan(
@@ -119,7 +122,9 @@ extension ActivityRoomExtension on Room {
   }
 
   Future<void> fetchSummaries() async {
-    if (activitySummary?.summary != null) return;
+    if (activitySummary?.summary != null) {
+      return;
+    }
 
     await setActivitySummary(
       ActivitySummaryModel(
@@ -128,15 +133,18 @@ extension ActivityRoomExtension on Room {
       ),
     );
 
-    final events = await getAllEvents(this);
+    final events = await getAllEvents();
     final List<ActivitySummaryResultsMessage> messages = [];
+    final ActivitySummaryAnalyticsModel analytics =
+        ActivitySummaryAnalyticsModel();
+
+    final timeline = this.timeline ?? await getTimeline();
     for (final event in events) {
       if (event.type != EventTypes.Message ||
           event.messageType != MessageTypes.Text) {
         continue;
       }
 
-      final timeline = this.timeline ?? await getTimeline();
       final pangeaMessage = PangeaMessageEvent(
         event: event,
         timeline: timeline,
@@ -155,6 +163,7 @@ extension ActivityRoomExtension on Room {
       );
 
       messages.add(activityMessage);
+      analytics.addConstructs(pangeaMessage);
     }
 
     try {
@@ -163,11 +172,15 @@ extension ActivityRoomExtension on Room {
           activity: activityPlan!,
           activityResults: messages,
           contentFeedback: [],
+          analytics: analytics,
         ),
       );
 
       await setActivitySummary(
-        ActivitySummaryModel(summary: resp),
+        ActivitySummaryModel(
+          summary: resp,
+          analytics: analytics,
+        ),
       );
     } catch (e, s) {
       ErrorHandler.logError(
@@ -311,4 +324,16 @@ extension ActivityRoomExtension on Room {
   }
 
   bool get isHiddenActivityRoom => ownRole?.isArchived ?? false;
+
+  Room? get courseParent => pangeaSpaceParents.firstWhereOrNull(
+        (parent) => parent.coursePlan != null,
+      );
+
+  bool get isActivitySession =>
+      getState(EventTypes.RoomCreate)
+              ?.content
+              .tryGet<String>('type')
+              ?.startsWith(PangeaRoomTypes.activitySession) ==
+          true ||
+      activityPlan != null;
 }
