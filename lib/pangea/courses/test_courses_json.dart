@@ -10,6 +10,7 @@ final courseJson = {
       "id": "a58a249e-0625-4bfb-8c37-1b7e7ab722bf",
       "topics": [
         {
+          "activity_id": "e79eb174-048e-4cbc-a70c-79f11782eeeb",
           "title": "¡Bienvenidos a Nueva York!",
           "description":
               "Start your Spanish journey in the Big Apple! You'll learn basic greetings, introduce yourself, and discover how to navigate the city's diverse Hispanic neighborhoods. Practice saying '¡Hola!' to new amigos in Washington Heights and Little Spain.",
@@ -17,6 +18,7 @@ final courseJson = {
           "id": "be65f331-86a1-4f67-bca7-7e09c7709bb6",
           "activities": [
             {
+              "activity_id": "f8a1d2b3-4c5e-6789-0abc-def123456789",
               "title": "Meet & Greet at the Washington Heights Café",
               "description":
                   "You’ll roleplay meeting at a café in Washington Heights and introduce yourselves!",
@@ -89,6 +91,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "e2b3c4d5-6f78-9abc-def0-123456789abc",
               "title": "Guess the Landmark in Little Spain",
               "description":
                   "Explore Little Spain and guess famous landmarks using yes/no questions!",
@@ -177,6 +180,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "c4d5e6f7-8901-2345-6789-abcdef012345",
               "title": "Meet at the East Harlem Café",
               "description":
                   "Exchange personal info in Spanish as you meet at a cozy East Harlem café!",
@@ -253,6 +257,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "a1b2c3d4-5678-90ef-ghij-klmnop123456",
               "title": "Jackson Heights Food Preferences Debate",
               "description":
                   "Debate your favorite Hispanic dishes at a lively Jackson Heights food market!",
@@ -331,6 +336,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "b3006f33-bac5-4640-acb5-bf5203ce6bd4",
               "title": "Find the Hidden Gems of Sunset Park",
               "description":
                   "Explore Sunset Park by giving and following Spanish directions to discover cultural spots together!",
@@ -425,6 +431,7 @@ final courseJson = {
           ],
         },
         {
+          "activity_id": "e93b41dc-e026-4da1-b0b5-12bfe6b78291",
           "title": "Saludos desde Miami",
           "description":
               "Dive into numbers and basic phrases as you explore Miami's vibrant Cuban-American culture. Learn to order a 'cafecito' in Little Havana and count your way through a day at the beach.",
@@ -432,6 +439,7 @@ final courseJson = {
           "id": "01e23852-5f04-435a-92cb-f1d9e8783ce2",
           "activities": [
             {
+              "activity_id": "c969ed03-0b3c-469f-942f-af32ef7ff26f",
               "title": "Cafecito Chat at Versailles Café",
               "description":
                   "Order a classic cafecito and ask for the price at the famous Versailles Café in Little Havana!",
@@ -532,6 +540,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "8fd29ce3-8422-47b1-b17b-f8a86a754980",
               "title": "Numbers in the Park: Photo Scavenger Hunt",
               "description":
                   "Explore Domino Park by finding and sharing numbered objects!",
@@ -654,6 +663,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "5daed96c-bc63-4fad-a740-25fa87dfe2cc",
               "title": "Guess the Favorite Ice Cream Flavor!",
               "description":
                   "Play 20 Questions with your partner at Little Havana Cultural Center to guess their favorite ice cream flavor!",
@@ -750,6 +760,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "4bd5533b-6134-474f-b6fa-3caad2d12eea",
               "title": "Ice Cream Showdown at Azúcar",
               "description":
                   "Compare prices and flavors at Azúcar Ice Cream to pick your favorite!",
@@ -850,6 +861,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "a790942d-24c6-4984-9ee3-feac8223131b",
               "title": "Bayside Market Bargain Chat",
               "description":
                   "Chat your way through Bayside Marketplace, asking and answering about prices and quantities!",
@@ -943,6 +955,7 @@ final courseJson = {
           ],
         },
         {
+          "activity_id": "1fc73b7b-44a1-4fb5-9e57-e423fba22c2f",
           "title": "¡Vamos a la Ciudad de México!",
           "description":
               "Expand your vocabulary with colors and common objects as you virtually wander through Mexico City's colorful markets. Practice describing the vibrant murals and iconic landmarks of this bustling metropolis.",
@@ -950,6 +963,7 @@ final courseJson = {
           "id": "8fdd6ab3-60c0-475c-b156-ace929e93dd2",
           "activities": [
             {
+              "activity_id": "7d58d106-519d-4447-a0e4-18ebd2de9185",
               "title": "Find the Colorful Market Items!",
               "description":
                   "Explore Mercado de la Merced by asking and answering about colorful items!",
@@ -1038,6 +1052,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "a80a9d54-bbc1-45d0-9799-b4c8e23a0d01",
               "title": "Describe the Murals at Bellas Artes",
               "description":
                   "Explore Palacio de Bellas Artes by sharing and describing mural images!",
@@ -1122,6 +1137,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "c9d06b4e-2002-4497-b9f2-0b0f54e35a12",
               "title": "Landmark Directions at the Zócalo",
               "description":
                   "Explore the Zócalo by giving and following simple directions in Spanish!",
@@ -1232,6 +1248,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "69e6d1c5-2b36-410c-b8f8-fd7841c24df6",
               "title": "Colorful Souvenirs of Coyoacán",
               "description":
                   "Choose the best objects and colors to represent Coyoacán’s famous spots!",
@@ -1312,6 +1329,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "45f607be-348e-4e36-8e13-c6a580a7a98c",
               "title": "Guess the Chapultepec Mystery Object",
               "description":
                   "Use yes/no questions about colors and objects to guess what’s hidden in Chapultepec!",
@@ -1422,6 +1440,7 @@ final courseJson = {
           ],
         },
         {
+          "activity_id": "c37b7d32-3401-4580-afaf-c91c3c2f388f",
           "title": "Descubriendo Bogotá",
           "description":
               "Learn about family members and professions while exploring Colombia's capital. You'll practice introducing your family and talking about jobs as you 'visit' the historic La Candelaria neighborhood.",
@@ -1429,6 +1448,7 @@ final courseJson = {
           "id": "dd0d3cc9-a314-46aa-b988-3fd2be9af7bb",
           "activities": [
             {
+              "activity_id": "283e35e0-161f-4370-a6b1-b77c3eff63df",
               "title": "Family Word Scavenger Hunt in Plaza de Bolívar",
               "description":
                   "Explore Plaza de Bolívar by sharing images that represent family members!",
@@ -1509,6 +1529,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "c861a437-19d6-4a68-8ce4-ba6bc26fedf6",
               "title": "Family Introductions at the Café",
               "description":
                   "Meet at Café de la Candelaria and introduce your family in Spanish!",
@@ -1593,6 +1614,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "79d141b7-878f-4a52-aea7-f88ac2826638",
               "title": "Job Interview at Museo Botero",
               "description":
                   "Roleplay a job interview in the famous Museo Botero art museum!",
@@ -1679,6 +1701,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "62b2cc6e-27df-47b0-b66c-421927498b03",
               "title": "Professions Debate in Parque de Usaquén",
               "description":
                   "Debate which job is most important for society while chatting in the park!",
@@ -1755,6 +1778,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "4d32b70e-e116-4925-bed6-c786dd803fbe",
               "title": "Choose the Festival Team at Mercado de Paloquemao",
               "description":
                   "Work together at the lively Mercado de Paloquemao to pick the best professions for your community festival!",
@@ -1856,6 +1880,7 @@ final courseJson = {
           ],
         },
         {
+          "activity_id": "45497ed0-7ba3-4b93-889e-a7b492d20c39",
           "title": "Sabores de Lima",
           "description":
               "Dive into food vocabulary and simple preferences as you explore Lima's world-renowned culinary scene. Learn to order ceviche, discuss your favorite Peruvian dishes, and express likes and dislikes.",
@@ -1863,6 +1888,7 @@ final courseJson = {
           "id": "235c54c1-ebcd-4f6c-be27-e809ec316e42",
           "activities": [
             {
+              "activity_id": "70f5b7b9-2375-4168-a3c8-2203dff7cb04",
               "title": "Order Like a Local at La Mar Cebichería",
               "description":
                   "Step into La Mar Cebichería and order ceviche, drinks, and the bill in Spanish!",
@@ -1943,6 +1969,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "a57d23fa-1c97-43ce-bd0f-016c00aa78c4",
               "title": "Peruvian Market Ingredient Hunt",
               "description":
                   "Explore Mercado de Surquillo by finding and asking about Peruvian ingredients!",
@@ -2035,6 +2062,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "d0b432bd-1312-4842-90e2-14b832434604",
               "title": "Peruvian Food Favorites Chat",
               "description":
                   "Send voice messages about your favorite Peruvian dishes at Parque Kennedy!",
@@ -2115,6 +2143,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "316ccc7b-a785-491d-943f-383b8b89280e",
               "title": "Barrio Chino Menu Debate",
               "description":
                   "Pick your perfect three-course meal in Jirón Capón and explain your choices!",
@@ -2221,6 +2250,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "5854f811-bd10-45b0-bbbb-764ef6e1cc9a",
               "title": "Guess the Peruvian Dish!",
               "description":
                   "Challenge each other to guess famous Peruvian dishes at the food museum.",
@@ -2303,6 +2333,7 @@ final courseJson = {
           ],
         },
         {
+          "activity_id": "17d975b6-6986-4f0a-a125-84e193ee5416",
           "title": "Barcelona: Arte y Cultura",
           "description":
               "Discover how to talk about hobbies and daily routines while exploring Barcelona's artistic heritage. Practice describing Gaudí's architecture and expressing your daily activities in the context of this vibrant Catalan city.",
@@ -2310,6 +2341,7 @@ final courseJson = {
           "id": "60a5dc92-3137-4dec-b978-972df1c56b0a",
           "activities": [
             {
+              "activity_id": "bfa84016-e22b-40bc-af24-52eb49930fee",
               "title": "Daily Routines at Park Güell",
               "description":
                   "Share and discover daily routines while imagining a visit to Park Güell!",
@@ -2390,6 +2422,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "2f031287-db0d-4f6e-95f5-0fa5346db052",
               "title": "Tour Guide Voice Roleplay: Sagrada Família",
               "description":
                   "Explore Sagrada Família together! Describe its features and share your preferences in Spanish voice messages.",
@@ -2470,6 +2503,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "184b72b4-bbd8-41a8-95e9-3797868be3b2",
               "title": "Hobbies Hunt in Barri Gòtic",
               "description":
                   "Explore Barri Gòtic by asking about hobbies, sharing images, and finding famous spots!",
@@ -2588,6 +2622,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "8e9b875e-cc9d-4cf6-92e7-cea5e629feb2",
               "title": "Planning a Visit to Museu Picasso",
               "description":
                   "Work together to plan your perfect visit to Museu Picasso in Barcelona!",
@@ -2679,6 +2714,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "04358a9c-4e03-45cd-9eeb-5967b964d6d5",
               "title": "Gaudí Debate: Which Building Wins?",
               "description":
                   "Debate your favorite Gaudí building at Casa Batlló and compare opinions!",
@@ -2769,6 +2805,7 @@ final courseJson = {
           ],
         },
         {
+          "activity_id": "de60fbda-afed-43e7-87b1-62b51449414a",
           "title": "Madrid: La Vida en la Ciudad",
           "description":
               "Learn to navigate urban life in Spanish as you explore Madrid. Master telling time, asking for directions, and using public transportation vocabulary while virtually visiting iconic locations like Puerta del Sol and Retiro Park.",
@@ -2776,6 +2813,7 @@ final courseJson = {
           "id": "bba8fe62-6d0d-4e39-b416-c2e908ffc4b3",
           "activities": [
             {
+              "activity_id": "419f13ba-0c6f-4f2e-a46b-4cb0dba79efb",
               "title": "Lost in Puerta del Sol",
               "description":
                   "Help a lost tourist find famous spots in Madrid's Puerta del Sol!",
@@ -2856,6 +2894,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "04ad049f-3d44-4010-b6eb-bd75ab955f7b",
               "title": "Find Your Way in Retiro!",
               "description":
                   "Explore Parque del Retiro together using Spanish transport words!",
@@ -2934,6 +2973,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "0b06e5a3-5bdc-47ff-9c67-ea0b274c0e8f",
               "title": "Choose the Best Train Ticket at Atocha",
               "description":
                   "Work together at Estación de Atocha to find the best train ticket!",
@@ -3014,6 +3054,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "9287acf8-54cb-4893-8d75-e85ddb422cdd",
               "title": "Market Hours & Meal Times Chat",
               "description":
                   "Chat in Mercado de San Miguel to ask about opening hours and meal times!",
@@ -3098,6 +3139,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "fd8b0c06-ff7b-428b-8d56-a6940864fc87",
               "title": "Guess the Tour Time at Plaza Mayor",
               "description":
                   "Play a guessing game to discover when city tour events happen at Plaza Mayor!",
@@ -3192,6 +3234,7 @@ final courseJson = {
           ],
         },
         {
+          "activity_id": "864a6b09-efc8-442a-877b-cad5297f2cd4",
           "title": "Fiesta en Sevilla",
           "description":
               "Conclude your journey in the heart of Andalusia! Learn to talk about celebrations and traditions while exploring Seville's famous Feria de Abril. Practice using the near future tense to make plans for experiencing the city's flamenco and tapas culture.",
@@ -3199,6 +3242,7 @@ final courseJson = {
           "id": "8fb15feb-6bbe-4ed4-95dd-68d80dd7b7b6",
           "activities": [
             {
+              "activity_id": "ccad4542-0d88-43db-8fee-249b92aa463a",
               "title": "Plan Your Feria de Abril Day",
               "description":
                   "Team up to decide your perfect Feria de Abril day at the Recinto Ferial!",
@@ -3283,6 +3327,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "e3cbc605-62a8-4e01-93f2-a732ff4abf43",
               "title": "Book Flamenco Tickets at Casa de la Memoria",
               "description":
                   "Experience booking tickets for a flamenco show at Casa de la Memoria!",
@@ -3363,6 +3408,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "08bf5b85-e0c7-4f33-b0a3-1421a0ccf192",
               "title": "Tapas Tasting Route at Mercado de Triana",
               "description":
                   "Plan a delicious tapas tasting route together in a lively Seville market!",
@@ -3455,6 +3501,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "33e45902-c9b7-4f46-b9dc-99df2a4afb82",
               "title": "Feria de Abril Directions Quest",
               "description":
                   "Explore Barrio de Triana in a group chat, asking for and giving directions to find Feria objects!",
@@ -3545,6 +3592,7 @@ final courseJson = {
               },
             },
             {
+              "activity_id": "603c5942-3712-4b04-a244-db98c327c10e",
               "title": "Rent or Buy? Sevillana Dress Debate",
               "description":
                   "Debate with friends on Calle Sierpes about renting or buying a traje de sevillana!",

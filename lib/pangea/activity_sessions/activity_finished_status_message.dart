@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -19,6 +15,8 @@ import 'package:fluffychat/pangea/courses/course_repo.dart';
 import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ActivityFinishedStatusMessage extends StatelessWidget {
   final ChatController controller;
@@ -46,7 +44,7 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
       throw L10n.of(context).noCourseFound;
     }
 
-    final activityId = controller.room.activityPlan!.bookmarkId;
+    final activityId = controller.room.activityPlan!.activityId;
     final topicId = coursePlan.topicID(activityId);
     if (topicId == null) {
       throw L10n.of(context).activityNotFoundForCourse;

@@ -51,7 +51,7 @@ class Topic {
     };
   }
 
-  List<String> get activityIds => activities.map((e) => e.bookmarkId).toList();
+  List<String> get activityIds => activities.map((e) => e.activityId).toList();
 }
 
 /// Represents a course plan in the course planner response.
@@ -99,7 +99,7 @@ class CoursePlanModel {
   String? topicID(String activityID) {
     for (final topic in topics) {
       for (final activity in topic.activities) {
-        if (activity.bookmarkId == activityID) {
+        if (activity.activityId == activityID) {
           return topic.uuid;
         }
       }

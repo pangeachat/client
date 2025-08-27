@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:flutter/material.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
   final ActivityPlannerBuilderState controller;
@@ -58,7 +56,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                                 uri: Uri.parse(activity.imageURL!),
                                 width: width,
                                 height: width,
-                                cacheKey: activity.bookmarkId,
+                                cacheKey: activity.activityId,
                                 fit: BoxFit.cover,
                               )
                             : CachedNetworkImage(

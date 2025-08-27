@@ -1,13 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart' hide Visibility;
-
 import 'package:collection/collection.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
@@ -22,6 +15,11 @@ import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide Visibility;
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+import 'package:matrix/matrix.dart';
 
 enum ActivityLaunchState {
   base,
@@ -122,7 +120,7 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
       vocab: vocab,
       imageURL: imageURL,
       roles: widget.initialActivity.roles,
-      bookmarkId: widget.initialActivity.bookmarkId,
+      activityId: widget.initialActivity.activityId,
     );
   }
 
@@ -283,7 +281,7 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
       MatrixState.pangeaController.userController;
 
   bool get isBookmarked =>
-      _userController.isBookmarked(updatedActivity.bookmarkId);
+      _userController.isBookmarked(updatedActivity.activityId);
 
   Future<void> toggleBookmarkedActivity() async {
     isBookmarked
@@ -294,7 +292,7 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
 
   Future<void> _addBookmarkedActivity() async {
     await _userController.addBookmarkedActivity(
-      activityId: updatedActivity.bookmarkId,
+      activityId: updatedActivity.activityId,
     );
     await ActivityPlanRepo.set(updatedActivity);
   }
@@ -309,17 +307,17 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
       updatedActivity,
     ).then((resp) {
       _userController.updateBookmarkedActivity(
-        activityId: widget.initialActivity.bookmarkId,
-        newActivityId: resp.bookmarkId,
+        activityId: widget.initialActivity.activityId,
+        newActivityId: resp.activityId,
       );
     });
   }
 
   Future<void> _removeBookmarkedActivity() async {
     await _userController.removeBookmarkedActivity(
-      activityId: updatedActivity.bookmarkId,
+      activityId: updatedActivity.activityId,
     );
-    await ActivityPlanRepo.remove(updatedActivity.bookmarkId);
+    await ActivityPlanRepo.remove(updatedActivity.activityId);
   }
 
   Future<List<String>> launchToSpace() async {
@@ -343,7 +341,7 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     final roomID = await Matrix.of(context).client.createRoom(
           creationContent: {
             'type':
-                "${PangeaRoomTypes.activitySession}:${updatedActivity.bookmarkId}",
+                "${PangeaRoomTypes.activitySession}:${updatedActivity.activityId}",
           },
           visibility: Visibility.private,
           name: "${updatedActivity.title} ${index + 1}",

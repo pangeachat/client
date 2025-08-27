@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class ActivityPlanModel {
-  final String bookmarkId;
+  final String activityId;
   final ActivityPlanRequest req;
   final String title;
   final String description;
@@ -25,7 +25,7 @@ class ActivityPlanModel {
     required this.learningObjective,
     required this.instructions,
     required this.vocab,
-    required this.bookmarkId,
+    required this.activityId,
     Map<String, ActivityRole>? roles,
     this.imageURL,
     this.endAt,
@@ -71,7 +71,7 @@ class ActivityPlanModel {
       endAt: endAt ?? this.endAt,
       duration: duration ?? this.duration,
       roles: roles ?? _roles,
-      bookmarkId: bookmarkId,
+      activityId: activityId,
     );
   }
 
@@ -114,13 +114,13 @@ class ActivityPlanModel {
             )
           : null,
       roles: roles,
-      bookmarkId: json[ModelKey.activityPlanBookmarkId] ?? json["bookmark_id"],
+      activityId: json[ModelKey.activityId] ?? json["bookmark_id"],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      ModelKey.activityPlanBookmarkId: bookmarkId,
+      ModelKey.activityId: activityId,
       ModelKey.activityPlanImageURL: imageURL,
       ModelKey.activityPlanInstructions: instructions,
       ModelKey.activityPlanRequest: req.toJson(),
