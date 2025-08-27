@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:flutter/foundation.dart';
 
 class ActivityPlanModel {
   final String bookmarkId;
