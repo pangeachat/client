@@ -12,7 +12,6 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 enum SessionState {
-  loading,
   notStarted,
   notSelectedRole,
   selectedRole,
@@ -32,17 +31,10 @@ class ActivitySessionStartPage extends StatefulWidget {
 }
 
 class ActivitySessionStartController extends State<ActivitySessionStartPage> {
-  bool _loading = true;
   bool _started = false;
 
   bool showInstructions = false;
   String? _selectedRoleId;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadParticipants();
-  }
 
   @override
   void didUpdateWidget(covariant ActivitySessionStartPage oldWidget) {
@@ -53,8 +45,6 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
         _selectedRoleId = null;
         showInstructions = false;
       });
-
-      _loadParticipants();
     }
   }
 
@@ -65,7 +55,6 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
       );
 
   SessionState get state {
-    if (_loading) return SessionState.loading;
     if (room.ownRole != null) return SessionState.confirmedRole;
     if (_selectedRoleId != null) return SessionState.selectedRole;
     if (room.isRoomAdmin && !_started) return SessionState.notStarted;
@@ -74,8 +63,6 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
 
   String get descriptionText {
     switch (state) {
-      case SessionState.loading:
-        return "";
       case SessionState.confirmedRole:
         return L10n.of(context).waitingToFillRole(room.remainingRoles);
       case SessionState.selectedRole:
@@ -138,7 +125,6 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
           ),
         );
         if (mounted) setState(() {});
-      case SessionState.loading:
       case SessionState.notSelectedRole:
       case SessionState.confirmedRole:
         break;
@@ -151,19 +137,6 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     }
 
     await room.courseParent!.sendTextEvent("");
-  }
-
-  Future<void> _loadParticipants() async {
-    setState(() => _loading = true);
-    await room.requestParticipants(
-      [Membership.join, Membership.invite, Membership.knock],
-      false,
-      true,
-    );
-
-    if (mounted) {
-      setState(() => _loading = false);
-    }
   }
 
   @override

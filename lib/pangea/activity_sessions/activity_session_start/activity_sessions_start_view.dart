@@ -93,133 +93,123 @@ class ActivitySessionStartView extends StatelessWidget {
                   right: 0,
                   child: AnimatedSize(
                     duration: FluffyThemes.animationDuration,
-                    child: controller.state == SessionState.loading
-                        ? const SizedBox()
-                        : Container(
-                            decoration: BoxDecoration(
-                              border: Border(
-                                top: BorderSide(color: theme.dividerColor),
-                              ),
-                              color: theme.colorScheme.surface,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(color: theme.dividerColor),
+                        ),
+                        color: theme.colorScheme.surface,
+                      ),
+                      padding: const EdgeInsets.all(24.0),
+                      child: Column(
+                        spacing: 16.0,
+                        children: [
+                          Text(
+                            controller.descriptionText,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
                             ),
-                            padding: const EdgeInsets.all(24.0),
-                            child: Column(
-                              spacing: 16.0,
-                              children: [
-                                Text(
-                                  controller.descriptionText,
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
+                            textAlign: TextAlign.center,
+                          ),
+                          if (controller.state ==
+                              SessionState.confirmedRole) ...[
+                            if (controller.room.courseParent != null)
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      theme.colorScheme.primaryContainer,
+                                  foregroundColor:
+                                      theme.colorScheme.onPrimaryContainer,
+                                  padding: const EdgeInsets.all(8.0),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
                                   ),
-                                  textAlign: TextAlign.center,
                                 ),
-                                if (controller.state ==
-                                    SessionState.confirmedRole) ...[
-                                  if (controller.room.courseParent != null)
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            theme.colorScheme.primaryContainer,
-                                        foregroundColor: theme
-                                            .colorScheme.onPrimaryContainer,
-                                        padding: const EdgeInsets.all(8.0),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                      ),
-                                      onPressed: () => showFutureLoadingDialog(
-                                        context: context,
-                                        future: controller.pingCourse,
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            L10n.of(context).pingParticipants,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  if (controller.room.isRoomAdmin) ...[
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            theme.colorScheme.primaryContainer,
-                                        foregroundColor: theme
-                                            .colorScheme.onPrimaryContainer,
-                                        padding: const EdgeInsets.all(8.0),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                      ),
-                                      onPressed: () => showFutureLoadingDialog(
-                                        context: context,
-                                        future: () => controller.room
-                                            .invite(BotName.byEnvironment),
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(L10n.of(context).playWithBot),
-                                        ],
-                                      ),
-                                    ),
-                                    ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor:
-                                            theme.colorScheme.primaryContainer,
-                                        foregroundColor: theme
-                                            .colorScheme.onPrimaryContainer,
-                                        padding: const EdgeInsets.all(8.0),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(20.0),
-                                        ),
-                                      ),
-                                      onPressed: () => context.go(
-                                        "/rooms/${controller.room.id}/invite",
-                                      ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(L10n.of(context).inviteFriends),
-                                        ],
-                                      ),
+                                onPressed: () => showFutureLoadingDialog(
+                                  context: context,
+                                  future: controller.pingCourse,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      L10n.of(context).pingParticipants,
                                     ),
                                   ],
-                                ] else
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                          theme.colorScheme.primaryContainer,
-                                      foregroundColor:
-                                          theme.colorScheme.onPrimaryContainer,
-                                      padding: const EdgeInsets.all(8.0),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                      ),
-                                    ),
-                                    onPressed: controller.enableButtons
-                                        ? controller.onTap
-                                        : null,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(controller.buttonText),
-                                      ],
-                                    ),
+                                ),
+                              ),
+                            if (controller.room.isRoomAdmin) ...[
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      theme.colorScheme.primaryContainer,
+                                  foregroundColor:
+                                      theme.colorScheme.onPrimaryContainer,
+                                  padding: const EdgeInsets.all(8.0),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
                                   ),
-                              ],
+                                ),
+                                onPressed: () => showFutureLoadingDialog(
+                                  context: context,
+                                  future: () => controller.room
+                                      .invite(BotName.byEnvironment),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(L10n.of(context).playWithBot),
+                                  ],
+                                ),
+                              ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      theme.colorScheme.primaryContainer,
+                                  foregroundColor:
+                                      theme.colorScheme.onPrimaryContainer,
+                                  padding: const EdgeInsets.all(8.0),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                ),
+                                onPressed: () => context.go(
+                                  "/rooms/${controller.room.id}/invite",
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(L10n.of(context).inviteFriends),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ] else
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    theme.colorScheme.primaryContainer,
+                                foregroundColor:
+                                    theme.colorScheme.onPrimaryContainer,
+                                padding: const EdgeInsets.all(8.0),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                              ),
+                              onPressed: controller.enableButtons
+                                  ? controller.onTap
+                                  : null,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(controller.buttonText),
+                                ],
+                              ),
                             ),
-                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ],
