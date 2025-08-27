@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_image_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_list.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card_row.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
@@ -16,11 +17,20 @@ class ActivitySummary extends StatelessWidget {
   final bool showInstructions;
   final VoidCallback toggleInstructions;
 
+  final Function(String)? onTapParticipant;
+  final bool Function(String)? canSelectParticipant;
+  final bool Function(String)? isParticipantSelected;
+  final double Function(ActivityRoleModel?)? getParticipantOpacity;
+
   const ActivitySummary({
     super.key,
     required this.room,
     required this.showInstructions,
     required this.toggleInstructions,
+    this.onTapParticipant,
+    this.canSelectParticipant,
+    this.isParticipantSelected,
+    this.getParticipantOpacity,
   });
 
   @override
@@ -50,7 +60,10 @@ class ActivitySummary extends StatelessWidget {
           ),
           ActivityParticipantList(
             room: room,
-            getOpacity: (role) => role == null || role.isFinished ? 0.5 : 1.0,
+            onTap: onTapParticipant,
+            canSelect: canSelectParticipant,
+            isSelected: isParticipantSelected,
+            getOpacity: getParticipantOpacity,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(

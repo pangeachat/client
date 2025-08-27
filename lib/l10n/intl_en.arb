@@ -5245,5 +5245,20 @@
   "whatNow": "What now?",
   "chooseNextActivity": "Choose your next activity!",
   "seeInstructions": "See Instructions",
-  "hideInstructions": "Hide Instructions"
+  "hideInstructions": "Hide Instructions",
+  "letsGo": "Let’s go!",
+  "chooseRole": "Choose a role!",
+  "chooseRoleToParticipate": "Choose a role to participate!",
+  "waitingToFillRole": "Waiting to fill {num} roles...",
+  "@waitingToFillRole": {
+    "type": "int",
+    "placeholders": {
+      "num": {
+        "type": "int"
+      }
+    }
+  },
+  "pingParticipants": "Ping course participants",
+  "playWithBot": "Play with Pangea Bot",
+  "inviteFriends": "Invite friends"
 }

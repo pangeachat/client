@@ -22,21 +22,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import '../activity_summary/activity_summary_repo.dart';
 
 extension ActivityRoomExtension on Room {
-  Future<void> sendActivityPlan(
-    ActivityPlanModel activity, {
-    Uint8List? avatar,
-    String? filename,
-  }) async {
-    if (canChangeStateEvent(PangeaEventTypes.activityPlan)) {
-      await client.setRoomStateWithKey(
-        id,
-        PangeaEventTypes.activityPlan,
-        "",
-        activity.toJson(),
-      );
-    }
-  }
-
   Future<void> joinActivity(ActivityRole role) async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final activityRole = ActivityRoleModel(

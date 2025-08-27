@@ -142,6 +142,8 @@ class Message extends StatelessWidget {
           room: event.room,
           showInstructions: controller.showInstructions,
           toggleInstructions: controller.toggleShowInstructions,
+          getParticipantOpacity: (role) =>
+              role == null || role.isFinished ? 0.5 : 1.0,
         );
       }
 

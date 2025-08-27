@@ -58,6 +58,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dialog.dart';
+import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
@@ -102,10 +103,6 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final room = Matrix.of(context).client.getRoomById(roomId);
     // #Pangea
-    if (room?.isActivitySession == true && !room!.activityHasStarted) {
-      return ActivitySessionStartPage(room: room);
-    }
-
     if (room?.isSpace == true &&
         GoRouterState.of(context).fullPath?.endsWith(":roomid") == true) {
       ErrorHandler.logError(
@@ -2232,43 +2229,59 @@ class ChatController extends State<ChatPageWithRoom>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Row(
-      children: [
-        Expanded(
-          child: ChatView(this),
-        ),
-        ValueListenableBuilder(
-          valueListenable: _displayChatDetailsColumn,
-          builder: (context, displayChatDetailsColumn, _) =>
-              !FluffyThemes.isThreeColumnMode(context) ||
-                      room.membership != Membership.join ||
-                      !displayChatDetailsColumn
-                  ? const SizedBox(
-                      height: double.infinity,
-                      width: 0,
-                    )
-                  : Container(
-                      width: FluffyThemes.columnWidth,
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          left: BorderSide(
-                            width: 1,
-                            color: theme.dividerColor,
+    // #Pangea
+    return LoadParticipantsBuilder(
+      room: room,
+      builder: (context, participants) {
+        if (!room.participantListComplete && participants.loading) {
+          return const Center(
+            child: CircularProgressIndicator.adaptive(),
+          );
+        }
+
+        if (room.isActivitySession == true && !room.activityHasStarted) {
+          return ActivitySessionStartPage(room: room);
+        }
+        // Pangea#
+        final theme = Theme.of(context);
+        return Row(
+          children: [
+            Expanded(
+              child: ChatView(this),
+            ),
+            ValueListenableBuilder(
+              valueListenable: _displayChatDetailsColumn,
+              builder: (context, displayChatDetailsColumn, _) =>
+                  !FluffyThemes.isThreeColumnMode(context) ||
+                          room.membership != Membership.join ||
+                          !displayChatDetailsColumn
+                      ? const SizedBox(
+                          height: double.infinity,
+                          width: 0,
+                        )
+                      : Container(
+                          width: FluffyThemes.columnWidth,
+                          clipBehavior: Clip.hardEdge,
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(
+                                width: 1,
+                                color: theme.dividerColor,
+                              ),
+                            ),
+                          ),
+                          child: ChatDetails(
+                            roomId: roomId,
+                            embeddedCloseButton: IconButton(
+                              icon: const Icon(Icons.close),
+                              onPressed: toggleDisplayChatDetailsColumn,
+                            ),
                           ),
                         ),
-                      ),
-                      child: ChatDetails(
-                        roomId: roomId,
-                        embeddedCloseButton: IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: toggleDisplayChatDetailsColumn,
-                        ),
-                      ),
-                    ),
-        ),
-      ],
+            ),
+          ],
+        );
+      },
     );
   }
 }
