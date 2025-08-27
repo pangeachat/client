@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/share_room_button.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 
@@ -46,13 +46,20 @@ class ActivitySessionStartView extends StatelessWidget {
         withScrolling: false,
         child: Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                spacing: 12.0,
-                children: [
-                  ActivityParticipantList(room: controller.room),
-                ],
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  spacing: 12.0,
+                  children: [
+                    ActivitySummary(
+                      room: controller.room,
+                      showInstructions: controller.showInstructions,
+                      toggleInstructions: controller.toggleInstructions,
+                    ),
+                    const SizedBox(height: 160.0),
+                  ],
+                ),
               ),
             ),
             Positioned(
@@ -62,6 +69,7 @@ class ActivitySessionStartView extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   border: Border(top: BorderSide(color: theme.dividerColor)),
+                  color: theme.colorScheme.surface,
                 ),
                 padding: const EdgeInsets.all(24.0),
                 child: Column(

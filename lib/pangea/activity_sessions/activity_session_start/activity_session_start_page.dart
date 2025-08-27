@@ -19,6 +19,14 @@ class ActivitySessionStartPage extends StatefulWidget {
 }
 
 class ActivitySessionStartController extends State<ActivitySessionStartPage> {
+  bool showInstructions = false;
+
+  void toggleInstructions() {
+    setState(() {
+      showInstructions = !showInstructions;
+    });
+  }
+
   Room get room => widget.room;
 
   String get displayname => widget.room.getLocalizedDisplayname(

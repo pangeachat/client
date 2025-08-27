@@ -11,9 +11,8 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/events/pangea_message_reactions.dart';
 import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_creation_state_event.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_roles_event_widget.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_state_event_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat/extensions/custom_room_display_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
@@ -131,15 +130,19 @@ class Message extends StatelessWidget {
       if (event.type == EventTypes.RoomCreate) {
         // #Pangea
         // return RoomCreationStateEvent(event: event);
-        return event.room.activityPlan != null
-            ? ActivityCreationStateEvent(event: event)
+        return event.room.isActivitySession
+            ? const SizedBox(height: 60.0)
             : RoomCreationStateEvent(event: event);
         // Pangea#
       }
 
       // #Pangea
       if (event.type == PangeaEventTypes.activityPlan) {
-        return ActivityStateEvent(event: event);
+        return ActivitySummary(
+          room: event.room,
+          showInstructions: controller.showInstructions,
+          toggleInstructions: controller.toggleShowInstructions,
+        );
       }
 
       if (event.type == PangeaEventTypes.activityRole) {

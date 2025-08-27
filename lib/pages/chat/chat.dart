@@ -2210,9 +2210,13 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   ActivityRoleModel? highlightedRole;
-
   void highlightRole(ActivityRoleModel role) {
     if (mounted) setState(() => highlightedRole = role);
+  }
+
+  bool showInstructions = false;
+  void toggleShowInstructions() {
+    if (mounted) setState(() => showInstructions = !showInstructions);
   }
   // Pangea#
 

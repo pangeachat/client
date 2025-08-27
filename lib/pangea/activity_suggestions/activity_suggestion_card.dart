@@ -51,6 +51,7 @@ class ActivitySuggestionCard extends StatelessWidget {
                     activity,
                     width: width,
                     borderRadius: const BorderRadius.all(Radius.zero),
+                    replacement: SizedBox(height: width),
                   ),
                   Expanded(
                     child: Padding(
