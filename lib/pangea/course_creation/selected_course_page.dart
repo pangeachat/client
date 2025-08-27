@@ -9,7 +9,7 @@ import 'package:matrix/matrix.dart' as sdk;
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_view.dart';
-import 'package:fluffychat/pangea/courses/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/spaces/utils/client_spaces_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';

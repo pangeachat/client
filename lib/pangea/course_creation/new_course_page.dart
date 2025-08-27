@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/pangea/course_creation/new_course_view.dart';
-import 'package:fluffychat/pangea/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/courses/course_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:flutter/material.dart';
 
 class NewCourse extends StatefulWidget {
   const NewCourse({super.key});
@@ -55,7 +54,7 @@ class NewCourseController extends State<NewCourse> {
   Future<void> _loadCourses() async {
     try {
       setState(() => loading = true);
-      courses = await CourseRepo.search(filter: _filter);
+      courses = await CoursePlansRepo.search(filter: _filter);
     } catch (e) {
       error = e;
     } finally {

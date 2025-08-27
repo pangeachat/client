@@ -13,8 +13,8 @@ import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/topic_participant_list.dart';
-import 'package:fluffychat/pangea/courses/course_plan_builder.dart';
-import 'package:fluffychat/pangea/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_builder.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
 
 class CourseSettings extends StatelessWidget {
   final Room room;
