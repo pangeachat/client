@@ -32,8 +32,12 @@ class CmsCoursePlanModule {
       id: json['id'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
-      coursePlanActivities: JoinField.fromJson(json),
-      coursePlanModuleLocations: JoinField.fromJson(json),
+      coursePlanActivities: JoinField.fromJson(
+        json['coursePlanActivities'],
+      ),
+      coursePlanModuleLocations: JoinField.fromJson(
+        json['coursePlanModuleLocations'],
+      ),
       coursePlans: List<String>.from(json['coursePlans']),
       createdBy: json['createdBy'] != null
           ? PolymorphicRelationship.fromJson(json['createdBy'])
