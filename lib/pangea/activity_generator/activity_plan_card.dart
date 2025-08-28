@@ -6,10 +6,10 @@ import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_image_widget.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_dialog.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -167,8 +167,8 @@ class ActivityPlanCard extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                ActivityPlanImage(
-                                  controller.updatedActivity,
+                                ImageByUrl(
+                                  imageUrl: controller.updatedActivity.imageURL,
                                   width: 24.0,
                                   borderRadius: BorderRadius.circular(4.0),
                                   replacement: const Icon(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/activity_planner/activity_plan_image_widget.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 
 class ActivitySuggestionCard extends StatelessWidget {
   final ActivityPlannerBuilderState controller;
@@ -47,8 +47,8 @@ class ActivitySuggestionCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ActivityPlanImage(
-                    activity,
+                  ImageByUrl(
+                    imageUrl: activity.imageURL,
                     width: width,
                     borderRadius: const BorderRadius.all(Radius.zero),
                     replacement: SizedBox(height: width),

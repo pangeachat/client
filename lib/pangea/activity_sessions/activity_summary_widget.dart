@@ -5,11 +5,11 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_image_widget.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_list.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card_row.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 
 class ActivitySummary extends StatelessWidget {
@@ -53,8 +53,8 @@ class ActivitySummary extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(4.0),
-              child: ActivityPlanImage(
-                activity,
+              child: ImageByUrl(
+                imageUrl: activity.imageURL,
                 width: 80.0,
                 borderRadius: BorderRadius.circular(20),
               ),

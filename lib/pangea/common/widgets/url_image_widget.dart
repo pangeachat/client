@@ -1,28 +1,30 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 
-class ActivityPlanImage extends StatelessWidget {
-  final ActivityPlanModel activity;
+class ImageByUrl extends StatelessWidget {
+  final String? imageUrl;
   final double width;
   final BorderRadius borderRadius;
   final Widget? replacement;
 
-  const ActivityPlanImage(
-    this.activity, {
+  const ImageByUrl({
     super.key,
+    required this.imageUrl,
     required this.width,
-    this.borderRadius = const BorderRadius.all(Radius.circular(20.0)),
     this.replacement,
+    this.borderRadius = const BorderRadius.all(Radius.circular(20.0)),
   });
 
   @override
   Widget build(BuildContext context) {
-    final url = activity.imageURL;
-    if (url == null) {
+    if (imageUrl == null) {
       return replacement ?? const SizedBox();
     }
 
@@ -31,17 +33,19 @@ class ActivityPlanImage extends StatelessWidget {
       height: width,
       child: ClipRRect(
         borderRadius: borderRadius,
-        child: url.startsWith("mxc")
+        child: imageUrl!.startsWith("mxc")
             ? MxcImage(
-                uri: Uri.parse(url),
+                uri: Uri.parse(imageUrl!),
                 width: width,
                 height: width,
-                cacheKey: activity.activityId,
+                cacheKey: imageUrl,
                 fit: BoxFit.cover,
               )
             : CachedNetworkImage(
-                imageUrl: url,
+                width: width,
+                height: width,
                 fit: BoxFit.cover,
+                imageUrl: imageUrl!,
                 placeholder: (
                   context,
                   url,
@@ -55,6 +59,11 @@ class ActivityPlanImage extends StatelessWidget {
                   error,
                 ) =>
                     replacement ?? const SizedBox(),
+                httpHeaders: {
+                  'Authorization':
+                      'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                },
+                imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
               ),
       ),
     );
