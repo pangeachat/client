@@ -9,7 +9,7 @@ import 'package:fluffychat/pages/chat/events/message.dart';
 import 'package:fluffychat/pages/chat/seen_by_row.dart';
 import 'package:fluffychat/pages/chat/typing_indicators.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_message.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_finished_status_message.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_finished_status_message.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/utils/account_config.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/filtered_timeline_extension.dart';
