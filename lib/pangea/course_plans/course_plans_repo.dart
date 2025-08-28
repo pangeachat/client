@@ -1,8 +1,8 @@
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/course_plans/cms_course_plan.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:get_storage/get_storage.dart';
@@ -56,10 +56,12 @@ class CoursePlansRepo {
     if (cached != null) {
       return cached;
     }
-    final result =
+
+    final cmsCoursePlan =
         await payload.findById("course-plans", id, CmsCoursePlan.fromJson);
 
-    final coursePlan = await CoursePlanModel.fromCmsCoursePlan(result, payload);
+    final coursePlan =
+        await CoursePlanModel.fromCmsCoursePlan(payload, cmsCoursePlan);
 
     await set(coursePlan);
 
@@ -124,9 +126,9 @@ class CoursePlansRepo {
     );
 
     final coursePlans = await Future.wait(
-      result.docs.map((resp) async {
+      result.docs.map((cmsCoursePlan) async {
         final coursePlan =
-            await CoursePlanModel.fromCmsCoursePlan(resp, payload);
+            await CoursePlanModel.fromCmsCoursePlan(payload, cmsCoursePlan);
         await set(coursePlan);
         return coursePlan;
       }),

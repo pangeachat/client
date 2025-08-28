@@ -1,13 +1,12 @@
-import 'package:fluffychat/pangea/payload_client/user_reference.dart';
+import 'package:fluffychat/pangea/payload_client/polymorphic_relationship.dart';
 
 /// Represents course plan activity media from the CMS API
 class CmsCoursePlanActivityMedia {
   final String id;
   final String? alt;
-  final List<dynamic>
-      coursePlanActivities; // Can contain strings or CoursePlanActivity objects
-  final UserReference? createdBy;
-  final UserReference? updatedBy;
+  final List<String> coursePlanActivities;
+  final PolymorphicRelationship? createdBy;
+  final PolymorphicRelationship? updatedBy;
   final String? prefix;
   final String updatedAt;
   final String createdAt;
@@ -45,12 +44,12 @@ class CmsCoursePlanActivityMedia {
     return CmsCoursePlanActivityMedia(
       id: json['id'] as String,
       alt: json['alt'] as String?,
-      coursePlanActivities: json['coursePlanActivities'] as List<dynamic>,
+      coursePlanActivities: json['coursePlanActivities'] as List<String>,
       createdBy: json['createdBy'] != null
-          ? UserReference.fromJson(json['createdBy'] as Map<String, dynamic>)
+          ? PolymorphicRelationship.fromJson(json['createdBy'])
           : null,
       updatedBy: json['updatedBy'] != null
-          ? UserReference.fromJson(json['updatedBy'] as Map<String, dynamic>)
+          ? PolymorphicRelationship.fromJson(json['updatedBy'])
           : null,
       prefix: json['prefix'] as String?,
       updatedAt: json['updatedAt'] as String,

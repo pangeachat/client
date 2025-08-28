@@ -1,6 +1,6 @@
-import 'package:fluffychat/pangea/course_plans/cms_course_plan_activity_media.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
-import 'package:fluffychat/pangea/payload_client/user_reference.dart';
+import 'package:fluffychat/pangea/payload_client/join_field.dart';
+import 'package:fluffychat/pangea/payload_client/polymorphic_relationship.dart';
 
 /// Represents a course plan activity role
 class CmsCoursePlanActivityRole {
@@ -71,11 +71,10 @@ class CmsCoursePlanActivity {
   final LanguageLevelTypeEnum cefrLevel;
   final List<CmsCoursePlanActivityRole> roles;
   final List<CmsCoursePlanVocab> vocabs;
-  final CmsCoursePlanActivityMedia coursePlanActivityMedia;
-  final List<dynamic>
-      coursePlanModules; // Can contain strings or CoursePlanModule objects
-  final UserReference? createdBy;
-  final UserReference? updatedBy;
+  final JoinField coursePlanActivityMedia;
+  final List<String> coursePlanModules;
+  final PolymorphicRelationship? createdBy;
+  final PolymorphicRelationship? updatedBy;
   final String updatedAt;
   final String createdAt;
 
@@ -111,23 +110,24 @@ class CmsCoursePlanActivity {
       roles: (json['roles'] as List<dynamic>)
           .map(
             (role) => CmsCoursePlanActivityRole.fromJson(
-                role as Map<String, dynamic>),
+              role as Map<String, dynamic>,
+            ),
           )
           .toList(),
       vocabs: (json['vocabs'] as List<dynamic>)
           .map(
-            (vocab) => CmsCoursePlanVocab.fromJson(vocab as Map<String, dynamic>),
+            (vocab) =>
+                CmsCoursePlanVocab.fromJson(vocab as Map<String, dynamic>),
           )
           .toList(),
-      coursePlanActivityMedia: CmsCoursePlanActivityMedia.fromJson(
-        json['coursePlanActivityMedia'] as Map<String, dynamic>,
-      ),
-      coursePlanModules: json['coursePlanModules'] as List<dynamic>,
+      coursePlanActivityMedia:
+          JoinField.fromJson(json['coursePlanActivityMedia']),
+      coursePlanModules: json['coursePlanModules'],
       createdBy: json['createdBy'] != null
-          ? UserReference.fromJson(json['createdBy'] as Map<String, dynamic>)
+          ? PolymorphicRelationship.fromJson(json['createdBy'])
           : null,
       updatedBy: json['updatedBy'] != null
-          ? UserReference.fromJson(json['updatedBy'] as Map<String, dynamic>)
+          ? PolymorphicRelationship.fromJson(json['updatedBy'])
           : null,
       updatedAt: json['updatedAt'] as String,
       createdAt: json['createdAt'] as String,

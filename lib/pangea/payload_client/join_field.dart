@@ -1,7 +1,5 @@
-import 'package:fluffychat/pangea/payload_client/string_or_t.dart';
-
-class JoinField<T> {
-  final List<StringOr<T>>? docs;
+class JoinField {
+  final List<String>? docs;
   final bool? hasNextPage;
   final int? totalDocs;
 
@@ -12,26 +10,21 @@ class JoinField<T> {
   });
 
   factory JoinField.fromJson(
-    Map<String, dynamic> json, {
-    required T Function(Object? json) decodeT,
-  }) {
+    Map<String, dynamic> json,
+  ) {
     final raw = json['docs'];
-    final list = (raw is List)
-        ? raw.map((e) => StringOr<T>.fromJson(e, decodeT)).toList()
-        : null;
+    final list = (raw is List) ? raw.map((e) => e as String).toList() : null;
 
-    return JoinField<T>(
+    return JoinField(
       docs: list,
       hasNextPage: json['hasNextPage'] as bool?,
       totalDocs: json['totalDocs'] as int?,
     );
   }
 
-  Map<String, dynamic> toJson({
-    required Object? Function(T value) encodeT,
-  }) {
+  Map<String, dynamic> toJson() {
     return {
-      'docs': docs?.map((e) => e.toJson(encodeT)).toList(),
+      'docs': docs,
       'hasNextPage': hasNextPage,
       'totalDocs': totalDocs,
     };

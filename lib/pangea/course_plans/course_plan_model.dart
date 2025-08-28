@@ -1,14 +1,14 @@
 import 'package:fluffychat/pangea/activity_generator/media_enum.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
-import 'package:fluffychat/pangea/course_plans/cms_course_plan.dart';
-import 'package:fluffychat/pangea/course_plans/cms_course_plan_activity.dart';
-import 'package:fluffychat/pangea/course_plans/cms_course_plan_module.dart';
-import 'package:fluffychat/pangea/course_plans/cms_course_plan_module_location.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
-import 'package:fluffychat/pangea/payload_client/extract_from_string_or_t.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_activity.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_activity_media.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_module.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_module_location.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 
 /// Represents a topic in the course planner response.
@@ -59,7 +59,7 @@ class Topic {
     };
   }
 
-  List<String> get activityIds => activities.map((e) => e.bookmarkId).toList();
+  List<String> get activityIds => activities.map((e) => e.activityId).toList();
 }
 
 /// Represents a course plan in the course planner response.
@@ -107,7 +107,7 @@ class CoursePlanModel {
   String? topicID(String activityID) {
     for (final topic in topics) {
       for (final activity in topic.activities) {
-        if (activity.bookmarkId == activityID) {
+        if (activity.activityId == activityID) {
           return topic.uuid;
         }
       }
@@ -146,153 +146,234 @@ class CoursePlanModel {
     };
   }
 
-  /// Deserialize from CmsCoursePlan
   static Future<CoursePlanModel> fromCmsCoursePlan(
+    PayloadClient payload,
     CmsCoursePlan cmsCoursePlan,
-    PayloadClient payload,
   ) async {
-    // Convert modules to topics
-    final topics = <Topic>[];
+    // fetch CmsCourseModules
+    List<String>? cmsCoursePlanActivityIds;
+    List<String>? cmsCoursePlanModuleLocationIds;
+    List<CmsCoursePlanModule>? cmsCoursePlanModules;
+
+    final cmsCourseModuleIds = cmsCoursePlan.coursePlanModules.docs;
     if (cmsCoursePlan.coursePlanModules.docs != null) {
-      final moduleExtractionFutures =
-          cmsCoursePlan.coursePlanModules.docs!.map((doc) {
-        return extractFromStringOrT(
-          doc,
-          "course-plan-modules",
-          payload,
-          CmsCoursePlanModule.fromJson,
-        );
-      });
-      final modules = await Future.wait(moduleExtractionFutures);
-
-      final topicCreationFutures =
-          modules.where((module) => module != null).map((module) async {
-        // Create futures for location and activities extraction in parallel
-        final locationFuture = _extractModuleLocation(module!, payload);
-        final activitiesFuture = _extractModuleActivities(module, payload);
-
-        // Wait for both location and activities to complete
-        final results = await Future.wait([locationFuture, activitiesFuture]);
-        final location = results[0] as String;
-        final activities = results[1] as List<ActivityPlanModel>;
-
-        return Topic(
-          title: module.title,
-          description: module.description,
-          location: location,
-          uuid: module.id,
-          activities: activities,
-          // Note: Topic imageUrl would need to be extracted from module if available
-        );
-      });
-
-      final extractedTopics = await Future.wait(topicCreationFutures);
-      topics.addAll(extractedTopics);
-    }
-
-    return CoursePlanModel(
-      targetLanguage: cmsCoursePlan.l2,
-      languageOfInstructions: cmsCoursePlan.l1,
-      cefrLevel:
-          LanguageLevelTypeEnumExtension.fromString(cmsCoursePlan.cefrLevel),
-      title: cmsCoursePlan.title,
-      description: cmsCoursePlan.description,
-      uuid: cmsCoursePlan.id,
-      topics: topics,
-      // TODO: @WilsonLe CoursePlan imageUrl would need to be extracted from cmsCoursePlan if available
-    );
-  }
-
-  /// Extract location name from module
-  static Future<String> _extractModuleLocation(
-    dynamic module,
-    PayloadClient payload,
-  ) async {
-    String location = "Any";
-    if (module.coursePlanModuleLocations.docs?.isNotEmpty == true) {
-      final locationWrapper = module.coursePlanModuleLocations.docs!.first;
-      final locationObj = await extractFromStringOrT(
-        locationWrapper,
-        "course-plan-module-locations",
-        payload,
-        CmsCoursePlanModuleLocation.fromJson,
+      final where = cmsCourseModuleIds != null
+          ? {
+              "id": {"in": cmsCourseModuleIds.join(",")},
+            }
+          : null;
+      final limit = cmsCoursePlan.coursePlanModules.docs?.length;
+      final cmsCourseModulesResult = await payload.find(
+        "course-plan-modules",
+        CmsCoursePlanModule.fromJson,
+        where: where,
+        limit: limit,
+        page: 1,
+        sort: "createdAt",
       );
-      if (locationObj != null) {
-        location = locationObj.name;
-      }
-    }
-    return location;
-  }
+      cmsCoursePlanModules = cmsCourseModulesResult.docs;
 
-  /// Extract activities from module
-  static Future<List<ActivityPlanModel>> _extractModuleActivities(
-    dynamic module,
-    PayloadClient payload,
-  ) async {
-    final activities = <ActivityPlanModel>[];
-    if (module.coursePlanActivities.docs != null) {
-      final activityExtractionFutures =
-          module.coursePlanActivities.docs!.map((activityWrapper) {
-        return extractFromStringOrT(
-          activityWrapper,
-          "course-plan-activities",
-          payload,
-          CmsCoursePlanActivity.fromJson,
-        );
-      });
-
-      final extractedActivities = await Future.wait(activityExtractionFutures);
-
-      for (final activity in extractedActivities) {
-        if (activity != null) {
-          // Create ActivityPlanRequest
-          final req = ActivityPlanRequest(
-            topic: module.title,
-            mode: "conversation", // Default mode
-            objective: activity.learningObjective,
-            media: MediaEnum.nan, // Default media
-            cefrLevel: activity.cefrLevel,
-            languageOfInstructions: activity.l1,
-            targetLanguage: activity.l2,
-            numberOfParticipants: activity.roles.length.clamp(1, 10),
-          );
-
-          // Convert vocab
-          final vocab = activity.vocabs
-              .map(
-                (v) => Vocab(
-                  lemma: v.lemma,
-                  pos: v.pos,
-                ),
-              )
-              .toList();
-
-          // Convert roles
-          final roles = <String, ActivityRole>{};
-          for (int i = 0; i < activity.roles.length; i++) {
-            final role = activity.roles[i];
-            roles['role_$i'] = ActivityRole(
-              id: role.id,
-              name: role.name,
-              avatarUrl: role.avatarUrl,
-            );
+      for (final module in cmsCoursePlanModules) {
+        if (module.coursePlanActivities.docs != null) {
+          for (final activity in module.coursePlanActivities.docs!) {
+            cmsCoursePlanActivityIds ??= [];
+            cmsCoursePlanActivityIds.add(activity);
           }
-
-          final activityModel = ActivityPlanModel(
-            req: req,
-            title: activity.title,
-            learningObjective: activity.learningObjective,
-            instructions: activity.instructions,
-            vocab: vocab,
-            bookmarkId: activity.id,
-            roles: roles,
-            imageURL: activity.coursePlanActivityMedia.url,
-          );
-
-          activities.add(activityModel);
+        }
+        if (module.coursePlanModuleLocations.docs != null) {
+          for (final location in module.coursePlanModuleLocations.docs!) {
+            cmsCoursePlanModuleLocationIds ??= [];
+            cmsCoursePlanModuleLocationIds.add(location);
+          }
         }
       }
     }
-    return activities;
+
+    // fetch CmsCoursePlanModuleLocations
+    List<CmsCoursePlanModuleLocation>? cmsCoursePlanModuleLocations;
+    if (cmsCoursePlanModuleLocationIds != null) {
+      final where = {
+        "id": {"in": cmsCoursePlanModuleLocationIds.join(",")},
+      };
+      final limit = cmsCoursePlanModuleLocationIds.length;
+      final cmsCoursePlanModuleLocationsResult = await payload.find(
+        "course-plan-module-locations",
+        CmsCoursePlanModuleLocation.fromJson,
+        where: where,
+        limit: limit,
+        page: 1,
+        sort: "createdAt",
+      );
+      cmsCoursePlanModuleLocations = cmsCoursePlanModuleLocationsResult.docs;
+    }
+
+    // fetch cmsCoursePlanActivities
+    List<String>? cmsCoursePlanActivityMediaIds;
+    List<CmsCoursePlanActivity>? cmsCoursePlanActivities;
+    if (cmsCoursePlanActivityIds != null) {
+      final where = {
+        "id": {"in": cmsCoursePlanActivityIds.join(",")},
+      };
+      final limit = cmsCoursePlanActivityIds.length;
+      final cmsCoursePlanActivitiesResult = await payload.find(
+        "course-plan-activities",
+        CmsCoursePlanActivity.fromJson,
+        where: where,
+        limit: limit,
+        page: 1,
+        sort: "createdAt",
+      );
+      cmsCoursePlanActivities = cmsCoursePlanActivitiesResult.docs;
+
+      for (final activity in cmsCoursePlanActivities) {
+        if (activity.coursePlanActivityMedia.docs != null) {
+          for (final mediaId in activity.coursePlanActivityMedia.docs!) {
+            cmsCoursePlanActivityMediaIds ??= [];
+            cmsCoursePlanActivityMediaIds.add(mediaId);
+          }
+        }
+      }
+    }
+
+    // fetch cmsCoursePlanActivityMedias
+    List<CmsCoursePlanActivityMedia>? cmsCoursePlanActivityMedias;
+    if (cmsCoursePlanActivityMediaIds != null) {
+      final where = {
+        "id": {"in": cmsCoursePlanActivityMediaIds.join(",")},
+      };
+      final limit = cmsCoursePlanActivityMediaIds.length;
+      final cmsCoursePlanActivityMediasResult = await payload.find(
+        "course-plan-activity-medias",
+        CmsCoursePlanActivityMedia.fromJson,
+        where: where,
+        limit: limit,
+        page: 1,
+        sort: "createdAt",
+      );
+      cmsCoursePlanActivityMedias = cmsCoursePlanActivityMediasResult.docs;
+    }
+
+    final coursePlan = CoursePlanModel.fromCmsDocs(
+      cmsCoursePlan,
+      cmsCoursePlanModules,
+      cmsCoursePlanModuleLocations,
+      cmsCoursePlanActivities,
+      cmsCoursePlanActivityMedias,
+    );
+
+    return coursePlan;
+  }
+
+  factory CoursePlanModel.fromCmsDocs(
+    CmsCoursePlan cmsCoursePlan,
+    List<CmsCoursePlanModule>? cmsCoursePlanModules,
+    List<CmsCoursePlanModuleLocation>? cmsCoursePlanModuleLocations,
+    List<CmsCoursePlanActivity>? cmsCoursePlanActivities,
+    List<CmsCoursePlanActivityMedia>? cmsCoursePlanActivityMedias,
+  ) {
+    List<Topic>? topics;
+    if (cmsCoursePlanModules != null) {
+      for (final module in cmsCoursePlanModules) {
+        // select locations of current module
+        List<CmsCoursePlanModuleLocation>? moduleLocations;
+        if (cmsCoursePlanModuleLocations != null) {
+          for (final location in cmsCoursePlanModuleLocations) {
+            if (location.coursePlanModules.contains(module.id)) {
+              moduleLocations ??= [];
+              moduleLocations.add(location);
+            }
+          }
+        }
+
+        // select activities of current module
+        List<CmsCoursePlanActivity>? moduleActivities;
+        if (cmsCoursePlanActivities != null) {
+          for (final activity in cmsCoursePlanActivities) {
+            if (activity.coursePlanModules.contains(module.id)) {
+              moduleActivities ??= [];
+              moduleActivities.add(activity);
+            }
+          }
+        }
+
+        List<ActivityPlanModel>? activityPlans;
+        if (moduleActivities != null) {
+          for (final activity in moduleActivities) {
+            // select media of current activity
+            List<CmsCoursePlanActivityMedia>? activityMedias;
+            if (cmsCoursePlanActivityMedias != null) {
+              for (final media in cmsCoursePlanActivityMedias) {
+                if (media.coursePlanActivities.contains(activity.id)) {
+                  activityMedias ??= [];
+                  activityMedias.add(media);
+                }
+              }
+            }
+
+            activityPlans ??= [];
+            activityPlans.add(
+              ActivityPlanModel(
+                req: ActivityPlanRequest(
+                  topic: "",
+                  mode: "",
+                  objective: "",
+                  media: MediaEnum.nan,
+                  cefrLevel: activity.cefrLevel,
+                  languageOfInstructions: activity.l1,
+                  targetLanguage: activity.l2,
+                  numberOfParticipants: activity.roles.length,
+                ),
+                activityId: activity.id,
+                title: activity.title,
+                learningObjective: activity.learningObjective,
+                instructions: activity.instructions,
+                vocab: activity.vocabs
+                    .map((v) => Vocab(lemma: v.lemma, pos: v.pos))
+                    .toList(),
+                roles: activity.roles.asMap().map(
+                      (index, v) => MapEntry(
+                        index.toString(),
+                        ActivityRole(
+                          id: v.id,
+                          name: v.name,
+                          avatarUrl: v.avatarUrl,
+                          goal:
+                              "Participate", // TODO: @WilsonLe implement goal for CMS
+                        ),
+                      ),
+                    ),
+                imageURL: activityMedias != null && activityMedias.isNotEmpty
+                    ? activityMedias.first.url
+                    : null,
+              ),
+            );
+          }
+        }
+
+        topics ??= [];
+        topics.add(
+          Topic(
+            uuid: module.id,
+            title: module.title,
+            description: module.description,
+            location: moduleLocations != null && moduleLocations.isNotEmpty
+                ? moduleLocations.first.name
+                : "Any",
+            activities: activityPlans,
+          ),
+        );
+      }
+    }
+    return CoursePlanModel(
+      uuid: cmsCoursePlan.id,
+      title: cmsCoursePlan.title,
+      description: cmsCoursePlan.description,
+      cefrLevel:
+          LanguageLevelTypeEnumExtension.fromString(cmsCoursePlan.cefrLevel),
+      languageOfInstructions: cmsCoursePlan.l1,
+      targetLanguage: cmsCoursePlan.l2,
+      topics: topics,
+      imageUrl: null, // TODO: @WilsonLe implement image from CMS
+    );
   }
 }

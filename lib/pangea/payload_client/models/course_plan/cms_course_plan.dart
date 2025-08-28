@@ -1,6 +1,5 @@
-import 'package:fluffychat/pangea/course_plans/cms_course_plan_module.dart';
 import 'package:fluffychat/pangea/payload_client/join_field.dart';
-import 'package:fluffychat/pangea/payload_client/user_reference.dart';
+import 'package:fluffychat/pangea/payload_client/polymorphic_relationship.dart';
 
 /// Represents a course plan from the CMS API
 class CmsCoursePlan {
@@ -10,9 +9,9 @@ class CmsCoursePlan {
   final String cefrLevel;
   final String l1; // Language of instruction
   final String l2; // Target language
-  final JoinField<CmsCoursePlanModule> coursePlanModules;
-  final UserReference? createdBy;
-  final UserReference? updatedBy;
+  final JoinField coursePlanModules;
+  final PolymorphicRelationship? createdBy;
+  final PolymorphicRelationship? updatedBy;
   final String updatedAt;
   final String createdAt;
 
@@ -39,16 +38,14 @@ class CmsCoursePlan {
       l1: json['l1'] as String,
       l2: json['l2'] as String,
       coursePlanModules: JoinField.fromJson(
-        json,
-        decodeT: (obj) =>
-            CmsCoursePlanModule.fromJson(obj as Map<String, dynamic>),
+        json['coursePlanModules'] as Map<String, dynamic>,
       ),
-      createdBy: json['createdBy'] != null
-          ? UserReference.fromJson(json['createdBy'] as Map<String, dynamic>)
-          : null,
-      updatedBy: json['updatedBy'] != null
-          ? UserReference.fromJson(json['updatedBy'] as Map<String, dynamic>)
-          : null,
+      createdBy: PolymorphicRelationship.fromJson(
+        json['createdBy'] as Map<String, dynamic>,
+      ),
+      updatedBy: PolymorphicRelationship.fromJson(
+        json['updatedBy'] as Map<String, dynamic>,
+      ),
       updatedAt: json['updatedAt'] as String,
       createdAt: json['createdAt'] as String,
     );
