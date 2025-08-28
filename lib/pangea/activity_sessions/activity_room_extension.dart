@@ -4,7 +4,6 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_stats_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
@@ -40,14 +39,10 @@ extension ActivityRoomExtension on Room {
   Future<void> joinActivity(ActivityRole role) async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
 
-    // Store current stats as starting stats
-    final startingStats = ActivityStats.current();
-
     final activityRole = ActivityRoleModel(
       id: role.id,
       userId: client.userID!,
       role: role.name,
-      startingStats: startingStats,
     );
     currentRoles.updateRole(activityRole);
     await client.setRoomStateWithKey(
@@ -78,21 +73,8 @@ extension ActivityRoomExtension on Room {
     final role = ownRole;
     if (role == null || role.isFinished) return;
 
-    // Store current stats as finishing stats
-    final finishingStats = ActivityStats.current();
-
-    // Create updated role with finishing stats
-    final updatedRole = ActivityRoleModel(
-      id: role.id,
-      userId: role.userId,
-      role: role.role,
-      finishedAt: DateTime.now(),
-      archivedAt: role.archivedAt,
-      startingStats: role.startingStats,
-      finishingStats: finishingStats,
-    );
-
-    currentRoles.updateRole(updatedRole);
+    role.finishedAt = DateTime.now();
+    currentRoles.updateRole(role);
 
     await client.setRoomStateWithKey(
       id,
@@ -355,22 +337,29 @@ extension ActivityRoomExtension on Room {
           true ||
       activityPlan != null;
 
-  // Current stats increase (for real-time display)
-  ActivityStats get currentStatsIncrease {
-    final starting = ownRole?.startingStats;
-    final finishing = ownRole?.finishingStats;
+  // Live analytics that update as messages are sent
+  ActivitySummaryAnalyticsModel get liveActivityAnalytics {
+    final analytics = ActivitySummaryAnalyticsModel();
+    final timeline = this.timeline;
 
-    // If activity is finished, return the frozen increase
-    if (finishing != null && starting != null) {
-      return finishing - starting;
+    if (timeline == null) return analytics;
+
+    // Process all events in the timeline to build real-time analytics
+    for (final event in timeline.events) {
+      if (event.type != EventTypes.Message ||
+          event.messageType != MessageTypes.Text) {
+        continue;
+      }
+
+      final pangeaMessage = PangeaMessageEvent(
+        event: event,
+        timeline: timeline,
+        ownMessage: client.userID == event.senderId,
+      );
+
+      analytics.addConstructs(pangeaMessage);
     }
 
-    // If activity is ongoing, calculate real-time increase
-    if (starting != null) {
-      return ActivityStats.current() - starting;
-    }
-
-    // No activity or no starting stats
-    return const ActivityStats(vocab: 0, grammar: 0, xp: 0);
+    return analytics;
   }
 }

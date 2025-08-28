@@ -1,5 +1,4 @@
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_stats_model.dart';
 
 class ActivityRoleModel {
   final String id;
@@ -7,8 +6,6 @@ class ActivityRoleModel {
   final String? role;
   DateTime? finishedAt;
   DateTime? archivedAt;
-  final ActivityStats? startingStats;
-  final ActivityStats? finishingStats;
 
   ActivityRoleModel({
     required this.id,
@@ -16,8 +13,6 @@ class ActivityRoleModel {
     this.role,
     this.finishedAt,
     this.archivedAt,
-    this.startingStats,
-    this.finishingStats,
   });
 
   bool get isFinished => finishedAt != null;
@@ -50,12 +45,6 @@ class ActivityRoleModel {
       archivedAt: json['archived_at'] != null
           ? DateTime.parse(json['archived_at'])
           : null,
-      startingStats: json['starting_stats'] != null
-          ? ActivityStats.fromJson(json['starting_stats'])
-          : null,
-      finishingStats: json['finishing_stats'] != null
-          ? ActivityStats.fromJson(json['finishing_stats'])
-          : null,
     );
   }
 
@@ -66,8 +55,6 @@ class ActivityRoleModel {
       'role': role,
       'finished_at': finishedAt?.toIso8601String(),
       'archived_at': archivedAt?.toIso8601String(),
-      'starting_stats': startingStats?.toJson(),
-      'finishing_stats': finishingStats?.toJson(),
     };
   }
 
@@ -80,9 +67,7 @@ class ActivityRoleModel {
         other.role == role &&
         other.finishedAt == finishedAt &&
         other.archivedAt == archivedAt &&
-        other.id == id &&
-        other.startingStats == startingStats &&
-        other.finishingStats == finishingStats;
+        other.id == id;
   }
 
   @override
@@ -91,7 +76,5 @@ class ActivityRoleModel {
       role.hashCode ^
       (finishedAt?.hashCode ?? 0) ^
       (archivedAt?.hashCode ?? 0) ^
-      id.hashCode ^
-      (startingStats?.hashCode ?? 0) ^
-      (finishingStats?.hashCode ?? 0);
+      id.hashCode;
 }

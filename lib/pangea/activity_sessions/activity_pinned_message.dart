@@ -1,11 +1,15 @@
+import 'dart:async';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
@@ -96,6 +100,13 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(
+      "ActivityPinnedMessage: showActivityChatUI = ${room.showActivityChatUI}",
+    );
+    debugPrint(
+      "ActivityPinnedMessage: activityPlan = ${room.activityPlan != null ? 'exists' : 'null'}",
+    );
+
     if (!room.showActivityChatUI) {
       return const SizedBox.shrink();
     }
@@ -153,28 +164,46 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                     spacing: 12.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        //L10n.of(context).endActivityDesc,
-                        "🎯 ${room.activityPlan!.learningObjective}",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: isColumnMode ? 16.0 : 12.0,
-                        ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Symbols.radar,
+                            size: 20,
+                            color: theme.colorScheme.onSurface,
+                          ),
+                          const SizedBox(width: 12.0),
+                          Expanded(
+                            child: Text(
+                              room.activityPlan!.learningObjective,
+                              textAlign: TextAlign.left,
+                              style: theme.textTheme.bodyMedium,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "📖 ${room.activityPlan!.vocabString}",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: isColumnMode ? 16.0 : 12.0,
-                        ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Symbols.dictionary,
+                            size: 20,
+                            color: theme.colorScheme.onSurface,
+                          ),
+                          const SizedBox(width: 12.0),
+                          Expanded(
+                            child: Text(
+                              room.activityPlan!.vocabString,
+                              textAlign: TextAlign.left,
+                              style: theme.textTheme.bodyMedium,
+                            ),
+                          ),
+                        ],
                       ),
                       Text(
                         message,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: isColumnMode ? 14.0 : 11.0,
-                          color: theme.colorScheme.onSurfaceVariant,
-                        ),
+                        style: theme.textTheme.titleMedium,
                       ),
                       userComplete
                           ? const SizedBox.shrink()
@@ -190,9 +219,15 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                                           horizontal: 12.0,
                                           vertical: 8.0,
                                         ),
+                                        side: BorderSide(
+                                          color: theme
+                                              .colorScheme.secondaryContainer,
+                                          width: 2,
+                                        ),
                                         foregroundColor:
                                             theme.colorScheme.primary,
-                                        backgroundColor: Colors.transparent,
+                                        backgroundColor:
+                                            theme.colorScheme.surface,
                                       ),
                                       onPressed: () =>
                                           _finishActivity(forAll: true),
@@ -247,7 +282,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
   }
 }
 
-class ActivityStatsRow extends StatelessWidget {
+class ActivityStatsRow extends StatefulWidget {
   final Room room;
   final VoidCallback onToggleDropdown;
 
@@ -258,17 +293,58 @@ class ActivityStatsRow extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final stats = room.currentStatsIncrease;
+  State<ActivityStatsRow> createState() => _ActivityStatsRowState();
+}
 
+class _ActivityStatsRowState extends State<ActivityStatsRow> {
+  late StreamSubscription _timelineSubscription;
+
+  @override
+  void initState() {
+    super.initState();
+    // Listen for new messages to refresh stats in real-time
+    _timelineSubscription = widget.room.onUpdate.stream.listen((_) {
+      if (mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _timelineSubscription.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Use live analytics instead of summary analytics
+    final analytics = widget.room.liveActivityAnalytics;
+
+
+    final userId = Matrix.of(context).client.userID ?? '';
+    final vocabCount = analytics.uniqueConstructCountForUser(
+      userId,
+      ConstructTypeEnum.vocab,
+    );
+    final grammarCount = analytics.uniqueConstructCountForUser(
+      userId,
+      ConstructTypeEnum.morph,
+    );
+    final xpCount = analytics.totalXPForUser(userId);
+
+    debugPrint(
+      "userID: $userId, vocabCount: $vocabCount, grammarCount: $grammarCount, xpCount: $xpCount",
+    );
+
+    // Always show the row, even with zero data
     return Container(
       width: 350,
       height: 55,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: onToggleDropdown,
+        onTap: widget.onToggleDropdown,
         child: Container(
           decoration: BoxDecoration(
             color: AppConfig.goldLight.withAlpha(100),
@@ -281,19 +357,19 @@ class ActivityStatsRow extends StatelessWidget {
               _buildStatItem(
                 context: context,
                 icon: Icons.radar,
-                value: "${stats.xp}",
+                value: "$xpCount XP",
                 label: "XP",
               ),
               _buildStatItem(
                 context: context,
                 icon: Symbols.dictionary,
-                value: "${stats.vocab}",
+                value: "$vocabCount",
                 label: "Vocab",
               ),
               _buildStatItem(
                 context: context,
                 icon: Symbols.toys_and_games,
-                value: "${stats.grammar}",
+                value: "$grammarCount",
                 label: "Grammar",
               ),
             ],

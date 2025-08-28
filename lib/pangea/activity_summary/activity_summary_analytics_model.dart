@@ -1,9 +1,11 @@
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
+import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 
 class ActivitySummaryAnalyticsModel {
   final Map<String, UserConstructAnalytics> constructs = {};
+  final Map<String, List<OneConstructUse>> userXPTracker = {};
 
   ActivitySummaryAnalyticsModel();
 
@@ -32,12 +34,28 @@ class ActivitySummaryAnalyticsModel {
     return userAnalytics.constructsOfType(type).length;
   }
 
+  /// Calculate total XP for a specific user based on their actual construct use XP values
+  int totalXPForUser(String userId) {
+    final userXPList = userXPTracker[userId];
+    if (userXPList == null || userXPList.isEmpty) return 0;
+
+    int totalXP = 0;
+    for (final use in userXPList) {
+      totalXP += use.xp;
+    }
+    return totalXP;
+  }
+
   void addConstructs(PangeaMessageEvent event) {
     final uses = event.originalSent?.vocabAndMorphUses();
     if (uses == null || uses.isEmpty) return;
 
     final user =
         constructs[event.senderId] ??= UserConstructAnalytics(event.senderId);
+
+    // Track XP for this user
+    userXPTracker[event.senderId] ??= [];
+    userXPTracker[event.senderId]!.addAll(uses);
 
     for (final use in uses) {
       user.addUsage(use.identifier);

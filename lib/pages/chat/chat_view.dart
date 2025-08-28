@@ -498,7 +498,9 @@ class ChatView extends StatelessWidget {
                           ),
                         ActivityPinnedMessage(
                           controller,
-                          onShowDropdown: () {},
+                          onShowDropdown: () {
+                            controller.activityPinnedShowDropdown?.call();
+                          },
                         ),
                         // Pangea#
                       ],
