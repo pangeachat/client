@@ -18,6 +18,28 @@ class CourseFilter {
     this.languageOfInstructions,
     this.cefrLevel,
   });
+
+  Map<String, dynamic> toJson() => {
+        'targetLanguage': targetLanguage?.toJson(),
+        'languageOfInstructions': languageOfInstructions?.toJson(),
+        'cefrLevel': cefrLevel?.string,
+      };
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is CourseFilter &&
+        other.targetLanguage == targetLanguage &&
+        other.languageOfInstructions == languageOfInstructions &&
+        other.cefrLevel == cefrLevel;
+  }
+
+  @override
+  int get hashCode =>
+      targetLanguage.hashCode ^
+      languageOfInstructions.hashCode ^
+      cefrLevel.hashCode;
 }
 
 class CoursePlansRepo {
@@ -40,16 +62,43 @@ class CoursePlansRepo {
     return null;
   }
 
-  static List<CoursePlanModel> _getAllCached() {
-    final keys = _courseStorage.getKeys();
-    return keys
-        .map((key) => _getCached(key))
-        .whereType<CoursePlanModel>()
-        .toList();
+  static Future<void> _setCached(CoursePlanModel coursePlan) async {
+    await _courseStorage.write(coursePlan.uuid, coursePlan.toJson());
   }
 
-  static Future<void> set(CoursePlanModel coursePlan) async {
-    await _courseStorage.write(coursePlan.uuid, coursePlan.toJson());
+  static String _searchKey(CourseFilter filter) {
+    return "search_${filter.hashCode.toString()}";
+  }
+
+  static List<CoursePlanModel>? _getCachedSearchResults(
+    CourseFilter filter,
+  ) {
+    final jsonList = _courseStorage.read(_searchKey(filter));
+    if (jsonList != null) {
+      try {
+        final ids = List<String>.from(jsonList);
+        final coursePlans = ids
+            .map((id) => _getCached(id))
+            .whereType<CoursePlanModel>()
+            .toList();
+
+        return coursePlans;
+      } catch (e) {
+        _courseStorage.remove(_searchKey(filter));
+      }
+    }
+    return null;
+  }
+
+  static Future<void> _setCachedSearchResults(
+    CourseFilter filter,
+    List<CoursePlanModel> coursePlans,
+  ) async {
+    final jsonList = coursePlans.map((e) => e.uuid).toList();
+    for (final plan in coursePlans) {
+      _setCached(plan);
+    }
+    await _courseStorage.write(_searchKey(filter), jsonList);
   }
 
   static Future<CoursePlanModel?> get(String id) async {
@@ -64,16 +113,17 @@ class CoursePlansRepo {
     final coursePlan =
         await CoursePlanModel.fromCmsCoursePlan(payload, cmsCoursePlan);
 
-    await set(coursePlan);
+    await _setCached(coursePlan);
 
     return coursePlan;
   }
 
   static Future<List<CoursePlanModel>> search({CourseFilter? filter}) async {
-    final cached = _getAllCached();
-    if (cached.isNotEmpty) {
-      return cached.filtered(filter);
+    final cached = _getCachedSearchResults(filter ?? CourseFilter());
+    if (cached != null && cached.isNotEmpty) {
+      return cached;
     }
+
     final Map<String, dynamic> where = {};
     if (filter != null) {
       int numberOfFilter = 0;
@@ -90,7 +140,7 @@ class CoursePlansRepo {
         where["and"] = [];
         if (filter.cefrLevel != null) {
           where["and"].add({
-            "cefrLevel": {"equals": filter.cefrLevel},
+            "cefrLevel": {"equals": filter.cefrLevel!.string},
           });
         }
         if (filter.languageOfInstructions != null) {
@@ -105,7 +155,7 @@ class CoursePlansRepo {
         }
       } else if (numberOfFilter == 1) {
         if (filter.cefrLevel != null) {
-          where["cefrLevel"] = {"equals": filter.cefrLevel};
+          where["cefrLevel"] = {"equals": filter.cefrLevel!.string};
         }
         if (filter.languageOfInstructions != null) {
           where["languageOfInstructions"] = {
@@ -127,40 +177,19 @@ class CoursePlansRepo {
     );
 
     final coursePlans = await Future.wait(
-      result.docs.map((cmsCoursePlan) async {
-        final coursePlan =
-            await CoursePlanModel.fromCmsCoursePlan(payload, cmsCoursePlan);
-        await set(coursePlan);
-        return coursePlan;
-      }),
+      result.docs.map(
+        (cmsCoursePlan) => CoursePlanModel.fromCmsCoursePlan(
+          payload,
+          cmsCoursePlan,
+        ),
+      ),
     );
 
-    for (final plan in coursePlans) {
-      set(plan);
-    }
+    await _setCachedSearchResults(
+      filter ?? CourseFilter(),
+      coursePlans,
+    );
 
     return coursePlans;
-  }
-}
-
-extension on List<CoursePlanModel> {
-  List<CoursePlanModel> filtered(CourseFilter? filter) {
-    return where((course) {
-      final matchesTargetLanguage = filter?.targetLanguage == null ||
-          course.targetLanguage.split("-").first ==
-              filter?.targetLanguage?.langCodeShort;
-
-      final matchesLanguageOfInstructions =
-          filter?.languageOfInstructions == null ||
-              course.languageOfInstructions.split("-").first ==
-                  filter?.languageOfInstructions?.langCodeShort;
-
-      final matchesCefrLevel =
-          filter?.cefrLevel == null || course.cefrLevel == filter?.cefrLevel;
-
-      return matchesTargetLanguage &&
-          matchesLanguageOfInstructions &&
-          matchesCefrLevel;
-    }).toList();
   }
 }
