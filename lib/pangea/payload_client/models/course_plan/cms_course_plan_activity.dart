@@ -6,11 +6,13 @@ import 'package:fluffychat/pangea/payload_client/polymorphic_relationship.dart';
 class CmsCoursePlanActivityRole {
   final String id;
   final String name;
+  final String goal;
   final String? avatarUrl;
 
   CmsCoursePlanActivityRole({
     required this.id,
     required this.name,
+    required this.goal,
     this.avatarUrl,
   });
 
@@ -18,6 +20,7 @@ class CmsCoursePlanActivityRole {
     return CmsCoursePlanActivityRole(
       id: json['id'] as String,
       name: json['name'] as String,
+      goal: json['goal'] as String,
       avatarUrl: json['avatarUrl'] as String?,
     );
   }
@@ -26,6 +29,7 @@ class CmsCoursePlanActivityRole {
     return {
       'id': id,
       'name': name,
+      'goal': goal,
       'avatarUrl': avatarUrl,
     };
   }
@@ -64,6 +68,7 @@ class CmsCoursePlanVocab {
 class CmsCoursePlanActivity {
   final String id;
   final String title;
+  final String description;
   final String learningObjective;
   final String instructions;
   final String l1; // Language of instruction
@@ -81,6 +86,7 @@ class CmsCoursePlanActivity {
   CmsCoursePlanActivity({
     required this.id,
     required this.title,
+    required this.description,
     required this.learningObjective,
     required this.instructions,
     required this.l1,
@@ -100,6 +106,7 @@ class CmsCoursePlanActivity {
     return CmsCoursePlanActivity(
       id: json['id'] as String,
       title: json['title'] as String,
+      description: json['description'] as String,
       learningObjective: json['learningObjective'] as String,
       instructions: json['instructions'] as String,
       l1: json['l1'] as String,
@@ -138,6 +145,7 @@ class CmsCoursePlanActivity {
     return {
       'id': id,
       'title': title,
+      'description': description,
       'learningObjective': learningObjective,
       'instructions': instructions,
       'l1': l1,

@@ -357,6 +357,7 @@ class CoursePlanModel {
                 ),
                 activityId: activity.id,
                 title: activity.title,
+                description: activity.description,
                 learningObjective: activity.learningObjective,
                 instructions: activity.instructions,
                 vocab: activity.vocabs
@@ -369,8 +370,7 @@ class CoursePlanModel {
                           id: v.id,
                           name: v.name,
                           avatarUrl: v.avatarUrl,
-                          goal:
-                              "Participate", // TODO: @WilsonLe implement goal for CMS
+                          goal: v.goal,
                         ),
                       ),
                     ),
