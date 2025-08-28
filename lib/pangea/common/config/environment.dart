@@ -65,7 +65,7 @@ class Environment {
   }
 
   static String get cmsApi {
-    final envEntry = appConfigOverride?.cmsApi ?? dotenv.env['CMS_API'];
+    final envEntry = appConfigOverride?.choreoApi ?? dotenv.env['CHOREO_API'];
     if (envEntry == null) {
       return "Not found";
     }
@@ -187,7 +187,6 @@ class AppConfigOverride {
   final String? frontendURL;
   final String? synapseURL;
   final String? homeServer;
-  final String? cmsApi;
   final String? choreoApi;
   final String? choreoApiKey;
   final String? sentryDsn;
@@ -202,7 +201,6 @@ class AppConfigOverride {
     this.frontendURL,
     this.synapseURL,
     this.homeServer,
-    this.cmsApi,
     this.choreoApi,
     this.choreoApiKey,
     this.sentryDsn,
@@ -219,7 +217,6 @@ class AppConfigOverride {
       frontendURL: json['frontendURL'] as String?,
       synapseURL: json['synapseURL'] as String?,
       homeServer: json['homeServer'] as String?,
-      cmsApi: json['cmsApi'] as String?,
       choreoApi: json['choreoApi'] as String?,
       choreoApiKey: json['choreoApiKey'] as String?,
       sentryDsn: json['sentryDsn'] as String?,
@@ -237,7 +234,6 @@ class AppConfigOverride {
       'frontendURL': frontendURL,
       'synapseURL': synapseURL,
       'homeServer': homeServer,
-      'cmsApi': cmsApi,
       'choreoApi': choreoApi,
       'choreoApiKey': choreoApiKey,
       'sentryDsn': sentryDsn,
@@ -255,7 +251,6 @@ class AppConfigOverride {
         frontendURL.hashCode ^
         synapseURL.hashCode ^
         homeServer.hashCode ^
-        cmsApi.hashCode ^
         choreoApi.hashCode ^
         choreoApiKey.hashCode ^
         sentryDsn.hashCode ^
@@ -274,7 +269,6 @@ class AppConfigOverride {
         frontendURL == other.frontendURL &&
         synapseURL == other.synapseURL &&
         homeServer == other.homeServer &&
-        cmsApi == other.cmsApi &&
         choreoApi == other.choreoApi &&
         choreoApiKey == other.choreoApiKey &&
         sentryDsn == other.sentryDsn &&
