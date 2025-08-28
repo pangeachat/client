@@ -1,9 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// ignore_for_file: depend_on_referenced_packages
+
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
+import 'package:fluffychat/pangea/course_plans/course_image_widget.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
-import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class CoursePlanTile extends StatelessWidget {
   final CoursePlanModel course;
@@ -39,40 +41,16 @@ class CoursePlanTile extends StatelessWidget {
               child: Row(
                 spacing: 4.0,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: course.imageUrl != null
-                        ? CachedNetworkImage(
-                            width: 40.0,
-                            height: 40.0,
-                            fit: BoxFit.cover,
-                            imageUrl: course.imageUrl!,
-                            httpHeaders: {
-                              'Authorization':
-                                  'Bearer ${MatrixState.pangeaController.userController.accessToken}',
-                            },
-                            placeholder: (context, url) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            },
-                            errorWidget: (context, url, error) {
-                              return Container(
-                                width: 40.0,
-                                height: 40.0,
-                                decoration: BoxDecoration(
-                                  color: theme.colorScheme.secondary,
-                                ),
-                              );
-                            },
-                          )
-                        : Container(
-                            width: 40.0,
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.secondary,
-                            ),
-                          ),
+                  CourseImage(
+                    imageUrl: course.imageUrl,
+                    width: 40.0,
+                    replacement: Container(
+                      width: 40.0,
+                      height: 40.0,
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.secondary,
+                      ),
+                    ),
                   ),
                   Flexible(
                     child: Column(

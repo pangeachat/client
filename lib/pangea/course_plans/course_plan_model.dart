@@ -152,146 +152,141 @@ class CoursePlanModel {
     PayloadClient payload,
     CmsCoursePlan cmsCoursePlan,
   ) async {
-    try {
-      // fetch cmsCoursePlanMedias
-      List<CmsCoursePlanMedia>? cmsCoursePlanMedias;
-      if (cmsCoursePlan.coursePlanMedia?.docs != null &&
-          cmsCoursePlan.coursePlanMedia!.docs!.isNotEmpty) {
-        final where = {
-          "id": {"in": cmsCoursePlan.coursePlanMedia!.docs!.join(",")},
-        };
-        final limit = cmsCoursePlan.coursePlanMedia!.docs!.length;
-        final cmsCoursePlanMediaResult = await payload.find(
-          "course-plan-media",
-          CmsCoursePlanMedia.fromJson,
-          where: where,
-          limit: limit,
-          page: 1,
-          sort: "createdAt",
-        );
-        cmsCoursePlanMedias = cmsCoursePlanMediaResult.docs;
-      }
-
-      // fetch CmsCourseModules
-      // set sub-doc ids:
-      //  - cmsCoursePlanModuleLocationIds
-      //  - cmsCoursePlanActivityIds
-      List<String>? cmsCoursePlanModuleLocationIds;
-      List<String>? cmsCoursePlanActivityIds;
-      List<CmsCoursePlanModule>? cmsCoursePlanModules;
-      if (cmsCoursePlan.coursePlanModules?.docs != null &&
-          cmsCoursePlan.coursePlanModules!.docs!.isNotEmpty) {
-        final where = {
-          "id": {"in": cmsCoursePlan.coursePlanModules!.docs!.join(",")},
-        };
-        final limit = cmsCoursePlan.coursePlanModules!.docs!.length;
-        final cmsCourseModulesResult = await payload.find(
-          "course-plan-modules",
-          CmsCoursePlanModule.fromJson,
-          where: where,
-          limit: limit,
-          page: 1,
-          sort: "createdAt",
-        );
-        cmsCoursePlanModules = cmsCourseModulesResult.docs;
-
-        for (final module in cmsCoursePlanModules) {
-          if (module.coursePlanActivities?.docs != null &&
-              module.coursePlanActivities!.docs!.isNotEmpty) {
-            for (final activity in module.coursePlanActivities!.docs!) {
-              cmsCoursePlanActivityIds ??= [];
-              cmsCoursePlanActivityIds.add(activity);
-            }
-          }
-          if (module.coursePlanModuleLocations?.docs != null &&
-              module.coursePlanModuleLocations!.docs!.isNotEmpty) {
-            for (final location in module.coursePlanModuleLocations!.docs!) {
-              cmsCoursePlanModuleLocationIds ??= [];
-              cmsCoursePlanModuleLocationIds.add(location);
-            }
-          }
-        }
-      }
-
-      // fetch CmsCoursePlanModuleLocations
-      List<CmsCoursePlanModuleLocation>? cmsCoursePlanModuleLocations;
-      if (cmsCoursePlanModuleLocationIds != null) {
-        final where = {
-          "id": {"in": cmsCoursePlanModuleLocationIds.join(",")},
-        };
-        final limit = cmsCoursePlanModuleLocationIds.length;
-        final cmsCoursePlanModuleLocationsResult = await payload.find(
-          "course-plan-module-locations",
-          CmsCoursePlanModuleLocation.fromJson,
-          where: where,
-          limit: limit,
-          page: 1,
-          sort: "createdAt",
-        );
-        cmsCoursePlanModuleLocations = cmsCoursePlanModuleLocationsResult.docs;
-      }
-
-      // fetch cmsCoursePlanActivities
-      List<String>? cmsCoursePlanActivityMediaIds;
-      List<CmsCoursePlanActivity>? cmsCoursePlanActivities;
-      if (cmsCoursePlanActivityIds != null) {
-        final where = {
-          "id": {"in": cmsCoursePlanActivityIds.join(",")},
-        };
-        final limit = cmsCoursePlanActivityIds.length;
-        final cmsCoursePlanActivitiesResult = await payload.find(
-          "course-plan-activities",
-          CmsCoursePlanActivity.fromJson,
-          where: where,
-          limit: limit,
-          page: 1,
-          sort: "createdAt",
-        );
-        cmsCoursePlanActivities = cmsCoursePlanActivitiesResult.docs;
-
-        for (final activity in cmsCoursePlanActivities) {
-          if (activity.coursePlanActivityMedia?.docs != null &&
-              activity.coursePlanActivityMedia!.docs!.isNotEmpty) {
-            for (final mediaId in activity.coursePlanActivityMedia!.docs!) {
-              cmsCoursePlanActivityMediaIds ??= [];
-              cmsCoursePlanActivityMediaIds.add(mediaId);
-            }
-          }
-        }
-      }
-
-      // fetch cmsCoursePlanActivityMedias
-      List<CmsCoursePlanActivityMedia>? cmsCoursePlanActivityMedias;
-      if (cmsCoursePlanActivityMediaIds != null) {
-        final where = {
-          "id": {"in": cmsCoursePlanActivityMediaIds.join(",")},
-        };
-        final limit = cmsCoursePlanActivityMediaIds.length;
-        final cmsCoursePlanActivityMediasResult = await payload.find(
-          "course-plan-activity-medias",
-          CmsCoursePlanActivityMedia.fromJson,
-          where: where,
-          limit: limit,
-          page: 1,
-          sort: "createdAt",
-        );
-        cmsCoursePlanActivityMedias = cmsCoursePlanActivityMediasResult.docs;
-      }
-
-      final coursePlan = CoursePlanModel.fromCmsDocs(
-        cmsCoursePlan,
-        cmsCoursePlanMedias,
-        cmsCoursePlanModules,
-        cmsCoursePlanModuleLocations,
-        cmsCoursePlanActivities,
-        cmsCoursePlanActivityMedias,
+    // fetch cmsCoursePlanMedias
+    List<CmsCoursePlanMedia>? cmsCoursePlanMedias;
+    if (cmsCoursePlan.coursePlanMedia?.docs != null &&
+        cmsCoursePlan.coursePlanMedia!.docs!.isNotEmpty) {
+      final where = {
+        "id": {"in": cmsCoursePlan.coursePlanMedia!.docs!.join(",")},
+      };
+      final limit = cmsCoursePlan.coursePlanMedia!.docs!.length;
+      final cmsCoursePlanMediaResult = await payload.find(
+        "course-plan-media",
+        CmsCoursePlanMedia.fromJson,
+        where: where,
+        limit: limit,
+        page: 1,
+        sort: "createdAt",
       );
-
-      return coursePlan;
-    } catch (e) {
-      print(e);
-      rethrow;
+      cmsCoursePlanMedias = cmsCoursePlanMediaResult.docs;
     }
+
+    // fetch CmsCourseModules
+    // set sub-doc ids:
+    //  - cmsCoursePlanModuleLocationIds
+    //  - cmsCoursePlanActivityIds
+    List<String>? cmsCoursePlanModuleLocationIds;
+    List<String>? cmsCoursePlanActivityIds;
+    List<CmsCoursePlanModule>? cmsCoursePlanModules;
+    if (cmsCoursePlan.coursePlanModules?.docs != null &&
+        cmsCoursePlan.coursePlanModules!.docs!.isNotEmpty) {
+      final where = {
+        "id": {"in": cmsCoursePlan.coursePlanModules!.docs!.join(",")},
+      };
+      final limit = cmsCoursePlan.coursePlanModules!.docs!.length;
+      final cmsCourseModulesResult = await payload.find(
+        "course-plan-modules",
+        CmsCoursePlanModule.fromJson,
+        where: where,
+        limit: limit,
+        page: 1,
+        sort: "createdAt",
+      );
+      cmsCoursePlanModules = cmsCourseModulesResult.docs;
+
+      for (final module in cmsCoursePlanModules) {
+        if (module.coursePlanActivities?.docs != null &&
+            module.coursePlanActivities!.docs!.isNotEmpty) {
+          for (final activity in module.coursePlanActivities!.docs!) {
+            cmsCoursePlanActivityIds ??= [];
+            cmsCoursePlanActivityIds.add(activity);
+          }
+        }
+        if (module.coursePlanModuleLocations?.docs != null &&
+            module.coursePlanModuleLocations!.docs!.isNotEmpty) {
+          for (final location in module.coursePlanModuleLocations!.docs!) {
+            cmsCoursePlanModuleLocationIds ??= [];
+            cmsCoursePlanModuleLocationIds.add(location);
+          }
+        }
+      }
+    }
+
+    // fetch CmsCoursePlanModuleLocations
+    List<CmsCoursePlanModuleLocation>? cmsCoursePlanModuleLocations;
+    if (cmsCoursePlanModuleLocationIds != null) {
+      final where = {
+        "id": {"in": cmsCoursePlanModuleLocationIds.join(",")},
+      };
+      final limit = cmsCoursePlanModuleLocationIds.length;
+      final cmsCoursePlanModuleLocationsResult = await payload.find(
+        "course-plan-module-locations",
+        CmsCoursePlanModuleLocation.fromJson,
+        where: where,
+        limit: limit,
+        page: 1,
+        sort: "createdAt",
+      );
+      cmsCoursePlanModuleLocations = cmsCoursePlanModuleLocationsResult.docs;
+    }
+
+    // fetch cmsCoursePlanActivities
+    List<String>? cmsCoursePlanActivityMediaIds;
+    List<CmsCoursePlanActivity>? cmsCoursePlanActivities;
+    if (cmsCoursePlanActivityIds != null) {
+      final where = {
+        "id": {"in": cmsCoursePlanActivityIds.join(",")},
+      };
+      final limit = cmsCoursePlanActivityIds.length;
+      final cmsCoursePlanActivitiesResult = await payload.find(
+        "course-plan-activities",
+        CmsCoursePlanActivity.fromJson,
+        where: where,
+        limit: limit,
+        page: 1,
+        sort: "createdAt",
+      );
+      cmsCoursePlanActivities = cmsCoursePlanActivitiesResult.docs;
+
+      for (final activity in cmsCoursePlanActivities) {
+        if (activity.coursePlanActivityMedia?.docs != null &&
+            activity.coursePlanActivityMedia!.docs!.isNotEmpty) {
+          for (final mediaId in activity.coursePlanActivityMedia!.docs!) {
+            cmsCoursePlanActivityMediaIds ??= [];
+            cmsCoursePlanActivityMediaIds.add(mediaId);
+          }
+        }
+      }
+    }
+
+    // fetch cmsCoursePlanActivityMedias
+    List<CmsCoursePlanActivityMedia>? cmsCoursePlanActivityMedias;
+    if (cmsCoursePlanActivityMediaIds != null) {
+      final where = {
+        "id": {"in": cmsCoursePlanActivityMediaIds.join(",")},
+      };
+      final limit = cmsCoursePlanActivityMediaIds.length;
+      final cmsCoursePlanActivityMediasResult = await payload.find(
+        "course-plan-activity-medias",
+        CmsCoursePlanActivityMedia.fromJson,
+        where: where,
+        limit: limit,
+        page: 1,
+        sort: "createdAt",
+      );
+      cmsCoursePlanActivityMedias = cmsCoursePlanActivityMediasResult.docs;
+    }
+
+    final coursePlan = CoursePlanModel.fromCmsDocs(
+      cmsCoursePlan,
+      cmsCoursePlanMedias,
+      cmsCoursePlanModules,
+      cmsCoursePlanModuleLocations,
+      cmsCoursePlanActivities,
+      cmsCoursePlanActivityMedias,
+    );
+
+    return coursePlan;
   }
 
   factory CoursePlanModel.fromCmsDocs(

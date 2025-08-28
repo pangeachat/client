@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
+
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
-import 'package:flutter/material.dart';
 
 class CoursePlanBuilder extends StatefulWidget {
   final String? courseId;
