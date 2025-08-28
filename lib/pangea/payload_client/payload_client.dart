@@ -107,7 +107,6 @@ class PayloadClient {
 
   /// Find documents with pagination
   Future<PayloadPaginatedResponse<T>> find<T>(
-    
     String collection,
     T Function(Map<String, dynamic>) fromJson, {
     int? page,
