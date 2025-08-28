@@ -6,8 +6,8 @@ class CmsCoursePlanModule {
   final String id;
   final String title;
   final String description;
-  final JoinField coursePlanActivities;
-  final JoinField coursePlanModuleLocations;
+  final JoinField? coursePlanActivities;
+  final JoinField? coursePlanModuleLocations;
   final List<String> coursePlans;
   final PolymorphicRelationship? createdBy;
   final PolymorphicRelationship? updatedBy;
@@ -51,8 +51,8 @@ class CmsCoursePlanModule {
       'id': id,
       'title': title,
       'description': description,
-      'coursePlanActivities': coursePlanActivities.toJson(),
-      'coursePlanModuleLocations': coursePlanModuleLocations.toJson(),
+      'coursePlanActivities': coursePlanActivities?.toJson(),
+      'coursePlanModuleLocations': coursePlanModuleLocations?.toJson(),
       'coursePlans': coursePlans,
       'createdBy': createdBy?.toJson(),
       'updatedBy': updatedBy?.toJson(),

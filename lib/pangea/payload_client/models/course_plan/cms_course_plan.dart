@@ -9,7 +9,8 @@ class CmsCoursePlan {
   final String cefrLevel;
   final String l1; // Language of instruction
   final String l2; // Target language
-  final JoinField coursePlanModules;
+  final JoinField? coursePlanMedia;
+  final JoinField? coursePlanModules;
   final PolymorphicRelationship? createdBy;
   final PolymorphicRelationship? updatedBy;
   final String updatedAt;
@@ -22,7 +23,8 @@ class CmsCoursePlan {
     required this.cefrLevel,
     required this.l1,
     required this.l2,
-    required this.coursePlanModules,
+    this.coursePlanMedia,
+    this.coursePlanModules,
     this.createdBy,
     this.updatedBy,
     required this.updatedAt,
@@ -31,23 +33,18 @@ class CmsCoursePlan {
 
   factory CmsCoursePlan.fromJson(Map<String, dynamic> json) {
     return CmsCoursePlan(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      description: json['description'] as String,
-      cefrLevel: json['cefrLevel'] as String,
-      l1: json['l1'] as String,
-      l2: json['l2'] as String,
-      coursePlanModules: JoinField.fromJson(
-        json['coursePlanModules'] as Map<String, dynamic>,
-      ),
-      createdBy: PolymorphicRelationship.fromJson(
-        json['createdBy'] as Map<String, dynamic>,
-      ),
-      updatedBy: PolymorphicRelationship.fromJson(
-        json['updatedBy'] as Map<String, dynamic>,
-      ),
-      updatedAt: json['updatedAt'] as String,
-      createdAt: json['createdAt'] as String,
+      id: json['id'],
+      title: json['title'],
+      description: json['description'],
+      cefrLevel: json['cefrLevel'],
+      l1: json['l1'],
+      l2: json['l2'],
+      coursePlanMedia: JoinField.fromJson(json['coursePlanMedia']),
+      coursePlanModules: JoinField.fromJson(json['coursePlanModules']),
+      createdBy: PolymorphicRelationship.fromJson(json['createdBy']),
+      updatedBy: PolymorphicRelationship.fromJson(json['updatedBy']),
+      updatedAt: json['updatedAt'],
+      createdAt: json['createdAt'],
     );
   }
 
@@ -59,7 +56,8 @@ class CmsCoursePlan {
       'cefrLevel': cefrLevel,
       'l1': l1,
       'l2': l2,
-      'coursePlanModules': coursePlanModules,
+      'coursePlanMedia': coursePlanMedia?.toJson(),
+      'coursePlanModules': coursePlanModules?.toJson(),
       'createdBy': createdBy?.toJson(),
       'updatedBy': updatedBy?.toJson(),
       'updatedAt': updatedAt,

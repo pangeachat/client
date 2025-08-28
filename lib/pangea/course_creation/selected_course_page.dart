@@ -1,18 +1,16 @@
 import 'dart:typed_data';
 
-import 'package:flutter/material.dart';
-
-import 'package:go_router/go_router.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
-import 'package:matrix/matrix.dart' as sdk;
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_view.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/spaces/utils/client_spaces_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
+import 'package:matrix/matrix.dart' as sdk;
 
 class SelectedCourse extends StatefulWidget {
   final String courseId;
@@ -29,7 +27,13 @@ class SelectedCourseController extends State<SelectedCourse> {
     Uri? avatarUrl;
     if (course.imageUrl != null) {
       try {
-        final Response response = await http.get(Uri.parse(course.imageUrl!));
+        final Response response = await http.get(
+          Uri.parse(course.imageUrl!),
+          headers: {
+            'Authorization':
+                'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+          },
+        );
         avatar = response.bodyBytes;
         avatarUrl = await client.uploadContent(avatar);
       } catch (e) {

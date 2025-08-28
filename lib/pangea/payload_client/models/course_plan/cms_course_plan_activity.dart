@@ -71,7 +71,7 @@ class CmsCoursePlanActivity {
   final LanguageLevelTypeEnum cefrLevel;
   final List<CmsCoursePlanActivityRole> roles;
   final List<CmsCoursePlanVocab> vocabs;
-  final JoinField coursePlanActivityMedia;
+  final JoinField? coursePlanActivityMedia;
   final List<String> coursePlanModules;
   final PolymorphicRelationship? createdBy;
   final PolymorphicRelationship? updatedBy;
@@ -122,7 +122,7 @@ class CmsCoursePlanActivity {
           .toList(),
       coursePlanActivityMedia:
           JoinField.fromJson(json['coursePlanActivityMedia']),
-      coursePlanModules: json['coursePlanModules'],
+      coursePlanModules: List<String>.from(json['coursePlanModules']),
       createdBy: json['createdBy'] != null
           ? PolymorphicRelationship.fromJson(json['createdBy'])
           : null,
@@ -145,7 +145,7 @@ class CmsCoursePlanActivity {
       'cefrLevel': cefrLevel.string,
       'roles': roles.map((role) => role.toJson()).toList(),
       'vocabs': vocabs.map((vocab) => vocab.toJson()).toList(),
-      'coursePlanActivityMedia': coursePlanActivityMedia.toJson(),
+      'coursePlanActivityMedia': coursePlanActivityMedia?.toJson(),
       'coursePlanModules': coursePlanModules,
       'createdBy': createdBy?.toJson(),
       'updatedBy': updatedBy?.toJson(),

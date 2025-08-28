@@ -1,10 +1,9 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
 
 class CoursePlanTile extends StatelessWidget {
   final CoursePlanModel course;
@@ -48,6 +47,10 @@ class CoursePlanTile extends StatelessWidget {
                             height: 40.0,
                             fit: BoxFit.cover,
                             imageUrl: course.imageUrl!,
+                            httpHeaders: {
+                              'Authorization':
+                                  'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                            },
                             placeholder: (context, url) {
                               return const Center(
                                 child: CircularProgressIndicator(),
