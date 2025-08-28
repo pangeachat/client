@@ -61,7 +61,7 @@ class CmsCoursePlanVocab {
 }
 
 /// Represents a course plan activity from the CMS API
-class CoursePlanActivity {
+class CmsCoursePlanActivity {
   final String id;
   final String title;
   final String learningObjective;
@@ -79,7 +79,7 @@ class CoursePlanActivity {
   final String updatedAt;
   final String createdAt;
 
-  CoursePlanActivity({
+  CmsCoursePlanActivity({
     required this.id,
     required this.title,
     required this.learningObjective,
@@ -97,8 +97,8 @@ class CoursePlanActivity {
     required this.createdAt,
   });
 
-  factory CoursePlanActivity.fromJson(Map<String, dynamic> json) {
-    return CoursePlanActivity(
+  factory CmsCoursePlanActivity.fromJson(Map<String, dynamic> json) {
+    return CmsCoursePlanActivity(
       id: json['id'] as String,
       title: json['title'] as String,
       learningObjective: json['learningObjective'] as String,
