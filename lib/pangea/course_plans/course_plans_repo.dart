@@ -24,12 +24,6 @@ class CourseFilter {
     this.cefrLevel,
   });
 
-  Map<String, dynamic> toJson() => {
-        'targetLanguage': targetLanguage?.toJson(),
-        'languageOfInstructions': languageOfInstructions?.toJson(),
-        'cefrLevel': cefrLevel?.string,
-      };
-
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
@@ -150,12 +144,14 @@ class CoursePlansRepo {
         }
         if (filter.languageOfInstructions != null) {
           where["and"].add({
-            "languageOfInstructions": {"equals": filter.languageOfInstructions},
+            "languageOfInstructions": {
+              "equals": filter.languageOfInstructions!.langCode,
+            },
           });
         }
         if (filter.targetLanguage != null) {
           where["and"].add({
-            "targetLanguage": {"equals": filter.targetLanguage},
+            "targetLanguage": {"equals": filter.targetLanguage!.langCode},
           });
         }
       } else if (numberOfFilter == 1) {
@@ -164,11 +160,11 @@ class CoursePlansRepo {
         }
         if (filter.languageOfInstructions != null) {
           where["languageOfInstructions"] = {
-            "equals": filter.languageOfInstructions,
+            "equals": filter.languageOfInstructions!.langCode,
           };
         }
         if (filter.targetLanguage != null) {
-          where["targetLanguage"] = {"equals": filter.targetLanguage};
+          where["targetLanguage"] = {"equals": filter.targetLanguage!.langCode};
         }
       }
     }
