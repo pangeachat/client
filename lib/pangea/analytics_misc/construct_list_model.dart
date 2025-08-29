@@ -217,7 +217,8 @@ class ConstructListModel {
   }) {
     final constructs = constructList(type: type);
     final List<ConstructIdentifier> unlocked = [];
-    final constructsList = [];
+    final constructsList =
+        constructList(type: type).map((e) => e.lemma).toSet().toList();
     // type == ConstructTypeEnum.vocab ? _vocabLemmasList : _grammarLemmasList;
 
     for (final lemma in constructsList) {
