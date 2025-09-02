@@ -964,6 +964,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$openGallery() {
       return "\u6253\u5f00\u56fe\u5e93";
     },
+    get$start(_) {
+      return "\u5f00\u59cb";
+    },
     get$markAsRead() {
       return "\u6807\u4e3a\u5df2\u8bfb";
     },
@@ -4447,15 +4450,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pending(_) {
       return "Pending";
     },
-    get$unjoinedActivityMessage() {
-      return "Do you want to participate? Choose an open role!\nOr hang out and watch the show!";
-    },
-    get$fullActivityMessage() {
-      return "Feel free to watch the show! While there aren't any open roles to participate, you can view the chat!";
-    },
-    get$confirmRole() {
-      return "Confirm role";
-    },
     get$openRoleLabel() {
       return "OPEN";
     },
@@ -4471,17 +4465,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivityDesc() {
       return "Did you complete the objectives?\nThis is your confirmation that you're stepping back from texting. But don\u2019t worry, the fun continues in the chat! Feel free to hang out and enjoy the show until everyone clicks 'Done'.";
     },
-    get$archiveToAnalytics() {
-      return "Add to my Completed Activities";
-    },
     get$activitySummaryError() {
       return "Activity summaries unavailable";
     },
     get$requestSummaries() {
       return "Request summaries";
-    },
-    get$loadingActivitySummary() {
-      return "Loading activity summary...";
     },
     get$generatingNewActivities() {
       return "You're the first user of this language pair! Please give us a minute, we're preparing activities just for you.";
@@ -4599,6 +4587,45 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$chooseNextActivity() {
       return "Choose your next activity!";
+    },
+    get$seeInstructions() {
+      return "See Instructions";
+    },
+    get$hideInstructions() {
+      return "Hide Instructions";
+    },
+    get$letsGo() {
+      return "Let\u2019s go!";
+    },
+    get$chooseRole() {
+      return "Choose a role!";
+    },
+    get$chooseRoleToParticipate() {
+      return "Choose a role to participate!";
+    },
+    waitingToFillRole$1(num) {
+      return "Waiting to fill " + num + " roles...";
+    },
+    get$pingParticipants() {
+      return "Ping course participants";
+    },
+    get$playWithBot() {
+      return "Play with Pangea Bot";
+    },
+    get$inviteFriends() {
+      return "Invite friends";
+    },
+    get$waitNotDone() {
+      return "Wait I\u2019m not done!";
+    },
+    get$waitingForOthersToFinish() {
+      return "Waiting for the rest to finish up...";
+    },
+    get$saveToCompletedActivities() {
+      return "Save to completed activities";
+    },
+    get$generatingSummary() {
+      return "Analyzing chat and generating results";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -5538,6 +5565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$openGallery() {
       return "\u958b\u555f\u756b\u5eca";
     },
+    get$start(_) {
+      return "\u958b\u59cb";
+    },
     get$markAsRead() {
       return "\u6a19\u793a\u70ba\u5df2\u8b80";
     },
@@ -6091,6 +6121,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_1", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "BNP/96++aQ7QeoTGtFeGHq4b/wQ=");
+})($__dart_deferred_initializers__, "pPhwkBxz+fbX6MB3IND2pUfLGLs=");
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
