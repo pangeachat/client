@@ -1,6 +1,9 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -14,6 +17,7 @@ import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_en
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityPlanCard extends StatelessWidget {
   final VoidCallback regenerate;
@@ -95,6 +99,12 @@ class ActivityPlanCard extends StatelessWidget {
                                         ? CachedNetworkImage(
                                             fit: BoxFit.cover,
                                             imageUrl: controller.imageURL!,
+                                            imageRenderMethodForWeb:
+                                                ImageRenderMethodForWeb.HttpGet,
+                                            httpHeaders: {
+                                              'Authorization':
+                                                  'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                                            },
                                             placeholder: (context, url) {
                                               return const Center(
                                                 child:
