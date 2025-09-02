@@ -9,8 +9,8 @@ import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_p
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_activity.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_activity_media.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_media.dart';
-import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_module.dart';
-import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_module_location.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
 
 /// Represents a topic in the course planner response.
 class Topic {
@@ -150,40 +150,40 @@ class CoursePlanModel {
   factory CoursePlanModel.fromCmsDocs(
     CmsCoursePlan cmsCoursePlan,
     List<CmsCoursePlanMedia>? cmsCoursePlanMedias,
-    List<CmsCoursePlanModule>? cmsCoursePlanModules,
-    List<CmsCoursePlanModuleLocation>? cmsCoursePlanModuleLocations,
+    List<CmsCoursePlanTopic>? cmsCoursePlanTopics,
+    List<CmsCoursePlanTopicLocation>? cmsCoursePlanTopicLocations,
     List<CmsCoursePlanActivity>? cmsCoursePlanActivities,
     List<CmsCoursePlanActivityMedia>? cmsCoursePlanActivityMedias,
   ) {
     // fetch topics
     List<Topic>? topics;
-    if (cmsCoursePlanModules != null) {
-      for (final module in cmsCoursePlanModules) {
-        // select locations of current module
-        List<CmsCoursePlanModuleLocation>? moduleLocations;
-        if (cmsCoursePlanModuleLocations != null) {
-          for (final location in cmsCoursePlanModuleLocations) {
-            if (location.coursePlanModules.contains(module.id)) {
-              moduleLocations ??= [];
-              moduleLocations.add(location);
+    if (cmsCoursePlanTopics != null) {
+      for (final topic in cmsCoursePlanTopics) {
+        // select locations of current topic
+        List<CmsCoursePlanTopicLocation>? topicLocations;
+        if (cmsCoursePlanTopicLocations != null) {
+          for (final location in cmsCoursePlanTopicLocations) {
+            if (location.coursePlanTopics.contains(topic.id)) {
+              topicLocations ??= [];
+              topicLocations.add(location);
             }
           }
         }
 
-        // select activities of current module
-        List<CmsCoursePlanActivity>? moduleActivities;
+        // select activities of current topic
+        List<CmsCoursePlanActivity>? topicActivities;
         if (cmsCoursePlanActivities != null) {
           for (final activity in cmsCoursePlanActivities) {
-            if (activity.coursePlanModules.contains(module.id)) {
-              moduleActivities ??= [];
-              moduleActivities.add(activity);
+            if (activity.coursePlanTopics.contains(topic.id)) {
+              topicActivities ??= [];
+              topicActivities.add(activity);
             }
           }
         }
 
         List<ActivityPlanModel>? activityPlans;
-        if (moduleActivities != null) {
-          for (final activity in moduleActivities) {
+        if (topicActivities != null) {
+          for (final activity in topicActivities) {
             // select media of current activity
             List<CmsCoursePlanActivityMedia>? activityMedias;
             if (cmsCoursePlanActivityMedias != null) {
@@ -238,11 +238,11 @@ class CoursePlanModel {
         topics ??= [];
         topics.add(
           Topic(
-            uuid: module.id,
-            title: module.title,
-            description: module.description,
-            location: moduleLocations != null && moduleLocations.isNotEmpty
-                ? moduleLocations.first.name
+            uuid: topic.id,
+            title: topic.title,
+            description: topic.description,
+            location: topicLocations != null && topicLocations.isNotEmpty
+                ? topicLocations.first.name
                 : "Any",
             activities: activityPlans,
           ),
