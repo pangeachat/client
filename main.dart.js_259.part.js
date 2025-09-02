@@ -4182,9 +4182,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteSpaceDesc() {
       return "Kh\xf4ng gian v\xe0 b\u1ea5t k\u1ef3 tr\xf2 chuy\u1ec7n v\xe0/ho\u1eb7c kh\xf4ng gian con n\xe0o \u0111\u01b0\u1ee3c ch\u1ecdn s\u1ebd b\u1ecb x\xf3a cho t\u1ea5t c\u1ea3 ng\u01b0\u1eddi tham gia v\xe0 t\u1ea5t c\u1ea3 tin nh\u1eafn trong tr\xf2 chuy\u1ec7n s\u1ebd kh\xf4ng c\xf2n kh\u1ea3 d\u1ee5ng cho vi\u1ec7c th\u1ef1c h\xe0nh ho\u1eb7c ph\xe2n t\xedch h\u1ecdc t\u1eadp. H\xe0nh \u0111\u1ed9ng n\xe0y kh\xf4ng th\u1ec3 ho\xe0n t\xe1c.";
     },
-    get$findYourPeople() {
-      return "T\xecm ng\u01b0\u1eddi c\u1ee7a b\u1ea1n";
-    },
     get$maxFifty() {
       return "T\u1ed1i \u0111a 50";
     },
@@ -4243,7 +4240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "C\xf4ng khai";
     },
     get$visibleToCommunity() {
-      return 'C\xf3 th\u1ec3 nh\xecn th\u1ea5y b\u1edfi c\u1ed9ng \u0111\u1ed3ng Pangea Chat r\u1ed9ng l\u1edbn h\u01a1n qua "T\xecm ng\u01b0\u1eddi c\u1ee7a b\u1ea1n"';
+      return 'Visible to the broader Pangea Chat community via "Find a course"';
     },
     get$howSpaceCanBeJoined() {
       return "C\xe1ch tham gia kh\xf4ng gian n\xe0y";
@@ -4623,6 +4620,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$instructionsLanguage() {
       return "Instructions language";
     },
+    get$findCourse() {
+      return "Find a course";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4638,6 +4638,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Tvfu21fYVsPZDfhbqcs36SXbJns=");
+})($__dart_deferred_initializers__, "gZRf7//Ud7i8DJD+kIAkfstHXRw=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map

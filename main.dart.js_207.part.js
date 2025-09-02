@@ -4182,9 +4182,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteSpaceDesc() {
       return "The space and any selected chats and/or subspaces will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
     },
-    get$findYourPeople() {
-      return "Find your people";
-    },
     get$maxFifty() {
       return "Max 50";
     },
@@ -4243,7 +4240,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Public";
     },
     get$visibleToCommunity() {
-      return 'Visible to the broader Pangea Chat community via "Find your people"';
+      return 'Visible to the broader Pangea Chat community via "Find a course"';
     },
     get$howSpaceCanBeJoined() {
       return "How this space can be joined";
@@ -4623,6 +4620,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$instructionsLanguage() {
       return "Instructions language";
     },
+    get$findCourse() {
+      return "Find a course";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4638,6 +4638,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_207", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "SDUIUFa0sk1E+DTmIj6MyBXALVk=");
+})($__dart_deferred_initializers__, "qrySHttl8O+ATORjNPjSBEQ7UjI=");
 ;
 //# sourceMappingURL=main.dart.js_207.part.js.map
