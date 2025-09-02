@@ -84,6 +84,14 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
         .length;
   }
 
+  bool _isBotParticipant() {
+    final assignedRoles = room.assignedRoles;
+    if (assignedRoles == null) return false;
+    return assignedRoles.values.any(
+      (role) => role.userId == BotName.byEnvironment,
+    );
+  }
+
   Future<void> _finishActivity({bool forAll = false}) async {
     await showFutureLoadingDialog(
       context: context,
@@ -117,12 +125,58 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
     // Completion status variables
     final bool userComplete = room.hasCompletedActivity;
     final bool activityComplete = room.activityIsFinished;
+    final bool userHasRole = (room.ownRole != null);
+    bool shouldShowEndForAll = true;
+    bool shouldShowImDone = true;
+    debugPrint(
+      "assigned roles: ${_getAssignedRolesCount()} bot participant? ${_isBotParticipant()}",
+    );
 
-    final String message = userComplete
-        ? activityComplete
-            ? "Everyone has wrapped up and the activity is complete! See the activity summary in chat when it is generated."
-            : "${_getCompletedRolesCount()}/${_getAssignedRolesCount()} are done. Wait for everyone to finish, and we'll generate you a summary in the chat! \n\nIf you'd like to rejoin the conversation, click 'Continue' in the chat."
-        : "${_getCompletedRolesCount()}/${_getAssignedRolesCount()} are done. Have you completed your objective?";
+    String message = "";
+
+    if (!room.isRoomAdmin) {
+      shouldShowEndForAll = false;
+    }
+
+    if (!userHasRole) {
+      shouldShowImDone = false;
+      shouldShowEndForAll = false;
+      if (room.remainingRoles == 0) {
+        //user has no role yet and there are none left, can see message but no buttons
+        message =
+            "There are no open roles in this activity, but feel free to stay and watch. Or, if you'd like to participate, you can make another activity and invite your friends!";
+      } else {
+        //user has no role yet but there are some left, can see message but no buttons
+        message =
+            "There are ${room.remainingRoles} roles left, join one if you'd like to participate!";
+      }
+    } else if (activityComplete) {
+      //activity is finished, no buttons
+      shouldShowImDone = false;
+      shouldShowEndForAll = false;
+      message =
+          "This activity has been completed. See the activity summary below!";
+    } else {
+      //activity is ongoing
+      if ((_getAssignedRolesCount() == 1) && (_isBotParticipant() == true)) {
+        //user is in room with only bot, controls wrapping up, should only show one wrap up button
+        shouldShowEndForAll = false;
+        message =
+            "If you feel like you've completed your objective, wrap up to finish the activity and we'll generate you a summary in the chat!";
+      } else {
+        //user is in group with other users
+        if (userComplete) {
+          //user is done but group is ongoing, no buttons
+          message =
+              "You and ${_getCompletedRolesCount()}/${_getAssignedRolesCount()} participants have wrapped up. Wait for everyone to finish, and we'll generate you a summary in the chat! \n\nIf you'd like to rejoin the conversation, click 'Continue' in the chat.";
+        } else {
+          //user is not done, buttons are present
+          message =
+              "${_getCompletedRolesCount()}/${_getAssignedRolesCount()} are done. Have you completed your objective?";
+        }
+      }
+    }
+
     return Positioned(
       top: 0,
       left: 0,
@@ -164,6 +218,7 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                     spacing: 12.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      // Table-like layout with 3 rows
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -191,11 +246,24 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                             color: theme.colorScheme.onSurface,
                           ),
                           const SizedBox(width: 12.0),
+                          // Expanded(
+                          //   child: Text(
+                          //     room.activityPlan!.vocabString,
+                          //     textAlign: TextAlign.left,
+                          //     style: theme.textTheme.bodyMedium,
+                          //   ),
+                          // ),
                           Expanded(
-                            child: Text(
-                              room.activityPlan!.vocabString,
-                              textAlign: TextAlign.left,
-                              style: theme.textTheme.bodyMedium,
+                            child: Wrap(
+                              children: [
+                                ...room.activityPlan!.vocabList.map(
+                                  (vocabWord) => VocabTile(
+                                    vocabWord: vocabWord,
+                                    isUsed:
+                                        true, //room.liveActivityAnalytics.hasUsedVocab(vocabWord),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -210,7 +278,8 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                           : Column(
                               spacing: 12.0,
                               children: [
-                                if (room.isRoomAdmin)
+                                if (shouldShowEndForAll)
+                                  //endForAll shows when the user has a role and it's not a room with only the bot (don't need two buttons if they both do the same thing)
                                   SizedBox(
                                     width: double.infinity,
                                     child: ElevatedButton(
@@ -241,25 +310,28 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                                   ),
                                 SizedBox(
                                   width: double.infinity,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 12.0,
-                                        vertical: 8.0,
-                                      ),
-                                      // foregroundColor:
-                                      //     theme.colorScheme.onSecondary,
-                                      // backgroundColor:
-                                      //     theme.colorScheme.secondary,
-                                    ),
-                                    onPressed: _finishActivity,
-                                    child: Text(
-                                      L10n.of(context).endActivityTitle,
-                                      style: TextStyle(
-                                        fontSize: isColumnMode ? 16.0 : 12.0,
-                                      ),
-                                    ),
-                                  ),
+                                  child: (shouldShowImDone)
+                                      ? ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            padding: const EdgeInsets.symmetric(
+                                              horizontal: 12.0,
+                                              vertical: 8.0,
+                                            ),
+                                            // foregroundColor:
+                                            //     theme.colorScheme.onSecondary,
+                                            // backgroundColor:
+                                            //     theme.colorScheme.secondary,
+                                          ),
+                                          onPressed: _finishActivity,
+                                          child: Text(
+                                            L10n.of(context).endActivityTitle,
+                                            style: TextStyle(
+                                              fontSize:
+                                                  isColumnMode ? 16.0 : 12.0,
+                                            ),
+                                          ),
+                                        )
+                                      : const SizedBox.shrink(),
                                 ),
                               ],
                             ),
@@ -277,6 +349,38 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
               ),
             ),
         ],
+      ),
+    );
+  }
+}
+
+class VocabTile extends StatelessWidget {
+  final String vocabWord;
+  final bool isUsed;
+
+  const VocabTile({
+    super.key,
+    required this.vocabWord,
+    required this.isUsed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final color =
+        isUsed ? AppConfig.goldLight.withAlpha(100) : Colors.transparent;
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Text(
+        vocabWord,
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
       ),
     );
   }
