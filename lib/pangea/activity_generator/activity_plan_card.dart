@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:go_router/go_router.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
@@ -13,7 +9,11 @@ import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_en
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class ActivityPlanCard extends StatelessWidget {
   final VoidCallback regenerate;
@@ -95,6 +95,12 @@ class ActivityPlanCard extends StatelessWidget {
                                         ? CachedNetworkImage(
                                             fit: BoxFit.cover,
                                             imageUrl: controller.imageURL!,
+                                            imageRenderMethodForWeb:
+                                                ImageRenderMethodForWeb.HttpGet,
+                                            httpHeaders: {
+                                              'Authorization':
+                                                  'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                                            },
                                             placeholder: (context, url) {
                                               return const Center(
                                                 child:
@@ -186,8 +192,15 @@ class ActivityPlanCard extends StatelessWidget {
                                                 fit: BoxFit.cover,
                                               )
                                             : CachedNetworkImage(
+                                                imageRenderMethodForWeb:
+                                                    ImageRenderMethodForWeb
+                                                        .HttpGet,
                                                 imageUrl: controller
                                                     .updatedActivity.imageURL!,
+                                                httpHeaders: {
+                                                  'Authorization':
+                                                      'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                                                },
                                                 fit: BoxFit.cover,
                                                 width: 24.0,
                                                 height: 24.0,

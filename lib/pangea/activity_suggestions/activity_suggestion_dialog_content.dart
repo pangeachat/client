@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:collection/collection.dart';
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card_row.dart';
@@ -12,7 +9,10 @@ import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class ActivitySuggestionDialogContent extends StatelessWidget {
   final ActivitySuggestionDialogState controller;
@@ -68,6 +68,12 @@ class _ActivitySuggestionDialogImage extends StatelessWidget {
                         fit: BoxFit.cover,
                       )
                     : CachedNetworkImage(
+                        imageRenderMethodForWeb:
+                            ImageRenderMethodForWeb.HttpGet,
+                        httpHeaders: {
+                          'Authorization':
+                              'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                        },
                         imageUrl: activityController.updatedActivity.imageURL!,
                         fit: BoxFit.cover,
                         placeholder: (
@@ -628,6 +634,12 @@ class _ActivitySuggestionLaunchContent extends StatelessWidget {
                         fit: BoxFit.cover,
                       )
                     : CachedNetworkImage(
+                        imageRenderMethodForWeb:
+                            ImageRenderMethodForWeb.HttpGet,
+                        httpHeaders: {
+                          'Authorization':
+                              'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                        },
                         imageUrl: activityController.updatedActivity.imageURL!,
                         fit: BoxFit.cover,
                         width: 24.0,
