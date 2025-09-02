@@ -5260,5 +5260,9 @@
   },
   "pingParticipants": "Ping course participants",
   "playWithBot": "Play with Pangea Bot",
-  "inviteFriends": "Invite friends"
+  "inviteFriends": "Invite friends",
+  "waitNotDone": "Wait I’m not done!",
+  "waitingForOthersToFinish": "Waiting for the rest to finish up...",
+  "saveToCompletedActivities": "Save to completed activities",
+  "generatingSummary": "Analyzing chat and generating results"
 }

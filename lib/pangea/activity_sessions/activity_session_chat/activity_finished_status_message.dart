@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_analytics_chip.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_results_carousel.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
-import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -27,9 +18,6 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     super.key,
     required this.controller,
   });
-
-  Map<String, ActivityRole> get _roles =>
-      controller.room.activityPlan?.roles ?? {};
 
   Future<void> _archiveToAnalytics(BuildContext context) async {
     await controller.room.archiveActivity();
@@ -55,223 +43,148 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     await courseParent.finishCourseActivity(activityId, topicId);
   }
 
-  List<ActivityRoleModel> get _rolesWithSummaries {
-    if (controller.room.activitySummary?.summary == null) {
-      return <ActivityRoleModel>[];
-    }
-
-    final roles = controller.room.activityRoles;
-    return roles?.roles.values.where((role) {
-          return controller.room.activitySummary!.summary!.participants.any(
-            (p) => p.participantId == role.userId,
-          );
-        }).toList() ??
-        [];
-  }
-
-  ActivityRoleModel? get _highlightedRole {
-    if (controller.highlightedRole != null) {
-      return controller.highlightedRole;
-    }
-
-    return _rolesWithSummaries.firstWhereOrNull(
-      (r) => r.userId == controller.room.client.userID,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return LoadParticipantsBuilder(
-      room: controller.room,
-      builder: (context, participants) {
-        if (!controller.room.showActivityChatUI ||
-            !controller.room.activityIsFinished ||
-            controller.room.ownRole == null) {
-          return const SizedBox.shrink();
-        }
+    if (!controller.room.showActivityChatUI ||
+        controller.room.ownRole == null ||
+        !controller.room.hasCompletedActivity) {
+      return const SizedBox.shrink();
+    }
 
-        final summary = controller.room.activitySummary;
-        final theme = Theme.of(context);
+    final theme = Theme.of(context);
+    final summary = controller.room.activitySummary;
 
-        final user = participants.participants.firstWhereOrNull(
-          (u) => u.id == _highlightedRole?.userId,
-        );
+    return AnimatedSize(
+      duration: FluffyThemes.animationDuration,
+      child: Container(
+        margin: const EdgeInsets.only(top: 20.0),
+        padding: const EdgeInsets.only(
+          top: 12.0,
+          left: 12.0,
+          right: 12.0,
+        ),
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(color: theme.dividerColor),
+          ),
+        ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 400),
+            child: Column(
+              spacing: 12.0,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: controller.room.activityIsFinished
+                  ? [
+                      if (summary?.isLoading ?? false) ...[
+                        Text(
+                          L10n.of(context).generatingSummary,
+                          style: const TextStyle(
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 36.0,
+                          width: 36.0,
+                          child: CircularProgressIndicator(),
+                        ),
+                      ] else if (summary?.hasError ?? false) ...[
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.school_outlined,
+                              size: 24.0,
+                            ),
+                            const SizedBox(width: 8),
+                            Flexible(
+                              child: Text(
+                                L10n.of(context).activitySummaryError,
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
+                        TextButton(
+                          onPressed: () => controller.room.fetchSummaries(),
+                          child: Text(L10n.of(context).requestSummaries),
+                        ),
+                      ],
+                      if (!controller.room.isHiddenActivityRoom)
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12.0,
+                              vertical: 8.0,
+                            ),
+                            foregroundColor:
+                                theme.colorScheme.onPrimaryContainer,
+                            backgroundColor: theme.colorScheme.primaryContainer,
+                          ),
+                          onPressed: () async {
+                            final resp = await showFutureLoadingDialog(
+                              context: context,
+                              future: () => _archiveToAnalytics(context),
+                            );
 
-        final userSummary = controller
-            .room.activitySummary?.summary?.participants
-            .firstWhereOrNull(
-          (p) => p.participantId == _highlightedRole?.userId,
-        );
-
-        return AnimatedSize(
-          duration: FluffyThemes.animationDuration,
-          child: Center(
-            child: Container(
-              padding: const EdgeInsets.all(16.0),
-              constraints: const BoxConstraints(
-                maxWidth: FluffyThemes.columnWidth * 1.5,
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  if (summary?.summary != null) ...[
-                    Text(
-                      L10n.of(context).activityFinishedMessage,
-                      style: const TextStyle(fontSize: 18.0),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: Text(
-                        summary!.summary!.summary,
-                        textAlign: TextAlign.center,
+                            if (!resp.isError) {
+                              context.go(
+                                "/rooms/analytics?mode=activities",
+                              );
+                            }
+                          },
+                          child: Row(
+                            spacing: 12.0,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.radar, size: 20.0),
+                              Text(
+                                L10n.of(context).saveToCompletedActivities,
+                                style: const TextStyle(fontSize: 12.0),
+                              ),
+                            ],
+                          ),
+                        ),
+                    ]
+                  : [
+                      Text(
+                        L10n.of(context).waitingForOthersToFinish,
                         style: const TextStyle(
-                          fontSize: 14.0,
+                          fontSize: 12,
+                          fontStyle: FontStyle.italic,
                         ),
                       ),
-                    ),
-                    if (summary.analytics != null)
-                      Row(
-                        spacing: 8.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ActivityAnalyticsChip(
-                            ConstructTypeEnum.vocab.indicator.icon,
-                            "${summary.analytics!.uniqueConstructCount(ConstructTypeEnum.vocab)}",
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12.0,
+                            vertical: 8.0,
                           ),
-                          ActivityAnalyticsChip(
-                            ConstructTypeEnum.morph.indicator.icon,
-                            "${summary.analytics!.uniqueConstructCount(ConstructTypeEnum.morph)}",
-                          ),
-                        ],
-                      ),
-                    const SizedBox(height: 16.0),
-                    if (_highlightedRole != null && userSummary != null)
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(24.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: theme.colorScheme.surfaceContainer,
-                          ),
-                          child: Column(
-                            children: [
-                              ActivityResultsCarousel(
-                                userId: _highlightedRole!.userId,
-                                selectedRole: _highlightedRole!,
-                                user: user,
-                                summary: userSummary,
-                                analytics: summary.analytics,
-                              ),
-                              Wrap(
-                                alignment: WrapAlignment.center,
-                                children: _rolesWithSummaries.map(
-                                  (role) {
-                                    final user = participants.participants
-                                        .firstWhereOrNull(
-                                      (u) => u.id == role.userId,
-                                    );
-
-                                    return IntrinsicWidth(
-                                      child: ActivityParticipantIndicator(
-                                        availableRole: _roles[role.id]!,
-                                        avatarUrl: _roles[role.id]?.avatarUrl ??
-                                            user?.avatarUrl?.toString(),
-                                        onTap: _highlightedRole == role
-                                            ? null
-                                            : () =>
-                                                controller.highlightRole(role),
-                                        assignedRole: role,
-                                        selected: _highlightedRole == role,
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 8.0,
-                                          horizontal: 24.0,
-                                        ),
-                                        borderRadius: BorderRadius.zero,
-                                      ),
-                                    );
-                                  },
-                                ).toList(),
-                              ),
-                            ],
+                          foregroundColor: theme.colorScheme.onSurface,
+                          backgroundColor: theme.colorScheme.surface,
+                          side: BorderSide(
+                            color: theme.colorScheme.primaryContainer,
                           ),
                         ),
-                      ),
-                    const SizedBox(height: 20.0),
-                  ] else if (summary?.isLoading ?? false)
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        spacing: 8.0,
-                        children: [
-                          const CircularProgressIndicator.adaptive(),
-                          Text(L10n.of(context).loadingActivitySummary),
-                        ],
-                      ),
-                    )
-                  else if (summary?.hasError ?? false)
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        spacing: 8.0,
-                        children: [
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.school_outlined,
-                                size: 24.0,
+                        onPressed: controller.room.continueActivity,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              L10n.of(context).waitNotDone,
+                              style: const TextStyle(
+                                fontSize: 12,
                               ),
-                              const SizedBox(width: 8),
-                              Flexible(
-                                child: Text(
-                                  L10n.of(context).activitySummaryError,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ],
-                          ),
-                          TextButton(
-                            onPressed: () => controller.room.fetchSummaries(),
-                            child: Text(L10n.of(context).requestSummaries),
-                          ),
-                        ],
-                      ),
-                    ),
-                  if (!controller.room.isHiddenActivityRoom)
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12.0,
-                          vertical: 8.0,
+                            ),
+                          ],
                         ),
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                        backgroundColor: theme.colorScheme.primaryContainer,
                       ),
-                      onPressed: () async {
-                        final resp = await showFutureLoadingDialog(
-                          context: context,
-                          future: () => _archiveToAnalytics(context),
-                        );
-
-                        if (!resp.isError) {
-                          context.go(
-                            "/rooms/analytics?mode=activities",
-                          );
-                        }
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(L10n.of(context).archiveToAnalytics),
-                        ],
-                      ),
-                    ),
-                ],
-              ),
+                    ],
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

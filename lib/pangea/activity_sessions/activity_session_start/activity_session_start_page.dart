@@ -97,7 +97,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
   }
 
   bool isParticipantSelected(String id) {
-    if (state == SessionState.confirmedRole) return false;
+    if (state == SessionState.confirmedRole) {
+      return room.ownRole?.id == id;
+    }
     return _selectedRoleId == id;
   }
 
