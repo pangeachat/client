@@ -1,9 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:flutter/material.dart';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
+
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
 
 class CourseImage extends StatelessWidget {
   final String? imageUrl;
