@@ -790,6 +790,7 @@ class ChatController extends State<ChatPageWithRoom>
     _analyticsSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
+    carouselController.dispose();
     //Pangea#
     super.dispose();
   }
@@ -2205,6 +2206,8 @@ class ChatController extends State<ChatPageWithRoom>
       closePrevOverlay: false,
     );
   }
+
+  final ScrollController carouselController = ScrollController();
 
   ActivityRoleModel? highlightedRole;
   void highlightRole(ActivityRoleModel role) {

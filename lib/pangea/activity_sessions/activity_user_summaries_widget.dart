@@ -101,6 +101,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
         SizedBox(
           height: 175.0,
           child: ListView(
+            controller: controller.carouselController,
             itemExtent: 250,
             scrollDirection: Axis.horizontal,
             children: userSummaries.mapIndexed((i, p) {
@@ -211,6 +212,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
               selected: controller.highlightedRole?.id == userRole.id,
               onTap: () {
                 controller.highlightRole(userRole);
+                controller.carouselController.jumpTo(i * 250.0);
               },
             );
           }).toList(),
