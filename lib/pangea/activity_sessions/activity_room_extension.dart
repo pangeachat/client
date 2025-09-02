@@ -316,11 +316,8 @@ extension ActivityRoomExtension on Room {
         (parent) => parent.coursePlan != null,
       );
 
-  bool get isActivitySession =>
-      getState(EventTypes.RoomCreate)
-              ?.content
-              .tryGet<String>('type')
-              ?.startsWith(PangeaRoomTypes.activitySession) ==
-          true ||
-      activityPlan != null;
+  bool get isActivityRoomType =>
+      roomType?.startsWith(PangeaRoomTypes.activitySession) == true;
+
+  bool get isActivitySession => isActivityRoomType || activityPlan != null;
 }

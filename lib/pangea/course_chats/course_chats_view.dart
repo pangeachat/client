@@ -69,8 +69,12 @@ class CourseChatsView extends StatelessWidget {
 
             for (final joinedRoom in joinedRooms) {
               if (joinedRoom.isActivitySession) {
-                if (topic == null ||
-                    activityIds.contains(joinedRoom.activityPlan?.activityId)) {
+                String? activityId = joinedRoom.activityPlan?.activityId;
+                if (activityId == null && joinedRoom.isActivityRoomType) {
+                  activityId = joinedRoom.roomType!.split(":").last;
+                }
+
+                if (topic == null || activityIds.contains(activityId)) {
                   joinedSessions.add(joinedRoom);
                 }
               } else {
@@ -84,9 +88,10 @@ class CourseChatsView extends StatelessWidget {
                 controller.discoveredChildren ?? <SpaceRoomsChunk>[];
 
             for (final child in discoveredChildren) {
-              if (child.roomType?.startsWith(PangeaRoomTypes.activitySession) ==
+              final roomType = child.roomType;
+              if (roomType?.startsWith(PangeaRoomTypes.activitySession) ==
                   true) {
-                if (activityIds.contains(child.roomType!.split(":").last)) {
+                if (activityIds.contains(roomType!.split(":").last)) {
                   discoveredSessions.add(child);
                 }
               } else {
