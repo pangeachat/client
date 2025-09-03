@@ -1,5 +1,3 @@
-import 'package:get_storage/get_storage.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
@@ -10,8 +8,10 @@ import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_p
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_media.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic_location_media.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
 
 class CourseFilter {
   final LanguageModel? targetLanguage;
@@ -199,6 +199,7 @@ class CoursePlansRepo {
     final medias = await _getMedia(cmsCoursePlan);
     final topics = await _getTopics(cmsCoursePlan);
     final locations = await _getTopicLocations(topics ?? []);
+    final locationMedias = await _getTopicLocationMedia(locations ?? []);
     final activities = await _getTopicActivities(topics ?? []);
     final activityMedias = await _getActivityMedia(activities ?? []);
     return CoursePlanModel.fromCmsDocs(
@@ -206,6 +207,7 @@ class CoursePlansRepo {
       medias,
       topics,
       locations,
+      locationMedias,
       activities,
       activityMedias,
     );
@@ -277,6 +279,32 @@ class CoursePlansRepo {
       sort: "createdAt",
     );
     return cmsCoursePlanTopicLocationsResult.docs;
+  }
+
+  static Future<List<CmsCoursePlanTopicLocationMedia>?> _getTopicLocationMedia(
+    List<CmsCoursePlanTopicLocation> locations,
+  ) async {
+    final List<String> mediaIds = [];
+    for (final loc in locations) {
+      if (loc.coursePlanTopicLocationMedia?.docs != null) {
+        mediaIds.addAll(loc.coursePlanTopicLocationMedia!.docs!);
+      }
+    }
+    if (mediaIds.isEmpty) return null;
+
+    final where = {
+      "id": {"in": mediaIds.join(",")},
+    };
+    final limit = mediaIds.length;
+    final cmsCoursePlanTopicLocationMediasResult = await payload.find(
+      CmsCoursePlanTopicLocationMedia.slug,
+      CmsCoursePlanTopicLocationMedia.fromJson,
+      where: where,
+      limit: limit,
+      page: 1,
+      sort: "createdAt",
+    );
+    return cmsCoursePlanTopicLocationMediasResult.docs;
   }
 
   static Future<List<CmsCoursePlanActivity>?> _getTopicActivities(
