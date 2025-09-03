@@ -14,21 +14,24 @@ import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
-class ActivityPinnedMessage extends StatefulWidget {
+class ActivityStatsMenu extends StatefulWidget {
   final ChatController controller;
   final VoidCallback? onShowDropdown;
-  const ActivityPinnedMessage(
+  const ActivityStatsMenu(
     this.controller, {
     super.key,
     this.onShowDropdown,
   });
 
   @override
-  State<ActivityPinnedMessage> createState() => ActivityPinnedMessageState();
+  State<ActivityStatsMenu> createState() => ActivityStatsMenuState();
 }
 
-class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
+class ActivityStatsMenuState extends State<ActivityStatsMenu> {
   bool _showDropdown = false;
+
+  double percentVocabComplete = .7;
+  //TODO: calculate this percent value by how many are done/how many total to get an actual metric. It's set to 1 as a default but the message displayed depend on a real numebr.
 
   Room get room => widget.controller.room;
 
@@ -125,9 +128,19 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
     // Completion status variables
     final bool userComplete = room.hasCompletedActivity;
     final bool activityComplete = room.activityIsFinished;
-    final bool userHasRole = (room.ownRole != null);
+    //final bool userHasRole = (room.ownRole != null);
     bool shouldShowEndForAll = true;
     bool shouldShowImDone = true;
+
+    final analytics = room.liveActivityAnalytics;
+    final userId = Matrix.of(context).client.userID ?? '';
+    final vocabCount = analytics.uniqueConstructCountForUser(
+      userId,
+      ConstructTypeEnum.vocab,
+    );
+
+    debugPrint("Vocab count: $vocabCount");
+
     debugPrint(
       "assigned roles: ${_getAssignedRolesCount()} bot participant? ${_isBotParticipant()}",
     );
@@ -138,33 +151,44 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
       shouldShowEndForAll = false;
     }
 
-    if (!userHasRole) {
-      shouldShowImDone = false;
+    if ((_getAssignedRolesCount() == 1) && (_isBotParticipant() == true)) {
       shouldShowEndForAll = false;
-      if (room.remainingRoles == 0) {
-        //user has no role yet and there are none left, can see message but no buttons
-        message =
-            "There are no open roles in this activity, but feel free to stay and watch. Or, if you'd like to participate, you can make another activity and invite your friends!";
-      } else {
-        //user has no role yet but there are some left, can see message but no buttons
-        message =
-            "There are ${room.remainingRoles} roles left, join one if you'd like to participate!";
-      }
-    } else if (activityComplete) {
+    }
+
+    // if
+    // (!userHasRole) {
+    //   shouldShowImDone = false;
+    //   shouldShowEndForAll = false;
+    //   if (room.remainingRoles == 0) {
+    //     //user has no role yet and there are none left, can see message but no buttons
+    //     message =
+    //         "There are no open roles in this activity, but feel free to stay and watch. Or, if you'd like to participate, you can make another activity and invite your friends!";
+    //   } else {
+    //     //user has no role yet but there are some left, can see message but no buttons
+    //     message =
+    //         "There are ${room.remainingRoles} roles left, join one if you'd like to participate!";
+    //   } } else
+    if (activityComplete) {
       //activity is finished, no buttons
       shouldShowImDone = false;
       shouldShowEndForAll = false;
       message =
-          "This activity has been completed. See the activity summary below!";
+          "This activity has been completed. If you participated, the activity summary will be visible below.";
     } else {
       //activity is ongoing
-      if ((_getAssignedRolesCount() == 1) && (_isBotParticipant() == true)) {
-        //user is in room with only bot, controls wrapping up, should only show one wrap up button
-        shouldShowEndForAll = false;
-        message =
-            "If you feel like you've completed your objective, wrap up to finish the activity and we'll generate you a summary in the chat!";
+      if (_getCompletedRolesCount() == 0 ||
+          (_getAssignedRolesCount() == 1) && (_isBotParticipant() == true)) {
+        //IF nobodys done or you're only playing with the bot,
+        //Then it should show tips about your progress and nudge you to continue/end
+        if ((percentVocabComplete < .4) && vocabCount < 50) {
+          message =
+              "It looks like you haven't chatted much, try using some more vocab words! If you feel like you've completed your objective, you can end the activity below.";
+        } else {
+          message =
+              "It looks like you've been chatting for a while! If you feel like you've completed your objective, wrap up to finish the activity and we'll generate you a summary in the chat!";
+        }
       } else {
-        //user is in group with other users
+        //user is in group with other users OR someone has wrapped up
         if (userComplete) {
           //user is done but group is ongoing, no buttons
           message =
@@ -218,7 +242,6 @@ class ActivityPinnedMessageState extends State<ActivityPinnedMessage> {
                     spacing: 12.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // Table-like layout with 3 rows
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -386,21 +409,21 @@ class VocabTile extends StatelessWidget {
   }
 }
 
-class ActivityStatsRow extends StatefulWidget {
+class ActivityStatsButton extends StatefulWidget {
   final Room room;
   final VoidCallback onToggleDropdown;
 
-  const ActivityStatsRow({
+  const ActivityStatsButton({
     super.key,
     required this.room,
     required this.onToggleDropdown,
   });
 
   @override
-  State<ActivityStatsRow> createState() => _ActivityStatsRowState();
+  State<ActivityStatsButton> createState() => _ActivityStatsButtonState();
 }
 
-class _ActivityStatsRowState extends State<ActivityStatsRow> {
+class _ActivityStatsButtonState extends State<ActivityStatsButton> {
   late StreamSubscription _timelineSubscription;
 
   @override
@@ -424,7 +447,6 @@ class _ActivityStatsRowState extends State<ActivityStatsRow> {
   Widget build(BuildContext context) {
     // Use live analytics instead of summary analytics
     final analytics = widget.room.liveActivityAnalytics;
-
 
     final userId = Matrix.of(context).client.userID ?? '';
     final vocabCount = analytics.uniqueConstructCountForUser(

@@ -1,12 +1,6 @@
 import 'dart:ui' as ui;
 
-import 'package:flutter/material.dart';
-
 import 'package:badges/badges.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -15,7 +9,7 @@ import 'package:fluffychat/pages/chat/chat_app_bar_title.dart';
 import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_pinned_message.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/load_activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar_header.dart';
@@ -26,6 +20,10 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+
 import '../../utils/stream_extension.dart';
 
 // #Pangea
@@ -269,7 +267,7 @@ class ChatView extends StatelessWidget {
                           ),
                           const SizedBox(height: 8),
                           // Centered ActivityStatsRow beneath title
-                          ActivityStatsRow(
+                          ActivityStatsButton(
                             onToggleDropdown:
                                 controller.activityPinnedShowDropdown ?? () {},
                             room: controller.room,
@@ -283,6 +281,10 @@ class ChatView extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      Divider(
+                        height: 1,
+                        color: theme.dividerColor,
+                      ),
                       PinnedEvents(controller),
                       if (scrollUpBannerEventId != null)
                         ChatAppBarListTile(
@@ -497,7 +499,7 @@ class ChatView extends StatelessWidget {
                               ],
                             ),
                           ),
-                        ActivityPinnedMessage(
+                        ActivityStatsMenu(
                           controller,
                           onShowDropdown: () {
                             controller.activityPinnedShowDropdown?.call();
