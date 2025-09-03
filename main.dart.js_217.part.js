@@ -1590,9 +1590,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "Ignore";
     },
-    get$helpMeTranslate() {
-      return "Yes!";
-    },
     needsItMessage$1(targetLanguage) {
       return "Wait, that's not " + targetLanguage + "! Do you need help translating?";
     },
@@ -4647,6 +4644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_217", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "DLi5F/54/PW1sM2XMwVQdFqbhc0=");
+})($__dart_deferred_initializers__, "x68RfTo4hL/WbSnnw5OxNAHky1E=");
 ;
 //# sourceMappingURL=main.dart.js_217.part.js.map

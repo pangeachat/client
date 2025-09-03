@@ -1590,9 +1590,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$ignoreInThisText() {
       return "B\u1ecf qua";
     },
-    get$helpMeTranslate() {
-      return "\u0110\u1ed3ng \xfd!";
-    },
     needsItMessage$1(targetLanguage) {
       return "\u0110\u1ee3i \u0111\xe3, \u0111i\u1ec1u n\xe0y kh\xf4ng ph\u1ea3i b\u1eb1ng " + targetLanguage + "! B\u1ea1n c\xf3 c\u1ea7n gi\xfap d\u1ecbch kh\xf4ng?";
     },
@@ -4647,6 +4644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "6fBVIk6jBkT/WJAF6BngoqV9rMA=");
+})($__dart_deferred_initializers__, "HPQAT5fLHlfz6Itm5wgaGS9E6B4=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map
