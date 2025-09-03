@@ -4068,6 +4068,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Translation problem";
     },
+    get$niceJob() {
+      return "Nice job!";
+    },
     get$askToJoin() {
       return "Ask to join";
     },
@@ -4623,6 +4626,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$findCourse() {
       return "Find a course";
     },
+    get$activityCompletedDesc() {
+      return "Your completed activity was added to analytics where you can review and practice the language you used.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4638,6 +4644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_202", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "5/nP10dHWQcm+86eelOBaSHFix0=");
+})($__dart_deferred_initializers__, "AlPg4qwb+fS/OfIJwL3JpoDerp0=");
 ;
 //# sourceMappingURL=main.dart.js_202.part.js.map
