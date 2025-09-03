@@ -34,6 +34,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
   bool _started = false;
 
   bool showInstructions = false;
+  bool isBotRoomMember = true;
   String? _selectedRoleId;
 
   @override
@@ -48,7 +49,17 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     }
   }
 
+  @override
+  void initState() {
+    super.initState();
+    _checkForBot();
+  }
+
   Room get room => widget.room;
+
+  Future<void> _checkForBot() async {
+    isBotRoomMember = await room.botIsInRoom;
+  }
 
   String get displayname => room.getLocalizedDisplayname(
         MatrixLocals(L10n.of(context)),

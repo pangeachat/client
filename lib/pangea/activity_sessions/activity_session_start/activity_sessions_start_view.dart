@@ -139,7 +139,8 @@ class ActivitySessionStartView extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                            if (controller.room.isRoomAdmin) ...[
+                            if (controller.room.isRoomAdmin &&
+                                !controller.isBotRoomMember) ...[
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
@@ -153,8 +154,11 @@ class ActivitySessionStartView extends StatelessWidget {
                                 ),
                                 onPressed: () => showFutureLoadingDialog(
                                   context: context,
-                                  future: () => controller.room
-                                      .invite(BotName.byEnvironment),
+                                  future: () async {
+                                    controller.room
+                                        .invite(BotName.byEnvironment);
+                                    controller.isBotRoomMember = true;
+                                  },
                                 ),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
