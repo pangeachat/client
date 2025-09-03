@@ -569,6 +569,7 @@ abstract class AppRoutes {
                     state,
                     ChatDetails(
                       roomId: state.pathParameters['spaceid']!,
+                      activeTab: state.uri.queryParameters['tab'],
                     ),
                   ),
                   redirect: loggedOutRedirect,
@@ -578,13 +579,24 @@ abstract class AppRoutes {
                       pageBuilder: (context, state) => defaultPageBuilder(
                         context,
                         state,
-                        ChatDetails(
-                          roomId: state.pathParameters['spaceid']!,
-                        ),
+                        const EmptyPage(),
                       ),
-                      redirect: loggedOutRedirect,
+                      redirect: (context, state) {
+                        String subroute =
+                            state.fullPath?.split(":spaceid/details").last ??
+                                "";
+
+                        if (state.uri.queryParameters.isNotEmpty) {
+                          final queryString = state.uri.queryParameters.entries
+                              .map((e) => '${e.key}=${e.value}')
+                              .join('&');
+                          subroute = '$subroute?$queryString';
+                        }
+                        return "/rooms/spaces/${state.pathParameters['spaceid']}$subroute";
+                      },
                       routes: roomDetailsRoutes('spaceid'),
                     ),
+                    ...roomDetailsRoutes('spaceid'),
                     GoRoute(
                       path: ':roomid',
                       pageBuilder: (context, state) {
@@ -679,7 +691,14 @@ abstract class AppRoutes {
               // #Pangea
               // redirect: loggedOutRedirect,
               redirect: (context, state) {
-                final subroute = state.fullPath!.split('roomid').last;
+                String subroute = state.fullPath!.split('roomid').last;
+                if (state.uri.queryParameters.isNotEmpty) {
+                  final queryString = state.uri.queryParameters.entries
+                      .map((e) => '${e.key}=${e.value}')
+                      .join('&');
+                  subroute = '$subroute?$queryString';
+                }
+
                 final roomId = state.pathParameters['roomid']!;
                 final room = Matrix.of(context).client.getRoomById(roomId);
                 if (room != null && room.isSpace) {

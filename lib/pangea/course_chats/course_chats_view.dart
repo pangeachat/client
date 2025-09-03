@@ -12,9 +12,9 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_chats/unjoined_chat_list_item.dart';
-import 'package:fluffychat/pangea/courses/course_plan_builder.dart';
-import 'package:fluffychat/pangea/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_builder.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/space_analytics/analytics_request_indicator.dart';
 import 'package:fluffychat/pangea/spaces/widgets/knocking_users_indicator.dart';
@@ -50,50 +50,56 @@ class CourseChatsView extends StatelessWidget {
         final Topic? topic = controller.selectedTopic;
         final List<String> activityIds = topic?.activityIds ?? [];
 
-        final childrenIds =
-            room.spaceChildren.map((c) => c.roomId).whereType<String>().toSet();
-
-        final joinedChats = [];
-        final joinedSessions = [];
-        final joinedRooms = room.client.rooms
-            .where((room) => childrenIds.remove(room.id))
-            .where((room) => !room.isHiddenRoom)
-            .toList();
-
-        for (final joinedRoom in joinedRooms) {
-          if (joinedRoom.isActivitySession) {
-            if (topic == null ||
-                activityIds.contains(joinedRoom.activityPlan?.activityId)) {
-              joinedSessions.add(joinedRoom);
-            }
-          } else {
-            joinedChats.add(joinedRoom);
-          }
-        }
-
-        final discoveredGroupChats = [];
-        final discoveredSessions = [];
-        final discoveredChildren =
-            controller.discoveredChildren ?? <SpaceRoomsChunk>[];
-
-        for (final child in discoveredChildren) {
-          if (child.roomType?.startsWith(PangeaRoomTypes.activitySession) ==
-              true) {
-            if (activityIds.contains(child.roomType!.split(":").last)) {
-              discoveredSessions.add(child);
-            }
-          } else {
-            discoveredGroupChats.add(child);
-          }
-        }
-
-        final isColumnMode = FluffyThemes.isColumnMode(context);
-
         return StreamBuilder(
           stream: room.client.onSync.stream
               .where((s) => s.hasRoomUpdate)
               .rateLimit(const Duration(seconds: 1)),
           builder: (context, snapshot) {
+            final childrenIds = room.spaceChildren
+                .map((c) => c.roomId)
+                .whereType<String>()
+                .toSet();
+
+            final joinedChats = [];
+            final joinedSessions = [];
+            final joinedRooms = room.client.rooms
+                .where((room) => childrenIds.remove(room.id))
+                .where((room) => !room.isHiddenRoom)
+                .toList();
+
+            for (final joinedRoom in joinedRooms) {
+              if (joinedRoom.isActivitySession) {
+                String? activityId = joinedRoom.activityPlan?.activityId;
+                if (activityId == null && joinedRoom.isActivityRoomType) {
+                  activityId = joinedRoom.roomType!.split(":").last;
+                }
+
+                if (topic == null || activityIds.contains(activityId)) {
+                  joinedSessions.add(joinedRoom);
+                }
+              } else {
+                joinedChats.add(joinedRoom);
+              }
+            }
+
+            final discoveredGroupChats = [];
+            final discoveredSessions = [];
+            final discoveredChildren =
+                controller.discoveredChildren ?? <SpaceRoomsChunk>[];
+
+            for (final child in discoveredChildren) {
+              final roomType = child.roomType;
+              if (roomType?.startsWith(PangeaRoomTypes.activitySession) ==
+                  true) {
+                if (activityIds.contains(roomType!.split(":").last)) {
+                  discoveredSessions.add(child);
+                }
+              } else {
+                discoveredGroupChats.add(child);
+              }
+            }
+
+            final isColumnMode = FluffyThemes.isColumnMode(context);
             return Padding(
               padding: isColumnMode
                   ? const EdgeInsets.symmetric(
@@ -264,8 +270,9 @@ class CourseChatsView extends StatelessWidget {
                             title: Text(L10n.of(context).whatNow),
                             subtitle: Text(L10n.of(context).chooseNextActivity),
                             trailing: const Icon(Icons.arrow_forward),
-                            onTap: () =>
-                                context.go("/rooms/spaces/${room.id}/details"),
+                            onTap: () => context.go(
+                              "/rooms/spaces/${room.id}/details?tab=course",
+                            ),
                           )
                         : const SizedBox();
                   }

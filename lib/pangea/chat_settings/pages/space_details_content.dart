@@ -1,11 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
-import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -14,16 +12,15 @@ import 'package:fluffychat/pangea/chat_settings/pages/room_details_buttons.dart'
 import 'package:fluffychat/pangea/chat_settings/pages/room_participants_widget.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/space_details_button_row.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/widgets/share_room_button.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_builder.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_settings/course_settings.dart';
-import 'package:fluffychat/pangea/courses/course_plan_builder.dart';
-import 'package:fluffychat/pangea/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
-import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -34,79 +31,71 @@ enum SpaceSettingsTabs {
   course,
   participants,
   analytics,
-  more,
+  more;
+
+  static SpaceSettingsTabs? fromString(String value) {
+    return SpaceSettingsTabs.values.firstWhereOrNull(
+      (e) => e.name == value,
+    );
+  }
 }
 
-class SpaceDetailsContent extends StatefulWidget {
+class SpaceDetailsContent extends StatelessWidget {
   final ChatDetailsController controller;
   final Room room;
 
-  const SpaceDetailsContent(this.controller, this.room, {super.key});
+  const SpaceDetailsContent(
+    this.controller,
+    this.room, {
+    super.key,
+  });
 
-  @override
-  State<SpaceDetailsContent> createState() => SpaceDetailsContentState();
-}
+  SpaceSettingsTabs tab(BuildContext context) {
+    final defaultTab = FluffyThemes.isColumnMode(context)
+        ? SpaceSettingsTabs.course
+        : SpaceSettingsTabs.chat;
 
-class SpaceDetailsContentState extends State<SpaceDetailsContent> {
-  SpaceSettingsTabs? _selectedTab;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      setState(
-        () => _selectedTab = FluffyThemes.isColumnMode(context)
-            ? SpaceSettingsTabs.course
-            : SpaceSettingsTabs.chat,
-      );
-    });
-  }
-
-  @override
-  void didUpdateWidget(covariant SpaceDetailsContent oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.room.id != widget.room.id) {
-      setState(() {
-        _selectedTab = FluffyThemes.isColumnMode(context)
-            ? SpaceSettingsTabs.course
-            : SpaceSettingsTabs.chat;
-      });
+    final activeTab = controller.widget.activeTab;
+    if (activeTab != null) {
+      final selectedTab = SpaceSettingsTabs.fromString(activeTab);
+      return selectedTab ?? defaultTab;
     }
+
+    return defaultTab;
   }
 
-  void setSelectedTab(SpaceSettingsTabs tab) {
-    setState(() {
-      _selectedTab = tab;
-    });
+  void setSelectedTab(SpaceSettingsTabs tab, BuildContext context) {
+    context.go('/rooms/spaces/${room.id}/details?tab=${tab.name}');
   }
 
-  List<ButtonDetails> get _buttons {
+  List<ButtonDetails> _buttons(BuildContext context) {
     final L10n l10n = L10n.of(context);
     return [
       ButtonDetails(
         title: l10n.chats,
         icon: const Icon(Icons.chat_bubble_outline, size: 30.0),
-        onPressed: () => setSelectedTab(SpaceSettingsTabs.chat),
+        onPressed: () => setSelectedTab(SpaceSettingsTabs.chat, context),
         visible: !FluffyThemes.isColumnMode(context),
         tab: SpaceSettingsTabs.chat,
       ),
       ButtonDetails(
         title: l10n.coursePlan,
         icon: const Icon(Icons.map_outlined, size: 30.0),
-        onPressed: () => setSelectedTab(SpaceSettingsTabs.course),
+        onPressed: () => setSelectedTab(SpaceSettingsTabs.course, context),
         tab: SpaceSettingsTabs.course,
       ),
       ButtonDetails(
         title: l10n.participants,
         icon: const Icon(Icons.group_outlined, size: 30.0),
-        onPressed: () => setSelectedTab(SpaceSettingsTabs.participants),
+        onPressed: () =>
+            setSelectedTab(SpaceSettingsTabs.participants, context),
         tab: SpaceSettingsTabs.participants,
       ),
       ButtonDetails(
         title: l10n.stats,
         icon: const Icon(Symbols.bar_chart_4_bars, size: 30.0),
-        onPressed: () => setSelectedTab(SpaceSettingsTabs.analytics),
-        enabled: widget.room.isRoomAdmin,
+        onPressed: () => setSelectedTab(SpaceSettingsTabs.analytics, context),
+        enabled: room.isRoomAdmin,
         tab: SpaceSettingsTabs.analytics,
       ),
       ButtonDetails(
@@ -115,16 +104,14 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         icon: const Icon(Icons.person_add_outlined, size: 30.0),
         onPressed: () {
           String filter = 'knocking';
-          if (widget.room.getParticipants([Membership.knock]).isEmpty) {
-            filter = widget.room.pangeaSpaceParents.isNotEmpty
-                ? 'space'
-                : 'contacts';
+          if (room.getParticipants([Membership.knock]).isEmpty) {
+            filter = room.pangeaSpaceParents.isNotEmpty ? 'space' : 'contacts';
           }
           context.go(
-            '/rooms/spaces/${widget.room.id}/details/invite?filter=$filter',
+            '/rooms/spaces/${room.id}/details/invite?filter=$filter',
           );
         },
-        enabled: widget.room.canInvite && !widget.room.isDirectChat,
+        enabled: room.canInvite && !room.isDirectChat,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -133,33 +120,32 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         icon: const Icon(Icons.edit_outlined, size: 30.0),
         onPressed: () {},
         visible: false,
-        enabled: widget.room.canChangeStateEvent(PangeaEventTypes.coursePlan),
+        enabled: room.canChangeStateEvent(PangeaEventTypes.coursePlan),
         showInMainView: false,
       ),
       ButtonDetails(
         title: l10n.permissions,
         description: l10n.permissionsDesc,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
-        onPressed: () =>
-            context.go('/rooms/${widget.room.id}/details/permissions'),
-        enabled: widget.room.isRoomAdmin && !widget.room.isDirectChat,
+        onPressed: () => context.go('/rooms/${room.id}/details/permissions'),
+        enabled: room.isRoomAdmin && !room.isDirectChat,
         showInMainView: false,
       ),
       ButtonDetails(
         title: l10n.access,
         description: l10n.accessDesc,
         icon: const Icon(Icons.shield_outlined, size: 30.0),
-        onPressed: () => context.go('/rooms/${widget.room.id}/details/access'),
-        enabled: widget.room.isRoomAdmin && widget.room.spaceParents.isEmpty,
+        onPressed: () => context.go('/rooms/${room.id}/details/access'),
+        enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
         showInMainView: false,
       ),
       ButtonDetails(
         title: l10n.createGroupChat,
         description: l10n.createGroupChatDesc,
         icon: const Icon(Symbols.chat_add_on, size: 30.0),
-        onPressed: widget.controller.addGroupChat,
-        enabled: widget.room.isRoomAdmin &&
-            widget.room.canChangeStateEvent(
+        onPressed: controller.addGroupChat,
+        enabled: room.isRoomAdmin &&
+            room.canChangeStateEvent(
               EventTypes.SpaceChild,
             ),
         showInMainView: false,
@@ -180,13 +166,13 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
           if (confirmed != OkCancelResult.ok) return;
           final resp = await showFutureLoadingDialog(
             context: context,
-            future: widget.room.leaveSpace,
+            future: room.leaveSpace,
           );
           if (!resp.isError) {
             context.go("/rooms");
           }
         },
-        enabled: widget.room.membership == Membership.join,
+        enabled: room.membership == Membership.join,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -199,14 +185,14 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
         onPressed: () async {
           final resp = await showDialog<bool?>(
             context: context,
-            builder: (_) => DeleteSpaceDialog(space: widget.room),
+            builder: (_) => DeleteSpaceDialog(space: room),
           );
 
           if (resp == true) {
             context.go("/rooms");
           }
         },
-        enabled: widget.room.isRoomAdmin && !widget.room.isDirectChat,
+        enabled: room.isRoomAdmin && !room.isDirectChat,
         showInMainView: false,
       ),
     ];
@@ -215,11 +201,11 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
   @override
   Widget build(BuildContext context) {
     final isColumnMode = FluffyThemes.isColumnMode(context);
-    final displayname = widget.room.getLocalizedDisplayname(
+    final displayname = room.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
     return CoursePlanBuilder(
-      courseId: widget.room.coursePlan?.uuid,
+      courseId: room.coursePlan?.uuid,
       builder: (context, courseController) {
         return Column(
           mainAxisSize: MainAxisSize.min,
@@ -236,13 +222,12 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                     children: [
                       if (isColumnMode) ...[
                         Avatar(
-                          mxContent: widget.room.avatar,
+                          mxContent: room.avatar,
                           name: displayname,
-                          userId: widget.room.directChatMatrixID,
+                          userId: room.directChatMatrixID,
                           size: 80.0,
-                          borderRadius: widget.room.isSpace
-                              ? BorderRadius.circular(24.0)
-                              : null,
+                          borderRadius:
+                              room.isSpace ? BorderRadius.circular(24.0) : null,
                         ),
                         const SizedBox(width: 16.0),
                       ],
@@ -275,95 +260,51 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                     ],
                   ),
                 ),
-                if (widget.room.classCode != null)
+                if (room.classCode != null)
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0),
-                    child: PopupMenuButton(
-                      child: const Icon(Symbols.upload),
-                      onSelected: (value) async {
-                        final spaceCode = widget.room.classCode!;
-                        String toCopy = spaceCode;
-                        if (value == 0) {
-                          final String initialUrl = kIsWeb
-                              ? html.window.origin!
-                              : Environment.frontendURL;
-                          toCopy =
-                              "$initialUrl/#/join_with_link?${SpaceConstants.classCode}=${widget.room.classCode}";
-                        }
-
-                        await Clipboard.setData(ClipboardData(text: toCopy));
-                        ScaffoldMessenger.of(
-                          context,
-                        ).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              L10n.of(context).copiedToClipboard,
-                            ),
-                          ),
-                        );
-                      },
-                      itemBuilder: (BuildContext context) =>
-                          <PopupMenuEntry<int>>[
-                        PopupMenuItem<int>(
-                          value: 0,
-                          child: ListTile(
-                            title: Text(L10n.of(context).shareSpaceLink),
-                            contentPadding: const EdgeInsets.all(0),
-                          ),
-                        ),
-                        PopupMenuItem<int>(
-                          value: 1,
-                          child: ListTile(
-                            title: Text(
-                              L10n.of(context)
-                                  .shareInviteCode(widget.room.classCode!),
-                            ),
-                            contentPadding: const EdgeInsets.all(0),
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: ShareRoomButton(room: room),
                   ),
               ],
             ),
             SizedBox(height: isColumnMode ? 24.0 : 12.0),
             SpaceDetailsButtonRow(
-              controller: widget.controller,
-              room: widget.room,
-              selectedTab: _selectedTab,
-              onTabSelected: setSelectedTab,
-              buttons: _buttons,
+              controller: controller,
+              room: room,
+              selectedTab: tab(context),
+              onTabSelected: (tab) => setSelectedTab(tab, context),
+              buttons: _buttons(context),
             ),
             SizedBox(height: isColumnMode ? 30.0 : 14.0),
             Expanded(
               child: Builder(
                 builder: (context) {
-                  switch (_selectedTab) {
+                  switch (tab(context)) {
                     case SpaceSettingsTabs.chat:
                       return CourseChats(
-                        widget.room.id,
+                        room.id,
                         activeChat: null,
-                        client: widget.room.client,
+                        client: room.client,
                       );
                     case SpaceSettingsTabs.course:
                       return SingleChildScrollView(
                         child: CourseSettings(
                           courseController,
-                          room: widget.room,
+                          room: room,
                         ),
                       );
                     case SpaceSettingsTabs.participants:
                       return SingleChildScrollView(
-                        child: RoomParticipantsSection(room: widget.room),
+                        child: RoomParticipantsSection(room: room),
                       );
                     case SpaceSettingsTabs.analytics:
                       return SingleChildScrollView(
                         child: Center(
-                          child: SpaceAnalytics(roomId: widget.room.id),
+                          child: SpaceAnalytics(roomId: room.id),
                         ),
                       );
                     case SpaceSettingsTabs.more:
-                      final buttons = _buttons
+                      final buttons = _buttons(context)
                           .where(
                             (b) => !b.showInMainView && b.visible,
                           )
@@ -403,8 +344,6 @@ class SpaceDetailsContentState extends State<SpaceDetailsContent> {
                           ],
                         ),
                       );
-                    case null:
-                      return const SizedBox();
                   }
                 },
               ),

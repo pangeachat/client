@@ -11,7 +11,7 @@ import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -21,21 +21,6 @@ import 'package:matrix/matrix.dart';
 import '../activity_summary/activity_summary_repo.dart';
 
 extension ActivityRoomExtension on Room {
-  Future<void> sendActivityPlan(
-    ActivityPlanModel activity, {
-    Uint8List? avatar,
-    String? filename,
-  }) async {
-    if (canChangeStateEvent(PangeaEventTypes.activityPlan)) {
-      await client.setRoomStateWithKey(
-        id,
-        PangeaEventTypes.activityPlan,
-        "",
-        activity.toJson(),
-      );
-    }
-  }
-
   Future<void> joinActivity(ActivityRole role) async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
 
@@ -279,8 +264,8 @@ extension ActivityRoomExtension on Room {
   ActivityRoleModel? get ownRole => activityRoles?.role(client.userID!);
 
   int get remainingRoles {
-    final availableRoles = activityPlan!.roles;
-    return max(0, availableRoles.length - (assignedRoles?.length ?? 0));
+    final availableRoles = activityPlan?.roles;
+    return max(0, (availableRoles?.length ?? 0) - (assignedRoles?.length ?? 0));
   }
 
   bool get showActivityChatUI {
@@ -288,6 +273,8 @@ extension ActivityRoomExtension on Room {
         powerForChangingStateEvent(PangeaEventTypes.activityRole) == 0 &&
         powerForChangingStateEvent(PangeaEventTypes.activitySummary) == 0;
   }
+
+  bool get activityHasStarted => remainingRoles == 0;
 
   bool get isActiveInActivity {
     if (!showActivityChatUI) return false;
@@ -329,13 +316,10 @@ extension ActivityRoomExtension on Room {
         (parent) => parent.coursePlan != null,
       );
 
-  bool get isActivitySession =>
-      getState(EventTypes.RoomCreate)
-              ?.content
-              .tryGet<String>('type')
-              ?.startsWith(PangeaRoomTypes.activitySession) ==
-          true ||
-      activityPlan != null;
+  bool get isActivityRoomType =>
+      roomType?.startsWith(PangeaRoomTypes.activitySession) == true;
+
+  bool get isActivitySession => isActivityRoomType || activityPlan != null;
 
   // Live analytics that update as messages are sent
   ActivitySummaryAnalyticsModel get liveActivityAnalytics {
