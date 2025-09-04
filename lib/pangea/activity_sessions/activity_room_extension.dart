@@ -274,7 +274,9 @@ extension ActivityRoomExtension on Room {
         powerForChangingStateEvent(PangeaEventTypes.activitySummary) == 0;
   }
 
-  bool get activityHasStarted => remainingRoles == 0;
+  bool get activityHasStarted =>
+      (activityPlan?.roles.length ?? 0) - (activityRoles?.roles.length ?? 0) <=
+      0;
 
   bool get isActiveInActivity {
     if (!showActivityChatUI) return false;
