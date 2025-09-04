@@ -183,9 +183,6 @@ class UserDialog extends StatelessWidget {
             bigButtons: true,
             onPressed: () async {
               final router = GoRouter.of(context);
-              // #Pangea
-              // Navigator.of(context).pop();
-              // Pangea#
               final roomIdResult = await showFutureLoadingDialog(
                 context: context,
                 // #Pangea
@@ -196,11 +193,9 @@ class UserDialog extends StatelessWidget {
                 ),
                 // Pangea#
               );
-              // #Pangea
-              Navigator.of(context).pop();
-              // Pangea#
               final roomId = roomIdResult.result;
               if (roomId == null) return;
+              if (context.mounted) Navigator.of(context).pop();
               router.go('/rooms/$roomId');
             },
             child: Text(
