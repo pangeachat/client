@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -15,6 +11,8 @@ import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/layouts/empty_page.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class OnboardingView extends StatelessWidget {
   final OnboardingController controller;
@@ -47,7 +45,7 @@ class OnboardingView extends StatelessWidget {
           return Stack(
             alignment: Alignment.topCenter,
             children: [
-              if (isColumnMode && !OnboardingController.isClosed)
+              if (!OnboardingController.isClosed)
                 Positioned(
                   bottom: 0.0,
                   child: AnimatedOpacity(
@@ -56,72 +54,103 @@ class OnboardingView extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl:
                           "${AppConfig.assetsBaseURL}/${OnboardingConstants.onboardingImageFileName}",
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                     ),
                   ),
                 ),
+              Divider(
+                color: isColumnMode
+                    ? Colors.transparent
+                    : Theme.of(context).colorScheme.primary,
+                thickness: 2.0,
+                indent: 20.0,
+                height: 20.0,
+                endIndent: 20.0,
+                radius: BorderRadius.circular(2),
+              ),
               AnimatedContainer(
                 duration: FluffyThemes.animationDuration,
                 height: OnboardingController.isClosed ? 0 : screenheight,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    vertical: 12.0,
-                    horizontal: isColumnMode ? 20.0 : 8.0,
+                    vertical: 42.0,
+                    horizontal: isColumnMode ? 20.0 : 80.0,
                   ),
-                  child: MaxWidthBody(
-                    showBorder: false,
-                    maxWidth: 850.0,
-                    child: Column(
-                      children: [
-                        Text(
-                          L10n.of(context).getStarted,
-                          style: TextStyle(
-                            fontSize: isColumnMode ? 32.0 : 16.0,
-                            height: isColumnMode ? 1.2 : 1.5,
+
+                  //Adds a gradient to the background to make 'getting started' text more readable
+                  child: Container(
+                    constraints:
+                        const BoxConstraints(minWidth: 0, maxWidth: 850.0),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Theme.of(context).colorScheme.surface,
+                          Theme.of(context)
+                              .colorScheme
+                              .surface
+                              .withValues(alpha: 0)
+                        ],
+                        stops: const [0.75, 0.95],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                      ),
+                    ),
+                    child: MaxWidthBody(
+                      showBorder: true,
+                      maxWidth: 850.0,
+                      child: Column(
+                        children: [
+                          Text(
+                            L10n.of(context).getStarted,
+                            style: TextStyle(
+                              fontSize: isColumnMode ? 32.0 : 24.0,
+                              height: isColumnMode ? 1.2 : 1.5,
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(
-                            isColumnMode ? 40.0 : 12.0,
+                          Padding(
+                            padding: EdgeInsets.all(
+                              isColumnMode ? 40.0 : 12.0,
+                            ),
+                            child: Row(
+                              spacing: 8.0,
+                              mainAxisSize: MainAxisSize.min,
+                              children: OnboardingStepsEnum.values.map((step) {
+                                final complete =
+                                    OnboardingController.complete(step);
+                                return CircleAvatar(
+                                  radius: 6.0,
+                                  backgroundColor: complete
+                                      ? AppConfig.success
+                                      : Theme.of(context).colorScheme.primary,
+                                  child: CircleAvatar(
+                                    radius: 3.0,
+                                    backgroundColor:
+                                        Theme.of(context).colorScheme.surface,
+                                  ),
+                                );
+                              }).toList(),
+                            ),
                           ),
-                          child: Row(
-                            spacing: 8.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: OnboardingStepsEnum.values.map((step) {
-                              final complete =
-                                  OnboardingController.complete(step);
-                              return CircleAvatar(
-                                radius: 6.0,
-                                backgroundColor: complete
-                                    ? AppConfig.success
-                                    : Theme.of(context).colorScheme.primary,
-                                child: CircleAvatar(
-                                  radius: 3.0,
-                                  backgroundColor:
-                                      Theme.of(context).colorScheme.surface,
+                          OnboardingController.isComplete
+                              ? OnboardingComplete(
+                                  controller: controller,
+                                )
+                              : Column(
+                                  spacing: 12.0,
+                                  children: [
+                                    for (final step
+                                        in OnboardingStepsEnum.values)
+                                      OnboardingStep(
+                                        step: step,
+                                        isComplete:
+                                            OnboardingController.complete(step),
+                                        onPressed: () =>
+                                            controller.onPressed(step),
+                                      ),
+                                  ],
                                 ),
-                              );
-                            }).toList(),
-                          ),
-                        ),
-                        OnboardingController.isComplete
-                            ? OnboardingComplete(
-                                controller: controller,
-                              )
-                            : Column(
-                                spacing: 12.0,
-                                children: [
-                                  for (final step in OnboardingStepsEnum.values)
-                                    OnboardingStep(
-                                      step: step,
-                                      isComplete:
-                                          OnboardingController.complete(step),
-                                      onPressed: () =>
-                                          controller.onPressed(step),
-                                    ),
-                                ],
-                              ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
