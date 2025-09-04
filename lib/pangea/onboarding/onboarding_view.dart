@@ -76,8 +76,6 @@ class OnboardingView extends StatelessWidget {
                     vertical: 42.0,
                     horizontal: isColumnMode ? 20.0 : 80.0,
                   ),
-
-                  //Adds a gradient to the background to make 'getting started' text more readable
                   child: Container(
                     constraints:
                         const BoxConstraints(minWidth: 0, maxWidth: 850.0),
@@ -88,7 +86,7 @@ class OnboardingView extends StatelessWidget {
                           Theme.of(context)
                               .colorScheme
                               .surface
-                              .withValues(alpha: 0)
+                              .withValues(alpha: 0),
                         ],
                         stops: const [0.75, 0.95],
                         begin: Alignment.topCenter,
