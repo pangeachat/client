@@ -139,34 +139,31 @@ class ActivitySessionStartView extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                            if (controller.room.isRoomAdmin &&
-                                !controller.isBotRoomMember) ...[
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      theme.colorScheme.primaryContainer,
-                                  foregroundColor:
-                                      theme.colorScheme.onPrimaryContainer,
-                                  padding: const EdgeInsets.all(8.0),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20.0),
+                            if (controller.room.isRoomAdmin) ...[
+                              if (!controller.isBotRoomMember)
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        theme.colorScheme.primaryContainer,
+                                    foregroundColor:
+                                        theme.colorScheme.onPrimaryContainer,
+                                    padding: const EdgeInsets.all(8.0),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                  ),
+                                  onPressed: () => showFutureLoadingDialog(
+                                    context: context,
+                                    future: () => controller.room
+                                        .invite(BotName.byEnvironment),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(L10n.of(context).playWithBot),
+                                    ],
                                   ),
                                 ),
-                                onPressed: () => showFutureLoadingDialog(
-                                  context: context,
-                                  future: () async {
-                                    controller.room
-                                        .invite(BotName.byEnvironment);
-                                    controller.isBotRoomMember = true;
-                                  },
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(L10n.of(context).playWithBot),
-                                  ],
-                                ),
-                              ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:

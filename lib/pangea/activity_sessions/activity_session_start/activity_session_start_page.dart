@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
+import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -34,7 +35,6 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
   bool _started = false;
 
   bool showInstructions = false;
-  bool isBotRoomMember = true;
   String? _selectedRoleId;
 
   @override
@@ -49,17 +49,11 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     }
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _checkForBot();
-  }
-
   Room get room => widget.room;
 
-  Future<void> _checkForBot() async {
-    isBotRoomMember = await room.botIsInRoom;
-  }
+  bool get isBotRoomMember => room.getParticipants().any(
+        (p) => p.id == BotName.byEnvironment,
+      );
 
   String get displayname => room.getLocalizedDisplayname(
         MatrixLocals(L10n.of(context)),
