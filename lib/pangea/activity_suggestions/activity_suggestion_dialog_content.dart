@@ -1,6 +1,7 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:collection/collection.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
@@ -9,10 +10,10 @@ import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card_row.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_dialog.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:fluffychat/widgets/mxc_image.dart';
 
 class ActivitySuggestionDialogContent extends StatelessWidget {
   final ActivitySuggestionDialogState controller;
@@ -46,45 +47,14 @@ class _ActivitySuggestionDialogImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imageWidth = (width / 2) + 42.0;
     return Container(
       padding: const EdgeInsets.all(24.0),
-      width: (width / 2) + 42.0,
-      child: ClipRRect(
+      width: imageWidth,
+      child: ImageByUrl(
+        imageUrl: activityController.updatedActivity.imageURL,
+        width: imageWidth,
         borderRadius: BorderRadius.circular(20.0),
-        child: activityController.avatar != null
-            ? Image.memory(
-                activityController.avatar!,
-                fit: BoxFit.cover,
-              )
-            : activityController.updatedActivity.imageURL != null
-                ? activityController.updatedActivity.imageURL!.startsWith("mxc")
-                    ? MxcImage(
-                        uri: Uri.parse(
-                          activityController.updatedActivity.imageURL!,
-                        ),
-                        width: width / 2,
-                        height: 200,
-                        cacheKey: activityController.updatedActivity.bookmarkId,
-                        fit: BoxFit.cover,
-                      )
-                    : CachedNetworkImage(
-                        imageUrl: activityController.updatedActivity.imageURL!,
-                        fit: BoxFit.cover,
-                        placeholder: (
-                          context,
-                          url,
-                        ) =>
-                            const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        errorWidget: (
-                          context,
-                          url,
-                          error,
-                        ) =>
-                            const SizedBox(),
-                      )
-                : null,
       ),
     );
   }
@@ -241,23 +211,24 @@ class _ActivitySuggestionBaseContent extends StatelessWidget {
         Row(
           spacing: 12.0,
           children: [
-            Expanded(
-              child: ElevatedButton(
-                style: controller.buttonStyle,
-                onPressed: activityController.startEditing,
-                child: Row(
-                  children: [
-                    const Icon(Icons.edit),
-                    Expanded(
-                      child: Text(
-                        L10n.of(context).edit,
-                        textAlign: TextAlign.center,
+            if (activityController.widget.enabledEdits)
+              Expanded(
+                child: ElevatedButton(
+                  style: controller.buttonStyle,
+                  onPressed: activityController.startEditing,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.edit),
+                      Expanded(
+                        child: Text(
+                          L10n.of(context).edit,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
             if (controller.widget.replaceActivity != null)
               Expanded(
                 child: ElevatedButton(
@@ -287,9 +258,11 @@ class _ActivitySuggestionBaseContent extends StatelessWidget {
                 style: controller.buttonStyle,
                 // onPressed: _launchActivity,
                 onPressed: () {
-                  activityController.setLaunchState(
-                    ActivityLaunchState.launching,
-                  );
+                  !activityController.widget.enableMultiLaunch
+                      ? controller.launchActivity()
+                      : activityController.setLaunchState(
+                          ActivityLaunchState.launching,
+                        );
                 },
                 child: Row(
                   spacing: 12.0,
@@ -393,7 +366,7 @@ class _ActivitySuggestionEditContent extends StatelessWidget {
         child: TextFormField(
           controller: activityController.participantsController,
           decoration: InputDecoration(
-            labelText: L10n.of(context).classRoster,
+            labelText: L10n.of(context).participants,
           ),
           maxLines: 1,
           keyboardType: TextInputType.number,
@@ -610,44 +583,15 @@ class _ActivitySuggestionLaunchContent extends StatelessWidget {
         ),
       ),
       ActivitySuggestionCardRow(
-        leading: activityController.updatedActivity.imageURL != null
-            ? ClipRRect(
-                borderRadius: BorderRadius.circular(4.0),
-                child: activityController.updatedActivity.imageURL!
-                        .startsWith("mxc")
-                    ? MxcImage(
-                        uri: Uri.parse(
-                          activityController.updatedActivity.imageURL!,
-                        ),
-                        width: 24.0,
-                        height: 24.0,
-                        cacheKey: activityController.updatedActivity.bookmarkId,
-                        fit: BoxFit.cover,
-                      )
-                    : CachedNetworkImage(
-                        imageUrl: activityController.updatedActivity.imageURL!,
-                        fit: BoxFit.cover,
-                        width: 24.0,
-                        height: 24.0,
-                        placeholder: (
-                          context,
-                          url,
-                        ) =>
-                            const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        errorWidget: (
-                          context,
-                          url,
-                          error,
-                        ) =>
-                            const SizedBox(),
-                      ),
-              )
-            : const Icon(
-                Icons.event_note_outlined,
-                size: 24.0,
-              ),
+        leading: ImageByUrl(
+          imageUrl: activityController.updatedActivity.imageURL,
+          width: 24.0,
+          borderRadius: BorderRadius.circular(4.0),
+          replacement: const Icon(
+            Icons.event_note_outlined,
+            size: 24.0,
+          ),
+        ),
         child: Text(
           activityController.updatedActivity.title,
           style: const TextStyle(

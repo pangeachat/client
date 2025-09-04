@@ -25,7 +25,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_new_badger/flutter_new_badger.dart';
@@ -36,7 +35,6 @@ import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import '../config/app_config.dart';
@@ -71,7 +69,6 @@ class BackgroundPush {
 
   //<GOOGLE_SERVICES>final firebase = FcmSharedIsolate();
   // #Pangea
-  // uncommented to enable notifications on IOS
   final FcmSharedIsolate? firebase = FcmSharedIsolate();
   // Pangea#
 
@@ -92,6 +89,19 @@ class BackgroundPush {
         ),
         onDidReceiveNotificationResponse: goToRoom,
       );
+
+      // #Pangea
+      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+        pushHelper(
+          PushNotification.fromJson(message.data),
+          client: client,
+          l10n: l10n,
+          activeRoomId: matrix?.activeRoomId,
+          flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
+        );
+      });
+      // Pangea#
+
       Logs().v('Flutter Local Notifications initialized');
       //<GOOGLE_SERVICES>firebase.setListeners(
       //<GOOGLE_SERVICES>  onMessage: (message) => pushHelper(
@@ -104,6 +114,7 @@ class BackgroundPush {
       //<GOOGLE_SERVICES>    flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
       //<GOOGLE_SERVICES>  ),
       //<GOOGLE_SERVICES>);
+
       // #Pangea
       firebase?.setListeners(
         onMessage: (message) => pushHelper(
@@ -118,10 +129,11 @@ class BackgroundPush {
         onNewToken: _newFcmToken,
       );
       // Pangea#
+
       if (Platform.isAndroid) {
         await UnifiedPush.initialize(
           onNewEndpoint: _newUpEndpoint,
-          onRegistrationFailed: (_, i) => _upUnregistered(i),
+          onRegistrationFailed: _upUnregistered,
           onUnregistered: _upUnregistered,
           onMessage: _onUpMessage,
         );
@@ -134,41 +146,6 @@ class BackgroundPush {
   BackgroundPush._(this.client) {
     _init();
   }
-
-  // #Pangea
-  Future<void> _onOpenNotification(RemoteMessage? message) async {
-    if (message == null ||
-        !message.data.containsKey('room_id') ||
-        message.data['room_id'] == null ||
-        message.data['room_id'].isEmpty) {
-      return;
-    }
-
-    try {
-      final roomId = message.data['room_id'];
-      await client.roomsLoading;
-      await client.accountDataLoading;
-      if (client.getRoomById(roomId) == null) {
-        await client
-            .waitForRoomInSync(roomId)
-            .timeout(const Duration(seconds: 30));
-      }
-      FluffyChatApp.router.go(
-        client.getRoomById(roomId)?.membership == Membership.invite
-            ? '/rooms'
-            : '/rooms/$roomId',
-      );
-    } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {
-          "roomId": message.data['room_id'],
-        },
-      );
-    }
-  }
-  // Pangea#
 
   factory BackgroundPush.clientOnly(Client client) {
     return _instance ??= BackgroundPush._(client);
@@ -183,24 +160,10 @@ class BackgroundPush {
     // ignore: prefer_initializing_formals
     instance.onFcmError = onFcmError;
     // #Pangea
-    instance.fullInit();
+    instance.setupPush();
     // Pangea#
     return instance;
   }
-
-  // #Pangea
-  Future<void> fullInit() => setupPush();
-
-  void handleLoginStateChanged(_) => setupPush();
-
-  StreamSubscription<LoginState>? onLogin;
-
-  void _newFcmToken(String token) {
-    _fcmToken = token;
-    debugPrint('Fcm foken $_fcmToken');
-    setupPush();
-  }
-  // Pangea#
 
   Future<void> cancelNotification(String roomId) async {
     Logs().v('Cancel notification for room', roomId);
@@ -211,19 +174,11 @@ class BackgroundPush {
       final unreadCount = client.rooms
           .where((room) => room.isUnreadOrInvited && room.id != roomId)
           .length;
-      // #Pangea
-      try {
-        // Pangea#
-        if (unreadCount == 0) {
-          FlutterNewBadger.removeBadge();
-        } else {
-          FlutterNewBadger.setBadge(unreadCount);
-        }
-        // #Pangea
-      } catch (e, s) {
-        ErrorHandler.logError(data: {}, e: e, s: s);
+      if (unreadCount == 0) {
+        FlutterNewBadger.removeBadge();
+      } else {
+        FlutterNewBadger.setBadge(unreadCount);
       }
-      // Pangea#
       return;
     }
   }
@@ -246,7 +201,6 @@ class BackgroundPush {
               AndroidFlutterLocalNotificationsPlugin>()
           ?.requestNotificationsPermission();
     }
-    // Pangea#
     final clientName = PlatformInfos.clientName;
     oldTokens ??= <String>{};
     final pushers = await (client.getPushers().catchError((e) {
@@ -275,13 +229,13 @@ class BackgroundPush {
           currentPushers.first.appDisplayName == clientName &&
           currentPushers.first.deviceDisplayName == client.deviceName &&
           currentPushers.first.lang == 'en' &&
-          // #Pangea
-          currentPushers.first.lang == LanguageKeys.defaultLanguage &&
-          // Pangea#
           currentPushers.first.data.url.toString() == gatewayUrl &&
           currentPushers.first.data.format ==
-              AppSettings.pushNotificationsPusherFormat
-                  .getItem(matrix!.store) &&
+              // #Pangea
+              // AppSettings.pushNotificationsPusherFormat
+              //     .getItem(matrix!.store) &&
+              null &&
+          // Pangea#
           mapEquals(
             currentPushers.single.data.additionalProperties,
             {"data_message": pusherDataMessageFormat},
@@ -318,14 +272,13 @@ class BackgroundPush {
             appId: thisAppId,
             appDisplayName: clientName,
             deviceDisplayName: client.deviceName!,
-            //#Pangea
-            // lang: 'en',
-            lang: LanguageKeys.defaultLanguage,
-            // Pangea#
+            lang: 'en',
             data: PusherData(
               url: Uri.parse(gatewayUrl!),
-              format: AppSettings.pushNotificationsPusherFormat
-                  .getItem(matrix!.store),
+              // #Pangea
+              // format: AppSettings.pushNotificationsPusherFormat
+              //     .getItem(matrix!.store),
+              // Pangea#
               additionalProperties: {"data_message": pusherDataMessageFormat},
             ),
             kind: 'http',
@@ -334,13 +287,6 @@ class BackgroundPush {
         );
       } catch (e, s) {
         Logs().e('[Push] Unable to set pushers', e, s);
-        // #Pangea
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {},
-        );
-        // Pangea#
       }
     }
   }
@@ -451,15 +397,6 @@ class BackgroundPush {
       );
     } catch (e, s) {
       Logs().e('[Push] Failed to open room', e, s);
-      // #Pangea
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "roomID": response?.payload,
-        },
-      );
-      // Pangea#
     }
   }
 
@@ -468,8 +405,7 @@ class BackgroundPush {
         .registerAppWithDialog();
   }
 
-  Future<void> _newUpEndpoint(PushEndpoint newPushEndpoint, String i) async {
-    final newEndpoint = newPushEndpoint.url;
+  Future<void> _newUpEndpoint(String newEndpoint, String i) async {
     upAction = true;
     if (newEndpoint.isEmpty) {
       await _upUnregistered(i);
@@ -533,8 +469,7 @@ class BackgroundPush {
     }
   }
 
-  Future<void> _onUpMessage(PushMessage pushMessage, String i) async {
-    final message = pushMessage.content;
+  Future<void> _onUpMessage(Uint8List message, String i) async {
     upAction = true;
     final data = Map<String, dynamic>.from(
       json.decode(utf8.decode(message))['notification'],
@@ -551,14 +486,50 @@ class BackgroundPush {
   }
 
   // #Pangea
+  void _newFcmToken(String token) {
+    _fcmToken = token;
+    debugPrint('Fcm foken $_fcmToken');
+    setupPush();
+  }
+
   Future<String?> _getToken() async {
     if (Platform.isAndroid) {
-      await Firebase.initializeApp(
-          // options: DefaultFirebaseOptions.currentPlatform,
-          );
       return (await FirebaseMessaging.instance.getToken());
     }
     return await firebase?.getToken();
+  }
+
+  Future<void> _onOpenNotification(RemoteMessage? message) async {
+    if (message == null ||
+        !message.data.containsKey('room_id') ||
+        message.data['room_id'] == null ||
+        message.data['room_id'].isEmpty) {
+      return;
+    }
+
+    try {
+      final roomId = message.data['room_id'];
+      await client.roomsLoading;
+      await client.accountDataLoading;
+      if (client.getRoomById(roomId) == null) {
+        await client
+            .waitForRoomInSync(roomId)
+            .timeout(const Duration(seconds: 30));
+      }
+      FluffyChatApp.router.go(
+        client.getRoomById(roomId)?.membership == Membership.invite
+            ? '/rooms'
+            : '/rooms/$roomId',
+      );
+    } catch (err, s) {
+      ErrorHandler.logError(
+        e: err,
+        s: s,
+        data: {
+          "roomId": message.data['room_id'],
+        },
+      );
+    }
   }
   // Pangea#
 }
@@ -580,7 +551,7 @@ class UPFunctions extends UnifiedPushFunctions {
 
   @override
   Future<void> registerApp(String instance) async {
-    await UnifiedPush.register(instance: instance, features: features);
+    await UnifiedPush.registerApp(instance, features);
   }
 
   @override

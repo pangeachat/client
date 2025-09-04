@@ -1,27 +1,25 @@
-import 'dart:developer';
+// ignore_for_file: depend_on_referenced_packages
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
-import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_dialog.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/language_level_dropdown.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/mxc_image.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
-class ActivityPlanCard extends StatefulWidget {
+class ActivityPlanCard extends StatelessWidget {
   final VoidCallback regenerate;
   final ActivityPlannerBuilderState controller;
 
@@ -31,70 +29,30 @@ class ActivityPlanCard extends StatefulWidget {
     required this.controller,
   });
 
-  @override
-  ActivityPlanCardState createState() => ActivityPlanCardState();
-}
-
-class ActivityPlanCardState extends State<ActivityPlanCard> {
   static const double itemPadding = 12;
 
-  Future<ActivityPlanModel> _addBookmark(ActivityPlanModel activity) async {
-    try {
-      return BookmarkedActivitiesRepo.save(activity);
-    } catch (e, stack) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(e: e, s: stack, data: activity.toJson());
-      return activity; // Return the original activity in case of error
-    } finally {
-      if (mounted) {
-        setState(() {});
-      }
-    }
-  }
-
-  Future<void> _removeBookmark() async {
-    try {
-      BookmarkedActivitiesRepo.remove(
-        widget.controller.updatedActivity.bookmarkId,
-      );
-    } catch (e, stack) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: e,
-        s: stack,
-        data: widget.controller.updatedActivity.toJson(),
-      );
-    } finally {
-      if (mounted) {
-        setState(() {});
-      }
-    }
-  }
-
-  Future<void> _onLaunch() async {
+  Future<void> _onLaunch(BuildContext context) async {
     final resp = await showFutureLoadingDialog(
       context: context,
       future: () async {
-        if (!widget.controller.room.isSpace) {
+        if (!controller.room.isSpace) {
           throw Exception(
             "Cannot launch activity in a non-space room",
           );
         }
 
-        await widget.controller.launchToSpace();
-        context.go("/rooms?spaceId=${widget.controller.room.id}");
+        final ids = await controller.launchToSpace();
+        ids.length == 1
+            ? context.go("/rooms/spaces/${controller.room.id}/${ids.first}")
+            : context.go("/rooms/spaces/${controller.room.id}/details");
         Navigator.of(context).pop();
       },
     );
 
     if (!resp.isError) {
-      context.go("/rooms?spaceId=${widget.controller.room.id}");
+      context.go("/rooms/spaces/${controller.room.id}/details");
     }
   }
-
-  bool get _isBookmarked => BookmarkedActivitiesRepo.isBookmarked(
-        widget.controller.updatedActivity,
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +64,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
         child: Card(
           margin: const EdgeInsets.symmetric(vertical: itemPadding),
           child: Form(
-            key: widget.controller.formKey,
+            key: controller.formKey,
             child: Column(
               children: [
                 AnimatedSize(
@@ -122,11 +80,10 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                         ),
                         clipBehavior: Clip.hardEdge,
                         alignment: Alignment.center,
-                        child: widget.controller.isLaunching
+                        child: controller.isLaunching
                             ? Avatar(
-                                mxContent: widget.controller.room.avatar,
-                                name: widget.controller.room
-                                    .getLocalizedDisplayname(
+                                mxContent: controller.room.avatar,
+                                name: controller.room.getLocalizedDisplayname(
                                   MatrixLocals(
                                     L10n.of(context),
                                   ),
@@ -134,15 +91,20 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                 borderRadius: BorderRadius.circular(12.0),
                                 size: 200.0,
                               )
-                            : widget.controller.imageURL != null ||
-                                    widget.controller.avatar != null
+                            : controller.imageURL != null ||
+                                    controller.avatar != null
                                 ? ClipRRect(
                                     borderRadius: BorderRadius.circular(20.0),
-                                    child: widget.controller.avatar == null
+                                    child: controller.avatar == null
                                         ? CachedNetworkImage(
                                             fit: BoxFit.cover,
-                                            imageUrl:
-                                                widget.controller.imageURL!,
+                                            imageUrl: controller.imageURL!,
+                                            imageRenderMethodForWeb:
+                                                ImageRenderMethodForWeb.HttpGet,
+                                            httpHeaders: {
+                                              'Authorization':
+                                                  'Bearer ${MatrixState.pangeaController.userController.accessToken}',
+                                            },
                                             placeholder: (context, url) {
                                               return const Center(
                                                 child:
@@ -156,7 +118,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                             },
                                           )
                                         : Image.memory(
-                                            widget.controller.avatar!,
+                                            controller.avatar!,
                                             fit: BoxFit.cover,
                                           ),
                                   )
@@ -164,10 +126,10 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                     padding: EdgeInsets.all(28.0),
                                   ),
                       ),
-                      if (widget.controller.isEditing)
+                      if (controller.isEditing)
                         InkWell(
                           borderRadius: BorderRadius.circular(90),
-                          onTap: widget.controller.selectAvatar,
+                          onTap: controller.selectAvatar,
                           child: CircleAvatar(
                             backgroundColor:
                                 Theme.of(context).colorScheme.secondary,
@@ -186,15 +148,14 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                   padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: widget.controller.isLaunching
+                    children: controller.isLaunching
                         ? [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Avatar(
-                                  mxContent: widget.controller.room.avatar,
-                                  name: widget.controller.room
-                                      .getLocalizedDisplayname(
+                                  mxContent: controller.room.avatar,
+                                  name: controller.room.getLocalizedDisplayname(
                                     MatrixLocals(L10n.of(context)),
                                   ),
                                   size: 24.0,
@@ -203,8 +164,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                 const SizedBox(width: itemPadding),
                                 Expanded(
                                   child: Text(
-                                    widget.controller.room
-                                        .getLocalizedDisplayname(
+                                    controller.room.getLocalizedDisplayname(
                                       MatrixLocals(L10n.of(context)),
                                     ),
                                     style:
@@ -217,57 +177,19 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                widget.controller.updatedActivity.imageURL !=
-                                        null
-                                    ? ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(4.0),
-                                        child: widget.controller.updatedActivity
-                                                .imageURL!
-                                                .startsWith("mxc")
-                                            ? MxcImage(
-                                                uri: Uri.parse(
-                                                  widget
-                                                      .controller
-                                                      .updatedActivity
-                                                      .imageURL!,
-                                                ),
-                                                width: 24.0,
-                                                height: 24.0,
-                                                cacheKey: widget.controller
-                                                    .updatedActivity.bookmarkId,
-                                                fit: BoxFit.cover,
-                                              )
-                                            : CachedNetworkImage(
-                                                imageUrl: widget.controller
-                                                    .updatedActivity.imageURL!,
-                                                fit: BoxFit.cover,
-                                                width: 24.0,
-                                                height: 24.0,
-                                                placeholder: (
-                                                  context,
-                                                  url,
-                                                ) =>
-                                                    const Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                ),
-                                                errorWidget: (
-                                                  context,
-                                                  url,
-                                                  error,
-                                                ) =>
-                                                    const SizedBox(),
-                                              ),
-                                      )
-                                    : const Icon(
-                                        Icons.event_note_outlined,
-                                        size: 24.0,
-                                      ),
+                                ImageByUrl(
+                                  imageUrl: controller.updatedActivity.imageURL,
+                                  width: 24.0,
+                                  borderRadius: BorderRadius.circular(4.0),
+                                  replacement: const Icon(
+                                    Icons.event_note_outlined,
+                                    size: 24.0,
+                                  ),
+                                ),
                                 const SizedBox(width: itemPadding),
                                 Expanded(
                                   child: Text(
-                                    widget.controller.updatedActivity.title,
+                                    controller.updatedActivity.title,
                                     style:
                                         Theme.of(context).textTheme.bodyLarge,
                                   ),
@@ -284,7 +206,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                   child: Text(
                                     L10n.of(context)
                                         .maximumActivityParticipants(
-                                      widget.controller.updatedActivity.req
+                                      controller.updatedActivity.req
                                           .numberOfParticipants,
                                     ),
                                     style:
@@ -313,9 +235,8 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                             .bodyLarge,
                                       ),
                                       NumberCounter(
-                                        count: widget.controller.numActivities,
-                                        update:
-                                            widget.controller.setNumActivities,
+                                        count: controller.numActivities,
+                                        update: controller.setNumActivities,
                                         min: 1,
                                         max: 5,
                                       ),
@@ -335,7 +256,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                   horizontal: 12.0,
                                 ),
                               ),
-                              onPressed: _onLaunch,
+                              onPressed: () => _onLaunch(context),
                               child: Row(
                                 children: [
                                   const Icon(Icons.send_outlined),
@@ -356,10 +277,10 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                 const Icon(Icons.event_note_outlined),
                                 const SizedBox(width: itemPadding),
                                 Expanded(
-                                  child: widget.controller.isEditing
+                                  child: controller.isEditing
                                       ? TextField(
                                           controller:
-                                              widget.controller.titleController,
+                                              controller.titleController,
                                           decoration: InputDecoration(
                                             labelText:
                                                 L10n.of(context).activityTitle,
@@ -367,22 +288,18 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                           maxLines: null,
                                         )
                                       : Text(
-                                          widget
-                                              .controller.updatedActivity.title,
+                                          controller.updatedActivity.title,
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyLarge,
                                         ),
                                 ),
-                                if (!widget.controller.isEditing)
+                                if (!controller.isEditing)
                                   IconButton(
-                                    onPressed: _isBookmarked
-                                        ? () => _removeBookmark()
-                                        : () => _addBookmark(
-                                              widget.controller.updatedActivity,
-                                            ),
+                                    onPressed:
+                                        controller.toggleBookmarkedActivity,
                                     icon: Icon(
-                                      _isBookmarked
+                                      controller.isBookmarked
                                           ? Icons.save
                                           : Icons.save_outlined,
                                     ),
@@ -399,9 +316,9 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                 ),
                                 const SizedBox(width: itemPadding),
                                 Expanded(
-                                  child: widget.controller.isEditing
+                                  child: controller.isEditing
                                       ? TextField(
-                                          controller: widget.controller
+                                          controller: controller
                                               .learningObjectivesController,
                                           decoration: InputDecoration(
                                             labelText:
@@ -410,7 +327,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                           maxLines: null,
                                         )
                                       : Text(
-                                          widget.controller.updatedActivity
+                                          controller.updatedActivity
                                               .learningObjective,
                                           style: Theme.of(context)
                                               .textTheme
@@ -429,18 +346,18 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                 ),
                                 const SizedBox(width: itemPadding),
                                 Expanded(
-                                  child: widget.controller.isEditing
+                                  child: controller.isEditing
                                       ? TextField(
-                                          controller: widget.controller
-                                              .instructionsController,
+                                          controller:
+                                              controller.instructionsController,
                                           decoration: InputDecoration(
                                             labelText: l10n.instructions,
                                           ),
                                           maxLines: null,
                                         )
                                       : Text(
-                                          widget.controller.updatedActivity
-                                              .instructions,
+                                          controller
+                                              .updatedActivity.instructions,
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyMedium,
@@ -458,16 +375,16 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                 ),
                                 const SizedBox(width: itemPadding),
                                 Expanded(
-                                  child: widget.controller.isEditing
+                                  child: controller.isEditing
                                       ? LanguageLevelDropdown(
                                           initialLevel:
-                                              widget.controller.languageLevel,
-                                          onChanged: widget
-                                              .controller.setLanguageLevel,
+                                              controller.languageLevel,
+                                          onChanged:
+                                              controller.setLanguageLevel,
                                         )
                                       : Text(
-                                          widget.controller.updatedActivity.req
-                                              .cefrLevel
+                                          controller
+                                              .updatedActivity.req.cefrLevel
                                               .title(context),
                                           style: Theme.of(context)
                                               .textTheme
@@ -477,7 +394,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                               ],
                             ),
                             const SizedBox(height: itemPadding),
-                            if (widget.controller.vocab.isNotEmpty) ...[
+                            if (controller.vocab.isNotEmpty) ...[
                               Row(
                                 children: [
                                   Icon(
@@ -491,16 +408,13 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                       spacing: 4.0,
                                       runSpacing: 4.0,
                                       children: List<Widget>.generate(
-                                          widget.controller.vocab.length,
-                                          (int index) {
-                                        return widget.controller.isEditing
+                                          controller.vocab.length, (int index) {
+                                        return controller.isEditing
                                             ? Chip(
                                                 label: Text(
-                                                  widget.controller.vocab[index]
-                                                      .lemma,
+                                                  controller.vocab[index].lemma,
                                                 ),
-                                                onDeleted: () => widget
-                                                    .controller
+                                                onDeleted: () => controller
                                                     .removeVocab(index),
                                                 backgroundColor:
                                                     Colors.transparent,
@@ -514,8 +428,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                               )
                                             : Chip(
                                                 label: Text(
-                                                  widget.controller.vocab[index]
-                                                      .lemma,
+                                                  controller.vocab[index].lemma,
                                                 ),
                                                 backgroundColor:
                                                     Colors.transparent,
@@ -533,7 +446,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                 ],
                               ),
                             ],
-                            if (widget.controller.isEditing) ...[
+                            if (controller.isEditing) ...[
                               const SizedBox(height: itemPadding),
                               Padding(
                                 padding:
@@ -542,19 +455,18 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                   children: [
                                     Expanded(
                                       child: TextField(
-                                        controller:
-                                            widget.controller.vocabController,
+                                        controller: controller.vocabController,
                                         decoration: InputDecoration(
                                           labelText: l10n.addVocabulary,
                                         ),
                                         onSubmitted: (value) {
-                                          widget.controller.addVocab();
+                                          controller.addVocab();
                                         },
                                       ),
                                     ),
                                     IconButton(
                                       icon: const Icon(Icons.add),
-                                      onPressed: widget.controller.addVocab,
+                                      onPressed: controller.addVocab,
                                     ),
                                   ],
                                 ),
@@ -574,7 +486,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                           horizontal: 12.0,
                                         ),
                                       ),
-                                      onPressed: widget.controller.saveEdits,
+                                      onPressed: controller.saveEdits,
                                       child: Row(
                                         children: [
                                           const Icon(Icons.save),
@@ -599,7 +511,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                           horizontal: 12.0,
                                         ),
                                       ),
-                                      onPressed: widget.controller.clearEdits,
+                                      onPressed: controller.clearEdits,
                                       child: Row(
                                         children: [
                                           const Icon(Icons.cancel),
@@ -634,8 +546,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                               horizontal: 12.0,
                                             ),
                                           ),
-                                          onPressed:
-                                              widget.controller.startEditing,
+                                          onPressed: controller.startEditing,
                                           child: Row(
                                             children: [
                                               const Icon(Icons.edit),
@@ -660,7 +571,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                               horizontal: 12.0,
                                             ),
                                           ),
-                                          onPressed: widget.regenerate,
+                                          onPressed: regenerate,
                                           child: Row(
                                             children: [
                                               const Icon(
@@ -692,7 +603,7 @@ class ActivityPlanCardState extends State<ActivityPlanCard> {
                                             ),
                                           ),
                                           onPressed: () {
-                                            widget.controller.setLaunchState(
+                                            controller.setLaunchState(
                                               ActivityLaunchState.launching,
                                             );
                                           },

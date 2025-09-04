@@ -54,10 +54,12 @@ enum AppSettings<T> {
     'https://sygnal.pangea.chat/_matrix/push/v1/notify',
     // Pangea#
   ),
-  pushNotificationsPusherFormat<String>(
-    'pushNotificationsPusherFormat',
-    'event_id_only',
-  ),
+  // #Pangea
+  // pushNotificationsPusherFormat<String>(
+  //   'pushNotificationsPusherFormat',
+  //   'event_id_only',
+  // ),
+  // Pangea#
   shareKeysWith<String>('chat.fluffy.share_keys_with_2', 'all'),
   noEncryptionWarningShown<bool>(
     'chat.fluffy.no_encryption_warning_shown',

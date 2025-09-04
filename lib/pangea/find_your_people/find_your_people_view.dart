@@ -64,16 +64,14 @@ class FindYourPeopleView extends StatelessWidget {
                 ),
               ],
             ),
-      floatingActionButton: isColumnMode
-          ? null
-          : FloatingActionButton.extended(
-              onPressed: () => context.push('/rooms/newspace'),
-              icon: const Icon(Icons.add_box_outlined),
-              label: Text(
-                L10n.of(context).space,
-                overflow: TextOverflow.fade,
-              ),
-            ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => context.push('/rooms/communities/newcourse'),
+        icon: const Icon(Icons.add_box_outlined),
+        label: Text(
+          L10n.of(context).newCourse,
+          overflow: TextOverflow.fade,
+        ),
+      ),
       body: Padding(
         padding: isColumnMode
             ? const EdgeInsets.symmetric(
@@ -92,7 +90,7 @@ class FindYourPeopleView extends StatelessWidget {
                   horizontal: 12.0,
                 ),
                 child: Text(
-                  L10n.of(context).findYourPeople,
+                  L10n.of(context).findCourse,
                   style: const TextStyle(fontSize: 32.0),
                 ),
               ),
@@ -144,7 +142,7 @@ class FindYourPeopleView extends StatelessWidget {
                                       20.0,
                                       0,
                                     ),
-                                    hintText: L10n.of(context).findYourPeople,
+                                    hintText: L10n.of(context).findCourse,
                                     hintStyle: TextStyle(
                                       color:
                                           theme.colorScheme.onPrimaryContainer,
@@ -193,30 +191,6 @@ class FindYourPeopleView extends StatelessWidget {
                                         SpaceCodeUtil.joinWithSpaceCodeDialog(
                                       context,
                                     ),
-                                  ),
-                                  TextButton(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          Icons.add_box_outlined,
-                                          color: theme
-                                              .colorScheme.onPrimaryContainer,
-                                          size: 24.0,
-                                        ),
-                                        const SizedBox(width: 8.0),
-                                        Text(
-                                          L10n.of(context).createYourSpace,
-                                          style: TextStyle(
-                                            color: theme
-                                                .colorScheme.onPrimaryContainer,
-                                            fontSize: 16.0,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    onPressed: () =>
-                                        context.push('/rooms/newspace'),
                                   ),
                                 ],
                               ),

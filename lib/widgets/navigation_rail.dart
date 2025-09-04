@@ -8,6 +8,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/navi_rail_item.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -15,18 +16,18 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class SpacesNavigationRail extends StatelessWidget {
   final String? activeSpaceId;
-  final void Function() onGoToChats;
-  final void Function(String) onGoToSpaceId;
   // #Pangea
-  final void Function()? clearActiveSpace;
+  // final void Function() onGoToChats;
+  // final void Function(String) onGoToSpaceId;
+  final String? path;
   // Pangea#
 
   const SpacesNavigationRail({
     required this.activeSpaceId,
-    required this.onGoToChats,
-    required this.onGoToSpaceId,
     // #Pangea
-    this.clearActiveSpace,
+    // required this.onGoToChats,
+    // required this.onGoToSpaceId,
+    required this.path,
     // Pangea#
     super.key,
   });
@@ -41,9 +42,8 @@ class SpacesNavigationRail extends StatelessWidget {
         .path
         .startsWith('/rooms/settings');
     // #Pangea
-    final path = GoRouter.of(context).routeInformationProvider.value.uri.path;
-    final isAnalytics = path.contains('analytics');
-    final isCommunities = path.contains('communities');
+    final isAnalytics = path?.contains('analytics') ?? false;
+    final isCommunities = path?.contains('communities') ?? false;
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     final width = isColumnMode
@@ -91,7 +91,6 @@ class SpacesNavigationRail extends StatelessWidget {
                           return NaviRailItem(
                             isSelected: isAnalytics,
                             onTap: () {
-                              clearActiveSpace?.call();
                               context.go("/rooms/analytics");
                             },
                             backgroundColor: Colors.transparent,
@@ -127,9 +126,7 @@ class SpacesNavigationRail extends StatelessWidget {
                                 !isSettings &&
                                 !isAnalytics &&
                                 !isCommunities,
-                            // Pangea#
-                            onTap: onGoToChats,
-                            // #Pangea
+                            // onTap: onGoToChats,
                             // icon: const Padding(
                             //   padding: EdgeInsets.all(10.0),
                             //   child: Icon(Icons.forum_outlined),
@@ -138,11 +135,15 @@ class SpacesNavigationRail extends StatelessWidget {
                             //   padding: EdgeInsets.all(10.0),
                             //   child: Icon(Icons.forum),
                             // ),
+                            // toolTip: L10n.of(context).chats,
+                            // unreadBadgeFilter: (room) => true,
                             icon: const Icon(Icons.forum_outlined),
                             selectedIcon: const Icon(Icons.forum),
+                            onTap: () => context.go("/rooms"),
+                            toolTip: L10n.of(context).directMessages,
+                            unreadBadgeFilter: (room) =>
+                                room.firstSpaceParent == null,
                             // Pangea#
-                            toolTip: L10n.of(context).chats,
-                            unreadBadgeFilter: (room) => true,
                           );
                         }
                         i--;
@@ -158,11 +159,10 @@ class SpacesNavigationRail extends StatelessWidget {
                             // toolTip: L10n.of(context).createNewSpace,
                             isSelected: isCommunities,
                             onTap: () {
-                              clearActiveSpace?.call();
                               context.go('/rooms/communities');
                             },
                             icon: const Icon(Icons.groups),
-                            toolTip: L10n.of(context).findYourPeople,
+                            toolTip: L10n.of(context).findCourse,
                             // Pangea#
                           );
                         }
@@ -186,7 +186,9 @@ class SpacesNavigationRail extends StatelessWidget {
                                 room,
                               );
                             } else {
-                              onGoToSpaceId(rootSpaces[i].id);
+                              context.go(
+                                "/rooms/spaces/${rootSpaces[i].id}/details",
+                              );
                             }
                           },
                           // Pangea#

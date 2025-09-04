@@ -90,6 +90,14 @@ class PangeaInvitationSelectionController
   void initState() {
     super.initState();
 
+    _room?.requestParticipants(
+      [Membership.join, Membership.invite, Membership.knock],
+      false,
+      true,
+    ).then((_) {
+      if (mounted) setState(() {});
+    });
+
     if (widget.initialFilter != null &&
         availableFilters.contains(widget.initialFilter)) {
       filter = widget.initialFilter!;
@@ -100,7 +108,7 @@ class PangeaInvitationSelectionController
     }
 
     if (filter == InvitationFilter.public) {
-      searchUser(context, '');
+      searchUser(context, controller.text);
     }
 
     controller.addListener(() {
@@ -127,7 +135,7 @@ class PangeaInvitationSelectionController
       case InvitationFilter.public:
         return l10n.public;
       case InvitationFilter.participants:
-        return l10n.classRoster;
+        return l10n.participants;
     }
   }
 
@@ -220,7 +228,7 @@ class PangeaInvitationSelectionController
   void setFilter(InvitationFilter newFilter) {
     if (filter == newFilter) return;
     if (newFilter == InvitationFilter.public) {
-      searchUser(context, '');
+      searchUser(context, controller.text);
     }
     setState(() => filter = newFilter);
   }

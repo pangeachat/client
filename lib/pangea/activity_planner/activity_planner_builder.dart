@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Visibility;
 
@@ -8,13 +10,15 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
-import 'package:fluffychat/pangea/activity_planner/bookmarked_activities_repo.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_suggestions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
+import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/file_selector.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -30,6 +34,9 @@ class ActivityPlannerBuilder extends StatefulWidget {
   final String? initialFilename;
   final Room room;
 
+  final bool enabledEdits;
+  final bool enableMultiLaunch;
+
   final Widget Function(ActivityPlannerBuilderState) builder;
 
   const ActivityPlannerBuilder({
@@ -38,6 +45,8 @@ class ActivityPlannerBuilder extends StatefulWidget {
     this.initialFilename,
     required this.room,
     required this.builder,
+    this.enabledEdits = false,
+    this.enableMultiLaunch = false,
   });
 
   @override
@@ -64,6 +73,8 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  final StreamController stateStream = StreamController.broadcast();
+
   @override
   void initState() {
     super.initState();
@@ -77,7 +88,15 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     instructionsController.dispose();
     vocabController.dispose();
     participantsController.dispose();
+    stateStream.close();
     super.dispose();
+  }
+
+  void update() {
+    if (mounted) setState(() {});
+    if (!stateStream.isClosed) {
+      stateStream.add(null);
+    }
   }
 
   Room get room => widget.room;
@@ -103,7 +122,7 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
       vocab: vocab,
       imageURL: imageURL,
       roles: widget.initialActivity.roles,
-      bookmarkId: widget.initialActivity.bookmarkId,
+      activityId: widget.initialActivity.activityId,
     );
   }
 
@@ -129,7 +148,8 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     if (widget.initialActivity.imageURL != null) {
       await _setAvatarByURL(widget.initialActivity.imageURL!);
     }
-    if (mounted) setState(() {});
+
+    update();
   }
 
   Future<void> overrideActivity(ActivityPlanModel override) async {
@@ -148,18 +168,21 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     if (override.imageURL != null) {
       await _setAvatarByURL(override.imageURL!);
     }
-    if (mounted) setState(() {});
+
+    update();
   }
 
-  void startEditing() => setLaunchState(ActivityLaunchState.editing);
+  void startEditing() {
+    setLaunchState(ActivityLaunchState.editing);
+  }
 
   void setLaunchState(ActivityLaunchState state) {
     if (state == ActivityLaunchState.launching) {
-      BookmarkedActivitiesRepo.save(updatedActivity);
+      _addBookmarkedActivity();
     }
 
     launchState = state;
-    if (mounted) setState(() {});
+    update();
   }
 
   void addVocab() {
@@ -171,37 +194,35 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
       ),
     );
     vocabController.clear();
-    if (mounted) setState(() {});
+    update();
   }
 
   void removeVocab(int index) {
     vocab.removeAt(index);
-    if (mounted) setState(() {});
+    update();
   }
 
   void setLanguageLevel(LanguageLevelTypeEnum level) {
     languageLevel = level;
-    if (mounted) setState(() {});
+    update();
   }
 
-  void selectAvatar() async {
+  Future<void> selectAvatar() async {
     final photo = await selectFiles(
       context,
       type: FileSelectorType.images,
       allowMultiple: false,
     );
     final bytes = await photo.singleOrNull?.readAsBytes();
-    if (mounted) {
-      setState(() {
-        avatar = bytes;
-        imageURL = null;
-        filename = photo.singleOrNull?.name;
-      });
-    }
+    avatar = bytes;
+    imageURL = null;
+    filename = photo.singleOrNull?.name;
+    update();
   }
 
   void setNumActivities(int count) {
-    if (mounted) setState(() => numActivities = count);
+    numActivities = count;
+    update();
   }
 
   Future<void> _setAvatarByURL(String url) async {
@@ -240,10 +261,8 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
           avatar!,
           filename: filename,
         );
-    if (!mounted) return;
-    setState(() {
-      imageURL = url.toString();
-    });
+    imageURL = url.toString();
+    update();
   }
 
   Future<void> saveEdits() async {
@@ -251,9 +270,8 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     await updateImageURL();
     setLaunchState(ActivityLaunchState.base);
 
-    await BookmarkedActivitiesRepo.remove(widget.initialActivity.bookmarkId);
-    await BookmarkedActivitiesRepo.save(updatedActivity);
-    if (mounted) setState(() {});
+    await _updateBookmarkedActivity();
+    update();
   }
 
   Future<void> clearEdits() async {
@@ -261,13 +279,57 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     setLaunchState(ActivityLaunchState.base);
   }
 
-  Future<void> launchToSpace() async {
+  UserController get _userController =>
+      MatrixState.pangeaController.userController;
+
+  bool get isBookmarked =>
+      _userController.isBookmarked(updatedActivity.activityId);
+
+  Future<void> toggleBookmarkedActivity() async {
+    isBookmarked
+        ? await _removeBookmarkedActivity()
+        : await _addBookmarkedActivity();
+    update();
+  }
+
+  Future<void> _addBookmarkedActivity() async {
+    await _userController.addBookmarkedActivity(
+      activityId: updatedActivity.activityId,
+    );
+    await ActivityPlanRepo.set(updatedActivity);
+  }
+
+  Future<void> _updateBookmarkedActivity() async {
+    // save updates locally, in case choreo results in error
+    await ActivityPlanRepo.set(updatedActivity);
+
+    // prevent an error or delay from the choreo endpoint bubbling up
+    // in the UI, since the changes are still stored locally
+    ActivityPlanRepo.update(
+      updatedActivity,
+    ).then((resp) {
+      _userController.updateBookmarkedActivity(
+        activityId: widget.initialActivity.activityId,
+        newActivityId: resp.activityId,
+      );
+    });
+  }
+
+  Future<void> _removeBookmarkedActivity() async {
+    await _userController.removeBookmarkedActivity(
+      activityId: updatedActivity.activityId,
+    );
+    await ActivityPlanRepo.remove(updatedActivity.activityId);
+  }
+
+  Future<List<String>> launchToSpace() async {
     final List<String> activityRoomIDs = [];
     try {
-      await Future.wait(
+      return Future.wait(
         List.generate(numActivities, (i) async {
           final id = await _launchActivityRoom(i);
           activityRoomIDs.add(id);
+          return id;
         }),
       );
     } catch (e) {
@@ -278,10 +340,18 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
 
   Future<String> _launchActivityRoom(int index) async {
     await updateImageURL();
-    final roomID = await Matrix.of(context).client.createGroupChat(
+    final roomID = await Matrix.of(context).client.createRoom(
+          creationContent: {
+            'type':
+                "${PangeaRoomTypes.activitySession}:${updatedActivity.activityId}",
+          },
           visibility: Visibility.private,
-          groupName: "${updatedActivity.title} ${index + 1}",
+          name: "${updatedActivity.title} ${index + 1}",
           initialState: [
+            StateEvent(
+              type: PangeaEventTypes.activityPlan,
+              content: updatedActivity.toJson(),
+            ),
             if (imageURL != null)
               StateEvent(
                 type: EventTypes.RoomAvatar,
@@ -300,7 +370,6 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
               ],
             ),
           ],
-          enableEncryption: false,
         );
 
     Room? activityRoom = room.client.getRoomById(roomID);
@@ -316,12 +385,6 @@ class ActivityPlannerBuilderState extends State<ActivityPlannerBuilder> {
     if (activityRoom.pangeaSpaceParents.isEmpty) {
       await room.client.waitForRoomInSync(activityRoom.id);
     }
-
-    await activityRoom.sendActivityPlan(
-      updatedActivity,
-      avatar: avatar,
-      filename: filename,
-    );
 
     return activityRoom.id;
   }

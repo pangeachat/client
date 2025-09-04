@@ -26,23 +26,47 @@ class AnalyticsRequestIndicator extends StatefulWidget {
 class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
   AnalyticsRequestIndicatorState();
 
-  Map<User, List<Room>> get _knockingAdmins {
-    final admins =
-        widget.room.getParticipants().where((u) => u.powerLevel >= 100);
+  final Map<User, List<Room>> _knockingAdmins = {};
 
-    final knockingAdmins = <User, List<Room>>{};
+  @override
+  void initState() {
+    super.initState();
+    _fetchKnockingAdmins();
+  }
+
+  @override
+  void didUpdateWidget(covariant AnalyticsRequestIndicator oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.room.id != widget.room.id) {
+      _fetchKnockingAdmins();
+    }
+  }
+
+  Future<void> _fetchKnockingAdmins() async {
+    setState(() => _knockingAdmins.clear());
+
+    final admins = (await widget.room.requestParticipants(
+      [Membership.join, Membership.invite, Membership.knock],
+      false,
+      true,
+    ))
+        .where((u) => u.powerLevel >= 100);
+
     for (final analyticsRoom in widget.room.client.allMyAnalyticsRooms) {
-      final knocking = analyticsRoom.getParticipants([Membership.knock]);
+      final knocking =
+          await analyticsRoom.requestParticipants([Membership.knock]);
       if (knocking.isEmpty) continue;
 
       for (final admin in admins) {
         if (knocking.any((u) => u.id == admin.id)) {
-          knockingAdmins.putIfAbsent(admin, () => []).add(analyticsRoom);
+          _knockingAdmins.putIfAbsent(admin, () => []).add(analyticsRoom);
         }
       }
     }
 
-    return knockingAdmins;
+    if (mounted) {
+      setState(() {});
+    }
   }
 
   Future<void> _onTap(BuildContext context) async {
@@ -71,56 +95,51 @@ class AnalyticsRequestIndicatorState extends State<AnalyticsRequestIndicator> {
       },
     );
 
-    if (mounted) setState(() {});
+    if (mounted) _fetchKnockingAdmins();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SliverList.builder(
-      itemCount: 1,
-      itemBuilder: (context, i) {
-        return AnimatedSize(
-          duration: FluffyThemes.animationDuration,
-          child: _knockingAdmins.isEmpty
-              ? const SizedBox()
-              : Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 4,
-                    vertical: 1,
+    return AnimatedSize(
+      duration: FluffyThemes.animationDuration,
+      child: _knockingAdmins.isEmpty
+          ? const SizedBox()
+          : Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 4,
+                vertical: 1,
+              ),
+              child: Material(
+                borderRadius: BorderRadius.circular(
+                  AppConfig.borderRadius,
+                ),
+                clipBehavior: Clip.hardEdge,
+                child: ListTile(
+                  minVerticalPadding: 0,
+                  trailing: Icon(
+                    Icons.arrow_right,
+                    size: 20,
+                    color: Theme.of(context).colorScheme.error,
                   ),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(
-                      AppConfig.borderRadius,
-                    ),
-                    clipBehavior: Clip.hardEdge,
-                    child: ListTile(
-                      minVerticalPadding: 0,
-                      trailing: Icon(
-                        Icons.arrow_right,
-                        size: 20,
+                  title: Row(
+                    spacing: 8.0,
+                    children: [
+                      Icon(
+                        Icons.notifications_active_outlined,
                         color: Theme.of(context).colorScheme.error,
                       ),
-                      title: Row(
-                        spacing: 8.0,
-                        children: [
-                          Icon(
-                            Icons.notifications_active_outlined,
-                            color: Theme.of(context).colorScheme.error,
-                          ),
-                          Expanded(
-                            child: Text(
-                              L10n.of(context).adminRequestedAccess,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ),
-                        ],
+                      Expanded(
+                        child: Text(
+                          L10n.of(context).adminRequestedAccess,
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
                       ),
-                      onTap: () => _onTap(context),
-                    ),
+                    ],
                   ),
+                  onTap: () => _onTap(context),
                 ),
-        );
-      },
+              ),
+            ),
     );
   }
 }

@@ -4,7 +4,6 @@ import 'package:collection/collection.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:material_symbols_icons/symbols.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
@@ -24,143 +23,131 @@ class SpaceAnalyticsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isColumnMode = FluffyThemes.isColumnMode(context);
-
-    final rowPadding = isColumnMode ? 12.0 : 4.0;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(L10n.of(context).spaceAnalyticsPage),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(isColumnMode ? 16.0 : 8.0),
-        child: MaxWidthBody(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final mini = constraints.maxWidth <= 550;
+        return MaxWidthBody(
           maxWidth: 1000,
           showBorder: false,
           child: Column(
-            spacing: isColumnMode ? 24.0 : 12.0,
+            spacing: !mini ? 24.0 : 12.0,
             children: [
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final mini = constraints.maxWidth <= 550;
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    spacing: !mini ? 12.0 : 4.0,
                     children: [
-                      Row(
-                        spacing: !mini ? 12.0 : 4.0,
-                        children: [
-                          _MenuButton(
-                            text: L10n.of(context).requestAll,
-                            icon: Symbols.approval_delegation,
-                            onPressed: controller.requestAllAnalytics,
-                            mini: mini,
-                          ),
-                          if (controller.room != null &&
-                              controller.availableAnalyticsRooms.isNotEmpty)
-                            _MenuButton(
-                              text: L10n.of(context).download,
-                              icon: Icons.download,
-                              onPressed: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) => DownloadAnalyticsDialog(
-                                    space: controller.room!,
-                                    analyticsRooms:
-                                        controller.availableAnalyticsRooms,
-                                  ),
-                                );
-                              },
-                              mini: mini,
-                            ),
-                        ],
+                      _MenuButton(
+                        text: L10n.of(context).requestAll,
+                        icon: Symbols.approval_delegation,
+                        onPressed: controller.requestAllAnalytics,
+                        mini: mini,
+                        hideLabel: false,
                       ),
-                      Row(
-                        spacing: !mini ? 12.0 : 4.0,
-                        children: [
-                          if (controller.lastUpdatedString != null)
-                            Text(
-                              L10n.of(context).lastUpdated(
-                                controller.lastUpdatedString!,
+                      if (controller.room != null &&
+                          controller.availableAnalyticsRooms.isNotEmpty)
+                        _MenuButton(
+                          text: L10n.of(context).download,
+                          icon: Icons.download,
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) => DownloadAnalyticsDialog(
+                                space: controller.room!,
+                                analyticsRooms:
+                                    controller.availableAnalyticsRooms,
                               ),
-                              textAlign: TextAlign.end,
-                              style: TextStyle(
-                                fontSize: !mini ? 12.0 : 8.0,
-                                color: theme.disabledColor,
-                              ),
-                            ),
-                          _MenuButton(
-                            text: L10n.of(context).refresh,
-                            icon: Symbols.refresh,
-                            onPressed: controller.refresh,
-                            mini: mini,
+                            );
+                          },
+                          mini: mini,
+                        ),
+                    ],
+                  ),
+                  Row(
+                    spacing: !mini ? 12.0 : 4.0,
+                    children: [
+                      if (controller.lastUpdatedString != null)
+                        Text(
+                          L10n.of(context).lastUpdated(
+                            controller.lastUpdatedString!,
                           ),
-                          DropdownButtonHideUnderline(
-                            child: DropdownButton2<LanguageModel>(
-                              customButton: Container(
-                                height: !mini ? 36.0 : 26.0,
-                                decoration: BoxDecoration(
-                                  color: theme.colorScheme.primaryContainer,
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: !mini ? 8.0 : 4.0,
-                                  vertical: 4.0,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    if (controller.selectedLanguage != null)
-                                      Text(
-                                        controller.selectedLanguage!
-                                                .getDisplayName(context) ??
-                                            controller
-                                                .selectedLanguage!.displayName,
-                                        style: TextStyle(
-                                          color: theme
-                                              .colorScheme.onPrimaryContainer,
-                                          fontSize: !mini ? 16.0 : 12.0,
-                                        ),
-                                      ),
-                                    Icon(
-                                      Icons.arrow_drop_down,
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                            fontSize: !mini ? 12.0 : 8.0,
+                            color: theme.disabledColor,
+                          ),
+                        ),
+                      _MenuButton(
+                        text: L10n.of(context).refresh,
+                        icon: Symbols.refresh,
+                        onPressed: controller.refresh,
+                        mini: mini,
+                      ),
+                      DropdownButtonHideUnderline(
+                        child: DropdownButton2<LanguageModel>(
+                          customButton: Container(
+                            height: !mini ? 36.0 : 26.0,
+                            decoration: BoxDecoration(
+                              color: theme.colorScheme.primaryContainer,
+                              borderRadius: BorderRadius.circular(40),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: !mini ? 8.0 : 4.0,
+                              vertical: 4.0,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                if (controller.selectedLanguage != null)
+                                  Text(
+                                    controller.selectedLanguage!
+                                            .getDisplayName(context) ??
+                                        controller
+                                            .selectedLanguage!.displayName,
+                                    style: TextStyle(
                                       color:
                                           theme.colorScheme.onPrimaryContainer,
-                                      size: !mini ? 24.0 : 14.0,
+                                      fontSize: !mini ? 16.0 : 12.0,
                                     ),
-                                  ],
+                                  ),
+                                Icon(
+                                  Icons.arrow_drop_down,
+                                  color: theme.colorScheme.onPrimaryContainer,
+                                  size: !mini ? 24.0 : 14.0,
                                 ),
-                              ),
-                              value: controller.selectedLanguage,
-                              items: controller.availableLanguages
-                                  .map(
-                                    (item) => DropdownMenuItem(
-                                      value: item,
-                                      child: DropdownTextButton(
-                                        text: item.getDisplayName(context) ??
-                                            item.displayName,
-                                        isSelected: false,
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
-                              onChanged: controller.setSelectedLanguage,
-                              buttonStyleData: ButtonStyleData(
-                                // This is necessary for the ink response to match our customButton radius.
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(40),
-                                ),
-                              ),
-                              dropdownStyleData: const DropdownStyleData(
-                                offset: Offset(-50, 0),
-                                width: 150,
-                              ),
+                              ],
                             ),
                           ),
-                        ],
+                          value: controller.selectedLanguage,
+                          items: controller.availableLanguages
+                              .map(
+                                (item) => DropdownMenuItem(
+                                  value: item,
+                                  child: DropdownTextButton(
+                                    text: item.getDisplayName(context) ??
+                                        item.displayName,
+                                    isSelected: false,
+                                  ),
+                                ),
+                              )
+                              .toList(),
+                          onChanged: controller.setSelectedLanguage,
+                          buttonStyleData: ButtonStyleData(
+                            // This is necessary for the ink response to match our customButton radius.
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(40),
+                            ),
+                          ),
+                          dropdownStyleData: const DropdownStyleData(
+                            offset: Offset(-160, 0),
+                            width: 250,
+                          ),
+                        ),
                       ),
                     ],
-                  );
-                },
+                  ),
+                ],
               ),
               controller.initialized
                   ? Table(
@@ -179,22 +166,27 @@ class SpaceAnalyticsView extends StatelessWidget {
                                 controller.downloads.length,
                               ),
                               icon: Icons.group_outlined,
+                              mini: mini,
                             ),
                             _TableHeaderCell(
                               text: L10n.of(context).level,
                               icon: Icons.star,
+                              mini: mini,
                             ),
                             _TableHeaderCell(
                               text: L10n.of(context).vocab,
                               icon: Symbols.dictionary,
+                              mini: mini,
                             ),
                             _TableHeaderCell(
                               text: L10n.of(context).grammar,
                               icon: Symbols.toys_and_games,
+                              mini: mini,
                             ),
                             _TableHeaderCell(
                               text: L10n.of(context).activities,
                               icon: Icons.radar,
+                              mini: mini,
                             ),
                           ],
                         ),
@@ -208,13 +200,13 @@ class SpaceAnalyticsView extends StatelessWidget {
                                     opacity: download.requestStatus.opacity,
                                     child: Padding(
                                       padding: EdgeInsets.symmetric(
-                                        vertical: rowPadding,
+                                        vertical: !mini ? 12.0 : 4.0,
                                       ),
                                       child: Row(
-                                        spacing: isColumnMode ? 16.0 : 8.0,
+                                        spacing: !mini ? 16.0 : 8.0,
                                         children: [
                                           Avatar(
-                                            size: isColumnMode ? 64.0 : 40.0,
+                                            size: !mini ? 64.0 : 40.0,
                                             mxContent: entry.key.avatarUrl,
                                             name: entry.key.calcDisplayname(),
                                             userId: entry.key.id,
@@ -237,9 +229,8 @@ class SpaceAnalyticsView extends StatelessWidget {
                                                   overflow:
                                                       TextOverflow.ellipsis,
                                                   style: TextStyle(
-                                                    fontSize: isColumnMode
-                                                        ? 16.0
-                                                        : 12.0,
+                                                    fontSize:
+                                                        !mini ? 16.0 : 12.0,
                                                     fontWeight: FontWeight.w500,
                                                   ),
                                                 ),
@@ -250,6 +241,7 @@ class SpaceAnalyticsView extends StatelessWidget {
                                                       .requestAnalytics(
                                                     entry.key,
                                                   ),
+                                                  mini: mini,
                                                 ),
                                                 const SizedBox(height: 8.0),
                                               ],
@@ -264,23 +256,27 @@ class SpaceAnalyticsView extends StatelessWidget {
                                   text: download.summary?.level?.toString(),
                                   downloadStatus: download.downloadStatus,
                                   requestStatus: download.requestStatus,
+                                  mini: mini,
                                 ),
                                 _TableContentCell(
                                   text: download.summary?.numLemmas.toString(),
                                   downloadStatus: download.downloadStatus,
                                   requestStatus: download.requestStatus,
+                                  mini: mini,
                                 ),
                                 _TableContentCell(
                                   text: download.summary?.numMorphConstructs
                                       .toString(),
                                   downloadStatus: download.downloadStatus,
                                   requestStatus: download.requestStatus,
+                                  mini: mini,
                                 ),
                                 _TableContentCell(
                                   text: download.summary?.numCompletedActivities
                                       .toString(),
                                   downloadStatus: download.downloadStatus,
                                   requestStatus: download.requestStatus,
+                                  mini: mini,
                                 ),
                               ],
                             );
@@ -291,8 +287,8 @@ class SpaceAnalyticsView extends StatelessWidget {
                   : const CircularProgressIndicator.adaptive(),
             ],
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
@@ -303,12 +299,14 @@ class _MenuButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   final bool mini;
+  final bool? hideLabel;
 
   const _MenuButton({
     required this.text,
     required this.icon,
     required this.onPressed,
     this.mini = false,
+    this.hideLabel,
   });
 
   @override
@@ -322,7 +320,7 @@ class _MenuButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         height: height,
-        width: mini ? height : null,
+        width: hideLabel ?? mini ? height : null,
         decoration: BoxDecoration(
           color: theme.colorScheme.primaryContainer,
           borderRadius: BorderRadius.circular(40),
@@ -331,7 +329,7 @@ class _MenuButton extends StatelessWidget {
           horizontal: !mini ? 8.0 : 4.0,
           vertical: 4.0,
         ),
-        child: mini
+        child: hideLabel ?? mini
             ? Icon(
                 icon,
                 color: theme.colorScheme.onPrimaryContainer,
@@ -362,14 +360,16 @@ class _MenuButton extends StatelessWidget {
 class _TableHeaderCell extends StatelessWidget {
   final String text;
   final IconData icon;
+  final bool mini;
+
   const _TableHeaderCell({
     required this.text,
     required this.icon,
+    this.mini = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    final isColumnMode = FluffyThemes.isColumnMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 6.0,
@@ -382,7 +382,7 @@ class _TableHeaderCell extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
-              fontSize: isColumnMode ? 12.0 : 8.0,
+              fontSize: !mini ? 12.0 : 8.0,
             ),
           ),
         ],
@@ -395,11 +395,13 @@ class _TableContentCell extends StatelessWidget {
   final String? text;
   final DownloadStatus downloadStatus;
   final RequestStatus requestStatus;
+  final bool mini;
 
   const _TableContentCell({
     required this.text,
     required this.downloadStatus,
     required this.requestStatus,
+    this.mini = false,
   });
 
   @override
@@ -411,7 +413,6 @@ class _TableContentCell extends StatelessWidget {
       );
     }
 
-    final isColumnMode = FluffyThemes.isColumnMode(context);
     return TableCell(
       verticalAlignment: TableCellVerticalAlignment.fill,
       child: Opacity(
@@ -421,7 +422,7 @@ class _TableContentCell extends StatelessWidget {
           child: Text(
             text!,
             style: TextStyle(
-              fontSize: isColumnMode ? 16.0 : 12.0,
+              fontSize: !mini ? 16.0 : 12.0,
               fontWeight: FontWeight.w500,
             ),
           ),
@@ -469,18 +470,17 @@ class _MissingContentCell extends StatelessWidget {
 class _RequestButton extends StatelessWidget {
   final RequestStatus status;
   final VoidCallback onPressed;
+  final bool mini;
 
   const _RequestButton({
     required this.status,
     required this.onPressed,
+    this.mini = false,
   });
 
   @override
   Widget build(BuildContext context) {
     if (!status.showButton) return const SizedBox.shrink();
-
-    final isColumnMode = FluffyThemes.isColumnMode(context);
-
     return MouseRegion(
       cursor: status.enabled ? SystemMouseCursors.click : MouseCursor.defer,
       child: GestureDetector(
@@ -499,11 +499,11 @@ class _RequestButton extends StatelessWidget {
               children: [
                 Icon(
                   status.icon,
-                  size: isColumnMode ? 12.0 : 8.0,
+                  size: !mini ? 12.0 : 8.0,
                 ),
                 Text(
                   status.label(context),
-                  style: TextStyle(fontSize: isColumnMode ? 12.0 : 8.0),
+                  style: TextStyle(fontSize: !mini ? 12.0 : 8.0),
                 ),
               ],
             ),

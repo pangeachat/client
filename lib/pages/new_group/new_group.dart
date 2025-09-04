@@ -8,8 +8,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/new_group/new_group_view.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -42,10 +40,6 @@ class NewGroupController extends State<NewGroup> {
   // #Pangea
   // bool publicGroup = false;
   // bool groupCanBeFound = false;
-  ActivityPlanModel? selectedActivity;
-  Uint8List? selectedActivityImage;
-  String? selectedActivityImageFilename;
-
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final FocusNode focusNode = FocusNode();
 
@@ -71,22 +65,6 @@ class NewGroupController extends State<NewGroup> {
   // #Pangea
   // void setPublicGroup(bool b) =>
   //     setState(() => publicGroup = groupCanBeFound = b);
-
-  void setSelectedActivity(
-    ActivityPlanModel? activity,
-    Uint8List? image,
-    String? imageFilename,
-  ) {
-    setState(() {
-      selectedActivity = activity;
-      selectedActivityImage = image;
-      selectedActivityImageFilename = imageFilename;
-      if (avatar == null) {
-        avatar = image;
-        avatarUrl = null;
-      }
-    });
-  }
 
   @override
   void initState() {
@@ -189,21 +167,6 @@ class NewGroupController extends State<NewGroup> {
         );
       }
     }
-
-    if (selectedActivity != null) {
-      try {
-        await room.sendActivityPlan(
-          selectedActivity!,
-          avatar: selectedActivityImage,
-          filename: selectedActivityImageFilename,
-        );
-      } catch (err) {
-        ErrorHandler.logError(
-          e: "Failed to send activity plan",
-          data: {"roomId": roomId, "error": err},
-        );
-      }
-    }
     context.go('/rooms/$roomId/invite');
     // Pangea#
   }
@@ -251,7 +214,7 @@ class NewGroupController extends State<NewGroup> {
       GoogleAnalytics.createClass(room.name, spaceCode);
     }
 
-    context.go("/rooms?spaceId=$spaceId");
+    context.go("/rooms/spaces/$spaceId/details");
     // Pangea#
   }
 
