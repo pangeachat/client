@@ -91,18 +91,21 @@ class ButtonControlledCarouselView extends StatelessWidget {
     final availableRoles = room.activityPlan!.roles;
     final assignedRoles = room.assignedRoles ?? {};
 
-    final userSummaries = summary.participants.where(
-      (p) => assignedRoles.values.any(
-        (role) => role.userId == p.participantId,
-      ),
-    );
+    final userSummaries = summary.participants
+        .where(
+          (p) => assignedRoles.values.any(
+            (role) => role.userId == p.participantId,
+          ),
+        )
+        .toList();
+
     return Column(
       children: [
         SizedBox(
-          height: 175.0,
+          height: 200.0,
           child: ListView(
+            shrinkWrap: true,
             controller: controller.carouselController,
-            itemExtent: 250,
             scrollDirection: Axis.horizontal,
             children: userSummaries.mapIndexed((i, p) {
               final user = room.getParticipants().firstWhereOrNull(
@@ -112,7 +115,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                 (role) => role.userId == p.participantId,
               );
               return Container(
-                width: 250.0,
+                width: 350.0,
                 margin: const EdgeInsets.only(right: 5.0),
                 padding: const EdgeInsets.all(12.0),
                 decoration: ShapeDecoration(
@@ -125,6 +128,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                   ),
                 ),
                 child: Column(
+                  spacing: 4.0,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -148,9 +152,13 @@ class ButtonControlledCarouselView extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Text(
-                      p.feedback,
-                      style: const TextStyle(fontSize: 8.0),
+                    Flexible(
+                      child: SingleChildScrollView(
+                        child: Text(
+                          p.feedback,
+                          style: const TextStyle(fontSize: 12.0),
+                        ),
+                      ),
                     ),
                     Row(
                       spacing: 14.0,

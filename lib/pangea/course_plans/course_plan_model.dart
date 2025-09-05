@@ -11,6 +11,7 @@ import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_p
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_media.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic_location.dart';
+import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic_location_media.dart';
 
 /// Represents a topic in the course planner response.
 class Topic {
@@ -152,6 +153,7 @@ class CoursePlanModel {
     List<CmsCoursePlanMedia>? cmsCoursePlanMedias,
     List<CmsCoursePlanTopic>? cmsCoursePlanTopics,
     List<CmsCoursePlanTopicLocation>? cmsCoursePlanTopicLocations,
+    List<CmsCoursePlanTopicLocationMedia>? cmsCoursePlanTopicLocationMedias,
     List<CmsCoursePlanActivity>? cmsCoursePlanActivities,
     List<CmsCoursePlanActivityMedia>? cmsCoursePlanActivityMedias,
   ) {
@@ -235,6 +237,19 @@ class CoursePlanModel {
           }
         }
 
+        List<CmsCoursePlanTopicLocationMedia>? topicLocationMedias;
+        if (cmsCoursePlanTopicLocationMedias != null &&
+            topicLocations != null &&
+            topicLocations.isNotEmpty) {
+          final location = topicLocations.first;
+          for (final media in cmsCoursePlanTopicLocationMedias) {
+            if (media.coursePlanTopicLocations.contains(location.id)) {
+              topicLocationMedias ??= [];
+              topicLocationMedias.add(media);
+            }
+          }
+        }
+
         topics ??= [];
         topics.add(
           Topic(
@@ -245,6 +260,10 @@ class CoursePlanModel {
                 ? topicLocations.first.name
                 : "Any",
             activities: activityPlans,
+            imageUrl:
+                topicLocationMedias != null && topicLocationMedias.isNotEmpty
+                    ? '${Environment.cmsApi}${topicLocationMedias.last.url}'
+                    : null,
           ),
         );
       }

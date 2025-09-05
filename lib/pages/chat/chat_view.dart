@@ -9,7 +9,8 @@ import 'package:fluffychat/pages/chat/chat_app_bar_title.dart';
 import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_finished_status_message.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_pinned_message.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/load_activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar_header.dart';
@@ -370,7 +371,11 @@ class ChatView extends StatelessWidget {
                                 child: ChatEventList(controller: controller),
                               ),
                             ),
-                            if (controller.showScrollDownButton)
+                            // #Pangea
+                            // if (controller.showScrollDownButton)
+                            if (controller.showScrollDownButton &&
+                                !controller.room.showActivityFinished)
+                              // Pangea#
                               Divider(
                                 height: 1,
                                 color: theme.dividerColor,
@@ -385,8 +390,13 @@ class ChatView extends StatelessWidget {
                                   onPressed: controller.goToNewRoomAction,
                                 ),
                               )
+                            // #Pangea
+                            // else if (controller.room.canSendDefaultMessages &&
+                            //     controller.room.membership == Membership.join)
                             else if (controller.room.canSendDefaultMessages &&
-                                controller.room.membership == Membership.join)
+                                controller.room.membership == Membership.join &&
+                                !controller.room.showActivityFinished)
+                              // Pangea#
                               Container(
                                 margin: EdgeInsets.all(bottomSheetPadding),
                                 constraints: const BoxConstraints(
@@ -469,6 +479,9 @@ class ChatView extends StatelessWidget {
                               ),
                             if (controller.room.activityIsFinished)
                               LoadActivitySummaryWidget(room: controller.room),
+                            ActivityFinishedStatusMessage(
+                              controller: controller,
+                            ),
                             // Pangea#
                           ],
                         ),

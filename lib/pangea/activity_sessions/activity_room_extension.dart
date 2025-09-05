@@ -4,6 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_analytics_repo.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_request_model.dart';
@@ -15,8 +16,7 @@ import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:flutter/foundation.dart';
-import 'package:matrix/matrix.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 import '../activity_summary/activity_summary_repo.dart';
 
@@ -83,7 +83,7 @@ extension ActivityRoomExtension on Room {
   Future<void> archiveActivity() async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRole;
-    if (role == null || !role.isFinished) return;
+    if (role == null || !role.isFinished || role.isArchived) return;
 
     role.archivedAt = DateTime.now();
     currentRoles.updateRole(role);
@@ -121,7 +121,7 @@ extension ActivityRoomExtension on Room {
     final events = await getAllEvents();
     final List<ActivitySummaryResultsMessage> messages = [];
     final ActivitySummaryAnalyticsModel analytics =
-        ActivitySummaryAnalyticsModel();
+        activitySummary?.analytics ?? ActivitySummaryAnalyticsModel();
 
     final timeline = this.timeline ?? await getTimeline();
     for (final event in events) {
@@ -148,11 +148,15 @@ extension ActivityRoomExtension on Room {
       );
 
       messages.add(activityMessage);
-      analytics.addConstructs(pangeaMessage);
+
+      if (activitySummary?.analytics == null) {
+        analytics.addConstructs(pangeaMessage);
+      }
     }
 
     try {
       final resp = await ActivitySummaryRepo.get(
+        id,
         ActivitySummaryRequestModel(
           activity: activityPlan!,
           activityResults: messages,
@@ -167,6 +171,8 @@ extension ActivityRoomExtension on Room {
           analytics: analytics,
         ),
       );
+
+      ActivitySummaryRepo.delete(id, activityPlan!);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -182,6 +188,7 @@ extension ActivityRoomExtension on Room {
         await setActivitySummary(
           ActivitySummaryModel(
             errorAt: DateTime.now(),
+            analytics: analytics,
           ),
         );
       }
@@ -274,7 +281,9 @@ extension ActivityRoomExtension on Room {
         powerForChangingStateEvent(PangeaEventTypes.activitySummary) == 0;
   }
 
-  bool get activityHasStarted => remainingRoles == 0;
+  bool get activityHasStarted =>
+      (activityPlan?.roles.length ?? 0) - (activityRoles?.roles.length ?? 0) <=
+      0;
 
   bool get isActiveInActivity {
     if (!showActivityChatUI) return false;
@@ -321,28 +330,42 @@ extension ActivityRoomExtension on Room {
 
   bool get isActivitySession => isActivityRoomType || activityPlan != null;
 
-  // Live analytics that update as messages are sent
-  ActivitySummaryAnalyticsModel get liveActivityAnalytics {
-    final analytics = ActivitySummaryAnalyticsModel();
-    final timeline = this.timeline;
+  bool get showActivityFinished =>
+      showActivityChatUI && ownRole != null && hasCompletedActivity;
 
-    if (timeline == null) return analytics;
+  Future<ActivitySummaryAnalyticsModel> getActivityAnalytics() async {
+    // wait for local storage box to init in getAnalytics initialization
+    if (!MatrixState.pangeaController.getAnalytics.initCompleter.isCompleted) {
+      await MatrixState.pangeaController.getAnalytics.initCompleter.future;
+    }
 
-    // Process all events in the timeline to build real-time analytics
-    for (final event in timeline.events) {
-      if (event.type != EventTypes.Message ||
-          event.messageType != MessageTypes.Text) {
-        continue;
-      }
+    final cached = ActivitySessionAnalyticsRepo.get(id);
+    final analytics = cached?.analytics ?? ActivitySummaryAnalyticsModel();
 
-      final pangeaMessage = PangeaMessageEvent(
-        event: event,
-        timeline: timeline,
-        ownMessage: client.userID == event.senderId,
-      );
+    final eventsSince = await getAllEvents(since: cached?.lastEventId);
+    final timeline = this.timeline ?? await getTimeline();
+    final messageEvents = getPangeaMessageEvents(
+      eventsSince,
+      timeline,
+      msgtypes: [
+        MessageTypes.Text,
+        MessageTypes.Audio,
+      ],
+    );
 
+    if (messageEvents.isEmpty) {
+      return analytics;
+    }
+
+    for (final pangeaMessage in messageEvents) {
       analytics.addConstructs(pangeaMessage);
     }
+
+    await ActivitySessionAnalyticsRepo.set(
+      id,
+      messageEvents.last.eventId,
+      analytics,
+    );
 
     return analytics;
   }
