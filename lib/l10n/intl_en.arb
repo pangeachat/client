@@ -4878,7 +4878,7 @@
       }
     }
   },
-  "joinSpaceOnboardingDesc": "Do you have an invite code or link to a course?",
+  "joinSpaceOnboardingDesc": "Do you have an invite code or link to a public course?",
   "skipForNow": "Skip for now",
   "permissions": "Permissions",
   "spaceChildPermission": "Who can add new chats to this course",
