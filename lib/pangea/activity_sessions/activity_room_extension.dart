@@ -158,6 +158,7 @@ extension ActivityRoomExtension on Room {
 
     try {
       final resp = await ActivitySummaryRepo.get(
+        id,
         ActivitySummaryRequestModel(
           activity: activityPlan!,
           activityResults: messages,
@@ -172,6 +173,8 @@ extension ActivityRoomExtension on Room {
           analytics: analytics,
         ),
       );
+
+      ActivitySummaryRepo.delete(id, activityPlan!);
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -328,6 +331,9 @@ extension ActivityRoomExtension on Room {
       roomType?.startsWith(PangeaRoomTypes.activitySession) == true;
 
   bool get isActivitySession => isActivityRoomType || activityPlan != null;
+
+  bool get showActivityFinished =>
+      showActivityChatUI && ownRole != null && hasCompletedActivity;
 
   Future<ActivitySummaryAnalyticsModel> getActivityAnalytics() async {
     // wait for local storage box to init in getAnalytics initialization
