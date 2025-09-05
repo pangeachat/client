@@ -30,8 +30,8 @@ class ActivityStatsMenu extends StatefulWidget {
 class ActivityStatsMenuState extends State<ActivityStatsMenu> {
   bool _showDropdown = false;
 
-  double percentVocabComplete = .7;
-  //TODO: calculate this percent value by how many are done/how many total to get an actual metric. It's set to 1 as a default but the message displayed depend on a real numebr.
+  double percentVocabComplete = .3;
+  //TODO: calculate this percent value by how many are done/how many total to get an actual metric. It's currently set to below .4 so message will only change at 50 new vocab words
 
   Room get room => widget.controller.room;
 
@@ -52,9 +52,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     }
   }
 
-  //public methods to show/hide dropdown from external widgets (activity button)
   void toggleDropdown() {
-    //_setShowDropdown(true);
     if (_showDropdown) {
       _setShowDropdown(false);
     } else {
@@ -67,7 +65,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     if (assignedRoles == null) return 0;
 
     // Filter out the bot from the count, similar to activityIsFinished logic
-    //This is a workaround for the Bot not officially wrapping up, if it does in the future this can be taken out and just return the count
+    // Does not count the bot, but only bot activity rooms display non counting message
     final nonBotRoles = assignedRoles.values.where(
       (role) => role.userId != BotName.byEnvironment,
     );
@@ -111,13 +109,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(
-      "ActivityPinnedMessage: showActivityChatUI = ${room.showActivityChatUI}",
-    );
-    debugPrint(
-      "ActivityPinnedMessage: activityPlan = ${room.activityPlan != null ? 'exists' : 'null'}",
-    );
-
     if (!room.showActivityChatUI) {
       return const SizedBox.shrink();
     }
@@ -128,7 +119,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     // Completion status variables
     final bool userComplete = room.hasCompletedActivity;
     final bool activityComplete = room.activityIsFinished;
-    //final bool userHasRole = (room.ownRole != null);
     bool shouldShowEndForAll = true;
     bool shouldShowImDone = true;
 
@@ -137,12 +127,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     final vocabCount = analytics.uniqueConstructCountForUser(
       userId,
       ConstructTypeEnum.vocab,
-    );
-
-    debugPrint("Vocab count: $vocabCount");
-
-    debugPrint(
-      "assigned roles: ${_getAssignedRolesCount()} bot participant? ${_isBotParticipant()}",
     );
 
     String message = "";
@@ -155,25 +139,11 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
       shouldShowEndForAll = false;
     }
 
-    // if
-    // (!userHasRole) {
-    //   shouldShowImDone = false;
-    //   shouldShowEndForAll = false;
-    //   if (room.remainingRoles == 0) {
-    //     //user has no role yet and there are none left, can see message but no buttons
-    //     message =
-    //         "There are no open roles in this activity, but feel free to stay and watch. Or, if you'd like to participate, you can make another activity and invite your friends!";
-    //   } else {
-    //     //user has no role yet but there are some left, can see message but no buttons
-    //     message =
-    //         "There are ${room.remainingRoles} roles left, join one if you'd like to participate!";
-    //   } } else
     if (activityComplete) {
       //activity is finished, no buttons
       shouldShowImDone = false;
       shouldShowEndForAll = false;
-      message =
-          "This activity has been completed. If you participated, the activity summary will be visible below.";
+      message = L10n.of(context).activityComplete;
     } else {
       //activity is ongoing
       if (_getCompletedRolesCount() == 0 ||
@@ -181,22 +151,24 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
         //IF nobodys done or you're only playing with the bot,
         //Then it should show tips about your progress and nudge you to continue/end
         if ((percentVocabComplete < .4) && vocabCount < 50) {
-          message =
-              "It looks like you haven't chatted much, try using some more vocab words! If you feel like you've completed your objective, you can end the activity below.";
+          message = L10n.of(context).haventChattedMuch;
         } else {
-          message =
-              "It looks like you've been chatting for a while! If you feel like you've completed your objective, wrap up to finish the activity and we'll generate you a summary in the chat!";
+          message = L10n.of(context).haveChatted;
         }
       } else {
         //user is in group with other users OR someone has wrapped up
         if (userComplete) {
           //user is done but group is ongoing, no buttons
-          message =
-              "You and ${_getCompletedRolesCount()}/${_getAssignedRolesCount()} participants have wrapped up. Wait for everyone to finish, and we'll generate you a summary in the chat! \n\nIf you'd like to rejoin the conversation, click 'Continue' in the chat.";
+          message = L10n.of(context).userDoneAndWaiting(
+            _getCompletedRolesCount(),
+            _getAssignedRolesCount(),
+          );
         } else {
           //user is not done, buttons are present
-          message =
-              "${_getCompletedRolesCount()}/${_getAssignedRolesCount()} are done. Have you completed your objective?";
+          message = L10n.of(context).othersDoneAndWaiting(
+            _getCompletedRolesCount(),
+            _getAssignedRolesCount(),
+          );
         }
       }
     }
@@ -269,13 +241,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                             color: theme.colorScheme.onSurface,
                           ),
                           const SizedBox(width: 12.0),
-                          // Expanded(
-                          //   child: Text(
-                          //     room.activityPlan!.vocabString,
-                          //     textAlign: TextAlign.left,
-                          //     style: theme.textTheme.bodyMedium,
-                          //   ),
-                          // ),
                           Expanded(
                             child: Wrap(
                               children: [
@@ -283,7 +248,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                                   (vocabWord) => VocabTile(
                                     vocabWord: vocabWord,
                                     isUsed:
-                                        true, //room.liveActivityAnalytics.hasUsedVocab(vocabWord),
+                                        true, //TODO: only highlight used vocab words, not all
                                   ),
                                 ),
                               ],
@@ -302,7 +267,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                               spacing: 12.0,
                               children: [
                                 if (shouldShowEndForAll)
-                                  //endForAll shows when the user has a role and it's not a room with only the bot (don't need two buttons if they both do the same thing)
                                   SizedBox(
                                     width: double.infinity,
                                     child: ElevatedButton(
@@ -340,10 +304,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                                               horizontal: 12.0,
                                               vertical: 8.0,
                                             ),
-                                            // foregroundColor:
-                                            //     theme.colorScheme.onSecondary,
-                                            // backgroundColor:
-                                            //     theme.colorScheme.secondary,
                                           ),
                                           onPressed: _finishActivity,
                                           child: Text(
@@ -392,6 +352,9 @@ class VocabTile extends StatelessWidget {
     final color =
         isUsed ? AppConfig.goldLight.withAlpha(100) : Colors.transparent;
 
+    final screenWidth = MediaQuery.of(context).size.width;
+    final baseStyle = Theme.of(context).textTheme.bodyMedium;
+    final fontSize = (baseStyle?.fontSize ?? 14) - (screenWidth < 400 ? 4 : 0);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
@@ -401,9 +364,10 @@ class VocabTile extends StatelessWidget {
       ),
       child: Text(
         vocabWord,
-        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
+        style: baseStyle?.copyWith(
+          color: Theme.of(context).colorScheme.onSurface,
+          fontSize: fontSize,
+        ),
       ),
     );
   }
@@ -430,7 +394,7 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
   void initState() {
     super.initState();
     // Listen for new messages to refresh stats in real-time
-    _timelineSubscription = widget.room.onUpdate.stream.listen((_) {
+    _timelineSubscription = widget.room.client.onSync.stream.listen((_) {
       if (mounted) {
         setState(() {});
       }
@@ -445,9 +409,7 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
 
   @override
   Widget build(BuildContext context) {
-    // Use live analytics instead of summary analytics
     final analytics = widget.room.liveActivityAnalytics;
-
     final userId = Matrix.of(context).client.userID ?? '';
     final vocabCount = analytics.uniqueConstructCountForUser(
       userId,
@@ -459,11 +421,6 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
     );
     final xpCount = analytics.totalXPForUser(userId);
 
-    debugPrint(
-      "userID: $userId, vocabCount: $vocabCount, grammarCount: $grammarCount, xpCount: $xpCount",
-    );
-
-    // Always show the row, even with zero data
     return Container(
       width: 350,
       height: 55,
@@ -512,12 +469,16 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
     required String label,
   }) {
     final theme = Theme.of(context);
+    final screenWidth = MediaQuery.of(context).size.width;
+    final baseStyle = theme.textTheme.bodyMedium;
+    final double fontSize = (screenWidth < 400) ? 10 : 14;
+    final double iconSize = (screenWidth < 400) ? 14 : 18;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Icon(
           icon,
-          size: 18,
+          size: iconSize,
           color: theme.colorScheme.onSurface,
         ),
         const SizedBox(width: 4),
@@ -526,9 +487,10 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
           children: [
             Text(
               value,
-              style: theme.textTheme.bodyMedium?.copyWith(
+              style: baseStyle?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: theme.colorScheme.onSurface,
+                fontSize: fontSize,
               ),
             ),
           ],
