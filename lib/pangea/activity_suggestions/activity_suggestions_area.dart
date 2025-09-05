@@ -273,7 +273,7 @@ class ActivitySuggestionsAreaState extends State<ActivitySuggestionsArea> {
                               ),
                             )
                           : SizedBox(
-                              width: MediaQuery.of(context).size.width,
+                              width: MediaQuery.sizeOf(context).width,
                               child: Wrap(
                                 alignment: WrapAlignment.spaceEvenly,
                                 runSpacing: 16.0,

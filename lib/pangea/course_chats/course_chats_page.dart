@@ -269,7 +269,7 @@ class CourseChatsController extends State<CourseChats> {
         room.client.userID!,
       );
       final matrixLocals = MatrixLocals(L10n.of(context));
-      final action = await showAdaptiveDialog<InviteAction>(
+      final action = await showAdaptiveDialog<InviteActions>(
         barrierDismissible: true,
         context: context,
         builder: (context) => AlertDialog.adaptive(
@@ -300,12 +300,12 @@ class CourseChatsController extends State<CourseChats> {
           ),
           actions: [
             AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.accept),
+              onPressed: () => Navigator.of(context).pop(InviteActions.accept),
               bigButtons: true,
               child: Text(L10n.of(context).accept),
             ),
             AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.decline),
+              onPressed: () => Navigator.of(context).pop(InviteActions.decline),
               bigButtons: true,
               child: Text(
                 L10n.of(context).decline,
@@ -313,7 +313,7 @@ class CourseChatsController extends State<CourseChats> {
               ),
             ),
             AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.block),
+              onPressed: () => Navigator.of(context).pop(InviteActions.block),
               bigButtons: true,
               child: Text(
                 L10n.of(context).block,
@@ -326,15 +326,15 @@ class CourseChatsController extends State<CourseChats> {
       switch (action) {
         case null:
           return;
-        case InviteAction.accept:
+        case InviteActions.accept:
           break;
-        case InviteAction.decline:
+        case InviteActions.decline:
           await showFutureLoadingDialog(
             context: context,
             future: () => room.leave(),
           );
           return;
-        case InviteAction.block:
+        case InviteActions.block:
           final userId = inviteEvent?.senderId;
           context.go('/rooms/settings/security/ignorelist', extra: userId);
           return;
@@ -548,6 +548,26 @@ class CourseChatsController extends State<CourseChats> {
             ],
           ),
         ),
+        if (room.membership == Membership.invite)
+          PopupMenuItem(
+            value: ChatContextAction.block,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.block_outlined,
+                  color: Theme.of(context).colorScheme.onErrorContainer,
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  L10n.of(context).block,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onErrorContainer,
+                  ),
+                ),
+              ],
+            ),
+          ),
         if (room.isRoomAdmin && !room.isDirectChat)
           PopupMenuItem(
             value: ChatContextAction.delete,
@@ -603,6 +623,15 @@ class CourseChatsController extends State<CourseChats> {
           ),
         );
         return;
+      case ChatContextAction.block:
+        final inviteEvent = room.getState(
+          EventTypes.RoomMember,
+          room.client.userID!,
+        );
+        context.go(
+          '/rooms/settings/security/ignorelist',
+          extra: inviteEvent?.senderId,
+        );
       case ChatContextAction.leave:
         final confirmed = await showOkCancelAlertDialog(
           context: context,

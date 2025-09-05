@@ -24,6 +24,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
+import 'package:fluffychat/utils/error_reporter.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -84,18 +85,18 @@ extension LocalizedActiveFilter on ActiveFilter {
 class ChatList extends StatefulWidget {
   static BuildContext? contextForVoip;
   final String? activeChat;
+  final bool displayNavigationRail;
   // #Pangea
   final String? activeSpaceId;
   // Pangea#
-  final bool displayNavigationRail;
 
   const ChatList({
     super.key,
     required this.activeChat,
+    this.displayNavigationRail = false,
     // #Pangea
     this.activeSpaceId,
     // Pangea#
-    this.displayNavigationRail = false,
   });
 
   @override
@@ -137,16 +138,15 @@ class ChatListController extends State<ChatList>
 
   void onChatTap(Room room) async {
     if (room.membership == Membership.invite) {
+      // #Pangea
       final theme = Theme.of(context);
       final inviteEvent = room.getState(
         EventTypes.RoomMember,
         room.client.userID!,
       );
       final matrixLocals = MatrixLocals(L10n.of(context));
-      final action = await showAdaptiveDialog<InviteAction>(
-        // #Pangea
+      final action = await showAdaptiveDialog<InviteActions>(
         barrierDismissible: true,
-        // Pangea#
         context: context,
         builder: (context) => AlertDialog.adaptive(
           title: ConstrainedBox(
@@ -176,12 +176,12 @@ class ChatListController extends State<ChatList>
           ),
           actions: [
             AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.accept),
+              onPressed: () => Navigator.of(context).pop(InviteActions.accept),
               bigButtons: true,
               child: Text(L10n.of(context).accept),
             ),
             AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.decline),
+              onPressed: () => Navigator.of(context).pop(InviteActions.decline),
               bigButtons: true,
               child: Text(
                 L10n.of(context).decline,
@@ -189,7 +189,7 @@ class ChatListController extends State<ChatList>
               ),
             ),
             AdaptiveDialogAction(
-              onPressed: () => Navigator.of(context).pop(InviteAction.block),
+              onPressed: () => Navigator.of(context).pop(InviteActions.block),
               bigButtons: true,
               child: Text(
                 L10n.of(context).block,
@@ -202,20 +202,21 @@ class ChatListController extends State<ChatList>
       switch (action) {
         case null:
           return;
-        case InviteAction.accept:
+        case InviteActions.accept:
           break;
-        case InviteAction.decline:
+        case InviteActions.decline:
           await showFutureLoadingDialog(
             context: context,
             future: () => room.leave(),
           );
           return;
-        case InviteAction.block:
+        case InviteActions.block:
           final userId = inviteEvent?.senderId;
           context.go('/rooms/settings/security/ignorelist', extra: userId);
           return;
       }
       if (!mounted) return;
+      // Pangea#
       final joinResult = await showFutureLoadingDialog(
         context: context,
         future: () async {
@@ -672,6 +673,8 @@ class ChatListController extends State<ChatList>
     });
     // Pangea#
 
+    ErrorReporter(context).consumeTemporaryErrorLogFile();
+
     super.initState();
   }
 
@@ -899,6 +902,26 @@ class ChatListController extends State<ChatList>
             ],
           ),
         ),
+        if (room.membership == Membership.invite)
+          PopupMenuItem(
+            value: ChatContextAction.block,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.block_outlined,
+                  color: Theme.of(context).colorScheme.onErrorContainer,
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  L10n.of(context).block,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onErrorContainer,
+                  ),
+                ),
+              ],
+            ),
+          ),
         // #Pangea
         if (room.isRoomAdmin && !room.isDirectChat)
           PopupMenuItem(
@@ -956,6 +979,15 @@ class ChatListController extends State<ChatList>
           ),
         );
         return;
+      case ChatContextAction.block:
+        final inviteEvent = room.getState(
+          EventTypes.RoomMember,
+          room.client.userID!,
+        );
+        context.go(
+          '/rooms/settings/security/ignorelist',
+          extra: inviteEvent?.senderId,
+        );
       case ChatContextAction.leave:
         final confirmed = await showOkCancelAlertDialog(
           context: context,
@@ -1131,34 +1163,34 @@ class ChatListController extends State<ChatList>
     });
 
     // #Pangea
-    //   if (client.userDeviceKeys[client.userID!]?.deviceKeys.values
-    //           .any((device) => !device.verified && !device.blocked) ??
-    //       false) {
-    //     late final ScaffoldFeatureController controller;
-    //     final theme = Theme.of(context);
-    //     controller = ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(
-    //         duration: const Duration(seconds: 15),
-    //         showCloseIcon: true,
-    //         backgroundColor: theme.colorScheme.errorContainer,
-    //         closeIconColor: theme.colorScheme.onErrorContainer,
-    //         content: Text(
-    //           L10n.of(context).oneOfYourDevicesIsNotVerified,
-    //           style: TextStyle(
-    //             color: theme.colorScheme.onErrorContainer,
-    //           ),
-    //         ),
-    //         action: SnackBarAction(
-    //           onPressed: () {
-    //             controller.close();
-    //             router.go('/rooms/settings/devices');
-    //           },
-    //           textColor: theme.colorScheme.onErrorContainer,
-    //           label: L10n.of(context).settings,
+    // if (client.userDeviceKeys[client.userID!]?.deviceKeys.values
+    //         .any((device) => !device.verified && !device.blocked) ??
+    //     false) {
+    //   late final ScaffoldFeatureController controller;
+    //   final theme = Theme.of(context);
+    //   controller = ScaffoldMessenger.of(context).showSnackBar(
+    //     SnackBar(
+    //       duration: const Duration(seconds: 15),
+    //       showCloseIcon: true,
+    //       backgroundColor: theme.colorScheme.errorContainer,
+    //       closeIconColor: theme.colorScheme.onErrorContainer,
+    //       content: Text(
+    //         L10n.of(context).oneOfYourDevicesIsNotVerified,
+    //         style: TextStyle(
+    //           color: theme.colorScheme.onErrorContainer,
     //         ),
     //       ),
-    //     );
-    //   }
+    //       action: SnackBarAction(
+    //         onPressed: () {
+    //           controller.close();
+    //           router.go('/rooms/settings/devices');
+    //         },
+    //         textColor: theme.colorScheme.onErrorContainer,
+    //         label: L10n.of(context).settings,
+    //       ),
+    //     ),
+    //   );
+    // }
     // Pangea#
   }
 
@@ -1303,8 +1335,9 @@ enum ChatContextAction {
   leave,
   // #Pangea
   // addToSpace,
+  // Pangea#
+  block,
+  // #Pangea
   delete,
   // Pangea#
 }
-
-enum InviteAction { accept, decline, block }

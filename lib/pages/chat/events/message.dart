@@ -49,6 +49,8 @@ class Message extends StatelessWidget {
   final bool wallpaperMode;
   final ScrollController scrollController;
   final List<Color> colors;
+  final void Function()? onExpand;
+  final bool isCollapsed;
   // #Pangea
   final bool immersionMode;
   final ChatController controller;
@@ -76,6 +78,8 @@ class Message extends StatelessWidget {
     required this.onMention,
     required this.scrollController,
     required this.colors,
+    this.onExpand,
+    this.isCollapsed = false,
     // #Pangea
     required this.immersionMode,
     required this.controller,
@@ -153,7 +157,7 @@ class Message extends StatelessWidget {
       }
       // Pangea#
 
-      return StateMessage(event);
+      return StateMessage(event, onExpand: onExpand, isCollapsed: isCollapsed);
     }
 
     if (event.type == EventTypes.Message &&
@@ -600,7 +604,11 @@ class Message extends StatelessWidget {
                                                         .link,
                                                     // child: BubbleBackground(
                                                     //   colors: colors,
-                                                    //   ignore: noBubble || !ownMessage,
+                                                    //   ignore: noBubble ||
+                                                    //     !ownMessage ||
+                                                    //     MediaQuery.highContrastOf(
+                                                    //         context,
+                                                    //       ),
                                                     //   scrollController: scrollController,
                                                     // Pangea#
                                                     child: Container(

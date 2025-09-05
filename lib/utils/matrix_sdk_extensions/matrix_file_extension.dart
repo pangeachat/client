@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:file_selector/file_selector.dart';
 import 'package:matrix/matrix.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:universal_html/html.dart' as html;
@@ -20,18 +19,12 @@ extension MatrixFileExtension on MatrixFile {
       return;
     }
 
-    final downloadPath = !PlatformInfos.isMobile
-        ? (await getSaveLocation(
-            suggestedName: name,
-            confirmButtonText: L10n.of(context).saveFile,
-          ))
-            ?.path
-        : await FilePicker.platform.saveFile(
-            dialogTitle: L10n.of(context).saveFile,
-            fileName: name,
-            type: filePickerFileType,
-            bytes: bytes,
-          );
+    final downloadPath = await FilePicker.platform.saveFile(
+      dialogTitle: L10n.of(context).saveFile,
+      fileName: name,
+      type: filePickerFileType,
+      bytes: bytes,
+    );
     if (downloadPath == null) return;
 
     if (PlatformInfos.isDesktop) {
@@ -76,10 +69,12 @@ extension MatrixFileExtension on MatrixFile {
     // https://github.com/fluttercommunity/plus_plugins/tree/main/packages/share_plus/share_plus#ipad
     final box = context.findRenderObject() as RenderBox?;
 
-    await Share.shareXFiles(
-      [XFile.fromData(bytes, name: name, mimeType: mimeType)],
-      sharePositionOrigin:
-          box == null ? null : box.localToGlobal(Offset.zero) & box.size,
+    await SharePlus.instance.share(
+      ShareParams(
+        files: [XFile.fromData(bytes, name: name, mimeType: mimeType)],
+        sharePositionOrigin:
+            box == null ? null : box.localToGlobal(Offset.zero) & box.size,
+      ),
     );
     return;
   }

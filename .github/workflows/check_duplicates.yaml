@@ -1,4 +1,3 @@
-# #Pangea
 # name: Check duplicates
 
 # on:
@@ -14,7 +13,7 @@
 #         number: ${{ github.event.issue.number }}
 #         GH_TOKEN: ${{ github.token }}
 #     steps:
-#       - uses: actions/checkout@v4
+#       - uses: actions/checkout@v5
 #       - name: Check duplicates
 #         run: |
 #           issues=$(gh issue list --search '${{ env.title }}' --json number,title,url)
@@ -27,4 +26,3 @@
 #             formatted_body=$(echo -e "@${{ env.author }}\nPossible duplication of:\n$issues_markdown")
 #             gh issue comment ${{ github.event.issue.number }} --body "$formatted_body"
 #           fi
-# Pangea#

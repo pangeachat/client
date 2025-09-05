@@ -30,34 +30,28 @@ extension IsStateExtension on Event {
       (!AppConfig.hideRedactedEvents || !redacted) &&
       // if we enabled to hide all unknown events, don't show those
       // #Pangea
-      // (!AppConfig.hideUnknownEvents || isEventTypeKnown) &&
+      // (!AppConfig.hideUnknownEvents || isEventTypeKnown);
       (!AppConfig.hideUnknownEvents || pangeaIsEventTypeKnown) &&
-      // Pangea#
-      // remove state events that we don't want to render
-      (isState || !AppConfig.hideAllStateEvents) &&
-      // #Pangea
       content.tryGet(ModelKey.transcription) == null &&
       // if sending of transcription fails,
       // don't show it as a errored audio event in timeline.
       ((unsigned?['extra_content']
               as Map<String, dynamic>?)?[ModelKey.transcription] ==
-          null) &&
-      // hide unimportant state events
-      (!AppConfig.hideUnimportantStateEvents ||
-          !isState ||
-          importantStateEvents.contains(type)) &&
-      // Pangea#
-      // hide simple join/leave member events in public rooms
-      (!AppConfig.hideUnimportantStateEvents ||
-          type != EventTypes.RoomMember ||
-          room.joinRules != JoinRules.public ||
-          content.tryGet<String>('membership') == 'ban' ||
-          stateKey != senderId);
+          null);
+  // Pangea#
 
   bool get isState => !{
         EventTypes.Message,
         EventTypes.Sticker,
         EventTypes.Encrypted,
+      }.contains(type);
+
+  bool get isCollapsedState => !{
+        EventTypes.Message,
+        EventTypes.Sticker,
+        EventTypes.Encrypted,
+        EventTypes.RoomCreate,
+        EventTypes.RoomTombstone,
       }.contains(type);
 
   // #Pangea
@@ -75,16 +69,5 @@ extension IsStateExtension on Event {
         PangeaEventTypes.activityPlan,
         PangeaEventTypes.activityRole,
       ].contains(type);
-
-  // we're filtering out some state events that we don't want to render
-  static const Set<String> importantStateEvents = {
-    EventTypes.Encryption,
-    EventTypes.RoomCreate,
-    EventTypes.RoomMember,
-    EventTypes.RoomTombstone,
-    EventTypes.CallInvite,
-    PangeaEventTypes.activityPlan,
-    PangeaEventTypes.activityRole,
-  };
   // Pangea#
 }

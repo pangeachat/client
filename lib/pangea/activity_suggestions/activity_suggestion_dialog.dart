@@ -40,7 +40,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
 
   double get _width => FluffyThemes.isColumnMode(context)
       ? 400.0
-      : MediaQuery.of(context).size.width;
+      : MediaQuery.sizeOf(context).width;
 
   StreamSubscription? _stateSubscription;
 
@@ -153,7 +153,7 @@ class ActivitySuggestionDialogState extends State<ActivitySuggestionDialog> {
 
   double get width => FluffyThemes.isColumnMode(context)
       ? 400.0
-      : MediaQuery.of(context).size.width;
+      : MediaQuery.sizeOf(context).width;
 
   @override
   Widget build(BuildContext context) {
