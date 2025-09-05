@@ -1,10 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
@@ -21,17 +17,20 @@ import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/foundation.dart';
+import 'package:matrix/matrix.dart';
+
 import '../activity_summary/activity_summary_repo.dart';
 
 extension ActivityRoomExtension on Room {
   Future<void> joinActivity(ActivityRole role) async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
+
     final activityRole = ActivityRoleModel(
       id: role.id,
       userId: client.userID!,
       role: role.name,
     );
-
     currentRoles.updateRole(activityRole);
     await client.setRoomStateWithKey(
       id,
@@ -60,6 +59,7 @@ extension ActivityRoomExtension on Room {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRole;
     if (role == null || role.isFinished) return;
+
     role.finishedAt = DateTime.now();
     currentRoles.updateRole(role);
 

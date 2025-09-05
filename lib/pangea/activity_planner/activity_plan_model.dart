@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:flutter/foundation.dart';
 
 class ActivityPlanModel {
   final String activityId;
@@ -144,7 +143,14 @@ class ActivityPlanModel {
   /// use target emoji for learning objective
   /// use step emoji for instructions
   String get markdown {
-    String markdown = '''🎯 $learningObjective \n🪜 $instructions \n\n📖''';
+    final String markdown =
+        '''🎯 $learningObjective \n🪜 $instructions \n\n📖 $vocabString''';
+    return markdown;
+  }
+
+  String get vocabString {
+    final List<String> vocabList = [];
+    String vocabString = "";
     // cycle through vocab with index
     for (var i = 0; i < vocab.length; i++) {
       // if the lemma appears more than once in the vocab list, show the pos
@@ -152,10 +158,25 @@ class ActivityPlanModel {
       final v = vocab[i];
       final bool showPos =
           vocab.where((vocab) => vocab.lemma == v.lemma).length > 1;
-      markdown +=
+      vocabString +=
           '${v.lemma}${showPos ? ' (${v.pos})' : ''}${i + 1 < vocab.length ? ', ' : ''}';
+      vocabList.add("${v.lemma}${showPos ? ' (${v.pos})' : ''}");
     }
-    return markdown;
+    return vocabString;
+  }
+
+  List get vocabList {
+    final List<String> vocabList = [];
+    // cycle through vocab with index
+    for (var i = 0; i < vocab.length; i++) {
+      // if the lemma appears more than once in the vocab list, show the pos
+      // vocab is a wrapped list of string, separated by commas
+      final v = vocab[i];
+      final bool showPos =
+          vocab.where((vocab) => vocab.lemma == v.lemma).length > 1;
+      vocabList.add("${v.lemma}${showPos ? ' (${v.pos})' : ''}");
+    }
+    return vocabList;
   }
 
   @override
