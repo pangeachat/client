@@ -9,9 +9,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_planner_builder.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
-import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_builder.dart';
@@ -198,34 +196,17 @@ class CourseSettings extends StatelessWidget {
                           scrollDirection: Axis.horizontal,
                           itemCount: topic.activities.length,
                           itemBuilder: (context, index) {
-                            final activity = topic.activities[index];
                             return Padding(
                               padding: const EdgeInsets.only(right: 24.0),
-                              child: ActivityPlannerBuilder(
-                                initialActivity: activity,
-                                room: room,
-                                builder: (activityController) {
-                                  return ActivitySuggestionCard(
-                                    controller: activityController,
-                                    onPressed: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return ActivitySuggestionDialog(
-                                            controller: activityController,
-                                            buttonText:
-                                                L10n.of(context).launchToSpace,
-                                          );
-                                        },
-                                      );
-                                    },
-                                    width: 120.0,
-                                    height: 200.0,
-                                    fontSize: 12.0,
-                                    fontSizeSmall: 8.0,
-                                    iconSize: 8.0,
-                                  );
-                                },
+                              child: ActivitySuggestionCard(
+                                activity: topic.activities[index],
+                                // TODO: go to activity start page
+                                onPressed: () {},
+                                width: 120.0,
+                                height: 200.0,
+                                fontSize: 12.0,
+                                fontSizeSmall: 8.0,
+                                iconSize: 8.0,
                               ),
                             );
                           },

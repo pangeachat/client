@@ -28,8 +28,6 @@ import 'package:fluffychat/pages/settings_notifications/settings_notifications.d
 import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/pages/settings_security/settings_security.dart';
 import 'package:fluffychat/pages/settings_style/settings_style.dart';
-import 'package:fluffychat/pangea/activity_generator/activity_generator.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_planner_page.dart';
 import 'package:fluffychat/pangea/analytics_page/analytics_page.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
@@ -910,30 +908,6 @@ abstract class AppRoutes {
               roomId: state.pathParameters[roomKey]!,
             ),
           ),
-        ),
-        GoRoute(
-          path: 'planner',
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            ActivityPlannerPage(
-              roomID: state.pathParameters[roomKey]!,
-            ),
-          ),
-          redirect: loggedOutRedirect,
-          routes: [
-            GoRoute(
-              path: '/generator',
-              redirect: loggedOutRedirect,
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                ActivityGenerator(
-                  roomID: state.pathParameters[roomKey]!,
-                ),
-              ),
-            ),
-          ],
         ),
         GoRoute(
           path: 'access',

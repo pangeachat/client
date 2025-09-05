@@ -6,7 +6,6 @@ import 'package:jwt_decode/jwt_decode.dart';
 import 'package:matrix/matrix.dart' as matrix;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -458,21 +457,21 @@ class UserController {
     );
   }
 
-  Future<List<ActivityPlanModel>> getBookmarkedActivities() async {
-    if (activitiesProfile == null) {
-      throw Exception("Activities profile is not initialized");
-    }
+  // Future<List<ActivityPlanModel>> getBookmarkedActivities() async {
+  //   if (activitiesProfile == null) {
+  //     throw Exception("Activities profile is not initialized");
+  //   }
 
-    return activitiesProfile!.getBookmarkedActivities();
-  }
+  //   return activitiesProfile!.getBookmarkedActivities();
+  // }
 
-  List<ActivityPlanModel> getBookmarkedActivitiesSync() {
-    if (activitiesProfile == null) {
-      throw Exception("Activities profile is not initialized");
-    }
+  // List<ActivityPlanModel> getBookmarkedActivitiesSync() {
+  //   if (activitiesProfile == null) {
+  //     throw Exception("Activities profile is not initialized");
+  //   }
 
-    return activitiesProfile!.getBookmarkedActivitiesSync();
-  }
+  //   return activitiesProfile!.getBookmarkedActivitiesSync();
+  // }
 
   Future<void> updateBookmarkedActivity({
     required String activityId,
