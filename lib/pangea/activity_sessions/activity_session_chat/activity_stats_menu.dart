@@ -29,10 +29,9 @@ class ActivityStatsMenu extends StatefulWidget {
 
 class ActivityStatsMenuState extends State<ActivityStatsMenu> {
   bool _showDropdown = false;
+  Set<String> _usedVocab = {};
 
-  double percentVocabComplete = .3;
-  //TODO: calculate this percent value by how many are done/how many total to get an actual metric. It's currently set to below .4 so message will only change at 50 new vocab words
-
+  double percentVocabComplete = 0.0;
   Room get room => widget.controller.room;
 
   @override
@@ -44,6 +43,11 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     }
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void _setShowDropdown(bool value) {
     if (value != _showDropdown) {
       setState(() {
@@ -52,20 +56,41 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     }
   }
 
-  void toggleDropdown() {
+  Future<void> _updateUsedVocab() async {
+    final analytics = await room.getActivityAnalytics();
+    final userId = Matrix.of(context).client.userID ?? '';
+    final userAnalytics = analytics.constructs[userId];
+    Set<String> usedVocab = {};
+    if (userAnalytics != null) {
+      usedVocab = userAnalytics
+          .constructsOfType(ConstructTypeEnum.vocab)
+          .map((id) => id.lemma)
+          .toSet();
+    }
+    final vocabList = room.activityPlan?.vocabList ?? [];
+    double percent = 0.0;
+    if (vocabList.isNotEmpty) {
+      percent =
+          usedVocab.intersection(vocabList.toSet()).length / vocabList.length;
+    }
+    setState(() {
+      _usedVocab = usedVocab;
+      percentVocabComplete = percent;
+    });
+  }
+
+  Future<void> toggleDropdown() async {
     if (_showDropdown) {
       _setShowDropdown(false);
     } else {
       _setShowDropdown(true);
+      await _updateUsedVocab();
     }
   }
 
   int _getAssignedRolesCount() {
     final assignedRoles = room.assignedRoles;
     if (assignedRoles == null) return 0;
-
-    // Filter out the bot from the count, similar to activityIsFinished logic
-    // Does not count the bot, but only bot activity rooms display non counting message
     final nonBotRoles = assignedRoles.values.where(
       (role) => role.userId != BotName.byEnvironment,
     );
@@ -121,20 +146,13 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     final bool activityComplete = room.activityIsFinished;
     bool shouldShowEndForAll = true;
     bool shouldShowImDone = true;
-
-    final analytics = room.liveActivityAnalytics;
-    final userId = Matrix.of(context).client.userID ?? '';
-    final vocabCount = analytics.uniqueConstructCountForUser(
-      userId,
-      ConstructTypeEnum.vocab,
-    );
-
     String message = "";
 
     if (!room.isRoomAdmin) {
       shouldShowEndForAll = false;
     }
 
+    //dont need endforall if only w bot
     if ((_getAssignedRolesCount() == 1) && (_isBotParticipant() == true)) {
       shouldShowEndForAll = false;
     }
@@ -150,7 +168,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
           (_getAssignedRolesCount() == 1) && (_isBotParticipant() == true)) {
         //IF nobodys done or you're only playing with the bot,
         //Then it should show tips about your progress and nudge you to continue/end
-        if ((percentVocabComplete < .4) && vocabCount < 50) {
+        if ((percentVocabComplete < .7) && _usedVocab.length < 50) {
           message = L10n.of(context).haventChattedMuch;
         } else {
           message = L10n.of(context).haveChatted;
@@ -247,8 +265,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                                 ...room.activityPlan!.vocabList.map(
                                   (vocabWord) => VocabTile(
                                     vocabWord: vocabWord,
-                                    isUsed:
-                                        true, //TODO: only highlight used vocab words, not all
+                                    isUsed: _usedVocab.contains(vocabWord),
                                   ),
                                 ),
                               ],
@@ -369,133 +386,6 @@ class VocabTile extends StatelessWidget {
           fontSize: fontSize,
         ),
       ),
-    );
-  }
-}
-
-class ActivityStatsButton extends StatefulWidget {
-  final Room room;
-  final VoidCallback onToggleDropdown;
-
-  const ActivityStatsButton({
-    super.key,
-    required this.room,
-    required this.onToggleDropdown,
-  });
-
-  @override
-  State<ActivityStatsButton> createState() => _ActivityStatsButtonState();
-}
-
-class _ActivityStatsButtonState extends State<ActivityStatsButton> {
-  late StreamSubscription _timelineSubscription;
-
-  @override
-  void initState() {
-    super.initState();
-    // Listen for new messages to refresh stats in real-time
-    _timelineSubscription = widget.room.client.onSync.stream.listen((_) {
-      if (mounted) {
-        setState(() {});
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _timelineSubscription.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final analytics = widget.room.liveActivityAnalytics;
-    final userId = Matrix.of(context).client.userID ?? '';
-    final vocabCount = analytics.uniqueConstructCountForUser(
-      userId,
-      ConstructTypeEnum.vocab,
-    );
-    final grammarCount = analytics.uniqueConstructCountForUser(
-      userId,
-      ConstructTypeEnum.morph,
-    );
-    final xpCount = analytics.totalXPForUser(userId);
-
-    return Container(
-      width: 350,
-      height: 55,
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(20),
-        onTap: widget.onToggleDropdown,
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppConfig.goldLight.withAlpha(100),
-            borderRadius: BorderRadius.circular(20),
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildStatItem(
-                context: context,
-                icon: Icons.radar,
-                value: "$xpCount XP",
-                label: "XP",
-              ),
-              _buildStatItem(
-                context: context,
-                icon: Symbols.dictionary,
-                value: "$vocabCount",
-                label: "Vocab",
-              ),
-              _buildStatItem(
-                context: context,
-                icon: Symbols.toys_and_games,
-                value: "$grammarCount",
-                label: "Grammar",
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildStatItem({
-    required BuildContext context,
-    required IconData icon,
-    required String value,
-    required String label,
-  }) {
-    final theme = Theme.of(context);
-    final screenWidth = MediaQuery.of(context).size.width;
-    final baseStyle = theme.textTheme.bodyMedium;
-    final double fontSize = (screenWidth < 400) ? 10 : 14;
-    final double iconSize = (screenWidth < 400) ? 14 : 18;
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          icon,
-          size: iconSize,
-          color: theme.colorScheme.onSurface,
-        ),
-        const SizedBox(width: 4),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              value,
-              style: baseStyle?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: theme.colorScheme.onSurface,
-                fontSize: fontSize,
-              ),
-            ),
-          ],
-        ),
-      ],
     );
   }
 }
