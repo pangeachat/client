@@ -337,9 +337,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createGroup() {
       return "Crear grupo";
     },
-    get$createNewSpace() {
-      return "Nuevo espacio";
-    },
     get$currentlyActive() {
       return "Actualmente activo";
     },
@@ -808,9 +805,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$sourceCode() {
       return "C\xf3digo fuente";
     },
-    get$spaceName() {
-      return "Nombre del espacio";
-    },
     startedACall$1(senderName) {
       return senderName + " comenz\xf3 una llamada";
     },
@@ -1018,9 +1012,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noKeyForThisMessage() {
       return "Esto puede ocurrir si el mensaje se envi\xf3 antes de que entraras en tu cuenta en este dispositivo.\n\nTambi\xe9n puede que el remitente haya bloqueado tu dispositivo o haya fallado algo en la conexi\xf3n a Internet.\n\n\xbfPuedes leer el mensaje en otra sesi\xf3n? Entonces, \xa1puedes transferir el mensaje desde all\xed! Ve a Ajustes > Dispositivos y aseg\xfarate de que tus dispositivos se han verificado mutuamente. Cuando abras la sala la pr\xf3xima vez y ambas sesiones est\xe9n en primer plano, las claves se transmitir\xe1n autom\xe1ticamente.\n\n\xbfNo quieres perder las claves al salir o al cambiar de dispositivo? Aseg\xfarate de que has habilitado la copia de seguridad del chat en los ajustes.";
     },
-    get$newSpace() {
-      return "Nuevo espacio";
-    },
     wasDirectChatDisplayName$1(oldDisplayName) {
       return "Chat vac\xedo (era " + oldDisplayName + ")";
     },
@@ -1120,9 +1111,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$passwordIsWrong() {
       return "La clave que has puesto es incorrecta";
     },
-    get$publicSpaces() {
-      return "Espacios p\xfablicos";
-    },
     get$decline() {
       return "Declinar";
     },
@@ -1197,9 +1185,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$restricted() {
       return "Restringido";
-    },
-    goToSpace$1(space) {
-      return "Ir al espacio: " + space;
     },
     get$markAsUnread() {
       return "Marcar no le\xeddo";
@@ -1553,7 +1538,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Por favor, elija diferentes idiomas base e idiomas de aprender.";
     },
     get$joinWithClassCode() {
-      return "\xdanete a una clase o a un intercambio";
+      return "Join course";
     },
     get$joinWithClassCodeHint() {
       return "Introduzca el c\xf3digo de invitaci\xf3n";
@@ -1637,10 +1622,10 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Haga clic aqu\xed para actualizar la asistencia de traducci\xf3n y de gram\xe1tica.";
     },
     get$errorDisableITClassDesc() {
-      return "La ayuda a la traducci\xf3n est\xe1 desactivada para el espacio en el que se encuentra este chat.";
+      return "Translation assistance is turned off for the course that this chat is in.";
     },
     get$errorDisableIGCClassDesc() {
-      return "La asistencia gramatical est\xe1 desactivada para el espacio en el que se encuentra este chat.";
+      return "Grammar assistance is turned off for the course that this chat is in.";
     },
     get$error405Title() {
       return "Idiomas no seleccionados.";
@@ -2528,7 +2513,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Pagar";
     },
     invitedToSpace$2(space, user) {
-      return user + " te ha invitado a unirte a un espacio: \xa1" + space + "! \xbfDeseas aceptar?";
+      return user + " has invited you to join a course: " + space + "! Do you wish to accept?";
     },
     get$youreInvited() {
       return "\ud83d\udce9 \xa1Est\xe1s invitado!";
@@ -2558,7 +2543,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\xbfPor qu\xe9 est\xe1 borroso el mensaje?";
     },
     get$blurMeansTranslateBody() {
-      return "Mientras el Modo Inmersi\xf3n est\xe9 activado, los mensajes que se env\xeden en tu idioma base aparecer\xe1n borrosos mientras Pangea Bot los traduce a tu idioma de destino. El Modo Inmersi\xf3n puede activarse en los ajustes individuales y espaciales.";
+      return "While Immersion Mode is on, messages that are sent in your base language will be blurred while Pangea Bot translates them to your target language. Immersion Mode can be toggled in individual and course settings.";
     },
     get$bestCorrectionFeedback() {
       return "\xa1Correcto!";
@@ -3596,7 +3581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Crear chat e invitar usuarios";
     },
     get$updatedNewSpaceDescription() {
-      return "Los espacios te permiten consolidar tus chats y construir comunidades privadas o p\xfablicas.";
+      return "Courses allow you to consolidate your chats and build private or public communities.";
     },
     get$joinWithCode() {
       return "Unirse con c\xf3digo";
@@ -3941,7 +3926,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Producido en mensaje de voz";
     },
     get$leaveSpaceDescription() {
-      return "Al salir del espacio, dejar\xe1s todos los chats dentro de \xe9l. Otros usuarios ver\xe1n que has salido del espacio.";
+      return "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.";
     },
     get$constructUseCorMmDesc() {
       return "Significado correcto del mensaje";
@@ -3977,7 +3962,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Puedes habilitar texto a voz en la configuraci\xf3n de aprendizaje";
     },
     get$noSpaceDescriptionYet() {
-      return "No se ha creado ninguna descripci\xf3n de espacio a\xfan.";
+      return "No course description created yet.";
     },
     get$tooLargeToSend() {
       return "Este mensaje es demasiado grande para enviar";
@@ -4019,7 +4004,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\xa1Estos son todos los conceptos gramaticales en el idioma que est\xe1s aprendiendo! Los desbloquear\xe1s a medida que los encuentres mientras chateas. Haz clic para m\xe1s detalles.";
     },
     get$knockSpaceSuccess() {
-      return "\xa1Has solicitado unirte a este espacio! Un administrador responder\xe1 a tu solicitud cuando la reciba \ud83d\ude04";
+      return "You have requested to join this course! An admin will respond to your request when they receive it \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
       return "Escucha el mensaje completo. Luego empareja los audios con las palabras.";
@@ -4085,7 +4070,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Se han realizado demasiados intentos. Por favor, int\xe9ntalo de nuevo en 5 minutos.";
     },
     get$enterSpaceCode() {
-      return "Ingresa el c\xf3digo del espacio";
+      return "Enter course code";
     },
     get$shareSpaceLink() {
       return "Compartir enlace";
@@ -4160,7 +4145,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Bienvenido " + user;
     },
     get$joinSpaceOnboardingDesc() {
-      return "\xbfTienes un c\xf3digo de invitaci\xf3n o enlace a una comunidad de aprendizaje?";
+      return "Do you have an invite code or link to a public course?";
     },
     get$skipForNow() {
       return "Saltar por ahora";
@@ -4169,7 +4154,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Permisos";
     },
     get$spaceChildPermission() {
-      return "Qui\xe9n puede agregar nuevos chats y subespacios a este espacio";
+      return "Who can add new chats to this course";
     },
     get$addEnvironmentOverride() {
       return "Agregar anulaci\xf3n de entorno";
@@ -4181,13 +4166,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Are you sure you want to delete this chat? It will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics.";
     },
     get$deleteSpaceDesc() {
-      return "The space and any selected chats and/or subspaces will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
+      return "The course and any selected chats will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
     },
     get$maxFifty() {
       return "Max 50";
     },
     get$configureSpace() {
-      return "Configurar espacio";
+      return "Configure course";
     },
     get$pinMessages() {
       return "Fijar mensajes";
@@ -4202,7 +4187,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Invitar a otros usuarios";
     },
     get$changeTheNameOfTheSpace() {
-      return "Cambiar el nombre del espacio";
+      return "Change the name of the course";
     },
     get$changeTheDescription() {
       return "Cambiar la descripci\xf3n";
@@ -4229,7 +4214,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "We are working hard to generate more activities for you, please check back in a minute";
     },
     get$howSpaceCanBeFound() {
-      return "How this space can be found";
+      return "How this course can be found";
     },
     get$$private() {
       return "Private";
@@ -4244,7 +4229,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return 'Visible to the broader Pangea Chat community via "Find a course"';
     },
     get$howSpaceCanBeJoined() {
-      return "How this space can be joined";
+      return "How this course can be joined";
     },
     get$canBeFoundVia() {
       return "Can be found via:";
@@ -4271,7 +4256,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Chatting with AI is a great place to start and Pangea reading, writing, listening and speaking tools make it easy!";
     },
     get$getStartedCommunitiesDesc() {
-      return "Learning with a community is where Pangea Chat shines!\nYou can join your class, find a school, or even make your own!";
+      return "Learning with a community is where Pangea Chat shines!\nYou can join your class, find a course, or even make your own!";
     },
     get$getStartedFriendsDesc() {
       return "Do you have a friend that wants to learn with you?";
@@ -4280,7 +4265,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Well-done! You're chatting with the bot!";
     },
     get$getStartedCommunitiesComplete() {
-      return "Great, you have joined a space!";
+      return "Great, you have joined a course!";
     },
     get$getStartedComplete() {
       return "You've completed this section!\nKeep exploring our amazing features by chatting with friends!";
@@ -4310,16 +4295,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Failed to transcribe audio";
     },
     get$aUserIsKnocking() {
-      return "1 user is requesting to join your space";
+      return "1 user is requesting to join your course";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " users are requesting to join your space";
+      return "" + users + " users are requesting to join your course";
     },
     get$failedToFetchTranscription() {
       return "Failed to fetch transcription";
     },
     get$deleteEmptySpaceDesc() {
-      return "The space will be deleted for all participants. This action cannot be undone.";
+      return "The course will be deleted for all participants. This action cannot be undone.";
     },
     get$regenerate() {
       return "Regenerate";
@@ -4337,16 +4322,16 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Done";
     },
     get$inThisSpace() {
-      return "In this space";
+      return "In this course";
     },
     get$myContacts() {
       return "My contacts";
     },
     get$inviteAllInSpace() {
-      return "Invite all in this space";
+      return "Invite all in this course";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "All space participants has been invited to the chat";
+      return "All course participants has been invited to the chat";
     },
     numKnocking$1(count) {
       return "" + count + " knocking";
@@ -4385,7 +4370,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Failed to fetch level summary";
     },
     get$errorLoadingSpaceChildren() {
-      return "Failed to load chats within this space";
+      return "Failed to load chats within this course";
     },
     get$unexpectedError() {
       return "Unexpected error.";
@@ -4406,7 +4391,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Check";
     },
     get$unableToFindRoom() {
-      return "No chat or space found with that code. Please try again.";
+      return "No chat or course found with that code. Please try again.";
     },
     get$numCompletedActivities() {
       return "Number of completed activities";
@@ -4430,7 +4415,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Save and Launch";
     },
     get$launchToSpace() {
-      return "Launch to Space";
+      return "Launch to course";
     },
     get$numberOfActivities() {
       return "Number of Activity Sessions";
@@ -4469,7 +4454,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Request to analytics view access?";
     },
     get$requestAccessDesc() {
-      return "Would you like to request access to view participant analytics?\n\nIf participants agree, admins of this space will be able to view their:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view their:\n    \u2022 messages in chats outside the space\n    \u2022 vocabulary list";
+      return "Would you like to request access to view participant analytics?\n\nIf participants agree, admins of this course will be able to view their:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view their:\n    \u2022 messages in chats outside the course\n    \u2022 vocabulary list";
     },
     get$analyticsInactiveTitle() {
       return "Requests to inactive users couldn\u2019t be sent";
@@ -4481,7 +4466,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Analytics Access Request";
     },
     accessRequestedDesc$1(space) {
-      return "The administrators of \u201c" + space + "\u201d are requesting to view your learning analytics.\n\nIf you agree, admins of this space will be able to view your:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view your:\n    \u2022 messages in chats outside the space\n    \u2022 vocabulary list";
+      return "The administrators of \u201c" + space + "\u201d are requesting to view your learning analytics.\n\nIf you agree, admins of this course will be able to view your:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view your:\n    \u2022 messages in chats outside the course\n    \u2022 vocabulary list";
     },
     get$allowAccess() {
       return "Allow Access";
@@ -4502,7 +4487,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "End for all";
     },
     get$newCourse() {
-      return "New Course";
+      return "New course";
     },
     get$newCourseSubtitle() {
       return "Which course template would you like to use?";
@@ -4553,7 +4538,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Whereas activity sessions start and end, group chats will stay open for routine communication.";
     },
     get$deleteDesc() {
-      return "Only space admin can delete a chat. This is a destructive action which removes all users and deletes all chats. Proceed with caution.";
+      return "Only course admins can delete a chat. This is a destructive action which removes all users and deletes all chats. Proceed with caution.";
     },
     get$failedToLoadCourseInfo() {
       return "Failed to load course information";
@@ -4630,6 +4615,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     pingParticipantsNotification$2(user, room) {
       return user + " is looking for users to join the activity session in " + room;
     },
+    get$courseName() {
+      return "Course name";
+    },
+    get$createNewCourse() {
+      return "New course";
+    },
+    get$publicCourses() {
+      return "Public courses";
+    },
+    goToCourse$1(course) {
+      return "Go to course: " + course;
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4645,6 +4642,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_194", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "+6R7MNRlUGWyWfed5qPgaCaniOY=");
+})($__dart_deferred_initializers__, "M1urMnbJ627ldo9NpKGMteMpcSo=");
 ;
 //# sourceMappingURL=main.dart.js_194.part.js.map
