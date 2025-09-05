@@ -4537,7 +4537,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Whereas activity sessions start and end, group chats will stay open for routine communication.";
     },
     get$deleteDesc() {
-      return "Only course admins can delete a chat. This is a destructive action which removes all users and deletes all chats. Proceed with caution.";
+      return "Only admins can delete a course. This is a destructive action which removes all users and deletes all selected chats within the course. Proceed with caution.";
     },
     get$failedToLoadCourseInfo() {
       return "Failed to load course information";
@@ -4644,6 +4644,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_204", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "I/NIcVM/9XJz7yZU1qkFx8dkBLk=");
+})($__dart_deferred_initializers__, "GY9hop5JRar8kRGzYhFQ/T1IpGg=");
 ;
 //# sourceMappingURL=main.dart.js_204.part.js.map
