@@ -1527,9 +1527,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$interactiveGrammarSliderHeader() {
       return "Tr\xecnh Ki\u1ec3m Tra Ng\u1eef Ph\xe1p T\u01b0\u01a1ng T\xe1c";
     },
-    get$interactiveTranslatorRequired() {
-      return "B\u1eaft bu\u1ed9c";
-    },
     get$waTooltip() {
       return "D\xf9ng L2 kh\xf4ng tr\u1ee3 gi\xfap";
     },
@@ -3867,27 +3864,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Nh\u1ea5p \u0111\xfap \u0111\u1ec3 ch\u1ec9nh s\u1eeda.";
     },
-    get$activityPlannerTitle() {
-      return "Tr\xecnh l\u1eadp ho\u1ea1t \u0111\u1ed9ng";
-    },
-    get$topicLabel() {
-      return "Ch\u1ee7 \u0111\u1ec1";
-    },
-    get$topicPlaceholder() {
-      return "Ch\u1ecdn m\u1ed9t ch\u1ee7 \u0111\u1ec1...";
-    },
-    get$modeLabel() {
-      return "Lo\u1ea1i ho\u1ea1t \u0111\u1ed9ng";
-    },
-    get$modePlaceholder() {
-      return "Ch\u1ecdn m\u1ed9t ch\u1ebf \u0111\u1ed9...";
-    },
-    get$learningObjectiveLabel() {
-      return "M\u1ee5c ti\xeau h\u1ecdc t\u1eadp";
-    },
-    get$learningObjectivePlaceholder() {
-      return "Ch\u1ecdn m\u1ed9t m\u1ee5c ti\xeau h\u1ecdc t\u1eadp...";
-    },
     get$languageOfInstructionsLabel() {
       return "Ng\xf4n ng\u1eef h\u01b0\u1edbng d\u1eabn ho\u1ea1t \u0111\u1ed9ng";
     },
@@ -3897,29 +3873,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$cefrLevelLabel() {
       return "Tr\xecnh \u0111\u1ed9 CEFR";
     },
-    get$generateActivitiesButton() {
-      return "Generate Activity";
-    },
-    get$launchActivityButton() {
-      return "Kh\u1edfi ch\u1ea1y ho\u1ea1t \u0111\u1ed9ng";
-    },
     get$activityPlannerOverviewInstructionsBody() {
       return "Ch\u1ecdn ch\u1ee7 \u0111\u1ec1, ch\u1ebf \u0111\u1ed9, m\u1ee5c ti\xeau h\u1ecdc t\u1eadp v\xe0 t\u1ea1o ho\u1ea1t \u0111\u1ed9ng cho cu\u1ed9c tr\xf2 chuy\u1ec7n!";
-    },
-    get$activityTitle() {
-      return "Ti\xeau \u0111\u1ec1 ho\u1ea1t \u0111\u1ed9ng";
-    },
-    get$addVocabulary() {
-      return "Th\xeam t\u1eeb v\u1ef1ng";
-    },
-    get$instructions() {
-      return "H\u01b0\u1edbng d\u1eabn";
-    },
-    get$numberOfLearners() {
-      return "S\u1ed1 l\u01b0\u1ee3ng ng\u01b0\u1eddi h\u1ecdc";
-    },
-    get$mustBeInteger() {
-      return "Ph\u1ea3i l\xe0 s\u1ed1 nguy\xean, v\xed d\u1ee5: 1, 2, 3...";
     },
     get$constructUsePvmDesc() {
       return "\u0110\xe3 s\u1eed d\u1ee5ng trong tin nh\u1eafn tho\u1ea1i";
@@ -4011,9 +3966,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseMorphsInstructionsBody() {
       return "Nh\u1ea5p v\xe0o c\xe1c m\u1ea3nh gh\xe9p cho c\xe1c c\xe2u h\u1ecfi ng\u1eef ph\xe1p!";
     },
-    get$pleaseEnterInt() {
-      return "Vui l\xf2ng nh\u1eadp m\u1ed9t s\u1ed1";
-    },
     get$home() {
       return "Trang ch\u1ee7";
     },
@@ -4031,21 +3983,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$selectForGrammar() {
       return "Ch\u1ecdn m\u1ed9t bi\u1ec3u t\u01b0\u1ee3ng ng\u1eef ph\xe1p cho c\xe1c ho\u1ea1t \u0111\u1ed9ng v\xe0 chi ti\u1ebft.";
-    },
-    get$randomize() {
-      return "Ng\u1eabu nhi\xean h\xf3a";
-    },
-    get$clear(_) {
-      return "X\xf3a";
-    },
-    get$makeYourOwnActivity() {
-      return "T\u1ea1o ho\u1ea1t \u0111\u1ed9ng c\u1ee7a ri\xeang b\u1ea1n";
-    },
-    get$featuredActivities() {
-      return "N\u1ed5i b\u1eadt";
-    },
-    get$save(_) {
-      return "L\u01b0u";
     },
     get$translationProblem() {
       return "V\u1ea5n \u0111\u1ec1 d\u1ecbch thu\u1eadt";
@@ -4167,9 +4104,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteSpaceDesc() {
       return "The course and any selected chats will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
     },
-    get$maxFifty() {
-      return "T\u1ed1i \u0111a 50";
-    },
     get$configureSpace() {
       return "Configure course";
     },
@@ -4208,9 +4142,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$botSettings() {
       return "C\xe0i \u0111\u1eb7t bot";
-    },
-    get$activitySuggestionTimeoutMessage() {
-      return "Ch\xfang t\xf4i \u0111ang l\xe0m vi\u1ec7c ch\u0103m ch\u1ec9 \u0111\u1ec3 t\u1ea1o ra c\xe1c ho\u1ea1t \u0111\u1ed9ng cho b\u1ea1n, vui l\xf2ng quay l\u1ea1i sau m\u1ed9t ph\xfat";
     },
     get$howSpaceCanBeFound() {
       return "How this course can be found";
@@ -4305,15 +4236,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The course will be deleted for all participants. This action cannot be undone.";
     },
-    get$regenerate() {
-      return "T\u1ea1o l\u1ea1i";
-    },
-    get$mySavedActivities() {
-      return "C\xe1c ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 l\u01b0u c\u1ee7a t\xf4i";
-    },
-    get$noSavedActivities() {
-      return "Kh\xf4ng c\xf3 ho\u1ea1t \u0111\u1ed9ng n\xe0o \u0111\xe3 l\u01b0u";
-    },
     get$failedToPlayVideo() {
       return "Kh\xf4ng th\u1ec3 ph\xe1t video";
     },
@@ -4337,24 +4259,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     numInvited$1(count) {
       return "" + count + " \u0111\xe3 \u0111\u01b0\u1ee3c m\u1eddi";
-    },
-    get$saved() {
-      return "\u0110\xe3 l\u01b0u";
-    },
-    get$reset(_) {
-      return "Reset";
-    },
-    get$errorGenerateActivityMessage() {
-      return "Failed to generate activity";
-    },
-    get$errorRegenerateActivityMessage() {
-      return "Failed to regenerate activity";
-    },
-    get$errorLaunchActivityMessage() {
-      return "Failed to launch activity";
-    },
-    get$errorFetchingActivitiesMessage() {
-      return "Failed to fetch activities";
     },
     get$errorFetchingDefinition() {
       return "Failed to fetch definition";
@@ -4407,21 +4311,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirmMessageUnpin() {
       return "Are you sure you want to unpin this message?";
     },
-    get$createActivityPlan() {
-      return "Create a new activity plan";
-    },
-    get$saveAndLaunch() {
-      return "Save and Launch";
-    },
-    get$launchToSpace() {
-      return "Launch to course";
-    },
-    get$numberOfActivities() {
-      return "Number of Activity Sessions";
-    },
-    maximumActivityParticipants$1(count) {
-      return "Each Activity can have a maximum of " + count + " participant(s).";
-    },
     get$pending(_) {
       return "Pending";
     },
@@ -4445,9 +4334,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$requestSummaries() {
       return "Request summaries";
-    },
-    get$generatingNewActivities() {
-      return "You're the first user of this language pair! Please give us a minute, we're preparing activities just for you.";
     },
     get$requestAccessTitle() {
       return "Request to analytics view access?";
@@ -4563,15 +4449,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseNextActivity() {
       return "Choose your next activity!";
     },
-    get$seeInstructions() {
-      return "See Instructions";
-    },
-    get$hideInstructions() {
-      return "Hide Instructions";
-    },
-    get$letsGo() {
-      return "Let\u2019s go!";
-    },
     get$chooseRole() {
       return "Choose a role!";
     },
@@ -4626,6 +4503,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     goToCourse$1(course) {
       return "Go to course: " + course;
     },
+    get$startNewSession() {
+      return "Start new session";
+    },
+    get$joinOpenSession() {
+      return "Join open session";
+    },
+    get$less() {
+      return "less";
+    },
+    get$activityNotFound() {
+      return "Activity not found";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4641,6 +4530,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "TP5TcbCJKcFzju5qWlMeDUsLYSo=");
+})($__dart_deferred_initializers__, "LrowE6pJQ2nuN2KMnkawnxGR0zM=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map

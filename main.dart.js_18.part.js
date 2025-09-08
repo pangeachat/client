@@ -1540,9 +1540,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$interactiveGrammarSliderHeader() {
       return "Interactive Grammar Checker";
     },
-    get$interactiveTranslatorRequired() {
-      return "Required";
-    },
     get$waTooltip() {
       return "L2 use without assistance";
     },
@@ -3880,27 +3877,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Double-click to edit.";
     },
-    get$activityPlannerTitle() {
-      return "Activity Planner";
-    },
-    get$topicLabel() {
-      return "Topic";
-    },
-    get$topicPlaceholder() {
-      return "Choose a topic...";
-    },
-    get$modeLabel() {
-      return "Activity type";
-    },
-    get$modePlaceholder() {
-      return "Choose a mode...";
-    },
-    get$learningObjectiveLabel() {
-      return "Learning Objective";
-    },
-    get$learningObjectivePlaceholder() {
-      return "Choose a learning objective...";
-    },
     get$languageOfInstructionsLabel() {
       return "Language of activity instructions";
     },
@@ -3910,29 +3886,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$cefrLevelLabel() {
       return "CEFR level";
     },
-    get$generateActivitiesButton() {
-      return "Generate Activity";
-    },
-    get$launchActivityButton() {
-      return "Launch Activity";
-    },
     get$activityPlannerOverviewInstructionsBody() {
       return "Choose a topic, mode, learning objective and generate an activity for the chat!";
-    },
-    get$activityTitle() {
-      return "Activity Title";
-    },
-    get$addVocabulary() {
-      return "Add vocabulary";
-    },
-    get$instructions() {
-      return "Instructions";
-    },
-    get$numberOfLearners() {
-      return "Number of learners";
-    },
-    get$mustBeInteger() {
-      return "Must be an integer e.g. 1, 2, 3, ...";
     },
     get$constructUsePvmDesc() {
       return "Produced in voice message";
@@ -4024,9 +3979,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseMorphsInstructionsBody() {
       return "Click the puzzle pieces for grammar questions!";
     },
-    get$pleaseEnterInt() {
-      return "Please enter a number";
-    },
     get$home() {
       return "Home";
     },
@@ -4044,21 +3996,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$selectForGrammar() {
       return "Select a grammar icon for activities and details.";
-    },
-    get$randomize() {
-      return "Randomize";
-    },
-    get$clear(_) {
-      return "Clear";
-    },
-    get$makeYourOwnActivity() {
-      return "Create your own activity";
-    },
-    get$featuredActivities() {
-      return "Featured";
-    },
-    get$save(_) {
-      return "Save";
     },
     get$translationProblem() {
       return "Translation problem";
@@ -4180,9 +4117,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteSpaceDesc() {
       return "The course and any selected chats will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
     },
-    get$maxFifty() {
-      return "Max 50";
-    },
     get$configureSpace() {
       return "Configure course";
     },
@@ -4221,9 +4155,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$botSettings() {
       return "Bot settings";
-    },
-    get$activitySuggestionTimeoutMessage() {
-      return "We are working hard to generate more activities for you, please check back in a minute";
     },
     get$howSpaceCanBeFound() {
       return "How this course can be found";
@@ -4318,15 +4249,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$deleteEmptySpaceDesc() {
       return "The course will be deleted for all participants. This action cannot be undone.";
     },
-    get$regenerate() {
-      return "Regenerate";
-    },
-    get$mySavedActivities() {
-      return "My Saved Activities";
-    },
-    get$noSavedActivities() {
-      return "No saved activities";
-    },
     get$failedToPlayVideo() {
       return "Failed to play video";
     },
@@ -4350,24 +4272,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     numInvited$1(count) {
       return "" + count + " invited";
-    },
-    get$saved() {
-      return "Saved";
-    },
-    get$reset(_) {
-      return "Reset";
-    },
-    get$errorGenerateActivityMessage() {
-      return "Failed to generate activity";
-    },
-    get$errorRegenerateActivityMessage() {
-      return "Failed to regenerate activity";
-    },
-    get$errorLaunchActivityMessage() {
-      return "Failed to launch activity";
-    },
-    get$errorFetchingActivitiesMessage() {
-      return "Failed to fetch activities";
     },
     get$errorFetchingDefinition() {
       return "Failed to fetch definition";
@@ -4420,21 +4324,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$confirmMessageUnpin() {
       return "Are you sure you want to unpin this message?";
     },
-    get$createActivityPlan() {
-      return "Create a new activity plan";
-    },
-    get$saveAndLaunch() {
-      return "Save and Launch";
-    },
-    get$launchToSpace() {
-      return "Launch to course";
-    },
-    get$numberOfActivities() {
-      return "Number of Activity Sessions";
-    },
-    maximumActivityParticipants$1(count) {
-      return "Each Activity can have a maximum of " + count + " participant(s).";
-    },
     get$pending(_) {
       return "Pending";
     },
@@ -4458,9 +4347,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$requestSummaries() {
       return "Request summaries";
-    },
-    get$generatingNewActivities() {
-      return "You're the first user of this language pair! Please give us a minute, we're preparing activities just for you.";
     },
     get$requestAccessTitle() {
       return "Request to analytics view access?";
@@ -4576,15 +4462,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseNextActivity() {
       return "Choose your next activity!";
     },
-    get$seeInstructions() {
-      return "See Instructions";
-    },
-    get$hideInstructions() {
-      return "Hide Instructions";
-    },
-    get$letsGo() {
-      return "Let\u2019s go!";
-    },
     get$chooseRole() {
       return "Choose a role!";
     },
@@ -4638,6 +4515,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     goToCourse$1(course) {
       return "Go to course: " + course;
+    },
+    get$startNewSession() {
+      return "Start new session";
+    },
+    get$joinOpenSession() {
+      return "Join open session";
+    },
+    get$less() {
+      return "less";
+    },
+    get$activityNotFound() {
+      return "Activity not found";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6409,6 +6298,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_18", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "UF65gARTWn3L8QLNmqin263odRM=");
+})($__dart_deferred_initializers__, "WnTHptbCsnXQ1TizVCkVjk4xgh4=");
 ;
 //# sourceMappingURL=main.dart.js_18.part.js.map
