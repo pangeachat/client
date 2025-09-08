@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
@@ -173,7 +174,9 @@ class CourseSettings extends StatelessWidget {
                               child: ActivitySuggestionCard(
                                 activity: topic.loadedActivities[index],
                                 // TODO: go to activity start page
-                                onPressed: () {},
+                                onPressed: () => context.go(
+                                  "/rooms/spaces/${room.id}/activity/${topic.loadedActivities[index].activityId}",
+                                ),
                                 width: 120.0,
                                 height: 200.0,
                                 fontSize: 12.0,

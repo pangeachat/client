@@ -87,6 +87,7 @@ class CmsCoursePlanActivity {
   final String instructions;
   final String l1; // Language of instruction
   final String l2; // Target language
+  final String mode;
   final LanguageLevelTypeEnum cefrLevel;
   final List<CmsCoursePlanActivityRole> roles;
   final List<CmsCoursePlanVocab> vocabs;
@@ -105,6 +106,7 @@ class CmsCoursePlanActivity {
     required this.instructions,
     required this.l1,
     required this.l2,
+    required this.mode,
     required this.cefrLevel,
     required this.roles,
     required this.vocabs,
@@ -125,6 +127,7 @@ class CmsCoursePlanActivity {
       instructions: json['instructions'] as String,
       l1: json['l1'] as String,
       l2: json['l2'] as String,
+      mode: json['mode'] as String,
       cefrLevel: LanguageLevelTypeEnumExtension.fromString(
         json['cefrLevel'] as String,
       ),
@@ -164,6 +167,7 @@ class CmsCoursePlanActivity {
       'instructions': instructions,
       'l1': l1,
       'l2': l2,
+      'mode': mode,
       'cefrLevel': cefrLevel.string,
       'roles': roles.map((role) => role.toJson()).toList(),
       'vocabs': vocabs.map((vocab) => vocab.toJson()).toList(),
@@ -180,7 +184,7 @@ class CmsCoursePlanActivity {
     return ActivityPlanModel(
       req: ActivityPlanRequest(
         topic: "",
-        mode: "",
+        mode: mode,
         objective: "",
         media: MediaEnum.nan,
         cefrLevel: cefrLevel,
