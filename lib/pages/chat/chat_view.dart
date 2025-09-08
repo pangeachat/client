@@ -216,11 +216,10 @@ class ChatView extends StatelessWidget {
                 // backgroundColor: controller.selectedEvents.isEmpty
                 //     ? null
                 //     : theme.colorScheme.tertiaryContainer,
-                // Pangea#
-                // Make AppBar taller for activities
                 toolbarHeight:
                     controller.room.showActivityChatUI ? 106.0 : null,
                 centerTitle: controller.room.showActivityChatUI,
+                // Pangea#
                 automaticallyImplyLeading: false,
                 leading: controller.selectMode
                     ? IconButton(

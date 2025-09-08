@@ -245,7 +245,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    debugPrint("INIT MATRIX STATE");
     WidgetsBinding.instance.addObserver(this);
     initMatrix();
     if (PlatformInfos.isWeb) {
@@ -263,7 +262,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       ),
     );
     pangeaController = PangeaController(matrix: widget, matrixState: this);
-    debugPrint("SET PANGEA CONTROLLER: $pangeaController");
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();
