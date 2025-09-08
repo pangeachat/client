@@ -21,11 +21,14 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
+import 'package:fluffychat/utils/push_helper.dart';
+import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_new_badger/flutter_new_badger.dart';
 import 'package:http/http.dart' as http;
@@ -33,17 +36,12 @@ import 'package:matrix/matrix.dart';
 import 'package:unifiedpush/unifiedpush.dart';
 import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/utils/push_helper.dart';
-import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import '../config/app_config.dart';
 import '../config/setting_keys.dart';
 import '../widgets/matrix.dart';
 import 'platform_infos.dart';
 
-//import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
+//<GOOGLE_SERVICES>import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
 
 class NoTokenException implements Exception {
   String get cause => 'Cannot get firebase token';
@@ -68,11 +66,7 @@ class BackgroundPush {
 
   final pendingTests = <String, Completer<void>>{};
 
-  // final dynamic firebase = null; //FcmSharedIsolate();
-  // #Pangea
-  // uncommented to enable notifications on IOS
-  final FcmSharedIsolate? firebase = FcmSharedIsolate();
-  // Pangea#
+  //<GOOGLE_SERVICES>final firebase = FcmSharedIsolate();
 
   DateTime? lastReceivedPush;
 
@@ -105,20 +99,20 @@ class BackgroundPush {
       // Pangea#
 
       Logs().v('Flutter Local Notifications initialized');
-      firebase?.setListeners(
-        onMessage: (message) => pushHelper(
-          PushNotification.fromJson(
-            Map<String, dynamic>.from(message['data'] ?? message),
-          ),
-          client: client,
-          l10n: l10n,
-          activeRoomId: matrix?.activeRoomId,
-          flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
-        ),
-        // #Pangea
-        onNewToken: _newFcmToken,
-        // Pangea#
-      );
+      //<GOOGLE_SERVICES>firebase.setListeners(
+      //<GOOGLE_SERVICES>  onMessage: (message) => pushHelper(
+      //<GOOGLE_SERVICES>    PushNotification.fromJson(
+      //<GOOGLE_SERVICES>      Map<String, dynamic>.from(message['data'] ?? message),
+      //<GOOGLE_SERVICES>    ),
+      //<GOOGLE_SERVICES>    client: client,
+      //<GOOGLE_SERVICES>    l10n: l10n,
+      //<GOOGLE_SERVICES>    activeRoomId: matrix?.activeRoomId,
+      //<GOOGLE_SERVICES>    flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
+      //<GOOGLE_SERVICES>  ),
+      //<GOOGLE_SERVICES>  // #Pangea
+      //<GOOGLE_SERVICES>  onNewToken: _newFcmToken,
+      //<GOOGLE_SERVICES>  // Pangea#
+      //<GOOGLE_SERVICES>);
 
       if (Platform.isAndroid) {
         await UnifiedPush.initialize(
@@ -197,13 +191,6 @@ class BackgroundPush {
 
   StreamSubscription<LoginState>? onLogin;
 
-  void _newFcmToken(String token) {
-    _fcmToken = token;
-    debugPrint('Fcm foken $_fcmToken');
-    setupPush();
-  }
-  // Pangea#
-
   Future<void> cancelNotification(String roomId) async {
     Logs().v('Cancel notification for room', roomId);
     await _flutterLocalNotificationsPlugin.cancel(roomId.hashCode);
@@ -240,7 +227,7 @@ class BackgroundPush {
     try {
       // Pangea#
       if (PlatformInfos.isIOS) {
-        await firebase?.requestPermission();
+        //<GOOGLE_SERVICES>await firebase?.requestPermission();
       }
       if (PlatformInfos.isAndroid) {
         _flutterLocalNotificationsPlugin
@@ -427,10 +414,7 @@ class BackgroundPush {
     Logs().v('Setup firebase');
     if (_fcmToken?.isEmpty ?? true) {
       try {
-        // #Pangea
-        // _fcmToken = await firebase?.getToken();
-        _fcmToken = await _getToken();
-        // Pangea#
+        //<GOOGLE_SERVICES>_fcmToken = await firebase.getToken();
         if (_fcmToken == null) throw ('PushToken is null');
       } catch (e, s) {
         Logs().w('[Push] cannot get token', e, e is String ? null : s);
@@ -515,11 +499,8 @@ class BackgroundPush {
     Logs().i('[Push] UnifiedPush using endpoint $endpoint');
     final oldTokens = <String?>{};
     try {
-      // #Pangea
-      // final fcmToken = await firebase?.getToken();
-      final fcmToken = await _getToken();
-      // Pangea#
-      oldTokens.add(fcmToken);
+      //<GOOGLE_SERVICES>final fcmToken = await firebase.getToken();
+      //<GOOGLE_SERVICES>oldTokens.add(fcmToken);
     } catch (_) {}
     await setupPusher(
       gatewayUrl: endpoint,
@@ -561,15 +542,6 @@ class BackgroundPush {
       flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
     );
   }
-
-  // #Pangea
-  Future<String?> _getToken() async {
-    if (Platform.isAndroid) {
-      return (await FirebaseMessaging.instance.getToken());
-    }
-    return await firebase?.getToken();
-  }
-  // Pangea#
 }
 
 class UPFunctions extends UnifiedPushFunctions {
