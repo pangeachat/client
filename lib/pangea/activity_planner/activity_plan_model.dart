@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:flutter/foundation.dart';
 
 class ActivityPlanModel {
   final String activityId;
@@ -46,32 +47,6 @@ class ActivityPlanModel {
       );
     }
     return defaultRoles;
-  }
-
-  ActivityPlanModel copyWith({
-    String? title,
-    String? description,
-    String? learningObjective,
-    String? instructions,
-    List<Vocab>? vocab,
-    String? imageURL,
-    DateTime? endAt,
-    Duration? duration,
-    Map<String, ActivityRole>? roles,
-  }) {
-    return ActivityPlanModel(
-      req: req,
-      title: title ?? this.title,
-      description: description ?? this.description,
-      learningObjective: learningObjective ?? this.learningObjective,
-      instructions: instructions ?? this.instructions,
-      vocab: vocab ?? this.vocab,
-      imageURL: imageURL ?? this.imageURL,
-      endAt: endAt ?? this.endAt,
-      duration: duration ?? this.duration,
-      roles: roles ?? _roles,
-      activityId: activityId,
-    );
   }
 
   factory ActivityPlanModel.fromJson(Map<String, dynamic> json) {

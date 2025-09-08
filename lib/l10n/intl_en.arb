@@ -5221,5 +5221,9 @@
         "type": "int"
       }
     }
-  }
+  },
+  "startNewSession": "Start new session",
+  "joinOpenSession": "Join open session",
+  "less": "less",
+  "activityNotFound": "Activity not found"
 }
