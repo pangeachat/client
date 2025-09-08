@@ -4326,9 +4326,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivityTitle() {
       return "I'm done";
     },
-    get$endActivityDesc() {
-      return "Did you complete the objectives?\nThis is your confirmation that you're stepping back from texting. But don\u2019t worry, the fun continues in the chat! Feel free to hang out and enjoy the show until everyone clicks 'Done'.";
-    },
     get$activitySummaryError() {
       return "Activity summaries unavailable";
     },
@@ -4503,6 +4500,21 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     goToCourse$1(course) {
       return "Go to course: " + course;
     },
+    get$activityComplete() {
+      return "This activity has been completed. The activity summary should be available below.";
+    },
+    get$haventChattedMuch() {
+      return "It looks like you haven't chatted much, try using some more vocab words! If you feel like you've completed your objective, you can end the activity below.";
+    },
+    get$haveChatted() {
+      return "It looks like you've been chatting for a while! If you feel like you've completed your objective, wrap up to finish the activity and we'll generate you a summary in the chat!";
+    },
+    userDoneAndWaiting$2(num1, num2) {
+      return "" + num1 + "/" + num2 + " participants have wrapped up. Wait for everyone to finish, and we'll generate you a summary in the chat! \n\nIf you'd like to rejoin the conversation, click the continue button in the chat.";
+    },
+    othersDoneAndWaiting$2(num1, num2) {
+      return "$" + num1 + "/" + num2 + " are done. Have you completed your objective?";
+    },
     get$startNewSession() {
       return "Start new session";
     },
@@ -4533,6 +4545,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_212", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "f0d+nk2J3P9Pg1bjINykodRaoHM=");
+})($__dart_deferred_initializers__, "8cY4tAdBsoBxtzsfmts+7UjdJMw=");
 ;
 //# sourceMappingURL=main.dart.js_212.part.js.map
