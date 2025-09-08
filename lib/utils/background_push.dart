@@ -110,7 +110,11 @@ class BackgroundPush {
       //<GOOGLE_SERVICES>    flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
       //<GOOGLE_SERVICES>  ),
       //<GOOGLE_SERVICES>  // #Pangea
-      //<GOOGLE_SERVICES>  onNewToken: _newFcmToken,
+      //<GOOGLE_SERVICES>  onNewToken: (token) {
+      //<GOOGLE_SERVICES>     _fcmToken = token;
+      //<GOOGLE_SERVICES>     debugPrint('Fcm token $_fcmToken');
+      //<GOOGLE_SERVICES>     setupPush();
+      //<GOOGLE_SERVICES>   },
       //<GOOGLE_SERVICES>  // Pangea#
       //<GOOGLE_SERVICES>);
 
