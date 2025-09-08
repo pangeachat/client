@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
@@ -11,12 +9,12 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/topic_participant_list.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseSettings extends StatelessWidget {
   final Room room;
@@ -62,7 +60,7 @@ class CourseSettings extends StatelessWidget {
         return Column(
           spacing: isColumnMode ? 40.0 : 36.0,
           mainAxisSize: MainAxisSize.min,
-          children: course.topics.mapIndexed((index, topic) {
+          children: course.loadedTopics.mapIndexed((index, topic) {
             final unlocked = index <= currentTopicIndex;
             final usersInTopic = topicsToUsers[topic.uuid] ?? [];
             return AbsorbPointer(
@@ -89,45 +87,18 @@ class CourseSettings extends StatelessWidget {
                                     children: [
                                       ClipPath(
                                         clipper: PinClipper(),
-                                        child: topic.imageUrl != null
-                                            ? CachedNetworkImage(
-                                                imageRenderMethodForWeb:
-                                                    ImageRenderMethodForWeb
-                                                        .HttpGet,
-                                                httpHeaders: {
-                                                  'Authorization':
-                                                      'Bearer ${MatrixState.pangeaController.userController.accessToken}',
-                                                },
-                                                width: 54.0,
-                                                height: 54.0,
-                                                fit: BoxFit.cover,
-                                                imageUrl: topic.imageUrl!,
-                                                placeholder: (context, url) {
-                                                  return const Center(
-                                                    child:
-                                                        CircularProgressIndicator(),
-                                                  );
-                                                },
-                                                errorWidget:
-                                                    (context, url, error) {
-                                                  return Container(
-                                                    width: 54.0,
-                                                    height: 54.0,
-                                                    decoration: BoxDecoration(
-                                                      color: theme.colorScheme
-                                                          .secondary,
-                                                    ),
-                                                  );
-                                                },
-                                              )
-                                            : Container(
-                                                width: 54.0,
-                                                height: 54.0,
-                                                decoration: BoxDecoration(
-                                                  color: theme
-                                                      .colorScheme.secondary,
-                                                ),
-                                              ),
+                                        child: ImageByUrl(
+                                          imageUrl: topic.imageUrl,
+                                          width: 54.0,
+                                          replacement: Container(
+                                            width: 54.0,
+                                            height: 54.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  theme.colorScheme.secondary,
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                       if (!unlocked)
                                         const Positioned(
@@ -151,12 +122,13 @@ class CourseSettings extends StatelessWidget {
                                             fontSize: titleFontSize,
                                           ),
                                         ),
-                                        CourseInfoChip(
-                                          icon: Icons.location_on,
-                                          text: topic.location,
-                                          fontSize: descFontSize,
-                                          iconSize: iconSize,
-                                        ),
+                                        if (topic.location != null)
+                                          CourseInfoChip(
+                                            icon: Icons.location_on,
+                                            text: topic.location!,
+                                            fontSize: descFontSize,
+                                            iconSize: iconSize,
+                                          ),
                                         if (constraints.maxWidth < 700.0)
                                           Padding(
                                             padding: const EdgeInsetsGeometry
@@ -194,12 +166,12 @@ class CourseSettings extends StatelessWidget {
                         height: 210.0,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: topic.activities.length,
+                          itemCount: topic.loadedActivities.length,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: const EdgeInsets.only(right: 24.0),
                               child: ActivitySuggestionCard(
-                                activity: topic.activities[index],
+                                activity: topic.loadedActivities[index],
                                 // TODO: go to activity start page
                                 onPressed: () {},
                                 width: 120.0,

@@ -1,3 +1,6 @@
+import 'package:fluffychat/pangea/activity_generator/media_enum.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/payload_client/join_field.dart';
 import 'package:fluffychat/pangea/payload_client/polymorphic_relationship.dart';
@@ -32,6 +35,15 @@ class CmsCoursePlanActivityRole {
       'goal': goal,
       'avatarUrl': avatarUrl,
     };
+  }
+
+  ActivityRole toActivityRole() {
+    return ActivityRole(
+      id: id,
+      name: name,
+      goal: goal,
+      avatarUrl: avatarUrl,
+    );
   }
 }
 
@@ -162,5 +174,30 @@ class CmsCoursePlanActivity {
       'updatedAt': updatedAt,
       'createdAt': createdAt,
     };
+  }
+
+  ActivityPlanModel toActivityPlanModel(String? imageUrl) {
+    return ActivityPlanModel(
+      req: ActivityPlanRequest(
+        topic: "",
+        mode: "",
+        objective: "",
+        media: MediaEnum.nan,
+        cefrLevel: cefrLevel,
+        languageOfInstructions: l1,
+        targetLanguage: l2,
+        numberOfParticipants: roles.length,
+      ),
+      activityId: id,
+      title: title,
+      description: description,
+      learningObjective: learningObjective,
+      instructions: instructions,
+      vocab: vocabs.map((v) => Vocab(lemma: v.lemma, pos: v.pos)).toList(),
+      roles: Map.fromEntries(
+        roles.map((role) => MapEntry(role.id, role.toActivityRole())),
+      ),
+      imageURL: imageUrl,
+    );
   }
 }

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:jwt_decode/jwt_decode.dart';
 import 'package:matrix/matrix.dart' as matrix;
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -149,7 +148,6 @@ class UserController {
     _initializing = true;
 
     try {
-      await GetStorage.init('activity_plan_by_id_storage');
       await _initialize();
       _addProfileListener();
       _addAnalyticsRoomIdsToPublicProfile();
