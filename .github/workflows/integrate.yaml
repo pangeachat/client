@@ -21,12 +21,14 @@ jobs:
       - run: flutter gen-l10n
       - name: Check formatting
         run: dart format lib/ test/ --set-exit-if-changed
+      # // #Pangea
       # - name: Check import formatting
       #  run: dart run import_sorter:main --no-comments --exit-if-changed
+      # // Pangea#
       - name: Check license compliance
         run: dart run license_checker check-licenses -c licenses.yaml --problematic
       - run: flutter analyze
-      - name: Add Firebase Messaging
+      - name: Add Firebase Messaging # Add android and analyze again
         run: ./scripts/add-firebase-messaging.sh
       - run: flutter analyze
       - run: flutter test
@@ -68,13 +70,13 @@ jobs:
   build_debug_linux:
     strategy:
       matrix:
-        arch: [ x64, arm64 ]
+        arch: [ arm64 ] # Pangea Disabled x64
     runs-on: ${{ matrix.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-latest'}}
     steps:
       - uses: actions/checkout@v5
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install git wget curl clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev libjsoncpp-dev cmake-data libsecret-1-dev libsecret-1-0 librhash0 libssl-dev libwebkit2gtk-4.1-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev -y
+        run: sudo apt-get update && sudo apt-get install git wget curl libcurl4-openssl-dev clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev libjsoncpp-dev cmake-data libsecret-1-dev libsecret-1-0 librhash0 libssl-dev libwebkit2gtk-4.1-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev -y
       - name: Install Flutter
         run: |
           git clone --branch ${{ env.FLUTTER_VERSION }} https://github.com/flutter/flutter.git

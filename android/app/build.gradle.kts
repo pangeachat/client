@@ -54,6 +54,11 @@ android {
         versionCode = flutterVersionCode
         versionName = flutterVersionName
         multiDexEnabled = true
+
+        // Disable others for now, so it takes less space
+        ndk {
+            abiFilters += listOf("armeabi-v7a", "arm64-v8a")
+        }
     }
 
     // Signing configs (create release if keystore present)
