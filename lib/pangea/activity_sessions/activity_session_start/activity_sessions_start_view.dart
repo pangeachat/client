@@ -150,7 +150,7 @@ class ActivitySessionStartView extends StatelessWidget {
                                     ),
                                     ElevatedButton(
                                       style: buttonStyle,
-                                      onPressed: () {},
+                                      onPressed: null,
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
