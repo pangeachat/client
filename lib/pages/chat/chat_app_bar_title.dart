@@ -31,17 +31,20 @@ class ChatAppBarTitle extends StatelessWidget {
     //   );
     // }
     if (controller.room.showActivityChatUI) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            controller.room.getLocalizedDisplayname(),
-            style: Theme.of(context).textTheme.titleLarge,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 8),
-          ActivityStatsButton(controller: controller),
-        ],
+      return Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          spacing: 4.0,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              controller.room.getLocalizedDisplayname(),
+              style: Theme.of(context).textTheme.titleLarge,
+              textAlign: TextAlign.center,
+            ),
+            ActivityStatsButton(controller: controller),
+          ],
+        ),
       );
     }
     // Pangea#

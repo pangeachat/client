@@ -10,6 +10,9 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_details_row.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -26,9 +29,7 @@ class ActivityStatsMenu extends StatefulWidget {
 }
 
 class ActivityStatsMenuState extends State<ActivityStatsMenu> {
-  final Set<String> _usedVocab = {};
-
-  double percentVocabComplete = 0.0;
+  ActivitySummaryAnalyticsModel? analytics;
   Room get room => widget.controller.room;
 
   @override
@@ -36,28 +37,34 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     super.dispose();
   }
 
-  // Future<void> _updateUsedVocab() async {
-  //   final analytics = await room.getActivityAnalytics();
-  //   final userId = Matrix.of(context).client.userID ?? '';
-  //   final userAnalytics = analytics.constructs[userId];
-  //   Set<String> usedVocab = {};
-  //   if (userAnalytics != null) {
-  //     usedVocab = userAnalytics
-  //         .constructsOfType(ConstructTypeEnum.vocab)
-  //         .map((id) => id.lemma)
-  //         .toSet();
-  //   }
-  //   final vocabList = room.activityPlan?.vocabList ?? [];
-  //   double percent = 0.0;
-  //   if (vocabList.isNotEmpty) {
-  //     percent =
-  //         usedVocab.intersection(vocabList.toSet()).length / vocabList.length;
-  //   }
-  //   setState(() {
-  //     _usedVocab = usedVocab;
-  //     percentVocabComplete = percent;
-  //   });
-  // }
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _updateUsedVocab();
+    });
+  }
+
+  Set<String>? get _usedVocab => analytics?.constructs[room.client.userID!]
+      ?.constructsOfType(ConstructTypeEnum.vocab)
+      .map((id) => id.lemma)
+      .toSet();
+
+  double get _percentVocabComplete {
+    final vocabList = room.activityPlan?.vocabList ?? [];
+    if (vocabList.isEmpty || _usedVocab == null) {
+      return 0;
+    }
+    return _usedVocab!.intersection(vocabList.toSet()).length /
+        vocabList.length;
+  }
+
+  Future<void> _updateUsedVocab() async {
+    final analytics = await room.getActivityAnalytics();
+    if (mounted) {
+      setState(() => this.analytics = analytics);
+    }
+  }
 
   int _getAssignedRolesCount() {
     final assignedRoles = room.assignedRoles;
@@ -139,7 +146,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
           (_getAssignedRolesCount() == 1) && (_isBotParticipant() == true)) {
         //IF nobodys done or you're only playing with the bot,
         //Then it should show tips about your progress and nudge you to continue/end
-        if ((percentVocabComplete < .7) && _usedVocab.length < 50) {
+        if ((_percentVocabComplete < .7) && (_usedVocab?.length ?? 0) < 50) {
           message = L10n.of(context).haventChattedMuch;
         } else {
           message = L10n.of(context).haveChatted;
@@ -169,13 +176,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
       bottom: widget.controller.showActivityDropdown ? 0 : null,
       child: Column(
         children: [
-          AnimatedContainer(
-            duration: FluffyThemes.animationDuration,
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surface,
-            ),
-            child: const SizedBox.shrink(),
-          ),
           ClipRect(
             child: AnimatedAlign(
               duration: FluffyThemes.animationDuration,
@@ -184,59 +184,44 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
               alignment: Alignment.topCenter,
               child: GestureDetector(
                 onPanUpdate: (details) {
-                  // Detect upward swipe
                   if (details.delta.dy < -2) {
                     widget.controller.setShowDropdown(false);
                   }
                 },
-                onTap: () {},
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: theme.colorScheme.surface,
                   ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12.0,
-                    vertical: 16.0,
-                  ),
+                  padding: const EdgeInsets.all(12.0),
                   child: Column(
                     spacing: 12.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Column(
+                        spacing: 8.0,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(
-                            Symbols.radar,
-                            size: 20,
-                            color: theme.colorScheme.onSurface,
-                          ),
-                          const SizedBox(width: 12.0),
-                          Expanded(
+                          ActivitySessionDetailsRow(
+                            icon: Symbols.radar,
+                            iconSize: 16.0,
                             child: Text(
                               room.activityPlan!.learningObjective,
-                              textAlign: TextAlign.left,
-                              style: theme.textTheme.bodyMedium,
+                              style: const TextStyle(fontSize: 12.0),
                             ),
                           ),
-                        ],
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Symbols.dictionary,
-                            size: 20,
-                            color: theme.colorScheme.onSurface,
-                          ),
-                          const SizedBox(width: 12.0),
-                          Expanded(
+                          ActivitySessionDetailsRow(
+                            icon: Symbols.dictionary,
+                            iconSize: 16.0,
                             child: Wrap(
+                              spacing: 4.0,
+                              runSpacing: 4.0,
                               children: [
                                 ...room.activityPlan!.vocabList.map(
                                   (vocabWord) => VocabTile(
                                     vocabWord: vocabWord,
-                                    isUsed: _usedVocab.contains(vocabWord),
+                                    isUsed:
+                                        (_usedVocab ?? {}).contains(vocabWord),
                                   ),
                                 ),
                               ],
@@ -247,65 +232,61 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                       Text(
                         message,
                         textAlign: TextAlign.center,
-                        style: theme.textTheme.titleMedium,
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                      userComplete
-                          ? const SizedBox.shrink()
-                          : Column(
-                              spacing: 12.0,
+                      if (!userComplete) ...[
+                        if (shouldShowEndForAll)
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                                vertical: 8.0,
+                              ),
+                              side: BorderSide(
+                                color: theme.colorScheme.secondaryContainer,
+                                width: 2,
+                              ),
+                              foregroundColor: theme.colorScheme.primary,
+                              backgroundColor: theme.colorScheme.surface,
+                            ),
+                            onPressed: () => _finishActivity(forAll: true),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                if (shouldShowEndForAll)
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 12.0,
-                                          vertical: 8.0,
-                                        ),
-                                        side: BorderSide(
-                                          color: theme
-                                              .colorScheme.secondaryContainer,
-                                          width: 2,
-                                        ),
-                                        foregroundColor:
-                                            theme.colorScheme.primary,
-                                        backgroundColor:
-                                            theme.colorScheme.surface,
-                                      ),
-                                      onPressed: () =>
-                                          _finishActivity(forAll: true),
-                                      child: Text(
-                                        L10n.of(context).endForAll,
-                                        style: TextStyle(
-                                          fontSize: isColumnMode ? 16.0 : 12.0,
-                                        ),
-                                      ),
-                                    ),
+                                Text(
+                                  L10n.of(context).endForAll,
+                                  style: TextStyle(
+                                    fontSize: isColumnMode ? 16.0 : 12.0,
                                   ),
-                                SizedBox(
-                                  width: double.infinity,
-                                  child: (shouldShowImDone)
-                                      ? ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            padding: const EdgeInsets.symmetric(
-                                              horizontal: 12.0,
-                                              vertical: 8.0,
-                                            ),
-                                          ),
-                                          onPressed: _finishActivity,
-                                          child: Text(
-                                            L10n.of(context).endActivityTitle,
-                                            style: TextStyle(
-                                              fontSize:
-                                                  isColumnMode ? 16.0 : 12.0,
-                                            ),
-                                          ),
-                                        )
-                                      : const SizedBox.shrink(),
                                 ),
                               ],
                             ),
+                          ),
+                        if (shouldShowImDone)
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0,
+                                vertical: 8.0,
+                              ),
+                            ),
+                            onPressed: _finishActivity,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  L10n.of(context).endActivityTitle,
+                                  style: TextStyle(
+                                    fontSize: isColumnMode ? 16.0 : 12.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                      ],
                     ],
                   ),
                 ),
@@ -339,22 +320,20 @@ class VocabTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final color =
         isUsed ? AppConfig.goldLight.withAlpha(100) : Colors.transparent;
-
-    final screenWidth = MediaQuery.of(context).size.width;
-    final baseStyle = Theme.of(context).textTheme.bodyMedium;
-    final fontSize = (baseStyle?.fontSize ?? 14) - (screenWidth < 400 ? 4 : 0);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 8.0,
+        vertical: 4.0,
+      ),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
         vocabWord,
-        style: baseStyle?.copyWith(
+        style: TextStyle(
           color: Theme.of(context).colorScheme.onSurface,
-          fontSize: fontSize,
+          fontSize: 14.0,
         ),
       ),
     );

@@ -258,10 +258,11 @@ class ChatView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       // #Pangea
-                      Divider(
-                        height: 1,
-                        color: theme.dividerColor,
-                      ),
+                      if (!controller.showActivityDropdown)
+                        Divider(
+                          height: 1,
+                          color: theme.dividerColor,
+                        ),
                       // Pangea#
                       PinnedEvents(controller),
                       if (scrollUpBannerEventId != null)

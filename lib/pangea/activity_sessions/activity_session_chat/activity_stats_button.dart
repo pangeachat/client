@@ -7,6 +7,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -23,44 +24,47 @@ class ActivityStatsButton extends StatefulWidget {
 }
 
 class _ActivityStatsButtonState extends State<ActivityStatsButton> {
-  late StreamSubscription _syncSubscription;
-  int vocabCount = 0;
-  int xpCount = 0;
-  int grammarCount = 0;
+  StreamSubscription? _analyticsSubscription;
+  ActivitySummaryAnalyticsModel analytics = ActivitySummaryAnalyticsModel();
 
   @override
   void initState() {
     super.initState();
-    // Listen for new messages to refresh stats in real-time
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => _updateAllCounts(),
+      (_) => _updateAnalytics(),
     );
-    // _syncSubscription = widget.controller.room.client.onSync.stream.listen((_) {
-    //   _updateAllCounts();
-    // });
+
+    _analyticsSubscription = widget
+        .controller.pangeaController.getAnalytics.analyticsStream.stream
+        .listen((_) {
+      _updateAnalytics();
+    });
   }
 
   @override
   void dispose() {
-    _syncSubscription.cancel();
+    _analyticsSubscription?.cancel();
     super.dispose();
   }
 
-  Future<void> _updateAllCounts() async {
+  int get xpCount => analytics.totalXPForUser(
+        Matrix.of(context).client.userID ?? '',
+      );
+
+  int get vocabCount => analytics.uniqueConstructCountForUser(
+        widget.controller.room.client.userID!,
+        ConstructTypeEnum.vocab,
+      );
+
+  int get grammarCount => analytics.uniqueConstructCountForUser(
+        widget.controller.room.client.userID!,
+        ConstructTypeEnum.morph,
+      );
+
+  Future<void> _updateAnalytics() async {
     final analytics = await widget.controller.room.getActivityAnalytics();
-    final userId = Matrix.of(context).client.userID ?? '';
     if (mounted) {
-      setState(() {
-        vocabCount = analytics.uniqueConstructCountForUser(
-          userId,
-          ConstructTypeEnum.vocab,
-        );
-        xpCount = analytics.totalXPForUser(userId);
-        grammarCount = analytics.uniqueConstructCountForUser(
-          userId,
-          ConstructTypeEnum.morph,
-        );
-      });
+      setState(() => this.analytics = analytics);
     }
   }
 
@@ -84,23 +88,11 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildStatItem(
-                context: context,
-                icon: Icons.radar,
-                value: "$xpCount XP",
-                label: "XP",
-              ),
-              _buildStatItem(
-                context: context,
-                icon: Symbols.dictionary,
-                value: "$vocabCount",
-                label: "Vocab",
-              ),
-              _buildStatItem(
-                context: context,
+              _StatsBadge(icon: Icons.radar, value: "$xpCount XP"),
+              _StatsBadge(icon: Symbols.dictionary, value: "$vocabCount"),
+              _StatsBadge(
                 icon: Symbols.toys_and_games,
                 value: "$grammarCount",
-                label: "Grammar",
               ),
             ],
           ),
@@ -108,13 +100,18 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
       ),
     );
   }
+}
 
-  Widget _buildStatItem({
-    required BuildContext context,
-    required IconData icon,
-    required String value,
-    required String label,
-  }) {
+class _StatsBadge extends StatelessWidget {
+  final IconData icon;
+  final String value;
+  const _StatsBadge({
+    required this.icon,
+    required this.value,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final screenWidth = MediaQuery.of(context).size.width;
     final baseStyle = theme.textTheme.bodyMedium;
