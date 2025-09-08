@@ -45,7 +45,8 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
       - uses: moonrepo/setup-rust@v1
-      - run: flutter pub get
+      - name: Add Firebase Messaging
+        run: ./scripts/add-firebase-messaging.sh
       - run: flutter build apk --debug
 
   build_debug_web:
@@ -73,7 +74,7 @@ jobs:
       - uses: actions/checkout@v5
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
       - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install git wget curl clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev libjsoncpp-dev cmake-data libsecret-1-dev libsecret-1-0 librhash0 libssl-dev libwebkit2gtk-4.1-dev -y
+        run: sudo apt-get update && sudo apt-get install git wget curl clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev libjsoncpp-dev cmake-data libsecret-1-dev libsecret-1-0 librhash0 libssl-dev libwebkit2gtk-4.1-dev gstreamer -y
       - name: Install Flutter
         run: |
           git clone --branch ${{ env.FLUTTER_VERSION }} https://github.com/flutter/flutter.git
