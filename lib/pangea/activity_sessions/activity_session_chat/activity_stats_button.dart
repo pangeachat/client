@@ -3,21 +3,19 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityStatsButton extends StatefulWidget {
-  final Room room;
-  final VoidCallback onToggleDropdown;
+  final ChatController controller;
 
   const ActivityStatsButton({
     super.key,
-    required this.room,
-    required this.onToggleDropdown,
+    required this.controller,
   });
 
   @override
@@ -34,10 +32,12 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
   void initState() {
     super.initState();
     // Listen for new messages to refresh stats in real-time
-    _updateAllCounts();
-    _syncSubscription = widget.room.client.onSync.stream.listen((_) {
-      _updateAllCounts();
-    });
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _updateAllCounts(),
+    );
+    // _syncSubscription = widget.controller.room.client.onSync.stream.listen((_) {
+    //   _updateAllCounts();
+    // });
   }
 
   @override
@@ -47,7 +47,7 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
   }
 
   Future<void> _updateAllCounts() async {
-    final analytics = await widget.room.getActivityAnalytics();
+    final analytics = await widget.controller.room.getActivityAnalytics();
     final userId = Matrix.of(context).client.userID ?? '';
     if (mounted) {
       setState(() {
@@ -72,7 +72,9 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: InkWell(
         borderRadius: BorderRadius.circular(20),
-        onTap: widget.onToggleDropdown,
+        onTap: () => widget.controller.setShowDropdown(
+          !widget.controller.showActivityDropdown,
+        ),
         child: Container(
           decoration: BoxDecoration(
             color: AppConfig.goldLight.withAlpha(100),

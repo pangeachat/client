@@ -6,6 +6,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_button.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/sync_status_localization.dart';
@@ -28,6 +30,20 @@ class ChatAppBarTitle extends StatelessWidget {
     //     ),
     //   );
     // }
+    if (controller.room.showActivityChatUI) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            controller.room.getLocalizedDisplayname(),
+            style: Theme.of(context).textTheme.titleLarge,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 8),
+          ActivityStatsButton(controller: controller),
+        ],
+      );
+    }
     // Pangea#
     return InkWell(
       hoverColor: Colors.transparent,

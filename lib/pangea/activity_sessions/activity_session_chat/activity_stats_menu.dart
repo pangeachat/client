@@ -10,19 +10,15 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityStatsMenu extends StatefulWidget {
   final ChatController controller;
-  final VoidCallback? onShowDropdown;
   const ActivityStatsMenu(
     this.controller, {
     super.key,
-    this.onShowDropdown,
   });
 
   @override
@@ -30,65 +26,38 @@ class ActivityStatsMenu extends StatefulWidget {
 }
 
 class ActivityStatsMenuState extends State<ActivityStatsMenu> {
-  bool _showDropdown = false;
-  Set<String> _usedVocab = {};
+  final Set<String> _usedVocab = {};
 
   double percentVocabComplete = 0.0;
   Room get room => widget.controller.room;
-
-  @override
-  void initState() {
-    super.initState();
-    // Register the callback to show dropdown when called from parent
-    if (widget.onShowDropdown != null) {
-      widget.controller.activityPinnedShowDropdown = toggleDropdown;
-    }
-  }
 
   @override
   void dispose() {
     super.dispose();
   }
 
-  void _setShowDropdown(bool value) {
-    if (value != _showDropdown) {
-      setState(() {
-        _showDropdown = value;
-      });
-    }
-  }
-
-  Future<void> _updateUsedVocab() async {
-    final analytics = await room.getActivityAnalytics();
-    final userId = Matrix.of(context).client.userID ?? '';
-    final userAnalytics = analytics.constructs[userId];
-    Set<String> usedVocab = {};
-    if (userAnalytics != null) {
-      usedVocab = userAnalytics
-          .constructsOfType(ConstructTypeEnum.vocab)
-          .map((id) => id.lemma)
-          .toSet();
-    }
-    final vocabList = room.activityPlan?.vocabList ?? [];
-    double percent = 0.0;
-    if (vocabList.isNotEmpty) {
-      percent =
-          usedVocab.intersection(vocabList.toSet()).length / vocabList.length;
-    }
-    setState(() {
-      _usedVocab = usedVocab;
-      percentVocabComplete = percent;
-    });
-  }
-
-  Future<void> toggleDropdown() async {
-    if (_showDropdown) {
-      _setShowDropdown(false);
-    } else {
-      _setShowDropdown(true);
-      await _updateUsedVocab();
-    }
-  }
+  // Future<void> _updateUsedVocab() async {
+  //   final analytics = await room.getActivityAnalytics();
+  //   final userId = Matrix.of(context).client.userID ?? '';
+  //   final userAnalytics = analytics.constructs[userId];
+  //   Set<String> usedVocab = {};
+  //   if (userAnalytics != null) {
+  //     usedVocab = userAnalytics
+  //         .constructsOfType(ConstructTypeEnum.vocab)
+  //         .map((id) => id.lemma)
+  //         .toSet();
+  //   }
+  //   final vocabList = room.activityPlan?.vocabList ?? [];
+  //   double percent = 0.0;
+  //   if (vocabList.isNotEmpty) {
+  //     percent =
+  //         usedVocab.intersection(vocabList.toSet()).length / vocabList.length;
+  //   }
+  //   setState(() {
+  //     _usedVocab = usedVocab;
+  //     percentVocabComplete = percent;
+  //   });
+  // }
 
   int _getAssignedRolesCount() {
     final assignedRoles = room.assignedRoles;
@@ -128,7 +97,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
             ? await room.finishActivityForAll()
             : await room.finishActivity();
         if (mounted) {
-          _setShowDropdown(false);
+          widget.controller.setShowDropdown(false);
         }
       },
     );
@@ -197,7 +166,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
       top: 0,
       left: 0,
       right: 0,
-      bottom: _showDropdown ? 0 : null,
+      bottom: widget.controller.showActivityDropdown ? 0 : null,
       child: Column(
         children: [
           AnimatedContainer(
@@ -211,13 +180,13 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
             child: AnimatedAlign(
               duration: FluffyThemes.animationDuration,
               curve: Curves.easeInOut,
-              heightFactor: _showDropdown ? 1.0 : 0.0,
+              heightFactor: widget.controller.showActivityDropdown ? 1.0 : 0.0,
               alignment: Alignment.topCenter,
               child: GestureDetector(
                 onPanUpdate: (details) {
                   // Detect upward swipe
                   if (details.delta.dy < -2) {
-                    _setShowDropdown(false);
+                    widget.controller.setShowDropdown(false);
                   }
                 },
                 onTap: () {},
@@ -343,10 +312,10 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
               ),
             ),
           ),
-          if (_showDropdown)
+          if (widget.controller.showActivityDropdown)
             Expanded(
               child: GestureDetector(
-                onTap: () => _setShowDropdown(false),
+                onTap: () => widget.controller.setShowDropdown(false),
                 child: Container(color: Colors.black.withAlpha(100)),
               ),
             ),

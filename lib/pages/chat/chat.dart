@@ -188,9 +188,6 @@ class ChatController extends State<ChatPageWithRoom>
   late final FocusNode inputFocus;
   StreamSubscription<html.Event>? onFocusSub;
 
-  // Activity pinned message dropdown callback
-  VoidCallback? activityPinnedShowDropdown;
-
   Timer? typingCoolDown;
   Timer? typingTimeout;
   bool currentlyTyping = false;
@@ -2220,6 +2217,11 @@ class ChatController extends State<ChatPageWithRoom>
   bool showInstructions = false;
   void toggleShowInstructions() {
     if (mounted) setState(() => showInstructions = !showInstructions);
+  }
+
+  bool showActivityDropdown = false;
+  void setShowDropdown(bool show) async {
+    setState(() => showActivityDropdown = show);
   }
   // Pangea#
 

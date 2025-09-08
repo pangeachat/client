@@ -26,12 +26,12 @@ import '../activity_summary/activity_summary_repo.dart';
 extension ActivityRoomExtension on Room {
   Future<void> joinActivity(ActivityRole role) async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
-
     final activityRole = ActivityRoleModel(
       id: role.id,
       userId: client.userID!,
       role: role.name,
     );
+
     currentRoles.updateRole(activityRole);
     await client.setRoomStateWithKey(
       id,
@@ -60,7 +60,6 @@ extension ActivityRoomExtension on Room {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRole;
     if (role == null || role.isFinished) return;
-
     role.finishedAt = DateTime.now();
     currentRoles.updateRole(role);
 

@@ -15,7 +15,6 @@ import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_finished_status_message.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_button.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/load_activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
@@ -127,21 +126,15 @@ class ChatView extends StatelessWidget {
     if (!controller.room.isArchived) {
       // #Pangea
       return [
-        // !controller.room.showActivityChatUI?
-        IconButton(
-          icon: const Icon(Icons.search_outlined),
-          tooltip: L10n.of(context).search,
-          onPressed: () {
-            context.go('/rooms/${controller.room.id}/search');
-          },
-        ),
-        // : IconButton(
-        //     icon: const Icon(Icons.event_note, color: AppConfig.goldLight),
-        //     tooltip: "Activity status",
-        //     onPressed: () {
-        //       controller.activityPinnedShowDropdown?.call();
-        //     },
-        //   ),
+        if (controller.room.activityPlan == null ||
+            !controller.room.showActivityChatUI)
+          IconButton(
+            icon: const Icon(Icons.search_outlined),
+            tooltip: L10n.of(context).search,
+            onPressed: () {
+              context.go('/rooms/${controller.room.id}/search');
+            },
+          ),
         IconButton(
           icon: const Icon(Icons.settings_outlined),
           tooltip: L10n.of(context).chatDetails,
@@ -258,36 +251,19 @@ class ChatView extends StatelessWidget {
                                 ),
                               ),
                 titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
-                title: controller.room.showActivityChatUI
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          // Centered title without picture for activities
-                          Text(
-                            controller.room.getLocalizedDisplayname(),
-                            style: theme.textTheme.titleLarge,
-                            textAlign: TextAlign.center,
-                          ),
-                          const SizedBox(height: 8),
-                          // Centered ActivityStatsRow beneath title
-                          ActivityStatsButton(
-                            onToggleDropdown:
-                                controller.activityPinnedShowDropdown ?? () {},
-                            room: controller.room,
-                          ),
-                        ],
-                      )
-                    : ChatAppBarTitle(controller),
+                title: ChatAppBarTitle(controller),
                 actions: _appBarActions(context),
                 bottom: PreferredSize(
                   preferredSize: Size.fromHeight(appbarBottomHeight),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      // #Pangea
                       Divider(
                         height: 1,
                         color: theme.dividerColor,
                       ),
+                      // Pangea#
                       PinnedEvents(controller),
                       if (scrollUpBannerEventId != null)
                         ChatAppBarListTile(
@@ -514,12 +490,7 @@ class ChatView extends StatelessWidget {
                               ],
                             ),
                           ),
-                        ActivityStatsMenu(
-                          controller,
-                          onShowDropdown: () {
-                            controller.activityPinnedShowDropdown?.call();
-                          },
-                        ),
+                        ActivityStatsMenu(controller),
                         // Pangea#
                       ],
                     ),
