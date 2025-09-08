@@ -1,117 +1,131 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
+    id("com.android.application")
+    id("kotlin-android")
+    id("dev.flutter.flutter-gradle-plugin")
 }
 
+// conditionally apply google-services (keeps your original intent)
 if (file("google-services.json").exists()) {
     apply(plugin = "com.google.gms.google-services")
 }
 
-def localProperties = new Properties()
-def localPropertiesFile = rootProject.file('local.properties')
-if (localPropertiesFile.exists()) {
-    localPropertiesFile.withReader('UTF-8') { reader ->
-        localProperties.load(reader)
+// Load local.properties (flutter.*) safely
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localPropertiesFile.reader(Charsets.UTF_8).use { reader -> load(reader) }
     }
 }
 
-def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) {
-    flutterVersionCode = '1'
-}
+// Read flutter version info from local.properties (fallbacks)
+var flutterVersionCode: Int = localProperties.getProperty("flutter.versionCode")?.toIntOrNull() ?: 1
+var flutterVersionName: String = localProperties.getProperty("flutter.versionName") ?: "1.0"
+val flutterTargetSdk: Int = localProperties.getProperty("flutter.targetSdkVersion")?.toIntOrNull() ?: 33
 
-def flutterVersionName = localProperties.getProperty('flutter.versionName')
-if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
+// Load key.properties if present
+val keystoreProperties = Properties().apply {
+    val keystorePropertiesFile = rootProject.file("key.properties")
+    if (keystorePropertiesFile.exists()) {
+        FileInputStream(keystorePropertiesFile).use { fis -> load(fis) }
+    }
 }
-
-def keystoreProperties = new Properties()
-def keystorePropertiesFile = rootProject.file('key.properties')
-if (keystorePropertiesFile.exists()) {
-    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-}
+val keystorePropertiesFile = rootProject.file("key.properties")
 
 android {
     compileSdk = 35
     namespace = "com.talktolearn.chat"
 
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        getByName("main").java.srcDirs("src/main/kotlin")
     }
 
-    lintOptions {
-        disable 'InvalidPackage'
+    // Lint: disable an id if you really need it (same effect as lintOptions.disable "InvalidPackage")
+    lint {
+        disable += "InvalidPackage"
     }
 
     defaultConfig {
-        // #Pangea
-        // applicationId "chat.fluffy.fluffychat"
-        applicationId "com.talktolearn.chat"
-        // Pangea#
-        minSdkVersion 21
-        targetSdk = flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
-        multiDexEnabled true
+        applicationId = "com.talktolearn.chat"
+        minSdk = 21
+        targetSdk = flutterTargetSdk
+        versionCode = flutterVersionCode
+        versionName = flutterVersionName
+        multiDexEnabled = true
     }
 
+    // Signing configs (create release if keystore present)
     signingConfigs {
-        release {
+        // keep the default debug config provided by AGP
+        create("release") {
             if (keystorePropertiesFile.exists()) {
-                keyAlias keystoreProperties['keyAlias']
-                keyPassword keystoreProperties['keyPassword']
-                storeFile file(keystoreProperties['storeFile'])
-                storePassword keystoreProperties['storePassword']
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+                storeFile = file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
             }
         }
     }
+
     buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
-            versionNameSuffix "-debug"
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
+            versionNameSuffix = "-debug"
         }
-        release {
-            minifyEnabled false
-            shrinkResources false
-            signingConfig signingConfigs.release
+        getByName("release") {
+            isMinifyEnabled = false
+            isShrinkResources = false
+            // use the release signing config we created above (will be used only if key properties exist)
+            signingConfig = signingConfigs.getByName("release")
         }
     }
-    // https://stackoverflow.com/a/77494454/8222484
+
+    // Packaging / native libs
     packagingOptions {
-        pickFirst 'lib/x86/libc++_shared.so'
-        pickFirst 'lib/x86_64/libc++_shared.so'
-        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
-        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        jniLibs {
+            pickFirsts += listOf(
+                //"lib/x86/libc++_shared.so",
+                //"lib/x86_64/libc++_shared.so",
+                "lib/armeabi-v7a/libc++_shared.so",
+                "lib/arm64-v8a/libc++_shared.so"
+            )
+        }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
-        coreLibraryDesugaringEnabled true
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+        isCoreLibraryDesugaringEnabled = true
     }
 
+    // Kotlin JVM target
     kotlinOptions {
         jvmTarget = "17"
     }
 }
 
-
-flutter {
-    source '../..'
+// Flutter extension (Kotlin DSL: assign property if available)
+extensions.findByName("flutter")?.let { ext ->
+    try {
+        // typical flutter DSL has a 'source' property; set it if available
+        ext.javaClass.getMethod("setSource", String::class.java).invoke(ext, "../..")
+    } catch (_: Exception) {
+        // ignore if not available in this plugin version
+    }
 }
 
 dependencies {
-    implementation platform('com.google.firebase:firebase-bom:32.8.0')
-    implementation 'com.google.firebase:firebase-analytics'
-    implementation 'com.google.firebase:firebase-database'
+    implementation(platform("com.google.firebase:firebase-bom:32.8.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-database")
 
-    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation("androidx.multidex:multidex:2.0.1")
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }
 
-// #Pangea
+// (optional) previously commented exclusions:
 // configurations.all {
-//     exclude group: 'com.google.android.gms'
+//     exclude(group = "com.google.android.gms")
 // }
-// Pangea#
