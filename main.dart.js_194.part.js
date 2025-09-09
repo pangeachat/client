@@ -4514,7 +4514,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "" + num1 + "/" + num2 + " participants have wrapped up. Wait for everyone to finish, and we'll generate you a summary in the chat! \n\nIf you'd like to rejoin the conversation, click the continue button in the chat.";
     },
     othersDoneAndWaiting$2(num1, num2) {
-      return "$" + num1 + "/" + num2 + " are done. Have you completed your objective?";
+      return "" + num1 + "/" + num2 + " are done. Have you completed your objective?";
     },
     get$startNewSession() {
       return "Start new session";
@@ -4543,6 +4543,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_194", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "De+aOIdvfTTESpXhq8XaK0IEwhk=");
+})($__dart_deferred_initializers__, "sNq8oGFv6YIiQPyaoKIrBYmO8lk=");
 ;
 //# sourceMappingURL=main.dart.js_194.part.js.map
