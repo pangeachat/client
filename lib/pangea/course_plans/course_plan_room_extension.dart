@@ -58,6 +58,14 @@ extension CoursePlanRoomExtension on Room {
     );
   }
 
+  int numOpenSessions(String activityId) {
+    final sessions = [];
+    for (final userState in allCourseUserStates.values) {
+      sessions.addAll(userState.joinedActivities[activityId] ?? []);
+    }
+    return sessions.toSet().length;
+  }
+
   bool hasCompletedActivity(
     String userID,
     String activityID,

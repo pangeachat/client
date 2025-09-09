@@ -28,6 +28,8 @@ class CourseUserState {
     _completedActivities[activityID]!.add(roomID);
   }
 
+  Map<String, List<String>> get joinedActivities => _joinedActivities;
+
   List<String> get completedActivities => _completedActivities.keys.toList();
   List<String> get joinedActivityRooms =>
       _joinedActivities.values.expand((e) => e).toList();
