@@ -1,3 +1,4 @@
+import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
@@ -37,6 +38,25 @@ extension CoursePlanRoomExtension on Room {
   }
 
   CourseUserState? get _ownCourseState => _courseUserState(client.userID!);
+
+  Map<String, CourseUserState> get allCourseUserStates {
+    final content = states[PangeaEventTypes.courseUser];
+    if (content == null || content.isEmpty) return {};
+    return Map<String, CourseUserState>.fromEntries(
+      content.entries.map(
+        (e) {
+          try {
+            return MapEntry(
+              e.key,
+              CourseUserState.fromJson(e.value.content),
+            );
+          } catch (e) {
+            return null;
+          }
+        },
+      ).whereType<MapEntry<String, CourseUserState>>(),
+    );
+  }
 
   bool hasCompletedActivity(
     String userID,
@@ -135,14 +155,15 @@ extension CoursePlanRoomExtension on Room {
 
   Future<void> joinCourseActivity(
     String activityID,
+    String roomID,
   ) async {
     CourseUserState? state = _ownCourseState;
     state ??= CourseUserState(
       userID: client.userID!,
-      completedActivities: [],
-      joinActivities: [],
+      completedActivities: {},
+      joinActivities: {},
     );
-    state.joinActivity(activityID);
+    state.joinActivity(activityID, roomID);
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.courseUser,
@@ -153,14 +174,15 @@ extension CoursePlanRoomExtension on Room {
 
   Future<void> finishCourseActivity(
     String activityID,
+    String roomID,
   ) async {
     CourseUserState? state = _ownCourseState;
     state ??= CourseUserState(
       userID: client.userID!,
-      completedActivities: [],
-      joinActivities: [],
+      completedActivities: {},
+      joinActivities: {},
     );
-    state.completeActivity(activityID);
+    state.completeActivity(activityID, roomID);
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.courseUser,
@@ -177,7 +199,7 @@ extension CoursePlanRoomExtension on Room {
       creationContent: {
         'type': "${PangeaRoomTypes.activitySession}:${activity.activityId}",
       },
-      visibility: Visibility.private,
+      visibility: sdk.Visibility.private,
       name: activity.title,
       initialState: [
         StateEvent(
@@ -222,6 +244,7 @@ extension CoursePlanRoomExtension on Room {
 
     await joinCourseActivity(
       activity.activityId,
+      roomID,
     );
     return roomID;
   }

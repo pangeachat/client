@@ -1,49 +1,65 @@
 class CourseUserState {
   final String userID;
-  final List<String> _completedActivities;
-  final List<String> _joinActivities;
+
+  // Map of activityIds to list of roomIds
+  final Map<String, List<String>> _completedActivities;
+  final Map<String, List<String>> _joinedActivities;
 
   CourseUserState({
     required this.userID,
-    required List<String> completedActivities,
-    required List<String> joinActivities,
+    required Map<String, List<String>> completedActivities,
+    required Map<String, List<String>> joinActivities,
   })  : _completedActivities = completedActivities,
-        _joinActivities = joinActivities;
+        _joinedActivities = joinActivities;
 
   void joinActivity(
     String activityID,
+    String roomID,
   ) {
-    if (!_joinActivities.contains(activityID)) {
-      _joinActivities.add(activityID);
-    }
+    _joinedActivities[activityID] ??= [];
+    _joinedActivities[activityID]!.add(roomID);
   }
 
   void completeActivity(
     String activityID,
+    String roomID,
   ) {
-    if (!_completedActivities.contains(activityID)) {
-      _completedActivities.add(activityID);
-    }
+    _completedActivities[activityID] ??= [];
+    _completedActivities[activityID]!.add(roomID);
   }
 
-  List<String> get completedActivities => _completedActivities;
+  List<String> get completedActivities => _completedActivities.keys.toList();
+  List<String> get joinedActivityRooms =>
+      _joinedActivities.values.expand((e) => e).toList();
 
   bool hasCompletedActivity(
     String activityID,
   ) {
-    return _completedActivities.contains(activityID);
+    return _completedActivities.containsKey(activityID);
   }
 
   factory CourseUserState.fromJson(Map<String, dynamic> json) {
-    final activityEntry =
-        List<String>.from((json['comp_act_by_topic'] as List<dynamic>?) ?? []);
-    final joinEntry =
-        List<String>.from((json['join_act_by_topic'] as List<dynamic>?) ?? []);
+    final activityEntry = json['comp_act_by_topic'];
+    final joinEntry = json['join_act_by_topic'];
+
+    final Map<String, List<String>> activityMap = {};
+    if (activityEntry != null) {
+      activityEntry.forEach((key, value) {
+        activityMap[key] = List<String>.from(value);
+      });
+    }
+
+    final Map<String, List<String>> joinMap = {};
+    if (joinEntry != null) {
+      joinEntry.forEach((key, value) {
+        joinMap[key] = List<String>.from(value);
+      });
+    }
 
     return CourseUserState(
       userID: json['user_id'],
-      completedActivities: activityEntry,
-      joinActivities: joinEntry,
+      completedActivities: activityMap,
+      joinActivities: joinMap,
     );
   }
 
@@ -51,7 +67,7 @@ class CourseUserState {
     return {
       'user_id': userID,
       'comp_act_by_topic': _completedActivities,
-      'join_act_by_topic': _joinActivities,
+      'join_act_by_topic': _joinedActivities,
     };
   }
 }

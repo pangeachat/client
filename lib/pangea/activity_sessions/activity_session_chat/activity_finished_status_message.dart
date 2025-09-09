@@ -52,7 +52,10 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     final courseParent = controller.room.courseParent;
     if (courseParent?.coursePlan == null) return;
     final activityId = controller.room.activityPlan!.activityId;
-    await courseParent!.finishCourseActivity(activityId);
+    await courseParent!.finishCourseActivity(
+      activityId,
+      controller.room.id,
+    );
   }
 
   ActivitySummaryModel? get summary => controller.room.activitySummary;

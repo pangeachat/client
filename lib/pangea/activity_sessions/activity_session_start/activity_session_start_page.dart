@@ -194,12 +194,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
           );
 
           try {
-            final topicId = course!.topicID(activity!.activityId);
-            if (topicId == null) {
-              throw Exception("Activity is not part of a course");
-            }
             await parent!.joinCourseActivity(
               widget.activityId,
+              room!.id,
             );
           } catch (e, s) {
             ErrorHandler.logError(
