@@ -28,7 +28,12 @@ extension CoursePlanRoomExtension on Room {
       userID,
     );
     if (event == null) return null;
-    return CourseUserState.fromJson(event.content);
+
+    try {
+      return CourseUserState.fromJson(event.content);
+    } catch (e) {
+      return null;
+    }
   }
 
   CourseUserState? get _ownCourseState => _courseUserState(client.userID!);
@@ -44,14 +49,14 @@ extension CoursePlanRoomExtension on Room {
 
   bool _hasCompletedTopic(
     String userID,
-    String topicID,
+    CourseTopicModel topic,
     CoursePlanModel course,
   ) {
     final state = _courseUserState(userID);
     if (state == null) return false;
 
     final topicIndex = course.loadedTopics.indexWhere(
-      (t) => t.uuid == topicID,
+      (t) => t.uuid == topic.uuid,
     );
 
     if (topicIndex == -1) {
@@ -61,7 +66,7 @@ extension CoursePlanRoomExtension on Room {
     final activityIds = course.loadedTopics[topicIndex].loadedActivities
         .map((a) => a.activityId)
         .toList();
-    return state.completedActivities(topicID).toSet().containsAll(activityIds);
+    return state.completedActivities.toSet().containsAll(activityIds);
   }
 
   CourseTopicModel? currentTopic(
@@ -69,10 +74,9 @@ extension CoursePlanRoomExtension on Room {
     CoursePlanModel course,
   ) {
     if (coursePlan == null) return null;
-    final topicIDs = course.loadedTopics.map((t) => t.uuid).toList();
-    if (topicIDs.isEmpty) return null;
+    if (course.loadedTopics.isEmpty) return null;
 
-    final index = topicIDs.indexWhere(
+    final index = course.loadedTopics.indexWhere(
       (t) => !_hasCompletedTopic(userID, t, course),
     );
 
@@ -87,10 +91,9 @@ extension CoursePlanRoomExtension on Room {
     CoursePlanModel course,
   ) {
     if (coursePlan == null) return -1;
-    final topicIDs = course.loadedTopics.map((t) => t.uuid).toList();
-    if (topicIDs.isEmpty) return -1;
+    if (course.loadedTopics.isEmpty) return -1;
 
-    final index = topicIDs.indexWhere(
+    final index = course.loadedTopics.indexWhere(
       (t) => !_hasCompletedTopic(userID, t, course),
     );
 
@@ -130,16 +133,34 @@ extension CoursePlanRoomExtension on Room {
     return topicUserMap;
   }
 
-  Future<void> finishCourseActivity(
+  Future<void> joinCourseActivity(
     String activityID,
-    String topicID,
   ) async {
     CourseUserState? state = _ownCourseState;
     state ??= CourseUserState(
       userID: client.userID!,
-      completedActivities: {},
+      completedActivities: [],
+      joinActivities: [],
     );
-    state.completeActivity(activityID, topicID);
+    state.joinActivity(activityID);
+    await client.setRoomStateWithKey(
+      id,
+      PangeaEventTypes.courseUser,
+      client.userID!,
+      state.toJson(),
+    );
+  }
+
+  Future<void> finishCourseActivity(
+    String activityID,
+  ) async {
+    CourseUserState? state = _ownCourseState;
+    state ??= CourseUserState(
+      userID: client.userID!,
+      completedActivities: [],
+      joinActivities: [],
+    );
+    state.completeActivity(activityID);
     await client.setRoomStateWithKey(
       id,
       PangeaEventTypes.courseUser,
@@ -198,6 +219,10 @@ extension CoursePlanRoomExtension on Room {
     if (pangeaSpaceParents.isEmpty) {
       await client.waitForRoomInSync(roomID);
     }
+
+    await joinCourseActivity(
+      activity.activityId,
+    );
     return roomID;
   }
 }

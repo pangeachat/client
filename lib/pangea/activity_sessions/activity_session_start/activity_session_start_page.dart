@@ -10,8 +10,11 @@ import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_plans/course_activity_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -28,7 +31,7 @@ class ActivitySessionStartPage extends StatefulWidget {
   final String activityId;
   final bool isNew;
   final Room? room;
-  final String parentId;
+  final String? parentId;
   const ActivitySessionStartPage({
     super.key,
     required this.activityId,
@@ -44,6 +47,8 @@ class ActivitySessionStartPage extends StatefulWidget {
 
 class ActivitySessionStartController extends State<ActivitySessionStartPage> {
   ActivityPlanModel? activity;
+  CoursePlanModel? course;
+
   bool loading = true;
   Object? error;
 
@@ -73,9 +78,11 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
 
   Room? get room => widget.room;
 
-  Room? get parent => Matrix.of(context).client.getRoomById(
-        widget.parentId,
-      );
+  Room? get parent => widget.parentId != null
+      ? Matrix.of(context).client.getRoomById(
+            widget.parentId!,
+          )
+      : null;
 
   bool get isBotRoomMember =>
       room?.getParticipants().any(
@@ -155,6 +162,10 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
         error = null;
       });
 
+      if (parent?.coursePlan != null) {
+        course = await CoursePlansRepo.get(parent!.coursePlan!.uuid);
+      }
+
       final activities = await CourseActivityRepo.get(
         widget.activityId,
         [widget.activityId],
@@ -177,9 +188,30 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     if (room != null) {
       await showFutureLoadingDialog(
         context: context,
-        future: () => room!.joinActivity(
-          activity!.roles[_selectedRoleId!]!,
-        ),
+        future: () async {
+          await room!.joinActivity(
+            activity!.roles[_selectedRoleId!]!,
+          );
+
+          try {
+            final topicId = course!.topicID(activity!.activityId);
+            if (topicId == null) {
+              throw Exception("Activity is not part of a course");
+            }
+            await parent!.joinCourseActivity(
+              widget.activityId,
+            );
+          } catch (e, s) {
+            ErrorHandler.logError(
+              e: e,
+              s: s,
+              data: {
+                "activityId": widget.activityId,
+                "parentId": widget.parentId,
+              },
+            );
+          }
+        },
       );
     } else {
       final resp = await showFutureLoadingDialog(

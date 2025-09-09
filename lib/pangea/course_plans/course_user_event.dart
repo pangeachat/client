@@ -1,46 +1,49 @@
 class CourseUserState {
   final String userID;
-  final Map<String, List<String>> _completedActivities;
+  final List<String> _completedActivities;
+  final List<String> _joinActivities;
 
   CourseUserState({
     required this.userID,
-    required Map<String, List<String>> completedActivities,
-  }) : _completedActivities = completedActivities;
+    required List<String> completedActivities,
+    required List<String> joinActivities,
+  })  : _completedActivities = completedActivities,
+        _joinActivities = joinActivities;
 
-  void completeActivity(
+  void joinActivity(
     String activityID,
-    String topicID,
   ) {
-    _completedActivities[topicID] ??= [];
-    if (!_completedActivities[topicID]!.contains(activityID)) {
-      _completedActivities[topicID]!.add(activityID);
+    if (!_joinActivities.contains(activityID)) {
+      _joinActivities.add(activityID);
     }
   }
 
-  List<String> completedActivities(String topicID) {
-    return _completedActivities[topicID] ?? [];
+  void completeActivity(
+    String activityID,
+  ) {
+    if (!_completedActivities.contains(activityID)) {
+      _completedActivities.add(activityID);
+    }
   }
+
+  List<String> get completedActivities => _completedActivities;
 
   bool hasCompletedActivity(
     String activityID,
   ) {
-    return _completedActivities.values.any(
-      (activities) => activities.contains(activityID),
-    );
+    return _completedActivities.contains(activityID);
   }
 
   factory CourseUserState.fromJson(Map<String, dynamic> json) {
-    final Map<String, List<String>> activities = {};
     final activityEntry =
-        (json['comp_act_by_topic'] as Map<String, dynamic>?) ?? {};
-
-    for (final entry in activityEntry.entries) {
-      activities[entry.key] = List<String>.from(entry.value);
-    }
+        List<String>.from((json['comp_act_by_topic'] as List<dynamic>?) ?? []);
+    final joinEntry =
+        List<String>.from((json['join_act_by_topic'] as List<dynamic>?) ?? []);
 
     return CourseUserState(
       userID: json['user_id'],
-      completedActivities: activities,
+      completedActivities: activityEntry,
+      joinActivities: joinEntry,
     );
   }
 
@@ -48,6 +51,7 @@ class CourseUserState {
     return {
       'user_id': userID,
       'comp_act_by_topic': _completedActivities,
+      'join_act_by_topic': _joinActivities,
     };
   }
 }
