@@ -7,6 +7,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/analytics_constants.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_manager.dart';
 import 'package:fluffychat/pangea/analytics_misc/level_up/level_up_popup.dart';
@@ -237,7 +238,7 @@ class LevelUpBannerState extends State<LevelUpBanner>
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
                               Text(
-                                "Level up",
+                                L10n.of(context).levelUp,
                                 style: style,
                                 overflow: TextOverflow.ellipsis,
                               ),
