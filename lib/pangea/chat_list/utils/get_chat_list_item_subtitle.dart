@@ -72,6 +72,13 @@ class ChatListItemSubtitle extends StatelessWidget {
                   [],
           space: room.courseParent,
         );
+      } else if (room.activityIsFinished) {
+        return Text(
+          L10n.of(context).activityDone,
+          style: style,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        );
       }
     }
 

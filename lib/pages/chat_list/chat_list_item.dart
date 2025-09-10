@@ -27,6 +27,7 @@ class ChatListItem extends StatelessWidget {
   final String? filter;
   // #Pangea
   final BorderRadius? borderRadius;
+  final Widget? trailing;
   // Pangea#
 
   const ChatListItem(
@@ -40,6 +41,7 @@ class ChatListItem extends StatelessWidget {
     super.key,
     // #Pangea
     this.borderRadius,
+    this.trailing,
     // Pangea#
   });
 
@@ -442,12 +444,21 @@ class ChatListItem extends StatelessWidget {
                 ],
               ),
               onTap: onTap,
-              trailing: onForget == null
-                  ? null
-                  : IconButton(
-                      icon: const Icon(Icons.delete_outlined),
-                      onPressed: onForget,
-                    ),
+              // #Pangea
+              // trailing: onForget == null
+              //     ? null
+              //     : IconButton(
+              //         icon: const Icon(Icons.delete_outlined),
+              //         onPressed: onForget,
+              //       ),
+              trailing: trailing ??
+                  (onForget == null
+                      ? null
+                      : IconButton(
+                          icon: const Icon(Icons.delete_outlined),
+                          onPressed: onForget,
+                        )),
+              // Pangea#
             ),
           ),
         ),
