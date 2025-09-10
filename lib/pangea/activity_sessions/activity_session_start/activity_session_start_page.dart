@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -143,6 +144,13 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     return _selectedRoleId == id;
   }
 
+  bool get canJoinExistingSession {
+    // if the activity session already exists, if there's no parent course, or if the parent course doesn't
+    // have the event where existing sessions are stored, joining an existing session is not possible
+    if (room != null || parent?.allCourseUserStates == null) return false;
+    return parent!.numOpenSessions(widget.activityId) > 0;
+  }
+
   void toggleInstructions() {
     setState(() {
       showInstructions = !showInstructions;
@@ -183,7 +191,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     }
   }
 
-  Future<void> onTap() async {
+  Future<void> confirmRoleSelection() async {
     if (state != SessionState.selectedRole) return;
     if (room != null) {
       await showFutureLoadingDialog(
@@ -223,6 +231,43 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
         context.go("/rooms/spaces/${widget.parentId}/${resp.result}");
       }
     }
+  }
+
+  Future<String> joinExistingSession() async {
+    if (!canJoinExistingSession) {
+      throw Exception("No existing session to join");
+    }
+
+    final sessionIds = parent!.openSessions(widget.activityId);
+    String? joinedSessionId;
+    for (final sessionId in sessionIds) {
+      try {
+        await parent!.client.joinRoom(
+          sessionId,
+          via: parent?.spaceChildren
+              .firstWhereOrNull(
+                (child) => child.roomId == sessionId,
+              )
+              ?.via,
+        );
+        joinedSessionId = sessionId;
+        break;
+      } catch (_) {
+        // try next session
+        continue;
+      }
+    }
+
+    if (joinedSessionId == null) {
+      throw Exception("Failed to join any existing session");
+    }
+
+    final room = parent!.client.getRoomById(joinedSessionId);
+    if (room == null || room.membership != Membership.join) {
+      await parent!.client.waitForRoomInSync(joinedSessionId, join: true);
+    }
+
+    return joinedSessionId;
   }
 
   Future<void> pingCourse() async {

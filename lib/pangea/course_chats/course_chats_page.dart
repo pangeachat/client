@@ -64,7 +64,8 @@ class CourseChatsController extends State<CourseChats> {
 
     // Listen for changes to the activeSpace's hierarchy,
     // and reload the hierarchy when they come through
-    _roomSubscription ??= widget.client.onSync.stream
+    _roomSubscription?.cancel();
+    _roomSubscription = widget.client.onSync.stream
         .where(_hasHierarchyUpdate)
         .listen((update) => loadHierarchy(reload: true));
     super.initState();
@@ -76,6 +77,11 @@ class CourseChatsController extends State<CourseChats> {
     // via the navigation rail, so this accounts for that
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
+      _roomSubscription?.cancel();
+      _roomSubscription = widget.client.onSync.stream
+          .where(_hasHierarchyUpdate)
+          .listen((update) => loadHierarchy(reload: true));
+
       discoveredChildren = null;
       _nextBatch = null;
       noMoreRooms = false;
@@ -664,7 +670,7 @@ class CourseChatsController extends State<CourseChats> {
           future: room.isSpace ? room.leaveSpace : room.leave,
         );
         if (mounted && !resp.isError) {
-          context.go("/rooms");
+          context.go("/rooms/spaces/${widget.roomId}/details");
         }
 
         return;
@@ -752,17 +758,56 @@ class CourseChatsController extends State<CourseChats> {
   /// Used to filter out sync updates with hierarchy updates for the active
   /// space so that the view can be auto-reloaded in the room subscription
   bool _hasHierarchyUpdate(SyncUpdate update) {
-    final joinTimeline = update.rooms?.join?[widget.roomId]?.timeline;
-    final leaveTimeline = update.rooms?.leave?[widget.roomId]?.timeline;
+    final joinUpdate = update.rooms?.join;
+    final leaveUpdate = update.rooms?.leave;
+    if (joinUpdate == null && leaveUpdate == null) return false;
+
+    final joinedRooms = joinUpdate?.entries
+        .where(
+          (e) => childrenIds.contains(e.key),
+        )
+        .map((e) => e.value.timeline?.events)
+        .whereType<List<MatrixEvent>>();
+
+    final leftRooms = leaveUpdate?.entries
+        .where(
+          (e) => childrenIds.contains(e.key),
+        )
+        .map((e) => e.value.timeline?.events)
+        .whereType<List<MatrixEvent>>();
+
+    final bool hasJoinedRoom = joinedRooms?.any(
+          (events) => events.any(
+            (e) =>
+                e.senderId == widget.client.userID &&
+                e.type == EventTypes.RoomMember,
+          ),
+        ) ??
+        false;
+
+    final bool hasLeftRoom = leftRooms?.any(
+          (events) => events.any(
+            (e) =>
+                e.senderId == widget.client.userID &&
+                e.type == EventTypes.RoomMember,
+          ),
+        ) ??
+        false;
+
+    if (hasJoinedRoom || hasLeftRoom) {
+      return true;
+    }
+
+    final joinTimeline = joinUpdate?[widget.roomId]?.timeline?.events;
+    final leaveTimeline = leaveUpdate?[widget.roomId]?.timeline?.events;
     if (joinTimeline == null && leaveTimeline == null) return false;
-    final bool hasJoinUpdate = joinTimeline?.events?.any(
-          (event) => event.type == EventTypes.SpaceChild,
-        ) ??
-        false;
-    final bool hasLeaveUpdate = leaveTimeline?.events?.any(
-          (event) => event.type == EventTypes.SpaceChild,
-        ) ??
-        false;
+
+    final bool hasJoinUpdate = joinTimeline!.any(
+      (event) => event.type == EventTypes.SpaceChild,
+    );
+    final bool hasLeaveUpdate = leaveTimeline!.any(
+      (event) => event.type == EventTypes.SpaceChild,
+    );
     return hasJoinUpdate || hasLeaveUpdate;
   }
 

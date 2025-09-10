@@ -58,13 +58,15 @@ extension CoursePlanRoomExtension on Room {
     );
   }
 
-  int numOpenSessions(String activityId) {
-    final sessions = [];
+  List<String> openSessions(String activityId) {
+    final List<String> sessions = [];
     for (final userState in allCourseUserStates.values) {
       sessions.addAll(userState.joinedActivities[activityId] ?? []);
     }
-    return sessions.toSet().length;
+    return sessions.toSet().toList();
   }
+
+  int numOpenSessions(String activityId) => openSessions(activityId).length;
 
   bool hasCompletedActivity(
     String userID,
@@ -135,7 +137,9 @@ extension CoursePlanRoomExtension on Room {
     for (final child in spaceChildren) {
       if (child.roomId == null) continue;
       final room = client.getRoomById(child.roomId!);
-      if (room?.activityId == activityId && !room!.isHiddenActivityRoom) {
+      if (room?.membership == Membership.join &&
+          room?.activityId == activityId &&
+          !room!.isHiddenActivityRoom) {
         return room.id;
       }
     }
