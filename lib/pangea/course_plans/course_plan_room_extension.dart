@@ -58,12 +58,19 @@ extension CoursePlanRoomExtension on Room {
     );
   }
 
-  List<String> openSessions(String activityId) {
-    final List<String> sessions = [];
+  Set<String> openSessions(String activityId) {
+    final Set<String> sessions = {};
+    final Set<String> childIds =
+        spaceChildren.map((child) => child.roomId).whereType<String>().toSet();
+
     for (final userState in allCourseUserStates.values) {
-      sessions.addAll(userState.joinedActivities[activityId] ?? []);
+      final activitySessions = userState.joinedActivities[activityId]?.toSet();
+      if (activitySessions == null) continue;
+      sessions.addAll(
+        activitySessions.intersection(childIds),
+      );
     }
-    return sessions.toSet().toList();
+    return sessions;
   }
 
   int numOpenSessions(String activityId) => openSessions(activityId).length;
