@@ -4,6 +4,11 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 
 class ActivitySummaryAnalyticsModel {
   final Map<String, UserConstructAnalytics> constructs = {};
+  // Superlatives: {'vocab': [userId, ...], 'grammar': [userId, ...]}
+  Map<String, List<String>> superlatives = {
+    'vocab': [],
+    'grammar': [],
+  };
 
   ActivitySummaryAnalyticsModel();
 
@@ -42,12 +47,52 @@ class ActivitySummaryAnalyticsModel {
     for (final use in uses) {
       user.addUsage(use.identifier);
     }
+
+    // Update superlatives after adding constructs
+    _updateSuperlatives();
+  }
+
+  void _updateSuperlatives() {
+    // Find all user IDs
+    final userIds = constructs.keys.toList();
+    if (userIds.isEmpty) {
+      superlatives['vocab'] = [];
+      superlatives['grammar'] = [];
+      return;
+    }
+    int maxVocab = 0;
+    final Map<String, int> vocabCounts = {};
+    for (final userId in userIds) {
+      final count =
+          uniqueConstructCountForUser(userId, ConstructTypeEnum.vocab);
+      vocabCounts[userId] = count;
+      if (count > maxVocab) maxVocab = count;
+    }
+    superlatives['vocab'] = vocabCounts.entries
+        .where((e) => e.value == maxVocab && maxVocab > 0)
+        .map((e) => e.key)
+        .toList();
+
+    int maxGrammar = 0;
+    final Map<String, int> grammarCounts = {};
+    for (final userId in userIds) {
+      final count =
+          uniqueConstructCountForUser(userId, ConstructTypeEnum.morph);
+      grammarCounts[userId] = count;
+      if (count > maxGrammar) maxGrammar = count;
+    }
+    superlatives['grammar'] = grammarCounts.entries
+        .where((e) => e.value == maxGrammar && maxGrammar > 0)
+        .map((e) => e.key)
+        .toList();
   }
 
   factory ActivitySummaryAnalyticsModel.fromJson(Map<String, dynamic> json) {
     final model = ActivitySummaryAnalyticsModel();
+    final constructsJson = json['constructs'] ?? json;
+    final superlativesJson = json['superlatives'] ?? {};
 
-    for (final userEntry in json.entries) {
+    for (final userEntry in constructsJson.entries) {
       final userId = userEntry.key;
       final constructList = userEntry.value as List<dynamic>;
 
@@ -64,12 +109,22 @@ class ActivitySummaryAnalyticsModel {
       model.constructs[userId] = userAnalytics;
     }
 
+    if (superlativesJson is Map) {
+      model.superlatives['vocab'] =
+          List<String>.from(superlativesJson['vocab'] ?? []);
+      model.superlatives['grammar'] =
+          List<String>.from(superlativesJson['grammar'] ?? []);
+    }
+
     return model;
   }
 
   Map<String, dynamic> toJson() => {
-        for (final entry in constructs.entries)
-          entry.key: entry.value.toJsonList(),
+        'constructs': {
+          for (final entry in constructs.entries)
+            entry.key: entry.value.toJsonList(),
+        },
+        'superlatives': superlatives,
       };
 }
 

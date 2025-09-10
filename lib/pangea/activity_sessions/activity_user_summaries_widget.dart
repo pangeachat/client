@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart';
 
 class ActivityUserSummaries extends StatelessWidget {
   final ChatController controller;
@@ -75,7 +75,7 @@ class ActivityUserSummaries extends StatelessWidget {
   }
 }
 
-class ButtonControlledCarouselView extends StatelessWidget {
+class ButtonControlledCarouselView extends StatefulWidget {
   final ActivitySummaryResponseModel summary;
   final ChatController controller;
   const ButtonControlledCarouselView({
@@ -85,13 +85,39 @@ class ButtonControlledCarouselView extends StatelessWidget {
   });
 
   @override
+  State<ButtonControlledCarouselView> createState() =>
+      _ButtonControlledCarouselViewState();
+}
+
+class _ButtonControlledCarouselViewState
+    extends State<ButtonControlledCarouselView> {
+  ActivitySummaryAnalyticsModel? analytics;
+  Room? room;
+
+  Future<void> loadSuperlatives() async {
+    final loadedAnalytics = await room!.getActivityAnalytics();
+    if (mounted) {
+      setState(() {
+        analytics = loadedAnalytics;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    debugPrint("InitState");
+    room = widget.controller.room;
+    loadSuperlatives();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final room = controller.room;
-
-    final availableRoles = room.activityPlan!.roles;
-    final assignedRoles = room.assignedRoles ?? {};
-
-    final userSummaries = summary.participants
+    // final room = widget.controller.room;
+    debugPrint("Rebuilding, analytics is null? ${analytics == null}");
+    final availableRoles = room!.activityPlan!.roles;
+    final assignedRoles = room!.assignedRoles ?? {};
+    final userSummaries = widget.summary.participants
         .where(
           (p) => assignedRoles.values.any(
             (role) => role.userId == p.participantId,
@@ -102,13 +128,13 @@ class ButtonControlledCarouselView extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 200.0,
+          height: 230.0,
           child: ListView(
             shrinkWrap: true,
-            controller: controller.carouselController,
+            controller: widget.controller.carouselController,
             scrollDirection: Axis.horizontal,
             children: userSummaries.mapIndexed((i, p) {
-              final user = room.getParticipants().firstWhereOrNull(
+              final user = room!.getParticipants().firstWhereOrNull(
                     (u) => u.id == p.participantId,
                   );
               final userRole = assignedRoles.values.firstWhere(
@@ -160,21 +186,15 @@ class ButtonControlledCarouselView extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Row(
-                      spacing: 14.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Row(
-                            spacing: 4.0,
-                            mainAxisSize: MainAxisSize.min,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Wrap(
+                            alignment: WrapAlignment.center,
+                            //crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Icon(
-                                Icons.school,
-                                size: 12.0,
-                                color: AppConfig.yellowDark,
-                              ),
                               Text(
                                 p.cefrLevel,
                                 style: const TextStyle(
@@ -182,18 +202,36 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                   fontSize: 12.0,
                                 ),
                               ),
+                              const SizedBox(width: 8),
+                              if (analytics != null) ...[
+                                SuperlativeTile(
+                                  icon: Symbols.dictionary,
+                                  show: analytics!.superlatives['vocab']
+                                          ?.contains(
+                                        p.participantId,
+                                      ) ??
+                                      false,
+                                ),
+                                SuperlativeTile(
+                                  icon: Symbols.toys_and_games,
+                                  show: analytics!.superlatives['grammar']
+                                          ?.contains(
+                                        p.participantId,
+                                      ) ??
+                                      false,
+                                ),
+                              ],
+                              if (p.superlatives.isNotEmpty) ...[
+                                const SizedBox(width: 8),
+                                Text(
+                                  p.superlatives.first,
+                                  style: const TextStyle(fontSize: 12.0),
+                                ),
+                              ],
                             ],
                           ),
-                        ),
-                        if (p.superlatives.isNotEmpty)
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(
-                              p.superlatives.first,
-                              style: const TextStyle(fontSize: 12.0),
-                            ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -205,7 +243,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: userSummaries.mapIndexed((i, p) {
-            final user = room.getParticipants().firstWhereOrNull(
+            final user = room!.getParticipants().firstWhereOrNull(
                   (u) => u.id == p.participantId,
                 );
             final userRole = assignedRoles.values.firstWhere(
@@ -217,13 +255,43 @@ class ButtonControlledCarouselView extends StatelessWidget {
               userId: p.participantId,
               avatarUrl: userRoleInfo.avatarUrl ?? user?.avatarUrl?.toString(),
               borderRadius: BorderRadius.circular(4),
-              selected: controller.highlightedRole?.id == userRole.id,
+              selected: widget.controller.highlightedRole?.id == userRole.id,
               onTap: () {
-                controller.highlightRole(userRole);
-                controller.carouselController.jumpTo(i * 250.0);
+                widget.controller.highlightRole(userRole);
+                widget.controller.carouselController.jumpTo(i * 250.0);
               },
             );
           }).toList(),
+        ),
+      ],
+    );
+  }
+}
+
+class SuperlativeTile extends StatelessWidget {
+  final IconData icon;
+  final bool show;
+
+  const SuperlativeTile({
+    super.key,
+    required this.icon,
+    required this.show,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (!show) return const SizedBox.shrink();
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 14, color: AppConfig.gold),
+        const SizedBox(width: 2),
+        const Text(
+          "1st",
+          style: TextStyle(
+            color: AppConfig.gold,
+            fontSize: 12.0,
+          ),
         ),
       ],
     );
