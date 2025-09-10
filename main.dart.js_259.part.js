@@ -2532,9 +2532,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Kh\xf4ng t\xecm th\u1ea5y d\u1eef li\u1ec7u";
     },
-    promoSubscriptionExpirationDesc$1(expiration) {
-      return "G\xf3i khuy\u1ebfn m\xe3i h\u1ebft h\u1ea1n v\xe0o " + expiration + ". N\u1ebfu c\u1ea7n tr\u1ee3 gi\xfap, h\xe3y li\xean h\u1ec7 support@pangea.chat.";
-    },
     get$blurMeansTranslateTitle() {
       return "T\u1ea1i sao tin nh\u1eafn b\u1ecb l\xe0m m\u1edd?";
     },
@@ -2576,6 +2573,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noTeachersFound() {
       return "Kh\xf4ng t\xecm th\u1ea5y gi\xe1o vi\xean n\xe0o \u0111\u1ec3 b\xe1o c\xe1o";
+    },
+    trialExpiration$1(expiration) {
+      return "B\u1ea3n d\xf9ng th\u1eed c\u1ee7a b\u1ea1n s\u1ebd h\u1ebft h\u1ea1n v\xe0o " + expiration;
     },
     get$freeTrialDesc() {
       return "Ng\u01b0\u1eddi d\xf9ng m\u1edbi \u0111\u01b0\u1ee3c d\xf9ng th\u1eed Pangea Chat trong 1 tu\u1ea7n";
@@ -4542,6 +4542,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$moreLabel() {
       return "more";
     },
+    get$promoCodeInfo() {
+      return "Promo codes can be entered on the next page";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4557,6 +4560,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "Cr6TeHVTmodM9AwZhEVB3cAADS4=");
+})($__dart_deferred_initializers__, "2PSMrnRQeMfmfV61oIrenzMi6SE=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map

@@ -2533,9 +2533,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "No se han encontrado datos";
     },
-    promoSubscriptionExpirationDesc$1(expiration) {
-      return "Su suscripci\xf3n actual es promocional y expira el " + expiration + ". Env\xede un mensaje a support@pangea.chat para cambiar su suscripci\xf3n.";
-    },
     get$blurMeansTranslateTitle() {
       return "\xbfPor qu\xe9 est\xe1 borroso el mensaje?";
     },
@@ -2577,6 +2574,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$noTeachersFound() {
       return "No se han encontrado profesores a los que informar";
+    },
+    trialExpiration$1(expiration) {
+      return "Su prueba gratuita caduca el " + expiration + ".";
     },
     get$freeTrialDesc() {
       return "Los nuevos usuarios reciben una semana de prueba gratuita de Pangea Chat";
@@ -4543,6 +4543,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$moreLabel() {
       return "more";
     },
+    get$promoCodeInfo() {
+      return "Promo codes can be entered on the next page";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4558,6 +4561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_194", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "WthcfTn767pkqqhK7wV5kMdDAFc=");
+})($__dart_deferred_initializers__, "zkH6Jkn8P2o1nokZvsHxTbv+XA8=");
 ;
 //# sourceMappingURL=main.dart.js_194.part.js.map
