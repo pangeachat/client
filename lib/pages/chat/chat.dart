@@ -2218,6 +2218,11 @@ class ChatController extends State<ChatPageWithRoom>
   void toggleShowInstructions() {
     if (mounted) setState(() => showInstructions = !showInstructions);
   }
+
+  bool showActivityDropdown = false;
+  void setShowDropdown(bool show) async {
+    setState(() => showActivityDropdown = show);
+  }
   // Pangea#
 
   late final ValueNotifier<bool> _displayChatDetailsColumn;
@@ -2243,7 +2248,11 @@ class ChatController extends State<ChatPageWithRoom>
         }
 
         if (room.isActivitySession == true && !room.activityHasStarted) {
-          return ActivitySessionStartPage(room: room);
+          return ActivitySessionStartPage(
+            activityId: room.activityId!,
+            room: room,
+            parentId: room.courseParent?.id,
+          );
         }
         // Pangea#
         final theme = Theme.of(context);

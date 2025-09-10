@@ -9,11 +9,14 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
+import 'package:fluffychat/pangea/course_chats/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -25,6 +28,7 @@ import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart'
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseChats extends StatefulWidget {
   final Client client;
@@ -53,7 +57,6 @@ class CourseChatsController extends State<CourseChats> {
   bool isLoading = false;
 
   CoursePlanModel? course;
-  String? selectedTopicId;
 
   @override
   void initState() {
@@ -61,7 +64,8 @@ class CourseChatsController extends State<CourseChats> {
 
     // Listen for changes to the activeSpace's hierarchy,
     // and reload the hierarchy when they come through
-    _roomSubscription ??= widget.client.onSync.stream
+    _roomSubscription?.cancel();
+    _roomSubscription = widget.client.onSync.stream
         .where(_hasHierarchyUpdate)
         .listen((update) => loadHierarchy(reload: true));
     super.initState();
@@ -73,6 +77,11 @@ class CourseChatsController extends State<CourseChats> {
     // via the navigation rail, so this accounts for that
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
+      _roomSubscription?.cancel();
+      _roomSubscription = widget.client.onSync.stream
+          .where(_hasHierarchyUpdate)
+          .listen((update) => loadHierarchy(reload: true));
+
       discoveredChildren = null;
       _nextBatch = null;
       noMoreRooms = false;
@@ -93,38 +102,77 @@ class CourseChatsController extends State<CourseChats> {
     });
   }
 
-  void setSelectedTopicId(String topicID) {
-    setState(() {
-      selectedTopicId = topicID;
-    });
-  }
+  Set<String> get childrenIds =>
+      room?.spaceChildren.map((c) => c.roomId).whereType<String>().toSet() ??
+      {};
 
-  int get _selectedTopicIndex =>
-      course?.topics.indexWhere((t) => t.uuid == selectedTopicId) ?? -1;
+  List<Room> get joinedRooms => Matrix.of(context)
+      .client
+      .rooms
+      .where((room) => childrenIds.contains(room.id))
+      .where((room) => !room.isHiddenRoom)
+      .toList();
 
-  bool get canMoveLeft => _selectedTopicIndex > 0;
-  bool get canMoveRight {
-    if (course == null) return false;
-    final endIndex =
-        room?.ownCurrentTopicIndex(course!) ?? (course!.topics.length - 1);
-    return _selectedTopicIndex < endIndex;
-  }
+  List<Room> joinedActivities() =>
+      joinedRooms.where((r) => r.isActivitySession).toList();
 
-  void moveLeft() {
-    if (canMoveLeft) {
-      setSelectedTopicId(course!.topics[_selectedTopicIndex - 1].uuid);
+  List<SpaceRoomsChunk> get discoveredGroupChats => (discoveredChildren ?? [])
+      .where(
+        (chunk) =>
+            chunk.roomType == null ||
+            !chunk.roomType!.startsWith(PangeaRoomTypes.activitySession),
+      )
+      .toList();
+
+  Map<ActivityPlanModel, List<ExtendedSpaceRoomsChunk>> discoveredActivities() {
+    if (discoveredChildren == null) return {};
+
+    final courseStates = room?.allCourseUserStates ?? {};
+    final Map<String, List<String>> roomsToUsers = {};
+    if (courseStates.isNotEmpty) {
+      for (final state in courseStates.values) {
+        final userID = state.userID;
+        for (final roomId in state.joinedActivityRooms) {
+          roomsToUsers[roomId] ??= [];
+          roomsToUsers[roomId]!.add(userID);
+        }
+      }
     }
-  }
 
-  void moveRight() {
-    if (canMoveRight) {
-      setSelectedTopicId(course!.topics[_selectedTopicIndex + 1].uuid);
-    }
-  }
+    final Map<ActivityPlanModel, List<ExtendedSpaceRoomsChunk>> sessionsMap =
+        {};
 
-  Topic? get selectedTopic => course?.topics.firstWhereOrNull(
-        (topic) => topic.uuid == selectedTopicId,
+    for (final chunk in discoveredChildren!) {
+      if (chunk.roomType?.startsWith(PangeaRoomTypes.activitySession) != true) {
+        continue;
+      }
+      final activityId = chunk.roomType!.split(":").last;
+      final activity = course?.activityById(activityId);
+      if (activity == null) {
+        continue;
+      }
+
+      final users = roomsToUsers[chunk.roomId];
+      if (users != null && activity.req.numberOfParticipants <= users.length) {
+        // Don't show full activities
+        continue;
+      }
+
+      sessionsMap[activity] ??= [];
+      sessionsMap[activity]!.add(
+        ExtendedSpaceRoomsChunk(
+          chunk: chunk,
+          activityId: activityId,
+          userIds: users ?? [],
+        ),
       );
+    }
+
+    return sessionsMap;
+  }
+
+  List<Room> get joinedChats =>
+      joinedRooms.where((room) => !room.isActivitySession).toList();
 
   Future<void> _joinDefaultChats() async {
     if (discoveredChildren == null) return;
@@ -622,7 +670,7 @@ class CourseChatsController extends State<CourseChats> {
           future: room.isSpace ? room.leaveSpace : room.leave,
         );
         if (mounted && !resp.isError) {
-          context.go("/rooms");
+          context.go("/rooms/spaces/${widget.roomId}/details");
         }
 
         return;
@@ -710,17 +758,56 @@ class CourseChatsController extends State<CourseChats> {
   /// Used to filter out sync updates with hierarchy updates for the active
   /// space so that the view can be auto-reloaded in the room subscription
   bool _hasHierarchyUpdate(SyncUpdate update) {
-    final joinTimeline = update.rooms?.join?[widget.roomId]?.timeline;
-    final leaveTimeline = update.rooms?.leave?[widget.roomId]?.timeline;
+    final joinUpdate = update.rooms?.join;
+    final leaveUpdate = update.rooms?.leave;
+    if (joinUpdate == null && leaveUpdate == null) return false;
+
+    final joinedRooms = joinUpdate?.entries
+        .where(
+          (e) => childrenIds.contains(e.key),
+        )
+        .map((e) => e.value.timeline?.events)
+        .whereType<List<MatrixEvent>>();
+
+    final leftRooms = leaveUpdate?.entries
+        .where(
+          (e) => childrenIds.contains(e.key),
+        )
+        .map((e) => e.value.timeline?.events)
+        .whereType<List<MatrixEvent>>();
+
+    final bool hasJoinedRoom = joinedRooms?.any(
+          (events) => events.any(
+            (e) =>
+                e.senderId == widget.client.userID &&
+                e.type == EventTypes.RoomMember,
+          ),
+        ) ??
+        false;
+
+    final bool hasLeftRoom = leftRooms?.any(
+          (events) => events.any(
+            (e) =>
+                e.senderId == widget.client.userID &&
+                e.type == EventTypes.RoomMember,
+          ),
+        ) ??
+        false;
+
+    if (hasJoinedRoom || hasLeftRoom) {
+      return true;
+    }
+
+    final joinTimeline = joinUpdate?[widget.roomId]?.timeline?.events;
+    final leaveTimeline = leaveUpdate?[widget.roomId]?.timeline?.events;
     if (joinTimeline == null && leaveTimeline == null) return false;
-    final bool hasJoinUpdate = joinTimeline?.events?.any(
-          (event) => event.type == EventTypes.SpaceChild,
-        ) ??
-        false;
-    final bool hasLeaveUpdate = leaveTimeline?.events?.any(
-          (event) => event.type == EventTypes.SpaceChild,
-        ) ??
-        false;
+
+    final bool hasJoinUpdate = joinTimeline!.any(
+      (event) => event.type == EventTypes.SpaceChild,
+    );
+    final bool hasLeaveUpdate = leaveTimeline!.any(
+      (event) => event.type == EventTypes.SpaceChild,
+    );
     return hasJoinUpdate || hasLeaveUpdate;
   }
 
