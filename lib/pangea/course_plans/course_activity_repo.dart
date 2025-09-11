@@ -1,12 +1,13 @@
 import 'dart:async';
 
+import 'package:get_storage/get_storage.dart';
+
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_activity.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_activity_media.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:get_storage/get_storage.dart';
 
 class CourseActivityRepo {
   static final Map<String, Completer<List<ActivityPlanModel>>> _cache = {};
@@ -114,16 +115,17 @@ class CourseActivityRepo {
   static Future<Map<String, String>> _fetchImageUrls(
     List<CmsCoursePlanActivity> activities,
   ) async {
-    final Map<String, String> activityImageUrl = {};
-    final List<String> mediaIds = activities
-        .map((a) => a.coursePlanActivityMedia?.docs?.first)
-        .whereType<String>()
-        .toList();
+    // map of mediaId to activityId
+    final activityToMediaId = Map.fromEntries(
+      activities
+          .where((a) => a.coursePlanActivityMedia?.docs?.isNotEmpty ?? false)
+          .map((a) {
+        final mediaIds = a.coursePlanActivityMedia?.docs;
+        return MapEntry(mediaIds?.firstOrNull, a.id);
+      }),
+    );
 
-    if (mediaIds.isEmpty) {
-      return activityImageUrl;
-    }
-
+    final mediaIds = activityToMediaId.keys.whereType<String>().toList();
     final where = {
       "id": {"in": mediaIds.join(",")},
     };
@@ -142,20 +144,14 @@ class CourseActivityRepo {
       sort: "createdAt",
     );
 
-    // Create a map from media ID to media URL for lookup
-    final Map<String, String> mediaIdToUrl = Map.fromEntries(
-      cmsCoursePlanActivityMediasResult.docs
-          .map((e) => MapEntry(e.id, '${Environment.cmsApi}${e.url!}')),
+    return Map.fromEntries(
+      cmsCoursePlanActivityMediasResult.docs.map((media) {
+        final activityId = activityToMediaId[media.id];
+        if (activityId != null && media.url != null) {
+          return MapEntry(activityId, '${Environment.cmsApi}${media.url!}');
+        }
+        return null;
+      }).whereType<MapEntry<String, String>>(),
     );
-
-    // Create a map from activity ID to image URL (first media doc)
-    for (final activity in activities) {
-      final firstMediaId = activity.coursePlanActivityMedia?.docs?.first;
-      if (firstMediaId != null && mediaIdToUrl.containsKey(firstMediaId)) {
-        activityImageUrl[activity.id] = mediaIdToUrl[firstMediaId]!;
-      }
-    }
-
-    return activityImageUrl;
   }
 }
