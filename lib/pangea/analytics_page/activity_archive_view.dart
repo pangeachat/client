@@ -37,8 +37,9 @@ class ActivityArchiveView extends StatelessWidget {
                   ),
                 );
               },
-              onTap: () =>
-                  context.go('/rooms/analytics/${controller.archive[i].id}'),
+              onTap: () => context.go(
+                '/rooms/analytics/activities/${controller.archive[i].id}',
+              ),
             ),
           );
         },
