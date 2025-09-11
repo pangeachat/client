@@ -45,6 +45,7 @@ class MultipleChoiceActivity extends StatefulWidget {
 }
 
 class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
+  final ScrollController _scrollController = ScrollController();
   int? selectedChoiceIndex;
 
   PracticeRecord? get currentRecordModel =>
@@ -69,6 +70,12 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
         score: 1,
       );
     }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -256,16 +263,21 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
       ],
     );
 
-    return ConstrainedBox(
-      constraints: const BoxConstraints(
-        // see https://github.com/pangeachat/client/issues/1422
-        maxWidth: AppConfig.toolbarMinWidth,
-        maxHeight: AppConfig.toolbarMaxHeight,
-      ),
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: content,
+    return Scrollbar(
+      thumbVisibility: true,
+      controller: _scrollController,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          // see https://github.com/pangeachat/client/issues/1422
+          maxWidth: AppConfig.toolbarMinWidth,
+          maxHeight: AppConfig.toolbarMaxHeight,
+        ),
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          child: Padding(
+            padding: const EdgeInsets.all(8),
+            child: content,
+          ),
         ),
       ),
     );
