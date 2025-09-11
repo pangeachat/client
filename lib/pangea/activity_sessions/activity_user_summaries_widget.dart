@@ -24,6 +24,7 @@ class ActivityUserSummaries extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final summary = room.activitySummary?.summary;
+    final activityAnalytics = room.activitySummary?.analytics;
     if (summary == null) return const SizedBox();
 
     return Padding(
@@ -47,6 +48,7 @@ class ActivityUserSummaries extends StatelessWidget {
           ButtonControlledCarouselView(
             summary: summary,
             controller: controller,
+            analytics: activityAnalytics,
           ),
           // Row(
           //   mainAxisSize: MainAxisSize.min,
@@ -75,49 +77,23 @@ class ActivityUserSummaries extends StatelessWidget {
   }
 }
 
-class ButtonControlledCarouselView extends StatefulWidget {
+class ButtonControlledCarouselView extends StatelessWidget {
   final ActivitySummaryResponseModel summary;
   final ChatController controller;
+  final ActivitySummaryAnalyticsModel? analytics;
   const ButtonControlledCarouselView({
     super.key,
     required this.summary,
     required this.controller,
+    required this.analytics,
   });
 
   @override
-  State<ButtonControlledCarouselView> createState() =>
-      _ButtonControlledCarouselViewState();
-}
-
-class _ButtonControlledCarouselViewState
-    extends State<ButtonControlledCarouselView> {
-  ActivitySummaryAnalyticsModel? analytics;
-  Room? room;
-
-  Future<void> loadSuperlatives() async {
-    final loadedAnalytics = await room!.getActivityAnalytics();
-    if (mounted) {
-      setState(() {
-        analytics = loadedAnalytics;
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    debugPrint("InitState");
-    room = widget.controller.room;
-    loadSuperlatives();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    // final room = widget.controller.room;
-    debugPrint("Rebuilding, analytics is null? ${analytics == null}");
-    final availableRoles = room!.activityPlan!.roles;
-    final assignedRoles = room!.assignedRoles ?? {};
-    final userSummaries = widget.summary.participants
+    final room = controller.room;
+    final availableRoles = room.activityPlan!.roles;
+    final assignedRoles = room.assignedRoles ?? {};
+    final userSummaries = summary.participants
         .where(
           (p) => assignedRoles.values.any(
             (role) => role.userId == p.participantId,
@@ -131,10 +107,10 @@ class _ButtonControlledCarouselViewState
           height: 230.0,
           child: ListView(
             shrinkWrap: true,
-            controller: widget.controller.carouselController,
+            controller: controller.carouselController,
             scrollDirection: Axis.horizontal,
             children: userSummaries.mapIndexed((i, p) {
-              final user = room!.getParticipants().firstWhereOrNull(
+              final user = room.getParticipants().firstWhereOrNull(
                     (u) => u.id == p.participantId,
                   );
               final userRole = assignedRoles.values.firstWhere(
@@ -193,6 +169,8 @@ class _ButtonControlledCarouselViewState
                         children: [
                           Wrap(
                             alignment: WrapAlignment.center,
+                            spacing: 12,
+                            runSpacing: 8,
                             //crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
@@ -202,27 +180,25 @@ class _ButtonControlledCarouselViewState
                                   fontSize: 12.0,
                                 ),
                               ),
-                              const SizedBox(width: 8),
-                              if (analytics != null) ...[
-                                SuperlativeTile(
+                              //const SizedBox(width: 8),
+                              if (analytics != null &&
+                                  (analytics!.superlatives['vocab']!.contains(
+                                    p.participantId,
+                                  ))) ...[
+                                const SuperlativeTile(
                                   icon: Symbols.dictionary,
-                                  show: analytics!.superlatives['vocab']
-                                          ?.contains(
-                                        p.participantId,
-                                      ) ??
-                                      false,
                                 ),
-                                SuperlativeTile(
+                              ],
+                              if (analytics != null &&
+                                  (analytics!.superlatives['grammar']!.contains(
+                                    p.participantId,
+                                  ))) ...[
+                                const SuperlativeTile(
                                   icon: Symbols.toys_and_games,
-                                  show: analytics!.superlatives['grammar']
-                                          ?.contains(
-                                        p.participantId,
-                                      ) ??
-                                      false,
                                 ),
                               ],
                               if (p.superlatives.isNotEmpty) ...[
-                                const SizedBox(width: 8),
+                                //const SizedBox(width: 8),
                                 Text(
                                   p.superlatives.first,
                                   style: const TextStyle(fontSize: 12.0),
@@ -243,7 +219,7 @@ class _ButtonControlledCarouselViewState
         Row(
           mainAxisSize: MainAxisSize.min,
           children: userSummaries.mapIndexed((i, p) {
-            final user = room!.getParticipants().firstWhereOrNull(
+            final user = room.getParticipants().firstWhereOrNull(
                   (u) => u.id == p.participantId,
                 );
             final userRole = assignedRoles.values.firstWhere(
@@ -255,10 +231,10 @@ class _ButtonControlledCarouselViewState
               userId: p.participantId,
               avatarUrl: userRoleInfo.avatarUrl ?? user?.avatarUrl?.toString(),
               borderRadius: BorderRadius.circular(4),
-              selected: widget.controller.highlightedRole?.id == userRole.id,
+              selected: controller.highlightedRole?.id == userRole.id,
               onTap: () {
-                widget.controller.highlightRole(userRole);
-                widget.controller.carouselController.jumpTo(i * 250.0);
+                controller.highlightRole(userRole);
+                controller.carouselController.jumpTo(i * 250.0);
               },
             );
           }).toList(),
@@ -270,17 +246,14 @@ class _ButtonControlledCarouselViewState
 
 class SuperlativeTile extends StatelessWidget {
   final IconData icon;
-  final bool show;
 
   const SuperlativeTile({
     super.key,
     required this.icon,
-    required this.show,
   });
 
   @override
   Widget build(BuildContext context) {
-    if (!show) return const SizedBox.shrink();
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
