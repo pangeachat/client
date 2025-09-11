@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -6,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
+import 'package:fluffychat/pangea/analytics_downloads/analytics_download_button.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -80,6 +82,10 @@ class VocabAnalyticsListView extends StatelessWidget {
       ),
     );
 
+    if (kIsWeb) {
+      filters.add(const DownloadAnalyticsButton());
+    }
+
     return Column(
       children: [
         const InstructionsInlineTooltip(
@@ -124,7 +130,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                     )
                   : Row(
                       spacing: FluffyThemes.isColumnMode(context) ? 16.0 : 4.0,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       key: const ValueKey('filters'),
                       children: filters,
                     ),
