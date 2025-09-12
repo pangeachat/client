@@ -34,7 +34,7 @@ const RESOURCES = {"main.dart.js_257.part.js": "b372c34ce6b20132579d040c6d61dab0
 "main.dart.js_254.part.js": "f62f217fb7cd837f9c36b2ee61589e48",
 "icons/Icon-192.png": "4e4ee2e9ac44d6d501f26380a60f40ed",
 "icons/Icon-512.png": "85a29bc30ba39470883196b434b0c498",
-"main.dart.js": "6b279a27893ea9270f06eb05f096f80f",
+"main.dart.js": "25b206de289c4830932186c5cfaac7fa",
 "main.dart.js_204.part.js": "562966d87cb5892fe9d9761b2fb9fb02",
 "version.json": "2b9e18a27963c905325bc945c6fb583c",
 "auth.html": "88530dca48290678d3ce28a34fc66cbd",
@@ -98,7 +98,7 @@ const RESOURCES = {"main.dart.js_257.part.js": "b372c34ce6b20132579d040c6d61dab0
 "assets/packages/material_symbols_icons/lib/fonts/MaterialSymbolsRounded.ttf": "66cc89d41fa47eb765cef6b7a32e459b",
 "assets/packages/material_symbols_icons/lib/fonts/MaterialSymbolsOutlined.ttf": "23ba8c355c6817930e8f91bf5f635ed9",
 "assets/packages/wakelock_plus/assets/no_sleep.js": "7748a45cd593f33280669b29c2c8919a",
-"flutter_bootstrap.js": "2a74188838151ec295e4b33ddfdc050d",
+"flutter_bootstrap.js": "b3e4f9a907b36d9316ef44844bd94330",
 "main.dart.js_242.part.js": "06ee230c899f24b2308155d896c90f4e",
 "splash/style.css": "ffbfc8e81bf12699a69e56fed40c3d90",
 "splash/img/light-1x.png": "92fff8efa59621bf2b218b65a7f64014",
@@ -135,8 +135,8 @@ const RESOURCES = {"main.dart.js_257.part.js": "b372c34ce6b20132579d040c6d61dab0
 "main.dart.js_258.part.js": "ac555fc1f9b82900f869604d865235b4",
 "main.dart.js_206.part.js": "772c4abfb6f3c86c2fd19088818615e8",
 "favicon.png": "37d87985849bc680fe47a9330c3ea67e",
-"index.html": "66400486f33acdaa5df591215b2051b5",
-"/": "66400486f33acdaa5df591215b2051b5",
+"index.html": "3677a7fd65bf3c58976927c7eb2c4f25",
+"/": "3677a7fd65bf3c58976927c7eb2c4f25",
 "main.dart.js_225.part.js": "3e891c601a574b6dd2e4283d80da9992",
 "main.dart.js_190.part.js": "d5ed3a66ae3e4716e436343917399035"};
 // The application shell files that are downloaded before a service worker can
