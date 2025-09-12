@@ -26,7 +26,6 @@ class ActivityUserSummaries extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final summary = room.activitySummary?.summary;
-    final activityAnalytics = room.activitySummary?.analytics;
     if (summary == null) return const SizedBox();
 
     return Padding(
@@ -50,7 +49,6 @@ class ActivityUserSummaries extends StatelessWidget {
           ButtonControlledCarouselView(
             summary: summary,
             controller: controller,
-            analytics: activityAnalytics,
           ),
           // Row(
           //   mainAxisSize: MainAxisSize.min,
@@ -82,17 +80,16 @@ class ActivityUserSummaries extends StatelessWidget {
 class ButtonControlledCarouselView extends StatelessWidget {
   final ActivitySummaryResponseModel summary;
   final ChatController controller;
-  final ActivitySummaryAnalyticsModel? analytics;
   const ButtonControlledCarouselView({
     super.key,
     required this.summary,
     required this.controller,
-    required this.analytics,
   });
 
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
+    final analytics = room.activitySummary?.analytics;
     final availableRoles = room.activityPlan!.roles;
     final assignedRoles = room.assignedRoles ?? {};
     final userSummaries = summary.participants
@@ -110,7 +107,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 230.0,
+          height: 200.0,
           child: ListView(
             shrinkWrap: true,
             controller: controller.carouselController,
@@ -188,7 +185,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                               ),
                               //const SizedBox(width: 8),
                               if (analytics != null &&
-                                  (analytics!.superlatives['vocab']!.contains(
+                                  (analytics.superlatives['vocab']!.contains(
                                     p.participantId,
                                   ))) ...[
                                 const SuperlativeTile(
@@ -196,7 +193,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                 ),
                               ],
                               if (analytics != null &&
-                                  (analytics!.superlatives['grammar']!.contains(
+                                  (analytics.superlatives['grammar']!.contains(
                                     p.participantId,
                                   ))) ...[
                                 const SuperlativeTile(
@@ -204,7 +201,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                 ),
                               ],
                               if (analytics != null &&
-                                  (analytics!.superlatives['xp']!.contains(
+                                  (analytics.superlatives['xp']!.contains(
                                     p.participantId,
                                   ))) ...[
                                 const SuperlativeTile(
