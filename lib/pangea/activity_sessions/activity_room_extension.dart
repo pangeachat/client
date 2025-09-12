@@ -127,7 +127,6 @@ extension ActivityRoomExtension on Room {
     if (activitySummary?.summary != null) {
       return;
     }
-
     await setActivitySummary(
       ActivitySummaryModel(
         requestedAt: DateTime.now(),
@@ -168,6 +167,7 @@ extension ActivityRoomExtension on Room {
 
       if (activitySummary?.analytics == null) {
         analytics.addConstructs(pangeaMessage);
+        analytics.generateSuperlatives();
       }
     }
 
