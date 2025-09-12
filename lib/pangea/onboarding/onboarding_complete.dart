@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding.dart';
 import 'package:fluffychat/pangea/onboarding/onboarding_constants.dart';
+import 'package:flutter/material.dart';
 
 class OnboardingComplete extends StatelessWidget {
   final OnboardingController controller;
@@ -27,7 +25,7 @@ class OnboardingComplete extends StatelessWidget {
               10.0,
             ),
           ),
-          margin: const EdgeInsets.all(12.0),
+          margin: const EdgeInsets.all(8.0),
           padding: isColumnMode
               ? const EdgeInsets.all(48.0)
               : const EdgeInsets.fromLTRB(
@@ -58,7 +56,7 @@ class OnboardingComplete extends StatelessWidget {
                     CachedNetworkImage(
                       imageUrl:
                           "${AppConfig.assetsBaseURL}/${OnboardingConstants.onboardingImageFileName}",
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                     ),
                   ],
                 ),
