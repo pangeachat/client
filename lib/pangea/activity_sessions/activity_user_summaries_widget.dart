@@ -1,4 +1,9 @@
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -7,9 +12,6 @@ import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/symbols.dart';
-import 'package:matrix/matrix.dart';
 
 class ActivityUserSummaries extends StatelessWidget {
   final ChatController controller;
@@ -101,9 +103,9 @@ class ButtonControlledCarouselView extends StatelessWidget {
         )
         .toList();
 
-    debugPrint(
-      "Superlatives: vocab: ${analytics?.superlatives['vocab'].toString()}, grammar: ${analytics?.superlatives['grammar'].toString()}, XP: ${analytics?.superlatives['xp'].toString()}",
-    );
+    // debugPrint(
+    //   "Superlatives: vocab: ${analytics?.superlatives['vocab'].toString()}, grammar: ${analytics?.superlatives['grammar'].toString()}, XP: ${analytics?.superlatives['xp'].toString()}",
+    // );
 
     return Column(
       children: [
