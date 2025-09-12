@@ -4024,7 +4024,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "I can understand and use some familiar everyday expressions and very basic phrases.";
     },
     get$languageLevelA2Desc() {
-      return "I can understand sentences and frequently used expressions related to areas of immediate relevance";
+      return "I can understand sentences and frequently used expressions related to areas of immediate relevance.";
     },
     get$languageLevelB1Desc() {
       return "I can deal with most familiar situations and can produce simple connected text on familiar topics.";
@@ -4563,6 +4563,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_254", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "G+S5eC3QvJ7BJ5YfiDht/n2SLPU=");
+})($__dart_deferred_initializers__, "TO1tS0Ey8Y7+9A82QtoxrLOE4kM=");
 ;
 //# sourceMappingURL=main.dart.js_254.part.js.map
