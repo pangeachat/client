@@ -166,6 +166,7 @@ extension ActivityRoomExtension on Room {
 
       if (activitySummary?.analytics == null) {
         analytics.addConstructs(pangeaMessage);
+        analytics.generateSuperlatives();
       }
     }
 

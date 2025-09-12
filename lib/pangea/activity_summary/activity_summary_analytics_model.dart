@@ -4,10 +4,11 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 
 class ActivitySummaryAnalyticsModel {
   final Map<String, UserConstructAnalytics> constructs = {};
-  // Superlatives: {'vocab': [userId, ...], 'grammar': [userId, ...]}
+  // Superlatives: {'vocab': [userId, ...], 'grammar': [userId, ...]...}
   Map<String, List<String>> superlatives = {
     'vocab': [],
     'grammar': [],
+    'xp': [],
   };
 
   ActivitySummaryAnalyticsModel();
@@ -58,42 +59,54 @@ class ActivitySummaryAnalyticsModel {
     for (final use in uses) {
       user.addUsage(use.identifier);
     }
-
-    // Update superlatives after adding constructs
-    _updateSuperlatives();
   }
 
-  void _updateSuperlatives() {
+  void generateSuperlatives() {
     // Find all user IDs
     final userIds = constructs.keys.toList();
     if (userIds.isEmpty) {
       superlatives['vocab'] = [];
       superlatives['grammar'] = [];
+      superlatives['xp'] = [];
       return;
     }
     int maxVocab = 0;
-    final Map<String, int> vocabCounts = {};
+    int maxGrammar = 0;
+    int maxXp = 0;
+    final Map<String, int> allVocabs = {};
+    final Map<String, int> allGrammars = {};
+    final Map<String, int> allXPs = {};
+
     for (final userId in userIds) {
-      final count =
+      //vocab
+      final vocabCount =
           uniqueConstructCountForUser(userId, ConstructTypeEnum.vocab);
-      vocabCounts[userId] = count;
-      if (count > maxVocab) maxVocab = count;
+      allVocabs[userId] = vocabCount;
+      if (vocabCount > maxVocab) maxVocab = vocabCount;
+
+      //grammar
+      final grammarCount =
+          uniqueConstructCountForUser(userId, ConstructTypeEnum.morph);
+      allGrammars[userId] = grammarCount;
+      if (grammarCount > maxGrammar) maxGrammar = grammarCount;
+
+      //XP
+      final xpCount = totalXPForUser(userId);
+      allXPs[userId] = xpCount;
+      if (xpCount > maxXp) maxXp = xpCount;
     }
-    superlatives['vocab'] = vocabCounts.entries
+    superlatives['vocab'] = allVocabs.entries
         .where((e) => e.value == maxVocab && maxVocab > 0)
         .map((e) => e.key)
         .toList();
 
-    int maxGrammar = 0;
-    final Map<String, int> grammarCounts = {};
-    for (final userId in userIds) {
-      final count =
-          uniqueConstructCountForUser(userId, ConstructTypeEnum.morph);
-      grammarCounts[userId] = count;
-      if (count > maxGrammar) maxGrammar = count;
-    }
-    superlatives['grammar'] = grammarCounts.entries
+    superlatives['grammar'] = allGrammars.entries
         .where((e) => e.value == maxGrammar && maxGrammar > 0)
+        .map((e) => e.key)
+        .toList();
+
+    superlatives['xp'] = allXPs.entries
+        .where((e) => e.value == maxXp && maxXp > 0)
         .map((e) => e.key)
         .toList();
   }
@@ -125,6 +138,8 @@ class ActivitySummaryAnalyticsModel {
           List<String>.from(superlativesJson['vocab'] ?? []);
       model.superlatives['grammar'] =
           List<String>.from(superlativesJson['grammar'] ?? []);
+      model.superlatives['xp'] =
+          List<String>.from(superlativesJson['xp'] ?? []);
     }
 
     return model;

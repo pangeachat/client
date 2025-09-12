@@ -101,6 +101,10 @@ class ButtonControlledCarouselView extends StatelessWidget {
         )
         .toList();
 
+    debugPrint(
+      "Superlatives: vocab: ${analytics?.superlatives['vocab'].toString()}, grammar: ${analytics?.superlatives['grammar'].toString()}, XP: ${analytics?.superlatives['xp'].toString()}",
+    );
+
     return Column(
       children: [
         SizedBox(
@@ -195,6 +199,14 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                   ))) ...[
                                 const SuperlativeTile(
                                   icon: Symbols.toys_and_games,
+                                ),
+                              ],
+                              if (analytics != null &&
+                                  (analytics!.superlatives['xp']!.contains(
+                                    p.participantId,
+                                  ))) ...[
+                                const SuperlativeTile(
+                                  icon: Icons.star,
                                 ),
                               ],
                               if (p.superlatives.isNotEmpty) ...[
