@@ -4545,6 +4545,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$promoCodeInfo() {
       return "Promo codes can be entered on the next page";
     },
+    get$editsComingSoon() {
+      return "The ability to edit cities and activities is coming soon.";
+    },
+    get$editing() {
+      return "Editing";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4563,6 +4569,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_227", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "lw4JR3JqV7qD2xONiLt42MunZAM=");
+})($__dart_deferred_initializers__, "D9cm0ewweZnHZBi8Q7kQtlCCxLM=");
 ;
 //# sourceMappingURL=main.dart.js_227.part.js.map
