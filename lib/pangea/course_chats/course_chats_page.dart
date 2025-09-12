@@ -759,8 +759,11 @@ class CourseChatsController extends State<CourseChats> {
   /// space so that the view can be auto-reloaded in the room subscription
   bool _hasHierarchyUpdate(SyncUpdate update) {
     final joinUpdate = update.rooms?.join;
+    final inviteUpdate = update.rooms?.invite;
     final leaveUpdate = update.rooms?.leave;
-    if (joinUpdate == null && leaveUpdate == null) return false;
+    if (joinUpdate == null && leaveUpdate == null && inviteUpdate == null) {
+      return false;
+    }
 
     final joinedRooms = joinUpdate?.entries
         .where(
@@ -768,6 +771,13 @@ class CourseChatsController extends State<CourseChats> {
         )
         .map((e) => e.value.timeline?.events)
         .whereType<List<MatrixEvent>>();
+
+    final invitedRooms = inviteUpdate?.entries
+        .where(
+          (e) => childrenIds.contains(e.key),
+        )
+        .map((e) => e.value.inviteState)
+        .whereType<List<StrippedStateEvent>>();
 
     final leftRooms = leaveUpdate?.entries
         .where(
@@ -794,7 +804,7 @@ class CourseChatsController extends State<CourseChats> {
         ) ??
         false;
 
-    if (hasJoinedRoom || hasLeftRoom) {
+    if (hasJoinedRoom || hasLeftRoom || (invitedRooms?.isNotEmpty ?? false)) {
       return true;
     }
 
@@ -802,12 +812,14 @@ class CourseChatsController extends State<CourseChats> {
     final leaveTimeline = leaveUpdate?[widget.roomId]?.timeline?.events;
     if (joinTimeline == null && leaveTimeline == null) return false;
 
-    final bool hasJoinUpdate = joinTimeline!.any(
-      (event) => event.type == EventTypes.SpaceChild,
-    );
-    final bool hasLeaveUpdate = leaveTimeline!.any(
-      (event) => event.type == EventTypes.SpaceChild,
-    );
+    final bool hasJoinUpdate = joinTimeline?.any(
+          (event) => event.type == EventTypes.SpaceChild,
+        ) ??
+        false;
+    final bool hasLeaveUpdate = leaveTimeline?.any(
+          (event) => event.type == EventTypes.SpaceChild,
+        ) ??
+        false;
     return hasJoinUpdate || hasLeaveUpdate;
   }
 

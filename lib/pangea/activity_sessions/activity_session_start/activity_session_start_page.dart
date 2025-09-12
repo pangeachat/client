@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/course_plans/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -56,6 +57,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
   bool showInstructions = false;
   String? _selectedRoleId;
 
+  Timer? _pingCooldown;
+
   @override
   void initState() {
     super.initState();
@@ -75,6 +78,12 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     if (oldWidget.activityId != widget.activityId) {
       _loadActivity();
     }
+  }
+
+  @override
+  void dispose() {
+    _pingCooldown?.cancel();
+    super.dispose();
   }
 
   Room? get room => widget.room;
@@ -151,6 +160,11 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     return parent!.numOpenSessions(widget.activityId) > 0;
   }
 
+  bool get canPingParticipants {
+    if (room == null || room?.courseParent == null) return false;
+    return _pingCooldown == null || !_pingCooldown!.isActive;
+  }
+
   void toggleInstructions() {
     setState(() {
       showInstructions = !showInstructions;
@@ -161,6 +175,28 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     if (state == SessionState.confirmedRole) return;
     if (_selectedRoleId == id) return;
     if (mounted) setState(() => _selectedRoleId = id);
+  }
+
+  Future<bool> courseHasEnoughParticipants() async {
+    final roomParticipants = widget.room?.getParticipants() ?? [];
+    final courseParticipants = await parent?.requestParticipants(
+          [Membership.join, Membership.invite, Membership.knock],
+          false,
+          true,
+        ) ??
+        [];
+
+    final botInRoom = roomParticipants.any(
+      (p) => p.id == BotName.byEnvironment,
+    );
+    final botInCourse = courseParticipants.any(
+      (p) => p.id == BotName.byEnvironment,
+    );
+
+    final addBotToAvailableUsers = !botInCourse && !botInRoom;
+    final availableParticipants =
+        courseParticipants.length + (addBotToAvailableUsers ? 1 : 0);
+    return availableParticipants >= (activity?.req.numberOfParticipants ?? 0);
   }
 
   Future<void> _loadActivity() async {
@@ -275,12 +311,49 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
       throw Exception("Activity is not part of a course");
     }
 
-    await room!.courseParent!.sendTextEvent(
-      L10n.of(context).pingParticipantsNotification(
-        room!.client.userID!.localpart ?? room!.client.userID!,
-        room!.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
-      ),
+    if (!canPingParticipants) {
+      throw Exception("Ping is on cooldown");
+    }
+
+    _pingCooldown?.cancel();
+    _pingCooldown = Timer(const Duration(minutes: 1), () {
+      _pingCooldown = null;
+      if (mounted) setState(() {});
+    });
+
+    await room!.courseParent!.sendEvent(
+      {
+        "body": L10n.of(context).pingParticipantsNotification(
+          room!.client.userID!.localpart ?? room!.client.userID!,
+          room!.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+        ),
+        "msgtype": "m.text",
+        "pangea.activity.session_room_id": room!.id,
+      },
     );
+
+    if (mounted) setState(() {});
+  }
+
+  Future<void> playWithBot() async {
+    if (room == null) {
+      throw Exception("Room is null");
+    }
+
+    if (isBotRoomMember) {
+      throw Exception("Bot is a member of the room");
+    }
+
+    final future = room!.client.onRoomState.stream
+        .where(
+          (state) =>
+              state.roomId == room!.id &&
+              state.state.type == PangeaEventTypes.activityRole &&
+              state.state.senderId == BotName.byEnvironment,
+        )
+        .first;
+    room!.invite(BotName.byEnvironment);
+    await future.timeout(const Duration(seconds: 30));
   }
 
   @override
