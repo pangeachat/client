@@ -20,10 +20,8 @@ jobs:
       - run: flutter gen-l10n
       - name: Check formatting
         run: dart format lib/ test/ --set-exit-if-changed
-      # // #Pangea
-      # - name: Check import formatting
-      #  run: dart run import_sorter:main --no-comments --exit-if-changed
-      # // Pangea#
+      - name: Check import formatting
+        run: dart run import_sorter:main --no-comments --exit-if-changed
       - name: Check license compliance
         run: dart run license_checker check-licenses -c licenses.yaml --problematic
       - run: flutter analyze
@@ -48,7 +46,7 @@ jobs:
       - uses: moonrepo/setup-rust@v1
       - name: Add Firebase Messaging
         run: ./scripts/add-firebase-messaging.sh
-      - run: flutter build apk --debug
+      - run: flutter build apk --debug --target-platform android-arm # Pangea change, only build arm to decrease size & time
 
   build_debug_web:
     runs-on: ubuntu-latest
