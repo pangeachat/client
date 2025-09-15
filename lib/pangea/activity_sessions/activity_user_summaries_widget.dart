@@ -9,7 +9,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
@@ -89,7 +88,8 @@ class ButtonControlledCarouselView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
-    final analytics = room.activitySummary?.analytics;
+    final superlatives =
+        room.activitySummary?.analytics?.generateSuperlatives();
     final availableRoles = room.activityPlan!.roles;
     final assignedRoles = room.assignedRoles ?? {};
     final userSummaries = summary.participants
@@ -180,24 +180,24 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                 ),
                               ),
                               //const SizedBox(width: 8),
-                              if (analytics != null &&
-                                  (analytics.superlatives['vocab']!.contains(
+                              if (superlatives != null &&
+                                  (superlatives['vocab']!.contains(
                                     p.participantId,
                                   ))) ...[
                                 const SuperlativeTile(
                                   icon: Symbols.dictionary,
                                 ),
                               ],
-                              if (analytics != null &&
-                                  (analytics.superlatives['grammar']!.contains(
+                              if (superlatives != null &&
+                                  (superlatives['grammar']!.contains(
                                     p.participantId,
                                   ))) ...[
                                 const SuperlativeTile(
                                   icon: Symbols.toys_and_games,
                                 ),
                               ],
-                              if (analytics != null &&
-                                  (analytics.superlatives['xp']!.contains(
+                              if (superlatives != null &&
+                                  (superlatives['xp']!.contains(
                                     p.participantId,
                                   ))) ...[
                                 const SuperlativeTile(

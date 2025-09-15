@@ -4,12 +4,6 @@ import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dar
 
 class ActivitySummaryAnalyticsModel {
   final Map<String, UserConstructAnalytics> constructs = {};
-  // Superlatives: {'vocab': [userId, ...], 'grammar': [userId, ...]...}
-  Map<String, List<String>> superlatives = {
-    'vocab': [],
-    'grammar': [],
-    'xp': [],
-  };
 
   ActivitySummaryAnalyticsModel();
 
@@ -61,14 +55,16 @@ class ActivitySummaryAnalyticsModel {
     }
   }
 
-  void generateSuperlatives() {
+  Map<String, List> generateSuperlatives() {
+    final Map<String, List<String>> superlatives = {
+      'vocab': [],
+      'grammar': [],
+      'xp': [],
+    };
     // Find all user IDs
     final userIds = constructs.keys.toList();
     if (userIds.isEmpty) {
-      superlatives['vocab'] = [];
-      superlatives['grammar'] = [];
-      superlatives['xp'] = [];
-      return;
+      return superlatives;
     }
     int maxVocab = 0;
     int maxGrammar = 0;
@@ -109,14 +105,12 @@ class ActivitySummaryAnalyticsModel {
         .where((e) => e.value == maxXp && maxXp > 0)
         .map((e) => e.key)
         .toList();
+    return superlatives;
   }
 
   factory ActivitySummaryAnalyticsModel.fromJson(Map<String, dynamic> json) {
     final model = ActivitySummaryAnalyticsModel();
-    final constructsJson = json['constructs'] ?? json;
-    final superlativesJson = json['superlatives'] ?? {};
-
-    for (final userEntry in constructsJson.entries) {
+    for (final userEntry in json.entries) {
       final userId = userEntry.key;
       final constructList = userEntry.value as List<dynamic>;
 
@@ -133,24 +127,12 @@ class ActivitySummaryAnalyticsModel {
       model.constructs[userId] = userAnalytics;
     }
 
-    if (superlativesJson is Map) {
-      model.superlatives['vocab'] =
-          List<String>.from(superlativesJson['vocab'] ?? []);
-      model.superlatives['grammar'] =
-          List<String>.from(superlativesJson['grammar'] ?? []);
-      model.superlatives['xp'] =
-          List<String>.from(superlativesJson['xp'] ?? []);
-    }
-
     return model;
   }
 
   Map<String, dynamic> toJson() => {
-        'constructs': {
-          for (final entry in constructs.entries)
-            entry.key: entry.value.toJsonList(),
-        },
-        'superlatives': superlatives,
+        for (final entry in constructs.entries)
+          entry.key: entry.value.toJsonList(),
       };
 }
 
