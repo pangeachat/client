@@ -83,6 +83,10 @@ class ActivityParticipantIndicator extends StatelessWidget {
                               radius: 30.0,
                               backgroundColor:
                                   theme.colorScheme.primaryContainer,
+                              child: const Icon(
+                                Icons.question_mark,
+                                size: 30.0,
+                              ),
                             ),
                       Text(
                         name,
@@ -96,7 +100,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                           fontSize: 12.0,
                           color:
                               (Theme.of(context).brightness == Brightness.light
-                                      ? userId?.localpart?.lightColorAvatar
+                                      ? userId?.localpart?.darkColor
                                       : userId?.localpart?.lightColorText) ??
                                   name.lightColorAvatar,
                         ),

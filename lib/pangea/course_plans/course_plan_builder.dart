@@ -6,7 +6,7 @@ import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
 class CoursePlanBuilder extends StatefulWidget {
   final String? courseId;
   final VoidCallback? onNotFound;
-  final Function(CoursePlanModel course)? onFound;
+  final Function(CoursePlanModel course)? onLoaded;
   final Widget Function(
     BuildContext context,
     CoursePlanController controller,
@@ -17,7 +17,7 @@ class CoursePlanBuilder extends StatefulWidget {
     required this.courseId,
     required this.builder,
     this.onNotFound,
-    this.onFound,
+    this.onLoaded,
   });
 
   @override
@@ -45,12 +45,13 @@ class CoursePlanController extends State<CoursePlanBuilder> {
   }
 
   Future<void> _loadCourse() async {
+    setState(() {
+      loading = false;
+      error = null;
+      course = null;
+    });
+
     if (widget.courseId == null) {
-      setState(() {
-        loading = false;
-        error = null;
-        course = null;
-      });
       return;
     }
 
@@ -61,10 +62,10 @@ class CoursePlanController extends State<CoursePlanBuilder> {
       });
 
       course = await CoursePlansRepo.get(widget.courseId!);
-      course == null
-          ? widget.onNotFound?.call()
-          : widget.onFound?.call(course!);
+
+      widget.onLoaded?.call(course!);
     } catch (e) {
+      widget.onNotFound?.call();
       error = e;
     } finally {
       setState(() {

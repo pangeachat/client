@@ -27,10 +27,11 @@ class SelectedCourseController extends State<SelectedCourse> {
     final client = Matrix.of(context).client;
     Uint8List? avatar;
     Uri? avatarUrl;
-    if (course.imageUrl != null) {
+    final imageUrl = course.imageUrl;
+    if (imageUrl != null) {
       try {
         final Response response = await http.get(
-          Uri.parse(course.imageUrl!),
+          Uri.parse(imageUrl),
           headers: {
             'Authorization':
                 'Bearer ${MatrixState.pangeaController.userController.accessToken}',

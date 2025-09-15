@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class ActivityParticipantList extends StatelessWidget {
-  final Room room;
+  final ActivityPlanModel activity;
+  final Room? room;
+  final Room? course;
   final Function(String)? onTap;
 
   final bool Function(String)? canSelect;
@@ -19,7 +23,9 @@ class ActivityParticipantList extends StatelessWidget {
 
   const ActivityParticipantList({
     super.key,
-    required this.room,
+    required this.activity,
+    this.room,
+    this.course,
     this.onTap,
     this.canSelect,
     this.isSelected,
@@ -32,8 +38,8 @@ class ActivityParticipantList extends StatelessWidget {
       room: room,
       builder: (context, participants) {
         final theme = Theme.of(context);
-        final availableRoles = room.activityPlan!.roles;
-        final assignedRoles = room.assignedRoles ?? {};
+        final availableRoles = activity.roles;
+        final assignedRoles = room?.assignedRoles ?? {};
 
         final remainingMembers = participants.participants.where(
           (p) => !assignedRoles.values.any((r) => r.userId == p.id),
@@ -47,10 +53,24 @@ class ActivityParticipantList extends StatelessWidget {
               spacing: 12.0,
               runSpacing: 12.0,
               children: availableRoles.values.map((availableRole) {
-                final assignedRole = assignedRoles[availableRole.id];
-                final user = participants.participants.firstWhereOrNull(
-                  (u) => u.id == assignedRole?.userId,
-                );
+                final selected =
+                    isSelected != null ? isSelected!(availableRole.id) : false;
+
+                final assignedRole = assignedRoles[availableRole.id] ??
+                    (selected
+                        ? ActivityRoleModel(
+                            id: availableRole.id,
+                            userId: Matrix.of(context).client.userID!,
+                            role: availableRole.name,
+                          )
+                        : null);
+
+                final User? user = participants.participants.firstWhereOrNull(
+                      (u) => u.id == assignedRole?.userId,
+                    ) ??
+                    course?.getParticipants().firstWhereOrNull(
+                          (u) => u.id == assignedRole?.userId,
+                        );
 
                 final selectable =
                     canSelect != null ? canSelect!(availableRole.id) : true;
@@ -64,9 +84,7 @@ class ActivityParticipantList extends StatelessWidget {
                   onTap: onTap != null && selectable
                       ? () => onTap!(availableRole.id)
                       : null,
-                  selected: isSelected != null
-                      ? isSelected!(availableRole.id)
-                      : false,
+                  selected: selected,
                 );
               }).toList(),
             ),
