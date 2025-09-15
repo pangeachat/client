@@ -2557,12 +2557,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$correctionDefaultPrompt() {
       return "\xbfCu\xe1l es el mejor reemplazo?";
     },
-    get$definition() {
-      return "Definici\xf3n";
-    },
-    get$exampleSentence() {
-      return "Ejemplo de frase";
-    },
     get$reportToTeacher() {
       return "\xbfA qui\xe9n desea informar de este mensaje?";
     },
@@ -4555,6 +4549,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriendsToCourse() {
       return "Invite friends to my course";
     },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Subscribe to unlock activity summaries";
+    },
+    get$subscribeToUnlockDefinitions() {
+      return "Subscribe to unlock definitions";
+    },
+    get$subscribeToUnlockTranscriptions() {
+      return "Subscribe to unlock transcriptions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4570,6 +4573,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_194", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "h66RgmiPFjL/Hi9pxPBV1HIkDsk=");
+})($__dart_deferred_initializers__, "pCLxE4vYz5HhXJC5GLDQkWjQizY=");
 ;
 //# sourceMappingURL=main.dart.js_194.part.js.map

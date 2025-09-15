@@ -2556,12 +2556,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$correctionDefaultPrompt() {
       return "What is the best replacement?";
     },
-    get$definition() {
-      return "Definition";
-    },
-    get$exampleSentence() {
-      return "Example Sentence";
-    },
     get$reportToTeacher() {
       return "Who do you want to report this message to?";
     },
@@ -4554,6 +4548,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriendsToCourse() {
       return "Invite friends to my course";
     },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Subscribe to unlock activity summaries";
+    },
+    get$subscribeToUnlockDefinitions() {
+      return "Subscribe to unlock definitions";
+    },
+    get$subscribeToUnlockTranscriptions() {
+      return "Subscribe to unlock transcriptions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4569,6 +4572,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_240", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "IVo4v5h35YE4VBOgtMV+5TQg4jo=");
+})($__dart_deferred_initializers__, "nUDJA4RQLAE1Qvpfh0eKVVlg7YA=");
 ;
 //# sourceMappingURL=main.dart.js_240.part.js.map

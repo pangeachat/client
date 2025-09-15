@@ -2556,12 +2556,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$correctionDefaultPrompt() {
       return "Ph\u01b0\u01a1ng \xe1n thay th\u1ebf t\u1ed1t nh\u1ea5t l\xe0 g\xec?";
     },
-    get$definition() {
-      return "\u0110\u1ecbnh ngh\u0129a";
-    },
-    get$exampleSentence() {
-      return "V\xed d\u1ee5";
-    },
     get$reportToTeacher() {
       return "B\u1ea1n mu\u1ed1n b\xe1o c\xe1o tin nh\u1eafn n\xe0y cho gi\xe1o vi\xean n\xe0o?";
     },
@@ -4554,6 +4548,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$inviteFriendsToCourse() {
       return "Invite friends to my course";
     },
+    get$subscribeToUnlockActivitySummaries() {
+      return "Subscribe to unlock activity summaries";
+    },
+    get$subscribeToUnlockDefinitions() {
+      return "Subscribe to unlock definitions";
+    },
+    get$subscribeToUnlockTranscriptions() {
+      return "Subscribe to unlock transcriptions";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4569,6 +4572,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 ((d, h) => {
   d[h] = d.current;
   d.eventLog.push({p: "main.dart.js_259", e: "endPart", h: h});
-})($__dart_deferred_initializers__, "mdbnfQ38tUViz7mEDfnpAu7nw5I=");
+})($__dart_deferred_initializers__, "o0fCRUCZ+JdaCe6UaITld3tGJXo=");
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map
