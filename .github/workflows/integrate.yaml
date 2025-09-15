@@ -1,9 +1,8 @@
 name: Pull Request Workflow
 
 on:
-  push:
-    branches:
-    - "fix/actions-and-scripts"
+  pull_request:
+  merge_group:
 
 jobs:
   code_tests:
