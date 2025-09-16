@@ -13,7 +13,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
+import 'package:fluffychat/pangea/message_token_text/token_practice_button.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/utils/token_rendering_util.dart';
@@ -44,9 +44,6 @@ class HtmlMessage extends StatelessWidget {
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final ReadingAssistanceMode? readingAssistanceMode;
-
-  final bool Function(PangeaToken)? isHighlighted;
-  final bool Function(PangeaToken)? isSelected;
   final void Function(PangeaToken)? onClick;
   // Pangea#
 
@@ -68,8 +65,6 @@ class HtmlMessage extends StatelessWidget {
     required this.controller,
     this.nextEvent,
     this.prevEvent,
-    this.isHighlighted,
-    this.isSelected,
     this.onClick,
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
@@ -414,12 +409,12 @@ class HtmlMessage extends StatelessWidget {
           int.tryParse(node.attributes['length'] ?? '') ?? 0,
         );
 
-        final selected = token != null && isSelected != null
-            ? isSelected!.call(token)
+        final selected = token != null && overlayController != null
+            ? overlayController!.isTokenSelected(token)
             : false;
 
-        final highlighted = token != null && isHighlighted != null
-            ? isHighlighted!.call(token)
+        final highlighted = token != null && overlayController != null
+            ? overlayController!.isTokenHighlighted(token)
             : false;
 
         final isNew = token != null && newTokens.contains(token.text);
@@ -438,7 +433,7 @@ class HtmlMessage extends StatelessWidget {
               child: Column(
                 children: [
                   if (renderer.showCenterStyling && token != null)
-                    MessageTokenButton(
+                    TokenPracticeButton(
                       token: token,
                       overlayController: overlayController,
                       textStyle: renderer.style(

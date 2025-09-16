@@ -18,7 +18,7 @@ import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
-import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
+import 'package:fluffychat/pangea/message_token_text/token_practice_button.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';

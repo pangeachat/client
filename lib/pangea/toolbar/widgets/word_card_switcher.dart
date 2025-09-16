@@ -14,10 +14,8 @@ class WordCardSwitcher extends StatelessWidget {
       alignment:
           controller.ownMessage ? Alignment.bottomRight : Alignment.bottomLeft,
       duration: FluffyThemes.animationDuration,
-      child: controller.widget.pangeaMessageEvent != null &&
-              controller.widget.overlayController.selectedToken != null
+      child: controller.widget.overlayController.selectedToken != null
           ? ReadingAssistanceContent(
-              pangeaMessageEvent: controller.widget.pangeaMessageEvent!,
               overlayController: controller.widget.overlayController,
             )
           : MessageReactionPicker(

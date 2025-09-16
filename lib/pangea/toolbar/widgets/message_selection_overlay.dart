@@ -127,12 +127,12 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   Future<void> initializeTokensAndMode() async {
     try {
-      if (pangeaMessageEvent?.event.messageType != MessageTypes.Text) {
+      if (pangeaMessageEvent.event.messageType != MessageTypes.Text) {
         return;
       }
 
       RepresentationEvent? repEvent =
-          pangeaMessageEvent?.messageDisplayRepresentation;
+          pangeaMessageEvent.messageDisplayRepresentation;
 
       if (repEvent == null ||
           (repEvent.event == null && repEvent.tokens == null)) {
@@ -153,7 +153,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         e: e,
         s: s,
         data: {
-          "eventID": pangeaMessageEvent?.eventId,
+          "eventID": pangeaMessageEvent.eventId,
         },
       );
     } finally {
@@ -331,15 +331,11 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   /////////////////////////////////////
   /// Getters
   ////////////////////////////////////
-  PangeaMessageEvent? get pangeaMessageEvent => PangeaMessageEvent(
+  PangeaMessageEvent get pangeaMessageEvent => PangeaMessageEvent(
         event: widget._event,
         timeline: widget._timeline,
         ownMessage: widget._event.room.client.userID == widget._event.senderId,
       );
-
-  bool get showToolbarButtons =>
-      pangeaMessageEvent != null &&
-      pangeaMessageEvent!.event.messageType == MessageTypes.Text;
 
   bool get hideWordCardContent =>
       readingAssistanceMode == ReadingAssistanceMode.practiceMode;
@@ -372,7 +368,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   /// you have to complete one of the mode mini-games to unlock translation
   bool get isTranslationUnlocked =>
-      pangeaMessageEvent?.ownMessage == true ||
+      pangeaMessageEvent.ownMessage == true ||
       !messageInUserL2 ||
       isEmojiDone ||
       isMeaningDone ||
@@ -383,34 +379,29 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       isEmojiDone && isMeaningDone && isListeningDone && isMorphDone;
 
   PracticeSelection? get practiceSelection =>
-      pangeaMessageEvent?.messageDisplayRepresentation?.tokens != null
+      pangeaMessageEvent.messageDisplayRepresentation?.tokens != null
           ? PracticeSelectionRepo.get(
-              pangeaMessageEvent!.messageDisplayLangCode,
-              pangeaMessageEvent!.messageDisplayRepresentation!.tokens!,
+              pangeaMessageEvent.messageDisplayLangCode,
+              pangeaMessageEvent.messageDisplayRepresentation!.tokens!,
             )
           : null;
 
   bool get messageInUserL2 =>
-      pangeaMessageEvent?.messageDisplayLangCode.split("-")[0] ==
+      pangeaMessageEvent.messageDisplayLangCode.split("-")[0] ==
       MatrixState.pangeaController.languageController.userL2?.langCodeShort;
 
   PangeaToken? get selectedToken {
-    if (pangeaMessageEvent?.isAudioMessage == true) {
-      final stt = pangeaMessageEvent!.getSpeechToTextLocal();
+    if (pangeaMessageEvent.isAudioMessage == true) {
+      final stt = pangeaMessageEvent.getSpeechToTextLocal();
       if (stt == null || stt.transcript.sttTokens.isEmpty) return null;
       return stt.transcript.sttTokens
           .firstWhereOrNull((t) => isTokenSelected(t.token))
           ?.token;
     }
 
-    return pangeaMessageEvent?.messageDisplayRepresentation?.tokens
+    return pangeaMessageEvent.messageDisplayRepresentation?.tokens
         ?.firstWhereOrNull(isTokenSelected);
   }
-
-  /// Whether the overlay is currently displaying a selection
-  bool get isSelection => _selectedSpan != null || _highlightedTokens != null;
-
-  PangeaTokenText? get selectedSpan => _selectedSpan;
 
   bool get showingExtraContent =>
       (showTranslation && translation != null) ||
@@ -424,10 +415,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     if (event.messageType == MessageTypes.Text) {
-      return pangeaMessageEvent != null &&
-          pangeaMessageEvent!.messageDisplayLangCode.split("-").first ==
-              MatrixState
-                  .pangeaController.languageController.userL2!.langCodeShort;
+      return pangeaMessageEvent.messageDisplayLangCode.split("-").first ==
+          MatrixState.pangeaController.languageController.userL2!.langCodeShort;
     }
 
     return event.messageType == MessageTypes.Audio;
@@ -459,18 +448,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
 
   Future<RepresentationEvent?> _fetchNewRepEvent() async {
     final RepresentationEvent? repEvent =
-        pangeaMessageEvent?.messageDisplayRepresentation;
+        pangeaMessageEvent.messageDisplayRepresentation;
 
     if (repEvent != null) return repEvent;
-    final eventID =
-        await pangeaMessageEvent?.representationByDetectedLanguage();
+    final eventID = await pangeaMessageEvent.representationByDetectedLanguage();
 
     if (eventID == null) return null;
     final event = await widget._event.room.getEventById(eventID);
     if (event == null) return null;
     return RepresentationEvent(
-      timeline: pangeaMessageEvent!.timeline,
-      parentMessageEvent: pangeaMessageEvent!.event,
+      timeline: pangeaMessageEvent.timeline,
+      parentMessageEvent: pangeaMessageEvent.event,
       event: event,
     );
   }
@@ -493,6 +481,13 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     setState(() {});
   }
 
+  PracticeTarget? practiceTargetForToken(PangeaToken token) {
+    if (toolbarMode.associatedActivityType == null) return null;
+    return practiceSelection
+        ?.activities(toolbarMode.associatedActivityType!)
+        .firstWhereOrNull((a) => a.tokens.contains(token));
+  }
+
   void onClickOverlayMessageToken(
     PangeaToken token,
   ) {
@@ -502,17 +497,16 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
 
     /// we don't want to associate the audio with the text in this mode
-    if (pangeaMessageEvent?.messageDisplayLangCode != null &&
-            practiceSelection?.hasActiveActivityByToken(
-                  ActivityTypeEnum.wordFocusListening,
-                  token,
-                ) ==
-                false ||
+    if (practiceSelection?.hasActiveActivityByToken(
+              ActivityTypeEnum.wordFocusListening,
+              token,
+            ) ==
+            false ||
         !hideWordCardContent) {
       TtsController.tryToSpeak(
         token.text.content,
         targetID: null,
-        langCode: pangeaMessageEvent!.messageDisplayLangCode,
+        langCode: pangeaMessageEvent.messageDisplayLangCode,
       );
     }
 
@@ -549,13 +543,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     }
   }
 
-  PracticeTarget? practiceTargetForToken(PangeaToken token) {
-    if (toolbarMode.associatedActivityType == null) return null;
-    return practiceSelection
-        ?.activities(toolbarMode.associatedActivityType!)
-        .firstWhereOrNull((a) => a.tokens.contains(token));
-  }
-
   /// Whether the given token is currently selected or highlighted
   bool isTokenSelected(PangeaToken token) {
     final isSelected = _selectedSpan?.offset == token.text.offset &&
@@ -564,7 +551,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   }
 
   bool isNewToken(PangeaToken token) =>
-      TokensUtil.isNewToken(token, pangeaMessageEvent!);
+      TokensUtil.isNewToken(token, pangeaMessageEvent);
 
   bool isTokenHighlighted(PangeaToken token) {
     if (_highlightedTokens == null) return false;
@@ -647,7 +634,6 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       event: widget._event,
       nextEvent: widget._nextEvent,
       prevEvent: widget._prevEvent,
-      pangeaMessageEvent: pangeaMessageEvent,
       initialSelectedToken: widget._initialSelectedToken,
     );
   }

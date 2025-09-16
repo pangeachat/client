@@ -302,7 +302,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   Future<void> _playAudio() async {
     final playerID =
-        "${widget.overlayController.pangeaMessageEvent?.eventId}_button";
+        "${widget.overlayController.pangeaMessageEvent.eventId}_button";
 
     if (matrix?.audioPlayer != null &&
         matrix?.voiceMessageEventId.value == playerID) {
@@ -319,7 +319,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     matrix?.audioPlayer?.dispose();
     matrix?.audioPlayer = AudioPlayer();
     matrix?.voiceMessageEventId.value =
-        "${widget.overlayController.pangeaMessageEvent?.eventId}_button";
+        "${widget.overlayController.pangeaMessageEvent.eventId}_button";
 
     _onPlayerStateChanged =
         matrix?.audioPlayer?.playerStateStream.listen((state) {
