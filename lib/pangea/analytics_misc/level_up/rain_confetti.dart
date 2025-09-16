@@ -1,17 +1,19 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-
 import 'package:confetti/confetti.dart';
-
 import 'package:fluffychat/config/app_config.dart';
+import 'package:flutter/material.dart';
 
 OverlayEntry? _confettiEntry;
 ConfettiController? _blastController;
 ConfettiController? _rainController;
 
-void rainConfetti(BuildContext context) {
-  if (_confettiEntry != null) return; // Prevent duplicates
+void rainConfetti(BuildContext context, bool shouldBlast) {
+  debugPrint("Rain confetti activated!");
+  // if (_confettiEntry != null) {
+  //   debugPrint("Confetti entry wasn't null, returning to prevent duplicates");
+  //   return; // Prevent duplicates
+  // }
   int numParticles = 2;
 
   _blastController = ConfettiController(duration: const Duration(seconds: 1));
@@ -22,7 +24,9 @@ void rainConfetti(BuildContext context) {
     }
   });
 
-  _blastController!.play();
+  if (shouldBlast) {
+    _blastController!.play();
+  }
   _rainController!.play();
 
   final screenWidth = MediaQuery.of(context).size.width;

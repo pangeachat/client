@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:material_symbols_icons/symbols.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -11,6 +6,9 @@ import 'package:fluffychat/pangea/activity_sessions/activity_participant_indicat
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_response_model.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart';
 
 class ActivityUserSummaries extends StatelessWidget {
   final ChatController controller;
@@ -120,10 +118,12 @@ class ButtonControlledCarouselView extends StatelessWidget {
                 margin: const EdgeInsets.only(right: 5.0),
                 padding: const EdgeInsets.all(12.0),
                 decoration: ShapeDecoration(
+                  color: AppConfig.goldLight.withAlpha(100),
                   shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                      width: 0.10,
-                      color: Theme.of(context).colorScheme.outline,
+                    side: const BorderSide(
+                      width: 0.20,
+                      color: AppConfig
+                          .gold, //Theme.of(context).colorScheme.outline,
                     ),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -175,7 +175,6 @@ class ButtonControlledCarouselView extends StatelessWidget {
                               Text(
                                 p.cefrLevel,
                                 style: const TextStyle(
-                                  color: AppConfig.yellowDark,
                                   fontSize: 12.0,
                                 ),
                               ),
@@ -264,12 +263,11 @@ class SuperlativeTile extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(icon, size: 14, color: AppConfig.gold),
+        Icon(icon, size: 14, color: Theme.of(context).colorScheme.onSurface),
         const SizedBox(width: 2),
         const Text(
           "1st",
           style: TextStyle(
-            color: AppConfig.gold,
             fontSize: 12.0,
           ),
         ),

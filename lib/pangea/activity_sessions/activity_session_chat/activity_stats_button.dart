@@ -1,15 +1,13 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
-import 'package:material_symbols_icons/symbols.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:material_symbols_icons/symbols.dart';
 
 class ActivityStatsButton extends StatefulWidget {
   final ChatController controller;
@@ -71,7 +69,7 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 350,
+      width: 300,
       height: 55,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: InkWell(
@@ -80,11 +78,17 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
           !widget.controller.showActivityDropdown,
         ),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: ShapeDecoration(
             color: AppConfig.goldLight.withAlpha(100),
-            borderRadius: BorderRadius.circular(20),
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(
+                width: 0.20,
+                color: AppConfig.gold, //Theme.of(context).colorScheme.outline,
+              ),
+              borderRadius: BorderRadius.circular(12),
+            ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
