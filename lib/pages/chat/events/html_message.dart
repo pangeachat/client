@@ -253,10 +253,6 @@ class HtmlMessage extends StatelessWidget {
       position = substringIndex;
     }
 
-    for (int i = 0; i < result.length; i++) {
-      if (result[i] == '\n') result[i] = '<br>';
-    }
-
     if (pangeaMessageEvent?.textDirection == TextDirection.rtl) {
       for (int i = 0; i < result.length; i++) {
         final tag = result[i];
@@ -274,6 +270,8 @@ class HtmlMessage extends StatelessWidget {
       final inverted = _invertTags(result);
       return inverted.join().trim();
     }
+
+    debugPrint("HTML after adding token tags: $result");
     return result.join().trim();
   }
 
