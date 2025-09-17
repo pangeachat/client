@@ -208,8 +208,6 @@ class CourseSettings extends StatelessWidget {
                                         fontSizeSmall:
                                             isColumnMode ? 12.0 : 8.0,
                                         iconSize: isColumnMode ? 12.0 : 8.0,
-                                        openSessions:
-                                            room.numOpenSessions(activityId),
                                       ),
                                       if (complete)
                                         Container(

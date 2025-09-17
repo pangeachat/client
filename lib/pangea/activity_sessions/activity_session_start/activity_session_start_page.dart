@@ -11,7 +11,7 @@ import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/course_plans/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
@@ -47,7 +47,8 @@ class ActivitySessionStartPage extends StatefulWidget {
       ActivitySessionStartController();
 }
 
-class ActivitySessionStartController extends State<ActivitySessionStartPage> {
+class ActivitySessionStartController extends State<ActivitySessionStartPage>
+    with ActivitySummariesProvider {
   ActivityPlanModel? activity;
   CoursePlanModel? course;
 
@@ -63,6 +64,12 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
   void initState() {
     super.initState();
     _loadActivity();
+
+    if (parent != null) {
+      loadRoomSummaries(
+        parent!.spaceChildren.map((c) => c.roomId).whereType<String>().toList(),
+      );
+    }
   }
 
   @override
@@ -154,10 +161,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
   }
 
   bool get canJoinExistingSession {
-    // if the activity session already exists, if there's no parent course, or if the parent course doesn't
-    // have the event where existing sessions are stored, joining an existing session is not possible
-    if (room != null || parent?.allCourseUserStates == null) return false;
-    return parent!.numOpenSessions(widget.activityId) > 0;
+    if (room != null) return false;
+    return numOpenSessions(widget.activityId) > 0;
   }
 
   bool get canPingParticipants {
@@ -232,27 +237,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
     if (room != null) {
       await showFutureLoadingDialog(
         context: context,
-        future: () async {
-          await room!.joinActivity(
-            activity!.roles[_selectedRoleId!]!,
-          );
-
-          try {
-            await parent!.joinCourseActivity(
-              widget.activityId,
-              room!.id,
-            );
-          } catch (e, s) {
-            ErrorHandler.logError(
-              e: e,
-              s: s,
-              data: {
-                "activityId": widget.activityId,
-                "parentId": widget.parentId,
-              },
-            );
-          }
-        },
+        future: () => room!.joinActivity(
+          activity!.roles[_selectedRoleId!]!,
+        ),
       );
     } else {
       final resp = await showFutureLoadingDialog(
@@ -274,7 +261,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage> {
       throw Exception("No existing session to join");
     }
 
-    final sessionIds = parent!.openSessions(widget.activityId);
+    final sessionIds = openSessions(widget.activityId);
     String? joinedSessionId;
     for (final sessionId in sessionIds) {
       try {
