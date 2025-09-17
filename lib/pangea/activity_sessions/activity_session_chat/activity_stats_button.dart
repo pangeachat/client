@@ -1,13 +1,15 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 class ActivityStatsButton extends StatefulWidget {
   final ChatController controller;
