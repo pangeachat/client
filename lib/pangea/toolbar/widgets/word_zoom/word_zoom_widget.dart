@@ -273,7 +273,6 @@ class WordZoomWidget extends StatelessWidget {
                 overlayColor: overlayColor,
                 overlayController: overlayController,
                 transformTargetId: transformTargetId,
-                //cardKey: cardKey,
               )
             : const SizedBox.shrink(),
       ],

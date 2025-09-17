@@ -13,11 +13,13 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
+import 'package:fluffychat/pangea/message_token_text/token_emoji_button.dart';
 import 'package:fluffychat/pangea/message_token_text/token_practice_button.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/utils/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -271,7 +273,6 @@ class HtmlMessage extends StatelessWidget {
       return inverted.join().trim();
     }
 
-    debugPrint("HTML after adding token tags: $result");
     return result.join().trim();
   }
 
@@ -432,6 +433,15 @@ class HtmlMessage extends StatelessWidget {
                       : PlaceholderAlignment.middle,
               child: Column(
                 children: [
+                  if (token != null &&
+                      overlayController?.selectedMode == SelectMode.emoji)
+                    TokenEmojiButton(
+                      token: token,
+                      eventId: event.eventId,
+                      targetId: overlayController!.tokenEmojiPopupKey(token),
+                      onSelect: () =>
+                          overlayController!.showTokenEmojiPopup(token),
+                    ),
                   if (renderer.showCenterStyling && token != null)
                     TokenPracticeButton(
                       token: token,
