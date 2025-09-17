@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -72,7 +73,7 @@ class PangeaInvitationSelectionView extends StatelessWidget {
         ],
       ),
       onPressed: () => context.go(
-        room.isSpace ? "/rooms?spaceId=${room.id}" : "/rooms/${room.id}",
+        room.isSpace ? "/rooms/spaces/${room.id}/details" : "/rooms/${room.id}",
       ),
     );
 
@@ -130,7 +131,16 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                     spacing: 12.0,
                     children: controller.availableFilters.map((filter) {
                       return FilterChip(
-                        label: Text(controller.filterLabel(filter)),
+                        label: filter == InvitationFilter.participants
+                            ? Row(
+                                spacing: 4.0,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.group, size: 16.0),
+                                  Text(controller.filterLabel(filter)),
+                                ],
+                              )
+                            : Text(controller.filterLabel(filter)),
                         onSelected: (_) => controller.setFilter(filter),
                         selected: controller.filter == filter,
                       );
@@ -176,13 +186,17 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                               InvitationFilter.space &&
                                           controller.spaceParent != null
                                       ? ListTile(
-                                          leading: Avatar(
-                                            mxContent:
-                                                controller.spaceParent!.avatar,
-                                            name: controller.spaceParent!
-                                                .getLocalizedDisplayname(),
-                                            borderRadius: BorderRadius.circular(
-                                              AppConfig.borderRadius / 4,
+                                          leading: ClipPath(
+                                            clipper: MapClipper(),
+                                            child: Avatar(
+                                              mxContent: controller
+                                                  .spaceParent!.avatar,
+                                              name: controller.spaceParent!
+                                                  .getLocalizedDisplayname(),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                AppConfig.borderRadius / 4,
+                                              ),
                                             ),
                                           ),
                                           title: Text(
@@ -373,11 +387,20 @@ class _InviteContactListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
+    final theme = Theme.of(context);
 
     final participant = controller.participants?.firstWhereOrNull(
       (p) => p.id == profile.userId,
     );
     final membership = participant?.membership;
+
+    final String? permissionBatch = participant == null
+        ? null
+        : participant.powerLevel >= 100
+            ? L10n.of(context).admin
+            : participant.powerLevel >= 50
+                ? L10n.of(context).moderator
+                : null;
 
     return ListTile(
       onTap: participant != null
@@ -421,21 +444,45 @@ class _InviteContactListTile extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
               margin: const EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondaryContainer,
+                color: theme.colorScheme.secondaryContainer,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
                 controller.membershipCopy(membership)!,
-                style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                      color: Theme.of(context).colorScheme.onSecondaryContainer,
-                    ),
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: theme.colorScheme.onSecondaryContainer,
+                ),
               ),
             )
-          : TextButton.icon(
-              onPressed: isMember ? null : onTap,
-              label: Text(isMember ? l10n.participant : l10n.invite),
-              icon: Icon(isMember ? Icons.check : Icons.add),
-            ),
+          : permissionBatch != null
+              ? Container(
+                  margin: const EdgeInsets.only(right: 12.0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
+                  decoration: BoxDecoration(
+                    color: participant!.powerLevel >= 100
+                        ? theme.colorScheme.tertiary
+                        : theme.colorScheme.tertiaryContainer,
+                    borderRadius: BorderRadius.circular(
+                      AppConfig.borderRadius,
+                    ),
+                  ),
+                  child: Text(
+                    permissionBatch,
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: participant.powerLevel >= 100
+                          ? theme.colorScheme.onTertiary
+                          : theme.colorScheme.onTertiaryContainer,
+                    ),
+                  ),
+                )
+              : TextButton.icon(
+                  onPressed: isMember ? null : onTap,
+                  label: Text(isMember ? l10n.participant : l10n.invite),
+                  icon: Icon(isMember ? Icons.check : Icons.add),
+                ),
     );
   }
 }

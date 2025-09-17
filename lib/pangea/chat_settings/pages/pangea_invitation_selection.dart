@@ -17,11 +17,11 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum InvitationFilter {
+  participants,
   space,
   contacts,
   knocking,
   invited,
-  participants,
   public;
 
   static InvitationFilter? fromString(String value) {
@@ -79,7 +79,7 @@ class PangeaInvitationSelectionController
     extends State<PangeaInvitationSelection> {
   TextEditingController controller = TextEditingController();
 
-  bool loading = true;
+  bool loading = false;
 
   List<Profile> foundProfiles = [];
   Timer? coolDown;
@@ -89,6 +89,14 @@ class PangeaInvitationSelectionController
   @override
   void initState() {
     super.initState();
+
+    _room?.requestParticipants(
+      [Membership.join, Membership.invite, Membership.knock],
+      false,
+      true,
+    ).then((_) {
+      if (mounted) setState(() {});
+    });
 
     if (widget.initialFilter != null &&
         availableFilters.contains(widget.initialFilter)) {
@@ -100,36 +108,8 @@ class PangeaInvitationSelectionController
     }
 
     if (filter == InvitationFilter.public) {
-      searchUser(context, '');
+      searchUser(context, controller.text);
     }
-
-    _room?.requestParticipants(
-      [
-        Membership.join,
-        Membership.invite,
-        Membership.knock,
-      ],
-      false,
-      true,
-    ).then((_) {
-      if (mounted) {
-        setState(() {
-          loading = false;
-        });
-      }
-    });
-
-    spaceParent?.requestParticipants(
-      [
-        Membership.join,
-        Membership.invite,
-        Membership.knock,
-      ],
-      false,
-      true,
-    ).then((_) {
-      if (mounted) setState(() {});
-    });
 
     controller.addListener(() {
       setState(() {});
@@ -155,7 +135,7 @@ class PangeaInvitationSelectionController
       case InvitationFilter.public:
         return l10n.public;
       case InvitationFilter.participants:
-        return l10n.classRoster;
+        return l10n.participants;
     }
   }
 
@@ -248,7 +228,7 @@ class PangeaInvitationSelectionController
   void setFilter(InvitationFilter newFilter) {
     if (filter == newFilter) return;
     if (newFilter == InvitationFilter.public) {
-      searchUser(context, '');
+      searchUser(context, controller.text);
     }
     setState(() => filter = newFilter);
   }
@@ -288,6 +268,9 @@ class PangeaInvitationSelectionController
         .toList();
 
     contacts.sort(_sortUsers);
+    if (_room?.isSpace ?? false) {
+      contacts.removeWhere((u) => u.id == BotName.byEnvironment);
+    }
     return contacts;
   }
 
@@ -361,8 +344,14 @@ class PangeaInvitationSelectionController
     } finally {
       setState(() => loading = false);
     }
+
+    final results = response.results;
+    if (_room?.isSpace ?? false) {
+      results.removeWhere((profile) => profile.userId == BotName.byEnvironment);
+    }
+
     setState(() {
-      foundProfiles = List<Profile>.from(response.results);
+      foundProfiles = List<Profile>.from(results);
       if (text.isValidMatrixId &&
           foundProfiles.indexWhere((profile) => text == profile.userId) == -1) {
         setState(
@@ -379,6 +368,7 @@ class PangeaInvitationSelectionController
                 [Membership.join, Membership.invite].contains(user.membership),
           )
           .toList();
+
       foundProfiles.removeWhere(
         (profile) =>
             participants?.indexWhere((u) => u.id == profile.userId) != -1 &&

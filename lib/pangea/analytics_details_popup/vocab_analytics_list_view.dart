@@ -1,10 +1,13 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/analytics_details_popup.dart';
 import 'package:fluffychat/pangea/analytics_details_popup/vocab_analytics_list_tile.dart';
+import 'package:fluffychat/pangea/analytics_downloads/analytics_download_button.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
@@ -15,7 +18,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Displays vocab analytics, sorted into categories
 /// (flowers, greens, and seeds) by points
 class VocabAnalyticsListView extends StatelessWidget {
-  final AnalyticsPopupWrapperState controller;
+  final ConstructAnalyticsViewState controller;
 
   const VocabAnalyticsListView({
     super.key,
@@ -79,11 +82,12 @@ class VocabAnalyticsListView extends StatelessWidget {
       ),
     );
 
+    if (kIsWeb) {
+      filters.add(const DownloadAnalyticsButton());
+    }
+
     return Column(
       children: [
-        const InstructionsInlineTooltip(
-          instructionsEnum: InstructionsEnum.analyticsVocabList,
-        ),
         AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
@@ -123,7 +127,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                     )
                   : Row(
                       spacing: FluffyThemes.isColumnMode(context) ? 16.0 : 4.0,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       key: const ValueKey('filters'),
                       children: filters,
                     ),
@@ -131,21 +135,40 @@ class VocabAnalyticsListView extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 100.0,
-              mainAxisExtent: 100.0,
-              crossAxisSpacing: 8.0,
-              mainAxisSpacing: 8.0,
-            ),
-            itemCount: _filteredVocab.length,
-            itemBuilder: (context, index) {
-              final vocabItem = _filteredVocab[index];
-              return VocabAnalyticsListTile(
-                onTap: () => controller.setConstructZoom(vocabItem.id),
-                constructUse: vocabItem,
-              );
-            },
+          child: CustomScrollView(
+            key: const PageStorageKey("vocab-analytics-list-view-page-key"),
+            slivers: [
+              // Full-width tooltip
+              const SliverToBoxAdapter(
+                child: InstructionsInlineTooltip(
+                  instructionsEnum: InstructionsEnum.analyticsVocabList,
+                ),
+              ),
+
+              // Grid of vocab tiles
+              SliverGrid(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 100.0,
+                  mainAxisExtent: 100.0,
+                  crossAxisSpacing: 8.0,
+                  mainAxisSpacing: 8.0,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final vocabItem = _filteredVocab[index];
+                    return VocabAnalyticsListTile(
+                      onTap: () => context.go(
+                        "/rooms/analytics/${vocabItem.id.type.string}/${vocabItem.id.string}",
+                      ),
+                      constructUse: vocabItem,
+                      emoji: vocabItem.id.userSetEmoji.firstOrNull ??
+                          vocabItem.id.getLemmaInfoCached()?.emoji.firstOrNull,
+                    );
+                  },
+                  childCount: _filteredVocab.length,
+                ),
+              ),
+            ],
           ),
         ),
       ],

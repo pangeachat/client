@@ -6,16 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
-import 'package:fluffychat/pangea/chat_settings/pages/pangea_chat_details.dart';
-import 'package:fluffychat/pangea/chat_settings/utils/download_chat.dart';
-import 'package:fluffychat/pangea/chat_settings/utils/download_file.dart';
+import 'package:fluffychat/pangea/chat_settings/pages/pangea_room_details.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/download/download_room_extension.dart';
+import 'package:fluffychat/pangea/download/download_type_enum.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -32,11 +33,17 @@ enum AliasActions { copy, delete, setCanonical }
 class ChatDetails extends StatefulWidget {
   final String roomId;
   final Widget? embeddedCloseButton;
+  // #Pangea
+  final String? activeTab;
+  // Pangea#
 
   const ChatDetails({
     super.key,
     required this.roomId,
     this.embeddedCloseButton,
+    // #Pangea
+    this.activeTab,
+    // Pangea#
   });
 
   @override
@@ -211,7 +218,7 @@ class ChatDetailsController extends State<ChatDetails> {
 
   @override
   // #Pangea
-  Widget build(BuildContext context) => PangeaChatDetailsView(this);
+  Widget build(BuildContext context) => PangeaRoomDetailsView(this);
   // Widget build(BuildContext context) => ChatDetailsView(this);
   // Pangea#
 
@@ -240,7 +247,26 @@ class ChatDetailsController extends State<ChatDetails> {
       ],
     );
     if (type == null) return;
-    downloadChat(room, type, context);
+
+    try {
+      await room.download(type, context);
+    } on EmptyChatException {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            L10n.of(context).emptyChatDownloadWarning,
+          ),
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            "${L10n.of(context).oopsSomethingWentWrong} ${L10n.of(context).errorPleaseRefresh}",
+          ),
+        ),
+      );
+    }
   }
 
   Future<void> setBotOptions(BotOptionsModel botOptions) async {
@@ -314,11 +340,14 @@ class ChatDetailsController extends State<ChatDetails> {
     }
   }
 
-  Future<void> addSubspace() async {
+  Future<void> addGroupChat() async {
+    final activeSpace = Matrix.of(context).client.getRoomById(roomId!);
+    if (activeSpace == null || !activeSpace.isSpace) return;
+
     final names = await showTextInputDialog(
       context: context,
-      title: L10n.of(context).createNewSpace,
-      hintText: L10n.of(context).spaceName,
+      title: L10n.of(context).createGroup,
+      hintText: L10n.of(context).groupName,
       minLines: 1,
       maxLines: 1,
       maxLength: 64,
@@ -332,33 +361,48 @@ class ChatDetailsController extends State<ChatDetails> {
       cancelLabel: L10n.of(context).cancel,
     );
     if (names == null) return;
-    final client = Matrix.of(context).client;
-    await showFutureLoadingDialog(
+
+    final resp = await showFutureLoadingDialog<String>(
       context: context,
       future: () async {
-        final activeSpace = client.getRoomById(roomId!)!;
-        await activeSpace.postLoad();
-
-        final resp = await client.createRoom(
-          name: names,
-          visibility: RoomDefaults.spaceChildVisibility,
-          creationContent: {'type': 'm.space'},
-          initialState: [
-            RoomDefaults.defaultSpacePowerLevels(client.userID!),
-            await client.pangeaJoinRules(
-              'knock_restricted',
-              allow: [
-                {
-                  "type": "m.room_membership",
-                  "room_id": roomId!,
-                }
+        final newRoomId = await Matrix.of(context).client.createGroupChat(
+              visibility: sdk.Visibility.private,
+              groupName: names,
+              initialState: [
+                RoomDefaults.defaultPowerLevels(
+                  Matrix.of(context).client.userID!,
+                ),
+                await Matrix.of(context).client.pangeaJoinRules(
+                      'knock_restricted',
+                      allow: roomId != null
+                          ? [
+                              {
+                                "type": "m.room_membership",
+                                "room_id": roomId,
+                              }
+                            ]
+                          : null,
+                    ),
               ],
-            ),
-          ],
-        );
-        await activeSpace.addToSpace(resp);
+              enableEncryption: false,
+            );
+        final client = Matrix.of(context).client;
+        Room? room = client.getRoomById(newRoomId);
+        if (room == null) {
+          await client.waitForRoomInSync(newRoomId);
+          room = client.getRoomById(newRoomId);
+        }
+        if (room == null) newRoomId;
+        await activeSpace.addToSpace(room!.id);
+        if (room.spaceParents.isEmpty) {
+          await client.waitForRoomInSync(newRoomId);
+        }
+        return newRoomId;
       },
     );
+
+    if (resp.isError || resp.result == null || !mounted) return;
+    context.go('/rooms/${resp.result}/invite');
   }
   // Pangea#
 }

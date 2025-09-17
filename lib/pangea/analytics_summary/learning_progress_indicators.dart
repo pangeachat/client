@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
@@ -11,6 +13,7 @@ import 'package:fluffychat/pangea/analytics_summary/learning_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicator_button.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicator.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -57,8 +60,9 @@ class LearningProgressIndicatorsState
         .listen(updateData);
 
     // rebuild when target language changes
-    _languageSubscription =
-        MatrixState.pangeaController.userController.stateStream.listen((_) {
+    _languageSubscription = MatrixState
+        .pangeaController.userController.languageStream.stream
+        .listen((_) {
       if (mounted) setState(() {});
     });
   }
@@ -80,9 +84,9 @@ class LearningProgressIndicatorsState
   int uniqueLemmas(ProgressIndicatorEnum indicator) {
     switch (indicator) {
       case ProgressIndicatorEnum.morphsUsed:
-        return _constructsModel.grammarLemmas;
+        return _constructsModel.numConstructs(ConstructTypeEnum.morph);
       case ProgressIndicatorEnum.wordsUsed:
-        return _constructsModel.vocabLemmas;
+        return _constructsModel.numConstructs(ConstructTypeEnum.vocab);
       default:
         return 0;
     }
@@ -98,6 +102,8 @@ class LearningProgressIndicatorsState
     final userL1 = MatrixState.pangeaController.languageController.userL1;
     final userL2 = MatrixState.pangeaController.languageController.userL2;
 
+    final isColumnMode = FluffyThemes.isColumnMode(context);
+
     return Row(
       children: [
         Expanded(
@@ -110,24 +116,57 @@ class LearningProgressIndicatorsState
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Row(
-                      spacing: 16.0,
-                      children: ConstructTypeEnum.values
-                          .map(
-                            (c) => HoverButton(
-                              selected: widget.selected == c.indicator,
-                              onPressed: () {
-                                context.go(
-                                  "/rooms/analytics?mode=${c.string}",
-                                );
-                              },
-                              child: ProgressIndicatorBadge(
-                                indicator: c.indicator,
-                                loading: _loading,
-                                points: uniqueLemmas(c.indicator),
-                              ),
+                      spacing: isColumnMode ? 16.0 : 4.0,
+                      children: [
+                        ...ConstructTypeEnum.values.map(
+                          (c) => HoverButton(
+                            selected: widget.selected == c.indicator,
+                            onPressed: () {
+                              context.go(
+                                "/rooms/analytics/${c.string}",
+                              );
+                            },
+                            child: ProgressIndicatorBadge(
+                              indicator: c.indicator,
+                              loading: _loading,
+                              points: uniqueLemmas(c.indicator),
                             ),
-                          )
-                          .toList(),
+                          ),
+                        ),
+                        HoverButton(
+                          selected: widget.selected ==
+                              ProgressIndicatorEnum.activities,
+                          onPressed: () {
+                            context.go(
+                              "/rooms/analytics/activities",
+                            );
+                          },
+                          child: Tooltip(
+                            message: ProgressIndicatorEnum.activities
+                                .tooltip(context),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(
+                                  size: 18,
+                                  Icons.radar,
+                                  color: Theme.of(context).colorScheme.primary,
+                                  weight: 1000,
+                                ),
+                                const SizedBox(width: 6.0),
+                                AnimatedFloatingNumber(
+                                  number: Matrix.of(context)
+                                          .client
+                                          .analyticsRoomLocal()
+                                          ?.activityRoomIds
+                                          .length ??
+                                      0,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   HoverButton(
@@ -193,7 +232,7 @@ class LearningProgressIndicatorsState
                         child: GestureDetector(
                           onTap: widget.canSelect
                               ? () {
-                                  context.go("/rooms/analytics?mode=level");
+                                  context.go("/rooms/analytics/level");
                                 }
                               : null,
                           child: Row(

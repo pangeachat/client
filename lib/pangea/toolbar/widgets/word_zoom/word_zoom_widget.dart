@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
@@ -21,14 +22,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaToken token;
-  final PangeaMessageEvent messageEvent;
   final MessageOverlayController overlayController;
   final bool wordIsNew;
 
   const WordZoomWidget({
     super.key,
     required this.token,
-    required this.messageEvent,
     required this.overlayController,
     required this.wordIsNew,
   });
@@ -43,10 +42,12 @@ class WordZoomWidget extends StatelessWidget {
           true &&
       overlayController.hideWordCardContent;
 
-  String get transformTargetId => "newer-word-overlay-${token.text.uniqueKey}";
+  String get transformTargetId => "word-zoom-card-${token.text.uniqueKey}";
 
   LayerLink get layerLink =>
       MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
+
+  PangeaMessageEvent get messageEvent => overlayController.pangeaMessageEvent;
 
   @override
   Widget build(BuildContext context) {
@@ -107,8 +108,7 @@ class WordZoomWidget extends StatelessWidget {
                       ConstructXpWidget(
                         id: token.vocabConstructID,
                         onTap: () => context.go(
-                          "/rooms/analytics?mode=vocab",
-                          extra: token.vocabConstructID,
+                          "/rooms/analytics/${ConstructTypeEnum.vocab.string}/${token.vocabConstructID.string}",
                         ),
                       ),
                     ],
@@ -190,7 +190,7 @@ class WordZoomWidget extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if (MatrixState.pangeaController.languageController
-                              .showTrancription)
+                              .showTranscription)
                             PhoneticTranscriptionWidget(
                               text: token.text.content,
                               textLanguage: PLanguageStore.byLangCode(
@@ -273,7 +273,6 @@ class WordZoomWidget extends StatelessWidget {
                 overlayColor: overlayColor,
                 overlayController: overlayController,
                 transformTargetId: transformTargetId,
-                //cardKey: cardKey,
               )
             : const SizedBox.shrink(),
       ],

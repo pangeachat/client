@@ -76,7 +76,8 @@ class GetAnalyticsController extends BaseController {
 
     try {
       await GetStorage.init("analytics_storage");
-      _client.updateAnalyticsRoomVisibility();
+      await GetStorage.init("activity_analytics_storage");
+      _client.updateAnalyticsRoomJoinRules();
       _client.addAnalyticsRoomsToSpaces();
 
       _analyticsUpdateSubscription ??= _pangeaController
@@ -93,7 +94,7 @@ class GetAnalyticsController extends BaseController {
       await _getConstructs();
 
       final offset =
-          _pangeaController.userController.publicProfile?.xpOffset ?? 0;
+          _pangeaController.userController.analyticsProfile?.xpOffset ?? 0;
       constructListModel.updateConstructs(
         [
           ...(_getConstructsLocal() ?? []),
@@ -108,7 +109,11 @@ class GetAnalyticsController extends BaseController {
         data: {},
       );
     } finally {
-      _updateAnalyticsStream(points: 0, newConstructs: []);
+      _updateAnalyticsStream(
+        type: AnalyticsUpdateType.local,
+        points: 0,
+        newConstructs: [],
+      );
       if (!initCompleter.isCompleted) initCompleter.complete();
       _initializing = false;
     }
@@ -130,16 +135,27 @@ class GetAnalyticsController extends BaseController {
   Future<void> _onAnalyticsUpdate(
     AnalyticsUpdate analyticsUpdate,
   ) async {
+    final validTypes = [AnalyticsUpdateType.local, AnalyticsUpdateType.server];
+    if (!validTypes.contains(analyticsUpdate.type)) {
+      _updateAnalyticsStream(
+        type: analyticsUpdate.type,
+        points: 0,
+        newConstructs: [],
+      );
+      return;
+    }
+
     if (analyticsUpdate.isLogout) return;
+
     final oldLevel = constructListModel.level;
 
     final offset =
-        _pangeaController.userController.publicProfile?.xpOffset ?? 0;
+        _pangeaController.userController.analyticsProfile?.xpOffset ?? 0;
 
     final prevUnlockedMorphs = constructListModel
         .unlockedLemmas(
           ConstructTypeEnum.morph,
-          threshold: 25,
+          threshold: 30,
         )
         .toSet();
 
@@ -151,7 +167,7 @@ class GetAnalyticsController extends BaseController {
     final newUnlockedMorphs = constructListModel
         .unlockedLemmas(
           ConstructTypeEnum.morph,
-          threshold: 25,
+          threshold: 30,
         )
         .toSet()
         .difference(prevUnlockedMorphs);
@@ -176,6 +192,7 @@ class GetAnalyticsController extends BaseController {
       _onUnlockMorphLemmas(newUnlockedMorphs);
     }
     _updateAnalyticsStream(
+      type: analyticsUpdate.type,
       points: analyticsUpdate.newConstructs.fold<int>(
         0,
         (previousValue, element) => previousValue + element.xp,
@@ -187,18 +204,20 @@ class GetAnalyticsController extends BaseController {
     // If the level hasn't changed, this will not send an update to the server.
     // Do this on all updates (not just on level updates) to account for cases
     // of target language updates being missed (https://github.com/pangeachat/client/issues/2006)
-    _pangeaController.userController.updatePublicProfile(
+    _pangeaController.userController.updateAnalyticsProfile(
       level: constructListModel.level,
     );
   }
 
   void _updateAnalyticsStream({
+    required AnalyticsUpdateType type,
     required int points,
     required List<ConstructIdentifier> newConstructs,
     String? targetID,
   }) =>
       analyticsStream.add(
         AnalyticsStreamUpdate(
+          type: type,
           points: points,
           newConstructs: newConstructs,
           targetID: targetID,
@@ -219,7 +238,7 @@ class GetAnalyticsController extends BaseController {
     await _pangeaController.userController.addXPOffset(offset);
     constructListModel.updateConstructs(
       [],
-      _pangeaController.userController.publicProfile!.xpOffset!,
+      _pangeaController.userController.analyticsProfile!.xpOffset!,
     );
   }
 
@@ -554,9 +573,11 @@ class GetAnalyticsController extends BaseController {
     final response = await ConstructRepo.generateConstructSummary(request);
     final ConstructSummary summary = response.summary;
     summary.levelVocabConstructs = MatrixState
-        .pangeaController.getAnalytics.constructListModel.vocabLemmas;
+        .pangeaController.getAnalytics.constructListModel
+        .numConstructs(ConstructTypeEnum.vocab);
     summary.levelGrammarConstructs = MatrixState
-        .pangeaController.getAnalytics.constructListModel.grammarLemmas;
+        .pangeaController.getAnalytics.constructListModel
+        .numConstructs(ConstructTypeEnum.morph);
 
     final Room? analyticsRoom = await _client.getMyAnalyticsRoom(_l2!);
     if (analyticsRoom == null) {
@@ -569,6 +590,13 @@ class GetAnalyticsController extends BaseController {
     );
 
     return summary;
+  }
+
+  List<Room> get archivedActivities {
+    final Room? analyticsRoom = _client.analyticsRoomLocal(_l2!);
+    if (analyticsRoom == null) return [];
+    final ids = analyticsRoom.activityRoomIds;
+    return ids.map((id) => _client.getRoomById(id)).whereType<Room>().toList();
   }
 }
 
@@ -602,11 +630,13 @@ class AnalyticsCacheEntry {
 }
 
 class AnalyticsStreamUpdate {
+  final AnalyticsUpdateType type;
   final int points;
   final List<ConstructIdentifier> newConstructs;
   final String? targetID;
 
   AnalyticsStreamUpdate({
+    required this.type,
     required this.points,
     required this.newConstructs,
     this.targetID,

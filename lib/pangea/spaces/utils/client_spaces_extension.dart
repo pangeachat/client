@@ -15,18 +15,25 @@ extension SpacesClientExtension on Client {
     required String name,
     required String introChatName,
     required String announcementsChatName,
+    String? topic,
     Visibility visibility = Visibility.private,
     JoinRules joinRules = JoinRules.public,
     Uint8List? avatar,
     Uri? avatarUrl,
+    List<StateEvent>? initialState,
+    int spaceChild = 50,
   }) async {
     final roomId = await createRoom(
       creationContent: {'type': RoomCreationTypes.mSpace},
       visibility: visibility,
       name: name.trim(),
+      topic: topic?.trim(),
       powerLevelContentOverride: {'events_default': 100},
       initialState: [
-        RoomDefaults.defaultSpacePowerLevels(userID!),
+        RoomDefaults.defaultSpacePowerLevels(
+          userID!,
+          spaceChild: spaceChild,
+        ),
         await pangeaJoinRules(
           joinRules.toString().replaceAll('JoinRules.', ''),
         ),
@@ -35,6 +42,7 @@ extension SpacesClientExtension on Client {
             type: EventTypes.RoomAvatar,
             content: {'url': avatarUrl.toString()},
           ),
+        if (initialState != null) ...initialState,
       ],
     );
 

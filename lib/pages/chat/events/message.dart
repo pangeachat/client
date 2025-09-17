@@ -8,8 +8,14 @@ import 'package:swipe_to_action/swipe_to_action.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pages/chat/events/pangea_message_reactions.dart';
 import 'package:fluffychat/pages/chat/events/room_creation_state_event.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_roles_event_widget.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
+import 'package:fluffychat/pangea/chat/extensions/custom_room_display_extension.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
@@ -19,7 +25,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 import '../../../config/app_config.dart';
 import 'message_content.dart';
-import 'message_reactions.dart';
 import 'reply_content.dart';
 import 'state_message.dart';
 
@@ -45,7 +50,6 @@ class Message extends StatelessWidget {
   final ScrollController scrollController;
   final List<Color> colors;
   // #Pangea
-  final bool immersionMode;
   final ChatController controller;
   final bool isButton;
   // Pangea#
@@ -72,7 +76,6 @@ class Message extends StatelessWidget {
     required this.scrollController,
     required this.colors,
     // #Pangea
-    required this.immersionMode,
     required this.controller,
     this.isButton = false,
     // Pangea#
@@ -123,8 +126,33 @@ class Message extends StatelessWidget {
         return const SizedBox.shrink();
       }
       if (event.type == EventTypes.RoomCreate) {
-        return RoomCreationStateEvent(event: event);
+        // #Pangea
+        // return RoomCreationStateEvent(event: event);
+        return event.room.isActivitySession
+            ? const SizedBox(height: 60.0)
+            : RoomCreationStateEvent(event: event);
+        // Pangea#
       }
+
+      // #Pangea
+      if (event.type == PangeaEventTypes.activityPlan &&
+          event.room.activityPlan != null) {
+        return ActivitySummary(
+          activity: event.room.activityPlan!,
+          room: event.room,
+          showInstructions: controller.showInstructions,
+          toggleInstructions: controller.toggleShowInstructions,
+          getParticipantOpacity: (role) =>
+              role == null || role.isFinished ? 0.5 : 1.0,
+          isParticipantSelected: (id) => controller.room.ownRoleState?.id == id,
+        );
+      }
+
+      if (event.type == PangeaEventTypes.activityRole) {
+        return ActivityRolesEvent(event: event);
+      }
+      // Pangea#
+
       return StateMessage(event);
     }
 
@@ -460,7 +488,15 @@ class Message extends StatelessWidget {
                                                               .senderFromMemoryOrFallback
                                                               .calcDisplayname();
                                                       return Text(
-                                                        displayname,
+                                                        // #Pangea
+                                                        // displayname,
+                                                        controller.room
+                                                            .senderDisplayName(
+                                                          snapshot.data ??
+                                                              event
+                                                                  .senderFromMemoryOrFallback,
+                                                        ),
+                                                        // Pangea#
                                                         style: TextStyle(
                                                           fontSize: 11,
                                                           fontWeight:
@@ -699,8 +735,6 @@ class Message extends StatelessWidget {
                                                             // #Pangea
                                                             pangeaMessageEvent:
                                                                 pangeaMessageEvent,
-                                                            immersionMode:
-                                                                immersionMode,
                                                             controller:
                                                                 controller,
                                                             nextEvent:
@@ -980,32 +1014,43 @@ class Message extends StatelessWidget {
                   );
                 },
               ),
-              AnimatedSize(
-                duration: FluffyThemes.animationDuration,
-                curve: FluffyThemes.animationCurve,
-                alignment: Alignment.bottomCenter,
-                child: !showReceiptsRow
-                    ? const SizedBox.shrink()
-                    : Padding(
-                        padding: EdgeInsets.only(
-                          top: 4.0,
-                          left: (ownMessage ? 0 : Avatar.defaultSize) + 12.0,
-                          right: ownMessage ? 0 : 12.0,
-                        ),
-                        // #Pangea
-                        // child: MessageReactions(event, timeline),
-                        child: MessageReactions(
-                          event,
-                          timeline,
-                          key: MatrixState.pAnyState
-                              .layerLinkAndKey(
-                                'message_reactions_${event.eventId}',
-                              )
-                              .key,
-                        ),
-                        // Pangea#
+              // #Pangea
+              // AnimatedSize(
+              //   duration: FluffyThemes.animationDuration,
+              //   curve: FluffyThemes.animationCurve,
+              //   alignment: Alignment.bottomCenter,
+              //   clipBehavior: Clip.none,
+              //   child: !showReceiptsRow
+              //       ? const SizedBox.shrink()
+              //       : Padding(
+              //           padding: EdgeInsets.only(
+              //             top: 4.0,
+              //             left: (ownMessage ? 0 : Avatar.defaultSize) + 12.0,
+              //             right: ownMessage ? 0 : 12.0,
+              //           ),
+              //           child: MessageReactions(event, timeline),
+              //         ),
+              // ),
+              !showReceiptsRow
+                  ? const SizedBox.shrink()
+                  : Padding(
+                      padding: EdgeInsets.only(
+                        top: 4.0,
+                        left: (ownMessage ? 0 : Avatar.defaultSize) + 12.0,
+                        right: ownMessage ? 0 : 12.0,
                       ),
-              ),
+                      child: PangeaMessageReactions(
+                        event,
+                        timeline,
+                        controller,
+                        key: MatrixState.pAnyState
+                            .layerLinkAndKey(
+                              'message_reactions_${event.eventId}',
+                            )
+                            .key,
+                      ),
+                      // Pangea#
+                    ),
               if (displayReadMarker)
                 Row(
                   children: [

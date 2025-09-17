@@ -4,7 +4,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pages/chat/chat.dart';
-import 'package:fluffychat/pangea/toolbar/reading_assistance_input_row/lemma_emoji_choice_item.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_emoji_picker.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -51,27 +51,34 @@ class LemmaReactionPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      alignment: Alignment.center,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 4.0,
-        children: loading
-            ? [1, 2, 3, 4, 5]
-                .map(
-                  (e) => const LemmaEmojiChoicePlaceholder(),
-                )
-                .toList()
-            : emojis
-                .map(
-                  (emoji) => LemmaEmojiChoiceItem(
-                    content: emoji,
-                    onTap: () => setEmoji(emoji, context),
-                  ),
-                )
-                .toList(),
-      ),
+    final sentReactions = <String>{};
+    if (controller.selectedEvents.isNotEmpty) {
+      final selectedEvent = controller.selectedEvents.first;
+      sentReactions.addAll(
+        selectedEvent
+            .aggregatedEvents(
+              controller.timeline!,
+              RelationshipTypes.reaction,
+            )
+            .where(
+              (event) =>
+                  event.senderId == event.room.client.userID &&
+                  event.type == 'm.reaction',
+            )
+            .map(
+              (event) => event.content
+                  .tryGetMap<String, Object?>('m.relates_to')
+                  ?.tryGet<String>('key'),
+            )
+            .whereType<String>(),
+      );
+    }
+
+    return LemmaEmojiPicker(
+      emojis: emojis,
+      onSelect: (emoji) => setEmoji(emoji, context),
+      disabled: (emoji) => sentReactions.contains(emoji),
+      loading: loading,
     );
   }
 }

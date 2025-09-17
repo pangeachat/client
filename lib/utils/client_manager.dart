@@ -129,14 +129,19 @@ abstract class ClientManager {
         // #Pangea
         // The things in this list will be loaded in the first sync, without having
         // to postLoad to confirm that these state events are completely loaded
+        EventTypes.RoomPowerLevels,
+        EventTypes.RoomJoinRules,
         PangeaEventTypes.rules,
         PangeaEventTypes.botOptions,
         PangeaEventTypes.capacity,
-        EventTypes.RoomPowerLevels,
         PangeaEventTypes.userSetLemmaInfo,
-        EventTypes.RoomJoinRules,
         PangeaEventTypes.activityPlan,
+        PangeaEventTypes.activityRole,
+        PangeaEventTypes.activitySummary,
         PangeaEventTypes.constructSummary,
+        PangeaEventTypes.activityRoomIds,
+        PangeaEventTypes.coursePlan,
+        PangeaEventTypes.courseUser,
         // Pangea#
       },
       logLevel: kReleaseMode ? Level.warning : Level.verbose,

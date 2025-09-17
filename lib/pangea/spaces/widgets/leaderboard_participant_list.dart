@@ -44,11 +44,11 @@ class LeaderboardParticipantListState
     return StreamBuilder(
       stream: client.onSync.stream.rateLimit(const Duration(seconds: 3)),
       builder: (context, snapshot) {
-        return LoadParticipantsUtil(
-          space: widget.space,
-          builder: (participantsLoader) {
-            final participants = participantsLoader
-                .filteredParticipants("")
+        return LoadParticipantsBuilder(
+          room: widget.space,
+          loadProfiles: true,
+          builder: (context, participantsLoader) {
+            final participants = participantsLoader.sortedParticipants
                 .where((p) => p.membership == Membership.join)
                 .toList();
 
@@ -71,7 +71,8 @@ class LeaderboardParticipantListState
                     itemCount: participants.length,
                     itemBuilder: (context, i) {
                       final user = participants[i];
-                      final publicProfile = participantsLoader.getPublicProfile(
+                      final publicProfile =
+                          participantsLoader.getAnalyticsProfile(
                         user.id,
                       );
 

@@ -13,6 +13,10 @@ import 'package:fluffychat/pages/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/pages/chat/chat_app_bar_title.dart';
 import 'package:fluffychat/pages/chat/chat_event_list.dart';
 import 'package:fluffychat/pages/chat/pinned_events.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_finished_status_message.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/activity_stats_menu.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_chat/load_activity_summary_widget.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_input_bar_header.dart';
 import 'package:fluffychat/pangea/chat/widgets/chat_view_background.dart';
@@ -24,7 +28,9 @@ import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 import '../../utils/stream_extension.dart';
 
-enum _EventContextAction { info, report }
+// #Pangea
+// enum _EventContextAction { info, report }
+// Pangea#
 
 class ChatView extends StatelessWidget {
   final ChatController controller;
@@ -32,98 +38,103 @@ class ChatView extends StatelessWidget {
   const ChatView(this.controller, {super.key});
 
   List<Widget> _appBarActions(BuildContext context) {
-    if (controller.selectMode) {
-      return [
-        if (controller.canEditSelectedEvents)
-          IconButton(
-            icon: const Icon(Icons.edit_outlined),
-            tooltip: L10n.of(context).edit,
-            onPressed: controller.editSelectedEventAction,
-          ),
-        IconButton(
-          icon: const Icon(Icons.copy_outlined),
-          tooltip: L10n.of(context).copy,
-          onPressed: controller.copyEventsAction,
-        ),
-        if (controller.canPinSelectedEvents)
-          IconButton(
-            icon: const Icon(Icons.push_pin_outlined),
-            onPressed: controller.pinEvent,
-            tooltip: L10n.of(context).pinMessage,
-          ),
-        if (controller.canRedactSelectedEvents)
-          IconButton(
-            icon: const Icon(Icons.delete_outlined),
-            tooltip: L10n.of(context).redactMessage,
-            onPressed: controller.redactEventsAction,
-          ),
-        if (controller.selectedEvents.length == 1)
-          PopupMenuButton<_EventContextAction>(
-            useRootNavigator: true,
-            onSelected: (action) {
-              switch (action) {
-                case _EventContextAction.info:
-                  controller.showEventInfo();
-                  controller.clearSelectedEvents();
-                  break;
-                case _EventContextAction.report:
-                  controller.reportEventAction();
-                  break;
-              }
-            },
-            itemBuilder: (context) => [
-              if (controller.canSaveSelectedEvent)
-                PopupMenuItem(
-                  onTap: () => controller.saveSelectedEvent(context),
-                  value: null,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(Icons.download_outlined),
-                      const SizedBox(width: 12),
-                      Text(L10n.of(context).downloadFile),
-                    ],
-                  ),
-                ),
-              PopupMenuItem(
-                value: _EventContextAction.info,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.info_outlined),
-                    const SizedBox(width: 12),
-                    Text(L10n.of(context).messageInfo),
-                  ],
-                ),
-              ),
-              if (controller.selectedEvents.single.status.isSent)
-                PopupMenuItem(
-                  value: _EventContextAction.report,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(
-                        Icons.shield_outlined,
-                        color: Colors.red,
-                      ),
-                      const SizedBox(width: 12),
-                      Text(L10n.of(context).reportMessage),
-                    ],
-                  ),
-                ),
-            ],
-          ),
-      ];
-    } else if (!controller.room.isArchived) {
+    // #Pangea
+    // if (controller.selectMode) {
+    //   return [
+    //     if (controller.canEditSelectedEvents)
+    //       IconButton(
+    //         icon: const Icon(Icons.edit_outlined),
+    //         tooltip: L10n.of(context).edit,
+    //         onPressed: controller.editSelectedEventAction,
+    //       ),
+    //     IconButton(
+    //       icon: const Icon(Icons.copy_outlined),
+    //       tooltip: L10n.of(context).copy,
+    //       onPressed: controller.copyEventsAction,
+    //     ),
+    //     if (controller.canPinSelectedEvents)
+    //       IconButton(
+    //         icon: const Icon(Icons.push_pin_outlined),
+    //         onPressed: controller.pinEvent,
+    //         tooltip: L10n.of(context).pinMessage,
+    //       ),
+    //     if (controller.canRedactSelectedEvents)
+    //       IconButton(
+    //         icon: const Icon(Icons.delete_outlined),
+    //         tooltip: L10n.of(context).redactMessage,
+    //         onPressed: controller.redactEventsAction,
+    //       ),
+    //     if (controller.selectedEvents.length == 1)
+    //       PopupMenuButton<_EventContextAction>(
+    //         useRootNavigator: true,
+    //         onSelected: (action) {
+    //           switch (action) {
+    //             case _EventContextAction.info:
+    //               controller.showEventInfo();
+    //               controller.clearSelectedEvents();
+    //               break;
+    //             case _EventContextAction.report:
+    //               controller.reportEventAction();
+    //               break;
+    //           }
+    //         },
+    //         itemBuilder: (context) => [
+    //           if (controller.canSaveSelectedEvent)
+    //             PopupMenuItem(
+    //               onTap: () => controller.saveSelectedEvent(context),
+    //               value: null,
+    //               child: Row(
+    //                 mainAxisSize: MainAxisSize.min,
+    //                 children: [
+    //                   const Icon(Icons.download_outlined),
+    //                   const SizedBox(width: 12),
+    //                   Text(L10n.of(context).downloadFile),
+    //                 ],
+    //               ),
+    //             ),
+    //           PopupMenuItem(
+    //             value: _EventContextAction.info,
+    //             child: Row(
+    //               mainAxisSize: MainAxisSize.min,
+    //               children: [
+    //                 const Icon(Icons.info_outlined),
+    //                 const SizedBox(width: 12),
+    //                 Text(L10n.of(context).messageInfo),
+    //               ],
+    //             ),
+    //           ),
+    //           if (controller.selectedEvents.single.status.isSent)
+    //             PopupMenuItem(
+    //               value: _EventContextAction.report,
+    //               child: Row(
+    //                 mainAxisSize: MainAxisSize.min,
+    //                 children: [
+    //                   const Icon(
+    //                     Icons.shield_outlined,
+    //                     color: Colors.red,
+    //                   ),
+    //                   const SizedBox(width: 12),
+    //                   Text(L10n.of(context).reportMessage),
+    //                 ],
+    //               ),
+    //             ),
+    //         ],
+    //       ),
+    //   ];
+    // } else
+    // Pangea#
+    if (!controller.room.isArchived) {
       // #Pangea
       return [
-        IconButton(
-          icon: const Icon(Icons.search_outlined),
-          tooltip: L10n.of(context).search,
-          onPressed: () {
-            context.go('/rooms/${controller.room.id}/search');
-          },
-        ),
+        if (controller.room.activityPlan == null ||
+            !controller.room.showActivityChatUI)
+          IconButton(
+            icon: const Icon(Icons.search_outlined),
+            tooltip: L10n.of(context).search,
+            onPressed: () {
+              context.go('/rooms/${controller.room.id}/search');
+            },
+          ),
         IconButton(
           icon: const Icon(Icons.settings_outlined),
           tooltip: L10n.of(context).chatDetails,
@@ -194,14 +205,21 @@ class ChatView extends StatelessWidget {
             }
             return Scaffold(
               appBar: AppBar(
-                actionsIconTheme: IconThemeData(
-                  color: controller.selectedEvents.isEmpty
-                      ? null
-                      : theme.colorScheme.onTertiaryContainer,
-                ),
-                backgroundColor: controller.selectedEvents.isEmpty
-                    ? null
-                    : theme.colorScheme.tertiaryContainer,
+                // #Pangea
+                // actionsIconTheme:
+                // IconThemeData(
+                // #Pangea
+                //   color: controller.selectedEvents.isEmpty
+                //       ? null
+                //       : theme.colorScheme.onTertiaryContainer,
+                // ),
+                // backgroundColor: controller.selectedEvents.isEmpty
+                //     ? null
+                //     : theme.colorScheme.tertiaryContainer,
+                toolbarHeight:
+                    controller.room.showActivityChatUI ? 106.0 : null,
+                centerTitle: controller.room.showActivityChatUI,
+                // Pangea#
                 automaticallyImplyLeading: false,
                 leading: controller.selectMode
                     ? IconButton(
@@ -210,20 +228,27 @@ class ChatView extends StatelessWidget {
                         tooltip: L10n.of(context).close,
                         color: theme.colorScheme.onTertiaryContainer,
                       )
-                    : FluffyThemes.isColumnMode(context)
-                        ? null
-                        : StreamBuilder<Object>(
-                            stream:
-                                Matrix.of(context).client.onSync.stream.where(
+                    // #Pangea
+                    : controller.widget.backButton != null
+                        ? controller.widget.backButton!
+                        // Pangea#
+                        : FluffyThemes.isColumnMode(context)
+                            ? null
+                            : StreamBuilder<Object>(
+                                stream: Matrix.of(context)
+                                    .client
+                                    .onSync
+                                    .stream
+                                    .where(
                                       (syncUpdate) => syncUpdate.hasRoomUpdate,
                                     ),
-                            builder: (context, _) => UnreadRoomsBadge(
-                              filter: (r) => r.id != controller.roomId,
-                              badgePosition:
-                                  BadgePosition.topEnd(end: 8, top: 4),
-                              child: const Center(child: BackButton()),
-                            ),
-                          ),
+                                builder: (context, _) => UnreadRoomsBadge(
+                                  filter: (r) => r.id != controller.roomId,
+                                  badgePosition:
+                                      BadgePosition.topEnd(end: 8, top: 4),
+                                  child: const Center(child: BackButton()),
+                                ),
+                              ),
                 titleSpacing: FluffyThemes.isColumnMode(context) ? 24 : 0,
                 title: ChatAppBarTitle(controller),
                 actions: _appBarActions(context),
@@ -232,6 +257,13 @@ class ChatView extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      // #Pangea
+                      if (!controller.showActivityDropdown)
+                        Divider(
+                          height: 1,
+                          color: theme.dividerColor,
+                        ),
+                      // Pangea#
                       PinnedEvents(controller),
                       if (scrollUpBannerEventId != null)
                         ChatAppBarListTile(
@@ -317,7 +349,11 @@ class ChatView extends StatelessWidget {
                                 child: ChatEventList(controller: controller),
                               ),
                             ),
-                            if (controller.showScrollDownButton)
+                            // #Pangea
+                            // if (controller.showScrollDownButton)
+                            if (controller.showScrollDownButton &&
+                                !controller.room.showActivityFinished)
+                              // Pangea#
                               Divider(
                                 height: 1,
                                 color: theme.dividerColor,
@@ -332,8 +368,13 @@ class ChatView extends StatelessWidget {
                                   onPressed: controller.goToNewRoomAction,
                                 ),
                               )
+                            // #Pangea
+                            // else if (controller.room.canSendDefaultMessages &&
+                            //     controller.room.membership == Membership.join)
                             else if (controller.room.canSendDefaultMessages &&
-                                controller.room.membership == Membership.join)
+                                controller.room.membership == Membership.join &&
+                                !controller.room.showActivityFinished)
+                              // Pangea#
                               Container(
                                 margin: EdgeInsets.all(bottomSheetPadding),
                                 constraints: const BoxConstraints(
@@ -402,13 +443,23 @@ class ChatView extends StatelessWidget {
                               ),
                             // #Pangea
                             // Keep messages above minimum input bar height
-                            if (!controller.room.isAbandonedDMRoom)
+                            if (!controller.room.isAbandonedDMRoom &&
+                                controller.room.canSendDefaultMessages &&
+                                controller.room.membership == Membership.join &&
+                                (controller.room.activityPlan == null ||
+                                    !controller.room.showActivityChatUI ||
+                                    controller.room.isActiveInActivity))
                               AnimatedSize(
                                 duration: const Duration(milliseconds: 200),
                                 child: SizedBox(
                                   height: controller.inputBarHeight,
                                 ),
                               ),
+                            if (controller.room.activityIsFinished)
+                              LoadActivitySummaryWidget(room: controller.room),
+                            ActivityFinishedStatusMessage(
+                              controller: controller,
+                            ),
                             // Pangea#
                           ],
                         ),
@@ -416,7 +467,10 @@ class ChatView extends StatelessWidget {
                         ChatViewBackground(controller.choreographer),
                         if (!controller.room.isAbandonedDMRoom &&
                             controller.room.canSendDefaultMessages &&
-                            controller.room.membership == Membership.join)
+                            controller.room.membership == Membership.join &&
+                            (controller.room.activityPlan == null ||
+                                !controller.room.showActivityChatUI ||
+                                controller.room.isActiveInActivity))
                           Positioned(
                             left: 0,
                             right: 0,
@@ -436,6 +490,7 @@ class ChatView extends StatelessWidget {
                               ],
                             ),
                           ),
+                        ActivityStatsMenu(controller),
                         // Pangea#
                       ],
                     ),

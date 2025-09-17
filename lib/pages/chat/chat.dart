@@ -28,6 +28,9 @@ import 'package:fluffychat/pages/chat/event_info_dialog.dart';
 import 'package:fluffychat/pages/chat/events/audio_player.dart';
 import 'package:fluffychat/pages/chat/recording_dialog.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
@@ -55,6 +58,8 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dialog.dart';
+import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
+import 'package:fluffychat/pangea/spaces/utils/load_participants_util.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
 import 'package:fluffychat/utils/error_reporter.dart';
@@ -81,18 +86,24 @@ class ChatPage extends StatelessWidget {
   final List<ShareItem>? shareItems;
   final String? eventId;
 
+  // #Pangea
+  final Widget? backButton;
+  // Pangea#
+
   const ChatPage({
     super.key,
     required this.roomId,
     this.eventId,
     this.shareItems,
+    // #Pangea
+    this.backButton,
+    // Pangea#
   });
 
   @override
   Widget build(BuildContext context) {
     final room = Matrix.of(context).client.getRoomById(roomId);
     // #Pangea
-
     if (room?.isSpace == true &&
         GoRouterState.of(context).fullPath?.endsWith(":roomid") == true) {
       ErrorHandler.logError(
@@ -122,6 +133,9 @@ class ChatPage extends StatelessWidget {
       room: room,
       shareItems: shareItems,
       eventId: eventId,
+      // #Pangea
+      backButton: backButton,
+      // Pangea#
     );
   }
 }
@@ -131,11 +145,18 @@ class ChatPageWithRoom extends StatefulWidget {
   final List<ShareItem>? shareItems;
   final String? eventId;
 
+  // #Pangea
+  final Widget? backButton;
+  // Pangea#
+
   const ChatPageWithRoom({
     super.key,
     required this.room,
     this.shareItems,
     this.eventId,
+    // #Pangea
+    this.backButton,
+    // Pangea#
   });
 
   @override
@@ -428,18 +449,7 @@ class ChatController extends State<ChatPageWithRoom>
           update is Map<String, dynamic> &&
           (update['level_up'] != null || update['unlocked_constructs'] != null),
     )
-        // .listen(
-        //   (update) => Future.delayed(
-        //     const Duration(milliseconds: 500),
-        //     () => LevelUpUtil.showLevelUpDialog(
-        //       update['level_up'],
-        //       context,
-        //     ),
-        //   ),
-        // )
         .listen(
-      // remove delay now that GetAnalyticsController._onLevelUp
-      // is async is should take roughly 500ms to make requests anyway
       (update) {
         if (update['level_up'] != null) {
           LevelUpUtil.showLevelUpDialog(
@@ -770,6 +780,8 @@ class ChatController extends State<ChatPageWithRoom>
     _analyticsSubscription?.cancel();
     _botAudioSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
+    carouselController.dispose();
+    TokensUtil.clearNewTokenCache();
     //Pangea#
     super.dispose();
   }
@@ -904,20 +916,16 @@ class ChatController extends State<ChatPageWithRoom>
     // Pangea#
     if (commandMatch != null &&
         !sendingClient.commands.keys.contains(commandMatch[1]!.toLowerCase())) {
-      final l10n = L10n.of(context);
-      final dialogResult = await showOkCancelAlertDialog(
-        context: context,
-        title: l10n.commandInvalid,
-        message: l10n.commandMissing(commandMatch[0]!),
-        okLabel: l10n.sendAsText,
-        cancelLabel: l10n.cancel,
-      );
       // #Pangea
+      // final l10n = L10n.of(context);
+      // final dialogResult = await showOkCancelAlertDialog(
+      //   context: context,
+      //   title: l10n.commandInvalid,
+      //   message: l10n.commandMissing(commandMatch[0]!),
+      //   okLabel: l10n.sendAsText,
+      //   cancelLabel: l10n.cancel,
+      // );
       // if (dialogResult == OkCancelResult.cancel) return;
-      if (dialogResult == OkCancelResult.cancel) {
-        clearFakeEvent(tempEventId);
-        return;
-      }
       // Pangea#
       parseCommands = false;
     }
@@ -959,32 +967,12 @@ class ChatController extends State<ChatPageWithRoom>
         // There's a listen in my_analytics_controller that decides when to auto-update
         // analytics based on when / how many messages the logged in user send. This
         // stream sends the data for newly sent messages.
-        final metadata = ConstructUseMetaData(
-          roomId: roomId,
-          timeStamp: DateTime.now(),
-          eventId: msgEventId,
+        _sendMessageAnalytics(
+          msgEventId,
+          originalSent: originalSent,
+          tokensSent: tokensSent,
+          choreo: choreo,
         );
-
-        if (msgEventId != null && originalSent != null && tokensSent != null) {
-          final List<OneConstructUse> constructs = [
-            ...originalSent.vocabAndMorphUses(
-              choreo: choreo,
-              tokens: tokensSent.tokens,
-              metadata: metadata,
-            ),
-          ];
-
-          _showAnalyticsFeedback(constructs, msgEventId);
-
-          pangeaController.putAnalytics.setState(
-            AnalyticsStream(
-              eventId: msgEventId,
-              targetID: msgEventId,
-              roomId: room.id,
-              constructs: constructs,
-            ),
-          );
-        }
 
         if (previousEdit != null) {
           pangeaEditingEvent = previousEdit;
@@ -1354,6 +1342,9 @@ class ChatController extends State<ChatPageWithRoom>
             message: L10n.of(context).redactMessageDescription,
             isDestructive: true,
             hintText: L10n.of(context).optionalRedactReason,
+            // #Pangea
+            maxLength: 255,
+            // Pangea#
             okLabel: L10n.of(context).remove,
             cancelLabel: L10n.of(context).cancel,
             // #Pangea
@@ -1785,13 +1776,23 @@ class ChatController extends State<ChatPageWithRoom>
     final response = await showOkCancelAlertDialog(
       context: context,
       title: L10n.of(context).unpin,
-      message: L10n.of(context).confirmEventUnpin,
+      // #Pangea
+      // message: L10n.of(context).confirmEventUnpin,
+      message: L10n.of(context).confirmMessageUnpin,
+      // Pangea#
       okLabel: L10n.of(context).unpin,
       cancelLabel: L10n.of(context).cancel,
     );
     if (response == OkCancelResult.ok) {
       final events = room.pinnedEventIds
         ..removeWhere((oldEvent) => oldEvent == eventId);
+      // #Pangea
+      if (scrollToEventIdMarker == eventId) {
+        setState(() {
+          scrollToEventIdMarker = null;
+        });
+      }
+      // Pangea#
       showFutureLoadingDialog(
         context: context,
         future: () => room.setPinnedEvents(events),
@@ -1808,7 +1809,10 @@ class ChatController extends State<ChatPageWithRoom>
     final unpin = selectedEventIds.length == 1 &&
         pinnedEventIds.contains(selectedEventIds.single);
     if (unpin) {
-      pinnedEventIds.removeWhere(selectedEventIds.contains);
+      // #Pangea
+      //pinnedEventIds.removeWhere(selectedEventIds.contains);
+      unpinEvent(selectedEventIds.single);
+      // Pangea#
     } else {
       pinnedEventIds.addAll(selectedEventIds);
     }
@@ -1821,6 +1825,7 @@ class ChatController extends State<ChatPageWithRoom>
       context: context,
       future: () => room.setPinnedEvents(pinnedEventIds),
     );
+    clearSelectedEvents();
     // Pangea#
   }
 
@@ -2060,6 +2065,48 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
+  void _sendMessageAnalytics(
+    String? eventId, {
+    PangeaRepresentation? originalSent,
+    PangeaMessageTokens? tokensSent,
+    ChoreoRecord? choreo,
+  }) {
+    // There's a listen in my_analytics_controller that decides when to auto-update
+    // analytics based on when / how many messages the logged in user send. This
+    // stream sends the data for newly sent messages.
+    if (originalSent?.langCode.split("-").first !=
+        choreographer.l2Lang?.langCodeShort) {
+      return;
+    }
+
+    final metadata = ConstructUseMetaData(
+      roomId: roomId,
+      timeStamp: DateTime.now(),
+      eventId: eventId,
+    );
+
+    if (eventId != null && originalSent != null && tokensSent != null) {
+      final List<OneConstructUse> constructs = [
+        ...originalSent.vocabAndMorphUses(
+          choreo: choreo,
+          tokens: tokensSent.tokens,
+          metadata: metadata,
+        ),
+      ];
+
+      _showAnalyticsFeedback(constructs, eventId);
+
+      pangeaController.putAnalytics.setState(
+        AnalyticsStream(
+          eventId: eventId,
+          targetID: eventId,
+          roomId: room.id,
+          constructs: constructs,
+        ),
+      );
+    }
+  }
+
   Future<void> _sendVoiceMessageAnalytics(String? eventId) async {
     if (eventId == null) {
       ErrorHandler.logError(
@@ -2150,6 +2197,23 @@ class ChatController extends State<ChatPageWithRoom>
       closePrevOverlay: false,
     );
   }
+
+  final ScrollController carouselController = ScrollController();
+
+  ActivityRoleModel? highlightedRole;
+  void highlightRole(ActivityRoleModel role) {
+    if (mounted) setState(() => highlightedRole = role);
+  }
+
+  bool showInstructions = false;
+  void toggleShowInstructions() {
+    if (mounted) setState(() => showInstructions = !showInstructions);
+  }
+
+  bool showActivityDropdown = false;
+  void setShowDropdown(bool show) async {
+    setState(() => showActivityDropdown = show);
+  }
   // Pangea#
 
   late final ValueNotifier<bool> _displayChatDetailsColumn;
@@ -2164,43 +2228,63 @@ class ChatController extends State<ChatPageWithRoom>
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Row(
-      children: [
-        Expanded(
-          child: ChatView(this),
-        ),
-        ValueListenableBuilder(
-          valueListenable: _displayChatDetailsColumn,
-          builder: (context, displayChatDetailsColumn, _) =>
-              !FluffyThemes.isThreeColumnMode(context) ||
-                      room.membership != Membership.join ||
-                      !displayChatDetailsColumn
-                  ? const SizedBox(
-                      height: double.infinity,
-                      width: 0,
-                    )
-                  : Container(
-                      width: FluffyThemes.columnWidth,
-                      clipBehavior: Clip.hardEdge,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          left: BorderSide(
-                            width: 1,
-                            color: theme.dividerColor,
+    // #Pangea
+    return LoadParticipantsBuilder(
+      room: room,
+      builder: (context, participants) {
+        if (!room.participantListComplete && participants.loading) {
+          return const Center(
+            child: CircularProgressIndicator.adaptive(),
+          );
+        }
+
+        if (room.isActivitySession == true && !room.activityHasStarted) {
+          return ActivitySessionStartPage(
+            activityId: room.activityId!,
+            room: room,
+            parentId: room.courseParent?.id,
+          );
+        }
+        // Pangea#
+        final theme = Theme.of(context);
+        return Row(
+          children: [
+            Expanded(
+              child: ChatView(this),
+            ),
+            ValueListenableBuilder(
+              valueListenable: _displayChatDetailsColumn,
+              builder: (context, displayChatDetailsColumn, _) =>
+                  !FluffyThemes.isThreeColumnMode(context) ||
+                          room.membership != Membership.join ||
+                          !displayChatDetailsColumn
+                      ? const SizedBox(
+                          height: double.infinity,
+                          width: 0,
+                        )
+                      : Container(
+                          width: FluffyThemes.columnWidth,
+                          clipBehavior: Clip.hardEdge,
+                          decoration: BoxDecoration(
+                            border: Border(
+                              left: BorderSide(
+                                width: 1,
+                                color: theme.dividerColor,
+                              ),
+                            ),
+                          ),
+                          child: ChatDetails(
+                            roomId: roomId,
+                            embeddedCloseButton: IconButton(
+                              icon: const Icon(Icons.close),
+                              onPressed: toggleDisplayChatDetailsColumn,
+                            ),
                           ),
                         ),
-                      ),
-                      child: ChatDetails(
-                        roomId: roomId,
-                        embeddedCloseButton: IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: toggleDisplayChatDetailsColumn,
-                        ),
-                      ),
-                    ),
-        ),
-      ],
+            ),
+          ],
+        );
+      },
     );
   }
 }

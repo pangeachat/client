@@ -18,7 +18,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
-import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/utils/report_message.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
@@ -29,6 +28,7 @@ enum SelectMode {
   audio(Icons.volume_up),
   translate(Icons.translate),
   practice(Symbols.fitness_center),
+  emoji(Icons.add_reaction_outlined),
   speechTranslation(Icons.translate);
 
   final IconData icon;
@@ -44,6 +44,8 @@ enum SelectMode {
         return l10n.translationTooltip;
       case SelectMode.practice:
         return l10n.practice;
+      case SelectMode.emoji:
+        return l10n.emojis;
     }
   }
 }
@@ -56,6 +58,7 @@ enum MessageActions {
   copy,
   download,
   pin,
+  unpin,
   report,
   info,
   deleteOnError,
@@ -76,7 +79,9 @@ enum MessageActions {
       case MessageActions.download:
         return Symbols.download;
       case MessageActions.pin:
-        return Symbols.push_pin;
+        return Icons.push_pin;
+      case MessageActions.unpin:
+        return Icons.push_pin_outlined;
       case MessageActions.report:
         return Icons.shield_outlined;
       case MessageActions.info:
@@ -105,6 +110,8 @@ enum MessageActions {
         return l10n.download;
       case MessageActions.pin:
         return l10n.pinMessage;
+      case MessageActions.unpin:
+        return l10n.unpin;
       case MessageActions.report:
         return l10n.reportMessage;
       case MessageActions.info:
@@ -141,14 +148,12 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         SelectMode.audio,
         SelectMode.translate,
         SelectMode.practice,
+        SelectMode.emoji,
       ];
 
   static List<SelectMode> get audioModes => [
         SelectMode.speechTranslation,
-        // SelectMode.practice,
       ];
-
-  SelectMode? _selectedMode;
 
   bool _isLoadingAudio = false;
   PangeaAudioFile? _audioBytes;
@@ -167,6 +172,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   Completer<String>? _transcriptionCompleter;
 
   MatrixState? matrix;
+
+  SelectMode? get _selectedMode => widget.overlayController.selectedMode;
 
   @override
   void initState() {
@@ -214,20 +221,17 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     _clear();
 
     if (mode == null) {
-      setState(() {
-        matrix?.audioPlayer?.stop();
-        matrix?.audioPlayer?.seek(null);
-        _selectedMode = null;
-      });
+      matrix?.audioPlayer?.stop();
+      matrix?.audioPlayer?.seek(null);
+      widget.overlayController.setSelectMode(mode);
       return;
     }
 
-    setState(
-      () => _selectedMode = _selectedMode == mode &&
-              (mode != SelectMode.audio || _audioError != null)
-          ? null
-          : mode,
-    );
+    final selectedMode = _selectedMode == mode &&
+            (mode != SelectMode.audio || _audioError != null)
+        ? null
+        : mode;
+    widget.overlayController.setSelectMode(selectedMode);
 
     if (_selectedMode == SelectMode.audio) {
       _playAudio();
@@ -298,7 +302,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   Future<void> _playAudio() async {
     final playerID =
-        "${widget.overlayController.pangeaMessageEvent?.eventId}_button";
+        "${widget.overlayController.pangeaMessageEvent.eventId}_button";
 
     if (matrix?.audioPlayer != null &&
         matrix?.voiceMessageEventId.value == playerID) {
@@ -315,7 +319,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     matrix?.audioPlayer?.dispose();
     matrix?.audioPlayer = AudioPlayer();
     matrix?.voiceMessageEventId.value =
-        "${widget.overlayController.pangeaMessageEvent?.eventId}_button";
+        "${widget.overlayController.pangeaMessageEvent.eventId}_button";
 
     _onPlayerStateChanged =
         matrix?.audioPlayer?.playerStateStream.listen((state) {
@@ -387,18 +391,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     try {
       if (mounted) setState(() => _isLoadingTranslation = true);
-
-      PangeaRepresentation? rep =
-          messageEvent!.representationByLanguage(l1Code!)?.content;
-
-      rep ??= await messageEvent?.representationByLanguageGlobal(
-        langCode: l1Code!,
-      );
-
-      if (rep == null) {
-        throw Exception('Representation is null');
-      }
-
+      final rep = await messageEvent!.l1Respresentation();
       widget.overlayController.setTranslation(rep.text);
     } catch (e, s) {
       _translationError = e.toString();
@@ -556,12 +549,15 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final modes = widget.overlayController.showLanguageAssistance
+    final isSubscribed =
+        MatrixState.pangeaController.subscriptionController.isSubscribed;
+    List<SelectMode> modes = widget.overlayController.showLanguageAssistance
         ? messageEvent?.isAudioMessage == true
             ? audioModes
             : textModes
         : [];
 
+    if (isSubscribed == false) modes = [];
     return Material(
       type: MaterialType.transparency,
       child: SizedBox(
@@ -642,6 +638,9 @@ class MoreButton extends StatelessWidget {
       return false;
     }
 
+    final isPinned = events.length == 1 &&
+        controller.room.pinnedEventIds.contains(events.first.eventId);
+
     switch (action) {
       case MessageActions.reply:
         return events.length == 1 && controller.room.canSendDefaultMessages;
@@ -657,7 +656,9 @@ class MoreButton extends StatelessWidget {
       case MessageActions.download:
         return controller.canSaveSelectedEvent;
       case MessageActions.pin:
-        return controller.canPinSelectedEvents;
+        return controller.canPinSelectedEvents && !isPinned;
+      case MessageActions.unpin:
+        return controller.canPinSelectedEvents && isPinned;
       case MessageActions.forward:
       case MessageActions.report:
       case MessageActions.info:
@@ -733,6 +734,7 @@ class MoreButton extends StatelessWidget {
         controller.saveSelectedEvent(context);
         break;
       case MessageActions.pin:
+      case MessageActions.unpin:
         controller.pinEvent();
         break;
       case MessageActions.report:
