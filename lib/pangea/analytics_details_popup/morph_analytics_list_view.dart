@@ -36,47 +36,50 @@ class MorphAnalyticsListView extends StatelessWidget {
 
     return Padding(
       padding: padding,
-      child: CustomScrollView(
-        key: const PageStorageKey<String>('morph-analytics'),
-        slivers: [
-          const SliverToBoxAdapter(
-            child: InstructionsInlineTooltip(
-              instructionsEnum: InstructionsEnum.morphAnalyticsList,
-            ),
-          ),
-
-          if (!InstructionsEnum.morphAnalyticsList.isToggledOff)
-            const SliverToBoxAdapter(child: SizedBox(height: 16.0)),
-
+      child: Column(
+        children: [
           if (kIsWeb)
-            const SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  DownloadAnalyticsButton(),
-                ],
-              ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                DownloadAnalyticsButton(),
+              ],
             ),
+          Expanded(
+            child: CustomScrollView(
+              key: const PageStorageKey<String>('morph-analytics'),
+              slivers: [
+                const SliverToBoxAdapter(
+                  child: InstructionsInlineTooltip(
+                    instructionsEnum: InstructionsEnum.morphAnalyticsList,
+                  ),
+                ),
 
-          // Morph feature boxes
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final feature = controller.features[index];
-                return feature.displayTags.isNotEmpty
-                    ? Padding(
-                        padding: const EdgeInsets.only(bottom: 16.0),
-                        child: MorphFeatureBox(
-                          morphFeature: feature.feature,
-                          allTags: controller.morphs
-                              .getDisplayTags(feature.feature)
-                              .map((tag) => tag.toLowerCase())
-                              .toSet(),
-                        ),
-                      )
-                    : const SizedBox.shrink();
-              },
-              childCount: controller.features.length,
+                if (!InstructionsEnum.morphAnalyticsList.isToggledOff)
+                  const SliverToBoxAdapter(child: SizedBox(height: 16.0)),
+
+                // Morph feature boxes
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final feature = controller.features[index];
+                      return feature.displayTags.isNotEmpty
+                          ? Padding(
+                              padding: const EdgeInsets.only(bottom: 16.0),
+                              child: MorphFeatureBox(
+                                morphFeature: feature.feature,
+                                allTags: controller.morphs
+                                    .getDisplayTags(feature.feature)
+                                    .map((tag) => tag.toLowerCase())
+                                    .toSet(),
+                              ),
+                            )
+                          : const SizedBox.shrink();
+                    },
+                    childCount: controller.features.length,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
