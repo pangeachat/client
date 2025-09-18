@@ -4365,7 +4365,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "New course";
     },
     get$newCourseSubtitle() {
-      return "Which course template would you like to use?";
+      return "Which course plan plan would you like to use?";
     },
     get$failedToLoadCourses() {
       return "Failed to load courses";
@@ -4419,7 +4419,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Failed to load course information";
     },
     get$noCourseFound() {
-      return "No course information found";
+      return "Oh, this course needs a plan!\n\nCourse plans are a sequence of topics and conversation activities.";
     },
     additionalParticipants$1(num) {
       return "+ " + num + " others";
@@ -4568,6 +4568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseSavedSuccessfully() {
       return "Course saved successfully";
     },
+    get$addCoursePlan() {
+      return "Add a course plan";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4581,7 +4584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IDqceKf5F3egrq6+FfD9F5ylKWs="] = d.current;
+  d["p9rX91jp3ZodncEbe9G+O+CEak0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map
