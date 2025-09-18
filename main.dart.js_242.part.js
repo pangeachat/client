@@ -5,1483 +5,1483 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nNl$() {
-      return new A.L10nNl(B.canonicalizedLocale("nl"));
+    L10nKa$() {
+      return new A.L10nKa(B.canonicalizedLocale("ka"));
     },
-    L10nNl: function L10nNl(t0) {
+    L10nKa: function L10nKa(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[39], A);
-  A.L10nNl.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[34], A);
+  A.L10nKa.prototype = {
     get$alwaysUse24HourFormat() {
-      return "true";
+      return "false";
     },
     get$repeatPassword() {
-      return "Wachtwoord herhalen";
+      return "\u10d2\u10d0\u10d8\u10db\u10d4\u10dd\u10e0\u10d4\u10d7 \u10de\u10d0\u10e0\u10dd\u10da\u10d8";
     },
     get$notAnImage() {
-      return "Geen afbeeldingsbestand.";
+      return "\u10e4\u10d0\u10d8\u10da\u10d8 \u10d0\u10e0\u10d0\u10d0 \u10e1\u10e3\u10e0\u10d0\u10d7\u10d8.";
     },
     get$setCustomPermissionLevel() {
-      return "Aangepast rechten-niveau instellen";
+      return "Set custom permission level";
     },
     get$setPermissionsLevelDescription() {
-      return "Kies hieronder een standaard rol of voer een aangepast rechten-niveau in tussen 0 en 100.";
+      return "Please choose a predefined role below or enter a custom permission level between 0 and 100.";
     },
     get$ignoreUser() {
-      return "Persoon negeren";
+      return "Ignore user";
     },
     get$normalUser() {
-      return "Normaal persoon";
+      return "Normal user";
     },
     get$remove(_) {
-      return "Verwijder";
+      return "\u10ec\u10d0\u10e8\u10da\u10d0";
     },
     get$importNow() {
-      return "Nu importeren";
+      return "\u10d8\u10db\u10de\u10dd\u10e0\u10e2\u10d8";
     },
     get$importEmojis() {
-      return "Emoji's importeren";
+      return "\u10d4\u10db\u10dd\u10ef\u10d8\u10e1 \u10d8\u10db\u10de\u10dd\u10e0\u10e2\u10d8";
     },
     get$importFromZipFile() {
-      return "Uit zip-bestand importeren";
+      return "\u10d8\u10db\u10de\u10dd\u10e0\u10e2\u10d8 .zip \u10e4\u10d0\u10d8\u10da\u10d8\u10d3\u10d0\u10dc";
     },
     get$exportEmotePack() {
-      return "Emote-pakket als zip exporteren";
+      return "\u10d4\u10db\u10dd\u10ea\u10d8\u10d4\u10d1\u10d8\u10e1 .zip \u10e4\u10d0\u10d8\u10da\u10e8\u10d8 \u10d4\u10e5\u10e1\u10de\u10dd\u10e0\u10e2\u10d8";
     },
     get$replace(_) {
-      return "Vervang";
+      return "\u10e9\u10d0\u10dc\u10d0\u10ea\u10d5\u10da\u10d4\u10d1\u10d0";
     },
     aboutHomeserver$1(homeserver) {
-      return "Over " + homeserver;
+      return "About " + homeserver;
     },
     get$accept(_) {
-      return "Accepteren";
+      return "\u10d7\u10d0\u10dc\u10ee\u10db\u10dd\u10d1\u10d0";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " heeft de uitnodiging geaccepteerd";
+      return "\ud83d\udc4d " + username + " \u10db\u10d8\u10d8\u10e6\u10dd \u10db\u10dd\u10ec\u10d5\u10d4\u10d5\u10d0";
     },
     get$account() {
-      return "Account";
+      return "\u10d0\u10dc\u10d2\u10d0\u10e0\u10d8\u10e8\u10d8";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " heeft eind-tot-eindversleuteling geactiveerd";
+      return "\ud83d\udd10 " + username + " \u10d2\u10d0\u10d0\u10e5\u10e2\u10d8\u10e3\u10e0\u10d0 end to end \u10d3\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d0";
     },
     get$addEmail() {
-      return "Email toevoegen";
+      return "\u10d4\u10da.\u10e4\u10dd\u10e1\u10e2\u10d8\u10e1 \u10d3\u10d0\u10db\u10d0\u10e2\u10d4\u10d1\u10d0";
     },
     supposedMxid$1(mxid) {
-      return "Dit moet " + mxid + " zijn";
+      return "\u10d4\u10e1 \u10e3\u10dc\u10d3\u10d0 \u10d8\u10e7\u10dd\u10e1 " + mxid;
     },
     get$admin() {
-      return "Beheerder";
+      return "\u10d0\u10d3\u10db\u10d8\u10dc\u10d8";
     },
     get$commandHint_roomupgrade() {
-      return "Upgradeer deze kamer naar de aangegeven kamerversie";
+      return "Upgrade this room to the given room version";
     },
     get$commandHint_googly() {
-      return "Wiebel-ogen versturen";
+      return "\u10d2\u10d0\u10db\u10dd\u10e8\u10e2\u10d4\u10e0\u10d8\u10da\u10d8 \u10d7\u10d5\u10d0\u10da\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_cuddle() {
-      return "Een knuffel versturen";
+      return "\u10e9\u10d0\u10ee\u10e3\u10e2\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_hug() {
-      return "Een knuffel versturen";
+      return "\u10db\u10d4\u10d2\u10dd\u10d1\u10e0\u10e3\u10da\u10d8 \u10e9\u10d0\u10ee\u10e3\u10e2\u10d5\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " stuurt je wiebelogen";
+      return senderName + " \u10d2\u10d0\u10db\u10dd\u10e8\u10e2\u10d4\u10e0\u10d8\u10da \u10d7\u10d5\u10d0\u10da\u10d4\u10d1\u10e1 \u10d2\u10d8\u10d2\u10d6\u10d0\u10d5\u10dc\u10d8\u10e1";
     },
     cuddleContent$1(senderName) {
-      return senderName + " knuffelt je";
+      return senderName + " \u10d2\u10d4\u10ee\u10e3\u10e2\u10d4\u10d1\u10d0";
     },
     hugContent$1(senderName) {
-      return senderName + " omhelst je";
+      return senderName + " \u10db\u10d4\u10d2\u10dd\u10d1\u10e0\u10e3\u10da\u10d0\u10d3 \u10d2\u10d4\u10ee\u10e3\u10e2\u10d4\u10d1\u10d0";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " heeft de oproep beantwoord";
+      return senderName + " \u10e3\u10de\u10d0\u10e1\u10e3\u10ee\u10d0 \u10d6\u10d0\u10e0\u10e1";
     },
     get$anyoneCanJoin() {
-      return "Iedereen kan toetreden";
+      return "\u10e7\u10d5\u10d4\u10da\u10d0\u10e1 \u10e8\u10d4\u10e3\u10eb\u10da\u10d8\u10d0 \u10d2\u10d0\u10ec\u10d4\u10d5\u10e0\u10d8\u10d0\u10dc\u10d4\u10d1\u10d0";
     },
     get$archive() {
-      return "Archief";
+      return "\u10d0\u10e0\u10e5\u10d8\u10d5\u10d8";
     },
     get$areYouSure() {
-      return "Weet je het zeker?";
+      return "\u10d3\u10d0\u10e0\u10ec\u10db\u10e3\u10dc\u10d4\u10d1\u10e3\u10da\u10d8 \u10ee\u10d0\u10e0\u10d7?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Weet je zeker dat je wilt uitloggen?";
+      return "\u10d3\u10d0\u10e0\u10ec\u10db\u10e3\u10dc\u10d4\u10d1\u10e3\u10da\u10d8 \u10ee\u10d0\u10e0\u10d7, \u10e0\u10dd\u10db \u10d2\u10d0\u10db\u10dd\u10e1\u10d5\u10da\u10d0 \u10d2\u10e1\u10e3\u10e0\u10d7?";
     },
     get$askSSSSSign() {
-      return "Voer je beveiligde opslag wachtwoordzin of herstelsleutel in om de andere persoon te kunnen ondertekenen.";
+      return "\u10e1\u10ee\u10d5\u10d0 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1 \u10d3\u10d0\u10d3\u10d0\u10e1\u10e2\u10e3\u10e0\u10d4\u10d1\u10da\u10d0\u10d3, \u10d2\u10d7\u10ee\u10dd\u10d5\u10d7, \u10e9\u10d0\u10ec\u10d4\u10e0\u10dd\u10d7 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10d0\u10dc \u10e1\u10d0\u10d8\u10d3\u10e3\u10db\u10da\u10dd \u10e4\u10e0\u10d0\u10d6\u10d0, \u10d0\u10dc \u10d0\u10e6\u10d3\u10d2\u10d4\u10dc\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10e6\u10d4\u10d1\u10d8.";
     },
     askVerificationRequest$1(username) {
-      return "Accepteer je dit verificatieverzoek van " + username + "?";
+      return "\u10db\u10d8\u10d8\u10e6\u10d4\u10d1\u10d7 " + username + " \u10d3\u10d0\u10d3\u10d0\u10e1\u10e2\u10e3\u10e0\u10d4\u10d1\u10d8\u10e1 \u10db\u10dd\u10d7\u10ee\u10dd\u10d5\u10dc\u10d0\u10e1?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "De homeserver ondersteunt de login types:\n" + serverVersions + "\nMaar deze app ondersteunt alleen:\n" + supportedVersions;
+      return "\u10d0\u10db \u10e1\u10d4\u10e0\u10d5\u10d4\u10e0\u10e1 \u10d0\u10e5\u10d5\u10e1 \u10e8\u10d4\u10e1\u10d5\u10da\u10d8\u10e1 \u10db\u10d4\u10d7\u10dd\u10d3\u10d4\u10d1\u10d8\u10e1 \u10db\u10ee\u10d0\u10e0\u10d3\u10d0\u10ed\u10d4\u10e0\u10d0:\n" + serverVersions + "\n\u10db\u10d0\u10d2\u10e0\u10d0\u10db \u10d0\u10db \u10d0\u10de\u10da\u10d8\u10d9\u10d0\u10ea\u10d8\u10d0\u10e1 \u10d0\u10e5\u10d5\u10e1 \u10db\u10ee\u10d0\u10e0\u10d3\u10d0\u10ed\u10d4\u10e0\u10d0 \u10db\u10ee\u10dd\u10da\u10dd\u10d3:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Typemeldingen verzenden";
+      return "\u10ec\u10d4\u10e0\u10d8\u10e1 \u10e8\u10d4\u10e2\u10e7\u10dd\u10d1\u10d8\u10dc\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$swipeRightToLeftToReply() {
-      return "Veeg van rechts naar links om te reageren";
+      return "Swipe right to left to reply";
     },
     get$sendOnEnter() {
-      return "Verstuur met enter";
+      return "\u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0 enter-\u10d8\u10e1 \u10d3\u10d0\u10ed\u10d4\u10e0\u10d8\u10e1\u10d0\u10e1";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " chats en " + participants + " deelnemers";
+      return "" + chats + " chats and " + participants + " participants";
     },
     get$noMoreChatsFound() {
-      return "Geen chats gevonden...";
+      return "No more chats found...";
     },
     get$banFromChat() {
-      return "Van chat verbannen";
+      return "\u10e9\u10d0\u10e2\u10d8\u10d3\u10d0\u10dc \u10d2\u10d0\u10d2\u10d3\u10d4\u10d1\u10d0 \u10d3\u10d0 \u10d1\u10da\u10dd\u10d9\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     get$banned() {
-      return "Verbannen";
+      return "\u10d3\u10d0\u10d1\u10da\u10dd\u10d9\u10d8\u10da\u10d8\u10d0";
     },
     bannedUser$2(username, targetName) {
-      return username + " verbant " + targetName;
+      return username + " \u10d3\u10d0\u10d1\u10da\u10dd\u10d9\u10d0 " + targetName;
     },
     get$blockDevice() {
-      return "Apparaat blokkeren";
+      return "\u10db\u10dd\u10ec\u10e7\u10dd\u10d1\u10d8\u10da\u10d4\u10d1\u10d8\u10e1 \u10d1\u10da\u10dd\u10d9\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     get$blocked() {
-      return "Geblokkeerd";
+      return "\u10d3\u10d0\u10d1\u10da\u10dd\u10d9\u10d8\u10da\u10d8\u10d0";
     },
     get$cancel(_) {
-      return "Annuleren";
+      return "\u10d2\u10d0\u10e3\u10e5\u10db\u10d4\u10d1\u10d0";
     },
     cantOpenUri$1(uri) {
-      return "Kan de URI " + uri + " niet openen";
+      return "\u10d5\u10d4\u10e0 \u10d8\u10ee\u10e1\u10dc\u10d4\u10d1\u10d0 \u10d1\u10db\u10e3\u10da\u10d8 " + uri;
     },
     get$changeDeviceName() {
-      return "Apparaatnaam wijzigen";
+      return "\u10db\u10dd\u10ec\u10e7\u10dd\u10d1\u10d8\u10da\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10d3\u10d0\u10e0\u10e5\u10db\u10d4\u10d5\u10d0";
     },
     changedTheChatAvatar$1(username) {
-      return username + " heeft de chatavatar gewijzigd";
+      return username + " \u10e9\u10d0\u10e2\u10d8\u10e1 \u10e4\u10dd\u10e2\u10dd \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " heeft de chatomschrijving gewijzigd in: '" + description + "'";
+      return username + " \u10e9\u10d0\u10e2\u10d8\u10e1 \u10d0\u10ee\u10d0\u10da\u10d8 \u10d0\u10e6\u10ec\u10d4\u10e0\u10d8\u10da\u10dd\u10d1\u10d0 \u10d3\u10d0\u10d0\u10e7\u10d4\u10dc\u10d0: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " heeft de chatnaam gewijzigd in: '" + chatname + "'";
+      return username + " \u10e9\u10d0\u10e2\u10d8 \u10d2\u10d0\u10d3\u10d0\u10d0\u10e0\u10e5\u10d5\u10d0: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " heeft de chatrechten gewijzigd";
+      return username + " \u10e9\u10d0\u10e2\u10d8\u10e1 \u10e3\u10e4\u10da\u10d4\u10d1\u10d4\u10d1\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + "'s naam is nu '" + displayname + "'";
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10dc\u10d0\u10e9\u10d5\u10d4\u10dc\u10d4\u10d1\u10d8 \u10e1\u10d0\u10ee\u10d4\u10da\u10d8: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " heeft de toegangsregels voor gasten gewijzigd";
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10e1\u10e2\u10e3\u10db\u10e0\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d5\u10d3\u10dd\u10db\u10d8\u10e1 \u10ec\u10d4\u10e1\u10d4\u10d1\u10d8";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " heeft de gastenregels gewijzigd in: " + rules;
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10e1\u10e2\u10e3\u10db\u10e0\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d5\u10d3\u10dd\u10db\u10d8\u10e1 \u10ec\u10d4\u10e1\u10d4\u10d1\u10d8: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " heeft de zichtbaarheid van de geschiedenis gewijzigd";
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10d8\u10e1\u10e2\u10dd\u10e0\u10d8\u10d8\u10e1 \u10ee\u10d8\u10da\u10d5\u10d0\u10d3\u10dd\u10d1\u10d0";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " heeft de zichtbaarheid van de geschiedenis gewijzigd in: " + rules;
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10d8\u10e1\u10e2\u10dd\u10e0\u10d8\u10d8\u10e1 \u10ee\u10d8\u10da\u10d5\u10d0\u10d3\u10dd\u10d1\u10d0: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " heeft de toetredingsregels gewijzigd";
+      return username + " \u10d2\u10d0\u10ec\u10d4\u10d5\u10e0\u10d8\u10d0\u10dc\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d4\u10e1\u10d4\u10d1\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " heeft de toetredingsregels gewijzigd in: " + joinRules;
+      return username + " \u10d2\u10d0\u10ec\u10d4\u10d5\u10e0\u10d8\u10d0\u10dc\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d4\u10e1\u10d4\u10d1\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + "'s avatar is gewijzigd";
+      return username + " \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0 \u10de\u10e0\u10dd\u10e4\u10d8\u10da\u10d8\u10e1 \u10e4\u10dd\u10e2\u10dd";
     },
     changedTheRoomAliases$1(username) {
-      return username + " heeft de kameraliassen gewijzigd";
+      return username + " \u10dd\u10d7\u10d0\u10ee\u10d8\u10e1 \u10db\u10d4\u10e2\u10e1\u10d0\u10ee\u10d4\u10da\u10d4\u10d1\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " heeft de uitnodigingslink gewijzigd";
+      return username + " \u10db\u10dd\u10ec\u10d5\u10d4\u10d5\u10d8\u10e1 \u10d1\u10db\u10e3\u10da\u10d8 \u10e8\u10d4\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     get$changePassword() {
-      return "Wachtwoord wijzigen";
+      return "\u10de\u10d0\u10e0\u10dd\u10da\u10d8\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$changeTheme() {
-      return "Je stijl veranderen";
+      return "\u10e1\u10e2\u10d8\u10da\u10d8\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$changeYourAvatar() {
-      return "Jouw avatar veranderen";
+      return "\u10de\u10e0\u10dd\u10e4\u10d8\u10da\u10d8\u10e1 \u10e4\u10dd\u10e2\u10dd\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$channelCorruptedDecryptError() {
-      return "De versleuteling is beschadigd";
+      return "\u10d3\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d0 \u10d3\u10d0\u10d6\u10d8\u10d0\u10dc\u10d3\u10d0";
     },
     get$chat() {
-      return "Chat";
+      return "\u10e9\u10d0\u10e2\u10d8";
     },
     get$chatDetails() {
-      return "Chatdetails";
+      return "\u10e9\u10d0\u10e2\u10d8\u10e1 \u10d3\u10d4\u10e2\u10d0\u10da\u10d4\u10d1\u10d8";
     },
     get$chats() {
-      return "Chats";
+      return "\u10e9\u10d0\u10e2\u10d4\u10d1\u10d8";
     },
     get$chooseAStrongPassword() {
-      return "Kies een sterk wachtwoord";
+      return "\u10eb\u10da\u10d8\u10d4\u10e0\u10d8 \u10de\u10d0\u10e0\u10dd\u10da\u10d8 \u10d0\u10d0\u10e0\u10e9\u10d8\u10d4\u10d7";
     },
     get$clearArchive() {
-      return "Archief wissen";
+      return "\u10d0\u10e0\u10e5\u10d8\u10d5\u10d8\u10e1 \u10d2\u10d0\u10ec\u10db\u10d4\u10dc\u10d3\u10d0";
     },
     get$close(_) {
-      return "Sluiten";
+      return "\u10d3\u10d0\u10ee\u10e3\u10e0\u10d5\u10d0";
     },
     get$commandHint_markasdm() {
-      return "Markeer als priv\xe9berichtenkamer voor Matrix ID";
+      return "Mark as direct message room for the giving Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "Markeer als groep";
+      return "\u10d0\u10e6\u10dc\u10d8\u10e8\u10d5\u10dc\u10d0, \u10e0\u10dd\u10d2\u10dd\u10e0\u10ea \u10ef\u10d2\u10e3\u10e4\u10d8\u10e1";
     },
     get$commandHint_ban() {
-      return "Persoon uit deze kamer verbannen";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1 \u10d1\u10da\u10dd\u10d9\u10d8\u10e0\u10d4\u10d1\u10d0 \u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10e8\u10d8";
     },
     get$commandHint_clearcache() {
-      return "Cache wissen";
+      return "\xad\u10e5\u10d4\u10e8\u10d8\u10e1 \u10d2\u10d0\u10ec\u10db\u10d4\u10dc\u10d3\u10d0";
     },
     get$commandHint_create() {
-      return "Maak een lege groepschat\nGebruik --no-encryption om de versleuteling uit te schakelen";
+      return "\u10ea\u10d0\u10e0\u10d8\u10d4\u10da\u10d8 \u10ef\u10d2\u10e3\u10e4\u10e3\u10e0\u10d8 \u10e9\u10d0\u10e2\u10d8\u10e1 \u10e8\u10d4\u10e5\u10db\u10dc\u10d0\n\u10d2\u10d0\u10db\u10dd\u10d8\u10e7\u10d4\u10dc\u10d4\u10d7 --no-encryption \u10d2\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10d7\u10d8\u10e8\u10d0\u10d3";
     },
     get$commandHint_discardsession() {
-      return "Sessie weggooien";
+      return "\u10e1\u10d4\u10e1\u10d8\u10d8\u10e1 \u10d2\u10d0\u10e3\u10e5\u10db\u10d4\u10d1\u10d0";
     },
     get$commandHint_dm() {
-      return "Start een directe chat\nGebruik --no-encryption om de versleuteling uit te schakelen";
+      return "\u10de\u10d8\u10e0\u10d3\u10d0\u10de\u10d8\u10e0\u10d8 \u10e9\u10d0\u10e2\u10d8\u10e1 \u10d3\u10d0\u10ec\u10e7\u10d4\u10d1\u10d0\n\u10d2\u10d0\u10db\u10dd\u10d8\u10e7\u10d4\u10dc\u10d4\u10d7 --no-encryption \u10d2\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10d7\u10d8\u10e8\u10d0\u10d3";
     },
     get$commandHint_html() {
-      return "Tekst met HTML-opmaak versturen";
+      return "HTML \u10e4\u10dd\u10e0\u10db\u10d0\u10e2\u10d8\u10e0\u10d4\u10d1\u10e3\u10da\u10d8 \u10e2\u10d4\u10e5\u10e1\u10e2\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_invite() {
-      return "Persoon in deze kamer uitnodigen";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1 \u10db\u10dd\u10ec\u10d5\u10d4\u10d5\u10d0 \u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10e8\u10d8";
     },
     get$commandHint_join() {
-      return "Toetreden tot de vermelde kamer";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da \u10dd\u10d7\u10d0\u10ee\u10e8\u10d8 \u10d2\u10d0\u10ec\u10d4\u10d5\u10e0\u10d8\u10d0\u10dc\u10d4\u10d1\u10d0";
     },
     get$commandHint_kick() {
-      return "Persoon uit deze kamer verwijderen";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1 \u10ec\u10d0\u10e8\u10da\u10d0 \u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10d8\u10d3\u10d0\u10dc";
     },
     get$commandHint_leave() {
-      return "Deze kamer verlaten";
+      return "\u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10d8\u10d3\u10d0\u10dc \u10d2\u10d0\u10e1\u10d5\u10da\u10d0";
     },
     get$commandHint_me() {
-      return "Beschrijf jezelf";
+      return "\u10d0\u10e6\u10ec\u10d4\u10e0\u10d4\u10d7 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10d7\u10d0\u10d5\u10d8";
     },
     get$commandHint_myroomavatar() {
-      return "Jouw avatar voor deze kamer instellen (met mxc-uri)";
+      return "\u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10e4\u10dd\u10e2\u10dd\u10e1 \u10d3\u10d0\u10e7\u10d4\u10dc\u10d4\u10d1\u10d0 \u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10d8\u10e1\u10d0\u10d7\u10d5\u10d8\u10e1(mxc-uri-\u10e1 \u10d3\u10d0\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10d8\u10d7)";
     },
     get$commandHint_myroomnick() {
-      return "Jouw naam voor deze kamer instellen";
+      return "\u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10d8\u10e1\u10d0\u10d7\u10d5\u10d8\u10e1 \u10dc\u10d0\u10e9\u10d5\u10d4\u10dc\u10d4\u10d1\u10d8 \u10e1\u10d0\u10ee\u10d4\u10da\u10d8\u10e1 \u10d3\u10d0\u10e7\u10d4\u10dc\u10d4\u10d1\u10d0";
     },
     get$commandHint_op() {
-      return "Machtsniveau van de persoon instellen (standaard: 50)";
+      return "\u10db\u10dd\u10ea\u10d4\u10db\u10e3\u10da\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1\u10d0\u10d7\u10d5\u10d8\u10e1 \u10e3\u10e4\u10da\u10d4\u10d1\u10d4\u10d1\u10d8\u10e1 \u10d3\u10dd\u10dc\u10d8\u10e1 \u10d3\u10d0\u10e7\u10d4\u10dc\u10d4\u10d1\u10d0 (\u10e9\u10d5\u10d4\u10e3\u10da\u10d4\u10d1\u10e0\u10d8\u10d5: 50)";
     },
     get$commandHint_plain() {
-      return "Niet-opgemaakte tekst versturen";
+      return "\u10d0\u10e0\u10d0\u10e4\u10dd\u10e0\u10db\u10d0\u10e2\u10d8\u10e0\u10d4\u10d1\u10e3\u10da\u10d8 \u10e2\u10d4\u10e5\u10e1\u10e2\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_react() {
-      return "Antwoord als reactie versturen";
+      return "\u10e0\u10d4\u10d0\u10e5\u10ea\u10d8\u10d8\u10e1 \u10e1\u10d0\u10ee\u10d8\u10d7 \u10de\u10d0\u10e1\u10e3\u10ee\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_send() {
-      return "Tekst versturen";
+      return "\u10e2\u10d4\u10e5\u10e1\u10e2\u10d8\u10e1 \u10d2\u10d0\u10d2\u10d6\u10d0\u10d5\u10dc\u10d0";
     },
     get$commandHint_unban() {
-      return "Persoon weer in deze kamer toestaan";
+      return "\u10d0\u10db \u10dd\u10d7\u10d0\u10ee\u10e8\u10d8 \u10db\u10dd\u10db\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10da\u10d8\u10e1\u10d2\u10d0\u10dc \u10d1\u10da\u10dd\u10d9\u10d8\u10e1 \u10db\u10dd\u10ee\u10e1\u10dc\u10d0";
     },
     get$compareEmojiMatch() {
-      return "Vergelijk de emoji's";
+      return "\u10d2\u10d7\u10ee\u10dd\u10d5\u10d7, \u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10dd\u10d7 \u10d4\u10e1 \u10d4\u10db\u10dd\u10ef\u10d8";
     },
     get$compareNumbersMatch() {
-      return "Vergelijk de cijfers";
+      return "\u10d2\u10d7\u10ee\u10dd\u10d5\u10d7, \u10e8\u10d4\u10d0\u10d3\u10d0\u10e0\u10dd\u10d7 \u10d4\u10e1 \u10e0\u10d8\u10ea\u10ee\u10d5\u10d4\u10d1\u10d8";
     },
     get$configureChat() {
-      return "Chat configureren";
+      return "\u10e9\u10d0\u10e2\u10d8\u10e1 \u10d9\u10dd\u10dc\u10e4\u10d8\u10d2\u10e3\u10e0\u10d0\u10ea\u10d8\u10d0";
     },
     get$confirm(_) {
-      return "Bevestigen";
+      return "\u10d3\u10d0\u10d3\u10d0\u10e1\u10e2\u10e3\u10e0\u10d4\u10d1\u10d0";
     },
     get$copiedToClipboard() {
-      return "Gekopieerd naar klembord";
+      return "\u10d9\u10dd\u10de\u10d8\u10e0\u10d4\u10d1\u10e3\u10da\u10d8\u10d0 \u10d1\u10e3\u10e4\u10d4\u10e0\u10e8\u10d8";
     },
     get$copy(_) {
-      return "Bericht kopi\xebren";
+      return "\u10d9\u10dd\u10de\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     couldNotDecryptMessage$1(error) {
-      return "Kan het bericht niet ontsleutelen: " + error;
+      return "\u10e8\u10d4\u10e2\u10e7\u10dd\u10d1\u10d8\u10dc\u10d4\u10d1\u10d8\u10e1 \u10d2\u10d0\u10e8\u10d8\u10e4\u10d5\u10e0\u10d8\u10e1 \u10e8\u10d4\u10ea\u10d3\u10dd\u10db\u10d0: " + error;
     },
     get$checkList() {
-      return "Checklist";
+      return "Check list";
     },
     countParticipants$1(count) {
-      return "" + count + " personen";
+      return "" + count + " \u10db\u10dd\u10dc\u10d0\u10ec\u10d8\u10da\u10d4";
     },
     countInvited$1(count) {
-      return "" + count + " uitgenodigd";
+      return "" + count + " invited";
     },
     get$create(_) {
-      return "Aanmaken";
+      return "\u10e8\u10d4\u10e5\u10db\u10dc\u10d0";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " heeft de chat gemaakt";
+      return "\ud83d\udcac " + username + " \u10e8\u10d4\u10e5\u10db\u10dc\u10d0 \u10e9\u10d0\u10e2\u10d8";
     },
     get$createGroup() {
-      return "Groep aanmaken";
+      return "\u10ef\u10d2\u10e3\u10e4\u10d8\u10e1 \u10e8\u10d4\u10e5\u10db\u10dc\u10d0";
     },
     get$currentlyActive() {
-      return "Momenteel actief";
+      return "\u10d0\u10ee\u10da\u10d0 \u10d0\u10e5\u10e2\u10d8\u10e3\u10e0\u10d8\u10d0";
     },
     get$darkTheme() {
-      return "Donker";
+      return "\u10d1\u10dc\u10d4\u10da\u10d8";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Hierdoor wordt je account gedeactiveerd. Dit kan niet ongedaan gemaakt worden! Weet je het zeker?";
+      return "\u10d4\u10e1 \u10d2\u10d0\u10d0\u10e3\u10e5\u10db\u10d4\u10d1\u10e1 \u10d7\u10e5\u10d5\u10d4\u10dc\u10e1 \u10d0\u10dc\u10d2\u10d0\u10e0\u10d8\u10e8\u10e1. \u10d0\u10db\u10d8\u10e1 \u10d2\u10d0\u10e3\u10e5\u10db\u10d4\u10d1\u10d0 \u10e8\u10d4\u10e3\u10eb\u10da\u10d4\u10d1\u10d4\u10da\u10d8\u10d0. \u10d3\u10d0\u10e0\u10ec\u10db\u10e3\u10dc\u10d4\u10d1\u10e3\u10da\u10d8 \u10ee\u10d0\u10e0\u10d7?";
     },
     get$defaultPermissionLevel() {
-      return "Standaard rechten-niveau voor nieuwe personen";
+      return "\u10dc\u10d0\u10d2\u10e3\u10da\u10d8\u10e1\u10ee\u10db\u10d4\u10d5\u10d8 \u10e3\u10e4\u10da\u10d4\u10d1\u10d8\u10e1 \u10d3\u10dd\u10dc\u10d4";
     },
     get$$delete(_) {
-      return "Verwijderen";
+      return "\u10ec\u10d0\u10e8\u10da\u10d0";
     },
     get$deleteAccount() {
-      return "Account verwijderen";
+      return "\u10d0\u10dc\u10d2\u10d0\u10e0\u10d8\u10e8\u10d8\u10e1 \u10ec\u10d0\u10e8\u10da\u10d0";
     },
     get$deleteMessage() {
-      return "Bericht verwijderen";
+      return "\u10e8\u10d4\u10e2\u10e7\u10dd\u10d1\u10d8\u10dc\u10d4\u10d1\u10d8\u10e1 \u10ec\u10d0\u10e8\u10da\u10d0";
     },
     get$devices() {
-      return "Apparaten";
+      return "\u10db\u10dd\u10ec\u10e7\u10dd\u10d1\u10d8\u10da\u10d4\u10d1\u10d4\u10d1\u10d8";
     },
     get$displaynameHasBeenChanged() {
-      return "De naam is gewijzigd";
+      return "\u10dc\u10d0\u10e9\u10d5\u10d4\u10dc\u10d4\u10d1\u10d8 \u10e1\u10d0\u10ee\u10d4\u10da\u10d8 \u10e8\u10d4\u10d8\u10ea\u10d5\u10d0\u10da\u10d0";
     },
     get$downloadFile() {
-      return "Bestand downloaden";
+      return "\u10e4\u10d0\u10d8\u10da\u10d8\u10e1 \u10e9\u10d0\u10e2\u10d5\u10d8\u10e0\u10d7\u10d5\u10d0";
     },
     get$edit() {
-      return "Wijzig";
+      return "\u10e0\u10d4\u10d3\u10d0\u10e5\u10e2\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     get$editBlockedServers() {
-      return "Geblokkeerde servers wijzigen";
+      return "\u10d1\u10da\u10dd\u10d9\u10d8\u10e0\u10d4\u10d1\u10e3\u10da\u10d8 \u10e1\u10d4\u10e0\u10d5\u10d4\u10e0\u10d4\u10d1\u10d8\u10e1 \u10e0\u10d4\u10d3\u10d0\u10e5\u10e2\u10d8\u10e0\u10d4\u10d1\u10d0";
     },
     get$chatPermissions() {
-      return "Chat rechten";
+      return "\u10e9\u10d0\u10e2\u10d8\u10e1 \u10e3\u10e4\u10da\u10d4\u10d1\u10d4\u10d1\u10d8";
     },
     get$editDisplayname() {
-      return "Naam wijzigen";
+      return "\u10dc\u10d0\u10e9\u10d5\u10d4\u10dc\u10d4\u10d1\u10d8 \u10e1\u10d0\u10ee\u10d4\u10da\u10d8\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$editRoomAvatar() {
-      return "Kameravatar wijzigen";
+      return "\u10dd\u10d7\u10d0\u10ee\u10d8\u10e1 \u10e4\u10dd\u10e2\u10dd\u10e1 \u10e8\u10d4\u10ea\u10d5\u10da\u10d0";
     },
     get$emoteExists() {
-      return "Emoticon bestaat al!";
+      return "\u10d4\u10e1 \u10d4\u10db\u10dd\u10ea\u10d8\u10d0 \u10e3\u10d9\u10d5\u10d4 \u10d0\u10e0\u10e1\u10d4\u10d1\u10dd\u10d1\u10e1!";
     },
     get$emoteInvalid() {
-      return "Ongeldige emoticon korte code!";
+      return "\u10d4\u10db\u10dd\u10ea\u10d8\u10d8\u10e1 \u10d0\u10e0\u10d0\u10e1\u10ec\u10dd\u10e0\u10d8 \u10db\u10dd\u10d9\u10da\u10d4 \u10d9\u10dd\u10d3\u10d8!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Recent gebruikte emoticons zullen hier verschijnen...";
+      return "Recently-used emotes will appear here...";
     },
     get$emotePacks() {
-      return "Emoticonpakketten voor de kamer";
+      return "Emote packs for room";
     },
     get$customEmojisAndStickers() {
-      return "Aangepaste emoticons en stickers";
+      return "Custom emojis and stickers";
     },
     get$emoteShortcode() {
-      return "Emoticon korte code";
+      return "Emote shortcode";
     },
     get$emoteWarnNeedToPick() {
-      return "Je moet een emoticon korte code en afbeelding kiezen!";
+      return "You need to pick an emote shortcode and an image!";
     },
     get$emptyChat() {
-      return "Lege chat";
+      return "Empty chat";
     },
     get$enableEmotesGlobally() {
-      return "Emoticonpakket overal inschakelen";
+      return "Enable emote pack globally";
     },
     get$enableEncryption() {
-      return "Versleuteling inschakelen";
+      return "Enable encryption";
     },
     get$encrypted() {
-      return "Versleuteld";
+      return "Encrypted";
     },
     get$encryptionNotEnabled() {
-      return "Versleuteling is niet ingeschakeld";
+      return "Encryption is not enabled";
     },
     endedTheCall$1(senderName) {
-      return senderName + " heeft het gesprek be\xebindigd";
+      return senderName + " ended the call";
     },
     get$enterAnEmailAddress() {
-      return "Voer een email in";
+      return "Enter an email address";
     },
     errorObtainingLocation$1(error) {
-      return "Locatie ophalen fout: " + error;
+      return "Error obtaining location: " + error;
     },
     get$fontSize(_) {
-      return "Lettergrootte";
+      return "Font size";
     },
     get$forward(_) {
-      return "Stuur door";
+      return "Forward";
     },
     get$fromJoining() {
-      return "Vanaf toetreden";
+      return "From joining";
     },
     get$fromTheInvitation() {
-      return "Vanaf uitnodiging";
+      return "From the invitation";
     },
     get$guestsAreForbidden() {
-      return "Gasten zijn verboden";
+      return "Guests are forbidden";
     },
     get$guestsCanJoin() {
-      return "Gasten kunnen deelnemen";
+      return "Guests can join";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + " heeft de uitnodiging voor " + targetName + " ingetrokken";
+      return username + " has withdrawn the invitation for " + targetName;
     },
     get$help() {
       return "Help";
     },
     get$hideRedactedMessages() {
-      return "Verberg verwijderde berichten";
+      return "Hide redacted messages";
     },
     get$hideRedactedMessagesBody() {
-      return "Als iemand een bericht verwijdert, is dit bericht niet meer zichtbaar in de chat.";
+      return "If someone redacts a message, this message won't be visible in the chat anymore.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Verberg ongeldige of onbekende berichtformaten";
+      return "Hide invalid or unknown message formats";
     },
     get$block() {
-      return "Blokkeren";
+      return "Block";
     },
     get$blockedUsers() {
-      return "Geblokkeerde personen";
+      return "Blocked users";
     },
     get$blockListDescription() {
-      return "Je kunt personen blokkeren die je lastig vallen. Je kan dan geen berichten meer ontvangen of kameruitnodigingen krijgen van de personen op je blokkeerlijst.";
+      return "You can block users who are disturbing you. You won't be able to receive any messages or room invites from the users on your personal block list.";
     },
     get$blockUsername() {
-      return "Negeer inlognaam";
+      return "Ignore username";
     },
     get$iHaveClickedOnLink() {
-      return "Ik heb op de link geklikt";
+      return "I have clicked on the link";
     },
     get$incorrectPassphraseOrKey() {
-      return "Onjuiste wachtwoordzin of herstelsleutel";
+      return "Incorrect passphrase or recovery key";
     },
     get$inviteContact() {
-      return "Contact uitnodigen";
+      return "Invite contact";
     },
     get$noChatDescriptionYet() {
-      return "Nog geen chatomschrijving gemaakt.";
+      return "No chat description created yet.";
     },
     get$tryAgain() {
-      return "Opnieuw proberen";
+      return "Try again";
     },
     get$invited() {
-      return "Uitgenodigd";
+      return "Invited";
     },
     get$redactMessageDescription() {
-      return "Het bericht zal worden aangepast voor alle deelnemers in dit gesprek. Dit kan niet ongedaan gemaakt worden.";
+      return "The message will be redacted for all participants in this conversation. This cannot be undone.";
     },
     get$optionalRedactReason() {
-      return "(Optioneel) Reden voor aanpassing van dit bericht...";
+      return "(Optional) Reason for redacting this message...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + " heeft " + targetName + " uitgenodigd";
+      return "\ud83d\udce9 " + username + " invited " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Alleen uitgenodigde personen";
+      return "Invited users only";
     },
     get$inviteForMe() {
-      return "Persoonlijke uitnodiging";
+      return "Invite for me";
     },
     get$isTyping() {
-      return "is aan het typen\u2026";
+      return "is typing\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " is toegetreden tot de chat";
+      return "\ud83d\udc4b " + username + " joined the chat";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + " heeft " + targetName + " verwijderd";
+      return "\ud83d\udc5e " + username + " kicked " + targetName;
     },
     get$kickFromChat() {
-      return "Uit chat verwijderen";
+      return "Kick from chat";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Laatst actief: " + localizedTimeShort;
+      return "Last active: " + localizedTimeShort;
     },
     get$leave() {
-      return "Chat verlaten";
+      return "Leave";
     },
     get$leftTheChat() {
-      return "Verliet de chat";
+      return "Left the chat";
     },
     get$lightTheme() {
-      return "Licht";
+      return "Light";
     },
     get$dehydrate() {
-      return "Sessie exporteren en apparaat wissen";
+      return "Export session and wipe device";
     },
     get$dehydrateWarning() {
-      return "Deze actie kan niet ongedaan worden gemaakt. Zorg ervoor dat je het back-upbestand veilig opslaat.";
+      return "This action cannot be undone. Ensure you safely store the backup file.";
     },
     get$dehydrateTor() {
-      return "TOR-sessies: Exporteer sessie";
+      return "TOR Users: Export session";
     },
     get$dehydrateTorLong() {
-      return "Voor TOR-sessies is het aanbevolen de sessie te exporteren alvorens het venster te sluiten.";
+      return "For TOR users, it is recommended to export the session before closing the window.";
     },
     get$loadingPleaseWait() {
-      return "Bezig met laden\u2026 Even geduld.";
+      return "Loading\u2026 Please wait.";
     },
     get$loadMore() {
-      return "Meer laden\u2026";
+      return "Load more\u2026";
     },
     get$locationDisabledNotice() {
-      return "Locatievoorzieningen is uitgeschakeld. Zet dit eerst aan om je locatie te delen.";
+      return "Location services are disabled. Please enable them to be able to share your location.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Locatie toegang is geweigerd. Geef toegang om de locatie delen-functie te gebruiken.";
+      return "Location permission denied. Please grant them to be able to share your location.";
     },
     get$logout() {
-      return "Uitloggen";
+      return "Logout";
     },
     get$mention() {
-      return "Vermeld";
+      return "Mention";
     },
     get$messages() {
-      return "Berichten";
+      return "Messages";
     },
     get$messagesStyle() {
-      return "Berichten:";
+      return "Messages:";
     },
     get$moderator() {
       return "Moderator";
     },
     get$newChat() {
-      return "Nieuwe chat";
+      return "New chat";
     },
     get$newVerificationRequest() {
-      return "Nieuw verificatieverzoek!";
+      return "New verification request!";
     },
     get$next(_) {
-      return "Volgende";
+      return "Next";
     },
     get$no() {
-      return "Nee";
+      return "No";
     },
     get$noConnectionToTheServer() {
-      return "Geen verbinding met de server";
+      return "No connection to the server";
     },
     get$noEmotesFound() {
-      return "Geen emoticons gevonden. \ud83d\ude15";
+      return "No emotes found. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Uitnodigingslink delen";
+      return "Share invite link";
     },
     get$none() {
-      return "Geen";
+      return "None";
     },
     get$noPasswordRecoveryDescription() {
-      return "Je hebt nog geen manier toegevoegd om je wachtwoord te herstellen.";
+      return "You have not added a way to recover your password yet.";
     },
     get$noPermission() {
-      return "Geen toestemming";
+      return "No permission";
     },
     get$noRoomsFound() {
-      return "Geen kamers gevonden \u2026";
+      return "No rooms found\u2026";
     },
     get$notifications() {
-      return "Meldingen";
+      return "Notifications";
     },
     get$obtainingLocation() {
-      return "Locatie ophalen\u2026";
+      return "Obtaining location\u2026";
     },
     get$offensive() {
-      return "Beledigend";
+      return "Offensive";
     },
     get$ok() {
-      return "OK";
+      return "Ok";
     },
     get$oopsSomethingWentWrong() {
-      return "Oeps, er ging iets mis\u2026";
+      return "Oops, something went wrong\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\xc9\xe9n van jouw apparaten is uitgelogd";
+      return "One of your clients has been logged out";
     },
     get$openInMaps() {
-      return "In kaarten openen";
+      return "Open in maps";
     },
     get$link() {
       return "Link";
     },
     get$serverRequiresEmail() {
-      return "Deze server wil je email laten bevestigen bij de registratie.";
+      return "This server needs to validate your email address for registration.";
     },
     get$or() {
-      return "Of";
+      return "Or";
     },
     get$participant() {
-      return "Personen";
+      return "Participant";
     },
     get$passphraseOrKey() {
-      return "wachtwoordzin of herstelsleutel";
+      return "passphrase or recovery key";
     },
     get$password(_) {
-      return "Wachtwoord";
+      return "Password";
     },
     get$passwordForgotten() {
-      return "Wachtwoord vergeten";
+      return "Password forgotten";
     },
     get$passwordHasBeenChanged() {
-      return "Wachtwoord gewijzigd";
+      return "Password has been changed";
     },
     get$overview() {
-      return "Overzicht";
+      return "Overview";
     },
     get$passwordRecoverySettings() {
-      return "Wachtwoordherstel-instellingen";
+      return "Password recovery settings";
     },
     get$passwordRecovery() {
-      return "Wachtwoordherstel";
+      return "Password recovery";
     },
     get$pickImage() {
-      return "Kies een afbeelding";
+      return "Pick an image";
     },
     get$pin() {
       return "Pin";
     },
     get$pleaseChoose() {
-      return "Maak een keuze";
+      return "Please choose";
     },
     get$pleaseEnterYourPassword() {
-      return "Voer jouw wachtwoord in";
+      return "Please enter your password";
     },
     get$pleaseEnterYourPin() {
-      return "Voer je pincode in";
+      return "Please enter your pin";
     },
     get$pleaseEnterYourUsername() {
-      return "Voer je inlognaam in";
+      return "Please enter your username";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return "Volg de instructies op de website en tik op volgende.";
+      return "Please follow the instructions on the website and tap on next.";
     },
     get$privacy() {
       return "Privacy";
     },
     get$reason(_) {
-      return "Reden";
+      return "Reason";
     },
     redactedBy$1(username) {
-      return "Aangepast door " + username;
+      return "Redacted by " + username;
     },
     get$directChat() {
-      return "Directe chat";
+      return "Direct chat";
     },
     redactedByBecause$2(username, reason) {
-      return "Aangepast door " + username + ', reden: "' + reason + '"';
+      return "Redacted by " + username + ' because: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " heeft een event verwijderd";
+      return username + " redacted an event";
     },
     get$redactMessage() {
-      return "Aangepast bericht";
+      return "Redact message";
     },
     get$reject() {
-      return "Afwijzen";
+      return "Reject";
     },
     rejectedTheInvitation$1(username) {
-      return username + " heeft de uitnodiging afgewezen";
+      return username + " rejected the invitation";
     },
     get$removeAllOtherDevices() {
-      return "Verwijder alle andere apparaten";
+      return "Remove all other devices";
     },
     get$unbanFromChat() {
-      return "Verbanning opheffen";
+      return "Unban from chat";
     },
     get$removeYourAvatar() {
-      return "Jouw avatar verwijderen";
+      return "Remove your avatar";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Kamerversie upgraden";
+      return "Replace room with newer version";
     },
     get$reply(_) {
-      return "Antwoord";
+      return "Reply";
     },
     get$reportMessage() {
-      return "Bericht rapporteren";
+      return "Report message";
     },
     get$roomHasBeenUpgraded() {
-      return "Kamer is ge\xfcpgrade";
+      return "Room has been upgraded";
     },
     get$search(_) {
-      return "Zoeken";
+      return "Search";
     },
     get$security() {
-      return "Beveiliging";
+      return "Security";
     },
     get$send(_) {
-      return "Verstuur";
+      return "Send";
     },
     get$sendAMessage() {
-      return "Stuur een bericht";
+      return "Send a message";
     },
     get$sendAudio() {
-      return "Audio versturen";
+      return "Send audio";
     },
     get$sendFile() {
-      return "Bestand versturen";
+      return "Send file";
     },
     get$sendImage() {
-      return "Afbeelding versturen";
+      return "Send image";
     },
     sendImages$1(count) {
-      return "Stuur " + count + " afbeelding(en)";
+      return "Send " + count + " image";
     },
     get$sendMessages() {
-      return "Berichten versturen";
+      return "Send messages";
     },
     get$sendVideo() {
-      return "Video versturen";
+      return "Send video";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " heeft een bestand verzonden";
+      return "\ud83d\udcc1 " + username + " sent a file";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " heeft een audio verzonden";
+      return "\ud83c\udfa4 " + username + " sent an audio";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " heeft een afbeelding verzonden";
+      return "\ud83d\uddbc\ufe0f " + username + " sent a picture";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " heeft een sticker verzonden";
+      return "\ud83d\ude0a " + username + " sent a sticker";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " heeft een video verzonden";
+      return "\ud83c\udfa5 " + username + " sent a video";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " heeft oproepgegevens verzonden";
+      return senderName + " sent call information";
     },
     get$separateChatTypes() {
-      return "Directe chats en groepen los weergeven";
+      return "Separate Direct Chats and Groups";
     },
     get$setChatDescription() {
-      return "Chatomschrijving instellen";
+      return "Set chat description";
     },
     get$setStatus() {
-      return "Status instellen";
+      return "Set status";
     },
     get$settings() {
-      return "Instellingen";
+      return "Settings";
     },
     get$share(_) {
-      return "Delen";
+      return "Share";
     },
     sharedTheLocation$1(username) {
-      return username + " heeft deze locatie gedeeld";
+      return username + " shared their location";
     },
     get$shareLocation() {
-      return "Locatie delen";
+      return "Share location";
     },
     get$presencesToggle() {
-      return "Toon statusberichten van andere personen";
+      return "Show status messages from other users";
     },
     get$skip(_) {
-      return "Overslaan";
+      return "Skip";
     },
     get$sourceCode() {
-      return "Broncode";
+      return "Source code";
     },
     startedACall$1(senderName) {
-      return senderName + " heeft een gesprek gestart";
+      return senderName + " started a call";
     },
     get$status(_) {
       return "Status";
     },
     get$statusExampleMessage() {
-      return "Hoe gaat het met jouw vandaag?";
+      return "How are you today?";
     },
     get$submit(_) {
-      return "Indienen";
+      return "Submit";
     },
     get$synchronizingPleaseWait() {
-      return "Synchroniseren... Even geduld.";
+      return "Synchronizing\u2026 Please wait.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
-      return " Synchroniseren\u2026 (" + percentage + "%)";
+      return " Synchronizing\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Systeem";
+      return "System";
     },
     get$theyDontMatch() {
-      return "Ze komen niet overeen";
+      return "They Don't Match";
     },
     get$theyMatch() {
-      return "Ze komen overeen";
+      return "They Match";
     },
     get$tooManyRequestsWarning() {
-      return "Te veel verzoeken. Probeer het later nog eens!";
+      return "Too many requests. Please try again later!";
     },
     get$tryToSendAgain() {
-      return "Probeer nogmaals te verzenden";
+      return "Try to send again";
     },
     get$unavailable() {
-      return "Niet beschikbaar";
+      return "Unavailable";
     },
     unbannedUser$2(username, targetName) {
-      return username + " heeft verbanning " + targetName + " ongedaan gemaakt";
+      return username + " unbanned " + targetName;
     },
     get$unblockDevice() {
-      return "Deblokkeer apparaat";
+      return "Unblock Device";
     },
     get$unknownDevice() {
-      return "Onbekend apparaat";
+      return "Unknown device";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Onbekend versleutelingsalgoritme";
+      return "Unknown encryption algorithm";
     },
     unknownEvent$1(type) {
-      return "Onbekend evenement '" + type + "'";
+      return "Unknown event '" + type + "'";
     },
     get$unpin() {
-      return "Losmaken";
+      return "Unpin";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " en " + count + " anderen zijn aan het typen \u2026";
+      return username + " and " + count + " others are typing\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " en " + username2 + " zijn aan het typen \u2026";
+      return username + " and " + username2 + " are typing\u2026";
     },
     userIsTyping$1(username) {
-      return username + " is aan het typen \u2026";
+      return username + " is typing\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " is vertrokken uit de chat";
+      return "\ud83d\udeaa " + username + " left the chat";
     },
     get$username(_) {
-      return "Inlognaam";
+      return "Username";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " heeft een " + type + " -gebeurtenis gestuurd";
+      return username + " sent a " + type + " event";
     },
     get$unverified() {
-      return "Niet geverifieerd";
+      return "Unverified";
     },
     get$verified() {
-      return "Geverifieerd";
+      return "Verified";
     },
     get$verifyStart() {
-      return "Verificatie starten";
+      return "Start Verification";
     },
     get$verifySuccess() {
-      return "Je bent succesvol geverifieerd!";
+      return "You successfully verified!";
     },
     get$verifyTitle() {
-      return "Ander account verifi\xebren";
+      return "Verifying other account";
     },
     get$visibleForAllParticipants() {
-      return "Zichtbaar voor alle personen";
+      return "Visible for all participants";
     },
     get$visibleForEveryone() {
-      return "Zichtbaar voor iedereen";
+      return "Visible for everyone";
     },
     get$voiceMessage() {
-      return "Spraakbericht versturen";
+      return "Voice message";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Wachten tot partner het verzoek accepteert \u2026";
+      return "Waiting for partner to accept the request\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Wachten tot je partner de emoji accepteert\u2026";
+      return "Waiting for partner to accept the emoji\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Wachten tot partner de nummers accepteert \u2026";
+      return "Waiting for partner to accept the numbers\u2026";
     },
     get$warning() {
-      return "Waarschuwing!";
+      return "Warning!";
     },
     get$weSentYouAnEmail() {
-      return "We hebben je een email gestuurd";
+      return "We sent you an email";
     },
     get$whyDoYouWantToReportThis() {
-      return "Waarom wil je dit rapporteren?";
+      return "Why do you want to report this?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Met deze adressen kun je je wachtwoord herstellen.";
+      return "With these addresses you can recover your password.";
     },
     get$writeAMessage() {
-      return "Schrijf een bericht\u2026";
+      return "Write a message\u2026";
     },
     get$yes() {
-      return "Ja";
+      return "Yes";
     },
     get$you() {
-      return "Jij";
+      return "You";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Je neemt niet langer deel aan deze chat";
+      return "You are no longer participating in this chat";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Je bent verbannen uit deze chat";
+      return "You have been banned from this chat";
     },
     get$yourPublicKey() {
-      return "Je publieke sleutel";
+      return "Your public key";
     },
     get$messageInfo() {
-      return "Berichtinfo";
+      return "Message info";
     },
     get$time(_) {
-      return "Tijd";
+      return "Time";
     },
     get$sender() {
-      return "Afzender";
+      return "Sender";
     },
     get$openGallery() {
-      return "Galerij openen";
+      return "Open gallery";
     },
     get$start(_) {
       return "Start";
     },
     get$markAsRead() {
-      return "Markeer als gelezen";
+      return "Mark as read";
     },
     reactedWith$2(sender, reaction) {
-      return sender + " reageerde met " + reaction;
+      return sender + " reacted with " + reaction;
     },
     get$pinMessage() {
-      return "Maak vast aan kamer";
+      return "Pin to room";
     },
     get$emojis() {
-      return "Emoji's";
+      return "Emojis";
     },
     get$youRejectedTheInvitation() {
-      return "Je hebt de uitnodiging afgewezen";
+      return "You rejected the invitation";
     },
     get$youJoinedTheChat() {
-      return "Je bent toegetreden tot de chat";
+      return "You joined the chat";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Je hebt de uitnodiging geaccepteerd";
+      return "\ud83d\udc4d You accepted the invitation";
     },
     youBannedUser$1(user) {
-      return "Je hebt " + user + " verbannen";
+      return "You banned " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return "Je hebt de uitnodiging voor " + user + " ingetrokken";
+      return "You have withdrawn the invitation for " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 Je bent uitgenodigd door " + user;
+      return "\ud83d\udce9 You have been invited by " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 Je hebt " + user + " uitgenodigd";
+      return "\ud83d\udce9 You invited " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e Je hebt " + user + " weggestuurd";
+      return "\ud83d\udc5e You kicked " + user;
     },
     youUnbannedUser$1(user) {
-      return "Je hebt de ban op " + user + " opgeheven";
+      return "You unbanned " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " heeft geklopt";
+      return "\ud83d\udeaa " + user + " has knocked";
     },
     get$users() {
-      return "Personen";
+      return "Users";
     },
     countFiles$1(count) {
-      return "" + count + " bestanden";
+      return "" + count + " files";
     },
     get$user() {
-      return "Persoon";
+      return "User";
     },
     get$custom() {
-      return "Aangepast";
+      return "Custom";
     },
     get$noKeyForThisMessage() {
-      return "Dit kan gebeuren als het bericht is verzonden voordat je bij je account op dit apparaat hebt aangemeld.\n\nHet is ook mogelijk dat de afzender je apparaat heeft geblokkeerd of dat er iets mis is gegaan met de internetverbinding.\n\nKan je het bericht wel lezen op een andere sessie? Dan kan je het bericht daarvandaan overzetten! Ga naar Instellingen > Apparaten en zorg ervoor dat je apparaten elkaar hebben geverifieerd. Wanneer je de kamer de volgende keer opent en beide sessies op de voorgrond staan, zullen de sleutels automatisch worden verzonden.\n\nWil je de sleutels niet verliezen als je uitlogt of van apparaat wisselt? Zorg er dan voor dat je de chatback-up hebt aangezet in de instellingen.";
+      return "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Lege chat (was " + oldDisplayName + ")";
+      return "Empty chat (was " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Chat heropenen";
+      return "Reopen chat";
     },
     get$noOtherDevicesFound() {
-      return "Geen andere apparaten gevonden";
+      return "No other devices found";
     },
     fileIsTooBigForServer$1(max) {
-      return "Kan niet verzenden! De server ondersteunt alleen bijlages tot " + max + ".";
+      return "Unable to send! The server only supports attachments up to " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Spring naar het laatst gelezen bericht";
+      return "Jump to last read message";
     },
     get$readUpToHere() {
-      return "Lees tot hier";
+      return "Read up to here";
     },
     get$jump() {
-      return "Spring";
+      return "Jump";
     },
     get$openLinkInBrowser() {
-      return "Link in browser openen";
+      return "Open link in browser";
     },
     get$setColorTheme() {
-      return "Kleurthema instellen:";
+      return "Set color theme:";
     },
     get$invite() {
-      return "Uitnodigen";
+      return "Invite";
     },
     get$invalidInput() {
-      return "Ongeldige invoer!";
+      return "Invalid input!";
     },
     wrongPinEntered$1(seconds) {
-      return "Verkeerde pin ingevoerd! Probeer het nog eens over " + seconds + " seconden...";
+      return "Wrong pin entered! Try again in " + seconds + " seconds...";
     },
     get$pleaseEnterANumber() {
-      return "Vul een getal in groter dan 0";
+      return "Please enter a number greater than 0";
     },
     get$removeDevicesDescription() {
-      return "Je wordt op dit apparaat uitgelogd en zal niet langer in staat zijn om berichten te ontvangen.";
+      return "You will be logged out of this device and will no longer be able to receive messages.";
     },
     get$banUserDescription() {
-      return "De persoon zal worden verbannen van de chat en kan niet meer toetreden totdat de verbanning is opgeheven.";
+      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
     },
     get$unbanUserDescription() {
-      return "De persoon zal weer in staat zijn om de chat te betreden als ze het proberen.";
+      return "The user will be able to enter the chat again if they try.";
     },
     get$kickUserDescription() {
-      return "De persoon is verwijderd uit de chat, maar is niet verbannen. In openbare chats kan de persoon op elk moment opnieuw deelnemen.";
+      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
     },
     get$makeAdminDescription() {
-      return "Wanneer je deze persoon beheerder maakt kun je dit niet ongedaan maken als jullie dezelfde rechten hebben.";
+      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
     },
     get$yourGlobalUserIdIs() {
-      return "Je Matrix ID is: ";
+      return "Your global user-ID is: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Helaas kan er geen persoon gevonden worden met "' + query + '". Controleer of je een typfout hebt gemaakt.';
+      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
     },
     get$knocking() {
-      return "Kloppen";
+      return "Knocking";
     },
     get$nothingFound() {
-      return "Niets gevonden...";
+      return "Nothing found...";
     },
     get$groupName() {
-      return "Groepsnaam";
+      return "Group name";
     },
     get$wrongRecoveryKey() {
-      return "Helaas... dit lijkt niet de correcte herstelsleutel.";
+      return "Sorry... this does not seem to be the correct recovery key.";
     },
     get$startConversation() {
-      return "Start gesprek";
+      return "Start conversation";
     },
     get$commandHint_sendraw() {
-      return "Stuur kale json";
+      return "Send raw json";
     },
     get$leaveEmptyToClearStatus() {
-      return "Laat leeg om je status te resetten.";
+      return "Leave empty to clear your status.";
     },
     get$searchForUsers() {
-      return "Zoek naar @personen...";
+      return "Search for @users...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "Vul je huidige wachtwoord in";
+      return "Please enter your current password";
     },
     get$newPassword() {
-      return "Nieuw wachtwoord";
+      return "New password";
     },
     get$pleaseChooseAStrongPassword() {
-      return "Kies a.j.b. een sterk wachtwoord";
+      return "Please choose a strong password";
     },
     get$passwordsDoNotMatch() {
-      return "Wachtwoorden komen niet overeen";
+      return "Passwords do not match";
     },
     get$passwordIsWrong() {
-      return "Je ingevoerde wachtwoord is fout";
+      return "Your entered password is wrong";
     },
     get$decline() {
-      return "Weiger";
+      return "Decline";
     },
     get$thisDevice() {
-      return "Dit apparaat:";
+      return "This device:";
     },
     get$initAppError() {
-      return "Er is een fout opgetreden bij het laden van de app";
+      return "An error occured while init the app";
     },
     searchIn$1(chat) {
-      return 'Zoek in chat "' + chat + '"...';
+      return 'Search in chat "' + chat + '"...';
     },
     get$searchMore() {
-      return "Zoek meer...";
+      return "Search more...";
     },
     get$gallery() {
-      return "Galerij";
+      return "Gallery";
     },
     get$files(_) {
-      return "Bestanden";
+      return "Files";
     },
     sessionLostBody$2(url, error) {
-      return "Je sessie is verlopen. Meldt alsjeblieft deze fout aan de ontwikkelaars via deze link " + url + ". De foutmelding is: " + error;
+      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "De app probeert nu je sessie te herstellen van een back-up. Meldt alsjeblieft deze fout aan de ontwikkelaars via deze link " + url + ". De foutmelding is: " + error;
+      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
     },
     get$sendReadReceipts() {
-      return "Leesbevestigingen versturen";
+      return "Send read receipts";
     },
     get$sendTypingNotificationsDescription() {
-      return "Andere deelnemers in de chat kunnen zien wanneer je een bericht aan het typen bent.";
+      return "Other participants in a chat can see when you are typing a new message.";
     },
     get$sendReadReceiptsDescription() {
-      return "Andere deelnemers van de chat kunnen zien of je een bericht hebt gelezen.";
+      return "Other participants in a chat can see when you have read a message.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Ander apparaat verifi\xebren";
+      return "\ud83d\udd10 Verify other device";
     },
     get$verifyOtherDeviceDescription() {
-      return "Een geverifieerd ander apparaat zorgt ervoor dat de apparaten sleutels uitwisselen, wat je beveiliging versterkt. \ud83d\udcaa Als je de verificatie start verschijnt er een popup op beide apparaten. Hier staat een reeks emoji's of getallen die je met elkaar moet vergelijken. Het is handig om beide apparaten bij de hand te hebben voordat je de verificatie start. \ud83e\udd33";
+      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " accepteerde de sleutelverificatie";
+      return sender + " accepted key verification";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " annuleerde de sleutelverificatie";
+      return sender + " canceled key verification";
     },
     completedKeyVerification$1(sender) {
-      return sender + " ronde de sleutelverificatie af";
+      return sender + " completed key verification";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " is klaar voor de sleutelverificatie";
+      return sender + " is ready for key verification";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " vraagt een sleutelverificatie";
+      return sender + " requested key verification";
     },
     startedKeyVerification$1(sender) {
-      return sender + " start een sleutelverificatie";
+      return sender + " started key verification";
     },
     get$stickers() {
       return "Stickers";
     },
     get$commandHint_ignore() {
-      return "Negeer de gegeven Matrix ID";
+      return "Ignore the given matrix ID";
     },
     get$commandHint_unignore() {
-      return "Herstel de negeerde Matrix ID";
+      return "Unignore the given matrix ID";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "Momenteel zijn er " + count + " personen geblokkeerd.";
+      return "Right now there are " + count + " users blocked.";
     },
     get$restricted() {
-      return "Beperkt";
+      return "Restricted";
     },
     get$markAsUnread() {
-      return "Als ongelezen markeren";
+      return "Mark as unread";
     },
     userLevel$1(level) {
-      return "" + level + " - Persoon";
+      return "" + level + " - User";
     },
     moderatorLevel$1(level) {
       return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - Beheerder";
+      return "" + level + " - Admin";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Zichtbaarheid van de chat-geschiedenis wijzigen";
+      return "Change the visibility of the chat history";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Standaard openbaar chat-adres wijzigen";
+      return "Change the main public chat address";
     },
     get$sendRoomNotifications() {
-      return "@room-meldingen versturen";
+      return "Send a @room notifications";
     },
     get$chatPermissionsDescription() {
-      return "Stel het gewenste rechten-niveau in voor bepaalde acties in deze chat. Het rechten-niveau 0, 50 en 100 zijn gebruikelijk voor deelnemer, moderator en beheerder, maar elke verdeling is mogelijk.";
+      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 Update " + version + " ge\xefnstalleerd!";
+      return "\ud83c\udf89 Update " + version + " installed!";
     },
     get$sendCanceled() {
-      return "Versturen geannuleerd";
+      return "Sending canceled";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Dit lijkt geen ondersteunde server. Verkeerde URL?";
+      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
     },
     get$calculatingFileSize() {
-      return "Bestandsgrootte berekenen...";
+      return "Calculating file size...";
     },
     get$prepareSendingAttachment() {
-      return "Bijlage versturen voorbereiden...";
+      return "Prepare sending attachment...";
     },
     get$sendingAttachment() {
-      return "Bijlage versturen...";
+      return "Sending attachment...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Bijlage versturen " + index + " van " + $length + "...";
+      return "Sending attachment " + index + " of " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Server limiet bereikt! Wacht " + seconds + " seconden...";
+      return "Server limit reached! Waiting " + seconds + " seconds...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Opmerking: Als al je apparaten zijn verbonden met de chat back-up worden ze automatisch geverifieerd.";
+      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
     },
     get$continueText() {
-      return "Doorgaan";
+      return "Continue";
     },
     get$blur(_) {
-      return "Vervaag:";
+      return "Blur:";
     },
     get$opacity(_) {
-      return "Doorzichtigheid:";
+      return "Opacity:";
     },
     get$setWallpaper() {
-      return "Wallpaper instellen";
+      return "Set wallpaper";
     },
     get$noContactInformationProvided() {
-      return "Server geeft geen geldige contactinformatie";
+      return "Server does not provide any valid contact information";
     },
     get$contactServerAdmin() {
-      return "Contact opnemen met serverbeheerder";
+      return "Contact server admin";
     },
     get$contactServerSecurity() {
-      return "Contact opnemen met serverbeveiliger";
+      return "Contact server security";
     },
     get$supportPage() {
-      return "Supportpagina";
+      return "Support page";
     },
     get$serverInformation() {
-      return "Server-informatie:";
+      return "Server information:";
     },
     get$name(_) {
-      return "Naam";
+      return "Name";
     },
     get$version(_) {
-      return "Versie";
+      return "Version";
     },
     get$compress() {
-      return "Comprimeren";
+      return "Compress";
     },
     get$boldText() {
-      return "Vet gedrukte tekst";
+      return "Bold text";
     },
     get$italicText() {
-      return "Cursieve tekst";
+      return "Italic text";
     },
     get$strikeThrough() {
-      return "Doorhalen";
+      return "Strikethrough";
     },
     get$pleaseFillOut() {
-      return "Vul alsjeblieft in";
+      return "Please fill out";
     },
     get$invalidUrl() {
-      return "Ongeldige url";
+      return "Invalid url";
     },
     get$addLink() {
-      return "Koppeling toevoegen";
+      return "Add link";
     },
     get$unableToJoinChat() {
-      return "Kan niet toetreden tot de chat. Misschien heeft de andere partij het gesprek al afgesloten.";
+      return "Unable to join chat. Maybe the other party has already closed the conversation.";
     },
     get$previous() {
-      return "Vorige";
+      return "Previous";
     },
     get$otherPartyNotLoggedIn() {
-      return "De andere partij is momenteel niet ingelogd en kan daarom geen berichten ontvangen!";
+      return "The other party is currently not logged in and therefore cannot receive messages!";
     },
     get$open(_) {
       return "Open";
     },
     get$waitingForServer() {
-      return "Wachten op server...";
+      return "Waiting for server...";
     },
     get$newChatRequest() {
-      return "\ud83d\udce9 Nieuw chat verzoek";
+      return "\ud83d\udce9 New chat request";
     },
     get$contentNotificationSettings() {
-      return "Contentmelding instellingen";
+      return "Content notification settings";
     },
     get$generalNotificationSettings() {
-      return "Algemene melding instellingen";
+      return "General notification settings";
     },
     get$roomNotificationSettings() {
-      return "Kamermelding instellingen";
+      return "Room notification settings";
     },
     get$userSpecificNotificationSettings() {
-      return "Persoon specifieke melding instellingen";
+      return "User specific notification settings";
     },
     get$otherNotificationSettings() {
-      return "Andere melding instellingen";
+      return "Other notification settings";
     },
     get$notificationRuleContainsUserName() {
-      return "Bevat naam van persoon";
+      return "Contains User Name";
     },
     get$notificationRuleContainsUserNameDescription() {
-      return "Stuurt een melding als een bericht de persoon vermeld.";
+      return "Notifies the user when a message contains their username.";
     },
     get$notificationRuleMaster() {
-      return "Alle meldingen dempen";
+      return "Mute all notifications";
     },
     get$notificationRuleMasterDescription() {
-      return "Overschrijf alle andere regels en meldingen uitschakelen.";
+      return "Overrides all other rules and disables all notifications.";
     },
     get$notificationRuleSuppressNotices() {
-      return "Automatische berichten uitschakelen";
+      return "Suppress Automated Messages";
     },
     get$notificationRuleSuppressNoticesDescription() {
-      return "Meldingen van automatische accounts zoals bots uitschakelen.";
+      return "Suppresses notifications from automated clients like bots.";
     },
     get$notificationRuleInviteForMe() {
-      return "Uitnodiging voor mij";
+      return "Invite for Me";
     },
     get$notificationRuleInviteForMeDescription() {
-      return "Stuur een melding wanneer een persoon wordt uitgenodigd voor een kamer.";
+      return "Notifies the user when they are invited to a room.";
     },
     get$notificationRuleMemberEvent() {
-      return "Kamer-gebeurtenis";
+      return "Member Event";
     },
     get$notificationRuleMemberEventDescription() {
-      return "Meldingen voor kamer-gebeurtenissen uitschakelen.";
+      return "Suppresses notifications for membership events.";
     },
     get$notificationRuleIsUserMention() {
-      return "Persoonvermelding";
+      return "User Mention";
     },
     get$notificationRuleIsUserMentionDescription() {
-      return "Stuur een melding als de persoon direct genoemd wordt in een bericht.";
+      return "Notifies the user when they are directly mentioned in a message.";
     },
     get$notificationRuleContainsDisplayName() {
-      return "Bevat de naam";
+      return "Contains Display Name";
     },
     get$notificationRuleContainsDisplayNameDescription() {
-      return "Stuur een melding als de persoon genoemd wordt in het bericht.";
+      return "Notifies the user when a message contains their display name.";
     },
     get$notificationRuleIsRoomMention() {
-      return "Kamervermelding";
+      return "Room Mention";
     },
     get$notificationRuleIsRoomMentionDescription() {
-      return "Stuur een melding naar de persoon als er in een kamervermelding is.";
+      return "Notifies the user when there is a room mention.";
     },
     get$notificationRuleRoomnotif() {
-      return "Kamermelding";
+      return "Room Notification";
     },
     get$notificationRuleRoomnotifDescription() {
-      return "Stuur een melding naar de persoon wanneer een bericht '@room' bevat.";
+      return "Notifies the user when a message contains '@room'.";
     },
     get$notificationRuleTombstone() {
-      return "Sleutingsbericht";
+      return "Tombstone";
     },
     get$notificationRuleTombstoneDescription() {
-      return "Stuur een melding naar de persoon over kamersluitingsberichten.";
+      return "Notifies the user about room deactivation messages.";
     },
     get$notificationRuleReaction() {
-      return "Reactie";
+      return "Reaction";
     },
     get$notificationRuleReactionDescription() {
-      return "Meldingen voor reacties uitschakelen.";
+      return "Suppresses notifications for reactions.";
     },
     get$notificationRuleRoomServerAcl() {
-      return "Kamer Server ACL";
+      return "Room Server ACL";
     },
     get$notificationRuleRoomServerAclDescription() {
-      return "Meldingen voor kamer server toegangscontrolelijst (ACL) uitschakelen.";
+      return "Suppresses notifications for room server access control lists (ACL).";
     },
     get$notificationRuleSuppressEdits() {
-      return "Bewerkingen uitschakelen";
+      return "Suppress Edits";
     },
     get$notificationRuleSuppressEditsDescription() {
-      return "Meldingen voor bewerkte berichten uitschakelen.";
+      return "Suppresses notifications for edited messages.";
     },
     get$notificationRuleCall() {
-      return "Oproep";
+      return "Call";
     },
     get$notificationRuleCallDescription() {
-      return "Stuur een melding naar de persoon over oproepen.";
+      return "Notifies the user about calls.";
     },
     get$notificationRuleEncryptedRoomOneToOne() {
-      return "Versleutelde een-op-een kamer";
+      return "Encrypted Room One-to-One";
     },
     get$notificationRuleEncryptedRoomOneToOneDescription() {
-      return "Stuur een melding naar de persoon over berichten in versleutelde een-op-een kamers.";
+      return "Notifies the user about messages in encrypted one-to-one rooms.";
     },
     get$notificationRuleRoomOneToOne() {
-      return "Een-op-een kamer";
+      return "Room One-to-One";
     },
     get$notificationRuleRoomOneToOneDescription() {
-      return "Stuur een melding naar de persoon over berichten in een-op-een kamers.";
+      return "Notifies the user about messages in one-to-one rooms.";
     },
     get$notificationRuleMessage() {
-      return "Bericht";
+      return "Message";
     },
     get$notificationRuleMessageDescription() {
-      return "Stuur een melding naar de persoon over algemene berichten.";
+      return "Notifies the user about general messages.";
     },
     get$notificationRuleEncrypted() {
-      return "Versleuteld";
+      return "Encrypted";
     },
     get$notificationRuleEncryptedDescription() {
-      return "Stuur een melding naar de persoon over berichten in versleutelde kamers.";
+      return "Notifies the user about messages in encrypted rooms.";
     },
     get$notificationRuleJitsi() {
       return "Jitsi";
     },
     get$notificationRuleJitsiDescription() {
-      return "Stuur een melding naar de persoon over Jitsi widget gebeurtenissen.";
+      return "Notifies the user about Jitsi widget events.";
     },
     get$notificationRuleServerAcl() {
-      return "Server ACL gebeurtenissen uitschakelen";
+      return "Suppress Server ACL Events";
     },
     get$notificationRuleServerAclDescription() {
-      return "Meldingen over server ACL gebeurtenissen uitschakelen.";
+      return "Suppresses notifications for Server ACL events.";
     },
     unknownPushRule$1(rule) {
-      return "Onbekende notificatieregel '" + rule + "'";
+      return "Unknown push rule '" + rule + "'";
     },
     sentVoiceMessage$2(sender, duration) {
-      return "\ud83c\udf99\ufe0f " + duration + " - " + sender;
+      return "\ud83c\udf99\ufe0f " + duration + " - Voice message from " + sender;
     },
     get$deletePushRuleCanNotBeUndone() {
-      return "Als je deze melding-instelling verwijderd, kan dit niet ongedaan gemaakt worden.";
+      return "If you delete this notification setting, this can not be undone.";
     },
     get$more() {
-      return "Meer";
+      return "More";
     },
     get$shareKeysWith() {
-      return "Deel sleutels met...";
+      return "Share keys with...";
     },
     get$shareKeysWithDescription() {
-      return "Welke apparaten moeten vertrouwd worden zodat ze je berichten kunnen lezen in versleutelde chats?";
+      return "Which devices should be trusted so that they can read along your messages in encrypted chats?";
     },
     get$allDevices() {
-      return "Alle apparaten";
+      return "All devices";
     },
     get$crossVerifiedDevicesIfEnabled() {
-      return "Kruislings geverifieerde apparaten als ingeschakeld";
+      return "Cross verified devices if enabled";
     },
     get$crossVerifiedDevices() {
-      return "Kruislings geverifieerde apparaten";
+      return "Cross verified devices";
     },
     get$verifiedDevicesOnly() {
-      return "Alleen geverifieerde apparaten";
+      return "Verified devices only";
     },
     get$optionalMessage() {
-      return "(Optioneel) bericht...";
+      return "(Optional) message...";
     },
     get$notSupportedOnThisDevice() {
-      return "Niet ondersteund op dit apparaat";
+      return "Not supported on this device";
     },
     get$enterNewChat() {
-      return "Nieuwe chat openen";
+      return "Enter new chat";
     },
     get$approve() {
-      return "Goedkeuren";
+      return "Approve";
     },
     get$commandHint_logout() {
       return "Logout your current device";
@@ -4565,13 +4565,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nNl, C.L10n);
+    _inherit(A.L10nKa, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nNl":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nKa":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["/uqTkUcE7IY4PPjdyqxyKkzCvGE="] = d.current;
+  d["yHSGETfMS2HDGCTL5XsFLBw75eo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_242.part.js.map

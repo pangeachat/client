@@ -5,25 +5,25 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nTh$() {
-      return new A.L10nTh(B.canonicalizedLocale("th"));
+    L10nSl$() {
+      return new A.L10nSl(B.canonicalizedLocale("sl"));
     },
-    L10nTh: function L10nTh(t0) {
+    L10nSl: function L10nSl(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[49], A);
-  A.L10nTh.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[44], A);
+  A.L10nSl.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
     get$repeatPassword() {
-      return "\u0e43\u0e2a\u0e48\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e2d\u0e35\u0e01\u0e23\u0e2d\u0e1a";
+      return "Ponovite geslo";
     },
     get$notAnImage() {
-      return "\u0e44\u0e21\u0e48\u0e43\u0e0a\u0e48\u0e44\u0e1f\u0e25\u0e4c\u0e23\u0e39\u0e1b\u0e20\u0e32\u0e1e";
+      return "Not an image file.";
     },
     get$setCustomPermissionLevel() {
       return "Set custom permission level";
@@ -38,100 +38,100 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Normal user";
     },
     get$remove(_) {
-      return "\u0e25\u0e1a\u0e2d\u0e2d\u0e01";
+      return "Remove";
     },
     get$importNow() {
-      return "\u0e19\u0e33\u0e40\u0e02\u0e49\u0e32\u0e40\u0e25\u0e22";
+      return "Import now";
     },
     get$importEmojis() {
-      return "\u0e19\u0e33\u0e40\u0e02\u0e49\u0e32\u0e2d\u0e4a\u0e42\u0e21\u0e08\u0e34";
+      return "Import Emojis";
     },
     get$importFromZipFile() {
-      return "\u0e19\u0e33\u0e40\u0e02\u0e49\u0e32\u0e08\u0e32\u0e01\u0e44\u0e1f\u0e25\u0e4c .zip";
+      return "Import from .zip file";
     },
     get$exportEmotePack() {
-      return "\u0e2a\u0e48\u0e07\u0e2d\u0e34\u0e42\u0e21\u0e08\u0e34\u0e41\u0e1e\u0e47\u0e04\u0e2d\u0e2d\u0e01\u0e40\u0e1b\u0e47\u0e19\u0e44\u0e1f\u0e25\u0e4c .zip";
+      return "Export Emote pack as .zip";
     },
     get$replace(_) {
-      return "\u0e41\u0e17\u0e19\u0e17\u0e35\u0e48";
+      return "Replace";
     },
     aboutHomeserver$1(homeserver) {
       return "About " + homeserver;
     },
     get$accept(_) {
-      return "\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a";
+      return "Sprejmi";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " \u0e44\u0e14\u0e49\u0e23\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e0a\u0e27\u0e19\u0e41\u0e25\u0e49\u0e27";
+      return username + " je sprejel povabilo";
     },
     get$account() {
-      return "\u0e1a\u0e31\u0e0d\u0e0a\u0e35";
+      return "Ra\u010dun";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " \u0e40\u0e1b\u0e34\u0e14\u0e43\u0e0a\u0e49\u0e07\u0e32\u0e19 end to end encryption";
+      return "Uporabnik " + username + " je aktiviral \u0161ifriranje od konca do konca";
     },
     get$addEmail() {
-      return "\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e2d\u0e35\u0e40\u0e21\u0e25";
+      return "Dodajte e-po\u0161to";
     },
     supposedMxid$1(mxid) {
-      return "\u0e2d\u0e31\u0e19\u0e19\u0e35\u0e49\u0e04\u0e27\u0e23\u0e40\u0e1b\u0e47\u0e19 " + mxid;
+      return "This should be " + mxid;
     },
     get$admin() {
-      return "\u0e41\u0e2d\u0e14\u0e21\u0e34\u0e19";
+      return "Admin";
     },
     get$commandHint_roomupgrade() {
       return "Upgrade this room to the given room version";
     },
     get$commandHint_googly() {
-      return "\u0e2a\u0e48\u0e07\u0e2a\u0e32\u0e22\u0e15\u0e32\u0e01\u0e27\u0e19\u0e46 \u0e21\u0e32\u0e43\u0e2b\u0e49\u0e2b\u0e19\u0e48\u0e2d\u0e22";
+      return "Send some googly eyes";
     },
     get$commandHint_cuddle() {
-      return "\u0e2a\u0e48\u0e07\u0e40\u0e04\u0e25\u0e49\u0e32\u0e40\u0e04\u0e25\u0e35\u0e22\u0e43\u0e2b\u0e49";
+      return "Send a cuddle";
     },
     get$commandHint_hug() {
-      return "\u0e2a\u0e48\u0e07\u0e01\u0e2d\u0e14\u0e43\u0e2b\u0e49";
+      return "Send a hug";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " \u0e2a\u0e48\u0e07\u0e15\u0e32\u0e01\u0e27\u0e19\u0e46\u0e43\u0e2b\u0e49\u0e04\u0e38\u0e13";
+      return senderName + " sends you googly eyes";
     },
     cuddleContent$1(senderName) {
-      return senderName + " \u0e40\u0e04\u0e25\u0e49\u0e32\u0e40\u0e04\u0e25\u0e35\u0e22\u0e04\u0e38\u0e13";
+      return senderName + " cuddles you";
     },
     hugContent$1(senderName) {
-      return senderName + " \u0e01\u0e2d\u0e14\u0e04\u0e38\u0e13";
+      return senderName + " hugs you";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " \u0e23\u0e31\u0e1a\u0e2a\u0e32\u0e22\u0e41\u0e25\u0e49\u0e27";
+      return "Oseba " + senderName + " je odgovorila na klic";
     },
     get$anyoneCanJoin() {
-      return "\u0e43\u0e04\u0e23\u0e46 \u0e01\u0e47\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e44\u0e14\u0e49";
+      return "Pridru\u017ei se lahko vsak";
     },
     get$archive() {
-      return "\u0e04\u0e25\u0e31\u0e07\u0e40\u0e01\u0e47\u0e1a";
+      return "Arhiv";
     },
     get$areYouSure() {
-      return "\u0e04\u0e38\u0e13\u0e41\u0e19\u0e48\u0e43\u0e08\u0e44\u0e2b\u0e21?";
+      return "Ali si prepri\u010dan?";
     },
     get$areYouSureYouWantToLogout() {
-      return "\u0e04\u0e38\u0e13\u0e41\u0e19\u0e48\u0e43\u0e08\u0e27\u0e48\u0e32\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e17\u0e35\u0e48\u0e08\u0e30\u0e2d\u0e2d\u0e01\u0e08\u0e32\u0e01\u0e23\u0e30\u0e1a\u0e1a?";
+      return "Ali ste prepri\u010dani, da se \u017eelite odjaviti?";
     },
     get$askSSSSSign() {
-      return "\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e43\u0e2b\u0e49\u0e2a\u0e32\u0e21\u0e32\u0e23\u0e16\u0e25\u0e07\u0e19\u0e32\u0e21\u0e1a\u0e38\u0e04\u0e04\u0e25\u0e2d\u0e37\u0e48\u0e19\u0e44\u0e14\u0e49 \u0e42\u0e1b\u0e23\u0e14\u0e1b\u0e49\u0e2d\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e1c\u0e48\u0e32\u0e19\u0e23\u0e49\u0e32\u0e19\u0e04\u0e49\u0e32\u0e17\u0e35\u0e48\u0e1b\u0e25\u0e2d\u0e14\u0e20\u0e31\u0e22\u0e2b\u0e23\u0e37\u0e2d\u0e23\u0e2b\u0e31\u0e2a\u0e01\u0e39\u0e49\u0e04\u0e37\u0e19\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13";
+      return "\u010ce \u017eelite podpisati drugo osebo, vnesite geslo za varno trgovino ali obnovitveni klju\u010d.";
     },
     askVerificationRequest$1(username) {
-      return "\u0e22\u0e2d\u0e21\u0e23\u0e31\u0e1a\u0e04\u0e33\u0e02\u0e2d\u0e22\u0e37\u0e19\u0e22\u0e31\u0e19\u0e19\u0e35\u0e49\u0e08\u0e32\u0e01 " + username + " \u0e2b\u0e23\u0e37\u0e2d\u0e44\u0e21\u0e48";
+      return "Ali \u017eelite sprejeti to zahtevo za preverjanje od " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "\u0e42\u0e2e\u0e21\u0e40\u0e0b\u0e34\u0e23\u0e4c\u0e1f\u0e40\u0e27\u0e2d\u0e23\u0e4c\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a\u0e1b\u0e23\u0e30\u0e40\u0e20\u0e17\u0e01\u0e32\u0e23\u0e40\u0e02\u0e49\u0e32\u0e2a\u0e39\u0e48\u0e23\u0e30\u0e1a\u0e1a:\n" + serverVersions + "\n\u0e41\u0e15\u0e48\u0e41\u0e2d\u0e1b\u0e19\u0e35\u0e49\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a\u0e40\u0e09\u0e1e\u0e32\u0e30:\n" + supportedVersions;
+      return "Doma\u010di stre\u017enik podpira vrste prijave:\n" + serverVersions + "\nToda ta aplikacija podpira samo:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "\u0e2a\u0e48\u0e07\u0e01\u0e32\u0e23\u0e41\u0e08\u0e49\u0e07\u0e40\u0e15\u0e37\u0e2d\u0e19\u0e01\u0e32\u0e23\u0e1e\u0e34\u0e21\u0e1e\u0e4c";
+      return "Send typing notifications";
     },
     get$swipeRightToLeftToReply() {
       return "Swipe right to left to reply";
     },
     get$sendOnEnter() {
-      return "\u0e2a\u0e48\u0e07\u0e40\u0e21\u0e37\u0e48\u0e2d\u0e01\u0e14 enter";
+      return "Po\u0161lji ob vstopu";
     },
     countChatsAndCountParticipants$2(chats, participants) {
       return "" + chats + " chats and " + participants + " participants";
@@ -140,100 +140,100 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "No more chats found...";
     },
     get$banFromChat() {
-      return "Ban from chat";
+      return "Prepoved klepeta";
     },
     get$banned() {
-      return "Banned";
+      return "Prepovedano";
     },
     bannedUser$2(username, targetName) {
-      return username + " banned " + targetName;
+      return username + " je prepovedan v " + targetName;
     },
     get$blockDevice() {
-      return "Block Device";
+      return "Blokirana naprava";
     },
     get$blocked() {
-      return "Blocked";
+      return "Blokirano";
     },
     get$cancel(_) {
-      return "Cancel";
+      return "Prekli\u010di";
     },
     cantOpenUri$1(uri) {
-      return "Can't open the URI " + uri;
+      return "URI-ja " + uri + " ni mogo\u010de odpreti";
     },
     get$changeDeviceName() {
-      return "Change device name";
+      return "Spremenite ime naprave";
     },
     changedTheChatAvatar$1(username) {
-      return username + " changed the chat avatar";
+      return username + " je spremenil avatar za klepet";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " changed the chat description to: '" + description + "'";
+      return username + " je spremenil opis klepeta v: '" + description + "'";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " changed the chat name to: '" + chatname + "'";
+      return username + " je spremenil ime klepeta v: '" + chatname + "'";
     },
     changedTheChatPermissions$1(username) {
-      return username + " changed the chat permissions";
+      return username + " je spremenila dovoljenja za klepet";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " changed their displayname to: '" + displayname + "'";
+      return username + " je spremenil svoje prikazno ime v: '" + displayname + "'";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " changed the guest access rules";
+      return username + " je spremenila pravila dostopa za goste";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " changed the guest access rules to: " + rules;
+      return username + " je spremenila pravila dostopa za goste v: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " changed the history visibility";
+      return username + " je spremenila vidnost zgodovine";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " changed the history visibility to: " + rules;
+      return username + " je spremenil vidnost zgodovine v: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " changed the join rules";
+      return username + " je spremenil pravila za pridru\u017eitev";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " changed the join rules to: " + joinRules;
+      return username + " je spremenila pravila pridru\u017eitve v: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " changed their avatar";
+      return username + " je spremenil avatar";
     },
     changedTheRoomAliases$1(username) {
-      return username + " changed the room aliases";
+      return username + " je spremenil vzdevke sobe";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " changed the invitation link";
+      return username + " je spremenil povezavo za povabilo";
     },
     get$changePassword() {
-      return "Change password";
+      return "Spremeni geslo";
     },
     get$changeTheme() {
-      return "Change your style";
+      return "Spremenite svoj slog";
     },
     get$changeYourAvatar() {
-      return "Change your avatar";
+      return "Spremenite svoj avatar";
     },
     get$channelCorruptedDecryptError() {
-      return "The encryption has been corrupted";
+      return "\u0160ifriranje je po\u0161kodovano";
     },
     get$chat() {
-      return "\u0e41\u0e0a\u0e17";
+      return "Klepet";
     },
     get$chatDetails() {
-      return "\u0e23\u0e32\u0e22\u0e25\u0e30\u0e40\u0e2d\u0e35\u0e22\u0e14\u0e41\u0e0a\u0e17";
+      return "Podrobnosti klepeta";
     },
     get$chats() {
-      return "Chats";
+      return "Klepeti";
     },
     get$chooseAStrongPassword() {
-      return "Choose a strong password";
+      return "Izberite mo\u010dno geslo";
     },
     get$clearArchive() {
-      return "Clear archive";
+      return "Po\u010disti arhiv";
     },
     get$close(_) {
-      return "Close";
+      return "Zapri";
     },
     get$commandHint_markasdm() {
       return "Mark as direct message room for the giving Matrix ID";
@@ -242,7 +242,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Mark as group";
     },
     get$commandHint_ban() {
-      return "Ban the given user from this room";
+      return "Izklju\u010di dolo\u010denega uporabnika iz te sobe";
     },
     get$commandHint_clearcache() {
       return "Clear cache";
@@ -257,100 +257,100 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Start a direct chat\nUse --no-encryption to disable encryption";
     },
     get$commandHint_html() {
-      return "Send HTML-formatted text";
+      return "Po\u0161ljite besedilo v obliki HTML";
     },
     get$commandHint_invite() {
-      return "Invite the given user to this room";
+      return "Povabi danega uporabnika v to sobo";
     },
     get$commandHint_join() {
-      return "Join the given room";
+      return "Pridru\u017eite se dani sobi";
     },
     get$commandHint_kick() {
-      return "Remove the given user from this room";
+      return "Odstranite danega uporabnika iz te sobe";
     },
     get$commandHint_leave() {
-      return "Leave this room";
+      return "Zapusti to sobo";
     },
     get$commandHint_me() {
-      return "Describe yourself";
+      return "Opisi sebe";
     },
     get$commandHint_myroomavatar() {
-      return "Set your picture for this room (by mxc-uri)";
+      return "Nastavite svojo sliko za to sobo";
     },
     get$commandHint_myroomnick() {
-      return "Set your display name for this room";
+      return "Nastavite prikazno ime za to sobo";
     },
     get$commandHint_op() {
-      return "Set the given user's power level (default: 50)";
+      return "Nastavite raven mo\u010di danega uporabnika (privzeto: 50)";
     },
     get$commandHint_plain() {
-      return "Send unformatted text";
+      return "Po\u0161lji neformatirano besedilo";
     },
     get$commandHint_react() {
-      return "Send reply as a reaction";
+      return "Po\u0161ljite odgovor kot reakcijo";
     },
     get$commandHint_send() {
-      return "Send text";
+      return "Po\u0161lji besedilo";
     },
     get$commandHint_unban() {
-      return "Unban the given user from this room";
+      return "Prekli\u010di izklju\u010ditev dolo\u010denega uporabnika iz te sobe";
     },
     get$compareEmojiMatch() {
-      return "Please compare the emojis";
+      return "Primerjajte in se prepri\u010dajte, da se naslednji emoji ujemajo s tistimi iz druge naprave:";
     },
     get$compareNumbersMatch() {
-      return "Please compare the numbers";
+      return "Primerjajte in se prepri\u010dajte, da se naslednje \u0161tevilke ujemajo s \u0161tevilkami druge naprave:";
     },
     get$configureChat() {
-      return "Configure chat";
+      return "Konfigurirajte klepet";
     },
     get$confirm(_) {
-      return "Confirm";
+      return "Potrdi";
     },
     get$copiedToClipboard() {
-      return "Copied to clipboard";
+      return "Kopirano v odlo\u017ei\u0161\u010de";
     },
     get$copy(_) {
-      return "\u0e04\u0e31\u0e14\u0e25\u0e2d\u0e01";
+      return "Kopiraj";
     },
     couldNotDecryptMessage$1(error) {
-      return "Could not decrypt message: " + error;
+      return "Sporo\u010dila ni bilo mogo\u010de de\u0161ifrirati: " + error;
     },
     get$checkList() {
       return "Check list";
     },
     countParticipants$1(count) {
-      return "" + count + " participants";
+      return "" + count + " udele\u017eencev";
     },
     countInvited$1(count) {
       return "" + count + " invited";
     },
     get$create(_) {
-      return "Create";
+      return "Ustvari";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " created the chat";
+      return username + " je ustvaril klepet";
     },
     get$createGroup() {
       return "Create group";
     },
     get$currentlyActive() {
-      return "Currently active";
+      return "Trenutno aktiven";
     },
     get$darkTheme() {
-      return "Dark";
+      return "Temno";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "This will deactivate your user account. This can not be undone! Are you sure?";
+      return "S tem boste deaktivirali va\u0161 uporabni\u0161ki ra\u010dun. Tega ni mogo\u010de razveljaviti! Ali si prepri\u010dan?";
     },
     get$defaultPermissionLevel() {
-      return "Default permission level for new users";
+      return "Privzeta raven dovoljenja";
     },
     get$$delete(_) {
-      return "\u0e25\u0e1a\u0e2d\u0e2d\u0e01";
+      return "Delete";
     },
     get$deleteAccount() {
       return "Delete account";
@@ -368,7 +368,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Download file";
     },
     get$edit() {
-      return "\u0e41\u0e01\u0e49\u0e44\u0e02";
+      return "Edit";
     },
     get$editBlockedServers() {
       return "Edit blocked servers";
@@ -449,7 +449,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return username + " has withdrawn the invitation for " + targetName;
     },
     get$help() {
-      return "\u0e0a\u0e48\u0e27\u0e22\u0e40\u0e2b\u0e25\u0e37\u0e2d";
+      return "Help";
     },
     get$hideRedactedMessages() {
       return "Hide redacted messages";
@@ -659,7 +659,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Pick an image";
     },
     get$pin() {
-      return "\u0e1b\u0e31\u0e01\u0e2b\u0e21\u0e38\u0e14";
+      return "Pin";
     },
     get$pleaseChoose() {
       return "Please choose";
@@ -731,7 +731,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Security";
     },
     get$send(_) {
-      return "\u0e2a\u0e48\u0e07";
+      return "Send";
     },
     get$sendAMessage() {
       return "Send a message";
@@ -4565,13 +4565,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nTh, C.L10n);
+    _inherit(A.L10nSl, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nTh":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nSl":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["z6vcHEcCl2SqyN+K1Xe7qy78Gf8="] = d.current;
+  d["U9uZIO/U7IQ1pnpaejpn+83qg0A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_256.part.js.map

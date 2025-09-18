@@ -5,25 +5,25 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B, C,
   A = {
-    L10nTr$() {
-      return new A.L10nTr(B.canonicalizedLocale("tr"));
+    L10nSr$() {
+      return new A.L10nSr(B.canonicalizedLocale("sr"));
     },
-    L10nTr: function L10nTr(t0) {
+    L10nSr: function L10nSr(t0) {
       this.localeName = t0;
     }
   };
   B = holdersList[0];
   C = holdersList[54];
-  A = hunkHelpers.updateHolder(holdersList[50], A);
-  A.L10nTr.prototype = {
+  A = hunkHelpers.updateHolder(holdersList[45], A);
+  A.L10nSr.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
     get$repeatPassword() {
-      return "Parolay\u0131 tekrarlay\u0131n";
+      return "Repeat password";
     },
     get$notAnImage() {
-      return "Bir resim dosyas\u0131 de\u011fil.";
+      return "Not an image file.";
     },
     get$setCustomPermissionLevel() {
       return "Set custom permission level";
@@ -38,1258 +38,1258 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Normal user";
     },
     get$remove(_) {
-      return "Kald\u0131r";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438";
     },
     get$importNow() {
-      return "\u015eimdi i\xe7e aktar";
+      return "Import now";
     },
     get$importEmojis() {
-      return "\u0130fadeleri \u0130\xe7e Aktar";
+      return "Import Emojis";
     },
     get$importFromZipFile() {
-      return ".zip dosyas\u0131ndan i\xe7e aktar";
+      return "Import from .zip file";
     },
     get$exportEmotePack() {
-      return "\u0130fade paketini .zip olarak d\u0131\u015fa aktar";
+      return "Export Emote pack as .zip";
     },
     get$replace(_) {
-      return "De\u011fi\u015ftir";
+      return "Replace";
     },
     aboutHomeserver$1(homeserver) {
-      return homeserver + " Hakk\u0131nda";
+      return "About " + homeserver;
     },
     get$accept(_) {
-      return "Kabul et";
+      return "\u041f\u0440\u0438\u0445\u0432\u0430\u0442\u0438";
     },
     acceptedTheInvitation$1(username) {
-      return "\ud83d\udc4d " + username + " kat\u0131lma davetini kabul etti";
+      return username + " \u043f\u0440\u0438\u0445\u0432\u0430\u0442\u0430 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0443";
     },
     get$account() {
-      return "Hesap";
+      return "\u041d\u0430\u043b\u043e\u0433";
     },
     activatedEndToEndEncryption$1(username) {
-      return "\ud83d\udd10 " + username + " u\xe7tan uca \u015fifrelemeyi etkinle\u015ftirdi";
+      return username + " \u0443\u043a\u0459\u0443\u0447\u0438 \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0435 \u0441 \u043a\u0440\u0430\u0458\u0430 \u043d\u0430 \u043a\u0440\u0430\u0458";
     },
     get$addEmail() {
-      return "E-posta ekle";
+      return "\u0414\u043e\u0434\u0430\u0458 \u0435-\u0430\u0434\u0440\u0435\u0441\u0443";
     },
     supposedMxid$1(mxid) {
-      return "Bu " + mxid + " olmal\u0131d\u0131r";
+      return "This should be " + mxid;
     },
     get$admin() {
-      return "Y\xf6netici";
+      return "\u0410\u0434\u043c\u0438\u043d";
     },
     get$commandHint_roomupgrade() {
       return "Upgrade this room to the given room version";
     },
     get$commandHint_googly() {
-      return "\u015ea\u015fk\u0131n g\xf6zler g\xf6nder";
+      return "Send some googly eyes";
     },
     get$commandHint_cuddle() {
-      return "Kucaklama g\xf6nder";
+      return "Send a cuddle";
     },
     get$commandHint_hug() {
-      return "Sar\u0131lma g\xf6nder";
+      return "Send a hug";
     },
     googlyEyesContent$1(senderName) {
-      return senderName + " size \u015fa\u015fk\u0131n g\xf6zler g\xf6nderiyor";
+      return senderName + " sends you googly eyes";
     },
     cuddleContent$1(senderName) {
-      return senderName + " sizi kucakl\u0131yor";
+      return senderName + " cuddles you";
     },
     hugContent$1(senderName) {
-      return senderName + " size sar\u0131l\u0131yor";
+      return senderName + " hugs you";
     },
     answeredTheCall$1(senderName) {
-      return senderName + " aramay\u0131 yan\u0131tlad\u0131";
+      return senderName + " \u043e\u0434\u0433\u043e\u0432\u043e\u0440\u0438 \u043d\u0430 \u043f\u043e\u0437\u0438\u0432";
     },
     get$anyoneCanJoin() {
-      return "Herkes kat\u0131labilir";
+      return "\u0441\u0432\u0430\u043a\u043e \u043c\u043e\u0436\u0435 \u0434\u0430 \u0441\u0435 \u043f\u0440\u0438\u0434\u0440\u0443\u0436\u0438";
     },
     get$archive() {
-      return "Ar\u015fiv";
+      return "\u0410\u0440\u0445\u0438\u0432\u0430";
     },
     get$areYouSure() {
-      return "Emin misiniz?";
+      return "\u0421\u0438\u0433\u0443\u0440\u043d\u0438 \u0441\u0442\u0435?";
     },
     get$areYouSureYouWantToLogout() {
-      return "Oturumu a\xe7mak istedi\u011finizden emin misiniz?";
+      return "\u0417\u0430\u0438\u0441\u0442\u0430 \u0436\u0435\u043b\u0438\u0442\u0435 \u0434\u0430 \u0441\u0435 \u043e\u0434\u0458\u0430\u0432\u0438\u0442\u0435?";
     },
     get$askSSSSSign() {
-      return "Di\u011fer ki\u015fiyi imzalayabilmek i\xe7in l\xfctfen g\xfcvenli depolama parolan\u0131z\u0131 veya kurtarma anahtar\u0131n\u0131z\u0131 girin.";
+      return "\u0414\u0430 \u0431\u0438\u0441\u0442\u0435 \u043c\u043e\u0433\u043b\u0438 \u0434\u0430 \u043f\u0440\u0438\u0458\u0430\u0432\u0438\u0442\u0435 \u0434\u0440\u0443\u0433\u0443 \u043e\u0441\u043e\u0431\u0443, \u0443\u043d\u0435\u0441\u0438\u0442\u0435 \u0441\u0432\u043e\u0458\u0443 \u0431\u0435\u0437\u0431\u0435\u0434\u043d\u043e\u0441\u043d\u0443 \u0444\u0440\u0430\u0437\u0443 \u0438\u043b\u0438 \u043a\u0459\u0443\u0447 \u043e\u043f\u043e\u0440\u0430\u0432\u043a\u0430.";
     },
     askVerificationRequest$1(username) {
-      return username + " ki\u015fisinden gelen bu do\u011frulama iste\u011fi kabul edilsin mi?";
+      return "\u041f\u0440\u0438\u0445\u0432\u0430\u0442\u0430\u0442\u0435 \u043b\u0438 \u0437\u0430\u0445\u0442\u0435\u0432 \u0437\u0430 \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0458\u0443 \u043e\u0434 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + username + "?";
     },
     badServerLoginTypesException$3(serverVersions, supportedVersions, suportedVersions) {
-      return "Ana sunucu a\u015fa\u011f\u0131daki oturum a\xe7ma t\xfcrlerini destekliyor:\n" + serverVersions + "\nAncak bu uygulama yaln\u0131zca a\u015fa\u011f\u0131dakileri destekliyor:\n" + supportedVersions;
+      return "\u0414\u043e\u043c\u0430\u045b\u0438 \u0441\u0435\u0440\u0432\u0435\u0440 \u043f\u043e\u0434\u0440\u0436\u0430\u0432\u0430 \u043d\u0430\u0447\u0438\u043d\u0435 \u043f\u0440\u0438\u0458\u0430\u0432\u0435:\n" + serverVersions + "\n\u0430\u043b\u0438 \u043e\u0432\u0430 \u0430\u043f\u043b\u0438\u043a\u0430\u0446\u0438\u0458\u0430 \u043f\u043e\u0434\u0440\u0436\u0430\u0432\u0430 \u0441\u0430\u043c\u043e:\n" + supportedVersions;
     },
     get$sendTypingNotifications() {
-      return "Yazma bildirimleri g\xf6nder";
+      return "Send typing notifications";
     },
     get$swipeRightToLeftToReply() {
-      return "Yan\u0131tlamak i\xe7in sa\u011fdan sola kayd\u0131r";
+      return "Swipe right to left to reply";
     },
     get$sendOnEnter() {
-      return "Enter tu\u015fu ile g\xf6nder";
+      return "Send on enter";
     },
     countChatsAndCountParticipants$2(chats, participants) {
-      return "" + chats + " sohbet ve " + participants + " kat\u0131l\u0131mc\u0131";
+      return "" + chats + " chats and " + participants + " participants";
     },
     get$noMoreChatsFound() {
-      return "Ba\u015fka sohbet bulunamad\u0131...";
+      return "No more chats found...";
     },
     get$banFromChat() {
-      return "Sohbetten engelle";
+      return "\u0417\u0430\u0431\u0440\u0430\u043d\u0438 \u0443 \u045b\u0430\u0441\u043a\u0430\u045a\u0443";
     },
     get$banned() {
-      return "Engellendi";
+      return "\u0417\u0430\u0431\u0440\u0430\u045a\u0435\u043d";
     },
     bannedUser$2(username, targetName) {
-      return username + ", " + targetName + " ki\u015fisini engelledi";
+      return username + " \u0437\u0430\u0431\u0440\u0430\u043d\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$blockDevice() {
-      return "Ayg\u0131t\u0131 Engelle";
+      return "\u0411\u043b\u043e\u043a\u0438\u0440\u0430\u0458 \u0443\u0440\u0435\u0452\u0430\u0458";
     },
     get$blocked() {
-      return "Engellendi";
+      return "\u0411\u043b\u043e\u043a\u0438\u0440\u0430\u043d";
     },
     get$cancel(_) {
-      return "\u0130ptal";
+      return "\u041e\u0442\u043a\u0430\u0436\u0438";
     },
     cantOpenUri$1(uri) {
-      return uri + " URI'si a\xe7\u0131lam\u0131yor";
+      return "Can't open the URI " + uri;
     },
     get$changeDeviceName() {
-      return "Ayg\u0131t ad\u0131n\u0131 de\u011fi\u015ftir";
+      return "\u041f\u0440\u043e\u043c\u0435\u043d\u0438 \u043d\u0430\u0437\u0438\u0432 \u0443\u0440\u0435\u0452\u0430\u0458\u0430";
     },
     changedTheChatAvatar$1(username) {
-      return username + " sohbet avatar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u0430\u0432\u0430\u0442\u0430\u0440 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     changedTheChatDescriptionTo$2(username, description) {
-      return username + " sohbet a\xe7\u0131klamas\u0131n\u0131 de\u011fi\u015ftirdi: '" + description + "'";
+      return username + " \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u043e\u043f\u0438\u0441 \u045b\u0430\u0441\u043a\u0430\u045a\u0430 \u0443: \u201e" + description + "\u201c";
     },
     changedTheChatNameTo$2(username, chatname) {
-      return username + " sohbet ad\u0131n\u0131 de\u011fi\u015ftirdi: '" + chatname + "'";
+      return username + " \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u043d\u0430\u0437\u0438\u0432 \u045b\u0430\u0441\u043a\u0430\u045a\u0430 \u0443: \u201e" + chatname + "\u201c";
     },
     changedTheChatPermissions$1(username) {
-      return username + " sohbet izinlerini de\u011fi\u015ftirdi";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0434\u043e\u0437\u0432\u043e\u043b\u0435 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     changedTheDisplaynameTo$2(username, displayname) {
-      return username + " g\xf6r\xfcnen ad\u0131n\u0131 '" + displayname + "' olarak de\u011fi\u015ftirdi";
+      return username + " \u043f\u0440\u043e\u043c\u0435\u043d\u0438 \u043f\u0440\u0438\u043a\u0430\u0437\u043d\u043e \u0438\u043c\u0435 \u043d\u0430: \u201e" + displayname + "\u201c";
     },
     changedTheGuestAccessRules$1(username) {
-      return username + " misafir eri\u015fim kurallar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0437\u0430 \u043f\u0440\u0438\u0441\u0442\u0443\u043f \u0433\u043e\u0441\u0442\u0438\u0458\u0443";
     },
     changedTheGuestAccessRulesTo$2(username, rules) {
-      return username + " misafir eri\u015fim kurallar\u0131n\u0131 de\u011fi\u015ftirdi: " + rules;
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u0437\u0430 \u043f\u0440\u0438\u0441\u0442\u0443\u043f \u0433\u043e\u0441\u0442\u0438\u0458\u0443 \u043d\u0430: " + rules;
     },
     changedTheHistoryVisibility$1(username) {
-      return username + " ge\xe7mi\u015f g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftirdi";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0432\u0438\u0434\u0459\u0438\u0432\u043e\u0441\u0442 \u0438\u0441\u0442\u043e\u0440\u0438\u0458\u0435";
     },
     changedTheHistoryVisibilityTo$2(username, rules) {
-      return username + " ge\xe7mi\u015f g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftirdi: " + rules;
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0432\u0438\u0434\u0459\u0438\u0432\u043e\u0441\u0442 \u0438\u0441\u0442\u043e\u0440\u0438\u0458\u0435 \u043d\u0430: " + rules;
     },
     changedTheJoinRules$1(username) {
-      return username + " kat\u0131l\u0131m kurallar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0430\u045a\u0430";
     },
     changedTheJoinRulesTo$2(username, joinRules) {
-      return username + " kat\u0131l\u0131m kurallar\u0131n\u0131 de\u011fi\u015ftirdi: " + joinRules;
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u043f\u0440\u0430\u0432\u0438\u043b\u0430 \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0430\u045a\u0430 \u043d\u0430: " + joinRules;
     },
     changedTheProfileAvatar$1(username) {
-      return username + " avatar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0441\u0432\u043e\u0458 \u0430\u0432\u0430\u0442\u0430\u0440";
     },
     changedTheRoomAliases$1(username) {
-      return username + " oda takma adlar\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0430\u043b\u0438\u0458\u0430\u0441 \u0441\u043e\u0431\u0435";
     },
     changedTheRoomInvitationLink$1(username) {
-      return username + " davet ba\u011flant\u0131s\u0131n\u0131 de\u011fi\u015ftirdi";
+      return username + " \u0438\u0437\u043c\u0435\u043d\u0438 \u0432\u0435\u0437\u0443 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0435";
     },
     get$changePassword() {
-      return "Parolay\u0131 de\u011fi\u015ftir";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438 \u043b\u043e\u0437\u0438\u043d\u043a\u0443";
     },
     get$changeTheme() {
-      return "Tarz\u0131n\u0131z\u0131 de\u011fi\u015ftirin";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u0435 \u0438\u0437\u0433\u043b\u0435\u0434";
     },
     get$changeYourAvatar() {
-      return "Avatar\u0131n\u0131z\u0131 de\u011fi\u015ftirin";
+      return "\u0418\u0437\u043c\u0435\u043d\u0438\u0442\u0435 \u0441\u0432\u043e\u0458 \u0430\u0432\u0430\u0442\u0430\u0440";
     },
     get$channelCorruptedDecryptError() {
-      return "\u015eifreleme bozuldu";
+      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0435 \u0458\u0435 \u043f\u043e\u043a\u0432\u0430\u0440\u0435\u043d\u043e";
     },
     get$chat() {
-      return "Sohbet";
+      return "\u040b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$chatDetails() {
-      return "Sohbet ayr\u0131nt\u0131lar\u0131";
+      return "\u0414\u0435\u0442\u0430\u0459\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     get$chats() {
-      return "Sohbetler";
+      return "\u040b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     get$chooseAStrongPassword() {
-      return "G\xfc\xe7l\xfc bir parola se\xe7in";
+      return "\u0418\u0437\u0430\u0431\u0435\u0440\u0438\u0442\u0435 \u0458\u0430\u043a\u0443 \u043b\u043e\u0437\u0438\u043d\u043a\u0443";
     },
     get$clearArchive() {
-      return "Ar\u015fivi temizle";
+      return "\u041e\u0447\u0438\u0441\u0442\u0438 \u0430\u0440\u0445\u0438\u0432\u0443";
     },
     get$close(_) {
-      return "Kapat";
+      return "\u0417\u0430\u0442\u0432\u043e\u0440\u0438";
     },
     get$commandHint_markasdm() {
-      return "Verilen Matrix kimli\u011fi i\xe7in do\u011frudan mesaj odas\u0131 olarak i\u015faretle";
+      return "Mark as direct message room for the giving Matrix ID";
     },
     get$commandHint_markasgroup() {
-      return "Grup olarak i\u015faretle";
+      return "Mark as group";
     },
     get$commandHint_ban() {
-      return "Verilen kullan\u0131c\u0131y\u0131 bu odadan yasaklay\u0131n";
+      return "\u0411\u043b\u043e\u043a\u0438\u0440\u0430\u0458 \u0437\u0430\u0434\u0430\u0442\u043e\u0433 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 \u0437\u0430 \u043e\u0432\u0443 \u0441\u043e\u0431\u0443";
     },
     get$commandHint_clearcache() {
-      return "\xd6nbelle\u011fi temizleyin";
+      return "Clear cache";
     },
     get$commandHint_create() {
-      return "Bo\u015f bir grup sohbeti olu\u015fturun\n\u015eifrelemeyi devre d\u0131\u015f\u0131 b\u0131rakmak i\xe7in --no-encryption kullan\u0131n";
+      return "Create an empty group chat\nUse --no-encryption to disable encryption";
     },
     get$commandHint_discardsession() {
-      return "Oturumu silin";
+      return "Discard session";
     },
     get$commandHint_dm() {
-      return "Do\u011frudan sohbet ba\u015flat\u0131n\n\u015eifrelemeyi devre d\u0131\u015f\u0131 b\u0131rakmak i\xe7in --no-encryption kullan\u0131n";
+      return "Start a direct chat\nUse --no-encryption to disable encryption";
     },
     get$commandHint_html() {
-      return "HTML bi\xe7imli metin g\xf6nderin";
+      return "\u0428\u0430\u0459\u0438 \u0425\u0422\u041c\u041b \u043e\u0431\u043b\u0438\u043a\u043e\u0432\u0430\u043d \u0442\u0435\u043a\u0441\u0442";
     },
     get$commandHint_invite() {
-      return "Verilen kullan\u0131c\u0131y\u0131 bu odaya davet edin";
+      return "\u041f\u043e\u0437\u043e\u0432\u0438 \u0437\u0430\u0434\u0430\u0442\u043e\u0433 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 \u0443 \u0441\u043e\u0431\u0443";
     },
     get$commandHint_join() {
-      return "Verilen odaya kat\u0131l\u0131n";
+      return "\u041f\u0440\u0438\u0434\u0440\u0443\u0436\u0438 \u0441\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u043e\u0458 \u0441\u043e\u0431\u0438";
     },
     get$commandHint_kick() {
-      return "Verilen kullan\u0131c\u0131y\u0131 bu odadan kald\u0131r\u0131n";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438 \u0437\u0430\u0434\u0430\u0442\u043e\u0433 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 \u0438\u0437 \u0441\u043e\u0431\u0435";
     },
     get$commandHint_leave() {
-      return "Bu odadan ayr\u0131l\u0131n";
+      return "\u041d\u0430\u043f\u0443\u0441\u0442\u0438 \u043e\u0432\u0443 \u0441\u043e\u0431\u0443";
     },
     get$commandHint_me() {
-      return "Kendinizi tan\u0131mlay\u0131n";
+      return "\u041e\u043f\u0438\u0448\u0438\u0442\u0435 \u0441\u0435\u0431\u0435";
     },
     get$commandHint_myroomavatar() {
-      return "Bu oda i\xe7in resminizi ayarlay\u0131n (mxc-uri ile)";
+      return "Set your picture for this room (by mxc-uri)";
     },
     get$commandHint_myroomnick() {
-      return "Bu oda i\xe7in g\xf6r\xfcnen ad\u0131n\u0131z\u0131 ayarlay\u0131n";
+      return "\u041f\u043e\u0441\u0442\u0430\u0432\u0459\u0430 \u0432\u0430\u0448 \u043d\u0430\u0434\u0438\u043c\u0430\u043a \u0437\u0430 \u043e\u0432\u0443 \u0441\u043e\u0431\u0443";
     },
     get$commandHint_op() {
-      return "Verilen kullan\u0131c\u0131n\u0131n g\xfc\xe7 seviyesini ayarlay\u0131n (\xf6ntan\u0131ml\u0131: 50)";
+      return "\u041f\u043e\u0434\u0435\u0441\u0438 \u043d\u0438\u0432\u043e \u0437\u0430\u0434\u0430\u0442\u043e\u0433 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 (\u043f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u043d\u043e: 50)";
     },
     get$commandHint_plain() {
-      return "Bi\xe7imlendirilmemi\u015f metin g\xf6nderin";
+      return "\u0428\u0430\u0459\u0438 \u043d\u0435\u0444\u043e\u0440\u043c\u0430\u0442\u0438\u0440\u0430\u043d \u0442\u0435\u043a\u0441\u0442";
     },
     get$commandHint_react() {
-      return "Tepki olarak yan\u0131t g\xf6nderin";
+      return "\u0428\u0430\u0459\u0438 \u043e\u0434\u0433\u043e\u0432\u043e\u0440 \u043a\u0430\u043e \u0440\u0435\u0430\u043a\u0446\u0438\u0458\u0443";
     },
     get$commandHint_send() {
-      return "Metin g\xf6nderin";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0442\u0435\u043a\u0441\u0442";
     },
     get$commandHint_unban() {
-      return "Verilen kullan\u0131c\u0131n\u0131n bu odadaki yasa\u011f\u0131n\u0131 kald\u0131r\u0131n";
+      return "\u0421\u043a\u0438\u043d\u0438 \u0437\u0430\u0431\u0440\u0430\u043d\u0443 \u0437\u0430\u0434\u0430\u0442\u043e\u043c \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0443 \u0437\u0430 \u043e\u0432\u0443 \u0441\u043e\u0431\u0443";
     },
     get$compareEmojiMatch() {
-      return "L\xfctfen emojileri kar\u015f\u0131la\u015ft\u0131r\u0131n";
+      return "\u0423\u043f\u043e\u0440\u0435\u0434\u0438\u0442\u0435 \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u0435 \u0434\u0430 \u0441\u0443 \u0435\u043c\u043e\u045f\u0438\u0458\u0438 \u0438\u0434\u0435\u043d\u0442\u0438\u0447\u043d\u0438 \u043a\u0430\u043e \u043d\u0430 \u0434\u0440\u0443\u0433\u043e\u043c \u0443\u0440\u0435\u0452\u0430\u0458\u0443:";
     },
     get$compareNumbersMatch() {
-      return "L\xfctfen say\u0131lar\u0131 kar\u015f\u0131la\u015ft\u0131r\u0131n";
+      return "\u0423\u043f\u043e\u0440\u0435\u0434\u0438\u0442\u0435 \u0438 \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u0435 \u0434\u0430 \u0441\u0443 \u0441\u043b\u0435\u0434\u0435\u045b\u0438 \u0431\u0440\u043e\u0458\u0435\u0432\u0438 \u0438\u0434\u0435\u043d\u0442\u0438\u0447\u043d\u0438 \u043a\u0430\u043e \u043d\u0430 \u0434\u0440\u0443\u0433\u043e\u043c \u0443\u0440\u0435\u0452\u0430\u0458\u0443:";
     },
     get$configureChat() {
-      return "Sohbeti yap\u0131land\u0131r";
+      return "\u041f\u043e\u0434\u0435\u0448\u0430\u0432\u0430\u045a\u0435 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     get$confirm(_) {
-      return "Onayla";
+      return "\u041f\u043e\u0442\u0432\u0440\u0434\u0438";
     },
     get$copiedToClipboard() {
-      return "Panoya kopyaland\u0131";
+      return "\u041a\u043e\u043f\u0438\u0440\u0430\u043d\u043e \u0443 \u043a\u043b\u0438\u043f\u0431\u043e\u0440\u0434";
     },
     get$copy(_) {
-      return "Kopyala";
+      return "\u041a\u043e\u043f\u0438\u0440\u0430\u0458";
     },
     couldNotDecryptMessage$1(error) {
-      return "Mesaj\u0131n \u015fifresi \xe7\xf6z\xfclemedi: " + error;
+      return "\u041d\u0435 \u043c\u043e\u0433\u0443 \u0434\u0430 \u0434\u0435\u0448\u0438\u0444\u0440\u0443\u0458\u0435\u043c \u043f\u043e\u0440\u0443\u043a\u0443: " + error;
     },
     get$checkList() {
       return "Check list";
     },
     countParticipants$1(count) {
-      return "" + count + " kat\u0131l\u0131mc\u0131";
+      return "\u0443\u0447\u0435\u0441\u043d\u0438\u043a\u0430: " + count;
     },
     countInvited$1(count) {
       return "" + count + " invited";
     },
     get$create(_) {
-      return "Olu\u015ftur";
+      return "\u041d\u0430\u043f\u0440\u0430\u0432\u0438";
     },
     createdTheChat$1(username) {
-      return "\ud83d\udcac " + username + " sohbeti olu\u015fturdu";
+      return username + " \u043d\u0430\u043f\u0440\u0430\u0432\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$createGroup() {
-      return "Grup olu\u015ftur";
+      return "Create group";
     },
     get$currentlyActive() {
-      return "\u015eu anda etkin";
+      return "\u0422\u0440\u0435\u043d\u0443\u0442\u043d\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u043e";
     },
     get$darkTheme() {
-      return "Koyu";
+      return "\u0442\u0430\u043c\u043d\u0438";
     },
     dateAndTimeOfDay$2(date, timeOfDay) {
       return date + ", " + timeOfDay;
     },
     get$deactivateAccountWarning() {
-      return "Bu, kullan\u0131c\u0131 hesab\u0131n\u0131z\u0131 devre d\u0131\u015f\u0131 b\u0131rakacak. Bu geri al\u0131namaz! Emin misiniz?";
+      return "\u041e\u0432\u043e \u045b\u0435 \u0434\u0435\u0430\u043a\u0442\u0438\u0432\u0438\u0440\u0430\u0442\u0438 \u0432\u0430\u0448 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u0447\u043a\u0438 \u043d\u0430\u043b\u043e\u0433. \u041d\u0435 \u043c\u043e\u0436\u0435 \u0441\u0435 \u043f\u043e\u0432\u0440\u0430\u0442\u0438\u0442\u0438! \u0421\u0438\u0433\u0443\u0440\u043d\u0438 \u0441\u0442\u0435?";
     },
     get$defaultPermissionLevel() {
-      return "Yeni kullan\u0131c\u0131lar i\xe7i \xf6ntan\u0131ml\u0131 izin seviyesi";
+      return "\u041f\u043e\u0434\u0440\u0430\u0437\u0443\u043c\u0435\u0432\u0430\u043d\u0438 \u043d\u0438\u0432\u043e \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0430";
     },
     get$$delete(_) {
-      return "Sil";
+      return "\u041e\u0431\u0440\u0438\u0448\u0438";
     },
     get$deleteAccount() {
-      return "Hesab\u0131 sil";
+      return "\u041e\u0431\u0440\u0438\u0448\u0438 \u043d\u0430\u043b\u043e\u0433";
     },
     get$deleteMessage() {
-      return "Mesaj\u0131 sil";
+      return "\u0411\u0440\u0438\u0441\u0430\u045a\u0435 \u043f\u043e\u0440\u0443\u043a\u0435";
     },
     get$devices() {
-      return "Ayg\u0131tlar";
+      return "\u0423\u0440\u0435\u0452\u0430\u0458\u0438";
     },
     get$displaynameHasBeenChanged() {
-      return "G\xf6r\xfcnen ad de\u011fi\u015ftirildi";
+      return "\u0418\u043c\u0435 \u0437\u0430 \u043f\u0440\u0438\u043a\u0430\u0437 \u0458\u0435 \u0438\u0437\u043c\u0435\u045a\u0435\u043d\u043e";
     },
     get$downloadFile() {
-      return "Dosyay\u0131 indir";
+      return "\u041f\u0440\u0435\u0443\u0437\u043c\u0438 \u0444\u0430\u0458\u043b";
     },
     get$edit() {
-      return "D\xfczenle";
+      return "\u0423\u0440\u0435\u0434\u0438";
     },
     get$editBlockedServers() {
-      return "Engellenen sunucular\u0131 d\xfczenle";
+      return "\u0423\u0440\u0435\u0434\u0438 \u0431\u043b\u043e\u043a\u0438\u0440\u0430\u043d\u0435 \u0441\u0435\u0440\u0432\u0435\u0440\u0435";
     },
     get$chatPermissions() {
-      return "Sohbet izinleri";
+      return "Chat permissions";
     },
     get$editDisplayname() {
-      return "G\xf6r\xfcnen ad\u0131 d\xfczenle";
+      return "\u0423\u0440\u0435\u0434\u0438 \u0438\u043c\u0435 \u0437\u0430 \u043f\u0440\u0438\u043a\u0430\u0437";
     },
     get$editRoomAvatar() {
-      return "Oda avatar\u0131n\u0131 d\xfczenle";
+      return "\u0423\u0440\u0435\u0452\u0443\u0458\u0435 \u0430\u0432\u0430\u0442\u0430\u0440 \u0441\u043e\u0431\u0435";
     },
     get$emoteExists() {
-      return "\u0130fade zaten var!";
+      return "\u0415\u043c\u043e\u0442\u0438 \u0432\u0435\u045b \u043f\u043e\u0441\u0442\u043e\u0458\u0438!";
     },
     get$emoteInvalid() {
-      return "Ge\xe7ersiz ifade k\u0131sa kodu!";
+      return "\u041d\u0435\u0438\u0441\u043f\u0440\u0430\u0432\u043d\u0430 \u0441\u043a\u0440\u0430\u045b\u0435\u043d\u0438\u0446\u0430 \u0437\u0430 \u0435\u043c\u043e\u0442\u0438!";
     },
     get$emoteKeyboardNoRecents() {
-      return "Son kullan\u0131lan ifadeler burada g\xf6r\xfcnecek...";
+      return "Recently-used emotes will appear here...";
     },
     get$emotePacks() {
-      return "Oda i\xe7in ifade paketleri";
+      return "\u041f\u0430\u043a\u0435\u0442\u0438 \u0435\u043c\u043e\u0442\u0438\u0458\u0430 \u0437\u0430 \u0441\u043e\u0431\u0443";
     },
     get$customEmojisAndStickers() {
-      return "\xd6zel emojiler ve \xe7\u0131kartmalar";
+      return "Custom emojis and stickers";
     },
     get$emoteShortcode() {
-      return "\u0130fade k\u0131sa kodu";
+      return "\u0441\u043a\u0440\u0430\u045b\u0435\u043d\u0438\u0446\u0430";
     },
     get$emoteWarnNeedToPick() {
-      return "Bir ifade k\u0131sa kodu ve bir resim se\xe7meniz gerekiyor!";
+      return "\u041c\u043e\u0440\u0430\u0442\u0435 \u0434\u0430 \u0438\u0437\u0430\u0431\u0435\u0440\u0435\u0442\u0435 \u0441\u043a\u0440\u0430\u045b\u0435\u043d\u0438\u0446\u0443 \u0438 \u0441\u043b\u0438\u043a\u0443 \u0437\u0430 \u0435\u043c\u043e\u0442\u0438!";
     },
     get$emptyChat() {
-      return "Bo\u015f sohbet";
+      return "\u043f\u0440\u0430\u0437\u043d\u043e \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$enableEmotesGlobally() {
-      return "\u0130fade paketini k\xfcresel olarak etkinle\u015ftir";
+      return "\u0413\u043b\u043e\u0431\u0430\u043b\u043d\u043e \u0443\u043a\u0459\u0443\u0447\u0438 \u043f\u0430\u043a\u0435\u0442 \u0435\u043c\u043e\u0442\u0438\u0458\u0430";
     },
     get$enableEncryption() {
-      return "\u015eifrelemeyi etkinle\u015ftir";
+      return "\u0423\u043a\u0459\u0443\u0447\u0443\u0458\u0435 \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0435";
     },
     get$encrypted() {
-      return "\u015eifreli";
+      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043e";
     },
     get$encryptionNotEnabled() {
-      return "\u015eifreleme etkinle\u015ftirilmedi";
+      return "\u0428\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0435 \u043d\u0438\u0458\u0435 \u0443\u043a\u0459\u0443\u0447\u0435\u043d\u043e";
     },
     endedTheCall$1(senderName) {
-      return senderName + " aramay\u0131 sonland\u0131rd\u0131";
+      return senderName + " \u0437\u0430\u0432\u0440\u0448\u0438 \u043f\u043e\u0437\u0438\u0432";
     },
     get$enterAnEmailAddress() {
-      return "Bir e-posta adresi girin";
+      return "\u0423\u043d\u0435\u0441\u0438\u0442\u0435 \u0430\u0434\u0440\u0435\u0441\u0443 \u0435-\u043f\u043e\u0448\u0442\u0435";
     },
     errorObtainingLocation$1(error) {
-      return "Konum al\u0131n\u0131rken hata olu\u015ftu: " + error;
+      return "Error obtaining location: " + error;
     },
     get$fontSize(_) {
-      return "Yaz\u0131 tipi boyutu";
+      return "\u0412\u0435\u043b\u0438\u0447\u0438\u043d\u0430 \u0444\u043e\u043d\u0442\u0430";
     },
     get$forward(_) {
-      return "\u0130let";
+      return "\u041d\u0430\u043f\u0440\u0435\u0434";
     },
     get$fromJoining() {
-      return "Kat\u0131lmadan";
+      return "\u043e\u0434 \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0430\u045a\u0430";
     },
     get$fromTheInvitation() {
-      return "Davetten";
+      return "\u043e\u0434 \u043f\u043e\u0437\u0438\u0432\u0430\u045a\u0430";
     },
     get$guestsAreForbidden() {
-      return "Misafirlere izin verilmiyor";
+      return "\u0433\u043e\u0441\u0442\u0438 \u0441\u0443 \u0437\u0430\u0431\u0440\u0430\u045a\u0435\u043d\u0438";
     },
     get$guestsCanJoin() {
-      return "Misafirler kat\u0131labilir";
+      return "\u0433\u043e\u0441\u0442\u0438 \u043c\u043e\u0433\u0443 \u043f\u0440\u0438\u0441\u0442\u0443\u043f\u0438\u0442\u0438";
     },
     hasWithdrawnTheInvitationFor$2(username, targetName) {
-      return username + ", " + targetName + " i\xe7in daveti geri \xe7ekti";
+      return username + " \u043f\u043e\u043d\u0438\u0448\u0442\u0438 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0443 \u0437\u0430 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$help() {
-      return "Yard\u0131m";
+      return "\u041f\u043e\u043c\u043e\u045b";
     },
     get$hideRedactedMessages() {
-      return "D\xfczenlenen mesajlar\u0131 gizle";
+      return "Hide redacted messages";
     },
     get$hideRedactedMessagesBody() {
-      return "Birisi bir mesaj\u0131 d\xfczenlerse, bu mesaj art\u0131k sohbette g\xf6r\xfcnmeyecektir.";
+      return "If someone redacts a message, this message won't be visible in the chat anymore.";
     },
     get$hideInvalidOrUnknownMessageFormats() {
-      return "Ge\xe7ersiz veya bilinmeyen mesaj bi\xe7imlerini gizle";
+      return "Hide invalid or unknown message formats";
     },
     get$block() {
-      return "Engelle";
+      return "Block";
     },
     get$blockedUsers() {
-      return "Engellenen kullan\u0131c\u0131lar";
+      return "Blocked users";
     },
     get$blockListDescription() {
-      return "Sizi rahats\u0131z eden kullan\u0131c\u0131lar\u0131 engelleyebilirsiniz. Ki\u015fisel engelleme listenizdeki kullan\u0131c\u0131lardan herhangi bir mesaj veya oda daveti alamazs\u0131n\u0131z.";
+      return "You can block users who are disturbing you. You won't be able to receive any messages or room invites from the users on your personal block list.";
     },
     get$blockUsername() {
-      return "Kullan\u0131c\u0131 ad\u0131n\u0131 g\xf6rmezden gel";
+      return "Ignore username";
     },
     get$iHaveClickedOnLink() {
-      return "Ba\u011flant\u0131ya t\u0131klad\u0131m";
+      return "\u041a\u043b\u0438\u043a\u043d\u0443\u043e \u0441\u0430\u043c \u043d\u0430 \u0432\u0435\u0437\u0443";
     },
     get$incorrectPassphraseOrKey() {
-      return "Yanl\u0131\u015f parola veya kurtarma anahtar\u0131";
+      return "\u041d\u0435\u0438\u0441\u043f\u0440\u0430\u0432\u043d\u0430 \u0444\u0440\u0430\u0437\u0430 \u0438\u043b\u0438 \u043a\u0459\u0443\u0447 \u043e\u043f\u043e\u0440\u0430\u0432\u043a\u0430";
     },
     get$inviteContact() {
-      return "Ki\u015fi davet et";
+      return "\u041f\u043e\u0437\u0438\u0432\u0430\u045a\u0435 \u043e\u0441\u043e\u0431\u0430";
     },
     get$noChatDescriptionYet() {
-      return "Daha sohbet a\xe7\u0131klamas\u0131 olu\u015fturulmad\u0131.";
+      return "No chat description created yet.";
     },
     get$tryAgain() {
-      return "Tekrar deneyin";
+      return "Try again";
     },
     get$invited() {
-      return "Davet edildi";
+      return "\u041f\u043e\u0437\u0432\u0430\u043d";
     },
     get$redactMessageDescription() {
-      return "Bu mesaj bu g\xf6r\xfc\u015fmedeki herkes i\xe7in d\xfczenlenecek. Bu i\u015flem geri al\u0131namaz.";
+      return "The message will be redacted for all participants in this conversation. This cannot be undone.";
     },
     get$optionalRedactReason() {
-      return "(\u0130ste\u011fe ba\u011fl\u0131) Bu mesaj\u0131 d\xfczenleme nedeni\u2026";
+      return "(Optional) Reason for redacting this message...";
     },
     invitedUser$2(username, targetName) {
-      return "\ud83d\udce9 " + username + ", " + targetName + " ki\u015fisini davet etti";
+      return username + " \u043f\u043e\u0437\u0432\u0430 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$invitedUsersOnly() {
-      return "Sadece davet edilen kullan\u0131c\u0131lar";
+      return "\u0441\u0430\u043c\u043e \u043f\u043e\u0437\u0432\u0430\u043d\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u0446\u0438";
     },
     get$inviteForMe() {
-      return "Benim i\xe7in davet et";
+      return "\u041f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0435 \u0437\u0430 \u043c\u0435\u043d\u0435";
     },
     get$isTyping() {
-      return "yaz\u0131yor\u2026";
+      return "\u043a\u0443\u0446\u0430\u2026";
     },
     joinedTheChat$1(username) {
-      return "\ud83d\udc4b " + username + " sohbete kat\u0131ld\u0131";
+      return username + " \u0441\u0435 \u043f\u0440\u0438\u0434\u0440\u0443\u0436\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0443";
     },
     kicked$2(username, targetName) {
-      return "\ud83d\udc5e " + username + ", " + targetName + " ki\u015fisini att\u0131";
+      return username + " \u0438\u0437\u0431\u0430\u0446\u0438 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$kickFromChat() {
-      return "Sohbetten at";
+      return "\u0418\u0437\u0431\u0430\u0446\u0438 \u0438\u0437 \u045b\u0430\u0441\u043a\u0430\u045a\u0430";
     },
     lastActiveAgo$1(localizedTimeShort) {
-      return "Son g\xf6r\xfclen: " + localizedTimeShort;
+      return "\u041f\u043e\u0441\u043b\u0435\u0434\u045a\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442: " + localizedTimeShort;
     },
     get$leave() {
-      return "Ayr\u0131l";
+      return "\u041d\u0430\u043f\u0443\u0441\u0442\u0438";
     },
     get$leftTheChat() {
-      return "Sohbetten ayr\u0131ld\u0131";
+      return "\u041d\u0430\u043f\u0443\u0441\u0442\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$lightTheme() {
-      return "A\xe7\u0131k";
+      return "\u0441\u0432\u0435\u0442\u043b\u0438";
     },
     get$dehydrate() {
-      return "Oturumu d\u0131\u015fa aktar ve ayg\u0131t\u0131 sil";
+      return "Export session and wipe device";
     },
     get$dehydrateWarning() {
-      return "Bu eylem geri al\u0131namaz. Yedekleme dosyas\u0131n\u0131 g\xfcvenli bir \u015fekilde saklad\u0131\u011f\u0131n\u0131zdan emin olun.";
+      return "This action cannot be undone. Ensure you safely store the backup file.";
     },
     get$dehydrateTor() {
-      return "TOR Kullan\u0131c\u0131lar\u0131: Oturumu d\u0131\u015fa aktar";
+      return "TOR Users: Export session";
     },
     get$dehydrateTorLong() {
-      return "TOR kullan\u0131c\u0131lar\u0131 i\xe7in, pencereyi kapatmadan \xf6nce oturumu d\u0131\u015fa aktarmalar\u0131 tavsiye edilir.";
+      return "For TOR users, it is recommended to export the session before closing the window.";
     },
     get$loadingPleaseWait() {
-      return "Y\xfckleniyor\u2026 L\xfctfen bekleyin.";
+      return "\u0423\u0447\u0438\u0442\u0430\u0432\u0430\u043c\u2026 \u0421\u0430\u0447\u0435\u043a\u0430\u0458\u0442\u0435.";
     },
     get$loadMore() {
-      return "Daha fazla y\xfckle\u2026";
+      return "\u0423\u0447\u0438\u0442\u0430\u0458 \u0458\u043e\u0448\u2026";
     },
     get$locationDisabledNotice() {
-      return "Konum hizmetleri devre d\u0131\u015f\u0131. L\xfctfen konumunuzu payla\u015fabilmek i\xe7in etkinle\u015ftirin.";
+      return "Location services are disabled. Please enable them to be able to share your location.";
     },
     get$locationPermissionDeniedNotice() {
-      return "Konum izni reddedildi. L\xfctfen konumunuzu payla\u015fabilmek i\xe7in izin verin.";
+      return "Location permission denied. Please grant them to be able to share your location.";
     },
     get$logout() {
-      return "Oturumu kapat";
+      return "\u041e\u0434\u0458\u0430\u0432\u0430";
     },
     get$mention() {
-      return "Bahset";
+      return "\u0421\u043f\u043e\u043c\u0435\u043d\u0438";
     },
     get$messages() {
-      return "Mesajlar";
+      return "\u041f\u043e\u0440\u0443\u043a\u0435";
     },
     get$messagesStyle() {
-      return "Mesajlar:";
+      return "Messages:";
     },
     get$moderator() {
-      return "Moderat\xf6r";
+      return "\u041c\u043e\u0434\u0435\u0440\u0430\u0442\u043e\u0440";
     },
     get$newChat() {
-      return "Yeni sohbet";
+      return "\u041d\u043e\u0432\u043e \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$newVerificationRequest() {
-      return "Yeni do\u011frulama iste\u011fi!";
+      return "\u041d\u043e\u0432\u0438 \u0437\u0430\u0445\u0442\u0435\u0432 \u0437\u0430 \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0458\u0443!";
     },
     get$next(_) {
-      return "\u0130leri";
+      return "\u0421\u043b\u0435\u0434\u0435\u045b\u0435";
     },
     get$no() {
-      return "Hay\u0131r";
+      return "\u041d\u0435";
     },
     get$noConnectionToTheServer() {
-      return "Sunucuyla ba\u011flant\u0131 yok";
+      return "\u041d\u0435\u043c\u0430 \u0432\u0435\u0437\u0435 \u0441\u0430 \u0441\u0435\u0440\u0432\u0435\u0440\u043e\u043c";
     },
     get$noEmotesFound() {
-      return "\u0130fade bulunamad\u0131. \ud83d\ude15";
+      return "\u041d\u0435\u043c\u0430 \u0435\u043c\u043e\u0442\u0438\u0458\u0430. \ud83d\ude15";
     },
     get$shareInviteLink() {
-      return "Davet ba\u011flant\u0131s\u0131n\u0131 payla\u015f";
+      return "Share invite link";
     },
     get$none() {
-      return "Yok";
+      return "\u041d\u0438\u0448\u0442\u0430";
     },
     get$noPasswordRecoveryDescription() {
-      return "Hen\xfcz parolan\u0131z\u0131 kurtarmak i\xe7in bir yol eklemediniz.";
+      return "\u0408\u043e\u0448 \u043d\u0438\u0441\u0442\u0435 \u043e\u0434\u0440\u0435\u0434\u0438\u043b\u0438 \u043d\u0430\u0447\u0438\u043d \u0437\u0430 \u043e\u043f\u043e\u0440\u0430\u0432\u0430\u043a \u043b\u043e\u0437\u0438\u043d\u043a\u0435.";
     },
     get$noPermission() {
-      return "\u0130zin yok";
+      return "\u041d\u0435\u043c\u0430 \u0434\u043e\u0437\u0432\u043e\u043b\u0430";
     },
     get$noRoomsFound() {
-      return "Oda bulunamad\u0131\u2026";
+      return "\u041d\u0438\u0441\u0430\u043c \u043d\u0430\u0448\u0430\u043e \u0441\u043e\u0431\u0435\u2026";
     },
     get$notifications() {
-      return "Bildirimler";
+      return "\u041e\u0431\u0430\u0432\u0435\u0448\u0442\u0435\u045a\u0430";
     },
     get$obtainingLocation() {
-      return "Konum al\u0131n\u0131yor\u2026";
+      return "Obtaining location\u2026";
     },
     get$offensive() {
-      return "Rahats\u0131z edici";
+      return "\u0423\u0432\u0440\u0435\u0434\u0459\u0438\u0432";
     },
     get$ok() {
-      return "Tamam";
+      return "\u0443 \u0440\u0435\u0434\u0443";
     },
     get$oopsSomethingWentWrong() {
-      return "T\xfch, bir \u015feyler yanl\u0131\u015f gitti\u2026";
+      return "\u041d\u0435\u0448\u0442\u043e \u0458\u0435 \u043f\u043e\u0448\u043b\u043e \u043d\u0430\u043e\u043f\u0430\u043a\u043e\u2026";
     },
     get$oneClientLoggedOut() {
-      return "\u0130stemcilerinizden birinin oturumu kapat\u0131ld\u0131";
+      return "One of your clients has been logged out";
     },
     get$openInMaps() {
-      return "Haritalarda a\xe7";
+      return "Open in maps";
     },
     get$link() {
-      return "Ba\u011flant\u0131";
+      return "Link";
     },
     get$serverRequiresEmail() {
-      return "Bu sunucunun kay\u0131t i\xe7in e-posta adresinizi do\u011frulamas\u0131 gerekiyor.";
+      return "This server needs to validate your email address for registration.";
     },
     get$or() {
-      return "Veya";
+      return "\u0438\u043b\u0438";
     },
     get$participant() {
-      return "Kat\u0131l\u0131mc\u0131";
+      return "\u0423\u0447\u0435\u0441\u043d\u0438\u043a";
     },
     get$passphraseOrKey() {
-      return "parola veya kurtarma anahtar\u0131";
+      return "\u0444\u0440\u0430\u0437\u0430 \u0438\u043b\u0438 \u043a\u0459\u0443\u0447 \u043e\u043f\u043e\u0440\u0430\u0432\u043a\u0430";
     },
     get$password(_) {
-      return "Parola";
+      return "\u041b\u043e\u0437\u0438\u043d\u043a\u0430";
     },
     get$passwordForgotten() {
-      return "Parola unutuldu";
+      return "\u0417\u0430\u0431\u043e\u0440\u0430\u0432\u0459\u0435\u043d\u0430 \u043b\u043e\u0437\u0438\u043d\u043a\u0430";
     },
     get$passwordHasBeenChanged() {
-      return "Parola de\u011fi\u015ftirildi";
+      return "\u041b\u043e\u0437\u0438\u043d\u043a\u0430 \u0458\u0435 \u043f\u0440\u043e\u043c\u0435\u045a\u0435\u043d\u0430";
     },
     get$overview() {
-      return "Genel g\xf6r\xfcn\xfcm";
+      return "Overview";
     },
     get$passwordRecoverySettings() {
-      return "Parola kurtarma ayarlar\u0131";
+      return "Password recovery settings";
     },
     get$passwordRecovery() {
-      return "Parola kurtarma";
+      return "\u041e\u043f\u043e\u0440\u0430\u0432\u0430\u043a \u043b\u043e\u0437\u0438\u043d\u043a\u0435";
     },
     get$pickImage() {
-      return "Bir resim se\xe7";
+      return "\u0418\u0437\u0431\u043e\u0440 \u0441\u043b\u0438\u043a\u0435";
     },
     get$pin() {
-      return "Sabitle";
+      return "\u0417\u0430\u043a\u0430\u0447\u0438";
     },
     get$pleaseChoose() {
-      return "L\xfctfen se\xe7in";
+      return "\u0418\u0437\u0430\u0431\u0435\u0440\u0438\u0442\u0435";
     },
     get$pleaseEnterYourPassword() {
-      return "L\xfctfen parolan\u0131z\u0131 girin";
+      return "\u0423\u043d\u0435\u0441\u0438\u0442\u0435 \u0441\u0432\u043e\u0458\u0443 \u043b\u043e\u0437\u0438\u043d\u043a\u0443";
     },
     get$pleaseEnterYourPin() {
-      return "L\xfctfen PIN kodunuzu girin";
+      return "\u0423\u043d\u0435\u0441\u0438\u0442\u0435 \u0441\u0432\u043e\u0458 \u043f\u0438\u043d";
     },
     get$pleaseEnterYourUsername() {
-      return "L\xfctfen kullan\u0131c\u0131 ad\u0131n\u0131z\u0131 girin";
+      return "\u0423\u043d\u0435\u0441\u0438\u0442\u0435 \u0441\u0432\u043e\u0458\u0435 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u0447\u043a\u043e \u0438\u043c\u0435";
     },
     get$pleaseFollowInstructionsOnWeb() {
-      return 'L\xfctfen web sitesindeki talimatlar\u0131 izleyin ve "\u0130leri" d\xfc\u011fmesine dokunun.';
+      return "\u0418\u0441\u043f\u0440\u0430\u0442\u0438\u0442\u0435 \u0443\u043f\u0443\u0442\u0441\u0442\u0432\u0430 \u043d\u0430 \u0432\u0435\u0431 \u0441\u0430\u0458\u0442\u0443 \u0438 \u0442\u0430\u043f\u043d\u0438\u0442\u0435 \u043d\u0430 \u201e\u0421\u043b\u0435\u0434\u0435\u045b\u0435\u201c.";
     },
     get$privacy() {
-      return "Gizlilik";
+      return "\u041f\u0440\u0438\u0432\u0430\u0442\u043d\u043e\u0441\u0442";
     },
     get$reason(_) {
-      return "Neden";
+      return "\u0420\u0430\u0437\u043b\u043e\u0433";
     },
     redactedBy$1(username) {
-      return username + " taraf\u0131ndan d\xfczenlendi";
+      return "Redacted by " + username;
     },
     get$directChat() {
-      return "Do\u011frudan sohbet";
+      return "Direct chat";
     },
     redactedByBecause$2(username, reason) {
-      return username + ' taraf\u0131ndan "' + reason + '" nedeniyle d\xfczenlendi';
+      return "Redacted by " + username + ' because: "' + reason + '"';
     },
     redactedAnEvent$1(username) {
-      return username + " bir etkinli\u011fi d\xfczenledi";
+      return username + " \u0440\u0435\u0434\u0438\u0433\u043e\u0432\u0430 \u0434\u043e\u0433\u0430\u0452\u0430\u0458";
     },
     get$redactMessage() {
-      return "Mesaj\u0131 d\xfczenle";
+      return "\u0420\u0435\u0434\u0438\u0433\u0443\u0458 \u043f\u043e\u0440\u0443\u043a\u0443";
     },
     get$reject() {
-      return "Reddet";
+      return "\u041e\u0434\u0431\u0438\u0458";
     },
     rejectedTheInvitation$1(username) {
-      return username + " daveti reddetti";
+      return username + " \u043e\u0434\u0431\u0438 \u043f\u043e\u0437\u0438\u0432\u043d\u0438\u0446\u0443";
     },
     get$removeAllOtherDevices() {
-      return "Di\u011fer t\xfcm ayg\u0131tlar\u0131 kald\u0131r";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438 \u0441\u0432\u0435 \u043e\u0441\u0442\u0430\u043b\u0435 \u0443\u0440\u0435\u0452\u0430\u0458\u0435";
     },
     get$unbanFromChat() {
-      return "Sohbet engelini kald\u0131r";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438 \u0438\u0437\u0433\u043d\u0430\u043d\u0441\u0442\u0432\u043e";
     },
     get$removeYourAvatar() {
-      return "Avatar\u0131n\u0131z\u0131 kald\u0131r\u0131n";
+      return "\u0423\u043a\u043b\u043e\u043d\u0438\u0442\u0435 \u0441\u0432\u043e\u0458 \u0430\u0432\u0430\u0442\u0430\u0440";
     },
     get$replaceRoomWithNewerVersion() {
-      return "Oday\u0131 yeni s\xfcr\xfcmle de\u011fi\u015ftir";
+      return "\u0417\u0430\u043c\u0435\u043d\u0438 \u0441\u043e\u0431\u0443 \u043d\u043e\u0432\u0438\u0458\u043e\u043c \u0432\u0435\u0440\u0437\u0438\u0458\u043e\u043c";
     },
     get$reply(_) {
-      return "Yan\u0131tla";
+      return "\u041e\u0434\u0433\u043e\u0432\u043e\u0440\u0438";
     },
     get$reportMessage() {
-      return "Mesaj\u0131 bildir";
+      return "\u041f\u0440\u0438\u0458\u0430\u0432\u0438 \u043f\u043e\u0440\u0443\u043a\u0443";
     },
     get$roomHasBeenUpgraded() {
-      return "Oda y\xfckseltildi";
+      return "\u0421\u043e\u0431\u0430 \u0458\u0435 \u043d\u0430\u0434\u043e\u0433\u0440\u0430\u0452\u0435\u043d\u0430";
     },
     get$search(_) {
-      return "Ara";
+      return "\u041f\u0440\u0435\u0442\u0440\u0430\u0436\u0438";
     },
     get$security() {
-      return "G\xfcvenlik";
+      return "\u0411\u0435\u0437\u0431\u0435\u0434\u043d\u043e\u0441\u0442";
     },
     get$send(_) {
-      return "G\xf6nder";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438";
     },
     get$sendAMessage() {
-      return "Bir mesaj g\xf6nder";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u043f\u043e\u0440\u0443\u043a\u0443";
     },
     get$sendAudio() {
-      return "Ses g\xf6nder";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0430\u0443\u0434\u0438\u043e";
     },
     get$sendFile() {
-      return "Dosya g\xf6nder";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0444\u0430\u0458\u043b";
     },
     get$sendImage() {
-      return "Resim g\xf6nder";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0441\u043b\u0438\u043a\u0443";
     },
     sendImages$1(count) {
-      return "" + count + " g\xf6rsel g\xf6nder";
+      return "Send " + count + " image";
     },
     get$sendMessages() {
-      return "Mesajlar\u0131 g\xf6nder";
+      return "\u0421\u043b\u0430\u045a\u0435 \u043f\u043e\u0440\u0443\u043a\u0430";
     },
     get$sendVideo() {
-      return "Video g\xf6nder";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438 \u0432\u0438\u0434\u0435\u043e";
     },
     sentAFile$1(username) {
-      return "\ud83d\udcc1 " + username + " bir dosya g\xf6nderdi";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u0444\u0430\u0458\u043b";
     },
     sentAnAudio$1(username) {
-      return "\ud83c\udfa4 " + username + " bir ses g\xf6nderdi";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u0430\u0443\u0434\u0438\u043e";
     },
     sentAPicture$1(username) {
-      return "\ud83d\uddbc\ufe0f " + username + " bir resim g\xf6nderdi";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u0441\u043b\u0438\u043a\u0443";
     },
     sentASticker$1(username) {
-      return "\ud83d\ude0a " + username + " bir \xe7\u0131kartma g\xf6nderdi";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u043d\u0430\u043b\u0435\u043f\u043d\u0438\u0446\u0443";
     },
     sentAVideo$1(username) {
-      return "\ud83c\udfa5 " + username + " bir video g\xf6nderdi";
+      return username + " \u043f\u043e\u0441\u043b\u0430 \u0432\u0438\u0434\u0435\u043e";
     },
     sentCallInformations$1(senderName) {
-      return senderName + " arama bilgilerini g\xf6nderdi";
+      return senderName + " \u043f\u043e\u0441\u043b\u0430 \u043f\u043e\u0434\u0430\u0442\u043a\u0435 \u043e \u043f\u043e\u0437\u0438\u0432\u0443";
     },
     get$separateChatTypes() {
-      return "Do\u011frudan Sohbetleri ve Gruplar\u0131 Ay\u0131r";
+      return "Separate Direct Chats and Groups";
     },
     get$setChatDescription() {
-      return "Sohbet a\xe7\u0131klamas\u0131n\u0131 ayarla";
+      return "Set chat description";
     },
     get$setStatus() {
-      return "Durumu ayarla";
+      return "\u041f\u043e\u0441\u0442\u0430\u0432\u0438 \u0441\u0442\u0430\u0442\u0443\u0441";
     },
     get$settings() {
-      return "Ayarlar";
+      return "\u041f\u043e\u0441\u0442\u0430\u0432\u043a\u0435";
     },
     get$share(_) {
-      return "Payla\u015f";
+      return "\u041f\u043e\u0434\u0435\u043b\u0438";
     },
     sharedTheLocation$1(username) {
-      return username + " konumunu payla\u015ft\u0131";
+      return username + " \u043f\u043e\u0434\u0435\u043b\u0438 \u043b\u043e\u043a\u0430\u0446\u0438\u0458\u0443";
     },
     get$shareLocation() {
-      return "Konumu payla\u015f";
+      return "Share location";
     },
     get$presencesToggle() {
-      return "Di\u011fer kullan\u0131c\u0131lar\u0131n durum mesajlar\u0131n\u0131 g\xf6ster";
+      return "Show status messages from other users";
     },
     get$skip(_) {
-      return "Atla";
+      return "\u041f\u0440\u0435\u0441\u043a\u043e\u0447\u0438";
     },
     get$sourceCode() {
-      return "Kaynak kodlar\u0131";
+      return "\u0418\u0437\u0432\u043e\u0440\u043d\u0438 \u043a\u043e\u0434";
     },
     startedACall$1(senderName) {
-      return senderName + " bir arama ba\u015flatt\u0131";
+      return senderName + " \u0437\u0430\u043f\u043e\u0447\u0435 \u043f\u043e\u0437\u0438\u0432";
     },
     get$status(_) {
-      return "Durum";
+      return "\u0421\u0442\u0430\u045a\u0435";
     },
     get$statusExampleMessage() {
-      return "Bug\xfcn nas\u0131ls\u0131n\u0131z?";
+      return "\u041a\u0430\u043a\u043e \u0441\u0442\u0435 \u0434\u0430\u043d\u0430\u0441?";
     },
     get$submit(_) {
-      return "G\xf6nder";
+      return "\u041f\u043e\u0448\u0430\u0459\u0438";
     },
     get$synchronizingPleaseWait() {
-      return "E\u015fzamanlan\u0131yor\u2026 L\xfctfen bekleyin.";
+      return "Synchronizing\u2026 Please wait.";
     },
     synchronizingPleaseWaitCounter$1(percentage) {
       return " Synchronizing\u2026 (" + percentage + "%)";
     },
     get$systemTheme() {
-      return "Sistem";
+      return "\u0441\u0438\u0441\u0442\u0435\u043c\u0441\u043a\u0438";
     },
     get$theyDontMatch() {
-      return "E\u015fle\u015fmediler";
+      return "\u041d\u0435 \u043f\u043e\u043a\u043b\u0430\u043f\u0430\u0458\u0443 \u0441\u0435";
     },
     get$theyMatch() {
-      return "E\u015fle\u015ftiler";
+      return "\u041f\u043e\u043a\u043b\u0430\u043f\u0430\u0458\u0443 \u0441\u0435";
     },
     get$tooManyRequestsWarning() {
-      return "\xc7ok fazla istek. L\xfctfen daha sonra tekrar deneyin!";
+      return "\u041f\u0440\u0435\u0432\u0438\u0448\u0435 \u0443\u043f\u0438\u0442\u0430. \u041f\u043e\u043a\u0443\u0448\u0430\u0458\u0442\u0435 \u043a\u0430\u0441\u043d\u0438\u0458\u0435!";
     },
     get$tryToSendAgain() {
-      return "Tekrar g\xf6ndermeyi deneyin";
+      return "\u041f\u043e\u043a\u0443\u0448\u0430\u0458 \u0441\u043b\u0430\u045a\u0435 \u043f\u043e\u043d\u043e\u0432\u043e";
     },
     get$unavailable() {
-      return "Yok";
+      return "\u041d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u043d\u043e";
     },
     unbannedUser$2(username, targetName) {
-      return username + ", " + targetName + " ki\u015fisinin engelini kald\u0131rd\u0131";
+      return username + " \u043e\u0434\u0431\u043b\u043e\u043a\u0438\u0440\u0430 \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 " + targetName;
     },
     get$unblockDevice() {
-      return "Ayg\u0131t\u0131n Engellemesini Kald\u0131r";
+      return "\u041e\u0434\u0431\u043b\u043e\u043a\u0438\u0440\u0430\u0458 \u0443\u0440\u0435\u0452\u0430\u0458";
     },
     get$unknownDevice() {
-      return "Bilinmeyen ayg\u0131t";
+      return "\u041d\u0435\u043f\u043e\u0437\u043d\u0430\u0442 \u0443\u0440\u0435\u0452\u0430\u0458";
     },
     get$unknownEncryptionAlgorithm() {
-      return "Bilinmeyen \u015fifreleme algoritmas\u0131";
+      return "\u041d\u0435\u043f\u043e\u0437\u043d\u0430\u0442 \u0430\u043b\u0433\u043e\u0440\u0438\u0442\u0430\u043c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0430";
     },
     unknownEvent$1(type) {
-      return "Bilinmeyen etkinlik '" + type + "'";
+      return "\u041d\u0435\u043f\u043e\u0437\u043d\u0430\u0442 \u0434\u043e\u0433\u0430\u0452\u0430\u0458 \u201e" + type + "\u201c";
     },
     get$unpin() {
-      return "Sabitlemeyi kald\u0131r";
+      return "\u041e\u0442\u043a\u0430\u0447\u0438";
     },
     userAndOthersAreTyping$2(username, count) {
-      return username + " ve " + count + " di\u011fer ki\u015fi yaz\u0131yor\u2026";
+      return username + " \u0438 " + count + " \u043a\u043e\u0440\u0438\u0441\u043d\u0438\u043a\u0430 \u043a\u0443\u0446\u0430\u0458\u0443\u2026";
     },
     userAndUserAreTyping$2(username, username2) {
-      return username + " ve " + username2 + " yaz\u0131yor\u2026";
+      return username + " \u0438 " + username2 + " \u043a\u0443\u0446\u0430\u0458\u0443\u2026";
     },
     userIsTyping$1(username) {
-      return username + " yaz\u0131yor\u2026";
+      return username + " \u043a\u0443\u0446\u0430\u2026";
     },
     userLeftTheChat$1(username) {
-      return "\ud83d\udeaa " + username + " sohbetten ayr\u0131ld\u0131";
+      return username + " \u043d\u0430\u043f\u0443\u0441\u0442\u0438 \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$username(_) {
-      return "Kullan\u0131c\u0131 ad\u0131";
+      return "\u041a\u043e\u0440\u0438\u0441\u043d\u0438\u0447\u043a\u043e \u0438\u043c\u0435";
     },
     userSentUnknownEvent$2(username, type) {
-      return username + " bir " + type + " etkinli\u011fi g\xf6nderdi";
+      return username + " \u043f\u043e\u0441\u043b\u0430 " + type + " \u0434\u043e\u0433\u0430\u0452\u0430\u0458";
     },
     get$unverified() {
-      return "Do\u011frulanmad\u0131";
+      return "Unverified";
     },
     get$verified() {
-      return "Do\u011fruland\u0131";
+      return "\u041e\u0432\u0435\u0440\u0435\u043d";
     },
     get$verifyStart() {
-      return "Do\u011frulamay\u0131 Ba\u015flat";
+      return "\u041f\u043e\u043a\u0440\u0435\u043d\u0438 \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u0430\u0446\u0438\u0458\u0443";
     },
     get$verifySuccess() {
-      return "Ba\u015far\u0131yla do\u011fruland\u0131!";
+      return "\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0441\u0442\u0435 \u0432\u0435\u0440\u0438\u0444\u0438\u043a\u043e\u0432\u0430\u043b\u0438!";
     },
     get$verifyTitle() {
-      return "Di\u011fer hesap do\u011frulan\u0131yor";
+      return "\u0412\u0435\u0440\u0438\u0444\u0438\u043a\u0443\u0458\u0435\u043c \u0434\u0440\u0443\u0433\u0438 \u043d\u0430\u043b\u043e\u0433";
     },
     get$visibleForAllParticipants() {
-      return "T\xfcm kat\u0131l\u0131mc\u0131lar i\xe7in g\xf6r\xfcn\xfcr";
+      return "\u0432\u0438\u0434\u0459\u0438\u0432\u043e \u0441\u0432\u0438\u043c \u0443\u0447\u0435\u0441\u043d\u0438\u0446\u0438\u043c\u0430";
     },
     get$visibleForEveryone() {
-      return "Herkes i\xe7in g\xf6r\xfcn\xfcr";
+      return "\u0432\u0438\u0434\u0459\u0438\u0432\u043e \u0441\u0432\u0438\u043c\u0430";
     },
     get$voiceMessage() {
-      return "Sesli mesaj";
+      return "\u0413\u043b\u0430\u0441\u043e\u0432\u043d\u0430 \u043f\u043e\u0440\u0443\u043a\u0430";
     },
     get$waitingPartnerAcceptRequest() {
-      return "Orta\u011f\u0131n iste\u011fi kabul etmesi bekleniyor\u2026";
+      return "\u0427\u0435\u043a\u0430\u043c \u0434\u0430 \u0441\u0430\u0433\u043e\u0432\u043e\u0440\u043d\u0438\u043a \u043f\u0440\u0438\u0445\u0432\u0430\u0442\u0438 \u0437\u0430\u0445\u0442\u0435\u0432\u2026";
     },
     get$waitingPartnerEmoji() {
-      return "Orta\u011f\u0131n emojiyi kabul etmesi bekleniyor\u2026";
+      return "\u0427\u0435\u043a\u0430\u043c \u0434\u0430 \u0441\u0430\u0433\u043e\u0432\u043e\u0440\u043d\u0438\u043a \u043f\u0440\u0438\u0445\u0432\u0430\u0442\u0438 \u0435\u043c\u043e\u045f\u0438\u0458\u0435\u2026";
     },
     get$waitingPartnerNumbers() {
-      return "Orta\u011f\u0131n numaralar\u0131 kabul etmesi bekleniyor\u2026";
+      return "\u0427\u0435\u043a\u0430\u043c \u0434\u0430 \u0441\u0430\u0433\u043e\u0432\u043e\u0440\u043d\u0438\u043a \u043f\u0440\u0438\u0445\u0432\u0430\u0442\u0438 \u0431\u0440\u043e\u0458\u0435\u0432\u0435\u2026";
     },
     get$warning() {
-      return "Uyar\u0131!";
+      return "\u0423\u043f\u043e\u0437\u043e\u0440\u0435\u045a\u0435!";
     },
     get$weSentYouAnEmail() {
-      return "Size bir e-posta g\xf6nderdik";
+      return "\u041f\u043e\u0441\u043b\u0430\u043b\u0438 \u0441\u043c\u043e \u0432\u0430\u043c \u0435-\u043f\u043e\u0448\u0442\u0443";
     },
     get$whyDoYouWantToReportThis() {
-      return "Bunu neden bildirmek istiyorsunuz?";
+      return "\u0417\u0430\u0448\u0442\u043e \u0436\u0435\u043b\u0438\u0442\u0435 \u043e\u0432\u043e \u0434\u0430 \u043f\u0440\u0438\u0458\u0430\u0432\u0438\u0442\u0435?";
     },
     get$withTheseAddressesRecoveryDescription() {
-      return "Bu adresler ile parolan\u0131z\u0131 kurtarabilirsiniz.";
+      return "\u0421\u0430 \u043e\u0432\u0438\u043c \u0430\u0434\u0440\u0435\u0441\u0430\u043c\u0430 \u043c\u043e\u0436\u0435\u0442\u0435 \u043e\u043f\u043e\u0440\u0430\u0432\u0438\u0442\u0438 \u0441\u0432\u043e\u0458\u0443 \u043b\u043e\u0437\u0438\u043d\u043a\u0443.";
     },
     get$writeAMessage() {
-      return "Bir mesaj yaz\u2026";
+      return "\u043d\u0430\u043f\u0438\u0448\u0438\u0442\u0435 \u043f\u043e\u0440\u0443\u043a\u0443\u2026";
     },
     get$yes() {
-      return "Evet";
+      return "\u0414\u0430";
     },
     get$you() {
-      return "Sen";
+      return "\u0412\u0438";
     },
     get$youAreNoLongerParticipatingInThisChat() {
-      return "Art\u0131k bu sohbette kat\u0131l\u0131mc\u0131 de\u011filsiniz";
+      return "\u0412\u0438\u0448\u0435 \u043d\u0435 \u0443\u0447\u0435\u0441\u0442\u0432\u0443\u0458\u0435\u0442\u0435 \u0443 \u043e\u0432\u043e\u043c \u045b\u0430\u0441\u043a\u0430\u045a\u0443";
     },
     get$youHaveBeenBannedFromThisChat() {
-      return "Bu sohbetten engellendiniz";
+      return "\u0417\u0430\u0431\u0440\u0430\u045a\u0435\u043d\u043e \u0432\u0430\u043c \u0458\u0435 \u043e\u0432\u043e \u045b\u0430\u0441\u043a\u0430\u045a\u0435";
     },
     get$yourPublicKey() {
-      return "Ortak anahtar\u0131n\u0131z";
+      return "\u0412\u0430\u0448 \u0458\u0430\u0432\u043d\u0438 \u043a\u0459\u0443\u0447";
     },
     get$messageInfo() {
-      return "Mesaj bilgileri";
+      return "Message info";
     },
     get$time(_) {
-      return "Zaman";
+      return "Time";
     },
     get$sender() {
-      return "G\xf6nderen";
+      return "Sender";
     },
     get$openGallery() {
-      return "Galeriyi a\xe7";
+      return "Open gallery";
     },
     get$start(_) {
-      return "Ba\u015fla";
+      return "Start";
     },
     get$markAsRead() {
-      return "Okundu olarak i\u015faretle";
+      return "Mark as read";
     },
     reactedWith$2(sender, reaction) {
-      return sender + ", " + reaction + " ile tepki verdi";
+      return sender + " reacted with " + reaction;
     },
     get$pinMessage() {
-      return "Odaya sabitle";
+      return "Pin to room";
     },
     get$emojis() {
-      return "Emojiler";
+      return "Emojis";
     },
     get$youRejectedTheInvitation() {
-      return "Daveti reddettiniz";
+      return "You rejected the invitation";
     },
     get$youJoinedTheChat() {
-      return "Sohbete kat\u0131ld\u0131n\u0131z";
+      return "You joined the chat";
     },
     get$youAcceptedTheInvitation() {
-      return "\ud83d\udc4d Daveti kabul ettiniz";
+      return "\ud83d\udc4d You accepted the invitation";
     },
     youBannedUser$1(user) {
-      return user + " kullan\u0131c\u0131s\u0131n\u0131 yasaklad\u0131n\u0131z";
+      return "You banned " + user;
     },
     youHaveWithdrawnTheInvitationFor$1(user) {
-      return user + " i\xe7in daveti geri \xe7ektiniz";
+      return "You have withdrawn the invitation for " + user;
     },
     youInvitedBy$1(user) {
-      return "\ud83d\udce9 " + user + " taraf\u0131ndan davet edildiniz";
+      return "\ud83d\udce9 You have been invited by " + user;
     },
     youInvitedUser$1(user) {
-      return "\ud83d\udce9 " + user + " kullan\u0131c\u0131s\u0131n\u0131 davet ettiniz";
+      return "\ud83d\udce9 You invited " + user;
     },
     youKicked$1(user) {
-      return "\ud83d\udc5e " + user + " kullan\u0131c\u0131s\u0131n\u0131 att\u0131n\u0131z";
+      return "\ud83d\udc5e You kicked " + user;
     },
     youUnbannedUser$1(user) {
-      return user + " kullan\u0131c\u0131s\u0131n\u0131n yasa\u011f\u0131n\u0131 kald\u0131rd\u0131n\u0131z";
+      return "You unbanned " + user;
     },
     hasKnocked$1(user) {
-      return "\ud83d\udeaa " + user + " t\u0131klatt\u0131";
+      return "\ud83d\udeaa " + user + " has knocked";
     },
     get$users() {
-      return "Kullan\u0131c\u0131lar";
+      return "Users";
     },
     countFiles$1(count) {
-      return "" + count + " dosya";
+      return "" + count + " files";
     },
     get$user() {
-      return "Kullan\u0131c\u0131";
+      return "User";
     },
     get$custom() {
-      return "\xd6zel";
+      return "Custom";
     },
     get$noKeyForThisMessage() {
-      return "Bu durum, mesaj siz bu ayg\u0131tta hesab\u0131n\u0131zda oturum a\xe7madan \xf6nce g\xf6nderildiyse meydana gelebilir.\n\nG\xf6nderenin ayg\u0131t\u0131n\u0131z\u0131 engellemi\u015f olmas\u0131 veya internet ba\u011flant\u0131s\u0131nda bir sorun olmas\u0131 da m\xfcmk\xfcnd\xfcr.\n\nMesaj\u0131 ba\u015fka bir oturumda okuyabiliyor musunuz? O zaman mesaj\u0131 oradan aktarabilirsiniz! Ayarlar > Ayg\u0131tlar b\xf6l\xfcm\xfcne gidin ve ayg\u0131tlar\u0131n\u0131z\u0131n birbirini do\u011frulad\u0131\u011f\u0131ndan emin olun. Oday\u0131 bir sonraki sefer a\xe7t\u0131\u011f\u0131n\u0131zda ve her iki oturum da \xf6n planda oldu\u011funda, anahtarlar otomatik olarak iletilecektir.\n\nOturumu kapat\u0131rken veya ayg\u0131t de\u011fi\u015ftirirken anahtarlar\u0131 kaybetmek istemiyor musunuz? Ayarlarda sohbet yedeklemesini etkinle\u015ftirdi\u011finizden emin olun.";
+      return "This can happen if the message was sent before you have signed in to your account at this device.\n\nIt is also possible that the sender has blocked your device or something went wrong with the internet connection.\n\nAre you able to read the message on another session? Then you can transfer the message from it! Go to Settings > Devices and make sure that your devices have verified each other. When you open the room the next time and both sessions are in the foreground, the keys will be transmitted automatically.\n\nDo you not want to lose the keys when logging out or switching devices? Make sure that you have enabled the chat backup in the settings.";
     },
     wasDirectChatDisplayName$1(oldDisplayName) {
-      return "Bo\u015f sohbet (" + oldDisplayName + " idi)";
+      return "Empty chat (was " + oldDisplayName + ")";
     },
     get$reopenChat() {
-      return "Sohbeti yeniden a\xe7";
+      return "Reopen chat";
     },
     get$noOtherDevicesFound() {
-      return "Ba\u015fka ayg\u0131t bulunamad\u0131";
+      return "No other devices found";
     },
     fileIsTooBigForServer$1(max) {
-      return "G\xf6nderilemiyor! Sunucu yaln\u0131zca " + max + " de\u011ferine kadar olan ekleri destekliyor.";
+      return "Unable to send! The server only supports attachments up to " + max + ".";
     },
     get$jumpToLastReadMessage() {
-      return "Son okunan mesaja atla";
+      return "Jump to last read message";
     },
     get$readUpToHere() {
-      return "Buraya kadar oku";
+      return "Read up to here";
     },
     get$jump() {
-      return "Atla";
+      return "Jump";
     },
     get$openLinkInBrowser() {
-      return "Ba\u011flant\u0131y\u0131 taray\u0131c\u0131da a\xe7";
+      return "Open link in browser";
     },
     get$setColorTheme() {
-      return "Renk temas\u0131n\u0131 ayarla:";
+      return "Set color theme:";
     },
     get$invite() {
-      return "Davet et";
+      return "Invite";
     },
     get$invalidInput() {
-      return "Ge\xe7ersiz giri\u015f!";
+      return "Invalid input!";
     },
     wrongPinEntered$1(seconds) {
-      return "Yanl\u0131\u015f PIN girildi! " + seconds + " saniye sonra tekrar deneyin...";
+      return "Wrong pin entered! Try again in " + seconds + " seconds...";
     },
     get$pleaseEnterANumber() {
-      return "L\xfctfen 0'dan b\xfcy\xfck bir say\u0131 girin";
+      return "Please enter a number greater than 0";
     },
     get$removeDevicesDescription() {
-      return "Bu ayg\u0131ttan \xe7\u0131k\u0131\u015f yapacaks\u0131n\u0131z ve art\u0131k mesaj alamayacaks\u0131n\u0131z.";
+      return "You will be logged out of this device and will no longer be able to receive messages.";
     },
     get$banUserDescription() {
-      return "Kullan\u0131c\u0131 sohbetten yasaklanacak ve yasa\u011f\u0131 kald\u0131r\u0131lana kadar sohbete tekrar giremeyecek.";
+      return "The user will be banned from the chat and will not be able to enter the chat again until they are unbanned.";
     },
     get$unbanUserDescription() {
-      return "Kullan\u0131c\u0131 denerse sohbete tekrar girebilecektir.";
+      return "The user will be able to enter the chat again if they try.";
     },
     get$kickUserDescription() {
-      return "Kullan\u0131c\u0131 sohbetten at\u0131l\u0131r ancak yasaklanmaz. Herkese a\xe7\u0131k sohbetlerde kullan\u0131c\u0131 istedi\u011fi zaman yeniden kat\u0131labilir.";
+      return "The user is kicked out of the chat but not banned. In public chats, the user can rejoin at any time.";
     },
     get$makeAdminDescription() {
-      return "Bu kullan\u0131c\u0131y\u0131 y\xf6netici yapt\u0131ktan sonra, sizinle ayn\u0131 izinlere sahip olaca\u011f\u0131 i\xe7in bunu geri alamayabilirsiniz.";
+      return "Once you make this user admin, you may not be able to undo this as they will then have the same permissions as you.";
     },
     get$yourGlobalUserIdIs() {
-      return "Genel kullan\u0131c\u0131 kimli\u011finiz: ";
+      return "Your global user-ID is: ";
     },
     noUsersFoundWithQuery$1(query) {
-      return 'Ne yaz\u0131k ki "' + query + '" ile kullan\u0131c\u0131 bulunamad\u0131. L\xfctfen bir yaz\u0131m hatas\u0131 yap\u0131p yapmad\u0131\u011f\u0131n\u0131z\u0131 kontrol edin.';
+      return 'Unfortunately no user could be found with "' + query + '". Please check whether you made a typo.';
     },
     get$knocking() {
-      return "T\u0131klat";
+      return "Knocking";
     },
     get$nothingFound() {
-      return "Hi\xe7bir \u015fey bulunamad\u0131...";
+      return "Nothing found...";
     },
     get$groupName() {
-      return "Grup ismi";
+      return "Group name";
     },
     get$wrongRecoveryKey() {
-      return "\xdczg\xfcn\xfcm... bu do\u011fru kurtarma anahtar\u0131 gibi g\xf6r\xfcnm\xfcyor.";
+      return "Sorry... this does not seem to be the correct recovery key.";
     },
     get$startConversation() {
-      return "G\xf6r\xfc\u015fme ba\u015flat";
+      return "Start conversation";
     },
     get$commandHint_sendraw() {
-      return "Ham JSON g\xf6nder";
+      return "Send raw json";
     },
     get$leaveEmptyToClearStatus() {
-      return "Durumunuzu temizlemek i\xe7in bo\u015f b\u0131rak\u0131n.";
+      return "Leave empty to clear your status.";
     },
     get$searchForUsers() {
-      return "@kullan\u0131c\u0131lar\u0131 ara...";
+      return "Search for @users...";
     },
     get$pleaseEnterYourCurrentPassword() {
-      return "L\xfctfen ge\xe7erli parolan\u0131z\u0131 girin";
+      return "Please enter your current password";
     },
     get$newPassword() {
-      return "Yeni parola";
+      return "New password";
     },
     get$pleaseChooseAStrongPassword() {
-      return "L\xfctfen g\xfc\xe7l\xfc bir parola se\xe7in";
+      return "Please choose a strong password";
     },
     get$passwordsDoNotMatch() {
-      return "Parolalar e\u015fle\u015fmiyor";
+      return "Passwords do not match";
     },
     get$passwordIsWrong() {
-      return "Girdi\u011finiz parola yanl\u0131\u015f";
+      return "Your entered password is wrong";
     },
     get$decline() {
-      return "Reddet";
+      return "Decline";
     },
     get$thisDevice() {
-      return "Bu ayg\u0131t:";
+      return "This device:";
     },
     get$initAppError() {
-      return "Uygulama ba\u015flat\u0131l\u0131rken bir hata olu\u015ftu";
+      return "An error occured while init the app";
     },
     searchIn$1(chat) {
-      return '"' + chat + '" sohbeti i\xe7inde ara...';
+      return 'Search in chat "' + chat + '"...';
     },
     get$searchMore() {
-      return "Daha fazla ara...";
+      return "Search more...";
     },
     get$gallery() {
-      return "Galeri";
+      return "Gallery";
     },
     get$files(_) {
-      return "Dosyalar";
+      return "Files";
     },
     sessionLostBody$2(url, error) {
-      return "Oturumunuz kayboldu. L\xfctfen bu hatay\u0131 " + url + string$._adres + error;
+      return "Your session is lost. Please report this error to the developers at " + url + ". The error message is: " + error;
     },
     restoreSessionBody$2(url, error) {
-      return "Uygulama \u015fimdi oturumunuzu yedekten geri y\xfcklemeye \xe7al\u0131\u015f\u0131yor. L\xfctfen bu hatay\u0131 " + url + string$._adres + error;
+      return "The app now tries to restore your session from the backup. Please report this error to the developers at " + url + ". The error message is: " + error;
     },
     get$sendReadReceipts() {
-      return "Okundu bilgisi g\xf6nder";
+      return "Send read receipts";
     },
     get$sendTypingNotificationsDescription() {
-      return "Sohbetteki di\u011fer kat\u0131l\u0131mc\u0131lar yeni bir mesaj yazd\u0131\u011f\u0131n\u0131z\u0131 g\xf6rebilir.";
+      return "Other participants in a chat can see when you are typing a new message.";
     },
     get$sendReadReceiptsDescription() {
-      return "Sohbetteki di\u011fer kat\u0131l\u0131mc\u0131lar bir mesaj\u0131 okudu\u011funuzu g\xf6rebilir.";
+      return "Other participants in a chat can see when you have read a message.";
     },
     get$verifyOtherDevice() {
-      return "\ud83d\udd10 Di\u011fer ayg\u0131t\u0131 do\u011frula";
+      return "\ud83d\udd10 Verify other device";
     },
     get$verifyOtherDeviceDescription() {
-      return "Ba\u015fka bir ayg\u0131t\u0131 do\u011frulad\u0131\u011f\u0131n\u0131zda, bu ayg\u0131tlar anahtarlar\u0131 de\u011fi\u015f toku\u015f ederek genel g\xfcvenli\u011finizi art\u0131r\u0131r. \ud83d\udcaa Bir do\u011frulama ba\u015flatt\u0131\u011f\u0131n\u0131zda, her iki ayg\u0131ttaki uygulamada bir a\xe7\u0131l\u0131r pencere g\xf6r\xfcnecektir. Orada birbirleriyle kar\u015f\u0131la\u015ft\u0131rman\u0131z gereken bir dizi emoji veya say\u0131 g\xf6receksiniz. Do\u011frulamaya ba\u015flamadan \xf6nce her iki ayg\u0131t\u0131n da elinizin alt\u0131nda olmas\u0131 en iyisidir. \ud83e\udd33";
+      return "When you verify another device, those devices can exchange keys, increasing your overall security. \ud83d\udcaa When you start a verification, a popup will appear in the app on both devices. There you will then see a series of emojis or numbers that you have to compare with each other. It's best to have both devices handy before you start the verification. \ud83e\udd33";
     },
     acceptedKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulamay\u0131 kabul etti";
+      return sender + " accepted key verification";
     },
     canceledKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulamay\u0131 iptal etti";
+      return sender + " canceled key verification";
     },
     completedKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulamay\u0131 tamamlad\u0131";
+      return sender + " completed key verification";
     },
     isReadyForKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulama i\xe7in haz\u0131r";
+      return sender + " is ready for key verification";
     },
     requestedKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulama istedi";
+      return sender + " requested key verification";
     },
     startedKeyVerification$1(sender) {
-      return sender + " anahtar do\u011frulama ba\u015flatt\u0131";
+      return sender + " started key verification";
     },
     get$stickers() {
-      return "\xc7\u0131kartmalar";
+      return "Stickers";
     },
     get$commandHint_ignore() {
-      return "Verilen matrix kimli\u011fini g\xf6rmezden gel";
+      return "Ignore the given matrix ID";
     },
     get$commandHint_unignore() {
-      return "Verilen matrix kimli\u011fini g\xf6rmezden gelmeyi iptal et";
+      return "Unignore the given matrix ID";
     },
     thereAreCountUsersBlocked$1(count) {
-      return "\u015eu anda " + count + " engellenen kullan\u0131c\u0131 var.";
+      return "Right now there are " + count + " users blocked.";
     },
     get$restricted() {
-      return "K\u0131s\u0131tl\u0131";
+      return "Restricted";
     },
     get$markAsUnread() {
-      return "Okunmad\u0131 olarak i\u015faretle";
+      return "Mark as unread";
     },
     userLevel$1(level) {
-      return "" + level + " - Kullan\u0131c\u0131";
+      return "" + level + " - User";
     },
     moderatorLevel$1(level) {
-      return "" + level + " - Moderat\xf6r";
+      return "" + level + " - Moderator";
     },
     adminLevel$1(level) {
-      return "" + level + " - Y\xf6netici";
+      return "" + level + " - Admin";
     },
     get$changeTheVisibilityOfChatHistory() {
-      return "Sohbet ge\xe7mi\u015finin g\xf6r\xfcn\xfcrl\xfc\u011f\xfcn\xfc de\u011fi\u015ftir";
+      return "Change the visibility of the chat history";
     },
     get$changeTheCanonicalRoomAlias() {
-      return "Ana herkese a\xe7\u0131k sohbet adresini de\u011fi\u015ftir";
+      return "Change the main public chat address";
     },
     get$sendRoomNotifications() {
-      return "@oda bildirimleri g\xf6nder";
+      return "Send a @room notifications";
     },
     get$chatPermissionsDescription() {
-      return "Bu sohbette belirli eylemler i\xe7in hangi g\xfc\xe7 d\xfczeyinin gerekli oldu\u011funu tan\u0131mlay\u0131n. 0, 50 ve 100 g\xfc\xe7 d\xfczeyleri genellikle kullan\u0131c\u0131lar\u0131, moderat\xf6rleri ve y\xf6neticileri temsil eder, ancak herhangi bir derecelendirme m\xfcmk\xfcnd\xfcr.";
+      return "Define which power level is necessary for certain actions in this chat. The power levels 0, 50 and 100 are usually representing users, moderators and admins, but any gradation is possible.";
     },
     updateInstalled$1(version) {
-      return "\ud83c\udf89 G\xfcncelleme " + version + " kuruldu!";
+      return "\ud83c\udf89 Update " + version + " installed!";
     },
     get$sendCanceled() {
-      return "G\xf6nderme iptal edildi";
+      return "Sending canceled";
     },
     get$doesNotSeemToBeAValidHomeserver() {
-      return "Uyumlu bir ana sunucu gibi g\xf6r\xfcnm\xfcyor. Yanl\u0131\u015f URL mi?";
+      return "Doesn't seem to be a compatible homeserver. Wrong URL?";
     },
     get$calculatingFileSize() {
-      return "Dosya boyutu hesaplan\u0131yor...";
+      return "Calculating file size...";
     },
     get$prepareSendingAttachment() {
-      return "Ek g\xf6nderilmeye haz\u0131rlan\u0131yor...";
+      return "Prepare sending attachment...";
     },
     get$sendingAttachment() {
-      return "Ek g\xf6nderiliyor...";
+      return "Sending attachment...";
     },
     sendingAttachmentCountOfCount$2(index, $length) {
-      return "Ek " + index + " / " + $length + " g\xf6nderiliyor...";
+      return "Sending attachment " + index + " of " + $length + "...";
     },
     serverLimitReached$1(seconds) {
-      return "Sunucu s\u0131n\u0131r\u0131na ula\u015f\u0131ld\u0131! " + seconds + " saniye bekleniyor...";
+      return "Server limit reached! Waiting " + seconds + " seconds...";
     },
     get$noticeChatBackupDeviceVerification() {
-      return "Not: T\xfcm ayg\u0131tlar\u0131n\u0131z\u0131 sohbet yedeklemesine ba\u011flad\u0131\u011f\u0131n\u0131zda, otomatik olarak do\u011frulan\u0131rlar.";
+      return "Note: When you connect all your devices to the chat backup, they are automatically verified.";
     },
     get$continueText() {
-      return "Devam et";
+      return "Continue";
     },
     get$blur(_) {
       return "Blur:";
     },
     get$opacity(_) {
-      return "\u015eeffafl\u0131k:";
+      return "Opacity:";
     },
     get$setWallpaper() {
-      return "Duvar ka\u011f\u0131d\u0131 se\xe7";
+      return "Set wallpaper";
     },
     get$noContactInformationProvided() {
-      return "Sunucu ge\xe7erli bir ileti\u015fim bilgisi sunmad\u0131";
+      return "Server does not provide any valid contact information";
     },
     get$contactServerAdmin() {
-      return "Sunucu y\xf6neticisiyle ileti\u015fime ge\xe7in";
+      return "Contact server admin";
     },
     get$contactServerSecurity() {
-      return "Sunucu g\xfcvenli\u011fiyle ileti\u015fime ge\xe7in";
+      return "Contact server security";
     },
     get$supportPage() {
-      return "Destek sayfas\u0131";
+      return "Support page";
     },
     get$serverInformation() {
-      return "Sunucu bilgisi:";
+      return "Server information:";
     },
     get$name(_) {
-      return "\u0130sim";
+      return "Name";
     },
     get$version(_) {
-      return "Versiyon";
+      return "Version";
     },
     get$compress() {
-      return "S\u0131k\u0131\u015ft\u0131rma";
+      return "Compress";
     },
     get$boldText() {
-      return "Kal\u0131n metin";
+      return "Bold text";
     },
     get$italicText() {
-      return "\u0130talik metin";
+      return "Italic text";
     },
     get$strikeThrough() {
-      return "\xdcst\xfc \xe7izili";
+      return "Strikethrough";
     },
     get$pleaseFillOut() {
-      return "L\xfctfen doldurun";
+      return "Please fill out";
     },
     get$invalidUrl() {
-      return "Ge\xe7ersiz url";
+      return "Invalid url";
     },
     get$addLink() {
-      return "Link ekle";
+      return "Add link";
     },
     get$unableToJoinChat() {
-      return "Sohbete girilemiyor. Belki ba\u015fka birileri konu\u015fmay\u0131 kapatm\u0131\u015f olabilir.";
+      return "Unable to join chat. Maybe the other party has already closed the conversation.";
     },
     get$previous() {
       return "Previous";
@@ -4565,16 +4565,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nTr, C.L10n);
+    _inherit(A.L10nSr, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nTr":{"L10n":[]}}'));
-  var string$ = {
-    _adres: " adresinde geli\u015ftiricilere bildirin. Hata mesaj\u0131: "
-  };
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nSr":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["Y59ILgWBiQj1asrBBwRKVtudH6Q="] = d.current;
+  d["+djx3om/wGACkmKB5vY6HtAvscc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_257.part.js.map
