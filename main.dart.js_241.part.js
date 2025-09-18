@@ -3890,7 +3890,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Group with " + displayname;
     },
     get$clickOnEmailLink() {
-      return "Please click on the link in the email and then proceed. In rare cases, the email can be sent to spam or take up to 5 minutes to arrive.";
+      return "Please click on the link in the email and then proceed.\n\nCheck your spam folder if the email hasn't arrived.";
     },
     get$dontForgetPassword() {
       return "Don't forget your password!";
@@ -4580,7 +4580,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SBIhuDSUSjucmkXRaVZb8EOn758="] = d.current;
+  d["5VjgDc7Slcn8fHqBL/V5gN6zuB8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_241.part.js.map
