@@ -23,23 +23,31 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 enum SessionState {
+  /// The room hasn't been created yet
   notStarted,
+
+  /// The room has been created but the user hasn't selected a role yet. Non-admins haven't joined yet.
   notSelectedRole,
+
+  /// The user has selected a role but hasn't confirmed yet. Non-admins haven't joined yet.
   selectedRole,
+
+  /// The user has confirmed their role and is waiting for others to join. Non-admins have joined.
   confirmedRole,
 }
 
 class ActivitySessionStartPage extends StatefulWidget {
   final String activityId;
-  final bool isNew;
-  final Room? room;
+  final String? roomId;
   final String? parentId;
+  final bool launch;
+
   const ActivitySessionStartPage({
     super.key,
     required this.activityId,
-    this.isNew = false,
-    this.room,
     required this.parentId,
+    this.roomId,
+    this.launch = false,
   });
 
   @override
@@ -65,9 +73,12 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     super.initState();
     _loadActivity();
 
-    if (parent != null) {
+    if (courseParent != null) {
       loadRoomSummaries(
-        parent!.spaceChildren.map((c) => c.roomId).whereType<String>().toList(),
+        courseParent!.spaceChildren
+            .map((c) => c.roomId)
+            .whereType<String>()
+            .toList(),
       );
     }
   }
@@ -75,7 +86,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   @override
   void didUpdateWidget(covariant ActivitySessionStartPage oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.room?.id != widget.room?.id) {
+    if (oldWidget.roomId != widget.roomId) {
       setState(() {
         _selectedRoleId = null;
         showInstructions = false;
@@ -93,25 +104,29 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     super.dispose();
   }
 
-  Room? get room => widget.room;
+  Room? get activityRoom => widget.roomId != null
+      ? Matrix.of(context).client.getRoomById(
+            widget.roomId!,
+          )
+      : null;
 
-  Room? get parent => widget.parentId != null
+  Room? get courseParent => widget.parentId != null
       ? Matrix.of(context).client.getRoomById(
             widget.parentId!,
           )
       : null;
 
   bool get isBotRoomMember =>
-      room?.getParticipants().any(
+      activityRoom?.getParticipants().any(
             (p) => p.id == BotName.byEnvironment,
           ) ??
       false;
 
   SessionState get state {
-    if (room?.ownRoleState != null) return SessionState.confirmedRole;
+    if (activityRoom?.ownRoleState != null) return SessionState.confirmedRole;
     if (_selectedRoleId != null) return SessionState.selectedRole;
-    if (room == null) {
-      return widget.isNew
+    if (activityRoom == null) {
+      return widget.roomId != null || widget.launch
           ? SessionState.notSelectedRole
           : SessionState.notStarted;
     }
@@ -121,14 +136,14 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   String? get descriptionText {
     switch (state) {
       case SessionState.confirmedRole:
-        return L10n.of(context).waitingToFillRole(room!.remainingRoles);
+        return L10n.of(context).waitingToFillRole(activityRoom!.remainingRoles);
       case SessionState.selectedRole:
         return activity!.roles[_selectedRoleId!]!.goal;
       case SessionState.notStarted:
         return null;
 
       case SessionState.notSelectedRole:
-        return room?.isRoomAdmin ?? false
+        return activityRoom?.isRoomAdmin ?? false
             ? L10n.of(context).chooseRole
             : L10n.of(context).chooseRoleToParticipate;
     }
@@ -146,7 +161,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
 
     final availableRoles = activity!.roles;
-    final assignedRoles = room?.assignedRoles ?? {};
+    final assignedRoles = activityRoom?.assignedRoles ?? {};
     final unassignedIds = availableRoles.keys
         .where((id) => !assignedRoles.containsKey(id))
         .toList();
@@ -155,18 +170,18 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
 
   bool isParticipantSelected(String id) {
     if (state == SessionState.confirmedRole) {
-      return room?.ownRoleState?.id == id;
+      return activityRoom?.ownRoleState?.id == id;
     }
     return _selectedRoleId == id;
   }
 
   bool get canJoinExistingSession {
-    if (room != null) return false;
+    if (activityRoom != null) return false;
     return numOpenSessions(widget.activityId) > 0;
   }
 
   bool get canPingParticipants {
-    if (room == null || room?.courseParent == null) return false;
+    if (activityRoom == null || courseParent == null) return false;
     return _pingCooldown == null || !_pingCooldown!.isActive;
   }
 
@@ -183,22 +198,18 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Future<bool> courseHasEnoughParticipants() async {
-    final roomParticipants = widget.room?.getParticipants() ?? [];
-    final courseParticipants = await parent?.requestParticipants(
+    final courseParticipants = await courseParent?.requestParticipants(
           [Membership.join, Membership.invite, Membership.knock],
           false,
           true,
         ) ??
         [];
 
-    final botInRoom = roomParticipants.any(
-      (p) => p.id == BotName.byEnvironment,
-    );
     final botInCourse = courseParticipants.any(
       (p) => p.id == BotName.byEnvironment,
     );
 
-    final addBotToAvailableUsers = !botInCourse && !botInRoom;
+    final addBotToAvailableUsers = !botInCourse && !isBotRoomMember;
     final availableParticipants =
         courseParticipants.length + (addBotToAvailableUsers ? 1 : 0);
     return availableParticipants >= (activity?.req.numberOfParticipants ?? 0);
@@ -211,8 +222,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         error = null;
       });
 
-      if (parent?.coursePlan != null) {
-        course = await CoursePlansRepo.get(parent!.coursePlan!.uuid);
+      if (courseParent?.coursePlan != null) {
+        course = await CoursePlansRepo.get(courseParent!.coursePlan!.uuid);
       }
 
       final activities = await CourseActivityRepo.get(
@@ -232,19 +243,57 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
   }
 
+  Future<void> joinActivity() async {
+    if (state != SessionState.selectedRole) return;
+    if (widget.roomId == null) {
+      throw Exception("No activity room to join");
+    }
+
+    final client = Matrix.of(context).client;
+    if (activityRoom?.membership != Membership.join) {
+      await client.joinRoom(
+        widget.roomId!,
+        serverName: courseParent?.spaceChildren
+            .firstWhereOrNull(
+              (child) => child.roomId == widget.roomId,
+            )
+            ?.via,
+      );
+
+      if (activityRoom == null || activityRoom!.membership != Membership.join) {
+        await client.waitForRoomInSync(widget.roomId!, join: true);
+      }
+
+      if (activityRoom == null || activityRoom!.membership != Membership.join) {
+        throw Exception("Failed to join activity room");
+      }
+    }
+
+    await activityRoom!.joinActivity(
+      activity!.roles[_selectedRoleId!]!,
+    );
+
+    context.go("/rooms/spaces/${widget.parentId}/${widget.roomId}");
+  }
+
   Future<void> confirmRoleSelection() async {
     if (state != SessionState.selectedRole) return;
-    if (room != null) {
+    if (activityRoom != null) {
       await showFutureLoadingDialog(
         context: context,
-        future: () => room!.joinActivity(
+        future: () => activityRoom!.joinActivity(
           activity!.roles[_selectedRoleId!]!,
         ),
+      );
+    } else if (widget.roomId != null) {
+      await showFutureLoadingDialog(
+        context: context,
+        future: joinActivity,
       );
     } else {
       final resp = await showFutureLoadingDialog(
         context: context,
-        future: () => parent!.launchActivityRoom(
+        future: () => courseParent!.launchActivityRoom(
           activity!,
           activity!.roles[_selectedRoleId!],
         ),
@@ -265,9 +314,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     String? joinedSessionId;
     for (final sessionId in sessionIds) {
       try {
-        await parent!.client.joinRoom(
+        await courseParent!.client.joinRoom(
           sessionId,
-          via: parent?.spaceChildren
+          via: courseParent?.spaceChildren
               .firstWhereOrNull(
                 (child) => child.roomId == sessionId,
               )
@@ -285,16 +334,16 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       throw Exception("Failed to join any existing session");
     }
 
-    final room = parent!.client.getRoomById(joinedSessionId);
+    final room = courseParent!.client.getRoomById(joinedSessionId);
     if (room == null || room.membership != Membership.join) {
-      await parent!.client.waitForRoomInSync(joinedSessionId, join: true);
+      await courseParent!.client.waitForRoomInSync(joinedSessionId, join: true);
     }
 
     return joinedSessionId;
   }
 
   Future<void> pingCourse() async {
-    if (room?.courseParent == null) {
+    if (activityRoom?.courseParent == null) {
       throw Exception("Activity is not part of a course");
     }
 
@@ -308,14 +357,15 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       if (mounted) setState(() {});
     });
 
-    await room!.courseParent!.sendEvent(
+    await activityRoom!.courseParent!.sendEvent(
       {
         "body": L10n.of(context).pingParticipantsNotification(
-          room!.client.userID!.localpart ?? room!.client.userID!,
-          room!.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+          activityRoom!.client.userID!.localpart ??
+              activityRoom!.client.userID!,
+          activityRoom!.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
         ),
         "msgtype": "m.text",
-        "pangea.activity.session_room_id": room!.id,
+        "pangea.activity.session_room_id": activityRoom!.id,
       },
     );
 
@@ -334,7 +384,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Future<void> playWithBot() async {
-    if (room == null) {
+    if (activityRoom == null) {
       throw Exception("Room is null");
     }
 
@@ -342,15 +392,15 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       throw Exception("Bot is a member of the room");
     }
 
-    final future = room!.client.onRoomState.stream
+    final future = activityRoom!.client.onRoomState.stream
         .where(
           (state) =>
-              state.roomId == room!.id &&
+              state.roomId == activityRoom!.id &&
               state.state.type == PangeaEventTypes.activityRole &&
               state.state.senderId == BotName.byEnvironment,
         )
         .first;
-    room!.invite(BotName.byEnvironment);
+    activityRoom!.invite(BotName.byEnvironment);
     await future.timeout(const Duration(seconds: 30));
   }
 

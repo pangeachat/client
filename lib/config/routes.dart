@@ -688,8 +688,9 @@ abstract class AppRoutes {
                         state,
                         ActivitySessionStartPage(
                           activityId: state.pathParameters['activityid']!,
-                          isNew: state.uri.queryParameters['new'] == 'true',
+                          roomId: state.uri.queryParameters['roomid'],
                           parentId: state.pathParameters['spaceid']!,
+                          launch: state.uri.queryParameters['launch'] == 'true',
                         ),
                       ),
                       redirect: loggedOutRedirect,

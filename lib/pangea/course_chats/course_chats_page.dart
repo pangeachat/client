@@ -436,6 +436,42 @@ class CourseChatsController extends State<CourseChats>
     }
   }
 
+  Future<void> joinActivity(
+    String activityId,
+    ExtendedSpaceRoomsChunk chunk,
+  ) async {
+    final hasRole = chunk.userIds.contains(widget.client.userID);
+    final roomId = chunk.chunk.roomId;
+    if (!hasRole) {
+      context.go(
+        "/rooms/spaces/${widget.roomId}/activity/$activityId?roomid=$roomId",
+      );
+      return;
+    }
+
+    await widget.client.joinRoom(
+      roomId,
+      via: widget.client
+          .getRoomById(widget.roomId)
+          ?.spaceChildren
+          .firstWhereOrNull(
+            (child) => child.roomId == roomId,
+          )
+          ?.via,
+    );
+
+    final room = widget.client.getRoomById(roomId);
+    if (room == null || room.membership != Membership.join) {
+      await widget.client.waitForRoomInSync(roomId, join: true);
+    }
+
+    if (widget.client.getRoomById(roomId) == null) {
+      throw Exception("Failed to join room");
+    }
+
+    context.go("/rooms/spaces/${widget.roomId}/$roomId");
+  }
+
   void chatContextAction(
     Room room,
     BuildContext posContext, [
