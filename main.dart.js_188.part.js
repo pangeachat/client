@@ -4559,6 +4559,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$pingSent() {
       return "\ud83d\udd14 Course ping sent! \ud83d\udd14";
     },
+    get$courseTitle() {
+      return "Course title";
+    },
+    get$courseDesc() {
+      return "Course description";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4575,7 +4581,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NYICJMiq4L1SvUCpjWoFhSbgEtw="] = d.current;
+  d["gejseeb1D/Jv+TfKWqDG0Fj2vG8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_188.part.js.map
