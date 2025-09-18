@@ -12,7 +12,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
 import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/contextual_definition_controller.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/word_net_controller.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -28,7 +27,6 @@ import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import 'package:fluffychat/pangea/user/controllers/permissions_controller.dart';
 import 'package:fluffychat/pangea/user/controllers/user_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../choreographer/controllers/it_feedback_controller.dart';
 import '../utils/firebase_analytics.dart';
 
 class PangeaController {
@@ -39,12 +37,10 @@ class PangeaController {
   late PermissionsController permissionsController;
   late GetAnalyticsController getAnalytics;
   late PutAnalyticsController putAnalytics;
-  late WordController wordNet;
   late MessageDataController messageData;
 
   // TODO: make these static so we can remove from here
   late ContextualDefinitionController definitions;
-  late ITFeedbackController itFeedback;
   late SubscriptionController subscriptionController;
   late TextToSpeechController textToSpeech;
   late SpeechToTextController speechToText;
@@ -62,6 +58,7 @@ class PangeaController {
   PangeaController({required this.matrix, required this.matrixState}) {
     _setup();
     _setLanguageSubscription();
+    initControllers();
     randomint = Random().nextInt(2000);
   }
 
@@ -75,11 +72,9 @@ class PangeaController {
   /// because of order of execution does not matter,
   /// and running them at the same times speeds them up.
   void initControllers() {
-    putAnalytics.initialize();
-    getAnalytics.initialize();
+    _initAnalyticsControllers();
     subscriptionController.initialize();
     setPangeaPushRules();
-
     TtsController.setAvailableLanguages();
   }
 
@@ -92,10 +87,8 @@ class PangeaController {
     getAnalytics = GetAnalyticsController(this);
     putAnalytics = PutAnalyticsController(this);
     messageData = MessageDataController(this);
-    wordNet = WordController(this);
     definitions = ContextualDefinitionController(this);
     subscriptionController = SubscriptionController(this);
-    itFeedback = ITFeedbackController(this);
     textToSpeech = TextToSpeechController(this);
     speechToText = SpeechToTextController(this);
     PAuthGaurd.pController = this;
@@ -111,7 +104,6 @@ class PangeaController {
   static final List<String> _storageKeys = [
     'mode_list_storage',
     'activity_plan_storage',
-    'activity_plan_by_id_storage',
     'bookmarked_activities',
     'objective_list_storage',
     'topic_list_storage',
@@ -129,6 +121,13 @@ class PangeaController {
     'vocab_storage',
     'onboarding_storage',
     'analytics_request_storage',
+    'activity_analytics_storage',
+    'course_storage',
+    'course_topic_storage',
+    'course_media_storage',
+    'course_location_storage',
+    'course_activity_storage',
+    'course_location_media_storage',
   ];
 
   Future<void> clearCache({List<String> exclude = const []}) async {
@@ -175,8 +174,7 @@ class PangeaController {
       case LoginState.loggedOut:
       case LoginState.softLoggedOut:
         // Reset cached analytics data
-        putAnalytics.dispose();
-        getAnalytics.dispose();
+        _disposeAnalyticsControllers();
         userController.clear();
         _languageStream?.cancel();
         _languageStream = null;
@@ -184,8 +182,7 @@ class PangeaController {
         break;
       case LoginState.loggedIn:
         // Initialize analytics data
-        putAnalytics.initialize();
-        getAnalytics.initialize();
+        initControllers();
         _setLanguageSubscription();
 
         userController.reinitialize().then((_) {
@@ -207,11 +204,19 @@ class PangeaController {
     GoogleAnalytics.analyticsUserUpdate(userID);
   }
 
-  Future<void> resetAnalytics() async {
-    putAnalytics.dispose();
-    getAnalytics.dispose();
+  Future<void> _initAnalyticsControllers() async {
     putAnalytics.initialize();
     await getAnalytics.initialize();
+  }
+
+  void _disposeAnalyticsControllers() {
+    putAnalytics.dispose();
+    getAnalytics.dispose();
+  }
+
+  Future<void> resetAnalytics() async {
+    _disposeAnalyticsControllers();
+    await _initAnalyticsControllers();
   }
 
   void _setLanguageSubscription() {
@@ -222,6 +227,7 @@ class PangeaController {
   }
 
   Future<void> setPangeaPushRules() async {
+    if (!matrixState.client.isLogged()) return;
     final List<Room> analyticsRooms =
         matrixState.client.rooms.where((room) => room.isAnalyticsRoom).toList();
 

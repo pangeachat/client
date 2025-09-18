@@ -50,7 +50,6 @@ class Message extends StatelessWidget {
   final ScrollController scrollController;
   final List<Color> colors;
   // #Pangea
-  final bool immersionMode;
   final ChatController controller;
   final bool isButton;
   // Pangea#
@@ -77,7 +76,6 @@ class Message extends StatelessWidget {
     required this.scrollController,
     required this.colors,
     // #Pangea
-    required this.immersionMode,
     required this.controller,
     this.isButton = false,
     // Pangea#
@@ -137,14 +135,16 @@ class Message extends StatelessWidget {
       }
 
       // #Pangea
-      if (event.type == PangeaEventTypes.activityPlan) {
+      if (event.type == PangeaEventTypes.activityPlan &&
+          event.room.activityPlan != null) {
         return ActivitySummary(
+          activity: event.room.activityPlan!,
           room: event.room,
           showInstructions: controller.showInstructions,
           toggleInstructions: controller.toggleShowInstructions,
           getParticipantOpacity: (role) =>
               role == null || role.isFinished ? 0.5 : 1.0,
-          isParticipantSelected: (id) => controller.room.ownRole?.id == id,
+          isParticipantSelected: (id) => controller.room.ownRoleState?.id == id,
         );
       }
 
@@ -735,8 +735,6 @@ class Message extends StatelessWidget {
                                                             // #Pangea
                                                             pangeaMessageEvent:
                                                                 pangeaMessageEvent,
-                                                            immersionMode:
-                                                                immersionMode,
                                                             controller:
                                                                 controller,
                                                             nextEvent:

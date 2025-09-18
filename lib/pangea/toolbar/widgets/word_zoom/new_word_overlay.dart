@@ -43,11 +43,7 @@ class _NewWordOverlayState extends State<NewWordOverlay>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1850),
-    )..addStatusListener((AnimationStatus status) {
-        if (status == AnimationStatus.completed) {
-          dispose();
-        }
-      });
+    );
 
     _xpScaleAnim = CurvedAnimation(
       parent: _controller!,
@@ -73,7 +69,6 @@ class _NewWordOverlayState extends State<NewWordOverlay>
 
   @override
   void dispose() {
-    widget.overlayController.onSelectNewToken(widget.token);
     _controller?.dispose();
     MatrixState.pAnyState.closeOverlay(widget.transformTargetId);
     super.dispose();
@@ -105,18 +100,11 @@ class _NewWordOverlayState extends State<NewWordOverlay>
           final fade = 1.0 - (_fadeAnim!.value);
           final move = _moveAnim!.value;
 
-          final seedSize = 75 * scale * fade;
-
-          // Calculate movement to top left if fullscreen, or top right of word card if mobile
-          final screenSize = MediaQuery.of(context).size;
-          final moveX =
-              columnMode ? -move * (screenSize.width / 2 - 50) : move * 130;
-
-          final moveY =
-              columnMode ? -move * (screenSize.height / 2 - 50) : move * -120;
+          final seedSize = 75 * scale;
+          final moveY = -move * 60;
 
           return Transform.translate(
-            offset: Offset(moveX, moveY),
+            offset: Offset(0, moveY),
             child: Opacity(
               opacity: fade,
               child: Transform.rotate(

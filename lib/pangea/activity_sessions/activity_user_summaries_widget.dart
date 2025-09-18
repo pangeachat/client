@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -87,10 +88,10 @@ class ButtonControlledCarouselView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
-
+    final superlatives =
+        room.activitySummary?.analytics?.generateSuperlatives();
     final availableRoles = room.activityPlan!.roles;
     final assignedRoles = room.assignedRoles ?? {};
-
     final userSummaries = summary.participants
         .where(
           (p) => assignedRoles.values.any(
@@ -115,7 +116,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                 (role) => role.userId == p.participantId,
               );
               return Container(
-                width: 250.0,
+                width: 350.0,
                 margin: const EdgeInsets.only(right: 5.0),
                 padding: const EdgeInsets.all(12.0),
                 decoration: ShapeDecoration(
@@ -156,25 +157,21 @@ class ButtonControlledCarouselView extends StatelessWidget {
                       child: SingleChildScrollView(
                         child: Text(
                           p.feedback,
-                          style: const TextStyle(fontSize: 8.0),
+                          style: const TextStyle(fontSize: 12.0),
                         ),
                       ),
                     ),
-                    Row(
-                      spacing: 14.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Row(
-                            spacing: 4.0,
-                            mainAxisSize: MainAxisSize.min,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Wrap(
+                            alignment: WrapAlignment.center,
+                            spacing: 12,
+                            runSpacing: 8,
+                            //crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const Icon(
-                                Icons.school,
-                                size: 12.0,
-                                color: AppConfig.yellowDark,
-                              ),
                               Text(
                                 p.cefrLevel,
                                 style: const TextStyle(
@@ -182,18 +179,42 @@ class ButtonControlledCarouselView extends StatelessWidget {
                                   fontSize: 12.0,
                                 ),
                               ),
+                              //const SizedBox(width: 8),
+                              if (superlatives != null &&
+                                  (superlatives['vocab']!.contains(
+                                    p.participantId,
+                                  ))) ...[
+                                const SuperlativeTile(
+                                  icon: Symbols.dictionary,
+                                ),
+                              ],
+                              if (superlatives != null &&
+                                  (superlatives['grammar']!.contains(
+                                    p.participantId,
+                                  ))) ...[
+                                const SuperlativeTile(
+                                  icon: Symbols.toys_and_games,
+                                ),
+                              ],
+                              if (superlatives != null &&
+                                  (superlatives['xp']!.contains(
+                                    p.participantId,
+                                  ))) ...[
+                                const SuperlativeTile(
+                                  icon: Icons.star,
+                                ),
+                              ],
+                              if (p.superlatives.isNotEmpty) ...[
+                                //const SizedBox(width: 8),
+                                Text(
+                                  p.superlatives.first,
+                                  style: const TextStyle(fontSize: 12.0),
+                                ),
+                              ],
                             ],
                           ),
-                        ),
-                        if (p.superlatives.isNotEmpty)
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(
-                              p.superlatives.first,
-                              style: const TextStyle(fontSize: 12.0),
-                            ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -215,7 +236,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
             return ActivityParticipantIndicator(
               name: userRoleInfo.name,
               userId: p.participantId,
-              avatarUrl: userRoleInfo.avatarUrl ?? user?.avatarUrl?.toString(),
+              user: user,
               borderRadius: BorderRadius.circular(4),
               selected: controller.highlightedRole?.id == userRole.id,
               onTap: () {
@@ -224,6 +245,33 @@ class ButtonControlledCarouselView extends StatelessWidget {
               },
             );
           }).toList(),
+        ),
+      ],
+    );
+  }
+}
+
+class SuperlativeTile extends StatelessWidget {
+  final IconData icon;
+
+  const SuperlativeTile({
+    super.key,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 14, color: AppConfig.gold),
+        const SizedBox(width: 2),
+        const Text(
+          "1st",
+          style: TextStyle(
+            color: AppConfig.gold,
+            fontSize: 12.0,
+          ),
         ),
       ],
     );

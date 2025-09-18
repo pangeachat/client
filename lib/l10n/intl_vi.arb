@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-07-10 15:55:50.516947",
+  "@@last_modified": "2025-07-24 12:57:05.290437",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -1767,7 +1767,6 @@
   "interactiveTranslatorAllowedDesc": "Học viên có thể chọn bật/tắt hỗ trợ dịch trong nhóm tại Menu chính > Cài đặt học tập.",
   "interactiveTranslatorRequiredDesc": "Học viên không thể tắt hỗ trợ dịch. Họ vẫn có thể từ chối gợi ý. Không áp dụng cho quản trị viên hoặc cuộc trò chuyện riêng.",
   "notYetSet": "Chưa thiết lập",
-  "multiLingualSpace": "Không gian đa ngôn ngữ",
   "allClasses": "Tất cả Lớp",
   "myLearning": "Phân tích của tôi",
   "allChatsAndClasses": "Tất cả trò chuyện và không gian",
@@ -1782,11 +1781,9 @@
   "spaceAnalyticsDesc": "Thông tin về mức độ tương tác và sử dụng ngôn ngữ",
   "addStudents": "Mời bằng liên kết hoặc mã",
   "copyClassLink": "Sao chép liên kết mời",
-  "copyClassLinkDesc": "Nhấn liên kết này đưa người dùng đến ứng dụng, yêu cầu họ đăng ký và tự động tham gia không gian.",
   "copyClassCode": "Sao chép mã mời",
   "inviteStudentByUserName": "Mời người dùng qua tên",
   "languageSettings": "Cài đặt ngôn ngữ",
-  "languageSettingsDesc": "Chỉnh sửa ngôn ngữ của không gian và trình độ.",
   "selectSpaceDominantLanguage": "Ngôn ngữ chính của không gian?",
   "selectSpaceTargetLanguage": "Ngôn ngữ đích của không gian?",
   "whatIsYourSpaceLanguageLevel": "Trình độ chung của không gian?",
@@ -1818,8 +1815,6 @@
   "getStarted": "Bắt đầu",
   "mustBe13": "Bạn phải ít nhất 13 tuổi",
   "yourBirthdayPleaseShort": "Vui lòng chọn nhóm tuổi của bạn",
-  "joinWithClassCode": "Tham gia không gian",
-  "joinWithClassCodeDesc": "Nhập mã mời 6 ký tự mà quản trị viên cung cấp.",
   "joinWithClassCodeHint": "Nhập mã mời",
   "languageLevelPreA1": "Hoàn toàn mới (Pre A1)",
   "languageLevelA1": "Sơ cấp (A1)",
@@ -1879,9 +1874,6 @@
   "errorDisableITUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ dịch",
   "errorDisableIGCUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ ngữ pháp",
   "errorDisableLanguageAssistanceUserDesc": "Nhấn vào đây để cập nhật cài đặt hỗ trợ dịch và ngữ pháp",
-  "errorDisableITClassDesc": "Hỗ trợ dịch đã bị tắt cho không gian chứa cuộc trò chuyện này.",
-  "errorDisableIGCClassDesc": "Hỗ trợ ngữ pháp đã bị tắt cho không gian chứa cuộc trò chuyện này.",
-  "errorDisableLanguageAssistanceClassDesc": "Hỗ trợ dịch và ngữ pháp đã bị tắt cho không gian chứa cuộc trò chuyện này.",
   "itIsDisabled": "Trình Dịch Tương Tác đang bị tắt",
   "igcIsDisabled": "Trình Kiểm Tra Ngữ Pháp Tương Tác đang bị tắt",
   "goToLearningSettings": "Đi tới Cài đặt Học tập",
@@ -1896,13 +1888,11 @@
   "error404Title": "Lỗi dịch!",
   "error404Desc": "Pangea Bot chưa biết cách dịch điều này...",
   "errorPleaseRefresh": "Chúng tôi sẽ kiểm tra! Vui lòng tải lại và thử lại.",
-  "findAClass": "Tìm lớp (sắp ra mắt)",
   "toggleIT": "Dịch Tương Tác",
   "toggleIGC": "Ngữ Pháp Tương Tác",
   "toggleToolSettingsDescription": "Tại đây, bạn có thể bật/tắt các công cụ ngôn ngữ cá nhân.",
   "connectedToStaging": "Bạn đang kết nối với máy chủ thử nghiệm (staging).",
   "learningSettings": "Cài đặt học tập",
-  "classNameRequired": "Vui lòng nhập tên không gian",
   "sendVoiceNotes": "Gửi ghi âm",
   "sendVoiceNotesDesc": "Bật để cho phép học viên gửi ghi âm trong trò chuyện.",
   "chatTopic": "Chủ đề trò chuyện",
@@ -1958,9 +1948,6 @@
   "toggleImmersionModeDesc": "Khi bật, tất cả tin nhắn sẽ được hiển thị trong ngôn ngữ đích. Phù hợp cho trao đổi ngôn ngữ.",
   "itToggleDescription": "Công cụ ngôn ngữ này sẽ phát hiện từ trong ngôn ngữ gốc của bạn và giúp dịch sang ngôn ngữ đích. Đôi lúc AI có thể sai sót.",
   "igcToggleDescription": "Công cụ ngôn ngữ này sẽ phát hiện và gợi ý chỉnh sửa lỗi chính tả, ngữ pháp. Đôi khi AI cũng có thể mắc lỗi.",
-  "sendOnEnterDescription": "Tắt để chèn dòng mới khi nhấn Enter. (Trên trình duyệt: Shift+Enter. Trên di động: Enter -> dòng mới.)",
-  "alreadyInClass": "Bạn đã ở trong không gian này.",
-  "pleaseLoginFirst": "Hãy đăng nhập hoặc đăng ký trước, sau đó bạn sẽ được thêm vào không gian.",
   "originalMessage": "Tin nhắn gốc",
   "sentMessage": "Tin nhắn đã gửi",
   "useType": "Kiểu sử dụng",
@@ -1971,12 +1958,10 @@
   "definitionsToolDescription": "Khi bật, từ gạch chân màu xanh có thể được nhấn để xem định nghĩa.",
   "translationsToolDescrption": "Khi bật, nhấn tin nhắn và chọn biểu tượng dịch để xem ở ngôn ngữ gốc.",
   "welcomeBack": "Chào mừng trở lại! Nếu bạn đã tham gia chương trình thử nghiệm 2023-2024, hãy liên hệ để nhận gói đặc biệt. Nếu bạn là giáo viên hoặc trường đã mua bản quyền, cũng hãy liên hệ với chúng tôi.",
-  "createNewClass": "Không gian lớp mới",
   "kickAllStudents": "Đá tất cả học viên",
   "kickAllStudentsConfirmation": "Bạn có chắc muốn đá tất cả học viên không?",
   "inviteAllStudents": "Mời tất cả học viên",
   "inviteAllStudentsConfirmation": "Bạn có chắc muốn mời tất cả học viên không?",
-  "inviteStudentsFromOtherClasses": "Mời học viên từ không gian khác",
   "inviteUsersFromPangea": "Thêm quản trị viên",
   "redeemPromoCode": "Nhập mã khuyến mại",
   "enterPromoCode": "Nhập mã khuyến mại",
@@ -1992,7 +1977,6 @@
     }
   },
   "oneWeekTrial": "Dùng thử 1 tuần",
-  "creatingSpacePleaseWait": "Đang tạo không gian. Vui lòng chờ...",
   "downloadXLSXFile": "Tải tệp Excel",
   "abDisplayName": "Tiếng Abkhaz",
   "aaDisplayName": "Tiếng Afar",
@@ -2437,46 +2421,9 @@
   "pay": "Thanh toán",
   "allPrivateChats": "Trò chuyện riêng",
   "unknownPrivateChat": "Cuộc trò chuyện riêng chưa xác định",
-  "copyClassCodeDesc": "Người dùng đã có tài khoản có thể 'Tham gia không gian' trong menu chính.",
-  "addToSpaceDesc": "Thêm cuộc trò chuyện vào không gian sẽ hiển thị nó trong không gian, cho phép thành viên truy cập.",
-  "invitedToSpace": "{user} đã mời bạn tham gia không gian: {space}! Bạn có chấp nhận không?",
-  "@invitedToSpace": {
-    "placeholders": {
-      "space": {
-        "type": "String"
-      },
-      "user": {
-        "type": "String"
-      }
-    }
-  },
   "declinedInvitation": "Đã từ chối lời mời",
   "acceptedInvitation": "Đã chấp nhận lời mời",
   "youreInvited": "📩 Bạn được mời!",
-  "studentPermissionsDesc": "Thiết lập quyền cho người học trong không gian này. Chỉ áp dụng cho không gian. Có thể ghi đè cài đặt cá nhân.",
-  "noEligibleSpaces": "Không có không gian đủ điều kiện.",
-  "youAddedToSpace": "Bạn đã thêm {child} vào {space}",
-  "@youAddedToSpace": {
-    "placeholders": {
-      "child": {
-        "type": "String"
-      },
-      "space": {
-        "type": "String"
-      }
-    }
-  },
-  "youRemovedFromSpace": "Bạn đã gỡ {child} khỏi {space}",
-  "@youRemovedFromSpace": {
-    "placeholders": {
-      "child": {
-        "type": "String"
-      },
-      "space": {
-        "type": "String"
-      }
-    }
-  },
   "invitedToChat": "{user} đã mời bạn tham gia trò chuyện: {name}! Bạn muốn chấp nhận không?",
   "@invitedToChat": {
     "placeholders": {
@@ -2504,10 +2451,7 @@
     }
   },
   "emptyChatNameWarning": "Vui lòng nhập tên cho cuộc trò chuyện này",
-  "emptyClassNameWarning": "Vui lòng nhập tên cho lớp này",
-  "emptySpaceNameWarning": "Vui lòng nhập tên cho không gian này",
   "blurMeansTranslateTitle": "Tại sao tin nhắn bị làm mờ?",
-  "blurMeansTranslateBody": "Khi Chế độ Nhập vai bật, tin nhắn bằng ngôn ngữ gốc sẽ bị làm mờ trong lúc Pangea Bot dịch sang ngôn ngữ đích. Bạn có thể tắt chế độ này trong cài đặt không gian.",
   "someErrorTitle": "Hmm, có gì đó không đúng",
   "someErrorBody": "Có thể đây là lỗi hoặc nội dung bằng ngôn ngữ khác.",
   "bestCorrectionFeedback": "Đúng rồi!",
@@ -2517,11 +2461,8 @@
   "practiceDefaultPrompt": "Câu trả lời tốt nhất là gì?",
   "correctionDefaultPrompt": "Phương án thay thế tốt nhất là gì?",
   "itStartDefaultPrompt": "Bạn cần hỗ trợ dịch không?",
-  "languageLevelWarning": "Hãy chọn trình độ ngôn ngữ cho không gian này",
   "lockedChatWarning": "🔒 Cuộc trò chuyện này đã bị khóa",
-  "lockSpace": "Khóa không gian",
   "lockChat": "Khóa trò chuyện",
-  "archiveSpace": "Lưu trữ không gian",
   "suggestToChat": "Đề xuất trò chuyện này",
   "suggestToChatDesc": "Những trò chuyện được đề xuất sẽ hiện trong danh sách trò chuyện",
   "acceptSelection": "Chấp nhận chỉnh sửa",
@@ -2569,7 +2510,6 @@
     }
   },
   "searchChatsRooms": "Tìm kiếm #cuộc_trò_chuyện, @người_dùng...",
-  "createClass": "Tạo lớp",
   "viewArchive": "Xem lưu trữ",
   "trialExpiration": "Bản dùng thử của bạn sẽ hết hạn vào {expiration}",
   "@trialExpiration": {
@@ -2581,10 +2521,8 @@
   },
   "freeTrialDesc": "Người dùng mới được dùng thử Pangea Chat trong 1 tuần",
   "activateTrial": "Dùng thử miễn phí 7 ngày",
-  "inNoSpaces": "Bạn chưa tham gia bất kỳ không gian nào",
   "successfullySubscribed": "Bạn đã đăng ký thành công!",
   "clickToManageSubscription": "Nhấp vào đây để quản lý gói đăng ký.",
-  "emptyInviteWarning": "Thêm cuộc trò chuyện này vào một không gian để mời người khác.",
   "errorGettingAudio": "Lỗi khi lấy tệp âm thanh. Hãy tải lại và thử tiếp.",
   "nothingFound": "Không tìm thấy gì...",
   "groupName": "Tên nhóm",
@@ -2692,8 +2630,6 @@
   },
   "noEmailWarning": "Vui lòng nhập địa chỉ email hợp lệ. Nếu không, bạn sẽ không thể đặt lại mật khẩu. Hoặc chạm lại nút để tiếp tục mà không cần.",
   "pleaseEnterValidEmail": "Vui lòng nhập địa chỉ email hợp lệ.",
-  "noAddToSpacePermissions": "Bạn không thể thêm cuộc trò chuyện vào không gian này",
-  "alreadyInSpace": "Cuộc trò chuyện đã có trong không gian này",
   "pleaseChooseAUsername": "Vui lòng chọn tên người dùng",
   "chooseAUsername": "Chọn tên người dùng",
   "define": "Định nghĩa",
@@ -2864,19 +2800,13 @@
   "tooltipInstructionsTitle": "Chưa rõ tính năng này?",
   "tooltipInstructionsMobileBody": "Giữ lâu để xem giải thích.",
   "tooltipInstructionsBrowserBody": "Di chuột để xem giải thích.",
-  "addSpaceToSpaceDescription": "Chọn một không gian con để thêm vào",
   "chatCapacity": "Giới hạn thành viên trò chuyện",
-  "spaceCapacity": "Giới hạn thành viên không gian",
   "roomFull": "Phòng đã đạt giới hạn.",
   "topicNotSet": "Chưa đặt chủ đề.",
   "chatCapacityNotSet": "Chưa giới hạn số thành viên trong trò chuyện.",
-  "spaceCapacityNotSet": "Chưa giới hạn số thành viên trong không gian.",
   "chatCapacityHasBeenChanged": "Giới hạn thành viên trò chuyện đã thay đổi",
-  "spaceCapacityHasBeenChanged": "Giới hạn thành viên không gian đã thay đổi",
   "chatCapacityExplanation": "Hạn chế số lượng người dùng thường (không phải quản trị viên) có thể tham gia cuộc trò chuyện.",
-  "spaceCapacityExplanation": "Hạn chế số lượng người dùng thường (không phải quản trị viên) có thể tham gia không gian.",
   "chatExceedsCapacity": "Cuộc trò chuyện vượt quá giới hạn thành viên.",
-  "spaceExceedsCapacity": "Không gian vượt quá giới hạn thành viên.",
   "tooManyRequest": "Quá nhiều yêu cầu, vui lòng thử lại sau.",
   "enterNumber": "Vui lòng nhập một số nguyên lớn hơn 0.",
   "buildTranslation": "Xây dựng bản dịch của bạn từ các lựa chọn trên",
@@ -2884,15 +2814,8 @@
   "thereAreCountUsersBlocked": "Hiện có {count} người dùng bị chặn.",
   "knockRestricted": "Hạn chế gõ yêu cầu",
   "nonexistentSelection": "Không còn tồn tại lựa chọn này.",
-  "cantAddSpaceChild": "Bạn không có quyền thêm không gian con vào không gian này.",
-  "roomAddedToSpace": "Phòng đã được thêm vào không gian được chọn.",
   "createNewSpace": "Tạo không gian mới",
-  "addChatToSpaceDesc": "Thêm cuộc trò chuyện vào không gian này sẽ hiển thị trong danh sách, cho phép thành viên truy cập.",
-  "addSpaceToSpaceDesc": "Thêm một không gian con vào không gian này sẽ giúp không gian con xuất hiện trong danh sách phòng của không gian chính.",
-  "spaceAnalytics": "Phân tích không gian",
   "changeAnalyticsLanguage": "Thay đổi ngôn ngữ phân tích",
-  "suggestToSpace": "Đề xuất không gian này",
-  "suggestToSpaceDesc": "Các không gian con được đề xuất sẽ hiển thị trong danh sách không gian chính",
   "practice": "Luyện tập",
   "noLanguagesSet": "Chưa thiết lập ngôn ngữ",
   "noActivitiesFound": "Tạm đủ cho lần này! Hãy quay lại sau để có thêm hoạt động.",
@@ -2934,8 +2857,6 @@
   "deleteSubscriptionWarningTitle": "Bạn đang có gói đăng ký hoạt động",
   "deleteSubscriptionWarningBody": "Việc xóa tài khoản sẽ không hủy gói đăng ký của bạn.",
   "manageSubscription": "Quản lý gói đăng ký",
-  "createSpace": "Tạo không gian",
-  "createChat": "Tạo cuộc trò chuyện",
   "error520Title": "Hãy thử lại.",
   "error520Desc": "Xin lỗi, chúng tôi không thể hiểu tin nhắn của bạn...",
   "wordsUsed": "Từ đã dùng",
@@ -3307,11 +3228,8 @@
   "invitePeopleSpaceSubtitle": "Mời người dùng hoặc quản trị viên đến không gian này",
   "noCapacityLimit": "Không giới hạn sức chứa",
   "downloadGroupText": "Tải nội dung nhóm",
-  "spaceDescription": "Mô tả không gian",
-  "addSpaceDescription": "Thêm mô tả không gian",
   "notificationsOn": "Bật thông báo",
   "notificationsOff": "Tắt thông báo",
-  "spaceCanBeFoundViaSearch": "Không gian có thể được tìm thấy qua tìm kiếm",
   "chatCanBeFoundViaSearch": "Cuộc trò chuyện có thể được tìm thấy qua tìm kiếm",
   "calculatingFileSize": "Đang tính kích thước tệp...",
   "prepareSendingAttachment": "Chuẩn bị gửi tệp đính kèm...",
@@ -3343,8 +3261,6 @@
   "noticeChatBackupDeviceVerification": "Lưu ý: Khi bạn thêm tất cả thiết bị vào sao lưu trò chuyện, chúng sẽ tự động được xác minh.",
   "requireCodeToJoin": "Yêu cầu mã để tham gia",
   "canFindInSearch": "Có thể tìm thấy qua tìm kiếm",
-  "addSubspaceWarning": "Khi bạn thêm không gian con, nó sẽ không hiển thị trong kết quả tìm kiếm công khai và mọi thành viên của không gian cha đều có thể thấy.",
-  "nestedSpaceError": "Không gian con không được thêm tiếp vào một không gian con khác",
   "addChatToSpace": "Thêm trò chuyện vào không gian",
   "welcomeText": "Chào bạn 👋 Đây là FluffyChat. Bạn có thể đăng nhập vào bất kỳ máy chủ nào tương thích với https://matrix.org, và trò chuyện với mọi người. Đây là một mạng nhắn tin phi tập trung!",
   "blur": "Mờ:",
@@ -3368,7 +3284,6 @@
   "addLink": "Thêm liên kết",
   "unableToJoinChat": "Không thể tham gia cuộc trò chuyện. Có thể người kia đã đóng phiên.",
   "createChatAndInviteUsers": "Tạo cuộc trò chuyện và mời người dùng",
-  "updatedNewSpaceDescription": "Không gian giúp bạn quản lý nhiều cuộc trò chuyện và xây dựng cộng đồng riêng hoặc công khai.",
   "joinWithCode": "Tham gia bằng mã",
   "enterCodeToJoin": "Nhập mã để tham gia",
   "updateNow": "Cập nhật ngay",
@@ -3472,7 +3387,6 @@
   "numWordsTyped": "Số từ đã gõ trong tin nhắn gốc",
   "numCorrectChoices": "Số từ đã chọn chính xác từ gợi ý hệ thống",
   "numIncorrectChoices": "Số từ đã chọn sai từ gợi ý hệ thống",
-  "downloadSpaceAnalytics": "Tải phân tích không gian",
   "commaSeparatedFile": "CSV",
   "excelFile": "Excel",
   "fileType": "Loại tệp",
@@ -3532,8 +3446,6 @@
       }
     }
   },
-  "notInClass": "Không thuộc lớp!",
-  "noClassCode": "Không có mã lớp!",
   "otherPartyNotLoggedIn": "Bên kia hiện không đăng nhập, không thể nhận tin!",
   "chooseCorrectLabel": "Chọn nhãn đúng.",
   "levelPopupTitle": "Chúc mừng, bạn đã đạt cấp {level}",
@@ -3691,8 +3603,6 @@
   "enableAutocorrectDescription": "Sử dụng tính năng tự động sửa tích hợp của bàn phím khi gõ tin nhắn",
   "ttsDisbledTitle": "Tính năng chuyển văn bản thành giọng nói đã bị tắt",
   "ttsDisabledBody": "Bạn có thể bật tính năng chuyển văn bản thành giọng nói trong cài đặt học tập của bạn",
-  "leaveSpaceDescription": "Bằng cách rời khỏi không gian, bạn sẽ rời tất cả các cuộc trò chuyện bên trong nó. Những người dùng khác sẽ thấy rằng bạn đã rời khỏi không gian.",
-  "noSpaceDescriptionYet": "Chưa tạo mô tả không gian nào.",
   "tooLargeToSend": "Tin nhắn này quá lớn để gửi",
   "exitWithoutSaving": "Bạn có chắc chắn muốn rời đi mà không lưu không?",
   "enableAutocorrectPopupTitle": "Thêm bàn phím ngôn ngữ mục tiêu của bạn bằng cách vào:",
@@ -3735,9 +3645,7 @@
   "pleaseUpdateApp": "Vui lòng cập nhật ứng dụng để tiếp tục.",
   "chooseEmojiInstructionsBody": "Chọn một biểu tượng cảm xúc cho từ này! Không có câu trả lời sai và bạn có thể chuyển đổi bất cứ lúc nào! 😄",
   "pickAnEmojiFor": "Chọn một biểu tượng cảm xúc cho ${lemma}",
-  "knockSpaceSuccess": "Bạn đã yêu cầu tham gia không gian này! Một quản trị viên sẽ phản hồi yêu cầu của bạn khi họ nhận được nó 😄",
   "joinByCode": "Tham gia bằng mã",
-  "createASpace": "Tạo một không gian",
   "@@locale": "vi",
   "@takeAPhoto": {
     "type": "String",
@@ -3771,15 +3679,7 @@
       }
     }
   },
-  "@knockSpaceSuccess": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@joinByCode": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createASpace": {
     "type": "String",
     "placeholders": {}
   },
@@ -3839,13 +3739,11 @@
   "makingProgress": "Bạn đang tiến bộ!",
   "keepPracticing": "Tiếp tục luyện tập!",
   "niceJob": "Làm tốt lắm!",
-  "publicSpacesTitle": "Cộng đồng học tập",
   "askToJoin": "Yêu cầu tham gia",
   "emptyChatWarningTitle": "Trò chuyện trống",
   "emptyChatWarningDesc": "Bạn chưa mời ai vào trò chuyện của mình. Đi đến cài đặt trò chuyện để mời danh bạ hoặc Bot của bạn. Bạn cũng có thể làm điều này sau.",
   "areYouLikeMe": "Bạn có giống tôi không?",
   "tryAgainLater": "Đã thực hiện quá nhiều lần. Vui lòng thử lại sau 5 phút.",
-  "enterSpaceCode": "Nhập mã không gian",
   "shareSpaceLink": "Chia sẻ liên kết",
   "byUsingPangeaChat": "Bằng cách sử dụng Pangea Chat, tôi đồng ý với ",
   "details": "Chi tiết",
@@ -3861,7 +3759,6 @@
   "congratulationsOnReaching": "Bạn đã đạt đến Cấp độ {level}!",
   "seeDetails": "Xem chi tiết",
   "choosePracticeMode": "Nhấp vào một trong các nút ở trên để bắt đầu một hoạt động thực hành",
-  "userWouldLikeToChangeTheSpace": "{user} muốn tham gia không gian.",
   "ban": "Cấm",
   "unban": "Bỏ cấm",
   "kick": "Đá",
@@ -3875,11 +3772,9 @@
   "exampleMessages": "Tin nhắn ví dụ",
   "timesUsedIndependently": "Số lần sử dụng độc lập",
   "timesUsedWithAssistance": "Số lần sử dụng với sự trợ giúp",
-  "goToSpaceButton": "Đi đến không gian",
   "shareInviteCode": "Chia sẻ mã mời: {code}",
   "leaderboard": "Bảng xếp hạng",
   "welcomeUser": "Chào mừng {user}",
-  "joinSpaceOnboardingDesc": "Bạn có mã mời hoặc liên kết đến một cộng đồng học tập không?",
   "skipForNow": "Bỏ qua tạm thời",
   "@setCustomPermissionLevel": {
     "type": "String",
@@ -4073,10 +3968,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@publicSpacesTitle": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@askToJoin": {
     "type": "String",
     "placeholders": {}
@@ -4094,10 +3985,6 @@
     "placeholders": {}
   },
   "@tryAgainLater": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@enterSpaceCode": {
     "type": "String",
     "placeholders": {}
   },
@@ -4165,14 +4052,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@userWouldLikeToChangeTheSpace": {
-    "type": "String",
-    "placeholders": {
-      "user": {
-        "type": "String"
-      }
-    }
-  },
   "@ban": {
     "type": "String",
     "placeholders": {}
@@ -4225,10 +4104,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@goToSpaceButton": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@shareInviteCode": {
     "type": "String",
     "placeholders": {
@@ -4249,16 +4124,11 @@
       }
     }
   },
-  "@joinSpaceOnboardingDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@skipForNow": {
     "type": "String",
     "placeholders": {}
   },
   "permissions": "Quyền hạn",
-  "spaceChildPermission": "Ai có thể thêm trò chuyện và không gian con vào không gian này",
   "addEnvironmentOverride": "Thêm ghi đè môi trường",
   "defaultOption": "Mặc định",
   "chatWithActivities": "Trò chuyện với các hoạt động",
@@ -4267,22 +4137,16 @@
   "searchChats": "Tìm kiếm cuộc trò chuyện",
   "selectChats": "Chọn cuộc trò chuyện",
   "selectChatToStart": "Hoàn tất! Chọn một trò chuyện để bắt đầu",
-  "configureSpace": "Cấu hình không gian",
   "pinMessages": "Ghim tin nhắn",
   "setJoinRules": "Đặt quy tắc tham gia",
   "displayNavigationRail": "Hiển thị thanh điều hướng trên di động",
   "changeGeneralSettings": "Thay đổi cài đặt chung",
   "inviteOtherUsersToRoom": "Mời người dùng khác",
-  "changeTheNameOfTheSpace": "Thay đổi tên của không gian",
   "changeTheDescription": "Thay đổi mô tả",
   "changeThePermissions": "Thay đổi quyền hạn",
   "introductions": "Giới thiệu",
   "announcements": "Thông báo",
   "@permissions": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@spaceChildPermission": {
     "type": "String",
     "placeholders": {}
   },
@@ -4322,10 +4186,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@configureSpace": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@pinMessages": {
     "type": "String",
     "placeholders": {}
@@ -4343,10 +4203,6 @@
     "placeholders": {}
   },
   "@inviteOtherUsersToRoom": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@changeTheNameOfTheSpace": {
     "type": "String",
     "placeholders": {}
   },
@@ -4377,31 +4233,25 @@
   "modeLabel": "Loại hoạt động",
   "makeYourOwnActivity": "Tạo hoạt động của riêng bạn",
   "deleteChatDesc": "Bạn có chắc chắn muốn xóa trò chuyện này không? Nó sẽ bị xóa cho tất cả người tham gia và tất cả tin nhắn trong trò chuyện sẽ không còn khả dụng cho việc thực hành hoặc phân tích học tập.",
-  "deleteSpaceDesc": "Không gian và bất kỳ trò chuyện và/hoặc không gian con nào được chọn sẽ bị xóa cho tất cả người tham gia và tất cả tin nhắn trong trò chuyện sẽ không còn khả dụng cho việc thực hành hoặc phân tích học tập. Hành động này không thể hoàn tác.",
   "maxFifty": "Tối đa 50",
   "activities": "Hoạt động",
   "access": "Truy cập",
-  "addSubspace": "Thêm không gian con",
   "botSettings": "Cài đặt bot",
   "activitySuggestionTimeoutMessage": "Chúng tôi đang làm việc chăm chỉ để tạo ra các hoạt động cho bạn, vui lòng quay lại sau một phút",
   "accessSettingsWarning": "Ôi! Có vẻ như bạn không có quyền thiết lập các quy tắc Truy cập của phòng này. Bạn nên kiểm tra những điều này để đảm bảo chúng là những gì bạn cần và nói chuyện với quản trị viên phòng nếu bạn cần thay đổi chúng",
-  "howSpaceCanBeFound": "Cách không gian này có thể được tìm thấy",
   "private": "Riêng tư",
   "cannotBeFoundInSearch": "Không thể tìm thấy trong tìm kiếm",
   "public": "Công khai",
-  "howSpaceCanBeJoined": "Cách tham gia không gian này",
   "canBeFoundVia": "Có thể tìm thấy qua:",
   "canBeFoundViaInvitation": "• lời mời",
   "canBeFoundViaCodeOrLink": "• mã hoặc liên kết",
   "canBeFoundViaKnock": "• yêu cầu tham gia và sự chấp thuận của quản trị viên",
-  "createYourSpace": "Tạo không gian của bạn",
   "youHaveLeveledUp": "Bạn đã nâng cấp!",
   "sendActivities": "Gửi hoạt động",
   "getStartedBotChatDesc": "Trò chuyện với AI là một nơi tuyệt vời để bắt đầu và các công cụ đọc, viết, nghe và nói của Pangea giúp điều đó dễ dàng!",
   "getStartedCommunitiesDesc": "Học tập với một cộng đồng là nơi Pangea Chat tỏa sáng!\nBạn có thể tham gia lớp học của mình, tìm một trường học, hoặc thậm chí tạo riêng cho mình!",
   "getStartedFriendsDesc": "Bạn có một người bạn muốn học cùng bạn không?",
   "getStartedBotChatComplete": "Tuyệt vời! Bạn đang trò chuyện với bot!",
-  "getStartedCommunitiesComplete": "Tuyệt vời, bạn đã tham gia một không gian!",
   "getStartedComplete": "Bạn đã hoàn thành phần này!\nTiếp tục khám phá các tính năng tuyệt vời của chúng tôi bằng cách trò chuyện với bạn bè!",
   "getStartedFriendsComplete": "Woohoo! Bạn đã có bạn bè! 😉",
   "getStartedBotChatButton": "Bắt đầu trò chuyện!",
@@ -4413,10 +4263,7 @@
   "noChatsFoundHereYet": "Chưa tìm thấy trò chuyện nào ở đây",
   "duration": "Thời gian",
   "transcriptionFailed": "Không thể chuyển đổi âm thanh",
-  "aUserIsKnocking": "1 người dùng đang yêu cầu tham gia không gian của bạn",
-  "usersAreKnocking": "{users} người dùng đang yêu cầu tham gia không gian của bạn",
   "failedToFetchTranscription": "Không thể lấy bản chuyển đổi",
-  "deleteEmptySpaceDesc": "Không gian sẽ bị xóa cho tất cả người tham gia. Hành động này không thể hoàn tác.",
   "regenerate": "Tạo lại",
   "mySavedActivities": "Các hoạt động đã lưu của tôi",
   "noSavedActivities": "Không có hoạt động nào đã lưu",
@@ -4424,10 +4271,7 @@
   "yourSavedActivities": "Các hoạt động đã lưu",
   "failedToPlayVideo": "Không thể phát video",
   "done": "Xong",
-  "inThisSpace": "Trong không gian này",
   "myContacts": "Danh bạ của tôi",
-  "inviteAllInSpace": "Mời tất cả trong không gian này",
-  "spaceParticipantsHaveBeenInvitedToTheChat": "Tất cả người tham gia không gian đã được mời vào cuộc trò chuyện",
   "numKnocking": "{count} gõ cửa",
   "numInvited": "{count} đã được mời",
   "saved": "Đã lưu",
@@ -4482,10 +4326,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@deleteSpaceDesc": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@maxFifty": {
     "type": "String",
     "placeholders": {}
@@ -4495,10 +4335,6 @@
     "placeholders": {}
   },
   "@access": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@addSubspace": {
     "type": "String",
     "placeholders": {}
   },
@@ -4514,10 +4350,6 @@
     "type": "String",
     "placeholders": {}
   },
-  "@howSpaceCanBeFound": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@private": {
     "type": "String",
     "placeholders": {}
@@ -4527,10 +4359,6 @@
     "placeholders": {}
   },
   "@public": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@howSpaceCanBeJoined": {
     "type": "String",
     "placeholders": {}
   },
@@ -4547,10 +4375,6 @@
     "placeholders": {}
   },
   "@canBeFoundViaKnock": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@createYourSpace": {
     "type": "String",
     "placeholders": {}
   },
@@ -4575,10 +4399,6 @@
     "placeholders": {}
   },
   "@getStartedBotChatComplete": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@getStartedCommunitiesComplete": {
     "type": "String",
     "placeholders": {}
   },
@@ -4626,23 +4446,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@aUserIsKnocking": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@usersAreKnocking": {
-    "type": "int",
-    "placeholders": {
-      "users": {
-        "type": "int"
-      }
-    }
-  },
   "@failedToFetchTranscription": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@deleteEmptySpaceDesc": {
     "type": "String",
     "placeholders": {}
   },
@@ -4674,19 +4478,7 @@
     "type": "String",
     "placeholders": {}
   },
-  "@inThisSpace": {
-    "type": "String",
-    "placeholders": {}
-  },
   "@myContacts": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@inviteAllInSpace": {
-    "type": "String",
-    "placeholders": {}
-  },
-  "@spaceParticipantsHaveBeenInvitedToTheChat": {
     "type": "String",
     "placeholders": {}
   },
@@ -4707,6 +4499,104 @@
     }
   },
   "@saved": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "chatCapacitySetTooLow": "Dung lượng trò chuyện phải ít nhất là {count}.",
+  "spaceCapacitySetTooLow": "Dung lượng không gian phải ít nhất là {count}.",
+  "reset": "Đặt lại",
+  "errorGenerateActivityMessage": "Không thể tạo hoạt động",
+  "errorRegenerateActivityMessage": "Không thể tái tạo hoạt động",
+  "errorFetchingActivitiesMessage": "Không thể lấy hoạt động",
+  "errorFetchingDefinition": "Không thể lấy định nghĩa",
+  "errorProcessAnalytics": "Không thể xử lý phân tích",
+  "errorDownloading": "Tải xuống thất bại",
+  "errorFetchingLevelSummary": "Không thể lấy tóm tắt cấp độ",
+  "errorLoadingSpaceChildren": "Không thể tải trò chuyện trong không gian này",
+  "unexpectedError": "Lỗi không mong đợi.",
+  "pleaseReload": "Vui lòng tải lại và thử lại.",
+  "translationError": "Lỗi dịch thuật",
+  "errorFetchingTranslation": "Không thể lấy bản dịch",
+  "errorFetchingActivity": "Không thể lấy hoạt động",
+  "check": "Kiểm tra",
+  "unableToFindRoom": "Không tìm thấy trò chuyện hoặc không gian nào với mã đó. Vui lòng thử lại.",
+  "@chatCapacitySetTooLow": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@spaceCapacitySetTooLow": {
+    "type": "int",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@reset": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorGenerateActivityMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorRegenerateActivityMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorFetchingActivitiesMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorFetchingDefinition": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorProcessAnalytics": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorDownloading": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorFetchingLevelSummary": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorLoadingSpaceChildren": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unexpectedError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@pleaseReload": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@translationError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorFetchingTranslation": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@errorFetchingActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@check": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unableToFindRoom": {
     "type": "String",
     "placeholders": {}
   }

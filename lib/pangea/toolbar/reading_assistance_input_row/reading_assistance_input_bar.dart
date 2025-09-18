@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_mode_locked_card.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
@@ -12,29 +11,40 @@ import 'package:fluffychat/pangea/toolbar/widgets/practice_mode_buttons.dart';
 
 const double minContentHeight = 120;
 
-class ReadingAssistanceInputBar extends StatelessWidget {
-  final ChatController controller;
+class ReadingAssistanceInputBar extends StatefulWidget {
   final MessageOverlayController overlayController;
 
   const ReadingAssistanceInputBar(
-    this.controller,
     this.overlayController, {
     super.key,
   });
 
+  @override
+  ReadingAssistanceInputBarState createState() =>
+      ReadingAssistanceInputBarState();
+}
+
+class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
+  final ScrollController _scrollController = ScrollController();
+  MessageOverlayController get overlayController => widget.overlayController;
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   Widget barContent(BuildContext context) {
     Widget? content;
-    final target =
-        overlayController.toolbarMode.associatedActivityType != null &&
-                overlayController.pangeaMessageEvent != null
-            ? overlayController.practiceSelection?.getSelection(
-                overlayController.toolbarMode.associatedActivityType!,
-                overlayController.selectedMorph?.token,
-                overlayController.selectedMorph?.morph,
-              )
-            : null;
+    final target = overlayController.toolbarMode.associatedActivityType != null
+        ? overlayController.practiceSelection?.getSelection(
+            overlayController.toolbarMode.associatedActivityType!,
+            overlayController.selectedMorph?.token,
+            overlayController.selectedMorph?.morph,
+          )
+        : null;
 
-    if (overlayController.pangeaMessageEvent?.isAudioMessage == true) {
+    if (overlayController.pangeaMessageEvent.isAudioMessage == true) {
       return const SizedBox();
       // return ReactionsPicker(controller);
     } else {
@@ -57,7 +67,7 @@ class ReadingAssistanceInputBar extends StatelessWidget {
         case MessageMode.messageTranslation:
           if (overlayController.isTranslationUnlocked) {
             content = MessageTranslationCard(
-              messageEvent: overlayController.pangeaMessageEvent!,
+              messageEvent: overlayController.pangeaMessageEvent,
             );
           } else {
             content = MessageModeLockedCard(controller: overlayController);
@@ -68,7 +78,6 @@ class ReadingAssistanceInputBar extends StatelessWidget {
         case MessageMode.listening:
           if (target != null) {
             content = PracticeActivityCard(
-              pangeaMessageEvent: overlayController.pangeaMessageEvent!,
               targetTokensAndActivityType: target,
               overlayController: overlayController,
             );
@@ -81,7 +90,6 @@ class ReadingAssistanceInputBar extends StatelessWidget {
         case MessageMode.wordMorph:
           if (target != null) {
             content = PracticeActivityCard(
-              pangeaMessageEvent: overlayController.pangeaMessageEvent!,
               targetTokensAndActivityType: target,
               overlayController: overlayController,
             );
@@ -120,8 +128,13 @@ class ReadingAssistanceInputBar extends StatelessWidget {
               duration: const Duration(
                 milliseconds: AppConfig.overlayAnimationDuration,
               ),
-              child: SingleChildScrollView(
-                child: barContent(context),
+              child: Scrollbar(
+                thumbVisibility: true,
+                controller: _scrollController,
+                child: SingleChildScrollView(
+                  controller: _scrollController,
+                  child: barContent(context),
+                ),
               ),
             ),
           ),
