@@ -3865,6 +3865,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$cefrLevelLabel() {
       return "CEFR level";
     },
+    get$image(_) {
+      return "Image";
+    },
     get$activityPlannerOverviewInstructionsBody() {
       return "Choose a topic, mode, learning objective and generate an activity for the chat!";
     },
@@ -4583,7 +4586,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qmc6I4cLb59ohtJJzlcFk5hka6I="] = d.current;
+  d["7QQQRZgYnhnSbBJEEAKhWLK0qyc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_213.part.js.map

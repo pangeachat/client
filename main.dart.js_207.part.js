@@ -3865,6 +3865,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$cefrLevelLabel() {
       return "CEFR tase";
     },
+    get$image(_) {
+      return "Pilt";
+    },
     get$activityPlannerOverviewInstructionsBody() {
       return "Valige teema, re\u017eiim, \xf5pieesm\xe4rk ja looge vestluse jaoks tegevus!";
     },
@@ -4583,7 +4586,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["781P+l8x7Eg32SyB1CMmo6TXvZc="] = d.current;
+  d["hBdKvtqZ17Jli1accG4FY/JEEgY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_207.part.js.map
