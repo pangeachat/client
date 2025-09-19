@@ -265,7 +265,10 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       }
 
       if (activityRoom == null || activityRoom!.membership != Membership.join) {
-        throw Exception("Failed to join activity room");
+        throw Exception(
+          "Failed to join activity room. "
+          "Room ID: ${widget.roomId}, "
+          "Membership status: ${activityRoom?.membership}");
       }
     }
 
