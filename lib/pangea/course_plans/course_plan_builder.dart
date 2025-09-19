@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:get_storage/get_storage.dart';
+
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
 
 class CoursePlanBuilder extends StatefulWidget {
   final String? courseId;
   final VoidCallback? onNotFound;
-  final Function(CoursePlanModel course)? onFound;
+  final Function(CoursePlanModel course)? onLoaded;
   final Widget Function(
     BuildContext context,
     CoursePlanController controller,
@@ -17,7 +19,7 @@ class CoursePlanBuilder extends StatefulWidget {
     required this.courseId,
     required this.builder,
     this.onNotFound,
-    this.onFound,
+    this.onLoaded,
   });
 
   @override
@@ -33,7 +35,9 @@ class CoursePlanController extends State<CoursePlanBuilder> {
   @override
   void initState() {
     super.initState();
-    _loadCourse();
+    _initStorage().then((_) {
+      if (mounted) _loadCourse();
+    });
   }
 
   @override
@@ -44,13 +48,21 @@ class CoursePlanController extends State<CoursePlanBuilder> {
     }
   }
 
+  Future<void> _initStorage() async {
+    final futures = [
+      GetStorage.init("course_storage"),
+      GetStorage.init("course_activity_storage"),
+      GetStorage.init("course_location_media_storage"),
+      GetStorage.init("course_location_storage"),
+      GetStorage.init("course_media_storage"),
+      GetStorage.init("course_topic_storage"),
+    ];
+
+    await Future.wait(futures);
+  }
+
   Future<void> _loadCourse() async {
     if (widget.courseId == null) {
-      setState(() {
-        loading = false;
-        error = null;
-        course = null;
-      });
       return;
     }
 
@@ -58,18 +70,16 @@ class CoursePlanController extends State<CoursePlanBuilder> {
       setState(() {
         loading = true;
         error = null;
+        course = null;
       });
 
       course = await CoursePlansRepo.get(widget.courseId!);
-      course == null
-          ? widget.onNotFound?.call()
-          : widget.onFound?.call(course!);
+      widget.onLoaded?.call(course!);
     } catch (e) {
+      widget.onNotFound?.call();
       error = e;
     } finally {
-      setState(() {
-        loading = false;
-      });
+      if (mounted) setState(() => loading = false);
     }
   }
 

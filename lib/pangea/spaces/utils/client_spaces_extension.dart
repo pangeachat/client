@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:typed_data';
 
 import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
@@ -15,10 +14,10 @@ extension SpacesClientExtension on Client {
     required String name,
     required String introChatName,
     required String announcementsChatName,
+    String? topic,
     Visibility visibility = Visibility.private,
     JoinRules joinRules = JoinRules.public,
-    Uint8List? avatar,
-    Uri? avatarUrl,
+    String? avatarUrl,
     List<StateEvent>? initialState,
     int spaceChild = 50,
   }) async {
@@ -26,6 +25,7 @@ extension SpacesClientExtension on Client {
       creationContent: {'type': RoomCreationTypes.mSpace},
       visibility: visibility,
       name: name.trim(),
+      topic: topic?.trim(),
       powerLevelContentOverride: {'events_default': 100},
       initialState: [
         RoomDefaults.defaultSpacePowerLevels(
@@ -35,10 +35,10 @@ extension SpacesClientExtension on Client {
         await pangeaJoinRules(
           joinRules.toString().replaceAll('JoinRules.', ''),
         ),
-        if (avatar != null)
+        if (avatarUrl != null)
           StateEvent(
             type: EventTypes.RoomAvatar,
-            content: {'url': avatarUrl.toString()},
+            content: {'url': avatarUrl},
           ),
         if (initialState != null) ...initialState,
       ],

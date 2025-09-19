@@ -31,7 +31,6 @@ class OverlayMessage extends StatelessWidget {
   final Event? nextEvent;
   final Event? previousEvent;
   final Timeline timeline;
-  final bool immersionMode;
 
   final Animation<Size>? sizeAnimation;
   final double? messageWidth;
@@ -42,7 +41,6 @@ class OverlayMessage extends StatelessWidget {
 
   const OverlayMessage(
     this.event, {
-    this.immersionMode = false,
     required this.overlayController,
     required this.controller,
     required this.timeline,
@@ -137,14 +135,20 @@ class OverlayMessage extends StatelessWidget {
             event.numberEmotes > 0 &&
             event.numberEmotes <= 3);
 
+    final isSubscribed =
+        MatrixState.pangeaController.subscriptionController.isSubscribed;
+
     final showTranslation = overlayController.showTranslation &&
-        overlayController.translation != null;
+        overlayController.translation != null &&
+        isSubscribed != false;
 
     final showTranscription =
-        overlayController.pangeaMessageEvent?.isAudioMessage == true;
+        overlayController.pangeaMessageEvent.isAudioMessage == true &&
+            isSubscribed != false;
 
     final showSpeechTranslation = overlayController.showSpeechTranslation &&
-        overlayController.speechTranslation != null;
+        overlayController.speechTranslation != null &&
+        isSubscribed != false;
 
     final transcription = showTranscription
         ? Container(
@@ -200,7 +204,7 @@ class OverlayMessage extends StatelessWidget {
                                 isSelected: overlayController.isTokenSelected,
                               ),
                               if (MatrixState.pangeaController
-                                  .languageController.showTrancription)
+                                  .languageController.showTranscription)
                                 PhoneticTranscriptionWidget(
                                   text: overlayController
                                       .transcription!.transcript.text,
@@ -342,7 +346,6 @@ class OverlayMessage extends StatelessWidget {
               borderRadius: borderRadius,
               timeline: timeline,
               pangeaMessageEvent: overlayController.pangeaMessageEvent,
-              immersionMode: immersionMode,
               overlayController: overlayController,
               controller: controller,
               nextEvent: nextEvent,

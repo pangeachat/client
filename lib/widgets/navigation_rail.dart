@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/navi_rail_item.dart';
 import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
+import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -157,11 +157,27 @@ class SpacesNavigationRail extends StatelessWidget {
                             //   child: Icon(Icons.add),
                             // ),
                             // toolTip: L10n.of(context).createNewSpace,
+                            backgroundColor: Colors.transparent,
+                            borderRadius: BorderRadius.circular(0),
                             isSelected: isCommunities,
                             onTap: () {
                               context.go('/rooms/communities');
                             },
-                            icon: const Icon(Icons.groups),
+                            icon: ClipPath(
+                              clipper: MapClipper(),
+                              child: Container(
+                                width: width - (isColumnMode ? 32.0 : 24.0),
+                                height: width - (isColumnMode ? 32.0 : 24.0),
+                                color: isCommunities
+                                    ? Theme.of(context)
+                                        .colorScheme
+                                        .primaryContainer
+                                    : Theme.of(context)
+                                        .colorScheme
+                                        .surfaceContainerHigh,
+                                child: const Icon(Icons.add),
+                              ),
+                            ),
                             toolTip: L10n.of(context).findCourse,
                             // Pangea#
                           );
@@ -177,6 +193,8 @@ class SpacesNavigationRail extends StatelessWidget {
                           toolTip: displayname,
                           isSelected: activeSpaceId == space.id,
                           // #Pangea
+                          backgroundColor: Colors.transparent,
+                          borderRadius: BorderRadius.circular(0),
                           // onTap: () => onGoToSpaceId(rootSpaces[i].id),
                           onTap: () {
                             final room = client.getRoomById(rootSpaces[i].id);
@@ -194,20 +212,32 @@ class SpacesNavigationRail extends StatelessWidget {
                           // Pangea#
                           unreadBadgeFilter: (room) =>
                               spaceChildrenIds.contains(room.id),
-                          icon: Avatar(
-                            mxContent: rootSpaces[i].avatar,
-                            name: displayname,
-                            border: BorderSide(
-                              width: 1,
-                              color: Theme.of(context).dividerColor,
+                          // #Pangea
+                          // icon: Avatar(
+                          //   mxContent: rootSpaces[i].avatar,
+                          //   name: displayname,
+                          //   border: BorderSide(
+                          //     width: 1,
+                          //     color: Theme.of(context).dividerColor,
+                          //   ),
+                          //   borderRadius: BorderRadius.circular(
+                          //     AppConfig.borderRadius / 2,
+                          //   ),
+                          // ),
+                          icon: ClipPath(
+                            clipper: MapClipper(),
+                            child: Avatar(
+                              mxContent: rootSpaces[i].avatar,
+                              name: displayname,
+                              border: BorderSide(
+                                width: 1,
+                                color: Theme.of(context).dividerColor,
+                              ),
+                              borderRadius: BorderRadius.circular(0),
+                              size: width - (isColumnMode ? 32.0 : 24.0),
                             ),
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius / 2,
-                            ),
-                            // #Pangea
-                            size: width - (isColumnMode ? 32.0 : 24.0),
-                            // Pangea#
                           ),
+                          // Pangea#
                         );
                       },
                     ),

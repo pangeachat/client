@@ -7,7 +7,6 @@ import 'package:matrix/matrix_api_lite/model/message_types.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/pangea/toolbar/enums/message_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
@@ -20,13 +19,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 const double minCardHeight = 70;
 
 class ReadingAssistanceContent extends StatefulWidget {
-  final PangeaMessageEvent pangeaMessageEvent;
   final MessageOverlayController overlayController;
   final Duration animationDuration;
 
   const ReadingAssistanceContent({
     super.key,
-    required this.pangeaMessageEvent,
     required this.overlayController,
     this.animationDuration = FluffyThemes.animationDuration,
   });
@@ -42,15 +39,12 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
         MatrixState.pangeaController.subscriptionController.isSubscribed;
 
     if (subscribed != null && !subscribed) {
-      return MessageUnsubscribedCard(
-        controller: widget.overlayController,
-      );
+      return const MessageUnsubscribedCard();
     }
 
     if (widget.overlayController.practiceSelection?.hasHiddenWordActivity ??
         false) {
       return PracticeActivityCard(
-        pangeaMessageEvent: widget.pangeaMessageEvent,
         overlayController: widget.overlayController,
         targetTokensAndActivityType: widget.overlayController.practiceSelection!
             .nextActivity(ActivityTypeEnum.hiddenWordListening)!,
@@ -60,7 +54,6 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
     if (widget.overlayController.practiceSelection?.hasMessageMeaningActivity ??
         false) {
       return PracticeActivityCard(
-        pangeaMessageEvent: widget.pangeaMessageEvent,
         overlayController: widget.overlayController,
         targetTokensAndActivityType: widget.overlayController.practiceSelection!
             .nextActivity(ActivityTypeEnum.messageMeaning)!,
@@ -122,11 +115,14 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
                 "word-zoom-card-${widget.overlayController.selectedToken!.text.uniqueKey}",
               )
               .key,
-          token: widget.overlayController.selectedToken!,
-          messageEvent: widget.overlayController.pangeaMessageEvent!,
-          overlayController: widget.overlayController,
+          token: widget.overlayController.selectedToken!.text,
+          construct: widget.overlayController.selectedToken!.vocabConstructID,
+          event: widget.overlayController.event,
           wordIsNew: widget.overlayController
               .isNewToken(widget.overlayController.selectedToken!),
+          onClose: () => widget.overlayController.updateSelectedSpan(null),
+          langCode: widget
+              .overlayController.pangeaMessageEvent.messageDisplayLangCode,
         );
     }
   }
@@ -134,7 +130,7 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
   @override
   Widget build(BuildContext context) {
     if (![MessageTypes.Text, MessageTypes.Audio].contains(
-      widget.pangeaMessageEvent.event.messageType,
+      widget.overlayController.pangeaMessageEvent.event.messageType,
     )) {
       return const SizedBox();
     }

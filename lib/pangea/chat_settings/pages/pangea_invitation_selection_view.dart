@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
 import 'package:fluffychat/pangea/chat_settings/constants/room_settings_constants.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -130,7 +131,16 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                     spacing: 12.0,
                     children: controller.availableFilters.map((filter) {
                       return FilterChip(
-                        label: Text(controller.filterLabel(filter)),
+                        label: filter == InvitationFilter.participants
+                            ? Row(
+                                spacing: 4.0,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(Icons.group, size: 16.0),
+                                  Text(controller.filterLabel(filter)),
+                                ],
+                              )
+                            : Text(controller.filterLabel(filter)),
                         onSelected: (_) => controller.setFilter(filter),
                         selected: controller.filter == filter,
                       );
@@ -176,13 +186,17 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                               InvitationFilter.space &&
                                           controller.spaceParent != null
                                       ? ListTile(
-                                          leading: Avatar(
-                                            mxContent:
-                                                controller.spaceParent!.avatar,
-                                            name: controller.spaceParent!
-                                                .getLocalizedDisplayname(),
-                                            borderRadius: BorderRadius.circular(
-                                              AppConfig.borderRadius / 4,
+                                          leading: ClipPath(
+                                            clipper: MapClipper(),
+                                            child: Avatar(
+                                              mxContent: controller
+                                                  .spaceParent!.avatar,
+                                              name: controller.spaceParent!
+                                                  .getLocalizedDisplayname(),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                AppConfig.borderRadius / 4,
+                                              ),
                                             ),
                                           ),
                                           title: Text(

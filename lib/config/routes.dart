@@ -28,10 +28,11 @@ import 'package:fluffychat/pages/settings_notifications/settings_notifications.d
 import 'package:fluffychat/pages/settings_password/settings_password.dart';
 import 'package:fluffychat/pages/settings_security/settings_security.dart';
 import 'package:fluffychat/pages/settings_style/settings_style.dart';
-import 'package:fluffychat/pangea/activity_generator/activity_generator.dart';
-import 'package:fluffychat/pangea/activity_planner/activity_planner_page.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
+import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_page/analytics_page.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
+import 'package:fluffychat/pangea/chat_settings/pages/edit_course.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/course_creation/new_course_page.dart';
@@ -345,29 +346,112 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                AnalyticsPage(
-                  selectedIndicator: ProgressIndicatorEnum.fromString(
-                    state.uri.queryParameters['mode'] ?? 'vocab',
-                  ),
-                  constructZoom: state.extra is ConstructIdentifier
-                      ? state.extra as ConstructIdentifier
-                      : null,
-                ),
+                const AnalyticsPage(),
               ),
               routes: [
                 GoRoute(
-                  path: ':roomid',
+                  path: ConstructTypeEnum.morph.string,
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    ChatPage(
-                      roomId: state.pathParameters['roomid']!,
-                      eventId: state.uri.queryParameters['event'],
-                      backButton: BackButton(
-                        onPressed: () => context.go(
-                          "/rooms/analytics?mode=activities",
+                    AnalyticsPage(
+                      indicator: FluffyThemes.isColumnMode(context)
+                          ? null
+                          : ProgressIndicatorEnum.morphsUsed,
+                    ),
+                  ),
+                  redirect: loggedOutRedirect,
+                  routes: [
+                    GoRoute(
+                      path: ':construct',
+                      pageBuilder: (context, state) {
+                        final construct = ConstructIdentifier.fromString(
+                          state.pathParameters['construct']!,
+                        );
+                        return defaultPageBuilder(
+                          context,
+                          state,
+                          AnalyticsPage(
+                            indicator: ProgressIndicatorEnum.morphsUsed,
+                            construct: construct,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  path: ConstructTypeEnum.vocab.string,
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    AnalyticsPage(
+                      indicator: FluffyThemes.isColumnMode(context)
+                          ? null
+                          : ProgressIndicatorEnum.wordsUsed,
+                    ),
+                  ),
+                  redirect: loggedOutRedirect,
+                  routes: [
+                    GoRoute(
+                      path: ':construct',
+                      pageBuilder: (context, state) {
+                        final construct = ConstructIdentifier.fromString(
+                          state.pathParameters['construct']!,
+                        );
+                        return defaultPageBuilder(
+                          context,
+                          state,
+                          AnalyticsPage(
+                            indicator: ProgressIndicatorEnum.wordsUsed,
+                            construct: construct,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  path: 'activities',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    AnalyticsPage(
+                      indicator: FluffyThemes.isColumnMode(context)
+                          ? null
+                          : ProgressIndicatorEnum.activities,
+                    ),
+                  ),
+                  redirect: loggedOutRedirect,
+                  routes: [
+                    GoRoute(
+                      path: ':roomid',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        ChatPage(
+                          roomId: state.pathParameters['roomid']!,
+                          eventId: state.uri.queryParameters['event'],
+                          backButton: BackButton(
+                            onPressed: () => context.go(
+                              "/rooms/analytics/activities",
+                            ),
+                          ),
                         ),
                       ),
+                      redirect: loggedOutRedirect,
+                    ),
+                  ],
+                ),
+                GoRoute(
+                  path: 'level',
+                  pageBuilder: (context, state) => defaultPageBuilder(
+                    context,
+                    state,
+                    AnalyticsPage(
+                      indicator: FluffyThemes.isColumnMode(context)
+                          ? null
+                          : ProgressIndicatorEnum.level,
                     ),
                   ),
                   redirect: loggedOutRedirect,
@@ -597,6 +681,45 @@ abstract class AppRoutes {
                       routes: roomDetailsRoutes('spaceid'),
                     ),
                     ...roomDetailsRoutes('spaceid'),
+                    GoRoute(
+                      path: 'addcourse',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        NewCourse(
+                          spaceId: state.pathParameters['spaceid']!,
+                        ),
+                      ),
+                      redirect: loggedOutRedirect,
+                      routes: [
+                        GoRoute(
+                          path: ':courseId',
+                          pageBuilder: (context, state) => defaultPageBuilder(
+                            context,
+                            state,
+                            SelectedCourse(
+                              state.pathParameters['courseId']!,
+                              spaceId: state.pathParameters['spaceid']!,
+                            ),
+                          ),
+                          redirect: loggedOutRedirect,
+                        ),
+                      ],
+                    ),
+                    GoRoute(
+                      path: 'activity/:activityid',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        ActivitySessionStartPage(
+                          activityId: state.pathParameters['activityid']!,
+                          roomId: state.uri.queryParameters['roomid'],
+                          parentId: state.pathParameters['spaceid']!,
+                          launch: state.uri.queryParameters['launch'] == 'true',
+                        ),
+                      ),
+                      redirect: loggedOutRedirect,
+                    ),
                     GoRoute(
                       path: ':roomid',
                       pageBuilder: (context, state) {
@@ -901,6 +1024,15 @@ abstract class AppRoutes {
 
   static List<RouteBase> roomDetailsRoutes(String roomKey) => [
         GoRoute(
+          path: '/edit',
+          redirect: loggedOutRedirect,
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            EditCourse(roomId: state.pathParameters[roomKey]!),
+          ),
+        ),
+        GoRoute(
           path: '/analytics',
           redirect: loggedOutRedirect,
           pageBuilder: (context, state) => defaultPageBuilder(
@@ -910,30 +1042,6 @@ abstract class AppRoutes {
               roomId: state.pathParameters[roomKey]!,
             ),
           ),
-        ),
-        GoRoute(
-          path: 'planner',
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            ActivityPlannerPage(
-              roomID: state.pathParameters[roomKey]!,
-            ),
-          ),
-          redirect: loggedOutRedirect,
-          routes: [
-            GoRoute(
-              path: '/generator',
-              redirect: loggedOutRedirect,
-              pageBuilder: (context, state) => defaultPageBuilder(
-                context,
-                state,
-                ActivityGenerator(
-                  roomID: state.pathParameters[roomKey]!,
-                ),
-              ),
-            ),
-          ],
         ),
         GoRoute(
           path: 'access',

@@ -17,8 +17,8 @@ import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/course_settings.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -111,16 +111,15 @@ class SpaceDetailsContent extends StatelessWidget {
             '/rooms/spaces/${room.id}/details/invite?filter=$filter',
           );
         },
-        enabled: room.canInvite && !room.isDirectChat,
+        enabled: room.canInvite,
         showInMainView: false,
       ),
       ButtonDetails(
         title: l10n.editCourse,
         description: l10n.editCourseDesc,
         icon: const Icon(Icons.edit_outlined, size: 30.0),
-        onPressed: () {},
-        visible: false,
-        enabled: room.canChangeStateEvent(PangeaEventTypes.coursePlan),
+        onPressed: () => context.go('/rooms/${room.id}/details/edit'),
+        enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -128,7 +127,7 @@ class SpaceDetailsContent extends StatelessWidget {
         description: l10n.permissionsDesc,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
         onPressed: () => context.go('/rooms/${room.id}/details/permissions'),
-        enabled: room.isRoomAdmin && !room.isDirectChat,
+        enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -192,7 +191,7 @@ class SpaceDetailsContent extends StatelessWidget {
             context.go("/rooms");
           }
         },
-        enabled: room.isRoomAdmin && !room.isDirectChat,
+        enabled: room.isRoomAdmin,
         showInMainView: false,
       ),
     ];
@@ -221,13 +220,15 @@ class SpaceDetailsContent extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       if (isColumnMode) ...[
-                        Avatar(
-                          mxContent: room.avatar,
-                          name: displayname,
-                          userId: room.directChatMatrixID,
-                          size: 80.0,
-                          borderRadius:
-                              room.isSpace ? BorderRadius.circular(24.0) : null,
+                        ClipPath(
+                          clipper: MapClipper(),
+                          child: Avatar(
+                            mxContent: room.avatar,
+                            name: displayname,
+                            userId: room.directChatMatrixID,
+                            size: 80.0,
+                            borderRadius: BorderRadius.circular(0.0),
+                          ),
                         ),
                         const SizedBox(width: 16.0),
                       ],
@@ -313,9 +314,9 @@ class SpaceDetailsContent extends StatelessWidget {
                       return SingleChildScrollView(
                         child: Column(
                           children: [
-                            if (courseController.course != null) ...[
+                            if (room.topic.isNotEmpty) ...[
                               Text(
-                                courseController.course!.description,
+                                room.topic,
                                 style: TextStyle(
                                   fontSize: isColumnMode ? 16.0 : 12.0,
                                 ),

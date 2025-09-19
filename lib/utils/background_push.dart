@@ -24,7 +24,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
+import 'package:collection/collection.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_new_badger/flutter_new_badger.dart';
@@ -43,7 +43,7 @@ import '../config/setting_keys.dart';
 import '../widgets/matrix.dart';
 import 'platform_infos.dart';
 
-//import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
+//<GOOGLE_SERVICES>import 'package:fcm_shared_isolate/fcm_shared_isolate.dart';
 
 class NoTokenException implements Exception {
   String get cause => 'Cannot get firebase token';
@@ -68,11 +68,7 @@ class BackgroundPush {
 
   final pendingTests = <String, Completer<void>>{};
 
-  // final dynamic firebase = null; //FcmSharedIsolate();
-  // #Pangea
-  // uncommented to enable notifications on IOS
-  final FcmSharedIsolate? firebase = FcmSharedIsolate();
-  // Pangea#
+  //<GOOGLE_SERVICES>final firebase = FcmSharedIsolate();
 
   DateTime? lastReceivedPush;
 
@@ -105,20 +101,24 @@ class BackgroundPush {
       // Pangea#
 
       Logs().v('Flutter Local Notifications initialized');
-      firebase?.setListeners(
-        onMessage: (message) => pushHelper(
-          PushNotification.fromJson(
-            Map<String, dynamic>.from(message['data'] ?? message),
-          ),
-          client: client,
-          l10n: l10n,
-          activeRoomId: matrix?.activeRoomId,
-          flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
-        ),
-        // #Pangea
-        onNewToken: _newFcmToken,
-        // Pangea#
-      );
+      //<GOOGLE_SERVICES>firebase.setListeners(
+      //<GOOGLE_SERVICES>  onMessage: (message) => pushHelper(
+      //<GOOGLE_SERVICES>    PushNotification.fromJson(
+      //<GOOGLE_SERVICES>      Map<String, dynamic>.from(message['data'] ?? message),
+      //<GOOGLE_SERVICES>    ),
+      //<GOOGLE_SERVICES>    client: client,
+      //<GOOGLE_SERVICES>    l10n: l10n,
+      //<GOOGLE_SERVICES>    activeRoomId: matrix?.activeRoomId,
+      //<GOOGLE_SERVICES>    flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
+      //<GOOGLE_SERVICES>  ),
+      //<GOOGLE_SERVICES>  // #Pangea
+      //<GOOGLE_SERVICES>  onNewToken: (token) {
+      //<GOOGLE_SERVICES>     _fcmToken = token;
+      //<GOOGLE_SERVICES>     debugPrint('Fcm token $_fcmToken');
+      //<GOOGLE_SERVICES>     setupPush();
+      //<GOOGLE_SERVICES>   },
+      //<GOOGLE_SERVICES>  // Pangea#
+      //<GOOGLE_SERVICES>);
 
       if (Platform.isAndroid) {
         await UnifiedPush.initialize(
@@ -139,35 +139,61 @@ class BackgroundPush {
 
   // #Pangea
   Future<void> _onOpenNotification(RemoteMessage? message) async {
-    if (message == null ||
-        !message.data.containsKey('room_id') ||
-        message.data['room_id'] == null ||
-        message.data['room_id'].isEmpty) {
-      return;
-    }
+    const sessionIdKey = "content_pangea.activity.session_room_id";
 
-    try {
-      final roomId = message.data['room_id'];
+    // Early return if no room_id.
+    final roomId = message?.data['room_id'];
+    if (roomId is! String || roomId.isEmpty) return;
+
+    // Helper to ensure a room is loaded or synced.
+    Future<Room?> ensureRoomLoaded(String id) async {
       await client.roomsLoading;
       await client.accountDataLoading;
-      if (client.getRoomById(roomId) == null) {
-        await client
-            .waitForRoomInSync(roomId)
-            .timeout(const Duration(seconds: 30));
+
+      var room = client.getRoomById(id);
+      if (room == null) {
+        await client.waitForRoomInSync(id).timeout(const Duration(seconds: 30));
+        room = client.getRoomById(id);
       }
+      return room;
+    }
+
+    // Handle session room if provided.
+    final sessionRoomId = message?.data[sessionIdKey];
+    if (sessionRoomId is String && sessionRoomId.isNotEmpty) {
+      try {
+        final course = await ensureRoomLoaded(roomId);
+        if (course == null) return;
+
+        final session = client.getRoomById(sessionRoomId);
+        if (session?.membership == Membership.join) {
+          FluffyChatApp.router.go('/rooms/$sessionRoomId');
+          return;
+        }
+
+        await client.joinRoom(
+          sessionRoomId,
+          via: course.spaceChildren
+              .firstWhereOrNull((child) => child.roomId == sessionRoomId)
+              ?.via,
+        );
+
+        await ensureRoomLoaded(sessionRoomId);
+        FluffyChatApp.router.go('/rooms/$sessionRoomId');
+        return;
+      } catch (err, s) {
+        ErrorHandler.logError(e: err, s: s, data: {"roomId": sessionRoomId});
+      }
+    }
+
+    // Fallback: just open the original room.
+    try {
+      final room = await ensureRoomLoaded(roomId);
       FluffyChatApp.router.go(
-        client.getRoomById(roomId)?.membership == Membership.invite
-            ? '/rooms'
-            : '/rooms/$roomId',
+        room?.membership == Membership.invite ? '/rooms' : '/rooms/$roomId',
       );
     } catch (err, s) {
-      ErrorHandler.logError(
-        e: err,
-        s: s,
-        data: {
-          "roomId": message.data['room_id'],
-        },
-      );
+      ErrorHandler.logError(e: err, s: s, data: {"roomId": roomId});
     }
   }
   // Pangea#
@@ -196,13 +222,6 @@ class BackgroundPush {
   void handleLoginStateChanged(_) => setupPush();
 
   StreamSubscription<LoginState>? onLogin;
-
-  void _newFcmToken(String token) {
-    _fcmToken = token;
-    debugPrint('Fcm foken $_fcmToken');
-    setupPush();
-  }
-  // Pangea#
 
   Future<void> cancelNotification(String roomId) async {
     Logs().v('Cancel notification for room', roomId);
@@ -240,7 +259,7 @@ class BackgroundPush {
     try {
       // Pangea#
       if (PlatformInfos.isIOS) {
-        await firebase?.requestPermission();
+        //<GOOGLE_SERVICES>await firebase?.requestPermission();
       }
       if (PlatformInfos.isAndroid) {
         _flutterLocalNotificationsPlugin
@@ -427,10 +446,7 @@ class BackgroundPush {
     Logs().v('Setup firebase');
     if (_fcmToken?.isEmpty ?? true) {
       try {
-        // #Pangea
-        // _fcmToken = await firebase?.getToken();
-        _fcmToken = await _getToken();
-        // Pangea#
+        //<GOOGLE_SERVICES>_fcmToken = await firebase.getToken();
         if (_fcmToken == null) throw ('PushToken is null');
       } catch (e, s) {
         Logs().w('[Push] cannot get token', e, e is String ? null : s);
@@ -515,11 +531,8 @@ class BackgroundPush {
     Logs().i('[Push] UnifiedPush using endpoint $endpoint');
     final oldTokens = <String?>{};
     try {
-      // #Pangea
-      // final fcmToken = await firebase?.getToken();
-      final fcmToken = await _getToken();
-      // Pangea#
-      oldTokens.add(fcmToken);
+      //<GOOGLE_SERVICES>final fcmToken = await firebase.getToken();
+      //<GOOGLE_SERVICES>oldTokens.add(fcmToken);
     } catch (_) {}
     await setupPusher(
       gatewayUrl: endpoint,
@@ -561,15 +574,6 @@ class BackgroundPush {
       flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
     );
   }
-
-  // #Pangea
-  Future<String?> _getToken() async {
-    if (Platform.isAndroid) {
-      return (await FirebaseMessaging.instance.getToken());
-    }
-    return await firebase?.getToken();
-  }
-  // Pangea#
 }
 
 class UPFunctions extends UnifiedPushFunctions {

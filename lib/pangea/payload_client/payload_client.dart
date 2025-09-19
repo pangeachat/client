@@ -124,6 +124,13 @@ class PayloadClient {
     final endpoint =
         '$basePath/$collection${queryParams.isNotEmpty ? '?${queryStringify(queryParams)}' : ''}';
     final response = await get(endpoint);
+
+    if (response.statusCode >= 400) {
+      throw Exception(
+        'Failed to load documents: ${response.statusCode} ${response.body}',
+      );
+    }
+
     final json = jsonDecode(response.body) as Map<String, dynamic>;
 
     return PayloadPaginatedResponse.fromJson(json, fromJson);
@@ -137,6 +144,11 @@ class PayloadClient {
   ) async {
     final endpoint = '$basePath/$collection/$id';
     final response = await get(endpoint);
+    if (response.statusCode >= 400) {
+      throw Exception(
+        'Failed to load document: ${response.statusCode} ${response.body}',
+      );
+    }
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     return fromJson(json);
   }
@@ -149,6 +161,13 @@ class PayloadClient {
   ) async {
     final endpoint = '$basePath/$collection';
     final response = await post(endpoint, data);
+
+    if (response.statusCode >= 400) {
+      throw Exception(
+        'Failed to create document: ${response.statusCode} ${response.body}',
+      );
+    }
+
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     return fromJson(json);
   }
@@ -162,6 +181,11 @@ class PayloadClient {
   ) async {
     final endpoint = '$basePath/$collection/$id';
     final response = await patch(endpoint, data);
+    if (response.statusCode >= 400) {
+      throw Exception(
+        'Failed to update document: ${response.statusCode} ${response.body}',
+      );
+    }
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     return fromJson(json);
   }
@@ -174,6 +198,11 @@ class PayloadClient {
   ) async {
     final endpoint = '$basePath/$collection/$id';
     final response = await delete(endpoint);
+    if (response.statusCode >= 400) {
+      throw Exception(
+        'Failed to delete document: ${response.statusCode} ${response.body}',
+      );
+    }
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     return fromJson(json);
   }

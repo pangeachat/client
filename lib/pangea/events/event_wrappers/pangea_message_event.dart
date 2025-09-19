@@ -506,40 +506,6 @@ class PangeaMessageEvent {
             (filter?.call(element) ?? true),
       );
 
-  Future<PangeaRepresentation?> representationByLanguageGlobal({
-    required String langCode,
-  }) async {
-    final RepresentationEvent? repLocal = representationByLanguage(langCode);
-
-    if (repLocal != null ||
-        langCode == LanguageKeys.unknownLanguage ||
-        langCode == LanguageKeys.mixedLanguage ||
-        langCode == LanguageKeys.multiLanguage) {
-      return repLocal?.content;
-    }
-
-    if (eventId.contains("Pangea Chat")) return null;
-
-    // should this just be the original event body?
-    // worth a conversation with the team
-    final PangeaRepresentation? basis = originalSent?.content;
-
-    // clear representations cache so the new representation event can be added
-    // when next requested
-    _representations = null;
-
-    return MatrixState.pangeaController.messageData.getPangeaRepresentation(
-      req: FullTextTranslationRequestModel(
-        text: basis?.text ?? _latestEdit.body,
-        srcLang: basis?.langCode,
-        tgtLang: langCode,
-        userL2: l2Code ?? LanguageKeys.unknownLanguage,
-        userL1: l1Code ?? LanguageKeys.unknownLanguage,
-      ),
-      messageEvent: _event,
-    );
-  }
-
   Future<String?> representationByDetectedLanguage() async {
     LanguageDetectionResponse? resp;
     try {
@@ -590,8 +556,9 @@ class PangeaMessageEvent {
       throw Exception("Missing language codes");
     }
 
-    final includedIT = (originalSent?.choreo?.includedIT ?? false) &&
-        !(originalSent?.choreo?.includedIGC ?? true);
+    final includedIT =
+        (originalSent?.choreo?.endedWithIT(originalSent!.text) ?? false) &&
+            !(originalSent?.choreo?.includedIGC ?? true);
 
     RepresentationEvent? rep;
     if (!includedIT) {

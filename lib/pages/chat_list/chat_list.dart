@@ -21,7 +21,6 @@ import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart
 import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -73,7 +72,10 @@ extension LocalizedActiveFilter on ActiveFilter {
       case ActiveFilter.groups:
         return L10n.of(context).groups;
       case ActiveFilter.spaces:
-        return L10n.of(context).spaces;
+        // #Pangea
+        // return L10n.of(context).spaces;
+        return L10n.of(context).courses;
+      // Pangea#
     }
   }
 }
@@ -781,7 +783,11 @@ class ChatListController extends State<ChatList>
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
-                    L10n.of(context).goToSpace(space.getLocalizedDisplayname()),
+                    // Pangea#
+                    // L10n.of(context).goToSpace(space.getLocalizedDisplayname()),
+                    L10n.of(context)
+                        .goToCourse(space.getLocalizedDisplayname()),
+                    // Pangea#
                   ),
                 ),
               ],
@@ -1157,7 +1163,6 @@ class ChatListController extends State<ChatList>
 
   // #Pangea
   void _initPangeaControllers(Client client) {
-    GoogleAnalytics.analyticsUserUpdate(client.userID);
     MatrixState.pangeaController.initControllers();
     if (mounted) {
       MatrixState.pangeaController.classController.joinCachedSpaceCode(context);

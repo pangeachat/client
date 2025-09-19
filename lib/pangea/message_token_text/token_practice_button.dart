@@ -25,14 +25,14 @@ const double tokenButtonDefaultFontSize = 10;
 const int maxEmojisPerLemma = 1;
 const double estimatedEmojiWidthRatio = 2;
 
-class MessageTokenButton extends StatefulWidget {
+class TokenPracticeButton extends StatefulWidget {
   final MessageOverlayController? overlayController;
   final PangeaToken token;
   final TextStyle textStyle;
   final double width;
   final bool animateIn;
 
-  const MessageTokenButton({
+  const TokenPracticeButton({
     super.key,
     required this.overlayController,
     required this.token,
@@ -42,10 +42,10 @@ class MessageTokenButton extends StatefulWidget {
   });
 
   @override
-  MessageTokenButtonState createState() => MessageTokenButtonState();
+  TokenPracticeButtonState createState() => TokenPracticeButtonState();
 }
 
-class MessageTokenButtonState extends State<MessageTokenButton>
+class TokenPracticeButtonState extends State<TokenPracticeButton>
     with TickerProviderStateMixin {
   AnimationController? _controller;
   Animation<double>? _heightAnimation;
@@ -102,7 +102,7 @@ class MessageTokenButtonState extends State<MessageTokenButton>
   }
 
   @override
-  void didUpdateWidget(covariant MessageTokenButton oldWidget) {
+  void didUpdateWidget(covariant TokenPracticeButton oldWidget) {
     super.didUpdateWidget(oldWidget);
     _setSelected();
     if (_isEmpty != _wasEmpty) {
@@ -294,17 +294,6 @@ class MessageTokenButtonContent extends StatelessWidget {
   static final _borderRadius =
       BorderRadius.circular(AppConfig.borderRadius - 4);
 
-  Color _color(BuildContext context) {
-    final bool isLight = Theme.of(context).brightness == Brightness.light;
-    final defaultColor = isLight
-        ? Theme.of(context).colorScheme.primary
-        : Theme.of(context).colorScheme.primaryContainer;
-
-    return activity != null && isActivityCompleteOrNullForToken
-        ? AppConfig.gold
-        : defaultColor;
-  }
-
   @override
   Widget build(BuildContext context) {
     if (isActivityCompleteOrNullForToken || activity == null) {
@@ -362,13 +351,13 @@ class MessageTokenButtonContent extends StatelessWidget {
         child: SizedBox(
           height: height,
           child: Opacity(
-            opacity: isSelected ? 1.0 : 0.4,
+            opacity: isSelected ? 1.0 : 0.6,
             child: AnimatedBuilder(
               animation: sizeAnimation,
               builder: (context, child) {
                 return Icon(
                   Symbols.toys_and_games,
-                  color: _color(context),
+                  color: Theme.of(context).colorScheme.onSurface,
                   size: sizeAnimation.value, // Use the new animation
                 );
               },
@@ -393,11 +382,8 @@ class MessageTokenButtonContent extends StatelessWidget {
           borderRadius: _borderRadius,
           child: CustomPaint(
             painter: DottedBorderPainter(
-              color: theme.brightness == Brightness.light
-                  ? theme.colorScheme.primary
-                      .withAlpha((colorAlpha * 255).toInt())
-                  : theme.colorScheme.primaryContainer
-                      .withAlpha((colorAlpha * 255).toInt()),
+              color: theme.colorScheme.onSurface
+                  .withAlpha((colorAlpha * 255).toInt()),
               borderRadius: _borderRadius,
             ),
             child: Container(
