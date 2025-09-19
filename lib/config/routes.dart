@@ -682,14 +682,40 @@ abstract class AppRoutes {
                     ),
                     ...roomDetailsRoutes('spaceid'),
                     GoRoute(
+                      path: 'addcourse',
+                      pageBuilder: (context, state) => defaultPageBuilder(
+                        context,
+                        state,
+                        NewCourse(
+                          spaceId: state.pathParameters['spaceid']!,
+                        ),
+                      ),
+                      redirect: loggedOutRedirect,
+                      routes: [
+                        GoRoute(
+                          path: ':courseId',
+                          pageBuilder: (context, state) => defaultPageBuilder(
+                            context,
+                            state,
+                            SelectedCourse(
+                              state.pathParameters['courseId']!,
+                              spaceId: state.pathParameters['spaceid']!,
+                            ),
+                          ),
+                          redirect: loggedOutRedirect,
+                        ),
+                      ],
+                    ),
+                    GoRoute(
                       path: 'activity/:activityid',
                       pageBuilder: (context, state) => defaultPageBuilder(
                         context,
                         state,
                         ActivitySessionStartPage(
                           activityId: state.pathParameters['activityid']!,
-                          isNew: state.uri.queryParameters['new'] == 'true',
+                          roomId: state.uri.queryParameters['roomid'],
                           parentId: state.pathParameters['spaceid']!,
+                          launch: state.uri.queryParameters['launch'] == 'true',
                         ),
                       ),
                       redirect: loggedOutRedirect,

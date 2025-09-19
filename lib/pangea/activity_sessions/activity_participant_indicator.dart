@@ -7,14 +7,16 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
+import 'package:fluffychat/widgets/member_actions_popup_menu_button.dart';
 
 class ActivityParticipantIndicator extends StatelessWidget {
   final String name;
   final String? userId;
-  final String? avatarUrl;
+  final User? user;
 
   final VoidCallback? onTap;
   final bool selected;
+  final bool selectable;
   final double opacity;
 
   final EdgeInsetsGeometry? padding;
@@ -23,9 +25,10 @@ class ActivityParticipantIndicator extends StatelessWidget {
   const ActivityParticipantIndicator({
     super.key,
     required this.name,
-    this.avatarUrl,
+    this.user,
     this.userId,
     this.selected = false,
+    this.selectable = true,
     this.onTap,
     this.opacity = 1.0,
     this.padding,
@@ -36,11 +39,17 @@ class ActivityParticipantIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return AbsorbPointer(
-      absorbing: onTap == null,
+      absorbing: !selectable,
       child: MouseRegion(
-        cursor: SystemMouseCursors.click,
+        cursor: SystemMouseCursors.basic,
         child: GestureDetector(
-          onTap: onTap,
+          onTap: onTap ??
+              (user != null
+                  ? () => showMemberActionsPopupMenu(
+                        context: context,
+                        user: user!,
+                      )
+                  : null),
           child: HoverBuilder(
             builder: (context, hovered) {
               return Opacity(
@@ -53,7 +62,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                       ),
                   decoration: BoxDecoration(
                     borderRadius: borderRadius ?? BorderRadius.circular(8.0),
-                    color: hovered || selected
+                    color: (hovered || selected) && selectable
                         ? theme.colorScheme.surfaceContainerHighest
                         : Colors.transparent,
                   ),
@@ -61,10 +70,11 @@ class ActivityParticipantIndicator extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       userId != null
-                          ? avatarUrl == null || avatarUrl!.startsWith("mxc")
+                          ? user?.avatarUrl == null ||
+                                  user!.avatarUrl!.toString().startsWith("mxc")
                               ? Avatar(
-                                  mxContent: avatarUrl != null
-                                      ? Uri.parse(avatarUrl!)
+                                  mxContent: user?.avatarUrl != null
+                                      ? user!.avatarUrl!
                                       : null,
                                   name: userId!.localpart,
                                   size: 60.0,
@@ -73,7 +83,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                               : ClipRRect(
                                   borderRadius: BorderRadius.circular(30),
                                   child: CachedNetworkImage(
-                                    imageUrl: avatarUrl!,
+                                    imageUrl: user!.avatarUrl!.toString(),
                                     width: 60.0,
                                     height: 60.0,
                                     fit: BoxFit.cover,
@@ -98,11 +108,11 @@ class ActivityParticipantIndicator extends StatelessWidget {
                         userId?.localpart ?? L10n.of(context).openRoleLabel,
                         style: TextStyle(
                           fontSize: 12.0,
-                          color:
-                              (Theme.of(context).brightness == Brightness.light
-                                      ? userId?.localpart?.darkColor
-                                      : userId?.localpart?.lightColorText) ??
-                                  name.lightColorAvatar,
+                          color: (Theme.of(context).brightness ==
+                                  Brightness.light
+                              ? (userId?.localpart?.darkColor ?? name.darkColor)
+                              : (userId?.localpart?.lightColorText ??
+                                  name.lightColorText)),
                         ),
                       ),
                     ],

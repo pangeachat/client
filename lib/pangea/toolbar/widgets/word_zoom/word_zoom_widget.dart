@@ -22,14 +22,12 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaToken token;
-  final PangeaMessageEvent messageEvent;
   final MessageOverlayController overlayController;
   final bool wordIsNew;
 
   const WordZoomWidget({
     super.key,
     required this.token,
-    required this.messageEvent,
     required this.overlayController,
     required this.wordIsNew,
   });
@@ -48,6 +46,8 @@ class WordZoomWidget extends StatelessWidget {
 
   LayerLink get layerLink =>
       MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
+
+  PangeaMessageEvent get messageEvent => overlayController.pangeaMessageEvent;
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +190,7 @@ class WordZoomWidget extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if (MatrixState.pangeaController.languageController
-                              .showTrancription)
+                              .showTranscription)
                             PhoneticTranscriptionWidget(
                               text: token.text.content,
                               textLanguage: PLanguageStore.byLangCode(
@@ -273,7 +273,6 @@ class WordZoomWidget extends StatelessWidget {
                 overlayColor: overlayColor,
                 overlayController: overlayController,
                 transformTargetId: transformTargetId,
-                //cardKey: cardKey,
               )
             : const SizedBox.shrink(),
       ],

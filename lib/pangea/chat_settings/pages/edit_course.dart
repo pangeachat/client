@@ -33,6 +33,14 @@ class EditCourseController extends State<EditCourse> {
       _titleController.text = _room!.name;
       _descController.text = _room!.topic;
     }
+
+    _titleController.addListener(() {
+      setState(() {});
+    });
+
+    _descController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -44,8 +52,18 @@ class EditCourseController extends State<EditCourse> {
 
   Room? get _room => Matrix.of(context).client.getRoomById(widget.roomId);
 
+  bool get hasChanges {
+    if (_room == null) return false;
+    final title = _titleController.text.trim();
+    final desc = _descController.text.trim();
+    if (title.isNotEmpty && title != _room!.name) return true;
+    if (desc.isNotEmpty && desc != _room!.topic) return true;
+    if (_avatar != null) return true;
+    return false;
+  }
+
   Future<void> _saveChanges() async {
-    if (_room == null) return;
+    if (_room == null || !hasChanges) return;
     final title = _titleController.text.trim();
     final desc = _descController.text.trim();
 
@@ -57,6 +75,36 @@ class EditCourseController extends State<EditCourse> {
     }
     if (_avatar != null) {
       await _room!.setAvatar(_avatar!);
+    }
+
+    _room!.client.onRoomState.stream.first.then((_) {
+      if (mounted) {
+        setState(() {
+          _titleController.text = _room!.name;
+          _descController.text = _room!.topic;
+          _avatar = null;
+        });
+      }
+    });
+  }
+
+  Future<void> _save() async {
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: _saveChanges,
+    );
+
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            resp.isError
+                ? L10n.of(context).oopsSomethingWentWrong
+                : L10n.of(context).courseSavedSuccessfully,
+            textAlign: TextAlign.center,
+          ),
+        ),
+      );
     }
   }
 
@@ -156,10 +204,17 @@ class EditCourseController extends State<EditCourse> {
                                               )
                                             : ImageByUrl(
                                                 imageUrl:
-                                                    _room?.avatar.toString(),
+                                                    _room?.avatar?.toString(),
                                                 width: 200.0,
                                                 borderRadius:
                                                     BorderRadius.circular(0.0),
+                                                replacement: Container(
+                                                  width: 200.0,
+                                                  height: 200.0,
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .surfaceContainerHighest,
+                                                ),
                                               ),
                                       ),
                                       Positioned(
@@ -181,6 +236,7 @@ class EditCourseController extends State<EditCourse> {
                                         borderRadius:
                                             BorderRadius.circular(4.0),
                                       ),
+                                      hintText: L10n.of(context).courseTitle,
                                     ),
                                   ),
                                   TextField(
@@ -190,6 +246,7 @@ class EditCourseController extends State<EditCourse> {
                                         borderRadius:
                                             BorderRadius.circular(4.0),
                                       ),
+                                      hintText: L10n.of(context).courseDesc,
                                     ),
                                     maxLines: null,
                                   ),
@@ -211,10 +268,7 @@ class EditCourseController extends State<EditCourse> {
                           Container(
                             padding: const EdgeInsets.symmetric(vertical: 16.0),
                             child: ElevatedButton(
-                              onPressed: () => showFutureLoadingDialog(
-                                context: context,
-                                future: _saveChanges,
-                              ),
+                              onPressed: hasChanges ? _save : null,
                               child: Row(
                                 spacing: 8.0,
                                 mainAxisAlignment: MainAxisAlignment.center,

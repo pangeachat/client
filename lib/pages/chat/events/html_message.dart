@@ -13,11 +13,13 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/message_token_text/message_token_button.dart';
+import 'package:fluffychat/pangea/message_token_text/token_emoji_button.dart';
+import 'package:fluffychat/pangea/message_token_text/token_practice_button.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
 import 'package:fluffychat/pangea/toolbar/enums/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/pangea/toolbar/utils/token_rendering_util.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_selection_overlay.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -44,9 +46,6 @@ class HtmlMessage extends StatelessWidget {
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final ReadingAssistanceMode? readingAssistanceMode;
-
-  final bool Function(PangeaToken)? isHighlighted;
-  final bool Function(PangeaToken)? isSelected;
   final void Function(PangeaToken)? onClick;
   // Pangea#
 
@@ -68,8 +67,6 @@ class HtmlMessage extends StatelessWidget {
     required this.controller,
     this.nextEvent,
     this.prevEvent,
-    this.isHighlighted,
-    this.isSelected,
     this.onClick,
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
@@ -215,7 +212,7 @@ class HtmlMessage extends StatelessWidget {
         : [];
 
     for (final TokenPosition tokenPosition in tokenPositions) {
-      final String tokenSpanText = tokens!
+      String tokenSpanText = tokens!
           .sublist(tokenPosition.startIndex, tokenPosition.endIndex + 1)
           .map((t) => t.text.content)
           .join();
@@ -244,6 +241,11 @@ class HtmlMessage extends StatelessWidget {
           .skip(tokenIndex + tokenLength)
           .toString();
 
+      if (after.startsWith('\n')) {
+        after.replaceFirst('\n', '');
+        tokenSpanText += '\n';
+      }
+
       result.replaceRange(substringIndex, substringIndex + 1, [
         if (before.isNotEmpty) before,
         '<token offset="${tokenPosition.token!.text.offset}" length="${tokenPosition.token!.text.length}">$tokenSpanText</token>',
@@ -251,10 +253,6 @@ class HtmlMessage extends StatelessWidget {
       ]);
 
       position = substringIndex;
-    }
-
-    for (int i = 0; i < result.length; i++) {
-      if (result[i] == '\n') result[i] = '<br>';
     }
 
     if (pangeaMessageEvent?.textDirection == TextDirection.rtl) {
@@ -274,6 +272,7 @@ class HtmlMessage extends StatelessWidget {
       final inverted = _invertTags(result);
       return inverted.join().trim();
     }
+
     return result.join().trim();
   }
 
@@ -396,9 +395,10 @@ class HtmlMessage extends StatelessWidget {
     );
 
     final fontSize = renderer.fontSize(context) ?? this.fontSize;
-    final newTokens = pangeaMessageEvent != null
-        ? TokensUtil.getNewTokens(pangeaMessageEvent!)
-        : [];
+    final newTokens =
+        pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
+            ? TokensUtil.getNewTokens(pangeaMessageEvent!)
+            : [];
     // Pangea#
 
     switch (node.localName) {
@@ -410,12 +410,12 @@ class HtmlMessage extends StatelessWidget {
           int.tryParse(node.attributes['length'] ?? '') ?? 0,
         );
 
-        final selected = token != null && isSelected != null
-            ? isSelected!.call(token)
+        final selected = token != null && overlayController != null
+            ? overlayController!.isTokenSelected(token)
             : false;
 
-        final highlighted = token != null && isHighlighted != null
-            ? isHighlighted!.call(token)
+        final highlighted = token != null && overlayController != null
+            ? overlayController!.isTokenHighlighted(token)
             : false;
 
         final isNew = token != null && newTokens.contains(token.text);
@@ -424,62 +424,77 @@ class HtmlMessage extends StatelessWidget {
           node.text,
         );
 
-        return WidgetSpan(
-          alignment: readingAssistanceMode == ReadingAssistanceMode.practiceMode
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.middle,
-          child: Column(
-            children: [
-              if (renderer.showCenterStyling && token != null)
-                MessageTokenButton(
-                  token: token,
-                  overlayController: overlayController,
-                  textStyle: renderer.style(
-                    context,
-                    color: renderer.backgroundColor(
-                      context,
-                      selected,
-                      highlighted,
-                      isNew,
+        return TextSpan(
+          children: [
+            WidgetSpan(
+              alignment:
+                  readingAssistanceMode == ReadingAssistanceMode.practiceMode
+                      ? PlaceholderAlignment.bottom
+                      : PlaceholderAlignment.middle,
+              child: Column(
+                children: [
+                  if (token != null &&
+                      overlayController?.selectedMode == SelectMode.emoji)
+                    TokenEmojiButton(
+                      token: token,
+                      eventId: event.eventId,
+                      targetId: overlayController!.tokenEmojiPopupKey(token),
+                      onSelect: () =>
+                          overlayController!.showTokenEmojiPopup(token),
                     ),
-                  ),
-                  width: tokenWidth,
-                  animateIn: isTransitionAnimation,
-                ),
-              MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: GestureDetector(
-                  behavior: HitTestBehavior.translucent,
-                  onTap: onClick != null && token != null
-                      ? () => onClick?.call(token)
-                      : null,
-                  child: RichText(
-                    textDirection: pangeaMessageEvent?.textDirection,
-                    text: TextSpan(
-                      children: [
-                        LinkifySpan(
-                          text: node.text,
-                          style: renderer.style(
-                            context,
-                            color: renderer.backgroundColor(
-                              context,
-                              selected,
-                              highlighted,
-                              isNew,
-                            ),
-                          ),
-                          linkStyle: linkStyle,
-                          onOpen: (url) =>
-                              UrlLauncher(context, url.url).launchUrl(),
+                  if (renderer.showCenterStyling && token != null)
+                    TokenPracticeButton(
+                      token: token,
+                      overlayController: overlayController,
+                      textStyle: renderer.style(
+                        context,
+                        color: renderer.backgroundColor(
+                          context,
+                          selected,
+                          highlighted,
+                          isNew,
                         ),
-                      ],
+                      ),
+                      width: tokenWidth,
+                      animateIn: isTransitionAnimation,
+                    ),
+                  MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: onClick != null && token != null
+                          ? () => onClick?.call(token)
+                          : null,
+                      child: RichText(
+                        textDirection: pangeaMessageEvent?.textDirection,
+                        text: TextSpan(
+                          children: [
+                            LinkifySpan(
+                              text: node.text.trim(),
+                              style: renderer.style(
+                                context,
+                                color: renderer.backgroundColor(
+                                  context,
+                                  selected,
+                                  highlighted,
+                                  isNew,
+                                ),
+                              ),
+                              linkStyle: linkStyle,
+                              onOpen: (url) =>
+                                  UrlLauncher(context, url.url).launchUrl(),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                ),
+                ],
+                // ),
               ),
-            ],
-            // ),
-          ),
+            ),
+            if (node.text.endsWith('\n')) const TextSpan(text: '\n'),
+          ],
         );
       // Pangea#
       case 'br':

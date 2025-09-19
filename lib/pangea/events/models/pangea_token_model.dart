@@ -14,9 +14,6 @@ import 'package:fluffychat/pangea/constructs/construct_form.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/constructs/construct_level_enum.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
-import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_repo.dart';
@@ -438,19 +435,6 @@ class PangeaToken {
       .cast<ConstructUses>()
       .toList();
 
-  Future<List<String>> getEmojiChoices() => LemmaInfoRepo.get(
-        LemmaInfoRequest(
-          lemma: lemma.text,
-          partOfSpeech: pos,
-          lemmaLang: MatrixState
-                  .pangeaController.languageController.userL2?.langCode ??
-              LanguageKeys.unknownLanguage,
-          userL1: MatrixState
-                  .pangeaController.languageController.userL1?.langCode ??
-              LanguageKeys.defaultLanguage,
-        ),
-      ).then((onValue) => onValue.emoji);
-
   ConstructIdentifier get vocabConstructID => ConstructIdentifier(
         lemma: lemma.text,
         type: ConstructTypeEnum.vocab,
@@ -460,13 +444,8 @@ class PangeaToken {
   ConstructForm get vocabForm =>
       ConstructForm(form: text.content, cId: vocabConstructID);
 
-  /// [setEmoji] sets the emoji for the lemma
-  /// NOTE: assumes that the language of the lemma is the same as the user's current l2
   Future<void> setEmoji(List<String> emojis) =>
       vocabConstructID.setUserLemmaInfo(UserSetLemmaInfo(emojis: emojis));
-
-  Future<void> setMeaning(String meaning) =>
-      vocabConstructID.setUserLemmaInfo(UserSetLemmaInfo(meaning: meaning));
 
   /// [getEmoji] gets the emoji for the lemma
   /// NOTE: assumes that the language of the lemma is the same as the user's current l2
@@ -586,4 +565,6 @@ class PangeaToken {
     return daysSinceLastUseByType(a, morphFeature) *
         (vocabConstructID.isContentWord ? 10 : 9);
   }
+
+  String get uniqueId => "${text.content}::${text.offset}";
 }
