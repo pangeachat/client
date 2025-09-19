@@ -246,7 +246,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   Future<void> joinActivity() async {
     if (state != SessionState.selectedRole) return;
     if (widget.roomId == null) {
-      throw Exception("Cannot join activity: room ID is required but not provided");
+      throw Exception(
+        "Cannot join activity: room ID is required but not provided",
+      );
     }
 
     final client = Matrix.of(context).client;
@@ -265,10 +267,9 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       }
 
       if (activityRoom == null || activityRoom!.membership != Membership.join) {
-        throw Exception(
-          "Failed to join activity room. "
-          "Room ID: ${widget.roomId}, "
-          "Membership status: ${activityRoom?.membership}");
+        throw Exception("Failed to join activity room. "
+            "Room ID: ${widget.roomId}, "
+            "Membership status: ${activityRoom?.membership}");
       }
     }
 
