@@ -246,7 +246,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   Future<void> joinActivity() async {
     if (state != SessionState.selectedRole) return;
     if (widget.roomId == null) {
-      throw Exception("No activity room to join");
+      throw Exception("Cannot join activity: room ID is required but not provided");
     }
 
     final client = Matrix.of(context).client;
