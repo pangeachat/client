@@ -3899,7 +3899,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Enable device autocorrect";
     },
     get$enableAutocorrectDescription() {
-      return "If your device supports the language your learning, you can enable device autocorrect to fix common errors as you type.";
+      return "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.";
     },
     get$ttsDisbledTitle() {
       return "Text-to-speech disabled";
@@ -4583,7 +4583,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["eZE3AciMd5ThLyvZjbDuz510qbw="] = d.current;
+  d["5b/2qgoeIr+EfjPZQ7aVc4FAWI4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_262.part.js.map
