@@ -20,12 +20,13 @@ extension RoomSummaryExtension on Api {
     request.headers['content-type'] = 'application/json';
     request.headers['authorization'] = 'Bearer ${bearerToken!}';
     final response = await httpClient.send(request);
-    if (response.statusCode != 200) {
-      throw Exception('http error response');
-    }
-
     final responseBody = await response.stream.toBytes();
     final responseString = utf8.decode(responseBody);
+    if (response.statusCode != 200) {
+      throw Exception(
+        'HTTP error response: statusCode=${response.statusCode}, body=$responseString',
+      );
+    }
     final json = jsonDecode(responseString);
     return RoomSummariesResponse.fromJson(json);
   }
