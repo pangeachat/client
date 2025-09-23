@@ -32,6 +32,7 @@ class OnboardingView extends StatelessWidget {
     }
 
     final screenheight = MediaQuery.of(context).size.height;
+    final screenwidth = MediaQuery.of(context).size.width;
 
     return Material(
       child: StreamBuilder(
@@ -70,15 +71,14 @@ class OnboardingView extends StatelessWidget {
               ),
               AnimatedContainer(
                 duration: FluffyThemes.animationDuration,
+                constraints: const BoxConstraints(minWidth: 0, maxWidth: 850.0),
                 height: OnboardingController.isClosed ? 0 : screenheight,
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: 42.0,
-                    horizontal: isColumnMode ? 20.0 : 80.0,
+                    horizontal: isColumnMode ? 20.0 : 5.0,
                   ),
                   child: Container(
-                    constraints:
-                        const BoxConstraints(minWidth: 0, maxWidth: 850.0),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
