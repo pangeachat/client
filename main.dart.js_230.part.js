@@ -4567,6 +4567,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCoursePlan() {
       return "Add a course plan";
     },
+    get$activityStatsButtonInstruction() {
+      return "Click here to view your activity stats and to close the activity when finished";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4580,7 +4583,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["v7jznh4CXJtlyAmCIw34te0vDO0="] = d.current;
+  d["IwN+4o9n5guf1J1BL5Yu5BoUNfk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_230.part.js.map
