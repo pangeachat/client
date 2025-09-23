@@ -159,14 +159,14 @@ class CoursePlansRepo {
         }
         if (filter.languageOfInstructions != null) {
           where["and"].add({
-            "languageOfInstructions": {
+            "l1": {
               "equals": filter.languageOfInstructions!.langCode,
             },
           });
         }
         if (filter.targetLanguage != null) {
           where["and"].add({
-            "targetLanguage": {"equals": filter.targetLanguage!.langCode},
+            "l2": {"equals": filter.targetLanguage!.langCode},
           });
         }
       } else if (numberOfFilter == 1) {
@@ -174,12 +174,12 @@ class CoursePlansRepo {
           where["cefrLevel"] = {"equals": filter.cefrLevel!.string};
         }
         if (filter.languageOfInstructions != null) {
-          where["languageOfInstructions"] = {
+          where["l1"] = {
             "equals": filter.languageOfInstructions!.langCode,
           };
         }
         if (filter.targetLanguage != null) {
-          where["targetLanguage"] = {"equals": filter.targetLanguage!.langCode};
+          where["l2"] = {"equals": filter.targetLanguage!.langCode};
         }
       }
     }

@@ -5235,6 +5235,7 @@
   "promoCodeInfo": "Promo codes can be entered on the next page",
   "editsComingSoon": "The ability to edit cities and activities is coming soon.",
   "editing": "Editing",
+  "activityNeedsOneMember": "Uh oh! This activity needs 1 more person.",
   "activityNeedsMembers": "Uh oh! This activity needs {num} more people.",
   "@activityNeedsMembers": {
     "placeholders": {
@@ -5251,5 +5252,9 @@
   "courseTitle": "Course title",
   "courseDesc": "Course description",
   "courseSavedSuccessfully": "Course saved successfully",
-  "addCoursePlan": "Add a course plan"
+  "addCoursePlan": "Add a course plan",
+  "activityStatsButtonInstruction": "Click here to view your activity stats and to close the activity when finished",
+  "readingAnalyticsDesc": "Click practice on each message for reading activities.",
+  "speakingAnalyticsDesc": "Record voice messages for speaking practice.",
+  "audioAnalyticsDesc": "Click practice on each message for listening activities."
 }
