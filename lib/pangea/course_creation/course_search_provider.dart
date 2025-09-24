@@ -57,7 +57,7 @@ mixin CourseSearchProvider<T extends StatefulWidget> on State<T> {
       debugPrint("Failed to load courses: $e\n$s");
       error = e;
     } finally {
-      setState(() => loading = false);
+      if (mounted) setState(() => loading = false);
     }
   }
 }
