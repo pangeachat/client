@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
@@ -128,7 +130,8 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 10.0),
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () => context.go(
+                                    '/course/${widget.langCode}/own/${course.uuid}'),
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Container(
                                   padding: const EdgeInsets.all(12.0),

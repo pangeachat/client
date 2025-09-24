@@ -266,6 +266,21 @@ abstract class AppRoutes {
                 );
               },
               redirect: loggedOutRedirect,
+              routes: [
+                GoRoute(
+                  path: ':courseid',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      SelectedCourse(
+                        state.pathParameters['courseid']!,
+                      ),
+                    );
+                  },
+                  redirect: loggedOutRedirect,
+                ),
+              ],
             ),
           ],
         ),
