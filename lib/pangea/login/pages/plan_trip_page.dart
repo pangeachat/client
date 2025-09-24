@@ -11,6 +11,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -153,81 +154,97 @@ class PlanTripPageState extends State<PlanTripPage> {
                   : Container(
                       padding: const EdgeInsets.all(30.0),
                       constraints: const BoxConstraints(
-                        maxWidth: 450,
+                        maxWidth: 350,
+                        maxHeight: 600,
                       ),
                       child: Column(
-                        spacing: 16.0,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            L10n.of(context).howAreYouTraveling,
-                            style: theme.textTheme.headlineSmall,
+                          PangeaLogoSvg(
+                            width: 100.0,
+                            forceColor: theme.colorScheme.onSurface,
                           ),
-                          ElevatedButton(
-                            onPressed: () => context.go(
-                              "/course/${widget.langCode}/private",
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: theme.colorScheme.surface,
-                              foregroundColor: theme.colorScheme.onSurface,
-                              side: BorderSide(
-                                width: 1,
-                                color: theme.colorScheme.onSurface,
+                          Column(
+                            spacing: 16.0,
+                            children: [
+                              Text(
+                                L10n.of(context).howAreYouTraveling,
+                                style: theme.textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            child: Row(
-                              spacing: 4.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(Icons.map_outlined),
-                                Text(L10n.of(context).unlockPrivateTrip),
-                              ],
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () => context.go(
-                              "/course/${widget.langCode}/public",
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: theme.colorScheme.surface,
-                              foregroundColor: theme.colorScheme.onSurface,
-                              side: BorderSide(
-                                width: 1,
-                                color: theme.colorScheme.onSurface,
+                              ElevatedButton(
+                                onPressed: () => context.go(
+                                  "/course/${widget.langCode}/private",
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: theme.colorScheme.surface,
+                                  foregroundColor: theme.colorScheme.onSurface,
+                                  side: BorderSide(
+                                    width: 1,
+                                    color: theme.colorScheme.onSurface,
+                                  ),
+                                ),
+                                child: Row(
+                                  spacing: 4.0,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(Icons.map_outlined),
+                                    Text(L10n.of(context).unlockPrivateTrip),
+                                  ],
+                                ),
                               ),
-                            ),
-                            child: Row(
-                              spacing: 4.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(Symbols.map_search),
-                                Text(L10n.of(context).joinPublicTrip),
-                              ],
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () => context.go(
-                              "/course/${widget.langCode}/own",
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: theme.colorScheme.surface,
-                              foregroundColor: theme.colorScheme.onSurface,
-                              side: BorderSide(
-                                width: 1,
-                                color: theme.colorScheme.onSurface,
+                              ElevatedButton(
+                                onPressed: () => context.go(
+                                  "/course/${widget.langCode}/public",
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: theme.colorScheme.surface,
+                                  foregroundColor: theme.colorScheme.onSurface,
+                                  side: BorderSide(
+                                    width: 1,
+                                    color: theme.colorScheme.onSurface,
+                                  ),
+                                ),
+                                child: Row(
+                                  spacing: 4.0,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(Symbols.map_search),
+                                    Text(L10n.of(context).joinPublicTrip),
+                                  ],
+                                ),
                               ),
-                            ),
-                            child: Row(
-                              spacing: 4.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(Icons.map_outlined),
-                                Text(L10n.of(context).startOwnTrip),
-                              ],
-                            ),
-                          ),
-                          ListTile(
-                            leading: const Icon(Icons.school),
-                            title: Text(L10n.of(context).tripPlanDesc),
+                              ElevatedButton(
+                                onPressed: () => context.go(
+                                  "/course/${widget.langCode}/own",
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: theme.colorScheme.surface,
+                                  foregroundColor: theme.colorScheme.onSurface,
+                                  side: BorderSide(
+                                    width: 1,
+                                    color: theme.colorScheme.onSurface,
+                                  ),
+                                ),
+                                child: Row(
+                                  spacing: 4.0,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Icon(Icons.map_outlined),
+                                    Text(L10n.of(context).startOwnTrip),
+                                  ],
+                                ),
+                              ),
+                              ListTile(
+                                contentPadding: const EdgeInsets.all(0.0),
+                                leading: const Icon(Icons.school),
+                                title: Text(
+                                  L10n.of(context).tripPlanDesc,
+                                  style: theme.textTheme.labelLarge,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

@@ -24,10 +24,11 @@ class PasswordLoginView extends StatelessWidget {
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 maxWidth: 300,
+                maxHeight: 600,
               ),
               child: Column(
                 spacing: 16.0,
-                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   AutofillGroup(
                     child: Column(

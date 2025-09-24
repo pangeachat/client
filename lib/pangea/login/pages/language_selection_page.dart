@@ -43,14 +43,16 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
             child: Column(
               spacing: 24.0,
               children: [
+                const SizedBox(height: 50.0),
                 Expanded(
                   child: Stack(
                     children: [
                       SingleChildScrollView(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 32.0,
+                          padding: const EdgeInsets.only(
+                            left: 16.0,
+                            right: 16.0,
+                            bottom: 60.0,
                           ),
                           child: Wrap(
                             spacing: 8.0,
@@ -106,7 +108,9 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                 ),
                 Text(
                   L10n.of(context).chooseLanguage,
-                  style: theme.textTheme.titleMedium,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: _selectedLanguage != null

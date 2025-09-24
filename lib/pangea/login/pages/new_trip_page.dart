@@ -131,7 +131,8 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
                               padding: const EdgeInsets.only(bottom: 10.0),
                               child: InkWell(
                                 onTap: () => context.go(
-                                    '/course/${widget.langCode}/own/${course.uuid}'),
+                                  '/course/${widget.langCode}/own/${course.uuid}',
+                                ),
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Container(
                                   padding: const EdgeInsets.all(12.0),

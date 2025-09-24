@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PrivateTripPage extends StatefulWidget {
@@ -61,38 +62,50 @@ class PrivateTripPageState extends State<PrivateTripPage> {
           child: Container(
             padding: const EdgeInsets.all(30.0),
             constraints: const BoxConstraints(
-              maxWidth: 450,
+              maxWidth: 350,
+              maxHeight: 600,
             ),
             child: Column(
-              spacing: 16.0,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  L10n.of(context).courseCode,
-                  style: theme.textTheme.titleMedium,
+                PangeaLogoSvg(
+                  width: 100.0,
+                  forceColor: theme.colorScheme.onSurface,
                 ),
-                TextFormField(
-                  controller: _codeController,
-                  decoration: InputDecoration(
-                    hintText: L10n.of(context).courseCodeHint,
-                  ),
-                  onFieldSubmitted: (_) => _submit(),
-                ),
-                ElevatedButton(
-                  onPressed: _code.isNotEmpty ? _submit : null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: theme.colorScheme.surface,
-                    foregroundColor: theme.colorScheme.onSurface,
-                    side: BorderSide(
-                      width: 1,
-                      color: theme.colorScheme.onSurface,
+                Column(
+                  spacing: 16.0,
+                  children: [
+                    Text(
+                      L10n.of(context).courseCode,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(L10n.of(context).unlockMyTrip),
-                    ],
-                  ),
+                    TextFormField(
+                      controller: _codeController,
+                      decoration: InputDecoration(
+                        hintText: L10n.of(context).courseCodeHint,
+                      ),
+                      onFieldSubmitted: (_) => _submit(),
+                    ),
+                    ElevatedButton(
+                      onPressed: _code.isNotEmpty ? _submit : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: theme.colorScheme.surface,
+                        foregroundColor: theme.colorScheme.onSurface,
+                        side: BorderSide(
+                          width: 1,
+                          color: theme.colorScheme.onSurface,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(L10n.of(context).unlockMyTrip),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

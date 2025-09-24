@@ -21,10 +21,11 @@ class SignupWithEmailView extends StatelessWidget {
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 maxWidth: 300,
+                maxHeight: 600,
               ),
               child: Column(
-                spacing: 16.0,
-                mainAxisSize: MainAxisSize.min,
+                spacing: 24.0,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextFormField(
                     decoration: InputDecoration(

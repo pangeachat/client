@@ -29,10 +29,11 @@ class SignupPageView extends StatelessWidget {
             child: ConstrainedBox(
               constraints: const BoxConstraints(
                 maxWidth: 300,
+                maxHeight: 600,
               ),
               child: Column(
                 spacing: 16.0,
-                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
                     L10n.of(context).signupOption,
@@ -86,8 +87,9 @@ class SignupPageView extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: L10n.of(context).termsAndConditions,
-                            style: const TextStyle(
+                            style: TextStyle(
                               decoration: TextDecoration.underline,
+                              color: theme.colorScheme.primary,
                             ),
                           ),
                           TextSpan(
