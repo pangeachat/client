@@ -5284,5 +5284,7 @@
   "loginWithEmail": "Login with email",
   "usernameOrEmail": "Username or email",
   "email": "Email",
-  "forgotPassword": "Forgot password?"
+  "forgotPassword": "Forgot password?",
+  "writingAnalyticsDesc": "Send messages to practice writing.",
+  "endActivity": "End activity"
 }
