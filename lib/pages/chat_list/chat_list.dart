@@ -707,7 +707,7 @@ class ChatListController extends State<ChatList>
   ]) =>
       chatContextMenuAction(
         room,
-        context,
+        posContext,
         () => onChatTap(room),
         space,
       );
