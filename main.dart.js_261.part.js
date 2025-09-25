@@ -4417,9 +4417,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$generatingSummary() {
       return "Analyzing chat and generating results";
     },
-    get$instructionsLanguage() {
-      return "Instructions language";
-    },
     get$findCourse() {
       return "Find a course";
     },
@@ -4615,6 +4612,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "End activity";
     },
+    get$allLanguages() {
+      return "All languages";
+    },
+    get$allCefrLevels() {
+      return "All CEFR levels";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4628,7 +4631,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WFyG7TUxdHBz589Ig0SgtjyZ+pY="] = d.current;
+  d["ofBhHeOhty/w0PF6ZXuSaNrir4o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_261.part.js.map
