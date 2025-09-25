@@ -4577,6 +4577,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$audioAnalyticsDesc() {
       return "Click practice on each message for listening activities.";
     },
+    get$writingAnalyticsDesc() {
+      return "Send messages to practice writing.";
+    },
     get$endActivity() {
       return "End activity";
     },
@@ -4593,7 +4596,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["C6EmCTsDM6C0WBlFD9gJwrOa40o="] = d.current;
+  d["dtykNfJUORazkWN298NAU1lGCtQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_196.part.js.map
