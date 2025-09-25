@@ -565,6 +565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$locationPermissionDeniedNotice() {
       return "Location permission denied. Please grant them to be able to share your location.";
     },
+    get$login() {
+      return "Iniciar sess\xe3o";
+    },
     get$logout() {
       return "Terminar sess\xe3o";
     },
@@ -639,9 +642,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$serverRequiresEmail() {
       return "This server needs to validate your email address for registration.";
-    },
-    get$or() {
-      return "Or";
     },
     get$participant() {
       return "Participant";
@@ -2593,9 +2593,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Click here to manage your subscription.";
     },
-    get$signUp() {
-      return "Sign up";
-    },
     pleaseChooseAtLeastChars$1(min) {
       return "Please choose at least " + min + " characters.";
     },
@@ -3586,9 +3583,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinWithCode() {
       return "Join with code";
     },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -3688,47 +3682,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableTTSToolDescription() {
       return "Allow the app to generate text-to-speech output for portions of text in your target language.";
     },
-    get$createAnAccount() {
-      return "Create an account";
-    },
-    get$signIn() {
-      return "Sign in";
-    },
-    get$signUpWithEmail() {
-      return "Sign up with Email";
-    },
-    get$signUpWithGoogle() {
-      return "Sign up with Google";
-    },
-    get$signUpWithApple() {
-      return "Sign up with Apple";
-    },
     get$yourUsername() {
       return "Your username";
     },
     get$yourEmail() {
       return "Your email";
     },
-    get$signInWithGoogle() {
-      return "Sign in with Google";
-    },
-    get$signInWithApple() {
-      return "Sign in with Apple";
-    },
-    get$chooseYourAvatar() {
-      return "Choose your avatar";
-    },
     get$iWantToLearn() {
       return "I want to learn";
     },
-    get$letsStart() {
-      return "Let's start";
-    },
     get$pleaseEnterEmail() {
       return "Please enter a valid email address.";
-    },
-    get$pleaseSelectALanguage() {
-      return "Please select a language";
     },
     get$myBaseLanguage() {
       return "My base language";
@@ -3934,9 +3898,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableAutocorrectWarning() {
       return "Warning! Requires adding your target language keyboard";
     },
-    get$displayName(_) {
-      return "Display name";
-    },
     get$leaveRoomDescription() {
       return "You're about to leave this chat. Other users will see that you have left the chat.";
     },
@@ -4083,15 +4044,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
-    },
-    welcomeUser$1(user) {
-      return "Welcome " + user;
-    },
-    get$joinSpaceOnboardingDesc() {
-      return "Do you have an invite code or link to a public course?";
-    },
-    get$skipForNow() {
-      return "Skip for now";
     },
     get$permissions(_) {
       return "Permissions";
@@ -4444,6 +4396,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseNextActivity() {
       return "Choose your next activity!";
     },
+    get$letsGo() {
+      return "Let's go";
+    },
     get$chooseRole() {
       return "Choose a role!";
     },
@@ -4587,6 +4542,84 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$audioAnalyticsDesc() {
       return "Click practice on each message for listening activities.";
+    },
+    get$loginToAccount() {
+      return "Login to my account";
+    },
+    get$appDescription() {
+      return "Learn a language\nwhile texting your friends.";
+    },
+    get$languages(_) {
+      return "Languages";
+    },
+    get$chooseLanguage() {
+      return "Choose a language.";
+    },
+    get$planTrip() {
+      return "Plan your trip";
+    },
+    get$howAreYouTraveling() {
+      return "How are you traveling?";
+    },
+    get$unlockPrivateTrip() {
+      return "Unlock a private trip";
+    },
+    get$joinPublicTrip() {
+      return "Join a public trip";
+    },
+    get$startOwnTrip() {
+      return "Start my own";
+    },
+    get$tripPlanDesc() {
+      return "Trips are courses. Each has 8-10 sequenced topics with a range of task-based language learning activities.";
+    },
+    get$unlockPrivateTripTitle() {
+      return "Unlock private trip";
+    },
+    get$browsePublicTrips() {
+      return "Browse public trips";
+    },
+    get$startOwnTripTitle() {
+      return "Start my own trip";
+    },
+    get$courseCode() {
+      return "What\u2019s the secret password?";
+    },
+    get$courseCodeHint() {
+      return "Trip code or link";
+    },
+    get$unlockMyTrip() {
+      return "Unlock my trip";
+    },
+    get$signupOption() {
+      return "How do you want to sign up?";
+    },
+    get$withApple() {
+      return "With Apple";
+    },
+    get$withGoogle() {
+      return "With Google";
+    },
+    get$withEmail() {
+      return "With Email";
+    },
+    get$createAccount() {
+      return "Create account";
+    },
+    get$noCoursesFound() {
+      return "No courses found";
+    },
+    get$loginWithEmail() {
+      return "Login with email";
+    },
+    get$usernameOrEmail() {
+      return "Username or email";
+    },
+    get$email() {
+      return "Email";
+    },
+    get$forgotPassword() {
+      return "Forgot password?";
     },
     get$writingAnalyticsDesc() {
       return "Send messages to practice writing.";
@@ -5112,6 +5145,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$locationPermissionDeniedNotice() {
       return "Permiss\xe3o de localiza\xe7\xe3o negada. Conceda as permiss\xf5es para habilitar o compartilhamento de localiza\xe7\xe3o.";
     },
+    get$login() {
+      return "Iniciar sess\xe3o";
+    },
     get$logout() {
       return "Encerrar sess\xe3o";
     },
@@ -5186,9 +5222,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$serverRequiresEmail() {
       return "Este servidor precisa validar seu email para efetuar o registro.";
-    },
-    get$or() {
-      return "Ou";
     },
     get$participant() {
       return "Participante";
@@ -6152,6 +6185,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$locationPermissionDeniedNotice() {
       return "Permiss\xe3o de localiza\xe7\xe3o recusada. Por favor, concede permiss\xe3o para poderes partilhar a tua posi\xe7\xe3o.";
     },
+    get$login() {
+      return "Entrar";
+    },
     get$logout() {
       return "Sair";
     },
@@ -6220,9 +6256,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$serverRequiresEmail() {
       return "Este servidor precisa de validar o teu endere\xe7o de correio eletr\xf3nico para o registo.";
-    },
-    get$or() {
-      return "Ou";
     },
     get$participant() {
       return "Participante";
@@ -6362,7 +6395,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mcsGcywhb0qx+SR2vG0eFLsLy1w="] = d.current;
+  d["gguWzmLAclka3HiW7QuTTlHxZwE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_22.part.js.map

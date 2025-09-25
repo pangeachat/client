@@ -5,18 +5,18 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B,
   A = {
-    L10nBn$() {
-      return new A.L10nBn(B.canonicalizedLocale("bn"));
+    L10nBo$() {
+      return new A.L10nBo(B.canonicalizedLocale("bo"));
     },
-    L10nBn: function L10nBn(t0) {
+    L10nBo: function L10nBo(t0) {
       this.localeName = t0;
     }
   },
   C;
   B = holdersList[0];
-  A = hunkHelpers.updateHolder(holdersList[7], A);
+  A = hunkHelpers.updateHolder(holdersList[8], A);
   C = holdersList[54];
-  A.L10nBn.prototype = {
+  A.L10nBo.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -60,13 +60,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "About " + homeserver;
     },
     get$accept(_) {
-      return "\u09b8\u09cd\u09ac\u09c0\u0995\u09be\u09b0 \u0995\u09b0\u09bf";
+      return "Accept";
     },
     acceptedTheInvitation$1(username) {
-      return username + " \u0986\u09ae\u09a8\u09cd\u09a4\u09cd\u09b0\u09a3 \u0997\u09cd\u09b0\u09b9\u09a3 \u0995\u09b0\u09c7\u099b\u09c7";
+      return "\ud83d\udc4d " + username + " accepted the invitation";
     },
     get$account() {
-      return "\u0985\u09cd\u09af\u09be\u0995\u09be\u0989\u09a8\u09cd\u099f";
+      return "Account";
     },
     activatedEndToEndEncryption$1(username) {
       return "\ud83d\udd10 " + username + " activated end to end encryption";
@@ -554,6 +554,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$locationPermissionDeniedNotice() {
       return "Location permission denied. Please grant them to be able to share your location.";
     },
+    get$login() {
+      return "Login";
+    },
     get$logout() {
       return "Logout";
     },
@@ -628,9 +631,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$serverRequiresEmail() {
       return "This server needs to validate your email address for registration.";
-    },
-    get$or() {
-      return "Or";
     },
     get$participant() {
       return "Participant";
@@ -2582,9 +2582,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$clickToManageSubscription() {
       return "Click here to manage your subscription.";
     },
-    get$signUp() {
-      return "Sign up";
-    },
     pleaseChooseAtLeastChars$1(min) {
       return "Please choose at least " + min + " characters.";
     },
@@ -3575,9 +3572,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinWithCode() {
       return "Join with code";
     },
-    get$enterCodeToJoin() {
-      return "Enter code to join";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -3677,47 +3671,17 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableTTSToolDescription() {
       return "Allow the app to generate text-to-speech output for portions of text in your target language.";
     },
-    get$createAnAccount() {
-      return "Create an account";
-    },
-    get$signIn() {
-      return "Sign in";
-    },
-    get$signUpWithEmail() {
-      return "Sign up with Email";
-    },
-    get$signUpWithGoogle() {
-      return "Sign up with Google";
-    },
-    get$signUpWithApple() {
-      return "Sign up with Apple";
-    },
     get$yourUsername() {
       return "Your username";
     },
     get$yourEmail() {
       return "Your email";
     },
-    get$signInWithGoogle() {
-      return "Sign in with Google";
-    },
-    get$signInWithApple() {
-      return "Sign in with Apple";
-    },
-    get$chooseYourAvatar() {
-      return "Choose your avatar";
-    },
     get$iWantToLearn() {
       return "I want to learn";
     },
-    get$letsStart() {
-      return "Let's start";
-    },
     get$pleaseEnterEmail() {
       return "Please enter a valid email address.";
-    },
-    get$pleaseSelectALanguage() {
-      return "Please select a language";
     },
     get$myBaseLanguage() {
       return "My base language";
@@ -3923,9 +3887,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$enableAutocorrectWarning() {
       return "Warning! Requires adding your target language keyboard";
     },
-    get$displayName(_) {
-      return "Display name";
-    },
     get$leaveRoomDescription() {
       return "You're about to leave this chat. Other users will see that you have left the chat.";
     },
@@ -4072,15 +4033,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     shareInviteCode$1(code) {
       return "Share invite code: " + code;
-    },
-    welcomeUser$1(user) {
-      return "Welcome " + user;
-    },
-    get$joinSpaceOnboardingDesc() {
-      return "Do you have an invite code or link to a public course?";
-    },
-    get$skipForNow() {
-      return "Skip for now";
     },
     get$permissions(_) {
       return "Permissions";
@@ -4433,6 +4385,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseNextActivity() {
       return "Choose your next activity!";
     },
+    get$letsGo() {
+      return "Let's go";
+    },
     get$chooseRole() {
       return "Choose a role!";
     },
@@ -4577,6 +4532,84 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$audioAnalyticsDesc() {
       return "Click practice on each message for listening activities.";
     },
+    get$loginToAccount() {
+      return "Login to my account";
+    },
+    get$appDescription() {
+      return "Learn a language\nwhile texting your friends.";
+    },
+    get$languages(_) {
+      return "Languages";
+    },
+    get$chooseLanguage() {
+      return "Choose a language.";
+    },
+    get$planTrip() {
+      return "Plan your trip";
+    },
+    get$howAreYouTraveling() {
+      return "How are you traveling?";
+    },
+    get$unlockPrivateTrip() {
+      return "Unlock a private trip";
+    },
+    get$joinPublicTrip() {
+      return "Join a public trip";
+    },
+    get$startOwnTrip() {
+      return "Start my own";
+    },
+    get$tripPlanDesc() {
+      return "Trips are courses. Each has 8-10 sequenced topics with a range of task-based language learning activities.";
+    },
+    get$unlockPrivateTripTitle() {
+      return "Unlock private trip";
+    },
+    get$browsePublicTrips() {
+      return "Browse public trips";
+    },
+    get$startOwnTripTitle() {
+      return "Start my own trip";
+    },
+    get$courseCode() {
+      return "What\u2019s the secret password?";
+    },
+    get$courseCodeHint() {
+      return "Trip code or link";
+    },
+    get$unlockMyTrip() {
+      return "Unlock my trip";
+    },
+    get$signupOption() {
+      return "How do you want to sign up?";
+    },
+    get$withApple() {
+      return "With Apple";
+    },
+    get$withGoogle() {
+      return "With Google";
+    },
+    get$withEmail() {
+      return "With Email";
+    },
+    get$createAccount() {
+      return "Create account";
+    },
+    get$noCoursesFound() {
+      return "No courses found";
+    },
+    get$loginWithEmail() {
+      return "Login with email";
+    },
+    get$usernameOrEmail() {
+      return "Username or email";
+    },
+    get$email() {
+      return "Email";
+    },
+    get$forgotPassword() {
+      return "Forgot password?";
+    },
     get$writingAnalyticsDesc() {
       return "Send messages to practice writing.";
     },
@@ -4590,13 +4623,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nBn, C.L10n);
+    _inherit(A.L10nBo, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nBn":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nBo":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["Wo22k2lxqUOyC9UlP1haau/JVjQ="] = d.current;
+  d["9ELuP8xrRy4B3q9pm2T4cCxcuxM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_171.part.js.map
