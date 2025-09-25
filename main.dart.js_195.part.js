@@ -4508,9 +4508,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinOpenSession() {
       return "Join open session";
     },
-    get$less() {
-      return "less";
-    },
     get$activityNotFound() {
       return "Activity not found";
     },
@@ -4525,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$activityDone() {
       return "Activity Done!";
-    },
-    get$moreLabel() {
-      return "more";
     },
     get$promoCodeInfo() {
       return "Promo codes can be entered on the next page";
@@ -4583,6 +4577,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$audioAnalyticsDesc() {
       return "Click practice on each message for listening activities.";
     },
+    get$endActivity() {
+      return "End activity";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4596,7 +4593,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ix8HcI08xCZnH0FoNvcPq1sFH7c="] = d.current;
+  d["Xh0+1WUe5UaZz+30YnUinWLp06c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_195.part.js.map
