@@ -4589,6 +4589,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$directMessageBotTitle() {
       return "Direct message Pangea Bot";
     },
+    get$feedbackTitle() {
+      return "Activity Feedback";
+    },
+    get$feedbackDesc() {
+      return "How should the activity be improved? If you can provide some details, we\u2019ll make the change!";
+    },
+    get$feedbackHint() {
+      return "Your feedback";
+    },
+    get$feedbackButton() {
+      return "Submit feedback";
+    },
     get$directMessageBotDesc() {
       return "Talking to humans is more fun but... AI is always ready!";
     },
@@ -4605,7 +4617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["brnufCM4QY4a1fkj27d1d3axg6k="] = d.current;
+  d["eHPWsX10YN7jBV9J3fjHutDks98="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_171.part.js.map
