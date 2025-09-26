@@ -10,14 +10,11 @@ import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart
 import 'package:fluffychat/pangea/course_creation/course_search_provider.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class NewTripPage extends StatefulWidget {
-  final String langCode;
   const NewTripPage({
     super.key,
-    required this.langCode,
   });
 
   @override
@@ -29,7 +26,7 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
   void initState() {
     super.initState();
 
-    final target = PLanguageStore.byLangCode(widget.langCode);
+    final target = MatrixState.pangeaController.languageController.userL2;
     if (target != null) {
       setTargetLanguageFilter(target);
     }
@@ -133,7 +130,7 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
                               padding: const EdgeInsets.only(bottom: 10.0),
                               child: InkWell(
                                 onTap: () => context.go(
-                                  '/course/${widget.langCode}/own/${course.uuid}',
+                                  '/registration/course/own/${course.uuid}',
                                 ),
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Container(

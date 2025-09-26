@@ -44,6 +44,7 @@ import 'package:fluffychat/pangea/find_your_people/find_your_people.dart';
 import 'package:fluffychat/pangea/find_your_people/find_your_people_constants.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
+import 'package:fluffychat/pangea/login/pages/create_pangea_account_page.dart';
 import 'package:fluffychat/pangea/login/pages/language_selection_page.dart';
 import 'package:fluffychat/pangea/login/pages/login_or_signup_view.dart';
 import 'package:fluffychat/pangea/login/pages/new_trip_page.dart';
@@ -72,7 +73,7 @@ abstract class AppRoutes {
     // Matrix.of(context).widget.clients.any((client) => client.isLogged())
     //       ? '/rooms'
     //       : null;
-    return PAuthGaurd.loggedInRedirect(context, state);
+    return PAuthGaurd.homeRedirect(context, state);
     // Pangea#
   }
 
@@ -84,7 +85,7 @@ abstract class AppRoutes {
     // Matrix.of(context).widget.clients.any((client) => client.isLogged())
     //     ? null
     //     : '/home';
-    return PAuthGaurd.loggedOutRedirect(context, state);
+    return PAuthGaurd.roomsRedirect(context, state);
     // Pangea#
   }
 
@@ -130,20 +131,18 @@ abstract class AppRoutes {
                 state,
                 const Login(withEmail: true),
               ),
-              redirect: loggedInRedirect,
             ),
           ],
           // Pangea#
         ),
         // #Pangea
         GoRoute(
-          path: 'languages',
+          path: 'signup',
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
             const LanguageSelectionPage(),
           ),
-          redirect: loggedInRedirect,
           routes: [
             GoRoute(
               path: ':langcode',
@@ -154,7 +153,6 @@ abstract class AppRoutes {
                   langCode: state.pathParameters['langcode']!,
                 ),
               ),
-              redirect: loggedInRedirect,
               routes: [
                 GoRoute(
                   path: 'email',
@@ -166,7 +164,6 @@ abstract class AppRoutes {
                       langCode: state.pathParameters['langcode']!,
                     ),
                   ),
-                  redirect: loggedInRedirect,
                 ),
               ],
             ),
@@ -193,6 +190,81 @@ abstract class AppRoutes {
     ),
     // #Pangea
     GoRoute(
+      path: '/registration',
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        const LanguageSelectionPage(),
+      ),
+      redirect: PAuthGaurd.onboardingRedirect,
+      routes: [
+        GoRoute(
+          path: 'course',
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const PlanTripPage(),
+          ),
+          routes: [
+            GoRoute(
+              path: 'private',
+              pageBuilder: (context, state) {
+                return defaultPageBuilder(
+                  context,
+                  state,
+                  const PrivateTripPage(),
+                );
+              },
+            ),
+            GoRoute(
+              path: 'public',
+              pageBuilder: (context, state) {
+                return defaultPageBuilder(
+                  context,
+                  state,
+                  const PublicTripPage(),
+                );
+              },
+            ),
+            GoRoute(
+              path: 'own',
+              pageBuilder: (context, state) {
+                return defaultPageBuilder(
+                  context,
+                  state,
+                  const NewTripPage(),
+                );
+              },
+              routes: [
+                GoRoute(
+                  path: ':courseid',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      SelectedCourse(
+                        state.pathParameters['courseid']!,
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ],
+        ),
+        GoRoute(
+          path: ':langcode',
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            CreatePangeaAccountPage(
+              langCode: state.pathParameters['langcode']!,
+            ),
+          ),
+        ),
+      ],
+    ),
+    GoRoute(
       path: '/join_with_link',
       pageBuilder: (context, state) => defaultPageBuilder(
         context,
@@ -209,84 +281,6 @@ abstract class AppRoutes {
         state,
         JoinWithAlias(alias: state.uri.queryParameters['alias']),
       ),
-    ),
-    GoRoute(
-      path: '/course',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        const LanguageSelectionPage(),
-      ),
-      redirect: loggedOutRedirect,
-      routes: [
-        GoRoute(
-          path: ':langcode',
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            PlanTripPage(
-              langCode: state.pathParameters['langcode']!,
-            ),
-          ),
-          redirect: loggedOutRedirect,
-          routes: [
-            GoRoute(
-              path: 'private',
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  PrivateTripPage(
-                    langCode: state.pathParameters['langcode']!,
-                  ),
-                );
-              },
-              redirect: loggedOutRedirect,
-            ),
-            GoRoute(
-              path: 'public',
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  PublicTripPage(
-                    langCode: state.pathParameters['langcode']!,
-                  ),
-                );
-              },
-              redirect: loggedOutRedirect,
-            ),
-            GoRoute(
-              path: 'own',
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  NewTripPage(
-                    langCode: state.pathParameters['langcode']!,
-                  ),
-                );
-              },
-              redirect: loggedOutRedirect,
-              routes: [
-                GoRoute(
-                  path: ':courseid',
-                  pageBuilder: (context, state) {
-                    return defaultPageBuilder(
-                      context,
-                      state,
-                      SelectedCourse(
-                        state.pathParameters['courseid']!,
-                      ),
-                    );
-                  },
-                  redirect: loggedOutRedirect,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
     ),
     // Pangea#
     ShellRoute(
