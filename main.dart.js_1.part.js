@@ -143,9 +143,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countChatsAndCountParticipants$2(chats, participants) {
       return "" + chats + " \u4e2a\u804a\u5929\u548c " + participants + " \u540d\u53c2\u4e0e\u8005";
     },
-    get$noMoreChatsFound() {
-      return "\u627e\u4e0d\u5230\u66f4\u591a\u804a\u5929\u2026";
-    },
     get$banFromChat() {
       return "\u4ece\u804a\u5929\u4e2d\u5c01\u7981";
     },
@@ -4133,36 +4130,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$sendActivities() {
       return "Send activities";
     },
-    get$getStarted() {
-      return "Get Started";
-    },
-    get$getStartedBotChatDesc() {
-      return "Chatting with AI is a great place to start and Pangea reading, writing, listening and speaking tools make it easy!";
-    },
-    get$getStartedCommunitiesDesc() {
-      return "Learning with a community is where Pangea Chat shines!\nYou can join your class, find a course, or even make your own!";
-    },
-    get$getStartedFriendsDesc() {
-      return "Do you have a friend that wants to learn with you?";
-    },
-    get$getStartedBotChatComplete() {
-      return "Well-done! You're chatting with the bot!";
-    },
-    get$getStartedCommunitiesComplete() {
-      return "Great, you have joined a course!";
-    },
-    get$getStartedComplete() {
-      return "You've completed this section!\nKeep exploring our amazing features by chatting with friends!";
-    },
-    get$getStartedFriendsComplete() {
-      return "Woohoo! You've got friends! \ud83d\ude09";
-    },
-    get$getStartedBotChatButton() {
-      return "Start chatting!";
-    },
-    get$getStartedFriendsButton() {
-      return "Chat with a friend";
-    },
     get$directMessage() {
       return "Direct Message";
     },
@@ -4171,9 +4138,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$speakingExercisesTooltip() {
       return "Speaking";
-    },
-    get$noChatsFoundHereYet() {
-      return "No chats found here yet";
     },
     get$transcriptionFailed() {
       return "Failed to transcribe audio";
@@ -4625,6 +4589,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allCefrLevels() {
       return "All CEFR levels";
     },
+    get$chatListTooltip() {
+      return "Here you\u2019ll find your direct messages! Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
+    },
+    get$directMessageBotTitle() {
+      return "Direct message Pangea Bot";
+    },
+    get$directMessageBotDesc() {
+      return "Talking to humans is more fun but... AI is always ready!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4749,9 +4722,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     countChatsAndCountParticipants$2(chats, participants) {
       return "" + chats + " \u500b\u804a\u5929\u5ba4\u548c " + participants + " \u4f4d\u53c3\u8207\u8005";
-    },
-    get$noMoreChatsFound() {
-      return "\u6c92\u6709\u66f4\u591a\u804a\u5929\u5ba4\u4e86...";
     },
     get$banFromChat() {
       return "\u5df2\u5f9e\u804a\u5929\u5ba4\u4e2d\u5c01\u9396";
@@ -6102,7 +6072,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CP5knJ/bPZ9nK5iPLXHQJRoEbYA="] = d.current;
+  d["RcWraaTiJ43ExtP1tC60amyP01U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

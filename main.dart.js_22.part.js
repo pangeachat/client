@@ -148,9 +148,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     countChatsAndCountParticipants$2(chats, participants) {
       return "" + chats + " chats and " + participants + " participants";
     },
-    get$noMoreChatsFound() {
-      return "No more chats found...";
-    },
     get$banFromChat() {
       return "Ban from chat";
     },
@@ -4138,36 +4135,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$sendActivities() {
       return "Send activities";
     },
-    get$getStarted() {
-      return "Get Started";
-    },
-    get$getStartedBotChatDesc() {
-      return "Chatting with AI is a great place to start and Pangea reading, writing, listening and speaking tools make it easy!";
-    },
-    get$getStartedCommunitiesDesc() {
-      return "Learning with a community is where Pangea Chat shines!\nYou can join your class, find a course, or even make your own!";
-    },
-    get$getStartedFriendsDesc() {
-      return "Do you have a friend that wants to learn with you?";
-    },
-    get$getStartedBotChatComplete() {
-      return "Well-done! You're chatting with the bot!";
-    },
-    get$getStartedCommunitiesComplete() {
-      return "Great, you have joined a course!";
-    },
-    get$getStartedComplete() {
-      return "You've completed this section!\nKeep exploring our amazing features by chatting with friends!";
-    },
-    get$getStartedFriendsComplete() {
-      return "Woohoo! You've got friends! \ud83d\ude09";
-    },
-    get$getStartedBotChatButton() {
-      return "Start chatting!";
-    },
-    get$getStartedFriendsButton() {
-      return "Chat with a friend";
-    },
     get$directMessage() {
       return "Direct Message";
     },
@@ -4176,9 +4143,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$speakingExercisesTooltip() {
       return "Speaking";
-    },
-    get$noChatsFoundHereYet() {
-      return "No chats found here yet";
     },
     get$transcriptionFailed() {
       return "Failed to transcribe audio";
@@ -4629,6 +4593,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$allCefrLevels() {
       return "All CEFR levels";
+    },
+    get$chatListTooltip() {
+      return "Here you\u2019ll find your direct messages! Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
+    },
+    get$directMessageBotTitle() {
+      return "Direct message Pangea Bot";
+    },
+    get$directMessageBotDesc() {
+      return "Talking to humans is more fun but... AI is always ready!";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6398,7 +6371,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KZtNuJfOJ95vdvKVuOLW9zPXKQE="] = d.current;
+  d["vE57bUtmU+1GXH7fCaEUsbrQgk8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_22.part.js.map

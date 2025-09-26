@@ -5,18 +5,18 @@
 $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersList, $) {
   var B,
   A = {
-    L10nBn$() {
-      return new A.L10nBn(B.canonicalizedLocale("bn"));
+    L10nBo$() {
+      return new A.L10nBo(B.canonicalizedLocale("bo"));
     },
-    L10nBn: function L10nBn(t0) {
+    L10nBo: function L10nBo(t0) {
       this.localeName = t0;
     }
   },
   C;
   B = holdersList[0];
-  A = hunkHelpers.updateHolder(holdersList[7], A);
+  A = hunkHelpers.updateHolder(holdersList[8], A);
   C = holdersList[54];
-  A.L10nBn.prototype = {
+  A.L10nBo.prototype = {
     get$alwaysUse24HourFormat() {
       return "false";
     },
@@ -60,13 +60,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "About " + homeserver;
     },
     get$accept(_) {
-      return "\u09b8\u09cd\u09ac\u09c0\u0995\u09be\u09b0 \u0995\u09b0\u09bf";
+      return "Accept";
     },
     acceptedTheInvitation$1(username) {
-      return username + " \u0986\u09ae\u09a8\u09cd\u09a4\u09cd\u09b0\u09a3 \u0997\u09cd\u09b0\u09b9\u09a3 \u0995\u09b0\u09c7\u099b\u09c7";
+      return "\ud83d\udc4d " + username + " accepted the invitation";
     },
     get$account() {
-      return "\u0985\u09cd\u09af\u09be\u0995\u09be\u0989\u09a8\u09cd\u099f";
+      return "Account";
     },
     activatedEndToEndEncryption$1(username) {
       return "\ud83d\udd10 " + username + " activated end to end encryption";
@@ -136,9 +136,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     countChatsAndCountParticipants$2(chats, participants) {
       return "" + chats + " chats and " + participants + " participants";
-    },
-    get$noMoreChatsFound() {
-      return "No more chats found...";
     },
     get$banFromChat() {
       return "Ban from chat";
@@ -4127,36 +4124,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$sendActivities() {
       return "Send activities";
     },
-    get$getStarted() {
-      return "Get Started";
-    },
-    get$getStartedBotChatDesc() {
-      return "Chatting with AI is a great place to start and Pangea reading, writing, listening and speaking tools make it easy!";
-    },
-    get$getStartedCommunitiesDesc() {
-      return "Learning with a community is where Pangea Chat shines!\nYou can join your class, find a course, or even make your own!";
-    },
-    get$getStartedFriendsDesc() {
-      return "Do you have a friend that wants to learn with you?";
-    },
-    get$getStartedBotChatComplete() {
-      return "Well-done! You're chatting with the bot!";
-    },
-    get$getStartedCommunitiesComplete() {
-      return "Great, you have joined a course!";
-    },
-    get$getStartedComplete() {
-      return "You've completed this section!\nKeep exploring our amazing features by chatting with friends!";
-    },
-    get$getStartedFriendsComplete() {
-      return "Woohoo! You've got friends! \ud83d\ude09";
-    },
-    get$getStartedBotChatButton() {
-      return "Start chatting!";
-    },
-    get$getStartedFriendsButton() {
-      return "Chat with a friend";
-    },
     get$directMessage() {
       return "Direct Message";
     },
@@ -4165,9 +4132,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$speakingExercisesTooltip() {
       return "Speaking";
-    },
-    get$noChatsFoundHereYet() {
-      return "No chats found here yet";
     },
     get$transcriptionFailed() {
       return "Failed to transcribe audio";
@@ -4619,6 +4583,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allCefrLevels() {
       return "All CEFR levels";
     },
+    get$chatListTooltip() {
+      return "Here you\u2019ll find your direct messages! Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
+    },
+    get$directMessageBotTitle() {
+      return "Direct message Pangea Bot";
+    },
+    get$directMessageBotDesc() {
+      return "Talking to humans is more fun but... AI is always ready!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4626,13 +4599,13 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
   var typesOffset = hunkHelpers.updateTypes([]);
   (function inheritance() {
     var _inherit = hunkHelpers.inherit;
-    _inherit(A.L10nBn, C.L10n);
+    _inherit(A.L10nBo, C.L10n);
   })();
-  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nBn":{"L10n":[]}}'));
+  B._Universe_addRules(init.typeUniverse, JSON.parse('{"L10nBo":{"L10n":[]}}'));
 };
 ;
 (d => {
-  d["knRchQrMy39uKTxHXpKE3JgI6y4="] = d.current;
+  d["ltdCXZdtu0WIrxFXpgPhGcJURRg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_170.part.js.map
