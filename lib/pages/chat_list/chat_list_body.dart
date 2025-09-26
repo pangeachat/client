@@ -91,7 +91,10 @@ class ChatListViewBody extends StatelessWidget {
             slivers: [
               // #Pangea
               // ChatListHeader(controller: controller),
-              PangeaChatListHeader(controller: controller),
+              PangeaChatListHeader(
+                controller: controller,
+                showSearch: rooms.length >= 7,
+              ),
               // Pangea#
               SliverList(
                 delegate: SliverChildListDelegate(
