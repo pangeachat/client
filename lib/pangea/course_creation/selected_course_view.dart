@@ -42,7 +42,7 @@ class SelectedCourseView extends StatelessWidget {
       body: SafeArea(
         child: CoursePlanBuilder(
           courseId: controller.widget.courseId,
-          onNotFound: () => context.go("/rooms/communities/newcourse"),
+          onNotFound: () => context.go("/rooms/course/own"),
           builder: (context, courseController) {
             final course = courseController.course;
             return Container(

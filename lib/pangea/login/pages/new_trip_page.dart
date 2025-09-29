@@ -13,8 +13,13 @@ import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class NewTripPage extends StatefulWidget {
+  final String route;
+  final String? spaceId;
+
   const NewTripPage({
     super.key,
+    required this.route,
+    this.spaceId,
   });
 
   @override
@@ -40,6 +45,7 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final spaceId = widget.spaceId;
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -47,7 +53,11 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
           mainAxisSize: MainAxisSize.min,
           children: [
             const Icon(Icons.map_outlined),
-            Text(L10n.of(context).startOwnTripTitle),
+            Text(
+              spaceId != null
+                  ? L10n.of(context).addCoursePlan
+                  : L10n.of(context).startOwnTripTitle,
+            ),
           ],
         ),
       ),
@@ -130,7 +140,9 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
                               padding: const EdgeInsets.only(bottom: 10.0),
                               child: InkWell(
                                 onTap: () => context.go(
-                                  '/registration/course/own/${course.uuid}',
+                                  spaceId != null
+                                      ? '/rooms/spaces/$spaceId/addcourse/${courses[index].uuid}'
+                                      : '/${widget.route}/course/own/${course.uuid}',
                                 ),
                                 borderRadius: BorderRadius.circular(12.0),
                                 child: Container(

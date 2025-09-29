@@ -37,10 +37,8 @@ import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dar
 import 'package:fluffychat/pangea/chat_settings/pages/edit_course.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/course_creation/new_course_page.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/pangea/find_your_people/find_your_people.dart';
 import 'package:fluffychat/pangea/find_your_people/find_your_people_constants.dart';
 import 'package:fluffychat/pangea/guard/p_vguard.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
@@ -203,7 +201,7 @@ abstract class AppRoutes {
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
-            const PlanTripPage(),
+            const PlanTripPage(route: 'registration'),
           ),
           routes: [
             GoRoute(
@@ -232,7 +230,7 @@ abstract class AppRoutes {
                 return defaultPageBuilder(
                   context,
                   state,
-                  const NewTripPage(),
+                  const NewTripPage(route: 'registration'),
                 );
               },
               routes: [
@@ -398,33 +396,55 @@ abstract class AppRoutes {
             //         : child,
             //   ),
             //   routes: [
-            // Pangea#
             GoRoute(
-              path: 'communities',
-              redirect: loggedOutRedirect,
+              path: 'course',
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                const FindYourPeople(),
+                const PlanTripPage(route: 'rooms'),
               ),
               routes: [
                 GoRoute(
-                  path: 'newcourse',
-                  pageBuilder: (context, state) => defaultPageBuilder(
-                    context,
-                    state,
-                    const NewCourse(),
-                  ),
-                  redirect: loggedOutRedirect,
+                  path: 'private',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      const PrivateTripPage(),
+                    );
+                  },
+                ),
+                GoRoute(
+                  path: 'public',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      const PublicTripPage(),
+                    );
+                  },
+                ),
+                GoRoute(
+                  path: 'own',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      const NewTripPage(route: 'rooms'),
+                    );
+                  },
                   routes: [
                     GoRoute(
-                      path: ':courseId',
-                      pageBuilder: (context, state) => defaultPageBuilder(
-                        context,
-                        state,
-                        SelectedCourse(state.pathParameters['courseId']!),
-                      ),
-                      redirect: loggedOutRedirect,
+                      path: ':courseid',
+                      pageBuilder: (context, state) {
+                        return defaultPageBuilder(
+                          context,
+                          state,
+                          SelectedCourse(
+                            state.pathParameters['courseid']!,
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -770,7 +790,8 @@ abstract class AppRoutes {
                       pageBuilder: (context, state) => defaultPageBuilder(
                         context,
                         state,
-                        NewCourse(
+                        NewTripPage(
+                          route: 'rooms',
                           spaceId: state.pathParameters['spaceid']!,
                         ),
                       ),

@@ -7,7 +7,9 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 
 class PlanTripPage extends StatelessWidget {
+  final String route;
   const PlanTripPage({
+    required this.route,
     super.key,
   });
 
@@ -24,6 +26,7 @@ class PlanTripPage extends StatelessWidget {
             Text(L10n.of(context).planTrip),
           ],
         ),
+        automaticallyImplyLeading: route == 'registration',
       ),
       body: SafeArea(
         child: Center(
@@ -51,7 +54,7 @@ class PlanTripPage extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () => context.go(
-                        '/registration/course/private',
+                        '/$route/course/private',
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: theme.colorScheme.surface,
@@ -72,7 +75,7 @@ class PlanTripPage extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () => context.go(
-                        '/registration/course/public',
+                        '/$route/course/public',
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: theme.colorScheme.surface,
@@ -93,7 +96,7 @@ class PlanTripPage extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () => context.go(
-                        '/registration/course/own',
+                        '/$route/course/own',
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: theme.colorScheme.surface,
