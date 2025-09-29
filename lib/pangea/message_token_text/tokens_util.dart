@@ -146,10 +146,10 @@ class TokensUtil {
     String eventID,
     List<PangeaToken> tokens,
   ) {
-    // final cached = _getCachedTokenPositions(eventID);
-    // if (cached != null) {
-    //   return cached;
-    // }
+    final cached = _getCachedTokenPositions(eventID);
+    if (cached != null) {
+      return cached;
+    }
 
     final List<TokenPosition> positions = [];
     for (int i = 0; i < tokens.length; i++) {
