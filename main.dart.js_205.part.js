@@ -1528,12 +1528,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noIdenticalLanguages() {
       return "Palun vali erinevad baas- ja sihtkeeled";
     },
-    get$joinWithClassCode() {
-      return "Liitu ruumiga";
-    },
-    get$joinWithClassCodeHint() {
-      return "Sisesta kutsekood";
-    },
     get$languageLevelPreA1() {
       return "T\xf5eline algaja (Pre A1)";
     },
@@ -3565,9 +3559,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "T\xfchikud v\xf5imaldavad teil koondada oma vestlused ning luua era- v\xf5i avalikke kogukondi.";
     },
-    get$joinWithCode() {
-      return "Liitu koodiga";
-    },
     get$updateNow() {
       return "Uuenda kohe";
     },
@@ -4282,9 +4273,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourse() {
       return "New course";
     },
-    get$newCourseSubtitle() {
-      return "Which course plan plan would you like to use?";
-    },
     get$failedToLoadCourses() {
       return "Failed to load courses";
     },
@@ -4616,7 +4604,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["pEt11mjP9mwyPYtVFBzp8sKa40s="] = d.current;
+  d["/UzFlvGmFF5JzmmEcGBd6ayk5Bw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map

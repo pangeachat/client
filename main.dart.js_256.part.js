@@ -1528,12 +1528,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noIdenticalLanguages() {
       return "Please choose different base and target languages";
     },
-    get$joinWithClassCode() {
-      return "Join course";
-    },
-    get$joinWithClassCodeHint() {
-      return "Enter invite code";
-    },
     get$languageLevelPreA1() {
       return "True Beginner (Pre A1)";
     },
@@ -3565,9 +3559,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Courses allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Join with code";
-    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4282,9 +4273,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourse() {
       return "New course";
     },
-    get$newCourseSubtitle() {
-      return "Which course plan plan would you like to use?";
-    },
     get$failedToLoadCourses() {
       return "Failed to load courses";
     },
@@ -4616,7 +4604,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gYe9/z6cJK7GvfTLsGKjVPYG8kY="] = d.current;
+  d["vi6Xkb77VLg28sQHy1SE3sWnG1U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_256.part.js.map

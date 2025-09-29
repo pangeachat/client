@@ -1529,12 +1529,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noIdenticalLanguages() {
       return "Por favor, elija diferentes idiomas base e idiomas de aprender.";
     },
-    get$joinWithClassCode() {
-      return "Join course";
-    },
-    get$joinWithClassCodeHint() {
-      return "Introduzca el c\xf3digo de invitaci\xf3n";
-    },
     get$languageLevelPreA1() {
       return "Principiante absoluto (Pre A1)";
     },
@@ -3566,9 +3560,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Courses allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Unirse con c\xf3digo";
-    },
     get$updateNow() {
       return "Comenzar actualizaci\xf3n en segundo plano.";
     },
@@ -4283,9 +4274,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourse() {
       return "New course";
     },
-    get$newCourseSubtitle() {
-      return "Which course plan plan would you like to use?";
-    },
     get$failedToLoadCourses() {
       return "Failed to load courses";
     },
@@ -4617,7 +4605,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FeD3AzgLG+C35JTvQSK9IbwbVSE="] = d.current;
+  d["PztiYXxNUTVLtMWvLjZ6ngtYGVQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_196.part.js.map

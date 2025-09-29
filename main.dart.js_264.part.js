@@ -1528,12 +1528,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noIdenticalLanguages() {
       return "Vui l\xf2ng ch\u1ecdn ng\xf4n ng\u1eef c\u01a1 s\u1edf v\xe0 \u0111\xedch kh\xe1c nhau";
     },
-    get$joinWithClassCode() {
-      return "Join course";
-    },
-    get$joinWithClassCodeHint() {
-      return "Nh\u1eadp m\xe3 m\u1eddi";
-    },
     get$languageLevelPreA1() {
       return "Ho\xe0n to\xe0n m\u1edbi (Pre A1)";
     },
@@ -3565,9 +3559,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Courses allow you to consolidate your chats and build private or public communities.";
     },
-    get$joinWithCode() {
-      return "Tham gia b\u1eb1ng m\xe3";
-    },
     get$updateNow() {
       return "C\u1eadp nh\u1eadt ngay";
     },
@@ -4282,9 +4273,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourse() {
       return "New course";
     },
-    get$newCourseSubtitle() {
-      return "Which course plan plan would you like to use?";
-    },
     get$failedToLoadCourses() {
       return "Failed to load courses";
     },
@@ -4616,7 +4604,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fw8heL0MyvEgEAFyoTLP5Rqcab8="] = d.current;
+  d["/hwEuW6qkZf4bEXDVJht/WxMnfA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map
