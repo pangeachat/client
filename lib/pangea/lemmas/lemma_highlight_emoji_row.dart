@@ -1,13 +1,13 @@
 import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_builder.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class LemmmaHighlightEmojiRow extends StatefulWidget {
   final LemmaMeaningBuilderState controller;
@@ -31,11 +31,25 @@ class LemmmaHighlightEmojiRow extends StatefulWidget {
 
 class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
   String? displayEmoji;
+  bool _showShimmer = true;
+  bool _hasShimmered = false;
 
   @override
   void initState() {
     super.initState();
     displayEmoji = widget.cId.userSetEmoji.firstOrNull;
+    _showShimmer = (displayEmoji == null);
+  }
+
+  void _startShimmer() {
+    if (!widget.controller.isLoading && _showShimmer) {
+      Future.delayed(const Duration(milliseconds: 1500), () {
+        if (mounted) {
+          setState(() => _showShimmer = false);
+          setState(() => _hasShimmered = true);
+        }
+      });
+    }
   }
 
   @override
@@ -44,6 +58,7 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
         widget.cId.userSetEmoji != oldWidget.cId.userSetEmoji) {
       setState(() => displayEmoji = widget.cId.userSetEmoji.firstOrNull);
     }
+
     super.didUpdateWidget(oldWidget);
   }
 
@@ -71,6 +86,7 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
     if (widget.controller.isLoading) {
       return const CircularProgressIndicator.adaptive();
     }
+    _startShimmer();
 
     final emojis = widget.controller.lemmaInfo?.emoji;
     if (widget.controller.error != null || emojis == null || emojis.isEmpty) {
@@ -94,8 +110,8 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
                     emoji: emoji,
                     onSelectEmoji: () => setEmoji(emoji),
                     // will highlight selected emoji, or the first emoji if none are selected
-                    isDisplay: (displayEmoji == emoji ||
-                        (displayEmoji == null && emoji == emojis.first)),
+                    isDisplay: (displayEmoji == emoji),
+                    showShimmer: (_showShimmer && !_hasShimmered),
                   ),
                 )
                 .toList(),
@@ -110,12 +126,14 @@ class EmojiChoiceItem extends StatefulWidget {
   final String emoji;
   final VoidCallback onSelectEmoji;
   final bool isDisplay;
+  final bool showShimmer;
 
   const EmojiChoiceItem({
     super.key,
     required this.emoji,
     required this.isDisplay,
     required this.onSelectEmoji,
+    required this.showShimmer,
   });
 
   @override
@@ -134,25 +152,47 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
         onTap: widget.onSelectEmoji,
         child: Padding(
           padding: const EdgeInsets.all(2.0),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: _isHovered
-                  ? Theme.of(context).colorScheme.primary.withAlpha(50)
-                  : Colors.transparent,
-              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-              border: widget.isDisplay
-                  ? Border.all(
-                      color: AppConfig.goldLight,
-                      width: 4,
-                    )
-                  : null,
-            ),
-            child: Text(
-              widget.emoji,
-              style: Theme.of(context).textTheme.headlineSmall,
-            ),
+          child: Stack(
+            children: [
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: _isHovered
+                      ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                      : Colors.transparent,
+                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                  border: widget.isDisplay
+                      ? Border.all(
+                          color: AppConfig.goldLight,
+                          width: 4,
+                        )
+                      : null,
+                ),
+                child: Text(
+                  widget.emoji,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ),
+              if (widget.showShimmer)
+                Positioned.fill(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                    child: Shimmer.fromColors(
+                      baseColor: Colors.white.withValues(alpha: 0.1),
+                      highlightColor: Colors.white.withValues(alpha: 0.6),
+                      direction: ShimmerDirection.ltr,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white.withValues(alpha: 0.3),
+                          borderRadius:
+                              BorderRadius.circular(AppConfig.borderRadius),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+            ],
           ),
         ),
       ),
