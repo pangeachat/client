@@ -4592,6 +4592,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$directMessageBotDesc() {
       return "Talking to humans is more fun but... AI is always ready!";
     },
+    get$inviteYourFriends() {
+      return "Invite your friends";
+    },
+    get$playWithAI() {
+      return "Play with AI for now";
+    },
+    get$courseStartDesc() {
+      return "Pangea Bot is ready to go anytime!\n\n...but learning is better with friends!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4608,7 +4617,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KW1hBw8rwJCPw/YXe3KGVeQFRG8="] = d.current;
+  d["vWWHE2xKDjbccBY8Io3FqkNmH0w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_186.part.js.map
