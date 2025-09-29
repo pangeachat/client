@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicTripPage extends StatefulWidget {
@@ -24,6 +29,9 @@ class PublicTripPageState extends State<PublicTripPage> {
   LanguageModel? instructionLanguageFilter;
   LanguageModel? targetLanguageFilter;
 
+  List<PublicRoomsChunk> discoveredCourses = [];
+  String? nextBatch;
+
   @override
   void initState() {
     super.initState();
@@ -42,29 +50,40 @@ class PublicTripPageState extends State<PublicTripPage> {
   }
 
   void setLanguageLevelFilter(LanguageLevelTypeEnum? level) {
-    languageLevelFilter = level;
-    _loadCourses();
+    setState(() => languageLevelFilter = level);
   }
 
   void setInstructionLanguageFilter(LanguageModel? language) {
-    instructionLanguageFilter = language;
-    _loadCourses();
+    setState(() => instructionLanguageFilter = language);
   }
 
   void setTargetLanguageFilter(LanguageModel? language) {
-    targetLanguageFilter = language;
-    _loadCourses();
+    setState(() => targetLanguageFilter = language);
+  }
+
+  List<PublicRoomsChunk> get filteredCourses {
+    // TODO add filtering via course info
+    return discoveredCourses;
   }
 
   Future<void> _loadCourses() async {
-    // TODO: add searching of public spaces
-
     try {
       setState(() {
         loading = true;
         error = null;
       });
-      await Future.delayed(const Duration(seconds: 1));
+
+      final resp = await Matrix.of(context).client.requestPublicCourses(
+            since: nextBatch,
+          );
+
+      for (final room in resp.chunk) {
+        if (!discoveredCourses.any((e) => e.roomId == room.roomId)) {
+          discoveredCourses.add(room);
+        }
+      }
+
+      nextBatch = resp.nextBatch;
     } catch (e) {
       error = e;
     } finally {
@@ -139,20 +158,63 @@ class PublicTripPageState extends State<PublicTripPage> {
                   ],
                 ),
                 const SizedBox(height: 20.0),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(32.0),
-                    child: error != null
-                        ? Center(
-                            child: ErrorIndicator(
-                              message: L10n.of(context).failedToLoadCourses,
+                if (error != null)
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: ErrorIndicator(
+                        message: L10n.of(context).failedToLoadCourses,
+                      ),
+                    ),
+                  )
+                else if (!loading &&
+                    filteredCourses.isEmpty &&
+                    nextBatch == null)
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: Text(L10n.of(context).noCoursesFound),
+                    ),
+                  )
+                else
+                  Expanded(
+                    child: ListView.separated(
+                      itemCount: filteredCourses.length + 1,
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 10.0),
+                      itemBuilder: (context, index) {
+                        if (index == filteredCourses.length) {
+                          return Center(
+                            child: loading
+                                ? const CircularProgressIndicator.adaptive()
+                                : nextBatch != null
+                                    ? TextButton(
+                                        onPressed: _loadCourses,
+                                        child: Text(L10n.of(context).loadMore),
+                                      )
+                                    : const SizedBox(),
+                          );
+                        }
+
+                        final course = filteredCourses[index];
+                        final displayname = course.name ??
+                            course.canonicalAlias ??
+                            L10n.of(context).emptyChat;
+                        return ListTile(
+                          title: Text(
+                            displayname,
+                          ),
+                          leading: Avatar(
+                            mxContent: course.avatarUrl,
+                            name: displayname,
+                            borderRadius: BorderRadius.circular(
+                              AppConfig.borderRadius / 2,
                             ),
-                          )
-                        : loading
-                            ? const CircularProgressIndicator.adaptive()
-                            : Text(L10n.of(context).noCoursesFound),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
               ],
             ),
           ),
