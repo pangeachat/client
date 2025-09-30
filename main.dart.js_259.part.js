@@ -4390,21 +4390,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     goToCourse$1(course) {
       return "Go to course: " + course;
     },
-    get$activityComplete() {
-      return "This activity has been completed. The activity summary should be available below.";
-    },
-    get$haventChattedMuch() {
-      return "It looks like you haven't chatted much, try using some more vocab words! If you feel like you've completed your objective, you can end the activity below.";
-    },
-    get$haveChatted() {
-      return "It looks like you've been chatting for a while! If you feel like you've completed your objective, wrap up to finish the activity and we'll generate you a summary in the chat!";
-    },
-    userDoneAndWaiting$2(num1, num2) {
-      return "" + num1 + "/" + num2 + " participants have wrapped up. Wait for everyone to finish, and we'll generate you a summary in the chat! \n\nIf you'd like to rejoin the conversation, click the continue button in the chat.";
-    },
-    othersDoneAndWaiting$2(num1, num2) {
-      return "" + num1 + "/" + num2 + " are done. Have you completed your objective?";
-    },
     get$startNewSession() {
       return "Start new session";
     },
@@ -4600,6 +4585,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$courseStartDesc() {
       return "Pangea Bot is ready to go anytime!\n\n...but learning is better with friends!";
     },
+    get$activityDropdownDesc() {
+      return "When you\u2019re done with this activity, click below";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4616,7 +4604,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cNmM00sb3wxKS8O1myJEtvAl1WU="] = d.current;
+  d["5IgvUbJ+rdJC8EcZff8nwHNAMpw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_259.part.js.map
