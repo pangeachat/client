@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart';
-
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
+import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
+import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicTripPage extends StatefulWidget {
@@ -29,7 +30,8 @@ class PublicTripPageState extends State<PublicTripPage> {
   LanguageModel? instructionLanguageFilter;
   LanguageModel? targetLanguageFilter;
 
-  List<PublicRoomsChunk> discoveredCourses = [];
+  List<PublicCoursesChunk> discoveredCourses = [];
+  Map<String, CoursePlanModel> coursePlans = {};
   String? nextBatch;
 
   @override
@@ -61,7 +63,7 @@ class PublicTripPageState extends State<PublicTripPage> {
     setState(() => targetLanguageFilter = language);
   }
 
-  List<PublicRoomsChunk> get filteredCourses {
+  List<PublicCoursesChunk> get filteredCourses {
     // TODO add filtering via course info
     return discoveredCourses;
   }
@@ -77,22 +79,54 @@ class PublicTripPageState extends State<PublicTripPage> {
             since: nextBatch,
           );
 
-      for (final room in resp.chunk) {
-        if (!discoveredCourses.any((e) => e.roomId == room.roomId)) {
+      for (final room in resp.courses) {
+        if (!discoveredCourses.any((e) => e.room.roomId == room.room.roomId)) {
           discoveredCourses.add(room);
         }
       }
 
       nextBatch = resp.nextBatch;
-    } catch (e) {
+    } catch (e, s) {
       error = e;
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'nextBatch': nextBatch,
+        },
+      );
     } finally {
       setState(() => loading = false);
+    }
+
+    try {
+      final searchResult = await CoursePlansRepo.search(
+        discoveredCourses.map((c) => c.courseId).toList(),
+      );
+
+      coursePlans.clear();
+      for (final course in searchResult) {
+        coursePlans[course.uuid] = course;
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'discoveredCourses':
+              discoveredCourses.map((c) => c.courseId).toList(),
+        },
+      );
+    } finally {
+      if (mounted) {
+        setState(() {});
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -196,19 +230,70 @@ class PublicTripPageState extends State<PublicTripPage> {
                           );
                         }
 
-                        final course = filteredCourses[index];
-                        final displayname = course.name ??
-                            course.canonicalAlias ??
+                        final roomChunk = filteredCourses[index].room;
+                        final course =
+                            coursePlans[filteredCourses[index].courseId];
+
+                        final displayname = roomChunk.name ??
+                            roomChunk.canonicalAlias ??
                             L10n.of(context).emptyChat;
-                        return ListTile(
-                          title: Text(
-                            displayname,
-                          ),
-                          leading: Avatar(
-                            mxContent: course.avatarUrl,
-                            name: displayname,
-                            borderRadius: BorderRadius.circular(
-                              AppConfig.borderRadius / 2,
+
+                        return InkWell(
+                          onTap: () {},
+                          borderRadius: BorderRadius.circular(12.0),
+                          child: Container(
+                            padding: const EdgeInsets.all(12.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(
+                                color: theme.colorScheme.primary,
+                              ),
+                            ),
+                            child: Column(
+                              spacing: 4.0,
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  spacing: 8.0,
+                                  children: [
+                                    ImageByUrl(
+                                      imageUrl: roomChunk.avatarUrl?.toString(),
+                                      width: 58.0,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      replacement: Container(
+                                        height: 58.0,
+                                        width: 58.0,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          color: theme
+                                              .colorScheme.surfaceContainer,
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: Text(
+                                        displayname,
+                                        style: theme.textTheme.bodyLarge,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                if (course != null) ...[
+                                  CourseInfoChips(
+                                    course,
+                                    iconSize: 12.0,
+                                    fontSize: 12.0,
+                                  ),
+                                  Text(
+                                    course.description,
+                                    style: theme.textTheme.bodyMedium,
+                                  ),
+                                ],
+                              ],
                             ),
                           ),
                         );

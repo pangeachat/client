@@ -44,13 +44,44 @@ extension PublicCoursesRequest on Client {
 }
 
 class PublicCoursesResponse extends GetPublicRoomsResponse {
+  final List<PublicCoursesChunk> courses;
+
   PublicCoursesResponse({
     required super.chunk,
     required super.nextBatch,
     required super.prevBatch,
     required super.totalRoomCountEstimate,
+    required this.courses,
   });
 
   @override
-  PublicCoursesResponse.fromJson(super.json) : super.fromJson();
+  PublicCoursesResponse.fromJson(super.json)
+      : courses = (json['chunk'] as List)
+            .map((e) => PublicCoursesChunk.fromJson(e))
+            .toList(),
+        super.fromJson();
+}
+
+class PublicCoursesChunk {
+  final PublicRoomsChunk room;
+  final String courseId;
+
+  PublicCoursesChunk({
+    required this.room,
+    required this.courseId,
+  });
+
+  factory PublicCoursesChunk.fromJson(Map<String, dynamic> json) {
+    return PublicCoursesChunk(
+      room: PublicRoomsChunk.fromJson(json),
+      courseId: json['course_id'] as String,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'room': room.toJson(),
+      'course_id': courseId,
+    };
+  }
 }
