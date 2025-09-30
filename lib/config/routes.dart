@@ -37,6 +37,7 @@ import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dar
 import 'package:fluffychat/pangea/chat_settings/pages/edit_course.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/course_creation/course_invite_page.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/find_your_people/find_your_people_constants.dart';
@@ -245,6 +246,22 @@ abstract class AppRoutes {
                       ),
                     );
                   },
+                  routes: [
+                    GoRoute(
+                      path: 'invite',
+                      pageBuilder: (context, state) {
+                        return defaultPageBuilder(
+                          context,
+                          state,
+                          CourseInvitePage(
+                            state.pathParameters['courseid']!,
+                            courseCreationCompleter:
+                                state.extra as Completer<String>?,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -445,6 +462,22 @@ abstract class AppRoutes {
                           ),
                         );
                       },
+                      routes: [
+                        GoRoute(
+                          path: 'invite',
+                          pageBuilder: (context, state) {
+                            return defaultPageBuilder(
+                              context,
+                              state,
+                              CourseInvitePage(
+                                state.pathParameters['courseid']!,
+                                courseCreationCompleter:
+                                    state.extra as Completer<String>?,
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ],
                 ),
@@ -456,8 +489,10 @@ abstract class AppRoutes {
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                const AnalyticsPage(
-                  indicator: ProgressIndicatorEnum.wordsUsed,
+                AnalyticsPage(
+                  indicator: FluffyThemes.isColumnMode(context)
+                      ? null
+                      : ProgressIndicatorEnum.wordsUsed,
                 ),
               ),
               routes: [
@@ -466,8 +501,10 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    const AnalyticsPage(
-                      indicator: ProgressIndicatorEnum.morphsUsed,
+                    AnalyticsPage(
+                      indicator: FluffyThemes.isColumnMode(context)
+                          ? null
+                          : ProgressIndicatorEnum.morphsUsed,
                     ),
                   ),
                   redirect: loggedOutRedirect,
@@ -495,8 +532,10 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    const AnalyticsPage(
-                      indicator: ProgressIndicatorEnum.wordsUsed,
+                    AnalyticsPage(
+                      indicator: FluffyThemes.isColumnMode(context)
+                          ? null
+                          : ProgressIndicatorEnum.wordsUsed,
                     ),
                   ),
                   redirect: loggedOutRedirect,
@@ -524,8 +563,10 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    const AnalyticsPage(
-                      indicator: ProgressIndicatorEnum.activities,
+                    AnalyticsPage(
+                      indicator: FluffyThemes.isColumnMode(context)
+                          ? null
+                          : ProgressIndicatorEnum.activities,
                     ),
                   ),
                   redirect: loggedOutRedirect,
@@ -554,8 +595,10 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    const AnalyticsPage(
-                      indicator: ProgressIndicatorEnum.level,
+                    AnalyticsPage(
+                      indicator: FluffyThemes.isColumnMode(context)
+                          ? null
+                          : ProgressIndicatorEnum.level,
                     ),
                   ),
                   redirect: loggedOutRedirect,
