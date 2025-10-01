@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_builder.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +53,15 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
 
   @override
   didUpdateWidget(LemmmaHighlightEmojiRow oldWidget) {
-    if (oldWidget.isSelected != widget.isSelected ||
+    // Check if the construct identifier changed (new word/construct)
+    if (oldWidget.cId != widget.cId) {
+      // Reset shimmer state for new construct
+      setState(() {
+        displayEmoji = widget.cId.userSetEmoji.firstOrNull;
+        _showShimmer = (displayEmoji == null);
+        _hasShimmered = false;
+      });
+    } else if (oldWidget.isSelected != widget.isSelected ||
         widget.cId.userSetEmoji != oldWidget.cId.userSetEmoji) {
       setState(() => displayEmoji = widget.cId.userSetEmoji.firstOrNull);
     }
@@ -70,10 +77,10 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
   Future<void> setEmoji(String emoji) async {
     try {
       setState(() => displayEmoji = emoji);
-      await widget.cId.setUserLemmaInfo(
-        UserSetLemmaInfo(
-          emojis: [emoji],
-        ),
+      // Use new method that awards XP for first-time emoji selections
+      await widget.cId.setEmojiWithXP(
+        emoji: emoji,
+        isFromCorrectAnswer: false, // Manual selection, not from game
       );
     } catch (e, s) {
       debugger(when: kDebugMode);
@@ -109,7 +116,7 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
                   (emoji) => EmojiChoiceItem(
                     emoji: emoji,
                     onSelectEmoji: () => setEmoji(emoji),
-                    // will highlight selected emoji, or the first emoji if none are selected
+                    // will highlight selected emoji
                     isDisplay: (displayEmoji == emoji),
                     showShimmer: (_showShimmer && !_hasShimmered),
                   ),
