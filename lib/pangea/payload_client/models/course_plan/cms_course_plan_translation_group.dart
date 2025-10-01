@@ -1,7 +1,7 @@
 import 'package:fluffychat/pangea/payload_client/join_field.dart';
 import 'package:fluffychat/pangea/payload_client/polymorphic_relationship.dart';
 
-/// Represents a course plan from the CMS API
+/// Represents a course plan translation group from the CMS API
 class CmsCoursePlanTranslationGroup {
   static const String slug = "course-plans";
   final String id;
