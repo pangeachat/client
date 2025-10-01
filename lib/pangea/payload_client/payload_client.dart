@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:fluffychat/pangea/payload_client/paginated_response.dart';
 import 'package:http/http.dart' as http;
+
+import 'package:fluffychat/pangea/payload_client/paginated_response.dart';
 
 /// Generic PayloadCMS client for CRUD operations
 class PayloadClient {
@@ -31,7 +32,10 @@ class PayloadClient {
   }
 
   /// Generic POST request
-  Future<http.Response> _post(String endpoint, Map<String, dynamic> body) async {
+  Future<http.Response> _post(
+    String endpoint,
+    Map<String, dynamic> body,
+  ) async {
     final url = Uri.parse('$baseUrl$endpoint');
     final response = await http.post(
       url,
