@@ -114,7 +114,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       false;
 
   SessionState get state {
-    if (activityRoom?.ownRoleState != null) return SessionState.confirmedRole;
+    if (activityRoom?.hasPickedRole == true) return SessionState.confirmedRole;
     if (_selectedRoleId != null) return SessionState.selectedRole;
     if (activityRoom == null) {
       return widget.roomId != null || widget.launch
@@ -127,7 +127,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   String? get descriptionText {
     switch (state) {
       case SessionState.confirmedRole:
-        return L10n.of(context).waitingToFillRole(activityRoom!.remainingRoles);
+        return L10n.of(context)
+            .waitingToFillRole(activityRoom!.numRemainingRoles);
       case SessionState.selectedRole:
         return activity!.roles[_selectedRoleId!]!.goal;
       case SessionState.notStarted:
