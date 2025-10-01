@@ -35,6 +35,7 @@ class OverlayUtil {
     Alignment? followerAnchor,
     bool ignorePointer = false,
     bool canPop = true,
+    bool rootOverlay = false,
   }) {
     try {
       if (position == OverlayPositionEnum.transform) {
@@ -101,6 +102,7 @@ class OverlayUtil {
         context,
         overlayKey: overlayKey,
         canPop: canPop,
+        rootOverlay: rootOverlay,
       );
     } catch (err, stack) {
       debugger(when: kDebugMode);
@@ -218,6 +220,7 @@ class OverlayUtil {
     BuildContext context,
     Widget overlayContent,
     Rect anchorRect, {
+    String? overlayKey,
     double? borderRadius,
     double? padding,
     final VoidCallback? onClick,
@@ -240,6 +243,7 @@ class OverlayUtil {
       entry,
       context,
       rootOverlay: true,
+      overlayKey: overlayKey,
     );
   }
 }
