@@ -52,16 +52,28 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
 
   Client get _client => widget.controller.room.client;
 
-  int get _sentMessageCount {
-    return widget.controller.timeline?.events.where((event) {
-          return event.senderId == _client.userID &&
-              event.type == EventTypes.Message &&
-              [
-                MessageTypes.Text,
-                MessageTypes.Audio,
-              ].contains(event.messageType);
-        }).length ??
-        0;
+  bool get _shouldShowInstructions {
+    if (InstructionsEnum.activityStatsMenu.isToggledOff ||
+        _xpCount <= 0 ||
+        widget.controller.timeline == null) {
+      return false;
+    }
+
+    int count = 0;
+    for (final event in widget.controller.timeline!.events) {
+      if (event.senderId == _client.userID &&
+          event.type == EventTypes.Message &&
+          [
+            MessageTypes.Text,
+            MessageTypes.Audio,
+          ].contains(event.messageType)) {
+        count++;
+      }
+
+      if (count >= 3) return true;
+    }
+
+    return false;
   }
 
   int get _xpCount =>
@@ -83,9 +95,7 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
   /// Show a tutorial overlay that blocks the screen and points
   /// to the stats menu button with an explanation of what it does.
   void _showStatsMenuDropdownInstructions() {
-    if (InstructionsEnum.activityStatsMenu.isToggledOff ||
-        _xpCount <= 0 ||
-        _sentMessageCount < 3) {
+    if (!_shouldShowInstructions) {
       return;
     }
 
