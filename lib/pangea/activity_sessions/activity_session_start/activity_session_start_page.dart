@@ -176,7 +176,16 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
 
   bool get canPingParticipants {
     if (activityRoom == null || courseParent == null) return false;
-    return _pingCooldown == null || !_pingCooldown!.isActive;
+    if (_pingCooldown != null && _pingCooldown!.isActive) return false;
+
+    final courseParticipants = courseParent!.getParticipants();
+    final roomParticipants = activityRoom!.getParticipants();
+    for (final p in courseParticipants) {
+      if (p.id == BotName.byEnvironment) continue;
+      if (roomParticipants.any((rp) => rp.id == p.id)) continue;
+      return true;
+    }
+    return false;
   }
 
   void toggleInstructions() {
@@ -221,6 +230,18 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       final futures = <Future>[];
       futures.add(_loadSummary());
       futures.add(_loadActivity());
+
+      // load the course participants, since we will need that
+      // info to determine if course pinging is enabled
+      if (courseParent != null) {
+        futures.add(
+          courseParent!.requestParticipants(
+            [Membership.join, Membership.invite, Membership.knock],
+            false,
+            true,
+          ),
+        );
+      }
       await Future.wait(futures);
     } catch (e) {
       error = e;
