@@ -106,53 +106,44 @@ class ChatListViewBody extends StatelessWidget {
                       //   icon: const Icon(Icons.explore_outlined),
                       // ),
                       // PublicRoomsHorizontalList(publicRooms: publicRooms),
-                      // Pangea#
-                      SearchTitle(
-                        // #Pangea
-                        // title: L10n.of(context).publicSpaces,
-                        title: L10n.of(context).publicCourses,
-                        // icon: const Icon(Icons.workspaces_outlined),
-                        icon: const Icon(Icons.groups_outlined),
-                        // Pangea#
-                      ),
-                      PublicRoomsHorizontalList(publicRooms: publicSpaces),
-                      SearchTitle(
-                        title: L10n.of(context).users,
-                        icon: const Icon(Icons.group_outlined),
-                      ),
-                      AnimatedContainer(
-                        clipBehavior: Clip.hardEdge,
-                        decoration: const BoxDecoration(),
-                        height: userSearchResult == null ||
-                                userSearchResult.results.isEmpty
-                            ? 0
-                            : 106,
-                        duration: FluffyThemes.animationDuration,
-                        curve: FluffyThemes.animationCurve,
-                        child: userSearchResult == null
-                            ? null
-                            // #Pangea
-                            : UserSearchResultsList(
-                                userSearchResult: userSearchResult,
-                              ),
-                        // : ListView.builder(
-                        //     scrollDirection: Axis.horizontal,
-                        //     itemCount: userSearchResult.results.length,
-                        //     itemBuilder: (context, i) => _SearchItem(
-                        //       title:
-                        //           userSearchResult.results[i].displayName ??
-                        //               userSearchResult
-                        //                   .results[i].userId.localpart ??
-                        //               L10n.of(context).unknownDevice,
-                        //       avatar: userSearchResult.results[i].avatarUrl,
-                        //       onPressed: () => UserDialog.show(
-                        //         context: context,
-                        //         profile: userSearchResult.results[i],
-                        //       ),
-                        //     ),
-                        //   ),
-                        // Pangea#
-                      ),
+                      // SearchTitle(
+                      // title: L10n.of(context).publicSpaces,
+                      // icon: const Icon(Icons.workspaces_outlined),
+                      // ),
+                      // PublicRoomsHorizontalList(publicRooms: publicSpaces),
+                      // SearchTitle(
+                      //   title: L10n.of(context).users,
+                      //   icon: const Icon(Icons.group_outlined),
+                      // ),
+                      // AnimatedContainer(
+                      //   clipBehavior: Clip.hardEdge,
+                      //   decoration: const BoxDecoration(),
+                      //   height: userSearchResult == null ||
+                      //           userSearchResult.results.isEmpty
+                      //       ? 0
+                      //       : 106,
+                      //   duration: FluffyThemes.animationDuration,
+                      //   curve: FluffyThemes.animationCurve,
+                      //   child: userSearchResult == null
+                      //       ? null
+                      // : ListView.builder(
+                      //     scrollDirection: Axis.horizontal,
+                      //     itemCount: userSearchResult.results.length,
+                      //     itemBuilder: (context, i) => _SearchItem(
+                      //       title:
+                      //           userSearchResult.results[i].displayName ??
+                      //               userSearchResult
+                      //                   .results[i].userId.localpart ??
+                      //               L10n.of(context).unknownDevice,
+                      //       avatar: userSearchResult.results[i].avatarUrl,
+                      //       onPressed: () => UserDialog.show(
+                      //         context: context,
+                      //         profile: userSearchResult.results[i],
+                      //       ),
+                      //     ),
+                      //   ),
+                      //   ),
+                      //   Pangea#
                     ],
                     // #Pangea
                     // if (!controller.isSearchMode && AppConfig.showPresences)
