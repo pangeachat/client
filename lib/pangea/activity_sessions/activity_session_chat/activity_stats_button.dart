@@ -115,8 +115,7 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
 
     OverlayUtil.showTutorialOverlay(
       context,
-      overlayKey: "activity_stats_menu_instruction",
-      Center(
+      overlayContent: Center(
         child: Container(
           padding: const EdgeInsets.all(16.0),
           decoration: BoxDecoration(
@@ -149,12 +148,13 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
           ),
         ),
       ),
-      cellRect,
+      overlayKey: "activity_stats_menu_instruction",
+      anchorRect: cellRect,
       borderRadius: 12.0,
       padding: 8.0,
-      onClick: () => widget.controller.setShowDropdown(true),
-      onDismiss: () {
+      onClick: () {
         InstructionsEnum.activityStatsMenu.setToggledOff(true);
+        widget.controller.setShowDropdown(true);
       },
     );
   }

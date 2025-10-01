@@ -217,16 +217,17 @@ class OverlayUtil {
   }
 
   static void showTutorialOverlay(
-    BuildContext context,
-    Widget overlayContent,
-    Rect anchorRect, {
-    String? overlayKey,
+    BuildContext context, {
+    required Widget overlayContent,
+    required String overlayKey,
+    required Rect anchorRect,
     double? borderRadius,
     double? padding,
     final VoidCallback? onClick,
-    final VoidCallback? onDismiss,
   }) {
-    MatrixState.pAnyState.closeAllOverlays();
+    // force close all overlays to prevent showing
+    // constuct / level up notification on top of tutorial
+    MatrixState.pAnyState.closeAllOverlays(force: true);
     final entry = OverlayEntry(
       builder: (context) {
         return AnchoredOverlayWidget(
@@ -234,7 +235,7 @@ class OverlayUtil {
           borderRadius: borderRadius,
           padding: padding,
           onClick: onClick,
-          onDismiss: onDismiss,
+          overlayKey: overlayKey,
           child: overlayContent,
         );
       },
@@ -244,6 +245,8 @@ class OverlayUtil {
       context,
       rootOverlay: true,
       overlayKey: overlayKey,
+      canPop: false,
+      blockOverlay: true,
     );
   }
 }

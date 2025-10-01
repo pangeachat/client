@@ -9,11 +9,13 @@ class OverlayListEntry {
   final OverlayEntry entry;
   final String? key;
   final bool canPop;
+  final bool blockOverlay;
 
   OverlayListEntry(
     this.entry, {
     this.key,
     this.canPop = true,
+    this.blockOverlay = false,
   });
 }
 
@@ -44,8 +46,13 @@ class PangeaAnyState {
     BuildContext context, {
     String? overlayKey,
     bool canPop = true,
+    bool blockOverlay = false,
     bool rootOverlay = false,
   }) {
+    if (entries.any((e) => e.blockOverlay)) {
+      return;
+    }
+
     if (overlayKey != null &&
         entries.any((element) => element.key == overlayKey)) {
       return;
@@ -56,6 +63,7 @@ class PangeaAnyState {
         entry,
         key: overlayKey,
         canPop: canPop,
+        blockOverlay: blockOverlay,
       ),
     );
 
