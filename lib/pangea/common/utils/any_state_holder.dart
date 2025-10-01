@@ -20,7 +20,6 @@ class OverlayListEntry {
 }
 
 class PangeaAnyState {
-  final Set<String> activeOverlays = {};
   final Map<String, LayerLinkAndKey> _layerLinkAndKeys = {};
   List<OverlayListEntry> entries = [];
 
@@ -41,7 +40,7 @@ class PangeaAnyState {
     return _layerLinkAndKeys[transformTargetId]!;
   }
 
-  void openOverlay(
+  bool openOverlay(
     OverlayEntry entry,
     BuildContext context, {
     String? overlayKey,
@@ -50,12 +49,12 @@ class PangeaAnyState {
     bool rootOverlay = false,
   }) {
     if (entries.any((e) => e.blockOverlay)) {
-      return;
+      return false;
     }
 
     if (overlayKey != null &&
         entries.any((element) => element.key == overlayKey)) {
-      return;
+      return false;
     }
 
     entries.add(
@@ -67,14 +66,12 @@ class PangeaAnyState {
       ),
     );
 
-    if (overlayKey != null) {
-      activeOverlays.add(overlayKey);
-    }
-
     Overlay.of(
       context,
       rootOverlay: rootOverlay,
     ).insert(entry);
+
+    return true;
   }
 
   void closeOverlay([String? overlayKey]) {
@@ -97,10 +94,6 @@ class PangeaAnyState {
         );
       }
       entries.remove(entry);
-
-      if (overlayKey != null) {
-        activeOverlays.remove(overlayKey);
-      }
     }
   }
 
@@ -132,10 +125,6 @@ class PangeaAnyState {
             "overlay": shouldRemove[i],
           },
         );
-      }
-
-      if (shouldRemove[i].key != null) {
-        activeOverlays.remove(shouldRemove[i].key);
       }
 
       entries.remove(shouldRemove[i]);

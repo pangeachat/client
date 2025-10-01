@@ -18,7 +18,7 @@ enum OverlayPositionEnum {
 }
 
 class OverlayUtil {
-  static showOverlay({
+  static bool showOverlay({
     required BuildContext context,
     required Widget child,
     String? transformTargetId,
@@ -97,7 +97,7 @@ class OverlayUtil {
         ),
       );
 
-      MatrixState.pAnyState.openOverlay(
+      return MatrixState.pAnyState.openOverlay(
         entry,
         context,
         overlayKey: overlayKey,
@@ -111,6 +111,7 @@ class OverlayUtil {
         s: stack,
         data: {},
       );
+      return false;
     }
   }
 
