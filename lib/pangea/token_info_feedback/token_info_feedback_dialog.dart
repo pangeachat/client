@@ -80,6 +80,8 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
       final TokenInfoFeedbackResponse response =
           await TokenInfoFeedbackRepo.submitFeedback(request);
 
+      // TODO: edit token info based on the included updated info in the response
+
       if (mounted) {
         // TODO: figure out how to close the dialog and show a snackbar in the main UI
         // Seems to be closing the dialog first and then its not mounted anymore so snackbar fails
