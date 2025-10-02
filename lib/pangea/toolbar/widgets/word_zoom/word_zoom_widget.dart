@@ -1,23 +1,21 @@
-import 'package:flutter/material.dart';
-
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
-import 'package:fluffychat/pangea/lemmas/construct_xp_widget.dart';
+import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_reaction_picker.dart';
 import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_widget.dart';
+import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_button.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_builder.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/new_word_overlay.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaTokenText token;
@@ -98,11 +96,31 @@ class WordZoomWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      ConstructXpWidget(
-                        id: construct,
-                        onTap: () => context.go(
-                          "/rooms/analytics/${ConstructTypeEnum.vocab.string}/${construct.string}",
-                        ),
+                      // ConstructXpWidget(
+                      //   id: construct,
+                      //   onTap: () => context.go(
+                      //     "/rooms/analytics/${ConstructTypeEnum.vocab.string}/${construct.string}",
+                      //   ),
+                      // ),
+                      // TODO @ggurdin: fill in correct info
+                      TokenInfoFeedbackButton(
+                        roomId: "",
+                        fullText: "dummy text",
+                        detectedLanguage: "en",
+                        tokens: [
+                          PangeaToken(
+                            text: token,
+                            lemma: Lemma(
+                              text: token.content,
+                              saveVocab: true,
+                              form: token.content,
+                            ),
+                            pos: "NOUN",
+                            morph: {},
+                          ),
+                        ],
+                        selectedToken: 0,
+                        wordCardL1: "es",
                       ),
                     ],
                   ),
