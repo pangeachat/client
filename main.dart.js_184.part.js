@@ -4592,6 +4592,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityAnalyticsListBody() {
       return "These are your completed activities! After finishing activities, you can view them here.";
     },
+    get$languageMismatchTitle() {
+      return "Language mismatch";
+    },
+    get$languageMismatchDesc() {
+      return "Your target language doesn't match the language of this activity. Update your target language?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4605,7 +4611,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["bBxJ9odI7qzIJl/ziGo5x5jLWQ4="] = d.current;
+  d["rQlGPkpJG2SZikwTRJtNxemEGqs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_184.part.js.map
