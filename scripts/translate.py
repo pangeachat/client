@@ -312,7 +312,58 @@ def append_translate(lang_code: str, lang_display_name: str) -> None:
             temperature=0.0,
         )
         response = chat_completion.choices[0].message.content
-        _new_translations = json.loads(response)
+
+        # Try to parse JSON with error handling and retry logic
+        max_retries = 3
+        retry_count = 0
+        _new_translations = None
+
+        while retry_count < max_retries and _new_translations is None:
+            try:
+                _new_translations = json.loads(response)
+                break
+            except json.JSONDecodeError as e:
+                retry_count += 1
+                print(f"JSON parsing error (attempt {retry_count}/{max_retries}): {e}")
+
+                if retry_count < max_retries:
+                    print("Retrying with a simpler prompt...")
+                    # Retry with a simpler, more explicit prompt
+                    simple_prompt = f"""Translate the following JSON from English to {lang_display_name}. Return ONLY valid JSON without any additional text or formatting:
+
+{json.dumps(translation_requests, indent=2)}"""
+
+                    chat_completion = client.chat.completions.create(
+                        messages=[
+                            {
+                                "role": "system",
+                                "content": "You are a translator. Return only valid JSON. No explanations, no markdown formatting, no additional text.",
+                            },
+                            {
+                                "role": "user",
+                                "content": simple_prompt,
+                            },
+                        ],
+                        model="gpt-4.1-nano",
+                        temperature=0.0,
+                    )
+                    response = chat_completion.choices[0].message.content
+
+                    # Try to clean up common JSON formatting issues
+                    response = response.strip()
+                    if response.startswith("```json"):
+                        response = response[7:]
+                    if response.endswith("```"):
+                        response = response[:-3]
+                    response = response.strip()
+
+        if _new_translations is None:
+            print(
+                f"Failed to parse JSON after {max_retries} attempts. Skipping chunk {i//20 + 1}"
+            )
+            progress += len(chunk)
+            continue
+
         new_translations.update(_new_translations)
         print(f"Translated {progress + len(chunk)}/{len(needed_translations)}")
         progress += len(chunk)
