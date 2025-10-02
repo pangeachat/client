@@ -8,7 +8,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/dummy_chat_list_item.dart';
-import 'package:fluffychat/pages/chat_list/search_title.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/pangea_chat_list_header.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
@@ -211,21 +210,30 @@ class ChatListViewBody extends StatelessWidget {
                     //           .toList(),
                     //     ),
                     //   ),
-                    // Pangea#
-                    if (controller.isSearchMode)
-                      SearchTitle(
-                        title: L10n.of(context).chats,
-                        icon: const Icon(Icons.forum_outlined),
+                    // if (controller.isSearchMode)
+                    //   SearchTitle(
+                    //     title: L10n.of(context).chats,
+                    //     icon: const Icon(Icons.forum_outlined),
+                    //   ),
+                    if (!controller.isSearchMode)
+                      const InstructionsInlineTooltip(
+                        instructionsEnum: InstructionsEnum.chatListTooltip,
+                        padding: EdgeInsets.only(
+                          left: 16.0,
+                          right: 16.0,
+                          bottom: 16.0,
+                        ),
                       ),
-                    // #Pangea
-                    const InstructionsInlineTooltip(
-                      instructionsEnum: InstructionsEnum.chatListTooltip,
-                      padding: EdgeInsets.only(
-                        left: 16.0,
-                        right: 16.0,
-                        bottom: 16.0,
+                    if (controller.isSearchMode &&
+                        (userSearchResult == null ||
+                            userSearchResult.results.isEmpty))
+                      Padding(
+                        padding: const EdgeInsetsGeometry.all(16.0),
+                        child: Text(
+                          L10n.of(context).emptyChatSearch,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
                     // if (client.prevBatch != null &&
                     //     rooms.isEmpty &&
                     //     !controller.isSearchMode) ...[
