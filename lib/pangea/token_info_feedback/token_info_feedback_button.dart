@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_dialog.dart';
@@ -47,7 +48,7 @@ class TokenInfoFeedbackButton extends StatelessWidget {
           ),
         );
       },
-      tooltip: 'Report word information issue', // TODO: use intl
+      tooltip: L10n.of(context).reportWordIssueTooltip,
     );
   }
 }

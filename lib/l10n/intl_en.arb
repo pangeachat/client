@@ -5302,5 +5302,8 @@
   "activityDropdownDesc": "When you’re done with this activity, click below",
   "activityAnalyticsListBody": "These are your completed activities! After finishing activities, you can view them here.",
   "languageMismatchTitle": "Language mismatch",
-  "languageMismatchDesc": "Your target language doesn't match the language of this activity. Update your target language?"
+  "languageMismatchDesc": "Your target language doesn't match the language of this activity. Update your target language?",
+  "reportWordIssueTooltip": "Report word information issue",
+  "tokenInfoFeedbackDialogTitle": "Word Information Feedback",
+  "tokenInfoFeedbackDialogDesc": "AI makes mistakes. Please describe any issues you found with the information above."
 }

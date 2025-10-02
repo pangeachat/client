@@ -167,10 +167,10 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
                       icon: const Icon(Icons.close),
                       onPressed: () => Navigator.of(context).pop(),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Word Information Feedback', // Could be localized later
-                        style: TextStyle(
+                        L10n.of(context).tokenInfoFeedbackDialogTitle,
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                         ),
@@ -217,8 +217,8 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
                       ),
                     ),
                     // Description text
-                    const Text(
-                      'AI makes mistakes. Please describe any issues you found with the information above.',
+                    Text(
+                      L10n.of(context).tokenInfoFeedbackDialogDesc,
                       textAlign: TextAlign.center,
                     ),
                     // Feedback text field
