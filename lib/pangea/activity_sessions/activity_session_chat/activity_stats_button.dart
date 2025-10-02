@@ -176,32 +176,43 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
       ),
       borderRadius: BorderRadius.circular(12),
       color: _xpCount > 0
-          ? AppConfig.gold.withAlpha(180)
+          ? (theme.brightness == Brightness.light
+              ? AppConfig.yellowLight
+              : Colors.transparent) 
           : theme.colorScheme.surface,
       depressed: _xpCount <= 0 || widget.controller.showActivityDropdown,
       child: AnimatedContainer(
         duration: FluffyThemes.animationDuration,
-        width: 300,
-        height: 55,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        height: 35,
         decoration: BoxDecoration(
           color: _xpCount > 0
-              ? AppConfig.gold.withAlpha(180)
+              ? theme.brightness == Brightness.light
+                  ? AppConfig.yellowLight
+                  : AppConfig.goldLight.withValues(alpha: 80)
               : theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(12),
         ),
         child: analytics == null
             ? const CircularProgressIndicator.adaptive()
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _StatsBadge(icon: Icons.radar, value: "$_xpCount XP"),
-                  _StatsBadge(icon: Symbols.dictionary, value: "$_vocabCount"),
-                  _StatsBadge(
-                    icon: Symbols.toys_and_games,
-                    value: "$_grammarCount",
-                  ),
-                ],
+            : Padding(
+                padding: const EdgeInsets.only(left: 8, right: 8),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _StatsBadge(
+                      icon: Icons.radar,
+                      value: "$_xpCount XP",
+                    ),
+                    _StatsBadge(
+                      icon: Symbols.dictionary,
+                      value: "$_vocabCount",
+                    ),
+                    _StatsBadge(
+                      icon: Symbols.toys_and_games,
+                      value: "$_grammarCount",
+                    ),
+                  ],
+                ),
               ),
       ),
     );
@@ -223,29 +234,32 @@ class _StatsBadge extends StatelessWidget {
     final baseStyle = theme.textTheme.bodyMedium;
     final double fontSize = (screenWidth < 400) ? 10 : 14;
     final double iconSize = (screenWidth < 400) ? 14 : 18;
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(
-          icon,
-          size: iconSize,
-          color: theme.colorScheme.onSurface,
-        ),
-        const SizedBox(width: 4),
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              value,
-              style: baseStyle?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: theme.colorScheme.onSurface,
-                fontSize: fontSize,
+    return Padding(
+      padding: const EdgeInsets.only(left: 8, right: 8),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon,
+            size: iconSize,
+            color: theme.colorScheme.onSurface,
+          ),
+          const SizedBox(width: 4),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                value,
+                style: baseStyle?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: theme.colorScheme.onSurface,
+                  fontSize: fontSize,
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
