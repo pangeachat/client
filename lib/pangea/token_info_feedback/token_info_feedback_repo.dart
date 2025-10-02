@@ -1,12 +1,13 @@
 import 'dart:convert';
 
+import 'package:http/http.dart';
+
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:http/http.dart';
 
 class TokenInfoFeedbackRepo {
   /// Submit token info feedback for processing

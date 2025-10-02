@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -14,8 +18,6 @@ import 'package:fluffychat/pangea/toolbar/widgets/practice_activity/word_audio_b
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_builder.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/new_word_overlay.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:matrix/matrix.dart';
 
 class WordZoomWidget extends StatelessWidget {
   final PangeaTokenText token;
