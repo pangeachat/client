@@ -7,13 +7,16 @@ import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
+import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
 
 class TokenInfoFeedbackDialog extends StatefulWidget {
   final TokenInfoFeedbackRequestData requestData;
+  final String langCode;
 
   const TokenInfoFeedbackDialog({
     super.key,
     required this.requestData,
+    required this.langCode,
   });
 
   @override
@@ -119,6 +122,8 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
 
   @override
   Widget build(BuildContext context) {
+    final selectedToken =
+        widget.requestData.tokens[widget.requestData.selectedToken];
     return BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 2.5, sigmaY: 2.5),
       child: Dialog(
@@ -172,21 +177,17 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
                   children: [
                     // Placeholder for word card
                     Container(
-                      width: double.infinity,
-                      height: 120,
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Theme.of(context).colorScheme.outline,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
-                      child: const Center(
-                        child: Text(
-                          'Word Card Placeholder',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontStyle: FontStyle.italic,
-                          ),
+                      child: Center(
+                        child: WordZoomWidget(
+                          token: selectedToken.text,
+                          construct: selectedToken.vocabConstructID,
+                          langCode: widget.langCode,
                         ),
                       ),
                     ),

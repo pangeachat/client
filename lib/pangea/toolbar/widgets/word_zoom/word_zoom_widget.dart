@@ -23,7 +23,7 @@ class WordZoomWidget extends StatelessWidget {
   final ConstructIdentifier construct;
 
   final String langCode;
-  final VoidCallback onClose;
+  final VoidCallback? onClose;
 
   final bool wordIsNew;
   final VoidCallback? onDismissNewWordOverlay;
@@ -36,7 +36,7 @@ class WordZoomWidget extends StatelessWidget {
     required this.token,
     required this.construct,
     required this.langCode,
-    required this.onClose,
+    this.onClose,
     this.wordIsNew = false,
     this.onDismissNewWordOverlay,
     this.event,
@@ -71,20 +71,25 @@ class WordZoomWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(
-                        width: 24.0,
-                        height: 24.0,
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: GestureDetector(
-                            onTap: onClose,
-                            child: const Icon(
-                              Icons.close,
-                              size: 16.0,
+                      onClose != null
+                          ? SizedBox(
+                              width: 24.0,
+                              height: 24.0,
+                              child: MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: onClose,
+                                  child: const Icon(
+                                    Icons.close,
+                                    size: 16.0,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : const SizedBox(
+                              width: 24.0,
+                              height: 24.0,
                             ),
-                          ),
-                        ),
-                      ),
                       Flexible(
                         child: Text(
                           token.content,
@@ -103,6 +108,7 @@ class WordZoomWidget extends StatelessWidget {
                       requestData != null
                           ? TokenInfoFeedbackButton(
                               requestData: requestData!,
+                              langCode: langCode,
                             )
                           : const SizedBox(
                               width: 24.0,

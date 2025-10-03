@@ -6,10 +6,12 @@ import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_reques
 
 class TokenInfoFeedbackButton extends StatelessWidget {
   final TokenInfoFeedbackRequestData requestData;
+  final String langCode;
 
   const TokenInfoFeedbackButton({
     super.key,
     required this.requestData,
+    required this.langCode,
   });
 
   @override
@@ -21,6 +23,7 @@ class TokenInfoFeedbackButton extends StatelessWidget {
           context: context,
           builder: (context) => TokenInfoFeedbackDialog(
             requestData: requestData,
+            langCode: langCode,
           ),
         );
       },
