@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_search_provider.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class NewTripPage extends StatefulWidget {
@@ -123,16 +124,48 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
                     ? Center(
                         child: Padding(
                           padding: const EdgeInsets.all(32.0),
-                          child: error != null
-                              ? Center(
-                                  child: ErrorIndicator(
-                                    message:
-                                        L10n.of(context).failedToLoadCourses,
+                          child: loading
+                              ? const CircularProgressIndicator.adaptive()
+                              : Center(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(32.0),
+                                    child: Column(
+                                      spacing: 12.0,
+                                      children: [
+                                        const BotFace(
+                                          expression: BotExpression.addled,
+                                          width: Avatar.defaultSize * 1.5,
+                                        ),
+                                        Text(
+                                          L10n.of(context)
+                                              .noCourseTemplatesFound,
+                                          textAlign: TextAlign.center,
+                                          style: theme.textTheme.bodyLarge,
+                                        ),
+                                        ElevatedButton(
+                                          onPressed: () => context.go(
+                                            '/rooms',
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: theme
+                                                .colorScheme.primaryContainer,
+                                            foregroundColor: theme
+                                                .colorScheme.onPrimaryContainer,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                L10n.of(context).continueText,
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                )
-                              : loading
-                                  ? const CircularProgressIndicator.adaptive()
-                                  : Text(L10n.of(context).noCoursesFound),
+                                ),
                         ),
                       )
                     : Expanded(

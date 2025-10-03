@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
@@ -11,6 +13,7 @@ import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicTripPage extends StatefulWidget {
@@ -227,22 +230,42 @@ class PublicTripPageState extends State<PublicTripPage> {
                   ),
                   const SizedBox(height: 20.0),
                 ],
-                if (error != null)
+                if (error != null ||
+                    (!loading && filteredCourses.isEmpty && nextBatch == null))
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.all(32.0),
-                      child: ErrorIndicator(
-                        message: L10n.of(context).failedToLoadCourses,
+                      child: Column(
+                        spacing: 12.0,
+                        children: [
+                          const BotFace(
+                            expression: BotExpression.addled,
+                            width: Avatar.defaultSize * 1.5,
+                          ),
+                          Text(
+                            L10n.of(context).noPublicCoursesFound,
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.bodyLarge,
+                          ),
+                          ElevatedButton(
+                            onPressed: () => context.go(
+                              '/registration/course/own',
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(L10n.of(context).startOwnTrip),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  )
-                else if (!loading &&
-                    filteredCourses.isEmpty &&
-                    nextBatch == null)
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(32.0),
-                      child: Text(L10n.of(context).noCoursesFound),
                     ),
                   )
                 else
