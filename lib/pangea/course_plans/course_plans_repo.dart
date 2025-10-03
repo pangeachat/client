@@ -1,14 +1,19 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/course_plans/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_location_media_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_location_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_media_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_topic_repo.dart';
+import 'package:fluffychat/pangea/course_plans/translate_schema.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan.dart';
@@ -253,5 +258,36 @@ class CoursePlansRepo {
     ];
 
     await Future.wait(futures);
+  }
+
+  static Future<CoursePlanModel> translateCoursePlan(
+    TranslateCoursePlanRequest request,
+  ) async {
+    final Requests req = Requests(
+      accessToken: MatrixState.pangeaController.userController.accessToken,
+    );
+
+    // Poll the translate endpoint 12 times every 5 seconds,
+    // until we get a 200 or a max of 12 calls - 1 minute
+    for (int i = 0; i < 12; i++) {
+      final Response res = await req.post(
+        url: PApiUrls.coursePlanTranslate,
+        body: request.toJson(),
+      );
+
+      if (res.statusCode == 200) {
+        final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
+        final response = TranslateCoursePlanResponse.fromJson(decodedBody);
+        if (response.coursePlan != null) {
+          return response.coursePlan!;
+        }
+      } else if (res.statusCode == 202) {
+        await Future.delayed(Duration(seconds: i == 0 ? 0 : 5));
+      } else {
+        throw res;
+      }
+    }
+
+    throw Exception("Translation timed out");
   }
 }
