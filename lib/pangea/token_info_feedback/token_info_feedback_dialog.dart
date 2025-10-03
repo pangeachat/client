@@ -3,11 +3,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class TokenInfoFeedbackDialog extends StatefulWidget {
   final TokenInfoFeedbackRequestData requestData;
@@ -26,7 +26,6 @@ class TokenInfoFeedbackDialog extends StatefulWidget {
 
 class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
   final TextEditingController _feedbackController = TextEditingController();
-  bool _isLoading = false;
 
   @override
   void initState() {
@@ -42,82 +41,18 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
     super.dispose();
   }
 
-  Future<void> _submitFeedback() async {
-    if (_feedbackController.text.isEmpty) return;
-
-    setState(() {
-      _isLoading = true;
-    });
-
-    try {
-      final request = TokenInfoFeedbackRequest(
-        userFeedback: _feedbackController.text,
-        data: widget.requestData,
-      );
-
-      final TokenInfoFeedbackResponse response =
-          await TokenInfoFeedbackRepo.submitFeedback(request);
-
-      // TODO: edit token info based on the included updated info in the response
-
-      if (mounted) {
-        // TODO: figure out how to close the dialog and show a snackbar in the main UI
-        // Seems to be closing the dialog first and then its not mounted anymore so snackbar fails
-        Navigator.of(context).pop();
-        _showSuccessSnackBar(response.userFriendlyMessage);
-      }
-    } catch (error) {
-      if (mounted) {
-        _showErrorSnackBar('Failed to submit feedback: $error');
-      }
-    } finally {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-      }
-    }
-  }
-
-  void _showSuccessSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Row(
-          children: [
-            const BotFace(
-              width: 30,
-              expression: BotExpression.idle,
-            ),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(message),
-            ),
-          ],
-        ),
-        duration: const Duration(seconds: 30),
-        action: SnackBarAction(
-          label: L10n.of(context).close,
-          onPressed: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          },
-        ),
-      ),
+  Future<String> _submitFeedback() async {
+    final request = TokenInfoFeedbackRequest(
+      userFeedback: _feedbackController.text,
+      data: widget.requestData,
     );
-  }
 
-  void _showErrorSnackBar(String error) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(error),
-        backgroundColor: Theme.of(context).colorScheme.error,
-        action: SnackBarAction(
-          label: L10n.of(context).close,
-          onPressed: () {
-            ScaffoldMessenger.of(context).hideCurrentSnackBar();
-          },
-        ),
-      ),
-    );
+    final TokenInfoFeedbackResponse response =
+        await TokenInfoFeedbackRepo.submitFeedback(request);
+
+    return response.userFriendlyMessage;
+
+    // TODO: edit token info based on the included updated info in the response
   }
 
   @override
@@ -208,24 +143,24 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
                     ),
                     // Submit button
                     ElevatedButton(
-                      onPressed:
-                          (_feedbackController.text.isNotEmpty && !_isLoading)
-                              ? _submitFeedback
-                              : null,
-                      child: _isLoading
-                          ? const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                strokeWidth: 2,
-                              ),
-                            )
-                          : Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(L10n.of(context).feedbackButton),
-                              ],
-                            ),
+                      onPressed: (_feedbackController.text.isNotEmpty)
+                          ? () async {
+                              final resp = await showFutureLoadingDialog(
+                                context: context,
+                                future: () => _submitFeedback(),
+                              );
+
+                              if (!resp.isError) {
+                                Navigator.of(context).pop(resp.result!);
+                              }
+                            }
+                          : null,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(L10n.of(context).feedbackButton),
+                        ],
+                      ),
                     ),
                     const SizedBox.shrink(),
                   ],
