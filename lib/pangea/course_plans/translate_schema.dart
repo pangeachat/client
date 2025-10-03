@@ -3,9 +3,9 @@ import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_topic_model.dart';
 
 class TranslateCoursePlanRequest {
-  String coursePlanId;
-  String l1;
-  String l2;
+  final String coursePlanId;
+  final String l1;
+  final String l2;
 
   TranslateCoursePlanRequest({
     required this.coursePlanId,
