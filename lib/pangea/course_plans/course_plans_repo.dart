@@ -3,7 +3,12 @@ import 'dart:async';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/course_plans/course_activity_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_location_media_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_location_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_media_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/course_topic_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan.dart';
@@ -41,8 +46,27 @@ class CourseFilter {
 class CoursePlansRepo {
   static final Map<String, Completer<CoursePlanModel>> cache = {};
   static final GetStorage _courseStorage = GetStorage("course_storage");
+  static const Duration cacheDuration = Duration(days: 1);
+
+  static DateTime? get lastUpdated {
+    final entry = _courseStorage.read("last_updated");
+    if (entry != null && entry is String) {
+      try {
+        return DateTime.parse(entry);
+      } catch (e) {
+        _courseStorage.remove("last_updated");
+      }
+    }
+    return null;
+  }
 
   static CoursePlanModel? _getCached(String id) {
+    if (lastUpdated != null &&
+        DateTime.now().difference(lastUpdated!) > cacheDuration) {
+      clearCache();
+      return null;
+    }
+
     final json = _courseStorage.read(id);
     if (json != null) {
       try {
@@ -55,6 +79,12 @@ class CoursePlansRepo {
   }
 
   static Future<void> _setCached(CoursePlanModel coursePlan) async {
+    if (lastUpdated == null) {
+      await _courseStorage.write(
+        "last_updated",
+        DateTime.now().toIso8601String(),
+      );
+    }
     await _courseStorage.write(coursePlan.uuid, coursePlan.toJson());
   }
 
@@ -96,7 +126,56 @@ class CoursePlansRepo {
     }
   }
 
-  static Future<List<CoursePlanModel>> search({CourseFilter? filter}) async {
+  static Future<List<CoursePlanModel>> search(
+    List<String> ids, {
+    Map<String, dynamic>? where,
+  }) async {
+    final PayloadClient payload = PayloadClient(
+      baseUrl: Environment.cmsApi,
+      accessToken: MatrixState.pangeaController.userController.accessToken,
+    );
+
+    final missingIds = ids
+        .where(
+          (id) => _courseStorage.read(id) == null,
+        )
+        .toList();
+
+    where ??= {};
+    where["id"] = {
+      "in": missingIds,
+    };
+
+    final searchResult = await payload.find(
+      CmsCoursePlan.slug,
+      CmsCoursePlan.fromJson,
+      page: 1,
+      limit: 10,
+      where: where,
+    );
+
+    final coursePlans = searchResult.docs
+        .map(
+          (cmsCoursePlan) => cmsCoursePlan.toCoursePlanModel(),
+        )
+        .toList();
+
+    for (final plan in coursePlans) {
+      await _setCached(plan);
+    }
+
+    final futures = coursePlans.map((c) => c.init());
+    await Future.wait(futures);
+
+    return ids
+        .map((id) => _getCached(id))
+        .whereType<CoursePlanModel>()
+        .toList();
+  }
+
+  static Future<List<CoursePlanModel>> searchByFilter({
+    CourseFilter? filter,
+  }) async {
     await _courseStorage.initStorage;
 
     final Map<String, dynamic> where = {};
@@ -160,50 +239,19 @@ class CoursePlansRepo {
       select: {"id": true},
     );
 
-    final missingIds = result.docs
-        .where(
-          (id) => _courseStorage.read(id) == null,
-        )
-        .toList();
+    return search(result.docs, where: where);
+  }
 
-    // If all of the returned IDs are in the cached list,  ensure all of the course details have been cached, and return
-    if (missingIds.isEmpty) {
-      return result.docs
-          .map((id) => _getCached(id))
-          .whereType<CoursePlanModel>()
-          .toList();
-    }
+  static Future<void> clearCache() async {
+    final List<Future> futures = [
+      CourseActivityRepo.clearCache(),
+      CourseLocationMediaRepo.clearCache(),
+      CourseLocationRepo.clearCache(),
+      CourseMediaRepo.clearCache(),
+      CourseTopicRepo.clearCache(),
+      _courseStorage.erase(),
+    ];
 
-    // Else, take the list of returned course IDs minus the list of cached course IDs and
-    // fetch/cache the course details for each. Cache the newly returned list with all the IDs.
-    where["id"] = {
-      "in": missingIds,
-    };
-
-    final searchResult = await payload.find(
-      CmsCoursePlan.slug,
-      CmsCoursePlan.fromJson,
-      page: 1,
-      limit: 10,
-      where: where,
-    );
-
-    final coursePlans = searchResult.docs
-        .map(
-          (cmsCoursePlan) => cmsCoursePlan.toCoursePlanModel(),
-        )
-        .toList();
-
-    for (final plan in coursePlans) {
-      await _setCached(plan);
-    }
-
-    final futures = coursePlans.map((c) => c.init());
     await Future.wait(futures);
-
-    return result.docs
-        .map((id) => _getCached(id))
-        .whereType<CoursePlanModel>()
-        .toList();
   }
 }

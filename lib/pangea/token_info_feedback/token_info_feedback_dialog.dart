@@ -4,34 +4,16 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
-import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
-import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
 
 class TokenInfoFeedbackDialog extends StatefulWidget {
-  final String userId;
-  final String roomId;
-  final String fullText;
-  final String detectedLanguage;
-  final List<PangeaToken> tokens;
-  final int selectedToken;
-  final LemmaInfoResponse? lemmaInfo;
-  final String? phonetics;
-  final String wordCardL1;
+  final TokenInfoFeedbackRequestData requestData;
 
   const TokenInfoFeedbackDialog({
     super.key,
-    required this.userId,
-    required this.roomId,
-    required this.fullText,
-    required this.detectedLanguage,
-    required this.tokens,
-    required this.selectedToken,
-    this.lemmaInfo,
-    this.phonetics,
-    required this.wordCardL1,
+    required this.requestData,
   });
 
   @override
@@ -66,16 +48,8 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
 
     try {
       final request = TokenInfoFeedbackRequest(
-        userId: widget.userId,
-        roomId: widget.roomId,
-        fullText: widget.fullText,
-        detectedLanguage: widget.detectedLanguage,
-        tokens: widget.tokens,
-        selectedToken: widget.selectedToken,
-        lemmaInfo: widget.lemmaInfo,
-        phonetics: widget.phonetics,
         userFeedback: _feedbackController.text,
-        wordCardL1: widget.wordCardL1,
+        data: widget.requestData,
       );
 
       final TokenInfoFeedbackResponse response =

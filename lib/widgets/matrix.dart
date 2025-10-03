@@ -195,9 +195,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
             );
             _registerSubs(_loginClientCandidate!.clientName);
             _loginClientCandidate = null;
-            // #Pangea
-            // FluffyChatApp.router.go('/rooms');
-            // Pangea#
+            FluffyChatApp.router.go('/rooms');
           });
     // #Pangea
     candidate.homeserver = Uri.parse("https://${AppConfig.defaultHomeserver}");
@@ -381,9 +379,17 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         }
       } else {
         // #Pangea
-        if (state != LoginState.loggedIn) {
-          FluffyChatApp.router.go('/home');
-        }
+        final isL2Set = await pangeaController.userController.isUserL2Set;
+        final langCode = FluffyChatApp.router.state.pathParameters['langcode'];
+        final registrationRedirect =
+            langCode != null ? '/registration/$langCode' : '/registration';
+        FluffyChatApp.router.go(
+          state == LoginState.loggedIn
+              ? isL2Set
+                  ? '/rooms'
+                  : registrationRedirect
+              : '/home',
+        );
         // FluffyChatApp.router
         //     .go(state == LoginState.loggedIn ? '/rooms' : '/home');
         // Pangea#
