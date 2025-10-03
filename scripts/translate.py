@@ -128,6 +128,10 @@ def reconcile_metadata(
     translations = load_translations(lang_code)
 
     for key in translation_keys:
+        # Skip keys that weren't successfully translated
+        if key not in translations:
+            continue
+
         translation = translations[key]
         meta_key = f"@{key}"
         existing_meta = translations.get(meta_key, {})
