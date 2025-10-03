@@ -4285,9 +4285,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$newCourse() {
       return "New course";
     },
-    get$failedToLoadCourses() {
-      return "Failed to load courses";
-    },
     numModules$1(num) {
       return "" + num + " modules";
     },
@@ -4540,9 +4537,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createAccount() {
       return "Create account";
     },
-    get$noCoursesFound() {
-      return "No courses found";
-    },
     get$loginWithEmail() {
       return "Login with email";
     },
@@ -4611,6 +4605,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$languageMismatchDesc() {
       return "Your target language doesn't match the language of this activity. Update your target language?";
+    },
+    get$noPublicCoursesFound() {
+      return "No public courses found. Would you like to create one?";
+    },
+    get$noCourseTemplatesFound() {
+      return "We couldn't find any courses for your target language. You can chat with Pangea Bot in the meantime, and check back later for more courses.";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6380,7 +6380,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MGRXKzv5zxO8xcAG/pXVsnc72pU="] = d.current;
+  d["ZYCTrs1vyKXaz6aePjl62j+RMIc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_22.part.js.map
