@@ -1,14 +1,20 @@
 import 'dart:async';
+import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
-
+import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/course_topic_model.dart';
+import 'package:fluffychat/pangea/course_plans/translate_schema.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class CourseFilter {
   final LanguageModel? targetLanguage;
@@ -205,5 +211,104 @@ class CoursePlansRepo {
         .map((id) => _getCached(id))
         .whereType<CoursePlanModel>()
         .toList();
+  }
+
+  static Future<CoursePlanModel> translateCoursePlan(
+    TranslateCoursePlanRequest request,
+  ) async {
+    final Requests req = Requests(
+      accessToken: MatrixState.pangeaController.userController.accessToken,
+    );
+
+    // Call translate endpoint 12 times, each with 5s timeout
+    // until we get a 200 or a max of 12 calls - 1 minute
+    for (int i = 0; i < 12; i++) {
+      final Response res = await req.post(
+        url: PApiUrls.coursePlanTranslate,
+        body: request.toJson(),
+      );
+
+      if (res.statusCode == 200) {
+        final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
+        final response = TranslateCoursePlanResponse.fromJson(decodedBody);
+        if (response.coursePlan != null) {
+          return response.coursePlan!;
+        }
+      } else if (res.statusCode == 202) {
+        // Still processing, wait and retry
+      } else {
+        throw Exception("Failed to translate course plan");
+      }
+
+      await Future.delayed(Duration(seconds: i == 0 ? 0 : 5));
+    }
+
+    throw Exception("Translation timed out");
+  }
+
+  static Future<CourseTopicModel> translateTopic(
+    TranslateTopicRequest request,
+  ) async {
+    final Requests req = Requests(
+      accessToken: MatrixState.pangeaController.userController.accessToken,
+    );
+
+    // Call translate endpoint 12 times, each with 5s timeout
+    // until we get a 200 or a max of 12 calls - 1 minute
+    for (int i = 0; i < 12; i++) {
+      final Response res = await req.post(
+        url: PApiUrls.coursePlanTopicTranslate,
+        body: request.toJson(),
+      );
+
+      if (res.statusCode == 200) {
+        final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
+        final response = TranslateTopicResponse.fromJson(decodedBody);
+        if (response.topic != null) {
+          return response.topic!;
+        }
+      } else if (res.statusCode == 202) {
+        // Still processing, wait and retry
+      } else {
+        throw Exception("Failed to translate topic");
+      }
+
+      await Future.delayed(Duration(seconds: i == 0 ? 0 : 5));
+    }
+
+    throw Exception("Translation timed out");
+  }
+
+  static Future<ActivityPlanModel> translateActivity(
+    TranslateActivityRequest request,
+  ) async {
+    final Requests req = Requests(
+      accessToken: MatrixState.pangeaController.userController.accessToken,
+    );
+
+    // Call translate endpoint 12 times, each with 5s timeout
+    // until we get a 200 or a max of 12 calls - 1 minute
+    for (int i = 0; i < 12; i++) {
+      final Response res = await req.post(
+        url: PApiUrls.coursePlanActivityTranslate,
+        body: request.toJson(),
+      );
+
+      if (res.statusCode == 200) {
+        final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
+        final response = TranslateActivityResponse.fromJson(decodedBody);
+        if (response.plan != null) {
+          return response.plan!;
+        }
+      } else if (res.statusCode == 202) {
+        // Still processing, wait and retry
+      } else {
+        throw Exception("Failed to translate activity");
+      }
+
+      await Future.delayed(Duration(seconds: i == 0 ? 0 : 5));
+    }
+
+    throw Exception("Translation timed out");
   }
 }
