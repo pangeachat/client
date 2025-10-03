@@ -4568,6 +4568,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackDesc() {
       return "How should the activity be improved? If you can provide some details, we\u2019ll make the change!";
     },
+    get$feedbackRespDesc() {
+      return "Check back tomorrow for activity updates.";
+    },
     get$feedbackHint() {
       return "Your feedback";
     },
@@ -4611,7 +4614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wJDxqK4RFabQgE2kjZC1ChlyhvU="] = d.current;
+  d["1xEuLlAij3ufr/eoSK89tl1B8p8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_170.part.js.map
