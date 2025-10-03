@@ -15,6 +15,7 @@ import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -225,8 +226,16 @@ class ChatListViewBody extends StatelessWidget {
                         ),
                       ),
                     if (controller.isSearchMode &&
-                        (userSearchResult == null ||
-                            userSearchResult.results.isEmpty))
+                        rooms
+                            .where(
+                              (room) => room
+                                  .getLocalizedDisplayname(
+                                    MatrixLocals(L10n.of(context)),
+                                  )
+                                  .toLowerCase()
+                                  .contains(filter),
+                            )
+                            .isEmpty)
                       Padding(
                         padding: const EdgeInsetsGeometry.all(16.0),
                         child: Text(
