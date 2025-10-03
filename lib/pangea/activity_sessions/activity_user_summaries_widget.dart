@@ -125,7 +125,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                 decoration: ShapeDecoration(
                   color: Theme.of(context).brightness == Brightness.light
                       ? AppConfig.yellowLight
-                      : AppConfig.goldLight.withValues(alpha: 80),
+                      : Color.lerp(AppConfig.gold, Colors.black, 0.3),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),

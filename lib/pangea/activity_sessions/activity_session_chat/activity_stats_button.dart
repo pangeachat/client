@@ -178,41 +178,40 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
       color: _xpCount > 0
           ? (theme.brightness == Brightness.light
               ? AppConfig.yellowLight
-              : Colors.transparent) 
+              : Color.lerp(AppConfig.gold, Colors.black, 0.3)!)
           : theme.colorScheme.surface,
       depressed: _xpCount <= 0 || widget.controller.showActivityDropdown,
       child: AnimatedContainer(
         duration: FluffyThemes.animationDuration,
-        height: 35,
+        width: 300,
+        height: 55,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
           color: _xpCount > 0
               ? theme.brightness == Brightness.light
                   ? AppConfig.yellowLight
-                  : AppConfig.goldLight.withValues(alpha: 80)
+                  : Color.lerp(AppConfig.gold, Colors.black, 0.3)!
               : theme.colorScheme.surface,
           borderRadius: BorderRadius.circular(12),
         ),
         child: analytics == null
             ? const CircularProgressIndicator.adaptive()
-            : Padding(
-                padding: const EdgeInsets.only(left: 8, right: 8),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _StatsBadge(
-                      icon: Icons.radar,
-                      value: "$_xpCount XP",
-                    ),
-                    _StatsBadge(
-                      icon: Symbols.dictionary,
-                      value: "$_vocabCount",
-                    ),
-                    _StatsBadge(
-                      icon: Symbols.toys_and_games,
-                      value: "$_grammarCount",
-                    ),
-                  ],
-                ),
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  _StatsBadge(
+                    icon: Icons.radar,
+                    value: "$_xpCount XP",
+                  ),
+                  _StatsBadge(
+                    icon: Symbols.dictionary,
+                    value: "$_vocabCount",
+                  ),
+                  _StatsBadge(
+                    icon: Symbols.toys_and_games,
+                    value: "$_grammarCount",
+                  ),
+                ],
               ),
       ),
     );
@@ -232,34 +231,31 @@ class _StatsBadge extends StatelessWidget {
     final theme = Theme.of(context);
     final screenWidth = MediaQuery.of(context).size.width;
     final baseStyle = theme.textTheme.bodyMedium;
-    final double fontSize = (screenWidth < 400) ? 10 : 14;
-    final double iconSize = (screenWidth < 400) ? 14 : 18;
-    return Padding(
-      padding: const EdgeInsets.only(left: 8, right: 8),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            icon,
-            size: iconSize,
-            color: theme.colorScheme.onSurface,
-          ),
-          const SizedBox(width: 4),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                value,
-                style: baseStyle?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: theme.colorScheme.onSurface,
-                  fontSize: fontSize,
-                ),
+    final double fontSize = (screenWidth < 400) ? 14 : 18;
+    final double iconSize = (screenWidth < 400) ? 18 : 22;
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(
+          icon,
+          size: iconSize,
+          color: theme.colorScheme.onSurface,
+        ),
+        const SizedBox(width: 4),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              value,
+              style: baseStyle?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: theme.colorScheme.onSurface,
+                fontSize: fontSize,
               ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
