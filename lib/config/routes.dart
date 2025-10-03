@@ -53,7 +53,6 @@ import 'package:fluffychat/pangea/login/pages/public_trip_page.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-import 'package:fluffychat/pangea/spaces/utils/join_with_alias.dart';
 import 'package:fluffychat/pangea/spaces/utils/join_with_link.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
@@ -221,7 +220,9 @@ abstract class AppRoutes {
                 return defaultPageBuilder(
                   context,
                   state,
-                  const PublicTripPage(),
+                  const PublicTripPage(
+                    showFilters: false,
+                  ),
                 );
               },
             ),
@@ -231,7 +232,10 @@ abstract class AppRoutes {
                 return defaultPageBuilder(
                   context,
                   state,
-                  const NewTripPage(route: 'registration'),
+                  const NewTripPage(
+                    route: 'registration',
+                    showFilters: false,
+                  ),
                 );
               },
               routes: [
@@ -287,14 +291,6 @@ abstract class AppRoutes {
         JoinClassWithLink(
           classCode: state.uri.queryParameters[SpaceConstants.classCode],
         ),
-      ),
-    ),
-    GoRoute(
-      path: '/join_with_alias',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        JoinWithAlias(alias: state.uri.queryParameters['alias']),
       ),
     ),
     // Pangea#
