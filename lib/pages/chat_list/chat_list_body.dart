@@ -8,7 +8,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/chat_list.dart';
 import 'package:fluffychat/pages/chat_list/chat_list_item.dart';
 import 'package:fluffychat/pages/chat_list/dummy_chat_list_item.dart';
-import 'package:fluffychat/pages/chat_list/search_title.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/chat_list/widgets/pangea_chat_list_header.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
@@ -16,6 +15,7 @@ import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -106,53 +106,44 @@ class ChatListViewBody extends StatelessWidget {
                       //   icon: const Icon(Icons.explore_outlined),
                       // ),
                       // PublicRoomsHorizontalList(publicRooms: publicRooms),
-                      // Pangea#
-                      SearchTitle(
-                        // #Pangea
-                        // title: L10n.of(context).publicSpaces,
-                        title: L10n.of(context).publicCourses,
-                        // icon: const Icon(Icons.workspaces_outlined),
-                        icon: const Icon(Icons.groups_outlined),
-                        // Pangea#
-                      ),
-                      PublicRoomsHorizontalList(publicRooms: publicSpaces),
-                      SearchTitle(
-                        title: L10n.of(context).users,
-                        icon: const Icon(Icons.group_outlined),
-                      ),
-                      AnimatedContainer(
-                        clipBehavior: Clip.hardEdge,
-                        decoration: const BoxDecoration(),
-                        height: userSearchResult == null ||
-                                userSearchResult.results.isEmpty
-                            ? 0
-                            : 106,
-                        duration: FluffyThemes.animationDuration,
-                        curve: FluffyThemes.animationCurve,
-                        child: userSearchResult == null
-                            ? null
-                            // #Pangea
-                            : UserSearchResultsList(
-                                userSearchResult: userSearchResult,
-                              ),
-                        // : ListView.builder(
-                        //     scrollDirection: Axis.horizontal,
-                        //     itemCount: userSearchResult.results.length,
-                        //     itemBuilder: (context, i) => _SearchItem(
-                        //       title:
-                        //           userSearchResult.results[i].displayName ??
-                        //               userSearchResult
-                        //                   .results[i].userId.localpart ??
-                        //               L10n.of(context).unknownDevice,
-                        //       avatar: userSearchResult.results[i].avatarUrl,
-                        //       onPressed: () => UserDialog.show(
-                        //         context: context,
-                        //         profile: userSearchResult.results[i],
-                        //       ),
-                        //     ),
-                        //   ),
-                        // Pangea#
-                      ),
+                      // SearchTitle(
+                      // title: L10n.of(context).publicSpaces,
+                      // icon: const Icon(Icons.workspaces_outlined),
+                      // ),
+                      // PublicRoomsHorizontalList(publicRooms: publicSpaces),
+                      // SearchTitle(
+                      //   title: L10n.of(context).users,
+                      //   icon: const Icon(Icons.group_outlined),
+                      // ),
+                      // AnimatedContainer(
+                      //   clipBehavior: Clip.hardEdge,
+                      //   decoration: const BoxDecoration(),
+                      //   height: userSearchResult == null ||
+                      //           userSearchResult.results.isEmpty
+                      //       ? 0
+                      //       : 106,
+                      //   duration: FluffyThemes.animationDuration,
+                      //   curve: FluffyThemes.animationCurve,
+                      //   child: userSearchResult == null
+                      //       ? null
+                      // : ListView.builder(
+                      //     scrollDirection: Axis.horizontal,
+                      //     itemCount: userSearchResult.results.length,
+                      //     itemBuilder: (context, i) => _SearchItem(
+                      //       title:
+                      //           userSearchResult.results[i].displayName ??
+                      //               userSearchResult
+                      //                   .results[i].userId.localpart ??
+                      //               L10n.of(context).unknownDevice,
+                      //       avatar: userSearchResult.results[i].avatarUrl,
+                      //       onPressed: () => UserDialog.show(
+                      //         context: context,
+                      //         profile: userSearchResult.results[i],
+                      //       ),
+                      //     ),
+                      //   ),
+                      //   ),
+                      //   Pangea#
                     ],
                     // #Pangea
                     // if (!controller.isSearchMode && AppConfig.showPresences)
@@ -220,21 +211,38 @@ class ChatListViewBody extends StatelessWidget {
                     //           .toList(),
                     //     ),
                     //   ),
-                    // Pangea#
-                    if (controller.isSearchMode)
-                      SearchTitle(
-                        title: L10n.of(context).chats,
-                        icon: const Icon(Icons.forum_outlined),
+                    // if (controller.isSearchMode)
+                    //   SearchTitle(
+                    //     title: L10n.of(context).chats,
+                    //     icon: const Icon(Icons.forum_outlined),
+                    //   ),
+                    if (!controller.isSearchMode)
+                      const InstructionsInlineTooltip(
+                        instructionsEnum: InstructionsEnum.chatListTooltip,
+                        padding: EdgeInsets.only(
+                          left: 16.0,
+                          right: 16.0,
+                          bottom: 16.0,
+                        ),
                       ),
-                    // #Pangea
-                    const InstructionsInlineTooltip(
-                      instructionsEnum: InstructionsEnum.chatListTooltip,
-                      padding: EdgeInsets.only(
-                        left: 16.0,
-                        right: 16.0,
-                        bottom: 16.0,
+                    if (controller.isSearchMode &&
+                        rooms
+                            .where(
+                              (room) => room
+                                  .getLocalizedDisplayname(
+                                    MatrixLocals(L10n.of(context)),
+                                  )
+                                  .toLowerCase()
+                                  .contains(filter),
+                            )
+                            .isEmpty)
+                      Padding(
+                        padding: const EdgeInsetsGeometry.all(16.0),
+                        child: Text(
+                          L10n.of(context).emptyChatSearch,
+                          textAlign: TextAlign.center,
+                        ),
                       ),
-                    ),
                     // if (client.prevBatch != null &&
                     //     rooms.isEmpty &&
                     //     !controller.isSearchMode) ...[
