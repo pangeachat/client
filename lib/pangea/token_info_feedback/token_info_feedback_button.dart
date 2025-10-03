@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_dialog.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 
 class TokenInfoFeedbackButton extends StatelessWidget {
   final TokenInfoFeedbackRequestData requestData;
   final String langCode;
+  final PangeaMessageEvent event;
+  final VoidCallback onUpdate;
 
   const TokenInfoFeedbackButton({
     super.key,
     required this.requestData,
     required this.langCode,
+    required this.event,
+    required this.onUpdate,
   });
 
   Future<void> _submitFeedback(BuildContext context) async {
@@ -21,6 +26,8 @@ class TokenInfoFeedbackButton extends StatelessWidget {
       builder: (context) => TokenInfoFeedbackDialog(
         requestData: requestData,
         langCode: langCode,
+        event: event,
+        onUpdate: onUpdate,
       ),
     );
 

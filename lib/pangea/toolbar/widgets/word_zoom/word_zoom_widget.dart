@@ -6,6 +6,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
@@ -30,6 +31,7 @@ class WordZoomWidget extends StatelessWidget {
   final Event? event;
 
   final TokenInfoFeedbackRequestData? requestData;
+  final PangeaMessageEvent? pangeaMessageEvent;
 
   const WordZoomWidget({
     super.key,
@@ -41,6 +43,7 @@ class WordZoomWidget extends StatelessWidget {
     this.onDismissNewWordOverlay,
     this.event,
     this.requestData,
+    this.pangeaMessageEvent,
   });
 
   String get transformTargetId => "word-zoom-card-${token.uniqueKey}";
@@ -105,10 +108,17 @@ class WordZoomWidget extends StatelessWidget {
                           ),
                         ),
                       ),
-                      requestData != null
+                      requestData != null && pangeaMessageEvent != null
                           ? TokenInfoFeedbackButton(
                               requestData: requestData!,
                               langCode: langCode,
+                              event: pangeaMessageEvent!,
+                              onUpdate: () {
+                                // close the zoom when updating
+                                if (onClose != null) {
+                                  onClose!();
+                                }
+                              },
                             )
                           : const SizedBox(
                               width: 24.0,

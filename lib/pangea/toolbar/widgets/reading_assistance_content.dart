@@ -150,6 +150,7 @@ class ReadingAssistanceContentState extends State<ReadingAssistanceContent> {
                       .activeL1Code()!,
                 )
               : null,
+          pangeaMessageEvent: widget.overlayController.pangeaMessageEvent,
         );
     }
   }

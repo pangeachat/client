@@ -3,6 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
@@ -12,11 +16,15 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 class TokenInfoFeedbackDialog extends StatefulWidget {
   final TokenInfoFeedbackRequestData requestData;
   final String langCode;
+  final PangeaMessageEvent event;
+  final VoidCallback onUpdate;
 
   const TokenInfoFeedbackDialog({
     super.key,
     required this.requestData,
     required this.langCode,
+    required this.event,
+    required this.onUpdate,
   });
 
   @override
@@ -50,9 +58,67 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
     final TokenInfoFeedbackResponse response =
         await TokenInfoFeedbackRepo.submitFeedback(request);
 
-    return response.userFriendlyMessage;
+    // TODO update phonetics if changed
 
-    // TODO: edit token info based on the included updated info in the response
+    // first, update lemma info if changed
+    final originalToken =
+        widget.requestData.tokens[widget.requestData.selectedToken];
+    final token = response.updatedToken ?? originalToken;
+
+    final construct = token.vocabConstructID;
+
+    final currentLemmaInfo = construct.userLemmaInfo;
+    final lemmaResponse = response.updatedLemmaInfo;
+    final updatedLemmaInfo = UserSetLemmaInfo(
+      meaning: lemmaResponse?.meaning ?? '',
+      emojis: lemmaResponse?.emoji ?? [],
+    );
+
+    if (response.updatedLemmaInfo != null &&
+        currentLemmaInfo != updatedLemmaInfo) {
+      await construct.setUserLemmaInfo(updatedLemmaInfo);
+    }
+
+    final originalSent = widget.event.originalSent;
+
+    // if no other changes, just return the message
+    if (response.updatedToken == null &&
+        (response.updatedLanguage == null ||
+            response.updatedLanguage == originalSent?.langCode)) {
+      widget.onUpdate();
+      return response.userFriendlyMessage;
+    }
+
+    final tokens = widget.requestData.tokens;
+    if (response.updatedToken != null) {
+      tokens[widget.requestData.selectedToken] = response.updatedToken!;
+    }
+
+    if (originalSent != null &&
+        response.updatedLanguage != null &&
+        response.updatedLanguage != originalSent.langCode) {
+      originalSent.content.langCode = response.updatedLanguage!;
+    }
+
+    await widget.event.room.pangeaSendTextEvent(
+      widget.requestData.fullText,
+      editEventId: widget.event.eventId,
+      originalSent: originalSent?.content,
+      originalWritten: widget.event.originalWritten?.content,
+      tokensSent: PangeaMessageTokens(
+        tokens: tokens,
+      ),
+      tokensWritten: widget.event.originalWritten?.tokens != null
+          ? PangeaMessageTokens(
+              tokens: widget.event.originalWritten!.tokens!,
+              detections: widget.event.originalWritten?.detections,
+            )
+          : null,
+      choreo: originalSent?.choreo,
+    );
+
+    widget.onUpdate();
+    return response.userFriendlyMessage;
   }
 
   @override
