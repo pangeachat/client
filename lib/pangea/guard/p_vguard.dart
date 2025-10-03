@@ -78,7 +78,6 @@ class PAuthGaurd {
       return '/home';
     }
 
-    final bool hasSetL2 = await pController!.userController.isUserL2Set;
-    return hasSetL2 ? '/rooms' : null;
+    return null;
   }
 }
