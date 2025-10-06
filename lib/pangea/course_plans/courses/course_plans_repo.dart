@@ -1,8 +1,12 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_locations/course_location_media_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_locations/course_location_repo.dart';
@@ -14,6 +18,8 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_request.dart'
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_response.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_search_request.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_search_response.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_translation_request.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_translation_response.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -73,6 +79,31 @@ class CoursePlansRepo {
     } finally {
       cache.remove(request.uuid);
     }
+  }
+
+  static Future<CoursePlanModel> translate(
+    TranslateCoursePlanRequest request,
+  ) async {
+    final Requests req = Requests(
+      accessToken: MatrixState.pangeaController.userController.accessToken,
+    );
+
+    final Response res = await req.post(
+      url: PApiUrls.coursePlanTranslate,
+      body: request.toJson(),
+    );
+
+    if (res.statusCode != 200) {
+      throw Exception(
+        "Failed to translate course plan: ${res.statusCode} ${res.body}",
+      );
+    }
+
+    final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
+
+    final response = TranslateCoursePlanResponse.fromJson(decodedBody);
+
+    return response.coursePlan;
   }
 
   static Future<CoursePlanSearchResponse> search(

@@ -1,11 +1,17 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
+import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_response.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_request.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_response.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -38,6 +44,31 @@ class CourseTopicRepo {
     }
 
     return CourseTopicResponse(topics: topics);
+  }
+
+  static Future<CourseTopicModel> translate(
+    TranslateTopicRequest request,
+  ) async {
+    final Requests req = Requests(
+      accessToken: MatrixState.pangeaController.userController.accessToken,
+    );
+
+    final Response res = await req.post(
+      url: PApiUrls.coursePlanTopicTranslate,
+      body: request.toJson(),
+    );
+
+    if (res.statusCode != 200) {
+      throw Exception(
+        "Failed to translate topic. Status code: ${res.statusCode}",
+      );
+    }
+
+    final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
+
+    final response = TranslateTopicResponse.fromJson(decodedBody);
+
+    return response.topic;
   }
 
   static Future<CourseTopicResponse> _fetch(
