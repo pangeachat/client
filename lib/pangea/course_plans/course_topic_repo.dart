@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -12,6 +9,8 @@ import 'package:fluffychat/pangea/course_plans/translate_schema.dart';
 import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class CourseTopicRepo {
   static final Map<String, Completer<List<CourseTopicModel>>> _cache = {};
@@ -130,27 +129,21 @@ class CourseTopicRepo {
       accessToken: MatrixState.pangeaController.userController.accessToken,
     );
 
-    // Poll the translate endpoint 12 times every 5 seconds,
-    // until we get a 200 or a max of 12 calls - 1 minute
-    for (int i = 0; i < 12; i++) {
-      final Response res = await req.post(
-        url: PApiUrls.coursePlanTopicTranslate,
-        body: request.toJson(),
-      );
+    final Response res = await req.post(
+      url: PApiUrls.coursePlanTopicTranslate,
+      body: request.toJson(),
+    );
 
-      if (res.statusCode == 200) {
-        final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
-        final response = TranslateTopicResponse.fromJson(decodedBody);
-        if (response.topic != null) {
-          return response.topic!;
-        }
-      } else if (res.statusCode == 202) {
-        await Future.delayed(Duration(seconds: i == 0 ? 0 : 5));
-      } else {
-        throw res;
-      }
+    if (res.statusCode != 200) {
+      throw Exception(
+        "Failed to translate topic. Status code: ${res.statusCode}",
+      );
     }
 
-    throw Exception("Translation timed out");
+    final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
+
+    final response = TranslateTopicResponse.fromJson(decodedBody);
+
+    return response.topic;
   }
 }

@@ -29,20 +29,18 @@ class TranslateCoursePlanRequest {
 }
 
 class TranslateCoursePlanResponse {
-  final CoursePlanModel? coursePlan;
+  final CoursePlanModel coursePlan;
 
   TranslateCoursePlanResponse({required this.coursePlan});
 
   factory TranslateCoursePlanResponse.fromJson(Map<String, dynamic> json) {
     return TranslateCoursePlanResponse(
-      coursePlan: json['course_plan'] != null
-          ? CoursePlanModel.fromJson(json['course_plan'])
-          : null,
+      coursePlan: CoursePlanModel.fromJson(json['course_plan']),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "course_plan": coursePlan?.toJson(),
+        "course_plan": coursePlan.toJson(),
       };
 }
 
@@ -69,20 +67,18 @@ class TranslateTopicRequest {
 }
 
 class TranslateTopicResponse {
-  final CourseTopicModel? topic;
+  final CourseTopicModel topic;
 
   TranslateTopicResponse({required this.topic});
 
   factory TranslateTopicResponse.fromJson(Map<String, dynamic> json) {
     return TranslateTopicResponse(
-      topic: json['topic'] != null
-          ? CourseTopicModel.fromJson(json['topic'])
-          : null,
+      topic: CourseTopicModel.fromJson(json['topic']),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "topic": topic?.toJson(),
+        "topic": topic.toJson(),
       };
 }
 
@@ -113,19 +109,17 @@ class TranslateActivityRequest {
 }
 
 class TranslateActivityResponse {
-  final ActivityPlanModel? plan;
+  final ActivityPlanModel plan;
 
   TranslateActivityResponse({required this.plan});
 
   factory TranslateActivityResponse.fromJson(Map<String, dynamic> json) {
     return TranslateActivityResponse(
-      plan: json['plan'] != null
-          ? ActivityPlanModel.fromJson(json['plan'])
-          : null,
+      plan: ActivityPlanModel.fromJson(json['plan']),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "plan": plan?.toJson(),
+        "plan": plan.toJson(),
       };
 }
