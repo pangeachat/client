@@ -1,6 +1,11 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
 import 'package:collection/collection.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_use_model.dart';
@@ -21,9 +26,6 @@ import 'package:fluffychat/pangea/morphs/morph_icon.dart';
 import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 class ConstructIdentifier {
   final String lemma;
@@ -175,24 +177,19 @@ class ConstructIdentifier {
     }
   }
 
-  /// Sets emoji and awards XP if it's a NEW emoji selection
-  /// XP is awarded for:
-  /// - First time setting any emoji on this construct
-  /// - Correct answers in emoji games (isFromCorrectAnswer=true)
+  /// Sets emoji and awards XP if it's a NEW emoji selection or from game
   Future<void> setEmojiWithXP({
     required String emoji,
     bool isFromCorrectAnswer = false,
     String? eventId,
     String? roomId,
   }) async {
-    // Check if this is a new emoji (no emoji set before OR correct game answer)
     final hadEmojiPreviously = userSetEmoji.isNotEmpty;
     final shouldAwardXP = !hadEmojiPreviously || isFromCorrectAnswer;
-    
-    // Set the emoji first
+
+    //Set emoji representation
     await setUserLemmaInfo(UserSetLemmaInfo(emojis: [emoji]));
-    
-    // Award XP for new emoji selections
+
     if (shouldAwardXP) {
       await _recordEmojiAnalytics(
         eventId: eventId,
@@ -200,14 +197,13 @@ class ConstructIdentifier {
       );
     }
   }
-  
-  /// Records analytics and awards XP for emoji activities
+
   Future<void> _recordEmojiAnalytics({
     String? eventId,
     String? roomId,
   }) async {
     const useType = ConstructUseTypeEnum.em;
-    
+
     MatrixState.pangeaController.putAnalytics.setState(
       AnalyticsStream(
         eventId: eventId,
@@ -224,7 +220,7 @@ class ConstructIdentifier {
             ),
             category: category,
             form: lemma,
-            xp: useType.pointValue, // Award full XP for emoji activities
+            xp: useType.pointValue,
           ),
         ],
       ),

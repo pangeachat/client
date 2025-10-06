@@ -1,5 +1,10 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+
+import 'package:shimmer/shimmer.dart';
+
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/analytics_misc/gain_points_animation.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -7,18 +12,15 @@ import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/lemma_meaning_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
-class LemmmaHighlightEmojiRow extends StatefulWidget {
+class LemmaHighlightEmojiRow extends StatefulWidget {
   final LemmaMeaningBuilderState controller;
   final ConstructIdentifier cId;
   final VoidCallback? onTapOverride;
   final bool isSelected;
   final double? iconSize;
 
-  const LemmmaHighlightEmojiRow({
+  const LemmaHighlightEmojiRow({
     super.key,
     required this.controller,
     required this.cId,
@@ -28,10 +30,10 @@ class LemmmaHighlightEmojiRow extends StatefulWidget {
   });
 
   @override
-  LemmmaHighlightEmojiRowState createState() => LemmmaHighlightEmojiRowState();
+  LemmaHighlightEmojiRowState createState() => LemmaHighlightEmojiRowState();
 }
 
-class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
+class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
   String? displayEmoji;
   bool _showShimmer = true;
   bool _hasShimmered = false;
@@ -55,10 +57,9 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
   }
 
   @override
-  didUpdateWidget(LemmmaHighlightEmojiRow oldWidget) {
-    // Check if the construct identifier changed (new word/construct)
+  didUpdateWidget(LemmaHighlightEmojiRow oldWidget) {
+    //Reset shimmer state for diff constructs in 2 column mode
     if (oldWidget.cId != widget.cId) {
-      // Reset shimmer state for new construct
       setState(() {
         displayEmoji = widget.cId.userSetEmoji.firstOrNull;
         _showShimmer = (displayEmoji == null);
@@ -78,7 +79,7 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
   }
 
   Future<void> setEmoji(String emoji, BuildContext context) async {
-    if(widget.cId.userSetEmoji.firstOrNull == null){
+    if (widget.cId.userSetEmoji.firstOrNull == null) {
       debugPrint("SetState called for FIRST emoji");
       final String targetID = "emoji-choice-item-$emoji-${widget.cId.lemma}";
       OverlayUtil.showOverlay(
@@ -98,7 +99,6 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
     }
     try {
       setState(() => displayEmoji = emoji);
-      // Use new method that awards XP for first-time emoji selections
       await widget.cId.setEmojiWithXP(
         emoji: emoji,
         isFromCorrectAnswer: false,
@@ -138,7 +138,6 @@ class LemmmaHighlightEmojiRowState extends State<LemmmaHighlightEmojiRow> {
                     emoji: emoji,
                     cId: widget.cId,
                     onSelectEmoji: () => setEmoji(emoji, context),
-                    // will highlight selected emoji
                     isDisplay: (displayEmoji == emoji),
                     showShimmer: (_showShimmer && !_hasShimmered),
                   ),
@@ -158,8 +157,6 @@ class EmojiChoiceItem extends StatefulWidget {
   final bool showShimmer;
   final ConstructIdentifier cId;
 
-
-
   const EmojiChoiceItem({
     super.key,
     required this.emoji,
@@ -177,7 +174,8 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   bool _isHovered = false;
 
 //Get transform targetID so points can come off of selected emoji
-  String get transformTargetId => "emoji-choice-item-${widget.emoji}-${widget.cId.lemma}";
+  String get transformTargetId =>
+      "emoji-choice-item-${widget.emoji}-${widget.cId.lemma}";
 
   LayerLink get layerLink =>
       MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
@@ -194,7 +192,7 @@ class EmojiChoiceItemState extends State<EmojiChoiceItem> {
           child: Stack(
             children: [
               CompositedTransformTarget(
-              link: layerLink,
+                link: layerLink,
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 200),
                   padding: const EdgeInsets.all(8),
