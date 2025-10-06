@@ -4595,6 +4595,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchDesc() {
       return "Your target language doesn't match the language of this activity. Update your target language?";
     },
+    get$reportWordIssueTooltip() {
+      return "Report word information issue";
+    },
+    get$tokenInfoFeedbackDialogTitle() {
+      return "Word Information Feedback";
+    },
+    get$tokenInfoFeedbackDialogDesc() {
+      return "AI makes mistakes. Please describe any issues you found with the information above.";
+    },
     get$noPublicCoursesFound() {
       return "No public courses found. Would you like to create one?";
     },
@@ -4614,7 +4623,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CcXUXkzqDP9DJYzMkt3FKc4uof4="] = d.current;
+  d["0BSMPSZq2DBZQIGH5NOKFTpFRLg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_193.part.js.map
