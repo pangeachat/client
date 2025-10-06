@@ -42,6 +42,8 @@ import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
+import 'package:fluffychat/pangea/choreographer/utils/language_mismatch_repo.dart';
+import 'package:fluffychat/pangea/choreographer/widgets/igc/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/message_analytics_feedback.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
@@ -1609,15 +1611,6 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   // #Pangea
-  /// Close the combined selection view overlay and clear the message
-  /// text and selection stored for the text in that overlay
-  void closeSelectionOverlay() {
-    MatrixState.pAnyState.closeAllOverlays();
-    // selectedTokenIndicies.clear();
-  }
-  // Pangea#
-
-  // #Pangea
   // void clearSelectedEvents() => setState(() {
   //       selectedEvents.clear();
   //       showEmojiPicker = false;
@@ -1625,7 +1618,7 @@ class ChatController extends State<ChatPageWithRoom>
   void clearSelectedEvents() {
     if (!mounted) return;
     setState(() {
-      closeSelectionOverlay();
+      MatrixState.pAnyState.closeAllOverlays();
       selectedEvents.clear();
       showEmojiPicker = false;
     });
@@ -2167,6 +2160,42 @@ class ChatController extends State<ChatPageWithRoom>
     }
   }
 
+  bool get shouldShowLanguageMismatchPopup {
+    if (!LanguageMismatchRepo.shouldShow) {
+      return false;
+    }
+
+    final l2 = choreographer.l2Lang?.langCodeShort;
+    final activityLang = room.activityPlan?.req.targetLanguage.split('-').first;
+    return activityLang != null && l2 != null && l2 != activityLang;
+  }
+
+  Future<void> showLanguageMismatchPopup() async {
+    if (!shouldShowLanguageMismatchPopup) {
+      return;
+    }
+
+    final targetLanguage = room.activityPlan!.req.targetLanguage;
+    LanguageMismatchRepo.set();
+    OverlayUtil.showPositionedCard(
+      context: context,
+      cardToShow: LanguageMismatchPopup(
+        targetLanguage: targetLanguage,
+        choreographer: choreographer,
+        onUpdate: () async {
+          await choreographer.getLanguageHelp(manual: true);
+          final matches = choreographer.igc.igcTextData?.matches;
+          if (matches?.isNotEmpty == true) {
+            choreographer.igc.showFirstMatch(context);
+          }
+        },
+      ),
+      maxHeight: 325,
+      maxWidth: 325,
+      transformTargetId: choreographer.inputTransformTargetKey,
+    );
+  }
+
   void _showAnalyticsFeedback(
     List<OneConstructUse> constructs,
     String eventId,
@@ -2245,7 +2274,7 @@ class ChatController extends State<ChatPageWithRoom>
           );
         }
 
-        if (room.isActivitySession == true && !room.activityHasStarted) {
+        if (room.isActivitySession && !room.isActivityStarted) {
           return ActivitySessionStartPage(
             activityId: room.activityId!,
             roomId: room.id,

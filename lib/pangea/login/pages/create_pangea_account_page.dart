@@ -65,6 +65,16 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     }
   }
 
+  Future<void> _updateTargetLanguage() async {
+    await MatrixState.pangeaController.userController.updateProfile(
+      (profile) {
+        profile.userSettings.targetLanguage = widget.langCode;
+        return profile;
+      },
+      waitForDataInSync: true,
+    );
+  }
+
   Future<void> _createUserInPangea() async {
     setState(() {
       _loadingProfile = true;
@@ -73,7 +83,8 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
 
     final l2Set = await MatrixState.pangeaController.userController.isUserL2Set;
     if (l2Set) {
-      context.go('/registration/course');
+      await _updateTargetLanguage();
+      _onProfileCreated();
       return;
     }
 
@@ -111,7 +122,7 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       );
 
       await MatrixState.pangeaController.subscriptionController.reinitialize();
-      context.go('/registration/course');
+      await _onProfileCreated();
     } catch (err) {
       if (err is MatrixException) {
         _profileError = err.errorMessage;
@@ -125,10 +136,17 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     }
   }
 
+  Future<void> _onProfileCreated() async {
+    final joinedSpaceId = await MatrixState.pangeaController.spaceCodeController
+        .joinCachedSpaceCode(context);
+    if (joinedSpaceId != null) return;
+    context.go('/registration/course');
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_loadingProfile && _profileError != null) {
-      context.go('/registration/course');
+      _onProfileCreated();
     }
 
     return Scaffold(

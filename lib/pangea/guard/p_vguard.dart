@@ -74,6 +74,10 @@ class PAuthGaurd {
     final isLogged = Matrix.of(context).widget.clients.any(
           (client) => client.isLogged(),
         );
-    return isLogged ? null : '/home';
+    if (!isLogged) {
+      return '/home';
+    }
+
+    return null;
   }
 }
