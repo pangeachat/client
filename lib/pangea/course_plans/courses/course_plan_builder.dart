@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get_storage/get_storage.dart';
 
-import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_request.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 
 class CoursePlanBuilder extends StatefulWidget {
   final String? courseId;
@@ -73,7 +74,12 @@ class CoursePlanController extends State<CoursePlanBuilder> {
         course = null;
       });
 
-      course = await CoursePlansRepo.get(widget.courseId!);
+      final response = await CoursePlansRepo.get(
+        CoursePlanRequest(
+          uuid: widget.courseId!,
+        ),
+      );
+      course = response.course;
       widget.onLoaded?.call(course!);
     } catch (e) {
       widget.onNotFound?.call();

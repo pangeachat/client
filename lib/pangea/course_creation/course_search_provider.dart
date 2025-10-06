@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_filter.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 
@@ -52,7 +53,8 @@ mixin CourseSearchProvider<T extends StatefulWidget> on State<T> {
         loading = true;
         error = null;
       });
-      courses = await CoursePlansRepo.searchByFilter(filter: _filter);
+      final resp = await CoursePlansRepo.searchByFilter(filter: _filter);
+      courses = resp.courses;
     } catch (e, s) {
       debugPrint("Failed to load courses: $e\n$s");
       error = e;

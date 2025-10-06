@@ -4,8 +4,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/course_topic_model.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
@@ -72,7 +72,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     CourseTopicModel topic,
     CoursePlanModel course,
   ) {
-    final topicIndex = course.loadedTopics.indexWhere(
+    final topicIndex = course.loadedTopics.topics.indexWhere(
       (t) => t.uuid == topic.uuid,
     );
 
@@ -80,8 +80,11 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
       throw Exception('Topic not found');
     }
 
-    final topicActivities = course.loadedTopics[topicIndex].loadedActivities;
-    final topicActivityIds = topicActivities.map((a) => a.activityId).toSet();
+    final topicActivities =
+        course.loadedTopics.topics[topicIndex].loadedActivities.activities;
+
+    final topicActivityIds = topic.activityIds.toSet();
+
     final numTwoPersonActivities =
         topicActivities.where((a) => a.req.numberOfParticipants <= 2).length;
 
@@ -95,9 +98,9 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     String userID,
     CoursePlanModel course,
   ) {
-    if (course.loadedTopics.isEmpty) return -1;
-    for (int i = 0; i < course.loadedTopics.length; i++) {
-      if (!_hasCompletedTopic(userID, course.loadedTopics[i], course)) {
+    if (course.loadedTopics.topics.isEmpty) return -1;
+    for (int i = 0; i < course.loadedTopics.topics.length; i++) {
+      if (!_hasCompletedTopic(userID, course.loadedTopics.topics[i], course)) {
         return i;
       }
     }
@@ -119,7 +122,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
       if (user.id == BotName.byEnvironment) continue;
       final topicIndex = currentTopicIndex(user.id, course);
       if (topicIndex != -1) {
-        final topicID = course.loadedTopics[topicIndex].uuid;
+        final topicID = course.loadedTopics.topics[topicIndex].uuid;
         topicUserMap.putIfAbsent(topicID, () => []).add(user);
       }
     }

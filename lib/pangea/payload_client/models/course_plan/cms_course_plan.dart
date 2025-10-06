@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/payload_client/join_field.dart';
 import 'package:fluffychat/pangea/payload_client/polymorphic_relationship.dart';

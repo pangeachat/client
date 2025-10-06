@@ -15,8 +15,8 @@ import 'package:fluffychat/pangea/chat_settings/widgets/delete_space_dialog.dart
 import 'package:fluffychat/pangea/common/widgets/share_room_button.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_builder.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/course_settings.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';

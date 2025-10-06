@@ -14,9 +14,9 @@ import 'package:fluffychat/pangea/activity_suggestions/activity_suggestion_card.
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
-import 'package:fluffychat/pangea/course_plans/activity_summaries_provider.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_builder.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/topic_participant_list.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
@@ -127,10 +127,10 @@ class CourseSettingsState extends State<CourseSettings>
         return Column(
           spacing: isColumnMode ? 40.0 : 36.0,
           mainAxisSize: MainAxisSize.min,
-          children: course.loadedTopics.mapIndexed((index, topic) {
+          children: course.loadedTopics.topics.mapIndexed((index, topic) {
             final unlocked = index <= topicIndex;
             final usersInTopic = topicsToUsers[topic.uuid] ?? [];
-            final activities = topic.loadedActivities;
+            final activities = topic.loadedActivities.activities;
             activities.sort(
               (a, b) => a.req.numberOfParticipants.compareTo(
                 b.req.numberOfParticipants,

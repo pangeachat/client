@@ -2,9 +2,11 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/course_plans/course_media_repo.dart';
-import 'package:fluffychat/pangea/course_plans/course_topic_model.dart';
-import 'package:fluffychat/pangea/course_plans/course_topic_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
+import 'package:fluffychat/pangea/course_plans/course_media/course_media_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_media/course_media_response.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_response.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
@@ -49,7 +51,7 @@ class CoursePlanModel {
       languageOfInstructions.toUpperCase();
 
   String? topicID(String activityID) {
-    for (final topic in loadedTopics) {
+    for (final topic in loadedTopics.topics) {
       if (topic.activityIds.any((id) => id == activityID)) {
         return topic.uuid;
       }
@@ -57,11 +59,11 @@ class CoursePlanModel {
     return null;
   }
 
-  int get totalActivities =>
-      loadedTopics.fold(0, (sum, topic) => sum + topic.activityIds.length);
+  int get totalActivities => loadedTopics.topics
+      .fold(0, (sum, topic) => sum + topic.activityIds.length);
 
   ActivityPlanModel? activityById(String activityID) {
-    for (final topic in loadedTopics) {
+    for (final topic in loadedTopics.topics) {
       final activity = topic.activityById(activityID);
       if (activity != null) {
         return activity;
@@ -104,19 +106,39 @@ class CoursePlanModel {
     };
   }
 
-  bool get topicListComplete => topicIds.length == loadedTopics.length;
-  List<CourseTopicModel> get loadedTopics => CourseTopicRepo.getSync(topicIds);
-  Future<List<CourseTopicModel>> fetchTopics() =>
-      CourseTopicRepo.get(uuid, topicIds);
+  bool get topicListComplete => topicIds.length == loadedTopics.topics.length;
+  CourseTopicResponse get loadedTopics => CourseTopicRepo.getCached(
+        CourseInfoBatchRequest(
+          batchId: uuid,
+          uuids: topicIds,
+        ),
+      );
+  Future<CourseTopicResponse> fetchTopics() => CourseTopicRepo.get(
+        CourseInfoBatchRequest(
+          batchId: uuid,
+          uuids: topicIds,
+        ),
+      );
 
-  bool get mediaListComplete => mediaIds.length == loadedMediaUrls.length;
-  List<String> get loadedMediaUrls => CourseMediaRepo.getSync(mediaIds);
-  Future<List<String>> fetchMediaUrls() => CourseMediaRepo.get(uuid, mediaIds);
-  String? get imageUrl => loadedMediaUrls.isEmpty
-      ? loadedTopics
+  bool get mediaListComplete =>
+      mediaIds.length == loadedMediaUrls.mediaUrls.length;
+  CourseMediaResponse get loadedMediaUrls => CourseMediaRepo.getCached(
+        CourseInfoBatchRequest(
+          batchId: uuid,
+          uuids: mediaIds,
+        ),
+      );
+  Future<CourseMediaResponse> fetchMediaUrls() => CourseMediaRepo.get(
+        CourseInfoBatchRequest(
+          batchId: uuid,
+          uuids: mediaIds,
+        ),
+      );
+  String? get imageUrl => loadedMediaUrls.mediaUrls.isEmpty
+      ? loadedTopics.topics
           .lastWhereOrNull((topic) => topic.imageUrl != null)
           ?.imageUrl
-      : "${Environment.cmsApi}${loadedMediaUrls.first}";
+      : "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first}";
 
   Future<void> init() async {
     final courseFutures = <Future>[
@@ -127,12 +149,12 @@ class CoursePlanModel {
 
     final topicFutures = <Future>[];
     topicFutures.addAll(
-      loadedTopics.map(
+      loadedTopics.topics.map(
         (topic) => topic.fetchActivities(),
       ),
     );
     topicFutures.addAll(
-      loadedTopics.map(
+      loadedTopics.topics.map(
         (topic) => topic.fetchLocationMedia(),
       ),
     );

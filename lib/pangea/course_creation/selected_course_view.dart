@@ -6,7 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/selected_course_page.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_builder.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
 import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/course_settings/pin_clipper.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -57,7 +57,8 @@ class SelectedCourseView extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: ListView.builder(
-                                itemCount: course.loadedTopics.length + 1,
+                                itemCount:
+                                    course.loadedTopics.topics.length + 1,
                                 itemBuilder: (context, index) {
                                   if (index == 0) {
                                     return Column(
@@ -123,7 +124,8 @@ class SelectedCourseView extends StatelessWidget {
                                   }
 
                                   index--;
-                                  final topic = course.loadedTopics[index];
+                                  final topic =
+                                      course.loadedTopics.topics[index];
                                   return Padding(
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 4.0,
@@ -191,7 +193,7 @@ class SelectedCourseView extends StatelessWidget {
                                                       text: L10n.of(context)
                                                           .numActivityPlans(
                                                         topic.loadedActivities
-                                                            .length,
+                                                            .activities.length,
                                                       ),
                                                       fontSize: descFontSize,
                                                       iconSize: smallIconSize,

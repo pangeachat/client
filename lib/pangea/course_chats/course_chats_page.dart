@@ -15,8 +15,8 @@ import 'package:fluffychat/pangea/chat_settings/constants/pangea_room_types.dart
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/course_chats/course_chats_view.dart';
 import 'package:fluffychat/pangea/course_chats/extended_space_rooms_chunk.dart';
-import 'package:fluffychat/pangea/course_plans/activity_summaries_provider.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';

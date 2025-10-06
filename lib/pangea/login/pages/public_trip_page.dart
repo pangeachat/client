@@ -8,8 +8,9 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_search_request.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
@@ -136,9 +137,12 @@ class PublicTripPageState extends State<PublicTripPage> {
     }
 
     try {
-      final searchResult = await CoursePlansRepo.search(
-        discoveredCourses.map((c) => c.courseId).toList(),
+      final resp = await CoursePlansRepo.search(
+        CoursePlanSearchRequest(
+          uuids: discoveredCourses.map((c) => c.courseId).toList(),
+        ),
       );
+      final searchResult = resp.courses;
 
       coursePlans.clear();
       for (final course in searchResult) {
