@@ -224,17 +224,22 @@ class SpacesNavigationRail extends StatelessWidget {
                           //     AppConfig.borderRadius / 2,
                           //   ),
                           // ),
-                          icon: ClipPath(
-                            clipper: MapClipper(),
-                            child: Avatar(
-                              mxContent: rootSpaces[i].avatar,
-                              name: displayname,
-                              border: BorderSide(
-                                width: 1,
-                                color: Theme.of(context).dividerColor,
+                          icon: Badge(
+                            isLabelVisible:
+                                rootSpaces[i].membership == Membership.invite,
+                            smallSize: 10.0,
+                            child: ClipPath(
+                              clipper: MapClipper(),
+                              child: Avatar(
+                                mxContent: rootSpaces[i].avatar,
+                                name: displayname,
+                                border: BorderSide(
+                                  width: 1,
+                                  color: Theme.of(context).dividerColor,
+                                ),
+                                borderRadius: BorderRadius.circular(0),
+                                size: width - (isColumnMode ? 32.0 : 24.0),
                               ),
-                              borderRadius: BorderRadius.circular(0),
-                              size: width - (isColumnMode ? 32.0 : 24.0),
                             ),
                           ),
                           // Pangea#
