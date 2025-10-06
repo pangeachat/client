@@ -4,14 +4,22 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/lemmas/user_set_lemma_info.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_repo.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_request.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_response.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_repo.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/pangea/token_info_feedback/token_info_feedback_response.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/word_zoom/word_zoom_widget.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class TokenInfoFeedbackDialog extends StatefulWidget {
   final TokenInfoFeedbackRequestData requestData;
@@ -36,14 +44,6 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
   final TextEditingController _feedbackController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-    _feedbackController.addListener(() {
-      setState(() {});
-    });
-  }
-
-  @override
   void dispose() {
     _feedbackController.dispose();
     super.dispose();
@@ -58,45 +58,45 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
     final TokenInfoFeedbackResponse response =
         await TokenInfoFeedbackRepo.submitFeedback(request);
 
-    // TODO update phonetics if changed
-
-    // first, update lemma info if changed
     final originalToken =
         widget.requestData.tokens[widget.requestData.selectedToken];
     final token = response.updatedToken ?? originalToken;
 
-    final construct = token.vocabConstructID;
+    // first, update lemma info if changed
+    if (response.updatedLemmaInfo != null) {
+      await _updateLemmaInfo(
+        token,
+        response.updatedLemmaInfo!,
+      );
+    }
 
-    final currentLemmaInfo = construct.userLemmaInfo;
-    final lemmaResponse = response.updatedLemmaInfo;
-    final updatedLemmaInfo = UserSetLemmaInfo(
-      meaning: lemmaResponse?.meaning ?? '',
-      emojis: lemmaResponse?.emoji ?? [],
-    );
-
-    if (response.updatedLemmaInfo != null &&
-        currentLemmaInfo != updatedLemmaInfo) {
-      await construct.setUserLemmaInfo(updatedLemmaInfo);
+    // second, update the phonetic info if changed
+    if (response.updatedPhonetics != null) {
+      await _updatePhoneticTranscription(
+        response.updatedPhonetics!,
+      );
     }
 
     final originalSent = widget.event.originalSent;
 
     // if no other changes, just return the message
-    if (response.updatedToken == null &&
-        (response.updatedLanguage == null ||
-            response.updatedLanguage == originalSent?.langCode)) {
+    final hasTokenUpdate = response.updatedToken != null;
+    final hasLangUpdate = originalSent != null &&
+        response.updatedLanguage != null &&
+        response.updatedLanguage != originalSent.langCode;
+
+    if (!hasTokenUpdate && !hasLangUpdate) {
       widget.onUpdate();
       return response.userFriendlyMessage;
     }
 
-    final tokens = widget.requestData.tokens;
-    if (response.updatedToken != null) {
+    // update the tokens to be sent in the message edit
+    final tokens = List<PangeaToken>.from(widget.requestData.tokens);
+    if (hasTokenUpdate) {
       tokens[widget.requestData.selectedToken] = response.updatedToken!;
     }
 
-    if (originalSent != null &&
-        response.updatedLanguage != null &&
-        response.updatedLanguage != originalSent.langCode) {
+    if (hasLangUpdate) {
       originalSent.content.langCode = response.updatedLanguage!;
     }
 
@@ -119,6 +119,38 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
 
     widget.onUpdate();
     return response.userFriendlyMessage;
+  }
+
+  Future<void> _updateLemmaInfo(
+    PangeaToken token,
+    LemmaInfoResponse response,
+  ) async {
+    final construct = token.vocabConstructID;
+
+    final currentLemmaInfo = construct.userLemmaInfo;
+    final updatedLemmaInfo = UserSetLemmaInfo(
+      meaning: response.meaning,
+      emojis: response.emoji,
+    );
+
+    if (currentLemmaInfo != updatedLemmaInfo) {
+      await construct.setUserLemmaInfo(updatedLemmaInfo);
+    }
+  }
+
+  Future<void> _updatePhoneticTranscription(
+    PhoneticTranscriptionResponse response,
+  ) async {
+    final req = PhoneticTranscriptionRequest(
+      arc: LanguageArc(
+        l1: PLanguageStore.byLangCode(widget.requestData.wordCardL1) ??
+            MatrixState.pangeaController.languageController.userL1!,
+        l2: PLanguageStore.byLangCode(widget.langCode) ??
+            MatrixState.pangeaController.languageController.userL2!,
+      ),
+      content: response.content,
+    );
+    await PhoneticTranscriptionRepo.set(req, response);
   }
 
   @override
@@ -208,25 +240,31 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
                       maxLines: 5,
                     ),
                     // Submit button
-                    ElevatedButton(
-                      onPressed: (_feedbackController.text.isNotEmpty)
-                          ? () async {
-                              final resp = await showFutureLoadingDialog(
-                                context: context,
-                                future: () => _submitFeedback(),
-                              );
+                    ValueListenableBuilder<TextEditingValue>(
+                      valueListenable: _feedbackController,
+                      builder: (context, value, _) {
+                        final isNotEmpty = value.text.isNotEmpty;
+                        return ElevatedButton(
+                          onPressed: isNotEmpty
+                              ? () async {
+                                  final resp = await showFutureLoadingDialog(
+                                    context: context,
+                                    future: () => _submitFeedback(),
+                                  );
 
-                              if (!resp.isError) {
-                                Navigator.of(context).pop(resp.result!);
-                              }
-                            }
-                          : null,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(L10n.of(context).feedbackButton),
-                        ],
-                      ),
+                                  if (!resp.isError) {
+                                    Navigator.of(context).pop(resp.result!);
+                                  }
+                                }
+                              : null,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(L10n.of(context).feedbackButton),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox.shrink(),
                   ],

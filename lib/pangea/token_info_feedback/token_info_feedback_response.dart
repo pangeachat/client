@@ -1,12 +1,13 @@
 import 'package:fluffychat/pangea/events/models/content_feedback.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
+import 'package:fluffychat/pangea/phonetic_transcription/phonetic_transcription_response.dart';
 
 class TokenInfoFeedbackResponse implements JsonSerializable {
   final String userFriendlyMessage;
   final PangeaToken? updatedToken;
   final LemmaInfoResponse? updatedLemmaInfo;
-  final String? updatedPhonetics;
+  final PhoneticTranscriptionResponse? updatedPhonetics;
   final String? updatedLanguage;
 
   TokenInfoFeedbackResponse({
@@ -28,7 +29,11 @@ class TokenInfoFeedbackResponse implements JsonSerializable {
               json['updated_lemma_info'] as Map<String, dynamic>,
             )
           : null,
-      updatedPhonetics: json['updated_phonetics'] as String?,
+      updatedPhonetics: json['updated_phonetics'] != null
+          ? PhoneticTranscriptionResponse.fromJson(
+              json['updated_phonetics'] as Map<String, dynamic>,
+            )
+          : null,
       updatedLanguage: json['updated_language'] as String?,
     );
   }
@@ -39,7 +44,7 @@ class TokenInfoFeedbackResponse implements JsonSerializable {
       'user_friendly_message': userFriendlyMessage,
       'updated_token': updatedToken?.toJson(),
       'updated_lemma_info': updatedLemmaInfo?.toJson(),
-      'updated_phonetics': updatedPhonetics,
+      'updated_phonetics': updatedPhonetics?.toJson(),
       'updated_language': updatedLanguage,
     };
   }
