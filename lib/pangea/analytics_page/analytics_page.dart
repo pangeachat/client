@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
@@ -34,8 +32,6 @@ class AnalyticsPage extends StatefulWidget {
 }
 
 class _AnalyticsPageState extends State<AnalyticsPage> {
-  StreamSubscription? _analyticsStreamSubscription;
-
   @override
   void initState() {
     super.initState();
@@ -43,19 +39,12 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
 
     // Check if getAnalytics is initialized, if not wait for the first stream entry
     if (!analytics.initCompleter.isCompleted) {
-      _analyticsStreamSubscription =
-          analytics.analyticsStream.stream.take(1).listen((_) {
+      analytics.analyticsStream.stream.first.then((_) {
         if (mounted) {
           setState(() {});
         }
       });
     }
-  }
-
-  @override
-  void dispose() {
-    _analyticsStreamSubscription?.cancel();
-    super.dispose();
   }
 
   @override
