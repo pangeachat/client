@@ -80,7 +80,7 @@ class CoursePlanModel {
       cefrLevel: LanguageLevelTypeEnumExtension.fromString(json['cefr_level']),
       title: json['title'] as String,
       description: json['description'] as String,
-      uuid: json['uuid'] as String,
+      uuid: json['uuid'] as String? ?? json['id'] as String,
       topicIds: (json['topic_ids'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -148,16 +148,10 @@ class CoursePlanModel {
     await Future.wait(courseFutures);
 
     final topicFutures = <Future>[];
-    topicFutures.addAll(
-      loadedTopics.topics.map(
-        (topic) => topic.fetchActivities(),
-      ),
-    );
-    topicFutures.addAll(
-      loadedTopics.topics.map(
-        (topic) => topic.fetchLocationMedia(),
-      ),
-    );
+    for (final topic in loadedTopics.topics) {
+      topicFutures.add(topic.fetchActivities());
+      topicFutures.add(topic.fetchLocationMedia());
+    }
     await Future.wait(topicFutures);
   }
 }

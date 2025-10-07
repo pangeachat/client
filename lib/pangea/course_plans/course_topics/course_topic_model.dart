@@ -109,7 +109,7 @@ class CourseTopicModel {
     return CourseTopicModel(
       title: json['title'] as String,
       description: json['description'] as String,
-      uuid: json['uuid'] as String,
+      uuid: json['uuid'] as String? ?? json['id'] as String,
       activityIds: (json['activity_ids'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
