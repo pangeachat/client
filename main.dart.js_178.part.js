@@ -4352,8 +4352,11 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Play with Pangea Bot";
     },
-    get$inviteFriends() {
-      return "Invite friends";
+    get$inviteFriendsToActivity() {
+      return "Invite friends to activity";
+    },
+    get$inviteFriendsToActivityCourse() {
+      return "Invite friends to activity and course";
     },
     get$waitNotDone() {
       return "Wait I\u2019m not done!";
@@ -4623,7 +4626,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2UU2FcVDTEsrfBZalQUAUqopJiQ="] = d.current;
+  d["e9KicU8Po+xM4hWp1/Jb8Lpn21Y="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map
