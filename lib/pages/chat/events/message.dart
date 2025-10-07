@@ -165,7 +165,7 @@ class Message extends StatelessWidget {
     final ownMessage = event.senderId == client.userID;
     final alignment = ownMessage ? Alignment.topRight : Alignment.topLeft;
 
-    var color = theme.colorScheme.surfaceContainerHigh;
+    var color = theme.colorScheme.surfaceContainerHighest;
     final displayTime = event.type == EventTypes.RoomCreate ||
         nextEvent == null ||
         !event.originServerTs.sameEnvironment(nextEvent!.originServerTs);
@@ -565,6 +565,11 @@ class Message extends StatelessWidget {
                                               child:
                                                   // #Pangea
                                                   PressableButton(
+                                                buttonHeight: theme.colorScheme
+                                                            .brightness ==
+                                                        Brightness.dark
+                                                    ? 5
+                                                    : 4,
                                                 triggerAnimation: controller
                                                     .showToolbarStream.stream
                                                     .where(
