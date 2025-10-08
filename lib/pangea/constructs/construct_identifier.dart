@@ -185,7 +185,8 @@ class ConstructIdentifier {
     String? roomId,
   }) async {
     final hadEmojiPreviously = userSetEmoji.isNotEmpty;
-    final shouldAwardXP = !hadEmojiPreviously || isFromCorrectAnswer;
+    //correct answers already award xp so we don't here, but we do still need to set the emoji if it isn't already set
+    final shouldAwardXP = !hadEmojiPreviously && !isFromCorrectAnswer;
 
     //Set emoji representation
     await setUserLemmaInfo(UserSetLemmaInfo(emojis: [emoji]));

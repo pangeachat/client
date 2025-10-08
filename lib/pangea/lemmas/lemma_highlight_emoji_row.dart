@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
@@ -79,30 +80,30 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
   }
 
   Future<void> setEmoji(String emoji, BuildContext context) async {
-    if (widget.cId.userSetEmoji.firstOrNull == null) {
-      debugPrint("SetState called for FIRST emoji");
-      final String targetID = "emoji-choice-item-$emoji-${widget.cId.lemma}";
-      OverlayUtil.showOverlay(
-        overlayKey: "${targetID}_points",
-        followerAnchor: Alignment.bottomCenter,
-        targetAnchor: Alignment.bottomCenter,
-        context: context,
-        child: PointsGainedAnimation(
-          points: 2,
-          targetID: "emoji-choice-item-$emoji-${widget.cId.lemma}",
-        ),
-        transformTargetId: targetID,
-        closePrevOverlay: false,
-        backDropToDismiss: false,
-        ignorePointer: true,
-      );
-    }
     try {
-      setState(() => displayEmoji = emoji);
+      final String? userSetEmoji = widget.cId.userSetEmoji.firstOrNull;
       await widget.cId.setEmojiWithXP(
         emoji: emoji,
         isFromCorrectAnswer: false,
       );
+      setState(() => displayEmoji = emoji);
+      if (userSetEmoji == null) {
+        final String targetID = "emoji-choice-item-$emoji-${widget.cId.lemma}";
+        OverlayUtil.showOverlay(
+          overlayKey: "${targetID}_points",
+          followerAnchor: Alignment.bottomCenter,
+          targetAnchor: Alignment.bottomCenter,
+          context: context,
+          child: PointsGainedAnimation(
+            points: 2,
+            targetID: "emoji-choice-item-$emoji-${widget.cId.lemma}",
+          ),
+          transformTargetId: targetID,
+          closePrevOverlay: false,
+          backDropToDismiss: false,
+          ignorePointer: true,
+        );
+      }
     } catch (e, s) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(data: widget.cId.toJson(), e: e, s: s);
