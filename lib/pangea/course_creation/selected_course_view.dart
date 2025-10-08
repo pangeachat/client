@@ -29,14 +29,10 @@ class SelectedCourseView extends StatelessWidget {
     const double mediumIconSize = 16.0;
     const double smallIconSize = 12.0;
 
-    final spaceId = controller.widget.spaceId;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          spaceId != null
-              ? L10n.of(context).addCoursePlan
-              : L10n.of(context).newCourse,
+          controller.title,
         ),
       ),
       body: SafeArea(
@@ -55,11 +51,23 @@ class SelectedCourseView extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.all(12.0),
+                              padding: const EdgeInsets.only(
+                                top: 12.0,
+                                left: 12.0,
+                                right: 12.0,
+                              ),
                               child: ListView.builder(
                                 itemCount:
-                                    course.loadedTopics.topics.length + 1,
+                                    course.loadedTopics.topics.length + 2,
                                 itemBuilder: (context, index) {
+                                  String displayname = course.title;
+                                  final roomChunk = controller.widget.roomChunk;
+                                  if (roomChunk != null) {
+                                    displayname = roomChunk.name ??
+                                        roomChunk.canonicalAlias ??
+                                        L10n.of(context).emptyChat;
+                                  }
+
                                   if (index == 0) {
                                     return Column(
                                       spacing: 8.0,
@@ -67,7 +75,10 @@ class SelectedCourseView extends StatelessWidget {
                                         ClipPath(
                                           clipper: MapClipper(),
                                           child: ImageByUrl(
-                                            imageUrl: course.imageUrl,
+                                            imageUrl: controller
+                                                    .widget.roomChunk?.avatarUrl
+                                                    ?.toString() ??
+                                                course.imageUrl,
                                             width: 100.0,
                                             borderRadius:
                                                 BorderRadius.circular(0.0),
@@ -82,7 +93,7 @@ class SelectedCourseView extends StatelessWidget {
                                           ),
                                         ),
                                         Text(
-                                          course.title,
+                                          displayname,
                                           style: const TextStyle(
                                             fontSize: titleFontSize,
                                           ),
@@ -124,6 +135,12 @@ class SelectedCourseView extends StatelessWidget {
                                   }
 
                                   index--;
+
+                                  if (index >=
+                                      course.loadedTopics.topics.length) {
+                                    return const SizedBox(height: 12.0);
+                                  }
+
                                   final topic =
                                       course.loadedTopics.topics[index];
                                   return Padding(
@@ -271,9 +288,7 @@ class SelectedCourseView extends StatelessWidget {
                                     ),
                                     onPressed: () => showFutureLoadingDialog(
                                       context: context,
-                                      future: () => spaceId != null
-                                          ? controller.addCourseToSpace(course)
-                                          : controller.launchCourse(course),
+                                      future: () => controller.submit(course),
                                     ),
                                     child: Row(
                                       spacing: 8.0,
@@ -281,9 +296,7 @@ class SelectedCourseView extends StatelessWidget {
                                       children: [
                                         const Icon(Icons.map_outlined),
                                         Text(
-                                          spaceId != null
-                                              ? L10n.of(context).addCoursePlan
-                                              : L10n.of(context).createCourse,
+                                          controller.buttonText,
                                           style: const TextStyle(
                                             fontSize: titleFontSize,
                                           ),

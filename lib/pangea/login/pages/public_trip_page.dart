@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
@@ -11,16 +12,17 @@ import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_search_request.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicTripPage extends StatefulWidget {
+  final String route;
   final bool showFilters;
   const PublicTripPage({
     super.key,
+    required this.route,
     this.showFilters = true,
   });
 
@@ -32,8 +34,6 @@ class PublicTripPageState extends State<PublicTripPage> {
   bool loading = true;
   Object? error;
 
-  LanguageLevelTypeEnum? languageLevelFilter;
-  LanguageModel? instructionLanguageFilter;
   LanguageModel? targetLanguageFilter;
 
   List<PublicCoursesChunk> discoveredCourses = [];
@@ -49,20 +49,7 @@ class PublicTripPageState extends State<PublicTripPage> {
       setTargetLanguageFilter(target);
     }
 
-    final base = MatrixState.pangeaController.languageController.systemLanguage;
-    if (base != null) {
-      setInstructionLanguageFilter(base);
-    }
-
     _loadCourses();
-  }
-
-  void setLanguageLevelFilter(LanguageLevelTypeEnum? level) {
-    setState(() => languageLevelFilter = level);
-  }
-
-  void setInstructionLanguageFilter(LanguageModel? language) {
-    setState(() => instructionLanguageFilter = language);
   }
 
   void setTargetLanguageFilter(LanguageModel? language) {
@@ -70,27 +57,13 @@ class PublicTripPageState extends State<PublicTripPage> {
   }
 
   List<PublicCoursesChunk> get filteredCourses {
-    List<PublicCoursesChunk> filtered = discoveredCourses;
-
-    if (languageLevelFilter != null) {
-      filtered = filtered.where(
-        (chunk) {
-          final course = coursePlans[chunk.courseId];
-          if (course == null) return false;
-          return course.cefrLevel == languageLevelFilter;
-        },
-      ).toList();
-    }
-
-    if (instructionLanguageFilter != null) {
-      filtered = filtered.where(
-        (chunk) {
-          final course = coursePlans[chunk.courseId];
-          if (course == null) return false;
-          return course.baseLanguageModel == instructionLanguageFilter;
-        },
-      ).toList();
-    }
+    List<PublicCoursesChunk> filtered = discoveredCourses
+        .where(
+          (c) => !Matrix.of(context).client.rooms.any(
+                (r) => r.id == c.room.roomId && r.membership == Membership.join,
+              ),
+        )
+        .toList();
 
     if (targetLanguageFilter != null) {
       filtered = filtered.where(
@@ -132,8 +105,6 @@ class PublicTripPageState extends State<PublicTripPage> {
           'nextBatch': nextBatch,
         },
       );
-    } finally {
-      setState(() => loading = false);
     }
 
     try {
@@ -159,7 +130,7 @@ class PublicTripPageState extends State<PublicTripPage> {
       );
     } finally {
       if (mounted) {
-        setState(() {});
+        setState(() => loading = false);
       }
     }
   }
@@ -197,18 +168,6 @@ class PublicTripPageState extends State<PublicTripPage> {
                           alignment: WrapAlignment.start,
                           children: [
                             CoursePlanFilter<LanguageModel>(
-                              value: instructionLanguageFilter,
-                              onChanged: setInstructionLanguageFilter,
-                              items: MatrixState
-                                  .pangeaController.pLanguageStore.baseOptions,
-                              displayname: (v) =>
-                                  v.getDisplayName(context) ?? v.displayName,
-                              enableSearch: true,
-                              defaultName:
-                                  L10n.of(context).languageOfInstructionsLabel,
-                              shortName: L10n.of(context).allLanguages,
-                            ),
-                            CoursePlanFilter<LanguageModel>(
                               value: targetLanguageFilter,
                               onChanged: setTargetLanguageFilter,
                               items: MatrixState.pangeaController.pLanguageStore
@@ -218,14 +177,6 @@ class PublicTripPageState extends State<PublicTripPage> {
                               enableSearch: true,
                               defaultName: L10n.of(context).targetLanguageLabel,
                               shortName: L10n.of(context).allLanguages,
-                            ),
-                            CoursePlanFilter<LanguageLevelTypeEnum>(
-                              value: languageLevelFilter,
-                              onChanged: setLanguageLevelFilter,
-                              items: LanguageLevelTypeEnum.values,
-                              displayname: (v) => v.string,
-                              defaultName: L10n.of(context).cefrLevelLabel,
-                              shortName: L10n.of(context).allCefrLevels,
                             ),
                           ],
                         ),
@@ -301,7 +252,10 @@ class PublicTripPageState extends State<PublicTripPage> {
                             L10n.of(context).emptyChat;
 
                         return InkWell(
-                          onTap: () {},
+                          onTap: () => context.go(
+                            '/${widget.route}/course/public/${filteredCourses[index].courseId}',
+                            extra: roomChunk,
+                          ),
                           borderRadius: BorderRadius.circular(12.0),
                           child: Container(
                             padding: const EdgeInsets.all(12.0),
