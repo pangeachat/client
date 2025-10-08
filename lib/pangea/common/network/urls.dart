@@ -75,6 +75,14 @@ class PApiUrls {
   static String constructSummary =
       "${PApiUrls._choreoEndpoint}/construct_summary";
 
+  ///--------------------------- course translations ---------------------------
+  static String coursePlanTranslate =
+      "${PApiUrls._choreoEndpoint}/course_plans/translate";
+  static String coursePlanTopicTranslate =
+      "${PApiUrls._choreoEndpoint}/topics/translate";
+  static String coursePlanActivityTranslate =
+      "${PApiUrls._choreoEndpoint}/activity_plan/translate";
+
   ///-------------------------------- revenue cat --------------------------
   static String rcAppsChoreo = "${PApiUrls._subscriptionEndpoint}/app_ids";
   static String rcProductsChoreo =
