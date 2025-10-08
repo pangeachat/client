@@ -15,9 +15,9 @@ import 'package:fluffychat/pangea/course_plans/course_activities/activity_summar
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_request.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_translation_request.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -266,12 +266,12 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
 
   Future<void> _loadActivity() async {
     if (courseParent?.coursePlan != null) {
-      final response = await CoursePlansRepo.get(
-        CoursePlanRequest(
-          uuid: courseParent!.coursePlan!.uuid,
+      course = await CoursePlansRepo.get(
+        TranslateCoursePlanRequest(
+          coursePlanIds: [courseParent!.coursePlan!.uuid],
+          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
         ),
       );
-      course = response.course;
     }
 
     final activitiesResponse = await CourseActivityRepo.get(

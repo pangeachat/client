@@ -38,7 +38,7 @@ mixin CourseSearchProvider<T extends StatefulWidget> on State<T> {
         error = null;
       });
       final resp = await CoursePlansRepo.searchByFilter(filter: _filter);
-      courses = resp.courses;
+      courses = resp.coursePlans.values.toList();
     } catch (e, s) {
       debugPrint("Failed to load courses: $e\n$s");
       error = e;

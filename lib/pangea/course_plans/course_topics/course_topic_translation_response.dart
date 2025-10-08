@@ -1,17 +1,23 @@
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 
 class TranslateTopicResponse {
-  final CourseTopicModel topic;
+  final Map<String, CourseTopicModel> topics;
 
-  TranslateTopicResponse({required this.topic});
+  TranslateTopicResponse({required this.topics});
 
   factory TranslateTopicResponse.fromJson(Map<String, dynamic> json) {
+    final topicsEntry = json['topics'] as Map<String, dynamic>;
     return TranslateTopicResponse(
-      topic: CourseTopicModel.fromJson(json['topic']),
+      topics: topicsEntry.map(
+        (key, value) => MapEntry(
+          key,
+          CourseTopicModel.fromJson(value),
+        ),
+      ),
     );
   }
 
   Map<String, dynamic> toJson() => {
-        "topic": topic.toJson(),
+        "topics": topics.map((key, value) => MapEntry(key, value.toJson())),
       };
 }

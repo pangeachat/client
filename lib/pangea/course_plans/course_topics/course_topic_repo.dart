@@ -46,7 +46,7 @@ class CourseTopicRepo {
     return CourseTopicResponse(topics: topics);
   }
 
-  static Future<CourseTopicModel> translate(
+  static Future<TranslateTopicResponse> translate(
     TranslateTopicRequest request,
   ) async {
     final Requests req = Requests(
@@ -68,7 +68,7 @@ class CourseTopicRepo {
 
     final response = TranslateTopicResponse.fromJson(decodedBody);
 
-    return response.topic;
+    return response;
   }
 
   static Future<CourseTopicResponse> _fetch(

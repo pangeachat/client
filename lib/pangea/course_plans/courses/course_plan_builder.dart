@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_request.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_translation_request.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class CoursePlanBuilder extends StatefulWidget {
   final String? courseId;
@@ -76,10 +77,12 @@ class CoursePlanController extends State<CoursePlanBuilder> {
     }
 
     try {
-      final resp = await CoursePlansRepo.get(
-        CoursePlanRequest(uuid: widget.courseId!),
+      course = await CoursePlansRepo.get(
+        TranslateCoursePlanRequest(
+          coursePlanIds: [widget.courseId!],
+          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        ),
       );
-      course = resp.course;
       widget.onLoaded?.call(course!);
     } catch (e) {
       widget.onNotFound?.call();

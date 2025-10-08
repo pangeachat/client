@@ -49,7 +49,7 @@ class CourseActivityRepo {
     return CourseActivitiesResponse(activities: activities);
   }
 
-  static Future<ActivityPlanModel> translate(
+  static Future<TranslateActivityResponse> translate(
     TranslateActivityRequest request,
   ) async {
     final Requests req = Requests(
@@ -71,7 +71,7 @@ class CourseActivityRepo {
 
     final response = TranslateActivityResponse.fromJson(decodedBody);
 
-    return response.plan;
+    return response;
   }
 
   static Future<CourseActivitiesResponse> _fetch(
