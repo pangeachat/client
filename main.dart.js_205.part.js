@@ -3811,9 +3811,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Kakskl\xf5psake redigeerimiseks.";
     },
-    get$languageOfInstructionsLabel() {
-      return "Juhiste keel";
-    },
     get$targetLanguageLabel() {
       return "Eesm\xe4rk keel";
     },
@@ -4552,9 +4549,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$allLanguages() {
       return "All languages";
     },
-    get$allCefrLevels() {
-      return "All CEFR levels";
-    },
     get$chatListTooltip() {
       return "Here you\u2019ll find your direct messages! Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
     },
@@ -4628,7 +4622,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["D09ufmlUh3pYX77MX6BuOn1yiMo="] = d.current;
+  d["TyHc/nCpR4GuJzUuykRAyH6BAdk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map
