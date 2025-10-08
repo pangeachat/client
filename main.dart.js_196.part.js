@@ -1529,6 +1529,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noIdenticalLanguages() {
       return "Por favor, elija diferentes idiomas base e idiomas de aprender.";
     },
+    get$joinWithClassCode() {
+      return "Join course";
+    },
     get$languageLevelPreA1() {
       return "Principiante absoluto (Pre A1)";
     },
@@ -4626,7 +4629,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1iqzPfYhxOz1uP6nb9KmY9A3h1k="] = d.current;
+  d["wl+jh/0k9JOmaYSweRiGhCIRjhU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_196.part.js.map

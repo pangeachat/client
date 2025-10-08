@@ -1528,6 +1528,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noIdenticalLanguages() {
       return "Palun vali erinevad baas- ja sihtkeeled";
     },
+    get$joinWithClassCode() {
+      return "Liitu ruumiga";
+    },
     get$languageLevelPreA1() {
       return "T\xf5eline algaja (Pre A1)";
     },
@@ -4625,7 +4628,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["paYK5r7SyCnZ5NabQHoUcY35SMI="] = d.current;
+  d["D09ufmlUh3pYX77MX6BuOn1yiMo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map
