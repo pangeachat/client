@@ -94,6 +94,8 @@ class ActivitySessionStartView extends StatelessWidget {
 
                   CourseActivityRepo.setSentFeedback(
                     controller.widget.activityId,
+                    MatrixState.pangeaController.languageController
+                        .activeL1Code()!,
                   );
 
                   await showDialog(

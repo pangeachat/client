@@ -13,7 +13,7 @@ import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activ
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
-import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
@@ -275,12 +275,13 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
 
     final activitiesResponse = await CourseActivityRepo.get(
-      CourseInfoBatchRequest(
-        batchId: widget.activityId,
-        uuids: [widget.activityId],
+      TranslateActivityRequest(
+        activityIds: [widget.activityId],
+        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
       ),
+      widget.activityId,
     );
-    final activities = activitiesResponse.activities;
+    final activities = activitiesResponse.plans.values.toList();
 
     if (activities.isEmpty) {
       throw Exception("Activity not found");

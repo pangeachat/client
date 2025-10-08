@@ -118,11 +118,11 @@ class CourseTopicRepo {
     String l1,
   ) async {
     final List<Future> futures = [];
-    for (final topic in response.topics.values) {
+    for (final entry in response.topics.entries) {
       futures.add(
         _storage.write(
-          "${topic.uuid}_$l1",
-          topic.toJson(),
+          "${entry.key}_$l1",
+          entry.value.toJson(),
         ),
       );
     }

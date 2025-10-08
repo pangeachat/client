@@ -207,7 +207,7 @@ class SelectedCourseView extends StatelessWidget {
                                                       text: L10n.of(context)
                                                           .numActivityPlans(
                                                         topic.loadedActivities
-                                                            .activities.length,
+                                                            .length,
                                                       ),
                                                       fontSize: descFontSize,
                                                       iconSize: smallIconSize,

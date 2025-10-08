@@ -5,48 +5,33 @@ import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/course_activities_image_urls_request.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/course_activities_image_urls_response.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/course_activities_response.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_response.dart';
-import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
-import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_activity.dart';
-import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_activity_media.dart';
-import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseActivityRepo {
-  static final Map<String, Completer<CourseActivitiesResponse>> _cache = {};
+  static final Map<String, Completer<TranslateActivityResponse>> _cache = {};
   static final GetStorage _storage = GetStorage('course_activity_storage');
 
-  static Future<CourseActivitiesResponse> get(
-    CourseInfoBatchRequest request,
+  static Future<TranslateActivityResponse> get(
+    TranslateActivityRequest request,
+    String batchId,
   ) async {
-    final activities = <ActivityPlanModel>[];
-
     await _storage.initStorage;
-    activities.addAll(getCached(request).activities);
+    final activities = getCached(request).plans;
 
-    final toFetch = request.uuids
-        .where((id) => activities.indexWhere((a) => a.activityId == id) == -1)
-        .toList();
+    final toFetch =
+        request.activityIds.where((id) => !activities.containsKey(id)).toList();
 
     if (toFetch.isNotEmpty) {
-      final fetchedActivities = await _fetch(
-        CourseInfoBatchRequest(
-          batchId: request.batchId,
-          uuids: toFetch,
-        ),
-      );
-      activities.addAll(fetchedActivities.activities);
-      await _setCached(fetchedActivities);
+      final fetchedActivities = await _fetch(request, batchId);
+      activities.addAll(fetchedActivities.plans);
+      await _setCached(fetchedActivities, request.l1);
     }
 
-    return CourseActivitiesResponse(activities: activities);
+    return TranslateActivityResponse(plans: activities);
   }
 
   static Future<TranslateActivityResponse> translate(
@@ -74,124 +59,67 @@ class CourseActivityRepo {
     return response;
   }
 
-  static Future<CourseActivitiesResponse> _fetch(
-    CourseInfoBatchRequest request,
+  static Future<TranslateActivityResponse> _fetch(
+    TranslateActivityRequest request,
+    String batchId,
   ) async {
-    if (_cache.containsKey(request.batchId)) {
-      return _cache[request.batchId]!.future;
+    if (_cache.containsKey(batchId)) {
+      return _cache[batchId]!.future;
     }
 
-    final completer = Completer<CourseActivitiesResponse>();
-    _cache[request.batchId] = completer;
-
-    final where = {
-      "id": {"in": request.uuids.join(",")},
-    };
-    final limit = request.uuids.length;
+    final completer = Completer<TranslateActivityResponse>();
+    _cache[batchId] = completer;
 
     try {
-      final PayloadClient payload = PayloadClient(
-        baseUrl: Environment.cmsApi,
-        accessToken: MatrixState.pangeaController.userController.accessToken,
-      );
-
-      final cmsCoursePlanActivitiesResult = await payload.find(
-        CmsCoursePlanActivity.slug,
-        CmsCoursePlanActivity.fromJson,
-        where: where,
-        limit: limit,
-        page: 1,
-        sort: "createdAt",
-      );
-
-      final imageUrls = await _fetchImageUrls(
-        CourseActivitiesImageUrlsRequest.fromCmsResponse(
-          cmsCoursePlanActivitiesResult,
-        ),
-      );
-
-      final response = CourseActivitiesResponse.fromCmsResponse(
-        cmsCoursePlanActivitiesResult,
-        imageUrls,
-      );
-
+      final response = await translate(request);
       completer.complete(response);
       return response;
     } catch (e) {
       completer.completeError(e);
       rethrow;
     } finally {
-      _cache.remove(request.batchId);
+      _cache.remove(batchId);
     }
   }
 
-  static Future<CourseActivitiesImageUrlsResponse> _fetchImageUrls(
-    CourseActivitiesImageUrlsRequest request,
-  ) async {
-    final mediaIdsToActivityIds = request.mediaIdsToActivityIds;
-    final mediaIds = mediaIdsToActivityIds.keys.whereType<String>().toList();
-
-    if (mediaIds.isEmpty) {
-      return CourseActivitiesImageUrlsResponse(imageUrls: {});
-    }
-
-    final where = {
-      "id": {"in": mediaIds.join(",")},
-    };
-    final limit = mediaIds.length;
-
-    final PayloadClient payload = PayloadClient(
-      baseUrl: Environment.cmsApi,
-      accessToken: MatrixState.pangeaController.userController.accessToken,
-    );
-    final cmsCoursePlanActivityMediasResult = await payload.find(
-      CmsCoursePlanActivityMedia.slug,
-      CmsCoursePlanActivityMedia.fromJson,
-      where: where,
-      limit: limit,
-      page: 1,
-      sort: "createdAt",
-    );
-
-    return CourseActivitiesImageUrlsResponse.fromCmsResponse(
-      cmsCoursePlanActivityMediasResult,
-      mediaIdsToActivityIds,
-    );
-  }
-
-  static CourseActivitiesResponse getCached(
-    CourseInfoBatchRequest request,
+  static TranslateActivityResponse getCached(
+    TranslateActivityRequest request,
   ) {
-    final List<ActivityPlanModel> activities = [];
-    for (final id in request.uuids) {
-      final sentActivityFeedback = sentFeedback[id];
+    final Map<String, ActivityPlanModel> activities = {};
+    for (final id in request.activityIds) {
+      final cacheKey = "${id}_${request.l1}";
+      final sentActivityFeedback = sentFeedback[cacheKey];
       if (sentActivityFeedback != null &&
           DateTime.now().difference(sentActivityFeedback) >
               const Duration(minutes: 15)) {
-        _storage.remove(id);
-        _clearSentFeedback(id);
+        _storage.remove(cacheKey);
+        _clearSentFeedback(cacheKey, request.l1);
         continue;
       }
 
-      final json = _storage.read<Map<String, dynamic>>(id);
+      final json = _storage.read<Map<String, dynamic>>(cacheKey);
       if (json != null) {
         try {
           final activity = ActivityPlanModel.fromJson(json);
-          activities.add(activity);
+          activities[activity.activityId] = activity;
         } catch (e) {
           // ignore invalid cached data
-          _storage.remove(id);
+          _storage.remove(cacheKey);
         }
       }
     }
 
-    return CourseActivitiesResponse(activities: activities);
+    return TranslateActivityResponse(plans: activities);
   }
 
-  static Future<void> _setCached(CourseActivitiesResponse activities) async {
+  static Future<void> _setCached(
+    TranslateActivityResponse activities,
+    String l1,
+  ) async {
     final List<Future> futures = [];
-    for (final activity in activities.activities) {
-      futures.add(_storage.write(activity.activityId, activity.toJson()));
+    for (final entry in activities.plans.entries) {
+      final cacheKey = "${entry.key}_$l1";
+      futures.add(_storage.write(cacheKey, entry.value.toJson()));
     }
     await Future.wait(futures);
   }
@@ -214,18 +142,24 @@ class CourseActivityRepo {
     return {};
   }
 
-  static Future<void> setSentFeedback(String activityId) async {
+  static Future<void> setSentFeedback(
+    String activityId,
+    String l1,
+  ) async {
     final currentValue = sentFeedback;
-    currentValue[activityId] = DateTime.now();
+    currentValue["${activityId}_$l1"] = DateTime.now();
     await _storage.write(
       "sent_feedback",
       currentValue.map((key, value) => MapEntry(key, value.toIso8601String())),
     );
   }
 
-  static Future<void> _clearSentFeedback(String activityId) async {
+  static Future<void> _clearSentFeedback(
+    String activityId,
+    String l1,
+  ) async {
     final currentValue = sentFeedback;
-    currentValue.remove(activityId);
+    currentValue.remove("${activityId}_$l1");
     await _storage.write(
       "sent_feedback",
       currentValue.map((key, value) => MapEntry(key, value.toIso8601String())),

@@ -130,7 +130,7 @@ class CourseSettingsState extends State<CourseSettings>
           children: course.loadedTopics.mapIndexed((index, topic) {
             final unlocked = index <= topicIndex;
             final usersInTopic = topicsToUsers[topic.uuid] ?? [];
-            final activities = topic.loadedActivities.activities;
+            final activities = topic.loadedActivities;
             activities.sort(
               (a, b) => a.req.numberOfParticipants.compareTo(
                 b.req.numberOfParticipants,

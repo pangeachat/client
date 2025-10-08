@@ -80,8 +80,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
       throw Exception('Topic not found');
     }
 
-    final topicActivities =
-        course.loadedTopics[topicIndex].loadedActivities.activities;
+    final topicActivities = course.loadedTopics[topicIndex].loadedActivities;
 
     final topicActivityIds = topic.activityIds.toSet();
 

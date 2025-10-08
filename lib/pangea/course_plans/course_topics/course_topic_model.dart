@@ -2,12 +2,13 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
-import 'package:fluffychat/pangea/course_plans/course_activities/course_activities_response.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_locations/course_location_media_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_locations/course_location_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_locations/course_location_response.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// Represents a topic in the course planner response.
 class CourseTopicModel {
@@ -83,41 +84,47 @@ class CourseTopicModel {
       : "${Environment.cmsApi}${loadedLocationMediaIds.first}";
 
   bool get activityListComplete =>
-      activityIds.length == loadedActivities.activities.length;
+      activityIds.length == loadedActivities.length;
 
-  CourseActivitiesResponse get loadedActivities => CourseActivityRepo.getCached(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: activityIds,
+  List<ActivityPlanModel> get loadedActivities => CourseActivityRepo.getCached(
+        TranslateActivityRequest(
+          activityIds: activityIds,
+          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
         ),
-      );
+      ).plans.values.toList();
 
-  Future<CourseActivitiesResponse> fetchActivities() => CourseActivityRepo.get(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: activityIds,
-        ),
-      );
+  Future<List<ActivityPlanModel>> fetchActivities() async {
+    final resp = await CourseActivityRepo.get(
+      TranslateActivityRequest(
+        activityIds: activityIds,
+        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+      ),
+      uuid,
+    );
+
+    return resp.plans.values.toList();
+  }
 
   ActivityPlanModel? activityById(String activityId) =>
-      loadedActivities.activities.firstWhereOrNull(
+      loadedActivities.firstWhereOrNull(
         (activity) => activity.activityId == activityId,
       );
 
   /// Deserialize from JSON
   factory CourseTopicModel.fromJson(Map<String, dynamic> json) {
+    final List<dynamic>? activityIdsEntry =
+        json['activity_ids'] as List<dynamic>? ??
+            json['activityIds'] as List<dynamic>?;
+    final List<dynamic>? locationIdsEntry =
+        json['location_ids'] as List<dynamic>? ??
+            json['locationIds'] as List<dynamic>?;
+
     return CourseTopicModel(
       title: json['title'] as String,
       description: json['description'] as String,
       uuid: json['uuid'] as String? ?? json['id'] as String,
-      activityIds: (json['activity_ids'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
-      locationIds: (json['location_ids'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          [],
+      activityIds: activityIdsEntry?.map((e) => e as String).toList() ?? [],
+      locationIds: locationIdsEntry?.map((e) => e as String).toList() ?? [],
     );
   }
 

@@ -64,7 +64,7 @@ class CoursePlansRepo {
         throw Exception("Course plan not found after translation");
       }
 
-      await _setCached(coursePlan, request.l1);
+      await _setCached(coursePlan, uuid, request.l1);
       await coursePlan.init();
       completer.complete(coursePlan);
       return coursePlan;
@@ -214,6 +214,7 @@ class CoursePlansRepo {
 
   static Future<void> _setCached(
     CoursePlanModel course,
+    String courseId,
     String l1,
   ) async {
     if (lastUpdated == null) {
@@ -223,7 +224,7 @@ class CoursePlansRepo {
       );
     }
 
-    final cacheKey = "${course.uuid}_$l1";
+    final cacheKey = "${courseId}_$l1";
     await _courseStorage.write(
       cacheKey,
       course.toJson(),
@@ -241,11 +242,11 @@ class CoursePlansRepo {
       );
     }
 
-    final List<Future> futures = response.coursePlans.values.map((course) {
-      final cacheKey = "${course.uuid}_$l1";
+    final List<Future> futures = response.coursePlans.entries.map((entry) {
+      final cacheKey = "${entry.key}_$l1";
       return _courseStorage.write(
         cacheKey,
-        course.toJson(),
+        entry.value.toJson(),
       );
     }).toList();
 
