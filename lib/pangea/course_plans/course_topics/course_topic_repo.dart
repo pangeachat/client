@@ -4,46 +4,43 @@ import 'dart:convert';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
-import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
-import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
-import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_response.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_response.dart';
-import 'package:fluffychat/pangea/payload_client/models/course_plan/cms_course_plan_topic.dart';
-import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CourseTopicRepo {
-  static final Map<String, Completer<CourseTopicResponse>> _cache = {};
+  static final Map<String, Completer<TranslateTopicResponse>> _cache = {};
   static final GetStorage _storage = GetStorage('course_topic_storage');
 
-  static Future<CourseTopicResponse> get(
-    CourseInfoBatchRequest request,
+  static Future<TranslateTopicResponse> get(
+    TranslateTopicRequest request,
+    String batchId,
   ) async {
-    final topics = <CourseTopicModel>[];
-
     await _storage.initStorage;
-    topics.addAll(getCached(request).topics);
+    final topics = getCached(request).topics;
 
-    final toFetch = request.uuids
-        .where((uuid) => topics.indexWhere((topic) => topic.uuid == uuid) == -1)
-        .toList();
+    final toFetch =
+        request.topicIds.where((uuid) => !topics.containsKey(uuid)).toList();
 
     if (toFetch.isNotEmpty) {
       final fetchedTopics = await _fetch(
-        CourseInfoBatchRequest(
-          batchId: request.batchId,
-          uuids: toFetch,
+        TranslateTopicRequest(
+          topicIds: toFetch,
+          l1: request.l1,
         ),
+        batchId,
       );
       topics.addAll(fetchedTopics.topics);
-      await _setCached(fetchedTopics);
+      await _setCached(
+        fetchedTopics,
+        request.l1,
+      );
     }
 
-    return CourseTopicResponse(topics: topics);
+    return TranslateTopicResponse(topics: topics);
   }
 
   static Future<TranslateTopicResponse> translate(
@@ -71,73 +68,63 @@ class CourseTopicRepo {
     return response;
   }
 
-  static Future<CourseTopicResponse> _fetch(
-    CourseInfoBatchRequest request,
+  static Future<TranslateTopicResponse> _fetch(
+    TranslateTopicRequest request,
+    String batchId,
   ) async {
-    if (_cache.containsKey(request.batchId)) {
-      return _cache[request.batchId]!.future;
+    if (_cache.containsKey(batchId)) {
+      return _cache[batchId]!.future;
     }
 
-    final completer = Completer<CourseTopicResponse>();
-    _cache[request.batchId] = completer;
-
-    final where = {
-      "id": {"in": request.uuids.join(",")},
-    };
-
-    final limit = request.uuids.length;
+    final completer = Completer<TranslateTopicResponse>();
+    _cache[batchId] = completer;
 
     try {
-      final PayloadClient payload = PayloadClient(
-        baseUrl: Environment.cmsApi,
-        accessToken: MatrixState.pangeaController.userController.accessToken,
-      );
-      final cmsCourseTopicsResult = await payload.find(
-        CmsCoursePlanTopic.slug,
-        CmsCoursePlanTopic.fromJson,
-        where: where,
-        limit: limit,
-        page: 1,
-        sort: "createdAt",
-      );
-
-      final response = CourseTopicResponse.fromCmsResponse(
-        cmsCourseTopicsResult,
-      );
-
+      final response = await translate(request);
       completer.complete(response);
       return response;
     } catch (e) {
       completer.completeError(e);
       rethrow;
     } finally {
-      _cache.remove(request.batchId);
+      _cache.remove(batchId);
     }
   }
 
-  static CourseTopicResponse getCached(CourseInfoBatchRequest request) {
-    final List<CourseTopicModel> topics = [];
-    for (final uuid in request.uuids) {
-      final json = _storage.read(uuid);
+  static TranslateTopicResponse getCached(
+    TranslateTopicRequest request,
+  ) {
+    final Map<String, CourseTopicModel> topics = {};
+    for (final uuid in request.topicIds) {
+      final cacheKey = "${uuid}_${request.l1}";
+      final json = _storage.read(cacheKey);
       if (json != null) {
         try {
           final topic = CourseTopicModel.fromJson(
             Map<String, dynamic>.from(json),
           );
-          topics.add(topic);
+          topics[uuid] = topic;
         } catch (e) {
-          _storage.remove(uuid);
+          _storage.remove(cacheKey);
         }
       }
     }
 
-    return CourseTopicResponse(topics: topics);
+    return TranslateTopicResponse(topics: topics);
   }
 
-  static Future<void> _setCached(CourseTopicResponse response) async {
+  static Future<void> _setCached(
+    TranslateTopicResponse response,
+    String l1,
+  ) async {
     final List<Future> futures = [];
-    for (final topic in response.topics) {
-      futures.add(_storage.write(topic.uuid, topic.toJson()));
+    for (final topic in response.topics.values) {
+      futures.add(
+        _storage.write(
+          "${topic.uuid}_$l1",
+          topic.toJson(),
+        ),
+      );
     }
     await Future.wait(futures);
   }

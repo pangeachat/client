@@ -5,11 +5,13 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_media/course_media_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_media/course_media_response.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_repo.dart';
-import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_response.dart';
+import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_translation_request.dart';
 import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 /// Represents a course plan in the course planner response.
 class CoursePlanModel {
@@ -51,7 +53,7 @@ class CoursePlanModel {
       languageOfInstructions.toUpperCase();
 
   String? topicID(String activityID) {
-    for (final topic in loadedTopics.topics) {
+    for (final topic in loadedTopics) {
       if (topic.activityIds.any((id) => id == activityID)) {
         return topic.uuid;
       }
@@ -59,11 +61,11 @@ class CoursePlanModel {
     return null;
   }
 
-  int get totalActivities => loadedTopics.topics
-      .fold(0, (sum, topic) => sum + topic.activityIds.length);
+  int get totalActivities =>
+      loadedTopics.fold(0, (sum, topic) => sum + topic.activityIds.length);
 
   ActivityPlanModel? activityById(String activityID) {
-    for (final topic in loadedTopics.topics) {
+    for (final topic in loadedTopics) {
       final activity = topic.activityById(activityID);
       if (activity != null) {
         return activity;
@@ -106,19 +108,25 @@ class CoursePlanModel {
     };
   }
 
-  bool get topicListComplete => topicIds.length == loadedTopics.topics.length;
-  CourseTopicResponse get loadedTopics => CourseTopicRepo.getCached(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: topicIds,
+  bool get topicListComplete => topicIds.length == loadedTopics.length;
+
+  List<CourseTopicModel> get loadedTopics => CourseTopicRepo.getCached(
+        TranslateTopicRequest(
+          topicIds: topicIds,
+          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
         ),
-      );
-  Future<CourseTopicResponse> fetchTopics() => CourseTopicRepo.get(
-        CourseInfoBatchRequest(
-          batchId: uuid,
-          uuids: topicIds,
-        ),
-      );
+      ).topics.values.toList();
+
+  Future<List<CourseTopicModel>> fetchTopics() async {
+    final resp = await CourseTopicRepo.get(
+      TranslateTopicRequest(
+        topicIds: topicIds,
+        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+      ),
+      uuid,
+    );
+    return resp.topics.values.toList();
+  }
 
   bool get mediaListComplete =>
       mediaIds.length == loadedMediaUrls.mediaUrls.length;
@@ -135,7 +143,7 @@ class CoursePlanModel {
         ),
       );
   String? get imageUrl => loadedMediaUrls.mediaUrls.isEmpty
-      ? loadedTopics.topics
+      ? loadedTopics
           .lastWhereOrNull((topic) => topic.imageUrl != null)
           ?.imageUrl
       : "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first}";
@@ -148,7 +156,7 @@ class CoursePlanModel {
     await Future.wait(courseFutures);
 
     final topicFutures = <Future>[];
-    for (final topic in loadedTopics.topics) {
+    for (final topic in loadedTopics) {
       topicFutures.add(topic.fetchActivities());
       topicFutures.add(topic.fetchLocationMedia());
     }

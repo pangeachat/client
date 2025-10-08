@@ -57,8 +57,7 @@ class SelectedCourseView extends StatelessWidget {
                                 right: 12.0,
                               ),
                               child: ListView.builder(
-                                itemCount:
-                                    course.loadedTopics.topics.length + 2,
+                                itemCount: course.loadedTopics.length + 2,
                                 itemBuilder: (context, index) {
                                   String displayname = course.title;
                                   final roomChunk = controller.widget.roomChunk;
@@ -136,13 +135,11 @@ class SelectedCourseView extends StatelessWidget {
 
                                   index--;
 
-                                  if (index >=
-                                      course.loadedTopics.topics.length) {
+                                  if (index >= course.loadedTopics.length) {
                                     return const SizedBox(height: 12.0);
                                   }
 
-                                  final topic =
-                                      course.loadedTopics.topics[index];
+                                  final topic = course.loadedTopics[index];
                                   return Padding(
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 4.0,

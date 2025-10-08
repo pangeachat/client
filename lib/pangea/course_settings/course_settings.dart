@@ -127,7 +127,7 @@ class CourseSettingsState extends State<CourseSettings>
         return Column(
           spacing: isColumnMode ? 40.0 : 36.0,
           mainAxisSize: MainAxisSize.min,
-          children: course.loadedTopics.topics.mapIndexed((index, topic) {
+          children: course.loadedTopics.mapIndexed((index, topic) {
             final unlocked = index <= topicIndex;
             final usersInTopic = topicsToUsers[topic.uuid] ?? [];
             final activities = topic.loadedActivities.activities;

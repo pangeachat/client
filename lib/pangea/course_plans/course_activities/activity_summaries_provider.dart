@@ -72,7 +72,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     CourseTopicModel topic,
     CoursePlanModel course,
   ) {
-    final topicIndex = course.loadedTopics.topics.indexWhere(
+    final topicIndex = course.loadedTopics.indexWhere(
       (t) => t.uuid == topic.uuid,
     );
 
@@ -81,7 +81,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     }
 
     final topicActivities =
-        course.loadedTopics.topics[topicIndex].loadedActivities.activities;
+        course.loadedTopics[topicIndex].loadedActivities.activities;
 
     final topicActivityIds = topic.activityIds.toSet();
 
@@ -98,9 +98,9 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     String userID,
     CoursePlanModel course,
   ) {
-    if (course.loadedTopics.topics.isEmpty) return -1;
-    for (int i = 0; i < course.loadedTopics.topics.length; i++) {
-      if (!_hasCompletedTopic(userID, course.loadedTopics.topics[i], course)) {
+    if (course.loadedTopics.isEmpty) return -1;
+    for (int i = 0; i < course.loadedTopics.length; i++) {
+      if (!_hasCompletedTopic(userID, course.loadedTopics[i], course)) {
         return i;
       }
     }
@@ -122,7 +122,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
       if (user.id == BotName.byEnvironment) continue;
       final topicIndex = currentTopicIndex(user.id, course);
       if (topicIndex != -1) {
-        final topicID = course.loadedTopics.topics[topicIndex].uuid;
+        final topicID = course.loadedTopics[topicIndex].uuid;
         topicUserMap.putIfAbsent(topicID, () => []).add(user);
       }
     }
