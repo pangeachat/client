@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+
+import 'package:material_symbols_icons/symbols.dart';
+
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/message_token_text/tokens_util.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:material_symbols_icons/symbols.dart';
 
 class NewWordOverlay extends StatefulWidget {
   final Color overlayColor;
@@ -127,14 +129,14 @@ class _NewWordOverlayState extends State<NewWordOverlay>
           right: 5,
           top: 50,
           bottom: 5,
-            child: Opacity(
-              opacity: _backgroundFadeAnim!.value,
-              child: Container(
-                height: double.infinity,
-                width: double.infinity,
-                color: widget.overlayColor,
-              ),
+          child: Opacity(
+            opacity: _backgroundFadeAnim!.value,
+            child: Container(
+              height: double.infinity,
+              width: double.infinity,
+              color: widget.overlayColor,
             ),
+          ),
         );
       },
     );
