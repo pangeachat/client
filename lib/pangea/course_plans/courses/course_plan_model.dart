@@ -124,19 +124,4 @@ class CoursePlanModel {
           .lastWhereOrNull((topic) => topic.imageUrl != null)
           ?.imageUrl
       : "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first}";
-
-  Future<void> init() async {
-    final courseFutures = <Future>[
-      fetchMediaUrls(),
-      fetchTopics(),
-    ];
-    await Future.wait(courseFutures);
-
-    final topicFutures = <Future>[];
-    for (final topic in loadedTopics.values) {
-      topicFutures.add(topic.fetchActivities());
-      topicFutures.add(topic.fetchLocationMedia());
-    }
-    await Future.wait(topicFutures);
-  }
 }

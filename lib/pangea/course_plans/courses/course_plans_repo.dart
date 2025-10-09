@@ -123,9 +123,6 @@ class CoursePlansRepo {
         searchResult,
         request.l1,
       );
-
-      final futures = searchResult.coursePlans.values.map((c) => c.init());
-      await Future.wait(futures);
     }
 
     return _getCachedBatch(request);
