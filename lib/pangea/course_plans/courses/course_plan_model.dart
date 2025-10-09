@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/course_plans/course_info_batch_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_media/course_media_repo.dart';
@@ -52,28 +51,6 @@ class CoursePlanModel {
       baseLanguageModel?.langCode.toUpperCase() ??
       languageOfInstructions.toUpperCase();
 
-  String? topicID(String activityID) {
-    for (final topic in loadedTopics) {
-      if (topic.activityIds.any((id) => id == activityID)) {
-        return topic.uuid;
-      }
-    }
-    return null;
-  }
-
-  int get totalActivities =>
-      loadedTopics.fold(0, (sum, topic) => sum + topic.activityIds.length);
-
-  ActivityPlanModel? activityById(String activityID) {
-    for (final topic in loadedTopics) {
-      final activity = topic.activityById(activityID);
-      if (activity != null) {
-        return activity;
-      }
-    }
-    return null;
-  }
-
   /// Deserialize from JSON
   factory CoursePlanModel.fromJson(Map<String, dynamic> json) {
     return CoursePlanModel(
@@ -110,14 +87,14 @@ class CoursePlanModel {
 
   bool get topicListComplete => topicIds.length == loadedTopics.length;
 
-  List<CourseTopicModel> get loadedTopics => CourseTopicRepo.getCached(
+  Map<String, CourseTopicModel> get loadedTopics => CourseTopicRepo.getCached(
         TranslateTopicRequest(
           topicIds: topicIds,
           l1: MatrixState.pangeaController.languageController.activeL1Code()!,
         ),
-      ).topics.values.toList();
+      ).topics;
 
-  Future<List<CourseTopicModel>> fetchTopics() async {
+  Future<Map<String, CourseTopicModel>> fetchTopics() async {
     final resp = await CourseTopicRepo.get(
       TranslateTopicRequest(
         topicIds: topicIds,
@@ -125,7 +102,7 @@ class CoursePlanModel {
       ),
       uuid,
     );
-    return resp.topics.values.toList();
+    return resp.topics;
   }
 
   bool get mediaListComplete =>
@@ -143,7 +120,7 @@ class CoursePlanModel {
         ),
       );
   String? get imageUrl => loadedMediaUrls.mediaUrls.isEmpty
-      ? loadedTopics
+      ? loadedTopics.values
           .lastWhereOrNull((topic) => topic.imageUrl != null)
           ?.imageUrl
       : "${Environment.cmsApi}${loadedMediaUrls.mediaUrls.first}";
@@ -156,7 +133,7 @@ class CoursePlanModel {
     await Future.wait(courseFutures);
 
     final topicFutures = <Future>[];
-    for (final topic in loadedTopics) {
+    for (final topic in loadedTopics.values) {
       topicFutures.add(topic.fetchActivities());
       topicFutures.add(topic.fetchLocationMedia());
     }

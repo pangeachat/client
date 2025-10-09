@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 
 class CoursePlanTile extends StatelessWidget {
+  final String courseId;
   final CoursePlanModel course;
   final VoidCallback onTap;
 
@@ -18,6 +19,7 @@ class CoursePlanTile extends StatelessWidget {
 
   const CoursePlanTile({
     super.key,
+    required this.courseId,
     required this.course,
     required this.onTap,
     this.titleFontSize,
@@ -72,7 +74,7 @@ class CoursePlanTile extends StatelessWidget {
                           ),
                         ),
                         CourseInfoChips(
-                          course,
+                          courseId,
                           padding: const EdgeInsets.symmetric(
                             horizontal: 4.0,
                             vertical: 2.0,

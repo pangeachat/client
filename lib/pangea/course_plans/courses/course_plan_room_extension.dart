@@ -44,12 +44,13 @@ extension CoursePlanRoomExtension on Room {
   }
 
   Future<String> launchActivityRoom(
+    String activityId,
     ActivityPlanModel activity,
     ActivityRole? role,
   ) async {
     final roomID = await client.createRoom(
       creationContent: {
-        'type': "${PangeaRoomTypes.activitySession}:${activity.activityId}",
+        'type': "${PangeaRoomTypes.activitySession}:$activityId",
       },
       visibility: sdk.Visibility.private,
       name: activity.title,

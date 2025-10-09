@@ -114,11 +114,11 @@ class PublicTripPageState extends State<PublicTripPage> {
           l1: MatrixState.pangeaController.languageController.activeL1Code()!,
         ),
       );
-      final searchResult = resp.coursePlans.values.toList();
+      final searchResult = resp.coursePlans;
 
       coursePlans.clear();
-      for (final course in searchResult) {
-        coursePlans[course.uuid] = course;
+      for (final entry in searchResult.entries) {
+        coursePlans[entry.key] = entry.value;
       }
     } catch (e, s) {
       ErrorHandler.logError(
@@ -245,8 +245,8 @@ class PublicTripPageState extends State<PublicTripPage> {
                         }
 
                         final roomChunk = filteredCourses[index].room;
-                        final course =
-                            coursePlans[filteredCourses[index].courseId];
+                        final courseId = filteredCourses[index].courseId;
+                        final course = coursePlans[courseId];
 
                         final displayname = roomChunk.name ??
                             roomChunk.canonicalAlias ??
@@ -254,7 +254,7 @@ class PublicTripPageState extends State<PublicTripPage> {
 
                         return InkWell(
                           onTap: () => context.go(
-                            '/${widget.route}/course/public/${filteredCourses[index].courseId}',
+                            '/${widget.route}/course/public/$courseId',
                             extra: roomChunk,
                           ),
                           borderRadius: BorderRadius.circular(12.0),
@@ -301,7 +301,7 @@ class PublicTripPageState extends State<PublicTripPage> {
                                 ),
                                 if (course != null) ...[
                                   CourseInfoChips(
-                                    course,
+                                    courseId,
                                     iconSize: 12.0,
                                     fontSize: 12.0,
                                   ),

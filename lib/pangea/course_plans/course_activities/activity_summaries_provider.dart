@@ -55,7 +55,8 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
             (v) => v.userId == userID && v.isArchived,
           ),
         )
-        .map((e) => e.activityPlan.activityId)
+        .map((e) => e.activityPlan.originalActivityId)
+        .whereType<String>()
         .toSet();
   }
 
@@ -70,22 +71,11 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
   bool _hasCompletedTopic(
     String userID,
     CourseTopicModel topic,
-    CoursePlanModel course,
   ) {
-    final topicIndex = course.loadedTopics.indexWhere(
-      (t) => t.uuid == topic.uuid,
-    );
-
-    if (topicIndex == -1) {
-      throw Exception('Topic not found');
-    }
-
-    final topicActivities = course.loadedTopics[topicIndex].loadedActivities;
-
     final topicActivityIds = topic.activityIds.toSet();
-
-    final numTwoPersonActivities =
-        topicActivities.where((a) => a.req.numberOfParticipants <= 2).length;
+    final numTwoPersonActivities = topic.loadedActivities.values
+        .where((a) => a.req.numberOfParticipants <= 2)
+        .length;
 
     final completedTopicActivities =
         _completedActivities(userID).intersection(topicActivityIds);
@@ -93,36 +83,40 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
     return completedTopicActivities.length >= numTwoPersonActivities;
   }
 
-  int currentTopicIndex(
+  String? currentTopicId(
     String userID,
     CoursePlanModel course,
   ) {
-    if (course.loadedTopics.isEmpty) return -1;
-    for (int i = 0; i < course.loadedTopics.length; i++) {
-      if (!_hasCompletedTopic(userID, course.loadedTopics[i], course)) {
-        return i;
+    if (course.loadedTopics.isEmpty) {
+      return null;
+    }
+
+    for (int i = 0; i < course.topicIds.length; i++) {
+      final topicId = course.topicIds[i];
+      final topic = course.loadedTopics[topicId];
+      if (topic == null) continue;
+      if (!topic.activityListComplete) {
+        return null;
+      }
+
+      if (!_hasCompletedTopic(userID, topic) && topic.activityIds.isNotEmpty) {
+        return topicId;
       }
     }
-    return 0;
+    return course.topicIds.last;
   }
 
-  Future<Map<String, List<User>>> topicsToUsers(
+  Map<String, List<User>> topicsToUsers(
     Room room,
     CoursePlanModel course,
-  ) async {
+  ) {
     final Map<String, List<User>> topicUserMap = {};
-    final users = await room.requestParticipants(
-      [Membership.join, Membership.invite, Membership.knock],
-      false,
-      true,
-    );
-
+    final users = room.getParticipants();
     for (final user in users) {
       if (user.id == BotName.byEnvironment) continue;
-      final topicIndex = currentTopicIndex(user.id, course);
-      if (topicIndex != -1) {
-        final topicID = course.loadedTopics[topicIndex].uuid;
-        topicUserMap.putIfAbsent(topicID, () => []).add(user);
+      final topicId = currentTopicId(user.id, course);
+      if (topicId != null) {
+        topicUserMap.putIfAbsent(topicId, () => []).add(user);
       }
     }
     return topicUserMap;

@@ -65,7 +65,6 @@ class CoursePlansRepo {
       }
 
       await _setCached(coursePlan, uuid, request.l1);
-      await coursePlan.init();
       completer.complete(coursePlan);
       return coursePlan;
     } catch (e) {
@@ -202,7 +201,7 @@ class CoursePlansRepo {
           final course = CoursePlanModel.fromJson(
             Map<String, dynamic>.from(json),
           );
-          courses[course.uuid] = course;
+          courses[uuid] = course;
         } catch (e) {
           _courseStorage.remove(cacheKey);
         }

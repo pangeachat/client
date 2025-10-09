@@ -86,14 +86,15 @@ class CourseTopicModel {
   bool get activityListComplete =>
       activityIds.length == loadedActivities.length;
 
-  List<ActivityPlanModel> get loadedActivities => CourseActivityRepo.getCached(
+  Map<String, ActivityPlanModel> get loadedActivities =>
+      CourseActivityRepo.getCached(
         TranslateActivityRequest(
           activityIds: activityIds,
           l1: MatrixState.pangeaController.languageController.activeL1Code()!,
         ),
-      ).plans.values.toList();
+      ).plans;
 
-  Future<List<ActivityPlanModel>> fetchActivities() async {
+  Future<Map<String, ActivityPlanModel>> fetchActivities() async {
     final resp = await CourseActivityRepo.get(
       TranslateActivityRequest(
         activityIds: activityIds,
@@ -102,13 +103,8 @@ class CourseTopicModel {
       uuid,
     );
 
-    return resp.plans.values.toList();
+    return resp.plans;
   }
-
-  ActivityPlanModel? activityById(String activityId) =>
-      loadedActivities.firstWhereOrNull(
-        (activity) => activity.activityId == activityId,
-      );
 
   /// Deserialize from JSON
   factory CourseTopicModel.fromJson(Map<String, dynamic> json) {

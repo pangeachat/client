@@ -9,10 +9,16 @@ class TranslateActivityResponse {
     final plansEntry = json['plans'] as Map<String, dynamic>;
     return TranslateActivityResponse(
       plans: plansEntry.map(
-        (key, value) => MapEntry(
-          key,
-          ActivityPlanModel.fromJson(value),
-        ),
+        (key, value) {
+          if (value["original_activity_id"] == null) {
+            value["original_activity_id"] = key;
+          }
+
+          return MapEntry(
+            key,
+            ActivityPlanModel.fromJson(value),
+          );
+        },
       ),
     );
   }

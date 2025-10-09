@@ -3,52 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_translation_request.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'course_plans_repo.dart';
 
-class CoursePlanBuilder extends StatefulWidget {
-  final String? courseId;
-  final VoidCallback? onNotFound;
-  final Function(CoursePlanModel course)? onLoaded;
-  final Widget Function(
-    BuildContext context,
-    CoursePlanController controller,
-  ) builder;
+mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
+  bool loadingCourse = true;
+  Object? courseError;
 
-  const CoursePlanBuilder({
-    super.key,
-    required this.courseId,
-    required this.builder,
-    this.onNotFound,
-    this.onLoaded,
-  });
+  bool loadingTopics = false;
+  Object? topicError;
 
-  @override
-  State<CoursePlanBuilder> createState() => CoursePlanController();
-}
-
-class CoursePlanController extends State<CoursePlanBuilder> {
-  bool loading = true;
-  Object? error;
+  Map<String, Object?> activityErrors = {};
 
   CoursePlanModel? course;
-
-  @override
-  void initState() {
-    super.initState();
-    _initStorage().then((_) {
-      if (mounted) _loadCourse();
-    });
-  }
-
-  @override
-  void didUpdateWidget(covariant CoursePlanBuilder oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (oldWidget.courseId != widget.courseId) {
-      _loadCourse();
-    }
-  }
 
   Future<void> _initStorage() async {
     final futures = [
@@ -63,35 +31,72 @@ class CoursePlanController extends State<CoursePlanBuilder> {
     await Future.wait(futures);
   }
 
-  Future<void> _loadCourse() async {
+  Future<void> loadCourse(String courseId) async {
+    await _initStorage();
     setState(() {
-      loading = true;
-      error = null;
+      loadingCourse = true;
+      courseError = null;
       course = null;
     });
-
-    if (widget.courseId == null) {
-      widget.onNotFound?.call();
-      setState(() => loading = false);
-      return;
-    }
 
     try {
       course = await CoursePlansRepo.get(
         TranslateCoursePlanRequest(
-          coursePlanIds: [widget.courseId!],
+          coursePlanIds: [courseId],
           l1: MatrixState.pangeaController.languageController.activeL1Code()!,
         ),
       );
-      widget.onLoaded?.call(course!);
     } catch (e) {
-      widget.onNotFound?.call();
-      error = e;
+      courseError = e;
     } finally {
-      if (mounted) setState(() => loading = false);
+      if (mounted) setState(() => loadingCourse = false);
     }
   }
 
-  @override
-  Widget build(BuildContext context) => widget.builder(context, this);
+  Future<void> loadTopics() async {
+    setState(() {
+      loadingTopics = true;
+      topicError = null;
+    });
+
+    try {
+      if (course == null) {
+        throw Exception("Course is null");
+      }
+
+      final courseFutures = <Future>[
+        course!.fetchMediaUrls(),
+        course!.fetchTopics(),
+      ];
+      await Future.wait(courseFutures);
+    } catch (e) {
+      topicError = e;
+    } finally {
+      if (mounted) setState(() => loadingTopics = false);
+    }
+  }
+
+  Future<void> loadActivity(String topicId) async {
+    setState(() {
+      activityErrors[topicId] = null;
+    });
+
+    try {
+      final topic = course?.loadedTopics[topicId];
+      if (topic == null) {
+        throw Exception("Topic is null");
+      }
+
+      final topicFutures = <Future>[];
+      topicFutures.add(topic.fetchActivities());
+      topicFutures.add(topic.fetchLocationMedia());
+      await Future.wait(topicFutures);
+    } catch (e) {
+      activityErrors[topicId] = e;
+    } finally {
+      if (mounted) {
+        setState(() {});
+      }
+    }
+  }
 }

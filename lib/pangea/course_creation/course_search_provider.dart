@@ -9,7 +9,7 @@ mixin CourseSearchProvider<T extends StatefulWidget> on State<T> {
   bool loading = true;
   Object? error;
 
-  List<CoursePlanModel> courses = [];
+  Map<String, CoursePlanModel> courses = {};
   LanguageModel? targetLanguageFilter;
 
   @override
@@ -38,7 +38,7 @@ mixin CourseSearchProvider<T extends StatefulWidget> on State<T> {
         error = null;
       });
       final resp = await CoursePlansRepo.searchByFilter(filter: _filter);
-      courses = resp.coursePlans.values.toList();
+      courses = resp.coursePlans;
     } catch (e, s) {
       debugPrint("Failed to load courses: $e\n$s");
       error = e;

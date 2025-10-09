@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
@@ -24,6 +26,10 @@ class CourseActivityRepo {
 
     final toFetch =
         request.activityIds.where((id) => !activities.containsKey(id)).toList();
+
+    debugPrint(
+      "Number of activities to fetch: ${toFetch.length}, number cached: ${activities.length}",
+    );
 
     if (toFetch.isNotEmpty) {
       final fetchedActivities = await _fetch(request, batchId);
@@ -101,7 +107,7 @@ class CourseActivityRepo {
       if (json != null) {
         try {
           final activity = ActivityPlanModel.fromJson(json);
-          activities[activity.activityId] = activity;
+          activities[id] = activity;
         } catch (e) {
           // ignore invalid cached data
           _storage.remove(cacheKey);

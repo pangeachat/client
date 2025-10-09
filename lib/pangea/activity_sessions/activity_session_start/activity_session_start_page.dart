@@ -14,10 +14,7 @@ import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_translation_request.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -60,7 +57,6 @@ class ActivitySessionStartPage extends StatefulWidget {
 class ActivitySessionStartController extends State<ActivitySessionStartPage>
     with ActivitySummariesProvider {
   ActivityPlanModel? activity;
-  CoursePlanModel? course;
 
   bool loading = true;
   Object? error;
@@ -265,15 +261,6 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Future<void> _loadActivity() async {
-    if (courseParent?.coursePlan != null) {
-      course = await CoursePlansRepo.get(
-        TranslateCoursePlanRequest(
-          coursePlanIds: [courseParent!.coursePlan!.uuid],
-          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
-        ),
-      );
-    }
-
     final activitiesResponse = await CourseActivityRepo.get(
       TranslateActivityRequest(
         activityIds: [widget.activityId],
@@ -351,6 +338,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       final resp = await showFutureLoadingDialog(
         context: context,
         future: () => courseParent!.launchActivityRoom(
+          widget.activityId,
           activity!,
           activity!.roles[_selectedRoleId!],
         ),
