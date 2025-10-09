@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_list/navi_rail_item.dart';
@@ -13,6 +8,9 @@ import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 class SpacesNavigationRail extends StatelessWidget {
   final String? activeSpaceId;
@@ -44,6 +42,7 @@ class SpacesNavigationRail extends StatelessWidget {
     // #Pangea
     final isAnalytics = path?.contains('analytics') ?? false;
     final isCourse = path?.contains('course') ?? false;
+    final isMap = path?.contains('/map') ?? false;
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     final width = isColumnMode
@@ -125,7 +124,8 @@ class SpacesNavigationRail extends StatelessWidget {
                             isSelected: activeSpaceId == null &&
                                 !isSettings &&
                                 !isAnalytics &&
-                                !isCourse,
+                                !isCourse &&
+                                !isMap,
                             // onTap: onGoToChats,
                             // icon: const Padding(
                             //   padding: EdgeInsets.all(10.0),
@@ -241,6 +241,13 @@ class SpacesNavigationRail extends StatelessWidget {
                         );
                       },
                     ),
+                  ),
+                  NaviRailItem(
+                    isSelected: isMap,
+                    onTap: () => context.go('/map'),
+                    icon: const Icon(Icons.map_outlined),
+                    selectedIcon: const Icon(Icons.map),
+                    toolTip: 'Map', // TODO: Add proper localization
                   ),
                   NaviRailItem(
                     isSelected: isSettings,

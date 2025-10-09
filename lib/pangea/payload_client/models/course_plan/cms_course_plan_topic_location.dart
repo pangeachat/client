@@ -69,6 +69,7 @@ class CmsCoursePlanTopicLocation {
       uuid: id,
       name: name,
       mediaIds: coursePlanTopicLocationMedia?.docs ?? [],
+      coordinates: coordinates,
     );
   }
 }

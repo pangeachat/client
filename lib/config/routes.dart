@@ -1,11 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix_api_lite/generated/model.dart';
-
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/pages/archive/archive.dart';
@@ -52,6 +47,7 @@ import 'package:fluffychat/pangea/login/pages/plan_trip_page.dart';
 import 'package:fluffychat/pangea/login/pages/private_trip_page.dart';
 import 'package:fluffychat/pangea/login/pages/public_trip_page.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
+import 'package:fluffychat/pangea/map/map_view.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
 import 'package:fluffychat/pangea/spaces/utils/join_with_link.dart';
@@ -62,6 +58,9 @@ import 'package:fluffychat/widgets/layouts/two_column_layout.dart';
 import 'package:fluffychat/widgets/log_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix_api_lite/generated/model.dart';
 
 abstract class AppRoutes {
   static FutureOr<String?> loggedInRedirect(
@@ -1148,6 +1147,15 @@ abstract class AppRoutes {
           ],
         ),
       ],
+    ),
+    GoRoute(
+      path: '/map',
+      pageBuilder: (context, state) => defaultPageBuilder(
+        context,
+        state,
+        const MapView(),
+      ),
+      redirect: loggedOutRedirect,
     ),
   ];
 
