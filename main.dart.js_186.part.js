@@ -4610,6 +4610,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noCourseTemplatesFound() {
       return "We couldn't find any courses for your target language. You can chat with Pangea Bot in the meantime, and check back later for more courses.";
     },
+    get$botActivityJoinFailMessage() {
+      return "Pangea Bot is taking a while to respond. Please try again later, or invite a friend.";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4626,7 +4629,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Fr1M7Mdd34yHyfL65bVu+vsGX7g="] = d.current;
+  d["0fZtobiwXVSLh5Vb7L9REQOx1Sg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_186.part.js.map
