@@ -246,16 +246,16 @@ class PangeaController {
     }
 
     final targetLanguage = languageController.userL2?.langCode;
-    final cerfLevel = userController.profile.userSettings.cefrLevel;
+    final cefrLevel = userController.profile.userSettings.cefrLevel;
     final updateBotOptions = botDM.botOptions ?? BotOptionsModel();
 
     if (updateBotOptions.targetLanguage == targetLanguage &&
-        updateBotOptions.languageLevel == cerfLevel) {
+        updateBotOptions.languageLevel == cefrLevel) {
       return;
     }
 
     updateBotOptions.targetLanguage = targetLanguage;
-    updateBotOptions.languageLevel = cerfLevel;
+    updateBotOptions.languageLevel = cefrLevel;
     await botDM.setBotOptions(updateBotOptions);
   }
 
