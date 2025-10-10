@@ -3661,9 +3661,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myBaseLanguage() {
       return "Minu p\xf5hikeel";
     },
-    get$clickWordsInstructions() {
-      return "\ud83e\uddfb Kl\xf5psa \xfcksk\xf5ik millisel s\xf5nal detailide saamiseks. \ud83e\udd10";
-    },
     get$meaningSectionHeader() {
       return "T\xe4hendus:";
     },
@@ -4594,6 +4591,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$botActivityJoinFailMessage() {
       return "Pangea Bot is taking a while to respond. Please try again later, or invite a friend.";
     },
+    get$unsubscribedResponseError() {
+      return "This feature requires a subscription";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4607,7 +4607,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["nqaR4eu2bpQGs9yMsWH8xG38Jcg="] = d.current;
+  d["WLDao0LjrXBemaUMq7IKJ47Tu0c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map

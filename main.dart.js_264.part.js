@@ -3661,9 +3661,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$myBaseLanguage() {
       return "Ng\xf4n ng\u1eef g\u1ed1c c\u1ee7a t\xf4i";
     },
-    get$clickWordsInstructions() {
-      return "Nh\u1ea5n v\xe0o t\u1eeb ho\u1eb7c n\xfat b\xean d\u01b0\u1edbi \u0111\u1ec3 t\xecm hi\u1ec3u th\xeam";
-    },
     get$meaningSectionHeader() {
       return "Ngh\u0129a:";
     },
@@ -4594,6 +4591,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$botActivityJoinFailMessage() {
       return "Pangea Bot is taking a while to respond. Please try again later, or invite a friend.";
     },
+    get$unsubscribedResponseError() {
+      return "This feature requires a subscription";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4607,7 +4607,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["0CXqIEhJYr1Y2kQxKud7ia8DLyg="] = d.current;
+  d["WQo0NE8KbOTQaS+f2Q1E/M942tg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map
