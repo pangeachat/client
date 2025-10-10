@@ -2605,18 +2605,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "T\u1ea3i l\u1ea1i";
     },
-    get$botConfig() {
-      return "C\u1ea5u h\xecnh bot v\xe0 ho\u1ea1t \u0111\u1ed9ng";
-    },
-    get$botConfigNoPermissionTitle() {
-      return "Kh\xf4ng c\xf3 quy\u1ec1n";
-    },
-    get$botConfigNoPermissionMessage() {
-      return "Li\xean h\u1ec7 qu\u1ea3n tr\u1ecb vi\xean ph\xf2ng \u0111\u1ec3 thay \u0111\u1ed5i c\u1ea5u h\xecnh bot";
-    },
-    get$conversationBotStatus() {
-      return "M\u1eddi bot";
-    },
     get$updatePhoneOS() {
       return "B\u1ea1n c\xf3 th\u1ec3 c\u1ea7n n\xe2ng c\u1ea5p phi\xean b\u1ea3n h\u1ec7 \u0111i\u1ec1u h\xe0nh.";
     },
@@ -3532,9 +3520,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVOICErcp() {
       return "Th\u1ec3 t\u01b0\u01a1ng h\u1ed7";
     },
-    get$enterLanguageLevel() {
-      return "Vui l\xf2ng nh\u1eadp tr\xecnh \u0111\u1ed9 ng\xf4n ng\u1eef";
-    },
     get$other() {
       return "Kh\xe1c";
     },
@@ -4074,9 +4059,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$access() {
       return "Truy c\u1eadp";
-    },
-    get$botSettings() {
-      return "C\xe0i \u0111\u1eb7t bot";
     },
     get$howSpaceCanBeFound() {
       return "How this course can be found";
@@ -4625,7 +4607,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uP2SS2TWHenGasJK437u7Wha22w="] = d.current;
+  d["0CXqIEhJYr1Y2kQxKud7ia8DLyg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map

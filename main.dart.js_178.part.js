@@ -2606,18 +2606,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Refresh";
     },
-    get$botConfig() {
-      return "Bot and activity settings";
-    },
-    get$botConfigNoPermissionTitle() {
-      return "No permission";
-    },
-    get$botConfigNoPermissionMessage() {
-      return "Contact room admin to change bot configuration";
-    },
-    get$conversationBotStatus() {
-      return "Invite bot";
-    },
     get$updatePhoneOS() {
       return "You may need to update your device's OS version.";
     },
@@ -3533,9 +3521,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVOICErcp() {
       return "Reciprocal";
     },
-    get$enterLanguageLevel() {
-      return "Please enter a language level";
-    },
     get$other() {
       return "Other";
     },
@@ -4075,9 +4060,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$access() {
       return "Access";
-    },
-    get$botSettings() {
-      return "Bot settings";
     },
     get$howSpaceCanBeFound() {
       return "How this course can be found";
@@ -4626,7 +4608,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wBjhsAlC2wUlXERu5hbnDDgWyX0="] = d.current;
+  d["lRB0zTyhu8oqPa5KVly09TLCmqM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_178.part.js.map

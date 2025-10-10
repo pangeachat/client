@@ -2605,18 +2605,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "V\xe4rskenda";
     },
-    get$botConfig() {
-      return "Boti ja tegevuse seaded";
-    },
-    get$botConfigNoPermissionTitle() {
-      return "Puudub luba";
-    },
-    get$botConfigNoPermissionMessage() {
-      return "V\xf5tke \xfchendust ruumi administraatoriga, et muuta boti seadeid";
-    },
-    get$conversationBotStatus() {
-      return "Kutsu bot";
-    },
     get$updatePhoneOS() {
       return "V\xf5ib olla vajalik uuendada oma seadme operatsioonis\xfcsteemi versiooni.";
     },
@@ -3532,9 +3520,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVOICErcp() {
       return "Vastastikune";
     },
-    get$enterLanguageLevel() {
-      return "Palun sisestage keele tase";
-    },
     get$other() {
       return "Muu";
     },
@@ -4074,9 +4059,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$access() {
       return "Juhtimine";
-    },
-    get$botSettings() {
-      return "Boti seaded";
     },
     get$howSpaceCanBeFound() {
       return "Kuidas seda ruumi leida";
@@ -4625,7 +4607,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["N/FxWkrs84EMonWY45NkfzDDjlc="] = d.current;
+  d["nqaR4eu2bpQGs9yMsWH8xG38Jcg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map

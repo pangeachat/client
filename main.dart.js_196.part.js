@@ -2606,18 +2606,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$refresh(_) {
       return "Actualizar";
     },
-    get$botConfig() {
-      return "Configuraci\xf3n de bots y actividades";
-    },
-    get$botConfigNoPermissionTitle() {
-      return "Sin permiso";
-    },
-    get$botConfigNoPermissionMessage() {
-      return "Contacta al administrador de la sala para cambiar la configuraci\xf3n del bot";
-    },
-    get$conversationBotStatus() {
-      return "Estado del Bot";
-    },
     get$updatePhoneOS() {
       return "Puede que necesites actualizar la versi\xf3n del sistema operativo de tu dispositivo.";
     },
@@ -3533,9 +3521,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$grammarCopyVOICErcp() {
       return "Reciprocal";
     },
-    get$enterLanguageLevel() {
-      return "Introduzca un nivel de idioma";
-    },
     get$other() {
       return "Otros";
     },
@@ -4075,9 +4060,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$access() {
       return "Acceso";
-    },
-    get$botSettings() {
-      return "Configuraci\xf3n del bot";
     },
     get$howSpaceCanBeFound() {
       return "C\xf3mo se puede encontrar este espacio";
@@ -4626,7 +4608,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EJCRpqPhrpVhCYGpicLhDQzadTQ="] = d.current;
+  d["/liwFhRXxzmeFBzEOatyoYPydeE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_196.part.js.map
