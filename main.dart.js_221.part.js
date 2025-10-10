@@ -4594,6 +4594,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unsubscribedResponseError() {
       return "This feature requires a subscription";
     },
+    get$leaveDesc() {
+      return "Leave this space and all chats within it";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4607,7 +4610,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8Fw6Q5fpx9ZcCKZFI2ZyEW/MC6c="] = d.current;
+  d["M4qh4h69jiEegJV4VB+8cGuQoqc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_221.part.js.map
