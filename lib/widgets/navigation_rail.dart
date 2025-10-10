@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:badges/badges.dart' as b;
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -224,10 +225,24 @@ class SpacesNavigationRail extends StatelessWidget {
                           //     AppConfig.borderRadius / 2,
                           //   ),
                           // ),
-                          icon: Badge(
-                            isLabelVisible:
+                          icon: b.Badge(
+                            showBadge:
                                 rootSpaces[i].membership == Membership.invite,
-                            smallSize: 10.0,
+                            badgeStyle: b.BadgeStyle(
+                              badgeColor: Theme.of(context).colorScheme.error,
+                              elevation: 4,
+                              borderSide: BorderSide.none,
+                              padding: const EdgeInsetsGeometry.all(0),
+                            ),
+                            badgeContent: Icon(
+                              Icons.error_outline,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              size: 16,
+                            ),
+                            position: b.BadgePosition.topEnd(
+                              top: -4,
+                              end: -8,
+                            ),
                             child: ClipPath(
                               clipper: MapClipper(),
                               child: Avatar(
