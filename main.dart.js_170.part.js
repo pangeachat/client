@@ -4595,6 +4595,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$leaveDesc() {
       return "Leave this space and all chats within it";
     },
+    get$selectAll() {
+      return "Select all";
+    },
+    get$deselectAll(_) {
+      return "Deselect all";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4608,7 +4614,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Qp18Ug+7nou3DIc6bYqwnYjEpeU="] = d.current;
+  d["GjyR6fUNPiuymM8AJiwX+X7mNYI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_170.part.js.map
