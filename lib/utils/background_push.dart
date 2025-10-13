@@ -76,6 +76,7 @@ class BackgroundPush {
   void _init() async {
     try {
       // #Pangea
+      // Handle notifications when app is opened from terminated/background state
       FirebaseMessaging.instance.getInitialMessage().then(_onOpenNotification);
       FirebaseMessaging.onMessageOpenedApp.listen(_onOpenNotification);
       // Pangea#
@@ -88,6 +89,8 @@ class BackgroundPush {
       );
 
       // #Pangea
+      // Handle notifications when app is in foreground
+      // Pass additionalData to preserve activity session info for local notifications
       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
         pushHelper(
           PushNotification.fromJson(message.data),
