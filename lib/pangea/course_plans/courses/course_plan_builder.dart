@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+
+import 'package:get_storage/get_storage.dart';
+
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:flutter/material.dart';
-import 'package:get_storage/get_storage.dart';
-
 import 'course_plans_repo.dart';
 
 mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {

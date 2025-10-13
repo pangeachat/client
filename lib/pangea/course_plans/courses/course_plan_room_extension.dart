@@ -1,3 +1,6 @@
+import 'package:matrix/matrix.dart' as sdk;
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_roles_model.dart';
@@ -8,8 +11,6 @@ import 'package:fluffychat/pangea/course_plans/courses/course_plan_event.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:matrix/matrix.dart' as sdk;
-import 'package:matrix/matrix.dart';
 
 extension CoursePlanRoomExtension on Room {
   CoursePlanEvent? get coursePlan {

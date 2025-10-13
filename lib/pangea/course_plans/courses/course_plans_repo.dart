@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
+
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -15,8 +18,6 @@ import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_req
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_response.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
 
 class CoursePlansRepo {
   static final Map<String, Completer<CoursePlanModel>> cache = {};
