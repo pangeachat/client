@@ -118,7 +118,7 @@ class CourseTopicModel {
     return CourseTopicModel(
       title: json['title'] as String,
       description: json['description'] as String,
-      uuid: json['uuid'] as String? ?? json['id'] as String,
+      uuid: json['uuid'] as String,
       activityIds: activityIdsEntry?.map((e) => e as String).toList() ?? [],
       locationIds: locationIdsEntry?.map((e) => e as String).toList() ?? [],
     );

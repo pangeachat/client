@@ -64,7 +64,7 @@ class CoursePlanModel {
       cefrLevel: LanguageLevelTypeEnumExtension.fromString(json['cefr_level']),
       title: json['title'] as String,
       description: json['description'] as String,
-      uuid: json['uuid'] as String? ?? json['id'] as String,
+      uuid: json['uuid'] as String,
       topicIds: (json['topic_ids'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??

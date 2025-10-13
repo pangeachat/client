@@ -348,8 +348,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       final resp = await showFutureLoadingDialog(
         context: context,
         future: () => courseParent!.launchActivityRoom(
-          widget.activityId,
           activity!,
+          widget.activityId,
           activity!.roles[_selectedRoleId!],
         ),
       );
