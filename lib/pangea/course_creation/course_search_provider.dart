@@ -28,7 +28,7 @@ mixin CourseSearchProvider<T extends StatefulWidget> on State<T> {
 
   void setTargetLanguageFilter(LanguageModel? language, {bool reload = true}) {
     if (targetLanguageFilter?.langCodeShort == language?.langCodeShort) return;
-    targetLanguageFilter = language;
+    setState(() => targetLanguageFilter = language);
     if (reload) _loadCourses();
   }
 
