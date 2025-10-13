@@ -205,7 +205,7 @@ class PublicTripPageState extends State<PublicTripPage> {
                           ),
                           ElevatedButton(
                             onPressed: () => context.go(
-                              '/registration/course/own',
+                              '/${widget.route}/course/own',
                             ),
                             style: ElevatedButton.styleFrom(
                               backgroundColor:

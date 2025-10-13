@@ -224,12 +224,8 @@ class ActivitySessionStartView extends StatelessWidget {
                                               if (!controller.isBotRoomMember)
                                                 ElevatedButton(
                                                   style: buttonStyle,
-                                                  onPressed: () =>
-                                                      showFutureLoadingDialog(
-                                                    context: context,
-                                                    future:
-                                                        controller.playWithBot,
-                                                  ),
+                                                  onPressed:
+                                                      controller.playWithBot,
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -336,7 +332,7 @@ class _ActivityStartButtons extends StatelessWidget {
               ElevatedButton(
                 style: buttonStyle,
                 onPressed: controller.courseParent?.canInvite ?? false
-                    ? () => context.go(
+                    ? () => context.push(
                           "/rooms/spaces/${controller.courseParent!.id}/invite",
                         )
                     : null,

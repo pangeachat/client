@@ -26,6 +26,9 @@ class CoursePlanModel {
   final List<String> topicIds;
   final List<String> mediaIds;
 
+  final DateTime updatedAt;
+  final DateTime createdAt;
+
   CoursePlanModel({
     required this.targetLanguage,
     required this.languageOfInstructions,
@@ -35,6 +38,8 @@ class CoursePlanModel {
     required this.uuid,
     required this.topicIds,
     required this.mediaIds,
+    required this.updatedAt,
+    required this.createdAt,
   });
 
   LanguageModel? get targetLanguageModel =>
@@ -68,6 +73,8 @@ class CoursePlanModel {
               ?.map((e) => e as String)
               .toList() ??
           [],
+      updatedAt: DateTime.parse(json['updated_at'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String),
     );
   }
 
@@ -82,6 +89,8 @@ class CoursePlanModel {
       'uuid': uuid,
       'topic_ids': topicIds,
       'media_ids': mediaIds,
+      'updated_at': updatedAt.toIso8601String(),
+      'created_at': createdAt.toIso8601String(),
     };
   }
 

@@ -150,6 +150,7 @@ class SpaceDetailsContent extends StatelessWidget {
       ),
       ButtonDetails(
         title: l10n.leave,
+        description: l10n.leaveDesc,
         icon: const Icon(Icons.logout_outlined, size: 30.0),
         onPressed: () async {
           final confirmed = await showOkCancelAlertDialog(
@@ -286,6 +287,10 @@ class SpaceDetailsContent extends StatelessWidget {
                 case SpaceSettingsTabs.course:
                   return SingleChildScrollView(
                     child: CourseSettings(
+                      // on redirect back to chat settings after completing activity,
+                      // course settings doesn't refresh activity details by default
+                      // the key forces a rebuild on this redirect
+                      key: ValueKey(controller.widget.activeTab),
                       room: room,
                     ),
                   );
