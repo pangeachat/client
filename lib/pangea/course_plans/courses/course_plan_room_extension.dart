@@ -44,8 +44,8 @@ extension CoursePlanRoomExtension on Room {
   }
 
   Future<String> launchActivityRoom(
-    String activityId,
     ActivityPlanModel activity,
+    String activityId,
     ActivityRole? role,
   ) async {
     final roomID = await client.createRoom(
