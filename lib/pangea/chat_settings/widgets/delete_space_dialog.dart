@@ -198,16 +198,15 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          if (_rooms.isNotEmpty &&
-                              _selectableRooms.isNotEmpty)
+                          if (_selectableRooms.length > 1)
                             CheckboxListTile(
                               value: _roomsToDelete.length ==
                                   _selectableRooms.length,
                               onChanged: (_) => _toggleSelectAll(),
                               title: Text(
                                 _roomsToDelete.length == _selectableRooms.length
-                                    ? '${L10n.of(context).select} ${L10n.of(context).none}'
-                                    : '${L10n.of(context).select} ${L10n.of(context).all}',
+                                    ? L10n.of(context).deselectAll
+                                    : L10n.of(context).selectAll,
                               ),
                               controlAffinity: ListTileControlAffinity.leading,
                             ),
