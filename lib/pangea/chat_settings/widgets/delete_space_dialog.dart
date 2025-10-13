@@ -200,21 +200,16 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
                         children: [
                           if (_rooms.isNotEmpty &&
                               _selectableRooms.isNotEmpty)
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: TextButton(
-                                  onPressed: _toggleSelectAll,
-                                  child: Text(
-                                    _roomsToDelete.length ==
-                                            _selectableRooms.length
-                                        ? '${L10n.of(context).select} ${L10n.of(context).none}'
-                                        : '${L10n.of(context).select} ${L10n.of(context).all}',
-                                  ),
-                                ),
+                            CheckboxListTile(
+                              value: _roomsToDelete.length ==
+                                  _selectableRooms.length,
+                              onChanged: (_) => _toggleSelectAll(),
+                              title: Text(
+                                _roomsToDelete.length == _selectableRooms.length
+                                    ? '${L10n.of(context).select} ${L10n.of(context).none}'
+                                    : '${L10n.of(context).select} ${L10n.of(context).all}',
                               ),
+                              controlAffinity: ListTileControlAffinity.leading,
                             ),
                           ListView.builder(
                             shrinkWrap: true,
