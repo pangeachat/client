@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
@@ -14,10 +11,12 @@ import 'package:fluffychat/pangea/course_plans/course_media/course_media_repo.da
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_translation_request.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_translation_response.dart';
+import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
+import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_response.dart';
 import 'package:fluffychat/pangea/payload_client/payload_client.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class CoursePlansRepo {
   static final Map<String, Completer<CoursePlanModel>> cache = {};
@@ -36,8 +35,10 @@ class CoursePlansRepo {
     return null;
   }
 
+  // TODO: Currently just getting one course plan at a time
+  // Should take advantage of batch fetching
   static Future<CoursePlanModel> get(
-    TranslateCoursePlanRequest request,
+    GetLocalizedCoursesRequest request,
   ) async {
     if (request.coursePlanIds.length != 1) {
       throw Exception("Get only supports single course plan ID");
@@ -75,15 +76,15 @@ class CoursePlansRepo {
     }
   }
 
-  static Future<TranslateCoursePlanResponse> _fetch(
-    TranslateCoursePlanRequest request,
+  static Future<GetLocalizedCoursesResponse> _fetch(
+    GetLocalizedCoursesRequest request,
   ) async {
     final Requests req = Requests(
       accessToken: MatrixState.pangeaController.userController.accessToken,
     );
 
     final Response res = await req.post(
-      url: PApiUrls.coursePlanTranslate,
+      url: PApiUrls.getLocalizedCourse,
       body: request.toJson(),
     );
 
@@ -95,13 +96,13 @@ class CoursePlansRepo {
 
     final decodedBody = jsonDecode(utf8.decode(res.bodyBytes));
 
-    final response = TranslateCoursePlanResponse.fromJson(decodedBody);
+    final response = GetLocalizedCoursesResponse.fromJson(decodedBody);
 
     return response;
   }
 
-  static Future<TranslateCoursePlanResponse> search(
-    TranslateCoursePlanRequest request,
+  static Future<GetLocalizedCoursesResponse> search(
+    GetLocalizedCoursesRequest request,
   ) async {
     await _courseStorage.initStorage;
 
@@ -113,7 +114,7 @@ class CoursePlansRepo {
 
     if (missingIds.isNotEmpty) {
       final searchResult = await _fetch(
-        TranslateCoursePlanRequest(
+        GetLocalizedCoursesRequest(
           coursePlanIds: missingIds,
           l1: request.l1,
         ),
@@ -128,7 +129,7 @@ class CoursePlansRepo {
     return _getCachedBatch(request);
   }
 
-  static Future<TranslateCoursePlanResponse> searchByFilter({
+  static Future<GetLocalizedCoursesResponse> searchByFilter({
     required CourseFilter filter,
   }) async {
     final PayloadClient payload = PayloadClient(
@@ -147,7 +148,7 @@ class CoursePlansRepo {
     );
 
     return search(
-      TranslateCoursePlanRequest(
+      GetLocalizedCoursesRequest(
         coursePlanIds: result.docs,
         l1: MatrixState.pangeaController.languageController.activeL1Code()!,
       ),
@@ -155,7 +156,7 @@ class CoursePlansRepo {
   }
 
   static CoursePlanModel? _getCached(
-    TranslateCoursePlanRequest request,
+    GetLocalizedCoursesRequest request,
   ) {
     if (lastUpdated != null &&
         DateTime.now().difference(lastUpdated!) > cacheDuration) {
@@ -180,13 +181,13 @@ class CoursePlansRepo {
     return null;
   }
 
-  static TranslateCoursePlanResponse _getCachedBatch(
-    TranslateCoursePlanRequest request,
+  static GetLocalizedCoursesResponse _getCachedBatch(
+    GetLocalizedCoursesRequest request,
   ) {
     if (lastUpdated != null &&
         DateTime.now().difference(lastUpdated!) > cacheDuration) {
       clearCache();
-      return TranslateCoursePlanResponse(coursePlans: {});
+      return GetLocalizedCoursesResponse(coursePlans: {});
     }
 
     final Map<String, CoursePlanModel> courses = {};
@@ -205,7 +206,7 @@ class CoursePlansRepo {
       }
     }
 
-    return TranslateCoursePlanResponse(coursePlans: courses);
+    return GetLocalizedCoursesResponse(coursePlans: courses);
   }
 
   static Future<void> _setCached(
@@ -228,7 +229,7 @@ class CoursePlansRepo {
   }
 
   static Future<void> _setCachedBatch(
-    TranslateCoursePlanResponse response,
+    GetLocalizedCoursesResponse response,
     String l1,
   ) async {
     if (lastUpdated == null) {

@@ -1,8 +1,3 @@
-import 'package:flutter/material.dart';
-
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -11,11 +6,14 @@ import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
-import 'package:fluffychat/pangea/course_plans/courses/course_translation_request.dart';
+import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 class PublicTripPage extends StatefulWidget {
   final String route;
@@ -109,7 +107,7 @@ class PublicTripPageState extends State<PublicTripPage> {
 
     try {
       final resp = await CoursePlansRepo.search(
-        TranslateCoursePlanRequest(
+        GetLocalizedCoursesRequest(
           coursePlanIds: discoveredCourses.map((c) => c.courseId).toList(),
           l1: MatrixState.pangeaController.languageController.activeL1Code()!,
         ),

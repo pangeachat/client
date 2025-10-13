@@ -1,8 +1,8 @@
-class TranslateCoursePlanRequest {
+class GetLocalizedCoursesRequest {
   final List<String> coursePlanIds;
   final String l1;
 
-  TranslateCoursePlanRequest({
+  GetLocalizedCoursesRequest({
     required this.coursePlanIds,
     required this.l1,
   });
@@ -12,8 +12,8 @@ class TranslateCoursePlanRequest {
         "l1": l1,
       };
 
-  factory TranslateCoursePlanRequest.fromJson(Map<String, dynamic> json) {
-    return TranslateCoursePlanRequest(
+  factory GetLocalizedCoursesRequest.fromJson(Map<String, dynamic> json) {
+    return GetLocalizedCoursesRequest(
       coursePlanIds: json['course_plan_ids'] != null
           ? List<String>.from(json['course_plan_ids'])
           : [],

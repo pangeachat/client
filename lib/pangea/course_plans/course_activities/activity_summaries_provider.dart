@@ -1,12 +1,10 @@
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/room_summary_extension.dart';
 import 'package:fluffychat/pangea/course_plans/course_topics/course_topic_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:matrix/matrix.dart';
 
 mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
   Map<String, RoomSummaryResponse>? roomSummaries;
@@ -55,7 +53,7 @@ mixin ActivitySummariesProvider<T extends StatefulWidget> on State<T> {
             (v) => v.userId == userID && v.isArchived,
           ),
         )
-        .map((e) => e.activityPlan.originalActivityId)
+        .map((e) => e.activityPlan.activityId)
         .whereType<String>()
         .toSet();
   }

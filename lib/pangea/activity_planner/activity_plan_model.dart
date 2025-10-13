@@ -1,15 +1,10 @@
-import 'package:flutter/foundation.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:flutter/foundation.dart';
 
 class ActivityPlanModel {
   final String activityId;
 
-  /// The ID of the original activity from which this activity was translated.
-  /// This differs from [activityId] when this activity is a translation of another activity.
-  /// If the activity is not a translation, [originalActivityId] is equal to [activityId].
-  final String originalActivityId;
   final ActivityPlanRequest req;
   final String title;
   final String description;
@@ -31,7 +26,6 @@ class ActivityPlanModel {
     required this.instructions,
     required this.vocab,
     required this.activityId,
-    required this.originalActivityId,
     Map<String, ActivityRole>? roles,
     this.imageURL,
     this.endAt,
@@ -96,7 +90,6 @@ class ActivityPlanModel {
           : null,
       roles: roles,
       activityId: activityId,
-      originalActivityId: json["original_activity_id"] as String? ?? activityId,
     );
   }
 
@@ -119,7 +112,6 @@ class ActivityPlanModel {
       'roles': _roles?.map(
         (key, value) => MapEntry(key, value.toJson()),
       ),
-      'original_activity_id': originalActivityId,
     };
   }
 

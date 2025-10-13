@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class CourseActivityRepo {
   static final Map<String, Completer<TranslateActivityResponse>> _cache = {};
@@ -42,7 +41,7 @@ class CourseActivityRepo {
     );
 
     final Response res = await req.post(
-      url: PApiUrls.coursePlanActivityTranslate,
+      url: PApiUrls.getLocalizedActivity,
       body: request.toJson(),
     );
 

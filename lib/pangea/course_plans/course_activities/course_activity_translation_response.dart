@@ -10,13 +10,9 @@ class TranslateActivityResponse {
     return TranslateActivityResponse(
       plans: plansEntry.map(
         (key, value) {
-          final valueWithId = value["original_activity_id"] == null
-              ? {...value, "original_activity_id": key}
-              : value;
-
           return MapEntry(
             key,
-            ActivityPlanModel.fromJson(valueWithId),
+            ActivityPlanModel.fromJson(value),
           );
         },
       ),
