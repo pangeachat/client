@@ -95,6 +95,7 @@ class BackgroundPush {
           l10n: l10n,
           activeRoomId: matrix?.activeRoomId,
           flutterLocalNotificationsPlugin: _flutterLocalNotificationsPlugin,
+          additionalData: message.data,
         );
       });
       // Pangea#
@@ -461,18 +462,71 @@ class BackgroundPush {
 
   Future<void> goToRoom(NotificationResponse? response) async {
     try {
-      final roomId = response?.payload;
-      Logs().v('[Push] Attempting to go to room $roomId...');
-      if (roomId == null) {
+      final payload = response?.payload;
+      Logs().v('[Push] Attempting to go to room with payload: $payload');
+      if (payload == null) {
         return;
       }
-      await client.roomsLoading;
-      await client.accountDataLoading;
-      if (client.getRoomById(roomId) == null) {
-        await client
-            .waitForRoomInSync(roomId)
-            .timeout(const Duration(seconds: 30));
+
+      // #Pangea - Handle activity session data if present
+      String? roomId;
+      String? sessionRoomId;
+      String? activityId;
+      
+      try {
+        final payloadData = jsonDecode(payload) as Map<String, dynamic>;
+        roomId = payloadData['room_id'] as String?;
+        sessionRoomId = payloadData['content_pangea.activity.session_room_id'] as String?;
+        activityId = payloadData['content_pangea.activity.id'] as String?;
+      } catch (_) {
+        // If payload is not JSON, treat it as a simple room ID
+        roomId = payload;
       }
+      
+      if (roomId == null || roomId.isEmpty) {
+        return;
+      }
+
+      // Helper to ensure a room is loaded or synced.
+      Future<Room?> ensureRoomLoaded(String id) async {
+        await client.roomsLoading;
+        await client.accountDataLoading;
+
+        var room = client.getRoomById(id);
+        if (room == null) {
+          await client.waitForRoomInSync(id).timeout(const Duration(seconds: 30));
+          room = client.getRoomById(id);
+        }
+        return room;
+      }
+
+      // Handle session room if provided.
+      if (sessionRoomId != null &&
+          sessionRoomId.isNotEmpty &&
+          activityId != null &&
+          activityId.isNotEmpty) {
+        try {
+          final course = await ensureRoomLoaded(roomId);
+          if (course == null) return;
+
+          final session = client.getRoomById(sessionRoomId);
+          if (session?.membership == Membership.join) {
+            FluffyChatApp.router.go('/rooms/$sessionRoomId');
+            return;
+          }
+
+          FluffyChatApp.router.go(
+            '/rooms/spaces/$roomId/activity/$activityId?roomid=$sessionRoomId',
+          );
+          return;
+        } catch (err, s) {
+          ErrorHandler.logError(e: err, s: s, data: {"roomId": sessionRoomId});
+        }
+      }
+
+      // Fallback: just open the original room.
+      await ensureRoomLoaded(roomId);
+      // Pangea#
       FluffyChatApp.router.go(
         client.getRoomById(roomId)?.membership == Membership.invite
             ? '/rooms'

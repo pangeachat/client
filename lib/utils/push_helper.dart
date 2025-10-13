@@ -26,6 +26,7 @@ Future<void> pushHelper(
   L10n? l10n,
   String? activeRoomId,
   required FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
+  Map<String, dynamic>? additionalData,
 }) async {
   try {
     await _tryPushHelper(
@@ -34,6 +35,7 @@ Future<void> pushHelper(
       l10n: l10n,
       activeRoomId: activeRoomId,
       flutterLocalNotificationsPlugin: flutterLocalNotificationsPlugin,
+      additionalData: additionalData,
     );
   } catch (e, s) {
     Logs().v('Push Helper has crashed!', e, s);
@@ -69,6 +71,7 @@ Future<void> _tryPushHelper(
   L10n? l10n,
   String? activeRoomId,
   required FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
+  Map<String, dynamic>? additionalData,
 }) async {
   final isBackgroundMessage = client == null;
   Logs().v(
@@ -297,12 +300,29 @@ Future<void> _tryPushHelper(
     await _setShortcut(event, l10n, title, roomAvatarFile);
   }
 
+  // #Pangea - Include activity session data in payload
+  String payload = event.roomId!;
+  if (additionalData != null) {
+    const sessionIdKey = "content_pangea.activity.session_room_id";
+    const activityIdKey = "content_pangea.activity.id";
+    final sessionRoomId = additionalData[sessionIdKey];
+    final activityId = additionalData[activityIdKey];
+    if (sessionRoomId is String && activityId is String) {
+      payload = jsonEncode({
+        'room_id': event.roomId,
+        sessionIdKey: sessionRoomId,
+        activityIdKey: activityId,
+      });
+    }
+  }
+  // Pangea#
+
   await flutterLocalNotificationsPlugin.show(
     id,
     title,
     body,
     platformChannelSpecifics,
-    payload: event.roomId,
+    payload: payload,
   );
   Logs().v('Push helper has been completed!');
 }
