@@ -7,6 +7,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 class DeleteSpaceDialog extends StatefulWidget {
@@ -20,7 +21,8 @@ class DeleteSpaceDialog extends StatefulWidget {
   State<DeleteSpaceDialog> createState() => DeleteSpaceDialogState();
 }
 
-class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
+class DeleteSpaceDialogState extends State<DeleteSpaceDialog>
+    with ActivitySummariesProvider {
   List<SpaceRoomsChunk> _rooms = [];
   final List<SpaceRoomsChunk> _roomsToDelete = [];
 
@@ -45,7 +47,17 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
     });
 
     try {
-      _rooms = await widget.space.getSpaceChildrenToDelete();
+      // Get space hierarchy and room summaries in parallel
+      final allRooms = await widget.space.getSpaceChildrenToDelete();
+      final roomIds = allRooms.map((r) => r.roomId).toList();
+      
+      // Load room summaries to check for archived activities
+      await loadRoomSummaries(roomIds);
+      
+      // Filter out archived activities
+      _rooms = allRooms.where((room) {
+        return !_isArchivedActivity(room.roomId);
+      }).toList();
     } catch (e, s) {
       _roomLoadError = L10n.of(context).errorLoadingSpaceChildren;
       ErrorHandler.logError(
@@ -75,6 +87,19 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
     setState(() {
       selected ? _roomsToDelete.add(room) : _roomsToDelete.remove(room);
     });
+  }
+
+  bool _isArchivedActivity(String roomId) {
+    final summary = roomSummaries?[roomId];
+    if (summary == null) return false;
+    
+    // Check if the current user has archived this activity
+    final currentUserId = widget.space.client.userID;
+    if (currentUserId == null) return false;
+    
+    return summary.activityRoles.roles.values.any(
+      (role) => role.userId == currentUserId && role.isArchived,
+    );
   }
 
   void _toggleSelectAll() {
