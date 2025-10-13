@@ -349,7 +349,6 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
         context: context,
         future: () => courseParent!.launchActivityRoom(
           activity!,
-          widget.activityId,
           activity!.roles[_selectedRoleId!],
         ),
       );

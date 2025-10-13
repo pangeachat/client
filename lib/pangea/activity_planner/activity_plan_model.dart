@@ -5,7 +5,11 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class ActivityPlanModel {
   final String activityId;
-  final String? originalActivityId;
+
+  /// The ID of the original activity from which this activity was translated.
+  /// This differs from [activityId] when this activity is a translation of another activity.
+  /// If the activity is not a translation, [originalActivityId] is equal to [activityId].
+  final String originalActivityId;
   final ActivityPlanRequest req;
   final String title;
   final String description;
@@ -27,11 +31,11 @@ class ActivityPlanModel {
     required this.instructions,
     required this.vocab,
     required this.activityId,
+    required this.originalActivityId,
     Map<String, ActivityRole>? roles,
     this.imageURL,
     this.endAt,
     this.duration,
-    this.originalActivityId,
   })  : description = (description == null || description.isEmpty)
             ? learningObjective
             : description,
@@ -68,6 +72,7 @@ class ActivityPlanModel {
       );
     }
 
+    final activityId = json[ModelKey.activityId] ?? json["bookmark_id"];
     return ActivityPlanModel(
       imageURL: json[ModelKey.activityPlanImageURL],
       instructions: json[ModelKey.activityPlanInstructions],
@@ -90,8 +95,8 @@ class ActivityPlanModel {
             )
           : null,
       roles: roles,
-      activityId: json[ModelKey.activityId] ?? json["bookmark_id"],
-      originalActivityId: json["original_activity_id"] as String?,
+      activityId: activityId,
+      originalActivityId: json["original_activity_id"] as String? ?? activityId,
     );
   }
 
