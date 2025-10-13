@@ -17,17 +17,11 @@ import 'package:fluffychat/widgets/matrix.dart';
 class LemmaHighlightEmojiRow extends StatefulWidget {
   final LemmaMeaningBuilderState controller;
   final ConstructIdentifier cId;
-  final VoidCallback? onTapOverride;
-  final bool isSelected;
-  final double? iconSize;
 
   const LemmaHighlightEmojiRow({
     super.key,
     required this.controller,
     required this.cId,
-    required this.onTapOverride,
-    required this.isSelected,
-    this.iconSize,
   });
 
   @override
@@ -66,11 +60,7 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
         _showShimmer = (displayEmoji == null);
         _hasShimmered = false;
       });
-    } else if (oldWidget.isSelected != widget.isSelected ||
-        widget.cId.userSetEmoji != oldWidget.cId.userSetEmoji) {
-      setState(() => displayEmoji = widget.cId.userSetEmoji.firstOrNull);
     }
-
     super.didUpdateWidget(oldWidget);
   }
 
@@ -79,26 +69,28 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
     super.dispose();
   }
 
+  String transformTargetId(String emoji) =>
+      "emoji-choice-item-$emoji-${widget.cId.lemma}";
+
   Future<void> setEmoji(String emoji, BuildContext context) async {
     try {
       final String? userSetEmoji = widget.cId.userSetEmoji.firstOrNull;
+      setState(() => displayEmoji = emoji);
       await widget.cId.setEmojiWithXP(
         emoji: emoji,
         isFromCorrectAnswer: false,
       );
-      setState(() => displayEmoji = emoji);
       if (userSetEmoji == null) {
-        final String targetID = "emoji-choice-item-$emoji-${widget.cId.lemma}";
         OverlayUtil.showOverlay(
-          overlayKey: "${targetID}_points",
+          overlayKey: "${transformTargetId(emoji)}_points",
           followerAnchor: Alignment.bottomCenter,
           targetAnchor: Alignment.bottomCenter,
           context: context,
           child: PointsGainedAnimation(
             points: 2,
-            targetID: "emoji-choice-item-$emoji-${widget.cId.lemma}",
+            targetID: transformTargetId(emoji),
           ),
-          transformTargetId: targetID,
+          transformTargetId: transformTargetId(emoji),
           closePrevOverlay: false,
           backDropToDismiss: false,
           ignorePointer: true,
@@ -137,10 +129,10 @@ class LemmaHighlightEmojiRowState extends State<LemmaHighlightEmojiRow> {
                 .map(
                   (emoji) => EmojiChoiceItem(
                     emoji: emoji,
-                    cId: widget.cId,
                     onSelectEmoji: () => setEmoji(emoji, context),
                     isDisplay: (displayEmoji == emoji),
                     showShimmer: (_showShimmer && !_hasShimmered),
+                    transformTargetId: transformTargetId(emoji),
                   ),
                 )
                 .toList(),
@@ -156,7 +148,7 @@ class EmojiChoiceItem extends StatefulWidget {
   final VoidCallback onSelectEmoji;
   final bool isDisplay;
   final bool showShimmer;
-  final ConstructIdentifier cId;
+  final String transformTargetId;
 
   const EmojiChoiceItem({
     super.key,
@@ -164,7 +156,7 @@ class EmojiChoiceItem extends StatefulWidget {
     required this.isDisplay,
     required this.onSelectEmoji,
     required this.showShimmer,
-    required this.cId,
+    required this.transformTargetId,
   });
 
   @override
@@ -174,12 +166,8 @@ class EmojiChoiceItem extends StatefulWidget {
 class EmojiChoiceItemState extends State<EmojiChoiceItem> {
   bool _isHovered = false;
 
-//Get transform targetID so points can come off of selected emoji
-  String get transformTargetId =>
-      "emoji-choice-item-${widget.emoji}-${widget.cId.lemma}";
-
   LayerLink get layerLink =>
-      MatrixState.pAnyState.layerLinkAndKey(transformTargetId).link;
+      MatrixState.pAnyState.layerLinkAndKey(widget.transformTargetId).link;
 
   @override
   Widget build(BuildContext context) {
