@@ -26,7 +26,7 @@ class CourseSettings extends StatefulWidget {
   final Room room;
 
   /// The course ID to load, from the course plan event in the room.
-  /// Separate from the room trigger didUpdateWidget on change
+  /// Separate from the room to trigger didUpdateWidget on change
   final String? courseId;
 
   const CourseSettings({
