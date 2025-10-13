@@ -31,15 +31,7 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
     await Future.wait(futures);
   }
 
-  Future<void> loadCourse(String? courseId) async {
-    if (courseId == null) {
-      setState(() {
-        loadingCourse = false;
-        course = null;
-      });
-      return;
-    }
-
+  Future<void> loadCourse(String courseId) async {
     await _initStorage();
     setState(() {
       loadingCourse = true;
@@ -106,5 +98,15 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
         setState(() {});
       }
     }
+  }
+
+  Future<void> loadAllActivities() async {
+    if (course == null) return;
+
+    final futures = <Future>[];
+    for (final topicId in course!.topicIds) {
+      futures.add(loadActivity(topicId));
+    }
+    await Future.wait(futures);
   }
 }

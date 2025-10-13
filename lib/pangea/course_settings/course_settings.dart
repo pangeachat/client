@@ -54,18 +54,22 @@ class CourseSettingsState extends State<CourseSettings>
   }
 
   Future<void> _loadCourseInfo() async {
-    setState(() => _loadingActivities = true);
-    await loadCourse(widget.room.coursePlan?.uuid);
-    if (course != null) {
-      await loadTopics();
-
-      final futures = <Future>[];
-      for (final topicId in course!.topicIds) {
-        futures.add(loadActivity(topicId));
-      }
-      await Future.wait(futures);
+    if (widget.room.coursePlan == null) {
+      setState(() {
+        course = null;
+        loadingCourse = false;
+        loadingTopics = false;
+        _loadingActivities = false;
+      });
+      return;
     }
 
+    setState(() => _loadingActivities = true);
+    await loadCourse(widget.room.coursePlan!.uuid);
+    if (course != null) {
+      await loadTopics();
+      await loadAllActivities();
+    }
     if (mounted) setState(() => _loadingActivities = false);
   }
 
