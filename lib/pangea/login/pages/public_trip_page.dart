@@ -52,7 +52,7 @@ class PublicTripPageState extends State<PublicTripPage> {
     _loadCourses();
   }
 
-  void setTargetLanguageFilter(LanguageModel? language, {reload = true}) {
+  void setTargetLanguageFilter(LanguageModel? language, {bool reload = true}) {
     if (targetLanguageFilter?.langCodeShort == language?.langCodeShort) return;
     targetLanguageFilter = language;
     if (reload) _loadCourses();
