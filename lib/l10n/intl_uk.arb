@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-09-30 18:59:22.461202",
+  "@@last_modified": "2025-10-14 20:35:01.980246",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11683,6 +11683,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Запросіть друзів до активності",
+  "inviteFriendsToActivityCourse": "Запросіть друзів до активності та курсу",
+  "feedbackRespDesc": "Перевірте завтра оновлення активності.",
+  "activityDropdownDesc": "Коли закінчите цю активність, натисніть нижче",
+  "activityAnalyticsListBody": "Це ваші завершені активності! Після завершення активностей ви можете переглянути їх тут.",
+  "languageMismatchTitle": "Несумісність мови",
+  "languageMismatchDesc": "Мова вашої цільової мови не співпадає з мовою цієї активності. Оновити цільову мову?",
+  "reportWordIssueTooltip": "Повідомити про проблему з інформацією слова",
+  "tokenInfoFeedbackDialogTitle": "Зворотній зв'язок про інформацію слова",
+  "tokenInfoFeedbackDialogDesc": "Штучний інтелект робить помилки. Будь ласка, опишіть будь-які проблеми, які ви знайшли з наведеною інформацією.",
+  "noPublicCoursesFound": "Публічні курси не знайдені. Хотіли б створити один?",
+  "noCourseTemplatesFound": "Ми не змогли знайти курси для вашої цільової мови. Тим часом ви можете спілкуватися з Pangea Bot і повернутися пізніше для більшої кількості курсів.",
+  "botActivityJoinFailMessage": "Pangea Bot відповідає довго. Будь ласка, спробуйте ще раз пізніше або запросіть друга.",
+  "unsubscribedResponseError": "Ця функція вимагає підписки",
+  "leaveDesc": "Вийти з цього простору та всіх чатів у ньому",
+  "selectAll": "Вибрати все",
+  "deselectAll": "Скасувати вибір всього",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

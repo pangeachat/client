@@ -4342,7 +4342,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-09-30 22:20:07.870359",
+  "@@last_modified": "2025-10-14 15:29:09.398290",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12494,6 +12494,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Pakvieskite draugus į veiklą",
+  "inviteFriendsToActivityCourse": "Pakvieskite draugus į veiklą ir kursą",
+  "feedbackRespDesc": "Kitą dieną patikrinkite atnaujinimus apie veiklą.",
+  "activityDropdownDesc": "Kai baigsite šią veiklą, spustelėkite žemiau",
+  "activityAnalyticsListBody": "Tai yra jūsų užbaigtos veiklos! Baigę veiklas, jas galite peržiūrėti čia.",
+  "languageMismatchTitle": "Kalbos neatitikimas",
+  "languageMismatchDesc": "Jūsų tikslinė kalba nesutampa su šios veiklos kalba. Ar norite atnaujinti savo tikslinę kalbą?",
+  "reportWordIssueTooltip": "Pranešti apie žodžio informacijos problemą",
+  "tokenInfoFeedbackDialogTitle": "Žodžio informacijos atsiliepimai",
+  "tokenInfoFeedbackDialogDesc": "Dirbtinis intelektas daro klaidų. Prašome aprašyti bet kokias problemas, kurias radote su aukščiau pateikta informacija.",
+  "noPublicCoursesFound": "Nerasta viešųjų kursų. Ar norėtumėte sukurti vieną?",
+  "noCourseTemplatesFound": "Nepavyko rasti jokių kursų jūsų tikslinei kalbai. Tuo tarpu galite bendrauti su Pangea Bot ir vėliau grįžti pasitikrinti daugiau kursų.",
+  "botActivityJoinFailMessage": "Pangea Bot šiek tiek užtrunka atsakydamas. Prašome pabandyti vėliau arba pakviesti draugą.",
+  "unsubscribedResponseError": "Šiai funkcijai reikalinga prenumerata",
+  "leaveDesc": "Išeikite iš šios erdvės ir visų pokalbių joje",
+  "selectAll": "Pasirinkti viską",
+  "deselectAll": "Atšaukti viską",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

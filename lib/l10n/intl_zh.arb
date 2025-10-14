@@ -1,6 +1,6 @@
 {
   "@@locale": "zh",
-  "@@last_modified": "2025-09-30 18:22:35.147551",
+  "@@last_modified": "2025-10-14 20:41:43.280716",
   "about": "关于",
   "@about": {
     "type": "String",
@@ -11680,6 +11680,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "邀请朋友参加活动",
+  "inviteFriendsToActivityCourse": "邀请朋友参加活动和课程",
+  "feedbackRespDesc": "明天回来查看活动更新。",
+  "activityDropdownDesc": "完成此活动后，点击下面",
+  "activityAnalyticsListBody": "这些是你完成的活动！完成活动后，你可以在这里查看。",
+  "languageMismatchTitle": "语言不匹配",
+  "languageMismatchDesc": "你的目标语言与此活动的语言不匹配。要更新你的目标语言吗？",
+  "reportWordIssueTooltip": "报告单词信息问题",
+  "tokenInfoFeedbackDialogTitle": "单词信息反馈",
+  "tokenInfoFeedbackDialogDesc": "AI会犯错。请描述你在上述信息中发现的任何问题。",
+  "noPublicCoursesFound": "未找到公共课程。你想创建一个吗？",
+  "noCourseTemplatesFound": "我们未能找到你的目标语言的课程。你可以暂时与Pangea机器人聊天，稍后再回来查看更多课程。",
+  "botActivityJoinFailMessage": "Pangea机器人响应有点慢。请稍后再试，或邀请朋友。",
+  "unsubscribedResponseError": "此功能需要订阅",
+  "leaveDesc": "离开此空间及其中的所有聊天",
+  "selectAll": "全选",
+  "deselectAll": "取消全选",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

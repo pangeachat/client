@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-02 13:22:09.347155",
+  "@@last_modified": "2025-10-14 13:42:09.255871",
   "about": "সম্পর্কে",
   "@about": {
     "type": "String",
@@ -12793,6 +12793,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "বন্ধুদের কার্যকলাপে আমন্ত্রণ জানান",
+  "inviteFriendsToActivityCourse": "বন্ধুদের কার্যকলাপ এবং কোর্সে আমন্ত্রণ জানান",
+  "feedbackRespDesc": "কার্যকলাপের আপডেটের জন্য আগামীকাল আবার চেক করুন।",
+  "activityDropdownDesc": "আপনি যখন এই কার্যকলাপ শেষ করবেন, নিচের ক্লিক করুন",
+  "activityAnalyticsListBody": "এগুলো আপনার সম্পন্ন কার্যকলাপ! কার্যকলাপ শেষ করার পরে, আপনি এগুলো এখানে দেখতে পারেন।",
+  "languageMismatchTitle": "ভাষার মিল নেই",
+  "languageMismatchDesc": "আপনার লক্ষ্য ভাষা এই কার্যকলাপের ভাষার সাথে মিলছে না। আপনার লক্ষ্য ভাষা আপডেট করবেন?",
+  "reportWordIssueTooltip": "শব্দের তথ্য সমস্যা রিপোর্ট করুন",
+  "tokenInfoFeedbackDialogTitle": "শব্দ তথ্য প্রতিক্রিয়া",
+  "tokenInfoFeedbackDialogDesc": "এআই ভুল করে। উপরে দেওয়া তথ্যের সাথে আপনি যদি কোনও সমস্যা খুঁজে পান তবে দয়া করে বর্ণনা করুন।",
+  "noPublicCoursesFound": "কোনও পাবলিক কোর্স পাওয়া যায়নি। আপনি কি একটি তৈরি করতে চান?",
+  "noCourseTemplatesFound": "আমরা আপনার লক্ষ্য ভাষার জন্য কোনও কোর্স খুঁজে পাইনি। এই সময়ে আপনি পাঞ্জিয়া বটের সাথে চ্যাট করতে পারেন, এবং পরে আরও কোর্সের জন্য ফিরে আসতে পারেন।",
+  "botActivityJoinFailMessage": "পাঞ্জিয়া বট উত্তর দিতে কিছুটা সময় নিচ্ছে। দয়া করে পরে আবার চেষ্টা করুন, বা একজন বন্ধুকে আমন্ত্রণ জানান।",
+  "unsubscribedResponseError": "এই বৈশিষ্ট্যটির জন্য একটি সাবস্ক্রিপশন প্রয়োজন",
+  "leaveDesc": "এই স্থান এবং এর মধ্যে সমস্ত চ্যাট ছেড়ে দিন",
+  "selectAll": "সব নির্বাচন করুন",
+  "deselectAll": "সব বাতিল করুন",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

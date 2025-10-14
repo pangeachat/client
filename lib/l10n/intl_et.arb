@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-10-01 19:31:39.807338",
+  "@@last_modified": "2025-10-14 15:22:20.534252",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -12010,6 +12010,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Kutsu sõpru tegevusse",
+  "inviteFriendsToActivityCourse": "Kutsu sõpru tegevusse ja kursusele",
+  "feedbackRespDesc": "Kontrollige hommikul uuesti tegevuse uuenduste jaoks.",
+  "activityDropdownDesc": "Kui olete selle tegevusega valmis, klõpsake allpool",
+  "activityAnalyticsListBody": "Need on teie lõpetatud tegevused! Pärast tegevuste lõpetamist saate neid siin vaadata.",
+  "languageMismatchTitle": "Keele sobimatus",
+  "languageMismatchDesc": "Teie sihtkeel ei vasta selle tegevuse keelele. Kas soovite oma sihtkeelt uuendada?",
+  "reportWordIssueTooltip": "Teata sõna teabega seotud probleemist",
+  "tokenInfoFeedbackDialogTitle": "Sõnateabe tagasiside",
+  "tokenInfoFeedbackDialogDesc": "Tehisintellekt teeb vigu. Palun kirjeldage kõiki probleeme, mida olete teabe kohta leidnud.",
+  "noPublicCoursesFound": "Avalikke kursusi ei leitud. Kas soovite luua ühe?",
+  "noCourseTemplatesFound": "Me ei leidnud teie sihtkeele jaoks ühtegi kursust. Samal ajal saate vestelda Pangea botiga ja hiljem tagasi tulla rohkemate kursuste jaoks.",
+  "botActivityJoinFailMessage": "Pangea bot võtab vastamiseks aega. Palun proovige hiljem uuesti või kutsuge sõber.",
+  "unsubscribedResponseError": "See funktsioon nõuab tellimust",
+  "leaveDesc": "Lahkuge sellest ruumist ja kõigist selles olevatest vestlustest",
+  "selectAll": "Vali kõik",
+  "deselectAll": "Tühista valik",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

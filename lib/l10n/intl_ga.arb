@@ -4998,7 +4998,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-09-30 21:26:22.048976",
+  "@@last_modified": "2025-10-14 15:28:06.047147",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -11687,6 +11687,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Cuireadh chun cairde a thabhairt chuig gníomhaíocht",
+  "inviteFriendsToActivityCourse": "Cuireadh chun cairde a thabhairt chuig gníomhaíocht agus cúrsa",
+  "feedbackRespDesc": "Seiceáil ar ais amárach le haghaidh nuashonruithe ar ghníomhaíocht.",
+  "activityDropdownDesc": "Nuair a bheidh tú críochnaithe leis an ngníomhaíocht seo, cliceáil thíos",
+  "activityAnalyticsListBody": "Seo iad do ghníomhaíochtaí críochnaithe! Tar éis duit na gníomhaíochtaí a chríochnú, is féidir leat iad a fheiceáil anseo.",
+  "languageMismatchTitle": "Míchothrom na teangacha",
+  "languageMismatchDesc": "Ní oireann do theanga sprioc an gníomhaíochta seo do theanga na gníomhaíochta. An bhfuil tú ag iarraidh do theanga sprioc a nuashonrú?",
+  "reportWordIssueTooltip": "Tuairiscigh fadhb eolas focal",
+  "tokenInfoFeedbackDialogTitle": "Aiseolas Eolas Focal",
+  "tokenInfoFeedbackDialogDesc": "Déantar bot AI botún. Déan cur síos ar aon fhadhbanna a fuair tú leis an eolas thuas.",
+  "noPublicCoursesFound": "Níor aimsíodh cúrsaí poiblí. Ar mhaith leat ceann a chruthú?",
+  "noCourseTemplatesFound": "Níor éirigh linn aon chúrsaí a aimsiú do do theanga sprioc. Is féidir leat comhrá a dhéanamh leis an Pangea Bot sa t-am ar fad, agus seiceáil ar ais níos déanaí le haghaidh tuilleadh cúrsaí.",
+  "botActivityJoinFailMessage": "Tá Pangea Bot ag tógáil tamall le freagairt. Déan triail eile níos déanaí, nó cuireadh a thabhairt do chara.",
+  "unsubscribedResponseError": "Éilíonn an ghné seo síntiús",
+  "leaveDesc": "Fág an spás seo agus na comhráite go léir laistigh de",
+  "selectAll": "Roghnaigh gach rud",
+  "deselectAll": "Dí-roghnaigh gach rud",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

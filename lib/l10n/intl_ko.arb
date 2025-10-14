@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-09-30 17:59:38.972256",
+  "@@last_modified": "2025-10-14 15:29:05.448915",
   "about": "소개",
   "@about": {
     "type": "String",
@@ -11797,6 +11797,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "친구들을 활동에 초대하기",
+  "inviteFriendsToActivityCourse": "친구들을 활동과 강좌에 초대하기",
+  "feedbackRespDesc": "내일 다시 확인하여 활동 업데이트를 확인하세요.",
+  "activityDropdownDesc": "이 활동이 끝나면 아래를 클릭하세요",
+  "activityAnalyticsListBody": "이것은 완료한 활동입니다! 활동을 마친 후 여기에서 볼 수 있습니다.",
+  "languageMismatchTitle": "언어 불일치",
+  "languageMismatchDesc": "목표 언어가 이 활동의 언어와 일치하지 않습니다. 목표 언어를 업데이트하시겠습니까?",
+  "reportWordIssueTooltip": "단어 정보 문제 신고",
+  "tokenInfoFeedbackDialogTitle": "단어 정보 피드백",
+  "tokenInfoFeedbackDialogDesc": "AI가 실수할 수 있습니다. 위 정보에 대해 발견한 문제를 설명해 주세요.",
+  "noPublicCoursesFound": "공개 강좌를 찾을 수 없습니다. 새로 만드시겠습니까?",
+  "noCourseTemplatesFound": "목표 언어에 대한 강좌를 찾을 수 없습니다. 그동안 Pangea Bot과 채팅하거나 나중에 더 많은 강좌를 확인하세요.",
+  "botActivityJoinFailMessage": "Pangea Bot이 응답하는 데 시간이 걸리고 있습니다. 잠시 후 다시 시도하거나 친구를 초대하세요.",
+  "unsubscribedResponseError": "이 기능은 구독이 필요합니다",
+  "leaveDesc": "이 공간과 그 안의 모든 채팅을 떠나기",
+  "selectAll": "모두 선택",
+  "deselectAll": "모두 선택 해제",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

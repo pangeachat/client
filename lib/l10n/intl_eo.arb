@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-02 16:30:09.138940",
+  "@@last_modified": "2025-10-14 15:22:14.150397",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12778,6 +12778,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Invitu amikojn al agado",
+  "inviteFriendsToActivityCourse": "Invitu amikojn al agado kaj kurso",
+  "feedbackRespDesc": "Kontrolu denove morgaŭ por agadaj ĝisdatigoj.",
+  "activityDropdownDesc": "Kiam vi finis ĉi tiun agadon, klaku sube",
+  "activityAnalyticsListBody": "Jen viaj kompletigitaj agadoj! Post fini agadojn, vi povas vidi ilin ĉi tie.",
+  "languageMismatchTitle": "Lingva manko",
+  "languageMismatchDesc": "Via celolingvo ne kongruas kun la lingvo de ĉi tiu agado. Ĉu vi volas ĝisdatigi vian celolingvon?",
+  "reportWordIssueTooltip": "Raporti pri problemo kun vorto",
+  "tokenInfoFeedbackDialogTitle": "Raporto pri Vortinformo",
+  "tokenInfoFeedbackDialogDesc": "AI faras erarojn. Bonvolu priskribi ajnajn problemojn, kiujn vi trovis kun la supre montrita informo.",
+  "noPublicCoursesFound": "Neniuj publikaj kursoj trovitaj. Ĉu vi ŝatus krei unu?",
+  "noCourseTemplatesFound": "Ni ne povis trovi kursojn por via celolingvo. Dumtempe vi povas babili kun Pangea Bot, kaj reveni poste por pli da kursoj.",
+  "botActivityJoinFailMessage": "Pangea Boto ne respondas baldaŭe. Bonvolu provi denove poste, aŭ inviti amikon.",
+  "unsubscribedResponseError": "Ĉi tiu funkcio postulas abonon",
+  "leaveDesc": "Forlasu ĉi tiun spacon kaj ĉiujn babiladojn ene de ĝi",
+  "selectAll": "Elekti ĉiujn",
+  "deselectAll": "Malselekti ĉiujn",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

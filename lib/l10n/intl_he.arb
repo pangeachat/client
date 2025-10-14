@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-01 20:43:46.672343",
+  "@@last_modified": "2025-10-14 15:28:28.586663",
   "about": "אודות",
   "@about": {
     "type": "String",
@@ -12736,6 +12736,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Прочествайте дяни приятели",
+  "inviteFriendsToActivityCourse": "Прочествайте дяни приятели и курс",
+  "feedbackRespDesc": "Повращайте наповращане за приятие на активности завтра",
+  "activityDropdownDesc": "Когато ви завершите свою активность, нажмите на подобно",
+  "activityAnalyticsListBody": "Донесте ваши повникнившите активности! Потовайте на ничого после като завершите активности",
+  "languageMismatchTitle": "Неподолятность езика",
+  "languageMismatchDesc": "Ваше потелно е неподолятно на езика на этото активность. Измените наше потелно езика?",
+  "reportWordIssueTooltip": "Оповещайте за проблема информация за слово",
+  "tokenInfoFeedbackDialogTitle": "Оповещайте за информация за слово",
+  "tokenInfoFeedbackDialogDesc": "АИ черепа правиться. Пожалуйста, описайте какие найдения на вина напроводили наповедение наповедение",
+  "noPublicCoursesFound": "Не найдено ничего програмов програмирования. Истечене описание на програматарана?",
+  "noCourseTemplatesFound": "Не можемо найти какие картощеки за вашето потелно езика. В передните можете диаконате с Пангеа Бот в тезината, и последно повернете кампанията",
+  "botActivityJoinFailMessage": "Бот Пангеа Бот повика на последование. Пожалуйста, попробвайте наповедение на познание на поверкатели, или прочисли приятел",
+  "unsubscribedResponseError": "Феара феара написана на подписка",
+  "leaveDesc": "Отийдите спасаемость и вси контакты в ней",
+  "selectAll": "Выбрати все",
+  "deselectAll": "Отмените все",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

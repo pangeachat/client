@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-09-30 18:50:45.256028",
+  "@@last_modified": "2025-10-14 20:34:40.342872",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12167,6 +12167,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Bjud in vänner till aktivitet",
+  "inviteFriendsToActivityCourse": "Bjud in vänner till aktivitet och kurs",
+  "feedbackRespDesc": "Kolla tillbaka imorgon för aktivitetsuppdateringar.",
+  "activityDropdownDesc": "När du är klar med denna aktivitet, klicka nedan",
+  "activityAnalyticsListBody": "Detta är dina slutförda aktiviteter! Efter att ha avslutat aktiviteter kan du se dem här.",
+  "languageMismatchTitle": "Språkmatchning saknas",
+  "languageMismatchDesc": "Ditt målspråk matchar inte språket för denna aktivitet. Vill du uppdatera ditt målspråk?",
+  "reportWordIssueTooltip": "Rapportera problem med ordinformation",
+  "tokenInfoFeedbackDialogTitle": "Feedback om ordinformation",
+  "tokenInfoFeedbackDialogDesc": "AI gör misstag. Vänligen beskriv eventuella problem du hittade med informationen ovan.",
+  "noPublicCoursesFound": "Inga offentliga kurser hittades. Vill du skapa en?",
+  "noCourseTemplatesFound": "Vi kunde inte hitta några kurser för ditt målspråk. Du kan chatta med Pangea Bot under tiden och återkomma senare för fler kurser.",
+  "botActivityJoinFailMessage": "Pangea Bot tar ett tag att svara. Försök igen senare, eller bjud in en vän.",
+  "unsubscribedResponseError": "Denna funktion kräver ett abonnemang",
+  "leaveDesc": "Lämna detta utrymme och alla chattar inom det",
+  "selectAll": "Välj alla",
+  "deselectAll": "Avmarkera alla",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

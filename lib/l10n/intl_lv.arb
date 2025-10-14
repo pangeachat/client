@@ -4958,7 +4958,7 @@
   "playWithAI": "Tagad spēlējiet ar AI",
   "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
   "@@locale": "lv",
-  "@@last_modified": "2025-10-02 19:07:03.491917",
+  "@@last_modified": "2025-10-14 15:29:14.144050",
   "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
   "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
   "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -11675,6 +11675,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Aicināt draugus uz aktivitāti",
+  "inviteFriendsToActivityCourse": "Aicināt draugus uz aktivitāti un kursu",
+  "feedbackRespDesc": "Pārbaudiet rīt, lai saņemtu aktivitātes atjauninājumus.",
+  "activityDropdownDesc": "Kad esat pabeidzis šo aktivitāti, noklikšķiniet zemāk",
+  "activityAnalyticsListBody": "Šīs ir jūsu pabeigtās aktivitātes! Pēc aktivitāšu pabeigšanas jūs varat tās apskatīt šeit.",
+  "languageMismatchTitle": "Valodu neatbilstība",
+  "languageMismatchDesc": "Jūsu mērķa valoda neatbilst šīs aktivitātes valodai. Vai vēlaties atjaunināt savu mērķa valodu?",
+  "reportWordIssueTooltip": "Ziņot par vārda informācijas problēmu",
+  "tokenInfoFeedbackDialogTitle": "Vārda informācijas atsauksmes",
+  "tokenInfoFeedbackDialogDesc": "AI pieļauj kļūdas. Lūdzu, aprakstiet jebkādas problēmas, kuras atradāt ar iepriekš minēto informāciju.",
+  "noPublicCoursesFound": "Publiskie kursi nav atrasti. Vai vēlaties izveidot jaunu?",
+  "noCourseTemplatesFound": "Mēs nevarējām atrast kursus jūsu mērķa valodai. Tikmēr jūs varat sarunāties ar Pangea botu un vēlāk pārbaudīt vairāk kursu.",
+  "botActivityJoinFailMessage": "Pangea bots nedaudz aizkavējas ar atbildi. Lūdzu, mēģiniet vēlreiz vēlāk vai aiciniet draugu.",
+  "unsubscribedResponseError": "Šai funkcijai ir nepieciešama abonēšana",
+  "leaveDesc": "Atstājiet šo telpu un visas tajā esošās sarunas",
+  "selectAll": "Izvēlēties visu",
+  "deselectAll": "Izņemt izvēli no visa",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

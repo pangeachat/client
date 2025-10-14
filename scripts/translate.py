@@ -321,45 +321,66 @@ def append_translate(lang_code: str, lang_display_name: str) -> None:
         max_retries = 3
         retry_count = 0
         _new_translations = None
+        messages = [
+            {
+                "role": "system",
+                "content": "You are a translator that will only response to translation requests in json format without any additional information.",
+            },
+            {
+                "role": "user",
+                "content": prompt,
+            },
+            {
+                "role": "assistant",
+                "content": response,
+            },
+        ]
 
         while retry_count < max_retries and _new_translations is None:
             try:
-                _new_translations = json.loads(response)
+                # Try to clean up common JSON formatting issues first
+                cleaned_response = response.strip()
+                if cleaned_response.startswith("```json"):
+                    cleaned_response = cleaned_response[7:]
+                if cleaned_response.endswith("```"):
+                    cleaned_response = cleaned_response[:-3]
+                cleaned_response = cleaned_response.strip()
+
+                _new_translations = json.loads(cleaned_response)
                 break
             except json.JSONDecodeError as e:
                 retry_count += 1
                 print(f"JSON parsing error (attempt {retry_count}/{max_retries}): {e}")
+                print(f"Problematic response: {response[:200]}...")
 
                 if retry_count < max_retries:
-                    print("Retrying with a simpler prompt...")
-                    # Retry with a simpler, more explicit prompt
-                    simple_prompt = f"""Translate the following JSON from English to {lang_display_name}. Return ONLY valid JSON without any additional text or formatting:
+                    print("Asking LLM to fix the JSON error...")
 
-{json.dumps(translation_requests, indent=2)}"""
+                    # Append the error to the conversation and ask LLM to resolve it
+                    error_message = f"The previous response caused a JSON parsing error: {str(e)}. The response was: {response}\n\nPlease provide a corrected response that is valid JSON format only, without any markdown formatting or additional text."
+
+                    messages.append(
+                        {
+                            "role": "user",
+                            "content": error_message,
+                        }
+                    )
 
                     chat_completion = client.chat.completions.create(
-                        messages=[
-                            {
-                                "role": "system",
-                                "content": "You are a translator. Return only valid JSON. No explanations, no markdown formatting, no additional text.",
-                            },
-                            {
-                                "role": "user",
-                                "content": simple_prompt,
-                            },
-                        ],
+                        messages=messages,
                         model="gpt-4.1-nano",
                         temperature=0.0,
+                        max_tokens=8000,
                     )
                     response = chat_completion.choices[0].message.content
 
-                    # Try to clean up common JSON formatting issues
-                    response = response.strip()
-                    if response.startswith("```json"):
-                        response = response[7:]
-                    if response.endswith("```"):
-                        response = response[:-3]
-                    response = response.strip()
+                    # Add the new response to the conversation
+                    messages.append(
+                        {
+                            "role": "assistant",
+                            "content": response,
+                        }
+                    )
 
         if _new_translations is None:
             print(

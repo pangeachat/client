@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-10-02 13:12:07.313184",
+  "@@last_modified": "2025-10-14 13:33:53.858227",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11898,6 +11898,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "ادعُ أصدقاءك إلى النشاط",
+  "inviteFriendsToActivityCourse": "ادعُ أصدقاءك إلى النشاط والدورة",
+  "feedbackRespDesc": "تحقق مرة أخرى غدًا للحصول على تحديثات النشاط.",
+  "activityDropdownDesc": "عندما تنتهي من هذا النشاط، انقر أدناه",
+  "activityAnalyticsListBody": "هذه هي أنشطتك المكتملة! بعد الانتهاء من الأنشطة، يمكنك عرضها هنا.",
+  "languageMismatchTitle": "عدم تطابق اللغة",
+  "languageMismatchDesc": "اللغة المستهدفة الخاصة بك لا تتطابق مع لغة هذا النشاط. هل تريد تحديث لغتك المستهدفة؟",
+  "reportWordIssueTooltip": "الإبلاغ عن مشكلة في معلومات الكلمة",
+  "tokenInfoFeedbackDialogTitle": "ملاحظات حول معلومات الكلمة",
+  "tokenInfoFeedbackDialogDesc": "الذكاء الاصطناعي يخطئ. يرجى وصف أي مشاكل وجدتها في المعلومات أعلاه.",
+  "noPublicCoursesFound": "لم يتم العثور على دورات عامة. هل ترغب في إنشاء واحدة؟",
+  "noCourseTemplatesFound": "لم نتمكن من العثور على دورات للغة المستهدفة الخاصة بك. يمكنك الدردشة مع بوت بانجيا في الوقت الحالي، والتحقق مرة أخرى لاحقًا لمزيد من الدورات.",
+  "botActivityJoinFailMessage": "بوت بانجيا يستغرق وقتًا للرد. يرجى المحاولة مرة أخرى لاحقًا، أو دعوة صديق.",
+  "unsubscribedResponseError": "هذه الميزة تتطلب اشتراكًا",
+  "leaveDesc": "غادر هذا المكان وجميع الدردشات بداخله",
+  "selectAll": "اختر الكل",
+  "deselectAll": "إلغاء تحديد الكل",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-09-30 17:52:32.038961",
+  "@@last_modified": "2025-10-14 15:28:57.613886",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12479,6 +12479,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "友達をアクティビティに招待する",
+  "inviteFriendsToActivityCourse": "友達をアクティビティとコースに招待する",
+  "feedbackRespDesc": "明日、アクティビティの更新情報を確認してください。",
+  "activityDropdownDesc": "これが終わったら、下のボタンをクリックしてください",
+  "activityAnalyticsListBody": "これらはあなたの完了したアクティビティです！アクティビティを終えた後、こちらで確認できます。",
+  "languageMismatchTitle": "言語の不一致",
+  "languageMismatchDesc": "あなたのターゲット言語はこのアクティビティの言語と一致しません。ターゲット言語を更新しますか？",
+  "reportWordIssueTooltip": "単語情報の問題を報告",
+  "tokenInfoFeedbackDialogTitle": "単語情報フィードバック",
+  "tokenInfoFeedbackDialogDesc": "AIは間違いを犯します。上記の情報に関して見つけた問題を詳しく説明してください。",
+  "noPublicCoursesFound": "公開コースが見つかりませんでした。新しく作成しますか？",
+  "noCourseTemplatesFound": "ターゲット言語のコースが見つかりませんでした。その間、Pangea Botとチャットしたり、後でコースを確認したりできます。",
+  "botActivityJoinFailMessage": "Pangea Botの応答に時間がかかっています。後でもう一度試すか、友達を招待してください。",
+  "unsubscribedResponseError": "この機能を利用するにはサブスクリプションが必要です",
+  "leaveDesc": "このスペースとその中のすべてのチャットを退出します",
+  "selectAll": "すべて選択",
+  "deselectAll": "すべて解除",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

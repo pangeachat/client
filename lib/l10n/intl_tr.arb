@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-10-02 17:01:10.295029",
+  "@@last_modified": "2025-10-14 20:34:58.293560",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11911,6 +11911,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Arkadaşları etkinliğe davet et",
+  "inviteFriendsToActivityCourse": "Arkadaşları etkinliğe ve kursa davet et",
+  "feedbackRespDesc": "Yarına kadar etkinlik güncellemelerini kontrol edin.",
+  "activityDropdownDesc": "Bu etkinliği tamamladıktan sonra aşağıdaki butona tıklayın",
+  "activityAnalyticsListBody": "İşte tamamladığınız etkinlikler! Etkinlikleri tamamladıktan sonra burada görebilirsiniz.",
+  "languageMismatchTitle": "Dil uyuşmazlığı",
+  "languageMismatchDesc": "Hedef diliniz, bu etkinliğin diliyle uyuşmuyor. Hedef dilinizi güncellemek ister misiniz?",
+  "reportWordIssueTooltip": "Kelime bilgisi sorununu bildir",
+  "tokenInfoFeedbackDialogTitle": "Kelime Bilgisi Geri Bildirimi",
+  "tokenInfoFeedbackDialogDesc": "Yapay zeka hatalar yapabilir. Lütfen yukarıdaki bilgilerle ilgili bulduğunuz herhangi bir sorunu açıklayın.",
+  "noPublicCoursesFound": "Hiç kamu kursu bulunamadı. Bir tane oluşturmak ister misiniz?",
+  "noCourseTemplatesFound": "Hedef diliniz için herhangi bir kurs bulamadık. Bu arada Pangea Bot ile sohbet edebilir ve daha fazla kurs için sonra tekrar kontrol edebilirsiniz.",
+  "botActivityJoinFailMessage": "Pangea Bot yanıt vermekte biraz gecikiyor. Lütfen daha sonra tekrar deneyin veya bir arkadaşınızı davet edin.",
+  "unsubscribedResponseError": "Bu özellik bir abonelik gerektirir",
+  "leaveDesc": "Bu alanı ve içindeki tüm sohbetleri terk edin",
+  "selectAll": "Tümünü seç",
+  "deselectAll": "Tüm seçimleri kaldır",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

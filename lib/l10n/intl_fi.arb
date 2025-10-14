@@ -4512,7 +4512,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-09-30 19:04:52.995056",
+  "@@last_modified": "2025-10-14 15:22:31.279125",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12334,6 +12334,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Kutsu ystäviä aktiviteettiin",
+  "inviteFriendsToActivityCourse": "Kutsu ystäviä aktiviteettiin ja kurssille",
+  "feedbackRespDesc": "Tarkista huomenna aktiviteettipäivitykset.",
+  "activityDropdownDesc": "Kun olet valmis tämän aktiviteetin kanssa, napsauta alla",
+  "activityAnalyticsListBody": "Nämä ovat suorittamiasi aktiviteetteja! Aktiviteettien suorittamisen jälkeen voit katsella niitä täällä.",
+  "languageMismatchTitle": "Kielivirhe",
+  "languageMismatchDesc": "Kohdekielesi ei vastaa tämän aktiviteetin kieltä. Haluatko päivittää kohdekielesi?",
+  "reportWordIssueTooltip": "Ilmoita sanan tiedoista ongelmasta",
+  "tokenInfoFeedbackDialogTitle": "Sanatiedon palaute",
+  "tokenInfoFeedbackDialogDesc": "Tekoäly tekee virheitä. Kuvaile kaikki ongelmat, jotka löysit yllä olevissa tiedoissa.",
+  "noPublicCoursesFound": "Yksityisiä kursseja ei löytynyt. Haluatko luoda sellaisen?",
+  "noCourseTemplatesFound": "Emme löytäneet kursseja kohdekielellesi. Voit keskustella Pangea Botin kanssa sillä välin ja palata myöhemmin hakemaan lisää kursseja.",
+  "botActivityJoinFailMessage": "Pangea Bot ei vastaa hetkeen. Yritä uudelleen myöhemmin tai kutsu ystäväsi mukaan.",
+  "unsubscribedResponseError": "Tämä ominaisuus vaatii tilauksen",
+  "leaveDesc": "Poistu tästä tilasta ja kaikista keskusteluista siinä",
+  "selectAll": "Valitse kaikki",
+  "deselectAll": "Poista valinta kaikista",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }

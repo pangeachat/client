@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-02 18:57:47.863574",
+  "@@last_modified": "2025-10-14 20:34:34.158136",
   "about": "О програму",
   "@about": {
     "type": "String",
@@ -12791,6 +12791,91 @@
     "placeholders": {}
   },
   "@courseStartDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "inviteFriendsToActivity": "Позовите пријатеље на активност",
+  "inviteFriendsToActivityCourse": "Позовите пријатеље на активност и курс",
+  "feedbackRespDesc": "Погледајте сутра за ажурирања активности.",
+  "activityDropdownDesc": "Када завршите ову активност, кликните испод",
+  "activityAnalyticsListBody": "Ово су ваше завршене активности! Након што завршите активности, можете их прегледати овде.",
+  "languageMismatchTitle": "Неслагање језика",
+  "languageMismatchDesc": "Ваш циљани језик се не поклапа са језиком ове активности. Желите ли да ажурирате свој циљани језик?",
+  "reportWordIssueTooltip": "Пријавите проблем са информацијама о речи",
+  "tokenInfoFeedbackDialogTitle": "Повратне информације о информацијама о речи",
+  "tokenInfoFeedbackDialogDesc": "Искра AI прави грешке. Молимо вас да опишете све проблеме које сте пронашли са горе наведеним информацијама.",
+  "noPublicCoursesFound": "Нису пронађени јавни курсеви. Желите ли да креирате један?",
+  "noCourseTemplatesFound": "Нисмо могли да пронађемо курсеве за ваш циљани језик. У међувремену, можете разговарати са Пангеиа Ботом и проверити касније за више курсева.",
+  "botActivityJoinFailMessage": "Пангеиа Бот се дуго одговара. Молимо вас да покушате поново касније или позовете пријатеља.",
+  "unsubscribedResponseError": "Ова функција захтева претплату",
+  "leaveDesc": "Напустите овај простор и све разговоре у њему",
+  "selectAll": "Изабери све",
+  "deselectAll": "Одмотај све",
+  "@inviteFriendsToActivity": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@inviteFriendsToActivityCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@feedbackRespDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityDropdownDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@activityAnalyticsListBody": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@languageMismatchDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@reportWordIssueTooltip": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogTitle": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@tokenInfoFeedbackDialogDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noPublicCoursesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@noCourseTemplatesFound": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@botActivityJoinFailMessage": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@unsubscribedResponseError": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@leaveDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@selectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@deselectAll": {
     "type": "String",
     "placeholders": {}
   }
