@@ -82,7 +82,10 @@ class BackgroundPush {
       // Pangea#
       await _flutterLocalNotificationsPlugin.initialize(
         const InitializationSettings(
-          android: AndroidInitializationSettings('notifications_icon'),
+          // #Pangea
+          // android: AndroidInitializationSettings('notifications_icon'),
+          android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+          // Pangea#
           iOS: DarwinInitializationSettings(),
         ),
         onDidReceiveNotificationResponse: goToRoom,
@@ -489,17 +492,18 @@ class BackgroundPush {
       String? roomId;
       String? sessionRoomId;
       String? activityId;
-      
+
       try {
         final payloadData = jsonDecode(payload) as Map<String, dynamic>;
         roomId = payloadData['room_id'] as String?;
-        sessionRoomId = payloadData['content_pangea.activity.session_room_id'] as String?;
+        sessionRoomId =
+            payloadData['content_pangea.activity.session_room_id'] as String?;
         activityId = payloadData['content_pangea.activity.id'] as String?;
       } catch (_) {
         // If payload is not JSON, treat it as a simple room ID
         roomId = payload;
       }
-      
+
       if (roomId == null || roomId.isEmpty) {
         return;
       }
