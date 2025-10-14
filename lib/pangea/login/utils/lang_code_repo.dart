@@ -6,7 +6,7 @@ class LanguageSettings {
 
   LanguageSettings({
     required this.targetLangCode,
-    required this.baseLangCode,
+    this.baseLangCode,
   });
 
   Map<String, dynamic> toJson() => {
