@@ -53,11 +53,13 @@ class ChatDetails extends StatefulWidget {
 class ChatDetailsController extends State<ChatDetails>
     with ActivitySummariesProvider, CoursePlanProvider {
   bool loadingActivities = true;
+  bool loadingCourseSummary = true;
 
   @override
   void initState() {
     super.initState();
     _loadCourseInfo();
+    _loadSummaries();
   }
 
   @override
@@ -65,6 +67,7 @@ class ChatDetailsController extends State<ChatDetails>
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
       _loadCourseInfo();
+      _loadSummaries();
     }
   }
 
@@ -382,16 +385,6 @@ class ChatDetailsController extends State<ChatDetails>
   }
 
   Future<void> _loadCourseInfo() async {
-    setState(() => loadingActivities = true);
-    final futures = [
-      _loadSummaries(),
-      _loadCourse(),
-    ];
-    await Future.wait(futures);
-    if (mounted) setState(() => loadingActivities = false);
-  }
-
-  Future<void> _loadCourse() async {
     final room = Matrix.of(context).client.getRoomById(roomId!);
     if (room == null || !room.isSpace || room.coursePlan == null) {
       setState(() {
@@ -403,17 +396,21 @@ class ChatDetailsController extends State<ChatDetails>
       return;
     }
 
+    if (mounted) setState(() => loadingActivities = false);
     await loadCourse(room.coursePlan!.uuid);
     if (course != null) {
       if (mounted) await loadTopics();
       if (mounted) await loadAllActivities();
     }
+    if (mounted) setState(() => loadingActivities = false);
   }
 
   Future<void> _loadSummaries() async {
     try {
       final room = Matrix.of(context).client.getRoomById(roomId!);
       if (room == null || !room.isSpace) return;
+
+      if (mounted) setState(() => loadingCourseSummary = true);
       await loadRoomSummaries(
         room.spaceChildren.map((c) => c.roomId).whereType<String>().toList(),
       );
@@ -426,6 +423,8 @@ class ChatDetailsController extends State<ChatDetails>
           "roomId": roomId,
         },
       );
+    } finally {
+      if (mounted) setState(() => loadingCourseSummary = false);
     }
   }
   // Pangea#
