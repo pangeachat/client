@@ -10,12 +10,12 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_sessions_start_view.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_session_start/bot_join_error_dialog.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/course_plans/activity_summaries_provider.dart';
-import 'package:fluffychat/pangea/course_plans/course_activity_repo.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_model.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
-import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -58,7 +58,6 @@ class ActivitySessionStartPage extends StatefulWidget {
 class ActivitySessionStartController extends State<ActivitySessionStartPage>
     with ActivitySummariesProvider {
   ActivityPlanModel? activity;
-  CoursePlanModel? course;
 
   bool loading = true;
   Object? error;
@@ -114,7 +113,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       false;
 
   SessionState get state {
-    if (activityRoom?.ownRoleState != null) return SessionState.confirmedRole;
+    if (activityRoom?.hasPickedRole == true) return SessionState.confirmedRole;
     if (_selectedRoleId != null) return SessionState.selectedRole;
     if (activityRoom == null) {
       return widget.roomId != null || widget.launch
@@ -127,7 +126,8 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   String? get descriptionText {
     switch (state) {
       case SessionState.confirmedRole:
-        return L10n.of(context).waitingToFillRole(activityRoom!.remainingRoles);
+        return L10n.of(context)
+            .waitingToFillRole(activityRoom!.numRemainingRoles);
       case SessionState.selectedRole:
         return activity!.roles[_selectedRoleId!]!.goal;
       case SessionState.notStarted:
@@ -175,7 +175,16 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
 
   bool get canPingParticipants {
     if (activityRoom == null || courseParent == null) return false;
-    return _pingCooldown == null || !_pingCooldown!.isActive;
+    if (_pingCooldown != null && _pingCooldown!.isActive) return false;
+
+    final courseParticipants = courseParent!.getParticipants();
+    final roomParticipants = activityRoom!.getParticipants();
+    for (final p in courseParticipants) {
+      if (p.id == BotName.byEnvironment) continue;
+      if (roomParticipants.any((rp) => rp.id == p.id)) continue;
+      return true;
+    }
+    return false;
   }
 
   void toggleInstructions() {
@@ -220,6 +229,18 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       final futures = <Future>[];
       futures.add(_loadSummary());
       futures.add(_loadActivity());
+
+      // load the course participants, since we will need that
+      // info to determine if course pinging is enabled
+      if (courseParent != null) {
+        futures.add(
+          courseParent!.requestParticipants(
+            [Membership.join, Membership.invite, Membership.knock],
+            false,
+            true,
+          ),
+        );
+      }
       await Future.wait(futures);
     } catch (e) {
       error = e;
@@ -241,14 +262,14 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Future<void> _loadActivity() async {
-    if (courseParent?.coursePlan != null) {
-      course = await CoursePlansRepo.get(courseParent!.coursePlan!.uuid);
-    }
-
-    final activities = await CourseActivityRepo.get(
+    final activitiesResponse = await CourseActivityRepo.get(
+      TranslateActivityRequest(
+        activityIds: [widget.activityId],
+        l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+      ),
       widget.activityId,
-      [widget.activityId],
     );
+    final activities = activitiesResponse.plans.values.toList();
 
     if (activities.isEmpty) {
       throw Exception("Activity not found");
@@ -288,6 +309,15 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
     }
 
     try {
+      // Since the method that check for assigned roles needs to know each
+      // participant's membership status (to exclude left users), we need
+      // to pre-load the room's participants list.
+      activityRoom!.requestParticipants(
+        [Membership.join, Membership.invite, Membership.knock],
+        false,
+        true,
+      );
+
       await activityRoom!.joinActivity(
         activity!.roles[_selectedRoleId!]!,
       );
@@ -409,6 +439,21 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
   }
 
   Future<void> playWithBot() async {
+    final resp = await showFutureLoadingDialog(
+      context: context,
+      future: _playWithBot,
+      showError: (e) => e is! TimeoutException,
+    );
+
+    if (resp.isError && resp.error is TimeoutException) {
+      showDialog(
+        context: context,
+        builder: (_) => const BotJoinErrorDialog(),
+      );
+    }
+  }
+
+  Future<void> _playWithBot() async {
     if (activityRoom == null) {
       throw Exception("Room is null");
     }
@@ -417,16 +462,19 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       throw Exception("Bot is a member of the room");
     }
 
-    final future = activityRoom!.client.onRoomState.stream
-        .where(
-          (state) =>
-              state.roomId == activityRoom!.id &&
-              state.state.type == PangeaEventTypes.activityRole &&
-              state.state.senderId == BotName.byEnvironment,
-        )
-        .first;
+    final Future<({String roomId, StrippedStateEvent state})?> future =
+        activityRoom!.client.onRoomState.stream
+            .where(
+              (state) =>
+                  state.roomId == activityRoom!.id &&
+                  state.state.type == PangeaEventTypes.activityRole &&
+                  state.state.senderId == BotName.byEnvironment,
+            )
+            .first;
     activityRoom!.invite(BotName.byEnvironment);
-    await future.timeout(const Duration(seconds: 30));
+    await future.timeout(
+      const Duration(seconds: 5),
+    );
   }
 
   @override

@@ -139,11 +139,13 @@ class VocabAnalyticsListView extends StatelessWidget {
             key: const PageStorageKey("vocab-analytics-list-view-page-key"),
             slivers: [
               // Full-width tooltip
-              const SliverToBoxAdapter(
-                child: InstructionsInlineTooltip(
-                  instructionsEnum: InstructionsEnum.analyticsVocabList,
+              if (!controller.isSearching &&
+                  controller.selectedConstructLevel == null)
+                const SliverToBoxAdapter(
+                  child: InstructionsInlineTooltip(
+                    instructionsEnum: InstructionsEnum.analyticsVocabList,
+                  ),
                 ),
-              ),
 
               // Grid of vocab tiles
               SliverGrid(
@@ -161,8 +163,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                         "/rooms/analytics/${vocabItem.id.type.string}/${vocabItem.id.string}",
                       ),
                       constructUse: vocabItem,
-                      emoji: vocabItem.id.userSetEmoji.firstOrNull ??
-                          vocabItem.id.getLemmaInfoCached()?.emoji.firstOrNull,
+                      emoji: vocabItem.id.userSetEmoji.firstOrNull,
                     );
                   },
                   childCount: _filteredVocab.length,

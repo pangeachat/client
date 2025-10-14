@@ -195,9 +195,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
             );
             _registerSubs(_loginClientCandidate!.clientName);
             _loginClientCandidate = null;
-            // #Pangea
-            // FluffyChatApp.router.go('/rooms');
-            // Pangea#
+            FluffyChatApp.router.go('/rooms');
           });
     // #Pangea
     candidate.homeserver = Uri.parse("https://${AppConfig.defaultHomeserver}");
@@ -381,9 +379,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         }
       } else {
         // #Pangea
-        if (state != LoginState.loggedIn) {
-          FluffyChatApp.router.go('/home');
-        }
+        final isL2Set = await pangeaController.userController.isUserL2Set;
+        FluffyChatApp.router.go(
+          state == LoginState.loggedIn
+              ? isL2Set
+                  ? '/rooms'
+                  : '/registration/create'
+              : '/home',
+        );
         // FluffyChatApp.router
         //     .go(state == LoginState.loggedIn ? '/rooms' : '/home');
         // Pangea#
@@ -525,6 +528,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     AppConfig.displayNavigationRail =
         store.getBool(SettingKeys.displayNavigationRail) ??
             AppConfig.displayNavigationRail;
+
+    // #Pangea
+    AppConfig.volume = store.getDouble(SettingKeys.volume) ?? AppConfig.volume;
+    // Pangea#
   }
 
   @override

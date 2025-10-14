@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
+import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
-import 'package:fluffychat/pangea/learning_settings/enums/language_level_type_enum.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
+import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PublicTripPage extends StatefulWidget {
+  final String route;
+  final bool showFilters;
   const PublicTripPage({
     super.key,
+    required this.route,
+    this.showFilters = true,
   });
 
   @override
@@ -20,9 +34,11 @@ class PublicTripPageState extends State<PublicTripPage> {
   bool loading = true;
   Object? error;
 
-  LanguageLevelTypeEnum? languageLevelFilter;
-  LanguageModel? instructionLanguageFilter;
   LanguageModel? targetLanguageFilter;
+
+  List<PublicCoursesChunk> discoveredCourses = [];
+  Map<String, CoursePlanModel> coursePlans = {};
+  String? nextBatch;
 
   @override
   void initState() {
@@ -33,47 +49,104 @@ class PublicTripPageState extends State<PublicTripPage> {
       setTargetLanguageFilter(target);
     }
 
-    final base = MatrixState.pangeaController.languageController.systemLanguage;
-    if (base != null) {
-      setInstructionLanguageFilter(base);
+    _loadCourses();
+  }
+
+  void setTargetLanguageFilter(LanguageModel? language, {bool reload = true}) {
+    if (targetLanguageFilter?.langCodeShort == language?.langCodeShort) return;
+    setState(() => targetLanguageFilter = language);
+    if (reload) _loadCourses();
+  }
+
+  List<PublicCoursesChunk> get filteredCourses {
+    List<PublicCoursesChunk> filtered = discoveredCourses
+        .where(
+          (c) =>
+              !Matrix.of(context).client.rooms.any(
+                    (r) =>
+                        r.id == c.room.roomId &&
+                        r.membership == Membership.join,
+                  ) &&
+              coursePlans.containsKey(c.courseId),
+        )
+        .toList();
+
+    if (targetLanguageFilter != null) {
+      filtered = filtered.where(
+        (chunk) {
+          final course = coursePlans[chunk.courseId];
+          if (course == null) return false;
+          return course.targetLanguage.split('-').first ==
+              targetLanguageFilter!.langCodeShort;
+        },
+      ).toList();
     }
 
-    _loadCourses();
-  }
-
-  void setLanguageLevelFilter(LanguageLevelTypeEnum? level) {
-    languageLevelFilter = level;
-    _loadCourses();
-  }
-
-  void setInstructionLanguageFilter(LanguageModel? language) {
-    instructionLanguageFilter = language;
-    _loadCourses();
-  }
-
-  void setTargetLanguageFilter(LanguageModel? language) {
-    targetLanguageFilter = language;
-    _loadCourses();
+    return filtered;
   }
 
   Future<void> _loadCourses() async {
-    // TODO: add searching of public spaces
-
     try {
       setState(() {
         loading = true;
         error = null;
       });
-      await Future.delayed(const Duration(seconds: 1));
-    } catch (e) {
+
+      final resp = await Matrix.of(context).client.requestPublicCourses(
+            since: nextBatch,
+          );
+
+      for (final room in resp.courses) {
+        if (!discoveredCourses.any((e) => e.room.roomId == room.room.roomId)) {
+          discoveredCourses.add(room);
+        }
+      }
+
+      nextBatch = resp.nextBatch;
+    } catch (e, s) {
       error = e;
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'nextBatch': nextBatch,
+        },
+      );
+    }
+
+    try {
+      final resp = await CoursePlansRepo.search(
+        GetLocalizedCoursesRequest(
+          coursePlanIds:
+              discoveredCourses.map((c) => c.courseId).toSet().toList(),
+          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        ),
+      );
+      final searchResult = resp.coursePlans;
+
+      coursePlans.clear();
+      for (final entry in searchResult.entries) {
+        coursePlans[entry.key] = entry.value;
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          'discoveredCourses':
+              discoveredCourses.map((c) => c.courseId).toList(),
+        },
+      );
     } finally {
-      setState(() => loading = false);
+      if (mounted) {
+        setState(() => loading = false);
+      }
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -94,65 +167,164 @@ class PublicTripPageState extends State<PublicTripPage> {
             ),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Wrap(
-                        spacing: 8.0,
-                        runSpacing: 8.0,
-                        alignment: WrapAlignment.start,
+                if (widget.showFilters) ...[
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Wrap(
+                          spacing: 8.0,
+                          runSpacing: 8.0,
+                          alignment: WrapAlignment.start,
+                          children: [
+                            CoursePlanFilter<LanguageModel>(
+                              value: targetLanguageFilter,
+                              onChanged: setTargetLanguageFilter,
+                              items: MatrixState.pangeaController.pLanguageStore
+                                  .targetOptions,
+                              displayname: (v) =>
+                                  v.getDisplayName(context) ?? v.displayName,
+                              enableSearch: true,
+                              defaultName: L10n.of(context).targetLanguageLabel,
+                              shortName: L10n.of(context).allLanguages,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20.0),
+                ],
+                if (error != null ||
+                    (!loading && filteredCourses.isEmpty && nextBatch == null))
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(32.0),
+                      child: Column(
+                        spacing: 12.0,
                         children: [
-                          CoursePlanFilter<LanguageModel>(
-                            value: instructionLanguageFilter,
-                            onChanged: setInstructionLanguageFilter,
-                            items: MatrixState
-                                .pangeaController.pLanguageStore.baseOptions,
-                            displayname: (v) =>
-                                v.getDisplayName(context) ?? v.displayName,
-                            enableSearch: true,
-                            defaultName:
-                                L10n.of(context).languageOfInstructionsLabel,
-                            shortName: L10n.of(context).allLanguages,
+                          const BotFace(
+                            expression: BotExpression.addled,
+                            width: Avatar.defaultSize * 1.5,
                           ),
-                          CoursePlanFilter<LanguageModel>(
-                            value: targetLanguageFilter,
-                            onChanged: setTargetLanguageFilter,
-                            items: MatrixState
-                                .pangeaController.pLanguageStore.targetOptions,
-                            displayname: (v) =>
-                                v.getDisplayName(context) ?? v.displayName,
-                            enableSearch: true,
-                            defaultName: L10n.of(context).targetLanguageLabel,
-                            shortName: L10n.of(context).allLanguages,
+                          Text(
+                            L10n.of(context).noPublicCoursesFound,
+                            textAlign: TextAlign.center,
+                            style: theme.textTheme.bodyLarge,
                           ),
-                          CoursePlanFilter<LanguageLevelTypeEnum>(
-                            value: languageLevelFilter,
-                            onChanged: setLanguageLevelFilter,
-                            items: LanguageLevelTypeEnum.values,
-                            displayname: (v) => v.string,
-                            defaultName: L10n.of(context).cefrLevelLabel,
-                            shortName: L10n.of(context).allCefrLevels,
+                          ElevatedButton(
+                            onPressed: () => context.go(
+                              '/${widget.route}/course/own',
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(L10n.of(context).startOwnTrip),
+                              ],
+                            ),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 20.0),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(32.0),
-                    child: error != null
-                        ? Center(
-                            child: ErrorIndicator(
-                              message: L10n.of(context).failedToLoadCourses,
+                  )
+                else
+                  Expanded(
+                    child: ListView.separated(
+                      itemCount: filteredCourses.length + 1,
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 10.0),
+                      itemBuilder: (context, index) {
+                        if (index == filteredCourses.length) {
+                          return Center(
+                            child: loading
+                                ? const CircularProgressIndicator.adaptive()
+                                : nextBatch != null
+                                    ? TextButton(
+                                        onPressed: _loadCourses,
+                                        child: Text(L10n.of(context).loadMore),
+                                      )
+                                    : const SizedBox(),
+                          );
+                        }
+
+                        final roomChunk = filteredCourses[index].room;
+                        final courseId = filteredCourses[index].courseId;
+                        final course = coursePlans[courseId];
+
+                        final displayname = roomChunk.name ??
+                            roomChunk.canonicalAlias ??
+                            L10n.of(context).emptyChat;
+
+                        return InkWell(
+                          onTap: () => context.go(
+                            '/${widget.route}/course/public/$courseId',
+                            extra: roomChunk,
+                          ),
+                          borderRadius: BorderRadius.circular(12.0),
+                          child: Container(
+                            padding: const EdgeInsets.all(12.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12.0),
+                              border: Border.all(
+                                color: theme.colorScheme.primary,
+                              ),
                             ),
-                          )
-                        : loading
-                            ? const CircularProgressIndicator.adaptive()
-                            : Text(L10n.of(context).noCoursesFound),
+                            child: Column(
+                              spacing: 4.0,
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  spacing: 8.0,
+                                  children: [
+                                    ImageByUrl(
+                                      imageUrl: roomChunk.avatarUrl?.toString(),
+                                      width: 58.0,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      replacement: Container(
+                                        height: 58.0,
+                                        width: 58.0,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          color: theme
+                                              .colorScheme.surfaceContainer,
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      child: Text(
+                                        displayname,
+                                        style: theme.textTheme.bodyLarge,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                if (course != null) ...[
+                                  CourseInfoChips(
+                                    courseId,
+                                    iconSize: 12.0,
+                                    fontSize: 12.0,
+                                  ),
+                                  Text(
+                                    course.description,
+                                    style: theme.textTheme.bodyMedium,
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                ),
               ],
             ),
           ),

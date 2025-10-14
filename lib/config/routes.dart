@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix_api_lite/generated/model.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -53,7 +54,6 @@ import 'package:fluffychat/pangea/login/pages/public_trip_page.dart';
 import 'package:fluffychat/pangea/login/pages/signup.dart';
 import 'package:fluffychat/pangea/space_analytics/space_analytics.dart';
 import 'package:fluffychat/pangea/spaces/constants/space_constants.dart';
-import 'package:fluffychat/pangea/spaces/utils/join_with_alias.dart';
 import 'package:fluffychat/pangea/spaces/utils/join_with_link.dart';
 import 'package:fluffychat/pangea/subscription/pages/settings_subscription.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
@@ -136,7 +136,7 @@ abstract class AppRoutes {
         ),
         // #Pangea
         GoRoute(
-          path: 'signup',
+          path: 'language',
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
             state,
@@ -144,13 +144,11 @@ abstract class AppRoutes {
           ),
           routes: [
             GoRoute(
-              path: ':langcode',
+              path: 'signup',
               pageBuilder: (context, state) => defaultPageBuilder(
                 context,
                 state,
-                SignupPage(
-                  langCode: state.pathParameters['langcode']!,
-                ),
+                const SignupPage(),
               ),
               routes: [
                 GoRoute(
@@ -158,9 +156,8 @@ abstract class AppRoutes {
                   pageBuilder: (context, state) => defaultPageBuilder(
                     context,
                     state,
-                    SignupPage(
+                    const SignupPage(
                       withEmail: true,
-                      langCode: state.pathParameters['langcode']!,
                     ),
                   ),
                 ),
@@ -198,6 +195,14 @@ abstract class AppRoutes {
       redirect: PAuthGaurd.onboardingRedirect,
       routes: [
         GoRoute(
+          path: 'create',
+          pageBuilder: (context, state) => defaultPageBuilder(
+            context,
+            state,
+            const CreatePangeaAccountPage(),
+          ),
+        ),
+        GoRoute(
           path: 'course',
           pageBuilder: (context, state) => defaultPageBuilder(
             context,
@@ -221,17 +226,10 @@ abstract class AppRoutes {
                 return defaultPageBuilder(
                   context,
                   state,
-                  const PublicTripPage(),
-                );
-              },
-            ),
-            GoRoute(
-              path: 'own',
-              pageBuilder: (context, state) {
-                return defaultPageBuilder(
-                  context,
-                  state,
-                  const NewTripPage(route: 'registration'),
+                  const PublicTripPage(
+                    route: 'registration',
+                    showFilters: false,
+                  ),
                 );
               },
               routes: [
@@ -243,6 +241,36 @@ abstract class AppRoutes {
                       state,
                       SelectedCourse(
                         state.pathParameters['courseid']!,
+                        SelectedCourseMode.join,
+                        roomChunk: state.extra as PublicRoomsChunk?,
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+            GoRoute(
+              path: 'own',
+              pageBuilder: (context, state) {
+                return defaultPageBuilder(
+                  context,
+                  state,
+                  const NewTripPage(
+                    route: 'registration',
+                    showFilters: false,
+                  ),
+                );
+              },
+              routes: [
+                GoRoute(
+                  path: ':courseid',
+                  pageBuilder: (context, state) {
+                    return defaultPageBuilder(
+                      context,
+                      state,
+                      SelectedCourse(
+                        state.pathParameters['courseid']!,
+                        SelectedCourseMode.launch,
                       ),
                     );
                   },
@@ -267,16 +295,6 @@ abstract class AppRoutes {
             ),
           ],
         ),
-        GoRoute(
-          path: ':langcode',
-          pageBuilder: (context, state) => defaultPageBuilder(
-            context,
-            state,
-            CreatePangeaAccountPage(
-              langCode: state.pathParameters['langcode']!,
-            ),
-          ),
-        ),
       ],
     ),
     GoRoute(
@@ -287,14 +305,6 @@ abstract class AppRoutes {
         JoinClassWithLink(
           classCode: state.uri.queryParameters[SpaceConstants.classCode],
         ),
-      ),
-    ),
-    GoRoute(
-      path: '/join_with_alias',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        JoinWithAlias(alias: state.uri.queryParameters['alias']),
       ),
     ),
     // Pangea#
@@ -437,9 +447,27 @@ abstract class AppRoutes {
                     return defaultPageBuilder(
                       context,
                       state,
-                      const PublicTripPage(),
+                      const PublicTripPage(
+                        route: 'rooms',
+                      ),
                     );
                   },
+                  routes: [
+                    GoRoute(
+                      path: ':courseid',
+                      pageBuilder: (context, state) {
+                        return defaultPageBuilder(
+                          context,
+                          state,
+                          SelectedCourse(
+                            state.pathParameters['courseid']!,
+                            SelectedCourseMode.join,
+                            roomChunk: state.extra as PublicRoomsChunk?,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
                 GoRoute(
                   path: 'own',
@@ -459,6 +487,7 @@ abstract class AppRoutes {
                           state,
                           SelectedCourse(
                             state.pathParameters['courseid']!,
+                            SelectedCourseMode.launch,
                           ),
                         );
                       },
@@ -847,6 +876,7 @@ abstract class AppRoutes {
                             state,
                             SelectedCourse(
                               state.pathParameters['courseId']!,
+                              SelectedCourseMode.addToSpace,
                               spaceId: state.pathParameters['spaceid']!,
                             ),
                           ),

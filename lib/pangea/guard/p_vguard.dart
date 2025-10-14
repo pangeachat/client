@@ -27,12 +27,7 @@ class PAuthGaurd {
     // If user hasn't set their L2,
     // and their URL doesn’t include ‘course,’ redirect
     final bool hasSetL2 = await pController!.userController.isUserL2Set;
-    final langCode = state.pathParameters['langcode'];
-    return !hasSetL2
-        ? langCode != null
-            ? '/registration/$langCode'
-            : '/registration'
-        : '/rooms';
+    return !hasSetL2 ? '/registration/create' : '/rooms';
   }
 
   /// Redirect for /rooms routes
@@ -53,13 +48,7 @@ class PAuthGaurd {
     // If user hasn't set their L2,
     // and their URL doesn’t include ‘course,’ redirect
     final bool hasSetL2 = await pController!.userController.isUserL2Set;
-
-    final langCode = state.pathParameters['langcode'];
-    return !hasSetL2
-        ? langCode != null
-            ? '/registration/$langCode'
-            : '/registration'
-        : null;
+    return !hasSetL2 ? '/registration/create' : null;
   }
 
   /// Redirect for onboarding routes
@@ -74,6 +63,10 @@ class PAuthGaurd {
     final isLogged = Matrix.of(context).widget.clients.any(
           (client) => client.isLogged(),
         );
-    return isLogged ? null : '/home';
+    if (!isLogged) {
+      return '/home';
+    }
+
+    return null;
   }
 }

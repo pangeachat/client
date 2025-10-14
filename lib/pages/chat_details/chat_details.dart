@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -12,12 +9,13 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/settings/settings.dart';
 import 'package:fluffychat/pangea/chat/constants/default_power_level.dart';
-import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_room_details.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/activity_summaries_provider.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_builder.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/pangea/download/download_room_extension.dart';
 import 'package:fluffychat/pangea/download/download_type_enum.dart';
-import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/extensions/join_rule_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -50,22 +48,34 @@ class ChatDetails extends StatefulWidget {
   ChatDetailsController createState() => ChatDetailsController();
 }
 
-class ChatDetailsController extends State<ChatDetails> {
+// #Pangea
+// class ChatDetailsController extends State<ChatDetails> {
+class ChatDetailsController extends State<ChatDetails>
+    with ActivitySummariesProvider, CoursePlanProvider {
+  bool loadingActivities = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSummaries();
+    _loadCourseInfo();
+  }
+
+  @override
+  void didUpdateWidget(covariant ChatDetails oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.roomId != widget.roomId) {
+      _loadCourseInfo();
+    }
+  }
+
+  // Pangea#
   bool displaySettings = false;
 
   void toggleDisplaySettings() =>
       setState(() => displaySettings = !displaySettings);
 
   String? get roomId => widget.roomId;
-
-  // #Pangea
-  final GlobalKey<ChatDetailsController> addConversationBotKey =
-      GlobalKey<ChatDetailsController>();
-
-  bool displayAddStudentOptions = false;
-  void toggleAddStudentOptions() =>
-      setState(() => displayAddStudentOptions = !displayAddStudentOptions);
-  // Pangea#
 
   void setDisplaynameAction() async {
     final room = Matrix.of(context).client.getRoomById(roomId!)!;
@@ -214,14 +224,6 @@ class ChatDetailsController extends State<ChatDetails> {
     );
   }
 
-  static const fixedWidth = 360.0;
-
-  @override
-  // #Pangea
-  Widget build(BuildContext context) => PangeaRoomDetailsView(this);
-  // Widget build(BuildContext context) => ChatDetailsView(this);
-  // Pangea#
-
   // #Pangea
   void downloadChatAction() async {
     if (roomId == null) return;
@@ -265,31 +267,6 @@ class ChatDetailsController extends State<ChatDetails> {
             "${L10n.of(context).oopsSomethingWentWrong} ${L10n.of(context).errorPleaseRefresh}",
           ),
         ),
-      );
-    }
-  }
-
-  Future<void> setBotOptions(BotOptionsModel botOptions) async {
-    if (roomId == null) return;
-    final Room? room = Matrix.of(context).client.getRoomById(roomId!);
-    if (room == null) return;
-
-    try {
-      await Matrix.of(context).client.setRoomStateWithKey(
-            room.id,
-            PangeaEventTypes.botOptions,
-            '',
-            botOptions.toJson(),
-          );
-    } catch (err, stack) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {
-          "botOptions": botOptions.toJson(),
-          "roomID": room.id,
-        },
       );
     }
   }
@@ -404,5 +381,53 @@ class ChatDetailsController extends State<ChatDetails> {
     if (resp.isError || resp.result == null || !mounted) return;
     context.go('/rooms/${resp.result}/invite');
   }
+
+  Future<void> _loadCourseInfo() async {
+    final room = Matrix.of(context).client.getRoomById(roomId!);
+    if (room == null || !room.isSpace || room.coursePlan == null) {
+      setState(() {
+        course = null;
+        loadingCourse = false;
+        loadingTopics = false;
+        loadingActivities = false;
+      });
+      return;
+    }
+
+    setState(() => loadingActivities = true);
+    await loadCourse(room.coursePlan!.uuid);
+    if (course != null) {
+      await loadTopics();
+      await loadAllActivities();
+    }
+    if (mounted) setState(() => loadingActivities = false);
+  }
+
+  Future<void> _loadSummaries() async {
+    try {
+      final room = Matrix.of(context).client.getRoomById(roomId!);
+      if (room == null || !room.isSpace) return;
+      await loadRoomSummaries(
+        room.spaceChildren.map((c) => c.roomId).whereType<String>().toList(),
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {
+          "message": "Failed to load activity summaries",
+          "roomId": roomId,
+        },
+      );
+    }
+  }
+  // Pangea#
+
+  static const fixedWidth = 360.0;
+
+  @override
+  // #Pangea
+  Widget build(BuildContext context) => PangeaRoomDetailsView(this);
+  // Widget build(BuildContext context) => ChatDetailsView(this);
   // Pangea#
 }

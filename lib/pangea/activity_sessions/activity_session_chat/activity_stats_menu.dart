@@ -62,17 +62,8 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
 
   Set<String>? get _usedVocab => analytics?.constructs[room.client.userID!]
       ?.constructsOfType(ConstructTypeEnum.vocab)
-      .map((id) => id.lemma)
+      .map((id) => id.lemma.toLowerCase())
       .toSet();
-
-  double get _percentVocabComplete {
-    final vocabList = room.activityPlan?.vocab.map((v) => v.lemma) ?? [];
-    if (vocabList.isEmpty || _usedVocab == null) {
-      return 0;
-    }
-    return _usedVocab!.intersection(vocabList.toSet()).length /
-        vocabList.length;
-  }
 
   Future<void> _updateUsedVocab() async {
     final analytics = await room.getActivityAnalytics();
@@ -89,18 +80,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     );
 
     return nonBotRoles.length;
-  }
-
-  int _getCompletedRolesCount() {
-    final assignedRoles = room.assignedRoles;
-    if (assignedRoles == null) return 0;
-
-    // Filter out the bot and count only finished non-bot roles
-    return assignedRoles.values
-        .where(
-          (role) => role.userId != BotName.byEnvironment && role.isFinished,
-        )
-        .length;
   }
 
   bool _isBotParticipant() {
@@ -135,11 +114,10 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
     // Completion status variables
-    final bool userComplete = room.hasCompletedActivity;
-    final bool activityComplete = room.activityIsFinished;
+    final bool userComplete = room.hasCompletedRole;
+    final bool activityComplete = room.isActivityFinished;
     bool shouldShowEndForAll = true;
     bool shouldShowImDone = true;
-    String message = "";
 
     if (!room.isRoomAdmin) {
       shouldShowEndForAll = false;
@@ -154,34 +132,6 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
       //activity is finished, no buttons
       shouldShowImDone = false;
       shouldShowEndForAll = false;
-      message = L10n.of(context).activityComplete;
-    } else {
-      //activity is ongoing
-      if (_getCompletedRolesCount() == 0 ||
-          (_getAssignedRolesCount() == 1) && (_isBotParticipant() == true)) {
-        //IF nobodys done or you're only playing with the bot,
-        //Then it should show tips about your progress and nudge you to continue/end
-        if ((_percentVocabComplete < .7) && (_usedVocab?.length ?? 0) < 50) {
-          message = L10n.of(context).haventChattedMuch;
-        } else {
-          message = L10n.of(context).haveChatted;
-        }
-      } else {
-        //user is in group with other users OR someone has wrapped up
-        if (userComplete) {
-          //user is done but group is ongoing, no buttons
-          message = L10n.of(context).userDoneAndWaiting(
-            _getCompletedRolesCount(),
-            _getAssignedRolesCount(),
-          );
-        } else {
-          //user is not done, buttons are present
-          message = L10n.of(context).othersDoneAndWaiting(
-            _getCompletedRolesCount(),
-            _getAssignedRolesCount(),
-          );
-        }
-      }
     }
 
     return Positioned(
@@ -237,8 +187,8 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                                     vocab: v,
                                     langCode:
                                         room.activityPlan!.req.targetLanguage,
-                                    isUsed:
-                                        (_usedVocab ?? {}).contains(v.lemma),
+                                    isUsed: (_usedVocab ?? {})
+                                        .contains(v.lemma.toLowerCase()),
                                   ),
                                 ),
                               ],
@@ -246,14 +196,15 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                           ),
                         ],
                       ),
-                      Text(
-                        message,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
+                      if (!room.hasArchivedActivity)
+                        Text(
+                          L10n.of(context).activityDropdownDesc,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
                       if (!userComplete) ...[
                         if (shouldShowEndForAll)
                           ElevatedButton(
@@ -358,38 +309,23 @@ class VocabTile extends StatelessWidget {
           OverlayUtil.showPositionedCard(
             overlayKey: "activity-vocab-${vocab.lemma}",
             context: context,
-            cardToShow: Material(
-              type: MaterialType.transparency,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  border: Border.all(
-                    color: Theme.of(context).colorScheme.primary,
-                    width: 4.0,
-                  ),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(AppConfig.borderRadius),
-                  ),
-                ),
-                child: WordZoomWidget(
-                  token: PangeaTokenText(
-                    content: vocab.lemma,
-                    length: vocab.lemma.characters.length,
-                    offset: 0,
-                  ),
-                  construct: ConstructIdentifier(
-                    lemma: vocab.lemma,
-                    type: ConstructTypeEnum.vocab,
-                    category: vocab.pos,
-                  ),
-                  langCode: langCode,
-                  onClose: () {
-                    MatrixState.pAnyState.closeOverlay(
-                      "activity-vocab-${vocab.lemma}",
-                    );
-                  },
-                ),
+            cardToShow: WordZoomWidget(
+              token: PangeaTokenText(
+                content: vocab.lemma,
+                length: vocab.lemma.characters.length,
+                offset: 0,
               ),
+              construct: ConstructIdentifier(
+                lemma: vocab.lemma,
+                type: ConstructTypeEnum.vocab,
+                category: vocab.pos,
+              ),
+              langCode: langCode,
+              onClose: () {
+                MatrixState.pAnyState.closeOverlay(
+                  "activity-vocab-${vocab.lemma}",
+                );
+              },
             ),
             transformTargetId: "activity-vocab-${vocab.lemma}",
             closePrevOverlay: false,
