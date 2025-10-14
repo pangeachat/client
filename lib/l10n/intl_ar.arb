@@ -4468,15 +4468,15 @@
   "downloading": "جارٍ التنزيل...",
   "failedFetchUserAnalytics": "فشل في تحميل تحليلات المستخدم",
   "downloadComplete": "اكتمل التنزيل!",
-  "whatIsTheMorphTag": "ما هو {الصفة الصرفية} لـ '{شكل الكلمة}'؟",
+  "whatIsTheMorphTag": "ما هو {morph} لـ '{tag}'؟",
   "dataAvailable": "توفر البيانات",
   "available": "متاح",
   "pangeaBotIsFallible": "بوت بانجيا يخطئ أيضًا!",
-  "whatIsMeaning": "ماذا يعني '{المعنى}'؟",
-  "pickAnEmoji": "ما هو رمز التعبير المفضل لديك لـ '{المعنى}'؟",
+  "whatIsMeaning": "ماذا يعني '{word}'؟",
+  "pickAnEmoji": "ما هو رمز التعبير المفضل لديك لـ '{word}'؟",
   "chooseLemmaMeaningInstructionsBody": "طابق المعاني مع الكلمات في الرسالة!",
   "doubleClickToEdit": "انقر نقرًا مزدوجًا للتحرير.",
-  "removeFeature": "إزالة {الميزة}",
+  "removeFeature": "إزالة {feature}",
   "chooseCorrectLabel": "اختر التسمية الصحيحة.",
   "levelPopupTitle": "تهانينا على الوصول إلى\nالمستوى {level}",
   "activityPlannerTitle": "مخطط النشاط",
@@ -10140,8 +10140,8 @@
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
-      "الصفة الصرفية": {},
-      "شكل الكلمة": {}
+      "morph": {},
+      "tag": {}
     }
   },
   "@dataAvailable": {
@@ -10159,13 +10159,13 @@
   "@whatIsMeaning": {
     "type": "String",
     "placeholders": {
-      "المعنى": {}
+      "word": {}
     }
   },
   "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
-      "المعنى": {}
+      "word": {}
     }
   },
   "@chooseLemmaMeaningInstructionsBody": {
@@ -10179,7 +10179,9 @@
   "@removeFeature": {
     "type": "String",
     "placeholders": {
-      "الميزة": {}
+      "feature": {
+        "type": "String"
+      }
     }
   },
   "@chooseCorrectLabel": {

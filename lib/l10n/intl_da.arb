@@ -4400,7 +4400,9 @@
   "@unreadChats": {
     "type": "String",
     "placeholders": {
-      "unreadCount": {}
+      "unreadCount": {
+        "type": "int"
+      }
     }
   },
   "@userAndOthersAreTyping": {

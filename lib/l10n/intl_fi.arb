@@ -2637,7 +2637,7 @@
   "setPermissionsLevelDescription": "Valitse alla ennalta määritetty rooli tai syötä mukautettu käyttöoikeustaso väliltä 0–100.",
   "ignoreUser": "Ohita käyttäjä",
   "normalUser": "Normaali käyttäjä",
-  "aboutHomeserver": "Tietoja {homeserveristä}",
+  "aboutHomeserver": "Tietoja {homeserver}",
   "commandHint_roomupgrade": "Päivitä tämä huone annettuun huonetyyppiin",
   "appLockDescription": "Lukitse sovellus, kun sitä ei käytetä, PIN-koodilla",
   "countChatsAndCountParticipants": "{chats} keskustelua ja {participants} osallistujaa",
@@ -4536,7 +4536,9 @@
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
-      "homeserveristä": {}
+      "homeserver": {
+        "type": "String"
+      }
     }
   },
   "@commandHint_roomupgrade": {
