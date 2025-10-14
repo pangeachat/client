@@ -1,11 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
@@ -21,6 +16,9 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
 
 enum SessionState {
   /// The room hasn't been created yet
@@ -269,7 +267,7 @@ class ActivitySessionStartController extends State<ActivitySessionStartPage>
       ),
       widget.activityId,
     );
-    final activities = activitiesResponse.plans.values.toList();
+    final activities = activitiesResponse.activities.values.toList();
 
     if (activities.isEmpty) {
       throw Exception("Activity not found");

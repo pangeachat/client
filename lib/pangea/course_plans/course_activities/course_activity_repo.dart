@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:get_storage/get_storage.dart';
-import 'package:http/http.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_plan_model.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_request.dart';
 import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_translation_response.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart';
 
 class CourseActivityRepo {
   static final Map<String, Completer<TranslateActivityResponse>> _cache = {};
@@ -20,18 +19,18 @@ class CourseActivityRepo {
     String batchId,
   ) async {
     await _storage.initStorage;
-    final activities = getCached(request).plans;
+    final activities = getCached(request).activities;
 
     final toFetch =
         request.activityIds.where((id) => !activities.containsKey(id)).toList();
 
     if (toFetch.isNotEmpty) {
       final fetchedActivities = await _fetch(request, batchId);
-      activities.addAll(fetchedActivities.plans);
+      activities.addAll(fetchedActivities.activities);
       await _setCached(fetchedActivities, request.l1);
     }
 
-    return TranslateActivityResponse(plans: activities);
+    return TranslateActivityResponse(activities: activities);
   }
 
   static Future<TranslateActivityResponse> translate(
@@ -109,7 +108,7 @@ class CourseActivityRepo {
       }
     }
 
-    return TranslateActivityResponse(plans: activities);
+    return TranslateActivityResponse(activities: activities);
   }
 
   static Future<void> _setCached(
@@ -117,7 +116,7 @@ class CourseActivityRepo {
     String l1,
   ) async {
     final List<Future> futures = [];
-    for (final entry in activities.plans.entries) {
+    for (final entry in activities.activities.entries) {
       final cacheKey = "${entry.key}_$l1";
       futures.add(_storage.write(cacheKey, entry.value.toJson()));
     }
