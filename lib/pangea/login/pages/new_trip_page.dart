@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_creation/course_search_provider.dart';
+import 'package:fluffychat/pangea/login/pages/plan_trip_page.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -49,11 +52,19 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
           spacing: 10.0,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.map_outlined),
+            SvgPicture.network(
+              "${AppConfig.assetsBaseURL}/${PlanTripPage.mapStartFileName}",
+              width: 24.0,
+              height: 24.0,
+              colorFilter: ColorFilter.mode(
+                theme.colorScheme.onSurface,
+                BlendMode.srcIn,
+              ),
+            ),
             Text(
               spaceId != null
                   ? L10n.of(context).addCoursePlan
-                  : L10n.of(context).startOwnTripTitle,
+                  : L10n.of(context).startOwnTrip,
             ),
           ],
         ),

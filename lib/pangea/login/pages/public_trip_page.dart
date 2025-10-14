@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -153,8 +154,10 @@ class PublicTripPageState extends State<PublicTripPage> {
           spacing: 10.0,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.map_outlined),
-            Text(L10n.of(context).browsePublicTrips),
+            const Icon(
+              Symbols.map_search,
+            ),
+            Text(L10n.of(context).joinPublicCourse),
           ],
         ),
       ),

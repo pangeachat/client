@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
+import 'package:fluffychat/pangea/login/pages/plan_trip_page.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PrivateTripPage extends StatefulWidget {
@@ -57,8 +60,16 @@ class PrivateTripPageState extends State<PrivateTripPage> {
           spacing: 10.0,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.map_outlined),
-            Text(L10n.of(context).unlockPrivateTripTitle),
+            SvgPicture.network(
+              "${AppConfig.assetsBaseURL}/${PlanTripPage.mapUnlockFileName}",
+              width: 24.0,
+              height: 24.0,
+              colorFilter: ColorFilter.mode(
+                theme.colorScheme.onSurface,
+                BlendMode.srcIn,
+              ),
+            ),
+            Text(L10n.of(context).joinCourseWithCode),
           ],
         ),
       ),
