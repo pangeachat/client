@@ -396,7 +396,7 @@ class ChatDetailsController extends State<ChatDetails>
       return;
     }
 
-    if (mounted) setState(() => loadingActivities = false);
+    if (mounted) setState(() => loadingActivities = true);
     await loadCourse(room.coursePlan!.uuid);
     if (course != null) {
       if (mounted) await loadTopics();
