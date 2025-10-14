@@ -3559,6 +3559,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Courses allow you to consolidate your chats and build private or public communities.";
     },
+    get$enterCodeToJoin() {
+      return "Enter code to join";
+    },
     get$updateNow() {
       return "Update Now";
     },
@@ -4357,9 +4360,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$generatingSummary() {
       return "Analyzing chat and generating results";
     },
-    get$findCourse() {
-      return "Find a course";
-    },
     get$activityCompletedDesc() {
       return "Your completed activity was added to analytics where you can review and practice the language you used.";
     },
@@ -4465,41 +4465,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chooseLanguage() {
       return "Choose a language.";
     },
-    get$planTrip() {
-      return "Plan your trip";
-    },
-    get$howAreYouTraveling() {
-      return "How are you traveling?";
-    },
-    get$unlockPrivateTrip() {
-      return "Unlock a private trip";
-    },
-    get$joinPublicTrip() {
-      return "Join a public trip";
-    },
-    get$startOwnTrip() {
+    get$startOwn() {
       return "Start my own";
     },
-    get$tripPlanDesc() {
-      return "Trips are courses. Each has 8-10 sequenced topics with a range of task-based language learning activities.";
-    },
-    get$unlockPrivateTripTitle() {
-      return "Unlock private trip";
-    },
-    get$browsePublicTrips() {
-      return "Browse public trips";
-    },
-    get$startOwnTripTitle() {
-      return "Start my own trip";
-    },
-    get$courseCode() {
-      return "What\u2019s the secret password?";
+    get$joinCourseDesc() {
+      return "Each course has 8-10 sequenced topics with a range of task-based language learning activities.";
     },
     get$courseCodeHint() {
-      return "Trip code or link";
-    },
-    get$unlockMyTrip() {
-      return "Unlock my trip";
+      return "Course code";
     },
     get$signupOption() {
       return "How do you want to sign up?";
@@ -4614,6 +4587,15 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$shareCourse() {
       return "Share course";
+    },
+    get$addCourse() {
+      return "Add a course";
+    },
+    get$joinCourseWithCode() {
+      return "Join course with code";
+    },
+    get$joinPublicCourse() {
+      return "Join public course";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -6383,7 +6365,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XKII9B4ekEm1GrJwBx71dj675Jo="] = d.current;
+  d["5jGLuLxkydDmY3tOEaoogRf0UcY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_22.part.js.map
