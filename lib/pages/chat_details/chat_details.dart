@@ -57,7 +57,6 @@ class ChatDetailsController extends State<ChatDetails>
   @override
   void initState() {
     super.initState();
-    _loadSummaries();
     _loadCourseInfo();
   }
 
@@ -383,6 +382,16 @@ class ChatDetailsController extends State<ChatDetails>
   }
 
   Future<void> _loadCourseInfo() async {
+    setState(() => loadingActivities = true);
+    final futures = [
+      _loadSummaries(),
+      _loadCourse(),
+    ];
+    await Future.wait(futures);
+    if (mounted) setState(() => loadingActivities = false);
+  }
+
+  Future<void> _loadCourse() async {
     final room = Matrix.of(context).client.getRoomById(roomId!);
     if (room == null || !room.isSpace || room.coursePlan == null) {
       setState(() {
@@ -394,13 +403,11 @@ class ChatDetailsController extends State<ChatDetails>
       return;
     }
 
-    setState(() => loadingActivities = true);
     await loadCourse(room.coursePlan!.uuid);
     if (course != null) {
-      await loadTopics();
-      await loadAllActivities();
+      if (mounted) await loadTopics();
+      if (mounted) await loadAllActivities();
     }
-    if (mounted) setState(() => loadingActivities = false);
   }
 
   Future<void> _loadSummaries() async {
