@@ -8,9 +8,9 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
 
-class PlanTripPage extends StatelessWidget {
+class AddCoursePage extends StatelessWidget {
   final String route;
-  const PlanTripPage({
+  const AddCoursePage({
     required this.route,
     super.key,
   });
@@ -118,7 +118,7 @@ class PlanTripPage extends StatelessWidget {
                               BlendMode.srcIn,
                             ),
                           ),
-                          Text(L10n.of(context).startOwnTrip),
+                          Text(L10n.of(context).startOwn),
                         ],
                       ),
                     ),

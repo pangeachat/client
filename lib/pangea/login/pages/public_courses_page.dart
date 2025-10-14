@@ -18,20 +18,20 @@ import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class PublicTripPage extends StatefulWidget {
+class PublicCoursesPage extends StatefulWidget {
   final String route;
   final bool showFilters;
-  const PublicTripPage({
+  const PublicCoursesPage({
     super.key,
     required this.route,
     this.showFilters = true,
   });
 
   @override
-  State<PublicTripPage> createState() => PublicTripPageState();
+  State<PublicCoursesPage> createState() => PublicCoursesPageState();
 }
 
-class PublicTripPageState extends State<PublicTripPage> {
+class PublicCoursesPageState extends State<PublicCoursesPage> {
   bool loading = true;
   Object? error;
 
@@ -220,7 +220,7 @@ class PublicTripPageState extends State<PublicTripPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(L10n.of(context).startOwnTrip),
+                                Text(L10n.of(context).startOwn),
                               ],
                             ),
                           ),
@@ -294,11 +294,36 @@ class PublicTripPageState extends State<PublicTripPage> {
                                       ),
                                     ),
                                     Flexible(
-                                      child: Text(
-                                        displayname,
-                                        style: theme.textTheme.bodyLarge,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
+                                      child: Column(
+                                        spacing: 0.0,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            displayname,
+                                            style: theme.textTheme.bodyLarge,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          Row(
+                                            spacing: 4.0,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              const Icon(
+                                                Icons.group,
+                                                size: 16.0,
+                                              ),
+                                              Text(
+                                                L10n.of(context)
+                                                    .countParticipants(
+                                                  roomChunk.numJoinedMembers,
+                                                ),
+                                                style:
+                                                    theme.textTheme.bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],

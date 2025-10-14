@@ -6,19 +6,19 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
-import 'package:fluffychat/pangea/login/pages/plan_trip_page.dart';
+import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class PrivateTripPage extends StatefulWidget {
-  const PrivateTripPage({
+class CourseCodePage extends StatefulWidget {
+  const CourseCodePage({
     super.key,
   });
 
   @override
-  State<PrivateTripPage> createState() => PrivateTripPageState();
+  State<CourseCodePage> createState() => CourseCodePageState();
 }
 
-class PrivateTripPageState extends State<PrivateTripPage> {
+class CourseCodePageState extends State<CourseCodePage> {
   final TextEditingController _codeController = TextEditingController();
 
   @override
@@ -61,7 +61,7 @@ class PrivateTripPageState extends State<PrivateTripPage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.network(
-              "${AppConfig.assetsBaseURL}/${PlanTripPage.mapUnlockFileName}",
+              "${AppConfig.assetsBaseURL}/${AddCoursePage.mapUnlockFileName}",
               width: 24.0,
               height: 24.0,
               colorFilter: ColorFilter.mode(
@@ -92,7 +92,7 @@ class PrivateTripPageState extends State<PrivateTripPage> {
                   spacing: 16.0,
                   children: [
                     Text(
-                      L10n.of(context).courseCode,
+                      L10n.of(context).enterCodeToJoin,
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -113,7 +113,7 @@ class PrivateTripPageState extends State<PrivateTripPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(L10n.of(context).unlockMyTrip),
+                          Text(L10n.of(context).submit),
                         ],
                       ),
                     ),

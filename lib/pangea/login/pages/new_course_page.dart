@@ -10,16 +10,16 @@ import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_creation/course_search_provider.dart';
-import 'package:fluffychat/pangea/login/pages/plan_trip_page.dart';
+import 'package:fluffychat/pangea/login/pages/add_course_page.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class NewTripPage extends StatefulWidget {
+class NewCoursePage extends StatefulWidget {
   final String route;
   final String? spaceId;
   final bool showFilters;
 
-  const NewTripPage({
+  const NewCoursePage({
     super.key,
     required this.route,
     this.spaceId,
@@ -27,10 +27,11 @@ class NewTripPage extends StatefulWidget {
   });
 
   @override
-  State<NewTripPage> createState() => NewTripPageState();
+  State<NewCoursePage> createState() => NewCoursePageState();
 }
 
-class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
+class NewCoursePageState extends State<NewCoursePage>
+    with CourseSearchProvider {
   @override
   void initState() {
     super.initState();
@@ -53,7 +54,7 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
           mainAxisSize: MainAxisSize.min,
           children: [
             SvgPicture.network(
-              "${AppConfig.assetsBaseURL}/${PlanTripPage.mapStartFileName}",
+              "${AppConfig.assetsBaseURL}/${AddCoursePage.mapStartFileName}",
               width: 24.0,
               height: 24.0,
               colorFilter: ColorFilter.mode(
@@ -64,7 +65,7 @@ class NewTripPageState extends State<NewTripPage> with CourseSearchProvider {
             Text(
               spaceId != null
                   ? L10n.of(context).addCoursePlan
-                  : L10n.of(context).startOwnTrip,
+                  : L10n.of(context).startOwn,
             ),
           ],
         ),
