@@ -4475,7 +4475,7 @@
     }
   },
   "botModeValidation": "Please select a chat mode",
-  "clickBestOption": "Choose the best options to translate your message! Click and hold for a hint.",
+  "clickBestOption": "Choose the best options to translate your message! Click and hold options for a hint.",
   "completeActivitiesToUnlock": "Complete at least one activity to unlock the translation!",
   "botSettingsSubtitle": "Invite bot to moderate chat activity",
   "invitePeople": "Invite users",
