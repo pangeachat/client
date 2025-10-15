@@ -4561,6 +4561,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$joinPublicCourse() {
       return "Join public course";
     },
+    get$vocabLevelsDesc() {
+      return "This is where vocab words will go once you\u2019ve leveled them up!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4574,7 +4577,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PIU96pHO6jzN4jeVBHeLR1eTGs0="] = d.current;
+  d["gfROL6dvne+TU/xa1e+i5MqcwU0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_256.part.js.map
