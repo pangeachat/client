@@ -4565,6 +4565,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "This is where vocab words will go once you\u2019ve leveled them up!";
     },
+    get$highlightVocabTooltip() {
+      return "Highlight target vocab words below by sending them or practicing with them in the chat";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4581,7 +4584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zmdrLGKXZbJEW3GtzXZsmTlBK3A="] = d.current;
+  d["faOpg+pmwx9y03BeJojuUZmgIo0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_186.part.js.map
