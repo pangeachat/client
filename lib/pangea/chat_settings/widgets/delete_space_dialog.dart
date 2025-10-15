@@ -106,21 +106,22 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
     });
 
     try {
-      final List<Future<void>> deleteFutures = [];
-      final List<Future<void>> activitiesToLeave = [];
+      final List<Future<void>> futures = [];
       for (final room in _roomsToDelete) {
         final roomInstance = widget.space.client.getRoomById(room.roomId);
         if (roomInstance != null) {
+          // Niether delete not leave activities the user has archived,
+          // since they're hidden in the main chat UI.
           if (roomInstance.isActivitySession) {
             if (!roomInstance.hasArchivedActivity) {
-              activitiesToLeave.add(roomInstance.leave());
+              futures.add(roomInstance.leave());
             }
           } else {
-            deleteFutures.add(roomInstance.delete());
+            futures.add(roomInstance.delete());
           }
         }
       }
-      await Future.wait([...deleteFutures, ...activitiesToLeave]);
+      await Future.wait(futures);
       await widget.space.delete();
       Navigator.of(context).pop(true);
     } catch (e, s) {
