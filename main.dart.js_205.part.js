@@ -1504,12 +1504,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$redFeedback() {
       return "Ma arvan, et see ei ole \xf5ige...";
     },
-    get$itInstructionsTitle() {
-      return "Ma saan sind aidata t\xf5lkida!";
-    },
-    get$itInstructionsBody() {
-      return "Sa v\xf5id kl\xf5psata ja hoida valikuid s\xf5na info saamiseks.";
-    },
     get$gaTooltip() {
       return "L2 kasutamine grammatika abiga";
     },
@@ -2524,12 +2518,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Andmeid ei leitud";
     },
-    get$blurMeansTranslateTitle() {
-      return "Miks on s\xf5num udustatud?";
-    },
-    get$blurMeansTranslateBody() {
-      return "Kui Immersion Mode on sisse l\xfclitatud, udustatakse s\xf5numeid, mis saadetakse teie baaskeeles, samal ajal kui Pangea Bot t\xf5lgib neid teie sihtkeelde. Immersion Mode'i saab sisse v\xf5i v\xe4lja l\xfclitada \xfcksikute ja ruumi seadetes.";
-    },
     get$bestCorrectionFeedback() {
       return "See on \xf5ige!";
     },
@@ -2614,12 +2602,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "K\xe4ivita automaatselt Pangea vestluse grammatika- ja t\xf5lkeabi enne s\xf5numi saatmist.";
     },
-    get$tooltipInstructionsTitle() {
-      return "Ei tea, mida see teeb?";
-    },
-    get$tooltipInstructionsBrowserBody() {
-      return "Liigu hiirega \xfcle \xfcksuste, et vaadata t\xf6\xf6riistatekste.";
-    },
     get$chatCapacity() {
       return "Vestluse maht";
     },
@@ -2698,9 +2680,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatName() {
       return "Vestluse nimi";
     },
-    get$clickTheWordAgainToDeselect() {
-      return "Kl\xf5psa valitud s\xf5nale, et t\xfchistada valik.";
-    },
     get$l2SupportNa() {
       return "Pole saadaval";
     },
@@ -2712,12 +2691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$l2SupportFull() {
       return "T\xe4ielik";
-    },
-    get$missingVoiceTitle() {
-      return "Puuduv h\xe4\xe4l";
-    },
-    get$voiceNotAvailable() {
-      return "Selle keele jaoks ei ole heli installitud.";
     },
     get$playAudio() {
       return "Esita";
@@ -3527,7 +3500,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "TASE " + level;
     },
     get$clickBestOption() {
-      return "Valige parimad valikud, et t\xf5lkida oma s\xf5num!";
+      return "Choose the best options to translate your message! Click and hold options for a hint.";
     },
     get$completeActivitiesToUnlock() {
       return "L\xf5peta v\xe4hemalt \xfcks tegevus, et lukustada t\xf5lge!";
@@ -4598,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PMRiR4/65VSi3VBAaPLZOpDsVwo="] = d.current;
+  d["hBnLkzasj+kLo7TZDvx2DN9p4/M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map

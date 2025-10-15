@@ -1504,12 +1504,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$redFeedback() {
       return "T\xf4i ngh\u0129 kh\xf4ng \u0111\xfang l\u1eafm...";
     },
-    get$itInstructionsTitle() {
-      return "T\xf4i c\xf3 th\u1ec3 gi\xfap b\u1ea1n d\u1ecbch!";
-    },
-    get$itInstructionsBody() {
-      return "B\u1ea1n c\xf3 th\u1ec3 nh\u1ea5n v\xe0 gi\u1eef l\u1ef1a ch\u1ecdn \u0111\u1ec3 xem gi\u1ea3i th\xedch chi ti\u1ebft.";
-    },
     get$gaTooltip() {
       return "D\xf9ng L2 v\u1edbi h\u1ed7 tr\u1ee3 ng\u1eef ph\xe1p";
     },
@@ -2524,12 +2518,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "Kh\xf4ng t\xecm th\u1ea5y d\u1eef li\u1ec7u";
     },
-    get$blurMeansTranslateTitle() {
-      return "T\u1ea1i sao tin nh\u1eafn b\u1ecb l\xe0m m\u1edd?";
-    },
-    get$blurMeansTranslateBody() {
-      return "While Immersion Mode is on, messages that are sent in your base language will be blurred while Pangea Bot translates them to your target language. Immersion Mode can be toggled in individual and course settings.";
-    },
     get$bestCorrectionFeedback() {
       return "\u0110\xfang r\u1ed3i!";
     },
@@ -2614,12 +2602,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "T\u1ef1 \u0111\u1ed9ng ch\u1ea1y h\u1ed7 tr\u1ee3 ng\xf4n ng\u1eef sau khi g\xf5 tin nh\u1eafn";
     },
-    get$tooltipInstructionsTitle() {
-      return "Ch\u01b0a r\xf5 t\xednh n\u0103ng n\xe0y?";
-    },
-    get$tooltipInstructionsBrowserBody() {
-      return "Di chu\u1ed9t \u0111\u1ec3 xem gi\u1ea3i th\xedch.";
-    },
     get$chatCapacity() {
       return "Gi\u1edbi h\u1ea1n th\xe0nh vi\xean tr\xf2 chuy\u1ec7n";
     },
@@ -2698,9 +2680,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatName() {
       return "T\xean cu\u1ed9c tr\xf2 chuy\u1ec7n";
     },
-    get$clickTheWordAgainToDeselect() {
-      return "Nh\u1ea5n l\u1ea1i v\xe0o t\u1eeb \u0111\xe3 ch\u1ecdn \u0111\u1ec3 b\u1ecf ch\u1ecdn.";
-    },
     get$l2SupportNa() {
       return "Kh\xf4ng kh\u1ea3 d\u1ee5ng";
     },
@@ -2712,12 +2691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$l2SupportFull() {
       return "Ho\xe0n ch\u1ec9nh";
-    },
-    get$missingVoiceTitle() {
-      return "Thi\u1ebfu gi\u1ecdng \u0111\u1ecdc";
-    },
-    get$voiceNotAvailable() {
-      return "B\u1ea1n ch\u01b0a c\xe0i \u0111\u1eb7t gi\u1ecdng \u0111\u1ecdc cho ng\xf4n ng\u1eef n\xe0y.";
     },
     get$playAudio() {
       return "Ph\xe1t";
@@ -3527,7 +3500,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "LVL " + level;
     },
     get$clickBestOption() {
-      return "Ch\u1ecdn ph\u01b0\u01a1ng \xe1n t\u1ed1t nh\u1ea5t \u0111\u1ec3 d\u1ecbch tin nh\u1eafn c\u1ee7a b\u1ea1n!";
+      return "Choose the best options to translate your message! Click and hold options for a hint.";
     },
     get$completeActivitiesToUnlock() {
       return "Ho\xe0n th\xe0nh \xedt nh\u1ea5t m\u1ed9t ho\u1ea1t \u0111\u1ed9ng \u0111\u1ec3 m\u1edf kh\xf3a b\u1ea3n d\u1ecbch!";
@@ -4598,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FANjb+3y50hqxIS1N1H29GEdgK4="] = d.current;
+  d["tGOF+FG42YUAqiZsRYvNyqaTZDM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_264.part.js.map

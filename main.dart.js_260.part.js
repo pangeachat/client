@@ -1504,12 +1504,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$redFeedback() {
       return "I don't think that's right...";
     },
-    get$itInstructionsTitle() {
-      return "I can help you translate!";
-    },
-    get$itInstructionsBody() {
-      return "You can click and hold choices for word info.";
-    },
     get$gaTooltip() {
       return "L2 use with grammar assistance";
     },
@@ -2524,12 +2518,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$noDataFound() {
       return "No data found";
     },
-    get$blurMeansTranslateTitle() {
-      return "Why is the message blurred?";
-    },
-    get$blurMeansTranslateBody() {
-      return "While Immersion Mode is on, messages that are sent in your base language will be blurred while Pangea Bot translates them to your target language. Immersion Mode can be toggled in individual and course settings.";
-    },
     get$bestCorrectionFeedback() {
       return "That's correct!";
     },
@@ -2614,12 +2602,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$autoIGCToolDescription() {
       return "Automatically run Pangea Chat grammar and translation writing assistance before sending my message.";
     },
-    get$tooltipInstructionsTitle() {
-      return "Not sure what that does?";
-    },
-    get$tooltipInstructionsBrowserBody() {
-      return "Hover over items to view tooltips.";
-    },
     get$chatCapacity() {
       return "Chat capacity";
     },
@@ -2698,9 +2680,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$chatName() {
       return "Chat name";
     },
-    get$clickTheWordAgainToDeselect() {
-      return "Click the selected word to deselect it.";
-    },
     get$l2SupportNa() {
       return "Not Available";
     },
@@ -2712,12 +2691,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$l2SupportFull() {
       return "Full";
-    },
-    get$missingVoiceTitle() {
-      return "Missing voice";
-    },
-    get$voiceNotAvailable() {
-      return "You don't have a voice installed for this language.";
     },
     get$playAudio() {
       return "Play";
@@ -3527,7 +3500,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "LVL " + level;
     },
     get$clickBestOption() {
-      return "Choose the best options to translate your message!";
+      return "Choose the best options to translate your message! Click and hold options for a hint.";
     },
     get$completeActivitiesToUnlock() {
       return "Complete at least one activity to unlock the translation!";
@@ -4598,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1e2n00aoI2IyksQyu9ka3Rf/kR4="] = d.current;
+  d["DxumUVD8Z9vuTz737RjNkw3R/ds="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_260.part.js.map
