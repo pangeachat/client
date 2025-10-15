@@ -3979,6 +3979,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     shareInviteCode$1(code) {
       return "Jaga kutsekood: " + code;
     },
+    get$skipForNow() {
+      return "J\xe4ta praegu vahele";
+    },
     get$permissions(_) {
       return "Luba";
     },
@@ -4571,7 +4574,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hBnLkzasj+kLo7TZDvx2DN9p4/M="] = d.current;
+  d["2uhG2mg626uhCjBNvxihpcCkcOU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_205.part.js.map

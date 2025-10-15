@@ -3980,6 +3980,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     shareInviteCode$1(code) {
       return "Compartir c\xf3digo de invitaci\xf3n: " + code;
     },
+    get$skipForNow() {
+      return "Saltar por ahora";
+    },
     get$permissions(_) {
       return "Permisos";
     },
@@ -4572,7 +4575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["NoH5YUocGCJeZIjo615yT/Fr53A="] = d.current;
+  d["rhSzkDBPtXBzNg8z+bjuXlw0rxI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_196.part.js.map
