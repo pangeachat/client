@@ -4452,7 +4452,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Languages";
     },
     get$chooseLanguage() {
-      return "Choose a language.";
+      return "Choose a target language.";
     },
     get$startOwn() {
       return "Start my own";
@@ -4599,7 +4599,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lXw7K1Y0w90grvQJtMYnK/PHASc="] = d.current;
+  d["tCK/sfKkcK7kZv3lgrdVWuYAzzY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_192.part.js.map
