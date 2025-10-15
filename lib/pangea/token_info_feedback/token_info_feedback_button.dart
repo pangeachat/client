@@ -50,6 +50,10 @@ class TokenInfoFeedbackButton extends StatelessWidget {
       closePrevOverlay: false,
       canPop: false,
     );
+
+    Future.delayed(const Duration(seconds: 10), () {
+      MatrixState.pAnyState.closeOverlay("token_feedback_snackbar");
+    });
   }
 
   @override
