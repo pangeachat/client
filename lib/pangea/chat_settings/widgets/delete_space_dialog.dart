@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
@@ -106,13 +107,20 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
 
     try {
       final List<Future<void>> deleteFutures = [];
+      final List<Future<void>> activitiesToLeave = [];
       for (final room in _roomsToDelete) {
         final roomInstance = widget.space.client.getRoomById(room.roomId);
         if (roomInstance != null) {
-          deleteFutures.add(roomInstance.delete());
+          if (roomInstance.isActivitySession) {
+            if (!roomInstance.hasArchivedActivity) {
+              activitiesToLeave.add(roomInstance.leave());
+            }
+          } else {
+            deleteFutures.add(roomInstance.delete());
+          }
         }
       }
-      await Future.wait(deleteFutures);
+      await Future.wait([...deleteFutures, ...activitiesToLeave]);
       await widget.space.delete();
       Navigator.of(context).pop(true);
     } catch (e, s) {
