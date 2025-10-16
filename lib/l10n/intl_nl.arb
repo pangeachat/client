@@ -4582,7 +4582,7 @@
   "downloading": "Bezig met downloaden...",
   "failedFetchUserAnalytics": "Het downloaden van gebruikersanalyse is mislukt",
   "downloadComplete": "Download voltooid!",
-  "whatIsTheMorphTag": "Wat is de {morphologischeEigenschap} van '{woordVorm}'?",
+  "whatIsTheMorphTag": "Wat is de {morphologicalFeature} van '{wordForm}'?",
   "dataAvailable": "Beschikbare gegevens",
   "available": "Beschikbaar",
   "pangeaBotIsFallible": "Pangea Bot maakt ook fouten!",
@@ -9923,8 +9923,12 @@
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
-      "morphologischeEigenschap": {},
-      "woordVorm": {}
+      "morphologicalFeature": {
+        "type": "String"
+      },
+      "wordForm": {
+        "type": "String"
+      }
     }
   },
   "@dataAvailable": {

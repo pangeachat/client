@@ -3169,7 +3169,7 @@
   "downloading": "הורדה...",
   "failedFetchUserAnalytics": "נכשל בהורדת אנליטיקות משתמשים",
   "downloadComplete": "ההורדה הושלמה!",
-  "whatIsTheMorphTag": "מה ה-{feature} של '{wordForm}'?",
+  "whatIsTheMorphTag": "מה ה-{morphologicalFeature} של '{wordForm}'?",
   "dataAvailable": "זמינות נתונים",
   "available": "זמין",
   "pangeaBotIsFallible": "גם ביג בוט עלול לטעות!",
@@ -10972,7 +10972,9 @@
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
-      "feature": {},
+      "morphologicalFeature": {
+        "type": "String"
+      },
       "wordForm": {
         "type": "String"
       }

@@ -4590,15 +4590,15 @@
   "downloading": "Wird heruntergeladen...",
   "failedFetchUserAnalytics": "Fehler beim Herunterladen der Benutzeranalysen",
   "downloadComplete": "Download abgeschlossen!",
-  "whatIsTheMorphTag": "Was ist das {morphologischeMerkmal} von '{Wortform}'?",
+  "whatIsTheMorphTag": "Was ist das {morphologicalFeature} von '{wordForm}'?",
   "dataAvailable": "Datenverfügbarkeit",
   "available": "Verfügbar",
   "pangeaBotIsFallible": "Pangea Bot macht auch Fehler!",
-  "whatIsMeaning": "Was bedeutet '{Lemma}'?",
-  "pickAnEmoji": "Welches ist dein Lieblings-Emoji für '{Lemma}'?",
+  "whatIsMeaning": "Was bedeutet '{lemma}'?",
+  "pickAnEmoji": "Welches ist dein Lieblings-Emoji für '{lemma}'?",
   "chooseLemmaMeaningInstructionsBody": "Ordne Bedeutungen den Wörtern in der Nachricht zu!",
   "doubleClickToEdit": "Doppelklicken zum Bearbeiten.",
-  "removeFeature": "Entferne {Feature}",
+  "removeFeature": "Entferne {feature}",
   "chooseCorrectLabel": "Wähle die richtige Beschriftung.",
   "levelPopupTitle": "Herzlichen Glückwunsch zum Erreichen\nLevel {level}",
   "activityPlannerTitle": "Aktivitätsplaner",
@@ -9930,8 +9930,12 @@
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
-      "morphologischeMerkmal": {},
-      "Wortform": {}
+      "morphologicalFeature": {
+        "type": "String"
+      },
+      "wordForm": {
+        "type": "String"
+      }
     }
   },
   "@dataAvailable": {
@@ -9949,13 +9953,17 @@
   "@whatIsMeaning": {
     "type": "String",
     "placeholders": {
-      "Lemma": {}
+      "lemma": {
+        "type": "String"
+      }
     }
   },
   "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
-      "Lemma": {}
+      "lemma": {
+        "type": "String"
+      }
     }
   },
   "@chooseLemmaMeaningInstructionsBody": {
@@ -9969,7 +9977,9 @@
   "@removeFeature": {
     "type": "String",
     "placeholders": {
-      "Feature": {}
+      "feature": {
+        "type": "String"
+      }
     }
   },
   "@chooseCorrectLabel": {

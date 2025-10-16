@@ -4468,12 +4468,12 @@
   "downloading": "جارٍ التنزيل...",
   "failedFetchUserAnalytics": "فشل في تحميل تحليلات المستخدم",
   "downloadComplete": "اكتمل التنزيل!",
-  "whatIsTheMorphTag": "ما هو {morph} لـ '{tag}'؟",
+  "whatIsTheMorphTag": "ما هو {morphologicalFeature} لـ '{wordForm}'؟",
   "dataAvailable": "توفر البيانات",
   "available": "متاح",
   "pangeaBotIsFallible": "بوت بانجيا يخطئ أيضًا!",
-  "whatIsMeaning": "ماذا يعني '{word}'؟",
-  "pickAnEmoji": "ما هو رمز التعبير المفضل لديك لـ '{word}'؟",
+  "whatIsMeaning": "ماذا يعني '{lemma}'؟",
+  "pickAnEmoji": "ما هو رمز التعبير المفضل لديك لـ '{lemma}'؟",
   "chooseLemmaMeaningInstructionsBody": "طابق المعاني مع الكلمات في الرسالة!",
   "doubleClickToEdit": "انقر نقرًا مزدوجًا للتحرير.",
   "removeFeature": "إزالة {feature}",
@@ -10140,8 +10140,12 @@
   "@whatIsTheMorphTag": {
     "type": "String",
     "placeholders": {
-      "morph": {},
-      "tag": {}
+      "morphologicalFeature": {
+        "type": "String"
+      },
+      "wordForm": {
+        "type": "String"
+      }
     }
   },
   "@dataAvailable": {
@@ -10159,13 +10163,17 @@
   "@whatIsMeaning": {
     "type": "String",
     "placeholders": {
-      "word": {}
+      "lemma": {
+        "type": "String"
+      }
     }
   },
   "@pickAnEmoji": {
     "type": "String",
     "placeholders": {
-      "word": {}
+      "lemma": {
+        "type": "String"
+      }
     }
   },
   "@chooseLemmaMeaningInstructionsBody": {
