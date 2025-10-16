@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-14 20:28:25.976332",
+  "@@last_modified": "2025-10-16 13:31:56.112352",
   "about": "Sobre",
   "@about": {
     "type": "String",
@@ -12132,6 +12132,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Comece o seu próprio",
+  "joinCourseDesc": "Cada curso possui de 8 a 10 tópicos sequenciais com uma variedade de atividades de aprendizagem de idiomas baseadas em tarefas.",
+  "newMessageInPangeaChat": "💬 Nova mensagem no Pangea Chat",
+  "shareCourse": "Compartilhar curso",
+  "addCourse": "Adicionar um curso",
+  "joinCourseWithCode": "Entrar no curso com código",
+  "joinPublicCourse": "Entrar em curso público",
+  "vocabLevelsDesc": "É aqui que as palavras de vocabulário irão aparecer assim que você as evoluir!",
+  "highlightVocabTooltip": "Destaque as palavras de vocabulário alvo abaixo enviando-as ou praticando com elas no chat",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

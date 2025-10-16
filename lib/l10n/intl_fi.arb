@@ -4512,7 +4512,7 @@
   "playWithAI": "Leiki tekoälyn kanssa nyt",
   "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
   "@@locale": "fi",
-  "@@last_modified": "2025-10-14 15:22:31.279125",
+  "@@last_modified": "2025-10-16 13:31:00.370211",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12419,6 +12419,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Aloita oma",
+  "joinCourseDesc": "Jokaisessa kurssissa on 8-10 jäsenneltyä aihetta, joissa on erilaisia tehtävien pohjaisia kielioppiharjoituksia.",
+  "newMessageInPangeaChat": "💬 Uusi viesti Pangea-chatissa",
+  "shareCourse": "Jaa kurssi",
+  "addCourse": "Lisää kurssi",
+  "joinCourseWithCode": "Liity kurssille koodilla",
+  "joinPublicCourse": "Liity julkiseen kurssiin",
+  "vocabLevelsDesc": "Tässä kohtaa sanat menevät, kun olet nostanut niiden tasoa!",
+  "highlightVocabTooltip": "Korosta alla olevat kohdesanat lähettämällä ne tai harjoittelemalla niiden kanssa chatissa",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

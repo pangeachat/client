@@ -1,6 +1,6 @@
 {
   "@@locale": "hr",
-  "@@last_modified": "2025-10-14 15:28:35.840845",
+  "@@last_modified": "2025-10-16 13:31:18.226992",
   "about": "Informacije",
   "@about": {
     "type": "String",
@@ -12146,6 +12146,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Započni svoj vlastiti",
+  "joinCourseDesc": "Svaki tečaj ima 8-10 sekvenciranih tema s nizom aktivnosti za učenje jezika temeljenih na zadacima.",
+  "newMessageInPangeaChat": "💬 Nova poruka u Pangea chatu",
+  "shareCourse": "Podijeli tečaj",
+  "addCourse": "Dodaj tečaj",
+  "joinCourseWithCode": "Pridruži se tečaju s kodom",
+  "joinPublicCourse": "Pridruži se javnom tečaju",
+  "vocabLevelsDesc": "Ovdje će ići riječi vokabulara nakon što ih podignete na višu razinu!",
+  "highlightVocabTooltip": "Istakni ciljne riječi vokabulara ispod tako što ćeš ih poslati ili vježbati s njima u chatu",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

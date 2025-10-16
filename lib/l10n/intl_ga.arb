@@ -4998,7 +4998,7 @@
   "playWithAI": "Imir le AI faoi láthair",
   "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
   "@@locale": "ga",
-  "@@last_modified": "2025-10-14 15:28:06.047147",
+  "@@last_modified": "2025-10-16 13:31:08.161200",
   "@customReaction": {
     "type": "String",
     "placeholders": {}
@@ -11772,6 +11772,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Tosaigh mo chuid féin",
+  "joinCourseDesc": "Tá 8-10 topaicí sraithmharma i ngach cúrsa le raon gníomhaíochtaí foghlama teanga bunaithe ar thascanna.",
+  "newMessageInPangeaChat": "🔊 Teachtaireacht nua i gComhrá Pangea",
+  "shareCourse": "Comhroinn cúrsa",
+  "addCourse": "Cuir cúrsa leis",
+  "joinCourseWithCode": "Cláraigh i gcúrsa le cód",
+  "joinPublicCourse": "Cláraigh i gcúrsa poiblí",
+  "vocabLevelsDesc": "Seo áit a dtéann focail fhocail a bhfuil leibhéal acu nuair a dhéantar iad a leibhéalú!",
+  "highlightVocabTooltip": "Bain úsáid as an téacs thíos chun focail fhocail spriocdhírithe a shoiléiriú trí iad a sheoladh nó trí chleachtadh leo sa chomhrá",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

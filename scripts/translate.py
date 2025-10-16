@@ -406,7 +406,7 @@ def load_supported_languages() -> list[tuple[str, str]]:
     """
     Load the supported languages from the languages.json file.
     """
-    with open("scripts/languages.json", "r", encoding="utf-8") as f:
+    with open("languages.json", "r", encoding="utf-8") as f:
         raw_languages = json.load(f)
     languages: list[tuple[str, str]] = []
     for lang in raw_languages:

@@ -1,6 +1,6 @@
 {
   "@@locale": "eu",
-  "@@last_modified": "2025-10-14 15:22:24.322285",
+  "@@last_modified": "2025-10-16 13:30:55.222415",
   "about": "Honi buruz",
   "@about": {
     "type": "String",
@@ -11774,6 +11774,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Hasi nirea",
+  "joinCourseDesc": "Ikastaro bakoitzak 8-10 gaika ditu, eta hizkuntzaren ikaskuntza jarduera oinarritutako zeregin sorta batekin.",
+  "newMessageInPangeaChat": "💬 Pangea Txat-ean mezu berria",
+  "shareCourse": "Partekatu ikastaroa",
+  "addCourse": "Gehitu ikastaroa",
+  "joinCourseWithCode": "Hasi ikastaroa kodearekin",
+  "joinPublicCourse": "Hasi ikastaro publikoa",
+  "vocabLevelsDesc": "Hemen daude hitz-berriak mailakatzen dituzunean!",
+  "highlightVocabTooltip": "Azpimarratu behean dauden target hitz-berriak mezuak bidaliz edo praktikatuz txatean",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

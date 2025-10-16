@@ -3272,7 +3272,7 @@
   "selectAll": "Piliin lahat",
   "deselectAll": "Huwag piliin lahat",
   "@@locale": "fil",
-  "@@last_modified": "2025-10-14 15:27:58.753160",
+  "@@last_modified": "2025-10-16 13:31:03.387348",
   "@setCustomPermissionLevel": {
     "type": "String",
     "placeholders": {}
@@ -12750,6 +12750,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Simulan ang sarili kong kurso",
+  "joinCourseDesc": "Ang bawat kurso ay may 8-10 na sunud-sunod na paksa na may iba't ibang gawain sa pag-aaral ng wika batay sa mga gawain.",
+  "newMessageInPangeaChat": "🗨️ Bagong mensahe sa Pangea Chat",
+  "shareCourse": "Ibahagi ang kurso",
+  "addCourse": "Magdagdag ng kurso",
+  "joinCourseWithCode": "Sumali sa kurso gamit ang code",
+  "joinPublicCourse": "Sumali sa pampublikong kurso",
+  "vocabLevelsDesc": "Dito mapupunta ang mga salita sa bokabularyo kapag na-level up mo na sila!",
+  "highlightVocabTooltip": "I-highlight ang mga target na salita sa bokabularyo sa ibaba sa pamamagitan ng pagpapadala ng mga ito o pagsasanay gamit ang mga ito sa chat",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

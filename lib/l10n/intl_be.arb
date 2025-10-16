@@ -2392,7 +2392,7 @@
   "playWithAI": "Пакуль гуляйце з ШІ",
   "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
   "@@locale": "be",
-  "@@last_modified": "2025-10-14 13:42:05.661430",
+  "@@last_modified": "2025-10-16 13:08:21.169808",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12873,6 +12873,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Пачніце свой уласны",
+  "joinCourseDesc": "Кожны курс складаецца з 8-10 паслядоўных тэм з рознымі моўнымі заданнямі, заснаванымі на дзейнасці.",
+  "newMessageInPangeaChat": "💬 Новае паведамленне ў чатзе Pangea",
+  "shareCourse": "Падзяліцца курсам",
+  "addCourse": "Дадаць курс",
+  "joinCourseWithCode": "Далучыцца да курса з кодам",
+  "joinPublicCourse": "Далучыцца да публічнага курса",
+  "vocabLevelsDesc": "Тут будуць размяшчацца словы слоўніка, калі вы іх узнясеце ўзровень!",
+  "highlightVocabTooltip": "Выдзяліце мэтавыя словы слоўніка ніжэй, адпраўляючы іх або практыкуючыся з імі ў чаце",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

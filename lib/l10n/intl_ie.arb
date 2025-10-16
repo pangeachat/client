@@ -4853,7 +4853,7 @@
   "playWithAI": "Joca con AI pro ora",
   "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ie",
-  "@@last_modified": "2025-10-14 15:28:49.807739",
+  "@@last_modified": "2025-10-16 13:31:28.322202",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12748,6 +12748,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Kumencar mieu",
+  "joinCourseDesc": "Ogn corsa ha 8-10 temas sequencià cun un gama de activitâts di scolastât basât sô tarefas.",
+  "newMessageInPangeaChat": "📝 Nov messadi in Pangea Chat",
+  "shareCourse": "Partagiar corsa",
+  "addCourse": "Zontar un corsa",
+  "joinCourseWithCode": "Kumencar corsa cun còde",
+  "joinPublicCourse": "Kumencar corsa publice",
+  "vocabLevelsDesc": "Chest è il loc dove i parôls di vocabulari a saran miss in plance une volte che tu o i às nivellâts!",
+  "highlightVocabTooltip": "Meti in evidenze i parôls di vocabulari cible sot a mandâli o praticâl in te chat",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

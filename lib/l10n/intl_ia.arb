@@ -2439,7 +2439,7 @@
   "playWithAI": "Joca con le IA pro ora",
   "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
   "@@locale": "ia",
-  "@@last_modified": "2025-10-14 15:28:42.659775",
+  "@@last_modified": "2025-10-16 13:31:23.726766",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12852,6 +12852,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Comencia mi proprie",
+  "joinCourseDesc": "Cata curso ha 8-10 temas sequente con un gamma de actividades de apprendimento de lingua basate in task.",
+  "newMessageInPangeaChat": "🗨️ Novy message in Pangea Chat",
+  "shareCourse": "Partagear curso",
+  "addCourse": "Adder un curso",
+  "joinCourseWithCode": "Joiner curso con codice",
+  "joinPublicCourse": "Joiner curso publice",
+  "vocabLevelsDesc": "Isto es le loco ubi le vocabularies va in post una vice que tu ha levelate los!",
+  "highlightVocabTooltip": "Highlight le vocabularies target ci sotto per los inviar o practicar con los in le chat",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

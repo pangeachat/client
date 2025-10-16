@@ -1,6 +1,6 @@
 {
   "@@locale": "sk",
-  "@@last_modified": "2025-10-14 20:34:26.070198",
+  "@@last_modified": "2025-10-16 13:32:06.139506",
   "about": "O aplikácii",
   "@about": {
     "type": "String",
@@ -12858,6 +12858,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Začať vlastné",
+  "joinCourseDesc": "Každý kurz má 8-10 sekvenčných tém s radom aktivít na učenie jazyka založených na úlohách.",
+  "newMessageInPangeaChat": "🗨️ Nová správa v Pangea chate",
+  "shareCourse": "Zdieľať kurz",
+  "addCourse": "Pridať kurz",
+  "joinCourseWithCode": "Pripojiť sa ku kurzu s kódom",
+  "joinPublicCourse": "Pripojiť sa k verejnému kurzu",
+  "vocabLevelsDesc": "Sem pôjdu slovíčka, keď ich vylepšíte na vyššiu úroveň!",
+  "highlightVocabTooltip": "Zvýraznite cieľové slovíčka nižšie ich odoslaním alebo precvičovaním v chate",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

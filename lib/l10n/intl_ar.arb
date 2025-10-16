@@ -1,6 +1,6 @@
 {
   "@@locale": "ar",
-  "@@last_modified": "2025-10-14 13:33:53.858227",
+  "@@last_modified": "2025-10-16 13:08:16.063345",
   "about": "حول",
   "@about": {
     "type": "String",
@@ -11991,6 +11991,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "ابدأ خاصتي",
+  "joinCourseDesc": "كل دورة تحتوي على 8-10 مواضيع متسلسلة مع مجموعة من أنشطة تعلم اللغة القائمة على المهام.",
+  "newMessageInPangeaChat": "📩 رسالة جديدة في دردشة بانجيا",
+  "shareCourse": "مشاركة الدورة",
+  "addCourse": "إضافة دورة",
+  "joinCourseWithCode": "الانضمام إلى الدورة باستخدام الرمز",
+  "joinPublicCourse": "الانضمام إلى دورة عامة",
+  "vocabLevelsDesc": "هذا هو المكان الذي ستذهب إليه كلمات المفردات بمجرد ترقيتها!",
+  "highlightVocabTooltip": "قم بتمييز كلمات المفردات المستهدفة أدناه عن طريق إرسالها أو التدرب عليها في الدردشة",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

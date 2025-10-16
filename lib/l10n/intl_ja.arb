@@ -1,6 +1,6 @@
 {
   "@@locale": "ja",
-  "@@last_modified": "2025-10-14 15:28:57.613886",
+  "@@last_modified": "2025-10-16 13:31:33.790667",
   "about": "このアプリについて",
   "@about": {
     "type": "String",
@@ -12564,6 +12564,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "自分のものを始める",
+  "joinCourseDesc": "各コースには、8〜10のシーケンスされたトピックと、さまざまなタスクベースの言語学習活動があります。",
+  "newMessageInPangeaChat": "📩 Pangeaチャットに新しいメッセージ",
+  "shareCourse": "コースを共有",
+  "addCourse": "コースを追加",
+  "joinCourseWithCode": "コードでコースに参加",
+  "joinPublicCourse": "公開コースに参加",
+  "vocabLevelsDesc": "これが語彙をレベルアップしたら表示される場所です！",
+  "highlightVocabTooltip": "チャットで送信したり練習したりして、ターゲット語彙をハイライトしてください",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

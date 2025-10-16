@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-14 20:34:18.644408",
+  "@@last_modified": "2025-10-16 13:32:00.774739",
   "about": "Despre",
   "@about": {
     "type": "String",
@@ -12509,6 +12509,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Începe propriul meu",
+  "joinCourseDesc": "Fiecare curs are 8-10 subiecte secvențiale cu o gamă de activități de învățare a limbajului bazate pe sarcini.",
+  "newMessageInPangeaChat": "📝 Mesaj nou în Pangea Chat",
+  "shareCourse": "Partajează cursul",
+  "addCourse": "Adaugă un curs",
+  "joinCourseWithCode": "Alătură-te cursului cu cod",
+  "joinPublicCourse": "Alătură-te cursului public",
+  "vocabLevelsDesc": "Aici vor fi plasate cuvintele de vocabular odată ce le-ai nivelat!",
+  "highlightVocabTooltip": " Evidențiază cuvintele țintă de vocabular de mai jos trimițându-le sau exersându-le în chat",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

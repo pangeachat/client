@@ -4342,7 +4342,7 @@
   "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
   "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
   "@@locale": "lt",
-  "@@last_modified": "2025-10-14 15:29:09.398290",
+  "@@last_modified": "2025-10-16 13:31:41.724130",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12579,6 +12579,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Pradėkite savo",
+  "joinCourseDesc": "Kiekvienas kursas turi 8-10 temų sekų su įvairiomis užduotimis pagrįstomis kalbos mokymosi veiklomis.",
+  "newMessageInPangeaChat": "📩 Naujiena žinutė Pangea pokalbyje",
+  "shareCourse": "Pasidalinti kursu",
+  "addCourse": "Pridėti kursą",
+  "joinCourseWithCode": "Prisijungti prie kurso su kodu",
+  "joinPublicCourse": "Prisijungti prie viešo kurso",
+  "vocabLevelsDesc": "Čia pateks žodžiai, kai juos pakelsite į aukštesnį lygį!",
+  "highlightVocabTooltip": "Pažymėkite žemiau esančius tikslinius žodžius siųsdami juos arba praktikuodamiesi su jais pokalbyje",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

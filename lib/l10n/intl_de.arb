@@ -1,6 +1,6 @@
 {
   "@@locale": "de",
-  "@@last_modified": "2025-10-14 15:22:06.242366",
+  "@@last_modified": "2025-10-16 13:30:41.915934",
   "alwaysUse24HourFormat": "true",
   "@alwaysUse24HourFormat": {
     "description": "Set to true to always display time of day in 24 hour format."
@@ -11781,6 +11781,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Eigene starten",
+  "joinCourseDesc": "Jeder Kurs besteht aus 8-10 sequenziellen Themen mit einer Vielzahl von aufgabenbasierten Sprachlernaktivitäten.",
+  "newMessageInPangeaChat": "🗨️ Neue Nachricht im Pangea-Chat",
+  "shareCourse": "Kurs teilen",
+  "addCourse": "Einen Kurs hinzufügen",
+  "joinCourseWithCode": "Kurs mit Code beitreten",
+  "joinPublicCourse": "Öffentlichen Kurs beitreten",
+  "vocabLevelsDesc": "Hier kommen die Vokabeln hin, sobald du sie aufgestuft hast!",
+  "highlightVocabTooltip": "Hebe die Zielvokabeln unten hervor, indem du sie sendest oder mit ihnen im Chat übst",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

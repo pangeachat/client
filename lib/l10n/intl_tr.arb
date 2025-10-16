@@ -1,6 +1,6 @@
 {
   "@@locale": "tr",
-  "@@last_modified": "2025-10-14 20:34:58.293560",
+  "@@last_modified": "2025-10-16 13:32:23.571063",
   "about": "Hakkında",
   "@about": {
     "type": "String",
@@ -11996,6 +11996,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Kendi başıma başla",
+  "joinCourseDesc": "Her kurs, dizi halinde 8-10 konu ve görev tabanlı dil öğrenme etkinlikleri içerir.",
+  "newMessageInPangeaChat": "🗨️ Pangea Sohbetinde yeni mesaj",
+  "shareCourse": "Kursu paylaş",
+  "addCourse": "Bir kurs ekle",
+  "joinCourseWithCode": "Kod ile kursa katıl",
+  "joinPublicCourse": "Herkese açık kursa katıl",
+  "vocabLevelsDesc": "Kelime seviyelerini yükselttiğinizde buraya kelimeler gelir!",
+  "highlightVocabTooltip": "Hedef kelimeleri aşağıda vurgula, onları göndererek veya sohbetle pratik yaparak",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

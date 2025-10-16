@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-14 15:22:14.150397",
+  "@@last_modified": "2025-10-16 13:30:47.008238",
   "about": "Prio",
   "@about": {
     "type": "String",
@@ -12863,6 +12863,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Komencu mian propran",
+  "joinCourseDesc": "Ĉiu kurso havas 8-10 sinsekvajn temojn kun gamo de task-bazitaj lingvolernaj agadoj.",
+  "newMessageInPangeaChat": "🗨️ Nova mesaĝo en Pangea Babilejo",
+  "shareCourse": "Dividi kurson",
+  "addCourse": "Aldoni kurson",
+  "joinCourseWithCode": "Aliĝi al kurso kun kodo",
+  "joinPublicCourse": "Aliĝi al publika kurso",
+  "vocabLevelsDesc": "Jen kie vortoj de vortprovizo iros post kiam vi ilin plibonigos!",
+  "highlightVocabTooltip": "Emfazu la celvortojn sube per sendado aŭ praktiko kun ili en la babilejo",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

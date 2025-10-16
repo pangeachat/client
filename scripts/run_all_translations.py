@@ -13,9 +13,9 @@ from pathlib import Path
 def load_language_mappings():
     """Load language code to display name mappings."""
     # First, load from languages.json
-    languages_file = Path("scripts/languages.json")
+    languages_file = Path("languages.json")
     if not languages_file.exists():
-        print("Error: scripts/languages.json not found")
+        print("Error: languages.json not found")
         sys.exit(1)
 
     with open(languages_file, "r", encoding="utf-8") as f:
@@ -42,7 +42,7 @@ def load_language_mappings():
 
 def load_needed_translations():
     """Load the languages that need translation."""
-    needed_file = Path("needed-translations.txt")
+    needed_file = Path("../needed-translations.txt")
     if not needed_file.exists():
         print("Error: needed-translations.txt not found")
         print("Please run 'flutter gen-l10n' first to generate this file")
@@ -61,8 +61,8 @@ def run_translation(lang_code, lang_name):
     try:
         # Run the translation script using .venv
         cmd = [
-            ".venv/bin/python",
-            "scripts/translate.py",
+            "../.venv/bin/python",
+            "translate.py",
             "--lang",
             lang_code,
             "--lang-display-name",

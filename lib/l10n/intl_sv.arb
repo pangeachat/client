@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-14 20:34:40.342872",
+  "@@last_modified": "2025-10-16 16:03:28.457217",
   "about": "Om",
   "@about": {
     "type": "String",
@@ -12252,6 +12252,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Starta min egen",
+  "joinCourseDesc": "Varje kurs har 8-10 sekventiella ämnen med en rad uppgiftsbaserade språkinlärningsaktiviteter.",
+  "newMessageInPangeaChat": "📩 Nytt meddelande i Pangea Chat",
+  "shareCourse": "Dela kurs",
+  "addCourse": "Lägg till en kurs",
+  "joinCourseWithCode": "Gå med i kurs med kod",
+  "joinPublicCourse": "Gå med i offentlig kurs",
+  "vocabLevelsDesc": "Det här är platsen där vokabulärord kommer att hamna när du har nivåer upp dem!",
+  "highlightVocabTooltip": "Markera målord i vokabulär nedan genom att skicka dem eller öva med dem i chatten",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

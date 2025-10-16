@@ -2945,7 +2945,7 @@
   "playWithAI": "Za zdaj igrajte z AI-jem",
   "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
   "@@locale": "sl",
-  "@@last_modified": "2025-10-14 20:34:30.163283",
+  "@@last_modified": "2025-10-16 13:32:09.029952",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12855,6 +12855,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Začni svojo lastno",
+  "joinCourseDesc": "Vsak tečaj ima 8-10 zaporednih tem z vrsto dejavnosti za učenje jezika na podlagi nalog.",
+  "newMessageInPangeaChat": "🗨️ Nova sporočilo v klepetu Pangea",
+  "shareCourse": "Deli tečaj",
+  "addCourse": "Dodaj tečaj",
+  "joinCourseWithCode": "Pridruži se tečaju z geslom",
+  "joinPublicCourse": "Pridruži se javnemu tečaju",
+  "vocabLevelsDesc": "Tukaj bodo šle besede za besednjak, ko jih boste nadgradili!",
+  "highlightVocabTooltip": "Označi ciljne besede v besednjaku spodaj tako, da jih pošlješ ali vadiš z njimi v klepetu",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

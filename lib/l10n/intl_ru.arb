@@ -1,6 +1,6 @@
 {
   "@@locale": "ru",
-  "@@last_modified": "2025-10-14 20:34:21.843725",
+  "@@last_modified": "2025-10-16 13:32:02.970247",
   "about": "О проекте",
   "@about": {
     "type": "String",
@@ -11879,6 +11879,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Начать свой собственный",
+  "joinCourseDesc": "Каждый курс состоит из 8-10 последовательных тем с разнообразными заданиями для изучения языка.",
+  "newMessageInPangeaChat": "🗨️ Новое сообщение в чате Pangea",
+  "shareCourse": "Поделиться курсом",
+  "addCourse": "Добавить курс",
+  "joinCourseWithCode": "Присоединиться к курсу по коду",
+  "joinPublicCourse": "Присоединиться к публичному курсу",
+  "vocabLevelsDesc": "Здесь появятся слова словаря, как только вы их повысите!",
+  "highlightVocabTooltip": "Выделите целевые слова словаря ниже, отправив их или попрактиковавшись с ними в чате",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

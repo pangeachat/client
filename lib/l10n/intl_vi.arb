@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-14 20:06:59.229474",
+  "@@last_modified": "2025-10-16 13:32:28.677939",
   "about": "Giới thiệu",
   "@about": {
     "type": "String",
@@ -5710,6 +5710,56 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickBestOption": "Chọn các tùy chọn tốt nhất để dịch tin nhắn của bạn! Nhấn và giữ các tùy chọn để xem gợi ý.",
+  "startOwn": "Bắt đầu của riêng tôi",
+  "joinCourseDesc": "Mỗi khóa học có 8-10 chủ đề theo trình tự với nhiều hoạt động học ngôn ngữ dựa trên nhiệm vụ.",
+  "newMessageInPangeaChat": "🔊 Tin nhắn mới trong Pangea Chat",
+  "shareCourse": "Chia sẻ khóa học",
+  "addCourse": "Thêm khóa học",
+  "joinCourseWithCode": "Tham gia khóa học bằng mã",
+  "joinPublicCourse": "Tham gia khóa học công khai",
+  "vocabLevelsDesc": "Đây là nơi các từ vựng sẽ xuất hiện sau khi bạn nâng cấp chúng!",
+  "highlightVocabTooltip": "Nổi bật các từ vựng mục tiêu bên dưới bằng cách gửi chúng hoặc luyện tập với chúng trong trò chuyện",
+  "@clickBestOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

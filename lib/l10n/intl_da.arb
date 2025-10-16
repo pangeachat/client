@@ -2411,7 +2411,7 @@
   "playWithAI": "Leg med AI for nu",
   "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
   "@@locale": "da",
-  "@@last_modified": "2025-10-14 15:22:03.207519",
+  "@@last_modified": "2025-10-16 13:30:39.003047",
   "@aboutHomeserver": {
     "type": "String",
     "placeholders": {
@@ -12836,6 +12836,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Start min egen",
+  "joinCourseDesc": "Hvert kursus har 8-10 sequencerede emner med en række opgavebaserede sprogindlæringsaktiviteter.",
+  "newMessageInPangeaChat": "💬 Ny besked i Pangea Chat",
+  "shareCourse": "Del kursus",
+  "addCourse": "Tilføj et kursus",
+  "joinCourseWithCode": "Deltag i kursus med kode",
+  "joinPublicCourse": "Deltag i offentligt kursus",
+  "vocabLevelsDesc": "Her vil ordforrådsord blive placeret, når du har opgraderet dem!",
+  "highlightVocabTooltip": "Fremhæv målordene nedenfor ved at sende dem eller øve med dem i chatten",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

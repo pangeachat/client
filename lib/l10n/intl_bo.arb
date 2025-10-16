@@ -4707,7 +4707,7 @@
   "joinPublicTrip": "མི་ཚེས་ལ་ལོག་འབད།",
   "startOwnTrip": "ངེད་རང་གི་ལོག་ལ་སྦྱོར་བཅོས།",
   "@@locale": "bo",
-  "@@last_modified": "2025-10-14 21:16:08.795458",
+  "@@last_modified": "2025-10-16 16:03:25.501925",
   "@alwaysUse24HourFormat": {
     "type": "String",
     "placeholders": {}
@@ -12661,5 +12661,6 @@
   "@reportWordIssueTooltip": {
     "type": "String",
     "placeholders": {}
-  }
+  },
+  "error": "The previous response was incomplete and caused a JSON parsing error due to truncation."
 }

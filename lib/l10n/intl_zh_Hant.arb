@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-14 20:46:10.511478",
+  "@@last_modified": "2025-10-16 13:32:35.882830",
   "about": "關於",
   "@about": {
     "type": "String",
@@ -11772,6 +11772,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "開始我的課程",
+  "joinCourseDesc": "每門課程包含8-10個有序的主題，並配有各種基於任務的語言學習活動。",
+  "newMessageInPangeaChat": "📩 Pangea 聊天中有新訊息",
+  "shareCourse": "分享課程",
+  "addCourse": "添加課程",
+  "joinCourseWithCode": "用代碼加入課程",
+  "joinPublicCourse": "加入公開課程",
+  "vocabLevelsDesc": "這是你升級後詞彙將會放置的地方！",
+  "highlightVocabTooltip": "通過在聊天中發送或練習來突出顯示下面的目標詞彙",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

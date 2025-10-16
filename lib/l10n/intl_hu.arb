@@ -1,6 +1,6 @@
 {
   "@@locale": "hu",
-  "@@last_modified": "2025-10-14 15:28:39.438081",
+  "@@last_modified": "2025-10-16 13:31:20.947240",
   "about": "Névjegy",
   "@about": {
     "type": "String",
@@ -11775,6 +11775,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Indítsa el sajátját",
+  "joinCourseDesc": "Minden kurzusnak 8-10 egymásra épülő témája van, különféle feladat-alapú nyelvtanulási tevékenységekkel.",
+  "newMessageInPangeaChat": "💬 Új üzenet a Pangea Csevegésben",
+  "shareCourse": "Kurzus megosztása",
+  "addCourse": "Kurzus hozzáadása",
+  "joinCourseWithCode": "Csatlakozás kurzushoz kóddal",
+  "joinPublicCourse": "Csatlakozás nyilvános kurzushoz",
+  "vocabLevelsDesc": "Itt jelennek meg a szókincs szavai, amint szintet lépnek!",
+  "highlightVocabTooltip": "Emelje ki a cél szókincs szavait az alábbiakban azzal, hogy elküldi vagy gyakorolja őket a csevegésben",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

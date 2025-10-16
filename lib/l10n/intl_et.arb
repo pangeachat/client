@@ -1,6 +1,6 @@
 {
   "@@locale": "et",
-  "@@last_modified": "2025-10-14 15:22:20.534252",
+  "@@last_modified": "2025-10-16 13:30:52.593520",
   "about": "Rakenduse teave",
   "@about": {
     "type": "String",
@@ -12040,6 +12040,56 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "clickBestOption": "Valige parimad valikud oma sõnumi tõlkimiseks! Klõpsake ja hoidke valikuid, et saada vihje.",
+  "startOwn": "Alusta oma",
+  "joinCourseDesc": "Igal kursusel on 8-10 järjestikust teemat koos erinevate ülesandepõhiste keeleõppetegevustega.",
+  "newMessageInPangeaChat": "🗨️ Uus sõnum Pangea vestluses",
+  "shareCourse": "Jaga kursust",
+  "addCourse": "Lisa kursus",
+  "joinCourseWithCode": "Liitu kursusega koodiga",
+  "joinPublicCourse": "Liitu avaliku kursusega",
+  "vocabLevelsDesc": "Siia lähevad sõnad, kui oled need tasemele tõstnud!",
+  "highlightVocabTooltip": "Tõsta sihitud sõnad allpool esile, saates need või harjutades nendega vestluses",
+  "@clickBestOption": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

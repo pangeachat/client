@@ -1,6 +1,6 @@
 {
   "@@locale": "uk",
-  "@@last_modified": "2025-10-14 20:35:01.980246",
+  "@@last_modified": "2025-10-16 13:32:26.039817",
   "about": "Про застосунок",
   "@about": {
     "type": "String",
@@ -11768,6 +11768,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Почати свою власну",
+  "joinCourseDesc": "Кожен курс має 8-10 послідовних тем із різноманітними завданнями для вивчення мови.",
+  "newMessageInPangeaChat": "🗨️ Нове повідомлення у чаті Pangea",
+  "shareCourse": "Поділитися курсом",
+  "addCourse": "Додати курс",
+  "joinCourseWithCode": "Приєднатися до курсу за кодом",
+  "joinPublicCourse": "Приєднатися до публічного курсу",
+  "vocabLevelsDesc": "Тут з'являться слова словника, коли ви їх підвищите рівень!",
+  "highlightVocabTooltip": "Виділіть цільові слова словника нижче, надіславши їх або практикуючись із ними у чаті",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }

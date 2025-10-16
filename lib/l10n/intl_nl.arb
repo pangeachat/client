@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2025-10-14 15:29:20.473208",
+  "@@last_modified": "2025-10-16 13:31:49.093821",
   "about": "Over ons",
   "@about": {
     "type": "String",
@@ -11774,6 +11774,51 @@
     "placeholders": {}
   },
   "@deselectAll": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "startOwn": "Begin mijn eigen",
+  "joinCourseDesc": "Elk cursus heeft 8-10 opeenvolgende onderwerpen met een reeks taalleeractiviteiten op basis van taken.",
+  "newMessageInPangeaChat": "📩 Nieuw bericht in Pangea Chat",
+  "shareCourse": "Deel cursus",
+  "addCourse": "Voeg een cursus toe",
+  "joinCourseWithCode": "Deelname cursus met code",
+  "joinPublicCourse": "Deelname openbare cursus",
+  "vocabLevelsDesc": "Hier komen de vocabulaire woorden zodra je ze hebt opgewaardeerd!",
+  "highlightVocabTooltip": "Markeer doelvocabulaire woorden hieronder door ze te sturen of ermee te oefenen in de chat",
+  "@startOwn": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@newMessageInPangeaChat": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@shareCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@addCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinCourseWithCode": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@joinPublicCourse": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@vocabLevelsDesc": {
+    "type": "String",
+    "placeholders": {}
+  },
+  "@highlightVocabTooltip": {
     "type": "String",
     "placeholders": {}
   }
