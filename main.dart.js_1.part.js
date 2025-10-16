@@ -1494,1201 +1494,1201 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u6ce8\u9500\u6240\u6709\u6d3b\u52a8\u8bbe\u5907";
     },
     get$customReaction() {
-      return "Custom reaction";
+      return "\u81ea\u5b9a\u4e49\u53cd\u5e94";
     },
     writeAMessageLangCodes$2(l1, l2) {
-      return "Type in " + l1 + " or " + l2 + "...";
+      return "\u8f93\u5165 " + l1 + " \u6216 " + l2 + "...";
     },
     get$holdForInfo() {
-      return "Click and hold for word info.";
+      return "\u70b9\u51fb\u5e76\u6309\u4f4f\u83b7\u53d6\u5355\u8bcd\u4fe1\u606f\u3002";
     },
     get$greenFeedback() {
-      return "That's what I would put!";
+      return "\u8fd9\u5c31\u662f\u6211\u4f1a\u8bf4\u7684\uff01";
     },
     get$yellowFeedback() {
-      return "Hm, you can try that and see if it works! To use this word, just click it again.";
+      return "\u55ef\uff0c\u4f60\u53ef\u4ee5\u8bd5\u8bd5\u8fd9\u4e2a\uff0c\u770b\u770b\u662f\u5426\u6709\u6548\uff01\u8981\u4f7f\u7528\u8fd9\u4e2a\u8bcd\uff0c\u53ea\u9700\u518d\u6b21\u70b9\u51fb\u5b83\u3002";
     },
     get$redFeedback() {
-      return "I don't think that's right...";
+      return "\u6211\u89c9\u5f97\u90a3\u4e0d\u5bf9\u2026\u2026";
     },
     get$gaTooltip() {
-      return "L2 use with grammar assistance";
+      return "\u4f7f\u7528\u8bed\u6cd5\u8f85\u52a9\u7684\u4e8c\u7ea7\u8bed\u8a00";
     },
     get$taTooltip() {
-      return "L2 use with translation assistance";
+      return "\u4f7f\u7528\u7ffb\u8bd1\u8f85\u52a9\u7684\u4e8c\u7ea7\u8bed\u8a00";
     },
     get$interactiveTranslatorSliderHeader() {
-      return "Interactive Translator";
+      return "\u4e92\u52a8\u7ffb\u8bd1\u5668";
     },
     get$interactiveGrammarSliderHeader() {
-      return "Interactive Grammar Checker";
+      return "\u4e92\u52a8\u8bed\u6cd5\u68c0\u67e5\u5668";
     },
     get$waTooltip() {
-      return "L2 use without assistance";
+      return "\u65e0\u9700\u8f85\u52a9\u7684\u4e8c\u7ea7\u8bed\u8a00";
     },
     get$noIdenticalLanguages() {
-      return "Please choose different base and target languages";
+      return "\u8bf7\u9009\u62e9\u4e0d\u540c\u7684\u57fa\u7840\u8bed\u8a00\u548c\u76ee\u6807\u8bed\u8a00";
     },
     get$joinWithClassCode() {
-      return "Join course";
+      return "\u52a0\u5165\u8bfe\u7a0b";
     },
     get$languageLevelPreA1() {
-      return "True Beginner (Pre A1)";
+      return "\u521d\u5b66\u8005\uff08Pre A1\uff09";
     },
     get$languageLevelA1() {
-      return "Beginner (A1)";
+      return "\u521d\u7ea7\uff08A1\uff09";
     },
     get$languageLevelA2() {
-      return "Elementary (A2)";
+      return "\u57fa\u7840\uff08A2\uff09";
     },
     get$languageLevelB1() {
-      return "Intermediate (B1)";
+      return "\u4e2d\u7ea7\uff08B1\uff09";
     },
     get$languageLevelB2() {
-      return "Upper Intermediate (B2)";
+      return "\u4e2d\u9ad8\u7ea7\uff08B2\uff09";
     },
     get$languageLevelC1() {
-      return "Advanced (C1)";
+      return "\u9ad8\u7ea7\uff08C1\uff09";
     },
     get$languageLevelC2() {
-      return "Mastery (C2)";
+      return "\u7cbe\u901a\uff08C2\uff09";
     },
     get$changeTheNameOfTheClass() {
-      return "Change the name";
+      return "\u66f4\u6539\u540d\u79f0";
     },
     get$changeTheNameOfTheChat() {
-      return "Change the name of the chat";
+      return "\u66f4\u6539\u804a\u5929\u540d\u79f0";
     },
     get$sorryNoResults() {
-      return "Sorry, no results.";
+      return "\u62b1\u6b49\uff0c\u6ca1\u6709\u7ed3\u679c\u3002";
     },
     get$ignoreInThisText() {
-      return "Ignore";
+      return "\u5ffd\u7565";
     },
     needsItMessage$1(targetLanguage) {
-      return "Wait, that's not " + targetLanguage + "! Do you need help translating?";
+      return "\u7b49\u7b49\uff0c\u90a3\u4e0d\u662f" + targetLanguage + "\uff01\u4f60\u9700\u8981\u5e2e\u52a9\u7ffb\u8bd1\u5417\uff1f";
     },
     get$countryInformation() {
-      return "My country";
+      return "\u6211\u7684\u56fd\u5bb6";
     },
     get$targetLanguage() {
-      return "Target Language";
+      return "\u76ee\u6807\u8bed\u8a00";
     },
     get$updateLanguage() {
-      return "My languages";
+      return "\u6211\u7684\u8bed\u8a00";
     },
     get$whatLanguageYouWantToLearn() {
-      return "What language do you want to learn?";
+      return "\u4f60\u60f3\u5b66\u4e60\u54ea\u79cd\u8bed\u8a00\uff1f";
     },
     get$whatIsYourBaseLanguage() {
-      return "What is your base language?";
+      return "\u4f60\u7684\u57fa\u7840\u8bed\u8a00\u662f\u4ec0\u4e48\uff1f";
     },
     get$saveChanges() {
-      return "Save changes";
+      return "\u4fdd\u5b58\u66f4\u6539";
     },
     get$publicProfileTitle() {
-      return "Allow my profile to be found in search";
+      return "\u5141\u8bb8\u5728\u641c\u7d22\u4e2d\u627e\u5230\u6211\u7684\u8d44\u6599";
     },
     get$publicProfileDesc() {
-      return "By turning on, you enable other users to find your profile in the global search bar and send requests to chat. At this point, you can choose to accept or deny the request.";
+      return "\u5f00\u542f\u540e\uff0c\u5176\u4ed6\u7528\u6237\u53ef\u4ee5\u5728\u5168\u7403\u641c\u7d22\u680f\u4e2d\u627e\u5230\u4f60\u7684\u8d44\u6599\u5e76\u5411\u4f60\u53d1\u8d77\u804a\u5929\u8bf7\u6c42\u3002\u6b64\u65f6\uff0c\u4f60\u53ef\u4ee5\u9009\u62e9\u63a5\u53d7\u6216\u62d2\u7edd\u8bf7\u6c42\u3002";
     },
     get$errorDisableIT() {
-      return "Translation assistance is turned off.";
+      return "\u7ffb\u8bd1\u534f\u52a9\u5df2\u5173\u95ed\u3002";
     },
     get$errorDisableIGC() {
-      return "Grammar assistance is turned off.";
+      return "\u8bed\u6cd5\u534f\u52a9\u5df2\u5173\u95ed\u3002";
     },
     get$errorDisableLanguageAssistance() {
-      return "Translation assistance and grammar assistance are turned off.";
+      return "\u7ffb\u8bd1\u534f\u52a9\u548c\u8bed\u6cd5\u534f\u52a9\u5df2\u5173\u95ed\u3002";
     },
     get$errorDisableITUserDesc() {
-      return "Click here to update translation assistance settings";
+      return "\u70b9\u51fb\u8fd9\u91cc\u66f4\u65b0\u7ffb\u8bd1\u534f\u52a9\u8bbe\u7f6e";
     },
     get$errorDisableIGCUserDesc() {
-      return "Click here to update grammar assistance settings";
+      return "\u70b9\u51fb\u8fd9\u91cc\u66f4\u65b0\u8bed\u6cd5\u534f\u52a9\u8bbe\u7f6e";
     },
     get$errorDisableLanguageAssistanceUserDesc() {
-      return "Click here to update translation assistance and grammar assistance settings";
+      return "\u70b9\u51fb\u8fd9\u91cc\u66f4\u65b0\u7ffb\u8bd1\u534f\u52a9\u548c\u8bed\u6cd5\u534f\u52a9\u8bbe\u7f6e";
     },
     get$errorDisableITClassDesc() {
-      return "Translation assistance is turned off for the course that this chat is in.";
+      return "\u6b64\u8bfe\u7a0b\u4e2d\u7684\u7ffb\u8bd1\u534f\u52a9\u5df2\u5173\u95ed\u3002";
     },
     get$errorDisableIGCClassDesc() {
-      return "Grammar assistance is turned off for the course that this chat is in.";
+      return "\u6b64\u8bfe\u7a0b\u4e2d\u7684\u8bed\u6cd5\u534f\u52a9\u5df2\u5173\u95ed\u3002";
     },
     get$error405Title() {
-      return "Languages not set";
+      return "\u672a\u8bbe\u7f6e\u8bed\u8a00";
     },
     get$error405Desc() {
-      return "Please set your languages in Main Menu > Learning Settings.";
+      return "\u8bf7\u5728\u4e3b\u83dc\u5355 > \u5b66\u4e60\u8bbe\u7f6e\u4e2d\u8bbe\u7f6e\u60a8\u7684\u8bed\u8a00\u3002";
     },
     get$termsAndConditions() {
-      return "Terms and Conditions";
+      return "\u6761\u6b3e\u548c\u6761\u4ef6";
     },
     get$andCertifyIAmAtLeast13YearsOfAge() {
-      return " and certify I am at least 16 years of age.";
+      return "\u5e76\u8bc1\u660e\u6211\u5df2\u6ee116\u5c81\u3002";
     },
     get$error502504Title() {
-      return "Wow, there are a lot of students online!";
+      return "\u54c7\uff0c\u5728\u7ebf\u7684\u5b66\u751f\u5f88\u591a\uff01";
     },
     get$error502504Desc() {
-      return "Translation and grammar tools may be slow or unavailable while the Pangea bots catch up.";
+      return "\u5728Pangea\u673a\u5668\u4eba\u8d76\u4e0a\u8fdb\u5ea6\u65f6\uff0c\u7ffb\u8bd1\u548c\u8bed\u6cd5\u5de5\u5177\u53ef\u80fd\u4f1a\u53d8\u6162\u6216\u4e0d\u53ef\u7528\u3002";
     },
     get$error404Title() {
-      return "Translation error!";
+      return "\u7ffb\u8bd1\u9519\u8bef\uff01";
     },
     get$error404Desc() {
-      return "Pangea Bot isn't sure how to translate that...";
+      return "Pangea\u673a\u5668\u4eba\u4e0d\u786e\u5b9a\u5982\u4f55\u7ffb\u8bd1\u8fd9\u4e2a...";
     },
     get$errorPleaseRefresh() {
-      return "We're looking into it! Please reload and try again.";
+      return "\u6211\u4eec\u6b63\u5728\u5904\u7406\uff01\u8bf7\u91cd\u65b0\u52a0\u8f7d\u5e76\u91cd\u8bd5\u3002";
     },
     get$connectedToStaging() {
-      return "Connected to Staging";
+      return "\u5df2\u8fde\u63a5\u5230\u9884\u53d1\u5e03\u73af\u5883";
     },
     get$learningSettings() {
-      return "Learning settings";
+      return "\u5b66\u4e60\u8bbe\u7f6e";
     },
     get$participants() {
-      return "Participants";
+      return "\u53c2\u4e0e\u8005";
     },
     get$clickMessageTitle() {
-      return "Need help?";
+      return "\u9700\u8981\u5e2e\u52a9\u5417\uff1f";
     },
     get$clickMessageBody() {
-      return "Click a message for language tools like translation, play back and more!";
+      return "\u70b9\u51fb\u6d88\u606f\u4ee5\u83b7\u53d6\u7ffb\u8bd1\u3001\u56de\u653e\u7b49\u8bed\u8a00\u5de5\u5177\uff01";
     },
     get$allDone() {
-      return "All done!";
+      return "\u5168\u90e8\u5b8c\u6210\uff01";
     },
     get$vocab() {
-      return "Vocab";
+      return "\u8bcd\u6c47";
     },
     get$subscribe(_) {
-      return "Subscribe";
+      return "\u8ba2\u9605";
     },
     get$getAccess() {
-      return "Subscribe now!";
+      return "\u7acb\u5373\u8ba2\u9605\uff01";
     },
     get$subscriptionDesc() {
-      return "Messaging is free! Subscribe to unlock interactive translation, grammar checking and learning analytics.";
+      return "\u6d88\u606f\u514d\u8d39\uff01\u8ba2\u9605\u4ee5\u89e3\u9501\u4e92\u52a8\u7ffb\u8bd1\u3001\u8bed\u6cd5\u68c0\u67e5\u548c\u5b66\u4e60\u5206\u6790\u529f\u80fd\u3002";
     },
     get$subscriptionManagement() {
-      return "Subscription Management";
+      return "\u8ba2\u9605\u7ba1\u7406";
     },
     get$currentSubscription() {
-      return "Current Subscription";
+      return "\u5f53\u524d\u8ba2\u9605";
     },
     get$cancelSubscription() {
-      return "Cancel your subscription";
+      return "\u53d6\u6d88\u60a8\u7684\u8ba2\u9605";
     },
     get$selectYourPlan() {
-      return "Select Your Plan";
+      return "\u9009\u62e9\u60a8\u7684\u8ba1\u5212";
     },
     get$subsciptionPlatformTooltip() {
-      return "Please login to your original device to manage your subscription plan";
+      return "\u8bf7\u5728\u60a8\u7684\u539f\u8bbe\u5907\u4e0a\u767b\u5f55\u4ee5\u7ba1\u7406\u60a8\u7684\u8ba2\u9605\u8ba1\u5212";
     },
     get$subscriptionManagementUnavailable() {
-      return "Subscription management not available";
+      return "\u65e0\u6cd5\u8fdb\u884c\u8ba2\u9605\u7ba1\u7406";
     },
     get$paymentMethod() {
-      return "Payment Method";
+      return "\u652f\u4ed8\u65b9\u5f0f";
     },
     get$paymentHistory() {
-      return "Payment History";
+      return "\u652f\u4ed8\u8bb0\u5f55";
     },
     get$emptyChatDownloadWarning() {
-      return "Cannot download empty chat";
+      return "\u65e0\u6cd5\u4e0b\u8f7d\u7a7a\u804a\u5929";
     },
     get$toggleImmersionMode() {
-      return "Immersion Mode";
+      return "\u6c89\u6d78\u6a21\u5f0f";
     },
     get$toggleImmersionModeDesc() {
-      return "When enabled, all messages are displayed in your target language. This setting is most useful in language exchanges.";
+      return "\u542f\u7528\u540e\uff0c\u6240\u6709\u6d88\u606f\u90fd\u4ee5\u60a8\u7684\u76ee\u6807\u8bed\u8a00\u663e\u793a\u3002\u6b64\u8bbe\u7f6e\u5728\u8bed\u8a00\u4ea4\u6d41\u4e2d\u6700\u4e3a\u6709\u7528\u3002";
     },
     get$itToggleDescription() {
-      return "This language learning tool will identify words in your base language and help you translate them to your target language. Though rare, the AI can make translation errors.";
+      return "\u6b64\u8bed\u8a00\u5b66\u4e60\u5de5\u5177\u5c06\u8bc6\u522b\u60a8\u7684\u57fa\u7840\u8bed\u8a00\u4e2d\u7684\u5355\u8bcd\uff0c\u5e76\u5e2e\u52a9\u60a8\u5c06\u5176\u7ffb\u8bd1\u6210\u76ee\u6807\u8bed\u8a00\u3002\u867d\u7136\u7f55\u89c1\uff0c\u4f46AI\u53ef\u80fd\u4f1a\u51fa\u73b0\u7ffb\u8bd1\u9519\u8bef\u3002";
     },
     get$igcToggleDescription() {
-      return "This language learning tool will identify common spelling, grammar and punctuation errors in your message and suggest corrections. Though rare, the AI can make correction errors.";
+      return "\u6b64\u8bed\u8a00\u5b66\u4e60\u5de5\u5177\u5c06\u8bc6\u522b\u60a8\u7684\u6d88\u606f\u4e2d\u7684\u5e38\u89c1\u62fc\u5199\u3001\u8bed\u6cd5\u548c\u6807\u70b9\u9519\u8bef\uff0c\u5e76\u5efa\u8bae\u4fee\u6b63\u3002\u867d\u7136\u7f55\u89c1\uff0c\u4f46AI\u53ef\u80fd\u4f1a\u51fa\u73b0\u4fee\u6b63\u9519\u8bef\u3002";
     },
     get$originalMessage() {
-      return "Original Message";
+      return "\u539f\u59cb\u6d88\u606f";
     },
     get$sentMessage() {
-      return "Sent Message";
+      return "\u5df2\u53d1\u9001\u6d88\u606f";
     },
     get$useType() {
-      return "Use Type";
+      return "\u4f7f\u7528\u7c7b\u578b";
     },
     get$notAvailable() {
-      return "Not Available";
+      return "\u4e0d\u53ef\u7528";
     },
     get$taAndGaTooltip() {
-      return "L2 use with translation assistance and grammar assistance";
+      return "\u4f7f\u7528\u5e26\u6709\u7ffb\u8bd1\u8f85\u52a9\u548c\u8bed\u6cd5\u8f85\u52a9\u7684L2";
     },
     get$definitionsToolName() {
-      return "Word Definitions";
+      return "\u5355\u8bcd\u5b9a\u4e49";
     },
     get$definitionsToolDescription() {
-      return "When enabled, words underlined in blue can be clicked for definitions. Click messages to access definitions.";
+      return "\u542f\u7528\u540e\uff0c\u84dd\u8272\u4e0b\u5212\u7ebf\u7684\u5355\u8bcd\u53ef\u4ee5\u70b9\u51fb\u67e5\u770b\u5b9a\u4e49\u3002\u70b9\u51fb\u6d88\u606f\u4ee5\u83b7\u53d6\u5b9a\u4e49\u3002";
     },
     get$welcomeBack() {
-      return "Welcome back! If you were part of the 2023-2024 pilot, please contact us for your special pilot subscription. If you are a teacher who has (or whose institution has) purchased licenses for your class, contact us for your teacher subscription.";
+      return "\u6b22\u8fce\u56de\u6765\uff01\u5982\u679c\u60a8\u662f2023-2024\u8bd5\u70b9\u7684\u4e00\u90e8\u5206\uff0c\u8bf7\u8054\u7cfb\u6211\u4eec\u83b7\u53d6\u60a8\u7684\u7279\u522b\u8bd5\u70b9\u8ba2\u9605\u3002\u5982\u679c\u60a8\u662f\u6559\u5e08\uff0c\u6216\u8005\u60a8\u7684\u673a\u6784\u4e3a\u60a8\u7684\u73ed\u7ea7\u8d2d\u4e70\u4e86\u8bb8\u53ef\u8bc1\uff0c\u8bf7\u8054\u7cfb\u6211\u4eec\u83b7\u53d6\u60a8\u7684\u6559\u5e08\u8ba2\u9605\u3002";
     },
     get$downloadTxtFile() {
-      return "Download Text File";
+      return "\u4e0b\u8f7d\u6587\u672c\u6587\u4ef6";
     },
     get$downloadCSVFile() {
-      return "Download CSV File";
+      return "\u4e0b\u8f7dCSV\u6587\u4ef6";
     },
     get$promotionalSubscriptionDesc() {
-      return "You currently have a lifetime promotional subscription. Message support@pangea.chat for help changing your subscription.";
+      return "\u60a8\u76ee\u524d\u62e5\u6709\u7ec8\u8eab\u4fc3\u9500\u8ba2\u9605\u3002\u82e5\u9700\u5e2e\u52a9\u66f4\u6539\u8ba2\u9605\uff0c\u8bf7\u8054\u7cfb support@pangea.chat\u3002";
     },
     originalSubscriptionPlatform$1(purchasePlatform) {
-      return "Subscription purchased through " + purchasePlatform;
+      return "\u901a\u8fc7 " + purchasePlatform + " \u8d2d\u4e70\u7684\u8ba2\u9605";
     },
     get$oneWeekTrial() {
-      return "One Week Trial";
+      return "\u4e00\u5468\u8bd5\u7528";
     },
     get$downloadXLSXFile() {
-      return "Download Excel File";
+      return "\u4e0b\u8f7dExcel\u6587\u4ef6";
     },
     get$unkDisplayName() {
-      return "Unknown";
+      return "\u672a\u77e5";
     },
     get$wwCountryDisplayName() {
-      return "World Wide";
+      return "\u5168\u7403";
     },
     get$afCountryDisplayName() {
-      return "Afghanistan";
+      return "\u963f\u5bcc\u6c57";
     },
     get$axCountryDisplayName() {
-      return "Aland Islands";
+      return "\u5965\u5170\u7fa4\u5c9b";
     },
     get$alCountryDisplayName() {
-      return "Albania";
+      return "\u963f\u5c14\u5df4\u5c3c\u4e9a";
     },
     get$dzCountryDisplayName() {
-      return "Algeria";
+      return "\u963f\u5c14\u53ca\u5229\u4e9a";
     },
     get$asCountryDisplayName() {
-      return "American Samoa";
+      return "\u7f8e\u5c5e\u8428\u6469\u4e9a";
     },
     get$adCountryDisplayName() {
-      return "Andorra";
+      return "\u5b89\u9053\u5c14";
     },
     get$aoCountryDisplayName() {
-      return "Angola";
+      return "\u5b89\u54e5\u62c9";
     },
     get$aiCountryDisplayName() {
-      return "Anguilla";
+      return "\u5b89\u572d\u62c9";
     },
     get$agCountryDisplayName() {
-      return "Antigua and Barbuda";
+      return "\u5b89\u63d0\u74dc\u548c\u5df4\u5e03\u8fbe";
     },
     get$arCountryDisplayName() {
-      return "Argentina";
+      return "\u963f\u6839\u5ef7";
     },
     get$amCountryDisplayName() {
-      return "Armenia";
+      return "\u4e9a\u7f8e\u5c3c\u4e9a";
     },
     get$awCountryDisplayName() {
-      return "Aruba";
+      return "\u963f\u9c81\u5df4";
     },
     get$acCountryDisplayName() {
-      return "Ascension Island";
+      return "\u5347\u5929\u5c9b";
     },
     get$auCountryDisplayName() {
-      return "Australia";
+      return "\u6fb3\u5927\u5229\u4e9a";
     },
     get$atCountryDisplayName() {
-      return "Austria";
+      return "\u5965\u5730\u5229";
     },
     get$azCountryDisplayName() {
-      return "Azerbaijan";
+      return "\u963f\u585e\u62dc\u7586";
     },
     get$bsCountryDisplayName() {
-      return "Bahamas";
+      return "\u5df4\u54c8\u9a6c";
     },
     get$bhCountryDisplayName() {
-      return "Bahrain";
+      return "\u5df4\u6797";
     },
     get$bdCountryDisplayName() {
-      return "Bangladesh";
+      return "\u5b5f\u52a0\u62c9\u56fd";
     },
     get$bbCountryDisplayName() {
-      return "Barbados";
+      return "\u5df4\u5df4\u591a\u65af";
     },
     get$byCountryDisplayName() {
-      return "Belarus";
+      return "\u767d\u4fc4\u7f57\u65af";
     },
     get$beCountryDisplayName() {
-      return "Belgium";
+      return "\u6bd4\u5229\u65f6";
     },
     get$bzCountryDisplayName() {
-      return "Belize";
+      return "\u4f2f\u5229\u5179";
     },
     get$bjCountryDisplayName() {
-      return "Benin";
+      return "\u8d1d\u5b81";
     },
     get$bmCountryDisplayName() {
-      return "Bermuda";
+      return "\u767e\u6155\u5927";
     },
     get$btCountryDisplayName() {
-      return "Bhutan";
+      return "\u4e0d\u4e39";
     },
     get$boCountryDisplayName() {
-      return "Bolivia";
+      return "\u73bb\u5229\u7ef4\u4e9a";
     },
     get$baCountryDisplayName() {
-      return "Bosnia and Herzegovina";
+      return "\u6ce2\u65af\u5c3c\u4e9a\u548c\u9ed1\u585e\u54e5\u7ef4\u90a3";
     },
     get$bwCountryDisplayName() {
-      return "Botswana";
+      return "\u535a\u8328\u74e6\u7eb3";
     },
     get$brCountryDisplayName() {
-      return "Brazil";
+      return "\u5df4\u897f";
     },
     get$ioCountryDisplayName() {
-      return "British Indian Ocean Territory";
+      return "\u82f1\u5c5e\u5370\u5ea6\u6d0b\u9886\u5730";
     },
     get$vgCountryDisplayName() {
-      return "British Virgin Islands";
+      return "\u82f1\u5c5e\u7ef4\u5c14\u4eac\u7fa4\u5c9b";
     },
     get$bnCountryDisplayName() {
-      return "Brunei";
+      return "\u6587\u83b1";
     },
     get$bgCountryDisplayName() {
-      return "Bulgaria";
+      return "\u4fdd\u52a0\u5229\u4e9a";
     },
     get$bfCountryDisplayName() {
-      return "Burkina Faso";
+      return "\u5e03\u57fa\u7eb3\u6cd5\u7d22";
     },
     get$biCountryDisplayName() {
-      return "Burundi";
+      return "\u5e03\u9686\u8fea";
     },
     get$khCountryDisplayName() {
-      return "Cambodia";
+      return "\u67ec\u57d4\u5be8";
     },
     get$cmCountryDisplayName() {
-      return "Cameroon";
+      return "\u5580\u9ea6\u9686";
     },
     get$caCountryDisplayName() {
-      return "Canada";
+      return "\u52a0\u62ff\u5927";
     },
     get$cvCountryDisplayName() {
-      return "Cape Verde";
+      return "\u4f5b\u5f97\u89d2";
     },
     get$bqCountryDisplayName() {
-      return "Caribbean Netherlands";
+      return "\u52a0\u52d2\u6bd4\u8377\u5170";
     },
     get$kyCountryDisplayName() {
-      return "Cayman Islands";
+      return "\u5f00\u66fc\u7fa4\u5c9b";
     },
     get$cfCountryDisplayName() {
-      return "Central African Republic";
+      return "\u4e2d\u975e\u5171\u548c\u56fd";
     },
     get$tdCountryDisplayName() {
-      return "Chad";
+      return "\u4e4d\u5f97";
     },
     get$clCountryDisplayName() {
-      return "Chile";
+      return "\u667a\u5229";
     },
     get$cnCountryDisplayName() {
-      return "China";
+      return "\u4e2d\u56fd";
     },
     get$cxCountryDisplayName() {
-      return "Christmas Island";
+      return "\u5723\u8bde\u5c9b";
     },
     get$ccCountryDisplayName() {
-      return "Cocos [Keeling] Islands";
+      return "\u79d1\u79d1\u65af\uff08\u57fa\u6797\uff09\u7fa4\u5c9b";
     },
     get$coCountryDisplayName() {
-      return "Colombia";
+      return "\u54e5\u4f26\u6bd4\u4e9a";
     },
     get$kmCountryDisplayName() {
-      return "Comoros";
+      return "\u79d1\u6469\u7f57";
     },
     get$cdCountryDisplayName() {
-      return "Democratic Republic Congo";
+      return "\u521a\u679c\u6c11\u4e3b\u5171\u548c\u56fd";
     },
     get$cgCountryDisplayName() {
-      return "Republic of Congo";
+      return "\u521a\u679c\u5171\u548c\u56fd";
     },
     get$ckCountryDisplayName() {
-      return "Cook Islands";
+      return "\u5e93\u514b\u7fa4\u5c9b";
     },
     get$crCountryDisplayName() {
-      return "Costa Rica";
+      return "\u54e5\u65af\u8fbe\u9ece\u52a0";
     },
     get$ciCountryDisplayName() {
-      return "C\xf4te d'Ivoire";
+      return "\u79d1\u7279\u8fea\u74e6";
     },
     get$hrCountryDisplayName() {
-      return "Croatia";
+      return "\u514b\u7f57\u5730\u4e9a";
     },
     get$cuCountryDisplayName() {
-      return "Cuba";
+      return "\u53e4\u5df4";
     },
     get$cwCountryDisplayName() {
-      return "Cura\xe7ao";
+      return "\u5e93\u62c9\u7d22";
     },
     get$cyCountryDisplayName() {
-      return "Cyprus";
+      return "\u585e\u6d66\u8def\u65af";
     },
     get$czCountryDisplayName() {
-      return "Czech Republic";
+      return "\u6377\u514b\u5171\u548c\u56fd";
     },
     get$dkCountryDisplayName() {
-      return "Denmark";
+      return "\u4e39\u9ea6";
     },
     get$djCountryDisplayName() {
-      return "Djibouti";
+      return "\u5409\u5e03\u63d0";
     },
     get$dmCountryDisplayName() {
-      return "Dominica";
+      return "\u591a\u7c73\u5c3c\u514b";
     },
     get$doCountryDisplayName() {
-      return "Dominican Republic";
+      return "\u591a\u7c73\u5c3c\u52a0\u5171\u548c\u56fd";
     },
     get$tlCountryDisplayName() {
-      return "East Timor";
+      return "\u4e1c\u5e1d\u6c76";
     },
     get$ecCountryDisplayName() {
-      return "Ecuador";
+      return "\u5384\u74dc\u591a\u5c14";
     },
     get$egCountryDisplayName() {
-      return "Egypt";
+      return "\u57c3\u53ca";
     },
     get$svCountryDisplayName() {
-      return "El Salvador";
+      return "\u8428\u5c14\u74e6\u591a";
     },
     get$gqCountryDisplayName() {
-      return "Equatorial Guinea";
+      return "\u8d64\u9053\u51e0\u5185\u4e9a";
     },
     get$erCountryDisplayName() {
-      return "Eritrea";
+      return "\u5384\u7acb\u7279\u91cc\u4e9a";
     },
     get$eeCountryDisplayName() {
-      return "Estonia";
+      return "\u7231\u6c99\u5c3c\u4e9a";
     },
     get$szCountryDisplayName() {
-      return "Eswatini";
+      return "\u65af\u5a01\u58eb\u5170";
     },
     get$etCountryDisplayName() {
-      return "Ethiopia";
+      return "\u57c3\u585e\u4fc4\u6bd4\u4e9a";
     },
     get$fkCountryDisplayName() {
-      return "Falkland Islands";
+      return "\u798f\u514b\u5170\u7fa4\u5c9b";
     },
     get$foCountryDisplayName() {
-      return "Faroe Islands";
+      return "\u6cd5\u7f57\u7fa4\u5c9b";
     },
     get$fjCountryDisplayName() {
-      return "Fiji";
+      return "\u6590\u6d4e";
     },
     get$fiCountryDisplayName() {
-      return "Finland";
+      return "\u82ac\u5170";
     },
     get$frCountryDisplayName() {
-      return "France";
+      return "\u6cd5\u56fd";
     },
     get$gfCountryDisplayName() {
-      return "French Guiana";
+      return "\u6cd5\u5c5e\u572d\u4e9a\u90a3";
     },
     get$pfCountryDisplayName() {
-      return "French Polynesia";
+      return "\u6cd5\u5c5e\u6ce2\u5229\u5c3c\u897f\u4e9a";
     },
     get$gaCountryDisplayName() {
-      return "Gabon";
+      return "\u52a0\u84ec";
     },
     get$gmCountryDisplayName() {
-      return "Gambia";
+      return "\u5188\u6bd4\u4e9a";
     },
     get$geCountryDisplayName() {
-      return "Georgia";
+      return "\u683c\u9c81\u5409\u4e9a";
     },
     get$deCountryDisplayName() {
-      return "Germany";
+      return "\u5fb7\u56fd";
     },
     get$ghCountryDisplayName() {
-      return "Ghana";
+      return "\u52a0\u7eb3";
     },
     get$giCountryDisplayName() {
-      return "Gibraltar";
+      return "\u76f4\u5e03\u7f57\u9640";
     },
     get$grCountryDisplayName() {
-      return "Greece";
+      return "\u5e0c\u814a";
     },
     get$glCountryDisplayName() {
-      return "Greenland";
+      return "\u683c\u9675\u5170";
     },
     get$gdCountryDisplayName() {
-      return "Grenada";
+      return "\u683c\u6797\u7eb3\u8fbe";
     },
     get$gpCountryDisplayName() {
-      return "Guadeloupe";
+      return "\u74dc\u5fb7\u7f57\u666e";
     },
     get$guCountryDisplayName() {
-      return "Guam";
+      return "\u5173\u5c9b";
     },
     get$gtCountryDisplayName() {
-      return "Guatemala";
+      return "\u5371\u5730\u9a6c\u62c9";
     },
     get$ggCountryDisplayName() {
-      return "Guernsey";
+      return "\u683c\u6069\u897f\u5c9b";
     },
     get$gnCountryDisplayName() {
-      return "Guinea Conakry";
+      return "\u51e0\u5185\u4e9a\u79d1\u7eb3\u514b\u91cc";
     },
     get$gwCountryDisplayName() {
-      return "Guinea-Bissau";
+      return "\u51e0\u5185\u4e9a\u6bd4\u7ecd";
     },
     get$gyCountryDisplayName() {
-      return "Guyana";
+      return "\u572d\u4e9a\u90a3";
     },
     get$htCountryDisplayName() {
-      return "Haiti";
+      return "\u6d77\u5730";
     },
     get$hmCountryDisplayName() {
-      return "Heard Island and McDonald Islands";
+      return "\u8d6b\u5fb7\u5c9b\u548c\u9ea6\u514b\u5510\u7eb3\u7fa4\u5c9b";
     },
     get$hnCountryDisplayName() {
-      return "Honduras";
+      return "\u6d2a\u90fd\u62c9\u65af";
     },
     get$hkCountryDisplayName() {
-      return "Hong Kong";
+      return "\u9999\u6e2f";
     },
     get$huCountryDisplayName() {
-      return "Hungary";
+      return "\u5308\u7259\u5229";
     },
     get$isCountryDisplayName() {
-      return "Iceland";
+      return "\u51b0\u5c9b";
     },
     get$inCountryDisplayName() {
-      return "India";
+      return "\u5370\u5ea6";
     },
     get$idCountryDisplayName() {
-      return "Indonesia";
+      return "\u5370\u5ea6\u5c3c\u897f\u4e9a";
     },
     get$irCountryDisplayName() {
-      return "Iran";
+      return "\u4f0a\u6717";
     },
     get$iqCountryDisplayName() {
-      return "Iraq";
+      return "\u4f0a\u62c9\u514b";
     },
     get$ieCountryDisplayName() {
-      return "Ireland";
+      return "\u7231\u5c14\u5170";
     },
     get$imCountryDisplayName() {
-      return "Isle of Man";
+      return "\u9a6c\u6069\u5c9b";
     },
     get$ilCountryDisplayName() {
-      return "Israel";
+      return "\u4ee5\u8272\u5217";
     },
     get$itCountryDisplayName() {
-      return "Italy";
+      return "\u610f\u5927\u5229";
     },
     get$jmCountryDisplayName() {
-      return "Jamaica";
+      return "\u7259\u4e70\u52a0";
     },
     get$jpCountryDisplayName() {
-      return "Japan";
+      return "\u65e5\u672c";
     },
     get$jeCountryDisplayName() {
-      return "Jersey";
+      return "\u6cfd\u897f\u5c9b";
     },
     get$joCountryDisplayName() {
-      return "Jordan";
+      return "\u7ea6\u65e6";
     },
     get$kzCountryDisplayName() {
-      return "Kazakhstan";
+      return "\u54c8\u8428\u514b\u65af\u5766";
     },
     get$keCountryDisplayName() {
-      return "Kenya";
+      return "\u80af\u5c3c\u4e9a";
     },
     get$kiCountryDisplayName() {
-      return "Kiribati";
+      return "\u57fa\u91cc\u5df4\u65af";
     },
     get$xkCountryDisplayName() {
-      return "Kosovo";
+      return "\u79d1\u7d22\u6c83";
     },
     get$kwCountryDisplayName() {
-      return "Kuwait";
+      return "\u79d1\u5a01\u7279";
     },
     get$kgCountryDisplayName() {
-      return "Kyrgyzstan";
+      return "\u5409\u5c14\u5409\u65af\u65af\u5766";
     },
     get$laCountryDisplayName() {
-      return "Laos";
+      return "\u8001\u631d";
     },
     get$lvCountryDisplayName() {
-      return "Latvia";
+      return "\u62c9\u8131\u7ef4\u4e9a";
     },
     get$lbCountryDisplayName() {
-      return "Lebanon";
+      return "\u9ece\u5df4\u5ae9";
     },
     get$lsCountryDisplayName() {
-      return "Lesotho";
+      return "\u83b1\u7d22\u6258";
     },
     get$lrCountryDisplayName() {
-      return "Liberia";
+      return "\u5229\u6bd4\u91cc\u4e9a";
     },
     get$lyCountryDisplayName() {
-      return "Libya";
+      return "\u5229\u6bd4\u4e9a";
     },
     get$liCountryDisplayName() {
-      return "Liechtenstein";
+      return "\u5217\u652f\u6566\u58eb\u767b";
     },
     get$ltCountryDisplayName() {
-      return "Lithuania";
+      return "\u7acb\u9676\u5b9b";
     },
     get$luCountryDisplayName() {
-      return "Luxembourg";
+      return "\u5362\u68ee\u5821";
     },
     get$moCountryDisplayName() {
-      return "Macau";
+      return "\u6fb3\u95e8";
     },
     get$mkCountryDisplayName() {
-      return "Macedonia";
+      return "\u5317\u9a6c\u5176\u987f";
     },
     get$mgCountryDisplayName() {
-      return "Madagascar";
+      return "\u9a6c\u8fbe\u52a0\u65af\u52a0";
     },
     get$mwCountryDisplayName() {
-      return "Malawi";
+      return "\u9a6c\u62c9\u7ef4";
     },
     get$myCountryDisplayName() {
-      return "Malaysia";
+      return "\u9a6c\u6765\u897f\u4e9a";
     },
     get$mvCountryDisplayName() {
-      return "Maldives";
+      return "\u9a6c\u5c14\u4ee3\u592b";
     },
     get$mlCountryDisplayName() {
-      return "Mali";
+      return "\u9a6c\u91cc";
     },
     get$mtCountryDisplayName() {
-      return "Malta";
+      return "\u9a6c\u8033\u4ed6";
     },
     get$mhCountryDisplayName() {
-      return "Marshall Islands";
+      return "\u9a6c\u7ecd\u5c14\u7fa4\u5c9b";
     },
     get$mqCountryDisplayName() {
-      return "Martinique";
+      return "\u9a6c\u63d0\u5c3c\u514b";
     },
     get$mrCountryDisplayName() {
-      return "Mauritania";
+      return "\u6bdb\u91cc\u5854\u5c3c\u4e9a";
     },
     get$muCountryDisplayName() {
-      return "Mauritius";
+      return "\u6bdb\u91cc\u6c42\u65af";
     },
     get$ytCountryDisplayName() {
-      return "Mayotte";
+      return "\u9a6c\u7ea6\u7279";
     },
     get$mxCountryDisplayName() {
-      return "Mexico";
+      return "\u58a8\u897f\u54e5";
     },
     get$fmCountryDisplayName() {
-      return "Micronesia";
+      return "\u5bc6\u514b\u7f57\u5c3c\u897f\u4e9a";
     },
     get$mdCountryDisplayName() {
-      return "Moldova";
+      return "\u6469\u5c14\u591a\u74e6";
     },
     get$mcCountryDisplayName() {
-      return "Monaco";
+      return "\u6469\u7eb3\u54e5";
     },
     get$mnCountryDisplayName() {
-      return "Mongolia";
+      return "\u8499\u53e4";
     },
     get$meCountryDisplayName() {
-      return "Montenegro";
+      return "\u9ed1\u5c71";
     },
     get$msCountryDisplayName() {
-      return "Montserrat";
+      return "\u8499\u7279\u585e\u62c9\u7279";
     },
     get$maCountryDisplayName() {
-      return "Morocco";
+      return "\u6469\u6d1b\u54e5";
     },
     get$mzCountryDisplayName() {
-      return "Mozambique";
+      return "\u83ab\u6851\u6bd4\u514b";
     },
     get$mmCountryDisplayName() {
-      return "Myanmar (Burma)";
+      return "\u7f05\u7538\uff08\u7f05\u7538\uff09";
     },
     get$naCountryDisplayName() {
-      return "Namibia";
+      return "\u7eb3\u7c73\u6bd4\u4e9a";
     },
     get$nrCountryDisplayName() {
-      return "Nauru";
+      return "\u7459\u9c81";
     },
     get$npCountryDisplayName() {
-      return "Nepal";
+      return "\u5c3c\u6cca\u5c14";
     },
     get$nlCountryDisplayName() {
-      return "Netherlands";
+      return "\u8377\u5170";
     },
     get$ncCountryDisplayName() {
-      return "New Caledonia";
+      return "\u65b0\u5580\u91cc\u591a\u5c3c\u4e9a";
     },
     get$nzCountryDisplayName() {
-      return "New Zealand";
+      return "\u65b0\u897f\u5170";
     },
     get$niCountryDisplayName() {
-      return "Nicaragua";
+      return "\u5c3c\u52a0\u62c9\u74dc";
     },
     get$neCountryDisplayName() {
-      return "Niger";
+      return "\u5c3c\u65e5\u5c14";
     },
     get$ngCountryDisplayName() {
-      return "Nigeria";
+      return "\u5c3c\u65e5\u5229\u4e9a";
     },
     get$nuCountryDisplayName() {
-      return "Niue";
+      return "\u7ebd\u57c3";
     },
     get$nfCountryDisplayName() {
-      return "Norfolk Island";
+      return "\u8bfa\u798f\u514b\u5c9b";
     },
     get$kpCountryDisplayName() {
-      return "North Korea";
+      return "\u671d\u9c9c";
     },
     get$mpCountryDisplayName() {
-      return "Northern Mariana Islands";
+      return "\u5317\u9a6c\u91cc\u4e9a\u7eb3\u7fa4\u5c9b";
     },
     get$noCountryDisplayName() {
-      return "Norway";
+      return "\u632a\u5a01";
     },
     get$omCountryDisplayName() {
-      return "Oman";
+      return "\u963f\u66fc";
     },
     get$pkCountryDisplayName() {
-      return "Pakistan";
+      return "\u5df4\u57fa\u65af\u5766";
     },
     get$pwCountryDisplayName() {
-      return "Palau";
+      return "\u5e15\u52b3";
     },
     get$psCountryDisplayName() {
-      return "Palestinian Territories";
+      return "\u5df4\u52d2\u65af\u5766\u5730\u533a";
     },
     get$paCountryDisplayName() {
-      return "Panama";
+      return "\u5df4\u62ff\u9a6c";
     },
     get$pgCountryDisplayName() {
-      return "Papua New Guinea";
+      return "\u5df4\u5e03\u4e9a\u65b0\u51e0\u5185\u4e9a";
     },
     get$pyCountryDisplayName() {
-      return "Paraguay";
+      return "\u5df4\u62c9\u572d";
     },
     get$peCountryDisplayName() {
-      return "Peru";
+      return "\u79d8\u9c81";
     },
     get$phCountryDisplayName() {
-      return "Philippines";
+      return "\u83f2\u5f8b\u5bbe";
     },
     get$plCountryDisplayName() {
-      return "Poland";
+      return "\u6ce2\u5170";
     },
     get$ptCountryDisplayName() {
-      return "Portugal";
+      return "\u8461\u8404\u7259";
     },
     get$prCountryDisplayName() {
-      return "Puerto Rico";
+      return "\u6ce2\u591a\u9ece\u5404";
     },
     get$qaCountryDisplayName() {
-      return "Qatar";
+      return "\u5361\u5854\u5c14";
     },
     get$reCountryDisplayName() {
-      return "R\xe9union";
+      return "\u7559\u5c3c\u6c6a";
     },
     get$roCountryDisplayName() {
-      return "Romania";
+      return "\u7f57\u9a6c\u5c3c\u4e9a";
     },
     get$ruCountryDisplayName() {
-      return "Russia";
+      return "\u4fc4\u7f57\u65af";
     },
     get$rwCountryDisplayName() {
-      return "Rwanda";
+      return "\u5362\u65fa\u8fbe";
     },
     get$blCountryDisplayName() {
-      return "Saint Barth\xe9lemy";
+      return "\u5723\u5df4\u6cf0\u52d2\u7c73";
     },
     get$shCountryDisplayName() {
-      return "Saint Helena";
+      return "\u5723\u8d6b\u52d2\u62ff";
     },
     get$knCountryDisplayName() {
-      return "St. Kitts";
+      return "\u5723\u57fa\u8328";
     },
     get$lcCountryDisplayName() {
-      return "St. Lucia";
+      return "\u5723\u5362\u897f\u4e9a";
     },
     get$mfCountryDisplayName() {
-      return "Saint Martin";
+      return "\u5723\u9a6c\u4e01";
     },
     get$pmCountryDisplayName() {
-      return "Saint Pierre and Miquelon";
+      return "\u5723\u76ae\u57c3\u5c14\u548c\u5bc6\u514b\u9686";
     },
     get$vcCountryDisplayName() {
-      return "St. Vincent";
+      return "\u5723\u6587\u68ee\u7279";
     },
     get$wsCountryDisplayName() {
-      return "Samoa";
+      return "\u8428\u6469\u4e9a";
     },
     get$smCountryDisplayName() {
-      return "San Marino";
+      return "\u5723\u9a6c\u529b\u8bfa";
     },
     get$stCountryDisplayName() {
-      return "S\xe3o Tom\xe9 and Pr\xedncipe";
+      return "\u5723\u591a\u7f8e\u548c\u666e\u6797\u897f\u6bd4";
     },
     get$saCountryDisplayName() {
-      return "Saudi Arabia";
+      return "\u6c99\u7279\u963f\u62c9\u4f2f";
     },
     get$snCountryDisplayName() {
-      return "Senegal";
+      return "\u585e\u5185\u52a0\u5c14";
     },
     get$rsCountryDisplayName() {
-      return "Serbia";
+      return "\u585e\u5c14\u7ef4\u4e9a";
     },
     get$scCountryDisplayName() {
-      return "Seychelles";
+      return "\u585e\u820c\u5c14";
     },
     get$slCountryDisplayName() {
-      return "Sierra Leone";
+      return "\u585e\u62c9\u5229\u6602";
     },
     get$sgCountryDisplayName() {
-      return "Singapore";
+      return "\u65b0\u52a0\u5761";
     },
     get$sxCountryDisplayName() {
-      return "Sint Maarten";
+      return "\u8377\u5c5e\u5723\u9a6c\u4e01";
     },
     get$skCountryDisplayName() {
-      return "Slovakia";
+      return "\u65af\u6d1b\u4f10\u514b";
     },
     get$siCountryDisplayName() {
-      return "Slovenia";
+      return "\u65af\u6d1b\u6587\u5c3c\u4e9a";
     },
     get$sbCountryDisplayName() {
-      return "Solomon Islands";
+      return "\u6240\u7f57\u95e8\u7fa4\u5c9b";
     },
     get$soCountryDisplayName() {
-      return "Somalia";
+      return "\u7d22\u9a6c\u91cc";
     },
     get$zaCountryDisplayName() {
-      return "South Africa";
+      return "\u5357\u975e";
     },
     get$gsCountryDisplayName() {
-      return "South Georgia and the South Sandwich Islands";
+      return "\u5357\u4e54\u6cbb\u4e9a\u548c\u5357\u6851\u5a01\u5947\u7fa4\u5c9b";
     },
     get$krCountryDisplayName() {
-      return "South Korea";
+      return "\u97e9\u56fd";
     },
     get$ssCountryDisplayName() {
-      return "South Sudan";
+      return "\u5357\u82cf\u4e39";
     },
     get$esCountryDisplayName() {
-      return "Spain";
+      return "\u897f\u73ed\u7259";
     },
     get$lkCountryDisplayName() {
-      return "Sri Lanka";
+      return "\u65af\u91cc\u5170\u5361";
     },
     get$sdCountryDisplayName() {
-      return "Sudan";
+      return "\u82cf\u4e39";
     },
     get$srCountryDisplayName() {
-      return "Suriname";
+      return "\u82cf\u91cc\u5357";
     },
     get$sjCountryDisplayName() {
-      return "Svalbard and Jan Mayen";
+      return "\u65af\u74e6\u5c14\u5df4\u7fa4\u5c9b\u548c\u626c\u9a6c\u5ef6\u5c9b";
     },
     get$seCountryDisplayName() {
-      return "Sweden";
+      return "\u745e\u5178";
     },
     get$chCountryDisplayName() {
-      return "Switzerland";
+      return "\u745e\u58eb";
     },
     get$syCountryDisplayName() {
-      return "Syria";
+      return "\u53d9\u5229\u4e9a";
     },
     get$twCountryDisplayName() {
-      return "Taiwan";
+      return "\u53f0\u6e7e";
     },
     get$tjCountryDisplayName() {
-      return "Tajikistan";
+      return "\u5854\u5409\u514b\u65af\u5766";
     },
     get$tzCountryDisplayName() {
-      return "Tanzania";
+      return "\u5766\u6851\u5c3c\u4e9a";
     },
     get$thCountryDisplayName() {
-      return "Thailand";
+      return "\u6cf0\u56fd";
     },
     get$tgCountryDisplayName() {
-      return "Togo";
+      return "\u591a\u54e5";
     },
     get$tkCountryDisplayName() {
-      return "Tokelau";
+      return "\u6258\u514b\u52b3";
     },
     get$toCountryDisplayName() {
-      return "Tonga";
+      return "\u6c64\u52a0";
     },
     get$ttCountryDisplayName() {
-      return "Trinidad/Tobago";
+      return "\u7279\u7acb\u5c3c\u8fbe\u548c\u591a\u5df4\u54e5";
     },
     get$tnCountryDisplayName() {
-      return "Tunisia";
+      return "\u7a81\u5c3c\u65af";
     },
     get$trCountryDisplayName() {
-      return "Turkey";
+      return "\u571f\u8033\u5176";
     },
     get$tmCountryDisplayName() {
-      return "Turkmenistan";
+      return "\u571f\u5e93\u66fc\u65af\u5766";
     },
     get$tcCountryDisplayName() {
-      return "Turks and Caicos Islands";
+      return "\u7279\u514b\u65af\u548c\u51ef\u79d1\u65af\u7fa4\u5c9b";
     },
     get$tvCountryDisplayName() {
-      return "Tuvalu";
+      return "\u56fe\u74e6\u5362";
     },
     get$viCountryDisplayName() {
-      return "U.S. Virgin Islands";
+      return "\u7f8e\u5c5e\u7ef4\u5c14\u4eac\u7fa4\u5c9b";
     },
     get$ugCountryDisplayName() {
-      return "Uganda";
+      return "\u4e4c\u5e72\u8fbe";
     },
     get$uaCountryDisplayName() {
-      return "Ukraine";
+      return "\u4e4c\u514b\u5170";
     },
     get$aeCountryDisplayName() {
-      return "United Arab Emirates";
+      return "\u963f\u62c9\u4f2f\u8054\u5408\u914b\u957f\u56fd";
     },
     get$gbCountryDisplayName() {
-      return "United Kingdom";
+      return "\u82f1\u56fd";
     },
     get$usCountryDisplayName() {
-      return "United States";
+      return "\u7f8e\u56fd";
     },
     get$uyCountryDisplayName() {
-      return "Uruguay";
+      return "\u4e4c\u62c9\u572d";
     },
     get$uzCountryDisplayName() {
-      return "Uzbekistan";
+      return "\u4e4c\u5179\u522b\u514b\u65af\u5766";
     },
     get$vuCountryDisplayName() {
-      return "Vanuatu";
+      return "\u74e6\u52aa\u963f\u56fe";
     },
     get$vaCountryDisplayName() {
-      return "Vatican City";
+      return "\u68b5\u8482\u5188\u57ce";
     },
     get$veCountryDisplayName() {
-      return "Venezuela";
+      return "\u59d4\u5185\u745e\u62c9";
     },
     get$vnCountryDisplayName() {
-      return "Vietnam";
+      return "\u8d8a\u5357";
     },
     get$wfCountryDisplayName() {
-      return "Wallis and Futuna";
+      return "\u74e6\u5229\u65af\u548c\u5bcc\u56fe\u7eb3";
     },
     get$ehCountryDisplayName() {
-      return "Western Sahara";
+      return "\u897f\u6492\u54c8\u62c9";
     },
     get$yeCountryDisplayName() {
-      return "Yemen";
+      return "\u4e5f\u95e8";
     },
     get$zmCountryDisplayName() {
-      return "Zambia";
+      return "\u8d5e\u6bd4\u4e9a";
     },
     get$zwCountryDisplayName() {
-      return "Zimbabwe";
+      return "\u6d25\u5df4\u5e03\u97e6";
     },
     get$pay() {
-      return "Pay";
+      return "\u652f\u4ed8";
     },
     invitedToSpace$2(space, user) {
-      return user + " has invited you to join a course: " + space + "! Do you wish to accept?";
+      return user + " \u9080\u8bf7\u4f60\u52a0\u5165\u8bfe\u7a0b\uff1a" + space + "\uff01\u4f60\u662f\u5426\u613f\u610f\u63a5\u53d7\uff1f";
     },
     get$youreInvited() {
-      return "\ud83d\udce9 You're invited!";
+      return "\ud83d\udce9 \u4f60\u88ab\u9080\u8bf7\u4e86\uff01";
     },
     invitedToChat$2($name, user) {
-      return user + " has invited you to join a chat: " + $name + "! Do you wish to accept?";
+      return user + " \u9080\u8bf7\u4f60\u52a0\u5165\u804a\u5929\uff1a" + $name + "\uff01\u4f60\u662f\u5426\u613f\u610f\u63a5\u53d7\uff1f";
     },
     get$monthlySubscription() {
-      return "Monthly";
+      return "\u6708\u5ea6";
     },
     get$yearlySubscription() {
-      return "Yearly";
+      return "\u5e74\u5ea6";
     },
     get$defaultSubscription() {
-      return "Pangea Chat Subscription";
+      return "\u6f58\u5409\u4e9a\u804a\u5929\u8ba2\u9605";
     },
     get$freeTrial() {
-      return "Free Trial";
+      return "\u514d\u8d39\u8bd5\u7528";
     },
     get$noDataFound() {
-      return "No data found";
+      return "\u672a\u627e\u5230\u6570\u636e";
     },
     get$bestCorrectionFeedback() {
-      return "That's correct!";
+      return "\u6b63\u786e\uff01";
     },
     get$distractorFeedback() {
-      return "That's not quite right.";
+      return "\u4e0d\u592a\u5bf9\u3002";
     },
     get$bestAnswerFeedback() {
-      return "That's correct!";
+      return "\u6b63\u786e\uff01";
     },
     get$definitionDefaultPrompt() {
-      return "What does this word mean?";
+      return "\u8fd9\u4e2a\u8bcd\u662f\u4ec0\u4e48\u610f\u601d\uff1f";
     },
     get$practiceDefaultPrompt() {
-      return "What is the best answer?";
+      return "\u6700\u4f73\u7b54\u6848\u662f\u4ec0\u4e48\uff1f";
     },
     get$correctionDefaultPrompt() {
-      return "What is the best replacement?";
+      return "\u6700\u597d\u7684\u66ff\u4ee3\u8bcd\u662f\u4ec0\u4e48\uff1f";
     },
     get$reportToTeacher() {
-      return "Who do you want to report this message to?";
+      return "\u4f60\u60f3\u5411\u8c01\u4e3e\u62a5\u8fd9\u6761\u6d88\u606f\uff1f";
     },
     reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
-      return reportingUserId + " has reported a message from " + reportedUserId + " in the chat " + roomName;
+      return reportingUserId + " \u5728\u623f\u95f4 " + roomName + " \u4e2d\u4e3e\u62a5\u4e86\u6765\u81ea " + reportedUserId + " \u7684\u6d88\u606f";
     },
     reportMessageBody$2(reportedMessage, reason) {
-      return "Message: " + reportedMessage + "\nReason: " + reason;
+      return "\u6d88\u606f\uff1a" + reportedMessage + "\n\u539f\u56e0\uff1a" + reason;
     },
     get$noTeachersFound() {
-      return "No teachers found to report to";
+      return "\u672a\u627e\u5230\u53ef\u4e3e\u62a5\u7684\u8001\u5e08";
     },
     trialExpiration$1(expiration) {
-      return "Your free trial expires on " + expiration;
+      return "\u60a8\u7684\u514d\u8d39\u8bd5\u7528\u5c06\u5728 " + expiration + " \u5230\u671f";
     },
     get$freeTrialDesc() {
-      return "New users recieve a one week free trial of Pangea Chat";
+      return "\u65b0\u7528\u6237\u53ef\u83b7\u5f97\u4e3a\u671f\u4e00\u5468\u7684Pangea\u804a\u5929\u514d\u8d39\u8bd5\u7528";
     },
     get$activateTrial() {
-      return "Free 7-Day Trial";
+      return "\u514d\u8d397\u5929\u8bd5\u7528";
     },
     get$successfullySubscribed() {
-      return "You have successfully subscribed!";
+      return "\u8ba2\u9605\u6210\u529f\uff01";
     },
     get$clickToManageSubscription() {
-      return "Click here to manage your subscription.";
+      return "\u70b9\u51fb\u8fd9\u91cc\u7ba1\u7406\u60a8\u7684\u8ba2\u9605\u3002";
     },
     pleaseChooseAtLeastChars$1(min) {
-      return "Please choose at least " + min + " characters.";
+      return "\u8bf7\u9009\u62e9\u81f3\u5c11 " + min + " \u4e2a\u5b57\u7b26\u3002";
     },
     get$pleaseEnterValidEmail() {
-      return "Please enter a valid email address.";
+      return "\u8bf7\u8f93\u5165\u6709\u6548\u7684\u7535\u5b50\u90ae\u7bb1\u5730\u5740\u3002";
     },
     get$pleaseChooseAUsername() {
-      return "Please choose a username";
+      return "\u8bf7\u9009\u62e9\u7528\u6237\u540d";
     },
     get$listen() {
-      return "Listen";
+      return "\u542c";
     },
     get$trialPeriodExpired() {
-      return "Your trial period has expired";
+      return "\u60a8\u7684\u8bd5\u7528\u671f\u5df2\u8fc7";
     },
     get$subscribedToUnlockTools() {
-      return "Subscribe to unlock interactive translation and grammar checking, audio playback, personalized practice activities, and learning analytics!";
+      return "\u8ba2\u9605\u4ee5\u89e3\u9501\u4e92\u52a8\u7ffb\u8bd1\u548c\u8bed\u6cd5\u68c0\u67e5\u3001\u97f3\u9891\u64ad\u653e\u3001\u4e2a\u6027\u5316\u7ec3\u4e60\u6d3b\u52a8\u548c\u5b66\u4e60\u5206\u6790\uff01";
     },
     get$translationTooltip() {
-      return "Translate";
+      return "\u7ffb\u8bd1";
     },
     get$speechToTextTooltip() {
-      return "Transcript";
+      return "\u8f6c\u5f55";
     },
     get$kickBotWarning() {
-      return "Kicking Pangea Bot will remove the conversation bot from this chat.";
+      return "\u8e22\u51faPangea\u673a\u5668\u4eba\u5c06\u4f1a\u5c06\u5bf9\u8bdd\u673a\u5668\u4eba\u4ece\u6b64\u804a\u5929\u4e2d\u79fb\u9664\u3002";
     },
     get$refresh(_) {
-      return "Refresh";
+      return "\u5237\u65b0";
     },
     get$updatePhoneOS() {
-      return "You may need to update your device's OS version.";
+      return "\u60a8\u53ef\u80fd\u9700\u8981\u66f4\u65b0\u8bbe\u5907\u7684\u64cd\u4f5c\u7cfb\u7edf\u7248\u672c\u3002";
     },
     get$autoIGCToolName() {
-      return "Run Pangea writing assistance automatically";
+      return "\u81ea\u52a8\u8fd0\u884cPangea\u5199\u4f5c\u8f85\u52a9";
     },
     get$autoIGCToolDescription() {
-      return "Automatically run Pangea Chat grammar and translation writing assistance before sending my message.";
+      return "\u5728\u53d1\u9001\u6d88\u606f\u524d\u81ea\u52a8\u8fd0\u884cPangea\u804a\u5929\u8bed\u6cd5\u548c\u7ffb\u8bd1\u5199\u4f5c\u8f85\u52a9\u3002";
     },
     get$chatCapacity() {
-      return "Chat capacity";
+      return "\u804a\u5929\u5bb9\u91cf";
     },
     get$roomFull() {
-      return "This room is already at capacity.";
+      return "\u6b64\u623f\u95f4\u5df2\u8fbe\u5bb9\u91cf\u4e0a\u9650\u3002";
     },
     get$chatCapacityHasBeenChanged() {
-      return "Chat capacity changed";
+      return "\u804a\u5929\u5bb9\u91cf\u5df2\u66f4\u6539";
     },
     chatCapacitySetTooLow$1(count) {
-      return "Chat capacity must be at least " + count + ".";
+      return "\u804a\u5929\u5bb9\u91cf\u5fc5\u987b\u81f3\u5c11\u4e3a " + count + "\u3002";
     },
     get$chatCapacityExplanation() {
-      return "Chat capacity limits the number of members allowed in a chat.";
+      return "\u804a\u5929\u5bb9\u91cf\u9650\u5236\u5141\u8bb8\u52a0\u5165\u804a\u5929\u7684\u6210\u5458\u4eba\u6570\u3002";
     },
     get$enterNumber() {
-      return "Please enter a whole number value.";
+      return "\u8bf7\u8f93\u5165\u4e00\u4e2a\u6574\u6570\u503c\u3002";
     },
     get$buildTranslation() {
-      return "Build your translation from the choices above";
+      return "\u6839\u636e\u4e0a\u65b9\u7684\u9009\u9879\u6784\u5efa\u60a8\u7684\u7ffb\u8bd1";
     },
     get$practice() {
-      return "Practice";
+      return "\u7ec3\u4e60";
     },
     get$noLanguagesSet() {
-      return "No languages set";
+      return "\u672a\u8bbe\u7f6e\u8bed\u8a00";
     },
     get$speechToTextBody() {
-      return "For voice messages, you can see a transcript as well as the speaker's Words Per Minute score.";
+      return "\u5bf9\u4e8e\u8bed\u97f3\u6d88\u606f\uff0c\u60a8\u53ef\u4ee5\u770b\u5230\u8f6c\u5f55\u5185\u5bb9\u4ee5\u53ca\u8bf4\u8bdd\u8005\u7684\u6bcf\u5206\u949f\u5b57\u6570\u5f97\u5206\u3002";
     },
     get$versionNotFound() {
-      return "Version Not Found";
+      return "\u672a\u627e\u5230\u7248\u672c";
     },
     get$fetchingVersion() {
-      return "Fetching version...";
+      return "\u6b63\u5728\u83b7\u53d6\u7248\u672c...";
     },
     get$versionFetchError() {
-      return "Error fetching version";
+      return "\u83b7\u53d6\u7248\u672c\u4fe1\u606f\u65f6\u51fa\u9519";
     },
     versionText$2(version, buildNumber) {
-      return "Version: " + version + "+" + buildNumber;
+      return "\u7248\u672c\uff1a" + version + "+" + buildNumber;
     },
     get$l1TranslationBody() {
-      return "Messages in your base language will not be translated.";
+      return "\u60a8\u7684\u57fa\u7840\u8bed\u8a00\u6d88\u606f\u5c06\u4e0d\u4f1a\u88ab\u7ffb\u8bd1\u3002";
     },
     get$deleteSubscriptionWarningTitle() {
-      return "You have an active subscription";
+      return "\u60a8\u6709\u4e00\u4e2a\u6709\u6548\u7684\u8ba2\u9605";
     },
     get$deleteSubscriptionWarningBody() {
-      return "Deleting your account will not automatically cancel your subscription.";
+      return "\u5220\u9664\u60a8\u7684\u8d26\u6237\u4e0d\u4f1a\u81ea\u52a8\u53d6\u6d88\u60a8\u7684\u8ba2\u9605\u3002";
     },
     get$manageSubscription() {
-      return "Manage Subscription";
+      return "\u7ba1\u7406\u8ba2\u9605";
     },
     get$error520Title() {
-      return "Please try again.";
+      return "\u8bf7\u518d\u8bd5\u4e00\u6b21\u3002";
     },
     get$error520Desc() {
-      return "Sorry, we could not understand your message...";
+      return "\u62b1\u6b49\uff0c\u6211\u4eec\u65e0\u6cd5\u7406\u89e3\u60a8\u7684\u6d88\u606f\u2026\u2026";
     },
     get$level(_) {
-      return "Level";
+      return "\u7b49\u7ea7";
     },
     get$translationChoicesBody() {
-      return "Click and hold an option for a hint.";
+      return "\u70b9\u51fb\u5e76\u6309\u4f4f\u4e00\u4e2a\u9009\u9879\u4ee5\u83b7\u53d6\u63d0\u793a\u3002";
     },
     get$grammar() {
-      return "Grammar";
+      return "\u8bed\u6cd5";
     },
     get$contactHasBeenInvitedToTheChat() {
-      return "Contact has been invited to the chat";
+      return "\u8054\u7cfb\u4eba\u5df2\u88ab\u9080\u8bf7\u52a0\u5165\u804a\u5929";
     },
     get$inviteChat() {
-      return "\ud83d\udce8 Invite chat";
+      return "\ud83d\udce8 \u9080\u8bf7\u804a\u5929";
     },
     get$chatName() {
-      return "Chat name";
+      return "\u804a\u5929\u540d\u79f0";
     },
     get$l2SupportNa() {
-      return "Not Available";
+      return "\u4e0d\u53ef\u7528";
     },
     get$l2SupportAlpha() {
       return "Alpha";
@@ -2697,1039 +2697,1039 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Beta";
     },
     get$l2SupportFull() {
-      return "Full";
+      return "\u5b8c\u6574";
     },
     get$playAudio() {
-      return "Play";
+      return "\u64ad\u653e";
     },
     get$stop(_) {
-      return "Stop";
+      return "\u505c\u6b62";
     },
     get$grammarCopyPOSsconj() {
-      return "Subordinating Conjunction";
+      return "\u4ece\u5c5e\u8fde\u8bcd";
     },
     get$grammarCopyPOSnum() {
-      return "Number";
+      return "\u6570\u5b57";
     },
     get$grammarCopyPOSverb() {
-      return "Verb";
+      return "\u52a8\u8bcd";
     },
     get$grammarCopyPOSaffix() {
-      return "Affix";
+      return "\u8bcd\u7f00";
     },
     get$grammarCopyPOSpart() {
-      return "Particle";
+      return "\u52a9\u8bcd";
     },
     get$grammarCopyPOSadj() {
-      return "Adjective";
+      return "\u5f62\u5bb9\u8bcd";
     },
     get$grammarCopyPOScconj() {
-      return "Coordinating Conjunction";
+      return "\u5e76\u5217\u8fde\u8bcd";
     },
     get$grammarCopyPOSpunct() {
-      return "Punctuation";
+      return "\u6807\u70b9\u7b26\u53f7";
     },
     get$grammarCopyPOSadv() {
-      return "Adverb";
+      return "\u526f\u8bcd";
     },
     get$grammarCopyPOSaux() {
-      return "Auxiliary";
+      return "\u52a9\u52a8\u8bcd";
     },
     get$grammarCopyPOSspace() {
-      return "Space";
+      return "\u7a7a\u683c";
     },
     get$grammarCopyPOSsym() {
-      return "Symbol";
+      return "\u7b26\u53f7";
     },
     get$grammarCopyPOSdet() {
-      return "Determiner";
+      return "\u9650\u5b9a\u8bcd";
     },
     get$grammarCopyPOSpron() {
-      return "Pronoun";
+      return "\u4ee3\u8bcd";
     },
     get$grammarCopyPOSadp() {
-      return "Adposition";
+      return "\u4ecb\u8bcd";
     },
     get$grammarCopyPOSpropn() {
-      return "Proper Noun";
+      return "\u4e13\u6709\u540d\u8bcd";
     },
     get$grammarCopyPOSnoun() {
-      return "Noun";
+      return "\u540d\u8bcd";
     },
     get$grammarCopyPOSintj() {
-      return "Interjection";
+      return "\u611f\u53f9\u8bcd";
     },
     get$grammarCopyPOSx() {
-      return "Other";
+      return "\u5176\u4ed6";
     },
     get$grammarCopyGENDERfem() {
-      return "Feminine";
+      return "\u9634\u6027";
     },
     get$grammarCopyPERSON2() {
-      return "Second Person";
+      return "\u7b2c\u4e8c\u4eba\u79f0";
     },
     get$grammarCopyMOODimp() {
-      return "Imperative";
+      return "\u7948\u4f7f\u8bed\u6c14";
     },
     get$grammarCopyPUNCTTYPEqest() {
-      return "Question";
+      return "\u7591\u95ee\u53e5";
     },
     get$grammarCopyASPECTperf() {
-      return "Perfect";
+      return "\u5b8c\u6210\u65f6";
     },
     get$grammarCopyCASEaccnom() {
-      return "Accusative, Nominative";
+      return "\u5bbe\u683c\uff0c\u4e3b\u683c";
     },
     get$grammarCopyCASEobl() {
-      return "Oblique";
+      return "\u659c\u683c";
     },
     get$grammarCopyVOICEact() {
-      return "Active";
+      return "\u4e3b\u52a8";
     },
     get$grammarCopyPUNCTTYPEbrck() {
-      return "Bracket";
+      return "\u62ec\u53f7";
     },
     get$grammarCopyNOUNTYPEart() {
-      return "Article";
+      return "\u51a0\u8bcd";
     },
     get$grammarCopyNUMBERsing() {
-      return "Singular";
+      return "\u5355\u6570";
     },
     get$grammarCopyGENDERmasc() {
-      return "Masculine";
+      return "\u9633\u6027";
     },
     get$grammarCopyVERBTYPEmod() {
-      return "Modal";
+      return "\u60c5\u6001\u52a8\u8bcd";
     },
     get$grammarCopyADVTYPEadverbial() {
-      return "Adverbial";
+      return "\u72b6\u8bed";
     },
     get$grammarCopyTENSEperi() {
-      return "Periphrastic";
+      return "\u5468\u8fb9\u65f6\u6001";
     },
     get$grammarCopyNUMFORMdigit() {
-      return "Digit";
+      return "\u6570\u5b57";
     },
     get$grammarCopyNOUNTYPEnot_proper() {
-      return "Not Proper";
+      return "\u975e\u4e13\u6709\u540d\u8bcd";
     },
     get$grammarCopyNUMTYPEcard() {
-      return "Cardinal";
+      return "\u57fa\u6570";
     },
     get$grammarCopyNOUNTYPEprop() {
-      return "Proper";
+      return "\u4e13\u6709\u540d\u8bcd";
     },
     get$grammarCopyPUNCTTYPEdash() {
-      return "Dash";
+      return "\u7834\u6298\u53f7";
     },
     get$grammarCopyPUNCTTYPEyes() {
-      return "Yes";
+      return "\u662f";
     },
     get$grammarCopyPUNCTTYPEsemi() {
-      return "Semicolon";
+      return "\u5206\u53f7";
     },
     get$grammarCopyPUNCTTYPEcomm() {
-      return "Comma";
+      return "\u9017\u53f7";
     },
     get$grammarCopyMOODcnd() {
-      return "Conditional";
+      return "\u6761\u4ef6\u5f0f";
     },
     get$grammarCopyCASEacc() {
-      return "Accusative";
+      return "\u5bbe\u683c";
     },
     get$grammarCopyPARTTYPEpart() {
-      return "Partitive";
+      return "\u90e8\u5206";
     },
     get$grammarCopyTENSEpast() {
-      return "Past";
+      return "\u8fc7\u53bb\u5f0f";
     },
     get$grammarCopyDEGREEsup() {
-      return "Superlative";
+      return "\u6700\u9ad8\u7ea7";
     },
     get$grammarCopyPUNCTTYPEcolo() {
-      return "Colon";
+      return "\u5192\u53f7";
     },
     get$grammarCopyPERSON3() {
-      return "Third Person";
+      return "\u7b2c\u4e09\u4eba\u79f0";
     },
     get$grammarCopyNUMBERplur() {
-      return "Plural";
+      return "\u590d\u6570";
     },
     get$grammarCopyPRONTYPEnpr() {
-      return "Proper Noun";
+      return "\u4e13\u6709\u540d\u8bcd";
     },
     get$grammarCopyPRONTYPEinterrogative() {
-      return "Interrogative";
+      return "\u7591\u95ee\u53e5";
     },
     get$grammarCopyPOLITEinfm() {
-      return "Informal";
+      return "\u975e\u6b63\u5f0f";
     },
     get$grammarCopyADVTYPEtim() {
-      return "Time";
+      return "\u65f6\u95f4";
     },
     get$grammarCopyPOLARITYneg() {
-      return "Negative";
+      return "\u5426\u5b9a";
     },
     get$grammarCopyNUMTYPEtot() {
-      return "Total";
+      return "\u603b\u6570";
     },
     get$grammarCopyADVTYPEadnomial() {
-      return "Adnominal";
+      return "\u4fee\u9970\u8bed";
     },
     get$grammarCopyASPECTprog() {
-      return "Progressive";
+      return "\u8fdb\u884c\u65f6";
     },
     get$grammarCopyMOODsub() {
-      return "Subjunctive";
+      return "\u865a\u62df\u8bed\u6c14";
     },
     get$grammarCopyVERBFORMcomplementive() {
-      return "Complementive";
+      return "\u8865\u8bed\u5f62\u5f0f";
     },
     get$grammarCopyCASEnom() {
-      return "Nominative";
+      return "\u4e3b\u683c";
     },
     get$grammarCopyTENSEfut() {
-      return "Future";
+      return "\u5c06\u6765\u65f6";
     },
     get$grammarCopyCASEdat() {
-      return "Dative";
+      return "\u4e0e\u683c";
     },
     get$grammarCopyTENSEpres() {
-      return "Present";
+      return "\u73b0\u5728\u65f6";
     },
     get$grammarCopyGENDERneut() {
-      return "Neuter";
+      return "\u4e2d\u6027";
     },
     get$grammarCopyPRONTYPErel() {
-      return "Relative";
+      return "\u5173\u7cfb\u4ee3\u8bcd";
     },
     get$grammarCopyVERBFORMfinalEnding() {
-      return "Final Ending";
+      return "\u7ec8\u7ed3\u5f62\u5f0f";
     },
     get$grammarCopyPRONTYPEdem() {
-      return "Demonstrative";
+      return "\u6307\u793a\u4ee3\u8bcd";
     },
     get$grammarCopyPREPCASEpre() {
-      return "Prepositional";
+      return "\u4ecb\u8bcd\u683c";
     },
     get$grammarCopyVERBFORMfin() {
-      return "Finite";
+      return "\u6709\u9650\u52a8\u8bcd\u5f62\u5f0f";
     },
     get$grammarCopyDEGREEpos() {
-      return "Positive";
+      return "\u539f\u7ea7";
     },
     get$grammarCopyPUNCTTYPEquot() {
-      return "Quotation";
+      return "\u5f15\u53f7";
     },
     get$grammarCopyVERBFORMger() {
-      return "Gerund";
+      return "\u52a8\u540d\u8bcd";
     },
     get$grammarCopyVOICEpass() {
-      return "Passive";
+      return "\u88ab\u52a8\u8bed\u6001";
     },
     get$grammarCopyCASEgen() {
-      return "Genitive";
+      return "\u5c5e\u683c";
     },
     get$grammarCopyTENSEprs() {
-      return "Present";
+      return "\u73b0\u5728\u65f6";
     },
     get$grammarCopyDEFINITEdef() {
-      return "Definite";
+      return "\u9650\u5b9a";
     },
     get$grammarCopyNUMTYPEord() {
-      return "Ordinal";
+      return "\u5e8f\u6570";
     },
     get$grammarCopyCASEins() {
-      return "Instrumental";
+      return "\u5de5\u5177\u683c";
     },
     get$grammarCopyVERBFORMinf() {
-      return "Infinitive";
+      return "\u4e0d\u5b9a\u5f0f";
     },
     get$grammarCopyVERBFORMaux() {
-      return "Auxiliary";
+      return "\u52a9\u52a8\u8bcd";
     },
     get$grammarCopyNUMFORMlong() {
-      return "Long";
+      return "\u957f\u5f62\u5f0f";
     },
     get$grammarCopyCASEloc() {
-      return "Locative";
+      return "\u5730\u70b9\u683c";
     },
     get$grammarCopyMOODind() {
-      return "Indicative";
+      return "\u9648\u8ff0\u8bed\u6c14";
     },
     get$grammarCopyDEGREEcmp() {
-      return "Comparative";
+      return "\u6bd4\u8f83\u7ea7";
     },
     get$grammarCopyCASErelativeCase() {
-      return "Relative";
+      return "\u5173\u7cfb\u683c";
     },
     get$grammarCopyPUNCTTYPEexcl() {
-      return "Exclamative";
+      return "\u611f\u53f9\u53e5";
     },
     get$grammarCopyPERSON1() {
-      return "First Person";
+      return "\u7b2c\u4e00\u4eba\u79f0";
     },
     get$grammarCopyPUNCTSIDEini() {
-      return "Initial";
+      return "\u8d77\u59cb\u4f4d\u7f6e";
     },
     get$grammarCopyGENDERperson() {
-      return "Person";
+      return "\u4eba\u79f0";
     },
     get$grammarCopyFOREIGNyes() {
-      return "Foreign";
+      return "\u5916\u8bed";
     },
     get$grammarCopyVOICEvoice() {
-      return "Voice";
+      return "\u8bed\u6001";
     },
     get$grammarCopyVERBTYPEverbType() {
-      return "Verb";
+      return "\u52a8\u8bcd";
     },
     get$grammarCopyPOSSpass() {
-      return "Possessive";
+      return "\u6240\u6709\u683c";
     },
     get$grammarCopyPREPCASEprepCase() {
-      return "Prepositional";
+      return "\u4ecb\u8bcd\u683c";
     },
     get$grammarCopyNUMTYPEnumType() {
-      return "Numeral";
+      return "\u6570\u8bcd";
     },
     get$grammarCopyNOUNTYPEnounType() {
-      return "Noun";
+      return "\u540d\u8bcd";
     },
     get$grammarCopyREFLEXreflex() {
-      return "Reflexive";
+      return "\u53cd\u8eab";
     },
     get$grammarCopyPRONTYPEpronType() {
-      return "Pronoun";
+      return "\u4ee3\u8bcd";
     },
     get$grammarCopyPUNCTSIDEpunctSide() {
-      return "Punctuation Side";
+      return "\u6807\u70b9\u7b26\u53f7\u4f4d\u7f6e";
     },
     get$grammarCopyVERBFORMverbForm() {
-      return "Verb";
+      return "\u52a8\u8bcd\u5f62\u5f0f";
     },
     get$grammarCopyGENDERgender() {
-      return "Gender";
+      return "\u6027\u522b";
     },
     get$grammarCopyMOODmood() {
-      return "Mood";
+      return "\u8bed\u6c14";
     },
     get$grammarCopyASPECTaspect() {
-      return "Aspect";
+      return "\u4f53";
     },
     get$grammarCopyPUNCTTYPEpunctType() {
-      return "Punctuation";
+      return "\u6807\u70b9\u7b26\u53f7";
     },
     get$grammarCopyTENSEtense() {
-      return "Tense";
+      return "\u65f6\u6001";
     },
     get$grammarCopyDEGREEdegree() {
-      return "Degree";
+      return "\u7a0b\u5ea6";
     },
     get$grammarCopyPOLITEpolite() {
-      return "Politeness";
+      return "\u793c\u8c8c";
     },
     get$grammarCopyADVTYPEadvType() {
-      return "Adverb";
+      return "\u526f\u8bcd";
     },
     get$grammarCopyNUMFORMnumber() {
-      return "Number";
+      return "\u6570\u5b57";
     },
     get$grammarCopyCONJTYPEconjType() {
-      return "Conjunction";
+      return "\u8fde\u8bcd";
     },
     get$grammarCopyPOLARITYpolarity() {
-      return "Polarity";
+      return "\u6781\u6027";
     },
     get$grammarCopyCASEcase() {
-      return "Case";
+      return "\u683c";
     },
     get$grammarCopyDEFINITEdefinite() {
-      return "Definiteness";
+      return "\u786e\u5b9a\u6027";
     },
     get$grammarCopyNUMFORMnumForm() {
-      return "Numeral";
+      return "\u6570\u8bcd";
     },
     get$grammarCopyPRONTYPEadn() {
-      return "Adnominal";
+      return "\u540d\u8bcd\u6027\u4fee\u9970\u8bed";
     },
     get$grammarCopyVOCvoc() {
-      return "Vocative";
+      return "\u547c\u8bed";
     },
     get$grammarCopyCMPLcmpl() {
-      return "Complementizer";
+      return "\u8865\u8bed";
     },
     get$grammarCopyADVadv() {
-      return "Adverbial";
+      return "\u72b6\u8bed";
     },
     get$grammarCopyMOODjus() {
-      return "Jussive";
+      return "\u7948\u4f7f\u8bed\u6c14";
     },
     get$grammarCopyGENDERcom() {
-      return "Common";
+      return "\u901a\u7528";
     },
     get$grammarCopyREFLEXrflx() {
-      return "Reflexive";
+      return "\u53cd\u8eab";
     },
     get$grammarCopyPARTTYPEpar() {
-      return "Partitive";
+      return "\u90e8\u5206\u683c";
     },
     get$grammarCopySPCspc() {
-      return "Specific";
+      return "\u7279\u6307";
     },
     get$grammarCopyTENSEpqp() {
-      return "Pluperfect";
+      return "\u8fc7\u53bb\u5b8c\u6210\u65f6";
     },
     get$grammarCopyREFLEXref() {
-      return "Reflexive";
+      return "\u53cd\u8eab";
     },
     get$grammarCopyPUNCTTYPEnshrt() {
-      return "Short";
+      return "\u7b80\u77ed";
     },
     get$grammarCopyNUMBERdual() {
-      return "Dual";
+      return "\u53cc\u6570";
     },
     get$grammarCopyNUMFORMlng() {
-      return "Long";
+      return "\u957f\u5f62\u5f0f";
     },
     get$grammarCopyVOICEmid() {
-      return "Middle";
+      return "\u4e2d\u6001";
     },
     get$grammarCopyINTRELintRel() {
-      return "Interrogative, Relative";
+      return "\u7591\u95ee\u53e5\u3001\u5173\u7cfb\u53e5";
     },
     get$grammarCopyINTint() {
-      return "Interrogative";
+      return "\u7591\u95ee";
     },
     get$grammarCopyVOICEcaus() {
-      return "Causative";
+      return "\u4f7f\u5f79";
     },
     get$grammarCopyUnknown() {
-      return "Unknown";
+      return "\u672a\u77e5";
     },
     get$grammarCopyEVIDENTevident() {
-      return "Evidentiality";
+      return "\u8bc1\u636e\u6027";
     },
     get$grammarCopyNUMFORMnumberPsor() {
-      return "Possessor's Number";
+      return "\u6240\u6709\u8005\u7684\u6570";
     },
     get$grammarCopyASPECThab() {
-      return "Habitual";
+      return "\u4e60\u60ef\u6027";
     },
     get$grammarCopyCASEabl() {
-      return "Ablative";
+      return "\u79bb\u683c";
     },
     get$grammarCopyCASEall() {
-      return "Allative";
+      return "\u5c5e\u683c";
     },
     get$grammarCopyCASEess() {
-      return "Essive";
+      return "\u72b6\u6001\u683c";
     },
     get$grammarCopyCASEtra() {
-      return "Translative";
+      return "\u8f6c\u683c";
     },
     get$grammarCopyCASEequ() {
-      return "Equative";
+      return "\u7b49\u540c\u683c";
     },
     get$grammarCopyCASEdis() {
-      return "Distributive";
+      return "\u5206\u914d\u683c";
     },
     get$grammarCopyCASEabs() {
-      return "Absolutive";
+      return "\u7edd\u5bf9\u683c";
     },
     get$grammarCopyCASEerg() {
-      return "Ergative";
+      return "\u683c\u5bbe\u683c";
     },
     get$grammarCopyCASEcau() {
-      return "Causal";
+      return "\u56e0\u679c\u683c";
     },
     get$grammarCopyCASEben() {
-      return "Benefactive";
+      return "\u53d7\u76ca\u683c";
     },
     get$grammarCopyCASEtem() {
-      return "Temporal";
+      return "\u65f6\u95f4\u683c";
     },
     get$grammarCopyCONJTYPEcoord() {
-      return "Coordinating";
+      return "\u5e76\u5217\u8fde\u8bcd";
     },
     get$grammarCopyDEFINITEcons() {
-      return "Construct State";
+      return "\u6784\u5f0f\u72b6\u6001";
     },
     get$grammarCopyDEGREEabs() {
-      return "Absolute Degree";
+      return "\u7edd\u5bf9\u7a0b\u5ea6";
     },
     get$grammarCopyEVIDENTfh() {
-      return "Factual Evidentiality";
+      return "\u4e8b\u5b9e\u8bc1\u636e";
     },
     get$grammarCopyEVIDENTnfh() {
-      return "Non-factual Evidentiality";
+      return "\u975e\u4e8b\u5b9e\u8bc1\u636e";
     },
     get$grammarCopyMOODopt() {
-      return "Optative";
+      return "\u7948\u613f\u8bed\u6c14";
     },
     get$grammarCopyMOODadm() {
-      return "Admirative";
+      return "\u611f\u53f9\u8bed\u6c14";
     },
     get$grammarCopyMOODdes() {
-      return "Desiderative";
+      return "\u613f\u671b\u8bed\u6c14";
     },
     get$grammarCopyMOODnec() {
-      return "Necessitative";
+      return "\u5fc5\u8981\u8bed\u6c14";
     },
     get$grammarCopyMOODpot() {
-      return "Potential";
+      return "\u6f5c\u5728\u8bed\u6c14";
     },
     get$grammarCopyMOODprp() {
-      return "Propositive";
+      return "\u5efa\u8bae\u8bed\u6c14";
     },
     get$grammarCopyMOODqot() {
-      return "Quotative";
+      return "\u5f15\u8ff0\u8bed\u6c14";
     },
     get$grammarCopyNUMFORMword() {
-      return "Word Form";
+      return "\u8bcd\u5f62";
     },
     get$grammarCopyNUMFORMroman() {
-      return "Roman Numeral";
+      return "\u7f57\u9a6c\u6570\u5b57";
     },
     get$grammarCopyNUMFORMletter() {
-      return "Letter Form";
+      return "\u5b57\u6bcd\u5f62\u5f0f";
     },
     get$grammarCopyNUMTYPEmult() {
-      return "Multiplicative";
+      return "\u500d\u6570";
     },
     get$grammarCopyNUMTYPEfrac() {
-      return "Fractional";
+      return "\u5206\u6570";
     },
     get$grammarCopyNUMTYPEsets() {
-      return "Set";
+      return "\u96c6\u5408";
     },
     get$grammarCopyNUMTYPErange() {
-      return "Range";
+      return "\u8303\u56f4";
     },
     get$grammarCopyNUMTYPEdist() {
-      return "Distributive";
+      return "\u5206\u914d";
     },
     get$grammarCopyNUMBERtri() {
-      return "Trial";
+      return "\u8bd5\u9a8c";
     },
     get$grammarCopyNUMBERpauc() {
-      return "Paucal";
+      return "\u5c11\u6570";
     },
     get$grammarCopyNUMBERgrpa() {
-      return "Greater Paucal";
+      return "\u5927\u5c11\u6570";
     },
     get$grammarCopyNUMBERgrpl() {
-      return "Greater Plural";
+      return "\u5927\u590d\u6570";
     },
     get$grammarCopyNUMBERinv() {
-      return "Inverse";
+      return "\u9006\u6570";
     },
     get$grammarCopyPERSON0() {
-      return "Zero";
+      return "\u96f6";
     },
     get$grammarCopyPERSON4() {
-      return "Fourth";
+      return "\u7b2c\u56db";
     },
     get$grammarCopyPOLITEform() {
-      return "Formal";
+      return "\u6b63\u5f0f";
     },
     get$grammarCopyPOLITEelev() {
-      return "Elevated";
+      return "\u5347\u534e";
     },
     get$grammarCopyPOLITEhumb() {
-      return "Humble";
+      return "\u8c26\u900a";
     },
     get$grammarCopyPRONTYPEemp() {
-      return "Emphatic";
+      return "\u5f3a\u8c03";
     },
     get$grammarCopyPRONTYPEexc() {
-      return "Exclamative";
+      return "\u611f\u53f9";
     },
     get$grammarCopyPRONTYPErcp() {
-      return "Reciprocal";
+      return "\u4e92\u60e0";
     },
     get$grammarCopyPRONTYPEintRelPronType() {
-      return "Interrogative-Relative";
+      return "\u7591\u95ee-\u5173\u7cfb";
     },
     get$grammarCopyTENSEaor() {
-      return "Aorist";
+      return "\u672a\u5b8c\u6210\u8fc7\u53bb\u65f6";
     },
     get$grammarCopyTENSEeps() {
-      return "Epistemic";
+      return "\u8ba4\u77e5\u65f6";
     },
     get$grammarCopyTENSEprosp() {
-      return "Prospective";
+      return "\u5c06\u6765\u65f6";
     },
     get$grammarCopyVERBFORMpart() {
-      return "Participle";
+      return "\u5206\u8bcd";
     },
     get$grammarCopyVERBFORMconv() {
-      return "Converb";
+      return "\u52a8\u8bcd\u526f\u8bcd";
     },
     get$grammarCopyVERBFORMvnoun() {
-      return "Verbal Noun";
+      return "\u52a8\u540d\u8bcd";
     },
     get$grammarCopyVOICEantip() {
-      return "Antipassive";
+      return "\u53cd\u88ab\u52a8";
     },
     get$grammarCopyVOICEcauVoice() {
-      return "Causative";
+      return "\u4f7f\u5f79";
     },
     get$grammarCopyVOICedir() {
-      return "Direct";
+      return "\u76f4\u63a5\u8bed\u6001";
     },
     get$grammarCopyVOICEinvVoice() {
-      return "Inverse";
+      return "\u53cd\u8f6c\u8bed\u6001";
     },
     get$grammarCopyVOICErcpVoice() {
-      return "Reciprocal";
+      return "\u4e92\u60e0\u8bed\u6001";
     },
     get$grammarCopyPOS() {
-      return "Part of Speech";
+      return "\u8bcd\u6027";
     },
     get$grammarCopyGENDER() {
-      return "Gender";
+      return "\u6027\u522b";
     },
     get$grammarCopyPERSON() {
-      return "Person";
+      return "\u4eba\u79f0";
     },
     get$grammarCopyMOOD() {
-      return "Mood";
+      return "\u8bed\u6c14";
     },
     get$grammarCopyPUNCTTYPE() {
-      return "Punctuation Type";
+      return "\u6807\u70b9\u7c7b\u578b";
     },
     get$grammarCopyASPECT() {
-      return "Aspect";
+      return "\u4f53";
     },
     get$grammarCopyCASE() {
-      return "Case";
+      return "\u683c";
     },
     get$grammarCopyVOICE() {
-      return "Voice";
+      return "\u8bed\u6001";
     },
     get$grammarCopyNOUNTYPE() {
-      return "Noun Type";
+      return "\u540d\u8bcd\u7c7b\u578b";
     },
     get$grammarCopyVERBTYPE() {
-      return "Verb Type";
+      return "\u52a8\u8bcd\u7c7b\u578b";
     },
     get$grammarCopyADVTYPE() {
-      return "Adverb Type";
+      return "\u526f\u8bcd\u7c7b\u578b";
     },
     get$grammarCopyNUMFORM() {
-      return "Numeral Form";
+      return "\u6570\u8bcd\u5f62\u5f0f";
     },
     get$grammarCopyNUMTYPE() {
-      return "Numeral Type";
+      return "\u6570\u8bcd\u7c7b\u578b";
     },
     get$grammarCopyNUMBER() {
-      return "Number";
+      return "\u6570\u5b57";
     },
     get$grammarCopyDEFINITE() {
-      return "Definiteness";
+      return "\u786e\u5b9a\u6027";
     },
     get$grammarCopyDEGREE() {
-      return "Degree";
+      return "\u7a0b\u5ea6";
     },
     get$grammarCopyEVIDENT() {
-      return "Evidentiality";
+      return "\u8bc1\u636e\u6027";
     },
     get$grammarCopyFOREIGN() {
-      return "Foreign";
+      return "\u5916\u6765";
     },
     get$grammarCopyPOLARITY() {
-      return "Polarity";
+      return "\u6781\u6027";
     },
     get$grammarCopyPOLITE() {
-      return "Politeness";
+      return "\u793c\u8c8c";
     },
     get$grammarCopyPREPCASE() {
-      return "Prepositional Case";
+      return "\u4ecb\u8bcd\u683c";
     },
     get$grammarCopyPRONTYPE() {
-      return "Pronoun Type";
+      return "\u4ee3\u8bcd\u7c7b\u578b";
     },
     get$grammarCopyPUNCTSIDE() {
-      return "Punctuation Side";
+      return "\u6807\u70b9\u7b26\u53f7\u4f4d\u7f6e";
     },
     get$grammarCopyREFLEX() {
-      return "Reflexive";
+      return "\u53cd\u8eab";
     },
     get$grammarCopyTENSE() {
-      return "Tense";
+      return "\u65f6\u6001";
     },
     get$grammarCopyVERBFORM() {
-      return "Verb Form";
+      return "\u52a8\u8bcd\u5f62\u5f0f";
     },
     get$grammarCopyCONJTYPE() {
-      return "Conjunction Type";
+      return "\u8fde\u8bcd\u7c7b\u578b";
     },
     get$grammarCopyUNKNOWN() {
-      return "Unknown";
+      return "\u672a\u77e5";
     },
     get$grammarCopyNUMBERPSOR() {
-      return "Possessor's Number";
+      return "\u6240\u6709\u8005\u7684\u6570\u5b57";
     },
     get$grammarCopyPOSS() {
-      return "Possessive";
+      return "\u6240\u6709\u683c";
     },
     get$grammarCopyASPECTimp() {
-      return "Imperfective Aspect";
+      return "\u672a\u5b8c\u6210\u4f53";
     },
     get$grammarCopyCASEvoc() {
-      return "Vocative";
+      return "\u547c\u683c";
     },
     get$grammarCopyCASEcom() {
-      return "Comitative";
+      return "\u4f34\u968f\u683c";
     },
     get$grammarCopyCASEpar() {
-      return "Partitive";
+      return "\u90e8\u5206\u683c";
     },
     get$grammarCopyCASEadv() {
-      return "Adverbial";
+      return "\u72b6\u8bed\u683c";
     },
     get$grammarCopyCASEref() {
-      return "Referential";
+      return "\u6307\u793a\u683c";
     },
     get$grammarCopyCASErel() {
-      return "Relative";
+      return "\u5173\u7cfb\u683c";
     },
     get$grammarCopyCASEsub() {
-      return "Subessive";
+      return "\u5c5e\u683c";
     },
     get$grammarCopyCASEsup() {
-      return "Superessive";
+      return "\u8d85\u5c5e\u683c";
     },
     get$grammarCopyCASEaccdat() {
-      return "Accusative-Dative";
+      return "\u5bbe\u683c-\u4e0e\u683c";
     },
     get$grammarCopyCASEpre() {
-      return "Prepositional";
+      return "\u4ecb\u8bcd\u683c";
     },
     get$grammarCopyCONJTYPEsub() {
-      return "Subordinating";
+      return "\u4ece\u5c5e\u8fde\u8bcd";
     },
     get$grammarCopyCONJTYPEcmp() {
-      return "Comparative";
+      return "\u6bd4\u8f83\u7ea7";
     },
     get$grammarCopyDEFINITEind() {
-      return "Indefinite";
+      return "\u4e0d\u5b9a";
     },
     get$grammarCopyMOODint() {
-      return "Interrogative Mood";
+      return "\u7591\u95ee\u8bed\u6c14";
     },
     get$grammarCopyNOUNTYPEcomm() {
-      return "Common Noun";
+      return "\u666e\u901a\u540d\u8bcd";
     },
     get$grammarCopyNUMBERPSORsing() {
-      return "Possessor's Singular";
+      return "\u6240\u6709\u8005\u7684\u5355\u6570";
     },
     get$grammarCopyNUMBERPSORplur() {
-      return "Possessor's Plural";
+      return "\u6240\u6709\u683c\u7684\u590d\u6570";
     },
     get$grammarCopyNUMBERPSORdual() {
-      return "Possessor's Dual";
+      return "\u6240\u6709\u683c\u7684\u53cc\u6570";
     },
     get$grammarCopyPOLARITYpos() {
-      return "Positive Polarity";
+      return "\u80af\u5b9a";
     },
     get$grammarCopyPOSSyes() {
-      return "Possessive";
+      return "\u6240\u6709\u683c";
     },
     get$grammarCopyPREPCASEnpr() {
-      return "Non-prepositional";
+      return "\u975e\u4ecb\u8bcd\u6027";
     },
     get$grammarCopyPRONTYPEprs() {
-      return "Personal";
+      return "\u4eba\u79f0\u4ee3\u8bcd";
     },
     get$grammarCopyPRONTYPEint() {
-      return "Interrogative";
+      return "\u7591\u95ee\u4ee3\u8bcd";
     },
     get$grammarCopyPRONTYPEtot() {
-      return "Total";
+      return "\u603b\u7c7b";
     },
     get$grammarCopyPRONTYPEneg() {
-      return "Negative";
+      return "\u5426\u5b9a";
     },
     get$grammarCopyPRONTYPEart() {
-      return "Article";
+      return "\u51a0\u8bcd";
     },
     get$grammarCopyPRONTYPEind() {
-      return "Indefinite";
+      return "\u4e0d\u5b9a\u4ee3\u8bcd";
     },
     get$grammarCopyPRONTYPEintrel() {
-      return "Interrogative-Relative";
+      return "\u7591\u95ee-\u5173\u7cfb";
     },
     get$grammarCopyPUNCTSIDEfin() {
-      return "Final Punctuation";
+      return "\u53e5\u672b\u6807\u70b9";
     },
     get$grammarCopyPUNCTTYPEperi() {
-      return "Period";
+      return "\u53e5\u70b9";
     },
     get$grammarCopyREFLEXyes() {
-      return "Reflexive";
+      return "\u53cd\u8eab";
     },
     get$grammarCopyTENSEimp() {
-      return "Imperfect";
+      return "\u672a\u5b8c\u6210\u65f6";
     },
     get$grammarCopyVERBFORMsup() {
-      return "Supine";
+      return "\u52a8\u8bcd\u4e0d\u5b9a\u5f0f";
     },
     get$grammarCopyVERBFORMadn() {
-      return "Adnominal";
+      return "\u5f62\u5bb9\u8bcd\u6027";
     },
     get$grammarCopyVERBFORMlng() {
-      return "Long";
+      return "\u957f\u5f62\u5f0f";
     },
     get$grammarCopyVERBFORMshrt() {
-      return "Short";
+      return "\u77ed\u5f62\u5f0f";
     },
     get$grammarCopyVERBTYPEcaus() {
-      return "Causative Verb";
+      return "\u4f7f\u5f79\u52a8\u8bcd";
     },
     get$grammarCopyVOICEcau() {
-      return "Causative";
+      return "\u4f7f\u5f79";
     },
     get$grammarCopyVOICEdir() {
-      return "Direct";
+      return "\u76f4\u63a5";
     },
     get$grammarCopyVOICEinv() {
-      return "Inverse";
+      return "\u53cd\u5411";
     },
     get$grammarCopyVOICErcp() {
-      return "Reciprocal";
+      return "\u4e92\u60e0";
     },
     get$other() {
-      return "Other";
+      return "\u5176\u4ed6";
     },
     levelShort$1(level) {
-      return "LVL " + level;
+      return "\u7b49\u7ea7 " + level;
     },
     get$clickBestOption() {
-      return "Choose the best options to translate your message! Click and hold options for a hint.";
+      return "\u9009\u62e9\u6700\u4f73\u9009\u9879\u4ee5\u7ffb\u8bd1\u60a8\u7684\u6d88\u606f\uff01";
     },
     get$completeActivitiesToUnlock() {
-      return "Complete at least one activity to unlock the translation!";
+      return "\u5b8c\u6210\u81f3\u5c11\u4e00\u9879\u6d3b\u52a8\u4ee5\u89e3\u9501\u7ffb\u8bd1\uff01";
     },
     get$downloadGroupText() {
-      return "Download group text";
+      return "\u4e0b\u8f7d\u7fa4\u7ec4\u6587\u672c";
     },
     get$notificationsOn() {
-      return "Notifications on";
+      return "\u901a\u77e5\u5df2\u5f00\u542f";
     },
     get$notificationsOff() {
-      return "Notifications off";
+      return "\u901a\u77e5\u5df2\u5173\u95ed";
     },
     get$createChatAndInviteUsers() {
-      return "Create chat and invite users";
+      return "\u521b\u5efa\u804a\u5929\u5e76\u9080\u8bf7\u7528\u6237";
     },
     get$updatedNewSpaceDescription() {
-      return "Courses allow you to consolidate your chats and build private or public communities.";
+      return "\u8bfe\u7a0b\u5141\u8bb8\u4f60\u6574\u5408\u4f60\u7684\u804a\u5929\u5e76\u5efa\u7acb\u79c1\u6709\u6216\u516c\u5171\u793e\u533a\u3002";
     },
     get$enterCodeToJoin() {
-      return "Enter code to join";
+      return "\u8f93\u5165\u4ee3\u7801\u52a0\u5165";
     },
     get$updateNow() {
-      return "Update Now";
+      return "\u7acb\u5373\u66f4\u65b0";
     },
     get$updateLater() {
-      return "Later";
+      return "\u7a0d\u540e\u66f4\u65b0";
     },
     get$constructUseWaDesc() {
-      return "Used without help";
+      return "\u65e0\u9700\u5e2e\u52a9\u4f7f\u7528";
     },
     get$constructUseGaDesc() {
-      return "Grammar assistance";
+      return "\u8bed\u6cd5\u8f85\u52a9";
     },
     get$constructUseTaDesc() {
-      return "Translation assistance";
+      return "\u7ffb\u8bd1\u8f85\u52a9";
     },
     get$constructUseUnkDesc() {
-      return "Unknown";
+      return "\u672a\u77e5";
     },
     get$constructUseCorITDesc() {
-      return "Correct in translation";
+      return "\u7ffb\u8bd1\u4e2d\u6821\u6b63";
     },
     get$constructUseIgnITDesc() {
-      return "Ignored in translation";
+      return "\u7ffb\u8bd1\u4e2d\u5ffd\u7565";
     },
     get$constructUseIncITDesc() {
-      return "Incorrect in translation";
+      return "\u7ffb\u8bd1\u4e2d\u9519\u8bef";
     },
     get$constructUseIgnIGCDesc() {
-      return "Ignored in grammar correction";
+      return "\u5728\u8bed\u6cd5\u66f4\u6b63\u4e2d\u5ffd\u7565";
     },
     get$constructUseCorIGCDesc() {
-      return "Correct in grammar correction";
+      return "\u5728\u8bed\u6cd5\u66f4\u6b63\u4e2d\u6b63\u786e";
     },
     get$constructUseIncIGCDesc() {
-      return "Incorrect in grammar correction";
+      return "\u5728\u8bed\u6cd5\u66f4\u6b63\u4e2d\u9519\u8bef";
     },
     get$constructUseCorPADesc() {
-      return "Correct in word meaning activity";
+      return "\u5728\u8bcd\u4e49\u6d3b\u52a8\u4e2d\u6b63\u786e";
     },
     get$constructUseIgnPADesc() {
-      return "Ignored in word meaning activity";
+      return "\u5728\u8bcd\u4e49\u6d3b\u52a8\u4e2d\u5ffd\u7565";
     },
     get$constructUseIncPADesc() {
-      return "Incorrect in word meaning activity";
+      return "\u5728\u8bcd\u4e49\u6d3b\u52a8\u4e2d\u9519\u8bef";
     },
     get$constructUseCorWLDesc() {
-      return "Correct in word listening activity";
+      return "\u5728\u542c\u529b\u6d3b\u52a8\u4e2d\u6b63\u786e";
     },
     get$constructUseIncWLDesc() {
-      return "Incorrect in word listening activity";
+      return "\u5728\u542c\u529b\u6d3b\u52a8\u4e2d\u9519\u8bef";
     },
     get$constructUseIngWLDesc() {
-      return "Ignored in word listening activity";
+      return "\u5728\u542c\u529b\u6d3b\u52a8\u4e2d\u5ffd\u7565";
     },
     get$constructUseCorHWLDesc() {
-      return "Correct in hidden word activity";
+      return "\u5728\u9690\u85cf\u8bcd\u6d3b\u52a8\u4e2d\u6b63\u786e";
     },
     get$constructUseIncHWLDesc() {
-      return "Incorrect in hidden word activity";
+      return "\u5728\u9690\u85cf\u8bcd\u6d3b\u52a8\u4e2d\u9519\u8bef";
     },
     get$constructUseIgnHWLDesc() {
-      return "Ignored in hidden word activity";
+      return "\u5728\u9690\u85cf\u8bcd\u6d3b\u52a8\u4e2d\u5ffd\u7565";
     },
     get$constructUseCorLDesc() {
-      return "Correct in lemma activity";
+      return "\u5728\u8bcd\u6839\u6d3b\u52a8\u4e2d\u6b63\u786e";
     },
     get$constructUseIncLDesc() {
-      return "Incorrect in lemma activity";
+      return "\u5728\u8bcd\u6839\u6d3b\u52a8\u4e2d\u9519\u8bef";
     },
     get$constructUseIgnLDesc() {
-      return "Ignored in lemma activity";
+      return "\u5728\u8bcd\u6839\u6d3b\u52a8\u4e2d\u5ffd\u7565";
     },
     get$constructUseCorMDesc() {
-      return "Correct in grammar activity";
+      return "\u5728\u8bed\u6cd5\u6d3b\u52a8\u4e2d\u6b63\u786e";
     },
     get$constructUseIncMDesc() {
-      return "Incorrect in grammar activity";
+      return "\u5728\u8bed\u6cd5\u6d3b\u52a8\u4e2d\u9519\u8bef";
     },
     get$constructUseIgnMDesc() {
-      return "Ignored in grammar activity";
+      return "\u5728\u8bed\u6cd5\u6d3b\u52a8\u4e2d\u5ffd\u7565";
     },
     get$constructUseEmojiDesc() {
-      return "Correct in emoji activity";
+      return "\u5728\u8868\u60c5\u7b26\u53f7\u6d3b\u52a8\u4e2d\u6b63\u786e";
     },
     get$constructUseCollected() {
-      return "Collected in chat";
+      return "\u5df2\u5728\u804a\u5929\u4e2d\u6536\u96c6";
     },
     get$constructUseNanDesc() {
-      return "Not applicable";
+      return "\u4e0d\u9002\u7528";
     },
     xpIntoLevel$2(currentXP, maxXP) {
-      return "" + currentXP + " / " + maxXP + " XP";
+      return "" + currentXP + " / " + maxXP + " \u7ecf\u9a8c\u503c";
     },
     get$enableTTSToolName() {
-      return "Enabled text-to-speech";
+      return "\u542f\u7528\u6587\u672c\u8f6c\u8bed\u97f3";
     },
     get$enableTTSToolDescription() {
-      return "Allow the app to generate text-to-speech output for portions of text in your target language.";
+      return "\u5141\u8bb8\u5e94\u7528\u7a0b\u5e8f\u4e3a\u76ee\u6807\u8bed\u8a00\u4e2d\u7684\u90e8\u5206\u6587\u672c\u751f\u6210\u6587\u672c\u8f6c\u8bed\u97f3\u8f93\u51fa\u3002";
     },
     get$yourUsername() {
-      return "Your username";
+      return "\u60a8\u7684\u7528\u6237\u540d";
     },
     get$yourEmail() {
-      return "Your email";
+      return "\u60a8\u7684\u90ae\u7bb1";
     },
     get$iWantToLearn() {
-      return "I want to learn";
+      return "\u6211\u60f3\u5b66\u4e60";
     },
     get$pleaseEnterEmail() {
-      return "Please enter a valid email address.";
+      return "\u8bf7\u8f93\u5165\u6709\u6548\u7684\u7535\u5b50\u90ae\u4ef6\u5730\u5740\u3002";
     },
     get$myBaseLanguage() {
-      return "My base language";
+      return "\u6211\u7684\u57fa\u7840\u8bed\u8a00";
     },
     get$meaningSectionHeader() {
-      return "Meaning:";
+      return "\u542b\u4e49\uff1a";
     },
     get$formSectionHeader() {
-      return "Forms used in chats:";
+      return "\u5728\u804a\u5929\u4e2d\u4f7f\u7528\u7684\u5f62\u5f0f\uff1a";
     },
     get$writingExercisesTooltip() {
-      return "Writing";
+      return "\u5199\u4f5c";
     },
     get$listeningExercisesTooltip() {
-      return "Listening";
+      return "\u542c\u529b";
     },
     get$readingExercisesTooltip() {
-      return "Reading";
+      return "\u9605\u8bfb";
     },
     get$meaningNotFound() {
-      return "Meaning could not be found.";
+      return "\u672a\u627e\u5230\u542b\u4e49\u3002";
     },
     get$chooseBaseForm() {
-      return "Choose the base form";
+      return "\u9009\u62e9\u57fa\u672c\u5f62\u5f0f";
     },
     get$notTheCodeError() {
-      return "Sorry, that's not the code!";
+      return "\u62b1\u6b49\uff0c\u90a3\u4e0d\u662f\u4ee3\u7801\uff01";
     },
     get$totalXP() {
-      return "Total XP";
+      return "\u603b\u7ecf\u9a8c\u503c";
     },
     get$numLemmas() {
-      return "Total number of lemmas";
+      return "\u8bcd\u6839\u603b\u6570";
     },
     get$numLemmasUsedCorrectly() {
-      return "Number of lemmas used correctly at least once";
+      return "\u81f3\u5c11\u6b63\u786e\u4f7f\u7528\u4e00\u6b21\u7684\u8bcd\u6839\u6570\u91cf";
     },
     get$numLemmasUsedIncorrectly() {
-      return "Number of lemmas used correctly 0 times";
+      return "\u6b63\u786e\u4f7f\u7528\u7684\u8bcd\u6839\u6570\u91cf\u4e3a0\u6b21";
     },
     get$numLemmasSmallXP() {
-      return "Number of lemmas with 0 - 30 XP";
+      return "XP\u57280-30\u4e4b\u95f4\u7684\u8bcd\u6839\u6570\u91cf";
     },
     get$numLemmasMediumXP() {
-      return "Number of lemmas with 31 - 200 XP";
+      return "XP\u572831-200\u4e4b\u95f4\u7684\u8bcd\u6839\u6570\u91cf";
     },
     get$numLemmasLargeXP() {
-      return "Number of lemmas with > 200 XP";
+      return "XP\u8d85\u8fc7200\u7684\u8bcd\u6839\u6570\u91cf";
     },
     get$numGrammarConcepts() {
-      return "Number of grammar concepts";
+      return "\u8bed\u6cd5\u6982\u5ff5\u6570\u91cf";
     },
     get$listGrammarConcepts() {
-      return "Grammar concepts";
+      return "\u8bed\u6cd5\u6982\u5ff5";
     },
     get$listGrammarConceptsUsedCorrectly() {
-      return "Grammar concepts used correctly in original messages at least 80% of the time";
+      return "\u5728\u539f\u59cb\u6d88\u606f\u4e2d\u6b63\u786e\u4f7f\u7528\u8bed\u6cd5\u6982\u5ff5\u7684\u6bd4\u4f8b\u81f3\u5c1180%";
     },
     get$listGrammarConceptsUsedIncorrectly() {
-      return "Grammar concepts used correctly in original messages less than 80% of the time";
+      return "\u5728\u539f\u59cb\u6d88\u606f\u4e2d\u6b63\u786e\u4f7f\u7528\u8bed\u6cd5\u6982\u5ff5\u7684\u6bd4\u4f8b\u5c11\u4e8e80%";
     },
     get$listGrammarConceptsUseCorrectlySystemGenerated() {
-      return "Grammar concepts chosen correctly from system-generated suggestions at least 80% of the time";
+      return "\u4ece\u7cfb\u7edf\u751f\u6210\u5efa\u8bae\u4e2d\u6b63\u786e\u9009\u62e9\u8bed\u6cd5\u6982\u5ff5\u7684\u6bd4\u4f8b\u81f3\u5c1180%";
     },
     get$listGrammarConceptsUseIncorrectlySystemGenerated() {
-      return "Grammar concepts chosen correctly from system-generated suggestions less than 80% of the time";
+      return "\u4ece\u7cfb\u7edf\u751f\u6210\u5efa\u8bae\u4e2d\u6b63\u786e\u9009\u62e9\u8bed\u6cd5\u6982\u5ff5\u7684\u6bd4\u4f8b\u5c11\u4e8e80%";
     },
     get$listGrammarConceptsSmallXP() {
-      return "Grammar concepts with 0-50 xp";
+      return "XP\u57280-50\u4e4b\u95f4\u7684\u8bed\u6cd5\u6982\u5ff5";
     },
     get$listGrammarConceptsMediumXP() {
-      return "Grammar concepts with 51-200 xp";
+      return "XP\u572851-200\u4e4b\u95f4\u7684\u8bed\u6cd5\u6982\u5ff5";
     },
     get$listGrammarConceptsLargeXP() {
-      return "Grammar concepts 201-500 xp";
+      return "XP\u5728201-500\u4e4b\u95f4\u7684\u8bed\u6cd5\u6982\u5ff5";
     },
     get$listGrammarConceptsHugeXP() {
-      return "Grammar concepts >500 xp";
+      return "XP\u8d85\u8fc7500\u7684\u8bed\u6cd5\u6982\u5ff5";
     },
     get$numMessagesSent() {
-      return "Number of messages sent";
+      return "\u5df2\u53d1\u9001\u6d88\u606f\u6570\u91cf";
     },
     get$numWordsTyped() {
-      return "Number of words typed in original messages";
+      return "\u5728\u539f\u59cb\u6d88\u606f\u4e2d\u8f93\u5165\u7684\u5355\u8bcd\u6570";
     },
     get$numCorrectChoices() {
-      return "Number of correct words chosen from system-generated suggestions";
+      return "\u4ece\u7cfb\u7edf\u751f\u6210\u5efa\u8bae\u4e2d\u6b63\u786e\u9009\u62e9\u7684\u5355\u8bcd\u6570";
     },
     get$numIncorrectChoices() {
-      return "Number of incorrect words chosen from system-generated suggestions";
+      return "\u4ece\u7cfb\u7edf\u751f\u6210\u5efa\u8bae\u4e2d\u9519\u8bef\u9009\u62e9\u7684\u5355\u8bcd\u6570";
     },
     get$commaSeparatedFile() {
       return "CSV";
@@ -3738,841 +3738,841 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Excel";
     },
     get$fileType() {
-      return "File type";
+      return "\u6587\u4ef6\u7c7b\u578b";
     },
     get$download(_) {
-      return "Download";
+      return "\u4e0b\u8f7d";
     },
     get$analyticsNotAvailable() {
-      return "User analytics not available";
+      return "\u7528\u6237\u5206\u6790\u4e0d\u53ef\u7528";
     },
     get$downloading() {
-      return "Downloading...";
+      return "\u4e0b\u8f7d\u4e2d...";
     },
     get$failedFetchUserAnalytics() {
-      return "Failed to download user analytics";
+      return "\u4e0b\u8f7d\u7528\u6237\u5206\u6790\u5931\u8d25";
     },
     get$downloadComplete() {
-      return "Download complete!";
+      return "\u4e0b\u8f7d\u5b8c\u6210\uff01";
     },
     whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
-      return "What is the " + morphologicalFeature + " of '" + wordForm + "'?";
+      return "'" + wordForm + "'\u7684" + morphologicalFeature + "\u662f\u4ec0\u4e48\uff1f";
     },
     get$dataAvailable() {
-      return "Data availability";
+      return "\u6570\u636e\u53ef\u7528\u6027";
     },
     get$available(_) {
-      return "Available";
+      return "\u53ef\u7528";
     },
     get$pangeaBotIsFallible() {
-      return "Pangea Bot makes mistakes too!";
+      return "Pangea\u673a\u5668\u4eba\u4e5f\u4f1a\u72af\u9519\uff01";
     },
     whatIsMeaning$2(lemma, partOfSpeech) {
-      return "What does '" + lemma + "' mean?";
+      return "'" + lemma + "'\u662f\u4ec0\u4e48\u610f\u601d\uff1f";
     },
     get$chooseLemmaMeaningInstructionsBody() {
-      return "Match meanings with the words in the message!";
+      return "\u5c06\u610f\u601d\u4e0e\u6d88\u606f\u4e2d\u7684\u5355\u8bcd\u5339\u914d\uff01";
     },
     get$doubleClickToEdit() {
-      return "Double-click to edit.";
+      return "\u53cc\u51fb\u7f16\u8f91\u3002";
     },
     get$targetLanguageLabel() {
-      return "Target language";
+      return "\u76ee\u6807\u8bed\u8a00";
     },
     get$cefrLevelLabel() {
-      return "CEFR level";
+      return "CEFR\u7b49\u7ea7";
     },
     get$image(_) {
-      return "Image";
+      return "\u56fe\u7247";
     },
     get$activityPlannerOverviewInstructionsBody() {
-      return "Choose a topic, mode, learning objective and generate an activity for the chat!";
+      return "\u9009\u62e9\u4e00\u4e2a\u4e3b\u9898\u3001\u6a21\u5f0f\u3001\u5b66\u4e60\u76ee\u6807\uff0c\u5e76\u4e3a\u804a\u5929\u751f\u6210\u4e00\u4e2a\u6d3b\u52a8\uff01";
     },
     get$constructUsePvmDesc() {
-      return "Produced in voice message";
+      return "\u4ee5\u8bed\u97f3\u6d88\u606f\u5f62\u5f0f\u751f\u6210";
     },
     get$leaveSpaceDescription() {
-      return "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.";
+      return "\u9000\u51fa\u8bfe\u7a0b\u540e\uff0c\u60a8\u5c06\u79bb\u5f00\u5176\u4e2d\u6240\u6709\u7684\u804a\u5929\u3002\u5176\u4ed6\u7528\u6237\u5c06\u770b\u5230\u60a8\u5df2\u79bb\u5f00\u8bfe\u7a0b\u3002";
     },
     get$constructUseCorMmDesc() {
-      return "Correct message meaning";
+      return "\u6b63\u786e\u7684\u6d88\u606f\u542b\u4e49";
     },
     get$constructUseIncMmDesc() {
-      return "Incorrect message meaning";
+      return "\u9519\u8bef\u7684\u6d88\u606f\u542b\u4e49";
     },
     get$constructUseIgnMmDesc() {
-      return "Ignored message meaning";
+      return "\u88ab\u5ffd\u7565\u7684\u6d88\u606f\u542b\u4e49";
     },
     get$meaning() {
-      return "Meaning";
+      return "\u542b\u4e49";
     },
     chatWith$1(displayname) {
-      return "Group with " + displayname;
+      return "\u4e0e" + displayname + "\u7ec4\u961f";
     },
     get$clickOnEmailLink() {
-      return "Please click on the link in the email and then proceed.\n\nCheck your spam folder if the email hasn't arrived.";
+      return "\u8bf7\u70b9\u51fb\u7535\u5b50\u90ae\u4ef6\u4e2d\u7684\u94fe\u63a5\uff0c\u7136\u540e\u7ee7\u7eed\u3002\n\n\u5982\u679c\u672a\u6536\u5230\u90ae\u4ef6\uff0c\u8bf7\u68c0\u67e5\u60a8\u7684\u5783\u573e\u90ae\u4ef6\u6587\u4ef6\u5939\u3002";
     },
     get$dontForgetPassword() {
-      return "Don't forget your password!";
+      return "\u522b\u5fd8\u4e86\u4f60\u7684\u5bc6\u7801\uff01";
     },
     get$enableAutocorrectToolName() {
-      return "Enable device autocorrect";
+      return "\u542f\u7528\u8bbe\u5907\u81ea\u52a8\u66f4\u6b63";
     },
     get$enableAutocorrectDescription() {
-      return "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.";
+      return "\u5982\u679c\u60a8\u7684\u8bbe\u5907\u652f\u6301\u60a8\u6b63\u5728\u5b66\u4e60\u7684\u8bed\u8a00\uff0c\u53ef\u4ee5\u542f\u7528\u8bbe\u5907\u81ea\u52a8\u66f4\u6b63\uff0c\u4ee5\u5728\u8f93\u5165\u65f6\u4fee\u6b63\u5e38\u89c1\u9519\u8bef\u3002";
     },
     get$ttsDisbledTitle() {
-      return "Text-to-speech disabled";
+      return "\u6587\u672c\u8f6c\u8bed\u97f3\u5df2\u7981\u7528";
     },
     get$ttsDisabledBody() {
-      return "You can enable text-to-speech in your learning settings";
+      return "\u60a8\u53ef\u4ee5\u5728\u5b66\u4e60\u8bbe\u7f6e\u4e2d\u542f\u7528\u6587\u672c\u8f6c\u8bed\u97f3";
     },
     get$noSpaceDescriptionYet() {
-      return "No course description created yet.";
+      return "\u5c1a\u672a\u521b\u5efa\u8bfe\u7a0b\u63cf\u8ff0\u3002";
     },
     get$tooLargeToSend() {
-      return "This message is too large to send";
+      return "\u6b64\u6d88\u606f\u8fc7\u5927\uff0c\u65e0\u6cd5\u53d1\u9001";
     },
     get$exitWithoutSaving() {
-      return "Are you sure you want to leave without saving?";
+      return "\u4f60\u786e\u5b9a\u8981\u9000\u51fa\u800c\u4e0d\u4fdd\u5b58\u5417\uff1f";
     },
     get$enableAutocorrectWarning() {
-      return "Warning! Requires adding your target language keyboard";
+      return "\u8b66\u544a\uff01\u9700\u8981\u6dfb\u52a0\u76ee\u6807\u8bed\u8a00\u952e\u76d8";
     },
     get$leaveRoomDescription() {
-      return "You're about to leave this chat. Other users will see that you have left the chat.";
+      return "\u4f60\u5373\u5c06\u79bb\u5f00\u6b64\u804a\u5929\u3002\u5176\u4ed6\u7528\u6237\u5c06\u770b\u5230\u4f60\u5df2\u79bb\u5f00\u804a\u5929\u3002";
     },
     get$confirmUserId() {
-      return "Please confirm your Pangea Chat username in order to delete your account.";
+      return "\u8bf7\u786e\u8ba4\u60a8\u7684Pangea\u804a\u5929\u7528\u6237\u540d\u4ee5\u5220\u9664\u60a8\u7684\u8d26\u6237\u3002";
     },
     paidSubscriptionStarts$1(startDate) {
-      return "Starting " + startDate;
+      return "\u5f00\u59cb\u4e8e " + startDate;
     },
     get$cancelInSubscriptionSettings() {
-      return "\u2022 Cancel at any time in subscription settings";
+      return "\u2022 \u5728\u8ba2\u9605\u8bbe\u7f6e\u4e2d\u968f\u65f6\u53d6\u6d88";
     },
     get$autocorrectNotAvailable() {
-      return "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!";
+      return "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u5e73\u53f0\u76ee\u524d\u4e0d\u652f\u6301\u6b64\u529f\u80fd\u3002\u8bf7\u5173\u6ce8\u540e\u7eed\u5f00\u53d1\uff01";
     },
     get$pleaseUpdateApp() {
-      return "Please update the app to continue.";
+      return "\u8bf7\u66f4\u65b0\u5e94\u7528\u4ee5\u7ee7\u7eed\u3002";
     },
     get$chooseEmojiInstructionsBody() {
-      return "Match emojis with the words they best represent. Don't worry! No points off for disagreeing. \ud83d\ude05";
+      return "\u5c06\u8868\u60c5\u7b26\u53f7\u4e0e\u5b83\u4eec\u6700\u80fd\u4ee3\u8868\u7684\u5355\u8bcd\u5339\u914d\u3002\u522b\u62c5\u5fc3\uff01\u4e0d\u540c\u610f\u4e5f\u4e0d\u4f1a\u6263\u5206\u3002\ud83d\ude0a";
     },
     get$analyticsVocabListBody() {
-      return "This is all your vocabulary! As you earn XP for each word, they'll go from seedling to full bloom. Click on any word to see more details.";
+      return "\u8fd9\u662f\u4f60\u6240\u6709\u7684\u8bcd\u6c47\uff01\u5f53\u4f60\u83b7\u5f97\u6bcf\u4e2a\u5355\u8bcd\u7684\u7ecf\u9a8c\u503c\u65f6\uff0c\u5b83\u4eec\u4f1a\u4ece\u5e7c\u82d7\u6210\u957f\u4e3a\u76db\u5f00\u3002\u70b9\u51fb\u4efb\u4f55\u5355\u8bcd\u4ee5\u67e5\u770b\u66f4\u591a\u7ec6\u8282\u3002";
     },
     get$morphAnalyticsListBody() {
-      return "These are all the grammar concepts in the language you're learning! You'll unlock them as you encounter them while chatting. Click for details.";
+      return "\u8fd9\u4e9b\u662f\u4f60\u6b63\u5728\u5b66\u4e60\u7684\u8bed\u8a00\u4e2d\u7684\u6240\u6709\u8bed\u6cd5\u6982\u5ff5\uff01\u4f60\u5728\u804a\u5929\u65f6\u9047\u5230\u5b83\u4eec\u65f6\u4f1a\u89e3\u9501\u5b83\u4eec\u3002\u70b9\u51fb\u67e5\u770b\u8be6\u60c5\u3002";
     },
     get$knockSpaceSuccess() {
-      return "You have requested to join this course! An admin will respond to your request when they receive it \ud83d\ude00";
+      return "\u4f60\u5df2\u8bf7\u6c42\u52a0\u5165\u6b64\u8bfe\u7a0b\uff01\u7ba1\u7406\u5458\u5c06\u5728\u6536\u5230\u8bf7\u6c42\u540e\u56de\u590d\u4f60 \ud83d\ude00";
     },
     get$chooseWordAudioInstructionsBody() {
-      return "Listen to the complete message. Then match the audios with the words.";
+      return "\u542c\u5b8c\u6574\u4e2a\u6d88\u606f\uff0c\u7136\u540e\u5c06\u97f3\u9891\u4e0e\u5355\u8bcd\u5339\u914d\u3002";
     },
     get$chooseMorphsInstructionsBody() {
-      return "Click the puzzle pieces for grammar questions!";
+      return "\u70b9\u51fb\u62fc\u56fe\u5757\u4ee5\u56de\u7b54\u8bed\u6cd5\u95ee\u9898\uff01";
     },
     get$home() {
-      return "Home";
+      return "\u9996\u9875";
     },
     get$join(_) {
-      return "Join";
+      return "\u52a0\u5165";
     },
     get$readingAssistanceOverviewBody() {
-      return "Click the buttons below for mini-games on matching emojis, audios, word meanings, and grammar concepts. Or click on any word for details.";
+      return "\u70b9\u51fb\u4e0b\u9762\u7684\u6309\u94ae\u8fdb\u884c\u5339\u914d\u8868\u60c5\u7b26\u53f7\u3001\u97f3\u9891\u3001\u5355\u8bcd\u542b\u4e49\u548c\u8bed\u6cd5\u6982\u5ff5\u7684\u8ff7\u4f60\u6e38\u620f\u3002\u6216\u8005\u70b9\u51fb\u4efb\u4f55\u5355\u8bcd\u83b7\u53d6\u8be6\u7ec6\u4fe1\u606f\u3002";
     },
     get$resetInstructionTooltipsTitle() {
-      return "Reset instruction tooltips";
+      return "\u91cd\u7f6e\u64cd\u4f5c\u63d0\u793a";
     },
     get$resetInstructionTooltipsDesc() {
-      return "Click to show instruction tooltips like for a brand new user.";
+      return "\u70b9\u51fb\u663e\u793a\u50cf\u65b0\u7528\u6237\u4e00\u6837\u7684\u64cd\u4f5c\u63d0\u793a\u3002";
     },
     get$selectForGrammar() {
-      return "Select a grammar icon for activities and details.";
+      return "\u9009\u62e9\u4e00\u4e2a\u8bed\u6cd5\u56fe\u6807\u4ee5\u67e5\u770b\u6d3b\u52a8\u548c\u8be6\u7ec6\u4fe1\u606f\u3002";
     },
     get$translationProblem() {
-      return "Translation problem";
+      return "\u7ffb\u8bd1\u95ee\u9898";
     },
     get$niceJob() {
-      return "Nice job!";
+      return "\u5e72\u5f97\u597d\uff01";
     },
     get$askToJoin() {
-      return "Ask to join";
+      return "\u8bf7\u6c42\u52a0\u5165";
     },
     get$emptyChatWarningTitle() {
-      return "Chat is empty";
+      return "\u804a\u5929\u4e3a\u7a7a";
     },
     get$emptyChatWarningDesc() {
-      return "You haven't invited anyone to your chat. Go to Chat settings to invite your contacts or the Bot. You can also do this later.";
+      return "\u4f60\u8fd8\u6ca1\u6709\u9080\u8bf7\u4efb\u4f55\u4eba\u52a0\u5165\u4f60\u7684\u804a\u5929\u3002\u524d\u5f80\u804a\u5929\u8bbe\u7f6e\u9080\u8bf7\u4f60\u7684\u8054\u7cfb\u4eba\u6216\u673a\u5668\u4eba\u3002\u4f60\u4e5f\u53ef\u4ee5\u7a0d\u540e\u518d\u505a\u3002";
     },
     get$areYouLikeMe() {
-      return "Are you like me?";
+      return "\u4f60\u50cf\u6211\u5417\uff1f";
     },
     get$tryAgainLater() {
-      return "Too many attempts made. Please try again in 5 minutes.";
+      return "\u5c1d\u8bd5\u6b21\u6570\u8fc7\u591a\u3002\u8bf7\u57285\u5206\u949f\u540e\u518d\u8bd5\u3002";
     },
     get$enterSpaceCode() {
-      return "Enter course code";
+      return "\u8f93\u5165\u8bfe\u7a0b\u4ee3\u7801";
     },
     get$shareSpaceLink() {
-      return "Share link";
+      return "\u5206\u4eab\u94fe\u63a5";
     },
     get$byUsingPangeaChat() {
-      return "By using Pangea Chat, I agree to the ";
+      return "\u4f7f\u7528Pangea\u804a\u5929\uff0c\u5373\u8868\u793a\u6211\u540c\u610f";
     },
     get$details(_) {
-      return "Details";
+      return "\u8be6\u60c5";
     },
     get$languageLevelPreA1Desc() {
-      return "I have never learned or used the language.";
+      return "\u6211\u4ece\u672a\u5b66\u4e60\u6216\u4f7f\u7528\u8fc7\u8be5\u8bed\u8a00\u3002";
     },
     get$languageLevelA1Desc() {
-      return "I can understand and use some familiar everyday expressions and very basic phrases.";
+      return "\u6211\u80fd\u7406\u89e3\u5e76\u4f7f\u7528\u4e00\u4e9b\u719f\u6089\u7684\u65e5\u5e38\u8868\u8fbe\u548c\u975e\u5e38\u57fa\u672c\u7684\u77ed\u8bed\u3002";
     },
     get$languageLevelA2Desc() {
-      return "I can understand sentences and frequently used expressions related to areas of immediate relevance.";
+      return "\u6211\u80fd\u7406\u89e3\u4e0e\u7d27\u6025\u76f8\u5173\u7684\u53e5\u5b50\u548c\u5e38\u7528\u8868\u8fbe\u3002";
     },
     get$languageLevelB1Desc() {
-      return "I can deal with most familiar situations and can produce simple connected text on familiar topics.";
+      return "\u6211\u80fd\u5e94\u5bf9\u5927\u591a\u6570\u719f\u6089\u7684\u60c5\u51b5\uff0c\u5e76\u80fd\u7528\u7b80\u5355\u7684\u8fde\u8d2f\u6587\u672c\u8868\u8fbe\u719f\u6089\u7684\u8bdd\u9898\u3002";
     },
     get$languageLevelB2Desc() {
-      return "I can understand the mains ideas of complex texts and interact with a degree of fluency and spontaneity.";
+      return "\u6211\u80fd\u7406\u89e3\u590d\u6742\u6587\u672c\u7684\u4e3b\u8981\u601d\u60f3\uff0c\u5e76\u80fd\u6d41\u5229\u81ea\u5982\u5730\u4e92\u52a8\u3002";
     },
     get$languageLevelC1Desc() {
-      return "I can express ideas fluently and spontaneously without much struggle and understand a wide range of demanding texts.";
+      return "\u6211\u80fd\u6d41\u5229\u81ea\u5982\u5730\u8868\u8fbe\u601d\u60f3\uff0c\u5e76\u7406\u89e3\u5404\u79cd\u8981\u6c42\u8f83\u9ad8\u7684\u6587\u672c\u3002";
     },
     get$languageLevelC2Desc() {
-      return "I can understand virtually everything heard or read and express myself fluently and precisely.";
+      return "\u6211\u51e0\u4e4e\u80fd\u7406\u89e3\u542c\u5230\u6216\u9605\u8bfb\u7684\u6240\u6709\u5185\u5bb9\uff0c\u5e76\u80fd\u6d41\u5229\u51c6\u786e\u5730\u8868\u8fbe\u81ea\u5df1\u3002";
     },
     get$newVocab() {
-      return "New vocab";
+      return "\u65b0\u8bcd\u6c47";
     },
     get$newGrammar() {
-      return "New grammar concepts";
+      return "\u65b0\u8bed\u6cd5\u6982\u5ff5";
     },
     get$choosePracticeMode() {
-      return "Click on one of the buttons above to start a practice activity";
+      return "\u70b9\u51fb\u4e0a\u65b9\u4efb\u610f\u6309\u94ae\u5f00\u59cb\u7ec3\u4e60\u6d3b\u52a8";
     },
     get$ban() {
-      return "Ban";
+      return "\u5c01\u7981";
     },
     get$kick() {
-      return "Kick";
+      return "\u8e22\u51fa";
     },
     get$lemma() {
-      return "Lemma";
+      return "\u8bcd\u6839";
     },
     get$grammarFeature() {
-      return "Grammar feature";
+      return "\u8bed\u6cd5\u7279\u5f81";
     },
     get$grammarTag() {
-      return "Grammar tag";
+      return "\u8bed\u6cd5\u6807\u7b7e";
     },
     get$forms() {
-      return "Forms";
+      return "\u5f62\u5f0f";
     },
     get$exampleMessages() {
-      return "Example messages";
+      return "\u793a\u4f8b\u6d88\u606f";
     },
     get$timesUsedIndependently() {
-      return "Times used independently";
+      return "\u72ec\u7acb\u4f7f\u7528\u6b21\u6570";
     },
     get$timesUsedWithAssistance() {
-      return "Times used with assistance";
+      return "\u534f\u52a9\u4f7f\u7528\u6b21\u6570";
     },
     shareInviteCode$1(code) {
-      return "Share invite code: " + code;
+      return "\u5206\u4eab\u9080\u8bf7\u7801\uff1a" + code;
     },
     get$skipForNow() {
-      return "Skip for now";
+      return "\u6682\u65f6\u8df3\u8fc7";
     },
     get$permissions(_) {
-      return "Permissions";
+      return "\u6743\u9650";
     },
     get$spaceChildPermission() {
-      return "Who can add new chats to this course";
+      return "\u8c01\u53ef\u4ee5\u5411\u6b64\u8bfe\u7a0b\u6dfb\u52a0\u65b0\u804a\u5929";
     },
     get$addEnvironmentOverride() {
-      return "Add environment override";
+      return "\u6dfb\u52a0\u73af\u5883\u8986\u76d6";
     },
     get$defaultOption() {
-      return "Default";
+      return "\u9ed8\u8ba4";
     },
     get$deleteChatDesc() {
-      return "Are you sure you want to delete this chat? It will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics.";
+      return "\u60a8\u786e\u5b9a\u8981\u5220\u9664\u6b64\u804a\u5929\u5417\uff1f\u5b83\u5c06\u88ab\u6240\u6709\u53c2\u4e0e\u8005\u5220\u9664\uff0c\u804a\u5929\u4e2d\u7684\u6240\u6709\u6d88\u606f\u5c06\u4e0d\u518d\u53ef\u7528\u4e8e\u7ec3\u4e60\u6216\u5b66\u4e60\u5206\u6790\u3002";
     },
     get$deleteSpaceDesc() {
-      return "The course and any selected chats will be deleted for all participants and all messages within the chat will no longer be available for practice or learning analytics. This action cannot be undone.";
+      return "\u8bfe\u7a0b\u548c\u4efb\u4f55\u5df2\u9009\u62e9\u7684\u804a\u5929\u5c06\u88ab\u6240\u6709\u53c2\u4e0e\u8005\u5220\u9664\uff0c\u804a\u5929\u4e2d\u7684\u6240\u6709\u6d88\u606f\u5c06\u4e0d\u518d\u53ef\u7528\u4e8e\u7ec3\u4e60\u6216\u5b66\u4e60\u5206\u6790\u3002\u6b64\u64cd\u4f5c\u65e0\u6cd5\u64a4\u9500\u3002";
     },
     get$configureSpace() {
-      return "Configure course";
+      return "\u914d\u7f6e\u8bfe\u7a0b";
     },
     get$pinMessages() {
-      return "Pin messages";
+      return "\u7f6e\u9876\u6d88\u606f";
     },
     get$setJoinRules() {
-      return "Set join rules";
+      return "\u8bbe\u7f6e\u52a0\u5165\u89c4\u5219";
     },
     get$changeGeneralSettings() {
-      return "Change general settings";
+      return "\u66f4\u6539\u5e38\u89c4\u8bbe\u7f6e";
     },
     get$inviteOtherUsersToRoom() {
-      return "Invite other users";
+      return "\u9080\u8bf7\u5176\u4ed6\u7528\u6237";
     },
     get$changeTheNameOfTheSpace() {
-      return "Change the name of the course";
+      return "\u66f4\u6539\u8bfe\u7a0b\u540d\u79f0";
     },
     get$changeTheDescription() {
-      return "Change the description";
+      return "\u66f4\u6539\u63cf\u8ff0";
     },
     get$changeThePermissions() {
-      return "Change the permissions";
+      return "\u66f4\u6539\u6743\u9650";
     },
     get$introductions() {
-      return "Introductions";
+      return "\u4ecb\u7ecd";
     },
     get$announcements() {
-      return "Announcements";
+      return "\u516c\u544a";
     },
     get$activities() {
-      return "Activities";
+      return "\u6d3b\u52a8";
     },
     get$access() {
-      return "Access";
+      return "\u8bbf\u95ee\u6743\u9650";
     },
     get$howSpaceCanBeFound() {
-      return "How this course can be found";
+      return "\u5982\u4f55\u627e\u5230\u6b64\u8bfe\u7a0b";
     },
     get$$private() {
-      return "Private";
+      return "\u79c1\u5bc6";
     },
     get$cannotBeFoundInSearch() {
-      return "Cannot be found in search";
+      return "\u641c\u7d22\u4e2d\u65e0\u6cd5\u627e\u5230";
     },
     get$$public(_) {
-      return "Public";
+      return "\u516c\u5f00";
     },
     get$visibleToCommunity() {
-      return 'Visible to the broader Pangea Chat community via "Find a course"';
+      return "\u901a\u8fc7\u201c\u67e5\u627e\u8bfe\u7a0b\u201d\u5bf9\u66f4\u5e7f\u6cdb\u7684\u6f58\u76d6\u4e9a\u804a\u5929\u793e\u533a\u53ef\u89c1";
     },
     get$howSpaceCanBeJoined() {
-      return "How this course can be joined";
+      return "\u5982\u4f55\u52a0\u5165\u6b64\u8bfe\u7a0b";
     },
     get$canBeFoundVia() {
-      return "Can be found via:";
+      return "\u53ef\u4ee5\u901a\u8fc7\u4ee5\u4e0b\u65b9\u5f0f\u627e\u5230\uff1a";
     },
     get$canBeFoundViaInvitation() {
-      return "\u2022 invitation";
+      return "\u2022 \u9080\u8bf7";
     },
     get$canBeFoundViaCodeOrLink() {
-      return "\u2022 code or link";
+      return "\u2022 \u4ee3\u7801\u6216\u94fe\u63a5";
     },
     get$canBeFoundViaKnock() {
-      return "\u2022 request to join and admin approval";
+      return "\u2022 \u8bf7\u6c42\u52a0\u5165\u5e76\u7531\u7ba1\u7406\u5458\u6279\u51c6";
     },
     get$youHaveLeveledUp() {
-      return "You have leveled up!";
+      return "\u4f60\u5df2\u5347\u7ea7\uff01";
     },
     get$sendActivities() {
-      return "Send activities";
+      return "\u53d1\u9001\u6d3b\u52a8";
     },
     get$directMessage() {
-      return "Direct Message";
+      return "\u79c1\u4fe1";
     },
     get$newDirectMessage() {
-      return "New direct message";
+      return "\u65b0\u79c1\u4fe1";
     },
     get$speakingExercisesTooltip() {
-      return "Speaking";
+      return "\u53e3\u8bed\u7ec3\u4e60";
     },
     get$transcriptionFailed() {
-      return "Failed to transcribe audio";
+      return "\u97f3\u9891\u8f6c\u5f55\u5931\u8d25";
     },
     get$aUserIsKnocking() {
-      return "1 user is requesting to join your course";
+      return "\u67091\u4e2a\u7528\u6237\u8bf7\u6c42\u52a0\u5165\u4f60\u7684\u8bfe\u7a0b";
     },
     usersAreKnocking$1(users) {
-      return "" + users + " users are requesting to join your course";
+      return "" + users + "\u4e2a\u7528\u6237\u8bf7\u6c42\u52a0\u5165\u4f60\u7684\u8bfe\u7a0b";
     },
     get$failedToFetchTranscription() {
-      return "Failed to fetch transcription";
+      return "\u83b7\u53d6\u8f6c\u5f55\u5931\u8d25";
     },
     get$deleteEmptySpaceDesc() {
-      return "The course will be deleted for all participants. This action cannot be undone.";
+      return "\u8bfe\u7a0b\u5c06\u88ab\u6240\u6709\u53c2\u4e0e\u8005\u5220\u9664\u3002\u6b64\u64cd\u4f5c\u65e0\u6cd5\u64a4\u9500\u3002";
     },
     get$failedToPlayVideo() {
-      return "Failed to play video";
+      return "\u64ad\u653e\u89c6\u9891\u5931\u8d25";
     },
     get$done() {
-      return "Done";
+      return "\u5b8c\u6210";
     },
     get$inThisSpace() {
-      return "In this course";
+      return "\u5728\u6b64\u7a7a\u95f4";
     },
     get$myContacts() {
-      return "My contacts";
+      return "\u6211\u7684\u8054\u7cfb\u4eba";
     },
     get$inviteAllInSpace() {
-      return "Invite all in this course";
+      return "\u9080\u8bf7\u6b64\u7a7a\u95f4\u4e2d\u7684\u6240\u6709\u4eba";
     },
     get$spaceParticipantsHaveBeenInvitedToTheChat() {
-      return "All course participants has been invited to the chat";
+      return "\u6240\u6709\u8bfe\u7a0b\u53c2\u4e0e\u8005\u5df2\u88ab\u9080\u8bf7\u52a0\u5165\u804a\u5929";
     },
     numKnocking$1(count) {
-      return "" + count + " knocking";
+      return "" + count + " \u6b63\u5728\u6572\u95e8";
     },
     numInvited$1(count) {
-      return "" + count + " invited";
+      return "" + count + " \u5df2\u88ab\u9080\u8bf7";
     },
     get$errorFetchingDefinition() {
-      return "Failed to fetch definition";
+      return "\u83b7\u53d6\u5b9a\u4e49\u5931\u8d25";
     },
     get$errorProcessAnalytics() {
-      return "Failed to process analytics";
+      return "\u5904\u7406\u5206\u6790\u5931\u8d25";
     },
     get$errorDownloading() {
-      return "Download failed";
+      return "\u4e0b\u8f7d\u5931\u8d25";
     },
     get$errorFetchingLevelSummary() {
-      return "Failed to fetch level summary";
+      return "\u83b7\u53d6\u5173\u5361\u6458\u8981\u5931\u8d25";
     },
     get$errorLoadingSpaceChildren() {
-      return "Failed to load chats within this course";
+      return "\u52a0\u8f7d\u6b64\u8bfe\u7a0b\u4e2d\u7684\u804a\u5929\u5931\u8d25";
     },
     get$unexpectedError() {
-      return "Unexpected error.";
+      return "\u53d1\u751f\u610f\u5916\u9519\u8bef\u3002";
     },
     get$pleaseReload() {
-      return "Please reload and try again.";
+      return "\u8bf7\u91cd\u65b0\u52a0\u8f7d\u5e76\u91cd\u8bd5\u3002";
     },
     get$translationError() {
-      return "Translation error";
+      return "\u7ffb\u8bd1\u9519\u8bef";
     },
     get$errorFetchingTranslation() {
-      return "Failed to fetch translation";
+      return "\u83b7\u53d6\u7ffb\u8bd1\u5931\u8d25";
     },
     get$errorFetchingActivity() {
-      return "Failed to fetch activity";
+      return "\u83b7\u53d6\u6d3b\u52a8\u5931\u8d25";
     },
     get$check(_) {
-      return "Check";
+      return "\u68c0\u67e5";
     },
     get$unableToFindRoom() {
-      return "No chat or course found with that code. Please try again.";
+      return "\u672a\u627e\u5230\u8be5\u4ee3\u7801\u5bf9\u5e94\u7684\u804a\u5929\u6216\u8bfe\u7a0b\u3002\u8bf7\u91cd\u8bd5\u3002";
     },
     get$numCompletedActivities() {
-      return "Number of completed activities";
+      return "\u5df2\u5b8c\u6210\u7684\u6d3b\u52a8\u6570\u91cf";
     },
     viewingAnalytics$2(visible, users) {
-      return "Viewing " + visible + "/" + users + " Analytics";
+      return "\u6b63\u5728\u67e5\u770b " + visible + "/" + users + " \u7684\u5206\u6790";
     },
     get$request(_) {
-      return "Request";
+      return "\u8bf7\u6c42";
     },
     get$requestAll(_) {
-      return "Request All";
+      return "\u8bf7\u6c42\u5168\u90e8";
     },
     get$confirmMessageUnpin() {
-      return "Are you sure you want to unpin this message?";
+      return "\u60a8\u786e\u5b9a\u8981\u53d6\u6d88\u7f6e\u9876\u6b64\u6d88\u606f\u5417\uff1f";
     },
     get$pending(_) {
-      return "Pending";
+      return "\u5f85\u5904\u7406";
     },
     get$openRoleLabel() {
-      return "OPEN";
+      return "\u5f00\u653e";
     },
     joinedTheActivity$2(username, role) {
-      return "\ud83d\udc4b " + username + " joined as " + role;
+      return "\ud83d\udc4b " + username + " \u4f5c\u4e3a " + role + " \u52a0\u5165";
     },
     finishedTheActivity$1(username) {
-      return "\ud83c\udfaf " + username + " wrapped up this activity";
+      return "\ud83c\udfaf " + username + " \u5b8c\u6210\u4e86\u6b64\u6b21\u6d3b\u52a8";
     },
     get$endActivityTitle() {
-      return "I'm done";
+      return "\u6211\u5df2\u5b8c\u6210";
     },
     get$activitySummaryError() {
-      return "Activity summaries unavailable";
+      return "\u65e0\u6cd5\u83b7\u53d6\u6d3b\u52a8\u603b\u7ed3";
     },
     get$requestSummaries() {
-      return "Request summaries";
+      return "\u8bf7\u6c42\u603b\u7ed3";
     },
     get$requestAccessTitle() {
-      return "Request to analytics view access?";
+      return "\u8bf7\u6c42\u67e5\u770b\u5206\u6790\u6743\u9650\uff1f";
     },
     get$requestAccessDesc() {
-      return "Would you like to request access to view participant analytics?\n\nIf participants agree, admins of this course will be able to view their:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view their:\n    \u2022 messages in chats outside the course\n    \u2022 vocabulary list";
+      return "\u4f60\u60f3\u8bf7\u6c42\u67e5\u770b\u53c2\u4e0e\u8005\u5206\u6790\u5417\uff1f\n\n\u5982\u679c\u53c2\u4e0e\u8005\u540c\u610f\uff0c\u8bfe\u7a0b\u7ba1\u7406\u5458\u5c06\u80fd\u591f\u67e5\u770b\u4ed6\u4eec\u7684\uff1a\n    \u2022 \u8bcd\u6c47\u603b\u6570\n    \u2022 \u8bed\u6cd5\u6982\u5ff5\u603b\u6570\n    \u2022 \u5b8c\u6210\u7684\u6d3b\u52a8\u4f1a\u8bdd\u603b\u6570\n    \u2022 \u4f7f\u7528\u7684\u5177\u4f53\u8bed\u6cd5\u6982\u5ff5\uff0c\u6b63\u786e\u4e0e\u9519\u8bef\n\n\u4ed6\u4eec\u5c06\u65e0\u6cd5\u67e5\u770b\uff1a\n    \u2022 \u8bfe\u7a0b\u5916\u7684\u804a\u5929\u6d88\u606f\n    \u2022 \u8bcd\u6c47\u5217\u8868";
     },
     get$analyticsInactiveTitle() {
-      return "Requests to inactive users couldn\u2019t be sent";
+      return "\u65e0\u6cd5\u5411\u4e0d\u6d3b\u8dc3\u7528\u6237\u53d1\u9001\u8bf7\u6c42";
     },
     get$analyticsInactiveDesc() {
-      return "Inactive users who haven't logged in since this feature was introduced won't see your request.\n\nThe Request button will appear once they return. You can resend the request later by clicking the Request button under their name when it's available.";
+      return "\u81ea\u6b64\u529f\u80fd\u63a8\u51fa\u4ee5\u6765\u672a\u767b\u5f55\u7684\u4e0d\u6d3b\u8dc3\u7528\u6237\u5c06\u4e0d\u4f1a\u770b\u5230\u4f60\u7684\u8bf7\u6c42\u3002\n\n\u5f53\u4ed6\u4eec\u8fd4\u56de\u65f6\uff0c\u8bf7\u6c42\u6309\u94ae\u4f1a\u51fa\u73b0\u3002\u4f60\u53ef\u4ee5\u7a0d\u540e\u901a\u8fc7\u70b9\u51fb\u4ed6\u4eec\u540d\u5b57\u4e0b\u7684\u8bf7\u6c42\u6309\u94ae\u91cd\u65b0\u53d1\u9001\u8bf7\u6c42\u3002";
     },
     get$accessRequestedTitle() {
-      return "Analytics Access Request";
+      return "\u8bbf\u95ee\u5206\u6790\u8bf7\u6c42";
     },
     accessRequestedDesc$1(space) {
-      return "The administrators of \u201c" + space + "\u201d are requesting to view your learning analytics.\n\nIf you agree, admins of this course will be able to view your:\n    \u2022 total vocabulary\n    \u2022 total grammar concepts\n    \u2022 total activity sessions completed\n    \u2022 the specific grammar concepts used, correctly and incorrectly\n\nThey will not be able to view your:\n    \u2022 messages in chats outside the course\n    \u2022 vocabulary list";
+      return "\u201c" + space + "\u201d\u7684\u7ba1\u7406\u5458\u8bf7\u6c42\u67e5\u770b\u60a8\u7684\u5b66\u4e60\u5206\u6790\u3002\n\n\u5982\u679c\u60a8\u540c\u610f\uff0c\u8bfe\u7a0b\u7ba1\u7406\u5458\u5c06\u80fd\u591f\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u8bcd\u6c47\u603b\u6570\n    \u2022 \u8bed\u6cd5\u6982\u5ff5\u603b\u6570\n    \u2022 \u5b8c\u6210\u7684\u6d3b\u52a8\u4f1a\u8bdd\u603b\u6570\n    \u2022 \u4f7f\u7528\u7684\u5177\u4f53\u8bed\u6cd5\u6982\u5ff5\uff0c\u5305\u62ec\u6b63\u786e\u548c\u9519\u8bef\u7684\n\n\u4ed6\u4eec\u5c06\u65e0\u6cd5\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u8bfe\u7a0b\u5916\u7684\u804a\u5929\u6d88\u606f\n    \u2022 \u8bcd\u6c47\u5217\u8868";
     },
     get$allowAccess() {
-      return "Allow Access";
+      return "\u5141\u8bb8\u8bbf\u95ee";
     },
     get$denyAccess() {
-      return "Deny Access";
+      return "\u62d2\u7edd\u8bbf\u95ee";
     },
     get$adminRequestedAccess() {
-      return "Admins asked to view your analytics.";
+      return "\u7ba1\u7406\u5458\u8bf7\u6c42\u67e5\u770b\u60a8\u7684\u5206\u6790\u3002";
     },
     lastUpdated$1(time) {
-      return "Updated\n" + time;
+      return "\u66f4\u65b0\u4e8e\n" + time;
     },
     get$activityFinishedMessage() {
-      return "All Finished!";
+      return "\u5168\u90e8\u5b8c\u6210\uff01";
     },
     get$endForAll() {
-      return "End for all";
+      return "\u5168\u90e8\u7ed3\u675f";
     },
     get$newCourse() {
-      return "New course";
+      return "\u65b0\u8bfe\u7a0b";
     },
     numModules$1(num) {
-      return "" + num + " modules";
+      return "" + num + " \u4e2a\u6a21\u5757";
     },
     get$coursePlan() {
-      return "Course Plan";
+      return "\u8bfe\u7a0b\u8ba1\u5212";
     },
     get$editCourseLater() {
-      return "You can edit template title, descriptions, and course image later.";
+      return "\u60a8\u53ef\u4ee5\u7a0d\u540e\u7f16\u8f91\u6a21\u677f\u6807\u9898\u3001\u63cf\u8ff0\u548c\u8bfe\u7a0b\u56fe\u7247\u3002";
     },
     get$newCourseAccess() {
-      return "By default, courses are private and require admin approval to join. You can edit these settings at any time.";
+      return "\u9ed8\u8ba4\u60c5\u51b5\u4e0b\uff0c\u8bfe\u7a0b\u662f\u79c1\u6709\u7684\uff0c\u9700\u8981\u7ba1\u7406\u5458\u6279\u51c6\u624d\u80fd\u52a0\u5165\u3002\u60a8\u53ef\u4ee5\u968f\u65f6\u7f16\u8f91\u8fd9\u4e9b\u8bbe\u7f6e\u3002";
     },
     get$createCourse() {
-      return "Create course";
+      return "\u521b\u5efa\u8bfe\u7a0b";
     },
     get$stats() {
-      return "Stats";
+      return "\u7edf\u8ba1";
     },
     get$createGroupChat() {
-      return "Create group chat";
+      return "\u521b\u5efa\u7fa4\u804a";
     },
     get$editCourse() {
-      return "Edit course";
+      return "\u7f16\u8f91\u8bfe\u7a0b";
     },
     get$inviteDesc() {
-      return "By username, by code or link";
+      return "\u901a\u8fc7\u7528\u6237\u540d\u3001\u4ee3\u7801\u6216\u94fe\u63a5";
     },
     get$editCourseDesc() {
-      return "Here you can edit course title, description, etc.";
+      return "\u5728\u8fd9\u91cc\u4f60\u53ef\u4ee5\u7f16\u8f91\u8bfe\u7a0b\u6807\u9898\u3001\u63cf\u8ff0\u7b49\u3002";
     },
     get$permissionsDesc() {
-      return "Set permissions such as who can invite users, send messages, create chats, etc.";
+      return "\u8bbe\u7f6e\u6743\u9650\uff0c\u4f8b\u5982\u8c01\u53ef\u4ee5\u9080\u8bf7\u7528\u6237\u3001\u53d1\u9001\u6d88\u606f\u3001\u521b\u5efa\u804a\u5929\u7b49\u3002";
     },
     get$accessDesc() {
-      return "You can make your course open to the world! Or, make your course private and secure.";
+      return "\u4f60\u53ef\u4ee5\u8ba9\u4f60\u7684\u8bfe\u7a0b\u5bf9\u5168\u4e16\u754c\u5f00\u653e\uff01\u6216\u8005\uff0c\u5c06\u4f60\u7684\u8bfe\u7a0b\u8bbe\u4e3a\u79c1\u5bc6\u4e14\u5b89\u5168\u3002";
     },
     get$createGroupChatDesc() {
-      return "Whereas activity sessions start and end, group chats will stay open for routine communication.";
+      return "\u6d3b\u52a8\u4f1a\u8bdd\u5f00\u59cb\u548c\u7ed3\u675f\uff0c\u800c\u7fa4\u804a\u5c06\u4fdd\u6301\u5f00\u653e\u4ee5\u8fdb\u884c\u65e5\u5e38\u6c9f\u901a\u3002";
     },
     get$deleteDesc() {
-      return "Only admins can delete a course. This is a destructive action which removes all users and deletes all selected chats within the course. Proceed with caution.";
+      return "\u53ea\u6709\u7ba1\u7406\u5458\u53ef\u4ee5\u5220\u9664\u8bfe\u7a0b\u3002\u8fd9\u662f\u4e00\u4e2a\u7834\u574f\u6027\u64cd\u4f5c\uff0c\u4f1a\u5220\u9664\u6240\u6709\u7528\u6237\u548c\u8bfe\u7a0b\u5185\u7684\u6240\u6709\u9009\u5b9a\u804a\u5929\u3002\u8bf7\u8c28\u614e\u64cd\u4f5c\u3002";
     },
     get$noCourseFound() {
-      return "Oh, this course needs a plan!\n\nCourse plans are a sequence of topics and conversation activities.";
+      return "\u54e6\uff0c\u8fd9\u4e2a\u8bfe\u7a0b\u9700\u8981\u4e00\u4e2a\u8ba1\u5212\uff01\n\n\u8bfe\u7a0b\u8ba1\u5212\u662f\u4e00\u7cfb\u5217\u4e3b\u9898\u548c\u5bf9\u8bdd\u6d3b\u52a8\u3002";
     },
     additionalParticipants$1(num) {
-      return "+ " + num + " others";
+      return "+ " + num + " \u5176\u4ed6\u4eba";
     },
     get$directMessages() {
-      return "Direct Messages";
+      return "\u76f4\u63a5\u6d88\u606f";
     },
     get$whatNow() {
-      return "What now?";
+      return "\u63a5\u4e0b\u6765\u600e\u4e48\u529e\uff1f";
     },
     get$chooseNextActivity() {
-      return "Choose your next activity!";
+      return "\u9009\u62e9\u4f60\u7684\u4e0b\u4e00\u4e2a\u6d3b\u52a8\uff01";
     },
     get$letsGo() {
-      return "Let's go";
+      return "\u5f00\u59cb\u5427";
     },
     get$chooseRole() {
-      return "Choose a role!";
+      return "\u9009\u62e9\u4e00\u4e2a\u89d2\u8272\uff01";
     },
     get$chooseRoleToParticipate() {
-      return "Choose a role to participate!";
+      return "\u9009\u62e9\u4e00\u4e2a\u89d2\u8272\u53c2\u4e0e\uff01";
     },
     waitingToFillRole$1(num) {
-      return "Waiting to fill " + num + " roles...";
+      return "\u7b49\u5f85\u586b\u5145 " + num + " \u4e2a\u89d2\u8272...";
     },
     get$pingParticipants() {
-      return "Ping course participants";
+      return "\u63d0\u9192\u8bfe\u7a0b\u53c2\u4e0e\u8005";
     },
     get$playWithBot() {
-      return "Play with Pangea Bot";
+      return "\u4e0e\u6cdb\u4e9a\u673a\u5668\u4eba\u73a9";
     },
     get$inviteFriendsToActivity() {
-      return "Invite friends to activity";
+      return "\u9080\u8bf7\u670b\u53cb\u53c2\u52a0\u6d3b\u52a8";
     },
     get$inviteFriendsToActivityCourse() {
-      return "Invite friends to activity and course";
+      return "\u9080\u8bf7\u670b\u53cb\u53c2\u52a0\u6d3b\u52a8\u548c\u8bfe\u7a0b";
     },
     get$waitNotDone() {
-      return "Wait I\u2019m not done!";
+      return "\u7b49\u4e00\u4e0b\uff0c\u6211\u8fd8\u6ca1\u5b8c\u6210\uff01";
     },
     get$waitingForOthersToFinish() {
-      return "Waiting for the rest to finish up...";
+      return "\u7b49\u5f85\u5176\u4ed6\u4eba\u5b8c\u6210...";
     },
     get$saveToCompletedActivities() {
-      return "Save to completed activities";
+      return "\u4fdd\u5b58\u5230\u5df2\u5b8c\u6210\u7684\u6d3b\u52a8";
     },
     get$generatingSummary() {
-      return "Analyzing chat and generating results";
+      return "\u6b63\u5728\u5206\u6790\u804a\u5929\u5185\u5bb9\u5e76\u751f\u6210\u7ed3\u679c";
     },
     get$activityCompletedDesc() {
-      return "Your completed activity was added to analytics where you can review and practice the language you used.";
+      return "\u60a8\u7684\u5df2\u5b8c\u6210\u6d3b\u52a8\u5df2\u6dfb\u52a0\u5230\u5206\u6790\u4e2d\uff0c\u60a8\u53ef\u4ee5\u5728\u8fd9\u91cc\u56de\u987e\u548c\u7ec3\u4e60\u6240\u4f7f\u7528\u7684\u8bed\u8a00\u3002";
     },
     pingParticipantsNotification$2(user, room) {
-      return user + " is looking for users to join the activity session in " + room;
+      return user + " \u6b63\u5728\u5bfb\u627e\u7528\u6237\u52a0\u5165 " + room + " \u4e2d\u7684\u6d3b\u52a8\u4f1a\u8bdd";
     },
     get$courseName() {
-      return "Course name";
+      return "\u8bfe\u7a0b\u540d\u79f0";
     },
     get$createNewCourse() {
-      return "New course";
+      return "\u65b0\u5efa\u8bfe\u7a0b";
     },
     get$publicCourses() {
-      return "Public courses";
+      return "\u516c\u5f00\u8bfe\u7a0b";
     },
     goToCourse$1(course) {
-      return "Go to course: " + course;
+      return "\u524d\u5f80\u8bfe\u7a0b\uff1a" + course;
     },
     get$startNewSession() {
-      return "Start new session";
+      return "\u5f00\u59cb\u65b0\u4f1a\u8bdd";
     },
     get$joinOpenSession() {
-      return "Join open session";
+      return "\u52a0\u5165\u516c\u5f00\u4f1a\u8bdd";
     },
     get$activityNotFound() {
-      return "Activity not found";
+      return "\u672a\u627e\u5230\u6d3b\u52a8";
     },
     get$levelUp() {
-      return "Level up";
+      return "\u5347\u7ea7";
     },
     get$myActivities() {
-      return "My activities";
+      return "\u6211\u7684\u6d3b\u52a8";
     },
     get$openToJoin() {
-      return "Open to join";
+      return "\u5f00\u653e\u52a0\u5165";
     },
     get$activityDone() {
-      return "Activity Done!";
+      return "\u6d3b\u52a8\u5b8c\u6210\uff01";
     },
     get$promoCodeInfo() {
-      return "Promo codes can be entered on the next page";
+      return "\u4f18\u60e0\u7801\u53ef\u4ee5\u5728\u4e0b\u4e00\u9875\u8f93\u5165";
     },
     get$editsComingSoon() {
-      return "The ability to edit cities and activities is coming soon.";
+      return "\u7f16\u8f91\u57ce\u5e02\u548c\u6d3b\u52a8\u7684\u529f\u80fd\u5373\u5c06\u63a8\u51fa\u3002";
     },
     get$editing() {
-      return "Editing";
+      return "\u7f16\u8f91\u4e2d";
     },
     get$activityNeedsOneMember() {
-      return "Uh oh! This activity needs 1 more person.";
+      return "\u54ce\u5440\uff01\u8fd9\u4e2a\u6d3b\u52a8\u8fd8\u9700\u89811\u4e2a\u4eba\u3002";
     },
     activityNeedsMembers$1(num) {
-      return "Uh oh! This activity needs " + num + " more people.";
+      return "\u54ce\u5440\uff01\u8fd9\u4e2a\u6d3b\u52a8\u8fd8\u9700\u8981" + num + "\u4e2a\u4eba\u3002";
     },
     get$inviteFriendsToCourse() {
-      return "Invite friends to my course";
+      return "\u9080\u8bf7\u670b\u53cb\u52a0\u5165\u6211\u7684\u8bfe\u7a0b";
     },
     get$subscribeToUnlockActivitySummaries() {
-      return "Subscribe to unlock activity summaries";
+      return "\u8ba2\u9605\u4ee5\u89e3\u9501\u6d3b\u52a8\u603b\u7ed3";
     },
     get$subscribeToUnlockDefinitions() {
-      return "Subscribe to unlock definitions";
+      return "\u8ba2\u9605\u4ee5\u89e3\u9501\u5b9a\u4e49";
     },
     get$subscribeToUnlockTranscriptions() {
-      return "Subscribe to unlock transcriptions";
+      return "\u8ba2\u9605\u4ee5\u89e3\u9501\u8f6c\u5f55";
     },
     get$pingSent() {
-      return "\ud83d\udd14 Course ping sent! \ud83d\udd14";
+      return "\ud83d\udd14 \u8bfe\u7a0b\u63d0\u9192\u5df2\u53d1\u9001\uff01\ud83d\udd14";
     },
     get$courseTitle() {
-      return "Course title";
+      return "\u8bfe\u7a0b\u6807\u9898";
     },
     get$courseDesc() {
-      return "Course description";
+      return "\u8bfe\u7a0b\u63cf\u8ff0";
     },
     get$courseSavedSuccessfully() {
-      return "Course saved successfully";
+      return "\u8bfe\u7a0b\u5df2\u6210\u529f\u4fdd\u5b58";
     },
     get$addCoursePlan() {
-      return "Add a course plan";
+      return "\u6dfb\u52a0\u8bfe\u7a0b\u8ba1\u5212";
     },
     get$activityStatsButtonInstruction() {
-      return "Click here to view your activity stats and to close the activity when finished";
+      return "\u70b9\u51fb\u8fd9\u91cc\u67e5\u770b\u60a8\u7684\u6d3b\u52a8\u7edf\u8ba1\uff0c\u5b8c\u6210\u540e\u5173\u95ed\u6d3b\u52a8";
     },
     get$readingAnalyticsDesc() {
-      return "Click practice on each message for reading activities.";
+      return "\u70b9\u51fb\u6bcf\u6761\u6d88\u606f\u8fdb\u884c\u9605\u8bfb\u6d3b\u52a8\u7ec3\u4e60\u3002";
     },
     get$speakingAnalyticsDesc() {
-      return "Record voice messages for speaking practice.";
+      return "\u5f55\u5236\u8bed\u97f3\u6d88\u606f\u8fdb\u884c\u53e3\u8bed\u7ec3\u4e60\u3002";
     },
     get$audioAnalyticsDesc() {
-      return "Click practice on each message for listening activities.";
+      return "\u70b9\u51fb\u6bcf\u6761\u6d88\u606f\u8fdb\u884c\u542c\u529b\u6d3b\u52a8\u7ec3\u4e60\u3002";
     },
     get$loginToAccount() {
-      return "Login to my account";
+      return "\u767b\u5f55\u6211\u7684\u8d26\u6237";
     },
     get$appDescription() {
-      return "Learn a language\nwhile texting your friends.";
+      return "\u5b66\u4e60\u4e00\u95e8\u8bed\u8a00\n\u540c\u65f6\u7ed9\u670b\u53cb\u53d1\u6d88\u606f\u3002";
     },
     get$languages(_) {
-      return "Languages";
+      return "\u8bed\u8a00";
     },
     get$chooseLanguage() {
-      return "Choose a target language.";
+      return "\u9009\u62e9\u4e00\u79cd\u8bed\u8a00\u3002";
     },
     get$startOwn() {
-      return "Start my own";
+      return "\u5f00\u59cb\u6211\u7684\u8bfe\u7a0b";
     },
     get$joinCourseDesc() {
-      return "Each course has 8-10 sequenced topics with a range of task-based language learning activities.";
+      return "\u6bcf\u95e8\u8bfe\u7a0b\u5305\u542b8-10\u4e2a\u6709\u5e8f\u7684\u4e3b\u9898\uff0c\u914d\u5907\u4e00\u7cfb\u5217\u57fa\u4e8e\u4efb\u52a1\u7684\u8bed\u8a00\u5b66\u4e60\u6d3b\u52a8\u3002";
     },
     get$courseCodeHint() {
-      return "Course code";
+      return "\u65c5\u884c\u4ee3\u7801\u6216\u94fe\u63a5";
     },
     get$signupOption() {
-      return "How do you want to sign up?";
+      return "\u4f60\u60f3\u5982\u4f55\u6ce8\u518c\uff1f";
     },
     get$withApple() {
-      return "With Apple";
+      return "\u4f7f\u7528Apple";
     },
     get$withGoogle() {
-      return "With Google";
+      return "\u4f7f\u7528Google";
     },
     get$withEmail() {
-      return "With Email";
+      return "\u4f7f\u7528\u7535\u5b50\u90ae\u4ef6";
     },
     get$createAccount() {
-      return "Create account";
+      return "\u521b\u5efa\u8d26\u6237";
     },
     get$loginWithEmail() {
-      return "Login with email";
+      return "\u4f7f\u7528\u7535\u5b50\u90ae\u4ef6\u767b\u5f55";
     },
     get$usernameOrEmail() {
-      return "Username or email";
+      return "\u7528\u6237\u540d\u6216\u7535\u5b50\u90ae\u4ef6";
     },
     get$email() {
-      return "Email";
+      return "\u7535\u5b50\u90ae\u4ef6";
     },
     get$forgotPassword() {
-      return "Forgot password?";
+      return "\u5fd8\u8bb0\u5bc6\u7801\uff1f";
     },
     get$writingAnalyticsDesc() {
-      return "Send messages to practice writing.";
+      return "\u53d1\u9001\u6d88\u606f\u4ee5\u7ec3\u4e60\u5199\u4f5c\u3002";
     },
     get$endActivity() {
-      return "End activity";
+      return "\u7ed3\u675f\u6d3b\u52a8";
     },
     get$allLanguages() {
-      return "All languages";
+      return "\u6240\u6709\u8bed\u8a00";
     },
     get$chatListTooltip() {
-      return "Here you\u2019ll find your direct messages! Click on any user\u2019s avatar and \u201cstart conversation\u201d to send a DM.";
+      return "\u5728\u8fd9\u91cc\u4f60\u4f1a\u627e\u5230\u4f60\u7684\u79c1\u4fe1\uff01\u70b9\u51fb\u4efb\u4f55\u7528\u6237\u7684\u5934\u50cf\u5e76\u9009\u62e9\u201c\u5f00\u59cb\u5bf9\u8bdd\u201d\u4ee5\u53d1\u9001\u79c1\u4fe1\u3002";
     },
     get$directMessageBotTitle() {
-      return "Direct message Pangea Bot";
+      return "\u76f4\u63a5\u6d88\u606f Pangea \u673a\u5668\u4eba";
     },
     get$feedbackTitle() {
-      return "Activity Feedback";
+      return "\u6d3b\u52a8\u53cd\u9988";
     },
     get$feedbackDesc() {
-      return "How should the activity be improved? If you can provide some details, we\u2019ll make the change!";
+      return "\u5982\u4f55\u6539\u8fdb\u6b64\u6d3b\u52a8\uff1f\u5982\u679c\u4f60\u80fd\u63d0\u4f9b\u4e00\u4e9b\u7ec6\u8282\uff0c\u6211\u4eec\u5c06\u8fdb\u884c\u8c03\u6574\uff01";
     },
     get$feedbackRespDesc() {
-      return "Check back tomorrow for activity updates.";
+      return "\u660e\u5929\u56de\u6765\u67e5\u770b\u6d3b\u52a8\u66f4\u65b0\u3002";
     },
     get$feedbackHint() {
-      return "Your feedback";
+      return "\u4f60\u7684\u53cd\u9988";
     },
     get$feedbackButton() {
-      return "Submit feedback";
+      return "\u63d0\u4ea4\u53cd\u9988";
     },
     get$directMessageBotDesc() {
-      return "Talking to humans is more fun but... AI is always ready!";
+      return "\u4e0e\u4eba\u7c7b\u4ea4\u8c08\u66f4\u6709\u8da3\uff0c\u4f46\u2026\u2026AI\u968f\u65f6\u5f85\u547d\uff01";
     },
     get$inviteYourFriends() {
-      return "Invite your friends";
+      return "\u9080\u8bf7\u4f60\u7684\u670b\u53cb";
     },
     get$playWithAI() {
-      return "Play with AI for now";
+      return "\u6682\u65f6\u4e0eAI\u73a9\u73a9";
     },
     get$courseStartDesc() {
-      return "Pangea Bot is ready to go anytime!\n\n...but learning is better with friends!";
+      return "Pangea \u673a\u5668\u4eba\u968f\u65f6\u51c6\u5907\u5f00\u59cb\uff01\n\n\u2026\u2026\u4f46\u548c\u670b\u53cb\u4e00\u8d77\u5b66\u4e60\u4f1a\u66f4\u597d\uff01";
     },
     get$activityDropdownDesc() {
-      return "When you\u2019re done with this activity, click below";
+      return "\u5b8c\u6210\u6b64\u6d3b\u52a8\u540e\uff0c\u70b9\u51fb\u4e0b\u9762";
     },
     get$activityAnalyticsListBody() {
-      return "These are your completed activities! After finishing activities, you can view them here.";
+      return "\u8fd9\u4e9b\u662f\u4f60\u5b8c\u6210\u7684\u6d3b\u52a8\uff01\u5b8c\u6210\u6d3b\u52a8\u540e\uff0c\u4f60\u53ef\u4ee5\u5728\u8fd9\u91cc\u67e5\u770b\u3002";
     },
     get$languageMismatchTitle() {
-      return "Language mismatch";
+      return "\u8bed\u8a00\u4e0d\u5339\u914d";
     },
     get$languageMismatchDesc() {
-      return "Your target language doesn't match the language of this activity. Update your target language?";
+      return "\u4f60\u7684\u76ee\u6807\u8bed\u8a00\u4e0e\u6b64\u6d3b\u52a8\u7684\u8bed\u8a00\u4e0d\u5339\u914d\u3002\u8981\u66f4\u65b0\u4f60\u7684\u76ee\u6807\u8bed\u8a00\u5417\uff1f";
     },
     get$reportWordIssueTooltip() {
-      return "Report word information issue";
+      return "\u62a5\u544a\u5355\u8bcd\u4fe1\u606f\u95ee\u9898";
     },
     get$tokenInfoFeedbackDialogTitle() {
-      return "Word Information Feedback";
+      return "\u5355\u8bcd\u4fe1\u606f\u53cd\u9988";
     },
     get$tokenInfoFeedbackDialogDesc() {
-      return "AI makes mistakes. Please describe any issues you found with the information above.";
+      return "AI\u4f1a\u72af\u9519\u3002\u8bf7\u63cf\u8ff0\u4f60\u5728\u4e0a\u8ff0\u4fe1\u606f\u4e2d\u53d1\u73b0\u7684\u4efb\u4f55\u95ee\u9898\u3002";
     },
     get$noPublicCoursesFound() {
-      return "No public courses found. Would you like to create one?";
+      return "\u672a\u627e\u5230\u516c\u5171\u8bfe\u7a0b\u3002\u4f60\u60f3\u521b\u5efa\u4e00\u4e2a\u5417\uff1f";
     },
     get$noCourseTemplatesFound() {
-      return "We couldn't find any courses for your target language. You can chat with Pangea Bot in the meantime, and check back later for more courses.";
+      return "\u6211\u4eec\u672a\u80fd\u627e\u5230\u4f60\u7684\u76ee\u6807\u8bed\u8a00\u7684\u8bfe\u7a0b\u3002\u4f60\u53ef\u4ee5\u6682\u65f6\u4e0ePangea\u673a\u5668\u4eba\u804a\u5929\uff0c\u7a0d\u540e\u518d\u56de\u6765\u67e5\u770b\u66f4\u591a\u8bfe\u7a0b\u3002";
     },
     get$botActivityJoinFailMessage() {
-      return "Pangea Bot is taking a while to respond. Please try again later, or invite a friend.";
+      return "Pangea\u673a\u5668\u4eba\u54cd\u5e94\u6709\u70b9\u6162\u3002\u8bf7\u7a0d\u540e\u518d\u8bd5\uff0c\u6216\u9080\u8bf7\u670b\u53cb\u3002";
     },
     get$unsubscribedResponseError() {
-      return "This feature requires a subscription";
+      return "\u6b64\u529f\u80fd\u9700\u8981\u8ba2\u9605";
     },
     get$leaveDesc() {
-      return "Leave this space and all chats within it";
+      return "\u79bb\u5f00\u6b64\u7a7a\u95f4\u53ca\u5176\u4e2d\u7684\u6240\u6709\u804a\u5929";
     },
     get$selectAll() {
-      return "Select all";
+      return "\u5168\u9009";
     },
     get$deselectAll(_) {
-      return "Deselect all";
+      return "\u53d6\u6d88\u5168\u9009";
     },
     get$shareCourse() {
-      return "Share course";
+      return "\u5206\u4eab\u8bfe\u7a0b";
     },
     get$addCourse() {
-      return "Add a course";
+      return "\u6dfb\u52a0\u8bfe\u7a0b";
     },
     get$joinCourseWithCode() {
-      return "Join course with code";
+      return "\u7528\u4ee3\u7801\u52a0\u5165\u8bfe\u7a0b";
     },
     get$joinPublicCourse() {
-      return "Join public course";
+      return "\u52a0\u5165\u516c\u5171\u8bfe\u7a0b";
     },
     get$vocabLevelsDesc() {
-      return "This is where vocab words will go once you\u2019ve leveled them up!";
+      return "\u8fd9\u662f\u4f60\u63d0\u5347\u8bcd\u6c47\u7b49\u7ea7\u540e\uff0c\u8bcd\u6c47\u5c06\u4f1a\u663e\u793a\u7684\u5730\u65b9\uff01";
     },
     get$highlightVocabTooltip() {
-      return "Highlight target vocab words below by sending them or practicing with them in the chat";
+      return "\u901a\u8fc7\u5728\u804a\u5929\u4e2d\u53d1\u9001\u6216\u7ec3\u4e60\uff0c\u5c06\u76ee\u6807\u8bcd\u6c47\u9ad8\u4eae\u663e\u793a";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -4876,8 +4876,14 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     couldNotDecryptMessage$1(error) {
       return "\u4e0d\u80fd\u89e3\u5bc6\u8a0a\u606f\uff1a" + error;
     },
+    get$checkList() {
+      return "\u6e05\u55ae";
+    },
     countParticipants$1(count) {
       return "" + count + " \u500b\u53c3\u8207\u8005";
+    },
+    countInvited$1(count) {
+      return "" + count + " \u88ab\u9080\u8acb";
     },
     get$create(_) {
       return "\u5efa\u7acb";
@@ -5998,6 +6004,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     unknownPushRule$1(rule) {
       return "\u672a\u77e5\u63a8\u9001\u898f\u5247 '" + rule + "'";
     },
+    sentVoiceMessage$2(sender, duration) {
+      return "\ud83c\udf99\ufe0f " + duration + " - \u4f86\u81ea " + sender + " \u7684\u8a9e\u97f3\u8a0a\u606f";
+    },
     get$deletePushRuleCanNotBeUndone() {
       return "\u522a\u9664\u6b64\u901a\u77e5\u8a2d\u5b9a\u7684\u64cd\u4f5c\u7121\u6cd5\u5fa9\u539f\u3002";
     },
@@ -6034,6 +6043,3093 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$approve() {
       return "\u6838\u51c6";
     },
+    get$commandHint_logout() {
+      return "\u767b\u51fa\u60a8\u7684\u7576\u524d\u8a2d\u5099";
+    },
+    get$commandHint_logoutall() {
+      return "\u767b\u51fa\u6240\u6709\u6d3b\u52d5\u8a2d\u5099";
+    },
+    get$customReaction() {
+      return "\u81ea\u5b9a\u7fa9\u53cd\u61c9";
+    },
+    writeAMessageLangCodes$2(l1, l2) {
+      return "\u7528 " + l1 + " \u6216 " + l2 + " \u8f38\u5165...";
+    },
+    get$holdForInfo() {
+      return "\u9ede\u64ca\u4e26\u9577\u6309\u4ee5\u7372\u53d6\u55ae\u8a5e\u8cc7\u8a0a\u3002";
+    },
+    get$greenFeedback() {
+      return "\u9019\u662f\u6211\u6703\u653e\u7684\uff01";
+    },
+    get$yellowFeedback() {
+      return "\u55ef\uff0c\u4f60\u53ef\u4ee5\u8bd5\u8bd5\u8fd9\u4e2a\uff0c\u770b\u770b\u662f\u5426\u6709\u6548\uff01\u8981\u4f7f\u7528\u8fd9\u4e2a\u8bcd\uff0c\u53ea\u9700\u518d\u6b21\u70b9\u51fb\u5b83\u3002";
+    },
+    get$redFeedback() {
+      return "\u6211\u89c9\u5f97\u90a3\u4e0d\u5bf9\u2026\u2026";
+    },
+    get$gaTooltip() {
+      return "\u4e0e\u8bed\u6cd5\u8f85\u52a9\u4e00\u8d77\u4f7f\u7528L2";
+    },
+    get$taTooltip() {
+      return "\u4e0e\u7ffb\u8bd1\u8f85\u52a9\u4e00\u8d77\u4f7f\u7528L2";
+    },
+    get$interactiveTranslatorSliderHeader() {
+      return "\u4e92\u52a8\u7ffb\u8bd1\u5668";
+    },
+    get$interactiveGrammarSliderHeader() {
+      return "\u4e92\u52a8\u8bed\u6cd5\u68c0\u67e5\u5668";
+    },
+    get$waTooltip() {
+      return "\u65e0\u8f85\u52a9\u4f7f\u7528L2";
+    },
+    get$noIdenticalLanguages() {
+      return "\u8acb\u9078\u64c7\u4e0d\u540c\u7684\u57fa\u790e\u8a9e\u8a00\u548c\u76ee\u6a19\u8a9e\u8a00";
+    },
+    get$joinWithClassCode() {
+      return "\u52a0\u5165\u8ab2\u7a0b";
+    },
+    get$languageLevelPreA1() {
+      return "\u5b8c\u5168\u521d\u5b78\u8005\uff08Pre A1\uff09";
+    },
+    get$languageLevelA1() {
+      return "\u521d\u7d1a\uff08A1\uff09";
+    },
+    get$languageLevelA2() {
+      return "Elementary\uff08A2\uff09";
+    },
+    get$languageLevelB1() {
+      return "\u4e2d\u7d1a\uff08B1\uff09";
+    },
+    get$languageLevelB2() {
+      return "\u4e2d\u9ad8\u7d1a\uff08B2\uff09";
+    },
+    get$languageLevelC1() {
+      return "\u9ad8\u7d1a\uff08C1\uff09";
+    },
+    get$languageLevelC2() {
+      return "\u7cbe\u901a\uff08C2\uff09";
+    },
+    get$changeTheNameOfTheClass() {
+      return "\u66f4\u6539\u540d\u7a31";
+    },
+    get$changeTheNameOfTheChat() {
+      return "\u66f4\u6539\u804a\u5929\u540d\u7a31";
+    },
+    get$sorryNoResults() {
+      return "\u62b1\u6b49\uff0c\u6c92\u6709\u7d50\u679c\u3002";
+    },
+    get$ignoreInThisText() {
+      return "\u5ffd\u7565";
+    },
+    needsItMessage$1(targetLanguage) {
+      return "\u7b49\u7b49\uff0c\u90a3\u4e0d\u662f" + targetLanguage + "\uff01\u4f60\u9700\u8981\u5e6b\u52a9\u7ffb\u8b6f\u55ce\uff1f";
+    },
+    get$countryInformation() {
+      return "\u6211\u7684\u570b\u5bb6";
+    },
+    get$targetLanguage() {
+      return "\u76ee\u6a19\u8a9e\u8a00";
+    },
+    get$updateLanguage() {
+      return "\u6211\u7684\u8a9e\u8a00";
+    },
+    get$whatLanguageYouWantToLearn() {
+      return "\u4f60\u60f3\u5b78\u54ea\u7a2e\u8a9e\u8a00\uff1f";
+    },
+    get$whatIsYourBaseLanguage() {
+      return "\u4f60\u7684\u57fa\u672c\u8a9e\u8a00\u662f\u4ec0\u9ebc\uff1f";
+    },
+    get$saveChanges() {
+      return "\u4fdd\u5b58\u66f4\u6539";
+    },
+    get$publicProfileTitle() {
+      return "\u5141\u8a31\u5728\u641c\u7d22\u4e2d\u627e\u5230\u6211\u7684\u500b\u4eba\u8cc7\u6599";
+    },
+    get$publicProfileDesc() {
+      return "\u958b\u555f\u5f8c\uff0c\u60a8\u53ef\u4ee5\u8b93\u5176\u4ed6\u7528\u6236\u5728\u5168\u7403\u641c\u7d22\u6b04\u4e2d\u627e\u5230\u60a8\u7684\u500b\u4eba\u8cc7\u6599\u4e26\u767c\u9001\u804a\u5929\u8acb\u6c42\u3002\u6b64\u6642\uff0c\u60a8\u53ef\u4ee5\u9078\u64c7\u63a5\u53d7\u6216\u62d2\u7d55\u8a72\u8acb\u6c42\u3002";
+    },
+    get$errorDisableIT() {
+      return "\u7ffb\u8b6f\u5354\u52a9\u5df2\u95dc\u9589\u3002";
+    },
+    get$errorDisableIGC() {
+      return "\u8a9e\u6cd5\u5354\u52a9\u5df2\u95dc\u9589\u3002";
+    },
+    get$errorDisableLanguageAssistance() {
+      return "\u7ffb\u8b6f\u5354\u52a9\u548c\u8a9e\u6cd5\u5354\u52a9\u5df2\u95dc\u9589\u3002";
+    },
+    get$errorDisableITUserDesc() {
+      return "\u9ede\u64ca\u6b64\u8655\u66f4\u65b0\u7ffb\u8b6f\u5354\u52a9\u8a2d\u7f6e";
+    },
+    get$errorDisableIGCUserDesc() {
+      return "\u9ede\u64ca\u6b64\u8655\u66f4\u65b0\u8a9e\u6cd5\u5354\u52a9\u8a2d\u7f6e";
+    },
+    get$errorDisableLanguageAssistanceUserDesc() {
+      return "\u9ede\u64ca\u6b64\u8655\u66f4\u65b0\u7ffb\u8b6f\u5354\u52a9\u548c\u8a9e\u6cd5\u5354\u52a9\u8a2d\u7f6e";
+    },
+    get$errorDisableITClassDesc() {
+      return "\u6b64\u8ab2\u7a0b\u5df2\u95dc\u9589\u4e92\u52d5\u7ffb\u8b6f\u5354\u52a9\u3002";
+    },
+    get$errorDisableIGCClassDesc() {
+      return "\u6b64\u8ab2\u7a0b\u5df2\u95dc\u9589\u4e92\u52d5\u8a9e\u6cd5\u5354\u52a9\u3002";
+    },
+    get$error405Title() {
+      return "\u672a\u8a2d\u5b9a\u8a9e\u8a00";
+    },
+    get$error405Desc() {
+      return "\u8acb\u5728\u4e3b\u9078\u55ae > \u5b78\u7fd2\u8a2d\u5b9a\u4e2d\u8a2d\u5b9a\u60a8\u7684\u8a9e\u8a00\u3002";
+    },
+    get$termsAndConditions() {
+      return "\u689d\u6b3e\u8207\u689d\u4ef6";
+    },
+    get$andCertifyIAmAtLeast13YearsOfAge() {
+      return " \u4e26\u8b49\u660e\u6211\u5df2\u5e74\u6eff16\u6b72\u3002";
+    },
+    get$error502504Title() {
+      return "\u54c7\uff0c\u7dda\u4e0a\u5b78\u751f\u597d\u591a\uff01";
+    },
+    get$error502504Desc() {
+      return "\u5728 Pangea \u6a5f\u5668\u4eba\u8ffd\u8d95\u6642\uff0c\u7ffb\u8b6f\u548c\u8a9e\u6cd5\u5de5\u5177\u53ef\u80fd\u6703\u8b8a\u6162\u6216\u7121\u6cd5\u4f7f\u7528\u3002";
+    },
+    get$error404Title() {
+      return "\u7ffb\u8b6f\u932f\u8aa4\uff01";
+    },
+    get$error404Desc() {
+      return "Pangea \u6a5f\u5668\u4eba\u4e0d\u78ba\u5b9a\u5982\u4f55\u7ffb\u8b6f\u90a3\u500b...";
+    },
+    get$errorPleaseRefresh() {
+      return "\u6211\u5011\u6b63\u5728\u8655\u7406\uff01\u8acb\u91cd\u65b0\u8f09\u5165\u4e26\u518d\u8a66\u4e00\u6b21\u3002";
+    },
+    get$connectedToStaging() {
+      return "\u5df2\u9023\u63a5\u5230\u6e2c\u8a66\u74b0\u5883";
+    },
+    get$learningSettings() {
+      return "\u5b78\u7fd2\u8a2d\u5b9a";
+    },
+    get$participants() {
+      return "\u53c3\u8207\u8005";
+    },
+    get$clickMessageTitle() {
+      return "\u9700\u8981\u5e6b\u52a9\u55ce\uff1f";
+    },
+    get$clickMessageBody() {
+      return "\u9ede\u64ca\u8a0a\u606f\u4ee5\u4f7f\u7528\u8a9e\u8a00\u5de5\u5177\uff0c\u5982\u7ffb\u8b6f\u3001\u56de\u653e\u7b49\uff01";
+    },
+    get$allDone() {
+      return "\u5168\u90e8\u5b8c\u6210\uff01";
+    },
+    get$vocab() {
+      return "\u8a5e\u5f59";
+    },
+    get$subscribe(_) {
+      return "\u8ba2\u9605";
+    },
+    get$getAccess() {
+      return "\u7acb\u5373\u8ba2\u9605\uff01";
+    },
+    get$subscriptionDesc() {
+      return "\u6d88\u606f\u4f20\u9012\u514d\u8d39\uff01\u8ba2\u9605\u4ee5\u89e3\u9501\u4e92\u52a8\u7ffb\u8bd1\u3001\u8bed\u6cd5\u68c0\u67e5\u548c\u5b66\u4e60\u5206\u6790\u3002";
+    },
+    get$subscriptionManagement() {
+      return "\u8ba2\u9605\u7ba1\u7406";
+    },
+    get$currentSubscription() {
+      return "\u5f53\u524d\u8ba2\u9605";
+    },
+    get$cancelSubscription() {
+      return "\u53d6\u6d88\u60a8\u7684\u8ba2\u9605";
+    },
+    get$selectYourPlan() {
+      return "\u9009\u62e9\u60a8\u7684\u8ba1\u5212";
+    },
+    get$subsciptionPlatformTooltip() {
+      return "\u8bf7\u767b\u5f55\u5230\u60a8\u7684\u539f\u59cb\u8bbe\u5907\u4ee5\u7ba1\u7406\u60a8\u7684\u8ba2\u9605\u8ba1\u5212";
+    },
+    get$subscriptionManagementUnavailable() {
+      return "\u65e0\u6cd5\u8fdb\u884c\u8ba2\u9605\u7ba1\u7406";
+    },
+    get$paymentMethod() {
+      return "\u652f\u4ed8\u65b9\u5f0f";
+    },
+    get$paymentHistory() {
+      return "\u652f\u4ed8\u8bb0\u5f55";
+    },
+    get$emptyChatDownloadWarning() {
+      return "\u65e0\u6cd5\u4e0b\u8f7d\u7a7a\u804a\u5929\u8bb0\u5f55";
+    },
+    get$toggleImmersionMode() {
+      return "\u6c89\u6d78\u6a21\u5f0f";
+    },
+    get$toggleImmersionModeDesc() {
+      return "\u555f\u7528\u5f8c\uff0c\u6240\u6709\u8a0a\u606f\u5c07\u4ee5\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\u986f\u793a\u3002\u6b64\u8a2d\u5b9a\u5728\u8a9e\u8a00\u4ea4\u6d41\u4e2d\u7279\u5225\u6709\u7528\u3002";
+    },
+    get$itToggleDescription() {
+      return "\u6b64\u8a9e\u8a00\u5b78\u7fd2\u5de5\u5177\u5c07\u8b58\u5225\u60a8\u57fa\u672c\u8a9e\u8a00\u4e2d\u7684\u55ae\u8a5e\uff0c\u4e26\u5354\u52a9\u60a8\u5c07\u5176\u7ffb\u8b6f\u6210\u76ee\u6a19\u8a9e\u8a00\u3002\u96d6\u7136\u7f55\u898b\uff0c\u4f46AI\u53ef\u80fd\u6703\u7522\u751f\u7ffb\u8b6f\u932f\u8aa4\u3002";
+    },
+    get$igcToggleDescription() {
+      return "\u6b64\u8a9e\u8a00\u5b78\u7fd2\u5de5\u5177\u5c07\u8b58\u5225\u8a0a\u606f\u4e2d\u7684\u5e38\u898b\u62fc\u5beb\u3001\u6587\u6cd5\u548c\u6a19\u9ede\u932f\u8aa4\uff0c\u4e26\u5efa\u8b70\u4fee\u6b63\u3002\u96d6\u7136\u7f55\u898b\uff0c\u4f46AI\u53ef\u80fd\u6703\u7522\u751f\u4fee\u6b63\u932f\u8aa4\u3002";
+    },
+    get$originalMessage() {
+      return "\u539f\u59cb\u8a0a\u606f";
+    },
+    get$sentMessage() {
+      return "\u5df2\u50b3\u9001\u8a0a\u606f";
+    },
+    get$useType() {
+      return "\u4f7f\u7528\u985e\u578b";
+    },
+    get$notAvailable() {
+      return "\u4e0d\u53ef\u7528";
+    },
+    get$taAndGaTooltip() {
+      return "\u4f7f\u7528L2\uff0c\u63d0\u4f9b\u7ffb\u8b6f\u5354\u52a9\u8207\u6587\u6cd5\u5354\u52a9";
+    },
+    get$definitionsToolName() {
+      return "\u55ae\u8a5e\u5b9a\u7fa9";
+    },
+    get$definitionsToolDescription() {
+      return "\u555f\u7528\u5f8c\uff0c\u85cd\u8272\u5e95\u7dda\u7684\u55ae\u8a5e\u53ef\u4ee5\u9ede\u64ca\u67e5\u770b\u5b9a\u7fa9\u3002\u9ede\u64ca\u8a0a\u606f\u4ee5\u5b58\u53d6\u5b9a\u7fa9\u3002";
+    },
+    get$welcomeBack() {
+      return "\u6b61\u8fce\u56de\u4f86\uff01\u5982\u679c\u60a8\u662f2023-2024\u8a66\u9ede\u8a08\u756b\u7684\u4e00\u90e8\u5206\uff0c\u8acb\u806f\u7e6b\u6211\u5011\u4ee5\u7372\u53d6\u60a8\u7684\u7279\u5225\u8a66\u9ede\u8a02\u95b1\u3002\u5982\u679c\u60a8\u662f\u6559\u5e2b\uff0c\u4e14\u5df2\u70ba\u60a8\u7684\u73ed\u7d1a\u8cfc\u8cb7\u8a31\u53ef\u8b49\uff08\u6216\u60a8\u7684\u6a5f\u69cb\u5df2\u8cfc\u8cb7\uff09\uff0c\u8acb\u806f\u7e6b\u6211\u5011\u4ee5\u7372\u53d6\u6559\u5e2b\u8a02\u95b1\u3002";
+    },
+    get$downloadTxtFile() {
+      return "\u4e0b\u8f09\u6587\u5b57\u6a94";
+    },
+    get$downloadCSVFile() {
+      return "\u4e0b\u8f09CSV\u6a94";
+    },
+    get$promotionalSubscriptionDesc() {
+      return "\u60a8\u76ee\u524d\u64c1\u6709\u7d42\u8eab\u4fc3\u92b7\u8a02\u95b1\u3002\u8acb\u806f\u7e6b support@pangea.chat \u4ee5\u7372\u53d6\u66f4\u6539\u8a02\u95b1\u7684\u5e6b\u52a9\u3002";
+    },
+    originalSubscriptionPlatform$1(purchasePlatform) {
+      return "\u8a02\u95b1\u5e73\u53f0\u70ba " + purchasePlatform;
+    },
+    get$oneWeekTrial() {
+      return "\u4e00\u9031\u8a66\u7528";
+    },
+    get$downloadXLSXFile() {
+      return "\u4e0b\u8f09Excel\u6a94";
+    },
+    get$unkDisplayName() {
+      return "\u672a\u77e5";
+    },
+    get$wwCountryDisplayName() {
+      return "\u5168\u7403";
+    },
+    get$afCountryDisplayName() {
+      return "\u963f\u5bcc\u6c57";
+    },
+    get$axCountryDisplayName() {
+      return "\u5965\u5170\u7fa4\u5c9b";
+    },
+    get$alCountryDisplayName() {
+      return "\u963f\u5c14\u5df4\u5c3c\u4e9a";
+    },
+    get$dzCountryDisplayName() {
+      return "\u963f\u5c14\u53ca\u5229\u4e9a";
+    },
+    get$asCountryDisplayName() {
+      return "\u7f8e\u5c5e\u8428\u6469\u4e9a";
+    },
+    get$adCountryDisplayName() {
+      return "\u5b89\u9053\u5c14";
+    },
+    get$aoCountryDisplayName() {
+      return "\u5b89\u54e5\u62c9";
+    },
+    get$aiCountryDisplayName() {
+      return "\u5b89\u572d\u62c9";
+    },
+    get$agCountryDisplayName() {
+      return "\u5b89\u63d0\u74dc\u548c\u5df4\u5e03\u8fbe";
+    },
+    get$arCountryDisplayName() {
+      return "\u963f\u6839\u5ef7";
+    },
+    get$amCountryDisplayName() {
+      return "\u4e9a\u7f8e\u5c3c\u4e9a";
+    },
+    get$awCountryDisplayName() {
+      return "\u963f\u9c81\u5df4";
+    },
+    get$acCountryDisplayName() {
+      return "\u82f1\u4ed9\u5ea7\u5c9b";
+    },
+    get$auCountryDisplayName() {
+      return "\u6fb3\u5927\u5229\u4e9a";
+    },
+    get$atCountryDisplayName() {
+      return "\u5965\u5730\u5229";
+    },
+    get$azCountryDisplayName() {
+      return "\u963f\u585e\u62dc\u7586";
+    },
+    get$bsCountryDisplayName() {
+      return "\u5df4\u54c8\u9a6c";
+    },
+    get$bhCountryDisplayName() {
+      return "\u5df4\u6797";
+    },
+    get$bdCountryDisplayName() {
+      return "\u5b5f\u52a0\u62c9\u570b";
+    },
+    get$bbCountryDisplayName() {
+      return "\u5df4\u5df4\u591a\u65af";
+    },
+    get$byCountryDisplayName() {
+      return "\u767d\u4fc4\u7f85\u65af";
+    },
+    get$beCountryDisplayName() {
+      return "\u6bd4\u5229\u6642";
+    },
+    get$bzCountryDisplayName() {
+      return "\u4f2f\u5229\u8332";
+    },
+    get$bjCountryDisplayName() {
+      return "\u8c9d\u5be7";
+    },
+    get$bmCountryDisplayName() {
+      return "\u767e\u6155\u9054";
+    },
+    get$btCountryDisplayName() {
+      return "\u4e0d\u4e39";
+    },
+    get$boCountryDisplayName() {
+      return "\u73bb\u5229\u7dad\u4e9e";
+    },
+    get$baCountryDisplayName() {
+      return "\u6ce2\u65af\u5c3c\u4e9e\u548c\u8d6b\u585e\u54e5\u7dad\u7d0d";
+    },
+    get$bwCountryDisplayName() {
+      return "\u535a\u8328\u74e6\u7d0d";
+    },
+    get$brCountryDisplayName() {
+      return "\u5df4\u897f";
+    },
+    get$ioCountryDisplayName() {
+      return "\u82f1\u5c6c\u5370\u5ea6\u6d0b\u9818\u5730";
+    },
+    get$vgCountryDisplayName() {
+      return "\u82f1\u5c6c\u7dad\u4eac\u7fa4\u5cf6";
+    },
+    get$bnCountryDisplayName() {
+      return "\u6587\u840a";
+    },
+    get$bgCountryDisplayName() {
+      return "\u4fdd\u52a0\u5229\u4e9e";
+    },
+    get$bfCountryDisplayName() {
+      return "\u5e03\u5409\u7d0d\u6cd5\u7d22";
+    },
+    get$biCountryDisplayName() {
+      return "\u5e03\u9686\u8fea";
+    },
+    get$khCountryDisplayName() {
+      return "\u67ec\u57d4\u5be8";
+    },
+    get$cmCountryDisplayName() {
+      return "\u5580\u9ea5\u9686";
+    },
+    get$caCountryDisplayName() {
+      return "\u52a0\u62ff\u5927";
+    },
+    get$cvCountryDisplayName() {
+      return "\u4f5b\u5f97\u89d2";
+    },
+    get$bqCountryDisplayName() {
+      return "\u52a0\u52d2\u6bd4\u8377\u5170";
+    },
+    get$kyCountryDisplayName() {
+      return "\u5f00\u66fc\u7fa4\u5c9b";
+    },
+    get$cfCountryDisplayName() {
+      return "\u4e2d\u975e\u5171\u548c\u56fd";
+    },
+    get$tdCountryDisplayName() {
+      return "\u4e4d\u5f97";
+    },
+    get$clCountryDisplayName() {
+      return "\u667a\u5229";
+    },
+    get$cnCountryDisplayName() {
+      return "\u4e2d\u56fd";
+    },
+    get$cxCountryDisplayName() {
+      return "\u5723\u8bde\u5c9b";
+    },
+    get$ccCountryDisplayName() {
+      return "\u79d1\u79d1\u65af\uff08\u57fa\u6797\uff09\u7fa4\u5c9b";
+    },
+    get$coCountryDisplayName() {
+      return "\u54e5\u4f26\u6bd4\u4e9a";
+    },
+    get$kmCountryDisplayName() {
+      return "\u79d1\u6469\u7f57";
+    },
+    get$cdCountryDisplayName() {
+      return "\u521a\u679c\u6c11\u4e3b\u5171\u548c\u56fd";
+    },
+    get$cgCountryDisplayName() {
+      return "\u521a\u679c\u5171\u548c\u56fd";
+    },
+    get$ckCountryDisplayName() {
+      return "\u5e93\u514b\u7fa4\u5c9b";
+    },
+    get$crCountryDisplayName() {
+      return "\u54e5\u65af\u8fbe\u9ece\u52a0";
+    },
+    get$ciCountryDisplayName() {
+      return "\u79d1\u7279\u8fea\u74e6";
+    },
+    get$hrCountryDisplayName() {
+      return "\u514b\u7f57\u5730\u4e9a";
+    },
+    get$cuCountryDisplayName() {
+      return "\u53e4\u5df4";
+    },
+    get$cwCountryDisplayName() {
+      return "\u5e93\u62c9\u7d22";
+    },
+    get$cyCountryDisplayName() {
+      return "\u585e\u6d66\u8def\u65af";
+    },
+    get$czCountryDisplayName() {
+      return "\u6377\u514b\u5171\u548c\u570b";
+    },
+    get$dkCountryDisplayName() {
+      return "\u4e39\u9ea5";
+    },
+    get$djCountryDisplayName() {
+      return "\u5409\u5e03\u63d0";
+    },
+    get$dmCountryDisplayName() {
+      return "\u591a\u7c73\u5c3c\u514b";
+    },
+    get$doCountryDisplayName() {
+      return "\u591a\u7c73\u5c3c\u52a0\u5171\u548c\u570b";
+    },
+    get$tlCountryDisplayName() {
+      return "\u6771\u5e1d\u6c76";
+    },
+    get$ecCountryDisplayName() {
+      return "\u5384\u74dc\u591a\u723e";
+    },
+    get$egCountryDisplayName() {
+      return "\u57c3\u53ca";
+    },
+    get$svCountryDisplayName() {
+      return "\u85a9\u723e\u74e6\u591a";
+    },
+    get$gqCountryDisplayName() {
+      return "\u8d64\u9053\u5e7e\u5167\u4e9e";
+    },
+    get$erCountryDisplayName() {
+      return "\u5384\u7acb\u7279\u91cc\u4e9e";
+    },
+    get$eeCountryDisplayName() {
+      return "\u611b\u6c99\u5c3c\u4e9e";
+    },
+    get$szCountryDisplayName() {
+      return "\u65af\u5a01\u58eb\u862d";
+    },
+    get$etCountryDisplayName() {
+      return "\u8863\u7d22\u6bd4\u4e9e";
+    },
+    get$fkCountryDisplayName() {
+      return "\u798f\u514b\u862d\u7fa4\u5cf6";
+    },
+    get$foCountryDisplayName() {
+      return "\u6cd5\u7f85\u7fa4\u5cf6";
+    },
+    get$fjCountryDisplayName() {
+      return "\u6590\u6fdf";
+    },
+    get$fiCountryDisplayName() {
+      return "\u82ac\u862d";
+    },
+    get$frCountryDisplayName() {
+      return "\u6cd5\u570b";
+    },
+    get$gfCountryDisplayName() {
+      return "\u6cd5\u5c5e\u572d\u4e9a\u90a3";
+    },
+    get$pfCountryDisplayName() {
+      return "\u6cd5\u5c5e\u6ce2\u5229\u5c3c\u897f\u4e9a";
+    },
+    get$gaCountryDisplayName() {
+      return "\u52a0\u84ec";
+    },
+    get$gmCountryDisplayName() {
+      return "\u5188\u6bd4\u4e9a";
+    },
+    get$geCountryDisplayName() {
+      return "\u683c\u9c81\u5409\u4e9a";
+    },
+    get$deCountryDisplayName() {
+      return "\u5fb7\u56fd";
+    },
+    get$ghCountryDisplayName() {
+      return "\u52a0\u7eb3";
+    },
+    get$giCountryDisplayName() {
+      return "\u76f4\u5e03\u7f57\u9640";
+    },
+    get$grCountryDisplayName() {
+      return "\u5e0c\u814a";
+    },
+    get$glCountryDisplayName() {
+      return "\u683c\u9675\u5170";
+    },
+    get$gdCountryDisplayName() {
+      return "\u683c\u6797\u7eb3\u8fbe";
+    },
+    get$gpCountryDisplayName() {
+      return "\u74dc\u5fb7\u7f57\u666e";
+    },
+    get$guCountryDisplayName() {
+      return "\u5173\u5c9b";
+    },
+    get$gtCountryDisplayName() {
+      return "\u5371\u5730\u9a6c\u62c9";
+    },
+    get$ggCountryDisplayName() {
+      return "\u6839\u897f\u5c9b";
+    },
+    get$gnCountryDisplayName() {
+      return "\u51e0\u5185\u4e9a\u6bd4\u7ecd";
+    },
+    get$gwCountryDisplayName() {
+      return "\u51e0\u5185\u4e9a";
+    },
+    get$gyCountryDisplayName() {
+      return "\u572d\u4e9a\u90a3";
+    },
+    get$htCountryDisplayName() {
+      return "\u6d77\u5730";
+    },
+    get$hmCountryDisplayName() {
+      return "\u8d6b\u5fb7\u5c9b\u548c\u9ea6\u514b\u5510\u7eb3\u7fa4\u5c9b";
+    },
+    get$hnCountryDisplayName() {
+      return "\u6d2a\u90fd\u62c9\u65af";
+    },
+    get$hkCountryDisplayName() {
+      return "\u9999\u6e2f";
+    },
+    get$huCountryDisplayName() {
+      return "\u5308\u7259\u5229";
+    },
+    get$isCountryDisplayName() {
+      return "\u51b0\u5cf6";
+    },
+    get$inCountryDisplayName() {
+      return "\u5370\u5ea6";
+    },
+    get$idCountryDisplayName() {
+      return "\u5370\u5c3c";
+    },
+    get$irCountryDisplayName() {
+      return "\u4f0a\u6717";
+    },
+    get$iqCountryDisplayName() {
+      return "\u4f0a\u62c9\u514b";
+    },
+    get$ieCountryDisplayName() {
+      return "\u611b\u723e\u862d";
+    },
+    get$imCountryDisplayName() {
+      return "\u66fc\u5cf6";
+    },
+    get$ilCountryDisplayName() {
+      return "\u4ee5\u8272\u5217";
+    },
+    get$itCountryDisplayName() {
+      return "\u610f\u5927\u5229";
+    },
+    get$jmCountryDisplayName() {
+      return "\u7259\u8cb7\u52a0";
+    },
+    get$jpCountryDisplayName() {
+      return "\u65e5\u672c";
+    },
+    get$jeCountryDisplayName() {
+      return "\u6fa4\u897f\u5cf6";
+    },
+    get$joCountryDisplayName() {
+      return "\u7d04\u65e6";
+    },
+    get$kzCountryDisplayName() {
+      return "\u54c8\u85a9\u514b\u65af\u5766";
+    },
+    get$keCountryDisplayName() {
+      return "\u80af\u5c3c\u4e9e";
+    },
+    get$kiCountryDisplayName() {
+      return "\u57fa\u91cc\u5df4\u65af";
+    },
+    get$xkCountryDisplayName() {
+      return "\u79d1\u7d22\u6c83";
+    },
+    get$kwCountryDisplayName() {
+      return "\u79d1\u5a01\u7279";
+    },
+    get$kgCountryDisplayName() {
+      return "\u5409\u5c14\u5409\u65af\u65af\u5766";
+    },
+    get$laCountryDisplayName() {
+      return "\u8001\u631d";
+    },
+    get$lvCountryDisplayName() {
+      return "\u62c9\u8131\u7ef4\u4e9a";
+    },
+    get$lbCountryDisplayName() {
+      return "\u9ece\u5df4\u5ae9";
+    },
+    get$lsCountryDisplayName() {
+      return "\u83b1\u7d22\u6258";
+    },
+    get$lrCountryDisplayName() {
+      return "\u5229\u6bd4\u91cc\u4e9a";
+    },
+    get$lyCountryDisplayName() {
+      return "\u5229\u6bd4\u4e9a";
+    },
+    get$liCountryDisplayName() {
+      return "\u5217\u652f\u6566\u58eb\u767b";
+    },
+    get$ltCountryDisplayName() {
+      return "\u7acb\u9676\u5b9b";
+    },
+    get$luCountryDisplayName() {
+      return "\u5362\u68ee\u5821";
+    },
+    get$moCountryDisplayName() {
+      return "\u6fb3\u95e8";
+    },
+    get$mkCountryDisplayName() {
+      return "\u5317\u9a6c\u5176\u987f";
+    },
+    get$mgCountryDisplayName() {
+      return "\u9a6c\u8fbe\u52a0\u65af\u52a0";
+    },
+    get$mwCountryDisplayName() {
+      return "\u9a6c\u62c9\u7ef4";
+    },
+    get$myCountryDisplayName() {
+      return "\u9a6c\u6765\u897f\u4e9a";
+    },
+    get$mvCountryDisplayName() {
+      return "\u9a6c\u5c14\u4ee3\u592b";
+    },
+    get$mlCountryDisplayName() {
+      return "\u9a6c\u91cc";
+    },
+    get$mtCountryDisplayName() {
+      return "\u9a6c\u8033\u4ed6";
+    },
+    get$mhCountryDisplayName() {
+      return "\u9a6c\u7ecd\u5c14\u7fa4\u5c9b";
+    },
+    get$mqCountryDisplayName() {
+      return "\u99ac\u63d0\u5c3c\u514b";
+    },
+    get$mrCountryDisplayName() {
+      return "\u6bdb\u91cc\u5854\u5c3c\u4e9e";
+    },
+    get$muCountryDisplayName() {
+      return "\u6bdb\u91cc\u6c42\u65af";
+    },
+    get$ytCountryDisplayName() {
+      return "\u99ac\u7d04\u7279";
+    },
+    get$mxCountryDisplayName() {
+      return "\u58a8\u897f\u54e5";
+    },
+    get$fmCountryDisplayName() {
+      return "\u5bc6\u514b\u7f85\u5c3c\u897f\u4e9e";
+    },
+    get$mdCountryDisplayName() {
+      return "\u6469\u723e\u591a\u74e6";
+    },
+    get$mcCountryDisplayName() {
+      return "\u6469\u7d0d\u54e5";
+    },
+    get$mnCountryDisplayName() {
+      return "\u8499\u53e4";
+    },
+    get$meCountryDisplayName() {
+      return "\u9ed1\u5c71";
+    },
+    get$msCountryDisplayName() {
+      return "\u8499\u7279\u585e\u62c9\u7279";
+    },
+    get$maCountryDisplayName() {
+      return "\u6469\u6d1b\u54e5";
+    },
+    get$mzCountryDisplayName() {
+      return "\u83ab\u6851\u6bd4\u514b";
+    },
+    get$mmCountryDisplayName() {
+      return "\u7dec\u7538\uff08\u7f05\u7538\uff09";
+    },
+    get$naCountryDisplayName() {
+      return "\u7d0d\u7c73\u6bd4\u4e9e";
+    },
+    get$nrCountryDisplayName() {
+      return "\u8afe\u9b6f";
+    },
+    get$npCountryDisplayName() {
+      return "\u5c3c\u6cca\u723e";
+    },
+    get$nlCountryDisplayName() {
+      return "\u8377\u862d";
+    },
+    get$ncCountryDisplayName() {
+      return "\u65b0\u5580\u91cc\u591a\u5c3c\u4e9e";
+    },
+    get$nzCountryDisplayName() {
+      return "\u65b0\u897f\u862d";
+    },
+    get$niCountryDisplayName() {
+      return "\u5c3c\u52a0\u62c9\u74dc";
+    },
+    get$neCountryDisplayName() {
+      return "\u5c3c\u65e5\u5c14";
+    },
+    get$ngCountryDisplayName() {
+      return "\u5c3c\u65e5\u5229\u4e9a";
+    },
+    get$nuCountryDisplayName() {
+      return "\u7ebd\u57c3";
+    },
+    get$nfCountryDisplayName() {
+      return "\u8bfa\u798f\u514b\u5c9b";
+    },
+    get$kpCountryDisplayName() {
+      return "\u671d\u9c9c";
+    },
+    get$mpCountryDisplayName() {
+      return "\u5317\u9a6c\u91cc\u4e9a\u7eb3\u7fa4\u5c9b";
+    },
+    get$noCountryDisplayName() {
+      return "\u632a\u5a01";
+    },
+    get$omCountryDisplayName() {
+      return "\u963f\u66fc";
+    },
+    get$pkCountryDisplayName() {
+      return "\u5df4\u57fa\u65af\u5766";
+    },
+    get$pwCountryDisplayName() {
+      return "\u5e15\u52b3";
+    },
+    get$psCountryDisplayName() {
+      return "\u5df4\u52d2\u65af\u5766\u5730\u533a";
+    },
+    get$paCountryDisplayName() {
+      return "\u5df4\u62ff\u9a6c";
+    },
+    get$pgCountryDisplayName() {
+      return "\u5df4\u5e03\u4e9a\u65b0\u51e0\u5185\u4e9a";
+    },
+    get$pyCountryDisplayName() {
+      return "\u5df4\u62c9\u572d";
+    },
+    get$peCountryDisplayName() {
+      return "\u79d8\u9c81";
+    },
+    get$phCountryDisplayName() {
+      return "\u83f2\u5f8b\u5bbe";
+    },
+    get$plCountryDisplayName() {
+      return "\u6ce2\u5170";
+    },
+    get$ptCountryDisplayName() {
+      return "\u8461\u8404\u7259";
+    },
+    get$prCountryDisplayName() {
+      return "\u6ce2\u591a\u9ece\u5404";
+    },
+    get$qaCountryDisplayName() {
+      return "\u5361\u5854\u5c14";
+    },
+    get$reCountryDisplayName() {
+      return "\u7559\u5c3c\u6c6a";
+    },
+    get$roCountryDisplayName() {
+      return "\u7f57\u9a6c\u5c3c\u4e9a";
+    },
+    get$ruCountryDisplayName() {
+      return "\u4fc4\u7f57\u65af";
+    },
+    get$rwCountryDisplayName() {
+      return "\u5362\u65fa\u8fbe";
+    },
+    get$blCountryDisplayName() {
+      return "\u5723\u5df4\u6cf0\u52d2\u7c73";
+    },
+    get$shCountryDisplayName() {
+      return "\u5723\u8d6b\u52d2\u62ff";
+    },
+    get$knCountryDisplayName() {
+      return "\u5723\u57fa\u8328";
+    },
+    get$lcCountryDisplayName() {
+      return "\u5723\u5362\u897f\u4e9a";
+    },
+    get$mfCountryDisplayName() {
+      return "\u5723\u9a6c\u4e01";
+    },
+    get$pmCountryDisplayName() {
+      return "\u5723\u76ae\u57c3\u5c14\u548c\u5bc6\u514b\u9686";
+    },
+    get$vcCountryDisplayName() {
+      return "\u5723\u6587\u68ee\u7279";
+    },
+    get$wsCountryDisplayName() {
+      return "\u8428\u6469\u4e9a";
+    },
+    get$smCountryDisplayName() {
+      return "\u5723\u9a6c\u529b\u8bfa";
+    },
+    get$stCountryDisplayName() {
+      return "\u5723\u591a\u7f8e\u548c\u666e\u6797\u897f\u6bd4";
+    },
+    get$saCountryDisplayName() {
+      return "\u6c99\u7279\u963f\u62c9\u4f2f";
+    },
+    get$snCountryDisplayName() {
+      return "\u585e\u5185\u52a0\u5c14";
+    },
+    get$rsCountryDisplayName() {
+      return "\u585e\u5c14\u7ef4\u4e9a";
+    },
+    get$scCountryDisplayName() {
+      return "\u585e\u820c\u5c14";
+    },
+    get$slCountryDisplayName() {
+      return "\u585e\u62c9\u5229\u6602";
+    },
+    get$sgCountryDisplayName() {
+      return "\u65b0\u52a0\u5761";
+    },
+    get$sxCountryDisplayName() {
+      return "\u8056\u99ac\u4e01";
+    },
+    get$skCountryDisplayName() {
+      return "\u65af\u6d1b\u4f10\u514b";
+    },
+    get$siCountryDisplayName() {
+      return "\u65af\u6d1b\u6587\u5c3c\u4e9e";
+    },
+    get$sbCountryDisplayName() {
+      return "\u6240\u7f85\u9580\u7fa4\u5cf6";
+    },
+    get$soCountryDisplayName() {
+      return "\u7d22\u99ac\u91cc";
+    },
+    get$zaCountryDisplayName() {
+      return "\u5357\u975e";
+    },
+    get$gsCountryDisplayName() {
+      return "\u5357\u55ac\u6cbb\u4e9e\u548c\u5357\u6851\u5a01\u5947\u7fa4\u5cf6";
+    },
+    get$krCountryDisplayName() {
+      return "\u5357\u97d3";
+    },
+    get$ssCountryDisplayName() {
+      return "\u5357\u8607\u4e39";
+    },
+    get$esCountryDisplayName() {
+      return "\u897f\u73ed\u7259";
+    },
+    get$lkCountryDisplayName() {
+      return "\u65af\u91cc\u862d\u5361";
+    },
+    get$sdCountryDisplayName() {
+      return "\u8607\u4e39";
+    },
+    get$srCountryDisplayName() {
+      return "\u8607\u91cc\u5357";
+    },
+    get$sjCountryDisplayName() {
+      return "\u65af\u74e6\u723e\u5df4\u7fa4\u5cf6\u548c\u63da\u99ac\u5ef6\u5cf6";
+    },
+    get$seCountryDisplayName() {
+      return "\u745e\u5178";
+    },
+    get$chCountryDisplayName() {
+      return "\u745e\u58eb";
+    },
+    get$syCountryDisplayName() {
+      return "\u6558\u5229\u4e9e";
+    },
+    get$twCountryDisplayName() {
+      return "\u53f0\u7063";
+    },
+    get$tjCountryDisplayName() {
+      return "\u5854\u5409\u514b\u65af\u5766";
+    },
+    get$tzCountryDisplayName() {
+      return "\u5766\u6851\u5c3c\u4e9a";
+    },
+    get$thCountryDisplayName() {
+      return "\u6cf0\u56fd";
+    },
+    get$tgCountryDisplayName() {
+      return "\u591a\u54e5";
+    },
+    get$tkCountryDisplayName() {
+      return "\u6258\u514b\u52b3";
+    },
+    get$toCountryDisplayName() {
+      return "\u6c64\u52a0";
+    },
+    get$ttCountryDisplayName() {
+      return "\u7279\u7acb\u5c3c\u8fbe\u548c\u591a\u5df4\u54e5";
+    },
+    get$tnCountryDisplayName() {
+      return "\u7a81\u5c3c\u65af";
+    },
+    get$trCountryDisplayName() {
+      return "\u571f\u8033\u5176";
+    },
+    get$tmCountryDisplayName() {
+      return "\u571f\u5e93\u66fc\u65af\u5766";
+    },
+    get$tcCountryDisplayName() {
+      return "\u7279\u514b\u65af\u548c\u51ef\u79d1\u65af\u7fa4\u5c9b";
+    },
+    get$tvCountryDisplayName() {
+      return "\u56fe\u74e6\u5362";
+    },
+    get$viCountryDisplayName() {
+      return "\u7f8e\u5c5e\u7ef4\u5c14\u4eac\u7fa4\u5c9b";
+    },
+    get$ugCountryDisplayName() {
+      return "\u4e4c\u5e72\u8fbe";
+    },
+    get$uaCountryDisplayName() {
+      return "\u4e4c\u514b\u5170";
+    },
+    get$aeCountryDisplayName() {
+      return "\u963f\u62c9\u4f2f\u8054\u5408\u914b\u957f\u56fd";
+    },
+    get$gbCountryDisplayName() {
+      return "\u82f1\u56fd";
+    },
+    get$usCountryDisplayName() {
+      return "\u7f8e\u56fd";
+    },
+    get$uyCountryDisplayName() {
+      return "\u4e4c\u62c9\u572d";
+    },
+    get$uzCountryDisplayName() {
+      return "\u4e4c\u5179\u522b\u514b\u65af\u5766";
+    },
+    get$vuCountryDisplayName() {
+      return "\u74e6\u52aa\u963f\u56fe";
+    },
+    get$vaCountryDisplayName() {
+      return "\u68b5\u8482\u5188\u57ce";
+    },
+    get$veCountryDisplayName() {
+      return "\u59d4\u5185\u745e\u62c9";
+    },
+    get$vnCountryDisplayName() {
+      return "\u8d8a\u5357";
+    },
+    get$wfCountryDisplayName() {
+      return "\u74e6\u5229\u65af\u548c\u5bcc\u56fe\u7eb3";
+    },
+    get$ehCountryDisplayName() {
+      return "\u897f\u6492\u54c8\u62c9";
+    },
+    get$yeCountryDisplayName() {
+      return "\u4e5f\u95e8";
+    },
+    get$zmCountryDisplayName() {
+      return "\u8d5e\u6bd4\u4e9a";
+    },
+    get$zwCountryDisplayName() {
+      return "\u6d25\u5df4\u5e03\u97e6";
+    },
+    get$pay() {
+      return "\u652f\u4ed8";
+    },
+    invitedToSpace$2(space, user) {
+      return user + " \u9080\u8bf7\u4f60\u52a0\u5165\u8bfe\u7a0b\uff1a" + space + "\uff01\u4f60\u60f3\u63a5\u53d7\u5417\uff1f";
+    },
+    get$youreInvited() {
+      return "\ud83d\udce9 \u4f60\u88ab\u9080\u8bf7\u4e86\uff01";
+    },
+    invitedToChat$2($name, user) {
+      return user + " \u9080\u8bf7\u4f60\u52a0\u5165\u804a\u5929\uff1a" + $name + "\uff01\u4f60\u60f3\u63a5\u53d7\u5417\uff1f";
+    },
+    get$monthlySubscription() {
+      return "\u6bcf\u6708";
+    },
+    get$yearlySubscription() {
+      return "\u6bcf\u5e74";
+    },
+    get$defaultSubscription() {
+      return "\u6f58\u5409\u4e9a\u804a\u5929\u8ba2\u9605";
+    },
+    get$freeTrial() {
+      return "\u514d\u8d39\u8bd5\u7528";
+    },
+    get$noDataFound() {
+      return "\u672a\u627e\u5230\u8cc7\u6599";
+    },
+    get$bestCorrectionFeedback() {
+      return "\u6c92\u932f\uff01";
+    },
+    get$distractorFeedback() {
+      return "\u4e0d\u592a\u5c0d\u3002";
+    },
+    get$bestAnswerFeedback() {
+      return "\u6c92\u932f\uff01";
+    },
+    get$definitionDefaultPrompt() {
+      return "\u9019\u500b\u8a5e\u662f\u4ec0\u9ebc\u610f\u601d\uff1f";
+    },
+    get$practiceDefaultPrompt() {
+      return "\u6700\u4f73\u7b54\u6848\u662f\u4ec0\u9ebc\uff1f";
+    },
+    get$correctionDefaultPrompt() {
+      return "\u6700\u4f73\u66ff\u4ee3\u8a5e\u662f\u4ec0\u9ebc\uff1f";
+    },
+    get$reportToTeacher() {
+      return "\u4f60\u60f3\u5411\u8ab0\u8209\u5831\u6b64\u8a0a\u606f\uff1f";
+    },
+    reportMessageTitle$3(reportingUserId, reportedUserId, roomName) {
+      return reportingUserId + " \u5728\u804a\u5929\u5ba4 " + roomName + " \u4e2d\u8209\u5831\u4e86\u4f86\u81ea " + reportedUserId + " \u7684\u8a0a\u606f";
+    },
+    reportMessageBody$2(reportedMessage, reason) {
+      return "\u8a0a\u606f\uff1a" + reportedMessage + "\n\u539f\u56e0\uff1a" + reason;
+    },
+    get$noTeachersFound() {
+      return "\u627e\u4e0d\u5230\u53ef\u8209\u5831\u7684\u8001\u5e2b";
+    },
+    trialExpiration$1(expiration) {
+      return "\u60a8\u7684\u514d\u8cbb\u8a66\u7528\u671f\u5c07\u65bc " + expiration + " \u5230\u671f";
+    },
+    get$freeTrialDesc() {
+      return "\u65b0\u7528\u6236\u53ef\u7372\u5f97\u4e00\u9031\u7684 Pangea \u804a\u5929\u514d\u8cbb\u8a66\u7528";
+    },
+    get$activateTrial() {
+      return "\u514d\u8cbb7\u5929\u8a66\u7528";
+    },
+    get$successfullySubscribed() {
+      return "\u60a8\u5df2\u6210\u529f\u8a02\u95b1\uff01";
+    },
+    get$clickToManageSubscription() {
+      return "\u9ede\u64ca\u6b64\u8655\u7ba1\u7406\u60a8\u7684\u8a02\u95b1\u3002";
+    },
+    pleaseChooseAtLeastChars$1(min) {
+      return "\u8acb\u81f3\u5c11\u9078\u64c7 " + min + " \u500b\u5b57\u7b26\u3002";
+    },
+    get$pleaseEnterValidEmail() {
+      return "\u8acb\u8f38\u5165\u6709\u6548\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u3002";
+    },
+    get$pleaseChooseAUsername() {
+      return "\u8acb\u9078\u64c7\u4e00\u500b\u7528\u6236\u540d";
+    },
+    get$listen() {
+      return "\u807d";
+    },
+    get$trialPeriodExpired() {
+      return "\u60a8\u7684\u8a66\u7528\u671f\u5df2\u904e\u671f";
+    },
+    get$subscribedToUnlockTools() {
+      return "\u8a02\u95b1\u4ee5\u89e3\u9396\u4e92\u52d5\u5f0f\u7ffb\u8b6f\u8207\u8a9e\u6cd5\u6aa2\u67e5\u3001\u97f3\u8a0a\u64ad\u653e\u3001\u500b\u4eba\u5316\u7df4\u7fd2\u6d3b\u52d5\u8207\u5b78\u7fd2\u5206\u6790\uff01";
+    },
+    get$translationTooltip() {
+      return "\u7ffb\u8b6f";
+    },
+    get$speechToTextTooltip() {
+      return "\u8f49\u9304";
+    },
+    get$kickBotWarning() {
+      return "\u8e22\u51fa Pangea \u6a5f\u5668\u4eba\u5c07\u6703\u79fb\u9664\u6b64\u804a\u5929\u4e2d\u7684\u5c0d\u8a71\u6a5f\u5668\u4eba\u3002";
+    },
+    get$refresh(_) {
+      return "\u91cd\u65b0\u6574\u7406";
+    },
+    get$updatePhoneOS() {
+      return "\u60a8\u53ef\u80fd\u9700\u8981\u66f4\u65b0\u8a2d\u5099\u7684\u4f5c\u696d\u7cfb\u7d71\u7248\u672c\u3002";
+    },
+    get$autoIGCToolName() {
+      return "\u81ea\u52d5\u904b\u884cPangea\u5beb\u4f5c\u5354\u52a9";
+    },
+    get$autoIGCToolDescription() {
+      return "\u5728\u767c\u9001\u8a0a\u606f\u524d\uff0c\u81ea\u52d5\u904b\u884cPangea\u804a\u5929\u8a9e\u6cd5\u548c\u7ffb\u8b6f\u5beb\u4f5c\u5354\u52a9\u3002";
+    },
+    get$chatCapacity() {
+      return "\u804a\u5929\u5bb9\u91cf";
+    },
+    get$roomFull() {
+      return "\u6b64\u623f\u9593\u5df2\u9054\u5bb9\u91cf\u4e0a\u9650\u3002";
+    },
+    get$chatCapacityHasBeenChanged() {
+      return "\u804a\u5929\u5bb9\u91cf\u5df2\u66f4\u6539";
+    },
+    chatCapacitySetTooLow$1(count) {
+      return "\u804a\u5929\u5bb9\u91cf\u5fc5\u9808\u81f3\u5c11\u70ba " + count + "\u3002";
+    },
+    get$chatCapacityExplanation() {
+      return "\u804a\u5929\u5bb9\u91cf\u9650\u5236\u5141\u8a31\u52a0\u5165\u7684\u6210\u54e1\u6578\u91cf\u3002";
+    },
+    get$enterNumber() {
+      return "\u8acb\u8f38\u5165\u6574\u6578\u503c\u3002";
+    },
+    get$buildTranslation() {
+      return "\u5f9e\u4e0a\u8ff0\u9078\u9805\u5efa\u7acb\u60a8\u7684\u7ffb\u8b6f";
+    },
+    get$practice() {
+      return "\u7df4\u7fd2";
+    },
+    get$noLanguagesSet() {
+      return "\u672a\u8a2d\u5b9a\u8a9e\u8a00";
+    },
+    get$speechToTextBody() {
+      return "\u8a9e\u97f3\u8a0a\u606f\u53ef\u4ee5\u770b\u5230\u8f49\u9304\u5167\u5bb9\u4ee5\u53ca\u8aaa\u8a71\u8005\u7684\u6bcf\u5206\u9418\u5b57\u6578\u5f97\u5206\u3002";
+    },
+    get$versionNotFound() {
+      return "\u672a\u627e\u5230\u7248\u672c";
+    },
+    get$fetchingVersion() {
+      return "\u6b63\u5728\u53d6\u5f97\u7248\u672c...";
+    },
+    get$versionFetchError() {
+      return "\u53d6\u5f97\u7248\u672c\u6642\u51fa\u932f";
+    },
+    versionText$2(version, buildNumber) {
+      return "\u7248\u672c\uff1a" + version + "+" + buildNumber;
+    },
+    get$l1TranslationBody() {
+      return "\u60a8\u7684\u57fa\u672c\u8a9e\u8a00\u4e2d\u7684\u8a0a\u606f\u5c07\u4e0d\u6703\u88ab\u7ffb\u8b6f\u3002";
+    },
+    get$deleteSubscriptionWarningTitle() {
+      return "\u60a8\u6709\u4e00\u500b\u6709\u6548\u7684\u8a02\u95b1";
+    },
+    get$deleteSubscriptionWarningBody() {
+      return "\u522a\u9664\u60a8\u7684\u5e33\u6236\u4e0d\u6703\u81ea\u52d5\u53d6\u6d88\u60a8\u7684\u8a02\u95b1\u3002";
+    },
+    get$manageSubscription() {
+      return "\u7ba1\u7406\u8a02\u95b1";
+    },
+    get$error520Title() {
+      return "\u8acb\u518d\u8a66\u4e00\u6b21\u3002";
+    },
+    get$error520Desc() {
+      return "\u62b1\u6b49\uff0c\u6211\u5011\u7121\u6cd5\u7406\u89e3\u60a8\u7684\u8a0a\u606f...";
+    },
+    get$level(_) {
+      return "\u7b49\u7d1a";
+    },
+    get$translationChoicesBody() {
+      return "\u9ede\u64ca\u4e26\u9577\u6309\u9078\u9805\u4ee5\u7372\u53d6\u63d0\u793a\u3002";
+    },
+    get$grammar() {
+      return "\u8a9e\u6cd5";
+    },
+    get$contactHasBeenInvitedToTheChat() {
+      return "\u806f\u7d61\u4eba\u5df2\u88ab\u9080\u8acb\u52a0\u5165\u804a\u5929";
+    },
+    get$inviteChat() {
+      return "\ud83d\udce8 \u9080\u8acb\u52a0\u5165\u804a\u5929";
+    },
+    get$chatName() {
+      return "\u804a\u5929\u540d\u7a31";
+    },
+    get$l2SupportNa() {
+      return "\u4e0d\u53ef\u7528";
+    },
+    get$l2SupportAlpha() {
+      return "Alpha";
+    },
+    get$l2SupportBeta() {
+      return "Beta";
+    },
+    get$l2SupportFull() {
+      return "\u5b8c\u6574";
+    },
+    get$playAudio() {
+      return "\u64ad\u653e";
+    },
+    get$stop(_) {
+      return "\u505c\u6b62";
+    },
+    get$grammarCopyPOSsconj() {
+      return "\u5f9e\u5c6c\u9023\u8a5e";
+    },
+    get$grammarCopyPOSnum() {
+      return "\u6578\u8a5e";
+    },
+    get$grammarCopyPOSverb() {
+      return "\u52d5\u8a5e";
+    },
+    get$grammarCopyPOSaffix() {
+      return "\u8a5e\u7db4";
+    },
+    get$grammarCopyPOSpart() {
+      return "\u52a9\u8a5e";
+    },
+    get$grammarCopyPOSadj() {
+      return "\u5f62\u5bb9\u8a5e";
+    },
+    get$grammarCopyPOScconj() {
+      return "\u4e26\u5217\u9023\u8a5e";
+    },
+    get$grammarCopyPOSpunct() {
+      return "\u6a19\u9ede\u7b26\u865f";
+    },
+    get$grammarCopyPOSadv() {
+      return "\u526f\u8a5e";
+    },
+    get$grammarCopyPOSaux() {
+      return "\u52a9\u52d5\u8a5e";
+    },
+    get$grammarCopyPOSspace() {
+      return "\u7a7a\u683c";
+    },
+    get$grammarCopyPOSsym() {
+      return "\u7b26\u865f";
+    },
+    get$grammarCopyPOSdet() {
+      return "\u9650\u5b9a\u8a5e";
+    },
+    get$grammarCopyPOSpron() {
+      return "\u4ee3\u8a5e";
+    },
+    get$grammarCopyPOSadp() {
+      return "\u4ecb\u8a5e";
+    },
+    get$grammarCopyPOSpropn() {
+      return "\u5c08\u6709\u540d\u8a5e";
+    },
+    get$grammarCopyPOSnoun() {
+      return "\u540d\u8a5e";
+    },
+    get$grammarCopyPOSintj() {
+      return "\u611f\u5606\u8a5e";
+    },
+    get$grammarCopyPOSx() {
+      return "\u5176\u4ed6";
+    },
+    get$grammarCopyGENDERfem() {
+      return "\u9670\u6027";
+    },
+    get$grammarCopyPERSON2() {
+      return "\u7b2c\u4e8c\u4eba\u7a31";
+    },
+    get$grammarCopyMOODimp() {
+      return "\u7948\u4f7f\u8a9e\u6c23";
+    },
+    get$grammarCopyPUNCTTYPEqest() {
+      return "\u7591\u554f";
+    },
+    get$grammarCopyASPECTperf() {
+      return "\u5b8c\u6210\u6642";
+    },
+    get$grammarCopyCASEaccnom() {
+      return "\u8cd3\u683c\uff0c\u4e3b\u683c";
+    },
+    get$grammarCopyCASEobl() {
+      return "\u8cf4\u683c";
+    },
+    get$grammarCopyVOICEact() {
+      return "\u4e3b\u52d5\u8a9e\u614b";
+    },
+    get$grammarCopyPUNCTTYPEbrck() {
+      return "\u62ec\u865f";
+    },
+    get$grammarCopyNOUNTYPEart() {
+      return "\u51a0\u8a5e";
+    },
+    get$grammarCopyNUMBERsing() {
+      return "\u55ae\u6578";
+    },
+    get$grammarCopyGENDERmasc() {
+      return "\u967d\u6027";
+    },
+    get$grammarCopyVERBTYPEmod() {
+      return "\u60c5\u614b\u52d5\u8a5e";
+    },
+    get$grammarCopyADVTYPEadverbial() {
+      return "\u526f\u8a5e\u6027";
+    },
+    get$grammarCopyTENSEperi() {
+      return "\u5468\u908a\u6642";
+    },
+    get$grammarCopyNUMFORMdigit() {
+      return "\u6578\u5b57";
+    },
+    get$grammarCopyNOUNTYPEnot_proper() {
+      return "\u975e\u5c08\u6709\u540d\u8a5e";
+    },
+    get$grammarCopyNUMTYPEcard() {
+      return "\u57fa\u6578";
+    },
+    get$grammarCopyNOUNTYPEprop() {
+      return "\u5c08\u6709\u540d\u8a5e";
+    },
+    get$grammarCopyPUNCTTYPEdash() {
+      return "\u7834\u6298\u865f";
+    },
+    get$grammarCopyPUNCTTYPEyes() {
+      return "\u662f";
+    },
+    get$grammarCopyPUNCTTYPEsemi() {
+      return "\u5206\u865f";
+    },
+    get$grammarCopyPUNCTTYPEcomm() {
+      return "\u9017\u865f";
+    },
+    get$grammarCopyMOODcnd() {
+      return "\u689d\u4ef6\u5f0f";
+    },
+    get$grammarCopyCASEacc() {
+      return "\u8cd3\u683c";
+    },
+    get$grammarCopyPARTTYPEpart() {
+      return "\u90e8\u5206\u683c";
+    },
+    get$grammarCopyTENSEpast() {
+      return "\u904e\u53bb\u5f0f";
+    },
+    get$grammarCopyDEGREEsup() {
+      return "\u6700\u9ad8\u7d1a";
+    },
+    get$grammarCopyPUNCTTYPEcolo() {
+      return "\u5192\u865f";
+    },
+    get$grammarCopyPERSON3() {
+      return "\u7b2c\u4e09\u4eba\u7a31";
+    },
+    get$grammarCopyNUMBERplur() {
+      return "\u8907\u6578";
+    },
+    get$grammarCopyPRONTYPEnpr() {
+      return "\u5c08\u6709\u540d\u8a5e";
+    },
+    get$grammarCopyPRONTYPEinterrogative() {
+      return "\u7591\u554f\u53e5";
+    },
+    get$grammarCopyPOLITEinfm() {
+      return "\u975e\u6b63\u5f0f";
+    },
+    get$grammarCopyADVTYPEtim() {
+      return "\u6642\u9593";
+    },
+    get$grammarCopyPOLARITYneg() {
+      return "\u5426\u5b9a";
+    },
+    get$grammarCopyNUMTYPEtot() {
+      return "\u7e3d\u6578";
+    },
+    get$grammarCopyADVTYPEadnomial() {
+      return "\u4fee\u98fe\u8a9e";
+    },
+    get$grammarCopyASPECTprog() {
+      return "\u9032\u884c\u5f0f";
+    },
+    get$grammarCopyMOODsub() {
+      return "\u865b\u64ec\u5f0f";
+    },
+    get$grammarCopyVERBFORMcomplementive() {
+      return "\u88dc\u8a9e\u5f0f";
+    },
+    get$grammarCopyCASEnom() {
+      return "\u4e3b\u683c";
+    },
+    get$grammarCopyTENSEfut() {
+      return "\u5c07\u4f86\u5f0f";
+    },
+    get$grammarCopyCASEdat() {
+      return "\u8207\u683c";
+    },
+    get$grammarCopyTENSEpres() {
+      return "\u73fe\u5728\u5f0f";
+    },
+    get$grammarCopyGENDERneut() {
+      return "\u4e2d\u6027";
+    },
+    get$grammarCopyPRONTYPErel() {
+      return "\u95dc\u4fc2\u4ee3\u8a5e";
+    },
+    get$grammarCopyVERBFORMfinalEnding() {
+      return "\u7d50\u5c3e\u5f62\u5f0f";
+    },
+    get$grammarCopyPRONTYPEdem() {
+      return "\u6307\u793a\u4ee3\u8a5e";
+    },
+    get$grammarCopyPREPCASEpre() {
+      return "\u4ecb\u8a5e\u683c";
+    },
+    get$grammarCopyVERBFORMfin() {
+      return "\u6709\u9650\u52d5\u8a5e";
+    },
+    get$grammarCopyDEGREEpos() {
+      return "\u539f\u7d1a";
+    },
+    get$grammarCopyPUNCTTYPEquot() {
+      return "\u5f15\u865f";
+    },
+    get$grammarCopyVERBFORMger() {
+      return "\u52d5\u540d\u8a5e";
+    },
+    get$grammarCopyVOICEpass() {
+      return "\u88ab\u52d5\u8a9e\u614b";
+    },
+    get$grammarCopyCASEgen() {
+      return "\u6240\u6709\u683c";
+    },
+    get$grammarCopyTENSEprs() {
+      return "\u73fe\u5728\u5f0f";
+    },
+    get$grammarCopyDEFINITEdef() {
+      return "\u5b9a\u51a0\u8a5e";
+    },
+    get$grammarCopyNUMTYPEord() {
+      return "\u5e8f\u6578";
+    },
+    get$grammarCopyCASEins() {
+      return "\u5de5\u5177\u683c";
+    },
+    get$grammarCopyVERBFORMinf() {
+      return "\u4e0d\u5b9a\u5f0f";
+    },
+    get$grammarCopyVERBFORMaux() {
+      return "\u52a9\u52d5\u8a5e";
+    },
+    get$grammarCopyNUMFORMlong() {
+      return "\u9577\u5f62";
+    },
+    get$grammarCopyCASEloc() {
+      return "\u65b9\u4f4d\u683c";
+    },
+    get$grammarCopyMOODind() {
+      return "\u9648\u8ff0\u8bed\u6c14";
+    },
+    get$grammarCopyDEGREEcmp() {
+      return "\u6bd4\u8f83\u7ea7";
+    },
+    get$grammarCopyCASErelativeCase() {
+      return "\u5173\u7cfb\u683c";
+    },
+    get$grammarCopyPUNCTTYPEexcl() {
+      return "\u611f\u53f9\u53e5";
+    },
+    get$grammarCopyPERSON1() {
+      return "\u7b2c\u4e00\u4eba\u79f0";
+    },
+    get$grammarCopyPUNCTSIDEini() {
+      return "\u8d77\u59cb";
+    },
+    get$grammarCopyGENDERperson() {
+      return "\u4eba\u79f0";
+    },
+    get$grammarCopyFOREIGNyes() {
+      return "\u5916\u6765\u8bed";
+    },
+    get$grammarCopyVOICEvoice() {
+      return "\u8bed\u6001";
+    },
+    get$grammarCopyVERBTYPEverbType() {
+      return "\u52a8\u8bcd";
+    },
+    get$grammarCopyPOSSpass() {
+      return "\u6240\u6709\u683c";
+    },
+    get$grammarCopyPREPCASEprepCase() {
+      return "\u4ecb\u8bcd\u683c";
+    },
+    get$grammarCopyNUMTYPEnumType() {
+      return "\u6570\u8bcd";
+    },
+    get$grammarCopyNOUNTYPEnounType() {
+      return "\u540d\u8bcd";
+    },
+    get$grammarCopyREFLEXreflex() {
+      return "\u53cd\u8eab";
+    },
+    get$grammarCopyPRONTYPEpronType() {
+      return "\u4ee3\u540d\u8a5e";
+    },
+    get$grammarCopyPUNCTSIDEpunctSide() {
+      return "\u6a19\u9ede\u7b26\u865f\u4f4d\u7f6e";
+    },
+    get$grammarCopyVERBFORMverbForm() {
+      return "\u52d5\u8a5e\u5f62\u5f0f";
+    },
+    get$grammarCopyGENDERgender() {
+      return "\u6027\u5225";
+    },
+    get$grammarCopyMOODmood() {
+      return "\u8a9e\u6c23";
+    },
+    get$grammarCopyASPECTaspect() {
+      return "\u9ad4";
+    },
+    get$grammarCopyPUNCTTYPEpunctType() {
+      return "\u6a19\u9ede\u985e\u578b";
+    },
+    get$grammarCopyTENSEtense() {
+      return "\u6642\u614b";
+    },
+    get$grammarCopyDEGREEdegree() {
+      return "\u7a0b\u5ea6";
+    },
+    get$grammarCopyPOLITEpolite() {
+      return "\u79ae\u8c8c";
+    },
+    get$grammarCopyADVTYPEadvType() {
+      return "\u526f\u8a5e\u985e\u578b";
+    },
+    get$grammarCopyNUMFORMnumber() {
+      return "\u6578\u91cf";
+    },
+    get$grammarCopyCONJTYPEconjType() {
+      return "\u9023\u8a5e\u985e\u578b";
+    },
+    get$grammarCopyPOLARITYpolarity() {
+      return "\u6975\u6027";
+    },
+    get$grammarCopyCASEcase() {
+      return "\u683c";
+    },
+    get$grammarCopyDEFINITEdefinite() {
+      return "\u9650\u5b9a\u6027";
+    },
+    get$grammarCopyNUMFORMnumForm() {
+      return "\u6578\u8a5e";
+    },
+    get$grammarCopyPRONTYPEadn() {
+      return "\u4fee\u98fe\u8a9e";
+    },
+    get$grammarCopyVOCvoc() {
+      return "\u547c\u683c";
+    },
+    get$grammarCopyCMPLcmpl() {
+      return "\u88dc\u8a9e";
+    },
+    get$grammarCopyADVadv() {
+      return "\u526f\u8a5e";
+    },
+    get$grammarCopyMOODjus() {
+      return "\u7948\u9858\u8a9e\u6c23";
+    },
+    get$grammarCopyGENDERcom() {
+      return "\u901a\u7528";
+    },
+    get$grammarCopyREFLEXrflx() {
+      return "\u53cd\u8eab";
+    },
+    get$grammarCopyPARTTYPEpar() {
+      return "\u90e8\u5206\u683c";
+    },
+    get$grammarCopySPCspc() {
+      return "\u7279\u5b9a";
+    },
+    get$grammarCopyTENSEpqp() {
+      return "\u904e\u53bb\u5b8c\u6210\u6642";
+    },
+    get$grammarCopyREFLEXref() {
+      return "\u53cd\u8eab";
+    },
+    get$grammarCopyPUNCTTYPEnshrt() {
+      return "\u77ed";
+    },
+    get$grammarCopyNUMBERdual() {
+      return "\u96d9\u6578";
+    },
+    get$grammarCopyNUMFORMlng() {
+      return "\u9577\u5f62\u5f0f";
+    },
+    get$grammarCopyVOICEmid() {
+      return "\u4e2d\u614b";
+    },
+    get$grammarCopyINTRELintRel() {
+      return "\u7591\u554f\u53e5\u3001\u95dc\u4fc2\u5b50\u53e5";
+    },
+    get$grammarCopyINTint() {
+      return "\u7591\u554f";
+    },
+    get$grammarCopyVOICEcaus() {
+      return "\u4f7f\u5f79";
+    },
+    get$grammarCopyUnknown() {
+      return "\u672a\u77e5";
+    },
+    get$grammarCopyEVIDENTevident() {
+      return "\u8b49\u64da\u6027";
+    },
+    get$grammarCopyNUMFORMnumberPsor() {
+      return "\u6240\u6709\u8005\u6578\u91cf";
+    },
+    get$grammarCopyASPECThab() {
+      return "\u7fd2\u6163\u6027";
+    },
+    get$grammarCopyCASEabl() {
+      return "\u96e2\u683c";
+    },
+    get$grammarCopyCASEall() {
+      return "\u6240\u6709\u683c";
+    },
+    get$grammarCopyCASEess() {
+      return "\u72b6\u6001\u683c";
+    },
+    get$grammarCopyCASEtra() {
+      return "\u8f6c\u5316\u683c";
+    },
+    get$grammarCopyCASEequ() {
+      return "\u7b49\u540c\u683c";
+    },
+    get$grammarCopyCASEdis() {
+      return "\u5206\u914d\u683c";
+    },
+    get$grammarCopyCASEabs() {
+      return "\u7edd\u5bf9\u683c";
+    },
+    get$grammarCopyCASEerg() {
+      return "\u4e3b\u683c";
+    },
+    get$grammarCopyCASEcau() {
+      return "\u56e0\u679c\u683c";
+    },
+    get$grammarCopyCASEben() {
+      return "\u53d7\u76ca\u683c";
+    },
+    get$grammarCopyCASEtem() {
+      return "\u65f6\u95f4\u683c";
+    },
+    get$grammarCopyCONJTYPEcoord() {
+      return "\u5e76\u5217\u8fde\u8bcd";
+    },
+    get$grammarCopyDEFINITEcons() {
+      return "\u6784\u9020\u72b6\u6001";
+    },
+    get$grammarCopyDEGREEabs() {
+      return "\u7edd\u5bf9\u7a0b\u5ea6";
+    },
+    get$grammarCopyEVIDENTfh() {
+      return "\u4e8b\u5b9e\u8bc1\u636e";
+    },
+    get$grammarCopyEVIDENTnfh() {
+      return "\u975e\u4e8b\u5b9e\u8bc1\u636e";
+    },
+    get$grammarCopyMOODopt() {
+      return "\u7948\u613f\u8bed\u6c14";
+    },
+    get$grammarCopyMOODadm() {
+      return "\u611f\u53f9\u8bed\u6c14";
+    },
+    get$grammarCopyMOODdes() {
+      return "\u613f\u671b\u8bed\u6c14";
+    },
+    get$grammarCopyMOODnec() {
+      return "\u5fc5\u8981\u8bed\u6c14";
+    },
+    get$grammarCopyMOODpot() {
+      return "\u53ef\u80fd\u6027\u8bed\u6c14";
+    },
+    get$grammarCopyMOODprp() {
+      return "\u4ecb\u8bcd";
+    },
+    get$grammarCopyMOODqot() {
+      return "\u5f15\u8ff0";
+    },
+    get$grammarCopyNUMFORMword() {
+      return "\u8bcd\u5f62";
+    },
+    get$grammarCopyNUMFORMroman() {
+      return "\u7f57\u9a6c\u6570\u5b57";
+    },
+    get$grammarCopyNUMFORMletter() {
+      return "\u5b57\u6bcd\u5f62\u5f0f";
+    },
+    get$grammarCopyNUMTYPEmult() {
+      return "\u500d\u6570";
+    },
+    get$grammarCopyNUMTYPEfrac() {
+      return "\u5206\u6570";
+    },
+    get$grammarCopyNUMTYPEsets() {
+      return "\u96c6\u5408";
+    },
+    get$grammarCopyNUMTYPErange() {
+      return "\u8303\u56f4";
+    },
+    get$grammarCopyNUMTYPEdist() {
+      return "\u5206\u914d";
+    },
+    get$grammarCopyNUMBERtri() {
+      return "\u8bd5\u9a8c";
+    },
+    get$grammarCopyNUMBERpauc() {
+      return "\u5c11\u6570";
+    },
+    get$grammarCopyNUMBERgrpa() {
+      return "\u8f83\u591a\u5c11\u6570";
+    },
+    get$grammarCopyNUMBERgrpl() {
+      return "\u8f83\u591a\u590d\u6570";
+    },
+    get$grammarCopyNUMBERinv() {
+      return "\u9006\u6570";
+    },
+    get$grammarCopyPERSON0() {
+      return "\u96f6";
+    },
+    get$grammarCopyPERSON4() {
+      return "\u7b2c\u56db";
+    },
+    get$grammarCopyPOLITEform() {
+      return "\u6b63\u5f0f";
+    },
+    get$grammarCopyPOLITEelev() {
+      return "\u9ad8\u96c5";
+    },
+    get$grammarCopyPOLITEhumb() {
+      return "\u8c26\u900a";
+    },
+    get$grammarCopyPRONTYPEemp() {
+      return "\u5f37\u8abf";
+    },
+    get$grammarCopyPRONTYPEexc() {
+      return "\u611f\u5606";
+    },
+    get$grammarCopyPRONTYPErcp() {
+      return "\u4e92\u60e0";
+    },
+    get$grammarCopyPRONTYPEintRelPronType() {
+      return "\u7591\u554f-\u95dc\u4fc2";
+    },
+    get$grammarCopyTENSEaor() {
+      return "\u672a\u5b8c\u6210\u6642";
+    },
+    get$grammarCopyTENSEeps() {
+      return "\u8a8d\u8b58\u8ad6\u6642\u614b";
+    },
+    get$grammarCopyTENSEprosp() {
+      return "\u5c07\u4f86\u6642";
+    },
+    get$grammarCopyVERBFORMpart() {
+      return "\u5206\u8a5e";
+    },
+    get$grammarCopyVERBFORMconv() {
+      return "\u52d5\u8a5e\u526f\u8a5e";
+    },
+    get$grammarCopyVERBFORMvnoun() {
+      return "\u52d5\u540d\u8a5e";
+    },
+    get$grammarCopyVOICEantip() {
+      return "\u53cd\u52d5\u614b";
+    },
+    get$grammarCopyVOICEcauVoice() {
+      return "\u4f7f\u5f79";
+    },
+    get$grammarCopyVOICedir() {
+      return "\u76f4\u63a5\u8a9e\u614b";
+    },
+    get$grammarCopyVOICEinvVoice() {
+      return "\u5012\u8f49\u8a9e\u614b";
+    },
+    get$grammarCopyVOICErcpVoice() {
+      return "\u4e92\u60e0\u8a9e\u614b";
+    },
+    get$grammarCopyPOS() {
+      return "\u8a5e\u6027";
+    },
+    get$grammarCopyGENDER() {
+      return "\u6027\u5225";
+    },
+    get$grammarCopyPERSON() {
+      return "\u4eba\u7a31";
+    },
+    get$grammarCopyMOOD() {
+      return "\u8a9e\u6c23";
+    },
+    get$grammarCopyPUNCTTYPE() {
+      return "\u6a19\u9ede\u7b26\u865f\u985e\u578b";
+    },
+    get$grammarCopyASPECT() {
+      return "Aspect";
+    },
+    get$grammarCopyCASE() {
+      return "\u683c";
+    },
+    get$grammarCopyVOICE() {
+      return "\u8bed\u6001";
+    },
+    get$grammarCopyNOUNTYPE() {
+      return "\u540d\u8bcd\u7c7b\u578b";
+    },
+    get$grammarCopyVERBTYPE() {
+      return "\u52a8\u8bcd\u7c7b\u578b";
+    },
+    get$grammarCopyADVTYPE() {
+      return "\u526f\u8bcd\u7c7b\u578b";
+    },
+    get$grammarCopyNUMFORM() {
+      return "\u6570\u8bcd\u5f62\u5f0f";
+    },
+    get$grammarCopyNUMTYPE() {
+      return "\u6570\u8bcd\u7c7b\u578b";
+    },
+    get$grammarCopyNUMBER() {
+      return "\u6570\u5b57";
+    },
+    get$grammarCopyDEFINITE() {
+      return "\u786e\u5b9a\u6027";
+    },
+    get$grammarCopyDEGREE() {
+      return "\u7a0b\u5ea6";
+    },
+    get$grammarCopyEVIDENT() {
+      return "\u8bc1\u636e\u6027";
+    },
+    get$grammarCopyFOREIGN() {
+      return "\u5916\u6765";
+    },
+    get$grammarCopyPOLARITY() {
+      return "\u6781\u6027";
+    },
+    get$grammarCopyPOLITE() {
+      return "\u793c\u8c8c";
+    },
+    get$grammarCopyPREPCASE() {
+      return "\u4ecb\u8bcd\u683c";
+    },
+    get$grammarCopyPRONTYPE() {
+      return "\u4ee3\u8bcd\u7c7b\u578b";
+    },
+    get$grammarCopyPUNCTSIDE() {
+      return "\u6807\u70b9\u7b26\u53f7\u4f4d\u7f6e";
+    },
+    get$grammarCopyREFLEX() {
+      return "\u53cd\u8eab";
+    },
+    get$grammarCopyTENSE() {
+      return "\u65f6\u6001";
+    },
+    get$grammarCopyVERBFORM() {
+      return "\u52d5\u8a5e\u5f62\u5f0f";
+    },
+    get$grammarCopyCONJTYPE() {
+      return "\u9023\u8a5e\u985e\u578b";
+    },
+    get$grammarCopyUNKNOWN() {
+      return "\u672a\u77e5";
+    },
+    get$grammarCopyNUMBERPSOR() {
+      return "\u6240\u6709\u8005\u6578\u91cf";
+    },
+    get$grammarCopyPOSS() {
+      return "\u6240\u6709\u683c";
+    },
+    get$grammarCopyASPECTimp() {
+      return "\u672a\u5b8c\u6210\u9ad4";
+    },
+    get$grammarCopyCASEvoc() {
+      return "\u547c\u683c";
+    },
+    get$grammarCopyCASEcom() {
+      return "\u4f34\u96a8\u683c";
+    },
+    get$grammarCopyCASEpar() {
+      return "\u90e8\u5206\u683c";
+    },
+    get$grammarCopyCASEadv() {
+      return "\u526f\u8a5e\u683c";
+    },
+    get$grammarCopyCASEref() {
+      return "\u6307\u7a31\u683c";
+    },
+    get$grammarCopyCASErel() {
+      return "\u95dc\u4fc2\u683c";
+    },
+    get$grammarCopyCASEsub() {
+      return "\u5c6c\u683c";
+    },
+    get$grammarCopyCASEsup() {
+      return "\u8d85\u683c";
+    },
+    get$grammarCopyCASEaccdat() {
+      return "\u8cd3\u683c-\u8207\u683c";
+    },
+    get$grammarCopyCASEpre() {
+      return "\u4ecb\u8a5e\u683c";
+    },
+    get$grammarCopyCONJTYPEsub() {
+      return "\u5f9e\u5c6c\u9023\u8a5e";
+    },
+    get$grammarCopyCONJTYPEcmp() {
+      return "\u6bd4\u8f03\u7d1a";
+    },
+    get$grammarCopyDEFINITEind() {
+      return "\u4e0d\u5b9a";
+    },
+    get$grammarCopyMOODint() {
+      return "\u7591\u554f\u8a9e\u6c23";
+    },
+    get$grammarCopyNOUNTYPEcomm() {
+      return "\u666e\u901a\u540d\u8a5e";
+    },
+    get$grammarCopyNUMBERPSORsing() {
+      return "\u6240\u6709\u8005\u55ae\u6578";
+    },
+    get$grammarCopyNUMBERPSORplur() {
+      return "\u6240\u6709\u8005\u8907\u6578";
+    },
+    get$grammarCopyNUMBERPSORdual() {
+      return "\u6240\u6709\u8005\u96d9\u6578";
+    },
+    get$grammarCopyPOLARITYpos() {
+      return "\u80af\u5b9a\u6975\u6027";
+    },
+    get$grammarCopyPOSSyes() {
+      return "\u6240\u6709\u683c";
+    },
+    get$grammarCopyPREPCASEnpr() {
+      return "\u975e\u4ecb\u8a5e\u6027";
+    },
+    get$grammarCopyPRONTYPEprs() {
+      return "\u4eba\u7a31\u4ee3\u8a5e";
+    },
+    get$grammarCopyPRONTYPEint() {
+      return "\u7591\u554f\u4ee3\u8a5e";
+    },
+    get$grammarCopyPRONTYPEtot() {
+      return "\u7e3d\u9ad4";
+    },
+    get$grammarCopyPRONTYPEneg() {
+      return "\u5426\u5b9a";
+    },
+    get$grammarCopyPRONTYPEart() {
+      return "\u51a0\u8a5e";
+    },
+    get$grammarCopyPRONTYPEind() {
+      return "\u4e0d\u5b9a";
+    },
+    get$grammarCopyPRONTYPEintrel() {
+      return "\u7591\u554f-\u95dc\u4fc2\u4ee3\u8a5e";
+    },
+    get$grammarCopyPUNCTSIDEfin() {
+      return "\u53e5\u672b\u6a19\u9ede";
+    },
+    get$grammarCopyPUNCTTYPEperi() {
+      return "\u53e5\u9ede";
+    },
+    get$grammarCopyREFLEXyes() {
+      return "\u53cd\u8eab";
+    },
+    get$grammarCopyTENSEimp() {
+      return "\u672a\u5b8c\u6210\u6642";
+    },
+    get$grammarCopyVERBFORMsup() {
+      return "\u4e0a\u4f4d\u5f0f";
+    },
+    get$grammarCopyVERBFORMadn() {
+      return "\u4fee\u98fe\u8a9e\u5f0f";
+    },
+    get$grammarCopyVERBFORMlng() {
+      return "\u9577\u5f0f";
+    },
+    get$grammarCopyVERBFORMshrt() {
+      return "\u77ed\u5f0f";
+    },
+    get$grammarCopyVERBTYPEcaus() {
+      return "\u4f7f\u5f79\u52d5\u8a5e";
+    },
+    get$grammarCopyVOICEcau() {
+      return "\u4f7f\u5f79\u614b";
+    },
+    get$grammarCopyVOICEdir() {
+      return "\u76f4\u63a5";
+    },
+    get$grammarCopyVOICEinv() {
+      return "\u5012\u7f6e";
+    },
+    get$grammarCopyVOICErcp() {
+      return "\u76f8\u4e92";
+    },
+    get$other() {
+      return "\u5176\u4ed6";
+    },
+    levelShort$1(level) {
+      return "\u7b49\u7d1a " + level;
+    },
+    get$clickBestOption() {
+      return "\u9078\u64c7\u6700\u4f73\u9078\u9805\u4f86\u7ffb\u8b6f\u60a8\u7684\u8a0a\u606f\uff01";
+    },
+    get$completeActivitiesToUnlock() {
+      return "\u5b8c\u6210\u81f3\u5c11\u4e00\u500b\u6d3b\u52d5\u4ee5\u89e3\u9396\u7ffb\u8b6f\uff01";
+    },
+    get$downloadGroupText() {
+      return "\u4e0b\u8f09\u7fa4\u7d44\u6587\u5b57";
+    },
+    get$notificationsOn() {
+      return "\u901a\u77e5\u5df2\u958b\u555f";
+    },
+    get$notificationsOff() {
+      return "\u901a\u77e5\u5df2\u95dc\u9589";
+    },
+    get$createChatAndInviteUsers() {
+      return "\u5efa\u7acb\u804a\u5929\u4e26\u9080\u8acb\u7528\u6236";
+    },
+    get$updatedNewSpaceDescription() {
+      return "\u8ab2\u7a0b\u5141\u8a31\u60a8\u6574\u5408\u60a8\u7684\u804a\u5929\u4e26\u5efa\u7acb\u79c1\u4eba\u6216\u516c\u5171\u793e\u7fa4\u3002";
+    },
+    get$enterCodeToJoin() {
+      return "\u8f38\u5165\u5bc6\u78bc\u52a0\u5165";
+    },
+    get$updateNow() {
+      return "\u7acb\u5373\u66f4\u65b0";
+    },
+    get$updateLater() {
+      return "\u7a0d\u5f8c\u66f4\u65b0";
+    },
+    get$constructUseWaDesc() {
+      return "\u672a\u7d93\u5354\u52a9\u4f7f\u7528";
+    },
+    get$constructUseGaDesc() {
+      return "\u8a9e\u6cd5\u5354\u52a9";
+    },
+    get$constructUseTaDesc() {
+      return "\u7ffb\u8b6f\u5354\u52a9";
+    },
+    get$constructUseUnkDesc() {
+      return "\u672a\u77e5";
+    },
+    get$constructUseCorITDesc() {
+      return "\u7ffb\u8b6f\u6b63\u78ba";
+    },
+    get$constructUseIgnITDesc() {
+      return "\u7ffb\u8b6f\u4e2d\u88ab\u5ffd\u7565";
+    },
+    get$constructUseIncITDesc() {
+      return "\u7ffb\u8b6f\u4e0d\u6b63\u78ba";
+    },
+    get$constructUseIgnIGCDesc() {
+      return "\u8a9e\u6cd5\u66f4\u6b63\u4e2d\u88ab\u5ffd\u7565";
+    },
+    get$constructUseCorIGCDesc() {
+      return "\u8a9e\u6cd5\u66f4\u6b63\u6b63\u78ba";
+    },
+    get$constructUseIncIGCDesc() {
+      return "\u8a9e\u6cd5\u66f4\u6b63\u4e0d\u6b63\u78ba";
+    },
+    get$constructUseCorPADesc() {
+      return "\u55ae\u8a5e\u610f\u7fa9\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+    },
+    get$constructUseIgnPADesc() {
+      return "\u55ae\u8a5e\u610f\u7fa9\u6d3b\u52d5\u4e2d\u88ab\u5ffd\u7565";
+    },
+    get$constructUseIncPADesc() {
+      return "\u55ae\u8a5e\u610f\u7fa9\u6d3b\u52d5\u4e2d\u4e0d\u6b63\u78ba";
+    },
+    get$constructUseCorWLDesc() {
+      return "\u55ae\u8a5e\u807d\u529b\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+    },
+    get$constructUseIncWLDesc() {
+      return "\u55ae\u8a5e\u807d\u529b\u6d3b\u52d5\u4e2d\u4e0d\u6b63\u78ba";
+    },
+    get$constructUseIngWLDesc() {
+      return "\u55ae\u8a5e\u807d\u529b\u6d3b\u52d5\u4e2d\u88ab\u5ffd\u7565";
+    },
+    get$constructUseCorHWLDesc() {
+      return "\u96b1\u85cf\u55ae\u8a5e\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+    },
+    get$constructUseIncHWLDesc() {
+      return "\u96b1\u85cf\u55ae\u8a5e\u6d3b\u52d5\u4e2d\u4e0d\u6b63\u78ba";
+    },
+    get$constructUseIgnHWLDesc() {
+      return "\u96b1\u85cf\u55ae\u8a5e\u6d3b\u52d5\u4e2d\u88ab\u5ffd\u7565";
+    },
+    get$constructUseCorLDesc() {
+      return "\u8a5e\u6839\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+    },
+    get$constructUseIncLDesc() {
+      return "\u8a5e\u6839\u6d3b\u52d5\u4e2d\u4e0d\u6b63\u78ba";
+    },
+    get$constructUseIgnLDesc() {
+      return "\u5728\u8a5e\u5f62\u6d3b\u52d5\u4e2d\u5ffd\u7565";
+    },
+    get$constructUseCorMDesc() {
+      return "\u5728\u8a9e\u6cd5\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+    },
+    get$constructUseIncMDesc() {
+      return "\u5728\u8a9e\u6cd5\u6d3b\u52d5\u4e2d\u4e0d\u6b63\u78ba";
+    },
+    get$constructUseIgnMDesc() {
+      return "\u5728\u8a9e\u6cd5\u6d3b\u52d5\u4e2d\u5ffd\u7565";
+    },
+    get$constructUseEmojiDesc() {
+      return "\u5728\u8868\u60c5\u7b26\u865f\u6d3b\u52d5\u4e2d\u6b63\u78ba";
+    },
+    get$constructUseCollected() {
+      return "\u5728\u804a\u5929\u4e2d\u6536\u96c6";
+    },
+    get$constructUseNanDesc() {
+      return "\u4e0d\u9069\u7528";
+    },
+    xpIntoLevel$2(currentXP, maxXP) {
+      return "" + currentXP + " / " + maxXP + " \u7d93\u9a57\u503c";
+    },
+    get$enableTTSToolName() {
+      return "\u555f\u7528\u6587\u5b57\u8f49\u8a9e\u97f3";
+    },
+    get$enableTTSToolDescription() {
+      return "\u5141\u8a31\u61c9\u7528\u7a0b\u5e8f\u70ba\u60a8\u76ee\u6a19\u8a9e\u8a00\u7684\u90e8\u5206\u6587\u672c\u751f\u6210\u6587\u5b57\u8f49\u8a9e\u97f3\u8f38\u51fa\u3002";
+    },
+    get$yourUsername() {
+      return "\u60a8\u7684\u7528\u6236\u540d";
+    },
+    get$yourEmail() {
+      return "\u60a8\u7684\u96fb\u5b50\u90f5\u4ef6";
+    },
+    get$iWantToLearn() {
+      return "\u6211\u60f3\u5b78\u7fd2";
+    },
+    get$pleaseEnterEmail() {
+      return "\u8acb\u8f38\u5165\u6709\u6548\u7684\u96fb\u5b50\u90f5\u4ef6\u5730\u5740\u3002";
+    },
+    get$myBaseLanguage() {
+      return "\u6211\u7684\u57fa\u672c\u8a9e\u8a00";
+    },
+    get$meaningSectionHeader() {
+      return "\u610f\u601d\uff1a";
+    },
+    get$formSectionHeader() {
+      return "\u5728\u804a\u5929\u4e2d\u4f7f\u7528\u7684\u5f62\u5f0f\uff1a";
+    },
+    get$writingExercisesTooltip() {
+      return "\u5beb\u4f5c";
+    },
+    get$listeningExercisesTooltip() {
+      return "\u807d\u529b";
+    },
+    get$readingExercisesTooltip() {
+      return "\u95b1\u8b80";
+    },
+    get$meaningNotFound() {
+      return "\u672a\u80fd\u627e\u5230\u610f\u601d\u3002";
+    },
+    get$chooseBaseForm() {
+      return "\u9078\u64c7\u57fa\u672c\u5f62\u5f0f";
+    },
+    get$notTheCodeError() {
+      return "\u62b1\u6b49\uff0c\u9019\u4e0d\u662f\u4ee3\u78bc\uff01";
+    },
+    get$totalXP() {
+      return "\u7e3d\u7d93\u9a57\u503c";
+    },
+    get$numLemmas() {
+      return "\u8a5e\u6839\u7e3d\u6578";
+    },
+    get$numLemmasUsedCorrectly() {
+      return "\u6b63\u78ba\u4f7f\u7528\u81f3\u5c11\u4e00\u6b21\u7684\u8a5e\u6839\u6578\u91cf";
+    },
+    get$numLemmasUsedIncorrectly() {
+      return "\u5f9e\u672a\u6b63\u78ba\u4f7f\u7528\u7684\u8a5e\u6839\u6578\u91cf";
+    },
+    get$numLemmasSmallXP() {
+      return "\u7d93\u9a57\u503c\u70ba0-30\u7684\u8a5e\u6839\u6578\u91cf";
+    },
+    get$numLemmasMediumXP() {
+      return "\u7d93\u9a57\u503c\u70ba31-200\u7684\u8a5e\u6839\u6578\u91cf";
+    },
+    get$numLemmasLargeXP() {
+      return "\u7d93\u9a57\u503c\u5927\u65bc200\u7684\u8a5e\u6839\u6578\u91cf";
+    },
+    get$numGrammarConcepts() {
+      return "\u8a9e\u6cd5\u6982\u5ff5\u6578\u91cf";
+    },
+    get$listGrammarConcepts() {
+      return "\u8a9e\u6cd5\u6982\u5ff5";
+    },
+    get$listGrammarConceptsUsedCorrectly() {
+      return "\u5728\u539f\u59cb\u8a0a\u606f\u4e2d\u6b63\u78ba\u4f7f\u7528\u81f3\u5c1180%\u7684\u8a9e\u6cd5\u6982\u5ff5";
+    },
+    get$listGrammarConceptsUsedIncorrectly() {
+      return "\u5728\u539f\u59cb\u8a0a\u606f\u4e2d\u6b63\u78ba\u4f7f\u7528\u5c11\u65bc80%\u7684\u8a9e\u6cd5\u6982\u5ff5";
+    },
+    get$listGrammarConceptsUseCorrectlySystemGenerated() {
+      return "\u5f9e\u7cfb\u7d71\u751f\u6210\u5efa\u8b70\u4e2d\u6b63\u78ba\u9078\u64c7\u8a9e\u6cd5\u6982\u5ff5\u81f3\u5c1180%\u7684\u6b21\u6578";
+    },
+    get$listGrammarConceptsUseIncorrectlySystemGenerated() {
+      return "\u5f9e\u7cfb\u7d71\u751f\u6210\u5efa\u8b70\u4e2d\u6b63\u78ba\u9078\u64c7\u8a9e\u6cd5\u6982\u5ff5\u5c11\u65bc80%\u7684\u6b21\u6578";
+    },
+    get$listGrammarConceptsSmallXP() {
+      return "\u7d93\u9a57\u503c\u70ba0-50\u7684\u8a9e\u6cd5\u6982\u5ff5";
+    },
+    get$listGrammarConceptsMediumXP() {
+      return "\u7d93\u9a57\u503c\u70ba51-200\u7684\u8a9e\u6cd5\u6982\u5ff5";
+    },
+    get$listGrammarConceptsLargeXP() {
+      return "\u7d93\u9a57\u503c\u70ba201-500\u7684\u8a9e\u6cd5\u6982\u5ff5";
+    },
+    get$listGrammarConceptsHugeXP() {
+      return "\u7d93\u9a57\u503c\u8d85\u904e500\u7684\u8a9e\u6cd5\u6982\u5ff5";
+    },
+    get$numMessagesSent() {
+      return "\u5df2\u767c\u9001\u8a0a\u606f\u6578\u91cf";
+    },
+    get$numWordsTyped() {
+      return "\u539f\u59cb\u8a0a\u606f\u4e2d\u8f38\u5165\u7684\u5b57\u6578";
+    },
+    get$numCorrectChoices() {
+      return "\u5f9e\u7cfb\u7d71\u5efa\u8b70\u4e2d\u9078\u64c7\u6b63\u78ba\u5b57\u8a5e\u7684\u6578\u91cf";
+    },
+    get$numIncorrectChoices() {
+      return "\u5f9e\u7cfb\u7d71\u5efa\u8b70\u4e2d\u9078\u64c7\u932f\u8aa4\u5b57\u8a5e\u7684\u6578\u91cf";
+    },
+    get$commaSeparatedFile() {
+      return "CSV";
+    },
+    get$excelFile() {
+      return "Excel";
+    },
+    get$fileType() {
+      return "\u6a94\u6848\u985e\u578b";
+    },
+    get$download(_) {
+      return "\u4e0b\u8f09";
+    },
+    get$analyticsNotAvailable() {
+      return "\u7528\u6236\u5206\u6790\u4e0d\u53ef\u7528";
+    },
+    get$downloading() {
+      return "\u4e0b\u8f09\u4e2d...";
+    },
+    get$failedFetchUserAnalytics() {
+      return "\u4e0b\u8f09\u7528\u6236\u5206\u6790\u5931\u6557";
+    },
+    get$downloadComplete() {
+      return "\u4e0b\u8f09\u5b8c\u6210\uff01";
+    },
+    whatIsTheMorphTag$2(morphologicalFeature, wordForm) {
+      return "'" + wordForm + "'\u7684" + morphologicalFeature + "\u662f\u4ec0\u9ebc\uff1f";
+    },
+    get$dataAvailable() {
+      return "\u8cc7\u6599\u53ef\u7528\u6027";
+    },
+    get$available(_) {
+      return "\u53ef\u7528";
+    },
+    get$pangeaBotIsFallible() {
+      return "Pangea \u6a5f\u5668\u4eba\u4e5f\u6703\u72af\u932f\uff01";
+    },
+    whatIsMeaning$2(lemma, partOfSpeech) {
+      return "'" + lemma + "'\u7684\u610f\u601d\u662f\u4ec0\u9ebc\uff1f";
+    },
+    get$chooseLemmaMeaningInstructionsBody() {
+      return "\u5c07\u610f\u601d\u8207\u8a0a\u606f\u4e2d\u7684\u55ae\u8a5e\u914d\u5c0d\uff01";
+    },
+    get$doubleClickToEdit() {
+      return "\u96d9\u64ca\u4ee5\u7de8\u8f2f\u3002";
+    },
+    get$targetLanguageLabel() {
+      return "\u76ee\u6a19\u8a9e\u8a00";
+    },
+    get$cefrLevelLabel() {
+      return "CEFR \u7b49\u7d1a";
+    },
+    get$image(_) {
+      return "\u5716\u7247";
+    },
+    get$activityPlannerOverviewInstructionsBody() {
+      return "\u9078\u64c7\u4e00\u500b\u4e3b\u984c\u3001\u6a21\u5f0f\u3001\u5b78\u7fd2\u76ee\u6a19\u4e26\u70ba\u804a\u5929\u751f\u6210\u4e00\u500b\u6d3b\u52d5\uff01";
+    },
+    get$constructUsePvmDesc() {
+      return "\u4ee5\u8a9e\u97f3\u8a0a\u606f\u7522\u751f";
+    },
+    get$leaveSpaceDescription() {
+      return "\u9000\u51fa\u8ab2\u7a0b\u5f8c\uff0c\u60a8\u5c07\u96e2\u958b\u6240\u6709\u8a72\u8ab2\u7a0b\u4e2d\u7684\u804a\u5929\u3002\u5176\u4ed6\u7528\u6236\u5c07\u770b\u5230\u60a8\u5df2\u96e2\u958b\u8ab2\u7a0b\u3002";
+    },
+    get$constructUseCorMmDesc() {
+      return "\u6b63\u78ba\u7684\u8a0a\u606f\u542b\u7fa9";
+    },
+    get$constructUseIncMmDesc() {
+      return "\u932f\u8aa4\u7684\u8a0a\u606f\u542b\u7fa9";
+    },
+    get$constructUseIgnMmDesc() {
+      return "\u5ffd\u7565\u7684\u8a0a\u606f\u542b\u7fa9";
+    },
+    get$meaning() {
+      return "\u610f\u7fa9";
+    },
+    chatWith$1(displayname) {
+      return "\u8207 " + displayname + " \u7d44\u7fa4";
+    },
+    get$clickOnEmailLink() {
+      return "\u8acb\u9ede\u64ca\u96fb\u5b50\u90f5\u4ef6\u4e2d\u7684\u9023\u7d50\uff0c\u7136\u5f8c\u7e7c\u7e8c\u3002\n\n\u5982\u679c\u96fb\u5b50\u90f5\u4ef6\u672a\u9001\u9054\uff0c\u8acb\u6aa2\u67e5\u60a8\u7684\u5783\u573e\u90f5\u4ef6\u593e\u3002";
+    },
+    get$dontForgetPassword() {
+      return "\u5225\u5fd8\u4e86\u4f60\u7684\u5bc6\u78bc\uff01";
+    },
+    get$enableAutocorrectToolName() {
+      return "\u555f\u7528\u88dd\u7f6e\u81ea\u52d5\u66f4\u6b63";
+    },
+    get$enableAutocorrectDescription() {
+      return "\u5982\u679c\u60a8\u7684\u88dd\u7f6e\u652f\u63f4\u60a8\u6b63\u5728\u5b78\u7fd2\u7684\u8a9e\u8a00\uff0c\u60a8\u53ef\u4ee5\u555f\u7528\u88dd\u7f6e\u81ea\u52d5\u66f4\u6b63\uff0c\u4ee5\u5728\u8f38\u5165\u6642\u4fee\u6b63\u5e38\u898b\u932f\u8aa4\u3002";
+    },
+    get$ttsDisbledTitle() {
+      return "\u6587\u5b57\u8f49\u8a9e\u97f3\u5df2\u505c\u7528";
+    },
+    get$ttsDisabledBody() {
+      return "\u60a8\u53ef\u4ee5\u5728\u5b78\u7fd2\u8a2d\u5b9a\u4e2d\u555f\u7528\u6587\u5b57\u8f49\u8a9e\u97f3";
+    },
+    get$noSpaceDescriptionYet() {
+      return "\u5c1a\u672a\u5efa\u7acb\u8ab2\u7a0b\u63cf\u8ff0\u3002";
+    },
+    get$tooLargeToSend() {
+      return "\u6b64\u8a0a\u606f\u904e\u5927\uff0c\u7121\u6cd5\u50b3\u9001";
+    },
+    get$exitWithoutSaving() {
+      return "\u60a8\u78ba\u5b9a\u8981\u4e0d\u5132\u5b58\u76f4\u63a5\u96e2\u958b\u55ce\uff1f";
+    },
+    get$enableAutocorrectWarning() {
+      return "\u8b66\u544a\uff01\u9700\u8981\u52a0\u5165\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\u9375\u76e4";
+    },
+    get$leaveRoomDescription() {
+      return "\u60a8\u5373\u5c07\u96e2\u958b\u6b64\u804a\u5929\u3002\u5176\u4ed6\u7528\u6236\u5c07\u770b\u5230\u60a8\u5df2\u96e2\u958b\u804a\u5929\u3002";
+    },
+    get$confirmUserId() {
+      return "\u8acb\u78ba\u8a8d\u60a8\u7684 Pangea \u804a\u5929\u7528\u6236\u540d\u7a31\u4ee5\u522a\u9664\u60a8\u7684\u5e33\u6236\u3002";
+    },
+    paidSubscriptionStarts$1(startDate) {
+      return "\u81ea " + startDate + " \u8d77";
+    },
+    get$cancelInSubscriptionSettings() {
+      return "\u2022 \u53ef\u5728\u8a02\u95b1\u8a2d\u5b9a\u4e2d\u96a8\u6642\u53d6\u6d88";
+    },
+    get$autocorrectNotAvailable() {
+      return "\u5f88\u62b1\u6b49\uff0c\u60a8\u7684\u5e73\u53f0\u76ee\u524d\u4e0d\u652f\u63f4\u6b64\u529f\u80fd\u3002\u8acb\u6301\u7e8c\u95dc\u6ce8\u5f8c\u7e8c\u958b\u767c\uff01";
+    },
+    get$pleaseUpdateApp() {
+      return "\u8acb\u66f4\u65b0\u61c9\u7528\u7a0b\u5f0f\u4ee5\u7e7c\u7e8c\u4f7f\u7528\u3002";
+    },
+    get$chooseEmojiInstructionsBody() {
+      return "\u5c07\u8868\u60c5\u7b26\u865f\u8207\u5b83\u5011\u6700\u80fd\u4ee3\u8868\u7684\u8a5e\u8a9e\u914d\u5c0d\u3002\u5225\u64d4\u5fc3\uff01\u4e0d\u540c\u610f\u4e5f\u4e0d\u6263\u5206\u3002\ud83d\ude05";
+    },
+    get$analyticsVocabListBody() {
+      return "\u9019\u662f\u4f60\u7684\u6240\u6709\u8a5e\u5f59\uff01\u7576\u4f60\u6bcf\u5b78\u6703\u4e00\u500b\u8a5e\uff0c\u5c31\u6703\u5f9e\u5e7c\u82d7\u9577\u6210\u76db\u958b\u7684\u82b1\u6735\u3002\u9ede\u64ca\u4efb\u4f55\u8a5e\u4ee5\u67e5\u770b\u66f4\u591a\u8a73\u60c5\u3002";
+    },
+    get$morphAnalyticsListBody() {
+      return "\u9019\u662f\u4f60\u6b63\u5728\u5b78\u7fd2\u7684\u8a9e\u8a00\u4e2d\u7684\u6240\u6709\u8a9e\u6cd5\u6982\u5ff5\uff01\u4f60\u5728\u804a\u5929\u6642\u9047\u5230\u5b83\u5011\u6642\u6703\u89e3\u9396\u3002\u9ede\u64ca\u67e5\u770b\u8a73\u60c5\u3002";
+    },
+    get$knockSpaceSuccess() {
+      return "\u4f60\u5df2\u7533\u8acb\u52a0\u5165\u6b64\u8ab2\u7a0b\uff01\u7ba1\u7406\u54e1\u6536\u5230\u5f8c\u6703\u56de\u8986\u4f60\u7684\u8acb\u6c42 \ud83d\ude04";
+    },
+    get$chooseWordAudioInstructionsBody() {
+      return "\u807d\u5b8c\u6574\u500b\u8a0a\u606f\u3002\u7136\u5f8c\u5c07\u97f3\u8a0a\u8207\u8a5e\u8a9e\u914d\u5c0d\u3002";
+    },
+    get$chooseMorphsInstructionsBody() {
+      return "\u9ede\u64ca\u62fc\u5716\u788e\u7247\u56de\u7b54\u8a9e\u6cd5\u554f\u984c\uff01";
+    },
+    get$home() {
+      return "\u9996\u9801";
+    },
+    get$join(_) {
+      return "\u52a0\u5165";
+    },
+    get$readingAssistanceOverviewBody() {
+      return "\u9ede\u64ca\u4e0b\u65b9\u6309\u9215\u9032\u884c\u5339\u914d\u8868\u60c5\u7b26\u865f\u3001\u97f3\u8a0a\u3001\u8a5e\u7fa9\u548c\u8a9e\u6cd5\u6982\u5ff5\u7684\u8ff7\u4f60\u904a\u6232\u3002\u6216\u9ede\u64ca\u4efb\u4f55\u8a5e\u4ee5\u67e5\u770b\u66f4\u591a\u8a73\u60c5\u3002";
+    },
+    get$resetInstructionTooltipsTitle() {
+      return "\u91cd\u7f6e\u6307\u793a\u63d0\u793a";
+    },
+    get$resetInstructionTooltipsDesc() {
+      return "\u9ede\u64ca\u986f\u793a\u50cf\u65b0\u7528\u6236\u4e00\u6a23\u7684\u6307\u793a\u63d0\u793a\u3002";
+    },
+    get$selectForGrammar() {
+      return "\u9078\u64c7\u4e00\u500b\u8a9e\u6cd5\u5716\u793a\u4ee5\u9032\u884c\u6d3b\u52d5\u548c\u8a73\u7d30\u8cc7\u8a0a\u3002";
+    },
+    get$translationProblem() {
+      return "\u7ffb\u8b6f\u554f\u984c";
+    },
+    get$niceJob() {
+      return "\u505a\u5f97\u597d\uff01";
+    },
+    get$askToJoin() {
+      return "\u8acb\u6c42\u52a0\u5165";
+    },
+    get$emptyChatWarningTitle() {
+      return "\u804a\u5929\u662f\u7a7a\u7684";
+    },
+    get$emptyChatWarningDesc() {
+      return "\u4f60\u9084\u6c92\u6709\u9080\u8acb\u4efb\u4f55\u4eba\u52a0\u5165\u4f60\u7684\u804a\u5929\u3002\u524d\u5f80\u804a\u5929\u8a2d\u7f6e\u9080\u8acb\u4f60\u7684\u806f\u7d61\u4eba\u6216\u6a5f\u5668\u4eba\u3002\u4f60\u4e5f\u53ef\u4ee5\u7a0d\u5f8c\u518d\u505a\u3002";
+    },
+    get$areYouLikeMe() {
+      return "\u4f60\u50cf\u6211\u55ce\uff1f";
+    },
+    get$tryAgainLater() {
+      return "\u5617\u8a66\u6b21\u6578\u904e\u591a\u3002\u8acb\u57285\u5206\u9418\u5f8c\u518d\u8a66\u3002";
+    },
+    get$enterSpaceCode() {
+      return "\u8f38\u5165\u8ab2\u7a0b\u4ee3\u78bc";
+    },
+    get$shareSpaceLink() {
+      return "\u5206\u4eab\u9023\u7d50";
+    },
+    get$byUsingPangeaChat() {
+      return "\u4f7f\u7528Pangea Chat\uff0c\u5373\u8868\u793a\u6211\u540c\u610f ";
+    },
+    get$details(_) {
+      return "\u8a73\u60c5";
+    },
+    get$languageLevelPreA1Desc() {
+      return "\u6211\u5f9e\u672a\u5b78\u904e\u6216\u4f7f\u7528\u904e\u9019\u500b\u8a9e\u8a00\u3002";
+    },
+    get$languageLevelA1Desc() {
+      return "\u6211\u80fd\u7406\u89e3\u4e26\u4f7f\u7528\u4e00\u4e9b\u719f\u6089\u7684\u65e5\u5e38\u8868\u9054\u548c\u975e\u5e38\u57fa\u672c\u7684\u77ed\u8a9e\u3002";
+    },
+    get$languageLevelA2Desc() {
+      return "\u6211\u80fd\u7406\u89e3\u8207\u7acb\u5373\u76f8\u95dc\u9818\u57df\u7684\u53e5\u5b50\u548c\u5e38\u7528\u8868\u9054\u3002";
+    },
+    get$languageLevelB1Desc() {
+      return "\u6211\u53ef\u4ee5\u5e94\u5bf9\u5927\u591a\u6570\u719f\u6089\u7684\u60c5\u5883\uff0c\u5e76\u80fd\u7528\u7b80\u5355\u7684\u8fde\u8d2f\u6587\u672c\u8868\u8fbe\u719f\u6089\u7684\u8bdd\u9898\u3002";
+    },
+    get$languageLevelB2Desc() {
+      return "\u6211\u53ef\u4ee5\u7406\u89e3\u590d\u6742\u6587\u672c\u7684\u4e3b\u8981\u601d\u60f3\uff0c\u5e76\u4ee5\u4e00\u5b9a\u7684\u6d41\u5229\u5ea6\u548c\u81ea\u53d1\u6027\u8fdb\u884c\u4e92\u52a8\u3002";
+    },
+    get$languageLevelC1Desc() {
+      return "\u6211\u53ef\u4ee5\u6d41\u5229\u4e14\u81ea\u53d1\u5730\u8868\u8fbe\u601d\u60f3\uff0c\u800c\u4e0d\u9700\u592a\u591a\u52aa\u529b\uff0c\u5e76\u7406\u89e3\u5404\u79cd\u8981\u6c42\u8f83\u9ad8\u7684\u6587\u672c\u3002";
+    },
+    get$languageLevelC2Desc() {
+      return "\u6211\u51e0\u4e4e\u53ef\u4ee5\u7406\u89e3\u542c\u5230\u6216\u9605\u8bfb\u7684\u6240\u6709\u5185\u5bb9\uff0c\u5e76\u80fd\u6d41\u5229\u4e14\u51c6\u786e\u5730\u8868\u8fbe\u81ea\u5df1\u3002";
+    },
+    get$newVocab() {
+      return "\u65b0\u8bcd\u6c47";
+    },
+    get$newGrammar() {
+      return "\u65b0\u8bed\u6cd5\u6982\u5ff5";
+    },
+    get$choosePracticeMode() {
+      return "\u70b9\u51fb\u4e0a\u65b9\u7684\u6309\u94ae\u5f00\u59cb\u7ec3\u4e60\u6d3b\u52a8";
+    },
+    get$ban() {
+      return "\u5c01\u7981";
+    },
+    get$kick() {
+      return "\u8e22\u51fa";
+    },
+    get$lemma() {
+      return "\u8bcd\u5143";
+    },
+    get$grammarFeature() {
+      return "\u8bed\u6cd5\u7279\u5f81";
+    },
+    get$grammarTag() {
+      return "\u8bed\u6cd5\u6807\u7b7e";
+    },
+    get$forms() {
+      return "\u5f62\u5f0f";
+    },
+    get$exampleMessages() {
+      return "\u793a\u4f8b\u6d88\u606f";
+    },
+    get$timesUsedIndependently() {
+      return "\u72ec\u7acb\u4f7f\u7528\u6b21\u6570";
+    },
+    get$timesUsedWithAssistance() {
+      return "\u534f\u52a9\u4f7f\u7528\u6b21\u6570";
+    },
+    shareInviteCode$1(code) {
+      return "\u5206\u4eab\u9080\u8bf7\u4ee3\u7801\uff1a" + code;
+    },
+    get$skipForNow() {
+      return "\u66ab\u6642\u8df3\u904e";
+    },
+    get$permissions(_) {
+      return "\u6b0a\u9650";
+    },
+    get$spaceChildPermission() {
+      return "\u8ab0\u53ef\u4ee5\u5411\u6b64\u8ab2\u7a0b\u6dfb\u52a0\u65b0\u804a\u5929";
+    },
+    get$addEnvironmentOverride() {
+      return "\u65b0\u589e\u74b0\u5883\u8986\u84cb";
+    },
+    get$defaultOption() {
+      return "\u9810\u8a2d";
+    },
+    get$deleteChatDesc() {
+      return "\u4f60\u78ba\u5b9a\u8981\u522a\u9664\u6b64\u804a\u5929\u55ce\uff1f\u6240\u6709\u53c3\u8207\u8005\u7684\u804a\u5929\u5167\u5bb9\u5c07\u88ab\u522a\u9664\uff0c\u4e14\u6240\u6709\u8a0a\u606f\u5c07\u4e0d\u518d\u4f9b\u7df4\u7fd2\u6216\u5b78\u7fd2\u5206\u6790\u4f7f\u7528\u3002";
+    },
+    get$deleteSpaceDesc() {
+      return "\u6b64\u8ab2\u7a0b\u53ca\u6240\u6709\u9078\u64c7\u7684\u804a\u5929\u5c07\u88ab\u522a\u9664\uff0c\u6240\u6709\u8a0a\u606f\u5c07\u4e0d\u518d\u4f9b\u7df4\u7fd2\u6216\u5b78\u7fd2\u5206\u6790\u4f7f\u7528\u3002\u6b64\u64cd\u4f5c\u7121\u6cd5\u9084\u539f\u3002";
+    },
+    get$configureSpace() {
+      return "\u8a2d\u5b9a\u8ab2\u7a0b";
+    },
+    get$pinMessages() {
+      return "\u7f6e\u9802\u8a0a\u606f";
+    },
+    get$setJoinRules() {
+      return "\u8a2d\u5b9a\u52a0\u5165\u898f\u5247";
+    },
+    get$changeGeneralSettings() {
+      return "\u66f4\u6539\u5e38\u898f\u8a2d\u7f6e";
+    },
+    get$inviteOtherUsersToRoom() {
+      return "\u9080\u8acb\u5176\u4ed6\u7528\u6236";
+    },
+    get$changeTheNameOfTheSpace() {
+      return "\u66f4\u6539\u8ab2\u7a0b\u540d\u7a31";
+    },
+    get$changeTheDescription() {
+      return "\u66f4\u6539\u63cf\u8ff0";
+    },
+    get$changeThePermissions() {
+      return "\u66f4\u6539\u6b0a\u9650";
+    },
+    get$introductions() {
+      return "\u4ecb\u7d39";
+    },
+    get$announcements() {
+      return "\u516c\u544a";
+    },
+    get$activities() {
+      return "\u6d3b\u52d5";
+    },
+    get$access() {
+      return "\u8a2a\u554f";
+    },
+    get$howSpaceCanBeFound() {
+      return "\u5982\u4f55\u627e\u5230\u6b64\u8ab2\u7a0b";
+    },
+    get$$private() {
+      return "\u79c1\u4eba";
+    },
+    get$cannotBeFoundInSearch() {
+      return "\u5728\u641c\u7d22\u4e2d\u627e\u4e0d\u5230";
+    },
+    get$$public(_) {
+      return "\u516c\u958b";
+    },
+    get$visibleToCommunity() {
+      return "\u901a\u904e\u201c\u67e5\u627e\u8ab2\u7a0b\u201d\u5c0d\u66f4\u5ee3\u6cdb\u7684Pangea\u804a\u5929\u793e\u5340\u53ef\u898b";
+    },
+    get$howSpaceCanBeJoined() {
+      return "\u5982\u4f55\u52a0\u5165\u6b64\u8ab2\u7a0b";
+    },
+    get$canBeFoundVia() {
+      return "\u53ef\u4ee5\u901a\u904e\u4ee5\u4e0b\u65b9\u5f0f\u627e\u5230\uff1a";
+    },
+    get$canBeFoundViaInvitation() {
+      return "\u2022 \u9080\u8acb";
+    },
+    get$canBeFoundViaCodeOrLink() {
+      return "\u2022 \u4ee3\u78bc\u6216\u94fe\u63a5";
+    },
+    get$canBeFoundViaKnock() {
+      return "\u2022 \u8a2d\u7f6e\u7533\u8acb\u52a0\u5165\u548c\u7ba1\u7406\u54e1\u7684\u6279\u91cd";
+    },
+    get$youHaveLeveledUp() {
+      return "\u60a8\u5df2\u7d1a\u9ad8\u4e86\uff01";
+    },
+    get$sendActivities() {
+      return "\u9001\u9001\u6d3b\u52d5";
+    },
+    get$directMessage() {
+      return "\u76f4\u63a5\u4fe1\u6a94";
+    },
+    get$newDirectMessage() {
+      return "\u65b0\u7684\u76f4\u63a5\u4fe1\u6a94";
+    },
+    get$speakingExercisesTooltip() {
+      return "\u8a9e\u97f3";
+    },
+    get$transcriptionFailed() {
+      return "\u8f49\u9304\u97f3\u983b\u5931\u6557";
+    },
+    get$aUserIsKnocking() {
+      return "\u67091\u4f4d\u7528\u6236\u8acb\u6c42\u52a0\u5165\u60a8\u7684\u8ab2\u7a0b";
+    },
+    usersAreKnocking$1(users) {
+      return "" + users + " \u4f4d\u7528\u6236\u8acb\u6c42\u52a0\u5165\u60a8\u7684\u8ab2\u7a0b";
+    },
+    get$failedToFetchTranscription() {
+      return "\u7372\u53d6\u8f49\u9304\u5931\u6557";
+    },
+    get$deleteEmptySpaceDesc() {
+      return "\u8a72\u8ab2\u7a0b\u5c07\u88ab\u522a\u9664\uff0c\u6240\u6709\u53c3\u8207\u8005\u90fd\u5c07\u5931\u53bb\u8a2a\u554f\u6b0a\u9650\u3002\u6b64\u64cd\u4f5c\u7121\u6cd5\u64a4\u92b7\u3002";
+    },
+    get$failedToPlayVideo() {
+      return "\u64ad\u653e\u8996\u983b\u5931\u6557";
+    },
+    get$done() {
+      return "\u5b8c\u6210";
+    },
+    get$inThisSpace() {
+      return "\u5728\u6b64\u8ab2\u7a0b\u4e2d";
+    },
+    get$myContacts() {
+      return "\u6211\u7684\u806f\u7e6b\u4eba";
+    },
+    get$inviteAllInSpace() {
+      return "\u9080\u8acb\u6b64\u8ab2\u7a0b\u4e2d\u7684\u6240\u6709\u4eba";
+    },
+    get$spaceParticipantsHaveBeenInvitedToTheChat() {
+      return "\u6240\u6709\u8ab2\u7a0b\u53c3\u8207\u8005\u5df2\u88ab\u9080\u8acb\u52a0\u5165\u804a\u5929";
+    },
+    numKnocking$1(count) {
+      return "" + count + " \u6b63\u5728\u6572\u9580";
+    },
+    numInvited$1(count) {
+      return "" + count + " \u5df2\u9080\u8acb";
+    },
+    get$errorFetchingDefinition() {
+      return "\u7372\u53d6\u5b9a\u7fa9\u5931\u6557";
+    },
+    get$errorProcessAnalytics() {
+      return "\u8655\u7406\u5206\u6790\u5931\u6557";
+    },
+    get$errorDownloading() {
+      return "\u4e0b\u8f09\u5931\u6557";
+    },
+    get$errorFetchingLevelSummary() {
+      return "\u7372\u53d6\u7b49\u7d1a\u6458\u8981\u5931\u6557";
+    },
+    get$errorLoadingSpaceChildren() {
+      return "\u8f09\u5165\u6b64\u8ab2\u7a0b\u4e2d\u7684\u804a\u5929\u5931\u6557";
+    },
+    get$unexpectedError() {
+      return "\u767c\u751f\u672a\u9810\u671f\u7684\u932f\u8aa4\u3002";
+    },
+    get$pleaseReload() {
+      return "\u8acb\u91cd\u65b0\u8f09\u5165\u4e26\u91cd\u8a66\u3002";
+    },
+    get$translationError() {
+      return "\u7ffb\u8b6f\u932f\u8aa4";
+    },
+    get$errorFetchingTranslation() {
+      return "\u7372\u53d6\u7ffb\u8b6f\u5931\u6557";
+    },
+    get$errorFetchingActivity() {
+      return "\u7372\u53d6\u6d3b\u52d5\u5931\u6557";
+    },
+    get$check(_) {
+      return "\u6aa2\u67e5";
+    },
+    get$unableToFindRoom() {
+      return "\u627e\u4e0d\u5230\u8a72\u4ee3\u78bc\u7684\u804a\u5929\u6216\u8ab2\u7a0b\u3002\u8acb\u518d\u8a66\u4e00\u6b21\u3002";
+    },
+    get$numCompletedActivities() {
+      return "\u5df2\u5b8c\u6210\u6d3b\u52d5\u6578\u91cf";
+    },
+    viewingAnalytics$2(visible, users) {
+      return "\u6b63\u5728\u67e5\u770b " + visible + "/" + users + " \u7684\u5206\u6790";
+    },
+    get$request(_) {
+      return "\u8acb\u6c42";
+    },
+    get$requestAll(_) {
+      return "\u5168\u90e8\u8acb\u6c42";
+    },
+    get$confirmMessageUnpin() {
+      return "\u60a8\u78ba\u5b9a\u8981\u53d6\u6d88\u91d8\u9078\u6b64\u8a0a\u606f\u55ce\uff1f";
+    },
+    get$pending(_) {
+      return "\u5f85\u8655\u7406";
+    },
+    get$openRoleLabel() {
+      return "\u958b\u653e";
+    },
+    joinedTheActivity$2(username, role) {
+      return "\ud83d\udc4b " + username + " \u4ee5 " + role + " \u8eab\u4efd\u52a0\u5165";
+    },
+    finishedTheActivity$1(username) {
+      return "\ud83c\udfaf " + username + " \u5b8c\u6210\u4e86\u6b64\u6d3b\u52d5";
+    },
+    get$endActivityTitle() {
+      return "\u6211\u5b8c\u6210\u4e86";
+    },
+    get$activitySummaryError() {
+      return "\u7121\u6cd5\u53d6\u5f97\u6d3b\u52d5\u6458\u8981";
+    },
+    get$requestSummaries() {
+      return "\u8acb\u6c42\u6458\u8981";
+    },
+    get$requestAccessTitle() {
+      return "\u8acb\u6c42\u5206\u6790\u67e5\u770b\u6b0a\u9650\uff1f";
+    },
+    get$requestAccessDesc() {
+      return "\u4f60\u662f\u5426\u60f3\u8acb\u6c42\u67e5\u770b\u53c3\u8207\u8005\u5206\u6790\u7684\u6b0a\u9650\uff1f\n\n\u5982\u679c\u53c3\u8207\u8005\u540c\u610f\uff0c\u8a72\u8ab2\u7a0b\u7684\u7ba1\u7406\u54e1\u5c07\u80fd\u5920\u67e5\u770b\u4ed6\u5011\u7684\uff1a\n    \u2022 \u7e3d\u8a5e\u5f59\u91cf\n    \u2022 \u7e3d\u8a9e\u6cd5\u6982\u5ff5\n    \u2022 \u5b8c\u6210\u7684\u6d3b\u52d5\u6703\u8a71\u7e3d\u6578\n    \u2022 \u4f7f\u7528\u7684\u5177\u9ad4\u8a9e\u6cd5\u6982\u5ff5\uff0c\u6b63\u78ba\u8207\u932f\u8aa4\n\n\u4ed6\u5011\u5c07\u7121\u6cd5\u67e5\u770b\u4ed6\u5011\u7684\uff1a\n    \u2022 \u8ab2\u7a0b\u5916\u7684\u804a\u5929\u8a0a\u606f\n    \u2022 \u8a5e\u5f59\u6e05\u55ae";
+    },
+    get$analyticsInactiveTitle() {
+      return "\u7121\u6cd5\u5411\u975e\u6d3b\u8e8d\u7528\u6236\u767c\u9001\u8acb\u6c42";
+    },
+    get$analyticsInactiveDesc() {
+      return "\u81ea\u6b64\u529f\u80fd\u63a8\u51fa\u4ee5\u4f86\u672a\u767b\u5165\u7684\u975e\u6d3b\u8e8d\u7528\u6236\u5c07\u770b\u4e0d\u5230\u60a8\u7684\u8acb\u6c42\u3002\n\n\u7576\u4ed6\u5011\u56de\u4f86\u6642\uff0c\u8acb\u6c42\u6309\u9215\u5c07\u6703\u51fa\u73fe\u3002\u60a8\u53ef\u4ee5\u7a0d\u5f8c\u518d\u6b21\u9ede\u64ca\u4ed6\u5011\u540d\u5b57\u4e0b\u7684\u8acb\u6c42\u6309\u9215\u4f86\u91cd\u65b0\u767c\u9001\u8acb\u6c42\u3002";
+    },
+    get$accessRequestedTitle() {
+      return "\u5206\u6790\u5b58\u53d6\u8acb\u6c42";
+    },
+    accessRequestedDesc$1(space) {
+      return "\u300c" + space + "\u300d\u7684\u7ba1\u7406\u54e1\u6b63\u5728\u8acb\u6c42\u67e5\u770b\u60a8\u7684\u5b78\u7fd2\u5206\u6790\u3002\n\n\u5982\u679c\u60a8\u540c\u610f\uff0c\u8a72\u8ab2\u7a0b\u7684\u7ba1\u7406\u54e1\u5c07\u80fd\u5920\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u7e3d\u8a5e\u5f59\u91cf\n    \u2022 \u7e3d\u8a9e\u6cd5\u6982\u5ff5\n    \u2022 \u5b8c\u6210\u7684\u6d3b\u52d5\u6703\u8a71\u7e3d\u6578\n    \u2022 \u4f7f\u7528\u7684\u5177\u9ad4\u8a9e\u6cd5\u6982\u5ff5\uff0c\u6b63\u78ba\u8207\u932f\u8aa4\n\n\u4ed6\u5011\u5c07\u7121\u6cd5\u67e5\u770b\u60a8\u7684\uff1a\n    \u2022 \u8ab2\u7a0b\u5916\u7684\u804a\u5929\u8a0a\u606f\n    \u2022 \u8a5e\u5f59\u6e05\u55ae";
+    },
+    get$allowAccess() {
+      return "\u5141\u8a31\u5b58\u53d6";
+    },
+    get$denyAccess() {
+      return "\u62d2\u7d55\u5b58\u53d6";
+    },
+    get$adminRequestedAccess() {
+      return "\u7ba1\u7406\u54e1\u5df2\u8acb\u6c42\u67e5\u770b\u60a8\u7684\u5206\u6790\u3002";
+    },
+    lastUpdated$1(time) {
+      return "\u66f4\u65b0\n" + time;
+    },
+    get$activityFinishedMessage() {
+      return "\u5168\u90e8\u5b8c\u6210\uff01";
+    },
+    get$endForAll() {
+      return "\u7d50\u675f\u6240\u6709";
+    },
+    get$newCourse() {
+      return "\u65b0\u8ab2\u7a0b";
+    },
+    numModules$1(num) {
+      return "" + num + " \u6a21\u7d44";
+    },
+    get$coursePlan() {
+      return "\u8ab2\u7a0b\u8a08\u5283";
+    },
+    get$editCourseLater() {
+      return "\u60a8\u53ef\u4ee5\u7a0d\u5f8c\u7de8\u8f2f\u8ab2\u7a0b\u6a19\u984c\u3001\u63cf\u8ff0\u548c\u8ab2\u7a0b\u5716\u7247\u3002";
+    },
+    get$newCourseAccess() {
+      return "\u9ed8\u8a8d\u60c5\u6cc1\u4e0b\uff0c\u8ab2\u7a0b\u662f\u79c1\u6709\u7684\uff0c\u9700\u8981\u7ba1\u7406\u54e1\u6279\u51c6\u624d\u80fd\u52a0\u5165\u3002\u60a8\u53ef\u4ee5\u96a8\u6642\u7de8\u8f2f\u9019\u4e9b\u8a2d\u7f6e\u3002";
+    },
+    get$createCourse() {
+      return "\u5275\u5efa\u8ab2\u7a0b";
+    },
+    get$stats() {
+      return "\u7d71\u8a08\u6578\u64da";
+    },
+    get$createGroupChat() {
+      return "\u5275\u5efa\u7fa4\u804a";
+    },
+    get$editCourse() {
+      return "\u7de8\u8f2f\u8ab2\u7a0b";
+    },
+    get$inviteDesc() {
+      return "\u901a\u904e\u7528\u6236\u540d\u3001\u4ee3\u78bc\u6216\u93c8\u63a5\u9080\u8acb";
+    },
+    get$editCourseDesc() {
+      return "\u5728\u6b64\u8655\u60a8\u53ef\u4ee5\u7de8\u8f2f\u8ab2\u7a0b\u6a19\u984c\u3001\u63cf\u8ff0\u7b49\u3002";
+    },
+    get$permissionsDesc() {
+      return "\u8a2d\u7f6e\u6b0a\u9650\uff0c\u4f8b\u5982\u8ab0\u53ef\u4ee5\u9080\u8acb\u7528\u6236\u3001\u767c\u9001\u6d88\u606f\u3001\u5275\u5efa\u804a\u5929\u7b49\u3002";
+    },
+    get$accessDesc() {
+      return "\u60a8\u53ef\u4ee5\u8b93\u60a8\u7684\u8ab2\u7a0b\u5411\u5168\u4e16\u754c\u958b\u653e\uff01\u6216\u8005\uff0c\u5c07\u60a8\u7684\u8ab2\u7a0b\u8a2d\u70ba\u79c1\u6709\u4e14\u5b89\u5168\u3002";
+    },
+    get$createGroupChatDesc() {
+      return "\u6d3b\u52d5\u6703\u8a71\u958b\u59cb\u548c\u7d50\u675f\uff0c\u800c\u7fa4\u804a\u5c07\u4fdd\u6301\u958b\u653e\u4ee5\u9032\u884c\u65e5\u5e38\u4ea4\u6d41\u3002";
+    },
+    get$deleteDesc() {
+      return "\u53ea\u6709\u7ba1\u7406\u54e1\u53ef\u4ee5\u522a\u9664\u8ab2\u7a0b\u3002\u9019\u662f\u4e00\u500b\u7834\u58de\u6027\u64cd\u4f5c\uff0c\u6703\u522a\u9664\u6240\u6709\u7528\u6236\u4e26\u522a\u9664\u8ab2\u7a0b\u5167\u6240\u6709\u9078\u64c7\u7684\u804a\u5929\u3002\u8acb\u8b39\u614e\u64cd\u4f5c\u3002";
+    },
+    get$noCourseFound() {
+      return "\u54e6\uff0c\u9019\u500b\u8ab2\u7a0b\u9700\u8981\u4e00\u500b\u8a08\u5283\uff01\n\n\u8ab2\u7a0b\u8a08\u5283\u662f\u4e00\u7cfb\u5217\u4e3b\u984c\u548c\u5c0d\u8a71\u6d3b\u52d5\u3002";
+    },
+    additionalParticipants$1(num) {
+      return "+ " + num + " \u5176\u4ed6\u4eba";
+    },
+    get$directMessages() {
+      return "\u76f4\u63a5\u8a0a\u606f";
+    },
+    get$whatNow() {
+      return "\u63a5\u4e0b\u4f86\u600e\u9ebc\u8fa6\uff1f";
+    },
+    get$chooseNextActivity() {
+      return "\u9078\u64c7\u60a8\u7684\u4e0b\u4e00\u500b\u6d3b\u52d5\uff01";
+    },
+    get$letsGo() {
+      return "\u6211\u5011\u8d70\u5427";
+    },
+    get$chooseRole() {
+      return "\u9078\u64c7\u4e00\u500b\u89d2\u8272\uff01";
+    },
+    get$chooseRoleToParticipate() {
+      return "\u9078\u64c7\u4e00\u500b\u89d2\u8272\u53c3\u8207\uff01";
+    },
+    waitingToFillRole$1(num) {
+      return "\u7b49\u5f85\u586b\u5beb " + num + " \u500b\u89d2\u8272...";
+    },
+    get$pingParticipants() {
+      return "\u63d0\u9192\u8ab2\u7a0b\u53c3\u8207\u8005";
+    },
+    get$playWithBot() {
+      return "\u8207 Pangea \u6a5f\u5668\u4eba\u73a9";
+    },
+    get$inviteFriendsToActivity() {
+      return "\u9080\u8acb\u670b\u53cb\u53c3\u52a0\u6d3b\u52d5";
+    },
+    get$inviteFriendsToActivityCourse() {
+      return "\u9080\u8acb\u670b\u53cb\u53c3\u52a0\u6d3b\u52d5\u548c\u8ab2\u7a0b";
+    },
+    get$waitNotDone() {
+      return "\u7b49\u4e00\u4e0b\uff0c\u6211\u9084\u6c92\u5b8c\u6210\uff01";
+    },
+    get$waitingForOthersToFinish() {
+      return "\u7b49\u5f85\u5176\u4ed6\u4eba\u5b8c\u6210...";
+    },
+    get$saveToCompletedActivities() {
+      return "\u4fdd\u5b58\u5230\u5df2\u5b8c\u6210\u7684\u6d3b\u52d5";
+    },
+    get$generatingSummary() {
+      return "\u5206\u6790\u804a\u5929\u4e26\u751f\u6210\u7d50\u679c";
+    },
+    get$activityCompletedDesc() {
+      return "\u60a8\u7684\u5df2\u5b8c\u6210\u6d3b\u52d5\u5df2\u6dfb\u52a0\u5230\u5206\u6790\u4e2d\uff0c\u60a8\u53ef\u4ee5\u56de\u9867\u4e26\u7df4\u7fd2\u6240\u4f7f\u7528\u7684\u8a9e\u8a00\u3002";
+    },
+    pingParticipantsNotification$2(user, room) {
+      return user + " \u6b63\u5728\u5c0b\u627e\u7528\u6236\u52a0\u5165 " + room + " \u7684\u6d3b\u52d5\u6703\u8b70";
+    },
+    get$courseName() {
+      return "\u8ab2\u7a0b\u540d\u7a31";
+    },
+    get$createNewCourse() {
+      return "\u65b0\u5efa\u8ab2\u7a0b";
+    },
+    get$publicCourses() {
+      return "\u516c\u958b\u8ab2\u7a0b";
+    },
+    goToCourse$1(course) {
+      return "\u524d\u5f80\u8ab2\u7a0b\uff1a" + course;
+    },
+    get$startNewSession() {
+      return "\u958b\u59cb\u65b0\u6703\u8a71";
+    },
+    get$joinOpenSession() {
+      return "\u52a0\u5165\u516c\u958b\u6703\u8a71";
+    },
+    get$activityNotFound() {
+      return "\u672a\u627e\u5230\u6d3b\u52d5";
+    },
+    get$levelUp() {
+      return "\u5347\u7d1a";
+    },
+    get$myActivities() {
+      return "\u6211\u7684\u6d3b\u52d5";
+    },
+    get$openToJoin() {
+      return "\u958b\u653e\u52a0\u5165";
+    },
+    get$activityDone() {
+      return "\u6d3b\u52d5\u5b8c\u6210\uff01";
+    },
+    get$promoCodeInfo() {
+      return "\u4fc3\u9500\u7801\u53ef\u4ee5\u5728\u4e0b\u4e00\u9875\u8f93\u5165";
+    },
+    get$editsComingSoon() {
+      return "\u7f16\u8f91\u57ce\u5e02\u548c\u6d3b\u52a8\u7684\u529f\u80fd\u5373\u5c06\u63a8\u51fa\u3002";
+    },
+    get$editing() {
+      return "\u7f16\u8f91\u4e2d";
+    },
+    get$activityNeedsOneMember() {
+      return "\u54ce\u5440\uff01\u8fd9\u4e2a\u6d3b\u52a8\u8fd8\u9700\u89811\u4e2a\u4eba\u3002";
+    },
+    activityNeedsMembers$1(num) {
+      return "\u54ce\u5440\uff01\u8fd9\u4e2a\u6d3b\u52a8\u8fd8\u9700\u8981" + num + "\u4e2a\u4eba\u3002";
+    },
+    get$inviteFriendsToCourse() {
+      return "\u9080\u8bf7\u670b\u53cb\u52a0\u5165\u6211\u7684\u8bfe\u7a0b";
+    },
+    get$subscribeToUnlockActivitySummaries() {
+      return "\u8ba2\u9605\u4ee5\u89e3\u9501\u6d3b\u52a8\u6458\u8981";
+    },
+    get$subscribeToUnlockDefinitions() {
+      return "\u8ba2\u9605\u4ee5\u89e3\u9501\u5b9a\u4e49";
+    },
+    get$subscribeToUnlockTranscriptions() {
+      return "\u8ba2\u9605\u4ee5\u89e3\u9501\u8f6c\u5f55";
+    },
+    get$pingSent() {
+      return "\ud83d\udd14 \u8bfe\u7a0b\u63d0\u9192\u5df2\u53d1\u9001\uff01\ud83d\udd14";
+    },
+    get$courseTitle() {
+      return "\u8bfe\u7a0b\u6807\u9898";
+    },
+    get$courseDesc() {
+      return "\u8bfe\u7a0b\u63cf\u8ff0";
+    },
+    get$courseSavedSuccessfully() {
+      return "\u8bfe\u7a0b\u5df2\u6210\u529f\u4fdd\u5b58";
+    },
+    get$addCoursePlan() {
+      return "\u6dfb\u52a0\u8bfe\u7a0b\u8ba1\u5212";
+    },
+    get$activityStatsButtonInstruction() {
+      return "\u70b9\u51fb\u8fd9\u91cc\u67e5\u770b\u4f60\u7684\u6d3b\u52a8\u7edf\u8ba1\uff0c\u5e76\u5728\u5b8c\u6210\u540e\u5173\u95ed\u6d3b\u52a8";
+    },
+    get$readingAnalyticsDesc() {
+      return "\u70b9\u51fb\u6bcf\u6761\u6d88\u606f\u7684\u7ec3\u4e60\u4ee5\u8fdb\u884c\u9605\u8bfb\u6d3b\u52a8\u3002";
+    },
+    get$speakingAnalyticsDesc() {
+      return "\u5f55\u5236\u8bed\u97f3\u6d88\u606f\u8fdb\u884c\u53e3\u8bed\u7ec3\u4e60\u3002";
+    },
+    get$audioAnalyticsDesc() {
+      return "\u70b9\u51fb\u6bcf\u6761\u6d88\u606f\u7684\u7ec3\u4e60\u4ee5\u8fdb\u884c\u542c\u529b\u6d3b\u52a8\u3002";
+    },
+    get$loginToAccount() {
+      return "\u767b\u5f55\u6211\u7684\u8d26\u6237";
+    },
+    get$appDescription() {
+      return "\u5b66\u4e60\u4e00\u95e8\u8bed\u8a00\n\u540c\u65f6\u7ed9\u670b\u53cb\u53d1\u77ed\u4fe1\u3002";
+    },
+    get$languages(_) {
+      return "\u8a9e\u8a00";
+    },
+    get$chooseLanguage() {
+      return "\u9078\u64c7\u4e00\u7a2e\u8a9e\u8a00\u3002";
+    },
+    get$startOwn() {
+      return "\u958b\u59cb\u6211\u7684\u8ab2\u7a0b";
+    },
+    get$joinCourseDesc() {
+      return "\u6bcf\u9580\u8ab2\u7a0b\u5305\u542b8-10\u500b\u6709\u5e8f\u7684\u4e3b\u984c\uff0c\u4e26\u914d\u6709\u5404\u7a2e\u57fa\u65bc\u4efb\u52d9\u7684\u8a9e\u8a00\u5b78\u7fd2\u6d3b\u52d5\u3002";
+    },
+    get$courseCodeHint() {
+      return "\u884c\u7a0b\u4ee3\u78bc\u6216\u9023\u7d50";
+    },
+    get$signupOption() {
+      return "\u60a8\u60f3\u5982\u4f55\u8a3b\u518a\uff1f";
+    },
+    get$withApple() {
+      return "\u4f7f\u7528 Apple";
+    },
+    get$withGoogle() {
+      return "\u4f7f\u7528 Google";
+    },
+    get$withEmail() {
+      return "\u4f7f\u7528\u96fb\u5b50\u90f5\u4ef6";
+    },
+    get$createAccount() {
+      return "\u5efa\u7acb\u5e33\u6236";
+    },
+    get$loginWithEmail() {
+      return "\u4f7f\u7528\u7535\u5b50\u90ae\u4ef6\u767b\u5f55";
+    },
+    get$usernameOrEmail() {
+      return "\u7528\u6237\u540d\u6216\u7535\u5b50\u90ae\u4ef6";
+    },
+    get$email() {
+      return "\u7535\u5b50\u90ae\u4ef6";
+    },
+    get$forgotPassword() {
+      return "\u5fd8\u8bb0\u5bc6\u7801\uff1f";
+    },
+    get$writingAnalyticsDesc() {
+      return "\u53d1\u9001\u6d88\u606f\u4ee5\u7ec3\u4e60\u5199\u4f5c\u3002";
+    },
+    get$endActivity() {
+      return "\u7ed3\u675f\u6d3b\u52a8";
+    },
+    get$allLanguages() {
+      return "\u6240\u6709\u8bed\u8a00";
+    },
+    get$chatListTooltip() {
+      return "\u5728\u8fd9\u91cc\u4f60\u4f1a\u627e\u5230\u4f60\u7684\u76f4\u63a5\u6d88\u606f\uff01\u70b9\u51fb\u4efb\u4f55\u7528\u6237\u7684\u5934\u50cf\u5e76\u9009\u62e9\u201c\u5f00\u59cb\u5bf9\u8bdd\u201d\u4ee5\u53d1\u9001\u79c1\u4fe1\u3002";
+    },
+    get$directMessageBotTitle() {
+      return "\u76f4\u63a5\u6d88\u606f Pangea \u673a\u5668\u4eba";
+    },
+    get$feedbackTitle() {
+      return "\u6d3b\u52a8\u53cd\u9988";
+    },
+    get$feedbackDesc() {
+      return "\u5982\u4f55\u6539\u8fdb\u6d3b\u52a8\uff1f\u5982\u679c\u4f60\u80fd\u63d0\u4f9b\u4e00\u4e9b\u7ec6\u8282\uff0c\u6211\u4eec\u4f1a\u8fdb\u884c\u8c03\u6574\uff01";
+    },
+    get$feedbackRespDesc() {
+      return "\u660e\u5929\u56de\u6765\u67e5\u770b\u6d3b\u52a8\u66f4\u65b0\u3002";
+    },
+    get$feedbackHint() {
+      return "\u4f60\u7684\u53cd\u9988";
+    },
+    get$feedbackButton() {
+      return "\u63d0\u4ea4\u53cd\u9988";
+    },
+    get$directMessageBotDesc() {
+      return "\u4e0e\u4eba\u7c7b\u4ea4\u8c08\u66f4\u6709\u8da3\uff0c\u4f46\u2026\u2026AI\u59cb\u7ec8\u51c6\u5907\u5c31\u7eea\uff01";
+    },
+    get$inviteYourFriends() {
+      return "\u9080\u8bf7\u4f60\u7684\u670b\u53cb";
+    },
+    get$playWithAI() {
+      return "\u6682\u65f6\u4e0eAI\u73a9\u73a9";
+    },
+    get$courseStartDesc() {
+      return "Pangea\u673a\u5668\u4eba\u968f\u65f6\u51c6\u5907\u5f00\u59cb\uff01\n\n\u2026\u2026\u4f46\u548c\u670b\u53cb\u4e00\u8d77\u5b66\u4e60\u66f4\u597d\uff01";
+    },
+    get$activityDropdownDesc() {
+      return "\u5b8c\u6210\u6b64\u6d3b\u52d5\u5f8c\uff0c\u8acb\u9ede\u64ca\u4e0b\u65b9";
+    },
+    get$activityAnalyticsListBody() {
+      return "\u9019\u4e9b\u662f\u60a8\u5df2\u5b8c\u6210\u7684\u6d3b\u52d5\uff01\u5b8c\u6210\u6d3b\u52d5\u5f8c\uff0c\u60a8\u53ef\u4ee5\u5728\u6b64\u67e5\u770b\u3002";
+    },
+    get$languageMismatchTitle() {
+      return "\u8a9e\u8a00\u4e0d\u5339\u914d";
+    },
+    get$languageMismatchDesc() {
+      return "\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\u8207\u6b64\u6d3b\u52d5\u7684\u8a9e\u8a00\u4e0d\u7b26\u3002\u662f\u5426\u8981\u66f4\u65b0\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\uff1f";
+    },
+    get$reportWordIssueTooltip() {
+      return "\u8209\u5831\u55ae\u8a5e\u8cc7\u8a0a\u554f\u984c";
+    },
+    get$tokenInfoFeedbackDialogTitle() {
+      return "\u55ae\u8a5e\u8cc7\u8a0a\u53cd\u994b";
+    },
+    get$tokenInfoFeedbackDialogDesc() {
+      return "AI \u53ef\u80fd\u6703\u51fa\u932f\u3002\u8acb\u63cf\u8ff0\u60a8\u5728\u4e0a\u8ff0\u8cc7\u8a0a\u4e2d\u767c\u73fe\u7684\u4efb\u4f55\u554f\u984c\u3002";
+    },
+    get$noPublicCoursesFound() {
+      return "\u672a\u627e\u5230\u516c\u958b\u8ab2\u7a0b\u3002\u60a8\u60f3\u5275\u5efa\u4e00\u500b\u55ce\uff1f";
+    },
+    get$noCourseTemplatesFound() {
+      return "\u6211\u5011\u672a\u627e\u5230\u60a8\u7684\u76ee\u6a19\u8a9e\u8a00\u7684\u8ab2\u7a0b\u3002\u60a8\u53ef\u4ee5\u66ab\u6642\u8207 Pangea \u6a5f\u5668\u4eba\u804a\u5929\uff0c\u7a0d\u5f8c\u518d\u56de\u4f86\u67e5\u770b\u66f4\u591a\u8ab2\u7a0b\u3002";
+    },
+    get$botActivityJoinFailMessage() {
+      return "Pangea \u6a5f\u5668\u4eba\u56de\u61c9\u8f03\u6162\u3002\u8acb\u7a0d\u5f8c\u518d\u8a66\uff0c\u6216\u9080\u8acb\u670b\u53cb\u52a0\u5165\u3002";
+    },
+    get$unsubscribedResponseError() {
+      return "\u6b64\u529f\u80fd\u9700\u8981\u8a02\u95b1";
+    },
+    get$leaveDesc() {
+      return "\u96e2\u958b\u6b64\u7a7a\u9593\u53ca\u5176\u4e2d\u6240\u6709\u804a\u5929";
+    },
+    get$selectAll() {
+      return "\u5168\u9078";
+    },
+    get$deselectAll(_) {
+      return "\u53d6\u6d88\u5168\u9078";
+    },
+    get$shareCourse() {
+      return "\u5206\u4eab\u8ab2\u7a0b";
+    },
+    get$addCourse() {
+      return "\u6dfb\u52a0\u8ab2\u7a0b";
+    },
+    get$joinCourseWithCode() {
+      return "\u7528\u4ee3\u78bc\u52a0\u5165\u8ab2\u7a0b";
+    },
+    get$joinPublicCourse() {
+      return "\u52a0\u5165\u516c\u958b\u8ab2\u7a0b";
+    },
+    get$vocabLevelsDesc() {
+      return "\u9019\u662f\u4f60\u5347\u7d1a\u5f8c\u8a5e\u5f59\u5c07\u6703\u653e\u7f6e\u7684\u5730\u65b9\uff01";
+    },
+    get$highlightVocabTooltip() {
+      return "\u901a\u904e\u5728\u804a\u5929\u4e2d\u767c\u9001\u6216\u7df4\u7fd2\u4f86\u7a81\u51fa\u986f\u793a\u4e0b\u9762\u7684\u76ee\u6a19\u8a5e\u5f59";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -6048,7 +9144,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3fRut9QktA5j4QnUgmFL6OV0pi8="] = d.current;
+  d["EtCDWZLMQkpWPjWoI5x2Mjb2JD0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map
