@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -8,7 +9,7 @@ import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
 import 'package:fluffychat/pangea/course_creation/course_info_chip_widget.dart';
-import 'package:fluffychat/pangea/course_creation/course_plan_filter_widget.dart';
+import 'package:fluffychat/pangea/course_creation/course_language_filter.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plan_model.dart';
 import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
 import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
@@ -17,20 +18,20 @@ import 'package:fluffychat/pangea/spaces/utils/public_course_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class PublicTripPage extends StatefulWidget {
+class PublicCoursesPage extends StatefulWidget {
   final String route;
   final bool showFilters;
-  const PublicTripPage({
+  const PublicCoursesPage({
     super.key,
     required this.route,
     this.showFilters = true,
   });
 
   @override
-  State<PublicTripPage> createState() => PublicTripPageState();
+  State<PublicCoursesPage> createState() => PublicCoursesPageState();
 }
 
-class PublicTripPageState extends State<PublicTripPage> {
+class PublicCoursesPageState extends State<PublicCoursesPage> {
   bool loading = true;
   Object? error;
 
@@ -153,8 +154,10 @@ class PublicTripPageState extends State<PublicTripPage> {
           spacing: 10.0,
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Icon(Icons.map_outlined),
-            Text(L10n.of(context).browsePublicTrips),
+            const Icon(
+              Symbols.map_search,
+            ),
+            Text(L10n.of(context).joinPublicCourse),
           ],
         ),
       ),
@@ -176,16 +179,9 @@ class PublicTripPageState extends State<PublicTripPage> {
                           runSpacing: 8.0,
                           alignment: WrapAlignment.start,
                           children: [
-                            CoursePlanFilter<LanguageModel>(
+                            CourseLanguageFilter(
                               value: targetLanguageFilter,
                               onChanged: setTargetLanguageFilter,
-                              items: MatrixState.pangeaController.pLanguageStore
-                                  .targetOptions,
-                              displayname: (v) =>
-                                  v.getDisplayName(context) ?? v.displayName,
-                              enableSearch: true,
-                              defaultName: L10n.of(context).targetLanguageLabel,
-                              shortName: L10n.of(context).allLanguages,
                             ),
                           ],
                         ),
@@ -224,7 +220,7 @@ class PublicTripPageState extends State<PublicTripPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(L10n.of(context).startOwnTrip),
+                                Text(L10n.of(context).startOwn),
                               ],
                             ),
                           ),
@@ -298,11 +294,36 @@ class PublicTripPageState extends State<PublicTripPage> {
                                       ),
                                     ),
                                     Flexible(
-                                      child: Text(
-                                        displayname,
-                                        style: theme.textTheme.bodyLarge,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
+                                      child: Column(
+                                        spacing: 0.0,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            displayname,
+                                            style: theme.textTheme.bodyLarge,
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                          Row(
+                                            spacing: 4.0,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              const Icon(
+                                                Icons.group,
+                                                size: 16.0,
+                                              ),
+                                              Text(
+                                                L10n.of(context)
+                                                    .countParticipants(
+                                                  roomChunk.numJoinedMembers,
+                                                ),
+                                                style:
+                                                    theme.textTheme.bodyMedium,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
