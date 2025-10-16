@@ -31,7 +31,7 @@ class AddCoursePage extends StatelessWidget {
             Text(L10n.of(context).addCourse),
           ],
         ),
-        automaticallyImplyLeading: route == 'registration',
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
         child: Center(
@@ -130,6 +130,11 @@ class AddCoursePage extends StatelessWidget {
                         style: theme.textTheme.labelLarge,
                       ),
                     ),
+                    if (route == "registration")
+                      TextButton(
+                        child: Text(L10n.of(context).skipForNow),
+                        onPressed: () => context.go('/rooms'),
+                      ),
                   ],
                 ),
               ],
