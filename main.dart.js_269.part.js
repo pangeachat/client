@@ -4183,9 +4183,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " afsluttede denne aktivitet";
     },
-    get$endActivityTitle() {
-      return "Jeg er f\xe6rdig";
-    },
     get$activitySummaryError() {
       return "Aktivitetsoversigter er ikke tilg\xe6ngelige";
     },
@@ -4564,9 +4561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Her vil ordforr\xe5dsord blive placeret, n\xe5r du har opgraderet dem!";
     },
-    get$highlightVocabTooltip() {
-      return "Fremh\xe6v m\xe5lordene nedenfor ved at sende dem eller \xf8ve med dem i chatten";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4580,7 +4574,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q9TL1esM9hk0MsL2PtKpJSICQGM="] = d.current;
+  d["l+AVOwh1HrGCJha4/dms+3Wq2Tw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map

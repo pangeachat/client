@@ -4183,9 +4183,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " finis \u0109i tiun agadon";
     },
-    get$endActivityTitle() {
-      return "Mi finas";
-    },
     get$activitySummaryError() {
       return "Aktivitatresumoj ne disponeblas";
     },
@@ -4564,9 +4561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Jen kie vortoj de vortprovizo iros post kiam vi ilin plibonigos!";
     },
-    get$highlightVocabTooltip() {
-      return "Emfazu la celvortojn sube per sendado a\u016d praktiko kun ili en la babilejo";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4580,7 +4574,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["o3EsRBRNoUHPBSPAVg8cmBxHqfw="] = d.current;
+  d["325bZnrv02uOBV/B7CcbnC95e6g="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_426.part.js.map

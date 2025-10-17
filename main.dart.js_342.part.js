@@ -4183,9 +4183,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " hat diese Aktivit\xe4t beendet";
     },
-    get$endActivityTitle() {
-      return "Ich bin fertig";
-    },
     get$activitySummaryError() {
       return "Aktivit\xe4tszusammenfassungen nicht verf\xfcgbar";
     },
@@ -4564,9 +4561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Hier kommen die Vokabeln hin, sobald du sie aufgestuft hast!";
     },
-    get$highlightVocabTooltip() {
-      return "Hebe die Zielvokabeln unten hervor, indem du sie sendest oder mit ihnen im Chat \xfcbst";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4583,7 +4577,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IGxUi/IQNPeZ6aQ7PVZ/ikswhXs="] = d.current;
+  d["Ertm/R2/NnlhVuyq5SyM6pW2qwM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_342.part.js.map

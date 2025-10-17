@@ -4183,9 +4183,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " jarduera hau amaitu du";
     },
-    get$endActivityTitle() {
-      return "T\xf4i \u0111\xe3 xong";
-    },
     get$activitySummaryError() {
       return "Jarduera laburpenak ez daude eskuragarri";
     },
@@ -4564,9 +4561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Hemen daude hitz-berriak mailakatzen dituzunean!";
     },
-    get$highlightVocabTooltip() {
-      return "Azpimarratu behean dauden target hitz-berriak mezuak bidaliz edo praktikatuz txatean";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4583,7 +4577,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7mcXqSDwqWcFroWlT5UCa2ozvJQ="] = d.current;
+  d["WZBjjGVZnDDGifOa6I5fJCb+fgI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_500.part.js.map

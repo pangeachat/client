@@ -4184,9 +4184,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ha finalitzat aquesta activitat";
     },
-    get$endActivityTitle() {
-      return "He acabat";
-    },
     get$activitySummaryError() {
       return "Resum d'activitats no disponible";
     },
@@ -4565,9 +4562,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Aqu\xed \xe9s on aniran les paraules de vocabulari un cop les hagis pujat de nivell!";
     },
-    get$highlightVocabTooltip() {
-      return "Destaca les paraules de vocabulari objectiu a continuaci\xf3 enviant-les o practicant amb elles al xat";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4584,7 +4578,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gjU5fK4Rag+Od3mU7tH1Wxhtz6E="] = d.current;
+  d["zDZD2Vz7T2iTtM/dDnc6G7c597c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_154.part.js.map

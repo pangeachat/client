@@ -4195,9 +4195,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " concluiu esta atividade";
     },
-    get$endActivityTitle() {
-      return "Terminei";
-    },
     get$activitySummaryError() {
       return "Resumos de atividades indispon\xedveis";
     },
@@ -4575,9 +4572,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$vocabLevelsDesc() {
       return string$.xc9_aqui;
-    },
-    get$highlightVocabTooltip() {
-      return string$.Destaq;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -8751,9 +8745,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " encerrou esta atividade";
     },
-    get$endActivityTitle() {
-      return "Terminei";
-    },
     get$activitySummaryError() {
       return "Resumos de atividades indispon\xedveis";
     },
@@ -9131,9 +9122,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$vocabLevelsDesc() {
       return string$.xc9_aqui;
-    },
-    get$highlightVocabTooltip() {
-      return string$.Destaq;
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -13307,9 +13295,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " concluiu esta atividade";
     },
-    get$endActivityTitle() {
-      return "Terminei";
-    },
     get$activitySummaryError() {
       return "Resumos de atividades indispon\xedveis";
     },
@@ -13688,9 +13673,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "\xc9 aqui que as palavras de vocabul\xe1rio ir\xe3o aparecer assim que as tiveres evolu\xeddo!";
     },
-    get$highlightVocabTooltip() {
-      return "Destaque as palavras de vocabul\xe1rio alvo abaixo, enviando-as ou praticando com elas no chat";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -13761,7 +13743,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Definaq: "Defina qual n\xedvel de poder \xe9 necess\xe1rio para certas a\xe7\xf5es neste chat. Os n\xedveis de poder 0, 50 e 100 geralmente representam usu\xe1rios, moderadores e administradores, mas qualquer grada\xe7\xe3o \xe9 poss\xedvel.",
     Descul: "Desculpe, n\xe3o conseguimos entender sua mensagem...",
     Desliz: "Deslize da direita para a esquerda para responder",
-    Destaq: "Destaque as palavras de vocabul\xe1rio alvo abaixo enviando-as ou praticando com elas no chat",
     Dispos: "Dispositivos verificados cruzados se ativado",
     Emotes: "Emotes usados recentemente aparecer\xe3o aqui...",
     Escolha: "Escolha as melhores op\xe7\xf5es para traduzir sua mensagem!",
@@ -13871,7 +13852,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["IvSVyI2Hl6GmiK6MqB/Y65oC7iI="] = d.current;
+  d["mX+7KVX3bLw76p6F/BZYjNJKJd4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map

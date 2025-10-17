@@ -4183,9 +4183,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " l\xf5petas selle tegevuse";
     },
-    get$endActivityTitle() {
-      return "Olen valmis";
-    },
     get$activitySummaryError() {
       return "Tegevuste kokkuv\xf5tteid pole saadaval";
     },
@@ -4564,9 +4561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Siia l\xe4hevad s\xf5nad, kui oled need tasemele t\xf5stnud!";
     },
-    get$highlightVocabTooltip() {
-      return "T\xf5sta sihitud s\xf5nad allpool esile, saates need v\xf5i harjutades nendega vestluses";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4580,7 +4574,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uGMLnVaxk5UOANoS6zRtS3ksHt0="] = d.current;
+  d["PDSXpTcnqlJ/RWga3AfXeBe4jZ8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_480.part.js.map

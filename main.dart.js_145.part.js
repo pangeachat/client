@@ -4185,9 +4185,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " \u0f60\u0f51\u0f72\u0f0b\u0f63\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f60\u0f51\u0f74\u0f42";
     },
-    get$endActivityTitle() {
-      return "\u0f44\u0f60\u0f72\u0f0b\u0f63\u0f7c\u0f42";
-    },
     get$activitySummaryError() {
       return "\u0f63\u0f66\u0f0b\u0f40\u0f0b\u0f62\u0f92\u0fb1\u0f56\u0f0b\u0f66\u0fa4\u0fb1\u0f7c\u0f51\u0f0b\u0f60\u0f56\u0f51\u0f0b\u0f58\u0f72\u0f0b\u0f5a\u0f74\u0f63\u0f0d";
     },
@@ -4566,9 +4563,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "This is where vocab words will go once you\u2019ve leveled them up!";
     },
-    get$highlightVocabTooltip() {
-      return "Highlight target vocab words below by sending them or practicing with them in the chat";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4596,7 +4590,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+KRzRvmMnwCa3wU0KsazEGNcYYQ="] = d.current;
+  d["+UOoIjwo4RTUcpPl+ZLp9JakZs8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_145.part.js.map

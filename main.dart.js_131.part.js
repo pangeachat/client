@@ -4184,9 +4184,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " \u0623\u0646\u0647\u0649 \u0647\u0630\u0627 \u0627\u0644\u0646\u0634\u0627\u0637";
     },
-    get$endActivityTitle() {
-      return "\u0644\u0642\u062f \u0623\u0646\u0647\u064a\u062a";
-    },
     get$activitySummaryError() {
       return "\u0645\u0644\u062e\u0635\u0627\u062a \u0627\u0644\u0646\u0634\u0627\u0637 \u063a\u064a\u0631 \u0645\u062a\u0648\u0641\u0631\u0629";
     },
@@ -4565,9 +4562,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "\u0647\u0630\u0627 \u0647\u0648 \u0627\u0644\u0645\u0643\u0627\u0646 \u0627\u0644\u0630\u064a \u0633\u062a\u0630\u0647\u0628 \u0625\u0644\u064a\u0647 \u0643\u0644\u0645\u0627\u062a \u0627\u0644\u0645\u0641\u0631\u062f\u0627\u062a \u0628\u0645\u062c\u0631\u062f \u062a\u0631\u0642\u064a\u062a\u0647\u0627!";
     },
-    get$highlightVocabTooltip() {
-      return "\u0642\u0645 \u0628\u062a\u0645\u064a\u064a\u0632 \u0643\u0644\u0645\u0627\u062a \u0627\u0644\u0645\u0641\u0631\u062f\u0627\u062a \u0627\u0644\u0645\u0633\u062a\u0647\u062f\u0641\u0629 \u0623\u062f\u0646\u0627\u0647 \u0639\u0646 \u0637\u0631\u064a\u0642 \u0625\u0631\u0633\u0627\u0644\u0647\u0627 \u0623\u0648 \u0627\u0644\u062a\u062f\u0631\u0628 \u0639\u0644\u064a\u0647\u0627 \u0641\u064a \u0627\u0644\u062f\u0631\u062f\u0634\u0629";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4581,7 +4575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1MlsCc0Fz9T5dldJpGP52SgFWJM="] = d.current;
+  d["GbwiIhVjvrkGyVjoMt82/aGfVOw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_131.part.js.map

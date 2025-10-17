@@ -4183,9 +4183,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " finaliz\xf3 esta actividad";
     },
-    get$endActivityTitle() {
-      return "He terminado";
-    },
     get$activitySummaryError() {
       return "Res\xfamenes de actividades no disponibles";
     },
@@ -4564,9 +4561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "\xa1Aqu\xed es donde ir\xe1n las palabras de vocabulario una vez que las hayas subido de nivel!";
     },
-    get$highlightVocabTooltip() {
-      return "Resalta las palabras de vocabulario objetivo a continuaci\xf3n envi\xe1ndolas o practicando con ellas en el chat";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4580,7 +4574,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZNIuxEgVfvJRe7PAf0l18x2DFM4="] = d.current;
+  d["qEEyu8gTAqwiNDqL3/WWz4Mcs5E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_444.part.js.map

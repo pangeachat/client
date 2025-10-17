@@ -4190,9 +4190,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " \u5b8c\u6210\u4e86\u6b64\u6b21\u6d3b\u52a8";
     },
-    get$endActivityTitle() {
-      return "\u6211\u5df2\u5b8c\u6210";
-    },
     get$activitySummaryError() {
       return "\u65e0\u6cd5\u83b7\u53d6\u6d3b\u52a8\u603b\u7ed3";
     },
@@ -4570,9 +4567,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$vocabLevelsDesc() {
       return "\u8fd9\u662f\u4f60\u63d0\u5347\u8bcd\u6c47\u7b49\u7ea7\u540e\uff0c\u8bcd\u6c47\u5c06\u4f1a\u663e\u793a\u7684\u5730\u65b9\uff01";
-    },
-    get$highlightVocabTooltip() {
-      return "\u901a\u8fc7\u5728\u804a\u5929\u4e2d\u53d1\u9001\u6216\u7ec3\u4e60\uff0c\u5c06\u76ee\u6807\u8bcd\u6c47\u9ad8\u4eae\u663e\u793a";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -8746,9 +8740,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " \u5b8c\u6210\u4e86\u6b64\u6d3b\u52d5";
     },
-    get$endActivityTitle() {
-      return "\u6211\u5b8c\u6210\u4e86";
-    },
     get$activitySummaryError() {
       return "\u7121\u6cd5\u53d6\u5f97\u6d3b\u52d5\u6458\u8981";
     },
@@ -9127,9 +9118,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "\u9019\u662f\u4f60\u5347\u7d1a\u5f8c\u8a5e\u5f59\u5c07\u6703\u653e\u7f6e\u7684\u5730\u65b9\uff01";
     },
-    get$highlightVocabTooltip() {
-      return "\u901a\u904e\u5728\u804a\u5929\u4e2d\u767c\u9001\u6216\u7df4\u7fd2\u4f86\u7a81\u51fa\u986f\u793a\u4e0b\u9762\u7684\u76ee\u6a19\u8a5e\u5f59";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -9144,7 +9132,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EtCDWZLMQkpWPjWoI5x2Mjb2JD0="] = d.current;
+  d["Uk5iyGInap764WC4cGRm2Jy94fA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

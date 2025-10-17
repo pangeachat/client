@@ -4183,9 +4183,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     finishedTheActivity$1(username) {
       return "\ud83c\udfaf " + username + " ukon\u010dil tuto aktivitu";
     },
-    get$endActivityTitle() {
-      return "Jsem hotov";
-    },
     get$activitySummaryError() {
       return "Souhrny aktivit nejsou k dispozici";
     },
@@ -4564,9 +4561,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Zde se objev\xed slov\xed\u010dka, jakmile je vylep\u0161\xedte na vy\u0161\u0161\xed \xfarove\u0148!";
     },
-    get$highlightVocabTooltip() {
-      return "Zv\xfdrazn\u011bte c\xedlov\xe1 slov\xed\u010dka n\xed\u017ee jejich odesl\xe1n\xedm nebo procvi\u010dov\xe1n\xedm v chatu";
-    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4580,7 +4574,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zksElQq/TeO/orzNuoV912zMAEk="] = d.current;
+  d["Jz/eYooTpLmhlwojh7wnsKZvc5c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_210.part.js.map
