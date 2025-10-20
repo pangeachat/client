@@ -1,4 +1,3 @@
-import 'dart:collection';
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
@@ -161,27 +160,22 @@ class PracticeSelection {
       return [];
     }
 
-    final uniqueTokens = LinkedHashSet<PangeaToken>(
-      equals: (token1, token2) =>
-          token1.text.content.toLowerCase() ==
-          token2.text.content.toLowerCase(),
-      hashCode: (token) => token.text.content.toLowerCase().hashCode,
-    )..addAll(tokens);
+    //remove duplicates
+    final seenTexts = <String>{};
+    tokens.retainWhere((token) => seenTexts.add(token.text.content.toLowerCase()));
 
-    final uniqueTokensList = uniqueTokens.toList();
-
-    if (uniqueTokensList.length > 8) {
+    if (tokens.length > 8) {
       // Remove the last third (floored) of tokens, only greater than 8 items so at least 5 remain
-      final int removeCount = (uniqueTokensList.length / 3).floor();
-      final int keepCount = uniqueTokensList.length - removeCount;
-      uniqueTokensList.removeRange(keepCount, uniqueTokensList.length);
+      final int removeCount = (tokens.length / 3).floor();
+      final int keepCount = tokens.length - removeCount;
+      tokens.removeRange(keepCount, tokens.length);
     }
 
     //shuffle leftover list so if there are enough, each activity gets different tokens
-    uniqueTokensList.shuffle();
+    tokens.shuffle();
 
     final List<PangeaToken> activityTokens = [];
-    for (final t in uniqueTokensList) {
+    for (final t in tokens) {
       if (activityTokens.length >= _maxQueueLength) {
         break;
       }
