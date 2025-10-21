@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "\u041e\u0434\u0431\u043b\u043e\u043a\u0438\u0440\u0430\u0458 \u0443\u0440\u0435\u0452\u0430\u0458";
     },
-    get$unknownDevice() {
-      return "\u041d\u0435\u043f\u043e\u0437\u043d\u0430\u0442 \u0443\u0440\u0435\u0452\u0430\u0458";
-    },
     get$unknownEncryptionAlgorithm() {
       return "\u041d\u0435\u043f\u043e\u0437\u043d\u0430\u0442 \u0430\u043b\u0433\u043e\u0440\u0438\u0442\u0430\u043c \u0448\u0438\u0444\u0440\u043e\u0432\u0430\u045a\u0430";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " je pokucao";
-    },
-    get$users() {
-      return "Korisnici";
     },
     countFiles$1(count) {
       return "" + count + " fajlova";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Novi kurs";
     },
-    get$publicCourses() {
-      return "Javni kursevi";
-    },
     goToCourse$1(course) {
       return "Idi na kurs: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "\u041d\u0435\u0441\u043b\u0430\u0433\u0430\u045a\u0435 \u0458\u0435\u0437\u0438\u043a\u0430";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "\u0412\u0430\u0448 \u0446\u0438\u0459\u0430\u043d\u0438 \u0458\u0435\u0437\u0438\u043a \u0441\u0435 \u043d\u0435 \u043f\u043e\u043a\u043b\u0430\u043f\u0430 \u0441\u0430 \u0458\u0435\u0437\u0438\u043a\u043e\u043c \u043e\u0432\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438. \u0416\u0435\u043b\u0438\u0442\u0435 \u043b\u0438 \u0434\u0430 \u0430\u0436\u0443\u0440\u0438\u0440\u0430\u0442\u0435 \u0441\u0432\u043e\u0458 \u0446\u0438\u0459\u0430\u043d\u0438 \u0458\u0435\u0437\u0438\u043a?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["exCvPzXWEE0gBSvz14T1R//OxG8="] = d.current;
+  d["T0z9up+Ghi7esCyAIH6bgDW68OU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_659.part.js.map

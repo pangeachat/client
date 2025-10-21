@@ -848,9 +848,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "\u89e3\u9664\u5c4f\u853d\u8bbe\u5907";
     },
-    get$unknownDevice() {
-      return "\u672a\u77e5\u8bbe\u5907";
-    },
     get$unknownEncryptionAlgorithm() {
       return "\u672a\u77e5\u52a0\u5bc6\u7b97\u6cd5";
     },
@@ -997,9 +994,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return user + " \u8bf7\u6c42\u4e86\u52a0\u5165\u804a\u5929\u5ba4\u7684\u9080\u8bf7";
-    },
-    get$users() {
-      return "\u7528\u6237";
     },
     countFiles$1(count) {
       return "" + count + " \u4e2a\u6587\u4ef6";
@@ -4340,9 +4334,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "\u65b0\u5efa\u8bfe\u7a0b";
     },
-    get$publicCourses() {
-      return "\u516c\u5f00\u8bfe\u7a0b";
-    },
     goToCourse$1(course) {
       return "\u524d\u5f80\u8bfe\u7a0b\uff1a" + course;
     },
@@ -4519,6 +4510,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$languageMismatchTitle() {
       return "\u8bed\u8a00\u4e0d\u5339\u914d";
+    },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
     },
     get$languageMismatchDesc() {
       return "\u4f60\u7684\u76ee\u6807\u8bed\u8a00\u4e0e\u6b64\u6d3b\u52a8\u7684\u8bed\u8a00\u4e0d\u5339\u914d\u3002\u8981\u66f4\u65b0\u4f60\u7684\u76ee\u6807\u8bed\u8a00\u5417\uff1f";
@@ -5398,9 +5392,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "\u89e3\u9664\u9396\u5b9a\u88dd\u7f6e";
     },
-    get$unknownDevice() {
-      return "\u672a\u77e5\u88dd\u7f6e";
-    },
     get$unknownEncryptionAlgorithm() {
       return "\u672a\u77e5\u7684\u52a0\u5bc6\u6f14\u7b97\u6cd5";
     },
@@ -5547,9 +5538,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " \u6572\u9580\u4e86";
-    },
-    get$users() {
-      return "\u4f7f\u7528\u8005";
     },
     countFiles$1(count) {
       return "" + count + " \u500b\u6587\u4ef6";
@@ -8890,9 +8878,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "\u65b0\u5efa\u8ab2\u7a0b";
     },
-    get$publicCourses() {
-      return "\u516c\u958b\u8ab2\u7a0b";
-    },
     goToCourse$1(course) {
       return "\u524d\u5f80\u8ab2\u7a0b\uff1a" + course;
     },
@@ -9132,7 +9117,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Uk5iyGInap764WC4cGRm2Jy94fA="] = d.current;
+  d["M9o7p5s25SXLxTJnni/aByj0XCY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

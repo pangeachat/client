@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Opl\xe5s enhed";
     },
-    get$unknownDevice() {
-      return "Ukendt enhed";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Ukendt krypteringsalgoritme";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " har banket p\xe5";
-    },
-    get$users() {
-      return "Brugere";
     },
     countFiles$1(count) {
       return "" + count + " filer";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Opret nyt kursus";
     },
-    get$publicCourses() {
-      return "Offentlige kurser";
-    },
     goToCourse$1(course) {
       return "G\xe5 til kursus: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Sprogfejl";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Dit m\xe5lsprog stemmer ikke overens med sproget for denne aktivitet. Vil du opdatere dit m\xe5lsprog?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["l+AVOwh1HrGCJha4/dms+3Wq2Tw="] = d.current;
+  d["AoZ1yCvFKfFXsP7w8EdiLot78+U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map

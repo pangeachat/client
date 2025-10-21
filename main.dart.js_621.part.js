@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "\uae30\uae30 \ucc28\ub2e8 \ud574\uc81c";
     },
-    get$unknownDevice() {
-      return "\uc54c \uc218 \uc5c6\ub294 \uae30\uae30";
-    },
     get$unknownEncryptionAlgorithm() {
       return "\uc54c \uc218 \uc5c6\ub294 \uc554\ud638\ud654 \uc54c\uace0\ub9ac\uc998";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + "\ub2d8\uc774 \ucc38\uac00\ub97c \uc694\uccad\ud588\uc2b5\ub2c8\ub2e4";
-    },
-    get$users() {
-      return "\uc720\uc800";
     },
     countFiles$1(count) {
       return "" + count + "\uac1c\uc758 \ud30c\uc77c";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "\uc0c8 \ucf54\uc2a4 \ub9cc\ub4e4\uae30";
     },
-    get$publicCourses() {
-      return "\uacf5\uac1c \ucf54\uc2a4";
-    },
     goToCourse$1(course) {
       return "\ucf54\uc2a4\ub85c \uc774\ub3d9: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "\uc5b8\uc5b4 \ubd88\uc77c\uce58";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "\ubaa9\ud45c \uc5b8\uc5b4\uac00 \uc774 \ud65c\ub3d9\uc758 \uc5b8\uc5b4\uc640 \uc77c\uce58\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4. \ubaa9\ud45c \uc5b8\uc5b4\ub97c \uc5c5\ub370\uc774\ud2b8\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qwxT3/BwhpcZQMaSfL0Ul40NKvk="] = d.current;
+  d["tdv7BHDm7fTJYTMZkZwVl9H+iRY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_621.part.js.map

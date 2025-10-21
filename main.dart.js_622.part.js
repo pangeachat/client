@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Atblokuoti \u012frengin\u012f";
     },
-    get$unknownDevice() {
-      return "Ne\u017einomas \u012frenginys";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Ne\u017einomas \u0161ifravimo algoritmas";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " pasibeld\u0117";
-    },
-    get$users() {
-      return "Vartotojai";
     },
     countFiles$1(count) {
       return "" + count + " failai";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Naujas kursas";
     },
-    get$publicCourses() {
-      return "Vie\u0161i kursai";
-    },
     goToCourse$1(course) {
       return "Eiti \u012f kurs\u0105: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Kalbos neatitikimas";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "J\u016bs\u0173 tikslin\u0117 kalba nesutampa su \u0161ios veiklos kalba. Ar norite atnaujinti savo tikslin\u0119 kalb\u0105?";
     },
@@ -4577,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ZCkmQJRs7Dkja494tVrBIakMHow="] = d.current;
+  d["6R4ny8hqAdIeOeiLMKlCm5C6UWM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_622.part.js.map

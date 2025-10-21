@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Sblocca il dispositivo";
     },
-    get$unknownDevice() {
-      return "Dispositivo sconosciuto";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Algoritmo di crittografia sconosciuto";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " ha bussato";
-    },
-    get$users() {
-      return "Utenti";
     },
     countFiles$1(count) {
       return "" + count + " file";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Nuovo corso";
     },
-    get$publicCourses() {
-      return "Corsi pubblici";
-    },
     goToCourse$1(course) {
       return "Vai al corso: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Incompatibilit\xe0 della lingua";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "La tua lingua di destinazione non corrisponde alla lingua di questa attivit\xe0. Aggiornare la tua lingua di destinazione?";
     },
@@ -4577,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["D3nB9GkKZPcV/LQCK8EL1/VPmIk="] = d.current;
+  d["WxDWFLofp0TjhM0RTEhXoAyJXQU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_616.part.js.map

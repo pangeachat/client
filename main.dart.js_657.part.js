@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Odblokiraj napravo";
     },
-    get$unknownDevice() {
-      return "Neznana naprava";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Neznan algoritem \u0161ifriranja";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " je potrkal/a";
-    },
-    get$users() {
-      return "Uporabniki";
     },
     countFiles$1(count) {
       return "" + count + " datotek";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Nov te\u010daj";
     },
-    get$publicCourses() {
-      return "Javni te\u010daji";
-    },
     goToCourse$1(course) {
       return "Pojdi na te\u010daj: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Neujemanje jezika";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Va\u0161 ciljni jezik se ne ujema z jezikom te aktivnosti. Posodobiti ciljni jezik?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["TDaVkZN3pqv0wvV538pnSCNQM1w="] = d.current;
+  d["RD9wu9qOo5PhJndML8GYDzlKzfU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_657.part.js.map

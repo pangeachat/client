@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Desblokeatu gailua";
     },
-    get$unknownDevice() {
-      return "Gailu ezezaguna";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Zifratze-algoritmo ezezaguna";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + "(e)k baimena eskatu du";
-    },
-    get$users() {
-      return "Erabiltzaileak";
     },
     countFiles$1(count) {
       return "" + count + " fitxategi";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Ikastaro berria";
     },
-    get$publicCourses() {
-      return "Ikastaro publikoak";
-    },
     goToCourse$1(course) {
       return "Joan ikastaro batera: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Hizkuntza desberdintasuna";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Zure helburu hizkuntza ez dator bat jarduera honen hizkuntzarekin. Eguneratu zure helburu hizkuntza nahi duzun moduan?";
     },
@@ -4577,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["WZBjjGVZnDDGifOa6I5fJCb+fgI="] = d.current;
+  d["twiGceqcEWFw1SRXEM8Ndg8CkDE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_500.part.js.map

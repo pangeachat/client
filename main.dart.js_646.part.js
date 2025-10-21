@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Debloca dispozitiv";
     },
-    get$unknownDevice() {
-      return "Dispozitiv necunoscut";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Algoritm de criptare necunoscut";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " a b\u0103tut la u\u0219\u0103";
-    },
-    get$users() {
-      return "Utilizatori";
     },
     countFiles$1(count) {
       return "" + count + " fi\u0219iere";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Curs nou";
     },
-    get$publicCourses() {
-      return "Cursuri publice";
-    },
     goToCourse$1(course) {
       return "Mergi la curs: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Incompatibilitate de limbaj";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Limba \u021bint\u0103 nu se potrive\u0219te cu limba acestei activit\u0103\u021bi. Vrei s\u0103 actualizezi limba \u021bint\u0103?";
     },
@@ -4577,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Av/KZCZpkGPmRyhKyrcyqAXEuwU="] = d.current;
+  d["mJ29lYfMSZagCtRVNL9TkL/0TWI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_646.part.js.map

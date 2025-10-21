@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Eszk\xf6z blokkol\xe1s felold\xe1sa";
     },
-    get$unknownDevice() {
-      return "Ismeretlen eszk\xf6z";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Ismeretlen titkos\xedt\xe1si algoritmus";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " bekopogott";
-    },
-    get$users() {
-      return "Felhaszn\xe1l\xf3k";
     },
     countFiles$1(count) {
       return "" + count + " f\xe1jl";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "\xdaj kurzus";
     },
-    get$publicCourses() {
-      return "Nyilv\xe1nos kurzusok";
-    },
     goToCourse$1(course) {
       return "Ugr\xe1s a kurzusra: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Nyelvi elt\xe9r\xe9s";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "A c\xe9lnyelved nem egyezik ezzel az aktivit\xe1ssal. Friss\xedted a c\xe9lnyelvet?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FLeZITst6/Lad8ggZRTIw26hUgY="] = d.current;
+  d["qbN8lNtR797kYu1y0qQhLOqrsWw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_582.part.js.map

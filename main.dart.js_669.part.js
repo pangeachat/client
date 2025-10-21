@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "\u89e3\u9664\u5c01\u9396\u8a2d\u5099";
     },
-    get$unknownDevice() {
-      return "\u672a\u77e5\u8a2d\u5099";
-    },
     get$unknownEncryptionAlgorithm() {
       return "\u672a\u77e5\u52a0\u5bc6\u7b97\u6cd5";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " \u5df2\u6572\u9580";
-    },
-    get$users() {
-      return "\u7528\u6236";
     },
     countFiles$1(count) {
       return "" + count + " \u500b\u6a94\u6848";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "\u65b0\u5efa\u8ab2\u7a0b";
     },
-    get$publicCourses() {
-      return "\u516c\u958b\u8ab2\u7a0b";
-    },
     goToCourse$1(course) {
       return "\u524d\u5f80\u8ab2\u7a0b\uff1a" + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "\u8a9e\u8a00\u4e0d\u7b26";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "\u4f60\u5605\u76ee\u6a19\u8a9e\u8a00\u540c\u5462\u500b\u6d3b\u52d5\u5605\u8a9e\u8a00\u5514\u4e00\u81f4\u3002\u60f3\u66f4\u65b0\u4f60\u5605\u76ee\u6a19\u8a9e\u8a00\u55ce\uff1f";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["a7xQXyDEoWyPBCFWhmI/yIUSOqg="] = d.current;
+  d["uje6+zT3k60p3/rDZyweNz/aH1U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_669.part.js.map

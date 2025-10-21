@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Odblokovat za\u0159\xedzen\xed";
     },
-    get$unknownDevice() {
-      return "Nezn\xe1m\xe9 za\u0159\xedzen\xed";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Nezn\xe1m\xfd \u0161ifrovac\xed algoritmus";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " zaklepal";
-    },
-    get$users() {
-      return "U\u017eivatel\xe9";
     },
     countFiles$1(count) {
       return "" + count + " soubor\u016f";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Nov\xfd kurz";
     },
-    get$publicCourses() {
-      return "Ve\u0159ejn\xe9 kurzy";
-    },
     goToCourse$1(course) {
       return "P\u0159ej\xedt na kurz: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Neshoda jazyka";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "V\xe1\u0161 c\xedlov\xfd jazyk se neshoduje s jazykem t\xe9to aktivity. Chcete aktualizovat sv\u016fj c\xedlov\xfd jazyk?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Jz/eYooTpLmhlwojh7wnsKZvc5c="] = d.current;
+  d["5eTRg20ytxtjiDlK+SMNPJqiV9k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_210.part.js.map

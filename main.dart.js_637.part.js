@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Deblokkeer apparaat";
     },
-    get$unknownDevice() {
-      return "Onbekend apparaat";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Onbekend versleutelingsalgoritme";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " heeft geklopt";
-    },
-    get$users() {
-      return "Personen";
     },
     countFiles$1(count) {
       return "" + count + " bestanden";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Nieuwe cursus";
     },
-    get$publicCourses() {
-      return "Openbare cursussen";
-    },
     goToCourse$1(course) {
       return "Ga naar cursus: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Taal mismatch";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Je doeltaal komt niet overeen met de taal van deze activiteit. Wil je je doeltaal bijwerken?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qnNQLrESPgl/Cx/bzhdKaUxKq/Q="] = d.current;
+  d["LhC1xixT/esfNlvnT7WhqTYQZRA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_637.part.js.map

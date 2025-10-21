@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "\u0b9a\u0bbe\u0ba4\u0ba9\u0ba4\u0bcd\u0ba4\u0bc8\u0ba4\u0bcd \u0ba4\u0b9f\u0bc8\u0b9a\u0bc6\u0baf\u0bcd\u0b95";
     },
-    get$unknownDevice() {
-      return "\u0ba4\u0bc6\u0bb0\u0bbf\u0baf\u0bbe\u0ba4 \u0b9a\u0bbe\u0ba4\u0ba9\u0bae\u0bcd";
-    },
     get$unknownEncryptionAlgorithm() {
       return "\u0b85\u0bb1\u0bbf\u0baf\u0baa\u0bcd\u0baa\u0b9f\u0bbe\u0ba4 \u0b95\u0bc1\u0bb1\u0bbf\u0baf\u0bbe\u0b95\u0bcd\u0b95 \u0bb5\u0bb4\u0bbf\u0bae\u0bc1\u0bb1\u0bc8";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " \u0ba4\u0b9f\u0bcd\u0b9f\u0bbf\u0baf\u0ba4\u0bc1";
-    },
-    get$users() {
-      return "\u0baa\u0baf\u0ba9\u0bb0\u0bcd\u0b95\u0bb3\u0bcd";
     },
     countFiles$1(count) {
       return "" + count + " \u0b95\u0bcb\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0baa\u0bbe\u0b9f\u0bae\u0bcd";
     },
-    get$publicCourses() {
-      return "\u0baa\u0bca\u0ba4\u0bc1 \u0baa\u0bbe\u0b9f\u0b99\u0bcd\u0b95\u0bb3\u0bcd";
-    },
     goToCourse$1(course) {
       return "\u0baa\u0bbe\u0b9f\u0ba4\u0bcd\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc1 \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bb5\u0bc1\u0bae\u0bcd: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "\u0bae\u0bca\u0bb4\u0bbf \u0baa\u0bca\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbe\u0bae\u0bc8";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "\u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf \u0b87\u0ba8\u0bcd\u0ba4 \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bbf\u0ba9\u0bcd \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bc1\u0b9f\u0ba9\u0bcd \u0baa\u0bca\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8. \u0b89\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0baf\u0bc8 \u0baa\u0bc1\u0ba4\u0bc1\u0baa\u0bcd\u0baa\u0bbf\u0b95\u0bcd\u0b95 \u0bb5\u0bbf\u0bb0\u0bc1\u0bae\u0bcd\u0baa\u0bc1\u0b95\u0bbf\u0bb1\u0bc0\u0bb0\u0bcd\u0b95\u0bb3\u0bbe?";
     },
@@ -4578,7 +4572,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["A5NHS1cBNe0IfO25ChLWEUgQO6Q="] = d.current;
+  d["ymF/JVujxSa4DE3DJeJQWXNUCMo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_663.part.js.map

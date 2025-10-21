@@ -842,9 +842,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Odblokuj urz\u0105dzenie";
     },
-    get$unknownDevice() {
-      return "Nieznane urz\u0105dzenie";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Nieznany algorytm szyfrowania";
     },
@@ -991,9 +988,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return user + " zapuka\u0142-/a";
-    },
-    get$users() {
-      return "U\u017cytkownicy";
     },
     countFiles$1(count) {
       return "" + count + " plik\xf3w";
@@ -4334,9 +4328,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Nowy kurs";
     },
-    get$publicCourses() {
-      return "Kursy publiczne";
-    },
     goToCourse$1(course) {
       return "Przejd\u017a do kursu: " + course;
     },
@@ -4514,6 +4505,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Niezgodno\u015b\u0107 j\u0119zyk\xf3w";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Tw\xf3j j\u0119zyk docelowy nie zgadza si\u0119 z j\u0119zykiem tej aktywno\u015bci. Chcesz zaktualizowa\u0107 sw\xf3j j\u0119zyk docelowy?";
     },
@@ -4575,7 +4569,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["OpheGCvZDP3A0lHNMmSUiwDrK5o="] = d.current;
+  d["7DLEmp5DaUUXoKeYUdGu0Q6pb/k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_640.part.js.map

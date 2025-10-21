@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Hilangkan Pemblokiran Perangkat";
     },
-    get$unknownDevice() {
-      return "Perangkat tidak dikenal";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Algoritma enkripsi tidak dikenal";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " telah dikeluarkan";
-    },
-    get$users() {
-      return "Pengguna";
     },
     countFiles$1(count) {
       return "" + count + " file";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Kursus baru";
     },
-    get$publicCourses() {
-      return "Kursus publik";
-    },
     goToCourse$1(course) {
       return "Pergi ke kursus: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Ketidaksesuaian bahasa";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Bahasa target Anda tidak cocok dengan bahasa aktivitas ini. Perbarui bahasa target Anda?";
     },
@@ -4577,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["sHykIQjrR2W3HyYKvGhivOoPJ8c="] = d.current;
+  d["xChBvv7KJmKODfdoX6FeFDZEKIk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_601.part.js.map

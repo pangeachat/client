@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Atsl\u0113gt ier\u012bci";
     },
-    get$unknownDevice() {
-      return "Nezin\u0101ma ier\u012bce";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Nezin\u0101ms \u0161ifr\u0113\u0161anas algoritms";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " pieklauv\u0113ja";
-    },
-    get$users() {
-      return "Lietot\u0101ji";
     },
     countFiles$1(count) {
       return "" + count + " datnes";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Jauns kurss";
     },
-    get$publicCourses() {
-      return "Publiskie kursi";
-    },
     goToCourse$1(course) {
       return "Dodieties uz kursu: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Valodu neatbilst\u012bba";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "J\u016bsu m\u0113r\u0137a valoda neatbilst \u0161\u012bs aktivit\u0101tes valodai. Vai v\u0113laties atjaunin\u0101t savu m\u0113r\u0137a valodu?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5fdauZo8fv60hvXSJoApSTKHRNI="] = d.current;
+  d["wiw73zKG/+DJ2hiqPBzhCWPLDYU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map

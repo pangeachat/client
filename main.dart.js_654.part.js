@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Odblokova\u0165 zariadenie";
     },
-    get$unknownDevice() {
-      return "Nezn\xe1me zariadenie";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Nezn\xe1my \u0161ifrovac\xed algoritmus";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " zaklopal";
-    },
-    get$users() {
-      return "Pou\u017e\xedvatelia";
     },
     countFiles$1(count) {
       return "" + count + " s\xfaborov";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Nov\xfd kurz";
     },
-    get$publicCourses() {
-      return "Verejn\xe9 kurzy";
-    },
     goToCourse$1(course) {
       return "Prejs\u0165 na kurz: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Nes\xfalad jazyka";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "V\xe1\u0161 cie\u013eov\xfd jazyk nezodpoved\xe1 jazyku tejto aktivity. Chcete aktualizova\u0165 svoj cie\u013eov\xfd jazyk?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GHPUdZYfnBiTqRdV6Qj8HuwiSJE="] = d.current;
+  d["c+uAGqM1uI/XvvlBDVYToLX0OhA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_654.part.js.map

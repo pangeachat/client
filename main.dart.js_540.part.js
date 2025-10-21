@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "D\xedbhloc\xe1il Gl\xe9as";
     },
-    get$unknownDevice() {
-      return "Gl\xe9as anaithnid";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Algartam criptithe anaithnid";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa T\xe1 " + user + " tar \xe9is cnagadh";
-    },
-    get$users() {
-      return "\xdas\xe1ideoir\xed";
     },
     countFiles$1(count) {
       return "Comhaid " + count;
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "C\xfarsa nua";
     },
-    get$publicCourses() {
-      return "C\xfarsa\xed poibl\xed";
-    },
     goToCourse$1(course) {
       return "T\xe9igh go c\xfarsa: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "M\xedchothrom na teangacha";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "N\xed oireann do theanga sprioc an gn\xedomha\xedochta seo do theanga na gn\xedomha\xedochta. An bhfuil t\xfa ag iarraidh do theanga sprioc a nuashonr\xfa?";
     },
@@ -4577,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["g+Vxv/Wd8RWVXiEhQciCTOsKthI="] = d.current;
+  d["XkyIJjR0Tp0tmf764nvaV4jNB/0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_540.part.js.map

@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Poista laitteen esto";
     },
-    get$unknownDevice() {
-      return "Tuntematon laite";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Tuntematon salausalgoritmi";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " on koputtanut";
-    },
-    get$users() {
-      return "K\xe4ytt\xe4j\xe4t";
     },
     countFiles$1(count) {
       return "" + count + " tiedostoa";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Uusi kurssi";
     },
-    get$publicCourses() {
-      return "Julkiset kurssit";
-    },
     goToCourse$1(course) {
       return "Siirry kurssiin: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Kielivirhe";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Kohdekielesi ei vastaa t\xe4m\xe4n aktiviteetin kielt\xe4. Haluatko p\xe4ivitt\xe4\xe4 kohdekielesi?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HcbCqS+qswZ6eefWyLk7nLg+G4s="] = d.current;
+  d["UBJx4TGrz/WUWsZT9xI9GkKD01U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_513.part.js.map

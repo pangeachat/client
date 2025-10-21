@@ -853,9 +853,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Desbloquear Dispositivo";
     },
-    get$unknownDevice() {
-      return "Dispositivo desconhecido";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Algoritmo de criptografia desconhecido";
     },
@@ -1002,9 +999,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " bateu na porta";
-    },
-    get$users() {
-      return "Utilizadores";
     },
     countFiles$1(count) {
       return "" + count + " arquivos";
@@ -4345,9 +4339,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Novo curso";
     },
-    get$publicCourses() {
-      return "Cursos p\xfablicos";
-    },
     goToCourse$1(course) {
       return "Ir para o curso: " + course;
     },
@@ -4524,6 +4515,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$languageMismatchTitle() {
       return "Incompatibilidade de idioma";
+    },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
     },
     get$languageMismatchDesc() {
       return string$.O_idio;
@@ -5403,9 +5397,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Desbloquear dispositivo";
     },
-    get$unknownDevice() {
-      return "Dispositivo desconhecido";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Algoritmo de criptografia desconhecido";
     },
@@ -5552,9 +5543,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " bateu na porta";
-    },
-    get$users() {
-      return "Usu\xe1rios";
     },
     countFiles$1(count) {
       return "" + count + " arquivos";
@@ -8895,9 +8883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Novo curso";
     },
-    get$publicCourses() {
-      return "Cursos p\xfablicos";
-    },
     goToCourse$1(course) {
       return "Ir para o curso: " + course;
     },
@@ -9953,9 +9938,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Desbloquear Dispositivo";
     },
-    get$unknownDevice() {
-      return "Dispositivo desconhecido";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Algoritmo de encripta\xe7\xe3o desconhecido";
     },
@@ -10102,9 +10084,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " bateu na porta";
-    },
-    get$users() {
-      return "Usu\xe1rios";
     },
     countFiles$1(count) {
       return "" + count + " ficheiros";
@@ -13445,9 +13424,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Novo curso";
     },
-    get$publicCourses() {
-      return "Cursos p\xfablicos";
-    },
     goToCourse$1(course) {
       return "Ir para o curso: " + course;
     },
@@ -13852,7 +13828,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mX+7KVX3bLw76p6F/BZYjNJKJd4="] = d.current;
+  d["5UxR2iYjOh3RTrs67b5CXNagfuk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map

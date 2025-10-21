@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "\u0628\u0631\u062f\u0627\u0634\u062a\u0646 \u0645\u0633\u062f\u0648\u062f \u0628\u0648\u062f\u0646 \u062f\u0633\u062a\u06af\u0627\u0647";
     },
-    get$unknownDevice() {
-      return "\u062f\u0633\u062a\u06af\u0627\u0647 \u0646\u0627\u0634\u0646\u0627\u0633";
-    },
     get$unknownEncryptionAlgorithm() {
       return "\u0627\u0644\u06af\u0648\u0631\u06cc\u062a\u0645 \u0631\u0645\u0632\u06af\u0630\u0627\u0631\u06cc \u0646\u0627\u0634\u0646\u0627\u062e\u062a\u0647";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " \u0632\u062f\u0647 \u0627\u0633\u062a";
-    },
-    get$users() {
-      return "\u06a9\u0627\u0631\u0628\u0631\u0647\u0627";
     },
     countFiles$1(count) {
       return "" + count + " \u0641\u0627\u06cc\u0644";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "\u062f\u0648\u0631\u0647 \u062c\u062f\u06cc\u062f";
     },
-    get$publicCourses() {
-      return "\u062f\u0648\u0631\u0647\u200c\u0647\u0627\u06cc \u0639\u0645\u0648\u0645\u06cc";
-    },
     goToCourse$1(course) {
       return "\u0628\u0631\u0648 \u0628\u0647 \u062f\u0648\u0631\u0647: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "\u062a\u0641\u0627\u0648\u062a \u0632\u0628\u0627\u0646";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "\u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u0634\u0645\u0627 \u0628\u0627 \u0632\u0628\u0627\u0646 \u0627\u06cc\u0646 \u0641\u0639\u0627\u0644\u06cc\u062a \u0645\u0637\u0627\u0628\u0642\u062a \u0646\u062f\u0627\u0631\u062f. \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u0632\u0628\u0627\u0646 \u0647\u062f\u0641 \u062e\u0648\u062f \u0631\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u06a9\u0646\u06cc\u062f\u061f";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xfFLZl+QCEBc514BYraU20aKNlE="] = d.current;
+  d["zJAaZuEBGg093TNB7EYO07oEmqM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_512.part.js.map

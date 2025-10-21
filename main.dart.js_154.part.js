@@ -842,9 +842,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Desbloqueja dispositiu";
     },
-    get$unknownDevice() {
-      return "Dispositiu desconegut";
-    },
     get$unknownEncryptionAlgorithm() {
       return "L\u2019algorisme de xifratge \xe9s desconegut";
     },
@@ -991,9 +988,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " pica a la porta";
-    },
-    get$users() {
-      return "Usu\xe0r\xefis";
     },
     countFiles$1(count) {
       return "" + count + " arxius";
@@ -4334,9 +4328,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Nou curs";
     },
-    get$publicCourses() {
-      return "Cursos p\xfablics";
-    },
     goToCourse$1(course) {
       return "Ves al curs: " + course;
     },
@@ -4514,6 +4505,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Desajust de llengua";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "La teva llengua objectiu no coincideix amb la llengua d'aquesta activitat. Actualitzar la teva llengua objectiu?";
     },
@@ -4578,7 +4572,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zDZD2Vz7T2iTtM/dDnc6G7c597c="] = d.current;
+  d["mlmUVLa4Gz4t2+ZakJmsT5MJm0U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_154.part.js.map

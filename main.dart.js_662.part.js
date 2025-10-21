@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Avblockera enhet";
     },
-    get$unknownDevice() {
-      return "Ok\xe4nd enhet";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Ok\xe4nd krypteringsalgoritm";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return user + " har knackat";
-    },
-    get$users() {
-      return "Anv\xe4ndare";
     },
     countFiles$1(count) {
       return "" + count + " filer";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Ny kurs";
     },
-    get$publicCourses() {
-      return "Offentliga kurser";
-    },
     goToCourse$1(course) {
       return "G\xe5 till kurs: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Spr\xe5kmatchning saknas";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Ditt m\xe5lspr\xe5k matchar inte spr\xe5ket f\xf6r denna aktivitet. Vill du uppdatera ditt m\xe5lspr\xe5k?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["A4wZ+vuDj0SyuHFwZYiVm5yrTSY="] = d.current;
+  d["SgePJHlpExKvm0vcfPPkco7MgkA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_662.part.js.map

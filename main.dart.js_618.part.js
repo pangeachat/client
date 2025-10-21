@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "\u30c7\u30d0\u30a4\u30b9\u3092\u30d6\u30ed\u30c3\u30af\u89e3\u9664\u3059\u308b";
     },
-    get$unknownDevice() {
-      return "\u672a\u77e5\u30c7\u30d0\u30a4\u30b9";
-    },
     get$unknownEncryptionAlgorithm() {
       return "\u672a\u77e5\u306e\u6697\u53f7\u5316\u30a2\u30eb\u30b4\u30ea\u30ba\u30e0";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + "\u304c\u30ce\u30c3\u30af\u3057\u307e\u3057\u305f";
-    },
-    get$users() {
-      return "\u30e6\u30fc\u30b6\u30fc";
     },
     countFiles$1(count) {
       return "" + count + "\u500b\u306e\u30d5\u30a1\u30a4\u30eb";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "\u65b0\u3057\u3044\u30b3\u30fc\u30b9";
     },
-    get$publicCourses() {
-      return "\u516c\u958b\u30b3\u30fc\u30b9";
-    },
     goToCourse$1(course) {
       return "\u30b3\u30fc\u30b9\u3078\u79fb\u52d5\uff1a" + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "\u8a00\u8a9e\u306e\u4e0d\u4e00\u81f4";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "\u3042\u306a\u305f\u306e\u30bf\u30fc\u30b2\u30c3\u30c8\u8a00\u8a9e\u306f\u3053\u306e\u30a2\u30af\u30c6\u30a3\u30d3\u30c6\u30a3\u306e\u8a00\u8a9e\u3068\u4e00\u81f4\u3057\u307e\u305b\u3093\u3002\u30bf\u30fc\u30b2\u30c3\u30c8\u8a00\u8a9e\u3092\u66f4\u65b0\u3057\u307e\u3059\u304b\uff1f";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rMggBzQeyESr2HncoU219Gs3WUI="] = d.current;
+  d["EB1qrfUE6aX7Mu+DqXzn4UBTQio="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_618.part.js.map

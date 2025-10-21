@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Ayg\u0131t\u0131n Engellemesini Kald\u0131r";
     },
-    get$unknownDevice() {
-      return "Bilinmeyen ayg\u0131t";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Bilinmeyen \u015fifreleme algoritmas\u0131";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " t\u0131klatt\u0131";
-    },
-    get$users() {
-      return "Kullan\u0131c\u0131lar";
     },
     countFiles$1(count) {
       return "" + count + " dosya";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Yeni kurs";
     },
-    get$publicCourses() {
-      return "Halka a\xe7\u0131k kurslar";
-    },
     goToCourse$1(course) {
       return "Kursa git: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Dil uyu\u015fmazl\u0131\u011f\u0131";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Hedef diliniz, bu etkinli\u011fin diliyle uyu\u015fmuyor. Hedef dilinizi g\xfcncellemek ister misiniz?";
     },
@@ -4577,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8VJ7Z1gxY7bkwyG4UGyAFtx7Bbo="] = d.current;
+  d["8HKCPuc8BgMV39NQUJ1Upy8nyR4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_666.part.js.map

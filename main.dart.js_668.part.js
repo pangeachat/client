@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "B\u1ecf ch\u1eb7n thi\u1ebft b\u1ecb";
     },
-    get$unknownDevice() {
-      return "Thi\u1ebft b\u1ecb kh\xf4ng r\xf5";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Thu\u1eadt to\xe1n m\xe3 h\xf3a kh\xf4ng x\xe1c \u0111\u1ecbnh";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " v\u1eeba g\xf5 y\xeau c\u1ea7u tham gia";
-    },
-    get$users() {
-      return "Ng\u01b0\u1eddi d\xf9ng";
     },
     countFiles$1(count) {
       return "" + count + " t\u1ec7p";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Kh\xf3a h\u1ecdc m\u1edbi";
     },
-    get$publicCourses() {
-      return "C\xe1c kh\xf3a h\u1ecdc c\xf4ng khai";
-    },
     goToCourse$1(course) {
       return "\u0110i t\u1edbi kh\xf3a h\u1ecdc: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Kh\xf4ng kh\u1edbp ng\xf4n ng\u1eef";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n kh\xf4ng kh\u1edbp v\u1edbi ng\xf4n ng\u1eef c\u1ee7a ho\u1ea1t \u0111\u1ed9ng n\xe0y. C\u1eadp nh\u1eadt ng\xf4n ng\u1eef m\u1ee5c ti\xeau c\u1ee7a b\u1ea1n?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gXmFbcxhjhBJOzOtHvmIRFsEKQE="] = d.current;
+  d["BAbPoeTuzRRzWQoCAwSEY5k+C9w="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_668.part.js.map

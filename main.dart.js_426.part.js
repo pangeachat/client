@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Malbloki aparaton";
     },
-    get$unknownDevice() {
-      return "Nekonata aparato";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Nekonata \u0109ifra algoritmo";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " bato\u0159is";
-    },
-    get$users() {
-      return "Uzantoj";
     },
     countFiles$1(count) {
       return "" + count + " dosieroj";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Nova kurso";
     },
-    get$publicCourses() {
-      return "Publikaj kursoj";
-    },
     goToCourse$1(course) {
       return "Iri al kurso: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Lingva manko";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Via celolingvo ne kongruas kun la lingvo de \u0109i tiu agado. \u0108u vi volas \u011disdatigi vian celolingvon?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["325bZnrv02uOBV/B7CcbnC95e6g="] = d.current;
+  d["eZ5IbXDR4GMvs01P/F8RAMxONYo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_426.part.js.map

@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "I-unblock ang Device";
     },
-    get$unknownDevice() {
-      return "Hindi kilalang device";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Hindi kilalang encryption algorithm";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa Numanong si " + user;
-    },
-    get$users() {
-      return "Mga User";
     },
     countFiles$1(count) {
       return "" + count + " mga file";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Bagong kurso";
     },
-    get$publicCourses() {
-      return "Mga pampublikong kurso";
-    },
     goToCourse$1(course) {
       return "Pumunta sa kurso: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Hindi tugma ang wika";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Ang iyong target na wika ay hindi tumutugma sa wika ng aktibidad na ito. Nais mong i-update ang iyong target na wika?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wsLNmIu5BYgTO7tWQVSiAyjYqV4="] = d.current;
+  d["14Lvu6p3u647PZd7TYQwySt3zXY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_522.part.js.map

@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "\u05d1\u05d8\u05dc \u05d7\u05e1\u05d9\u05de\u05ea \u05de\u05db\u05e9\u05d9\u05e8";
     },
-    get$unknownDevice() {
-      return "\u05de\u05db\u05e9\u05d9\u05e8 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
-    },
     get$unknownEncryptionAlgorithm() {
       return "\u05d0\u05dc\u05d2\u05d5\u05e8\u05d9\u05ea\u05dd \u05d4\u05d4\u05e6\u05e4\u05e0\u05d4 \u05dc\u05d0 \u05d9\u05d3\u05d5\u05e2";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa " + user + " \u05d3\u05e4\u05e7 \u05d1\u05d3\u05dc\u05ea";
-    },
-    get$users() {
-      return "\u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd";
     },
     countFiles$1(count) {
       return "" + count + " \u05e7\u05d1\u05e6\u05d9\u05dd";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "\u05e7\u05d5\u05e8\u05e1 \u05d7\u05d3\u05e9";
     },
-    get$publicCourses() {
-      return "\u05e7\u05d5\u05e8\u05e1\u05d9\u05dd \u05e6\u05d9\u05d1\u05d5\u05e8\u05d9\u05d9\u05dd";
-    },
     goToCourse$1(course) {
       return "\u05e2\u05d1\u05d5\u05e8 \u05dc\u05e7\u05d5\u05e8\u05e1: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "\u041d\u0435\u043f\u043e\u0434\u043e\u043b\u044f\u0442\u043d\u043e\u0441\u0442\u044c \u0435\u0437\u0438\u043a\u0430";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "\u0412\u0430\u0448\u0435 \u043f\u043e\u0442\u0435\u043b\u043d\u043e \u0435 \u043d\u0435\u043f\u043e\u0434\u043e\u043b\u044f\u0442\u043d\u043e \u043d\u0430 \u0435\u0437\u0438\u043a\u0430 \u043d\u0430 \u044d\u0442\u043e\u0442\u043e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c. \u0418\u0437\u043c\u0435\u043d\u0438\u0442\u0435 \u043d\u0430\u0448\u0435 \u043f\u043e\u0442\u0435\u043b\u043d\u043e \u0435\u0437\u0438\u043a\u0430?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["EdJpsAa5M4eIz+C6KhUozpYpHk8="] = d.current;
+  d["jnlT0R30P8U16BYQT+WdJBavie4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_552.part.js.map

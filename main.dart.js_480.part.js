@@ -841,9 +841,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unblockDevice() {
       return "Eemalda seadmelt blokeering";
     },
-    get$unknownDevice() {
-      return "Tundmatu seade";
-    },
     get$unknownEncryptionAlgorithm() {
       return "Tundmatu kr\xfcptoalgoritm";
     },
@@ -990,9 +987,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     hasKnocked$1(user) {
       return "\ud83d\udeaa" + user + " on jututoa uksele koputanud";
-    },
-    get$users() {
-      return "Kasutajad";
     },
     countFiles$1(count) {
       return "" + count + " faili";
@@ -4333,9 +4327,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$createNewCourse() {
       return "Uus kursus";
     },
-    get$publicCourses() {
-      return "Avalikud kursused";
-    },
     goToCourse$1(course) {
       return "Mine kursusele: " + course;
     },
@@ -4513,6 +4504,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$languageMismatchTitle() {
       return "Keele sobimatus";
     },
+    get$emptyChatSearch() {
+      return "No DMs or chats found. Make sure your search is spelled correctly.";
+    },
     get$languageMismatchDesc() {
       return "Teie sihtkeel ei vasta selle tegevuse keelele. Kas soovite oma sihtkeelt uuendada?";
     },
@@ -4574,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PDSXpTcnqlJ/RWga3AfXeBe4jZ8="] = d.current;
+  d["4qzgMte0IKvupbLVnbn10rWhsnQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_480.part.js.map
