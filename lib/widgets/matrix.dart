@@ -195,12 +195,16 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
             );
             _registerSubs(_loginClientCandidate!.clientName);
             _loginClientCandidate = null;
-            // #Pangea
-            // FluffyChatApp.router.go('/rooms');
-            // Pangea#
+            FluffyChatApp.router.go('/rooms');
           });
     // #Pangea
     candidate.homeserver = Uri.parse("https://${AppConfig.defaultHomeserver}");
+
+    // This listener is not set for the new login client until the user is logged in,
+    // but if the user tries to sign up without this listener set, the signup UIA request
+    // will hang. So set the listener here.
+    onUiaRequest[candidate.clientName] ??=
+        candidate.onUiaRequest.stream.listen(uiaRequestHandler);
     // Pangea#
     if (widget.clients.isEmpty) widget.clients.add(candidate);
     return candidate;
@@ -381,9 +385,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         }
       } else {
         // #Pangea
-        if (state != LoginState.loggedIn) {
-          FluffyChatApp.router.go('/home');
-        }
+        final isL2Set = await pangeaController.userController.isUserL2Set;
+        FluffyChatApp.router.go(
+          state == LoginState.loggedIn
+              ? isL2Set
+                  ? '/rooms'
+                  : '/registration/create'
+              : '/home',
+        );
         // FluffyChatApp.router
         //     .go(state == LoginState.loggedIn ? '/rooms' : '/home');
         // Pangea#
@@ -408,6 +417,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     onLoginStateChanged.remove(name);
     onNotification[name]?.cancel();
     onNotification.remove(name);
+    // #Pangea
+    onUiaRequest[name]?.cancel();
+    onUiaRequest.remove(name);
+    // Pangea#
   }
 
   void initMatrix() {
@@ -525,6 +538,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     AppConfig.displayNavigationRail =
         store.getBool(SettingKeys.displayNavigationRail) ??
             AppConfig.displayNavigationRail;
+
+    // #Pangea
+    AppConfig.volume = store.getDouble(SettingKeys.volume) ?? AppConfig.volume;
+    // Pangea#
   }
 
   @override

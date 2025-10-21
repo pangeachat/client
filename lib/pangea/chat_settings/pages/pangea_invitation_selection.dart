@@ -6,6 +6,7 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/pangea_invitation_selection_view.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -193,10 +194,6 @@ class PangeaInvitationSelectionController
     if (a.id == client.userID) return -1;
     if (b.id == client.userID) return 1;
 
-    // sort the bot to the bottom
-    if (a.id == BotName.byEnvironment) return 1;
-    if (b.id == BotName.byEnvironment) return -1;
-
     if (participants != null) {
       final participantA = participants!.firstWhereOrNull((u) => u.id == a.id);
       final participantB = participants!.firstWhereOrNull((u) => u.id == b.id);
@@ -267,10 +264,8 @@ class PangeaInvitationSelectionController
         )
         .toList();
 
+    contacts.removeWhere((u) => u.id == BotName.byEnvironment);
     contacts.sort(_sortUsers);
-    if (_room?.isSpace ?? false) {
-      contacts.removeWhere((u) => u.id == BotName.byEnvironment);
-    }
     return contacts;
   }
 
@@ -346,9 +341,7 @@ class PangeaInvitationSelectionController
     }
 
     final results = response.results;
-    if (_room?.isSpace ?? false) {
-      results.removeWhere((profile) => profile.userId == BotName.byEnvironment);
-    }
+    results.removeWhere((profile) => profile.userId == BotName.byEnvironment);
 
     setState(() {
       foundProfiles = List<Profile>.from(results);
@@ -371,20 +364,42 @@ class PangeaInvitationSelectionController
 
       foundProfiles.removeWhere(
         (profile) =>
-            participants?.indexWhere((u) => u.id == profile.userId) != -1 &&
-            BotName.byEnvironment != profile.userId,
+            participants?.indexWhere((u) => u.id == profile.userId) != -1 ||
+            BotName.byEnvironment == profile.userId,
       );
     });
   }
 
-  void inviteAction(BuildContext context, String id, String displayname) async {
+  void inviteAction(String userID) async {
     final room = Matrix.of(context).client.getRoomById(widget.roomId)!;
 
     final success = await showFutureLoadingDialog(
       context: context,
-      future: () => room.invite(id),
+      future: () async {
+        await room.invite(userID);
+        if (room.courseParent != null && room.courseParent!.canInvite) {
+          await room.courseParent!.requestParticipants(
+            [Membership.join, Membership.invite],
+            false,
+            true,
+          );
+
+          final existingParticipant = room.courseParent!
+              .getParticipants()
+              .firstWhereOrNull((u) => u.id == userID);
+
+          if (existingParticipant == null ||
+              ![
+                Membership.invite,
+                Membership.join,
+              ].contains(existingParticipant.membership)) {
+            await room.courseParent!.invite(userID);
+          }
+        }
+      },
     );
     if (success.error == null) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(L10n.of(context).contactHasBeenInvitedToTheChat),

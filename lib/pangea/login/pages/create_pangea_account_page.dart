@@ -10,14 +10,16 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class CreatePangeaAccountPage extends StatefulWidget {
-  final String langCode;
   const CreatePangeaAccountPage({
     super.key,
-    required this.langCode,
   });
 
   @override
@@ -25,8 +27,10 @@ class CreatePangeaAccountPage extends StatefulWidget {
 }
 
 class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
-  bool _loadingProfile = true;
+  bool _loading = true;
+
   Object? _profileError;
+  Object? _courseError;
 
   final List<String> avatarPaths = const [
     "assets/pangea/Avatar_1.png",
@@ -39,7 +43,79 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   @override
   void initState() {
     super.initState();
-    _createUserInPangea();
+    _createProfile();
+  }
+
+  String? _spaceId;
+  String? _courseLangCode;
+
+  Future<LanguageSettings?> get _cachedLangCode => LangCodeRepo.get();
+
+  Future<String?> get _targetLangCode async =>
+      _courseLangCode ?? (await _cachedLangCode)?.targetLangCode;
+
+  Future<String?> get _baseLangCode async =>
+      (await _cachedLangCode)?.baseLangCode ??
+      MatrixState.pangeaController.languageController.systemLanguage?.langCode;
+
+  String? get _cachedSpaceCode =>
+      MatrixState.pangeaController.spaceCodeController.cachedSpaceCode;
+
+  Future<void> _createProfile() async {
+    setState(() {
+      _loading = true;
+      _profileError = null;
+      _courseError = null;
+    });
+
+    await _joinCachedCourse();
+    if (mounted) {
+      await _createUserInPangea();
+    }
+    if (mounted) {
+      setState(() => _loading = false);
+    }
+  }
+
+  Future<void> _joinCachedCourse() async {
+    await MatrixState.pangeaController.spaceCodeController.initCompleter.future;
+    if (_cachedSpaceCode == null) return;
+
+    try {
+      final spaceId = await MatrixState.pangeaController.spaceCodeController
+          .joinCachedSpaceCode(context);
+
+      if (spaceId == null) {
+        throw Exception('Failed to join space with code $_cachedSpaceCode');
+      }
+
+      final client = Matrix.of(context).client;
+      Room? room = client.getRoomById(spaceId);
+      if (room == null || room.membership != Membership.join) {
+        await client.waitForRoomInSync(spaceId, join: true);
+        room = client.getRoomById(spaceId);
+        if (room == null || room.membership != Membership.join) {
+          throw Exception('Failed to join space with code $_cachedSpaceCode');
+        }
+      }
+
+      final courseId = room.coursePlan?.uuid;
+      if (courseId == null) {
+        throw Exception('No course plan associated with space $spaceId');
+      }
+
+      final course = await CoursePlansRepo.get(
+        GetLocalizedCoursesRequest(
+          coursePlanIds: [courseId],
+          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        ),
+      );
+
+      _spaceId = spaceId;
+      _courseLangCode = course.targetLanguage;
+    } catch (err) {
+      _courseError = err;
+    }
   }
 
   Future<void> _setAvatar() async {
@@ -65,42 +141,61 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     }
   }
 
-  Future<void> _createUserInPangea() async {
-    setState(() {
-      _loadingProfile = true;
-      _profileError = null;
-    });
+  Future<void> _updateLanguageSettings() async {
+    final targetLangCode = await _targetLangCode;
+    final baseLangCode = await _baseLangCode;
+    await MatrixState.pangeaController.userController.updateProfile(
+      (profile) {
+        profile.userSettings.targetLanguage = targetLangCode;
+        if (baseLangCode != null) {
+          profile.userSettings.sourceLanguage = baseLangCode;
+        }
+        return profile;
+      },
+      waitForDataInSync: true,
+    );
+  }
 
+  Future<void> _createUserInPangea() async {
     final l2Set = await MatrixState.pangeaController.userController.isUserL2Set;
     if (l2Set) {
+      await _updateLanguageSettings();
       _onProfileCreated();
       return;
     }
 
     try {
+      final baseLangCode = await _baseLangCode;
+      final targetLangCode = await _targetLangCode;
+
+      // User's L2 is not set and they niether have a target language in their
+      // local storage nor can they get it from a course they plan to join.
+      // Redirect back to language selection.
+      // This can happen if a user creates a new account via login => SSO
+      if (targetLangCode == null) {
+        context.go('/registration');
+      }
+
       final updateFuture = [
         _setAvatar(),
         MatrixState.pangeaController.userController.updateProfile(
           (profile) {
-            final systemLang = MatrixState
-                .pangeaController.languageController.systemLanguage?.langCode;
-
-            if (systemLang != null) {
-              profile.userSettings.sourceLanguage = systemLang;
+            profile.userSettings.targetLanguage = targetLangCode;
+            if (baseLangCode != null) {
+              profile.userSettings.sourceLanguage = baseLangCode;
             }
-
-            profile.userSettings.targetLanguage = widget.langCode;
             profile.userSettings.createdAt = DateTime.now();
             return profile;
           },
           waitForDataInSync: true,
         ),
-        MatrixState.pangeaController.userController.updateAnalyticsProfile(
-          targetLanguage: PLanguageStore.byLangCode(widget.langCode),
-          baseLanguage:
-              MatrixState.pangeaController.languageController.systemLanguage,
-          level: 1,
-        ),
+        if (targetLangCode != null)
+          MatrixState.pangeaController.userController.updateAnalyticsProfile(
+            targetLanguage: PLanguageStore.byLangCode(targetLangCode),
+            baseLanguage:
+                MatrixState.pangeaController.languageController.systemLanguage,
+            level: 1,
+          ),
       ];
 
       await Future.wait(updateFuture).timeout(
@@ -118,32 +213,26 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
       } else {
         _profileError = err;
       }
-    } finally {
-      if (mounted) {
-        setState(() => _loadingProfile = false);
-      }
     }
   }
 
   Future<void> _onProfileCreated() async {
-    final joinedSpaceId = await MatrixState.pangeaController.spaceCodeController
-        .joinCachedSpaceCode(context);
-    if (joinedSpaceId != null) return;
-    context.go('/registration/course');
+    await LangCodeRepo.remove();
+    context.go(
+      _spaceId != null
+          ? '/rooms/spaces/$_spaceId/details'
+          : '/registration/course',
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    if (_loadingProfile && _profileError != null) {
-      _onProfileCreated();
-    }
-
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: _loadingProfile
+          child: _loading
               ? const CircularProgressIndicator.adaptive()
-              : _profileError != null
+              : _profileError != null || _courseError != null
                   ? Column(
                       spacing: 8.0,
                       mainAxisSize: MainAxisSize.min,
@@ -151,9 +240,19 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
                         ErrorIndicator(
                           message: L10n.of(context).oopsSomethingWentWrong,
                         ),
-                        TextButton(
-                          onPressed: _createUserInPangea,
-                          child: Text(L10n.of(context).tryAgain),
+                        Row(
+                          spacing: 8.0,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextButton(
+                              onPressed: _createUserInPangea,
+                              child: Text(L10n.of(context).tryAgain),
+                            ),
+                            TextButton(
+                              onPressed: Navigator.of(context).pop,
+                              child: Text(L10n.of(context).cancel),
+                            ),
+                          ],
                         ),
                       ],
                     )

@@ -36,7 +36,7 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
         );
 
         if (navigate == true && controller.room.courseParent != null) {
-          context.go(
+          context.push(
             "/rooms/spaces/${controller.room.courseParent!.id}/details?tab=course",
           );
         }
@@ -57,7 +57,8 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!controller.room.hasCompletedRole) {
+    if (!controller.room.hasCompletedRole ||
+        controller.room.hasArchivedActivity) {
       return const SizedBox.shrink();
     }
 

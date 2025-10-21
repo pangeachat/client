@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
+import 'package:http/http.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -17,12 +18,19 @@ import 'package:fluffychat/pangea/spaces/widgets/too_many_requests_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../common/controllers/base_controller.dart';
 
+class NotFoundException implements Exception {}
+
 class SpaceCodeController extends BaseController {
   late PangeaController _pangeaController;
   static final GetStorage _spaceStorage = GetStorage('class_storage');
 
+  Completer<void> initCompleter = Completer<void>();
+
   SpaceCodeController(PangeaController pangeaController) : super() {
     _pangeaController = pangeaController;
+    GetStorage.init('class_storage').then(
+      (_) => initCompleter.complete(),
+    );
   }
 
   Future<void> cacheSpaceCode(String code) async {
@@ -52,7 +60,10 @@ class SpaceCodeController extends BaseController {
     );
 
     if (spaceId != null) {
-      context.go('/rooms/spaces/$spaceId/details');
+      final room = _pangeaController.matrixState.client.getRoomById(spaceId);
+      room?.isSpace ?? true
+          ? context.go('/rooms/spaces/$spaceId/details')
+          : context.go('/rooms/${room?.id}');
       return spaceId;
     }
 
@@ -79,10 +90,18 @@ class SpaceCodeController extends BaseController {
         if (knockResult.roomIds.isEmpty &&
             knockResult.alreadyJoined.isEmpty &&
             !knockResult.rateLimited) {
-          throw notFoundError ?? L10n.of(context).unableToFindRoom;
+          throw NotFoundException();
         }
 
         return knockResult;
+      },
+      onError: (e, s) {
+        if (e is NotFoundException ||
+            e is StreamedResponse && e.statusCode == 400) {
+          return L10n.of(context).unableToFindRoom;
+        }
+
+        return e;
       },
     );
 
