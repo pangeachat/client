@@ -5303,7 +5303,5 @@
   "activityAnalyticsListBody": "These are your completed activities! After finishing activities, you can view them here.",
   "languageMismatchTitle": "Language mismatch",
   "languageMismatchDesc": "Your target language doesn't match the language of this activity. Update your target language?",  
-  "emptyChatSearch": "No DMs or chats found. Make sure your search is spelled correctly.",
-  "getStartedFriendsButton": "Invite a friend"
-
+  "emptyChatSearch": "No DMs or chats found. Make sure your search is spelled correctly."
 }

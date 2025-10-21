@@ -14,10 +14,9 @@ import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart'
 import 'package:fluffychat/pangea/course_chats/course_chats_page.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
-import 'package:fluffychat/pangea/public_spaces/public_room_bottom_sheet.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../config/themes.dart';
@@ -364,33 +363,13 @@ class ChatListViewBody extends StatelessWidget {
   }
 }
 
-// #Pangea
-// class PublicRoomsHorizontalList extends StatelessWidget {
-class PublicRoomsHorizontalList extends StatefulWidget {
-  // Pangea#
+class PublicRoomsHorizontalList extends StatelessWidget {
   const PublicRoomsHorizontalList({
     super.key,
     required this.publicRooms,
   });
 
   final List<PublicRoomsChunk>? publicRooms;
-
-  // #Pagngea
-  @override
-  PublicRoomsHorizontalListState createState() =>
-      PublicRoomsHorizontalListState();
-}
-
-class PublicRoomsHorizontalListState extends State<PublicRoomsHorizontalList> {
-  List<PublicRoomsChunk>? get publicRooms => widget.publicRooms;
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-  // Pangea#
 
   @override
   Widget build(BuildContext context) {
@@ -403,46 +382,21 @@ class PublicRoomsHorizontalListState extends State<PublicRoomsHorizontalList> {
       curve: FluffyThemes.animationCurve,
       child: publicRooms == null
           ? null
-          :
-          // #Pangea
-          Scrollbar(
-              thumbVisibility: true,
-              controller: _scrollController,
-              child:
-                  // Pangea#
-                  ListView.builder(
-                // #Pangea
-                controller: _scrollController,
-                // Pangea#
-                scrollDirection: Axis.horizontal,
-                itemCount: publicRooms.length,
-                itemBuilder: (context, i) => _SearchItem(
-                  title: publicRooms[i].name ??
-                      publicRooms[i].canonicalAlias?.localpart ??
-                      // #Pangea
-                      // L10n.of(context).group,
-                      L10n.of(context).chat,
-                  // Pangea#
-                  avatar: publicRooms[i].avatarUrl,
-                  // #Pangea
-                  onPressed: () => PublicRoomBottomSheet.show(
-                    context: context,
+          : ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: publicRooms.length,
+              itemBuilder: (context, i) => _SearchItem(
+                title: publicRooms[i].name ??
+                    publicRooms[i].canonicalAlias?.localpart ??
+                    L10n.of(context).group,
+                avatar: publicRooms[i].avatarUrl,
+                onPressed: () => showAdaptiveDialog(
+                  context: context,
+                  builder: (c) => PublicRoomDialog(
                     roomAlias:
                         publicRooms[i].canonicalAlias ?? publicRooms[i].roomId,
                     chunk: publicRooms[i],
                   ),
-                  // onPressed: () => showAdaptiveDialog(
-                  //   context: context,
-                  //   builder: (c) => PublicRoomDialog(
-                  //     roomAlias: publicRooms[i].canonicalAlias ??
-                  //         publicRooms[i].roomId,
-                  //     chunk: publicRooms[i],
-                  //   ),
-                  // ),
-                  radius: BorderRadius.circular(
-                    AppConfig.borderRadius / 2,
-                  ),
-                  // Pangea#
                 ),
               ),
             ),
@@ -454,19 +408,11 @@ class _SearchItem extends StatelessWidget {
   final String title;
   final Uri? avatar;
   final void Function() onPressed;
-  // #Pangea
-  final BorderRadius? radius;
-  final String? userId;
-  // Pangea#
 
   const _SearchItem({
     required this.title,
     this.avatar,
     required this.onPressed,
-    // #Pangea
-    this.radius,
-    this.userId,
-    // Pangea#
   });
 
   @override
@@ -481,10 +427,6 @@ class _SearchItem extends StatelessWidget {
               Avatar(
                 mxContent: avatar,
                 name: title,
-                // #Pangea
-                borderRadius: radius,
-                userId: userId,
-                // Pangea#
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -503,50 +445,3 @@ class _SearchItem extends StatelessWidget {
         ),
       );
 }
-
-// #Pangea
-class UserSearchResultsList extends StatefulWidget {
-  final SearchUserDirectoryResponse userSearchResult;
-  const UserSearchResultsList({
-    required this.userSearchResult,
-    super.key,
-  });
-
-  @override
-  UserSearchResultsListState createState() => UserSearchResultsListState();
-}
-
-class UserSearchResultsListState extends State<UserSearchResultsList> {
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scrollbar(
-      thumbVisibility: true,
-      controller: _scrollController,
-      child: ListView.builder(
-        controller: _scrollController,
-        scrollDirection: Axis.horizontal,
-        itemCount: widget.userSearchResult.results.length,
-        itemBuilder: (context, i) => _SearchItem(
-          title: widget.userSearchResult.results[i].displayName ??
-              widget.userSearchResult.results[i].userId.localpart ??
-              L10n.of(context).unknownDevice,
-          avatar: widget.userSearchResult.results[i].avatarUrl,
-          userId: widget.userSearchResult.results[i].userId,
-          onPressed: () => UserDialog.show(
-            context: context,
-            profile: widget.userSearchResult.results[i],
-          ),
-        ),
-      ),
-    );
-  }
-}
-// Pangea#
