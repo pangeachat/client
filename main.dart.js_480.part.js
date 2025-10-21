@@ -4447,9 +4447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "L\xf5peta tegevus";
     },
-    get$allLanguages() {
-      return "K\xf5ik keeled";
-    },
     get$chatListTooltip() {
       return "Siin leiad oma otsevestlused! Kl\xf5psa mis tahes kasutaja avataril ja vali \u201eAlusta vestlust\u201c, et saata otsevestlus.";
     },
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Ptl6Uydj9oXFSvH7jwMg5F75/e4="] = d.current;
+  d["WZd+fMgbwYTSrzp2tUMpc0qK3VA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_480.part.js.map

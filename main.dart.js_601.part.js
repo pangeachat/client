@@ -4447,9 +4447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Akhiri aktivitas";
     },
-    get$allLanguages() {
-      return "Semua bahasa";
-    },
     get$chatListTooltip() {
       return 'Di sini Anda akan menemukan pesan langsung Anda! Klik avatar pengguna mana pun dan "mulai percakapan" untuk mengirim DM.';
     },
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HpKFNEd6zZWcvlwQQGwhm4XNB1w="] = d.current;
+  d["qKoWVCMTd0nFIxsATf/j3RtexM4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_601.part.js.map

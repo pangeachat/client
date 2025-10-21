@@ -4447,9 +4447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Avslutt aktivitet";
     },
-    get$allLanguages() {
-      return "Alle spr\xe5k";
-    },
     get$chatListTooltip() {
       return "Her finner du dine direktemeldinger! Klikk p\xe5 en brukers avatar og \xabstart samtale\xbb for \xe5 sende en DM.";
     },
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UuUvqL3uXaoKGEu32GQMmG1xbjw="] = d.current;
+  d["LDLd13PFT1/OnjriN5BnISTnPCI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_632.part.js.map

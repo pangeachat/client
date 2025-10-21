@@ -4447,9 +4447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Rematar a actividade";
     },
-    get$allLanguages() {
-      return "Todas as linguas";
-    },
     get$chatListTooltip() {
       return 'Aqu\xed atopar\xe1s as t\xfaas mensaxes directas! Fai clic na icona de calquera usuario e "comeza unha conversa" para enviar unha mensaxe privada.';
     },
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["I2lBzQlHUvBSXSwKEeFIUnZtIYk="] = d.current;
+  d["WtDfoiP6oocwVS2ZrRAQUeTQpVc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_543.part.js.map

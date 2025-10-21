@@ -4447,9 +4447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Finir l'activitate";
     },
-    get$allLanguages() {
-      return "Tutte le linguas";
-    },
     get$chatListTooltip() {
       return "Qua tu trovarai to mesages directes! Clicca su qualunque avatar de usator e 'comencia conversation' pro mandar un DM.";
     },
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5c+0Pynrsd9lpHmTv6fpJfKG+ko="] = d.current;
+  d["OK39RNtKCf5/YZHl7WOI9Afx+gg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

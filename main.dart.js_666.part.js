@@ -4447,9 +4447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Etkinli\u011fi sonland\u0131r";
     },
-    get$allLanguages() {
-      return "T\xfcm diller";
-    },
     get$chatListTooltip() {
       return 'Burada do\u011frudan mesajlar\u0131n\u0131z\u0131 bulacaks\u0131n\u0131z! Herhangi bir kullan\u0131c\u0131n\u0131n avatar\u0131na t\u0131klay\u0131n ve "sohbet ba\u015flat" se\xe7ene\u011fiyle DM g\xf6nderebilirsiniz.';
     },
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PhscRp3xpSUWRZPVaD1JmCR7Li8="] = d.current;
+  d["sU+m58SDrW3Zy/xmI9jYHmLmUKE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_666.part.js.map

@@ -4447,9 +4447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Aktivit\xe4t beenden";
     },
-    get$allLanguages() {
-      return "Alle Sprachen";
-    },
     get$chatListTooltip() {
       return "Hier finden Sie Ihre Direktnachrichten! Klicken Sie auf das Avatar eines Nutzers und \u201cUnterhaltung starten\u201d, um eine DM zu senden.";
     },
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ABkLIDZk1Cyp0FqUgKW2sfxUnOI="] = d.current;
+  d["ZMDeWlowqh40+7Bgxrd5czcSHfM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_342.part.js.map

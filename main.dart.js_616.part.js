@@ -4447,9 +4447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Termina attivit\xe0";
     },
-    get$allLanguages() {
-      return "Tutte le lingue";
-    },
     get$chatListTooltip() {
       return "Qui troverai i tuoi messaggi diretti! Clicca sull'avatar di qualsiasi utente e \u201cinizia conversazione\u201d per inviare un messaggio diretto.";
     },
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rsxMpwbfU2IO4VjdLGEnm4PpCZQ="] = d.current;
+  d["K1soxVEo2mi8TnpLxRhjCnGNwC4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_616.part.js.map

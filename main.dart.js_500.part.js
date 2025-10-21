@@ -4447,9 +4447,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Amaitu jarduera";
     },
-    get$allLanguages() {
-      return "Hizkuntza guztiak";
-    },
     get$chatListTooltip() {
       return "Hemen zure mezu zuzenean aurkituko dituzu! Sakatu edozein erabiltzailearen avatarra eta \u201chasi elkarrizketa\u201d mezu zuzena bidaltzeko.";
     },
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ibfPSv77PGoEh4/M9ULZ3cf9bTg="] = d.current;
+  d["qeEDWvyySRZ3EfxbEauLjEg0esY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_500.part.js.map

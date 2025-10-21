@@ -4448,9 +4448,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Finalitzar l'activitat";
     },
-    get$allLanguages() {
-      return "Tots els idiomes";
-    },
     get$chatListTooltip() {
       return "Aqu\xed trobar\xe0s els teus missatges directes! Fes clic a la icona d'un usuari i \u201cInicia una conversa\u201d per enviar un missatge privat.";
     },
@@ -4572,7 +4569,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XQaRtEiihyu8IyPCrB0HFUzx83c="] = d.current;
+  d["+Q/7lPOc8rlRx7HibP80S2wM44o="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_154.part.js.map
