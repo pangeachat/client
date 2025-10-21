@@ -208,8 +208,8 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
       depressed: !enabled || widget.controller.showActivityDropdown,
       child: AnimatedContainer(
         duration: FluffyThemes.animationDuration,
-        width: FluffyThemes.isColumnMode(context) ? 300 : 280,
-        height: FluffyThemes.isColumnMode(context) ? 55 : 40,
+        width: 280,
+        height: 40,
         decoration: BoxDecoration(
           color: enabled
               ? theme.brightness == Brightness.light
