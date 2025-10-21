@@ -4552,6 +4552,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$saveActivityDesc() {
       return "Good job! Save this activity for later review and practice";
     },
+    get$levelInfoTooltip() {
+      return "Here you can see all the points you\u2019ve earned and how!";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["rt3KA1A2Vb7joxfC44XntUYEZaw="] = d.current;
+  d["ABkLIDZk1Cyp0FqUgKW2sfxUnOI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_342.part.js.map
