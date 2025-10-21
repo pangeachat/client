@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Masalah terjemahan";
     },
-    get$niceJob() {
-      return "Kerja bagus!";
-    },
     get$askToJoin() {
       return "Minta bergabung";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Tidak ditemukan obrolan atau kursus dengan kode tersebut. Silakan coba lagi.";
     },
-    get$numCompletedActivities() {
-      return "Jumlah aktivitas yang telah diselesaikan";
-    },
     viewingAnalytics$2(visible, users) {
       return "Melihat " + visible + "/" + users + " Analitik";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Menunggu yang lain selesai...";
     },
-    get$saveToCompletedActivities() {
-      return "Simpan ke aktivitas yang selesai";
-    },
     get$generatingSummary() {
       return "Menganalisis obrolan dan menghasilkan hasil";
-    },
-    get$activityCompletedDesc() {
-      return "Aktivitas yang selesai Anda tambahkan ke analitik di mana Anda dapat meninjau dan berlatih bahasa yang Anda gunakan.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " sedang mencari pengguna untuk bergabung dalam sesi aktivitas di " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Ketika Anda selesai dengan aktivitas ini, klik di bawah";
     },
-    get$activityAnalyticsListBody() {
-      return "Ini adalah aktivitas yang telah Anda selesaikan! Setelah menyelesaikan aktivitas, Anda dapat melihatnya di sini.";
-    },
     get$languageMismatchTitle() {
       return "Ketidaksesuaian bahasa";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Di sinilah kata-kata kosakata akan ditempatkan setelah Anda meningkatkannya!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["xChBvv7KJmKODfdoX6FeFDZEKIk="] = d.current;
+  d["yExs7nhfWgw7tHsOC7WzM2jxJ+k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_601.part.js.map

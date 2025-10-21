@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Itzulpen arazoa";
     },
-    get$niceJob() {
-      return "Lan ona!";
-    },
     get$askToJoin() {
       return "Galdetu bat egiteko";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Ez da txata edo ikastaroa aurkitu kode horrekin. Saiatu berriro.";
     },
-    get$numCompletedActivities() {
-      return "Amaitutako jardueren kopurua";
-    },
     viewingAnalytics$2(visible, users) {
       return "" + visible + "/" + users + " Analytics ikusten";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Itxaron besteek amaitu arte...";
     },
-    get$saveToCompletedActivities() {
-      return "Gorde jarduera osatuetara";
-    },
     get$generatingSummary() {
       return "Txataren analisia eta emaitzak sortzen";
-    },
-    get$activityCompletedDesc() {
-      return "Zure jarduera osatua analytics-en gehitu da, bertan hizkuntza erabili duzuna berrikusi eta praktika dezakezu.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " erabiltzaileak bilatzen ari da " + room + " gelan jarduera saioan parte hartzeko erabiltzaileak";
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Jarduera honekin amaitu duzunean, klikatu behean";
     },
-    get$activityAnalyticsListBody() {
-      return "Hona hemen zure jarduera osatuak! Jarduerak amaitu ondoren, hemen ikus ditzakezu.";
-    },
     get$languageMismatchTitle() {
       return "Hizkuntza desberdintasuna";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Hemen daude hitz-berriak mailakatzen dituzunean!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["twiGceqcEWFw1SRXEM8Ndg8CkDE="] = d.current;
+  d["vqCFCDnKYgXhYrRYJrWtfekkxro="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_500.part.js.map

@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Probl\xe9m s p\u0159ekladem";
     },
-    get$niceJob() {
-      return "Dobr\xe1 pr\xe1ce!";
-    },
     get$askToJoin() {
       return "Po\u017e\xe1dat o p\u0159ipojen\xed";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Nebyly nalezeny \u017e\xe1dn\xe9 chaty nebo kurzy s t\xedmto k\xf3dem. Zkuste to pros\xedm znovu.";
     },
-    get$numCompletedActivities() {
-      return "Po\u010det dokon\u010den\xfdch aktivit";
-    },
     viewingAnalytics$2(visible, users) {
       return "Prohl\xed\u017een\xed analytiky " + visible + "/" + users;
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "\u010cek\xe1m na ostatn\xed, a\u017e dokon\u010d\xed...";
     },
-    get$saveToCompletedActivities() {
-      return "Ulo\u017eit do dokon\u010den\xfdch aktivit";
-    },
     get$generatingSummary() {
       return "Analyzuji chat a generuji v\xfdsledky";
-    },
-    get$activityCompletedDesc() {
-      return "Va\u0161e dokon\u010den\xe1 aktivita byla p\u0159id\xe1na do analytiky, kde si m\u016f\u017eete prohl\xe9dnout a procvi\u010dit pou\u017eit\xfd jazyk.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " hled\xe1 u\u017eivatele, kte\u0159\xed se p\u0159ipoj\xed ke sch\u016fzce v " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Kdy\u017e dokon\u010d\xedte tuto aktivitu, klikn\u011bte n\xed\u017ee";
     },
-    get$activityAnalyticsListBody() {
-      return "Toto jsou va\u0161e dokon\u010den\xe9 aktivity! Po dokon\u010den\xed aktivit je zde m\u016f\u017eete zobrazit.";
-    },
     get$languageMismatchTitle() {
       return "Neshoda jazyka";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Zde se objev\xed slov\xed\u010dka, jakmile je vylep\u0161\xedte na vy\u0161\u0161\xed \xfarove\u0148!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5eTRg20ytxtjiDlK+SMNPJqiV9k="] = d.current;
+  d["7ers+j5U24rR7B0OUIUoTl7v8QY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_210.part.js.map

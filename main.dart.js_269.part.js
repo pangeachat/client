@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Overs\xe6ttelsesproblem";
     },
-    get$niceJob() {
-      return "Godt klaret!";
-    },
     get$askToJoin() {
       return "Anmod om at deltage";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Ingen chat eller kursus fundet med den kode. Pr\xf8v igen.";
     },
-    get$numCompletedActivities() {
-      return "Antal gennemf\xf8rte aktiviteter";
-    },
     viewingAnalytics$2(visible, users) {
       return "Viser " + visible + "/" + users + " analytics";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Venter p\xe5, at de andre bliver f\xe6rdige...";
     },
-    get$saveToCompletedActivities() {
-      return "Gem til fuldf\xf8rte aktiviteter";
-    },
     get$generatingSummary() {
       return "Analyserer chat og genererer resultater";
-    },
-    get$activityCompletedDesc() {
-      return "Din fuldf\xf8rte aktivitet blev tilf\xf8jet til analyser, hvor du kan gennemg\xe5 og \xf8ve det sprog, du brugte.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " leder efter brugere til at deltage i aktivitetssessionen i " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "N\xe5r du er f\xe6rdig med denne aktivitet, klik nedenfor";
     },
-    get$activityAnalyticsListBody() {
-      return "Disse er dine gennemf\xf8rte aktiviteter! Efter at have afsluttet aktiviteter, kan du se dem her.";
-    },
     get$languageMismatchTitle() {
       return "Sprogfejl";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Her vil ordforr\xe5dsord blive placeret, n\xe5r du har opgraderet dem!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["AoZ1yCvFKfFXsP7w8EdiLot78+U="] = d.current;
+  d["4dLB2ezohTbEiIvq58CVRt2gudY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_269.part.js.map

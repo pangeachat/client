@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Translation problem";
     },
-    get$niceJob() {
-      return "Nice job!";
-    },
     get$askToJoin() {
       return "Ask to join";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "No chat or course found with that code. Please try again.";
     },
-    get$numCompletedActivities() {
-      return "Number of completed activities";
-    },
     viewingAnalytics$2(visible, users) {
       return "Viewing " + visible + "/" + users + " Analytics";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Waiting for the rest to finish up...";
     },
-    get$saveToCompletedActivities() {
-      return "Save to completed activities";
-    },
     get$generatingSummary() {
       return "Analyzing chat and generating results";
-    },
-    get$activityCompletedDesc() {
-      return "Your completed activity was added to analytics where you can review and practice the language you used.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " is looking for users to join the activity session in " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "When you\u2019re done with this activity, click below";
     },
-    get$activityAnalyticsListBody() {
-      return "These are your completed activities! After finishing activities, you can view them here.";
-    },
     get$languageMismatchTitle() {
       return "Language mismatch";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "This is where vocab words will go once you\u2019ve leveled them up!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["syMiQnKcb8XQD70mUDFoo0wlQdc="] = d.current;
+  d["eRT7LuIIRsuXO5AZDUkPJ1endvk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_369.part.js.map

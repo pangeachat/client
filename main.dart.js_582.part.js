@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Ford\xedt\xe1si probl\xe9ma";
     },
-    get$niceJob() {
-      return "Sz\xe9p munka!";
-    },
     get$askToJoin() {
       return "K\xe9rj csatlakoz\xe1st";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Nem tal\xe1lhat\xf3 cseveg\xe9s vagy kurzus ezzel a k\xf3ddal. K\xe9rj\xfck, pr\xf3b\xe1lja \xfajra.";
     },
-    get$numCompletedActivities() {
-      return "Befejezett tev\xe9kenys\xe9gek sz\xe1ma";
-    },
     viewingAnalytics$2(visible, users) {
       return "" + visible + "/" + users + " elemz\xe9st n\xe9z";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "V\xe1rakoz\xe1s a t\xf6bbiek befejez\xe9s\xe9re...";
     },
-    get$saveToCompletedActivities() {
-      return "Ment\xe9s befejezett tev\xe9kenys\xe9gekhez";
-    },
     get$generatingSummary() {
       return "Chat elemz\xe9se \xe9s eredm\xe9nyek gener\xe1l\xe1sa";
-    },
-    get$activityCompletedDesc() {
-      return "A befejezett tev\xe9kenys\xe9ged hozz\xe1ad\xe1sra ker\xfclt az analitik\xe1hoz, ahol \xe1ttekintheted \xe9s gyakorolhatod a haszn\xe1lt nyelvet.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " keres felhaszn\xe1l\xf3kat a " + room + " szob\xe1ban a tev\xe9kenys\xe9ghez";
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Amikor befejezed ezt az aktivit\xe1st, kattints az al\xe1bbi gombra";
     },
-    get$activityAnalyticsListBody() {
-      return "Ezek a befejezett tev\xe9kenys\xe9geid! A tev\xe9kenys\xe9gek befejez\xe9se ut\xe1n itt megtekintheted \u0151ket.";
-    },
     get$languageMismatchTitle() {
       return "Nyelvi elt\xe9r\xe9s";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Itt jelennek meg a sz\xf3kincs szavai, amint szintet l\xe9pnek!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["qbN8lNtR797kYu1y0qQhLOqrsWw="] = d.current;
+  d["cg14rJxxXeeK3z8JLOm3GOIlEN8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_582.part.js.map

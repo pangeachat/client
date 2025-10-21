@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problem s prijevodom";
     },
-    get$niceJob() {
-      return "Dobar posao!";
-    },
     get$askToJoin() {
       return "Zatra\u017ei pridru\u017eivanje";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Nije prona\u0111en razgovor ili te\u010daj s tim kodom. Molimo poku\u0161ajte ponovno.";
     },
-    get$numCompletedActivities() {
-      return "Broj dovr\u0161enih aktivnosti";
-    },
     viewingAnalytics$2(visible, users) {
       return "Prikaz " + visible + "/" + users + " analitike";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "\u010cekam da ostali zavr\u0161e...";
     },
-    get$saveToCompletedActivities() {
-      return "Spremi u dovr\u0161ene aktivnosti";
-    },
     get$generatingSummary() {
       return "Analiziranje chata i generiranje rezultata";
-    },
-    get$activityCompletedDesc() {
-      return "Va\u0161a dovr\u0161ena aktivnost dodana je u analitiku gdje mo\u017eete pregledati i vje\u017ebati jezik koji ste koristili.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " tra\u017ei korisnike za pridru\u017eivanje sesiji aktivnosti u " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Kad zavr\u0161ite s ovom aktivno\u0161\u0107u, kliknite ispod";
     },
-    get$activityAnalyticsListBody() {
-      return "Ovo su va\u0161e dovr\u0161ene aktivnosti! Nakon zavr\u0161etka aktivnosti, mo\u017eete ih pogledati ovdje.";
-    },
     get$languageMismatchTitle() {
       return "Neuskla\u0111enost jezika";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Ovdje \u0107e i\u0107i rije\u010di vokabulara nakon \u0161to ih podignete na vi\u0161u razinu!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MMbUJUN9h1x2ci4uUcBopkeFDDQ="] = d.current;
+  d["ODYFVjXUitU6j5nNlCUnqfJPg4k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_554.part.js.map

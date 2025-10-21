@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problem di traduzi\xf4n";
     },
-    get$niceJob() {
-      return "Bene fat!";
-    },
     get$askToJoin() {
       return "Doman\xe2 di zont\xe2";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Nulle chat o curso trovate con iste codice. Per favor, tenta ancora.";
     },
-    get$numCompletedActivities() {
-      return "Numeru de activitates completate";
-    },
     viewingAnalytics$2(visible, users) {
       return "Vider " + visible + "/" + users + " Analytic";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Spetant que los otros terminen...";
     },
-    get$saveToCompletedActivities() {
-      return "Salvar a activit\xe2ts completades";
-    },
     get$generatingSummary() {
       return "Analizando le chat e generant result\xe2ts";
-    },
-    get$activityCompletedDesc() {
-      return "Vostra activit\xe2t completade es stada zontada a analytics, onde tu podes revistar e practicar la lingua que tu usat.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " es cercant usat\xf4rs pro jontar a la session de activit\xe2t in " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Quan tu ha fin\xec cun questa activitate, clicca ciutta";
     },
-    get$activityAnalyticsListBody() {
-      return "Quisti es tuas activit\xe2ts completez! Dopo che tu ha fin\xec le, tu peux veder los ca in qua.";
-    },
     get$languageMismatchTitle() {
       return "Discrepanza de lingue";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Chest \xe8 il loc dove i par\xf4ls di vocabulari a saran miss in plance une volte che tu o i \xe0s nivell\xe2ts!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q9XrUuBVK9ekzs6y+5rxgTZszsg="] = d.current;
+  d["10OkSHJ5+458YoPV3iNrLxJxJPk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_610.part.js.map

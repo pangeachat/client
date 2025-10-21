@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problema sa pagsasalin";
     },
-    get$niceJob() {
-      return "Magandang trabaho!";
-    },
     get$askToJoin() {
       return "Humingi ng paglahok";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Walang chat o kurso na nahanap gamit ang code na iyon. Pakisubukan muli.";
     },
-    get$numCompletedActivities() {
-      return "Bilang ng natapos na mga aktibidad";
-    },
     viewingAnalytics$2(visible, users) {
       return "Tinitingnan ang " + visible + "/" + users + " na Analytics";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Naghihintay na matapos ang iba...";
     },
-    get$saveToCompletedActivities() {
-      return "I-save sa mga natapos nang aktibidad";
-    },
     get$generatingSummary() {
       return "Sinusuri ang chat at bumubuo ng mga resulta";
-    },
-    get$activityCompletedDesc() {
-      return "Ang iyong natapos na aktibidad ay idinagdag sa analytics kung saan maaari mong suriin at pagpraktisan ang wikang ginamit mo.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " ay naghahanap ng mga user na sumali sa sesyon ng aktibidad sa " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Kapag tapos ka na sa aktibidad na ito, i-click sa ibaba";
     },
-    get$activityAnalyticsListBody() {
-      return "Ito ang iyong mga natapos na aktibidad! Pagkatapos makumpleto ang mga aktibidad, makikita mo ang mga ito dito.";
-    },
     get$languageMismatchTitle() {
       return "Hindi tugma ang wika";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Dito mapupunta ang mga salita sa bokabularyo kapag na-level up mo na sila!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["14Lvu6p3u647PZd7TYQwySt3zXY="] = d.current;
+  d["K9qRNSJioYrB18D7ET/4ElnhjHA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_522.part.js.map

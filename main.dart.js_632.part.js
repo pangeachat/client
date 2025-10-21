@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Oversettelsesproblem";
     },
-    get$niceJob() {
-      return "Bra jobbet!";
-    },
     get$askToJoin() {
       return "Sp\xf8r om \xe5 bli med";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Ingen chat eller kurs funnet med den koden. Vennligst pr\xf8v igjen.";
     },
-    get$numCompletedActivities() {
-      return "Antall fullf\xf8rte aktiviteter";
-    },
     viewingAnalytics$2(visible, users) {
       return "Viser " + visible + "/" + users + " analyser";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Venter p\xe5 at de andre skal bli ferdige...";
     },
-    get$saveToCompletedActivities() {
-      return "Lagre til fullf\xf8rte aktiviteter";
-    },
     get$generatingSummary() {
       return "Analyserer chat og genererer resultater";
-    },
-    get$activityCompletedDesc() {
-      return "Din fullf\xf8rte aktivitet ble lagt til i analyser hvor du kan se gjennom og \xf8ve p\xe5 spr\xe5ket du brukte.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " ser etter brukere for \xe5 delta i aktivitets\xf8kten i " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "N\xe5r du er ferdig med denne aktiviteten, klikk nedenfor";
     },
-    get$activityAnalyticsListBody() {
-      return "Dette er dine fullf\xf8rte aktiviteter! Etter \xe5 ha fullf\xf8rt aktiviteter, kan du se dem her.";
-    },
     get$languageMismatchTitle() {
       return "Spr\xe5kavvik";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Dette er hvor vokabularord vil komme n\xe5r du har niv\xe5ert dem opp!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FwUuSHitIaYNAxRHB5wl4DOZLQw="] = d.current;
+  d["5AfY26cVAjhaX6qOsc3T6ZKexfw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_632.part.js.map

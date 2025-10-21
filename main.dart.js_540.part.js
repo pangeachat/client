@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Fadhb aistri\xfach\xe1in";
     },
-    get$niceJob() {
-      return "Obair den scoth!";
-    },
     get$askToJoin() {
       return "Iarr le bheith p\xe1irteach";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "N\xedor aims\xedodh comhr\xe1 n\xf3 c\xfarsa leis an gc\xf3d sin. D\xe9an iarracht ar\xeds le do thoil.";
     },
-    get$numCompletedActivities() {
-      return "L\xedon na ngn\xedomha\xedochta\xed cr\xedochnaithe";
-    },
     viewingAnalytics$2(visible, users) {
       return "Ag f\xe9achaint ar " + visible + "/" + users + " Anail\xeds\xed";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Ag fanacht ar na daoine eile chun cr\xedochn\xfa...";
     },
-    get$saveToCompletedActivities() {
-      return "S\xe1bh\xe1il chuig gn\xedomha\xedochta\xed cr\xedochnaithe";
-    },
     get$generatingSummary() {
       return "Ag anail\xedsi\xfa comhr\xe1 agus tortha\xed a ghini\xfaint";
-    },
-    get$activityCompletedDesc() {
-      return "Cuireadh do ghn\xedomha\xedocht chr\xedochnaithe chuig anail\xeds\xed, \xe1it ar f\xe9idir leat athbhreithni\xfa a dh\xe9anamh agus cleachtadh a dh\xe9anamh ar an teanga a \xfas\xe1ideadh.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " ag lorg \xfas\xe1ideoir\xed chun rannph\xe1irt\xedocht sa seisi\xfan gn\xedomha\xedochta i " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Nuair a bheidh t\xfa cr\xedochnaithe leis an ngn\xedomha\xedocht seo, clice\xe1il th\xedos";
     },
-    get$activityAnalyticsListBody() {
-      return "Seo iad do ghn\xedomha\xedochta\xed cr\xedochnaithe! Tar \xe9is duit na gn\xedomha\xedochta\xed a chr\xedochn\xfa, is f\xe9idir leat iad a fheice\xe1il anseo.";
-    },
     get$languageMismatchTitle() {
       return "M\xedchothrom na teangacha";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Seo \xe1it a dt\xe9ann focail fhocail a bhfuil leibh\xe9al acu nuair a dh\xe9antar iad a leibh\xe9al\xfa!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XkyIJjR0Tp0tmf764nvaV4jNB/0="] = d.current;
+  d["k7M3kaHUxqdhw/5e8viJ5mOONvg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_540.part.js.map

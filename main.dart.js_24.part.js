@@ -3895,9 +3895,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problema de tradu\xe7\xe3o";
     },
-    get$niceJob() {
-      return "Bom trabalho!";
-    },
     get$askToJoin() {
       return "Solicitar para participar";
     },
@@ -4162,9 +4159,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return string$.Nenhumh;
     },
-    get$numCompletedActivities() {
-      return "N\xfamero de atividades conclu\xeddas";
-    },
     viewingAnalytics$2(visible, users) {
       return "Visualizando " + visible + "/" + users + " An\xe1lises";
     },
@@ -4321,14 +4315,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Aguardando os demais terminarem...";
     },
-    get$saveToCompletedActivities() {
-      return "Salvar em atividades conclu\xeddas";
-    },
     get$generatingSummary() {
       return "Analisando o chat e gerando resultados";
-    },
-    get$activityCompletedDesc() {
-      return "Sua atividade conclu\xedda foi adicionada \xe0 an\xe1lise onde voc\xea pode revisar e praticar o idioma que usou.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + string$.x20est__ + room;
@@ -4510,9 +4498,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return string$.Quandot;
     },
-    get$activityAnalyticsListBody() {
-      return string$.Estas_;
-    },
     get$languageMismatchTitle() {
       return "Incompatibilidade de idioma";
     },
@@ -4566,6 +4551,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$vocabLevelsDesc() {
       return string$.xc9_aqui;
+    },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -8439,9 +8436,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problema de tradu\xe7\xe3o";
     },
-    get$niceJob() {
-      return "Bom trabalho!";
-    },
     get$askToJoin() {
       return "Solicitar entrada";
     },
@@ -8706,9 +8700,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return string$.Nenhumh;
     },
-    get$numCompletedActivities() {
-      return "N\xfamero de atividades conclu\xeddas";
-    },
     viewingAnalytics$2(visible, users) {
       return "Visualizando " + visible + "/" + users + " An\xe1lises";
     },
@@ -8865,14 +8856,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Aguardando os demais terminarem...";
     },
-    get$saveToCompletedActivities() {
-      return "Salvar em atividades conclu\xeddas";
-    },
     get$generatingSummary() {
       return "Analisando o chat e gerando resultados";
-    },
-    get$activityCompletedDesc() {
-      return "Sua atividade conclu\xedda foi adicionada \xe0 an\xe1lise, onde voc\xea pode revisar e praticar o idioma que usou.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + string$.x20est__ + room;
@@ -9053,9 +9038,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$activityDropdownDesc() {
       return string$.Quandot;
-    },
-    get$activityAnalyticsListBody() {
-      return string$.Estas_;
     },
     get$languageMismatchTitle() {
       return "Incompatibilidade de idioma";
@@ -12980,9 +12962,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problema de tradu\xe7\xe3o";
     },
-    get$niceJob() {
-      return "Bom trabalho!";
-    },
     get$askToJoin() {
       return "Pedir para participar";
     },
@@ -13247,9 +13226,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return string$.Nenhumh;
     },
-    get$numCompletedActivities() {
-      return "N\xfamero de atividades conclu\xeddas";
-    },
     viewingAnalytics$2(visible, users) {
       return "Visualizando " + visible + "/" + users + " An\xe1lises";
     },
@@ -13406,14 +13382,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Aguardando os restantes terminarem...";
     },
-    get$saveToCompletedActivities() {
-      return "Salvar em atividades conclu\xeddas";
-    },
     get$generatingSummary() {
       return "Analisando o chat e gerando resultados";
-    },
-    get$activityCompletedDesc() {
-      return "A sua atividade conclu\xedda foi adicionada \xe0 an\xe1lise onde pode rever e praticar a l\xedngua que utilizou.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " est\xe1 a procurar utilizadores para participar na sess\xe3o de atividade em " + room;
@@ -13595,9 +13565,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return string$.Quandot;
     },
-    get$activityAnalyticsListBody() {
-      return "Estas s\xe3o as suas atividades conclu\xeddas! Ap\xf3s terminar as atividades, pode visualiz\xe1-las aqui.";
-    },
     get$languageMismatchTitle() {
       return "Incompatibilidade de idioma";
     },
@@ -13726,7 +13693,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Esta_f: "Esta ferramenta de aprendizado de idiomas identificar\xe1 palavras no seu idioma base e ajudar\xe1 voc\xea a traduzi-las para o seu idioma de destino. Embora raro, a IA pode cometer erros de tradu\xe7\xe3o.",
     Esta_m: "Esta mensagem \xe9 grande demais para enviar",
     Estamo: "Estamos investigando! Por favor, recarregue e tente novamente.",
-    Estas_: "Estas s\xe3o suas atividades conclu\xeddas! Ap\xf3s terminar as atividades, voc\xea pode visualiz\xe1-las aqui.",
     Exclui: "Excluir sua conta n\xe3o cancelar\xe1 automaticamente sua assinatura.",
     Executs: "Executar assist\xeancia de escrita Pangea automaticamente",
     Executu: "Executar automaticamente a assist\xeancia de escrita de gram\xe1tica e tradu\xe7\xe3o do Pangea Chat antes de enviar minha mensagem.",
@@ -13828,7 +13794,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["5UxR2iYjOh3RTrs67b5CXNagfuk="] = d.current;
+  d["kSAzO0suAC4hONA4aE5DMupqv9s="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map

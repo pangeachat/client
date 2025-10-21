@@ -3884,9 +3884,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problema de traducci\xf3";
     },
-    get$niceJob() {
-      return "Bona feina!";
-    },
     get$askToJoin() {
       return "Prega per unir-te";
     },
@@ -4151,9 +4148,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "No s'ha trobat cap xat o curs amb aquest codi. Torna-ho a provar.";
     },
-    get$numCompletedActivities() {
-      return "Nombre d'activitats completades";
-    },
     viewingAnalytics$2(visible, users) {
       return "Visualitzant " + visible + "/" + users + " d'Analytics";
     },
@@ -4310,14 +4304,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Esperant que la resta acabi...";
     },
-    get$saveToCompletedActivities() {
-      return "Desa a activitats completades";
-    },
     get$generatingSummary() {
       return "Analitzant el xat i generant resultats";
-    },
-    get$activityCompletedDesc() {
-      return "La teva activitat completada s'ha afegit a l'anal\xedtica on pots revisar i practicar l'idioma que has utilitzat.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " busca usuaris per unir-se a la sessi\xf3 d'activitat a " + room;
@@ -4499,9 +4487,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Quan hagis acabat amb aquesta activitat, fes clic a sota";
     },
-    get$activityAnalyticsListBody() {
-      return "Aquests s\xf3n les teves activitats completes! Despr\xe9s de completar-les, pots veure-les aqu\xed.";
-    },
     get$languageMismatchTitle() {
       return "Desajust de llengua";
     },
@@ -4556,6 +4541,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Aqu\xed \xe9s on aniran les paraules de vocabulari un cop les hagis pujat de nivell!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4572,7 +4569,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mlmUVLa4Gz4t2+ZakJmsT5MJm0U="] = d.current;
+  d["+CLuzqm9Ch8/WVy0YxtboZW7+34="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_154.part.js.map

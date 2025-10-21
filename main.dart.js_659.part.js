@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "\u041f\u0440\u043e\u0431\u043b\u0435\u043c \u0441\u0430 \u043f\u0440\u0435\u0432\u043e\u0434\u043e\u043c";
     },
-    get$niceJob() {
-      return "\u0414\u043e\u0431\u0440\u043e \u0443\u0440\u0430\u0452\u0435\u043d\u043e!";
-    },
     get$askToJoin() {
       return "\u041f\u0438\u0442\u0430\u0458 \u0434\u0430 \u0441\u0435 \u043f\u0440\u0438\u0434\u0440\u0443\u0436\u0438\u0448";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Nije prona\u0111en ni razgovor ni kurs sa tim kodom. Molimo poku\u0161ajte ponovo.";
     },
-    get$numCompletedActivities() {
-      return "Broj zavr\u0161enih aktivnosti";
-    },
     viewingAnalytics$2(visible, users) {
       return "Pregled " + visible + "/" + users + " analitike";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "\u0427\u0435\u043a\u0430\u043c\u043e \u0434\u0430 \u043e\u0441\u0442\u0430\u043b\u0438 \u0437\u0430\u0432\u0440\u0448\u0435...";
     },
-    get$saveToCompletedActivities() {
-      return "\u0421\u0430\u0447\u0443\u0432\u0430\u0458 \u0443 \u0437\u0430\u0432\u0440\u0448\u0435\u043d\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438";
-    },
     get$generatingSummary() {
       return "\u0410\u043d\u0430\u043b\u0438\u0437\u0438\u0440\u0430\u045a\u0435 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0430 \u0438 \u0433\u0435\u043d\u0435\u0440\u0438\u0441\u0430\u045a\u0435 \u0440\u0435\u0437\u0443\u043b\u0442\u0430\u0442\u0430";
-    },
-    get$activityCompletedDesc() {
-      return "Va\u0161a zavr\u0161ena aktivnost je dodata u analitiku gde mo\u017eete pregledati i ve\u017ebati jezik koji ste koristili.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " tra\u017ei korisnike da se pridru\u017ee sesiji aktivnosti u " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "\u041a\u0430\u0434\u0430 \u0437\u0430\u0432\u0440\u0448\u0438\u0442\u0435 \u043e\u0432\u0443 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442, \u043a\u043b\u0438\u043a\u043d\u0438\u0442\u0435 \u0438\u0441\u043f\u043e\u0434";
     },
-    get$activityAnalyticsListBody() {
-      return "\u041e\u0432\u043e \u0441\u0443 \u0432\u0430\u0448\u0435 \u0437\u0430\u0432\u0440\u0448\u0435\u043d\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438! \u041d\u0430\u043a\u043e\u043d \u0448\u0442\u043e \u0437\u0430\u0432\u0440\u0448\u0438\u0442\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438, \u043c\u043e\u0436\u0435\u0442\u0435 \u0438\u0445 \u043f\u0440\u0435\u0433\u043b\u0435\u0434\u0430\u0442\u0438 \u043e\u0432\u0434\u0435.";
-    },
     get$languageMismatchTitle() {
       return "\u041d\u0435\u0441\u043b\u0430\u0433\u0430\u045a\u0435 \u0458\u0435\u0437\u0438\u043a\u0430";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Ovde \u0107e i\u0107i re\u010di vokabulara nakon \u0161to ih podignete na vi\u0161i nivo!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["T0z9up+Ghi7esCyAIH6bgDW68OU="] = d.current;
+  d["f7cwYch774oqKasACY26SYS+Xjw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_659.part.js.map

@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "V\u1ea5n \u0111\u1ec1 d\u1ecbch thu\u1eadt";
     },
-    get$niceJob() {
-      return "L\xe0m t\u1ed1t l\u1eafm!";
-    },
     get$askToJoin() {
       return "Y\xeau c\u1ea7u tham gia";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Kh\xf4ng t\xecm th\u1ea5y tr\xf2 chuy\u1ec7n ho\u1eb7c kh\xf4ng gian n\xe0o v\u1edbi m\xe3 \u0111\xf3. Vui l\xf2ng th\u1eed l\u1ea1i.";
     },
-    get$numCompletedActivities() {
-      return "S\u1ed1 ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 ho\xe0n th\xe0nh";
-    },
     viewingAnalytics$2(visible, users) {
       return "\u0110ang xem " + visible + "/" + users + " Th\u1ed1ng k\xea";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "\u0110ang ch\u1edd nh\u1eefng ng\u01b0\u1eddi kh\xe1c ho\xe0n th\xe0nh...";
     },
-    get$saveToCompletedActivities() {
-      return "L\u01b0u v\xe0o ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 ho\xe0n th\xe0nh";
-    },
     get$generatingSummary() {
       return "Ph\xe2n t\xedch cu\u1ed9c tr\xf2 chuy\u1ec7n v\xe0 t\u1ea1o k\u1ebft qu\u1ea3";
-    },
-    get$activityCompletedDesc() {
-      return "Ho\u1ea1t \u0111\u1ed9ng \u0111\xe3 ho\xe0n th\xe0nh c\u1ee7a b\u1ea1n \u0111\xe3 \u0111\u01b0\u1ee3c th\xeam v\xe0o ph\xe2n t\xedch \u0111\u1ec3 b\u1ea1n c\xf3 th\u1ec3 xem l\u1ea1i v\xe0 luy\u1ec7n t\u1eadp ng\xf4n ng\u1eef \u0111\xe3 s\u1eed d\u1ee5ng.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " \u0111ang t\xecm ki\u1ebfm ng\u01b0\u1eddi d\xf9ng \u0111\u1ec3 tham gia phi\xean ho\u1ea1t \u0111\u1ed9ng trong " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Khi b\u1ea1n ho\xe0n th\xe0nh ho\u1ea1t \u0111\u1ed9ng n\xe0y, nh\u1ea5n v\xe0o b\xean d\u01b0\u1edbi";
     },
-    get$activityAnalyticsListBody() {
-      return "\u0110\xe2y l\xe0 c\xe1c ho\u1ea1t \u0111\u1ed9ng b\u1ea1n \u0111\xe3 ho\xe0n th\xe0nh! Sau khi ho\xe0n th\xe0nh c\xe1c ho\u1ea1t \u0111\u1ed9ng, b\u1ea1n c\xf3 th\u1ec3 xem ch\xfang t\u1ea1i \u0111\xe2y.";
-    },
     get$languageMismatchTitle() {
       return "Kh\xf4ng kh\u1edbp ng\xf4n ng\u1eef";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "\u0110\xe2y l\xe0 n\u01a1i c\xe1c t\u1eeb v\u1ef1ng s\u1ebd xu\u1ea5t hi\u1ec7n sau khi b\u1ea1n n\xe2ng c\u1ea5p ch\xfang!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BAbPoeTuzRRzWQoCAwSEY5k+C9w="] = d.current;
+  d["2Wtnre1/ymiqcypFNdqwNpwTgUs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_668.part.js.map

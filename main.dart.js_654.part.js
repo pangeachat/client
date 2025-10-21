@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Probl\xe9m s prekladom";
     },
-    get$niceJob() {
-      return "Dobr\xe1 pr\xe1ca!";
-    },
     get$askToJoin() {
       return "Po\u017eiada\u0165 o pripojenie";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Nena\u0161iel sa \u017eiadny chat alebo kurz s t\xfdmto k\xf3dom. Sk\xfaste to znova.";
     },
-    get$numCompletedActivities() {
-      return "Po\u010det dokon\u010den\xfdch aktiv\xedt";
-    },
     viewingAnalytics$2(visible, users) {
       return "Zobrazenie analytiky " + visible + "/" + users;
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "\u010cak\xe1me na ostatn\xfdch, aby dokon\u010dili...";
     },
-    get$saveToCompletedActivities() {
-      return "Ulo\u017ei\u0165 do dokon\u010den\xfdch aktiv\xedt";
-    },
     get$generatingSummary() {
       return "Analyzujeme chat a generujeme v\xfdsledky";
-    },
-    get$activityCompletedDesc() {
-      return "Va\u0161a dokon\u010den\xe1 aktivita bola pridan\xe1 do analytiky, kde si m\xf4\u017eete prezrie\u0165 a precvi\u010di\u0165 jazyk, ktor\xfd ste pou\u017eili.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " h\u013ead\xe1 pou\u017e\xedvate\u013eov na pripojenie k rel\xe1cii aktivity v " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Ke\u010f dokon\u010d\xedte t\xfato aktivitu, kliknite ni\u017e\u0161ie";
     },
-    get$activityAnalyticsListBody() {
-      return "Toto s\xfa va\u0161e dokon\u010den\xe9 aktivity! Po dokon\u010den\xed aktiv\xedt si ich m\xf4\u017eete pozrie\u0165 tu.";
-    },
     get$languageMismatchTitle() {
       return "Nes\xfalad jazyka";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Sem p\xf4jdu slov\xed\u010dka, ke\u010f ich vylep\u0161\xedte na vy\u0161\u0161iu \xfarove\u0148!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["c+uAGqM1uI/XvvlBDVYToLX0OhA="] = d.current;
+  d["T3h6VN5Q1ALMdPvhOtJUAwZG2LU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_654.part.js.map

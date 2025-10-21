@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Tulko\u0161anas probl\u0113ma";
     },
-    get$niceJob() {
-      return "Laba darba!";
-    },
     get$askToJoin() {
       return "L\u016bgt pievienoties";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Nav atrasta sarakste vai kurss ar \u0161o kodu. L\u016bdzu, m\u0113\u0123iniet v\u0113lreiz.";
     },
-    get$numCompletedActivities() {
-      return "Pabeigto aktivit\u0101\u0161u skaits";
-    },
     viewingAnalytics$2(visible, users) {
       return "Skat\u0101s " + visible + "/" + users + " anal\u012btiku";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Gaid\u0101m, lai p\u0101r\u0113jie pabeigtu...";
     },
-    get$saveToCompletedActivities() {
-      return "Saglab\u0101t pabeigt\u0101s aktivit\u0101tes";
-    },
     get$generatingSummary() {
       return "Analiz\u0113 \u010datu un \u0123ener\u0113 rezult\u0101tus";
-    },
-    get$activityCompletedDesc() {
-      return "J\u016bsu pabeigt\u0101 aktivit\u0101te tika pievienota anal\u012btikai, kur j\u016bs varat p\u0101rskat\u012bt un praktiz\u0113t izmantoto valodu.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " mekl\u0113 lietot\u0101jus, lai pievienotos aktivit\u0101tes sesijai " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Kad esat pabeidzis \u0161o aktivit\u0101ti, noklik\u0161\u0137iniet zem\u0101k";
     },
-    get$activityAnalyticsListBody() {
-      return "\u0160\u012bs ir j\u016bsu pabeigt\u0101s aktivit\u0101tes! P\u0113c aktivit\u0101\u0161u pabeig\u0161anas j\u016bs varat t\u0101s apskat\u012bt \u0161eit.";
-    },
     get$languageMismatchTitle() {
       return "Valodu neatbilst\u012bba";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "\u0160eit ietilps v\u0101rdu kr\u0101juma v\u0101rdi, kad j\u016bs tos uzlabosiet l\u012bmen\u012b!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["wiw73zKG/+DJ2hiqPBzhCWPLDYU="] = d.current;
+  d["gffUy8truq+kjlx+3p4tBtWiOB8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_628.part.js.map

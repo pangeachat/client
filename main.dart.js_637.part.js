@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Vertaalprobleem";
     },
-    get$niceJob() {
-      return "Goed gedaan!";
-    },
     get$askToJoin() {
       return "Vraag om lid te worden";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Geen chat of cursus gevonden met die code. Probeer het opnieuw.";
     },
-    get$numCompletedActivities() {
-      return "Aantal voltooide activiteiten";
-    },
     viewingAnalytics$2(visible, users) {
       return "Bekijkt " + visible + "/" + users + " Analytics";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Wachten tot de rest klaar is...";
     },
-    get$saveToCompletedActivities() {
-      return "Opslaan naar voltooide activiteiten";
-    },
     get$generatingSummary() {
       return "Chat analyseren en resultaten genereren";
-    },
-    get$activityCompletedDesc() {
-      return "Je voltooide activiteit is toegevoegd aan analytics waar je de taal die je hebt gebruikt kunt bekijken en oefenen.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " zoekt gebruikers om deel te nemen aan de activiteitensessie in " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Wanneer je klaar bent met deze activiteit, klik hieronder";
     },
-    get$activityAnalyticsListBody() {
-      return "Dit zijn je voltooide activiteiten! Na het voltooien van activiteiten kun je ze hier bekijken.";
-    },
     get$languageMismatchTitle() {
       return "Taal mismatch";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Hier komen de vocabulaire woorden zodra je ze hebt opgewaardeerd!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LhC1xixT/esfNlvnT7WhqTYQZRA="] = d.current;
+  d["Ubi3vt6lrG66t/TnJrLu4SquPIo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_637.part.js.map

@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Probl\xe8me de traduction";
     },
-    get$niceJob() {
-      return "Bon travail !";
-    },
     get$askToJoin() {
       return "Demander \xe0 rejoindre";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Aucune discussion ou cours trouv\xe9 avec ce code. Veuillez r\xe9essayer.";
     },
-    get$numCompletedActivities() {
-      return "Nombre d'activit\xe9s termin\xe9es";
-    },
     viewingAnalytics$2(visible, users) {
       return "Visualisation de " + visible + "/" + users + " Analyses";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "En attente que les autres terminent...";
     },
-    get$saveToCompletedActivities() {
-      return "Enregistrer dans les activit\xe9s termin\xe9es";
-    },
     get$generatingSummary() {
       return "Analyse de la conversation et g\xe9n\xe9ration des r\xe9sultats";
-    },
-    get$activityCompletedDesc() {
-      return "Votre activit\xe9 termin\xe9e a \xe9t\xe9 ajout\xe9e aux analyses o\xf9 vous pouvez revoir et pratiquer la langue utilis\xe9e.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " cherche des utilisateurs pour rejoindre la session d'activit\xe9 dans " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Lorsque vous avez termin\xe9 cette activit\xe9, cliquez ci-dessous";
     },
-    get$activityAnalyticsListBody() {
-      return "Voici vos activit\xe9s termin\xe9es ! Apr\xe8s avoir termin\xe9 les activit\xe9s, vous pouvez les voir ici.";
-    },
     get$languageMismatchTitle() {
       return "Incompatibilit\xe9 de langue";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "C'est ici que les mots de vocabulaire seront plac\xe9s une fois que vous les aurez am\xe9lior\xe9s !";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["D0BA7GhfmhnFVJQMXiv6fIAzd/U="] = d.current;
+  d["4TsykWzryRJQlBGA0jdZl+RORCQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_527.part.js.map

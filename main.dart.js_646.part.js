@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problem\u0103 de traducere";
     },
-    get$niceJob() {
-      return "Bravo!";
-    },
     get$askToJoin() {
       return "Cere s\u0103 te al\u0103turi";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Niciun chat sau curs cu acest cod nu a fost g\u0103sit. V\u0103 rug\u0103m s\u0103 \xeencerca\u021bi din nou.";
     },
-    get$numCompletedActivities() {
-      return "Num\u0103rul activit\u0103\u021bilor finalizate";
-    },
     viewingAnalytics$2(visible, users) {
       return "Vizualizare " + visible + "/" + users + " Analize";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "A\u0219tept ca ceilal\u021bi s\u0103 termine...";
     },
-    get$saveToCompletedActivities() {
-      return "Salveaz\u0103 \xeen activit\u0103\u021bi finalizate";
-    },
     get$generatingSummary() {
       return "Analiz\u0103m chat-ul \u0219i gener\u0103m rezultate";
-    },
-    get$activityCompletedDesc() {
-      return "Activitatea finalizat\u0103 a fost ad\u0103ugat\u0103 la analize, unde po\u021bi revizui \u0219i exersa limba folosit\u0103.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " caut\u0103 utilizatori pentru a se al\u0103tura sesiunii de activitate \xeen " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "C\xe2nd termini aceast\u0103 activitate, f\u0103 clic mai jos";
     },
-    get$activityAnalyticsListBody() {
-      return "Acestea sunt activit\u0103\u021bile tale finalizate! Dup\u0103 ce termini activit\u0103\u021bile, le po\u021bi vizualiza aici.";
-    },
     get$languageMismatchTitle() {
       return "Incompatibilitate de limbaj";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Aici vor fi plasate cuvintele de vocabular odat\u0103 ce le-ai nivelat!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["mJ29lYfMSZagCtRVNL9TkL/0TWI="] = d.current;
+  d["S41W/5rqcx72GHtm94zcWKKSM1c="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_646.part.js.map

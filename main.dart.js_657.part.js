@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Te\u017eava pri prevajanju";
     },
-    get$niceJob() {
-      return "Dober job!";
-    },
     get$askToJoin() {
       return "Prosi za vstop";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Ni najdenega klepeta ali te\u010daja s tem kodo. Poskusite znova.";
     },
-    get$numCompletedActivities() {
-      return "\u0160tevilo zaklju\u010denih dejavnosti";
-    },
     viewingAnalytics$2(visible, users) {
       return "Ogled " + visible + "/" + users + " analitike";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "\u010cakam, da ostali zaklju\u010dijo...";
     },
-    get$saveToCompletedActivities() {
-      return "Shrani v zaklju\u010dene dejavnosti";
-    },
     get$generatingSummary() {
       return "Analiziram klepet in ustvarjam rezultate";
-    },
-    get$activityCompletedDesc() {
-      return "Va\u0161a zaklju\u010dena dejavnost je bila dodana v analitiko, kjer lahko pregledate in vadite jezik, ki ste ga uporabili.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " i\u0161\u010de uporabnike za sodelovanje v aktivnosti v " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Ko kon\u010date s to aktivnostjo, kliknite spodaj";
     },
-    get$activityAnalyticsListBody() {
-      return "To so va\u0161e zaklju\u010dene aktivnosti! Po kon\u010dani aktivnosti jih lahko ogledate tukaj.";
-    },
     get$languageMismatchTitle() {
       return "Neujemanje jezika";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Tukaj bodo \u0161le besede za besednjak, ko jih boste nadgradili!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["RD9wu9qOo5PhJndML8GYDzlKzfU="] = d.current;
+  d["OKGPY2fYefW2Dcw/8aS895oysDI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_657.part.js.map

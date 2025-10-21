@@ -3884,9 +3884,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problem z t\u0142umaczeniem";
     },
-    get$niceJob() {
-      return "Dobra robota!";
-    },
     get$askToJoin() {
       return "Popro\u015b o do\u0142\u0105czenie";
     },
@@ -4151,9 +4148,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Nie znaleziono czatu ani kursu z tym kodem. Spr\xf3buj ponownie.";
     },
-    get$numCompletedActivities() {
-      return "Liczba uko\u0144czonych aktywno\u015bci";
-    },
     viewingAnalytics$2(visible, users) {
       return "Wy\u015bwietlanie " + visible + "/" + users + " Analiz";
     },
@@ -4310,14 +4304,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Czekanie na reszt\u0119 do uko\u0144czenia...";
     },
-    get$saveToCompletedActivities() {
-      return "Zapisz do uko\u0144czonych aktywno\u015bci";
-    },
     get$generatingSummary() {
       return "Analiza czatu i generowanie wynik\xf3w";
-    },
-    get$activityCompletedDesc() {
-      return "Twoja uko\u0144czona aktywno\u015b\u0107 zosta\u0142a dodana do analityki, gdzie mo\u017cesz przejrze\u0107 i \u0107wiczy\u0107 u\u017cywany j\u0119zyk.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " szuka u\u017cytkownik\xf3w do do\u0142\u0105czenia do sesji aktywno\u015bci w " + room;
@@ -4499,9 +4487,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Gdy sko\u0144czysz z t\u0105 aktywno\u015bci\u0105, kliknij poni\u017cej";
     },
-    get$activityAnalyticsListBody() {
-      return "To s\u0105 Twoje uko\u0144czone aktywno\u015bci! Po zako\u0144czeniu aktywno\u015bci mo\u017cesz je tutaj zobaczy\u0107.";
-    },
     get$languageMismatchTitle() {
       return "Niezgodno\u015b\u0107 j\u0119zyk\xf3w";
     },
@@ -4556,6 +4541,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "To tutaj pojawi\u0105 si\u0119 s\u0142owa s\u0142ownictwa, gdy je podniesiesz na wy\u017cszy poziom!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4569,7 +4566,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7DLEmp5DaUUXoKeYUdGu0Q6pb/k="] = d.current;
+  d["D+RIj3XcCiJf0Qa0kA8qrRxw88M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_640.part.js.map

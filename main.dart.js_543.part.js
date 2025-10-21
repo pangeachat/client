@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problema de traduci\xf3n";
     },
-    get$niceJob() {
-      return "Bo traballo!";
-    },
     get$askToJoin() {
       return "Pide unirte";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Non se atopou ning\xfan chat ou curso con ese c\xf3digo. Por favor, int\xe9nteo de novo.";
     },
-    get$numCompletedActivities() {
-      return "N\xfamero de actividades completadas";
-    },
     viewingAnalytics$2(visible, users) {
       return "Vendo " + visible + "/" + users + " An\xe1lise";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Agardando que o resto remate...";
     },
-    get$saveToCompletedActivities() {
-      return "Gardar nas actividades completadas";
-    },
     get$generatingSummary() {
       return "Analizando o chat e xerando resultados";
-    },
-    get$activityCompletedDesc() {
-      return "A t\xfaa actividade completada engadiuse \xe1s an\xe1lises onde podes revisar e practicar a lingua que usaches.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " est\xe1 a buscar usuarios para unirse \xe1 sesi\xf3n de actividade en " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Cando remates con esta actividade, clica abaixo";
     },
-    get$activityAnalyticsListBody() {
-      return "Estes son as t\xfaas actividades rematadas! Despois de rematar as actividades, podes velas aqu\xed.";
-    },
     get$languageMismatchTitle() {
       return "Incompatibilidade de idioma";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Aqu\xed \xe9 onde as palabras de vocabulario ir\xe1n unha vez que as mellores de nivel!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["cJ2n96LPePfmXzfWUVMw7YBgCkM="] = d.current;
+  d["YMlkhPcZCehz1XoGcUIO/bnHQx0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_543.part.js.map

@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "\u05d1\u05e2\u05d9\u05d4 \u05d1\u05ea\u05e8\u05d2\u05d5\u05dd";
     },
-    get$niceJob() {
-      return "\u05e2\u05d1\u05d5\u05d3\u05d4 \u05d9\u05e4\u05d4!";
-    },
     get$askToJoin() {
       return "\u05d1\u05e7\u05e9 \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "\u05dc\u05d0 \u05e0\u05de\u05e6\u05d0 \u05e9\u05d9\u05d7\u05d4 \u05d0\u05d5 \u05e7\u05d5\u05e8\u05e1 \u05e2\u05dd \u05e7\u05d5\u05d3 \u05d6\u05d4. \u05d0\u05e0\u05d0 \u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1.";
     },
-    get$numCompletedActivities() {
-      return "\u05de\u05e1\u05e4\u05e8 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05d4\u05d5\u05e9\u05dc\u05de\u05d5";
-    },
     viewingAnalytics$2(visible, users) {
       return "\u05e6\u05e4\u05d9\u05d9\u05d4 \u05d1-" + visible + "/" + users + " \u05e0\u05d9\u05ea\u05d5\u05d7\u05d9\u05dd";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "\u05de\u05d7\u05db\u05d4 \u05dc\u05e9\u05d0\u05e8 \u05dc\u05e1\u05d9\u05d9\u05dd...";
     },
-    get$saveToCompletedActivities() {
-      return "\u05e9\u05de\u05d5\u05e8 \u05dc\u05e4\u05e2\u05d9\u05dc\u05d5\u05d9\u05d5\u05ea \u05e9\u05d4\u05d5\u05e9\u05dc\u05de\u05d5";
-    },
     get$generatingSummary() {
       return "\u05d0\u05e0\u05dc\u05d9\u05d6\u05ea \u05e9\u05d9\u05d7\u05d4 \u05d5\u05d9\u05e6\u05d9\u05e8\u05ea \u05ea\u05d5\u05e6\u05d0\u05d5\u05ea";
-    },
-    get$activityCompletedDesc() {
-      return "\u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05e9\u05d4\u05e9\u05dc\u05de\u05ea \u05d4\u05d5\u05e1\u05e4\u05d4 \u05dc\u05e0\u05d9\u05ea\u05d5\u05d7\u05d9\u05dd \u05e9\u05d1\u05d4 \u05ea\u05d5\u05db\u05dc \u05dc\u05e1\u05e7\u05d5\u05e8 \u05d5\u05dc\u05ea\u05e8\u05d2\u05dc \u05d0\u05ea \u05d4\u05e9\u05e4\u05d4 \u05e9\u05d4\u05e9\u05ea\u05de\u05e9\u05ea \u05d1\u05d4.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " \u05de\u05d7\u05e4\u05e9 \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd \u05dc\u05d4\u05e6\u05d8\u05e8\u05e3 \u05dc\u05de\u05e4\u05d2\u05e9 \u05d4\u05e4\u05e2\u05d9\u05dc\u05d5\u05ea \u05d1-" + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "\u041a\u043e\u0433\u0430\u0442\u043e \u0432\u0438 \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u0435 \u0441\u0432\u043e\u044e \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u044c, \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043d\u0430 \u043f\u043e\u0434\u043e\u0431\u043d\u043e";
     },
-    get$activityAnalyticsListBody() {
-      return "\u0414\u043e\u043d\u0435\u0441\u0442\u0435 \u0432\u0430\u0448\u0438 \u043f\u043e\u0432\u043d\u0438\u043a\u043d\u0438\u0432\u0448\u0438\u0442\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438! \u041f\u043e\u0442\u043e\u0432\u0430\u0439\u0442\u0435 \u043d\u0430 \u043d\u0438\u0447\u043e\u0433\u043e \u043f\u043e\u0441\u043b\u0435 \u043a\u0430\u0442\u043e \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u0435 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438";
-    },
     get$languageMismatchTitle() {
       return "\u041d\u0435\u043f\u043e\u0434\u043e\u043b\u044f\u0442\u043d\u043e\u0441\u0442\u044c \u0435\u0437\u0438\u043a\u0430";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "\u05d6\u05d4 \u05d4\u05de\u05e7\u05d5\u05dd \u05e9\u05d1\u05d5 \u05de\u05d9\u05dc\u05d5\u05ea \u05d0\u05d5\u05e6\u05e8 \u05d4\u05de\u05d9\u05dc\u05d9\u05dd \u05d9\u05d5\u05e4\u05d9\u05e2\u05d5 \u05dc\u05d0\u05d7\u05e8 \u05e9\u05d4\u05e2\u05dc\u05d9\u05ea \u05d0\u05ea \u05e8\u05de\u05ea\u05df!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["jnlT0R30P8U16BYQT+WdJBavie4="] = d.current;
+  d["Po6q0m6N+PbKoQ54AFXyg2NEhxE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_552.part.js.map

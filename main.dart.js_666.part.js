@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "\xc7eviri sorunu";
     },
-    get$niceJob() {
-      return "\u0130yi i\u015f!";
-    },
     get$askToJoin() {
       return "Kat\u0131lmak i\xe7in sor";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Bu kodla e\u015fle\u015fen sohbet veya kurs bulunamad\u0131. L\xfctfen tekrar deneyin.";
     },
-    get$numCompletedActivities() {
-      return "Tamamlanan etkinliklerin say\u0131s\u0131";
-    },
     viewingAnalytics$2(visible, users) {
       return "" + visible + "/" + users + " Analitikleri G\xf6r\xfcnt\xfcleme";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Di\u011ferlerinin bitirmesini bekliyorum...";
     },
-    get$saveToCompletedActivities() {
-      return "Tamamlanan etkinliklere kaydet";
-    },
     get$generatingSummary() {
       return "Sohbeti analiz ediyor ve sonu\xe7lar olu\u015fturuyor";
-    },
-    get$activityCompletedDesc() {
-      return "Tamamlad\u0131\u011f\u0131n\u0131z etkinlik, kulland\u0131\u011f\u0131n\u0131z dili g\xf6zden ge\xe7irebilece\u011finiz ve pratik yapabilece\u011finiz analizlere eklendi.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " " + room + " i\xe7indeki etkinlik oturumuna kat\u0131lacak kullan\u0131c\u0131lar ar\u0131yor";
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Bu etkinli\u011fi tamamlad\u0131ktan sonra a\u015fa\u011f\u0131daki butona t\u0131klay\u0131n";
     },
-    get$activityAnalyticsListBody() {
-      return "\u0130\u015fte tamamlad\u0131\u011f\u0131n\u0131z etkinlikler! Etkinlikleri tamamlad\u0131ktan sonra burada g\xf6rebilirsiniz.";
-    },
     get$languageMismatchTitle() {
       return "Dil uyu\u015fmazl\u0131\u011f\u0131";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Kelime seviyelerini y\xfckseltti\u011finizde buraya kelimeler gelir!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8HKCPuc8BgMV39NQUJ1Upy8nyR4="] = d.current;
+  d["dYrwT+ogVhDHC67mT/LPdJc8j9M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_666.part.js.map

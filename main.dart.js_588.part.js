@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Problema de translation";
     },
-    get$niceJob() {
-      return "Bon labor!";
-    },
     get$askToJoin() {
       return "Pedir de junger";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Nulle chat o curso trovate con iste codice. Per favor, tenta de novo.";
     },
-    get$numCompletedActivities() {
-      return "Numeru de activities completate";
-    },
     viewingAnalytics$2(visible, users) {
       return "Visualisante " + visible + "/" + users + " Analytics";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Spere que le alios finisca...";
     },
-    get$saveToCompletedActivities() {
-      return "Salve in actividades complete";
-    },
     get$generatingSummary() {
       return "Analizando le chat e generate resultatos";
-    },
-    get$activityCompletedDesc() {
-      return "Tu activitate complete esseva addite a analytics ubi tu pote revocar e practicar le lingua que usava.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " cerca usatores pro aderir a le session de activitate in " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Quando tu ha finite con iste activity, clicca infra";
     },
-    get$activityAnalyticsListBody() {
-      return "Isto es tu activities complete! Postea que ha finite activities, tu pote vider los hic in le lista hic.";
-    },
     get$languageMismatchTitle() {
       return "Discrepantie de lingua";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "Isto es le loco ubi le vocabularies va in post una vice que tu ha levelate los!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1CAgY+kyGIiBrIKunj8jKK7i+JA="] = d.current;
+  d["uDYYucjS5I5a0fIUJC3Kvpy5Oew="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_588.part.js.map

@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "Vertimo problema";
     },
-    get$niceJob() {
-      return "Puikus darbas!";
-    },
     get$askToJoin() {
       return "Papra\u0161yti prisijungti";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Su \u0161iuo kodu nerasta pokalbio ar kurso. Bandykite dar kart\u0105.";
     },
-    get$numCompletedActivities() {
-      return "U\u017ebaigt\u0173 veikl\u0173 skai\u010dius";
-    },
     viewingAnalytics$2(visible, users) {
       return "Per\u017ei\u016brite " + visible + "/" + users + " analiz\u0119";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Laukiama kit\u0173 pabaigos...";
     },
-    get$saveToCompletedActivities() {
-      return "I\u0161saugoti kaip u\u017ebaigtas veiklas";
-    },
     get$generatingSummary() {
       return "Analizuojama pokalbis ir generuojami rezultatai";
-    },
-    get$activityCompletedDesc() {
-      return "J\u016bs\u0173 u\u017ebaigta veikla buvo prid\u0117ta prie analiz\u0117s, kur galite per\u017ei\u016br\u0117ti ir praktikuoti naudot\u0105 kalb\u0105.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " ie\u0161ko naudotoj\u0173 prisijungti prie veiklos sesijos " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Kai baigsite \u0161i\u0105 veikl\u0105, spustel\u0117kite \u017eemiau";
     },
-    get$activityAnalyticsListBody() {
-      return "Tai yra j\u016bs\u0173 u\u017ebaigtos veiklos! Baig\u0119 veiklas, jas galite per\u017ei\u016br\u0117ti \u010dia.";
-    },
     get$languageMismatchTitle() {
       return "Kalbos neatitikimas";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "\u010cia pateks \u017eod\u017eiai, kai juos pakelsite \u012f auk\u0161tesn\u012f lyg\u012f!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["6R4ny8hqAdIeOeiLMKlCm5C6UWM="] = d.current;
+  d["bSgavbopjHu/3NQN12xFUcJMUOs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_622.part.js.map

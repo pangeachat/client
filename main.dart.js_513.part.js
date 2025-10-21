@@ -3883,9 +3883,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$translationProblem() {
       return "K\xe4\xe4nn\xf6songelma";
     },
-    get$niceJob() {
-      return "Hyv\xe4\xe4 ty\xf6t\xe4!";
-    },
     get$askToJoin() {
       return "Kysy liittymist\xe4";
     },
@@ -4150,9 +4147,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$unableToFindRoom() {
       return "Ei l\xf6ydetty keskustelua tai kurssia t\xe4ll\xe4 koodilla. Yrit\xe4 uudelleen.";
     },
-    get$numCompletedActivities() {
-      return "Valmiiden aktiviteettien m\xe4\xe4r\xe4";
-    },
     viewingAnalytics$2(visible, users) {
       return "N\xe4ytet\xe4\xe4n " + visible + "/" + users + " analytiikkaa";
     },
@@ -4309,14 +4303,8 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$waitingForOthersToFinish() {
       return "Odotetaan muiden valmistumista...";
     },
-    get$saveToCompletedActivities() {
-      return "Tallenna valmiit aktiviteetit";
-    },
     get$generatingSummary() {
       return "Analysoidaan keskustelua ja luodaan tuloksia";
-    },
-    get$activityCompletedDesc() {
-      return "Valmis aktiviteettisi lis\xe4ttiin analytiikkaan, jossa voit tarkastella ja harjoitella k\xe4ytt\xe4m\xe4\xe4si kielt\xe4.";
     },
     pingParticipantsNotification$2(user, room) {
       return user + " etsii k\xe4ytt\xe4ji\xe4 liittym\xe4\xe4n aktiviteettisessioon " + room;
@@ -4498,9 +4486,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$activityDropdownDesc() {
       return "Kun olet valmis t\xe4m\xe4n aktiviteetin kanssa, napsauta alla";
     },
-    get$activityAnalyticsListBody() {
-      return "N\xe4m\xe4 ovat suorittamiasi aktiviteetteja! Aktiviteettien suorittamisen j\xe4lkeen voit katsella niit\xe4 t\xe4\xe4ll\xe4.";
-    },
     get$languageMismatchTitle() {
       return "Kielivirhe";
     },
@@ -4555,6 +4540,18 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$vocabLevelsDesc() {
       return "T\xe4ss\xe4 kohtaa sanat menev\xe4t, kun olet nostanut niiden tasoa!";
     },
+    get$activityAnalyticsTooltipBody() {
+      return "These are your saved activities for review and practice.";
+    },
+    get$numSavedActivities() {
+      return "Number of saved activities";
+    },
+    get$saveActivityTitle() {
+      return "Save activity";
+    },
+    get$saveActivityDesc() {
+      return "Good job! Save this activity for later review and practice";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4565,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UBJx4TGrz/WUWsZT9xI9GkKD01U="] = d.current;
+  d["+vN1YCl064tdXiRGApy+b3e+hCs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_513.part.js.map
