@@ -5314,5 +5314,6 @@
   "levelInfoTooltip": "Here you can see all the points you’ve earned and how!",
   "alreadyInCourseWithID": "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?",
   "goToExistingCourse": "Go to existing course",
-  "emojiView": "Emoji view"
+  "emojiView": "Emoji view",
+  "feedbackDialogDesc": "I make mistakes too! Anything to help me improve?"
 }
