@@ -25,14 +25,12 @@ class TokenInfoFeedbackDialog extends StatefulWidget {
   final TokenInfoFeedbackRequestData requestData;
   final String langCode;
   final PangeaMessageEvent event;
-  final VoidCallback onUpdate;
 
   const TokenInfoFeedbackDialog({
     super.key,
     required this.requestData,
     required this.langCode,
     required this.event,
-    required this.onUpdate,
   });
 
   @override
@@ -86,7 +84,6 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
         response.updatedLanguage != originalSent.langCode;
 
     if (!hasTokenUpdate && !hasLangUpdate) {
-      widget.onUpdate();
       return response.userFriendlyMessage;
     }
 
@@ -117,7 +114,6 @@ class _TokenInfoFeedbackDialogState extends State<TokenInfoFeedbackDialog> {
       choreo: originalSent?.choreo,
     );
 
-    widget.onUpdate();
     return response.userFriendlyMessage;
   }
 
