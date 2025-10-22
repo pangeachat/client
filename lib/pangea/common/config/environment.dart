@@ -1,12 +1,10 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart';
-
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:get_storage/get_storage.dart';
-
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Environment {
   static bool get itIsTime =>
@@ -65,7 +63,9 @@ class Environment {
   }
 
   static String get cmsApi {
-    final envEntry = appConfigOverride?.choreoApi ?? dotenv.env['CHOREO_API'];
+    final envEntry = dotenv.env['CMS_API'] ??
+        appConfigOverride?.choreoApi ??
+        dotenv.env['CHOREO_API'];
     if (envEntry == null) {
       return "Not found";
     }
