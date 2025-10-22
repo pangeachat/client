@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Tegevuse tagasiside";
     },
-    get$feedbackDesc() {
-      return "Kuidas tegevust saaks parandada? Kui saate anda m\xf5ned detailid, teeme muudatuse!";
-    },
     get$feedbackRespDesc() {
       return "Kontrollige hommikul uuesti tegevuse uuenduste jaoks.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "S\xf5nateabe tagasiside";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "Tehisintellekt teeb vigu. Palun kirjeldage k\xf5iki probleeme, mida olete teabe kohta leidnud.";
     },
     get$noPublicCoursesFound() {
       return "Avalikke kursusi ei leitud. Kas soovite luua \xfche?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uEgpxyV6xppaJcOqnYucIOAnE0I="] = d.current;
+  d["ddgGhGLX9yz58qpmuEPfdytlqgc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_479.part.js.map

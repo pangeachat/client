@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Aktivit\u0101tes atsauksmes";
     },
-    get$feedbackDesc() {
-      return "K\u0101 b\u016btu j\u0101uzlabo aktivit\u0101te? Ja vari sniegt da\u017eas deta\u013cas, m\u0113s veiksim izmai\u0146as!";
-    },
     get$feedbackRespDesc() {
       return "P\u0101rbaudiet r\u012bt, lai sa\u0146emtu aktivit\u0101tes atjaunin\u0101jumus.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "V\u0101rda inform\u0101cijas atsauksmes";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "AI pie\u013cauj k\u013c\u016bdas. L\u016bdzu, aprakstiet jebk\u0101das probl\u0113mas, kuras atrad\u0101t ar iepriek\u0161 min\u0113to inform\u0101ciju.";
     },
     get$noPublicCoursesFound() {
       return "Publiskie kursi nav atrasti. Vai v\u0113laties izveidot jaunu?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7HtHtSZtm0LSUa+JnamtP3uHrHo="] = d.current;
+  d["irunbw+vb5F+pfsg5j0TUgn1Yog="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_627.part.js.map

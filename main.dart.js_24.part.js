@@ -4465,9 +4465,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Feedback de Atividade";
     },
-    get$feedbackDesc() {
-      return string$.Como_a;
-    },
     get$feedbackRespDesc() {
       return "Verifique novamente amanh\xe3 para atualiza\xe7\xf5es da atividade.";
     },
@@ -4506,9 +4503,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sobre Informa\xe7\xe3o da Palavra";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return string$.A_IA_c;
     },
     get$noPublicCoursesFound() {
       return string$.Nenhumu;
@@ -4566,6 +4560,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$goToExistingCourse() {
       return "Go to existing course";
+    },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -9009,9 +9009,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Feedback sobre a atividade";
     },
-    get$feedbackDesc() {
-      return string$.Como_a;
-    },
     get$feedbackRespDesc() {
       return string$.Volte_;
     },
@@ -9047,9 +9044,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sobre Informa\xe7\xe3o da Palavra";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return string$.A_IA_c;
     },
     get$noPublicCoursesFound() {
       return string$.Nenhumu;
@@ -13529,9 +13523,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Feedback da atividade";
     },
-    get$feedbackDesc() {
-      return "Como deve ser melhorada a atividade? Se puder fornecer alguns detalhes, faremos a altera\xe7\xe3o!";
-    },
     get$feedbackRespDesc() {
       return string$.Volte_;
     },
@@ -13567,9 +13558,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sobre Informa\xe7\xe3o da Palavra";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "A IA comete erros. Por favor, descreva quaisquer problemas que tenha encontrado com as informa\xe7\xf5es acima.";
     },
     get$noPublicCoursesFound() {
       return "N\xe3o foram encontrados cursos p\xfablicos. Gostaria de criar um?";
@@ -13627,7 +13615,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     x20usu_r: " usu\xe1rios est\xe3o solicitando entrar no seu curso",
     x28Opcio: "(Opcional) Motivo para redigir esta mensagem...",
     x31_usu_: "1 usu\xe1rio est\xe1 solicitando entrar no seu curso",
-    A_IA_c: "A IA comete erros. Por favor, descreva quaisquer problemas que voc\xea encontrou com as informa\xe7\xf5es acima.",
     A_capae: "A capacidade de editar cidades e atividades estar\xe1 dispon\xedvel em breve.",
     A_capaod: "A capacidade do chat deve ser pelo menos ",
     A_capaol: "A capacidade do chat limita o n\xfamero de membros permitidos em um chat.",
@@ -13660,7 +13647,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Cliqueno: "Clique nos bot\xf5es abaixo para mini-jogos de combina\xe7\xe3o de emojis, \xe1udios, significados de palavras e conceitos gramaticais. Ou clique em qualquer palavra para detalhes.",
     Combine: "Combine emojis com as palavras que eles representam melhor. N\xe3o se preocupe! N\xe3o h\xe1 penaliza\xe7\xf5es por discordar. \ud83d\ude05",
     Combino: "Combine os significados com as palavras na mensagem!",
-    Como_a: "Como a atividade pode ser melhorada? Se puder fornecer alguns detalhes, faremos a altera\xe7\xe3o!",
     Comple: "Complete pelo menos uma atividade para desbloquear a tradu\xe7\xe3o!",
     Conceie: "Conceitos gramaticais escolhidos corretamente a partir de sugest\xf5es geradas pelo sistema pelo menos 80% das vezes",
     Conceiuc: "Conceitos gramaticais usados corretamente em mensagens originais pelo menos 80% das vezes",
@@ -13785,7 +13771,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["aZCzJYZTwtQaZG/CCUswXCKA8SA="] = d.current;
+  d["jpbORhtsBAOClTust9SPtYUjTwI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map

@@ -4454,9 +4454,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Comentaris sobre l'activitat";
     },
-    get$feedbackDesc() {
-      return "Com s'hauria d'augmentar l'activitat? Si pots proporcionar alguns detalls, farem el canvi!";
-    },
     get$feedbackRespDesc() {
       return "Revisa dem\xe0 per actualitzacions de l'activitat.";
     },
@@ -4495,9 +4492,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Comentari sobre la informaci\xf3 de la paraula";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "L'IA comete errors. Si us plau, descriu qualsevol problema que hagis trobat amb la informaci\xf3 anterior.";
     },
     get$noPublicCoursesFound() {
       return "No s'han trobat cursos p\xfablics. Voldries crear-ne un?";
@@ -4556,6 +4550,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4572,7 +4572,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["MnvVeBejB+kyhtMKoln+9DF7t44="] = d.current;
+  d["15dO4sBgWjOGFu8L6aUyjTvRD3I="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_153.part.js.map

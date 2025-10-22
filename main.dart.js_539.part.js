@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Aiseolas Gn\xedomha\xedochta";
     },
-    get$feedbackDesc() {
-      return "Conas ba cheart feabhas a chur ar an ngn\xedomha\xedocht? Mura bhfuil aon sonra\xed agat, d\xe9anfaimid an t-athr\xfa!";
-    },
     get$feedbackRespDesc() {
       return "Seice\xe1il ar ais am\xe1rach le haghaidh nuashonruithe ar ghn\xedomha\xedocht.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Aiseolas Eolas Focal";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "D\xe9antar bot AI bot\xfan. D\xe9an cur s\xedos ar aon fhadhbanna a fuair t\xfa leis an eolas thuas.";
     },
     get$noPublicCoursesFound() {
       return "N\xedor aims\xedodh c\xfarsa\xed poibl\xed. Ar mhaith leat ceann a chruth\xfa?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["shhMxgutIgXpC5ilG/RWF/0gv0Q="] = d.current;
+  d["ltwPhM2zx1Vkn+14vUkFZ7wyjyA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

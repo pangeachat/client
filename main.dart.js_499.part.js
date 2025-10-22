@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Jarduera Feedback";
     },
-    get$feedbackDesc() {
-      return "Nola hobetu beharko litzateke jarduera? Xehetasun batzuk eman ditzakezun bada, aldaketa egingo dugu!";
-    },
     get$feedbackRespDesc() {
       return "Egon etxeko egunean, eguneraketak ikusteko.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Hitzaren Informazioaren Feedbacka";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "AI-ak akatsak egiten ditu. Mesedez, deskribatu aurreko informazioarekin aurkitu dituzun arazoak.";
     },
     get$noPublicCoursesFound() {
       return "Ez da ikastaro publikorik aurkitu. Nahi al duzu bat sortu?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["HCRmBWGayPeim8d9x0esIrcv1hA="] = d.current;
+  d["hz+uPiae4tABkHFZMQz6ZVNO2wQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_499.part.js.map

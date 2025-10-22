@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "\ud65c\ub3d9 \ud53c\ub4dc\ubc31";
     },
-    get$feedbackDesc() {
-      return "\ud65c\ub3d9\uc744 \uc5b4\ub5bb\uac8c \uac1c\uc120\ud560 \uc218 \uc788\uc744\uae4c\uc694? \uc138\ubd80 \uc815\ubcf4\ub97c \uc81c\uacf5\ud574 \uc8fc\uc2dc\uba74 \ubcc0\uacbd\ud558\uaca0\uc2b5\ub2c8\ub2e4!";
-    },
     get$feedbackRespDesc() {
       return "\ub0b4\uc77c \ub2e4\uc2dc \ud655\uc778\ud558\uc5ec \ud65c\ub3d9 \uc5c5\ub370\uc774\ud2b8\ub97c \ud655\uc778\ud558\uc138\uc694.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "\ub2e8\uc5b4 \uc815\ubcf4 \ud53c\ub4dc\ubc31";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "AI\uac00 \uc2e4\uc218\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4. \uc704 \uc815\ubcf4\uc5d0 \ub300\ud574 \ubc1c\uacac\ud55c \ubb38\uc81c\ub97c \uc124\uba85\ud574 \uc8fc\uc138\uc694.";
     },
     get$noPublicCoursesFound() {
       return "\uacf5\uac1c \uac15\uc88c\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc0c8\ub85c \ub9cc\ub4dc\uc2dc\uaca0\uc2b5\ub2c8\uae4c?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kSXUJU+mpaALfyeswkBqa0DsSBc="] = d.current;
+  d["2h4h+/eV573tAV5m+TnOiQPzDyA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_620.part.js.map

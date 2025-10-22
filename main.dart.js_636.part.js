@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Activiteit Feedback";
     },
-    get$feedbackDesc() {
-      return "Hoe kan de activiteit worden verbeterd? Als je wat details kunt geven, maken we de verandering!";
-    },
     get$feedbackRespDesc() {
       return "Kom morgen terug voor updates over de activiteit.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback over Woordinformatie";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "AI maakt fouten. Beschrijf alstublieft eventuele problemen die je hebt gevonden met de bovenstaande informatie.";
     },
     get$noPublicCoursesFound() {
       return "Geen openbare cursussen gevonden. Wil je er een maken?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ur6YmmdIub8eAyaKrERD+8H7MgU="] = d.current;
+  d["gqW9p3BAi1RNVphov2RJaX4cWiw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

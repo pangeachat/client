@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Aktivitetsfeedback";
     },
-    get$feedbackDesc() {
-      return "Hvordan kan aktiviteten forbedres? Hvis du kan give nogle detaljer, vil vi foretage \xe6ndringen!";
-    },
     get$feedbackRespDesc() {
       return "Tjek igen i morgen for opdateringer om aktiviteten.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback om ordinformation";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "AI laver fejl. Beskriv venligst eventuelle problemer, du har fundet med ovenst\xe5ende information.";
     },
     get$noPublicCoursesFound() {
       return "Ingen offentlige kurser fundet. Vil du oprette et?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BuOUI8iStwN9eHBatchUuJvB0X8="] = d.current;
+  d["csN5Rml0687TTnYYVrUAfHYC+h8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_268.part.js.map

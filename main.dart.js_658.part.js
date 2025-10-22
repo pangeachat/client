@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Povratne informacije o aktivnosti";
     },
-    get$feedbackDesc() {
-      return "Kako pobolj\u0161ati aktivnost? Ako mo\u017eete da date neke detalje, izvr\u0161i\u0107emo promenu!";
-    },
     get$feedbackRespDesc() {
       return "\u041f\u043e\u0433\u043b\u0435\u0434\u0430\u0458\u0442\u0435 \u0441\u0443\u0442\u0440\u0430 \u0437\u0430 \u0430\u0436\u0443\u0440\u0438\u0440\u0430\u045a\u0430 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u0441\u0442\u0438.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "\u041f\u043e\u0432\u0440\u0430\u0442\u043d\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0458\u0435 \u043e \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0458\u0430\u043c\u0430 \u043e \u0440\u0435\u0447\u0438";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "\u0418\u0441\u043a\u0440\u0430 AI \u043f\u0440\u0430\u0432\u0438 \u0433\u0440\u0435\u0448\u043a\u0435. \u041c\u043e\u043b\u0438\u043c\u043e \u0432\u0430\u0441 \u0434\u0430 \u043e\u043f\u0438\u0448\u0435\u0442\u0435 \u0441\u0432\u0435 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0435 \u043a\u043e\u0458\u0435 \u0441\u0442\u0435 \u043f\u0440\u043e\u043d\u0430\u0448\u043b\u0438 \u0441\u0430 \u0433\u043e\u0440\u0435 \u043d\u0430\u0432\u0435\u0434\u0435\u043d\u0438\u043c \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0458\u0430\u043c\u0430.";
     },
     get$noPublicCoursesFound() {
       return "\u041d\u0438\u0441\u0443 \u043f\u0440\u043e\u043d\u0430\u0452\u0435\u043d\u0438 \u0458\u0430\u0432\u043d\u0438 \u043a\u0443\u0440\u0441\u0435\u0432\u0438. \u0416\u0435\u043b\u0438\u0442\u0435 \u043b\u0438 \u0434\u0430 \u043a\u0440\u0435\u0438\u0440\u0430\u0442\u0435 \u0458\u0435\u0434\u0430\u043d?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["2vkuhUrPWQTC++Gsk1t8jSj4yPc="] = d.current;
+  d["XdV2gv7WG429wKK+WYXzh1tcAVU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_658.part.js.map

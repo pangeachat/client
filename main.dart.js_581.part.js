@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Tev\xe9kenys\xe9g visszacsatol\xe1s";
     },
-    get$feedbackDesc() {
-      return "Hogyan lehetne jav\xedtani a tev\xe9kenys\xe9get? Ha tudsz n\xe9h\xe1ny r\xe9szletet adni, megval\xf3s\xedtjuk a v\xe1ltoztat\xe1st!";
-    },
     get$feedbackRespDesc() {
       return "J\xf6v\u0151re n\xe9zz vissza az aktivit\xe1s friss\xedt\xe9sei\xe9rt.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Sz\xf3inform\xe1ci\xf3 visszacsatol\xe1s";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "Az AI hib\xe1zik. K\xe9rj\xfck, \xedrja le b\xe1rmilyen probl\xe9m\xe1t, amit az inform\xe1ci\xf3val kapcsolatban tal\xe1lt.";
     },
     get$noPublicCoursesFound() {
       return "Nem tal\xe1lhat\xf3k nyilv\xe1nos kurzusok. Szeretn\xe9l l\xe9trehozni egyet?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["auReTkMHM+5bZTd+Dnbco0t6nZ4="] = d.current;
+  d["703SDZ7LXAR6NdaMkKYSdFpR4lU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

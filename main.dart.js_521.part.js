@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Feedback sa Aktibidad";
     },
-    get$feedbackDesc() {
-      return "Paano mapapabuti ang aktibidad? Kung makakapagbigay ka ng ilang detalye, gagawin namin ang pagbabago!";
-    },
     get$feedbackRespDesc() {
       return "Balikan bukas para sa mga update sa aktibidad.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Feedback sa Impormasyon ng Salita";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "Nagkakamali ang AI. Mangyaring ilarawan ang anumang isyu na iyong natuklasan sa impormasyon sa itaas.";
     },
     get$noPublicCoursesFound() {
       return "Walang nahanap na pampublikong kurso. Nais mo bang lumikha ng isa?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ElT0Zbg4E23YAAviT8ShyHxUYiU="] = d.current;
+  d["c35B/5CEc0CPSftdaP2NN48vRk0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_521.part.js.map

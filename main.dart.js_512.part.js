@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Toiminnan palaute";
     },
-    get$feedbackDesc() {
-      return "Kuinka toimintaa voitaisiin parantaa? Jos voit antaa lis\xe4tietoja, teemme muutoksen!";
-    },
     get$feedbackRespDesc() {
       return "Tarkista huomenna aktiviteettip\xe4ivitykset.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Sanatiedon palaute";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "Teko\xe4ly tekee virheit\xe4. Kuvaile kaikki ongelmat, jotka l\xf6ysit yll\xe4 olevissa tiedoissa.";
     },
     get$noPublicCoursesFound() {
       return "Yksityisi\xe4 kursseja ei l\xf6ytynyt. Haluatko luoda sellaisen?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["DzVPU7p2LPIHUIJjIpEXjlg6gSQ="] = d.current;
+  d["K5avPutVXpw+Qq10rCA8Li747es="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_512.part.js.map

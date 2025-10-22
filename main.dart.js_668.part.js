@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "\u6d3b\u52d5\u53cd\u994b";
     },
-    get$feedbackDesc() {
-      return "\u9ede\u6a23\u6539\u5584\u6d3b\u52d5\uff1f\u5982\u679c\u4f60\u53ef\u4ee5\u63d0\u4f9b\u5572\u8a73\u7d30\u8cc7\u6599\uff0c\u6211\u54cb\u6703\u4f5c\u51fa\u6539\u8b8a\uff01";
-    },
     get$feedbackRespDesc() {
       return "\u660e\u65e5\u518d\u569f\u67e5\u95b1\u6d3b\u52d5\u66f4\u65b0\u3002";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "\u8a5e\u8a9e\u8cc7\u8a0a\u53cd\u994b";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "AI\u6703\u51fa\u932f\u3002\u8acb\u63cf\u8ff0\u4f60\u55ba\u4e0a\u9762\u8cc7\u8a0a\u4e2d\u767c\u73fe\u5605\u4efb\u4f55\u554f\u984c\u3002";
     },
     get$noPublicCoursesFound() {
       return "\u672a\u627e\u5230\u516c\u958b\u8ab2\u7a0b\u3002\u4f60\u60f3\u5275\u5efa\u4e00\u500b\u55ce\uff1f";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["GDfjoS3BmxO4WJxT9aTEfheFNm8="] = d.current;
+  d["WGDsItzoZFZ0MYmbqXid+7Nb7V4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_668.part.js.map

@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Povratne informacije o dejavnosti";
     },
-    get$feedbackDesc() {
-      return "Kako naj izbolj\u0161amo dejavnost? \u010ce lahko zagotovite nekaj podrobnosti, bomo naredili spremembo!";
-    },
     get$feedbackRespDesc() {
       return "Vrnite se jutri za posodobitve aktivnosti.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Povratne informacije o informacijah o besedi";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "AI dela napake. Prosimo, opi\u0161ite morebitne te\u017eave z zgornjimi informacijami.";
     },
     get$noPublicCoursesFound() {
       return "Ni najdenih javnih te\u010dajev. Bi \u017eeleli ustvariti enega?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XTR7mp5FGcmZcfjYgqYAn4vz3qA="] = d.current;
+  d["kdy4l2cBREKXcj+n6bOgn9dpdZg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_656.part.js.map

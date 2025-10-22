@@ -4453,9 +4453,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackTitle() {
       return "Etkinlik Geri Bildirimi";
     },
-    get$feedbackDesc() {
-      return "Etkinli\u011fi nas\u0131l geli\u015ftirebiliriz? Birka\xe7 detay sa\u011flayabilirseniz, de\u011fi\u015fikli\u011fi yapar\u0131z!";
-    },
     get$feedbackRespDesc() {
       return "Yar\u0131na kadar etkinlik g\xfcncellemelerini kontrol edin.";
     },
@@ -4494,9 +4491,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$tokenInfoFeedbackDialogTitle() {
       return "Kelime Bilgisi Geri Bildirimi";
-    },
-    get$tokenInfoFeedbackDialogDesc() {
-      return "Yapay zeka hatalar yapabilir. L\xfctfen yukar\u0131daki bilgilerle ilgili buldu\u011funuz herhangi bir sorunu a\xe7\u0131klay\u0131n.";
     },
     get$noPublicCoursesFound() {
       return "Hi\xe7 kamu kursu bulunamad\u0131. Bir tane olu\u015fturmak ister misiniz?";
@@ -4555,6 +4549,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$goToExistingCourse() {
       return "Go to existing course";
     },
+    get$emojiView() {
+      return "Emoji view";
+    },
+    get$feedbackDialogDesc() {
+      return "I make mistakes too! Anything to help me improve?";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fMUsXr6VoisG6IOdeMQZ3Re6g1U="] = d.current;
+  d["8/bDKGhM/wc6d9aNhgCj4IXob7E="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_665.part.js.map
