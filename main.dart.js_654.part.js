@@ -4552,6 +4552,12 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$levelInfoTooltip() {
       return "Here you can see all the points you\u2019ve earned and how!";
     },
+    get$alreadyInCourseWithID() {
+      return "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?";
+    },
+    get$goToExistingCourse() {
+      return "Go to existing course";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4565,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["coCO/whqg45c+Cg7CjXNI9Evxbg="] = d.current;
+  d["MWwb2We7h0osIdm0OHPTuV7Mf3M="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_654.part.js.map
