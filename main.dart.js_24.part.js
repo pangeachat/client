@@ -1171,9 +1171,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     startedKeyVerification$1(sender) {
       return sender + " iniciou a verifica\xe7\xe3o de chave";
     },
-    get$stickers() {
-      return "Figurinhas";
-    },
     get$commandHint_ignore() {
       return "Ignorar o ID de matriz fornecido";
     },
@@ -5718,9 +5715,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     startedKeyVerification$1(sender) {
       return sender + " iniciou a chave de verifica\xe7\xe3o";
     },
-    get$stickers() {
-      return "Stickers";
-    },
     get$commandHint_ignore() {
       return "Ignorar o seguinte ID Matrix";
     },
@@ -10241,9 +10235,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     startedKeyVerification$1(sender) {
       return sender + " iniciou verifica\xe7\xe3o de chave";
     },
-    get$stickers() {
-      return "Figurinhas";
-    },
     get$commandHint_ignore() {
       return "Ignorar o ID de matriz fornecido";
     },
@@ -13794,7 +13785,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lQIZV+enVbkHFjGTX/tnfDDlLkc="] = d.current;
+  d["aZCzJYZTwtQaZG/CCUswXCKA8SA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map
