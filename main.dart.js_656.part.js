@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Dvakrat kliknite za urejanje.";
     },
-    get$targetLanguageLabel() {
-      return "Ciljni jezik";
-    },
     get$cefrLevelLabel() {
       return "Raven CEFR";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Kon\u010daj dejavnost";
     },
+    get$allLanguages() {
+      return "Vsi jeziki";
+    },
     get$chatListTooltip() {
       return "Tukaj boste na\u0161li svoja neposredna sporo\u010dila! Kliknite na avatar katerega koli uporabnika in izberite \xbbza\u010dni pogovor\xab, da po\u0161ljete DM.";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kdy4l2cBREKXcj+n6bOgn9dpdZg="] = d.current;
+  d["lES3n0Pwc6w3eW1xZdDUhoiLXA4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_656.part.js.map

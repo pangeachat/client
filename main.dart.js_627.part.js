@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Divreiz klik\u0161\u0137ini, lai redi\u0123\u0113tu.";
     },
-    get$targetLanguageLabel() {
-      return "M\u0113r\u0137valoda";
-    },
     get$cefrLevelLabel() {
       return "CEFR l\u012bmenis";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Beigt aktivit\u0101ti";
     },
+    get$allLanguages() {
+      return "Visas valodas";
+    },
     get$chatListTooltip() {
       return "\u0160eit atrad\u012bsiet savas tie\u0161\u0101s zi\u0146as! Noklik\u0161\u0137iniet uz jebkura lietot\u0101ja avatara un izv\u0113lieties \u201es\u0101kt sarunu\u201d, lai nos\u016bt\u012btu DM.";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["irunbw+vb5F+pfsg5j0TUgn1Yog="] = d.current;
+  d["uyPA8EgwopLQVw7FVKhaRtdhbgQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_627.part.js.map

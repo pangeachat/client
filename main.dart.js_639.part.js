@@ -3761,9 +3761,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Kliknij dwukrotnie, aby edytowa\u0107.";
     },
-    get$targetLanguageLabel() {
-      return "J\u0119zyk docelowy";
-    },
     get$cefrLevelLabel() {
       return "Poziom CEFR";
     },
@@ -4445,6 +4442,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Zako\u0144cz aktywno\u015b\u0107";
     },
+    get$allLanguages() {
+      return "Wszystkie j\u0119zyki";
+    },
     get$chatListTooltip() {
       return "Tutaj znajdziesz swoje wiadomo\u015bci bezpo\u015brednie! Kliknij avatar dowolnego u\u017cytkownika i \u201erozpocznij rozmow\u0119\u201d, aby wys\u0142a\u0107 wiadomo\u015b\u0107 prywatn\u0105.";
     },
@@ -4569,7 +4569,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CTs4zi73rL0CHp+p6JESv2dT4JQ="] = d.current;
+  d["oQE1tJauc9Ldl/NnTUeJrW29ksM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_639.part.js.map

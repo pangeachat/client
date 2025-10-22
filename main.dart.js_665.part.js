@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "D\xfczenlemek i\xe7in \xe7ift t\u0131klay\u0131n.";
     },
-    get$targetLanguageLabel() {
-      return "Hedef dil";
-    },
     get$cefrLevelLabel() {
       return "CEFR seviyesi";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Etkinli\u011fi sonland\u0131r";
     },
+    get$allLanguages() {
+      return "T\xfcm diller";
+    },
     get$chatListTooltip() {
       return 'Burada do\u011frudan mesajlar\u0131n\u0131z\u0131 bulacaks\u0131n\u0131z! Herhangi bir kullan\u0131c\u0131n\u0131n avatar\u0131na t\u0131klay\u0131n ve "sohbet ba\u015flat" se\xe7ene\u011fiyle DM g\xf6nderebilirsiniz.';
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["8/bDKGhM/wc6d9aNhgCj4IXob7E="] = d.current;
+  d["1zQu25GwhZawAG0EMlJ6Pq+W/W8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_665.part.js.map

@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Dobbeltklik for at redigere.";
     },
-    get$targetLanguageLabel() {
-      return "M\xe5l sprog";
-    },
     get$cefrLevelLabel() {
       return "CEFR-niveau";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Afslut aktivitet";
     },
+    get$allLanguages() {
+      return "Alle sprog";
+    },
     get$chatListTooltip() {
       return "Her finder du dine direkte beskeder! Klik p\xe5 en brugers avatar og \u201cstart samtale\u201d for at sende en DM.";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["csN5Rml0687TTnYYVrUAfHYC+h8="] = d.current;
+  d["ROHq7xD/ZPWdsDVCpiLrg1b1YC4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_268.part.js.map

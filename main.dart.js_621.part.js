@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Dukart spustel\u0117kite nor\u0117dami redaguoti.";
     },
-    get$targetLanguageLabel() {
-      return "Tikslo kalba";
-    },
     get$cefrLevelLabel() {
       return "CEFR lygis";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Baigti veikl\u0105";
     },
+    get$allLanguages() {
+      return "Visos kalbos";
+    },
     get$chatListTooltip() {
       return "\u010cia rasite savo tiesiogines \u017einutes! Spustel\u0117kite bet kurio vartotojo avatar\u0105 ir \u201eprad\u0117ti pokalb\u012f\u201c, kad i\u0161si\u0173stum\u0117te tiesiogin\u0119 \u017einut\u0119.";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zLw89uTD3lrIj2iF9o+HNHsojhY="] = d.current;
+  d["BEuFVrZShmT0X11qtoLdjkhghQQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_621.part.js.map

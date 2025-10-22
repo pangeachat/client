@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Dubla clic pro modificar.";
     },
-    get$targetLanguageLabel() {
-      return "Lingua de destino";
-    },
     get$cefrLevelLabel() {
       return "Nivello CEFR";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Terminar le activitate";
     },
+    get$allLanguages() {
+      return "Tote linguas";
+    },
     get$chatListTooltip() {
       return "Ici tu trovara tu messages directe! Clicca super le avatar de qualcunque usator e 'comenciar conversation' pro inviar un DM.";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Kd4Abj/ZH9/KlR03tuT8Qm1fw9s="] = d.current;
+  d["j8y0EP522qIYQI1jj72i01bwZhs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_587.part.js.map

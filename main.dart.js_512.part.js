@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Muokkaa kaksoisnapsauttamalla.";
     },
-    get$targetLanguageLabel() {
-      return "Kohdekieli";
-    },
     get$cefrLevelLabel() {
       return "CEFR-taso";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Lopeta toiminta";
     },
+    get$allLanguages() {
+      return "Kaikki kielet";
+    },
     get$chatListTooltip() {
       return 'T\xe4\xe4lt\xe4 l\xf6yd\xe4t yksityisviestisi! Klikkaa mink\xe4 tahansa k\xe4ytt\xe4j\xe4n avataria ja "aloita keskustelu" l\xe4hett\xe4\xe4ksesi yksityisviestin.';
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["K5avPutVXpw+Qq10rCA8Li747es="] = d.current;
+  d["ucyXyWgVf5x8mFpPLiM5LBHtpHU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_512.part.js.map

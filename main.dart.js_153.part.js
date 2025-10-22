@@ -3761,9 +3761,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Fes doble clic per editar.";
     },
-    get$targetLanguageLabel() {
-      return "Idioma objectiu";
-    },
     get$cefrLevelLabel() {
       return "Nivell CEFR";
     },
@@ -4445,6 +4442,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Finalitzar l'activitat";
     },
+    get$allLanguages() {
+      return "Tots els idiomes";
+    },
     get$chatListTooltip() {
       return "Aqu\xed trobar\xe0s els teus missatges directes! Fes clic a la icona d'un usuari i \u201cInicia una conversa\u201d per enviar un missatge privat.";
     },
@@ -4572,7 +4572,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["15dO4sBgWjOGFu8L6aUyjTvRD3I="] = d.current;
+  d["zhhs1F8JwHa4Qx2lUXkEGjC7bLw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_153.part.js.map

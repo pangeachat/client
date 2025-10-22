@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Dvoklik za ure\u0111ivanje.";
     },
-    get$targetLanguageLabel() {
-      return "Ciljni jezik";
-    },
     get$cefrLevelLabel() {
       return "CEFR nivo";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Zavr\u0161i aktivnost";
     },
+    get$allLanguages() {
+      return "Svi jezici";
+    },
     get$chatListTooltip() {
       return "Ovde \u0107ete prona\u0107i svoje direktne poruke! Kliknite na avatar bilo kojeg korisnika i \u201czapo\u010dni razgovor\u201d da biste poslali DM.";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["XdV2gv7WG429wKK+WYXzh1tcAVU="] = d.current;
+  d["iBFh0RfYgHTtcBeScjBD9G4nxQE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_658.part.js.map

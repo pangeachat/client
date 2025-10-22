@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Duoble-klaku por redakti.";
     },
-    get$targetLanguageLabel() {
-      return "Cel-lingvo";
-    },
     get$cefrLevelLabel() {
       return "CEFR-nivelo";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Fini aktivecon";
     },
+    get$allLanguages() {
+      return "\u0108iuj lingvoj";
+    },
     get$chatListTooltip() {
       return "\u0108i tie vi trovos viajn rektajn mesa\u011dojn! Klaku sur ajna uzantoprofilo kaj \u201ckomencu konversacion\u201d por sendi DM.";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oGc2HME+Iz+bRBRuh2CZXcKPobY="] = d.current;
+  d["lAdL8FKhI5zhzSsjg7D40ZFkEvM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_425.part.js.map

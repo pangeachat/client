@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "\u0ba4\u0bca\u0b9f\u0bcd\u0b9f\u0b9a\u0bcd\u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf \u0bae\u0bc2\u0bb2\u0bae\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bb5\u0bc1\u0bae\u0bcd.";
     },
-    get$targetLanguageLabel() {
-      return "\u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf";
-    },
     get$cefrLevelLabel() {
       return "CEFR \u0ba8\u0bbf\u0bb2\u0bc8";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc8 \u0bae\u0bc1\u0b9f\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd";
     },
+    get$allLanguages() {
+      return "\u0b85\u0ba9\u0bc8\u0ba4\u0bcd\u0ba4\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bcd";
+    },
     get$chatListTooltip() {
       return "\u0b87\u0b99\u0bcd\u0b95\u0bc7 \u0ba8\u0bc0\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba8\u0bc7\u0bb0\u0b9f\u0bbf \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bbf\u0b95\u0bb3\u0bc8 \u0b95\u0bbe\u0ba3\u0bb2\u0bbe\u0bae\u0bcd! \u0b8e\u0ba8\u0bcd\u0ba4 \u0baa\u0baf\u0ba9\u0bb0\u0bbf\u0ba9\u0bcd \u0b85\u0bb5\u0ba4\u0bbe\u0bb0\u0ba4\u0bcd\u0ba4\u0bc8\u0baf\u0bc1\u0bae\u0bcd \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 \u201c\u0baa\u0bc7\u0b9a\u0bcd\u0b9a\u0bc1 \u0ba4\u0bca\u0b9f\u0b99\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd\u201d \u0b8e\u0ba9\u0bcd\u0baa\u0ba4\u0bc8\u0b95\u0bcd \u0b95\u0bbf\u0bb3\u0bbf\u0b95\u0bcd \u0b9a\u0bc6\u0baf\u0bcd\u0ba4\u0bc1 DM \u0b85\u0ba9\u0bc1\u0baa\u0bcd\u0baa\u0bb5\u0bc1\u0bae\u0bcd.";
     },
@@ -4572,7 +4572,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kMfGurAfGkC/ff1U6isKOVWWeaQ="] = d.current;
+  d["nVYdS/ba4zj+/V2Can0+HnO+7LU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_662.part.js.map

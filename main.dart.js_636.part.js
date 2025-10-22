@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Dubbelklik om te bewerken.";
     },
-    get$targetLanguageLabel() {
-      return "Doeltaal";
-    },
     get$cefrLevelLabel() {
       return "CEFR-niveau";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Eind activiteit";
     },
+    get$allLanguages() {
+      return "Alle talen";
+    },
     get$chatListTooltip() {
       return "Hier vind je je directe berichten! Klik op de avatar van een gebruiker en \u201cstart een gesprek\u201d om een DM te sturen.";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["gqW9p3BAi1RNVphov2RJaX4cWiw="] = d.current;
+  d["+O4zDmTLMU5W2Yy+mrv+Vm2oPtQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Clice\xe1il d\xe9-uaire chun eagarth\xf3ireacht.";
     },
-    get$targetLanguageLabel() {
-      return "Teanga sprioc";
-    },
     get$cefrLevelLabel() {
       return "Leve\xe1l CEFR";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Cr\xedochnaigh an ghn\xedomha\xedocht";
     },
+    get$allLanguages() {
+      return "Gach teanga";
+    },
     get$chatListTooltip() {
       return "Anseo gheobhaidh t\xfa do theachtaireachta\xed d\xedreacha! Clice\xe1il ar avatar aon \xfas\xe1ideora agus \u201ctosaigh comhr\xe1\u201d chun DM a sheoladh.";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ltwPhM2zx1Vkn+14vUkFZ7wyjyA="] = d.current;
+  d["Q01JVOkCe1p07s3apLJgTOZxy08="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

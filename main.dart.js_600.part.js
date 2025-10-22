@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Klik dua kali untuk mengedit.";
     },
-    get$targetLanguageLabel() {
-      return "Bahasa target";
-    },
     get$cefrLevelLabel() {
       return "Level CEFR";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Akhiri aktivitas";
     },
+    get$allLanguages() {
+      return "Semua bahasa";
+    },
     get$chatListTooltip() {
       return 'Di sini Anda akan menemukan pesan langsung Anda! Klik avatar pengguna mana pun dan "mulai percakapan" untuk mengirim DM.';
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iK5oMSA+2hBQIQqIzInie3ASuBE="] = d.current;
+  d["yi/FNgMhF6wEpK1eMGLsq6G1Rds="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_600.part.js.map

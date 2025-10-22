@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Dupla kattint\xe1ssal szerkesztheted.";
     },
-    get$targetLanguageLabel() {
-      return "C\xe9l nyelv";
-    },
     get$cefrLevelLabel() {
       return "CEFR szint";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Tev\xe9kenys\xe9g befejez\xe9se";
     },
+    get$allLanguages() {
+      return "Minden nyelv";
+    },
     get$chatListTooltip() {
       return "Itt tal\xe1lod a k\xf6zvetlen \xfczeneteidet! Kattints b\xe1rmely felhaszn\xe1l\xf3 avatarj\xe1ra, \xe9s v\xe1laszd a \u201ebesz\xe9lget\xe9s ind\xedt\xe1sa\u201d lehet\u0151s\xe9get, hogy \xfczenetet k\xfcldj.";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["703SDZ7LXAR6NdaMkKYSdFpR4lU="] = d.current;
+  d["kIEr6SXKGwAcxtPNeGCopOjEDck="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

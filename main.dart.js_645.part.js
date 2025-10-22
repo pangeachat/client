@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Dublu clic pentru editare.";
     },
-    get$targetLanguageLabel() {
-      return "Limba \u021bint\u0103";
-    },
     get$cefrLevelLabel() {
       return "Nivel CEFR";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "\xcencheie activitatea";
     },
+    get$allLanguages() {
+      return "Toate limbile";
+    },
     get$chatListTooltip() {
       return "Aici vei g\u0103si mesajele tale directe! F\u0103 clic pe avatarul oric\u0103rui utilizator \u0219i \u201e\xeencepe conversa\u021bia\u201d pentru a trimite un mesaj direct.";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PoXew+AXAznfaWzuIJO0tmfGfBM="] = d.current;
+  d["QdS994XfqvtuGUH5i1Xd/XvHB4A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_645.part.js.map

@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Mag-double click para i-edit.";
     },
-    get$targetLanguageLabel() {
-      return "Target na wika";
-    },
     get$cefrLevelLabel() {
       return "Antas ng CEFR";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Tapusin ang aktibidad";
     },
+    get$allLanguages() {
+      return "Lahat ng wika";
+    },
     get$chatListTooltip() {
       return "Dito mo makikita ang iyong mga direktang mensahe! I-click ang avatar ng kahit anong user at \u201csimulan ang pag-uusap\u201d upang magpadala ng DM.";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["c35B/5CEc0CPSftdaP2NN48vRk0="] = d.current;
+  d["1jKwicIhITVxkiTi1y/TqK0JFuM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_521.part.js.map

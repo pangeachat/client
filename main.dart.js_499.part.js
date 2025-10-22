@@ -3760,9 +3760,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$doubleClickToEdit() {
       return "Egin klik bikoitza editatzeko.";
     },
-    get$targetLanguageLabel() {
-      return "Helburu hizkuntza";
-    },
     get$cefrLevelLabel() {
       return "CEFR maila";
     },
@@ -4444,6 +4441,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$endActivity() {
       return "Amaitu jarduera";
     },
+    get$allLanguages() {
+      return "Hizkuntza guztiak";
+    },
     get$chatListTooltip() {
       return "Hemen zure mezu zuzenean aurkituko dituzu! Sakatu edozein erabiltzailearen avatarra eta \u201chasi elkarrizketa\u201d mezu zuzena bidaltzeko.";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["hz+uPiae4tABkHFZMQz6ZVNO2wQ="] = d.current;
+  d["dT9KlO9LGqdc1zyEJVWb9Eb70nM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_499.part.js.map
