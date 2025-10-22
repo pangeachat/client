@@ -2,16 +2,17 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/pangea/course_plans/course_plan_room_extension.dart';
-import 'package:fluffychat/pangea/course_plans/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/pangea/course_plans/courses/course_plans_repo.dart';
+import 'package:fluffychat/pangea/course_plans/courses/get_localized_courses_request.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
 import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -31,14 +32,6 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   Object? _profileError;
   Object? _courseError;
 
-  final List<String> avatarPaths = const [
-    "assets/pangea/Avatar_1.png",
-    "assets/pangea/Avatar_2.png",
-    "assets/pangea/Avatar_3.png",
-    "assets/pangea/Avatar_4.png",
-    "assets/pangea/Avatar_5.png",
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -48,9 +41,16 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   String? _spaceId;
   String? _courseLangCode;
 
-  String? get _cachedLangCode => LangCodeRepo.get();
+  String avatarPath(int num) => "avatar_$num.png";
 
-  String? get _langCode => _courseLangCode ?? _cachedLangCode;
+  Future<LanguageSettings?> get _cachedLangCode => LangCodeRepo.get();
+
+  Future<String?> get _targetLangCode async =>
+      _courseLangCode ?? (await _cachedLangCode)?.targetLangCode;
+
+  Future<String?> get _baseLangCode async =>
+      (await _cachedLangCode)?.baseLangCode ??
+      MatrixState.pangeaController.languageController.systemLanguage?.langCode;
 
   String? get _cachedSpaceCode =>
       MatrixState.pangeaController.spaceCodeController.cachedSpaceCode;
@@ -98,7 +98,12 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
         throw Exception('No course plan associated with space $spaceId');
       }
 
-      final course = await CoursePlansRepo.get(courseId);
+      final course = await CoursePlansRepo.get(
+        GetLocalizedCoursesRequest(
+          coursePlanIds: [courseId],
+          l1: MatrixState.pangeaController.languageController.activeL1Code()!,
+        ),
+      );
 
       _spaceId = spaceId;
       _courseLangCode = course.targetLanguage;
@@ -111,16 +116,10 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     final client = Matrix.of(context).client;
     try {
       final random = Random();
-      final selectedAvatarPath =
-          avatarPaths[random.nextInt(avatarPaths.length)];
-
-      final ByteData byteData = await rootBundle.load(selectedAvatarPath);
-      final Uint8List bytes = byteData.buffer.asUint8List();
-      final file = MatrixFile(
-        bytes: bytes,
-        name: selectedAvatarPath,
-      );
-      await client.setAvatar(file);
+      final selectedAvatarPath = avatarPath(random.nextInt(4) + 1);
+      final avatarUrl =
+          Uri.parse("${AppConfig.assetsBaseURL}/$selectedAvatarPath");
+      await client.setAvatarUrl(client.userID!, avatarUrl);
     } catch (err, s) {
       ErrorHandler.logError(
         e: err,
@@ -130,11 +129,15 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
     }
   }
 
-  Future<void> _updateTargetLanguage() async {
-    if (_langCode == null) return;
+  Future<void> _updateLanguageSettings() async {
+    final targetLangCode = await _targetLangCode;
+    final baseLangCode = await _baseLangCode;
     await MatrixState.pangeaController.userController.updateProfile(
       (profile) {
-        profile.userSettings.targetLanguage = _langCode;
+        profile.userSettings.targetLanguage = targetLangCode;
+        if (baseLangCode != null) {
+          profile.userSettings.sourceLanguage = baseLangCode;
+        }
         return profile;
       },
       waitForDataInSync: true,
@@ -144,44 +147,43 @@ class CreatePangeaAccountPageState extends State<CreatePangeaAccountPage> {
   Future<void> _createUserInPangea() async {
     final l2Set = await MatrixState.pangeaController.userController.isUserL2Set;
     if (l2Set) {
-      await _updateTargetLanguage();
+      await _updateLanguageSettings();
       _onProfileCreated();
       return;
     }
 
     try {
-      if (_langCode == null) {
-        // at this point, there's no cached selected language, and couldn't get
-        // language from cached course code, so go back to the language selection page
-        if (mounted) {
-          context.go('/registration');
-        }
-        return;
+      final baseLangCode = await _baseLangCode;
+      final targetLangCode = await _targetLangCode;
+
+      // User's L2 is not set and they niether have a target language in their
+      // local storage nor can they get it from a course they plan to join.
+      // Redirect back to language selection.
+      // This can happen if a user creates a new account via login => SSO
+      if (targetLangCode == null) {
+        context.go('/registration');
       }
 
       final updateFuture = [
         _setAvatar(),
         MatrixState.pangeaController.userController.updateProfile(
           (profile) {
-            final systemLang = MatrixState
-                .pangeaController.languageController.systemLanguage?.langCode;
-
-            if (systemLang != null) {
-              profile.userSettings.sourceLanguage = systemLang;
+            profile.userSettings.targetLanguage = targetLangCode;
+            if (baseLangCode != null) {
+              profile.userSettings.sourceLanguage = baseLangCode;
             }
-
-            profile.userSettings.targetLanguage = _langCode;
             profile.userSettings.createdAt = DateTime.now();
             return profile;
           },
           waitForDataInSync: true,
         ),
-        MatrixState.pangeaController.userController.updateAnalyticsProfile(
-          targetLanguage: PLanguageStore.byLangCode(_langCode!),
-          baseLanguage:
-              MatrixState.pangeaController.languageController.systemLanguage,
-          level: 1,
-        ),
+        if (targetLangCode != null)
+          MatrixState.pangeaController.userController.updateAnalyticsProfile(
+            targetLanguage: PLanguageStore.byLangCode(targetLangCode),
+            baseLanguage:
+                MatrixState.pangeaController.languageController.systemLanguage,
+            level: 1,
+          ),
       ];
 
       await Future.wait(updateFuture).timeout(

@@ -23,6 +23,7 @@ import 'package:fluffychat/pangea/toolbar/widgets/select_mode_buttons.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import '../../../utils/url_launcher.dart';
 
@@ -468,35 +469,44 @@ class HtmlMessage extends StatelessWidget {
                       animateIn: isTransitionAnimation,
                       textColor: textColor,
                     ),
-                  MouseRegion(
-                    cursor: SystemMouseCursors.click,
-                    child: GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: onClick != null && token != null
-                          ? () => onClick?.call(token)
-                          : null,
-                      child: RichText(
-                        textDirection: pangeaMessageEvent?.textDirection,
-                        text: TextSpan(
-                          children: [
-                            LinkifySpan(
-                              text: node.text.trim(),
-                              style: renderer.style(
-                                context,
-                                color: renderer.backgroundColor(
+                  CompositedTransformTarget(
+                    link: token != null
+                        ? MatrixState.pAnyState
+                            .layerLinkAndKey(
+                              "message-token-${token.text.uniqueKey}-${event.eventId}",
+                            )
+                            .link
+                        : LayerLink(),
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: onClick != null && token != null
+                            ? () => onClick?.call(token)
+                            : null,
+                        child: RichText(
+                          textDirection: pangeaMessageEvent?.textDirection,
+                          text: TextSpan(
+                            children: [
+                              LinkifySpan(
+                                text: node.text.trim(),
+                                style: renderer.style(
                                   context,
-                                  selected,
-                                  highlighted,
-                                  isNew,
-                                  readingAssistanceMode ==
-                                      ReadingAssistanceMode.practiceMode,
+                                  color: renderer.backgroundColor(
+                                    context,
+                                    selected,
+                                    highlighted,
+                                    isNew,
+                                    readingAssistanceMode ==
+                                        ReadingAssistanceMode.practiceMode,
+                                  ),
                                 ),
+                                linkStyle: linkStyle,
+                                onOpen: (url) =>
+                                    UrlLauncher(context, url.url).launchUrl(),
                               ),
-                              linkStyle: linkStyle,
-                              onOpen: (url) =>
-                                  UrlLauncher(context, url.url).launchUrl(),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -1011,35 +1021,33 @@ class HtmlMessage extends StatelessWidget {
     //   overflow: TextOverflow.fade,
     // );
     final parsed = parser.parse(_addTokenTags()).body ?? dom.Element.html('');
-    return SelectionArea(
-      child: GestureDetector(
-        onTap: () {
-          if (overlayController == null) {
-            controller.showToolbar(
-              pangeaMessageEvent?.event ?? event,
-              pangeaMessageEvent: pangeaMessageEvent,
-              nextEvent: nextEvent,
-              prevEvent: prevEvent,
-            );
-          }
-        },
-        child: Text.rich(
-          textScaler: TextScaler.noScaling,
-          _renderHtml(
-            parsed,
-            context,
-            TextStyle(
-              fontSize: fontSize,
-              color: textColor,
-            ),
-          ),
-          style: TextStyle(
+    return GestureDetector(
+      onTap: () {
+        if (overlayController == null) {
+          controller.showToolbar(
+            pangeaMessageEvent?.event ?? event,
+            pangeaMessageEvent: pangeaMessageEvent,
+            nextEvent: nextEvent,
+            prevEvent: prevEvent,
+          );
+        }
+      },
+      child: Text.rich(
+        textScaler: TextScaler.noScaling,
+        _renderHtml(
+          parsed,
+          context,
+          TextStyle(
             fontSize: fontSize,
             color: textColor,
           ),
-          maxLines: limitHeight ? 64 : null,
-          overflow: TextOverflow.fade,
         ),
+        style: TextStyle(
+          fontSize: fontSize,
+          color: textColor,
+        ),
+        maxLines: limitHeight ? 64 : null,
+        overflow: TextOverflow.fade,
       ),
     );
   }
