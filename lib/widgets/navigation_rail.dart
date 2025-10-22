@@ -240,8 +240,8 @@ class SpacesNavigationRail extends StatelessWidget {
                               size: 16,
                             ),
                             position: b.BadgePosition.topEnd(
-                              top: -4,
-                              end: -8,
+                              top: -5,
+                              end: -7,
                             ),
                             child: ClipPath(
                               clipper: MapClipper(),
