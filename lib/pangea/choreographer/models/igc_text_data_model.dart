@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/utils/match_style_util.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/autocorrect_span.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -164,10 +165,14 @@ class IGCTextData {
         spans.add(TextSpan(text: text, style: defaultStyle));
       }
 
-      final style = match.textStyle(
-        matches.indexWhere((m) => m.match.offset == match.match.offset),
-        _openMatchIndex,
+      final matchIndex = matches.indexWhere(
+        (m) => m.match.offset == match.match.offset,
+      );
+
+      final style = MatchStyleUtil.textStyle(
+        match,
         defaultStyle,
+        _openMatchIndex != null && _openMatchIndex == matchIndex,
       );
 
       spans.add(_matchSpan(match, style, onUndo));
@@ -243,6 +248,7 @@ class IGCTextData {
     );
   }
 
+  /// Internal runner for applying a replacement to the current text.
   void _runReplacement(
     int offset,
     int length,

@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/choreographer/enums/span_data_type.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -99,49 +98,6 @@ class PangeaMatch {
 
   bool isOffsetInMatchSpan(int offset) =>
       offset >= match.offset && offset < match.offset + match.length;
-
-  Color get underlineColor {
-    if (status == PangeaMatchStatus.automatic) {
-      return const Color.fromARGB(187, 132, 96, 224);
-    }
-
-    switch (match.rule?.id ?? "unknown") {
-      case MatchRuleIds.interactiveTranslation:
-        return const Color.fromARGB(187, 132, 96, 224);
-      case MatchRuleIds.tokenNeedsTranslation:
-      case MatchRuleIds.tokenSpanNeedsTranslation:
-        return const Color.fromARGB(186, 255, 132, 0);
-      default:
-        return const Color.fromARGB(149, 255, 17, 0);
-    }
-  }
-
-  TextStyle _underlineStyle(Color color) => TextStyle(
-        decoration: TextDecoration.underline,
-        decorationColor: color,
-        decorationThickness: 5,
-      );
-
-  TextStyle textStyle(
-    int matchIndex,
-    int? openMatchIndex,
-    TextStyle? existingStyle,
-  ) {
-    double opacityFactor = 1.0;
-    if (openMatchIndex != null && openMatchIndex != matchIndex) {
-      opacityFactor = 0.2;
-    }
-
-    final int alpha = (255 * opacityFactor).round();
-    return existingStyle?.merge(
-          _underlineStyle(
-            underlineColor.withAlpha(alpha),
-          ),
-        ) ??
-        _underlineStyle(
-          underlineColor.withAlpha(alpha),
-        );
-  }
 
   PangeaMatch get copyWith => PangeaMatch.fromJson(toJson());
 }
