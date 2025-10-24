@@ -60,7 +60,7 @@ class CourseCodePageState extends State<CourseCodePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          L10n.of(context).joinCourseWithCode,
+          L10n.of(context).joinWithCode,
           style: (FluffyThemes.isColumnMode(context)
               ? const TextStyle()
               : const TextStyle(
