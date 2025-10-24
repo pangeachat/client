@@ -175,7 +175,7 @@ class ChatView extends StatelessWidget {
         exceptionContext: ExceptionContext.joinRoom,
       );
     }
-    final bottomSheetPadding = FluffyThemes.isColumnMode(context) ? 16.0 : 8.0;
+    const bottomSheetPadding = 16.0;
     final scrollUpBannerEventId = controller.scrollUpBannerEventId;
 
     final accountConfig = Matrix.of(context).client.applicationAccountConfig;
@@ -369,7 +369,8 @@ class ChatView extends StatelessWidget {
                             // Pangea#
                             if (controller.room.isExtinct)
                               Container(
-                                margin: EdgeInsets.all(bottomSheetPadding),
+                                margin:
+                                    const EdgeInsets.all(bottomSheetPadding),
                                 width: double.infinity,
                                 child: ElevatedButton.icon(
                                   icon: const Icon(Icons.chevron_right),
@@ -385,7 +386,8 @@ class ChatView extends StatelessWidget {
                                 controller.room.isAbandonedDMRoom == true)
                               // Pangea#
                               Container(
-                                margin: EdgeInsets.all(bottomSheetPadding),
+                                margin:
+                                    const EdgeInsets.all(bottomSheetPadding),
                                 constraints: const BoxConstraints(
                                   maxWidth: FluffyThemes.maxTimelineWidth,
                                 ),
