@@ -1,10 +1,14 @@
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/learning_settings/utils/p_language_store.dart';
+import 'package:fluffychat/pangea/learning_settings/widgets/p_language_dropdown.dart';
 import 'package:fluffychat/pangea/login/utils/lang_code_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+
+class IdenticalLanguageException implements Exception {}
 
 class LanguageSelectionPage extends StatefulWidget {
   const LanguageSelectionPage({super.key});
@@ -17,6 +21,7 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   final languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
   List<LanguageModel> languageMap =
       MatrixState.pangeaController.pLanguageStore.targetOptions;
+  Object? _error;
 
   LanguageModel? _selectedLanguage;
   LanguageModel? _baseLanguage;
@@ -57,8 +62,18 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
     setState(() => _selectedLanguage = l);
   }
 
+  void _setBaseLanguage(LanguageModel? l) {
+    setState(() => _baseLanguage = l);
+  }
+
   Future<void> _submit() async {
+    setState(() => _error = null);
+
     if (_selectedLanguage == null) return;
+    if (_selectedLanguage?.langCodeShort == _baseLanguage?.langCodeShort) {
+      setState(() => _error = IdenticalLanguageException());
+      return;
+    }
 
     await LangCodeRepo.set(
       LanguageSettings(
@@ -179,6 +194,22 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
                           ),
                         ],
                       ),
+                    ),
+                    AnimatedSize(
+                      duration: FluffyThemes.animationDuration,
+                      child: _selectedLanguage != null &&
+                              _selectedLanguage?.langCodeShort ==
+                                  _baseLanguage?.langCodeShort
+                          ? PLanguageDropdown(
+                              languages: languages,
+                              onChange: _setBaseLanguage,
+                              initialLanguage: _baseLanguage,
+                              decorationText: L10n.of(context).myBaseLanguage,
+                              error: _error is IdenticalLanguageException
+                                  ? L10n.of(context).noIdenticalLanguages
+                                  : null,
+                            )
+                          : const SizedBox(),
                     ),
                     Text(
                       L10n.of(context).chooseLanguage,
