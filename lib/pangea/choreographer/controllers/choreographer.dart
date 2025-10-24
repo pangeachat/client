@@ -609,7 +609,7 @@ class Choreographer {
     choreoRecord = null;
     translatedText = null;
     itController.clear();
-    igc.dispose();
+    igc.clear();
     _resetDebounceTimer();
   }
 

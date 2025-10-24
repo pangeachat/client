@@ -3,71 +3,48 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:async/async.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_response_model.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../../common/config/environment.dart';
 import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
 
+class _TranslateCacheItem {
+  final Future<FullTextTranslationResponseModel> response;
+  final DateTime timestamp;
+
+  _TranslateCacheItem({
+    required this.response,
+    required this.timestamp,
+  });
+}
+
 class FullTextTranslationRepo {
-  static final Map<String, FullTextTranslationResponseModel> _cache = {};
-  static Timer? _cacheTimer;
+  static final Map<String, _TranslateCacheItem> _cache = {};
+  static const Duration _cacheDuration = Duration(minutes: 10);
 
-  // start a timer to clear the cache
-  static void startCacheTimer() {
-    _cacheTimer = Timer.periodic(const Duration(minutes: 10), (timer) {
-      clearCache();
-    });
-  }
-
-  // stop the cache time (optional)
-  static void stopCacheTimer() {
-    _cacheTimer?.cancel();
-  }
-
-  // method to clear the cache
-  static void clearCache() {
-    _cache.clear();
-  }
-
-  static String _generateCacheKey({
-    required String text,
-    required String srcLang,
-    required String tgtLang,
-    required int offset,
-    required int length,
-    bool? deepL,
-  }) {
-    return '${text.hashCode}-$srcLang-$tgtLang-$deepL-$offset-$length';
-  }
-
-  static Future<FullTextTranslationResponseModel> translate({
-    required String accessToken,
-    required FullTextTranslationRequestModel request,
-  }) async {
-    // start cache timer when the first API call is made
-    startCacheTimer();
-
-    final cacheKey = _generateCacheKey(
-      text: request.text,
-      srcLang: request.srcLang ?? '',
-      tgtLang: request.tgtLang,
-      offset: request.offset ?? 0,
-      length: request.length ?? 0,
-      deepL: request.deepL,
-    );
-
-    // check cache first
-    if (_cache.containsKey(cacheKey)) {
-      if (_cache[cacheKey] == null) {
-        _cache.remove(cacheKey);
-      } else {
-        return _cache[cacheKey]!;
-      }
+  static Future<Result<FullTextTranslationResponseModel>> get(
+    String accessToken,
+    FullTextTranslationRequestModel request,
+  ) {
+    final cached = _getCached(request);
+    if (cached != null) {
+      return _getResult(request, cached);
     }
 
+    final future = _fetch(accessToken, request);
+    _setCached(request, future);
+    return _getResult(request, future);
+  }
+
+  static Future<FullTextTranslationResponseModel> _fetch(
+    String accessToken,
+    FullTextTranslationRequestModel request,
+  ) async {
     final Requests req = Requests(
       choreoApiKey: Environment.choreoApiKey,
       accessToken: accessToken,
@@ -78,13 +55,57 @@ class FullTextTranslationRepo {
       body: request.toJson(),
     );
 
-    final responseModel = FullTextTranslationResponseModel.fromJson(
+    if (res.statusCode != 200) {
+      throw Exception(
+        'Failed to translate text: ${res.statusCode} ${res.reasonPhrase}',
+      );
+    }
+
+    return FullTextTranslationResponseModel.fromJson(
       jsonDecode(utf8.decode(res.bodyBytes)),
     );
-
-    // store response in cache
-    _cache[cacheKey] = responseModel;
-
-    return responseModel;
   }
+
+  static Future<Result<FullTextTranslationResponseModel>> _getResult(
+    FullTextTranslationRequestModel request,
+    Future<FullTextTranslationResponseModel> future,
+  ) async {
+    try {
+      final res = await future;
+      return Result.value(res);
+    } catch (e, s) {
+      _cache.remove(request.hashCode.toString());
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: request.toJson(),
+      );
+      return Result.error(e);
+    }
+  }
+
+  static Future<FullTextTranslationResponseModel>? _getCached(
+    FullTextTranslationRequestModel request,
+  ) {
+    final cached = _cache[request.hashCode.toString()];
+    if (cached == null) {
+      return null;
+    }
+
+    if (DateTime.now().difference(cached.timestamp) < _cacheDuration) {
+      return cached.response;
+    }
+
+    _cache.remove(request.hashCode.toString());
+    return null;
+  }
+
+  static void _setCached(
+    FullTextTranslationRequestModel request,
+    Future<FullTextTranslationResponseModel> response,
+  ) =>
+      _cache[request.hashCode.toString()] = _TranslateCacheItem(
+        response: response,
+        timestamp: DateTime.now(),
+      );
 }

@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_response_model.dart';
 import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -19,6 +18,7 @@ import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart'
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 // TODO - make this static and take it out of the _pangeaController
 // will need to pass accessToken to the requests
@@ -26,8 +26,6 @@ class MessageDataController extends BaseController {
   late PangeaController _pangeaController;
 
   final Map<int, Future<TokensResponseModel>> _tokensCache = {};
-  final Map<int, Future<PangeaRepresentation>> _representationCache = {};
-  final Map<int, Future<SttTranslationModel>> _sttTranslationCache = {};
   late Timer _cacheTimer;
 
   MessageDataController(PangeaController pangeaController) {
@@ -45,8 +43,6 @@ class MessageDataController extends BaseController {
   /// Clears the token and representation caches
   void _clearCache() {
     _tokensCache.clear();
-    _representationCache.clear();
-    _sttTranslationCache.clear();
     debugPrint("message data cache cleared.");
   }
 
@@ -116,24 +112,25 @@ class MessageDataController extends BaseController {
   Future<PangeaRepresentation> getPangeaRepresentation({
     required FullTextTranslationRequestModel req,
     required Event messageEvent,
-  }) async {
-    return _representationCache[req.hashCode] ??=
-        _getPangeaRepresentation(req: req, messageEvent: messageEvent);
-  }
+  }) =>
+      _getPangeaRepresentation(req: req, messageEvent: messageEvent);
 
   Future<PangeaRepresentation> _getPangeaRepresentation({
     required FullTextTranslationRequestModel req,
     required Event messageEvent,
   }) async {
-    final FullTextTranslationResponseModel res =
-        await FullTextTranslationRepo.translate(
-      accessToken: _pangeaController.userController.accessToken,
-      request: req,
+    final res = await FullTextTranslationRepo.get(
+      _pangeaController.userController.accessToken,
+      req,
     );
+
+    if (res.isError) {
+      throw res.error!;
+    }
 
     final rep = PangeaRepresentation(
       langCode: req.tgtLang,
-      text: res.bestTranslation,
+      text: res.result!.bestTranslation,
       originalSent: false,
       originalWritten: false,
     );
@@ -161,11 +158,14 @@ class MessageDataController extends BaseController {
     required PangeaMessageEvent messageEvent,
     bool originalSent = false,
   }) async {
-    final FullTextTranslationResponseModel res =
-        await FullTextTranslationRepo.translate(
-      accessToken: _pangeaController.userController.accessToken,
-      request: req,
+    final res = await FullTextTranslationRepo.get(
+      _pangeaController.userController.accessToken,
+      req,
     );
+
+    if (res.isError) {
+      return null;
+    }
 
     if (originalSent && messageEvent.originalSent != null) {
       originalSent = false;
@@ -173,7 +173,7 @@ class MessageDataController extends BaseController {
 
     final rep = PangeaRepresentation(
       langCode: req.tgtLang,
-      text: res.bestTranslation,
+      text: res.result!.bestTranslation,
       originalSent: originalSent,
       originalWritten: false,
     );
@@ -230,27 +230,28 @@ class MessageDataController extends BaseController {
     required FullTextTranslationRequestModel req,
     required Room? room,
   }) =>
-      _sttTranslationCache[req.hashCode] ??= _getSttTranslation(
+      _getSttTranslation(
         repEventId: repEventId,
         req: req,
         room: room,
-      ).catchError((e, s) {
-        _sttTranslationCache.remove(req.hashCode);
-        return Future<SttTranslationModel>.error(e, s);
-      });
+      );
 
   Future<SttTranslationModel> _getSttTranslation({
     required String? repEventId,
     required FullTextTranslationRequestModel req,
     required Room? room,
   }) async {
-    final res = await FullTextTranslationRepo.translate(
-      accessToken: _pangeaController.userController.accessToken,
-      request: req,
+    final res = await FullTextTranslationRepo.get(
+      _pangeaController.userController.accessToken,
+      req,
     );
 
+    if (res.isError) {
+      throw res.error!;
+    }
+
     final translation = SttTranslationModel(
-      translation: res.bestTranslation,
+      translation: res.result!.bestTranslation,
       langCode: req.tgtLang,
     );
 

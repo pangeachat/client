@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:async/async.dart';
+import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
@@ -16,170 +16,96 @@ import 'package:fluffychat/pangea/choreographer/repo/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/repo/igc_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
 import '../../common/utils/overlay.dart';
-
-class _IGCTextDataCacheItem {
-  Future<IGCTextData> data;
-
-  _IGCTextDataCacheItem({required this.data});
-}
-
-class _IgnoredMatchCacheItem {
-  PangeaMatch match;
-
-  String get spanText => match.match.fullText.substring(
-        match.match.offset,
-        match.match.offset + match.match.length,
-      );
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    return other is _IgnoredMatchCacheItem && other.spanText == spanText;
-  }
-
-  @override
-  int get hashCode => spanText.hashCode;
-
-  _IgnoredMatchCacheItem({required this.match});
-}
 
 class IgcController {
   Choreographer choreographer;
   IGCTextData? igcTextData;
   late SpanDataController spanDataController;
 
-  // cache for IGC data and prev message
-  final Map<int, _IGCTextDataCacheItem> _igcTextDataCache = {};
-
-  final Map<int, _IgnoredMatchCacheItem> _ignoredMatchCache = {};
-
-  Timer? _cacheClearTimer;
-
   IgcController(this.choreographer) {
     spanDataController = SpanDataController(choreographer);
-    _initializeCacheClearing();
-  }
-
-  void _initializeCacheClearing() {
-    const duration = Duration(minutes: 2);
-    _cacheClearTimer = Timer.periodic(duration, (Timer t) {
-      _igcTextDataCache.clear();
-      _ignoredMatchCache.clear();
-    });
   }
 
   Future<void> getIGCTextData() async {
-    try {
-      if (choreographer.currentText.isEmpty) return clear();
-      debugPrint('getIGCTextData called with ${choreographer.currentText}');
+    if (choreographer.currentText.isEmpty) return clear();
+    debugPrint('getIGCTextData called with ${choreographer.currentText}');
 
-      final IGCRequestModel reqBody = IGCRequestModel(
-        fullText: choreographer.currentText,
-        userId: choreographer.pangeaController.userController.userId!,
-        userL1: choreographer.l1LangCode!,
-        userL2: choreographer.l2LangCode!,
-        enableIGC: choreographer.igcEnabled &&
-            choreographer.choreoMode != ChoreoMode.it,
-        enableIT: choreographer.itEnabled &&
-            choreographer.choreoMode != ChoreoMode.it,
-        prevMessages: _prevMessages(),
-      );
+    final IGCRequestModel reqBody = IGCRequestModel(
+      fullText: choreographer.currentText,
+      userId: choreographer.pangeaController.userController.userId!,
+      userL1: choreographer.l1LangCode!,
+      userL2: choreographer.l2LangCode!,
+      enableIGC:
+          choreographer.igcEnabled && choreographer.choreoMode != ChoreoMode.it,
+      enableIT:
+          choreographer.itEnabled && choreographer.choreoMode != ChoreoMode.it,
+      prevMessages: _prevMessages(),
+    );
 
-      if (_cacheClearTimer == null || !_cacheClearTimer!.isActive) {
-        _initializeCacheClearing();
-      }
-
-      // if the request is not in the cache, add it
-      if (!_igcTextDataCache.containsKey(reqBody.hashCode)) {
-        _igcTextDataCache[reqBody.hashCode] = _IGCTextDataCacheItem(
-          data: IgcRepo.getIGC(
-            choreographer.accessToken,
-            igcRequest: reqBody,
-          ),
+    final res = await IgcRepo.get(
+      choreographer.accessToken,
+      reqBody,
+    ).timeout(
+      (const Duration(seconds: 10)),
+      onTimeout: () {
+        return Result.error(
+          TimeoutException('IGC request timed out'),
         );
-      }
+      },
+    );
 
-      final IGCTextData igcTextDataResponse =
-          await _igcTextDataCache[reqBody.hashCode]!
-              .data
-              .timeout((const Duration(seconds: 10)));
-
-      // this will happen when the user changes the input while igc is fetching results
-      if (igcTextDataResponse.originalInput.trim() !=
-          choreographer.currentText.trim()) {
-        return;
-      }
-      // get ignored matches from the original igcTextData
-      // if the new matches are the same as the original match
-      // could possibly change the status of the new match
-      // thing is the same if the text we are trying to change is the smae
-      // as the new text we are trying to change (suggestion is the same)
-
-      // Check for duplicate or minor text changes that shouldn't trigger suggestions
-      // checks for duplicate input
-
-      igcTextData = igcTextDataResponse;
-
-      final List<PangeaMatch> filteredMatches = List.from(igcTextData!.matches);
-      for (final PangeaMatch match in igcTextData!.matches) {
-        final _IgnoredMatchCacheItem cacheEntry =
-            _IgnoredMatchCacheItem(match: match);
-
-        if (_ignoredMatchCache.containsKey(cacheEntry.hashCode)) {
-          filteredMatches.remove(match);
-        }
-      }
-
-      igcTextData!.matches = filteredMatches;
-      choreographer.acceptNormalizationMatches();
-
-      // TODO - for each new match,
-      // check if existing igcTextData has one and only one match with the same error text and correction
-      // if so, keep the original match and discard the new one
-      // if not, add the new match to the existing igcTextData
-
-      // After fetching igc data, pre-call span details for each match optimistically.
-      // This will make the loading of span details faster for the user
-      if (igcTextData?.matches.isNotEmpty ?? false) {
-        for (int i = 0; i < igcTextData!.matches.length; i++) {
-          if (!igcTextData!.matches[i].isITStart) {
-            spanDataController.getSpanDetails(i);
-          }
-        }
-      }
-
-      debugPrint("igc text ${igcTextData.toString()}");
-    } catch (err, stack) {
-      debugger(when: kDebugMode);
-      choreographer.errorService.setError(
-        ChoreoError(raw: err),
-      );
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {
-          "currentText": choreographer.currentText,
-          "userL1": choreographer.l1LangCode,
-          "userL2": choreographer.l2LangCode,
-          "igcEnabled": choreographer.igcEnabled,
-          "itEnabled": choreographer.itEnabled,
-          "matches": igcTextData?.matches.map((e) => e.toJson()),
-        },
-        level:
-            err is TimeoutException ? SentryLevel.warning : SentryLevel.error,
-      );
+    if (res.isError) {
+      choreographer.errorService.setError(ChoreoError(raw: res.error));
       clear();
+      return;
+    }
+
+    // this will happen when the user changes the input while igc is fetching results
+    if (res.result!.originalInput.trim() != choreographer.currentText.trim()) {
+      return;
+    }
+    // get ignored matches from the original igcTextData
+    // if the new matches are the same as the original match
+    // could possibly change the status of the new match
+    // thing is the same if the text we are trying to change is the smae
+    // as the new text we are trying to change (suggestion is the same)
+
+    // Check for duplicate or minor text changes that shouldn't trigger suggestions
+    // checks for duplicate input
+
+    igcTextData = res.result!;
+    final List<PangeaMatch> filteredMatches = List.from(igcTextData!.matches);
+    for (final PangeaMatch match in igcTextData!.matches) {
+      if (IgcRepo.isIgnored(match)) {
+        filteredMatches.remove(match);
+      }
+    }
+
+    igcTextData!.matches = filteredMatches;
+    choreographer.acceptNormalizationMatches();
+
+    // TODO - for each new match,
+    // check if existing igcTextData has one and only one match with the same error text and correction
+    // if so, keep the original match and discard the new one
+    // if not, add the new match to the existing igcTextData
+
+    // After fetching igc data, pre-call span details for each match optimistically.
+    // This will make the loading of span details faster for the user
+    if (igcTextData?.matches.isNotEmpty ?? false) {
+      for (int i = 0; i < igcTextData!.matches.length; i++) {
+        if (!igcTextData!.matches[i].isITStart) {
+          spanDataController.getSpanDetails(i);
+        }
+      }
     }
   }
 
   void onIgnoreMatch(PangeaMatch match) {
-    final cacheEntry = _IgnoredMatchCacheItem(match: match);
-    if (!_ignoredMatchCache.containsKey(cacheEntry.hashCode)) {
-      _ignoredMatchCache[cacheEntry.hashCode] = cacheEntry;
-    }
+    IgcRepo.ignore(match);
   }
 
   void showFirstMatch(BuildContext context) {
@@ -281,12 +207,5 @@ class IgcController {
     MatrixState.pAnyState.closeAllOverlays(
       filter: RegExp(r'span_card_overlay_\d+'),
     );
-  }
-
-  dispose() {
-    clear();
-    _igcTextDataCache.clear();
-    _ignoredMatchCache.clear();
-    _cacheClearTimer?.cancel();
   }
 }

@@ -1,15 +1,75 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
+import 'package:async/async.dart';
 import 'package:http/http.dart';
 
+import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/igc_request_model.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
 import '../models/igc_text_data_model.dart';
 
+class _IgcCacheItem {
+  final Future<IGCTextData> data;
+  final DateTime timestamp;
+
+  _IgcCacheItem({
+    required this.data,
+    required this.timestamp,
+  });
+}
+
+class _IgnoredMatchCacheItem {
+  final PangeaMatch match;
+  final DateTime timestamp;
+
+  String get spanText => match.match.fullText.characters
+      .skip(match.match.offset)
+      .take(match.match.length)
+      .toString();
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is _IgnoredMatchCacheItem && other.spanText == spanText;
+  }
+
+  @override
+  int get hashCode => spanText.hashCode;
+
+  _IgnoredMatchCacheItem({
+    required this.match,
+    required this.timestamp,
+  });
+}
+
 class IgcRepo {
-  static Future<IGCTextData> getIGC(
+  static final Map<String, _IgcCacheItem> _igcCache = {};
+  static final Map<String, _IgnoredMatchCacheItem> _ignoredMatchCache = {};
+  static const Duration _cacheDuration = Duration(minutes: 10);
+
+  static Future<Result<IGCTextData>> get(
+    String? accessToken,
+    IGCRequestModel igcRequest,
+  ) {
+    final cached = _getCached(igcRequest);
+    if (cached != null) {
+      return _getResult(igcRequest, cached);
+    }
+
+    final future = _fetch(
+      accessToken,
+      igcRequest: igcRequest,
+    );
+    _setCached(igcRequest, future);
+    return _getResult(igcRequest, future);
+  }
+
+  static Future<IGCTextData> _fetch(
     String? accessToken, {
     required IGCRequestModel igcRequest,
   }) async {
@@ -22,11 +82,98 @@ class IgcRepo {
       body: igcRequest.toJson(),
     );
 
+    if (res.statusCode != 200) {
+      throw Exception(
+        'Failed to fetch IGC data: ${res.statusCode} ${res.reasonPhrase}',
+      );
+    }
+
     final Map<String, dynamic> json =
         jsonDecode(utf8.decode(res.bodyBytes).toString());
 
-    final IGCTextData response = IGCTextData.fromJson(json);
+    return IGCTextData.fromJson(json);
+  }
 
-    return response;
+  static Future<Result<IGCTextData>> _getResult(
+    IGCRequestModel request,
+    Future<IGCTextData> future,
+  ) async {
+    try {
+      final res = await future;
+      return Result.value(res);
+    } catch (e, s) {
+      _igcCache.remove(request.hashCode.toString());
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: request.toJson(),
+      );
+      return Result.error(e);
+    }
+  }
+
+  static Future<IGCTextData>? _getCached(
+    IGCRequestModel request,
+  ) {
+    final cached = _igcCache[request.hashCode.toString()];
+    if (cached == null) {
+      return null;
+    }
+
+    if (DateTime.now().difference(cached.timestamp) < _cacheDuration) {
+      return cached.data;
+    }
+
+    _igcCache.remove(request.hashCode.toString());
+    return null;
+  }
+
+  static void _setCached(
+    IGCRequestModel request,
+    Future<IGCTextData> response,
+  ) =>
+      _igcCache[request.hashCode.toString()] = _IgcCacheItem(
+        data: response,
+        timestamp: DateTime.now(),
+      );
+
+  static void ignore(PangeaMatch match) {
+    _setCachedIgnoredSpan(match);
+  }
+
+  static bool isIgnored(PangeaMatch match) {
+    final cached = _getCachedIgnoredSpan(match);
+    return cached != null;
+  }
+
+  static PangeaMatch? _getCachedIgnoredSpan(
+    PangeaMatch match,
+  ) {
+    final cacheEntry = _IgnoredMatchCacheItem(
+      match: match,
+      timestamp: DateTime.now(),
+    );
+
+    final cached = _ignoredMatchCache[cacheEntry.hashCode.toString()];
+    if (cached == null) {
+      return null;
+    }
+
+    if (DateTime.now().difference(cached.timestamp) < _cacheDuration) {
+      return cached.match;
+    }
+
+    _ignoredMatchCache.remove(cacheEntry.hashCode.toString());
+    return null;
+  }
+
+  static void _setCachedIgnoredSpan(
+    PangeaMatch match,
+  ) {
+    final cacheEntry = _IgnoredMatchCacheItem(
+      match: match,
+      timestamp: DateTime.now(),
+    );
+    _ignoredMatchCache[cacheEntry.hashCode.toString()] = cacheEntry;
   }
 }

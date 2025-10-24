@@ -1,4 +1,4 @@
-import 'package:fluffychat/pangea/choreographer/repo/it_response_model.dart';
+import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class CustomInputRequestModel {

@@ -9,7 +9,7 @@ import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_response_model.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
 import '../../common/controllers/pangea_controller.dart';
@@ -53,27 +53,17 @@ class ITFeedbackCardController extends State<ITFeedbackCard> {
       isLoadingFeedback = true;
     });
 
-    try {
-      res = await FullTextTranslationRepo.translate(
-        accessToken: controller.userController.accessToken,
-        request: widget.req,
-      );
-    } catch (e, s) {
-      error = e;
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "req": widget.req.toJson(),
-          "choiceFeedback": widget.choiceFeedback,
-        },
-      );
-    } finally {
-      if (mounted) {
-        setState(() {
-          isLoadingFeedback = false;
-        });
-      }
+    final result = await FullTextTranslationRepo.get(
+      controller.userController.accessToken,
+      widget.req,
+    );
+    res = result.result;
+
+    if (result.isError) error = result.error;
+    if (mounted) {
+      setState(() {
+        isLoadingFeedback = false;
+      });
     }
   }
 
