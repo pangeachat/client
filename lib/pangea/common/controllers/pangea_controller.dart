@@ -14,7 +14,6 @@ import 'package:fluffychat/pangea/analytics_misc/put_analytics_controller.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_room_extension.dart';
 import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/bot_client_extension.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/contextual_definition_controller.dart';
 import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/events/controllers/message_data_controller.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -42,8 +41,6 @@ class PangeaController {
   late PutAnalyticsController putAnalytics;
   late MessageDataController messageData;
 
-  // TODO: make these static so we can remove from here
-  late ContextualDefinitionController definitions;
   late SubscriptionController subscriptionController;
   late TextToSpeechController textToSpeech;
   late SpeechToTextController speechToText;
@@ -90,7 +87,6 @@ class PangeaController {
     getAnalytics = GetAnalyticsController(this);
     putAnalytics = PutAnalyticsController(this);
     messageData = MessageDataController(this);
-    definitions = ContextualDefinitionController(this);
     subscriptionController = SubscriptionController(this);
     textToSpeech = TextToSpeechController(this);
     speechToText = SpeechToTextController(this);

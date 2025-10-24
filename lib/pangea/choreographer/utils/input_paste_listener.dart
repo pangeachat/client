@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/pangea_text_controller.dart';
+import 'package:fluffychat/pangea/choreographer/utils/pangea_text_controller.dart';
 
 class InputPasteListener {
   final PangeaTextController controller;

@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
-import 'package:fluffychat/pangea/choreographer/repo/tokens_repo.dart';
+import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
+import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_response_model.dart';
 import 'package:fluffychat/pangea/common/controllers/base_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -16,6 +17,7 @@ import 'package:fluffychat/pangea/events/models/representation_content_model.dar
 import 'package:fluffychat/pangea/events/models/stt_translation_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
+import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 
 // TODO - make this static and take it out of the _pangeaController

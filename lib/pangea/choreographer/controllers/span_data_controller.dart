@@ -8,7 +8,7 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/choreographer/repo/span_data_repo.dart';
-import 'package:fluffychat/pangea/choreographer/utils/normalize_text.dart';
+import 'package:fluffychat/pangea/choreographer/utils/text_normalization_util.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class _SpanDetailsCacheItem {
@@ -70,7 +70,8 @@ class SpanDataController {
     );
 
     return correctChoice != null &&
-        normalizeString(correctChoice) == normalizeString(errorSpan);
+        TextNormalizationUtil.normalizeString(correctChoice) ==
+            TextNormalizationUtil.normalizeString(errorSpan);
   }
 
   Future<void> getSpanDetails(

@@ -7,15 +7,16 @@ import 'package:http/http.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
+import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
+import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_response_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../../../widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
 import '../../common/controllers/pangea_controller.dart';
-import '../controllers/it_feedback_controller.dart';
 import 'igc/card_error_widget.dart';
 
 class ITFeedbackCard extends StatefulWidget {
-  final ITFeedbackRequestModel req;
+  final FullTextTranslationRequestModel req;
   final String choiceFeedback;
 
   const ITFeedbackCard({
@@ -34,7 +35,7 @@ class ITFeedbackCardController extends State<ITFeedbackCard> {
   Object? error;
   bool isLoadingFeedback = false;
   bool isTranslating = false;
-  ITFeedbackResponseModel? res;
+  FullTextTranslationResponseModel? res;
   String? translatedFeedback;
 
   Response get noLanguages => Response("", 405);
@@ -53,19 +54,10 @@ class ITFeedbackCardController extends State<ITFeedbackCard> {
     });
 
     try {
-      final resp = await FullTextTranslationRepo.translate(
+      res = await FullTextTranslationRepo.translate(
         accessToken: controller.userController.accessToken,
-        request: FullTextTranslationRequestModel(
-          text: widget.req.chosenContinuance,
-          tgtLang: controller.languageController.userL1?.langCode ??
-              widget.req.sourceTextLang,
-          userL1: controller.languageController.userL1?.langCode ??
-              widget.req.sourceTextLang,
-          userL2: controller.languageController.userL2?.langCode ??
-              widget.req.targetLang,
-        ),
+        request: widget.req,
       );
-      res = ITFeedbackResponseModel(text: resp.bestTranslation);
     } catch (e, s) {
       error = e;
       ErrorHandler.logError(
@@ -112,7 +104,7 @@ class ITFeedbackCardView extends StatelessWidget {
         alignment: WrapAlignment.center,
         children: [
           Text(
-            controller.widget.req.chosenContinuance,
+            controller.widget.req.text,
             style: BotStyle.text(context),
           ),
           const SizedBox(width: 10),
@@ -121,16 +113,15 @@ class ITFeedbackCardView extends StatelessWidget {
             style: BotStyle.text(context),
           ),
           const SizedBox(width: 10),
-          controller.res?.text != null
+          controller.res?.bestTranslation != null
               ? Text(
-                  controller.res!.text,
+                  controller.res!.bestTranslation,
                   style: BotStyle.text(context),
                 )
               : TextLoadingShimmer(
                   width: min(
                     140,
-                    characterWidth *
-                        controller.widget.req.chosenContinuance.length,
+                    characterWidth * controller.widget.req.text.length,
                   ),
                 ),
         ],

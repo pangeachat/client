@@ -13,6 +13,7 @@ import 'package:fluffychat/pangea/choreographer/controllers/span_data_controller
 import 'package:fluffychat/pangea/choreographer/models/igc_text_data_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/igc_repo.dart';
+import 'package:fluffychat/pangea/choreographer/repo/igc_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -48,8 +49,6 @@ class _IgnoredMatchCacheItem {
 class IgcController {
   Choreographer choreographer;
   IGCTextData? igcTextData;
-  Object? igcError;
-  Completer<IGCTextData> igcCompleter = Completer();
   late SpanDataController spanDataController;
 
   // cache for IGC data and prev message
@@ -77,7 +76,7 @@ class IgcController {
       if (choreographer.currentText.isEmpty) return clear();
       debugPrint('getIGCTextData called with ${choreographer.currentText}');
 
-      final IGCRequestBody reqBody = IGCRequestBody(
+      final IGCRequestModel reqBody = IGCRequestModel(
         fullText: choreographer.currentText,
         userId: choreographer.pangeaController.userController.userId!,
         userL1: choreographer.l1LangCode!,

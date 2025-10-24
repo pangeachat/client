@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import '../constants/choreo_constants.dart';
-import 'it_response_model.dart';
 
 class ITStep {
   List<Continuance> continuances;
@@ -66,5 +66,103 @@ class ITStep {
       chosen: json['chosen'],
       customInput: json['custom_input'],
     );
+  }
+}
+
+class Continuance {
+  /// only saving this top set in a condensed json form
+  double probability;
+  int level;
+  String text;
+  // List<PangeaToken> tokens;
+
+  /// saving this in a full json form
+  String description;
+  int? indexSavedByServer;
+  bool wasClicked;
+  bool inDictionary;
+  bool hasInfo;
+  bool gold;
+
+  Continuance({
+    required this.probability,
+    required this.level,
+    required this.text,
+    required this.description,
+    required this.indexSavedByServer,
+    required this.wasClicked,
+    required this.inDictionary,
+    required this.hasInfo,
+    required this.gold,
+    // required this.tokens,
+  });
+
+  factory Continuance.fromJson(Map<String, dynamic> json) {
+    // final List<PangeaToken> tokensInternal = (json[ModelKey.tokens] != null)
+    //     ? (json[ModelKey.tokens] as Iterable)
+    //         .map<PangeaToken>(
+    //           (e) => PangeaToken.fromJson(e as Map<String, dynamic>),
+    //         )
+    //         .toList()
+    //         .cast<PangeaToken>()
+    //     : [];
+    return Continuance(
+      probability: json['probability'].toDouble(),
+      level: json['level'],
+      text: json['text'],
+      description: json['description'] ?? "",
+      indexSavedByServer: json["index"],
+      inDictionary: json['in_dictionary'] ?? true,
+      wasClicked: json['clkd'] ?? false,
+      hasInfo: json['has_info'] ?? false,
+      gold: json['gold'] ?? false,
+      // tokens: tokensInternal,
+    );
+  }
+
+  Map<String, dynamic> toJson([bool condensed = false]) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['probability'] = probability;
+    data['level'] = level;
+    data['text'] = text;
+    data['clkd'] = wasClicked;
+    // data[ModelKey.tokens] = tokens.map((e) => e.toJson()).toList();
+
+    if (!condensed) {
+      data['description'] = description;
+      data['in_dictionary'] = inDictionary;
+      data['has_info'] = hasInfo;
+      data["index"] = indexSavedByServer;
+      data['gold'] = gold;
+    }
+    return data;
+  }
+
+  Color? get color {
+    if (!wasClicked) return null;
+    switch (level) {
+      case ChoreoConstants.levelThresholdForGreen:
+        return ChoreoConstants.green;
+      case ChoreoConstants.levelThresholdForYellow:
+        return ChoreoConstants.yellow;
+      case ChoreoConstants.levelThresholdForRed:
+        return ChoreoConstants.red;
+      default:
+        return null;
+    }
+  }
+
+  String? feedbackText(BuildContext context) {
+    final L10n l10n = L10n.of(context);
+    switch (level) {
+      case ChoreoConstants.levelThresholdForGreen:
+        return l10n.greenFeedback;
+      case ChoreoConstants.levelThresholdForYellow:
+        return l10n.yellowFeedback;
+      case ChoreoConstants.levelThresholdForRed:
+        return l10n.redFeedback;
+      default:
+        return null;
+    }
   }
 }

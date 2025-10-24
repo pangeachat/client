@@ -37,27 +37,4 @@ class ChoreoEvent {
       return null;
     }
   }
-
-  // bool get hasAcceptedMatches =>
-  //     content?.steps.any(
-  //       (element) =>
-  //           element.acceptedOrIgnoredMatch?.status ==
-  //           PangeaMatchStatus.accepted,
-  //     ) ??
-  //     false;
-
-  // bool get hasIgnoredMatches =>
-  //     content?.steps.any(
-  //       (element) =>
-  //           element.acceptedOrIgnoredMatch?.status == PangeaMatchStatus.ignored,
-  //     ) ??
-  //     false;
-
-  // bool get includedIT =>
-  //     content?.steps.any((step) {
-  //       return step.acceptedOrIgnoredMatch?.status ==
-  //               PangeaMatchStatus.accepted &&
-  //           (step.acceptedOrIgnoredMatch?.isITStart ?? false);
-  //     }) ??
-  //     false;
 }

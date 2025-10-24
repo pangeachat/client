@@ -8,7 +8,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/it_controller.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/it_feedback_controller.dart';
+import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
+import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/word_data_card.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/it_feedback_card.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -18,7 +19,6 @@ import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart'
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/utils/overlay.dart';
-import '../models/it_response_model.dart';
 import 'choice_array.dart';
 
 class ITBar extends StatefulWidget {
@@ -80,8 +80,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
         !itController.isEditingSourceText &&
         !itController.isTranslationDone &&
         itController.currentITStep != null &&
-        itController.currentITStep!.continuances.isNotEmpty &&
-        !itController.showChoiceFeedback;
+        itController.currentITStep!.continuances.isNotEmpty;
   }
 
   @override
@@ -225,13 +224,9 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                         child: Center(
                           child: itController.choreographer.errorService.isError
                               ? ITError(controller: itController)
-                              : itController.showChoiceFeedback
-                                  ? ChoiceFeedbackText(
-                                      controller: itController,
-                                    )
-                                  : itController.isTranslationDone
-                                      ? const SizedBox()
-                                      : ITChoices(controller: itController),
+                              : itController.isTranslationDone
+                                  ? const SizedBox()
+                                  : ITChoices(controller: itController),
                         ),
                       ),
                     ),
@@ -243,35 +238,6 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
         ),
       ),
     );
-  }
-}
-
-class ChoiceFeedbackText extends StatelessWidget {
-  const ChoiceFeedbackText({
-    super.key,
-    required this.controller,
-  });
-
-  final ITController controller;
-
-  @override
-  Widget build(BuildContext context) {
-    //reimplement if we decide we want it
-    return const SizedBox();
-    // return AnimatedTextKit(
-    //   isRepeatingAnimation: false,
-    //   animatedTexts: [
-    //     ScaleAnimatedText(
-    //       controller.latestChoiceFeedback(context),
-    //       duration: Duration(
-    //         milliseconds:
-    //             (ChoreoConstants.millisecondsToDisplayFeedback / 2).round(),
-    //       ),
-    //       scalingFactor: 1.4,
-    //       textStyle: BotStyle.text(context),
-    //     ),
-    //   ],
-    // );
   }
 }
 
@@ -342,19 +308,11 @@ class ITChoices extends StatelessWidget {
               room: controller.choreographer.chatController.room,
             )
           : ITFeedbackCard(
-              req: ITFeedbackRequestModel(
-                sourceText: sourceText!,
-                currentText: controller.choreographer.currentText,
-                chosenContinuance:
-                    controller.currentITStep!.continuances[index].text,
-                bestContinuance: controller.currentITStep!.best.text,
-                // TODO: we want this to eventually switch between target and source lang,
-                // based on the learner's proficiency - maybe with the words involved in the translation
-                // maybe overall. For now, we'll just use the source lang.
-                feedbackLang: controller.choreographer.l1Lang?.langCode ??
-                    controller.sourceLangCode,
-                sourceTextLang: controller.sourceLangCode,
-                targetLang: controller.targetLangCode,
+              req: FullTextTranslationRequestModel(
+                text: controller.currentITStep!.continuances[index].text,
+                tgtLang: controller.sourceLangCode,
+                userL1: controller.sourceLangCode,
+                userL2: controller.targetLangCode,
               ),
               choiceFeedback: choiceFeedback,
             ),

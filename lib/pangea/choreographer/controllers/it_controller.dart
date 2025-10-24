@@ -11,10 +11,10 @@ import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../models/custom_input_translation_model.dart';
-import '../models/it_response_model.dart';
 import '../models/it_step.dart';
+import '../repo/custom_input_request_model.dart';
 import '../repo/interactive_translation_repo.dart';
+import '../repo/it_response_model.dart';
 import 'choreographer.dart';
 
 class ITController {
@@ -23,7 +23,6 @@ class ITController {
   bool _isOpen = false;
   bool _willOpen = false;
   bool _isEditingSourceText = false;
-  bool showChoiceFeedback = false;
   bool dismissed = false;
 
   ITStartData? _itStartData;
@@ -41,7 +40,6 @@ class ITController {
     _willOpen = false;
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
 
-    showChoiceFeedback = false;
     _isEditingSourceText = false;
     dismissed = false;
 
@@ -309,19 +307,6 @@ class ITController {
     final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
 
     completedITSteps.add(itStep);
-
-    showChoiceFeedback = true;
-
-    Future.delayed(
-      const Duration(
-        milliseconds: ChoreoConstants.millisecondsToDisplayFeedback,
-      ),
-      () {
-        showChoiceFeedback = false;
-        choreographer.setState();
-      },
-    );
-
     choreographer.onITChoiceSelect(itStep);
     choreographer.setState();
   }

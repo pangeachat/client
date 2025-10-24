@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart';
@@ -9,16 +6,15 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/contextual_definition_controller.dart';
+import 'package:fluffychat/pangea/choreographer/repo/contextual_definition_repo.dart';
+import 'package:fluffychat/pangea/choreographer/repo/contextual_definition_request_model.dart';
+import 'package:fluffychat/pangea/choreographer/repo/contextual_definition_response_model.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/toolbar_content_loading_indicator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../../learning_settings/widgets/flag.dart';
-import '../../models/word_data_model.dart';
 import 'card_error_widget.dart';
 
 class WordDataCard extends StatefulWidget {
@@ -80,40 +76,33 @@ class WordDataCardController extends State<WordDataCard> {
   }
 
   Future<void> getContextualDefinition() async {
-    ContextualDefinitionRequestModel? req;
-    try {
-      req = ContextualDefinitionRequestModel(
-        fullText: widget.fullText,
-        word: widget.word,
-        feedbackLang: activeL1?.langCode ?? LanguageKeys.defaultLanguage,
-        fullTextLang: widget.fullTextLang,
-        wordLang: widget.wordLang,
-      );
-      if (!mounted) return;
+    final ContextualDefinitionRequestModel req =
+        ContextualDefinitionRequestModel(
+      fullText: widget.fullText,
+      word: widget.word,
+      feedbackLang: activeL1?.langCode ?? LanguageKeys.defaultLanguage,
+      fullTextLang: widget.fullTextLang,
+      wordLang: widget.wordLang,
+    );
+    if (!mounted) return;
 
-      setState(() {
-        contextualDefinitionRes = null;
-        definitionError = null;
-        isLoadingContextualDefinition = true;
-      });
+    setState(() {
+      contextualDefinitionRes = null;
+      definitionError = null;
+      isLoadingContextualDefinition = true;
+    });
 
-      contextualDefinitionRes = await controller.definitions.get(req);
-      if (contextualDefinitionRes == null) {
-        definitionError = Exception("Error getting definition");
-      }
-      GoogleAnalytics.contextualRequest();
-    } catch (err, stack) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {
-          "request": req?.toJson(),
-        },
-      );
+    final resp = await ContextualDefinitionRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      req,
+    );
+
+    if (resp.isError) {
       definitionError = Exception("Error getting definition");
-    } finally {
-      if (mounted) setState(() => isLoadingContextualDefinition = false);
+    }
+
+    if (mounted) {
+      setState(() => isLoadingContextualDefinition = false);
     }
   }
 
@@ -187,136 +176,6 @@ class WordDataCardView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class WordNetInfo extends StatelessWidget {
-  final WordData wordData;
-  final LanguageModel activeL1;
-  final LanguageModel activeL2;
-
-  const WordNetInfo({
-    super.key,
-    required this.wordData,
-    required this.activeL1,
-    required this.activeL2,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SensesForLanguage(
-          wordData: wordData,
-          languageType: LanguageType.target,
-          language: activeL2,
-        ),
-        const SizedBox(height: 10),
-        SensesForLanguage(
-          wordData: wordData,
-          languageType: LanguageType.base,
-          language: activeL1,
-        ),
-      ],
-    );
-  }
-}
-
-enum LanguageType {
-  target,
-  base,
-}
-
-class SensesForLanguage extends StatelessWidget {
-  String get exampleSentence => languageType == LanguageType.target
-      ? wordData.targetExampleSentence
-      : wordData.baseExampleSentence;
-
-  String get definition => languageType == LanguageType.target
-      ? wordData.targetDefinition
-      : wordData.baseDefinition;
-
-  String formattedTitle(BuildContext context) {
-    final String word = languageType == LanguageType.target
-        ? wordData.targetWord
-        : wordData.baseWord;
-    String? pos = wordData.formattedPartOfSpeech(languageType);
-    if (pos == null || pos.isEmpty) pos = L10n.of(context).unkDisplayName;
-    return "$word (${wordData.formattedPartOfSpeech(languageType)})";
-  }
-
-  const SensesForLanguage({
-    super.key,
-    required this.wordData,
-    required this.languageType,
-    required this.language,
-  });
-
-  final LanguageModel language;
-  final LanguageType languageType;
-  final WordData wordData;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        LanguageFlag(language: language),
-        const SizedBox(width: 10),
-        Flexible(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                formattedTitle(context),
-                style: BotStyle.text(context, italics: true, bold: false),
-              ),
-              const SizedBox(height: 4),
-              if (definition.isNotEmpty)
-                RichText(
-                  text: TextSpan(
-                    style: BotStyle.text(
-                      context,
-                      italics: false,
-                      bold: false,
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: "${L10n.of(context).definition}: ",
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      TextSpan(text: definition),
-                    ],
-                  ),
-                ),
-              const SizedBox(height: 4),
-              if (exampleSentence.isNotEmpty)
-                RichText(
-                  text: TextSpan(
-                    style: BotStyle.text(
-                      context,
-                      italics: false,
-                      bold: false,
-                    ),
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: "${L10n.of(context).exampleSentence}: ",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      TextSpan(text: exampleSentence),
-                    ],
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

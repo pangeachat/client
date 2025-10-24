@@ -5,8 +5,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart';
 
+import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
+import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_response_model.dart';
 import '../../common/config/environment.dart';
-import '../../common/constants/model_keys.dart';
 import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
 
@@ -86,96 +87,4 @@ class FullTextTranslationRepo {
 
     return responseModel;
   }
-}
-
-class FullTextTranslationRequestModel {
-  String text;
-  String? srcLang;
-  String tgtLang;
-  String userL1;
-  String userL2;
-  bool? deepL;
-  int? offset;
-  int? length;
-
-  FullTextTranslationRequestModel({
-    required this.text,
-    this.srcLang,
-    required this.tgtLang,
-    required this.userL2,
-    required this.userL1,
-    this.deepL = false,
-    this.offset,
-    this.length,
-  });
-
-  //PTODO throw error for null
-
-  Map<String, dynamic> toJson() => {
-        "text": text,
-        ModelKey.srcLang: srcLang,
-        ModelKey.tgtLang: tgtLang,
-        ModelKey.userL2: userL2,
-        ModelKey.userL1: userL1,
-        ModelKey.deepL: deepL,
-        ModelKey.offset: offset,
-        ModelKey.length: length,
-      };
-
-  // override equals and hashcode
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is FullTextTranslationRequestModel &&
-        other.text == text &&
-        other.srcLang == srcLang &&
-        other.tgtLang == tgtLang &&
-        other.userL2 == userL2 &&
-        other.userL1 == userL1 &&
-        other.deepL == deepL &&
-        other.offset == offset &&
-        other.length == length;
-  }
-
-  @override
-  int get hashCode =>
-      text.hashCode ^
-      srcLang.hashCode ^
-      tgtLang.hashCode ^
-      userL2.hashCode ^
-      userL1.hashCode ^
-      deepL.hashCode ^
-      offset.hashCode ^
-      length.hashCode;
-}
-
-class FullTextTranslationResponseModel {
-  List<String> translations;
-
-  /// detected source
-  /// PTODO -
-  String source;
-  String? deepL;
-
-  FullTextTranslationResponseModel({
-    required this.translations,
-    required this.source,
-    required this.deepL,
-  });
-
-  factory FullTextTranslationResponseModel.fromJson(Map<String, dynamic> json) {
-    return FullTextTranslationResponseModel(
-      translations: (json["translations"] as Iterable)
-          .map<String>(
-            (e) => e,
-          )
-          .toList()
-          .cast<String>(),
-      source: json[ModelKey.srcLang],
-      deepL: json['deepl_res'],
-    );
-  }
-
-  String get bestTranslation => deepL ?? translations.first;
 }
