@@ -5303,7 +5303,6 @@
     "placeholders": {}
   },
   "addCourse": "Add a course",
-  "joinCourseWithCode": "Join course with code",
   "joinPublicCourse": "Join public course",
   "vocabLevelsDesc": "This is where vocab words will go once you’ve leveled them up!",
   "highlightVocabTooltip": "Highlight target vocab words below by sending them or practicing with them in the chat",
@@ -5315,5 +5314,7 @@
   "alreadyInCourseWithID": "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?",
   "goToExistingCourse": "Go to existing course",
   "emojiView": "Emoji view",
-  "feedbackDialogDesc": "I make mistakes too! Anything to help me improve?"
+  "feedbackDialogDesc": "I make mistakes too! Anything to help me improve?",
+  "getStartedFriendsButton": "Invite a friend",
+  "contactHasBeenInvitedToTheCourse": "Contact has been invited to the course"
 }
