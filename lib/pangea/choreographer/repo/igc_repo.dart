@@ -17,7 +17,7 @@ class _IgcCacheItem {
   final Future<IGCTextData> data;
   final DateTime timestamp;
 
-  _IgcCacheItem({
+  const _IgcCacheItem({
     required this.data,
     required this.timestamp,
   });
@@ -115,17 +115,16 @@ class IgcRepo {
   static Future<IGCTextData>? _getCached(
     IGCRequestModel request,
   ) {
-    final cached = _igcCache[request.hashCode.toString()];
-    if (cached == null) {
-      return null;
+    final cacheKeys = [..._igcCache.keys];
+    for (final key in cacheKeys) {
+      if (_igcCache[key]!
+          .timestamp
+          .isBefore(DateTime.now().subtract(_cacheDuration))) {
+        _igcCache.remove(key);
+      }
     }
 
-    if (DateTime.now().difference(cached.timestamp) < _cacheDuration) {
-      return cached.data;
-    }
-
-    _igcCache.remove(request.hashCode.toString());
-    return null;
+    return _igcCache[request.hashCode.toString()]?.data;
   }
 
   static void _setCached(
@@ -149,22 +148,19 @@ class IgcRepo {
   static PangeaMatch? _getCachedIgnoredSpan(
     PangeaMatch match,
   ) {
+    final cacheKeys = [..._ignoredMatchCache.keys];
+    for (final key in cacheKeys) {
+      final entry = _ignoredMatchCache[key]!;
+      if (DateTime.now().difference(entry.timestamp) >= _cacheDuration) {
+        _ignoredMatchCache.remove(key);
+      }
+    }
+
     final cacheEntry = _IgnoredMatchCacheItem(
       match: match,
       timestamp: DateTime.now(),
     );
-
-    final cached = _ignoredMatchCache[cacheEntry.hashCode.toString()];
-    if (cached == null) {
-      return null;
-    }
-
-    if (DateTime.now().difference(cached.timestamp) < _cacheDuration) {
-      return cached.match;
-    }
-
-    _ignoredMatchCache.remove(cacheEntry.hashCode.toString());
-    return null;
+    return _ignoredMatchCache[cacheEntry.hashCode.toString()]?.match;
   }
 
   static void _setCachedIgnoredSpan(

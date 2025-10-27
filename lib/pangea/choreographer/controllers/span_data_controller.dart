@@ -9,35 +9,11 @@ import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/choreographer/repo/span_data_repo.dart';
 import 'package:fluffychat/pangea/choreographer/utils/text_normalization_util.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-
-class _SpanDetailsCacheItem {
-  Future<SpanDetailsRepoReqAndRes> data;
-
-  _SpanDetailsCacheItem({required this.data});
-}
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class SpanDataController {
   late Choreographer choreographer;
-  final Map<int, _SpanDetailsCacheItem> _cache = {};
-  Timer? _cacheClearTimer;
-
-  SpanDataController(this.choreographer) {
-    _initializeCacheClearing();
-  }
-
-  void _initializeCacheClearing() {
-    const duration = Duration(minutes: 2);
-    _cacheClearTimer = Timer.periodic(duration, (Timer t) => clearCache());
-  }
-
-  void clearCache() {
-    _cache.clear();
-  }
-
-  void dispose() {
-    _cacheClearTimer?.cancel();
-  }
+  SpanDataController(this.choreographer);
 
   SpanData? _getSpan(int matchIndex) {
     if (choreographer.igc.igcTextData == null ||
@@ -80,41 +56,20 @@ class SpanDataController {
   }) async {
     final SpanData? span = _getSpan(matchIndex);
     if (span == null || (isNormalizationError(matchIndex) && !force)) return;
-
-    final req = SpanDetailsRepoReqAndRes(
-      userL1: choreographer.l1LangCode!,
-      userL2: choreographer.l2LangCode!,
-      enableIGC: choreographer.igcEnabled,
-      enableIT: choreographer.itEnabled,
-      span: span,
+    final response = await SpanDataRepo.get(
+      choreographer.accessToken,
+      request: SpanDetailsRepoReqAndRes(
+        userL1: choreographer.l1LangCode!,
+        userL2: choreographer.l2LangCode!,
+        enableIGC: choreographer.igcEnabled,
+        enableIT: choreographer.itEnabled,
+        span: span,
+      ),
     );
-    final int cacheKey = req.hashCode;
 
-    /// Retrieves the [SpanDetailsRepoReqAndRes] response from the cache if it exists,
-    /// otherwise makes an API call to get the response and stores it in the cache.
-    Future<SpanDetailsRepoReqAndRes> response;
-    if (_cache.containsKey(cacheKey)) {
-      response = _cache[cacheKey]!.data;
-    } else {
-      response = SpanDataRepo.getSpanDetails(
-        choreographer.accessToken,
-        request: SpanDetailsRepoReqAndRes(
-          userL1: choreographer.l1LangCode!,
-          userL2: choreographer.l2LangCode!,
-          enableIGC: choreographer.igcEnabled,
-          enableIT: choreographer.itEnabled,
-          span: span,
-        ),
-      );
-      _cache[cacheKey] = _SpanDetailsCacheItem(data: response);
-    }
-
-    try {
+    if (response.result != null) {
       choreographer.igc.igcTextData!.matches[matchIndex].match =
-          (await response).span;
-    } catch (err, s) {
-      ErrorHandler.logError(e: err, s: s, data: req.toJson());
-      _cache.remove(cacheKey);
+          response.result!.span;
     }
 
     choreographer.setState();

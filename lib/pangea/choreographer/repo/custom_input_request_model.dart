@@ -1,18 +1,20 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class CustomInputRequestModel {
-  String text;
-  String customInput;
-  String sourceLangCode;
-  String targetLangCode;
-  String userId;
-  String roomId;
+  final String text;
+  final String customInput;
+  final String sourceLangCode;
+  final String targetLangCode;
+  final String userId;
+  final String roomId;
 
-  String? goldTranslation;
-  List<Continuance>? goldContinuances;
+  final String? goldTranslation;
+  final List<Continuance>? goldContinuances;
 
-  CustomInputRequestModel({
+  const CustomInputRequestModel({
     required this.text,
     required this.customInput,
     required this.sourceLangCode,
@@ -38,7 +40,7 @@ class CustomInputRequestModel {
             : null,
       );
 
-  toJson() => {
+  Map<String, dynamic> toJson() => {
         'text': text,
         'custom_input': customInput,
         ModelKey.srcLang: sourceLangCode,
@@ -50,4 +52,30 @@ class CustomInputRequestModel {
             ? List.from(goldContinuances!.map((e) => e.toJson()))
             : null,
       };
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is CustomInputRequestModel &&
+        other.text == text &&
+        other.customInput == customInput &&
+        other.sourceLangCode == sourceLangCode &&
+        other.targetLangCode == targetLangCode &&
+        other.userId == userId &&
+        other.roomId == roomId &&
+        other.goldTranslation == goldTranslation &&
+        listEquals(other.goldContinuances, goldContinuances);
+  }
+
+  @override
+  int get hashCode =>
+      text.hashCode ^
+      customInput.hashCode ^
+      sourceLangCode.hashCode ^
+      targetLangCode.hashCode ^
+      userId.hashCode ^
+      roomId.hashCode ^
+      goldTranslation.hashCode ^
+      Object.hashAll(goldContinuances ?? []);
 }

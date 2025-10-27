@@ -1,7 +1,7 @@
 class ContextualDefinitionResponseModel {
-  String text;
+  final String text;
 
-  ContextualDefinitionResponseModel({required this.text});
+  const ContextualDefinitionResponseModel({required this.text});
 
   factory ContextualDefinitionResponseModel.fromJson(
     Map<String, dynamic> json,

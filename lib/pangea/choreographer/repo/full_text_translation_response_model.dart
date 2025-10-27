@@ -1,14 +1,11 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class FullTextTranslationResponseModel {
-  List<String> translations;
+  final List<String> translations;
+  final String source;
+  final String? deepL;
 
-  /// detected source
-  /// PTODO -
-  String source;
-  String? deepL;
-
-  FullTextTranslationResponseModel({
+  const FullTextTranslationResponseModel({
     required this.translations,
     required this.source,
     required this.deepL,

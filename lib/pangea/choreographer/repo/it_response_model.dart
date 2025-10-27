@@ -6,14 +6,14 @@ import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart'
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 
 class ITResponseModel {
-  String fullTextTranslation;
-  List<Continuance> continuances;
-  List<Continuance>? goldContinuances;
-  bool isFinal;
-  String? translationId;
-  int payloadId;
+  final String fullTextTranslation;
+  final List<Continuance> continuances;
+  final List<Continuance>? goldContinuances;
+  final bool isFinal;
+  final String? translationId;
+  final int payloadId;
 
-  ITResponseModel({
+  const ITResponseModel({
     required this.fullTextTranslation,
     required this.continuances,
     required this.translationId,

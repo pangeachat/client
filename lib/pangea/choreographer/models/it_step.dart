@@ -165,4 +165,31 @@ class Continuance {
         return null;
     }
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Continuance &&
+          runtimeType == other.runtimeType &&
+          probability == other.probability &&
+          level == other.level &&
+          text == other.text &&
+          description == other.description &&
+          indexSavedByServer == other.indexSavedByServer &&
+          wasClicked == other.wasClicked &&
+          inDictionary == other.inDictionary &&
+          hasInfo == other.hasInfo &&
+          gold == other.gold;
+
+  @override
+  int get hashCode =>
+      probability.hashCode ^
+      level.hashCode ^
+      text.hashCode ^
+      description.hashCode ^
+      indexSavedByServer.hashCode ^
+      wasClicked.hashCode ^
+      inDictionary.hashCode ^
+      hasInfo.hashCode ^
+      gold.hashCode;
 }

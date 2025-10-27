@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class IGCRequestModel {
-  String fullText;
-  String userL1;
-  String userL2;
-  bool enableIT;
-  bool enableIGC;
-  String userId;
-  List<PreviousMessage> prevMessages;
+  final String fullText;
+  final String userL1;
+  final String userL2;
+  final bool enableIT;
+  final bool enableIGC;
+  final String userId;
+  final List<PreviousMessage> prevMessages;
 
-  IGCRequestModel({
+  const IGCRequestModel({
     required this.fullText,
     required this.userL1,
     required this.userL2,
@@ -54,18 +54,17 @@ class IGCRequestModel {
         enableIT,
         enableIGC,
         userId,
-        Object.hashAll(prevMessages),
       );
 }
 
 /// Previous text/audio message sent in chat
 /// Contain message content, sender, and timestamp
 class PreviousMessage {
-  String content;
-  String sender;
-  DateTime timestamp;
+  final String content;
+  final String sender;
+  final DateTime timestamp;
 
-  PreviousMessage({
+  const PreviousMessage({
     required this.content,
     required this.sender,
     required this.timestamp,

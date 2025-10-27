@@ -7,7 +7,7 @@ class ContextualDefinitionRequestModel {
   final String fullTextLang;
   final String wordLang;
 
-  ContextualDefinitionRequestModel({
+  const ContextualDefinitionRequestModel({
     required this.fullText,
     required this.word,
     required this.feedbackLang,

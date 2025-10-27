@@ -1,16 +1,48 @@
 import 'dart:convert';
 
+import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../../common/constants/model_keys.dart';
 import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
 
+class _SpanDetailsCacheItem {
+  final Future<SpanDetailsRepoReqAndRes> data;
+  final DateTime timestamp;
+
+  const _SpanDetailsCacheItem({
+    required this.data,
+    required this.timestamp,
+  });
+}
+
 class SpanDataRepo {
-  static Future<SpanDetailsRepoReqAndRes> getSpanDetails(
+  static final Map<String, _SpanDetailsCacheItem> _cache = {};
+  static const Duration _cacheDuration = Duration(minutes: 10);
+
+  static Future<Result<SpanDetailsRepoReqAndRes>> get(
+    String? accessToken, {
+    required SpanDetailsRepoReqAndRes request,
+  }) async {
+    final cached = _getCached(request);
+    if (cached != null) {
+      return _getResult(request, cached);
+    }
+
+    final future = _fetch(
+      accessToken,
+      request: request,
+    );
+    _setCached(request, future);
+    return _getResult(request, future);
+  }
+
+  static Future<SpanDetailsRepoReqAndRes> _fetch(
     String? accessToken, {
     required SpanDetailsRepoReqAndRes request,
   }) async {
@@ -27,6 +59,46 @@ class SpanDataRepo {
         jsonDecode(utf8.decode(res.bodyBytes).toString());
 
     return SpanDetailsRepoReqAndRes.fromJson(json);
+  }
+
+  static Future<Result<SpanDetailsRepoReqAndRes>> _getResult(
+    SpanDetailsRepoReqAndRes request,
+    Future<SpanDetailsRepoReqAndRes> future,
+  ) async {
+    try {
+      final res = await future;
+      return Result.value(res);
+    } catch (e, s) {
+      _cache.remove(request.hashCode.toString());
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: request.toJson(),
+      );
+      return Result.error(e);
+    }
+  }
+
+  static Future<SpanDetailsRepoReqAndRes>? _getCached(
+    SpanDetailsRepoReqAndRes request,
+  ) {
+    final cacheKeys = [..._cache.keys];
+    for (final key in cacheKeys) {
+      if (DateTime.now().difference(_cache[key]!.timestamp) >= _cacheDuration) {
+        _cache.remove(key);
+      }
+    }
+    return _cache[request.hashCode.toString()]?.data;
+  }
+
+  static void _setCached(
+    SpanDetailsRepoReqAndRes request,
+    Future<SpanDetailsRepoReqAndRes> response,
+  ) {
+    _cache[request.hashCode.toString()] = _SpanDetailsCacheItem(
+      data: response,
+      timestamp: DateTime.now(),
+    );
   }
 }
 

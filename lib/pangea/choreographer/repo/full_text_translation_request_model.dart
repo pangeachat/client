@@ -1,16 +1,16 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class FullTextTranslationRequestModel {
-  String text;
-  String? srcLang;
-  String tgtLang;
-  String userL1;
-  String userL2;
-  bool? deepL;
-  int? offset;
-  int? length;
+  final String text;
+  final String? srcLang;
+  final String tgtLang;
+  final String userL1;
+  final String userL2;
+  final bool? deepL;
+  final int? offset;
+  final int? length;
 
-  FullTextTranslationRequestModel({
+  const FullTextTranslationRequestModel({
     required this.text,
     this.srcLang,
     required this.tgtLang,
@@ -20,8 +20,6 @@ class FullTextTranslationRequestModel {
     this.offset,
     this.length,
   });
-
-  //PTODO throw error for null
 
   Map<String, dynamic> toJson() => {
         "text": text,

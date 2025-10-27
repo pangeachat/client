@@ -3,17 +3,19 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:async/async.dart';
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
+import 'package:fluffychat/pangea/choreographer/repo/interactive_translation_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../models/it_step.dart';
 import '../repo/custom_input_request_model.dart';
-import '../repo/interactive_translation_repo.dart';
 import '../repo/it_response_model.dart';
 import 'choreographer.dart';
 
@@ -116,80 +118,73 @@ class ITController {
   // used 1) at very beginning (with custom input = null)
   // and 2) if they make direct edits to the text field
   Future<void> getTranslationData(bool useCustomInput) async {
-    try {
-      choreographer.startLoading();
+    final String currentText = choreographer.currentText;
 
-      final String currentText = choreographer.currentText;
+    if (sourceText == null) await _setSourceText();
 
-      if (sourceText == null) await _setSourceText();
+    if (useCustomInput && currentITStep != null) {
+      completedITSteps.add(
+        ITStep(
+          currentITStep!.continuances,
+          customInput: currentText,
+        ),
+      );
+    }
 
-      if (useCustomInput && currentITStep != null) {
-        completedITSteps.add(
-          ITStep(
-            currentITStep!.continuances,
-            customInput: currentText,
-          ),
-        );
-      }
+    currentITStep = null;
 
-      currentITStep = null;
+    // During first IT step, next step will not be set
+    if (nextITStep == null) {
+      final res = await ITRepo.get(_request(currentText)).timeout(
+        const Duration(seconds: 10),
+        onTimeout: () {
+          return Result.error(
+            TimeoutException("ITRepo.get timed out after 10 seconds"),
+          );
+        },
+      );
 
-      // During first IT step, next step will not be set
-      if (nextITStep == null) {
-        final ITResponseModel res = await _customInputTranslation(currentText)
-            .timeout(const Duration(seconds: 10));
-        if (sourceText == null) return;
-
-        if (res.goldContinuances != null && res.goldContinuances!.isNotEmpty) {
-          goldRouteTracker = GoldRouteTracker(
-            res.goldContinuances!,
-            sourceText!,
+      if (res.isError) {
+        if (_willOpen) {
+          choreographer.errorService.setErrorAndLock(
+            ChoreoError(raw: res.asError),
           );
         }
-
-        currentITStep = CurrentITStep(
-          sourceText: sourceText!,
-          currentText: currentText,
-          responseModel: res,
-          storedGoldContinuances: goldRouteTracker.continuances,
-        );
-
-        _addPayloadId(res);
-      } else {
-        currentITStep = await nextITStep!.future;
+        return;
       }
 
-      if (isTranslationDone) {
-        nextITStep = null;
-        closeIT();
-      } else {
-        nextITStep = Completer<CurrentITStep?>();
-        final nextStep = await _getNextTranslationData();
-        nextITStep?.complete(nextStep);
+      if (sourceText == null) {
+        return;
       }
-    } catch (e, s) {
-      debugger(when: kDebugMode);
-      if (e is! http.Response) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {
-            "currentText": choreographer.currentText,
-            "sourceText": sourceText,
-            "currentITStepPayloadID": currentITStep?.payloadId,
-          },
-          level:
-              e is TimeoutException ? SentryLevel.warning : SentryLevel.error,
+
+      final result = res.result!;
+      if (result.goldContinuances != null &&
+          result.goldContinuances!.isNotEmpty) {
+        goldRouteTracker = GoldRouteTracker(
+          result.goldContinuances!,
+          sourceText!,
         );
       }
 
-      if (_willOpen) {
-        choreographer.errorService.setErrorAndLock(
-          ChoreoError(raw: e),
-        );
-      }
-    } finally {
-      choreographer.stopLoading();
+      currentITStep = CurrentITStep(
+        sourceText: sourceText!,
+        currentText: currentText,
+        responseModel: result,
+        storedGoldContinuances: goldRouteTracker.continuances,
+      );
+
+      _addPayloadId(result);
+    } else {
+      currentITStep = await nextITStep!.future;
+    }
+
+    if (isTranslationDone) {
+      nextITStep = null;
+      closeIT();
+    } else {
+      nextITStep = Completer<CurrentITStep?>();
+      final nextStep = await _getNextTranslationData();
+      nextITStep?.complete(nextStep);
     }
   }
 
@@ -210,42 +205,28 @@ class ITController {
       return null;
     }
 
-    try {
-      final String currentText = choreographer.currentText;
-      final String nextText =
-          goldRouteTracker.continuances[completedITSteps.length].text;
+    final String currentText = choreographer.currentText;
+    final String nextText =
+        goldRouteTracker.continuances[completedITSteps.length].text;
 
-      final ITResponseModel res =
-          await _customInputTranslation(currentText + nextText);
-      if (sourceText == null) return null;
+    final res = await ITRepo.get(
+      _request(currentText + nextText),
+    );
 
-      return CurrentITStep(
-        sourceText: sourceText!,
-        currentText: nextText,
-        responseModel: res,
-        storedGoldContinuances: goldRouteTracker.continuances,
-      );
-    } catch (e, s) {
-      debugger(when: kDebugMode);
-      if (e is! http.Response) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {
-            "sourceText": sourceText,
-            "currentITStepPayloadID": currentITStep?.payloadId,
-            "continuances":
-                goldRouteTracker.continuances.map((e) => e.toJson()),
-          },
-        );
-      }
+    if (sourceText == null) return null;
+    if (res.isError) {
       choreographer.errorService.setErrorAndLock(
-        ChoreoError(raw: e),
+        ChoreoError(raw: res.asError),
       );
-    } finally {
-      choreographer.stopLoading();
+      return null;
     }
-    return null;
+
+    return CurrentITStep(
+      sourceText: sourceText!,
+      currentText: nextText,
+      responseModel: res.result!,
+      storedGoldContinuances: goldRouteTracker.continuances,
+    );
   }
 
   Future<void> onEditSourceTextSubmit(String newSourceText) async {
@@ -277,7 +258,6 @@ class ITController {
         ChoreoError(raw: err),
       );
     } finally {
-      choreographer.stopLoading();
       choreographer.textController.setSystemText(
         "",
         EditType.other,
@@ -285,10 +265,7 @@ class ITController {
     }
   }
 
-  Future<ITResponseModel> _customInputTranslation(String textInput) async {
-    return ITRepo.customInputTranslate(
-      CustomInputRequestModel(
-        //this should be set by this time
+  CustomInputRequestModel _request(String textInput) => CustomInputRequestModel(
         text: sourceText!,
         customInput: textInput,
         sourceLangCode: sourceLangCode,
@@ -297,9 +274,7 @@ class ITController {
         roomId: choreographer.roomId!,
         goldTranslation: goldRouteTracker.fullTranslation,
         goldContinuances: goldRouteTracker.continuances,
-      ),
-    );
-  }
+      );
 
   //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
