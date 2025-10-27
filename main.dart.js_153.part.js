@@ -4556,6 +4556,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$feedbackDialogDesc() {
       return "I make mistakes too! Anything to help me improve?";
     },
+    get$contactHasBeenInvitedToTheCourse() {
+      return "Contact has been invited to the course";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4572,7 +4575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["P9nj82q0HNuollj9816szEFRebk="] = d.current;
+  d["XlLAHRqD2CQr5yI8prhSCsLBKC4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_153.part.js.map
