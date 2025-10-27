@@ -20,13 +20,12 @@ class LanguageSelectionPage extends StatefulWidget {
 }
 
 class LanguageSelectionPageState extends State<LanguageSelectionPage> {
-  final languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
-  List<LanguageModel> languageMap =
-      MatrixState.pangeaController.pLanguageStore.targetOptions;
   Object? _error;
 
   LanguageModel? _selectedLanguage;
   LanguageModel? _baseLanguage;
+
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
@@ -35,6 +34,12 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
         MatrixState.pangeaController.languageController.systemLanguage;
 
     _setFromCache();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
   }
 
   // The user may set their target language initally, then return to this page
@@ -93,149 +98,147 @@ class LanguageSelectionPageState extends State<LanguageSelectionPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final languages = MatrixState.pangeaController.pLanguageStore.targetOptions;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(L10n.of(context).languages),
       ),
       body: SafeArea(
         child: Center(
-          child: Stack(
-            children: [
-              //test
-              Container(
-                padding: const EdgeInsets.only(top: 10.0, right: 30, left: 30),
-                constraints: const BoxConstraints(
-                  maxWidth: 450,
-                ),
-                child: TextField(
+          child: Container(
+            padding: const EdgeInsets.all(30.0),
+            constraints: const BoxConstraints(
+              maxWidth: 450,
+            ),
+            child: Column(
+              spacing: 24.0,
+              children: [
+                TextField(
+                  controller: _searchController,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.search),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
                   ),
-                  onChanged: (textValue) {
-                    setState(() {
-                      languageMap = languages.where((lang) {
-                        textValue = textValue.toLowerCase();
-                        return lang.displayName
-                            .toLowerCase()
-                            .contains(textValue.toLowerCase());
-                      }).toList();
-                    });
-                  },
                 ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(30.0),
-                constraints: const BoxConstraints(
-                  maxWidth: 450,
-                ),
-                child: Column(
-                  spacing: 20,
-                  children: [
-                    const SizedBox(height: 50.0),
-                    Expanded(
-                      child: Stack(
-                        children: [
-                          SingleChildScrollView(
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 16.0,
-                                right: 16.0,
-                                bottom: 40.0,
-                              ),
-                              child: Wrap(
-                                spacing: 8.0,
-                                runSpacing: 8.0,
-                                alignment: WrapAlignment.center,
-                                children: languageMap
-                                    .map(
-                                      (l) => FilterChip(
-                                        selected: _selectedLanguage == l,
-                                        backgroundColor: _selectedLanguage == l
-                                            ? theme.colorScheme.primary
-                                            : theme.colorScheme.surface,
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 8.0,
-                                          vertical: 4.0,
+                Expanded(
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: ValueListenableBuilder(
+                          valueListenable: _searchController,
+                          builder: (context, val, __) {
+                            return SingleChildScrollView(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 16.0,
+                                  right: 16.0,
+                                  bottom: 60.0,
+                                ),
+                                child: Wrap(
+                                  spacing: 8.0,
+                                  runSpacing: 8.0,
+                                  alignment: WrapAlignment.center,
+                                  children: languages
+                                      .where(
+                                        (l) => l.displayName
+                                            .toLowerCase()
+                                            .contains(
+                                              _searchController.text
+                                                  .toLowerCase(),
+                                            ),
+                                      )
+                                      .map(
+                                        (l) => FilterChip(
+                                          selected: _selectedLanguage == l,
+                                          backgroundColor:
+                                              _selectedLanguage == l
+                                                  ? theme.colorScheme.primary
+                                                  : theme.colorScheme.surface,
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 8.0,
+                                            vertical: 4.0,
+                                          ),
+                                          label: Text(
+                                            l.getDisplayName(context) ??
+                                                l.displayName,
+                                            style: theme.textTheme.bodyMedium,
+                                          ),
+                                          onSelected: (selected) {
+                                            _setSelectedLanguage(
+                                              selected ? l : null,
+                                            );
+                                          },
                                         ),
-                                        label: Text(
-                                          l.getDisplayName(context) ??
-                                              l.displayName,
-                                          style: theme.textTheme.bodyMedium,
-                                        ),
-                                        onSelected: (selected) {
-                                          _setSelectedLanguage(
-                                            selected ? l : null,
-                                          );
-                                        },
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: IgnorePointer(
-                              child: Container(
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.bottomCenter,
-                                    end: Alignment.topCenter,
-                                    colors: [
-                                      theme.colorScheme.surface,
-                                      theme.colorScheme.surface.withAlpha(0),
-                                    ],
-                                  ),
+                                      )
+                                      .toList(),
                                 ),
                               ),
+                            );
+                          },
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: IgnorePointer(
+                          child: Container(
+                            height: 100,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: [
+                                  theme.colorScheme.surface,
+                                  theme.colorScheme.surface.withAlpha(0),
+                                ],
+                              ),
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                    AnimatedSize(
-                      duration: FluffyThemes.animationDuration,
-                      child: _selectedLanguage != null &&
-                              _selectedLanguage?.langCodeShort ==
-                                  _baseLanguage?.langCodeShort
-                          ? PLanguageDropdown(
-                              languages: languages,
-                              onChange: _setBaseLanguage,
-                              initialLanguage: _baseLanguage,
-                              decorationText: L10n.of(context).myBaseLanguage,
-                              error: _error is IdenticalLanguageException
-                                  ? L10n.of(context).noIdenticalLanguages
-                                  : null,
-                            )
-                          : const SizedBox(),
-                    ),
-                    Text(
-                      L10n.of(context).chooseLanguage,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: _selectedLanguage != null ? _submit : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(L10n.of(context).letsGo),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                AnimatedSize(
+                  duration: FluffyThemes.animationDuration,
+                  child: _selectedLanguage != null &&
+                          _selectedLanguage?.langCodeShort ==
+                              _baseLanguage?.langCodeShort
+                      ? PLanguageDropdown(
+                          languages: languages,
+                          onChange: _setBaseLanguage,
+                          initialLanguage: _baseLanguage,
+                          decorationText: L10n.of(context).myBaseLanguage,
+                          error: _error is IdenticalLanguageException
+                              ? L10n.of(context).noIdenticalLanguages
+                              : null,
+                        )
+                      : const SizedBox(),
+                ),
+                Text(
+                  L10n.of(context).chooseLanguage,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: _selectedLanguage != null ? _submit : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: theme.colorScheme.primaryContainer,
+                    foregroundColor: theme.colorScheme.onPrimaryContainer,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(L10n.of(context).letsGo),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
