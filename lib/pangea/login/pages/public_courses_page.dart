@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -152,11 +151,6 @@ class PublicCoursesPageState extends State<PublicCoursesPage> {
       appBar: AppBar(
         title: Text(
           L10n.of(context).joinPublicCourse,
-          style: (FluffyThemes.isColumnMode(context)
-              ? const TextStyle()
-              : const TextStyle(
-                  fontSize: 20,
-                )),
         ),
       ),
       body: SafeArea(
