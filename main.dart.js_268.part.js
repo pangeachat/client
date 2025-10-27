@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurser giver dig mulighed for at konsolidere dine chats og opbygge private eller offentlige f\xe6llesskaber.";
     },
+    get$joinWithCode() {
+      return "Deltag med kode";
+    },
     get$enterCodeToJoin() {
       return "Indtast kode for at deltage";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Tilf\xf8j et kursus";
     },
-    get$joinCourseWithCode() {
-      return "Deltag i kursus med kode";
-    },
     get$joinPublicCourse() {
       return "Deltag i offentligt kursus";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ROHq7xD/ZPWdsDVCpiLrg1b1YC4="] = d.current;
+  d["TQIjNNu9+SsrKdpLXnY2c98OKX4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_268.part.js.map

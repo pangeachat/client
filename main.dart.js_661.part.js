@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurser g\xf6r att du kan konsolidera dina chattar och bygga privata eller offentliga gemenskaper.";
     },
+    get$joinWithCode() {
+      return "G\xe5 med med kod";
+    },
     get$enterCodeToJoin() {
       return "Ange kod f\xf6r att g\xe5 med";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "L\xe4gg till en kurs";
     },
-    get$joinCourseWithCode() {
-      return "G\xe5 med i kurs med kod";
-    },
     get$joinPublicCourse() {
       return "G\xe5 med i offentlig kurs";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uCzR+9CvGh7jy2B0AH3KLqmPxq4="] = d.current;
+  d["ju64ZenucHXKAhw4uIbfiz3cqt4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_661.part.js.map

@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "\u041a\u0443\u0440\u0441\u0435\u0432\u0438 \u0432\u0430\u043c \u043e\u043c\u043e\u0433\u0443\u045b\u0430\u0432\u0430\u0458\u0443 \u0434\u0430 \u043a\u043e\u043d\u0441\u043e\u043b\u0438\u0434\u0443\u0458\u0435\u0442\u0435 \u0441\u0432\u043e\u0458\u0435 \u045b\u0430\u0441\u043a\u0430\u045a\u0435 \u0438 \u0438\u0437\u0433\u0440\u0430\u0434\u0438\u0442\u0435 \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u0435 \u0438\u043b\u0438 \u0458\u0430\u0432\u043d\u0435 \u0437\u0430\u0458\u0435\u0434\u043d\u0438\u0446\u0435.";
     },
+    get$joinWithCode() {
+      return "\u041f\u0440\u0438\u0434\u0440\u0443\u0436\u0438\u0442\u0435 \u0441\u0435 \u0441\u0430 \u043a\u043e\u0434\u043e\u043c";
+    },
     get$enterCodeToJoin() {
       return "\u0423\u043d\u0435\u0441\u0438\u0442\u0435 \u043a\u043e\u0434 \u0437\u0430 \u043f\u0440\u0438\u0434\u0440\u0443\u0436\u0438\u0432\u0430\u045a\u0435";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Dodaj kurs";
     },
-    get$joinCourseWithCode() {
-      return "Pridru\u017ei se kursu sa kodom";
-    },
     get$joinPublicCourse() {
       return "Pridru\u017ei se javnom kursu";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iBFh0RfYgHTtcBeScjBD9G4nxQE="] = d.current;
+  d["Ocvie5OmdDlOkx2VMYQcfk+aPpc="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_658.part.js.map

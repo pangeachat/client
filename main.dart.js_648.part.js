@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "\u041a\u0443\u0440\u0441\u044b \u043f\u043e\u0437\u0432\u043e\u043b\u044f\u044e\u0442 \u0432\u0430\u043c \u043e\u0431\u044a\u0435\u0434\u0438\u043d\u0438\u0442\u044c \u0432\u0430\u0448\u0438 \u0447\u0430\u0442\u044b \u0438 \u0441\u043e\u0437\u0434\u0430\u0432\u0430\u0442\u044c \u0447\u0430\u0441\u0442\u043d\u044b\u0435 \u0438\u043b\u0438 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u0441\u0442\u0432\u0430.";
     },
+    get$joinWithCode() {
+      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043f\u043e \u043a\u043e\u0434\u0443";
+    },
     get$enterCodeToJoin() {
       return "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043a\u043e\u0434 \u0434\u043b\u044f \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u0438\u044f";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043a\u0443\u0440\u0441";
     },
-    get$joinCourseWithCode() {
-      return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u043a\u0443\u0440\u0441\u0443 \u043f\u043e \u043a\u043e\u0434\u0443";
-    },
     get$joinPublicCourse() {
       return "\u041f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043a \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u043e\u043c\u0443 \u043a\u0443\u0440\u0441\u0443";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["JK59mjaLGJF93flnOZbpkXUEbfM="] = d.current;
+  d["Yt6P9WwBuTTQCNoG06jYNLNg6Z8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_648.part.js.map

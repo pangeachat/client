@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Ikastaroek zure elkarrizketak bateratzeko eta komunitate pribatu edo publikoa eraikitzeko aukera ematen dute.";
     },
+    get$joinWithCode() {
+      return "Batu kodearekin";
+    },
     get$enterCodeToJoin() {
       return "Sartu kodea parte hartzeko";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Gehitu ikastaroa";
     },
-    get$joinCourseWithCode() {
-      return "Hasi ikastaroa kodearekin";
-    },
     get$joinPublicCourse() {
       return "Hasi ikastaro publikoa";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["dT9KlO9LGqdc1zyEJVWb9Eb70nM="] = d.current;
+  d["c2fSn8T6tylI3BIzAJZ9kMR/fgs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_499.part.js.map

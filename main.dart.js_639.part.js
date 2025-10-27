@@ -3512,6 +3512,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kursy pozwalaj\u0105 na konsolidacj\u0119 czat\xf3w i budowanie spo\u0142eczno\u015bci prywatnych lub publicznych.";
     },
+    get$joinWithCode() {
+      return "Do\u0142\u0105cz z kodem";
+    },
     get$enterCodeToJoin() {
       return "Wprowad\u017a kod, aby do\u0142\u0105czy\u0107";
     },
@@ -4520,9 +4523,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Dodaj kurs";
     },
-    get$joinCourseWithCode() {
-      return "Do\u0142\u0105cz do kursu za pomoc\u0105 kodu";
-    },
     get$joinPublicCourse() {
       return "Do\u0142\u0105cz do kursu publicznego";
     },
@@ -4569,7 +4569,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["oQE1tJauc9Ldl/NnTUeJrW29ksM="] = d.current;
+  d["+sbipChi3EcK+rOtZ95VDXclMWE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_639.part.js.map

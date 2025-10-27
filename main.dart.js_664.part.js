@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "\u0e04\u0e2d\u0e23\u0e4c\u0e2a\u0e40\u0e23\u0e35\u0e22\u0e19\u0e0a\u0e48\u0e27\u0e22\u0e43\u0e2b\u0e49\u0e04\u0e38\u0e13\u0e23\u0e27\u0e21\u0e41\u0e0a\u0e17\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13\u0e41\u0e25\u0e30\u0e2a\u0e23\u0e49\u0e32\u0e07\u0e0a\u0e38\u0e21\u0e0a\u0e19\u0e2a\u0e48\u0e27\u0e19\u0e15\u0e31\u0e27\u0e2b\u0e23\u0e37\u0e2d\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30";
     },
+    get$joinWithCode() {
+      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e14\u0e49\u0e27\u0e22\u0e23\u0e2b\u0e31\u0e2a";
+    },
     get$enterCodeToJoin() {
       return "\u0e1b\u0e49\u0e2d\u0e19\u0e23\u0e2b\u0e31\u0e2a\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23";
     },
-    get$joinCourseWithCode() {
-      return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e14\u0e49\u0e27\u0e22\u0e23\u0e2b\u0e31\u0e2a";
-    },
     get$joinPublicCourse() {
       return "\u0e40\u0e02\u0e49\u0e32\u0e23\u0e48\u0e27\u0e21\u0e2b\u0e25\u0e31\u0e01\u0e2a\u0e39\u0e15\u0e23\u0e2a\u0e32\u0e18\u0e32\u0e23\u0e13\u0e30";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LwEePB7erlxqYkfj7v8ftVG1K0Y="] = d.current;
+  d["UO399MtStpm1oFgyo2CTpHMH66A="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_664.part.js.map

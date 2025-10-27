@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "\u10d9\u10e3\u10e0\u10e1\u10d4\u10d1\u10d8 \u10d2\u10d4\u10ee\u10db\u10d0\u10e0\u10d4\u10d1\u10d0\u10d7 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10e9\u10d0\u10e2\u10d4\u10d1\u10d8\u10e1 \u10d9\u10dd\u10dc\u10e1\u10dd\u10da\u10d8\u10d3\u10d0\u10ea\u10d8\u10d0\u10e8\u10d8 \u10d3\u10d0 \u10de\u10d8\u10e0\u10d0\u10d3\u10d8 \u10d0\u10dc \u10e1\u10d0\u10ef\u10d0\u10e0\u10dd \u10e1\u10d0\u10d6\u10dd\u10d2\u10d0\u10d3\u10dd\u10d4\u10d1\u10d4\u10d1\u10d8\u10e1 \u10e8\u10d4\u10e5\u10db\u10dc\u10d0\u10e8\u10d8.";
     },
+    get$joinWithCode() {
+      return "\u10e8\u10d4\u10d4\u10e0\u10d7\u10d3\u10d8\u10d7 \u10d9\u10dd\u10d3\u10d8\u10e1 \u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10d4\u10d1\u10d8\u10d7";
+    },
     get$enterCodeToJoin() {
       return "\u10e8\u10d4\u10d8\u10e7\u10d5\u10d0\u10dc\u10d4\u10d7 \u10d9\u10dd\u10d3\u10d8 \u10e8\u10d4\u10e1\u10d4\u10e0\u10d7\u10d4\u10d1\u10d0\u10d3";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "\u10d3\u10d0\u10d0\u10db\u10d0\u10e2\u10d4 \u10d9\u10e3\u10e0\u10e1\u10d8";
     },
-    get$joinCourseWithCode() {
-      return "\u10e8\u10d4\u10d4\u10e0\u10d7\u10d3\u10d8 \u10d9\u10e3\u10e0\u10e1\u10d7\u10d0\u10dc \u10d9\u10dd\u10d3\u10d8\u10e1 \u10e1\u10d0\u10e8\u10e3\u10d0\u10da\u10d4\u10d1\u10d8\u10d7";
-    },
     get$joinPublicCourse() {
       return "\u10e8\u10d4\u10d4\u10e0\u10d7\u10d3\u10d8 \u10e1\u10d0\u10ef\u10d0\u10e0\u10dd \u10d9\u10e3\u10e0\u10e1\u10d7\u10d0\u10dc";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["LHh0dbsbS++jlNuyt7GeaHSSQ68="] = d.current;
+  d["K6zKI8ZQZhYgMBQUkAENjz3MiDg="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_619.part.js.map

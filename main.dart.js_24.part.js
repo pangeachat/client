@@ -3523,6 +3523,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return string$.Cursos;
     },
+    get$joinWithCode() {
+      return "Entrar com c\xf3digo";
+    },
     get$enterCodeToJoin() {
       return "Digite o c\xf3digo para entrar";
     },
@@ -4530,9 +4533,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$addCourse() {
       return "Adicionar um curso";
-    },
-    get$joinCourseWithCode() {
-      return "Entrar no curso com c\xf3digo";
     },
     get$joinPublicCourse() {
       return "Entrar no curso p\xfablico";
@@ -8067,6 +8067,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return string$.Cursos;
     },
+    get$joinWithCode() {
+      return "Entrar com c\xf3digo";
+    },
     get$enterCodeToJoin() {
       return "Digite o c\xf3digo para entrar";
     },
@@ -9071,9 +9074,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$addCourse() {
       return "Adicionar um curso";
-    },
-    get$joinCourseWithCode() {
-      return "Entrar no curso com c\xf3digo";
     },
     get$joinPublicCourse() {
       return "Entrar em curso p\xfablico";
@@ -12581,6 +12581,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Os cursos permitem consolidar os seus chats e construir comunidades privadas ou p\xfablicas.";
     },
+    get$joinWithCode() {
+      return "Entrar com c\xf3digo";
+    },
     get$enterCodeToJoin() {
       return "Inserir c\xf3digo para entrar";
     },
@@ -13586,9 +13589,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Adicionar um curso";
     },
-    get$joinCourseWithCode() {
-      return "Entrar no curso com c\xf3digo";
-    },
     get$joinPublicCourse() {
       return "Entrar no curso p\xfablico";
     },
@@ -13771,7 +13771,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["FtNIlZc2trx1dnae/iO9eQQwZlc="] = d.current;
+  d["/siPBTfO3EqNZIJOim+Luk1LqnY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map

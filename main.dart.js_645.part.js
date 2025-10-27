@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Cursurile \xee\u021bi permit s\u0103 consolidezi chat-urile \u0219i s\u0103 construie\u0219ti comunit\u0103\u021bi private sau publice.";
     },
+    get$joinWithCode() {
+      return "Al\u0103tur\u0103-te cu cod";
+    },
     get$enterCodeToJoin() {
       return "Introdu codul pentru a te al\u0103tura";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Adaug\u0103 un curs";
     },
-    get$joinCourseWithCode() {
-      return "Al\u0103tur\u0103-te cursului cu cod";
-    },
     get$joinPublicCourse() {
       return "Al\u0103tur\u0103-te cursului public";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QdS994XfqvtuGUH5i1Xd/XvHB4A="] = d.current;
+  d["9+187waPaDiz2Ic72b9mHAEbaj0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_645.part.js.map

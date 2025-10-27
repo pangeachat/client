@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kursai leid\u017eia sujungti j\u016bs\u0173 pokalbius ir kurti priva\u010dias arba vie\u0161as bendruomenes.";
     },
+    get$joinWithCode() {
+      return "Prisijungti su kodu";
+    },
     get$enterCodeToJoin() {
       return "\u012eveskite kod\u0105, nor\u0117dami prisijungti";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Prid\u0117ti kurs\u0105";
     },
-    get$joinCourseWithCode() {
-      return "Prisijungti prie kurso su kodu";
-    },
     get$joinPublicCourse() {
       return "Prisijungti prie vie\u0161o kurso";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BEuFVrZShmT0X11qtoLdjkhghQQ="] = d.current;
+  d["F5xbJo5kT8UTSXDyQNjkSXhhN9U="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_621.part.js.map

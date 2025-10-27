@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Pinapayagan ka ng mga kurso na pagsamahin ang iyong mga chat at bumuo ng mga pribado o pampublikong komunidad.";
     },
+    get$joinWithCode() {
+      return "Sumali gamit ang code";
+    },
     get$enterCodeToJoin() {
       return "Ipasok ang code upang makasali";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Magdagdag ng kurso";
     },
-    get$joinCourseWithCode() {
-      return "Sumali sa kurso gamit ang code";
-    },
     get$joinPublicCourse() {
       return "Sumali sa pampublikong kurso";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1jKwicIhITVxkiTi1y/TqK0JFuM="] = d.current;
+  d["5xWvYHM/p2WDw3E92wp+JMRy5NA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_521.part.js.map

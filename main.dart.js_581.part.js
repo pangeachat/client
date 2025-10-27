@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "A kurzusok lehet\u0151v\xe9 teszik, hogy konszolid\xe1ld a cseveg\xe9seidet \xe9s priv\xe1t vagy nyilv\xe1nos k\xf6z\xf6ss\xe9geket \xe9p\xedts.";
     },
+    get$joinWithCode() {
+      return "Csatlakoz\xe1s k\xf3ddal";
+    },
     get$enterCodeToJoin() {
       return "\xcdrd be a k\xf3dot a csatlakoz\xe1shoz";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Kurzus hozz\xe1ad\xe1sa";
     },
-    get$joinCourseWithCode() {
-      return "Csatlakoz\xe1s kurzushoz k\xf3ddal";
-    },
     get$joinPublicCourse() {
       return "Csatlakoz\xe1s nyilv\xe1nos kurzushoz";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["kIEr6SXKGwAcxtPNeGCopOjEDck="] = d.current;
+  d["ZZ5PXmnoAPIwGcfTByAq0wG9WMY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_581.part.js.map

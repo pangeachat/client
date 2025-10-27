@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "C\xe1c kh\xf3a h\u1ecdc cho ph\xe9p b\u1ea1n h\u1ee3p nh\u1ea5t c\xe1c cu\u1ed9c tr\xf2 chuy\u1ec7n c\u1ee7a m\xecnh v\xe0 x\xe2y d\u1ef1ng c\u1ed9ng \u0111\u1ed3ng ri\xeang t\u01b0 ho\u1eb7c c\xf4ng c\u1ed9ng.";
     },
+    get$joinWithCode() {
+      return "Tham gia b\u1eb1ng m\xe3";
+    },
     get$enterCodeToJoin() {
       return "Nh\u1eadp m\xe3 \u0111\u1ec3 tham gia";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Th\xeam kh\xf3a h\u1ecdc";
     },
-    get$joinCourseWithCode() {
-      return "Tham gia kh\xf3a h\u1ecdc b\u1eb1ng m\xe3";
-    },
     get$joinPublicCourse() {
       return "Tham gia kh\xf3a h\u1ecdc c\xf4ng khai";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["KlpWfF3XdhdK6TVZqA9lREkpGLY="] = d.current;
+  d["pqwOs5MWt4XDS0fVL78LmzC8ypU="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_667.part.js.map

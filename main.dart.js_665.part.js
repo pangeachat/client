@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurslar, sohbetlerinizi peki\u015ftirmenize ve \xf6zel veya genel topluluklar olu\u015fturman\u0131za olanak tan\u0131r.";
     },
+    get$joinWithCode() {
+      return "Kodu kullanarak kat\u0131l";
+    },
     get$enterCodeToJoin() {
       return "Kat\u0131lmak i\xe7in kodu girin";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Bir kurs ekle";
     },
-    get$joinCourseWithCode() {
-      return "Kod ile kursa kat\u0131l";
-    },
     get$joinPublicCourse() {
       return "Herkese a\xe7\u0131k kursa kat\u0131l";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["1zQu25GwhZawAG0EMlJ6Pq+W/W8="] = d.current;
+  d["yTJelSViwRehvxtQAr9CvLIT6zQ="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_665.part.js.map

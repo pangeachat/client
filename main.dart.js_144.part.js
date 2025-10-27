@@ -3513,6 +3513,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "\u0f5a\u0f7c\u0f44\u0f0b\u0f5a\u0f7c\u0f51\u0f0b\u0f5a\u0f7c\u0f51\u0f0b\u0f63\u0f66\u0f0b\u0f41\u0fb1\u0f7a\u0f62\u0f0b\u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f63\u0f0b\u0f56\u0f62\u0f97\u0f7a\u0f0b\u0f56\u0f62\u0f97\u0f7c\u0f51\u0f0b\u0f51\u0f44\u0f0b\u0f42\u0f53\u0f66\u0f0b\u0f5a\u0f74\u0f63\u0f0b\u0f42\u0f66\u0f62\u0f0b\u0f56\u0f62\u0f0b\u0f56\u0f5f\u0f7c\u0f0b\u0f56\u0f45\u0f7c\u0f66\u0f0d";
     },
+    get$joinWithCode() {
+      return "\u0f62\u0f7c\u0f63\u0f0b\u0f60\u0f51\u0f7a\u0f42\u0f66\u0f0b\u0f63\u0f0b\u0f63\u0f7c\u0f42\u0f0b\u0f60\u0f56\u0f51\u0f0d";
+    },
     get$enterCodeToJoin() {
       return "\u0f62\u0f7c\u0f63\u0f0b\u0f60\u0f51\u0f7a\u0f42\u0f66\u0f0b\u0f63\u0f0b\u0f63\u0f7c\u0f42\u0f0b\u0f60\u0f56\u0f51\u0f0b\u0f53\u0f66\u0f0b\u0f62\u0f7c\u0f42\u0f66\u0f0d";
     },
@@ -4521,9 +4524,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Add a course";
     },
-    get$joinCourseWithCode() {
-      return "Join course with code";
-    },
     get$joinPublicCourse() {
       return "Join public course";
     },
@@ -4584,7 +4584,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["BmiJ+eJOecwIcqMCiPRW4Kb+XyA="] = d.current;
+  d["8P+6Xm7r0Eoe2DIcG2MOLTWmvGs="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_144.part.js.map

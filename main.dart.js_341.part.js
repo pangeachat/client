@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurse erm\xf6glichen es, Ihre Chats zu konsolidieren und private oder \xf6ffentliche Gemeinschaften aufzubauen.";
     },
+    get$joinWithCode() {
+      return "Mit Code beitreten";
+    },
     get$enterCodeToJoin() {
       return "Code eingeben, um beizutreten";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Einen Kurs hinzuf\xfcgen";
     },
-    get$joinCourseWithCode() {
-      return "Kurs mit Code beitreten";
-    },
     get$joinPublicCourse() {
       return "\xd6ffentlichen Kurs beitreten";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["QRna3D0Hu+HTwC3LLFsqInUypMo="] = d.current;
+  d["J4PxgTc0EdIGvoAFvUUB+FVumTA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_341.part.js.map

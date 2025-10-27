@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Cursussen stellen je in staat om je chats te consolideren en priv\xe9- of openbare gemeenschappen op te bouwen.";
     },
+    get$joinWithCode() {
+      return "Deelname met code";
+    },
     get$enterCodeToJoin() {
       return "Voer code in om deel te nemen";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Voeg een cursus toe";
     },
-    get$joinCourseWithCode() {
-      return "Deelname cursus met code";
-    },
     get$joinPublicCourse() {
       return "Deelname openbare cursus";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+O4zDmTLMU5W2Yy+mrv+Vm2oPtQ="] = d.current;
+  d["Wi23eb1jlMmoYn1jPscC0ioMl40="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_636.part.js.map

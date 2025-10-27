@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "T\xfchikud v\xf5imaldavad teil koondada oma vestlused ning luua era- v\xf5i avalikke kogukondi.";
     },
+    get$joinWithCode() {
+      return "Liitu koodiga";
+    },
     get$enterCodeToJoin() {
       return "Sisesta kood, et liituda";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Lisa kursus";
     },
-    get$joinCourseWithCode() {
-      return "Liitu kursusega koodiga";
-    },
     get$joinPublicCourse() {
       return "Liitu avaliku kursusega";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UxzbXN2E3AvQ8W2Yo59XNPbgCkk="] = d.current;
+  d["/p7j70WmjBwpmxHI4ePt3f9KcNA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_479.part.js.map

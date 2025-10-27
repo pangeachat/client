@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Le cursos permitte te de consolidar tu chats e construir communitates private o publice.";
     },
+    get$joinWithCode() {
+      return "Aderir con codice";
+    },
     get$enterCodeToJoin() {
       return "Enterar le codice pro aderir";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Adder un curso";
     },
-    get$joinCourseWithCode() {
-      return "Joiner curso con codice";
-    },
     get$joinPublicCourse() {
       return "Joiner curso publice";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["j8y0EP522qIYQI1jj72i01bwZhs="] = d.current;
+  d["dkdtutyr9xq8vlmvoB7nW3EjfT0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_587.part.js.map

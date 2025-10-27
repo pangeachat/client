@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kursoj ebligas vin koncizi viajn babilejojn kaj konstruigi private a\u016d publika komunumo.";
     },
+    get$joinWithCode() {
+      return "Ali\u011di kun kodo";
+    },
     get$enterCodeToJoin() {
       return "Enmetu kodon por ali\u011di";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Aldoni kurson";
     },
-    get$joinCourseWithCode() {
-      return "Ali\u011di al kurso kun kodo";
-    },
     get$joinPublicCourse() {
       return "Ali\u011di al publika kurso";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lAdL8FKhI5zhzSsjg7D40ZFkEvM="] = d.current;
+  d["ppHM3zL0P0j/UDIY8YwrJn2rKLA="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_425.part.js.map

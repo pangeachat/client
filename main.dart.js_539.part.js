@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Ligeann c\xfarsa\xed duit do chomhr\xe1ite a chur le ch\xe9ile agus pobail phr\xedobh\xe1ideacha n\xf3 phoibl\xed a th\xf3g\xe1il.";
     },
+    get$joinWithCode() {
+      return "B\xed p\xe1irteach le c\xf3d";
+    },
     get$enterCodeToJoin() {
       return "Cuir isteach an c\xf3d chun p\xe1irt a ghlacadh";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Cuir c\xfarsa leis";
     },
-    get$joinCourseWithCode() {
-      return "Cl\xe1raigh i gc\xfarsa le c\xf3d";
-    },
     get$joinPublicCourse() {
       return "Cl\xe1raigh i gc\xfarsa poibl\xed";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["Q01JVOkCe1p07s3apLJgTOZxy08="] = d.current;
+  d["RoaHy32Dt9NQhE1Z6fByboD02lY="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_539.part.js.map

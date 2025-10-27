@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kursus memungkinkan Anda mengkonsolidasikan obrolan dan membangun komunitas pribadi atau publik.";
     },
+    get$joinWithCode() {
+      return "Gabung dengan kode";
+    },
     get$enterCodeToJoin() {
       return "Masukkan kode untuk bergabung";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Tambahkan kursus";
     },
-    get$joinCourseWithCode() {
-      return "Gabung kursus dengan kode";
-    },
     get$joinPublicCourse() {
       return "Gabung kursus publik";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["yi/FNgMhF6wEpK1eMGLsq6G1Rds="] = d.current;
+  d["xf3FMnHXaiCU9LAqaoGuSEcxG0k="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_600.part.js.map

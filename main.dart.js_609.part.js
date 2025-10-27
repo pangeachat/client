@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurssas permitas a tu consolidar to chat e construir communitates private o publice.";
     },
+    get$joinWithCode() {
+      return "Unir con code";
+    },
     get$enterCodeToJoin() {
       return "Intrar code per unirsi";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Zontar un corsa";
     },
-    get$joinCourseWithCode() {
-      return "Kumencar corsa cun c\xf2de";
-    },
     get$joinPublicCourse() {
       return "Kumencar corsa publice";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["CwfqlutvwSjWdf1rnzKn5sf/HM0="] = d.current;
+  d["90FZXNKA73JtkSdsn1ICAH5ajK0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_609.part.js.map

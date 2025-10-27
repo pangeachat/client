@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Te\u010daji vam omogo\u010dajo, da zdru\u017eite svoje klepete in zgradite zasebne ali javne skupnosti.";
     },
+    get$joinWithCode() {
+      return "Pridru\u017ei se s kodo";
+    },
     get$enterCodeToJoin() {
       return "Vnesite kodo za pridru\u017eitev";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Dodaj te\u010daj";
     },
-    get$joinCourseWithCode() {
-      return "Pridru\u017ei se te\u010daju z geslom";
-    },
     get$joinPublicCourse() {
       return "Pridru\u017ei se javnemu te\u010daju";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["lES3n0Pwc6w3eW1xZdDUhoiLXA4="] = d.current;
+  d["R44O18pKa51v1d/a/b13z4tZBAM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_656.part.js.map

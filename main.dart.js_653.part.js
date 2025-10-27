@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurzy v\xe1m umo\u017e\u0148uj\xfa konsolidova\u0165 va\u0161e chaty a budova\u0165 s\xfakromn\xe9 alebo verejn\xe9 komunity.";
     },
+    get$joinWithCode() {
+      return "Pripoji\u0165 sa s k\xf3dom";
+    },
     get$enterCodeToJoin() {
       return "Zadajte k\xf3d na pripojenie";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Prida\u0165 kurz";
     },
-    get$joinCourseWithCode() {
-      return "Pripoji\u0165 sa ku kurzu s k\xf3dom";
-    },
     get$joinPublicCourse() {
       return "Pripoji\u0165 sa k verejn\xe9mu kurzu";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3B2T37HoUe20Kt9SMSabKNOVh0k="] = d.current;
+  d["xar/qXcqJ5D7ANBYmBw0hS3KwKI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_653.part.js.map

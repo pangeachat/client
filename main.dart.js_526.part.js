@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Les cours vous permettent de consolider vos discussions et de cr\xe9er des communaut\xe9s priv\xe9es ou publiques.";
     },
+    get$joinWithCode() {
+      return "Rejoindre avec un code";
+    },
     get$enterCodeToJoin() {
       return "Entrez le code pour rejoindre";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Ajouter un cours";
     },
-    get$joinCourseWithCode() {
-      return "Rejoindre le cours avec un code";
-    },
     get$joinPublicCourse() {
       return "Rejoindre un cours public";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["iKgbgVTb1ClSxIMvhdKrE/Kq4iI="] = d.current;
+  d["codL9Ru1HQNgBK9zMiS0zrbnFCo="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_526.part.js.map

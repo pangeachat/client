@@ -3512,6 +3512,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Els cursos us permeten consolidar els vostres xats i construir comunitats privades o p\xfabliques.";
     },
+    get$joinWithCode() {
+      return "Uneix-te amb codi";
+    },
     get$enterCodeToJoin() {
       return "Introdueix el codi per unir-te";
     },
@@ -4520,9 +4523,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Afegeix un curs";
     },
-    get$joinCourseWithCode() {
-      return "Uneix-te al curs amb un codi";
-    },
     get$joinPublicCourse() {
       return "Uneix-te al curs p\xfablic";
     },
@@ -4572,7 +4572,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["zhhs1F8JwHa4Qx2lUXkEGjC7bLw="] = d.current;
+  d["P9nj82q0HNuollj9816szEFRebk="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_153.part.js.map

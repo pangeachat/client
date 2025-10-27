@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurssit auttavat sinua yhdist\xe4m\xe4\xe4n keskustelusi ja rakentamaan yksityisi\xe4 tai julkisia yhteis\xf6j\xe4.";
     },
+    get$joinWithCode() {
+      return "Liity koodilla";
+    },
     get$enterCodeToJoin() {
       return "Sy\xf6t\xe4 koodi liitty\xe4ksesi";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Lis\xe4\xe4 kurssi";
     },
-    get$joinCourseWithCode() {
-      return "Liity kurssille koodilla";
-    },
     get$joinPublicCourse() {
       return "Liity julkiseen kurssiin";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["ucyXyWgVf5x8mFpPLiM5LBHtpHU="] = d.current;
+  d["FBqMQHkPCnFiZBG1U1PH3xwkOI0="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_512.part.js.map

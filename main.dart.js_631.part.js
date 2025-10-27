@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurs lar deg konsolidere chattene dine og bygge private eller offentlige fellesskap.";
     },
+    get$joinWithCode() {
+      return "Bli med med kode";
+    },
     get$enterCodeToJoin() {
       return "Skriv inn kode for \xe5 bli med";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Legg til et kurs";
     },
-    get$joinCourseWithCode() {
-      return "Bli med p\xe5 kurs med kode";
-    },
     get$joinPublicCourse() {
       return "Bli med p\xe5 offentlig kurs";
     },
@@ -4571,7 +4571,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["3dZW6Jhroev8iT8t96RO8T/x6hw="] = d.current;
+  d["TwQokjSV5xgEsli0YteIp3iUVt4="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_631.part.js.map

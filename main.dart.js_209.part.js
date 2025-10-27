@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurzy v\xe1m umo\u017en\xed zefektivnit va\u0161e chaty a budovat soukrom\xe9 nebo ve\u0159ejn\xe9 komunity.";
     },
+    get$joinWithCode() {
+      return "P\u0159ipojit se s k\xf3dem";
+    },
     get$enterCodeToJoin() {
       return "Zadejte k\xf3d pro p\u0159ipojen\xed";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "P\u0159idat kurz";
     },
-    get$joinCourseWithCode() {
-      return "P\u0159ipojit se ke kurzu s k\xf3dem";
-    },
     get$joinPublicCourse() {
       return "P\u0159ipojit se k ve\u0159ejn\xe9mu kurzu";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["SuGWgojX6xh4RvcC3OdKD9W2fXw="] = d.current;
+  d["TDdd9MmRTJjZoYHliX39sItBFvw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_209.part.js.map

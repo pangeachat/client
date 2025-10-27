@@ -3511,6 +3511,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$updatedNewSpaceDescription() {
       return "Kurss \u013cauj konsolid\u0113t j\u016bsu \u010datus un veidot priv\u0101tas vai publiskas kopienas.";
     },
+    get$joinWithCode() {
+      return "Pievienoties ar kodu";
+    },
     get$enterCodeToJoin() {
       return "Ievadiet kodu, lai pievienotos";
     },
@@ -4519,9 +4522,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$addCourse() {
       return "Pievienot kursu";
     },
-    get$joinCourseWithCode() {
-      return "Pievienoties kursam ar kodu";
-    },
     get$joinPublicCourse() {
       return "Pievienoties publiskajam kursam";
     },
@@ -4568,7 +4568,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["uyPA8EgwopLQVw7FVKhaRtdhbgQ="] = d.current;
+  d["NnaSWhS04IOPts86vuMYar1cBsE="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_627.part.js.map
