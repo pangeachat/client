@@ -6,12 +6,12 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_repo.dart';
 import 'package:fluffychat/pangea/activity_feedback/activity_feedback_request.dart';
-import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_feedback_request_dialog.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_session_start/activity_session_start_page.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
-import 'package:fluffychat/pangea/course_plans/course_activity_repo.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
+import 'package:fluffychat/pangea/course_plans/course_activities/course_activity_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -65,7 +65,13 @@ class ActivitySessionStartView extends StatelessWidget {
                   final feedback = await showDialog<String?>(
                     context: context,
                     builder: (context) {
-                      return const ActivityFeedbackRequestDialog();
+                      return FeedbackDialog(
+                        title: L10n.of(context).feedbackTitle,
+                        onSubmit: (feedback) {
+                          Navigator.of(context).pop(feedback);
+                        },
+                        scrollable: false,
+                      );
                     },
                   );
 
@@ -94,6 +100,8 @@ class ActivitySessionStartView extends StatelessWidget {
 
                   CourseActivityRepo.setSentFeedback(
                     controller.widget.activityId,
+                    MatrixState.pangeaController.languageController
+                        .activeL1Code()!,
                   );
 
                   await showDialog(
@@ -222,12 +230,8 @@ class ActivitySessionStartView extends StatelessWidget {
                                               if (!controller.isBotRoomMember)
                                                 ElevatedButton(
                                                   style: buttonStyle,
-                                                  onPressed: () =>
-                                                      showFutureLoadingDialog(
-                                                    context: context,
-                                                    future:
-                                                        controller.playWithBot,
-                                                  ),
+                                                  onPressed:
+                                                      controller.playWithBot,
                                                   child: Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
@@ -250,8 +254,12 @@ class ActivitySessionStartView extends StatelessWidget {
                                                       MainAxisAlignment.center,
                                                   children: [
                                                     Text(
-                                                      L10n.of(context)
-                                                          .inviteFriends,
+                                                      controller.courseParent !=
+                                                              null
+                                                          ? L10n.of(context)
+                                                              .inviteFriendsToActivityCourse
+                                                          : L10n.of(context)
+                                                              .inviteFriendsToActivity,
                                                     ),
                                                   ],
                                                 ),
@@ -330,7 +338,7 @@ class _ActivityStartButtons extends StatelessWidget {
               ElevatedButton(
                 style: buttonStyle,
                 onPressed: controller.courseParent?.canInvite ?? false
-                    ? () => context.go(
+                    ? () => context.push(
                           "/rooms/spaces/${controller.courseParent!.id}/invite",
                         )
                     : null,

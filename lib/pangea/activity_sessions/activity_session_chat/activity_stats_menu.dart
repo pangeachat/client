@@ -196,14 +196,15 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                           ),
                         ],
                       ),
-                      Text(
-                        L10n.of(context).activityDropdownDesc,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
+                      if (!room.hasArchivedActivity)
+                        Text(
+                          L10n.of(context).activityDropdownDesc,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
                       if (!userComplete) ...[
                         if (shouldShowEndForAll)
                           ElevatedButton(
@@ -245,7 +246,7 @@ class ActivityStatsMenuState extends State<ActivityStatsMenu> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  L10n.of(context).endActivityTitle,
+                                  L10n.of(context).endActivity,
                                   style: TextStyle(
                                     fontSize: isColumnMode ? 16.0 : 12.0,
                                   ),
@@ -308,38 +309,23 @@ class VocabTile extends StatelessWidget {
           OverlayUtil.showPositionedCard(
             overlayKey: "activity-vocab-${vocab.lemma}",
             context: context,
-            cardToShow: Material(
-              type: MaterialType.transparency,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).cardColor,
-                  border: Border.all(
-                    color: Theme.of(context).colorScheme.primary,
-                    width: 4.0,
-                  ),
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(AppConfig.borderRadius),
-                  ),
-                ),
-                child: WordZoomWidget(
-                  token: PangeaTokenText(
-                    content: vocab.lemma,
-                    length: vocab.lemma.characters.length,
-                    offset: 0,
-                  ),
-                  construct: ConstructIdentifier(
-                    lemma: vocab.lemma,
-                    type: ConstructTypeEnum.vocab,
-                    category: vocab.pos,
-                  ),
-                  langCode: langCode,
-                  onClose: () {
-                    MatrixState.pAnyState.closeOverlay(
-                      "activity-vocab-${vocab.lemma}",
-                    );
-                  },
-                ),
+            cardToShow: WordZoomWidget(
+              token: PangeaTokenText(
+                content: vocab.lemma,
+                length: vocab.lemma.characters.length,
+                offset: 0,
               ),
+              construct: ConstructIdentifier(
+                lemma: vocab.lemma,
+                type: ConstructTypeEnum.vocab,
+                category: vocab.pos,
+              ),
+              langCode: langCode,
+              onClose: () {
+                MatrixState.pAnyState.closeOverlay(
+                  "activity-vocab-${vocab.lemma}",
+                );
+              },
             ),
             transformTargetId: "activity-vocab-${vocab.lemma}",
             closePrevOverlay: false,

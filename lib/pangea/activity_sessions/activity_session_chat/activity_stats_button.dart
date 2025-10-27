@@ -14,6 +14,7 @@ import 'package:fluffychat/pangea/activity_summary/activity_summary_analytics_mo
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:fluffychat/pangea/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/pangea/instructions/instructions_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -31,6 +32,7 @@ class ActivityStatsButton extends StatefulWidget {
 
 class _ActivityStatsButtonState extends State<ActivityStatsButton> {
   StreamSubscription? _analyticsSubscription;
+  StreamSubscription? _rolesSubscription;
   ActivitySummaryAnalyticsModel? analytics;
 
   @override
@@ -43,11 +45,22 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
     _analyticsSubscription = widget
         .controller.pangeaController.getAnalytics.analyticsStream.stream
         .listen((_) => _updateAnalytics());
+
+    _rolesSubscription = widget.controller.room.client.onRoomState.stream
+        .where(
+      (u) =>
+          u.roomId == widget.controller.room.id &&
+          u.state.type == PangeaEventTypes.activityRole,
+    )
+        .listen((_) {
+      _showStatsMenuDropdownInstructions();
+    });
   }
 
   @override
   void dispose() {
     _analyticsSubscription?.cancel();
+    _rolesSubscription?.cancel();
     super.dispose();
   }
 
@@ -58,11 +71,18 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
         MatrixState.pAnyState.isOverlayOpen(
           RegExp(r"^word-zoom-card-.*$"),
         ) ||
-        _xpCount <= 0 ||
         widget.controller.timeline == null) {
       return false;
     }
 
+    // if someone has finished the activity, enable the tooltip
+    final activityRoles =
+        widget.controller.room.activityRoles?.roles.values.toList() ?? [];
+    if (activityRoles.any((r) => r.isFinished)) {
+      return true;
+    }
+
+    // otherwise, if no one has finished, only show if the user has sent >= 3 messages
     int count = 0;
     for (final event in widget.controller.timeline!.events) {
       if (event.senderId == _client.userID &&
@@ -170,24 +190,28 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final roleState =
+        widget.controller.room.activityRoles?.roles.values.toList() ?? [];
+
+    final enabled = _xpCount > 0 || roleState.any((r) => r.isFinished);
+
     return PressableButton(
       onPressed: () => widget.controller.setShowDropdown(
         !widget.controller.showActivityDropdown,
       ),
       borderRadius: BorderRadius.circular(12),
-      color: _xpCount > 0
+      color: enabled
           ? (theme.brightness == Brightness.light
               ? AppConfig.yellowLight
               : Color.lerp(AppConfig.gold, Colors.black, 0.3)!)
           : theme.colorScheme.surface,
-      depressed: _xpCount <= 0 || widget.controller.showActivityDropdown,
+      depressed: !enabled || widget.controller.showActivityDropdown,
       child: AnimatedContainer(
         duration: FluffyThemes.animationDuration,
-        width: 300,
-        height: 55,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        width: 280,
+        height: 40,
         decoration: BoxDecoration(
-          color: _xpCount > 0
+          color: enabled
               ? theme.brightness == Brightness.light
                   ? AppConfig.yellowLight
                   : Color.lerp(AppConfig.gold, Colors.black, 0.3)!
@@ -200,7 +224,7 @@ class _ActivityStatsButtonState extends State<ActivityStatsButton> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   _StatsBadge(
-                    icon: Icons.radar,
+                    icon: Icons.star,
                     value: "$_xpCount XP",
                   ),
                   _StatsBadge(
@@ -229,10 +253,9 @@ class _StatsBadge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final screenWidth = MediaQuery.of(context).size.width;
     final baseStyle = theme.textTheme.bodyMedium;
-    final double fontSize = (screenWidth < 400) ? 14 : 18;
-    final double iconSize = (screenWidth < 400) ? 18 : 22;
+    final double fontSize = FluffyThemes.isColumnMode(context) ? 18 : 14;
+    final double iconSize = FluffyThemes.isColumnMode(context) ? 22 : 18;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [

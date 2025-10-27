@@ -50,8 +50,6 @@ class PApiUrls {
 
   static String lemmaDictionary =
       "${PApiUrls._choreoEndpoint}/lemma_definition";
-  static String lemmaDictionaryEdit =
-      "${PApiUrls._choreoEndpoint}/lemma_definition/edit";
   static String morphDictionary = "${PApiUrls._choreoEndpoint}/morph_meaning";
 
   // static String activityPlan = "${PApiUrls._choreoEndpoint}/activity_plan";
@@ -74,6 +72,14 @@ class PApiUrls {
   static String morphFeaturesAndTags = "${PApiUrls._choreoEndpoint}/morphs";
   static String constructSummary =
       "${PApiUrls._choreoEndpoint}/construct_summary";
+
+  ///--------------------------- course translations ---------------------------
+  static String getLocalizedCourse =
+      "${PApiUrls._choreoEndpoint}/course_plans/localize";
+  static String getLocalizedTopic =
+      "${PApiUrls._choreoEndpoint}/topics/localize";
+  static String getLocalizedActivity =
+      "${PApiUrls._choreoEndpoint}/activity_plan/localize";
 
   ///-------------------------------- revenue cat --------------------------
   static String rcAppsChoreo = "${PApiUrls._subscriptionEndpoint}/app_ids";

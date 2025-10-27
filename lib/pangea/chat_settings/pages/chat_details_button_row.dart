@@ -10,11 +10,8 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat_details/chat_details.dart';
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
-import 'package:fluffychat/pangea/chat_settings/models/bot_options_model.dart';
 import 'package:fluffychat/pangea/chat_settings/pages/room_details_buttons.dart';
 import 'package:fluffychat/pangea/chat_settings/utils/delete_room.dart';
-import 'package:fluffychat/pangea/chat_settings/widgets/conversation_bot/conversation_bot_settings.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -74,7 +71,8 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         title: l10n.permissions,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
         onPressed: () => context.go('/rooms/${room.id}/details/permissions'),
-        enabled: room.isRoomAdmin && !room.isDirectChat,
+        enabled: room.isRoomAdmin,
+        visible: !room.isDirectChat,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -106,7 +104,8 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
           }
           context.go('/rooms/${room.id}/details/invite?filter=$filter');
         },
-        enabled: room.canInvite && !room.isDirectChat,
+        enabled: room.canInvite,
+        visible: !room.isDirectChat,
       ),
       ButtonDetails(
         title: l10n.download,
@@ -117,28 +116,11 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
         showInMainView: false,
       ),
       ButtonDetails(
-        title: l10n.botSettings,
-        icon: const BotFace(
-          width: 30.0,
-          expression: BotExpression.idle,
-        ),
-        onPressed: () => showDialog<BotOptionsModel?>(
-          context: context,
-          builder: (BuildContext context) => ConversationBotSettingsDialog(
-            room: room,
-            onSubmit: widget.controller.setBotOptions,
-          ),
-        ),
-        visible: (!room.isDirectChat || room.botOptions != null) &&
-            !room.showActivityChatUI,
-        enabled: room.canInvite,
-      ),
-      ButtonDetails(
         title: l10n.chatCapacity,
         icon: const Icon(Icons.reduce_capacity, size: 30.0),
         onPressed: widget.controller.setRoomCapacity,
-        visible: !room.showActivityChatUI,
-        enabled: !room.isDirectChat && room.canSendDefaultStates,
+        visible: !room.showActivityChatUI && !room.isDirectChat,
+        enabled: room.canSendDefaultStates,
         showInMainView: false,
       ),
       ButtonDetails(
@@ -187,7 +169,8 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
           if (resp.isError) return;
           context.go("/rooms");
         },
-        enabled: room.isRoomAdmin && !room.isDirectChat,
+        enabled: room.isRoomAdmin,
+        visible: !room.isDirectChat,
         showInMainView: false,
       ),
     ];

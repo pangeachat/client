@@ -10,7 +10,6 @@ class CoursePlanFilter<T> extends StatefulWidget {
 
   final void Function(T?) onChanged;
   final String defaultName;
-  final String? shortName;
   final String Function(T) displayname;
 
   final bool enableSearch;
@@ -23,7 +22,6 @@ class CoursePlanFilter<T> extends StatefulWidget {
     required this.defaultName,
     required this.displayname,
     this.enableSearch = false,
-    this.shortName,
   });
 
   @override
@@ -46,26 +44,23 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
       child: DropdownButton2<T>(
         customButton: Container(
           decoration: BoxDecoration(
-            border: Border.all(color: theme.colorScheme.onSurface),
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: BorderRadius.circular(40.0),
+            color: theme.colorScheme.surfaceContainerHighest,
           ),
           padding: const EdgeInsets.symmetric(
-            horizontal: 8.0,
-            vertical: 2.0,
+            horizontal: 16.0,
+            vertical: 12.0,
           ),
           child: Row(
-            spacing: 4.0,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 widget.value != null
                     ? widget.displayname(widget.value as T)
                     : widget.defaultName,
-                style: theme.textTheme.labelMedium,
               ),
               const Icon(
                 Icons.arrow_drop_down,
-                size: 12.0,
               ),
             ],
           ),
@@ -78,7 +73,7 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
                 child: DropdownTextButton(
                   text: item != null
                       ? widget.displayname(item)
-                      : widget.shortName ?? widget.defaultName,
+                      : widget.defaultName,
                   isSelected: item == widget.value,
                 ),
               ),
@@ -89,9 +84,6 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40),
           ),
-        ),
-        dropdownStyleData: const DropdownStyleData(
-          width: 250,
         ),
         dropdownSearchData: widget.enableSearch
             ? DropdownSearchData(
