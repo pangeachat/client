@@ -1,9 +1,3 @@
-//Possible actions/effects from cards
-// Nothing
-// useType of viewed definitions
-// SpanChoice of text in message from options
-// Call to server for additional/followup info
-
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -245,8 +239,6 @@ class SpanChoice {
     }
     return feedback!;
   }
-
-  bool get isDistractor => type == SpanChoiceType.distractor;
 
   bool get isBestCorrection => type == SpanChoiceType.bestCorrection;
 

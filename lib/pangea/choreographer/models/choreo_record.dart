@@ -139,7 +139,6 @@ class ChoreoRecord {
   static const _stepsKey = "stps";
   static const _openMatchesKey = "mtchs";
   static const _originalTextKey = "ogtxt_v2";
-  // static const _currentKey = "crnt";
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
@@ -147,27 +146,23 @@ class ChoreoRecord {
     data[_openMatchesKey] =
         jsonEncode(openMatches.map((e) => e.toJson()).toList());
     data[_originalTextKey] = originalText;
-    // data[_currentKey] = current;
     return data;
   }
 
-  void addRecord(String text, {PangeaMatch? match, ITStep? step}) {
-    if (match != null && step != null) {
-      throw Exception("match and step should not both be defined");
-    }
+  bool get includedIT => choreoSteps.any((step) {
+        return step.acceptedOrIgnoredMatch?.status ==
+                PangeaMatchStatus.accepted &&
+            (step.acceptedOrIgnoredMatch?.isOutOfTargetMatch ?? false);
+      });
 
-    final edit = ChoreoEdit.fromText(
-      originalText: stepText(),
-      editedText: text,
-    );
+  bool get includedIGC => choreoSteps.any((step) {
+        return step.acceptedOrIgnoredMatch?.status ==
+                PangeaMatchStatus.accepted &&
+            (step.acceptedOrIgnoredMatch?.isGrammarMatch ?? false);
+      });
 
-    choreoSteps.add(
-      ChoreoRecordStep(
-        edits: edit,
-        acceptedOrIgnoredMatch: match,
-        itStep: step,
-      ),
-    );
+  bool endedWithIT(String sent) {
+    return includedIT && stepText() == sent;
   }
 
   /// Get the text at [stepIndex]
@@ -195,40 +190,23 @@ class ChoreoRecord {
     return text;
   }
 
-  bool get hasAcceptedMatches => choreoSteps.any(
-        (element) =>
-            element.acceptedOrIgnoredMatch?.status ==
-            PangeaMatchStatus.accepted,
-      );
+  void addRecord(String text, {PangeaMatch? match, ITStep? step}) {
+    if (match != null && step != null) {
+      throw Exception("match and step should not both be defined");
+    }
 
-  bool get hasIgnoredMatches => choreoSteps.any(
-        (element) =>
-            element.acceptedOrIgnoredMatch?.status == PangeaMatchStatus.ignored,
-      );
+    final edit = ChoreoEdit.fromText(
+      originalText: stepText(),
+      editedText: text,
+    );
 
-  // bool get includedIT => choreoSteps.any((step) {
-  //       return step.acceptedOrIgnoredMatch?.status ==
-  //               PangeaMatchStatus.accepted &&
-  //           (step.acceptedOrIgnoredMatch?.isITStart ?? false);
-  //     });
-
-  bool get includedIT => choreoSteps.any((step) {
-        return step.acceptedOrIgnoredMatch?.status ==
-                PangeaMatchStatus.accepted &&
-            (step.acceptedOrIgnoredMatch?.isOutOfTargetMatch ?? false);
-      });
-
-  bool get includedIGC => choreoSteps.any((step) {
-        return step.acceptedOrIgnoredMatch?.status ==
-                PangeaMatchStatus.accepted &&
-            (step.acceptedOrIgnoredMatch?.isGrammarMatch ?? false);
-      });
-
-  List<ITStep> get itSteps =>
-      choreoSteps.where((e) => e.itStep != null).map((e) => e.itStep!).toList();
-
-  bool endedWithIT(String sent) {
-    return includedIT && stepText() == sent;
+    choreoSteps.add(
+      ChoreoRecordStep(
+        edits: edit,
+        acceptedOrIgnoredMatch: match,
+        itStep: step,
+      ),
+    );
   }
 }
 

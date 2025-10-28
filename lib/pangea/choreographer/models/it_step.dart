@@ -22,32 +22,6 @@ class ITStep {
     }
   }
 
-  Continuance? get chosenContinuance {
-    if (chosen == null) return null;
-    return continuances[chosen!];
-  }
-
-  String choiceFeedback(BuildContext context) {
-    if (continuances.length == 1) return '';
-    return chosenContinuance?.feedbackText(context) ?? "";
-  }
-
-  bool get isCorrect =>
-      chosenContinuance != null &&
-      (chosenContinuance!.level == ChoreoConstants.levelThresholdForGreen ||
-          chosenContinuance!.gold);
-
-  bool get isYellow =>
-      chosenContinuance != null &&
-      chosenContinuance!.level == ChoreoConstants.levelThresholdForYellow;
-
-  bool get isWrong {
-    return chosenContinuance != null &&
-        chosenContinuance!.level == ChoreoConstants.levelThresholdForRed;
-  }
-
-  bool get isCustom => chosenContinuance == null;
-
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['continuances'] = continuances.map((e) => e.toJson(true)).toList();
@@ -66,6 +40,11 @@ class ITStep {
       chosen: json['chosen'],
       customInput: json['custom_input'],
     );
+  }
+
+  Continuance? get chosenContinuance {
+    if (chosen == null) return null;
+    return continuances[chosen!];
   }
 }
 
@@ -113,7 +92,6 @@ class Continuance {
     data['level'] = level;
     data['text'] = text;
     data['clkd'] = wasClicked;
-    // data[ModelKey.tokens] = tokens.map((e) => e.toJson()).toList();
 
     if (!condensed) {
       data['description'] = description;

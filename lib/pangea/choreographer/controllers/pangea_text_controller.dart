@@ -13,8 +13,8 @@ import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/utils/overlay.dart';
-import '../controllers/choreographer.dart';
 import '../enums/edit_type.dart';
+import 'choreographer.dart';
 
 class PangeaTextController extends TextEditingController {
   Choreographer choreographer;

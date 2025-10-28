@@ -27,7 +27,6 @@ class ChoicesArray extends StatefulWidget {
   final ChoiceCallback onPressed;
   final ChoiceCallback? onLongPress;
   final int? selectedChoiceIndex;
-  final String originalSpan;
 
   final bool enableAudio;
 
@@ -56,7 +55,6 @@ class ChoicesArray extends StatefulWidget {
     required this.isLoading,
     required this.choices,
     required this.onPressed,
-    required this.originalSpan,
     required this.selectedChoiceIndex,
     this.enableAudio = true,
     this.langCode,
@@ -132,7 +130,6 @@ class ChoicesArrayState extends State<ChoicesArray> {
     return widget.isLoading &&
             (widget.choices == null || widget.choices!.length <= 1)
         ? ItShimmer(
-            originalSpan: widget.originalSpan,
             fontSize: widget.fontSize ??
                 Theme.of(context).textTheme.bodyMedium?.fontSize ??
                 16,

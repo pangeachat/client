@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 class ItShimmer extends StatelessWidget {
   const ItShimmer({
     super.key,
-    required this.originalSpan,
     required this.fontSize,
   });
 
-  final String originalSpan;
   final double fontSize;
 
   Iterable<Widget> renderShimmerIfListEmpty(
@@ -18,7 +16,7 @@ class ItShimmer extends StatelessWidget {
   }) {
     final List<String> dummyStrings = [];
     for (int i = 0; i < noOfBars; i++) {
-      dummyStrings.add(originalSpan);
+      dummyStrings.add(" " * 10);
     }
     return dummyStrings.map(
       (e) => ITShimmerElement(

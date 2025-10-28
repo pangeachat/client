@@ -150,8 +150,6 @@ class WordMatchContent extends StatelessWidget {
                   children: [
                     const SizedBox(height: 8),
                     ChoicesArray(
-                      originalSpan:
-                          controller.widget.match.updatedMatch.matchContent,
                       isLoading: controller.fetchingData,
                       choices:
                           controller.widget.match.updatedMatch.match.choices

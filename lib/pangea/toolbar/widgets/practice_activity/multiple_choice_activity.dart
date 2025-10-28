@@ -234,7 +234,6 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
           ),
         ChoicesArray(
           isLoading: false,
-          originalSpan: "placeholder",
           onPressed: updateChoice,
           selectedChoiceIndex: selectedChoiceIndex,
           choices: choices(context),

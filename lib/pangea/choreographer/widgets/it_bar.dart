@@ -368,8 +368,6 @@ class ITChoices extends StatelessWidget {
         isLoading: controller.isLoading ||
             controller.choreographer.isFetching ||
             controller.currentITStep == null,
-        //TODO - pass current span being translated
-        originalSpan: "dummy",
         choices: controller.currentITStep!.continuances.map((e) {
           try {
             return Choice(

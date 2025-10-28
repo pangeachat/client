@@ -132,8 +132,7 @@ class PangeaRepresentation {
           .toList();
     }
 
-    if (choreo == null ||
-        (choreo.choreoSteps.isEmpty && choreo.itSteps.isEmpty)) {
+    if (choreo == null || choreo.choreoSteps.isEmpty) {
       for (final token in tokensToSave) {
         uses.addAll(
           token.allUses(

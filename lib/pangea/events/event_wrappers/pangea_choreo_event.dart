@@ -6,8 +6,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/extensions/pangea_event_extension.dart';
-import '../../events/constants/pangea_event_types.dart';
-import '../models/choreo_record.dart';
+import '../../choreographer/models/choreo_record.dart';
+import '../constants/pangea_event_types.dart';
 
 class ChoreoEvent {
   Event event;
