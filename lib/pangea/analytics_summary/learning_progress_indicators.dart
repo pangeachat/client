@@ -1,11 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
-
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/pangea/analytics_misc/client_analytics_extension.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_list_model.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/get_analytics_controller.dart';
@@ -13,10 +8,11 @@ import 'package:fluffychat/pangea/analytics_summary/learning_progress_bar.dart';
 import 'package:fluffychat/pangea/analytics_summary/learning_progress_indicator_button.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicator.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 /// A summary of "My Analytics" shown at the top of the chat list
 /// It shows a variety of progress indicators such as
@@ -155,12 +151,8 @@ class LearningProgressIndicatorsState
                                 ),
                                 const SizedBox(width: 6.0),
                                 AnimatedFloatingNumber(
-                                  number: Matrix.of(context)
-                                          .client
-                                          .analyticsRoomLocal()
-                                          ?.activityRoomIds
-                                          .length ??
-                                      0,
+                                  number: MatrixState.pangeaController
+                                      .getAnalytics.archivedActivitiesCount,
                                 ),
                               ],
                             ),

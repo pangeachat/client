@@ -1,11 +1,6 @@
 import 'dart:ui' as ui;
 
-import 'package:flutter/material.dart';
-
 import 'package:badges/badges.dart';
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
@@ -27,6 +22,10 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:matrix/matrix.dart';
+
 import '../../utils/stream_extension.dart';
 
 // #Pangea
@@ -124,7 +123,7 @@ class ChatView extends StatelessWidget {
     //   ];
     // } else
     // Pangea#
-    if (!controller.room.isArchived) {
+    if (!(controller.room.isArchived || controller.room.hasArchivedActivity)) {
       // #Pangea
       return [
         if (controller.room.activityPlan == null ||
@@ -461,7 +460,8 @@ class ChatView extends StatelessWidget {
                               AnimatedSize(
                                 duration: const Duration(milliseconds: 200),
                                 child: SizedBox(
-                                  height: controller.inputBarHeight,
+                                  height: controller.inputBarHeight +
+                                      bottomSheetPadding,
                                 ),
                               ),
                             if (controller.room.isActivityFinished)
@@ -486,29 +486,18 @@ class ChatView extends StatelessWidget {
                           Positioned(
                             left: 0,
                             right: 0,
-                            bottom: 0,
+                            bottom: 16,
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 ChatInputBarHeader(
                                   controller: controller,
                                   padding: bottomSheetPadding,
                                 ),
-                                if (controller.showScrollDownButton)
-                                  Divider(
-                                    height: 1,
-                                    color: Theme.of(context).dividerColor,
-                                  ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color:
-                                        Theme.of(context).colorScheme.surface,
-                                  ),
-                                  child: ChatInputBar(
-                                    controller: controller,
-                                    padding: bottomSheetPadding,
-                                  ),
+                                ChatInputBar(
+                                  controller: controller,
+                                  padding: bottomSheetPadding,
                                 ),
                               ],
                             ),
