@@ -10,12 +10,12 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
-import 'package:fluffychat/pangea/choreographer/repo/interactive_translation_repo.dart';
+import 'package:fluffychat/pangea/choreographer/repo/it_repo.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../models/it_step.dart';
-import '../repo/custom_input_request_model.dart';
+import '../repo/it_request_model.dart';
 import '../repo/it_response_model.dart';
 import 'choreographer.dart';
 
@@ -265,7 +265,7 @@ class ITController {
     }
   }
 
-  CustomInputRequestModel _request(String textInput) => CustomInputRequestModel(
+  ITRequestModel _request(String textInput) => ITRequestModel(
         text: sourceText!,
         customInput: textInput,
         sourceLangCode: sourceLangCode,
@@ -279,7 +279,10 @@ class ITController {
   //maybe we store IT data in the same format? make a specific kind of match?
   void selectTranslation(int chosenIndex) {
     if (currentITStep == null) return;
-    final itStep = ITStep(currentITStep!.continuances, chosen: chosenIndex);
+    final itStep = ITStep(
+      currentITStep!.continuances,
+      chosen: chosenIndex,
+    );
 
     completedITSteps.add(itStep);
     choreographer.onITChoiceSelect(itStep);
@@ -393,7 +396,9 @@ class CurrentITStep {
               .map((e) {
             //we only want one green choice and for that to be our gold
             if (e.level == ChoreoConstants.levelThresholdForGreen) {
-              e.level = ChoreoConstants.levelThresholdForYellow;
+              return e.copyWith(
+                level: ChoreoConstants.levelThresholdForYellow,
+              );
             }
             return e;
           }),
@@ -401,7 +406,7 @@ class CurrentITStep {
         ];
         continuances.shuffle();
       } else {
-        continuances = responseModel.continuances;
+        continuances = List<Continuance>.from(responseModel.continuances);
       }
     }
   }

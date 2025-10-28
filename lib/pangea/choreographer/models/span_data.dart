@@ -8,10 +8,20 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 
+import 'package:fluffychat/pangea/choreographer/utils/text_normalization_util.dart';
 import '../enums/span_choice_type.dart';
 import '../enums/span_data_type.dart';
 
 class SpanData {
+  final String? message;
+  final String? shortMessage;
+  final List<SpanChoice>? choices;
+  final int offset;
+  final int length;
+  final String fullText;
+  final SpanDataType type;
+  final Rule? rule;
+
   SpanData({
     required this.message,
     required this.shortMessage,
@@ -22,6 +32,28 @@ class SpanData {
     required this.type,
     required this.rule,
   });
+
+  SpanData copyWith({
+    String? message,
+    String? shortMessage,
+    List<SpanChoice>? choices,
+    int? offset,
+    int? length,
+    String? fullText,
+    SpanDataType? type,
+    Rule? rule,
+  }) {
+    return SpanData(
+      message: message ?? this.message,
+      shortMessage: shortMessage ?? this.shortMessage,
+      choices: choices ?? this.choices,
+      offset: offset ?? this.offset,
+      length: length ?? this.length,
+      fullText: fullText ?? this.fullText,
+      type: type ?? this.type,
+      rule: rule ?? this.rule,
+    );
+  }
 
   factory SpanData.fromJson(Map<String, dynamic> json) {
     final Iterable? choices = json['choices'] ?? json['replacements'];
@@ -44,15 +76,6 @@ class SpanData {
     );
   }
 
-  String? message;
-  String? shortMessage;
-  List<SpanChoice>? choices;
-  int offset;
-  int length;
-  String fullText;
-  SpanDataType type;
-  Rule? rule;
-
   Map<String, dynamic> toJson() => {
         'message': message,
         'short_message': shortMessage,
@@ -66,20 +89,107 @@ class SpanData {
         'rule': rule?.toJson(),
       };
 
+  bool isOffsetInMatchSpan(int offset) =>
+      offset >= this.offset && offset < this.offset + length;
+
   SpanChoice? get bestChoice {
     return choices?.firstWhereOrNull(
       (choice) => choice.isBestCorrection,
     );
   }
+
+  int get selectedChoiceIndex {
+    if (choices == null) {
+      return -1;
+    }
+
+    // if user ever selected the correct choice, automatically select it
+    final selectedCorrectIndex = choices!.indexWhere((choice) {
+      return choice.selected && choice.isBestCorrection;
+    });
+
+    if (selectedCorrectIndex != -1) {
+      return selectedCorrectIndex;
+    }
+
+    SpanChoice? mostRecent;
+    for (int i = 0; i < choices!.length; i++) {
+      final choice = choices![i];
+      if (choice.timestamp != null &&
+          (mostRecent == null ||
+              choice.timestamp!.isAfter(mostRecent.timestamp!))) {
+        mostRecent = choice;
+      }
+    }
+    return mostRecent != null ? choices!.indexOf(mostRecent) : -1;
+  }
+
+  SpanChoice? get selectedChoice {
+    final index = selectedChoiceIndex;
+    if (index == -1) {
+      return null;
+    }
+    return choices![index];
+  }
+
+  bool isNormalizationError() {
+    final correctChoice = choices
+        ?.firstWhereOrNull(
+          (c) => c.isBestCorrection,
+        )
+        ?.value;
+
+    final errorSpan = fullText.characters.skip(offset).take(length).toString();
+
+    return correctChoice != null &&
+        TextNormalizationUtil.normalizeString(correctChoice) ==
+            TextNormalizationUtil.normalizeString(errorSpan);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! SpanData) return false;
+    if (other.message != message) return false;
+    if (other.shortMessage != shortMessage) return false;
+    if (other.offset != offset) return false;
+    if (other.length != length) return false;
+    if (other.fullText != fullText) return false;
+    if (other.type != type) return false;
+    if (other.rule != rule) return false;
+    if (const ListEquality().equals(
+          other.choices?.sorted((a, b) => b.value.compareTo(a.value)),
+          choices?.sorted((a, b) => b.value.compareTo(a.value)),
+        ) ==
+        false) {
+      return false;
+    }
+    return true;
+  }
+
+  @override
+  int get hashCode {
+    return message.hashCode ^
+        shortMessage.hashCode ^
+        Object.hashAll(
+          (choices ?? [])
+              .sorted((a, b) => b.value.compareTo(a.value))
+              .map((choice) => choice.hashCode),
+        ) ^
+        offset.hashCode ^
+        length.hashCode ^
+        fullText.hashCode ^
+        type.hashCode ^
+        rule.hashCode;
+  }
 }
 
 class SpanChoice {
-  String value;
-  SpanChoiceType type;
-  bool selected;
-  String? feedback;
-  DateTime? timestamp;
-  // List<PangeaToken> tokens;
+  final String value;
+  final SpanChoiceType type;
+  final bool selected;
+  final String? feedback;
+  final DateTime? timestamp;
 
   SpanChoice({
     required this.value,
@@ -87,18 +197,25 @@ class SpanChoice {
     this.feedback,
     this.selected = false,
     this.timestamp,
-    // this.tokens = const [],
   });
 
+  SpanChoice copyWith({
+    String? value,
+    SpanChoiceType? type,
+    String? feedback,
+    bool? selected,
+    DateTime? timestamp,
+  }) {
+    return SpanChoice(
+      value: value ?? this.value,
+      type: type ?? this.type,
+      feedback: feedback ?? this.feedback,
+      selected: selected ?? this.selected,
+      timestamp: timestamp ?? this.timestamp,
+    );
+  }
+
   factory SpanChoice.fromJson(Map<String, dynamic> json) {
-    // final List<PangeaToken> tokensInternal = (json[ModelKey.tokens] != null)
-    //     ? (json[ModelKey.tokens] as Iterable)
-    //         .map<PangeaToken>(
-    //           (e) => PangeaToken.fromJson(e as Map<String, dynamic>),
-    //         )
-    //         .toList()
-    //         .cast<PangeaToken>()
-    //     : [];
     return SpanChoice(
       value: json['value'] as String,
       type: json['type'] != null
@@ -111,7 +228,6 @@ class SpanChoice {
       selected: json['selected'] ?? false,
       timestamp:
           json['timestamp'] != null ? DateTime.parse(json['timestamp']) : null,
-      // tokens: tokensInternal,
     );
   }
 
@@ -121,7 +237,6 @@ class SpanChoice {
         'selected': selected,
         'feedback': feedback,
         'timestamp': timestamp?.toIso8601String(),
-        // 'tokens': tokens.map((e) => e.toJson()).toList(),
       };
 
   String feedbackToDisplay(BuildContext context) {
@@ -147,38 +262,51 @@ class SpanChoice {
         other.type.toString() == type.toString() &&
         other.selected == selected &&
         other.feedback == feedback &&
-        other.timestamp?.toIso8601String() == timestamp?.toIso8601String();
+        other.timestamp == timestamp;
   }
 
   @override
   int get hashCode {
-    return Object.hashAll([
-      value.hashCode,
-      type.toString().hashCode,
-      selected.hashCode,
-      feedback.hashCode,
-      timestamp?.toIso8601String().hashCode,
-    ]);
+    return value.hashCode ^
+        type.hashCode ^
+        selected.hashCode ^
+        feedback.hashCode ^
+        timestamp.hashCode;
   }
 }
 
 class Rule {
-  Rule({
+  final String id;
+
+  const Rule({
     required this.id,
   });
+
   factory Rule.fromJson(Map<String, dynamic> json) => Rule(
         id: json['id'] as String,
       );
 
-  String id;
-
   Map<String, dynamic> toJson() => {
         'id': id,
       };
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! Rule) return false;
+    return other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode;
+  }
 }
 
 class SpanDataType {
-  SpanDataType({
+  final SpanDataTypeEnum typeName;
+
+  const SpanDataType({
     required this.typeName,
   });
 
@@ -193,9 +321,20 @@ class SpanDataType {
           : SpanDataTypeEnum.correction,
     );
   }
-  SpanDataTypeEnum typeName;
 
   Map<String, dynamic> toJson() => {
         'type_name': typeName.name,
       };
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! SpanDataType) return false;
+    return other.typeName == typeName;
+  }
+
+  @override
+  int get hashCode {
+    return typeName.hashCode;
+  }
 }

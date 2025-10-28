@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_edit.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
@@ -16,13 +17,11 @@ class ChoreoRecord {
   /// ordered versions of the representation, with first being original and last
   /// being the final sent text
   /// there is not a 1-to-1 map from steps to matches
-  List<ChoreoRecordStep> choreoSteps;
-
-  List<PangeaMatch> openMatches;
+  final List<ChoreoRecordStep> choreoSteps;
+  final List<PangeaMatch> openMatches;
+  final String originalText;
 
   final Set<String> pastedStrings = {};
-
-  final String originalText;
 
   ChoreoRecord({
     required this.choreoSteps,
@@ -76,7 +75,7 @@ class ChoreoRecord {
         int length = 0;
         String insert = "";
 
-        final step = ChoreoRecordStep.fromJson(content);
+        ChoreoRecordStep step = ChoreoRecordStep.fromJson(content);
         if (step.acceptedOrIgnoredMatch != null) {
           final SpanData? match = step.acceptedOrIgnoredMatch?.match;
           final correction = match?.bestChoice;
@@ -109,7 +108,11 @@ class ChoreoRecord {
         );
 
         currentEdit = textAfter;
-        step.edits = edits;
+        step = ChoreoRecordStep(
+          edits: edits,
+          acceptedOrIgnoredMatch: step.acceptedOrIgnoredMatch,
+          itStep: step.itStep,
+        );
         steps.add(step);
       }
     }
@@ -255,14 +258,14 @@ class ChoreoRecordStep {
   /// will provide the current step's text
   /// Should always exist, except when using fromJSON
   /// on old version of ChoreoRecordStep
-  ChoreoEdit? edits;
+  final ChoreoEdit? edits;
 
   /// all matches throughout edit process,
   /// including those open, accepted and ignored
   /// last step in list may contain open
-  PangeaMatch? acceptedOrIgnoredMatch;
+  final PangeaMatch? acceptedOrIgnoredMatch;
 
-  ITStep? itStep;
+  final ITStep? itStep;
 
   ChoreoRecordStep({
     this.edits,

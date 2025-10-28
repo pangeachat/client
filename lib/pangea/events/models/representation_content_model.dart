@@ -4,8 +4,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/analytics_misc/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_misc/constructs_model.dart';
+import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/pangea_token_model.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';

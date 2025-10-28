@@ -2196,8 +2196,7 @@ class ChatController extends State<ChatPageWithRoom>
         choreographer: choreographer,
         onUpdate: () async {
           await choreographer.getLanguageHelp(manual: true);
-          final matches = choreographer.igc.igcTextData?.matches;
-          if (matches?.isNotEmpty == true) {
+          if (choreographer.igc.canShowFirstMatch) {
             choreographer.igc.showFirstMatch(context);
           }
         },

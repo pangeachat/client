@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
-class CustomInputRequestModel {
+class ITRequestModel {
   final String text;
   final String customInput;
   final String sourceLangCode;
@@ -14,7 +14,7 @@ class CustomInputRequestModel {
   final String? goldTranslation;
   final List<Continuance>? goldContinuances;
 
-  const CustomInputRequestModel({
+  const ITRequestModel({
     required this.text,
     required this.customInput,
     required this.sourceLangCode,
@@ -25,7 +25,7 @@ class CustomInputRequestModel {
     required this.goldContinuances,
   });
 
-  factory CustomInputRequestModel.fromJson(json) => CustomInputRequestModel(
+  factory ITRequestModel.fromJson(json) => ITRequestModel(
         text: json['text'],
         customInput: json['custom_input'],
         sourceLangCode: json[ModelKey.srcLang],
@@ -34,7 +34,7 @@ class CustomInputRequestModel {
         roomId: json['room_id'],
         goldTranslation: json['gold_translation'],
         goldContinuances: json['gold_continuances'] != null
-            ? List.from(json['gold_continuances'])
+            ? (json['gold_continuances'])
                 .map((e) => Continuance.fromJson(e))
                 .toList()
             : null,
@@ -57,7 +57,7 @@ class CustomInputRequestModel {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is CustomInputRequestModel &&
+    return other is ITRequestModel &&
         other.text == text &&
         other.customInput == customInput &&
         other.sourceLangCode == sourceLangCode &&

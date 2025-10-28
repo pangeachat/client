@@ -10,9 +10,10 @@ import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/igc_controller.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
+import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
-import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 import 'package:fluffychat/pangea/choreographer/utils/input_paste_listener.dart';
 import 'package:fluffychat/pangea/choreographer/utils/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
@@ -90,7 +91,7 @@ class Choreographer {
     // could happen if user clicked send button multiple times in a row
     if (isFetching) return;
 
-    if (igc.igcTextData != null && igc.igcTextData!.matches.isNotEmpty) {
+    if (igc.canShowFirstMatch) {
       igc.showFirstMatch(context);
       return;
     } else if (isRunningIT) {
@@ -223,25 +224,25 @@ class Choreographer {
     );
   }
 
-  void onITStart(PangeaMatch itMatch) {
-    if (!itMatch.isITStart) {
+  void onITStart(PangeaMatchState itMatch) {
+    if (!itMatch.updatedMatch.isITStart) {
       throw Exception("this isn't an itStart match!");
     }
     choreoMode = ChoreoMode.it;
     itController.initializeIT(
       ITStartData(_textController.text, null),
     );
-    itMatch.status = PangeaMatchStatus.accepted;
+
     translatedText = _textController.text;
-
-    //PTODO - if totally in L1, save tokens, that's good stuff
-
     igc.clear();
-
     _textController.setSystemText("", EditType.itStart);
 
     _initChoreoRecord();
-    choreoRecord!.addRecord(_textController.text, match: itMatch);
+    itMatch.setStatus(PangeaMatchStatus.accepted);
+    choreoRecord!.addRecord(
+      _textController.text,
+      match: itMatch.updatedMatch,
+    );
   }
 
   /// Handles any changes to the text input
@@ -317,6 +318,7 @@ class Choreographer {
         return;
       }
 
+      _resetDebounceTimer();
       startLoading();
       _initChoreoRecord();
 
@@ -365,9 +367,8 @@ class Choreographer {
     giveInputFocus();
   }
 
-  Future<void> onReplacementSelect({
-    required int matchIndex,
-    required int choiceIndex,
+  Future<void> onAcceptReplacement({
+    required PangeaMatchState match,
   }) async {
     try {
       if (igc.igcTextData == null) {
@@ -375,52 +376,35 @@ class Choreographer {
           e: "onReplacementSelect with null igcTextData",
           s: StackTrace.current,
           data: {
-            "matchIndex": matchIndex,
-            "choiceIndex": choiceIndex,
+            "match": match.toJson(),
           },
         );
         MatrixState.pAnyState.closeOverlay();
         return;
       }
-      if (igc.igcTextData!.matches[matchIndex].match.choices == null) {
+      if (match.updatedMatch.match.selectedChoice == null) {
         ErrorHandler.logError(
-          e: "onReplacementSelect with null choices",
+          e: "onReplacementSelect with null selectedChoice",
           s: StackTrace.current,
           data: {
             "igctextData": igc.igcTextData?.toJson(),
-            "matchIndex": matchIndex,
-            "choiceIndex": choiceIndex,
+            "match": match.toJson(),
           },
         );
         MatrixState.pAnyState.closeOverlay();
         return;
       }
 
-      //if it's the wrong choice, return
-      // if (!igc.igcTextData!.matches[matchIndex].match.choices![choiceIndex]
-      //     .selected) {
-      //   igc.igcTextData!.matches[matchIndex].match.choices![choiceIndex]
-      //       .selected = true;
-      //   setState();
-      //   return;
-      // }
-
-      igc.igcTextData!.matches[matchIndex].match.choices![choiceIndex]
-          .selected = true;
-
       final isNormalizationError =
-          igc.spanDataController.isNormalizationError(matchIndex);
+          match.updatedMatch.match.isNormalizationError();
 
-      final match = igc.igcTextData!.matches[matchIndex].copyWith
-        ..status = PangeaMatchStatus.accepted;
-
-      igc.igcTextData!.acceptReplacement(
-        matchIndex,
-        choiceIndex,
+      final updatedMatch = igc.igcTextData!.acceptReplacement(
+        match,
+        PangeaMatchStatus.accepted,
       );
 
       _textController.setSystemText(
-        igc.igcTextData!.originalInput,
+        igc.igcTextData!.currentText,
         EditType.igc,
       );
 
@@ -429,7 +413,7 @@ class Choreographer {
         _initChoreoRecord();
         choreoRecord!.addRecord(
           _textController.text,
-          match: match,
+          match: updatedMatch,
         );
       }
 
@@ -442,26 +426,24 @@ class Choreographer {
         s: stack,
         data: {
           "igctextData": igc.igcTextData?.toJson(),
-          "matchIndex": matchIndex,
-          "choiceIndex": choiceIndex,
+          "match": match.toJson(),
         },
       );
-      igc.igcTextData?.matches.clear();
+      igc.clear();
     } finally {
       setState();
     }
   }
 
-  void onUndoReplacement(PangeaMatch match) {
+  void onUndoReplacement(PangeaMatchState match) {
     try {
       igc.igcTextData?.undoReplacement(match);
-
       choreoRecord?.choreoSteps.removeWhere(
-        (step) => step.acceptedOrIgnoredMatch == match,
+        (step) => step.acceptedOrIgnoredMatch == match.updatedMatch,
       );
 
       _textController.setSystemText(
-        igc.igcTextData!.originalInput,
+        igc.igcTextData!.currentText,
         EditType.igc,
       );
     } catch (e, s) {
@@ -480,52 +462,35 @@ class Choreographer {
   }
 
   void acceptNormalizationMatches() {
-    final List<int> indices = [];
-    for (int i = 0; i < igc.igcTextData!.matches.length; i++) {
-      final isNormalizationError =
-          igc.spanDataController.isNormalizationError(i);
-      if (isNormalizationError) indices.add(i);
-    }
-
-    if (indices.isEmpty) return;
+    final normalizationsMatches = igc.igcTextData!.openNormalizationMatches;
+    if (normalizationsMatches.isEmpty) return;
 
     _initChoreoRecord();
-    final matches = igc.igcTextData!.matches
-        .where(
-          (match) => indices.contains(igc.igcTextData!.matches.indexOf(match)),
-        )
-        .toList();
-
-    for (final match in matches) {
-      final index = igc.igcTextData!.matches.indexOf(match);
-      igc.igcTextData!.acceptReplacement(
-        index,
-        match.match.choices!.indexWhere(
+    for (final match in normalizationsMatches) {
+      match.selectChoice(
+        match.updatedMatch.match.choices!.indexWhere(
           (c) => c.isBestCorrection,
         ),
       );
 
-      final newMatch = match.copyWith;
-      newMatch.status = PangeaMatchStatus.automatic;
-      newMatch.match.length = match.match.choices!
-          .firstWhere((c) => c.isBestCorrection)
-          .value
-          .characters
-          .length;
+      final updatedMatch = igc.igcTextData!.acceptReplacement(
+        match,
+        PangeaMatchStatus.automatic,
+      );
 
       _textController.setSystemText(
-        igc.igcTextData!.originalInput,
+        igc.igcTextData!.currentText,
         EditType.igc,
       );
 
       choreoRecord!.addRecord(
         currentText,
-        match: newMatch,
+        match: updatedMatch,
       );
     }
   }
 
-  void onIgnoreMatch({required int matchIndex}) {
+  void onIgnoreMatch({required PangeaMatchState match}) {
     try {
       if (igc.igcTextData == null) {
         debugger(when: kDebugMode);
@@ -537,33 +502,23 @@ class Choreographer {
         return;
       }
 
-      if (matchIndex == -1) {
-        debugger(when: kDebugMode);
-        throw Exception("Cannot find the ignored match in igcTextData");
-      }
+      final updatedMatch = igc.igcTextData!.ignoreReplacement(match);
+      igc.onIgnoreMatch(updatedMatch);
 
-      igc.onIgnoreMatch(igc.igcTextData!.matches[matchIndex]);
-      igc.igcTextData!.matches[matchIndex].status = PangeaMatchStatus.ignored;
-
-      final isNormalizationError =
-          igc.spanDataController.isNormalizationError(matchIndex);
-
-      if (!isNormalizationError) {
+      if (!updatedMatch.match.isNormalizationError()) {
         _initChoreoRecord();
         choreoRecord!.addRecord(
           _textController.text,
-          match: igc.igcTextData!.matches[matchIndex],
+          match: updatedMatch,
         );
       }
-
-      igc.igcTextData!.matches.removeAt(matchIndex);
     } catch (err, stack) {
       debugger(when: kDebugMode);
       Sentry.addBreadcrumb(
         Breadcrumb(
           data: {
             "igcTextData": igc.igcTextData?.toJson(),
-            "matchIndex": matchIndex,
+            "match": match.toJson(),
           },
         ),
       );
@@ -574,7 +529,7 @@ class Choreographer {
           "igctextData": igc.igcTextData?.toJson(),
         },
       );
-      igc.igcTextData?.matches.clear();
+      igc.clear();
     } finally {
       setState();
     }
@@ -717,7 +672,7 @@ class Choreographer {
       return AssistanceState.noMessage;
     }
 
-    if ((igc.igcTextData?.matches.isNotEmpty ?? false) || isRunningIT) {
+    if ((igc.igcTextData?.hasOpenMatches ?? false) || isRunningIT) {
       return AssistanceState.fetched;
     }
 
@@ -756,10 +711,8 @@ class Choreographer {
     }
 
     // if they have relevant matches, don't let them send
-    final hasITMatches =
-        igc.igcTextData!.matches.any((match) => match.isITStart);
-    final hasIGCMatches =
-        igc.igcTextData!.matches.any((match) => !match.isITStart);
+    final hasITMatches = igc.igcTextData!.hasOpenITMatches;
+    final hasIGCMatches = igc.igcTextData!.hasOpenIGCMatches;
     if ((itEnabled && hasITMatches) || (igcEnabled && hasIGCMatches)) {
       return false;
     }

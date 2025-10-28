@@ -2,40 +2,17 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/enums/span_data_type.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import '../constants/match_rule_ids.dart';
 import 'span_data.dart';
 
-enum PangeaMatchStatus {
-  open,
-  ignored,
-  accepted,
-  automatic,
-  unknown;
-
-  static PangeaMatchStatus fromString(String status) {
-    final String lastPart = status.toString().split('.').last;
-    switch (lastPart) {
-      case 'open':
-        return PangeaMatchStatus.open;
-      case 'ignored':
-        return PangeaMatchStatus.ignored;
-      case 'accepted':
-        return PangeaMatchStatus.accepted;
-      case 'automatic':
-        return PangeaMatchStatus.automatic;
-      default:
-        return PangeaMatchStatus.unknown;
-    }
-  }
-}
-
 class PangeaMatch {
-  SpanData match;
-  PangeaMatchStatus status;
+  final SpanData match;
+  final PangeaMatchStatus status;
 
-  PangeaMatch({
+  const PangeaMatch({
     required this.match,
     required this.status,
   });
@@ -96,8 +73,15 @@ class PangeaMatch {
     return match.fullText.substring(beginning, end);
   }
 
-  bool isOffsetInMatchSpan(int offset) =>
-      offset >= match.offset && offset < match.offset + match.length;
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! PangeaMatch) return false;
+    return other.match == match && other.status == status;
+  }
 
-  PangeaMatch get copyWith => PangeaMatch.fromJson(toJson());
+  @override
+  int get hashCode {
+    return match.hashCode ^ status.hashCode;
+  }
 }

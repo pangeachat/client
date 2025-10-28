@@ -9,11 +9,13 @@ import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/span_data_controller.dart';
 import 'package:fluffychat/pangea/choreographer/models/igc_text_data_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 import 'package:fluffychat/pangea/choreographer/repo/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/repo/igc_request_model.dart';
+import 'package:fluffychat/pangea/choreographer/repo/span_data_repo.dart';
+import 'package:fluffychat/pangea/choreographer/repo/span_data_request.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -24,11 +26,8 @@ import '../../common/utils/overlay.dart';
 class IgcController {
   Choreographer choreographer;
   IGCTextData? igcTextData;
-  late SpanDataController spanDataController;
 
-  IgcController(this.choreographer) {
-    spanDataController = SpanDataController(choreographer);
-  }
+  IgcController(this.choreographer);
 
   Future<void> getIGCTextData() async {
     if (choreographer.currentText.isEmpty) return clear();
@@ -68,39 +67,16 @@ class IgcController {
     if (res.result!.originalInput.trim() != choreographer.currentText.trim()) {
       return;
     }
-    // get ignored matches from the original igcTextData
-    // if the new matches are the same as the original match
-    // could possibly change the status of the new match
-    // thing is the same if the text we are trying to change is the smae
-    // as the new text we are trying to change (suggestion is the same)
 
-    // Check for duplicate or minor text changes that shouldn't trigger suggestions
-    // checks for duplicate input
-
-    igcTextData = res.result!;
-    final List<PangeaMatch> filteredMatches = List.from(igcTextData!.matches);
-    for (final PangeaMatch match in igcTextData!.matches) {
-      if (IgcRepo.isIgnored(match)) {
-        filteredMatches.remove(match);
-      }
-    }
-
-    igcTextData!.matches = filteredMatches;
+    final response = res.result!;
+    igcTextData = IGCTextData(
+      originalInput: response.originalInput,
+      matches: response.matches,
+    );
     choreographer.acceptNormalizationMatches();
 
-    // TODO - for each new match,
-    // check if existing igcTextData has one and only one match with the same error text and correction
-    // if so, keep the original match and discard the new one
-    // if not, add the new match to the existing igcTextData
-
-    // After fetching igc data, pre-call span details for each match optimistically.
-    // This will make the loading of span details faster for the user
-    if (igcTextData?.matches.isNotEmpty ?? false) {
-      for (int i = 0; i < igcTextData!.matches.length; i++) {
-        if (!igcTextData!.matches[i].isITStart) {
-          spanDataController.getSpanDetails(i);
-        }
-      }
+    for (final match in igcTextData!.openMatches) {
+      setSpanDetails(match: match);
     }
   }
 
@@ -108,8 +84,12 @@ class IgcController {
     IgcRepo.ignore(match);
   }
 
+  bool get canShowFirstMatch {
+    return igcTextData?.firstOpenMatch != null;
+  }
+
   void showFirstMatch(BuildContext context) {
-    if (igcTextData == null || igcTextData!.matches.isEmpty) {
+    if (!canShowFirstMatch) {
       debugger(when: kDebugMode);
       ErrorHandler.logError(
         m: "should not be calling showFirstMatch with this igcTextData.",
@@ -121,25 +101,20 @@ class IgcController {
       return;
     }
 
-    const int firstMatchIndex = 0;
-    final PangeaMatch match = igcTextData!.matches[firstMatchIndex];
-
-    if (match.isITStart &&
-        // choreographer.itAutoPlayEnabled &&
-        igcTextData != null) {
-      choreographer.onITStart(igcTextData!.matches[firstMatchIndex]);
+    final match = igcTextData!.firstOpenMatch!;
+    if (match.updatedMatch.isITStart && igcTextData != null) {
+      choreographer.onITStart(match);
       return;
     }
 
     choreographer.chatController.inputFocus.unfocus();
-    MatrixState.pAnyState.closeAllOverlays(
-      filter: RegExp(r'span_card_overlay_\d+'),
-    );
+    MatrixState.pAnyState.closeAllOverlays();
     OverlayUtil.showPositionedCard(
-      overlayKey: "span_card_overlay_$firstMatchIndex",
+      overlayKey:
+          "span_card_overlay_${match.updatedMatch.match.offset}_${match.updatedMatch.match.length}",
       context: context,
       cardToShow: SpanCard(
-        matchIndex: firstMatchIndex,
+        match: match,
         choreographer: choreographer,
       ),
       maxHeight: 325,
@@ -191,7 +166,7 @@ class IgcController {
   bool get hasRelevantIGCTextData {
     if (igcTextData == null) return false;
 
-    if (igcTextData!.originalInput != choreographer.currentText) {
+    if (igcTextData!.currentText != choreographer.currentText) {
       debugPrint(
         "returning isIGCTextDataRelevant false because text has changed",
       );
@@ -202,8 +177,36 @@ class IgcController {
 
   clear() {
     igcTextData = null;
-    MatrixState.pAnyState.closeAllOverlays(
-      filter: RegExp(r'span_card_overlay_\d+'),
+    MatrixState.pAnyState.closeAllOverlays();
+  }
+
+  Future<void> setSpanDetails({
+    required PangeaMatchState match,
+    bool force = false,
+  }) async {
+    final span = match.updatedMatch.match;
+    if (span.isNormalizationError() && !force) {
+      return;
+    }
+
+    final response = await SpanDataRepo.get(
+      choreographer.accessToken,
+      request: SpanDetailsRequest(
+        userL1: choreographer.l1LangCode!,
+        userL2: choreographer.l2LangCode!,
+        enableIGC: choreographer.igcEnabled,
+        enableIT: choreographer.itEnabled,
+        span: span,
+      ),
     );
+
+    if (response.isError) {
+      choreographer.errorService.setError(ChoreoError(raw: response.error));
+      clear();
+      return;
+    }
+
+    igcTextData?.setSpanData(match, response.result!.span);
+    choreographer.setState();
   }
 }

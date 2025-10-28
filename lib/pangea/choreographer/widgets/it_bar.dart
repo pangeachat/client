@@ -343,7 +343,9 @@ class ITChoices extends StatelessWidget {
         continuance.feedbackText(context),
       );
     }
-    controller.currentITStep!.continuances[index].wasClicked = true;
+    controller.currentITStep!.continuances[index] = continuance.copyWith(
+      wasClicked: true,
+    );
     controller.choreographer.setState();
   }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/choreographer/constants/match_rule_ids.dart';
+import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 
 class MatchStyleUtil {

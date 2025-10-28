@@ -1,10 +1,10 @@
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 
 class LanguageDetection {
-  String langCode;
-  double confidence;
+  final String langCode;
+  final double confidence;
 
-  LanguageDetection({
+  const LanguageDetection({
     required this.langCode,
     required this.confidence,
   });

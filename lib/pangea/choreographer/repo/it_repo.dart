@@ -8,7 +8,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/network/requests.dart';
 import '../../common/network/urls.dart';
-import 'custom_input_request_model.dart';
+import 'it_request_model.dart';
 import 'it_response_model.dart';
 
 class _ITCacheItem {
@@ -26,7 +26,7 @@ class ITRepo {
   static const Duration _cacheDuration = Duration(minutes: 10);
 
   static Future<Result<ITResponseModel>> get(
-    CustomInputRequestModel request,
+    ITRequestModel request,
   ) {
     final cached = _getCached(request);
     if (cached != null) {
@@ -39,7 +39,7 @@ class ITRepo {
   }
 
   static Future<ITResponseModel> _fetch(
-    CustomInputRequestModel request,
+    ITRequestModel request,
   ) async {
     final Requests req = Requests(
       choreoApiKey: Environment.choreoApiKey,
@@ -57,7 +57,7 @@ class ITRepo {
   }
 
   static Future<Result<ITResponseModel>> _getResult(
-    CustomInputRequestModel request,
+    ITRequestModel request,
     Future<ITResponseModel> future,
   ) async {
     try {
@@ -75,7 +75,7 @@ class ITRepo {
   }
 
   static Future<ITResponseModel>? _getCached(
-    CustomInputRequestModel request,
+    ITRequestModel request,
   ) {
     final cacheKeys = [..._cache.keys];
     for (final key in cacheKeys) {
@@ -87,7 +87,7 @@ class ITRepo {
   }
 
   static void _setCached(
-    CustomInputRequestModel request,
+    ITRequestModel request,
     Future<ITResponseModel> response,
   ) {
     _cache[request.hashCode.toString()] = _ITCacheItem(

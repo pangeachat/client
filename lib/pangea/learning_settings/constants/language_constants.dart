@@ -12,7 +12,7 @@ class PrefKey {
   static const languagesKey = 'p_lang_flag';
 }
 
-final LanguageDetection unknownLanguageDetection = LanguageDetection(
+const LanguageDetection unknownLanguageDetection = LanguageDetection(
   langCode: LanguageKeys.unknownLanguage,
   confidence: 0.5,
 );

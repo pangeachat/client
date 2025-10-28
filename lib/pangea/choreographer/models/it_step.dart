@@ -4,10 +4,10 @@ import 'package:fluffychat/l10n/l10n.dart';
 import '../constants/choreo_constants.dart';
 
 class ITStep {
-  List<Continuance> continuances;
-  int? chosen;
-  String? customInput;
-  bool showAlternativeTranslationOption = false;
+  final List<Continuance> continuances;
+  final int? chosen;
+  final String? customInput;
+  final bool showAlternativeTranslationOption = false;
 
   ITStep(
     this.continuances, {
@@ -70,21 +70,18 @@ class ITStep {
 }
 
 class Continuance {
-  /// only saving this top set in a condensed json form
-  double probability;
-  int level;
-  String text;
-  // List<PangeaToken> tokens;
+  final double probability;
+  final int level;
+  final String text;
 
-  /// saving this in a full json form
-  String description;
-  int? indexSavedByServer;
-  bool wasClicked;
-  bool inDictionary;
-  bool hasInfo;
-  bool gold;
+  final String description;
+  final int? indexSavedByServer;
+  final bool wasClicked;
+  final bool inDictionary;
+  final bool hasInfo;
+  final bool gold;
 
-  Continuance({
+  const Continuance({
     required this.probability,
     required this.level,
     required this.text,
@@ -94,18 +91,9 @@ class Continuance {
     required this.inDictionary,
     required this.hasInfo,
     required this.gold,
-    // required this.tokens,
   });
 
   factory Continuance.fromJson(Map<String, dynamic> json) {
-    // final List<PangeaToken> tokensInternal = (json[ModelKey.tokens] != null)
-    //     ? (json[ModelKey.tokens] as Iterable)
-    //         .map<PangeaToken>(
-    //           (e) => PangeaToken.fromJson(e as Map<String, dynamic>),
-    //         )
-    //         .toList()
-    //         .cast<PangeaToken>()
-    //     : [];
     return Continuance(
       probability: json['probability'].toDouble(),
       level: json['level'],
@@ -116,7 +104,6 @@ class Continuance {
       wasClicked: json['clkd'] ?? false,
       hasInfo: json['has_info'] ?? false,
       gold: json['gold'] ?? false,
-      // tokens: tokensInternal,
     );
   }
 
@@ -136,6 +123,30 @@ class Continuance {
       data['gold'] = gold;
     }
     return data;
+  }
+
+  Continuance copyWith({
+    double? probability,
+    int? level,
+    String? text,
+    String? description,
+    int? indexSavedByServer,
+    bool? wasClicked,
+    bool? inDictionary,
+    bool? hasInfo,
+    bool? gold,
+  }) {
+    return Continuance(
+      probability: probability ?? this.probability,
+      level: level ?? this.level,
+      text: text ?? this.text,
+      description: description ?? this.description,
+      indexSavedByServer: indexSavedByServer ?? this.indexSavedByServer,
+      wasClicked: wasClicked ?? this.wasClicked,
+      inDictionary: inDictionary ?? this.inDictionary,
+      hasInfo: hasInfo ?? this.hasInfo,
+      gold: gold ?? this.gold,
+    );
   }
 
   Color? get color {

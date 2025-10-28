@@ -5,9 +5,8 @@ import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/enums/span_choice_type.dart';
 import 'package:fluffychat/pangea/choreographer/enums/span_data_type.dart';
-import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
+import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import '../../../../widgets/matrix.dart';
 import '../../../bot/widgets/bot_face_svg.dart';
@@ -15,12 +14,12 @@ import '../choice_array.dart';
 import 'why_button.dart';
 
 class SpanCard extends StatefulWidget {
-  final int matchIndex;
+  final PangeaMatchState match;
   final Choreographer choreographer;
 
   const SpanCard({
     super.key,
-    required this.matchIndex,
+    required this.match,
     required this.choreographer,
   });
 
@@ -30,19 +29,17 @@ class SpanCard extends StatefulWidget {
 
 class SpanCardState extends State<SpanCard> {
   bool fetchingData = false;
-  int? selectedChoiceIndex;
   final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    if (pangeaMatch?.isITStart == true) {
+    if (widget.match.updatedMatch.isITStart == true) {
       _onITStart();
       return;
     }
 
     getSpanDetails();
-    _fetchSelected();
   }
 
   @override
@@ -52,76 +49,19 @@ class SpanCardState extends State<SpanCard> {
     super.dispose();
   }
 
-  PangeaMatch? get pangeaMatch {
-    if (widget.choreographer.igc.igcTextData == null) return null;
-    if (widget.matchIndex >=
-        widget.choreographer.igc.igcTextData!.matches.length) {
-      ErrorHandler.logError(
-        m: "matchIndex out of bounds in span card",
-        data: {
-          "matchIndex": widget.matchIndex,
-          "matchesLength": widget.choreographer.igc.igcTextData?.matches.length,
-        },
-      );
-      return null;
-    }
-    return widget.choreographer.igc.igcTextData?.matches[widget.matchIndex];
-  }
-
-  //get selected choice
-  SpanChoice? get selectedChoice {
-    if (selectedChoiceIndex == null) return null;
-    return _choiceByIndex(selectedChoiceIndex!);
-  }
-
-  SpanChoice? _choiceByIndex(int index) {
-    if (pangeaMatch?.match.choices == null ||
-        pangeaMatch!.match.choices!.length <= index) {
-      return null;
-    }
-    return pangeaMatch?.match.choices?[index];
-  }
-
-  void _fetchSelected() {
-    if (pangeaMatch?.match.choices == null) {
-      return;
-    }
-
-    // if user ever selected the correct choice, automatically select it
-    final selectedCorrectIndex =
-        pangeaMatch!.match.choices!.indexWhere((choice) {
-      return choice.selected && choice.isBestCorrection;
-    });
-
-    if (selectedCorrectIndex != -1) {
-      selectedChoiceIndex = selectedCorrectIndex;
-      return;
-    }
-
-    if (selectedChoiceIndex == null) {
-      DateTime? mostRecent;
-      final numChoices = pangeaMatch!.match.choices!.length;
-      for (int i = 0; i < numChoices; i++) {
-        final choice = _choiceByIndex(i);
-        if (choice!.timestamp != null &&
-            (mostRecent == null || choice.timestamp!.isAfter(mostRecent))) {
-          mostRecent = choice.timestamp;
-          selectedChoiceIndex = i;
-        }
-      }
-    }
-  }
+  SpanChoice? get selectedChoice =>
+      widget.match.updatedMatch.match.selectedChoice;
 
   Future<void> getSpanDetails({bool force = false}) async {
-    if (pangeaMatch?.isITStart ?? false) return;
+    if (widget.match.updatedMatch.isITStart) return;
 
     if (!mounted) return;
     setState(() {
       fetchingData = true;
     });
 
-    await widget.choreographer.igc.spanDataController.getSpanDetails(
-      widget.matchIndex,
+    await widget.choreographer.igc.setSpanDetails(
+      match: widget.match,
       force: force,
     );
 
@@ -131,28 +71,23 @@ class SpanCardState extends State<SpanCard> {
   }
 
   void _onITStart() {
-    if (widget.choreographer.itEnabled && pangeaMatch != null) {
-      widget.choreographer.onITStart(pangeaMatch!);
+    if (widget.choreographer.itEnabled) {
+      widget.choreographer.onITStart(widget.match);
     }
   }
 
-  Future<void> _onChoiceSelect(int index) async {
-    selectedChoiceIndex = index;
-    if (selectedChoice != null) {
-      selectedChoice!.timestamp = DateTime.now();
-      selectedChoice!.selected = true;
-      setState(
-        () => (selectedChoice!.isBestCorrection
-            ? BotExpression.gold
-            : BotExpression.surprised),
-      );
-    }
+  void _onChoiceSelect(int index) {
+    widget.match.selectChoice(index);
+    setState(
+      () => (selectedChoice!.isBestCorrection
+          ? BotExpression.gold
+          : BotExpression.surprised),
+    );
   }
 
-  Future<void> _onReplaceSelected() async {
-    await widget.choreographer.onReplacementSelect(
-      matchIndex: widget.matchIndex,
-      choiceIndex: selectedChoiceIndex!,
+  Future<void> _onAcceptReplacement() async {
+    await widget.choreographer.onAcceptReplacement(
+      match: widget.match,
     );
     _showFirstMatch();
   }
@@ -161,17 +96,14 @@ class SpanCardState extends State<SpanCard> {
     Future.delayed(
       Duration.zero,
       () {
-        widget.choreographer.onIgnoreMatch(
-          matchIndex: widget.matchIndex,
-        );
+        widget.choreographer.onIgnoreMatch(match: widget.match);
         _showFirstMatch();
       },
     );
   }
 
   void _showFirstMatch() {
-    if (widget.choreographer.igc.igcTextData != null &&
-        widget.choreographer.igc.igcTextData!.matches.isNotEmpty) {
+    if (widget.choreographer.igc.canShowFirstMatch) {
       widget.choreographer.igc.showFirstMatch(context);
     } else {
       MatrixState.pAnyState.closeOverlay();
@@ -199,7 +131,7 @@ class WordMatchContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.pangeaMatch == null || controller.pangeaMatch!.isITStart) {
+    if (controller.widget.match.updatedMatch.isITStart) {
       return const SizedBox();
     }
 
@@ -218,21 +150,24 @@ class WordMatchContent extends StatelessWidget {
                   children: [
                     const SizedBox(height: 8),
                     ChoicesArray(
-                      originalSpan: controller.pangeaMatch!.matchContent,
+                      originalSpan:
+                          controller.widget.match.updatedMatch.matchContent,
                       isLoading: controller.fetchingData,
-                      choices: controller.pangeaMatch!.match.choices
-                          ?.map(
-                            (e) => Choice(
-                              text: e.value,
-                              color: e.selected ? e.type.color : null,
-                              isGold: e.type.name == 'bestCorrection',
-                            ),
-                          )
-                          .toList(),
+                      choices:
+                          controller.widget.match.updatedMatch.match.choices
+                              ?.map(
+                                (e) => Choice(
+                                  text: e.value,
+                                  color: e.selected ? e.type.color : null,
+                                  isGold: e.type.name == 'bestCorrection',
+                                ),
+                              )
+                              .toList(),
                       onPressed: (value, index) =>
                           controller._onChoiceSelect(index),
-                      selectedChoiceIndex: controller.selectedChoiceIndex,
-                      id: controller.pangeaMatch!.hashCode.toString(),
+                      selectedChoiceIndex: controller
+                          .widget.match.updatedMatch.match.selectedChoiceIndex,
+                      id: controller.widget.match.hashCode.toString(),
                       langCode: MatrixState.pangeaController.languageController
                           .activeL2Code(),
                     ),
@@ -269,10 +204,10 @@ class WordMatchContent extends StatelessWidget {
                 ),
                 Expanded(
                   child: Opacity(
-                    opacity: controller.selectedChoiceIndex != null ? 1.0 : 0.5,
+                    opacity: controller.selectedChoice != null ? 1.0 : 0.5,
                     child: TextButton(
-                      onPressed: controller.selectedChoiceIndex != null
-                          ? controller._onReplaceSelected
+                      onPressed: controller.selectedChoice != null
+                          ? controller._onAcceptReplacement
                           : null,
                       style: ButtonStyle(
                         backgroundColor: WidgetStateProperty.all<Color>(
@@ -315,12 +250,8 @@ class PromptAndFeedback extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (controller.pangeaMatch == null) {
-      return const SizedBox();
-    }
-
     return Container(
-      constraints: controller.pangeaMatch!.isITStart
+      constraints: controller.widget.match.updatedMatch.isITStart
           ? null
           : const BoxConstraints(minHeight: 75.0),
       child: Column(
@@ -352,10 +283,9 @@ class PromptAndFeedback extends StatelessWidget {
                 loading: controller.fetchingData,
               ),
           ],
-          if (!controller.fetchingData &&
-              controller.selectedChoiceIndex == null)
+          if (!controller.fetchingData && controller.selectedChoice == null)
             Text(
-              controller.pangeaMatch!.match.type.typeName
+              controller.widget.match.updatedMatch.match.type.typeName
                   .defaultPrompt(context),
               style: BotStyle.text(context).copyWith(
                 fontStyle: FontStyle.italic,

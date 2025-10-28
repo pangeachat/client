@@ -62,8 +62,7 @@ class StartIGCButtonState extends State<StartIGCButton>
   }
 
   void _showFirstMatch() {
-    final igcData = widget.controller.choreographer.igc.igcTextData;
-    if (igcData != null && igcData.matches.isNotEmpty) {
+    if (widget.controller.choreographer.igc.canShowFirstMatch) {
       widget.controller.choreographer.igc.showFirstMatch(context);
     }
   }

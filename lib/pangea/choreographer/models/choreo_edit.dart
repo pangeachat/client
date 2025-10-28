@@ -4,31 +4,37 @@ import 'dart:math';
 /// Remove substring of length 'length', starting at position 'offset'
 /// Then add String 'insert' at that position
 class ChoreoEdit {
-  int offset = 0;
-  int length = 0;
-  String insert = "";
+  final int offset;
+  final int length;
+  final String insert;
 
   /// Normal constructor created from preexisting ChoreoEdit values
-  ChoreoEdit({
-    required this.offset,
-    required this.length,
-    required this.insert,
+  const ChoreoEdit({
+    this.offset = 0,
+    this.length = 0,
+    this.insert = "",
   });
 
   /// Constructor that determines and saves
   /// edits differentiating originalText and editedText
-  ChoreoEdit.fromText({
+  factory ChoreoEdit.fromText({
     required String originalText,
     required String editedText,
   }) {
     if (originalText == editedText) {
       // No changes, return empty edit
-      return;
+      return const ChoreoEdit();
     }
 
-    offset = _firstDifference(originalText, editedText);
-    length = _lastDifference(originalText, editedText) + 1 - offset;
-    insert = _insertion(originalText, editedText);
+    final offset = _firstDifference(originalText, editedText);
+    final length =
+        _lastDifference(originalText, editedText, offset) + 1 - offset;
+    final insert = _insertion(originalText, editedText, offset, length);
+    return ChoreoEdit(
+      offset: offset,
+      length: length,
+      insert: insert,
+    );
   }
 
   factory ChoreoEdit.fromJson(Map<String, dynamic> json) {
@@ -52,7 +58,7 @@ class ChoreoEdit {
   }
 
   /// Find index of first character where strings differ
-  int _firstDifference(String originalText, String editedText) {
+  static int _firstDifference(String originalText, String editedText) {
     var i = 0;
     final minLength = min(originalText.length, editedText.length);
     while (i < minLength && originalText[i] == editedText[i]) {
@@ -63,7 +69,11 @@ class ChoreoEdit {
 
   /// Starting at the end of both text versions,
   /// traverse backward until a non-matching char is found
-  int _lastDifference(String originalText, String editedText) {
+  static int _lastDifference(
+    String originalText,
+    String editedText,
+    int offset,
+  ) {
     var i = originalText.length - 1;
     var j = editedText.length - 1;
     while (min(i, j) >= offset && originalText[i] == editedText[j]) {
@@ -77,7 +87,12 @@ class ChoreoEdit {
   /// plus the difference in string length
   /// If dif is -x and length of deleted text is x,
   /// inserted text is empty string
-  String _insertion(String originalText, String editedText) {
+  static String _insertion(
+    String originalText,
+    String editedText,
+    int offset,
+    int length,
+  ) {
     final insertLength = length + (editedText.length - originalText.length);
     return editedText.substring(offset, offset + insertLength);
   }
