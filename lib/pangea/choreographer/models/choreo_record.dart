@@ -190,7 +190,7 @@ class ChoreoRecord {
     return text;
   }
 
-  void addRecord(String text, {PangeaMatch? match, ITStep? step}) {
+  void addRecord(String text, {PangeaMatch? match, CompletedITStep? step}) {
     if (match != null && step != null) {
       throw Exception("match and step should not both be defined");
     }
@@ -243,7 +243,7 @@ class ChoreoRecordStep {
   /// last step in list may contain open
   final PangeaMatch? acceptedOrIgnoredMatch;
 
-  final ITStep? itStep;
+  final CompletedITStep? itStep;
 
   ChoreoRecordStep({
     this.edits,
@@ -264,7 +264,9 @@ class ChoreoRecordStep {
       acceptedOrIgnoredMatch: json[_acceptedOrIgnoredMatchKey] != null
           ? PangeaMatch.fromJson(json[_acceptedOrIgnoredMatchKey])
           : null,
-      itStep: json[_stepKey] != null ? ITStep.fromJson(json[_stepKey]) : null,
+      itStep: json[_stepKey] != null
+          ? CompletedITStep.fromJson(json[_stepKey])
+          : null,
     );
   }
 

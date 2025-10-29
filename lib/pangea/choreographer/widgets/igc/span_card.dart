@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/enums/span_choice_type.dart';
 import 'package:fluffychat/pangea/choreographer/enums/span_data_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import '../../../../widgets/matrix.dart';
 import '../../../bot/widgets/bot_face_svg.dart';
 import '../choice_array.dart';
 import 'why_button.dart';
 
+// CTODO refactor
 class SpanCard extends StatefulWidget {
   final PangeaMatchState match;
   final Choreographer choreographer;
@@ -34,11 +40,6 @@ class SpanCardState extends State<SpanCard> {
   @override
   void initState() {
     super.initState();
-    if (widget.match.updatedMatch.isITStart == true) {
-      _onITStart();
-      return;
-    }
-
     getSpanDetails();
   }
 
@@ -60,19 +61,13 @@ class SpanCardState extends State<SpanCard> {
       fetchingData = true;
     });
 
-    await widget.choreographer.igc.setSpanDetails(
+    await widget.choreographer.fetchSpanDetails(
       match: widget.match,
       force: force,
     );
 
     if (mounted) {
       setState(() => fetchingData = false);
-    }
-  }
-
-  void _onITStart() {
-    if (widget.choreographer.itEnabled) {
-      widget.choreographer.onITStart(widget.match);
     }
   }
 
@@ -86,25 +81,53 @@ class SpanCardState extends State<SpanCard> {
   }
 
   Future<void> _onAcceptReplacement() async {
-    await widget.choreographer.onAcceptReplacement(
-      match: widget.match,
-    );
+    try {
+      widget.choreographer.onAcceptReplacement(
+        match: widget.match,
+      );
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        level: SentryLevel.warning,
+        data: {
+          "match": widget.match.toJson(),
+        },
+      );
+      widget.choreographer.clearMatches(e);
+      return;
+    }
+
     _showFirstMatch();
   }
 
   void _onIgnoreMatch() {
-    Future.delayed(
-      Duration.zero,
-      () {
-        widget.choreographer.onIgnoreMatch(match: widget.match);
-        _showFirstMatch();
-      },
-    );
+    try {
+      widget.choreographer.onIgnoreMatch(match: widget.match);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        level: SentryLevel.warning,
+        data: {
+          "match": widget.match.toJson(),
+        },
+      );
+      widget.choreographer.clearMatches(e);
+      return;
+    }
+
+    _showFirstMatch();
   }
 
   void _showFirstMatch() {
-    if (widget.choreographer.igc.canShowFirstMatch) {
-      widget.choreographer.igc.showFirstMatch(context);
+    if (widget.choreographer.canShowFirstIGCMatch) {
+      final igcMatch = widget.choreographer.igc.onShowFirstMatch();
+      OverlayUtil.showIGCMatch(
+        igcMatch!,
+        widget.choreographer,
+        context,
+      );
     } else {
       MatrixState.pAnyState.closeOverlay();
     }

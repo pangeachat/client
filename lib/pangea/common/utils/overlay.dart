@@ -3,6 +3,10 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
+import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
+import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/widgets/anchored_overlay_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/overlay_container.dart';
@@ -215,6 +219,28 @@ class OverlayUtil {
         data: {},
       );
     }
+  }
+
+  static void showIGCMatch(
+    PangeaMatchState match,
+    Choreographer choreographer,
+    BuildContext context,
+  ) {
+    MatrixState.pAnyState.closeAllOverlays();
+    showPositionedCard(
+      overlayKey:
+          "span_card_overlay_${match.updatedMatch.match.offset}_${match.updatedMatch.match.length}",
+      context: context,
+      cardToShow: SpanCard(
+        match: match,
+        choreographer: choreographer,
+      ),
+      maxHeight: 325,
+      maxWidth: 325,
+      transformTargetId: choreographer.inputTransformTargetKey,
+      ignorePointer: true,
+      isScrollable: false,
+    );
   }
 
   static void showTutorialOverlay(

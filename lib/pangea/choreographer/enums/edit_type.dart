@@ -1,10 +1,7 @@
 enum EditType {
-  itStandard,
   igc,
-  keyboard,
-  alternativeTranslation,
-  itGold,
-  itStart,
+  it,
   itDismissed,
+  keyboard,
   other,
 }

@@ -1,99 +1,180 @@
 import 'dart:async';
-import 'dart:developer';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/igc_controller.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
+import 'package:fluffychat/pangea/choreographer/enums/choreo_mode.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
-import 'package:fluffychat/pangea/choreographer/utils/input_paste_listener.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/events/models/representation_content_model.dart';
 import 'package:fluffychat/pangea/events/models/tokens_event_content_model.dart';
 import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
-import 'package:fluffychat/pangea/learning_settings/models/language_model.dart';
-import 'package:fluffychat/pangea/spaces/models/space_model.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
 import '../../../widgets/matrix.dart';
 import 'error_service.dart';
 import 'it_controller.dart';
 
-enum ChoreoMode { igc, it }
+class OpenMatchesException implements Exception {}
 
-class Choreographer {
-  PangeaController pangeaController;
-  ChatController chatController;
-  late PangeaTextController _textController;
+class ShowPaywallException implements Exception {}
+
+class Choreographer extends ChangeNotifier {
+  final PangeaController pangeaController;
+  final ChatController chatController;
+
+  late PangeaTextController textController;
   late ITController itController;
   late IgcController igc;
   late ErrorService errorService;
 
-  bool isFetching = false;
+  ChoreoRecord? _choreoRecord;
+
+  bool _isFetching = false;
   int _timesClicked = 0;
 
-  final int msBeforeIGCStart = 10000;
-
-  Timer? debounceTimer;
-  ChoreoRecord? choreoRecord;
-  // last checked by IGC or translation
+  Timer? _debounceTimer;
   String? _lastChecked;
-  ChoreoMode choreoMode = ChoreoMode.igc;
+  ChoreoMode _choreoMode = ChoreoMode.igc;
+  String? _sourceText;
 
-  final StreamController stateStream = StreamController.broadcast();
   StreamSubscription? _languageStream;
   StreamSubscription? _settingsUpdateStream;
-  late AssistanceState _currentAssistanceState;
-
-  String? translatedText;
 
   Choreographer(this.pangeaController, this.chatController) {
     _initialize();
   }
-  _initialize() {
-    _textController = PangeaTextController(choreographer: this);
-    InputPasteListener(_textController, onPaste);
+
+  int get timesClicked => _timesClicked;
+  bool get isFetching => _isFetching;
+  ChoreoMode get choreoMode => _choreoMode;
+
+  String? get sourceText => _sourceText;
+  String get currentText => textController.text;
+
+  void _initialize() {
+    textController = PangeaTextController(choreographer: this);
+
     itController = ITController(this);
     igc = IgcController(this);
-    errorService = ErrorService(this);
-    _textController.addListener(_onChangeListener);
+
+    errorService = ErrorService();
+    errorService.addListener(notifyListeners);
+
+    textController.addListener(_onChange);
+
     _languageStream =
         pangeaController.userController.languageStream.stream.listen((update) {
       clear();
-      setState();
+      notifyListeners();
     });
 
     _settingsUpdateStream =
         pangeaController.userController.settingsUpdateStream.stream.listen((_) {
-      setState();
+      notifyListeners();
     });
-    _currentAssistanceState = assistanceState;
     clear();
   }
 
-  void send(BuildContext context) {
-    debugPrint("can send message: $canSendMessage");
+  void clear() {
+    _choreoMode = ChoreoMode.igc;
+    _lastChecked = null;
+    _timesClicked = 0;
+    _isFetching = false;
+    _choreoRecord = null;
+    _sourceText = null;
+    itController.clear();
+    igc.clear();
+    _resetDebounceTimer();
+  }
 
+  @override
+  void dispose() {
+    super.dispose();
+    errorService.dispose();
+    textController.dispose();
+    _languageStream?.cancel();
+    _settingsUpdateStream?.cancel();
+    TtsController.stop();
+  }
+
+  void onPaste(value) {
+    _initChoreoRecord();
+    _choreoRecord!.pastedStrings.add(value);
+  }
+
+  void onClickSend() {
+    if (assistanceState == AssistanceState.fetched) {
+      _timesClicked++;
+
+      // if user is doing IT, call closeIT here to
+      // ensure source text is replaced when needed
+      if (isITOpen && _timesClicked > 1) {
+        closeIT();
+      }
+    }
+  }
+
+  void setChoreoMode(ChoreoMode mode) {
+    _choreoMode = mode;
+    notifyListeners();
+  }
+
+  void _resetDebounceTimer() {
+    if (_debounceTimer != null) {
+      _debounceTimer?.cancel();
+      _debounceTimer = null;
+    }
+  }
+
+  void _initChoreoRecord() {
+    _choreoRecord ??= ChoreoRecord(
+      originalText: textController.text,
+      choreoSteps: [],
+      openMatches: [],
+    );
+  }
+
+  void _startLoading() {
+    _lastChecked = textController.text;
+    _isFetching = true;
+    notifyListeners();
+  }
+
+  void _stopLoading() {
+    _isFetching = false;
+    notifyListeners();
+  }
+
+  Future<PangeaMatchState?> requestLanguageAssistance() async {
+    await _getLanguageAssistance(manual: true);
+    if (igc.canShowFirstMatch) {
+      return igc.onShowFirstMatch();
+    }
+    return null;
+  }
+
+  Future<void> send() async {
     // if isFetching, already called to getLanguageHelp and hasn't completed yet
     // could happen if user clicked send button multiple times in a row
-    if (isFetching) return;
+    if (_isFetching) return;
 
     if (igc.canShowFirstMatch) {
-      igc.showFirstMatch(context);
-      return;
+      throw OpenMatchesException();
     } else if (isRunningIT) {
       // If the user is in the middle of IT, don't send the message.
       // If they've already clicked the send button once, this will
@@ -101,16 +182,14 @@ class Choreographer {
       return;
     }
 
-    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
-    if (isSubscribed != null && !isSubscribed) {
-      // don't want to run IGC if user isn't subscribed, so either
-      // show the paywall if applicable or just send the message
-      final status = pangeaController.subscriptionController.subscriptionStatus;
-      status == SubscriptionStatus.shouldShowPaywall
-          ? PaywallCard.show(context, chatController)
-          : chatController.send(
-              message: chatController.sendController.text,
-            );
+    final subscriptionStatus =
+        pangeaController.subscriptionController.subscriptionStatus;
+
+    if (subscriptionStatus != SubscriptionStatus.subscribed) {
+      if (subscriptionStatus == SubscriptionStatus.shouldShowPaywall) {
+        throw ShowPaywallException();
+      }
+      chatController.send(message: chatController.sendController.text);
       return;
     }
 
@@ -119,23 +198,79 @@ class Choreographer {
       return;
     }
 
-    if (!igc.hasRelevantIGCTextData && !itController.dismissed) {
-      getLanguageHelp().then((value) => _sendWithIGC(context));
+    if (!igc.hasIGCTextData && !itController.dismissed) {
+      await _getLanguageAssistance();
+      await send();
     } else {
-      _sendWithIGC(context);
+      _sendWithIGC();
     }
   }
 
-  Future<void> _sendWithIGC(BuildContext context) async {
-    if (!canSendMessage) {
-      // It's possible that the reason user can't send message is because they're in the middle of IT. If this is the case,
-      // do nothing (there's no matches to show). The user can click the send button again to override this.
-      if (!isRunningIT) {
-        igc.showFirstMatch(context);
-      }
+  /// Handles any changes to the text input
+  void _onChange() {
+    if (_lastChecked != null && _lastChecked == textController.text) {
       return;
     }
 
+    _lastChecked = textController.text;
+
+    if (textController.editType == EditType.igc ||
+        textController.editType == EditType.itDismissed) {
+      textController.editType = EditType.keyboard;
+      return;
+    }
+
+    // Close any open IGC/IT overlays
+    MatrixState.pAnyState.closeOverlay();
+    if (errorService.isError) return;
+
+    igc.clear();
+    _resetDebounceTimer();
+
+    if (textController.editType == EditType.it) {
+      _getLanguageAssistance();
+    } else {
+      _sourceText = null;
+      _debounceTimer ??= Timer(
+        const Duration(milliseconds: ChoreoConstants.msBeforeIGCStart),
+        () => _getLanguageAssistance(),
+      );
+    }
+
+    //Note: we don't set the keyboard type on each keyboard stroke so this is how we default to
+    //a change being from the keyboard unless explicitly set to one of the other
+    //types when that action happens (e.g. an it/igc choice is selected)
+    textController.editType = EditType.keyboard;
+  }
+
+  /// Fetches the language help for the current text, including grammar correction, language detection,
+  /// tokens, and translations. Includes logic to exit the flow if the user is not subscribed, if the tools are not enabled, or
+  /// or if autoIGC is not enabled and the user has not manually requested it.
+  /// [onlyTokensAndLanguageDetection] will
+  Future<void> _getLanguageAssistance({
+    bool manual = false,
+  }) async {
+    if (errorService.isError) return;
+    final SubscriptionStatus canSendStatus =
+        pangeaController.subscriptionController.subscriptionStatus;
+
+    if (canSendStatus != SubscriptionStatus.subscribed ||
+        l2Lang == null ||
+        l1Lang == null ||
+        (!igcEnabled && !itEnabled) ||
+        (!isAutoIGCEnabled && !manual && _choreoMode != ChoreoMode.it)) {
+      return;
+    }
+
+    _resetDebounceTimer();
+    _initChoreoRecord();
+
+    _startLoading();
+    await (isRunningIT ? itController.continueIT() : igc.getIGCTextData());
+    _stopLoading();
+  }
+
+  Future<void> _sendWithIGC() async {
     if (chatController.sendController.text.trim().isEmpty) {
       return;
     }
@@ -143,10 +278,10 @@ class Choreographer {
     final message = chatController.sendController.text;
     final fakeEventId = chatController.sendFakeMessage();
     final PangeaRepresentation? originalWritten =
-        choreoRecord?.includedIT == true && translatedText != null
+        _choreoRecord?.includedIT == true && _sourceText != null
             ? PangeaRepresentation(
                 langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
-                text: translatedText!,
+                text: _sourceText!,
                 originalWritten: true,
                 originalSent: false,
               )
@@ -192,7 +327,7 @@ class Choreographer {
           "currentText": message,
           "l1LangCode": l1LangCode,
           "l2LangCode": l2LangCode,
-          "choreoRecord": choreoRecord?.toJson(),
+          "choreoRecord": _choreoRecord?.toJson(),
         },
         level: e is TimeoutException ? SentryLevel.warning : SentryLevel.error,
       );
@@ -202,522 +337,174 @@ class Choreographer {
         originalSent: originalSent,
         originalWritten: originalWritten,
         tokensSent: tokensSent,
-        choreo: choreoRecord,
+        choreo: _choreoRecord,
         tempEventId: fakeEventId,
       );
       clear();
     }
   }
 
-  _resetDebounceTimer() {
-    if (debounceTimer != null) {
-      debounceTimer?.cancel();
-      debounceTimer = null;
-    }
-  }
-
-  void _initChoreoRecord() {
-    choreoRecord ??= ChoreoRecord(
-      originalText: textController.text,
-      choreoSteps: [],
-      openMatches: [],
-    );
-  }
-
-  void onITStart(PangeaMatchState itMatch) {
+  void openIT(PangeaMatchState itMatch) {
     if (!itMatch.updatedMatch.isITStart) {
-      throw Exception("this isn't an itStart match!");
+      throw Exception("Attempted to open IT with a non-IT start match");
     }
-    choreoMode = ChoreoMode.it;
-    itController.initializeIT(
-      ITStartData(_textController.text, null),
-    );
 
-    translatedText = _textController.text;
+    _choreoMode = ChoreoMode.it;
+    _sourceText = textController.text;
+    itController.openIT();
+
     igc.clear();
-    _textController.setSystemText("", EditType.itStart);
+    textController.setSystemText("", EditType.it);
 
     _initChoreoRecord();
     itMatch.setStatus(PangeaMatchStatus.accepted);
-    choreoRecord!.addRecord(
-      _textController.text,
+    _choreoRecord!.addRecord(
+      textController.text,
       match: itMatch.updatedMatch,
     );
+    notifyListeners();
   }
 
-  /// Handles any changes to the text input
-  _onChangeListener() {
-    // Rebuild the IGC button if the state has changed.
-    // This accounts for user typing after initial IGC has completed
-    if (_currentAssistanceState != assistanceState) {
-      setState();
-    }
-
-    if (_noChange) {
-      return;
-    }
-
-    _lastChecked = _textController.text;
-
-    if (_textController.editType == EditType.igc ||
-        _textController.editType == EditType.itDismissed) {
-      _textController.editType = EditType.keyboard;
-      return;
-    }
-
-    // not sure if this is necessary now
-    MatrixState.pAnyState.closeOverlay();
-
-    if (errorService.isError) {
-      return;
-    }
-
-    igc.clear();
-
-    _resetDebounceTimer();
-
-    // we store translated text in the choreographer to save at the original written
-    // text, but if the user edits the text after the translation, reset it, since the
-    // sent text may not be an exact translation of the original text
-    if (_textController.editType == EditType.keyboard) {
-      translatedText = null;
-    }
-
-    if (editTypeIsKeyboard) {
-      debounceTimer ??= Timer(
-        Duration(milliseconds: msBeforeIGCStart),
-        () => getLanguageHelp(),
-      );
-    } else {
-      getLanguageHelp();
-    }
-
-    //Note: we don't set the keyboard type on each keyboard stroke so this is how we default to
-    //a change being from the keyboard unless explicitly set to one of the other
-    //types when that action happens (e.g. an it/igc choice is selected)
-    textController.editType = EditType.keyboard;
+  void closeIT() {
+    itController.closeIT();
+    errorService.resetError();
+    notifyListeners();
   }
 
-  /// Fetches the language help for the current text, including grammar correction, language detection,
-  /// tokens, and translations. Includes logic to exit the flow if the user is not subscribed, if the tools are not enabled, or
-  /// or if autoIGC is not enabled and the user has not manually requested it.
-  /// [onlyTokensAndLanguageDetection] will
-  Future<void> getLanguageHelp({
-    bool manual = false,
-  }) async {
-    try {
-      if (errorService.isError) return;
-      final SubscriptionStatus canSendStatus =
-          pangeaController.subscriptionController.subscriptionStatus;
-
-      if (canSendStatus != SubscriptionStatus.subscribed ||
-          l2Lang == null ||
-          l1Lang == null ||
-          (!igcEnabled && !itEnabled) ||
-          (!isAutoIGCEnabled && !manual && choreoMode != ChoreoMode.it)) {
-        return;
-      }
-
-      _resetDebounceTimer();
-      startLoading();
-      _initChoreoRecord();
-
-      // if getting language assistance after finishing IT,
-      // reset the itController
-      if (choreoMode == ChoreoMode.it && itController.isTranslationDone) {
-        itController.clear();
-      }
-
-      await (isRunningIT
-          ? itController.getTranslationData(_useCustomInput)
-          : igc.getIGCTextData());
-    } catch (err, stack) {
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {
-          "l2Lang": l2Lang?.toJson(),
-          "l1Lang": l1Lang?.toJson(),
-          "choreoMode": choreoMode,
-          "igcEnabled": igcEnabled,
-          "itEnabled": itEnabled,
-          "isAutoIGCEnabled": isAutoIGCEnabled,
-          "isTranslationDone": itController.isTranslationDone,
-          "useCustomInput": _useCustomInput,
-        },
-      );
-    } finally {
-      stopLoading();
-    }
+  Continuance onSelectContinuance(int index) {
+    final continuance = itController.onSelectContinuance(index);
+    notifyListeners();
+    return continuance;
   }
 
-  void onITChoiceSelect(ITStep step) {
-    _textController.setSystemText(
-      _textController.text + step.continuances[step.chosen!].text,
-      step.continuances[step.chosen!].gold
-          ? EditType.itGold
-          : EditType.itStandard,
+  void onAcceptContinuance(int index) {
+    final step = itController.getAcceptedITStep(index);
+    textController.setSystemText(
+      textController.text + step.continuances[step.chosen].text,
+      EditType.it,
     );
-    _textController.selection =
-        TextSelection.collapsed(offset: _textController.text.length);
+    textController.selection = TextSelection.collapsed(
+      offset: textController.text.length,
+    );
 
     _initChoreoRecord();
-    choreoRecord!.addRecord(_textController.text, step: step);
-
-    giveInputFocus();
+    _choreoRecord!.addRecord(textController.text, step: step);
+    chatController.inputFocus.requestFocus();
+    notifyListeners();
   }
 
-  Future<void> onAcceptReplacement({
+  void setSourceText(String? text) {
+    _sourceText = text;
+  }
+
+  void setEditingSourceText(bool value) {
+    itController.setEditing(value);
+    notifyListeners();
+  }
+
+  void submitSourceTextEdits(String text) {
+    _sourceText = text;
+    itController.onSubmitEdits();
+    notifyListeners();
+  }
+
+  PangeaMatchState? getMatchByOffset(int offset) =>
+      igc.getMatchByOffset(offset);
+
+  void clearMatches(Object error) {
+    MatrixState.pAnyState.closeAllOverlays();
+    igc.clearMatches();
+    errorService.setError(ChoreoError(raw: error));
+  }
+
+  Future<void> fetchSpanDetails({
     required PangeaMatchState match,
-  }) async {
-    try {
-      if (igc.igcTextData == null) {
-        ErrorHandler.logError(
-          e: "onReplacementSelect with null igcTextData",
-          s: StackTrace.current,
-          data: {
-            "match": match.toJson(),
-          },
-        );
-        MatrixState.pAnyState.closeOverlay();
-        return;
-      }
-      if (match.updatedMatch.match.selectedChoice == null) {
-        ErrorHandler.logError(
-          e: "onReplacementSelect with null selectedChoice",
-          s: StackTrace.current,
-          data: {
-            "igctextData": igc.igcTextData?.toJson(),
-            "match": match.toJson(),
-          },
-        );
-        MatrixState.pAnyState.closeOverlay();
-        return;
-      }
-
-      final isNormalizationError =
-          match.updatedMatch.match.isNormalizationError();
-
-      final updatedMatch = igc.igcTextData!.acceptReplacement(
-        match,
-        PangeaMatchStatus.accepted,
+    bool force = false,
+  }) =>
+      igc.fetchSpanDetails(
+        match: match,
+        force: force,
       );
 
-      _textController.setSystemText(
-        igc.igcTextData!.currentText,
-        EditType.igc,
-      );
+  void onAcceptReplacement({
+    required PangeaMatchState match,
+  }) {
+    final updatedMatch = igc.acceptReplacement(
+      match,
+      PangeaMatchStatus.accepted,
+    );
 
-      //if it's the right choice, replace in text
-      if (!isNormalizationError) {
-        _initChoreoRecord();
-        choreoRecord!.addRecord(
-          _textController.text,
-          match: updatedMatch,
-        );
-      }
+    textController.setSystemText(
+      igc.currentText!,
+      EditType.igc,
+    );
 
-      MatrixState.pAnyState.closeOverlay();
-      setState();
-    } catch (err, stack) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {
-          "igctextData": igc.igcTextData?.toJson(),
-          "match": match.toJson(),
-        },
+    if (!updatedMatch.match.isNormalizationError()) {
+      _initChoreoRecord();
+      _choreoRecord!.addRecord(
+        textController.text,
+        match: updatedMatch,
       );
-      igc.clear();
-    } finally {
-      setState();
     }
+
+    MatrixState.pAnyState.closeOverlay();
+    notifyListeners();
   }
 
   void onUndoReplacement(PangeaMatchState match) {
-    try {
-      igc.igcTextData?.undoReplacement(match);
-      choreoRecord?.choreoSteps.removeWhere(
-        (step) => step.acceptedOrIgnoredMatch == match.updatedMatch,
-      );
+    igc.undoReplacement(match);
+    _choreoRecord?.choreoSteps.removeWhere(
+      (step) => step.acceptedOrIgnoredMatch == match.updatedMatch,
+    );
 
-      _textController.setSystemText(
-        igc.igcTextData!.currentText,
-        EditType.igc,
+    textController.setSystemText(
+      igc.currentText!,
+      EditType.igc,
+    );
+    MatrixState.pAnyState.closeOverlay();
+    notifyListeners();
+  }
+
+  void onIgnoreMatch({required PangeaMatchState match}) {
+    final updatedMatch = igc.ignoreReplacement(match);
+    if (!updatedMatch.match.isNormalizationError()) {
+      _initChoreoRecord();
+      _choreoRecord!.addRecord(
+        textController.text,
+        match: updatedMatch,
       );
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "igctextData": igc.igcTextData?.toJson(),
-          "match": match.toJson(),
-        },
-      );
-    } finally {
-      MatrixState.pAnyState.closeOverlay();
-      setState();
     }
+    MatrixState.pAnyState.closeOverlay();
+    notifyListeners();
   }
 
   void acceptNormalizationMatches() {
-    final normalizationsMatches = igc.igcTextData!.openNormalizationMatches;
-    if (normalizationsMatches.isEmpty) return;
+    final normalizationsMatches = igc.openNormalizationMatches;
+    if (normalizationsMatches?.isEmpty ?? true) return;
 
     _initChoreoRecord();
-    for (final match in normalizationsMatches) {
+    for (final match in normalizationsMatches!) {
       match.selectChoice(
         match.updatedMatch.match.choices!.indexWhere(
           (c) => c.isBestCorrection,
         ),
       );
 
-      final updatedMatch = igc.igcTextData!.acceptReplacement(
+      final updatedMatch = igc.acceptReplacement(
         match,
         PangeaMatchStatus.automatic,
       );
 
-      _textController.setSystemText(
-        igc.igcTextData!.currentText,
+      textController.setSystemText(
+        igc.currentText!,
         EditType.igc,
       );
 
-      choreoRecord!.addRecord(
+      _choreoRecord!.addRecord(
         currentText,
         match: updatedMatch,
       );
     }
-  }
-
-  void onIgnoreMatch({required PangeaMatchState match}) {
-    try {
-      if (igc.igcTextData == null) {
-        debugger(when: kDebugMode);
-        ErrorHandler.logError(
-          m: "should not be in onIgnoreMatch with null igcTextData",
-          s: StackTrace.current,
-          data: {},
-        );
-        return;
-      }
-
-      final updatedMatch = igc.igcTextData!.ignoreReplacement(match);
-      igc.onIgnoreMatch(updatedMatch);
-
-      if (!updatedMatch.match.isNormalizationError()) {
-        _initChoreoRecord();
-        choreoRecord!.addRecord(
-          _textController.text,
-          match: updatedMatch,
-        );
-      }
-    } catch (err, stack) {
-      debugger(when: kDebugMode);
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          data: {
-            "igcTextData": igc.igcTextData?.toJson(),
-            "match": match.toJson(),
-          },
-        ),
-      );
-      ErrorHandler.logError(
-        e: err,
-        s: stack,
-        data: {
-          "igctextData": igc.igcTextData?.toJson(),
-        },
-      );
-      igc.clear();
-    } finally {
-      setState();
-    }
-  }
-
-  void giveInputFocus() {
-    Future.delayed(Duration.zero, () {
-      chatController.inputFocus.requestFocus();
-    });
-  }
-
-  String get currentText => _textController.text;
-
-  PangeaTextController get textController => _textController;
-
-  String get accessToken => pangeaController.userController.accessToken;
-
-  clear() {
-    choreoMode = ChoreoMode.igc;
-    _lastChecked = null;
-    _timesClicked = 0;
-    isFetching = false;
-    choreoRecord = null;
-    translatedText = null;
-    itController.clear();
-    igc.clear();
-    _resetDebounceTimer();
-  }
-
-  Future<void> onPaste(value) async {
-    _initChoreoRecord();
-    choreoRecord!.pastedStrings.add(value);
-  }
-
-  dispose() {
-    _textController.dispose();
-    _languageStream?.cancel();
-    _settingsUpdateStream?.cancel();
-    stateStream.close();
-    TtsController.stop();
-  }
-
-  LanguageModel? get l2Lang {
-    return pangeaController.languageController.activeL2Model();
-  }
-
-  String? get l2LangCode => l2Lang?.langCode;
-
-  LanguageModel? get l1Lang =>
-      pangeaController.languageController.activeL1Model();
-
-  String? get l1LangCode => l1Lang?.langCode;
-
-  String? get userId => pangeaController.userController.userId;
-
-  bool get _noChange =>
-      _lastChecked != null && _lastChecked == _textController.text;
-
-  bool get isRunningIT =>
-      choreoMode == ChoreoMode.it && !itController.isTranslationDone;
-
-  void startLoading() {
-    _lastChecked = _textController.text;
-    isFetching = true;
-    setState();
-  }
-
-  void stopLoading() {
-    isFetching = false;
-    setState();
-  }
-
-  void incrementTimesClicked() {
-    if (assistanceState == AssistanceState.fetched) {
-      _timesClicked++;
-
-      // if user is doing IT, call closeIT here to
-      // ensure source text is replaced when needed
-      if (itController.isOpen && _timesClicked > 1) {
-        itController.closeIT();
-      }
-    }
-  }
-
-  get roomId => chatController.roomId;
-
-  bool get _useCustomInput => [
-        EditType.keyboard,
-        EditType.igc,
-        EditType.alternativeTranslation,
-      ].contains(_textController.editType);
-
-  bool get editTypeIsKeyboard => EditType.keyboard == _textController.editType;
-
-  setState() {
-    if (!stateStream.isClosed) {
-      stateStream.add(0);
-    }
-    _currentAssistanceState = assistanceState;
-  }
-
-  LayerLinkAndKey get itBarLinkAndKey =>
-      MatrixState.pAnyState.layerLinkAndKey(itBarTransformTargetKey);
-
-  String get itBarTransformTargetKey => 'it_bar$roomId';
-
-  LayerLinkAndKey get inputLayerLinkAndKey =>
-      MatrixState.pAnyState.layerLinkAndKey(inputTransformTargetKey);
-
-  String get inputTransformTargetKey => 'input$roomId';
-
-  LayerLinkAndKey get itBotLayerLinkAndKey =>
-      MatrixState.pAnyState.layerLinkAndKey(itBotTransformTargetKey);
-
-  String get itBotTransformTargetKey => 'itBot$roomId';
-
-  bool get igcEnabled => pangeaController.permissionsController.isToolEnabled(
-        ToolSetting.interactiveGrammar,
-        chatController.room,
-      );
-
-  bool get itEnabled => pangeaController.permissionsController.isToolEnabled(
-        ToolSetting.interactiveTranslator,
-        chatController.room,
-      );
-
-  bool get isAutoIGCEnabled =>
-      pangeaController.permissionsController.isToolEnabled(
-        ToolSetting.autoIGC,
-        chatController.room,
-      );
-
-  AssistanceState get assistanceState {
-    final isSubscribed = pangeaController.subscriptionController.isSubscribed;
-    if (isSubscribed != null && !isSubscribed) {
-      return AssistanceState.noSub;
-    }
-
-    if (currentText.isEmpty && itController.sourceText == null) {
-      return AssistanceState.noMessage;
-    }
-
-    if ((igc.igcTextData?.hasOpenMatches ?? false) || isRunningIT) {
-      return AssistanceState.fetched;
-    }
-
-    if (isFetching) {
-      return AssistanceState.fetching;
-    }
-
-    if (igc.igcTextData == null) {
-      return AssistanceState.notFetched;
-    }
-
-    return AssistanceState.complete;
-  }
-
-  bool get canSendMessage {
-    // if there's an error, let them send. we don't want to block them from sending in this case
-    if (errorService.isError ||
-        l2Lang == null ||
-        l1Lang == null ||
-        _timesClicked > 1) {
-      return true;
-    }
-
-    // if they're in IT mode, don't let them send
-    if (itEnabled && isRunningIT) return false;
-
-    // if they've turned off IGC then let them send the message when they want
-    if (!isAutoIGCEnabled) return true;
-
-    // if we're in the middle of fetching results, don't let them send
-    if (isFetching) return false;
-
-    // they're supposed to run IGC but haven't yet, don't let them send
-    if (igc.igcTextData == null) {
-      return itController.dismissed;
-    }
-
-    // if they have relevant matches, don't let them send
-    final hasITMatches = igc.igcTextData!.hasOpenITMatches;
-    final hasIGCMatches = igc.igcTextData!.hasOpenIGCMatches;
-    if ((itEnabled && hasITMatches) || (igcEnabled && hasIGCMatches)) {
-      return false;
-    }
-
-    // otherwise, let them send
-    return true;
+    notifyListeners();
   }
 }

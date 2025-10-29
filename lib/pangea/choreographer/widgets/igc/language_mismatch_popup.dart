@@ -3,20 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/card_header.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LanguageMismatchPopup extends StatelessWidget {
   final String targetLanguage;
-  final Choreographer choreographer;
   final VoidCallback onUpdate;
 
   const LanguageMismatchPopup({
     super.key,
     required this.targetLanguage,
-    required this.choreographer,
     required this.onUpdate,
   });
 

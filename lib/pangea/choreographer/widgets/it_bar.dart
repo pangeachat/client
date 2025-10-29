@@ -4,10 +4,14 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/it_controller.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/word_data_card.dart';
@@ -30,11 +34,7 @@ class ITBar extends StatefulWidget {
 }
 
 class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
-  ITController get itController => widget.choreographer.itController;
-  StreamSubscription? _choreoSub;
-
   bool showedClickInstruction = false;
-
   late AnimationController _controller;
   late Animation<double> _animation;
   bool wasOpen = false;
@@ -44,24 +44,28 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
     super.initState();
 
     // Rebuild the widget each time there's an update from choreo.
-    _choreoSub = widget.choreographer.stateStream.stream.listen((_) {
-      if (itController.willOpen != wasOpen) {
-        itController.willOpen ? _controller.forward() : _controller.reverse();
+    widget.choreographer.addListener(() {
+      if (widget.choreographer.isITOpen != wasOpen) {
+        widget.choreographer.isITOpen
+            ? _controller.forward()
+            : _controller.reverse();
       }
-      wasOpen = itController.willOpen;
+      wasOpen = widget.choreographer.isITOpen;
       setState(() {});
     });
 
-    wasOpen = itController.willOpen;
+    wasOpen = widget.choreographer.isITOpen;
 
     _controller = AnimationController(
-      duration: itController.animationSpeed,
+      duration: const Duration(milliseconds: 300),
       vsync: this,
     );
     _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
 
     // Start in the correct state
-    itController.willOpen ? _controller.forward() : _controller.reverse();
+    widget.choreographer.isITOpen
+        ? _controller.forward()
+        : _controller.reverse();
   }
 
   bool get showITInstructionsTooltip {
@@ -75,18 +79,10 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
   bool get showTranslationsChoicesTooltip {
     return !showedClickInstruction &&
         !showITInstructionsTooltip &&
-        !itController.choreographer.isFetching &&
-        !itController.isLoading &&
-        !itController.isEditingSourceText &&
-        !itController.isTranslationDone &&
-        itController.currentITStep != null &&
-        itController.currentITStep!.continuances.isNotEmpty;
-  }
-
-  @override
-  void dispose() {
-    _choreoSub?.cancel();
-    super.dispose();
+        !widget.choreographer.isFetching &&
+        !widget.choreographer.isEditingSourceText &&
+        !widget.choreographer.isITDone &&
+        widget.choreographer.itStepContinuances?.isNotEmpty == true;
   }
 
   final double iconDimension = 36;
@@ -130,7 +126,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (itController.isEditingSourceText)
+                        if (widget.choreographer.isEditingSourceText)
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.only(
@@ -140,14 +136,14 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                               ),
                               child: TextField(
                                 controller: TextEditingController(
-                                  text: itController.sourceText,
+                                  text: widget.choreographer.sourceText,
                                 ),
                                 autofocus: true,
                                 enableSuggestions: false,
                                 maxLines: null,
                                 textInputAction: TextInputAction.send,
                                 onSubmitted:
-                                    itController.onEditSourceTextSubmit,
+                                    widget.choreographer.submitSourceTextEdits,
                                 obscureText: false,
                                 decoration: const InputDecoration(
                                   border: OutlineInputBorder(),
@@ -155,24 +151,21 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                               ),
                             ),
                           ),
-                        if (!itController.isEditingSourceText &&
-                            itController.sourceText != null)
+                        if (!widget.choreographer.isEditingSourceText &&
+                            widget.choreographer.sourceText != null)
                           SizedBox(
                             width: iconDimension,
                             height: iconDimension,
                             child: IconButton(
                               iconSize: iconSize,
                               color: Theme.of(context).colorScheme.primary,
-                              onPressed: () {
-                                if (itController.nextITStep != null) {
-                                  itController.setIsEditingSourceText(true);
-                                }
-                              },
+                              onPressed: () => widget.choreographer
+                                  .setEditingSourceText(true),
                               icon: const Icon(Icons.edit_outlined),
                               // iconSize: 20,
                             ),
                           ),
-                        if (!itController.isEditingSourceText)
+                        if (!widget.choreographer.isEditingSourceText)
                           SizedBox(
                             width: iconDimension,
                             height: iconDimension,
@@ -195,22 +188,23 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                             color: Theme.of(context).colorScheme.primary,
                             icon: const Icon(Icons.close_outlined),
                             onPressed: () {
-                              itController.isEditingSourceText
-                                  ? itController.setIsEditingSourceText(false)
-                                  : itController.closeIT();
+                              widget.choreographer.isEditingSourceText
+                                  ? widget.choreographer
+                                      .setEditingSourceText(false)
+                                  : widget.choreographer.closeIT();
                             },
                           ),
                         ),
                       ],
                     ),
-                    if (!itController.isEditingSourceText)
+                    if (!widget.choreographer.isEditingSourceText)
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
-                        child: !itController.willOpen
+                        child: !widget.choreographer.isITOpen
                             ? const SizedBox()
-                            : itController.sourceText != null
+                            : widget.choreographer.sourceText != null
                                 ? Text(
-                                    itController.sourceText!,
+                                    widget.choreographer.sourceText!,
                                     textAlign: TextAlign.center,
                                   )
                                 : const LinearProgressIndicator(),
@@ -220,13 +214,15 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
                       padding: const EdgeInsets.symmetric(horizontal: 4.0),
                       constraints: const BoxConstraints(minHeight: 80),
                       child: AnimatedSize(
-                        duration: itController.animationSpeed,
+                        duration: const Duration(milliseconds: 300),
                         child: Center(
-                          child: itController.choreographer.errorService.isError
-                              ? ITError(controller: itController)
-                              : itController.isTranslationDone
+                          child: widget.choreographer.errorService.isError
+                              ? ITError(choreographer: widget.choreographer)
+                              : widget.choreographer.isITDone
                                   ? const SizedBox()
-                                  : ITChoices(controller: itController),
+                                  : ITChoices(
+                                      choreographer: widget.choreographer,
+                                    ),
                         ),
                       ),
                     ),
@@ -242,31 +238,11 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
 }
 
 class ITChoices extends StatelessWidget {
+  final Choreographer choreographer;
   const ITChoices({
     super.key,
-    required this.controller,
+    required this.choreographer,
   });
-
-  // final choices = [
-  //   "we need a really long translation to see what's going to happen with that. it should probably have multiple sentences so that we can see what happens there.we need a really long translation to see what's going to happen with that. it should probably have multiple sentences so that we can see what happens there.",
-  //   "we need a really long translation to see what's going to happen with that. it should probably have multiple sentences so that we can see what happens there.",
-  //   "we need a really long translation to see what's going to happen with that. it should probably have multiple sentences so that we can see what happens there.",
-  //   "we need a really long translation to see what's going to happen with that. it should probably have multiple sentences so that we can see what happens there.",
-  //   "we need a really long translation to see what's going to happen with that. it should probably have multiple sentences so that we can see what happens there.",
-  //   "we need a really long translation to see what's going to happen with that. it should probably have multiple sentences so that we can see what happens there.",
-  // ];
-
-  final ITController controller;
-
-  String? get sourceText {
-    if ((controller.sourceText == null || controller.sourceText!.isEmpty)) {
-      ErrorHandler.logError(
-        m: "null source text in ItChoices",
-        data: {},
-      );
-    }
-    return controller.sourceText;
-  }
 
   void showCard(
     BuildContext context,
@@ -274,7 +250,7 @@ class ITChoices extends StatelessWidget {
     Color? borderColor,
     String? choiceFeedback,
   ]) {
-    if (controller.currentITStep == null) {
+    if (choreographer.itStepContinuances == null) {
       ErrorHandler.logError(
         m: "currentITStep is null in showCard",
         s: StackTrace.current,
@@ -285,41 +261,34 @@ class ITChoices extends StatelessWidget {
       return;
     }
 
-    controller.choreographer.chatController.inputFocus.unfocus();
+    final text = choreographer.itStepContinuances![index].text;
+    choreographer.chatController.inputFocus.unfocus();
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
     OverlayUtil.showPositionedCard(
       context: context,
       cardToShow: choiceFeedback == null
           ? WordDataCard(
-              word: controller.currentITStep!.continuances[index].text,
-              wordLang: controller.targetLangCode,
-              fullText: sourceText ?? controller.choreographer.currentText,
-              fullTextLang: sourceText != null
-                  ? controller.sourceLangCode
-                  : controller.targetLangCode,
-              // IMPORTANT COMMENT TO KEEP: We're going to forace hasInfo to false for now
-              // because we don't want to show the word data card for correct choices and the contextual definition
-              // for incorrect choices. This gives away the answer (if you're Kel at least).
-              // The reason hasInfo is false for incorrect choices is that we're not includng the tokens for distractors.
-              // Correct choices will have the tokens, but we don't want to show something different for them.
-              // hasInfo: controller.currentITStep!.continuances[index].hasInfo,
-              hasInfo: false,
+              word: text,
+              wordLang: choreographer.l2LangCode!,
+              fullText: choreographer.sourceText ?? choreographer.currentText,
+              fullTextLang: choreographer.sourceText != null
+                  ? choreographer.l1LangCode!
+                  : choreographer.l2LangCode!,
               choiceFeedback: choiceFeedback,
-              room: controller.choreographer.chatController.room,
             )
           : ITFeedbackCard(
               req: FullTextTranslationRequestModel(
-                text: controller.currentITStep!.continuances[index].text,
-                tgtLang: controller.sourceLangCode,
-                userL1: controller.sourceLangCode,
-                userL2: controller.targetLangCode,
+                text: text,
+                tgtLang: choreographer.l2LangCode!,
+                userL1: choreographer.l1LangCode!,
+                userL2: choreographer.l2LangCode!,
               ),
               choiceFeedback: choiceFeedback,
             ),
       maxHeight: 300,
       maxWidth: 300,
       borderColor: borderColor,
-      transformTargetId: controller.choreographer.itBarTransformTargetKey,
+      transformTargetId: choreographer.itBarTransformTargetKey,
       isScrollable: choiceFeedback == null,
       overlayKey: "it_feedback_card",
       ignorePointer: true,
@@ -328,12 +297,41 @@ class ITChoices extends StatelessWidget {
 
   void selectContinuance(int index, BuildContext context) {
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
-    final Continuance continuance =
-        controller.currentITStep!.continuances[index];
+    Continuance continuance;
+    try {
+      continuance = choreographer.onSelectContinuance(index);
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        level: SentryLevel.warning,
+        data: {
+          "index": index,
+        },
+      );
+      choreographer.closeIT();
+      return;
+    }
+
     if (continuance.level == 1) {
       Future.delayed(
         const Duration(milliseconds: 500),
-        () => controller.selectTranslation(index),
+        () {
+          try {
+            choreographer.onAcceptContinuance(index);
+          } catch (e, s) {
+            ErrorHandler.logError(
+              e: e,
+              s: s,
+              level: SentryLevel.warning,
+              data: {
+                "index": index,
+              },
+            );
+            choreographer.closeIT();
+            return;
+          }
+        },
       );
     } else {
       showCard(
@@ -343,20 +341,16 @@ class ITChoices extends StatelessWidget {
         continuance.feedbackText(context),
       );
     }
-    controller.currentITStep!.continuances[index] = continuance.copyWith(
-      wasClicked: true,
-    );
-    controller.choreographer.setState();
   }
 
   @override
   Widget build(BuildContext context) {
     try {
-      if (controller.isEditingSourceText) {
+      if (choreographer.isEditingSourceText) {
         return const SizedBox();
       }
-      if (controller.currentITStep == null) {
-        return controller.willOpen
+      if (choreographer.itStepContinuances == null) {
+        return choreographer.isITOpen
             ? CircularProgressIndicator(
                 strokeWidth: 2.0,
                 color: Theme.of(context).colorScheme.primary,
@@ -364,11 +358,11 @@ class ITChoices extends StatelessWidget {
             : const SizedBox();
       }
       return ChoicesArray(
-        id: controller.currentITStep.hashCode.toString(),
-        isLoading: controller.isLoading ||
-            controller.choreographer.isFetching ||
-            controller.currentITStep == null,
-        choices: controller.currentITStep!.continuances.map((e) {
+        id: Object.hashAll(choreographer.itStepContinuances!).toString(),
+        isLoading: choreographer.isFetching ||
+            choreographer.itStepContinuances == null,
+        choices: choreographer.itStepContinuances!.map((e) {
+          debugPrint("WAS CLICKED: ${e.wasClicked}");
           try {
             return Choice(
               text: e.text.trim(),
@@ -383,8 +377,8 @@ class ITChoices extends StatelessWidget {
         onPressed: (value, index) => selectContinuance(index, context),
         onLongPress: (value, index) => showCard(context, index),
         selectedChoiceIndex: null,
-        langCode: controller.choreographer.pangeaController.languageController
-            .activeL2Code(),
+        langCode:
+            choreographer.pangeaController.languageController.activeL2Code(),
       );
     } catch (e) {
       debugger(when: kDebugMode);
@@ -394,8 +388,11 @@ class ITChoices extends StatelessWidget {
 }
 
 class ITError extends StatelessWidget {
-  final ITController controller;
-  const ITError({super.key, required this.controller});
+  final Choreographer choreographer;
+  const ITError({
+    super.key,
+    required this.choreographer,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -413,10 +410,7 @@ class ITError extends StatelessWidget {
             ),
           ),
           IconButton(
-            onPressed: () {
-              controller.closeIT();
-              controller.choreographer.errorService.resetError();
-            },
+            onPressed: choreographer.closeIT,
             icon: const Icon(
               Icons.close,
               size: 20,

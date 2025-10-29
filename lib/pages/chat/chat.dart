@@ -40,12 +40,16 @@ import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
 import 'package:fluffychat/pangea/chat/utils/unlocked_morphs_snackbar.dart';
 import 'package:fluffychat/pangea/chat/widgets/event_too_large_dialog.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/pangea_text_controller.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
 import 'package:fluffychat/pangea/choreographer/repo/language_mismatch_repo.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/language_mismatch_popup.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/message_analytics_feedback.dart';
+import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -371,7 +375,7 @@ class ChatController extends State<ChatPageWithRoom>
       if (evt is KeyDownEvent) {
         // #Pangea
         // send();
-        choreographer.send(context);
+        onInputBarSubmitted('');
         // Pangea#
       }
       return KeyEventResult.handled;
@@ -776,7 +780,6 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus.removeListener(_inputFocusListener);
     onFocusSub?.cancel();
     //#Pangea
-    choreographer.stateStream.close();
     choreographer.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
     showToolbarStream.close();
@@ -1694,7 +1697,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void onSelectMessage(Event event) {
     // #Pangea
-    if (choreographer.itController.willOpen) {
+    if (choreographer.isITOpen) {
       return;
     }
     // Pangea#
@@ -1741,10 +1744,22 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   // #Pangea
-  void onInputBarSubmitted(String _, BuildContext context) {
-    // void onInputBarSubmitted(_) {
+  // void onInputBarSubmitted(String _) {
+  Future<void> onInputBarSubmitted(String _) async {
     //   send();
-    choreographer.send(context);
+    try {
+      await choreographer.send();
+    } on ShowPaywallException {
+      PaywallCard.show(context, choreographer.inputTransformTargetKey);
+    } on OpenMatchesException {
+      if (choreographer.firstIGCMatch != null) {
+        OverlayUtil.showIGCMatch(
+          choreographer.firstIGCMatch!,
+          choreographer,
+          context,
+        );
+      }
+    }
     // Pangea#
     FocusScope.of(context).requestFocus(inputFocus);
   }
@@ -2193,11 +2208,14 @@ class ChatController extends State<ChatPageWithRoom>
       context: context,
       cardToShow: LanguageMismatchPopup(
         targetLanguage: targetLanguage,
-        choreographer: choreographer,
         onUpdate: () async {
-          await choreographer.getLanguageHelp(manual: true);
-          if (choreographer.igc.canShowFirstMatch) {
-            choreographer.igc.showFirstMatch(context);
+          final igcMatch = await choreographer.requestLanguageAssistance();
+          if (igcMatch != null) {
+            OverlayUtil.showIGCMatch(
+              igcMatch,
+              choreographer,
+              context,
+            );
           }
         },
       ),

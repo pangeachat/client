@@ -1,17 +1,14 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
-import 'package:http/http.dart' as http;
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
+import 'package:fluffychat/pangea/choreographer/enums/choreo_mode.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/repo/it_repo.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../models/it_step.dart';
@@ -20,121 +17,180 @@ import '../repo/it_response_model.dart';
 import 'choreographer.dart';
 
 class ITController {
-  Choreographer choreographer;
+  final Choreographer _choreographer;
 
-  bool _isOpen = false;
-  bool _willOpen = false;
-  bool _isEditingSourceText = false;
-  bool dismissed = false;
+  ITStep? _currentITStep;
+  final List<Completer<ITStep>> _queue = [];
+  GoldRouteTracker? _goldRouteTracker;
 
-  ITStartData? _itStartData;
-  String? sourceText;
-  List<ITStep> completedITSteps = [];
-  CurrentITStep? currentITStep;
-  Completer<CurrentITStep?>? nextITStep;
-  GoldRouteTracker goldRouteTracker = GoldRouteTracker.defaultTracker;
-  List<int> payLoadIds = [];
+  bool _open = false;
+  bool _editing = false;
+  bool _dismissed = false;
 
-  ITController(this.choreographer);
+  ITController(this._choreographer);
 
-  void clear() {
-    _isOpen = false;
-    _willOpen = false;
-    MatrixState.pAnyState.closeOverlay("it_feedback_card");
+  bool get open => _open;
+  bool get editing => _editing;
+  bool get dismissed => _dismissed;
+  List<Continuance>? get continuances => _currentITStep?.continuances;
+  bool get isTranslationDone => _currentITStep?.isFinal ?? false;
 
-    _isEditingSourceText = false;
-    dismissed = false;
+  String? get _sourceText => _choreographer.sourceText;
 
-    _itStartData = null;
-    sourceText = null;
-    completedITSteps = [];
-    currentITStep = null;
-    nextITStep = null;
-    goldRouteTracker = GoldRouteTracker.defaultTracker;
-    payLoadIds = [];
-
-    choreographer.choreoMode = ChoreoMode.igc;
-    choreographer.setState();
+  ITRequestModel _request(String textInput) {
+    assert(_sourceText != null);
+    return ITRequestModel(
+      text: _sourceText!,
+      customInput: textInput,
+      sourceLangCode:
+          MatrixState.pangeaController.languageController.activeL1Code()!,
+      targetLangCode:
+          MatrixState.pangeaController.languageController.activeL2Code()!,
+      userId: _choreographer.chatController.room.client.userID!,
+      roomId: _choreographer.chatController.room.id,
+      goldTranslation: _goldRouteTracker?.fullTranslation,
+      goldContinuances: _goldRouteTracker?.continuances,
+    );
   }
 
-  Duration get animationSpeed => const Duration(milliseconds: 300);
-
-  Future<void> initializeIT(ITStartData itStartData) async {
-    _willOpen = true;
-    Future.delayed(const Duration(microseconds: 100), () {
-      _isOpen = true;
-    });
-    _itStartData = itStartData;
-  }
+  void openIT() => _open = true;
 
   void closeIT() {
     // if the user hasn't gone through any IT steps, reset the text
-    if (completedITSteps.isEmpty && sourceText != null) {
-      choreographer.textController.setSystemText(
-        sourceText!,
+    if (_choreographer.currentText.isEmpty && _sourceText != null) {
+      _choreographer.textController.setSystemText(
+        _sourceText!,
         EditType.itDismissed,
       );
     }
-    clear();
-    choreographer.errorService.resetError();
-    dismissed = true;
+
+    clear(dismissed: true);
   }
 
-  /// if IGC isn't positive that text is full L1 then translate to L1
-  Future<void> _setSourceText() async {
-    if (_itStartData == null || _itStartData!.text.isEmpty) {
-      Sentry.addBreadcrumb(
-        Breadcrumb(
-          message: "choreo context",
-          data: {
-            "igcTextData": choreographer.igc.igcTextData?.toJson(),
-            "currentText": choreographer.currentText,
-          },
-        ),
-      );
-      throw Exception("null _itStartData or empty text in _setSourceText");
-    }
-    debugPrint("_setSourceText with detectedLang ${_itStartData!.langCode}");
-    // if (_itStartData!.langCode == choreographer.l1LangCode) {
-    sourceText = _itStartData!.text;
-    choreographer.translatedText = sourceText;
-    return;
-    // }
+  void clear({bool dismissed = false}) {
+    MatrixState.pAnyState.closeOverlay("it_feedback_card");
 
-    // final FullTextTranslationResponseModel res =
-    //     await FullTextTranslationRepo.translate(
-    //   accessToken: await choreographer.accessToken,
-    //   request: FullTextTranslationRequestModel(
-    //     text: _itStartData!.text,
-    //     tgtLang: choreographer.l1LangCode!,
-    //     srcLang: _itStartData!.langCode,
-    //     userL1: choreographer.l1LangCode!,
-    //     userL2: choreographer.l2LangCode!,
-    //   ),
-    // );
-    // sourceText = res.bestTranslation;
+    _open = false;
+    _editing = false;
+    _dismissed = dismissed;
+    _queue.clear();
+    _currentITStep = null;
+    _goldRouteTracker = null;
+
+    _choreographer.setChoreoMode(ChoreoMode.igc);
+    _choreographer.setSourceText(null);
   }
 
-  // used 1) at very beginning (with custom input = null)
-  // and 2) if they make direct edits to the text field
-  Future<void> getTranslationData(bool useCustomInput) async {
-    final String currentText = choreographer.currentText;
+  void setEditing(bool value) => _editing = value;
 
-    if (sourceText == null) await _setSourceText();
+  void onSubmitEdits() {
+    _editing = false;
+    _queue.clear();
+    _currentITStep = null;
+    _goldRouteTracker = null;
+    continueIT();
+  }
 
-    if (useCustomInput && currentITStep != null) {
-      completedITSteps.add(
-        ITStep(
-          currentITStep!.continuances,
-          customInput: currentText,
-        ),
-      );
+  Continuance onSelectContinuance(int index) {
+    if (_currentITStep == null) {
+      throw "onSelectContinuance called with null currentITStep";
     }
 
-    currentITStep = null;
+    if (index < 0 || index >= _currentITStep!.continuances.length) {
+      throw "onSelectContinuance called with invalid index $index";
+    }
 
-    // During first IT step, next step will not be set
-    if (nextITStep == null) {
+    final step = _currentITStep!.continuances[index];
+    _currentITStep!.continuances[index] = step.copyWith(
+      wasClicked: true,
+    );
+    return _currentITStep!.continuances[index];
+  }
+
+  CompletedITStep getAcceptedITStep(int chosenIndex) {
+    if (_currentITStep == null) {
+      throw "getAcceptedITStep called with null currentITStep";
+    }
+
+    if (chosenIndex < 0 || chosenIndex >= _currentITStep!.continuances.length) {
+      throw "getAcceptedITStep called with invalid index $chosenIndex";
+    }
+
+    return CompletedITStep(
+      _currentITStep!.continuances,
+      chosen: chosenIndex,
+    );
+  }
+
+  Future<void> continueIT() async {
+    if (_currentITStep == null) {
+      await _initTranslationData();
+      return;
+    }
+
+    if (_queue.isEmpty) {
+      _choreographer.closeIT();
+      return;
+    }
+
+    final nextStepCompleter = _queue.removeAt(0);
+    try {
+      _currentITStep = await nextStepCompleter.future;
+    } catch (e) {
+      if (_open) {
+        _choreographer.errorService.setErrorAndLock(
+          ChoreoError(raw: e),
+        );
+      }
+    }
+  }
+
+  Future<void> _initTranslationData() async {
+    final String currentText = _choreographer.currentText;
+    final res = await ITRepo.get(_request(currentText)).timeout(
+      const Duration(seconds: 10),
+      onTimeout: () {
+        return Result.error(
+          TimeoutException("ITRepo.get timed out after 10 seconds"),
+        );
+      },
+    );
+
+    if (_sourceText == null || !_open) return;
+    if (res.isError || res.result?.goldContinuances == null) {
+      _choreographer.errorService.setErrorAndLock(
+        ChoreoError(raw: res.asError),
+      );
+      return;
+    }
+
+    final result = res.result!;
+    _goldRouteTracker = GoldRouteTracker(
+      result.goldContinuances!,
+      _sourceText!,
+    );
+
+    _currentITStep = ITStep(
+      sourceText: _sourceText!,
+      currentText: currentText,
+      responseModel: res.result!,
+      storedGoldContinuances: _goldRouteTracker!.continuances,
+    );
+
+    _fillITStepQueue();
+  }
+
+  Future<void> _fillITStepQueue() async {
+    if (_sourceText == null || _goldRouteTracker!.continuances.length < 2) {
+      return;
+    }
+
+    final sourceText = _sourceText!;
+    String currentText =
+        _choreographer.currentText + _goldRouteTracker!.continuances[0].text;
+
+    for (int i = 1; i < _goldRouteTracker!.continuances.length; i++) {
+      _queue.add(Completer<ITStep>());
       final res = await ITRepo.get(_request(currentText)).timeout(
         const Duration(seconds: 10),
         onTimeout: () {
@@ -145,192 +201,29 @@ class ITController {
       );
 
       if (res.isError) {
-        if (_willOpen) {
-          choreographer.errorService.setErrorAndLock(
-            ChoreoError(raw: res.asError),
-          );
-        }
-        return;
-      }
-
-      if (sourceText == null) {
-        return;
-      }
-
-      final result = res.result!;
-      if (result.goldContinuances != null &&
-          result.goldContinuances!.isNotEmpty) {
-        goldRouteTracker = GoldRouteTracker(
-          result.goldContinuances!,
-          sourceText!,
+        _queue.last.completeError(res.asError!);
+        break;
+      } else {
+        final step = ITStep(
+          sourceText: sourceText,
+          currentText: currentText,
+          responseModel: res.result!,
+          storedGoldContinuances: _goldRouteTracker!.continuances,
         );
+        _queue.last.complete(step);
       }
 
-      currentITStep = CurrentITStep(
-        sourceText: sourceText!,
-        currentText: currentText,
-        responseModel: result,
-        storedGoldContinuances: goldRouteTracker.continuances,
-      );
-
-      _addPayloadId(result);
-    } else {
-      currentITStep = await nextITStep!.future;
-    }
-
-    if (isTranslationDone) {
-      nextITStep = null;
-      closeIT();
-    } else {
-      nextITStep = Completer<CurrentITStep?>();
-      final nextStep = await _getNextTranslationData();
-      nextITStep?.complete(nextStep);
+      currentText += _goldRouteTracker!.continuances[i].text;
     }
   }
-
-  Future<CurrentITStep?> _getNextTranslationData() async {
-    if (sourceText == null) {
-      ErrorHandler.logError(
-        e: Exception("sourceText is null in getNextTranslationData"),
-        data: {
-          "sourceText": sourceText,
-          "currentITStepPayloadID": currentITStep?.payloadId,
-          "continuances": goldRouteTracker.continuances.map((e) => e.toJson()),
-        },
-      );
-      return null;
-    }
-
-    if (completedITSteps.length >= goldRouteTracker.continuances.length) {
-      return null;
-    }
-
-    final String currentText = choreographer.currentText;
-    final String nextText =
-        goldRouteTracker.continuances[completedITSteps.length].text;
-
-    final res = await ITRepo.get(
-      _request(currentText + nextText),
-    );
-
-    if (sourceText == null) return null;
-    if (res.isError) {
-      choreographer.errorService.setErrorAndLock(
-        ChoreoError(raw: res.asError),
-      );
-      return null;
-    }
-
-    return CurrentITStep(
-      sourceText: sourceText!,
-      currentText: nextText,
-      responseModel: res.result!,
-      storedGoldContinuances: goldRouteTracker.continuances,
-    );
-  }
-
-  Future<void> onEditSourceTextSubmit(String newSourceText) async {
-    try {
-      _isOpen = true;
-      _isEditingSourceText = false;
-      _itStartData = ITStartData(newSourceText, choreographer.l1LangCode);
-      completedITSteps = [];
-      currentITStep = null;
-      nextITStep = null;
-      goldRouteTracker = GoldRouteTracker.defaultTracker;
-      payLoadIds = [];
-
-      _setSourceText();
-      getTranslationData(false);
-    } catch (err, stack) {
-      debugger(when: kDebugMode);
-      if (err is! http.Response) {
-        ErrorHandler.logError(
-          e: err,
-          s: stack,
-          data: {
-            "newSourceText": newSourceText,
-            "l1Lang": choreographer.l1LangCode,
-          },
-        );
-      }
-      choreographer.errorService.setErrorAndLock(
-        ChoreoError(raw: err),
-      );
-    } finally {
-      choreographer.textController.setSystemText(
-        "",
-        EditType.other,
-      );
-    }
-  }
-
-  ITRequestModel _request(String textInput) => ITRequestModel(
-        text: sourceText!,
-        customInput: textInput,
-        sourceLangCode: sourceLangCode,
-        targetLangCode: targetLangCode,
-        userId: choreographer.userId!,
-        roomId: choreographer.roomId!,
-        goldTranslation: goldRouteTracker.fullTranslation,
-        goldContinuances: goldRouteTracker.continuances,
-      );
-
-  //maybe we store IT data in the same format? make a specific kind of match?
-  void selectTranslation(int chosenIndex) {
-    if (currentITStep == null) return;
-    final itStep = ITStep(
-      currentITStep!.continuances,
-      chosen: chosenIndex,
-    );
-
-    completedITSteps.add(itStep);
-    choreographer.onITChoiceSelect(itStep);
-    choreographer.setState();
-  }
-
-  String get uniqueKeyForLayerLink => "itChoices${choreographer.roomId}";
-
-  void _addPayloadId(ITResponseModel res) {
-    payLoadIds.add(res.payloadId);
-  }
-
-  bool get isTranslationDone => currentITStep != null && currentITStep!.isFinal;
-
-  bool get isOpen => _isOpen;
-
-  bool get willOpen => _willOpen;
-
-  String get targetLangCode => choreographer.l2LangCode!;
-
-  String get sourceLangCode => choreographer.l1LangCode!;
-
-  bool get isLoading => choreographer.isFetching;
-
-  void setIsEditingSourceText(bool value) {
-    _isEditingSourceText = value;
-    choreographer.setState();
-  }
-
-  bool get isEditingSourceText => _isEditingSourceText;
-}
-
-class ITStartData {
-  String text;
-  String? langCode;
-
-  ITStartData(this.text, this.langCode);
 }
 
 class GoldRouteTracker {
-  late String _originalText;
-  List<Continuance> continuances;
+  final String _originalText;
+  final List<Continuance> continuances;
 
-  GoldRouteTracker(this.continuances, String originalText) {
-    _originalText = originalText;
-  }
-
-  static get defaultTracker => GoldRouteTracker([], "");
+  const GoldRouteTracker(this.continuances, String originalText)
+      : _originalText = originalText;
 
   Continuance? currentContinuance({
     required String currentText,
@@ -362,13 +255,11 @@ class GoldRouteTracker {
   }
 }
 
-class CurrentITStep {
+class ITStep {
   late List<Continuance> continuances;
   late bool isFinal;
-  late String? translationId;
-  late int payloadId;
 
-  CurrentITStep({
+  ITStep({
     required String sourceText,
     required String currentText,
     required ITResponseModel responseModel,
@@ -379,8 +270,6 @@ class CurrentITStep {
     final goldTracker = GoldRouteTracker(gold, sourceText);
 
     isFinal = responseModel.isFinal;
-    translationId = responseModel.translationId;
-    payloadId = responseModel.payloadId;
 
     if (responseModel.continuances.isEmpty) {
       continuances = [];
@@ -410,8 +299,4 @@ class CurrentITStep {
       }
     }
   }
-
-  // get continuance with highest level
-  Continuance get best =>
-      continuances.reduce((a, b) => a.level < b.level ? a : b);
 }

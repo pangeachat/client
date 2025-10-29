@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pages/chat/chat.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/has_error_button.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/language_permissions_warning_buttons.dart';
 import 'package:fluffychat/pangea/spaces/models/space_model.dart';
@@ -36,7 +37,6 @@ class ChatFloatingActionButtonState extends State<ChatFloatingActionButton> {
       widget.controller.room,
     );
     showPermissionsError = !itEnabled || !igcEnabled;
-    debugPrint("showPermissionsError: $showPermissionsError");
 
     if (showPermissionsError) {
       Future.delayed(
@@ -46,12 +46,6 @@ class ChatFloatingActionButtonState extends State<ChatFloatingActionButton> {
         },
       );
     }
-
-    // Rebuild the widget each time there's an update from choreo (i.e., an error).
-    _choreoSub = widget.controller.choreographer.stateStream.stream.listen((_) {
-      setState(() {});
-    });
-
     super.initState();
   }
 
@@ -74,19 +68,25 @@ class ChatFloatingActionButtonState extends State<ChatFloatingActionButton> {
         child: const Icon(Icons.arrow_downward_outlined),
       );
     }
-    if (widget.controller.choreographer.errorService.error != null &&
-        !widget.controller.choreographer.itController.willOpen) {
-      return ChoreographerHasErrorButton(
-        widget.controller.choreographer.errorService.error!,
-        widget.controller.choreographer,
-      );
-    }
 
-    return showPermissionsError
-        ? LanguagePermissionsButtons(
-            choreographer: widget.controller.choreographer,
-            roomID: widget.controller.roomId,
-          )
-        : const SizedBox.shrink();
+    return ListenableBuilder(
+      listenable: widget.controller.choreographer,
+      builder: (context, _) {
+        if (widget.controller.choreographer.errorService.error != null &&
+            !widget.controller.choreographer.isITOpen) {
+          return ChoreographerHasErrorButton(
+            widget.controller.choreographer.errorService.error!,
+            widget.controller.choreographer,
+          );
+        }
+
+        return showPermissionsError
+            ? LanguagePermissionsButtons(
+                choreographer: widget.controller.choreographer,
+                roomID: widget.controller.roomId,
+              )
+            : const SizedBox.shrink();
+      },
+    );
   }
 }

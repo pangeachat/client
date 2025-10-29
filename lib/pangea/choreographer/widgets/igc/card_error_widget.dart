@@ -3,23 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class CardErrorWidget extends StatelessWidget {
   final String error;
-  final Choreographer? choreographer;
-  final int? offset;
   final double maxWidth;
-  final double padding;
 
   const CardErrorWidget({
     super.key,
     required this.error,
-    this.choreographer,
-    this.offset,
     this.maxWidth = 275,
-    this.padding = 8,
   });
 
   @override
@@ -31,7 +24,7 @@ class CardErrorWidget extends StatelessWidget {
     );
 
     return Container(
-      padding: EdgeInsets.all(padding),
+      padding: const EdgeInsets.all(8.0),
       constraints: BoxConstraints(maxWidth: maxWidth),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

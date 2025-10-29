@@ -8,4 +8,6 @@ class ChoreoConstants {
   static const green = Colors.green;
   static const yellow = Color.fromARGB(255, 206, 152, 2);
   static const red = Colors.red;
+  static const int msBeforeIGCStart = 10000;
+  static const int maxLength = 1000;
 }

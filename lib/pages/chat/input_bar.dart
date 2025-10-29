@@ -8,7 +8,12 @@ import 'package:matrix/matrix.dart';
 import 'package:slugify/slugify.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/pangea_text_controller.dart';
+import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
+import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/utils/shrinkable_text.dart';
 import 'package:fluffychat/utils/markdown_context_builder.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
@@ -421,6 +426,41 @@ class InputBar extends StatelessWidget {
     }
   }
 
+  // #Pangea
+  void onInputTap(BuildContext context, {required FocusNode fNode}) {
+    fNode.requestFocus();
+
+    // show the paywall if appropriate
+    final choreographer = controller!.choreographer;
+    if (MatrixState
+                .pangeaController.subscriptionController.subscriptionStatus ==
+            SubscriptionStatus.shouldShowPaywall &&
+        controller!.text.isNotEmpty) {
+      PaywallCard.show(context, choreographer.inputTransformTargetKey);
+      return;
+    }
+
+    // if there is no igc text data, then don't do anything
+    if (!choreographer.hasIGCTextData) return;
+
+    final selection = controller!.selection;
+    if (selection.baseOffset >= controller!.text.length) {
+      return;
+    }
+
+    final match = choreographer.getMatchByOffset(
+      selection.baseOffset,
+    );
+    if (match == null) return;
+
+    // if autoplay on and it start then just start it
+    if (match.updatedMatch.isITStart) {
+      return choreographer.openIT(match);
+    }
+    OverlayUtil.showIGCMatch(match, choreographer, context);
+  }
+  // Pangea#
+
   @override
   Widget build(BuildContext context) {
     // #Pangea
@@ -486,7 +526,7 @@ class InputBar extends StatelessWidget {
               ? const TextStyle(color: Colors.red)
               : null,
           onTap: () {
-            controller?.onInputTap(
+            onInputTap(
               context,
               fNode: focusNode,
             );

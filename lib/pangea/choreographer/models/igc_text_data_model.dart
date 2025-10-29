@@ -46,6 +46,8 @@ class IGCTextData {
   List<PangeaMatchState> get openNormalizationMatches =>
       _state.openNormalizationMatches;
 
+  void clearMatches() => _state.clearMatches();
+
   void setSpanData(PangeaMatchState match, SpanData spanData) {
     _state.setSpanData(match, spanData);
   }

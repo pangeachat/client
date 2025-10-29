@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/paywall_card.dart';
+import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/learning_settings/pages/settings_learning.dart';
 import '../../../pages/chat/chat.dart';
 
@@ -27,7 +30,6 @@ class StartIGCButtonState extends State<StartIGCButton>
   AssistanceState get assistanceState =>
       widget.controller.choreographer.assistanceState;
   AnimationController? _controller;
-  StreamSubscription? _choreoListener;
   AssistanceState? _prevState;
 
   @override
@@ -36,19 +38,17 @@ class StartIGCButtonState extends State<StartIGCButton>
       vsync: this,
       duration: const Duration(seconds: 2),
     );
-    _choreoListener = widget.controller.choreographer.stateStream.stream
-        .listen(_updateSpinnerState);
+    widget.controller.choreographer.addListener(_updateSpinnerState);
     super.initState();
   }
 
   @override
   void dispose() {
     _controller?.dispose();
-    _choreoListener?.cancel();
     super.dispose();
   }
 
-  void _updateSpinnerState(_) {
+  void _updateSpinnerState() {
     if (_prevState != AssistanceState.fetching &&
         assistanceState == AssistanceState.fetching) {
       _controller?.repeat();
@@ -62,8 +62,14 @@ class StartIGCButtonState extends State<StartIGCButton>
   }
 
   void _showFirstMatch() {
-    if (widget.controller.choreographer.igc.canShowFirstMatch) {
-      widget.controller.choreographer.igc.showFirstMatch(context);
+    if (widget.controller.choreographer.canShowFirstIGCMatch) {
+      final match = widget.controller.choreographer.igc.onShowFirstMatch();
+      if (match == null) return;
+      OverlayUtil.showIGCMatch(
+        match,
+        widget.controller.choreographer,
+        context,
+      );
     }
   }
 
@@ -79,7 +85,10 @@ class StartIGCButtonState extends State<StartIGCButton>
   Future<void> _onTap() async {
     switch (assistanceState) {
       case AssistanceState.noSub:
-        await PaywallCard.show(context, widget.controller);
+        await PaywallCard.show(
+          context,
+          widget.controller.choreographer.inputTransformTargetKey,
+        );
         return;
       case AssistanceState.noMessage:
         showDialog(
@@ -92,8 +101,16 @@ class StartIGCButtonState extends State<StartIGCButton>
         if (widget.controller.shouldShowLanguageMismatchPopup) {
           widget.controller.showLanguageMismatchPopup();
         } else {
-          await widget.controller.choreographer.getLanguageHelp(manual: true);
-          _showFirstMatch();
+          final igcMatch =
+              await widget.controller.choreographer.requestLanguageAssistance();
+
+          if (igcMatch != null) {
+            OverlayUtil.showIGCMatch(
+              igcMatch,
+              widget.controller.choreographer,
+              context,
+            );
+          }
         }
         return;
       case AssistanceState.fetched:
@@ -120,66 +137,70 @@ class StartIGCButtonState extends State<StartIGCButton>
 
   @override
   Widget build(BuildContext context) {
-    final icon = Icon(
-      size: 36,
-      Icons.autorenew_rounded,
-      color: assistanceState.stateColor(context),
-    );
-
-    return Tooltip(
-      message: _enableFeedback ? L10n.of(context).check : "",
-      child: Material(
-        elevation: _enableFeedback ? 4.0 : 0.0,
-        borderRadius: BorderRadius.circular(99.0),
-        shadowColor: Theme.of(context).colorScheme.surface.withAlpha(128),
-        child: InkWell(
-          enableFeedback: _enableFeedback,
-          onTap: _enableFeedback ? _onTap : null,
-          customBorder: const CircleBorder(),
-          onLongPress: _enableFeedback
-              ? () => showDialog(
-                    context: context,
-                    builder: (c) => const SettingsLearning(),
-                    barrierDismissible: false,
-                  )
-              : null,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              AnimatedContainer(
-                height: 40.0,
-                width: 40.0,
-                duration: FluffyThemes.animationDuration,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _backgroundColor,
-                ),
+    return ValueListenableBuilder(
+      valueListenable: widget.controller.choreographer.textController,
+      builder: (context, _, __) {
+        final icon = Icon(
+          size: 36,
+          Icons.autorenew_rounded,
+          color: assistanceState.stateColor(context),
+        );
+        return Tooltip(
+          message: _enableFeedback ? L10n.of(context).check : "",
+          child: Material(
+            elevation: _enableFeedback ? 4.0 : 0.0,
+            borderRadius: BorderRadius.circular(99.0),
+            shadowColor: Theme.of(context).colorScheme.surface.withAlpha(128),
+            child: InkWell(
+              enableFeedback: _enableFeedback,
+              onTap: _enableFeedback ? _onTap : null,
+              customBorder: const CircleBorder(),
+              onLongPress: _enableFeedback
+                  ? () => showDialog(
+                        context: context,
+                        builder: (c) => const SettingsLearning(),
+                        barrierDismissible: false,
+                      )
+                  : null,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  AnimatedContainer(
+                    height: 40.0,
+                    width: 40.0,
+                    duration: FluffyThemes.animationDuration,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _backgroundColor,
+                    ),
+                  ),
+                  _controller != null
+                      ? RotationTransition(
+                          turns: Tween(begin: 0.0, end: math.pi * 2)
+                              .animate(_controller!),
+                          child: icon,
+                        )
+                      : icon,
+                  AnimatedContainer(
+                    width: 20,
+                    height: 20,
+                    duration: FluffyThemes.animationDuration,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: _backgroundColor,
+                    ),
+                  ),
+                  Icon(
+                    size: 16,
+                    Icons.check,
+                    color: assistanceState.stateColor(context),
+                  ),
+                ],
               ),
-              _controller != null
-                  ? RotationTransition(
-                      turns: Tween(begin: 0.0, end: math.pi * 2)
-                          .animate(_controller!),
-                      child: icon,
-                    )
-                  : icon,
-              AnimatedContainer(
-                width: 20,
-                height: 20,
-                duration: FluffyThemes.animationDuration,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: _backgroundColor,
-                ),
-              ),
-              Icon(
-                size: 16,
-                Icons.check,
-                color: assistanceState.stateColor(context),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

@@ -278,11 +278,7 @@ class ChatInputRow extends StatelessWidget {
                         AppConfig.sendOnEnter == true && PlatformInfos.isMobile
                             ? TextInputAction.send
                             : null,
-                    // #Pangea
-                    // onSubmitted: controller.onInputBarSubmitted,
-                    onSubmitted: (_) =>
-                        controller.onInputBarSubmitted(_, context),
-                    // Pangea#
+                    onSubmitted: controller.onInputBarSubmitted,
                     onSubmitImage: controller.sendImageFromClipBoard,
                     focusNode: controller.inputFocus,
                     controller: controller.sendController,

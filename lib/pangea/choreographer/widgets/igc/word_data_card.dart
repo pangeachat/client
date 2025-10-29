@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart';
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -18,23 +17,19 @@ import 'package:fluffychat/widgets/matrix.dart';
 import 'card_error_widget.dart';
 
 class WordDataCard extends StatefulWidget {
-  final bool hasInfo;
   final String word;
   final String fullText;
   final String? choiceFeedback;
   final String wordLang;
   final String fullTextLang;
-  final Room room;
 
   const WordDataCard({
     super.key,
     required this.word,
-    required this.wordLang,
-    required this.hasInfo,
     required this.fullText,
-    required this.fullTextLang,
-    required this.room,
     this.choiceFeedback,
+    required this.wordLang,
+    required this.fullTextLang,
   });
 
   @override

@@ -1,14 +1,15 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
 import 'package:matrix/matrix.dart' hide Result;
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
+import 'package:fluffychat/pangea/choreographer/enums/choreo_mode.dart';
+import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/models/igc_text_data_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
@@ -16,37 +17,103 @@ import 'package:fluffychat/pangea/choreographer/repo/igc_repo.dart';
 import 'package:fluffychat/pangea/choreographer/repo/igc_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/repo/span_data_repo.dart';
 import 'package:fluffychat/pangea/choreographer/repo/span_data_request.dart';
-import 'package:fluffychat/pangea/choreographer/widgets/igc/span_card.dart';
 import 'package:fluffychat/pangea/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
-import '../../common/utils/overlay.dart';
 
 class IgcController {
-  Choreographer choreographer;
-  IGCTextData? igcTextData;
+  final Choreographer _choreographer;
+  IGCTextData? _igcTextData;
 
-  IgcController(this.choreographer);
+  IgcController(this._choreographer);
+
+  String? get currentText => _igcTextData?.currentText;
+  bool get hasOpenMatches => _igcTextData?.hasOpenMatches == true;
+  bool get hasOpenITMatches => _igcTextData?.hasOpenITMatches == true;
+  bool get hasOpenIGCMatches => _igcTextData?.hasOpenIGCMatches == true;
+
+  PangeaMatchState? get openMatch => _igcTextData?.openMatch;
+  PangeaMatchState? get firstOpenMatch => _igcTextData?.firstOpenMatch;
+  List<PangeaMatchState>? get openMatches => _igcTextData?.openMatches;
+  List<PangeaMatchState>? get closedMatches => _igcTextData?.closedMatches;
+  List<PangeaMatchState>? get openNormalizationMatches =>
+      _igcTextData?.openNormalizationMatches;
+
+  bool get canShowFirstMatch => _igcTextData?.firstOpenMatch != null;
+  bool get hasIGCTextData {
+    if (_igcTextData == null) return false;
+    return _igcTextData!.currentText == _choreographer.currentText;
+  }
+
+  void clear() {
+    _igcTextData = null;
+    MatrixState.pAnyState.closeAllOverlays();
+  }
+
+  void clearMatches() => _igcTextData?.clearMatches();
+
+  PangeaMatchState? onShowFirstMatch() {
+    if (!canShowFirstMatch) {
+      throw "should not be calling showFirstMatch with this igcTextData.";
+    }
+
+    final match = _igcTextData!.firstOpenMatch!;
+    if (match.updatedMatch.isITStart && _igcTextData != null) {
+      _choreographer.openIT(match);
+      return null;
+    }
+
+    _choreographer.chatController.inputFocus.unfocus();
+    return match;
+  }
+
+  PangeaMatchState? getMatchByOffset(int offset) =>
+      _igcTextData?.getMatchByOffset(offset);
+
+  PangeaMatch acceptReplacement(
+    PangeaMatchState match,
+    PangeaMatchStatus status,
+  ) {
+    if (_igcTextData == null) {
+      throw "acceptReplacement called with null igcTextData";
+    }
+    return _igcTextData!.acceptReplacement(match, status);
+  }
+
+  PangeaMatch ignoreReplacement(PangeaMatchState match) {
+    IgcRepo.ignore(match.updatedMatch);
+    if (_igcTextData == null) {
+      throw "should not be in onIgnoreMatch with null igcTextData";
+    }
+    return _igcTextData!.ignoreReplacement(match);
+  }
+
+  void undoReplacement(PangeaMatchState match) {
+    if (_igcTextData == null) {
+      throw "undoReplacement called with null igcTextData";
+    }
+    _igcTextData!.undoReplacement(match);
+  }
 
   Future<void> getIGCTextData() async {
-    if (choreographer.currentText.isEmpty) return clear();
-    debugPrint('getIGCTextData called with ${choreographer.currentText}');
+    if (_choreographer.currentText.isEmpty) return clear();
+    debugPrint('getIGCTextData called with ${_choreographer.currentText}');
 
     final IGCRequestModel reqBody = IGCRequestModel(
-      fullText: choreographer.currentText,
-      userId: choreographer.pangeaController.userController.userId!,
-      userL1: choreographer.l1LangCode!,
-      userL2: choreographer.l2LangCode!,
-      enableIGC:
-          choreographer.igcEnabled && choreographer.choreoMode != ChoreoMode.it,
-      enableIT:
-          choreographer.itEnabled && choreographer.choreoMode != ChoreoMode.it,
+      fullText: _choreographer.currentText,
+      userId: _choreographer.pangeaController.userController.userId!,
+      userL1: _choreographer.l1LangCode!,
+      userL2: _choreographer.l2LangCode!,
+      enableIGC: _choreographer.igcEnabled &&
+          _choreographer.choreoMode != ChoreoMode.it,
+      enableIT: _choreographer.itEnabled &&
+          _choreographer.choreoMode != ChoreoMode.it,
       prevMessages: _prevMessages(),
     );
 
     final res = await IgcRepo.get(
-      choreographer.accessToken,
+      _choreographer.pangeaController.userController.accessToken,
       reqBody,
     ).timeout(
       (const Duration(seconds: 10)),
@@ -58,78 +125,80 @@ class IgcController {
     );
 
     if (res.isError) {
-      choreographer.errorService.setError(ChoreoError(raw: res.error));
-      clear();
-      return;
-    }
-
-    // this will happen when the user changes the input while igc is fetching results
-    if (res.result!.originalInput.trim() != choreographer.currentText.trim()) {
-      return;
-    }
-
-    final response = res.result!;
-    igcTextData = IGCTextData(
-      originalInput: response.originalInput,
-      matches: response.matches,
-    );
-    choreographer.acceptNormalizationMatches();
-
-    for (final match in igcTextData!.openMatches) {
-      setSpanDetails(match: match);
-    }
-  }
-
-  void onIgnoreMatch(PangeaMatch match) {
-    IgcRepo.ignore(match);
-  }
-
-  bool get canShowFirstMatch {
-    return igcTextData?.firstOpenMatch != null;
-  }
-
-  void showFirstMatch(BuildContext context) {
-    if (!canShowFirstMatch) {
-      debugger(when: kDebugMode);
-      ErrorHandler.logError(
-        m: "should not be calling showFirstMatch with this igcTextData.",
-        s: StackTrace.current,
-        data: {
-          "igcTextData": igcTextData?.toJson(),
-        },
+      _igcTextData = IGCTextData(
+        originalInput: reqBody.fullText,
+        matches: [],
       );
       return;
     }
 
-    final match = igcTextData!.firstOpenMatch!;
-    if (match.updatedMatch.isITStart && igcTextData != null) {
-      choreographer.onITStart(match);
+    // this will happen when the user changes the input while igc is fetching results
+    if (res.result!.originalInput.trim() != _choreographer.currentText.trim()) {
       return;
     }
 
-    choreographer.chatController.inputFocus.unfocus();
-    MatrixState.pAnyState.closeAllOverlays();
-    OverlayUtil.showPositionedCard(
-      overlayKey:
-          "span_card_overlay_${match.updatedMatch.match.offset}_${match.updatedMatch.match.length}",
-      context: context,
-      cardToShow: SpanCard(
-        match: match,
-        choreographer: choreographer,
-      ),
-      maxHeight: 325,
-      maxWidth: 325,
-      transformTargetId: choreographer.inputTransformTargetKey,
-      onDismiss: () => choreographer.setState(),
-      ignorePointer: true,
-      isScrollable: false,
+    final response = res.result!;
+    _igcTextData = IGCTextData(
+      originalInput: response.originalInput,
+      matches: response.matches,
     );
+
+    try {
+      _choreographer.acceptNormalizationMatches();
+      if (_igcTextData != null) {
+        for (final match in _igcTextData!.openMatches) {
+          fetchSpanDetails(match: match);
+        }
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        level: SentryLevel.warning,
+        data: {
+          "igcResponse": response.toJson(),
+        },
+      );
+    }
   }
 
-  /// Get the content of previous text and audio messages in chat.
-  /// Passed to IGC request to add context.
+  Future<void> fetchSpanDetails({
+    required PangeaMatchState match,
+    bool force = false,
+  }) async {
+    final span = match.updatedMatch.match;
+    if (span.isNormalizationError() && !force) {
+      return;
+    }
+
+    final response = await SpanDataRepo.get(
+      _choreographer.pangeaController.userController.accessToken,
+      request: SpanDetailsRequest(
+        userL1: _choreographer.l1LangCode!,
+        userL2: _choreographer.l2LangCode!,
+        enableIGC: _choreographer.igcEnabled,
+        enableIT: _choreographer.itEnabled,
+        span: span,
+      ),
+    ).timeout(
+      (const Duration(seconds: 10)),
+      onTimeout: () {
+        return Result.error(
+          TimeoutException('Span details request timed out'),
+        );
+      },
+    );
+
+    if (response.isError) {
+      _choreographer.clearMatches(response.error!);
+      return;
+    }
+
+    _igcTextData?.setSpanData(match, response.result!.span);
+  }
+
   List<PreviousMessage> _prevMessages({int numMessages = 5}) {
-    final List<Event> events = choreographer.chatController.visibleEvents
+    final List<Event> events = _choreographer.chatController.visibleEvents
         .where(
           (e) =>
               e.type == EventTypes.Message &&
@@ -144,9 +213,9 @@ class IgcController {
           ? event.content.toString()
           : PangeaMessageEvent(
               event: event,
-              timeline: choreographer.chatController.timeline!,
+              timeline: _choreographer.chatController.timeline!,
               ownMessage: event.senderId ==
-                  choreographer.pangeaController.matrixState.client.userID,
+                  _choreographer.pangeaController.matrixState.client.userID,
             ).getSpeechToTextLocal()?.transcript.text.trim(); // trim whitespace
       if (content == null) continue;
       messages.add(
@@ -161,52 +230,5 @@ class IgcController {
       }
     }
     return messages;
-  }
-
-  bool get hasRelevantIGCTextData {
-    if (igcTextData == null) return false;
-
-    if (igcTextData!.currentText != choreographer.currentText) {
-      debugPrint(
-        "returning isIGCTextDataRelevant false because text has changed",
-      );
-      return false;
-    }
-    return true;
-  }
-
-  clear() {
-    igcTextData = null;
-    MatrixState.pAnyState.closeAllOverlays();
-  }
-
-  Future<void> setSpanDetails({
-    required PangeaMatchState match,
-    bool force = false,
-  }) async {
-    final span = match.updatedMatch.match;
-    if (span.isNormalizationError() && !force) {
-      return;
-    }
-
-    final response = await SpanDataRepo.get(
-      choreographer.accessToken,
-      request: SpanDetailsRequest(
-        userL1: choreographer.l1LangCode!,
-        userL2: choreographer.l2LangCode!,
-        enableIGC: choreographer.igcEnabled,
-        enableIT: choreographer.itEnabled,
-        span: span,
-      ),
-    );
-
-    if (response.isError) {
-      choreographer.errorService.setError(ChoreoError(raw: response.error));
-      clear();
-      return;
-    }
-
-    igcTextData?.setSpanData(match, response.result!.span);
-    choreographer.setState();
   }
 }

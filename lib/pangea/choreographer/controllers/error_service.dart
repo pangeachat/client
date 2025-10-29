@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import '../../common/utils/error_handler.dart';
 
 class ChoreoError {
@@ -16,17 +15,14 @@ class ChoreoError {
   IconData get icon => Icons.error_outline;
 }
 
-class ErrorService {
+class ErrorService extends ChangeNotifier {
   ChoreoError? _error;
   int coolDownSeconds = 0;
-  final Choreographer controller;
 
-  ErrorService(this.controller);
+  ErrorService();
 
   bool get isError => _error != null;
-
   ChoreoError? get error => _error;
-
   Duration get defaultCooldown {
     coolDownSeconds += 3;
     return Duration(seconds: coolDownSeconds);
@@ -34,7 +30,7 @@ class ErrorService {
 
   final List<String> _errorCache = [];
 
-  setError(ChoreoError? error, {Duration? duration}) {
+  void setError(ChoreoError? error) {
     if (_errorCache.contains(error?.raw.toString())) {
       return;
     }
@@ -44,25 +40,21 @@ class ErrorService {
     }
 
     _error = error;
-    Future.delayed(duration ?? defaultCooldown, () {
+    Future.delayed(defaultCooldown, () {
       clear();
-      _setState();
+      notifyListeners();
     });
-    _setState();
+    notifyListeners();
   }
 
-  setErrorAndLock(ChoreoError? error) {
+  void setErrorAndLock(ChoreoError? error) {
     _error = error;
-    _setState();
+    notifyListeners();
   }
 
-  resetError() {
+  void resetError() {
     clear();
-    _setState();
-  }
-
-  void _setState() {
-    controller.setState();
+    notifyListeners();
   }
 
   void clear() {

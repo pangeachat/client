@@ -88,6 +88,11 @@ class IGCTextState {
     );
   }
 
+  void clearMatches() {
+    _openMatches.clear();
+    _closedMatches.clear();
+  }
+
   void _filterIgnoredMatches() {
     for (final match in _openMatches) {
       if (IgcRepo.isIgnored(match.updatedMatch)) {
@@ -110,12 +115,13 @@ class IGCTextState {
     PangeaMatchState match,
     PangeaMatchStatus status,
   ) {
-    final openMatch = _openMatches.firstWhereOrNull(
+    final openMatch = _openMatches.firstWhere(
       (m) => m.originalMatch == match.originalMatch,
+      orElse: () => throw "No open match found for acceptReplacement",
     );
 
     if (match.updatedMatch.match.selectedChoice == null) {
-      throw "match.match.selectedChoice is null in acceptReplacement";
+      throw "acceptReplacement called with null selectedChoice";
     }
 
     match.setStatus(status);
@@ -132,8 +138,9 @@ class IGCTextState {
   }
 
   PangeaMatch ignoreReplacement(PangeaMatchState match) {
-    final openMatch = _openMatches.firstWhereOrNull(
+    final openMatch = _openMatches.firstWhere(
       (m) => m.originalMatch == match.originalMatch,
+      orElse: () => throw "No open match found for ignoreReplacement",
     );
 
     match.setStatus(PangeaMatchStatus.ignored);
@@ -143,8 +150,9 @@ class IGCTextState {
   }
 
   void undoReplacement(PangeaMatchState match) {
-    final closedMatch = _closedMatches.firstWhereOrNull(
+    final closedMatch = _closedMatches.firstWhere(
       (m) => m.originalMatch == match.originalMatch,
+      orElse: () => throw "No closed match found for undoReplacement",
     );
 
     _closedMatches.remove(closedMatch);

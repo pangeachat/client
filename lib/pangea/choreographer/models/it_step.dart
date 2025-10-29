@@ -3,48 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import '../constants/choreo_constants.dart';
 
-class ITStep {
+class CompletedITStep {
   final List<Continuance> continuances;
-  final int? chosen;
-  final String? customInput;
-  final bool showAlternativeTranslationOption = false;
+  final int chosen;
 
-  ITStep(
+  const CompletedITStep(
     this.continuances, {
-    this.chosen,
-    this.customInput,
-  }) {
-    if (chosen == null && customInput == null) {
-      throw Exception("ITStep must have either chosen or customInput");
-    }
-    if (chosen != null && customInput != null) {
-      throw Exception("ITStep must have only chosen or customInput");
-    }
-  }
+    required this.chosen,
+  });
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['continuances'] = continuances.map((e) => e.toJson(true)).toList();
     data['chosen'] = chosen;
-    data['custom_input'] = customInput;
     return data;
   }
 
-  factory ITStep.fromJson(Map<String, dynamic> json) {
+  factory CompletedITStep.fromJson(Map<String, dynamic> json) {
     final List<Continuance> continuances = <Continuance>[];
     for (final Map<String, dynamic> continuance in json['continuances']) {
       continuances.add(Continuance.fromJson(continuance));
     }
-    return ITStep(
+    return CompletedITStep(
       continuances,
       chosen: json['chosen'],
-      customInput: json['custom_input'],
     );
   }
 
   Continuance? get chosenContinuance {
-    if (chosen == null) return null;
-    return continuances[chosen!];
+    return continuances[chosen];
   }
 }
 

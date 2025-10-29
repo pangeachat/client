@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
 import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/card_header.dart';
@@ -10,15 +9,13 @@ import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PaywallCard extends StatelessWidget {
-  final ChatController chatController;
   const PaywallCard({
     super.key,
-    required this.chatController,
   });
 
   static Future<void> show(
     BuildContext context,
-    ChatController chatController,
+    String targetId,
   ) async {
     if (!MatrixState
         .pangeaController.subscriptionController.shouldShowPaywall) {
@@ -28,12 +25,10 @@ class PaywallCard extends StatelessWidget {
     await SubscriptionManagementRepo.setDismissedPaywall();
     OverlayUtil.showPositionedCard(
       context: context,
-      cardToShow: PaywallCard(
-        chatController: chatController,
-      ),
+      cardToShow: const PaywallCard(),
       maxHeight: 325,
       maxWidth: 325,
-      transformTargetId: chatController.choreographer.inputTransformTargetKey,
+      transformTargetId: targetId,
     );
   }
 
@@ -91,7 +86,6 @@ class PaywallCard extends StatelessWidget {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () {
-                    chatController.clearSelectedEvents();
                     MatrixState.pangeaController.subscriptionController
                         .showPaywall(context);
                   },
