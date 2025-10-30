@@ -5308,13 +5308,13 @@
   "highlightVocabTooltip": "Highlight target vocab words below by sending them or practicing with them in the chat",
   "activityAnalyticsTooltipBody": "These are your saved activities for review and practice.",
   "numSavedActivities": "Number of saved activities",
-  "saveActivityTitle": "Save activity",
-  "saveActivityDesc": "Good job! Save this activity for later review and practice",
+  "saveActivityDesc": "Good job! This activity has been saved for later review and practice.",
   "levelInfoTooltip": "Here you can see all the points you’ve earned and how!",
   "alreadyInCourseWithID": "You are already in a course with this plan. Do you want to create a course with the same plan, or go to the existing course?",
   "goToExistingCourse": "Go to existing course",
   "emojiView": "Emoji view",
   "feedbackDialogDesc": "I make mistakes too! Anything to help me improve?",
   "getStartedFriendsButton": "Invite a friend",
-  "contactHasBeenInvitedToTheCourse": "Contact has been invited to the course"
+  "contactHasBeenInvitedToTheCourse": "Contact has been invited to the course",
+  "nextActivityTitle": "Next Activity"
 }
