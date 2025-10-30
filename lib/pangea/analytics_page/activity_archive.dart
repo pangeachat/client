@@ -38,10 +38,6 @@ class ActivityArchive extends StatelessWidget {
             );
           }
           i--;
-          //handles when an activity is removed (deleted or banned) while activity page is open
-          if (i >= archive.length) {
-            return const SizedBox.shrink();
-          }
           return AnalyticsActivityItem(
             room: archive[i],
             selected: archive[i].id == selectedRoomId,
