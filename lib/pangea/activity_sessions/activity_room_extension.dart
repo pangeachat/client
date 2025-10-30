@@ -288,6 +288,10 @@ extension ActivityRoomExtension on Room {
       );
 
       ActivitySummaryRepo.delete(id, activityPlan!);
+
+      if (activitySummary?.summary != null && !hasArchivedActivity) {
+        await archiveActivity();
+      }
     } catch (e, s) {
       if (e is! UnsubscribedException) {
         ErrorHandler.logError(
@@ -310,6 +314,11 @@ extension ActivityRoomExtension on Room {
         );
       }
     }
+  }
+
+  Future<void> archiveToAnalytics() async {
+    await archiveActivity();
+    await MatrixState.pangeaController.putAnalytics.sendActivityAnalytics(id);
   }
 
   Future<ActivitySummaryAnalyticsModel> getActivityAnalytics() async {

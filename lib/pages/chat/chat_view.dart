@@ -517,8 +517,12 @@ class ChatView extends StatelessWidget {
                             controller.hasRainedConfetti == false)
                           StarRainWidget(
                             showBlast: true,
-                            onFinished: () =>
-                                controller.setHasRainedConfetti(true),
+                            onFinished: () {
+                              controller.setHasRainedConfetti(true);
+                              if (!controller.room.hasArchivedActivity) {
+                                controller.room.archiveToAnalytics();
+                              }
+                            },
                           ),
                         // Pangea#
                       ],
