@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - production
+      - activity-hot-fix
 
 concurrency:
   group: release_workflow
