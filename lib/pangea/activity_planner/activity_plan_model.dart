@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
-
 import 'package:fluffychat/pangea/activity_planner/activity_plan_request.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:flutter/foundation.dart';
 
 class ActivityPlanModel {
   final String activityId;
@@ -17,6 +16,7 @@ class ActivityPlanModel {
   final DateTime? endAt;
   final Duration? duration;
   final Map<String, ActivityRole>? _roles;
+  final bool? _hadbookmarkId;
 
   ActivityPlanModel({
     required this.req,
@@ -32,11 +32,13 @@ class ActivityPlanModel {
     String? imageURL,
     this.endAt,
     this.duration,
+    bool? hadbookmarkId,
   })  : description = (description == null || description.isEmpty)
             ? learningObjective
             : description,
         _roles = roles,
-        _imageURL = imageURL;
+        _imageURL = imageURL,
+        _hadbookmarkId = hadbookmarkId;
 
   String? get imageURL =>
       _imageURL != null ? "${Environment.cmsApi}$_imageURL" : null;
@@ -96,6 +98,7 @@ class ActivityPlanModel {
           : null,
       roles: roles,
       activityId: activityId,
+      hadbookmarkId: json["bookmark_id"] != null,
     );
   }
 
@@ -120,6 +123,8 @@ class ActivityPlanModel {
       ),
     };
   }
+
+  bool get hadBookmarkId => _hadbookmarkId ?? false;
 
   String get vocabString {
     final List<String> vocabList = [];
