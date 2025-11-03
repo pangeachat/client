@@ -2495,7 +2495,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Zimb\xe1bue";
     },
     get$pay() {
-      return "Pagar";
+      return "Finalizar compra";
     },
     invitedToSpace$2(space, user) {
       return user + string$.x20convi + space + "! Deseja aceitar?";
@@ -7042,7 +7042,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Zimb\xe1bue";
     },
     get$pay() {
-      return "Pagar";
+      return "Finalizar compra";
     },
     invitedToSpace$2(space, user) {
       return user + string$.x20convi + space + "! Deseja aceitar?";
@@ -11556,7 +11556,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Zimbabwe";
     },
     get$pay() {
-      return "Pagar";
+      return "Finalizar compra";
     },
     invitedToSpace$2(space, user) {
       return user + " convidou-o a participar num curso: " + space + "! Deseja aceitar?";
@@ -13774,7 +13774,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["h/KmyIvv3VVR1JjRFBQFknglxUU="] = d.current;
+  d["PualVddcm9muBo9VGIwuZAa6SMw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map

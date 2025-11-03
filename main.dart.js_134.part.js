@@ -2484,7 +2484,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0417\u0456\u043c\u0431\u0430\u0431\u0432\u044d";
     },
     get$pay() {
-      return "\u0410\u043f\u043b\u0430\u0446\u0456\u0446\u044c";
+      return "Checkout";
     },
     invitedToSpace$2(space, user) {
       return user + " \u0437\u0430\u043f\u0440\u0430\u0441\u0456\u045e \u0432\u0430\u0441 \u0434\u0430\u043b\u0443\u0447\u044b\u0446\u0446\u0430 \u0434\u0430 \u043a\u0443\u0440\u0441\u0430: " + space + "! \u0426\u0456 \u0436\u0430\u0434\u0430\u0435\u0446\u0435 \u043f\u0440\u044b\u043d\u044f\u0446\u044c \u0437\u0430\u043f\u0440\u0430\u0448\u044d\u043d\u043d\u0435?";
@@ -4575,7 +4575,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["UtAhmyyLWvdMLhV+5mrKQcs3jTQ="] = d.current;
+  d["oxruLy3TOszeOIXkuPObsM8Ajl8="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_134.part.js.map
