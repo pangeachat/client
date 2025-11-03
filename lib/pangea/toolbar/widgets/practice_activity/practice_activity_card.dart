@@ -296,10 +296,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   Widget build(BuildContext context) {
     if (_error != null || (!fetchingActivity && currentActivity == null)) {
       debugger(when: kDebugMode);
-      return CardErrorWidget(
-        error: L10n.of(context).errorFetchingActivity,
-        maxWidth: 500,
-      );
+      return CardErrorWidget(L10n.of(context).errorFetchingActivity);
     }
 
     return Column(

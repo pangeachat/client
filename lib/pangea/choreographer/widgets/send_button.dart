@@ -26,12 +26,17 @@ class ChoreographerSendButton extends StatelessWidget {
         controller.choreographer.inputTransformTargetKey,
       );
     } on OpenMatchesException {
-      if (controller.choreographer.firstIGCMatch != null) {
-        OverlayUtil.showIGCMatch(
-          controller.choreographer.firstIGCMatch!,
-          controller.choreographer,
-          context,
-        );
+      if (controller.choreographer.firstOpenMatch != null) {
+        if (controller.choreographer.firstOpenMatch!.updatedMatch.isITStart) {
+          controller.choreographer
+              .openIT(controller.choreographer.firstOpenMatch!);
+        } else {
+          OverlayUtil.showIGCMatch(
+            controller.choreographer.firstOpenMatch!,
+            controller.choreographer,
+            context,
+          );
+        }
       }
     }
   }
@@ -39,25 +44,23 @@ class ChoreographerSendButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
-      listenable: controller.choreographer,
+      listenable: Listenable.merge([
+        controller.choreographer.textController,
+        controller.choreographer.isFetching,
+      ]),
       builder: (context, _) {
-        return ValueListenableBuilder(
-          valueListenable: controller.choreographer.textController,
-          builder: (context, _, __) {
-            return Container(
-              height: 56,
-              alignment: Alignment.center,
-              child: IconButton(
-                icon: const Icon(Icons.send_outlined),
-                color: controller.choreographer.assistanceState
-                    .stateColor(context),
-                onPressed: controller.choreographer.isFetching
-                    ? null
-                    : () => _onPressed(context),
-                tooltip: L10n.of(context).send,
-              ),
-            );
-          },
+        return Container(
+          height: 56,
+          alignment: Alignment.center,
+          child: IconButton(
+            icon: const Icon(Icons.send_outlined),
+            color: controller.choreographer.assistanceState
+                .sendButtonColor(context),
+            onPressed: controller.choreographer.isFetching.value
+                ? null
+                : () => _onPressed(context),
+            tooltip: L10n.of(context).send,
+          ),
         );
       },
     );

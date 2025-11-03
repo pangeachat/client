@@ -4,7 +4,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/instructions/instructions_inline_tooltip.dart';
 
 class ActivityRoleTooltip extends StatelessWidget {
@@ -24,7 +23,7 @@ class ActivityRoleTooltip extends StatelessWidget {
       builder: (context, _) {
         if (!room.showActivityChatUI ||
             room.ownRole?.goal == null ||
-            choreographer.isITOpen) {
+            choreographer.itController.open.value) {
           return const SizedBox();
         }
 

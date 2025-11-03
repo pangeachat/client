@@ -2,27 +2,24 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'package:http/http.dart';
+import 'package:async/async.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/text_loading_shimmer.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
-import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_response_model.dart';
+import 'package:fluffychat/pangea/common/utils/feedback_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
-import '../../common/controllers/pangea_controller.dart';
 import 'igc/card_error_widget.dart';
 
 class ITFeedbackCard extends StatefulWidget {
   final FullTextTranslationRequestModel req;
-  final String choiceFeedback;
 
-  const ITFeedbackCard({
+  const ITFeedbackCard(
+    this.req, {
     super.key,
-    required this.req,
-    required this.choiceFeedback,
   });
 
   @override
@@ -30,92 +27,84 @@ class ITFeedbackCard extends StatefulWidget {
 }
 
 class ITFeedbackCardController extends State<ITFeedbackCard> {
-  final PangeaController controller = MatrixState.pangeaController;
-
-  Object? error;
-  bool isLoadingFeedback = false;
-  bool isTranslating = false;
-  FullTextTranslationResponseModel? res;
-  String? translatedFeedback;
-
-  Response get noLanguages => Response("", 405);
+  final FeedbackModel<String> _feedbackModel = FeedbackModel<String>();
 
   @override
   void initState() {
-    if (!mounted) return;
-    //any setup?
     super.initState();
-    getFeedback();
+    _getFeedback();
   }
 
-  Future<void> getFeedback() async {
-    setState(() {
-      isLoadingFeedback = true;
-    });
+  @override
+  void dispose() {
+    _feedbackModel.dispose();
+    super.dispose();
+  }
 
+  Future<void> _getFeedback() async {
+    _feedbackModel.setState(FeedbackLoading());
     final result = await FullTextTranslationRepo.get(
-      controller.userController.accessToken,
+      MatrixState.pangeaController.userController.accessToken,
       widget.req,
+    ).timeout(
+      const Duration(seconds: 10),
+      onTimeout: () {
+        return Result.error("Timeout getting translation");
+      },
     );
-    res = result.result;
 
-    if (result.isError) error = result.error;
-    if (mounted) {
-      setState(() {
-        isLoadingFeedback = false;
-      });
+    if (!mounted) return;
+    if (result.isError) {
+      _feedbackModel.setState(
+        FeedbackError<String>(result.error.toString()),
+      );
+    } else {
+      _feedbackModel.setState(
+        FeedbackLoaded<String>(result.result!.bestTranslation),
+      );
     }
   }
 
   @override
-  Widget build(BuildContext context) => error == null
-      ? ITFeedbackCardView(controller: this)
-      : CardErrorWidget(
-          error: L10n.of(context).errorFetchingDefinition,
-        );
-}
-
-class ITFeedbackCardView extends StatelessWidget {
-  const ITFeedbackCardView({
-    super.key,
-    required this.controller,
-  });
-
-  final ITFeedbackCardController controller;
-
-  @override
   Widget build(BuildContext context) {
-    const characterWidth = 10.0;
+    return ListenableBuilder(
+      listenable: _feedbackModel,
+      builder: (context, _) {
+        final state = _feedbackModel.state;
+        if (state is FeedbackError) {
+          return CardErrorWidget(L10n.of(context).errorFetchingDefinition);
+        }
 
-    return Container(
-      constraints: const BoxConstraints(maxWidth: 300),
-      alignment: Alignment.center,
-      child: Wrap(
-        alignment: WrapAlignment.center,
-        children: [
-          Text(
-            controller.widget.req.text,
-            style: BotStyle.text(context),
+        return Container(
+          constraints: const BoxConstraints(maxWidth: 300),
+          alignment: Alignment.center,
+          child: Wrap(
+            spacing: 10,
+            alignment: WrapAlignment.center,
+            children: [
+              Text(
+                widget.req.text,
+                style: BotStyle.text(context),
+              ),
+              Text(
+                "≈",
+                style: BotStyle.text(context),
+              ),
+              _feedbackModel.state is FeedbackLoaded
+                  ? Text(
+                      (state as FeedbackLoaded<String>).value,
+                      style: BotStyle.text(context),
+                    )
+                  : TextLoadingShimmer(
+                      width: min(
+                        140,
+                        10.0 * widget.req.text.length,
+                      ),
+                    ),
+            ],
           ),
-          const SizedBox(width: 10),
-          Text(
-            "≈",
-            style: BotStyle.text(context),
-          ),
-          const SizedBox(width: 10),
-          controller.res?.bestTranslation != null
-              ? Text(
-                  controller.res!.bestTranslation,
-                  style: BotStyle.text(context),
-                )
-              : TextLoadingShimmer(
-                  width: min(
-                    140,
-                    characterWidth * controller.widget.req.text.length,
-                  ),
-                ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

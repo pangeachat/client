@@ -22,10 +22,6 @@ class ToolbarButton extends StatelessWidget {
         overlayController,
       );
 
-  bool get enabled => mode == MessageMode.messageTranslation
-      ? overlayController.isTranslationUnlocked
-      : true;
-
   @override
   Widget build(BuildContext context) {
     return Tooltip(

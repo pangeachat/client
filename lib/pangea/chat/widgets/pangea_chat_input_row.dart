@@ -7,7 +7,6 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pages/chat/chat.dart';
 import 'package:fluffychat/pages/chat/input_bar.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/send_button.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/start_igc_button.dart';
@@ -29,7 +28,7 @@ class PangeaChatInputRow extends StatelessWidget {
       controller.pangeaController.languageController.activeL2Model();
 
   String hintText(BuildContext context) {
-    if (controller.choreographer.isITOpen) {
+    if (controller.choreographer.itController.open.value) {
       return L10n.of(context).buildTranslation;
     }
     return activel1 != null &&
@@ -227,7 +226,7 @@ class PangeaChatInputRow extends StatelessWidget {
                       alignment: Alignment.center,
                       child: PlatformInfos.platformCanRecord &&
                               controller.sendController.text.isEmpty &&
-                              !controller.choreographer.isITOpen
+                              !controller.choreographer.itController.open.value
                           ? FloatingActionButton.small(
                               tooltip: L10n.of(context).voiceMessage,
                               onPressed: controller.voiceMessageAction,

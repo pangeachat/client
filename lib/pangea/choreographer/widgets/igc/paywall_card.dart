@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/bot/utils/bot_style.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/card_header.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
 import 'package:fluffychat/pangea/subscription/repo/subscription_management_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class PaywallCard extends StatelessWidget {
-  const PaywallCard({
-    super.key,
-  });
+  const PaywallCard({super.key});
 
   static Future<void> show(
     BuildContext context,
@@ -34,71 +31,33 @@ class PaywallCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool inTrialWindow =
-        MatrixState.pangeaController.userController.inTrialWindow();
-
     return Column(
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: 12.0,
       children: [
-        CardHeader(
-          text: L10n.of(context).clickMessageTitle,
-          botExpression: BotExpression.addled,
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                L10n.of(context).subscribedToUnlockTools,
-                style: BotStyle.text(context),
-                textAlign: TextAlign.center,
-              ),
-              // if (inTrialWindow)
-              //   Text(
-              //     L10n.of(context).noPaymentInfo,
-              //     style: BotStyle.text(context),
-              //     textAlign: TextAlign.center,
-              //   ),
-              if (inTrialWindow) ...[
-                const SizedBox(height: 10),
-                SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {
-                      MatrixState.pangeaController.subscriptionController
-                          .activateNewUserTrial();
-                      MatrixState.pAnyState.closeOverlay();
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all<Color>(
-                        (Theme.of(context).colorScheme.primary).withAlpha(25),
-                      ),
-                    ),
-                    child: Text(L10n.of(context).activateTrial),
-                  ),
+        CardHeader(L10n.of(context).clickMessageTitle),
+        Column(
+          spacing: 12.0,
+          children: [
+            Text(
+              L10n.of(context).subscribedToUnlockTools,
+              style: BotStyle.text(context),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton(
+                onPressed: () {
+                  MatrixState.pangeaController.subscriptionController
+                      .showPaywall(context);
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor:
+                      Theme.of(context).colorScheme.primary.withAlpha(25),
                 ),
-              ],
-              const SizedBox(height: 10),
-              SizedBox(
-                width: double.infinity,
-                child: TextButton(
-                  onPressed: () {
-                    MatrixState.pangeaController.subscriptionController
-                        .showPaywall(context);
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all<Color>(
-                      (Theme.of(context).colorScheme.primary).withAlpha(25),
-                    ),
-                  ),
-                  child: Text(L10n.of(context).getAccess),
-                ),
+                child: Text(L10n.of(context).getAccess),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );

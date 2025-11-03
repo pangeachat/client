@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
+import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
 import 'package:fluffychat/pangea/choreographer/enums/choreo_mode.dart';
 import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
@@ -52,21 +53,6 @@ class IgcController {
   }
 
   void clearMatches() => _igcTextData?.clearMatches();
-
-  PangeaMatchState? onShowFirstMatch() {
-    if (!canShowFirstMatch) {
-      throw "should not be calling showFirstMatch with this igcTextData.";
-    }
-
-    final match = _igcTextData!.firstOpenMatch!;
-    if (match.updatedMatch.isITStart && _igcTextData != null) {
-      _choreographer.openIT(match);
-      return null;
-    }
-
-    _choreographer.chatController.inputFocus.unfocus();
-    return match;
-  }
 
   PangeaMatchState? getMatchByOffset(int offset) =>
       _igcTextData?.getMatchByOffset(offset);
@@ -125,10 +111,10 @@ class IgcController {
     );
 
     if (res.isError) {
-      _igcTextData = IGCTextData(
-        originalInput: reqBody.fullText,
-        matches: [],
+      _choreographer.errorService.setErrorAndLock(
+        ChoreoError(raw: res.asError),
       );
+      clear();
       return;
     }
 
@@ -145,11 +131,6 @@ class IgcController {
 
     try {
       _choreographer.acceptNormalizationMatches();
-      if (_igcTextData != null) {
-        for (final match in _igcTextData!.openMatches) {
-          fetchSpanDetails(match: match);
-        }
-      }
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -159,6 +140,12 @@ class IgcController {
           "igcResponse": response.toJson(),
         },
       );
+    }
+
+    if (_igcTextData != null) {
+      for (final match in _igcTextData!.openMatches) {
+        fetchSpanDetails(match: match).catchError((e) {});
+      }
     }
   }
 
@@ -190,8 +177,7 @@ class IgcController {
     );
 
     if (response.isError) {
-      _choreographer.clearMatches(response.error!);
-      return;
+      throw response.error!;
     }
 
     _igcTextData?.setSpanData(match, response.result!.span);

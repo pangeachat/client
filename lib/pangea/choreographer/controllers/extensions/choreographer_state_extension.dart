@@ -2,19 +2,17 @@ import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
 import 'package:fluffychat/pangea/choreographer/enums/assistance_state_enum.dart';
 import 'package:fluffychat/pangea/choreographer/enums/choreo_mode.dart';
-import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 
 extension ChoregrapherUserSettingsExtension on Choreographer {
-  bool get isITOpen => itController.open;
-  bool get isEditingSourceText => itController.editing;
-  bool get isITDone => itController.isTranslationDone;
-  bool get isRunningIT => choreoMode == ChoreoMode.it && !isITDone;
-  List<Continuance>? get itStepContinuances => itController.continuances;
+  bool get isRunningIT {
+    return choreoMode == ChoreoMode.it &&
+        itController.currentITStep.value?.isFinal != true;
+  }
 
   String? get currentIGCText => igc.currentText;
-  PangeaMatchState? get openIGCMatch => igc.openMatch;
-  PangeaMatchState? get firstIGCMatch => igc.firstOpenMatch;
+  PangeaMatchState? get openMatch => igc.openMatch;
+  PangeaMatchState? get firstOpenMatch => igc.firstOpenMatch;
   List<PangeaMatchState>? get openIGCMatches => igc.openMatches;
   List<PangeaMatchState>? get closedIGCMatches => igc.closedMatches;
   bool get canShowFirstIGCMatch => igc.canShowFirstMatch;
@@ -23,15 +21,19 @@ extension ChoregrapherUserSettingsExtension on Choreographer {
   AssistanceState get assistanceState {
     final isSubscribed = pangeaController.subscriptionController.isSubscribed;
     if (isSubscribed == false) return AssistanceState.noSub;
-    if (currentText.isEmpty && sourceText == null) {
+    if (currentText.isEmpty && sourceText.value == null) {
       return AssistanceState.noMessage;
+    }
+
+    if (errorService.isError) {
+      return AssistanceState.error;
     }
 
     if (igc.hasOpenMatches || isRunningIT) {
       return AssistanceState.fetched;
     }
 
-    if (isFetching) return AssistanceState.fetching;
+    if (isFetching.value) return AssistanceState.fetching;
     if (!igc.hasIGCTextData) return AssistanceState.notFetched;
     return AssistanceState.complete;
   }
@@ -52,7 +54,7 @@ extension ChoregrapherUserSettingsExtension on Choreographer {
     if (!isAutoIGCEnabled) return true;
 
     // if we're in the middle of fetching results, don't let them send
-    if (isFetching) return false;
+    if (isFetching.value) return false;
 
     // they're supposed to run IGC but haven't yet, don't let them send
     if (!igc.hasIGCTextData) {

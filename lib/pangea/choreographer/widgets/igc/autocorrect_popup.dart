@@ -12,13 +12,12 @@ class AutocorrectPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Material(
       type: MaterialType.transparency,
       child: Container(
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-          color: theme.colorScheme.surface.withAlpha(200),
+          color: Theme.of(context).colorScheme.surface.withAlpha(200),
           borderRadius: BorderRadius.circular(8.0),
         ),
         child: Row(

@@ -13,6 +13,7 @@ enum AssistanceState {
   fetching,
   fetched,
   complete,
+  error,
 }
 
 extension AssistanceStateExtension on AssistanceState {
@@ -21,7 +22,23 @@ extension AssistanceStateExtension on AssistanceState {
       case AssistanceState.noSub:
       case AssistanceState.noMessage:
       case AssistanceState.fetched:
+      case AssistanceState.error:
         return Theme.of(context).disabledColor;
+      case AssistanceState.notFetched:
+      case AssistanceState.fetching:
+        return Theme.of(context).colorScheme.primary;
+      case AssistanceState.complete:
+        return AppConfig.success;
+    }
+  }
+
+  Color sendButtonColor(context) {
+    switch (this) {
+      case AssistanceState.noMessage:
+      case AssistanceState.fetched:
+        return Theme.of(context).disabledColor;
+      case AssistanceState.noSub:
+      case AssistanceState.error:
       case AssistanceState.notFetched:
       case AssistanceState.fetching:
         return Theme.of(context).colorScheme.primary;

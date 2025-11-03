@@ -13,13 +13,8 @@ import 'package:fluffychat/widgets/matrix.dart';
 import '../../bot/utils/bot_style.dart';
 import 'it_shimmer.dart';
 
+// CTODO refactor
 typedef ChoiceCallback = void Function(String value, int index);
-
-enum OverflowMode {
-  wrap,
-  horizontalScroll,
-  verticalScroll,
-}
 
 class ChoicesArray extends StatefulWidget {
   final bool isLoading;
@@ -38,17 +33,13 @@ class ChoicesArray extends StatefulWidget {
   final String? id;
 
   /// some uses of this widget want to disable clicking of the choices
-  final bool isActive;
+  final bool enabled;
 
   final String Function(String)? getDisplayCopy;
 
   /// activity has multiple correct answers, so user can still
   /// select choices once the correct choice has been selected
   final bool enableMultiSelect;
-
-  final double? fontSize;
-
-  final OverflowMode overflowMode;
 
   const ChoicesArray({
     super.key,
@@ -58,13 +49,11 @@ class ChoicesArray extends StatefulWidget {
     required this.selectedChoiceIndex,
     this.enableAudio = true,
     this.langCode,
-    this.isActive = true,
+    this.enabled = true,
     this.onLongPress,
     this.getDisplayCopy,
     this.id,
     this.enableMultiSelect = false,
-    this.fontSize,
-    this.overflowMode = OverflowMode.wrap,
   });
 
   @override
@@ -99,8 +88,8 @@ class ChoicesArrayState extends State<ChoicesArray> {
         .mapIndexed(
           (index, entry) => ChoiceItem(
             theme: theme,
-            onLongPress: widget.isActive ? widget.onLongPress : null,
-            onPressed: widget.isActive
+            onLongPress: widget.enabled ? widget.onLongPress : null,
+            onPressed: widget.enabled
                 ? (String value, int index) {
                     widget.onPressed(value, index);
                     // TODO - what to pass here as eventID?
@@ -122,39 +111,18 @@ class ChoicesArrayState extends State<ChoicesArray> {
             isSelected: widget.selectedChoiceIndex == index,
             id: widget.id,
             getDisplayCopy: widget.getDisplayCopy,
-            fontSize: widget.fontSize,
           ),
         )
         .toList();
 
     return widget.isLoading &&
             (widget.choices == null || widget.choices!.length <= 1)
-        ? ItShimmer(
-            fontSize: widget.fontSize ??
-                Theme.of(context).textTheme.bodyMedium?.fontSize ??
-                16,
-          )
-        : widget.overflowMode == OverflowMode.wrap
-            ? Wrap(
-                alignment: WrapAlignment.center,
-                spacing: 4.0,
-                children: choices,
-              )
-            : widget.overflowMode == OverflowMode.horizontalScroll
-                ? SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: choices,
-                    ),
-                  )
-                : SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: choices,
-                    ),
-                  );
+        ? const ItShimmer()
+        : Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 4.0,
+            children: choices,
+          );
   }
 }
 

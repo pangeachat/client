@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
-import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_state_extension.dart';
 
 class ChatViewBackground extends StatelessWidget {
   final Choreographer choreographer;
@@ -14,7 +13,7 @@ class ChatViewBackground extends StatelessWidget {
     return ListenableBuilder(
       listenable: choreographer,
       builder: (context, _) {
-        return choreographer.isITOpen
+        return choreographer.itController.open.value
             ? Positioned(
                 left: 0,
                 right: 0,

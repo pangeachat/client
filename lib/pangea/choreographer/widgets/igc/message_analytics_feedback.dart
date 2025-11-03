@@ -6,17 +6,16 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
 import 'package:fluffychat/pangea/analytics_summary/progress_indicators_enum.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 class MessageAnalyticsFeedback extends StatefulWidget {
-  final String overlayId;
   final int newGrammarConstructs;
   final int newVocabConstructs;
+  final VoidCallback close;
 
   const MessageAnalyticsFeedback({
-    required this.overlayId,
     required this.newGrammarConstructs,
     required this.newVocabConstructs,
+    required this.close,
     super.key,
   });
 
@@ -27,36 +26,27 @@ class MessageAnalyticsFeedback extends StatefulWidget {
 
 class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
     with TickerProviderStateMixin {
-  late AnimationController _vocabController;
-  late AnimationController _grammarController;
+  late AnimationController _numbersController;
   late AnimationController _bubbleController;
+  late AnimationController _tickerController;
 
-  late Animation<double> _vocabOpacity;
-  late Animation<double> _grammarOpacity;
-  late Animation<double> _scaleAnimation;
-  late Animation<double> _opacityAnimation;
+  late Animation<double> _numbersOpacityAnimation;
+  late Animation<double> _bubbleScaleAnimation;
+  late Animation<double> _bubbleOpacityAnimation;
 
-  static const counterDelay = Duration(milliseconds: 400);
+  Animation<int>? _grammarTickerAnimation;
+  Animation<int>? _vocabTickerAnimation;
 
   @override
   void initState() {
     super.initState();
-    _grammarController = AnimationController(
+    _numbersController = AnimationController(
       vsync: this,
       duration: FluffyThemes.animationDuration,
     );
 
-    _grammarOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _grammarController, curve: Curves.easeInOut),
-    );
-
-    _vocabController = AnimationController(
-      vsync: this,
-      duration: FluffyThemes.animationDuration,
-    );
-
-    _vocabOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _vocabController, curve: Curves.easeInOut),
+    _numbersOpacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _numbersController, curve: Curves.easeInOut),
     );
 
     _bubbleController = AnimationController(
@@ -64,51 +54,67 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
       duration: FluffyThemes.animationDuration,
     );
 
-    _scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+    _bubbleScaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _bubbleController, curve: Curves.easeInOut),
     );
 
-    _opacityAnimation = Tween<double>(begin: 0.0, end: 0.9).animate(
+    _bubbleOpacityAnimation = Tween<double>(begin: 0.0, end: 0.9).animate(
       CurvedAnimation(parent: _bubbleController, curve: Curves.easeInOut),
     );
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) _bubbleController.forward();
+    _tickerController = AnimationController(
+      vsync: this,
+      duration: FluffyThemes.animationDuration,
+    );
 
-      Future.delayed(counterDelay, () {
-        if (mounted) {
-          _vocabController.forward();
-          _grammarController.forward();
-        }
-      });
+    _numbersOpacityAnimation.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _startTickerAnimations();
+      }
+    });
 
-      Future.delayed(const Duration(milliseconds: 4000), () {
-        if (!mounted) return;
-        _bubbleController.reverse().then((_) {
-          MatrixState.pAnyState.closeOverlay(widget.overlayId);
-        });
-      });
+    _bubbleController.forward();
+    Future.delayed(
+      const Duration(milliseconds: 400),
+      _numbersController.forward,
+    );
+    Future.delayed(const Duration(milliseconds: 4000), () async {
+      await _bubbleController.reverse();
+      if (mounted) widget.close();
     });
   }
 
   @override
   void dispose() {
-    _vocabController.dispose();
-    _grammarController.dispose();
+    _numbersController.dispose();
     _bubbleController.dispose();
+    _tickerController.dispose();
     super.dispose();
   }
 
-  void _showAnalyticsDialog(ConstructTypeEnum? type) {
-    switch (type) {
-      case ConstructTypeEnum.morph:
-        context.go("/rooms/analytics/${ConstructTypeEnum.morph.string}");
-        break;
-      case ConstructTypeEnum.vocab:
-      default:
-        context.go("/rooms/analytics/${ConstructTypeEnum.vocab.string}");
-        break;
-    }
+  void _startTickerAnimations() {
+    _vocabTickerAnimation = IntTween(
+      begin: 0,
+      end: widget.newVocabConstructs,
+    ).animate(
+      CurvedAnimation(
+        parent: _tickerController,
+        curve: Curves.easeOutCubic,
+      ),
+    );
+
+    _grammarTickerAnimation = IntTween(
+      begin: 0,
+      end: widget.newGrammarConstructs,
+    ).animate(
+      CurvedAnimation(
+        parent: _tickerController,
+        curve: Curves.easeOutCubic,
+      ),
+    );
+
+    setState(() {});
+    _tickerController.forward();
   }
 
   @override
@@ -116,22 +122,24 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
     if (widget.newVocabConstructs <= 0 && widget.newGrammarConstructs <= 0) {
       return const SizedBox.shrink();
     }
+    // CTODO check if working
 
-    final theme = Theme.of(context);
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
-        onTap: () => _showAnalyticsDialog(null),
+        onTap: () => context.go("/rooms/analytics"),
         child: ScaleTransition(
-          scale: _scaleAnimation,
+          scale: _bubbleScaleAnimation,
           alignment: Alignment.bottomRight,
           child: AnimatedBuilder(
             animation: _bubbleController,
             builder: (context, child) {
               return Container(
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceContainerHighest
-                      .withAlpha((_opacityAnimation.value * 255).round()),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .surfaceContainerHighest
+                      .withAlpha((_bubbleOpacityAnimation.value * 255).round()),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16.0),
                     topRight: Radius.circular(16.0),
@@ -147,26 +155,18 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     if (widget.newVocabConstructs > 0)
-                      NewConstructsBadge(
-                        controller: _vocabController,
-                        opacityAnimation: _vocabOpacity,
-                        newConstructs: widget.newVocabConstructs,
+                      _NewConstructsBadge(
+                        opacityAnimation: _numbersOpacityAnimation,
+                        tickerAnimation: _vocabTickerAnimation,
                         type: ConstructTypeEnum.vocab,
                         tooltip: L10n.of(context).newVocab,
-                        onTap: () => _showAnalyticsDialog(
-                          ConstructTypeEnum.vocab,
-                        ),
                       ),
                     if (widget.newGrammarConstructs > 0)
-                      NewConstructsBadge(
-                        controller: _grammarController,
-                        opacityAnimation: _grammarOpacity,
-                        newConstructs: widget.newGrammarConstructs,
+                      _NewConstructsBadge(
+                        opacityAnimation: _numbersOpacityAnimation,
+                        tickerAnimation: _grammarTickerAnimation,
                         type: ConstructTypeEnum.morph,
                         tooltip: L10n.of(context).newGrammar,
-                        onTap: () => _showAnalyticsDialog(
-                          ConstructTypeEnum.morph,
-                        ),
                       ),
                   ],
                 ),
@@ -179,33 +179,27 @@ class MessageAnalyticsFeedbackState extends State<MessageAnalyticsFeedback>
   }
 }
 
-class NewConstructsBadge extends StatelessWidget {
-  final AnimationController controller;
+class _NewConstructsBadge extends StatelessWidget {
   final Animation<double> opacityAnimation;
-
-  final int newConstructs;
+  final Animation<int>? tickerAnimation;
   final ConstructTypeEnum type;
   final String tooltip;
-  final VoidCallback onTap;
 
-  const NewConstructsBadge({
-    required this.controller,
+  const _NewConstructsBadge({
     required this.opacityAnimation,
-    required this.newConstructs,
+    required this.tickerAnimation,
     required this.type,
     required this.tooltip,
-    required this.onTap,
-    super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap,
+      onTap: () => context.go("/rooms/analytics/${type.string}"),
       child: Tooltip(
         message: tooltip,
         child: AnimatedBuilder(
-          animation: controller,
+          animation: opacityAnimation,
           builder: (context, child) {
             return Opacity(
               opacity: opacityAnimation.value,
@@ -220,10 +214,9 @@ class NewConstructsBadge extends StatelessWidget {
                       size: 24,
                     ),
                     const SizedBox(width: 4.0),
-                    AnimatedCounter(
+                    _AnimatedCounter(
                       key: ValueKey("$type-counter"),
-                      endValue: newConstructs,
-                      startAnimation: opacityAnimation.value > 0.9,
+                      animation: tickerAnimation,
                       style: TextStyle(
                         color: type.indicator.color(context),
                         fontWeight: FontWeight.bold,
@@ -240,76 +233,31 @@ class NewConstructsBadge extends StatelessWidget {
   }
 }
 
-class AnimatedCounter extends StatefulWidget {
-  final int endValue;
+class _AnimatedCounter extends StatelessWidget {
+  final Animation<int>? animation;
   final TextStyle? style;
-  final bool startAnimation;
 
-  const AnimatedCounter({
+  const _AnimatedCounter({
     super.key,
-    required this.endValue,
+    required this.animation,
     this.style,
-    this.startAnimation = true,
   });
 
   @override
-  State<AnimatedCounter> createState() => _AnimatedCounterState();
-}
-
-class _AnimatedCounterState extends State<AnimatedCounter>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<int> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: FluffyThemes.animationDuration,
-    );
-
-    _animation = IntTween(
-      begin: 0,
-      end: widget.endValue,
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeOutCubic,
-      ),
-    );
-
-    if (widget.startAnimation) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) _controller.forward();
-      });
-    }
-  }
-
-  @override
-  void didUpdateWidget(AnimatedCounter oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (!oldWidget.startAnimation && widget.startAnimation && !_hasAnimated) {
-      _controller.forward();
-    }
-  }
-
-  bool get _hasAnimated => _controller.isCompleted || _controller.isAnimating;
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    if (animation == null) {
+      return Text(
+        "+ 0",
+        style: style,
+      );
+    }
+
     return AnimatedBuilder(
-      animation: _animation,
+      animation: animation!,
       builder: (context, child) {
         return Text(
-          "+ ${_animation.value}",
-          style: widget.style,
+          "+ ${animation!.value}",
+          style: style,
         );
       },
     );

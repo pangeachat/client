@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -11,14 +12,13 @@ import 'package:fluffychat/pangea/choreographer/enums/span_data_type.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/overlay.dart';
-import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import '../../../../widgets/matrix.dart';
-import '../../../bot/widgets/bot_face_svg.dart';
 import '../choice_array.dart';
 import 'why_button.dart';
 
-// CTODO refactor
 class SpanCard extends StatefulWidget {
   final PangeaMatchState match;
   final Choreographer choreographer;
@@ -34,57 +34,103 @@ class SpanCard extends StatefulWidget {
 }
 
 class SpanCardState extends State<SpanCard> {
-  bool fetchingData = false;
+  bool _loadingChoices = true;
+  final _feedbackModel = FeedbackModel<String>();
+
+  SpanChoice? _latestSelectedChoice;
+
   final ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    getSpanDetails();
+    _fetchChoices();
   }
 
   @override
   void dispose() {
-    TtsController.stop();
+    _feedbackModel.dispose();
     scrollController.dispose();
     super.dispose();
   }
 
-  SpanChoice? get selectedChoice =>
-      widget.match.updatedMatch.match.selectedChoice;
+  List<SpanChoice>? get _choices => widget.match.updatedMatch.match.choices;
 
-  Future<void> getSpanDetails({bool force = false}) async {
-    if (widget.match.updatedMatch.isITStart) return;
+  SpanChoice? get _selectedChoice =>
+      widget.match.updatedMatch.match.selectedChoice ??
+      widget.match.updatedMatch.match.choices?.firstWhereOrNull(
+        (c) => c.value == _latestSelectedChoice?.value,
+      );
 
-    if (!mounted) return;
-    setState(() {
-      fetchingData = true;
-    });
+  String? get _selectedFeedback => _selectedChoice?.feedback;
 
-    await widget.choreographer.fetchSpanDetails(
-      match: widget.match,
-      force: force,
-    );
+  Future<void> _fetchChoices() async {
+    if (_choices != null && _choices!.length > 1) {
+      setState(() => _loadingChoices = false);
+      return;
+    }
 
-    if (mounted) {
-      setState(() => fetchingData = false);
+    try {
+      setState(() => _loadingChoices = true);
+      await widget.choreographer.fetchSpanDetails(
+        match: widget.match,
+      );
+    } catch (e) {
+      widget.choreographer.clearMatches(e);
+    } finally {
+      if (_choices == null || _choices!.isEmpty) {
+        widget.choreographer.clearMatches(
+          'No choices available for span ${widget.match.updatedMatch.match.message}',
+        );
+      }
+      setState(() => _loadingChoices = false);
+    }
+  }
+
+  Future<void> _fetchFeedback() async {
+    if (_selectedFeedback != null) {
+      _feedbackModel.setState(FeedbackLoaded<String>(_selectedFeedback!));
+      return;
+    }
+
+    try {
+      _feedbackModel.setState(FeedbackLoading<String>());
+      await widget.choreographer.fetchSpanDetails(
+        match: widget.match,
+        force: true,
+      );
+    } finally {
+      if (mounted) {
+        if (_selectedFeedback == null) {
+          _feedbackModel.setState(
+            FeedbackError<String>(
+              L10n.of(context).failedToLoadFeedback,
+            ),
+          );
+        } else {
+          _feedbackModel.setState(
+            FeedbackLoaded<String>(_selectedFeedback!),
+          );
+        }
+      }
     }
   }
 
   void _onChoiceSelect(int index) {
+    final selected = _choices![index];
     widget.match.selectChoice(index);
-    setState(
-      () => (selectedChoice!.isBestCorrection
-          ? BotExpression.gold
-          : BotExpression.surprised),
+    _latestSelectedChoice = selected;
+    _feedbackModel.setState(
+      selected.feedback != null
+          ? FeedbackLoaded<String>(selected.feedback!)
+          : FeedbackIdle<String>(),
     );
+    setState(() {});
   }
 
-  Future<void> _onAcceptReplacement() async {
+  void _onMatchUpdate(VoidCallback updateFunc) async {
     try {
-      widget.choreographer.onAcceptReplacement(
-        match: widget.match,
-      );
+      updateFunc();
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
@@ -97,34 +143,21 @@ class SpanCardState extends State<SpanCard> {
       widget.choreographer.clearMatches(e);
       return;
     }
-
     _showFirstMatch();
   }
 
-  void _onIgnoreMatch() {
-    try {
-      widget.choreographer.onIgnoreMatch(match: widget.match);
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        level: SentryLevel.warning,
-        data: {
-          "match": widget.match.toJson(),
-        },
-      );
-      widget.choreographer.clearMatches(e);
-      return;
-    }
+  void _onAcceptReplacement() => _onMatchUpdate(() {
+        widget.choreographer.onAcceptReplacement(match: widget.match);
+      });
 
-    _showFirstMatch();
-  }
+  void _onIgnoreMatch() => _onMatchUpdate(() {
+        widget.choreographer.onIgnoreMatch(match: widget.match);
+      });
 
   void _showFirstMatch() {
     if (widget.choreographer.canShowFirstIGCMatch) {
-      final igcMatch = widget.choreographer.igc.onShowFirstMatch();
       OverlayUtil.showIGCMatch(
-        igcMatch!,
+        widget.choreographer.igc.firstOpenMatch!,
         widget.choreographer,
         context,
       );
@@ -135,29 +168,6 @@ class SpanCardState extends State<SpanCard> {
 
   @override
   Widget build(BuildContext context) {
-    return WordMatchContent(
-      controller: this,
-      scrollController: scrollController,
-    );
-  }
-}
-
-class WordMatchContent extends StatelessWidget {
-  final SpanCardState controller;
-  final ScrollController scrollController;
-
-  const WordMatchContent({
-    required this.controller,
-    required this.scrollController,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    if (controller.widget.match.updatedMatch.isITStart) {
-      return const SizedBox();
-    }
-
     return SizedBox(
       height: 300.0,
       child: Column(
@@ -167,34 +177,81 @@ class WordMatchContent extends StatelessWidget {
               controller: scrollController,
               child: SingleChildScrollView(
                 controller: scrollController,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    const SizedBox(height: 8),
-                    ChoicesArray(
-                      isLoading: controller.fetchingData,
-                      choices:
-                          controller.widget.match.updatedMatch.match.choices
-                              ?.map(
-                                (e) => Choice(
-                                  text: e.value,
-                                  color: e.selected ? e.type.color : null,
-                                  isGold: e.type.name == 'bestCorrection',
-                                ),
-                              )
-                              .toList(),
-                      onPressed: (value, index) =>
-                          controller._onChoiceSelect(index),
-                      selectedChoiceIndex: controller
-                          .widget.match.updatedMatch.match.selectedChoiceIndex,
-                      id: controller.widget.match.hashCode.toString(),
-                      langCode: MatrixState.pangeaController.languageController
-                          .activeL2Code(),
-                    ),
-                    const SizedBox(height: 12),
-                    PromptAndFeedback(controller: controller),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                  child: Column(
+                    spacing: 12.0,
+                    children: [
+                      ChoicesArray(
+                        isLoading: _loadingChoices,
+                        choices: widget.match.updatedMatch.match.choices
+                            ?.map(
+                              (e) => Choice(
+                                text: e.value,
+                                color: e.selected ? e.type.color : null,
+                                isGold: e.type.name == 'bestCorrection',
+                              ),
+                            )
+                            .toList(),
+                        onPressed: (value, index) => _onChoiceSelect(index),
+                        selectedChoiceIndex:
+                            widget.match.updatedMatch.match.selectedChoiceIndex,
+                        id: widget.match.hashCode.toString(),
+                        langCode: MatrixState
+                            .pangeaController.languageController
+                            .activeL2Code(),
+                      ),
+                      ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          minHeight: 100.0,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ListenableBuilder(
+                              listenable: _feedbackModel,
+                              builder: (context, _) {
+                                if (_loadingChoices) {
+                                  return const SizedBox(
+                                    width: 24.0,
+                                    height: 24.0,
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }
+
+                                final state = _feedbackModel.state;
+                                return switch (state) {
+                                  FeedbackIdle<String>() =>
+                                    _selectedChoice == null
+                                        ? Text(
+                                            widget.match.updatedMatch.match.type
+                                                .typeName
+                                                .defaultPrompt(context),
+                                            style:
+                                                BotStyle.text(context).copyWith(
+                                              fontStyle: FontStyle.italic,
+                                            ),
+                                          )
+                                        : WhyButton(
+                                            onPress: _fetchFeedback,
+                                            loading: false,
+                                          ),
+                                  FeedbackLoading<String>() => WhyButton(
+                                      onPress: _fetchFeedback,
+                                      loading: true,
+                                    ),
+                                  FeedbackError<String>(:final error) =>
+                                    ErrorIndicator(message: error.toString()),
+                                  FeedbackLoaded<String>(:final value) =>
+                                    Text(value, style: BotStyle.text(context)),
+                                };
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -203,7 +260,7 @@ class WordMatchContent extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).cardColor,
             ),
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 12.0),
             child: Row(
               spacing: 10.0,
               children: [
@@ -211,12 +268,11 @@ class WordMatchContent extends StatelessWidget {
                   child: Opacity(
                     opacity: 0.8,
                     child: TextButton(
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all<Color>(
-                          Theme.of(context).colorScheme.primary.withAlpha(25),
-                        ),
+                      style: TextButton.styleFrom(
+                        backgroundColor:
+                            Theme.of(context).colorScheme.primary.withAlpha(25),
                       ),
-                      onPressed: controller._onIgnoreMatch,
+                      onPressed: _onIgnoreMatch,
                       child: Center(
                         child: Text(L10n.of(context).ignoreInThisText),
                       ),
@@ -225,26 +281,19 @@ class WordMatchContent extends StatelessWidget {
                 ),
                 Expanded(
                   child: Opacity(
-                    opacity: controller.selectedChoice != null ? 1.0 : 0.5,
+                    opacity: _selectedChoice != null ? 1.0 : 0.5,
                     child: TextButton(
-                      onPressed: controller.selectedChoice != null
-                          ? controller._onAcceptReplacement
-                          : null,
-                      style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all<Color>(
-                          (controller.selectedChoice != null
-                                  ? controller.selectedChoice!.color
-                                  : Theme.of(context).colorScheme.primary)
-                              .withAlpha(50),
-                        ),
-                        // Outline if Replace button enabled
-                        side: controller.selectedChoice != null
-                            ? WidgetStateProperty.all(
-                                BorderSide(
-                                  color: controller.selectedChoice!.color,
-                                  style: BorderStyle.solid,
-                                  width: 2.0,
-                                ),
+                      onPressed:
+                          _selectedChoice != null ? _onAcceptReplacement : null,
+                      style: TextButton.styleFrom(
+                        backgroundColor: (_selectedChoice?.color ??
+                                Theme.of(context).colorScheme.primary)
+                            .withAlpha(50),
+                        side: _selectedChoice != null
+                            ? BorderSide(
+                                color: _selectedChoice!.color,
+                                style: BorderStyle.solid,
+                                width: 2.0,
                               )
                             : null,
                       ),
@@ -255,63 +304,6 @@ class WordMatchContent extends StatelessWidget {
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class PromptAndFeedback extends StatelessWidget {
-  const PromptAndFeedback({
-    super.key,
-    required this.controller,
-  });
-
-  final SpanCardState controller;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      constraints: controller.widget.match.updatedMatch.isITStart
-          ? null
-          : const BoxConstraints(minHeight: 75.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          if (controller.selectedChoice == null && controller.fetchingData)
-            const Center(
-              child: SizedBox(
-                width: 24.0,
-                height: 24.0,
-                child: CircularProgressIndicator(),
-              ),
-            ),
-          if (controller.selectedChoice != null) ...[
-            if (controller.selectedChoice?.feedback != null)
-              Text(
-                controller.selectedChoice!.feedbackToDisplay(context),
-                style: BotStyle.text(context),
-              ),
-            const SizedBox(height: 8),
-            if (controller.selectedChoice?.feedback == null)
-              WhyButton(
-                onPress: () {
-                  if (!controller.fetchingData) {
-                    controller.getSpanDetails(force: true);
-                  }
-                },
-                loading: controller.fetchingData,
-              ),
-          ],
-          if (!controller.fetchingData && controller.selectedChoice == null)
-            Text(
-              controller.widget.match.updatedMatch.match.type.typeName
-                  .defaultPrompt(context),
-              style: BotStyle.text(context).copyWith(
-                fontStyle: FontStyle.italic,
-              ),
-            ),
         ],
       ),
     );

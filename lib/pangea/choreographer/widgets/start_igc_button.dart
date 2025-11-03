@@ -63,13 +63,17 @@ class StartIGCButtonState extends State<StartIGCButton>
 
   void _showFirstMatch() {
     if (widget.controller.choreographer.canShowFirstIGCMatch) {
-      final match = widget.controller.choreographer.igc.onShowFirstMatch();
+      final match = widget.controller.choreographer.igc.firstOpenMatch;
       if (match == null) return;
-      OverlayUtil.showIGCMatch(
-        match,
-        widget.controller.choreographer,
-        context,
-      );
+      if (match.updatedMatch.isITStart) {
+        widget.controller.choreographer.openIT(match);
+      } else {
+        OverlayUtil.showIGCMatch(
+          match,
+          widget.controller.choreographer,
+          context,
+        );
+      }
     }
   }
 
@@ -79,6 +83,8 @@ class StartIGCButtonState extends State<StartIGCButton>
       AssistanceState.fetched,
       AssistanceState.complete,
       AssistanceState.noMessage,
+      AssistanceState.noSub,
+      AssistanceState.error,
     ].contains(assistanceState);
   }
 
@@ -101,15 +107,18 @@ class StartIGCButtonState extends State<StartIGCButton>
         if (widget.controller.shouldShowLanguageMismatchPopup) {
           widget.controller.showLanguageMismatchPopup();
         } else {
-          final igcMatch =
-              await widget.controller.choreographer.requestLanguageAssistance();
-
-          if (igcMatch != null) {
-            OverlayUtil.showIGCMatch(
-              igcMatch,
-              widget.controller.choreographer,
-              context,
-            );
+          await widget.controller.choreographer.requestLanguageAssistance();
+          final openMatch = widget.controller.choreographer.firstOpenMatch;
+          if (openMatch != null) {
+            if (openMatch.updatedMatch.isITStart) {
+              widget.controller.choreographer.openIT(openMatch);
+            } else {
+              OverlayUtil.showIGCMatch(
+                openMatch,
+                widget.controller.choreographer,
+                context,
+              );
+            }
           }
         }
         return;
@@ -118,6 +127,7 @@ class StartIGCButtonState extends State<StartIGCButton>
         return;
       case AssistanceState.complete:
       case AssistanceState.fetching:
+      case AssistanceState.error:
         return;
     }
   }
@@ -128,6 +138,7 @@ class StartIGCButtonState extends State<StartIGCButton>
       case AssistanceState.noMessage:
       case AssistanceState.fetched:
       case AssistanceState.complete:
+      case AssistanceState.error:
         return Theme.of(context).colorScheme.surfaceContainerHighest;
       case AssistanceState.notFetched:
       case AssistanceState.fetching:

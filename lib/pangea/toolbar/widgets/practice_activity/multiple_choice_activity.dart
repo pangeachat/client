@@ -237,7 +237,7 @@ class MultipleChoiceActivityState extends State<MultipleChoiceActivity> {
           onPressed: updateChoice,
           selectedChoiceIndex: selectedChoiceIndex,
           choices: choices(context),
-          isActive: true,
+          enabled: true,
           id: currentRecordModel?.hashCode.toString(),
           enableAudio: practiceActivity.activityType.includeTTSOnClick,
           langCode:
