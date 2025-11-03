@@ -17,6 +17,7 @@ class ActivityPlanModel {
   final DateTime? endAt;
   final Duration? duration;
   final Map<String, ActivityRole>? _roles;
+  final bool isDeprecatedModel;
 
   ActivityPlanModel({
     required this.req,
@@ -32,6 +33,7 @@ class ActivityPlanModel {
     String? imageURL,
     this.endAt,
     this.duration,
+    this.isDeprecatedModel = false,
   })  : description = (description == null || description.isEmpty)
             ? learningObjective
             : description,
@@ -96,6 +98,7 @@ class ActivityPlanModel {
           : null,
       roles: roles,
       activityId: activityId,
+      isDeprecatedModel: json["bookmark_id"] != null,
     );
   }
 

@@ -397,8 +397,9 @@ extension ActivityRoomExtension on Room {
   // helper functions for activity state for overall activity
 
   bool get isActivitySession =>
-      roomType?.startsWith(PangeaRoomTypes.activitySession) == true ||
-      activityPlan != null;
+      (roomType?.startsWith(PangeaRoomTypes.activitySession) == true ||
+          activityPlan != null) &&
+      activityPlan?.isDeprecatedModel == false;
 
   String? get activityId {
     if (!isActivitySession) return null;
