@@ -4289,12 +4289,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "\u0627\u0644\u0639\u0628 \u0645\u0639 \u0628\u0648\u062a \u0628\u0627\u0646\u062c\u064a\u0627";
     },
-    get$inviteFriendsToActivity() {
-      return "\u0627\u062f\u0639\u064f \u0623\u0635\u062f\u0642\u0627\u0621\u0643 \u0625\u0644\u0649 \u0627\u0644\u0646\u0634\u0627\u0637";
-    },
-    get$inviteFriendsToActivityCourse() {
-      return "\u0627\u062f\u0639\u064f \u0623\u0635\u062f\u0642\u0627\u0621\u0643 \u0625\u0644\u0649 \u0627\u0644\u0646\u0634\u0627\u0637 \u0648\u0627\u0644\u062f\u0648\u0631\u0629";
-    },
     get$waitNotDone() {
       return "\u0627\u0646\u062a\u0638\u0631\u060c \u0644\u0645 \u0623\u0646\u062a\u0647\u0650 \u0628\u0639\u062f!";
     },
@@ -4559,6 +4553,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$contactHasBeenInvitedToTheCourse() {
       return "Contact has been invited to the course";
     },
+    get$inviteFriends() {
+      return "\u062f\u0639\u0648\u0629 \u0627\u0644\u0623\u0635\u062f\u0642\u0627\u0621";
+    },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
     }
@@ -4572,7 +4569,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["+cLUNSH0Lz52MQBBg9LAo4oELr8="] = d.current;
+  d["fq7EslaiuUcQTiwxogHw7MzV748="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_130.part.js.map

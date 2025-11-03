@@ -4295,12 +4295,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "\u4e0e\u6cdb\u4e9a\u673a\u5668\u4eba\u73a9";
     },
-    get$inviteFriendsToActivity() {
-      return "\u9080\u8bf7\u670b\u53cb\u53c2\u52a0\u6d3b\u52a8";
-    },
-    get$inviteFriendsToActivityCourse() {
-      return "\u9080\u8bf7\u670b\u53cb\u53c2\u52a0\u6d3b\u52a8\u548c\u8bfe\u7a0b";
-    },
     get$waitNotDone() {
       return "\u7b49\u4e00\u4e0b\uff0c\u6211\u8fd8\u6ca1\u5b8c\u6210\uff01";
     },
@@ -4564,6 +4558,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$contactHasBeenInvitedToTheCourse() {
       return "Contact has been invited to the course";
+    },
+    get$inviteFriends() {
+      return "\u9080\u8bf7\u670b\u53cb";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -8842,12 +8839,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "\u8207 Pangea \u6a5f\u5668\u4eba\u73a9";
     },
-    get$inviteFriendsToActivity() {
-      return "\u9080\u8acb\u670b\u53cb\u53c3\u52a0\u6d3b\u52d5";
-    },
-    get$inviteFriendsToActivityCourse() {
-      return "\u9080\u8acb\u670b\u53cb\u53c3\u52a0\u6d3b\u52d5\u548c\u8ab2\u7a0b";
-    },
     get$waitNotDone() {
       return "\u7b49\u4e00\u4e0b\uff0c\u6211\u9084\u6c92\u5b8c\u6210\uff01";
     },
@@ -9093,7 +9084,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["7d91F0Hk1H+YnIrpTT71D5TyfNo="] = d.current;
+  d["oWo/Dyo8OBvniNfxueAJeNmsFLw="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_1.part.js.map

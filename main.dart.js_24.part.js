@@ -4300,12 +4300,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Jogue com o Pangea Bot";
     },
-    get$inviteFriendsToActivity() {
-      return "Convidar amigos para a atividade";
-    },
-    get$inviteFriendsToActivityCourse() {
-      return string$.Convid;
-    },
     get$waitNotDone() {
       return "Espere, ainda n\xe3o terminei!";
     },
@@ -4569,6 +4563,9 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$contactHasBeenInvitedToTheCourse() {
       return "Contact has been invited to the course";
+    },
+    get$inviteFriends() {
+      return "Convidar amigos";
     },
     remove$1($receiver, arg0) {
       return this.get$remove(this).call$1(arg0);
@@ -8846,12 +8843,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     },
     get$playWithBot() {
       return "Jogar com o Pangea Bot";
-    },
-    get$inviteFriendsToActivity() {
-      return "Convidar amigos para a atividade";
-    },
-    get$inviteFriendsToActivityCourse() {
-      return string$.Convid;
     },
     get$waitNotDone() {
       return "Espere, ainda n\xe3o terminei!";
@@ -13361,12 +13352,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     get$playWithBot() {
       return "Jogar com o Pangea Bot";
     },
-    get$inviteFriendsToActivity() {
-      return "Convidar amigos para a atividade";
-    },
-    get$inviteFriendsToActivityCourse() {
-      return "Convidar amigos para atividade e curso";
-    },
     get$waitNotDone() {
       return "Espera, ainda n\xe3o terminei!";
     },
@@ -13657,7 +13642,6 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
     Config: "Configura\xe7\xf5es de notifica\xe7\xe3o espec\xedficas do usu\xe1rio",
     Constr: "Construa sua tradu\xe7\xe3o a partir das op\xe7\xf5es acima",
     Conver: "Conversar com humanos \xe9 mais divertido, mas... a IA est\xe1 sempre pronta!",
-    Convid: "Convidar amigos para a atividade e o curso",
     Correte: "Correto na atividade de escuta de palavras",
     Correts: "Correto na atividade de significado da palavra",
     Cursos: "Cursos permitem consolidar seus chats e construir comunidades privadas ou p\xfablicas.",
@@ -13774,7 +13758,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["PualVddcm9muBo9VGIwuZAa6SMw="] = d.current;
+  d["AGtsJsqezrWyYyQ86+B1krLQCSI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map
