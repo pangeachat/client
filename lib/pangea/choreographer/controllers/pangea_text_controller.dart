@@ -94,7 +94,7 @@ class PangeaTextController extends TextEditingController {
     final SubscriptionStatus canSendStatus = choreographer
         .pangeaController.subscriptionController.subscriptionStatus;
     if (canSendStatus == SubscriptionStatus.shouldShowPaywall &&
-        !choreographer.isFetching &&
+        !choreographer.isFetching.value &&
         text.isNotEmpty) {
       return TextSpan(
         text: text,
@@ -214,7 +214,7 @@ class PangeaTextController extends TextEditingController {
         spans.add(TextSpan(text: text, style: defaultStyle));
       }
 
-      final openMatch = choreographer.openIGCMatch?.updatedMatch.match;
+      final openMatch = choreographer.openMatch?.updatedMatch.match;
       final style = _textStyle(
         match.updatedMatch,
         defaultStyle,

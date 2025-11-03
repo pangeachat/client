@@ -44,13 +44,13 @@ class Choreographer extends ChangeNotifier {
 
   ChoreoRecord? _choreoRecord;
 
-  bool _isFetching = false;
+  final ValueNotifier<bool> _isFetching = ValueNotifier(false);
   int _timesClicked = 0;
 
   Timer? _debounceTimer;
   String? _lastChecked;
   ChoreoMode _choreoMode = ChoreoMode.igc;
-  String? _sourceText;
+  final ValueNotifier<String?> _sourceText = ValueNotifier(null);
 
   StreamSubscription? _languageStream;
   StreamSubscription? _settingsUpdateStream;
@@ -60,10 +60,10 @@ class Choreographer extends ChangeNotifier {
   }
 
   int get timesClicked => _timesClicked;
-  bool get isFetching => _isFetching;
+  ValueNotifier<bool> get isFetching => _isFetching;
   ChoreoMode get choreoMode => _choreoMode;
 
-  String? get sourceText => _sourceText;
+  ValueNotifier<String?> get sourceText => _sourceText;
   String get currentText => textController.text;
 
   void _initialize() {
@@ -94,9 +94,9 @@ class Choreographer extends ChangeNotifier {
     _choreoMode = ChoreoMode.igc;
     _lastChecked = null;
     _timesClicked = 0;
-    _isFetching = false;
+    _isFetching.value = false;
     _choreoRecord = null;
-    _sourceText = null;
+    _sourceText.value = null;
     itController.clear();
     igc.clear();
     _resetDebounceTimer();
@@ -109,6 +109,8 @@ class Choreographer extends ChangeNotifier {
     textController.dispose();
     _languageStream?.cancel();
     _settingsUpdateStream?.cancel();
+    _debounceTimer?.cancel();
+    _isFetching.dispose();
     TtsController.stop();
   }
 
@@ -123,7 +125,7 @@ class Choreographer extends ChangeNotifier {
 
       // if user is doing IT, call closeIT here to
       // ensure source text is replaced when needed
-      if (isITOpen && _timesClicked > 1) {
+      if (itController.open.value && _timesClicked > 1) {
         closeIT();
       }
     }
@@ -151,27 +153,42 @@ class Choreographer extends ChangeNotifier {
 
   void _startLoading() {
     _lastChecked = textController.text;
-    _isFetching = true;
+    _isFetching.value = true;
     notifyListeners();
   }
 
   void _stopLoading() {
-    _isFetching = false;
+    _isFetching.value = false;
     notifyListeners();
   }
 
-  Future<PangeaMatchState?> requestLanguageAssistance() async {
-    await _getLanguageAssistance(manual: true);
-    if (igc.canShowFirstMatch) {
-      return igc.onShowFirstMatch();
-    }
-    return null;
-  }
+  Future<void> requestLanguageAssistance() =>
+      _getLanguageAssistance(manual: true);
 
-  Future<void> send() async {
+  Future<void> send([int recurrence = 0]) async {
     // if isFetching, already called to getLanguageHelp and hasn't completed yet
     // could happen if user clicked send button multiple times in a row
-    if (_isFetching) return;
+    if (_isFetching.value) return;
+
+    if (errorService.isError) {
+      await _sendWithIGC();
+      return;
+    }
+
+    if (recurrence > 1) {
+      ErrorHandler.logError(
+        e: Exception("Choreographer send exceeded max recurrences"),
+        level: SentryLevel.warning,
+        data: {
+          "currentText": chatController.sendController.text,
+          "l1LangCode": l1LangCode,
+          "l2LangCode": l2LangCode,
+          "choreoRecord": _choreoRecord?.toJson(),
+        },
+      );
+      await _sendWithIGC();
+      return;
+    }
 
     if (igc.canShowFirstMatch) {
       throw OpenMatchesException();
@@ -200,9 +217,12 @@ class Choreographer extends ChangeNotifier {
 
     if (!igc.hasIGCTextData && !itController.dismissed) {
       await _getLanguageAssistance();
-      await send();
+      // it's possible for this not to be true, i.e. if IGC has an error
+      if (igc.hasIGCTextData) {
+        await send(recurrence + 1);
+      }
     } else {
-      _sendWithIGC();
+      await _sendWithIGC();
     }
   }
 
@@ -230,7 +250,7 @@ class Choreographer extends ChangeNotifier {
     if (textController.editType == EditType.it) {
       _getLanguageAssistance();
     } else {
-      _sourceText = null;
+      _sourceText.value = null;
       _debounceTimer ??= Timer(
         const Duration(milliseconds: ChoreoConstants.msBeforeIGCStart),
         () => _getLanguageAssistance(),
@@ -278,10 +298,10 @@ class Choreographer extends ChangeNotifier {
     final message = chatController.sendController.text;
     final fakeEventId = chatController.sendFakeMessage();
     final PangeaRepresentation? originalWritten =
-        _choreoRecord?.includedIT == true && _sourceText != null
+        _choreoRecord?.includedIT == true && _sourceText.value != null
             ? PangeaRepresentation(
                 langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
-                text: _sourceText!,
+                text: _sourceText.value!,
                 originalWritten: true,
                 originalSent: false,
               )
@@ -348,21 +368,21 @@ class Choreographer extends ChangeNotifier {
     if (!itMatch.updatedMatch.isITStart) {
       throw Exception("Attempted to open IT with a non-IT start match");
     }
+    chatController.inputFocus.unfocus();
 
-    _choreoMode = ChoreoMode.it;
-    _sourceText = textController.text;
-    itController.openIT();
-
-    igc.clear();
+    setChoreoMode(ChoreoMode.it);
+    _sourceText.value = textController.text;
     textController.setSystemText("", EditType.it);
+
+    itController.openIT();
+    igc.clear();
 
     _initChoreoRecord();
     itMatch.setStatus(PangeaMatchStatus.accepted);
     _choreoRecord!.addRecord(
-      textController.text,
+      "",
       match: itMatch.updatedMatch,
     );
-    notifyListeners();
   }
 
   void closeIT() {
@@ -394,7 +414,7 @@ class Choreographer extends ChangeNotifier {
   }
 
   void setSourceText(String? text) {
-    _sourceText = text;
+    _sourceText.value = text;
   }
 
   void setEditingSourceText(bool value) {
@@ -403,7 +423,8 @@ class Choreographer extends ChangeNotifier {
   }
 
   void submitSourceTextEdits(String text) {
-    _sourceText = text;
+    _sourceText.value = text;
+    textController.setSystemText("", EditType.it);
     itController.onSubmitEdits();
     notifyListeners();
   }

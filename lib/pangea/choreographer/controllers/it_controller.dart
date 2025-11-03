@@ -19,28 +19,27 @@ import 'choreographer.dart';
 class ITController {
   final Choreographer _choreographer;
 
-  ITStep? _currentITStep;
+  ValueNotifier<ITStep?> _currentITStep = ValueNotifier(null);
   final List<Completer<ITStep>> _queue = [];
   GoldRouteTracker? _goldRouteTracker;
 
-  bool _open = false;
-  bool _editing = false;
+  final ValueNotifier<bool> _open = ValueNotifier(false);
+  final ValueNotifier<bool> _editing = ValueNotifier(false);
   bool _dismissed = false;
 
   ITController(this._choreographer);
 
-  bool get open => _open;
-  bool get editing => _editing;
+  ValueNotifier<bool> get open => _open;
+  ValueNotifier<bool> get editing => _editing;
   bool get dismissed => _dismissed;
-  List<Continuance>? get continuances => _currentITStep?.continuances;
-  bool get isTranslationDone => _currentITStep?.isFinal ?? false;
+  ValueNotifier<ITStep?> get currentITStep => _currentITStep;
 
-  String? get _sourceText => _choreographer.sourceText;
+  ValueNotifier<String?> get _sourceText => _choreographer.sourceText;
 
   ITRequestModel _request(String textInput) {
-    assert(_sourceText != null);
+    assert(_sourceText.value != null);
     return ITRequestModel(
-      text: _sourceText!,
+      text: _sourceText.value!,
       customInput: textInput,
       sourceLangCode:
           MatrixState.pangeaController.languageController.activeL1Code()!,
@@ -53,13 +52,15 @@ class ITController {
     );
   }
 
-  void openIT() => _open = true;
+  void openIT() {
+    _open.value = true;
+  }
 
   void closeIT() {
     // if the user hasn't gone through any IT steps, reset the text
-    if (_choreographer.currentText.isEmpty && _sourceText != null) {
+    if (_choreographer.currentText.isEmpty && _sourceText.value != null) {
       _choreographer.textController.setSystemText(
-        _sourceText!,
+        _sourceText.value!,
         EditType.itDismissed,
       );
     }
@@ -70,77 +71,81 @@ class ITController {
   void clear({bool dismissed = false}) {
     MatrixState.pAnyState.closeOverlay("it_feedback_card");
 
-    _open = false;
-    _editing = false;
+    _open.value = false;
+    _editing.value = false;
     _dismissed = dismissed;
     _queue.clear();
-    _currentITStep = null;
+    _currentITStep = ValueNotifier(null);
     _goldRouteTracker = null;
 
     _choreographer.setChoreoMode(ChoreoMode.igc);
     _choreographer.setSourceText(null);
   }
 
-  void setEditing(bool value) => _editing = value;
+  void setEditing(bool value) {
+    _editing.value = value;
+  }
 
   void onSubmitEdits() {
-    _editing = false;
+    _editing.value = false;
     _queue.clear();
-    _currentITStep = null;
+    _currentITStep = ValueNotifier(null);
     _goldRouteTracker = null;
     continueIT();
   }
 
   Continuance onSelectContinuance(int index) {
-    if (_currentITStep == null) {
-      throw "onSelectContinuance called with null currentITStep";
+    if (_currentITStep.value == null) {
+      throw "onSelectContinuance called when _currentITStep is null";
     }
 
-    if (index < 0 || index >= _currentITStep!.continuances.length) {
+    if (index < 0 || index >= _currentITStep.value!.continuances.length) {
       throw "onSelectContinuance called with invalid index $index";
     }
 
-    final step = _currentITStep!.continuances[index];
-    _currentITStep!.continuances[index] = step.copyWith(
+    final currentStep = _currentITStep.value!;
+    currentStep.continuances[index] = currentStep.continuances[index].copyWith(
       wasClicked: true,
     );
-    return _currentITStep!.continuances[index];
+    _currentITStep.value = _currentITStep.value!.copyWith(
+      continuances: currentStep.continuances,
+    );
+    return _currentITStep.value!.continuances[index];
   }
 
   CompletedITStep getAcceptedITStep(int chosenIndex) {
-    if (_currentITStep == null) {
-      throw "getAcceptedITStep called with null currentITStep";
+    if (_currentITStep.value == null) {
+      throw "getAcceptedITStep called when _currentITStep is null";
     }
 
-    if (chosenIndex < 0 || chosenIndex >= _currentITStep!.continuances.length) {
+    if (chosenIndex < 0 ||
+        chosenIndex >= _currentITStep.value!.continuances.length) {
       throw "getAcceptedITStep called with invalid index $chosenIndex";
     }
 
     return CompletedITStep(
-      _currentITStep!.continuances,
+      _currentITStep.value!.continuances,
       chosen: chosenIndex,
     );
   }
 
   Future<void> continueIT() async {
-    if (_currentITStep == null) {
+    if (_currentITStep.value == null) {
       await _initTranslationData();
       return;
     }
-
     if (_queue.isEmpty) {
       _choreographer.closeIT();
-      return;
-    }
-
-    final nextStepCompleter = _queue.removeAt(0);
-    try {
-      _currentITStep = await nextStepCompleter.future;
-    } catch (e) {
-      if (_open) {
-        _choreographer.errorService.setErrorAndLock(
-          ChoreoError(raw: e),
-        );
+    } else {
+      try {
+        final nextStepCompleter = _queue.removeAt(0);
+        _currentITStep.value = await nextStepCompleter.future;
+      } catch (e) {
+        if (_open.value) {
+          _choreographer.errorService.setErrorAndLock(
+            ChoreoError(raw: e),
+          );
+        }
       }
     }
   }
@@ -156,7 +161,7 @@ class ITController {
       },
     );
 
-    if (_sourceText == null || !_open) return;
+    if (_sourceText.value == null || !_open.value) return;
     if (res.isError || res.result?.goldContinuances == null) {
       _choreographer.errorService.setErrorAndLock(
         ChoreoError(raw: res.asError),
@@ -167,11 +172,11 @@ class ITController {
     final result = res.result!;
     _goldRouteTracker = GoldRouteTracker(
       result.goldContinuances!,
-      _sourceText!,
+      _sourceText.value!,
     );
 
-    _currentITStep = ITStep(
-      sourceText: _sourceText!,
+    _currentITStep.value = ITStep.fromResponse(
+      sourceText: _sourceText.value!,
       currentText: currentText,
       responseModel: res.result!,
       storedGoldContinuances: _goldRouteTracker!.continuances,
@@ -181,11 +186,13 @@ class ITController {
   }
 
   Future<void> _fillITStepQueue() async {
-    if (_sourceText == null || _goldRouteTracker!.continuances.length < 2) {
+    if (_sourceText.value == null ||
+        _goldRouteTracker!.continuances.length < 2) {
       return;
     }
 
-    final sourceText = _sourceText!;
+    final sourceText = _sourceText.value!;
+    final goldContinuances = _goldRouteTracker!.continuances;
     String currentText =
         _choreographer.currentText + _goldRouteTracker!.continuances[0].text;
 
@@ -199,21 +206,22 @@ class ITController {
           );
         },
       );
+      if (_queue.isEmpty) break;
 
       if (res.isError) {
         _queue.last.completeError(res.asError!);
         break;
       } else {
-        final step = ITStep(
+        final step = ITStep.fromResponse(
           sourceText: sourceText,
           currentText: currentText,
           responseModel: res.result!,
-          storedGoldContinuances: _goldRouteTracker!.continuances,
+          storedGoldContinuances: goldContinuances,
         );
         _queue.last.complete(step);
       }
 
-      currentText += _goldRouteTracker!.continuances[i].text;
+      currentText += goldContinuances[i].text;
     }
   }
 }
@@ -259,7 +267,9 @@ class ITStep {
   late List<Continuance> continuances;
   late bool isFinal;
 
-  ITStep({
+  ITStep({this.continuances = const [], this.isFinal = false});
+
+  factory ITStep.fromResponse({
     required String sourceText,
     required String currentText,
     required ITResponseModel responseModel,
@@ -269,8 +279,8 @@ class ITStep {
         storedGoldContinuances ?? responseModel.goldContinuances ?? [];
     final goldTracker = GoldRouteTracker(gold, sourceText);
 
-    isFinal = responseModel.isFinal;
-
+    final isFinal = responseModel.isFinal;
+    List<Continuance> continuances;
     if (responseModel.continuances.isEmpty) {
       continuances = [];
     } else {
@@ -298,5 +308,20 @@ class ITStep {
         continuances = List<Continuance>.from(responseModel.continuances);
       }
     }
+
+    return ITStep(
+      continuances: continuances,
+      isFinal: isFinal,
+    );
+  }
+
+  ITStep copyWith({
+    List<Continuance>? continuances,
+    bool? isFinal,
+  }) {
+    return ITStep(
+      continuances: continuances ?? this.continuances,
+      isFinal: isFinal ?? this.isFinal,
+    );
   }
 }

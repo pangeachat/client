@@ -303,13 +303,15 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
     if (!scrollController.hasClients) return;
-    if (timeline?.allowNewEvent == false ||
-        scrollController.position.pixels > 0 && _scrolledUp == false) {
-      setState(() => _scrolledUp = true);
-    } else if (scrollController.position.pixels <= 0 && _scrolledUp == true) {
-      setState(() => _scrolledUp = false);
-      setReadMarker();
-    }
+    // #Pangea
+    // if (timeline?.allowNewEvent == false ||
+    //     scrollController.position.pixels > 0 && _scrolledUp == false) {
+    //   setState(() => _scrolledUp = true);
+    // } else if (scrollController.position.pixels <= 0 && _scrolledUp == true) {
+    //   setState(() => _scrolledUp = false);
+    //   setReadMarker();
+    // }
+    // Pangea#
 
     if (scrollController.position.pixels == 0 ||
         scrollController.position.pixels == 64) {
@@ -789,6 +791,8 @@ class ChatController extends State<ChatPageWithRoom>
     _botAudioSubscription?.cancel();
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     carouselController.dispose();
+    scrollController.dispose();
+    inputFocus.dispose();
     TokensUtil.clearNewTokenCache();
     //Pangea#
     super.dispose();
@@ -867,6 +871,7 @@ class ChatController extends State<ChatPageWithRoom>
       inReplyTo: replyEvent,
       editEventId: editEvent?.eventId,
     );
+    inputFocus.unfocus();
     sendController.setSystemText("", EditType.other);
     setState(() => _fakeEventIDs.add(eventID));
 
@@ -1697,7 +1702,7 @@ class ChatController extends State<ChatPageWithRoom>
 
   void onSelectMessage(Event event) {
     // #Pangea
-    if (choreographer.isITOpen) {
+    if (choreographer.itController.open.value) {
       return;
     }
     // Pangea#
@@ -1751,14 +1756,20 @@ class ChatController extends State<ChatPageWithRoom>
       await choreographer.send();
     } on ShowPaywallException {
       PaywallCard.show(context, choreographer.inputTransformTargetKey);
+      return;
     } on OpenMatchesException {
-      if (choreographer.firstIGCMatch != null) {
-        OverlayUtil.showIGCMatch(
-          choreographer.firstIGCMatch!,
-          choreographer,
-          context,
-        );
+      if (choreographer.firstOpenMatch != null) {
+        if (choreographer.firstOpenMatch!.updatedMatch.isITStart) {
+          choreographer.openIT(choreographer.firstOpenMatch!);
+        } else {
+          OverlayUtil.showIGCMatch(
+            choreographer.firstOpenMatch!,
+            choreographer,
+            context,
+          );
+        }
       }
+      return;
     }
     // Pangea#
     FocusScope.of(context).requestFocus(inputFocus);
@@ -2064,13 +2075,6 @@ class ChatController extends State<ChatPageWithRoom>
     });
   }
 
-  double inputBarHeight = 64;
-  void updateInputBarHeight(double height) {
-    if (mounted && height != inputBarHeight) {
-      setState(() => inputBarHeight = height);
-    }
-  }
-
   bool get displayChatDetailsColumn {
     try {
       return _displayChatDetailsColumn.value;
@@ -2207,15 +2211,27 @@ class ChatController extends State<ChatPageWithRoom>
     OverlayUtil.showPositionedCard(
       context: context,
       cardToShow: LanguageMismatchPopup(
-        targetLanguage: targetLanguage,
-        onUpdate: () async {
-          final igcMatch = await choreographer.requestLanguageAssistance();
-          if (igcMatch != null) {
-            OverlayUtil.showIGCMatch(
-              igcMatch,
-              choreographer,
-              context,
-            );
+        onConfirm: () async {
+          await MatrixState.pangeaController.userController.updateProfile(
+            (profile) {
+              profile.userSettings.targetLanguage = targetLanguage;
+              return profile;
+            },
+            waitForDataInSync: true,
+          );
+
+          await choreographer.requestLanguageAssistance();
+          final openMatch = choreographer.firstOpenMatch;
+          if (openMatch != null) {
+            if (openMatch.updatedMatch.isITStart) {
+              choreographer.openIT(openMatch);
+            } else {
+              OverlayUtil.showIGCMatch(
+                openMatch,
+                choreographer,
+                context,
+              );
+            }
           }
         },
       ),
@@ -2246,9 +2262,10 @@ class ChatController extends State<ChatPageWithRoom>
       targetAnchor: Alignment.topRight,
       context: context,
       child: MessageAnalyticsFeedback(
-        overlayId: "msg_analytics_feedback_$eventId",
         newGrammarConstructs: newGrammarConstructs,
         newVocabConstructs: newVocabConstructs,
+        close: () => MatrixState.pAnyState
+            .closeOverlay("msg_analytics_feedback_$eventId"),
       ),
       transformTargetId: eventId,
       ignorePointer: true,
