@@ -4,7 +4,7 @@ import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_edit.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_model.dart';
 import 'package:fluffychat/pangea/choreographer/models/span_data.dart';
-import 'it_step.dart';
+import 'completed_it_step.dart';
 
 /// this class lives within a [PangeaIGCEvent]
 /// it always has a [RepresentationEvent] parent

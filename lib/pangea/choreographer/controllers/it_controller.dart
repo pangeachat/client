@@ -1,26 +1,28 @@
 import 'dart:async';
+import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 
-import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/error_service.dart';
 import 'package:fluffychat/pangea/choreographer/enums/choreo_mode.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
+import 'package:fluffychat/pangea/choreographer/models/gold_route_tracker.dart';
+import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
 import 'package:fluffychat/pangea/choreographer/repo/it_repo.dart';
+import 'package:fluffychat/pangea/choreographer/repo/it_response_model.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../models/it_step.dart';
+import '../models/completed_it_step.dart';
 import '../repo/it_request_model.dart';
-import '../repo/it_response_model.dart';
 import 'choreographer.dart';
 
 class ITController {
   final Choreographer _choreographer;
 
-  ValueNotifier<ITStep?> _currentITStep = ValueNotifier(null);
-  final List<Completer<ITStep>> _queue = [];
+  final ValueNotifier<ITStep?> _currentITStep = ValueNotifier(null);
+  final Queue<Completer<ITStep>> _queue = Queue();
   GoldRouteTracker? _goldRouteTracker;
 
   final ValueNotifier<bool> _open = ValueNotifier(false);
@@ -52,8 +54,37 @@ class ITController {
     );
   }
 
+  Future<Result<ITResponseModel>> _safeRequest(String text) {
+    return ITRepo.get(_request(text)).timeout(
+      const Duration(seconds: 10),
+      onTimeout: () => Result.error(
+        TimeoutException("ITRepo.get timed out after 10 seconds"),
+      ),
+    );
+  }
+
+  void clear({bool dismissed = false}) {
+    MatrixState.pAnyState.closeOverlay("it_feedback_card");
+
+    _open.value = false;
+    _editing.value = false;
+    _dismissed = dismissed;
+    _queue.clear();
+    _currentITStep.value = null;
+    _goldRouteTracker = null;
+
+    _choreographer.setChoreoMode(ChoreoMode.igc);
+    _choreographer.setSourceText(null);
+  }
+
+  void dispose() {
+    _currentITStep.dispose();
+    _editing.dispose();
+  }
+
   void openIT() {
     _open.value = true;
+    continueIT();
   }
 
   void closeIT() {
@@ -68,20 +99,6 @@ class ITController {
     clear(dismissed: true);
   }
 
-  void clear({bool dismissed = false}) {
-    MatrixState.pAnyState.closeOverlay("it_feedback_card");
-
-    _open.value = false;
-    _editing.value = false;
-    _dismissed = dismissed;
-    _queue.clear();
-    _currentITStep = ValueNotifier(null);
-    _goldRouteTracker = null;
-
-    _choreographer.setChoreoMode(ChoreoMode.igc);
-    _choreographer.setSourceText(null);
-  }
-
   void setEditing(bool value) {
     _editing.value = value;
   }
@@ -89,7 +106,7 @@ class ITController {
   void onSubmitEdits() {
     _editing.value = false;
     _queue.clear();
-    _currentITStep = ValueNotifier(null);
+    _currentITStep.value = null;
     _goldRouteTracker = null;
     continueIT();
   }
@@ -113,54 +130,49 @@ class ITController {
     return _currentITStep.value!.continuances[index];
   }
 
-  CompletedITStep getAcceptedITStep(int chosenIndex) {
+  CompletedITStep onAcceptContinuance(int chosenIndex) {
     if (_currentITStep.value == null) {
-      throw "getAcceptedITStep called when _currentITStep is null";
+      throw "onAcceptContinuance called when _currentITStep is null";
     }
 
     if (chosenIndex < 0 ||
         chosenIndex >= _currentITStep.value!.continuances.length) {
-      throw "getAcceptedITStep called with invalid index $chosenIndex";
+      throw "onAcceptContinuance called with invalid index $chosenIndex";
     }
 
-    return CompletedITStep(
+    final completedStep = CompletedITStep(
       _currentITStep.value!.continuances,
       chosen: chosenIndex,
     );
+
+    continueIT();
+    return completedStep;
   }
 
+  bool _continuing = false;
   Future<void> continueIT() async {
-    if (_currentITStep.value == null) {
-      await _initTranslationData();
-      return;
-    }
-    if (_queue.isEmpty) {
-      _choreographer.closeIT();
-    } else {
-      try {
-        final nextStepCompleter = _queue.removeAt(0);
+    if (_continuing) return;
+    _continuing = true;
+
+    try {
+      if (_currentITStep.value == null) {
+        await _initTranslationData();
+      } else if (_queue.isEmpty) {
+        _choreographer.closeIT();
+      } else {
+        final nextStepCompleter = _queue.removeFirst();
         _currentITStep.value = await nextStepCompleter.future;
-      } catch (e) {
-        if (_open.value) {
-          _choreographer.errorService.setErrorAndLock(
-            ChoreoError(raw: e),
-          );
-        }
       }
+    } catch (e) {
+      _choreographer.errorService.setErrorAndLock(ChoreoError(raw: e));
+    } finally {
+      _continuing = false;
     }
   }
 
   Future<void> _initTranslationData() async {
     final String currentText = _choreographer.currentText;
-    final res = await ITRepo.get(_request(currentText)).timeout(
-      const Duration(seconds: 10),
-      onTimeout: () {
-        return Result.error(
-          TimeoutException("ITRepo.get timed out after 10 seconds"),
-        );
-      },
-    );
-
+    final res = await _safeRequest(currentText);
     if (_sourceText.value == null || !_open.value) return;
     if (res.isError || res.result?.goldContinuances == null) {
       _choreographer.errorService.setErrorAndLock(
@@ -193,135 +205,25 @@ class ITController {
 
     final sourceText = _sourceText.value!;
     final goldContinuances = _goldRouteTracker!.continuances;
-    String currentText =
-        _choreographer.currentText + _goldRouteTracker!.continuances[0].text;
-
-    for (int i = 1; i < _goldRouteTracker!.continuances.length; i++) {
-      _queue.add(Completer<ITStep>());
-      final res = await ITRepo.get(_request(currentText)).timeout(
-        const Duration(seconds: 10),
-        onTimeout: () {
-          return Result.error(
-            TimeoutException("ITRepo.get timed out after 10 seconds"),
-          );
-        },
-      );
-      if (_queue.isEmpty) break;
-
-      if (res.isError) {
-        _queue.last.completeError(res.asError!);
+    String currentText = goldContinuances[0].text;
+    for (int i = 1; i < goldContinuances.length; i++) {
+      final completer = Completer<ITStep>();
+      _queue.add(completer);
+      final resp = await _safeRequest(currentText);
+      if (resp.isError) {
+        completer.completeError(resp.asError!);
         break;
       } else {
         final step = ITStep.fromResponse(
           sourceText: sourceText,
           currentText: currentText,
-          responseModel: res.result!,
+          responseModel: resp.result!,
           storedGoldContinuances: goldContinuances,
         );
-        _queue.last.complete(step);
+        completer.complete(step);
       }
 
       currentText += goldContinuances[i].text;
     }
-  }
-}
-
-class GoldRouteTracker {
-  final String _originalText;
-  final List<Continuance> continuances;
-
-  const GoldRouteTracker(this.continuances, String originalText)
-      : _originalText = originalText;
-
-  Continuance? currentContinuance({
-    required String currentText,
-    required String sourceText,
-  }) {
-    if (_originalText != sourceText) {
-      debugPrint("$_originalText != $_originalText");
-      return null;
-    }
-
-    String stack = "";
-    for (final cont in continuances) {
-      if (stack == currentText) {
-        return cont;
-      }
-      stack += cont.text;
-    }
-
-    return null;
-  }
-
-  String? get fullTranslation {
-    if (continuances.isEmpty) return null;
-    String full = "";
-    for (final cont in continuances) {
-      full += cont.text;
-    }
-    return full;
-  }
-}
-
-class ITStep {
-  late List<Continuance> continuances;
-  late bool isFinal;
-
-  ITStep({this.continuances = const [], this.isFinal = false});
-
-  factory ITStep.fromResponse({
-    required String sourceText,
-    required String currentText,
-    required ITResponseModel responseModel,
-    required List<Continuance>? storedGoldContinuances,
-  }) {
-    final List<Continuance> gold =
-        storedGoldContinuances ?? responseModel.goldContinuances ?? [];
-    final goldTracker = GoldRouteTracker(gold, sourceText);
-
-    final isFinal = responseModel.isFinal;
-    List<Continuance> continuances;
-    if (responseModel.continuances.isEmpty) {
-      continuances = [];
-    } else {
-      final Continuance? goldCont = goldTracker.currentContinuance(
-        currentText: currentText,
-        sourceText: sourceText,
-      );
-      if (goldCont != null) {
-        continuances = [
-          ...responseModel.continuances
-              .where((c) => c.text.toLowerCase() != goldCont.text.toLowerCase())
-              .map((e) {
-            //we only want one green choice and for that to be our gold
-            if (e.level == ChoreoConstants.levelThresholdForGreen) {
-              return e.copyWith(
-                level: ChoreoConstants.levelThresholdForYellow,
-              );
-            }
-            return e;
-          }),
-          goldCont,
-        ];
-        continuances.shuffle();
-      } else {
-        continuances = List<Continuance>.from(responseModel.continuances);
-      }
-    }
-
-    return ITStep(
-      continuances: continuances,
-      isFinal: isFinal,
-    );
-  }
-
-  ITStep copyWith({
-    List<Continuance>? continuances,
-    bool? isFinal,
-  }) {
-    return ITStep(
-      continuances: continuances ?? this.continuances,
-      isFinal: isFinal ?? this.isFinal,
-    );
   }
 }

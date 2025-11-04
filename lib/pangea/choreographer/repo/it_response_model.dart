@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
-import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
+import 'package:fluffychat/pangea/choreographer/models/completed_it_step.dart';
 
 class ITResponseModel {
   final String fullTextTranslation;

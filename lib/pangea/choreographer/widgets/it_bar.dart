@@ -9,7 +9,7 @@ import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart'
 import 'package:fluffychat/pangea/choreographer/controllers/choreographer.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choregrapher_user_settings_extension.dart';
 import 'package:fluffychat/pangea/choreographer/controllers/extensions/choreographer_ui_extension.dart';
-import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
+import 'package:fluffychat/pangea/choreographer/models/completed_it_step.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/igc/word_data_card.dart';
 import 'package:fluffychat/pangea/choreographer/widgets/it_feedback_card.dart';

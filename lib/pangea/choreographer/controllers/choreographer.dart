@@ -15,7 +15,7 @@ import 'package:fluffychat/pangea/choreographer/enums/choreo_mode.dart';
 import 'package:fluffychat/pangea/choreographer/enums/edit_type.dart';
 import 'package:fluffychat/pangea/choreographer/enums/pangea_match_status.dart';
 import 'package:fluffychat/pangea/choreographer/models/choreo_record.dart';
-import 'package:fluffychat/pangea/choreographer/models/it_step.dart';
+import 'package:fluffychat/pangea/choreographer/models/completed_it_step.dart';
 import 'package:fluffychat/pangea/choreographer/models/pangea_match_state.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -91,7 +91,7 @@ class Choreographer extends ChangeNotifier {
   }
 
   void clear() {
-    _choreoMode = ChoreoMode.igc;
+    setChoreoMode(ChoreoMode.igc);
     _lastChecked = null;
     _timesClicked = 0;
     _isFetching.value = false;
@@ -105,6 +105,7 @@ class Choreographer extends ChangeNotifier {
   @override
   void dispose() {
     super.dispose();
+    itController.dispose();
     errorService.dispose();
     textController.dispose();
     _languageStream?.cancel();
@@ -234,6 +235,10 @@ class Choreographer extends ChangeNotifier {
 
     _lastChecked = textController.text;
 
+    if (textController.editType == EditType.it) {
+      return;
+    }
+
     if (textController.editType == EditType.igc ||
         textController.editType == EditType.itDismissed) {
       textController.editType = EditType.keyboard;
@@ -247,15 +252,10 @@ class Choreographer extends ChangeNotifier {
     igc.clear();
     _resetDebounceTimer();
 
-    if (textController.editType == EditType.it) {
-      _getLanguageAssistance();
-    } else {
-      _sourceText.value = null;
-      _debounceTimer ??= Timer(
-        const Duration(milliseconds: ChoreoConstants.msBeforeIGCStart),
-        () => _getLanguageAssistance(),
-      );
-    }
+    _debounceTimer ??= Timer(
+      const Duration(milliseconds: ChoreoConstants.msBeforeIGCStart),
+      () => _getLanguageAssistance(),
+    );
 
     //Note: we don't set the keyboard type on each keyboard stroke so this is how we default to
     //a change being from the keyboard unless explicitly set to one of the other
@@ -286,7 +286,7 @@ class Choreographer extends ChangeNotifier {
     _initChoreoRecord();
 
     _startLoading();
-    await (isRunningIT ? itController.continueIT() : igc.getIGCTextData());
+    await igc.getIGCTextData();
     _stopLoading();
   }
 
@@ -398,7 +398,7 @@ class Choreographer extends ChangeNotifier {
   }
 
   void onAcceptContinuance(int index) {
-    final step = itController.getAcceptedITStep(index);
+    final step = itController.onAcceptContinuance(index);
     textController.setSystemText(
       textController.text + step.continuances[step.chosen].text,
       EditType.it,

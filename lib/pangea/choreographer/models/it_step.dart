@@ -1,171 +1,67 @@
-import 'package:flutter/material.dart';
+import 'package:fluffychat/pangea/choreographer/constants/choreo_constants.dart';
+import 'package:fluffychat/pangea/choreographer/models/completed_it_step.dart';
+import 'package:fluffychat/pangea/choreographer/models/gold_route_tracker.dart';
+import 'package:fluffychat/pangea/choreographer/repo/it_response_model.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
-import '../constants/choreo_constants.dart';
+class ITStep {
+  late List<Continuance> continuances;
+  late bool isFinal;
 
-class CompletedITStep {
-  final List<Continuance> continuances;
-  final int chosen;
+  ITStep({this.continuances = const [], this.isFinal = false});
 
-  const CompletedITStep(
-    this.continuances, {
-    required this.chosen,
-  });
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['continuances'] = continuances.map((e) => e.toJson(true)).toList();
-    data['chosen'] = chosen;
-    return data;
-  }
-
-  factory CompletedITStep.fromJson(Map<String, dynamic> json) {
-    final List<Continuance> continuances = <Continuance>[];
-    for (final Map<String, dynamic> continuance in json['continuances']) {
-      continuances.add(Continuance.fromJson(continuance));
-    }
-    return CompletedITStep(
-      continuances,
-      chosen: json['chosen'],
-    );
-  }
-
-  Continuance? get chosenContinuance {
-    return continuances[chosen];
-  }
-}
-
-class Continuance {
-  final double probability;
-  final int level;
-  final String text;
-
-  final String description;
-  final int? indexSavedByServer;
-  final bool wasClicked;
-  final bool inDictionary;
-  final bool hasInfo;
-  final bool gold;
-
-  const Continuance({
-    required this.probability,
-    required this.level,
-    required this.text,
-    required this.description,
-    required this.indexSavedByServer,
-    required this.wasClicked,
-    required this.inDictionary,
-    required this.hasInfo,
-    required this.gold,
-  });
-
-  factory Continuance.fromJson(Map<String, dynamic> json) {
-    return Continuance(
-      probability: json['probability'].toDouble(),
-      level: json['level'],
-      text: json['text'],
-      description: json['description'] ?? "",
-      indexSavedByServer: json["index"],
-      inDictionary: json['in_dictionary'] ?? true,
-      wasClicked: json['clkd'] ?? false,
-      hasInfo: json['has_info'] ?? false,
-      gold: json['gold'] ?? false,
-    );
-  }
-
-  Map<String, dynamic> toJson([bool condensed = false]) {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['probability'] = probability;
-    data['level'] = level;
-    data['text'] = text;
-    data['clkd'] = wasClicked;
-
-    if (!condensed) {
-      data['description'] = description;
-      data['in_dictionary'] = inDictionary;
-      data['has_info'] = hasInfo;
-      data["index"] = indexSavedByServer;
-      data['gold'] = gold;
-    }
-    return data;
-  }
-
-  Continuance copyWith({
-    double? probability,
-    int? level,
-    String? text,
-    String? description,
-    int? indexSavedByServer,
-    bool? wasClicked,
-    bool? inDictionary,
-    bool? hasInfo,
-    bool? gold,
+  factory ITStep.fromResponse({
+    required String sourceText,
+    required String currentText,
+    required ITResponseModel responseModel,
+    required List<Continuance>? storedGoldContinuances,
   }) {
-    return Continuance(
-      probability: probability ?? this.probability,
-      level: level ?? this.level,
-      text: text ?? this.text,
-      description: description ?? this.description,
-      indexSavedByServer: indexSavedByServer ?? this.indexSavedByServer,
-      wasClicked: wasClicked ?? this.wasClicked,
-      inDictionary: inDictionary ?? this.inDictionary,
-      hasInfo: hasInfo ?? this.hasInfo,
-      gold: gold ?? this.gold,
+    final List<Continuance> gold =
+        storedGoldContinuances ?? responseModel.goldContinuances ?? [];
+    final goldTracker = GoldRouteTracker(gold, sourceText);
+
+    final isFinal = responseModel.isFinal;
+    List<Continuance> continuances;
+    if (responseModel.continuances.isEmpty) {
+      continuances = [];
+    } else {
+      final Continuance? goldCont = goldTracker.currentContinuance(
+        currentText: currentText,
+        sourceText: sourceText,
+      );
+      if (goldCont != null) {
+        continuances = [
+          ...responseModel.continuances
+              .where((c) => c.text.toLowerCase() != goldCont.text.toLowerCase())
+              .map((e) {
+            //we only want one green choice and for that to be our gold
+            if (e.level == ChoreoConstants.levelThresholdForGreen) {
+              return e.copyWith(
+                level: ChoreoConstants.levelThresholdForYellow,
+              );
+            }
+            return e;
+          }),
+          goldCont,
+        ];
+        continuances.shuffle();
+      } else {
+        continuances = List<Continuance>.from(responseModel.continuances);
+      }
+    }
+
+    return ITStep(
+      continuances: continuances,
+      isFinal: isFinal,
     );
   }
 
-  Color? get color {
-    if (!wasClicked) return null;
-    switch (level) {
-      case ChoreoConstants.levelThresholdForGreen:
-        return ChoreoConstants.green;
-      case ChoreoConstants.levelThresholdForYellow:
-        return ChoreoConstants.yellow;
-      case ChoreoConstants.levelThresholdForRed:
-        return ChoreoConstants.red;
-      default:
-        return null;
-    }
+  ITStep copyWith({
+    List<Continuance>? continuances,
+    bool? isFinal,
+  }) {
+    return ITStep(
+      continuances: continuances ?? this.continuances,
+      isFinal: isFinal ?? this.isFinal,
+    );
   }
-
-  String? feedbackText(BuildContext context) {
-    final L10n l10n = L10n.of(context);
-    switch (level) {
-      case ChoreoConstants.levelThresholdForGreen:
-        return l10n.greenFeedback;
-      case ChoreoConstants.levelThresholdForYellow:
-        return l10n.yellowFeedback;
-      case ChoreoConstants.levelThresholdForRed:
-        return l10n.redFeedback;
-      default:
-        return null;
-    }
-  }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Continuance &&
-          runtimeType == other.runtimeType &&
-          probability == other.probability &&
-          level == other.level &&
-          text == other.text &&
-          description == other.description &&
-          indexSavedByServer == other.indexSavedByServer &&
-          wasClicked == other.wasClicked &&
-          inDictionary == other.inDictionary &&
-          hasInfo == other.hasInfo &&
-          gold == other.gold;
-
-  @override
-  int get hashCode =>
-      probability.hashCode ^
-      level.hashCode ^
-      text.hashCode ^
-      description.hashCode ^
-      indexSavedByServer.hashCode ^
-      wasClicked.hashCode ^
-      inDictionary.hashCode ^
-      hasInfo.hashCode ^
-      gold.hashCode;
 }
