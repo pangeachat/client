@@ -36,6 +36,7 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
   final TextEditingController _sourceTextController = TextEditingController();
 
   Timer? _successTimer;
+  bool _visible = false;
 
   @override
   void initState() {
@@ -46,14 +47,8 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
       vsync: this,
     );
     _animation = CurvedAnimation(parent: _controller, curve: Curves.easeInOut);
-    _open.value ? _controller.forward() : _controller.reverse();
-    _open.addListener(() {
-      final nextText = _sourceText.value ?? widget.choreographer.currentText;
-      if (_sourceTextController.text != nextText) {
-        _sourceTextController.text = nextText;
-      }
-      _open.value ? _controller.forward() : _controller.reverse();
-    });
+    _openListener();
+    _open.addListener(_openListener);
   }
 
   @override
@@ -61,10 +56,31 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
     _controller.dispose();
     _sourceTextController.dispose();
     _successTimer?.cancel();
+    _open.removeListener(_openListener);
     super.dispose();
   }
 
-  ValueNotifier<String?> get _sourceText => widget.choreographer.sourceText;
+  void _openListener() {
+    if (!mounted) return;
+
+    final nextText = _sourceText.value ?? widget.choreographer.currentText;
+    if (_sourceTextController.text != nextText) {
+      _sourceTextController.text = nextText;
+    }
+
+    if (_open.value) {
+      setState(() => _visible = true);
+      _controller.forward();
+    } else {
+      _controller.reverse().then((value) {
+        if (!mounted) return;
+        setState(() => _visible = false);
+      });
+    }
+  }
+
+  ValueNotifier<String?> get _sourceText =>
+      widget.choreographer.itController.sourceText;
   ValueNotifier<bool> get _open => widget.choreographer.itController.open;
 
   void _showFeedbackCard(
@@ -165,6 +181,10 @@ class ITBarState extends State<ITBar> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    if (!_visible) {
+      return const SizedBox.shrink();
+    }
+
     return AnimatedBuilder(
       animation: _animation,
       builder: (context, child) => SizeTransition(

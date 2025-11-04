@@ -421,7 +421,9 @@ class ChatController extends State<ChatPageWithRoom>
     inputFocus = FocusNode(onKeyEvent: _customEnterKeyHandling);
 
     scrollController.addListener(_updateScrollController);
-    inputFocus.addListener(_inputFocusListener);
+    // #Pangea
+    // inputFocus.addListener(_inputFocusListener);
+    // Pangea#
 
     _loadDraft();
     WidgetsBinding.instance.addPostFrameCallback(_shareItems);
@@ -779,7 +781,9 @@ class ChatController extends State<ChatPageWithRoom>
   void dispose() {
     timeline?.cancelSubscriptions();
     timeline = null;
-    inputFocus.removeListener(_inputFocusListener);
+    // #Pangea
+    // inputFocus.removeListener(_inputFocusListener);
+    // Pangea#
     onFocusSub?.cancel();
     //#Pangea
     choreographer.dispose();
@@ -1238,11 +1242,13 @@ class ChatController extends State<ChatPageWithRoom>
     setState(() => showEmojiPicker = !showEmojiPicker);
   }
 
-  void _inputFocusListener() {
-    if (showEmojiPicker && inputFocus.hasFocus) {
-      setState(() => showEmojiPicker = false);
-    }
-  }
+  // #Pangea
+  // void _inputFocusListener() {
+  //   if (showEmojiPicker && inputFocus.hasFocus) {
+  //     setState(() => showEmojiPicker = false);
+  //   }
+  // }
+  // Pangea#
 
   void sendLocationAction() async {
     await showAdaptiveDialog(

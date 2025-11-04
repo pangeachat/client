@@ -20,6 +20,7 @@ import 'choreographer.dart';
 
 class ITController {
   final Choreographer _choreographer;
+  final ValueNotifier<String?> _sourceText = ValueNotifier(null);
 
   final ValueNotifier<ITStep?> _currentITStep = ValueNotifier(null);
   final Queue<Completer<ITStep>> _queue = Queue();
@@ -33,10 +34,9 @@ class ITController {
 
   ValueNotifier<bool> get open => _open;
   ValueNotifier<bool> get editing => _editing;
-  bool get dismissed => _dismissed;
   ValueNotifier<ITStep?> get currentITStep => _currentITStep;
-
-  ValueNotifier<String?> get _sourceText => _choreographer.sourceText;
+  ValueNotifier<String?> get sourceText => _sourceText;
+  bool get dismissed => _dismissed;
 
   ITRequestModel _request(String textInput) {
     assert(_sourceText.value != null);
@@ -74,15 +74,20 @@ class ITController {
     _goldRouteTracker = null;
 
     _choreographer.setChoreoMode(ChoreoMode.igc);
-    _choreographer.setSourceText(null);
+  }
+
+  void clearSourceText() {
+    _sourceText.value = null;
   }
 
   void dispose() {
     _currentITStep.dispose();
     _editing.dispose();
+    _sourceText.dispose();
   }
 
-  void openIT() {
+  void openIT(String sourceText) {
+    _sourceText.value = sourceText;
     _open.value = true;
     continueIT();
   }
@@ -171,8 +176,7 @@ class ITController {
   }
 
   Future<void> _initTranslationData() async {
-    final String currentText = _choreographer.currentText;
-    final res = await _safeRequest(currentText);
+    final res = await _safeRequest("");
     if (_sourceText.value == null || !_open.value) return;
     if (res.isError || res.result?.goldContinuances == null) {
       _choreographer.errorService.setErrorAndLock(
@@ -189,7 +193,7 @@ class ITController {
 
     _currentITStep.value = ITStep.fromResponse(
       sourceText: _sourceText.value!,
-      currentText: currentText,
+      currentText: "",
       responseModel: res.result!,
       storedGoldContinuances: _goldRouteTracker!.continuances,
     );

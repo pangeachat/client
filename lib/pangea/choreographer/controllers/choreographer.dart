@@ -50,7 +50,6 @@ class Choreographer extends ChangeNotifier {
   Timer? _debounceTimer;
   String? _lastChecked;
   ChoreoMode _choreoMode = ChoreoMode.igc;
-  final ValueNotifier<String?> _sourceText = ValueNotifier(null);
 
   StreamSubscription? _languageStream;
   StreamSubscription? _settingsUpdateStream;
@@ -62,8 +61,6 @@ class Choreographer extends ChangeNotifier {
   int get timesClicked => _timesClicked;
   ValueNotifier<bool> get isFetching => _isFetching;
   ChoreoMode get choreoMode => _choreoMode;
-
-  ValueNotifier<String?> get sourceText => _sourceText;
   String get currentText => textController.text;
 
   void _initialize() {
@@ -96,8 +93,8 @@ class Choreographer extends ChangeNotifier {
     _timesClicked = 0;
     _isFetching.value = false;
     _choreoRecord = null;
-    _sourceText.value = null;
     itController.clear();
+    itController.clearSourceText();
     igc.clear();
     _resetDebounceTimer();
   }
@@ -250,8 +247,11 @@ class Choreographer extends ChangeNotifier {
     if (errorService.isError) return;
 
     igc.clear();
-    _resetDebounceTimer();
+    if (textController.editType == EditType.keyboard) {
+      itController.clearSourceText();
+    }
 
+    _resetDebounceTimer();
     _debounceTimer ??= Timer(
       const Duration(milliseconds: ChoreoConstants.msBeforeIGCStart),
       () => _getLanguageAssistance(),
@@ -298,10 +298,11 @@ class Choreographer extends ChangeNotifier {
     final message = chatController.sendController.text;
     final fakeEventId = chatController.sendFakeMessage();
     final PangeaRepresentation? originalWritten =
-        _choreoRecord?.includedIT == true && _sourceText.value != null
+        _choreoRecord?.includedIT == true &&
+                itController.sourceText.value != null
             ? PangeaRepresentation(
                 langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
-                text: _sourceText.value!,
+                text: itController.sourceText.value!,
                 originalWritten: true,
                 originalSent: false,
               )
@@ -371,10 +372,8 @@ class Choreographer extends ChangeNotifier {
     chatController.inputFocus.unfocus();
 
     setChoreoMode(ChoreoMode.it);
-    _sourceText.value = textController.text;
+    itController.openIT(textController.text);
     textController.setSystemText("", EditType.it);
-
-    itController.openIT();
     igc.clear();
 
     _initChoreoRecord();
@@ -413,17 +412,12 @@ class Choreographer extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setSourceText(String? text) {
-    _sourceText.value = text;
-  }
-
   void setEditingSourceText(bool value) {
     itController.setEditing(value);
     notifyListeners();
   }
 
   void submitSourceTextEdits(String text) {
-    _sourceText.value = text;
     textController.setSystemText("", EditType.it);
     itController.onSubmitEdits();
     notifyListeners();

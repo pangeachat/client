@@ -427,9 +427,7 @@ class InputBar extends StatelessWidget {
   }
 
   // #Pangea
-  void onInputTap(BuildContext context, {required FocusNode fNode}) {
-    fNode.requestFocus();
-
+  void onInputTap(BuildContext context) {
     // show the paywall if appropriate
     final choreographer = controller!.choreographer;
     if (MatrixState
@@ -525,12 +523,7 @@ class InputBar extends StatelessWidget {
           style: controller?.exceededMaxLength ?? false
               ? const TextStyle(color: Colors.red)
               : null,
-          onTap: () {
-            onInputTap(
-              context,
-              fNode: focusNode,
-            );
-          },
+          onTap: () => onInputTap(context),
           decoration: decoration!,
           onChanged: (text) {
             // fix for the library for now

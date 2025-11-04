@@ -21,7 +21,7 @@ extension ChoregrapherUserSettingsExtension on Choreographer {
   AssistanceState get assistanceState {
     final isSubscribed = pangeaController.subscriptionController.isSubscribed;
     if (isSubscribed == false) return AssistanceState.noSub;
-    if (currentText.isEmpty && sourceText.value == null) {
+    if (currentText.isEmpty && itController.sourceText.value == null) {
       return AssistanceState.noMessage;
     }
 
