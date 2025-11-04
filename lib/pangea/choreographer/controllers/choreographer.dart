@@ -25,6 +25,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/learning_settings/constants/language_constants.dart';
 import 'package:fluffychat/pangea/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/pangea/toolbar/controllers/tts_controller.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import 'error_service.dart';
 import 'it_controller.dart';
@@ -300,72 +301,54 @@ class Choreographer extends ChangeNotifier {
 
     final message = chatController.sendController.text;
     final fakeEventId = chatController.sendFakeMessage();
-    final PangeaRepresentation? originalWritten =
-        _choreoRecord?.includedIT == true &&
-                itController.sourceText.value != null
-            ? PangeaRepresentation(
-                langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
-                text: itController.sourceText.value!,
-                originalWritten: true,
-                originalSent: false,
-              )
-            : null;
 
-    PangeaMessageTokens? tokensSent;
-    PangeaRepresentation? originalSent;
-    try {
-      TokensResponseModel? res;
-      if (l1LangCode != null && l2LangCode != null) {
-        res = await pangeaController.messageData
-            .getTokens(
-              repEventId: null,
-              room: chatController.room,
-              req: TokensRequestModel(
-                fullText: message,
-                senderL1: l1LangCode!,
-                senderL2: l2LangCode!,
-              ),
-            )
-            .timeout(const Duration(seconds: 10));
-      }
+    TokensResponseModel? tokensResp;
+    if (l1LangCode != null && l2LangCode != null) {
+      final res = await pangeaController.messageData
+          .getTokens(
+            repEventId: null,
+            room: chatController.room,
+            req: TokensRequestModel(
+              fullText: message,
+              senderL1: l1LangCode!,
+              senderL2: l2LangCode!,
+            ),
+          )
+          .timeout(const Duration(seconds: 10));
+      tokensResp = res.isValue ? res.result : null;
+    }
 
-      originalSent = PangeaRepresentation(
-        langCode: res?.detections.firstOrNull?.langCode ??
+    final hasOriginalWritten = _choreoRecord?.includedIT == true &&
+        itController.sourceText.value != null;
+
+    chatController.send(
+      message: message,
+      originalSent: PangeaRepresentation(
+        langCode: tokensResp?.detections.firstOrNull?.langCode ??
             LanguageKeys.unknownLanguage,
         text: message,
         originalSent: true,
-        originalWritten: originalWritten == null,
-      );
-
-      tokensSent = res != null
-          ? PangeaMessageTokens(
-              tokens: res.tokens,
-              detections: res.detections,
+        originalWritten: hasOriginalWritten,
+      ),
+      originalWritten: hasOriginalWritten
+          ? PangeaRepresentation(
+              langCode: l1LangCode ?? LanguageKeys.unknownLanguage,
+              text: itController.sourceText.value!,
+              originalWritten: true,
+              originalSent: false,
             )
-          : null;
-    } catch (e, s) {
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {
-          "currentText": message,
-          "l1LangCode": l1LangCode,
-          "l2LangCode": l2LangCode,
-          "choreoRecord": _choreoRecord?.toJson(),
-        },
-        level: e is TimeoutException ? SentryLevel.warning : SentryLevel.error,
-      );
-    } finally {
-      chatController.send(
-        message: message,
-        originalSent: originalSent,
-        originalWritten: originalWritten,
-        tokensSent: tokensSent,
-        choreo: _choreoRecord,
-        tempEventId: fakeEventId,
-      );
-      clear();
-    }
+          : null,
+      tokensSent: tokensResp != null
+          ? PangeaMessageTokens(
+              tokens: tokensResp.tokens,
+              detections: tokensResp.detections,
+            )
+          : null,
+      choreo: _choreoRecord,
+      tempEventId: fakeEventId,
+    );
+
+    clear();
   }
 
   void openIT(PangeaMatchState itMatch) {

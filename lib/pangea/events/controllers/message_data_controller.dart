@@ -1,9 +1,7 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-
-import 'package:matrix/matrix.dart';
+import 'package:async/async.dart';
+import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_repo.dart';
 import 'package:fluffychat/pangea/choreographer/repo/full_text_translation_request_model.dart';
@@ -19,56 +17,34 @@ import 'package:fluffychat/pangea/events/repo/token_api_models.dart';
 import 'package:fluffychat/pangea/events/repo/tokens_repo.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 // TODO - make this static and take it out of the _pangeaController
 // will need to pass accessToken to the requests
 class MessageDataController extends BaseController {
   late PangeaController _pangeaController;
 
-  final Map<int, Future<TokensResponseModel>> _tokensCache = {};
-  late Timer _cacheTimer;
-
   MessageDataController(PangeaController pangeaController) {
     _pangeaController = pangeaController;
-    _startCacheTimer();
-  }
-
-  /// Starts a timer that clears the cache every 10 minutes
-  void _startCacheTimer() {
-    _cacheTimer = Timer.periodic(const Duration(minutes: 10), (timer) {
-      _clearCache();
-    });
-  }
-
-  /// Clears the token and representation caches
-  void _clearCache() {
-    _tokensCache.clear();
-    debugPrint("message data cache cleared.");
-  }
-
-  @override
-  void dispose() {
-    _cacheTimer.cancel(); // Cancel the timer when the controller is disposed
-    super.dispose();
   }
 
   /// get tokens from the server
   /// if repEventId is not null, send the tokens to the room
-  Future<TokensResponseModel> _getTokens({
+  Future<Result<TokensResponseModel>> getTokens({
     required String? repEventId,
     required TokensRequestModel req,
     required Room? room,
   }) async {
-    final TokensResponseModel res = await TokensRepo.get(
-      _pangeaController.userController.accessToken,
-      request: req,
+    final res = await TokensRepo.get(
+      MatrixState.pangeaController.userController.accessToken,
+      req,
     );
-    if (repEventId != null && room != null) {
+    if (res.isValue && repEventId != null && room != null) {
       room
           .sendPangeaEvent(
             content: PangeaMessageTokens(
-              tokens: res.tokens,
-              detections: res.detections,
+              tokens: res.result!.tokens,
+              detections: res.result!.detections,
             ).toJson(),
             parentEventId: repEventId,
             type: PangeaEventTypes.tokens,
@@ -82,26 +58,8 @@ class MessageDataController extends BaseController {
             ),
           );
     }
-
     return res;
   }
-
-  /// get tokens from the server
-  /// first check if the tokens are in the cache
-  /// if repEventId is not null, send the tokens to the room
-  Future<TokensResponseModel> getTokens({
-    required String? repEventId,
-    required TokensRequestModel req,
-    required Room? room,
-  }) =>
-      _tokensCache[req.hashCode] ??= _getTokens(
-        repEventId: repEventId,
-        req: req,
-        room: room,
-      ).catchError((e, s) {
-        _tokensCache.remove(req.hashCode);
-        return Future<TokensResponseModel>.error(e, s);
-      });
 
   /////// translation ////////
 
@@ -193,35 +151,6 @@ class MessageDataController extends BaseController {
         data: req.toJson(),
       );
       return null;
-    }
-  }
-
-  Future<void> sendTokensEvent({
-    required String repEventId,
-    required TokensRequestModel req,
-    required Room room,
-  }) async {
-    final TokensResponseModel res = await TokensRepo.get(
-      _pangeaController.userController.accessToken,
-      request: req,
-    );
-
-    try {
-      await room.sendPangeaEvent(
-        content: PangeaMessageTokens(
-          tokens: res.tokens,
-          detections: res.detections,
-        ).toJson(),
-        parentEventId: repEventId,
-        type: PangeaEventTypes.tokens,
-      );
-    } catch (e, s) {
-      ErrorHandler.logError(
-        m: "error in _getTokens.sendPangeaEvent",
-        e: e,
-        s: s,
-        data: req.toJson(),
-      );
     }
   }
 

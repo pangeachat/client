@@ -4,8 +4,9 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:async/async.dart';
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
+import 'package:matrix/matrix.dart' hide Result;
 import 'package:matrix/src/utils/markdown.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
@@ -26,6 +27,7 @@ import 'package:fluffychat/pangea/learning_settings/constants/language_constants
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/parts_of_speech_enum.dart';
 import 'package:fluffychat/pangea/practice_activities/activity_type_enum.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class RepresentationEvent {
@@ -90,11 +92,11 @@ class RepresentationEvent {
     return _tokens?.tokens;
   }
 
-  Future<List<PangeaToken>> tokensGlobal(
+  Future<Result<List<PangeaToken>>> tokensGlobal(
     String senderID,
     DateTime timestamp,
   ) async {
-    if (tokens != null) return tokens!;
+    if (tokens != null) return Result.value(tokens!);
 
     if (_event == null && timestamp.isAfter(DateTime(2024, 9, 25))) {
       Sentry.addBreadcrumb(
@@ -110,8 +112,7 @@ class RepresentationEvent {
         ),
       );
     }
-    final TokensResponseModel res =
-        await MatrixState.pangeaController.messageData.getTokens(
+    final res = await MatrixState.pangeaController.messageData.getTokens(
       repEventId: _event?.eventId,
       room: _event?.room ?? parentMessageEvent.room,
       req: TokensRequestModel(
@@ -128,7 +129,11 @@ class RepresentationEvent {
       ),
     );
 
-    return res.tokens;
+    if (res.isError) {
+      return Result.error(res.error!);
+    } else {
+      return Result.value(res.result!.tokens);
+    }
   }
 
   Future<void> sendTokensEvent(
@@ -146,7 +151,7 @@ class RepresentationEvent {
       return;
     }
 
-    await MatrixState.pangeaController.messageData.sendTokensEvent(
+    await MatrixState.pangeaController.messageData.getTokens(
       repEventId: repEventID,
       room: room,
       req: TokensRequestModel(

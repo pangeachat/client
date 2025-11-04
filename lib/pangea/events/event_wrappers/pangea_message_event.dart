@@ -28,6 +28,7 @@ import 'package:fluffychat/pangea/toolbar/enums/audio_encoding_enum.dart';
 import 'package:fluffychat/pangea/toolbar/event_wrappers/practice_activity_event.dart';
 import 'package:fluffychat/pangea/toolbar/models/speech_to_text_models.dart';
 import 'package:fluffychat/pangea/toolbar/widgets/message_audio_card.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../../../widgets/matrix.dart';
 import '../../common/utils/error_handler.dart';
 import '../../learning_settings/constants/language_constants.dart';
@@ -97,20 +98,18 @@ class PangeaMessageEvent {
     _representations = null;
   }
 
-  Future<PangeaAudioFile?> getMatrixAudioFile(
+  Future<PangeaAudioFile> getMatrixAudioFile(
     String langCode,
   ) async {
     final RepresentationEvent? rep = representationByLanguage(langCode);
+    final tokensResp = await rep?.tokensGlobal(
+      senderId,
+      originServerTs,
+    );
 
     final TextToSpeechRequest params = TextToSpeechRequest(
       text: rep?.content.text ?? body,
-      tokens: (await rep?.tokensGlobal(
-            senderId,
-            originServerTs,
-          ))
-              ?.map((t) => t.text)
-              .toList() ??
-          [],
+      tokens: tokensResp?.result?.map((t) => t.text).toList() ?? [],
       langCode: langCode,
       userL1: l1Code ?? LanguageKeys.unknownLanguage,
       userL2: l2Code ?? LanguageKeys.unknownLanguage,
