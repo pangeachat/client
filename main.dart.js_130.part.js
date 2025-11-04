@@ -1518,25 +1518,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "\u0627\u0646\u0636\u0645 \u0625\u0644\u0649 \u0627\u0644\u062f\u0648\u0631\u0629";
     },
     get$languageLevelPreA1() {
-      return "\u0645\u0628\u062a\u062f\u0626 \u062d\u0642\u064a\u0642\u064a (\u0645\u0627 \u0642\u0628\u0644 A1)";
+      return "\u0645\u0628\u062a\u062f\u0626 \u0645\u0646\u062e\u0641\u0636 (\u0645\u0627 \u0642\u0628\u0644 A1)";
     },
     get$languageLevelA1() {
-      return "\u0645\u0628\u062a\u062f\u0626 (A1)";
+      return "\u0645\u0628\u062a\u062f\u0626 \u0645\u062a\u0648\u0633\u0637 (A1)";
     },
     get$languageLevelA2() {
-      return "\u0645\u0628\u062a\u062f\u0626 \u0623\u0633\u0627\u0633\u064a (A2)";
+      return "\u0645\u0628\u062a\u062f\u0626 \u0639\u0627\u0644\u064a (A2)";
     },
     get$languageLevelB1() {
-      return "\u0645\u062a\u0648\u0633\u0637 (B1)";
+      return "\u0645\u062a\u0648\u0633\u0637 \u0645\u062a\u0648\u0633\u0637 (B1)";
     },
     get$languageLevelB2() {
-      return "\u0645\u062a\u0648\u0633\u0637 \u0645\u0631\u062a\u0641\u0639 (B2)";
+      return "\u0645\u062a\u0642\u062f\u0645 \u0645\u0646\u062e\u0641\u0636 (B2)";
     },
     get$languageLevelC1() {
-      return "\u0645\u062a\u0642\u062f\u0645 (C1)";
+      return "\u0645\u062a\u0642\u062f\u0645 \u0645\u062a\u0648\u0633\u0637 (C1)";
     },
     get$languageLevelC2() {
-      return "\u0625\u062a\u0642\u0627\u0646 (C2)";
+      return "\u0645\u062a\u0641\u0648\u0642 (C2)";
     },
     get$changeTheNameOfTheClass() {
       return "\u063a\u064a\u0631 \u0627\u0644\u0627\u0633\u0645";
@@ -4569,7 +4569,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["fq7EslaiuUcQTiwxogHw7MzV748="] = d.current;
+  d["j9XvSQ5f51fHkLfYAunJFiQhBtM="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_130.part.js.map

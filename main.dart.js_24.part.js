@@ -1529,25 +1529,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Participar do curso";
     },
     get$languageLevelPreA1() {
-      return "Total Iniciante (Pr\xe9 A1)";
+      return "Iniciante Baixo (Pr\xe9 A1)";
     },
     get$languageLevelA1() {
-      return "Iniciante (A1)";
+      return "Novato Mid (A1)";
     },
     get$languageLevelA2() {
-      return "Elementar (A2)";
+      return "Iniciante Alto (A2)";
     },
     get$languageLevelB1() {
-      return "Intermedi\xe1rio (B1)";
+      return "Intermedi\xe1rio M\xe9dio (B1)";
     },
     get$languageLevelB2() {
-      return "Intermedi\xe1rio Superior (B2)";
+      return "Avan\xe7ado Baixo (B2)";
     },
     get$languageLevelC1() {
-      return "Avan\xe7ado (C1)";
+      return "Avan\xe7ado M\xe9dio (C1)";
     },
     get$languageLevelC2() {
-      return "Mestria (C2)";
+      return "Superior (C2)";
     },
     get$changeTheNameOfTheClass() {
       return "Alterar o nome";
@@ -6073,25 +6073,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Participar do curso";
     },
     get$languageLevelPreA1() {
-      return "Total Iniciante (Pr\xe9 A1)";
+      return "Novato Baixo (Pr\xe9 A1)";
     },
     get$languageLevelA1() {
-      return "Iniciante (A1)";
+      return "Novato M\xe9dio (A1)";
     },
     get$languageLevelA2() {
-      return "Elementar (A2)";
+      return "Iniciante Alto (A2)";
     },
     get$languageLevelB1() {
-      return "Intermedi\xe1rio (B1)";
+      return "Intermedi\xe1rio M\xe9dio (B1)";
     },
     get$languageLevelB2() {
-      return "Intermedi\xe1rio Avan\xe7ado (B2)";
+      return "Avan\xe7ado Baixo (B2)";
     },
     get$languageLevelC1() {
-      return "Avan\xe7ado (C1)";
+      return "Avan\xe7ado M\xe9dio (C1)";
     },
     get$languageLevelC2() {
-      return "Mestria (C2)";
+      return "Superior (C2)";
     },
     get$changeTheNameOfTheClass() {
       return "Alterar o nome";
@@ -10581,25 +10581,25 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
       return "Juntar-se ao curso";
     },
     get$languageLevelPreA1() {
-      return "Iniciante Verdadeiro (Pr\xe9 A1)";
+      return "Iniciante Baixo (Pr\xe9 A1)";
     },
     get$languageLevelA1() {
-      return "Principiante (A1)";
+      return "Novato Mid (A1)";
     },
     get$languageLevelA2() {
-      return "Elementar (A2)";
+      return "Iniciante Alto (A2)";
     },
     get$languageLevelB1() {
-      return "Intermedi\xe1rio (B1)";
+      return "Intermedi\xe1rio M\xe9dio (B1)";
     },
     get$languageLevelB2() {
-      return "Intermedi\xe1rio Superior (B2)";
+      return "Avan\xe7ado Baixo (B2)";
     },
     get$languageLevelC1() {
-      return "Avan\xe7ado (C1)";
+      return "Avan\xe7ado M\xe9dio (C1)";
     },
     get$languageLevelC2() {
-      return "Dom\xednio (C2)";
+      return "Superior (C2)";
     },
     get$changeTheNameOfTheClass() {
       return "Alterar o nome";
@@ -13758,7 +13758,7 @@ $__dart_deferred_initializers__.current = function(hunkHelpers, init, holdersLis
 };
 ;
 (d => {
-  d["AGtsJsqezrWyYyQ86+B1krLQCSI="] = d.current;
+  d["2mehSoTUO7+4uINTK8o2WnzueZI="] = d.current;
 })($__dart_deferred_initializers__);
 ;
 //# sourceMappingURL=main.dart.js_24.part.js.map
