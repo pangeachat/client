@@ -61,13 +61,19 @@ class SpaceAnalyticsRequestDialog extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(16.0),
               child: Row(
-                spacing: 20.0,
+                spacing: 12.0,
                 children: [
                   Expanded(
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
+                      ),
                       onPressed: () => Navigator.of(context).pop(),
                       child: Row(
-                        spacing: 10.0,
+                        spacing: 12.0,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(Icons.close),
@@ -78,13 +84,19 @@ class SpaceAnalyticsRequestDialog extends StatelessWidget {
                   ),
                   Expanded(
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 16,
+                        ),
+                      ),
                       onPressed: () => Navigator.of(context).pop(true),
                       child: Row(
-                        spacing: 10.0,
+                        spacing: 12.0,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Icon(Symbols.approval_delegation),
-                          Text(L10n.of(context).requestAll),
+                          Text(L10n.of(context).request),
                         ],
                       ),
                     ),
