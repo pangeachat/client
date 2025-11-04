@@ -146,10 +146,8 @@ class ChoiceItem extends StatelessWidget {
                   horizontal: 8,
                   vertical: 4,
                 ),
-                backgroundColor: isSelected
-                    ? (entry.value.color?.withAlpha(50) ??
-                        theme.colorScheme.primary.withAlpha(10))
-                    : null,
+                backgroundColor: entry.value.color?.withAlpha(50) ??
+                    theme.colorScheme.primary.withAlpha(10),
                 textStyle: BotStyle.text(context),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppConfig.borderRadius),

@@ -403,9 +403,12 @@ class ChatView extends StatelessWidget {
                             alignment: Alignment.center,
                             child: Material(
                               clipBehavior: Clip.hardEdge,
-                              color: controller.selectedEvents.isNotEmpty
-                                  ? theme.colorScheme.tertiaryContainer
-                                  : theme.colorScheme.surfaceContainerHigh,
+                              // #Pangea
+                              // color: controller.selectedEvents.isNotEmpty
+                              //     ? theme.colorScheme.tertiaryContainer
+                              //     : theme.colorScheme.surfaceContainerHigh,
+                              color: theme.colorScheme.surfaceContainerHigh,
+                              // Pangea#
                               borderRadius: const BorderRadius.all(
                                 Radius.circular(24),
                               ),
